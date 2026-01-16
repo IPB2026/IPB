@@ -1,0 +1,13 @@
+📸 Dossier des Images IPB
+
+Placez vos deux images ici avec ces noms exacts :
+
+1. fissures-avant-apres.webp (ou .jpg)
+   → Image avant/après pour les fissures
+
+2. humidite-avant-apres.webp (ou .jpg)
+   → Image avant/après pour l'humidité
+
+Une fois les images ajoutées, elles apparaîtront automatiquement sur le site !
+
+Format accepté : .webp, .jpg, .jpeg, .png

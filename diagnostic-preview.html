@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostic IPB - Prévisualisation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-fadeIn { animation: fadeIn 0.5s ease-in; }
+        .animate-slideIn { animation: slideIn 0.4s ease-out; }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-100 flex items-center justify-center p-4 font-sans text-slate-800">
+    
+    <div class="w-full max-w-3xl bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200 flex flex-col min-h-[750px] relative">
+        
+        <!-- HEADER -->
+        <div class="px-6 py-5 border-b border-slate-100 flex justify-between items-center bg-white sticky top-0 z-20">
+            <div class="flex items-center gap-2">
+                <div class="font-black text-xl tracking-tighter text-slate-900">IPB<span class="text-orange-600">.</span></div>
+            </div>
+            <div id="stepIndicator" class="flex items-center gap-3 hidden">
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Étape <span id="currentStep">0</span>/9</span>
+                <button id="backBtn" class="p-2 bg-slate-50 rounded-full hover:bg-slate-100 text-slate-500 transition">
+                    <i data-lucide="chevron-left" style="width: 20px; height: 20px;"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- PROGRESS BAR -->
+        <div id="progressBar" class="w-full bg-slate-100 h-1.5 mt-0 hidden">
+            <div id="progressFill" class="h-full transition-all duration-500 ease-out bg-orange-600" style="width: 0%"></div>
+        </div>
+
+        <div class="flex-1 overflow-y-auto p-6 md:p-12">
+            
+            <!-- STEP 0: ACCUEIL -->
+            <div id="step0" class="animate-fadeIn pt-4 text-center">
+                <div class="inline-block p-4 bg-orange-50 text-orange-600 rounded-full mb-6">
+                    <i data-lucide="search" style="width: 24px; height: 24px;"></i>
+                </div>
+                <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 leading-tight">Comprendre l'état de<br/>votre patrimoine.</h1>
+                <p class="text-lg text-slate-600 mb-8 max-w-md mx-auto">Ce module d'analyse structure les observations techniques pour préparer l'intervention de l'ingénieur IPB.</p>
+                <div class="bg-slate-50 rounded-xl p-6 mb-10 text-left border border-slate-100 shadow-sm">
+                    <h3 class="font-bold text-slate-900 mb-4 uppercase text-xs tracking-wide text-center">Protocole d'intervention :</h3>
+                    <div class="flex justify-between items-center text-center px-4">
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center font-bold text-slate-900">1</div>
+                            <p class="text-xs font-bold text-slate-700">Analyse<br/>Digitale</p>
+                        </div>
+                        <div class="h-0.5 bg-slate-200 w-12"></div>
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center font-bold text-slate-900">2</div>
+                            <p class="text-xs font-bold text-slate-700">Validation<br/>Expert</p>
+                        </div>
+                        <div class="h-0.5 bg-slate-200 w-12"></div>
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center font-bold text-slate-900">3</div>
+                            <p class="text-xs font-bold text-slate-700">Rapport<br/>Technique</p>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="setStep(1)" class="w-full md:w-auto bg-slate-900 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-orange-600 transition duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2 mx-auto">
+                    Initier le diagnostic
+                    <i data-lucide="arrow-right" style="width: 20px; height: 20px;"></i>
+                </button>
+            </div>
+
+            <!-- STEP 1: LE CHOIX -->
+            <div id="step1" class="hidden animate-slideIn">
+                <h2 class="text-2xl font-bold mb-3 text-slate-900">Quelle est votre observation principale ?</h2>
+                <p class="text-slate-500 mb-8 text-lg">Ce choix orientera l'arbre de décision technique.</p>
+                <button onclick="selectType('fissure')" class="w-full p-5 mb-3 rounded-xl border-2 border-slate-200 hover:border-orange-400 bg-white shadow-sm hover:shadow-md text-left transition-all duration-200">
+                    <span class="font-bold text-lg block text-slate-900">Fissures & Mouvements</span>
+                    <span class="text-sm mt-1 block text-slate-500">Lézardes sur murs porteurs, cloisons, plafonds...</span>
+                </button>
+                <button onclick="selectType('humidite')" class="w-full p-5 mb-3 rounded-xl border-2 border-slate-200 hover:border-blue-400 bg-white shadow-sm hover:shadow-md text-left transition-all duration-200">
+                    <span class="font-bold text-lg block text-slate-900">Humidité & Infiltrations</span>
+                    <span class="text-sm mt-1 block text-slate-500">Taches, salpêtre, moisissures, décollements...</span>
+                </button>
+            </div>
+
+            <!-- STEP 2-8: Questions dynamiques -->
+            <div id="dynamicSteps" class="hidden"></div>
+
+            <!-- STEP 99: LOADING -->
+            <div id="step99" class="hidden flex flex-col items-center justify-center h-full text-center pt-10 px-6">
+                <div class="w-24 h-24 border-4 border-slate-100 border-t-orange-600 rounded-full animate-spin mb-8"></div>
+                <h2 class="text-2xl font-bold text-slate-900 mb-8">Analyse de vos réponses...</h2>
+                <div class="space-y-4 w-full max-w-xs mx-auto text-left">
+                    <div id="loading1" class="flex items-center gap-4 opacity-40 transition-all duration-500">
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span class="font-bold text-slate-700">Traitement des symptômes</span>
+                    </div>
+                    <div id="loading2" class="flex items-center gap-4 opacity-40 transition-all duration-500">
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span class="font-bold text-slate-700">Comparaison base de données (31)</span>
+                    </div>
+                    <div id="loading3" class="flex items-center gap-4 opacity-40 transition-all duration-500">
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span class="font-bold text-slate-700">Préparation du rapport</span>
+                    </div>
+                </div>
+                <button id="showResultBtn" onclick="setStep(100)" class="mt-8 bg-green-600 text-white px-8 py-3 rounded-xl font-bold shadow-lg hover:bg-green-700 transition animate-fadeIn hidden">
+                    Voir le résultat
+                </button>
+            </div>
+
+            <!-- STEP 100: RÉSULTAT -->
+            <div id="step100" class="hidden animate-fadeIn pt-2">
+                <div class="bg-slate-900 text-white rounded-2xl p-6 mb-8 shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 -mt-4 -mr-4 w-32 h-32 bg-orange-500 rounded-full opacity-20 blur-xl"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <p class="text-xs text-slate-400 uppercase tracking-widest font-bold mb-1">Verdict de l'algorithme</p>
+                                <h2 id="urgencyLabel" class="text-2xl font-bold">INTERVENTION PRIORITAIRE</h2>
+                            </div>
+                            <div id="riskBadge" class="bg-orange-600 px-3 py-1 rounded text-xs font-bold uppercase">Score <span id="riskScore">25</span></div>
+                        </div>
+                        <div class="bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/10">
+                            <p class="text-xs font-bold text-orange-300 uppercase mb-2">Avis Technique :</p>
+                            <p id="diagnosisText" class="text-sm leading-relaxed text-slate-200 mb-3">La morphologie en escalier (suivant les joints) est caractéristique d'un tassement différentiel des fondations. Une partie de la structure s'enfonce plus vite que l'autre, créant un cisaillement.</p>
+                            <p class="text-sm leading-relaxed text-slate-200"><strong>Notre conseil :</strong> <span id="solutionText">Un simple rebouchage cosmétique sera inefficace. Nous préconisons une redondance mécanique par agrafage (couture de la maçonnerie) pour stabiliser les vecteurs de force.</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- RDV -->
+                    <div id="rdvTab" class="border-2 rounded-2xl p-6 cursor-pointer transition-all relative overflow-hidden border-orange-500 bg-orange-50">
+                        <div class="absolute top-0 right-0 bg-green-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg">DÉDUCTIBLE*</div>
+                        <div class="text-orange-600 mb-3">
+                            <i data-lucide="calendar" style="width: 20px; height: 20px;"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 mb-1">Réserver l'Expertise</h3>
+                        <p class="text-xs text-slate-500 mb-4">Diagnostic complet + Devis garanti.</p>
+                        <form onsubmit="handleSubmit(event, 'rdv')" class="space-y-3">
+                            <input type="text" placeholder="Nom & Prénom" class="w-full p-3 rounded-lg border border-orange-200 mb-2 text-sm focus:border-orange-500 outline-none bg-white" required />
+                            <input type="tel" placeholder="Téléphone" class="w-full p-3 rounded-lg border border-orange-200 mb-2 text-sm focus:border-orange-500 outline-none bg-white" required />
+                            <button type="submit" class="w-full bg-orange-600 text-white font-bold py-3 rounded-lg hover:bg-orange-700 text-sm shadow-lg transition flex items-center justify-center gap-2">
+                                Demander mon créneau
+                            </button>
+                            <p class="text-[10px] text-center text-orange-800 mt-1 leading-tight">*Coût du diagnostic déduit si signature des travaux.</p>
+                        </form>
+                    </div>
+                    <!-- RAPPORT -->
+                    <div id="reportTab" class="border-2 rounded-2xl p-6 cursor-pointer transition-all border-slate-100 hover:border-slate-300" onclick="switchTab('report')">
+                        <div class="text-slate-500 mb-3">
+                            <i data-lucide="download" style="width: 20px; height: 20px;"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 mb-1">Recevoir la fiche</h3>
+                        <p class="text-xs text-slate-500 mb-4">Résumé PDF par email.</p>
+                        <form id="reportForm" onsubmit="handleSubmit(event, 'report')" class="hidden">
+                            <input type="email" placeholder="Votre Email" class="w-full p-3 rounded-lg border border-slate-300 mb-2 text-sm focus:border-slate-900 outline-none" required />
+                            <button type="submit" class="w-full bg-slate-800 text-white font-bold py-2 rounded-lg hover:bg-slate-900 text-sm shadow-md">Envoyer le PDF</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 101: MERCI -->
+            <div id="step101" class="hidden flex flex-col items-center justify-center h-full text-center p-8 animate-fadeIn">
+                <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-6 shadow-lg border-4 border-white">
+                    <i data-lucide="check" style="width: 48px; height: 48px;"></i>
+                </div>
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-4">C'est parfait !</h2>
+                <p class="text-slate-600 mb-8 max-w-md text-lg leading-relaxed">Votre dossier est entre les mains de nos experts.<br/><br/>Vous serez recontacté <strong>sous 24h</strong> pour confirmer la suite.</p>
+                <button onclick="resetDiagnostic()" class="text-slate-400 hover:text-slate-600 font-bold text-sm border-b border-slate-200 pb-1 transition">Retourner à l'accueil</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 0;
+        let selectedPath = null;
+        let answers = {};
+        let multiSelection = [];
+        let riskScore = 0;
+        const totalSteps = 9;
+
+        // Questions pour Fissures
+        const fissureQuestions = {
+            2: {
+                title: "Localisation des anomalies",
+                subtitle: "Sélectionnez toutes les zones concernées (Choix multiple).",
+                type: "multi",
+                options: ['Façade extérieure', 'Murs intérieurs (Refends)', 'Plafond / Dalle', 'Sol / Carrelage', 'Terrasse / Trottoir'],
+                key: 'LOC_FISSURE'
+            },
+            3: {
+                title: "Morphologie des fissures",
+                subtitle: "La forme traduit les contraintes mécaniques subies.",
+                type: "multi",
+                options: [
+                    {label: "En Escalier / Crémaillère", sub: "Suit les joints", score: 10},
+                    {label: "Verticale ou Horizontale", sub: "Rupture franche", score: 5},
+                    {label: "Faïençage", sub: "Réseau superficiel", score: 2}
+                ],
+                key: 'FORME_FISSURE',
+                expertNote: "Une fissure en escalier (45°) est souvent caractéristique d'un tassement différentiel des fondations (mouvement de sol argileux)."
+            },
+            4: {
+                title: "Signes collatéraux",
+                subtitle: "Avez-vous noté d'autres dysfonctionnements ?",
+                type: "multi",
+                options: [
+                    {label: "Portes/Fenêtres qui frottent", score: 10},
+                    {label: "Bruits de craquement", score: 5},
+                    {label: "Décollement sols", score: 3}
+                ],
+                key: 'SIGNES',
+                expertNote: "Si les menuiseries ne sont plus d'équerre (frottements), cela confirme souvent une distorsion de la structure globale."
+            }
+        };
+
+        // Questions pour Humidité
+        const humiditeQuestions = {
+            2: {
+                title: "Symptomatologie",
+                subtitle: "Quels phénomènes observez-vous ? (Choix multiple)",
+                type: "multi",
+                options: [
+                    {label: 'Salpêtre (Poudre blanche)', score: 10},
+                    {label: 'Peinture qui cloque', score: 5},
+                    {label: 'Moisissures (Taches noires)', score: 3},
+                    {label: 'Ruissellement', score: 8}
+                ],
+                key: 'SYMP_HUM',
+                expertNote: "Le salpêtre est un marqueur chimique fiable : il s'agit de sels minéraux du sol qui migrent dans le mur. Il confirme quasi-systématiquement une remontée capillaire."
+            },
+            3: {
+                title: "Audit Ventilation",
+                subtitle: "Pour écarter la piste de la condensation.",
+                type: "single",
+                options: [
+                    {label: "VMC Mécanique Active", sub: "Bouches d'extraction motorisées (Cuisine/SDB)", value: 'vmc_ok', score: 5},
+                    {label: "Ventilation Naturelle", sub: "Grilles d'aération sur fenêtres uniquement", value: 'naturelle', score: 2},
+                    {label: "Confinement / Aucune", sub: "Pas de dispositif visible", value: 'aucune', score: 0},
+                    {label: "Je ne sais pas", sub: "Difficile à vérifier", value: 'nsp', score: 0, isNsp: true}
+                ],
+                key: 'VENTILATION',
+                expertNote: "Parfois, de simples taches noires sont dues à un manque d'air (condensation) et non à une fuite. Savoir si vous avez une VMC nous aide à faire le tri."
+            },
+            4: {
+                title: "Hauteur d'ascension",
+                subtitle: "Jusqu'où les traces sont-elles visibles ?",
+                type: "single",
+                options: [
+                    {label: "Pied de mur (Soubassement)", sub: "Max 1 mètre - 1m50", value: 'bas'},
+                    {label: "Toute la hauteur", sub: "Du sol au plafond", value: 'total'},
+                    {label: "Zones localisées (Spots)", sub: "Au milieu ou dans les angles", value: 'spot'}
+                ],
+                key: 'HAUTEUR',
+                expertNote: "L'humidité ascensionnelle (capillarité) s'arrête généralement à 1m50 à cause de la gravité. Si c'est plus haut, cela suggère une infiltration latérale ou une fuite."
+            }
+        };
+
+        // Questions communes
+        const commonQuestions = {
+            5: {
+                title: "Typologie constructive",
+                subtitle: "Les matériaux dépendent de l'époque.",
+                type: "single",
+                options: [
+                    {label: "Bâti Ancien (Avant 1970)", sub: "Pierre, Brique rouge...", value: 'ancien', score: 5},
+                    {label: "Moderne (1970 - 2010)", sub: "Parpaings, Vide sanitaire...", value: 'moderne', score: 2},
+                    {label: "Récente (Après 2010)", sub: "Maison neuve", value: 'neuf', score: 0},
+                    {label: "Je ne sais pas", sub: "Je n'ai pas la date", value: 'nsp', score: 0, isNsp: true}
+                ],
+                key: 'AGE'
+            },
+            6: {
+                title: "Contexte récent",
+                subtitle: "Y a-t-il eu un événement particulier ?",
+                type: "multi",
+                options: [
+                    {label: "Sécheresse / Canicule", score: 8},
+                    {label: "Travaux à proximité", score: 5},
+                    {label: "Dégât des eaux", score: 5}
+                ],
+                key: 'CONTEXTE'
+            },
+            7: {
+                title: "L'extérieur de la maison",
+                subtitle: "Regardons autour des murs.",
+                type: "single",
+                options: [
+                    {label: "Il y a de gros arbres proches", sub: "À moins de 3-4 mètres de la maison", value: 'arbres'},
+                    {label: "Le terrain est en pente", sub: "Maison sur un talus ou en contrebas", value: 'pente'},
+                    {label: "Terrain plat / Rien à signaler", sub: "Environnement standard", value: 'neutre'}
+                ],
+                key: 'ENV',
+                expertNote: "En été, les racines des grands arbres boivent toute l'eau du sol, ce qui assèche l'argile sous vos fondations et peut faire bouger la maison."
+            },
+            8: {
+                title: "Avez-vous une photo ?",
+                subtitle: "C'est le meilleur moyen pour notre expert de comprendre la situation avant de vous appeler.",
+                type: "photo",
+                key: 'PHOTO'
+            }
+        };
+
+        function setStep(step) {
+            // Cacher toutes les étapes
+            document.querySelectorAll('[id^="step"]').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('animate-fadeIn', 'animate-slideIn');
+            });
+
+            currentStep = step;
+            updateProgress();
+
+            if (step === 0) {
+                document.getElementById('step0').classList.remove('hidden');
+                document.getElementById('step0').classList.add('animate-fadeIn');
+                document.getElementById('stepIndicator').classList.add('hidden');
+                document.getElementById('progressBar').classList.add('hidden');
+            } else if (step === 1) {
+                document.getElementById('step1').classList.remove('hidden');
+                document.getElementById('step1').classList.add('animate-slideIn');
+                document.getElementById('stepIndicator').classList.remove('hidden');
+                document.getElementById('progressBar').classList.remove('hidden');
+            } else if (step === 99) {
+                document.getElementById('step99').classList.remove('hidden');
+                startLoading();
+            } else if (step === 100) {
+                document.getElementById('step100').classList.remove('hidden');
+                document.getElementById('step100').classList.add('animate-fadeIn');
+                generateResult();
+            } else if (step === 101) {
+                document.getElementById('step101').classList.remove('hidden');
+                document.getElementById('step101').classList.add('animate-fadeIn');
+            } else {
+                renderQuestion(step);
+            }
+
+            document.getElementById('currentStep').textContent = step;
+            lucide.createIcons();
+        }
+
+        function selectType(type) {
+            selectedPath = type;
+            setStep(2);
+        }
+
+        function renderQuestion(step) {
+            const container = document.getElementById('dynamicSteps');
+            container.classList.remove('hidden');
+            container.classList.add('animate-slideIn');
+
+            let question;
+            if (step >= 2 && step <= 4) {
+                question = selectedPath === 'fissure' ? fissureQuestions[step] : humiditeQuestions[step];
+            } else {
+                question = commonQuestions[step];
+            }
+
+            if (!question) return;
+
+            let html = `<h2 class="text-2xl font-bold mb-3 text-slate-900">${question.title}</h2>`;
+            html += `<p class="text-slate-500 mb-${question.type === 'photo' ? '8' : '6'} text-lg">${question.subtitle}</p>`;
+
+            if (question.type === 'multi') {
+                html += `<div class="space-y-${question.options[0].label ? '2' : '3'} mb-8">`;
+                question.options.forEach((opt, idx) => {
+                    const label = typeof opt === 'string' ? opt : opt.label;
+                    const score = opt.score || 5;
+                    html += `
+                        <button onclick="toggleMulti('${label}', ${score})" class="w-full p-4 rounded-xl border-2 text-left transition flex justify-between items-center ${multiSelection.includes(label) ? (selectedPath === 'fissure' ? 'border-orange-600 bg-orange-50' : 'border-blue-600 bg-blue-50') : 'border-slate-200 bg-white hover:border-slate-300'}">
+                            <span class="font-bold text-${question.options[0].label ? 'base' : 'lg'} ${multiSelection.includes(label) ? (selectedPath === 'fissure' ? 'text-orange-900' : 'text-blue-900') : 'text-slate-700'}">${label}</span>
+                            ${multiSelection.includes(label) ? '<i data-lucide="check" style="width: 20px; height: 20px;" class="' + (selectedPath === 'fissure' ? 'text-orange-600' : 'text-blue-600') + '"></i>' : ''}
+                        </button>
+                    `;
+                });
+                html += `</div>`;
+                html += `<button onclick="validateMulti('${question.key}')" class="w-full bg-slate-900 text-white font-bold py-4 rounded-xl transition shadow-md text-lg mb-2" ${multiSelection.length === 0 ? 'disabled class="disabled:bg-slate-200 disabled:text-slate-400"' : ''}>Valider</button>`;
+            } else if (question.type === 'single') {
+                question.options.forEach(opt => {
+                    html += `
+                        <button onclick="selectSingle('${question.key}', '${opt.value}', ${opt.score || 0})" class="w-full p-5 mb-3 rounded-xl border-2 border-slate-200 hover:border-${selectedPath === 'fissure' ? 'orange' : 'blue'}-400 bg-white shadow-sm hover:shadow-md text-left transition-all duration-200 ${opt.isNsp ? 'italic' : ''}">
+                            <span class="font-bold text-lg block ${opt.isNsp ? 'text-slate-500' : 'text-slate-900'}">${opt.label}</span>
+                            ${opt.sub ? `<span class="text-sm mt-1 block text-slate-500">${opt.sub}</span>` : ''}
+                        </button>
+                    `;
+                });
+            } else if (question.type === 'photo') {
+                html += `
+                    <div class="text-center pt-4">
+                        <div class="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-400">
+                            <i data-lucide="camera" style="width: 24px; height: 24px;"></i>
+                        </div>
+                        <label class="block w-full border-2 border-dashed border-slate-300 rounded-2xl p-8 cursor-pointer hover:border-orange-500 hover:bg-orange-50 transition bg-white mb-6">
+                            <input type="file" class="hidden" accept="image/*" onchange="handlePhoto(event)" />
+                            <div class="text-center">
+                                <span class="block text-lg font-bold text-slate-700 mb-1">Ajouter une photo</span>
+                                <span class="text-xs text-slate-400">Facultatif - JPG/PNG</span>
+                            </div>
+                        </label>
+                        <div id="photoStatus" class="mb-6 hidden">
+                            <span class="text-green-600 font-bold text-sm bg-green-50 px-3 py-1 rounded-full">Photo ajoutée !</span>
+                        </div>
+                        <button onclick="startAnalysis()" class="w-full bg-slate-900 text-white py-4 rounded-xl font-bold shadow-lg hover:bg-orange-600 transition text-lg">Je n'ai pas de photo (Passer)</button>
+                    </div>
+                `;
+            }
+
+            if (question.expertNote) {
+                html += `
+                    <div class="mt-6 bg-white border-l-4 border-slate-800 p-4 rounded-r-lg shadow-sm animate-fadeIn flex items-start gap-3">
+                        <div class="mt-1 text-slate-800 shrink-0">
+                            <i data-lucide="info" style="width: 18px; height: 18px;"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Note de l'Expert IPB</p>
+                            <p class="text-sm text-slate-700 leading-relaxed">${question.expertNote}</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
+            lucide.createIcons();
+        }
+
+        function toggleMulti(label, score) {
+            const idx = multiSelection.indexOf(label);
+            if (idx > -1) {
+                multiSelection.splice(idx, 1);
+                riskScore -= score;
+            } else {
+                multiSelection.push(label);
+                riskScore += score;
+            }
+            renderQuestion(currentStep);
+        }
+
+        function validateMulti(key) {
+            if (multiSelection.length === 0) {
+                multiSelection = ["Non précisé"];
+            }
+            answers[key] = [...multiSelection];
+            multiSelection = [];
+            setStep(currentStep + 1);
+        }
+
+        function selectSingle(key, value, score) {
+            answers[key] = value;
+            riskScore += score;
+            setTimeout(() => setStep(currentStep + 1), 250);
+        }
+
+        function handlePhoto(e) {
+            if (e.target.files[0]) {
+                document.getElementById('photoStatus').classList.remove('hidden');
+                const btn = document.querySelector('#dynamicSteps button');
+                if (btn) btn.textContent = "Terminer et Analyser";
+            }
+        }
+
+        function startAnalysis() {
+            setStep(99);
+        }
+
+        function startLoading() {
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 2;
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    document.getElementById('loading1').classList.remove('opacity-40');
+                    document.getElementById('loading1').classList.add('opacity-100');
+                    document.getElementById('loading2').classList.remove('opacity-40');
+                    document.getElementById('loading2').classList.add('opacity-100');
+                    document.getElementById('loading3').classList.remove('opacity-40');
+                    document.getElementById('loading3').classList.add('opacity-100');
+                    document.getElementById('showResultBtn').classList.remove('hidden');
+                } else {
+                    if (progress > 20) {
+                        document.getElementById('loading1').classList.remove('opacity-40');
+                        document.getElementById('loading1').classList.add('opacity-100');
+                    }
+                    if (progress > 50) {
+                        document.getElementById('loading2').classList.remove('opacity-40');
+                        document.getElementById('loading2').classList.add('opacity-100');
+                    }
+                    if (progress > 80) {
+                        document.getElementById('loading3').classList.remove('opacity-40');
+                        document.getElementById('loading3').classList.add('opacity-100');
+                    }
+                }
+            }, 50);
+        }
+
+        function generateResult() {
+            let diagnosis = "";
+            let solution = "";
+
+            if (selectedPath === 'fissure') {
+                const shape = answers['FORME_FISSURE'] || [];
+                const shapeStr = Array.isArray(shape) ? shape.join(' ') : shape;
+                
+                if (shapeStr.includes("En Escalier")) {
+                    diagnosis = "La morphologie en escalier (suivant les joints) est caractéristique d'un tassement différentiel des fondations. Une partie de la structure s'enfonce plus vite que l'autre, créant un cisaillement.";
+                    solution = "Un simple rebouchage cosmétique sera inefficace. Nous préconisons une redondance mécanique par agrafage (couture de la maçonnerie) pour stabiliser les vecteurs de force.";
+                } else if (shapeStr.includes("Verticale")) {
+                    diagnosis = "La rupture linéaire verticale suggère une dilatation thermique ou un défaut de chaînage. La cohésion du mur est rompue.";
+                    solution = "Il est nécessaire de rétablir le monolithisme de la façade par insertion d'aciers hélicoïdaux et injection de résine de scellement.";
+                } else {
+                    diagnosis = "Les micro-fissures observées (faïençage) traduisent une fatigue des matériaux de surface, souvent liée aux variations hydriques.";
+                    solution = "Un ravalement technique armé (D3/I4) est recommandé pour imperméabiliser le support et éviter l'infiltration.";
+                }
+            } else {
+                const symp = answers['SYMP_HUM'] || [];
+                const sympStr = Array.isArray(symp) ? symp.join(' ') : symp;
+                
+                if (sympStr.includes("Salpêtre")) {
+                    diagnosis = "La présence de sels hygroscopiques (salpêtre) valide l'hypothèse de remontées capillaires. L'eau du sol migre dans la porosité des murs.";
+                    solution = "La seule solution pérenne est la création d'une arase étanche chimique par injection de résine hydrophobe à la base des murs.";
+                } else {
+                    diagnosis = "Les symptômes relevés indiquent une saturation des matériaux, potentiellement aggravée par un défaut de renouvellement d'air (condensation).";
+                    solution = "Une expertise sur site permettra de trancher entre un traitement par injection (si infiltration) ou l'installation d'une VMI (si condensation).";
+                }
+            }
+
+            document.getElementById('diagnosisText').textContent = diagnosis;
+            document.getElementById('solutionText').textContent = solution;
+            document.getElementById('riskScore').textContent = riskScore;
+
+            let urgency = "SITUATION À SURVEILLER";
+            let color = "bg-blue-500";
+            if (riskScore >= 25) {
+                urgency = "INTERVENTION PRIORITAIRE";
+                color = "bg-orange-600";
+            } else if (riskScore >= 15) {
+                urgency = "NÉCESSITE UNE EXPERTISE";
+                color = "bg-orange-500";
+            }
+
+            document.getElementById('urgencyLabel').textContent = urgency;
+            document.getElementById('riskBadge').className = `${color} px-3 py-1 rounded text-xs font-bold uppercase`;
+        }
+
+        function switchTab(tab) {
+            if (tab === 'report') {
+                document.getElementById('rdvTab').classList.remove('border-orange-500', 'bg-orange-50');
+                document.getElementById('rdvTab').classList.add('border-slate-100');
+                document.getElementById('reportTab').classList.remove('border-slate-100');
+                document.getElementById('reportTab').classList.add('border-slate-900', 'bg-slate-50');
+                document.getElementById('reportForm').classList.remove('hidden');
+            } else {
+                document.getElementById('reportTab').classList.remove('border-slate-900', 'bg-slate-50');
+                document.getElementById('reportTab').classList.add('border-slate-100');
+                document.getElementById('rdvTab').classList.remove('border-slate-100');
+                document.getElementById('rdvTab').classList.add('border-orange-500', 'bg-orange-50');
+                document.getElementById('reportForm').classList.add('hidden');
+            }
+        }
+
+        function handleSubmit(e, type) {
+            e.preventDefault();
+            setTimeout(() => setStep(101), 1500);
+        }
+
+        function resetDiagnostic() {
+            currentStep = 0;
+            selectedPath = null;
+            answers = {};
+            multiSelection = [];
+            riskScore = 0;
+            setStep(0);
+        }
+
+        function updateProgress() {
+            const progress = Math.min((currentStep / totalSteps) * 100, 100);
+            const colorClass = selectedPath === 'humidite' ? 'bg-blue-500' : 'bg-orange-600';
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            document.getElementById('progressFill').className = `h-full transition-all duration-500 ease-out ${colorClass}`;
+        }
+
+        document.getElementById('backBtn').addEventListener('click', () => {
+            if (currentStep > 1) {
+                setStep(currentStep - 1);
+            }
+        });
+
+        // Initialiser
+        lucide.createIcons();
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,10 @@
+// Version simplifiée pour test
+export default function HomePageSimple() {
+  return (
+    <div style={{ padding: '50px', background: '#f8fafc' }}>
+      <h1 style={{ color: '#0f172a', fontSize: '32px' }}>IPB - Test</h1>
+      <p>Si vous voyez ceci, React fonctionne.</p>
+    </div>
+  );
+}
+

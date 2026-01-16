@@ -1,0 +1,9 @@
+{
+  "livePreview.defaultPreviewPath": "/",
+  "livePreview.customExternalBrowser": "default",
+  "livePreview.serverReady": {
+    "pattern": "Local:.*http://localhost:3000",
+    "action": "openExternally"
+  }
+}
+
