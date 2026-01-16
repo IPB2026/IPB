@@ -104,7 +104,7 @@ export async function submitDiagnosticLead(
     if (validatedData.email) {
       await sendEmail({
         to: validatedData.email,
-        subject: 'Votre diagnostic est bien enregistré | IPB',
+        subject: 'Merci pour votre demande | IPB',
         html: `
           <div style="font-family: Arial, sans-serif; background:#f8fafc; padding: 24px;">
             <div style="max-width: 640px; margin: 0 auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:16px; overflow:hidden;">
@@ -115,29 +115,23 @@ export async function submitDiagnosticLead(
                   </div>
                   <div>
                     <div style="font-size:18px; font-weight:700;">Institut de Pathologie du Bâtiment</div>
-                    <div style="font-size:13px; opacity:.85; margin-top:4px;">Votre diagnostic en ligne</div>
+                    <div style="font-size:13px; opacity:.85; margin-top:4px;">Merci pour votre demande</div>
                   </div>
                 </div>
               </div>
               <div style="padding: 24px;">
                 <h2 style="margin: 0 0 12px; color:#0f172a; font-size:22px;">Bonjour ${validatedData.name},</h2>
                 <p style="margin:0 0 14px; color:#334155; font-size:15px; line-height:1.6;">
-                  Votre diagnostic a bien été enregistré. Un expert peut vous recontacter si nécessaire.
+                  Merci d’avoir pris le temps de répondre au diagnostic. Notre équipe IPB a bien reçu votre demande.
                 </p>
-                <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:16px; margin:16px 0;">
-                  <p style="margin:0; color:#475569; font-size:14px;">
-                    <strong>Type :</strong> ${validatedData.path === 'fissure' ? 'Fissures & Structure' : 'Humidité & Infiltrations'}<br/>
-                    <strong>Score :</strong> ${validatedData.riskScore}/100
-                  </p>
-                </div>
                 <div style="background:#fff7ed; border-left:4px solid #ea580c; padding:14px 16px; border-radius:8px; margin:18px 0;">
                   <p style="margin:0; color:#7c2d12; font-size:14px;">
-                    Besoin d'un avis rapide ? Appelez-nous au <strong>05 82 95 33 75</strong>.
+                    Pour un avis rapide et humain, appelez-nous directement au <strong>05 82 95 33 75</strong>.
                   </p>
                 </div>
                 <div style="text-align:center; margin: 18px 0 4px;">
                   <a href="https://ipb-expertise.fr" style="display:inline-block; background:#ea580c; color:#ffffff; text-decoration:none; padding:12px 20px; border-radius:10px; font-size:14px; font-weight:700;">
-                    Visiter le site IPB
+                    Découvrir IPB
                   </a>
                 </div>
                 <p style="margin:18px 0 0; color:#64748b; font-size:13px;">
