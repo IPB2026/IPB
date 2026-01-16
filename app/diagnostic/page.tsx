@@ -1,7 +1,7 @@
 "use client"
 
-import React, { useState, useEffect } from 'react';
-import { submitDiagnosticAppointment, submitDiagnosticLead } from '@/app/actions/diagnostic';
+import React, { useState } from 'react';
+import { submitDiagnosticAppointment, submitDiagnosticCallback, submitDiagnosticLead } from '@/app/actions/diagnostic';
 
 // Types
 type PathType = 'fissure' | 'humidite' | null;
@@ -33,6 +33,7 @@ const questionsData: Record<'fissure' | 'humidite', Question[]> = {
         { value: 'interieur', label: 'Murs intérieurs', icon: '🧱' },
         { value: 'plafond', label: 'Plafond', icon: '⬆️' },
         { value: 'sol', label: 'Sol / Dalle', icon: '⬇️' },
+        { value: 'ne_sais_pas', label: 'Je ne sais pas', icon: '❓' },
       ],
       multiSelect: true,
     },
@@ -44,6 +45,7 @@ const questionsData: Record<'fissure' | 'humidite', Question[]> = {
         { value: 'verticale', label: 'Verticales', icon: '📏' },
         { value: 'horizontale', label: 'Horizontales', icon: '➖' },
         { value: 'faience', label: 'Toile d\'araignée (faïençage)', icon: '🕸️' },
+        { value: 'ne_sais_pas', label: 'Je ne sais pas', icon: '❓' },
       ],
     },
     {
@@ -53,6 +55,7 @@ const questionsData: Record<'fissure' | 'humidite', Question[]> = {
         { value: 'fine', label: 'Très fine (< 0.2mm)', icon: '—' },
         { value: 'moyenne', label: 'Moyenne (0.2-2mm)', icon: '━' },
         { value: 'large', label: 'Large (> 2mm)', icon: '═' },
+        { value: 'ne_sais_pas', label: 'Je ne sais pas', icon: '❓' },
       ],
     },
     {
@@ -62,6 +65,7 @@ const questionsData: Record<'fissure' | 'humidite', Question[]> = {
         { value: 'recent', label: 'Moins de 6 mois', icon: '🆕' },
         { value: 'moyen', label: '6 mois à 2 ans', icon: '📅' },
         { value: 'ancien', label: 'Plus de 2 ans', icon: '📆' },
+        { value: 'ne_sais_pas', label: 'Je ne sais pas', icon: '❓' },
       ],
     },
     {
@@ -70,7 +74,8 @@ const questionsData: Record<'fissure' | 'humidite', Question[]> = {
       options: [
         { value: 'rapide', label: 'Oui, rapidement', icon: '⚠️' },
         { value: 'lente', label: 'Oui, lentement', icon: '⏳' },
-        { value: 'stable', label: 'Stables / Je ne sais pas', icon: '✓' },
+        { value: 'stable', label: 'Stables', icon: '✓' },
+        { value: 'ne_sais_pas', label: 'Je ne sais pas', icon: '❓' },
       ],
     },
     {
@@ -81,6 +86,7 @@ const questionsData: Record<'fissure' | 'humidite', Question[]> = {
         { value: 'carrelage', label: 'Carrelage fissuré', icon: '◽' },
         { value: 'infiltration', label: 'Infiltrations d\'eau', icon: '💧' },
         { value: 'aucun', label: 'Aucun autre signe', icon: '✓' },
+        { value: 'ne_sais_pas', label: 'Je ne sais pas', icon: '❓' },
       ],
       multiSelect: true,
     },
@@ -122,6 +128,7 @@ const questionsData: Record<'fissure' | 'humidite', Question[]> = {
         { value: 'haut_mur', label: 'Haut des murs / Plafond', icon: '⬆️' },
         { value: 'angle', label: 'Angles / Coins', icon: '📐' },
         { value: 'partout', label: 'Partout', icon: '💧' },
+        { value: 'ne_sais_pas', label: 'Je ne sais pas', icon: '❓' },
       ],
       multiSelect: true,
     },
@@ -133,6 +140,7 @@ const questionsData: Record<'fissure' | 'humidite', Question[]> = {
         { value: 'moisissure', label: 'Moisissures noires', icon: '🦠' },
         { value: 'peinture', label: 'Peinture qui cloque', icon: '🎨' },
         { value: 'odeur', label: 'Odeur de moisi', icon: '👃' },
+        { value: 'ne_sais_pas', label: 'Je ne sais pas', icon: '❓' },
       ],
       multiSelect: true,
     },
@@ -143,6 +151,7 @@ const questionsData: Record<'fissure' | 'humidite', Question[]> = {
         { value: 'recent', label: 'Moins de 6 mois', icon: '🆕' },
         { value: 'moyen', label: '6 mois à 2 ans', icon: '📅' },
         { value: 'ancien', label: 'Plus de 2 ans', icon: '📆' },
+        { value: 'ne_sais_pas', label: 'Je ne sais pas', icon: '❓' },
       ],
     },
     {
@@ -152,6 +161,7 @@ const questionsData: Record<'fissure' | 'humidite', Question[]> = {
         { value: 'hiver', label: 'Pire en hiver', icon: '❄️' },
         { value: 'ete', label: 'Pire en été / après pluie', icon: '☀️' },
         { value: 'permanent', label: 'Présent toute l\'année', icon: '🔄' },
+        { value: 'ne_sais_pas', label: 'Je ne sais pas', icon: '❓' },
       ],
     },
     {
@@ -161,6 +171,7 @@ const questionsData: Record<'fissure' | 'humidite', Question[]> = {
         { value: 'oui_fonctionne', label: 'Oui, elle fonctionne', icon: '✓' },
         { value: 'oui_panne', label: 'Oui, mais en panne', icon: '⚠️' },
         { value: 'non', label: 'Non', icon: '✗' },
+        { value: 'ne_sais_pas', label: 'Je ne sais pas', icon: '❓' },
       ],
     },
     {
@@ -171,6 +182,7 @@ const questionsData: Record<'fissure' | 'humidite', Question[]> = {
         { value: 'deshu', label: 'Déshumidificateur', icon: '💨' },
         { value: 'travaux', label: 'Travaux (injection, cuvelage...)', icon: '🔧' },
         { value: 'rien', label: 'Rien pour l\'instant', icon: '✗' },
+        { value: 'ne_sais_pas', label: 'Je ne sais pas', icon: '❓' },
       ],
       multiSelect: true,
     },
@@ -191,6 +203,7 @@ const questionsData: Record<'fissure' | 'humidite', Question[]> = {
         { value: 'immediate', label: 'Très urgent, ça empire', icon: '🔴' },
         { value: 'modere', label: 'Gênant, à traiter rapidement', icon: '🟠' },
         { value: 'surveille', label: 'À surveiller, pas d\'urgence', icon: '🟢' },
+        { value: 'ne_sais_pas', label: 'Je ne sais pas', icon: '❓' },
       ],
     },
   ],
@@ -205,10 +218,14 @@ export default function DiagnosticPage() {
   const [riskScore, setRiskScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showCallbackForm, setShowCallbackForm] = useState(false);
+  const [callbackInfo, setCallbackInfo] = useState({ name: '', phone: '' });
+  const [showCalendar, setShowCalendar] = useState(false);
 
   const currentQuestions = path ? questionsData[path] : [];
   const totalQuestions = currentQuestions.length;
   const progress = path ? ((step - 1) / totalQuestions) * 100 : 0;
+  const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL || '';
 
   // Calcul du score de risque
   const calculateRisk = (pathType: 'fissure' | 'humidite', ans: Record<string, any>) => {
@@ -245,7 +262,6 @@ export default function DiagnosticPage() {
           urgency: '🔴 Urgent',
           diagnosis: 'Les signes que vous décrivez indiquent un tassement différentiel actif. La structure de votre bâtiment est en mouvement, ce qui nécessite une intervention rapide pour stopper l\'évolution.',
           solution: 'Agrafage structurel avec renfort des façades. Dans certains cas, un calage des fondations peut être nécessaire. Un diagnostic sur site permettra de dimensionner précisément l\'intervention.',
-          budget: '12 000€ - 25 000€',
           delay: 'Intervention recommandée sous 2-4 semaines',
         };
       } else if (score >= 20) {
@@ -253,7 +269,6 @@ export default function DiagnosticPage() {
           urgency: '🟠 À surveiller',
           diagnosis: 'Vos fissures présentent des signes d\'évolution modérée. Sans être critique immédiatement, la situation mérite une surveillance active et probablement une intervention à moyen terme.',
           solution: 'Agrafage localisé ou surveillance instrumentée (fissuromètre) pendant 6-12 mois pour confirmer l\'évolution avant travaux.',
-          budget: '8 000€ - 15 000€',
           delay: 'Diagnostic recommandé sous 1-2 mois',
         };
       } else {
@@ -261,7 +276,6 @@ export default function DiagnosticPage() {
           urgency: '🟢 Surveillance',
           diagnosis: 'Les fissures que vous décrivez semblent stables et superficielles. Elles ne présentent pas de danger immédiat pour la structure.',
           solution: 'Surveillance visuelle régulière. Si évolution, un diagnostic sera nécessaire. Possibilité de rebouchage esthétique après confirmation de stabilité.',
-          budget: '500€ - 2 000€ (ravalement)',
           delay: 'Pas d\'urgence, surveiller l\'évolution',
         };
       }
@@ -271,7 +285,6 @@ export default function DiagnosticPage() {
           urgency: '🔴 Urgent',
           diagnosis: 'Vous présentez les signes caractéristiques de remontées capillaires importantes. L\'eau monte dans vos murs et crée un environnement malsain (moisissures, salpêtre).',
           solution: 'Injection de résine hydrophobe sur toute la base des murs + traitement curatif (assèchement, cuvelage si cave). Une VMI peut être recommandée en complément.',
-          budget: '8 000€ - 18 000€',
           delay: 'Intervention recommandée sous 4-6 semaines',
         };
       } else if (score >= 20) {
@@ -279,7 +292,6 @@ export default function DiagnosticPage() {
           urgency: '🟠 À traiter',
           diagnosis: 'Votre problème d\'humidité est significatif et nécessite un traitement adapté. Il peut s\'agir de remontées capillaires, de condensation ou d\'infiltrations localisées.',
           solution: 'Diagnostic précis pour identifier la cause (remontées vs condensation). Selon le cas : injection résine, amélioration ventilation (VMC/VMI), ou réparation infiltrations.',
-          budget: '3 000€ - 12 000€',
           delay: 'Diagnostic recommandé sous 2-3 mois',
         };
       } else {
@@ -287,7 +299,6 @@ export default function DiagnosticPage() {
           urgency: '🟢 Surveillance',
           diagnosis: 'Votre problème d\'humidité semble modéré et pourrait être lié à un manque de ventilation (condensation) plutôt qu\'à une infiltration structurelle.',
           solution: 'Amélioration de la ventilation (VMC simple flux suffit souvent). Si persistance après ventilation, diagnostic pour confirmer l\'absence de remontées capillaires.',
-          budget: '1 500€ - 4 000€ (VMC)',
           delay: 'Pas d\'urgence, améliorer ventilation d\'abord',
         };
       }
@@ -365,18 +376,21 @@ export default function DiagnosticPage() {
     setTimeout(() => {
       setIsAnalyzing(false);
       setShowResult(true);
+      setCallbackInfo({ name: contactInfo.name, phone: contactInfo.phone });
     }, 3000);
   };
 
   // Actions finales
   const handleCallback = async () => {
-    setIsSubmitting(true);
-    // Envoi email "demande de rappel"
-    alert('Parfait ! Notre équipe vous rappellera sous 24h au ' + (contactInfo.phone || contactInfo.email));
-    setIsSubmitting(false);
+    setShowCallbackForm(true);
   };
 
   const handleBookAppointment = async () => {
+    if (calendlyUrl) {
+      setShowCalendar(true);
+      return;
+    }
+
     if (!contactInfo.phone) {
       alert('Nous avons besoin de votre téléphone pour confirmer le rendez-vous.');
       return;
@@ -404,6 +418,35 @@ export default function DiagnosticPage() {
       alert('Erreur lors de la réservation. Appelez-nous au 05 82 95 33 75.');
     }
 
+    setIsSubmitting(false);
+  };
+
+  const handleSubmitCallback = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!callbackInfo.name.trim() || !callbackInfo.phone.trim()) {
+      alert('Merci de renseigner votre nom et votre téléphone.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const formData = new FormData();
+      formData.append('name', callbackInfo.name);
+      formData.append('phone', callbackInfo.phone);
+      formData.append('path', path || 'fissure');
+      formData.append('answers', JSON.stringify(answers));
+      formData.append('riskScore', String(riskScore));
+
+      const result = await submitDiagnosticCallback(formData);
+      if (result.success) {
+        alert('✅ Merci ! Un expert vous rappelle sous 24h.');
+        setShowCallbackForm(false);
+      } else {
+        alert(result.message);
+      }
+    } catch (error) {
+      alert('Erreur lors de la demande. Appelez-nous au 05 82 95 33 75.');
+    }
     setIsSubmitting(false);
   };
 
@@ -579,7 +622,7 @@ export default function DiagnosticPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-2">Email *</label>
+                  <label className="block text-sm font-bold text-slate-700 mb-2">Email (ou téléphone)</label>
                   <input
                     type="email"
                     value={contactInfo.email}
@@ -590,7 +633,7 @@ export default function DiagnosticPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-2">Téléphone (optionnel)</label>
+                  <label className="block text-sm font-bold text-slate-700 mb-2">Téléphone (si pas d'email)</label>
                   <input
                     type="tel"
                     value={contactInfo.phone}
@@ -671,15 +714,9 @@ export default function DiagnosticPage() {
                   <p className="text-green-800 leading-relaxed">{expertReport.solution}</p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
-                    <p className="text-xs text-slate-500 font-bold uppercase mb-2">💰 Budget estimé</p>
-                    <p className="text-2xl font-extrabold text-slate-900">{expertReport.budget}</p>
-                  </div>
-                  <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
-                    <p className="text-xs text-slate-500 font-bold uppercase mb-2">⏰ Délai recommandé</p>
-                    <p className="text-lg font-bold text-slate-900">{expertReport.delay}</p>
-                  </div>
+                <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                  <p className="text-xs text-slate-500 font-bold uppercase mb-2">⏰ Délai recommandé</p>
+                  <p className="text-lg font-bold text-slate-900">{expertReport.delay}</p>
                 </div>
               </div>
 
@@ -718,6 +755,74 @@ export default function DiagnosticPage() {
                     <span className="text-sm mt-1 opacity-90">149€ déductibles sur travaux</span>
                   </button>
                 </div>
+
+                {showCallbackForm && (
+                  <form
+                    onSubmit={handleSubmitCallback}
+                    className="mt-6 bg-white border border-slate-200 rounded-xl p-6"
+                  >
+                    <h4 className="font-extrabold text-slate-900 mb-4">Demande de rappel</h4>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-bold text-slate-700 mb-2">Nom & Prénom *</label>
+                        <input
+                          type="text"
+                          value={callbackInfo.name}
+                          onChange={(e) => setCallbackInfo({ ...callbackInfo, name: e.target.value })}
+                          placeholder="Votre nom"
+                          className="w-full p-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-bold text-slate-700 mb-2">Téléphone *</label>
+                        <input
+                          type="tel"
+                          value={callbackInfo.phone}
+                          onChange={(e) => setCallbackInfo({ ...callbackInfo, phone: e.target.value })}
+                          placeholder="06 12 34 56 78"
+                          className="w-full p-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="mt-4 w-full bg-orange-600 text-white font-bold py-3 rounded-xl hover:bg-orange-700 transition disabled:opacity-50"
+                    >
+                      Être rappelé sous 24h
+                    </button>
+                  </form>
+                )}
+
+                {showCalendar && (
+                  <div className="mt-6 bg-white border border-slate-200 rounded-xl p-6">
+                    <h4 className="font-extrabold text-slate-900 mb-4">Réserver votre expertise</h4>
+                    {calendlyUrl ? (
+                      <div className="w-full overflow-hidden rounded-lg border border-slate-200">
+                        <iframe
+                          src={calendlyUrl}
+                          title="Prendre rendez-vous"
+                          className="w-full h-[700px]"
+                          loading="lazy"
+                        />
+                      </div>
+                    ) : (
+                      <div className="text-slate-700">
+                        <p className="mb-3">
+                          L’agenda en ligne n’est pas encore configuré. Laissez-nous votre téléphone et nous fixons le rendez-vous.
+                        </p>
+                        <button
+                          onClick={handleCallback}
+                          className="bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition"
+                        >
+                          Être rappelé
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )}
 
                 <p className="text-xs text-slate-500 text-center mt-6">
                   ✓ Sans engagement • ✓ Déplacement inclus • ✓ Devis gratuit • ✓ Garantie décennale

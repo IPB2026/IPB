@@ -17,6 +17,7 @@ interface DiagnosticResult {
     appointmentId?: string;
     reportId?: string;
     leadId?: string;
+    callbackId?: string;
   };
 }
 
@@ -168,6 +169,87 @@ export async function submitDiagnosticLead(
       };
     }
     console.error('Erreur lors de l\'envoi du diagnostic:', error);
+    return {
+      success: false,
+      message: 'Une erreur est survenue. Veuillez réessayer plus tard.',
+    };
+  }
+}
+
+/**
+ * Action pour demander un rappel suite au diagnostic
+ */
+export async function submitDiagnosticCallback(
+  formData: FormData
+): Promise<DiagnosticResult> {
+  try {
+    const rawData = {
+      name: formData.get('name') as string,
+      phone: formData.get('phone') as string,
+      path: formData.get('path') as 'fissure' | 'humidite',
+      answers: JSON.parse(formData.get('answers') as string),
+      riskScore: parseInt(formData.get('riskScore') as string, 10),
+    };
+
+    const rateKey = `diagnostic-callback:${rawData.phone || rawData.name}`;
+    const rateLimit = checkRateLimit(rateKey, { limit: 5, windowMs: 10 * 60 * 1000 });
+    if (!rateLimit.allowed) {
+      const retryMinutes = Math.ceil(rateLimit.retryAfterMs / 60000);
+      return {
+        success: false,
+        message: `Trop de demandes en peu de temps. Réessayez dans ${retryMinutes} min.`,
+      };
+    }
+
+    const callbackId = `CALL-${Date.now()}`;
+    const urgencyLevel = rawData.riskScore >= 25 ? '🔴 URGENT' : rawData.riskScore >= 15 ? '🟠 PRIORITAIRE' : '🟢 NORMAL';
+    const answersHtml = formatAnswersHtml(rawData.answers);
+
+    if (process.env.EMAIL_TO) {
+      const emailResult = await sendEmail({
+        to: process.env.EMAIL_TO,
+        subject: `[${urgencyLevel}] Demande de rappel - ${rawData.name}`,
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto;">
+            <h2 style="color: #EA580C;">Demande de rappel IPB</h2>
+
+            <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
+              <h3 style="margin-top: 0;">Coordonnées</h3>
+              <p><strong>Nom :</strong> ${rawData.name}</p>
+              <p><strong>Téléphone :</strong> ${rawData.phone}</p>
+            </div>
+
+            <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
+              <h3 style="margin-top: 0;">Résumé du diagnostic</h3>
+              <p><strong>Type :</strong> ${rawData.path === 'fissure' ? '🔧 Fissures & Structure' : '💧 Humidité & Infiltrations'}</p>
+              <p><strong>Score de risque :</strong> ${rawData.riskScore}/100</p>
+              <p><strong>Niveau d'urgence :</strong> ${urgencyLevel}</p>
+              <p><strong>ID :</strong> ${callbackId}</p>
+            </div>
+
+            <div style="background: #fff7ed; padding: 15px; border-left: 4px solid #EA580C; margin: 20px 0;">
+              <p style="margin: 0;"><strong>Réponses détaillées :</strong></p>
+              ${answersHtml}
+            </div>
+          </div>
+        `,
+      });
+
+      if (!emailResult.success && process.env.NODE_ENV === 'production') {
+        return {
+          success: false,
+          message: 'Erreur lors de l\'envoi de la demande. Veuillez réessayer plus tard.',
+        };
+      }
+    }
+
+    return {
+      success: true,
+      message: 'Votre demande de rappel a bien été enregistrée.',
+      data: { callbackId },
+    };
+  } catch (error) {
+    console.error('Erreur lors de la demande de rappel:', error);
     return {
       success: false,
       message: 'Une erreur est survenue. Veuillez réessayer plus tard.',
