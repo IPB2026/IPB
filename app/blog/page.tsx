@@ -184,21 +184,21 @@ export default function BlogPage() {
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="group bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                  className="group bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative"
                 >
-                  <div className="h-48 bg-gradient-to-br from-slate-200 to-slate-300 relative">
-                    <div className="absolute top-4 left-4">
+                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-orange-500 via-orange-300 to-slate-200"></div>
+                  <div className="p-6 pt-7">
+                    <div className="flex items-center justify-between mb-4">
                       <span className={`px-3 py-1 rounded-full text-xs font-bold border ${categoryColors[post.category]}`}>
                         {categoryLabels[post.category]}
                       </span>
+                      {post.featured && (
+                        <span className="bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold">
+                          À la une
+                        </span>
+                      )}
                     </div>
-                    {post.featured && (
-                      <div className="absolute top-4 right-4 bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold">
-                        À la une
-                      </div>
-                    )}
-                  </div>
-                  <div className="p-6">
+                    <div className="h-px w-16 bg-gradient-to-r from-orange-500 to-transparent mb-4"></div>
                     <h3 className="text-xl font-extrabold text-slate-900 mb-3 group-hover:text-orange-600 transition-colors line-clamp-2">
                       {post.title}
                     </h3>
@@ -251,16 +251,16 @@ export default function BlogPage() {
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="group bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden hover:shadow-lg transition-all duration-300"
+                  className="group bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden hover:shadow-lg transition-all duration-300 relative"
                 >
-                  <div className="h-40 bg-gradient-to-br from-slate-200 to-slate-300 relative">
-                    <div className="absolute top-3 left-3">
+                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-slate-200 via-slate-300 to-orange-400"></div>
+                  <div className="p-5 pt-6">
+                    <div className="flex items-center gap-2 mb-3">
                       <span className={`px-2 py-1 rounded-full text-xs font-bold border ${categoryColors[post.category]}`}>
                         {categoryLabels[post.category]}
                       </span>
                     </div>
-                  </div>
-                  <div className="p-5">
+                    <div className="h-px w-12 bg-gradient-to-r from-slate-400 to-transparent mb-3"></div>
                     <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-orange-600 transition-colors line-clamp-2">
                       {post.title}
                     </h3>
