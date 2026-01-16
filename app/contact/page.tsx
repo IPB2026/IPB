@@ -142,7 +142,7 @@ export default function ContactPage() {
                 <h3 className="font-bold text-base md:text-lg text-slate-900 mb-3 md:mb-4">Nous trouver</h3>
                 <div className="rounded-xl overflow-hidden border border-slate-200 shadow-lg">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2887.5!2d1.3!3d43.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDPCsDMwJzAwLjAiTiAxwrAxOCcwMC4wIkU!5e0!3m2!1sfr!2sfr!4v1234567890"
+                    src="https://www.google.com/maps?q=31c+chemin+de+roquettes+31600+Saubens&output=embed"
                     width="100%"
                     height="250"
                     className="w-full md:h-[300px]"

@@ -16,12 +16,12 @@ export const diagnosticAnswersSchema = z.object({
   SIGNES: z.array(z.string()).optional(),
   SYMP_HUM: z.array(z.string()).optional(),
   VENTILATION: z.enum(['vmc_ok', 'naturelle', 'aucune', 'nsp']).optional(),
-  HAUTEUR: z.enum(['bas', 'total', 'spot']).optional(),
+  HAUTEUR: z.enum(['bas', 'total', 'spot', 'nsp']).optional(),
   AGE: z.enum(['ancien', 'moderne', 'neuf', 'nsp']).optional(),
   CONTEXTE: z.array(z.string()).optional(),
-  ENV: z.enum(['arbres', 'pente', 'neutre']).optional(),
-  STATUT: z.enum(['proprietaire', 'locataire', 'nsp']).optional(),
-  URGENCE: z.enum(['urgent', 'moyen', 'faible', 'nsp']).optional(),
+  ENV: z.enum(['arbres', 'pente', 'neutre', 'nsp']).optional(),
+  STATUT: z.enum(['proprietaire', 'locataire', 'autre']).optional(),
+  URGENCE: z.enum(['absolue', 'moderee', 'preventif', 'nsp']).optional(),
 });
 
 export const diagnosticFormSchema = z.object({

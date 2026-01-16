@@ -27,6 +27,7 @@ export function Navbar() {
             <Link href="/expertise/fissures" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide">Fissures</Link>
             <Link href="/expertise/humidite" className="text-slate-600 hover:text-blue-600 font-semibold transition text-sm uppercase tracking-wide">Humidité</Link>
             <Link href="/blog" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide">Blog</Link>
+            <Link href="/contact" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide">Contact</Link>
             
             <div className="flex items-center gap-3 ml-4 pl-4 border-l border-slate-200">
               <Link
@@ -87,6 +88,14 @@ export function Navbar() {
               className="block text-slate-600 font-medium pl-5 py-2"
             >
               Blog & Conseils
+            </Link>
+            <Link
+              href="/contact"
+              onClick={() => setIsMenuOpen(false)}
+              role="menuitem"
+              className="block text-slate-600 font-medium pl-5 py-2"
+            >
+              Contact
             </Link>
             <Link
               href="/diagnostic"

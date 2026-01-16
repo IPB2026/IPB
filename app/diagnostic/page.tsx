@@ -3,13 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { submitDiagnosticAppointment } from '@/app/actions/diagnostic';
 
 // --- JEU D'ICÔNES (SVG Épurés et Optimisés) ---
 const IconCheck = () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>;
 const IconInfo = ({className = ""}: {className?: string}) => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>;
 const IconBack = () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>;
 const IconCamera = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>;
-const IconDownload = () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>;
 const IconCalendar = () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>;
 const IconSearch = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>;
 const IconArrowRight = () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>;
@@ -27,10 +27,14 @@ export default function DiagnosticPage() {
   const [photos, setPhotos] = useState<string[]>([]);
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [isResultReady, setIsResultReady] = useState(false);
-  const [activeTab, setActiveTab] = useState<'rdv' | 'report'>('rdv');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [riskScore, setRiskScore] = useState(0);
   const [toast, setToast] = useState<{message: string; type: 'success' | 'info' | 'warning'} | null>(null);
+  const [finalContact, setFinalContact] = useState({
+    name: '',
+    phone: '',
+    email: '',
+  });
 
   const totalProgressSteps = 11; // 9 questions + 2 nouvelles questions (statut + urgence)
   
@@ -92,7 +96,7 @@ export default function DiagnosticPage() {
     let solution = "";
 
     if (path === 'fissure') {
-        const shape = answers['F_SHAPE'] || [];
+        const shape = answers['FORME_FISSURE'] || [];
         const shapeStr = Array.isArray(shape) ? shape.join(' ') : shape;
         
         const isEscalier = shapeStr.includes("En Escalier");
@@ -109,7 +113,7 @@ export default function DiagnosticPage() {
             solution = "Un ravalement technique armé (D3/I4) est recommandé pour imperméabiliser le support et éviter l'infiltration.";
         }
     } else {
-        const symp = answers['H_SYMP'] || [];
+        const symp = answers['SYMP_HUM'] || [];
         const sympStr = Array.isArray(symp) ? symp.join(' ') : symp;
         const hasSalpetre = sympStr.includes("Salpêtre");
         
@@ -315,22 +319,32 @@ export default function DiagnosticPage() {
     }, 50);
   };
 
-  const handleFinalSubmit = (e: any) => {
+  const handleFinalSubmit = async (e: any) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    if (activeTab === 'rdv') {
-        // Lien de paiement ou Calendly
-        setTimeout(() => {
-            setStep(101); // Simulation succès
-            setIsSubmitting(false);
-        }, 1500);
-    } else {
-        // Envoi rapport PDF
-        setTimeout(() => {
-            setIsSubmitting(false);
-            setStep(101);
-        }, 1500);
+
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append('name', finalContact.name);
+      formDataToSend.append('phone', finalContact.phone);
+      if (finalContact.email) {
+        formDataToSend.append('email', finalContact.email);
+      }
+      formDataToSend.append('path', path || 'fissure');
+      formDataToSend.append('answers', JSON.stringify(answers));
+      formDataToSend.append('riskScore', String(riskScore));
+
+      const result = await submitDiagnosticAppointment(formDataToSend);
+      if (result.success) {
+        setStep(101);
+      } else {
+        showToast(result.message, 'warning');
+      }
+    } catch (error) {
+      console.error('Erreur lors de la soumission finale:', error);
+      showToast('Une erreur est survenue. Veuillez réessayer.', 'warning');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -969,31 +983,44 @@ export default function DiagnosticPage() {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {/* RDV */}
-                        <div className={`border-2 rounded-2xl p-6 cursor-pointer transition-all relative overflow-hidden ${activeTab === 'rdv' ? 'border-orange-500 bg-orange-50' : 'border-slate-100 hover:border-orange-200'}`} onClick={() => setActiveTab('rdv')}>
-                            <div className="absolute top-0 right-0 bg-green-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg">DÉDUCTIBLE*</div>
-                            <div className="text-orange-600 mb-3"><IconCalendar /></div>
-                            <h3 className="font-bold text-slate-900 mb-1">Réserver l'Expertise</h3>
-                            <p className="text-xs text-slate-500 mb-4">Diagnostic complet + Devis garanti.</p>
-                            {activeTab === 'rdv' && (
-                                <form onSubmit={handleFinalSubmit} className="animate-fadeIn space-y-3">
-                                    <input type="text" placeholder="Nom & Prénom" className="w-full p-3 rounded-lg border border-orange-200 mb-2 text-sm focus:border-orange-500 outline-none bg-white" required />
-                                    <input type="tel" placeholder="Téléphone" className="w-full p-3 rounded-lg border border-orange-200 mb-2 text-sm focus:border-orange-500 outline-none bg-white" required />
-                                    <button type="submit" className={`w-full bg-orange-600 text-white font-bold py-3 rounded-lg hover:bg-orange-700 text-sm shadow-lg transition flex items-center justify-center gap-2 ${isSubmitting ? 'opacity-80' : ''}`}>{isSubmitting ? 'Validation...' : 'Demander mon créneau'}</button>
-                                    <p className="text-[10px] text-center text-orange-800 mt-1 leading-tight">*Coût du diagnostic déduit si signature des travaux.</p>
-                                </form>
-                            )}
-                        </div>
-                        {/* RAPPORT */}
-                        <div className={`border-2 rounded-2xl p-6 cursor-pointer transition-all ${activeTab === 'report' ? 'border-slate-900 bg-slate-50' : 'border-slate-100 hover:border-slate-300'}`} onClick={() => setActiveTab('report')}>
-                            <div className="text-slate-500 mb-3"><IconDownload /></div>
-                            <h3 className="font-bold text-slate-900 mb-1">Recevoir la fiche</h3>
-                            <p className="text-xs text-slate-500 mb-4">Résumé PDF par email.</p>
-                            {activeTab === 'report' && (
-                                <form onSubmit={handleFinalSubmit} className="animate-fadeIn"><input type="email" placeholder="Votre Email" className="w-full p-3 rounded-lg border border-slate-300 mb-2 text-sm focus:border-slate-900 outline-none" required /><button className="w-full bg-slate-800 text-white font-bold py-2 rounded-lg hover:bg-slate-900 text-sm shadow-md">Envoyer le PDF</button></form>
-                            )}
-                        </div>
+                    <div className="border-2 rounded-2xl p-6 transition-all relative overflow-hidden border-orange-200 bg-orange-50">
+                        <div className="absolute top-0 right-0 bg-green-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg">DÉDUCTIBLE*</div>
+                        <div className="text-orange-600 mb-3"><IconCalendar /></div>
+                        <h3 className="font-bold text-slate-900 mb-1">Être recontacté par un expert</h3>
+                        <p className="text-xs text-slate-500 mb-4">Laissez vos coordonnées pour un rappel sous 24h.</p>
+                        <form onSubmit={handleFinalSubmit} className="animate-fadeIn space-y-3">
+                            <input
+                              type="text"
+                              placeholder="Nom & Prénom"
+                              className="w-full p-3 rounded-lg border border-orange-200 mb-2 text-sm focus:border-orange-500 outline-none bg-white"
+                              required
+                              value={finalContact.name}
+                              onChange={(e) => setFinalContact((prev) => ({ ...prev, name: e.target.value }))}
+                            />
+                            <input
+                              type="tel"
+                              placeholder="Téléphone"
+                              className="w-full p-3 rounded-lg border border-orange-200 mb-2 text-sm focus:border-orange-500 outline-none bg-white"
+                              required
+                              value={finalContact.phone}
+                              onChange={(e) => setFinalContact((prev) => ({ ...prev, phone: e.target.value }))}
+                            />
+                            <input
+                              type="email"
+                              placeholder="Email (optionnel)"
+                              className="w-full p-3 rounded-lg border border-orange-200 mb-2 text-sm focus:border-orange-500 outline-none bg-white"
+                              value={finalContact.email}
+                              onChange={(e) => setFinalContact((prev) => ({ ...prev, email: e.target.value }))}
+                            />
+                            <button
+                              type="submit"
+                              className={`w-full bg-orange-600 text-white font-bold py-3 rounded-lg hover:bg-orange-700 text-sm shadow-lg transition flex items-center justify-center gap-2 ${isSubmitting ? 'opacity-80' : ''}`}
+                              disabled={isSubmitting}
+                            >
+                              {isSubmitting ? 'Validation...' : 'Me faire rappeler'}
+                            </button>
+                            <p className="text-[10px] text-center text-orange-800 mt-1 leading-tight">*Coût du diagnostic déduit si signature des travaux.</p>
+                        </form>
                     </div>
                 </div>
             )}
