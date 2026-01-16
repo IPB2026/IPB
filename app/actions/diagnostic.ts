@@ -1,6 +1,6 @@
 'use server';
 
-import { diagnosticFormSchema, diagnosticReportSchema } from '@/lib/validations/diagnostic';
+import { diagnosticFormSchema, diagnosticLeadSchema, diagnosticReportSchema } from '@/lib/validations/diagnostic';
 import { z } from 'zod';
 import { sendEmail } from '@/lib/email';
 import { checkRateLimit } from '@/lib/rateLimit';
@@ -16,7 +16,105 @@ interface DiagnosticResult {
   data?: {
     appointmentId?: string;
     reportId?: string;
+    leadId?: string;
   };
+}
+
+const formatAnswersHtml = (answers: Record<string, unknown>) => {
+  const items = Object.entries(answers || {}).map(([key, value]) => {
+    const displayValue = Array.isArray(value) ? value.join(', ') : String(value);
+    return `<li><strong>${key}</strong> : ${displayValue}</li>`;
+  });
+  return items.length ? `<ul>${items.join('')}</ul>` : '<p>Aucune réponse transmise.</p>';
+};
+
+/**
+ * Action pour enregistrer un diagnostic (lead) dès l'affichage du résultat
+ */
+export async function submitDiagnosticLead(
+  formData: FormData
+): Promise<DiagnosticResult> {
+  try {
+    const rawData = {
+      name: formData.get('name') as string,
+      phone: (formData.get('phone') as string) || '',
+      email: (formData.get('email') as string) || '',
+      path: formData.get('path') as 'fissure' | 'humidite',
+      answers: JSON.parse(formData.get('answers') as string),
+      riskScore: parseInt(formData.get('riskScore') as string, 10),
+    };
+
+    const validatedData = diagnosticLeadSchema.parse(rawData);
+
+    const rateKey = `diagnostic-lead:${validatedData.email || validatedData.phone || validatedData.name}`;
+    const rateLimit = checkRateLimit(rateKey, { limit: 5, windowMs: 10 * 60 * 1000 });
+    if (!rateLimit.allowed) {
+      const retryMinutes = Math.ceil(rateLimit.retryAfterMs / 60000);
+      return {
+        success: false,
+        message: `Trop de demandes en peu de temps. Réessayez dans ${retryMinutes} min.`,
+      };
+    }
+
+    const leadId = `LEAD-${Date.now()}`;
+    if (process.env.EMAIL_TO) {
+      const urgencyLevel = validatedData.riskScore >= 25 ? '🔴 URGENT' : validatedData.riskScore >= 15 ? '🟠 PRIORITAIRE' : '🟢 NORMAL';
+      const answersHtml = formatAnswersHtml(validatedData.answers);
+      const leadEmailResult = await sendEmail({
+        to: process.env.EMAIL_TO,
+        subject: `[${urgencyLevel}] Diagnostic en ligne - ${validatedData.name}`,
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto;">
+            <h2 style="color: #EA580C;">Nouveau diagnostic en ligne IPB</h2>
+
+            <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
+              <h3 style="margin-top: 0;">Coordonnées</h3>
+              <p><strong>Nom :</strong> ${validatedData.name}</p>
+              ${validatedData.phone ? `<p><strong>Téléphone :</strong> ${validatedData.phone}</p>` : ''}
+              ${validatedData.email ? `<p><strong>Email :</strong> ${validatedData.email}</p>` : ''}
+            </div>
+
+            <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
+              <h3 style="margin-top: 0;">Résumé du diagnostic</h3>
+              <p><strong>Type :</strong> ${validatedData.path === 'fissure' ? '🔧 Fissures & Structure' : '💧 Humidité & Infiltrations'}</p>
+              <p><strong>Score de risque :</strong> ${validatedData.riskScore}/100</p>
+              <p><strong>Niveau d'urgence :</strong> ${urgencyLevel}</p>
+              <p><strong>ID :</strong> ${leadId}</p>
+            </div>
+
+            <div style="background: #fff7ed; padding: 15px; border-left: 4px solid #EA580C; margin: 20px 0;">
+              <p style="margin: 0;"><strong>Réponses détaillées :</strong></p>
+              ${answersHtml}
+            </div>
+          </div>
+        `,
+      });
+      if (!leadEmailResult.success && process.env.NODE_ENV === 'production') {
+        return {
+          success: false,
+          message: 'Erreur lors de l\'envoi du diagnostic. Veuillez réessayer plus tard.',
+        };
+      }
+    }
+
+    return {
+      success: true,
+      message: 'Diagnostic enregistré.',
+      data: { leadId },
+    };
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return {
+        success: false,
+        message: `Erreur de validation: ${error.issues[0]?.message || 'Données invalides'}`,
+      };
+    }
+    console.error('Erreur lors de l\'envoi du diagnostic:', error);
+    return {
+      success: false,
+      message: 'Une erreur est survenue. Veuillez réessayer plus tard.',
+    };
+  }
 }
 
 /**

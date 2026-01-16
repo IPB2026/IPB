@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { submitDiagnosticAppointment } from '@/app/actions/diagnostic';
+import { submitDiagnosticAppointment, submitDiagnosticLead } from '@/app/actions/diagnostic';
 
 // --- JEU D'ICÔNES (SVG Épurés et Optimisés) ---
 const IconCheck = () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>;
@@ -35,6 +35,7 @@ export default function DiagnosticPage() {
     phone: '',
     email: '',
   });
+  const [leadSent, setLeadSent] = useState(false);
 
   const totalProgressSteps = 11; // 9 questions + 2 nouvelles questions (statut + urgence)
   
@@ -80,6 +81,12 @@ export default function DiagnosticPage() {
       }
     }
   }, []);
+
+  useEffect(() => {
+    if (step === 0) {
+      setLeadSent(false);
+    }
+  }, [step]);
 
   // --- CALCUL TEMPS ESTIMÉ ---
   const getEstimatedTime = () => {
@@ -959,7 +966,7 @@ export default function DiagnosticPage() {
                         <p className="text-slate-600 text-lg">Juste avant d'afficher le résultat, indiquez un moyen de vous recontacter.</p>
                     </div>
                     <form
-                      onSubmit={(e) => {
+                      onSubmit={async (e) => {
                         e.preventDefault();
                         if (!contactInfo.name.trim()) {
                           showToast('Veuillez saisir votre nom.', 'warning');
@@ -968,6 +975,28 @@ export default function DiagnosticPage() {
                         if (!contactInfo.email.trim() && !contactInfo.phone.trim()) {
                           showToast('Veuillez saisir un email ou un téléphone.', 'warning');
                           return;
+                        }
+                        if (!leadSent) {
+                          try {
+                            const formDataToSend = new FormData();
+                            formDataToSend.append('name', contactInfo.name);
+                            formDataToSend.append('phone', contactInfo.phone);
+                            formDataToSend.append('email', contactInfo.email);
+                            formDataToSend.append('path', path || 'fissure');
+                            formDataToSend.append('answers', JSON.stringify(answers));
+                            formDataToSend.append('riskScore', String(riskScore));
+
+                            const result = await submitDiagnosticLead(formDataToSend);
+                            if (!result.success) {
+                              showToast(result.message, 'warning');
+                              return;
+                            }
+                            setLeadSent(true);
+                          } catch (error) {
+                            console.error('Erreur lors de l\'envoi du diagnostic:', error);
+                            showToast('Une erreur est survenue. Veuillez réessayer.', 'warning');
+                            return;
+                          }
                         }
                         startAnalysis();
                       }}
