@@ -195,6 +195,7 @@ export async function submitDiagnosticCallback(
     const rawData = {
       name: formData.get('name') as string,
       phone: formData.get('phone') as string,
+      email: (formData.get('email') as string) || '',
       path: formData.get('path') as 'fissure' | 'humidite',
       answers: JSON.parse(formData.get('answers') as string),
       riskScore: parseInt(formData.get('riskScore') as string, 10),
@@ -213,6 +214,9 @@ export async function submitDiagnosticCallback(
     const callbackId = `CALL-${Date.now()}`;
     const urgencyLevel = rawData.riskScore >= 25 ? '🔴 URGENT' : rawData.riskScore >= 15 ? '🟠 PRIORITAIRE' : '🟢 NORMAL';
     const answersHtml = formatAnswersHtml(rawData.answers);
+    const logoUrl =
+      process.env.EMAIL_LOGO_URL ||
+      `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ipb-expertise.fr'}/images/IPB_Logo_HD.png`;
 
     if (process.env.EMAIL_TO) {
       const emailResult = await sendEmail({
@@ -250,6 +254,55 @@ export async function submitDiagnosticCallback(
           message: 'Erreur lors de l\'envoi de la demande. Veuillez réessayer plus tard.',
         };
       }
+    }
+
+    if (rawData.email) {
+      await sendEmail({
+        to: rawData.email,
+        subject: 'Votre demande de rappel est confirmée | IPB',
+        html: `
+          <div style="font-family: Arial, sans-serif; background:#f8fafc; padding: 24px;">
+            <div style="max-width: 640px; margin: 0 auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:16px; overflow:hidden;">
+              <div style="background: linear-gradient(135deg, #0f172a, #1f2937); color:#fff; padding: 22px 24px;">
+                <div style="display:flex; align-items:center; gap:12px;">
+                  <div style="width:48px; height:48px; border-radius:12px; background:#0b1220; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                    <img src="${logoUrl}" alt="IPB" width="48" height="48" style="display:block; width:48px; height:48px; object-fit:contain;" />
+                  </div>
+                  <div>
+                    <div style="font-size:18px; font-weight:700;">Institut de Pathologie du Bâtiment</div>
+                    <div style="font-size:13px; opacity:.85; margin-top:4px;">Votre rappel est confirmé</div>
+                  </div>
+                </div>
+              </div>
+              <div style="padding: 24px;">
+                <h2 style="margin: 0 0 12px; color:#0f172a; font-size:22px;">Bonjour ${rawData.name},</h2>
+                <p style="margin:0 0 14px; color:#334155; font-size:15px; line-height:1.6;">
+                  Merci, votre demande de rappel est bien enregistrée. Un expert IPB vous rappelle sous 24h.
+                </p>
+                <div style="background:#fff7ed; border-left:4px solid #ea580c; padding:14px 16px; border-radius:8px; margin:18px 0;">
+                  <p style="margin:0; color:#7c2d12; font-size:14px;">
+                    Si vous souhaitez accélérer l’échange, appelez-nous au <strong>05 82 95 33 75</strong>.
+                  </p>
+                </div>
+                <div style="text-align:center; margin: 18px 0 4px;">
+                  <a href="https://ipb-expertise.fr" style="display:inline-block; background:#ea580c; color:#ffffff; text-decoration:none; padding:12px 22px; border-radius:10px; font-size:14px; font-weight:700;">
+                    Découvrir notre expertise
+                  </a>
+                </div>
+                <p style="margin:18px 0 0; color:#64748b; font-size:13px;">
+                  IPB • 31C Chemin de Roquettes, 31600 Saubens
+                </p>
+              </div>
+            </div>
+            <p style="text-align:center; font-size:12px; color:#94a3b8; margin-top:16px;">
+              Cet email est envoyé automatiquement par contact@ipb-expertise.fr
+            </p>
+            <p style="text-align:center; font-size:11px; color:#94a3b8; margin-top:6px;">
+              Vos données sont traitées conformément à la politique de confidentialité : https://ipb-expertise.fr/legal/confidentialite
+            </p>
+          </div>
+        `,
+      });
     }
 
     return {

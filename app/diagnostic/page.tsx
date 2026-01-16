@@ -219,7 +219,7 @@ export default function DiagnosticPage() {
   const [showResult, setShowResult] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showCallbackForm, setShowCallbackForm] = useState(false);
-  const [callbackInfo, setCallbackInfo] = useState({ name: '', phone: '' });
+  const [callbackInfo, setCallbackInfo] = useState({ name: '', phone: '', email: '' });
   const [showCalendar, setShowCalendar] = useState(false);
 
   const currentQuestions = path ? questionsData[path] : [];
@@ -376,7 +376,7 @@ export default function DiagnosticPage() {
     setTimeout(() => {
       setIsAnalyzing(false);
       setShowResult(true);
-      setCallbackInfo({ name: contactInfo.name, phone: contactInfo.phone });
+      setCallbackInfo({ name: contactInfo.name, phone: contactInfo.phone, email: contactInfo.email });
     }, 3000);
   };
 
@@ -433,6 +433,7 @@ export default function DiagnosticPage() {
       const formData = new FormData();
       formData.append('name', callbackInfo.name);
       formData.append('phone', callbackInfo.phone);
+      formData.append('email', callbackInfo.email || contactInfo.email || '');
       formData.append('path', path || 'fissure');
       formData.append('answers', JSON.stringify(answers));
       formData.append('riskScore', String(riskScore));
@@ -785,6 +786,18 @@ export default function DiagnosticPage() {
                           required
                         />
                       </div>
+                    </div>
+                    <div className="mt-4">
+                      <label className="block text-sm font-bold text-slate-700 mb-2">
+                        Email (pour confirmation)
+                      </label>
+                      <input
+                        type="email"
+                        value={callbackInfo.email}
+                        onChange={(e) => setCallbackInfo({ ...callbackInfo, email: e.target.value })}
+                        placeholder="votre@email.com"
+                        className="w-full p-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                      />
                     </div>
                     <button
                       type="submit"
