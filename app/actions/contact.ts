@@ -91,18 +91,18 @@ export async function submitContactForm(
         // Email de confirmation au client
         const clientEmailResult = await sendEmail({
           to: validatedData.email,
-          subject: 'Votre demande a bien été reçue | IPB',
+          subject: 'Votre demande a bien été reçue | IPB Expertise',
           html: `
             <div style="font-family: Arial, sans-serif; background:#f8fafc; padding: 24px;">
               <div style="max-width: 640px; margin: 0 auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:16px; overflow:hidden;">
-                <div style="background: linear-gradient(135deg, #0f172a, #1f2937); color:#fff; padding: 20px 24px;">
+                <div style="background: linear-gradient(135deg, #0f172a, #1f2937); color:#fff; padding: 22px 24px;">
                   <div style="display:flex; align-items:center; gap:12px;">
                     <div style="width:48px; height:48px; border-radius:12px; background:#0b1220; display:flex; align-items:center; justify-content:center; overflow:hidden;">
                       <img src="${logoUrl}" alt="IPB" width="48" height="48" style="display:block; width:48px; height:48px; object-fit:contain;" />
                     </div>
                     <div>
                       <div style="font-size:18px; font-weight:700; letter-spacing:0.5px;">Institut de Pathologie du Bâtiment</div>
-                      <div style="font-size:13px; opacity:.85; margin-top:4px;">Votre demande a bien été reçue</div>
+                      <div style="font-size:13px; opacity:.85; margin-top:4px;">Expertise fissures & humidité — Toulouse</div>
                     </div>
                   </div>
                 </div>
@@ -112,19 +112,25 @@ export async function submitContactForm(
                     Merci pour votre message. Nous avons bien reçu votre demande concernant :
                     <strong style="color:#0f172a;"> ${validatedData.subject}</strong>.
                   </p>
-                  <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:16px; margin:16px 0;">
-                    <p style="margin:0; color:#475569; font-size:14px; line-height:1.6;">
-                      Notre équipe d'experts revient vers vous sous <strong>24h</strong> pour une réponse claire et personnalisée.
-                    </p>
+                  <p style="margin:0 0 14px; color:#334155; font-size:15px; line-height:1.6;">
+                    Chez IPB, chaque diagnostic est réalisé avec méthode (mesures précises, analyse structurelle, solutions durables).
+                  </p>
+                  <div style="background:#f1f5f9; border:1px solid #e2e8f0; padding:16px; border-radius:12px; margin:16px 0;">
+                    <p style="margin:0; color:#0f172a; font-size:14px; font-weight:700;">Pourquoi nous choisir ?</p>
+                    <ul style="margin:10px 0 0; padding-left:18px; color:#334155; font-size:14px; line-height:1.6;">
+                      <li>✅ Expertise dédiée fissures & humidité</li>
+                      <li>✅ Solutions techniques éprouvées (agrafage, injection résine)</li>
+                      <li>✅ Garantie décennale</li>
+                    </ul>
                   </div>
                   <div style="background:#fff7ed; border-left:4px solid #ea580c; padding:14px 16px; border-radius:8px; margin:18px 0;">
                     <p style="margin:0; color:#7c2d12; font-size:14px;">
-                      <strong>Urgence ?</strong> Appelez-nous au <strong>05 82 95 33 75</strong>.
+                      Pour accélérer votre prise en charge, appelez-nous directement au <strong>05 82 95 33 75</strong>.
                     </p>
                   </div>
                   <div style="text-align:center; margin: 18px 0 4px;">
-                    <a href="https://ipb-expertise.fr" style="display:inline-block; background:#ea580c; color:#ffffff; text-decoration:none; padding:12px 20px; border-radius:10px; font-size:14px; font-weight:700;">
-                      Visiter le site IPB
+                    <a href="https://ipb-expertise.fr" style="display:inline-block; background:#ea580c; color:#ffffff; text-decoration:none; padding:12px 22px; border-radius:10px; font-size:14px; font-weight:700;">
+                      Découvrir notre expertise
                     </a>
                   </div>
                   <p style="margin:18px 0 0; color:#64748b; font-size:13px;">
