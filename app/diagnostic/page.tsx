@@ -1086,7 +1086,17 @@ export default function DiagnosticPage() {
                         <div className="text-orange-600 mb-3"><IconCalendar /></div>
                         <h3 className="font-bold text-slate-900 mb-1">Souhaitez-vous une expertise à domicile ?</h3>
                         <p className="text-xs text-slate-500 mb-4">Un expert peut se déplacer pour un diagnostic complet.</p>
-                        <form onSubmit={handleFinalSubmit} className="animate-fadeIn space-y-3">
+                        <form
+                          onSubmit={(e) => {
+                            if (!contactInfo.phone.trim()) {
+                              e.preventDefault();
+                              showToast('Merci de renseigner un téléphone pour fixer un rendez-vous.', 'warning');
+                              return;
+                            }
+                            handleFinalSubmit(e);
+                          }}
+                          className="animate-fadeIn space-y-3"
+                        >
                             <button
                               type="submit"
                               className={`w-full bg-orange-600 text-white font-bold py-3 rounded-lg hover:bg-orange-700 text-sm shadow-lg transition flex items-center justify-center gap-2 ${isSubmitting ? 'opacity-80' : ''}`}
