@@ -182,6 +182,10 @@ export async function submitDiagnosticAppointment(
   formData: FormData
 ): Promise<DiagnosticResult> {
   try {
+    const logoUrl =
+      process.env.EMAIL_LOGO_URL ||
+      `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ipb-expertise.fr'}/images/ipb-logo.png`;
+
     // Extraction et validation des données
     const rawData = {
       name: formData.get('name') as string,
