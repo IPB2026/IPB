@@ -34,7 +34,7 @@ export function Hero() {
           <div className="mt-8 flex flex-col sm:flex-row items-center gap-6 text-sm text-slate-400 font-medium">
             <span className="flex items-center gap-2"><CheckCircle size={18} className="text-green-500" /> Diagnostic expert sous 24h</span>
             <span className="flex items-center gap-2"><CheckCircle size={18} className="text-green-500" /> Expertise remboursée si travaux*</span>
-            <span className="flex items-center gap-2"><CheckCircle size={18} className="text-green-500" /> +500 maisons sauvées en 2024</span>
+            <span className="flex items-center gap-2"><CheckCircle size={18} className="text-green-500" /> +500 maisons sauvées en 2025</span>
           </div>
         </div>
       </div>
