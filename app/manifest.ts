@@ -12,13 +12,13 @@ export default function manifest(): MetadataRoute.Manifest {
     orientation: 'portrait-primary',
     icons: [
       {
-        src: '/images/ipb-logo.png',
+        src: '/images/IPB_Logo_HD.png',
         sizes: '192x192',
         type: 'image/png',
         purpose: 'any',
       },
       {
-        src: '/images/ipb-logo.png',
+        src: '/images/IPB_Logo_HD.png',
         sizes: '512x512',
         type: 'image/png',
         purpose: 'any',

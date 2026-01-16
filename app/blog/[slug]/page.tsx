@@ -888,7 +888,7 @@ export async function generateMetadata(
       authors: [post.author],
       images: [
         {
-          url: `${baseUrl}/images/ipb-logo.png`,
+          url: `${baseUrl}/images/IPB_Logo_HD.png`,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -899,7 +899,7 @@ export async function generateMetadata(
       card: 'summary_large_image',
       title: post.title,
       description: post.metaDescription,
-      images: [`${baseUrl}/images/ipb-logo.png`],
+      images: [`${baseUrl}/images/IPB_Logo_HD.png`],
       creator: '@IPBExpertise',
     },
     robots: {

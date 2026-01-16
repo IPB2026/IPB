@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: "IPB",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/images/IPB_Logo_HD.png",
         width: 1200,
         height: 630,
         alt: "IPB - Expert en pathologie du bâtiment",

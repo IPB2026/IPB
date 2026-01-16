@@ -69,7 +69,7 @@ export function generateArticleJsonLd(article: {
     '@type': 'Article',
     headline: article.title,
     description: article.excerpt,
-    image: `${baseUrl}/images/ipb-logo.png`,
+    image: `${baseUrl}/images/IPB_Logo_HD.png`,
     datePublished: article.date,
     dateModified: article.date,
     author: {
@@ -82,7 +82,7 @@ export function generateArticleJsonLd(article: {
       name: 'IPB',
       logo: {
         '@type': 'ImageObject',
-        url: `${baseUrl}/images/ipb-logo.png`,
+        url: `${baseUrl}/images/IPB_Logo_HD.png`,
       },
     },
     mainEntityOfPage: {

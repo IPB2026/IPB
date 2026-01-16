@@ -60,7 +60,7 @@ export async function submitDiagnosticLead(
     const leadId = `LEAD-${Date.now()}`;
     const logoUrl =
       process.env.EMAIL_LOGO_URL ||
-      `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ipb-expertise.fr'}/images/ipb-logo.png`;
+      `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ipb-expertise.fr'}/images/IPB_Logo_HD.png`;
     if (process.env.EMAIL_TO) {
       const urgencyLevel = validatedData.riskScore >= 25 ? '🔴 URGENT' : validatedData.riskScore >= 15 ? '🟠 PRIORITAIRE' : '🟢 NORMAL';
       const answersHtml = formatAnswersHtml(validatedData.answers);
@@ -275,7 +275,7 @@ export async function submitDiagnosticAppointment(
   try {
     const logoUrl =
       process.env.EMAIL_LOGO_URL ||
-      `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ipb-expertise.fr'}/images/ipb-logo.png`;
+      `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ipb-expertise.fr'}/images/IPB_Logo_HD.png`;
 
     // Extraction et validation des données
     const rawData = {

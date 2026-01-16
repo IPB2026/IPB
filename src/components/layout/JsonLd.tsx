@@ -7,7 +7,7 @@ export function JsonLd() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "IPB - Institut de Pathologie du Bâtiment",
-    "image": "https://www.ipb-expertise.fr/og-image.jpg",
+    "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
     "description": "Expert en traitement des fissures et de l'humidité en Haute-Garonne. Solutions techniques (agrafage, injection résine) avec garantie décennale.",
     "address": {
       "@type": "PostalAddress",

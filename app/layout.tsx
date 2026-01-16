@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     description: "Expert en traitement des fissures et de l'humidité en Haute-Garonne. Solutions techniques avec garantie décennale.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/images/IPB_Logo_HD.png",
         width: 1200,
         height: 630,
         alt: "IPB - Expert en pathologie du bâtiment",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "IPB - Expert Fissures & Humidité Toulouse",
     description: "Expert en traitement des fissures et de l'humidité en Haute-Garonne.",
-    images: ["/og-image.jpg"],
+    images: ["/images/IPB_Logo_HD.png"],
   },
   robots: {
     index: true,
@@ -74,7 +74,7 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "IPB - Institut de Pathologie du Bâtiment",
-  "image": "https://www.ipb-expertise.fr/og-image.jpg",
+  "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
   "description": "Expert en traitement des fissures et de l'humidité en Haute-Garonne. Solutions techniques (agrafage, injection résine) avec garantie décennale.",
   "address": {
     "@type": "PostalAddress",
