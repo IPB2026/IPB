@@ -1039,7 +1039,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
 
             {/* Contenu de l'article */}
             <div
-              className="prose prose-lg max-w-none prose-headings:font-extrabold prose-headings:text-slate-900 prose-p:text-slate-700 prose-p:leading-relaxed prose-ul:text-slate-700 prose-li:text-slate-700 prose-strong:text-slate-900 prose-strong:font-bold prose-h2:mt-12 prose-h2:mb-6 prose-h3:mt-8 prose-h3:mb-4 prose-h2:scroll-mt-24 prose-h3:scroll-mt-24"
+              className="prose max-w-none prose-slate prose-headings:font-extrabold prose-headings:text-slate-900 prose-p:text-slate-700 prose-p:leading-7 prose-p:my-4 prose-li:text-slate-700 prose-li:my-1 prose-strong:text-slate-900 prose-strong:font-bold prose-h2:mt-10 prose-h2:mb-5 prose-h3:mt-6 prose-h3:mb-3 prose-h2:scroll-mt-24 prose-h3:scroll-mt-24 md:prose-lg md:prose-p:leading-8"
               dangerouslySetInnerHTML={{ __html: enrichedContent }}
             />
 
