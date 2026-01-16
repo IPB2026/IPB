@@ -57,6 +57,9 @@ export async function submitDiagnosticLead(
     }
 
     const leadId = `LEAD-${Date.now()}`;
+    const logoUrl =
+      process.env.EMAIL_LOGO_URL ||
+      `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ipb-expertise.fr'}/images/ipb-logo.png`;
     if (process.env.EMAIL_TO) {
       const urgencyLevel = validatedData.riskScore >= 25 ? '🔴 URGENT' : validatedData.riskScore >= 15 ? '🟠 PRIORITAIRE' : '🟢 NORMAL';
       const answersHtml = formatAnswersHtml(validatedData.answers);
@@ -106,7 +109,9 @@ export async function submitDiagnosticLead(
             <div style="max-width: 640px; margin: 0 auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:16px; overflow:hidden;">
               <div style="background: linear-gradient(135deg, #0f172a, #1f2937); color:#fff; padding: 20px 24px;">
                 <div style="display:flex; align-items:center; gap:12px;">
-                  <div style="width:36px; height:36px; border-radius:10px; background:#ea580c; display:flex; align-items:center; justify-content:center; font-weight:800;">IPB</div>
+                  <div style="width:48px; height:48px; border-radius:12px; background:#0b1220; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                    <img src="${logoUrl}" alt="IPB" width="48" height="48" style="display:block; width:48px; height:48px; object-fit:contain;" />
+                  </div>
                   <div>
                     <div style="font-size:18px; font-weight:700;">Institut de Pathologie du Bâtiment</div>
                     <div style="font-size:13px; opacity:.85; margin-top:4px;">Votre diagnostic en ligne</div>
@@ -258,7 +263,9 @@ export async function submitDiagnosticAppointment(
                 <div style="max-width: 640px; margin: 0 auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:16px; overflow:hidden;">
                   <div style="background: linear-gradient(135deg, #0f172a, #1f2937); color:#fff; padding: 20px 24px;">
                     <div style="display:flex; align-items:center; gap:12px;">
-                      <div style="width:36px; height:36px; border-radius:10px; background:#ea580c; display:flex; align-items:center; justify-content:center; font-weight:800;">IPB</div>
+                      <div style="width:48px; height:48px; border-radius:12px; background:#0b1220; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                        <img src="${logoUrl}" alt="IPB" width="48" height="48" style="display:block; width:48px; height:48px; object-fit:contain;" />
+                      </div>
                       <div>
                         <div style="font-size:18px; font-weight:700;">Institut de Pathologie du Bâtiment</div>
                         <div style="font-size:13px; opacity:.85; margin-top:4px;">Votre demande d'expertise</div>
