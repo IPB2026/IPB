@@ -19,6 +19,20 @@ const villes = [
   'pibrac',
 ];
 
+// Articles de blog
+const blogSlugs = [
+  'fissures-maison-toulouse-que-faire',
+  'humidite-remontee-capillaire-solution',
+  'agrafage-vs-micropieux-choix',
+  'fissures-escalier-tassement-differentiel',
+  'garantie-decennale-travaux-structure',
+  'ventilation-humidite-condensation',
+  'secheresse-argile-fondations-toulouse',
+  'cout-reparation-fissures-2025',
+  'moisissures-sante-traitement',
+  'diagnostic-fissures-gratuit-toulouse',
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr';
   const currentDate = new Date();
@@ -86,9 +100,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}/villes/${ville}`,
     lastModified: currentDate,
     changeFrequency: 'monthly' as const,
-    priority: 0.6, // Priorité moyenne pour le SEO local
+    priority: 0.6,
   }));
 
-  return [...staticPages, ...villesPages];
+  // Articles de blog
+  const blogPages: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
+    url: `${baseUrl}/blog/${slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7, // Haute priorité pour le contenu SEO
+  }));
+
+  return [...staticPages, ...villesPages, ...blogPages];
 }
 

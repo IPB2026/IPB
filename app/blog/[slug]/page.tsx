@@ -1,8 +1,18 @@
 import React from 'react';
 import Link from 'next/link';
+import Script from 'next/script';
+import { Metadata } from 'next';
 import { ArrowLeft, Calendar, Clock, Share2, Facebook, Twitter, Linkedin } from 'lucide-react';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { Breadcrumbs } from '@/components/blog/Breadcrumbs';
+import { TableOfContents } from '@/components/blog/TableOfContents';
+import {
+  extractTocFromContent,
+  addIdsToHeadings,
+  generateArticleJsonLd,
+  generateBreadcrumbJsonLd,
+} from '@/lib/blog-helpers';
 
 // Types pour les articles
 interface BlogPost {
@@ -836,6 +846,76 @@ const categoryLabels = {
   expertise: 'Expertise'
 };
 
+/**
+ * Génération dynamique des metadata SEO
+ */
+export async function generateMetadata(
+  { params }: { params: Promise<{ slug: string }> | { slug: string } }
+): Promise<Metadata> {
+  const slug = typeof params === 'object' && 'then' in params 
+    ? (await params).slug 
+    : params.slug;
+  
+  const post = blogPosts[slug];
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr';
+  const url = `${baseUrl}/blog/${slug}`;
+
+  if (!post) {
+    return {
+      title: 'Article non trouvé - IPB Expertise',
+      description: 'Cet article n\'existe pas ou a été supprimé.',
+    };
+  }
+
+  return {
+    title: `${post.title} | IPB Expertise`,
+    description: post.metaDescription,
+    keywords: post.keywords,
+    authors: [{ name: post.author }],
+    category: categoryLabels[post.category],
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.metaDescription,
+      url,
+      siteName: 'IPB - Institut de Pathologie du Bâtiment',
+      locale: 'fr_FR',
+      type: 'article',
+      publishedTime: post.date,
+      modifiedTime: post.date,
+      authors: [post.author],
+      images: [
+        {
+          url: `${baseUrl}/images/ipb-logo.png`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.metaDescription,
+      images: [`${baseUrl}/images/ipb-logo.png`],
+      creator: '@IPBExpertise',
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-snippet': -1,
+        'max-image-preview': 'large',
+        'max-video-preview': -1,
+      },
+    },
+  };
+}
+
 export default function BlogPostPage({ params }: { params: Promise<{ slug: string }> | { slug: string } }) {
   const slug = typeof params === 'object' && 'then' in params ? null : params.slug;
   
@@ -864,8 +944,35 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
     );
   }
 
+  // Enrichissement du contenu avec IDs
+  const enrichedContent = addIdsToHeadings(post.content);
+  
+  // Extraction du sommaire
+  const tocItems = extractTocFromContent(post.content);
+  
+  // Génération des JSON-LD
+  const articleJsonLd = generateArticleJsonLd(post);
+  const breadcrumbJsonLd = generateBreadcrumbJsonLd([
+    { name: 'Accueil', url: '/' },
+    { name: 'Blog', url: '/blog' },
+    { name: categoryLabels[post.category], url: `/blog?category=${post.category}` },
+    { name: post.title, url: `/blog/${post.slug}` },
+  ]);
+
   return (
     <div className="min-h-screen bg-slate-50">
+      {/* JSON-LD pour SEO */}
+      <Script
+        id="article-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+
       <TopBar />
       <Navbar />
       
@@ -882,15 +989,27 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
         </div>
       </div>
 
-      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* En-tête de l'article */}
-        <div className="mb-8">
-          <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-4 ${categoryColors[post.category]}`}>
-            {categoryLabels[post.category]}
-          </span>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
-            {post.title}
-          </h1>
+      <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Breadcrumbs */}
+        <Breadcrumbs
+          items={[
+            { label: 'Blog', href: '/blog' },
+            { label: categoryLabels[post.category], href: `/blog?category=${post.category}` },
+            { label: post.title },
+          ]}
+        />
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* Contenu principal */}
+          <div className="lg:col-span-8">
+            {/* En-tête de l'article */}
+            <div className="mb-8">
+              <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-4 ${categoryColors[post.category]}`}>
+                {categoryLabels[post.category]}
+              </span>
+              <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
+                {post.title}
+              </h1>
           <div className="flex flex-wrap items-center gap-6 text-slate-600 mb-6">
             <span className="flex items-center gap-2">
               <Calendar size={16} />
@@ -918,27 +1037,36 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
           </div>
         </div>
 
-        {/* Contenu de l'article */}
-        <div
-          className="prose prose-lg max-w-none prose-headings:font-extrabold prose-headings:text-slate-900 prose-p:text-slate-700 prose-p:leading-relaxed prose-ul:text-slate-700 prose-li:text-slate-700 prose-strong:text-slate-900 prose-strong:font-bold prose-h2:mt-12 prose-h2:mb-6 prose-h3:mt-8 prose-h3:mb-4"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
+            {/* Contenu de l'article */}
+            <div
+              className="prose prose-lg max-w-none prose-headings:font-extrabold prose-headings:text-slate-900 prose-p:text-slate-700 prose-p:leading-relaxed prose-ul:text-slate-700 prose-li:text-slate-700 prose-strong:text-slate-900 prose-strong:font-bold prose-h2:mt-12 prose-h2:mb-6 prose-h3:mt-8 prose-h3:mb-4 prose-h2:scroll-mt-24 prose-h3:scroll-mt-24"
+              dangerouslySetInnerHTML={{ __html: enrichedContent }}
+            />
 
-        {/* CTA */}
-        <div className="mt-12 bg-slate-900 rounded-2xl p-8 text-center text-white relative overflow-hidden">
-          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-500 via-slate-900 to-slate-900"></div>
-          <div className="relative z-10">
-            <h2 className="text-2xl font-extrabold mb-4">Cet article vous a aidé ?</h2>
-            <p className="text-slate-300 mb-6">
-              Obtenez un diagnostic personnalisé pour votre situation. 149€ déductibles sur travaux.
-            </p>
-            <Link
-              href="/diagnostic"
-              className="inline-flex items-center gap-2 bg-orange-600 text-white px-8 py-4 rounded-xl font-bold shadow-xl hover:bg-orange-500 transition-all transform hover:-translate-y-1"
-            >
-              Lancer mon diagnostic gratuit
-            </Link>
+            {/* CTA */}
+            <div className="mt-12 bg-slate-900 rounded-2xl p-8 text-center text-white relative overflow-hidden">
+              <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-500 via-slate-900 to-slate-900"></div>
+              <div className="relative z-10">
+                <h2 className="text-2xl font-extrabold mb-4">Cet article vous a aidé ?</h2>
+                <p className="text-slate-300 mb-6">
+                  Obtenez un diagnostic personnalisé pour votre situation. 149€ déductibles sur travaux.
+                </p>
+                <Link
+                  href="/diagnostic"
+                  className="inline-flex items-center gap-2 bg-orange-600 text-white px-8 py-4 rounded-xl font-bold shadow-xl hover:bg-orange-500 transition-all transform hover:-translate-y-1"
+                >
+                  Lancer mon diagnostic gratuit
+                </Link>
+              </div>
+            </div>
           </div>
+
+          {/* Sommaire (sidebar) */}
+          {tocItems.length > 0 && (
+            <aside className="lg:col-span-4">
+              <TableOfContents items={tocItems} />
+            </aside>
+          )}
         </div>
       </article>
 
