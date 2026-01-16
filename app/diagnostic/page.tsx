@@ -30,7 +30,7 @@ export default function DiagnosticPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [riskScore, setRiskScore] = useState(0);
   const [toast, setToast] = useState<{message: string; type: 'success' | 'info' | 'warning'} | null>(null);
-  const [finalContact, setFinalContact] = useState({
+  const [contactInfo, setContactInfo] = useState({
     name: '',
     phone: '',
     email: '',
@@ -325,10 +325,10 @@ export default function DiagnosticPage() {
 
     try {
       const formDataToSend = new FormData();
-      formDataToSend.append('name', finalContact.name);
-      formDataToSend.append('phone', finalContact.phone);
-      if (finalContact.email) {
-        formDataToSend.append('email', finalContact.email);
+      formDataToSend.append('name', contactInfo.name);
+      formDataToSend.append('phone', contactInfo.phone);
+      if (contactInfo.email) {
+        formDataToSend.append('email', contactInfo.email);
       }
       formDataToSend.append('path', path || 'fissure');
       formDataToSend.append('answers', JSON.stringify(answers));
@@ -941,13 +941,82 @@ export default function DiagnosticPage() {
                             ← Modifier mes réponses
                         </button>
                         <button 
-                            onClick={startAnalysis} 
+                            onClick={() => setStep(97)} 
                             className="flex-1 bg-orange-600 text-white py-4 rounded-xl font-bold shadow-lg hover:bg-orange-700 transition flex items-center justify-center gap-2"
                         >
                             Confirmer et analyser
                             <IconArrowRight />
                         </button>
                     </div>
+                </div>
+            )}
+
+            {/* STEP 97: CONTACT AVANT RÉSULTAT */}
+            {step === 97 && (
+                <div className="animate-fadeIn pt-4">
+                    <div className="mb-6">
+                        <h2 className="text-3xl font-extrabold text-slate-900 mb-3">Vos coordonnées</h2>
+                        <p className="text-slate-600 text-lg">Juste avant d'afficher le résultat, indiquez un moyen de vous recontacter.</p>
+                    </div>
+                    <form
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        if (!contactInfo.name.trim()) {
+                          showToast('Veuillez saisir votre nom.', 'warning');
+                          return;
+                        }
+                        if (!contactInfo.email.trim() && !contactInfo.phone.trim()) {
+                          showToast('Veuillez saisir un email ou un téléphone.', 'warning');
+                          return;
+                        }
+                        startAnalysis();
+                      }}
+                      className="space-y-4"
+                    >
+                        <div>
+                          <label className="block text-sm font-bold text-slate-700 mb-2">Nom & Prénom *</label>
+                          <input
+                            type="text"
+                            placeholder="Votre nom complet"
+                            className="w-full p-3 rounded-lg border border-slate-300 text-sm focus:border-orange-500 outline-none"
+                            required
+                            value={contactInfo.name}
+                            onChange={(e) => setContactInfo((prev) => ({ ...prev, name: e.target.value }))}
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-bold text-slate-700 mb-2">Email</label>
+                          <input
+                            type="email"
+                            placeholder="votre@email.com"
+                            className="w-full p-3 rounded-lg border border-slate-300 text-sm focus:border-orange-500 outline-none"
+                            value={contactInfo.email}
+                            onChange={(e) => setContactInfo((prev) => ({ ...prev, email: e.target.value }))}
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-bold text-slate-700 mb-2">Téléphone (facultatif)</label>
+                          <input
+                            type="tel"
+                            placeholder="06 12 34 56 78"
+                            className="w-full p-3 rounded-lg border border-slate-300 text-sm focus:border-orange-500 outline-none"
+                            value={contactInfo.phone}
+                            onChange={(e) => setContactInfo((prev) => ({ ...prev, phone: e.target.value }))}
+                          />
+                        </div>
+                        <p className="text-xs text-slate-500">
+                          Nous avons besoin d'au moins un moyen de contact (email ou téléphone).
+                        </p>
+                        <button
+                          type="submit"
+                          className="w-full bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg hover:bg-orange-700 transition"
+                        >
+                          Générer mon diagnostic
+                        </button>
+                        <p className="text-xs text-slate-500 text-center">
+                          Nous utilisons vos coordonnées uniquement pour vous recontacter.
+                        </p>
+                    </form>
                 </div>
             )}
 
@@ -986,41 +1055,24 @@ export default function DiagnosticPage() {
                     <div className="border-2 rounded-2xl p-6 transition-all relative overflow-hidden border-orange-200 bg-orange-50">
                         <div className="absolute top-0 right-0 bg-green-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg">DÉDUCTIBLE*</div>
                         <div className="text-orange-600 mb-3"><IconCalendar /></div>
-                        <h3 className="font-bold text-slate-900 mb-1">Être recontacté par un expert</h3>
-                        <p className="text-xs text-slate-500 mb-4">Laissez vos coordonnées pour un rappel sous 24h.</p>
+                        <h3 className="font-bold text-slate-900 mb-1">Souhaitez-vous une expertise à domicile ?</h3>
+                        <p className="text-xs text-slate-500 mb-4">Un expert peut se déplacer pour un diagnostic complet.</p>
                         <form onSubmit={handleFinalSubmit} className="animate-fadeIn space-y-3">
-                            <input
-                              type="text"
-                              placeholder="Nom & Prénom"
-                              className="w-full p-3 rounded-lg border border-orange-200 mb-2 text-sm focus:border-orange-500 outline-none bg-white"
-                              required
-                              value={finalContact.name}
-                              onChange={(e) => setFinalContact((prev) => ({ ...prev, name: e.target.value }))}
-                            />
-                            <input
-                              type="tel"
-                              placeholder="Téléphone"
-                              className="w-full p-3 rounded-lg border border-orange-200 mb-2 text-sm focus:border-orange-500 outline-none bg-white"
-                              required
-                              value={finalContact.phone}
-                              onChange={(e) => setFinalContact((prev) => ({ ...prev, phone: e.target.value }))}
-                            />
-                            <input
-                              type="email"
-                              placeholder="Email (optionnel)"
-                              className="w-full p-3 rounded-lg border border-orange-200 mb-2 text-sm focus:border-orange-500 outline-none bg-white"
-                              value={finalContact.email}
-                              onChange={(e) => setFinalContact((prev) => ({ ...prev, email: e.target.value }))}
-                            />
                             <button
                               type="submit"
                               className={`w-full bg-orange-600 text-white font-bold py-3 rounded-lg hover:bg-orange-700 text-sm shadow-lg transition flex items-center justify-center gap-2 ${isSubmitting ? 'opacity-80' : ''}`}
                               disabled={isSubmitting}
                             >
-                              {isSubmitting ? 'Validation...' : 'Me faire rappeler'}
+                              {isSubmitting ? 'Validation...' : 'Oui, je veux un rendez-vous'}
                             </button>
                             <p className="text-[10px] text-center text-orange-800 mt-1 leading-tight">*Coût du diagnostic déduit si signature des travaux.</p>
                         </form>
+                        <button
+                          onClick={() => setStep(101)}
+                          className="mt-3 w-full text-sm font-semibold text-slate-600 hover:text-slate-800"
+                        >
+                          Non merci, pas pour l’instant
+                        </button>
                     </div>
                 </div>
             )}
