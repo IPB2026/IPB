@@ -92,8 +92,13 @@ export async function submitContactForm(
             <div style="font-family: Arial, sans-serif; background:#f8fafc; padding: 24px;">
               <div style="max-width: 640px; margin: 0 auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:16px; overflow:hidden;">
                 <div style="background: linear-gradient(135deg, #0f172a, #1f2937); color:#fff; padding: 20px 24px;">
-                  <div style="font-size:18px; font-weight:700; letter-spacing:0.5px;">IPB • Institut de Pathologie du Bâtiment</div>
-                  <div style="font-size:14px; opacity:.85; margin-top:6px;">Votre demande a bien été reçue</div>
+                  <div style="display:flex; align-items:center; gap:12px;">
+                    <div style="width:36px; height:36px; border-radius:10px; background:#ea580c; display:flex; align-items:center; justify-content:center; font-weight:800;">IPB</div>
+                    <div>
+                      <div style="font-size:18px; font-weight:700; letter-spacing:0.5px;">Institut de Pathologie du Bâtiment</div>
+                      <div style="font-size:13px; opacity:.85; margin-top:4px;">Votre demande a bien été reçue</div>
+                    </div>
+                  </div>
                 </div>
                 <div style="padding: 24px;">
                   <h2 style="margin: 0 0 12px; color:#0f172a; font-size:22px;">Bonjour ${validatedData.name},</h2>
@@ -111,6 +116,11 @@ export async function submitContactForm(
                       <strong>Urgence ?</strong> Appelez-nous au <strong>05 82 95 33 75</strong>.
                     </p>
                   </div>
+                  <div style="text-align:center; margin: 18px 0 4px;">
+                    <a href="https://ipb-expertise.fr" style="display:inline-block; background:#ea580c; color:#ffffff; text-decoration:none; padding:12px 20px; border-radius:10px; font-size:14px; font-weight:700;">
+                      Visiter le site IPB
+                    </a>
+                  </div>
                   <p style="margin:18px 0 0; color:#64748b; font-size:13px;">
                     IPB • 31C Chemin de Roquettes, 31600 Saubens
                   </p>
@@ -118,6 +128,9 @@ export async function submitContactForm(
               </div>
               <p style="text-align:center; font-size:12px; color:#94a3b8; margin-top:16px;">
                 Cet email est envoyé automatiquement par contact@ipb-expertise.fr
+              </p>
+              <p style="text-align:center; font-size:11px; color:#94a3b8; margin-top:6px;">
+                Vos données sont traitées conformément à la politique de confidentialité : https://ipb-expertise.fr/legal/confidentialite
               </p>
             </div>
           `,
