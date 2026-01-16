@@ -97,6 +97,46 @@ export async function submitDiagnosticLead(
       }
     }
 
+    if (validatedData.email) {
+      await sendEmail({
+        to: validatedData.email,
+        subject: 'Votre diagnostic est bien enregistré | IPB',
+        html: `
+          <div style="font-family: Arial, sans-serif; background:#f8fafc; padding: 24px;">
+            <div style="max-width: 640px; margin: 0 auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:16px; overflow:hidden;">
+              <div style="background: linear-gradient(135deg, #0f172a, #1f2937); color:#fff; padding: 20px 24px;">
+                <div style="font-size:18px; font-weight:700;">IPB • Institut de Pathologie du Bâtiment</div>
+                <div style="font-size:14px; opacity:.85; margin-top:6px;">Votre diagnostic en ligne</div>
+              </div>
+              <div style="padding: 24px;">
+                <h2 style="margin: 0 0 12px; color:#0f172a; font-size:22px;">Bonjour ${validatedData.name},</h2>
+                <p style="margin:0 0 14px; color:#334155; font-size:15px; line-height:1.6;">
+                  Votre diagnostic a bien été enregistré. Un expert peut vous recontacter si nécessaire.
+                </p>
+                <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:16px; margin:16px 0;">
+                  <p style="margin:0; color:#475569; font-size:14px;">
+                    <strong>Type :</strong> ${validatedData.path === 'fissure' ? 'Fissures & Structure' : 'Humidité & Infiltrations'}<br/>
+                    <strong>Score :</strong> ${validatedData.riskScore}/100
+                  </p>
+                </div>
+                <div style="background:#fff7ed; border-left:4px solid #ea580c; padding:14px 16px; border-radius:8px; margin:18px 0;">
+                  <p style="margin:0; color:#7c2d12; font-size:14px;">
+                    Besoin d'un avis rapide ? Appelez-nous au <strong>05 82 95 33 75</strong>.
+                  </p>
+                </div>
+                <p style="margin:18px 0 0; color:#64748b; font-size:13px;">
+                  IPB • 31C Chemin de Roquettes, 31600 Saubens
+                </p>
+              </div>
+            </div>
+            <p style="text-align:center; font-size:12px; color:#94a3b8; margin-top:16px;">
+              Cet email est envoyé automatiquement par contact@ipb-expertise.fr
+            </p>
+          </div>
+        `,
+      });
+    }
+
     return {
       success: true,
       message: 'Diagnostic enregistré.',
@@ -194,6 +234,46 @@ export async function submitDiagnosticAppointment(
             success: false,
             message: 'Erreur lors de l\'envoi de la demande. Veuillez réessayer plus tard.',
           };
+        }
+
+        if (validatedData.email) {
+          await sendEmail({
+            to: validatedData.email,
+            subject: 'Votre demande de rendez-vous est bien enregistrée | IPB',
+            html: `
+              <div style="font-family: Arial, sans-serif; background:#f8fafc; padding: 24px;">
+                <div style="max-width: 640px; margin: 0 auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:16px; overflow:hidden;">
+                  <div style="background: linear-gradient(135deg, #0f172a, #1f2937); color:#fff; padding: 20px 24px;">
+                    <div style="font-size:18px; font-weight:700;">IPB • Institut de Pathologie du Bâtiment</div>
+                    <div style="font-size:14px; opacity:.85; margin-top:6px;">Votre demande d'expertise</div>
+                  </div>
+                  <div style="padding: 24px;">
+                    <h2 style="margin: 0 0 12px; color:#0f172a; font-size:22px;">Bonjour ${validatedData.name},</h2>
+                    <p style="margin:0 0 14px; color:#334155; font-size:15px; line-height:1.6;">
+                      Nous avons bien reçu votre demande de rendez-vous. Un expert vous recontacte sous 24h pour confirmer le créneau.
+                    </p>
+                    <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:16px; margin:16px 0;">
+                      <p style="margin:0; color:#475569; font-size:14px;">
+                        <strong>Type :</strong> ${validatedData.path === 'fissure' ? 'Fissures & Structure' : 'Humidité & Infiltrations'}<br/>
+                        <strong>Score :</strong> ${validatedData.riskScore}/100
+                      </p>
+                    </div>
+                    <div style="background:#fff7ed; border-left:4px solid #ea580c; padding:14px 16px; border-radius:8px; margin:18px 0;">
+                      <p style="margin:0; color:#7c2d12; font-size:14px;">
+                        Besoin d'un avis rapide ? Appelez-nous au <strong>05 82 95 33 75</strong>.
+                      </p>
+                    </div>
+                    <p style="margin:18px 0 0; color:#64748b; font-size:13px;">
+                      IPB • 31C Chemin de Roquettes, 31600 Saubens
+                    </p>
+                  </div>
+                </div>
+                <p style="text-align:center; font-size:12px; color:#94a3b8; margin-top:16px;">
+                  Cet email est envoyé automatiquement par contact@ipb-expertise.fr
+                </p>
+              </div>
+            `,
+          });
         }
       } catch (emailError) {
         // On log l'erreur mais on ne bloque pas le processus

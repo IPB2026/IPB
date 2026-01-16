@@ -87,28 +87,37 @@ export async function submitContactForm(
         // Email de confirmation au client
         const clientEmailResult = await sendEmail({
           to: validatedData.email,
-          subject: 'Confirmation de réception - IPB',
+          subject: 'Votre demande a bien été reçue | IPB',
           html: `
-            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-              <h2 style="color: #EA580C;">Message bien reçu !</h2>
-              
-              <p>Bonjour ${validatedData.name},</p>
-              
-              <p>Nous avons bien reçu votre message concernant : <strong>${validatedData.subject}</strong></p>
-              
-              <p>Notre équipe d'experts va l'examiner et vous répondra dans les plus brefs délais (sous 24h).</p>
-              
-              <div style="background: #fff7ed; padding: 20px; border-left: 4px solid #EA580C; margin: 20px 0;">
-                <p style="margin: 0;">
-                  <strong>Besoin d'une réponse urgente ?</strong><br/>
-                  Appelez-nous directement au <strong>05 82 95 33 75</strong>
-                </p>
+            <div style="font-family: Arial, sans-serif; background:#f8fafc; padding: 24px;">
+              <div style="max-width: 640px; margin: 0 auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:16px; overflow:hidden;">
+                <div style="background: linear-gradient(135deg, #0f172a, #1f2937); color:#fff; padding: 20px 24px;">
+                  <div style="font-size:18px; font-weight:700; letter-spacing:0.5px;">IPB • Institut de Pathologie du Bâtiment</div>
+                  <div style="font-size:14px; opacity:.85; margin-top:6px;">Votre demande a bien été reçue</div>
+                </div>
+                <div style="padding: 24px;">
+                  <h2 style="margin: 0 0 12px; color:#0f172a; font-size:22px;">Bonjour ${validatedData.name},</h2>
+                  <p style="margin:0 0 14px; color:#334155; font-size:15px; line-height:1.6;">
+                    Merci pour votre message. Nous avons bien reçu votre demande concernant :
+                    <strong style="color:#0f172a;"> ${validatedData.subject}</strong>.
+                  </p>
+                  <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:16px; margin:16px 0;">
+                    <p style="margin:0; color:#475569; font-size:14px; line-height:1.6;">
+                      Notre équipe d'experts revient vers vous sous <strong>24h</strong> pour une réponse claire et personnalisée.
+                    </p>
+                  </div>
+                  <div style="background:#fff7ed; border-left:4px solid #ea580c; padding:14px 16px; border-radius:8px; margin:18px 0;">
+                    <p style="margin:0; color:#7c2d12; font-size:14px;">
+                      <strong>Urgence ?</strong> Appelez-nous au <strong>05 82 95 33 75</strong>.
+                    </p>
+                  </div>
+                  <p style="margin:18px 0 0; color:#64748b; font-size:13px;">
+                    IPB • 31C Chemin de Roquettes, 31600 Saubens
+                  </p>
+                </div>
               </div>
-              
-              <p style="margin-top: 30px;">
-                <strong>L'équipe IPB</strong><br/>
-                Institut de Pathologie du Bâtiment<br/>
-                31C Chemin de Roquettes, 31600 Saubens
+              <p style="text-align:center; font-size:12px; color:#94a3b8; margin-top:16px;">
+                Cet email est envoyé automatiquement par contact@ipb-expertise.fr
               </p>
             </div>
           `,
