@@ -59,7 +59,7 @@ export async function submitDiagnosticAppointment(
       try {
         const urgencyLevel = validatedData.riskScore >= 25 ? '🔴 URGENT' : validatedData.riskScore >= 15 ? '🟠 PRIORITAIRE' : '🟢 NORMAL';
         
-        await sendEmail({
+        const teamEmailResult = await sendEmail({
           to: process.env.EMAIL_TO,
           subject: `[${urgencyLevel}] Nouvelle demande de diagnostic - ${validatedData.name}`,
           html: `
@@ -91,9 +91,21 @@ export async function submitDiagnosticAppointment(
             </div>
           `,
         });
+        if (!teamEmailResult.success && process.env.NODE_ENV === 'production') {
+          return {
+            success: false,
+            message: 'Erreur lors de l\'envoi de la demande. Veuillez réessayer plus tard.',
+          };
+        }
       } catch (emailError) {
         // On log l'erreur mais on ne bloque pas le processus
         console.error('Erreur lors de l\'envoi de l\'email:', emailError);
+        if (process.env.NODE_ENV === 'production') {
+          return {
+            success: false,
+            message: 'Erreur lors de l\'envoi de la demande. Veuillez réessayer plus tard.',
+          };
+        }
       }
     }
 

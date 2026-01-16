@@ -49,7 +49,7 @@ export async function submitContactForm(
     // Envoi d'email à l'équipe IPB
     if (process.env.EMAIL_TO) {
       try {
-        await sendEmail({
+        const teamEmailResult = await sendEmail({
           to: process.env.EMAIL_TO,
           subject: `[Contact] ${validatedData.subject}`,
           html: `
@@ -80,9 +80,12 @@ export async function submitContactForm(
           `,
           replyTo: validatedData.email,
         });
+        if (!teamEmailResult.success) {
+          throw new Error('Échec envoi email équipe');
+        }
 
         // Email de confirmation au client
-        await sendEmail({
+        const clientEmailResult = await sendEmail({
           to: validatedData.email,
           subject: 'Confirmation de réception - IPB',
           html: `
@@ -110,6 +113,9 @@ export async function submitContactForm(
             </div>
           `,
         });
+        if (!clientEmailResult.success) {
+          console.warn('⚠️ Échec envoi email confirmation client');
+        }
       } catch (emailError) {
         console.error('Erreur lors de l\'envoi de l\'email:', emailError);
         // En développement, on continue même si l'email échoue
