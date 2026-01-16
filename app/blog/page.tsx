@@ -25,7 +25,7 @@ const blogPosts: BlogPost[] = [
     slug: 'fissures-maison-toulouse-que-faire',
     title: 'Fissures sur ma maison à Toulouse : Que faire ? Guide complet 2024',
     excerpt: 'Vous avez découvert des fissures sur votre maison toulousaine ? Ne paniquez pas. Voici comment distinguer une fissure bénigne d\'une urgence structurelle, et surtout : comment agir pour protéger votre patrimoine sans vous ruiner.',
-    date: '2024-01-15',
+    date: '2025-06-12',
     readTime: '8 min',
     category: 'fissures',
     featured: true
@@ -34,7 +34,7 @@ const blogPosts: BlogPost[] = [
     slug: 'humidite-remontee-capillaire-solution',
     title: 'Humidité et remontées capillaires : Solutions définitives',
     excerpt: 'Salpêtre, moisissures, peinture qui cloque... Votre mur "sue" et vous ne savez plus quoi faire ? La peinture anti-humidité n\'a rien changé ? Voici pourquoi, et surtout : la vraie solution qui fonctionne.',
-    date: '2024-01-10',
+    date: '2025-07-04',
     readTime: '6 min',
     category: 'humidite',
     featured: true
@@ -43,7 +43,7 @@ const blogPosts: BlogPost[] = [
     slug: 'agrafage-vs-micropieux-choix',
     title: 'Agrafage ou micropieux ? Comment choisir la bonne solution',
     excerpt: 'Face à des fissures structurelles, on vous propose souvent les micropieux (40 000€). Mais dans 90% des cas, l\'agrafage suffit... et coûte 3x moins cher. Voici comment faire le bon choix sans vous faire arnaquer.',
-    date: '2024-01-05',
+    date: '2025-08-20',
     readTime: '10 min',
     category: 'expertise',
     featured: false
@@ -52,7 +52,7 @@ const blogPosts: BlogPost[] = [
     slug: 'fissures-escalier-tassement-differentiel',
     title: 'Fissures en escalier : Signe de tassement différentiel ?',
     excerpt: 'Vos fissures suivent les joints de mortier en crémaillère ? C\'est le signe caractéristique d\'un tassement différentiel. Voici ce que cela signifie, pourquoi c\'est grave, et surtout : comment le réparer.',
-    date: '2023-12-20',
+    date: '2025-09-10',
     readTime: '7 min',
     category: 'fissures',
     featured: false
@@ -61,7 +61,7 @@ const blogPosts: BlogPost[] = [
     slug: 'garantie-decennale-travaux-structure',
     title: 'Garantie décennale : Ce que vous devez savoir',
     excerpt: 'Vous faites des travaux de réparation structurelle ? La garantie décennale est obligatoire. Voici ce qu\'elle couvre, combien elle coûte, et surtout : comment vous protéger.',
-    date: '2023-12-15',
+    date: '2025-10-05',
     readTime: '5 min',
     category: 'conseils',
     featured: false
@@ -70,8 +70,98 @@ const blogPosts: BlogPost[] = [
     slug: 'ventilation-humidite-condensation',
     title: 'VMC et humidité : L\'importance de la ventilation',
     excerpt: 'Vous avez de l\'humidité dans vos murs ? Avant de penser à l\'injection résine, vérifiez votre ventilation. Parfois, une simple VMC résout le problème... et vous fait économiser des milliers d\'euros.',
-    date: '2023-12-10',
+    date: '2025-11-02',
     readTime: '6 min',
+    category: 'humidite',
+    featured: false
+  },
+  {
+    slug: 'fissure-ouverture-porte-fenetre',
+    title: 'Portes qui coincent et fissures : pourquoi la structure bouge ?',
+    excerpt: 'Quand une porte frotte et qu’une fissure apparaît, ce n’est jamais un hasard. Voici comment relier ces signes et déterminer si la maison travaille.',
+    date: '2025-05-20',
+    readTime: '7 min',
+    category: 'fissures',
+    featured: false
+  },
+  {
+    slug: 'secheresse-argile-haute-garonne',
+    title: 'Sécheresse et sol argileux : le vrai risque pour votre maison en Haute‑Garonne',
+    excerpt: 'Les sols argileux se rétractent en été et gonflent en hiver. Ce cycle fragilise les fondations. On vous explique comment l’anticiper.',
+    date: '2025-06-28',
+    readTime: '8 min',
+    category: 'expertise',
+    featured: false
+  },
+  {
+    slug: 'fissure-facade-reboucher-ou-reparer',
+    title: 'Fissure en façade : reboucher ou réparer ? La méthode professionnelle',
+    excerpt: 'Reboucher sans traiter la cause, c’est retarder l’inévitable. Découvrez quand un simple enduit suffit et quand il faut intervenir structurellement.',
+    date: '2025-07-22',
+    readTime: '6 min',
+    category: 'conseils',
+    featured: false
+  },
+  {
+    slug: 'humidite-salpetre-traitement',
+    title: 'Salpêtre : comprendre l’origine et choisir le bon traitement',
+    excerpt: 'Le salpêtre signe presque toujours une remontée capillaire. Voici comment confirmer le diagnostic et choisir un traitement durable.',
+    date: '2025-08-06',
+    readTime: '7 min',
+    category: 'humidite',
+    featured: false
+  },
+  {
+    slug: 'condensation-ou-infiltration',
+    title: 'Condensation ou infiltration : comment faire la différence ?',
+    excerpt: 'Taches noires en haut des murs, buée sur les fenêtres… Ce n’est pas toujours une fuite. Voici un diagnostic clair pour ne pas se tromper.',
+    date: '2025-08-30',
+    readTime: '6 min',
+    category: 'humidite',
+    featured: false
+  },
+  {
+    slug: 'diagnostic-structurel-maison',
+    title: 'Diagnostic structurel : ce que regarde un expert sur place',
+    excerpt: 'Fissuromètre, laser, hygromètre… Un diagnostic sérieux repose sur des mesures. Découvrez ce que l’expert observe vraiment.',
+    date: '2025-09-18',
+    readTime: '9 min',
+    category: 'expertise',
+    featured: false
+  },
+  {
+    slug: 'traitement-humidite-injection-resine',
+    title: 'Injection de résine : comment fonctionne la barrière étanche ?',
+    excerpt: 'C’est la solution la plus fiable contre les remontées capillaires. Voici le principe, le délai de séchage et les garanties.',
+    date: '2025-10-14',
+    readTime: '7 min',
+    category: 'humidite',
+    featured: false
+  },
+  {
+    slug: 'revente-maison-fissuree',
+    title: 'Revente d’une maison fissurée : risques, décote et solutions',
+    excerpt: 'Une fissure peut faire perdre 20 à 30% de valeur. Avec un traitement garanti, la revente redevient possible.',
+    date: '2025-11-12',
+    readTime: '6 min',
+    category: 'conseils',
+    featured: false
+  },
+  {
+    slug: 'fissure-plafond-que-faire',
+    title: 'Fissures au plafond : faut‑il s’inquiéter ?',
+    excerpt: 'Toutes les fissures au plafond ne sont pas graves. Voici comment distinguer un simple retrait d’enduit d’un mouvement structurel.',
+    date: '2025-12-05',
+    readTime: '6 min',
+    category: 'fissures',
+    featured: false
+  },
+  {
+    slug: 'humidité-cave-sous-sol',
+    title: 'Humidité en cave : diagnostic fiable et solutions durables',
+    excerpt: 'Cuvelage, injection, ventilation… Chaque cave a son traitement. On vous guide vers la bonne stratégie.',
+    date: '2026-01-10',
+    readTime: '8 min',
     category: 'humidite',
     featured: false
   }

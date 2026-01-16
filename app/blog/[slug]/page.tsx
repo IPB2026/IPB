@@ -24,7 +24,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     slug: 'fissures-maison-toulouse-que-faire',
     title: 'Fissures sur ma maison à Toulouse : Que faire ? Guide complet 2024',
     excerpt: 'Vous avez découvert des fissures sur votre maison toulousaine ? Ne paniquez pas. Voici comment distinguer une fissure bénigne d\'une urgence structurelle, et surtout : comment agir pour protéger votre patrimoine sans vous ruiner.',
-    date: '2024-01-15',
+    date: '2025-06-12',
     readTime: '8 min',
     category: 'fissures',
     author: 'Expert IPB',
@@ -133,7 +133,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     slug: 'humidite-remontee-capillaire-solution',
     title: 'Humidité et remontées capillaires : Solutions définitives',
     excerpt: 'Salpêtre, moisissures, peinture qui cloque... Votre mur "sue" et vous ne savez plus quoi faire ? La peinture anti-humidité n\'a rien changé ? Voici pourquoi, et surtout : la vraie solution qui fonctionne.',
-    date: '2024-01-10',
+    date: '2025-07-04',
     readTime: '6 min',
     category: 'humidite',
     author: 'Expert IPB',
@@ -267,7 +267,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     slug: 'agrafage-vs-micropieux-choix',
     title: 'Agrafage ou micropieux ? Comment choisir la bonne solution',
     excerpt: 'Face à des fissures structurelles, on vous propose souvent les micropieux (40 000€). Mais dans 90% des cas, l\'agrafage suffit... et coûte 3x moins cher. Voici comment faire le bon choix sans vous faire arnaquer.',
-    date: '2024-01-05',
+    date: '2025-08-20',
     readTime: '10 min',
     category: 'expertise',
     author: 'Expert IPB',
@@ -456,7 +456,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     slug: 'fissures-escalier-tassement-differentiel',
     title: 'Fissures en escalier : Signe de tassement différentiel ?',
     excerpt: 'Vos fissures suivent les joints de mortier en crémaillère ? C\'est le signe caractéristique d\'un tassement différentiel. Voici ce que cela signifie, pourquoi c\'est grave, et surtout : comment le réparer.',
-    date: '2023-12-20',
+    date: '2025-09-10',
     readTime: '7 min',
     category: 'fissures',
     author: 'Expert IPB',
@@ -518,7 +518,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     slug: 'garantie-decennale-travaux-structure',
     title: 'Garantie décennale : Ce que vous devez savoir',
     excerpt: 'Vous faites des travaux de réparation structurelle ? La garantie décennale est obligatoire. Voici ce qu\'elle couvre, combien elle coûte, et surtout : comment vous protéger.',
-    date: '2023-12-15',
+    date: '2025-10-05',
     readTime: '5 min',
     category: 'conseils',
     author: 'Expert IPB',
@@ -558,7 +558,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     slug: 'ventilation-humidite-condensation',
     title: 'VMC et humidité : L\'importance de la ventilation',
     excerpt: 'Vous avez de l\'humidité dans vos murs ? Avant de penser à l\'injection résine, vérifiez votre ventilation. Parfois, une simple VMC résout le problème... et vous fait économiser des milliers d\'euros.',
-    date: '2023-12-10',
+    date: '2025-11-02',
     readTime: '6 min',
     category: 'humidite',
     author: 'Expert IPB',
@@ -600,6 +600,224 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h2>Conclusion</h2>
       
       <p>Avant de penser à l'injection résine, vérifiez votre ventilation. Un diagnostic précis vous dira si c'est de la condensation (VMC suffit) ou une remontée capillaire (injection nécessaire). Cette expertise vous évitera soit une dépense inutile, soit un traitement insuffisant.</p>
+    `
+  },
+  'fissure-ouverture-porte-fenetre': {
+    slug: 'fissure-ouverture-porte-fenetre',
+    title: 'Portes qui coincent et fissures : pourquoi la structure bouge ?',
+    excerpt: 'Quand une porte frotte et qu’une fissure apparaît, ce n’est jamais un hasard. Voici comment relier ces signes et déterminer si la maison travaille.',
+    date: '2025-05-20',
+    readTime: '7 min',
+    category: 'fissures',
+    author: 'Expert IPB',
+    metaDescription: 'Porte qui coince + fissures : signes d’un mouvement structurel. Comment diagnostiquer et stabiliser avant que ça s’aggrave.',
+    keywords: ['portes qui coincent', 'fissures', 'mouvement structurel', 'toulouse', 'diagnostic maison'],
+    content: `
+      <h2>Quand une porte frotte, la maison parle</h2>
+      <p>Une porte qui coince, une fenêtre qui ne ferme plus, un carrelage qui se soulève… Ces signes ne sont pas des détails. Ils indiquent souvent que la structure n’est plus d’équerre.</p>
+
+      <h2>Le lien direct avec les fissures</h2>
+      <p>Quand une fondation bouge, le mur se déforme. Les menuiseries, fixées dans la maçonnerie, subissent cette déformation. Résultat : elles frottent ou se bloquent.</p>
+
+      <h2>Comment confirmer le diagnostic</h2>
+      <ul>
+        <li>Observer si la fissure évolue (repère + mesure).</li>
+        <li>Vérifier si le frottement est récent.</li>
+        <li>Contrôler d’autres signes (joints ouverts, fissures plafond).</li>
+      </ul>
+
+      <h2>La bonne réaction</h2>
+      <p>Si la fissure est active, le rebouchage ne suffit pas. Il faut stabiliser la structure (agrafage) avant les finitions.</p>
+    `
+  },
+  'secheresse-argile-haute-garonne': {
+    slug: 'secheresse-argile-haute-garonne',
+    title: 'Sécheresse et sol argileux : le vrai risque pour votre maison en Haute‑Garonne',
+    excerpt: 'Les sols argileux se rétractent en été et gonflent en hiver. Ce cycle fragilise les fondations. On vous explique comment l’anticiper.',
+    date: '2025-06-28',
+    readTime: '8 min',
+    category: 'expertise',
+    author: 'Expert IPB',
+    metaDescription: 'Sol argileux et sécheresse : pourquoi les fondations bougent et comment sécuriser durablement la maison.',
+    keywords: ['sol argileux', 'sécheresse', 'haute-garonne', 'fondations', 'fissures'],
+    content: `
+      <h2>Le cycle argileux : retrait / gonflement</h2>
+      <p>En période sèche, l’argile se rétracte. En période humide, elle gonfle. Ce mouvement vertical peut atteindre plusieurs centimètres.</p>
+
+      <h2>Pourquoi c’est dangereux</h2>
+      <p>Les fondations perdent leur appui uniforme. La maison travaille : fissures en escalier, joints qui s’ouvrent, menuiseries déformées.</p>
+
+      <h2>Comment limiter le risque</h2>
+      <ul>
+        <li>Éviter les grands arbres trop proches.</li>
+        <li>Surveiller les fissures après sécheresse.</li>
+        <li>Faire un diagnostic si les signes s’installent.</li>
+      </ul>
+    `
+  },
+  'fissure-facade-reboucher-ou-reparer': {
+    slug: 'fissure-facade-reboucher-ou-reparer',
+    title: 'Fissure en façade : reboucher ou réparer ? La méthode professionnelle',
+    excerpt: 'Reboucher sans traiter la cause, c’est retarder l’inévitable. Découvrez quand un simple enduit suffit et quand il faut intervenir structurellement.',
+    date: '2025-07-22',
+    readTime: '6 min',
+    category: 'conseils',
+    author: 'Expert IPB',
+    metaDescription: 'Fissure façade : quand reboucher, quand réparer ? Méthode pro pour éviter les réparations inutiles.',
+    keywords: ['fissure façade', 'reboucher fissure', 'agrafage', 'ravalement', 'diagnostic'],
+    content: `
+      <h2>Reboucher n’est pas réparer</h2>
+      <p>Un rebouchage masquera la fissure… jusqu’à sa réapparition. Si la cause est structurelle, elle reviendra plus large.</p>
+
+      <h2>Quand un rebouchage suffit</h2>
+      <ul>
+        <li>Faïençage superficiel</li>
+        <li>Fissure stable et fine</li>
+        <li>Absence de signes collatéraux</li>
+      </ul>
+
+      <h2>Quand il faut réparer</h2>
+      <ul>
+        <li>Fissure en escalier</li>
+        <li>Ouverture > 2 mm</li>
+        <li>Évolution rapide</li>
+      </ul>
+    `
+  },
+  'humidite-salpetre-traitement': {
+    slug: 'humidite-salpetre-traitement',
+    title: 'Salpêtre : comprendre l’origine et choisir le bon traitement',
+    excerpt: 'Le salpêtre signe presque toujours une remontée capillaire. Voici comment confirmer le diagnostic et choisir un traitement durable.',
+    date: '2025-08-06',
+    readTime: '7 min',
+    category: 'humidite',
+    author: 'Expert IPB',
+    metaDescription: 'Salpêtre sur les murs : origine, diagnostic et traitement par injection résine.',
+    keywords: ['salpêtre', 'remontée capillaire', 'murs humides', 'injection résine'],
+    content: `
+      <h2>Le salpêtre : un marqueur fiable</h2>
+      <p>La poudre blanche qui apparaît au bas des murs indique très souvent une remontée capillaire.</p>
+
+      <h2>Le bon traitement</h2>
+      <p>Injection de résine hydrophobe pour créer une barrière étanche, puis assèchement progressif.</p>
+    `
+  },
+  'condensation-ou-infiltration': {
+    slug: 'condensation-ou-infiltration',
+    title: 'Condensation ou infiltration : comment faire la différence ?',
+    excerpt: 'Taches noires en haut des murs, buée sur les fenêtres… Ce n’est pas toujours une fuite. Voici un diagnostic clair pour ne pas se tromper.',
+    date: '2025-08-30',
+    readTime: '6 min',
+    category: 'humidite',
+    author: 'Expert IPB',
+    metaDescription: 'Différence condensation vs infiltration : symptômes et traitement adapté.',
+    keywords: ['condensation', 'infiltration', 'humidite', 'diagnostic'],
+    content: `
+      <h2>Deux causes, deux traitements</h2>
+      <p>La condensation vient d’un air intérieur trop humide. L’infiltration vient d’une entrée d’eau (toiture, façade, sol).</p>
+
+      <h2>Signes de condensation</h2>
+      <ul>
+        <li>Buée sur les vitres</li>
+        <li>Taches en haut des murs</li>
+      </ul>
+
+      <h2>Signes d’infiltration</h2>
+      <ul>
+        <li>Humidité localisée et persistante</li>
+        <li>Salpêtre en pied de mur</li>
+      </ul>
+    `
+  },
+  'diagnostic-structurel-maison': {
+    slug: 'diagnostic-structurel-maison',
+    title: 'Diagnostic structurel : ce que regarde un expert sur place',
+    excerpt: 'Fissuromètre, laser, hygromètre… Un diagnostic sérieux repose sur des mesures. Découvrez ce que l’expert observe vraiment.',
+    date: '2025-09-18',
+    readTime: '9 min',
+    category: 'expertise',
+    author: 'Expert IPB',
+    metaDescription: 'Diagnostic structurel maison : méthodologie, outils et étapes.',
+    keywords: ['diagnostic structurel', 'expertise', 'fissuromètre', 'mesures'],
+    content: `
+      <h2>Une expertise ne se fait pas à l’œil nu</h2>
+      <p>Un expert mesure l’ouverture des fissures, le niveau des sols et l’humidité des murs pour établir un diagnostic fiable.</p>
+
+      <h2>Le livrable</h2>
+      <p>Un rapport clair avec conclusions, causes probables et solutions adaptées.</p>
+    `
+  },
+  'traitement-humidite-injection-resine': {
+    slug: 'traitement-humidite-injection-resine',
+    title: 'Injection de résine : comment fonctionne la barrière étanche ?',
+    excerpt: 'C’est la solution la plus fiable contre les remontées capillaires. Voici le principe, le délai de séchage et les garanties.',
+    date: '2025-10-14',
+    readTime: '7 min',
+    category: 'humidite',
+    author: 'Expert IPB',
+    metaDescription: 'Injection résine : principe, efficacité, délai de séchage et garanties.',
+    keywords: ['injection résine', 'barrière étanche', 'remontées capillaires', 'humidité'],
+    content: `
+      <h2>Le principe</h2>
+      <p>On injecte une résine hydrophobe qui se solidifie et bloque la remontée d’eau.</p>
+
+      <h2>Le délai de séchage</h2>
+      <p>La barrière est active en 48h, mais le mur met plusieurs mois à sécher.</p>
+    `
+  },
+  'revente-maison-fissuree': {
+    slug: 'revente-maison-fissuree',
+    title: 'Revente d’une maison fissurée : risques, décote et solutions',
+    excerpt: 'Une fissure peut faire perdre 20 à 30% de valeur. Avec un traitement garanti, la revente redevient possible.',
+    date: '2025-11-12',
+    readTime: '6 min',
+    category: 'conseils',
+    author: 'Expert IPB',
+    metaDescription: 'Revente maison fissurée : risques, décote, et solutions pour rassurer les acheteurs.',
+    keywords: ['revente maison fissurée', 'décote', 'garantie décennale', 'agrafage'],
+    content: `
+      <h2>La décote est réelle</h2>
+      <p>Les acheteurs appliquent une décote quand une fissure est visible.</p>
+
+      <h2>La solution</h2>
+      <p>Un traitement structurel garanti + attestation décennale rassurent les acheteurs.</p>
+    `
+  },
+  'fissure-plafond-que-faire': {
+    slug: 'fissure-plafond-que-faire',
+    title: 'Fissures au plafond : faut‑il s’inquiéter ?',
+    excerpt: 'Toutes les fissures au plafond ne sont pas graves. Voici comment distinguer un simple retrait d’enduit d’un mouvement structurel.',
+    date: '2025-12-05',
+    readTime: '6 min',
+    category: 'fissures',
+    author: 'Expert IPB',
+    metaDescription: 'Fissures plafond : causes, gravité, et solutions adaptées.',
+    keywords: ['fissures plafond', 'fissures maison', 'diagnostic', 'structure'],
+    content: `
+      <h2>Fissure fine ou structurelle ?</h2>
+      <p>Une micro‑fissure horizontale est souvent liée au retrait de l’enduit. Une fissure large ou évolutive indique un mouvement.</p>
+    `
+  },
+  'humidite-cave-sous-sol': {
+    slug: 'humidite-cave-sous-sol',
+    title: 'Humidité en cave : diagnostic fiable et solutions durables',
+    excerpt: 'Cuvelage, injection, ventilation… Chaque cave a son traitement. On vous guide vers la bonne stratégie.',
+    date: '2026-01-10',
+    readTime: '8 min',
+    category: 'humidite',
+    author: 'Expert IPB',
+    metaDescription: 'Humidité en cave : diagnostic et solutions durables (cuvelage, injection, ventilation).',
+    keywords: ['humidité cave', 'cuvelage', 'injection résine', 'ventilation'],
+    content: `
+      <h2>Identifier l’origine</h2>
+      <p>En cave, l’humidité peut venir du sol, des murs enterrés ou d’un défaut de ventilation.</p>
+
+      <h2>Solutions efficaces</h2>
+      <ul>
+        <li>Cuvelage époxy pour les murs enterrés</li>
+        <li>Injection résine si remontées capillaires</li>
+        <li>VMI/VMC pour évacuer l’humidité</li>
+      </ul>
     `
   }
 };
