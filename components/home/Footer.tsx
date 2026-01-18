@@ -27,7 +27,7 @@ export function Footer() {
 
       {/* FOOTER */}
       <footer className="bg-slate-950 py-16 border-t border-slate-900 text-slate-400 text-sm">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-5 gap-12 mb-12">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-6 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
             <span className="text-3xl font-black text-white tracking-tighter block mb-6">IPB<span className="text-orange-600">.</span></span>
             <p className="max-w-sm text-slate-500 leading-relaxed mb-6">
@@ -38,6 +38,16 @@ export function Footer() {
                 <div className="w-10 h-10 bg-slate-900 rounded-lg flex items-center justify-center text-slate-500 hover:bg-orange-600 hover:text-white transition cursor-pointer">In</div>
                 <div className="w-10 h-10 bg-slate-900 rounded-lg flex items-center justify-center text-slate-500 hover:bg-orange-600 hover:text-white transition cursor-pointer">Fb</div>
             </div>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-6 text-base">Problèmes fréquents</h4>
+            <ul className="space-y-4">
+              <li><Link href="/problemes/fissure-verticale-mur-porteur" className="hover:text-orange-500 transition">Fissure mur porteur</Link></li>
+              <li><Link href="/problemes/fissure-escalier-que-faire" className="hover:text-orange-500 transition">Fissure en escalier</Link></li>
+              <li><Link href="/problemes/portes-qui-coincent-fissures" className="hover:text-orange-500 transition">Portes qui coincent</Link></li>
+              <li><Link href="/problemes/humidite-murs-peinture-qui-cloque" className="hover:text-orange-500 transition">Peinture qui cloque</Link></li>
+              <li><Link href="/problemes/moisissures-sante" className="hover:text-orange-500 transition">Moisissures & santé</Link></li>
+            </ul>
           </div>
           <div>
             <h4 className="text-white font-bold mb-6 text-base">Expertises</h4>

@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { villeSlugs } from '@/app/data/villes';
+import { problemSlugs } from '@/app/data/problems';
 
 // Articles de blog
 const blogSlugs = [
@@ -103,6 +104,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7, // Haute priorité pour le contenu SEO
   }));
 
-  return [...staticPages, ...villesPages, ...servicePages, ...blogPages];
+  const problemPages: MetadataRoute.Sitemap = problemSlugs.map((slug) => ({
+    url: `${baseUrl}/problemes/${slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.65,
+  }));
+
+  return [...staticPages, ...villesPages, ...servicePages, ...blogPages, ...problemPages];
 }
 

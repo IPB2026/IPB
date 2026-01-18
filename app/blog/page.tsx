@@ -394,6 +394,32 @@ export default function BlogPage() {
           </div>
         </div>
 
+        <div className="mt-14 bg-white border border-slate-200 rounded-3xl p-8">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-6">
+            Problèmes fréquents (guides rapides)
+          </h2>
+          <div className="grid md:grid-cols-2 gap-4 text-slate-700">
+            <Link href="/problemes/fissure-verticale-mur-porteur" className="hover:text-orange-600 transition">
+              Fissure verticale sur mur porteur
+            </Link>
+            <Link href="/problemes/fissure-escalier-que-faire" className="hover:text-orange-600 transition">
+              Fissure en escalier
+            </Link>
+            <Link href="/problemes/portes-qui-coincent-fissures" className="hover:text-orange-600 transition">
+              Portes qui coincent + fissures
+            </Link>
+            <Link href="/problemes/humidite-murs-peinture-qui-cloque" className="hover:text-orange-600 transition">
+              Peinture qui cloque
+            </Link>
+            <Link href="/problemes/condensation-ou-remontees-capillaires" className="hover:text-orange-600 transition">
+              Condensation ou remontées capillaires
+            </Link>
+            <Link href="/problemes/moisissures-sante" className="hover:text-orange-600 transition">
+              Moisissures et santé
+            </Link>
+          </div>
+        </div>
+
         <InternalLinks variant="blog" />
       </div>
 
