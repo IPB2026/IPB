@@ -10,6 +10,40 @@ import Script from 'next/script';
 export const metadata = {
   title: 'Expert Fissure Toulouse - Expertise Fissures & Mouvements Structurels | IPB',
   description: 'Expert en traitement des fissures structurelles en Haute-Garonne. Solutions définitives par agrafage et harpage sur sols argileux. Alternative économique aux micropieux. Garantie décennale.',
+  keywords: [
+    'expert fissures toulouse',
+    'fissures maison',
+    'tassement différentiel',
+    'agrafage',
+    'micropieux',
+    'fondations',
+    'haute-garonne',
+  ],
+  alternates: {
+    canonical: 'https://www.ipb-expertise.fr/expertise/fissures',
+  },
+  openGraph: {
+    title: 'Expert Fissure Toulouse | IPB',
+    description: 'Expert en fissures structurelles. Agrafage et solutions durables avec garantie décennale.',
+    url: 'https://www.ipb-expertise.fr/expertise/fissures',
+    siteName: 'IPB - Institut de Pathologie du Bâtiment',
+    locale: 'fr_FR',
+    type: 'website',
+    images: [
+      {
+        url: '/images/IPB_Logo_HD.png',
+        width: 1200,
+        height: 630,
+        alt: 'Expertise fissures IPB',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Expert Fissure Toulouse | IPB',
+    description: 'Expert en fissures structurelles. Agrafage et solutions durables.',
+    images: ['/images/IPB_Logo_HD.png'],
+  },
 };
 
 // Génération du JSON-LD pour le SEO (FAQPage Schema.org)
