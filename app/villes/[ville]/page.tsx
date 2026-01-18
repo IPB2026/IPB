@@ -278,6 +278,76 @@ const villesData: Record<string, {
     departement: 'Haute-Garonne (31)',
     distance: '15 km',
     description: 'Frouzins, commune au sud-ouest de Toulouse'
+  },
+  'seilh': {
+    nom: 'Seilh',
+    codePostal: '31840',
+    departement: 'Haute-Garonne (31)',
+    distance: '11 km',
+    description: 'Seilh, commune au nord-ouest de Toulouse'
+  },
+  'mondonville': {
+    nom: 'Mondonville',
+    codePostal: '31700',
+    departement: 'Haute-Garonne (31)',
+    distance: '16 km',
+    description: 'Mondonville, commune proche de Blagnac'
+  },
+  'lherm': {
+    nom: 'Lherm',
+    codePostal: '31600',
+    departement: 'Haute-Garonne (31)',
+    distance: '24 km',
+    description: 'Lherm, commune au sud de Toulouse'
+  },
+  'saint-lys': {
+    nom: 'Saint-Lys',
+    codePostal: '31470',
+    departement: 'Haute-Garonne (31)',
+    distance: '25 km',
+    description: 'Saint-Lys, commune de l’ouest toulousain'
+  },
+  'labege-village': {
+    nom: 'Labège',
+    codePostal: '31670',
+    departement: 'Haute-Garonne (31)',
+    distance: '13 km',
+    description: 'Labège, commune au sud-est de Toulouse'
+  },
+  'mons': {
+    nom: 'Mons',
+    codePostal: '31280',
+    departement: 'Haute-Garonne (31)',
+    distance: '12 km',
+    description: 'Mons, commune résidentielle à l’est de Toulouse'
+  },
+  'saint-jeory': {
+    nom: 'Saint-Jory',
+    codePostal: '31790',
+    departement: 'Haute-Garonne (31)',
+    distance: '20 km',
+    description: 'Saint-Jory, commune au nord de Toulouse'
+  },
+  'gragnague': {
+    nom: 'Gragnague',
+    codePostal: '31380',
+    departement: 'Haute-Garonne (31)',
+    distance: '18 km',
+    description: 'Gragnague, commune au nord-est de Toulouse'
+  },
+  'baziège': {
+    nom: 'Baziège',
+    codePostal: '31450',
+    departement: 'Haute-Garonne (31)',
+    distance: '22 km',
+    description: 'Baziège, commune au sud-est de Toulouse'
+  },
+  'villate': {
+    nom: 'Villate',
+    codePostal: '31860',
+    departement: 'Haute-Garonne (31)',
+    distance: '17 km',
+    description: 'Villate, commune au sud de Toulouse'
   }
 };
 
@@ -482,6 +552,33 @@ export default async function VillePage({ params }: PageProps) {
                 Notre traitement par injection résine hydrophobe crée une barrière étanche définitive, garantie 30 ans, pour stopper définitivement l'humidité.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Liens internes contextuels */}
+      <section className="py-12 bg-slate-50 border-t border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-6">
+            Services recommandés à {villeData.nom}
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <Link href="/expertise/fissures" className="bg-white border border-slate-200 rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition">
+              <h3 className="font-bold text-slate-900 mb-1">Fissures & structure</h3>
+              <p className="text-sm text-slate-600">Agrafage, stabilisation, diagnostic expert.</p>
+            </Link>
+            <Link href="/expertise/humidite" className="bg-white border border-slate-200 rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition">
+              <h3 className="font-bold text-slate-900 mb-1">Humidité & infiltrations</h3>
+              <p className="text-sm text-slate-600">Injection résine durable, cuvelage.</p>
+            </Link>
+            <Link href="/diagnostic" className="bg-white border border-slate-200 rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition">
+              <h3 className="font-bold text-slate-900 mb-1">Diagnostic gratuit</h3>
+              <p className="text-sm text-slate-600">Analyse rapide en 2 minutes.</p>
+            </Link>
+            <Link href="/contact" className="bg-white border border-slate-200 rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition">
+              <h3 className="font-bold text-slate-900 mb-1">Contact IPB</h3>
+              <p className="text-sm text-slate-600">Intervention locale rapide.</p>
+            </Link>
           </div>
         </div>
       </section>

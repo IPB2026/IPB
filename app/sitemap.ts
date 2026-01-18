@@ -39,6 +39,16 @@ const villes = [
   'pins-justaret',
   'roques',
   'frouzins',
+  'seilh',
+  'mondonville',
+  'lherm',
+  'saint-lys',
+  'labege-village',
+  'mons',
+  'saint-jeory',
+  'gragnague',
+  'baziège',
+  'villate',
 ];
 
 // Articles de blog

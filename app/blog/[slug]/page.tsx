@@ -1044,6 +1044,25 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
               dangerouslySetInnerHTML={{ __html: enrichedContent }}
             />
 
+            <div className="mt-8 bg-slate-50 border border-slate-200 rounded-2xl p-6">
+              <h3 className="text-xl font-extrabold text-slate-900 mb-4">À lire aussi</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link href="/expertise/fissures" className="bg-white border border-slate-200 rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition">
+                  <h4 className="font-bold text-slate-900 mb-1">Expertise fissures</h4>
+                  <p className="text-sm text-slate-600">Agrafage et stabilisation des fondations.</p>
+                </Link>
+                <Link href="/expertise/humidite" className="bg-white border border-slate-200 rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition">
+                  <h4 className="font-bold text-slate-900 mb-1">Traitement humidité</h4>
+                  <p className="text-sm text-slate-600">Injection résine et cuvelage durable.</p>
+                </Link>
+              </div>
+              <div className="mt-4">
+                <Link href="/diagnostic" className="text-orange-600 font-bold hover:text-orange-700">
+                  Lancer un diagnostic gratuit →
+                </Link>
+              </div>
+            </div>
+
             {/* CTA */}
             <div className="mt-12 bg-slate-900 rounded-2xl p-8 text-center text-white relative overflow-hidden">
               <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-500 via-slate-900 to-slate-900"></div>
