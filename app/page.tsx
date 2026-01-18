@@ -8,6 +8,7 @@ import { Testimonials } from '@/components/home/Testimonials';
 import { FAQ } from '@/components/home/FAQ';
 import { ContactSection } from '@/components/home/ContactSection';
 import { Footer } from '@/components/home/Footer';
+import { InternalLinks } from '@/components/seo/InternalLinks';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -55,6 +56,7 @@ export default function HomePage() {
       <Testimonials />
       <FAQ />
       <ContactSection />
+      <InternalLinks variant="default" />
       <Footer />
     </div>
   );

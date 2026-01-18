@@ -7,6 +7,7 @@ import { ArrowRight, Calendar, Clock, Search } from 'lucide-react';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
+import { InternalLinks } from '@/components/seo/InternalLinks';
 
 // Types pour les articles
 interface BlogPost {
@@ -431,6 +432,8 @@ export default function BlogPage() {
             </Link>
           </div>
         </div>
+
+        <InternalLinks variant="blog" />
       </div>
 
       <Footer />

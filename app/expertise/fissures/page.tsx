@@ -2,6 +2,7 @@ import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
 import { FaqSection } from '@/components/ui/FaqSection';
+import { InternalLinks } from '@/components/seo/InternalLinks';
 import { fissureFaq } from '@/app/data/faqs';
 import Link from 'next/link';
 import { Activity, AlertTriangle, CheckCircle, ArrowRight, Shield, FileText, Wrench, TrendingDown } from 'lucide-react';
@@ -333,6 +334,8 @@ export default function FissuresPage() {
           </div>
         </div>
       </section>
+
+      <InternalLinks variant="fissures" />
 
       <Footer />
     </div>

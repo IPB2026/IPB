@@ -2,6 +2,7 @@ import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
 import { FaqSection } from '@/components/ui/FaqSection';
+import { InternalLinks } from '@/components/seo/InternalLinks';
 import { humidityFaq } from '@/app/data/faqs';
 import Link from 'next/link';
 import { Droplets, AlertTriangle, CheckCircle, ArrowRight, Shield, Home, Wind, Beaker, FileText } from 'lucide-react';
@@ -353,6 +354,8 @@ export default function HumiditePage() {
           </div>
         </div>
       </section>
+
+      <InternalLinks variant="humidite" />
 
       <Footer />
     </div>

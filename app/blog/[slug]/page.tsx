@@ -7,6 +7,7 @@ import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Breadcrumbs } from '@/components/blog/Breadcrumbs';
 import { TableOfContents } from '@/components/blog/TableOfContents';
+import { InternalLinks } from '@/components/seo/InternalLinks';
 import {
   extractTocFromContent,
   addIdsToHeadings,
@@ -1060,6 +1061,8 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
               </div>
             </div>
           </div>
+
+          <InternalLinks variant="blog" />
 
           {/* Sommaire (sidebar) */}
           {tocItems.length > 0 && (

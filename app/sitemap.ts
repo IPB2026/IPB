@@ -17,6 +17,18 @@ const villes = [
   'fonsorbes',
   'portet-sur-garonne',
   'pibrac',
+  'saint-jean',
+  'fenouillet',
+  'launaguet',
+  'aucamville',
+  'castelginest',
+  'labege',
+  'escalquens',
+  'quint-fonsegrives',
+  'villeneuve-tolosane',
+  'seysses',
+  'leguevin',
+  'cornebarrieu',
 ];
 
 // Articles de blog

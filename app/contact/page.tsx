@@ -9,6 +9,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { MapPin, Phone, Mail, Send, CheckCircle } from 'lucide-react';
 import { submitContactForm } from '@/app/actions/contact';
+import { InternalLinks } from '@/components/seo/InternalLinks';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -270,6 +271,10 @@ export default function ContactPage() {
           </div>
         </div>
       </main>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <InternalLinks variant="contact" />
+      </div>
 
       <Footer />
     </div>

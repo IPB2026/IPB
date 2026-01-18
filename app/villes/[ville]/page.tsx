@@ -10,6 +10,7 @@ import { FAQ } from '@/components/home/FAQ';
 import { ContactSection } from '@/components/home/ContactSection';
 import { Footer } from '@/components/home/Footer';
 import Link from 'next/link';
+import { InternalLinks } from '@/components/seo/InternalLinks';
 
 // Liste des villes avec leurs informations SEO
 const villesData: Record<string, {
@@ -123,6 +124,90 @@ const villesData: Record<string, {
     departement: 'Haute-Garonne (31)',
     distance: '15 km',
     description: 'Pibrac, charmante commune de l\'ouest toulousain'
+  },
+  'saint-jean': {
+    nom: 'Saint-Jean',
+    codePostal: '31240',
+    departement: 'Haute-Garonne (31)',
+    distance: '12 km',
+    description: 'Saint-Jean, commune résidentielle proche de Toulouse'
+  },
+  'fenouillet': {
+    nom: 'Fenouillet',
+    codePostal: '31150',
+    departement: 'Haute-Garonne (31)',
+    distance: '12 km',
+    description: 'Fenouillet, ville de la couronne nord toulousaine'
+  },
+  'launaguet': {
+    nom: 'Launaguet',
+    codePostal: '31140',
+    departement: 'Haute-Garonne (31)',
+    distance: '10 km',
+    description: 'Launaguet, commune au nord de Toulouse'
+  },
+  'aucamville': {
+    nom: 'Aucamville',
+    codePostal: '31140',
+    departement: 'Haute-Garonne (31)',
+    distance: '10 km',
+    description: 'Aucamville, ville résidentielle du nord toulousain'
+  },
+  'castelginest': {
+    nom: 'Castelginest',
+    codePostal: '31780',
+    departement: 'Haute-Garonne (31)',
+    distance: '12 km',
+    description: 'Castelginest, commune au nord de Toulouse'
+  },
+  'labege': {
+    nom: 'Labège',
+    codePostal: '31670',
+    departement: 'Haute-Garonne (31)',
+    distance: '13 km',
+    description: 'Labège, pôle économique au sud-est de Toulouse'
+  },
+  'escalquens': {
+    nom: 'Escalquens',
+    codePostal: '31750',
+    departement: 'Haute-Garonne (31)',
+    distance: '16 km',
+    description: 'Escalquens, commune au sud-est de Toulouse'
+  },
+  'quint-fonsegrives': {
+    nom: 'Quint-Fonsegrives',
+    codePostal: '31130',
+    departement: 'Haute-Garonne (31)',
+    distance: '10 km',
+    description: 'Quint-Fonsegrives, ville résidentielle de l\'est toulousain'
+  },
+  'villeneuve-tolosane': {
+    nom: 'Villeneuve-Tolosane',
+    codePostal: '31270',
+    departement: 'Haute-Garonne (31)',
+    distance: '15 km',
+    description: 'Villeneuve-Tolosane, commune au sud-ouest de Toulouse'
+  },
+  'seysses': {
+    nom: 'Seysses',
+    codePostal: '31600',
+    departement: 'Haute-Garonne (31)',
+    distance: '20 km',
+    description: 'Seysses, commune au sud de Toulouse'
+  },
+  'leguevin': {
+    nom: 'Léguevin',
+    codePostal: '31490',
+    departement: 'Haute-Garonne (31)',
+    distance: '20 km',
+    description: 'Léguevin, ville de l\'ouest toulousain'
+  },
+  'cornebarrieu': {
+    nom: 'Cornebarrieu',
+    codePostal: '31700',
+    departement: 'Haute-Garonne (31)',
+    distance: '12 km',
+    description: 'Cornebarrieu, commune proche de Blagnac'
   }
 };
 
@@ -337,6 +422,9 @@ export default async function VillePage({ params }: PageProps) {
       <Testimonials />
       <FAQ />
       <ContactSection />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <InternalLinks variant="ville" />
+      </div>
       <Footer />
     </div>
   );
