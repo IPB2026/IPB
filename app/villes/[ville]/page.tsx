@@ -208,6 +208,76 @@ const villesData: Record<string, {
     departement: 'Haute-Garonne (31)',
     distance: '12 km',
     description: 'Cornebarrieu, commune proche de Blagnac'
+  },
+  'rouffiac-tolosan': {
+    nom: 'Rouffiac-Tolosan',
+    codePostal: '31180',
+    departement: 'Haute-Garonne (31)',
+    distance: '14 km',
+    description: 'Rouffiac-Tolosan, commune résidentielle au nord-est de Toulouse'
+  },
+  'saint-alban': {
+    nom: 'Saint-Alban',
+    codePostal: '31140',
+    departement: 'Haute-Garonne (31)',
+    distance: '12 km',
+    description: 'Saint-Alban, ville de la couronne nord toulousaine'
+  },
+  'bruguières': {
+    nom: 'Bruguières',
+    codePostal: '31150',
+    departement: 'Haute-Garonne (31)',
+    distance: '16 km',
+    description: 'Bruguières, commune au nord de Toulouse'
+  },
+  'pechbonnieu': {
+    nom: 'Pechbonnieu',
+    codePostal: '31140',
+    departement: 'Haute-Garonne (31)',
+    distance: '16 km',
+    description: 'Pechbonnieu, commune au nord-est de Toulouse'
+  },
+  'castelmaurou': {
+    nom: 'Castelmaurou',
+    codePostal: '31180',
+    departement: 'Haute-Garonne (31)',
+    distance: '14 km',
+    description: 'Castelmaurou, commune au nord-est de Toulouse'
+  },
+  'montgiscard': {
+    nom: 'Montgiscard',
+    codePostal: '31450',
+    departement: 'Haute-Garonne (31)',
+    distance: '22 km',
+    description: 'Montgiscard, commune au sud-est de Toulouse'
+  },
+  'eaunes': {
+    nom: 'Eaunes',
+    codePostal: '31600',
+    departement: 'Haute-Garonne (31)',
+    distance: '22 km',
+    description: 'Eaunes, commune au sud de Toulouse'
+  },
+  'pins-justaret': {
+    nom: 'Pins-Justaret',
+    codePostal: '31860',
+    departement: 'Haute-Garonne (31)',
+    distance: '18 km',
+    description: 'Pins-Justaret, commune au sud de Toulouse'
+  },
+  'roques': {
+    nom: 'Roques',
+    codePostal: '31120',
+    departement: 'Haute-Garonne (31)',
+    distance: '15 km',
+    description: 'Roques, commune au sud-ouest de Toulouse'
+  },
+  'frouzins': {
+    nom: 'Frouzins',
+    codePostal: '31270',
+    departement: 'Haute-Garonne (31)',
+    distance: '15 km',
+    description: 'Frouzins, commune au sud-ouest de Toulouse'
   }
 };
 

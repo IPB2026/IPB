@@ -27,7 +27,7 @@ export function Footer() {
 
       {/* FOOTER */}
       <footer className="bg-slate-950 py-16 border-t border-slate-900 text-slate-400 text-sm">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-5 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
             <span className="text-3xl font-black text-white tracking-tighter block mb-6">IPB<span className="text-orange-600">.</span></span>
             <p className="max-w-sm text-slate-500 leading-relaxed mb-6">
@@ -42,10 +42,36 @@ export function Footer() {
           <div>
             <h4 className="text-white font-bold mb-6 text-base">Expertises</h4>
             <ul className="space-y-4">
-              <li><a href="#" className="hover:text-orange-500 transition flex items-center gap-2"><span className="w-1 h-1 bg-orange-500 rounded-full"></span> Traitement Fissures</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition flex items-center gap-2"><span className="w-1 h-1 bg-orange-500 rounded-full"></span> Injection Résine</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition flex items-center gap-2"><span className="w-1 h-1 bg-orange-500 rounded-full"></span> Cuvelage</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition flex items-center gap-2"><span className="w-1 h-1 bg-orange-500 rounded-full"></span> Ravalement Armé</a></li>
+              <li>
+                <Link href="/expertise/fissures" className="hover:text-orange-500 transition flex items-center gap-2">
+                  <span className="w-1 h-1 bg-orange-500 rounded-full"></span> Fissures & Structure
+                </Link>
+              </li>
+              <li>
+                <Link href="/expertise/humidite" className="hover:text-orange-500 transition flex items-center gap-2">
+                  <span className="w-1 h-1 bg-orange-500 rounded-full"></span> Humidité & Infiltrations
+                </Link>
+              </li>
+              <li>
+                <Link href="/diagnostic" className="hover:text-orange-500 transition flex items-center gap-2">
+                  <span className="w-1 h-1 bg-orange-500 rounded-full"></span> Diagnostic gratuit
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-orange-500 transition flex items-center gap-2">
+                  <span className="w-1 h-1 bg-orange-500 rounded-full"></span> Parler à un expert
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-6 text-base">Zones d’intervention</h4>
+            <ul className="space-y-4">
+              <li><Link href="/villes/colomiers" className="hover:text-orange-500 transition">Colomiers</Link></li>
+              <li><Link href="/villes/blagnac" className="hover:text-orange-500 transition">Blagnac</Link></li>
+              <li><Link href="/villes/balma" className="hover:text-orange-500 transition">Balma</Link></li>
+              <li><Link href="/villes/ramonville-saint-agne" className="hover:text-orange-500 transition">Ramonville</Link></li>
+              <li><Link href="/villes/tournefeuille" className="hover:text-orange-500 transition">Tournefeuille</Link></li>
             </ul>
           </div>
           <div>

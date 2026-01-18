@@ -29,6 +29,16 @@ const villes = [
   'seysses',
   'leguevin',
   'cornebarrieu',
+  'rouffiac-tolosan',
+  'saint-alban',
+  'bruguières',
+  'pechbonnieu',
+  'castelmaurou',
+  'montgiscard',
+  'eaunes',
+  'pins-justaret',
+  'roques',
+  'frouzins',
 ];
 
 // Articles de blog
