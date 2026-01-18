@@ -11,8 +11,9 @@ import { ContactSection } from '@/components/home/ContactSection';
 import { Footer } from '@/components/home/Footer';
 import Link from 'next/link';
 import { InternalLinks } from '@/components/seo/InternalLinks';
+import { villesData as villesDataSource, villeSlugs } from '@/app/data/villes';
 
-// Liste des villes avec leurs informations SEO
+/* Liste des villes avec leurs informations SEO
 const villesData: Record<string, {
   nom: string;
   codePostal: string;
@@ -350,6 +351,9 @@ const villesData: Record<string, {
     description: 'Villate, commune au sud de Toulouse'
   }
 };
+*/
+
+const villesData = villesDataSource;
 
 interface PageProps {
   params: Promise<{ ville: string }>;
@@ -599,7 +603,7 @@ export default async function VillePage({ params }: PageProps) {
 
 // Génération statique des pages pour toutes les villes
 export async function generateStaticParams() {
-  return Object.keys(villesData).map((ville) => ({
+  return villeSlugs.map((ville) => ({
     ville: ville,
   }));
 }
