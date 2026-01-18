@@ -307,7 +307,9 @@ export default function FissuresPage() {
       <FaqSection 
         title="Questions fréquentes sur les fissures" 
         data={fissureFaq} 
-        theme="orange" 
+        theme="orange"
+        linksVariant="fissures"
+        linksTitle="Aller plus loin"
       />
 
       {/* CTA Final */}

@@ -7,14 +7,17 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { FaqItem } from "@/app/data/faqs";
+import { InternalLinks } from "@/components/seo/InternalLinks";
 
 interface FaqSectionProps {
   title: string;
   data: FaqItem[];
   theme: 'orange' | 'blue';
+  linksVariant?: 'fissures' | 'humidite' | 'blog' | 'diagnostic' | 'contact' | 'ville' | 'default';
+  linksTitle?: string;
 }
 
-export function FaqSection({ title, data, theme }: FaqSectionProps) {
+export function FaqSection({ title, data, theme, linksVariant, linksTitle }: FaqSectionProps) {
   const themeClasses = {
     orange: {
       border: 'border-orange-200',
@@ -60,6 +63,12 @@ export function FaqSection({ title, data, theme }: FaqSectionProps) {
             </AccordionItem>
           ))}
         </Accordion>
+
+        {linksVariant && (
+          <div className="mt-10">
+            <InternalLinks variant={linksVariant} title={linksTitle || 'Aller plus loin'} />
+          </div>
+        )}
       </div>
     </section>
   );

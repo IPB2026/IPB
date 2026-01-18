@@ -1,55 +1,5 @@
 import { MetadataRoute } from 'next';
-
-// Liste des villes pour le sitemap (pages SEO locales)
-const villes = [
-  'colomiers',
-  'muret',
-  'blagnac',
-  'balma',
-  'tournefeuille',
-  'ramonville-saint-agne',
-  'lunion',
-  'cugnaux',
-  'plaisance-du-touch',
-  'saint-oren-de-gameville',
-  'auzeville-tolosane',
-  'castanet-tolosan',
-  'fonsorbes',
-  'portet-sur-garonne',
-  'pibrac',
-  'saint-jean',
-  'fenouillet',
-  'launaguet',
-  'aucamville',
-  'castelginest',
-  'labege',
-  'escalquens',
-  'quint-fonsegrives',
-  'villeneuve-tolosane',
-  'seysses',
-  'leguevin',
-  'cornebarrieu',
-  'rouffiac-tolosan',
-  'saint-alban',
-  'bruguières',
-  'pechbonnieu',
-  'castelmaurou',
-  'montgiscard',
-  'eaunes',
-  'pins-justaret',
-  'roques',
-  'frouzins',
-  'seilh',
-  'mondonville',
-  'lherm',
-  'saint-lys',
-  'labege-village',
-  'mons',
-  'saint-jeory',
-  'gragnague',
-  'baziège',
-  'villate',
-];
+import { villeSlugs } from '@/app/data/villes';
 
 // Articles de blog
 const blogSlugs = [
@@ -128,12 +78,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // Pages villes (SEO local)
-  const villesPages: MetadataRoute.Sitemap = villes.map((ville) => ({
+  const villesPages: MetadataRoute.Sitemap = villeSlugs.map((ville) => ({
     url: `${baseUrl}/villes/${ville}`,
     lastModified: currentDate,
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }));
+
+  const serviceSlugs = ['agrafage-fissures', 'traitement-humidite'];
+  const servicePages: MetadataRoute.Sitemap = serviceSlugs.flatMap((service) =>
+    villeSlugs.map((ville) => ({
+      url: `${baseUrl}/${service}/${ville}`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.55,
+    }))
+  );
 
   // Articles de blog
   const blogPages: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
@@ -143,6 +103,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7, // Haute priorité pour le contenu SEO
   }));
 
-  return [...staticPages, ...villesPages, ...blogPages];
+  return [...staticPages, ...villesPages, ...servicePages, ...blogPages];
 }
 

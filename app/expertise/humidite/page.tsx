@@ -327,7 +327,9 @@ export default function HumiditePage() {
       <FaqSection 
         title="Questions fréquentes sur l'humidité" 
         data={humidityFaq} 
-        theme="blue" 
+        theme="blue"
+        linksVariant="humidite"
+        linksTitle="Aller plus loin"
       />
 
       {/* CTA Final */}
