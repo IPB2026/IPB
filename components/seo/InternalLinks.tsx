@@ -3,12 +3,13 @@ import Link from 'next/link';
 type LinkItem = {
   href: string;
   label: string;
-  description: string;
+  description?: string;
 };
 
 type InternalLinksProps = {
   variant?: 'default' | 'fissures' | 'humidite' | 'blog' | 'diagnostic' | 'contact' | 'ville';
   title?: string;
+  links?: LinkItem[];
 };
 
 const linkSets: Record<NonNullable<InternalLinksProps['variant']>, LinkItem[]> = {
@@ -56,8 +57,8 @@ const linkSets: Record<NonNullable<InternalLinksProps['variant']>, LinkItem[]> =
   ],
 };
 
-export function InternalLinks({ variant = 'default', title }: InternalLinksProps) {
-  const items = linkSets[variant] || linkSets.default;
+export function InternalLinks({ variant = 'default', title, links }: InternalLinksProps) {
+  const items = links && links.length > 0 ? links : linkSets[variant] || linkSets.default;
   const heading = title || 'Liens utiles';
 
   return (
@@ -73,7 +74,7 @@ export function InternalLinks({ variant = 'default', title }: InternalLinksProps
             className="bg-white border border-slate-200 rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition"
           >
             <h3 className="font-bold text-slate-900 mb-1">{item.label}</h3>
-            <p className="text-sm text-slate-600">{item.description}</p>
+            {item.description ? <p className="text-sm text-slate-600">{item.description}</p> : null}
           </Link>
         ))}
       </div>
