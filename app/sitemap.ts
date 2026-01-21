@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { villeSlugs } from '@/app/data/villes';
 import { problemSlugs } from '@/app/data/problems';
+import { quartierSlugs } from '@/app/data/quartiers';
 
 // Articles de blog
 const blogSlugs = [
@@ -111,6 +112,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.65,
   }));
 
-  return [...staticPages, ...villesPages, ...servicePages, ...blogPages, ...problemPages];
+  // Pages quartiers (SEO hyper-local Toulouse)
+  const quartierPages: MetadataRoute.Sitemap = quartierSlugs.map((quartier) => ({
+    url: `${baseUrl}/quartiers/${quartier}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.68,
+  }));
+
+  return [...staticPages, ...villesPages, ...servicePages, ...blogPages, ...problemPages, ...quartierPages];
 }
 

@@ -63,8 +63,55 @@ const generateFaqJsonLd = () => {
   };
 };
 
+// Génération du JSON-LD HowTo pour le processus d'agrafage
+const generateHowToJsonLd = () => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Comment traiter les fissures structurelles par agrafage",
+    "description": "Processus complet de traitement des fissures structurelles par la technique d'agrafage professionnel",
+    "estimatedCost": {
+      "@type": "MonetaryAmount",
+      "currency": "EUR",
+      "value": "8000-15000"
+    },
+    "totalTime": "P3D",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Diagnostic instrumenté",
+        "text": "Inspection complète avec fissuromètre, laser et caméra thermique pour identifier les causes et l'ampleur des fissures.",
+        "url": "https://www.ipb-expertise.fr/expertise/fissures#diagnostic"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Préparation du support",
+        "text": "Nettoyage et préparation des fissures. Réalisation des saignées tous les 40cm pour accueillir les agrafes.",
+        "url": "https://www.ipb-expertise.fr/expertise/fissures#preparation"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Pose des agrafes",
+        "text": "Installation des aciers torsadés haute résistance dans les saignées pour recréer une cohésion structurelle.",
+        "url": "https://www.ipb-expertise.fr/expertise/fissures#pose"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Scellement et finition",
+        "text": "Scellement au mortier technique et finition soignée pour un résultat esthétique invisible après peinture.",
+        "url": "https://www.ipb-expertise.fr/expertise/fissures#finition"
+      }
+    ]
+  };
+};
+
 export default function FissuresPage() {
   const faqJsonLd = generateFaqJsonLd();
+  const howToJsonLd = generateHowToJsonLd();
 
   return (
     <div className="font-sans text-slate-800 bg-slate-50 antialiased">
@@ -72,6 +119,11 @@ export default function FissuresPage() {
         id="faq-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <Script
+        id="howto-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
       />
       <TopBar />
       <Navbar />

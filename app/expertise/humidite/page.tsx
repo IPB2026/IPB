@@ -63,8 +63,55 @@ const generateFaqJsonLd = () => {
   };
 };
 
+// Génération du JSON-LD HowTo pour le processus d'injection
+const generateHowToJsonLd = () => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Comment traiter les remontées capillaires par injection",
+    "description": "Processus complet de traitement des remontées capillaires par injection de résine hydrophobe",
+    "estimatedCost": {
+      "@type": "MonetaryAmount",
+      "currency": "EUR",
+      "value": "2500-6000"
+    },
+    "totalTime": "P2D",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Diagnostic hygrométrique",
+        "text": "Mesure précise du taux d'humidité avec humidimètre et caméra thermique pour identifier la source et l'étendue des remontées capillaires.",
+        "url": "https://www.ipb-expertise.fr/expertise/humidite#diagnostic"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Forage des trous d'injection",
+        "text": "Perçage de trous tous les 10-15cm à hauteur de 10-15cm du sol, inclinés à 45° pour créer une barrière étanche continue.",
+        "url": "https://www.ipb-expertise.fr/expertise/humidite#forage"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Injection de résine hydrophobe",
+        "text": "Injection sous pression de résine aqueuse qui imprègne les capillaires du mur et crée une barrière étanche permanente.",
+        "url": "https://www.ipb-expertise.fr/expertise/humidite#injection"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Séchage et finition",
+        "text": "Le mur sèche progressivement (6-10 mois selon épaisseur). Rénovation des enduits après assainissement complet.",
+        "url": "https://www.ipb-expertise.fr/expertise/humidite#finition"
+      }
+    ]
+  };
+};
+
 export default function HumiditePage() {
   const faqJsonLd = generateFaqJsonLd();
+  const howToJsonLd = generateHowToJsonLd();
 
   return (
     <div className="font-sans text-slate-800 bg-slate-50 antialiased">
@@ -72,6 +119,11 @@ export default function HumiditePage() {
         id="faq-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <Script
+        id="howto-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
       />
       <TopBar />
       <Navbar />

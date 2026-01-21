@@ -75,13 +75,23 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="text-white font-bold mb-6 text-base">Zones d’intervention</h4>
-            <ul className="space-y-4">
+            <h4 className="text-white font-bold mb-6 text-base">Quartiers Toulouse</h4>
+            <ul className="space-y-3 text-sm">
+              <li><Link href="/quartiers/capitole" className="hover:text-orange-500 transition">Capitole</Link></li>
+              <li><Link href="/quartiers/saint-cyprien" className="hover:text-orange-500 transition">Saint-Cyprien</Link></li>
+              <li><Link href="/quartiers/compans-caffarelli" className="hover:text-orange-500 transition">Compans-Caffarelli</Link></li>
+              <li><Link href="/quartiers/minimes" className="hover:text-orange-500 transition">Minimes</Link></li>
+              <li><Link href="/quartiers/rangueil" className="hover:text-orange-500 transition">Rangueil</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-6 text-base">Villes 31</h4>
+            <ul className="space-y-3 text-sm">
               <li><Link href="/villes/colomiers" className="hover:text-orange-500 transition">Colomiers</Link></li>
               <li><Link href="/villes/blagnac" className="hover:text-orange-500 transition">Blagnac</Link></li>
               <li><Link href="/villes/balma" className="hover:text-orange-500 transition">Balma</Link></li>
-              <li><Link href="/villes/ramonville-saint-agne" className="hover:text-orange-500 transition">Ramonville</Link></li>
               <li><Link href="/villes/tournefeuille" className="hover:text-orange-500 transition">Tournefeuille</Link></li>
+              <li><Link href="/villes/muret" className="hover:text-orange-500 transition">Muret</Link></li>
             </ul>
           </div>
           <div>
