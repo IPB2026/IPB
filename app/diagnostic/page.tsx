@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { submitDiagnosticAppointment, submitDiagnosticCallback, submitDiagnosticLead } from '@/app/actions/diagnostic';
-import { InternalLinks } from '@/components/seo/InternalLinks';
 
 // Types
 type PathType = 'fissure' | 'humidite' | null;
@@ -845,8 +844,6 @@ export default function DiagnosticPage() {
             </div>
           )}
         </div>
-
-        <InternalLinks variant="diagnostic" />
 
         {/* Footer */}
         {!showResult && (
