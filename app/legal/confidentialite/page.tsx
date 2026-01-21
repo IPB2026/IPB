@@ -24,7 +24,7 @@ export default function ConfidentialitePage() {
             </div>
             <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3 md:mb-4">Politique de Confidentialité</h1>
             <p className="text-base md:text-lg text-slate-600">
-              MGRCP Symbole (enseigne commerciale : IPB) s'engage à protéger la confidentialité et la sécurité 
+              MGRCP31 (enseigne commerciale : IPB) s'engage à protéger la confidentialité et la sécurité 
               des données personnelles collectées dans le cadre de ses prestations.
             </p>
           </div>
@@ -34,9 +34,9 @@ export default function ConfidentialitePage() {
             <section>
               <h2 className="text-2xl font-bold text-slate-900 mb-4">1. Responsable du traitement</h2>
               <div className="space-y-2">
-                <p><strong>Raison sociale :</strong> MGRCP Symbole</p>
+                <p><strong>Raison sociale :</strong> MGRCP31</p>
                 <p><strong>Enseigne commerciale :</strong> IPB (Institut de Pathologie du Bâtiment)</p>
-                <p><strong>Siège social :</strong> 31c chemin de roquettes, 31600 Saubens, France</p>
+                <p><strong>Siège social :</strong> 266 Av. de Lardenne, 31100 Toulouse, France</p>
                 <p><strong>SIRET :</strong> 951 105 881 00019</p>
                 <p><strong>Email :</strong> <a href="mailto:contact@ipb-expertise.fr" className="text-orange-600 hover:text-orange-700 underline">contact@ipb-expertise.fr</a></p>
                 <p><strong>Téléphone :</strong> <a href="tel:0582953375" className="text-orange-600 hover:text-orange-700 underline">05 82 95 33 75</a></p>
@@ -108,7 +108,7 @@ export default function ConfidentialitePage() {
                 Vos données personnelles sont destinées à :
               </p>
               <ul className="list-disc pl-6 mt-4 space-y-2">
-                <li>MGRCP Symbole (IPB) - Personnel autorisé uniquement</li>
+                <li>MGRCP31 (IPB) - Personnel autorisé uniquement</li>
                 <li>Nos prestataires techniques (hébergement, maintenance) sous contrat de confidentialité</li>
                 <li>Les autorités compétentes en cas d'obligation légale</li>
               </ul>
@@ -166,7 +166,7 @@ export default function ConfidentialitePage() {
             <section>
               <h2 className="text-2xl font-bold text-slate-900 mb-4">10. Sécurité des données</h2>
               <p>
-                MGRCP Symbole met en œuvre toutes les mesures techniques et organisationnelles appropriées pour protéger vos données personnelles 
+                MGRCP31 met en œuvre toutes les mesures techniques et organisationnelles appropriées pour protéger vos données personnelles 
                 contre tout accès non autorisé, perte, destruction ou altération.
               </p>
             </section>

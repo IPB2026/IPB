@@ -12,7 +12,7 @@ export function JsonLd() {
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "31C Chemin de Roquettes",
-      "addressLocality": "Saubens",
+      "addressLocality": "Toulouse",
       "postalCode": "31600",
       "addressRegion": "Haute-Garonne",
       "addressCountry": "FR"

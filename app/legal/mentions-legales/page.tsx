@@ -34,9 +34,9 @@ export default function MentionsLegalesPage() {
             <section>
               <h2 className="text-2xl font-bold text-slate-900 mb-4">1. Éditeur du site</h2>
               <div className="space-y-2">
-                <p><strong>Raison sociale :</strong> MGRCP Symbole</p>
+                <p><strong>Raison sociale :</strong> MGRCP31</p>
                 <p><strong>Enseigne commerciale :</strong> IPB (Institut de Pathologie du Bâtiment)</p>
-                <p><strong>Siège social :</strong> 31c chemin de roquettes, 31600 Saubens, France</p>
+                <p><strong>Siège social :</strong> 266 Av. de Lardenne, 31100 Toulouse, France</p>
                 <p><strong>SIRET :</strong> 951 105 881 00019</p>
                 <p><strong>R.C.S. :</strong> Toulouse</p>
                 <p><strong>Forme juridique :</strong> Société à responsabilité limitée (SARL)</p>
@@ -46,7 +46,7 @@ export default function MentionsLegalesPage() {
             <section>
               <h2 className="text-2xl font-bold text-slate-900 mb-4">2. Directeur de publication</h2>
               <p>
-                Le directeur de la publication est le représentant légal de MGRCP Symbole.
+                Le directeur de la publication est le représentant légal de MGRCP31.
               </p>
             </section>
 
@@ -64,7 +64,7 @@ export default function MentionsLegalesPage() {
               <div className="space-y-2">
                 <p><strong>Email :</strong> <a href="mailto:contact@ipb-expertise.fr" className="text-orange-600 hover:text-orange-700 underline">contact@ipb-expertise.fr</a></p>
                 <p><strong>Téléphone :</strong> <a href="tel:0582953375" className="text-orange-600 hover:text-orange-700 underline">05 82 95 33 75</a></p>
-                <p><strong>Adresse postale :</strong> 31c chemin de roquettes, 31600 Saubens, France</p>
+                <p><strong>Adresse postale :</strong> 266 Av. de Lardenne, 31100 Toulouse, France</p>
               </div>
             </section>
 
@@ -105,7 +105,7 @@ export default function MentionsLegalesPage() {
                 mais peut toutefois contenir des inexactitudes, des omissions ou des lacunes.
               </p>
               <p className="mt-4">
-                MGRCP Symbole ne pourra être tenu responsable des dommages directs et indirects causés au matériel de l'utilisateur, 
+                MGRCP31 ne pourra être tenu responsable des dommages directs et indirects causés au matériel de l'utilisateur, 
                 lors de l'accès au site IPB, et résultant soit de l'utilisation d'un matériel ne répondant pas aux spécifications, 
                 soit de l'apparition d'un bug ou d'une incompatibilité.
               </p>

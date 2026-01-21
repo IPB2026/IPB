@@ -70,7 +70,7 @@ export function ContactSection() {
               Nous intervenons dans un <span className="text-orange-600">rayon de 50 km autour de Toulouse</span>
             </h2>
             <p className="text-slate-600 text-lg mb-8 leading-relaxed">
-              Basés à Saubens, nos experts se déplacent rapidement dans toute la région pour diagnostiquer et traiter vos problèmes de fissures et d'humidité.
+              Basés à Toulouse, nos experts se déplacent rapidement dans toute la région pour diagnostiquer et traiter vos problèmes de fissures et d'humidité.
             </p>
 
             {/* Coordonnées */}

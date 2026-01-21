@@ -88,11 +88,11 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-bold text-sm md:text-base text-slate-900 mb-1">Adresse</h3>
                       <p className="text-sm md:text-base text-slate-600">
-                        31c chemin de roquettes<br />
-                        31600 Saubens, France
+                        266 Av. de Lardenne<br />
+                        31100 Toulouse, France
                       </p>
                       <a
-                        href="https://www.google.com/maps/search/?api=1&query=31c+chemin+de+roquettes+31600+Saubens"
+                        href="https://www.google.com/maps/search/?api=1&query=31c+chemin+de+roquettes+31100+Toulouse"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-orange-600 hover:text-orange-700 font-medium text-sm mt-2 inline-block"
@@ -143,7 +143,7 @@ export default function ContactPage() {
                 <h3 className="font-bold text-base md:text-lg text-slate-900 mb-3 md:mb-4">Nous trouver</h3>
                 <div className="rounded-xl overflow-hidden border border-slate-200 shadow-lg">
                   <iframe
-                    src="https://www.google.com/maps?q=31c+chemin+de+roquettes+31600+Saubens&output=embed"
+                    src="https://www.google.com/maps?q=31c+chemin+de+roquettes+31100+Toulouse&output=embed"
                     width="100%"
                     height="250"
                     className="w-full md:h-[300px]"
@@ -155,7 +155,7 @@ export default function ContactPage() {
                 </div>
                 <p className="text-sm text-slate-500 mt-2 text-center">
                   <a
-                    href="https://www.google.com/maps/search/?api=1&query=31c+chemin+de+roquettes+31600+Saubens"
+                    href="https://www.google.com/maps/search/?api=1&query=31c+chemin+de+roquettes+31100+Toulouse"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-orange-600 hover:text-orange-700"

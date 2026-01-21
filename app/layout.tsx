@@ -78,16 +78,16 @@ const localBusinessSchema = {
   "description": "Expert en traitement des fissures et de l'humidité en Haute-Garonne. Solutions techniques (agrafage, injection résine) avec garantie décennale.",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "31C Chemin de Roquettes",
-    "addressLocality": "Saubens",
-    "postalCode": "31600",
+    "streetAddress": "266 Av. de Lardenne",
+    "addressLocality": "Toulouse",
+    "postalCode": "31100",
     "addressRegion": "Haute-Garonne",
     "addressCountry": "FR"
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": "43.5",
-    "longitude": "1.3"
+    "latitude": "43.6047",
+    "longitude": "1.4442"
   },
   "url": "https://www.ipb-expertise.fr",
   "telephone": "+33582953375",

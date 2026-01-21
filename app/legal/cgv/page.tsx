@@ -24,7 +24,7 @@ export default function CGVPage() {
             </div>
             <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3 md:mb-4">Conditions Générales de Vente</h1>
             <p className="text-base md:text-lg text-slate-600">
-              Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre MGRCP Symbole 
+              Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre MGRCP31 
               (enseigne commerciale : IPB) et ses clients pour toutes les prestations d'expertise et de travaux.
             </p>
           </div>
@@ -34,9 +34,9 @@ export default function CGVPage() {
             <section>
               <h2 className="text-2xl font-bold text-slate-900 mb-4">1. Informations légales</h2>
               <div className="space-y-2">
-                <p><strong>Raison sociale :</strong> MGRCP Symbole</p>
+                <p><strong>Raison sociale :</strong> MGRCP31</p>
                 <p><strong>Enseigne commerciale :</strong> IPB (Institut de Pathologie du Bâtiment)</p>
-                <p><strong>Siège social :</strong> 31c chemin de roquettes, 31600 Saubens, France</p>
+                <p><strong>Siège social :</strong> 266 Av. de Lardenne, 31100 Toulouse, France</p>
                 <p><strong>SIRET :</strong> 951 105 881 00019</p>
                 <p><strong>R.C.S. :</strong> Toulouse</p>
                 <p><strong>Téléphone :</strong> <a href="tel:0582953375" className="text-orange-600 hover:text-orange-700 underline">05 82 95 33 75</a></p>
@@ -47,7 +47,7 @@ export default function CGVPage() {
             <section>
               <h2 className="text-2xl font-bold text-slate-900 mb-4">2. Objet</h2>
               <p>
-                Les présentes CGV s'appliquent à toutes les prestations proposées par MGRCP Symbole, notamment :
+                Les présentes CGV s'appliquent à toutes les prestations proposées par MGRCP31, notamment :
               </p>
               <ul className="list-disc pl-6 mt-4 space-y-2">
                 <li>Les diagnostics et expertises techniques sur site</li>
@@ -63,7 +63,7 @@ export default function CGVPage() {
                 <p className="font-bold text-slate-900 mb-2">Article spécifique - Diagnostic Expert</p>
                 <p>
                   La prestation d'expertise sur site est facturée <strong>149€ TTC</strong>. Cette somme est un <strong>acompte déductible</strong> : 
-                  elle sera intégralement soustraite de la facture finale si le client mandate MGRCP Symbole pour réaliser les travaux préconisés.
+                  elle sera intégralement soustraite de la facture finale si le client mandate MGRCP31 pour réaliser les travaux préconisés.
                 </p>
                 <p className="mt-4">
                   Le diagnostic comprend :
@@ -123,7 +123,7 @@ export default function CGVPage() {
               <h2 className="text-2xl font-bold text-slate-900 mb-4">7. Exécution des travaux</h2>
               <p>
                 Les travaux sont exécutés conformément aux règles de l'art et aux normes en vigueur. 
-                Les délais d'exécution sont indiqués à titre indicatif et ne sauraient engager la responsabilité de MGRCP Symbole 
+                Les délais d'exécution sont indiqués à titre indicatif et ne sauraient engager la responsabilité de MGRCP31 
                 en cas de retard dû à des circonstances indépendantes de sa volonté.
               </p>
             </section>
@@ -162,8 +162,8 @@ export default function CGVPage() {
             <section>
               <h2 className="text-2xl font-bold text-slate-900 mb-4">11. Responsabilité</h2>
               <p>
-                MGRCP Symbole dispose d'une assurance Responsabilité Civile Professionnelle couvrant ses activités. 
-                La responsabilité de MGRCP Symbole ne saurait être engagée en cas de dommages résultant d'un défaut 
+                MGRCP31 dispose d'une assurance Responsabilité Civile Professionnelle couvrant ses activités. 
+                La responsabilité de MGRCP31 ne saurait être engagée en cas de dommages résultant d'un défaut 
                 d'entretien ou de modifications apportées par le client ou un tiers après l'intervention.
               </p>
             </section>
@@ -172,7 +172,7 @@ export default function CGVPage() {
               <h2 className="text-2xl font-bold text-slate-900 mb-4">12. Litiges et médiation</h2>
               <p>
                 En cas de litige, le client peut recourir à la médiation de la consommation. 
-                À défaut d'accord amiable, le litige sera porté devant les tribunaux compétents du ressort du siège social de MGRCP Symbole.
+                À défaut d'accord amiable, le litige sera porté devant les tribunaux compétents du ressort du siège social de MGRCP31.
               </p>
             </section>
 

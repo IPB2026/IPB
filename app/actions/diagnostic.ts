@@ -150,7 +150,7 @@ export async function submitDiagnosticLead(
                 </div>
 
                 <p style="margin:18px 0 0; color:#64748b; font-size:13px;">
-                  IPB • 31C Chemin de Roquettes, 31600 Saubens
+                  IPB • 266 Av. de Lardenne, 31100 Toulouse
                 </p>
               </div>
             </div>
@@ -290,7 +290,7 @@ export async function submitDiagnosticCallback(
                   </a>
                 </div>
                 <p style="margin:18px 0 0; color:#64748b; font-size:13px;">
-                  IPB • 31C Chemin de Roquettes, 31600 Saubens
+                  IPB • 266 Av. de Lardenne, 31100 Toulouse
                 </p>
               </div>
             </div>
@@ -442,7 +442,7 @@ export async function submitDiagnosticAppointment(
                       </a>
                     </div>
                     <p style="margin:18px 0 0; color:#64748b; font-size:13px;">
-                      IPB • 31C Chemin de Roquettes, 31600 Saubens
+                      IPB • 266 Av. de Lardenne, 31100 Toulouse
                     </p>
                   </div>
                 </div>
@@ -569,7 +569,7 @@ export async function requestDiagnosticReport(
               <p style="margin-top: 30px;">
                 <strong>L'équipe IPB</strong><br/>
                 Institut de Pathologie du Bâtiment<br/>
-                31C Chemin de Roquettes, 31600 Saubens<br/>
+                266 Av. de Lardenne, 31100 Toulouse<br/>
                 Tél: 05 82 95 33 75
               </p>
               
