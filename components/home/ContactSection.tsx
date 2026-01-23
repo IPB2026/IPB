@@ -73,29 +73,6 @@ export function ContactSection() {
               Nos experts se déplacent rapidement dans toute la région toulousaine pour diagnostiquer et traiter vos problèmes de fissures et d'humidité.
             </p>
 
-            {/* Carte de localisation */}
-            <div className="mb-8 rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
-              <div className="relative w-full h-64">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46389.48938!2d1.3366!3d43.5846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebc0b6a5e6e2d%3A0x406f69c2f411030!2sTournefeuille!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Zone d'intervention - Tournefeuille et environs"
-                  className="w-full h-full"
-                />
-              </div>
-              <div className="bg-slate-50 px-4 py-3 text-center">
-                <p className="text-sm text-slate-600 font-medium">
-                  <MapPin className="inline w-4 h-4 mr-1 text-orange-600" />
-                  Zone d'intervention : Toulouse et 50 km autour
-                </p>
-              </div>
-            </div>
-
             {/* Coordonnées */}
             <div className="space-y-4">
               <a
