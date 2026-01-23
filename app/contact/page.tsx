@@ -133,12 +133,12 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Carte Google Maps */}
+              {/* Carte Google Maps - Où nous trouver */}
               <div className="mt-6 md:mt-8">
-                <h3 className="font-bold text-base md:text-lg text-slate-900 mb-3 md:mb-4">Nous trouver</h3>
+                <h3 className="font-bold text-base md:text-lg text-slate-900 mb-3 md:mb-4">Où nous trouver</h3>
                 <div className="rounded-xl overflow-hidden border border-slate-200 shadow-lg">
                   <iframe
-                    src="https://www.google.com/maps?q=31c+chemin+de+roquettes+31100+Toulouse&output=embed"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46389.48938!2d1.3366!3d43.5846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebc0b6a5e6e2d%3A0x406f69c2f411030!2sTournefeuille!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr"
                     width="100%"
                     height="250"
                     className="w-full md:h-[300px]"
@@ -146,17 +146,11 @@ export default function ContactPage() {
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
+                    title="Zone d'intervention - Tournefeuille et environs"
                   ></iframe>
                 </div>
                 <p className="text-sm text-slate-500 mt-2 text-center">
-                  <a
-                    href="https://www.google.com/maps/search/?api=1&query=31c+chemin+de+roquettes+31100+Toulouse"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-orange-600 hover:text-orange-700"
-                  >
-                    Ouvrir dans Google Maps
-                  </a>
+                  Zone d'intervention : <span className="text-orange-600 font-semibold">Toulouse et 50 km autour</span>
                 </p>
               </div>
             </div>
