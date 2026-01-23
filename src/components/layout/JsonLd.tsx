@@ -1,6 +1,6 @@
 /**
  * Composant JSON-LD pour le SEO local (Schema.org)
- * Améliore le référencement local sur Google pour Toulouse/Haute-Garonne
+ * Améliore le référencement local sur Google pour Tournefeuille/Haute-Garonne
  */
 export function JsonLd() {
   const localBusinessSchema = {
@@ -12,7 +12,7 @@ export function JsonLd() {
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "31C Chemin de Roquettes",
-      "addressLocality": "Toulouse",
+      "addressLocality": "Tournefeuille",
       "postalCode": "31600",
       "addressRegion": "Haute-Garonne",
       "addressCountry": "FR"
@@ -27,7 +27,7 @@ export function JsonLd() {
     "priceRange": "€€",
     "areaServed": {
       "@type": "City",
-      "name": "Toulouse"
+      "name": "Tournefeuille"
     },
     "serviceArea": {
       "@type": "GeoCircle",

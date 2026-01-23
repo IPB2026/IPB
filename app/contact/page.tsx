@@ -88,8 +88,8 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-bold text-sm md:text-base text-slate-900 mb-1">Adresse</h3>
                       <p className="text-sm md:text-base text-slate-600">
-                        266 Av. de Lardenne<br />
-                        31100 Toulouse, France
+                        54 avenue Jean Jaurès<br />
+                        31170 Tournefeuille, France
                       </p>
                       <a
                         href="https://www.google.com/maps/search/?api=1&query=31c+chemin+de+roquettes+31100+Toulouse"

@@ -67,10 +67,10 @@ export function ContactSection() {
               Zone d'intervention
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6 leading-tight">
-              Nous intervenons dans un <span className="text-orange-600">rayon de 50 km autour de Toulouse</span>
+              Nous intervenons dans un <span className="text-orange-600">rayon de 50 km autour de Tournefeuille</span>
             </h2>
             <p className="text-slate-600 text-lg mb-8 leading-relaxed">
-              Basés à Toulouse, nos experts se déplacent rapidement dans toute la région pour diagnostiquer et traiter vos problèmes de fissures et d'humidité.
+              Basés à Tournefeuille, nos experts se déplacent rapidement dans toute la région pour diagnostiquer et traiter vos problèmes de fissures et d'humidité.
             </p>
 
             {/* Coordonnées */}
@@ -212,7 +212,7 @@ export function ContactSection() {
               </div>
               <div>
                 <p className="font-bold text-slate-900 text-lg">Disponible 7j/7 pour les urgences</p>
-                <p className="text-slate-600 text-sm">Intervention rapide dans un rayon de 50 km autour de Toulouse</p>
+                <p className="text-slate-600 text-sm">Intervention rapide dans un rayon de 50 km autour de Tournefeuille</p>
               </div>
             </div>
             <Link

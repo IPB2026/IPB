@@ -11,9 +11,9 @@ export function JsonLd() {
     "description": "Expert en traitement des fissures et de l'humidité en Haute-Garonne. Solutions techniques (agrafage, injection résine) avec garantie décennale.",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "266 Av. de Lardenne",
-      "addressLocality": "Toulouse",
-      "postalCode": "31100",
+      "streetAddress": "54 avenue Jean Jaurès",
+      "addressLocality": "Tournefeuille",
+      "postalCode": "31170",
       "addressRegion": "Haute-Garonne",
       "addressCountry": "FR"
     },

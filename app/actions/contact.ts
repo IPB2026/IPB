@@ -134,7 +134,7 @@ export async function submitContactForm(
                     </a>
                   </div>
                   <p style="margin:18px 0 0; color:#64748b; font-size:13px;">
-                    IPB • 266 Av. de Lardenne, 31100 Toulouse
+                    IPB • 54 avenue Jean Jaurès, 31170 Tournefeuille
                   </p>
                 </div>
               </div>

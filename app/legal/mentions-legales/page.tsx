@@ -36,7 +36,7 @@ export default function MentionsLegalesPage() {
               <div className="space-y-2">
                 <p><strong>Raison sociale :</strong> MGRCP31</p>
                 <p><strong>Enseigne commerciale :</strong> IPB (Institut de Pathologie du Bâtiment)</p>
-                <p><strong>Siège social :</strong> 266 Av. de Lardenne, 31100 Toulouse, France</p>
+                <p><strong>Siège social :</strong> 54 avenue Jean Jaurès, 31170 Tournefeuille, France</p>
                 <p><strong>SIRET :</strong> 951 105 881 00019</p>
                 <p><strong>R.C.S. :</strong> Toulouse</p>
                 <p><strong>Forme juridique :</strong> Société à responsabilité limitée (SARL)</p>
@@ -64,7 +64,7 @@ export default function MentionsLegalesPage() {
               <div className="space-y-2">
                 <p><strong>Email :</strong> <a href="mailto:contact@ipb-expertise.fr" className="text-orange-600 hover:text-orange-700 underline">contact@ipb-expertise.fr</a></p>
                 <p><strong>Téléphone :</strong> <a href="tel:0582953375" className="text-orange-600 hover:text-orange-700 underline">05 82 95 33 75</a></p>
-                <p><strong>Adresse postale :</strong> 266 Av. de Lardenne, 31100 Toulouse, France</p>
+                <p><strong>Adresse postale :</strong> 54 avenue Jean Jaurès, 31170 Tournefeuille, France</p>
               </div>
             </section>
 
