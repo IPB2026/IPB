@@ -80,25 +80,20 @@ export default function ContactPage() {
               <div>
                 <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-4 md:mb-6">Nos coordonnées</h2>
                 <div className="space-y-4 md:space-y-6">
-                  {/* Adresse */}
+                  {/* Zone d'intervention */}
                   <div className="flex items-start gap-3 md:gap-4">
                     <div className="w-10 h-10 md:w-12 md:h-12 bg-orange-100 rounded-xl flex items-center justify-center shrink-0">
                       <MapPin className="w-5 h-5 md:w-6 md:h-6 text-orange-600" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-sm md:text-base text-slate-900 mb-1">Adresse</h3>
+                      <h3 className="font-bold text-sm md:text-base text-slate-900 mb-1">Zone d'intervention</h3>
                       <p className="text-sm md:text-base text-slate-600">
-                        54 avenue Jean Jaurès<br />
-                        31170 Tournefeuille, France
+                        Toulouse et 50 km autour<br />
+                        Haute-Garonne (31)
                       </p>
-                      <a
-                        href="https://www.google.com/maps/search/?api=1&query=31c+chemin+de+roquettes+31100+Toulouse"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-orange-600 hover:text-orange-700 font-medium text-sm mt-2 inline-block"
-                      >
-                        Voir sur Google Maps →
-                      </a>
+                      <p className="text-xs text-slate-500 mt-2">
+                        Colomiers, Blagnac, Balma, Tournefeuille, Muret, Ramonville...
+                      </p>
                     </div>
                   </div>
 
