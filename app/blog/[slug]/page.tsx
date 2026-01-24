@@ -1144,7 +1144,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'humidite-salpetre-traitement': {
     slug: 'humidite-salpetre-traitement',
-    title: 'Salpêtre sur vos murs : ce que cette poudre blanche révèle (et comment l'éliminer définitivement)',
+    title: 'Salpêtre sur vos murs : ce que cette poudre blanche révèle (et comment l\'éliminer définitivement)',
     excerpt: 'Le salpêtre n\'est pas de la moisissure. C\'est le signe visible d\'un problème invisible : l\'eau qui remonte du sol dans vos murs. Voici comment confirmer le diagnostic, pourquoi le gratter ne sert à rien, et la seule solution qui fonctionne.',
     date: '2025-08-06',
     readTime: '8 min',
@@ -2016,7 +2016,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'revente-maison-fissuree': {
     slug: 'revente-maison-fissuree',
-    title: 'Vendre une maison fissurée : la décote à -30% (et comment l'éviter)',
+    title: 'Vendre une maison fissurée : la décote à -30% (et comment l\'éviter)',
     excerpt: 'Une maison fissurée perd 20 à 30% de sa valeur. Les acheteurs paniquent, les banques refusent les prêts. Mais avec un traitement structurel garanti (agrafage + attestation décennale), la revente redevient possible... et parfois PLUS facile que prévu.',
     date: '2025-11-12',
     readTime: '8 min',
