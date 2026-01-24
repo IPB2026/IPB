@@ -9,16 +9,19 @@ import { Activity, AlertTriangle, CheckCircle, ArrowRight, Shield, FileText, Wre
 import Script from 'next/script';
 
 export const metadata = {
-  title: 'Expert Fissure Toulouse - Expertise Fissures & Mouvements Structurels | IPB',
-  description: 'Expert en traitement des fissures structurelles en Haute-Garonne. Solutions définitives par agrafage et harpage sur sols argileux. Alternative économique aux micropieux. Garantie décennale.',
+  title: 'Expert Fissures Toulouse - Agrafage & Traitement Structurel | IPB 31',
+  description: 'Expert traitement fissures structurelles à Toulouse. Agrafage, harpage, reprise en sous-œuvre. Alternative 3x moins chère que les micropieux. Garantie décennale 10 ans. Sols argileux, tassement différentiel. Diagnostic gratuit à domicile.',
   keywords: [
     'expert fissures toulouse',
-    'fissures maison',
+    'agrafage fissures toulouse',
+    'fissures maison toulouse',
     'tassement différentiel',
-    'agrafage',
-    'micropieux',
+    'agrafage vs micropieux',
+    'réparation fissures',
     'fondations',
+    'sol argileux toulouse',
     'haute-garonne',
+    'fissures escalier',
   ],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/expertise/fissures',

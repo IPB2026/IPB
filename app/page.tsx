@@ -12,16 +12,19 @@ import { InternalLinks } from '@/components/seo/InternalLinks';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Expert Fissures & Humidité Toulouse | IPB Haute-Garonne",
-  description: "Expert en traitement des fissures et de l'humidité en Haute-Garonne. Solutions techniques (agrafage, injection résine) avec garantie décennale. Alternative économique aux micropieux.",
+  title: "Expert Fissures & Humidité Toulouse | IPB - Intervention Rapide 31",
+  description: "Expert fissures et humidité à Toulouse (31). Agrafage, injection résine, traitement définitif avec garantie décennale. Alternative économique aux micropieux. Diagnostic gratuit. Intervention dans un rayon de 50 km autour de Toulouse.",
   keywords: [
     'expert fissures toulouse',
-    'traitement humidité',
-    'agrafage',
+    'traitement humidité toulouse',
+    'agrafage fissures',
     'injection résine',
-    'diagnostic fissures',
+    'diagnostic fissures gratuit',
     'remontées capillaires',
     'haute-garonne',
+    'expert bâtiment 31',
+    'tassement différentiel',
+    'sol argileux',
   ],
   openGraph: {
     title: "IPB - Expert Fissures & Humidité Toulouse",

@@ -9,16 +9,19 @@ import { Droplets, AlertTriangle, CheckCircle, ArrowRight, Shield, Home, Wind, B
 import Script from 'next/script';
 
 export const metadata = {
-  title: 'Traitement Humidité Toulouse - Traitement Définitif Humidité Ascensionnelle | IPB',
-  description: 'Expert en traitement de l\'humidité et remontées capillaires à Toulouse. Injection résine hydrophobe, cuvelage, VMI. Solutions définitives avec garantie 30 ans.',
+  title: 'Traitement Humidité Toulouse - Remontées Capillaires & Injection | IPB 31',
+  description: 'Expert traitement humidité à Toulouse. Injection résine hydrophobe, cuvelage cave, VMI. Solution définitive contre remontées capillaires, salpêtre, moisissures. Garantie 30 ans. Murs assainis en 6-12 mois. Diagnostic gratuit à domicile.',
   keywords: [
     'traitement humidité toulouse',
-    'remontées capillaires',
-    'injection résine',
-    'cuvelage',
-    'salpêtre',
-    'moisissures',
+    'remontées capillaires toulouse',
+    'injection résine hydrophobe',
+    'cuvelage cave',
+    'salpêtre traitement',
+    'moisissures mur',
+    'humidité mur',
     'haute-garonne',
+    'assèchement mur',
+    'VMI ventilation',
   ],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/expertise/humidite',
