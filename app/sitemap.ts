@@ -2,26 +2,10 @@ import { MetadataRoute } from 'next';
 import { villeSlugs } from '@/app/data/villes';
 import { problemSlugs } from '@/app/data/problems';
 import { quartierSlugs } from '@/app/data/quartiers';
+import { blogPostsSlugs } from '@/app/data/blog';
 
-// 🎯 Articles de blog - Liste complète synchronisée avec app/blog/[slug]/page.tsx
-const blogSlugs = [
-  'fissures-maison-toulouse-que-faire',
-  'humidite-remontee-capillaire-solution',
-  'agrafage-vs-micropieux-choix',
-  'fissures-escalier-tassement-differentiel',
-  'garantie-decennale-travaux-structure',
-  'ventilation-humidite-condensation',
-  'fissure-ouverture-porte-fenetre',
-  'secheresse-argile-haute-garonne',
-  'fissure-facade-reboucher-ou-reparer',
-  'humidite-salpetre-traitement',
-  'condensation-ou-infiltration',
-  'diagnostic-structurel-maison',
-  'traitement-humidite-injection-resine',
-  'revente-maison-fissuree',
-  'fissure-plafond-que-faire',
-  'humidite-cave-sous-sol',
-];
+// 🎯 Articles de blog - Import automatique depuis source unique
+// Plus besoin de liste hardcodée, les slugs sont synchronisés automatiquement !
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr';
@@ -109,8 +93,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  // Articles de blog
-  const blogPages: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
+  // Articles de blog (import automatique depuis blog.ts)
+  const blogPages: MetadataRoute.Sitemap = blogPostsSlugs.map((slug) => ({
     url: `${baseUrl}/blog/${slug}`,
     lastModified: currentDate,
     changeFrequency: 'monthly' as const,
