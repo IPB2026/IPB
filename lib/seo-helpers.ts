@@ -32,7 +32,7 @@ export function extractFAQsFromContent(content: string): FAQItem[] {
   const faqs: FAQItem[] = [];
   
   // Pattern : <h3>Question ?</h3> suivi de <p>Réponse</p>
-  const h3Regex = /<h3[^>]*>(.*?\?)<\/h3>\s*<p[^>]*>(.*?)<\/p>/gs;
+  const h3Regex = /<h3[^>]*>([\s\S]*?\?)<\/h3>\s*<p[^>]*>([\s\S]*?)<\/p>/g;
   let match;
   
   while ((match = h3Regex.exec(content)) !== null) {
@@ -81,8 +81,8 @@ export function extractHowToSteps(content: string): string[] {
   const steps: string[] = [];
   
   // Pattern : <ol> avec <li> ou pattern numérique
-  const olRegex = /<ol[^>]*>(.*?)<\/ol>/gs;
-  const liRegex = /<li[^>]*>(.*?)<\/li>/gs;
+  const olRegex = /<ol[^>]*>([\s\S]*?)<\/ol>/g;
+  const liRegex = /<li[^>]*>([\s\S]*?)<\/li>/g;
   
   const olMatches = content.match(olRegex);
   if (olMatches && olMatches[0]) {
