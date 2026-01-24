@@ -2220,7 +2220,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   'fissure-plafond-que-faire': {
     slug: 'fissure-plafond-que-faire',
     title: 'Fissure au plafond : grave ou pas ? Le test simple pour savoir',
-    excerpt: 'Une fissure au plafond peut être bénigne (retrait d'enduit) ou alarmante (mouvement de charpente). Voici comment faire la différence en 5 minutes, sans paniquer inutilement ni minimiser un vrai danger.',
+    excerpt: 'Une fissure au plafond peut être bénigne (retrait d\'enduit) ou alarmante (mouvement de charpente). Voici comment faire la différence en 5 minutes, sans paniquer inutilement ni minimiser un vrai danger.',
     date: '2025-12-05',
     readTime: '8 min',
     category: 'fissures',
