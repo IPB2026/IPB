@@ -40,7 +40,7 @@ export const metadata: Metadata = {
         url: "/images/IPB_Logo_HD.png",
         width: 1200,
         height: 630,
-        alt: "IPB - Expert en pathologie du bâtiment",
+        alt: "IPB Expert Fissures Humidité Toulouse Haute-Garonne - Agrafage Injection Résine Garantie Décennale",
       },
     ],
   },

@@ -38,7 +38,7 @@ export const metadata = {
         url: '/images/IPB_Logo_HD.png',
         width: 1200,
         height: 630,
-        alt: 'Traitement humidité IPB',
+        alt: 'Traitement Humidité Remontées Capillaires Toulouse - Injection Résine Cuvelage - IPB Garantie 30 ans',
       },
     ],
   },

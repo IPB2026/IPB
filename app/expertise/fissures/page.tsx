@@ -38,7 +38,7 @@ export const metadata = {
         url: '/images/IPB_Logo_HD.png',
         width: 1200,
         height: 630,
-        alt: 'Expertise fissures IPB',
+        alt: 'Expert Fissures Structurelles Toulouse - Agrafage Harpage Micropieux - IPB Garantie Décennale',
       },
     ],
   },
