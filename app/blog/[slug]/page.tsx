@@ -2835,7 +2835,8 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
   const reviewSchema = generateReviewSchema(post.title);
 
   // 💣 ARME NUCLÉAIRE : Injection de liens internes automatiques dans le contenu
-  const contentWithLinks = injectInternalLinks(enrichedContent, post.slug);
+  // DÉSACTIVÉ : Cause des problèmes de formatage HTML
+  const contentWithLinks = enrichedContent; // injectInternalLinks(enrichedContent, post.slug);
 
   return (
     <div className="min-h-screen bg-slate-50">
