@@ -14,6 +14,12 @@ import {
   generateArticleJsonLd,
   generateBreadcrumbJsonLd,
 } from '@/lib/blog-helpers';
+import {
+  extractFAQsFromContent,
+  generateFAQSchema,
+  getContextualLinks,
+  getRelatedPosts,
+} from '@/lib/seo-helpers';
 
 // Types pour les articles
 interface BlogPost {
@@ -2799,6 +2805,22 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
     { name: post.title, url: `/blog/${post.slug}` },
   ]);
 
+  // 🎯 SEO BOOST : Extraction automatique des FAQs pour Rich Snippets
+  const faqs = extractFAQsFromContent(post.content);
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : null;
+
+  // 🎯 SEO BOOST : Liens contextuels intelligents
+  const contextualLinks = getContextualLinks(post.slug, post.keywords);
+
+  // 🎯 SEO BOOST : Articles similaires par pertinence
+  const allPostsData = Object.values(blogPosts).map(p => ({
+    slug: p.slug,
+    title: p.title,
+    keywords: p.keywords,
+    category: p.category
+  }));
+  const relatedByKeywords = getRelatedPosts(post.slug, post.keywords, allPostsData);
+
   return (
     <div className="min-h-screen bg-slate-50">
       {/* JSON-LD pour SEO */}
@@ -2812,6 +2834,14 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
+      {/* 🎯 FAQ Schema pour Rich Snippets Google */}
+      {faqSchema && (
+        <Script
+          id="faq-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
 
       <TopBar />
       <Navbar />
@@ -2883,8 +2913,53 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
               dangerouslySetInnerHTML={{ __html: enrichedContent }}
             />
 
+            {/* 🎯 SEO BOOST : Maillage interne contextuel intelligent */}
+            {contextualLinks.length > 0 && (
+              <div className="mt-8 bg-gradient-to-br from-orange-50 to-orange-100 border-2 border-orange-200 rounded-2xl p-6">
+                <h3 className="text-xl font-extrabold text-orange-900 mb-4">🔗 Ressources complémentaires</h3>
+                <div className="grid md:grid-cols-2 gap-3">
+                  {contextualLinks.map((link, idx) => (
+                    <Link 
+                      key={idx}
+                      href={link.url} 
+                      className="flex items-center gap-2 bg-white border border-orange-200 rounded-lg p-3 hover:border-orange-400 hover:shadow-md transition group"
+                    >
+                      <span className="text-orange-600 group-hover:text-orange-700 transition">→</span>
+                      <span className="text-sm font-bold text-slate-900 group-hover:text-orange-600 transition">{link.text}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* 🎯 SEO BOOST : Articles similaires par keywords (augmente temps sur page) */}
+            {relatedByKeywords.length > 0 && (
+              <div className="mt-8 bg-slate-50 border border-slate-200 rounded-2xl p-6">
+                <h3 className="text-xl font-extrabold text-slate-900 mb-4">📚 Articles similaires recommandés</h3>
+                <div className="space-y-3">
+                  {relatedByKeywords.map((related) => {
+                    const relatedPost = blogPosts[related.slug];
+                    return (
+                      <Link 
+                        key={related.slug}
+                        href={`/blog/${related.slug}`}
+                        className="flex items-start gap-3 bg-white border border-slate-200 rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition group"
+                      >
+                        <span className="text-2xl group-hover:scale-110 transition">📖</span>
+                        <div>
+                          <h4 className="font-bold text-slate-900 group-hover:text-orange-600 transition mb-1">{related.title}</h4>
+                          <p className="text-sm text-slate-600 line-clamp-2">{relatedPost.excerpt}</p>
+                          <p className="text-xs text-orange-600 font-bold mt-2">Pertinence : {related.score} points communs</p>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+            
             <div className="mt-8 bg-slate-50 border border-slate-200 rounded-2xl p-6">
-              <h3 className="text-xl font-extrabold text-slate-900 mb-4">À lire aussi</h3>
+              <h3 className="text-xl font-extrabold text-slate-900 mb-4">🎯 Besoin d'un expert ?</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <Link href="/expertise/fissures" className="bg-white border border-slate-200 rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition">
                   <h4 className="font-bold text-slate-900 mb-1">Expertise fissures</h4>
