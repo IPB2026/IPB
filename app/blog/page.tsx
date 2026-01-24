@@ -159,7 +159,7 @@ const blogPosts: BlogPost[] = [
     featured: false
   },
   {
-    slug: 'humidité-cave-sous-sol',
+    slug: 'humidite-cave-sous-sol',
     title: 'Humidité en cave : diagnostic fiable et solutions durables',
     excerpt: 'Cuvelage, injection, ventilation… Chaque cave a son traitement. On vous guide vers la bonne stratégie.',
     date: '2026-01-10',
