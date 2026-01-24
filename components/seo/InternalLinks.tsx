@@ -62,19 +62,24 @@ export function InternalLinks({ variant = 'default', title, links }: InternalLin
   const heading = title || 'Liens utiles';
 
   return (
-    <section className="mt-12 bg-slate-50 border border-slate-200 rounded-2xl p-6 md:p-8">
-      <h2 className="text-xl md:text-2xl font-extrabold text-slate-900 mb-4">
+    <section className="bg-white border-2 border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+      <h3 className="text-lg font-extrabold text-slate-900 mb-4 flex items-center gap-2">
+        <span className="text-orange-600">🔗</span>
         {heading}
-      </h2>
-      <div className="grid md:grid-cols-2 gap-4">
+      </h3>
+      <div className="space-y-3">
         {items.map((item) => (
           <Link
             key={item.href}
             href={item.href}
-            className="bg-white border border-slate-200 rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition"
+            className="block bg-slate-50 border border-slate-200 rounded-lg p-3 hover:bg-orange-50 hover:border-orange-300 transition-all group"
           >
-            <h3 className="font-bold text-slate-900 mb-1">{item.label}</h3>
-            {item.description ? <p className="text-sm text-slate-600">{item.description}</p> : null}
+            <h4 className="font-bold text-slate-900 group-hover:text-orange-600 transition text-sm mb-1">
+              {item.label}
+            </h4>
+            {item.description && (
+              <p className="text-xs text-slate-600 line-clamp-2">{item.description}</p>
+            )}
           </Link>
         ))}
       </div>

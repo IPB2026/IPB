@@ -3031,12 +3031,15 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
             </div>
           </div>
 
-          <InternalLinks variant="blog" />
-
           {/* Sommaire (sidebar) */}
           {tocItems.length > 0 && (
             <aside className="lg:col-span-4">
               <TableOfContents items={tocItems} />
+              
+              {/* Liens utiles dans la sidebar */}
+              <div className="mt-6">
+                <InternalLinks variant="blog" />
+              </div>
             </aside>
           )}
         </div>
