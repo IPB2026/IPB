@@ -633,7 +633,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '9 min',
     category: 'fissures',
     author: 'Expert IPB',
-    metaDescription: 'Porte qui coince + fissures simultanées : signes d'un mouvement structurel actif. Diagnostic, causes (tassement), solutions (agrafage). Expert Toulouse.',
+    metaDescription: 'Porte qui coince + fissures simultanées : signes d\'un mouvement structurel actif. Diagnostic, causes (tassement), solutions (agrafage). Expert Toulouse.',
     keywords: ['portes qui coincent', 'fissures', 'mouvement structurel', 'toulouse', 'diagnostic maison', 'tassement différentiel'],
     content: `
       <div class="mb-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
@@ -937,7 +937,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '9 min',
     category: 'conseils',
     author: 'Expert IPB',
-    metaDescription: 'Fissure façade : reboucher vs réparer. Méthodologie experte pour éviter l'erreur à 5000€. Test d'évolutivité, diagnostic, agrafage. Expert Toulouse.',
+    metaDescription: 'Fissure façade : reboucher vs réparer. Méthodologie experte pour éviter l\'erreur à 5000€. Test d\'évolutivité, diagnostic, agrafage. Expert Toulouse.',
     keywords: ['fissure façade', 'reboucher fissure', 'agrafage', 'ravalement', 'diagnostic', 'réparation fissure'],
     content: `
       <div class="mb-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
