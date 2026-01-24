@@ -2908,78 +2908,54 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Contenu principal */}
           <div className="lg:col-span-8">
-            {/* En-tête de l'article */}
-            <div className="mb-8">
-              <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-4 ${categoryColors[post.category]}`}>
-                {categoryLabels[post.category]}
-              </span>
-              <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
-                {post.title}
-              </h1>
-          <div className="flex flex-wrap items-center gap-6 text-slate-600 mb-6">
-            <span className="flex items-center gap-2">
-              <Calendar size={16} />
-              {new Date(post.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
-            </span>
-            <span className="flex items-center gap-2">
-              <Clock size={16} />
-              {post.readTime} de lecture
-            </span>
-            <span>Par {post.author}</span>
-          </div>
-          
-          {/* Boutons de partage */}
-          <div className="flex items-center gap-3 pt-4 border-t border-slate-200">
-            <span className="text-sm font-bold text-slate-600">Partager :</span>
-            <button className="p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-              <Facebook size={18} />
-            </button>
-            <button className="p-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition">
-              <Twitter size={18} />
-            </button>
-            <button className="p-2 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition">
-              <Linkedin size={18} />
-            </button>
-          </div>
-        </div>
+            {/* En-tête de l'article - Zone de lecture optimale */}
+            <article className="blog-article-wrapper">
+              <header className="article-header">
+                <span className={`category-badge ${post.category}`}>
+                  {categoryLabels[post.category]}
+                </span>
+                
+                <h1 className="article-title">
+                  {post.title}
+                </h1>
+                
+                <div className="article-meta">
+                  <span className="meta-item">
+                    <Calendar size={16} />
+                    {new Date(post.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+                  </span>
+                  <span className="meta-item">
+                    <Clock size={16} />
+                    {post.readTime}
+                  </span>
+                  <span className="meta-item">
+                    Par {post.author}
+                  </span>
+                </div>
+                
+                {/* Boutons de partage */}
+                <div className="share-buttons">
+                  <span className="share-label">Partager :</span>
+                  <button className="share-btn facebook" aria-label="Partager sur Facebook">
+                    <Facebook size={18} />
+                  </button>
+                  <button className="share-btn twitter" aria-label="Partager sur Twitter">
+                    <Twitter size={18} />
+                  </button>
+                  <button className="share-btn linkedin" aria-label="Partager sur LinkedIn">
+                    <Linkedin size={18} />
+                  </button>
+                </div>
+              </header>
 
-            {/* Contenu de l'article avec liens internes automatiques */}
-            <div
-              className="article-content prose max-w-none prose-slate
-                /* TITRES - Hiérarchie claire et espacée */
-                prose-headings:font-extrabold prose-headings:text-slate-900 prose-headings:tracking-tight
-                prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-6 prose-h2:pb-3 prose-h2:border-b-2 prose-h2:border-orange-200 prose-h2:scroll-mt-24
-                prose-h3:text-2xl prose-h3:mt-10 prose-h3:mb-4 prose-h3:text-orange-900 prose-h3:scroll-mt-24
-                
-                /* PARAGRAPHES - Espacement généreux pour respiration */
-                prose-p:text-slate-700 prose-p:text-base prose-p:leading-relaxed prose-p:my-6
-                md:prose-p:text-lg md:prose-p:leading-8
-                
-                /* STRONG - Mise en valeur */
-                prose-strong:text-slate-900 prose-strong:font-bold prose-strong:text-[1.02em]
-                
-                /* LISTES - Lisibles et espacées */
-                prose-ul:my-8 prose-ul:space-y-3 prose-ul:list-disc prose-ul:pl-6
-                prose-ol:my-8 prose-ol:space-y-3 prose-ol:list-decimal prose-ol:pl-6
-                prose-li:text-slate-700 prose-li:leading-relaxed prose-li:my-2
-                md:prose-li:text-lg
-                
-                /* LIENS - Orange cohérent */
-                prose-a:text-orange-600 prose-a:font-semibold prose-a:no-underline hover:prose-a:underline hover:prose-a:text-orange-700
-                
-                /* TABLEAUX - Responsive et propres */
-                prose-table:w-full prose-table:my-8 prose-table:border-collapse
-                prose-thead:bg-slate-100 prose-thead:border-b-2 prose-thead:border-slate-300
-                prose-th:px-4 prose-th:py-3 prose-th:text-left prose-th:font-bold prose-th:text-slate-900
-                prose-td:px-4 prose-td:py-3 prose-td:border-b prose-td:border-slate-200
-                prose-tr:hover:bg-slate-50
-                
-                /* BLOCKQUOTES - Style callout */
-                prose-blockquote:border-l-4 prose-blockquote:border-orange-500 prose-blockquote:bg-orange-50 prose-blockquote:pl-6 prose-blockquote:pr-4 prose-blockquote:py-4 prose-blockquote:my-8 prose-blockquote:rounded-r-lg prose-blockquote:not-italic
-                "
-              dangerouslySetInnerHTML={{ __html: contentWithLinks }}
-            />
+              {/* Contenu de l'article - Zone de lecture optimale */}
+              <div
+                className="article-body"
+                dangerouslySetInnerHTML={{ __html: contentWithLinks }}
+              />
 
+            </article>
+            
             {/* 🎯 SEO BOOST : Maillage interne contextuel intelligent */}
             {contextualLinks.length > 0 && (
               <div className="mt-8 bg-gradient-to-br from-orange-50 to-orange-100 border-2 border-orange-200 rounded-2xl p-6">
