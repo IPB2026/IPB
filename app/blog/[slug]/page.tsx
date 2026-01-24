@@ -615,30 +615,146 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'fissure-ouverture-porte-fenetre': {
     slug: 'fissure-ouverture-porte-fenetre',
-    title: 'Portes qui coincent et fissures : pourquoi la structure bouge ?',
-    excerpt: 'Quand une porte frotte et qu’une fissure apparaît, ce n’est jamais un hasard. Voici comment relier ces signes et déterminer si la maison travaille.',
+    title: 'Portes qui coincent + fissures : le signal d'alarme à ne JAMAIS ignorer',
+    excerpt: 'Quand une porte frotte ET qu'une fissure apparaît au même moment, ce n'est JAMAIS un hasard. C'est le signe que votre maison bouge. Voici comment relier ces signaux et stabiliser avant que ça s'aggrave (et coûte 3x plus cher).',
     date: '2025-05-20',
-    readTime: '7 min',
+    readTime: '9 min',
     category: 'fissures',
     author: 'Expert IPB',
-    metaDescription: 'Porte qui coince + fissures : signes d’un mouvement structurel. Comment diagnostiquer et stabiliser avant que ça s’aggrave.',
-    keywords: ['portes qui coincent', 'fissures', 'mouvement structurel', 'toulouse', 'diagnostic maison'],
+    metaDescription: 'Porte qui coince + fissures simultanées : signes d'un mouvement structurel actif. Diagnostic, causes (tassement), solutions (agrafage). Expert Toulouse.',
+    keywords: ['portes qui coincent', 'fissures', 'mouvement structurel', 'toulouse', 'diagnostic maison', 'tassement différentiel'],
     content: `
-      <h2>Quand une porte frotte, la maison parle</h2>
-      <p>Une porte qui coince, une fenêtre qui ne ferme plus, un carrelage qui se soulève… Ces signes ne sont pas des détails. Ils indiquent souvent que la structure n’est plus d’équerre.</p>
+      <div class="mb-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
+        <p class="font-bold text-red-900 mb-2">🚨 Alerte : Ne sous-estimez jamais ce signal</p>
+        <p class="text-red-800">Quand une porte se met à frotter ET qu'une fissure apparaît au même moment, c'est le signe que <strong>votre structure est en train de bouger activement</strong>. Chaque jour qui passe aggrave la situation. Ne faites pas l'erreur d'attendre "pour voir si ça s'arrange".</p>
+      </div>
 
-      <h2>Le lien direct avec les fissures</h2>
-      <p>Quand une fondation bouge, le mur se déforme. Les menuiseries, fixées dans la maçonnerie, subissent cette déformation. Résultat : elles frottent ou se bloquent.</p>
+      <h2>Votre porte frotte depuis quelques semaines ? Et maintenant cette fissure...</h2>
+      
+      <p>Vous avez d'abord remarqué que votre porte d'entrée ou de chambre frottait un peu. Vous vous êtes dit : <strong>"C'est le bois qui a gonflé avec l'humidité."</strong> Vous avez raboté un peu. Ça allait mieux.</p>
 
-      <h2>Comment confirmer le diagnostic</h2>
+      <p>Et puis, il y a quelques jours, vous avez vu <strong>cette fissure</strong> sur le mur à côté de la porte. Verticale, ou en escalier. Pas énorme, mais bien visible. Et là, quelque chose vous a alerté : <strong>"Ces deux problèmes sont-ils liés ?"</strong></p>
+
+      <p><strong>Oui. Ils le sont.</strong> Et c'est très mauvais signe.</p>
+
+      <h2>Pourquoi une porte qui coince indique que votre maison bouge</h2>
+      
+      <p>Prenons un instant pour comprendre <strong>comment fonctionne une porte</strong> dans une maison.</p>
+
+      <p>Votre porte est fixée dans un <strong>huisserie (cadre) rigide</strong>, lui-même scellé dans la maçonnerie. Tant que le mur reste parfaitement vertical et stable, la porte ouvre et ferme sans problème. Elle a un jeu de quelques millimètres, conçu pour absorber les variations thermiques.</p>
+
+      <p>Mais si <strong>le mur se déforme</strong>, même très légèrement, l'huisserie se tord. Et la porte, qui ne peut pas se tordre, <strong>frotte contre le cadre</strong>.</p>
+
+      <div class="my-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
+        <h3 class="font-bold text-blue-900 mb-3">💡 Ce que ça signifie concrètement</h3>
+        <p class="text-blue-800"><strong>Si votre porte frotte en haut à gauche</strong>, c'est que l'angle haut gauche du mur s'est déformé (affaissement ou déformation angulaire).</p>
+        <p class="text-blue-800 mt-2"><strong>Si votre porte frotte sur toute la hauteur</strong>, c'est que le mur s'est incliné latéralement.</p>
+        <p class="text-blue-800 mt-2"><strong>Si votre porte ne ferme plus du tout</strong>, c'est que la déformation est importante (> 1 cm).</p>
+      </div>
+
+      <h2>Le lien direct entre frottement de porte et fissures</h2>
+      
+      <p>Maintenant, ajoutons la fissure à l'équation.</p>
+
+      <p>Quand un mur se déforme, il subit des <strong>contraintes de traction et de cisaillement</strong>. La maçonnerie n'est pas élastique : elle ne peut pas se tordre sans casser. C'est pour ça qu'elle fissure.</p>
+
+      <p><strong>Chronologie typique</strong> :</p>
+      <ol>
+        <li><strong>Semaine 1-2</strong> : La fondation commence à bouger (sol argileux qui se rétracte, par exemple). Vous ne voyez rien encore.</li>
+        <li><strong>Semaine 3-4</strong> : Le mur se déforme légèrement. Votre porte commence à frotter. Vous pensez que c'est l'humidité.</li>
+        <li><strong>Semaine 5-8</strong> : La contrainte s'accumule dans le mur. Une fissure apparaît, souvent <strong>près de la porte ou dans l'angle</strong>.</li>
+        <li><strong>Mois 2-3</strong> : La fissure s'élargit. Le frottement s'aggrave. Des signes collatéraux apparaissent (carrelage qui se fissure, joints qui s'ouvrent).</li>
+      </ol>
+
+      <p class="font-bold text-lg text-slate-900 my-6">Si vous êtes à l'étape 3-4, <strong>vous êtes encore à temps pour limiter les dégâts</strong>. Mais il faut agir maintenant.</p>
+
+      <h2>Les autres signes qui confirment que votre maison travaille</h2>
+      
+      <p>Une porte qui frotte + une fissure, c'est déjà deux signaux convergents. Mais voici <strong>les autres signes</strong> qui, s'ils sont présents, confirment à 100% que votre structure bouge :</p>
+
       <ul>
-        <li>Observer si la fissure évolue (repère + mesure).</li>
-        <li>Vérifier si le frottement est récent.</li>
-        <li>Contrôler d’autres signes (joints ouverts, fissures plafond).</li>
+        <li><strong>Plusieurs portes coincent en même temps</strong> (même côté de la maison)</li>
+        <li><strong>Les fenêtres ne ferment plus correctement</strong> (ou sont difficiles à ouvrir)</li>
+        <li><strong>Le carrelage se fissure ou se soulève</strong> (surtout dans le couloir ou la cuisine)</li>
+        <li><strong>Les joints de carrelage s'ouvrent</strong> (écart visible entre les carreaux)</li>
+        <li><strong>Les plinthes se décollent</strong> (surtout dans les angles)</li>
+        <li><strong>Vous entendez des craquements</strong> (surtout la nuit, quand tout est calme)</li>
+        <li><strong>Une autre fissure apparaît</strong> (souvent de l'autre côté de la même pièce)</li>
       </ul>
 
-      <h2>La bonne réaction</h2>
-      <p>Si la fissure est active, le rebouchage ne suffit pas. Il faut stabiliser la structure (agrafage) avant les finitions.</p>
+      <div class="my-8 p-6 bg-yellow-50 border-l-4 border-yellow-600 rounded-r-lg">
+        <p class="font-bold text-yellow-900 mb-2">⚠️ Attention au "diagnostic à distance"</p>
+        <p class="text-yellow-800">Certains signes peuvent être trompeurs. Par exemple, une porte qui frotte <strong>uniquement en hiver</strong> peut être due au gonflement du bois avec l'humidité. Mais si elle frotte <strong>toute l'année</strong> et que la fissure est apparue récemment, c'est structurel.</p>
+      </div>
+
+      <h2>Pourquoi ça arrive ? Les vraies causes du mouvement structurel</h2>
+      
+      <h3>1. Le sol argileux toulousain (la cause n°1)</h3>
+      <p>Le sol de Toulouse et de la Haute-Garonne est composé d'<strong>argile gonflante</strong>. En période de sécheresse, l'argile se rétracte. Résultat : le sol sous vos fondations "s'affaisse" de quelques centimètres. Votre maison suit ce mouvement, créant un tassement différentiel.</p>
+
+      <h3>2. Un arbre trop proche</h3>
+      <p>Un platane, un chêne ou un saule à moins de 5 mètres de votre façade ? Ses racines pompent l'eau du sol, asséchant le terrain sous vos fondations. Ce phénomène est <strong>aggravé en été</strong>.</p>
+
+      <h3>3. Travaux de voirie à proximité</h3>
+      <p>Des travaux de canalisation, de forage ou de terrassement dans votre rue peuvent perturber la stabilité du sol et déclencher un mouvement.</p>
+
+      <h3>4. Fondations superficielles (maisons anciennes)</h3>
+      <p>Les maisons des années 70-80 ont souvent des fondations peu profondes (50-60 cm). Elles sont plus sensibles aux variations du sol.</p>
+
+      <h2>Comment confirmer le diagnostic (avant d'appeler un expert)</h2>
+      
+      <h3>Étape 1 : Le test du scotch (ou fissuromètre papier)</h3>
+      <p>Collez un morceau de scotch large (type scotch d'emballage) sur la fissure. Tracez une ligne au stylo qui coupe le scotch et la fissure. Si au bout de 2-3 semaines, la ligne est décalée, <strong>la fissure évolue</strong>.</p>
+
+      <h3>Étape 2 : Le test de la porte</h3>
+      <p>Tracez un repère au crayon sur le cadre de la porte et sur la porte elle-même, au niveau du frottement. Si dans 1 mois le décalage augmente, <strong>la déformation s'aggrave</strong>.</p>
+
+      <h3>Étape 3 : Le test du niveau</h3>
+      <p>Posez un niveau à bulle sur le sol, le long du mur fissuré. Si vous constatez un dénivelé > 1 cm sur 2 mètres, <strong>il y a un affaissement</strong>.</p>
+
+      <h3>Étape 4 : Inspection générale</h3>
+      <p>Faites le tour de la maison et cherchez d'autres signes : fissures extérieures, joints ouverts, carrelage fissuré, autres portes qui coincent.</p>
+
+      <div class="my-8 p-6 bg-slate-900 text-white rounded-xl">
+        <h3 class="font-bold text-xl mb-3">📋 Si au moins 2 de ces tests sont positifs</h3>
+        <p class="text-slate-300"><strong>Votre maison bouge activement.</strong> Ne perdez plus de temps. Un diagnostic professionnel s'impose dans les 15 jours. Plus vous attendez, plus la réparation sera coûteuse (et complexe).</p>
+      </div>
+
+      <h2>La solution : l'agrafage (avant que ça ne coûte 3x plus cher)</h2>
+      
+      <p>Si votre diagnostic confirme que la structure bouge, <strong>le rebouchage ne servira à rien</strong>. Il faut stabiliser la structure.</p>
+
+      <h3>L'agrafage : recoudre votre mur pour stopper le mouvement</h3>
+      
+      <p>L'agrafage consiste à <strong>recoudre votre mur</strong> avec des aciers torsadés. Ces aciers relient les deux parties du mur qui se séparent, lui redonnant sa cohérence monolithique.</p>
+
+      <p><strong>Pourquoi ça fonctionne</strong> : Une fois agraffé, le mur retrouve sa rigidité. Même si le sol continue de bouger légèrement, le mur résiste sans se fissurer à nouveau.</p>
+
+      <h3>Coût et durée</h3>
+      <ul>
+        <li><strong>Coût moyen</strong> : 12 000€ - 18 000€ pour une façade complète</li>
+        <li><strong>Durée</strong> : 3 à 5 jours</li>
+        <li><strong>Garantie</strong> : Décennale (10 ans)</li>
+      </ul>
+
+      <h2>Le piège à éviter : raboter la porte sans traiter la cause</h2>
+      
+      <p>Vous avez raboté la porte ? <strong>Erreur.</strong> Dans 6 mois, elle frottera à nouveau, et la fissure sera plus large. Vous aurez perdu du temps et de l'argent.</p>
+
+      <p><strong>La seule approche efficace</strong> : Stabiliser la structure (agrafage), puis ajuster la porte si nécessaire (souvent, elle redevient fonctionnelle une fois la structure stabilisée).</p>
+
+      <h2>Conclusion : votre porte vous parle, écoutez-la</h2>
+      
+      <p>Une porte qui coince + une fissure = <strong>votre maison vous envoie un SOS</strong>. Ne l'ignorez pas. Ne tentez pas de "bricoler" une solution temporaire.</p>
+
+      <p><strong>Notre conseil d'expert</strong> : Un diagnostic précis (149€, déductible sur travaux) vous dira en 1h30 si votre maison bouge, pourquoi, et quelle solution est adaptée. Cette expertise vous évitera soit une panique inutile, soit une catastrophe évitable (et des réparations qui coûtent 3x plus cher).</p>
+
+      <p class="font-bold text-lg text-slate-900 mt-6">La question n'est pas "Est-ce grave ?" mais "Quand dois-je agir ?"</p>
+
+      <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
+        <h3 class="font-bold text-orange-900 mb-3">🎯 Action immédiate recommandée</h3>
+        <p class="text-orange-800">Si vous lisez cet article parce que vous avez ce problème <strong>en ce moment</strong>, ne perdez pas une semaine de plus. Demandez un diagnostic dans les 15 jours. Le coût d'un diagnostic (149€) est dérisoire face au surcoût d'une réparation tardive (+ 5 000€ à 10 000€).</p>
+      </div>
     `
   },
   'secheresse-argile-haute-garonne': {
