@@ -627,8 +627,8 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'fissure-ouverture-porte-fenetre': {
     slug: 'fissure-ouverture-porte-fenetre',
-    title: 'Portes qui coincent + fissures : le signal d'alarme à ne JAMAIS ignorer',
-    excerpt: 'Quand une porte frotte ET qu'une fissure apparaît au même moment, ce n'est JAMAIS un hasard. C'est le signe que votre maison bouge. Voici comment relier ces signaux et stabiliser avant que ça s'aggrave (et coûte 3x plus cher).',
+    title: 'Portes qui coincent + fissures : le signal d\'alarme à ne JAMAIS ignorer',
+    excerpt: 'Quand une porte frotte ET qu\'une fissure apparaît au même moment, ce n\'est JAMAIS un hasard. C\'est le signe que votre maison bouge. Voici comment relier ces signaux et stabiliser avant que ça s\'aggrave (et coûte 3x plus cher).',
     date: '2025-05-20',
     readTime: '9 min',
     category: 'fissures',
@@ -931,8 +931,8 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'fissure-facade-reboucher-ou-reparer': {
     slug: 'fissure-facade-reboucher-ou-reparer',
-    title: 'Fissure façade : reboucher ou réparer ? L'erreur à 5 000€ que font 90% des propriétaires',
-    excerpt: 'Reboucher sans traiter la cause, c'est jeter l'argent par les fenêtres. La fissure revient dans les 6 mois, souvent plus large. Voici la méthode professionnelle pour savoir QUAND reboucher suffit et QUAND il faut réparer structurellement.',
+    title: 'Fissure façade : reboucher ou réparer ? L\'erreur à 5 000€ que font 90% des propriétaires',
+    excerpt: 'Reboucher sans traiter la cause, c\'est jeter l\'argent par les fenêtres. La fissure revient dans les 6 mois, souvent plus large. Voici la méthode professionnelle pour savoir QUAND reboucher suffit et QUAND il faut réparer structurellement.',
     date: '2025-07-22',
     readTime: '9 min',
     category: 'conseils',
@@ -1145,7 +1145,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   'humidite-salpetre-traitement': {
     slug: 'humidite-salpetre-traitement',
     title: 'Salpêtre sur vos murs : ce que cette poudre blanche révèle (et comment l'éliminer définitivement)',
-    excerpt: 'Le salpêtre n'est pas de la moisissure. C'est le signe visible d'un problème invisible : l'eau qui remonte du sol dans vos murs. Voici comment confirmer le diagnostic, pourquoi le gratter ne sert à rien, et la seule solution qui fonctionne.',
+    excerpt: 'Le salpêtre n\'est pas de la moisissure. C\'est le signe visible d\'un problème invisible : l\'eau qui remonte du sol dans vos murs. Voici comment confirmer le diagnostic, pourquoi le gratter ne sert à rien, et la seule solution qui fonctionne.',
     date: '2025-08-06',
     readTime: '8 min',
     category: 'humidite',
@@ -1357,7 +1357,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   'condensation-ou-infiltration': {
     slug: 'condensation-ou-infiltration',
     title: 'Condensation ou infiltration ? Le test simple pour ne plus se tromper',
-    excerpt: 'Taches noires, murs humides, moisissures... Ce n'est pas toujours une fuite. 60% des gens traitent le mauvais problème et dépensent de l'argent inutilement. Voici le test décisif pour savoir si c'est de la condensation (VMC) ou une infiltration (étanchéité).',
+    excerpt: 'Taches noires, murs humides, moisissures... Ce n\'est pas toujours une fuite. 60% des gens traitent le mauvais problème et dépensent de l\'argent inutilement. Voici le test décisif pour savoir si c\'est de la condensation (VMC) ou une infiltration (étanchéité).',
     date: '2025-08-30',
     readTime: '8 min',
     category: 'humidite',
@@ -1535,8 +1535,8 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'diagnostic-structurel-maison': {
     slug: 'diagnostic-structurel-maison',
-    title: 'Diagnostic structurel : les 7 choses qu'un vrai expert vérifie (et que 90% des "pros" oublient)',
-    excerpt: 'Un diagnostic à l'œil nu ne vaut rien. Un vrai expert arrive avec un fissuromètre, un niveau laser, un humidimètre... et 15 ans d'expérience. Voici exactement ce qu'il observe, mesure, et analyse pour vous dire si votre maison est en danger ou non.',
+    title: 'Diagnostic structurel : les 7 choses qu\'un vrai expert vérifie (et que 90% des "pros" oublient)',
+    excerpt: 'Un diagnostic à l\'œil nu ne vaut rien. Un vrai expert arrive avec un fissuromètre, un niveau laser, un humidimètre... et 15 ans d\'expérience. Voici exactement ce qu\'il observe, mesure, et analyse pour vous dire si votre maison est en danger ou non.',
     date: '2025-09-18',
     readTime: '10 min',
     category: 'expertise',
@@ -1784,7 +1784,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   'traitement-humidite-injection-resine': {
     slug: 'traitement-humidite-injection-resine',
     title: 'Injection résine : la seule solution définitive contre les remontées capillaires (explications + prix)',
-    excerpt: 'Vous avez du salpêtre qui revient malgré vos nettoyages ? L'injection de résine crée une barrière étanche à la base de vos murs qui bloque l'eau pendant 30 ans. Voici comment ça marche exactement, combien de temps ça prend, et combien ça coûte (tarifs transparents).',
+    excerpt: 'Vous avez du salpêtre qui revient malgré vos nettoyages ? L\'injection de résine crée une barrière étanche à la base de vos murs qui bloque l\'eau pendant 30 ans. Voici comment ça marche exactement, combien de temps ça prend, et combien ça coûte (tarifs transparents).',
     date: '2025-10-14',
     readTime: '9 min',
     category: 'humidite',
@@ -2424,7 +2424,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   'humidite-cave-sous-sol': {
     slug: 'humidite-cave-sous-sol',
     title: 'Cave humide : les 3 causes (et les 3 solutions qui marchent vraiment)',
-    excerpt: 'Votre cave sent le moisi, les murs suintent, le salpêtre revient ? L'humidité en cave vient de 3 sources : remontées capillaires, infiltrations latérales, ou condensation. Voici comment identifier LA bonne cause et appliquer LA bonne solution (injection, cuvelage, ou VMI).',
+    excerpt: 'Votre cave sent le moisi, les murs suintent, le salpêtre revient ? L\'humidité en cave vient de 3 sources : remontées capillaires, infiltrations latérales, ou condensation. Voici comment identifier LA bonne cause et appliquer LA bonne solution (injection, cuvelage, ou VMI).',
     date: '2026-01-10',
     readTime: '10 min',
     category: 'humidite',
