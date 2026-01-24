@@ -2945,7 +2945,38 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
 
             {/* Contenu de l'article avec liens internes automatiques */}
             <div
-              className="prose max-w-none prose-slate prose-headings:font-extrabold prose-headings:text-slate-900 prose-p:text-slate-700 prose-p:leading-7 prose-p:my-4 prose-li:text-slate-700 prose-li:my-1 prose-strong:text-slate-900 prose-strong:font-bold prose-h2:mt-10 prose-h2:mb-5 prose-h3:mt-6 prose-h3:mb-3 prose-h2:scroll-mt-24 prose-h3:scroll-mt-24 md:prose-lg md:prose-p:leading-8"
+              className="article-content prose max-w-none prose-slate
+                /* TITRES - Hiérarchie claire et espacée */
+                prose-headings:font-extrabold prose-headings:text-slate-900 prose-headings:tracking-tight
+                prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-6 prose-h2:pb-3 prose-h2:border-b-2 prose-h2:border-orange-200 prose-h2:scroll-mt-24
+                prose-h3:text-2xl prose-h3:mt-10 prose-h3:mb-4 prose-h3:text-orange-900 prose-h3:scroll-mt-24
+                
+                /* PARAGRAPHES - Espacement généreux pour respiration */
+                prose-p:text-slate-700 prose-p:text-base prose-p:leading-relaxed prose-p:my-6
+                md:prose-p:text-lg md:prose-p:leading-8
+                
+                /* STRONG - Mise en valeur */
+                prose-strong:text-slate-900 prose-strong:font-bold prose-strong:text-[1.02em]
+                
+                /* LISTES - Lisibles et espacées */
+                prose-ul:my-8 prose-ul:space-y-3 prose-ul:list-disc prose-ul:pl-6
+                prose-ol:my-8 prose-ol:space-y-3 prose-ol:list-decimal prose-ol:pl-6
+                prose-li:text-slate-700 prose-li:leading-relaxed prose-li:my-2
+                md:prose-li:text-lg
+                
+                /* LIENS - Orange cohérent */
+                prose-a:text-orange-600 prose-a:font-semibold prose-a:no-underline hover:prose-a:underline hover:prose-a:text-orange-700
+                
+                /* TABLEAUX - Responsive et propres */
+                prose-table:w-full prose-table:my-8 prose-table:border-collapse
+                prose-thead:bg-slate-100 prose-thead:border-b-2 prose-thead:border-slate-300
+                prose-th:px-4 prose-th:py-3 prose-th:text-left prose-th:font-bold prose-th:text-slate-900
+                prose-td:px-4 prose-td:py-3 prose-td:border-b prose-td:border-slate-200
+                prose-tr:hover:bg-slate-50
+                
+                /* BLOCKQUOTES - Style callout */
+                prose-blockquote:border-l-4 prose-blockquote:border-orange-500 prose-blockquote:bg-orange-50 prose-blockquote:pl-6 prose-blockquote:pr-4 prose-blockquote:py-4 prose-blockquote:my-8 prose-blockquote:rounded-r-lg prose-blockquote:not-italic
+                "
               dangerouslySetInnerHTML={{ __html: contentWithLinks }}
             />
 
