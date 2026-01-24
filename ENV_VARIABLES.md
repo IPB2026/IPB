@@ -31,10 +31,25 @@ EMAIL_TO = contact@ipb-expertise.fr
 NEXT_PUBLIC_CALENDLY_URL = https://calendly.com/contact-ipb-expertise/nouvelle-reunion
 ```
 
-#### **4. ANALYTICS** (Optionnel)
+#### **4. ANALYTICS** (Optionnel mais recommandé)
 ```
 NEXT_PUBLIC_GA_TRACKING_ID = G-XXXXXXXXXX
 ```
+
+**📊 Comment obtenir ton ID Google Analytics :**
+1. Créer un compte sur [Google Analytics](https://analytics.google.com/)
+2. Créer une propriété **GA4**
+3. Récupérer le **Measurement ID** (format : G-XXXXXXXXXX)
+
+#### **5. ERROR TRACKING** (Optionnel)
+```
+NEXT_PUBLIC_SENTRY_DSN = https://xxx@xxx.ingest.sentry.io/xxx
+```
+
+**🚨 Comment obtenir ton DSN Sentry :**
+1. Créer un compte sur [Sentry.io](https://sentry.io/)
+2. Créer un nouveau projet **Next.js**
+3. Récupérer le **DSN** dans les paramètres du projet
 
 ---
 
@@ -98,7 +113,8 @@ npm run dev
 | `EMAIL_FROM` | Secret | Server Actions (email) | ✅ Oui |
 | `EMAIL_TO` | Secret | Server Actions (email) | ✅ Oui |
 | `NEXT_PUBLIC_CALENDLY_URL` | Public | Diagnostic page | ✅ Oui |
-| `NEXT_PUBLIC_GA_TRACKING_ID` | Public | Analytics (optionnel) | ⚠️ Non |
+| `NEXT_PUBLIC_GA_TRACKING_ID` | Public | Analytics | ⚠️ Recommandé |
+| `NEXT_PUBLIC_SENTRY_DSN` | Public | Error tracking | ⚠️ Optionnel |
 | `NODE_ENV` | Auto | Partout | ✅ Auto |
 
 ---

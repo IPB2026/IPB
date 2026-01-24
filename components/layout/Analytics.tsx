@@ -1,9 +1,26 @@
 "use client";
 
 import Script from 'next/script';
+import { useEffect } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 export function Analytics() {
-  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+  const gaId = process.env.NEXT_PUBLIC_GA_TRACKING_ID;
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (!gaId) return;
+
+    // Track page views on route change
+    const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '');
+    
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('config', gaId, {
+        page_path: url,
+      });
+    }
+  }, [pathname, searchParams, gaId]);
 
   if (!gaId) {
     return null;
@@ -22,6 +39,7 @@ export function Analytics() {
           gtag('js', new Date());
           gtag('config', '${gaId}', {
             page_path: window.location.pathname,
+            send_page_view: true
           });
         `}
       </Script>
