@@ -3,7 +3,7 @@ import { villeSlugs } from '@/app/data/villes';
 import { problemSlugs } from '@/app/data/problems';
 import { quartierSlugs } from '@/app/data/quartiers';
 
-// Articles de blog
+// 🎯 Articles de blog - Liste complète synchronisée avec app/blog/[slug]/page.tsx
 const blogSlugs = [
   'fissures-maison-toulouse-que-faire',
   'humidite-remontee-capillaire-solution',
@@ -11,10 +11,16 @@ const blogSlugs = [
   'fissures-escalier-tassement-differentiel',
   'garantie-decennale-travaux-structure',
   'ventilation-humidite-condensation',
-  'secheresse-argile-fondations-toulouse',
-  'cout-reparation-fissures-2025',
-  'moisissures-sante-traitement',
-  'diagnostic-fissures-gratuit-toulouse',
+  'fissure-ouverture-porte-fenetre',
+  'secheresse-argile-haute-garonne',
+  'fissure-facade-reboucher-ou-reparer',
+  'humidite-salpetre-traitement',
+  'condensation-ou-infiltration',
+  'diagnostic-structurel-maison',
+  'traitement-humidite-injection-resine',
+  'revente-maison-fissuree',
+  'fissure-plafond-que-faire',
+  'humidite-cave-sous-sol',
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
