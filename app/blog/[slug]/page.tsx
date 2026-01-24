@@ -19,7 +19,13 @@ import {
   generateFAQSchema,
   getContextualLinks,
   getRelatedPosts,
+  extractHowToSteps,
+  generateHowToSchema,
+  generateReviewSchema,
+  injectInternalLinks,
 } from '@/lib/seo-helpers';
+import { ReadingProgress } from '@/components/blog/ReadingProgress';
+import { ExitIntentPopup } from '@/components/blog/ExitIntentPopup';
 
 // Types pour les articles
 interface BlogPost {
@@ -2821,6 +2827,16 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
   }));
   const relatedByKeywords = getRelatedPosts(post.slug, post.keywords, allPostsData);
 
+  // 💣 ARME NUCLÉAIRE : Schema HowTo pour tutoriels (Rich Snippets "How-To")
+  const howToSteps = extractHowToSteps(post.content);
+  const howToSchema = howToSteps.length >= 3 ? generateHowToSchema(post.title, howToSteps) : null;
+
+  // 💣 ARME NUCLÉAIRE : Schema Review pour étoiles dans Google
+  const reviewSchema = generateReviewSchema(post.title);
+
+  // 💣 ARME NUCLÉAIRE : Injection de liens internes automatiques dans le contenu
+  const contentWithLinks = injectInternalLinks(enrichedContent, post.slug);
+
   return (
     <div className="min-h-screen bg-slate-50">
       {/* JSON-LD pour SEO */}
@@ -2842,6 +2858,26 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       )}
+      {/* 💣 ARME NUCLÉAIRE : HowTo Schema pour tutoriels */}
+      {howToSchema && (
+        <Script
+          id="howto-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+        />
+      )}
+      {/* 💣 ARME NUCLÉAIRE : Review Schema pour étoiles dans SERP */}
+      <Script
+        id="review-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
+      />
+
+      {/* 💣 ARME NUCLÉAIRE : Reading Progress Bar */}
+      <ReadingProgress />
+
+      {/* 💣 ARME NUCLÉAIRE : Exit-Intent Popup (capture leads) */}
+      <ExitIntentPopup />
 
       <TopBar />
       <Navbar />
@@ -2907,10 +2943,10 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
           </div>
         </div>
 
-            {/* Contenu de l'article */}
+            {/* Contenu de l'article avec liens internes automatiques */}
             <div
               className="prose max-w-none prose-slate prose-headings:font-extrabold prose-headings:text-slate-900 prose-p:text-slate-700 prose-p:leading-7 prose-p:my-4 prose-li:text-slate-700 prose-li:my-1 prose-strong:text-slate-900 prose-strong:font-bold prose-h2:mt-10 prose-h2:mb-5 prose-h3:mt-6 prose-h3:mb-3 prose-h2:scroll-mt-24 prose-h3:scroll-mt-24 md:prose-lg md:prose-p:leading-8"
-              dangerouslySetInnerHTML={{ __html: enrichedContent }}
+              dangerouslySetInnerHTML={{ __html: contentWithLinks }}
             />
 
             {/* 🎯 SEO BOOST : Maillage interne contextuel intelligent */}

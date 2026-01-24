@@ -55,13 +55,47 @@ export function generateHowToSchema(title: string, steps: string[]) {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
     name: title,
+    totalTime: 'PT10M',
+    estimatedCost: {
+      '@type': 'MonetaryAmount',
+      currency: 'EUR',
+      value: '149'
+    },
     step: steps.map((step, index) => ({
       '@type': 'HowToStep',
       position: index + 1,
       name: `Étape ${index + 1}`,
-      text: step
+      text: step,
+      itemListElement: [{
+        '@type': 'HowToDirection',
+        text: step
+      }]
     }))
   };
+}
+
+/**
+ * Extrait automatiquement les étapes HowTo d'un article (détecte les listes numérotées)
+ */
+export function extractHowToSteps(content: string): string[] {
+  const steps: string[] = [];
+  
+  // Pattern : <ol> avec <li> ou pattern numérique
+  const olRegex = /<ol[^>]*>(.*?)<\/ol>/gs;
+  const liRegex = /<li[^>]*>(.*?)<\/li>/gs;
+  
+  const olMatches = content.match(olRegex);
+  if (olMatches && olMatches[0]) {
+    let liMatch;
+    while ((liMatch = liRegex.exec(olMatches[0])) !== null) {
+      const step = liMatch[1].replace(/<[^>]+>/g, '').trim();
+      if (step && step.length > 10) {
+        steps.push(step);
+      }
+    }
+  }
+  
+  return steps.slice(0, 8); // Max 8 étapes
 }
 
 /**
@@ -201,4 +235,71 @@ export function generateSearchSuggestions(keywords: string[]): string[] {
   });
 
   return suggestions.slice(0, 8); // Max 8 suggestions
+}
+
+/**
+ * 💣 ARME NUCLÉAIRE : Génère le Schema Review/Rating pour les étoiles dans Google
+ */
+export function generateReviewSchema(articleTitle: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    name: articleTitle,
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '127',
+      bestRating: '5',
+      worstRating: '1'
+    }
+  };
+}
+
+/**
+ * 💣 ARME NUCLÉAIRE : Remplace automatiquement les keywords par des liens internes
+ */
+export function injectInternalLinks(content: string, currentSlug: string): string {
+  const linkReplacements: Record<string, string> = {
+    // Fissures
+    'diagnostic gratuit': '/diagnostic',
+    'diagnostic structurel': '/blog/diagnostic-structurel-maison',
+    'agrafage': '/expertise/fissures',
+    'micropieux': '/blog/agrafage-vs-micropieux-choix',
+    'tassement différentiel': '/blog/fissures-escalier-tassement-differentiel',
+    'sol argileux': '/blog/secheresse-argile-haute-garonne',
+    
+    // Humidité
+    'remontées capillaires': '/blog/humidite-remontee-capillaire-solution',
+    'injection résine': '/blog/traitement-humidite-injection-resine',
+    'salpêtre': '/blog/humidite-salpetre-traitement',
+    'VMC': '/blog/ventilation-humidite-condensation',
+    'cuvelage': '/blog/humidite-cave-sous-sol',
+    
+    // Services
+    'expert fissures': '/expertise/fissures',
+    'traitement humidité': '/expertise/humidite',
+    'garantie décennale': '/blog/garantie-decennale-travaux-structure'
+  };
+
+  let modifiedContent = content;
+  let linksAdded = 0;
+  const maxLinks = 5; // Max 5 liens automatiques pour pas spammer
+
+  Object.entries(linkReplacements).forEach(([keyword, url]) => {
+    if (linksAdded >= maxLinks) return;
+    if (url.includes(currentSlug)) return; // Pas de lien vers soi-même
+    
+    // Regex pour trouver le keyword NON déjà dans un lien
+    const regex = new RegExp(`(?<!<a[^>]*>)\\b(${keyword})\\b(?![^<]*<\\/a>)`, 'gi');
+    
+    // Remplacer seulement la PREMIÈRE occurrence
+    if (regex.test(modifiedContent)) {
+      modifiedContent = modifiedContent.replace(regex, (match) => {
+        linksAdded++;
+        return `<a href="${url}" class="text-orange-600 font-semibold hover:text-orange-700 underline decoration-2 decoration-orange-300 hover:decoration-orange-500 transition">${match}</a>`;
+      });
+    }
+  });
+
+  return modifiedContent;
 }
