@@ -50,7 +50,9 @@ export default function ContactPage() {
         alert(result.message);
       }
     } catch (error) {
-      console.error('Erreur:', error);
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Erreur:', error);
+      }
       alert('Une erreur est survenue. Veuillez réessayer ou nous appeler au 05 82 95 33 75.');
     } finally {
       setIsSubmitting(false);

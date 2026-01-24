@@ -369,7 +369,9 @@ export default function DiagnosticPage() {
 
       await submitDiagnosticLead(formData);
     } catch (error) {
-      console.error('Erreur envoi lead:', error);
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Erreur envoi lead:', error);
+      }
     }
 
     // Animation de chargement (3s)

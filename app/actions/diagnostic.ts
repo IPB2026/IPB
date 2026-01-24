@@ -177,7 +177,9 @@ export async function submitDiagnosticLead(
         message: `Erreur de validation: ${error.issues[0]?.message || 'Données invalides'}`,
       };
     }
-    console.error('Erreur lors de l\'envoi du diagnostic:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Erreur lors de l\'envoi du diagnostic:', error);
+    }
     return {
       success: false,
       message: 'Une erreur est survenue. Veuillez réessayer plus tard.',
@@ -311,7 +313,9 @@ export async function submitDiagnosticCallback(
       data: { callbackId },
     };
   } catch (error) {
-    console.error('Erreur lors de la demande de rappel:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Erreur lors de la demande de rappel:', error);
+    }
     return {
       success: false,
       message: 'Une erreur est survenue. Veuillez réessayer plus tard.',
@@ -458,7 +462,9 @@ export async function submitDiagnosticAppointment(
         }
       } catch (emailError) {
         // On log l'erreur mais on ne bloque pas le processus
-        console.error('Erreur lors de l\'envoi de l\'email:', emailError);
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Erreur lors de l\'envoi de l\'email:', emailError);
+        }
         if (process.env.NODE_ENV === 'production') {
           return {
             success: false,
@@ -493,7 +499,9 @@ export async function submitDiagnosticAppointment(
     }
 
     // Ne jamais exposer les détails d'erreur en production
-    console.error('Erreur lors de la soumission du diagnostic:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Erreur lors de la soumission du diagnostic:', error);
+    }
     return {
       success: false,
       message: 'Une erreur est survenue. Veuillez réessayer plus tard.',
@@ -580,7 +588,9 @@ export async function requestDiagnosticReport(
           `,
         });
       } catch (emailError) {
-        console.error('Erreur lors de l\'envoi du rapport:', emailError);
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Erreur lors de l\'envoi du rapport:', emailError);
+        }
         // On continue même si l'email échoue
       }
     }
@@ -606,7 +616,9 @@ export async function requestDiagnosticReport(
       };
     }
 
-    console.error('Erreur lors de la demande de rapport:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Erreur lors de la demande de rapport:', error);
+    }
     return {
       success: false,
       message: 'Une erreur est survenue. Veuillez réessayer plus tard.',

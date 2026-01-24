@@ -147,11 +147,13 @@ export async function submitContactForm(
             </div>
           `,
         });
-        if (!clientEmailResult.success) {
+        if (!clientEmailResult.success && process.env.NODE_ENV === 'development') {
           console.warn('⚠️ Échec envoi email confirmation client');
         }
       } catch (emailError) {
-        console.error('Erreur lors de l\'envoi de l\'email:', emailError);
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Erreur lors de l\'envoi de l\'email:', emailError);
+        }
         // En développement, on continue même si l'email échoue
         if (process.env.NODE_ENV === 'production') {
           throw new Error('Erreur lors de l\'envoi de l\'email');
@@ -176,7 +178,9 @@ export async function submitContactForm(
       };
     }
 
-    console.error('Erreur lors de l\'envoi du formulaire de contact:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Erreur lors de l\'envoi du formulaire de contact:', error);
+    }
     return {
       success: false,
       message: 'Une erreur est survenue. Veuillez réessayer plus tard ou nous appeler au 05 82 95 33 75.',
