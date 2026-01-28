@@ -5,7 +5,6 @@ import "./blog-article.css"
 import Script from "next/script"
 import { Analytics } from "@/components/layout/Analytics"
 import { ExitIntentLeadCapture } from "@/components/marketing/ExitIntentLeadCapture"
-import { CrispChat } from "@/components/marketing/CrispChat"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -171,7 +170,6 @@ export default function RootLayout({
         {children}
         <Analytics />
         <ExitIntentLeadCapture />
-        <CrispChat />
       </body>
     </html>
   )

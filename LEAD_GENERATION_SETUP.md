@@ -8,6 +8,8 @@ Ton site est maintenant équipé d'une **machine à leads ultra-performante** qu
 
 ## ✅ **CE QUI A ÉTÉ IMPLÉMENTÉ**
 
+> **📱 Note :** Le chat Crisp a été retiré. WhatsApp sera intégré à la place (voir `WHATSAPP_INTEGRATION.md`)
+
 ### **1. Exit-Intent Popup avec Lead Magnet** 🎁
 
 **Fichier :** `components/marketing/ExitIntentLeadCapture.tsx`
@@ -34,43 +36,24 @@ Ton site est maintenant équipé d'une **machine à leads ultra-performante** qu
 
 ---
 
-### **2. Crisp Chat en Direct** 💬
+### **2. WhatsApp Business (À installer)** 📱
 
-**Fichier :** `components/marketing/CrispChat.tsx`
+**📝 Voir le guide complet : `WHATSAPP_INTEGRATION.md`**
 
-**Fonctionnement :**
-- Chat en direct sur toutes les pages
-- Message d'accueil personnalisé
-- Accessible 24/7 (toi ou chatbot)
-- Capture automatique des infos visiteur
+**Pourquoi WhatsApp plutôt qu'un chat :**
+- ✅ **91% des Français** l'utilisent quotidiennement
+- ✅ Plus personnel et familier
+- ✅ Notifications push natives
+- ✅ Photos/vidéos faciles à envoyer
+- ✅ **Gratuit** (pas d'abonnement)
 
-**Configuration requise :**
+**Installation rapide (15 min) :**
+1. Télécharger WhatsApp Business (gratuit)
+2. Configurer le profil pro
+3. Ajouter un bouton flottant sur le site
+4. C'est prêt !
 
-1. **Créer un compte Crisp (GRATUIT) :**
-   - Va sur [crisp.chat](https://crisp.chat/)
-   - Inscription gratuite
-   - Récupère ton **Website ID**
-
-2. **Ajouter la variable d'environnement :**
-
-**En local (`.env.local`) :**
-```bash
-NEXT_PUBLIC_CRISP_WEBSITE_ID=ton-website-id-ici
-NEXT_PUBLIC_CRISP_ENABLED=true
-```
-
-**Sur Vercel :**
-- Settings → Environment Variables
-- Name: `NEXT_PUBLIC_CRISP_WEBSITE_ID`
-- Value: `ton-website-id-ici`
-- Environments: ✅ Production, ✅ Preview
-
-3. **Message d'accueil personnalisé :**
-
-Le chat affichera automatiquement :
-> "👋 Bonjour ! Une question sur vos fissures ou problèmes d'humidité ? Je suis là pour vous aider !"
-
-**Impact attendu :** +10-20% de leads (surtout mobile)
+**Impact attendu : +15-25% de leads** 💰
 
 ---
 
