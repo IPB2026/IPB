@@ -122,7 +122,6 @@ export default function TarnEtGaronnePage() {
                 { label: 'Départements', href: '/departements' },
                 { label: 'Tarn-et-Garonne (82)', href: '/departements/tarn-et-garonne' },
               ]}
-              theme="dark"
             />
 
             <div className="mt-8">

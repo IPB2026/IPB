@@ -122,7 +122,6 @@ export default function GersPage() {
                 { label: 'Départements', href: '/departements' },
                 { label: 'Gers (32)', href: '/departements/gers' },
               ]}
-              theme="dark"
             />
 
             <div className="mt-8">
