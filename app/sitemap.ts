@@ -75,6 +75,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  // Pages départements (SEO régional)
+  const departementPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/departements/tarn-et-garonne`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/departements/gers`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+  ];
+
   // Pages villes (SEO local)
   const villesPages: MetadataRoute.Sitemap = villeSlugs.map((ville) => ({
     url: `${baseUrl}/villes/${ville}`,
@@ -116,6 +132,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.68,
   }));
 
-  return [...staticPages, ...villesPages, ...servicePages, ...blogPages, ...problemPages, ...quartierPages];
+  return [...staticPages, ...departementPages, ...villesPages, ...servicePages, ...blogPages, ...problemPages, ...quartierPages];
 }
 

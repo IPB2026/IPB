@@ -27,7 +27,7 @@ export function Footer() {
 
       {/* FOOTER */}
       <footer className="bg-slate-950 py-16 border-t border-slate-900 text-slate-400 text-sm">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-6 gap-12 mb-12">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-7 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
             <span className="text-3xl font-black text-white tracking-tighter block mb-6">IPB<span className="text-orange-600">.</span></span>
             <p className="max-w-sm text-slate-500 leading-relaxed mb-6">
@@ -85,13 +85,28 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="text-white font-bold mb-6 text-base">Villes 31</h4>
+            <h4 className="text-white font-bold mb-6 text-base">Haute-Garonne</h4>
             <ul className="space-y-3 text-sm">
               <li><Link href="/villes/colomiers" className="hover:text-orange-500 transition">Colomiers</Link></li>
               <li><Link href="/villes/blagnac" className="hover:text-orange-500 transition">Blagnac</Link></li>
               <li><Link href="/villes/balma" className="hover:text-orange-500 transition">Balma</Link></li>
               <li><Link href="/villes/tournefeuille" className="hover:text-orange-500 transition">Tournefeuille</Link></li>
               <li><Link href="/villes/muret" className="hover:text-orange-500 transition">Muret</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-6 text-base">Départements</h4>
+            <ul className="space-y-3 text-sm">
+              <li><Link href="/departements/tarn-et-garonne" className="hover:text-orange-500 transition flex items-center gap-1">
+                <span className="text-orange-500 font-bold">82</span> Tarn-et-Garonne
+              </Link></li>
+              <li><Link href="/villes/montauban" className="hover:text-orange-500 transition pl-5">Montauban</Link></li>
+              <li><Link href="/villes/castelsarrasin" className="hover:text-orange-500 transition pl-5">Castelsarrasin</Link></li>
+              <li><Link href="/departements/gers" className="hover:text-orange-500 transition flex items-center gap-1 mt-4">
+                <span className="text-blue-500 font-bold">32</span> Gers
+              </Link></li>
+              <li><Link href="/villes/auch" className="hover:text-orange-500 transition pl-5">Auch</Link></li>
+              <li><Link href="/villes/condom" className="hover:text-orange-500 transition pl-5">Condom</Link></li>
             </ul>
           </div>
           <div>
