@@ -1,6 +1,7 @@
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Hero } from '@/components/home/Hero';
+import { DepartementsNotice } from '@/components/home/DepartementsNotice';
 import { TrustSignals } from '@/components/home/TrustSignals';
 import { ServicesStructure } from '@/components/home/ServicesStructure';
 import { ServicesHumidity } from '@/components/home/ServicesHumidity';
@@ -59,6 +60,7 @@ export default function HomePage() {
       <TopBar />
       <Navbar />
       <Hero />
+      <DepartementsNotice />
       <TrustSignals />
       <ServicesStructure />
       <ServicesHumidity />
