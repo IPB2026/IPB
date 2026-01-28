@@ -2,7 +2,7 @@ import { Award, Microscope, Wallet } from 'lucide-react';
 
 export function TrustSignals() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 relative z-20 pb-16 md:pb-24">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
       <div className="bg-white rounded-3xl shadow-2xl border border-slate-100 p-6 md:p-8 lg:p-12 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
         <div className="flex flex-col items-center pt-6 md:pt-0">
           <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-600 mb-6 shadow-sm transform transition hover:scale-110 duration-300">
