@@ -31,7 +31,19 @@ EMAIL_TO = contact@ipb-expertise.fr
 NEXT_PUBLIC_CALENDLY_URL = https://calendly.com/contact-ipb-expertise/nouvelle-reunion
 ```
 
-#### **4. ANALYTICS** (Optionnel mais recommandé)
+#### **4. CRISP CHAT** (Optionnel mais recommandé)
+```
+NEXT_PUBLIC_CRISP_WEBSITE_ID = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+NEXT_PUBLIC_CRISP_ENABLED = true
+```
+
+**💬 Comment obtenir ton Website ID Crisp :**
+1. Créer un compte GRATUIT sur [Crisp.chat](https://crisp.chat/)
+2. Créer un nouveau site web
+3. Récupérer le **Website ID** dans Settings → Setup → Website
+4. Configurer le message d'accueil personnalisé
+
+#### **5. ANALYTICS** (Optionnel mais recommandé)
 ```
 NEXT_PUBLIC_GA_TRACKING_ID = G-XXXXXXXXXX
 ```
@@ -41,7 +53,7 @@ NEXT_PUBLIC_GA_TRACKING_ID = G-XXXXXXXXXX
 2. Créer une propriété **GA4**
 3. Récupérer le **Measurement ID** (format : G-XXXXXXXXXX)
 
-#### **5. ERROR TRACKING** (Optionnel)
+#### **6. ERROR TRACKING** (Optionnel)
 ```
 NEXT_PUBLIC_SENTRY_DSN = https://xxx@xxx.ingest.sentry.io/xxx
 ```
@@ -68,6 +80,11 @@ SMTP_PASSWORD=xxxx xxxx xxxx xxxx
 EMAIL_FROM=contact@ipb-expertise.fr
 EMAIL_TO=contact@ipb-expertise.fr
 NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/contact-ipb-expertise/nouvelle-reunion
+
+# Optionnel
+NEXT_PUBLIC_CRISP_WEBSITE_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+NEXT_PUBLIC_CRISP_ENABLED=true
+NEXT_PUBLIC_GA_TRACKING_ID=G-XXXXXXXXXX
 ```
 
 ---
@@ -113,6 +130,8 @@ npm run dev
 | `EMAIL_FROM` | Secret | Server Actions (email) | ✅ Oui |
 | `EMAIL_TO` | Secret | Server Actions (email) | ✅ Oui |
 | `NEXT_PUBLIC_CALENDLY_URL` | Public | Diagnostic page | ✅ Oui |
+| `NEXT_PUBLIC_CRISP_WEBSITE_ID` | Public | Chat widget | ⚠️ Recommandé |
+| `NEXT_PUBLIC_CRISP_ENABLED` | Public | Chat activation | ⚠️ Recommandé |
 | `NEXT_PUBLIC_GA_TRACKING_ID` | Public | Analytics | ⚠️ Recommandé |
 | `NEXT_PUBLIC_SENTRY_DSN` | Public | Error tracking | ⚠️ Optionnel |
 | `NODE_ENV` | Auto | Partout | ✅ Auto |
