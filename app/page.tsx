@@ -12,17 +12,23 @@ import { InternalLinks } from '@/components/seo/InternalLinks';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Expert Fissures & Humidité Toulouse | IPB - Intervention Rapide 31",
-  description: "Expert fissures et humidité à Toulouse (31). Agrafage, injection résine, traitement définitif avec garantie décennale. Alternative économique aux micropieux. Diagnostic gratuit. Intervention dans un rayon de 50 km autour de Toulouse.",
+  title: "Expert Fissures & Humidité Toulouse, Montauban, Auch | IPB - 31, 82, 32",
+  description: "Expert fissures et humidité à Toulouse, Montauban et Auch (31, 82, 32). Agrafage, injection résine, traitement définitif avec garantie décennale. Alternative économique aux micropieux. Diagnostic gratuit. Intervention Haute-Garonne, Tarn-et-Garonne et Gers.",
   keywords: [
     'expert fissures toulouse',
     'traitement humidité toulouse',
+    'expert fissures montauban',
+    'traitement humidité auch',
     'agrafage fissures',
     'injection résine',
     'diagnostic fissures gratuit',
     'remontées capillaires',
     'haute-garonne',
+    'tarn-et-garonne',
+    'gers',
     'expert bâtiment 31',
+    'expert bâtiment 82',
+    'expert bâtiment 32',
     'tassement différentiel',
     'sol argileux',
   ],

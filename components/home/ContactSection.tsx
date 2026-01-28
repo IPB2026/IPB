@@ -67,10 +67,10 @@ export function ContactSection() {
               Zone d'intervention
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6 leading-tight">
-              Nous intervenons dans un <span className="text-orange-600">rayon de 50 km autour de Toulouse</span>
+              Nous intervenons en <span className="text-orange-600">Haute-Garonne, Tarn-et-Garonne et Gers</span>
             </h2>
             <p className="text-slate-600 text-lg mb-8 leading-relaxed">
-              Nos experts se déplacent rapidement dans toute la région toulousaine pour diagnostiquer et traiter vos problèmes de fissures et d'humidité.
+              Nos experts se déplacent rapidement à Toulouse, Montauban, Auch et dans toute la région Occitanie (31, 82, 32) pour diagnostiquer et traiter vos problèmes de fissures et d'humidité.
             </p>
 
             {/* Coordonnées */}

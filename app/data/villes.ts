@@ -329,6 +329,80 @@ export const villesData: Record<string, VilleInfo> = {
     distance: '17 km',
     description: 'Villate, commune au sud de Toulouse',
   },
+  
+  // === TARN-ET-GARONNE (82) ===
+  montauban: {
+    nom: 'Montauban',
+    codePostal: '82000',
+    departement: 'Tarn-et-Garonne (82)',
+    distance: '55 km',
+    description: 'Montauban, préfecture du Tarn-et-Garonne, ville d\'art et d\'histoire aux maisons en brique rose',
+  },
+  castelsarrasin: {
+    nom: 'Castelsarrasin',
+    codePostal: '82100',
+    departement: 'Tarn-et-Garonne (82)',
+    distance: '70 km',
+    description: 'Castelsarrasin, ville dynamique du Tarn-et-Garonne sur le canal latéral à la Garonne',
+  },
+  moissac: {
+    nom: 'Moissac',
+    codePostal: '82200',
+    departement: 'Tarn-et-Garonne (82)',
+    distance: '75 km',
+    description: 'Moissac, célèbre pour son abbaye et ses chasselas, joyau du patrimoine religieux',
+  },
+  caussade: {
+    nom: 'Caussade',
+    codePostal: '82300',
+    departement: 'Tarn-et-Garonne (82)',
+    distance: '60 km',
+    description: 'Caussade, ville du Quercy Blanc connue pour son industrie de la chapellerie',
+  },
+  valence: {
+    nom: 'Valence',
+    codePostal: '82400',
+    departement: 'Tarn-et-Garonne (82)',
+    distance: '80 km',
+    description: 'Valence, bastide médiévale sur les rives du Barguelonne',
+  },
+  
+  // === GERS (32) ===
+  auch: {
+    nom: 'Auch',
+    codePostal: '32000',
+    departement: 'Gers (32)',
+    distance: '80 km',
+    description: 'Auch, préfecture du Gers et capitale de la Gascogne, ville d\'art et d\'histoire',
+  },
+  condom: {
+    nom: 'Condom',
+    codePostal: '32100',
+    departement: 'Gers (32)',
+    distance: '110 km',
+    description: 'Condom, cité épiscopale au cœur de la Ténarèze, capitale de l\'Armagnac',
+  },
+  fleurance: {
+    nom: 'Fleurance',
+    codePostal: '32500',
+    departement: 'Gers (32)',
+    distance: '85 km',
+    description: 'Fleurance, bastide gersoise sur l\'axe Toulouse-Agen',
+  },
+  'lisle-jourdain': {
+    nom: 'L\'Isle-Jourdain',
+    codePostal: '32600',
+    departement: 'Gers (32)',
+    distance: '45 km',
+    description: 'L\'Isle-Jourdain, commune gersoise proche de la Haute-Garonne',
+  },
+  mirande: {
+    nom: 'Mirande',
+    codePostal: '32300',
+    departement: 'Gers (32)',
+    distance: '95 km',
+    description: 'Mirande, bastide du XIIIe siècle au cœur de l\'Astarac',
+  },
 };
 
 export const villeSlugs = Object.keys(villesData);

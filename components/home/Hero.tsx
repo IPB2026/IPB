@@ -17,7 +17,7 @@ export function Hero() {
             Votre maison se <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-200">fissure</span> ? L'<span className="text-blue-400">humidité</span> envahit vos murs ?<br/>Ne laissez pas votre patrimoine se dégrader.
           </h1>
           <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl leading-relaxed">
-            <strong className="text-white">Expert reconnu en Haute-Garonne</strong>, IPB stabilise vos fondations et assèche vos murs avec des techniques éprouvées. 
+            <strong className="text-white">Expert reconnu en Haute-Garonne, Tarn-et-Garonne et Gers</strong>, IPB stabilise vos fondations et assèche vos murs avec des techniques éprouvées. 
             <br/><strong className="text-white border-b border-orange-500/50 pb-0.5">Économisez jusqu'à 70% par rapport aux micropieux</strong> tout en garantissant la solidité de votre bien.
           </p>
           
