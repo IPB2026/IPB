@@ -27,7 +27,7 @@ export function Footer() {
 
       {/* FOOTER */}
       <footer className="bg-slate-950 py-16 border-t border-slate-900 text-slate-400 text-sm">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-7 gap-12 mb-12">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 gap-8 lg:gap-10 xl:gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
             <span className="text-3xl font-black text-white tracking-tighter block mb-6">IPB<span className="text-orange-600">.</span></span>
             <p className="max-w-sm text-slate-500 leading-relaxed mb-6">
