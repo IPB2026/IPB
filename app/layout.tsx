@@ -28,6 +28,16 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  icons: {
+    icon: [
+      { url: '/images/IPB_Logo_HD.png', sizes: 'any' },
+      { url: '/images/IPB_Logo_HD.png', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/images/IPB_Logo_HD.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/images/IPB_Logo_HD.png',
+  },
   openGraph: {
     type: "website",
     locale: "fr_FR",
