@@ -31,7 +31,9 @@ export const initSentry = () => {
 
   // L'initialisation réelle se fait via sentry.client.config.ts et sentry.server.config.ts
   // quand @sentry/nextjs est installé
-  console.log('✅ Sentry initialized');
+  if (process.env.NODE_ENV === 'development') {
+    console.log('✅ Sentry initialized');
+  }
 };
 
 /**
@@ -41,7 +43,9 @@ export const captureError = (error: Error, context?: Record<string, any>) => {
   if (sentryConfig.enabled) {
     // Quand @sentry/nextjs est installé:
     // Sentry.captureException(error, { extra: context });
-    console.error('🚨 Error captured for Sentry:', error, context);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('🚨 Error captured for Sentry:', error, context);
+    }
   } else if (process.env.NODE_ENV === 'development') {
     console.error('🚨 Development error:', error, context);
   }
@@ -54,7 +58,9 @@ export const setSentryUser = (user: { id?: string; email?: string; name?: string
   if (sentryConfig.enabled) {
     // Quand @sentry/nextjs est installé:
     // Sentry.setUser(user);
-    console.log('👤 Sentry user context set:', user);
+    if (process.env.NODE_ENV === 'development') {
+      console.log('👤 Sentry user context set:', user);
+    }
   }
 };
 
@@ -65,7 +71,9 @@ export const captureMessage = (message: string, level: 'info' | 'warning' | 'err
   if (sentryConfig.enabled) {
     // Quand @sentry/nextjs est installé:
     // Sentry.captureMessage(message, level);
-    console.log(`📝 Sentry message (${level}):`, message);
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`📝 Sentry message (${level}):`, message);
+    }
   }
 };
 

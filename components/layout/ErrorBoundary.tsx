@@ -11,7 +11,9 @@ interface ErrorBoundaryProps {
 export default function ErrorBoundary({ error, reset }: ErrorBoundaryProps) {
   useEffect(() => {
     // Log error to monitoring service (Sentry, etc.)
-    console.error('Application error:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Application error:', error);
+    }
   }, [error]);
 
   return (

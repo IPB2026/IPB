@@ -33,7 +33,9 @@ export async function sendEmail(options: {
 }) {
   // Vérifier que les variables sont configurées
   if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    console.error('⚠️ Email non configuré : SMTP_USER et SMTP_PASS manquants');
+    if (process.env.NODE_ENV === 'development') {
+      console.error('⚠️ Email non configuré : SMTP_USER et SMTP_PASS manquants');
+    }
     return { success: false, error: 'Email non configuré' };
   }
 
@@ -50,10 +52,14 @@ export async function sendEmail(options: {
 
     const info = await transporter.sendMail(mailOptions);
     
-    console.log('✅ Email envoyé avec succès:', info.messageId);
+    if (process.env.NODE_ENV === 'development') {
+      console.log('✅ Email envoyé avec succès:', info.messageId);
+    }
     return { success: true, messageId: info.messageId };
   } catch (error) {
-    console.error('❌ Erreur lors de l\'envoi de l\'email:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('❌ Erreur lors de l\'envoi de l\'email:', error);
+    }
     return { success: false, error };
   }
 }

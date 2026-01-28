@@ -49,7 +49,9 @@ export function ContactSection() {
         setErrorMessage(result.message);
       }
     } catch (error) {
-      console.error('Erreur:', error);
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Erreur:', error);
+      }
       setErrorMessage('Une erreur est survenue. Veuillez réessayer.');
     } finally {
       setIsSubmitting(false);
