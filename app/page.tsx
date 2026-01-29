@@ -10,6 +10,7 @@ import { FAQ } from '@/components/home/FAQ';
 import { ContactSection } from '@/components/home/ContactSection';
 import { Footer } from '@/components/home/Footer';
 import { InternalLinks } from '@/components/seo/InternalLinks';
+import { ExitIntentPopup } from '@/components/blog/ExitIntentPopup';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -57,6 +58,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <div className="font-sans text-slate-800 bg-slate-50 antialiased scroll-smooth selection:bg-orange-100 selection:text-orange-900">
+      <ExitIntentPopup />
       <TopBar />
       <Navbar />
       <Hero />
