@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Inter, Space_Grotesk } from "next/font/google"
 import "./globals.css"
 import "./blog-article.css"
 import Script from "next/script"
@@ -10,6 +10,14 @@ const inter = Inter({
   display: 'swap',
   preload: true,
   variable: '--font-inter',
+})
+
+// Police display distinctive pour les titres
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  display: 'swap',
+  variable: '--font-display',
+  weight: ['500', '600', '700'],
 })
 
 export const metadata: Metadata = {
@@ -144,7 +152,7 @@ const localBusinessSchema = {
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.9",
-    "reviewCount": "127"
+    "reviewCount": "14"
   }
 };
 
@@ -154,7 +162,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" className={inter.variable}>
+    <html lang="fr" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
         {/* 💣 Preconnect for performance (CORE WEB VITALS) */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -1,131 +1,120 @@
 import Link from 'next/link';
-import { ArrowRight, Lock } from 'lucide-react';
+import { ArrowRight, Phone, Mail, MapPin } from 'lucide-react';
 
 export function Footer() {
   return (
     <>
-      {/* SECTION DIAGNOSTIC FINAL (LEAD GEN) */}
-      <div id="diagnostic" className="bg-slate-900 py-24 text-white text-center px-4 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-500 via-slate-900 to-slate-900"></div>
+      {/* CTA Final */}
+      <section className="bg-slate-900 py-20 md:py-28 text-white text-center px-4 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-500 via-slate-900 to-slate-900"></div>
+        
         <div className="relative z-10 max-w-3xl mx-auto">
-          <h2 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">Vos murs vous inquiètent ?</h2>
-          <p className="text-xl text-slate-300 mb-12 font-light">
-            Ne laissez pas le doute s'installer. Notre diagnostic gratuit en 3 minutes vous donne une première évaluation de la gravité de votre situation et les solutions adaptées.
+          <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
+            Vos murs vous inquiètent ?
+          </h2>
+          <p className="text-xl text-slate-300 mb-10">
+            Notre diagnostic gratuit en 3 minutes vous donne une première évaluation et les solutions adaptées.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <Link href="/diagnostic" className="bg-orange-600 text-white px-12 py-5 rounded-2xl font-bold text-xl shadow-2xl hover:bg-orange-500 transition hover:scale-105 transform duration-200 flex items-center justify-center gap-3">
+          
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link 
+              href="/diagnostic" 
+              className="bg-orange-600 text-white px-10 py-5 rounded-2xl font-bold text-lg shadow-xl hover:bg-orange-500 transition flex items-center justify-center gap-3"
+            >
               Lancer le diagnostic
-              <ArrowRight size={24} />
+              <ArrowRight size={22} />
             </Link>
+            <a 
+              href="tel:0582953375" 
+              className="bg-white/10 border border-white/20 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white/20 transition flex items-center justify-center gap-3"
+            >
+              <Phone size={20} />
+              05 82 95 33 75
+            </a>
           </div>
-          <div className="mt-10 flex justify-center gap-8 text-sm text-slate-500 font-medium uppercase tracking-widest">
-            <span className="flex items-center gap-2"><Lock size={14}/> Gratuit</span>
-            <span className="flex items-center gap-2"><Lock size={14}/> Sans engagement</span>
+          
+          <div className="mt-10 flex flex-wrap justify-center gap-6 text-sm text-slate-400">
+            <span>✓ Gratuit & sans engagement</span>
+            <span>✓ Réponse sous 24h</span>
+            <span>✓ Devis détaillé offert</span>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* FOOTER */}
-      <footer className="bg-slate-950 py-16 border-t border-slate-900 text-slate-400 text-sm">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 gap-8 lg:gap-10 xl:gap-12 mb-12">
-          <div className="col-span-1 md:col-span-2">
-            <span className="text-3xl font-black text-white tracking-tighter block mb-6">IPB<span className="text-orange-600">.</span></span>
-            <p className="max-w-sm text-slate-500 leading-relaxed mb-6">
-              Institut de Pathologie du Bâtiment.<br/>
-              L'expertise technique au service de votre patrimoine immobilier en Occitanie.
-            </p>
-            <div className="flex gap-4">
-                <div className="w-10 h-10 bg-slate-900 rounded-lg flex items-center justify-center text-slate-500 hover:bg-orange-600 hover:text-white transition cursor-pointer">In</div>
-                <div className="w-10 h-10 bg-slate-900 rounded-lg flex items-center justify-center text-slate-500 hover:bg-orange-600 hover:text-white transition cursor-pointer">Fb</div>
+      {/* Footer */}
+      <footer className="bg-slate-950 py-16 text-slate-400 text-sm">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+            {/* Marque */}
+            <div>
+              <Link href="/" className="inline-block mb-6">
+                <span className="font-display text-2xl font-bold text-white">IPB<span className="text-orange-500">.</span></span>
+              </Link>
+              <p className="text-slate-500 mb-6 leading-relaxed">
+                Institut de Pathologie du Bâtiment. L'expertise technique au service de votre patrimoine.
+              </p>
+              <div className="space-y-2">
+                <a href="tel:0582953375" className="flex items-center gap-2 hover:text-orange-400 transition">
+                  <Phone size={14} /> 05 82 95 33 75
+                </a>
+                <a href="mailto:contact@ipb-expertise.fr" className="flex items-center gap-2 hover:text-orange-400 transition">
+                  <Mail size={14} /> contact@ipb-expertise.fr
+                </a>
+                <div className="flex items-start gap-2">
+                  <MapPin size={14} className="mt-0.5" />
+                  <span>54 avenue Jean Jaurès, 31170 Tournefeuille</span>
+                </div>
+              </div>
+            </div>
+            
+            {/* Expertises */}
+            <div>
+              <h4 className="text-white font-bold mb-6">Expertises</h4>
+              <ul className="space-y-3">
+                <li><Link href="/expertise/fissures" className="hover:text-orange-400 transition">Fissures & Structure</Link></li>
+                <li><Link href="/expertise/humidite" className="hover:text-orange-400 transition">Humidité & Infiltrations</Link></li>
+                <li><Link href="/diagnostic" className="hover:text-orange-400 transition">Diagnostic gratuit</Link></li>
+                <li><Link href="/contact" className="hover:text-orange-400 transition">Parler à un expert</Link></li>
+              </ul>
+            </div>
+            
+            {/* Zones */}
+            <div>
+              <h4 className="text-white font-bold mb-6">Zones d'intervention</h4>
+              <ul className="space-y-3">
+                <li><Link href="/villes/toulouse" className="hover:text-orange-400 transition">Toulouse & Métropole (31)</Link></li>
+                <li><Link href="/departements/tarn-et-garonne" className="hover:text-orange-400 transition">Tarn-et-Garonne (82)</Link></li>
+                <li><Link href="/departements/gers" className="hover:text-orange-400 transition">Gers (32)</Link></li>
+                <li><Link href="/plan-site" className="hover:text-orange-400 transition">Toutes les villes</Link></li>
+              </ul>
+            </div>
+            
+            {/* Ressources */}
+            <div>
+              <h4 className="text-white font-bold mb-6">Ressources</h4>
+              <ul className="space-y-3">
+                <li><Link href="/blog" className="hover:text-orange-400 transition">Blog & Conseils</Link></li>
+                <li><Link href="/problemes/fissure-verticale-mur-porteur" className="hover:text-orange-400 transition">Fissure mur porteur</Link></li>
+                <li><Link href="/problemes/humidite-murs-peinture-qui-cloque" className="hover:text-orange-400 transition">Peinture qui cloque</Link></li>
+                <li><Link href="/legal/mentions-legales" className="hover:text-orange-400 transition">Mentions légales</Link></li>
+              </ul>
             </div>
           </div>
-          <div>
-            <h4 className="text-white font-bold mb-6 text-base">Problèmes fréquents</h4>
-            <ul className="space-y-4">
-              <li><Link href="/problemes/fissure-verticale-mur-porteur" className="hover:text-orange-500 transition">Fissure mur porteur</Link></li>
-              <li><Link href="/problemes/fissure-escalier-que-faire" className="hover:text-orange-500 transition">Fissure en escalier</Link></li>
-              <li><Link href="/problemes/portes-qui-coincent-fissures" className="hover:text-orange-500 transition">Portes qui coincent</Link></li>
-              <li><Link href="/problemes/humidite-murs-peinture-qui-cloque" className="hover:text-orange-500 transition">Peinture qui cloque</Link></li>
-              <li><Link href="/problemes/moisissures-sante" className="hover:text-orange-500 transition">Moisissures & santé</Link></li>
-            </ul>
+          
+          {/* Bas de page */}
+          <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-slate-500">
+            <span>&copy; {new Date().getFullYear()} IPB - Institut de Pathologie du Bâtiment</span>
+            <div className="flex items-center gap-6">
+              <Link href="/legal/cgv" className="hover:text-white transition">CGV</Link>
+              <Link href="/legal/confidentialite" className="hover:text-white transition">Confidentialité</Link>
+              <span className="flex items-center gap-2 text-emerald-500 text-xs">
+                <span className="w-2 h-2 bg-emerald-500 rounded-full"></span>
+                Site sécurisé SSL
+              </span>
+            </div>
           </div>
-          <div>
-            <h4 className="text-white font-bold mb-6 text-base">Expertises</h4>
-            <ul className="space-y-4">
-              <li>
-                <Link href="/expertise/fissures" className="hover:text-orange-500 transition flex items-center gap-2">
-                  <span className="w-1 h-1 bg-orange-500 rounded-full"></span> Fissures & Structure
-                </Link>
-              </li>
-              <li>
-                <Link href="/expertise/humidite" className="hover:text-orange-500 transition flex items-center gap-2">
-                  <span className="w-1 h-1 bg-orange-500 rounded-full"></span> Humidité & Infiltrations
-                </Link>
-              </li>
-              <li>
-                <Link href="/diagnostic" className="hover:text-orange-500 transition flex items-center gap-2">
-                  <span className="w-1 h-1 bg-orange-500 rounded-full"></span> Diagnostic gratuit
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-orange-500 transition flex items-center gap-2">
-                  <span className="w-1 h-1 bg-orange-500 rounded-full"></span> Parler à un expert
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-white font-bold mb-6 text-base">Quartiers Toulouse</h4>
-            <ul className="space-y-3 text-sm">
-              <li><Link href="/quartiers/capitole" className="hover:text-orange-500 transition">Capitole</Link></li>
-              <li><Link href="/quartiers/saint-cyprien" className="hover:text-orange-500 transition">Saint-Cyprien</Link></li>
-              <li><Link href="/quartiers/compans-caffarelli" className="hover:text-orange-500 transition">Compans-Caffarelli</Link></li>
-              <li><Link href="/quartiers/minimes" className="hover:text-orange-500 transition">Minimes</Link></li>
-              <li><Link href="/quartiers/rangueil" className="hover:text-orange-500 transition">Rangueil</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-white font-bold mb-6 text-base">Haute-Garonne</h4>
-            <ul className="space-y-3 text-sm">
-              <li><Link href="/villes/colomiers" className="hover:text-orange-500 transition">Colomiers</Link></li>
-              <li><Link href="/villes/blagnac" className="hover:text-orange-500 transition">Blagnac</Link></li>
-              <li><Link href="/villes/balma" className="hover:text-orange-500 transition">Balma</Link></li>
-              <li><Link href="/villes/tournefeuille" className="hover:text-orange-500 transition">Tournefeuille</Link></li>
-              <li><Link href="/villes/muret" className="hover:text-orange-500 transition">Muret</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-white font-bold mb-6 text-base">Départements</h4>
-            <ul className="space-y-3 text-sm">
-              <li><Link href="/departements/tarn-et-garonne" className="hover:text-orange-500 transition flex items-center gap-1">
-                <span className="text-orange-500 font-bold">82</span> Tarn-et-Garonne
-              </Link></li>
-              <li><Link href="/villes/montauban" className="hover:text-orange-500 transition pl-5">Montauban</Link></li>
-              <li><Link href="/villes/castelsarrasin" className="hover:text-orange-500 transition pl-5">Castelsarrasin</Link></li>
-              <li><Link href="/departements/gers" className="hover:text-orange-500 transition flex items-center gap-1 mt-4">
-                <span className="text-blue-500 font-bold">32</span> Gers
-              </Link></li>
-              <li><Link href="/villes/auch" className="hover:text-orange-500 transition pl-5">Auch</Link></li>
-              <li><Link href="/villes/condom" className="hover:text-orange-500 transition pl-5">Condom</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-white font-bold mb-6 text-base">Informations</h4>
-            <ul className="space-y-4">
-              <li><Link href="/blog" className="hover:text-orange-500 transition">Blog & Conseils</Link></li>
-              <li><Link href="/legal/mentions-legales" className="hover:text-orange-500 transition">Mentions Légales</Link></li>
-              <li><Link href="/legal/cgv" className="hover:text-orange-500 transition">CGV</Link></li>
-              <li><Link href="/legal/confidentialite" className="hover:text-orange-500 transition">Politique de confidentialité</Link></li>
-              <li><Link href="/contact" className="hover:text-orange-500 transition">Contact</Link></li>
-            </ul>
-          </div>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 text-center border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <span>&copy; 2026 IPB Toulouse. Tous droits réservés.</span>
-          <span className="flex items-center gap-2 text-xs bg-slate-900 px-3 py-1 rounded-full"><div className="w-2 h-2 bg-green-500 rounded-full"></div> Site Sécurisé SSL</span>
         </div>
       </footer>
     </>
   );
 }
-
