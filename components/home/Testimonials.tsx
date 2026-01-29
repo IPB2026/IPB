@@ -2,31 +2,31 @@
 
 import { Star, ExternalLink } from 'lucide-react';
 
-// Vos vrais avis - mettez à jour ces données manuellement depuis votre fiche Google
+// Vrais avis Google My Business - IPB
 const reviews = [
   {
-    name: "Jean D.",
-    location: "Colomiers",
+    name: "Yusra G.",
+    location: "Janvier 2026",
     rating: 5,
-    text: "J'étais terrifiée : mon assurance m'avait dit qu'il fallait des micropieux à 40 000€. L'expert IPB a été transparent : un agrafage suffisait largement. Travail impeccable, maison stabilisée, et j'ai économisé 28 000€. Je recommande à 200%.",
+    text: "Entreprise sérieuse et professionnelle. Diagnostic clair, intervention efficace et résultats visibles sur mes problèmes d'humidité. Équipe ponctuelle et soignée.",
   },
   {
-    name: "Marie L.",
-    location: "Muret",
+    name: "Luc C.",
+    location: "Septembre 2025",
     rating: 5,
-    text: "Le diagnostic en ligne m'a alerté sur la gravité de mes fissures. L'expert est venu le lendemain avec ses instruments. Diagnostic précis, intervention en 2 jours, résultat impeccable. Une équipe professionnelle et rassurante.",
+    text: "J'avais remarqué que la peinture commençait à cloquer en bas du mur avec des traces blanches. J'ai fait venir IPB pour un avis, l'expert a tout de suite vu que l'humidité était le problème. Intervention rapide et efficace !",
   },
   {
-    name: "Pierre R.",
-    location: "Toulouse",
+    name: "Paul T.",
+    location: "Janvier 2026",
     rating: 5,
-    text: "Enfin des experts qui expliquent clairement le problème et la solution ! Mon sous-sol est enfin sec après 10 ans d'humidité. Travaux réalisés dans les temps, équipe soigneuse.",
+    text: "Le travail a été réalisé avec soin et dans les délais ! Merci beaucoup.",
   },
   {
-    name: "Sophie B.",
-    location: "Blagnac",
+    name: "Arnaud B.",
+    location: "Janvier 2026",
     rating: 5,
-    text: "Service irréprochable de A à Z. L'expert IPB a pris le temps de m'expliquer chaque étape. L'injection résine a complètement résolu mon problème d'humidité. Plus de salpêtre, plus d'odeurs.",
+    text: "Au top ! Super service. Équipe professionnelle et réactive. Je recommande vivement.",
   },
 ];
 
