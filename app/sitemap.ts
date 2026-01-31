@@ -78,6 +78,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Pages départements (SEO régional)
   const departementPages: MetadataRoute.Sitemap = [
     {
+      url: `${baseUrl}/departements/haute-garonne`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.85, // Priorité haute car zone principale
+    },
+    {
       url: `${baseUrl}/departements/tarn-et-garonne`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
@@ -85,6 +91,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/departements/gers`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/departements/ariege`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.75,

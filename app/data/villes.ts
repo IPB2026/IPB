@@ -403,6 +403,78 @@ export const villesData: Record<string, VilleInfo> = {
     distance: '95 km',
     description: 'Mirande, bastide du XIIIe siècle au cœur de l\'Astarac',
   },
+
+  // === ARIÈGE (09) ===
+  foix: {
+    nom: 'Foix',
+    codePostal: '09000',
+    departement: 'Ariège (09)',
+    distance: '85 km',
+    description: 'Foix, préfecture de l\'Ariège, dominée par son château médiéval au pied des Pyrénées',
+  },
+  pamiers: {
+    nom: 'Pamiers',
+    codePostal: '09100',
+    departement: 'Ariège (09)',
+    distance: '70 km',
+    description: 'Pamiers, plus grande ville de l\'Ariège, porte d\'entrée des Pyrénées',
+  },
+  'saint-girons': {
+    nom: 'Saint-Girons',
+    codePostal: '09200',
+    departement: 'Ariège (09)',
+    distance: '100 km',
+    description: 'Saint-Girons, ville thermale et touristique du Couserans',
+  },
+  lavelanet: {
+    nom: 'Lavelanet',
+    codePostal: '09300',
+    departement: 'Ariège (09)',
+    distance: '90 km',
+    description: 'Lavelanet, ville industrielle au pied du Montségur',
+  },
+  saverdun: {
+    nom: 'Saverdun',
+    codePostal: '09700',
+    departement: 'Ariège (09)',
+    distance: '55 km',
+    description: 'Saverdun, commune ariégeoise proche de la Haute-Garonne',
+  },
+  mazeres: {
+    nom: 'Mazères',
+    codePostal: '09270',
+    departement: 'Ariège (09)',
+    distance: '50 km',
+    description: 'Mazères, bastide ariégeoise aux portes de l\'Aude',
+  },
+  mirepoix: {
+    nom: 'Mirepoix',
+    codePostal: '09500',
+    departement: 'Ariège (09)',
+    distance: '80 km',
+    description: 'Mirepoix, cité médiévale célèbre pour sa place à couverts',
+  },
+  tarascon: {
+    nom: 'Tarascon-sur-Ariège',
+    codePostal: '09400',
+    departement: 'Ariège (09)',
+    distance: '95 km',
+    description: 'Tarascon-sur-Ariège, ville de montagne connue pour ses grottes préhistoriques',
+  },
+  'la-tour-du-crieu': {
+    nom: 'La Tour-du-Crieu',
+    codePostal: '09100',
+    departement: 'Ariège (09)',
+    distance: '68 km',
+    description: 'La Tour-du-Crieu, commune résidentielle proche de Pamiers',
+  },
+  'varilhes': {
+    nom: 'Varilhes',
+    codePostal: '09120',
+    departement: 'Ariège (09)',
+    distance: '75 km',
+    description: 'Varilhes, commune ariégeoise sur la route de Foix',
+  },
 };
 
 export const villeSlugs = Object.keys(villesData);

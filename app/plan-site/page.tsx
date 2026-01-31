@@ -47,6 +47,19 @@ export default function PlanSitePage() {
             </ul>
           </div>
 
+          {/* Départements */}
+          <div className="bg-white rounded-xl shadow-md p-6">
+            <h2 className="text-xl font-bold text-orange-600 mb-4 flex items-center gap-2">
+              <span>🗺️</span> Départements
+            </h2>
+            <ul className="space-y-2">
+              <li><Link href="/departements/haute-garonne" className="text-slate-700 hover:text-orange-600 transition font-medium">Haute-Garonne (31)</Link></li>
+              <li><Link href="/departements/tarn-et-garonne" className="text-slate-700 hover:text-orange-600 transition font-medium">Tarn-et-Garonne (82)</Link></li>
+              <li><Link href="/departements/gers" className="text-slate-700 hover:text-orange-600 transition font-medium">Gers (32)</Link></li>
+              <li><Link href="/departements/ariege" className="text-slate-700 hover:text-orange-600 transition font-medium">Ariège (09)</Link></li>
+            </ul>
+          </div>
+
           {/* Mentions légales */}
           <div className="bg-white rounded-xl shadow-md p-6">
             <h2 className="text-xl font-bold text-orange-600 mb-4 flex items-center gap-2">
@@ -141,6 +154,17 @@ export default function PlanSitePage() {
             </h2>
             <ul className="space-y-2 text-sm">
               <li><Link href="/blog/secheresse-argile-haute-garonne" className="text-slate-700 hover:text-orange-600 transition">Sol argileux Haute-Garonne</Link></li>
+            </ul>
+          </div>
+
+          {/* Blog - Départements */}
+          <div className="bg-white rounded-xl shadow-md p-6">
+            <h2 className="text-xl font-bold text-orange-600 mb-4 flex items-center gap-2">
+              <span>📍</span> Blog - Départements
+            </h2>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/blog/expert-fissures-gers-guide-complet" className="text-slate-700 hover:text-orange-600 transition">Expert fissures Gers</Link></li>
+              <li><Link href="/blog/fissures-maison-tarn-et-garonne-solutions" className="text-slate-700 hover:text-orange-600 transition">Fissures Tarn-et-Garonne</Link></li>
             </ul>
           </div>
 

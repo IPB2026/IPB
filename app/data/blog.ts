@@ -2665,6 +2665,361 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p class="font-bold text-lg text-slate-900 mt-6">Une cave saine = un diagnostic précis + le bon traitement.</p>
     `
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // NOUVEAUX ARTICLES - SEO DÉPARTEMENTAL (Janvier 2026)
+  // ═══════════════════════════════════════════════════════════════
+
+  'expert-fissures-gers-guide-complet': {
+    slug: 'expert-fissures-gers-guide-complet',
+    title: 'Expert Fissures dans le Gers (32) : Guide Complet 2026',
+    excerpt: 'Votre maison gersoise se fissure ? Découvrez les causes spécifiques au sol gascon, les solutions adaptées et comment choisir le bon expert dans le Gers. Guide complet par IPB.',
+    date: '2026-01-31',
+    readTime: '10 min',
+    category: 'fissures',
+    author: 'Expert IPB',
+    metaDescription: 'Expert fissures Gers : causes des fissures sur les maisons gasconnes, sols argileux, solutions (agrafage, injection). Prix, délais, garanties. Diagnostic gratuit à Auch, Condom, Fleurance.',
+    keywords: ['expert fissures gers', 'fissures maison gers', 'agrafage fissures 32', 'expert fissure auch', 'fissures condom', 'sol argileux gascogne', 'réparation fissures gers'],
+    content: `
+      <div class="mb-8 p-6 bg-amber-50 border-l-4 border-amber-600 rounded-r-lg">
+        <p class="font-bold text-amber-900 mb-2">📍 Vous êtes dans le Gers ?</p>
+        <p class="text-amber-800">Ce guide est spécialement conçu pour les propriétaires gersois. Nous intervenons à Auch, Condom, Fleurance, L'Isle-Jourdain, Mirande et dans tout le département.</p>
+      </div>
+
+      <h2>Pourquoi les maisons du Gers se fissurent-elles ?</h2>
+      
+      <p>Le Gers est un département où les fissures sur les maisons sont particulièrement fréquentes. Mais pourquoi ? Trois facteurs expliquent cette vulnérabilité :</p>
+
+      <h3>1. Le sol argilo-calcaire gascon</h3>
+      <p>La Gascogne repose majoritairement sur un sous-sol <strong>argilo-calcaire</strong>. Ce type de sol a la particularité de :</p>
+      <ul>
+        <li><strong>Gonfler</strong> lorsqu'il pleut (les argiles absorbent l'eau)</li>
+        <li><strong>Se rétracter</strong> en période sèche (jusqu'à 15% de volume perdu)</li>
+        <li><strong>Créer des mouvements de terrain</strong> qui tirent sur les fondations</li>
+      </ul>
+      
+      <p>Les communes les plus touchées : <strong>Auch, Condom, Lectoure, Fleurance</strong> où les sols argileux sont particulièrement sensibles.</p>
+
+      <h3>2. Les sécheresses à répétition</h3>
+      <p>Depuis 2019, le Gers a été classé en <strong>catastrophe naturelle sécheresse</strong> à plusieurs reprises. Les étés 2022 et 2023 ont été dévastateurs :</p>
+      <ul>
+        <li>Températures record dépassant 40°C</li>
+        <li>Déficit pluviométrique de 30 à 50%</li>
+        <li>Sol fissuré sur plusieurs centimètres en surface</li>
+      </ul>
+      <p>Résultat : des centaines de maisons gersoises ont développé des fissures structurelles.</p>
+
+      <h3>3. Le bâti traditionnel gascon</h3>
+      <p>Les maisons gasconnes traditionnelles présentent des caractéristiques qui les rendent vulnérables :</p>
+      <ul>
+        <li><strong>Fondations peu profondes</strong> (souvent 40-60 cm seulement)</li>
+        <li><strong>Murs en pierre ou brique</strong> sans chaînage</li>
+        <li><strong>Constructions des années 70-90</strong> avant les normes anti-sismiques</li>
+      </ul>
+
+      <h2>Les 3 types de fissures rencontrées dans le Gers</h2>
+
+      <h3>Type 1 : Fissures en escalier (les plus fréquentes)</h3>
+      <p>Elles suivent les joints de maçonnerie et forment un "escalier". C'est le signe classique d'un <strong>tassement différentiel</strong> : une partie de la maison s'enfonce plus que l'autre.</p>
+      <p><strong>Gravité</strong> : Moyenne à élevée selon l'ouverture (> 2mm = intervention urgente)</p>
+
+      <h3>Type 2 : Fissures horizontales</h3>
+      <p>Elles apparaissent souvent à la jonction mur/fondation ou sous les fenêtres. Elles indiquent un <strong>mouvement de poussée</strong> ou un affaissement.</p>
+      <p><strong>Gravité</strong> : Élevée - À faire expertiser rapidement</p>
+
+      <h3>Type 3 : Micro-fissures en toile d'araignée</h3>
+      <p>Un réseau de fines fissures (< 0.5mm) sur l'enduit. C'est souvent un <strong>vieillissement de l'enduit</strong> et non un problème structurel.</p>
+      <p><strong>Gravité</strong> : Faible - Ravalement suffisant</p>
+
+      <h2>Solutions de traitement adaptées au Gers</h2>
+
+      <h3>L'agrafage : la solution économique pour 80% des cas</h3>
+      <p>L'agrafage consiste à "recoudre" les murs avec des agrafes en acier inoxydable. C'est la technique idéale pour :</p>
+      <ul>
+        <li>Fissures de tassement modéré (< 5mm d'ouverture)</li>
+        <li>Maisons sur sol stabilisé</li>
+        <li>Budget maîtrisé (8 000€ - 15 000€ en moyenne)</li>
+      </ul>
+      
+      <div class="my-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+        <p class="font-bold text-green-800">✅ Avantage Gers : L'agrafage est particulièrement efficace sur les maisons gasconnes en brique, car il s'adapte parfaitement à ce type de maçonnerie.</p>
+      </div>
+
+      <h3>L'injection de résine : pour les fondations</h3>
+      <p>Si les fondations ont bougé, l'injection de résine expansive permet de :</p>
+      <ul>
+        <li>Combler les vides sous les fondations</li>
+        <li>Relever légèrement la structure (jusqu'à quelques centimètres)</li>
+        <li>Stabiliser durablement le sol</li>
+      </ul>
+      <p><strong>Coût moyen</strong> : 6 000€ - 12 000€</p>
+
+      <h3>Les micropieux : en dernier recours</h3>
+      <p>Pour les cas les plus graves (affaissement > 10 cm, sol très instable), les micropieux ancrent la maison sur une couche de sol stable en profondeur.</p>
+      <p><strong>Coût moyen</strong> : 25 000€ - 50 000€</p>
+      <p><strong>Notre conseil</strong> : Dans le Gers, les micropieux sont rarement nécessaires. Méfiez-vous des entreprises qui vous les proposent systématiquement.</p>
+
+      <h2>Comment choisir son expert fissures dans le Gers ?</h2>
+
+      <h3>Les critères essentiels</h3>
+      <ul>
+        <li><strong>Garantie décennale</strong> : Obligatoire, demandez l'attestation</li>
+        <li><strong>Connaissance du terrain local</strong> : L'expert doit connaître les sols gersois</li>
+        <li><strong>Diagnostic avant devis</strong> : Fuyez ceux qui proposent des travaux sans expertise</li>
+        <li><strong>Plusieurs solutions proposées</strong> : Pas seulement la plus chère</li>
+      </ul>
+
+      <h3>Les questions à poser</h3>
+      <ol>
+        <li>Avez-vous déjà traité des maisons dans le Gers ?</li>
+        <li>Pouvez-vous me montrer des références locales ?</li>
+        <li>Le diagnostic est-il gratuit ?</li>
+        <li>Quelle est la durée de garantie des travaux ?</li>
+      </ol>
+
+      <h2>Prix des interventions dans le Gers</h2>
+      
+      <div class="my-6 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-200">
+          <thead class="bg-slate-100">
+            <tr>
+              <th class="border border-slate-200 p-3 text-left">Intervention</th>
+              <th class="border border-slate-200 p-3 text-left">Prix moyen</th>
+              <th class="border border-slate-200 p-3 text-left">Délai</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-200 p-3">Diagnostic expert</td>
+              <td class="border border-slate-200 p-3 font-bold text-green-600">Gratuit (IPB)</td>
+              <td class="border border-slate-200 p-3">3-5 jours</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3">Agrafage façade</td>
+              <td class="border border-slate-200 p-3">8 000€ - 15 000€</td>
+              <td class="border border-slate-200 p-3">3-5 jours</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3">Injection résine</td>
+              <td class="border border-slate-200 p-3">6 000€ - 12 000€</td>
+              <td class="border border-slate-200 p-3">1-2 jours</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3">Micropieux</td>
+              <td class="border border-slate-200 p-3">25 000€ - 50 000€</td>
+              <td class="border border-slate-200 p-3">2-4 semaines</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Villes du Gers où nous intervenons</h2>
+      <p>IPB intervient dans tout le département du Gers (32) :</p>
+      <ul>
+        <li><strong>Auch</strong> : Préfecture, zone très touchée par les fissures</li>
+        <li><strong>Condom</strong> : Bâti ancien sensible aux mouvements de terrain</li>
+        <li><strong>Fleurance</strong> : Maisons des années 80 particulièrement vulnérables</li>
+        <li><strong>L'Isle-Jourdain</strong> : Proche Toulouse, sols argileux identiques</li>
+        <li><strong>Mirande</strong> : Bastide ancienne avec problématiques spécifiques</li>
+        <li><strong>Lectoure, Gimont, Lombez</strong> : Et toutes les communes du département</li>
+      </ul>
+
+      <h2>Conclusion : agissez avant que ça s'aggrave</h2>
+      
+      <p>Les fissures dans le Gers ne sont pas une fatalité. Mais plus vous attendez, plus :</p>
+      <ul>
+        <li>Les fissures s'aggravent (surtout en été)</li>
+        <li>Les travaux coûtent cher</li>
+        <li>La valeur de votre maison baisse</li>
+      </ul>
+
+      <p><strong>Notre conseil</strong> : Faites réaliser un diagnostic gratuit dès les premiers signes. Un expert se déplace chez vous, évalue la situation, et vous propose des solutions adaptées à votre cas et votre budget.</p>
+
+      <p class="font-bold text-lg text-slate-900 mt-6">📞 IPB intervient dans tout le Gers. Diagnostic gratuit sous 5 jours : 05 82 95 33 75</p>
+    `
+  },
+
+  'fissures-maison-tarn-et-garonne-solutions': {
+    slug: 'fissures-maison-tarn-et-garonne-solutions',
+    title: 'Fissures Maison Tarn-et-Garonne : Causes et Solutions Efficaces',
+    excerpt: 'Fissures sur votre maison à Montauban, Castelsarrasin ou Moissac ? Découvrez pourquoi le Tarn-et-Garonne est particulièrement touché et les solutions durables pour protéger votre patrimoine.',
+    date: '2026-01-31',
+    readTime: '9 min',
+    category: 'fissures',
+    author: 'Expert IPB',
+    metaDescription: 'Expert fissures Tarn-et-Garonne : causes des fissures à Montauban, Castelsarrasin, Moissac. Sol argileux, sécheresse. Solutions agrafage, injection. Diagnostic gratuit.',
+    keywords: ['expert fissures tarn et garonne', 'fissures maison montauban', 'fissure 82', 'agrafage tarn et garonne', 'expert fissure castelsarrasin', 'sol argileux 82'],
+    content: `
+      <div class="mb-8 p-6 bg-rose-50 border-l-4 border-rose-600 rounded-r-lg">
+        <p class="font-bold text-rose-900 mb-2">🏠 Propriétaire dans le 82 ?</p>
+        <p class="text-rose-800">Le Tarn-et-Garonne fait partie des départements les plus touchés par les fissures liées à la sécheresse. Ce guide vous aide à comprendre et agir.</p>
+      </div>
+
+      <h2>Le Tarn-et-Garonne : un département à risque</h2>
+      
+      <p>Le Tarn-et-Garonne (82) cumule plusieurs facteurs de risque qui en font l'un des départements les plus touchés par les fissures sur maisons :</p>
+
+      <h3>Un sol à dominante argileuse</h3>
+      <p>Plus de <strong>70% du territoire</strong> du Tarn-et-Garonne repose sur des formations argileuses ou argilo-calcaires. Ces sols sont classés en <strong>aléa moyen à fort</strong> pour le retrait-gonflement des argiles.</p>
+      
+      <p>Les zones les plus sensibles :</p>
+      <ul>
+        <li><strong>Montauban et sa périphérie</strong> : Sol argileux profond</li>
+        <li><strong>Castelsarrasin - Moissac</strong> : Plaine alluviale avec poches argileuses</li>
+        <li><strong>Caussade - Septfonds</strong> : Argiles du Quercy</li>
+        <li><strong>Valence d'Agen</strong> : Terrasses argileuses de la Garonne</li>
+      </ul>
+
+      <h3>Des épisodes de sécheresse dévastateurs</h3>
+      <p>Le Tarn-et-Garonne a été reconnu en <strong>état de catastrophe naturelle sécheresse</strong> pour :</p>
+      <ul>
+        <li>2019 : 95 communes reconnues</li>
+        <li>2020 : 78 communes reconnues</li>
+        <li>2022 : Quasi-totalité du département</li>
+        <li>2023 : Reconnaissance en cours pour de nombreuses communes</li>
+      </ul>
+      
+      <div class="my-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+        <p class="font-bold text-amber-800">💡 Bon à savoir : Si votre commune est reconnue en catastrophe naturelle, votre assurance habitation peut couvrir une partie des travaux. Vérifiez auprès de votre assureur.</p>
+      </div>
+
+      <h3>Un parc immobilier vulnérable</h3>
+      <p>La majorité des maisons du Tarn-et-Garonne ont été construites entre <strong>1960 et 1995</strong>, une période où :</p>
+      <ul>
+        <li>Les fondations étaient peu profondes (40-60 cm)</li>
+        <li>Les études de sol n'étaient pas obligatoires</li>
+        <li>Les risques de retrait-gonflement étaient méconnus</li>
+      </ul>
+
+      <h2>Reconnaître les fissures dangereuses</h2>
+
+      <h3>Signaux d'alerte à ne pas ignorer</h3>
+      <ul>
+        <li><strong>Fissures en escalier</strong> suivant les joints de briques ou parpaings</li>
+        <li><strong>Fissures qui s'élargissent</strong> au fil des saisons</li>
+        <li><strong>Portes et fenêtres qui coincent</strong> ou ne ferment plus</li>
+        <li><strong>Carrelage qui se soulève</strong> ou se fissure</li>
+        <li><strong>Décollement</strong> entre la maison et la terrasse</li>
+      </ul>
+
+      <h3>Comment mesurer l'urgence ?</h3>
+      <div class="my-6 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-200">
+          <thead class="bg-slate-100">
+            <tr>
+              <th class="border border-slate-200 p-3 text-left">Ouverture</th>
+              <th class="border border-slate-200 p-3 text-left">Niveau</th>
+              <th class="border border-slate-200 p-3 text-left">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-200 p-3">< 0.5 mm</td>
+              <td class="border border-slate-200 p-3 text-green-600 font-bold">Surveillance</td>
+              <td class="border border-slate-200 p-3">Surveiller l'évolution</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3">0.5 - 2 mm</td>
+              <td class="border border-slate-200 p-3 text-amber-600 font-bold">Attention</td>
+              <td class="border border-slate-200 p-3">Faire diagnostiquer</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3">> 2 mm</td>
+              <td class="border border-slate-200 p-3 text-red-600 font-bold">Urgent</td>
+              <td class="border border-slate-200 p-3">Intervention rapide</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Solutions adaptées au Tarn-et-Garonne</h2>
+
+      <h3>1. L'agrafage structurel</h3>
+      <p>Technique de "couture" des murs avec des agrafes en inox. Particulièrement adaptée aux maisons en <strong>brique rose</strong> typiques de Montauban et du Tarn-et-Garonne.</p>
+      
+      <p><strong>Avantages :</strong></p>
+      <ul>
+        <li>Coût 3x inférieur aux micropieux</li>
+        <li>Intervention en 3-5 jours</li>
+        <li>Pas de terrassement important</li>
+        <li>Garantie décennale</li>
+      </ul>
+      <p><strong>Prix</strong> : 8 000€ - 18 000€ selon l'ampleur</p>
+
+      <h3>2. L'injection de résine expansive</h3>
+      <p>Injection sous les fondations pour combler les vides créés par le retrait des argiles. Cette technique permet même de "relever" légèrement une maison affaissée.</p>
+      
+      <p><strong>Idéale pour :</strong></p>
+      <ul>
+        <li>Sols argileux ayant subi un retrait important</li>
+        <li>Fondations sur vide</li>
+        <li>Affaissements légers (< 5 cm)</li>
+      </ul>
+      <p><strong>Prix</strong> : 6 000€ - 15 000€</p>
+
+      <h3>3. Renforcement des fondations</h3>
+      <p>Pour les cas les plus graves, élargissement ou approfondissement des fondations existantes. Technique lourde réservée aux situations critiques.</p>
+
+      <h2>Nos interventions à Montauban et environs</h2>
+
+      <h3>Témoignage : Maison à Montauban (quartier Villebourbon)</h3>
+      <blockquote class="my-6 p-4 bg-slate-50 border-l-4 border-slate-400 italic">
+        "Notre maison de 1985 présentait des fissures en escalier depuis 3 ans. Après le diagnostic IPB, nous avons opté pour l'agrafage. Coût total : 12 500€. Travaux réalisés en 4 jours, fissures stabilisées depuis 2 ans maintenant."
+        <footer class="mt-2 text-sm text-slate-600 not-italic">— M. et Mme D., Montauban</footer>
+      </blockquote>
+
+      <h3>Zones d'intervention dans le 82</h3>
+      <ul>
+        <li><strong>Montauban</strong> : Villebourbon, Sapiac, Lalande, Bas-Pays</li>
+        <li><strong>Castelsarrasin</strong> et communes limitrophes</li>
+        <li><strong>Moissac</strong> : Centre et périphérie</li>
+        <li><strong>Caussade, Septfonds, Réalville</strong></li>
+        <li><strong>Valence d'Agen, Lauzerte, Beaumont-de-Lomagne</strong></li>
+      </ul>
+
+      <h2>Assurance et catastrophe naturelle : vos droits</h2>
+
+      <h3>Comment fonctionne la prise en charge ?</h3>
+      <ol>
+        <li><strong>Arrêté de catastrophe naturelle</strong> publié au Journal Officiel</li>
+        <li><strong>Déclaration</strong> à votre assureur sous 10 jours</li>
+        <li><strong>Expertise</strong> par l'assurance pour évaluer les dégâts</li>
+        <li><strong>Indemnisation</strong> (avec franchise légale de 1 520€)</li>
+      </ol>
+
+      <div class="my-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <p class="font-bold text-blue-800">📋 Notre conseil : Même si l'arrêté n'est pas encore publié, faites constater les dégâts par un expert indépendant. Ce document sera précieux pour votre dossier d'assurance.</p>
+      </div>
+
+      <h2>Prévenir les futures fissures</h2>
+
+      <h3>Actions préventives recommandées</h3>
+      <ul>
+        <li><strong>Éloigner les arbres</strong> : Distance minimale = hauteur adulte de l'arbre</li>
+        <li><strong>Gérer les eaux pluviales</strong> : Gouttières, drainage périphérique</li>
+        <li><strong>Arrosage régulier</strong> en été pour maintenir l'hydratation du sol</li>
+        <li><strong>Éviter les haies en pied de mur</strong> qui assèchent le sol</li>
+      </ul>
+
+      <h2>Pourquoi faire appel à IPB dans le Tarn-et-Garonne ?</h2>
+
+      <ul>
+        <li><strong>Expertise locale</strong> : Nous connaissons les sols du 82</li>
+        <li><strong>Diagnostic gratuit</strong> : Sans engagement, sous 5 jours</li>
+        <li><strong>Solutions adaptées</strong> : Pas de sur-traitement, le juste nécessaire</li>
+        <li><strong>Garantie décennale</strong> : 10 ans de tranquillité</li>
+        <li><strong>Prix transparents</strong> : Devis détaillé, pas de surprise</li>
+      </ul>
+
+      <h2>Conclusion</h2>
+      
+      <p>Le Tarn-et-Garonne est un département où les fissures sont <strong>fréquentes mais pas inévitables</strong>. Avec le bon diagnostic et les bonnes solutions, votre maison peut retrouver sa stabilité pour des décennies.</p>
+
+      <p><strong>L'erreur à éviter</strong> : Attendre que les fissures s'aggravent. Chaque été de sécheresse aggrave la situation et augmente le coût des travaux.</p>
+
+      <p class="font-bold text-lg text-slate-900 mt-6">📞 Expert fissures Tarn-et-Garonne - Diagnostic gratuit : 05 82 95 33 75</p>
+    `
   }
 };
 
