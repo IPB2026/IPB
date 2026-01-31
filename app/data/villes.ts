@@ -210,7 +210,7 @@ export const villesData: Record<string, VilleInfo> = {
     distance: '12 km',
     description: 'Saint-Alban, ville de la couronne nord toulousaine',
   },
-  'bruguières': {
+  'bruguieres': {
     nom: 'Bruguières',
     codePostal: '31150',
     departement: 'Haute-Garonne (31)',
@@ -315,7 +315,7 @@ export const villesData: Record<string, VilleInfo> = {
     distance: '18 km',
     description: 'Gragnague, commune au nord-est de Toulouse',
   },
-  'baziège': {
+  'baziege': {
     nom: 'Baziège',
     codePostal: '31450',
     departement: 'Haute-Garonne (31)',

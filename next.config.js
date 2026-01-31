@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Trailing slash désactivé pour éviter les doublons d'URL
+  trailingSlash: false,
+  
   // Optimisations de performance
   images: {
     formats: ['image/avif', 'image/webp'],
