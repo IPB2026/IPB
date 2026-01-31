@@ -84,7 +84,9 @@ export const metadata: Metadata = {
   },
   verification: {
     // google: 'your-google-verification-code',
-    // yandex: 'your-yandex-verification-code',
+    other: {
+      'msvalidate.01': 'B375176CFD87F6AF51C546321349C7B2',
+    },
   },
 }
 
