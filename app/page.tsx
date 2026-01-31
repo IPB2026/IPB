@@ -14,7 +14,7 @@ import { ExitIntentPopup } from '@/components/blog/ExitIntentPopup';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Expert Fissures & Humidité Toulouse, Montauban, Auch | IPB - 31, 82, 32",
+  title: "Expert Fissures & Humidité Toulouse | IPB Haute-Garonne",
   description: "Expert fissures et humidité à Toulouse (31, 82, 32). Agrafage, injection résine, garantie décennale. Diagnostic gratuit sous 48h.",
   keywords: [
     'expert fissures toulouse',
