@@ -6,6 +6,13 @@ import { Calendar } from 'lucide-react';
 export const metadata = {
   title: 'Conditions Générales de Vente - IPB',
   description: 'Conditions générales de vente de l\'Institut de Pathologie du Bâtiment (IPB)',
+  alternates: {
+    canonical: 'https://www.ipb-expertise.fr/legal/cgv',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function CGVPage() {

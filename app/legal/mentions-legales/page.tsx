@@ -6,6 +6,13 @@ import { Calendar } from 'lucide-react';
 export const metadata = {
   title: 'Mentions Légales - IPB',
   description: 'Mentions légales de l\'Institut de Pathologie du Bâtiment (IPB)',
+  alternates: {
+    canonical: 'https://www.ipb-expertise.fr/legal/mentions-legales',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function MentionsLegalesPage() {

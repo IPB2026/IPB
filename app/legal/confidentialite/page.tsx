@@ -6,6 +6,13 @@ import { Calendar } from 'lucide-react';
 export const metadata = {
   title: 'Politique de Confidentialité - IPB',
   description: 'Politique de confidentialité et protection des données personnelles de l\'Institut de Pathologie du Bâtiment (IPB)',
+  alternates: {
+    canonical: 'https://www.ipb-expertise.fr/legal/confidentialite',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function ConfidentialitePage() {

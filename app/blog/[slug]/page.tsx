@@ -37,6 +37,13 @@ const categoryLabels = {
 };
 
 /**
+ * Génération statique des pages blog (IMPORTANT pour SEO)
+ */
+export async function generateStaticParams() {
+  return blogPostsSlugs.map((slug) => ({ slug }));
+}
+
+/**
  * Génération dynamique des metadata SEO
  */
 export async function generateMetadata(
