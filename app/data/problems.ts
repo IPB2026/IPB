@@ -102,11 +102,29 @@ export const problemPages: ProblemPage[] = [
   },
   {
     slug: 'odeur-humidite-maison',
-    title: 'Odeur d’humidité persistante : d’où vient le problème ?',
+    title: "Odeur d'humidité persistante : d'où vient le problème ?",
     excerpt:
       'Une odeur persistante cache souvent une cause structurelle. Voici comment la localiser.',
     category: 'humidite',
     keywords: ['odeur humidite', 'moisissures', 'air vicié'],
+    primaryServiceUrl: '/expertise/humidite',
+  },
+  {
+    slug: 'merule-champignon-bois-maison',
+    title: 'Mérule : comment reconnaître ce champignon destructeur ?',
+    excerpt:
+      'La mérule est le champignon le plus dangereux pour votre maison. Apprenez à l\'identifier avant qu\'il ne soit trop tard.',
+    category: 'humidite',
+    keywords: ['mérule', 'champignon maison', 'champignon bois', 'pourriture bois', 'mérule pleureuse'],
+    primaryServiceUrl: '/expertise/humidite',
+  },
+  {
+    slug: 'salpetre-poudre-blanche-mur',
+    title: 'Salpêtre : cette poudre blanche sur vos murs est un signal d\'alarme',
+    excerpt:
+      'Le salpêtre révèle un problème d\'humidité ascendante. Découvrez pourquoi il apparaît et comment l\'éliminer définitivement.',
+    category: 'humidite',
+    keywords: ['salpêtre', 'poudre blanche mur', 'remontée capillaire', 'nitrate potassium'],
     primaryServiceUrl: '/expertise/humidite',
   },
 ];

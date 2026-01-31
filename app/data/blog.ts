@@ -2840,6 +2840,390 @@ const blogPosts: { [key: string]: BlogPost } = {
     `
   },
 
+  'merule-champignon-maison-danger': {
+    slug: 'merule-champignon-maison-danger',
+    title: 'Mérule : Le Champignon qui Dévore les Maisons (Guide Complet 2026)',
+    excerpt: 'La mérule est le cauchemar des propriétaires. Ce champignon lignivore détruit silencieusement les charpentes et boiseries. Comment l\'identifier, l\'éliminer et surtout : comment éviter qu\'elle ne revienne.',
+    date: '2026-01-31',
+    readTime: '12 min',
+    category: 'humidite',
+    author: 'Expert IPB',
+    metaDescription: 'Mérule maison : identification, dangers, traitement, prix. Expert champignon lignivore Toulouse. Comment reconnaître la mérule, la différencier des autres champignons, et l\'éliminer définitivement.',
+    keywords: ['mérule', 'merule', 'champignon maison', 'champignon bois', 'mérule pleureuse', 'traitement mérule', 'mérule toulouse', 'champignon lignivore', 'pourriture bois'],
+    content: `
+      <div class="mb-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
+        <p class="font-bold text-red-900 mb-2">🚨 La mérule est une urgence</p>
+        <p class="text-red-800">La mérule peut détruire une charpente en quelques mois. Si vous suspectez sa présence, <strong>n'attendez pas</strong>. Chaque semaine de retard aggrave les dégâts et augmente le coût des travaux.</p>
+      </div>
+
+      <h2>Qu'est-ce que la mérule ?</h2>
+      
+      <p>La <strong>mérule pleureuse</strong> (Serpula lacrymans) est un champignon lignivore, c'est-à-dire qu'il se nourrit du bois. Mais contrairement aux autres champignons du bois, la mérule est particulièrement dangereuse car :</p>
+
+      <ul>
+        <li><strong>Elle se développe dans l'obscurité</strong> : Derrière les cloisons, sous les planchers, dans les caves</li>
+        <li><strong>Elle traverse les murs</strong> : Ses filaments (mycélium) peuvent traverser la maçonnerie pour atteindre d'autres boiseries</li>
+        <li><strong>Elle crée sa propre humidité</strong> : Une fois installée, elle génère l'eau dont elle a besoin</li>
+        <li><strong>Elle détruit le bois en profondeur</strong> : Le bois devient friable, se casse en cubes ("pourriture cubique")</li>
+      </ul>
+
+      <p class="font-bold text-lg text-slate-900 my-6">La mérule est surnommée "le cancer du bâtiment" car elle se propage silencieusement et peut rendre une maison inhabitable.</p>
+
+      <h2>Comment reconnaître la mérule ?</h2>
+
+      <h3>Les signes visuels caractéristiques</h3>
+      
+      <ul>
+        <li><strong>Filaments blancs cotonneux</strong> (mycélium) sur les murs, les bois, dans les coins sombres</li>
+        <li><strong>Carpophore</strong> (partie visible du champignon) : masse brunâtre/orangée, aspect de crêpe ou d'éponge, bordure blanche</li>
+        <li><strong>Cordons gris</strong> : Sortes de "racines" qui traversent les joints et les murs</li>
+        <li><strong>Bois qui s'effrite</strong> en cubes, comme du bois de chauffage pourri</li>
+        <li><strong>Peinture qui cloque</strong> ou papier peint qui se décolle</li>
+      </ul>
+
+      <h3>Les signes olfactifs</h3>
+      <p>La mérule dégage une <strong>odeur caractéristique de champignon forestier</strong>, parfois décrite comme "odeur de cave humide" ou "de sous-bois". Si vous sentez cette odeur dans une pièce fermée, c'est un signal d'alerte.</p>
+
+      <h3>Les conditions favorables</h3>
+      <p>La mérule se développe dans un environnement précis :</p>
+      <ul>
+        <li><strong>Humidité</strong> : Taux supérieur à 22% dans le bois</li>
+        <li><strong>Température</strong> : Entre 20°C et 26°C (idéal : 23°C)</li>
+        <li><strong>Obscurité</strong> : Absence de lumière directe</li>
+        <li><strong>Confinement</strong> : Manque de ventilation</li>
+      </ul>
+
+      <div class="my-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+        <p class="font-bold text-amber-800">💡 Bon à savoir : La mérule est plus fréquente dans les régions humides (Bretagne, Nord, Normandie) mais elle existe aussi en Occitanie, notamment dans les maisons anciennes avec problèmes d'humidité.</p>
+      </div>
+
+      <h2>Mérule vs autres champignons : ne pas confondre</h2>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-200">
+          <thead class="bg-slate-900 text-white">
+            <tr>
+              <th class="border border-slate-300 p-3 text-left">Caractéristique</th>
+              <th class="border border-slate-300 p-3 text-center">Mérule</th>
+              <th class="border border-slate-300 p-3 text-center">Coniophore</th>
+              <th class="border border-slate-300 p-3 text-center">Moisissure</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-200 p-3 font-bold">Danger</td>
+              <td class="border border-slate-200 p-3 text-center bg-red-50 text-red-700 font-bold">Extrême</td>
+              <td class="border border-slate-200 p-3 text-center bg-orange-50 text-orange-700">Élevé</td>
+              <td class="border border-slate-200 p-3 text-center bg-yellow-50 text-yellow-700">Modéré</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-bold">Apparence</td>
+              <td class="border border-slate-200 p-3 text-center">Masse orange/brune, bord blanc</td>
+              <td class="border border-slate-200 p-3 text-center">Croûte brune/olive</td>
+              <td class="border border-slate-200 p-3 text-center">Taches noires/vertes</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-bold">Traverse les murs</td>
+              <td class="border border-slate-200 p-3 text-center font-bold text-red-600">OUI</td>
+              <td class="border border-slate-200 p-3 text-center">Non</td>
+              <td class="border border-slate-200 p-3 text-center">Non</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-bold">Dégâts sur le bois</td>
+              <td class="border border-slate-200 p-3 text-center">Pourriture cubique profonde</td>
+              <td class="border border-slate-200 p-3 text-center">Pourriture cubique</td>
+              <td class="border border-slate-200 p-3 text-center">Superficiel</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-bold">Traitement</td>
+              <td class="border border-slate-200 p-3 text-center">Lourd et coûteux</td>
+              <td class="border border-slate-200 p-3 text-center">Modéré</td>
+              <td class="border border-slate-200 p-3 text-center">Simple</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Les dangers de la mérule</h2>
+
+      <h3>1. Dangers structurels</h3>
+      <p>La mérule ne se contente pas de dégrader l'aspect du bois. Elle le détruit en profondeur :</p>
+      <ul>
+        <li><strong>Charpentes</strong> : Risque d'effondrement de toiture</li>
+        <li><strong>Planchers</strong> : Solives qui cèdent, planchers qui s'affaissent</li>
+        <li><strong>Escaliers</strong> : Marches qui cassent</li>
+        <li><strong>Huisseries</strong> : Portes et fenêtres qui ne ferment plus</li>
+      </ul>
+
+      <h3>2. Dangers pour la santé</h3>
+      <p>La mérule libère des <strong>spores</strong> dans l'air qui peuvent provoquer :</p>
+      <ul>
+        <li>Allergies respiratoires</li>
+        <li>Irritations des yeux et de la peau</li>
+        <li>Asthme aggravé</li>
+        <li>Fatigue chronique</li>
+      </ul>
+
+      <h3>3. Dangers financiers</h3>
+      <ul>
+        <li><strong>Coût du traitement</strong> : 15 000€ à 100 000€+ selon l'étendue</li>
+        <li><strong>Dépréciation immobilière</strong> : -20% à -50% de la valeur</li>
+        <li><strong>Obligation de déclaration</strong> : Dans certaines zones (Bretagne, Normandie), vous devez déclarer la mérule en mairie</li>
+      </ul>
+
+      <h2>Traitement de la mérule : les étapes</h2>
+
+      <h3>1. Diagnostic professionnel (obligatoire)</h3>
+      <p>Un expert doit identifier avec certitude qu'il s'agit de mérule et non d'un autre champignon. Le diagnostic comprend :</p>
+      <ul>
+        <li>Inspection visuelle complète (y compris espaces cachés)</li>
+        <li>Mesure d'humidité des matériaux</li>
+        <li>Prélèvement et analyse en laboratoire si doute</li>
+        <li>Cartographie de la zone contaminée</li>
+      </ul>
+
+      <h3>2. Traitement curatif</h3>
+      <p>Le traitement de la mérule est un chantier lourd qui comprend :</p>
+      
+      <ol>
+        <li><strong>Mise à nu</strong> : Retrait des enduits, plâtres, isolants jusqu'à 1m au-delà de la zone visible</li>
+        <li><strong>Destruction des bois infestés</strong> : Tous les bois touchés doivent être retirés et brûlés (pas de réemploi)</li>
+        <li><strong>Traitement des maçonneries</strong> : Brossage, décapage, puis traitement fongicide en profondeur (injection sous pression)</li>
+        <li><strong>Traitement des bois conservés</strong> : Application de produits fongicides sur tous les bois à moins de 3m de la zone infestée</li>
+        <li><strong>Traitement de la cause</strong> : Élimination de la source d'humidité (indispensable, sinon la mérule reviendra)</li>
+        <li><strong>Reconstruction</strong> : Remplacement des bois, enduits, finitions</li>
+      </ol>
+
+      <div class="my-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+        <p class="font-bold text-red-800">⚠️ Attention : Un traitement superficiel (juste "tuer" le champignon visible) est inefficace. La mérule reviendra si vous ne traitez pas la source d'humidité ET tous les matériaux contaminés.</p>
+      </div>
+
+      <h2>Coût du traitement de la mérule</h2>
+
+      <div class="my-6 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-200">
+          <thead class="bg-slate-100">
+            <tr>
+              <th class="border border-slate-200 p-3 text-left">Étendue</th>
+              <th class="border border-slate-200 p-3 text-left">Description</th>
+              <th class="border border-slate-200 p-3 text-left">Coût estimé</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-200 p-3 font-bold">Localisée</td>
+              <td class="border border-slate-200 p-3">1 pièce, détection précoce</td>
+              <td class="border border-slate-200 p-3">10 000€ - 25 000€</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-bold">Modérée</td>
+              <td class="border border-slate-200 p-3">Plusieurs pièces, charpente touchée</td>
+              <td class="border border-slate-200 p-3">25 000€ - 60 000€</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-bold">Étendue</td>
+              <td class="border border-slate-200 p-3">Maison entière, structure compromise</td>
+              <td class="border border-slate-200 p-3">60 000€ - 150 000€+</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>Assurance</strong> : La mérule est rarement couverte par l'assurance habitation standard. Vérifiez votre contrat ou souscrivez une garantie spécifique si vous êtes dans une zone à risque.</p>
+
+      <h2>Comment prévenir la mérule ?</h2>
+
+      <p>La mérule a besoin d'humidité pour se développer. La prévention passe donc par :</p>
+
+      <ul>
+        <li><strong>Ventiler</strong> : Aérer régulièrement caves, greniers, pièces humides</li>
+        <li><strong>Traiter l'humidité</strong> : Remontées capillaires, infiltrations, condensation</li>
+        <li><strong>Surveiller</strong> : Inspecter régulièrement les espaces sombres et humides</li>
+        <li><strong>Réparer rapidement</strong> : Toute fuite d'eau doit être traitée immédiatement</li>
+        <li><strong>Traiter les bois</strong> : Produits fongicides préventifs sur les charpentes</li>
+      </ul>
+
+      <h2>La mérule en Occitanie : existe-t-elle ?</h2>
+
+      <p>Contrairement aux idées reçues, la mérule n'est pas réservée aux régions du Nord. En Occitanie, on la trouve :</p>
+      <ul>
+        <li>Dans les <strong>maisons anciennes</strong> avec problèmes d'humidité non traités</li>
+        <li>Dans les <strong>caves et sous-sols</strong> mal ventilés</li>
+        <li>Après des <strong>dégâts des eaux</strong> mal séchés</li>
+        <li>Dans les <strong>bâtiments inoccupés</strong> pendant longtemps</li>
+      </ul>
+
+      <p>À Toulouse et en Haute-Garonne, nous intervenons régulièrement sur des cas de champignons lignivores. Si le climat est globalement plus sec qu'en Bretagne, les maisons anciennes avec remontées capillaires présentent les mêmes risques.</p>
+
+      <h2>Que faire si vous suspectez la mérule ?</h2>
+
+      <ol>
+        <li><strong>Ne touchez à rien</strong> : Évitez de gratter ou nettoyer, vous risquez de disperser les spores</li>
+        <li><strong>Aérez</strong> : Ouvrez les fenêtres pour réduire l'humidité ambiante</li>
+        <li><strong>Photographiez</strong> : Documentez ce que vous voyez</li>
+        <li><strong>Faites appel à un expert</strong> : Seul un professionnel peut confirmer le diagnostic</li>
+        <li><strong>N'attendez pas</strong> : Chaque semaine compte avec la mérule</li>
+      </ol>
+
+      <h2>Conclusion</h2>
+
+      <p>La mérule est un problème grave mais pas une fatalité. Détectée tôt, elle peut être traitée efficacement. La clé est de :</p>
+      <ul>
+        <li><strong>Agir vite</strong> dès les premiers signes suspects</li>
+        <li><strong>Faire appel à des professionnels</strong> qualifiés</li>
+        <li><strong>Traiter la cause</strong> (humidité) et pas seulement les symptômes</li>
+      </ul>
+
+      <p class="font-bold text-lg text-slate-900 mt-6">📞 Suspicion de mérule ou champignon ? Diagnostic expert : 05 82 95 33 75</p>
+    `
+  },
+
+  'salpetre-toulouse-traitement-definitif': {
+    slug: 'salpetre-toulouse-traitement-definitif',
+    title: 'Salpêtre à Toulouse : Causes, Diagnostic et Traitement Définitif',
+    excerpt: 'Poudre blanche sur vos murs à Toulouse ? C\'est probablement du salpêtre, signe de remontées capillaires. Découvrez pourquoi les maisons toulousaines sont touchées et comment éliminer ce problème définitivement.',
+    date: '2026-01-31',
+    readTime: '8 min',
+    category: 'humidite',
+    author: 'Expert IPB',
+    metaDescription: 'Salpêtre Toulouse : expert traitement définitif. Pourquoi les maisons toulousaines sont touchées, solutions injection résine, prix. Diagnostic gratuit Haute-Garonne.',
+    keywords: ['salpêtre toulouse', 'salpetre mur toulouse', 'traitement salpêtre 31', 'poudre blanche mur', 'remontée capillaire toulouse', 'humidité mur toulouse'],
+    content: `
+      <div class="mb-8 p-6 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg">
+        <p class="font-bold text-blue-900 mb-2">📍 Vous êtes à Toulouse ou en Haute-Garonne ?</p>
+        <p class="text-blue-800">Ce guide traite spécifiquement du salpêtre dans les maisons de la région toulousaine, avec ses particularités liées au sol argileux et au bâti local.</p>
+      </div>
+
+      <h2>Pourquoi le salpêtre est fréquent à Toulouse ?</h2>
+      
+      <p>Toulouse et sa périphérie présentent des conditions favorables aux remontées capillaires (et donc au salpêtre) :</p>
+
+      <h3>1. Le sol argileux</h3>
+      <p>Le sol toulousain est majoritairement <strong>argileux</strong>. En période de pluie, l'argile retient l'eau comme une éponge. Cette eau remonte ensuite dans les murs par capillarité, transportant les sels minéraux qui formeront le salpêtre.</p>
+
+      <h3>2. Les maisons en brique</h3>
+      <p>Les maisons traditionnelles toulousaines sont construites en <strong>brique de terre cuite</strong>. Ce matériau, bien que noble, est <strong>très poreux</strong>. L'eau remonte plus facilement que dans un mur en béton.</p>
+
+      <h3>3. Les fondations anciennes</h3>
+      <p>Beaucoup de maisons toulousaines datent d'avant les années 1970, époque où les <strong>barrières anti-humidité</strong> n'étaient pas systématiques. Sans cette protection, rien n'empêche l'eau de remonter.</p>
+
+      <h2>Reconnaître le salpêtre dans votre maison</h2>
+
+      <h3>Où le chercher ?</h3>
+      <ul>
+        <li><strong>Bas des murs</strong> : Zone de 0 à 1,5 mètre du sol</li>
+        <li><strong>Caves et sous-sols</strong> : Particulièrement les murs enterrés</li>
+        <li><strong>Garage</strong> : Surtout si en rez-de-chaussée</li>
+        <li><strong>Pièces nord</strong> : Moins de soleil = séchage plus lent</li>
+      </ul>
+
+      <h3>À quoi ça ressemble ?</h3>
+      <ul>
+        <li><strong>Poudre blanche ou grisâtre</strong> qui s'effrite au toucher</li>
+        <li><strong>Cristaux blancs</strong> qui "poussent" sur le mur</li>
+        <li><strong>Auréoles humides</strong> au-dessus desquelles la poudre apparaît</li>
+        <li><strong>Peinture qui cloque</strong> ou s'écaille</li>
+        <li><strong>Enduit qui se décolle</strong> par plaques</li>
+      </ul>
+
+      <h2>Les erreurs à éviter</h2>
+
+      <h3>❌ Gratter le salpêtre</h3>
+      <p>Ça ne sert à rien. Le salpêtre n'est que le symptôme visible. Tant que l'eau continue de monter, il reviendra dans les semaines suivantes.</p>
+
+      <h3>❌ Repeindre par-dessus</h3>
+      <p>La peinture "anti-humidité" ne traite pas le problème. Elle se contentera de cloquer à nouveau dans quelques mois.</p>
+
+      <h3>❌ Poser un revêtement étanche</h3>
+      <p>Certains posent du carrelage ou un enduit étanche en bas de mur. Résultat : l'eau remonte toujours mais ne peut plus s'évaporer. Elle monte plus haut, crée des dégâts sur une plus grande surface, et peut attaquer les structures en bois.</p>
+
+      <h2>Le traitement qui fonctionne : l'injection de résine</h2>
+
+      <p>La seule solution durable contre le salpêtre est de <strong>bloquer les remontées capillaires</strong>. La technique la plus efficace : l'injection de résine hydrophobe.</p>
+
+      <h3>Principe</h3>
+      <ol>
+        <li>On perce des trous espacés de 10-15 cm à la base du mur</li>
+        <li>On injecte une résine hydrophobe (silicone, silane/siloxane)</li>
+        <li>La résine se diffuse dans les pores du matériau</li>
+        <li>Elle crée une <strong>barrière étanche</strong> qui bloque définitivement l'eau</li>
+      </ol>
+
+      <h3>Avantages</h3>
+      <ul>
+        <li><strong>Définitif</strong> : Garantie 10 à 30 ans selon les produits</li>
+        <li><strong>Peu invasif</strong> : Pas de terrassement, pas de gros travaux</li>
+        <li><strong>Rapide</strong> : Intervention en 1-2 jours</li>
+        <li><strong>Efficace sur brique toulousaine</strong> : Particulièrement adapté aux murs poreux</li>
+      </ul>
+
+      <h2>Prix du traitement à Toulouse</h2>
+
+      <div class="my-6 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-200">
+          <thead class="bg-slate-100">
+            <tr>
+              <th class="border border-slate-200 p-3 text-left">Type de bien</th>
+              <th class="border border-slate-200 p-3 text-left">Linéaire traité</th>
+              <th class="border border-slate-200 p-3 text-left">Prix indicatif</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-200 p-3">Appartement RDC</td>
+              <td class="border border-slate-200 p-3">10-15 mètres</td>
+              <td class="border border-slate-200 p-3">1 500€ - 3 000€</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3">Maison mitoyenne</td>
+              <td class="border border-slate-200 p-3">20-30 mètres</td>
+              <td class="border border-slate-200 p-3">3 000€ - 5 500€</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3">Maison 4 façades</td>
+              <td class="border border-slate-200 p-3">40-60 mètres</td>
+              <td class="border border-slate-200 p-3">5 500€ - 9 000€</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>Le diagnostic est gratuit</strong> : Un expert se déplace, mesure le taux d'humidité, identifie les zones touchées, et vous remet un devis détaillé sans engagement.</p>
+
+      <h2>Quartiers de Toulouse les plus touchés</h2>
+
+      <p>Certains quartiers sont plus concernés par le salpêtre en raison de leur sol, leur exposition ou leur bâti :</p>
+      <ul>
+        <li><strong>Saint-Cyprien</strong> : Proximité Garonne, bâti ancien</li>
+        <li><strong>Saint-Michel</strong> : Maisons anciennes, caves humides</li>
+        <li><strong>Capitole / Carmes</strong> : Immeubles historiques sans barrière étanche</li>
+        <li><strong>Minimes</strong> : Sol argileux, maisons années 70</li>
+        <li><strong>Croix-Daurade</strong> : Terrain argileux sensible</li>
+      </ul>
+
+      <h2>Pourquoi faire appel à IPB ?</h2>
+
+      <ul>
+        <li><strong>Basés à Toulouse</strong> : Nous connaissons les particularités du bâti local</li>
+        <li><strong>Diagnostic gratuit</strong> : Mesure hygrométrique, analyse de la situation</li>
+        <li><strong>Produits professionnels</strong> : Résines haute performance, garanties</li>
+        <li><strong>Garantie décennale</strong> : Travaux assurés 10 ans</li>
+        <li><strong>Pas de sur-traitement</strong> : On traite ce qui est nécessaire, pas plus</li>
+      </ul>
+
+      <h2>Conclusion</h2>
+
+      <p>Le salpêtre est un problème fréquent dans les maisons toulousaines, mais il se traite efficacement avec les bonnes techniques. L'essentiel est de :</p>
+      <ol>
+        <li>Ne pas masquer le problème (peinture, enduit étanche)</li>
+        <li>Faire diagnostiquer la source exacte d'humidité</li>
+        <li>Traiter avec une injection de résine professionnelle</li>
+      </ol>
+
+      <p class="font-bold text-lg text-slate-900 mt-6">📞 Salpêtre à Toulouse ? Diagnostic gratuit : 05 82 95 33 75</p>
+    `
+  },
+
   'fissures-maison-tarn-et-garonne-solutions': {
     slug: 'fissures-maison-tarn-et-garonne-solutions',
     title: 'Fissures Maison Tarn-et-Garonne : Causes et Solutions Efficaces',

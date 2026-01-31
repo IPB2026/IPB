@@ -127,6 +127,8 @@ export default function PlanSitePage() {
             <ul className="space-y-2 text-sm">
               <li><Link href="/blog/humidite-remontee-capillaire-solution" className="text-slate-700 hover:text-orange-600 transition">Remontées capillaires</Link></li>
               <li><Link href="/blog/humidite-salpetre-traitement" className="text-slate-700 hover:text-orange-600 transition">Traitement salpêtre</Link></li>
+              <li><Link href="/blog/salpetre-toulouse-traitement-definitif" className="text-slate-700 hover:text-orange-600 transition font-medium text-orange-600">Salpêtre Toulouse</Link></li>
+              <li><Link href="/blog/merule-champignon-maison-danger" className="text-slate-700 hover:text-orange-600 transition font-medium text-orange-600">Mérule : le champignon destructeur</Link></li>
               <li><Link href="/blog/traitement-humidite-injection-resine" className="text-slate-700 hover:text-orange-600 transition">Injection résine</Link></li>
               <li><Link href="/blog/ventilation-humidite-condensation" className="text-slate-700 hover:text-orange-600 transition">VMC et condensation</Link></li>
               <li><Link href="/blog/condensation-ou-infiltration" className="text-slate-700 hover:text-orange-600 transition">Condensation vs infiltration</Link></li>
