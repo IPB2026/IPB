@@ -66,6 +66,87 @@ const generateFaqJsonLd = () => {
   };
 };
 
+// Génération du JSON-LD BreadcrumbList pour SEO
+const generateBreadcrumbJsonLd = () => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": "https://www.ipb-expertise.fr"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Expertise",
+        "item": "https://www.ipb-expertise.fr/expertise"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Fissures & Agrafage",
+        "item": "https://www.ipb-expertise.fr/expertise/fissures"
+      }
+    ]
+  };
+};
+
+// Génération du JSON-LD Service pour rich snippets
+const generateServiceJsonLd = () => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Traitement des fissures structurelles",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "IPB - Institut de Pathologie du Bâtiment",
+      "telephone": "+33582953375",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Toulouse",
+        "addressRegion": "Haute-Garonne",
+        "postalCode": "31000",
+        "addressCountry": "FR"
+      }
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Toulouse"
+    },
+    "description": "Expert en traitement des fissures structurelles. Agrafage, harpage, reprise en sous-œuvre. Alternative économique aux micropieux.",
+    "offers": {
+      "@type": "Offer",
+      "priceRange": "€€",
+      "availability": "https://schema.org/InStock"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Services fissures",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Diagnostic fissures",
+            "description": "Expertise complète avec fissuromètre et rapport détaillé"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Agrafage structurel",
+            "description": "Stabilisation des murs par agrafes métalliques"
+          }
+        }
+      ]
+    }
+  };
+};
+
 // Génération du JSON-LD HowTo pour le processus d'agrafage
 const generateHowToJsonLd = () => {
   return {
@@ -115,6 +196,8 @@ const generateHowToJsonLd = () => {
 export default function FissuresPage() {
   const faqJsonLd = generateFaqJsonLd();
   const howToJsonLd = generateHowToJsonLd();
+  const breadcrumbJsonLd = generateBreadcrumbJsonLd();
+  const serviceJsonLd = generateServiceJsonLd();
 
   return (
     <div className="font-sans text-slate-800 bg-slate-50 antialiased">
@@ -127,6 +210,16 @@ export default function FissuresPage() {
         id="howto-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
+      />
+      <Script
+        id="breadcrumb-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <Script
+        id="service-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
       <TopBar />
       <Navbar />

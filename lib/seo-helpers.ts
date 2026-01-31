@@ -106,22 +106,37 @@ export function getContextualLinks(currentSlug: string, keywords: string[]): Arr
     'fissures': [
       { text: 'diagnostic fissures gratuit', url: '/diagnostic' },
       { text: 'agrafage de fissures', url: '/expertise/fissures' },
-      { text: 'expertise fissures Toulouse', url: '/villes/toulouse' }
+      { text: 'expertise fissures Toulouse', url: '/villes/toulouse' },
+      { text: 'fissures en escalier', url: '/blog/fissures-escalier-tassement-differentiel' },
+      { text: 'fissure mur porteur', url: '/problemes/fissure-verticale-mur-porteur' }
     ],
     'humidite': [
       { text: 'traitement humidité', url: '/expertise/humidite' },
       { text: 'injection résine', url: '/blog/traitement-humidite-injection-resine' },
-      { text: 'diagnostic humidité', url: '/diagnostic' }
+      { text: 'diagnostic humidité', url: '/diagnostic' },
+      { text: 'mérule danger', url: '/blog/merule-champignon-maison-danger' },
+      { text: 'salpêtre traitement', url: '/blog/salpetre-toulouse-traitement-definitif' }
     ],
     'agrafage': [
       { text: 'agrafage vs micropieux', url: '/blog/agrafage-vs-micropieux-choix' },
-      { text: 'prix agrafage 2025', url: '/blog/cout-reparation-fissures-2025' },
+      { text: 'prix agrafage 2026', url: '/blog/cout-reparation-fissures-2025' },
       { text: 'agrafage Toulouse', url: '/expertise/fissures' }
     ],
     'salpetre': [
-      { text: 'traitement salpêtre', url: '/blog/humidite-salpetre-traitement' },
+      { text: 'traitement salpêtre Toulouse', url: '/blog/salpetre-toulouse-traitement-definitif' },
       { text: 'remontées capillaires', url: '/blog/humidite-remontee-capillaire-solution' },
-      { text: 'injection résine', url: '/blog/traitement-humidite-injection-resine' }
+      { text: 'injection résine', url: '/blog/traitement-humidite-injection-resine' },
+      { text: 'poudre blanche mur', url: '/problemes/salpetre-poudre-blanche-mur' }
+    ],
+    'merule': [
+      { text: 'mérule danger maison', url: '/blog/merule-champignon-maison-danger' },
+      { text: 'champignon bois', url: '/problemes/merule-champignon-bois-maison' },
+      { text: 'traitement humidité', url: '/expertise/humidite' }
+    ],
+    'champignon': [
+      { text: 'mérule champignon', url: '/blog/merule-champignon-maison-danger' },
+      { text: 'humidité murs', url: '/expertise/humidite' },
+      { text: 'diagnostic humidité', url: '/diagnostic' }
     ],
     'diagnostic': [
       { text: 'diagnostic structurel', url: '/blog/diagnostic-structurel-maison' },
@@ -131,7 +146,27 @@ export function getContextualLinks(currentSlug: string, keywords: string[]): Arr
     'toulouse': [
       { text: 'expert Toulouse', url: '/villes/toulouse' },
       { text: 'sol argileux Haute-Garonne', url: '/blog/secheresse-argile-haute-garonne' },
-      { text: 'zones d\'intervention', url: '/contact' }
+      { text: 'zones d\'intervention', url: '/contact' },
+      { text: 'expert Haute-Garonne', url: '/departements/haute-garonne' }
+    ],
+    'gers': [
+      { text: 'expert Gers', url: '/departements/gers' },
+      { text: 'fissures Gers', url: '/blog/expert-fissures-gers-guide-complet' }
+    ],
+    'tarn': [
+      { text: 'fissures Tarn-et-Garonne', url: '/blog/fissures-maison-tarn-et-garonne-solutions' },
+      { text: 'expert Montauban', url: '/departements/tarn-et-garonne' }
+    ],
+    'ariege': [
+      { text: 'expert Ariège', url: '/departements/ariege' }
+    ],
+    'cave': [
+      { text: 'humidité cave', url: '/blog/humidite-cave-sous-sol' },
+      { text: 'cuvelage cave', url: '/expertise/humidite' }
+    ],
+    'moisissure': [
+      { text: 'condensation ou infiltration', url: '/blog/condensation-ou-infiltration' },
+      { text: 'VMC et ventilation', url: '/blog/ventilation-humidite-condensation' }
     ]
   };
 
