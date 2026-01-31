@@ -15,7 +15,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "Expert Fissures & Humidité Toulouse, Montauban, Auch | IPB - 31, 82, 32",
-  description: "Expert fissures et humidité à Toulouse, Montauban et Auch (31, 82, 32). Agrafage, injection résine, traitement définitif avec garantie décennale. Alternative économique aux micropieux. Diagnostic gratuit. Intervention Haute-Garonne, Tarn-et-Garonne et Gers.",
+  description: "Expert fissures et humidité à Toulouse (31, 82, 32). Agrafage, injection résine, garantie décennale. Diagnostic gratuit sous 48h.",
   keywords: [
     'expert fissures toulouse',
     'traitement humidité toulouse',

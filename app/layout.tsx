@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     default: "IPB - Expert Fissures & Humidité Toulouse | Haute-Garonne",
     template: "%s | IPB"
   },
-  description: "Expert en traitement des fissures et de l'humidité en Haute-Garonne. Solutions techniques (agrafage, injection résine) avec garantie décennale. Alternative économique aux micropieux.",
+  description: "Expert fissures et humidité en Haute-Garonne. Agrafage, injection résine, garantie décennale. Diagnostic gratuit.",
   keywords: ["fissures maison", "humidité murs", "Toulouse", "Haute-Garonne", "agrafage", "injection résine", "expert bâtiment", "garantie décennale"],
   authors: [{ name: "IPB - Institut de Pathologie du Bâtiment" }],
   creator: "IPB",
