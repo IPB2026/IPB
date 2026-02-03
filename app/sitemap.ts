@@ -26,6 +26,13 @@ const eeatPages = [
   'notre-expert',
 ];
 
+// 🎯 Pages Trigger Events (Actualités)
+const triggerEventsPages = [
+  'actualites/arrete-secheresse-2026',
+  'actualites/canicule-proteger-maison',
+  'actualites/infiltrations-automne-hiver',
+];
+
 // 🏘️ SEO Local Hyper-Maillé - Pages expert par ville
 const expertFissuresVilles = [
   'toulouse', 'colomiers', 'tournefeuille', 'blagnac', 'muret',
@@ -229,6 +236,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  // Pages Trigger Events (Actualités)
+  const triggerEventsPagesMap: MetadataRoute.Sitemap = triggerEventsPages.map((slug) => ({
+    url: `${baseUrl}/${slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const, // Actualités = mises à jour fréquentes
+    priority: 0.85,
+  }));
+
   // Pages expert-fissures par ville (SEO Local Hyper-Maillé)
   const expertFissuresPages: MetadataRoute.Sitemap = expertFissuresVilles.map((ville) => ({
     url: `${baseUrl}/expert-fissures/${ville}`,
@@ -249,6 +264,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...staticPages, 
     ...pillarPages, 
     ...eeatPagesMap,
+    ...triggerEventsPagesMap,
     ...spokeFissPages,
     ...spokeHumPages,
     ...departementPages, 
