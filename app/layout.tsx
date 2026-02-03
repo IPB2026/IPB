@@ -4,6 +4,7 @@ import "./globals.css"
 import "./blog-article.css"
 import Script from "next/script"
 import { Analytics } from "@/components/layout/Analytics"
+import { CookieBanner } from "@/components/CookieBanner"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -187,6 +188,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         {children}
+        <CookieBanner />
         <Analytics />
       </body>
     </html>

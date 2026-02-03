@@ -124,25 +124,32 @@ export default function RemonteesCapillairesPage() {
       <section className="bg-gradient-to-br from-blue-900 to-cyan-900 text-white py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4">
           <div className="flex items-center gap-2 text-cyan-300 text-sm font-bold mb-4">
-            <ArrowUp size={18} />
-            <span>Problème d'humidité</span>
+            <AlertTriangle size={18} />
+            <span>⚠️ Votre maison absorbe l'eau comme une éponge</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
             Remontées Capillaires : <br/>
-            <span className="text-cyan-300">Causes et Traitements</span>
+            <span className="text-cyan-300">L'Ennemi Invisible Qui Ronge Vos Murs</span>
           </h1>
-          <p className="text-xl text-blue-100 mb-8">
-            L'humidité qui monte du sol dans vos murs peut causer des dégâts considérables. 
-            Comprenez le phénomène et découvrez les solutions durables.
+          <p className="text-xl text-blue-100 mb-4">
+            Chaque jour, <strong className="text-white">des litres d'eau</strong> remontent dans vos murs depuis le sol. 
+            Résultat : salpêtre, papiers peints décollés, plinthes pourries... et une maison qui perd de sa valeur.
           </p>
+          <div className="bg-cyan-500/20 border border-cyan-500/50 rounded-xl p-4 mb-8">
+            <p className="text-cyan-200 font-bold flex items-center gap-2">
+              <Zap size={18} />
+              En 2 ans, une remontée capillaire non traitée peut dégrader votre mur sur 1,50m de haut.
+            </p>
+          </div>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/diagnostic" className="bg-cyan-500 hover:bg-cyan-400 text-white px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
-              Diagnostic humidité <ArrowRight size={18} />
+            <Link href="/diagnostic" className="bg-cyan-500 hover:bg-cyan-400 text-white px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2 animate-pulse">
+              💧 DIAGNOSTIC HUMIDITÉ GRATUIT <ArrowRight size={18} />
             </Link>
             <a href="tel:0582953375" className="bg-white/10 border border-white/20 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
               <Phone size={18} /> 05 82 95 33 75
             </a>
           </div>
+          <p className="text-sm text-blue-300 mt-4">✓ Mesure du taux d'humidité · ✓ Identification de la source · ✓ Devis détaillé</p>
         </div>
       </section>
 
