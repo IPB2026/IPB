@@ -475,6 +475,100 @@ export const villesData: Record<string, VilleInfo> = {
     distance: '75 km',
     description: 'Varilhes, commune ariégeoise sur la route de Foix',
   },
+
+  // === AUDE (11) ===
+  carcassonne: {
+    nom: 'Carcassonne',
+    codePostal: '11000',
+    departement: 'Aude (11)',
+    distance: '95 km',
+    description: 'Carcassonne, préfecture de l\'Aude célèbre pour sa cité médiévale classée UNESCO',
+  },
+  narbonne: {
+    nom: 'Narbonne',
+    codePostal: '11100',
+    departement: 'Aude (11)',
+    distance: '130 km',
+    description: 'Narbonne, ancienne capitale romaine entre Méditerranée et Canal du Midi',
+  },
+  castelnaudary: {
+    nom: 'Castelnaudary',
+    codePostal: '11400',
+    departement: 'Aude (11)',
+    distance: '60 km',
+    description: 'Castelnaudary, capitale mondiale du cassoulet sur le Canal du Midi',
+  },
+  limoux: {
+    nom: 'Limoux',
+    codePostal: '11300',
+    departement: 'Aude (11)',
+    distance: '100 km',
+    description: 'Limoux, ville du Carnaval et berceau de la Blanquette',
+  },
+  'lezignan-corbieres': {
+    nom: 'Lézignan-Corbières',
+    codePostal: '11200',
+    departement: 'Aude (11)',
+    distance: '110 km',
+    description: 'Lézignan-Corbières, capitale des vins des Corbières',
+  },
+
+  // === HAUTES-PYRÉNÉES (65) ===
+  tarbes: {
+    nom: 'Tarbes',
+    codePostal: '65000',
+    departement: 'Hautes-Pyrénées (65)',
+    distance: '155 km',
+    description: 'Tarbes, préfecture des Hautes-Pyrénées, ville au pied des montagnes',
+  },
+  lourdes: {
+    nom: 'Lourdes',
+    codePostal: '65100',
+    departement: 'Hautes-Pyrénées (65)',
+    distance: '170 km',
+    description: 'Lourdes, deuxième lieu de pèlerinage catholique au monde',
+  },
+
+  // === LOT (46) ===
+  cahors: {
+    nom: 'Cahors',
+    codePostal: '46000',
+    departement: 'Lot (46)',
+    distance: '110 km',
+    description: 'Cahors, préfecture du Lot célèbre pour son pont Valentré et son vin',
+  },
+
+  // === LOT-ET-GARONNE (47) ===
+  agen: {
+    nom: 'Agen',
+    codePostal: '47000',
+    departement: 'Lot-et-Garonne (47)',
+    distance: '110 km',
+    description: 'Agen, préfecture du Lot-et-Garonne, capitale du pruneau',
+  },
+
+  // === TARN (81) ===
+  albi: {
+    nom: 'Albi',
+    codePostal: '81000',
+    departement: 'Tarn (81)',
+    distance: '75 km',
+    description: 'Albi, préfecture du Tarn, cité épiscopale classée UNESCO',
+  },
+  castres: {
+    nom: 'Castres',
+    codePostal: '81100',
+    departement: 'Tarn (81)',
+    distance: '80 km',
+    description: 'Castres, ville d\'art et d\'histoire au bord de l\'Agout',
+  },
+  gaillac: {
+    nom: 'Gaillac',
+    codePostal: '81600',
+    departement: 'Tarn (81)',
+    distance: '60 km',
+    description: 'Gaillac, cité viticole millénaire au cœur du vignoble tarnais',
+  },
 };
 
 export const villeSlugs = Object.keys(villesData);

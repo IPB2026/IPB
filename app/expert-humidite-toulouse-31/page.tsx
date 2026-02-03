@@ -244,15 +244,30 @@ export default function ExpertHumiditeToulouse31Page() {
             <p className="text-slate-600">Tout comprendre sur les problèmes d'humidité : causes, diagnostic et solutions</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Link href="/remontees-capillaires-traitement" className="group bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-2xl p-6 transition-all">
+              <div className="text-3xl mb-3">💧</div>
+              <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 mb-2">Remontées capillaires</h3>
+              <p className="text-slate-600 text-sm">L'eau du sol remonte dans vos murs. Causes, diagnostic et traitements.</p>
+            </Link>
+            <Link href="/moisissures-maison-sante" className="group bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-2xl p-6 transition-all">
+              <div className="text-3xl mb-3">🍄</div>
+              <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 mb-2">Moisissures & Santé</h3>
+              <p className="text-slate-600 text-sm">Risques pour la santé et traitement efficace des moisissures.</p>
+            </Link>
+            <Link href="/cave-humide-solutions" className="group bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-2xl p-6 transition-all">
+              <div className="text-3xl mb-3">🏚️</div>
+              <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 mb-2">Cave humide</h3>
+              <p className="text-slate-600 text-sm">Cuvelage, drainage, pompe : solutions pour caves et sous-sols.</p>
+            </Link>
+            <Link href="/ponts-thermiques-condensation" className="group bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-2xl p-6 transition-all">
+              <div className="text-3xl mb-3">🌡️</div>
+              <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 mb-2">Ponts thermiques</h3>
+              <p className="text-slate-600 text-sm">Zones froides et condensation : diagnostic et isolation.</p>
+            </Link>
             <Link href="/salpetre-mur-traitement" className="group bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-2xl p-6 transition-all">
               <div className="text-3xl mb-3">🧂</div>
               <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 mb-2">Salpêtre</h3>
               <p className="text-slate-600 text-sm">Poudre blanche sur vos murs ? Causes et traitement définitif.</p>
-            </Link>
-            <Link href="/remontee-capillaire-solution" className="group bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-2xl p-6 transition-all">
-              <div className="text-3xl mb-3">💧</div>
-              <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 mb-2">Remontées capillaires</h3>
-              <p className="text-slate-600 text-sm">L'eau du sol remonte dans vos murs. Solutions garanties 30 ans.</p>
             </Link>
             <Link href="/condensation-ou-infiltration" className="group bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-2xl p-6 transition-all">
               <div className="text-3xl mb-3">🌧️</div>
@@ -260,7 +275,7 @@ export default function ExpertHumiditeToulouse31Page() {
               <p className="text-slate-600 text-sm">Comment différencier et traiter ces deux problèmes.</p>
             </Link>
             <Link href="/merule-champignon-traitement" className="group bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-2xl p-6 transition-all">
-              <div className="text-3xl mb-3">🍄</div>
+              <div className="text-3xl mb-3">🦠</div>
               <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 mb-2">Mérule</h3>
               <p className="text-slate-600 text-sm">Le champignon destructeur : identification et traitement d'urgence.</p>
             </Link>
@@ -268,11 +283,6 @@ export default function ExpertHumiditeToulouse31Page() {
               <div className="text-3xl mb-3">🌀</div>
               <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 mb-2">VMI®</h3>
               <p className="text-slate-600 text-sm">La ventilation par insufflation contre condensation et moisissures.</p>
-            </Link>
-            <Link href="/blog/humidite-cave-sous-sol" className="group bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-2xl p-6 transition-all">
-              <div className="text-3xl mb-3">🏚️</div>
-              <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 mb-2">Cave humide</h3>
-              <p className="text-slate-600 text-sm">Cuvelage et drainage pour caves et sous-sols.</p>
             </Link>
           </div>
         </div>

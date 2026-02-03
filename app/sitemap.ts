@@ -16,9 +16,13 @@ const spokeFissuresPages = [
 const spokeHumiditePages = [
   'salpetre-mur-traitement',
   'remontee-capillaire-solution',
+  'remontees-capillaires-traitement',
   'condensation-ou-infiltration',
   'merule-champignon-traitement',
   'vmi-ventilation-insufflation',
+  'moisissures-maison-sante',
+  'cave-humide-solutions',
+  'ponts-thermiques-condensation',
 ];
 
 // 📋 Pages E-E-A-T
@@ -168,6 +172,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/departements/aude`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/departements/tarn`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
     },
   ];
 
