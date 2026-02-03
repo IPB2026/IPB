@@ -42,75 +42,123 @@ export function Footer() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-950 py-16 text-slate-400 text-sm">
+      <footer className="bg-slate-950 py-16 text-slate-400 text-sm" role="contentinfo" aria-label="Pied de page IPB">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
             {/* Marque */}
-            <div>
-              <Link href="/" className="inline-block mb-6">
+            <div className="lg:col-span-1">
+              <Link href="/" className="inline-block mb-6 focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">
                 <span className="font-display text-2xl font-bold text-white">IPB<span className="text-orange-500">.</span></span>
               </Link>
               <p className="text-slate-500 mb-6 leading-relaxed">
-                Institut de Pathologie du Bâtiment. L'expertise technique au service de votre patrimoine.
+                Institut de Pathologie du Bâtiment. Expert fissures et humidité depuis 2021. Garantie décennale.
               </p>
-              <div className="space-y-2">
-                <a href="tel:0582953375" className="flex items-center gap-2 hover:text-orange-400 transition">
-                  <Phone size={14} /> 05 82 95 33 75
+              <address className="not-italic space-y-2">
+                <a href="tel:0582953375" className="flex items-center gap-2 hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">
+                  <Phone size={14} aria-hidden="true" /> 
+                  <span>05 82 95 33 75</span>
                 </a>
-                <a href="mailto:contact@ipb-expertise.fr" className="flex items-center gap-2 hover:text-orange-400 transition">
-                  <Mail size={14} /> contact@ipb-expertise.fr
+                <a href="mailto:contact@ipb-expertise.fr" className="flex items-center gap-2 hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">
+                  <Mail size={14} aria-hidden="true" /> 
+                  <span>contact@ipb-expertise.fr</span>
                 </a>
                 <div className="flex items-start gap-2">
-                  <MapPin size={14} className="mt-0.5" />
-                  <span>54 avenue Jean Jaurès, 31170 Tournefeuille</span>
+                  <MapPin size={14} className="mt-0.5" aria-hidden="true" />
+                  <span>54 avenue Jean Jaurès<br />31170 Tournefeuille</span>
                 </div>
-              </div>
+              </address>
             </div>
             
-            {/* Expertises */}
-            <div>
-              <h4 className="text-white font-bold mb-6">Expertises</h4>
-              <ul className="space-y-3">
-                <li><Link href="/expertise/fissures" className="hover:text-orange-400 transition">Fissures & Structure</Link></li>
-                <li><Link href="/expertise/humidite" className="hover:text-orange-400 transition">Humidité & Infiltrations</Link></li>
-                <li><Link href="/diagnostic" className="hover:text-orange-400 transition">Diagnostic gratuit</Link></li>
-                <li><Link href="/contact" className="hover:text-orange-400 transition">Parler à un expert</Link></li>
+            {/* Expertises Fissures */}
+            <nav aria-label="Expertise Fissures">
+              <h4 className="text-white font-bold mb-6">Expert Fissures</h4>
+              <ul className="space-y-3" role="list">
+                <li><Link href="/expertise/fissures" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Expertise Fissures</Link></li>
+                <li><Link href="/fissure-en-escalier-causes/" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Fissure en escalier</Link></li>
+                <li><Link href="/fissure-horizontale-danger/" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Fissure horizontale</Link></li>
+                <li><Link href="/microfissure-quand-sinquieter/" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Microfissures</Link></li>
+                <li><Link href="/fissure-secheresse-indemnisation/" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Sécheresse CAT-NAT</Link></li>
+                <li><Link href="/fissure-fondation-maison/" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Fissure fondation</Link></li>
               </ul>
-            </div>
+            </nav>
             
-            {/* Zones */}
-            <div>
-              <h4 className="text-white font-bold mb-6">Zones d'intervention</h4>
-              <ul className="space-y-3">
-                <li><Link href="/villes/toulouse" className="hover:text-orange-400 transition">Toulouse & Métropole (31)</Link></li>
-                <li><Link href="/departements/tarn-et-garonne" className="hover:text-orange-400 transition">Tarn-et-Garonne (82)</Link></li>
-                <li><Link href="/departements/gers" className="hover:text-orange-400 transition">Gers (32)</Link></li>
-                <li><Link href="/plan-site" className="hover:text-orange-400 transition">Toutes les villes</Link></li>
+            {/* Expertises Humidité */}
+            <nav aria-label="Expertise Humidité">
+              <h4 className="text-white font-bold mb-6">Expert Humidité</h4>
+              <ul className="space-y-3" role="list">
+                <li><Link href="/expertise/humidite" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Expertise Humidité</Link></li>
+                <li><Link href="/remontees-capillaires-traitement/" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Remontées capillaires</Link></li>
+                <li><Link href="/moisissures-maison-sante/" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Moisissures</Link></li>
+                <li><Link href="/cave-humide-solutions/" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Cave humide</Link></li>
+                <li><Link href="/salpetre-mur-traitement/" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Salpêtre</Link></li>
+                <li><Link href="/merule-champignon-traitement/" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Mérule</Link></li>
               </ul>
-            </div>
+            </nav>
             
-            {/* Ressources */}
-            <div>
+            {/* Zones d'intervention */}
+            <nav aria-label="Zones d'intervention">
+              <h4 className="text-white font-bold mb-6">Villes couvertes</h4>
+              <ul className="space-y-3" role="list">
+                <li><Link href="/expert-fissures/toulouse/" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Toulouse (31)</Link></li>
+                <li><Link href="/expert-fissures/montauban/" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Montauban (82)</Link></li>
+                <li><Link href="/expert-fissures/albi/" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Albi (81)</Link></li>
+                <li><Link href="/expert-fissures/auch/" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Auch (32)</Link></li>
+                <li><Link href="/expert-fissures/colomiers/" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Colomiers</Link></li>
+                <li><Link href="/expert-fissures/blagnac/" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Blagnac</Link></li>
+              </ul>
+            </nav>
+            
+            {/* Ressources & Légal */}
+            <nav aria-label="Ressources et informations légales">
               <h4 className="text-white font-bold mb-6">Ressources</h4>
-              <ul className="space-y-3">
-                <li><Link href="/blog" className="hover:text-orange-400 transition">Blog & Conseils</Link></li>
-                <li><Link href="/problemes/fissure-verticale-mur-porteur" className="hover:text-orange-400 transition">Fissure mur porteur</Link></li>
-                <li><Link href="/problemes/humidite-murs-peinture-qui-cloque" className="hover:text-orange-400 transition">Peinture qui cloque</Link></li>
-                <li><Link href="/legal/mentions-legales" className="hover:text-orange-400 transition">Mentions légales</Link></li>
+              <ul className="space-y-3" role="list">
+                <li><Link href="/blog" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Blog & Conseils</Link></li>
+                <li><Link href="/diagnostic" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Diagnostic gratuit</Link></li>
+                <li><Link href="/contact" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Contact</Link></li>
+                <li className="pt-3 border-t border-slate-800">
+                  <Link href="/legal/mentions-legales" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Mentions légales</Link>
+                </li>
+                <li><Link href="/legal/cgv" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">CGV</Link></li>
+                <li><Link href="/legal/confidentialite" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Confidentialité</Link></li>
               </ul>
-            </div>
+            </nav>
           </div>
           
           {/* Bas de page */}
-          <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-slate-500">
-            <span>&copy; {new Date().getFullYear()} IPB - Institut de Pathologie du Bâtiment</span>
-            <div className="flex items-center gap-6">
-              <Link href="/legal/cgv" className="hover:text-white transition">CGV</Link>
-              <Link href="/legal/confidentialite" className="hover:text-white transition">Confidentialité</Link>
-              <span className="flex items-center gap-2 text-emerald-500 text-xs">
-                <span className="w-2 h-2 bg-emerald-500 rounded-full"></span>
-                Site sécurisé SSL
-              </span>
+          <div className="border-t border-slate-800 pt-8">
+            {/* Mots-clés SEO en liens */}
+            <div className="mb-8 text-xs text-slate-600">
+              <p className="mb-2 text-slate-500">Services : </p>
+              <div className="flex flex-wrap gap-2">
+                <Link href="/expertise/fissures" className="hover:text-slate-400 transition">expert fissures Toulouse</Link>
+                <span>•</span>
+                <Link href="/expertise/humidite" className="hover:text-slate-400 transition">expert humidité 31</Link>
+                <span>•</span>
+                <Link href="/fissure-secheresse-indemnisation/" className="hover:text-slate-400 transition">indemnisation sécheresse</Link>
+                <span>•</span>
+                <Link href="/remontees-capillaires-traitement/" className="hover:text-slate-400 transition">traitement remontées capillaires</Link>
+                <span>•</span>
+                <span>agrafage fissures</span>
+                <span>•</span>
+                <span>injection résine hydrophobe</span>
+                <span>•</span>
+                <span>garantie décennale</span>
+              </div>
+            </div>
+            
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-slate-500">
+              <p>
+                <span>&copy; {new Date().getFullYear()} </span>
+                <strong className="text-slate-400">MGRCP31</strong>
+                <span> - IPB Institut de Pathologie du Bâtiment</span>
+                <span className="hidden md:inline"> • SIRET 951 105 881 00019</span>
+              </p>
+              <div className="flex items-center gap-6">
+                <span className="flex items-center gap-2 text-emerald-500 text-xs">
+                  <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" aria-hidden="true"></span>
+                  <span>Site sécurisé SSL</span>
+                </span>
+              </div>
             </div>
           </div>
         </div>

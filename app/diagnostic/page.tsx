@@ -1,7 +1,8 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { submitDiagnosticAppointment, submitDiagnosticCallback, submitDiagnosticLead } from '@/app/actions/diagnostic';
+import { useRecaptcha } from '@/hooks/useRecaptcha';
 
 // Types
 type PathType = 'fissure' | 'humidite' | null;
@@ -221,6 +222,9 @@ export default function DiagnosticPage() {
   const [showCallbackForm, setShowCallbackForm] = useState(false);
   const [callbackInfo, setCallbackInfo] = useState({ name: '', phone: '', email: '' });
   const [showCalendar, setShowCalendar] = useState(false);
+  
+  // reCAPTCHA v3 protection
+  const { getToken, isLoaded: recaptchaLoaded } = useRecaptcha();
 
   const currentQuestions = path ? questionsData[path] : [];
   const totalQuestions = currentQuestions.length;
@@ -357,6 +361,9 @@ export default function DiagnosticPage() {
     const score = calculateRisk(path!, answers);
     setRiskScore(score);
 
+    // Obtenir le token reCAPTCHA v3
+    const recaptchaToken = await getToken('diagnostic_lead');
+
     // Envoi du lead
     try {
       const formData = new FormData();
@@ -366,6 +373,9 @@ export default function DiagnosticPage() {
       formData.append('path', path!);
       formData.append('answers', JSON.stringify(answers));
       formData.append('riskScore', String(score));
+      if (recaptchaToken) {
+        formData.append('recaptchaToken', recaptchaToken);
+      }
 
       await submitDiagnosticLead(formData);
     } catch (error) {
@@ -431,6 +441,10 @@ export default function DiagnosticPage() {
     }
 
     setIsSubmitting(true);
+    
+    // Obtenir le token reCAPTCHA v3
+    const recaptchaToken = await getToken('diagnostic_callback');
+    
     try {
       const formData = new FormData();
       formData.append('name', callbackInfo.name);
@@ -439,6 +453,9 @@ export default function DiagnosticPage() {
       formData.append('path', path || 'fissure');
       formData.append('answers', JSON.stringify(answers));
       formData.append('riskScore', String(riskScore));
+      if (recaptchaToken) {
+        formData.append('recaptchaToken', recaptchaToken);
+      }
 
       const result = await submitDiagnosticCallback(formData);
       if (result.success) {
