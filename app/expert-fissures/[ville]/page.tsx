@@ -463,7 +463,7 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
               <p className="text-slate-400 text-sm mb-4">Cas graves uniquement</p>
               <ul className="text-sm text-slate-300 text-left space-y-2">
                 <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Ancrage profond (10-15m)</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Affaissements > 5cm</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Affaissements &gt; 5cm</li>
                 <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Garantie décennale</li>
               </ul>
             </div>
