@@ -36,11 +36,24 @@ export function Hero() {
             Tarn-et-Garonne et Gers. Fissures, humidité, fondations : diagnostic expert sous 48h.
           </p>
           
-          {/* Chiffre clé */}
-          <div className="bg-orange-500/10 border border-orange-500/30 rounded-xl p-4 mb-8 max-w-xl">
-            <p className="text-orange-200 font-bold flex items-center gap-2">
-              💰 En moyenne, nos clients économisent <span className="text-2xl text-white">18 000€</span> vs les solutions traditionnelles (micropieux)
-            </p>
+          {/* Comparaison économies - design épuré */}
+          <div className="flex items-center gap-4 mb-8 max-w-lg">
+            <div className="flex items-center gap-3 bg-white/5 backdrop-blur-sm rounded-xl px-4 py-3 border border-white/10">
+              <div className="text-center">
+                <p className="text-xs text-slate-400 uppercase tracking-wide">Micropieux</p>
+                <p className="text-lg font-bold text-slate-400 line-through">35 000€</p>
+              </div>
+            </div>
+            <div className="text-slate-500">→</div>
+            <div className="flex items-center gap-3 bg-emerald-500/10 backdrop-blur-sm rounded-xl px-4 py-3 border border-emerald-500/30">
+              <div className="text-center">
+                <p className="text-xs text-emerald-400 uppercase tracking-wide">Notre solution</p>
+                <p className="text-lg font-bold text-white">12 000€</p>
+              </div>
+            </div>
+            <div className="bg-emerald-500/20 px-3 py-1.5 rounded-full">
+              <p className="text-emerald-400 text-sm font-bold">-65%</p>
+            </div>
           </div>
           
           {/* CTAs */}

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { X, Cookie, Shield } from 'lucide-react';
+import { X, Cookie } from 'lucide-react';
 
 type CookieConsent = {
   necessary: boolean;
@@ -13,20 +13,17 @@ type CookieConsent = {
 
 export function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false);
-  const [showDetails, setShowDetails] = useState(false);
   const [consent, setConsent] = useState<CookieConsent>({
-    necessary: true, // Toujours true
+    necessary: true,
     analytics: false,
     marketing: false,
     timestamp: 0,
   });
 
   useEffect(() => {
-    // Vérifier si le consentement existe déjà
     const savedConsent = localStorage.getItem('ipb-cookie-consent');
     if (savedConsent) {
       const parsed = JSON.parse(savedConsent);
-      // Revérifier après 6 mois
       const sixMonths = 6 * 30 * 24 * 60 * 60 * 1000;
       if (Date.now() - parsed.timestamp < sixMonths) {
         setConsent(parsed);
@@ -34,13 +31,12 @@ export function CookieBanner() {
         return;
       }
     }
-    // Afficher le bandeau après un court délai
-    const timer = setTimeout(() => setIsVisible(true), 1500);
+    // Afficher après 2 secondes
+    const timer = setTimeout(() => setIsVisible(true), 2000);
     return () => clearTimeout(timer);
   }, []);
 
   const applyConsent = (consentData: CookieConsent) => {
-    // Activer/désactiver Google Analytics selon le consentement
     if (typeof window !== 'undefined') {
       const gtag = (window as Window & { gtag?: (command: string, ...args: unknown[]) => void }).gtag;
       if (gtag) {
@@ -61,170 +57,56 @@ export function CookieBanner() {
   };
 
   const acceptAll = () => {
-    saveConsent({
-      necessary: true,
-      analytics: true,
-      marketing: true,
-      timestamp: Date.now(),
-    });
+    saveConsent({ necessary: true, analytics: true, marketing: true, timestamp: Date.now() });
   };
 
   const acceptNecessary = () => {
-    saveConsent({
-      necessary: true,
-      analytics: false,
-      marketing: false,
-      timestamp: Date.now(),
-    });
-  };
-
-  const saveCustom = () => {
-    saveConsent(consent);
+    saveConsent({ necessary: true, analytics: false, marketing: false, timestamp: Date.now() });
   };
 
   if (!isVisible) return null;
 
-  // Type-safe gtag call
-  const gtagCall = (typeof window !== 'undefined' && (window as Window & { gtag?: (...args: unknown[]) => void }).gtag) || null;
-
   return (
-    <>
-      {/* Overlay */}
-      <div className="fixed inset-0 bg-black/30 z-[998] backdrop-blur-sm" />
-      
-      {/* Banner */}
-      <div className="fixed bottom-0 left-0 right-0 z-[999] p-4 md:p-6">
-        <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
-          {/* Header */}
-          <div className="p-6 pb-4">
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
-                <Cookie className="text-orange-600" size={24} />
-              </div>
-              <div className="flex-1">
-                <h2 className="text-xl font-bold text-slate-900 mb-2">
-                  🍪 Votre vie privée nous importe
-                </h2>
-                <p className="text-slate-600 text-sm leading-relaxed">
-                  Nous utilisons des cookies pour améliorer votre expérience, analyser le trafic et personnaliser le contenu. 
-                  Vous pouvez choisir les cookies que vous acceptez.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Détails (si ouvert) */}
-          {showDetails && (
-            <div className="px-6 pb-4 border-t border-slate-100 pt-4">
-              <div className="space-y-4">
-                {/* Cookies nécessaires */}
-                <div className="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
-                  <div className="flex items-center gap-3">
-                    <Shield className="text-green-600" size={20} />
-                    <div>
-                      <h3 className="font-bold text-slate-900 text-sm">Cookies nécessaires</h3>
-                      <p className="text-slate-500 text-xs">Fonctionnement du site (session, sécurité)</p>
-                    </div>
-                  </div>
-                  <div className="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full">
-                    Toujours actifs
-                  </div>
-                </div>
-
-                {/* Cookies analytics */}
-                <div className="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
-                  <div className="flex items-center gap-3">
-                    <div className="w-5 h-5 bg-blue-100 rounded flex items-center justify-center text-blue-600 text-xs">📊</div>
-                    <div>
-                      <h3 className="font-bold text-slate-900 text-sm">Cookies analytiques</h3>
-                      <p className="text-slate-500 text-xs">Google Analytics pour améliorer le site</p>
-                    </div>
-                  </div>
-                  <label className="relative inline-flex items-center cursor-pointer">
-                    <input
-                      type="checkbox"
-                      checked={consent.analytics}
-                      onChange={(e) => setConsent({ ...consent, analytics: e.target.checked })}
-                      className="sr-only peer"
-                    />
-                    <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-orange-100 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-orange-600"></div>
-                  </label>
-                </div>
-
-                {/* Cookies marketing */}
-                <div className="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
-                  <div className="flex items-center gap-3">
-                    <div className="w-5 h-5 bg-purple-100 rounded flex items-center justify-center text-purple-600 text-xs">📢</div>
-                    <div>
-                      <h3 className="font-bold text-slate-900 text-sm">Cookies marketing</h3>
-                      <p className="text-slate-500 text-xs">Publicités personnalisées (Google Ads)</p>
-                    </div>
-                  </div>
-                  <label className="relative inline-flex items-center cursor-pointer">
-                    <input
-                      type="checkbox"
-                      checked={consent.marketing}
-                      onChange={(e) => setConsent({ ...consent, marketing: e.target.checked })}
-                      className="sr-only peer"
-                    />
-                    <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-orange-100 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-orange-600"></div>
-                  </label>
-                </div>
-              </div>
-
-              <p className="text-xs text-slate-500 mt-4">
-                Pour en savoir plus, consultez notre{' '}
-                <Link href="/legal/confidentialite" className="text-orange-600 underline">
-                  politique de confidentialité
-                </Link>.
-              </p>
-            </div>
-          )}
-
-          {/* Actions */}
-          <div className="p-6 pt-2 flex flex-col sm:flex-row gap-3">
-            {!showDetails ? (
-              <>
-                <button
-                  onClick={acceptNecessary}
-                  className="flex-1 px-6 py-3 border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm"
-                >
-                  Refuser les optionnels
-                </button>
-                <button
-                  onClick={() => setShowDetails(true)}
-                  className="flex-1 px-6 py-3 border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm"
-                >
-                  Personnaliser
-                </button>
-                <button
-                  onClick={acceptAll}
-                  className="flex-1 px-6 py-3 bg-orange-600 text-white rounded-xl font-bold hover:bg-orange-500 transition-colors text-sm"
-                >
-                  Tout accepter
-                </button>
-              </>
-            ) : (
-              <>
-                <button
-                  onClick={() => setShowDetails(false)}
-                  className="flex-1 px-6 py-3 border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm"
-                >
-                  Retour
-                </button>
-                <button
-                  onClick={saveCustom}
-                  className="flex-1 px-6 py-3 bg-orange-600 text-white rounded-xl font-bold hover:bg-orange-500 transition-colors text-sm"
-                >
-                  Enregistrer mes choix
-                </button>
-              </>
-            )}
+    <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-md z-50 animate-in slide-in-from-bottom-4 duration-300">
+      <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-4 relative">
+        {/* Bouton fermer (X) - très visible */}
+        <button
+          onClick={acceptNecessary}
+          className="absolute -top-2 -right-2 w-8 h-8 bg-slate-100 hover:bg-slate-200 rounded-full flex items-center justify-center text-slate-500 hover:text-slate-700 transition-colors shadow-sm border border-slate-200"
+          aria-label="Fermer"
+        >
+          <X size={16} />
+        </button>
+        
+        {/* Contenu compact */}
+        <div className="flex items-start gap-3 mb-4">
+          <Cookie className="text-orange-500 flex-shrink-0 mt-0.5" size={20} />
+          <div>
+            <p className="text-slate-700 text-sm leading-relaxed">
+              Ce site utilise des cookies pour améliorer votre expérience.{' '}
+              <Link href="/legal/confidentialite" className="text-orange-600 underline hover:text-orange-700">
+                En savoir plus
+              </Link>
+            </p>
           </div>
         </div>
+        
+        {/* Boutons d'action */}
+        <div className="flex gap-2">
+          <button
+            onClick={acceptNecessary}
+            className="flex-1 px-4 py-2 text-slate-600 text-sm font-medium hover:bg-slate-50 rounded-lg transition-colors"
+          >
+            Refuser
+          </button>
+          <button
+            onClick={acceptAll}
+            className="flex-1 px-4 py-2 bg-orange-600 text-white text-sm font-bold rounded-lg hover:bg-orange-500 transition-colors"
+          >
+            Accepter
+          </button>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
-
-// gtag type is already declared globally via @types/gtag.js or Analytics component
