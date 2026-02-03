@@ -39,13 +39,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/images/IPB_Logo_HD.png', sizes: 'any' },
-      { url: '/images/IPB_Logo_HD.png', type: 'image/png' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
     ],
     apple: [
-      { url: '/images/IPB_Logo_HD.png', sizes: '180x180', type: 'image/png' },
+      { url: '/favicon.svg' },
     ],
-    shortcut: '/images/IPB_Logo_HD.png',
+    shortcut: '/favicon.svg',
   },
   openGraph: {
     type: "website",
