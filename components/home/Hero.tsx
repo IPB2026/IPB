@@ -1,6 +1,7 @@
 "use client"
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Phone, CheckCircle, Shield, Star, AlertTriangle } from 'lucide-react';
 
 export function Hero() {
@@ -13,8 +14,9 @@ export function Hero() {
       {/* Cercle décoratif */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-orange-500/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
       
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 lg:py-36">
-        <div className="max-w-4xl">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-2xl">
           {/* Badge urgence */}
           <div className="inline-flex items-center gap-2 bg-red-500/20 border border-red-500/40 text-red-300 px-4 py-2 rounded-full text-xs font-bold mb-6 uppercase tracking-wider">
             <AlertTriangle size={14} className="animate-pulse" />
@@ -74,6 +76,44 @@ export function Hero() {
               <span className="text-slate-300"><strong className="text-white">4.9/5</strong> sur Google (14 avis)</span>
             </span>
           </div>
+        </div>
+        
+        {/* Image de fissure - visible sur desktop */}
+        <div className="hidden lg:block relative">
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10">
+            <Image
+              src="/images/fissure-facade-verticale.webp"
+              alt="Fissure structurelle sur façade - IPB Expert Fissures Toulouse"
+              width={600}
+              height={450}
+              className="w-full h-auto object-cover"
+              priority
+            />
+            {/* Overlay avec badge */}
+            <div className="absolute bottom-4 left-4 right-4 bg-slate-900/90 backdrop-blur-sm rounded-xl p-4 border border-orange-500/30">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center">
+                  <AlertTriangle className="text-red-400" size={24} />
+                </div>
+                <div>
+                  <p className="text-white font-bold text-sm">Fissure structurelle</p>
+                  <p className="text-slate-400 text-xs">Nécessite une expertise urgente</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Petite image secondaire en overlay */}
+          <div className="absolute -bottom-6 -left-6 w-40 h-32 rounded-xl overflow-hidden shadow-xl border-2 border-white/20 hidden xl:block">
+            <Image
+              src="/images/fissure-coin-maison.webp"
+              alt="Fissure angle maison"
+              width={160}
+              height={128}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
         </div>
       </div>
       

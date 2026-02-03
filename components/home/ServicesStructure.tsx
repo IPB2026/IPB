@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Activity, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
+import { Activity, ArrowRight, AlertTriangle } from 'lucide-react';
 import { ImageAvantApres } from '@/components/ui/ImageAvantApres';
 
 export function ServicesStructure() {
@@ -45,24 +46,62 @@ export function ServicesStructure() {
           </div>
           
           <div className="lg:w-1/2 relative">
-            <div className="aspect-[4/5] bg-slate-200 rounded-3xl overflow-hidden shadow-2xl relative border-8 border-white transform rotate-2 hover:rotate-0 transition duration-500">
-              {/* Image Avant/Après Fissures */}
-              <div className="relative w-full h-full">
-                <ImageAvantApres
-                  src="/images/fissures-avant-apres.webp"
-                  alt="Avant/Après : Fissure dans un mur en briques réparée par agrafage avec barres métalliques - IPB"
-                  fallbackIcon={<Activity size={64} className="mx-auto mb-4 opacity-50" />}
-                  fallbackText="[Photo Technique : Mur avec Agrafes Métalliques]"
+            {/* Image principale */}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+              <Image
+                src="/images/fissure-facade-diagonale.webp"
+                alt="Grande fissure diagonale sur façade - Signe de tassement différentiel"
+                width={600}
+                height={450}
+                className="w-full h-auto object-cover"
+              />
+              
+              {/* Badge alerte sur l'image */}
+              <div className="absolute bottom-4 left-4 right-4 bg-red-600/95 backdrop-blur-sm rounded-xl p-4">
+                <div className="flex items-center gap-3">
+                  <AlertTriangle className="text-white" size={28} />
+                  <div>
+                    <p className="text-white font-bold">Fissure structurelle active</p>
+                    <p className="text-red-100 text-sm">Ce type de fissure s'aggrave chaque saison</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Badge Flottant technique */}
+            <div className="absolute top-4 -right-4 bg-white p-4 rounded-2xl shadow-xl max-w-xs border border-slate-100 hidden md:block z-10">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></div>
+                <span className="text-xs font-bold text-slate-400 uppercase tracking-wide">Solution IPB</span>
+              </div>
+              <p className="font-bold text-sm text-slate-900">Agrafage structurel <span className="text-orange-600">3x moins cher</span> que les micropieux</p>
+            </div>
+            
+            {/* Galerie mini-images */}
+            <div className="flex gap-3 mt-4">
+              <div className="flex-1 rounded-xl overflow-hidden shadow-lg border-2 border-white h-24">
+                <Image
+                  src="/images/fissure-coin-maison.webp"
+                  alt="Fissure sur coin de maison"
+                  width={200}
+                  height={96}
+                  className="w-full h-full object-cover"
                 />
               </div>
-              
-              {/* Badge Flottant */}
-              <div className="absolute top-4 -right-4 bg-white p-4 rounded-2xl shadow-xl max-w-xs border border-slate-100 hidden md:block z-10">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></div>
-                  <span className="text-xs font-bold text-slate-400 uppercase tracking-wide">Technique Validée</span>
+              <div className="flex-1 rounded-xl overflow-hidden shadow-lg border-2 border-white h-24">
+                <Image
+                  src="/images/fissure-facade-verticale.webp"
+                  alt="Fissure verticale sur façade"
+                  width={200}
+                  height={96}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="flex-1 rounded-xl bg-orange-600 flex items-center justify-center h-24">
+                <div className="text-center text-white px-2">
+                  <p className="font-bold text-lg">+200</p>
+                  <p className="text-xs">maisons sauvées</p>
                 </div>
-                <p className="font-bold text-sm text-slate-900">Alternative aux micropieux <span className="text-orange-600">3x moins chère</span>.</p>
               </div>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
@@ -65,25 +66,65 @@ export default function MerulePage() {
 
       {/* Hero */}
       <section className="bg-gradient-to-br from-red-950 to-slate-900 text-white py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="flex items-center gap-2 text-red-400 text-sm font-bold mb-4">
-            <Skull size={18} />
-            <span>URGENCE - Champignon destructeur</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
-            Mérule : Le Cancer du Bâtiment
-          </h1>
-          <p className="text-xl text-slate-300 mb-8">
-            La mérule est le champignon le plus dangereux pour votre maison. Elle peut détruire 
-            toute la structure bois en quelques mois. Agissez immédiatement.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/diagnostic" className="bg-red-600 hover:bg-red-500 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
-              Diagnostic URGENT <ArrowRight size={18} />
-            </Link>
-            <a href="tel:0582953375" className="bg-white/10 border border-white/20 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
-              <Phone size={18} /> 05 82 95 33 75
-            </a>
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="flex items-center gap-2 text-red-400 text-sm font-bold mb-4">
+                <Skull size={18} className="animate-pulse" />
+                <span>🚨 URGENCE - Champignon destructeur</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
+                Mérule : <span className="text-red-400">Le Cancer du Bâtiment</span>
+              </h1>
+              <p className="text-xl text-slate-300 mb-4">
+                La mérule est le champignon le plus dangereux pour votre maison. Elle peut <strong className="text-white">détruire 
+                toute la structure bois en quelques mois</strong>. Agissez immédiatement.
+              </p>
+              <div className="bg-red-500/20 border border-red-500/50 rounded-xl p-4 mb-8">
+                <p className="text-red-200 font-bold">
+                  ⚠️ Chaque semaine d'attente peut ajouter <strong className="text-white">5 000€ à 10 000€</strong> à la facture finale.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/diagnostic" className="bg-red-600 hover:bg-red-500 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2 animate-pulse">
+                  🚨 DIAGNOSTIC D'URGENCE <ArrowRight size={18} />
+                </Link>
+                <a href="tel:0582953375" className="bg-white/10 border border-white/20 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
+                  <Phone size={18} /> 05 82 95 33 75
+                </a>
+              </div>
+            </div>
+            
+            {/* Image de mérule - CHOC VISUEL */}
+            <div className="relative hidden lg:block">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-red-500/50">
+                <Image
+                  src="/images/merule-sol.webp"
+                  alt="Mérule et champignons destructeurs sur sol - Urgence traitement"
+                  width={600}
+                  height={400}
+                  className="w-full h-auto object-cover"
+                  priority
+                />
+                {/* Overlay alerte */}
+                <div className="absolute inset-0 bg-gradient-to-t from-red-950/90 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <div className="bg-red-600/95 backdrop-blur-sm rounded-xl p-4 flex items-center gap-3">
+                    <Skull className="text-white animate-pulse" size={32} />
+                    <div>
+                      <p className="text-white font-bold">Infestation de mérule</p>
+                      <p className="text-red-100 text-sm">Ce sol est condamné - Intervention immédiate requise</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Badge coût */}
+              <div className="absolute -top-4 -right-4 bg-white rounded-xl p-4 shadow-xl">
+                <p className="text-red-600 font-bold text-sm">Coût moyen traitement</p>
+                <p className="text-3xl font-extrabold text-slate-900">30-70K€</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
