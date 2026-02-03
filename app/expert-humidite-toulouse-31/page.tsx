@@ -236,6 +236,48 @@ export default function ExpertHumiditeToulouse31Page() {
         </div>
       </section>
 
+      {/* Topic Cluster - Types d'humidité */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Guides par type d'humidité</h2>
+            <p className="text-slate-600">Tout comprendre sur les problèmes d'humidité : causes, diagnostic et solutions</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Link href="/salpetre-mur-traitement" className="group bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-2xl p-6 transition-all">
+              <div className="text-3xl mb-3">🧂</div>
+              <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 mb-2">Salpêtre</h3>
+              <p className="text-slate-600 text-sm">Poudre blanche sur vos murs ? Causes et traitement définitif.</p>
+            </Link>
+            <Link href="/remontee-capillaire-solution" className="group bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-2xl p-6 transition-all">
+              <div className="text-3xl mb-3">💧</div>
+              <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 mb-2">Remontées capillaires</h3>
+              <p className="text-slate-600 text-sm">L'eau du sol remonte dans vos murs. Solutions garanties 30 ans.</p>
+            </Link>
+            <Link href="/condensation-ou-infiltration" className="group bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-2xl p-6 transition-all">
+              <div className="text-3xl mb-3">🌧️</div>
+              <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 mb-2">Condensation vs Infiltration</h3>
+              <p className="text-slate-600 text-sm">Comment différencier et traiter ces deux problèmes.</p>
+            </Link>
+            <Link href="/merule-champignon-traitement" className="group bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-2xl p-6 transition-all">
+              <div className="text-3xl mb-3">🍄</div>
+              <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 mb-2">Mérule</h3>
+              <p className="text-slate-600 text-sm">Le champignon destructeur : identification et traitement d'urgence.</p>
+            </Link>
+            <Link href="/vmi-ventilation-insufflation" className="group bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-2xl p-6 transition-all">
+              <div className="text-3xl mb-3">🌀</div>
+              <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 mb-2">VMI®</h3>
+              <p className="text-slate-600 text-sm">La ventilation par insufflation contre condensation et moisissures.</p>
+            </Link>
+            <Link href="/blog/humidite-cave-sous-sol" className="group bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-2xl p-6 transition-all">
+              <div className="text-3xl mb-3">🏚️</div>
+              <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 mb-2">Cave humide</h3>
+              <p className="text-slate-600 text-sm">Cuvelage et drainage pour caves et sous-sols.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Zones */}
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -249,6 +291,17 @@ export default function ExpertHumiditeToulouse31Page() {
               </span>
             ))}
             <span className="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-bold">+ 150 communes</span>
+          </div>
+          {/* Liens vers pages locales */}
+          <div className="mt-8 text-center">
+            <p className="text-slate-600 mb-4">Pages dédiées par ville :</p>
+            <div className="flex flex-wrap justify-center gap-2">
+              {['toulouse', 'colomiers', 'tournefeuille', 'blagnac', 'muret', 'montauban', 'auch'].map((ville) => (
+                <Link key={ville} href={`/expert-humidite/${ville}`} className="text-blue-600 hover:text-blue-700 text-sm underline">
+                  Expert humidité {ville.charAt(0).toUpperCase() + ville.slice(1)}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>

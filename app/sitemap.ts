@@ -13,6 +13,19 @@ const spokeFissuresPages = [
   'fissure-fondation-maison',
 ];
 
+const spokeHumiditePages = [
+  'salpetre-mur-traitement',
+  'remontee-capillaire-solution',
+  'condensation-ou-infiltration',
+  'merule-champignon-traitement',
+  'vmi-ventilation-insufflation',
+];
+
+// 📋 Pages E-E-A-T
+const eeatPages = [
+  'notre-expert',
+];
+
 // 🏘️ SEO Local Hyper-Maillé - Pages expert par ville
 const expertFissuresVilles = [
   'toulouse', 'colomiers', 'tournefeuille', 'blagnac', 'muret',
@@ -192,12 +205,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.68,
   }));
 
-  // Pages SPOKE (Topic Clusters - Hub & Spoke)
-  const spokePages: MetadataRoute.Sitemap = spokeFissuresPages.map((slug) => ({
+  // Pages SPOKE Fissures (Topic Clusters - Hub & Spoke)
+  const spokeFissPages: MetadataRoute.Sitemap = spokeFissuresPages.map((slug) => ({
     url: `${baseUrl}/${slug}`,
     lastModified: currentDate,
     changeFrequency: 'monthly' as const,
     priority: 0.75,
+  }));
+
+  // Pages SPOKE Humidité (Topic Clusters - Hub & Spoke)
+  const spokeHumPages: MetadataRoute.Sitemap = spokeHumiditePages.map((slug) => ({
+    url: `${baseUrl}/${slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.75,
+  }));
+
+  // Pages E-E-A-T
+  const eeatPagesMap: MetadataRoute.Sitemap = eeatPages.map((slug) => ({
+    url: `${baseUrl}/${slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
   }));
 
   // Pages expert-fissures par ville (SEO Local Hyper-Maillé)
@@ -219,7 +248,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticPages, 
     ...pillarPages, 
-    ...spokePages,
+    ...eeatPagesMap,
+    ...spokeFissPages,
+    ...spokeHumPages,
     ...departementPages, 
     ...expertFissuresPages,
     ...expertHumiditePages,
