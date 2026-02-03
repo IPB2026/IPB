@@ -6,140 +6,18 @@ import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
 import { Testimonials } from '@/components/home/Testimonials';
-import { CheckCircle, Phone, ArrowRight, MapPin, Shield, Clock, Droplets, Wind, Home } from 'lucide-react';
+import { CheckCircle, Phone, ArrowRight, MapPin, Shield, Clock, Droplets, AlertTriangle, Home, Award, Users, ThermometerSun, Wind } from 'lucide-react';
+import { villesData, villeSlugs, type VilleInfo } from '@/app/data/villes';
 
-// Données des villes pour le SEO local humidité
-const villesExpertiseHumidite: Record<string, {
-  nom: string;
-  departement: string;
-  codePostal: string;
-  communesProches: string[];
-  specificites: string;
-  problematiques: string[];
-}> = {
-  'toulouse': {
-    nom: 'Toulouse',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31000',
-    communesProches: ['Colomiers', 'Tournefeuille', 'Blagnac', 'Balma', 'L\'Union'],
-    specificites: 'Nombreux immeubles anciens et maisons toulousaines en brique. Problèmes fréquents de remontées capillaires et salpêtre.',
-    problematiques: ['Remontées capillaires', 'Salpêtre sur murs de brique', 'Caves humides', 'Condensation']
-  },
-  'colomiers': {
-    nom: 'Colomiers',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31770',
-    communesProches: ['Toulouse', 'Tournefeuille', 'Plaisance-du-Touch', 'Pibrac', 'Cornebarrieu'],
-    specificites: 'Nombreux pavillons des années 70-90. Problèmes de ventilation et condensation fréquents.',
-    problematiques: ['Condensation', 'Moisissures', 'Défaut VMC', 'Isolation déficiente']
-  },
-  'tournefeuille': {
-    nom: 'Tournefeuille',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31170',
-    communesProches: ['Toulouse', 'Colomiers', 'Plaisance-du-Touch', 'Cugnaux'],
-    specificites: 'Pavillons sur sol argileux. Remontées capillaires fréquentes après les sécheresses.',
-    problematiques: ['Remontées capillaires', 'Salpêtre', 'Moisissures', 'Ponts thermiques']
-  },
-  'blagnac': {
-    nom: 'Blagnac',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31700',
-    communesProches: ['Toulouse', 'Colomiers', 'Beauzelle', 'Cornebarrieu'],
-    specificites: 'Constructions variées, du centre ancien aux résidences récentes. Mix de problématiques.',
-    problematiques: ['Infiltrations', 'Remontées capillaires', 'Condensation', 'Fuites toiture']
-  },
-  'muret': {
-    nom: 'Muret',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31600',
-    communesProches: ['Portet-sur-Garonne', 'Seysses', 'Eaunes', 'Labarthe-sur-Lèze'],
-    specificites: 'Sous-préfecture avec patrimoine ancien. Remontées capillaires dans les vieilles bâtisses.',
-    problematiques: ['Remontées capillaires', 'Salpêtre', 'Caves humides', 'Mérule']
-  },
-  'montauban': {
-    nom: 'Montauban',
-    departement: 'Tarn-et-Garonne (82)',
-    codePostal: '82000',
-    communesProches: ['Bressols', 'Montbeton', 'Villemade', 'Lacourt-Saint-Pierre'],
-    specificites: 'Préfecture avec centre historique en brique rose. Problèmes d\'humidité courants dans le vieux Montauban.',
-    problematiques: ['Remontées capillaires', 'Salpêtre', 'Infiltrations', 'Caves inondables']
-  },
-  'auch': {
-    nom: 'Auch',
-    departement: 'Gers (32)',
-    codePostal: '32000',
-    communesProches: ['Pavie', 'Preignan', 'Duran', 'Roquelaure'],
-    specificites: 'Patrimoine historique important. Maisons anciennes sensibles à l\'humidité ascensionnelle.',
-    problematiques: ['Remontées capillaires', 'Salpêtre', 'Caves humides', 'Ponts thermiques']
-  },
-  'cugnaux': {
-    nom: 'Cugnaux',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31270',
-    communesProches: ['Tournefeuille', 'Villeneuve-Tolosane', 'Frouzins', 'Portet-sur-Garonne'],
-    specificites: 'Zone pavillonnaire. Problèmes de condensation et ponts thermiques dans les maisons des années 80.',
-    problematiques: ['Condensation', 'Moisissures', 'Défaut isolation', 'VMC défaillante']
-  },
-  'balma': {
-    nom: 'Balma',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31130',
-    communesProches: ['Toulouse', 'L\'Union', 'Quint-Fonsegrives', 'Flourens'],
-    specificites: 'Commune résidentielle mixte. Problèmes variés selon l\'âge des constructions.',
-    problematiques: ['Remontées capillaires', 'Infiltrations', 'Condensation', 'Moisissures']
-  },
-  'ramonville-saint-agne': {
-    nom: 'Ramonville-Saint-Agne',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31520',
-    communesProches: ['Toulouse', 'Castanet-Tolosan', 'Auzeville-Tolosane', 'Labège'],
-    specificites: 'Zone universitaire, nombreuses résidences. Problèmes de ventilation fréquents.',
-    problematiques: ['Condensation', 'Moisissures', 'Ventilation insuffisante', 'Ponts thermiques']
-  },
-  'saint-gaudens': {
-    nom: 'Saint-Gaudens',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31800',
-    communesProches: ['Valentine', 'Villeneuve-de-Rivière', 'Miramont-de-Comminges'],
-    specificites: 'Comminges, patrimoine ancien. Maisons de caractère avec problèmes d\'humidité ascensionnelle.',
-    problematiques: ['Remontées capillaires', 'Salpêtre', 'Caves humides', 'Infiltrations']
-  },
-  'plaisance-du-touch': {
-    nom: 'Plaisance-du-Touch',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31830',
-    communesProches: ['Tournefeuille', 'Colomiers', 'Fonsorbes', 'La Salvetat-Saint-Gilles'],
-    specificites: 'Forte croissance urbaine, constructions récentes. Problèmes d\'étanchéité et condensation.',
-    problematiques: ['Infiltrations', 'Condensation', 'Défauts construction', 'VMC insuffisante']
-  },
-  'l-union': {
-    nom: 'L\'Union',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31240',
-    communesProches: ['Toulouse', 'Balma', 'Saint-Jean', 'Montrabé', 'Launaguet'],
-    specificites: 'Banlieue nord-est. Pavillons des années 70-90 avec problèmes de ventilation.',
-    problematiques: ['Condensation', 'Moisissures', 'Défaut VMC', 'Ponts thermiques']
-  },
-  'castanet-tolosan': {
-    nom: 'Castanet-Tolosan',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31320',
-    communesProches: ['Ramonville', 'Auzeville-Tolosane', 'Labège', 'Escalquens'],
-    specificites: 'Sud-est toulousain. Sols argileux favorisant les remontées capillaires.',
-    problematiques: ['Remontées capillaires', 'Salpêtre', 'Condensation', 'Moisissures']
-  }
-};
-
-const villesHumiditeSlugs = Object.keys(villesExpertiseHumidite);
-
+// Génération statique des pages
 export async function generateStaticParams() {
-  return villesHumiditeSlugs.map((ville) => ({ ville }));
+  return villeSlugs.map((ville) => ({ ville }));
 }
 
+// Génération des métadonnées SEO
 export async function generateMetadata({ params }: { params: Promise<{ ville: string }> }): Promise<Metadata> {
   const { ville } = await params;
-  const villeData = villesExpertiseHumidite[ville];
+  const villeData = villesData[ville];
   
   if (!villeData) {
     return { title: 'Expert Humidité | IPB Expertise' };
@@ -147,32 +25,40 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
 
   const deptCode = villeData.codePostal.slice(0, 2);
   const villeNom = villeData.nom;
-  const villeNomLower = villeNom.toLowerCase();
+  const villeNomLower = villeNom.toLowerCase().replace(/\s+/g, '-');
+
+  const keywords = [
+    `expert humidité ${villeNomLower}`,
+    `traitement humidité ${villeNomLower}`,
+    `remontées capillaires ${villeNomLower}`,
+    `injection résine ${villeNomLower}`,
+    `salpêtre ${villeNomLower}`,
+    `moisissures maison ${villeNomLower}`,
+    `cave humide ${villeNomLower}`,
+    `murs humides ${villeNomLower}`,
+    `assèchement murs ${villeNomLower}`,
+    `cuvelage ${deptCode}`,
+    `VMI ${villeNomLower}`,
+    `ventilation maison ${villeNomLower}`,
+    `traitement mérule ${villeNomLower}`,
+    `étanchéité ${villeNomLower}`,
+  ];
+
+  const description = `Expert traitement humidité à ${villeNom} (${deptCode}). Injection résine garantie 30 ans, cuvelage, VMI. Diagnostic 149€. Remontées capillaires, salpêtre, moisissures. ☎ 05 82 95 33 75`;
 
   return {
     title: `Expert Humidité ${villeNom} (${deptCode}) | Injection Résine Garantie 30 ans | IPB`,
-    description: `Expert humidité maison à ${villeNom} et ${villeData.communesProches[0]}. Traitement remontées capillaires, salpêtre, moisissures. Diagnostic 149€. ☎ 05 82 95 33 75`,
-    keywords: [
-      `expert humidité ${villeNomLower}`,
-      `traitement humidité ${villeNomLower}`,
-      `remontées capillaires ${villeNomLower}`,
-      `salpêtre mur ${villeNomLower}`,
-      `moisissures maison ${villeNomLower}`,
-      `injection résine ${villeNomLower}`,
-      `cave humide ${villeNomLower}`,
-      `cuvelage ${villeNomLower}`,
-      `humidité mur ${deptCode}`,
-      `diagnostic humidité ${villeNomLower}`,
-    ],
+    description,
+    keywords,
     alternates: {
       canonical: `https://www.ipb-expertise.fr/expert-humidite/${ville}`,
     },
     openGraph: {
       title: `Expert Humidité ${villeNom} (${deptCode}) | IPB`,
-      description: `Traitement humidité à ${villeNom}. Injection résine garantie 30 ans. Diagnostic 48h.`,
+      description: `Traitement définitif humidité à ${villeNom}. Injection résine, cuvelage, VMI. Diagnostic 48h.`,
       url: `https://www.ipb-expertise.fr/expert-humidite/${ville}`,
       type: 'website',
-      images: [{ url: '/images/salpetre-avant-apres.webp', width: 1200, height: 630, alt: `Expert humidité ${villeNom}` }],
+      images: [{ url: '/images/humidite-avant-apres.webp', width: 1200, height: 630, alt: `Expert humidité ${villeNom}` }],
     },
     twitter: {
       card: 'summary',
@@ -185,17 +71,18 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
 
 export default async function ExpertHumiditeVillePage({ params }: { params: Promise<{ ville: string }> }) {
   const { ville } = await params;
-  const villeData = villesExpertiseHumidite[ville];
+  const villeData = villesData[ville];
 
   if (!villeData) {
     notFound();
   }
 
+  // JSON-LD
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": `IPB - Expert Humidité ${villeData.nom}`,
-    "description": `Expert en traitement de l'humidité à ${villeData.nom} : remontées capillaires, salpêtre, moisissures`,
+    "description": `Expert en traitement de l'humidité à ${villeData.nom}. Injection résine, cuvelage, VMI.`,
     "url": `https://www.ipb-expertise.fr/expert-humidite/${ville}`,
     "telephone": "+33582953375",
     "address": {
@@ -204,25 +91,40 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
       "addressRegion": villeData.departement,
       "postalCode": villeData.codePostal,
       "addressCountry": "FR"
+    },
+    "areaServed": [
+      { "@type": "City", "name": villeData.nom },
+      ...(villeData.communesProches?.map(c => ({ "@type": "City", "name": c })) || [])
+    ],
+    "priceRange": "€€",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "14"
     }
   };
 
+  // FAQ personnalisée humidité
   const faqItems = [
     {
-      question: `Traitez-vous l'humidité à ${villeData.nom} ?`,
-      answer: `Oui, nous intervenons à ${villeData.nom} et dans les communes voisines : ${villeData.communesProches.join(', ')}. Diagnostic sous 48h.`
+      question: `Intervenez-vous à ${villeData.nom} pour les problèmes d'humidité ?`,
+      answer: `Oui, nous intervenons à ${villeData.nom} et dans les communes voisines : ${villeData.communesProches?.join(', ') || 'toute la zone'}. ${villeData.specificitesHumidite || 'Notre équipe connaît parfaitement les problématiques locales d\'humidité.'} Diagnostic sous 48h.`
     },
     {
-      question: `Quels problèmes d'humidité à ${villeData.nom} ?`,
-      answer: `À ${villeData.nom}, nous traitons principalement : ${villeData.problematiques.join(', ')}. ${villeData.specificites}`
+      question: `Comment savoir si j'ai des remontées capillaires à ${villeData.nom} ?`,
+      answer: `Les signes caractéristiques sont : salpêtre (poudre blanche) au pied des murs, peinture qui cloque en bas de mur, odeur de moisi persistante, moisissures en partie basse. Si ces signes sont présents, vous avez probablement des remontées capillaires. Un diagnostic permet de confirmer.`
     },
     {
-      question: `Quel est le prix du traitement humidité à ${villeData.nom} ?`,
-      answer: `Le diagnostic coûte 149€. Pour les remontées capillaires, l'injection résine coûte 2 000-5 000€ (garantie 30 ans). Le cuvelage de cave démarre à 3 000€.`
+      question: `Combien coûte un traitement humidité à ${villeData.nom} ?`,
+      answer: `Le diagnostic coûte 149€ (déductible des travaux). L'injection résine coûte 80-120€/ml (soit 8 000-15 000€ pour une maison standard). Le cuvelage (caves) coûte 150-250€/m². Ces tarifs incluent le déplacement sur ${villeData.nom} et la garantie 30 ans.`
     },
     {
-      question: `Combien de temps pour traiter l'humidité ?`,
-      answer: `Le traitement lui-même prend 1-3 jours selon la surface. Les murs sèchent ensuite progressivement sur 6-12 mois.`
+      question: `Quelle est la différence entre condensation et remontées capillaires ?`,
+      answer: `La condensation se manifeste en haut de mur et sur les fenêtres (buée), surtout en hiver. Les remontées capillaires touchent le bas de mur (< 1m50) avec présence de salpêtre. Le traitement est différent : ventilation pour la condensation, injection résine pour les remontées.`
+    },
+    {
+      question: `Combien de temps pour que les murs sèchent après traitement ?`,
+      answer: `La barrière d'injection est active en 48h. Mais le mur doit évacuer l'eau accumulée : comptez 1 mois par cm d'épaisseur (soit 6-12 mois pour un mur de 20cm). Le résultat est définitif et garanti 30 ans.`
     }
   ];
 
@@ -235,6 +137,14 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
       "acceptedAnswer": { "@type": "Answer", "text": item.answer }
     }))
   };
+
+  // Problèmes d'humidité typiques
+  const problemesHumidite = [
+    { icon: <Droplets size={20} />, titre: 'Remontées capillaires', desc: 'Eau qui monte du sol dans les murs par capillarité' },
+    { icon: <ThermometerSun size={20} />, titre: 'Condensation', desc: 'Vapeur d\'eau qui se condense sur les murs froids' },
+    { icon: <AlertTriangle size={20} />, titre: 'Infiltrations', desc: 'Eau qui pénètre par des fissures ou défauts d\'étanchéité' },
+    { icon: <Wind size={20} />, titre: 'Défaut de ventilation', desc: 'Air humide qui stagne et crée des moisissures' },
+  ];
 
   return (
     <div className="font-sans text-slate-800 bg-slate-50 antialiased">
@@ -251,137 +161,300 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
           <span className="mx-2">›</span>
           <Link href="/expert-humidite-toulouse-31" className="hover:text-blue-600">Expert Humidité</Link>
           <span className="mx-2">›</span>
-          <span className="text-slate-900">{villeData.nom}</span>
+          <span className="text-slate-900 font-medium">{villeData.nom}</span>
         </div>
       </div>
 
       {/* Hero */}
       <section className="relative bg-slate-900 text-white py-16 md:py-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950/30"></div>
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+        
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl">
-            <div className="flex items-center gap-2 text-blue-400 text-sm font-bold mb-4">
-              <MapPin size={18} />
-              <span>{villeData.nom} - {villeData.departement}</span>
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            <div>
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full text-sm font-bold mb-6">
+                <Droplets size={16} />
+                Traitement définitif de l'humidité
+              </div>
+
+              <h1 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
+                Expert Humidité à <span className="text-blue-400">{villeData.nom}</span>
+                <span className="block text-2xl md:text-3xl text-slate-300 mt-2">({villeData.codePostal})</span>
+              </h1>
+
+              <p className="text-lg text-slate-300 mb-6 leading-relaxed">
+                Salpêtre, moisissures, peinture qui cloque, odeurs de moisi... Les problèmes d'humidité à {villeData.nom} sont fréquents, 
+                notamment dans les maisons anciennes et les constructions sur sol argileux. Notre traitement par injection résine 
+                stoppe définitivement les remontées capillaires, avec une garantie de 30 ans.
+              </p>
+
+              {villeData.specificitesHumidite && (
+                <div className="bg-blue-500/20 border border-blue-500/40 rounded-xl p-4 mb-8">
+                  <p className="text-blue-200">
+                    <strong className="text-white">💧 Spécificité locale :</strong> {villeData.specificitesHumidite}
+                  </p>
+                </div>
+              )}
+
+              <div className="flex flex-col sm:flex-row gap-4 mb-6">
+                <Link href="/diagnostic" className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all shadow-xl">
+                  💧 DIAGNOSTIC GRATUIT <ArrowRight size={20} />
+                </Link>
+                <a href="tel:0582953375" className="bg-white/10 border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all">
+                  <Phone size={20} /> 05 82 95 33 75
+                </a>
+              </div>
+
+              <div className="flex flex-wrap gap-4 text-sm text-slate-400">
+                <span className="flex items-center gap-2">
+                  <CheckCircle size={16} className="text-green-500" /> Intervention {villeData.distance} de Toulouse
+                </span>
+                <span className="flex items-center gap-2">
+                  <Clock size={16} className="text-blue-400" /> Diagnostic sous 48h
+                </span>
+                <span className="flex items-center gap-2">
+                  <Shield size={16} className="text-cyan-400" /> Garantie 30 ans
+                </span>
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
-              Expert Humidité à <span className="text-blue-400">{villeData.nom}</span>
-            </h1>
-            <p className="text-xl text-slate-300 mb-8 max-w-2xl">
-              Murs humides, salpêtre, moisissures à {villeData.nom} ? Diagnostic sous 48h et solutions durables garanties 30 ans.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/diagnostic" className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
-                Diagnostic gratuit <ArrowRight size={20} />
-              </Link>
-              <a href="tel:0582953375" className="bg-white/10 border border-white/20 hover:bg-white/20 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
-                <Phone size={20} /> 05 82 95 33 75
-              </a>
+
+            {/* Encart types de problèmes */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+              <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <AlertTriangle size={20} className="text-blue-400" />
+                Problèmes d'humidité traités
+              </h2>
+              
+              <div className="space-y-4">
+                {problemesHumidite.map((p, i) => (
+                  <div key={i} className="flex items-start gap-3 p-3 bg-white/5 rounded-xl">
+                    <div className="text-blue-400 mt-1">{p.icon}</div>
+                    <div>
+                      <div className="text-white font-bold text-sm">{p.titre}</div>
+                      <div className="text-slate-400 text-xs">{p.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {villeData.communesProches && (
+                <div className="mt-6 pt-4 border-t border-white/10">
+                  <div className="text-sm text-slate-400 mb-2">Nous intervenons aussi à :</div>
+                  <div className="flex flex-wrap gap-2">
+                    {villeData.communesProches.slice(0, 4).map((c, i) => (
+                      <span key={i} className="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-xs">
+                        {c}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Problématiques locales */}
-      <section className="py-12 bg-white border-b border-slate-200">
+      {/* Stats */}
+      <section className="py-10 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-xl font-bold text-slate-900 mb-4 text-center">Problèmes traités à {villeData.nom}</h2>
-          <div className="flex flex-wrap justify-center gap-3">
-            {villeData.problematiques.map((prob) => (
-              <span key={prob} className="bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">
-                {prob}
-              </span>
-            ))}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div>
+              <div className="text-3xl font-extrabold text-blue-600">48h</div>
+              <div className="text-slate-600 text-sm">Diagnostic</div>
+            </div>
+            <div>
+              <div className="text-3xl font-extrabold text-blue-600">30 ans</div>
+              <div className="text-slate-600 text-sm">Garantie injection</div>
+            </div>
+            <div>
+              <div className="text-3xl font-extrabold text-blue-600">95%</div>
+              <div className="text-slate-600 text-sm">Efficacité</div>
+            </div>
+            <div>
+              <div className="text-3xl font-extrabold text-blue-600">6-12 mois</div>
+              <div className="text-slate-600 text-sm">Séchage complet</div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Contexte et solutions */}
-      <section className="py-16">
+      {/* Solutions proposées */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">
+            Nos solutions contre l'humidité à {villeData.nom}
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Injection résine */}
+            <div className="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+              <div className="bg-blue-600 text-white p-6">
+                <Droplets size={32} className="mb-3" />
+                <h3 className="text-xl font-bold">Injection Résine</h3>
+                <p className="text-blue-100 text-sm mt-2">Pour remontées capillaires</p>
+              </div>
+              <div className="p-6">
+                <p className="text-slate-600 mb-4">
+                  Création d'une barrière étanche à la base du mur. La résine hydrophobe bloque définitivement 
+                  la remontée d'eau par capillarité.
+                </p>
+                <ul className="space-y-2 text-sm text-slate-700">
+                  <li className="flex items-center gap-2"><CheckCircle size={16} className="text-green-500" /> Perçage tous les 12cm</li>
+                  <li className="flex items-center gap-2"><CheckCircle size={16} className="text-green-500" /> Injection basse pression</li>
+                  <li className="flex items-center gap-2"><CheckCircle size={16} className="text-green-500" /> Barrière active en 48h</li>
+                  <li className="flex items-center gap-2"><CheckCircle size={16} className="text-green-500" /> Garantie 30 ans</li>
+                </ul>
+                <div className="mt-4 pt-4 border-t border-slate-100">
+                  <div className="text-2xl font-bold text-blue-600">80-120€ <span className="text-sm text-slate-500 font-normal">/ml</span></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Cuvelage */}
+            <div className="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+              <div className="bg-cyan-600 text-white p-6">
+                <Home size={32} className="mb-3" />
+                <h3 className="text-xl font-bold">Cuvelage</h3>
+                <p className="text-cyan-100 text-sm mt-2">Pour caves et sous-sols</p>
+              </div>
+              <div className="p-6">
+                <p className="text-slate-600 mb-4">
+                  Étanchéification complète des parois enterrées. Revêtement époxy ou mortier hydrofuge 
+                  qui résiste à la pression de l'eau.
+                </p>
+                <ul className="space-y-2 text-sm text-slate-700">
+                  <li className="flex items-center gap-2"><CheckCircle size={16} className="text-green-500" /> Préparation support</li>
+                  <li className="flex items-center gap-2"><CheckCircle size={16} className="text-green-500" /> Application multicouche</li>
+                  <li className="flex items-center gap-2"><CheckCircle size={16} className="text-green-500" /> Résiste à la pression</li>
+                  <li className="flex items-center gap-2"><CheckCircle size={16} className="text-green-500" /> Garantie décennale</li>
+                </ul>
+                <div className="mt-4 pt-4 border-t border-slate-100">
+                  <div className="text-2xl font-bold text-cyan-600">150-250€ <span className="text-sm text-slate-500 font-normal">/m²</span></div>
+                </div>
+              </div>
+            </div>
+
+            {/* VMI */}
+            <div className="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+              <div className="bg-teal-600 text-white p-6">
+                <Wind size={32} className="mb-3" />
+                <h3 className="text-xl font-bold">VMI</h3>
+                <p className="text-teal-100 text-sm mt-2">Pour condensation</p>
+              </div>
+              <div className="p-6">
+                <p className="text-slate-600 mb-4">
+                  Ventilation Mécanique par Insufflation. Insuffle de l'air filtré et préchauffé, 
+                  créant une surpression qui évacue l'humidité.
+                </p>
+                <ul className="space-y-2 text-sm text-slate-700">
+                  <li className="flex items-center gap-2"><CheckCircle size={16} className="text-green-500" /> Installation simple</li>
+                  <li className="flex items-center gap-2"><CheckCircle size={16} className="text-green-500" /> Air filtré et préchauffé</li>
+                  <li className="flex items-center gap-2"><CheckCircle size={16} className="text-green-500" /> Idéal en rénovation</li>
+                  <li className="flex items-center gap-2"><CheckCircle size={16} className="text-green-500" /> Économies chauffage</li>
+                </ul>
+                <div className="mt-4 pt-4 border-t border-slate-100">
+                  <div className="text-2xl font-bold text-teal-600">2 500-5 000€ <span className="text-sm text-slate-500 font-normal">posée</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Spécificités locales */}
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
               <h2 className="text-3xl font-extrabold text-slate-900 mb-6">
-                L'humidité à {villeData.nom}
+                L'humidité à {villeData.nom} : contexte local
               </h2>
+              
               <div className="prose prose-lg text-slate-600">
-                <p>{villeData.specificites}</p>
                 <p>
-                  Nos experts connaissent les spécificités du bâti local et proposent des solutions 
-                  adaptées à chaque situation. Toutes nos interventions sont garanties.
+                  {villeData.nom} présente des conditions favorables aux problèmes d'humidité, 
+                  notamment dans les constructions anciennes et les maisons sur sol argileux.
+                </p>
+                
+                {villeData.geologie && (
+                  <p>{villeData.geologie}</p>
+                )}
+
+                {villeData.typesConstruction && (
+                  <div className="bg-blue-50 rounded-xl p-6 my-6 not-prose">
+                    <h3 className="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+                      <Home size={20} className="text-blue-600" />
+                      Constructions concernées
+                    </h3>
+                    <p className="text-slate-600 text-base">{villeData.typesConstruction}</p>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              {/* Conseil expert humidité */}
+              <div className="bg-blue-50 border-l-4 border-blue-600 rounded-r-xl p-6">
+                <h3 className="font-bold text-blue-900 mb-3 flex items-center gap-2">
+                  <Award size={20} />
+                  Conseil expert humidité
+                </h3>
+                <p className="text-blue-800">
+                  {villeData.specificitesHumidite || 
+                    `À ${villeData.nom}, nous recommandons un diagnostic pour distinguer remontées capillaires et condensation. 
+                    Le traitement est très différent et une erreur de diagnostic peut coûter cher.`}
                 </p>
               </div>
-              <div className="mt-8 space-y-4">
-                <div className="flex items-start gap-4 bg-blue-50 p-4 rounded-xl">
-                  <Droplets className="text-blue-600 flex-shrink-0 mt-1" size={24} />
-                  <div>
-                    <h3 className="font-bold text-slate-900">Injection résine</h3>
-                    <p className="text-slate-600 text-sm">Stoppe les remontées capillaires. Garantie 30 ans.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4 bg-blue-50 p-4 rounded-xl">
-                  <Home className="text-blue-600 flex-shrink-0 mt-1" size={24} />
-                  <div>
-                    <h3 className="font-bold text-slate-900">Cuvelage</h3>
-                    <p className="text-slate-600 text-sm">Étanchéité des caves et sous-sols. Garantie 10 ans.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4 bg-blue-50 p-4 rounded-xl">
-                  <Wind className="text-blue-600 flex-shrink-0 mt-1" size={24} />
-                  <div>
-                    <h3 className="font-bold text-slate-900">VMI®</h3>
-                    <p className="text-slate-600 text-sm">Ventilation mécanique pour éliminer condensation et moisissures.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="bg-slate-100 rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Zone d'intervention</h3>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {villeData.communesProches.map((commune) => (
-                  <span key={commune} className="bg-white text-slate-700 px-3 py-1 rounded-full text-sm">
-                    {commune}
-                  </span>
-                ))}
-              </div>
-              <div className="border-t border-slate-200 pt-6 space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-slate-600">Diagnostic</span>
-                  <span className="font-bold text-slate-900">48h</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-600">Devis</span>
-                  <span className="font-bold text-slate-900">Gratuit</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-600">Garantie injection</span>
-                  <span className="font-bold text-blue-600">30 ans</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Tarifs */}
-      <section className="py-16 bg-slate-900 text-white">
-        <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-center mb-12">Tarifs traitement humidité {villeData.nom}</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-slate-800 rounded-2xl p-6 text-center">
-              <h3 className="font-bold mb-2">Diagnostic</h3>
-              <div className="text-4xl font-extrabold text-blue-400 mb-2">149€</div>
-              <p className="text-slate-400 text-sm">Déductible des travaux</p>
-            </div>
-            <div className="bg-slate-800 rounded-2xl p-6 text-center border-2 border-blue-500">
-              <h3 className="font-bold mb-2">Injection résine</h3>
-              <div className="text-4xl font-extrabold text-blue-400 mb-2">2-5K€</div>
-              <p className="text-slate-400 text-sm">Garantie 30 ans</p>
-            </div>
-            <div className="bg-slate-800 rounded-2xl p-6 text-center">
-              <h3 className="font-bold mb-2">Cuvelage</h3>
-              <div className="text-4xl font-extrabold text-blue-400 mb-2">3-8K€</div>
-              <p className="text-slate-400 text-sm">Selon surface</p>
+              {/* Signes à surveiller */}
+              <div className="bg-slate-100 rounded-xl p-6">
+                <h3 className="font-bold text-slate-900 mb-4">Signes d'humidité à surveiller</h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3 text-slate-600">
+                    <AlertTriangle size={18} className="text-blue-600 flex-shrink-0 mt-1" />
+                    Salpêtre (poudre blanche) au pied des murs
+                  </li>
+                  <li className="flex items-start gap-3 text-slate-600">
+                    <AlertTriangle size={18} className="text-blue-600 flex-shrink-0 mt-1" />
+                    Peinture qui cloque ou s'écaille
+                  </li>
+                  <li className="flex items-start gap-3 text-slate-600">
+                    <AlertTriangle size={18} className="text-blue-600 flex-shrink-0 mt-1" />
+                    Moisissures noires récurrentes
+                  </li>
+                  <li className="flex items-start gap-3 text-slate-600">
+                    <AlertTriangle size={18} className="text-blue-600 flex-shrink-0 mt-1" />
+                    Odeur de moisi persistante
+                  </li>
+                  <li className="flex items-start gap-3 text-slate-600">
+                    <AlertTriangle size={18} className="text-blue-600 flex-shrink-0 mt-1" />
+                    Buée excessive sur les fenêtres
+                  </li>
+                </ul>
+              </div>
+
+              {/* Communes proches */}
+              {villeData.communesProches && villeData.communesProches.length > 0 && (
+                <div className="bg-white rounded-xl p-6 border border-slate-200">
+                  <h3 className="font-bold text-slate-900 mb-4">Intervention dans les communes voisines</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {villeData.communesProches.map((commune, i) => {
+                      const communeSlug = commune.toLowerCase().replace(/[']/g, '').replace(/\s+/g, '-');
+                      return (
+                        <Link 
+                          key={i} 
+                          href={`/expert-humidite/${communeSlug}`}
+                          className="bg-slate-100 hover:bg-blue-100 text-slate-700 hover:text-blue-700 px-4 py-2 rounded-full text-sm font-medium transition-colors"
+                        >
+                          {commune}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -391,7 +464,7 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
       <section className="py-16 bg-slate-100">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
-            Questions fréquentes - Humidité {villeData.nom}
+            Questions fréquentes - Humidité à {villeData.nom}
           </h2>
           <div className="space-y-4">
             {faqItems.map((item, index) => (
@@ -407,49 +480,59 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
         </div>
       </section>
 
-      {/* Topic Cluster - Liens vers spokes */}
+      {/* Topic Cluster - Liens vers spokes humidité */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-2xl font-extrabold text-slate-900 mb-8 text-center">
-            Guides par type d'humidité
+            Guides par type de problème d'humidité
           </h2>
-          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid md:grid-cols-4 gap-4">
             <Link href="/remontees-capillaires-traitement" className="bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-xl p-4 transition-all group">
               <span className="text-2xl mb-2 block">💧</span>
               <h3 className="font-bold text-slate-900 group-hover:text-blue-600 text-sm">Remontées capillaires</h3>
+              <p className="text-xs text-slate-500 mt-1">Traitement définitif</p>
             </Link>
             <Link href="/moisissures-maison-sante" className="bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-xl p-4 transition-all group">
-              <span className="text-2xl mb-2 block">🍄</span>
-              <h3 className="font-bold text-slate-900 group-hover:text-blue-600 text-sm">Moisissures & Santé</h3>
+              <span className="text-2xl mb-2 block">🦠</span>
+              <h3 className="font-bold text-slate-900 group-hover:text-blue-600 text-sm">Moisissures</h3>
+              <p className="text-xs text-slate-500 mt-1">Risques santé</p>
             </Link>
             <Link href="/cave-humide-solutions" className="bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-xl p-4 transition-all group">
-              <span className="text-2xl mb-2 block">🏚️</span>
+              <span className="text-2xl mb-2 block">🏠</span>
               <h3 className="font-bold text-slate-900 group-hover:text-blue-600 text-sm">Cave humide</h3>
+              <p className="text-xs text-slate-500 mt-1">Cuvelage & drainage</p>
             </Link>
             <Link href="/salpetre-mur-traitement" className="bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-xl p-4 transition-all group">
               <span className="text-2xl mb-2 block">🧂</span>
               <h3 className="font-bold text-slate-900 group-hover:text-blue-600 text-sm">Salpêtre</h3>
+              <p className="text-xs text-slate-500 mt-1">Causes & solutions</p>
+            </Link>
+          </div>
+          <div className="grid md:grid-cols-4 gap-4 mt-4">
+            <Link href="/condensation-ou-infiltration" className="bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-xl p-4 transition-all group">
+              <span className="text-2xl mb-2 block">❓</span>
+              <h3 className="font-bold text-slate-900 group-hover:text-blue-600 text-sm">Condensation ou infiltration ?</h3>
+              <p className="text-xs text-slate-500 mt-1">Comment distinguer</p>
+            </Link>
+            <Link href="/vmi-ventilation-insufflation" className="bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-xl p-4 transition-all group">
+              <span className="text-2xl mb-2 block">💨</span>
+              <h3 className="font-bold text-slate-900 group-hover:text-blue-600 text-sm">VMI</h3>
+              <p className="text-xs text-slate-500 mt-1">Ventilation par insufflation</p>
             </Link>
             <Link href="/ponts-thermiques-condensation" className="bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-xl p-4 transition-all group">
               <span className="text-2xl mb-2 block">🌡️</span>
               <h3 className="font-bold text-slate-900 group-hover:text-blue-600 text-sm">Ponts thermiques</h3>
-            </Link>
-            <Link href="/condensation-ou-infiltration" className="bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-xl p-4 transition-all group">
-              <span className="text-2xl mb-2 block">🌧️</span>
-              <h3 className="font-bold text-slate-900 group-hover:text-blue-600 text-sm">Condensation vs Infiltration</h3>
-            </Link>
-            <Link href="/vmi-ventilation-insufflation" className="bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-xl p-4 transition-all group">
-              <span className="text-2xl mb-2 block">🌀</span>
-              <h3 className="font-bold text-slate-900 group-hover:text-blue-600 text-sm">VMI® Ventilation</h3>
+              <p className="text-xs text-slate-500 mt-1">Condensation localisée</p>
             </Link>
             <Link href="/merule-champignon-traitement" className="bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-xl p-4 transition-all group">
-              <span className="text-2xl mb-2 block">🦠</span>
+              <span className="text-2xl mb-2 block">🍄</span>
               <h3 className="font-bold text-slate-900 group-hover:text-blue-600 text-sm">Mérule</h3>
+              <p className="text-xs text-slate-500 mt-1">Champignon destructeur</p>
             </Link>
           </div>
           <div className="mt-8 text-center">
             <Link href="/expert-humidite-toulouse-31" className="inline-flex items-center gap-2 text-blue-600 font-bold hover:text-blue-700">
-              Consultez notre guide complet Traitement Humidité <ArrowRight size={18} />
+              Consultez notre guide complet Expert Humidité <ArrowRight size={18} />
             </Link>
           </div>
         </div>
@@ -458,14 +541,35 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
       {/* Avis Google */}
       <Testimonials />
 
-      {/* CTA */}
-      <section className="py-16 bg-blue-600 text-white">
+      {/* CTA Final */}
+      <section className="py-16 bg-gradient-to-r from-blue-600 to-cyan-600 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-extrabold mb-6">Problème d'humidité à {villeData.nom} ?</h2>
-          <p className="text-xl text-blue-100 mb-8">Diagnostic sous 48h. Solutions garanties 30 ans.</p>
-          <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50">
-            Demander un diagnostic <ArrowRight size={20} />
-          </Link>
+          <p className="text-blue-200 font-bold mb-3">💧 Problème d'humidité à {villeData.nom} ?</p>
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+            L'Humidité Ne Disparaît Jamais Seule
+          </h2>
+          <p className="text-xl text-blue-100 mb-6">
+            Chaque mois qui passe dégrade vos murs, vos boiseries, et votre santé.<br />
+            <strong className="text-white">Un diagnostic aujourd'hui peut vous éviter une facture x3 demain.</strong>
+          </p>
+          
+          <div className="bg-white/10 rounded-xl p-4 mb-8 max-w-md mx-auto backdrop-blur-sm">
+            <p className="text-sm">
+              ✓ <strong>30 ans</strong> de garantie sur injection résine<br />
+              ✓ <strong>95%</strong> d'efficacité prouvée<br />
+              ✓ <strong>149€</strong> de diagnostic déductible des travaux
+            </p>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link href="/diagnostic" className="bg-white text-blue-600 px-10 py-5 rounded-xl font-bold text-lg hover:bg-blue-50 flex items-center justify-center gap-2 shadow-2xl transform hover:scale-105 transition-all">
+              JE VEUX MON DIAGNOSTIC GRATUIT <ArrowRight size={20} />
+            </Link>
+            <a href="tel:0582953375" className="bg-blue-700 hover:bg-blue-800 px-8 py-5 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
+              <Phone size={20} /> 05 82 95 33 75
+            </a>
+          </div>
+          <p className="text-sm text-blue-200 mt-4">Réponse garantie sous 24h · Déplacement gratuit sur {villeData.nom}</p>
         </div>
       </section>
 

@@ -6,189 +6,18 @@ import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
 import { Testimonials } from '@/components/home/Testimonials';
-import { CheckCircle, Phone, ArrowRight, MapPin, Shield, Clock, FileText } from 'lucide-react';
+import { CheckCircle, Phone, ArrowRight, MapPin, Shield, Clock, FileText, AlertTriangle, Home, TreeDeciduous, Droplets, TrendingUp, Calendar, Users, Award } from 'lucide-react';
+import { villesData, villeSlugs, type VilleInfo } from '@/app/data/villes';
 
-// Données des villes pour le SEO local
-const villesExpertise: Record<string, {
-  nom: string;
-  departement: string;
-  codePostal: string;
-  population?: string;
-  communesProches: string[];
-  specificites: string;
-}> = {
-  'toulouse': {
-    nom: 'Toulouse',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31000',
-    population: '500 000',
-    communesProches: ['Colomiers', 'Tournefeuille', 'Blagnac', 'Balma', 'L\'Union'],
-    specificites: 'Capitale de l\'Occitanie, sols argileux sensibles au RGA. Plus de 200 arrêtés CAT-NAT depuis 2018.'
-  },
-  'colomiers': {
-    nom: 'Colomiers',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31770',
-    population: '40 000',
-    communesProches: ['Toulouse', 'Tournefeuille', 'Plaisance-du-Touch', 'Pibrac', 'Cornebarrieu'],
-    specificites: '2ème ville de Haute-Garonne. Nombreux lotissements des années 80-90 sur sol argileux.'
-  },
-  'tournefeuille': {
-    nom: 'Tournefeuille',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31170',
-    population: '27 000',
-    communesProches: ['Toulouse', 'Colomiers', 'Plaisance-du-Touch', 'Cugnaux', 'Villeneuve-Tolosane'],
-    specificites: 'Zone pavillonnaire en expansion. Sols argileux avec forts risques de retrait-gonflement.'
-  },
-  'blagnac': {
-    nom: 'Blagnac',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31700',
-    population: '25 000',
-    communesProches: ['Toulouse', 'Colomiers', 'Beauzelle', 'Cornebarrieu', 'L\'Union'],
-    specificites: 'Proximité aéroportuaire. Constructions variées, du pavillonnaire aux immeubles récents.'
-  },
-  'muret': {
-    nom: 'Muret',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31600',
-    population: '27 000',
-    communesProches: ['Portet-sur-Garonne', 'Seysses', 'Eaunes', 'Labarthe-sur-Lèze', 'Pins-Justaret'],
-    specificites: 'Sous-préfecture. Zone très touchée par les sécheresses et le RGA. Nombreuses maisons anciennes.'
-  },
-  'cugnaux': {
-    nom: 'Cugnaux',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31270',
-    population: '18 000',
-    communesProches: ['Tournefeuille', 'Villeneuve-Tolosane', 'Frouzins', 'Portet-sur-Garonne'],
-    specificites: 'Forte croissance urbaine. Sols argileux à risque modéré à fort.'
-  },
-  'balma': {
-    nom: 'Balma',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31130',
-    population: '17 000',
-    communesProches: ['Toulouse', 'L\'Union', 'Quint-Fonsegrives', 'Pin-Balma', 'Flourens'],
-    specificites: 'Commune résidentielle à l\'est de Toulouse. Mix de constructions anciennes et récentes.'
-  },
-  'ramonville-saint-agne': {
-    nom: 'Ramonville-Saint-Agne',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31520',
-    population: '14 000',
-    communesProches: ['Toulouse', 'Castanet-Tolosan', 'Auzeville-Tolosane', 'Labège'],
-    specificites: 'Zone universitaire et résidentielle. Constructions sur sol argileux.'
-  },
-  'montauban': {
-    nom: 'Montauban',
-    departement: 'Tarn-et-Garonne (82)',
-    codePostal: '82000',
-    population: '62 000',
-    communesProches: ['Bressols', 'Montbeton', 'Villemade', 'Lacourt-Saint-Pierre', 'Albias'],
-    specificites: 'Préfecture du Tarn-et-Garonne. Sols argileux similaires à la Haute-Garonne. Peu d\'experts locaux.'
-  },
-  'castelsarrasin': {
-    nom: 'Castelsarrasin',
-    departement: 'Tarn-et-Garonne (82)',
-    codePostal: '82100',
-    population: '14 000',
-    communesProches: ['Moissac', 'Montech', 'Saint-Aignan', 'Castelmayran'],
-    specificites: '2ème ville du Tarn-et-Garonne. Zone agricole avec maisons anciennes.'
-  },
-  'auch': {
-    nom: 'Auch',
-    departement: 'Gers (32)',
-    codePostal: '32000',
-    population: '23 000',
-    communesProches: ['Pavie', 'Preignan', 'Duran', 'Roquelaure', 'Montégut'],
-    specificites: 'Préfecture du Gers. Territoire quasi-vierge pour l\'expertise fissures. Fort potentiel.'
-  },
-  'condom': {
-    nom: 'Condom',
-    departement: 'Gers (32)',
-    codePostal: '32100',
-    population: '7 000',
-    communesProches: ['Valence-sur-Baïse', 'Cassaigne', 'Larressingle', 'Mouchan'],
-    specificites: 'Patrimoine ancien. Peu de concurrence sur l\'expertise fissures.'
-  },
-  'saint-gaudens': {
-    nom: 'Saint-Gaudens',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31800',
-    population: '12 000',
-    communesProches: ['Valentine', 'Villeneuve-de-Rivière', 'Miramont-de-Comminges', 'Estancarbon'],
-    specificites: 'Sous-préfecture du Comminges. Maisons de caractère, parfois anciennes.'
-  },
-  'plaisance-du-touch': {
-    nom: 'Plaisance-du-Touch',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31830',
-    population: '20 000',
-    communesProches: ['Tournefeuille', 'Colomiers', 'Fonsorbes', 'La Salvetat-Saint-Gilles'],
-    specificites: 'Commune en forte expansion. Lotissements récents sur sol argileux.'
-  },
-  'l-union': {
-    nom: 'L\'Union',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31240',
-    population: '12 000',
-    communesProches: ['Toulouse', 'Balma', 'Saint-Jean', 'Montrabé', 'Launaguet'],
-    specificites: 'Banlieue nord-est de Toulouse. Pavillons des années 70-90.'
-  },
-  'castanet-tolosan': {
-    nom: 'Castanet-Tolosan',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31320',
-    population: '15 000',
-    communesProches: ['Ramonville', 'Auzeville-Tolosane', 'Labège', 'Escalquens', 'Pechabou'],
-    specificites: 'Sud-est toulousain. Zone très touchée par le RGA après les sécheresses.'
-  },
-  'saint-orens-de-gameville': {
-    nom: 'Saint-Orens-de-Gameville',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31650',
-    population: '13 000',
-    communesProches: ['Toulouse', 'Labège', 'Quint-Fonsegrives', 'Escalquens'],
-    specificites: 'Commune résidentielle. Nombreuses maisons individuelles sur sol sensible.'
-  },
-  'fonsorbes': {
-    nom: 'Fonsorbes',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31470',
-    population: '12 000',
-    communesProches: ['Plaisance-du-Touch', 'Saint-Lys', 'La Salvetat-Saint-Gilles', 'Bonrepos-sur-Aussonnelle'],
-    specificites: 'Croissance rapide. Lotissements sur terrain argileux.'
-  },
-  'portet-sur-garonne': {
-    nom: 'Portet-sur-Garonne',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31120',
-    population: '10 000',
-    communesProches: ['Toulouse', 'Muret', 'Cugnaux', 'Roques', 'Villeneuve-Tolosane'],
-    specificites: 'Zone commerciale et résidentielle. Proximité Garonne.'
-  },
-  'labege': {
-    nom: 'Labège',
-    departement: 'Haute-Garonne (31)',
-    codePostal: '31670',
-    population: '5 000',
-    communesProches: ['Toulouse', 'Ramonville', 'Auzeville-Tolosane', 'Escalquens', 'Castanet-Tolosan'],
-    specificites: 'Technopole et zone résidentielle. Constructions récentes mais sol sensible.'
-  }
-};
-
-// Liste des slugs pour generateStaticParams
-const villesSlugs = Object.keys(villesExpertise);
-
+// Génération statique des pages
 export async function generateStaticParams() {
-  return villesSlugs.map((ville) => ({ ville }));
+  return villeSlugs.map((ville) => ({ ville }));
 }
 
+// Génération des métadonnées SEO
 export async function generateMetadata({ params }: { params: Promise<{ ville: string }> }): Promise<Metadata> {
   const { ville } = await params;
-  const villeData = villesExpertise[ville];
+  const villeData = villesData[ville];
   
   if (!villeData) {
     return { title: 'Expert Fissures | IPB Expertise' };
@@ -196,29 +25,41 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
 
   const deptCode = villeData.codePostal.slice(0, 2);
   const villeNom = villeData.nom;
-  const villeNomLower = villeNom.toLowerCase();
+  const villeNomLower = villeNom.toLowerCase().replace(/\s+/g, '-');
+
+  // Mots-clés enrichis avec données locales
+  const keywords = [
+    `expert fissures ${villeNomLower}`,
+    `fissures maison ${villeNomLower}`,
+    `agrafage fissures ${villeNomLower}`,
+    `diagnostic fissures ${deptCode}`,
+    `réparation fissures ${villeNomLower}`,
+    `expert bâtiment ${villeNomLower}`,
+    `fissure mur ${villeNomLower}`,
+    `tassement différentiel ${villeNomLower}`,
+    `sol argileux ${villeNomLower}`,
+    `fissure façade ${deptCode}`,
+    `RGA ${villeNomLower}`,
+    `catastrophe naturelle sécheresse ${villeNomLower}`,
+    `micropieux ${villeNomLower}`,
+    `stabilisation fondations ${villeNomLower}`,
+  ];
+
+  // Description personnalisée
+  const description = villeData.risqueRGA === 'tres-fort' || villeData.risqueRGA === 'fort'
+    ? `Expert fissures à ${villeNom} (${deptCode}) - Zone à risque RGA ${villeData.risqueRGA}. Diagnostic 149€, agrafage garanti 10 ans. ${villeData.tauxSinistralite ? `Taux de sinistralité : ${villeData.tauxSinistralite}` : ''} ☎ 05 82 95 33 75`
+    : `Expert fissures maison à ${villeNom} et ${villeData.communesProches?.[0] || 'communes voisines'}. Diagnostic 149€ déductible, agrafage structurel, harpage. Intervention 48h. ☎ 05 82 95 33 75`;
 
   return {
     title: `Expert Fissures ${villeNom} (${deptCode}) | Agrafage Garanti 10 ans | IPB`,
-    description: `Expert fissures maison à ${villeNom} et ${villeData.communesProches[0]}. Diagnostic 149€ déductible, agrafage structurel, harpage. Intervention 48h. ☎ 05 82 95 33 75`,
-    keywords: [
-      `expert fissures ${villeNomLower}`,
-      `fissures maison ${villeNomLower}`,
-      `agrafage fissures ${villeNomLower}`,
-      `diagnostic fissures ${deptCode}`,
-      `réparation fissures ${villeNomLower}`,
-      `expert bâtiment ${villeNomLower}`,
-      `fissure mur ${villeNomLower}`,
-      `tassement différentiel ${villeNomLower}`,
-      `sol argileux ${villeNomLower}`,
-      `fissure façade ${deptCode}`,
-    ],
+    description,
+    keywords,
     alternates: {
       canonical: `https://www.ipb-expertise.fr/expert-fissures/${ville}`,
     },
     openGraph: {
       title: `Expert Fissures ${villeNom} (${deptCode}) | IPB`,
-      description: `Spécialiste fissures à ${villeNom}. Agrafage structurel garanti. Diagnostic 48h.`,
+      description: `Spécialiste fissures à ${villeNom}. ${villeData.arretesCATNAT?.length || 0} arrêtés CAT-NAT récents. Diagnostic 48h.`,
       url: `https://www.ipb-expertise.fr/expert-fissures/${ville}`,
       type: 'website',
       images: [{ url: '/images/fissure-facade-verticale.webp', width: 1200, height: 630, alt: `Expert fissures ${villeNom}` }],
@@ -232,19 +73,41 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
   };
 }
 
+// Fonction pour obtenir la couleur du risque RGA
+function getRisqueColor(risque?: string) {
+  switch (risque) {
+    case 'tres-fort': return 'text-red-600 bg-red-100';
+    case 'fort': return 'text-orange-600 bg-orange-100';
+    case 'moyen': return 'text-yellow-600 bg-yellow-100';
+    case 'faible': return 'text-green-600 bg-green-100';
+    default: return 'text-slate-600 bg-slate-100';
+  }
+}
+
+function getRisqueLabel(risque?: string) {
+  switch (risque) {
+    case 'tres-fort': return 'Très Fort';
+    case 'fort': return 'Fort';
+    case 'moyen': return 'Moyen';
+    case 'faible': return 'Faible';
+    default: return 'Non évalué';
+  }
+}
+
 export default async function ExpertFissuresVillePage({ params }: { params: Promise<{ ville: string }> }) {
   const { ville } = await params;
-  const villeData = villesExpertise[ville];
+  const villeData = villesData[ville];
 
   if (!villeData) {
     notFound();
   }
 
+  // JSON-LD enrichi
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": `IPB - Expert Fissures ${villeData.nom}`,
-    "description": `Expert indépendant en diagnostic et traitement des fissures à ${villeData.nom}`,
+    "description": villeData.description,
     "url": `https://www.ipb-expertise.fr/expert-fissures/${ville}`,
     "telephone": "+33582953375",
     "address": {
@@ -254,26 +117,46 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
       "postalCode": villeData.codePostal,
       "addressCountry": "FR"
     },
-    "areaServed": { "@type": "City", "name": villeData.nom },
-    "priceRange": "€€"
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "43.6047",
+      "longitude": "1.4442"
+    },
+    "areaServed": [
+      { "@type": "City", "name": villeData.nom },
+      ...(villeData.communesProches?.map(c => ({ "@type": "City", "name": c })) || [])
+    ],
+    "priceRange": "€€",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "14"
+    }
   };
 
+  // FAQ personnalisée
   const faqItems = [
     {
-      question: `Intervenez-vous à ${villeData.nom} ?`,
-      answer: `Oui, nous intervenons à ${villeData.nom} et dans les communes environnantes : ${villeData.communesProches.join(', ')}. Diagnostic sous 48h, déplacement inclus.`
+      question: `Intervenez-vous à ${villeData.nom} pour les fissures ?`,
+      answer: `Oui, nous intervenons régulièrement à ${villeData.nom} et dans les communes environnantes : ${villeData.communesProches?.join(', ') || 'toute la zone'}. ${villeData.specificitesFissures || ''} Diagnostic sous 48h, déplacement inclus.`
+    },
+    {
+      question: `Quel est le risque de fissures à ${villeData.nom} ?`,
+      answer: `${villeData.nom} est classée en aléa RGA ${getRisqueLabel(villeData.risqueRGA).toLowerCase()}. ${villeData.geologie || ''} ${villeData.tauxSinistralite ? `Le taux de sinistralité local est de ${villeData.tauxSinistralite}.` : ''}`
     },
     {
       question: `Combien coûte un diagnostic fissures à ${villeData.nom} ?`,
-      answer: `Le diagnostic coûte 149€, déductibles des travaux si vous nous confiez la réparation. Ce tarif inclut le déplacement sur ${villeData.nom}.`
+      answer: `Le diagnostic coûte 149€, déductibles des travaux si vous nous confiez la réparation. Ce tarif inclut le déplacement sur ${villeData.nom}, les mesures (niveau laser, fissuromètre), et un rapport détaillé avec photos et recommandations.`
     },
     {
-      question: `Les fissures sont-elles fréquentes à ${villeData.nom} ?`,
-      answer: `${villeData.specificites} Les maisons individuelles sont particulièrement touchées après les périodes de sécheresse.`
+      question: `Ma maison à ${villeData.nom} est-elle éligible à la garantie CAT-NAT ?`,
+      answer: `${villeData.arretesCATNAT && villeData.arretesCATNAT.length > 0 
+        ? `${villeData.nom} a fait l'objet de ${villeData.arretesCATNAT.length} arrêtés de catastrophe naturelle sécheresse récents : ${villeData.arretesCATNAT.slice(0, 2).join(', ')}... Votre assurance peut prendre en charge une partie des travaux.`
+        : `Nous vous aidons à vérifier l'éligibilité de votre commune et à constituer votre dossier d'indemnisation.`}`
     },
     {
       question: `Quelle solution pour les fissures à ${villeData.nom} ?`,
-      answer: `Selon le diagnostic, nous proposons l'agrafage structurel (8-15K€, garantie 10 ans) ou les micropieux pour les cas graves. L'agrafage convient à 80% des situations.`
+      answer: `${villeData.conseillExpert || `Selon le diagnostic, nous proposons l'agrafage structurel (8-15K€, garantie 10 ans) ou les micropieux pour les cas graves. L'agrafage convient à 85% des situations.`}`
     }
   ];
 
@@ -302,46 +185,129 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
           <span className="mx-2">›</span>
           <Link href="/expert-fissures-toulouse-31" className="hover:text-orange-600">Expert Fissures</Link>
           <span className="mx-2">›</span>
-          <span className="text-slate-900">{villeData.nom}</span>
+          <span className="text-slate-900 font-medium">{villeData.nom}</span>
         </div>
       </div>
 
-      {/* Hero */}
+      {/* Hero enrichi */}
       <section className="relative bg-slate-900 text-white py-16 md:py-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-orange-950/30"></div>
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+        
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl">
-            <div className="flex items-center gap-2 text-red-400 text-sm font-bold mb-4">
-              <MapPin size={18} />
-              <span>⚠️ {villeData.nom} : Zone à risque RGA depuis 2022</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
-              Fissures à <span className="text-orange-400">{villeData.nom}</span> ?<br />
-              <span className="text-slate-300 text-3xl">L'Expert Local Qui Intervient en 48h</span>
-            </h1>
-            <p className="text-xl text-slate-300 mb-4 max-w-2xl">
-              À {villeData.nom}, les fissures ne sont pas un hasard. {villeData.specificites}
-            </p>
-            <div className="bg-orange-500/20 border border-orange-500/40 rounded-xl p-4 mb-8 max-w-2xl">
-              <p className="text-orange-200 font-bold">
-                💡 En 2025, <strong className="text-white">1 maison sur 8</strong> à {villeData.nom} présente des signes de fissuration. 
-                Ne laissez pas les vôtres s'aggraver.
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            <div>
+              {/* Badge risque RGA */}
+              <div className="flex flex-wrap items-center gap-3 mb-6">
+                <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold ${getRisqueColor(villeData.risqueRGA)}`}>
+                  <AlertTriangle size={16} />
+                  Risque RGA : {getRisqueLabel(villeData.risqueRGA)}
+                </div>
+                {villeData.arretesCATNAT && villeData.arretesCATNAT.length > 0 && (
+                  <div className="inline-flex items-center gap-2 bg-red-500/20 text-red-300 px-4 py-2 rounded-full text-sm font-bold">
+                    <Calendar size={16} />
+                    {villeData.arretesCATNAT.length} arrêtés CAT-NAT
+                  </div>
+                )}
+              </div>
+
+              <h1 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
+                Expert Fissures à <span className="text-orange-400">{villeData.nom}</span>
+                <span className="block text-2xl md:text-3xl text-slate-300 mt-2">({villeData.codePostal})</span>
+              </h1>
+
+              <p className="text-lg text-slate-300 mb-6 leading-relaxed">
+                {villeData.description}
               </p>
+
+              {villeData.tauxSinistralite && (
+                <div className="bg-orange-500/20 border border-orange-500/40 rounded-xl p-4 mb-8">
+                  <p className="text-orange-200">
+                    <strong className="text-white">📊 Statistique locale :</strong> {villeData.tauxSinistralite} des maisons de {villeData.nom} ont déclaré des fissures liées au RGA.
+                    {villeData.risqueRGA === 'tres-fort' || villeData.risqueRGA === 'fort' 
+                      ? " Ne sous-estimez pas ce risque."
+                      : " Un diagnostic préventif peut vous faire économiser des milliers d'euros."}
+                  </p>
+                </div>
+              )}
+
+              <div className="flex flex-col sm:flex-row gap-4 mb-6">
+                <Link href="/diagnostic" className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all shadow-xl">
+                  🚨 DIAGNOSTIC GRATUIT <ArrowRight size={20} />
+                </Link>
+                <a href="tel:0582953375" className="bg-white/10 border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all">
+                  <Phone size={20} /> 05 82 95 33 75
+                </a>
+              </div>
+
+              <div className="flex flex-wrap gap-4 text-sm text-slate-400">
+                <span className="flex items-center gap-2">
+                  <CheckCircle size={16} className="text-green-500" /> Intervention {villeData.distance} de Toulouse
+                </span>
+                <span className="flex items-center gap-2">
+                  <Clock size={16} className="text-orange-400" /> Diagnostic sous 48h
+                </span>
+                <span className="flex items-center gap-2">
+                  <Shield size={16} className="text-blue-400" /> Garantie décennale
+                </span>
+              </div>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/diagnostic" className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all shadow-xl animate-pulse">
-                🚨 DIAGNOSTIC GRATUIT - 48h <ArrowRight size={20} />
-              </Link>
-              <a href="tel:0582953375" className="bg-white/10 border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all">
-                <Phone size={20} /> Urgence : 05 82 95 33 75
-              </a>
+
+            {/* Encart données locales */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+              <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <MapPin size={20} className="text-orange-400" />
+                Données locales {villeData.nom}
+              </h2>
+              
+              <div className="space-y-4">
+                {villeData.population && (
+                  <div className="flex items-center gap-3">
+                    <Users size={18} className="text-slate-400" />
+                    <div>
+                      <div className="text-sm text-slate-400">Population</div>
+                      <div className="text-white font-bold">{villeData.population} habitants</div>
+                    </div>
+                  </div>
+                )}
+                
+                {villeData.quartiersRisque && villeData.quartiersRisque.length > 0 && (
+                  <div>
+                    <div className="text-sm text-slate-400 mb-2 flex items-center gap-2">
+                      <Home size={16} /> Quartiers les plus touchés
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {villeData.quartiersRisque.slice(0, 4).map((q, i) => (
+                        <span key={i} className="bg-red-500/20 text-red-300 px-3 py-1 rounded-full text-xs font-medium">
+                          {q.split(' (')[0]}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {villeData.arretesCATNAT && villeData.arretesCATNAT.length > 0 && (
+                  <div>
+                    <div className="text-sm text-slate-400 mb-2 flex items-center gap-2">
+                      <FileText size={16} /> Derniers arrêtés CAT-NAT
+                    </div>
+                    <ul className="text-sm text-slate-300 space-y-1">
+                      {villeData.arretesCATNAT.slice(0, 3).map((arr, i) => (
+                        <li key={i} className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 bg-orange-400 rounded-full"></span>
+                          {arr}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             </div>
-            <p className="text-sm text-slate-400 mt-4">✓ Déplacement gratuit sur {villeData.nom} · ✓ Rapport sous 48h · ✓ Devis offert</p>
           </div>
         </div>
       </section>
 
-      {/* Stats */}
+      {/* Stats clés */}
       <section className="py-10 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
@@ -351,106 +317,161 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
             </div>
             <div>
               <div className="text-3xl font-extrabold text-orange-600">149€</div>
-              <div className="text-slate-600 text-sm">Diagnostic</div>
+              <div className="text-slate-600 text-sm">Diagnostic complet</div>
             </div>
             <div>
               <div className="text-3xl font-extrabold text-orange-600">10 ans</div>
-              <div className="text-slate-600 text-sm">Garantie</div>
+              <div className="text-slate-600 text-sm">Garantie agrafage</div>
             </div>
             <div>
-              <div className="text-3xl font-extrabold text-orange-600">98%</div>
-              <div className="text-slate-600 text-sm">Satisfaits</div>
+              <div className="text-3xl font-extrabold text-orange-600">-65%</div>
+              <div className="text-slate-600 text-sm">vs micropieux</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contexte local */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-3xl font-extrabold text-slate-900 mb-6">
-                Fissures à {villeData.nom} : contexte local
-              </h2>
-              <div className="prose prose-lg text-slate-600">
-                <p>{villeData.specificites}</p>
-                <p>
-                  Notre équipe intervient régulièrement à {villeData.nom} et connaît parfaitement les problématiques 
-                  locales. Nous travaillons avec les assurances pour les dossiers de catastrophe naturelle sécheresse.
-                </p>
-              </div>
-              <div className="mt-8 grid grid-cols-3 gap-4">
-                <div className="bg-orange-50 rounded-xl p-4 text-center">
-                  <Clock className="mx-auto text-orange-600 mb-2" size={24} />
-                  <div className="font-bold text-slate-900">Diagnostic 48h</div>
+      {/* Contexte géologique local */}
+      {villeData.geologie && (
+        <section className="py-16 bg-slate-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-12">
+              <div>
+                <h2 className="text-3xl font-extrabold text-slate-900 mb-6">
+                  Pourquoi les maisons de {villeData.nom} se fissurent
+                </h2>
+                
+                <div className="prose prose-lg text-slate-600">
+                  <p className="mb-4">{villeData.geologie}</p>
+                  
+                  {villeData.historiqueLocal && (
+                    <p className="mb-4">{villeData.historiqueLocal}</p>
+                  )}
+                  
+                  {villeData.typesConstruction && (
+                    <div className="bg-slate-100 rounded-xl p-6 my-6">
+                      <h3 className="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+                        <Home size={20} className="text-orange-600" />
+                        Parc immobilier local
+                      </h3>
+                      <p className="text-slate-600 text-base">{villeData.typesConstruction}</p>
+                    </div>
+                  )}
                 </div>
-                <div className="bg-orange-50 rounded-xl p-4 text-center">
-                  <FileText className="mx-auto text-orange-600 mb-2" size={24} />
-                  <div className="font-bold text-slate-900">Rapport détaillé</div>
-                </div>
-                <div className="bg-orange-50 rounded-xl p-4 text-center">
-                  <Shield className="mx-auto text-orange-600 mb-2" size={24} />
-                  <div className="font-bold text-slate-900">Garantie 10 ans</div>
-                </div>
+
+                {villeData.problemesFrequents && villeData.problemesFrequents.length > 0 && (
+                  <div className="mt-8">
+                    <h3 className="text-lg font-bold text-slate-900 mb-4">
+                      Problèmes fréquents à {villeData.nom}
+                    </h3>
+                    <ul className="space-y-3">
+                      {villeData.problemesFrequents.map((p, i) => (
+                        <li key={i} className="flex items-start gap-3 text-slate-600">
+                          <AlertTriangle size={18} className="text-orange-600 flex-shrink-0 mt-1" />
+                          {p}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
-            </div>
-            <div className="bg-slate-100 rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Communes proches couvertes</h3>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {villeData.communesProches.map((commune) => (
-                  <span key={commune} className="bg-white text-slate-700 px-3 py-1 rounded-full text-sm">
-                    {commune}
-                  </span>
-                ))}
-              </div>
-              <div className="border-t border-slate-200 pt-6">
-                <h4 className="font-bold text-slate-900 mb-3">Nos services à {villeData.nom}</h4>
-                <ul className="space-y-2">
-                  <li className="flex items-center gap-2 text-slate-700">
-                    <CheckCircle size={16} className="text-green-500" /> Diagnostic fissures
-                  </li>
-                  <li className="flex items-center gap-2 text-slate-700">
-                    <CheckCircle size={16} className="text-green-500" /> Agrafage structurel
-                  </li>
-                  <li className="flex items-center gap-2 text-slate-700">
-                    <CheckCircle size={16} className="text-green-500" /> Expertise assurance
-                  </li>
-                  <li className="flex items-center gap-2 text-slate-700">
-                    <CheckCircle size={16} className="text-green-500" /> Suivi post-travaux
-                  </li>
-                </ul>
+
+              <div className="space-y-6">
+                {/* Conseil expert */}
+                {villeData.conseillExpert && (
+                  <div className="bg-orange-50 border-l-4 border-orange-600 rounded-r-xl p-6">
+                    <h3 className="font-bold text-orange-900 mb-3 flex items-center gap-2">
+                      <Award size={20} />
+                      Conseil de notre expert pour {villeData.nom}
+                    </h3>
+                    <p className="text-orange-800">{villeData.conseillExpert}</p>
+                  </div>
+                )}
+
+                {/* Spécificités fissures */}
+                {villeData.specificitesFissures && (
+                  <div className="bg-slate-100 rounded-xl p-6">
+                    <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2">
+                      <TrendingUp size={20} className="text-orange-600" />
+                      Ce que nous observons à {villeData.nom}
+                    </h3>
+                    <p className="text-slate-600">{villeData.specificitesFissures}</p>
+                  </div>
+                )}
+
+                {/* Communes proches */}
+                {villeData.communesProches && villeData.communesProches.length > 0 && (
+                  <div className="bg-white rounded-xl p-6 border border-slate-200">
+                    <h3 className="font-bold text-slate-900 mb-4">
+                      Nous intervenons aussi à proximité
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {villeData.communesProches.map((commune, i) => {
+                        const communeSlug = commune.toLowerCase().replace(/[']/g, '').replace(/\s+/g, '-');
+                        return (
+                          <Link 
+                            key={i} 
+                            href={`/expert-fissures/${communeSlug}`}
+                            className="bg-slate-100 hover:bg-orange-100 text-slate-700 hover:text-orange-700 px-4 py-2 rounded-full text-sm font-medium transition-colors"
+                          >
+                            {commune}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Tarifs */}
       <section className="py-16 bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-center mb-12">Tarifs à {villeData.nom}</h2>
+          <h2 className="text-3xl font-extrabold text-center mb-4">Tarifs à {villeData.nom}</h2>
+          <p className="text-slate-400 text-center mb-12">Déplacement inclus dans le rayon de {villeData.distance} depuis Toulouse</p>
+          
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-slate-800 rounded-2xl p-6 text-center">
-              <h3 className="font-bold mb-2">Diagnostic</h3>
+              <h3 className="font-bold mb-2">Diagnostic Expert</h3>
               <div className="text-4xl font-extrabold text-orange-400 mb-2">149€</div>
-              <p className="text-slate-400 text-sm">Déductible des travaux</p>
+              <p className="text-slate-400 text-sm mb-4">Déductible des travaux</p>
+              <ul className="text-sm text-slate-300 text-left space-y-2">
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Visite sur site (1h30)</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Mesures niveau laser</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Rapport photos + recommandations</li>
+              </ul>
             </div>
-            <div className="bg-slate-800 rounded-2xl p-6 text-center border-2 border-orange-500">
-              <h3 className="font-bold mb-2">Agrafage</h3>
-              <div className="text-4xl font-extrabold text-orange-400 mb-2">8-15K€</div>
-              <p className="text-slate-400 text-sm">Garantie 10 ans</p>
+            <div className="bg-slate-800 rounded-2xl p-6 text-center border-2 border-orange-500 relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-orange-500 text-white px-4 py-1 rounded-full text-xs font-bold">
+                85% DES CAS
+              </div>
+              <h3 className="font-bold mb-2">Agrafage Structurel</h3>
+              <div className="text-4xl font-extrabold text-orange-400 mb-2">8-18K€</div>
+              <p className="text-slate-400 text-sm mb-4">Garantie 10 ans</p>
+              <ul className="text-sm text-slate-300 text-left space-y-2">
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Agrafes inox tous les 40cm</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Mortier fibré élastique</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Finition enduit</li>
+              </ul>
             </div>
             <div className="bg-slate-800 rounded-2xl p-6 text-center">
               <h3 className="font-bold mb-2">Micropieux</h3>
               <div className="text-4xl font-extrabold text-orange-400 mb-2">25-50K€</div>
-              <p className="text-slate-400 text-sm">Cas complexes</p>
+              <p className="text-slate-400 text-sm mb-4">Cas graves uniquement</p>
+              <ul className="text-sm text-slate-300 text-left space-y-2">
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Ancrage profond (10-15m)</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Affaissements > 5cm</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Garantie décennale</li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* FAQ locale */}
       <section className="py-16 bg-slate-100">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
@@ -480,22 +501,27 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
             <Link href="/fissure-en-escalier-causes" className="bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-xl p-4 transition-all group">
               <span className="text-2xl mb-2 block">🪜</span>
               <h3 className="font-bold text-slate-900 group-hover:text-orange-600 text-sm">Fissure en escalier</h3>
+              <p className="text-xs text-slate-500 mt-1">Tassement différentiel</p>
             </Link>
             <Link href="/fissure-horizontale-danger" className="bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-xl p-4 transition-all group">
               <span className="text-2xl mb-2 block">➖</span>
               <h3 className="font-bold text-slate-900 group-hover:text-orange-600 text-sm">Fissure horizontale</h3>
+              <p className="text-xs text-slate-500 mt-1">Poussée ou flexion</p>
             </Link>
             <Link href="/microfissure-quand-sinquieter" className="bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-xl p-4 transition-all group">
               <span className="text-2xl mb-2 block">🔍</span>
               <h3 className="font-bold text-slate-900 group-hover:text-orange-600 text-sm">Microfissure</h3>
+              <p className="text-xs text-slate-500 mt-1">Quand s'inquiéter ?</p>
             </Link>
             <Link href="/fissure-secheresse-indemnisation" className="bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-xl p-4 transition-all group">
               <span className="text-2xl mb-2 block">☀️</span>
               <h3 className="font-bold text-slate-900 group-hover:text-orange-600 text-sm">Fissure sécheresse</h3>
+              <p className="text-xs text-slate-500 mt-1">CAT-NAT & indemnisation</p>
             </Link>
             <Link href="/fissure-fondation-maison" className="bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-xl p-4 transition-all group">
               <span className="text-2xl mb-2 block">🏠</span>
               <h3 className="font-bold text-slate-900 group-hover:text-orange-600 text-sm">Fissure fondation</h3>
+              <p className="text-xs text-slate-500 mt-1">Stabilisation urgente</p>
             </Link>
           </div>
           <div className="mt-8 text-center">
@@ -509,7 +535,7 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
       {/* Avis Google */}
       <Testimonials />
 
-      {/* CTA Final persuasif */}
+      {/* CTA Final */}
       <section className="py-16 bg-gradient-to-r from-orange-600 to-red-600 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <p className="text-orange-200 font-bold mb-3">⏰ Vous habitez {villeData.nom} ?</p>
@@ -520,12 +546,16 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
             Une fissure traitée rapidement = <strong className="text-white">8 000€</strong><br />
             La même fissure dans 2 ans = <strong className="text-white">25 000€ minimum</strong>
           </p>
-          <div className="bg-white/10 rounded-xl p-4 mb-8 max-w-md mx-auto backdrop-blur-sm">
-            <p className="text-sm">
-              🏆 <strong>+50 interventions</strong> dans la zone de {villeData.nom}<br />
-              ⭐ <strong>4.9/5</strong> sur Google · <strong>10 ans</strong> de garantie
-            </p>
-          </div>
+          
+          {villeData.tauxSinistralite && (
+            <div className="bg-white/10 rounded-xl p-4 mb-8 max-w-md mx-auto backdrop-blur-sm">
+              <p className="text-sm">
+                📊 <strong>{villeData.tauxSinistralite}</strong> de sinistralité à {villeData.nom}<br />
+                ⭐ <strong>4.9/5</strong> sur Google · <strong>10 ans</strong> de garantie
+              </p>
+            </div>
+          )}
+          
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="bg-white text-orange-600 px-10 py-5 rounded-xl font-bold text-lg hover:bg-orange-50 flex items-center justify-center gap-2 shadow-2xl transform hover:scale-105 transition-all">
               JE VEUX MON DIAGNOSTIC GRATUIT <ArrowRight size={20} />
