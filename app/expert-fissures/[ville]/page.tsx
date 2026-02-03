@@ -179,7 +179,7 @@ const villesExpertise: Record<string, {
 };
 
 // Liste des slugs pour generateStaticParams
-export const villesSlugs = Object.keys(villesExpertise);
+const villesSlugs = Object.keys(villesExpertise);
 
 export async function generateStaticParams() {
   return villesSlugs.map((ville) => ({ ville }));

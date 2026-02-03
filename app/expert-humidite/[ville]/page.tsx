@@ -130,7 +130,7 @@ const villesExpertiseHumidite: Record<string, {
   }
 };
 
-export const villesHumiditeSlugs = Object.keys(villesExpertiseHumidite);
+const villesHumiditeSlugs = Object.keys(villesExpertiseHumidite);
 
 export async function generateStaticParams() {
   return villesHumiditeSlugs.map((ville) => ({ ville }));
