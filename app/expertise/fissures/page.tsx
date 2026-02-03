@@ -3,403 +3,287 @@ import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
 import { FaqSection } from '@/components/ui/FaqSection';
 import { InternalLinks } from '@/components/seo/InternalLinks';
+import { Testimonials } from '@/components/home/Testimonials';
 import { fissureFaq } from '@/app/data/faqs';
 import Link from 'next/link';
-import { Activity, AlertTriangle, CheckCircle, ArrowRight, Shield, FileText, Wrench, TrendingDown } from 'lucide-react';
+import Image from 'next/image';
+import { Activity, AlertTriangle, CheckCircle, ArrowRight, Shield, Phone, Clock, Star, TrendingDown, Award } from 'lucide-react';
 import Script from 'next/script';
 
 export const metadata = {
-  title: 'Expert Fissures Toulouse | Diagnostic Indépendant | IPB Expertise',
-  description: 'Expert fissures à Toulouse (31). Diagnostic sous 48h, agrafage garanti 10 ans. Devis gratuit →',
+  title: 'Expert Fissures Toulouse | Agrafage Garanti 10 ans | Diagnostic 149€ | IPB',
+  description: 'Fissures maison Toulouse ? Expert agrafage structurel garanti 10 ans. 3x moins cher que micropieux. Diagnostic 149€ (déductible). ☎ 05 82 95 33 75. Intervention 48h.',
   keywords: [
     'expert fissures toulouse',
     'agrafage fissures toulouse',
     'fissures maison toulouse',
-    'tassement différentiel',
+    'réparation fissures façade',
+    'tassement différentiel toulouse',
     'agrafage vs micropieux',
-    'réparation fissures',
-    'fondations',
-    'sol argileux toulouse',
-    'haute-garonne',
-    'fissures escalier',
+    'fissure mur extérieur',
+    'expert bâtiment toulouse',
+    'sol argileux fissures',
+    'RGA haute-garonne',
+    'fissures escalier maison',
+    'diagnostic fissures prix',
   ],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/expertise/fissures',
   },
   openGraph: {
-    title: 'Expert Fissure Toulouse | IPB',
-    description: 'Expert en fissures structurelles. Agrafage et solutions durables avec garantie décennale.',
+    title: 'Expert Fissures Toulouse | Agrafage Garanti 10 ans | IPB',
+    description: 'Agrafage structurel 3x moins cher que micropieux. +200 maisons traitées. Diagnostic 48h.',
     url: 'https://www.ipb-expertise.fr/expertise/fissures',
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
     locale: 'fr_FR',
     type: 'website',
-    images: [
-      {
-        url: '/images/IPB_Logo_HD.png',
-        width: 1200,
-        height: 630,
-        alt: 'Expert Fissures Structurelles Toulouse - Agrafage Harpage Micropieux - IPB Garantie Décennale',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Expert Fissure Toulouse | IPB',
-    description: 'Expert en fissures structurelles. Agrafage et solutions durables.',
-    images: ['/images/IPB_Logo_HD.png'],
+    images: [{ url: '/images/fissure-facade-verticale.webp', width: 1200, height: 630, alt: 'Expert Fissures Toulouse - Agrafage Structurel - IPB' }],
   },
 };
 
-// Génération du JSON-LD pour le SEO (FAQPage Schema.org)
-const generateFaqJsonLd = () => {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": fissureFaq.map((item) => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  };
-};
+// JSON-LD schemas
+const generateFaqJsonLd = () => ({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": fissureFaq.map((item) => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": { "@type": "Answer", "text": item.answer }
+  }))
+});
 
-// Génération du JSON-LD BreadcrumbList pour SEO
-const generateBreadcrumbJsonLd = () => {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Accueil",
-        "item": "https://www.ipb-expertise.fr"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Expertise",
-        "item": "https://www.ipb-expertise.fr/expertise"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Fissures & Agrafage",
-        "item": "https://www.ipb-expertise.fr/expertise/fissures"
-      }
-    ]
-  };
-};
-
-// Génération du JSON-LD Service pour rich snippets
-const generateServiceJsonLd = () => {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Traitement des fissures structurelles",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "IPB - Institut de Pathologie du Bâtiment",
-      "telephone": "+33582953375",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Toulouse",
-        "addressRegion": "Haute-Garonne",
-        "postalCode": "31000",
-        "addressCountry": "FR"
-      }
-    },
-    "areaServed": {
-      "@type": "City",
-      "name": "Toulouse"
-    },
-    "description": "Expert en traitement des fissures structurelles. Agrafage, harpage, reprise en sous-œuvre. Alternative économique aux micropieux.",
-    "offers": {
-      "@type": "Offer",
-      "priceRange": "€€",
-      "availability": "https://schema.org/InStock"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Services fissures",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Diagnostic fissures",
-            "description": "Expertise complète avec fissuromètre et rapport détaillé"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Agrafage structurel",
-            "description": "Stabilisation des murs par agrafes métalliques"
-          }
-        }
-      ]
-    }
-  };
-};
-
-// Génération du JSON-LD HowTo pour le processus d'agrafage
-const generateHowToJsonLd = () => {
-  return {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    "name": "Comment traiter les fissures structurelles par agrafage",
-    "description": "Processus complet de traitement des fissures structurelles par la technique d'agrafage professionnel",
-    "estimatedCost": {
-      "@type": "MonetaryAmount",
-      "currency": "EUR",
-      "value": "8000-15000"
-    },
-    "totalTime": "P3D",
-    "step": [
-      {
-        "@type": "HowToStep",
-        "position": 1,
-        "name": "Diagnostic instrumenté",
-        "text": "Inspection complète avec fissuromètre, laser et caméra thermique pour identifier les causes et l'ampleur des fissures.",
-        "url": "https://www.ipb-expertise.fr/expertise/fissures#diagnostic"
-      },
-      {
-        "@type": "HowToStep",
-        "position": 2,
-        "name": "Préparation du support",
-        "text": "Nettoyage et préparation des fissures. Réalisation des saignées tous les 40cm pour accueillir les agrafes.",
-        "url": "https://www.ipb-expertise.fr/expertise/fissures#preparation"
-      },
-      {
-        "@type": "HowToStep",
-        "position": 3,
-        "name": "Pose des agrafes",
-        "text": "Installation des aciers torsadés haute résistance dans les saignées pour recréer une cohésion structurelle.",
-        "url": "https://www.ipb-expertise.fr/expertise/fissures#pose"
-      },
-      {
-        "@type": "HowToStep",
-        "position": 4,
-        "name": "Scellement et finition",
-        "text": "Scellement au mortier technique et finition soignée pour un résultat esthétique invisible après peinture.",
-        "url": "https://www.ipb-expertise.fr/expertise/fissures#finition"
-      }
-    ]
-  };
-};
+const generateServiceJsonLd = () => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Traitement des fissures structurelles",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "IPB - Institut de Pathologie du Bâtiment",
+    "telephone": "+33582953375",
+    "address": { "@type": "PostalAddress", "addressLocality": "Toulouse", "addressRegion": "Haute-Garonne", "postalCode": "31000", "addressCountry": "FR" },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "14" }
+  },
+  "areaServed": { "@type": "City", "name": "Toulouse" },
+  "description": "Expert en traitement des fissures structurelles. Agrafage, harpage. Alternative économique aux micropieux avec garantie décennale."
+});
 
 export default function FissuresPage() {
-  const faqJsonLd = generateFaqJsonLd();
-  const howToJsonLd = generateHowToJsonLd();
-  const breadcrumbJsonLd = generateBreadcrumbJsonLd();
-  const serviceJsonLd = generateServiceJsonLd();
-
   return (
     <div className="font-sans text-slate-800 bg-slate-50 antialiased">
-      <Script
-        id="faq-jsonld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-      <Script
-        id="howto-jsonld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
-      />
-      <Script
-        id="breadcrumb-jsonld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <Script
-        id="service-jsonld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
-      />
+      <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFaqJsonLd()) }} />
+      <Script id="service-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateServiceJsonLd()) }} />
+      
       <TopBar />
       <Navbar />
       
-      {/* Hero Header */}
-      <section className="relative bg-slate-900 text-white overflow-hidden py-20 md:py-32">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-orange-950 opacity-95"></div>
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+      {/* HERO - Conversion optimisée */}
+      <section className="relative bg-slate-900 text-white overflow-hidden py-16 md:py-24">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-orange-950/80"></div>
+        <Image
+          src="/images/fissure-facade-verticale.webp"
+          alt="Fissure structurelle façade"
+          fill
+          style={{ objectFit: 'cover', objectPosition: 'center' }}
+          className="opacity-20"
+          priority
+        />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/30 text-orange-100 px-4 py-1.5 rounded-full text-xs font-bold mb-6 uppercase tracking-wider backdrop-blur-md">
-              <Activity size={16} />
-              <span>Expertise Structure & Fondations</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
-              Expertise Fissures & Mouvements Structurels en <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-200">Haute-Garonne</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed font-medium">
-              Ne masquez pas les symptômes. Traitez la cause. Solutions définitives par agrafage et harpage sur sols argileux.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/diagnostic" className="bg-orange-600 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl hover:bg-orange-500 transition-all flex items-center justify-center gap-2">
-                Demander un avis expert
-                <ArrowRight size={20} />
-              </Link>
-              <a href="tel:0582953375" className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all flex items-center justify-center gap-2">
-                Consultation téléphonique
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 1 : Le Diagnostic (Le Problème) */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-3 mb-6">
-              <AlertTriangle className="w-10 h-10 text-orange-600" />
-              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900">Pourquoi votre maison fissure-t-elle ?</h2>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              {/* Badge confiance */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                <span className="inline-flex items-center gap-2 bg-green-500/20 border border-green-500/40 text-green-300 px-3 py-1.5 rounded-full text-xs font-bold">
+                  <Star size={12} className="fill-current" /> 4.9/5 sur Google
+                </span>
+                <span className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/40 text-orange-300 px-3 py-1.5 rounded-full text-xs font-bold">
+                  <Shield size={12} /> Garantie 10 ans
+                </span>
+              </div>
+              
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+                Vos Fissures <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">S'Aggravent</span> ?
+                <span className="block text-3xl md:text-4xl mt-2 text-white">On Les Stoppe. Définitivement.</span>
+              </h1>
+              
+              <p className="text-xl text-slate-300 mb-6 leading-relaxed">
+                <strong className="text-white">+200 maisons sauvées</strong> en Haute-Garonne depuis 2019.
+                Agrafage structurel <strong className="text-orange-300">3x moins cher que les micropieux</strong>.
+              </p>
+              
+              {/* Chiffre clé */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mb-8 border border-white/20">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-slate-400">Coût moyen agrafage</p>
+                    <p className="text-2xl font-bold text-white">8 000€ - 15 000€</p>
+                  </div>
+                  <div className="text-center px-4 border-l border-white/20">
+                    <p className="text-sm text-slate-400">vs Micropieux</p>
+                    <p className="text-lg font-bold text-slate-400 line-through">40 000€+</p>
+                  </div>
+                  <div className="bg-green-500/20 px-3 py-2 rounded-lg">
+                    <p className="text-green-400 font-bold text-lg">-65%</p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-4 mb-6">
+                <Link href="/diagnostic" className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl flex items-center justify-center gap-2 transition-all hover:-translate-y-1">
+                  Diagnostic gratuit en 3 min
+                  <ArrowRight size={20} />
+                </Link>
+                <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 flex items-center justify-center gap-2">
+                  <Phone size={20} /> 05 82 95 33 75
+                </a>
+              </div>
+              
+              <div className="flex items-center gap-4 text-sm text-slate-400">
+                <span className="flex items-center gap-1"><Clock size={14} /> Réponse 24h</span>
+                <span className="flex items-center gap-1"><CheckCircle size={14} className="text-green-400" /> Devis gratuit</span>
+              </div>
             </div>
             
-            <div className="prose prose-lg max-w-none text-slate-700 leading-relaxed mb-8">
-              <p className="text-lg mb-6">
-                À <strong>Toulouse</strong> et ses environs, <strong>90% des fissures sont dues au phénomène de RGA (Retrait-Gonflement des Argiles)</strong>. 
-                En période de sécheresse, le sol se rétracte sous vos fondations. En période de pluie, il gonfle. 
-                Ces micro-mouvements créent des tensions que la maçonnerie ne peut plus supporter.
-              </p>
-            </div>
-
-            <div className="bg-orange-50 border-l-4 border-orange-600 rounded-xl p-6 md:p-8 mb-8">
-              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <AlertTriangle className="w-6 h-6 text-orange-600" />
-                Les Signes d'alerte :
-              </h3>
-              <ul className="space-y-3 text-slate-700">
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-orange-600 shrink-0 mt-0.5" />
-                  <span><strong>Fissures en escalier</strong> (suivant les joints de briques/parpaings).</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-orange-600 shrink-0 mt-0.5" />
-                  <span><strong>Fissures traversantes</strong> (visibles intérieur/extérieur).</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-orange-600 shrink-0 mt-0.5" />
-                  <span><strong>Menuiseries qui ne ferment plus correctement.</strong></span>
-                </li>
-              </ul>
+            {/* Trust signals desktop */}
+            <div className="hidden lg:block">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                <h3 className="text-xl font-bold mb-6 text-center">Pourquoi IPB ?</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center">
+                      <TrendingDown className="text-orange-400" size={24} />
+                    </div>
+                    <div>
+                      <p className="font-bold text-white">3x moins cher</p>
+                      <p className="text-sm text-slate-400">que les micropieux</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                      <Shield className="text-blue-400" size={24} />
+                    </div>
+                    <div>
+                      <p className="font-bold text-white">Garantie décennale</p>
+                      <p className="text-sm text-slate-400">Travaux assurés 10 ans</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
+                      <Award className="text-green-400" size={24} />
+                    </div>
+                    <div>
+                      <p className="font-bold text-white">+200 interventions</p>
+                      <p className="text-sm text-slate-400">en Haute-Garonne</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Section 2 : La Solution IPB (La Technique) */}
-      <section className="py-16 md:py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Section Problème */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">L'Agrafage : La chirurgie du bâtiment</h2>
+            <div className="inline-flex items-center gap-2 bg-red-100 text-red-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
+              <AlertTriangle size={16} /> 90% des fissures en Haute-Garonne = sol argileux
+            </div>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+              Pourquoi votre maison se fissure ?
+            </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-              Plutôt que d'injecter des résines expansives (parfois aléatoires) ou de poser des micropieux (coût : 40k€+), 
-              nous privilégions la <strong>"Couture de Maçonnerie"</strong>.
+              Le sol argileux de la région se contracte en été et gonfle en hiver. 
+              Ces mouvements créent des tensions que vos murs ne supportent plus.
+            </p>
+          </div>
+          
+          <div className="bg-orange-50 border-2 border-orange-200 rounded-2xl p-8">
+            <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+              <AlertTriangle className="text-orange-600" size={24} />
+              Signes qui doivent vous alerter :
+            </h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="flex items-start gap-3">
+                <CheckCircle className="text-orange-600 shrink-0 mt-1" size={20} />
+                <div>
+                  <p className="font-bold text-slate-900">Fissures en escalier</p>
+                  <p className="text-sm text-slate-600">Suivent les joints de briques</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="text-orange-600 shrink-0 mt-1" size={20} />
+                <div>
+                  <p className="font-bold text-slate-900">Fissures traversantes</p>
+                  <p className="text-sm text-slate-600">Visibles intérieur/extérieur</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="text-orange-600 shrink-0 mt-1" size={20} />
+                <div>
+                  <p className="font-bold text-slate-900">Portes qui coincent</p>
+                  <p className="text-sm text-slate-600">Déformation de la structure</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section Solution */}
+      <section className="py-16 md:py-20 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+              Notre solution : L'agrafage structurel
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+              Technique de "couture" qui stabilise vos murs <strong>sans travaux lourds</strong>.
             </p>
           </div>
 
-          {/* Notre Méthode en 3 étapes */}
-          <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200 text-center">
-                <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-3xl font-bold text-orange-600">1</span>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-4">Saignée</h3>
-                <p className="text-slate-600 leading-relaxed">
-                  Ouverture des fissures sur <strong>40cm de part et d'autre</strong> pour préparer l'insertion des agrafes.
-                </p>
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200 text-center">
+              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-2xl font-bold text-orange-600">1</span>
               </div>
-
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200 text-center">
-                <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-3xl font-bold text-orange-600">2</span>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-4">Agrafage</h3>
-                <p className="text-slate-600 leading-relaxed">
-                  Insertion d'<strong>aciers torsadés Haute Adhérence (HA)</strong> scellés chimiquement pour "recoudre" le mur.
-                </p>
-              </div>
-
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200 text-center">
-                <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-3xl font-bold text-orange-600">3</span>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-4">Matage</h3>
-                <p className="text-slate-600 leading-relaxed">
-                  Remplissage avec un <strong>mortier résine fibré</strong> qui épouse les futurs mouvements sans casser.
-                </p>
-              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Saignée</h3>
+              <p className="text-slate-600">Ouverture sur <strong>40cm</strong> de part et d'autre de la fissure.</p>
             </div>
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200 text-center">
+              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-2xl font-bold text-orange-600">2</span>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Agrafage</h3>
+              <p className="text-slate-600">Insertion d'<strong>aciers haute adhérence</strong> scellés chimiquement.</p>
+            </div>
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200 text-center">
+              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-2xl font-bold text-orange-600">3</span>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Finition</h3>
+              <p className="text-slate-600">Mortier résine fibré. <strong>Mur prêt à peindre</strong>.</p>
+            </div>
+          </div>
+          
+          {/* CTA intermédiaire */}
+          <div className="bg-orange-600 rounded-2xl p-8 text-white text-center">
+            <p className="text-xl font-bold mb-4">Fissures qui s'aggravent ?</p>
+            <p className="text-orange-100 mb-6">Chaque mois d'attente = +15% sur la facture finale</p>
+            <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-50 transition-all">
+              Évaluer mes fissures gratuitement <ArrowRight size={20} />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Section 3 : Pourquoi nous choisir ? */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Pourquoi nous choisir ?</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            <div className="bg-gradient-to-br from-orange-50 to-white rounded-2xl p-6 md:p-8 shadow-lg border-2 border-orange-200">
-              <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-6">
-                <TrendingDown className="w-8 h-8 text-orange-600" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Alternative Économique</h3>
-              <p className="text-slate-700 leading-relaxed text-sm">
-                <strong>3x moins cher que les micropieux</strong> pour une efficacité prouvée sur les affaissements modérés.
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-6 md:p-8 shadow-lg border-2 border-blue-200">
-              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
-                <Shield className="w-8 h-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Garantie Décennale</h3>
-              <p className="text-slate-700 leading-relaxed text-sm">
-                Travaux couverts <strong>10 ans</strong> par notre assureur partenaire. Votre tranquillité d'esprit assurée.
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-br from-green-50 to-white rounded-2xl p-6 md:p-8 shadow-lg border-2 border-green-200">
-              <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6">
-                <Wrench className="w-8 h-8 text-green-600" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Finition</h3>
-              <p className="text-slate-700 leading-relaxed text-sm">
-                Nous ne laissons pas de "cicatrices". <strong>Le mur est prêt à peindre</strong> après notre intervention.
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-br from-purple-50 to-white rounded-2xl p-6 md:p-8 shadow-lg border-2 border-purple-200">
-              <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
-                <FileText className="w-8 h-8 text-purple-600" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Accompagnement</h3>
-              <p className="text-slate-700 leading-relaxed text-sm">
-                Nous mettons en place un <strong>suivi post-intervention</strong> pour suivre l'évolution de nos actions et rassurer nos clients.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Comparatif Tableau */}
-      <section className="py-16 md:py-24 bg-slate-50">
+      {/* Comparatif */}
+      <section className="py-16 md:py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Comparatif des solutions</h2>
-            <p className="text-lg text-slate-600">Agrafage IPB vs Solutions classiques</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Pourquoi l'agrafage IPB ?</h2>
           </div>
 
           <div className="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
@@ -408,41 +292,35 @@ export default function FissuresPage() {
                 <thead className="bg-slate-900 text-white">
                   <tr>
                     <th className="px-6 py-4 text-left font-bold">Critère</th>
-                    <th className="px-6 py-4 text-center font-bold bg-orange-600">Solution IPB (Agrafage)</th>
+                    <th className="px-6 py-4 text-center font-bold bg-orange-600">Agrafage IPB</th>
                     <th className="px-6 py-4 text-center font-bold">Micropieux</th>
-                    <th className="px-6 py-4 text-center font-bold">Résines expansives</th>
+                    <th className="px-6 py-4 text-center font-bold">Résines</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-200">
                   <tr className="hover:bg-slate-50">
-                    <td className="px-6 py-4 font-bold text-slate-900">Coût moyen</td>
-                    <td className="px-6 py-4 text-center text-orange-600 font-bold">8 000€ - 15 000€</td>
-                    <td className="px-6 py-4 text-center text-slate-600">40 000€ - 50 000€</td>
-                    <td className="px-6 py-4 text-center text-slate-600">5 000€ - 8 000€</td>
+                    <td className="px-6 py-4 font-bold text-slate-900">💰 Coût</td>
+                    <td className="px-6 py-4 text-center text-orange-600 font-bold">8 - 15k€</td>
+                    <td className="px-6 py-4 text-center text-slate-600">40 - 50k€</td>
+                    <td className="px-6 py-4 text-center text-slate-600">5 - 8k€</td>
                   </tr>
                   <tr className="hover:bg-slate-50">
-                    <td className="px-6 py-4 font-bold text-slate-900">Durée intervention</td>
-                    <td className="px-6 py-4 text-center text-slate-700">2-4 jours</td>
-                    <td className="px-6 py-4 text-center text-slate-700">2-3 semaines</td>
-                    <td className="px-6 py-4 text-center text-slate-700">1-2 jours</td>
+                    <td className="px-6 py-4 font-bold text-slate-900">⏱️ Durée</td>
+                    <td className="px-6 py-4 text-center font-bold">2-4 jours</td>
+                    <td className="px-6 py-4 text-center">2-3 semaines</td>
+                    <td className="px-6 py-4 text-center">1-2 jours</td>
                   </tr>
                   <tr className="hover:bg-slate-50">
-                    <td className="px-6 py-4 font-bold text-slate-900">Efficacité</td>
-                    <td className="px-6 py-4 text-center text-green-600 font-bold">✓ Prouvée 90% des cas</td>
-                    <td className="px-6 py-4 text-center text-green-600">✓ Efficace</td>
-                    <td className="px-6 py-4 text-center text-orange-600">⚠ Aléatoire</td>
+                    <td className="px-6 py-4 font-bold text-slate-900">✅ Efficacité</td>
+                    <td className="px-6 py-4 text-center text-green-600 font-bold">90% des cas</td>
+                    <td className="px-6 py-4 text-center text-green-600">Efficace</td>
+                    <td className="px-6 py-4 text-center text-orange-600">Aléatoire</td>
                   </tr>
                   <tr className="hover:bg-slate-50">
-                    <td className="px-6 py-4 font-bold text-slate-900">Garantie</td>
+                    <td className="px-6 py-4 font-bold text-slate-900">🛡️ Garantie</td>
                     <td className="px-6 py-4 text-center text-blue-600 font-bold">10 ans</td>
-                    <td className="px-6 py-4 text-center text-blue-600">10 ans</td>
-                    <td className="px-6 py-4 text-center text-slate-600">2-5 ans</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50">
-                    <td className="px-6 py-4 font-bold text-slate-900">Invasivité</td>
-                    <td className="px-6 py-4 text-center text-green-600 font-bold">Faible</td>
-                    <td className="px-6 py-4 text-center text-red-600">Très élevée</td>
-                    <td className="px-6 py-4 text-center text-green-600">Faible</td>
+                    <td className="px-6 py-4 text-center">10 ans</td>
+                    <td className="px-6 py-4 text-center">2-5 ans</td>
                   </tr>
                 </tbody>
               </table>
@@ -451,44 +329,53 @@ export default function FissuresPage() {
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* Avis Google */}
+      <Testimonials />
+
+      {/* FAQ */}
       <FaqSection 
-        title="Questions fréquentes sur les fissures" 
+        title="Questions fréquentes" 
         data={fissureFaq} 
         theme="orange"
         linksVariant="fissures"
-        linksTitle="Aller plus loin"
+        linksTitle="Guides fissures"
       />
 
       {/* CTA Final */}
-      <section className="py-16 md:py-24 bg-slate-900 text-white text-center">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Vos murs vous inquiètent ?</h2>
-          <p className="text-xl text-slate-300 mb-8">
-            Ne laissez pas le doute s'installer. Obtenez un diagnostic expert pour évaluer la gravité de votre situation.
+      <section className="py-16 md:py-20 bg-gradient-to-r from-orange-600 to-red-600 text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-6">
+            Vos fissures vous inquiètent ?
+          </h2>
+          <p className="text-xl text-orange-100 mb-8">
+            Diagnostic gratuit en 3 minutes. Réponse d'un expert sous 24h.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link 
-              href="/diagnostic" 
-              className="bg-orange-600 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl hover:bg-orange-500 transition-all flex items-center justify-center gap-2"
-            >
-              Diagnostic gratuit
-              <ArrowRight size={20} />
+            <Link href="/diagnostic" className="bg-white text-orange-600 px-10 py-5 rounded-xl font-bold text-lg hover:bg-orange-50 flex items-center justify-center gap-2 shadow-xl">
+              Lancer mon diagnostic gratuit <ArrowRight size={20} />
             </Link>
-            <a 
-              href="tel:0582953375" 
-              className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all flex items-center justify-center gap-2"
-            >
-              Appeler un expert
+            <a href="tel:0582953375" className="bg-orange-700 hover:bg-orange-800 px-8 py-5 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
+              <Phone size={20} /> 05 82 95 33 75
             </a>
           </div>
+          <p className="text-sm text-orange-200 mt-6">✓ Gratuit · ✓ Sans engagement · ✓ Réponse 24h</p>
         </div>
       </section>
 
       <InternalLinks variant="fissures" />
-
       <Footer />
+      
+      {/* Sticky CTA Mobile */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 p-3 md:hidden z-50 shadow-lg">
+        <div className="flex gap-2">
+          <Link href="/diagnostic" className="flex-1 bg-orange-600 text-white py-3 rounded-lg font-bold text-center text-sm">
+            Diagnostic gratuit
+          </Link>
+          <a href="tel:0582953375" className="bg-slate-100 text-slate-700 px-4 py-3 rounded-lg font-bold">
+            <Phone size={18} />
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
-
