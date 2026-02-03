@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
+import { GoogleReviewsSection } from '@/components/GoogleReviewsSection';
 import { CheckCircle, Phone, ArrowRight, MapPin, Shield, Clock, FileText } from 'lucide-react';
 
 // Données des villes pour le SEO local
@@ -504,6 +505,12 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
           </div>
         </div>
       </section>
+
+      {/* Avis Google */}
+      <GoogleReviewsSection 
+        variant="compact" 
+        title={`Avis clients à ${villeData.nom}`} 
+      />
 
       {/* CTA Final persuasif */}
       <section className="py-16 bg-gradient-to-r from-orange-600 to-red-600 text-white">

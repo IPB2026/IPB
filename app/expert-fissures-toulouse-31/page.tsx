@@ -4,6 +4,7 @@ import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
+import { GoogleReviewsSection } from '@/components/GoogleReviewsSection';
 import { CheckCircle, Phone, ArrowRight, MapPin, AlertTriangle, Shield, FileText, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -418,6 +419,12 @@ export default function ExpertFissuresToulouse31Page() {
           </div>
         </div>
       </section>
+
+      {/* Avis Google */}
+      <GoogleReviewsSection 
+        variant="default" 
+        title="Avis de nos clients à Toulouse" 
+      />
 
       {/* CTA Final */}
       <section className="py-16 md:py-24 bg-orange-600 text-white">

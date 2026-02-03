@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
+import { GoogleReviewsSection } from '@/components/GoogleReviewsSection';
 import { CheckCircle, Phone, ArrowRight, MapPin, Shield, Clock, Droplets, Wind, Home } from 'lucide-react';
 
 // Données des villes pour le SEO local humidité
@@ -453,6 +454,12 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
           </div>
         </div>
       </section>
+
+      {/* Avis Google */}
+      <GoogleReviewsSection 
+        variant="compact" 
+        title={`Avis clients à ${villeData.nom}`} 
+      />
 
       {/* CTA */}
       <section className="py-16 bg-blue-600 text-white">
