@@ -299,6 +299,48 @@ export default function ExpertFissuresToulouse31Page() {
         </div>
       </section>
 
+      {/* Topic Cluster - Types de fissures */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Guides par type de fissure</h2>
+            <p className="text-slate-600">Tout comprendre sur les fissures : causes, gravité et solutions</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Link href="/fissure-en-escalier-causes" className="group bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-2xl p-6 transition-all">
+              <div className="text-3xl mb-3">🪜</div>
+              <h3 className="text-lg font-bold text-slate-900 group-hover:text-orange-600 mb-2">Fissure en escalier</h3>
+              <p className="text-slate-600 text-sm">Signe de tassement différentiel. Causes et solutions.</p>
+            </Link>
+            <Link href="/fissure-horizontale-danger" className="group bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-2xl p-6 transition-all">
+              <div className="text-3xl mb-3">➖</div>
+              <h3 className="text-lg font-bold text-slate-900 group-hover:text-orange-600 mb-2">Fissure horizontale</h3>
+              <p className="text-slate-600 text-sm">Poussée latérale ou désolidarisation. Évaluer le danger.</p>
+            </Link>
+            <Link href="/microfissure-quand-sinquieter" className="group bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-2xl p-6 transition-all">
+              <div className="text-3xl mb-3">🔍</div>
+              <h3 className="text-lg font-bold text-slate-900 group-hover:text-orange-600 mb-2">Microfissure</h3>
+              <p className="text-slate-600 text-sm">Quand s'inquiéter ? Faïençage vs fissure structurelle.</p>
+            </Link>
+            <Link href="/fissure-secheresse-indemnisation" className="group bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-2xl p-6 transition-all">
+              <div className="text-3xl mb-3">☀️</div>
+              <h3 className="text-lg font-bold text-slate-900 group-hover:text-orange-600 mb-2">Fissure sécheresse</h3>
+              <p className="text-slate-600 text-sm">Indemnisation CAT-NAT : démarches et délais.</p>
+            </Link>
+            <Link href="/fissure-fondation-maison" className="group bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-2xl p-6 transition-all">
+              <div className="text-3xl mb-3">🏠</div>
+              <h3 className="text-lg font-bold text-slate-900 group-hover:text-orange-600 mb-2">Fissure fondation</h3>
+              <p className="text-slate-600 text-sm">Problèmes de fondation : signes et réparations.</p>
+            </Link>
+            <Link href="/blog/agrafage-vs-micropieux-choix" className="group bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-2xl p-6 transition-all">
+              <div className="text-3xl mb-3">⚖️</div>
+              <h3 className="text-lg font-bold text-slate-900 group-hover:text-orange-600 mb-2">Agrafage vs Micropieux</h3>
+              <p className="text-slate-600 text-sm">Comparatif complet pour choisir la bonne solution.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Zone d'intervention */}
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -315,6 +357,17 @@ export default function ExpertFissuresToulouse31Page() {
             <span className="bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-bold">
               + 150 communes
             </span>
+          </div>
+          {/* Liens vers pages locales */}
+          <div className="mt-8 text-center">
+            <p className="text-slate-600 mb-4">Pages dédiées par ville :</p>
+            <div className="flex flex-wrap justify-center gap-2">
+              {['toulouse', 'colomiers', 'tournefeuille', 'blagnac', 'muret', 'montauban', 'auch'].map((ville) => (
+                <Link key={ville} href={`/expert-fissures/${ville}`} className="text-orange-600 hover:text-orange-700 text-sm underline">
+                  Expert fissures {ville.charAt(0).toUpperCase() + ville.slice(1)}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>

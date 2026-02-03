@@ -4,8 +4,28 @@ import { problemSlugs } from '@/app/data/problems';
 import { quartierSlugs } from '@/app/data/quartiers';
 import { blogPostsSlugs } from '@/app/data/blog';
 
-// 🎯 Articles de blog - Import automatique depuis source unique
-// Plus besoin de liste hardcodée, les slugs sont synchronisés automatiquement !
+// 🎯 Pages SPOKE (Topic Clusters) - Hub & Spoke Strategy
+const spokeFissuresPages = [
+  'fissure-en-escalier-causes',
+  'fissure-horizontale-danger',
+  'microfissure-quand-sinquieter',
+  'fissure-secheresse-indemnisation',
+  'fissure-fondation-maison',
+];
+
+// 🏘️ SEO Local Hyper-Maillé - Pages expert par ville
+const expertFissuresVilles = [
+  'toulouse', 'colomiers', 'tournefeuille', 'blagnac', 'muret',
+  'cugnaux', 'balma', 'ramonville-saint-agne', 'montauban', 'castelsarrasin',
+  'auch', 'condom', 'saint-gaudens', 'plaisance-du-touch', 'l-union',
+  'castanet-tolosan', 'saint-orens-de-gameville', 'fonsorbes', 'portet-sur-garonne', 'labege'
+];
+
+const expertHumiditeVilles = [
+  'toulouse', 'colomiers', 'tournefeuille', 'blagnac', 'muret',
+  'montauban', 'auch', 'cugnaux', 'balma', 'ramonville-saint-agne',
+  'saint-gaudens', 'plaisance-du-touch', 'l-union', 'castanet-tolosan'
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr';
@@ -172,6 +192,42 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.68,
   }));
 
-  return [...staticPages, ...pillarPages, ...departementPages, ...villesPages, ...servicePages, ...blogPages, ...problemPages, ...quartierPages];
+  // Pages SPOKE (Topic Clusters - Hub & Spoke)
+  const spokePages: MetadataRoute.Sitemap = spokeFissuresPages.map((slug) => ({
+    url: `${baseUrl}/${slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.75,
+  }));
+
+  // Pages expert-fissures par ville (SEO Local Hyper-Maillé)
+  const expertFissuresPages: MetadataRoute.Sitemap = expertFissuresVilles.map((ville) => ({
+    url: `${baseUrl}/expert-fissures/${ville}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  // Pages expert-humidite par ville (SEO Local Hyper-Maillé)
+  const expertHumiditePages: MetadataRoute.Sitemap = expertHumiditeVilles.map((ville) => ({
+    url: `${baseUrl}/expert-humidite/${ville}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  return [
+    ...staticPages, 
+    ...pillarPages, 
+    ...spokePages,
+    ...departementPages, 
+    ...expertFissuresPages,
+    ...expertHumiditePages,
+    ...villesPages, 
+    ...servicePages, 
+    ...blogPages, 
+    ...problemPages, 
+    ...quartierPages
+  ];
 }
 
