@@ -469,7 +469,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     author: 'Expert IPB',
     metaDescription: 'Guide complet fissures en escalier 2026 : diagnostic tassement différentiel, causes (sol argileux, sécheresse), mesure gravité, solutions agrafage vs micropieux. Expert Toulouse Haute-Garonne.',
     keywords: ['fissures escalier', 'tassement différentiel', 'fissure crémaillère', 'fondations maison', 'agrafage mur', 'sol argileux', 'affaissement maison', 'réparation fissures', 'expertise bâtiment', 'RGA Haute-Garonne'],
-    content: \`
+    content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
         <p class="font-bold text-orange-900 mb-2">🔍 Le saviez-vous ?</p>
         <p class="text-orange-800">Les fissures en escalier (ou "en crémaillère") représentent <strong>65% des fissures structurelles</strong> que nous diagnostiquons en Haute-Garonne. Elles sont presque toujours liées au phénomène de retrait-gonflement des argiles (RGA), particulièrement violent depuis les sécheresses de 2022-2023.</p>
@@ -577,7 +577,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Peupliers</strong> : Croissance rapide, fort besoin hydrique</li>
         <li><strong>Marronniers</strong> : Racines superficielles étendues</li>
       </ul>
-      
+
       <h3>3. Les fuites de canalisation (souvent invisibles)</h3>
       
       <p>Une fuite souterraine (eau, eaux usées) peut <strong>saturer une zone du sol</strong> en eau, créant une poche de sol instable. Le phénomène inverse de la sécheresse, mais avec le même résultat : mouvement de terrain et tassement différentiel.</p>
@@ -705,7 +705,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         </ul>
         <p class="text-orange-800 mt-3">Nous ne sommes pas vendeurs de micropieux. Nous proposons la solution <strong>la plus adaptée et la plus économique</strong> pour votre situation.</p>
       </div>
-    \`
+    `
   },
   'garantie-decennale-travaux-structure': {
     slug: 'garantie-decennale-travaux-structure',
@@ -717,7 +717,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     author: 'Expert IPB',
     metaDescription: 'Guide complet garantie décennale 2026 : obligation légale, couverture, exclusions, vérification attestation, recours. Protégez vos travaux de réparation fissures et fondations.',
     keywords: ['garantie décennale', 'travaux structure', 'assurance décennale', 'protection travaux', 'fissures', 'attestation décennale', 'loi Spinetta', 'responsabilité constructeur', 'malfaçons', 'recours juridique'],
-    content: \`
+    content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
         <p class="font-bold text-orange-900 mb-2">⚖️ Attention : Ce n'est pas une option, c'est la LOI</p>
         <p class="text-orange-800">La garantie décennale est <strong>obligatoire depuis la loi Spinetta de 1978</strong>. Une entreprise qui réalise des travaux structurels SANS attestation décennale valide commet un délit pénal. Et vous, vous n'aurez aucun recours si les travaux échouent.</p>
@@ -744,7 +744,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Rendent l'ouvrage impropre à sa destination</strong> (infiltrations massives, défauts d'étanchéité graves)</li>
         <li><strong>Affectent un élément d'équipement indissociable</strong> (chauffage encastré, canalisations, étanchéité)</li>
       </ul>
-      
+
       <p>Pour couvrir cette responsabilité, le constructeur doit souscrire une <strong>assurance responsabilité civile décennale (RCD)</strong>. C'est cette assurance qu'on appelle couramment "la décennale".</p>
 
       <h3>Qui est concerné par l'obligation ?</h3>
@@ -932,7 +932,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p class="text-orange-800">Chez IPB, nous fournissons <strong>systématiquement</strong> notre attestation d'assurance décennale avec chaque devis. Notre couverture inclut spécifiquement les travaux d'agrafage, de harpage, d'injection résine et de traitement de l'humidité. Nous vous remettons également un PV de réception détaillé à la fin de chaque chantier.</p>
         <p class="text-orange-800 mt-2">Vous pouvez vérifier notre attestation directement auprès de notre assureur. C'est votre droit, et c'est normal de l'exercer.</p>
       </div>
-    \`
+    `
   },
   'ventilation-humidite-condensation': {
     slug: 'ventilation-humidite-condensation',
@@ -944,7 +944,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     author: 'Expert IPB',
     metaDescription: 'Guide complet ventilation maison 2026 : VMC simple flux, double flux, VMI, hygroréglable. Comparatif, prix, installation. Éliminer condensation et moisissures. Expert Toulouse.',
     keywords: ['VMC', 'VMI', 'ventilation maison', 'humidité', 'condensation', 'moisissures', 'VMC double flux', 'VMC hygroréglable', 'renouvellement air', 'qualité air intérieur', 'pont thermique'],
-    content: \`
+    content: `
       <div class="mb-8 p-6 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg">
         <p class="font-bold text-blue-900 mb-2">💡 Le saviez-vous ?</p>
         <p class="text-blue-800">Une famille de 4 personnes produit <strong>12 litres d'eau par jour</strong> sous forme de vapeur (respiration, cuisine, douches, séchage du linge). Sans ventilation efficace, cette eau se condense sur les murs froids et crée des moisissures. La ventilation n'est pas un luxe : c'est une nécessité sanitaire.</p>
@@ -1017,7 +1017,7 @@ const blogPosts: { [key: string]: BlogPost } = {
           <ul>
             <li>Si l'humidité apparaît <strong>côté mur</strong> (derrière le plastique) → C'est une remontée capillaire ou une infiltration</li>
             <li>Si l'humidité apparaît <strong>côté pièce</strong> (devant le plastique) → C'est de la condensation</li>
-          </ul>
+      </ul>
         </li>
       </ol>
 
@@ -1037,7 +1037,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>Aquarium ouvert</li>
         <li>Nombreuses plantes d'intérieur</li>
       </ul>
-      
+
       <h3>2. Des parois froides (ponts thermiques)</h3>
       <ul>
         <li>Murs non isolés ou mal isolés</li>
@@ -1211,7 +1211,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p class="text-blue-800">Chez IPB, nous ne vendons pas de VMC. Mais nous savons <strong>diagnostiquer l'origine de votre humidité</strong>. Si c'est de la condensation, nous vous orienterons vers un spécialiste ventilation (nous avons des partenaires de confiance). Si c'est une remontée capillaire, nous interviendrons avec nos solutions d'injection résine.</p>
         <p class="text-blue-800 mt-2">Notre diagnostic (149€, déductible sur travaux) vous permet d'avoir <strong>la bonne réponse avant de dépenser</strong>. Pas de vente forcée, juste un diagnostic honnête.</p>
       </div>
-    \`
+    `
   },
   'fissure-ouverture-porte-fenetre': {
     slug: 'fissure-ouverture-porte-fenetre',
