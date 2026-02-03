@@ -378,13 +378,51 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
         </div>
       </section>
 
-      {/* Lien hub */}
-      <section className="py-12 bg-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-slate-600 mb-4">Vous cherchez plus d'informations sur l'humidité ?</p>
-          <Link href="/expert-humidite-toulouse-31" className="inline-flex items-center gap-2 text-blue-600 font-bold hover:text-blue-700">
-            Consultez notre guide complet Traitement Humidité <ArrowRight size={18} />
-          </Link>
+      {/* Topic Cluster - Liens vers spokes */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-2xl font-extrabold text-slate-900 mb-8 text-center">
+            Guides par type d'humidité
+          </h2>
+          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <Link href="/remontees-capillaires-traitement" className="bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-xl p-4 transition-all group">
+              <span className="text-2xl mb-2 block">💧</span>
+              <h3 className="font-bold text-slate-900 group-hover:text-blue-600 text-sm">Remontées capillaires</h3>
+            </Link>
+            <Link href="/moisissures-maison-sante" className="bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-xl p-4 transition-all group">
+              <span className="text-2xl mb-2 block">🍄</span>
+              <h3 className="font-bold text-slate-900 group-hover:text-blue-600 text-sm">Moisissures & Santé</h3>
+            </Link>
+            <Link href="/cave-humide-solutions" className="bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-xl p-4 transition-all group">
+              <span className="text-2xl mb-2 block">🏚️</span>
+              <h3 className="font-bold text-slate-900 group-hover:text-blue-600 text-sm">Cave humide</h3>
+            </Link>
+            <Link href="/salpetre-mur-traitement" className="bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-xl p-4 transition-all group">
+              <span className="text-2xl mb-2 block">🧂</span>
+              <h3 className="font-bold text-slate-900 group-hover:text-blue-600 text-sm">Salpêtre</h3>
+            </Link>
+            <Link href="/ponts-thermiques-condensation" className="bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-xl p-4 transition-all group">
+              <span className="text-2xl mb-2 block">🌡️</span>
+              <h3 className="font-bold text-slate-900 group-hover:text-blue-600 text-sm">Ponts thermiques</h3>
+            </Link>
+            <Link href="/condensation-ou-infiltration" className="bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-xl p-4 transition-all group">
+              <span className="text-2xl mb-2 block">🌧️</span>
+              <h3 className="font-bold text-slate-900 group-hover:text-blue-600 text-sm">Condensation vs Infiltration</h3>
+            </Link>
+            <Link href="/vmi-ventilation-insufflation" className="bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-xl p-4 transition-all group">
+              <span className="text-2xl mb-2 block">🌀</span>
+              <h3 className="font-bold text-slate-900 group-hover:text-blue-600 text-sm">VMI® Ventilation</h3>
+            </Link>
+            <Link href="/merule-champignon-traitement" className="bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-xl p-4 transition-all group">
+              <span className="text-2xl mb-2 block">🦠</span>
+              <h3 className="font-bold text-slate-900 group-hover:text-blue-600 text-sm">Mérule</h3>
+            </Link>
+          </div>
+          <div className="mt-8 text-center">
+            <Link href="/expert-humidite-toulouse-31" className="inline-flex items-center gap-2 text-blue-600 font-bold hover:text-blue-700">
+              Consultez notre guide complet Traitement Humidité <ArrowRight size={18} />
+            </Link>
+          </div>
         </div>
       </section>
 

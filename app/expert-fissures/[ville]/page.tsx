@@ -439,13 +439,39 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
         </div>
       </section>
 
-      {/* Lien vers le HUB */}
-      <section className="py-12 bg-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-slate-600 mb-4">Vous cherchez plus d'informations sur les fissures ?</p>
-          <Link href="/expert-fissures-toulouse-31" className="inline-flex items-center gap-2 text-orange-600 font-bold hover:text-orange-700">
-            Consultez notre guide complet Expert Fissures <ArrowRight size={18} />
-          </Link>
+      {/* Topic Cluster - Liens vers spokes */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-2xl font-extrabold text-slate-900 mb-8 text-center">
+            Guides par type de fissure
+          </h2>
+          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
+            <Link href="/fissure-en-escalier-causes" className="bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-xl p-4 transition-all group">
+              <span className="text-2xl mb-2 block">🪜</span>
+              <h3 className="font-bold text-slate-900 group-hover:text-orange-600 text-sm">Fissure en escalier</h3>
+            </Link>
+            <Link href="/fissure-horizontale-danger" className="bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-xl p-4 transition-all group">
+              <span className="text-2xl mb-2 block">➖</span>
+              <h3 className="font-bold text-slate-900 group-hover:text-orange-600 text-sm">Fissure horizontale</h3>
+            </Link>
+            <Link href="/microfissure-quand-sinquieter" className="bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-xl p-4 transition-all group">
+              <span className="text-2xl mb-2 block">🔍</span>
+              <h3 className="font-bold text-slate-900 group-hover:text-orange-600 text-sm">Microfissure</h3>
+            </Link>
+            <Link href="/fissure-secheresse-indemnisation" className="bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-xl p-4 transition-all group">
+              <span className="text-2xl mb-2 block">☀️</span>
+              <h3 className="font-bold text-slate-900 group-hover:text-orange-600 text-sm">Fissure sécheresse</h3>
+            </Link>
+            <Link href="/fissure-fondation-maison" className="bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-xl p-4 transition-all group">
+              <span className="text-2xl mb-2 block">🏠</span>
+              <h3 className="font-bold text-slate-900 group-hover:text-orange-600 text-sm">Fissure fondation</h3>
+            </Link>
+          </div>
+          <div className="mt-8 text-center">
+            <Link href="/expert-fissures-toulouse-31" className="inline-flex items-center gap-2 text-orange-600 font-bold hover:text-orange-700">
+              Consultez notre guide complet Expert Fissures <ArrowRight size={18} />
+            </Link>
+          </div>
         </div>
       </section>
 

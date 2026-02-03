@@ -235,6 +235,33 @@ export default function FissureEnEscalierPage() {
         </div>
       </section>
 
+      {/* Articles connexes (maillage inter-spokes) */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-2xl font-extrabold text-slate-900 mb-8 text-center">
+            Articles connexes sur les fissures
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <Link href="/fissure-horizontale-danger" className="bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-xl p-5 transition-all group">
+              <h3 className="font-bold text-slate-900 group-hover:text-orange-600 mb-2">Fissure horizontale</h3>
+              <p className="text-slate-600 text-sm">Poussée latérale et dangers</p>
+            </Link>
+            <Link href="/microfissure-quand-sinquieter" className="bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-xl p-5 transition-all group">
+              <h3 className="font-bold text-slate-900 group-hover:text-orange-600 mb-2">Microfissure</h3>
+              <p className="text-slate-600 text-sm">Quand s'inquiéter ?</p>
+            </Link>
+            <Link href="/fissure-secheresse-indemnisation" className="bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-xl p-5 transition-all group">
+              <h3 className="font-bold text-slate-900 group-hover:text-orange-600 mb-2">Fissure sécheresse</h3>
+              <p className="text-slate-600 text-sm">Indemnisation CAT-NAT</p>
+            </Link>
+            <Link href="/fissure-fondation-maison" className="bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-xl p-5 transition-all group">
+              <h3 className="font-bold text-slate-900 group-hover:text-orange-600 mb-2">Fissure fondation</h3>
+              <p className="text-slate-600 text-sm">Problèmes de fondation</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-16 bg-orange-600 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
