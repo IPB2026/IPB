@@ -53,16 +53,8 @@
   * {
     @apply border-border;
   }
-  
   body {
-    font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
-    @apply antialiased;
-  }
-  
-  /* Typographie distinctive pour les titres - Space Grotesk */
-  h1, h2, h3, .font-display {
-    font-family: var(--font-display), system-ui, sans-serif;
-    letter-spacing: -0.025em;
+    font-family: 'Inter', sans-serif;
   }
 }
 
@@ -76,21 +68,34 @@
   }
   
   @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
   
   @keyframes slideIn {
-    from { opacity: 0; transform: translateX(20px); }
-    to { opacity: 1; transform: translateX(0); }
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 }
 
+/* 📖 STYLES OPTIMISÉS POUR LA LECTURE DES ARTICLES DE BLOG */
 @layer components {
   .article-content {
+    /* Espacement global pour respiration */
     @apply leading-relaxed;
   }
   
+  /* Callouts colorés dans le contenu HTML */
   .article-content > div[class*="bg-orange-50"],
   .article-content > div[class*="bg-red-50"],
   .article-content > div[class*="bg-blue-50"],
@@ -100,6 +105,7 @@
     line-height: 1.7;
   }
   
+  /* Espacement entre éléments de contenu */
   .article-content > * + * {
     @apply mt-6;
   }
@@ -109,6 +115,7 @@
     @apply mt-4;
   }
   
+  /* Listes imbriquées */
   .article-content ul ul,
   .article-content ol ul,
   .article-content ul ol,
@@ -116,25 +123,52 @@
     @apply mt-3 mb-0 ml-4;
   }
   
+  /* Paragraphes dans les callouts */
   .article-content > div[class*="bg-"] p {
     @apply my-3 leading-relaxed;
   }
   
+  /* Premier paragraphe après titre - Lead paragraph */
   .article-content h2 + p:first-of-type {
     @apply text-lg font-medium text-slate-800 mt-4;
   }
   
+  /* Responsive : Mobile */
   @media (max-width: 768px) {
-    .article-content { @apply text-base; }
-    .article-content h2 { @apply text-2xl mt-12; }
-    .article-content h3 { @apply text-xl mt-8; }
-    .article-content p { @apply my-5; }
-    .article-content ul, .article-content ol { @apply my-6; }
+    .article-content {
+      @apply text-base;
+    }
+    
+    .article-content h2 {
+      @apply text-2xl mt-12;
+    }
+    
+    .article-content h3 {
+      @apply text-xl mt-8;
+    }
+    
+    .article-content p {
+      @apply my-5;
+    }
+    
+    .article-content ul,
+    .article-content ol {
+      @apply my-6;
+    }
   }
   
+  /* Desktop : Paragraphes encore plus aérés */
   @media (min-width: 1024px) {
-    .article-content p { @apply my-7; }
-    .article-content h2 { @apply mt-20 mb-8; }
-    .article-content h3 { @apply mt-12 mb-5; }
+    .article-content p {
+      @apply my-7;
+    }
+    
+    .article-content h2 {
+      @apply mt-20 mb-8;
+    }
+    
+    .article-content h3 {
+      @apply mt-12 mb-5;
+    }
   }
 }

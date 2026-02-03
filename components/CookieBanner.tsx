@@ -41,11 +41,14 @@ export function CookieBanner() {
 
   const applyConsent = (consentData: CookieConsent) => {
     // Activer/désactiver Google Analytics selon le consentement
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('consent', 'update', {
-        'analytics_storage': consentData.analytics ? 'granted' : 'denied',
-        'ad_storage': consentData.marketing ? 'granted' : 'denied',
-      });
+    if (typeof window !== 'undefined') {
+      const gtag = (window as Window & { gtag?: (command: string, ...args: unknown[]) => void }).gtag;
+      if (gtag) {
+        gtag('consent', 'update', {
+          'analytics_storage': consentData.analytics ? 'granted' : 'denied',
+          'ad_storage': consentData.marketing ? 'granted' : 'denied',
+        });
+      }
     }
   };
 
@@ -80,6 +83,9 @@ export function CookieBanner() {
   };
 
   if (!isVisible) return null;
+
+  // Type-safe gtag call
+  const gtagCall = (typeof window !== 'undefined' && (window as Window & { gtag?: (...args: unknown[]) => void }).gtag) || null;
 
   return (
     <>
@@ -221,9 +227,4 @@ export function CookieBanner() {
   );
 }
 
-// Type declaration for gtag
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void;
-  }
-}
+// gtag type is already declared globally via @types/gtag.js or Analytics component
