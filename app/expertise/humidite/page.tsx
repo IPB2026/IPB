@@ -9,8 +9,8 @@ import { Droplets, AlertTriangle, CheckCircle, ArrowRight, Shield, Home, Wind, B
 import Script from 'next/script';
 
 export const metadata = {
-  title: 'Traitement Humidité Toulouse - Remontées Capillaires & Injection | IPB 31',
-  description: 'Expert traitement humidité à Toulouse. Injection résine hydrophobe, cuvelage cave, VMI. Solution définitive contre remontées capillaires, salpêtre, moisissures. Garantie 30 ans. Murs assainis en 6-12 mois. Diagnostic gratuit à domicile.',
+  title: 'Expert Humidité Toulouse | Traitement Définitif | IPB Expertise',
+  description: 'Traitement humidité à Toulouse (31). Injection résine garantie 30 ans. Diagnostic gratuit →',
   keywords: [
     'traitement humidité toulouse',
     'remontées capillaires toulouse',

@@ -75,6 +75,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  // Pages piliers géographiques (SEO haute priorité)
+  const pillarPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/expert-fissures-toulouse-31`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/expert-fissures-montauban-82`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/expert-humidite-toulouse-31`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/expertise-avant-achat-immobilier-toulouse`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+  ];
+
   // Pages départements (SEO régional)
   const departementPages: MetadataRoute.Sitemap = [
     {
@@ -144,6 +172,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.68,
   }));
 
-  return [...staticPages, ...departementPages, ...villesPages, ...servicePages, ...blogPages, ...problemPages, ...quartierPages];
+  return [...staticPages, ...pillarPages, ...departementPages, ...villesPages, ...servicePages, ...blogPages, ...problemPages, ...quartierPages];
 }
 

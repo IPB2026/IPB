@@ -9,8 +9,8 @@ import { Activity, AlertTriangle, CheckCircle, ArrowRight, Shield, FileText, Wre
 import Script from 'next/script';
 
 export const metadata = {
-  title: 'Expert Fissures Toulouse - Agrafage & Traitement Structurel | IPB 31',
-  description: 'Expert traitement fissures structurelles à Toulouse. Agrafage, harpage, reprise en sous-œuvre. Alternative 3x moins chère que les micropieux. Garantie décennale 10 ans. Sols argileux, tassement différentiel. Diagnostic gratuit à domicile.',
+  title: 'Expert Fissures Toulouse | Diagnostic Indépendant | IPB Expertise',
+  description: 'Expert fissures à Toulouse (31). Diagnostic sous 48h, agrafage garanti 10 ans. Devis gratuit →',
   keywords: [
     'expert fissures toulouse',
     'agrafage fissures toulouse',
