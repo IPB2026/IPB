@@ -7,18 +7,32 @@ import { Footer } from '@/components/home/Footer';
 import { Warehouse, ArrowRight, Phone, AlertTriangle, CheckCircle, Droplets, Wind, Shield } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Cave Humide : Causes et Solutions Définitives | IPB Expertise',
-  description: 'Cave humide, sous-sol inondé ? Causes (infiltrations, remontées, condensation) et solutions : drainage, cuvelage, ventilation. Expert Toulouse.',
-  keywords: ['cave humide', 'sous-sol humide', 'cuvelage cave', 'drainage cave', 'étanchéité sous-sol'],
+  title: 'Cave Humide : Cuvelage, Drainage et Solutions | Prix Toulouse',
+  description: 'Cave humide ou sous-sol inondé ? Causes (infiltrations, nappe, condensation). Solutions : cuvelage (200-400€/m²), drainage, VMI. Diagnostic gratuit Toulouse.',
+  keywords: [
+    'cave humide solution',
+    'cuvelage cave prix',
+    'sous-sol humide traitement',
+    'étanchéité cave enterrée',
+    'drainage périphérique cave',
+    'infiltration eau cave',
+    'cave inondée que faire',
+    'mur enterré humide',
+    'pompe de relevage cave',
+    'aménager cave humide',
+    'expert cave toulouse',
+    'devis cuvelage cave',
+  ],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/cave-humide-solutions',
   },
   openGraph: {
-    title: 'Cave Humide : Causes et Solutions Définitives',
-    description: 'Guide complet pour traiter une cave humide durablement.',
+    title: 'Cave Humide : Solutions Cuvelage et Drainage',
+    description: 'Traitement définitif cave humide : cuvelage, drainage, ventilation. Devis gratuit.',
     url: 'https://www.ipb-expertise.fr/cave-humide-solutions',
     type: 'article',
   },
+  robots: { index: true, follow: true },
 };
 
 const causesCave = [

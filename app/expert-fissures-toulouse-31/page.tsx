@@ -7,16 +7,56 @@ import { Footer } from '@/components/home/Footer';
 import { CheckCircle, Phone, ArrowRight, MapPin, AlertTriangle, Shield, FileText, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures Toulouse (31) | Diagnostic Indépendant | IPB Expertise',
-  description: 'Expert fissures maison à Toulouse et Haute-Garonne. Diagnostic sous 48h, rapport détaillé. Devis gratuit →',
-  keywords: ['expert fissures toulouse', 'fissures maison 31', 'diagnostic fissures haute-garonne', 'expert bâtiment toulouse'],
+  title: 'Expert Fissures Toulouse (31) | Agrafage Structurel Garanti 10 ans | IPB',
+  description: 'Expert fissures maison Toulouse & Haute-Garonne. Agrafage structurel, harpage, réparation fondations. Diagnostic 149€ (déductible). ☎ 05 82 95 33 75. Intervention 48h.',
+  keywords: [
+    'expert fissures toulouse',
+    'fissures maison toulouse',
+    'agrafage fissures 31',
+    'harpage mur toulouse',
+    'réparation fissures façade',
+    'fissure structurelle maison',
+    'tassement différentiel toulouse',
+    'fissure mur extérieur 31',
+    'expert bâtiment toulouse',
+    'diagnostic fissures haute-garonne',
+    'fissure en escalier causes',
+    'fissure horizontale danger',
+    'micropieux toulouse prix',
+    'sol argileux fissures',
+    'catastrophe naturelle sécheresse 31',
+    'fissure fondation maison',
+    'expertise fissures assurance',
+    'devis agrafage fissures',
+  ],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31',
   },
   openGraph: {
-    title: 'Expert Fissures Toulouse (31) | IPB Expertise',
-    description: 'Expert indépendant en fissures à Toulouse. Diagnostic complet sous 48h.',
+    title: 'Expert Fissures Toulouse (31) | Agrafage & Harpage | IPB',
+    description: 'Spécialiste traitement fissures structurelles à Toulouse. Agrafage 3x moins cher que micropieux. +200 maisons traitées. Garantie décennale.',
     url: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31',
+    type: 'website',
+    images: [{
+      url: '/images/fissure-facade-verticale.webp',
+      width: 1200,
+      height: 630,
+      alt: 'Expert fissures Toulouse - Agrafage structurel - IPB Haute-Garonne',
+    }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Expert Fissures Toulouse | IPB',
+    description: 'Agrafage structurel garanti 10 ans. Diagnostic 48h.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+    },
   },
 };
 

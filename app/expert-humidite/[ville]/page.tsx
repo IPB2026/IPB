@@ -144,13 +144,41 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     return { title: 'Expert Humidité | IPB Expertise' };
   }
 
+  const deptCode = villeData.codePostal.slice(0, 2);
+  const villeNom = villeData.nom;
+  const villeNomLower = villeNom.toLowerCase();
+
   return {
-    title: `Expert Humidité ${villeData.nom} (${villeData.codePostal.slice(0,2)}) | Traitement Garanti 30 ans | IPB`,
-    description: `Expert humidité à ${villeData.nom}. Diagnostic sous 48h, injection résine, cuvelage. Garantie 30 ans. Devis gratuit →`,
-    keywords: [`expert humidité ${villeData.nom.toLowerCase()}`, `traitement humidité ${villeData.codePostal.slice(0,2)}`, 'remontées capillaires', 'salpêtre'],
+    title: `Expert Humidité ${villeNom} (${deptCode}) | Injection Résine Garantie 30 ans | IPB`,
+    description: `Expert humidité maison à ${villeNom} et ${villeData.communesProches[0]}. Traitement remontées capillaires, salpêtre, moisissures. Diagnostic 149€. ☎ 05 82 95 33 75`,
+    keywords: [
+      `expert humidité ${villeNomLower}`,
+      `traitement humidité ${villeNomLower}`,
+      `remontées capillaires ${villeNomLower}`,
+      `salpêtre mur ${villeNomLower}`,
+      `moisissures maison ${villeNomLower}`,
+      `injection résine ${villeNomLower}`,
+      `cave humide ${villeNomLower}`,
+      `cuvelage ${villeNomLower}`,
+      `humidité mur ${deptCode}`,
+      `diagnostic humidité ${villeNomLower}`,
+    ],
     alternates: {
       canonical: `https://www.ipb-expertise.fr/expert-humidite/${ville}`,
     },
+    openGraph: {
+      title: `Expert Humidité ${villeNom} (${deptCode}) | IPB`,
+      description: `Traitement humidité à ${villeNom}. Injection résine garantie 30 ans. Diagnostic 48h.`,
+      url: `https://www.ipb-expertise.fr/expert-humidite/${ville}`,
+      type: 'website',
+      images: [{ url: '/images/salpetre-avant-apres.webp', width: 1200, height: 630, alt: `Expert humidité ${villeNom}` }],
+    },
+    twitter: {
+      card: 'summary',
+      title: `Expert Humidité ${villeNom}`,
+      description: `Injection résine garantie 30 ans. Diagnostic 48h.`,
+    },
+    robots: { index: true, follow: true },
   };
 }
 

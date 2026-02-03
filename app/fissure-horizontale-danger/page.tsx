@@ -7,12 +7,32 @@ import { Footer } from '@/components/home/Footer';
 import { AlertTriangle, ArrowRight, Phone } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Fissure Horizontale : Causes, Dangers et Réparation | IPB Expertise',
-  description: 'Fissure horizontale sur votre mur ? Signe de poussée latérale ou désolidarisation. Causes, gravité et solutions. Expert Toulouse →',
-  keywords: ['fissure horizontale', 'fissure horizontale mur', 'poussée latérale', 'désolidarisation plancher'],
+  title: 'Fissure Horizontale Mur : Danger Structurel à Traiter d\'Urgence | Toulouse',
+  description: 'Fissure horizontale sur mur porteur ? ⚠️ Signe de poussée latérale ou désolidarisation plancher. Causes, diagnostic et réparation urgente. Expert fissures Toulouse 31.',
+  keywords: [
+    'fissure horizontale mur',
+    'fissure horizontale danger',
+    'poussée latérale mur',
+    'désolidarisation plancher mur',
+    'fissure mur porteur',
+    'fissure horizontale extérieur',
+    'réparation fissure horizontale',
+    'fissure linteau fenêtre',
+    'expert fissures toulouse',
+    'fissure structurelle grave',
+    'renforcement mur fissuré',
+    'agrafage mur porteur',
+  ],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/fissure-horizontale-danger',
   },
+  openGraph: {
+    title: 'Fissure Horizontale : Urgence Structurelle',
+    description: 'Une fissure horizontale peut indiquer un problème grave. Diagnostic expert et solutions.',
+    url: 'https://www.ipb-expertise.fr/fissure-horizontale-danger',
+    type: 'article',
+  },
+  robots: { index: true, follow: true },
 };
 
 const faqItems = [

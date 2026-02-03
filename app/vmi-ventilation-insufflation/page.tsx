@@ -7,12 +7,32 @@ import { Footer } from '@/components/home/Footer';
 import { ArrowRight, Phone, Wind, CheckCircle, ThermometerSun, Zap } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'VMI® : Ventilation par Insufflation contre Condensation | IPB Expertise',
-  description: 'VMI (Ventilation Mécanique par Insufflation) : solution efficace contre condensation et moisissures. Installation et prix. Expert Toulouse →',
-  keywords: ['VMI', 'ventilation par insufflation', 'VMI prix', 'condensation', 'moisissure', 'ventilation'],
+  title: 'VMI Ventilation Insufflation : Prix, Avis et Installation | Toulouse',
+  description: 'VMI (Ventilation Mécanique par Insufflation) : solution anti-condensation et moisissures. Prix 2500-4500€ installée. Avantages vs VMC. Installateur Toulouse.',
+  keywords: [
+    'VMI ventilation insufflation',
+    'VMI prix installation',
+    'VMI ou VMC',
+    'ventilation positive maison',
+    'VMI avis efficacité',
+    'insufflation air chaud',
+    'VMI contre condensation',
+    'VMI moisissures',
+    'surpression ventilation',
+    'installateur VMI toulouse',
+    'ventilation maison humide',
+    'VMI consommation electrique',
+  ],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/vmi-ventilation-insufflation',
   },
+  openGraph: {
+    title: 'VMI : La Solution Anti-Condensation Efficace',
+    description: 'Ventilation par insufflation : fonctionnement, prix et avantages. Installation Toulouse.',
+    url: 'https://www.ipb-expertise.fr/vmi-ventilation-insufflation',
+    type: 'article',
+  },
+  robots: { index: true, follow: true },
 };
 
 const faqItems = [

@@ -7,12 +7,32 @@ import { Footer } from '@/components/home/Footer';
 import { AlertTriangle, ArrowRight, Phone, Home } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Fissure Fondation Maison : Causes, Gravité et Réparation | IPB Expertise',
-  description: 'Fissures liées aux fondations ? Causes (tassement, RGA, défaut construction), gravité et solutions (agrafage, micropieux). Expert Toulouse →',
-  keywords: ['fissure fondation', 'fissure fondation maison', 'reprise fondation', 'micropieux', 'tassement fondation'],
+  title: 'Fissure Fondation Maison : Causes et Solutions (Agrafage vs Micropieux)',
+  description: 'Fissures dues aux fondations ? Causes (tassement, sol argileux, RGA). Comparatif solutions : agrafage (8-15k€) vs micropieux (25-50k€). Expert fondations Toulouse.',
+  keywords: [
+    'fissure fondation maison',
+    'problème fondation maison',
+    'tassement différentiel fondation',
+    'reprise en sous-oeuvre',
+    'micropieux fondation prix',
+    'agrafage fondation',
+    'injection résine fondation',
+    'sol argileux fondation',
+    'affaissement fondation',
+    'renforcement fondation maison',
+    'expert fondations toulouse',
+    'fissure semelle fondation',
+  ],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/fissure-fondation-maison',
   },
+  openGraph: {
+    title: 'Fissure Fondation : Diagnostic et Solutions',
+    description: 'Problème de fondation ? Diagnostic expert et comparatif des solutions de réparation.',
+    url: 'https://www.ipb-expertise.fr/fissure-fondation-maison',
+    type: 'article',
+  },
+  robots: { index: true, follow: true },
 };
 
 const faqItems = [

@@ -7,18 +7,32 @@ import { Footer } from '@/components/home/Footer';
 import { AlertTriangle, ArrowRight, Phone, CheckCircle, Heart, Wind, Droplets, ShieldAlert } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Moisissures Maison : Risques Santé et Solutions | IPB Expertise',
-  description: 'Moisissures dans la maison : dangers pour la santé, causes et traitements efficaces. Allergie, asthme, infections. Expert humidité Toulouse.',
-  keywords: ['moisissures maison', 'moisissure santé', 'champignon mur', 'allergie moisissure', 'traitement moisissures'],
+  title: 'Moisissures Maison : Dangers Santé (Asthme, Allergies) et Traitement',
+  description: 'Moisissures dans votre maison ? ⚠️ Risques santé : allergies, asthme, infections respiratoires. Causes (humidité, ventilation) et traitement définitif. Expert Toulouse.',
+  keywords: [
+    'moisissures maison danger',
+    'moisissure santé risques',
+    'champignon mur noir',
+    'allergie moisissure symptomes',
+    'traitement moisissures murs',
+    'moisissure chambre bébé',
+    'moisissure salle de bain',
+    'enlever moisissure définitivement',
+    'moisissure et asthme',
+    'humidité moisissures',
+    'ventilation anti moisissure',
+    'expert humidité toulouse',
+  ],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/moisissures-maison-sante',
   },
   openGraph: {
-    title: 'Moisissures Maison : Risques Santé et Solutions',
-    description: 'Les moisissures sont dangereuses pour la santé. Découvrez les risques et les solutions.',
+    title: 'Moisissures : Dangers Santé et Solutions',
+    description: 'Les moisissures causent allergies et problèmes respiratoires. Traitement définitif.',
     url: 'https://www.ipb-expertise.fr/moisissures-maison-sante',
     type: 'article',
   },
+  robots: { index: true, follow: true },
 };
 
 const risquesSante = [

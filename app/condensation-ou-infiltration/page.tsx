@@ -7,12 +7,32 @@ import { Footer } from '@/components/home/Footer';
 import { ArrowRight, Phone, Droplets, Wind, CloudRain } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Condensation ou Infiltration ? Comment Différencier | IPB Expertise',
-  description: 'Murs humides : condensation ou infiltration ? Comment distinguer les deux et les traiter efficacement. Diagnostic expert Toulouse →',
-  keywords: ['condensation', 'infiltration', 'moisissure', 'humidité mur', 'pont thermique', 'VMC'],
+  title: 'Condensation ou Infiltration ? Guide Diagnostic Humidité | Toulouse',
+  description: 'Murs humides : condensation ou infiltration ? Comment différencier, identifier la cause exacte et choisir le bon traitement. Diagnostic expert Toulouse 48h.',
+  keywords: [
+    'condensation ou infiltration',
+    'différence condensation infiltration',
+    'diagnostic humidité mur',
+    'mur humide condensation',
+    'infiltration eau pluie',
+    'humidité mur intérieur',
+    'tache humidité mur',
+    'buée fenêtre condensation',
+    'moisissure condensation',
+    'expert diagnostic humidité',
+    'humidité toulouse',
+    'cause humidité maison',
+  ],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/condensation-ou-infiltration',
   },
+  openGraph: {
+    title: 'Condensation vs Infiltration : Comment Savoir ?',
+    description: 'Guide pour identifier la source de votre humidité et la traiter efficacement.',
+    url: 'https://www.ipb-expertise.fr/condensation-ou-infiltration',
+    type: 'article',
+  },
+  robots: { index: true, follow: true },
 };
 
 const faqItems = [

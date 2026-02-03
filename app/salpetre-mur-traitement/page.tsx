@@ -8,12 +8,33 @@ import { Footer } from '@/components/home/Footer';
 import { AlertTriangle, ArrowRight, Phone, Droplets, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Salpêtre sur les Murs : Causes et Traitement Définitif | IPB Expertise',
-  description: 'Salpêtre (poudre blanche) sur vos murs ? Causes, dangers et traitement par injection de résine. Garantie 30 ans. Expert Toulouse →',
-  keywords: ['salpêtre', 'salpêtre mur', 'traitement salpêtre', 'poudre blanche mur', 'remontée capillaire'],
+  title: 'Salpêtre Mur : Causes, Dangers et Traitement Injection | Toulouse',
+  description: 'Salpêtre (poudre blanche) sur vos murs ? ⚠️ Signe de remontées capillaires. Traitement par injection résine hydrophobe. Garantie 30 ans. Expert Toulouse ☎ 05 82 95 33 75',
+  keywords: [
+    'salpêtre mur traitement',
+    'poudre blanche mur',
+    'nitrate potassium mur',
+    'salpêtre cave',
+    'salpêtre remontée capillaire',
+    'enlever salpêtre définitivement',
+    'traitement anti salpêtre',
+    'salpêtre dangereux santé',
+    'injection résine salpêtre',
+    'mur qui blanchit',
+    'cristaux blancs mur',
+    'expert humidité toulouse',
+  ],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/salpetre-mur-traitement',
   },
+  openGraph: {
+    title: 'Salpêtre : Traitement Définitif par Injection',
+    description: 'Le salpêtre révèle des remontées capillaires. Traitement par injection garanti 30 ans.',
+    url: 'https://www.ipb-expertise.fr/salpetre-mur-traitement',
+    type: 'article',
+    images: [{ url: '/images/salpetre-avant-apres.webp', width: 1200, height: 630, alt: 'Salpêtre mur avant après traitement' }],
+  },
+  robots: { index: true, follow: true },
 };
 
 const faqItems = [

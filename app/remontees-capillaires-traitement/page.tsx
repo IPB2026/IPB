@@ -7,18 +7,33 @@ import { Footer } from '@/components/home/Footer';
 import { Droplets, ArrowRight, Phone, AlertTriangle, CheckCircle, ArrowUp, Home, Zap } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Remontées Capillaires : Causes, Diagnostic et Traitement | IPB Expertise',
-  description: 'Remontées capillaires dans les murs ? Causes, signes, solutions (injection, drainage, cuvelage). Expert humidité Toulouse, Montauban, Auch.',
-  keywords: ['remontées capillaires', 'humidité ascensionnelle', 'mur humide', 'traitement remontées capillaires', 'injection résine'],
+  title: 'Remontées Capillaires : Traitement Définitif par Injection | Toulouse',
+  description: 'Remontées capillaires dans les murs ? Salpêtre, moisissures, peinture qui cloque. Traitement par injection résine hydrophobe. Garantie 30 ans. Expert Toulouse ☎ 05 82 95 33 75',
+  keywords: [
+    'remontées capillaires traitement',
+    'humidité ascensionnelle murs',
+    'injection résine hydrophobe',
+    'salpêtre mur humide',
+    'traitement humidité murs',
+    'barrière étanche mur',
+    'prix injection remontées capillaires',
+    'mur humide en bas',
+    'peinture qui cloque humidité',
+    'expert humidité toulouse',
+    'assèchement murs humides',
+    'capillarité mur pierre',
+  ],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/remontees-capillaires-traitement',
   },
   openGraph: {
-    title: 'Remontées Capillaires : Causes, Diagnostic et Traitement',
-    description: 'Tout comprendre sur les remontées capillaires et les solutions pour y remédier.',
+    title: 'Remontées Capillaires : Injection Résine Garantie 30 ans',
+    description: 'Traitement définitif des remontées capillaires par injection. Résultat visible en 3 mois. Expert Toulouse.',
     url: 'https://www.ipb-expertise.fr/remontees-capillaires-traitement',
     type: 'article',
+    images: [{ url: '/images/salpetre-avant-apres.webp', width: 1200, height: 630, alt: 'Traitement remontées capillaires avant après' }],
   },
+  robots: { index: true, follow: true },
 };
 
 const signesRemontees = [

@@ -229,19 +229,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // Pages SPOKE Fissures (Topic Clusters - Hub & Spoke)
+  // Priorité haute car ces pages constituent le cluster thématique principal
   const spokeFissPages: MetadataRoute.Sitemap = spokeFissuresPages.map((slug) => ({
     url: `${baseUrl}/${slug}`,
     lastModified: currentDate,
     changeFrequency: 'monthly' as const,
-    priority: 0.75,
+    priority: 0.8, // Priorité augmentée pour les spokes
   }));
 
   // Pages SPOKE Humidité (Topic Clusters - Hub & Spoke)
+  // Priorité haute car ces pages constituent le cluster thématique humidité
   const spokeHumPages: MetadataRoute.Sitemap = spokeHumiditePages.map((slug) => ({
     url: `${baseUrl}/${slug}`,
     lastModified: currentDate,
     changeFrequency: 'monthly' as const,
-    priority: 0.75,
+    priority: 0.8, // Priorité augmentée pour les spokes
   }));
 
   // Pages E-E-A-T
@@ -261,19 +263,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // Pages expert-fissures par ville (SEO Local Hyper-Maillé)
+  // Priorité haute - Stratégie "Bottom of Funnel First" (intention d'achat forte)
   const expertFissuresPages: MetadataRoute.Sitemap = expertFissuresVilles.map((ville) => ({
     url: `${baseUrl}/expert-fissures/${ville}`,
     lastModified: currentDate,
     changeFrequency: 'monthly' as const,
-    priority: 0.7,
+    priority: 0.78, // Priorité augmentée pour SEO local transactionnel
   }));
 
   // Pages expert-humidite par ville (SEO Local Hyper-Maillé)
+  // Priorité haute - Stratégie "Bottom of Funnel First" (intention d'achat forte)
   const expertHumiditePages: MetadataRoute.Sitemap = expertHumiditeVilles.map((ville) => ({
     url: `${baseUrl}/expert-humidite/${ville}`,
     lastModified: currentDate,
     changeFrequency: 'monthly' as const,
-    priority: 0.7,
+    priority: 0.78, // Priorité augmentée pour SEO local transactionnel
   }));
 
   return [

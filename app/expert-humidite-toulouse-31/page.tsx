@@ -7,16 +7,56 @@ import { Footer } from '@/components/home/Footer';
 import { CheckCircle, Phone, ArrowRight, MapPin, Droplets, Shield, FileText, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Expert Humidité Toulouse (31) | Traitement Définitif | IPB Expertise',
-  description: 'Expert humidité maison à Toulouse. Injection résine, cuvelage, VMI. Garantie 30 ans. Diagnostic gratuit →',
-  keywords: ['expert humidité toulouse', 'traitement humidité 31', 'remontées capillaires toulouse', 'injection résine toulouse'],
+  title: 'Expert Humidité Toulouse (31) | Injection Résine Garantie 30 ans | IPB',
+  description: 'Expert humidité maison Toulouse & Haute-Garonne. Traitement remontées capillaires, salpêtre, moisissures. Injection résine, cuvelage, VMI. ☎ 05 82 95 33 75. Garantie 30 ans.',
+  keywords: [
+    'expert humidité toulouse',
+    'traitement humidité maison 31',
+    'remontées capillaires toulouse',
+    'injection résine hydrophobe',
+    'salpêtre mur traitement',
+    'moisissures maison toulouse',
+    'cave humide toulouse',
+    'cuvelage cave 31',
+    'VMI ventilation toulouse',
+    'humidité mur intérieur',
+    'condensation maison',
+    'infiltration eau mur',
+    'ponts thermiques traitement',
+    'mérule toulouse',
+    'assèchement murs humides',
+    'diagnostic humidité toulouse',
+    'prix injection résine',
+    'devis traitement humidité',
+  ],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/expert-humidite-toulouse-31',
   },
   openGraph: {
-    title: 'Expert Humidité Toulouse (31) | IPB Expertise',
-    description: 'Traitement définitif de l\'humidité à Toulouse. Diagnostic sous 48h.',
+    title: 'Expert Humidité Toulouse (31) | Injection & Cuvelage | IPB',
+    description: 'Traitement définitif humidité à Toulouse. Remontées capillaires, salpêtre, moisissures. Résultat visible 3 mois. Garantie 30 ans.',
     url: 'https://www.ipb-expertise.fr/expert-humidite-toulouse-31',
+    type: 'website',
+    images: [{
+      url: '/images/salpetre-avant-apres.webp',
+      width: 1200,
+      height: 630,
+      alt: 'Expert humidité Toulouse - Traitement salpêtre - IPB Haute-Garonne',
+    }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Expert Humidité Toulouse | IPB',
+    description: 'Injection résine garantie 30 ans. Diagnostic 48h.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+    },
   },
 };
 

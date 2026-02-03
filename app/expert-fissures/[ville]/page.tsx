@@ -193,18 +193,41 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     return { title: 'Expert Fissures | IPB Expertise' };
   }
 
+  const deptCode = villeData.codePostal.slice(0, 2);
+  const villeNom = villeData.nom;
+  const villeNomLower = villeNom.toLowerCase();
+
   return {
-    title: `Expert Fissures ${villeData.nom} (${villeData.codePostal.slice(0,2)}) | Diagnostic 48h | IPB`,
-    description: `Expert fissures à ${villeData.nom}. Diagnostic sous 48h, agrafage garanti 10 ans. Devis gratuit →`,
-    keywords: [`expert fissures ${villeData.nom.toLowerCase()}`, `fissures maison ${villeData.codePostal.slice(0,2)}`, 'diagnostic fissures', 'agrafage'],
+    title: `Expert Fissures ${villeNom} (${deptCode}) | Agrafage Garanti 10 ans | IPB`,
+    description: `Expert fissures maison à ${villeNom} et ${villeData.communesProches[0]}. Diagnostic 149€ déductible, agrafage structurel, harpage. Intervention 48h. ☎ 05 82 95 33 75`,
+    keywords: [
+      `expert fissures ${villeNomLower}`,
+      `fissures maison ${villeNomLower}`,
+      `agrafage fissures ${villeNomLower}`,
+      `diagnostic fissures ${deptCode}`,
+      `réparation fissures ${villeNomLower}`,
+      `expert bâtiment ${villeNomLower}`,
+      `fissure mur ${villeNomLower}`,
+      `tassement différentiel ${villeNomLower}`,
+      `sol argileux ${villeNomLower}`,
+      `fissure façade ${deptCode}`,
+    ],
     alternates: {
       canonical: `https://www.ipb-expertise.fr/expert-fissures/${ville}`,
     },
     openGraph: {
-      title: `Expert Fissures ${villeData.nom} | IPB Expertise`,
-      description: `Expert indépendant en fissures à ${villeData.nom}. Diagnostic complet sous 48h.`,
+      title: `Expert Fissures ${villeNom} (${deptCode}) | IPB`,
+      description: `Spécialiste fissures à ${villeNom}. Agrafage structurel garanti. Diagnostic 48h.`,
       url: `https://www.ipb-expertise.fr/expert-fissures/${ville}`,
+      type: 'website',
+      images: [{ url: '/images/fissure-facade-verticale.webp', width: 1200, height: 630, alt: `Expert fissures ${villeNom}` }],
     },
+    twitter: {
+      card: 'summary',
+      title: `Expert Fissures ${villeNom}`,
+      description: `Agrafage garanti 10 ans. Diagnostic 48h.`,
+    },
+    robots: { index: true, follow: true },
   };
 }
 

@@ -7,12 +7,32 @@ import { Footer } from '@/components/home/Footer';
 import { AlertTriangle, ArrowRight, Phone, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Microfissure : Quand s\'inquiéter ? Guide Complet | IPB Expertise',
-  description: 'Microfissure sur votre façade ou mur intérieur ? Quand est-ce grave, quand surveiller ? Critères pour distinguer microfissure bénigne et structurelle →',
-  keywords: ['microfissure', 'microfissure mur', 'microfissure façade', 'faïençage', 'fissure fine'],
+  title: 'Microfissure Façade : Quand S\'inquiéter ? Guide Expert | Toulouse',
+  description: 'Microfissure sur façade ou mur intérieur ? Comment distinguer faïençage bénin et fissure structurelle. Critères de gravité, surveillance et quand consulter un expert.',
+  keywords: [
+    'microfissure façade',
+    'microfissure mur',
+    'microfissure quand sinquieter',
+    'faïençage enduit',
+    'fissure fine mur',
+    'microfissure ou fissure',
+    'fissure superficielle façade',
+    'microfissure maison neuve',
+    'fissure enduit extérieur',
+    'expert fissures toulouse',
+    'surveillance fissures maison',
+    'fissure moins de 1mm',
+  ],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/microfissure-quand-sinquieter',
   },
+  openGraph: {
+    title: 'Microfissure : Bénigne ou Grave ? Le Guide',
+    description: 'Apprenez à différencier microfissure superficielle et fissure structurelle. Critères et conseils.',
+    url: 'https://www.ipb-expertise.fr/microfissure-quand-sinquieter',
+    type: 'article',
+  },
+  robots: { index: true, follow: true },
 };
 
 const faqItems = [

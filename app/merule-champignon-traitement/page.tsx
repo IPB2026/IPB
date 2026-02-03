@@ -8,12 +8,33 @@ import { Footer } from '@/components/home/Footer';
 import { AlertTriangle, ArrowRight, Phone, Skull } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Mérule : Identification et Traitement d\'Urgence | IPB Expertise',
-  description: 'Mérule (champignon du bois) ? Comment la reconnaître, dangers et traitement professionnel. Intervention urgente Toulouse →',
-  keywords: ['mérule', 'champignon maison', 'mérule pleureuse', 'traitement mérule', 'champignon bois'],
+  title: 'Mérule : Identification, Dangers et Traitement Urgence | Toulouse',
+  description: 'Mérule (champignon destructeur du bois) ? ⚠️ URGENCE. Comment la reconnaître, dangers pour la maison, traitement professionnel. Intervention urgente Toulouse 24-48h.',
+  keywords: [
+    'mérule traitement',
+    'mérule pleureuse maison',
+    'champignon bois maison',
+    'mérule danger',
+    'reconnaître mérule',
+    'traitement mérule prix',
+    'champignon cave humide',
+    'pourriture bois maison',
+    'mérule toulouse',
+    'diagnostic mérule',
+    'destruction mérule',
+    'assurance mérule',
+  ],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/merule-champignon-traitement',
   },
+  openGraph: {
+    title: 'Mérule : Le Cancer du Bâtiment - Traitement Urgence',
+    description: 'La mérule détruit votre maison. Identification et traitement en urgence.',
+    url: 'https://www.ipb-expertise.fr/merule-champignon-traitement',
+    type: 'article',
+    images: [{ url: '/images/merule-sol.webp', width: 1200, height: 630, alt: 'Mérule champignon destructeur du bois' }],
+  },
+  robots: { index: true, follow: true },
 };
 
 const faqItems = [

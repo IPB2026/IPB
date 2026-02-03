@@ -7,18 +7,32 @@ import { Footer } from '@/components/home/Footer';
 import { Thermometer, ArrowRight, Phone, AlertTriangle, CheckCircle, Wind, Droplets, Home } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Ponts Thermiques et Condensation : Diagnostic et Solutions | IPB Expertise',
-  description: 'Ponts thermiques, zones froides, condensation : causes et solutions (isolation, ventilation). Expert humidité et thermique Toulouse.',
-  keywords: ['pont thermique', 'condensation mur', 'zone froide', 'isolation thermique', 'moisissure angle'],
+  title: 'Ponts Thermiques : Condensation, Moisissures et Solutions | Toulouse',
+  description: 'Ponts thermiques = condensation + moisissures. Zones froides (angles, fenêtres, planchers). Solutions : isolation, VMI, correction thermique. Diagnostic expert Toulouse.',
+  keywords: [
+    'pont thermique condensation',
+    'pont thermique moisissure',
+    'zone froide mur',
+    'condensation angle mur',
+    'isolation pont thermique',
+    'moisissure angle plafond',
+    'fenêtre qui ruisselle',
+    'rupture pont thermique',
+    'diagnostic thermique maison',
+    'VMI ventilation',
+    'humidité condensation',
+    'expert thermique toulouse',
+  ],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/ponts-thermiques-condensation',
   },
   openGraph: {
-    title: 'Ponts Thermiques et Condensation : Diagnostic et Solutions',
-    description: 'Comprendre et traiter les ponts thermiques responsables de la condensation.',
+    title: 'Ponts Thermiques : Causes de Condensation et Moisissures',
+    description: 'Les ponts thermiques créent condensation et moisissures. Diagnostic et solutions.',
     url: 'https://www.ipb-expertise.fr/ponts-thermiques-condensation',
     type: 'article',
   },
+  robots: { index: true, follow: true },
 };
 
 const zonesPontThermique = [

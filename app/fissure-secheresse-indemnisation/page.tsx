@@ -7,12 +7,32 @@ import { Footer } from '@/components/home/Footer';
 import { AlertTriangle, ArrowRight, Phone, FileText, CheckCircle, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Fissure Sécheresse : Indemnisation CAT-NAT & Assurance | IPB Expertise',
-  description: 'Fissures après sécheresse ? Comment obtenir une indemnisation CAT-NAT. Démarches, délais, montant. Expert pour dossier assurance Toulouse →',
-  keywords: ['fissure sécheresse', 'indemnisation fissures', 'CAT-NAT', 'catastrophe naturelle sécheresse', 'RGA'],
+  title: 'Fissure Sécheresse : Indemnisation CAT-NAT 2024-2025 | Guide Complet',
+  description: 'Fissures maison après sécheresse ? Guide complet indemnisation CAT-NAT : démarches, délais (10 jours), franchise, expertise assurance. Aide pour votre dossier Haute-Garonne.',
+  keywords: [
+    'fissure sécheresse indemnisation',
+    'CAT-NAT sécheresse 2024',
+    'catastrophe naturelle fissures',
+    'RGA retrait gonflement argiles',
+    'indemnisation fissures assurance',
+    'arrêté catastrophe naturelle',
+    'expert assurance fissures',
+    'franchise CAT-NAT sécheresse',
+    'dossier sinistre fissures',
+    'sol argileux sécheresse',
+    'expertise assurance maison',
+    'fissures maison toulouse',
+  ],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/fissure-secheresse-indemnisation',
   },
+  openGraph: {
+    title: 'Indemnisation Fissures Sécheresse : Guide CAT-NAT',
+    description: 'Comment obtenir l\'indemnisation de vos fissures après sécheresse. Démarches et conseils.',
+    url: 'https://www.ipb-expertise.fr/fissure-secheresse-indemnisation',
+    type: 'article',
+  },
+  robots: { index: true, follow: true },
 };
 
 const faqItems = [

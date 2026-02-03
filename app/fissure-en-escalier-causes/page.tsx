@@ -7,12 +7,33 @@ import { Footer } from '@/components/home/Footer';
 import { AlertTriangle, ArrowRight, Phone, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Fissure en Escalier : Causes, Dangers et Solutions | IPB Expertise',
-  description: 'Fissure en escalier sur votre mur ? Causes (tassement différentiel, sol argileux), dangers et solutions. Expert Toulouse →',
-  keywords: ['fissure en escalier', 'fissure escalier mur', 'tassement différentiel', 'fissure diagonale'],
+  title: 'Fissure en Escalier : Causes, Dangers et Réparation | Expert Toulouse',
+  description: 'Fissure en escalier sur votre mur ? ⚠️ Signe de tassement différentiel. Causes (sol argileux, sécheresse), dangers structurels et solutions (agrafage). Expert Toulouse 31.',
+  keywords: [
+    'fissure en escalier',
+    'fissure escalier mur',
+    'fissure diagonale maison',
+    'tassement différentiel fondation',
+    'fissure qui suit les joints',
+    'réparation fissure escalier',
+    'agrafage fissure escalier',
+    'sol argileux fissures',
+    'fissure structurelle maison',
+    'expert fissures toulouse',
+    'fissure mur extérieur',
+    'danger fissure maison',
+  ],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/fissure-en-escalier-causes',
   },
+  openGraph: {
+    title: 'Fissure en Escalier : Attention Danger Structurel',
+    description: 'Une fissure en escalier révèle un tassement différentiel. Diagnostic et traitement par agrafage. Expert Toulouse.',
+    url: 'https://www.ipb-expertise.fr/fissure-en-escalier-causes',
+    type: 'article',
+    images: [{ url: '/images/fissure-facade-diagonale.webp', width: 1200, height: 630, alt: 'Fissure en escalier sur façade maison' }],
+  },
+  robots: { index: true, follow: true },
 };
 
 const faqItems = [
