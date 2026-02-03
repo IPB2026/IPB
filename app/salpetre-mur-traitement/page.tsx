@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
@@ -65,25 +66,64 @@ export default function SalpetrePage() {
 
       {/* Hero */}
       <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="flex items-center gap-2 text-blue-400 text-sm font-bold mb-4">
-            <Droplets size={18} />
-            <span>Problème d'humidité</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
-            Salpêtre : Causes et Traitement Définitif
-          </h1>
-          <p className="text-xl text-slate-300 mb-8">
-            Cette poudre blanche sur vos murs est un signal d'alarme. Découvrez pourquoi le salpêtre 
-            apparaît et comment l'éliminer définitivement avec une garantie 30 ans.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/diagnostic" className="bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
-              Diagnostic gratuit <ArrowRight size={18} />
-            </Link>
-            <a href="tel:0582953375" className="bg-white/10 border border-white/20 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
-              <Phone size={18} /> 05 82 95 33 75
-            </a>
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="flex items-center gap-2 text-blue-400 text-sm font-bold mb-4">
+                <Droplets size={18} />
+                <span>⚠️ Signal d'humidité chronique</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
+                Salpêtre : <span className="text-blue-400">Traitement Définitif</span>
+              </h1>
+              <p className="text-xl text-slate-300 mb-4">
+                Cette poudre blanche sur vos murs est un <strong className="text-white">signal d'alarme</strong>. 
+                Elle indique que l'eau remonte depuis le sol et détériore votre maçonnerie de l'intérieur.
+              </p>
+              <div className="bg-blue-500/20 border border-blue-500/50 rounded-xl p-4 mb-8">
+                <p className="text-blue-200 font-bold">
+                  ✓ Traitement par injection de résine · <strong className="text-white">Garanti 30 ans</strong>
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/diagnostic" className="bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
+                  💧 Diagnostic humidité <ArrowRight size={18} />
+                </Link>
+                <a href="tel:0582953375" className="bg-white/10 border border-white/20 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
+                  <Phone size={18} /> 05 82 95 33 75
+                </a>
+              </div>
+            </div>
+            
+            {/* Image Avant/Après Salpêtre */}
+            <div className="relative hidden lg:block">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20">
+                <Image
+                  src="/images/salpetre-avant-apres.webp"
+                  alt="Avant/Après traitement salpêtre - Mur assaini par IPB"
+                  width={600}
+                  height={400}
+                  className="w-full h-auto object-cover"
+                  priority
+                />
+                {/* Badge résultat */}
+                <div className="absolute bottom-4 left-4 right-4 bg-emerald-600/95 backdrop-blur-sm rounded-xl p-4">
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="text-white" size={28} />
+                    <div>
+                      <p className="text-white font-bold">Avant / Après traitement</p>
+                      <p className="text-emerald-100 text-sm">Résultat définitif garanti 30 ans</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Badge tarif */}
+              <div className="absolute -top-4 -right-4 bg-white rounded-xl p-4 shadow-xl">
+                <p className="text-blue-600 font-bold text-sm">À partir de</p>
+                <p className="text-3xl font-extrabold text-slate-900">2 000€</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
