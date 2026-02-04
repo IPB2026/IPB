@@ -4,7 +4,22 @@ import { problemSlugs } from '@/app/data/problems';
 import { quartierSlugs } from '@/app/data/quartiers';
 import { blogPostsSlugs } from '@/app/data/blog';
 
-// 🎯 Pages SPOKE (Topic Clusters) - Hub & Spoke Strategy
+// ═══════════════════════════════════════════════════════════════
+// SITEMAP SEO OPTIMISÉ - IPB EXPERTISE
+// ═══════════════════════════════════════════════════════════════
+//
+// Structure hiérarchique des priorités :
+// 1.0 : Page d'accueil
+// 0.9 : Pages de conversion (diagnostic, hubs principaux)
+// 0.8 : Spokes (topic clusters), pages expertise
+// 0.78 : Pages locales transactionnelles (expert-fissures/[ville])
+// 0.7-0.75 : Blog, départements
+// 0.6-0.68 : Pages secondaires (villes, quartiers, problèmes)
+// 0.3-0.5 : Pages légales, plan du site
+//
+// ═══════════════════════════════════════════════════════════════
+
+// 🎯 Pages SPOKE Fissures (Topic Clusters - Hub & Spoke)
 const spokeFissuresPages = [
   'fissure-en-escalier-causes',
   'fissure-horizontale-danger',
@@ -13,6 +28,7 @@ const spokeFissuresPages = [
   'fissure-fondation-maison',
 ];
 
+// 🎯 Pages SPOKE Humidité (Topic Clusters - Hub & Spoke)
 const spokeHumiditePages = [
   'salpetre-mur-traitement',
   'remontee-capillaire-solution',
@@ -25,7 +41,7 @@ const spokeHumiditePages = [
   'ponts-thermiques-condensation',
 ];
 
-// 📋 Pages E-E-A-T
+// 📋 Pages E-E-A-T (Expertise, Experience, Authoritativeness, Trustworthiness)
 const eeatPages = [
   'notre-expert',
 ];
@@ -37,25 +53,13 @@ const triggerEventsPages = [
   'actualites/infiltrations-automne-hiver',
 ];
 
-// 🏘️ SEO Local Hyper-Maillé - Pages expert par ville
-const expertFissuresVilles = [
-  'toulouse', 'colomiers', 'tournefeuille', 'blagnac', 'muret',
-  'cugnaux', 'balma', 'ramonville-saint-agne', 'montauban', 'castelsarrasin',
-  'auch', 'condom', 'saint-gaudens', 'plaisance-du-touch', 'l-union',
-  'castanet-tolosan', 'saint-orens-de-gameville', 'fonsorbes', 'portet-sur-garonne', 'labege'
-];
-
-const expertHumiditeVilles = [
-  'toulouse', 'colomiers', 'tournefeuille', 'blagnac', 'muret',
-  'montauban', 'auch', 'cugnaux', 'balma', 'ramonville-saint-agne',
-  'saint-gaudens', 'plaisance-du-touch', 'l-union', 'castanet-tolosan'
-];
-
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr';
   const currentDate = new Date();
 
-  // Pages principales
+  // ════════════════════════════════════════════════════════════
+  // PAGES STATIQUES PRINCIPALES
+  // ════════════════════════════════════════════════════════════
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
@@ -73,13 +77,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/expertise/fissures`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/expertise/humidite`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/blog`,
@@ -119,7 +123,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Pages piliers géographiques (SEO haute priorité)
+  // ════════════════════════════════════════════════════════════
+  // PAGES PILIERS GÉOGRAPHIQUES (SEO haute priorité)
+  // ════════════════════════════════════════════════════════════
   const pillarPages: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/expert-fissures-toulouse-31`,
@@ -147,13 +153,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Pages départements (SEO régional)
+  // ════════════════════════════════════════════════════════════
+  // PAGES DÉPARTEMENTS (SEO régional)
+  // ════════════════════════════════════════════════════════════
   const departementPages: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/departements/haute-garonne`,
       lastModified: currentDate,
       changeFrequency: 'weekly',
-      priority: 0.85, // Priorité haute car zone principale
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/departements/tarn-et-garonne`,
@@ -187,7 +195,72 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Pages villes (SEO local)
+  // ════════════════════════════════════════════════════════════
+  // PAGES SPOKE - TOPIC CLUSTERS FISSURES
+  // Priorité haute car ces pages constituent le cluster thématique
+  // ════════════════════════════════════════════════════════════
+  const spokeFissPages: MetadataRoute.Sitemap = spokeFissuresPages.map((slug) => ({
+    url: `${baseUrl}/${slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  // ════════════════════════════════════════════════════════════
+  // PAGES SPOKE - TOPIC CLUSTERS HUMIDITÉ
+  // ════════════════════════════════════════════════════════════
+  const spokeHumPages: MetadataRoute.Sitemap = spokeHumiditePages.map((slug) => ({
+    url: `${baseUrl}/${slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  // ════════════════════════════════════════════════════════════
+  // PAGES E-E-A-T
+  // ════════════════════════════════════════════════════════════
+  const eeatPagesMap: MetadataRoute.Sitemap = eeatPages.map((slug) => ({
+    url: `${baseUrl}/${slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  // ════════════════════════════════════════════════════════════
+  // PAGES TRIGGER EVENTS (Actualités)
+  // ════════════════════════════════════════════════════════════
+  const triggerEventsPagesMap: MetadataRoute.Sitemap = triggerEventsPages.map((slug) => ({
+    url: `${baseUrl}/${slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }));
+
+  // ════════════════════════════════════════════════════════════
+  // PAGES EXPERT-FISSURES PAR VILLE (SEO Local Hyper-Maillé)
+  // Utilise directement les slugs de villesData pour garantir la cohérence
+  // Stratégie "Bottom of Funnel First" - intention d'achat forte
+  // ════════════════════════════════════════════════════════════
+  const expertFissuresPages: MetadataRoute.Sitemap = villeSlugs.map((ville) => ({
+    url: `${baseUrl}/expert-fissures/${ville}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.78,
+  }));
+
+  // ════════════════════════════════════════════════════════════
+  // PAGES EXPERT-HUMIDITE PAR VILLE (SEO Local Hyper-Maillé)
+  // ════════════════════════════════════════════════════════════
+  const expertHumiditePages: MetadataRoute.Sitemap = villeSlugs.map((ville) => ({
+    url: `${baseUrl}/expert-humidite/${ville}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.78,
+  }));
+
+  // ════════════════════════════════════════════════════════════
+  // PAGES VILLES (SEO local secondaire)
+  // ════════════════════════════════════════════════════════════
   const villesPages: MetadataRoute.Sitemap = villeSlugs.map((ville) => ({
     url: `${baseUrl}/villes/${ville}`,
     lastModified: currentDate,
@@ -195,6 +268,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
+  // ════════════════════════════════════════════════════════════
+  // PAGES SERVICES PAR VILLE
+  // ════════════════════════════════════════════════════════════
   const serviceSlugs = ['agrafage-fissures', 'traitement-humidite'];
   const servicePages: MetadataRoute.Sitemap = serviceSlugs.flatMap((service) =>
     villeSlugs.map((ville) => ({
@@ -205,14 +281,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  // Articles de blog (import automatique depuis blog.ts)
+  // ════════════════════════════════════════════════════════════
+  // ARTICLES DE BLOG
+  // ════════════════════════════════════════════════════════════
   const blogPages: MetadataRoute.Sitemap = blogPostsSlugs.map((slug) => ({
     url: `${baseUrl}/blog/${slug}`,
     lastModified: currentDate,
     changeFrequency: 'monthly' as const,
-    priority: 0.7, // Haute priorité pour le contenu SEO
+    priority: 0.7,
   }));
 
+  // ════════════════════════════════════════════════════════════
+  // PAGES PROBLÈMES
+  // ════════════════════════════════════════════════════════════
   const problemPages: MetadataRoute.Sitemap = problemSlugs.map((slug) => ({
     url: `${baseUrl}/problemes/${slug}`,
     lastModified: currentDate,
@@ -220,7 +301,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.65,
   }));
 
-  // Pages quartiers (SEO hyper-local Toulouse)
+  // ════════════════════════════════════════════════════════════
+  // PAGES QUARTIERS (SEO hyper-local Toulouse)
+  // ════════════════════════════════════════════════════════════
   const quartierPages: MetadataRoute.Sitemap = quartierSlugs.map((quartier) => ({
     url: `${baseUrl}/quartiers/${quartier}`,
     lastModified: currentDate,
@@ -228,58 +311,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.68,
   }));
 
-  // Pages SPOKE Fissures (Topic Clusters - Hub & Spoke)
-  // Priorité haute car ces pages constituent le cluster thématique principal
-  const spokeFissPages: MetadataRoute.Sitemap = spokeFissuresPages.map((slug) => ({
-    url: `${baseUrl}/${slug}`,
-    lastModified: currentDate,
-    changeFrequency: 'monthly' as const,
-    priority: 0.8, // Priorité augmentée pour les spokes
-  }));
-
-  // Pages SPOKE Humidité (Topic Clusters - Hub & Spoke)
-  // Priorité haute car ces pages constituent le cluster thématique humidité
-  const spokeHumPages: MetadataRoute.Sitemap = spokeHumiditePages.map((slug) => ({
-    url: `${baseUrl}/${slug}`,
-    lastModified: currentDate,
-    changeFrequency: 'monthly' as const,
-    priority: 0.8, // Priorité augmentée pour les spokes
-  }));
-
-  // Pages E-E-A-T
-  const eeatPagesMap: MetadataRoute.Sitemap = eeatPages.map((slug) => ({
-    url: `${baseUrl}/${slug}`,
-    lastModified: currentDate,
-    changeFrequency: 'monthly' as const,
-    priority: 0.8,
-  }));
-
-  // Pages Trigger Events (Actualités)
-  const triggerEventsPagesMap: MetadataRoute.Sitemap = triggerEventsPages.map((slug) => ({
-    url: `${baseUrl}/${slug}`,
-    lastModified: currentDate,
-    changeFrequency: 'weekly' as const, // Actualités = mises à jour fréquentes
-    priority: 0.85,
-  }));
-
-  // Pages expert-fissures par ville (SEO Local Hyper-Maillé)
-  // Priorité haute - Stratégie "Bottom of Funnel First" (intention d'achat forte)
-  const expertFissuresPages: MetadataRoute.Sitemap = expertFissuresVilles.map((ville) => ({
-    url: `${baseUrl}/expert-fissures/${ville}`,
-    lastModified: currentDate,
-    changeFrequency: 'monthly' as const,
-    priority: 0.78, // Priorité augmentée pour SEO local transactionnel
-  }));
-
-  // Pages expert-humidite par ville (SEO Local Hyper-Maillé)
-  // Priorité haute - Stratégie "Bottom of Funnel First" (intention d'achat forte)
-  const expertHumiditePages: MetadataRoute.Sitemap = expertHumiditeVilles.map((ville) => ({
-    url: `${baseUrl}/expert-humidite/${ville}`,
-    lastModified: currentDate,
-    changeFrequency: 'monthly' as const,
-    priority: 0.78, // Priorité augmentée pour SEO local transactionnel
-  }));
-
+  // ════════════════════════════════════════════════════════════
+  // ASSEMBLAGE FINAL DU SITEMAP
+  // Ordre de priorité décroissante pour une meilleure lisibilité
+  // ════════════════════════════════════════════════════════════
   return [
     ...staticPages, 
     ...pillarPages, 
@@ -291,10 +326,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...expertFissuresPages,
     ...expertHumiditePages,
     ...villesPages, 
-    ...servicePages, 
     ...blogPages, 
-    ...problemPages, 
-    ...quartierPages
+    ...quartierPages,
+    ...problemPages,
+    ...servicePages, 
   ];
 }
-
