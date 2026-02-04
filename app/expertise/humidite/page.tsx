@@ -12,7 +12,7 @@ import Script from 'next/script';
 
 export const metadata = {
   title: 'Expert Humidité Toulouse | Injection Résine Garantie 30 ans | IPB',
-  description: 'Murs humides, salpêtre, moisissures ? Traitement définitif par injection résine hydrophobe. Garantie 30 ans. Diagnostic 149€. ☎ 05 82 95 33 75. Intervention 48h.',
+  description: 'Murs humides, salpêtre, moisissures ? Solutions complètes : injection résine, cuvelage, drainage, ventilation (VMC/VMI), traitement condensation. Garantie 30 ans. Diagnostic 149€. ☎ 05 82 95 33 75. Intervention 48h.',
   keywords: [
     'expert humidité toulouse',
     'traitement humidité murs',
@@ -31,8 +31,8 @@ export const metadata = {
     canonical: 'https://www.ipb-expertise.fr/expertise/humidite',
   },
   openGraph: {
-    title: 'Expert Humidité Toulouse | Injection Résine Garantie 30 ans | IPB',
-    description: 'Traitement définitif remontées capillaires. +200 maisons traitées. Diagnostic 48h.',
+    title: 'Expert Humidité Toulouse | Solutions complètes | IPB',
+    description: 'Injection résine, cuvelage, ventilation, drainage, traitement condensation. Diagnostic 48h.',
     url: 'https://www.ipb-expertise.fr/expertise/humidite',
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
     locale: 'fr_FR',
@@ -193,7 +193,7 @@ export default function HumiditePage() {
             <h2 className="text-lg font-bold text-slate-900 mb-4">Sommaire de la page</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
               <a href="#probleme" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Comprendre le problème</a>
-              <a href="#solution" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Notre solution</a>
+              <a href="#solution" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Nos solutions</a>
               <a href="#comparatif" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Comparatif techniques</a>
               <a href="#avis" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Avis clients</a>
               <a href="#faq" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">FAQ</a>
@@ -255,10 +255,18 @@ export default function HumiditePage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
-              Notre solution : L'injection de résine hydrophobe
+              Nos solutions humidité : traitement global
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-              Nous créons une <strong>barrière chimique infranchissable</strong> dans vos murs.
+              L’humidité n’a pas une seule cause, donc pas une seule solution. Nous mettons en œuvre
+              l’ensemble des techniques efficaces selon la cause réelle.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-2xl border border-slate-200 p-6 mb-10">
+            <h3 className="text-xl font-bold text-slate-900 mb-2">1) Remontées capillaires : injection résine</h3>
+            <p className="text-slate-600 text-sm">
+              La barrière hydrophobe est la solution de référence contre l’eau qui remonte par capillarité.
             </p>
           </div>
 
@@ -312,6 +320,21 @@ export default function HumiditePage() {
               <p className="text-sm text-green-700 font-medium">→ Condensation, moisissures, atmosphère humide</p>
             </div>
           </div>
+
+          <div className="bg-white rounded-2xl border border-slate-200 p-6 mb-8">
+            <h3 className="text-xl font-bold text-slate-900 mb-4">Autres solutions que nous réalisons</h3>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm text-slate-600">
+              <div>• Drainage périphérique et gestion des eaux</div>
+              <div>• Étanchéité / imperméabilisation des murs</div>
+              <div>• Traitement du salpêtre et des moisissures</div>
+              <div>• Ventilation (VMC, VMI) et correction condensation</div>
+              <div>• Assèchement contrôlé des supports</div>
+              <div>• Traitements curatifs et préventifs adaptés</div>
+            </div>
+            <p className="text-xs text-slate-500 mt-4">
+              Objectif : supprimer la cause, pas masquer le symptôme.
+            </p>
+          </div>
           
           {/* CTA intermédiaire */}
           <div className="bg-blue-600 rounded-2xl p-8 text-white text-center">
@@ -328,7 +351,7 @@ export default function HumiditePage() {
       <section id="comparatif" className="py-16 md:py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Pourquoi l'injection IPB ?</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Pourquoi la bonne solution IPB ?</h2>
           </div>
 
           <div className="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">

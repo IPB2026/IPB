@@ -12,7 +12,7 @@ import Script from 'next/script';
 
 export const metadata = {
   title: 'Expert Fissures Toulouse | Agrafage Garanti 10 ans | Diagnostic 149€ | IPB',
-  description: 'Fissures maison Toulouse ? Expert agrafage structurel garanti 10 ans. 3x moins cher que micropieux. Diagnostic 149€ (déductible). ☎ 05 82 95 33 75. Intervention 48h.',
+  description: 'Fissures maison Toulouse ? Diagnostic expert, agrafage/harpage, reprise en sous-oeuvre, renforts structurels. Garantie décennale. Diagnostic 149€ (déductible). ☎ 05 82 95 33 75. Intervention 48h.',
   keywords: [
     'expert fissures toulouse',
     'agrafage fissures toulouse',
@@ -31,8 +31,8 @@ export const metadata = {
     canonical: 'https://www.ipb-expertise.fr/expertise/fissures',
   },
   openGraph: {
-    title: 'Expert Fissures Toulouse | Agrafage Garanti 10 ans | IPB',
-    description: 'Agrafage structurel 3x moins cher que micropieux. +200 maisons traitées. Diagnostic 48h.',
+    title: 'Expert Fissures Toulouse | Solutions structurelles | IPB',
+    description: 'Diagnostic, agrafage/harpage, reprises en sous-oeuvre, renforts. Garantie décennale. Diagnostic 48h.',
     url: 'https://www.ipb-expertise.fr/expertise/fissures',
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
     locale: 'fr_FR',
@@ -192,7 +192,7 @@ export default function FissuresPage() {
             <h2 className="text-lg font-bold text-slate-900 mb-4">Sommaire de la page</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
               <a href="#probleme" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Comprendre le problème</a>
-              <a href="#solution" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Notre solution</a>
+              <a href="#solution" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Nos solutions</a>
               <a href="#comparatif" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Comparatif techniques</a>
               <a href="#avis" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Avis clients</a>
               <a href="#faq" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">FAQ</a>
@@ -254,34 +254,69 @@ export default function FissuresPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
-              Notre solution : L'agrafage structurel
+              Nos solutions fissures : une approche complète
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-              Technique de "couture" qui stabilise vos murs <strong>sans travaux lourds</strong>.
+              Le bon traitement dépend de la cause (retrait‑gonflement, tassement, défaut de construction, infiltration).
+              Nous choisissons la technique la plus pertinente pour stabiliser durablement.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200 text-center">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-orange-600">1</span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Saignée</h3>
-              <p className="text-slate-600">Ouverture sur <strong>40cm</strong> de part et d'autre de la fissure.</p>
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200">
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Diagnostic & instrumentation</h3>
+              <p className="text-slate-600 mb-4">
+                Mesures précises, lecture des contraintes, analyse des causes et priorisation des risques.
+              </p>
+              <ul className="text-sm text-slate-600 space-y-2">
+                <li>• Fissuromètre / relevés</li>
+                <li>• Analyse des sols et des appuis</li>
+                <li>• Rapport technique détaillé</li>
+              </ul>
             </div>
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200 text-center">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-orange-600">2</span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Agrafage</h3>
-              <p className="text-slate-600">Insertion d'<strong>aciers haute adhérence</strong> scellés chimiquement.</p>
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200">
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Agrafage / harpage</h3>
+              <p className="text-slate-600 mb-4">
+                Couture structurelle de la maçonnerie pour stopper l’évolution des fissures.
+              </p>
+              <ul className="text-sm text-slate-600 space-y-2">
+                <li>• Agrafes inox ou aciers HA</li>
+                <li>• Mortiers techniques fibrés</li>
+                <li>• Garantie décennale</li>
+              </ul>
             </div>
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200 text-center">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-orange-600">3</span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Finition</h3>
-              <p className="text-slate-600">Mortier résine fibré. <strong>Mur prêt à peindre</strong>.</p>
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200">
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Reprise en sous‑œuvre</h3>
+              <p className="text-slate-600 mb-4">
+                Stabilisation des fondations par techniques traditionnelles adaptées au bâti.
+              </p>
+              <ul className="text-sm text-slate-600 space-y-2">
+                <li>• Reprise localisée des appuis</li>
+                <li>• Longrines / semelles selon cas</li>
+                <li>• Renforts structurels ciblés</li>
+              </ul>
+            </div>
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200">
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Chaînage & reprises</h3>
+              <p className="text-slate-600 mb-4">
+                Renforts, reprise de maçonnerie, joints et finitions pour pérenniser l’ouvrage.
+              </p>
+              <ul className="text-sm text-slate-600 space-y-2">
+                <li>• Renforts de linteaux</li>
+                <li>• Rejointoiement technique</li>
+                <li>• Finitions durables</li>
+              </ul>
+            </div>
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200">
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Traitement des causes</h3>
+              <p className="text-slate-600 mb-4">
+                Gestion des eaux et des mouvements pour éviter la réapparition.
+              </p>
+              <ul className="text-sm text-slate-600 space-y-2">
+                <li>• Drainage / évacuation</li>
+                <li>• Gestion des abords</li>
+                <li>• Prévention long terme</li>
+              </ul>
             </div>
           </div>
           
@@ -292,6 +327,9 @@ export default function FissuresPage() {
             <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-50 transition-all">
               Évaluer mes fissures gratuitement <ArrowRight size={20} />
             </Link>
+            <p className="text-xs text-orange-100 mt-4">
+              Note : nous ne réalisons pas le micropieux, mais nous vous orientons vers des solutions pertinentes si nécessaire.
+            </p>
           </div>
         </div>
       </section>
