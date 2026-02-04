@@ -132,6 +132,22 @@
     animation: slideIn 0.4s ease-out;
   }
   
+  .animate-slideUp {
+    animation: slideUp 0.5s ease-out;
+  }
+  
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  .animate-bounce-slow {
+    animation: bounce 2s ease-in-out infinite;
+  }
+  
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -149,6 +165,50 @@
     to {
       opacity: 1;
       transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-33.33%);
+    }
+  }
+  
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 10px rgba(234, 88, 12, 0.4),
+                  0 0 20px rgba(234, 88, 12, 0.2),
+                  0 0 30px rgba(234, 88, 12, 0.1);
+    }
+    to {
+      box-shadow: 0 0 20px rgba(234, 88, 12, 0.6),
+                  0 0 40px rgba(234, 88, 12, 0.4),
+                  0 0 60px rgba(234, 88, 12, 0.2);
+    }
+  }
+  
+  /* Espace pour le sticky CTA mobile */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+  
+  @media (max-width: 1023px) {
+    .has-sticky-cta {
+      padding-bottom: 140px;
     }
   }
 }
