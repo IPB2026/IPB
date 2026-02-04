@@ -4,386 +4,407 @@ import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
-import { Droplets, ArrowRight, Phone, AlertTriangle, CheckCircle, ArrowUp, Home, Zap } from 'lucide-react';
+import { CheckCircle, Phone, ArrowRight, Droplets, AlertTriangle, Home, Clock, Shield, ChevronRight, Zap, ThermometerSun } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Remontées Capillaires : Traitement Définitif par Injection | Expert Occitanie',
   description: 'Remontées capillaires dans les murs ? Salpêtre, moisissures, peinture qui cloque. Traitement par injection résine hydrophobe. Garantie 30 ans. Expert Toulouse, Montauban, Auch (31-82-32) ☎ 05 82 95 33 75',
-  keywords: [
-    'remontées capillaires traitement',
-    'humidité ascensionnelle murs',
-    'injection résine hydrophobe',
-    'salpêtre mur humide',
-    'traitement humidité murs',
-    'barrière étanche mur',
-    'prix injection remontées capillaires',
-    'mur humide en bas',
-    'peinture qui cloque humidité',
-    'expert humidité toulouse',
-    'assèchement murs humides',
-    'capillarité mur pierre',
-  ],
-  alternates: {
-    canonical: 'https://www.ipb-expertise.fr/remontees-capillaires-traitement',
-  },
+  keywords: ['remontées capillaires', 'injection résine', 'humidité murs', 'salpêtre', 'traitement humidité'],
+  alternates: { canonical: 'https://www.ipb-expertise.fr/remontees-capillaires-traitement' },
   openGraph: {
-    title: 'Remontées Capillaires : Injection Résine Garantie 30 ans',
-    description: 'Traitement définitif des remontées capillaires par injection. Résultat visible en 3 mois. Expert Toulouse.',
+    title: 'Remontées Capillaires : Traitement Définitif | IPB',
+    description: 'Traitement définitif des remontées capillaires par injection. Résultat visible en 3 mois. Expert Occitanie.',
     url: 'https://www.ipb-expertise.fr/remontees-capillaires-traitement',
     type: 'article',
-    images: [{ url: '/images/salpetre-avant-apres.webp', width: 1200, height: 630, alt: 'Traitement remontées capillaires avant après' }],
   },
-  robots: { index: true, follow: true },
 };
 
-const signesRemontees = [
-  { signe: "Auréoles d'humidité en bas des murs", description: "Marque caractéristique jusqu'à 1,50m de hauteur" },
-  { signe: "Salpêtre (dépôts blancs)", description: "Cristaux de sel qui apparaissent sur les murs" },
-  { signe: "Peinture qui cloque ou s'écaille", description: "L'humidité fait décoller les revêtements" },
-  { signe: "Papier peint qui se décolle", description: "Particulièrement en bas des murs" },
-  { signe: "Plinthes qui pourrissent", description: "Le bois absorbe l'humidité et se dégrade" },
-  { signe: "Odeur de moisi persistante", description: "Surtout dans les pièces peu ventilées" },
+const symptomes = [
+  { icon: '🧂', titre: 'Salpêtre', description: 'Poudre blanche cristalline au pied des murs', severity: 'high' },
+  { icon: '🎨', titre: 'Peinture qui cloque', description: 'Cloques et écaillage en partie basse', severity: 'high' },
+  { icon: '🦠', titre: 'Moisissures', description: 'Taches noires persistantes près du sol', severity: 'medium' },
+  { icon: '👃', titre: 'Odeur de moisi', description: 'Odeur persistante même après aération', severity: 'medium' },
+  { icon: '📏', titre: 'Auréoles', description: 'Marques d\'humidité montant du sol (< 1m50)', severity: 'high' },
+  { icon: '🧱', titre: 'Enduit dégradé', description: 'Enduit qui se décolle ou s\'effrite', severity: 'medium' },
 ];
 
-const solutions = [
+const etapesTraitement = [
   {
-    nom: "Injection de résine",
-    description: "Création d'une barrière étanche dans le mur par injection de résine hydrophobe.",
-    avantages: ["Solution définitive", "Peu invasif", "Efficace sur tous types de murs"],
-    prix: "80-150€/ml",
-    duree: "1-2 jours"
+    num: '01',
+    titre: 'Diagnostic précis',
+    description: 'Mesure du taux d\'humidité à différentes hauteurs. Identification des zones touchées.',
+    duree: '1h30',
+    icon: '🔍',
   },
   {
-    nom: "Drainage périphérique",
-    description: "Installation d'un drain autour des fondations pour évacuer l'eau.",
-    avantages: ["Traite aussi les infiltrations", "Protège les fondations", "Solution préventive"],
-    prix: "150-300€/ml",
-    duree: "3-5 jours"
+    num: '02',
+    titre: 'Perçage calibré',
+    description: 'Perçage tous les 12cm à la base du mur, en quinconce. Profondeur = 2/3 de l\'épaisseur.',
+    duree: '1 jour',
+    icon: '🔧',
   },
   {
-    nom: "Cuvelage",
-    description: "Revêtement étanche appliqué sur les murs enterrés (caves, sous-sols).",
-    avantages: ["Idéal pour caves", "Étanchéité totale", "Permet l'aménagement"],
-    prix: "200-400€/m²",
-    duree: "1 semaine"
+    num: '03',
+    titre: 'Injection résine',
+    description: 'Injection basse pression de résine hydrophobe. Création d\'une barrière étanche continue.',
+    duree: '1-2 jours',
+    icon: '💧',
+  },
+  {
+    num: '04',
+    titre: 'Séchage naturel',
+    description: 'Le mur évacue l\'humidité accumulée. Comptez 1 mois par cm d\'épaisseur.',
+    duree: '6-12 mois',
+    icon: '☀️',
   },
 ];
-
-const faqItems = [
-  {
-    question: "Quelle est la différence entre remontées capillaires et infiltrations ?",
-    answer: "Les remontées capillaires viennent du sol et montent dans les murs (humidité ascensionnelle). Les infiltrations viennent de l'extérieur (pluie, nappe phréatique). Le traitement est différent."
-  },
-  {
-    question: "Combien de temps pour assécher un mur après traitement ?",
-    answer: "Après injection de résine, comptez 6 à 18 mois pour un assèchement complet. La vitesse dépend de l'épaisseur du mur et du taux d'humidité initial."
-  },
-  {
-    question: "L'assurance prend-elle en charge les remontées capillaires ?",
-    answer: "Non, les remontées capillaires sont considérées comme un défaut d'entretien ou de construction. Elles ne sont pas couvertes par l'assurance habitation classique."
-  },
-  {
-    question: "Peut-on traiter soi-même les remontées capillaires ?",
-    answer: "Les produits grand public sont peu efficaces. Un diagnostic professionnel est indispensable pour identifier la cause exacte et choisir le bon traitement."
-  },
-];
-
-const jsonLdArticle = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Remontées Capillaires : Causes, Diagnostic et Traitement",
-  "description": "Guide complet sur les remontées capillaires : identification, causes et solutions de traitement.",
-  "author": { "@type": "Organization", "name": "IPB Expertise" },
-  "publisher": {
-    "@type": "Organization",
-    "name": "IPB - Institut de Pathologie du Bâtiment",
-    "logo": { "@type": "ImageObject", "url": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png" }
-  },
-  "datePublished": "2024-01-15",
-  "dateModified": new Date().toISOString(),
-};
-
-const jsonLdFaq = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqItems.map(item => ({
-    "@type": "Question",
-    "name": item.question,
-    "acceptedAnswer": { "@type": "Answer", "text": item.answer }
-  }))
-};
 
 export default function RemonteesCapillairesPage() {
   return (
-    <div className="font-sans text-slate-800 bg-slate-50 antialiased">
-      <Script id="article-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdArticle) }} />
-      <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }} />
-      
+    <div className="font-sans text-slate-800 bg-white antialiased">
       <TopBar />
       <Navbar />
 
-      {/* Breadcrumb */}
-      <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 py-3">
-          <nav className="flex text-sm text-slate-500">
-            <Link href="/" className="hover:text-orange-600">Accueil</Link>
-            <span className="mx-2">/</span>
-            <Link href="/expert-humidite-toulouse-31" className="hover:text-orange-600">Expert Humidité</Link>
-            <span className="mx-2">/</span>
-            <span className="text-slate-900">Remontées Capillaires</span>
+      {/* Hero - Style Humidité */}
+      <section className="relative bg-gradient-to-br from-blue-900 via-cyan-900 to-slate-900 text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 30% 70%, rgba(59, 130, 246, 0.3) 0%, transparent 50%)' }}></div>
+          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 70% 30%, rgba(6, 182, 212, 0.2) 0%, transparent 50%)' }}></div>
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+          <nav className="flex items-center gap-2 text-sm text-blue-200 mb-8">
+            <Link href="/" className="hover:text-white transition">Accueil</Link>
+            <ChevronRight size={14} />
+            <Link href="/expert-humidite-toulouse-31" className="hover:text-white transition">Expert Humidité</Link>
+            <ChevronRight size={14} />
+            <span className="text-white">Remontées capillaires</span>
           </nav>
-        </div>
-      </div>
 
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-blue-900 to-cyan-900 text-white py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="flex items-center gap-2 text-cyan-300 text-sm font-bold mb-4">
-            <AlertTriangle size={18} />
-            <span>⚠️ Votre maison absorbe l'eau comme une éponge</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
-            Remontées Capillaires : <br/>
-            <span className="text-cyan-300">L'Ennemi Invisible Qui Ronge Vos Murs</span>
-          </h1>
-          <p className="text-xl text-blue-100 mb-4">
-            Chaque jour, <strong className="text-white">des litres d'eau</strong> remontent dans vos murs depuis le sol. 
-            Résultat : salpêtre, papiers peints décollés, plinthes pourries... et une maison qui perd de sa valeur.
-          </p>
-          <div className="bg-cyan-500/20 border border-cyan-500/50 rounded-xl p-4 mb-8">
-            <p className="text-cyan-200 font-bold flex items-center gap-2">
-              <Zap size={18} />
-              En 2 ans, une remontée capillaire non traitée peut dégrader votre mur sur 1,50m de haut.
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/diagnostic" className="bg-cyan-500 hover:bg-cyan-400 text-white px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2 animate-pulse">
-              💧 DIAGNOSTIC HUMIDITÉ GRATUIT <ArrowRight size={18} />
-            </Link>
-            <a href="tel:0582953375" className="bg-white/10 border border-white/20 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
-              <Phone size={18} /> 05 82 95 33 75
-            </a>
-          </div>
-          <p className="text-sm text-blue-300 mt-4">✓ Mesure du taux d'humidité · ✓ Identification de la source · ✓ Devis détaillé</p>
-        </div>
-      </section>
-
-      {/* Qu'est-ce que c'est */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8">
-            Qu'est-ce que les remontées capillaires ?
-          </h2>
-          <div className="prose prose-lg max-w-none">
-            <p>
-              Les <strong>remontées capillaires</strong> (ou humidité ascensionnelle) sont un phénomène 
-              physique où l'eau du sol remonte dans les murs par <strong>capillarité</strong>. 
-              Comme une éponge qui absorbe l'eau, les matériaux poreux (pierre, brique, parpaing) 
-              aspirent l'humidité du sol.
-            </p>
-            <p>
-              Ce phénomène touche particulièrement les <strong>maisons anciennes</strong> construites 
-              sans barrière d'étanchéité (ou avec une barrière défaillante). L'eau peut monter 
-              jusqu'à <strong>1,50 mètre de hauteur</strong> dans les cas les plus graves.
-            </p>
-          </div>
-
-          {/* Schéma explicatif */}
-          <div className="mt-8 p-6 bg-blue-50 rounded-2xl">
-            <h3 className="font-bold text-slate-900 mb-4">Comment ça fonctionne ?</h3>
-            <div className="grid md:grid-cols-3 gap-6 text-center">
-              <div>
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Droplets className="text-blue-600" size={28} />
-                </div>
-                <p className="font-bold text-slate-900">1. Eau dans le sol</p>
-                <p className="text-sm text-slate-600">Nappe phréatique, pluie, arrosage...</p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-cyan-500/20 border border-cyan-400/30 text-cyan-300 px-4 py-2 rounded-full text-sm font-bold mb-6">
+                <Droplets size={16} />
+                Traitement garanti 30 ans
               </div>
-              <div>
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <ArrowUp className="text-blue-600" size={28} />
+
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.1]">
+                Remontées
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+                  Capillaires
+                </span>
+              </h1>
+
+              <p className="text-xl text-blue-100 mb-8 leading-relaxed max-w-xl">
+                L'eau du sol remonte dans vos murs par capillarité, comme une éponge. 
+                <strong className="text-white"> Notre injection de résine hydrophobe</strong> crée 
+                une barrière étanche définitive.
+              </p>
+
+              <div className="grid grid-cols-3 gap-4 mb-8">
+                <div className="bg-white/10 backdrop-blur rounded-2xl p-4 text-center">
+                  <div className="text-3xl font-black text-cyan-400">30</div>
+                  <div className="text-xs text-blue-200">ans de garantie</div>
                 </div>
-                <p className="font-bold text-slate-900">2. Capillarité</p>
-                <p className="text-sm text-slate-600">L'eau monte dans les pores du mur</p>
+                <div className="bg-white/10 backdrop-blur rounded-2xl p-4 text-center">
+                  <div className="text-3xl font-black text-cyan-400">95%</div>
+                  <div className="text-xs text-blue-200">d'efficacité</div>
+                </div>
+                <div className="bg-white/10 backdrop-blur rounded-2xl p-4 text-center">
+                  <div className="text-3xl font-black text-cyan-400">48h</div>
+                  <div className="text-xs text-blue-200">barrière active</div>
+                </div>
               </div>
-              <div>
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Home className="text-blue-600" size={28} />
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/diagnostic" className="group bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl shadow-cyan-500/25">
+                  Diagnostic gratuit
+                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all">
+                  <Phone size={20} />
+                  05 82 95 33 75
+                </a>
+              </div>
+            </div>
+
+            {/* Schéma visuel */}
+            <div className="relative">
+              <div className="bg-white/10 backdrop-blur rounded-3xl p-8 border border-white/20">
+                <h3 className="text-lg font-bold text-white mb-6 text-center">Le phénomène expliqué</h3>
+                
+                <div className="relative bg-gradient-to-t from-blue-600/30 to-transparent rounded-2xl p-6 h-64">
+                  {/* Sol */}
+                  <div className="absolute bottom-0 left-0 right-0 h-16 bg-amber-800/50 rounded-b-2xl flex items-center justify-center">
+                    <span className="text-amber-200 text-sm font-bold">SOL HUMIDE</span>
+                  </div>
+                  
+                  {/* Mur */}
+                  <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 w-24 h-40 bg-slate-600/50 rounded-t-lg border-2 border-slate-500/50">
+                    {/* Eau qui monte */}
+                    <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-blue-500/60 to-transparent rounded-t-lg animate-pulse"></div>
+                    <span className="absolute top-2 left-1/2 transform -translate-x-1/2 text-white text-xs font-bold">MUR</span>
+                  </div>
+                  
+                  {/* Flèches */}
+                  <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2">
+                    <div className="flex flex-col items-center">
+                      <ArrowRight size={24} className="text-cyan-400 rotate-[-90deg] animate-bounce" />
+                      <span className="text-cyan-300 text-xs mt-1">Capillarité</span>
+                    </div>
+                  </div>
                 </div>
-                <p className="font-bold text-slate-900">3. Dégâts visibles</p>
-                <p className="text-sm text-slate-600">Salpêtre, moisissures, dégradations</p>
+
+                <p className="text-center text-blue-200 text-sm mt-4">
+                  L'eau remonte dans les micro-pores du mur, comme du café dans un sucre.
+                </p>
               </div>
             </div>
           </div>
         </div>
+
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg viewBox="0 0 1440 100" fill="none" className="w-full">
+            <path d="M0 50L60 45C120 40 240 30 360 35C480 40 600 60 720 65C840 70 960 60 1080 50C1200 40 1320 30 1380 25L1440 20V100H0V50Z" fill="white"/>
+          </svg>
+        </div>
       </section>
 
-      {/* Signes */}
-      <section className="py-16 bg-slate-100">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
-            Comment reconnaître les remontées capillaires ?
-          </h2>
-          <div className="grid md:grid-cols-2 gap-4">
-            {signesRemontees.map((item, index) => (
-              <div key={index} className="bg-white rounded-xl p-5 shadow-sm border border-slate-200 flex gap-4">
-                <div className="flex-shrink-0">
-                  <AlertTriangle className="text-amber-500" size={24} />
+      {/* Symptômes */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
+              Reconnaître le problème
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+              6 signes qui ne trompent pas
+            </h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              Si vous observez 2 ou plus de ces symptômes, vous avez probablement des remontées capillaires.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {symptomes.map((item, index) => (
+              <div 
+                key={index}
+                className={`relative rounded-3xl p-6 ${
+                  item.severity === 'high' 
+                    ? 'bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200' 
+                    : 'bg-slate-50 border border-slate-200'
+                } hover:shadow-lg transition-all`}
+              >
+                <div className="flex items-start gap-4">
+                  <span className="text-4xl">{item.icon}</span>
+                  <div>
+                    <h3 className="text-lg font-bold text-slate-900 mb-1">{item.titre}</h3>
+                    <p className="text-slate-600 text-sm">{item.description}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-bold text-slate-900 mb-1">{item.signe}</h3>
-                  <p className="text-sm text-slate-600">{item.description}</p>
+                {item.severity === 'high' && (
+                  <div className="absolute -top-2 -right-2 bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                    Typique
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Processus de traitement */}
+      <section className="py-20 bg-gradient-to-br from-slate-900 to-blue-950 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-cyan-500/20 text-cyan-300 px-4 py-2 rounded-full text-sm font-bold mb-4">
+              Notre méthode
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black mb-4">
+              Traitement en 4 étapes
+            </h2>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              L'injection de résine hydrophobe : la solution définitive, garantie 30 ans.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {etapesTraitement.map((etape, index) => (
+              <div key={index} className="relative">
+                <div className="bg-white/5 backdrop-blur border border-white/10 rounded-3xl p-6 h-full hover:bg-white/10 transition-all">
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="text-5xl">{etape.icon}</span>
+                    <span className="text-6xl font-black text-white/10">{etape.num}</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{etape.titre}</h3>
+                  <p className="text-slate-400 text-sm mb-4">{etape.description}</p>
+                  <div className="flex items-center gap-2 text-cyan-400 text-sm font-bold">
+                    <Clock size={14} />
+                    {etape.duree}
+                  </div>
                 </div>
+                {index < 3 && (
+                  <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
+                    <ArrowRight className="text-cyan-500" size={20} />
+                  </div>
+                )}
               </div>
             ))}
           </div>
 
-          <div className="mt-8 p-6 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl">
-            <h3 className="font-bold text-amber-900 mb-2">⚠️ Ne pas confondre avec...</h3>
-            <p className="text-amber-800">
-              Les remontées capillaires créent une <strong>ligne horizontale</strong> d'humidité 
-              en bas des murs. Si l'humidité est localisée (tache isolée) ou en hauteur, 
-              il s'agit probablement d'une <strong>infiltration</strong> ou de <strong>condensation</strong>.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Causes */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8">
-            Causes des remontées capillaires
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-              <h3 className="font-bold text-slate-900 mb-3">🏠 Absence de barrière étanche</h3>
-              <p className="text-slate-600 text-sm">
-                Les maisons construites avant 1960 n'ont souvent pas de membrane d'étanchéité 
-                entre les fondations et les murs. L'eau remonte librement.
-              </p>
-            </div>
-            <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-              <h3 className="font-bold text-slate-900 mb-3">💧 Nappe phréatique haute</h3>
-              <p className="text-slate-600 text-sm">
-                Dans certaines zones (vallées, bords de rivière), la nappe phréatique est proche 
-                de la surface, alimentant en permanence les remontées.
-              </p>
-            </div>
-            <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-              <h3 className="font-bold text-slate-900 mb-3">🧱 Matériaux poreux</h3>
-              <p className="text-slate-600 text-sm">
-                Pierre, brique, parpaing... Plus le matériau est poreux, plus l'eau monte haut. 
-                Les murs épais sont plus touchés.
-              </p>
-            </div>
-            <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-              <h3 className="font-bold text-slate-900 mb-3">🌧️ Drainage défaillant</h3>
-              <p className="text-slate-600 text-sm">
-                Un mauvais drainage autour de la maison concentre l'eau près des fondations, 
-                aggravant les remontées capillaires.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Solutions */}
-      <section className="py-16 bg-slate-100">
-        <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
-            Solutions de traitement
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {solutions.map((solution, index) => (
-              <div key={index} className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200">
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{solution.nom}</h3>
-                <p className="text-slate-600 text-sm mb-4">{solution.description}</p>
-                <ul className="space-y-2 mb-4">
-                  {solution.avantages.map((avantage, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-slate-700">
-                      <CheckCircle className="text-green-500" size={16} />
-                      {avantage}
-                    </li>
-                  ))}
+          {/* Encart résultat */}
+          <div className="mt-16 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-3xl p-8 md:p-12 border border-cyan-500/30">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 className="text-2xl font-bold mb-4">Résultat garanti</h3>
+                <ul className="space-y-3">
+                  <li className="flex items-center gap-3 text-slate-300">
+                    <CheckCircle size={20} className="text-cyan-400" />
+                    Barrière étanche active en 48h
+                  </li>
+                  <li className="flex items-center gap-3 text-slate-300">
+                    <CheckCircle size={20} className="text-cyan-400" />
+                    Séchage progressif visible en 3 mois
+                  </li>
+                  <li className="flex items-center gap-3 text-slate-300">
+                    <CheckCircle size={20} className="text-cyan-400" />
+                    Murs secs et sains en 6-12 mois
+                  </li>
+                  <li className="flex items-center gap-3 text-slate-300">
+                    <CheckCircle size={20} className="text-cyan-400" />
+                    Garantie 30 ans sur l'injection
+                  </li>
                 </ul>
-                <div className="pt-4 border-t border-slate-100 space-y-1">
-                  <p className="text-sm"><strong>Prix indicatif :</strong> {solution.prix}</p>
-                  <p className="text-sm"><strong>Durée travaux :</strong> {solution.duree}</p>
-                </div>
               </div>
+              <div className="text-center">
+                <div className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+                  80-120€
+                </div>
+                <div className="text-slate-400 mt-2">par mètre linéaire</div>
+                <div className="text-sm text-cyan-300 mt-4">Soit 8 000 à 15 000€ pour une maison standard</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Comparatif solutions */}
+      <section className="py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+              Pourquoi l'injection plutôt qu'autre chose ?
+            </h2>
+          </div>
+
+          <div className="bg-slate-50 rounded-3xl overflow-hidden">
+            <table className="w-full">
+              <thead className="bg-slate-900 text-white">
+                <tr>
+                  <th className="p-4 text-left">Solution</th>
+                  <th className="p-4 text-center">Efficacité</th>
+                  <th className="p-4 text-center">Prix</th>
+                  <th className="p-4 text-center">Durée</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="bg-cyan-50 border-l-4 border-cyan-500">
+                  <td className="p-4 font-bold text-slate-900">✅ Injection résine</td>
+                  <td className="p-4 text-center"><span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-bold">95%</span></td>
+                  <td className="p-4 text-center text-slate-600">8-15K€</td>
+                  <td className="p-4 text-center text-slate-600">30 ans</td>
+                </tr>
+                <tr className="border-b border-slate-200">
+                  <td className="p-4 font-bold text-slate-900">Drainage périphérique</td>
+                  <td className="p-4 text-center"><span className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-bold">70%</span></td>
+                  <td className="p-4 text-center text-slate-600">15-30K€</td>
+                  <td className="p-4 text-center text-slate-600">20 ans</td>
+                </tr>
+                <tr className="border-b border-slate-200">
+                  <td className="p-4 font-bold text-slate-900">Électro-osmose</td>
+                  <td className="p-4 text-center"><span className="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm font-bold">50%</span></td>
+                  <td className="p-4 text-center text-slate-600">5-10K€</td>
+                  <td className="p-4 text-center text-slate-600">Variable</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-bold text-slate-900">Peinture "anti-humidité"</td>
+                  <td className="p-4 text-center"><span className="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-bold">0%</span></td>
+                  <td className="p-4 text-center text-slate-600">200-500€</td>
+                  <td className="p-4 text-center text-slate-600">6 mois max</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="mt-8 p-6 bg-amber-50 border border-amber-200 rounded-2xl">
+            <div className="flex items-start gap-4">
+              <AlertTriangle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+              <div>
+                <h4 className="font-bold text-amber-900 mb-1">Attention aux "solutions miracles"</h4>
+                <p className="text-amber-800 text-sm">
+                  Les peintures anti-humidité et enduits "respirants" ne traitent pas la cause. 
+                  Ils masquent temporairement le problème qui réapparaît ensuite de plus belle.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Articles connexes */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-black text-slate-900 mb-8 text-center">
+            Articles connexes
+          </h2>
+          <div className="grid md:grid-cols-4 gap-6">
+            {[
+              { href: '/salpetre-mur-traitement', icon: '🧂', title: 'Salpêtre', desc: 'Causes et traitement' },
+              { href: '/moisissures-maison-sante', icon: '🦠', title: 'Moisissures', desc: 'Risques santé' },
+              { href: '/cave-humide-solutions', icon: '🏠', title: 'Cave humide', desc: 'Solutions cuvelage' },
+              { href: '/condensation-ou-infiltration', icon: '❓', title: 'Condensation ?', desc: 'Comment distinguer' },
+            ].map((item, index) => (
+              <Link 
+                key={index}
+                href={item.href}
+                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-slate-100"
+              >
+                <span className="text-4xl mb-4 block">{item.icon}</span>
+                <h3 className="font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-1">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-slate-500">{item.desc}</p>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-cyan-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-cyan-600 to-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-extrabold mb-6">Vos murs sont humides en bas ?</h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Un diagnostic précis est essentiel pour choisir le bon traitement. 
-            Intervention sous 48h dans toute la région.
-          </p>
-          <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50">
-            Demander un diagnostic <ArrowRight size={20} />
-          </Link>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
-            Questions fréquentes
-          </h2>
-          <div className="space-y-4">
-            {faqItems.map((item, index) => (
-              <div key={index} className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-                <h3 className="font-bold text-slate-900 mb-2">{item.question}</h3>
-                <p className="text-slate-600">{item.answer}</p>
-              </div>
-            ))}
+          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm font-bold mb-6">
+            <Shield size={16} />
+            Garantie 30 ans sur l'injection
           </div>
-        </div>
-      </section>
-
-      {/* Liens hub */}
-      <section className="py-16 bg-slate-100">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
-            Autres problèmes d'humidité
+          
+          <h2 className="text-3xl md:text-5xl font-black mb-6">
+            Murs humides depuis trop longtemps ?
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Link href="/salpetre-mur-traitement" className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 hover:border-blue-300 transition-all group">
-              <h3 className="font-bold text-slate-900 group-hover:text-blue-600 mb-2">Salpêtre</h3>
-              <p className="text-slate-600 text-sm">Dépôts blancs sur les murs</p>
-            </Link>
-            <Link href="/moisissures-maison-sante" className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 hover:border-blue-300 transition-all group">
-              <h3 className="font-bold text-slate-900 group-hover:text-blue-600 mb-2">Moisissures</h3>
-              <p className="text-slate-600 text-sm">Risques santé et traitement</p>
-            </Link>
-            <Link href="/expert-humidite-toulouse-31" className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 hover:border-blue-300 transition-all group">
-              <h3 className="font-bold text-slate-900 group-hover:text-blue-600 mb-2">Expert Humidité Toulouse</h3>
-              <p className="text-slate-600 text-sm">Tous nos services humidité</p>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Final */}
-      <section className="py-16 bg-slate-900 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-extrabold mb-6">Traitez le problème à la source</h2>
-          <p className="text-xl text-slate-300 mb-8">
-            Les remontées capillaires ne disparaissent pas seules. Plus vous attendez, plus les dégâts s'aggravent.
+          
+          <p className="text-xl text-cyan-100 mb-8 max-w-2xl mx-auto">
+            Chaque mois qui passe dégrade vos murs, vos boiseries et votre santé.
+            Un diagnostic aujourd'hui peut vous éviter une facture x3 demain.
           </p>
+
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/diagnostic" className="bg-blue-600 hover:bg-blue-500 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
-              Diagnostic gratuit <ArrowRight size={20} />
+            <Link href="/diagnostic" className="group bg-white text-cyan-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-cyan-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">
+              Je veux des murs secs
+              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
-            <a href="tel:0582953375" className="bg-white/10 border border-white/20 hover:bg-white/20 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
-              <Phone size={20} /> 05 82 95 33 75
+            <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/30 hover:bg-white/20 px-8 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all">
+              <Phone size={20} />
+              05 82 95 33 75
             </a>
           </div>
         </div>
