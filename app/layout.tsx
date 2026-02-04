@@ -5,6 +5,7 @@ import "./blog-article.css"
 import Script from "next/script"
 import { Analytics } from "@/components/layout/Analytics"
 import { CookieBanner } from "@/components/CookieBanner"
+import { StickyDiagnosticCta } from "@/components/StickyDiagnosticCta"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -195,6 +196,7 @@ export default function RootLayout({
           Aller au contenu principal
         </a>
         {children}
+        <StickyDiagnosticCta />
         <CookieBanner />
         <Analytics />
       </body>

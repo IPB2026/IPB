@@ -178,16 +178,17 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
       <TopBar />
       <Navbar />
 
-      {/* Breadcrumb */}
-      <div className="bg-white border-b border-slate-200 py-3">
-        <div className="max-w-7xl mx-auto px-4 text-sm text-slate-600">
-          <Link href="/" className="hover:text-orange-600">Accueil</Link>
-          <span className="mx-2">›</span>
-          <Link href="/expert-fissures-toulouse-31" className="hover:text-orange-600">Expert Fissures</Link>
-          <span className="mx-2">›</span>
-          <span className="text-slate-900 font-medium">{villeData.nom}</span>
+      <main id="main-content">
+        {/* Breadcrumb */}
+        <div className="bg-white border-b border-slate-200 py-3">
+          <div className="max-w-7xl mx-auto px-4 text-sm text-slate-600">
+            <Link href="/" className="hover:text-orange-600">Accueil</Link>
+            <span className="mx-2">›</span>
+            <Link href="/expert-fissures-toulouse-31" className="hover:text-orange-600">Expert Fissures</Link>
+            <span className="mx-2">›</span>
+            <span className="text-slate-900 font-medium">{villeData.nom}</span>
+          </div>
         </div>
-      </div>
 
       {/* Hero enrichi */}
       <section className="relative bg-slate-900 text-white py-16 md:py-24 overflow-hidden">
@@ -307,8 +308,25 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
         </div>
       </section>
 
+      {/* Sommaire */}
+      <section className="py-8 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+            <h2 className="text-lg font-bold text-slate-900 mb-4">Sommaire de la page</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
+              <a href="#stats-cles" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Statistiques clés</a>
+              <a href="#contexte-local" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Contexte local</a>
+              <a href="#tarifs" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Tarifs</a>
+              <a href="#solutions" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Solutions & méthode</a>
+              <a href="#avis" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Avis clients</a>
+              <a href="#faq" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">FAQ</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Stats clés */}
-      <section className="py-10 bg-white border-b border-slate-200">
+      <section id="stats-cles" className="py-10 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
@@ -333,7 +351,7 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
 
       {/* Contexte géologique local */}
       {villeData.geologie && (
-        <section className="py-16 bg-slate-50">
+        <section id="contexte-local" className="py-16 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12">
               <div>
@@ -427,8 +445,61 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
         </section>
       )}
 
+      {/* Solutions & méthode */}
+      <section id="solutions" className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">
+              Notre méthode IPB pour stabiliser durablement les fissures
+            </h2>
+            <p className="text-lg text-slate-600">
+              À {villeData.nom}, les fissures sont souvent liées au retrait-gonflement des argiles. 
+              Nous appliquons une méthode en 3 étapes, documentée et reproductible, pour stopper l’évolution.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+              <h3 className="text-lg font-bold text-slate-900 mb-3">1. Diagnostic expert sur site</h3>
+              <p className="text-slate-600 text-sm mb-4">
+                Relevés précis, prise de mesures, analyse des causes et des zones de tension.
+              </p>
+              <ul className="text-sm text-slate-600 space-y-2">
+                <li>• Mesures d’ouverture des fissures</li>
+                <li>• Analyse des fondations et du sol</li>
+                <li>• Rapport écrit + préconisations</li>
+              </ul>
+            </div>
+
+            <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+              <h3 className="text-lg font-bold text-slate-900 mb-3">2. Stabilisation structurelle</h3>
+              <p className="text-slate-600 text-sm mb-4">
+                Intervention ciblée selon la gravité : agrafage, harpage, renforts ou micropieux.
+              </p>
+              <ul className="text-sm text-slate-600 space-y-2">
+                <li>• Agrafes inox et mortiers techniques</li>
+                <li>• Reprise en sous-œuvre si nécessaire</li>
+                <li>• Garantie décennale sur travaux</li>
+              </ul>
+            </div>
+
+            <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+              <h3 className="text-lg font-bold text-slate-900 mb-3">3. Suivi et prévention</h3>
+              <p className="text-slate-600 text-sm mb-4">
+                Conseils d’entretien et surveillance pour éviter la réapparition des fissures.
+              </p>
+              <ul className="text-sm text-slate-600 space-y-2">
+                <li>• Conseils sur gestion des eaux</li>
+                <li>• Prévention des mouvements de sol</li>
+                <li>• Contrôle périodique recommandé</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Tarifs */}
-      <section className="py-16 bg-slate-900 text-white">
+      <section id="tarifs" className="py-16 bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="text-3xl font-extrabold text-center mb-4">Tarifs à {villeData.nom}</h2>
           <p className="text-slate-400 text-center mb-12">Déplacement inclus dans le rayon de {villeData.distance} depuis Toulouse</p>
@@ -472,7 +543,7 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
       </section>
 
       {/* FAQ locale */}
-      <section className="py-16 bg-slate-100">
+      <section id="faq" className="py-16 bg-slate-100">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
             Questions fréquentes - {villeData.nom}
@@ -533,7 +604,9 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
       </section>
 
       {/* Avis Google */}
-      <Testimonials />
+      <section id="avis" className="bg-white">
+        <Testimonials />
+      </section>
 
       {/* CTA Final */}
       <section className="py-16 bg-gradient-to-r from-orange-600 to-red-600 text-white">
@@ -568,6 +641,7 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );

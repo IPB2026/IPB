@@ -154,16 +154,17 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
       <TopBar />
       <Navbar />
 
-      {/* Breadcrumb */}
-      <div className="bg-white border-b border-slate-200 py-3">
-        <div className="max-w-7xl mx-auto px-4 text-sm text-slate-600">
-          <Link href="/" className="hover:text-blue-600">Accueil</Link>
-          <span className="mx-2">›</span>
-          <Link href="/expert-humidite-toulouse-31" className="hover:text-blue-600">Expert Humidité</Link>
-          <span className="mx-2">›</span>
-          <span className="text-slate-900 font-medium">{villeData.nom}</span>
+      <main id="main-content">
+        {/* Breadcrumb */}
+        <div className="bg-white border-b border-slate-200 py-3">
+          <div className="max-w-7xl mx-auto px-4 text-sm text-slate-600">
+            <Link href="/" className="hover:text-blue-600">Accueil</Link>
+            <span className="mx-2">›</span>
+            <Link href="/expert-humidite-toulouse-31" className="hover:text-blue-600">Expert Humidité</Link>
+            <span className="mx-2">›</span>
+            <span className="text-slate-900 font-medium">{villeData.nom}</span>
+          </div>
         </div>
-      </div>
 
       {/* Hero */}
       <section className="relative bg-slate-900 text-white py-16 md:py-24 overflow-hidden">
@@ -256,8 +257,25 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
         </div>
       </section>
 
+      {/* Sommaire */}
+      <section className="py-8 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+            <h2 className="text-lg font-bold text-slate-900 mb-4">Sommaire de la page</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
+              <a href="#stats-cles" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Statistiques clés</a>
+              <a href="#solutions" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Solutions & méthode</a>
+              <a href="#contexte-local" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Contexte local</a>
+              <a href="#tarifs" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Tarifs</a>
+              <a href="#avis" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Avis clients</a>
+              <a href="#faq" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">FAQ</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Stats */}
-      <section className="py-10 bg-white border-b border-slate-200">
+      <section id="stats-cles" className="py-10 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
@@ -281,7 +299,7 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
       </section>
 
       {/* Solutions proposées */}
-      <section className="py-16 bg-slate-50">
+      <section id="solutions" className="py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">
             Nos solutions contre l'humidité à {villeData.nom}
@@ -363,8 +381,52 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
         </div>
       </section>
 
+      {/* Tarifs */}
+      <section id="tarifs" className="py-16 bg-slate-900 text-white">
+        <div className="max-w-5xl mx-auto px-4">
+          <h2 className="text-3xl font-extrabold text-center mb-4">Tarifs clairs à {villeData.nom}</h2>
+          <p className="text-slate-400 text-center mb-12">Déplacement inclus dans le rayon de {villeData.distance} depuis Toulouse</p>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-slate-800 rounded-2xl p-6 text-center">
+              <h3 className="font-bold mb-2">Diagnostic Expert</h3>
+              <div className="text-4xl font-extrabold text-cyan-400 mb-2">149€</div>
+              <p className="text-slate-400 text-sm mb-4">Déductible des travaux</p>
+              <ul className="text-sm text-slate-300 text-left space-y-2">
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Visite sur site (1h30)</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Mesures humidité</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Rapport & préconisations</li>
+              </ul>
+            </div>
+            <div className="bg-slate-800 rounded-2xl p-6 text-center border-2 border-cyan-500 relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-cyan-500 text-white px-4 py-1 rounded-full text-xs font-bold">
+                SOLUTION PRINCIPALE
+              </div>
+              <h3 className="font-bold mb-2">Injection Résine</h3>
+              <div className="text-4xl font-extrabold text-cyan-400 mb-2">80-120€</div>
+              <p className="text-slate-400 text-sm mb-4">/ml - Garantie 30 ans</p>
+              <ul className="text-sm text-slate-300 text-left space-y-2">
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Remontées capillaires</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Barrière hydrophobe</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Résultat durable</li>
+              </ul>
+            </div>
+            <div className="bg-slate-800 rounded-2xl p-6 text-center">
+              <h3 className="font-bold mb-2">Cuvelage / VMI</h3>
+              <div className="text-4xl font-extrabold text-cyan-400 mb-2">150-250€</div>
+              <p className="text-slate-400 text-sm mb-4">/m² ou 2 500-5 000€</p>
+              <ul className="text-sm text-slate-300 text-left space-y-2">
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Caves et sous-sols</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Condensation</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Étanchéité complète</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Spécificités locales */}
-      <section className="py-16 bg-white">
+      <section id="contexte-local" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
@@ -461,7 +523,7 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
       </section>
 
       {/* FAQ */}
-      <section className="py-16 bg-slate-100">
+      <section id="faq" className="py-16 bg-slate-100">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
             Questions fréquentes - Humidité à {villeData.nom}
@@ -539,7 +601,9 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
       </section>
 
       {/* Avis Google */}
-      <Testimonials />
+      <section id="avis" className="bg-white">
+        <Testimonials />
+      </section>
 
       {/* CTA Final */}
       <section className="py-16 bg-gradient-to-r from-blue-600 to-cyan-600 text-white">
@@ -573,6 +637,7 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );

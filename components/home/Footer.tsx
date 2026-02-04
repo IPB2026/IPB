@@ -51,7 +51,7 @@ export function Footer() {
                 <span className="font-display text-2xl font-bold text-white">IPB<span className="text-orange-500">.</span></span>
               </Link>
               <p className="text-slate-500 mb-6 leading-relaxed">
-                Institut de Pathologie du Bâtiment. Expert fissures et humidité depuis 2021. Garantie décennale.
+                Institut de Pathologie du Bâtiment. Expert fissures et humidité depuis 2019. Garantie décennale.
               </p>
               <address className="not-italic space-y-2">
                 <a href="tel:0582953375" className="flex items-center gap-2 hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">

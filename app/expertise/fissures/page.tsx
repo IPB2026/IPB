@@ -75,6 +75,7 @@ export default function FissuresPage() {
       
       <TopBar />
       <Navbar />
+      <main id="main-content">
       
       {/* HERO - Conversion optimisée */}
       <section className="relative bg-slate-900 text-white overflow-hidden py-16 md:py-24">
@@ -184,8 +185,24 @@ export default function FissuresPage() {
         </div>
       </section>
 
+      {/* Sommaire */}
+      <section className="py-8 bg-white border-b border-slate-200">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+            <h2 className="text-lg font-bold text-slate-900 mb-4">Sommaire de la page</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
+              <a href="#probleme" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Comprendre le problème</a>
+              <a href="#solution" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Notre solution</a>
+              <a href="#comparatif" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Comparatif techniques</a>
+              <a href="#avis" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Avis clients</a>
+              <a href="#faq" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">FAQ</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Section Problème */}
-      <section className="py-16 md:py-20 bg-white">
+      <section id="probleme" className="py-16 md:py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-red-100 text-red-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
@@ -233,7 +250,7 @@ export default function FissuresPage() {
       </section>
 
       {/* Section Solution */}
-      <section className="py-16 md:py-20 bg-slate-50">
+      <section id="solution" className="py-16 md:py-20 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
@@ -280,7 +297,7 @@ export default function FissuresPage() {
       </section>
 
       {/* Comparatif */}
-      <section className="py-16 md:py-20 bg-white">
+      <section id="comparatif" className="py-16 md:py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Pourquoi l'agrafage IPB ?</h2>
@@ -330,16 +347,20 @@ export default function FissuresPage() {
       </section>
 
       {/* Avis Google */}
-      <Testimonials />
+      <section id="avis" className="bg-white">
+        <Testimonials />
+      </section>
 
       {/* FAQ */}
-      <FaqSection 
-        title="Questions fréquentes" 
-        data={fissureFaq} 
-        theme="orange"
-        linksVariant="fissures"
-        linksTitle="Guides fissures"
-      />
+      <section id="faq" className="bg-slate-50">
+        <FaqSection 
+          title="Questions fréquentes" 
+          data={fissureFaq} 
+          theme="orange"
+          linksVariant="fissures"
+          linksTitle="Guides fissures"
+        />
+      </section>
 
       {/* CTA Final */}
       <section className="py-16 md:py-20 bg-gradient-to-r from-orange-600 to-red-600 text-white">
@@ -363,19 +384,8 @@ export default function FissuresPage() {
       </section>
 
       <InternalLinks variant="fissures" />
+      </main>
       <Footer />
-      
-      {/* Sticky CTA Mobile */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 p-3 md:hidden z-50 shadow-lg">
-        <div className="flex gap-2">
-          <Link href="/diagnostic" className="flex-1 bg-orange-600 text-white py-3 rounded-lg font-bold text-center text-sm">
-            Diagnostic gratuit
-          </Link>
-          <a href="tel:0582953375" className="bg-slate-100 text-slate-700 px-4 py-3 rounded-lg font-bold">
-            <Phone size={18} />
-          </a>
-        </div>
-      </div>
     </div>
   );
 }
