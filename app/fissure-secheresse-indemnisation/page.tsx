@@ -1,272 +1,368 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
-import { AlertTriangle, ArrowRight, Phone, FileText, CheckCircle, Clock } from 'lucide-react';
+import { Phone, ArrowRight, ChevronRight, Sun, FileText, Clock, CheckCircle, AlertTriangle, Calendar, Euro } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Fissure Sécheresse : Indemnisation CAT-NAT 2024-2025 | Guide Complet',
+  title: 'Fissure Sécheresse : Indemnisation CAT-NAT et Démarches | Expert Occitanie',
   description: 'Fissures maison après sécheresse ? Guide complet indemnisation CAT-NAT : démarches, délais (10 jours), franchise, expertise assurance. Aide pour votre dossier (31, 82, 32).',
-  keywords: [
-    'fissure sécheresse indemnisation',
-    'CAT-NAT sécheresse 2024',
-    'catastrophe naturelle fissures',
-    'RGA retrait gonflement argiles',
-    'indemnisation fissures assurance',
-    'arrêté catastrophe naturelle',
-    'expert assurance fissures',
-    'franchise CAT-NAT sécheresse',
-    'dossier sinistre fissures',
-    'sol argileux sécheresse',
-    'expertise assurance maison',
-    'fissures maison toulouse',
-  ],
-  alternates: {
-    canonical: 'https://www.ipb-expertise.fr/fissure-secheresse-indemnisation',
-  },
-  openGraph: {
-    title: 'Indemnisation Fissures Sécheresse : Guide CAT-NAT',
-    description: 'Comment obtenir l\'indemnisation de vos fissures après sécheresse. Démarches et conseils.',
-    url: 'https://www.ipb-expertise.fr/fissure-secheresse-indemnisation',
-    type: 'article',
-  },
-  robots: { index: true, follow: true },
+  keywords: ['fissure sécheresse', 'CAT-NAT', 'catastrophe naturelle', 'indemnisation fissures', 'RGA'],
+  alternates: { canonical: 'https://www.ipb-expertise.fr/fissure-secheresse-indemnisation' },
 };
 
-const faqItems = [
+const etapesIndemnisation = [
   {
-    question: "Ma maison est fissurée après la sécheresse, suis-je indemnisé ?",
-    answer: "Si votre commune a obtenu un arrêté de catastrophe naturelle (CAT-NAT) pour sécheresse, oui. Vous devez déclarer le sinistre dans les 10 jours suivant la publication de l'arrêté au Journal Officiel."
+    num: '1',
+    titre: 'Arrêté CAT-NAT publié',
+    description: 'Votre commune doit être reconnue en état de catastrophe naturelle sécheresse.',
+    delai: 'Vérifiez sur Légifrance',
+    icon: '📋',
   },
   {
-    question: "Comment savoir si ma commune est reconnue CAT-NAT ?",
-    answer: "Consultez le site georisques.gouv.fr ou contactez votre mairie. Les arrêtés sont publiés au Journal Officiel et repris par la presse locale."
+    num: '2',
+    titre: 'Déclaration à l\'assurance',
+    description: 'Vous avez 10 jours après publication de l\'arrêté pour déclarer le sinistre.',
+    delai: '10 jours max',
+    icon: '📨',
   },
   {
-    question: "Quel est le montant de l'indemnisation ?",
-    answer: "L'assurance couvre les travaux de réparation définis par l'expert, moins la franchise légale (1 520€ pour les sécheresses en 2024). Attention : les travaux préventifs ne sont pas couverts."
+    num: '3',
+    titre: 'Expertise assurance',
+    description: 'L\'assureur mandate un expert qui évalue les dommages et propose un chiffrage.',
+    delai: '2-3 mois',
+    icon: '🔍',
   },
   {
-    question: "L'assurance peut-elle refuser mon dossier ?",
-    answer: "Oui, si les fissures préexistaient à la sécheresse, si le lien de causalité n'est pas prouvé, ou si vous avez déclaré hors délai. Un expert indépendant peut vous aider à monter un dossier solide."
+    num: '4',
+    titre: 'Indemnisation',
+    description: 'Paiement de l\'indemnité après déduction de la franchise légale.',
+    delai: '3 mois après accord',
+    icon: '💰',
   },
-  {
-    question: "Faut-il un expert pour mon dossier CAT-NAT ?",
-    answer: "L'assurance mandate son propre expert, mais vous pouvez (et devriez) faire appel à un expert d'assuré indépendant pour défendre vos intérêts et contester si besoin."
-  }
 ];
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqItems.map(item => ({
-    "@type": "Question",
-    "name": item.question,
-    "acceptedAnswer": { "@type": "Answer", "text": item.answer }
-  }))
-};
+const communes31 = ['Toulouse', 'Colomiers', 'Tournefeuille', 'Blagnac', 'Muret', 'Cugnaux', 'Plaisance-du-Touch', 'Balma', 'Ramonville', 'Castanet-Tolosan'];
+const communes82 = ['Montauban', 'Castelsarrasin', 'Moissac', 'Caussade', 'Valence-d\'Agen', 'Montech', 'Verdun-sur-Garonne', 'Negrepelisse'];
+const communes32 = ['Auch', 'Condom', 'Fleurance', 'Lectoure', 'L\'Isle-Jourdain', 'Mirande', 'Nogaro', 'Gimont'];
 
 export default function FissureSecheressePage() {
   return (
-    <div className="font-sans text-slate-800 bg-slate-50 antialiased">
-      <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
-      
+    <div className="font-sans text-slate-800 bg-white antialiased">
       <TopBar />
       <Navbar />
 
-      {/* Breadcrumb */}
-      <div className="bg-white border-b border-slate-200 py-3">
-        <div className="max-w-7xl mx-auto px-4 text-sm text-slate-600">
-          <Link href="/" className="hover:text-orange-600">Accueil</Link>
-          <span className="mx-2">›</span>
-          <Link href="/expert-fissures-toulouse-31" className="hover:text-orange-600">Expert Fissures</Link>
-          <span className="mx-2">›</span>
-          <span className="text-slate-900">Fissure sécheresse</span>
-        </div>
-      </div>
-
       {/* Hero */}
-      <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="flex items-center gap-2 text-amber-400 text-sm font-bold mb-4">
-            <FileText size={18} />
-            <span>Indemnisation CAT-NAT</span>
+      <section className="relative bg-gradient-to-br from-amber-900 via-orange-900 to-red-950 text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 70% 30%, rgba(251, 191, 36, 0.4) 0%, transparent 50%)' }}></div>
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+          <nav className="flex items-center gap-2 text-sm text-amber-200 mb-8">
+            <Link href="/" className="hover:text-white transition">Accueil</Link>
+            <ChevronRight size={14} />
+            <Link href="/expert-fissures-toulouse-31" className="hover:text-white transition">Expert Fissures</Link>
+            <ChevronRight size={14} />
+            <span className="text-white">Sécheresse & Indemnisation</span>
+          </nav>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-amber-500/20 border border-amber-400/30 text-amber-300 px-4 py-2 rounded-full text-sm font-bold mb-6">
+                <Sun size={16} />
+                Catastrophe naturelle sécheresse
+              </div>
+
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.1]">
+                Fissures
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">
+                  Sécheresse
+                </span>
+              </h1>
+
+              <p className="text-xl text-amber-100 mb-8 leading-relaxed max-w-xl">
+                <strong className="text-white">La Haute-Garonne, le Tarn-et-Garonne et le Gers</strong> sont 
+                particulièrement touchés par le retrait-gonflement des argiles. Si votre commune est reconnue 
+                CAT-NAT, votre assurance peut couvrir une partie des réparations.
+              </p>
+
+              <div className="bg-red-500/20 border border-red-400/40 rounded-2xl p-6 mb-8">
+                <div className="flex items-start gap-4">
+                  <AlertTriangle className="w-8 h-8 text-red-400 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-bold text-white mb-2">⏰ Délai critique : 10 jours</h3>
+                    <p className="text-red-100">
+                      Après publication de l'arrêté CAT-NAT, vous n'avez que <strong className="text-white">10 jours</strong> pour 
+                      déclarer le sinistre à votre assurance. Passé ce délai, c'est trop tard.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/diagnostic" className="group bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl">
+                  Aide pour mon dossier
+                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all">
+                  <Phone size={20} />
+                  05 82 95 33 75
+                </a>
+              </div>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
+                <div className="text-5xl font-black text-amber-400">400+</div>
+                <div className="text-amber-200 text-sm mt-2">communes reconnues CAT-NAT en Occitanie (2022-2024)</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
+                <div className="text-5xl font-black text-orange-400">1 534€</div>
+                <div className="text-amber-200 text-sm mt-2">franchise légale (maison individuelle)</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
+                <div className="text-5xl font-black text-red-400">10j</div>
+                <div className="text-amber-200 text-sm mt-2">pour déclarer après l'arrêté</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
+                <div className="text-5xl font-black text-yellow-400">85%</div>
+                <div className="text-amber-200 text-sm mt-2">des fissures = sol argileux</div>
+              </div>
+            </div>
           </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
-            Fissure Sécheresse : Comment Être Indemnisé ?
-          </h1>
-          <p className="text-xl text-slate-300 mb-8">
-            Votre maison s'est fissurée après une sécheresse ? Découvrez les démarches pour obtenir 
-            une indemnisation via le régime CAT-NAT et maximiser vos chances d'être couvert.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/diagnostic" className="bg-orange-600 hover:bg-orange-500 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
-              Diagnostic gratuit <ArrowRight size={18} />
-            </Link>
-            <a href="tel:0582953375" className="bg-white/10 border border-white/20 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
-              <Phone size={18} /> 05 82 95 33 75
-            </a>
+        </div>
+
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg viewBox="0 0 1440 100" fill="none" className="w-full">
+            <path d="M0 50L60 45C120 40 240 30 360 35C480 40 600 60 720 65C840 70 960 60 1080 50C1200 40 1320 30 1380 25L1440 20V100H0V50Z" fill="white"/>
+          </svg>
+        </div>
+      </section>
+
+      {/* Étapes indemnisation */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-amber-100 text-amber-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
+              Procédure
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+              Les 4 étapes de l'indemnisation
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {etapesIndemnisation.map((etape, index) => (
+              <div key={index} className="relative">
+                <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl p-6 border border-amber-200 h-full">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-4xl">{etape.icon}</span>
+                    <span className="w-10 h-10 bg-amber-500 text-white rounded-full flex items-center justify-center font-bold text-lg">
+                      {etape.num}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">{etape.titre}</h3>
+                  <p className="text-slate-600 text-sm mb-4">{etape.description}</p>
+                  <div className="flex items-center gap-2 text-amber-600 text-sm font-bold">
+                    <Clock size={14} />
+                    {etape.delai}
+                  </div>
+                </div>
+                {index < 3 && (
+                  <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
+                    <ArrowRight className="text-amber-400" size={20} />
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Alerte */}
-      <section className="py-8 bg-amber-50 border-b border-amber-200">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="flex items-start gap-4">
-            <Clock className="text-amber-600 flex-shrink-0" size={24} />
-            <div>
-              <p className="font-bold text-amber-900">⏱️ Délai important</p>
-              <p className="text-amber-800">
-                Vous avez <strong>10 jours</strong> après la publication de l'arrêté CAT-NAT pour déclarer le sinistre à votre assurance. Ne tardez pas !
-              </p>
+      {/* Communes touchées */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
+              Zone d'intervention
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+              Communes fréquemment reconnues CAT-NAT
+            </h2>
+            <p className="text-slate-600">
+              Cette liste n'est pas exhaustive. Vérifiez l'éligibilité de votre commune sur Légifrance.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-3xl p-6 shadow-lg border border-slate-200">
+              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <span className="w-8 h-8 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center text-sm font-bold">31</span>
+                Haute-Garonne
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {communes31.map((c, i) => (
+                  <span key={i} className="bg-orange-50 text-orange-700 px-3 py-1 rounded-full text-sm">
+                    {c}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="bg-white rounded-3xl p-6 shadow-lg border border-slate-200">
+              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <span className="w-8 h-8 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center text-sm font-bold">82</span>
+                Tarn-et-Garonne
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {communes82.map((c, i) => (
+                  <span key={i} className="bg-amber-50 text-amber-700 px-3 py-1 rounded-full text-sm">
+                    {c}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="bg-white rounded-3xl p-6 shadow-lg border border-slate-200">
+              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <span className="w-8 h-8 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center text-sm font-bold">32</span>
+                Gers
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {communes32.map((c, i) => (
+                  <span key={i} className="bg-yellow-50 text-yellow-700 px-3 py-1 rounded-full text-sm">
+                    {c}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contenu */}
-      <article className="py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="prose prose-lg max-w-none">
-            <h2>Le phénomène RGA : pourquoi les sécheresses fissurent les maisons</h2>
-            <p>
-              Le <strong>Retrait-Gonflement des Argiles (RGA)</strong> est la première cause de sinistres sur les maisons 
-              individuelles en France. En période de sécheresse, les sols argileux se rétractent, créant des mouvements 
-              de terrain qui fissurent les fondations et les murs.
-            </p>
-            <p>
-              La <strong>Haute-Garonne</strong>, le <strong>Tarn-et-Garonne</strong> et le <strong>Gers</strong> sont particulièrement 
-              touchés, avec des sols argileux sur plus de 60% de leur territoire. Depuis 2018, les arrêtés CAT-NAT sécheresse 
-              se multiplient dans la région.
-            </p>
+      {/* Notre aide */}
+      <section className="py-20 bg-slate-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="inline-block bg-amber-500/20 text-amber-300 px-4 py-2 rounded-full text-sm font-bold mb-6">
+                Notre accompagnement
+              </span>
+              <h2 className="text-3xl md:text-4xl font-black mb-6">
+                On vous aide à constituer votre dossier
+              </h2>
+              <p className="text-slate-300 text-lg mb-8">
+                L'expertise de votre assureur peut sous-évaluer les dommages ou contester le lien avec la sécheresse. 
+                Notre rapport technique indépendant renforce votre dossier.
+              </p>
 
-            <div className="bg-slate-100 rounded-2xl p-6 my-8 not-prose">
-              <h3 className="text-xl font-bold text-slate-900 mb-4">📊 Chiffres clés Occitanie</h3>
-              <div className="grid md:grid-cols-3 gap-6 text-center">
-                <div>
-                  <div className="text-4xl font-extrabold text-orange-600">200+</div>
-                  <div className="text-slate-600 text-sm">Arrêtés CAT-NAT depuis 2018</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-extrabold text-orange-600">60%</div>
-                  <div className="text-slate-600 text-sm">Sols à risque RGA</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-extrabold text-orange-600">15K€</div>
-                  <div className="text-slate-600 text-sm">Coût moyen réparation</div>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start gap-3">
+                  <CheckCircle size={20} className="text-amber-400 flex-shrink-0 mt-1" />
+                  <div>
+                    <strong className="text-white">Rapport technique détaillé</strong>
+                    <p className="text-slate-400 text-sm">Photos, mesures, analyse des causes, préconisations</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle size={20} className="text-amber-400 flex-shrink-0 mt-1" />
+                  <div>
+                    <strong className="text-white">Contre-expertise</strong>
+                    <p className="text-slate-400 text-sm">Si l'expert de l'assurance minimise les dégâts</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle size={20} className="text-amber-400 flex-shrink-0 mt-1" />
+                  <div>
+                    <strong className="text-white">Aide aux démarches</strong>
+                    <p className="text-slate-400 text-sm">Vérification éligibilité, conseils sur la déclaration</p>
+                  </div>
+                </li>
+              </ul>
+
+              <div className="bg-amber-500/20 rounded-2xl p-6 border border-amber-500/30">
+                <div className="flex items-center gap-4">
+                  <Euro className="w-10 h-10 text-amber-400" />
+                  <div>
+                    <div className="text-sm text-amber-300 font-bold">DIAGNOSTIC</div>
+                    <div className="text-3xl font-black text-white">149€</div>
+                    <div className="text-slate-400 text-sm">Déductible si travaux avec nous</div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <h2>Les étapes pour être indemnisé</h2>
-
-            <h3>1. Vérifier l'arrêté CAT-NAT</h3>
-            <p>
-              Votre commune doit avoir demandé et obtenu un arrêté de catastrophe naturelle pour sécheresse. 
-              Vérifiez sur <a href="https://www.georisques.gouv.fr" target="_blank" rel="noopener noreferrer">georisques.gouv.fr</a> 
-              ou auprès de votre mairie.
-            </p>
-
-            <h3>2. Déclarer le sinistre à votre assurance</h3>
-            <p>
-              Vous avez <strong>10 jours</strong> après la publication de l'arrêté au Journal Officiel pour envoyer 
-              une déclaration à votre assurance (lettre recommandée avec AR conseillée). Joignez des photos des fissures.
-            </p>
-
-            <h3>3. L'expert de l'assurance intervient</h3>
-            <p>
-              L'assurance mandate un expert pour constater les dégâts et évaluer si le lien avec la sécheresse est établi. 
-              <strong>Attention :</strong> cet expert défend les intérêts de l'assurance, pas les vôtres.
-            </p>
-
-            <h3>4. (Recommandé) Faites appel à un expert indépendant</h3>
-            <p>
-              Un <strong>expert d'assuré</strong> ou un bureau d'expertise indépendant comme IPB peut :
-            </p>
-            <ul>
-              <li>Documenter précisément les fissures et leur origine</li>
-              <li>Établir un rapport technique solide</li>
-              <li>Vous accompagner en contre-expertise si l'assurance minimise</li>
-              <li>Défendre vos intérêts face à l'expert de l'assurance</li>
-            </ul>
-
-            <h3>5. Indemnisation et travaux</h3>
-            <p>
-              Si le dossier est accepté, l'assurance vous indemnise pour les travaux de réparation (moins la franchise). 
-              Vous êtes libre de choisir l'entreprise qui réalisera les travaux.
-            </p>
-
-            <div className="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-xl my-8 not-prose">
-              <h3 className="font-bold text-slate-900 mb-2">💡 Astuce : anticipez !</h3>
-              <p className="text-slate-700">
-                Même si l'arrêté CAT-NAT n'est pas encore publié, faites constater vos fissures par un expert. 
-                Le rapport servira de preuve de l'état "avant" et renforcera votre dossier.
-              </p>
+            <div className="bg-white/5 rounded-3xl p-8 border border-white/10">
+              <h3 className="text-xl font-bold text-white mb-6">Documents à préparer</h3>
+              <ul className="space-y-4">
+                {[
+                  'Photos des fissures (datées)',
+                  'Plan de la maison',
+                  'Acte de propriété',
+                  'Contrat d\'assurance habitation',
+                  'Factures de travaux antérieurs (si existantes)',
+                  'Éventuels rapports d\'expertise précédents',
+                ].map((doc, i) => (
+                  <li key={i} className="flex items-center gap-3 text-slate-300">
+                    <FileText size={18} className="text-amber-400" />
+                    {doc}
+                  </li>
+                ))}
+              </ul>
             </div>
-
-            <h2>La franchise CAT-NAT sécheresse</h2>
-            <p>
-              Pour les sinistres sécheresse, la franchise légale est de <strong>1 520€</strong> (2024). Elle peut être 
-              majorée si votre commune a connu plusieurs arrêtés CAT-NAT sans mettre en place de plan de prévention.
-            </p>
-
-            <h2>Que faire si l'assurance refuse ?</h2>
-            <ol>
-              <li><strong>Contre-expertise :</strong> Demandez une contre-expertise avec votre propre expert</li>
-              <li><strong>Médiation :</strong> Saisissez le médiateur de l'assurance</li>
-              <li><strong>Recours juridique :</strong> En dernier recours, tribunal judiciaire</li>
-            </ol>
-
-            <h2>Tarifs expertise IPB pour dossier CAT-NAT</h2>
-            <ul>
-              <li><strong>Diagnostic initial :</strong> 149€ (déductible si travaux)</li>
-              <li><strong>Rapport technique complet :</strong> 350-500€</li>
-              <li><strong>Accompagnement contre-expertise :</strong> sur devis</li>
-            </ul>
-          </div>
-
-          {/* Lien vers le HUB */}
-          <div className="mt-12 p-8 bg-orange-50 border-2 border-orange-200 rounded-2xl">
-            <h3 className="text-xl font-bold text-slate-900 mb-4">📚 En savoir plus sur les fissures</h3>
-            <p className="text-slate-600 mb-4">
-              Consultez notre guide complet : types de fissures, causes, solutions techniques et tarifs.
-            </p>
-            <Link href="/expert-fissures-toulouse-31" className="inline-flex items-center gap-2 text-orange-600 font-bold hover:text-orange-700">
-              Guide Expert Fissures <ArrowRight size={18} />
-            </Link>
           </div>
         </div>
-      </article>
+      </section>
 
-      {/* FAQ */}
-      <section className="py-16 bg-slate-100">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Questions fréquentes</h2>
-          <div className="space-y-4">
-            {faqItems.map((item, index) => (
-              <details key={index} className="bg-white rounded-xl shadow-sm border border-slate-200 group">
-                <summary className="p-6 cursor-pointer font-bold text-slate-900 flex items-center justify-between">
-                  {item.question}
-                  <span className="text-orange-600 group-open:rotate-180 transition-transform">▼</span>
-                </summary>
-                <div className="px-6 pb-6 text-slate-600">{item.answer}</div>
-              </details>
+      {/* Articles connexes */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-black text-slate-900 mb-8 text-center">
+            Articles connexes
+          </h2>
+          <div className="grid md:grid-cols-4 gap-6">
+            {[
+              { href: '/fissure-en-escalier-causes', icon: '🪜', title: 'Fissure en escalier', desc: 'Tassement différentiel' },
+              { href: '/fissure-fondation-maison', icon: '🏠', title: 'Fissure fondation', desc: 'Solutions durables' },
+              { href: '/microfissure-quand-sinquieter', icon: '🔍', title: 'Microfissure', desc: 'Quand s\'inquiéter ?' },
+              { href: '/fissure-horizontale-danger', icon: '➖', title: 'Fissure horizontale', desc: 'Danger structurel' },
+            ].map((item, index) => (
+              <Link 
+                key={index}
+                href={item.href}
+                className="group bg-slate-50 rounded-2xl p-6 hover:bg-orange-50 transition-all hover:-translate-y-1 border border-slate-100 hover:border-orange-200"
+              >
+                <span className="text-4xl mb-4 block">{item.icon}</span>
+                <h3 className="font-bold text-slate-900 group-hover:text-orange-600 transition-colors mb-1">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-slate-500">{item.desc}</p>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-orange-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-amber-500 to-orange-500 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-extrabold mb-6">Dossier CAT-NAT à constituer ?</h2>
-          <p className="text-xl text-orange-100 mb-8">Nous vous accompagnons de A à Z pour maximiser votre indemnisation.</p>
-          <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-50">
-            Prendre rendez-vous <ArrowRight size={20} />
-          </Link>
+          <h2 className="text-3xl md:text-5xl font-black mb-6">
+            Ne laissez pas filer l'indemnisation.
+          </h2>
+          <p className="text-xl text-amber-100 mb-8">
+            Diagnostic expert sous 48h • Rapport technique pour votre assurance
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link href="/diagnostic" className="group bg-white text-amber-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-amber-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">
+              Aide pour mon dossier CAT-NAT
+              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/30 hover:bg-white/20 px-8 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3">
+              <Phone size={20} />
+              05 82 95 33 75
+            </a>
+          </div>
         </div>
       </section>
 

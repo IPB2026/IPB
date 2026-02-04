@@ -1,396 +1,266 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
-import { Thermometer, ArrowRight, Phone, AlertTriangle, CheckCircle, Wind, Droplets, Home } from 'lucide-react';
+import { Phone, ArrowRight, ChevronRight, Home, CheckCircle, AlertTriangle, Droplets, Thermometer } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Ponts Thermiques : Condensation, Moisissures et Solutions | Expert Occitanie',
-  description: 'Ponts thermiques = condensation + moisissures. Zones froides (angles, fenêtres, planchers). Solutions : isolation, VMI, correction thermique. Diagnostic expert Toulouse, Montauban, Auch (31-82-32).',
-  keywords: [
-    'pont thermique condensation',
-    'pont thermique moisissure',
-    'zone froide mur',
-    'condensation angle mur',
-    'isolation pont thermique',
-    'moisissure angle plafond',
-    'fenêtre qui ruisselle',
-    'rupture pont thermique',
-    'diagnostic thermique maison',
-    'VMI ventilation',
-    'humidité condensation',
-    'expert thermique toulouse',
-  ],
-  alternates: {
-    canonical: 'https://www.ipb-expertise.fr/ponts-thermiques-condensation',
-  },
-  openGraph: {
-    title: 'Ponts Thermiques : Causes de Condensation et Moisissures',
-    description: 'Les ponts thermiques créent condensation et moisissures. Diagnostic et solutions.',
-    url: 'https://www.ipb-expertise.fr/ponts-thermiques-condensation',
-    type: 'article',
-  },
-  robots: { index: true, follow: true },
+  title: 'Ponts Thermiques et Condensation : Causes et Solutions | Expert Occitanie',
+  description: 'Condensation, moisissures aux angles des murs ? Ponts thermiques = zones froides. Diagnostic et solutions (isolation, VMI). Expert Toulouse, Montauban, Auch (31-82-32).',
+  keywords: ['pont thermique', 'condensation mur', 'moisissures angles', 'isolation thermique'],
+  alternates: { canonical: 'https://www.ipb-expertise.fr/ponts-thermiques-condensation' },
 };
 
-const zonesPontThermique = [
-  { zone: "Angles des murs", description: "Jonction mur extérieur / mur intérieur ou plancher", frequence: "Très fréquent" },
-  { zone: "Contours de fenêtres", description: "Jonction menuiserie / maçonnerie", frequence: "Très fréquent" },
-  { zone: "Plancher bas / murs", description: "Jonction avec cave ou vide sanitaire", frequence: "Fréquent" },
-  { zone: "Balcons et terrasses", description: "Dalles en continuité avec le plancher intérieur", frequence: "Fréquent" },
-  { zone: "Toiture / murs", description: "Jonction sous-toiture et murs extérieurs", frequence: "Modéré" },
-  { zone: "Seuils de portes", description: "Jonction sol intérieur / extérieur", frequence: "Modéré" },
-];
-
-const signes = [
-  "Moisissures noires dans les angles des pièces",
-  "Condensation sur les murs froids le matin",
-  "Parois froides au toucher (différence nette)",
-  "Peinture qui cloque ou papier qui se décolle localement",
-  "Odeur de moisi dans certaines zones",
-  "Sensation de froid même avec chauffage",
+const zonesPontsThermiques = [
+  { zone: 'Angles murs-plafond', frequence: '35%', icon: '📐' },
+  { zone: 'Contours de fenetres', frequence: '25%', icon: '🪟' },
+  { zone: 'Murs donnant sur exterieur', frequence: '20%', icon: '🏠' },
+  { zone: 'Dalles de balcon', frequence: '10%', icon: '🏢' },
+  { zone: 'Jonction mur-sol', frequence: '10%', icon: '⬇️' },
 ];
 
 const solutions = [
   {
-    nom: "Isolation par l'intérieur (ITI)",
-    description: "Ajout d'isolant sur la face intérieure des murs concernés.",
-    avantages: ["Moins coûteux", "Pas de modification façade", "Rapide"],
-    inconvenients: ["Réduit l'espace intérieur", "Traite pont par pont"],
-    prix: "40-80€/m²"
+    titre: 'Isolation par interieur (ITI)',
+    description: 'Pose de plaques isolantes sur les murs froids.',
+    prix: '50-100 euros/m2',
+    efficacite: '70%',
   },
   {
-    nom: "Isolation par l'extérieur (ITE)",
-    description: "Enveloppe isolante sur toute la façade extérieure.",
-    avantages: ["Traite tous les ponts", "Pas de perte de surface", "Efficacité maximale"],
-    inconvenients: ["Coût élevé", "Modifie l'aspect extérieur", "Autorisations"],
-    prix: "100-200€/m²"
+    titre: 'Isolation par exterieur (ITE)',
+    description: 'Enveloppe isolante sur la facade. Supprime tous les ponts thermiques.',
+    prix: '150-250 euros/m2',
+    efficacite: '95%',
   },
   {
-    nom: "Rupture de pont thermique",
-    description: "Éléments isolants insérés dans la structure (rupteurs).",
-    avantages: ["Solution ciblée", "Efficace", "Discret"],
-    inconvenients: ["Travaux lourds", "Surtout en construction neuve"],
-    prix: "Variable"
-  },
-  {
-    nom: "VMI (Ventilation Mécanique par Insufflation)",
-    description: "Améliore la ventilation pour réduire l'humidité intérieure.",
-    avantages: ["Réduit la condensation", "Améliore air intérieur", "Installation simple"],
-    inconvenients: ["Ne traite pas l'isolation", "Solution complémentaire"],
-    prix: "1500-3000€"
+    titre: 'VMI (Ventilation)',
+    description: 'Renouvelle air et baisse le taux humidite. Reduit la condensation.',
+    prix: '2 500-4 500 euros',
+    efficacite: '60%',
   },
 ];
 
-const faqItems = [
-  {
-    question: "Qu'est-ce qu'un pont thermique ?",
-    answer: "Un pont thermique est une zone de l'enveloppe du bâtiment où la résistance thermique est plus faible. Le froid passe plus facilement, créant une zone froide où l'humidité de l'air se condense."
-  },
-  {
-    question: "Comment savoir si j'ai des ponts thermiques ?",
-    answer: "Les signes révélateurs : moisissures dans les angles, condensation localisée, zones froides au toucher. Une caméra thermique permet de visualiser précisément les ponts thermiques."
-  },
-  {
-    question: "Les ponts thermiques sont-ils dangereux ?",
-    answer: "Ils ne sont pas dangereux structurellement, mais la condensation qu'ils génèrent favorise les moisissures, néfastes pour la santé. Ils augmentent aussi significativement les dépenses de chauffage."
-  },
-  {
-    question: "Peut-on traiter les ponts thermiques sans gros travaux ?",
-    answer: "Partiellement. Une VMI et une bonne ventilation réduisent la condensation. Mais pour un traitement efficace et durable, l'isolation (au moins localisée) est nécessaire."
-  },
-];
-
-const jsonLdArticle = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Ponts Thermiques et Condensation : Diagnostic et Solutions",
-  "description": "Guide complet sur les ponts thermiques et leur traitement.",
-  "author": { "@type": "Organization", "name": "IPB Expertise" },
-  "publisher": {
-    "@type": "Organization",
-    "name": "IPB - Institut de Pathologie du Bâtiment",
-    "logo": { "@type": "ImageObject", "url": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png" }
-  },
-  "datePublished": "2024-01-15",
-  "dateModified": new Date().toISOString(),
-};
-
-const jsonLdFaq = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqItems.map(item => ({
-    "@type": "Question",
-    "name": item.question,
-    "acceptedAnswer": { "@type": "Answer", "text": item.answer }
-  }))
-};
-
-export default function PontsThermiquesCondensationPage() {
+export default function PontsThermiquesPage() {
   return (
-    <div className="font-sans text-slate-800 bg-slate-50 antialiased">
-      <Script id="article-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdArticle) }} />
-      <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }} />
-      
+    <div className="font-sans text-slate-800 bg-white antialiased">
       <TopBar />
       <Navbar />
 
-      {/* Breadcrumb */}
-      <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 py-3">
-          <nav className="flex text-sm text-slate-500">
-            <Link href="/" className="hover:text-orange-600">Accueil</Link>
-            <span className="mx-2">/</span>
-            <Link href="/expert-humidite-toulouse-31" className="hover:text-orange-600">Expert Humidité</Link>
-            <span className="mx-2">/</span>
-            <span className="text-slate-900">Ponts Thermiques</span>
-          </nav>
-        </div>
-      </div>
-
       {/* Hero */}
-      <section className="bg-gradient-to-br from-indigo-900 to-purple-900 text-white py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="flex items-center gap-2 text-purple-300 text-sm font-bold mb-4">
-            <Thermometer size={18} />
-            <span>Problème thermique</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
-            Ponts Thermiques : <br/>
-            <span className="text-purple-300">Causes de Condensation</span>
-          </h1>
-          <p className="text-xl text-indigo-200 mb-8">
-            Ces zones froides de votre maison où l'humidité se condense et les moisissures 
-            prolifèrent. Comprendre le problème pour mieux le traiter.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/diagnostic" className="bg-purple-500 hover:bg-purple-400 text-white px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
-              Diagnostic thermique <ArrowRight size={18} />
-            </Link>
-            <a href="tel:0582953375" className="bg-white/10 border border-white/20 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
-              <Phone size={18} /> 05 82 95 33 75
-            </a>
-          </div>
+      <section className="relative bg-gradient-to-br from-sky-900 via-blue-900 to-slate-900 text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 70% 30%, rgba(14, 165, 233, 0.4) 0%, transparent 50%)' }}></div>
         </div>
-      </section>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+          <nav className="flex items-center gap-2 text-sm text-sky-200 mb-8">
+            <Link href="/" className="hover:text-white transition">Accueil</Link>
+            <ChevronRight size={14} />
+            <Link href="/expert-humidite-toulouse-31" className="hover:text-white transition">Expert Humidite</Link>
+            <ChevronRight size={14} />
+            <span className="text-white">Ponts thermiques</span>
+          </nav>
 
-      {/* Explication */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8">
-            Comprendre les ponts thermiques
-          </h2>
-          <div className="prose prose-lg max-w-none mb-8">
-            <p>
-              Un <strong>pont thermique</strong> est une zone où l'isolation est interrompue ou affaiblie. 
-              À cet endroit, le froid extérieur pénètre plus facilement, créant une <strong>zone froide</strong> 
-              à l'intérieur du bâtiment.
-            </p>
-            <p>
-              Quand l'air chaud et humide de la pièce entre en contact avec cette paroi froide, 
-              la vapeur d'eau qu'il contient se <strong>condense</strong> (comme la buée sur une vitre froide). 
-              Cette humidité persistante favorise les <strong>moisissures</strong>.
-            </p>
-          </div>
-
-          {/* Schéma visuel */}
-          <div className="bg-gradient-to-r from-blue-50 to-red-50 rounded-2xl p-8">
-            <div className="flex items-center justify-between text-center">
-              <div className="flex-1">
-                <div className="w-16 h-16 bg-blue-200 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <span className="text-2xl">❄️</span>
-                </div>
-                <p className="font-bold text-blue-900">Extérieur froid</p>
-                <p className="text-sm text-blue-700">5°C</p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-sky-500/20 border border-sky-400/30 text-sky-300 px-4 py-2 rounded-full text-sm font-bold mb-6">
+                <Thermometer size={16} />
+                Zones froides = condensation
               </div>
-              <div className="flex-1">
-                <div className="w-20 h-20 bg-purple-600 rounded-lg flex items-center justify-center mx-auto mb-3 relative">
-                  <span className="text-white font-bold text-xs">Zone froide</span>
-                  <div className="absolute -top-2 right-0 bg-amber-400 rounded-full p-1">
-                    <Droplets className="text-amber-800" size={14} />
+
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.1]">
+                Ponts
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-400">
+                  Thermiques
+                </span>
+              </h1>
+
+              <p className="text-xl text-sky-100 mb-8 leading-relaxed max-w-xl">
+                Un pont thermique est une zone ou isolation est insuffisante ou absente. 
+                <strong className="text-white"> En hiver, ces zones sont froides</strong> : humidite de air 
+                sy condense, creant moisissures et degradations.
+              </p>
+
+              <div className="bg-sky-500/20 border border-sky-400/30 rounded-2xl p-6 mb-8">
+                <h3 className="font-bold text-white mb-3">Le phenomene explique</h3>
+                <p className="text-sky-100 text-sm">
+                  Air chaud de votre maison contient de la vapeur eau. Quand cet air touche une surface froide 
+                  (mur mal isole), la vapeur se transforme en gouttelettes : cest la condensation.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/diagnostic" className="group bg-gradient-to-r from-sky-500 to-blue-500 hover:from-sky-400 hover:to-blue-400 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl">
+                  Diagnostic thermique
+                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all">
+                  <Phone size={20} />
+                  05 82 95 33 75
+                </a>
+              </div>
+            </div>
+
+            {/* Zones frequentes */}
+            <div className="bg-white/10 backdrop-blur rounded-3xl p-8 border border-white/20">
+              <h3 className="text-xl font-bold text-white mb-6">Ou se trouvent les ponts thermiques ?</h3>
+              <div className="space-y-4">
+                {zonesPontsThermiques.map((item, index) => (
+                  <div key={index} className="flex items-center justify-between bg-white/5 rounded-2xl p-4">
+                    <div className="flex items-center gap-3">
+                      <span className="text-2xl">{item.icon}</span>
+                      <span className="text-white font-medium">{item.zone}</span>
+                    </div>
+                    <div className="text-xl font-black text-sky-400">{item.frequence}</div>
                   </div>
-                </div>
-                <p className="font-bold text-purple-900">Pont thermique</p>
-                <p className="text-sm text-purple-700">12°C → Condensation !</p>
-              </div>
-              <div className="flex-1">
-                <div className="w-16 h-16 bg-red-200 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <span className="text-2xl">🔥</span>
-                </div>
-                <p className="font-bold text-red-900">Intérieur chauffé</p>
-                <p className="text-sm text-red-700">20°C</p>
+                ))}
               </div>
             </div>
           </div>
         </div>
+
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg viewBox="0 0 1440 100" fill="none" className="w-full">
+            <path d="M0 50L60 45C120 40 240 30 360 35C480 40 600 60 720 65C840 70 960 60 1080 50C1200 40 1320 30 1380 25L1440 20V100H0V50Z" fill="white"/>
+          </svg>
+        </div>
       </section>
 
-      {/* Zones concernées */}
-      <section className="py-16 bg-slate-100">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
-            Où se trouvent les ponts thermiques ?
-          </h2>
-          <div className="grid md:grid-cols-2 gap-4">
-            {zonesPontThermique.map((item, index) => (
-              <div key={index} className="bg-white rounded-xl p-5 shadow-sm border border-slate-200">
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="font-bold text-slate-900">{item.zone}</h3>
-                  <span className={`text-xs px-2 py-1 rounded-full font-bold ${
-                    item.frequence === 'Très fréquent' ? 'bg-red-100 text-red-700' :
-                    item.frequence === 'Fréquent' ? 'bg-amber-100 text-amber-700' :
-                    'bg-slate-100 text-slate-600'
-                  }`}>
-                    {item.frequence}
-                  </span>
-                </div>
-                <p className="text-sm text-slate-600">{item.description}</p>
+      {/* Symptomes */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-sky-100 text-sky-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
+              Reconnaitre le probleme
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+              Symptomes dun pont thermique
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { symptome: 'Moisissures aux angles', detail: 'Taches noires dans les coins murs-plafond', icon: '🦠' },
+              { symptome: 'Condensation sur vitres', detail: 'Buee persistante sur les fenetres', icon: '💧' },
+              { symptome: 'Murs froids au toucher', detail: 'Difference de temperature nette', icon: '❄️' },
+              { symptome: 'Papier peint qui se decolle', detail: 'Humidite fait lacher la colle', icon: '📜' },
+            ].map((item, index) => (
+              <div key={index} className="bg-sky-50 rounded-3xl p-6 border border-sky-100 hover:shadow-lg transition-all">
+                <div className="text-4xl mb-4">{item.icon}</div>
+                <h3 className="font-bold text-slate-900 mb-2">{item.symptome}</h3>
+                <p className="text-slate-600 text-sm">{item.detail}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Signes */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
-            Signes révélateurs
-          </h2>
-          <div className="bg-amber-50 rounded-2xl p-8 border border-amber-200">
-            <p className="text-amber-800 mb-6">
-              Un ou plusieurs de ces signes indiquent probablement la présence de ponts thermiques :
-            </p>
-            <div className="grid md:grid-cols-2 gap-4">
-              {signes.map((signe, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <AlertTriangle className="text-amber-600 flex-shrink-0 mt-0.5" size={18} />
-                  <span className="text-slate-700">{signe}</span>
+      {/* Solutions */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
+              Solutions
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+              Comment traiter un pont thermique ?
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {solutions.map((sol, index) => (
+              <div key={index} className={`rounded-3xl p-8 ${
+                sol.efficacite === '95%' 
+                  ? 'bg-gradient-to-br from-sky-50 to-blue-50 border-2 border-sky-300' 
+                  : 'bg-white border border-slate-200'
+              }`}>
+                {sol.efficacite === '95%' && (
+                  <div className="inline-block bg-sky-500 text-white px-3 py-1 rounded-full text-xs font-bold mb-4">
+                    SOLUTION OPTIMALE
+                  </div>
+                )}
+                <h3 className="text-xl font-bold text-slate-900 mb-3">{sol.titre}</h3>
+                <p className="text-slate-600 text-sm mb-6">{sol.description}</p>
+                
+                <div className="space-y-3 text-sm">
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-500">Prix</span>
+                    <span className="font-bold text-slate-900">{sol.prix}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-500">Efficacite</span>
+                    <span className={`font-bold ${
+                      sol.efficacite === '95%' ? 'text-sky-600' : 'text-slate-900'
+                    }`}>{sol.efficacite}</span>
+                  </div>
                 </div>
-              ))}
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 p-6 bg-amber-50 border border-amber-200 rounded-2xl">
+            <div className="flex items-start gap-4">
+              <AlertTriangle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+              <div>
+                <h4 className="font-bold text-amber-900 mb-1">Conseil expert</h4>
+                <p className="text-amber-800 text-sm">
+                  La VMI seule peut suffire si le pont thermique est leger. Elle coute moins cher 
+                  quune isolation et reduit la condensation de 60-70%.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Solutions */}
-      <section className="py-16 bg-slate-100">
-        <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
-            Solutions de traitement
+      {/* Articles connexes */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-black text-slate-900 mb-8 text-center">
+            Articles connexes
           </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {solutions.map((solution, index) => (
-              <div key={index} className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200">
-                <h3 className="text-xl font-bold text-slate-900 mb-2">{solution.nom}</h3>
-                <p className="text-slate-600 text-sm mb-4">{solution.description}</p>
-                
-                <div className="space-y-3 mb-4">
-                  <div>
-                    <p className="text-sm font-bold text-green-700 mb-1">✓ Avantages</p>
-                    <ul className="space-y-1">
-                      {solution.avantages.map((a, i) => (
-                        <li key={i} className="text-sm text-slate-600 flex items-center gap-2">
-                          <CheckCircle className="text-green-500" size={14} />
-                          {a}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-red-700 mb-1">✗ Inconvénients</p>
-                    <ul className="space-y-1">
-                      {solution.inconvenients.map((i, idx) => (
-                        <li key={idx} className="text-sm text-slate-600 flex items-center gap-2">
-                          <span className="w-3.5 h-3.5 flex items-center justify-center text-red-500">–</span>
-                          {i}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="pt-4 border-t border-slate-100">
-                  <p className="text-sm"><strong>Prix indicatif :</strong> {solution.prix}</p>
-                </div>
-              </div>
+          <div className="grid md:grid-cols-4 gap-6">
+            {[
+              { href: '/vmi-ventilation-insufflation', icon: '💨', title: 'VMI', desc: 'Solution anti-condensation' },
+              { href: '/condensation-ou-infiltration', icon: '❓', title: 'Condensation ?', desc: 'Comment distinguer' },
+              { href: '/moisissures-maison-sante', icon: '🦠', title: 'Moisissures', desc: 'Risques sante' },
+              { href: '/remontees-capillaires-traitement', icon: '💧', title: 'Remontees capillaires', desc: 'Autre cause humidite' },
+            ].map((item, index) => (
+              <Link 
+                key={index}
+                href={item.href}
+                className="group bg-slate-50 rounded-2xl p-6 hover:bg-sky-50 transition-all hover:-translate-y-1 border border-slate-100 hover:border-sky-200"
+              >
+                <span className="text-4xl mb-4 block">{item.icon}</span>
+                <h3 className="font-bold text-slate-900 group-hover:text-sky-600 transition-colors mb-1">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-slate-500">{item.desc}</p>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-sky-600 to-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-extrabold mb-6">Moisissures dans les angles ?</h2>
-          <p className="text-xl text-indigo-100 mb-8">
-            Un diagnostic thermique permet d'identifier précisément les ponts thermiques 
-            et de proposer la solution la plus adaptée.
-          </p>
-          <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-white text-indigo-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-indigo-50">
-            Demander un diagnostic <ArrowRight size={20} />
-          </Link>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
-            Questions fréquentes
+          <h2 className="text-3xl md:text-5xl font-black mb-6">
+            Froid aux murs ?
+            <span className="block text-sky-200">On identifie les ponts thermiques.</span>
           </h2>
-          <div className="space-y-4">
-            {faqItems.map((item, index) => (
-              <div key={index} className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-                <h3 className="font-bold text-slate-900 mb-2">{item.question}</h3>
-                <p className="text-slate-600">{item.answer}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Liens hub */}
-      <section className="py-16 bg-slate-100">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
-            Articles connexes
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Link href="/vmi-ventilation-insufflation" className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 hover:border-purple-300 transition-all group">
-              <Wind className="text-purple-600 mb-3" size={28} />
-              <h3 className="font-bold text-slate-900 group-hover:text-purple-600 mb-2">VMI / Ventilation</h3>
-              <p className="text-slate-600 text-sm">Réduire la condensation</p>
-            </Link>
-            <Link href="/moisissures-maison-sante" className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 hover:border-purple-300 transition-all group">
-              <AlertTriangle className="text-purple-600 mb-3" size={28} />
-              <h3 className="font-bold text-slate-900 group-hover:text-purple-600 mb-2">Moisissures et Santé</h3>
-              <p className="text-slate-600 text-sm">Risques et traitement</p>
-            </Link>
-            <Link href="/expert-humidite-toulouse-31" className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 hover:border-purple-300 transition-all group">
-              <Home className="text-purple-600 mb-3" size={28} />
-              <h3 className="font-bold text-slate-900 group-hover:text-purple-600 mb-2">Expert Humidité</h3>
-              <p className="text-slate-600 text-sm">Tous nos services</p>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Final */}
-      <section className="py-16 bg-slate-900 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-extrabold mb-6">Stoppez la condensation</h2>
-          <p className="text-xl text-slate-300 mb-8">
-            Diagnostic sous 48h pour identifier vos ponts thermiques et proposer des solutions.
+          <p className="text-xl text-sky-100 mb-8">
+            Diagnostic thermique - Solution adaptee (VMI ou isolation) - Devis gratuit
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/diagnostic" className="bg-purple-600 hover:bg-purple-500 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
-              Diagnostic gratuit <ArrowRight size={20} />
+            <Link href="/diagnostic" className="group bg-white text-sky-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-sky-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">
+              Diagnostic thermique
+              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
-            <a href="tel:0582953375" className="bg-white/10 border border-white/20 hover:bg-white/20 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
-              <Phone size={20} /> 05 82 95 33 75
+            <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/30 hover:bg-white/20 px-8 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3">
+              <Phone size={20} />
+              05 82 95 33 75
             </a>
           </div>
         </div>
