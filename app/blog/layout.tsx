@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Blog IPB | Conseils Fissures & Humidité à Toulouse',
-  description: 'Guides experts, conseils pratiques et analyses techniques sur les fissures, l'humidité et la structure. Conseils pour propriétaires en Occitanie (31, 82, 32).',
+  description: "Guides experts, conseils pratiques et analyses techniques sur les fissures, l'humidité et la structure. Conseils pour propriétaires en Occitanie (31, 82, 32).",
   keywords: [
     'fissures maison',
     'humidité murs',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Blog IPB | Conseils Fissures & Humidité à Toulouse',
-    description: 'Guides experts, conseils pratiques et analyses techniques sur les fissures, l’humidité et la structure.',
+    description: "Guides experts, conseils pratiques et analyses techniques sur les fissures, l'humidité et la structure.",
     url: 'https://www.ipb-expertise.fr/blog',
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
     locale: 'fr_FR',
