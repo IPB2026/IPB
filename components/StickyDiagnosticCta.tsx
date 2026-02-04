@@ -2,8 +2,16 @@
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export function StickyDiagnosticCta() {
+  const pathname = usePathname();
+
+  // Ne pas afficher le CTA sticky sur la page Diagnostic
+  if (pathname?.startsWith("/diagnostic")) {
+    return null;
+  }
+
   return (
     <div className="lg:hidden fixed bottom-4 left-4 right-4 z-50">
       <Link
