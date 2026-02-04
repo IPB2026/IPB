@@ -22,15 +22,18 @@ interface BlogPostDisplay {
 }
 
 // Convertir les articles complets en format d'affichage (liste blog)
-const blogPosts: BlogPostDisplay[] = blogPostsList.map(post => ({
-  slug: post.slug,
-  title: post.title,
-  excerpt: post.excerpt,
-  date: post.date,
-  readTime: post.readTime,
-  category: post.category,
-  featured: false // Tous false par défaut
-}));
+// Triés par date décroissante (plus récents en premier)
+const blogPosts: BlogPostDisplay[] = blogPostsList
+  .map(post => ({
+    slug: post.slug,
+    title: post.title,
+    excerpt: post.excerpt,
+    date: post.date,
+    readTime: post.readTime,
+    category: post.category,
+    featured: false // Tous false par défaut
+  }))
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 const categoryColors = {
   fissures: 'bg-orange-100 text-orange-700 border-orange-200',

@@ -29,7 +29,7 @@ interface BlogPost {
 const blogPosts: { [key: string]: BlogPost } = {
   'fissures-maison-toulouse-que-faire': {
     slug: 'fissures-maison-toulouse-que-faire',
-    title: 'Fissures sur ma maison à Toulouse : Que faire ? Guide complet 2024',
+    title: 'Fissures sur ma maison à Toulouse : Que faire ? Guide complet 2026',
     excerpt: 'Vous avez découvert des fissures sur votre maison toulousaine ? Ne paniquez pas. Voici comment distinguer une fissure bénigne d\'une urgence structurelle, et surtout : comment agir pour protéger votre patrimoine sans vous ruiner.',
     date: '2026-06-12',
     readTime: '8 min',
