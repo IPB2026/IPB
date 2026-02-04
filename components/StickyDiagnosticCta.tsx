@@ -7,8 +7,8 @@ import { usePathname } from "next/navigation";
 export function StickyDiagnosticCta() {
   const pathname = usePathname();
 
-  // Ne pas afficher le CTA sticky sur la page Diagnostic
-  if (pathname?.startsWith("/diagnostic")) {
+  // Ne pas afficher le CTA sticky sur Diagnostic et pages conformité
+  if (pathname?.startsWith("/diagnostic") || pathname?.startsWith("/legal")) {
     return null;
   }
 
