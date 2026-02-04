@@ -1,303 +1,310 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
-import { ArrowRight, Phone, Wind, CheckCircle, ThermometerSun, Zap } from 'lucide-react';
+import { Phone, ArrowRight, Wind, ChevronRight, Shield, CheckCircle, XCircle, ThermometerSun, Droplets, Home } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'VMI Ventilation Insufflation : Prix, Avis et Installation | Expert Occitanie',
   description: 'VMI (Ventilation Mécanique par Insufflation) : solution anti-condensation et moisissures. Prix 2500-4500€ installée. Avantages vs VMC. Installateur Toulouse, Montauban, Auch (31-82-32).',
-  keywords: [
-    'VMI ventilation insufflation',
-    'VMI prix installation',
-    'VMI ou VMC',
-    'ventilation positive maison',
-    'VMI avis efficacité',
-    'insufflation air chaud',
-    'VMI contre condensation',
-    'VMI moisissures',
-    'surpression ventilation',
-    'installateur VMI toulouse',
-    'ventilation maison humide',
-    'VMI consommation electrique',
-  ],
-  alternates: {
-    canonical: 'https://www.ipb-expertise.fr/vmi-ventilation-insufflation',
-  },
-  openGraph: {
-    title: 'VMI : La Solution Anti-Condensation Efficace',
-    description: 'Ventilation par insufflation : fonctionnement, prix et avantages. Installation Toulouse.',
-    url: 'https://www.ipb-expertise.fr/vmi-ventilation-insufflation',
-    type: 'article',
-  },
-  robots: { index: true, follow: true },
+  keywords: ['VMI', 'ventilation insufflation', 'anti condensation', 'VMI prix', 'VMI vs VMC'],
+  alternates: { canonical: 'https://www.ipb-expertise.fr/vmi-ventilation-insufflation' },
 };
 
-const faqItems = [
-  {
-    question: "Quelle différence entre VMI et VMC ?",
-    answer: "La VMC extrait l'air vicié, la VMI insuffle de l'air neuf filtré. La VMI crée une légère surpression qui chasse naturellement l'humidité et empêche les infiltrations d'air froid."
-  },
-  {
-    question: "La VMI est-elle efficace contre la condensation ?",
-    answer: "Oui, la VMI est particulièrement efficace contre la condensation. En insufflant de l'air préchauffé et filtré, elle maintient les murs au-dessus du point de rosée."
-  },
-  {
-    question: "Combien coûte une VMI ?",
-    answer: "Le prix d'une VMI installée varie de 2 500€ à 4 500€ selon le modèle et la taille de la maison. C'est un investissement rentable qui réduit aussi les factures de chauffage."
-  },
-  {
-    question: "La VMI fait-elle du bruit ?",
-    answer: "Les VMI modernes sont très silencieuses (20-30 dB). Le groupe est installé dans les combles ou un local technique, limitant la nuisance sonore."
-  },
-  {
-    question: "Combien consomme une VMI ?",
-    answer: "Une VMI consomme entre 20 et 50W en fonctionnement normal, soit environ 100-200€/an d'électricité. Cette consommation est largement compensée par les économies de chauffage."
-  }
+const avantagesVMI = [
+  { avantage: 'Élimine la condensation', detail: 'L\'air insufflé assèche naturellement les surfaces froides' },
+  { avantage: 'Supprime les moisissures', detail: 'En supprimant l\'humidité, vous supprimez leur milieu de vie' },
+  { avantage: 'Air filtré', detail: 'Filtration des pollens, particules fines et polluants extérieurs' },
+  { avantage: 'Air préchauffé', detail: 'L\'air entre à température ambiante, pas de sensation de froid' },
+  { avantage: 'Économies chauffage', detail: 'Jusqu\'à 30% d\'économies en hiver (air sec = air facile à chauffer)' },
+  { avantage: 'Installation simple', detail: 'Pas de gaines dans toutes les pièces, juste un point central' },
 ];
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqItems.map(item => ({
-    "@type": "Question",
-    "name": item.question,
-    "acceptedAnswer": { "@type": "Answer", "text": item.answer }
-  }))
-};
+const comparatif = [
+  { critere: 'Principe', vmi: 'Insuffle de l\'air neuf (surpression)', vmc: 'Aspire l\'air vicié (dépression)' },
+  { critere: 'Condensation', vmi: '✅ Élimine efficacement', vmc: '⚠️ Peut aggraver' },
+  { critere: 'Air entrant', vmi: '✅ Filtré et préchauffé', vmc: '❌ Non filtré' },
+  { critere: 'Installation', vmi: '✅ Simple (1 point)', vmc: '❌ Complexe (gaines)' },
+  { critere: 'Rénovation', vmi: '✅ Idéal', vmc: '⚠️ Travaux importants' },
+  { critere: 'Prix installé', vmi: '2 500 - 4 500€', vmc: '3 000 - 8 000€' },
+];
 
 export default function VMIPage() {
   return (
-    <div className="font-sans text-slate-800 bg-slate-50 antialiased">
-      <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
-      
+    <div className="font-sans text-slate-800 bg-white antialiased">
       <TopBar />
       <Navbar />
 
-      {/* Breadcrumb */}
-      <div className="bg-white border-b border-slate-200 py-3">
-        <div className="max-w-7xl mx-auto px-4 text-sm text-slate-600">
-          <Link href="/" className="hover:text-blue-600">Accueil</Link>
-          <span className="mx-2">›</span>
-          <Link href="/expert-humidite-toulouse-31" className="hover:text-blue-600">Expert Humidité</Link>
-          <span className="mx-2">›</span>
-          <span className="text-slate-900">VMI®</span>
-        </div>
-      </div>
-
       {/* Hero */}
-      <section className="bg-gradient-to-br from-slate-900 to-blue-950 text-white py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="flex items-center gap-2 text-cyan-400 text-sm font-bold mb-4">
-            <Wind size={18} />
-            <span>Solution anti-condensation</span>
+      <section className="relative bg-gradient-to-br from-teal-900 via-emerald-900 to-slate-900 text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 70% 30%, rgba(20, 184, 166, 0.4) 0%, transparent 50%)' }}></div>
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+          <nav className="flex items-center gap-2 text-sm text-teal-200 mb-8">
+            <Link href="/" className="hover:text-white transition">Accueil</Link>
+            <ChevronRight size={14} />
+            <Link href="/expert-humidite-toulouse-31" className="hover:text-white transition">Expert Humidité</Link>
+            <ChevronRight size={14} />
+            <span className="text-white">VMI</span>
+          </nav>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-teal-500/20 border border-teal-400/30 text-teal-300 px-4 py-2 rounded-full text-sm font-bold mb-6">
+                <Wind size={16} />
+                Solution anti-condensation
+              </div>
+
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.1]">
+                VMI®
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">
+                  Ventilation par Insufflation
+                </span>
+              </h1>
+
+              <p className="text-xl text-teal-100 mb-8 leading-relaxed max-w-xl">
+                La VMI insuffle de l'air filtré et préchauffé dans votre maison, créant une 
+                <strong className="text-white"> légère surpression</strong> qui évacue naturellement 
+                l'humidité et empêche la condensation. Idéale en rénovation.
+              </p>
+
+              <div className="grid grid-cols-3 gap-4 mb-8">
+                <div className="bg-white/10 backdrop-blur rounded-2xl p-4 text-center">
+                  <div className="text-3xl font-black text-teal-400">-70%</div>
+                  <div className="text-xs text-teal-200">condensation</div>
+                </div>
+                <div className="bg-white/10 backdrop-blur rounded-2xl p-4 text-center">
+                  <div className="text-3xl font-black text-teal-400">-30%</div>
+                  <div className="text-xs text-teal-200">chauffage</div>
+                </div>
+                <div className="bg-white/10 backdrop-blur rounded-2xl p-4 text-center">
+                  <div className="text-3xl font-black text-teal-400">10 ans</div>
+                  <div className="text-xs text-teal-200">garantie</div>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/diagnostic" className="group bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl">
+                  Devis VMI gratuit
+                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all">
+                  <Phone size={20} />
+                  05 82 95 33 75
+                </a>
+              </div>
+            </div>
+
+            {/* Schéma fonctionnement */}
+            <div className="bg-white/10 backdrop-blur rounded-3xl p-8 border border-white/20">
+              <h3 className="text-xl font-bold text-white mb-6 text-center">Comment ça marche ?</h3>
+              
+              <div className="relative bg-slate-800/50 rounded-2xl p-6 h-64">
+                {/* Maison schématique */}
+                <div className="absolute inset-4 border-2 border-teal-400/50 rounded-lg">
+                  {/* Toit */}
+                  <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-32 h-12 bg-slate-700/50 rounded-t-lg"></div>
+                  
+                  {/* VMI au centre */}
+                  <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center animate-pulse">
+                    <Wind size={24} className="text-white" />
+                  </div>
+                  
+                  {/* Flèches d'air */}
+                  <div className="absolute top-20 left-1/2 transform -translate-x-1/2 flex gap-8">
+                    <ArrowRight size={20} className="text-teal-400 animate-pulse" style={{ animationDelay: '0.2s' }} />
+                    <ArrowRight size={20} className="text-teal-400 rotate-90 animate-pulse" style={{ animationDelay: '0.4s' }} />
+                    <ArrowRight size={20} className="text-teal-400 rotate-180 animate-pulse" style={{ animationDelay: '0.6s' }} />
+                  </div>
+                  
+                  {/* Légende */}
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center">
+                    <div className="text-teal-300 text-sm font-bold">Air filtré + préchauffé</div>
+                    <div className="text-slate-400 text-xs">→ Surpression → Évacuation humidité</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
-            VMI® : La Solution contre la Condensation
-          </h1>
-          <p className="text-xl text-slate-300 mb-8">
-            La Ventilation Mécanique par Insufflation (VMI®) est la solution la plus efficace contre 
-            la condensation et les moisissures. Découvrez son fonctionnement et ses avantages.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/diagnostic" className="bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
-              Devis VMI gratuit <ArrowRight size={18} />
-            </Link>
-            <a href="tel:0582953375" className="bg-white/10 border border-white/20 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
-              <Phone size={18} /> 05 82 95 33 75
-            </a>
-          </div>
+        </div>
+
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg viewBox="0 0 1440 100" fill="none" className="w-full">
+            <path d="M0 50L60 45C120 40 240 30 360 35C480 40 600 60 720 65C840 70 960 60 1080 50C1200 40 1320 30 1380 25L1440 20V100H0V50Z" fill="white"/>
+          </svg>
         </div>
       </section>
 
       {/* Avantages */}
-      <section className="py-12 bg-white border-b border-slate-200">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="text-center">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Wind className="text-blue-600" size={24} />
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-teal-100 text-teal-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
+              Pourquoi la VMI ?
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+              6 avantages de la VMI
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {avantagesVMI.map((item, index) => (
+              <div key={index} className="bg-gradient-to-br from-teal-50 to-emerald-50 rounded-3xl p-6 border border-teal-100 hover:shadow-lg transition-all">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-teal-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <CheckCircle size={20} className="text-teal-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-slate-900 mb-1">{item.avantage}</h3>
+                    <p className="text-slate-600 text-sm">{item.detail}</p>
+                  </div>
+                </div>
               </div>
-              <h3 className="font-bold text-slate-900">Anti-condensation</h3>
-              <p className="text-sm text-slate-600">Élimine l'humidité</p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Comparatif VMI vs VMC */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
+              Comparatif
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+              VMI vs VMC : quelle différence ?
+            </h2>
+          </div>
+
+          <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+            <div className="grid grid-cols-3 bg-slate-900 text-white font-bold">
+              <div className="p-4">Critère</div>
+              <div className="p-4 text-center bg-teal-600">VMI ✓</div>
+              <div className="p-4 text-center">VMC</div>
             </div>
-            <div className="text-center">
-              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <ThermometerSun className="text-green-600" size={24} />
+            {comparatif.map((row, index) => (
+              <div key={index} className="grid grid-cols-3 border-b border-slate-100">
+                <div className="p-4 font-bold text-slate-900">{row.critere}</div>
+                <div className="p-4 text-center bg-teal-50 text-slate-700">{row.vmi}</div>
+                <div className="p-4 text-center text-slate-600">{row.vmc}</div>
               </div>
-              <h3 className="font-bold text-slate-900">Air préchauffé</h3>
-              <p className="text-sm text-slate-600">Économies de chauffage</p>
-            </div>
-            <div className="text-center">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <CheckCircle className="text-purple-600" size={24} />
+            ))}
+          </div>
+
+          <div className="mt-8 p-6 bg-teal-50 border border-teal-200 rounded-2xl">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                <Home className="w-6 h-6 text-teal-600" />
               </div>
-              <h3 className="font-bold text-slate-900">Air filtré</h3>
-              <p className="text-sm text-slate-600">Pollen, poussière</p>
-            </div>
-            <div className="text-center">
-              <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Zap className="text-amber-600" size={24} />
+              <div>
+                <h4 className="font-bold text-teal-900 mb-1">💡 Idéal en rénovation</h4>
+                <p className="text-teal-800 text-sm">
+                  Contrairement à la VMC qui nécessite des gaines dans toutes les pièces, la VMI s'installe 
+                  en un seul point (combles ou placard technique). Parfait pour les maisons anciennes.
+                </p>
               </div>
-              <h3 className="font-bold text-slate-900">Faible conso</h3>
-              <p className="text-sm text-slate-600">20-50W seulement</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contenu */}
-      <article className="py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="prose prose-lg max-w-none">
-            <h2>Qu'est-ce que la VMI® ?</h2>
-            <p>
-              La <strong>VMI® (Ventilation Mécanique par Insufflation)</strong> est un système de ventilation 
-              qui insuffle de l'air neuf, filtré et préchauffé à l'intérieur de la maison. Contrairement à la 
-              VMC qui extrait l'air, la VMI crée une légère surpression qui chasse naturellement l'humidité 
-              et l'air vicié.
-            </p>
+      {/* Prix */}
+      <section className="py-20 bg-slate-900 text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-black mb-12">
+            Prix VMI installée
+          </h2>
 
-            <h2>Comment fonctionne la VMI ?</h2>
-            <ol>
-              <li><strong>Prise d'air extérieur :</strong> L'air est capté à l'extérieur via une entrée d'air</li>
-              <li><strong>Filtration :</strong> L'air passe par des filtres (poussière, pollen, particules)</li>
-              <li><strong>Préchauffage :</strong> L'air est réchauffé (récupération de chaleur des combles ou résistance)</li>
-              <li><strong>Insufflation :</strong> L'air est insufflé dans la maison via des bouches</li>
-              <li><strong>Surpression :</strong> L'air humide et vicié est chassé par les ouvertures naturelles</li>
-            </ol>
-
-            <h2>VMI vs VMC : le comparatif</h2>
-
-            <div className="overflow-x-auto my-8 not-prose">
-              <table className="w-full border-collapse border border-slate-200">
-                <thead className="bg-slate-900 text-white">
-                  <tr>
-                    <th className="border border-slate-200 p-3 text-left">Critère</th>
-                    <th className="border border-slate-200 p-3 text-center">VMI®</th>
-                    <th className="border border-slate-200 p-3 text-center">VMC simple flux</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border border-slate-200 p-3 font-medium">Principe</td>
-                    <td className="border border-slate-200 p-3 text-center">Insuffle l'air</td>
-                    <td className="border border-slate-200 p-3 text-center">Extrait l'air</td>
-                  </tr>
-                  <tr className="bg-slate-50">
-                    <td className="border border-slate-200 p-3 font-medium">Anti-condensation</td>
-                    <td className="border border-slate-200 p-3 text-center text-green-600 font-bold">⭐⭐⭐</td>
-                    <td className="border border-slate-200 p-3 text-center">⭐⭐</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-slate-200 p-3 font-medium">Air préchauffé</td>
-                    <td className="border border-slate-200 p-3 text-center text-green-600">✅ Oui</td>
-                    <td className="border border-slate-200 p-3 text-center text-red-600">❌ Non</td>
-                  </tr>
-                  <tr className="bg-slate-50">
-                    <td className="border border-slate-200 p-3 font-medium">Filtration</td>
-                    <td className="border border-slate-200 p-3 text-center text-green-600">✅ Complète</td>
-                    <td className="border border-slate-200 p-3 text-center text-amber-600">Partielle</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-slate-200 p-3 font-medium">Installation</td>
-                    <td className="border border-slate-200 p-3 text-center">1 journée</td>
-                    <td className="border border-slate-200 p-3 text-center">1-2 jours</td>
-                  </tr>
-                  <tr className="bg-slate-50">
-                    <td className="border border-slate-200 p-3 font-medium">Prix installé</td>
-                    <td className="border border-slate-200 p-3 text-center">2 500 - 4 500€</td>
-                    <td className="border border-slate-200 p-3 text-center">1 500 - 3 000€</td>
-                  </tr>
-                </tbody>
-              </table>
+          <div className="bg-gradient-to-br from-teal-500/20 to-emerald-500/20 rounded-3xl p-8 md:p-12 border border-teal-500/30">
+            <div className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400 mb-4">
+              2 500 - 4 500€
             </div>
+            <div className="text-slate-400 mb-8">Fourniture + installation + mise en service</div>
 
-            <h2>Dans quels cas installer une VMI ?</h2>
-            <ul>
-              <li>✅ <strong>Condensation :</strong> Moisissures aux fenêtres et dans les angles</li>
-              <li>✅ <strong>Maison ancienne :</strong> Pas de VMC existante</li>
-              <li>✅ <strong>Rénovation :</strong> Plus simple à installer qu'une VMC</li>
-              <li>✅ <strong>Allergies :</strong> Besoin d'air filtré (pollen, poussière)</li>
-              <li>✅ <strong>Ponts thermiques :</strong> Murs froids qui condensent</li>
-            </ul>
-
-            <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-xl my-8 not-prose">
-              <h3 className="font-bold text-slate-900 mb-2">💡 Le saviez-vous ?</h3>
-              <p className="text-slate-700">
-                Une VMI peut faire économiser jusqu'à 15% sur la facture de chauffage grâce au préchauffage 
-                de l'air et à l'élimination de l'humidité (un air sec est plus facile à chauffer).
-              </p>
+            <div className="grid md:grid-cols-3 gap-6 text-left">
+              <div className="bg-white/5 rounded-2xl p-4">
+                <div className="font-bold text-white mb-2">Inclus</div>
+                <ul className="text-slate-400 text-sm space-y-1">
+                  <li>✓ Centrale VMI</li>
+                  <li>✓ Filtres G4 + F7</li>
+                  <li>✓ Pose et raccordement</li>
+                  <li>✓ Mise en service</li>
+                </ul>
+              </div>
+              <div className="bg-white/5 rounded-2xl p-4">
+                <div className="font-bold text-white mb-2">Durée</div>
+                <ul className="text-slate-400 text-sm space-y-1">
+                  <li>• Installation : 1 journée</li>
+                  <li>• Effet immédiat</li>
+                  <li>• Garantie 10 ans</li>
+                </ul>
+              </div>
+              <div className="bg-white/5 rounded-2xl p-4">
+                <div className="font-bold text-white mb-2">Entretien</div>
+                <ul className="text-slate-400 text-sm space-y-1">
+                  <li>• Filtres : 50-100€/an</li>
+                  <li>• Conso élec : ~100€/an</li>
+                  <li>• Maintenance minimale</li>
+                </ul>
+              </div>
             </div>
-
-            <h2>Installation d'une VMI par IPB</h2>
-            <p>
-              Nous installons des VMI de qualité professionnelle dans toute la région toulousaine. 
-              L'installation prend généralement une journée et inclut :
-            </p>
-            <ul>
-              <li>Diagnostic préalable de votre habitat</li>
-              <li>Choix du modèle adapté à votre surface</li>
-              <li>Installation du groupe dans les combles</li>
-              <li>Pose des bouches d'insufflation</li>
-              <li>Mise en service et réglages</li>
-              <li>Formation à l'utilisation et à l'entretien</li>
-            </ul>
-
-            <h2>Prix VMI installée</h2>
-            <ul>
-              <li><strong>Appartement / petite maison :</strong> 2 500 - 3 000€</li>
-              <li><strong>Maison 100-150m² :</strong> 3 000 - 3 800€</li>
-              <li><strong>Grande maison &gt;150m² :</strong> 3 800 - 4 500€</li>
-            </ul>
-            <p>
-              Des aides financières existent (MaPrimeRénov', CEE) pour l'installation d'une VMI dans le 
-              cadre d'une rénovation énergétique.
-            </p>
-          </div>
-
-          {/* Lien vers le HUB */}
-          <div className="mt-12 p-8 bg-blue-50 border-2 border-blue-200 rounded-2xl">
-            <h3 className="text-xl font-bold text-slate-900 mb-4">💧 En savoir plus sur l'humidité</h3>
-            <p className="text-slate-600 mb-4">
-              La VMI est une solution efficace, mais elle doit être combinée à un diagnostic global 
-              de votre problème d'humidité.
-            </p>
-            <Link href="/expert-humidite-toulouse-31" className="inline-flex items-center gap-2 text-blue-600 font-bold hover:text-blue-700">
-              Guide Expert Humidité <ArrowRight size={18} />
-            </Link>
           </div>
         </div>
-      </article>
+      </section>
 
-      {/* FAQ */}
-      <section className="py-16 bg-slate-100">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Questions fréquentes</h2>
-          <div className="space-y-4">
-            {faqItems.map((item, index) => (
-              <details key={index} className="bg-white rounded-xl shadow-sm border border-slate-200 group">
-                <summary className="p-6 cursor-pointer font-bold text-slate-900 flex items-center justify-between">
-                  {item.question}
-                  <span className="text-blue-600 group-open:rotate-180 transition-transform">▼</span>
-                </summary>
-                <div className="px-6 pb-6 text-slate-600">{item.answer}</div>
-              </details>
+      {/* Articles connexes */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-black text-slate-900 mb-8 text-center">
+            Articles connexes
+          </h2>
+          <div className="grid md:grid-cols-4 gap-6">
+            {[
+              { href: '/condensation-ou-infiltration', icon: '❓', title: 'Condensation ?', desc: 'Comment distinguer' },
+              { href: '/moisissures-maison-sante', icon: '🦠', title: 'Moisissures', desc: 'Risques santé' },
+              { href: '/ponts-thermiques-condensation', icon: '🌡️', title: 'Ponts thermiques', desc: 'Zones froides' },
+              { href: '/remontees-capillaires-traitement', icon: '💧', title: 'Remontées capillaires', desc: 'Autre cause humidité' },
+            ].map((item, index) => (
+              <Link 
+                key={index}
+                href={item.href}
+                className="group bg-slate-50 rounded-2xl p-6 hover:bg-teal-50 transition-all hover:-translate-y-1 border border-slate-100 hover:border-teal-200"
+              >
+                <span className="text-4xl mb-4 block">{item.icon}</span>
+                <h3 className="font-bold text-slate-900 group-hover:text-teal-600 transition-colors mb-1">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-slate-500">{item.desc}</p>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-blue-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-teal-600 to-emerald-600 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-extrabold mb-6">Condensation dans votre maison ?</h2>
-          <p className="text-xl text-blue-100 mb-8">Devis VMI gratuit sous 48h. Installation rapide.</p>
-          <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50">
-            Demander un devis VMI <ArrowRight size={20} />
-          </Link>
+          <h2 className="text-3xl md:text-5xl font-black mb-6">
+            Un air sain.
+            <span className="block text-teal-200">Une maison sèche.</span>
+          </h2>
+          <p className="text-xl text-teal-100 mb-8">
+            Devis gratuit • Installation en 1 jour • Garantie 10 ans
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link href="/diagnostic" className="group bg-white text-teal-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-teal-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">
+              Devis VMI gratuit
+              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/30 hover:bg-white/20 px-8 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3">
+              <Phone size={20} />
+              05 82 95 33 75
+            </a>
+          </div>
         </div>
       </section>
 
