@@ -55,7 +55,7 @@ export function StickyDiagnosticCta() {
   const getSubText = () => {
     if (isFissuresPage) return "Réponse sous 48h";
     if (isHumiditePage) return "Réponse sous 48h";
-    return "Sans engagement";
+    return "Réponse sous 48h";
   };
 
   if (!isVisible) return null;
@@ -74,7 +74,7 @@ export function StickyDiagnosticCta() {
           </span>
           <span className="flex items-center gap-1">
             <Shield size={12} className="text-green-400" />
-            Garanti
+            Garantie décennale
           </span>
           <span className="flex items-center gap-1">
             <Clock size={12} className="text-orange-400" />
@@ -107,7 +107,7 @@ export function StickyDiagnosticCta() {
 
           {/* Sous-texte */}
           <p className="text-center text-orange-100 text-xs mt-2 font-medium">
-            ✓ Gratuit · ✓ Sans engagement · ✓ {getSubText()}
+            ✓ Gratuit · ✓ {getSubText()} · ✓ Garantie décennale
           </p>
         </div>
       </div>
@@ -156,7 +156,7 @@ export function StickyDiagnosticCta() {
                 </span>
                 <span className="flex items-center gap-1">
                   <Shield size={14} className="text-green-500" />
-                  Garanti 10 ans
+                  Garantie décennale
                 </span>
               </div>
 
@@ -180,7 +180,7 @@ export function StickyDiagnosticCta() {
 
               {/* Micro-réassurance */}
               <p className="text-center text-slate-400 text-xs mt-3">
-                ✓ Sans engagement · ✓ Devis gratuit
+                ✓ Devis gratuit · ✓ Réponse 48h
               </p>
             </div>
           </div>
