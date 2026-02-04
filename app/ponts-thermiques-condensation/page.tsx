@@ -7,8 +7,8 @@ import { Footer } from '@/components/home/Footer';
 import { Thermometer, ArrowRight, Phone, AlertTriangle, CheckCircle, Wind, Droplets, Home } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Ponts Thermiques : Condensation, Moisissures et Solutions | Toulouse',
-  description: 'Ponts thermiques = condensation + moisissures. Zones froides (angles, fenêtres, planchers). Solutions : isolation, VMI, correction thermique. Diagnostic expert Toulouse.',
+  title: 'Ponts Thermiques : Condensation, Moisissures et Solutions | Expert Occitanie',
+  description: 'Ponts thermiques = condensation + moisissures. Zones froides (angles, fenêtres, planchers). Solutions : isolation, VMI, correction thermique. Diagnostic expert Toulouse, Montauban, Auch (31-82-32).',
   keywords: [
     'pont thermique condensation',
     'pont thermique moisissure',

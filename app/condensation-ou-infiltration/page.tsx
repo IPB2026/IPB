@@ -7,8 +7,8 @@ import { Footer } from '@/components/home/Footer';
 import { ArrowRight, Phone, Droplets, Wind, CloudRain } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Condensation ou Infiltration ? Guide Diagnostic Humidité | Toulouse',
-  description: 'Murs humides : condensation ou infiltration ? Comment différencier, identifier la cause exacte et choisir le bon traitement. Diagnostic expert Toulouse 48h.',
+  title: 'Condensation ou Infiltration ? Guide Diagnostic Humidité | Expert Occitanie',
+  description: 'Murs humides : condensation ou infiltration ? Comment différencier, identifier la cause exacte et choisir le bon traitement. Diagnostic expert Toulouse, Montauban, Auch (31-82-32) 48h.',
   keywords: [
     'condensation ou infiltration',
     'différence condensation infiltration',

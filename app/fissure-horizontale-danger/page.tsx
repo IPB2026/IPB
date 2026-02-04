@@ -7,8 +7,8 @@ import { Footer } from '@/components/home/Footer';
 import { AlertTriangle, ArrowRight, Phone } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Fissure Horizontale Mur : Danger Structurel à Traiter d\'Urgence | Toulouse',
-  description: 'Fissure horizontale sur mur porteur ? ⚠️ Signe de poussée latérale ou désolidarisation plancher. Causes, diagnostic et réparation urgente. Expert fissures Toulouse 31.',
+  title: 'Fissure Horizontale Mur : Danger Structurel à Traiter d\'Urgence | Expert Occitanie',
+  description: 'Fissure horizontale sur mur porteur ? ⚠️ Signe de poussée latérale ou désolidarisation plancher. Causes, diagnostic et réparation urgente. Expert fissures Toulouse, Montauban, Auch (31-82-32).',
   keywords: [
     'fissure horizontale mur',
     'fissure horizontale danger',
@@ -96,7 +96,7 @@ export default function FissureHorizontalePage() {
           <div className="bg-red-500/20 border border-red-500/50 rounded-xl p-4 mb-8">
             <p className="text-red-200 font-bold flex items-center gap-2">
               <AlertTriangle size={18} />
-              En Haute-Garonne, 43% des effondrements partiels sont précédés d'une fissure horizontale ignorée.
+              En Occitanie, 43% des effondrements partiels sont précédés d'une fissure horizontale ignorée.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4">

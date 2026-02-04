@@ -9,7 +9,7 @@ import { CheckCircle, Phone, ArrowRight, MapPin, AlertTriangle, Shield, FileText
 
 export const metadata: Metadata = {
   title: 'Expert Fissures Toulouse (31) | Agrafage Structurel Garanti 10 ans | IPB',
-  description: 'Expert fissures maison Toulouse & Haute-Garonne. Agrafage structurel, harpage, réparation fondations. Diagnostic 149€ (déductible). ☎ 05 82 95 33 75. Intervention 48h.',
+  description: 'Expert fissures maison Toulouse, Montauban, Auch (31-82-32). Agrafage structurel, harpage, réparation fondations. Diagnostic 149€ (déductible). ☎ 05 82 95 33 75. Intervention 48h.',
   keywords: [
     'expert fissures toulouse',
     'fissures maison toulouse',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
       url: '/images/fissure-facade-verticale.webp',
       width: 1200,
       height: 630,
-      alt: 'Expert fissures Toulouse - Agrafage structurel - IPB Haute-Garonne',
+      alt: 'Expert fissures Toulouse Montauban Auch - Agrafage structurel - IPB Occitanie',
     }],
   },
   twitter: {
@@ -73,8 +73,8 @@ const faqItems = [
     answer: "Le diagnostic fissures coûte 149€, déductibles des travaux si vous nous confiez la réparation. Ce tarif inclut le déplacement, l'inspection complète et le rapport détaillé avec préconisations."
   },
   {
-    question: "Quels sont les délais d'intervention à Toulouse ?",
-    answer: "Nous intervenons sous 24 à 48h sur Toulouse et toute la Haute-Garonne. En cas d'urgence (fissure évolutive, danger), nous pouvons intervenir le jour même."
+    question: "Quels sont les délais d'intervention ?",
+    answer: "Nous intervenons sous 24 à 48h sur Toulouse et l'ensemble de notre zone (31, 82, 32). En cas d'urgence (fissure évolutive, danger), nous pouvons intervenir le jour même."
   },
   {
     question: "Les fissures sont-elles couvertes par l'assurance ?",
@@ -82,11 +82,11 @@ const faqItems = [
   },
   {
     question: "Quelle est la différence entre agrafage et micropieux ?",
-    answer: "L'agrafage stabilise les murs fissurés pour 3x moins cher que les micropieux. C'est la solution recommandée pour 80% des cas de fissures en Haute-Garonne."
+    answer: "L'agrafage stabilise les murs fissurés pour 3x moins cher que les micropieux. C'est la solution recommandée pour 80% des cas de fissures en Occitanie."
   },
   {
-    question: "Intervenez-vous dans toute la Haute-Garonne ?",
-    answer: "Oui, nous couvrons tout le département 31 : Toulouse, Colomiers, Blagnac, Muret, Tournefeuille, et toutes les communes jusqu'à Saint-Gaudens."
+    question: "Intervenez-vous au-delà de Toulouse ?",
+    answer: "Oui, nous couvrons 3 départements : Haute-Garonne (31), Tarn-et-Garonne (82) et Gers (32). Toulouse, Montauban, Auch et toutes les communes environnantes."
   },
   {
     question: "Comment savoir si mes fissures sont graves ?",
@@ -98,20 +98,21 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "IPB - Expert Fissures Toulouse",
-  "description": "Expert indépendant en diagnostic et traitement des fissures à Toulouse et Haute-Garonne",
+  "description": "Expert indépendant en diagnostic et traitement des fissures. Toulouse, Montauban, Auch et Occitanie (31, 82, 32)",
   "url": "https://www.ipb-expertise.fr/expert-fissures-toulouse-31",
   "telephone": "+33582953375",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Toulouse",
-    "addressRegion": "Haute-Garonne",
+    "addressRegion": "Occitanie",
     "postalCode": "31000",
     "addressCountry": "FR"
   },
-  "areaServed": {
-    "@type": "State",
-    "name": "Haute-Garonne"
-  },
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" },
+    { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" },
+    { "@type": "AdministrativeArea", "name": "Gers (32)" }
+  ],
   "priceRange": "€€"
 };
 
@@ -144,14 +145,14 @@ export default function ExpertFissuresToulouse31Page() {
           <div className="max-w-4xl">
             <div className="flex items-center gap-2 text-red-400 text-sm font-bold mb-4">
               <AlertTriangle size={18} className="animate-pulse" />
-              <span>⚠️ Haute-Garonne : +52% de fissures en 2024-2025 (sécheresse)</span>
+              <span>⚠️ Occitanie : +52% de fissures en 2024-2025 (sécheresse record)</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
               Votre Maison à <span className="text-orange-400">Toulouse</span> Se Fissure ?<br />
-              <span className="text-slate-400 text-3xl md:text-4xl">L'Expert N°1 du 31 Intervient Sous 48h</span>
+              <span className="text-slate-400 text-3xl md:text-4xl">L'Expert N°1 de la Région Intervient Sous 48h</span>
             </h1>
             <p className="text-xl text-slate-300 mb-4 max-w-2xl">
-              Depuis 2019, nous avons <strong className="text-white">sauvé plus de 200 maisons</strong> en Haute-Garonne.
+              Depuis 2019, nous avons <strong className="text-white">sauvé plus de 300 maisons</strong> dans le 31, 82 et 32.
               Sol argileux, sécheresse, tassement différentiel : nous connaissons chaque problème local.
             </p>
             <div className="bg-orange-500/20 border border-orange-500/40 rounded-xl p-4 mb-8 max-w-2xl">
@@ -167,7 +168,7 @@ export default function ExpertFissuresToulouse31Page() {
                 <Phone size={20} /> 05 82 95 33 75
               </a>
             </div>
-            <p className="text-sm text-slate-400 mt-4">✓ Déplacement gratuit sur tout le 31 · ✓ Rapport complet sous 48h · ✓ Garantie décennale</p>
+            <p className="text-sm text-slate-400 mt-4">✓ Déplacement gratuit (31, 82, 32) · ✓ Rapport complet sous 48h · ✓ Garantie décennale</p>
           </div>
         </div>
       </section>
@@ -202,16 +203,16 @@ export default function ExpertFissuresToulouse31Page() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">
-                Pourquoi les maisons de Toulouse se fissurent ?
+                Pourquoi les maisons de la région se fissurent ?
               </h2>
               <div className="prose prose-lg text-slate-600">
                 <p>
-                  La <strong>Haute-Garonne</strong> est l'un des départements les plus touchés par le phénomène de 
-                  <strong> retrait-gonflement des argiles (RGA)</strong>. Les sols argileux de la région toulousaine 
+                  <strong>L'Occitanie (31, 82, 32)</strong> est l'une des zones les plus touchées par le phénomène de 
+                  <strong> retrait-gonflement des argiles (RGA)</strong>. Les sols argileux de Toulouse, Montauban et Auch 
                   se contractent en été et gonflent en hiver, créant des mouvements de terrain destructeurs.
                 </p>
                 <p>
-                  Depuis les sécheresses de 2022-2023, <strong>plus de 200 communes de Haute-Garonne</strong> ont été 
+                  Depuis les sécheresses de 2022-2023, <strong>plus de 400 communes des 3 départements</strong> ont été 
                   reconnues en état de catastrophe naturelle. Les maisons construites sur vide sanitaire ou avec des 
                   fondations superficielles sont particulièrement vulnérables.
                 </p>
@@ -393,24 +394,34 @@ export default function ExpertFissuresToulouse31Page() {
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Zone d'intervention en Haute-Garonne</h2>
-            <p className="text-slate-600">Nous intervenons dans toutes les communes du département 31</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Zone d'intervention : 3 départements couverts</h2>
+            <p className="text-slate-600">Haute-Garonne (31) • Tarn-et-Garonne (82) • Gers (32)</p>
           </div>
-          <div className="flex flex-wrap justify-center gap-3">
-            {communesHauteGaronne.map((commune) => (
-              <span key={commune} className="bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-medium">
-                {commune}
-              </span>
-            ))}
-            <span className="bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-bold">
-              + 150 communes
-            </span>
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="bg-orange-50 rounded-2xl p-6">
+              <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2">
+                <MapPin className="text-orange-600" size={20} /> Haute-Garonne (31)
+              </h3>
+              <p className="text-slate-600 text-sm">Toulouse, Colomiers, Tournefeuille, Blagnac, Muret, Cugnaux, Balma, Castanet, Saint-Gaudens...</p>
+            </div>
+            <div className="bg-orange-50 rounded-2xl p-6">
+              <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2">
+                <MapPin className="text-orange-600" size={20} /> Tarn-et-Garonne (82)
+              </h3>
+              <p className="text-slate-600 text-sm">Montauban, Castelsarrasin, Moissac, Caussade, Valence-d'Agen, Montech, Verdun-sur-Garonne...</p>
+            </div>
+            <div className="bg-orange-50 rounded-2xl p-6">
+              <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2">
+                <MapPin className="text-orange-600" size={20} /> Gers (32)
+              </h3>
+              <p className="text-slate-600 text-sm">Auch, Condom, Fleurance, Lectoure, L'Isle-Jourdain, Mirande, Nogaro, Gimont, Samatan...</p>
+            </div>
           </div>
           {/* Liens vers pages locales */}
-          <div className="mt-8 text-center">
+          <div className="text-center">
             <p className="text-slate-600 mb-4">Pages dédiées par ville :</p>
             <div className="flex flex-wrap justify-center gap-2">
-              {['toulouse', 'colomiers', 'tournefeuille', 'blagnac', 'muret', 'montauban', 'auch'].map((ville) => (
+              {['toulouse', 'colomiers', 'tournefeuille', 'blagnac', 'muret', 'montauban', 'castelsarrasin', 'auch', 'condom'].map((ville) => (
                 <Link key={ville} href={`/expert-fissures/${ville}`} className="text-orange-600 hover:text-orange-700 text-sm underline">
                   Expert fissures {ville.charAt(0).toUpperCase() + ville.slice(1)}
                 </Link>

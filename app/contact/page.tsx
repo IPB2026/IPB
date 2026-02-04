@@ -94,11 +94,11 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-bold text-sm md:text-base text-slate-900 mb-1">Zone d'intervention</h3>
                       <p className="text-sm md:text-base text-slate-600">
-                        Toulouse et 50 km autour<br />
-                        Haute-Garonne (31)
+                        3 départements couverts<br />
+                        31 • 82 • 32
                       </p>
                       <p className="text-xs text-slate-500 mt-2">
-                        Colomiers, Blagnac, Balma, Tournefeuille, Muret, Ramonville...
+                        Toulouse, Montauban, Auch, Colomiers, Castelsarrasin, Condom...
                       </p>
                     </div>
                   </div>

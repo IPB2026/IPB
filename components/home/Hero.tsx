@@ -108,7 +108,7 @@ export function Hero() {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-orange-500/30">
               <Image
                 src="/images/fissure-facade-verticale.webp"
-                alt="Fissure structurelle façade - Expert fissures Toulouse Haute-Garonne"
+                alt="Fissure structurelle façade - Expert fissures Toulouse Montauban Auch (31-82-32)"
                 width={300}
                 height={400}
                 className="w-full h-64 object-cover"
@@ -127,7 +127,7 @@ export function Hero() {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-blue-500/30 mt-8">
               <Image
                 src="/images/salpetre-avant-apres.webp"
-                alt="Traitement humidité salpêtre - Expert humidité Toulouse remontées capillaires"
+                alt="Traitement humidité salpêtre - Expert humidité Occitanie (31-82-32) remontées capillaires"
                 width={300}
                 height={400}
                 className="w-full h-64 object-cover"

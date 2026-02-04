@@ -7,8 +7,8 @@ import { Footer } from '@/components/home/Footer';
 import { AlertTriangle, ArrowRight, Phone, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Fissure en Escalier : Causes, Dangers et Réparation | Expert Toulouse',
-  description: 'Fissure en escalier sur votre mur ? ⚠️ Signe de tassement différentiel. Causes (sol argileux, sécheresse), dangers structurels et solutions (agrafage). Expert Toulouse 31.',
+  title: 'Fissure en Escalier : Causes, Dangers et Réparation | Expert Occitanie',
+  description: 'Fissure en escalier sur votre mur ? ⚠️ Signe de tassement différentiel. Causes (sol argileux, sécheresse), dangers structurels et solutions (agrafage). Expert Toulouse, Montauban, Auch (31-82-32).',
   keywords: [
     'fissure en escalier',
     'fissure escalier mur',
@@ -151,7 +151,7 @@ export default function FissureEnEscalierPage() {
 
             <h3>2. Retrait-gonflement des argiles (RGA)</h3>
             <p>
-              En <strong>Haute-Garonne</strong>, c'est la cause n°1. Les sols argileux gonflent avec l'eau et se rétractent 
+              En <strong>Occitanie (31, 82, 32)</strong>, c'est la cause n°1. Les sols argileux gonflent avec l'eau et se rétractent 
               en période sèche. Ces mouvements cycliques fissurent les maisons, surtout après les sécheresses.
             </p>
 
@@ -301,7 +301,7 @@ export default function FissureEnEscalierPage() {
           </p>
           <div className="bg-white/10 rounded-xl p-4 mb-8 max-w-md mx-auto backdrop-blur-sm">
             <p className="text-sm">
-              🏆 <strong>Plus de 200 maisons sauvées</strong> en Haute-Garonne depuis 2019<br />
+              🏆 <strong>Plus de 300 maisons sauvées</strong> sur les départements 31, 82 et 32 depuis 2019<br />
               ⭐ Note Google : 4.9/5 (14 avis vérifiés)
             </p>
           </div>

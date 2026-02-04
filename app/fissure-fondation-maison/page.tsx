@@ -8,7 +8,7 @@ import { AlertTriangle, ArrowRight, Phone, Home } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Fissure Fondation Maison : Causes et Solutions (Agrafage vs Micropieux)',
-  description: 'Fissures dues aux fondations ? Causes (tassement, sol argileux, RGA). Comparatif solutions : agrafage (8-15k€) vs micropieux (25-50k€). Expert fondations Toulouse.',
+  description: 'Fissures dues aux fondations ? Causes (tassement, sol argileux, RGA). Comparatif solutions : agrafage (8-15k€) vs micropieux (25-50k€). Expert fondations Toulouse, Montauban, Auch (31-82-32).',
   keywords: [
     'fissure fondation maison',
     'problème fondation maison',
@@ -119,7 +119,7 @@ export default function FissureFondationPage() {
               et se fissurent.
             </p>
             <p>
-              En <strong>Haute-Garonne</strong>, les sols argileux sont particulièrement problématiques : ils gonflent avec 
+              En <strong>Occitanie (31, 82, 32)</strong>, les sols argileux sont particulièrement problématiques : ils gonflent avec 
               l'eau et se rétractent en période sèche, créant des mouvements cycliques sous les fondations.
             </p>
 

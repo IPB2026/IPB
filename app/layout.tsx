@@ -25,11 +25,11 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.ipb-expertise.fr'),
   title: {
-    default: "IPB - Expert Fissures & Humidité Toulouse | Haute-Garonne",
+    default: "IPB - Expert Fissures & Humidité | Toulouse, Montauban, Auch (31-82-32)",
     template: "%s | IPB"
   },
-  description: "Expert fissures et humidité en Haute-Garonne. Agrafage, injection résine, garantie décennale. Diagnostic gratuit.",
-  keywords: ["fissures maison", "humidité murs", "Toulouse", "Haute-Garonne", "agrafage", "injection résine", "expert bâtiment", "garantie décennale"],
+  description: "Expert fissures et humidité en Occitanie (31, 82, 32). Agrafage, injection résine, garantie décennale. Toulouse, Montauban, Auch. Diagnostic gratuit.",
+  keywords: ["fissures maison", "humidité murs", "Toulouse", "Montauban", "Auch", "Haute-Garonne", "Tarn-et-Garonne", "Gers", "agrafage", "injection résine", "expert bâtiment", "garantie décennale"],
   authors: [{ name: "IPB - Institut de Pathologie du Bâtiment" }],
   creator: "IPB",
   publisher: "IPB",
@@ -52,21 +52,21 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://www.ipb-expertise.fr",
     siteName: "IPB - Institut de Pathologie du Bâtiment",
-    title: "IPB - Expert Fissures & Humidité Toulouse | Haute-Garonne",
-    description: "Expert en traitement des fissures et de l'humidité en Haute-Garonne. Solutions techniques avec garantie décennale.",
+    title: "IPB - Expert Fissures & Humidité | Toulouse, Montauban, Auch",
+    description: "Expert fissures et humidité en Occitanie (31, 82, 32). Agrafage, injection résine, cuvelage, VMI. Garantie décennale.",
     images: [
       {
         url: "/images/IPB_Logo_HD.png",
         width: 1200,
         height: 630,
-        alt: "IPB Expert Fissures Humidité Toulouse Haute-Garonne - Agrafage Injection Résine Garantie Décennale",
+        alt: "IPB Expert Fissures Humidité Toulouse Montauban Auch - Agrafage Injection Résine Garantie Décennale",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "IPB - Expert Fissures & Humidité Toulouse",
-    description: "Expert en traitement des fissures et de l'humidité en Haute-Garonne.",
+    title: "IPB - Expert Fissures & Humidité (31-82-32)",
+    description: "Expert fissures et humidité en Occitanie. Toulouse, Montauban, Auch et environs.",
     images: ["/images/IPB_Logo_HD.png"],
   },
   robots: {
@@ -91,19 +91,19 @@ export const metadata: Metadata = {
   },
 }
 
-// Schéma JSON-LD pour le SEO local
+// Schéma JSON-LD pour le SEO local - Zone d'intervention 31, 82, 32
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "IPB - Institut de Pathologie du Bâtiment",
   "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
-  "description": "Expert en traitement des fissures et de l'humidité en Haute-Garonne. Solutions techniques (agrafage, injection résine) avec garantie décennale.",
+  "description": "Expert en traitement des fissures et de l'humidité en Occitanie (31, 82, 32). Solutions techniques (agrafage, injection résine, cuvelage, VMI) avec garantie décennale. Toulouse, Montauban, Auch et environs.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "54 avenue Jean Jaurès",
     "addressLocality": "Tournefeuille",
     "postalCode": "31170",
-    "addressRegion": "Haute-Garonne",
+    "addressRegion": "Occitanie",
     "addressCountry": "FR"
   },
   "geo": {
@@ -114,21 +114,19 @@ const localBusinessSchema = {
   "url": "https://www.ipb-expertise.fr",
   "telephone": "+33582953375",
   "priceRange": "€€",
-  "areaServed": {
-    "@type": "City",
-    "name": "Toulouse"
-  },
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" },
+    { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" },
+    { "@type": "AdministrativeArea", "name": "Gers (32)" }
+  ],
   "serviceArea": {
     "@type": "GeoCircle",
     "geoMidpoint": {
       "@type": "GeoCoordinates",
-      "latitude": "43.6047",
-      "longitude": "1.4442"
+      "latitude": "43.7",
+      "longitude": "1.3"
     },
-    "geoRadius": {
-      "@type": "Distance",
-      "name": "Haute-Garonne (31)"
-    }
+    "geoRadius": "80km"
   },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",

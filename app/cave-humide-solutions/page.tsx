@@ -7,8 +7,8 @@ import { Footer } from '@/components/home/Footer';
 import { Warehouse, ArrowRight, Phone, AlertTriangle, CheckCircle, Droplets, Wind, Shield } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Cave Humide : Cuvelage, Drainage et Solutions | Prix Toulouse',
-  description: 'Cave humide ou sous-sol inondé ? Causes (infiltrations, nappe, condensation). Solutions : cuvelage (200-400€/m²), drainage, VMI. Diagnostic gratuit Toulouse.',
+  title: 'Cave Humide : Cuvelage, Drainage et Solutions | Prix Occitanie (31-82-32)',
+  description: 'Cave humide ou sous-sol inondé ? Causes (infiltrations, nappe, condensation). Solutions : cuvelage (200-400€/m²), drainage, VMI. Diagnostic gratuit Toulouse, Montauban, Auch.',
   keywords: [
     'cave humide solution',
     'cuvelage cave prix',
@@ -201,7 +201,7 @@ export default function CaveHumideSolutionsPage() {
       <section className="py-8 bg-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <p className="text-lg">
-            <strong>70% des caves en Haute-Garonne</strong> présentent des problèmes d'humidité. 
+            <strong>70% des caves en Occitanie</strong> présentent des problèmes d'humidité. 
             C'est l'un des problèmes les plus courants que nous traitons.
           </p>
         </div>

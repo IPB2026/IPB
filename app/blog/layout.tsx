@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Blog IPB | Conseils Fissures & Humidité à Toulouse',
-  description: 'Guides experts, conseils pratiques et analyses techniques sur les fissures, l’humidité et la structure. Articles optimisés SEO pour propriétaires en Haute-Garonne.',
+  description: 'Guides experts, conseils pratiques et analyses techniques sur les fissures, l'humidité et la structure. Conseils pour propriétaires en Occitanie (31, 82, 32).',
   keywords: [
     'fissures maison',
     'humidité murs',

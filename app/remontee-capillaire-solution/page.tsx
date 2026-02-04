@@ -8,7 +8,7 @@ import { ArrowRight, Phone, Droplets, CheckCircle, AlertTriangle } from 'lucide-
 
 export const metadata: Metadata = {
   title: 'Remontées Capillaires : Causes et Solutions Durables | IPB Expertise',
-  description: 'Remontées capillaires dans vos murs ? Causes, signes et traitement par injection de résine. Garantie 30 ans. Expert Toulouse →',
+  description: 'Remontées capillaires dans vos murs ? Causes, signes et traitement par injection de résine. Garantie 30 ans. Expert Toulouse, Montauban, Auch (31-82-32) →',
   keywords: ['remontée capillaire', 'humidité ascensionnelle', 'injection résine', 'mur humide', 'traitement humidité'],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/remontee-capillaire-solution',
@@ -155,7 +155,7 @@ export default function RemonteeCapillairePage() {
 
             <h3>2. Sols argileux ou humides</h3>
             <p>
-              En Haute-Garonne, les sols argileux retiennent l'eau et alimentent en permanence les 
+              En Occitanie (31, 82, 32), les sols argileux retiennent l'eau et alimentent en permanence les 
               remontées capillaires.
             </p>
 

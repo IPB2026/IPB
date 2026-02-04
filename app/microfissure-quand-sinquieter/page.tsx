@@ -7,7 +7,7 @@ import { Footer } from '@/components/home/Footer';
 import { AlertTriangle, ArrowRight, Phone, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Microfissure Façade : Quand S\'inquiéter ? Guide Expert | Toulouse',
+  title: 'Microfissure Façade : Quand S\'inquiéter ? Guide Expert | Occitanie (31-82-32)',
   description: 'Microfissure sur façade ou mur intérieur ? Comment distinguer faïençage bénin et fissure structurelle. Critères de gravité, surveillance et quand consulter un expert.',
   keywords: [
     'microfissure façade',

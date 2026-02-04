@@ -8,8 +8,8 @@ import { Footer } from '@/components/home/Footer';
 import { AlertTriangle, ArrowRight, Phone, Skull } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Mérule : Identification, Dangers et Traitement Urgence | Toulouse',
-  description: 'Mérule (champignon destructeur du bois) ? ⚠️ URGENCE. Comment la reconnaître, dangers pour la maison, traitement professionnel. Intervention urgente Toulouse 24-48h.',
+  title: 'Mérule : Identification, Dangers et Traitement Urgence | Expert Occitanie',
+  description: 'Mérule (champignon destructeur du bois) ? ⚠️ URGENCE. Comment la reconnaître, dangers pour la maison, traitement professionnel. Intervention urgente Toulouse, Montauban, Auch (31-82-32) 24-48h.',
   keywords: [
     'mérule traitement',
     'mérule pleureuse maison',
@@ -271,7 +271,7 @@ export default function MerulePage() {
               Les maisons anciennes mal ventilées et les périodes de forte humidité favorisent son développement.
             </p>
             <p>
-              IPB intervient dans toute la région Toulouse et alentours pour des diagnostics et traitements 
+              IPB intervient dans toute la région Occitanie (31, 82, 32) pour des diagnostics et traitements 
               de mérule.
             </p>
           </div>

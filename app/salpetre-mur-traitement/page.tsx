@@ -8,8 +8,8 @@ import { Footer } from '@/components/home/Footer';
 import { AlertTriangle, ArrowRight, Phone, Droplets, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Salpêtre Mur : Causes, Dangers et Traitement Injection | Toulouse',
-  description: 'Salpêtre (poudre blanche) sur vos murs ? ⚠️ Signe de remontées capillaires. Traitement par injection résine hydrophobe. Garantie 30 ans. Expert Toulouse ☎ 05 82 95 33 75',
+  title: 'Salpêtre Mur : Causes, Dangers et Traitement Injection | Expert Occitanie',
+  description: 'Salpêtre (poudre blanche) sur vos murs ? ⚠️ Signe de remontées capillaires. Traitement par injection résine hydrophobe. Garantie 30 ans. Expert Toulouse, Montauban, Auch (31-82-32) ☎ 05 82 95 33 75',
   keywords: [
     'salpêtre mur traitement',
     'poudre blanche mur',
@@ -179,7 +179,7 @@ export default function SalpetrePage() {
               et les murs. L'eau du sol remonte librement.
             </p>
 
-            <h3>2. Sols argileux (très fréquent en Haute-Garonne)</h3>
+            <h3>2. Sols argileux (très fréquent en Occitanie 31-82-32)</h3>
             <p>
               Les argiles retiennent l'eau et la transmettent aux fondations. Après les pluies, le sol reste 
               gorgé d'eau pendant des semaines, alimentant les remontées capillaires.

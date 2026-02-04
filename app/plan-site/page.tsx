@@ -5,7 +5,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Plan du site - IPB Expertise Fissures & Humidité Toulouse',
-  description: 'Plan complet du site IPB : toutes nos pages, services, villes d\'intervention, et articles de blog. Expert fissures et humidité en Haute-Garonne.',
+  description: 'Plan complet du site IPB : toutes nos pages, services, villes d\'intervention, et articles de blog. Expert fissures et humidité en Occitanie (31, 82, 32).',
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/plan-site'
   }

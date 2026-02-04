@@ -8,7 +8,7 @@ import { AlertTriangle, ArrowRight, Phone, FileText, CheckCircle, Clock } from '
 
 export const metadata: Metadata = {
   title: 'Fissure Sécheresse : Indemnisation CAT-NAT 2024-2025 | Guide Complet',
-  description: 'Fissures maison après sécheresse ? Guide complet indemnisation CAT-NAT : démarches, délais (10 jours), franchise, expertise assurance. Aide pour votre dossier Haute-Garonne.',
+  description: 'Fissures maison après sécheresse ? Guide complet indemnisation CAT-NAT : démarches, délais (10 jours), franchise, expertise assurance. Aide pour votre dossier (31, 82, 32).',
   keywords: [
     'fissure sécheresse indemnisation',
     'CAT-NAT sécheresse 2024',

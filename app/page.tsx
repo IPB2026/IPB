@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     'catastrophe naturelle sécheresse',
   ],
   openGraph: {
-    title: "IPB Expert Fissures & Humidité | Toulouse Haute-Garonne",
+    title: "IPB Expert Fissures & Humidité | Toulouse, Montauban, Auch (31-82-32)",
     description: "Spécialiste traitement fissures (agrafage, harpage) et humidité (injection, cuvelage) à Toulouse. +200 maisons traitées. Garantie décennale.",
     url: "https://www.ipb-expertise.fr",
     siteName: "IPB - Institut de Pathologie du Bâtiment",

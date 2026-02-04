@@ -11,7 +11,7 @@ import { Droplets, AlertTriangle, CheckCircle, ArrowRight, Shield, Phone, Clock,
 import Script from 'next/script';
 
 export const metadata = {
-  title: 'Expert Humidité Toulouse | Injection Résine Garantie 30 ans | IPB',
+  title: 'Expert Humidité Occitanie (31-82-32) | Injection Résine Garantie 30 ans | IPB',
   description: 'Murs humides, salpêtre, moisissures ? Solutions complètes : injection résine, cuvelage, drainage, ventilation (VMC/VMI), traitement condensation. Garantie 30 ans. Diagnostic 149€. ☎ 05 82 95 33 75. Intervention 48h.',
   keywords: [
     'expert humidité toulouse',
@@ -31,13 +31,13 @@ export const metadata = {
     canonical: 'https://www.ipb-expertise.fr/expertise/humidite',
   },
   openGraph: {
-    title: 'Expert Humidité Toulouse | Solutions complètes | IPB',
+    title: 'Expert Humidité Occitanie (31-82-32) | Solutions complètes | IPB',
     description: 'Injection résine, cuvelage, ventilation, drainage, traitement condensation. Diagnostic 48h.',
     url: 'https://www.ipb-expertise.fr/expertise/humidite',
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
     locale: 'fr_FR',
     type: 'website',
-    images: [{ url: '/images/salpetre-avant-apres.webp', width: 1200, height: 630, alt: 'Expert Humidité Toulouse - Injection Résine - IPB' }],
+    images: [{ url: '/images/salpetre-avant-apres.webp', width: 1200, height: 630, alt: 'Expert Humidité Toulouse Montauban Auch - Injection Résine - IPB Occitanie' }],
   },
 };
 
@@ -60,10 +60,10 @@ const generateServiceJsonLd = () => ({
     "@type": "LocalBusiness",
     "name": "IPB - Institut de Pathologie du Bâtiment",
     "telephone": "+33582953375",
-    "address": { "@type": "PostalAddress", "addressLocality": "Toulouse", "addressRegion": "Haute-Garonne", "postalCode": "31000", "addressCountry": "FR" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Toulouse", "addressRegion": "Occitanie", "postalCode": "31000", "addressCountry": "FR" },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "14" }
   },
-  "areaServed": { "@type": "City", "name": "Toulouse" },
+  "areaServed": [{ "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" }, { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" }, { "@type": "AdministrativeArea", "name": "Gers (32)" }],
   "description": "Expert en traitement de l'humidité. Injection résine hydrophobe, cuvelage, VMI. Solution définitive contre remontées capillaires avec garantie 30 ans."
 });
 
@@ -108,7 +108,7 @@ export default function HumiditePage() {
               </h1>
               
               <p className="text-xl text-slate-300 mb-6 leading-relaxed">
-                <strong className="text-white">+200 maisons assainies</strong> en Haute-Garonne.
+                <strong className="text-white">+300 maisons assainies</strong> sur les départements 31, 82 et 32.
                 Injection résine hydrophobe = <strong className="text-blue-300">barrière étanche permanente</strong>.
               </p>
               
@@ -176,7 +176,7 @@ export default function HumiditePage() {
                     </div>
                     <div>
                       <p className="font-bold text-white">+200 interventions</p>
-                      <p className="text-sm text-slate-400">en Haute-Garonne</p>
+                      <p className="text-sm text-slate-400">en Occitanie (31-82-32)</p>
                     </div>
                   </div>
                 </div>

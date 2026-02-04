@@ -11,8 +11,8 @@ import { Activity, AlertTriangle, CheckCircle, ArrowRight, Shield, Phone, Clock,
 import Script from 'next/script';
 
 export const metadata = {
-  title: 'Expert Fissures Toulouse | Agrafage Garanti 10 ans | Diagnostic 149€ | IPB',
-  description: 'Fissures maison Toulouse ? Diagnostic expert, agrafage/harpage, reprise en sous-oeuvre, renforts structurels. Garantie décennale. Diagnostic 149€ (déductible). ☎ 05 82 95 33 75. Intervention 48h.',
+  title: 'Expert Fissures Occitanie (31-82-32) | Agrafage Garanti 10 ans | Diagnostic 149€ | IPB',
+  description: 'Fissures maison Toulouse, Montauban, Auch ? Diagnostic expert, agrafage/harpage, reprise en sous-oeuvre, renforts structurels. Garantie décennale. Diagnostic 149€ (déductible). ☎ 05 82 95 33 75. Intervention 48h.',
   keywords: [
     'expert fissures toulouse',
     'agrafage fissures toulouse',
@@ -31,13 +31,13 @@ export const metadata = {
     canonical: 'https://www.ipb-expertise.fr/expertise/fissures',
   },
   openGraph: {
-    title: 'Expert Fissures Toulouse | Solutions structurelles | IPB',
+    title: 'Expert Fissures Occitanie (31-82-32) | Solutions structurelles | IPB',
     description: 'Diagnostic, agrafage/harpage, reprises en sous-oeuvre, renforts. Garantie décennale. Diagnostic 48h.',
     url: 'https://www.ipb-expertise.fr/expertise/fissures',
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
     locale: 'fr_FR',
     type: 'website',
-    images: [{ url: '/images/fissure-facade-verticale.webp', width: 1200, height: 630, alt: 'Expert Fissures Toulouse - Agrafage Structurel - IPB' }],
+    images: [{ url: '/images/fissure-facade-verticale.webp', width: 1200, height: 630, alt: 'Expert Fissures Toulouse Montauban Auch - Agrafage Structurel - IPB Occitanie' }],
   },
 };
 
@@ -60,10 +60,10 @@ const generateServiceJsonLd = () => ({
     "@type": "LocalBusiness",
     "name": "IPB - Institut de Pathologie du Bâtiment",
     "telephone": "+33582953375",
-    "address": { "@type": "PostalAddress", "addressLocality": "Toulouse", "addressRegion": "Haute-Garonne", "postalCode": "31000", "addressCountry": "FR" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Toulouse", "addressRegion": "Occitanie", "postalCode": "31000", "addressCountry": "FR" },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "14" }
   },
-  "areaServed": { "@type": "City", "name": "Toulouse" },
+  "areaServed": [{ "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" }, { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" }, { "@type": "AdministrativeArea", "name": "Gers (32)" }],
   "description": "Expert en traitement des fissures structurelles. Agrafage, harpage. Alternative économique aux micropieux avec garantie décennale."
 });
 
@@ -108,7 +108,7 @@ export default function FissuresPage() {
               </h1>
               
               <p className="text-xl text-slate-300 mb-6 leading-relaxed">
-                <strong className="text-white">+200 maisons sauvées</strong> en Haute-Garonne depuis 2019.
+                <strong className="text-white">+300 maisons sauvées</strong> sur les départements 31, 82 et 32 depuis 2019.
                 Agrafage structurel <strong className="text-orange-300">3x moins cher que les micropieux</strong>.
               </p>
               
@@ -175,7 +175,7 @@ export default function FissuresPage() {
                     </div>
                     <div>
                       <p className="font-bold text-white">+200 interventions</p>
-                      <p className="text-sm text-slate-400">en Haute-Garonne</p>
+                      <p className="text-sm text-slate-400">en Occitanie (31-82-32)</p>
                     </div>
                   </div>
                 </div>
@@ -206,7 +206,7 @@ export default function FissuresPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-red-100 text-red-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
-              <AlertTriangle size={16} /> 90% des fissures en Haute-Garonne = sol argileux
+              <AlertTriangle size={16} /> 90% des fissures en Occitanie = sol argileux
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
               Pourquoi votre maison se fissure ?

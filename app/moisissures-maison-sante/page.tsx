@@ -8,7 +8,7 @@ import { AlertTriangle, ArrowRight, Phone, CheckCircle, Heart, Wind, Droplets, S
 
 export const metadata: Metadata = {
   title: 'Moisissures Maison : Dangers Santé (Asthme, Allergies) et Traitement',
-  description: 'Moisissures dans votre maison ? ⚠️ Risques santé : allergies, asthme, infections respiratoires. Causes (humidité, ventilation) et traitement définitif. Expert Toulouse.',
+  description: 'Moisissures dans votre maison ? ⚠️ Risques santé : allergies, asthme, infections respiratoires. Causes (humidité, ventilation) et traitement définitif. Expert Toulouse, Montauban, Auch (31-82-32).',
   keywords: [
     'moisissures maison danger',
     'moisissure santé risques',

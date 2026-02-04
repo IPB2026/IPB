@@ -7,8 +7,8 @@ import { Footer } from '@/components/home/Footer';
 import { Droplets, ArrowRight, Phone, AlertTriangle, CheckCircle, ArrowUp, Home, Zap } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Remontées Capillaires : Traitement Définitif par Injection | Toulouse',
-  description: 'Remontées capillaires dans les murs ? Salpêtre, moisissures, peinture qui cloque. Traitement par injection résine hydrophobe. Garantie 30 ans. Expert Toulouse ☎ 05 82 95 33 75',
+  title: 'Remontées Capillaires : Traitement Définitif par Injection | Expert Occitanie',
+  description: 'Remontées capillaires dans les murs ? Salpêtre, moisissures, peinture qui cloque. Traitement par injection résine hydrophobe. Garantie 30 ans. Expert Toulouse, Montauban, Auch (31-82-32) ☎ 05 82 95 33 75',
   keywords: [
     'remontées capillaires traitement',
     'humidité ascensionnelle murs',

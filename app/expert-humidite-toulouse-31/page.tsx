@@ -9,7 +9,7 @@ import { CheckCircle, Phone, ArrowRight, MapPin, Droplets, Shield, FileText, Clo
 
 export const metadata: Metadata = {
   title: 'Expert Humidité Toulouse (31) | Injection Résine Garantie 30 ans | IPB',
-  description: 'Expert humidité maison Toulouse & Haute-Garonne. Traitement remontées capillaires, salpêtre, moisissures. Injection résine, cuvelage, VMI. ☎ 05 82 95 33 75. Garantie 30 ans.',
+  description: 'Expert humidité maison à Toulouse, Montauban, Auch (31-82-32). Traitement remontées capillaires, salpêtre, moisissures. Injection résine, cuvelage, VMI. ☎ 05 82 95 33 75. Garantie 30 ans.',
   keywords: [
     'expert humidité toulouse',
     'traitement humidité maison 31',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
       url: '/images/salpetre-avant-apres.webp',
       width: 1200,
       height: 630,
-      alt: 'Expert humidité Toulouse - Traitement salpêtre - IPB Haute-Garonne',
+      alt: 'Expert humidité Toulouse Montauban Auch - Traitement salpêtre - IPB Occitanie',
     }],
   },
   twitter: {
@@ -93,17 +93,21 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "IPB - Expert Humidité Toulouse",
-  "description": "Expert en traitement de l'humidité à Toulouse : injection résine, cuvelage, VMI",
+  "description": "Expert en traitement de l'humidité : Toulouse, Montauban, Auch (31-82-32). Injection résine, cuvelage, VMI.",
   "url": "https://www.ipb-expertise.fr/expert-humidite-toulouse-31",
   "telephone": "+33582953375",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Toulouse",
-    "addressRegion": "Haute-Garonne",
+    "addressRegion": "Occitanie",
     "postalCode": "31000",
     "addressCountry": "FR"
   },
-  "areaServed": { "@type": "State", "name": "Haute-Garonne" }
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" },
+    { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" },
+    { "@type": "AdministrativeArea", "name": "Gers (32)" }
+  ]
 };
 
 const faqJsonLd = {
@@ -132,7 +136,7 @@ export default function ExpertHumiditeToulouse31Page() {
           <div className="max-w-4xl">
             <div className="flex items-center gap-2 text-blue-400 text-sm font-bold mb-4">
               <MapPin size={18} />
-              <span>Toulouse & Haute-Garonne (31)</span>
+              <span>Toulouse • Montauban • Auch (31-82-32)</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
               Expert Humidité à <span className="text-blue-400">Toulouse</span>
@@ -333,21 +337,34 @@ export default function ExpertHumiditeToulouse31Page() {
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Zone d'intervention</h2>
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Zone d'intervention : 3 départements</h2>
+            <p className="text-slate-600">Haute-Garonne (31) • Tarn-et-Garonne (82) • Gers (32)</p>
           </div>
-          <div className="flex flex-wrap justify-center gap-3">
-            {communesHauteGaronne.map((commune) => (
-              <span key={commune} className="bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-medium">
-                {commune}
-              </span>
-            ))}
-            <span className="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-bold">+ 150 communes</span>
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="bg-blue-50 rounded-2xl p-6">
+              <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2">
+                <MapPin className="text-blue-600" size={20} /> Haute-Garonne (31)
+              </h3>
+              <p className="text-slate-600 text-sm">Toulouse, Colomiers, Tournefeuille, Blagnac, Muret, Cugnaux, Balma, Castanet, Saint-Gaudens...</p>
+            </div>
+            <div className="bg-blue-50 rounded-2xl p-6">
+              <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2">
+                <MapPin className="text-blue-600" size={20} /> Tarn-et-Garonne (82)
+              </h3>
+              <p className="text-slate-600 text-sm">Montauban, Castelsarrasin, Moissac, Caussade, Valence-d'Agen, Montech, Verdun-sur-Garonne...</p>
+            </div>
+            <div className="bg-blue-50 rounded-2xl p-6">
+              <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2">
+                <MapPin className="text-blue-600" size={20} /> Gers (32)
+              </h3>
+              <p className="text-slate-600 text-sm">Auch, Condom, Fleurance, Lectoure, L'Isle-Jourdain, Mirande, Nogaro, Gimont, Samatan...</p>
+            </div>
           </div>
           {/* Liens vers pages locales */}
-          <div className="mt-8 text-center">
+          <div className="text-center">
             <p className="text-slate-600 mb-4">Pages dédiées par ville :</p>
             <div className="flex flex-wrap justify-center gap-2">
-              {['toulouse', 'colomiers', 'tournefeuille', 'blagnac', 'muret', 'montauban', 'auch'].map((ville) => (
+              {['toulouse', 'colomiers', 'tournefeuille', 'blagnac', 'muret', 'montauban', 'castelsarrasin', 'auch', 'condom'].map((ville) => (
                 <Link key={ville} href={`/expert-humidite/${ville}`} className="text-blue-600 hover:text-blue-700 text-sm underline">
                   Expert humidité {ville.charAt(0).toUpperCase() + ville.slice(1)}
                 </Link>
