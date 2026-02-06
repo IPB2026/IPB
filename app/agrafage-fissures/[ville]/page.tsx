@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import { villesData, villeSlugs } from '@/app/data/villes';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
@@ -46,16 +47,7 @@ export default async function AgrafageVillePage({ params }: PageProps) {
   const villeData = villesData[ville.toLowerCase()];
 
   if (!villeData) {
-    return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-slate-900 mb-4">Ville non trouvée</h1>
-          <Link href="/" className="text-orange-600 hover:text-orange-700">
-            Retour à l'accueil
-          </Link>
-        </div>
-      </div>
-    );
+    notFound();
   }
 
   return (
