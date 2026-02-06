@@ -3,6 +3,19 @@ const nextConfig = {
   // Trailing slash désactivé pour éviter les doublons d'URL
   trailingSlash: false,
   
+  // Redirections SEO
+  async redirects() {
+    return [
+      // Redirection non-www vers www (URL canonique)
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'ipb-expertise.fr' }],
+        destination: 'https://www.ipb-expertise.fr/:path*',
+        permanent: true,
+      },
+    ];
+  },
+  
   // Optimisations de performance
   images: {
     formats: ['image/avif', 'image/webp'],
