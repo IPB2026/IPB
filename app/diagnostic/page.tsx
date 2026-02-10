@@ -364,7 +364,7 @@ export default function DiagnosticPage() {
     // Obtenir le token reCAPTCHA v3
     const recaptchaToken = await getToken('diagnostic_lead');
 
-    // Envoi du lead
+    // Envoi du lead - C'est l'email le plus important !
     try {
       const formData = new FormData();
       formData.append('name', contactInfo.name);
@@ -377,11 +377,11 @@ export default function DiagnosticPage() {
         formData.append('recaptchaToken', recaptchaToken);
       }
 
-      await submitDiagnosticLead(formData);
+      const result = await submitDiagnosticLead(formData);
+      console.log('📧 Résultat envoi lead:', result.success ? '✅ Succès' : '❌ Échec', result.message);
     } catch (error) {
-      if (process.env.NODE_ENV === 'development') {
-        console.error('Erreur envoi lead:', error);
-      }
+      // Log toujours l'erreur pour le debug (visible dans les logs Vercel)
+      console.error('❌ Erreur envoi lead:', error);
     }
 
     // Animation de chargement (3s)

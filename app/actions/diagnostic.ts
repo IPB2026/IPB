@@ -217,12 +217,14 @@ export async function submitDiagnosticLead(
     const logoUrl =
       process.env.EMAIL_LOGO_URL ||
       `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ipb-expertise.fr'}/images/IPB_Logo_HD.png`;
+    // TOUJOURS envoyer l'email du lead (c'est le plus important !)
+    const expertDiagnosis = getExpertDiagnosis(validatedData.path, validatedData.riskScore);
+    const answersHtml = formatAnswersHtml(validatedData.answers);
+    
     if (process.env.EMAIL_TO) {
-      const expertDiagnosis = getExpertDiagnosis(validatedData.path, validatedData.riskScore);
-      const answersHtml = formatAnswersHtml(validatedData.answers);
       const leadEmailResult = await sendEmail({
         to: process.env.EMAIL_TO,
-        subject: `[${expertDiagnosis.urgency}] Diagnostic - ${validatedData.name} - ${validatedData.phone || 'Pas de tél'}`,
+        subject: `🎯 NOUVEAU LEAD [${expertDiagnosis.urgency}] - ${validatedData.name} - ${validatedData.phone || validatedData.email || 'Contact à récupérer'}`,
         html: `
           <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 700px; margin: 0 auto; background: #f8fafc;">
             
@@ -320,12 +322,14 @@ export async function submitDiagnosticLead(
           </div>
         `,
       });
-      if (!leadEmailResult.success && process.env.NODE_ENV === 'production') {
-        return {
-          success: false,
-          message: 'Erreur lors de l\'envoi du diagnostic. Veuillez réessayer plus tard.',
-        };
+      // Log du résultat d'envoi (important pour le debug)
+      if (!leadEmailResult.success) {
+        console.error('❌ Erreur envoi email lead:', leadEmailResult.error);
+      } else {
+        console.log('✅ Email lead envoyé avec succès:', leadId, validatedData.name);
       }
+    } else {
+      console.warn('⚠️ EMAIL_TO non configuré - Lead non envoyé par email:', validatedData.name);
     }
 
     if (validatedData.email) {
