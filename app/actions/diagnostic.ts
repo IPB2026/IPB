@@ -191,9 +191,16 @@ const getExpertDiagnosis = (path: 'fissure' | 'humidite', score: number) => {
 export async function submitDiagnosticLead(
   formData: FormData
 ): Promise<DiagnosticResult> {
-  console.log('🎯 submitDiagnosticLead appelé');
+  console.log('🎯 ========== submitDiagnosticLead DÉBUT ==========');
   
   try {
+    // Log de toutes les clés du FormData pour debug
+    const formDataKeys: string[] = [];
+    formData.forEach((value, key) => {
+      formDataKeys.push(key);
+    });
+    console.log('📦 FormData keys:', formDataKeys);
+    
     const rawData = {
       name: formData.get('name') as string,
       phone: (formData.get('phone') as string) || '',
@@ -215,8 +222,10 @@ export async function submitDiagnosticLead(
       riskScore: rawData.riskScore,
       answersCount: Object.keys(rawData.answers || {}).length,
       hasPhoto: !!photoBase64,
+      photoSize: photoBase64 ? photoBase64.length : 0,
     });
 
+    console.log('🔍 Validation en cours...');
     const validatedData = diagnosticLeadSchema.parse(rawData);
     console.log('✅ Validation réussie');
 
