@@ -62,41 +62,56 @@ export function StickyDiagnosticCta() {
 
   return (
     <>
-      {/* Version Mobile/Tablet - Sticky Bottom (Compact) */}
+      {/* Version Mobile/Tablet - Sticky Bottom (Intermédiaire) */}
       <div className={`lg:hidden fixed bottom-0 left-0 right-0 z-50 transform transition-all duration-500 ${
         isVisible ? 'translate-y-0' : 'translate-y-full'
       }`}>
-        {/* CTA Principal - Version compacte */}
-        <div className="bg-gradient-to-r from-orange-600 to-orange-500 px-3 py-2.5 shadow-[0_-2px_20px_rgba(234,88,12,0.3)]">
-          <div className="flex items-center gap-2">
+        {/* Bandeau de confiance compact */}
+        <div className="bg-slate-900 text-white/90 text-xs py-1.5 px-4 flex items-center justify-center gap-4">
+          <span className="flex items-center gap-1">
+            <Star size={11} className="text-yellow-400 fill-yellow-400" />
+            <strong>4.9/5</strong>
+          </span>
+          <span className="text-white/40">•</span>
+          <span className="flex items-center gap-1">
+            <Clock size={11} />
+            Réponse 48h
+          </span>
+          <span className="text-white/40">•</span>
+          <span className="flex items-center gap-1">
+            <Shield size={11} className="text-green-400" />
+            Garantie
+          </span>
+        </div>
+        
+        {/* CTA Principal */}
+        <div className="bg-gradient-to-r from-orange-600 to-orange-500 px-4 py-3 shadow-[0_-4px_20px_rgba(234,88,12,0.35)]">
+          <div className="flex items-center gap-3">
+            {/* Texte contextuel */}
+            <div className="text-white text-sm leading-tight hidden xs:block">
+              <div className="font-bold">{getContextText()}</div>
+              <div className="text-orange-200 text-xs">{getSubText()}</div>
+            </div>
+            
             {/* Bouton principal */}
             <Link
               href="/diagnostic"
-              className="flex-1 flex items-center justify-center gap-2 bg-white text-orange-600 font-bold py-2.5 px-4 rounded-lg shadow-md hover:bg-orange-50 transition-all active:scale-[0.98] text-sm"
+              className="flex-1 flex items-center justify-center gap-2 bg-white text-orange-600 font-bold py-3 px-5 rounded-xl shadow-lg hover:bg-orange-50 transition-all active:scale-[0.98]"
               aria-label="Lancer le diagnostic gratuit"
             >
               <span>Diagnostic gratuit</span>
-              <ArrowRight size={16} />
+              <ArrowRight size={18} />
             </Link>
 
             {/* Bouton téléphone */}
             <a
               href="tel:0582953375"
-              className="flex items-center justify-center bg-white/20 text-white p-2.5 rounded-lg border border-white/30 hover:bg-white/30 transition-all"
-              aria-label="Appeler"
+              className="flex items-center justify-center gap-2 bg-white/20 text-white py-3 px-4 rounded-xl border border-white/30 hover:bg-white/30 transition-all"
+              aria-label="Appeler le 05 82 95 33 75"
             >
-              <Phone size={18} />
+              <Phone size={20} />
+              <span className="hidden sm:inline font-semibold text-sm">Appeler</span>
             </a>
-
-            {/* Badges compacts */}
-            <div className="hidden sm:flex items-center gap-2 text-white text-xs">
-              <span className="flex items-center gap-1">
-                <Star size={10} className="text-yellow-300 fill-yellow-300" />
-                4.9
-              </span>
-              <span className="text-white/50">|</span>
-              <span>48h</span>
-            </div>
           </div>
         </div>
       </div>
