@@ -438,15 +438,23 @@ export async function submitDiagnosticLead(
 export async function submitDiagnosticCallback(
   formData: FormData
 ): Promise<DiagnosticResult> {
+  console.log('📞 submitDiagnosticCallback appelé');
+  
   try {
     const rawData = {
       name: formData.get('name') as string,
       phone: formData.get('phone') as string,
       email: (formData.get('email') as string) || '',
       path: formData.get('path') as 'fissure' | 'humidite',
-      answers: JSON.parse(formData.get('answers') as string),
-      riskScore: parseInt(formData.get('riskScore') as string, 10),
+      answers: JSON.parse(formData.get('answers') as string || '{}'),
+      riskScore: parseInt(formData.get('riskScore') as string, 10) || 0,
     };
+
+    console.log('📋 Callback - Données reçues:', {
+      name: rawData.name,
+      phone: rawData.phone,
+      email: rawData.email,
+    });
 
     const rateKey = `diagnostic-callback:${rawData.phone || rawData.name}`;
     const rateLimit = checkRateLimit(rateKey, { limit: 5, windowMs: 10 * 60 * 1000 });
