@@ -62,53 +62,42 @@ export function StickyDiagnosticCta() {
 
   return (
     <>
-      {/* Version Mobile/Tablet - Sticky Bottom */}
+      {/* Version Mobile/Tablet - Sticky Bottom (Compact) */}
       <div className={`lg:hidden fixed bottom-0 left-0 right-0 z-50 transform transition-all duration-500 ${
         isVisible ? 'translate-y-0' : 'translate-y-full'
       }`}>
-        {/* Barre de confiance */}
-        <div className="bg-slate-900/95 backdrop-blur-md text-white text-xs py-2 px-4 flex items-center justify-center gap-4 border-t border-slate-700">
-          <span className="flex items-center gap-1">
-            <Star size={12} className="text-yellow-400 fill-yellow-400" />
-            <span className="font-bold">4.9/5</span>
-          </span>
-          <span className="flex items-center gap-1">
-            <Shield size={12} className="text-green-400" />
-            Garantie décennale
-          </span>
-          <span className="flex items-center gap-1">
-            <Clock size={12} className="text-orange-400" />
-            48h
-          </span>
-        </div>
-
-        {/* CTA Principal */}
-        <div className="bg-gradient-to-r from-orange-600 via-orange-500 to-red-500 p-4 shadow-[0_-4px_30px_rgba(234,88,12,0.4)]">
-          <div className="flex items-center gap-3">
+        {/* CTA Principal - Version compacte */}
+        <div className="bg-gradient-to-r from-orange-600 to-orange-500 px-3 py-2.5 shadow-[0_-2px_20px_rgba(234,88,12,0.3)]">
+          <div className="flex items-center gap-2">
             {/* Bouton principal */}
             <Link
               href="/diagnostic"
-              className="flex-1 flex items-center justify-center gap-2 bg-white text-orange-600 font-extrabold py-3.5 px-6 rounded-xl shadow-lg hover:bg-orange-50 transition-all active:scale-[0.98]"
+              className="flex-1 flex items-center justify-center gap-2 bg-white text-orange-600 font-bold py-2.5 px-4 rounded-lg shadow-md hover:bg-orange-50 transition-all active:scale-[0.98] text-sm"
               aria-label="Lancer le diagnostic gratuit"
             >
-              <span>{getContextText()}</span>
-              <ArrowRight size={18} className="animate-pulse" />
+              <span>Diagnostic gratuit</span>
+              <ArrowRight size={16} />
             </Link>
 
             {/* Bouton téléphone */}
             <a
               href="tel:0582953375"
-              className="flex items-center justify-center bg-white/20 backdrop-blur text-white p-3.5 rounded-xl border border-white/30 hover:bg-white/30 transition-all"
+              className="flex items-center justify-center bg-white/20 text-white p-2.5 rounded-lg border border-white/30 hover:bg-white/30 transition-all"
               aria-label="Appeler"
             >
-              <Phone size={22} />
+              <Phone size={18} />
             </a>
-          </div>
 
-          {/* Sous-texte */}
-          <p className="text-center text-orange-100 text-xs mt-2 font-medium">
-            ✓ Gratuit · ✓ {getSubText()} · ✓ Garantie décennale
-          </p>
+            {/* Badges compacts */}
+            <div className="hidden sm:flex items-center gap-2 text-white text-xs">
+              <span className="flex items-center gap-1">
+                <Star size={10} className="text-yellow-300 fill-yellow-300" />
+                4.9
+              </span>
+              <span className="text-white/50">|</span>
+              <span>48h</span>
+            </div>
+          </div>
         </div>
       </div>
 
