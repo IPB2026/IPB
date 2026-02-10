@@ -77,7 +77,7 @@ export default function HumiditePage() {
       <Navbar />
       <main id="main-content">
       
-      {/* HERO - Conversion optimisée */}
+      {/* HERO - Conversion optimisée avec accroche immédiate */}
       <section className="relative bg-slate-900 text-white overflow-hidden py-16 md:py-24">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950/80"></div>
         <Image
@@ -90,6 +90,13 @@ export default function HumiditePage() {
         />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Accroche immédiate - Hook émotionnel */}
+          <div className="text-center mb-10 lg:hidden">
+            <div className="inline-flex items-center gap-2 bg-red-500/20 border border-red-500/40 text-red-300 px-4 py-2 rounded-full text-sm font-bold mb-4 animate-pulse">
+              ⚠️ L'humidité détruit votre maison silencieusement
+            </div>
+          </div>
+          
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               {/* Badge confiance */}
@@ -100,12 +107,23 @@ export default function HumiditePage() {
                 <span className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-500/40 text-blue-300 px-3 py-1.5 rounded-full text-xs font-bold">
                   <Shield size={12} /> Garantie 30 ans
                 </span>
+                <span className="hidden lg:inline-flex items-center gap-2 bg-red-500/20 border border-red-500/40 text-red-300 px-3 py-1.5 rounded-full text-xs font-bold animate-pulse">
+                  ⚠️ Agir maintenant
+                </span>
               </div>
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
                 Murs <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Humides</span> ?
                 <span className="block text-3xl md:text-4xl mt-2 text-white">On Stoppe l'Eau. Définitivement.</span>
               </h1>
+              
+              {/* Question directe pour engager */}
+              <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4 mb-6">
+                <p className="text-blue-200 text-lg font-medium">
+                  🤔 Salpêtre ? Moisissures ? Peinture qui cloque ?<br/>
+                  <span className="text-white font-bold">Vous êtes au bon endroit.</span>
+                </p>
+              </div>
               
               <p className="text-xl text-slate-300 mb-6 leading-relaxed">
                 <strong className="text-white">+300 maisons assainies</strong> sur les départements 31, 82 et 32.
@@ -114,7 +132,7 @@ export default function HumiditePage() {
               
               {/* Chiffre clé */}
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mb-8 border border-white/20">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between flex-wrap gap-4">
                   <div>
                     <p className="text-sm text-slate-400">Traitement injection</p>
                     <p className="text-2xl font-bold text-white">80€ - 120€/ml</p>
@@ -130,13 +148,13 @@ export default function HumiditePage() {
                 </div>
               </div>
               
-              {/* CTAs */}
+              {/* CTAs - Plus visibles */}
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
-                <Link href="/diagnostic" className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl flex items-center justify-center gap-2 transition-all hover:-translate-y-1">
-                  Diagnostic gratuit en 3 min
+                <Link href="/diagnostic" className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white px-8 py-5 rounded-xl font-bold text-lg shadow-xl flex items-center justify-center gap-2 transition-all hover:-translate-y-1 hover:shadow-2xl">
+                  🎯 Diagnostic gratuit en 3 min
                   <ArrowRight size={20} />
                 </Link>
-                <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 flex items-center justify-center gap-2">
+                <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 text-white px-8 py-5 rounded-xl font-bold text-lg hover:bg-white/20 flex items-center justify-center gap-2">
                   <Phone size={20} /> 05 82 95 33 75
                 </a>
               </div>
@@ -144,13 +162,14 @@ export default function HumiditePage() {
               <div className="flex items-center gap-4 text-sm text-slate-400">
                 <span className="flex items-center gap-1"><Clock size={14} /> Réponse 24h</span>
                 <span className="flex items-center gap-1"><CheckCircle size={14} className="text-green-400" /> Devis gratuit</span>
+                <span className="flex items-center gap-1"><CheckCircle size={14} className="text-green-400" /> Sans engagement</span>
               </div>
             </div>
             
-            {/* Trust signals desktop */}
+            {/* Trust signals desktop + Mini-diagnostic */}
             <div className="hidden lg:block">
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-                <h3 className="text-xl font-bold mb-6 text-center">Pourquoi IPB ?</h3>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 mb-6">
+                <h3 className="text-xl font-bold mb-6 text-center">Pourquoi choisir IPB ?</h3>
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
@@ -175,13 +194,73 @@ export default function HumiditePage() {
                       <Award className="text-orange-400" size={24} />
                     </div>
                     <div>
-                      <p className="font-bold text-white">+200 interventions</p>
+                      <p className="font-bold text-white">+300 interventions</p>
                       <p className="text-sm text-slate-400">en Occitanie (31-82-32)</p>
                     </div>
                   </div>
                 </div>
               </div>
+              
+              {/* Mini checklist pour auto-diagnostic */}
+              <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
+                <h4 className="font-bold text-white mb-4 flex items-center gap-2">
+                  <AlertTriangle className="text-yellow-400" size={18} />
+                  Avez-vous ces symptômes ?
+                </h4>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-center gap-2 text-slate-300">
+                    <span className="text-blue-400">✓</span> Poudre blanche sur les murs (salpêtre)
+                  </li>
+                  <li className="flex items-center gap-2 text-slate-300">
+                    <span className="text-blue-400">✓</span> Taches noires / moisissures
+                  </li>
+                  <li className="flex items-center gap-2 text-slate-300">
+                    <span className="text-blue-400">✓</span> Peinture qui cloque ou s'écaille
+                  </li>
+                  <li className="flex items-center gap-2 text-slate-300">
+                    <span className="text-blue-400">✓</span> Odeur de moisi persistante
+                  </li>
+                  <li className="flex items-center gap-2 text-slate-300">
+                    <span className="text-blue-400">✓</span> Humidité visible en bas des murs
+                  </li>
+                </ul>
+                <p className="mt-4 text-xs text-slate-400">
+                  👉 Si vous cochez 2+ symptômes, une intervention est recommandée.
+                </p>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mini checklist mobile - Engagement immédiat */}
+      <section className="lg:hidden py-6 bg-gradient-to-b from-slate-100 to-white">
+        <div className="max-w-xl mx-auto px-4">
+          <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-5">
+            <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2 text-lg">
+              <AlertTriangle className="text-yellow-500" size={20} />
+              Reconnaissez-vous ces signes ?
+            </h3>
+            <div className="grid grid-cols-2 gap-2 text-sm mb-4">
+              <div className="flex items-center gap-2 p-2 bg-blue-50 rounded-lg">
+                <span>🧂</span> Salpêtre
+              </div>
+              <div className="flex items-center gap-2 p-2 bg-blue-50 rounded-lg">
+                <span>🦠</span> Moisissures
+              </div>
+              <div className="flex items-center gap-2 p-2 bg-blue-50 rounded-lg">
+                <span>🎨</span> Peinture qui cloque
+              </div>
+              <div className="flex items-center gap-2 p-2 bg-blue-50 rounded-lg">
+                <span>👃</span> Odeur de moisi
+              </div>
+            </div>
+            <Link 
+              href="/diagnostic" 
+              className="w-full bg-blue-600 text-white py-3 rounded-xl font-bold text-center flex items-center justify-center gap-2 shadow-md"
+            >
+              Oui, je veux un diagnostic gratuit →
+            </Link>
           </div>
         </div>
       </section>
@@ -190,13 +269,28 @@ export default function HumiditePage() {
       <section className="py-8 bg-white border-b border-slate-200">
         <div className="max-w-6xl mx-auto px-4">
           <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
-            <h2 className="text-lg font-bold text-slate-900 mb-4">Sommaire de la page</h2>
+            <h2 className="text-lg font-bold text-slate-900 mb-4">📋 Sur cette page</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
-              <a href="#probleme" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Comprendre le problème</a>
-              <a href="#solution" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Nos solutions</a>
-              <a href="#comparatif" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Comparatif techniques</a>
-              <a href="#avis" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Avis clients</a>
-              <a href="#faq" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">FAQ</a>
+              <a href="#probleme" className="flex items-center gap-2 text-blue-600 hover:text-blue-700 hover:underline">
+                <span className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center text-xs font-bold text-blue-600">1</span>
+                Comprendre le problème
+              </a>
+              <a href="#solution" className="flex items-center gap-2 text-blue-600 hover:text-blue-700 hover:underline">
+                <span className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center text-xs font-bold text-blue-600">2</span>
+                Nos solutions
+              </a>
+              <a href="#comparatif" className="flex items-center gap-2 text-blue-600 hover:text-blue-700 hover:underline">
+                <span className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center text-xs font-bold text-blue-600">3</span>
+                Comparatif techniques
+              </a>
+              <a href="#avis" className="flex items-center gap-2 text-blue-600 hover:text-blue-700 hover:underline">
+                <span className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center text-xs font-bold text-blue-600">4</span>
+                Avis clients
+              </a>
+              <a href="#faq" className="flex items-center gap-2 text-blue-600 hover:text-blue-700 hover:underline">
+                <span className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center text-xs font-bold text-blue-600">5</span>
+                FAQ
+              </a>
             </div>
           </div>
         </div>
