@@ -44,13 +44,8 @@ export async function sendEmail(options: {
 }) {
   // Vérifier que les variables sont configurées
   if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    console.error('❌ EMAIL NON CONFIGURÉ : SMTP_USER et/ou SMTP_PASS manquants !');
-    console.error('Variables actuelles:', {
-      SMTP_USER: process.env.SMTP_USER ? '✅ défini' : '❌ manquant',
-      SMTP_PASS: process.env.SMTP_PASS ? '✅ défini' : '❌ manquant',
-      EMAIL_TO: process.env.EMAIL_TO ? '✅ défini' : '❌ manquant',
-    });
-    return { success: false, error: 'SMTP_USER ou SMTP_PASS non configuré sur Vercel' };
+    console.error('Email non configuré: SMTP_USER ou SMTP_PASS manquant');
+    return { success: false, error: 'SMTP_USER ou SMTP_PASS non configuré' };
   }
 
   try {
@@ -65,18 +60,10 @@ export async function sendEmail(options: {
       attachments: options.attachments,
     };
 
-    console.log('📧 Envoi email en cours...', {
-      to: options.to,
-      subject: options.subject.substring(0, 50) + '...',
-      hasAttachments: options.attachments && options.attachments.length > 0,
-    });
-
     const info = await transporter.sendMail(mailOptions);
-    
-    console.log('✅ Email envoyé avec succès:', info.messageId);
     return { success: true, messageId: info.messageId };
   } catch (error) {
-    console.error('❌ ERREUR ENVOI EMAIL:', error);
+    console.error('Erreur envoi email:', error);
     return { success: false, error: String(error) };
   }
 }

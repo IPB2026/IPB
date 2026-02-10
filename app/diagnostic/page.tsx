@@ -347,7 +347,6 @@ export default function DiagnosticPage() {
   // Soumission coordonnées + génération résultat
   const handleSubmitContact = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('🚀 handleSubmitContact DÉBUT');
 
     if (!contactInfo.name.trim()) {
       alert('Veuillez saisir votre nom');
@@ -359,20 +358,15 @@ export default function DiagnosticPage() {
     }
 
     setIsAnalyzing(true);
-    console.log('📊 Calcul du score...');
 
     // Calcul du score
     const score = calculateRisk(path!, answers);
     setRiskScore(score);
-    console.log('📊 Score calculé:', score);
 
     // Obtenir le token reCAPTCHA v3
-    console.log('🔐 Obtention token reCAPTCHA...');
     const recaptchaToken = await getToken('diagnostic_lead');
-    console.log('🔐 Token reCAPTCHA:', recaptchaToken ? 'OK' : 'ÉCHEC');
 
-    // Envoi du lead - C'est l'email le plus important !
-    console.log('📧 Préparation envoi lead...');
+    // Envoi du lead
     try {
       const formData = new FormData();
       formData.append('name', contactInfo.name);
@@ -387,19 +381,14 @@ export default function DiagnosticPage() {
       
       // Ajouter la photo si présente (en base64)
       if (photoPreview && photoFile) {
-        console.log('📷 Photo détectée:', photoFile.name, 'taille:', photoPreview.length);
         formData.append('photo', photoPreview);
         formData.append('photoName', photoFile.name);
       }
 
-      console.log('📧 Appel submitDiagnosticLead...');
-      const result = await submitDiagnosticLead(formData);
-      console.log('📧 Résultat envoi lead:', result.success ? '✅ Succès' : '❌ Échec', result.message);
+      await submitDiagnosticLead(formData);
     } catch (error) {
-      // Log toujours l'erreur pour le debug (visible dans les logs Vercel)
-      console.error('❌ Erreur envoi lead:', error);
+      console.error('Erreur envoi lead:', error);
     }
-    console.log('📧 Envoi lead terminé');
 
     // Animation de chargement (3s)
     setTimeout(() => {

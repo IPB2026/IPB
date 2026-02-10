@@ -191,16 +191,7 @@ const getExpertDiagnosis = (path: 'fissure' | 'humidite', score: number) => {
 export async function submitDiagnosticLead(
   formData: FormData
 ): Promise<DiagnosticResult> {
-  console.log('🎯 ========== submitDiagnosticLead DÉBUT ==========');
-  
   try {
-    // Log de toutes les clés du FormData pour debug
-    const formDataKeys: string[] = [];
-    formData.forEach((value, key) => {
-      formDataKeys.push(key);
-    });
-    console.log('📦 FormData keys:', formDataKeys);
-    
     const rawData = {
       name: formData.get('name') as string,
       phone: (formData.get('phone') as string) || '',
@@ -214,20 +205,7 @@ export async function submitDiagnosticLead(
     const photoBase64 = formData.get('photo') as string | null;
     const photoName = formData.get('photoName') as string | null;
 
-    console.log('📋 Données reçues:', {
-      name: rawData.name,
-      phone: rawData.phone,
-      email: rawData.email,
-      path: rawData.path,
-      riskScore: rawData.riskScore,
-      answersCount: Object.keys(rawData.answers || {}).length,
-      hasPhoto: !!photoBase64,
-      photoSize: photoBase64 ? photoBase64.length : 0,
-    });
-
-    console.log('🔍 Validation en cours...');
     const validatedData = diagnosticLeadSchema.parse(rawData);
-    console.log('✅ Validation réussie');
 
     const rateKey = `diagnostic-lead:${validatedData.email || validatedData.phone || validatedData.name}`;
     const rateLimit = checkRateLimit(rateKey, { limit: 5, windowMs: 10 * 60 * 1000 });
@@ -363,14 +341,9 @@ export async function submitDiagnosticLead(
           encoding: 'base64' as const,
         }] : undefined,
       });
-      // Log du résultat d'envoi (important pour le debug)
       if (!leadEmailResult.success) {
-        console.error('❌ Erreur envoi email lead:', leadEmailResult.error);
-      } else {
-        console.log('✅ Email lead envoyé avec succès:', leadId, validatedData.name);
+        console.error('Erreur envoi email lead:', leadEmailResult.error);
       }
-    } else {
-      console.warn('⚠️ EMAIL_TO non configuré - Lead non envoyé par email:', validatedData.name);
     }
 
     if (validatedData.email) {
@@ -443,17 +416,13 @@ export async function submitDiagnosticLead(
       data: { leadId },
     };
   } catch (error) {
-    // Toujours logger les erreurs pour debug (visible dans Vercel logs)
-    console.error('❌ Erreur submitDiagnosticLead:', error);
-    
     if (error instanceof z.ZodError) {
-      console.error('❌ Détails validation:', JSON.stringify(error.issues, null, 2));
       return {
         success: false,
         message: `Erreur de validation: ${error.issues[0]?.message || 'Données invalides'}`,
       };
     }
-    
+    console.error('Erreur submitDiagnosticLead:', error);
     return {
       success: false,
       message: 'Une erreur est survenue. Veuillez réessayer plus tard.',
@@ -467,8 +436,6 @@ export async function submitDiagnosticLead(
 export async function submitDiagnosticCallback(
   formData: FormData
 ): Promise<DiagnosticResult> {
-  console.log('📞 submitDiagnosticCallback appelé');
-  
   try {
     const rawData = {
       name: formData.get('name') as string,
@@ -478,12 +445,6 @@ export async function submitDiagnosticCallback(
       answers: JSON.parse(formData.get('answers') as string || '{}'),
       riskScore: parseInt(formData.get('riskScore') as string, 10) || 0,
     };
-
-    console.log('📋 Callback - Données reçues:', {
-      name: rawData.name,
-      phone: rawData.phone,
-      email: rawData.email,
-    });
 
     const rateKey = `diagnostic-callback:${rawData.phone || rawData.name}`;
     const rateLimit = checkRateLimit(rateKey, { limit: 5, windowMs: 10 * 60 * 1000 });
