@@ -929,6 +929,313 @@ export const villesData: Record<string, VilleInfo> = {
     specificitesFissures: 'Nombreuses fissures sur constructions récentes.',
     specificitesHumidite: 'Problèmes modérés.',
     tauxSinistralite: '11,2%'
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // TARN (81) - Département ajouté
+  // ═══════════════════════════════════════════════════════════════
+
+  albi: {
+    nom: 'Albi',
+    codePostal: '81000',
+    departement: 'Tarn (81)',
+    distance: '75 km',
+    description: 'Préfecture du Tarn et ville UNESCO, Albi compte 50 000 habitants. Son centre historique en briques rouges repose sur un sous-sol argileux sensible au RGA, notamment dans les quartiers périphériques.',
+    population: '49 531',
+    superficie: '44,26 km²',
+    geologie: 'Le sous-sol albigeois est composé de molasses argilo-calcaires oligocènes dans le centre, et d\'argiles du Stampien en périphérie. Les coteaux nord et est sont particulièrement exposés au retrait-gonflement des argiles.',
+    risqueRGA: 'fort',
+    arretesCATNAT: [
+      'Sécheresse 2022 (JO du 05/04/2023)',
+      'Sécheresse 2023',
+      'Sécheresse 2019',
+      'Sécheresse 2017'
+    ],
+    quartiersRisque: [
+      'La Madeleine (argiles superficielles)',
+      'Cantepau (coteaux)',
+      'Rayssac (zone pavillonnaire)',
+      'Le Séquestre (limites communales)',
+      'Les Avalats (terrain en pente)'
+    ],
+    typesConstruction: 'Albi présente un patrimoine bâti varié : maisons de ville en briques foraines dans le centre, pavillons des années 70-90 en périphérie, et constructions récentes dans les nouveaux lotissements. Les maisons anciennes ont généralement des fondations superficielles vulnérables.',
+    problemesFrequents: [
+      'Fissures en escalier sur maisons périphériques',
+      'Décollements de façades en briques',
+      'Affaissements de dallages',
+      'Humidité dans les caves du centre historique'
+    ],
+    historiqueLocal: 'Les sécheresses de 2022-2023 ont particulièrement touché Albi, avec une augmentation de 250% des déclarations de sinistres. Les quartiers pavillonnaires des années 1980 sont les plus impactés.',
+    communesProches: ['Lescure-d\'Albigeois', 'Marssac-sur-Tarn', 'Castelnau-de-Lévis', 'Le Séquestre', 'Puygouzon'],
+    specificitesFissures: 'À Albi, les fissures sont souvent liées à l\'hétérogénéité du terrain : zones de remblais côtoyant des argiles naturelles. Le diagnostic doit identifier ces transitions pour cibler le traitement.',
+    specificitesHumidite: 'Le centre historique d\'Albi souffre de remontées capillaires dans les constructions anciennes. Les caves voûtées des maisons de ville sont particulièrement touchées.',
+    conseillExpert: 'Si votre maison à Albi est située en coteau ou sur un ancien vignoble reconverti en lotissement, surveillez l\'apparition de fissures après chaque été sec.',
+    tauxSinistralite: '10,8%'
+  },
+  castres: {
+    nom: 'Castres',
+    codePostal: '81100',
+    departement: 'Tarn (81)',
+    distance: '70 km',
+    description: 'Sous-préfecture du Tarn, Castres compte 42 000 habitants. Située au pied de la Montagne Noire, la ville présente des sols variés avec des zones argileuses sensibles au RGA.',
+    population: '41 338',
+    superficie: '66,13 km²',
+    geologie: 'Castres repose sur des formations variées : alluvions de l\'Agout dans la vallée, molasses et argiles sur les coteaux. La transition entre ces zones crée des conditions propices aux tassements différentiels.',
+    risqueRGA: 'moyen',
+    arretesCATNAT: [
+      'Sécheresse 2022',
+      'Sécheresse 2019',
+      'Sécheresse 2017'
+    ],
+    quartiersRisque: [
+      'Lameilhé (argiles de coteau)',
+      'La Borde Basse (zone commerciale)',
+      'Mélou (terrain hétérogène)',
+      'Bisséous (constructions anciennes)'
+    ],
+    typesConstruction: 'Le parc immobilier castrais mêle maisons de maître du XIXe, habitat ouvrier lié à l\'industrie textile, et pavillons contemporains. Les fondations anciennes sont souvent insuffisantes pour le terrain.',
+    problemesFrequents: [
+      'Fissures sur maisons de coteau',
+      'Humidité dans les anciennes manufactures reconverties',
+      'Infiltrations dans les sous-sols'
+    ],
+    historiqueLocal: 'L\'industrie textile a façonné l\'habitat castrais. Les anciennes usines reconverties en logements présentent souvent des problèmes d\'humidité liés à leur conception initiale.',
+    communesProches: ['Labruguière', 'Mazamet', 'Saïx', 'Burlats', 'Lagarrigue'],
+    specificitesFissures: 'Les fissures à Castres apparaissent souvent aux jonctions entre bâti ancien et extensions récentes, du fait des différences de fondations.',
+    specificitesHumidite: 'La proximité de l\'Agout et les nappes phréatiques hautes créent des problèmes d\'humidité ascensionnelle dans les quartiers bas.',
+    conseillExpert: 'À Castres, vérifiez particulièrement les jonctions entre les différentes parties de votre maison si elle a été agrandie au fil du temps.',
+    tauxSinistralite: '7,9%'
+  },
+  gaillac: {
+    nom: 'Gaillac',
+    codePostal: '81600',
+    departement: 'Tarn (81)',
+    distance: '50 km',
+    description: 'Capitale du vignoble gaillacois, cette ville de 16 000 habitants est bâtie sur des terrasses alluviales du Tarn et des coteaux argileux, zones à risque RGA.',
+    population: '15 792',
+    superficie: '60,42 km²',
+    geologie: 'Gaillac présente un sous-sol complexe : terrasses alluviales en fond de vallée, molasses argileuses sur les coteaux viticoles. Les argiles à graviers des terrasses sont sensibles au RGA.',
+    risqueRGA: 'fort',
+    arretesCATNAT: [
+      'Sécheresse 2022',
+      'Sécheresse 2023',
+      'Sécheresse 2019'
+    ],
+    quartiersRisque: [
+      'Les Music-Halles (plaine alluviale)',
+      'La Claverie (coteau)',
+      'Le Breuil (argiles superficielles)'
+    ],
+    typesConstruction: 'Gaillac mêle architecture vigneronne traditionnelle (chai et habitation), maisons de bourg anciennes, et pavillons récents sur les coteaux. Les anciennes propriétés viticoles ont parfois des fondations sommaires.',
+    problemesFrequents: [
+      'Fissures sur anciennes maisons vigneronnes',
+      'Mouvements de terrain sur coteaux',
+      'Humidité dans les chais reconvertis'
+    ],
+    historiqueLocal: 'Le vignoble gaillacois a longtemps structuré l\'habitat. La reconversion des anciennes propriétés viticoles en habitations révèle souvent des problèmes structurels latents.',
+    communesProches: ['Lisle-sur-Tarn', 'Rabastens', 'Brens', 'Rivières', 'Senouillac'],
+    specificitesFissures: 'Les fissures sur les coteaux viticoles sont souvent aggravées par les anciennes pratiques culturales (drainage, arrachage de vignes) qui ont modifié le comportement hydrique des sols.',
+    specificitesHumidite: 'Les chais et caves à vin reconvertis en pièces d\'habitation nécessitent un traitement d\'humidité spécifique pour neutraliser les remontées capillaires.',
+    conseillExpert: 'Si vous avez acheté une ancienne propriété viticole à Gaillac, faites réaliser un diagnostic complet avant tout projet de rénovation.',
+    tauxSinistralite: '11,5%'
+  },
+  lavaur: {
+    nom: 'Lavaur',
+    codePostal: '81500',
+    departement: 'Tarn (81)',
+    distance: '40 km',
+    description: 'Ville de 11 000 habitants au carrefour du Tarn et de la Haute-Garonne, Lavaur est construite sur des terrasses argileuses de l\'Agout, zone à fort risque RGA.',
+    population: '10 893',
+    superficie: '46,18 km²',
+    geologie: 'Lavaur repose sur des terrasses fluviatiles de l\'Agout, composées d\'argiles, graviers et limons. Les argiles gonflantes y sont particulièrement présentes, créant un aléa RGA fort.',
+    risqueRGA: 'fort',
+    arretesCATNAT: [
+      'Sécheresse 2022 (JO du 12/01/2023)',
+      'Sécheresse 2023',
+      'Sécheresse 2019',
+      'Sécheresse 2018'
+    ],
+    quartiersRisque: [
+      'Les Musiciens (lotissement années 80)',
+      'La Courbe (zone pavillonnaire)',
+      'Centre historique (fondations anciennes)'
+    ],
+    typesConstruction: 'Lavaur présente un centre médiéval avec la cathédrale Saint-Alain, entouré de faubourgs du XIXe et de lotissements pavillonnaires récents. Les constructions des années 70-90 sont les plus touchées.',
+    problemesFrequents: [
+      'Fissures en escalier très fréquentes',
+      'Portes et fenêtres bloquées',
+      'Carrelages fissurés'
+    ],
+    historiqueLocal: 'Lavaur a été particulièrement touchée par les arrêtés de catastrophe naturelle ces dernières années. La ville concentre un nombre élevé de sinistres RGA.',
+    communesProches: ['Saint-Sulpice-la-Pointe', 'Graulhet', 'Ambres', 'Montcabrier', 'Saint-Lieux-lès-Lavaur'],
+    specificitesFissures: 'Lavaur est l\'une des villes du Tarn les plus touchées par les fissures RGA. Les taux de sinistralité y sont parmi les plus élevés du département.',
+    specificitesHumidite: 'Les remontées capillaires sont fréquentes dans le centre historique et les quartiers anciens proches de l\'Agout.',
+    conseillExpert: 'À Lavaur, un diagnostic préventif est fortement recommandé, même sans fissure visible. La quasi-totalité de la commune est classée en aléa RGA fort.',
+    tauxSinistralite: '14,2%'
+  },
+  mazamet: {
+    nom: 'Mazamet',
+    codePostal: '81200',
+    departement: 'Tarn (81)',
+    distance: '85 km',
+    description: 'Ancienne capitale du délainage, Mazamet compte 10 000 habitants au pied de la Montagne Noire. Son relief accidenté et ses sols variés créent des conditions propices aux mouvements de terrain.',
+    population: '10 129',
+    superficie: '30,35 km²',
+    geologie: 'Mazamet est située à la transition entre les schistes de la Montagne Noire et les molasses de la plaine. Cette hétérogénéité géologique crée des comportements de sol contrastés.',
+    risqueRGA: 'moyen',
+    arretesCATNAT: [
+      'Sécheresse 2022',
+      'Sécheresse 2019'
+    ],
+    quartiersRisque: [
+      'Aussillon (commune limitrophe, mais continuité urbaine)',
+      'Le Bouyssié (terrain en pente)',
+      'Hautpoul (village perché)'
+    ],
+    typesConstruction: 'L\'industrie du délainage a façonné l\'habitat mazamétain : anciennes usines reconverties, maisons ouvrières, et villas de maîtres d\'industrie. L\'architecture est marquée par la brique et le grès.',
+    problemesFrequents: [
+      'Mouvements de terrain sur pentes',
+      'Fissures aux jonctions roche/argile',
+      'Humidité dans les anciennes usines'
+    ],
+    historiqueLocal: 'L\'industrie textile a laissé un patrimoine bâti important mais parfois vétuste. Les reconversions industrielles doivent intégrer les problématiques structurelles et d\'humidité.',
+    communesProches: ['Aussillon', 'Pont-de-l\'Arn', 'Payrin-Augmontel', 'Aiguefonde'],
+    specificitesFissures: 'Les fissures à Mazamet sont souvent liées aux pentes et à l\'hétérogénéité du sous-sol. Un diagnostic géotechnique peut s\'avérer nécessaire.',
+    specificitesHumidite: 'Le climat plus humide de la Montagne Noire crée des problèmes d\'humidité ascensionnelle et de condensation dans les bâtiments.',
+    conseillExpert: 'À Mazamet, la topographie est un facteur clé. Les maisons en pente ou à flanc de coteau nécessitent une attention particulière.',
+    tauxSinistralite: '6,4%'
+  },
+  graulhet: {
+    nom: 'Graulhet',
+    codePostal: '81300',
+    departement: 'Tarn (81)',
+    distance: '55 km',
+    description: 'Ville historique du cuir, Graulhet compte 11 000 habitants. Son sous-sol argileux et son patrimoine industriel créent des problématiques spécifiques.',
+    population: '11 108',
+    superficie: '46,68 km²',
+    geologie: 'Graulhet repose sur des terrasses du Dadou, composées d\'argiles et d\'alluvions. L\'aléa RGA est fort sur une grande partie de la commune.',
+    risqueRGA: 'fort',
+    arretesCATNAT: [
+      'Sécheresse 2022',
+      'Sécheresse 2023',
+      'Sécheresse 2019'
+    ],
+    quartiersRisque: [
+      'Centre-ville (industrie du cuir)',
+      'En Gach (zone pavillonnaire)',
+      'Le Verdier (coteaux)'
+    ],
+    typesConstruction: 'L\'industrie du cuir a façonné la ville : anciennes mégisseries, maisons d\'artisans, et habitat ouvrier. Ces bâtiments anciens ont souvent des fondations insuffisantes.',
+    problemesFrequents: [
+      'Fissures sur maisons anciennes',
+      'Pollution des sols (anciennes tanneries)',
+      'Humidité dans les bâtiments industriels'
+    ],
+    historiqueLocal: 'La reconversion post-industrielle de Graulhet pose des défis patrimoniaux. Les anciennes mégisseries reconverties nécessitent des expertises approfondies.',
+    communesProches: ['Briatexte', 'Puybegon', 'Busque', 'Saint-Gauzens', 'Lavaur'],
+    specificitesFissures: 'Les fissures à Graulhet touchent particulièrement les constructions anciennes du centre et les pavillons des années 80.',
+    specificitesHumidite: 'L\'activité historique du cuir a nécessité beaucoup d\'eau, créant des nappes perchées et des problèmes d\'humidité rémanents.',
+    conseillExpert: 'Avant tout achat à Graulhet, un diagnostic fissures ET humidité est recommandé, compte tenu du passé industriel.',
+    tauxSinistralite: '12,1%'
+  },
+  rabastens: {
+    nom: 'Rabastens',
+    codePostal: '81800',
+    departement: 'Tarn (81)',
+    distance: '35 km',
+    description: 'Cité médiévale de 6 000 habitants sur les bords du Tarn, Rabastens est proche de Toulouse. Son centre historique et ses extensions pavillonnaires présentent des problématiques distinctes.',
+    population: '5 873',
+    superficie: '47,31 km²',
+    geologie: 'Rabastens est construite sur des terrasses du Tarn, avec des argiles gonflantes en surface. L\'aléa RGA est fort sur les zones pavillonnaires périphériques.',
+    risqueRGA: 'fort',
+    arretesCATNAT: [
+      'Sécheresse 2022',
+      'Sécheresse 2023',
+      'Sécheresse 2019'
+    ],
+    quartiersRisque: [
+      'Les Musiciens (lotissement récent)',
+      'Centre médiéval (fondations anciennes)',
+      'Zone d\'activités (remblais)'
+    ],
+    typesConstruction: 'Rabastens mêle architecture médiévale (église Notre-Dame du Bourg), maisons de ville XVIIIe-XIXe, et lotissements pavillonnaires récents. Les extensions récentes sont les plus touchées par le RGA.',
+    problemesFrequents: [
+      'Fissures sur pavillons récents',
+      'Humidité dans les caves médiévales',
+      'Mouvements de terrain sur coteaux'
+    ],
+    historiqueLocal: 'La proximité de Toulouse attire de nouveaux habitants, mais les constructions rapides des années 2000-2010 souffrent parfois d\'études de sol insuffisantes.',
+    communesProches: ['Couffouleux', 'Lisle-sur-Tarn', 'Gaillac', 'Saint-Sulpice-la-Pointe'],
+    specificitesFissures: 'Les fissures à Rabastens apparaissent souvent sur les maisons de moins de 20 ans, construites sur des argiles mal identifiées.',
+    specificitesHumidite: 'Le centre médiéval de Rabastens souffre de remontées capillaires chroniques dans les caves et rez-de-chaussée.',
+    conseillExpert: 'Si vous achetez à Rabastens, demandez systématiquement l\'étude de sol G2 qui aurait dû être réalisée lors de la construction.',
+    tauxSinistralite: '13,8%'
+  },
+  carmaux: {
+    nom: 'Carmaux',
+    codePostal: '81400',
+    departement: 'Tarn (81)',
+    distance: '70 km',
+    description: 'Ancienne cité minière de 9 500 habitants, Carmaux présente des problématiques liées à son passé industriel (effondrements miniers) et à son sous-sol argileux.',
+    population: '9 387',
+    superficie: '21,19 km²',
+    geologie: 'Le sous-sol carmausin est marqué par l\'exploitation houillère historique. Des galeries de mines désaffectées peuvent créer des affaissements localisés. En surface, les argiles sont présentes.',
+    risqueRGA: 'moyen',
+    arretesCATNAT: [
+      'Sécheresse 2022',
+      'Sécheresse 2019'
+    ],
+    quartiersRisque: [
+      'Centre-ville (anciennes galeries)',
+      'La Céramique (zone industrielle)',
+      'Les Music-Halles (lotissement)'
+    ],
+    typesConstruction: 'L\'habitat carmausin est marqué par les corons (habitat minier) et les maisons ouvrières. Ces constructions modestes ont souvent des fondations superficielles.',
+    problemesFrequents: [
+      'Affaissements liés aux anciennes mines',
+      'Fissures sur maisons ouvrières',
+      'Humidité dans les caves'
+    ],
+    historiqueLocal: 'L\'exploitation minière a cessé en 1997, mais les galeries souterraines peuvent encore créer des mouvements de terrain. Une recherche historique est conseillée avant achat.',
+    communesProches: ['Blaye-les-Mines', 'Saint-Benoît-de-Carmaux', 'Rosières', 'Albi'],
+    specificitesFissures: 'À Carmaux, les fissures peuvent avoir deux origines : le RGA classique ou les mouvements liés aux anciennes galeries minières. Le diagnostic doit distinguer ces causes.',
+    specificitesHumidite: 'Les remontées d\'eau des anciennes galeries peuvent créer des problèmes d\'humidité spécifiques.',
+    conseillExpert: 'Avant tout achat à Carmaux, consultez les archives minières (BRGM) pour vérifier si des galeries passent sous le terrain.',
+    tauxSinistralite: '8,2%'
+  },
+  'saint-sulpice-la-pointe': {
+    nom: 'Saint-Sulpice-la-Pointe',
+    codePostal: '81370',
+    departement: 'Tarn (81)',
+    distance: '30 km',
+    description: 'Commune de 10 000 habitants aux portes de Toulouse, Saint-Sulpice connaît une forte croissance. Son sous-sol argileux crée des problèmes fréquents.',
+    population: '9 876',
+    superficie: '28,12 km²',
+    geologie: 'Saint-Sulpice repose sur des terrasses de l\'Agout, avec des argiles gonflantes en surface. L\'aléa RGA est très fort sur la majorité de la commune.',
+    risqueRGA: 'tres-fort',
+    arretesCATNAT: [
+      'Sécheresse 2022',
+      'Sécheresse 2023',
+      'Sécheresse 2019',
+      'Sécheresse 2018'
+    ],
+    quartiersRisque: [
+      'Zone pavillonnaire sud',
+      'Les Music-Halles',
+      'Lotissements récents (post-2000)'
+    ],
+    typesConstruction: 'La forte croissance de Saint-Sulpice a généré de nombreux lotissements pavillonnaires, parfois construits sans études de sol approfondies.',
+    problemesFrequents: [
+      'Fissures très fréquentes',
+      'Décollements de façades',
+      'Carrelages qui se soulèvent'
+    ],
+    historiqueLocal: 'Saint-Sulpice fait partie des communes les plus sinistrées du Tarn. Les arrêtés CAT-NAT se succèdent et les assurances sont de plus en plus réticentes.',
+    communesProches: ['Lavaur', 'Rabastens', 'Buzet-sur-Tarn', 'Montastruc-la-Conseillère'],
+    specificitesFissures: 'Saint-Sulpice présente un taux de sinistralité parmi les plus élevés de la région. Les fissures apparaissent parfois dès les premières années après construction.',
+    specificitesHumidite: 'La nappe phréatique haute crée des problèmes de remontées capillaires dans les sous-sols.',
+    conseillExpert: 'À Saint-Sulpice, faites systématiquement vérifier les fondations avant achat. La quasi-totalité de la commune est en zone à risque très fort.',
+    tauxSinistralite: '16,7%'
   }
 };
 
