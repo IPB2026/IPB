@@ -191,17 +191,29 @@ const getExpertDiagnosis = (path: 'fissure' | 'humidite', score: number) => {
 export async function submitDiagnosticLead(
   formData: FormData
 ): Promise<DiagnosticResult> {
+  console.log('🎯 submitDiagnosticLead appelé');
+  
   try {
     const rawData = {
       name: formData.get('name') as string,
       phone: (formData.get('phone') as string) || '',
       email: (formData.get('email') as string) || '',
       path: formData.get('path') as 'fissure' | 'humidite',
-      answers: JSON.parse(formData.get('answers') as string),
-      riskScore: parseInt(formData.get('riskScore') as string, 10),
+      answers: JSON.parse(formData.get('answers') as string || '{}'),
+      riskScore: parseInt(formData.get('riskScore') as string, 10) || 0,
     };
 
+    console.log('📋 Données reçues:', {
+      name: rawData.name,
+      phone: rawData.phone,
+      email: rawData.email,
+      path: rawData.path,
+      riskScore: rawData.riskScore,
+      answersCount: Object.keys(rawData.answers || {}).length,
+    });
+
     const validatedData = diagnosticLeadSchema.parse(rawData);
+    console.log('✅ Validation réussie');
 
     const rateKey = `diagnostic-lead:${validatedData.email || validatedData.phone || validatedData.name}`;
     const rateLimit = checkRateLimit(rateKey, { limit: 5, windowMs: 10 * 60 * 1000 });
@@ -402,15 +414,17 @@ export async function submitDiagnosticLead(
       data: { leadId },
     };
   } catch (error) {
+    // Toujours logger les erreurs pour debug (visible dans Vercel logs)
+    console.error('❌ Erreur submitDiagnosticLead:', error);
+    
     if (error instanceof z.ZodError) {
+      console.error('❌ Détails validation:', JSON.stringify(error.issues, null, 2));
       return {
         success: false,
         message: `Erreur de validation: ${error.issues[0]?.message || 'Données invalides'}`,
       };
     }
-    if (process.env.NODE_ENV === 'development') {
-      console.error('Erreur lors de l\'envoi du diagnostic:', error);
-    }
+    
     return {
       success: false,
       message: 'Une erreur est survenue. Veuillez réessayer plus tard.',

@@ -9,20 +9,12 @@ export const diagnosticPathSchema = z.enum(['fissure', 'humidite'], {
   message: 'Type de diagnostic invalide',
 });
 
-export const diagnosticAnswersSchema = z.object({
-  TYPE: z.enum(['fissure', 'humidite']).optional(),
-  LOC_FISSURE: z.array(z.string()).optional(),
-  FORME_FISSURE: z.array(z.string()).optional(),
-  SIGNES: z.array(z.string()).optional(),
-  SYMP_HUM: z.array(z.string()).optional(),
-  VENTILATION: z.enum(['vmc_ok', 'naturelle', 'aucune', 'nsp']).optional(),
-  HAUTEUR: z.enum(['bas', 'total', 'spot', 'nsp']).optional(),
-  AGE: z.enum(['ancien', 'moderne', 'neuf', 'nsp']).optional(),
-  CONTEXTE: z.array(z.string()).optional(),
-  ENV: z.enum(['arbres', 'pente', 'neutre', 'nsp']).optional(),
-  STATUT: z.enum(['proprietaire', 'locataire', 'autre']).optional(),
-  URGENCE: z.enum(['absolue', 'moderee', 'preventif', 'nsp']).optional(),
-});
+// Schéma flexible pour accepter toutes les réponses du diagnostic
+// Les clés correspondent aux IDs des questions dans page.tsx
+export const diagnosticAnswersSchema = z.record(
+  z.string(),
+  z.union([z.string(), z.array(z.string())])
+).optional().default({});
 
 export const diagnosticFormSchema = z.object({
   name: z.string().min(2, 'Le nom doit contenir au moins 2 caractères').max(100),
