@@ -22,6 +22,16 @@ export function createEmailTransporter() {
 }
 
 /**
+ * Type pour les pièces jointes
+ */
+interface EmailAttachment {
+  filename: string;
+  content: string; // Base64 data (sans le préfixe data:image/...)
+  encoding: 'base64';
+  contentType?: string;
+}
+
+/**
  * Fonction utilitaire pour envoyer un email
  */
 export async function sendEmail(options: {
@@ -30,6 +40,7 @@ export async function sendEmail(options: {
   html: string;
   from?: string;
   replyTo?: string;
+  attachments?: EmailAttachment[];
 }) {
   // Vérifier que les variables sont configurées
   if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
@@ -45,17 +56,19 @@ export async function sendEmail(options: {
   try {
     const transporter = createEmailTransporter();
 
-    const mailOptions = {
+    const mailOptions: nodemailer.SendMailOptions = {
       from: options.from || process.env.EMAIL_FROM || process.env.SMTP_USER,
       to: options.to,
       subject: options.subject,
       html: options.html,
       replyTo: options.replyTo,
+      attachments: options.attachments,
     };
 
     console.log('📧 Envoi email en cours...', {
       to: options.to,
       subject: options.subject.substring(0, 50) + '...',
+      hasAttachments: options.attachments && options.attachments.length > 0,
     });
 
     const info = await transporter.sendMail(mailOptions);

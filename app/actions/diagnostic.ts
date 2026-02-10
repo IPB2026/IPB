@@ -203,6 +203,10 @@ export async function submitDiagnosticLead(
       riskScore: parseInt(formData.get('riskScore') as string, 10) || 0,
     };
 
+    // Récupérer la photo si présente
+    const photoBase64 = formData.get('photo') as string | null;
+    const photoName = formData.get('photoName') as string | null;
+
     console.log('📋 Données reçues:', {
       name: rawData.name,
       phone: rawData.phone,
@@ -210,6 +214,7 @@ export async function submitDiagnosticLead(
       path: rawData.path,
       riskScore: rawData.riskScore,
       answersCount: Object.keys(rawData.answers || {}).length,
+      hasPhoto: !!photoBase64,
     });
 
     const validatedData = diagnosticLeadSchema.parse(rawData);
@@ -325,6 +330,15 @@ export async function submitDiagnosticLead(
               ${answersHtml}
             </div>
             
+            ${photoBase64 ? `
+            <!-- Photo jointe -->
+            <div style="background: #ecfdf5; margin: 16px; padding: 20px; border-radius: 12px; border: 2px solid #10b981;">
+              <h2 style="margin: 0 0 12px; color: #059669; font-size: 18px;">📷 PHOTO JOINTE</h2>
+              <p style="margin: 0; color: #047857;">Le client a joint une photo de son problème : <strong>${photoName || 'photo.jpg'}</strong></p>
+              <p style="margin: 8px 0 0; color: #065f46; font-size: 14px;">→ Voir la pièce jointe de cet email</p>
+            </div>
+            ` : ''}
+            
             <!-- Footer -->
             <div style="text-align: center; padding: 16px; color: #64748b; font-size: 12px;">
               <p style="margin: 0;">ID: ${leadId} • ${new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' })}</p>
@@ -333,6 +347,12 @@ export async function submitDiagnosticLead(
             
           </div>
         `,
+        // Ajouter la photo en pièce jointe si présente
+        attachments: photoBase64 ? [{
+          filename: photoName || 'photo-client.jpg',
+          content: photoBase64.replace(/^data:image\/\w+;base64,/, ''),
+          encoding: 'base64' as const,
+        }] : undefined,
       });
       // Log du résultat d'envoi (important pour le debug)
       if (!leadEmailResult.success) {
