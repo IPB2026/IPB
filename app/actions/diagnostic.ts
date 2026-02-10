@@ -21,12 +21,168 @@ interface DiagnosticResult {
   };
 }
 
+// Labels lisibles pour les questions
+const questionLabels: Record<string, string> = {
+  TYPE_BATIMENT: '🏠 Type de bâtiment',
+  LOCALISATION: '📍 Localisation',
+  FORME_FISSURE: '📐 Forme des fissures',
+  LARGEUR: '📏 Largeur',
+  ANCIENNETE: '📅 Ancienneté',
+  EVOLUTION: '📈 Évolution',
+  SIGNES_ASSOCIES: '⚠️ Signes associés',
+  STATUT: '👤 Statut',
+  URGENCE: '🚨 Niveau d\'urgence ressenti',
+  MANIFESTATION: '💧 Manifestation',
+  SAISONNALITE: '🌡️ Saisonnalité',
+  VENTILATION: '🌀 Ventilation',
+  TENTATIVES: '🔧 Tentatives précédentes',
+};
+
+// Labels lisibles pour les valeurs
+const valueLabels: Record<string, string> = {
+  // Type de bâtiment
+  maison: 'Maison individuelle',
+  immeuble: 'Immeuble / Appartement',
+  local: 'Local professionnel',
+  // Localisation fissures
+  facade: 'Façade extérieure',
+  interieur: 'Murs intérieurs',
+  plafond: 'Plafond',
+  sol: 'Sol / Dalle',
+  // Localisation humidité
+  bas_mur: 'Bas des murs',
+  haut_mur: 'Haut des murs / Plafond',
+  angle: 'Angles / Coins',
+  partout: 'Partout',
+  // Forme fissure
+  escalier: 'En escalier (joints)',
+  verticale: 'Verticales',
+  horizontale: 'Horizontales',
+  faience: 'Toile d\'araignée (faïençage)',
+  // Largeur
+  fine: 'Très fine (< 0.2mm)',
+  moyenne: 'Moyenne (0.2-2mm)',
+  large: 'Large (> 2mm)',
+  // Ancienneté
+  recent: 'Moins de 6 mois',
+  moyen: '6 mois à 2 ans',
+  ancien: 'Plus de 2 ans',
+  // Evolution
+  rapide: 'Oui, rapidement ⚠️',
+  lente: 'Oui, lentement',
+  stable: 'Stables',
+  // Signes associés
+  portes: 'Portes qui coincent',
+  carrelage: 'Carrelage fissuré',
+  infiltration: 'Infiltrations d\'eau',
+  aucun: 'Aucun autre signe',
+  // Statut
+  proprietaire: 'Propriétaire occupant',
+  bailleur: 'Propriétaire bailleur',
+  locataire: 'Locataire',
+  achat: 'En projet d\'achat',
+  // Urgence
+  immediate: '🔴 Très urgent',
+  modere: '🟠 Préoccupant',
+  surveille: '🟢 À surveiller',
+  // Manifestation humidité
+  salpetre: 'Salpêtre (poudre blanche)',
+  moisissure: 'Moisissures noires',
+  peinture: 'Peinture qui cloque',
+  odeur: 'Odeur de moisi',
+  // Saisonnalité
+  hiver: 'Pire en hiver',
+  ete: 'Pire en été / après pluie',
+  permanent: 'Présent toute l\'année',
+  // Ventilation
+  oui_fonctionne: 'Oui, elle fonctionne',
+  oui_panne: 'Oui, mais en panne',
+  non: 'Non',
+  // Tentatives
+  deshu: 'Déshumidificateur',
+  travaux: 'Travaux (injection, cuvelage...)',
+  rien: 'Rien pour l\'instant',
+  // Générique
+  ne_sais_pas: 'Ne sait pas',
+};
+
 const formatAnswersHtml = (answers: Record<string, unknown>) => {
   const items = Object.entries(answers || {}).map(([key, value]) => {
-    const displayValue = Array.isArray(value) ? value.join(', ') : String(value);
-    return `<li><strong>${key}</strong> : ${displayValue}</li>`;
+    const questionLabel = questionLabels[key] || key;
+    let displayValue: string;
+    
+    if (Array.isArray(value)) {
+      displayValue = value.map(v => valueLabels[v] || v).join(', ');
+    } else {
+      displayValue = valueLabels[String(value)] || String(value);
+    }
+    
+    return `<tr style="border-bottom: 1px solid #e2e8f0;">
+      <td style="padding: 10px 12px; font-weight: 600; color: #475569; width: 40%;">${questionLabel}</td>
+      <td style="padding: 10px 12px; color: #0f172a;">${displayValue}</td>
+    </tr>`;
   });
-  return items.length ? `<ul>${items.join('')}</ul>` : '<p>Aucune réponse transmise.</p>';
+  
+  return items.length 
+    ? `<table style="width: 100%; border-collapse: collapse; font-size: 14px;">${items.join('')}</table>` 
+    : '<p>Aucune réponse transmise.</p>';
+};
+
+// Génère le diagnostic expert
+const getExpertDiagnosis = (path: 'fissure' | 'humidite', score: number) => {
+  if (path === 'fissure') {
+    if (score >= 40) {
+      return {
+        urgency: '🔴 INTERVENTION URGENTE',
+        urgencyColor: '#dc2626',
+        diagnosis: 'Tassement différentiel actif. La structure est en mouvement et nécessite une intervention rapide.',
+        solution: 'Agrafage structurel avec renfort des façades. Calage des fondations possible si nécessaire.',
+        delay: 'Intervention recommandée sous 2-4 semaines',
+      };
+    } else if (score >= 20) {
+      return {
+        urgency: '🟠 À TRAITER RAPIDEMENT',
+        urgencyColor: '#ea580c',
+        diagnosis: 'Fissures en évolution modérée. Situation qui mérite une surveillance active.',
+        solution: 'Agrafage localisé ou surveillance instrumentée (fissuromètre) avant travaux.',
+        delay: 'Diagnostic sur site recommandé sous 1-2 mois',
+      };
+    } else {
+      return {
+        urgency: '🟢 SURVEILLANCE',
+        urgencyColor: '#16a34a',
+        diagnosis: 'Fissures stables et superficielles. Pas de danger immédiat pour la structure.',
+        solution: 'Surveillance visuelle. Rebouchage esthétique possible après confirmation de stabilité.',
+        delay: 'Pas d\'urgence, surveiller l\'évolution',
+      };
+    }
+  } else {
+    if (score >= 40) {
+      return {
+        urgency: '🔴 INTERVENTION URGENTE',
+        urgencyColor: '#dc2626',
+        diagnosis: 'Remontées capillaires importantes. Environnement malsain (moisissures, salpêtre).',
+        solution: 'Injection résine hydrophobe + traitement curatif. VMI recommandée en complément.',
+        delay: 'Intervention recommandée sous 4-6 semaines',
+      };
+    } else if (score >= 20) {
+      return {
+        urgency: '🟠 À TRAITER',
+        urgencyColor: '#ea580c',
+        diagnosis: 'Problème d\'humidité significatif nécessitant un traitement adapté.',
+        solution: 'Diagnostic précis pour identifier la cause. Injection résine, ventilation, ou réparation infiltrations.',
+        delay: 'Diagnostic sur site recommandé sous 2-3 mois',
+      };
+    } else {
+      return {
+        urgency: '🟢 SURVEILLANCE',
+        urgencyColor: '#16a34a',
+        diagnosis: 'Problème modéré, probablement lié à un manque de ventilation (condensation).',
+        solution: 'Amélioration de la ventilation (VMC). Si persistance, diagnostic pour confirmer.',
+        delay: 'Améliorer la ventilation d\'abord',
+      };
+    }
+  }
 };
 
 /**
@@ -62,34 +218,105 @@ export async function submitDiagnosticLead(
       process.env.EMAIL_LOGO_URL ||
       `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ipb-expertise.fr'}/images/IPB_Logo_HD.png`;
     if (process.env.EMAIL_TO) {
-      const urgencyLevel = validatedData.riskScore >= 25 ? '🔴 URGENT' : validatedData.riskScore >= 15 ? '🟠 PRIORITAIRE' : '🟢 NORMAL';
+      const expertDiagnosis = getExpertDiagnosis(validatedData.path, validatedData.riskScore);
       const answersHtml = formatAnswersHtml(validatedData.answers);
       const leadEmailResult = await sendEmail({
         to: process.env.EMAIL_TO,
-        subject: `[${urgencyLevel}] Diagnostic en ligne - ${validatedData.name}`,
+        subject: `[${expertDiagnosis.urgency}] Diagnostic - ${validatedData.name} - ${validatedData.phone || 'Pas de tél'}`,
         html: `
-          <div style="font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto;">
-            <h2 style="color: #EA580C;">Nouveau diagnostic en ligne IPB</h2>
-
-            <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
-              <h3 style="margin-top: 0;">Coordonnées</h3>
-              <p><strong>Nom :</strong> ${validatedData.name}</p>
-              ${validatedData.phone ? `<p><strong>Téléphone :</strong> ${validatedData.phone}</p>` : ''}
-              ${validatedData.email ? `<p><strong>Email :</strong> ${validatedData.email}</p>` : ''}
+          <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 700px; margin: 0 auto; background: #f8fafc;">
+            
+            <!-- Header -->
+            <div style="background: linear-gradient(135deg, #0f172a, #1e293b); color: white; padding: 24px; text-align: center;">
+              <h1 style="margin: 0; font-size: 24px;">🎯 Nouveau Lead IPB</h1>
+              <p style="margin: 8px 0 0; opacity: 0.8; font-size: 14px;">Diagnostic en ligne complété</p>
             </div>
-
-            <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
-              <h3 style="margin-top: 0;">Résumé du diagnostic</h3>
-              <p><strong>Type :</strong> ${validatedData.path === 'fissure' ? '🔧 Fissures & Structure' : '💧 Humidité & Infiltrations'}</p>
-              <p><strong>Score de risque :</strong> ${validatedData.riskScore}/100</p>
-              <p><strong>Niveau d'urgence :</strong> ${urgencyLevel}</p>
-              <p><strong>ID :</strong> ${leadId}</p>
+            
+            <!-- Alerte urgence -->
+            <div style="background: ${expertDiagnosis.urgencyColor}; color: white; padding: 16px 24px; text-align: center;">
+              <span style="font-size: 18px; font-weight: bold;">${expertDiagnosis.urgency}</span>
             </div>
-
-            <div style="background: #fff7ed; padding: 15px; border-left: 4px solid #EA580C; margin: 20px 0;">
-              <p style="margin: 0;"><strong>Réponses détaillées :</strong></p>
+            
+            <!-- Contact Client - Section prioritaire -->
+            <div style="background: white; margin: 16px; padding: 20px; border-radius: 12px; border: 2px solid #ea580c;">
+              <h2 style="margin: 0 0 16px; color: #ea580c; font-size: 18px;">📞 CONTACT CLIENT</h2>
+              <table style="width: 100%; font-size: 16px;">
+                <tr>
+                  <td style="padding: 8px 0; font-weight: bold; width: 120px;">Nom :</td>
+                  <td style="padding: 8px 0; font-size: 18px; color: #0f172a;"><strong>${validatedData.name}</strong></td>
+                </tr>
+                ${validatedData.phone ? `
+                <tr>
+                  <td style="padding: 8px 0; font-weight: bold;">Téléphone :</td>
+                  <td style="padding: 8px 0;">
+                    <a href="tel:${validatedData.phone}" style="color: #ea580c; font-size: 20px; font-weight: bold; text-decoration: none;">
+                      📱 ${validatedData.phone}
+                    </a>
+                  </td>
+                </tr>
+                ` : ''}
+                ${validatedData.email ? `
+                <tr>
+                  <td style="padding: 8px 0; font-weight: bold;">Email :</td>
+                  <td style="padding: 8px 0;">
+                    <a href="mailto:${validatedData.email}" style="color: #2563eb; text-decoration: none;">
+                      ✉️ ${validatedData.email}
+                    </a>
+                  </td>
+                </tr>
+                ` : ''}
+              </table>
+            </div>
+            
+            <!-- Diagnostic Expert -->
+            <div style="background: white; margin: 16px; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0;">
+              <h2 style="margin: 0 0 16px; color: #0f172a; font-size: 18px;">
+                ${validatedData.path === 'fissure' ? '🔧' : '💧'} DIAGNOSTIC AUTOMATIQUE
+              </h2>
+              
+              <div style="display: flex; gap: 12px; margin-bottom: 16px;">
+                <div style="flex: 1; background: #f1f5f9; padding: 12px; border-radius: 8px; text-align: center;">
+                  <div style="font-size: 12px; color: #64748b; text-transform: uppercase;">Type</div>
+                  <div style="font-size: 14px; font-weight: bold; color: #0f172a; margin-top: 4px;">
+                    ${validatedData.path === 'fissure' ? 'Fissures & Structure' : 'Humidité & Infiltrations'}
+                  </div>
+                </div>
+                <div style="flex: 1; background: #f1f5f9; padding: 12px; border-radius: 8px; text-align: center;">
+                  <div style="font-size: 12px; color: #64748b; text-transform: uppercase;">Score</div>
+                  <div style="font-size: 24px; font-weight: bold; color: ${expertDiagnosis.urgencyColor}; margin-top: 4px;">
+                    ${validatedData.riskScore}/100
+                  </div>
+                </div>
+              </div>
+              
+              <div style="background: #eff6ff; border-left: 4px solid #2563eb; padding: 14px; border-radius: 0 8px 8px 0; margin-bottom: 12px;">
+                <div style="font-weight: bold; color: #1e40af; margin-bottom: 6px;">📋 Analyse :</div>
+                <div style="color: #1e40af;">${expertDiagnosis.diagnosis}</div>
+              </div>
+              
+              <div style="background: #f0fdf4; border-left: 4px solid #16a34a; padding: 14px; border-radius: 0 8px 8px 0; margin-bottom: 12px;">
+                <div style="font-weight: bold; color: #166534; margin-bottom: 6px;">✅ Solution recommandée :</div>
+                <div style="color: #166534;">${expertDiagnosis.solution}</div>
+              </div>
+              
+              <div style="background: #fef3c7; border-left: 4px solid #d97706; padding: 14px; border-radius: 0 8px 8px 0;">
+                <div style="font-weight: bold; color: #92400e; margin-bottom: 6px;">⏰ Délai :</div>
+                <div style="color: #92400e;">${expertDiagnosis.delay}</div>
+              </div>
+            </div>
+            
+            <!-- Réponses détaillées -->
+            <div style="background: white; margin: 16px; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0;">
+              <h2 style="margin: 0 0 16px; color: #0f172a; font-size: 18px;">📝 RÉPONSES DU CLIENT</h2>
               ${answersHtml}
             </div>
+            
+            <!-- Footer -->
+            <div style="text-align: center; padding: 16px; color: #64748b; font-size: 12px;">
+              <p style="margin: 0;">ID: ${leadId} • ${new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' })}</p>
+              <p style="margin: 8px 0 0;">Généré automatiquement par le site IPB</p>
+            </div>
+            
           </div>
         `,
       });
@@ -214,7 +441,7 @@ export async function submitDiagnosticCallback(
     }
 
     const callbackId = `CALL-${Date.now()}`;
-    const urgencyLevel = rawData.riskScore >= 25 ? '🔴 URGENT' : rawData.riskScore >= 15 ? '🟠 PRIORITAIRE' : '🟢 NORMAL';
+    const expertDiagnosis = getExpertDiagnosis(rawData.path, rawData.riskScore);
     const answersHtml = formatAnswersHtml(rawData.answers);
     const logoUrl =
       process.env.EMAIL_LOGO_URL ||
@@ -223,29 +450,106 @@ export async function submitDiagnosticCallback(
     if (process.env.EMAIL_TO) {
       const emailResult = await sendEmail({
         to: process.env.EMAIL_TO,
-        subject: `[${urgencyLevel}] Demande de rappel - ${rawData.name}`,
+        subject: `📞 RAPPEL DEMANDÉ [${expertDiagnosis.urgency}] - ${rawData.name} - ${rawData.phone}`,
         html: `
-          <div style="font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto;">
-            <h2 style="color: #EA580C;">Demande de rappel IPB</h2>
-
-            <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
-              <h3 style="margin-top: 0;">Coordonnées</h3>
-              <p><strong>Nom :</strong> ${rawData.name}</p>
-              <p><strong>Téléphone :</strong> ${rawData.phone}</p>
+          <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 700px; margin: 0 auto; background: #f8fafc;">
+            
+            <!-- Header -->
+            <div style="background: linear-gradient(135deg, #ea580c, #dc2626); color: white; padding: 24px; text-align: center;">
+              <h1 style="margin: 0; font-size: 24px;">📞 DEMANDE DE RAPPEL</h1>
+              <p style="margin: 8px 0 0; opacity: 0.9; font-size: 16px;">Le client attend votre appel !</p>
             </div>
-
-            <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
-              <h3 style="margin-top: 0;">Résumé du diagnostic</h3>
-              <p><strong>Type :</strong> ${rawData.path === 'fissure' ? '🔧 Fissures & Structure' : '💧 Humidité & Infiltrations'}</p>
-              <p><strong>Score de risque :</strong> ${rawData.riskScore}/100</p>
-              <p><strong>Niveau d'urgence :</strong> ${urgencyLevel}</p>
-              <p><strong>ID :</strong> ${callbackId}</p>
+            
+            <!-- Alerte urgence -->
+            <div style="background: ${expertDiagnosis.urgencyColor}; color: white; padding: 16px 24px; text-align: center;">
+              <span style="font-size: 18px; font-weight: bold;">${expertDiagnosis.urgency}</span>
             </div>
-
-            <div style="background: #fff7ed; padding: 15px; border-left: 4px solid #EA580C; margin: 20px 0;">
-              <p style="margin: 0;"><strong>Réponses détaillées :</strong></p>
+            
+            <!-- Contact Client - Section prioritaire -->
+            <div style="background: white; margin: 16px; padding: 24px; border-radius: 12px; border: 3px solid #ea580c;">
+              <h2 style="margin: 0 0 20px; color: #ea580c; font-size: 20px; text-align: center;">
+                🚨 APPELER CE CLIENT
+              </h2>
+              <table style="width: 100%; font-size: 16px;">
+                <tr>
+                  <td style="padding: 10px 0; font-weight: bold; width: 120px;">Nom :</td>
+                  <td style="padding: 10px 0; font-size: 20px; color: #0f172a;"><strong>${rawData.name}</strong></td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px 0; font-weight: bold;">Téléphone :</td>
+                  <td style="padding: 10px 0;">
+                    <a href="tel:${rawData.phone}" style="background: #ea580c; color: white; padding: 12px 24px; border-radius: 8px; font-size: 22px; font-weight: bold; text-decoration: none; display: inline-block;">
+                      📱 ${rawData.phone}
+                    </a>
+                  </td>
+                </tr>
+                ${rawData.email ? `
+                <tr>
+                  <td style="padding: 10px 0; font-weight: bold;">Email :</td>
+                  <td style="padding: 10px 0;">
+                    <a href="mailto:${rawData.email}" style="color: #2563eb; text-decoration: none;">
+                      ✉️ ${rawData.email}
+                    </a>
+                  </td>
+                </tr>
+                ` : ''}
+              </table>
+            </div>
+            
+            <!-- Diagnostic Expert -->
+            <div style="background: white; margin: 16px; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0;">
+              <h2 style="margin: 0 0 16px; color: #0f172a; font-size: 18px;">
+                ${rawData.path === 'fissure' ? '🔧' : '💧'} DIAGNOSTIC À CONNAÎTRE AVANT L'APPEL
+              </h2>
+              
+              <div style="margin-bottom: 16px;">
+                <table style="width: 100%;">
+                  <tr>
+                    <td style="width: 50%; padding: 8px; background: #f1f5f9; border-radius: 8px; text-align: center;">
+                      <div style="font-size: 12px; color: #64748b; text-transform: uppercase;">Type</div>
+                      <div style="font-size: 14px; font-weight: bold; color: #0f172a; margin-top: 4px;">
+                        ${rawData.path === 'fissure' ? 'Fissures & Structure' : 'Humidité & Infiltrations'}
+                      </div>
+                    </td>
+                    <td style="width: 10px;"></td>
+                    <td style="width: 50%; padding: 8px; background: #f1f5f9; border-radius: 8px; text-align: center;">
+                      <div style="font-size: 12px; color: #64748b; text-transform: uppercase;">Score de risque</div>
+                      <div style="font-size: 24px; font-weight: bold; color: ${expertDiagnosis.urgencyColor}; margin-top: 4px;">
+                        ${rawData.riskScore}/100
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              
+              <div style="background: #eff6ff; border-left: 4px solid #2563eb; padding: 14px; border-radius: 0 8px 8px 0; margin-bottom: 12px;">
+                <div style="font-weight: bold; color: #1e40af; margin-bottom: 6px;">📋 Ce que le client a :</div>
+                <div style="color: #1e40af;">${expertDiagnosis.diagnosis}</div>
+              </div>
+              
+              <div style="background: #f0fdf4; border-left: 4px solid #16a34a; padding: 14px; border-radius: 0 8px 8px 0; margin-bottom: 12px;">
+                <div style="font-weight: bold; color: #166534; margin-bottom: 6px;">✅ Solution à proposer :</div>
+                <div style="color: #166534;">${expertDiagnosis.solution}</div>
+              </div>
+              
+              <div style="background: #fef3c7; border-left: 4px solid #d97706; padding: 14px; border-radius: 0 8px 8px 0;">
+                <div style="font-weight: bold; color: #92400e; margin-bottom: 6px;">⏰ Délai recommandé :</div>
+                <div style="color: #92400e;">${expertDiagnosis.delay}</div>
+              </div>
+            </div>
+            
+            <!-- Réponses détaillées -->
+            <div style="background: white; margin: 16px; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0;">
+              <h2 style="margin: 0 0 16px; color: #0f172a; font-size: 18px;">📝 CE QUE LE CLIENT A RÉPONDU</h2>
               ${answersHtml}
             </div>
+            
+            <!-- Footer -->
+            <div style="text-align: center; padding: 16px; color: #64748b; font-size: 12px;">
+              <p style="margin: 0;">ID: ${callbackId} • ${new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' })}</p>
+              <p style="margin: 8px 0 0;">⚡ Le client attend un rappel sous 24h maximum</p>
+            </div>
+            
           </div>
         `,
       });
