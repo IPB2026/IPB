@@ -33,10 +33,13 @@ export async function sendEmail(options: {
 }) {
   // Vérifier que les variables sont configurées
   if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    if (process.env.NODE_ENV === 'development') {
-      console.error('⚠️ Email non configuré : SMTP_USER et SMTP_PASS manquants');
-    }
-    return { success: false, error: 'Email non configuré' };
+    console.error('❌ EMAIL NON CONFIGURÉ : SMTP_USER et/ou SMTP_PASS manquants !');
+    console.error('Variables actuelles:', {
+      SMTP_USER: process.env.SMTP_USER ? '✅ défini' : '❌ manquant',
+      SMTP_PASS: process.env.SMTP_PASS ? '✅ défini' : '❌ manquant',
+      EMAIL_TO: process.env.EMAIL_TO ? '✅ défini' : '❌ manquant',
+    });
+    return { success: false, error: 'SMTP_USER ou SMTP_PASS non configuré sur Vercel' };
   }
 
   try {
@@ -50,17 +53,18 @@ export async function sendEmail(options: {
       replyTo: options.replyTo,
     };
 
+    console.log('📧 Envoi email en cours...', {
+      to: options.to,
+      subject: options.subject.substring(0, 50) + '...',
+    });
+
     const info = await transporter.sendMail(mailOptions);
     
-    if (process.env.NODE_ENV === 'development') {
-      console.log('✅ Email envoyé avec succès:', info.messageId);
-    }
+    console.log('✅ Email envoyé avec succès:', info.messageId);
     return { success: true, messageId: info.messageId };
   } catch (error) {
-    if (process.env.NODE_ENV === 'development') {
-      console.error('❌ Erreur lors de l\'envoi de l\'email:', error);
-    }
-    return { success: false, error };
+    console.error('❌ ERREUR ENVOI EMAIL:', error);
+    return { success: false, error: String(error) };
   }
 }
 
