@@ -544,11 +544,6 @@ export default function DiagnosticPage() {
           {/* ÉTAPE 0 : Choix du parcours */}
           {step === 0 && (
             <div className="text-center">
-              {/* Badge accrocheur */}
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-5 py-2.5 rounded-full text-sm font-bold uppercase tracking-wide mb-6 shadow-lg animate-pulse">
-                🏠 Diagnostic Expert déductible des travaux
-              </div>
-              
               <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">
                 Évaluez votre problème <span className="text-orange-500">en 2 minutes</span>
               </h1>
