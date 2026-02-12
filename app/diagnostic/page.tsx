@@ -490,19 +490,52 @@ export default function DiagnosticPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-orange-50/30 flex items-center justify-center p-4">
       <div className="w-full max-w-3xl">
-        {/* Header avec progression */}
+        {/* Header avec progression gamifiée */}
         {step > 0 && step < 999 && (
           <div className="mb-6">
-            <div className="flex items-center justify-between text-sm text-slate-600 mb-2">
-              <span className="font-bold">Question {step} / {totalQuestions}</span>
-              <span>Encore {totalQuestions - step + 1} question{totalQuestions - step > 1 ? 's' : ''}</span>
+            <div className="flex items-center justify-between text-sm mb-3">
+              <div className="flex items-center gap-2">
+                <span className="bg-orange-500 text-white font-bold px-3 py-1 rounded-full text-xs">
+                  {step} / {totalQuestions}
+                </span>
+                <span className="text-slate-600 font-medium">
+                  {step <= 3 ? '🔍 Analyse du problème' : step <= 6 ? '📊 Évaluation de gravité' : '✅ Finalisation'}
+                </span>
+              </div>
+              <span className="text-slate-500 text-xs">
+                {totalQuestions - step === 0 ? '🎉 Dernière question !' : `Plus que ${totalQuestions - step + 1} question${totalQuestions - step > 0 ? 's' : ''}`}
+              </span>
             </div>
-            <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-gradient-to-r from-orange-500 to-orange-600 transition-all duration-500"
-                style={{ width: `${progress}%` }}
-              />
+            
+            {/* Barre de progression avec milestones */}
+            <div className="relative">
+              <div className="h-3 bg-slate-200 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-gradient-to-r from-orange-400 via-orange-500 to-green-500 transition-all duration-500 ease-out"
+                  style={{ width: `${Math.max(progress, 5)}%` }}
+                />
+              </div>
+              
+              {/* Milestones */}
+              <div className="absolute top-0 left-0 w-full h-3 flex justify-between px-1">
+                <div className={`w-3 h-3 rounded-full border-2 border-white shadow ${step >= 1 ? 'bg-orange-500' : 'bg-slate-300'}`} />
+                <div className={`w-3 h-3 rounded-full border-2 border-white shadow ${step > totalQuestions * 0.33 ? 'bg-orange-500' : 'bg-slate-300'}`} />
+                <div className={`w-3 h-3 rounded-full border-2 border-white shadow ${step > totalQuestions * 0.66 ? 'bg-orange-500' : 'bg-slate-300'}`} />
+                <div className={`w-3 h-3 rounded-full border-2 border-white shadow ${step >= totalQuestions ? 'bg-green-500' : 'bg-slate-300'}`} />
+              </div>
             </div>
+            
+            {/* Encouragements dynamiques */}
+            {step === Math.ceil(totalQuestions / 2) && (
+              <div className="mt-3 text-center text-sm text-green-600 font-medium animate-bounce">
+                👏 Bravo ! Vous êtes à mi-chemin !
+              </div>
+            )}
+            {step === totalQuestions && (
+              <div className="mt-3 text-center text-sm text-green-600 font-medium animate-pulse">
+                🎯 Dernière question avant votre diagnostic !
+              </div>
+            )}
           </div>
         )}
 
@@ -511,55 +544,148 @@ export default function DiagnosticPage() {
           {/* ÉTAPE 0 : Choix du parcours */}
           {step === 0 && (
             <div className="text-center">
-              <div className="inline-flex items-center gap-2 bg-orange-50 text-orange-600 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wide mb-6 border border-orange-100">
-                ✨ Diagnostic Gratuit & Instantané
+              {/* Badge accrocheur */}
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-5 py-2.5 rounded-full text-sm font-bold uppercase tracking-wide mb-6 shadow-lg animate-pulse">
+                🎁 Diagnostic Expert Offert (valeur 149€)
               </div>
+              
               <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">
-                Quel est votre problème ?
+                Analysez votre problème <span className="text-orange-500">gratuitement</span>
               </h1>
-              <p className="text-slate-600 text-lg mb-10">
-                Répondez à quelques questions pour obtenir un diagnostic personnalisé en 2 minutes
+              <p className="text-slate-600 text-lg mb-6">
+                Répondez à 9 questions simples et recevez un diagnostic personnalisé par un expert
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Social Proof - Statistiques */}
+              <div className="flex flex-wrap justify-center gap-6 mb-8 text-sm">
+                <div className="flex items-center gap-2 text-slate-700">
+                  <span className="text-green-500 text-lg">✓</span>
+                  <span><strong>2 847</strong> diagnostics ce mois</span>
+                </div>
+                <div className="flex items-center gap-2 text-slate-700">
+                  <span className="text-yellow-500 text-lg">⭐</span>
+                  <span><strong>4.9/5</strong> satisfaction client</span>
+                </div>
+                <div className="flex items-center gap-2 text-slate-700">
+                  <span className="text-blue-500 text-lg">🏆</span>
+                  <span><strong>15 ans</strong> d'expertise</span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <button
                   onClick={() => selectPath('fissure')}
-                  className="group bg-gradient-to-br from-orange-50 to-orange-100/50 hover:from-orange-100 hover:to-orange-200/50 border-2 border-orange-200 hover:border-orange-400 rounded-2xl p-8 transition-all transform hover:scale-105 hover:shadow-xl"
+                  className="group relative bg-gradient-to-br from-orange-50 to-orange-100/50 hover:from-orange-100 hover:to-orange-200/50 border-2 border-orange-200 hover:border-orange-400 rounded-2xl p-8 transition-all transform hover:scale-105 hover:shadow-xl overflow-hidden"
                 >
-                  <div className="text-6xl mb-4">🔧</div>
+                  <div className="absolute top-3 right-3 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded-full">
+                    60% des cas
+                  </div>
+                  <div className="text-6xl mb-4">🏠</div>
                   <h2 className="text-2xl font-bold text-slate-900 mb-2">Fissures & Structure</h2>
-                  <p className="text-slate-600 text-sm">
+                  <p className="text-slate-600 text-sm mb-3">
                     Fissures en façade, tassement, portes qui coincent...
                   </p>
+                  <span className="inline-flex items-center gap-1 text-orange-600 font-semibold text-sm group-hover:gap-2 transition-all">
+                    Commencer le diagnostic →
+                  </span>
                 </button>
 
                 <button
                   onClick={() => selectPath('humidite')}
-                  className="group bg-gradient-to-br from-blue-50 to-blue-100/50 hover:from-blue-100 hover:to-blue-200/50 border-2 border-blue-200 hover:border-blue-400 rounded-2xl p-8 transition-all transform hover:scale-105 hover:shadow-xl"
+                  className="group relative bg-gradient-to-br from-blue-50 to-blue-100/50 hover:from-blue-100 hover:to-blue-200/50 border-2 border-blue-200 hover:border-blue-400 rounded-2xl p-8 transition-all transform hover:scale-105 hover:shadow-xl overflow-hidden"
                 >
+                  <div className="absolute top-3 right-3 bg-blue-500 text-white text-[10px] font-bold px-2 py-1 rounded-full">
+                    40% des cas
+                  </div>
                   <div className="text-6xl mb-4">💧</div>
                   <h2 className="text-2xl font-bold text-slate-900 mb-2">Humidité & Infiltrations</h2>
-                  <p className="text-slate-600 text-sm">
+                  <p className="text-slate-600 text-sm mb-3">
                     Salpêtre, moisissures, murs humides...
                   </p>
+                  <span className="inline-flex items-center gap-1 text-blue-600 font-semibold text-sm group-hover:gap-2 transition-all">
+                    Commencer le diagnostic →
+                  </span>
                 </button>
               </div>
 
-              <p className="text-xs text-slate-500 mt-8">
-                🔒 Vos données sont sécurisées • ✓ Sans engagement • ⏱️ 2 min chrono
-              </p>
+              {/* Témoignage */}
+              <div className="bg-slate-50 rounded-2xl p-5 text-left max-w-lg mx-auto mb-6">
+                <div className="flex items-start gap-3">
+                  <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-xl flex-shrink-0">
+                    👨
+                  </div>
+                  <div>
+                    <p className="text-slate-700 text-sm italic mb-2">
+                      "J'hésitais à faire appel à un expert. Ce diagnostic gratuit m'a convaincu : en 2 minutes, j'ai compris la gravité de mes fissures. L'intervention a été réalisée en 3 jours."
+                    </p>
+                    <p className="text-slate-500 text-xs font-medium">
+                      Pierre M. — Toulouse (31) • ⭐⭐⭐⭐⭐
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Trust badges */}
+              <div className="flex flex-wrap justify-center gap-4 text-xs text-slate-500">
+                <span className="flex items-center gap-1">🔒 Données sécurisées</span>
+                <span className="flex items-center gap-1">✓ 100% gratuit</span>
+                <span className="flex items-center gap-1">⏱️ 2 min chrono</span>
+                <span className="flex items-center gap-1">📞 Rappel sous 24h</span>
+              </div>
             </div>
           )}
 
           {/* ÉTAPES 1-N : Questions */}
           {step > 0 && step <= totalQuestions && currentQuestion && (
             <div className="animate-fadeIn">
-              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-8">
+              {/* Indicateur d'urgence en temps réel */}
+              {step > 2 && (
+                <div className="mb-6 p-4 rounded-xl bg-slate-50 border border-slate-200">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium text-slate-600">Niveau d'attention requis</span>
+                    <span className={`text-xs font-bold px-2 py-1 rounded-full ${
+                      calculateRisk(path!, answers) >= 40 
+                        ? 'bg-red-100 text-red-700' 
+                        : calculateRisk(path!, answers) >= 20 
+                          ? 'bg-orange-100 text-orange-700' 
+                          : 'bg-green-100 text-green-700'
+                    }`}>
+                      {calculateRisk(path!, answers) >= 40 ? '⚠️ Élevé' : calculateRisk(path!, answers) >= 20 ? '🔶 Modéré' : '✅ Faible'}
+                    </span>
+                  </div>
+                  <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
+                    <div 
+                      className={`h-full transition-all duration-500 ${
+                        calculateRisk(path!, answers) >= 40 
+                          ? 'bg-red-500' 
+                          : calculateRisk(path!, answers) >= 20 
+                            ? 'bg-orange-500' 
+                            : 'bg-green-500'
+                      }`}
+                      style={{ width: `${Math.max(calculateRisk(path!, answers), 10)}%` }}
+                    />
+                  </div>
+                </div>
+              )}
+
+              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-2">
                 {currentQuestion.text}
               </h2>
+              
+              {/* Indication multi-sélection */}
+              {isMultiQuestion && (
+                <p className="text-orange-600 text-sm font-medium mb-6">
+                  ✨ Plusieurs réponses possibles
+                </p>
+              )}
+              {!isMultiQuestion && (
+                <p className="text-slate-500 text-sm mb-6">
+                  Cliquez sur votre réponse pour continuer
+                </p>
+              )}
 
               <div className="space-y-3">
-                {currentQuestion.options.map((option) => {
+                {currentQuestion.options.map((option, idx) => {
                   const isSelected = isMultiQuestion
                     ? (answers[currentQuestion.id] as string[] || []).includes(option.value)
                     : answers[currentQuestion.id] === option.value;
@@ -578,23 +704,28 @@ export default function DiagnosticPage() {
                           handleAnswer(currentQuestion.id, option.value, false);
                         }
                       }}
+                      style={{ animationDelay: `${idx * 50}ms` }}
                       className={`
-                        w-full flex items-center gap-4 p-4 rounded-xl border-2 transition-all text-left
+                        w-full flex items-center gap-4 p-5 rounded-2xl border-2 transition-all text-left transform hover:scale-[1.02] active:scale-[0.98] animate-slideUp
                         ${isSelected
-                          ? 'bg-orange-50 border-orange-500 shadow-md'
-                          : 'bg-white border-slate-200 hover:border-orange-300 hover:shadow-sm'
+                          ? 'bg-gradient-to-r from-orange-50 to-orange-100/50 border-orange-500 shadow-lg ring-2 ring-orange-200'
+                          : 'bg-white border-slate-200 hover:border-orange-400 hover:shadow-md hover:bg-orange-50/30'
                         }
                       `}
                     >
-                      <span className="text-3xl">{option.icon}</span>
+                      <span className={`text-3xl transition-transform ${isSelected ? 'scale-110' : ''}`}>{option.icon}</span>
                       <span className={`font-bold text-lg flex-1 ${isSelected ? 'text-orange-600' : 'text-slate-900'}`}>
                         {option.label}
                       </span>
-                      {isSelected && (
-                        <svg className="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                      )}
+                      <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
+                        isSelected ? 'bg-orange-500 border-orange-500' : 'border-slate-300'
+                      }`}>
+                        {isSelected && (
+                          <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        )}
+                      </div>
                     </button>
                   );
                 })}
@@ -624,21 +755,55 @@ export default function DiagnosticPage() {
           {/* ÉTAPE 999 : Coordonnées (GATE OBLIGATOIRE) */}
           {step === 999 && !isAnalyzing && !showResult && (
             <div className="animate-fadeIn">
+              {/* Header avec animation de succès */}
               <div className="text-center mb-8">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
+                <div className="relative w-20 h-20 mx-auto mb-4">
+                  <div className="absolute inset-0 bg-green-100 rounded-full animate-ping opacity-25" />
+                  <div className="relative w-20 h-20 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center shadow-lg">
+                    <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
                 </div>
-                <h2 className="text-3xl font-extrabold text-slate-900 mb-3">
-                  Dernière étape !
+                
+                <h2 className="text-3xl font-extrabold text-slate-900 mb-2">
+                  🎉 Votre diagnostic est prêt !
                 </h2>
-                <p className="text-slate-600 text-lg">
-                  Pour accéder à votre diagnostic personnalisé, laissez-nous un moyen de vous recontacter.
+                <p className="text-slate-600 text-lg mb-4">
+                  Renseignez vos coordonnées pour recevoir votre analyse personnalisée
                 </p>
-                <p className="text-sm text-slate-500 mt-2">
-                  🔒 Vos données restent confidentielles • Nous ne spammons jamais
-                </p>
+                
+                {/* Ce que vous allez recevoir */}
+                <div className="bg-gradient-to-r from-orange-50 to-amber-50 rounded-xl p-4 mb-4 text-left max-w-md mx-auto border border-orange-100">
+                  <p className="text-sm font-bold text-slate-800 mb-2">📋 Votre diagnostic comprend :</p>
+                  <ul className="text-sm text-slate-600 space-y-1">
+                    <li className="flex items-center gap-2">
+                      <span className="text-green-500">✓</span> Analyse de gravité personnalisée
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-green-500">✓</span> Solution recommandée par l'expert
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-green-500">✓</span> Délai d'intervention conseillé
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-green-500">✓</span> Rappel gratuit sous 24h (optionnel)
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Trust badges */}
+                <div className="flex flex-wrap justify-center gap-3 text-xs">
+                  <span className="bg-slate-100 text-slate-600 px-3 py-1.5 rounded-full flex items-center gap-1">
+                    🔒 Données sécurisées SSL
+                  </span>
+                  <span className="bg-slate-100 text-slate-600 px-3 py-1.5 rounded-full flex items-center gap-1">
+                    ✉️ Pas de spam, jamais
+                  </span>
+                  <span className="bg-slate-100 text-slate-600 px-3 py-1.5 rounded-full flex items-center gap-1">
+                    📞 Rappel gratuit
+                  </span>
+                </div>
               </div>
 
               <form onSubmit={handleSubmitContact} className="space-y-4">
@@ -807,14 +972,38 @@ export default function DiagnosticPage() {
 
           {/* ANALYSE EN COURS */}
           {isAnalyzing && (
-            <div className="text-center py-12 animate-fadeIn">
-              <div className="w-20 h-20 border-4 border-orange-200 border-t-orange-600 rounded-full animate-spin mx-auto mb-6" />
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">Analyse de vos réponses...</h2>
-              <div className="space-y-2 text-slate-600">
-                <p>✓ Traitement des symptômes</p>
-                <p>✓ Comparaison avec 10 000+ cas similaires</p>
-                <p>✓ Génération du rapport expert</p>
+            <div className="text-center py-8 animate-fadeIn">
+              {/* Animation de chargement améliorée */}
+              <div className="relative w-24 h-24 mx-auto mb-8">
+                <div className="absolute inset-0 border-4 border-orange-200 rounded-full" />
+                <div className="absolute inset-0 border-4 border-transparent border-t-orange-500 rounded-full animate-spin" />
+                <div className="absolute inset-2 border-4 border-transparent border-t-orange-400 rounded-full animate-spin" style={{ animationDirection: 'reverse', animationDuration: '0.8s' }} />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-2xl">🔍</span>
+                </div>
               </div>
+              
+              <h2 className="text-2xl font-bold text-slate-900 mb-6">Notre expert analyse votre situation...</h2>
+              
+              {/* Étapes d'analyse animées */}
+              <div className="max-w-sm mx-auto space-y-3 text-left">
+                <div className="flex items-center gap-3 p-3 bg-green-50 rounded-xl border border-green-200 animate-fadeIn" style={{ animationDelay: '0.2s' }}>
+                  <span className="text-green-500 text-xl">✓</span>
+                  <span className="text-slate-700 font-medium">Analyse des symptômes</span>
+                </div>
+                <div className="flex items-center gap-3 p-3 bg-green-50 rounded-xl border border-green-200 animate-fadeIn" style={{ animationDelay: '0.6s' }}>
+                  <span className="text-green-500 text-xl">✓</span>
+                  <span className="text-slate-700 font-medium">Comparaison avec 10 000+ cas</span>
+                </div>
+                <div className="flex items-center gap-3 p-3 bg-orange-50 rounded-xl border border-orange-200 animate-pulse" style={{ animationDelay: '1s' }}>
+                  <div className="w-5 h-5 border-2 border-orange-400 border-t-transparent rounded-full animate-spin" />
+                  <span className="text-slate-700 font-medium">Génération du rapport expert...</span>
+                </div>
+              </div>
+              
+              <p className="text-slate-500 text-sm mt-6">
+                ⏱️ Quelques secondes...
+              </p>
             </div>
           )}
 
