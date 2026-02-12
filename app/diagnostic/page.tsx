@@ -1059,95 +1059,204 @@ export default function DiagnosticPage() {
                 </div>
               </div>
 
-              {/* CTA FINAL - Section mise en avant */}
-              <div className="relative -mx-8 md:-mx-12 px-8 md:px-12 py-10 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 text-white mt-8">
+              {/* CTA FINAL - Section CRO optimisée */}
+              <div className="relative -mx-8 md:-mx-12 px-8 md:px-12 py-10 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white mt-8">
                 {/* Effet décoratif */}
                 <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                  <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl" />
-                  <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
+                  <div className="absolute -top-20 -right-20 w-60 h-60 bg-orange-500/20 rounded-full blur-3xl" />
+                  <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-orange-500/10 rounded-full blur-3xl" />
                 </div>
 
                 <div className="relative z-10">
-                  <div className="text-center mb-8">
-                    <span className="inline-block bg-white/20 backdrop-blur px-4 py-1.5 rounded-full text-sm font-medium mb-4">
-                      🎯 Prochaine étape
-                    </span>
-                    <h3 className="text-3xl md:text-4xl font-extrabold mb-3">
-                      Passez à l'action
-                    </h3>
-                    <p className="text-white/90 text-lg max-w-md mx-auto">
-                      Un expert vous rappelle sous 24h pour discuter de votre situation
-                    </p>
-                  </div>
-
                   {!showCallbackForm ? (
-                  <div className="space-y-6">
-                    {/* CTA principal - Diagnostic */}
-                    <button
-                      onClick={() => {
+                  <>
+                    {/* Urgence basée sur le score */}
+                    {riskScore >= 30 && (
+                      <div className="bg-red-500/20 border border-red-400/30 rounded-xl p-4 mb-6 text-center">
+                        <p className="text-red-300 font-semibold text-sm">
+                          ⚠️ Votre situation nécessite une attention {riskScore >= 40 ? 'urgente' : 'rapide'}. 
+                          Plus vous attendez, plus les dégâts risquent de s'aggraver.
+                        </p>
+                      </div>
+                    )}
+
+                    {/* Headline personnalisé */}
+                    <div className="text-center mb-6">
+                      <h3 className="text-2xl md:text-3xl font-extrabold mb-2">
+                        {riskScore >= 40 
+                          ? "Agissez maintenant pour protéger votre bien"
+                          : riskScore >= 20 
+                            ? "Confirmez votre diagnostic avec un expert"
+                            : "Obtenez un avis professionnel"}
+                      </h3>
+                      <p className="text-white/70">
+                        Un expert certifié vous rappelle pour planifier l'intervention
+                      </p>
+                    </div>
+
+                    {/* Social proof live */}
+                    <div className="flex flex-wrap justify-center gap-4 mb-6 text-sm">
+                      <div className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full">
+                        <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                        <span>12 diagnostics cette semaine</span>
+                      </div>
+                      <div className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full">
+                        <span>⭐ 4.9/5</span>
+                        <span className="text-white/60">(127 avis)</span>
+                      </div>
+                    </div>
+
+                    {/* CTA Principal - Formulaire direct */}
+                    <div className="bg-white rounded-2xl p-6 shadow-2xl max-w-lg mx-auto">
+                      <div className="text-center mb-5">
+                        <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold mb-3">
+                          <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                          Créneaux disponibles cette semaine
+                        </div>
+                        <h4 className="text-xl font-bold text-slate-900 mb-1">Diagnostic expert sur site</h4>
+                        <p className="text-slate-500 text-sm">Intervention sous 48h-72h en Haute-Garonne, Tarn et Gers</p>
+                      </div>
+
+                      {/* Prix avec ancrage */}
+                      <div className="bg-orange-50 border-2 border-orange-200 rounded-xl p-4 mb-5">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <p className="text-sm text-slate-600">Diagnostic instrumenté complet</p>
+                            <p className="text-2xl font-extrabold text-slate-900">149€ <span className="text-base font-normal text-slate-500">HT</span></p>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-xs text-green-600 font-semibold">✓ DÉDUCTIBLE DES TRAVAUX</p>
+                            <p className="text-xs text-slate-500">= Gratuit si vous faites les travaux</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Formulaire simplifié */}
+                      <form onSubmit={(e) => {
+                        e.preventDefault();
                         setSelectedNeed('expertise');
-                        setCallbackInfo({ ...callbackInfo, name: contactInfo.name });
                         setShowCallbackForm(true);
-                      }}
-                      className="w-full bg-white rounded-2xl p-6 hover:scale-[1.02] transition-all duration-200 shadow-lg text-left"
-                    >
-                      <div className="flex items-center gap-4 mb-3">
-                        <div className="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                          <span className="text-3xl">🔍</span>
+                      }}>
+                        <div className="space-y-3 mb-4">
+                          <input
+                            type="text"
+                            value={callbackInfo.name || contactInfo.name}
+                            onChange={(e) => setCallbackInfo({ ...callbackInfo, name: e.target.value })}
+                            placeholder="Votre nom"
+                            className="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-orange-500 outline-none text-slate-900"
+                            required
+                          />
+                          <input
+                            type="tel"
+                            value={callbackInfo.phone}
+                            onChange={(e) => setCallbackInfo({ ...callbackInfo, phone: e.target.value })}
+                            placeholder="Votre téléphone"
+                            className="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-orange-500 outline-none text-slate-900"
+                            required
+                          />
                         </div>
-                        <div>
-                          <span className="font-bold text-slate-900 text-xl block">Diagnostic expert sur site</span>
-                          <span className="text-orange-600 font-semibold">149€ HT • Déductible des travaux</span>
+
+                        <button
+                          type="button"
+                          onClick={() => {
+                            if (!callbackInfo.name && !contactInfo.name) {
+                              alert('Merci de renseigner votre nom');
+                              return;
+                            }
+                            if (!callbackInfo.phone) {
+                              alert('Merci de renseigner votre téléphone');
+                              return;
+                            }
+                            setCallbackInfo({ ...callbackInfo, name: callbackInfo.name || contactInfo.name });
+                            setSelectedNeed('expertise');
+                            setShowCallbackForm(true);
+                          }}
+                          className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-4 rounded-xl transition-all shadow-lg text-lg flex items-center justify-center gap-2"
+                        >
+                          Être rappelé gratuitement
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                          </svg>
+                        </button>
+                      </form>
+
+                      {/* Trust elements */}
+                      <div className="mt-4 pt-4 border-t border-slate-100">
+                        <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-slate-500">
+                          <span>🔒 Données sécurisées</span>
+                          <span>✓ Sans engagement</span>
+                          <span>📋 Rapport remis</span>
                         </div>
                       </div>
-                      <div className="text-sm text-slate-600 space-y-1 ml-[4.5rem]">
-                        <p>✓ Diagnostic instrumenté professionnel</p>
-                        <p>✓ Rapport détaillé remis</p>
-                        <p>✓ Devis travaux gratuit inclus</p>
+                    </div>
+
+                    {/* Ce qui est inclus */}
+                    <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl mx-auto">
+                      <div className="bg-white/10 rounded-xl p-3 text-center">
+                        <span className="text-2xl block mb-1">🔬</span>
+                        <span className="text-xs">Mesures instrumentées</span>
                       </div>
-                    </button>
+                      <div className="bg-white/10 rounded-xl p-3 text-center">
+                        <span className="text-2xl block mb-1">📋</span>
+                        <span className="text-xs">Rapport détaillé</span>
+                      </div>
+                      <div className="bg-white/10 rounded-xl p-3 text-center">
+                        <span className="text-2xl block mb-1">💰</span>
+                        <span className="text-xs">Devis gratuit</span>
+                      </div>
+                      <div className="bg-white/10 rounded-xl p-3 text-center">
+                        <span className="text-2xl block mb-1">🛡️</span>
+                        <span className="text-xs">Garantie décennale</span>
+                      </div>
+                    </div>
 
-                    {/* Info */}
-                    <p className="text-white/80 text-sm text-center">
-                      💡 Le diagnostic est la première étape pour établir un devis précis
-                    </p>
-
-                    {/* Appeler directement */}
-                    <div className="text-center pt-4 border-t border-white/20">
-                      <p className="text-white/80 text-sm mb-3">Ou appelez-nous directement</p>
+                    {/* Alternative : Appeler */}
+                    <div className="text-center mt-6">
+                      <p className="text-white/60 text-sm mb-2">Vous préférez nous appeler directement ?</p>
                       <a
                         href="tel:0582953375"
-                        className="inline-flex items-center gap-2 bg-white text-orange-600 font-bold px-8 py-4 rounded-xl hover:bg-orange-50 transition-all shadow-lg hover:scale-105"
+                        className="inline-flex items-center gap-2 text-white font-semibold hover:text-orange-300 transition"
                       >
-                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                           <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                         </svg>
                         05 82 95 33 75
                       </a>
                     </div>
-                  </div>
+                  </>
                   ) : (
                     <div className="max-w-md mx-auto">
                       <form
                         onSubmit={handleSubmitCallback}
                         className="bg-white rounded-2xl p-6 shadow-2xl"
                       >
-                        <div className="flex items-center gap-3 mb-5">
-                          <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center shadow">
-                            <span className="text-2xl">🔍</span>
+                        {/* Confirmation visuelle */}
+                        <div className="text-center mb-5">
+                          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
                           </div>
-                          <div>
-                            <h4 className="font-bold text-slate-900">Demande de diagnostic</h4>
-                            <p className="text-sm text-slate-500">Rappel garanti sous 24h</p>
-                          </div>
+                          <h4 className="font-bold text-slate-900 text-lg">Dernière étape !</h4>
+                          <p className="text-sm text-slate-500">Confirmez vos coordonnées pour être rappelé</p>
+                        </div>
+
+                        {/* Résumé de ce qu'ils vont recevoir */}
+                        <div className="bg-slate-50 rounded-xl p-4 mb-5 text-sm">
+                          <p className="font-semibold text-slate-700 mb-2">Vous allez recevoir :</p>
+                          <ul className="space-y-1 text-slate-600">
+                            <li className="flex items-center gap-2"><span className="text-green-500">✓</span> Un appel sous 24h pour fixer le RDV</li>
+                            <li className="flex items-center gap-2"><span className="text-green-500">✓</span> Le diagnostic sur site (149€ HT)</li>
+                            <li className="flex items-center gap-2"><span className="text-green-500">✓</span> Un rapport + devis détaillé</li>
+                          </ul>
                         </div>
 
                         <div className="space-y-4">
                           <div>
-                            <label className="block text-sm font-bold text-slate-700 mb-2">Votre nom *</label>
+                            <label className="block text-sm font-bold text-slate-700 mb-2">Votre nom</label>
                             <input
                               type="text"
-                              value={callbackInfo.name}
+                              value={callbackInfo.name || contactInfo.name}
                               onChange={(e) => setCallbackInfo({ ...callbackInfo, name: e.target.value })}
                               placeholder="Jean Dupont"
                               className="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-orange-500 outline-none text-slate-900"
@@ -1155,7 +1264,7 @@ export default function DiagnosticPage() {
                             />
                           </div>
                           <div>
-                            <label className="block text-sm font-bold text-slate-700 mb-2">Téléphone *</label>
+                            <label className="block text-sm font-bold text-slate-700 mb-2">Téléphone</label>
                             <input
                               type="tel"
                               value={callbackInfo.phone}
@@ -1225,7 +1334,7 @@ export default function DiagnosticPage() {
                           <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-4 rounded-xl transition-all shadow-lg disabled:opacity-50 flex items-center justify-center gap-2 hover:scale-[1.02]"
+                            className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 rounded-xl transition-all shadow-lg disabled:opacity-50 flex items-center justify-center gap-2 text-lg"
                           >
                             {isSubmitting ? (
                               <>
@@ -1234,14 +1343,16 @@ export default function DiagnosticPage() {
                               </>
                             ) : (
                               <>
-                                Être rappelé sous 24h
-                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                </svg>
+                                ✓ Confirmer ma demande
                               </>
                             )}
                           </button>
                         </div>
+
+                        {/* Garantie */}
+                        <p className="text-xs text-slate-500 text-center mt-4">
+                          🔒 Vos données sont sécurisées et ne seront jamais partagées
+                        </p>
 
                         <button
                           type="button"
@@ -1251,17 +1362,13 @@ export default function DiagnosticPage() {
                             setCallbackPhotoFile(null);
                             setCallbackPhotoPreview(null);
                           }}
-                          className="mt-4 text-slate-400 hover:text-slate-600 text-sm font-medium w-full text-center"
+                          className="mt-3 text-slate-400 hover:text-slate-600 text-sm font-medium w-full text-center"
                         >
-                          ← Retour
+                          ← Modifier mes informations
                         </button>
                       </form>
                     </div>
                   )}
-
-                  <p className="text-xs text-white/60 text-center mt-8">
-                    ✓ Sans engagement • ✓ Déplacement inclus • ✓ Devis gratuit • ✓ Garantie décennale
-                  </p>
                 </div>
               </div>
             </div>
