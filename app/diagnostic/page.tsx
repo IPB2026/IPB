@@ -348,6 +348,11 @@ export default function DiagnosticPage() {
     }
   };
 
+  // Scroll vers le haut de la carte à chaque changement d'étape
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+  }, [step, isAnalyzing, showResult, submitted]);
+
   // Gestion du choix de parcours
   const selectPath = (selectedPath: 'fissure' | 'humidite') => {
     setPath(selectedPath);
@@ -453,7 +458,7 @@ export default function DiagnosticPage() {
   const expertReport = showResult && path ? getExpertReport(path, riskScore) : null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-orange-50/30 flex items-center justify-center px-4 py-6">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-orange-50/30 flex justify-center px-4 pt-8 pb-12 md:pt-16">
       <div className="w-full max-w-2xl">
 
         {/* ===== BARRE DE PROGRESSION + INDICATEUR DE RISQUE ===== */}
@@ -503,7 +508,7 @@ export default function DiagnosticPage() {
         )}
 
         {/* ===== CARTE PRINCIPALE ===== */}
-        <div className="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden min-h-[420px]">
           <div className="p-6 md:p-8">
 
             {/* ===== ÉTAPE 0 : ACCUEIL ===== */}
