@@ -913,45 +913,33 @@ export default function DiagnosticPage() {
 
                   {!showCallbackForm ? (
                   <div className="space-y-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      <button
-                        onClick={() => {
-                          setSelectedNeed('expertise');
-                          setCallbackInfo({ ...callbackInfo, name: contactInfo.name });
-                          setShowCallbackForm(true);
-                        }}
-                        className="bg-white rounded-xl p-4 hover:scale-[1.02] transition-all duration-200 shadow-lg text-left"
-                      >
-                        <div className="flex items-center gap-3 mb-2">
-                          <span className="text-2xl">🔍</span>
-                          <span className="font-bold text-slate-900">Expertise sur site</span>
+                    {/* CTA principal - Diagnostic */}
+                    <button
+                      onClick={() => {
+                        setSelectedNeed('expertise');
+                        setCallbackInfo({ ...callbackInfo, name: contactInfo.name });
+                        setShowCallbackForm(true);
+                      }}
+                      className="w-full bg-white rounded-xl p-5 hover:scale-[1.02] transition-all duration-200 shadow-lg text-left"
+                    >
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="text-3xl">🔍</span>
+                        <div>
+                          <span className="font-bold text-slate-900 text-lg block">Diagnostic expert sur site</span>
+                          <span className="text-orange-600 font-semibold text-sm">149€ HT • Déductible des travaux</span>
                         </div>
-                        <div className="text-xs text-slate-600 space-y-1">
-                          <p className="font-semibold text-orange-600">149€ HT • Déductible des travaux</p>
-                          <p>✓ Diagnostic instrumenté</p>
-                          <p>✓ Rapport détaillé remis</p>
-                        </div>
-                      </button>
+                      </div>
+                      <div className="text-sm text-slate-600 space-y-1 ml-12">
+                        <p>✓ Diagnostic instrumenté professionnel</p>
+                        <p>✓ Rapport détaillé remis</p>
+                        <p>✓ Devis travaux gratuit inclus</p>
+                      </div>
+                    </button>
 
-                      <button
-                        onClick={() => {
-                          setSelectedNeed('travaux');
-                          setCallbackInfo({ ...callbackInfo, name: contactInfo.name });
-                          setShowCallbackForm(true);
-                        }}
-                        className="bg-white rounded-xl p-4 hover:scale-[1.02] transition-all duration-200 shadow-lg text-left"
-                      >
-                        <div className="flex items-center gap-3 mb-2">
-                          <span className="text-2xl">🔧</span>
-                          <span className="font-bold text-slate-900">Devis travaux</span>
-                        </div>
-                        <div className="text-xs text-slate-600 space-y-1">
-                          <p className="font-semibold text-green-600">Devis gratuit</p>
-                          <p>✓ Intervention rapide</p>
-                          <p>✓ Garantie décennale</p>
-                        </div>
-                      </button>
-                    </div>
+                    {/* Info importante */}
+                    <p className="text-white/80 text-xs text-center">
+                      💡 Le diagnostic est la première étape pour établir un devis précis
+                    </p>
 
                     {/* Appeler directement */}
                     <a
@@ -970,10 +958,11 @@ export default function DiagnosticPage() {
                       className="bg-white rounded-xl p-5 shadow-2xl"
                     >
                       <div className="flex items-center gap-3 mb-4">
-                        <span className="text-2xl">{selectedNeed === 'expertise' ? '🔍' : '🔧'}</span>
-                        <span className="font-bold text-slate-900">
-                          {selectedNeed === 'expertise' ? 'Demande d\'expertise' : 'Demande de travaux'}
-                        </span>
+                        <span className="text-2xl">🔍</span>
+                        <div>
+                          <span className="font-bold text-slate-900 block">Demande de diagnostic</span>
+                          <span className="text-xs text-slate-500">Rappel sous 24h</span>
+                        </div>
                       </div>
 
                       <div className="space-y-3">
