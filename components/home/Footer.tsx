@@ -113,6 +113,7 @@ export function Footer() {
               <h4 className="text-white font-bold mb-6">Ressources</h4>
               <ul className="space-y-3" role="list">
                 <li><Link href="/blog" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Blog & Conseils</Link></li>
+                <li><Link href="/avis-clients" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Avis Clients ⭐</Link></li>
                 <li><Link href="/diagnostic" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Diagnostic gratuit</Link></li>
                 <li><Link href="/contact" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Contact</Link></li>
                 <li className="pt-3 border-t border-slate-800">

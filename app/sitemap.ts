@@ -44,6 +44,7 @@ const spokeHumiditePages = [
 // 📋 Pages E-E-A-T (Expertise, Experience, Authoritativeness, Trustworthiness)
 const eeatPages = [
   'notre-expert',
+  'avis-clients',
 ];
 
 // 🎯 Pages Trigger Events (Actualités)

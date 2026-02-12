@@ -9,6 +9,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Activity, AlertTriangle, CheckCircle, ArrowRight, Shield, Phone, Clock, Star, TrendingDown, Award } from 'lucide-react';
 import Script from 'next/script';
+import { DiagnosticHowToSchema, AgrafageHowToSchema } from '@/components/seo/HowToSchema';
 
 export const metadata = {
   title: 'Expert Fissures Occitanie (31-82-32) | Agrafage Garanti 10 ans | Diagnostic 149€ | IPB',
@@ -72,6 +73,10 @@ export default function FissuresPage() {
     <div className="font-sans text-slate-800 bg-slate-50 antialiased">
       <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFaqJsonLd()) }} />
       <Script id="service-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateServiceJsonLd()) }} />
+      
+      {/* HowTo Schema pour Featured Snippets Google */}
+      <DiagnosticHowToSchema />
+      <AgrafageHowToSchema />
       
       <TopBar />
       <Navbar />

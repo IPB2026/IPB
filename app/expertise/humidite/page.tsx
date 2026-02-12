@@ -9,6 +9,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Droplets, AlertTriangle, CheckCircle, ArrowRight, Shield, Phone, Clock, Star, Home, Wind, Award } from 'lucide-react';
 import Script from 'next/script';
+import { TraitementHumiditeHowToSchema } from '@/components/seo/HowToSchema';
 
 export const metadata = {
   title: 'Expert Humidité Occitanie (31-82-32) | Injection Résine Garantie 30 ans | IPB',
@@ -72,6 +73,9 @@ export default function HumiditePage() {
     <div className="font-sans text-slate-800 bg-slate-50 antialiased">
       <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFaqJsonLd()) }} />
       <Script id="service-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateServiceJsonLd()) }} />
+      
+      {/* HowTo Schema pour Featured Snippets Google */}
+      <TraitementHumiditeHowToSchema />
       
       <TopBar />
       <Navbar />
