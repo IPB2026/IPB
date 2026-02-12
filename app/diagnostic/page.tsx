@@ -592,7 +592,7 @@ export default function DiagnosticPage() {
 
           {/* ÉTAPES 1-N : Questions */}
           {step > 0 && step <= totalQuestions && currentQuestion && (
-            <div className="animate-fadeIn">
+            <div key={`question-${step}`}>
               {/* Indicateur d'urgence en temps réel */}
               {step > 2 && (
                 <div className="mb-6 p-4 rounded-xl bg-slate-50 border border-slate-200">
@@ -640,7 +640,7 @@ export default function DiagnosticPage() {
               )}
 
               <div className="space-y-3">
-                {currentQuestion.options.map((option, idx) => {
+                {currentQuestion.options.map((option) => {
                   const isSelected = isMultiQuestion
                     ? (answers[currentQuestion.id] as string[] || []).includes(option.value)
                     : answers[currentQuestion.id] === option.value;
@@ -659,20 +659,19 @@ export default function DiagnosticPage() {
                           handleAnswer(currentQuestion.id, option.value, false);
                         }
                       }}
-                      style={{ animationDelay: `${idx * 50}ms` }}
                       className={`
-                        w-full flex items-center gap-4 p-5 rounded-2xl border-2 transition-all text-left transform hover:scale-[1.02] active:scale-[0.98] animate-slideUp
+                        w-full flex items-center gap-4 p-5 rounded-2xl border-2 transition-colors duration-200 text-left
                         ${isSelected
-                          ? 'bg-gradient-to-r from-orange-50 to-orange-100/50 border-orange-500 shadow-lg ring-2 ring-orange-200'
-                          : 'bg-white border-slate-200 hover:border-orange-400 hover:shadow-md hover:bg-orange-50/30'
+                          ? 'bg-orange-50 border-orange-500 shadow-md'
+                          : 'bg-white border-slate-200 hover:border-orange-400 hover:bg-orange-50/50'
                         }
                       `}
                     >
-                      <span className={`text-3xl transition-transform ${isSelected ? 'scale-110' : ''}`}>{option.icon}</span>
+                      <span className="text-3xl">{option.icon}</span>
                       <span className={`font-bold text-lg flex-1 ${isSelected ? 'text-orange-600' : 'text-slate-900'}`}>
                         {option.label}
                       </span>
-                      <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
+                      <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors ${
                         isSelected ? 'bg-orange-500 border-orange-500' : 'border-slate-300'
                       }`}>
                         {isSelected && (
@@ -964,134 +963,64 @@ export default function DiagnosticPage() {
 
           {/* RÉSULTAT */}
           {showResult && expertReport && (
-            <div className="animate-fadeIn relative">
-              {/* Confetti Animation */}
-              <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                {[...Array(12)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute w-3 h-3 rounded-full animate-confetti"
-                    style={{
-                      left: `${10 + Math.random() * 80}%`,
-                      backgroundColor: ['#f97316', '#22c55e', '#3b82f6', '#eab308'][i % 4],
-                      animationDelay: `${i * 0.1}s`,
-                      animationDuration: `${1 + Math.random()}s`,
-                    }}
-                  />
-                ))}
-              </div>
-              
-              <div className="text-center mb-8">
-                <div className="inline-flex items-center gap-2 bg-green-50 text-green-700 px-4 py-2 rounded-full text-sm font-bold mb-4 animate-bounce">
+            <div className="relative">
+              {/* Header compact avec score */}
+              <div className="text-center mb-6">
+                <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
                   ✓ Diagnostic terminé
                 </div>
-                <h2 className="text-4xl font-extrabold text-slate-900 mb-2">
-                  Votre diagnostic personnalisé
+                <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3">
+                  Votre diagnostic : <span className={riskScore >= 40 ? 'text-red-600' : riskScore >= 20 ? 'text-orange-600' : 'text-green-600'}>{expertReport.urgency}</span>
                 </h2>
-                <p className="text-slate-500 text-sm">Basé sur l'analyse de 10 000+ cas similaires</p>
-              </div>
-
-              {/* Score visuel */}
-              <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-8 mb-6 text-white">
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <p className="text-sm text-slate-400 uppercase tracking-wide font-bold mb-1">Niveau d'urgence</p>
-                    <p className="text-3xl font-extrabold">{expertReport.urgency}</p>
+                
+                {/* Score compact */}
+                <div className="flex items-center justify-center gap-4 mb-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-slate-500 text-sm">Score :</span>
+                    <span className={`text-2xl font-extrabold ${riskScore >= 40 ? 'text-red-600' : riskScore >= 20 ? 'text-orange-600' : 'text-green-600'}`}>{riskScore}/100</span>
                   </div>
-                  <div className="text-right">
-                    <p className="text-sm text-slate-400 mb-1">Score de risque</p>
-                    <p className="text-5xl font-extrabold">{riskScore}</p>
-                  </div>
-                </div>
-                <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
-                  <div
-                    className={`h-full ${riskScore >= 40 ? 'bg-red-500' : riskScore >= 20 ? 'bg-orange-500' : 'bg-green-500'}`}
-                    style={{ width: `${riskScore}%` }}
-                  />
-                </div>
-              </div>
-
-              {/* Diagnostic */}
-              <div className="space-y-6 mb-8">
-                <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-xl">
-                  <h3 className="font-bold text-blue-900 mb-2">📋 Diagnostic</h3>
-                  <p className="text-blue-800 leading-relaxed">{expertReport.diagnosis}</p>
-                </div>
-
-                <div className="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-xl">
-                  <h3 className="font-bold text-green-900 mb-2">✅ Solution recommandée</h3>
-                  <p className="text-green-800 leading-relaxed">{expertReport.solution}</p>
-                </div>
-
-                <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
-                  <p className="text-xs text-slate-500 font-bold uppercase mb-2">⏰ Délai recommandé</p>
-                  <p className="text-lg font-bold text-slate-900">{expertReport.delay}</p>
-                </div>
-              </div>
-
-              {/* Social Proof - Témoignage */}
-              <div className="bg-orange-50 border border-orange-200 rounded-2xl p-6 mb-8">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-orange-200 rounded-full flex items-center justify-center text-2xl flex-shrink-0">
-                    👤
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="font-bold text-slate-900">Marie L.</span>
-                      <span className="text-slate-500 text-sm">• Toulouse</span>
-                      <span className="flex text-yellow-500">
-                        {"★★★★★".split("").map((star, i) => <span key={i}>{star}</span>)}
-                      </span>
-                    </div>
-                    <p className="text-slate-700 text-sm italic">
-                      "J'avais les mêmes inquiétudes. L'expert IPB m'a rappelée sous 24h, 
-                      et les travaux ont été terminés en 3 jours. Ma maison est stabilisée, 
-                      je recommande !"
-                    </p>
+                  <div className="w-32 h-3 bg-slate-200 rounded-full overflow-hidden">
+                    <div
+                      className={`h-full transition-all ${riskScore >= 40 ? 'bg-red-500' : riskScore >= 20 ? 'bg-orange-500' : 'bg-green-500'}`}
+                      style={{ width: `${riskScore}%` }}
+                    />
                   </div>
                 </div>
+                <p className="text-slate-500 text-sm">{expertReport.delay}</p>
               </div>
 
-              {/* CTA FINAL - Section mise en avant */}
-              <div className="relative -mx-8 md:-mx-12 px-8 md:px-12 py-10 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 text-white mt-8">
+              {/* CTA IMMÉDIAT - EN PREMIER */}
+              <div className="relative bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 rounded-2xl p-6 md:p-8 text-white mb-8 shadow-xl overflow-hidden">
                 {/* Effet décoratif */}
-                <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                  <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl" />
-                  <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
-                </div>
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl pointer-events-none" />
+                <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-white/10 rounded-full blur-2xl pointer-events-none" />
 
-                <div className="relative z-10">
-                  <div className="text-center mb-8">
-                    <span className="inline-block bg-white/20 backdrop-blur px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+                <div className="relative">
+                  <div className="text-center mb-6">
+                    <span className="inline-block bg-white/20 backdrop-blur px-4 py-1.5 rounded-full text-sm font-medium mb-3">
                       🎯 Prochaine étape
                     </span>
-                    <h3 className="text-3xl md:text-4xl font-extrabold mb-3">
+                    <h3 className="text-2xl md:text-3xl font-extrabold mb-2">
                       Passez à l'action
                     </h3>
-                    <p className="text-white/90 text-lg max-w-md mx-auto">
-                      Un expert vous rappelle sous 24h pour discuter de votre situation
+                    <p className="text-white/90 text-sm max-w-sm mx-auto">
+                      Un expert vous rappelle sous 24h
                     </p>
                   </div>
 
                   {!showCallbackForm ? (
-                  <div className="space-y-6">
-                    <p className="text-sm font-medium text-white/80 text-center">Quel est votre besoin ?</p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-2 gap-3">
                       <button
                         onClick={() => {
                           setSelectedNeed('expertise');
                           setCallbackInfo({ ...callbackInfo, name: contactInfo.name });
                           setShowCallbackForm(true);
                         }}
-                        className="flex items-center gap-4 p-5 bg-white rounded-2xl hover:scale-105 transition-all duration-200 shadow-lg text-left group"
+                        className="flex flex-col items-center gap-2 p-4 bg-white rounded-xl hover:scale-105 transition-all duration-200 shadow-lg text-center"
                       >
-                        <div className="w-14 h-14 bg-orange-100 group-hover:bg-orange-200 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors">
-                          <span className="text-3xl">🔍</span>
-                        </div>
-                        <div>
-                          <span className="font-bold text-slate-900 block text-lg">Je veux une expertise</span>
-                          <span className="text-sm text-slate-500">Diagnostic approfondi sur site</span>
-                        </div>
+                        <span className="text-3xl">🔍</span>
+                        <span className="font-bold text-slate-900 text-sm">Expertise</span>
                       </button>
 
                       <button
@@ -1100,112 +1029,121 @@ export default function DiagnosticPage() {
                           setCallbackInfo({ ...callbackInfo, name: contactInfo.name });
                           setShowCallbackForm(true);
                         }}
-                        className="flex items-center gap-4 p-5 bg-white rounded-2xl hover:scale-105 transition-all duration-200 shadow-lg text-left group"
+                        className="flex flex-col items-center gap-2 p-4 bg-white rounded-xl hover:scale-105 transition-all duration-200 shadow-lg text-center"
                       >
-                        <div className="w-14 h-14 bg-green-100 group-hover:bg-green-200 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors">
-                          <span className="text-3xl">🔧</span>
-                        </div>
-                        <div>
-                          <span className="font-bold text-slate-900 block text-lg">Je veux des travaux</span>
-                          <span className="text-sm text-slate-500">Devis et intervention rapide</span>
-                        </div>
+                        <span className="text-3xl">🔧</span>
+                        <span className="font-bold text-slate-900 text-sm">Travaux</span>
                       </button>
                     </div>
 
                     {/* Appeler directement */}
-                    <div className="text-center pt-6 mt-6 border-t border-white/20">
-                      <p className="text-white/80 text-sm mb-3">Ou appelez-nous directement</p>
-                      <a
-                        href="tel:0582953375"
-                        className="inline-flex items-center gap-2 bg-white text-orange-600 font-bold px-8 py-4 rounded-xl hover:bg-orange-50 transition-all shadow-lg hover:scale-105"
-                      >
-                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                        </svg>
-                        05 82 95 33 75
-                      </a>
-                    </div>
+                    <a
+                      href="tel:0582953375"
+                      className="flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 text-white font-bold px-6 py-3 rounded-xl transition-all w-full text-sm"
+                    >
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                      </svg>
+                      05 82 95 33 75
+                    </a>
                   </div>
                   ) : (
-                    <div className="max-w-md mx-auto">
-                      <form
-                        onSubmit={handleSubmitCallback}
-                        className="bg-white rounded-2xl p-6 shadow-2xl"
-                      >
-                        <div className="flex items-center gap-3 mb-5">
-                          <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center shadow">
-                            <span className="text-2xl">{selectedNeed === 'expertise' ? '🔍' : '🔧'}</span>
-                          </div>
-                          <div>
-                            <h4 className="font-bold text-slate-900">
-                              {selectedNeed === 'expertise' ? 'Demande d\'expertise' : 'Demande de travaux'}
-                            </h4>
-                            <p className="text-sm text-slate-500">Rappel garanti sous 24h</p>
-                          </div>
-                        </div>
+                    <form
+                      onSubmit={handleSubmitCallback}
+                      className="bg-white rounded-xl p-5 shadow-2xl"
+                    >
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="text-2xl">{selectedNeed === 'expertise' ? '🔍' : '🔧'}</span>
+                        <span className="font-bold text-slate-900">
+                          {selectedNeed === 'expertise' ? 'Demande d\'expertise' : 'Demande de travaux'}
+                        </span>
+                      </div>
 
-                        <div className="space-y-4">
-                          <div>
-                            <label className="block text-sm font-bold text-slate-700 mb-2">Votre nom *</label>
-                            <input
-                              type="text"
-                              value={callbackInfo.name}
-                              onChange={(e) => setCallbackInfo({ ...callbackInfo, name: e.target.value })}
-                              placeholder="Jean Dupont"
-                              className="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-orange-500 outline-none text-slate-900"
-                              required
-                            />
-                          </div>
-                          <div>
-                            <label className="block text-sm font-bold text-slate-700 mb-2">Téléphone *</label>
-                            <input
-                              type="tel"
-                              value={callbackInfo.phone}
-                              onChange={(e) => setCallbackInfo({ ...callbackInfo, phone: e.target.value })}
-                              placeholder="06 12 34 56 78"
-                              className="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-orange-500 outline-none text-slate-900"
-                              required
-                            />
-                          </div>
-
-                          <button
-                            type="submit"
-                            disabled={isSubmitting}
-                            className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-4 rounded-xl transition-all shadow-lg disabled:opacity-50 flex items-center justify-center gap-2 hover:scale-[1.02]"
-                          >
-                            {isSubmitting ? (
-                              <>
-                                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                                Envoi en cours...
-                              </>
-                            ) : (
-                              <>
-                                Être rappelé sous 24h
-                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                </svg>
-                              </>
-                            )}
-                          </button>
-                        </div>
-
+                      <div className="space-y-3">
+                        <input
+                          type="text"
+                          value={callbackInfo.name}
+                          onChange={(e) => setCallbackInfo({ ...callbackInfo, name: e.target.value })}
+                          placeholder="Votre nom"
+                          className="w-full p-3 rounded-lg border-2 border-slate-200 focus:border-orange-500 outline-none text-slate-900 text-sm"
+                          required
+                        />
+                        <input
+                          type="tel"
+                          value={callbackInfo.phone}
+                          onChange={(e) => setCallbackInfo({ ...callbackInfo, phone: e.target.value })}
+                          placeholder="Téléphone"
+                          className="w-full p-3 rounded-lg border-2 border-slate-200 focus:border-orange-500 outline-none text-slate-900 text-sm"
+                          required
+                        />
                         <button
-                          type="button"
-                          onClick={() => {
-                            setShowCallbackForm(false);
-                            setSelectedNeed(null);
-                          }}
-                          className="mt-4 text-slate-400 hover:text-slate-600 text-sm font-medium w-full text-center"
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold py-3 rounded-lg transition-all disabled:opacity-50 flex items-center justify-center gap-2 text-sm"
                         >
-                          ← Changer de besoin
+                          {isSubmitting ? (
+                            <>
+                              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                              Envoi...
+                            </>
+                          ) : (
+                            'Être rappelé sous 24h →'
+                          )}
                         </button>
-                      </form>
-                    </div>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setShowCallbackForm(false);
+                          setSelectedNeed(null);
+                        }}
+                        className="mt-3 text-slate-400 hover:text-slate-600 text-xs w-full text-center"
+                      >
+                        ← Retour
+                      </button>
+                    </form>
                   )}
 
-                  <p className="text-xs text-white/60 text-center mt-8">
-                    ✓ Sans engagement • ✓ Déplacement inclus • ✓ Devis gratuit • ✓ Garantie décennale
+                  <p className="text-xs text-white/60 text-center mt-4">
+                    ✓ Sans engagement • ✓ Devis gratuit
                   </p>
+                </div>
+              </div>
+
+              {/* Détails du diagnostic - APRÈS le CTA */}
+              <div className="space-y-4">
+                <details className="bg-slate-50 rounded-xl border border-slate-200 overflow-hidden">
+                  <summary className="p-4 font-bold text-slate-900 cursor-pointer hover:bg-slate-100 flex items-center gap-2">
+                    <span>📋</span> Voir le diagnostic complet
+                  </summary>
+                  <div className="p-4 pt-0 space-y-4">
+                    <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                      <h4 className="font-bold text-blue-900 mb-1 text-sm">Diagnostic</h4>
+                      <p className="text-blue-800 text-sm">{expertReport.diagnosis}</p>
+                    </div>
+
+                    <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg">
+                      <h4 className="font-bold text-green-900 mb-1 text-sm">Solution recommandée</h4>
+                      <p className="text-green-800 text-sm">{expertReport.solution}</p>
+                    </div>
+                  </div>
+                </details>
+
+                {/* Témoignage compact */}
+                <div className="bg-orange-50 border border-orange-200 rounded-xl p-4">
+                  <div className="flex items-start gap-3">
+                    <span className="text-2xl">👤</span>
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-bold text-slate-900 text-sm">Marie L.</span>
+                        <span className="text-yellow-500 text-xs">★★★★★</span>
+                      </div>
+                      <p className="text-slate-700 text-xs italic">
+                        "L'expert m'a rappelée sous 24h, travaux terminés en 3 jours. Je recommande !"
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
