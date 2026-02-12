@@ -197,9 +197,26 @@ export async function submitDiagnosticLead(
       phone: (formData.get('phone') as string) || '',
       email: (formData.get('email') as string) || '',
       address: (formData.get('address') as string) || '',
+      yearBuilt: (formData.get('yearBuilt') as string) || '',
+      preferredTime: (formData.get('preferredTime') as string) || '',
       path: formData.get('path') as 'fissure' | 'humidite',
       answers: JSON.parse(formData.get('answers') as string || '{}'),
       riskScore: parseInt(formData.get('riskScore') as string, 10) || 0,
+    };
+    
+    // Labels pour les champs
+    const yearBuiltLabels: Record<string, string> = {
+      'avant_1950': 'Avant 1950',
+      '1950_1980': '1950 - 1980',
+      '1980_2000': '1980 - 2000',
+      'apres_2000': 'Après 2000',
+      'ne_sais_pas': 'Ne sait pas',
+    };
+    const preferredTimeLabels: Record<string, string> = {
+      'matin': 'Matin (9h - 12h)',
+      'apres_midi': 'Après-midi (14h - 18h)',
+      'soir': 'Soir (18h - 20h)',
+      'indifferent': 'Indifférent',
     };
 
     // Récupérer la photo si présente
@@ -279,6 +296,22 @@ export async function submitDiagnosticLead(
                     <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(rawData.address)}" target="_blank" style="color: #16a34a; text-decoration: none;">
                       📍 ${rawData.address}
                     </a>
+                  </td>
+                </tr>
+                ` : ''}
+                ${rawData.yearBuilt ? `
+                <tr>
+                  <td style="padding: 8px 0; font-weight: bold;">Construction :</td>
+                  <td style="padding: 8px 0;">
+                    🏗️ ${yearBuiltLabels[rawData.yearBuilt] || rawData.yearBuilt}
+                  </td>
+                </tr>
+                ` : ''}
+                ${rawData.preferredTime ? `
+                <tr>
+                  <td style="padding: 8px 0; font-weight: bold;">Créneau préféré :</td>
+                  <td style="padding: 8px 0; color: #ea580c; font-weight: bold;">
+                    🕐 ${preferredTimeLabels[rawData.preferredTime] || rawData.preferredTime}
                   </td>
                 </tr>
                 ` : ''}

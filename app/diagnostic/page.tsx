@@ -214,7 +214,7 @@ export default function DiagnosticPage() {
   const [step, setStep] = useState(0);
   const [path, setPath] = useState<PathType>(null);
   const [answers, setAnswers] = useState<Record<string, any>>({});
-  const [contactInfo, setContactInfo] = useState({ name: '', email: '', phone: '', address: '' });
+  const [contactInfo, setContactInfo] = useState({ name: '', email: '', phone: '', address: '', yearBuilt: '', preferredTime: '' });
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [riskScore, setRiskScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
@@ -377,6 +377,8 @@ export default function DiagnosticPage() {
       formData.append('email', contactInfo.email);
       formData.append('phone', contactInfo.phone);
       formData.append('address', contactInfo.address);
+      formData.append('yearBuilt', contactInfo.yearBuilt);
+      formData.append('preferredTime', contactInfo.preferredTime);
       formData.append('path', path!);
       formData.append('answers', JSON.stringify(answers));
       formData.append('riskScore', String(score));
@@ -687,6 +689,43 @@ export default function DiagnosticPage() {
                     required
                   />
                   <p className="text-xs text-slate-500 mt-1">Adresse où se situe le problème (fissures/humidité)</p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-bold text-slate-700 mb-2">
+                      🏗️ Année de construction
+                    </label>
+                    <select
+                      value={contactInfo.yearBuilt}
+                      onChange={(e) => setContactInfo({ ...contactInfo, yearBuilt: e.target.value })}
+                      className="w-full p-4 rounded-lg border-2 border-slate-200 focus:border-orange-500 outline-none text-lg bg-white"
+                    >
+                      <option value="">Sélectionner...</option>
+                      <option value="avant_1950">Avant 1950</option>
+                      <option value="1950_1980">1950 - 1980</option>
+                      <option value="1980_2000">1980 - 2000</option>
+                      <option value="apres_2000">Après 2000</option>
+                      <option value="ne_sais_pas">Je ne sais pas</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-bold text-slate-700 mb-2">
+                      🕐 Créneau de rappel préféré
+                    </label>
+                    <select
+                      value={contactInfo.preferredTime}
+                      onChange={(e) => setContactInfo({ ...contactInfo, preferredTime: e.target.value })}
+                      className="w-full p-4 rounded-lg border-2 border-slate-200 focus:border-orange-500 outline-none text-lg bg-white"
+                    >
+                      <option value="">Sélectionner...</option>
+                      <option value="matin">Matin (9h - 12h)</option>
+                      <option value="apres_midi">Après-midi (14h - 18h)</option>
+                      <option value="soir">Soir (18h - 20h)</option>
+                      <option value="indifferent">Indifférent</option>
+                    </select>
+                  </div>
                 </div>
 
                 {/* Upload photo optionnel */}
