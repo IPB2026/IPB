@@ -1,0 +1,47 @@
+# ═══════════════════════════════════════════════════════════════
+# ROBOTS.TXT - IPB EXPERTISE
+# Optimisé pour un crawl efficace par les moteurs de recherche
+# ═══════════════════════════════════════════════════════════════
+
+# Règles générales pour tous les robots
+User-agent: *
+
+# Autoriser tout le site
+Allow: /
+
+# Bloquer les ressources non nécessaires à l'indexation
+Disallow: /api/
+Disallow: /_next/static/
+Disallow: /_next/image
+Disallow: /*.json$
+
+# Empêcher le crawl des pages de prévisualisation et admin
+Disallow: /preview/
+Disallow: /admin/
+
+# Optimisation du crawl-budget : ne pas crawler les paramètres de requête
+Disallow: /*?*
+
+# ═══════════════════════════════════════════════════════════════
+# RÈGLES SPÉCIFIQUES GOOGLEBOT
+# ═══════════════════════════════════════════════════════════════
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# ═══════════════════════════════════════════════════════════════
+# RÈGLES SPÉCIFIQUES BINGBOT
+# ═══════════════════════════════════════════════════════════════
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+# ═══════════════════════════════════════════════════════════════
+# SITEMAPS
+# ═══════════════════════════════════════════════════════════════
+Sitemap: https://www.ipb-expertise.fr/sitemap.xml
+
+# ═══════════════════════════════════════════════════════════════
+# HOST CANONIQUE
+# ═══════════════════════════════════════════════════════════════
+Host: https://www.ipb-expertise.fr

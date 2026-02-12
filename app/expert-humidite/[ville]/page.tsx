@@ -8,6 +8,7 @@ import { Footer } from '@/components/home/Footer';
 import { Testimonials } from '@/components/home/Testimonials';
 import { CheckCircle, Phone, ArrowRight, MapPin, Shield, Clock, Droplets, AlertTriangle, Home, Award, Users, ThermometerSun, Wind } from 'lucide-react';
 import { villesData, villeSlugs, type VilleInfo } from '@/app/data/villes';
+import { RelatedPagesLinks } from '@/components/seo/RelatedPagesLinks';
 
 // Génération statique des pages
 export async function generateStaticParams() {
@@ -638,6 +639,23 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
       </section>
 
       </main>
+      
+      {/* Maillage interne SEO - Autres villes */}
+      <RelatedPagesLinks
+        title={`Nos experts humidité dans votre région`}
+        pages={[
+          { href: '/expertise/humidite', label: 'Nos solutions humidité', description: 'Toutes nos méthodes' },
+          { href: '/diagnostic', label: 'Diagnostic gratuit', description: 'Évaluez votre situation' },
+          ...villeSlugs
+            .filter(v => v !== ville)
+            .slice(0, 8)
+            .map(v => ({
+              href: `/expert-humidite/${v}`,
+              label: `Expert humidité ${villesData[v]?.nom || v}`,
+            })),
+        ]}
+      />
+      
       <Footer />
     </div>
   );

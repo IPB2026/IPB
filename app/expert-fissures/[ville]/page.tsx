@@ -8,6 +8,7 @@ import { Footer } from '@/components/home/Footer';
 import { Testimonials } from '@/components/home/Testimonials';
 import { CheckCircle, Phone, ArrowRight, MapPin, Shield, Clock, FileText, AlertTriangle, Home, TreeDeciduous, Droplets, TrendingUp, Calendar, Users, Award } from 'lucide-react';
 import { villesData, villeSlugs, type VilleInfo } from '@/app/data/villes';
+import { RelatedPagesLinks } from '@/components/seo/RelatedPagesLinks';
 
 // Génération statique des pages
 export async function generateStaticParams() {
@@ -642,6 +643,23 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
       </section>
 
       </main>
+      
+      {/* Maillage interne SEO - Autres villes */}
+      <RelatedPagesLinks
+        title={`Nos experts fissures dans votre région`}
+        pages={[
+          { href: '/expertise/fissures', label: 'Nos solutions fissures', description: 'Toutes nos méthodes' },
+          { href: '/diagnostic', label: 'Diagnostic gratuit', description: 'Évaluez votre situation' },
+          ...villeSlugs
+            .filter(v => v !== ville)
+            .slice(0, 8)
+            .map(v => ({
+              href: `/expert-fissures/${v}`,
+              label: `Expert fissures ${villesData[v]?.nom || v}`,
+            })),
+        ]}
+      />
+      
       <Footer />
     </div>
   );
