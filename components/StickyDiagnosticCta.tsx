@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Phone, ArrowRight, X, Clock, Shield, Star } from "lucide-react";
+import { Phone, ArrowRight, X, Clock, Shield, Star, MessageCircle } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 export function StickyDiagnosticCta() {
@@ -173,17 +173,28 @@ export function StickyDiagnosticCta() {
                 <ArrowRight size={18} />
               </Link>
 
-              {/* CTA Secondaire - Téléphone */}
-              <a
-                href="tel:0582953375"
-                className="w-full flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-3 rounded-xl transition-all"
-              >
-                <Phone size={18} />
-                05 82 95 33 75
-              </a>
+              {/* CTAs Secondaires - Téléphone & WhatsApp */}
+              <div className="grid grid-cols-2 gap-2 mb-3">
+                <a
+                  href="tel:0582953375"
+                  className="flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2.5 rounded-xl transition-all text-sm"
+                >
+                  <Phone size={16} />
+                  Appeler
+                </a>
+                <a
+                  href="https://wa.me/33582953375?text=Bonjour%2C%20je%20souhaite%20un%20diagnostic%20pour%20ma%20maison."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2.5 rounded-xl transition-all text-sm"
+                >
+                  <MessageCircle size={16} />
+                  WhatsApp
+                </a>
+              </div>
 
               {/* Micro-réassurance */}
-              <p className="text-center text-slate-400 text-xs mt-3">
+              <p className="text-center text-slate-400 text-xs">
                 ✓ Devis gratuit · ✓ Réponse 48h
               </p>
             </div>
