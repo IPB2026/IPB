@@ -221,17 +221,16 @@ export default function DiagnosticPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showCallbackForm, setShowCallbackForm] = useState(false);
   const [callbackInfo, setCallbackInfo] = useState({ name: '', phone: '', email: '' });
-  // const [showCalendar, setShowCalendar] = useState(false); // Removed
   const [photoFile, setPhotoFile] = useState<File | null>(null);
   const [photoPreview, setPhotoPreview] = useState<string | null>(null);
+  const [selectedNeed, setSelectedNeed] = useState<'expertise' | 'travaux' | null>(null);
   
   // reCAPTCHA v3 protection
-  const { getToken, isLoaded: recaptchaLoaded } = useRecaptcha();
+  const { getToken } = useRecaptcha();
 
   const currentQuestions = path ? questionsData[path] : [];
   const totalQuestions = currentQuestions.length;
   const progress = path ? ((step - 1) / totalQuestions) * 100 : 0;
-  // const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL || ''; // Removed
 
   // Calcul du score de risque
   const calculateRisk = (pathType: 'fissure' | 'humidite', ans: Record<string, any>) => {
@@ -1053,143 +1052,161 @@ export default function DiagnosticPage() {
                 </div>
               </div>
 
-              {/* CTA FINAL - Simplifié */}
-              <div className="border-t border-slate-200 pt-8">
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-extrabold text-slate-900 mb-2">
-                    Passez à l'action
-                  </h3>
-                  <p className="text-slate-600">
-                    Un expert vous rappelle sous 24h pour discuter de votre situation
-                  </p>
+              {/* CTA FINAL - Section mise en avant */}
+              <div className="relative -mx-8 md:-mx-12 px-8 md:px-12 py-10 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 text-white mt-8">
+                {/* Effet décoratif */}
+                <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                  <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl" />
+                  <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
                 </div>
 
-                {!showCallbackForm ? (
-                <div className="space-y-4">
-                  <p className="text-sm font-medium text-slate-700 text-center">Quel est votre besoin ?</p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <button
-                      onClick={() => {
-                        setCallbackInfo({ ...callbackInfo, name: contactInfo.name });
-                        setShowCallbackForm(true);
-                      }}
-                      className="flex items-center gap-4 p-5 border-2 border-slate-200 rounded-xl hover:border-orange-500 hover:bg-orange-50 transition group text-left"
-                    >
-                      <div className="w-12 h-12 bg-orange-100 group-hover:bg-orange-200 rounded-full flex items-center justify-center flex-shrink-0">
-                        <span className="text-2xl">🔍</span>
-                      </div>
-                      <div>
-                        <span className="font-bold text-slate-900 block">Je veux une expertise</span>
-                        <span className="text-sm text-slate-500">Diagnostic approfondi sur site</span>
-                      </div>
-                    </button>
-
-                    <button
-                      onClick={() => {
-                        setCallbackInfo({ ...callbackInfo, name: contactInfo.name });
-                        setShowCallbackForm(true);
-                      }}
-                      className="flex items-center gap-4 p-5 border-2 border-slate-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition group text-left"
-                    >
-                      <div className="w-12 h-12 bg-green-100 group-hover:bg-green-200 rounded-full flex items-center justify-center flex-shrink-0">
-                        <span className="text-2xl">🔧</span>
-                      </div>
-                      <div>
-                        <span className="font-bold text-slate-900 block">Je veux des travaux</span>
-                        <span className="text-sm text-slate-500">Devis et intervention rapide</span>
-                      </div>
-                    </button>
+                <div className="relative z-10">
+                  <div className="text-center mb-8">
+                    <span className="inline-block bg-white/20 backdrop-blur px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+                      🎯 Prochaine étape
+                    </span>
+                    <h3 className="text-3xl md:text-4xl font-extrabold mb-3">
+                      Passez à l'action
+                    </h3>
+                    <p className="text-white/90 text-lg max-w-md mx-auto">
+                      Un expert vous rappelle sous 24h pour discuter de votre situation
+                    </p>
                   </div>
 
-                  {/* Appeler directement */}
-                  <div className="text-center pt-4 border-t border-slate-100">
-                    <p className="text-slate-500 text-sm mb-3">Ou appelez-nous directement</p>
-                    <a
-                      href="tel:0582953375"
-                      className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-3 rounded-xl transition"
-                    >
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                      </svg>
-                      05 82 95 33 75
-                    </a>
-                  </div>
-                </div>
-                ) : (
-                  <form
-                    onSubmit={handleSubmitCallback}
-                    className="bg-gradient-to-br from-orange-50 to-amber-50 border border-orange-200 rounded-2xl p-6"
-                  >
-                    <div className="flex items-center gap-3 mb-5">
-                      <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center">
-                        <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-slate-900">Demande de rappel</h4>
-                        <p className="text-sm text-slate-600">Réponse garantie sous 24h</p>
-                      </div>
-                    </div>
-                    <div className="space-y-4">
-                      <div>
-                        <label className="block text-sm font-bold text-slate-700 mb-2">Votre nom *</label>
-                        <input
-                          type="text"
-                          value={callbackInfo.name}
-                          onChange={(e) => setCallbackInfo({ ...callbackInfo, name: e.target.value })}
-                          placeholder="Jean Dupont"
-                          className="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-orange-500 outline-none"
-                          required
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-bold text-slate-700 mb-2">Téléphone *</label>
-                        <input
-                          type="tel"
-                          value={callbackInfo.phone}
-                          onChange={(e) => setCallbackInfo({ ...callbackInfo, phone: e.target.value })}
-                          placeholder="06 12 34 56 78"
-                          className="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-orange-500 outline-none"
-                          required
-                        />
-                      </div>
+                  {!showCallbackForm ? (
+                  <div className="space-y-6">
+                    <p className="text-sm font-medium text-white/80 text-center">Quel est votre besoin ?</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                      <button
+                        onClick={() => {
+                          setSelectedNeed('expertise');
+                          setCallbackInfo({ ...callbackInfo, name: contactInfo.name });
+                          setShowCallbackForm(true);
+                        }}
+                        className="flex items-center gap-4 p-5 bg-white rounded-2xl hover:scale-105 transition-all duration-200 shadow-lg text-left group"
+                      >
+                        <div className="w-14 h-14 bg-orange-100 group-hover:bg-orange-200 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors">
+                          <span className="text-3xl">🔍</span>
+                        </div>
+                        <div>
+                          <span className="font-bold text-slate-900 block text-lg">Je veux une expertise</span>
+                          <span className="text-sm text-slate-500">Diagnostic approfondi sur site</span>
+                        </div>
+                      </button>
 
                       <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 rounded-xl transition shadow-lg disabled:opacity-50 flex items-center justify-center gap-2"
+                        onClick={() => {
+                          setSelectedNeed('travaux');
+                          setCallbackInfo({ ...callbackInfo, name: contactInfo.name });
+                          setShowCallbackForm(true);
+                        }}
+                        className="flex items-center gap-4 p-5 bg-white rounded-2xl hover:scale-105 transition-all duration-200 shadow-lg text-left group"
                       >
-                        {isSubmitting ? (
-                          <>
-                            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                            Envoi en cours...
-                          </>
-                        ) : (
-                          <>
-                            Être rappelé sous 24h
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                            </svg>
-                          </>
-                        )}
+                        <div className="w-14 h-14 bg-green-100 group-hover:bg-green-200 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors">
+                          <span className="text-3xl">🔧</span>
+                        </div>
+                        <div>
+                          <span className="font-bold text-slate-900 block text-lg">Je veux des travaux</span>
+                          <span className="text-sm text-slate-500">Devis et intervention rapide</span>
+                        </div>
                       </button>
                     </div>
 
-                    <button
-                      type="button"
-                      onClick={() => setShowCallbackForm(false)}
-                      className="mt-4 text-slate-500 hover:text-slate-700 text-sm font-medium w-full text-center"
-                    >
-                      ← Retour
-                    </button>
-                  </form>
-                )}
+                    {/* Appeler directement */}
+                    <div className="text-center pt-6 mt-6 border-t border-white/20">
+                      <p className="text-white/80 text-sm mb-3">Ou appelez-nous directement</p>
+                      <a
+                        href="tel:0582953375"
+                        className="inline-flex items-center gap-2 bg-white text-orange-600 font-bold px-8 py-4 rounded-xl hover:bg-orange-50 transition-all shadow-lg hover:scale-105"
+                      >
+                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                        </svg>
+                        05 82 95 33 75
+                      </a>
+                    </div>
+                  </div>
+                  ) : (
+                    <div className="max-w-md mx-auto">
+                      <form
+                        onSubmit={handleSubmitCallback}
+                        className="bg-white rounded-2xl p-6 shadow-2xl"
+                      >
+                        <div className="flex items-center gap-3 mb-5">
+                          <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center shadow">
+                            <span className="text-2xl">{selectedNeed === 'expertise' ? '🔍' : '🔧'}</span>
+                          </div>
+                          <div>
+                            <h4 className="font-bold text-slate-900">
+                              {selectedNeed === 'expertise' ? 'Demande d\'expertise' : 'Demande de travaux'}
+                            </h4>
+                            <p className="text-sm text-slate-500">Rappel garanti sous 24h</p>
+                          </div>
+                        </div>
 
+                        <div className="space-y-4">
+                          <div>
+                            <label className="block text-sm font-bold text-slate-700 mb-2">Votre nom *</label>
+                            <input
+                              type="text"
+                              value={callbackInfo.name}
+                              onChange={(e) => setCallbackInfo({ ...callbackInfo, name: e.target.value })}
+                              placeholder="Jean Dupont"
+                              className="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-orange-500 outline-none text-slate-900"
+                              required
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm font-bold text-slate-700 mb-2">Téléphone *</label>
+                            <input
+                              type="tel"
+                              value={callbackInfo.phone}
+                              onChange={(e) => setCallbackInfo({ ...callbackInfo, phone: e.target.value })}
+                              placeholder="06 12 34 56 78"
+                              className="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-orange-500 outline-none text-slate-900"
+                              required
+                            />
+                          </div>
 
-                <p className="text-xs text-slate-500 text-center mt-6">
-                  ✓ Sans engagement • ✓ Déplacement inclus • ✓ Devis gratuit • ✓ Garantie décennale
-                </p>
+                          <button
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-4 rounded-xl transition-all shadow-lg disabled:opacity-50 flex items-center justify-center gap-2 hover:scale-[1.02]"
+                          >
+                            {isSubmitting ? (
+                              <>
+                                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                Envoi en cours...
+                              </>
+                            ) : (
+                              <>
+                                Être rappelé sous 24h
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                </svg>
+                              </>
+                            )}
+                          </button>
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setShowCallbackForm(false);
+                            setSelectedNeed(null);
+                          }}
+                          className="mt-4 text-slate-400 hover:text-slate-600 text-sm font-medium w-full text-center"
+                        >
+                          ← Changer de besoin
+                        </button>
+                      </form>
+                    </div>
+                  )}
+
+                  <p className="text-xs text-white/60 text-center mt-8">
+                    ✓ Sans engagement • ✓ Déplacement inclus • ✓ Devis gratuit • ✓ Garantie décennale
+                  </p>
+                </div>
               </div>
             </div>
           )}
