@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import { submitDiagnosticAppointment, submitDiagnosticCallback, submitDiagnosticLead } from '@/app/actions/diagnostic';
+import { submitDiagnosticCallback, submitDiagnosticLead } from '@/app/actions/diagnostic';
 import { useRecaptcha } from '@/hooks/useRecaptcha';
 
 // Types
@@ -221,7 +221,7 @@ export default function DiagnosticPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showCallbackForm, setShowCallbackForm] = useState(false);
   const [callbackInfo, setCallbackInfo] = useState({ name: '', phone: '', email: '' });
-  const [showCalendar, setShowCalendar] = useState(false);
+  // const [showCalendar, setShowCalendar] = useState(false); // Removed
   const [photoFile, setPhotoFile] = useState<File | null>(null);
   const [photoPreview, setPhotoPreview] = useState<string | null>(null);
   
@@ -231,7 +231,7 @@ export default function DiagnosticPage() {
   const currentQuestions = path ? questionsData[path] : [];
   const totalQuestions = currentQuestions.length;
   const progress = path ? ((step - 1) / totalQuestions) * 100 : 0;
-  const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL || '';
+  // const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL || ''; // Removed
 
   // Calcul du score de risque
   const calculateRisk = (pathType: 'fissure' | 'humidite', ans: Record<string, any>) => {
@@ -405,46 +405,7 @@ export default function DiagnosticPage() {
     }, 3000);
   };
 
-  // Actions finales
-  const handleCallback = async () => {
-    setShowCallbackForm(true);
-  };
-
-  const handleBookAppointment = async () => {
-    if (calendlyUrl) {
-      setShowCalendar(true);
-      return;
-    }
-
-    if (!contactInfo.phone) {
-      alert('Nous avons besoin de votre téléphone pour confirmer le rendez-vous.');
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    try {
-      const formData = new FormData();
-      formData.append('name', contactInfo.name);
-      formData.append('email', contactInfo.email || '');
-      formData.append('phone', contactInfo.phone);
-      formData.append('path', path!);
-      formData.append('answers', JSON.stringify(answers));
-      formData.append('riskScore', String(riskScore));
-
-      const result = await submitDiagnosticAppointment(formData);
-
-      if (result.success) {
-        alert('✅ Demande de rendez-vous enregistrée ! Nous vous contactons sous 24h pour fixer la date.');
-      } else {
-        alert(result.message);
-      }
-    } catch (error) {
-      alert('Erreur lors de la réservation. Appelez-nous au 05 82 95 33 75.');
-    }
-
-    setIsSubmitting(false);
-  };
+  // Actions finales - Simplifié
 
   const handleSubmitCallback = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -1092,57 +1053,93 @@ export default function DiagnosticPage() {
                 </div>
               </div>
 
-              {/* CTA FINAUX */}
+              {/* CTA FINAL - Simplifié */}
               <div className="border-t border-slate-200 pt-8">
-                <h3 className="text-2xl font-extrabold text-slate-900 mb-4 text-center">
-                  Que souhaitez-vous faire ?
-                </h3>
-
-                <div className="grid md:grid-cols-2 gap-4">
-                  <button
-                    onClick={handleCallback}
-                    disabled={isSubmitting}
-                    className="flex flex-col items-center justify-center p-6 border-2 border-orange-300 rounded-xl hover:border-orange-500 hover:bg-orange-50 transition group disabled:opacity-50"
-                  >
-                    <div className="w-12 h-12 bg-orange-100 group-hover:bg-orange-200 rounded-full flex items-center justify-center mb-3">
-                      <svg className="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                      </svg>
-                    </div>
-                    <span className="font-bold text-lg text-slate-900">Être rappelé sous 24h</span>
-                    <span className="text-sm text-slate-600 mt-1">Gratuit & sans engagement</span>
-                  </button>
-
-                  <button
-                    onClick={handleBookAppointment}
-                    disabled={isSubmitting}
-                    className="flex flex-col items-center justify-center p-6 bg-gradient-to-br from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 rounded-xl transition shadow-lg disabled:opacity-50 text-white"
-                  >
-                    <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-3">
-                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <span className="font-bold text-lg">Réserver une expertise</span>
-                    <span className="text-sm mt-1 opacity-90">149€ déductibles sur travaux</span>
-                  </button>
+                <div className="text-center mb-6">
+                  <h3 className="text-2xl font-extrabold text-slate-900 mb-2">
+                    Passez à l'action
+                  </h3>
+                  <p className="text-slate-600">
+                    Un expert vous rappelle sous 24h pour discuter de votre situation
+                  </p>
                 </div>
 
-                {showCallbackForm && (
+                {!showCallbackForm ? (
+                <div className="space-y-4">
+                  <p className="text-sm font-medium text-slate-700 text-center">Quel est votre besoin ?</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <button
+                      onClick={() => {
+                        setCallbackInfo({ ...callbackInfo, name: contactInfo.name });
+                        setShowCallbackForm(true);
+                      }}
+                      className="flex items-center gap-4 p-5 border-2 border-slate-200 rounded-xl hover:border-orange-500 hover:bg-orange-50 transition group text-left"
+                    >
+                      <div className="w-12 h-12 bg-orange-100 group-hover:bg-orange-200 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="text-2xl">🔍</span>
+                      </div>
+                      <div>
+                        <span className="font-bold text-slate-900 block">Je veux une expertise</span>
+                        <span className="text-sm text-slate-500">Diagnostic approfondi sur site</span>
+                      </div>
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        setCallbackInfo({ ...callbackInfo, name: contactInfo.name });
+                        setShowCallbackForm(true);
+                      }}
+                      className="flex items-center gap-4 p-5 border-2 border-slate-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition group text-left"
+                    >
+                      <div className="w-12 h-12 bg-green-100 group-hover:bg-green-200 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="text-2xl">🔧</span>
+                      </div>
+                      <div>
+                        <span className="font-bold text-slate-900 block">Je veux des travaux</span>
+                        <span className="text-sm text-slate-500">Devis et intervention rapide</span>
+                      </div>
+                    </button>
+                  </div>
+
+                  {/* Appeler directement */}
+                  <div className="text-center pt-4 border-t border-slate-100">
+                    <p className="text-slate-500 text-sm mb-3">Ou appelez-nous directement</p>
+                    <a
+                      href="tel:0582953375"
+                      className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-3 rounded-xl transition"
+                    >
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                      </svg>
+                      05 82 95 33 75
+                    </a>
+                  </div>
+                </div>
+                ) : (
                   <form
                     onSubmit={handleSubmitCallback}
-                    className="mt-6 bg-white border border-slate-200 rounded-xl p-6"
+                    className="bg-gradient-to-br from-orange-50 to-amber-50 border border-orange-200 rounded-2xl p-6"
                   >
-                    <h4 className="font-extrabold text-slate-900 mb-4">Demande de rappel</h4>
-                    <div className="grid md:grid-cols-2 gap-4">
+                    <div className="flex items-center gap-3 mb-5">
+                      <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center">
+                        <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                        </svg>
+                      </div>
                       <div>
-                        <label className="block text-sm font-bold text-slate-700 mb-2">Nom & Prénom *</label>
+                        <h4 className="font-bold text-slate-900">Demande de rappel</h4>
+                        <p className="text-sm text-slate-600">Réponse garantie sous 24h</p>
+                      </div>
+                    </div>
+                    <div className="space-y-4">
+                      <div>
+                        <label className="block text-sm font-bold text-slate-700 mb-2">Votre nom *</label>
                         <input
                           type="text"
                           value={callbackInfo.name}
                           onChange={(e) => setCallbackInfo({ ...callbackInfo, name: e.target.value })}
-                          placeholder="Votre nom"
-                          className="w-full p-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                          placeholder="Jean Dupont"
+                          className="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-orange-500 outline-none"
                           required
                         />
                       </div>
@@ -1153,60 +1150,42 @@ export default function DiagnosticPage() {
                           value={callbackInfo.phone}
                           onChange={(e) => setCallbackInfo({ ...callbackInfo, phone: e.target.value })}
                           placeholder="06 12 34 56 78"
-                          className="w-full p-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                          className="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-orange-500 outline-none"
                           required
                         />
                       </div>
+
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 rounded-xl transition shadow-lg disabled:opacity-50 flex items-center justify-center gap-2"
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                            Envoi en cours...
+                          </>
+                        ) : (
+                          <>
+                            Être rappelé sous 24h
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                          </>
+                        )}
+                      </button>
                     </div>
-                    <div className="mt-4">
-                      <label className="block text-sm font-bold text-slate-700 mb-2">
-                        Email (pour confirmation)
-                      </label>
-                      <input
-                        type="email"
-                        value={callbackInfo.email}
-                        onChange={(e) => setCallbackInfo({ ...callbackInfo, email: e.target.value })}
-                        placeholder="votre@email.com"
-                        className="w-full p-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                      />
-                    </div>
+
                     <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="mt-4 w-full bg-orange-600 text-white font-bold py-3 rounded-xl hover:bg-orange-700 transition disabled:opacity-50"
+                      type="button"
+                      onClick={() => setShowCallbackForm(false)}
+                      className="mt-4 text-slate-500 hover:text-slate-700 text-sm font-medium w-full text-center"
                     >
-                      Être rappelé sous 24h
+                      ← Retour
                     </button>
                   </form>
                 )}
 
-                {showCalendar && (
-                  <div className="mt-6 bg-white border border-slate-200 rounded-xl p-6">
-                    <h4 className="font-extrabold text-slate-900 mb-4">Réserver votre expertise</h4>
-                    {calendlyUrl ? (
-                      <div className="w-full overflow-hidden rounded-lg border border-slate-200">
-                        <iframe
-                          src={calendlyUrl}
-                          title="Prendre rendez-vous"
-                          className="w-full h-[700px]"
-                          loading="lazy"
-                        />
-                      </div>
-                    ) : (
-                      <div className="text-slate-700">
-                        <p className="mb-3">
-                          L’agenda en ligne n’est pas encore configuré. Laissez-nous votre téléphone et nous fixons le rendez-vous.
-                        </p>
-                        <button
-                          onClick={handleCallback}
-                          className="bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition"
-                        >
-                          Être rappelé
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                )}
 
                 <p className="text-xs text-slate-500 text-center mt-6">
                   ✓ Sans engagement • ✓ Déplacement inclus • ✓ Devis gratuit • ✓ Garantie décennale
