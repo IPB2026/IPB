@@ -316,26 +316,15 @@ export default function DiagnosticPage() {
     setStep(1);
   };
 
-  // Gestion des réponses
+  // Gestion des réponses (sélection sans auto-avance)
   const handleAnswer = (questionId: string, value: string | string[], isMulti: boolean) => {
     const newAnswers = { ...answers, [questionId]: value };
     setAnswers(newAnswers);
-
-    // Auto-avancer à la question suivante (sauf si multi-sélection)
-    if (!isMulti) {
-      setTimeout(() => {
-        if (step < totalQuestions) {
-          setStep(step + 1);
-        } else {
-          // Fin des questions → demander coordonnées
-          setStep(999);
-        }
-      }, 300);
-    }
+    // Ne pas auto-avancer, attendre le clic sur "Suivant"
   };
 
-  // Valider multi-sélection et passer à la suite
-  const confirmMultiSelect = () => {
+  // Passer à la question suivante
+  const goToNextQuestion = () => {
     if (step < totalQuestions) {
       setStep(step + 1);
     } else {
@@ -685,22 +674,25 @@ export default function DiagnosticPage() {
                 })}
               </div>
 
-              {isMultiQuestion && (
-                <button
-                  onClick={confirmMultiSelect}
-                  disabled={!answers[currentQuestion.id] || (answers[currentQuestion.id] as string[]).length === 0}
-                  className="mt-6 w-full bg-orange-600 text-white font-bold py-4 rounded-xl hover:bg-orange-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  Continuer →
-                </button>
-              )}
+              {/* Bouton Suivant - toujours visible */}
+              <button
+                onClick={goToNextQuestion}
+                disabled={
+                  isMultiQuestion 
+                    ? !answers[currentQuestion.id] || (answers[currentQuestion.id] as string[]).length === 0
+                    : !answers[currentQuestion.id]
+                }
+                className="mt-6 w-full bg-orange-600 text-white font-bold py-4 rounded-xl hover:bg-orange-700 transition disabled:opacity-50 disabled:cursor-not-allowed text-lg"
+              >
+                {step === totalQuestions ? 'Voir mon diagnostic →' : 'Suivant →'}
+              </button>
 
               {step > 1 && (
                 <button
                   onClick={() => setStep(step - 1)}
-                  className="mt-4 text-slate-600 hover:text-slate-900 font-bold text-sm"
+                  className="mt-3 text-slate-500 hover:text-slate-700 text-sm w-full text-center"
                 >
-                  ← Retour
+                  ← Question précédente
                 </button>
               )}
             </div>
@@ -1111,35 +1103,33 @@ export default function DiagnosticPage() {
                 </div>
               </div>
 
-              {/* Détails du diagnostic - APRÈS le CTA */}
-              <div className="space-y-4">
-                <details className="bg-slate-50 rounded-xl border border-slate-200 overflow-hidden">
-                  <summary className="p-4 font-bold text-slate-900 cursor-pointer hover:bg-slate-100 flex items-center gap-2">
-                    <span>📋</span> Voir le diagnostic complet
-                  </summary>
-                  <div className="p-4 pt-0 space-y-4">
-                    <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
-                      <h4 className="font-bold text-blue-900 mb-1 text-sm">Diagnostic</h4>
-                      <p className="text-blue-800 text-sm">{expertReport.diagnosis}</p>
-                    </div>
+              {/* Détails du diagnostic - Affichage direct */}
+              <div className="space-y-4 mt-6">
+                <h3 className="font-bold text-slate-900 text-lg flex items-center gap-2">
+                  📋 Votre diagnostic détaillé
+                </h3>
+                
+                <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-xl">
+                  <h4 className="font-bold text-blue-900 mb-2">Notre analyse</h4>
+                  <p className="text-blue-800">{expertReport.diagnosis}</p>
+                </div>
 
-                    <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg">
-                      <h4 className="font-bold text-green-900 mb-1 text-sm">Solution recommandée</h4>
-                      <p className="text-green-800 text-sm">{expertReport.solution}</p>
-                    </div>
-                  </div>
-                </details>
+                <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-xl">
+                  <h4 className="font-bold text-green-900 mb-2">Solution recommandée</h4>
+                  <p className="text-green-800">{expertReport.solution}</p>
+                </div>
 
-                {/* Témoignage compact */}
-                <div className="bg-orange-50 border border-orange-200 rounded-xl p-4">
+                {/* Témoignage */}
+                <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 mt-6">
+                  <p className="text-slate-500 text-xs uppercase font-bold mb-2">Témoignage client</p>
                   <div className="flex items-start gap-3">
                     <span className="text-2xl">👤</span>
                     <div>
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="font-bold text-slate-900 text-sm">Marie L.</span>
-                        <span className="text-yellow-500 text-xs">★★★★★</span>
+                        <span className="font-bold text-slate-900">Marie L.</span>
+                        <span className="text-yellow-500">★★★★★</span>
                       </div>
-                      <p className="text-slate-700 text-xs italic">
+                      <p className="text-slate-700 text-sm italic">
                         "L'expert m'a rappelée sous 24h, travaux terminés en 3 jours. Je recommande !"
                       </p>
                     </div>
