@@ -417,7 +417,7 @@ export default function DiagnosticPage() {
       formData.append('path', path || 'fissure');
       formData.append('answers', JSON.stringify(answers));
       formData.append('riskScore', String(riskScore));
-      formData.append('needType', selectedNeed || 'expertise');
+      formData.append('needType', 'diagnostic');
       if (recaptchaToken) {
         formData.append('recaptchaToken', recaptchaToken);
       }
@@ -454,93 +454,197 @@ export default function DiagnosticPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-orange-50/30 flex items-center justify-center p-4">
       <div className="w-full max-w-3xl">
-        {/* Header avec progression */}
+        {/* Header avec progression gamifiée */}
         {step > 0 && step < 999 && (
-          <div className="mb-4">
-            <div className="flex items-center justify-between text-sm mb-2">
-              <span className="bg-orange-500 text-white font-bold px-3 py-1 rounded-full">
-                Question {step}/{totalQuestions}
-              </span>
-              <span className="text-slate-500">
-                {step === totalQuestions ? '🎯 Dernière question !' : `Plus que ${totalQuestions - step}`}
+          <div className="mb-6">
+            <div className="flex items-center justify-between text-sm mb-3">
+              <div className="flex items-center gap-2">
+                <span className="bg-orange-500 text-white font-bold px-3 py-1 rounded-full text-xs">
+                  {step} / {totalQuestions}
+                </span>
+                <span className="text-slate-600 font-medium">
+                  {step <= 3 ? '🔍 Analyse du problème' : step <= 6 ? '📊 Évaluation de gravité' : '✅ Finalisation'}
+                </span>
+              </div>
+              <span className="text-slate-500 text-xs">
+                {totalQuestions - step === 0 ? '🎉 Dernière question !' : `Plus que ${totalQuestions - step + 1} question${totalQuestions - step > 0 ? 's' : ''}`}
               </span>
             </div>
-            <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-orange-500 transition-all duration-300"
-                style={{ width: `${Math.max(progress, 5)}%` }}
-              />
+            
+            {/* Barre de progression avec milestones */}
+            <div className="relative">
+              <div className="h-3 bg-slate-200 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-gradient-to-r from-orange-400 via-orange-500 to-green-500 transition-all duration-500 ease-out"
+                  style={{ width: `${Math.max(progress, 5)}%` }}
+                />
+              </div>
+              
+              {/* Milestones */}
+              <div className="absolute top-0 left-0 w-full h-3 flex justify-between px-1">
+                <div className={`w-3 h-3 rounded-full border-2 border-white shadow ${step >= 1 ? 'bg-orange-500' : 'bg-slate-300'}`} />
+                <div className={`w-3 h-3 rounded-full border-2 border-white shadow ${step > totalQuestions * 0.33 ? 'bg-orange-500' : 'bg-slate-300'}`} />
+                <div className={`w-3 h-3 rounded-full border-2 border-white shadow ${step > totalQuestions * 0.66 ? 'bg-orange-500' : 'bg-slate-300'}`} />
+                <div className={`w-3 h-3 rounded-full border-2 border-white shadow ${step >= totalQuestions ? 'bg-green-500' : 'bg-slate-300'}`} />
+              </div>
             </div>
+            
+            {/* Encouragements dynamiques */}
+            {step === Math.ceil(totalQuestions / 2) && (
+              <div className="mt-3 text-center text-sm text-green-600 font-medium animate-bounce">
+                👏 Bravo ! Vous êtes à mi-chemin !
+              </div>
+            )}
+            {step === totalQuestions && (
+              <div className="mt-3 text-center text-sm text-green-600 font-medium animate-pulse">
+                🎯 Dernière question avant votre diagnostic !
+              </div>
+            )}
           </div>
         )}
 
         {/* Carte principale */}
-        <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-5 md:p-8">
+        <div className="bg-white rounded-3xl shadow-2xl border border-slate-200 p-8 md:p-12">
           {/* ÉTAPE 0 : Choix du parcours */}
           {step === 0 && (
             <div className="text-center">
-              <h1 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
-                Évaluez votre problème <span className="text-orange-500">en 2 min</span>
+              <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">
+                Évaluez votre problème <span className="text-orange-500">en 2 minutes</span>
               </h1>
-              <p className="text-slate-600 mb-5">
-                Répondez à quelques questions et recevez un diagnostic personnalisé
+              <p className="text-slate-600 text-lg mb-6">
+                Répondez à 9 questions simples et recevez un diagnostic personnalisé par un expert
               </p>
 
-              {/* Social Proof */}
-              <div className="flex justify-center gap-6 mb-6 text-sm text-slate-600">
-                <span className="flex items-center gap-1">⭐ <strong>4.9/5</strong></span>
-                <span className="flex items-center gap-1">🏆 <strong>15 ans</strong> d'expertise</span>
+              {/* Social Proof - Statistiques */}
+              <div className="flex flex-wrap justify-center gap-6 mb-8 text-sm">
+                <div className="flex items-center gap-2 text-slate-700">
+                  <span className="text-green-500 text-lg">✓</span>
+                  <span><strong>2 847</strong> diagnostics ce mois</span>
+                </div>
+                <div className="flex items-center gap-2 text-slate-700">
+                  <span className="text-yellow-500 text-lg">⭐</span>
+                  <span><strong>4.9/5</strong> satisfaction client</span>
+                </div>
+                <div className="flex items-center gap-2 text-slate-700">
+                  <span className="text-blue-500 text-lg">🏆</span>
+                  <span><strong>15 ans</strong> d'expertise</span>
+                </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <button
                   onClick={() => selectPath('fissure')}
-                  className="bg-orange-50 hover:bg-orange-100 border-2 border-orange-200 hover:border-orange-400 rounded-xl p-5 transition-all text-center"
+                  className="group relative bg-gradient-to-br from-orange-50 to-orange-100/50 hover:from-orange-100 hover:to-orange-200/50 border-2 border-orange-200 hover:border-orange-400 rounded-2xl p-8 transition-all transform hover:scale-105 hover:shadow-xl overflow-hidden"
                 >
-                  <div className="text-5xl mb-3">🏠</div>
-                  <h2 className="font-bold text-slate-900 text-lg mb-1">Fissures</h2>
-                  <p className="text-slate-500 text-sm">Structure & façade</p>
+                  <div className="absolute top-3 right-3 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded-full">
+                    60% des cas
+                  </div>
+                  <div className="text-6xl mb-4">🏠</div>
+                  <h2 className="text-2xl font-bold text-slate-900 mb-2">Fissures & Structure</h2>
+                  <p className="text-slate-600 text-sm mb-3">
+                    Fissures en façade, tassement, portes qui coincent...
+                  </p>
+                  <span className="inline-flex items-center gap-1 text-orange-600 font-semibold text-sm group-hover:gap-2 transition-all">
+                    Commencer le diagnostic →
+                  </span>
                 </button>
 
                 <button
                   onClick={() => selectPath('humidite')}
-                  className="bg-blue-50 hover:bg-blue-100 border-2 border-blue-200 hover:border-blue-400 rounded-xl p-5 transition-all text-center"
+                  className="group relative bg-gradient-to-br from-blue-50 to-blue-100/50 hover:from-blue-100 hover:to-blue-200/50 border-2 border-blue-200 hover:border-blue-400 rounded-2xl p-8 transition-all transform hover:scale-105 hover:shadow-xl overflow-hidden"
                 >
-                  <div className="text-5xl mb-3">💧</div>
-                  <h2 className="font-bold text-slate-900 text-lg mb-1">Humidité</h2>
-                  <p className="text-slate-500 text-sm">Murs & infiltrations</p>
+                  <div className="absolute top-3 right-3 bg-blue-500 text-white text-[10px] font-bold px-2 py-1 rounded-full">
+                    40% des cas
+                  </div>
+                  <div className="text-6xl mb-4">💧</div>
+                  <h2 className="text-2xl font-bold text-slate-900 mb-2">Humidité & Infiltrations</h2>
+                  <p className="text-slate-600 text-sm mb-3">
+                    Salpêtre, moisissures, murs humides...
+                  </p>
+                  <span className="inline-flex items-center gap-1 text-blue-600 font-semibold text-sm group-hover:gap-2 transition-all">
+                    Commencer le diagnostic →
+                  </span>
                 </button>
               </div>
 
+              {/* Témoignage */}
+              <div className="bg-slate-50 rounded-2xl p-5 text-left max-w-lg mx-auto mb-6">
+                <div className="flex items-start gap-3">
+                  <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-xl flex-shrink-0">
+                    👨
+                  </div>
+                  <div>
+                    <p className="text-slate-700 text-sm italic mb-2">
+                      "J'hésitais à faire appel à un expert. Ce pré-diagnostic en ligne m'a convaincu : en 2 minutes, j'ai compris la gravité de mes fissures. L'intervention a été réalisée en 3 jours."
+                    </p>
+                    <p className="text-slate-500 text-xs font-medium">
+                      Pierre M. — Toulouse (31) • ⭐⭐⭐⭐⭐
+                    </p>
+                  </div>
+                </div>
+              </div>
+
               {/* Trust badges */}
-              <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-500">
-                <span>🔒 Sécurisé</span>
-                <span>✓ Sans engagement</span>
-                <span>📞 Rappel sous 24h</span>
+              <div className="flex flex-wrap justify-center gap-4 text-xs text-slate-500">
+                <span className="flex items-center gap-1">🔒 Données sécurisées</span>
+                <span className="flex items-center gap-1">✓ Sans engagement</span>
+                <span className="flex items-center gap-1">⏱️ 2 min chrono</span>
+                <span className="flex items-center gap-1">📞 Rappel sous 24h</span>
               </div>
             </div>
           )}
 
           {/* ÉTAPES 1-N : Questions */}
           {step > 0 && step <= totalQuestions && currentQuestion && (
-            <div key={`question-${step}`}>
-              <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-2">
+            <div className="animate-fadeIn">
+              {/* Indicateur d'urgence en temps réel */}
+              {step > 2 && (
+                <div className="mb-6 p-4 rounded-xl bg-slate-50 border border-slate-200">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium text-slate-600">Niveau d'attention requis</span>
+                    <span className={`text-xs font-bold px-2 py-1 rounded-full ${
+                      calculateRisk(path!, answers) >= 40 
+                        ? 'bg-red-100 text-red-700' 
+                        : calculateRisk(path!, answers) >= 20 
+                          ? 'bg-orange-100 text-orange-700' 
+                          : 'bg-green-100 text-green-700'
+                    }`}>
+                      {calculateRisk(path!, answers) >= 40 ? '⚠️ Élevé' : calculateRisk(path!, answers) >= 20 ? '🔶 Modéré' : '✅ Faible'}
+                    </span>
+                  </div>
+                  <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
+                    <div 
+                      className={`h-full transition-all duration-500 ${
+                        calculateRisk(path!, answers) >= 40 
+                          ? 'bg-red-500' 
+                          : calculateRisk(path!, answers) >= 20 
+                            ? 'bg-orange-500' 
+                            : 'bg-green-500'
+                      }`}
+                      style={{ width: `${Math.max(calculateRisk(path!, answers), 10)}%` }}
+                    />
+                  </div>
+                </div>
+              )}
+
+              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-2">
                 {currentQuestion.text}
               </h2>
               
+              {/* Indication multi-sélection */}
               {isMultiQuestion && (
-                <p className="text-orange-600 text-sm font-medium mb-4">
+                <p className="text-orange-600 text-sm font-medium mb-6">
                   ✨ Plusieurs réponses possibles
                 </p>
               )}
               {!isMultiQuestion && (
-                <p className="text-slate-500 text-sm mb-4">
-                  Sélectionnez une réponse
+                <p className="text-slate-500 text-sm mb-6">
+                  Cliquez sur votre réponse pour continuer
                 </p>
               )}
 
-              <div className="space-y-2.5">
-                {currentQuestion.options.map((option) => {
+              <div className="space-y-3">
+                {currentQuestion.options.map((option, idx) => {
                   const isSelected = isMultiQuestion
                     ? (answers[currentQuestion.id] as string[] || []).includes(option.value)
                     : answers[currentQuestion.id] === option.value;
@@ -559,23 +663,24 @@ export default function DiagnosticPage() {
                           handleAnswer(currentQuestion.id, option.value, false);
                         }
                       }}
+                      style={{ animationDelay: `${idx * 50}ms` }}
                       className={`
-                        w-full flex items-center gap-3 p-4 rounded-xl border-2 transition-colors text-left
+                        w-full flex items-center gap-4 p-5 rounded-2xl border-2 transition-all text-left transform hover:scale-[1.02] active:scale-[0.98] animate-slideUp
                         ${isSelected
-                          ? 'bg-orange-50 border-orange-500'
-                          : 'bg-white border-slate-200 hover:border-orange-300'
+                          ? 'bg-gradient-to-r from-orange-50 to-orange-100/50 border-orange-500 shadow-lg ring-2 ring-orange-200'
+                          : 'bg-white border-slate-200 hover:border-orange-400 hover:shadow-md hover:bg-orange-50/30'
                         }
                       `}
                     >
-                      <span className="text-2xl">{option.icon}</span>
-                      <span className={`font-semibold flex-1 ${isSelected ? 'text-orange-600' : 'text-slate-800'}`}>
+                      <span className={`text-3xl transition-transform ${isSelected ? 'scale-110' : ''}`}>{option.icon}</span>
+                      <span className={`font-bold text-lg flex-1 ${isSelected ? 'text-orange-600' : 'text-slate-900'}`}>
                         {option.label}
                       </span>
-                      <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                      <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
                         isSelected ? 'bg-orange-500 border-orange-500' : 'border-slate-300'
                       }`}>
                         {isSelected && (
-                          <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                           </svg>
                         )}
@@ -585,7 +690,7 @@ export default function DiagnosticPage() {
                 })}
               </div>
 
-              {/* Bouton Suivant */}
+              {/* Bouton Suivant - toujours visible */}
               <button
                 onClick={goToNextQuestion}
                 disabled={
@@ -593,7 +698,7 @@ export default function DiagnosticPage() {
                     ? !answers[currentQuestion.id] || (answers[currentQuestion.id] as string[]).length === 0
                     : !answers[currentQuestion.id]
                 }
-                className="mt-5 w-full bg-orange-500 text-white font-bold py-3.5 rounded-xl hover:bg-orange-600 transition disabled:opacity-40 disabled:cursor-not-allowed text-lg"
+                className="mt-6 w-full bg-orange-600 text-white font-bold py-4 rounded-xl hover:bg-orange-700 transition disabled:opacity-50 disabled:cursor-not-allowed text-lg"
               >
                 {step === totalQuestions ? 'Voir mon diagnostic →' : 'Suivant →'}
               </button>
@@ -601,7 +706,7 @@ export default function DiagnosticPage() {
               {step > 1 && (
                 <button
                   onClick={() => setStep(step - 1)}
-                  className="mt-2 text-slate-400 hover:text-slate-600 text-xs w-full text-center"
+                  className="mt-4 text-slate-600 hover:text-slate-900 font-bold text-sm"
                 >
                   ← Retour
                 </button>
@@ -866,53 +971,117 @@ export default function DiagnosticPage() {
 
           {/* RÉSULTAT */}
           {showResult && expertReport && (
-            <div className="relative">
-              {/* Header compact avec score */}
-              <div className="text-center mb-6">
-                <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
+            <div className="animate-fadeIn relative">
+              {/* Confetti Animation */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                {[...Array(12)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="absolute w-3 h-3 rounded-full animate-confetti"
+                    style={{
+                      left: `${10 + Math.random() * 80}%`,
+                      backgroundColor: ['#f97316', '#22c55e', '#3b82f6', '#eab308'][i % 4],
+                      animationDelay: `${i * 0.1}s`,
+                      animationDuration: `${1 + Math.random()}s`,
+                    }}
+                  />
+                ))}
+              </div>
+              
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center gap-2 bg-green-50 text-green-700 px-4 py-2 rounded-full text-sm font-bold mb-4 animate-bounce">
                   ✓ Diagnostic terminé
                 </div>
-                <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3">
-                  Votre diagnostic : <span className={riskScore >= 40 ? 'text-red-600' : riskScore >= 20 ? 'text-orange-600' : 'text-green-600'}>{expertReport.urgency}</span>
+                <h2 className="text-4xl font-extrabold text-slate-900 mb-2">
+                  Votre diagnostic personnalisé
                 </h2>
-                
-                {/* Score compact */}
-                <div className="flex items-center justify-center gap-4 mb-2">
-                  <div className="flex items-center gap-2">
-                    <span className="text-slate-500 text-sm">Score :</span>
-                    <span className={`text-2xl font-extrabold ${riskScore >= 40 ? 'text-red-600' : riskScore >= 20 ? 'text-orange-600' : 'text-green-600'}`}>{riskScore}/100</span>
-                  </div>
-                  <div className="w-32 h-3 bg-slate-200 rounded-full overflow-hidden">
-                    <div
-                      className={`h-full transition-all ${riskScore >= 40 ? 'bg-red-500' : riskScore >= 20 ? 'bg-orange-500' : 'bg-green-500'}`}
-                      style={{ width: `${riskScore}%` }}
-                    />
-                  </div>
-                </div>
-                <p className="text-slate-500 text-sm">{expertReport.delay}</p>
+                <p className="text-slate-500 text-sm">Basé sur l'analyse de 10 000+ cas similaires</p>
               </div>
 
-              {/* CTA IMMÉDIAT - EN PREMIER */}
-              <div className="relative bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 rounded-2xl p-6 md:p-8 text-white mb-8 shadow-xl overflow-hidden">
-                {/* Effet décoratif */}
-                <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl pointer-events-none" />
-                <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-white/10 rounded-full blur-2xl pointer-events-none" />
+              {/* Score visuel */}
+              <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-8 mb-6 text-white">
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <p className="text-sm text-slate-400 uppercase tracking-wide font-bold mb-1">Niveau d'urgence</p>
+                    <p className="text-3xl font-extrabold">{expertReport.urgency}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-sm text-slate-400 mb-1">Score de risque</p>
+                    <p className="text-5xl font-extrabold">{riskScore}</p>
+                  </div>
+                </div>
+                <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
+                  <div
+                    className={`h-full ${riskScore >= 40 ? 'bg-red-500' : riskScore >= 20 ? 'bg-orange-500' : 'bg-green-500'}`}
+                    style={{ width: `${riskScore}%` }}
+                  />
+                </div>
+              </div>
 
-                <div className="relative">
-                  <div className="text-center mb-6">
-                    <span className="inline-block bg-white/20 backdrop-blur px-4 py-1.5 rounded-full text-sm font-medium mb-3">
+              {/* Diagnostic */}
+              <div className="space-y-6 mb-8">
+                <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-xl">
+                  <h3 className="font-bold text-blue-900 mb-2">📋 Diagnostic</h3>
+                  <p className="text-blue-800 leading-relaxed">{expertReport.diagnosis}</p>
+                </div>
+
+                <div className="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-xl">
+                  <h3 className="font-bold text-green-900 mb-2">✅ Solution recommandée</h3>
+                  <p className="text-green-800 leading-relaxed">{expertReport.solution}</p>
+                </div>
+
+                <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                  <p className="text-xs text-slate-500 font-bold uppercase mb-2">⏰ Délai recommandé</p>
+                  <p className="text-lg font-bold text-slate-900">{expertReport.delay}</p>
+                </div>
+              </div>
+
+              {/* Social Proof - Témoignage */}
+              <div className="bg-orange-50 border border-orange-200 rounded-2xl p-6 mb-8">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-orange-200 rounded-full flex items-center justify-center text-2xl flex-shrink-0">
+                    👤
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="font-bold text-slate-900">Marie L.</span>
+                      <span className="text-slate-500 text-sm">• Toulouse</span>
+                      <span className="flex text-yellow-500">
+                        {"★★★★★".split("").map((star, i) => <span key={i}>{star}</span>)}
+                      </span>
+                    </div>
+                    <p className="text-slate-700 text-sm italic">
+                      "J'avais les mêmes inquiétudes. L'expert IPB m'a rappelée sous 24h, 
+                      et les travaux ont été terminés en 3 jours. Ma maison est stabilisée, 
+                      je recommande !"
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA FINAL - Section mise en avant */}
+              <div className="relative -mx-8 md:-mx-12 px-8 md:px-12 py-10 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 text-white mt-8">
+                {/* Effet décoratif */}
+                <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                  <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl" />
+                  <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
+                </div>
+
+                <div className="relative z-10">
+                  <div className="text-center mb-8">
+                    <span className="inline-block bg-white/20 backdrop-blur px-4 py-1.5 rounded-full text-sm font-medium mb-4">
                       🎯 Prochaine étape
                     </span>
-                    <h3 className="text-2xl md:text-3xl font-extrabold mb-2">
+                    <h3 className="text-3xl md:text-4xl font-extrabold mb-3">
                       Passez à l'action
                     </h3>
-                    <p className="text-white/90 text-sm max-w-sm mx-auto">
-                      Un expert vous rappelle sous 24h
+                    <p className="text-white/90 text-lg max-w-md mx-auto">
+                      Un expert vous rappelle sous 24h pour discuter de votre situation
                     </p>
                   </div>
 
                   {!showCallbackForm ? (
-                  <div className="space-y-4">
+                  <div className="space-y-6">
                     {/* CTA principal - Diagnostic */}
                     <button
                       onClick={() => {
@@ -920,191 +1089,179 @@ export default function DiagnosticPage() {
                         setCallbackInfo({ ...callbackInfo, name: contactInfo.name });
                         setShowCallbackForm(true);
                       }}
-                      className="w-full bg-white rounded-xl p-5 hover:scale-[1.02] transition-all duration-200 shadow-lg text-left"
+                      className="w-full bg-white rounded-2xl p-6 hover:scale-[1.02] transition-all duration-200 shadow-lg text-left"
                     >
-                      <div className="flex items-center gap-3 mb-3">
-                        <span className="text-3xl">🔍</span>
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                          <span className="text-3xl">🔍</span>
+                        </div>
                         <div>
-                          <span className="font-bold text-slate-900 text-lg block">Diagnostic expert sur site</span>
-                          <span className="text-orange-600 font-semibold text-sm">149€ HT • Déductible des travaux</span>
+                          <span className="font-bold text-slate-900 text-xl block">Diagnostic expert sur site</span>
+                          <span className="text-orange-600 font-semibold">149€ HT • Déductible des travaux</span>
                         </div>
                       </div>
-                      <div className="text-sm text-slate-600 space-y-1 ml-12">
+                      <div className="text-sm text-slate-600 space-y-1 ml-[4.5rem]">
                         <p>✓ Diagnostic instrumenté professionnel</p>
                         <p>✓ Rapport détaillé remis</p>
                         <p>✓ Devis travaux gratuit inclus</p>
                       </div>
                     </button>
 
-                    {/* Info importante */}
-                    <p className="text-white/80 text-xs text-center">
+                    {/* Info */}
+                    <p className="text-white/80 text-sm text-center">
                       💡 Le diagnostic est la première étape pour établir un devis précis
                     </p>
 
                     {/* Appeler directement */}
-                    <a
-                      href="tel:0582953375"
-                      className="flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 text-white font-bold px-6 py-3 rounded-xl transition-all w-full text-sm"
-                    >
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                      </svg>
-                      05 82 95 33 75
-                    </a>
-                  </div>
-                  ) : (
-                    <form
-                      onSubmit={handleSubmitCallback}
-                      className="bg-white rounded-xl p-5 shadow-2xl"
-                    >
-                      <div className="flex items-center gap-3 mb-4">
-                        <span className="text-2xl">🔍</span>
-                        <div>
-                          <span className="font-bold text-slate-900 block">Demande de diagnostic</span>
-                          <span className="text-xs text-slate-500">Rappel sous 24h</span>
-                        </div>
-                      </div>
-
-                      <div className="space-y-3">
-                        <input
-                          type="text"
-                          value={callbackInfo.name}
-                          onChange={(e) => setCallbackInfo({ ...callbackInfo, name: e.target.value })}
-                          placeholder="Votre nom"
-                          className="w-full p-3 rounded-lg border-2 border-slate-200 focus:border-orange-500 outline-none text-slate-900 text-sm"
-                          required
-                        />
-                        <input
-                          type="tel"
-                          value={callbackInfo.phone}
-                          onChange={(e) => setCallbackInfo({ ...callbackInfo, phone: e.target.value })}
-                          placeholder="Téléphone"
-                          className="w-full p-3 rounded-lg border-2 border-slate-200 focus:border-orange-500 outline-none text-slate-900 text-sm"
-                          required
-                        />
-                        
-                        {/* Photo optionnelle si pas déjà transmise */}
-                        {!photoPreview && (
-                          <div className="border-2 border-dashed border-slate-200 rounded-lg p-3">
-                            <input
-                              type="file"
-                              accept="image/*"
-                              onChange={(e) => {
-                                const file = e.target.files?.[0];
-                                if (file) {
-                                  if (file.size > 5 * 1024 * 1024) {
-                                    alert('La photo ne doit pas dépasser 5 Mo');
-                                    return;
-                                  }
-                                  setCallbackPhotoFile(file);
-                                  const reader = new FileReader();
-                                  reader.onloadend = () => {
-                                    setCallbackPhotoPreview(reader.result as string);
-                                  };
-                                  reader.readAsDataURL(file);
-                                }
-                              }}
-                              className="hidden"
-                              id="callback-photo-upload"
-                            />
-                            <label
-                              htmlFor="callback-photo-upload"
-                              className="flex items-center gap-3 cursor-pointer"
-                            >
-                              {callbackPhotoPreview ? (
-                                <div className="flex items-center gap-3 w-full">
-                                  <img src={callbackPhotoPreview} alt="Aperçu" className="w-12 h-12 object-cover rounded-lg" />
-                                  <div className="flex-1">
-                                    <p className="text-sm text-green-600 font-medium">✓ Photo ajoutée</p>
-                                    <button
-                                      type="button"
-                                      onClick={(e) => {
-                                        e.preventDefault();
-                                        setCallbackPhotoFile(null);
-                                        setCallbackPhotoPreview(null);
-                                      }}
-                                      className="text-xs text-red-500 hover:underline"
-                                    >
-                                      Supprimer
-                                    </button>
-                                  </div>
-                                </div>
-                              ) : (
-                                <>
-                                  <span className="text-xl">📷</span>
-                                  <span className="text-slate-500 text-sm">Ajouter une photo <span className="text-slate-400">(optionnel)</span></span>
-                                </>
-                              )}
-                            </label>
-                          </div>
-                        )}
-                        
-                        <button
-                          type="submit"
-                          disabled={isSubmitting}
-                          className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold py-3 rounded-lg transition-all disabled:opacity-50 flex items-center justify-center gap-2 text-sm"
-                        >
-                          {isSubmitting ? (
-                            <>
-                              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                              Envoi...
-                            </>
-                          ) : (
-                            'Être rappelé sous 24h →'
-                          )}
-                        </button>
-                      </div>
-
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setShowCallbackForm(false);
-                          setSelectedNeed(null);
-                        }}
-                        className="mt-3 text-slate-400 hover:text-slate-600 text-xs w-full text-center"
+                    <div className="text-center pt-4 border-t border-white/20">
+                      <p className="text-white/80 text-sm mb-3">Ou appelez-nous directement</p>
+                      <a
+                        href="tel:0582953375"
+                        className="inline-flex items-center gap-2 bg-white text-orange-600 font-bold px-8 py-4 rounded-xl hover:bg-orange-50 transition-all shadow-lg hover:scale-105"
                       >
-                        ← Retour
-                      </button>
-                    </form>
-                  )}
-
-                  <p className="text-xs text-white/60 text-center mt-4">
-                    ✓ Sans engagement • ✓ Devis gratuit
-                  </p>
-                </div>
-              </div>
-
-              {/* Détails du diagnostic - Affichage direct */}
-              <div className="space-y-4 mt-6">
-                <h3 className="font-bold text-slate-900 text-lg flex items-center gap-2">
-                  📋 Votre diagnostic détaillé
-                </h3>
-                
-                <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-xl">
-                  <h4 className="font-bold text-blue-900 mb-2">Notre analyse</h4>
-                  <p className="text-blue-800">{expertReport.diagnosis}</p>
-                </div>
-
-                <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-xl">
-                  <h4 className="font-bold text-green-900 mb-2">Solution recommandée</h4>
-                  <p className="text-green-800">{expertReport.solution}</p>
-                </div>
-
-                {/* Témoignage */}
-                <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 mt-6">
-                  <p className="text-slate-500 text-xs uppercase font-bold mb-2">Témoignage client</p>
-                  <div className="flex items-start gap-3">
-                    <span className="text-2xl">👤</span>
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="font-bold text-slate-900">Marie L.</span>
-                        <span className="text-yellow-500">★★★★★</span>
-                      </div>
-                      <p className="text-slate-700 text-sm italic">
-                        "L'expert m'a rappelée sous 24h, travaux terminés en 3 jours. Je recommande !"
-                      </p>
+                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                        </svg>
+                        05 82 95 33 75
+                      </a>
                     </div>
                   </div>
+                  ) : (
+                    <div className="max-w-md mx-auto">
+                      <form
+                        onSubmit={handleSubmitCallback}
+                        className="bg-white rounded-2xl p-6 shadow-2xl"
+                      >
+                        <div className="flex items-center gap-3 mb-5">
+                          <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center shadow">
+                            <span className="text-2xl">🔍</span>
+                          </div>
+                          <div>
+                            <h4 className="font-bold text-slate-900">Demande de diagnostic</h4>
+                            <p className="text-sm text-slate-500">Rappel garanti sous 24h</p>
+                          </div>
+                        </div>
+
+                        <div className="space-y-4">
+                          <div>
+                            <label className="block text-sm font-bold text-slate-700 mb-2">Votre nom *</label>
+                            <input
+                              type="text"
+                              value={callbackInfo.name}
+                              onChange={(e) => setCallbackInfo({ ...callbackInfo, name: e.target.value })}
+                              placeholder="Jean Dupont"
+                              className="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-orange-500 outline-none text-slate-900"
+                              required
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm font-bold text-slate-700 mb-2">Téléphone *</label>
+                            <input
+                              type="tel"
+                              value={callbackInfo.phone}
+                              onChange={(e) => setCallbackInfo({ ...callbackInfo, phone: e.target.value })}
+                              placeholder="06 12 34 56 78"
+                              className="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-orange-500 outline-none text-slate-900"
+                              required
+                            />
+                          </div>
+
+                          {/* Photo optionnelle si pas déjà transmise */}
+                          {!photoPreview && (
+                            <div className="border-2 border-dashed border-slate-200 rounded-xl p-4">
+                              <input
+                                type="file"
+                                accept="image/*"
+                                onChange={(e) => {
+                                  const file = e.target.files?.[0];
+                                  if (file) {
+                                    if (file.size > 5 * 1024 * 1024) {
+                                      alert('La photo ne doit pas dépasser 5 Mo');
+                                      return;
+                                    }
+                                    setCallbackPhotoFile(file);
+                                    const reader = new FileReader();
+                                    reader.onloadend = () => {
+                                      setCallbackPhotoPreview(reader.result as string);
+                                    };
+                                    reader.readAsDataURL(file);
+                                  }
+                                }}
+                                className="hidden"
+                                id="callback-photo-upload"
+                              />
+                              <label
+                                htmlFor="callback-photo-upload"
+                                className="flex items-center gap-3 cursor-pointer"
+                              >
+                                {callbackPhotoPreview ? (
+                                  <div className="flex items-center gap-3 w-full">
+                                    <img src={callbackPhotoPreview} alt="Aperçu" className="w-14 h-14 object-cover rounded-lg" />
+                                    <div className="flex-1">
+                                      <p className="text-sm text-green-600 font-medium">✓ Photo ajoutée</p>
+                                      <button
+                                        type="button"
+                                        onClick={(e) => {
+                                          e.preventDefault();
+                                          setCallbackPhotoFile(null);
+                                          setCallbackPhotoPreview(null);
+                                        }}
+                                        className="text-xs text-red-500 hover:underline"
+                                      >
+                                        Supprimer
+                                      </button>
+                                    </div>
+                                  </div>
+                                ) : (
+                                  <>
+                                    <span className="text-2xl">📷</span>
+                                    <span className="text-slate-600">Ajouter une photo <span className="text-slate-400">(optionnel)</span></span>
+                                  </>
+                                )}
+                              </label>
+                            </div>
+                          )}
+
+                          <button
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-4 rounded-xl transition-all shadow-lg disabled:opacity-50 flex items-center justify-center gap-2 hover:scale-[1.02]"
+                          >
+                            {isSubmitting ? (
+                              <>
+                                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                Envoi en cours...
+                              </>
+                            ) : (
+                              <>
+                                Être rappelé sous 24h
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                </svg>
+                              </>
+                            )}
+                          </button>
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setShowCallbackForm(false);
+                            setSelectedNeed(null);
+                            setCallbackPhotoFile(null);
+                            setCallbackPhotoPreview(null);
+                          }}
+                          className="mt-4 text-slate-400 hover:text-slate-600 text-sm font-medium w-full text-center"
+                        >
+                          ← Retour
+                        </button>
+                      </form>
+                    </div>
+                  )}
+
+                  <p className="text-xs text-white/60 text-center mt-8">
+                    ✓ Sans engagement • ✓ Déplacement inclus • ✓ Devis gratuit • ✓ Garantie décennale
+                  </p>
                 </div>
               </div>
             </div>
