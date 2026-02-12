@@ -196,6 +196,7 @@ export async function submitDiagnosticLead(
       name: formData.get('name') as string,
       phone: (formData.get('phone') as string) || '',
       email: (formData.get('email') as string) || '',
+      address: (formData.get('address') as string) || '',
       path: formData.get('path') as 'fissure' | 'humidite',
       answers: JSON.parse(formData.get('answers') as string || '{}'),
       riskScore: parseInt(formData.get('riskScore') as string, 10) || 0,
@@ -228,7 +229,7 @@ export async function submitDiagnosticLead(
     if (process.env.EMAIL_TO) {
       const leadEmailResult = await sendEmail({
         to: process.env.EMAIL_TO,
-        subject: `🎯 NOUVEAU LEAD [${expertDiagnosis.urgency}] - ${validatedData.name} - ${validatedData.phone || validatedData.email || 'Contact à récupérer'}`,
+        subject: `🎯 NOUVEAU LEAD [${expertDiagnosis.urgency}] - ${validatedData.name} - ${rawData.address || validatedData.phone || validatedData.email}`,
         html: `
           <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 700px; margin: 0 auto; background: #f8fafc;">
             
@@ -267,6 +268,16 @@ export async function submitDiagnosticLead(
                   <td style="padding: 8px 0;">
                     <a href="mailto:${validatedData.email}" style="color: #2563eb; text-decoration: none;">
                       ✉️ ${validatedData.email}
+                    </a>
+                  </td>
+                </tr>
+                ` : ''}
+                ${rawData.address ? `
+                <tr>
+                  <td style="padding: 8px 0; font-weight: bold;">Adresse du bien :</td>
+                  <td style="padding: 8px 0;">
+                    <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(rawData.address)}" target="_blank" style="color: #16a34a; text-decoration: none;">
+                      📍 ${rawData.address}
                     </a>
                   </td>
                 </tr>

@@ -214,7 +214,7 @@ export default function DiagnosticPage() {
   const [step, setStep] = useState(0);
   const [path, setPath] = useState<PathType>(null);
   const [answers, setAnswers] = useState<Record<string, any>>({});
-  const [contactInfo, setContactInfo] = useState({ name: '', email: '', phone: '' });
+  const [contactInfo, setContactInfo] = useState({ name: '', email: '', phone: '', address: '' });
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [riskScore, setRiskScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
@@ -356,6 +356,10 @@ export default function DiagnosticPage() {
       alert('Veuillez saisir au moins un email ou un téléphone');
       return;
     }
+    if (!contactInfo.address.trim()) {
+      alert('Veuillez saisir l\'adresse du bien');
+      return;
+    }
 
     setIsAnalyzing(true);
 
@@ -372,6 +376,7 @@ export default function DiagnosticPage() {
       formData.append('name', contactInfo.name);
       formData.append('email', contactInfo.email);
       formData.append('phone', contactInfo.phone);
+      formData.append('address', contactInfo.address);
       formData.append('path', path!);
       formData.append('answers', JSON.stringify(answers));
       formData.append('riskScore', String(score));
@@ -667,6 +672,21 @@ export default function DiagnosticPage() {
                     placeholder="06 12 34 56 78"
                     className="w-full p-4 rounded-lg border-2 border-slate-200 focus:border-orange-500 outline-none text-lg"
                   />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-bold text-slate-700 mb-2">
+                    📍 Adresse du bien *
+                  </label>
+                  <input
+                    type="text"
+                    value={contactInfo.address}
+                    onChange={(e) => setContactInfo({ ...contactInfo, address: e.target.value })}
+                    placeholder="12 rue des Lilas, 31000 Toulouse"
+                    className="w-full p-4 rounded-lg border-2 border-slate-200 focus:border-orange-500 outline-none text-lg"
+                    required
+                  />
+                  <p className="text-xs text-slate-500 mt-1">Adresse où se situe le problème (fissures/humidité)</p>
                 </div>
 
                 {/* Upload photo optionnel */}
