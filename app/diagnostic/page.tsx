@@ -913,17 +913,24 @@ export default function DiagnosticPage() {
 
                   {!showCallbackForm ? (
                   <div className="space-y-4">
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <button
                         onClick={() => {
                           setSelectedNeed('expertise');
                           setCallbackInfo({ ...callbackInfo, name: contactInfo.name });
                           setShowCallbackForm(true);
                         }}
-                        className="flex flex-col items-center gap-2 p-4 bg-white rounded-xl hover:scale-105 transition-all duration-200 shadow-lg text-center"
+                        className="bg-white rounded-xl p-4 hover:scale-[1.02] transition-all duration-200 shadow-lg text-left"
                       >
-                        <span className="text-3xl">🔍</span>
-                        <span className="font-bold text-slate-900 text-sm">Expertise</span>
+                        <div className="flex items-center gap-3 mb-2">
+                          <span className="text-2xl">🔍</span>
+                          <span className="font-bold text-slate-900">Expertise sur site</span>
+                        </div>
+                        <div className="text-xs text-slate-600 space-y-1">
+                          <p className="font-semibold text-orange-600">149€ HT • Déductible des travaux</p>
+                          <p>✓ Diagnostic instrumenté</p>
+                          <p>✓ Rapport détaillé remis</p>
+                        </div>
                       </button>
 
                       <button
@@ -932,10 +939,17 @@ export default function DiagnosticPage() {
                           setCallbackInfo({ ...callbackInfo, name: contactInfo.name });
                           setShowCallbackForm(true);
                         }}
-                        className="flex flex-col items-center gap-2 p-4 bg-white rounded-xl hover:scale-105 transition-all duration-200 shadow-lg text-center"
+                        className="bg-white rounded-xl p-4 hover:scale-[1.02] transition-all duration-200 shadow-lg text-left"
                       >
-                        <span className="text-3xl">🔧</span>
-                        <span className="font-bold text-slate-900 text-sm">Travaux</span>
+                        <div className="flex items-center gap-3 mb-2">
+                          <span className="text-2xl">🔧</span>
+                          <span className="font-bold text-slate-900">Devis travaux</span>
+                        </div>
+                        <div className="text-xs text-slate-600 space-y-1">
+                          <p className="font-semibold text-green-600">Devis gratuit</p>
+                          <p>✓ Intervention rapide</p>
+                          <p>✓ Garantie décennale</p>
+                        </div>
                       </button>
                     </div>
 
