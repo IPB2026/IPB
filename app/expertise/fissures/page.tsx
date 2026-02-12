@@ -10,6 +10,7 @@ import Image from 'next/image';
 import { Activity, AlertTriangle, CheckCircle, ArrowRight, Shield, Phone, Clock, Star, TrendingDown, Award } from 'lucide-react';
 import Script from 'next/script';
 import { DiagnosticHowToSchema, AgrafageHowToSchema } from '@/components/seo/HowToSchema';
+import { ExpertiseFissuresBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
   title: 'Expert Fissures Occitanie (31-82-32) | Agrafage Garanti 10 ans | Diagnostic 149€ | IPB',
@@ -77,6 +78,9 @@ export default function FissuresPage() {
       {/* HowTo Schema pour Featured Snippets Google */}
       <DiagnosticHowToSchema />
       <AgrafageHowToSchema />
+      
+      {/* Breadcrumb Schema pour SERP */}
+      <ExpertiseFissuresBreadcrumb />
       
       <TopBar />
       <Navbar />

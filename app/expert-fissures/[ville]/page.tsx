@@ -9,6 +9,7 @@ import { Testimonials } from '@/components/home/Testimonials';
 import { CheckCircle, Phone, ArrowRight, MapPin, Shield, Clock, FileText, AlertTriangle, Home, TreeDeciduous, Droplets, TrendingUp, Calendar, Users, Award } from 'lucide-react';
 import { villesData, villeSlugs, type VilleInfo } from '@/app/data/villes';
 import { RelatedPagesLinks } from '@/components/seo/RelatedPagesLinks';
+import { VilleBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 // Génération statique des pages
 export async function generateStaticParams() {
@@ -178,6 +179,7 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
       
       <TopBar />
       <Navbar />
+      <VilleBreadcrumb villeName={villeData.nom} villeSlug={ville} service="fissures" />
 
       <main id="main-content">
         {/* Breadcrumb */}

@@ -10,6 +10,7 @@ import Image from 'next/image';
 import { Droplets, AlertTriangle, CheckCircle, ArrowRight, Shield, Phone, Clock, Star, Home, Wind, Award } from 'lucide-react';
 import Script from 'next/script';
 import { TraitementHumiditeHowToSchema } from '@/components/seo/HowToSchema';
+import { ExpertiseHumiditeBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
   title: 'Expert Humidité Occitanie (31-82-32) | Injection Résine Garantie 30 ans | IPB',
@@ -76,6 +77,9 @@ export default function HumiditePage() {
       
       {/* HowTo Schema pour Featured Snippets Google */}
       <TraitementHumiditeHowToSchema />
+      
+      {/* Breadcrumb Schema pour SERP */}
+      <ExpertiseHumiditeBreadcrumb />
       
       <TopBar />
       <Navbar />

@@ -11,7 +11,45 @@ import { ContactSection } from '@/components/home/ContactSection';
 import { Footer } from '@/components/home/Footer';
 import { InternalLinks } from '@/components/seo/InternalLinks';
 import { ExitIntentPopup } from '@/components/blog/ExitIntentPopup';
+import Script from 'next/script';
 import type { Metadata } from 'next';
+
+// Schema Organization pour Knowledge Panel Google
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "IPB - Institut de Pathologie du Bâtiment",
+  "alternateName": "IPB Expertise",
+  "url": "https://www.ipb-expertise.fr",
+  "logo": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
+  "description": "Expert en diagnostic et traitement des fissures et de l'humidité en Occitanie. Solutions techniques avec garantie décennale.",
+  "foundingDate": "2019",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "54 avenue Jean Jaurès",
+    "addressLocality": "Tournefeuille",
+    "postalCode": "31170",
+    "addressRegion": "Occitanie",
+    "addressCountry": "FR"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+33-5-82-95-33-75",
+    "contactType": "customer service",
+    "availableLanguage": "French",
+    "areaServed": ["FR-31", "FR-82", "FR-32"]
+  },
+  "sameAs": [
+    "https://www.facebook.com/ipbexpertise",
+    "https://www.linkedin.com/company/ipb-expertise"
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "14",
+    "bestRating": "5"
+  }
+};
 
 export const metadata: Metadata = {
   title: "Expert Fissures & Humidité Toulouse (31) | Diagnostic Gratuit 48h | IPB",
@@ -89,6 +127,12 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <div className="font-sans text-slate-800 bg-slate-50 antialiased scroll-smooth selection:bg-orange-100 selection:text-orange-900">
+      {/* Organization Schema pour Knowledge Panel */}
+      <Script
+        id="organization-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
       <ExitIntentPopup />
       <TopBar />
       <Navbar />
