@@ -224,6 +224,8 @@ export default function DiagnosticPage() {
   const [photoFile, setPhotoFile] = useState<File | null>(null);
   const [photoPreview, setPhotoPreview] = useState<string | null>(null);
   const [selectedNeed, setSelectedNeed] = useState<'expertise' | 'travaux' | null>(null);
+  const [callbackPhotoFile, setCallbackPhotoFile] = useState<File | null>(null);
+  const [callbackPhotoPreview, setCallbackPhotoPreview] = useState<string | null>(null);
   
   // reCAPTCHA v3 protection
   const { getToken } = useRecaptcha();
@@ -415,14 +417,27 @@ export default function DiagnosticPage() {
       formData.append('path', path || 'fissure');
       formData.append('answers', JSON.stringify(answers));
       formData.append('riskScore', String(riskScore));
+      formData.append('needType', selectedNeed || 'expertise');
       if (recaptchaToken) {
         formData.append('recaptchaToken', recaptchaToken);
+      }
+      
+      // Ajouter la photo du callback si présente (et pas de photo initiale)
+      if (callbackPhotoPreview && callbackPhotoFile) {
+        formData.append('photo', callbackPhotoPreview);
+        formData.append('photoName', callbackPhotoFile.name);
+      } else if (photoPreview && photoFile) {
+        // Sinon utiliser la photo du diagnostic initial
+        formData.append('photo', photoPreview);
+        formData.append('photoName', photoFile.name);
       }
 
       const result = await submitDiagnosticCallback(formData);
       if (result.success) {
         alert('✅ Merci ! Un expert vous rappelle sous 24h.');
         setShowCallbackForm(false);
+        setCallbackPhotoFile(null);
+        setCallbackPhotoPreview(null);
       } else {
         alert(result.message);
       }
@@ -439,15 +454,15 @@ export default function DiagnosticPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-orange-50/30 flex items-center justify-center p-4">
       <div className="w-full max-w-3xl">
-        {/* Header compact avec progression */}
+        {/* Header avec progression */}
         {step > 0 && step < 999 && (
-          <div className="mb-3">
-            <div className="flex items-center justify-between text-xs mb-2">
-              <span className="bg-orange-500 text-white font-bold px-2 py-0.5 rounded-full">
-                {step}/{totalQuestions}
+          <div className="mb-4">
+            <div className="flex items-center justify-between text-sm mb-2">
+              <span className="bg-orange-500 text-white font-bold px-3 py-1 rounded-full">
+                Question {step}/{totalQuestions}
               </span>
               <span className="text-slate-500">
-                {step === totalQuestions ? '🎯 Dernière !' : `Encore ${totalQuestions - step}`}
+                {step === totalQuestions ? '🎯 Dernière question !' : `Plus que ${totalQuestions - step}`}
               </span>
             </div>
             <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
@@ -460,48 +475,48 @@ export default function DiagnosticPage() {
         )}
 
         {/* Carte principale */}
-        <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-4 md:p-6">
+        <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-5 md:p-8">
           {/* ÉTAPE 0 : Choix du parcours */}
           {step === 0 && (
             <div className="text-center">
-              <h1 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
+              <h1 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
                 Évaluez votre problème <span className="text-orange-500">en 2 min</span>
               </h1>
-              <p className="text-slate-500 text-sm mb-4">
-                9 questions → diagnostic personnalisé gratuit
+              <p className="text-slate-600 mb-5">
+                Répondez à quelques questions et recevez un diagnostic personnalisé
               </p>
 
-              {/* Social Proof compact */}
-              <div className="flex justify-center gap-4 mb-4 text-xs text-slate-600">
-                <span>✓ <strong>4.9/5</strong></span>
-                <span>🏆 <strong>15 ans</strong> d'expertise</span>
+              {/* Social Proof */}
+              <div className="flex justify-center gap-6 mb-6 text-sm text-slate-600">
+                <span className="flex items-center gap-1">⭐ <strong>4.9/5</strong></span>
+                <span className="flex items-center gap-1">🏆 <strong>15 ans</strong> d'expertise</span>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 mb-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                 <button
                   onClick={() => selectPath('fissure')}
-                  className="bg-orange-50 hover:bg-orange-100 border-2 border-orange-200 hover:border-orange-400 rounded-xl p-4 transition-all text-center"
+                  className="bg-orange-50 hover:bg-orange-100 border-2 border-orange-200 hover:border-orange-400 rounded-xl p-5 transition-all text-center"
                 >
-                  <div className="text-4xl mb-2">🏠</div>
-                  <h2 className="font-bold text-slate-900 text-sm">Fissures</h2>
-                  <p className="text-slate-500 text-xs">Structure & façade</p>
+                  <div className="text-5xl mb-3">🏠</div>
+                  <h2 className="font-bold text-slate-900 text-lg mb-1">Fissures</h2>
+                  <p className="text-slate-500 text-sm">Structure & façade</p>
                 </button>
 
                 <button
                   onClick={() => selectPath('humidite')}
-                  className="bg-blue-50 hover:bg-blue-100 border-2 border-blue-200 hover:border-blue-400 rounded-xl p-4 transition-all text-center"
+                  className="bg-blue-50 hover:bg-blue-100 border-2 border-blue-200 hover:border-blue-400 rounded-xl p-5 transition-all text-center"
                 >
-                  <div className="text-4xl mb-2">💧</div>
-                  <h2 className="font-bold text-slate-900 text-sm">Humidité</h2>
-                  <p className="text-slate-500 text-xs">Murs & infiltrations</p>
+                  <div className="text-5xl mb-3">💧</div>
+                  <h2 className="font-bold text-slate-900 text-lg mb-1">Humidité</h2>
+                  <p className="text-slate-500 text-sm">Murs & infiltrations</p>
                 </button>
               </div>
 
-              {/* Trust badges compact */}
-              <div className="flex flex-wrap justify-center gap-3 text-xs text-slate-400">
+              {/* Trust badges */}
+              <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-500">
                 <span>🔒 Sécurisé</span>
                 <span>✓ Sans engagement</span>
-                <span>📞 Rappel 24h</span>
+                <span>📞 Rappel sous 24h</span>
               </div>
             </div>
           )}
@@ -509,22 +524,22 @@ export default function DiagnosticPage() {
           {/* ÉTAPES 1-N : Questions */}
           {step > 0 && step <= totalQuestions && currentQuestion && (
             <div key={`question-${step}`}>
-              <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-1">
+              <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-2">
                 {currentQuestion.text}
               </h2>
               
               {isMultiQuestion && (
-                <p className="text-orange-600 text-xs font-medium mb-3">
+                <p className="text-orange-600 text-sm font-medium mb-4">
                   ✨ Plusieurs réponses possibles
                 </p>
               )}
               {!isMultiQuestion && (
-                <p className="text-slate-400 text-xs mb-3">
+                <p className="text-slate-500 text-sm mb-4">
                   Sélectionnez une réponse
                 </p>
               )}
 
-              <div className="space-y-2">
+              <div className="space-y-2.5">
                 {currentQuestion.options.map((option) => {
                   const isSelected = isMultiQuestion
                     ? (answers[currentQuestion.id] as string[] || []).includes(option.value)
@@ -545,7 +560,7 @@ export default function DiagnosticPage() {
                         }
                       }}
                       className={`
-                        w-full flex items-center gap-3 p-3 rounded-xl border-2 transition-colors text-left
+                        w-full flex items-center gap-3 p-4 rounded-xl border-2 transition-colors text-left
                         ${isSelected
                           ? 'bg-orange-50 border-orange-500'
                           : 'bg-white border-slate-200 hover:border-orange-300'
@@ -578,7 +593,7 @@ export default function DiagnosticPage() {
                     ? !answers[currentQuestion.id] || (answers[currentQuestion.id] as string[]).length === 0
                     : !answers[currentQuestion.id]
                 }
-                className="mt-4 w-full bg-orange-500 text-white font-bold py-3 rounded-xl hover:bg-orange-600 transition disabled:opacity-40 disabled:cursor-not-allowed"
+                className="mt-5 w-full bg-orange-500 text-white font-bold py-3.5 rounded-xl hover:bg-orange-600 transition disabled:opacity-40 disabled:cursor-not-allowed text-lg"
               >
                 {step === totalQuestions ? 'Voir mon diagnostic →' : 'Suivant →'}
               </button>
@@ -964,6 +979,63 @@ export default function DiagnosticPage() {
                           className="w-full p-3 rounded-lg border-2 border-slate-200 focus:border-orange-500 outline-none text-slate-900 text-sm"
                           required
                         />
+                        
+                        {/* Photo optionnelle si pas déjà transmise */}
+                        {!photoPreview && (
+                          <div className="border-2 border-dashed border-slate-200 rounded-lg p-3">
+                            <input
+                              type="file"
+                              accept="image/*"
+                              onChange={(e) => {
+                                const file = e.target.files?.[0];
+                                if (file) {
+                                  if (file.size > 5 * 1024 * 1024) {
+                                    alert('La photo ne doit pas dépasser 5 Mo');
+                                    return;
+                                  }
+                                  setCallbackPhotoFile(file);
+                                  const reader = new FileReader();
+                                  reader.onloadend = () => {
+                                    setCallbackPhotoPreview(reader.result as string);
+                                  };
+                                  reader.readAsDataURL(file);
+                                }
+                              }}
+                              className="hidden"
+                              id="callback-photo-upload"
+                            />
+                            <label
+                              htmlFor="callback-photo-upload"
+                              className="flex items-center gap-3 cursor-pointer"
+                            >
+                              {callbackPhotoPreview ? (
+                                <div className="flex items-center gap-3 w-full">
+                                  <img src={callbackPhotoPreview} alt="Aperçu" className="w-12 h-12 object-cover rounded-lg" />
+                                  <div className="flex-1">
+                                    <p className="text-sm text-green-600 font-medium">✓ Photo ajoutée</p>
+                                    <button
+                                      type="button"
+                                      onClick={(e) => {
+                                        e.preventDefault();
+                                        setCallbackPhotoFile(null);
+                                        setCallbackPhotoPreview(null);
+                                      }}
+                                      className="text-xs text-red-500 hover:underline"
+                                    >
+                                      Supprimer
+                                    </button>
+                                  </div>
+                                </div>
+                              ) : (
+                                <>
+                                  <span className="text-xl">📷</span>
+                                  <span className="text-slate-500 text-sm">Ajouter une photo <span className="text-slate-400">(optionnel)</span></span>
+                                </>
+                              )}
+                            </label>
+                          </div>
+                        )}
+                        
                         <button
                           type="submit"
                           disabled={isSubmitting}
