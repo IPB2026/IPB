@@ -348,9 +348,14 @@ export default function DiagnosticPage() {
     }
   };
 
-  // Scroll vers le haut de la carte à chaque changement d'étape
+  // Ref pour le container scrollable
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+
+  // Reset scroll interne à chaque changement d'étape
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = 0;
+    }
   }, [step, isAnalyzing, showResult, submitted]);
 
   // Gestion du choix de parcours
@@ -458,8 +463,8 @@ export default function DiagnosticPage() {
   const expertReport = showResult && path ? getExpertReport(path, riskScore) : null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-orange-50/30 flex justify-center px-4 pt-8 pb-12 md:pt-16">
-      <div className="w-full max-w-2xl">
+    <div className="h-[100dvh] bg-gradient-to-br from-slate-50 via-white to-orange-50/30 flex justify-center overflow-hidden">
+      <div ref={scrollRef} className="w-full max-w-2xl overflow-y-auto overscroll-none px-4 pt-6 pb-8 md:pt-12">
 
         {/* ===== BARRE DE PROGRESSION + INDICATEUR DE RISQUE ===== */}
         {step > 0 && step <= totalQuestions && (
@@ -508,8 +513,8 @@ export default function DiagnosticPage() {
         )}
 
         {/* ===== CARTE PRINCIPALE ===== */}
-        <div className="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden min-h-[420px]">
-          <div className="p-6 md:p-8">
+        <div className="bg-white rounded-2xl shadow-lg border border-slate-100">
+          <div className="p-5 md:p-8">
 
             {/* ===== ÉTAPE 0 : ACCUEIL ===== */}
             {step === 0 && (
