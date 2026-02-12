@@ -546,11 +546,11 @@ export default function DiagnosticPage() {
             <div className="text-center">
               {/* Badge accrocheur */}
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-5 py-2.5 rounded-full text-sm font-bold uppercase tracking-wide mb-6 shadow-lg animate-pulse">
-                🎁 Diagnostic Expert Offert (valeur 149€)
+                🏠 Diagnostic Expert 149€ déductible des travaux
               </div>
               
               <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">
-                Analysez votre problème <span className="text-orange-500">gratuitement</span>
+                Évaluez votre problème <span className="text-orange-500">en 2 minutes</span>
               </h1>
               <p className="text-slate-600 text-lg mb-6">
                 Répondez à 9 questions simples et recevez un diagnostic personnalisé par un expert
@@ -616,7 +616,7 @@ export default function DiagnosticPage() {
                   </div>
                   <div>
                     <p className="text-slate-700 text-sm italic mb-2">
-                      "J'hésitais à faire appel à un expert. Ce diagnostic gratuit m'a convaincu : en 2 minutes, j'ai compris la gravité de mes fissures. L'intervention a été réalisée en 3 jours."
+                      "J'hésitais à faire appel à un expert. Ce pré-diagnostic en ligne m'a convaincu : en 2 minutes, j'ai compris la gravité de mes fissures. L'intervention a été réalisée en 3 jours."
                     </p>
                     <p className="text-slate-500 text-xs font-medium">
                       Pierre M. — Toulouse (31) • ⭐⭐⭐⭐⭐
@@ -628,7 +628,7 @@ export default function DiagnosticPage() {
               {/* Trust badges */}
               <div className="flex flex-wrap justify-center gap-4 text-xs text-slate-500">
                 <span className="flex items-center gap-1">🔒 Données sécurisées</span>
-                <span className="flex items-center gap-1">✓ 100% gratuit</span>
+                <span className="flex items-center gap-1">✓ Sans engagement</span>
                 <span className="flex items-center gap-1">⏱️ 2 min chrono</span>
                 <span className="flex items-center gap-1">📞 Rappel sous 24h</span>
               </div>
