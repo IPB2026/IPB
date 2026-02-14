@@ -188,7 +188,9 @@ export default function RootLayout({
         >
           Aller au contenu principal
         </a>
-        {children}
+        <main id="main-content">
+          {children}
+        </main>
         <StickyDiagnosticCta />
         <ExitIntentPopup />
         <CookieBanner />

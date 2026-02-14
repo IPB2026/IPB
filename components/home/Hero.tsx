@@ -41,7 +41,7 @@ export function Hero() {
             </h1>
             
             {/* Sous-titre équilibré */}
-            <p className="text-lg md:text-xl text-slate-300 mb-6 max-w-2xl leading-relaxed">
+            <p className="text-lg md:text-xl text-slate-200 mb-6 max-w-2xl leading-relaxed">
               Depuis 2019, nous traitons les <strong className="text-orange-300">fissures structurelles</strong> et 
               les <strong className="text-blue-300">problèmes d'humidité</strong> en Haute-Garonne, Tarn-et-Garonne et Gers. 
               Diagnostic expert sous 48h.
@@ -55,7 +55,7 @@ export function Hero() {
                   <span className="text-orange-300 text-xs font-bold uppercase">Fissures</span>
                 </div>
                 <p className="text-white text-sm font-bold">Agrafage & Harpage</p>
-                <p className="text-slate-400 text-xs">Garantie décennale</p>
+                <p className="text-slate-300 text-xs">Garantie décennale</p>
               </div>
               <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-3">
                 <div className="flex items-center gap-2 mb-1">
@@ -63,7 +63,7 @@ export function Hero() {
                   <span className="text-blue-300 text-xs font-bold uppercase">Humidité</span>
                 </div>
                 <p className="text-white text-sm font-bold">Injection & Cuvelage</p>
-                <p className="text-slate-400 text-xs">Garantie 30 ans</p>
+                <p className="text-slate-300 text-xs">Garantie 30 ans</p>
               </div>
             </div>
             
@@ -89,15 +89,15 @@ export function Hero() {
             <div className="flex flex-wrap items-center gap-4 text-sm">
               <span className="flex items-center gap-2">
                 <CheckCircle size={16} className="text-emerald-400" /> 
-                <span className="text-slate-300">Réponse <strong className="text-white">24h</strong></span>
+                <span className="text-slate-200">Réponse <strong className="text-white">24h</strong></span>
               </span>
               <span className="flex items-center gap-2">
                 <Shield size={16} className="text-blue-400" /> 
-                <span className="text-slate-300">Garantie <strong className="text-white">décennale</strong></span>
+                <span className="text-slate-200">Garantie <strong className="text-white">décennale</strong></span>
               </span>
               <span className="flex items-center gap-2">
                 <Star size={16} className="text-yellow-400 fill-yellow-400" /> 
-                <span className="text-slate-300"><strong className="text-white">4.9/5</strong> Google</span>
+                <span className="text-slate-200"><strong className="text-white">4.9/5</strong> Google</span>
               </span>
             </div>
           </div>
@@ -120,7 +120,7 @@ export function Hero() {
                   <Activity className="text-orange-400" size={18} />
                   <span className="text-white font-bold text-sm">Fissures</span>
                 </div>
-                <p className="text-slate-300 text-xs">Agrafage structurel</p>
+                <p className="text-slate-200 text-xs">Agrafage structurel</p>
               </div>
             </div>
             
@@ -140,7 +140,7 @@ export function Hero() {
                   <Droplets className="text-blue-400" size={18} />
                   <span className="text-white font-bold text-sm">Humidité</span>
                 </div>
-                <p className="text-slate-300 text-xs">Injection résine</p>
+                <p className="text-slate-200 text-xs">Injection résine</p>
               </div>
             </div>
           </div>

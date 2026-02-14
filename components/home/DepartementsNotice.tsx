@@ -12,9 +12,9 @@ export function DepartementsNotice() {
               <Users size={28} className="text-white" />
             </div>
             <div>
-              <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-1">
+              <h2 className="text-lg md:text-xl font-bold text-slate-900 mb-1">
                 Des experts près de chez vous
-              </h3>
+              </h2>
               <p className="text-slate-600 text-sm md:text-base">
                 <strong className="text-orange-600">Haute-Garonne</strong>, <strong className="text-orange-600">Tarn-et-Garonne</strong> et <strong className="text-blue-600">Gers</strong> : nos experts interviennent dans les <strong>3 départements</strong> pour une proximité et un service de qualité.
               </p>
