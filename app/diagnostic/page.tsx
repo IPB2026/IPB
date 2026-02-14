@@ -533,7 +533,7 @@ export default function DiagnosticPage() {
             {/* ===== ÉTAPE 0 : ACCUEIL ===== */}
             {step === 0 && (
               <div>
-                <div className="text-center mb-6">
+                <div className="text-center mb-5">
                   <div className="inline-flex items-center gap-1.5 bg-orange-100 text-orange-700 text-xs font-semibold px-3 py-1 rounded-full mb-3">
                     <span className="w-1.5 h-1.5 bg-orange-500 rounded-full animate-pulse" />
                     Diagnostic en ligne gratuit
@@ -543,12 +543,12 @@ export default function DiagnosticPage() {
                     <span className="text-orange-500">des signes inquiétants ?</span>
                   </h1>
                   <p className="text-slate-500 text-sm max-w-md mx-auto">
-                    Répondez à 9 questions et obtenez immédiatement l'avis d'un expert en pathologie du bâtiment.
+                    Répondez à 9 questions et obtenez immédiatement l&apos;avis d&apos;un expert en pathologie du bâtiment.
                   </p>
                 </div>
 
                 {/* Boutons de choix */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
                   <button
                     onClick={() => selectPath('fissure')}
                     className="group relative bg-gradient-to-br from-orange-50 to-white border-2 border-orange-200 hover:border-orange-400 rounded-xl p-5 transition-all text-left hover:shadow-md"
@@ -586,8 +586,8 @@ export default function DiagnosticPage() {
                   </button>
                 </div>
 
-                {/* Réassurance */}
-                <div className="flex items-center justify-center gap-4 text-xs text-slate-400 mb-5">
+                {/* Réassurance rapide */}
+                <div className="flex items-center justify-center gap-4 text-xs text-slate-400 mb-4">
                   <span className="flex items-center gap-1">⏱️ 2 min</span>
                   <span className="w-1 h-1 bg-slate-300 rounded-full" />
                   <span className="flex items-center gap-1">🔒 Sécurisé</span>
@@ -595,19 +595,52 @@ export default function DiagnosticPage() {
                   <span className="flex items-center gap-1">✓ Sans engagement</span>
                 </div>
 
+                {/* Trust signals pour trafic froid (Google Ads) */}
+                <div className="grid grid-cols-3 gap-2 mb-4">
+                  <div className="bg-slate-50 rounded-lg p-2.5 text-center">
+                    <p className="text-lg font-extrabold text-slate-900">4.9/5</p>
+                    <p className="text-[10px] text-slate-400 font-medium">⭐ Google</p>
+                  </div>
+                  <div className="bg-slate-50 rounded-lg p-2.5 text-center">
+                    <p className="text-lg font-extrabold text-slate-900">+200</p>
+                    <p className="text-[10px] text-slate-400 font-medium">chantiers réalisés</p>
+                  </div>
+                  <div className="bg-slate-50 rounded-lg p-2.5 text-center">
+                    <p className="text-lg font-extrabold text-slate-900">10 ans</p>
+                    <p className="text-[10px] text-slate-400 font-medium">garantie décennale</p>
+                  </div>
+                </div>
+
                 {/* Social proof */}
-                <div className="bg-slate-50 rounded-xl p-4 flex items-start gap-3">
+                <div className="bg-slate-50 rounded-xl p-3.5 flex items-start gap-3 mb-4">
                   <div className="w-9 h-9 bg-orange-100 rounded-full flex items-center justify-center text-base flex-shrink-0">
                     👨
                   </div>
                   <div>
                     <p className="text-slate-600 text-xs italic leading-relaxed">
-                      "En 2 minutes j'ai compris la gravité de mes fissures. L'expert m'a rappelé le lendemain, intervention réalisée en 3 jours."
+                      &quot;En 2 minutes j&apos;ai compris la gravité de mes fissures. L&apos;expert m&apos;a rappelé le lendemain, intervention réalisée en 3 jours.&quot;
                     </p>
                     <p className="text-slate-400 text-[10px] mt-1 font-medium">
                       Pierre M. — Toulouse • ⭐⭐⭐⭐⭐
                     </p>
                   </div>
+                </div>
+
+                {/* Appel direct - CTA alternatif pour visiteurs pressés */}
+                <div className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-xl p-3.5 flex items-center gap-3">
+                  <div className="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-green-400 text-lg">📞</span>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-white text-sm font-bold">Besoin d&apos;un avis immédiat ?</p>
+                    <p className="text-slate-400 text-[10px]">Un expert vous répond directement</p>
+                  </div>
+                  <a
+                    href="tel:0582953375"
+                    className="bg-green-500 hover:bg-green-600 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors flex-shrink-0"
+                  >
+                    Appeler
+                  </a>
                 </div>
               </div>
             )}
@@ -1215,9 +1248,16 @@ export default function DiagnosticPage() {
 
         {/* Footer info */}
         {step > 0 && step <= totalQuestions && (
-          <p className="text-center text-slate-400 text-xs mt-4">
-            ⏱️ Encore {totalQuestions - step + 1} question{totalQuestions - step > 0 ? 's' : ''} • Réponses confidentielles
-          </p>
+          <div className="mt-4 space-y-2">
+            <p className="text-center text-slate-400 text-xs">
+              ⏱️ Encore {totalQuestions - step + 1} question{totalQuestions - step > 0 ? 's' : ''} • Réponses confidentielles
+            </p>
+            <div className="text-center">
+              <a href="tel:0582953375" className="inline-flex items-center gap-1.5 text-slate-400 hover:text-orange-600 text-xs transition-colors">
+                📞 Préférez appeler ? <span className="font-semibold text-slate-500 hover:text-orange-600">05 82 95 33 75</span>
+              </a>
+            </div>
+          </div>
         )}
       </div>
     </div>
