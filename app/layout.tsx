@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import { Inter, Space_Grotesk } from "next/font/google"
 import "./globals.css"
-import "./blog-article.css"
 import Script from "next/script"
 import { Analytics } from "@/components/layout/Analytics"
 import { CookieBanner } from "@/components/CookieBanner"
@@ -166,13 +165,8 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
-        {/* 💣 Preconnect for performance (CORE WEB VITALS) */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* DNS-prefetch pour les scripts tiers */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-        <link rel="preconnect" href="https://calendly.com" />
-        <link rel="preconnect" href="https://assets.calendly.com" />
         
         {/* Structured Data */}
         <script

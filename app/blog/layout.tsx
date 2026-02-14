@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import '../blog-article.css';
 
 export const metadata: Metadata = {
   title: 'Blog IPB | Conseils Fissures & Humidité à Toulouse',

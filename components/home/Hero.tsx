@@ -111,6 +111,7 @@ export function Hero() {
                 alt="Fissure structurelle façade - Expert fissures Toulouse Montauban Auch (31-82-32)"
                 width={300}
                 height={400}
+                sizes="(max-width: 1024px) 0px, 300px"
                 className="w-full h-64 object-cover"
                 priority
               />
@@ -130,7 +131,9 @@ export function Hero() {
                 alt="Traitement humidité salpêtre - Expert humidité Occitanie (31-82-32) remontées capillaires"
                 width={300}
                 height={400}
+                sizes="(max-width: 1024px) 0px, 300px"
                 className="w-full h-64 object-cover"
+                loading="lazy"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent p-4">
                 <div className="flex items-center gap-2">
