@@ -35,7 +35,12 @@ const nextConfig = {
               "style-src 'self' 'unsafe-inline'",
               "font-src 'self' data:",
               "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://www.google.com",
+              "require-trusted-types-for 'script'",
             ].join('; ') + ';',
+          },
+          {
+            key: 'Cross-Origin-Opener-Policy',
+            value: 'same-origin-allow-popups',
           },
           {
             key: 'X-Content-Type-Options',
