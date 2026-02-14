@@ -211,6 +211,59 @@ const questionsData: Record<'fissure' | 'humidite', Question[]> = {
   ],
 };
 
+// Conseils expert contextuels — renforce l'autorité à chaque étape
+const expertTips: Record<string, string> = {
+  // FISSURES
+  'fissure:TYPE_BATIMENT:maison': '💡 En Haute-Garonne, 70% des maisons individuelles sur sol argileux développent des fissures dans les 15 premières années.',
+  'fissure:TYPE_BATIMENT:immeuble': '💡 Les immeubles anciens de Toulouse (briques foraines) sont particulièrement sensibles aux mouvements de terrain.',
+  'fissure:TYPE_BATIMENT:local': '💡 Les locaux professionnels ont des obligations réglementaires strictes en matière de solidité structurelle.',
+  'fissure:LOCALISATION:facade': '💡 Les fissures en façade sont les plus fréquentes et souvent liées à un tassement différentiel des fondations.',
+  'fissure:LOCALISATION:interieur': '💡 Des fissures intérieures qui traversent le mur de part en part indiquent généralement un mouvement structurel.',
+  'fissure:LOCALISATION:plafond': '💡 Les fissures au plafond peuvent révéler une déformation de la charpente ou un affaissement de plancher.',
+  'fissure:LOCALISATION:sol': '💡 Les fissures au sol sont souvent dues à un retrait-gonflement des argiles sous les fondations.',
+  'fissure:FORME_FISSURE:escalier': '⚠️ Les fissures en escalier suivant les joints de maçonnerie sont le signe classique d\'un tassement différentiel — c\'est le cas le plus fréquent que nous traitons.',
+  'fissure:FORME_FISSURE:verticale': '💡 Une fissure verticale nette peut indiquer un défaut de chaînage ou une rupture dans la structure.',
+  'fissure:FORME_FISSURE:horizontale': '💡 Les fissures horizontales en partie basse signalent souvent une poussée des terres ou un problème de fondation.',
+  'fissure:FORME_FISSURE:faience': '✅ Le faïençage (toile d\'araignée) est généralement superficiel et lié au retrait de l\'enduit. Moins grave mais à surveiller.',
+  'fissure:LARGEUR:fine': '✅ Les microfissures < 0.2mm sont souvent d\'origine thermique. Rarement structurelles, mais à surveiller si elles évoluent.',
+  'fissure:LARGEUR:moyenne': '⚠️ Entre 0.2 et 2mm, on parle de fissure active. Un diagnostic instrumenté (fissuromètre) est recommandé.',
+  'fissure:LARGEUR:large': '🔴 Au-delà de 2mm, il s\'agit d\'une lézarde. L\'intervention est généralement urgente pour stabiliser la structure.',
+  'fissure:ANCIENNETE:recent': '⚠️ Des fissures récentes qui apparaissent rapidement sont souvent liées à un épisode de sécheresse. C\'est le cas de la majorité de nos interventions depuis 2022.',
+  'fissure:ANCIENNETE:moyen': '💡 Si les fissures sont apparues il y a 6 mois à 2 ans, elles ont probablement continué à évoluer. Un relevé précis permettra de quantifier cette évolution.',
+  'fissure:ANCIENNETE:ancien': '💡 Des fissures de plus de 2 ans peuvent être stabilisées naturellement. Un fissuromètre confirme si le mouvement est terminé.',
+  'fissure:EVOLUTION:rapide': '🔴 Une évolution rapide signifie que le sol continue de bouger sous vos fondations. Une intervention de stabilisation est prioritaire.',
+  'fissure:EVOLUTION:lente': '⚠️ Une évolution lente indique un mouvement en cours mais progressif. Il est encore temps d\'intervenir avant aggravation.',
+  'fissure:EVOLUTION:stable': '✅ Des fissures stables sont bon signe. L\'agrafage pourra se faire sereinement après confirmation par diagnostic.',
+  'fissure:SIGNES_ASSOCIES:portes': '⚠️ Des portes qui coincent confirment un mouvement de la structure. C\'est un signe que nous prenons très au sérieux.',
+  'fissure:SIGNES_ASSOCIES:carrelage': '⚠️ Un carrelage fissuré au sol indique un mouvement du plancher bas, souvent lié au tassement des fondations.',
+  'fissure:SIGNES_ASSOCIES:infiltration': '⚠️ Fissures + infiltrations : la combinaison aggrave les deux problèmes. L\'eau accélère la dégradation structurelle.',
+  'fissure:URGENCE:immediate': '🔴 Nous comprenons votre inquiétude. Nos experts interviennent sous 48-72h pour les situations urgentes.',
+  'fissure:URGENCE:modere': '💡 Vous avez raison d\'agir maintenant. Plus tôt on traite, moins les travaux sont importants (et coûteux).',
+
+  // HUMIDITÉ
+  'humidite:TYPE_BATIMENT:maison': '💡 Les maisons de plus de 30 ans sans barrière d\'étanchéité sont les plus touchées par les remontées capillaires en Occitanie.',
+  'humidite:TYPE_BATIMENT:immeuble': '💡 En immeuble, l\'humidité peut venir des parties communes. Un diagnostic précis identifie l\'origine exacte.',
+  'humidite:TYPE_BATIMENT:local': '💡 L\'humidité dans un local professionnel peut engager la responsabilité du propriétaire (décence du logement).',
+  'humidite:LOCALISATION:bas_mur': '⚠️ L\'humidité en bas de mur est le signe classique de remontées capillaires. C\'est notre spécialité — traitement par injection de résine.',
+  'humidite:LOCALISATION:haut_mur': '💡 L\'humidité en haut des murs évoque plutôt un problème de condensation ou de pont thermique.',
+  'humidite:LOCALISATION:angle': '💡 L\'humidité dans les angles est souvent causée par des ponts thermiques — des zones froides où la condensation se forme.',
+  'humidite:LOCALISATION:partout': '🔴 De l\'humidité généralisée indique un problème sérieux. Plusieurs causes peuvent être combinées (capillarité + condensation).',
+  'humidite:MANIFESTATION:salpetre': '⚠️ Le salpêtre (efflorescence blanche) est la preuve que de l\'eau chargée en sels minéraux traverse vos murs. C\'est une remontée capillaire.',
+  'humidite:MANIFESTATION:moisissure': '🔴 Les moisissures noires sont un risque pour la santé (allergies, problèmes respiratoires). Ne pas traiter seulement en surface.',
+  'humidite:MANIFESTATION:peinture': '💡 Une peinture qui cloque indique une pression d\'humidité derrière le revêtement. Repeindre sans traiter ne sert à rien.',
+  'humidite:MANIFESTATION:odeur': '⚠️ Une odeur de moisi persistante signifie une humidité profonde dans les matériaux. Un traitement de fond est nécessaire.',
+  'humidite:ANCIENNETE:recent': '💡 Un problème récent peut être lié à un événement ponctuel (fuite, inondation) ou au début d\'un phénomène chronique.',
+  'humidite:ANCIENNETE:ancien': '⚠️ Plus de 2 ans d\'humidité non traitée : les matériaux sont probablement dégradés en profondeur. L\'intervention sera plus conséquente.',
+  'humidite:SAISONNALITE:hiver': '💡 Un problème aggravé en hiver pointe vers la condensation. La différence de température intérieur/extérieur crée de l\'humidité sur les parois froides.',
+  'humidite:SAISONNALITE:permanent': '⚠️ Un problème permanent toute l\'année indique des remontées capillaires — l\'eau monte en permanence depuis le sol.',
+  'humidite:VENTILATION:non': '⚠️ Sans ventilation, l\'air humide stagne et se condense. L\'installation d\'une VMI peut réduire l\'humidité de 30 à 50%.',
+  'humidite:VENTILATION:oui_panne': '💡 Une VMC en panne aggrave considérablement les problèmes d\'humidité. C\'est souvent un facteur déclencheur.',
+  'humidite:TENTATIVES:peinture': '💡 La peinture anti-humidité bloque l\'évaporation mais n\'arrête pas la remontée. Le mur reste humide en profondeur et se dégrade.',
+  'humidite:TENTATIVES:deshu': '💡 Un déshumidificateur traite le symptôme, pas la cause. Il consomme de l\'énergie sans résoudre le problème structurel.',
+  'humidite:URGENCE:immediate': '🔴 Nous comprenons l\'urgence. L\'humidité non traitée dégrade la structure et impacte votre santé. Intervention rapide possible.',
+  'humidite:URGENCE:modere': '💡 Agir maintenant évite une aggravation et des travaux plus lourds. Un diagnostic précis permet de cibler la bonne solution.',
+};
+
 // Étapes de l'animation d'analyse
 const analysisSteps = [
   { text: 'Analyse de vos symptômes...', delay: 0 },
@@ -741,6 +794,30 @@ export default function DiagnosticPage() {
                       );
                     })}
                   </div>
+
+                  {/* Conseil expert contextuel */}
+                  {(() => {
+                    const answer = answers[currentQuestion.id];
+                    if (!answer || !path) return null;
+                    // Pour les multi-select, on prend le premier tip trouvé
+                    const values = Array.isArray(answer) ? answer : [answer];
+                    const tip = values.reduce<string | null>((found, val) => {
+                      if (found) return found;
+                      return expertTips[`${path}:${currentQuestion.id}:${val}`] || null;
+                    }, null);
+                    if (!tip) return null;
+                    return (
+                      <div className="mt-3 bg-slate-50 border border-slate-200 rounded-xl p-3 flex items-start gap-2.5">
+                        <div className="flex-shrink-0 w-6 h-6 bg-slate-200 rounded-full flex items-center justify-center">
+                          <span className="text-xs">🎓</span>
+                        </div>
+                        <div>
+                          <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-0.5">Avis expert IPB</p>
+                          <p className="text-slate-600 text-xs leading-relaxed">{tip}</p>
+                        </div>
+                      </div>
+                    );
+                  })()}
                 </div>
 
                 {/* Navigation */}
