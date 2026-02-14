@@ -68,7 +68,7 @@ export function Hero() {
             </div>
             
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <div className="flex flex-col sm:flex-row gap-4 mb-4">
               <Link 
                 href="/diagnostic" 
                 className="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl shadow-orange-900/30 transition-all flex items-center justify-center gap-3 hover:-translate-y-1"
@@ -82,6 +82,17 @@ export function Hero() {
               >
                 <Phone size={20} className="text-orange-400" />
                 05 82 95 33 75
+              </a>
+            </div>
+
+            {/* Bandeau appel direct - très visible */}
+            <div className="bg-green-500/20 border border-green-400/40 rounded-xl p-3 mb-8 flex items-center gap-3">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse flex-shrink-0" />
+              <p className="text-green-200 text-sm flex-1">
+                <strong className="text-green-100">Disponible maintenant</strong> — Réponse en moins de 2h
+              </p>
+              <a href="tel:0582953375" className="bg-green-500 hover:bg-green-600 text-white text-sm font-bold px-4 py-1.5 rounded-lg transition-colors flex-shrink-0">
+                Appeler
               </a>
             </div>
             

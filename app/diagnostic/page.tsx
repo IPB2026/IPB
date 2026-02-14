@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { submitDiagnosticCallback, submitDiagnosticLead } from '@/app/actions/diagnostic';
+import { submitQuickCallback } from '@/app/actions/quickCallback';
 import { useRecaptcha } from '@/hooks/useRecaptcha';
 
 // Types
@@ -236,6 +237,9 @@ export default function DiagnosticPage() {
   const [callbackPhotoFile, setCallbackPhotoFile] = useState<File | null>(null);
   const [callbackPhotoPreview, setCallbackPhotoPreview] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [earlyPhone, setEarlyPhone] = useState('');
+  const [earlyPhoneCaptured, setEarlyPhoneCaptured] = useState(false);
+  const [earlyPhoneDismissed, setEarlyPhoneDismissed] = useState(false);
   
   // reCAPTCHA v3 protection
   const { getToken } = useRecaptcha();
@@ -464,7 +468,17 @@ export default function DiagnosticPage() {
 
   return (
     <div className="h-[100dvh] bg-gradient-to-br from-slate-50 via-white to-orange-50/30 flex justify-center overflow-hidden">
-      <div ref={scrollRef} className="w-full max-w-2xl overflow-y-auto overscroll-none px-4 pt-6 pb-8 md:pt-12">
+      <div ref={scrollRef} className="w-full max-w-2xl md:max-w-3xl overflow-y-auto overscroll-none px-4 pt-6 pb-8 md:pt-8">
+
+        {/* ===== RETOUR ACCUEIL (desktop uniquement, pas de logo) ===== */}
+        {step > 0 && (
+          <div className="hidden md:flex items-center mb-4">
+            <a href="/" className="flex items-center gap-2 text-slate-400 hover:text-slate-700 transition-colors">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+              <span className="text-xs font-medium">Retour au site</span>
+            </a>
+          </div>
+        )}
 
         {/* ===== BARRE DE PROGRESSION + INDICATEUR DE RISQUE ===== */}
         {step > 0 && step <= totalQuestions && (
@@ -600,16 +614,56 @@ export default function DiagnosticPage() {
 
             {/* ===== ÉTAPES 1-N : QUESTIONNAIRE ===== */}
             {step > 0 && step <= totalQuestions && currentQuestion && (
-              <div key={`question-${step}`} className="min-h-[320px] flex flex-col">
+              <div key={`question-${step}`} className="min-h-[320px] md:min-h-[360px] flex flex-col">
+                {/* Micro-conversion : capture téléphone après Q3 */}
+                {step === 4 && !earlyPhoneCaptured && !earlyPhoneDismissed && (
+                  <div className="bg-blue-50 border border-blue-200 rounded-xl p-3 mb-4 flex items-center gap-3">
+                    <span className="text-lg flex-shrink-0">📱</span>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-slate-700 text-xs font-medium">Recevez votre diagnostic par SMS</p>
+                      <div className="flex items-center gap-2 mt-1.5">
+                        <input
+                          type="tel"
+                          value={earlyPhone}
+                          onChange={(e) => setEarlyPhone(e.target.value)}
+                          placeholder="06 12 34 56 78"
+                          className="flex-1 min-w-0 px-3 py-1.5 rounded-lg border border-blue-200 text-sm outline-none focus:border-blue-400 bg-white"
+                        />
+                        <button
+                          type="button"
+                          onClick={async () => {
+                            if (earlyPhone.trim().length >= 8) {
+                              setContactInfo(prev => ({ ...prev, phone: earlyPhone.trim() }));
+                              setEarlyPhoneCaptured(true);
+                              try {
+                                await submitQuickCallback('Prospect diagnostic', earlyPhone.trim());
+                              } catch { /* silently handle */ }
+                            }
+                          }}
+                          className="bg-blue-600 text-white text-xs font-semibold px-3 py-1.5 rounded-lg hover:bg-blue-700 transition-colors flex-shrink-0"
+                        >
+                          OK
+                        </button>
+                      </div>
+                    </div>
+                    <button type="button" onClick={() => setEarlyPhoneDismissed(true)} className="text-slate-400 hover:text-slate-600 text-sm flex-shrink-0">✕</button>
+                  </div>
+                )}
+                {step === 4 && earlyPhoneCaptured && (
+                  <div className="bg-green-50 border border-green-200 rounded-xl p-2.5 mb-4 flex items-center gap-2 text-xs text-green-700 font-medium">
+                    <span>✓</span> Numéro enregistré — vous recevrez votre diagnostic
+                  </div>
+                )}
+
                 <div className="flex-1">
                   <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-1 leading-snug">
                     {currentQuestion.text}
                   </h2>
-                  <p className="text-slate-400 text-xs mb-4">
+                  <p className="text-slate-400 text-xs md:text-sm mb-4 md:mb-5">
                     {isMultiQuestion ? 'Plusieurs réponses possibles' : 'Sélectionnez votre réponse'}
                   </p>
 
-                  <div className="space-y-2">
+                  <div className="space-y-2 md:space-y-2.5">
                     {currentQuestion.options.map((option) => {
                       const isSelected = isMultiQuestion
                         ? (answers[currentQuestion.id] as string[] || []).includes(option.value)
@@ -630,7 +684,7 @@ export default function DiagnosticPage() {
                             }
                           }}
                           className={`
-                            w-full flex items-center gap-3 px-4 py-3 rounded-xl border-2 transition-all duration-150 text-left
+                            w-full flex items-center gap-3 px-4 py-3 md:px-5 md:py-3.5 rounded-xl border-2 transition-all duration-150 text-left
                             ${isSelected
                               ? 'bg-orange-50 border-orange-500 shadow-sm'
                               : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50'
@@ -669,14 +723,12 @@ export default function DiagnosticPage() {
                   >
                     {step === totalQuestions ? 'Voir mon diagnostic' : 'Suivant'} →
                   </button>
-                  {step > 1 && (
-                    <button
-                      onClick={() => setStep(step - 1)}
-                      className="w-full text-slate-400 hover:text-slate-600 text-sm py-1 transition-colors"
-                    >
-                      ← Question précédente
-                    </button>
-                  )}
+                  <button
+                    onClick={() => setStep(step === 1 ? 0 : step - 1)}
+                    className="w-full text-slate-400 hover:text-slate-600 text-sm py-1 transition-colors"
+                  >
+                    ← {step === 1 ? 'Revenir au choix' : 'Question précédente'}
+                  </button>
                 </div>
               </div>
             )}

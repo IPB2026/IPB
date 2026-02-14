@@ -10,6 +10,7 @@ import { FAQ } from '@/components/home/FAQ';
 import { ContactSection } from '@/components/home/ContactSection';
 import { Footer } from '@/components/home/Footer';
 import { InternalLinks } from '@/components/seo/InternalLinks';
+import { QuickCallbackForm } from '@/components/home/QuickCallbackForm';
 import { ExitIntentPopup } from '@/components/blog/ExitIntentPopup';
 import Script from 'next/script';
 import type { Metadata } from 'next';
@@ -137,6 +138,7 @@ export default function HomePage() {
       <TopBar />
       <Navbar />
       <Hero />
+      <QuickCallbackForm />
       <DepartementsNotice />
       <TrustSignals />
       <ServicesStructure />
