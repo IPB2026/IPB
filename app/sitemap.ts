@@ -55,7 +55,7 @@ const triggerEventsPages = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr';
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr').replace(/\/+$/, '');
   const currentDate = new Date();
 
   // ════════════════════════════════════════════════════════════

@@ -54,7 +54,7 @@ export async function generateMetadata(
     : params.slug;
   
   const post = blogPosts[slug];
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr';
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr').replace(/\/+$/, '');
   const url = `${baseUrl}/blog/${slug}`;
 
   if (!post) {

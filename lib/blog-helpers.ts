@@ -63,7 +63,7 @@ export function generateArticleJsonLd(article: {
   category: string;
   readTime?: string;
 }) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr';
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr').replace(/\/+$/, '');
   
   // Calcul du wordCount approximatif basé sur readTime (200 mots/min)
   const readTimeMinutes = article.readTime ? parseInt(article.readTime) : 8;
@@ -133,7 +133,7 @@ export function generateArticleJsonLd(article: {
  * Génère le JSON-LD BreadcrumbList pour SEO
  */
 export function generateBreadcrumbJsonLd(breadcrumbs: { name: string; url: string }[]) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr';
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr').replace(/\/+$/, '');
   
   return {
     '@context': 'https://schema.org',
