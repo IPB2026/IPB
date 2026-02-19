@@ -238,7 +238,7 @@ export async function submitDiagnosticLead(
     const leadId = `LEAD-${Date.now()}`;
     const logoUrl =
       process.env.EMAIL_LOGO_URL ||
-      `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ipb-expertise.fr'}/images/IPB_Logo_HD.png`;
+      `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr'}/images/IPB_Logo_HD.png`;
     // TOUJOURS envoyer l'email du lead (c'est le plus important !)
     const expertDiagnosis = getExpertDiagnosis(validatedData.path, validatedData.riskScore);
     const answersHtml = formatAnswersHtml(validatedData.answers);
@@ -505,7 +505,7 @@ export async function submitDiagnosticCallback(
     const answersHtml = formatAnswersHtml(rawData.answers);
     const logoUrl =
       process.env.EMAIL_LOGO_URL ||
-      `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ipb-expertise.fr'}/images/IPB_Logo_HD.png`;
+      `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr'}/images/IPB_Logo_HD.png`;
 
     if (process.env.EMAIL_TO) {
       const emailResult = await sendEmail({
@@ -696,7 +696,7 @@ export async function submitDiagnosticAppointment(
   try {
     const logoUrl =
       process.env.EMAIL_LOGO_URL ||
-      `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ipb-expertise.fr'}/images/IPB_Logo_HD.png`;
+      `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr'}/images/IPB_Logo_HD.png`;
 
     // Extraction et validation des données
     const rawData = {

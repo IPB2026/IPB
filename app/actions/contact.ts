@@ -86,7 +86,7 @@ export async function submitContactForm(
 
         const logoUrl =
           process.env.EMAIL_LOGO_URL ||
-          `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ipb-expertise.fr'}/images/IPB_Logo_HD.png`;
+          `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr'}/images/IPB_Logo_HD.png`;
 
         // Email de confirmation au client
         const clientEmailResult = await sendEmail({
