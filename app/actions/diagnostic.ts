@@ -223,7 +223,14 @@ export async function submitDiagnosticLead(
     const photoBase64 = formData.get('photo') as string | null;
     const photoName = formData.get('photoName') as string | null;
 
-    const validatedData = diagnosticLeadSchema.parse(rawData);
+    let validatedData;
+    try {
+      validatedData = diagnosticLeadSchema.parse(rawData);
+    } catch (validationError) {
+      console.error('❌ VALIDATION LEAD ÉCHOUÉE:', validationError instanceof z.ZodError ? validationError.issues : validationError);
+      console.error('❌ Données reçues:', { name: rawData.name, phone: rawData.phone, email: rawData.email, path: rawData.path, riskScore: rawData.riskScore });
+      throw validationError;
+    }
 
     const rateKey = `diagnostic-lead:${validatedData.email || validatedData.phone || validatedData.name}`;
     const rateLimit = checkRateLimit(rateKey, { limit: 5, windowMs: 10 * 60 * 1000 });
@@ -243,6 +250,7 @@ export async function submitDiagnosticLead(
     const expertDiagnosis = getExpertDiagnosis(validatedData.path, validatedData.riskScore);
     const answersHtml = formatAnswersHtml(validatedData.answers);
     
+    console.log('📧 Lead validé, envoi email à:', process.env.EMAIL_TO || '⚠️ EMAIL_TO NON DÉFINI');
     if (process.env.EMAIL_TO) {
       const leadEmailResult = await sendEmail({
         to: process.env.EMAIL_TO,
@@ -386,8 +394,12 @@ export async function submitDiagnosticLead(
         }] : undefined,
       });
       if (!leadEmailResult.success) {
-        console.error('Erreur envoi email lead:', leadEmailResult.error);
+        console.error('❌ Erreur envoi email lead:', leadEmailResult.error);
+      } else {
+        console.log('✅ Email lead envoyé avec succès à', process.env.EMAIL_TO);
       }
+    } else {
+      console.error('⚠️ EMAIL_TO non configuré — email lead NON envoyé');
     }
 
     if (validatedData.email) {

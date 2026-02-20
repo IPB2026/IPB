@@ -464,7 +464,10 @@ export default function DiagnosticPage() {
         formData.append('photo', photoPreview);
         formData.append('photoName', photoFile.name);
       }
-      await submitDiagnosticLead(formData);
+      const result = await submitDiagnosticLead(formData);
+      if (!result.success) {
+        console.error('Erreur lead:', result.message);
+      }
     } catch (error) {
       console.error('Erreur envoi lead:', error);
     }
