@@ -884,25 +884,34 @@ export default function DiagnosticPage() {
                     />
                   </div>
 
+                  <p className="text-orange-600 text-[11px] font-medium bg-orange-50 border border-orange-200 rounded-lg px-3 py-1.5">
+                    Renseignez au moins votre email ou téléphone pour recevoir le diagnostic
+                  </p>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-xs font-semibold text-slate-600 mb-1">Email</label>
+                      <label className="block text-xs font-semibold text-slate-600 mb-1">Email {!contactInfo.phone.trim() ? '*' : ''}</label>
                       <input
                         type="email"
                         value={contactInfo.email}
                         onChange={(e) => setContactInfo({ ...contactInfo, email: e.target.value })}
                         placeholder="jean@email.com"
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all"
+                        required={!contactInfo.phone.trim()}
+                        className={`w-full px-4 py-3 rounded-xl border focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all ${
+                          !contactInfo.email.trim() && !contactInfo.phone.trim() ? 'border-orange-300 bg-orange-50/30' : 'border-slate-200'
+                        }`}
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-semibold text-slate-600 mb-1">Téléphone</label>
+                      <label className="block text-xs font-semibold text-slate-600 mb-1">Téléphone {!contactInfo.email.trim() ? '*' : ''}</label>
                       <input
                         type="tel"
                         value={contactInfo.phone}
                         onChange={(e) => setContactInfo({ ...contactInfo, phone: e.target.value })}
                         placeholder="06 12 34 56 78"
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all"
+                        required={!contactInfo.email.trim()}
+                        className={`w-full px-4 py-3 rounded-xl border focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all ${
+                          !contactInfo.email.trim() && !contactInfo.phone.trim() ? 'border-orange-300 bg-orange-50/30' : 'border-slate-200'
+                        }`}
                       />
                     </div>
                   </div>
