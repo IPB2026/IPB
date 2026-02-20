@@ -18,7 +18,7 @@ export const diagnosticAnswersSchema = z.record(
 
 export const diagnosticFormSchema = z.object({
   name: z.string().min(2, 'Le nom doit contenir au moins 2 caractères').max(100),
-  phone: z.string().regex(/^(\+33|0)[1-9](\d{2}){4}$/, 'Numéro de téléphone invalide'),
+  phone: z.string().transform(val => val.replace(/[\s.\-]/g, '')).pipe(z.string().regex(/^(\+33|0)[1-9]\d{8}$/, 'Numéro de téléphone invalide')),
   email: z.string().email('Email invalide').optional(),
   path: diagnosticPathSchema,
   answers: diagnosticAnswersSchema,
@@ -29,7 +29,8 @@ export const diagnosticLeadSchema = z.object({
   name: z.string().min(2, 'Le nom doit contenir au moins 2 caractères').max(100),
   phone: z
     .string()
-    .regex(/^(\+33|0)[1-9](\d{2}){4}$/, 'Numéro de téléphone invalide')
+    .transform(val => val.replace(/[\s.\-]/g, ''))
+    .pipe(z.string().regex(/^(\+33|0)[1-9]\d{8}$/, 'Numéro de téléphone invalide').or(z.literal('')))
     .optional()
     .or(z.literal('')),
   email: z.string().email('Email invalide').optional().or(z.literal('')),
