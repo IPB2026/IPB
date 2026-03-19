@@ -67,9 +67,9 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
       images: [{ url: '/images/fissure-facade-verticale.webp', width: 1200, height: 630, alt: `Expert fissures ${villeNom}` }],
     },
     twitter: {
-      card: 'summary',
-      title: `Expert Fissures ${villeNom}`,
-      description: `Agrafage garanti 10 ans. Diagnostic 48h.`,
+      card: 'summary_large_image',
+      title: `Expert Fissures ${villeNom} | IPB`,
+      description: `Agrafage structurel garanti 10 ans à ${villeNom}. Diagnostic sous 48h. ☎ 05 82 95 33 75`,
     },
     robots: { index: true, follow: true },
   };
@@ -182,16 +182,6 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
       <VilleBreadcrumb villeName={villeData.nom} villeSlug={ville} service="fissures" />
 
       <main id="main-content">
-        {/* Breadcrumb */}
-        <div className="bg-white border-b border-slate-200 py-3">
-          <div className="max-w-7xl mx-auto px-4 text-sm text-slate-600">
-            <Link href="/" className="hover:text-orange-600">Accueil</Link>
-            <span className="mx-2">›</span>
-            <Link href="/expert-fissures-toulouse-31" className="hover:text-orange-600">Expert Fissures</Link>
-            <span className="mx-2">›</span>
-            <span className="text-slate-900 font-medium">{villeData.nom}</span>
-          </div>
-        </div>
 
       {/* Hero enrichi */}
       <section className="relative bg-slate-900 text-white py-16 md:py-24 overflow-hidden">

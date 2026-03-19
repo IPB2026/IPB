@@ -79,7 +79,7 @@ export default function BlogPage() {
               <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse"></span> Blog Expert
             </div>
             <h1 className="text-3xl md:text-4xl lg:text-6xl font-extrabold tracking-tight mb-4 md:mb-6 leading-tight">
-              Conseils & <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-200">Expertises</span>
+              Blog Expert <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-200">Fissures & Humidité</span>
             </h1>
             <p className="text-base md:text-lg lg:text-xl text-slate-300 mb-6 md:mb-8 leading-relaxed">
               Retrouvez nos guides techniques, conseils pratiques et analyses d'experts pour comprendre et résoudre vos problèmes de fissures et d'humidité.

@@ -147,6 +147,7 @@ export default function PlanSitePage() {
               <li><Link href="/blog/garantie-decennale-travaux-structure" className="text-slate-700 hover:text-orange-600 transition">Garantie décennale</Link></li>
               <li><Link href="/blog/revente-maison-fissuree" className="text-slate-700 hover:text-orange-600 transition">Revente maison fissurée</Link></li>
               <li><Link href="/blog/catastrophe-naturelle-secheresse-demarches-indemnisation" className="text-slate-700 hover:text-orange-600 transition">Catastrophe naturelle sécheresse : démarches</Link></li>
+              <li><Link href="/blog/fissure-mur-interieur-causes-solutions" className="text-slate-700 hover:text-orange-600 transition">Fissure mur intérieur : causes et solutions</Link></li>
             </ul>
           </div>
 

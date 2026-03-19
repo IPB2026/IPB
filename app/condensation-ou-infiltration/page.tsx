@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
@@ -61,9 +62,53 @@ const tests = [
   },
 ];
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Comment savoir si c\'est de la condensation ou une infiltration d\'eau ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'La condensation se manifeste par de la buée et des gouttelettes sur les fenêtres et murs froids (surtout en hiver, côté nord), avec des moisissures noires localisées. L\'infiltration produit des taches humides, auréoles et coulures, souvent après la pluie ou en permanence, avec un mur humide en profondeur. Le test de la feuille d\'aluminium (collée 48h sur le mur) permet de trancher : humidité côté mur = infiltration, côté pièce = condensation.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Quel est le meilleur traitement contre la condensation dans une maison ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'La solution la plus efficace contre la condensation est l\'installation d\'une VMI (Ventilation Mécanique par Insufflation) qui renouvelle l\'air et évacue l\'humidité (2 500 à 4 500€). L\'isolation des ponts thermiques supprime les zones froides où se forme la condensation. En complément, une aération quotidienne de 10 minutes minimum, même en hiver, est recommandée.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Quels sont les signes d\'une infiltration d\'eau dans un mur ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Les signes d\'infiltration sont : des taches humides persistantes, des auréoles ou coulures sur les murs ou plafonds, un mur humide en profondeur (pas seulement en surface), une odeur d\'humidité généralisée, et une aggravation après les épisodes de pluie. Contrairement à la condensation, l\'infiltration peut se manifester toute l\'année et pas uniquement en hiver.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Combien coûte un diagnostic humidité pour identifier la cause ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Un diagnostic humidité professionnel coûte 149€ chez IPB Expertise, déductible si vous réalisez les travaux. L\'expert identifie en 1h30 la cause exacte (condensation, infiltration, remontées capillaires) grâce à des mesures d\'humidité et une analyse technique. Un rapport écrit avec préconisations de traitement vous est remis.',
+      },
+    },
+  ],
+};
+
 export default function CondensationInfiltrationPage() {
   return (
     <div className="font-sans text-slate-800 bg-white antialiased">
+      <Script
+        id="faq-schema-condensation-ou-infiltration"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <TopBar />
       <Navbar />
 

@@ -83,7 +83,7 @@ export default function ExpertiseAvantAchatPage() {
               <span>Expertise immobilière indépendante</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-              Expertise <span className="text-emerald-400">Avant Achat</span> Immobilier
+              Expertise <span className="text-emerald-400">Avant Achat</span> Immobilier à Toulouse
             </h1>
             <p className="text-xl text-slate-300 mb-8 max-w-2xl">
               Vous achetez une maison à Toulouse ? Ne signez pas avant d'avoir fait inspecter le bien. 

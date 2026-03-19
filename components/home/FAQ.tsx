@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Script from 'next/script';
 import { HelpCircle, Phone, ChevronDown } from 'lucide-react';
 import {
   Accordion,
@@ -36,9 +37,27 @@ const faqData = [
   }
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map((item) => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer,
+    },
+  })),
+};
+
 export function FAQ() {
   return (
     <section className="py-16 md:py-24 bg-white border-t border-slate-100">
+      <Script
+        id="faq-schema-homepage"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* En-tête avec icône */}
         <div className="text-center mb-8 md:mb-12">

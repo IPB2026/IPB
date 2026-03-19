@@ -47,9 +47,53 @@ const comparaison = [
   { type: 'Microfissure', danger: 'Faible', urgence: 'Surveillance', cause: 'Superficielle', icon: '·' },
 ];
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Une fissure horizontale est-elle dangereuse pour la structure ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui, une fissure horizontale sur un mur porteur est un signe de contrainte structurelle majeure (poussée latérale, désolidarisation du plancher, flexion de linteau). En Occitanie, 43% des effondrements partiels sont précédés d\'une fissure horizontale ignorée. Un diagnostic urgent est recommandé sous 24 à 48h.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Comment reconnaître une fissure horizontale sur un mur porteur ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Une fissure horizontale se présente sous forme d\'une ligne parfaitement horizontale sur le mur, souvent à la jonction entre le plancher et le mur porteur, ou au-dessus des ouvertures (fenêtres, portes). Elle peut s\'accompagner de portes qui coincent, de craquements ou de décollements visibles.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Combien coûte la réparation d\'une fissure horizontale ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Le coût dépend de la cause et de la gravité. Un diagnostic expert coûte environ 149€ (déductible des travaux). L\'agrafage structurel revient entre 8 000 et 18 000€ pour 85% des cas. Les micropieux, réservés aux cas graves, coûtent entre 25 000 et 50 000€. Plus vous intervenez tôt, moins c\'est cher.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Peut-on rester dans une maison avec une fissure horizontale ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Il est déconseillé de rester sans avis d\'expert. Une fissure horizontale peut indiquer un risque d\'effondrement partiel. Faites réaliser un diagnostic en urgence sous 24-48h. En attendant, surveillez l\'évolution avec un témoin (ruban adhésif daté), ne faites pas de travaux lourds à proximité et prévenez votre assurance si la fissure évolue rapidement.',
+      },
+    },
+  ],
+};
+
 export default function FissureHorizontalePage() {
   return (
     <div className="font-sans text-slate-800 bg-white antialiased">
+      <Script
+        id="faq-schema-fissure-horizontale-danger"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <TopBar />
       <Navbar />
 

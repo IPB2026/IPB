@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
@@ -47,9 +48,53 @@ const communes31 = ['Toulouse', 'Colomiers', 'Tournefeuille', 'Blagnac', 'Muret'
 const communes82 = ['Montauban', 'Castelsarrasin', 'Moissac', 'Caussade', 'Valence-d\'Agen', 'Montech', 'Verdun-sur-Garonne', 'Negrepelisse'];
 const communes32 = ['Auch', 'Condom', 'Fleurance', 'Lectoure', 'L\'Isle-Jourdain', 'Mirande', 'Nogaro', 'Gimont'];
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Comment être indemnisé pour des fissures dues à la sécheresse ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Pour être indemnisé, votre commune doit être reconnue en état de catastrophe naturelle sécheresse (arrêté CAT-NAT publié au Journal Officiel). Vous disposez ensuite de 10 jours pour déclarer le sinistre à votre assurance habitation. L\'assureur mandatera un expert pour évaluer les dommages. L\'indemnisation intervient environ 3 mois après accord, moins la franchise légale de 1 534€.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Quel est le délai pour déclarer des fissures sécheresse à l\'assurance ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Vous avez exactement 10 jours après la publication de l\'arrêté de catastrophe naturelle au Journal Officiel pour déclarer le sinistre à votre assurance. Passé ce délai, votre demande d\'indemnisation peut être rejetée. Vérifiez régulièrement sur Légifrance si votre commune a été reconnue en état de catastrophe naturelle sécheresse.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Quel est le montant de la franchise CAT-NAT pour une maison individuelle ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'La franchise légale pour une catastrophe naturelle sécheresse sur une maison individuelle est de 1 534€. Ce montant est fixé par l\'État et s\'applique systématiquement. Si votre commune a fait l\'objet de plus de 3 arrêtés CAT-NAT en 5 ans, la franchise peut être doublée, triplée ou quadruplée.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Peut-on contester l\'expertise de l\'assurance pour des fissures sécheresse ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui, vous pouvez faire réaliser une contre-expertise indépendante si l\'expert de votre assurance sous-évalue les dommages ou conteste le lien avec la sécheresse. Un rapport technique indépendant renforce considérablement votre dossier. En Occitanie, IPB réalise des expertises à 149€ (déductibles des travaux) avec rapport détaillé.',
+      },
+    },
+  ],
+};
+
 export default function FissureSecheressePage() {
   return (
     <div className="font-sans text-slate-800 bg-white antialiased">
+      <Script
+        id="faq-schema-fissure-secheresse-indemnisation"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <TopBar />
       <Navbar />
 

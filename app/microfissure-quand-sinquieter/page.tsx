@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
@@ -58,9 +59,53 @@ const signesAlerte = [
   { signe: 'Fissure stable depuis des années', urgent: false },
 ];
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Quand faut-il s\'inquiéter d\'une microfissure sur une façade ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Il faut s\'inquiéter si la microfissure s\'agrandit au fil des semaines, si elle a une forme en escalier (suivant les joints), si vos portes ou fenêtres coincent, si des fissures apparaissent aussi à l\'intérieur, ou si vous entendez des craquements. En revanche, un faïençage (réseau de petites lignes < 0.2mm) stable est généralement bénin. 70% des microfissures sont sans danger.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Comment savoir si une microfissure est structurelle ou superficielle ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'La classification se fait par l\'ouverture : moins de 0.2mm (faïençage, aucun danger), 0.2 à 1mm (microfissure, surveillance), 1 à 2mm (fissure légère, diagnostic recommandé), plus de 2mm (fissure structurelle, intervention urgente). Le test du témoin (ruban adhésif daté en travers de la fissure) permet de surveiller l\'évolution.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Faut-il réparer les microfissures sur une façade ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Les microfissures de moins de 0.2mm (faïençage) ne nécessitent qu\'une surveillance. Entre 0.2 et 1mm, il faut surveiller l\'évolution. Au-delà de 1mm, un diagnostic professionnel est recommandé pour identifier la cause (tassement, retrait, poussée) et choisir le bon traitement. Reboucher sans traiter la cause est inutile car la fissure réapparaîtra.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Comment surveiller l\'évolution d\'une microfissure ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Posez un ruban adhésif en travers de la fissure avec la date inscrite dessus. Si le ruban se déchire dans les semaines suivantes, la fissure évolue et il faut consulter un expert. Vous pouvez aussi mesurer l\'ouverture avec une règle et noter les mesures régulièrement. Des photos datées permettent de documenter l\'évolution.',
+      },
+    },
+  ],
+};
+
 export default function MicrofissurePage() {
   return (
     <div className="font-sans text-slate-800 bg-white antialiased">
+      <Script
+        id="faq-schema-microfissure-quand-sinquieter"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <TopBar />
       <Navbar />
 

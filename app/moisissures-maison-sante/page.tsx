@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
@@ -43,9 +44,53 @@ const typesMoisissures = [
   { nom: 'Stachybotrys', couleur: 'Noir profond', danger: 'Très élevé', lieu: 'Murs humides (grave)' },
 ];
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Les moisissures dans la maison sont-elles dangereuses pour la santé ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui, les moisissures libèrent des spores toxiques dans l\'air qui causent des problèmes respiratoires (toux chronique, asthme), des allergies (rhinite, yeux irrités) et représentent un risque accru pour les enfants de moins de 6 ans. Selon l\'INSERM, les enfants vivant dans un logement avec moisissures ont 2 fois plus de risque de développer de l\'asthme. 30% des allergies respiratoires sont liées aux moisissures.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Comment éliminer définitivement les moisissures d\'une maison ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Pour éliminer définitivement les moisissures, il faut traiter la cause de l\'humidité, pas seulement nettoyer. Selon l\'origine : injection de résine hydrophobe pour les remontées capillaires, installation d\'une VMI (Ventilation par Insufflation) pour la condensation, ou cuvelage/réparation pour les infiltrations. Le traitement de l\'humidité est garanti de 10 à 30 ans selon la solution.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Quels sont les symptômes d\'une exposition aux moisissures ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Les symptômes courants sont : toux chronique, essoufflement, crises d\'asthme aggravées, rhinite, yeux qui piquent, éternuements fréquents, irritations de la peau. Les personnes les plus vulnérables sont les enfants de moins de 6 ans, les personnes allergiques, les asthmatiques et les personnes immunodéprimées. La moisissure noire Stachybotrys est particulièrement dangereuse car elle libère des mycotoxines.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Comment éviter le retour des moisissures après nettoyage ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Les moisissures reviennent systématiquement si la source d\'humidité n\'est pas traitée. Les solutions durables sont : identifier la cause exacte (diagnostic professionnel), traiter l\'humidité à la source (injection, VMI, cuvelage), assurer une ventilation suffisante (10 min d\'aération par jour minimum), et contrôler le taux d\'humidité intérieur (idéalement entre 40 et 60%).',
+      },
+    },
+  ],
+};
+
 export default function MoisissuresSantePage() {
   return (
     <div className="font-sans text-slate-800 bg-white antialiased">
+      <Script
+        id="faq-schema-moisissures-maison-sante"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <TopBar />
       <Navbar />
 

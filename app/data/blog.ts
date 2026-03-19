@@ -4337,6 +4337,154 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p class="font-bold text-lg text-slate-900 mt-6">📞 Besoin d'un diagnostic pour votre dossier CAT-NAT ? Appelez-nous : 05 82 95 33 75 — Diagnostic sous 48h</p>
     `
+  },
+  'fissure-mur-interieur-causes-solutions': {
+    slug: 'fissure-mur-interieur-causes-solutions',
+    title: 'Fissure Mur Intérieur : Causes, Gravité et Solutions (Guide Expert 2026)',
+    excerpt: 'Une fissure apparaît sur votre mur intérieur ? Ce guide expert vous aide à identifier sa gravité, comprendre ses causes et choisir la bonne solution. Ne confondez plus fissure esthétique et danger structurel.',
+    date: '2026-02-10',
+    readTime: '12 min',
+    category: 'fissures',
+    author: 'Expert IPB',
+    metaDescription: 'Fissure mur intérieur : comment évaluer la gravité ? Causes (tassement, sécheresse, malfaçon), différences entre micro-fissure et fissure structurelle, solutions durables. Guide expert IPB Toulouse.',
+    keywords: ['fissure mur intérieur', 'fissure mur intérieur maison', 'fissure mur intérieur cause', 'réparer fissure mur intérieur', 'fissure mur porteur', 'fissure plâtre intérieur', 'fissure cloison', 'expert fissures toulouse'],
+    content: `
+      <div class="mb-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
+        <p class="font-bold text-red-900 mb-2">⚠️ Règle d'or : ne rebouchez jamais une fissure intérieure sans diagnostic</p>
+        <p class="text-red-800">Reboucher une fissure avec de l'enduit, c'est cacher un symptôme. Si la cause est un tassement différentiel ou un problème de fondation, la fissure reviendra en pire — et votre mur pourrait devenir dangereux. Un diagnostic technique coûte 149€ (déductible des travaux). Ignorer le problème peut coûter 10 000€+.</p>
+      </div>
+
+      <h2>Fissure mur intérieur : faut-il s'inquiéter ?</h2>
+
+      <p>Vous venez de découvrir une fissure sur un mur intérieur de votre maison. Première question : <strong>est-ce grave ?</strong> La réponse dépend de 4 critères que tout propriétaire devrait connaître.</p>
+
+      <h3>Les 4 critères pour évaluer la gravité</h3>
+
+      <ol>
+        <li><strong>La largeur</strong> : en dessous de 0,2 mm, c'est une micro-fissure (souvent esthétique). Entre 0,2 et 2 mm, c'est une fissure à surveiller. Au-delà de 2 mm, c'est une <strong>fissure structurelle</strong> qui nécessite une intervention urgente.</li>
+        <li><strong>La direction</strong> : une fissure horizontale sur un mur porteur est plus dangereuse qu'une fissure verticale au coin d'une cloison. Les fissures en escalier (qui suivent les joints de brique ou de parpaing) signalent presque toujours un mouvement de fondation.</li>
+        <li><strong>L'évolution</strong> : une fissure qui s'agrandit semaine après semaine est un signal d'alarme. Posez un témoin en plâtre sur la fissure : s'il casse dans les semaines suivantes, la structure bouge encore.</li>
+        <li><strong>La traversée</strong> : si vous voyez la même fissure à l'intérieur ET à l'extérieur, elle traverse le mur de part en part. C'est un signe de mouvement structurel — pas un simple retrait d'enduit.</li>
+      </ol>
+
+      <h2>Les 6 causes principales d'une fissure mur intérieur</h2>
+
+      <h3>1. Le tassement différentiel des fondations</h3>
+      <p>C'est la cause n°1 en Occitanie. Le sol argileux (présent dans 80% de la Haute-Garonne et du Tarn-et-Garonne) gonfle quand il pleut et se rétracte quand il fait sec. Ce mouvement crée des <strong>contraintes inégales</strong> sur les fondations : une partie de la maison s'enfonce plus que l'autre. Résultat : des fissures en escalier sur les murs intérieurs et extérieurs, souvent autour des ouvertures (portes, fenêtres).</p>
+
+      <p><strong>Signe distinctif :</strong> les portes et fenêtres commencent à frotter ou ne ferment plus correctement.</p>
+
+      <h3>2. Le retrait de l'enduit ou du plâtre</h3>
+      <p>Bonne nouvelle : c'est la cause la plus bénigne. Les matériaux de finition (enduit, plâtre, peinture) se rétractent naturellement en séchant. Cela crée des <strong>micro-fissures fines</strong> (< 0,2 mm), souvent linéaires et régulières. Elles apparaissent fréquemment aux angles des pièces ou aux jonctions mur/plafond.</p>
+
+      <p><strong>Signe distinctif :</strong> la fissure est superficielle, ne traverse pas le mur, et reste stable dans le temps.</p>
+
+      <h3>3. Les vibrations et chocs</h3>
+      <p>Travaux de terrassement chez un voisin, passage de poids lourds sur une route proche, ou même un tremblement de terre mineur. Les vibrations répétées fragilisent les matériaux et créent des fissures, surtout dans les <strong>maisons anciennes</strong> dont les fondations sont moins profondes.</p>
+
+      <h3>4. L'humidité et les infiltrations d'eau</h3>
+      <p>L'eau est l'ennemi n°1 du bâtiment. Une fuite de canalisation dans un mur, des remontées capillaires, ou une infiltration par la toiture fragilisent les matériaux de l'intérieur. Les fissures s'accompagnent alors de <strong>traces d'humidité</strong>, de moisissures ou de salpêtre.</p>
+
+      <p><strong>Signe distinctif :</strong> auréoles, décollement de peinture, odeur de moisi autour de la fissure.</p>
+
+      <h3>5. Les malfaçons de construction</h3>
+      <p>Chaînage absent ou mal réalisé, fondations sous-dimensionnées, ferraillage insuffisant, joints de dilatation oubliés. Les <strong>malfaçons</strong> ne se révèlent souvent qu'après plusieurs années, quand le bâtiment a subi ses premiers cycles de sécheresse/pluie.</p>
+
+      <h3>6. La modification de structure sans étude</h3>
+      <p>Vous avez abattu une cloison "pour gagner de la place" sans vérifier si c'était un mur porteur ? C'est une cause fréquente de fissures intérieures. La suppression d'un élément porteur <strong>redistribue les charges</strong> et crée des contraintes que le reste de la structure n'était pas conçu pour supporter.</p>
+
+      <h2>Fissure mur intérieur : les 3 types à connaître</h2>
+
+      <h3>Type 1 : La micro-fissure superficielle (< 0,2 mm)</h3>
+      <p><strong>Gravité : faible.</strong> Retrait normal des matériaux de finition. Traitement : rebouchage à l'enduit souple après vérification qu'elle n'évolue pas. Coût : 50 à 200€ en DIY.</p>
+
+      <h3>Type 2 : La fissure de retrait/dilatation (0,2 à 2 mm)</h3>
+      <p><strong>Gravité : moyenne.</strong> Peut être liée à un mouvement structurel léger. Nécessite un diagnostic pour déterminer la cause. Coût du diagnostic : 149€ chez IPB (déductible des travaux).</p>
+
+      <h3>Type 3 : La fissure structurelle (> 2 mm)</h3>
+      <p><strong>Gravité : élevée.</strong> Tassement différentiel, problème de fondation, ou mouvement actif. Nécessite une intervention technique : <strong>agrafage structurel</strong> (3 000 à 8 000€) ou reprise en sous-œuvre (15 000 à 40 000€ selon la gravité).</p>
+
+      <h2>Comment réparer une fissure mur intérieur ?</h2>
+
+      <h3>Étape 1 : Le diagnostic (indispensable)</h3>
+      <p>Avant toute réparation, il faut identifier la cause. Un expert en pathologie du bâtiment réalise :</p>
+      <ul>
+        <li>Une <strong>analyse visuelle</strong> complète (intérieur + extérieur)</li>
+        <li>Des <strong>mesures instrumentées</strong> (fissuromètre, humidimètre, niveau laser)</li>
+        <li>Une <strong>étude du sol</strong> et de l'environnement (proximité d'arbres, pente, type de sol)</li>
+        <li>Un <strong>rapport technique</strong> avec recommandations et devis détaillé</li>
+      </ul>
+
+      <h3>Étape 2 : Le traitement de la cause</h3>
+      <p>Inutile de reboucher si la cause persiste. Selon le diagnostic :</p>
+      <ul>
+        <li><strong>Tassement différentiel</strong> → agrafage structurel + injection de résine</li>
+        <li><strong>Humidité</strong> → traitement par injection de résine hydrophobe à la base des murs</li>
+        <li><strong>Malfaçon</strong> → renforcement structurel (chaînage, linteau, IPN)</li>
+        <li><strong>Vibrations</strong> → joints souples + suivi de l'évolution</li>
+      </ul>
+
+      <h3>Étape 3 : La réparation esthétique</h3>
+      <p>Une fois la cause traitée et la structure stabilisée, on peut reboucher proprement :</p>
+      <ol>
+        <li>Ouvrir la fissure en V avec un grattoir</li>
+        <li>Dépoussiérer et humidifier</li>
+        <li>Appliquer un enduit de rebouchage souple (pas rigide !)</li>
+        <li>Poncer et lisser</li>
+        <li>Appliquer une sous-couche et repeindre</li>
+      </ol>
+
+      <h2>Fissure mur intérieur et assurance : êtes-vous couvert ?</h2>
+
+      <p>Bonne nouvelle : si vos fissures sont causées par un <strong>arrêté de catastrophe naturelle sécheresse</strong> (CAT-NAT), votre assurance multirisque habitation couvre les réparations. En Haute-Garonne et dans le Tarn-et-Garonne, de nombreuses communes ont été classées en CAT-NAT ces dernières années.</p>
+
+      <p>Attention cependant :</p>
+      <ul>
+        <li>Vous devez déclarer dans les <strong>10 jours</strong> suivant l'arrêté</li>
+        <li>L'assureur enverra son propre expert — qui défend les intérêts de l'assurance</li>
+        <li>Un <strong>rapport d'expert indépendant</strong> (comme celui d'IPB) renforce considérablement votre dossier et permet souvent d'obtenir une indemnisation plus juste</li>
+      </ul>
+
+      <h2>Les erreurs à éviter absolument</h2>
+
+      <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
+        <h3 class="text-red-600 font-bold mb-4">❌ Les 5 erreurs les plus courantes</h3>
+        <ol>
+          <li><strong>Reboucher sans diagnostic</strong> : la fissure reviendra en pire et vous aurez perdu temps et argent</li>
+          <li><strong>Utiliser un enduit rigide</strong> : il cassera à nouveau. Utilisez un enduit souple ou fibre de verre</li>
+          <li><strong>Attendre "pour voir si ça bouge"</strong> : chaque cycle de sécheresse/pluie aggrave les dégâts</li>
+          <li><strong>Faire appel à un maçon généraliste</strong> : un mur fissuré nécessite un diagnostic technique, pas du rebouchage</li>
+          <li><strong>Accepter l'estimation de l'expert d'assurance sans contester</strong> : il est mandaté pour minimiser l'indemnisation</li>
+        </ol>
+      </div>
+
+      <h2>Quand faire appel à un expert fissures ?</h2>
+
+      <p>Consultez un expert en pathologie du bâtiment si :</p>
+      <ul>
+        <li>La fissure dépasse <strong>0,5 mm de large</strong></li>
+        <li>Elle <strong>évolue</strong> (s'agrandit, se ramifie)</li>
+        <li>Vos <strong>portes et fenêtres</strong> frottent ou ne ferment plus</li>
+        <li>Vous voyez la même fissure <strong>des deux côtés du mur</strong></li>
+        <li>Il y a des <strong>traces d'humidité</strong> associées</li>
+        <li>Vous envisagez d'<strong>acheter</strong> ou de <strong>revendre</strong> le bien</li>
+        <li>Votre commune est classée <strong>CAT-NAT sécheresse</strong></li>
+      </ul>
+
+      <h3>Combien coûte un expert fissures ?</h3>
+      <p>Chez IPB, le diagnostic expert coûte <strong>149€</strong>. Ce montant est <strong>déductible à 100%</strong> de votre facture si vous nous confiez les travaux. Vous recevez un rapport technique détaillé sous 48h, utilisable pour votre dossier assurance ou pour demander des devis.</p>
+
+      <h3>Fissure mur intérieur en location : qui paie ?</h3>
+      <p>Si la fissure est structurelle (cause liée au bâti), c'est le <strong>propriétaire</strong> qui est responsable des réparations. Si elle est superficielle et liée à l'usage (trou de cheville, usure normale), c'est au <strong>locataire</strong> de la reboucher.</p>
+
+      <h2>Conclusion : agissez maintenant, économisez plus tard</h2>
+
+      <p>Une fissure intérieure peut être bénigne ou annonciatrice d'un problème grave. La seule façon de savoir, c'est un <strong>diagnostic professionnel</strong>. Ne faites pas l'erreur d'attendre : chaque cycle de sécheresse aggrave les mouvements de sol en Occitanie.</p>
+
+      <p>Chez IPB, nous avons diagnostiqué et traité plus de 200 maisons fissurées en Haute-Garonne, dans le Tarn-et-Garonne et le Gers. Notre <strong>agrafage structurel est garanti 10 ans</strong> avec garantie décennale.</p>
+
+      <p class="font-bold text-lg text-slate-900 mt-6">📞 Diagnostic expert sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
+    `
   }
 };
 

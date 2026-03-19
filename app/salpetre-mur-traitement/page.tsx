@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
@@ -20,9 +21,53 @@ const faussesSolutions = [
   { solution: 'Produit anti-salpêtre', resultat: 'Effet 3-6 mois max', efficacite: '20%' },
 ];
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Comment traiter définitivement le salpêtre sur un mur ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Le seul traitement efficace et définitif est l\'injection de résine hydrophobe à la base des murs pour stopper les remontées capillaires, cause du salpêtre. Le procédé consiste à percer des trous tous les 12cm, puis injecter la résine sous pression. Le mur s\'assèche en 3 à 6 mois et le salpêtre disparaît. Ce traitement a une efficacité de 95% et une garantie de 30 ans.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Le salpêtre est-il dangereux pour la santé ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Le salpêtre (nitrate de potassium KNO₃) en lui-même est peu toxique, mais il est le signe d\'un problème d\'humidité important qui favorise le développement de moisissures dangereuses pour la santé (allergies, asthme, problèmes respiratoires). Il dégrade aussi les matériaux (enduits, peintures, maçonnerie) et diminue l\'isolation thermique du mur.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Pourquoi le salpêtre revient-il après nettoyage ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Le salpêtre revient car le nettoyage ne traite que le symptôme, pas la cause. L\'eau continue de remonter par capillarité dans le mur, transportant les sels minéraux du sol. En s\'évaporant, elle dépose de nouveaux cristaux à la surface. Les peintures anti-humidité, enduits \"respirants\" et produits anti-salpêtre sont tous inefficaces à long terme (0 à 20% d\'efficacité).',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Combien coûte un traitement anti-salpêtre par injection de résine ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Le traitement par injection de résine hydrophobe coûte entre 80 et 120€ par mètre linéaire de mur traité. Le diagnostic préalable est gratuit. L\'intervention dure 1 à 2 jours et le séchage complet du mur prend 3 à 6 mois. Le traitement est garanti 30 ans avec une efficacité de 95%.',
+      },
+    },
+  ],
+};
+
 export default function SalpetrePage() {
   return (
     <div className="font-sans text-slate-800 bg-white antialiased">
+      <Script
+        id="faq-schema-salpetre-mur-traitement"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <TopBar />
       <Navbar />
 

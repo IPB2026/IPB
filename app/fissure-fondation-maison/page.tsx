@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
@@ -63,9 +64,53 @@ const comparatifSolutions = [
   },
 ];
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Comment savoir si les fissures de ma maison viennent des fondations ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Les fissures de fondation se reconnaissent par leur forme en escalier (suivant les joints de maçonnerie), leur présence sur plusieurs murs, des portes et fenêtres qui coincent, et une évolution progressive. En Occitanie, 85% des cas sont liés au sol argileux (retrait-gonflement des argiles). Un diagnostic professionnel permet de confirmer l\'origine.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Combien coûte la réparation de fondations fissurées ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Le coût dépend de la solution : l\'agrafage structurel coûte entre 8 000 et 18 000€ et convient à 85% des cas. Les micropieux reviennent entre 25 000 et 50 000€ pour les cas graves. La résine expansive coûte entre 5 000 et 15 000€ pour les tassements légers. Toutes ces solutions sont couvertes par une garantie décennale de 10 ans.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'L\'agrafage structurel est-il efficace pour les fissures de fondation ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui, l\'agrafage structurel est la solution recommandée pour 85% des cas de fissures de fondation. Il est 3 fois moins cher que les micropieux, l\'intervention est rapide (3 à 5 jours), ne nécessite pas de terrassement lourd et bénéficie d\'une garantie décennale de 10 ans. Il est particulièrement adapté aux maisons individuelles en Occitanie.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Les fissures de fondation s\'aggravent-elles avec le temps ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui, une fissure de fondation s\'aggrave en moyenne de 15% par an sans traitement. Ce qui coûte 8 000€ aujourd\'hui peut en coûter 25 000€ dans 3 ans. Les cycles de sécheresse et de pluie en Occitanie accélèrent le phénomène de retrait-gonflement des argiles, aggravant les mouvements de fondation.',
+      },
+    },
+  ],
+};
+
 export default function FissureFondationPage() {
   return (
     <div className="font-sans text-slate-800 bg-white antialiased">
+      <Script
+        id="faq-schema-fissure-fondation-maison"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <TopBar />
       <Navbar />
 

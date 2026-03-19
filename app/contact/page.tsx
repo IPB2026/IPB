@@ -73,7 +73,7 @@ export default function ContactPage() {
           {/* En-tête */}
           <div className="text-center mb-8 md:mb-12">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-3 md:mb-4">
-              Contactez-nous
+              Contact Expert Fissures & Humidité Toulouse
             </h1>
             <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto">
               Une question ? Un projet ? Notre équipe d'experts est à votre écoute pour vous accompagner.

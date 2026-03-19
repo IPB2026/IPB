@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
@@ -22,9 +23,53 @@ const signesReconnaissance = [
   { signe: 'Cordons gris sur les murs', detail: 'Filaments permettant au champignon de se propager', danger: 'critical' },
 ];
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Comment reconnaître la mérule dans une maison ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'La mérule se reconnaît par plusieurs signes : des filaments blancs cotonneux (mycélium) sur le bois et les murs, une fructification brune ou orangée en forme de crêpe, une odeur forte de champignon terreux et persistante, du bois qui s\'effrite au toucher, une poudre brune (spores) sur les surfaces, et des cordons gris sur les murs permettant au champignon de se propager.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Combien coûte un traitement contre la mérule ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Le coût d\'un traitement mérule varie de 5 000€ pour un cas localisé à plus de 50 000€ si la charpente entière est touchée. Le traitement comprend le diagnostic, le retrait des bois infectés (avec 1m de marge de sécurité), le traitement fongicide par injection et pulvérisation, puis la reconstruction. Plus le diagnostic est précoce, plus la facture est réduite (division par 10 possible).',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'La mérule est-elle dangereuse pour la santé ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'La mérule libère des spores qui peuvent provoquer des irritations respiratoires et des réactions allergiques. Cependant, son principal danger est structural : elle détruit le bois de la maison (charpente, plancher, poutres) en quelques mois. Elle peut traverser les murs en maçonnerie, se développe sans lumière et croît de plusieurs centimètres par semaine.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Peut-on traiter la mérule soi-même ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Non, il est fortement déconseillé de traiter la mérule soi-même. Gratter ou arracher le champignon libère les spores et propage l\'infestation. La javel est inefficace et dangereuse. Seul un traitement professionnel complet (diagnostic, suppression de la source d\'humidité, retrait des bois infectés, traitement fongicide certifié) permet d\'éradiquer la mérule. Contactez un expert en urgence.',
+      },
+    },
+  ],
+};
+
 export default function MerulePage() {
   return (
     <div className="font-sans text-slate-800 bg-white antialiased">
+      <Script
+        id="faq-schema-merule-champignon-traitement"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <TopBar />
       <Navbar />
 

@@ -597,8 +597,8 @@ export default function DiagnosticPage() {
                     Diagnostic en ligne gratuit
                   </div>
                   <h1 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-2 leading-tight">
-                    Votre bâtiment présente<br />
-                    <span className="text-orange-500">des signes inquiétants ?</span>
+                    Diagnostic fissures & humidité<br />
+                    <span className="text-orange-500">gratuit en 3 minutes</span>
                   </h1>
                   <p className="text-slate-500 text-sm max-w-md mx-auto">
                     Répondez à 9 questions et obtenez immédiatement l&apos;avis d&apos;un expert en pathologie du bâtiment.
