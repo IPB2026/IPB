@@ -66,7 +66,9 @@ export function JsonLd() {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "127"
+      "reviewCount": "14",
+      "bestRating": "5",
+      "worstRating": "1"
     }
   };
 

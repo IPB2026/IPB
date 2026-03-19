@@ -43,13 +43,7 @@ const organizationSchema = {
   "sameAs": [
     "https://www.facebook.com/ipbexpertise",
     "https://www.linkedin.com/company/ipb-expertise"
-  ],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "14",
-    "bestRating": "5"
-  }
+  ]
 };
 
 export const metadata: Metadata = {

@@ -285,15 +285,23 @@ export function generateSearchSuggestions(keywords: string[]): string[] {
 /**
  * 💣 ARME NUCLÉAIRE : Génère le Schema Review/Rating pour les étoiles dans Google
  */
-export function generateReviewSchema(articleTitle: string) {
+export function generateReviewSchema(_articleTitle: string) {
   return {
     '@context': 'https://schema.org',
-    '@type': 'Article',
-    name: articleTitle,
+    '@type': 'LocalBusiness',
+    name: 'IPB - Institut de Pathologie du Bâtiment',
+    image: 'https://www.ipb-expertise.fr/images/IPB_Logo_HD.png',
+    telephone: '+33582953375',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Tournefeuille',
+      postalCode: '31170',
+      addressCountry: 'FR'
+    },
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '4.9',
-      reviewCount: '127',
+      reviewCount: '14',
       bestRating: '5',
       worstRating: '1'
     }
