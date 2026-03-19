@@ -22,7 +22,6 @@ import {
   getRelatedPosts,
   extractHowToSteps,
   generateHowToSchema,
-  generateReviewSchema,
   injectInternalLinks,
 } from '@/lib/seo-helpers';
 import { ReadingProgress } from '@/components/blog/ReadingProgress';
@@ -168,9 +167,6 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
   const howToSteps = extractHowToSteps(post.content);
   const howToSchema = howToSteps.length >= 3 ? generateHowToSchema(post.title, howToSteps) : null;
 
-  // 💣 ARME NUCLÉAIRE : Schema Review pour étoiles dans Google
-  const reviewSchema = generateReviewSchema(post.title);
-
   // 💣 ARME NUCLÉAIRE : Injection de liens internes automatiques dans le contenu
   // DÉSACTIVÉ : Cause des problèmes de formatage HTML
   const contentWithLinks = enrichedContent; // injectInternalLinks(enrichedContent, post.slug);
@@ -204,13 +200,6 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
           dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
         />
       )}
-      {/* 💣 ARME NUCLÉAIRE : Review Schema pour étoiles dans SERP */}
-      <Script
-        id="review-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
-      />
-
       {/* 💣 ARME NUCLÉAIRE : Reading Progress Bar */}
       <ReadingProgress />
 
