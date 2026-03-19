@@ -155,21 +155,23 @@ export default function AudePage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {villesAude.map((ville) => (
-              <Link
+              <div
                 key={ville.nom}
-                href={`/expert-fissures/${ville.nom.toLowerCase().replace(/['\s]/g, '-')}`}
-                className="bg-white rounded-xl p-5 shadow-sm border border-slate-200 hover:border-amber-300 hover:shadow-md transition-all group"
+                className="bg-white rounded-xl p-5 shadow-sm border border-slate-200"
               >
                 <div className="flex justify-between items-start mb-2">
-                  <h3 className="font-bold text-slate-900 group-hover:text-amber-600">{ville.nom}</h3>
+                  <h3 className="font-bold text-slate-900">{ville.nom}</h3>
                   <span className="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">{ville.cp}</span>
                 </div>
-                <div className="text-sm text-slate-500">
+                <div className="text-sm text-slate-500 mb-3">
                   <span>{ville.population} hab.</span>
                   <span className="mx-2">•</span>
                   <span>à {ville.distance}</span>
                 </div>
-              </Link>
+                <Link href="/diagnostic" className="text-xs text-amber-600 font-semibold hover:text-amber-700 flex items-center gap-1">
+                  Diagnostic gratuit <ArrowRight size={12} />
+                </Link>
+              </div>
             ))}
           </div>
           <div className="mt-8 text-center">

@@ -4008,6 +4008,335 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p class="font-bold text-lg text-slate-900 mt-6">📞 Expert fissures Tarn-et-Garonne - Diagnostic gratuit : 05 82 95 33 75</p>
     `
+  },
+  'catastrophe-naturelle-secheresse-demarches-indemnisation': {
+    slug: 'catastrophe-naturelle-secheresse-demarches-indemnisation',
+    title: 'Catastrophe Naturelle Sécheresse : Le Guide Complet pour Être Indemnisé (Démarches, Délais, Pièges)',
+    excerpt: 'Votre commune est reconnue en catastrophe naturelle sécheresse ? Voici exactement comment déclarer votre sinistre, les délais à respecter, la franchise à payer, et les erreurs qui font perdre des milliers d\'euros à 40% des sinistrés.',
+    date: '2026-02-10',
+    readTime: '12 min',
+    category: 'conseils',
+    author: 'Expert IPB',
+    metaDescription: 'Catastrophe naturelle sécheresse : démarches, délais, indemnisation. Comment déclarer un sinistre fissures, franchise CAT-NAT, expertise assurance. Guide complet Haute-Garonne, Tarn, Gers.',
+    keywords: [
+      'catastrophe naturelle sécheresse',
+      'déclaration cat nat sécheresse',
+      'indemnisation fissures sécheresse',
+      'arrêté catastrophe naturelle',
+      'franchise cat nat',
+      'fissures sécheresse assurance',
+      'sinistre sécheresse démarches',
+      'expertise fissures cat nat',
+      'cat nat haute-garonne',
+      'cat nat toulouse',
+      'retrait gonflement argiles indemnisation'
+    ],
+    content: `
+      <div class="mb-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
+        <p class="font-bold text-red-900 mb-2">⏰ Attention : Vous avez 10 jours après la publication de l'arrêté</p>
+        <p class="text-red-800">Le délai pour déclarer votre sinistre CAT-NAT sécheresse à votre assurance est de <strong>10 jours</strong> après la parution de l'arrêté au Journal Officiel. Passé ce délai, votre dossier peut être refusé. Agissez maintenant.</p>
+      </div>
+
+      <h2>Catastrophe naturelle sécheresse : de quoi parle-t-on exactement ?</h2>
+
+      <p>Quand le sol argileux sous votre maison se <strong>rétracte sous l'effet de la sécheresse</strong>, puis <strong>gonfle à nouveau avec les pluies</strong>, vos fondations bougent. Résultat : des fissures apparaissent sur vos murs, vos portes coincent, votre carrelage se soulève.</p>
+
+      <p>Ce phénomène porte un nom technique : le <strong>retrait-gonflement des argiles (RGA)</strong>. Et quand il est suffisamment intense, l'État peut reconnaître votre commune en <strong>état de catastrophe naturelle</strong>, ce qui ouvre droit à une indemnisation par votre assurance habitation.</p>
+
+      <div class="my-6 p-5 bg-slate-50 border border-slate-200 rounded-xl">
+        <p class="font-bold text-slate-800 mb-3">📊 Quelques chiffres clés</p>
+        <ul class="space-y-2 text-slate-700">
+          <li>• <strong>10,4 millions</strong> de maisons en zone d'exposition forte au RGA en France</li>
+          <li>• <strong>3,2 milliards €</strong> d'indemnisation sécheresse en 2022 (record historique)</li>
+          <li>• <strong>La Haute-Garonne (31)</strong> est le 3ème département le plus touché de France</li>
+          <li>• <strong>90% des sols</strong> de la métropole toulousaine sont argileux</li>
+        </ul>
+      </div>
+
+      <h2>Étape 1 : Vérifier si votre commune est reconnue</h2>
+
+      <h3>Où consulter les arrêtés ?</h3>
+      <p>Les arrêtés de catastrophe naturelle sécheresse sont publiés au <strong>Journal Officiel de la République française</strong>. Vous pouvez vérifier si votre commune est concernée de deux façons :</p>
+      <ul>
+        <li><strong>Site Géorisques</strong> (georisques.gouv.fr) : Tapez votre adresse et consultez l'historique des arrêtés CAT-NAT</li>
+        <li><strong>Mairie</strong> : Votre mairie est informée et affiche généralement l'arrêté</li>
+      </ul>
+
+      <h3>Communes récemment reconnues (notre zone d'intervention)</h3>
+      <p>Voici un aperçu des dernières reconnaissances CAT-NAT sécheresse dans les départements où nous intervenons :</p>
+
+      <div class="my-6 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-200">
+          <thead class="bg-slate-100">
+            <tr>
+              <th class="border border-slate-200 p-3 text-left">Département</th>
+              <th class="border border-slate-200 p-3 text-left">Derniers arrêtés</th>
+              <th class="border border-slate-200 p-3 text-left">Communes touchées</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-200 p-3 font-bold">Haute-Garonne (31)</td>
+              <td class="border border-slate-200 p-3">2022, 2023</td>
+              <td class="border border-slate-200 p-3">200+ communes dont Toulouse, Colomiers, Muret, Tournefeuille</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-bold">Tarn (81)</td>
+              <td class="border border-slate-200 p-3">2022, 2023</td>
+              <td class="border border-slate-200 p-3">Albi, Lavaur, Gaillac, Saint-Sulpice-la-Pointe</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-bold">Tarn-et-Garonne (82)</td>
+              <td class="border border-slate-200 p-3">2022, 2023</td>
+              <td class="border border-slate-200 p-3">Montauban, Castelsarrasin, Moissac, Caussade</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-bold">Gers (32)</td>
+              <td class="border border-slate-200 p-3">2022, 2023</td>
+              <td class="border border-slate-200 p-3">Auch, L'Isle-Jourdain, Fleurance, Condom</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-bold">Ariège (09)</td>
+              <td class="border border-slate-200 p-3">2022, 2023</td>
+              <td class="border border-slate-200 p-3">Foix, Pamiers, Saint-Girons</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Étape 2 : Déclarer le sinistre à votre assurance</h2>
+
+      <h3>Le délai de 10 jours : ne le dépassez pas</h3>
+      <p>Dès la publication de l'arrêté au Journal Officiel, vous disposez de <strong>10 jours</strong> pour envoyer votre déclaration de sinistre à votre assureur. Ce délai est fixé par la loi (article L. 125-2 du Code des assurances).</p>
+
+      <div class="my-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+        <p class="font-bold text-amber-800">💡 Conseil IPB : Envoyez votre déclaration en recommandé avec accusé de réception. En cas de litige, vous aurez la preuve de votre envoi dans les délais.</p>
+      </div>
+
+      <h3>Que doit contenir votre déclaration ?</h3>
+      <p>Votre lettre de déclaration doit inclure :</p>
+      <ol>
+        <li><strong>Vos coordonnées</strong> et numéro de contrat d'assurance</li>
+        <li><strong>La date d'apparition</strong> des premiers dégâts (ou la date à laquelle vous les avez constatés)</li>
+        <li><strong>La nature des dégâts</strong> : fissures, portes bloquées, carrelage soulevé, etc.</li>
+        <li><strong>La référence de l'arrêté</strong> de catastrophe naturelle</li>
+        <li><strong>Des photos datées</strong> de tous les dégâts constatés</li>
+        <li><strong>Un descriptif estimatif</strong> des dommages si possible</li>
+      </ol>
+
+      <h3>L'erreur que font 40% des sinistrés</h3>
+      <p>Beaucoup de propriétaires envoient une simple lettre avec quelques photos prises à la va-vite. <strong>C'est insuffisant.</strong></p>
+
+      <p>L'assureur va mandater son propre expert, qui aura tendance à minimiser les dégâts. Pour contrebalancer cette expertise, vous devez constituer un dossier solide <strong>avant</strong> l'arrivée de l'expert d'assurance :</p>
+      <ul>
+        <li><strong>Photos détaillées</strong> avec un objet pour l'échelle (pièce de monnaie, mètre)</li>
+        <li><strong>Mesure de l'ouverture</strong> des fissures (utilisez un fissuromètre ou une simple règle)</li>
+        <li><strong>Historique d'évolution</strong> : photos prises à différentes dates si possible</li>
+        <li><strong>Rapport d'un expert indépendant</strong> : c'est LE document qui fait la différence</li>
+      </ul>
+
+      <div class="my-6 p-5 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
+        <p class="font-bold text-orange-900 mb-2">🔑 Le secret d'un dossier réussi</p>
+        <p class="text-orange-800">Faites réaliser un <strong>diagnostic indépendant AVANT</strong> le passage de l'expert d'assurance. Ce rapport technique, réalisé par un professionnel qui n'a aucun intérêt à minimiser les dégâts, donnera du poids à votre dossier et peut faire la différence entre une indemnisation de 5 000€ et de 25 000€.</p>
+      </div>
+
+      <h2>Étape 3 : L'expertise d'assurance</h2>
+
+      <h3>Comment se déroule l'expertise ?</h3>
+      <p>Après votre déclaration, l'assureur mandate un <strong>expert d'assurance</strong> pour évaluer les dégâts. Voici ce que vous devez savoir :</p>
+      <ul>
+        <li>L'expert d'assurance est payé par l'assureur (conflit d'intérêt potentiel)</li>
+        <li>Il se rend sur place pour constater les dégâts</li>
+        <li>Il rédige un rapport qui détermine le montant de l'indemnisation</li>
+        <li>Il classifie les fissures et détermine si elles sont liées à la sécheresse</li>
+      </ul>
+
+      <h3>Vos droits pendant l'expertise</h3>
+      <p>Pendant la visite de l'expert, vous avez le droit de :</p>
+      <ul>
+        <li><strong>Être présent</strong> (et nous vous le recommandons fortement)</li>
+        <li><strong>Être accompagné</strong> par votre propre expert indépendant</li>
+        <li><strong>Contester les conclusions</strong> si elles vous semblent insuffisantes</li>
+        <li><strong>Demander une contre-expertise</strong> si vous êtes en désaccord</li>
+      </ul>
+
+      <h2>La franchise CAT-NAT : combien reste à votre charge ?</h2>
+
+      <p>Même en cas de reconnaissance CAT-NAT, une <strong>franchise légale</strong> reste à votre charge. Elle n'est pas négociable :</p>
+
+      <div class="my-6 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-200">
+          <thead class="bg-slate-100">
+            <tr>
+              <th class="border border-slate-200 p-3 text-left">Type de bien</th>
+              <th class="border border-slate-200 p-3 text-left">Franchise</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-200 p-3">Habitation (particulier)</td>
+              <td class="border border-slate-200 p-3 font-bold">1 520 €</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3">Professionnel</td>
+              <td class="border border-slate-200 p-3 font-bold">10% des dommages (min 1 140 €)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="my-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <p class="font-bold text-blue-800">📋 Attention à la majoration</p>
+        <p class="text-blue-700 mt-1">Si votre commune a fait l'objet de <strong>3 arrêtés CAT-NAT ou plus en 5 ans</strong> sans avoir adopté de plan de prévention des risques (PPR), la franchise peut être <strong>doublée, triplée ou quadruplée</strong>. Renseignez-vous auprès de votre mairie.</p>
+      </div>
+
+      <h2>Que couvre l'indemnisation CAT-NAT ?</h2>
+
+      <h3>Ce qui est couvert</h3>
+      <ul>
+        <li><strong>Réparation des fissures structurelles</strong> (agrafage, injection de résine)</li>
+        <li><strong>Reprise en sous-œuvre</strong> si nécessaire (micropieux, longrines)</li>
+        <li><strong>Réparation des dommages intérieurs</strong> (carrelage, plâtre, peinture)</li>
+        <li><strong>Remise en état du terrain</strong> (terrasses, dallages extérieurs)</li>
+      </ul>
+
+      <h3>Ce qui n'est PAS couvert</h3>
+      <ul>
+        <li>Les dommages esthétiques sans lien avec le mouvement de terrain</li>
+        <li>Les travaux de prévention (drainage préventif, abattage d'arbres)</li>
+        <li>La vétusté du bâtiment (un coefficient de vétusté est souvent appliqué)</li>
+        <li>Les biens mobiliers endommagés (sauf si mentionné au contrat)</li>
+      </ul>
+
+      <h2>Le calendrier complet : de la sécheresse à l'indemnisation</h2>
+
+      <div class="my-6 space-y-4">
+        <div class="flex gap-4 items-start">
+          <div class="flex-shrink-0 w-10 h-10 bg-red-100 rounded-full flex items-center justify-center font-bold text-red-600">1</div>
+          <div>
+            <p class="font-bold text-slate-900">Été : La sécheresse cause les fissures</p>
+            <p class="text-slate-600 text-sm">Le sol argileux se rétracte, les fondations bougent, les fissures apparaissent</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="flex-shrink-0 w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center font-bold text-amber-600">2</div>
+          <div>
+            <p class="font-bold text-slate-900">Automne-Hiver : La commune demande la reconnaissance</p>
+            <p class="text-slate-600 text-sm">Le maire dépose un dossier auprès de la préfecture (délai de 24 mois max)</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center font-bold text-blue-600">3</div>
+          <div>
+            <p class="font-bold text-slate-900">6 à 18 mois plus tard : Publication de l'arrêté</p>
+            <p class="text-slate-600 text-sm">L'arrêté interministériel est publié au Journal Officiel</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="flex-shrink-0 w-10 h-10 bg-green-100 rounded-full flex items-center justify-center font-bold text-green-600">4</div>
+          <div>
+            <p class="font-bold text-slate-900">J+10 : Vous déclarez votre sinistre</p>
+            <p class="text-slate-600 text-sm">Lettre recommandée avec photos et rapport d'expert à votre assureur</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="flex-shrink-0 w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center font-bold text-purple-600">5</div>
+          <div>
+            <p class="font-bold text-slate-900">2 à 6 mois : Expertise et indemnisation</p>
+            <p class="text-slate-600 text-sm">L'expert d'assurance passe, le montant est fixé, l'indemnisation est versée</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="my-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+        <p class="font-bold text-amber-800">⚠️ Délai total moyen : 12 à 24 mois entre l'apparition des fissures et l'indemnisation. C'est long, mais pendant ce temps, les fissures continuent de s'aggraver. N'attendez pas l'indemnisation pour faire diagnostiquer votre maison.</p>
+      </div>
+
+      <h2>Les 5 erreurs qui coûtent cher aux sinistrés</h2>
+
+      <h3>Erreur n°1 : Attendre l'arrêté pour agir</h3>
+      <p>L'arrêté met parfois 18 mois à être publié. Pendant ce temps, les fissures s'aggravent, et les travaux deviennent plus coûteux. <strong>Faites constater les dégâts immédiatement</strong>, même sans arrêté.</p>
+
+      <h3>Erreur n°2 : Reboucher les fissures avant l'expertise</h3>
+      <p>Si vous rebouchez vos fissures avant le passage de l'expert d'assurance, il ne pourra pas constater l'ampleur des dégâts. Résultat : indemnisation réduite, voire refusée. <strong>Ne touchez à rien</strong> avant l'expertise.</p>
+
+      <h3>Erreur n°3 : Ne pas avoir d'expert indépendant</h3>
+      <p>L'expert mandaté par l'assureur défend les intérêts de l'assureur. Avoir votre propre diagnostic technique en main vous permet de <strong>contrebalancer</strong> une expertise trop basse. La différence peut se chiffrer en dizaines de milliers d'euros.</p>
+
+      <h3>Erreur n°4 : Oublier certains dégâts</h3>
+      <p>Ne déclarez pas uniquement les fissures visibles en façade. Pensez aussi à :</p>
+      <ul>
+        <li>Les fissures intérieures (cloisons, plafonds)</li>
+        <li>Les portes et fenêtres qui coincent</li>
+        <li>Le carrelage soulevé ou fissuré</li>
+        <li>Le décollement des terrasses et dallages</li>
+        <li>Les fuites de canalisation causées par les mouvements</li>
+      </ul>
+
+      <h3>Erreur n°5 : Accepter la première offre sans négocier</h3>
+      <p>La première offre de l'assureur est rarement la bonne. Vous avez le droit de la <strong>contester</strong> et de demander une réévaluation. Un rapport d'expert indépendant est votre meilleur atout.</p>
+
+      <h2>Votre commune n'est pas reconnue ? Vos options</h2>
+
+      <p>Si votre commune n'a pas été reconnue en catastrophe naturelle alors que vous avez des fissures, vous pouvez :</p>
+      <ol>
+        <li><strong>Demander au maire</strong> de déposer un dossier de demande de reconnaissance</li>
+        <li><strong>Contacter votre assureur</strong> : certains contrats couvrent les dégâts de sécheresse même hors CAT-NAT (clause "événement climatique")</li>
+        <li><strong>Financer vous-même les travaux</strong> : l'agrafage structurel coûte entre 8 000€ et 18 000€, soit 3 fois moins cher que les micropieux</li>
+        <li><strong>Attendre le prochain arrêté</strong> : les communes peuvent être reconnues rétroactivement pour des périodes passées</li>
+      </ol>
+
+      <h2>Le rôle d'IPB dans votre démarche CAT-NAT</h2>
+
+      <p>En tant qu'expert indépendant en fissures et humidité, IPB vous accompagne à chaque étape :</p>
+
+      <div class="my-6 grid md:grid-cols-2 gap-4">
+        <div class="p-5 bg-orange-50 border border-orange-200 rounded-xl">
+          <p class="font-bold text-orange-800 mb-2">🔍 Diagnostic technique</p>
+          <p class="text-orange-700 text-sm">Rapport détaillé avec mesures, photos, analyse des causes. Ce document sera votre meilleur allié face à l'expert d'assurance.</p>
+        </div>
+        <div class="p-5 bg-blue-50 border border-blue-200 rounded-xl">
+          <p class="font-bold text-blue-800 mb-2">📋 Devis détaillé</p>
+          <p class="text-blue-700 text-sm">Estimation précise des travaux nécessaires. L'assureur ne pourra pas minimiser le montant si vous avez un devis professionnel.</p>
+        </div>
+        <div class="p-5 bg-green-50 border border-green-200 rounded-xl">
+          <p class="font-bold text-green-800 mb-2">🔧 Travaux de réparation</p>
+          <p class="text-green-700 text-sm">Agrafage, injection de résine, reprise en sous-œuvre. Tous nos travaux sont couverts par la garantie décennale (10 ans).</p>
+        </div>
+        <div class="p-5 bg-purple-50 border border-purple-200 rounded-xl">
+          <p class="font-bold text-purple-800 mb-2">🤝 Accompagnement assurance</p>
+          <p class="text-purple-700 text-sm">Nous pouvons être présents lors du passage de l'expert d'assurance pour défendre techniquement votre dossier.</p>
+        </div>
+      </div>
+
+      <h2>FAQ : Vos questions les plus fréquentes</h2>
+
+      <h3>Puis-je déclarer un sinistre si les fissures sont anciennes ?</h3>
+      <p>Oui, si l'arrêté couvre la période durant laquelle les fissures sont apparues ou se sont aggravées. Les fissures liées à la sécheresse sont souvent progressives.</p>
+
+      <h3>Mon assureur peut-il refuser ma déclaration ?</h3>
+      <p>Il ne peut pas refuser votre <strong>déclaration</strong>. En revanche, après expertise, il peut estimer que les dégâts ne sont pas liés à la sécheresse. C'est là qu'un rapport d'expert indépendant fait toute la différence.</p>
+
+      <h3>Combien de temps pour recevoir l'indemnisation ?</h3>
+      <p>L'assureur dispose de <strong>3 mois</strong> après la date effective de votre déclaration pour vous verser une provision, et de <strong>3 mois supplémentaires</strong> pour le solde. En pratique, comptez 4 à 8 mois.</p>
+
+      <h3>Peut-on cumuler CAT-NAT et aides de l'État ?</h3>
+      <p>Oui. En complément de l'indemnisation assurance, vous pouvez bénéficier de l'aide de l'ANAH (Agence Nationale de l'Habitat) pour certains travaux, sous conditions de ressources.</p>
+
+      <h2>Conclusion : N'attendez pas pour protéger votre patrimoine</h2>
+
+      <p>La procédure CAT-NAT sécheresse est votre droit. Mais pour en bénéficier pleinement, vous devez :</p>
+      <ol>
+        <li><strong>Respecter les délais</strong> de déclaration (10 jours)</li>
+        <li><strong>Constituer un dossier solide</strong> avec un rapport d'expert indépendant</li>
+        <li><strong>Ne pas reboucher</strong> les fissures avant l'expertise</li>
+        <li><strong>Ne pas accepter</strong> une indemnisation trop basse sans contester</li>
+      </ol>
+
+      <p>Chez IPB, nous avons accompagné des centaines de propriétaires dans leurs démarches CAT-NAT en Haute-Garonne, dans le Tarn, le Gers et le Tarn-et-Garonne. Notre diagnostic technique a permis à de nombreux sinistrés d'obtenir une <strong>indemnisation juste</strong>, couvrant réellement les travaux nécessaires.</p>
+
+      <p class="font-bold text-lg text-slate-900 mt-6">📞 Besoin d'un diagnostic pour votre dossier CAT-NAT ? Appelez-nous : 05 82 95 33 75 — Diagnostic sous 48h</p>
+    `
   }
 };
 

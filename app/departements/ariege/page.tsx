@@ -136,7 +136,7 @@ export default function AriegePage() {
             <Breadcrumbs
               items={[
                 { label: 'Accueil', href: '/' },
-                { label: 'Départements', href: '#' },
+                { label: 'Départements', href: '/departements' },
                 { label: 'Ariège (09)', href: '/departements/ariege' },
               ]}
             />

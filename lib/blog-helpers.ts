@@ -93,7 +93,7 @@ export function generateArticleJsonLd(article: {
         url: `${baseUrl}/images/IPB_Logo_HD.png`,
       },
       sameAs: [
-        'https://www.google.com/maps?cid=YOUR_GOOGLE_CID', // À remplacer par votre CID Google
+        'https://www.google.com/maps/place/IPB+-+Expert+Fissures+%26+Humidit%C3%A9/@43.6047,1.4442,15z',
       ],
     },
     publisher: {

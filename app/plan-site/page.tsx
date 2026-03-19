@@ -142,10 +142,11 @@ export default function PlanSitePage() {
               <span>💡</span> Blog - Conseils
             </h2>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/blog/cout-reparation-fissures-2025" className="text-slate-700 hover:text-orange-600 transition">Prix réparation 2025</Link></li>
+              <li><Link href="/blog/agrafage-vs-micropieux-choix" className="text-slate-700 hover:text-orange-600 transition">Agrafage vs micropieux : quel choix ?</Link></li>
               <li><Link href="/blog/diagnostic-structurel-maison" className="text-slate-700 hover:text-orange-600 transition">Diagnostic structurel</Link></li>
               <li><Link href="/blog/garantie-decennale-travaux-structure" className="text-slate-700 hover:text-orange-600 transition">Garantie décennale</Link></li>
               <li><Link href="/blog/revente-maison-fissuree" className="text-slate-700 hover:text-orange-600 transition">Revente maison fissurée</Link></li>
+              <li><Link href="/blog/catastrophe-naturelle-secheresse-demarches-indemnisation" className="text-slate-700 hover:text-orange-600 transition">Catastrophe naturelle sécheresse : démarches</Link></li>
             </ul>
           </div>
 

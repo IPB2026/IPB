@@ -56,7 +56,7 @@ export default function HauteGaronnePage() {
     { slug: 'cugnaux', nom: 'Cugnaux' },
     { slug: 'plaisance-du-touch', nom: 'Plaisance-du-Touch' },
     { slug: 'ramonville-saint-agne', nom: 'Ramonville-Saint-Agne' },
-    { slug: 'saint-oren-de-gameville', nom: 'Saint-Orens-de-Gameville' },
+    { slug: 'saint-orens-de-gameville', nom: 'Saint-Orens-de-Gameville' },
     { slug: 'castanet-tolosan', nom: 'Castanet-Tolosan' },
     { slug: 'labege', nom: 'Labège' },
     { slug: 'portet-sur-garonne', nom: 'Portet-sur-Garonne' },
@@ -165,7 +165,7 @@ export default function HauteGaronnePage() {
             <Breadcrumbs
               items={[
                 { label: 'Accueil', href: '/' },
-                { label: 'Départements', href: '#' },
+                { label: 'Départements', href: '/departements' },
                 { label: 'Haute-Garonne (31)', href: '/departements/haute-garonne' },
               ]}
             />

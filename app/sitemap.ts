@@ -159,6 +159,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // ════════════════════════════════════════════════════════════
   const departementPages: MetadataRoute.Sitemap = [
     {
+      url: `${baseUrl}/departements`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
       url: `${baseUrl}/departements/haute-garonne`,
       lastModified: currentDate,
       changeFrequency: 'weekly',

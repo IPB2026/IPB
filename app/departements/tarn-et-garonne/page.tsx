@@ -35,7 +35,7 @@ export default function TarnEtGaronnePage() {
     { slug: 'castelsarrasin', nom: 'Castelsarrasin', habitants: '14 000' },
     { slug: 'moissac', nom: 'Moissac', habitants: '12 000' },
     { slug: 'caussade', nom: 'Caussade', habitants: '7 000' },
-    { slug: 'valence', nom: 'Valence', habitants: '5 000' },
+    { slug: 'valence-agen', nom: 'Valence', habitants: '5 000' },
   ];
 
   // Schema JSON-LD

@@ -44,8 +44,9 @@ const blogPosts = [
   'fissures-maison-toulouse-que-faire', 'agrafage-vs-micropieux-choix',
   'fissures-escalier-tassement-differentiel', 'fissure-ouverture-porte-fenetre',
   'humidite-remontee-capillaire-solution', 'humidite-salpetre-traitement',
-  'cout-reparation-fissures-2025', 'diagnostic-structurel-maison',
-  'revente-maison-fissuree', 'merule-champignon-maison-danger'
+  'diagnostic-structurel-maison',
+  'revente-maison-fissuree', 'merule-champignon-maison-danger',
+  'catastrophe-naturelle-secheresse-demarches-indemnisation'
 ];
 
 function generateAllUrls() {

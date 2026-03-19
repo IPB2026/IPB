@@ -117,9 +117,19 @@ export function getContextualLinks(currentSlug: string, keywords: string[]): Arr
       { text: 'mérule danger', url: '/blog/merule-champignon-maison-danger' },
       { text: 'salpêtre traitement', url: '/blog/salpetre-toulouse-traitement-definitif' }
     ],
+    'catastrophe naturelle': [
+      { text: 'démarches CAT-NAT sécheresse', url: '/blog/catastrophe-naturelle-secheresse-demarches-indemnisation' },
+      { text: 'indemnisation fissures', url: '/blog/catastrophe-naturelle-secheresse-demarches-indemnisation' },
+      { text: 'diagnostic fissures', url: '/diagnostic' }
+    ],
+    'cat-nat': [
+      { text: 'guide CAT-NAT complet', url: '/blog/catastrophe-naturelle-secheresse-demarches-indemnisation' },
+      { text: 'fissures sécheresse', url: '/blog/secheresse-argile-haute-garonne' },
+      { text: 'diagnostic gratuit', url: '/diagnostic' }
+    ],
     'agrafage': [
       { text: 'agrafage vs micropieux', url: '/blog/agrafage-vs-micropieux-choix' },
-      { text: 'prix agrafage 2026', url: '/blog/cout-reparation-fissures-2025' },
+      { text: 'prix agrafage 2026', url: '/blog/agrafage-vs-micropieux-choix' },
       { text: 'agrafage Toulouse', url: '/expertise/fissures' }
     ],
     'salpetre': [
@@ -324,12 +334,14 @@ export function injectInternalLinks(content: string, currentSlug: string): strin
     if (linksAdded >= maxLinks) return;
     if (url.includes(currentSlug)) return; // Pas de lien vers soi-même
     
-    // Regex pour trouver le keyword NON déjà dans un lien
     const regex = new RegExp(`(?<!<a[^>]*>)\\b(${keyword})\\b(?![^<]*<\\/a>)`, 'gi');
     
-    // Remplacer seulement la PREMIÈRE occurrence
     if (regex.test(modifiedContent)) {
+      regex.lastIndex = 0;
+      let replaced = false;
       modifiedContent = modifiedContent.replace(regex, (match) => {
+        if (replaced || linksAdded >= maxLinks) return match;
+        replaced = true;
         linksAdded++;
         return `<a href="${url}" class="text-orange-600 font-semibold hover:text-orange-700 underline decoration-2 decoration-orange-300 hover:decoration-orange-500 transition">${match}</a>`;
       });

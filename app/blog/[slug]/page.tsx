@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Script from 'next/script';
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { ArrowLeft, Calendar, Clock, Share2, Facebook, Twitter, Linkedin } from 'lucide-react';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
@@ -129,16 +130,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
   const post = blogPosts[slug];
 
   if (!post) {
-    return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold text-slate-900 mb-4">Article non trouvé</h1>
-          <Link href="/blog" className="text-orange-600 font-bold hover:text-orange-700">
-            Retour au blog
-          </Link>
-        </div>
-      </div>
-    );
+    notFound();
   }
 
   // Enrichissement du contenu avec IDs

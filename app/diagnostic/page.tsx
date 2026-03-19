@@ -465,11 +465,13 @@ export default function DiagnosticPage() {
         formData.append('photoName', photoFile.name);
       }
       const result = await submitDiagnosticLead(formData);
-      if (!result.success) {
+      if (!result.success && process.env.NODE_ENV === 'development') {
         console.error('Erreur lead:', result.message);
       }
     } catch (error) {
-      console.error('Erreur envoi lead:', error);
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Erreur envoi lead:', error);
+      }
     }
 
     setTimeout(() => {
