@@ -97,14 +97,15 @@ export function Footer() {
             
             {/* Zones d'intervention */}
             <nav aria-label="Zones d'intervention">
-              <h4 className="text-white font-bold mb-6">Villes couvertes</h4>
+              <h4 className="text-white font-bold mb-6">Zones d&apos;intervention</h4>
               <ul className="space-y-3" role="list">
                 <li><Link href="/expert-fissures/toulouse/" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Toulouse (31)</Link></li>
                 <li><Link href="/expert-fissures/montauban/" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Montauban (82)</Link></li>
                 <li><Link href="/expert-fissures/albi/" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Albi (81)</Link></li>
                 <li><Link href="/expert-fissures/auch/" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Auch (32)</Link></li>
-                <li><Link href="/expert-fissures/colomiers/" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Colomiers</Link></li>
-                <li><Link href="/expert-fissures/blagnac/" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Blagnac</Link></li>
+                <li><Link href="/departements/haute-garonne" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Haute-Garonne</Link></li>
+                <li><Link href="/departements/tarn-et-garonne" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Tarn-et-Garonne</Link></li>
+                <li><Link href="/departements" className="hover:text-orange-400 transition text-orange-400/70 text-xs focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Tous les départements →</Link></li>
               </ul>
             </nav>
             
@@ -113,12 +114,13 @@ export function Footer() {
               <h4 className="text-white font-bold mb-6">Ressources</h4>
               <ul className="space-y-3" role="list">
                 <li><Link href="/blog" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Blog & Conseils</Link></li>
-                <li><Link href="/avis-clients" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Avis Clients ⭐</Link></li>
+                <li><Link href="/avis-clients" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Avis Clients</Link></li>
+                <li><Link href="/notre-expert" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Notre Expert</Link></li>
                 <li><Link href="/diagnostic" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Diagnostic gratuit</Link></li>
                 <li><Link href="/contact" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Contact</Link></li>
+                <li><Link href="/plan-site" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Plan du site</Link></li>
                 <li className="pt-3 border-t border-slate-800">
-                  <Link href="/legal/mentions-legales" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Mentions légales</Link>
-                </li>
+                  <Link href="/legal/mentions-legales" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Mentions légales</Link></li>
                 <li><Link href="/legal/cgv" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">CGV</Link></li>
                 <li><Link href="/legal/confidentialite" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Confidentialité</Link></li>
               </ul>
@@ -129,21 +131,27 @@ export function Footer() {
           <div className="border-t border-slate-800 pt-8">
             {/* Mots-clés SEO en liens */}
             <div className="mb-8 text-xs text-slate-600">
-              <p className="mb-2 text-slate-500">Services : </p>
+              <p className="mb-2 text-slate-500">Services & Expertise : </p>
               <div className="flex flex-wrap gap-2">
-                <Link href="/expertise/fissures" className="hover:text-slate-400 transition">expert fissures Toulouse</Link>
+                <Link href="/expert-fissures-toulouse-31" className="hover:text-slate-400 transition">expert fissures Toulouse</Link>
                 <span>•</span>
-                <Link href="/expertise/humidite" className="hover:text-slate-400 transition">expert humidité 31</Link>
+                <Link href="/expert-humidite-toulouse-31" className="hover:text-slate-400 transition">expert humidité Toulouse</Link>
+                <span>•</span>
+                <Link href="/expert-fissures-montauban-82" className="hover:text-slate-400 transition">expert fissures Montauban</Link>
+                <span>•</span>
+                <Link href="/expertise-avant-achat-immobilier-toulouse" className="hover:text-slate-400 transition">expertise avant achat</Link>
                 <span>•</span>
                 <Link href="/fissure-secheresse-indemnisation/" className="hover:text-slate-400 transition">indemnisation sécheresse</Link>
                 <span>•</span>
-                <Link href="/remontees-capillaires-traitement/" className="hover:text-slate-400 transition">traitement remontées capillaires</Link>
+                <Link href="/fissure-en-escalier-causes/" className="hover:text-slate-400 transition">fissure en escalier</Link>
                 <span>•</span>
-                <span>agrafage fissures</span>
+                <Link href="/remontee-capillaire-solution/" className="hover:text-slate-400 transition">remontées capillaires</Link>
                 <span>•</span>
-                <span>injection résine hydrophobe</span>
+                <Link href="/departements/haute-garonne" className="hover:text-slate-400 transition">Haute-Garonne</Link>
                 <span>•</span>
-                <span>garantie décennale</span>
+                <Link href="/departements/gers" className="hover:text-slate-400 transition">Gers</Link>
+                <span>•</span>
+                <Link href="/departements/ariege" className="hover:text-slate-400 transition">Ariège</Link>
               </div>
             </div>
             

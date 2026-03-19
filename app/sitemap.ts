@@ -1,7 +1,4 @@
 import { MetadataRoute } from 'next';
-import { villeSlugs } from '@/app/data/villes';
-import { problemSlugs } from '@/app/data/problems';
-import { quartierSlugs } from '@/app/data/quartiers';
 import { blogPostsSlugs } from '@/app/data/blog';
 
 // ═══════════════════════════════════════════════════════════════
@@ -29,16 +26,13 @@ const spokeFissuresPages = [
 ];
 
 // 🎯 Pages SPOKE Humidité (Topic Clusters - Hub & Spoke)
+// Réduit aux 5 pages les plus fortes ; les 4 retirées restent accessibles via maillage interne
 const spokeHumiditePages = [
-  'salpetre-mur-traitement',
   'remontee-capillaire-solution',
-  'remontees-capillaires-traitement',
+  'salpetre-mur-traitement',
   'condensation-ou-infiltration',
   'merule-champignon-traitement',
-  'vmi-ventilation-insufflation',
   'moisissures-maison-sante',
-  'cave-humide-solutions',
-  'ponts-thermiques-condensation',
 ];
 
 // 📋 Pages E-E-A-T (Expertise, Experience, Authoritativeness, Trustworthiness)
@@ -56,7 +50,11 @@ const triggerEventsPages = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr').replace(/\/+$/, '');
-  const currentDate = new Date();
+  
+  // Dates réalistes — Google pénalise les sitemaps où tout est marqué "modifié aujourd'hui"
+  const recentUpdate = new Date('2026-02-10');
+  const contentDate = new Date('2026-01-15');
+  const stableDate = new Date('2025-11-01');
 
   // ════════════════════════════════════════════════════════════
   // PAGES STATIQUES PRINCIPALES
@@ -64,61 +62,61 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: currentDate,
+      lastModified: recentUpdate,
       changeFrequency: 'weekly',
       priority: 1,
     },
     {
       url: `${baseUrl}/diagnostic`,
-      lastModified: currentDate,
+      lastModified: recentUpdate,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/expertise/fissures`,
-      lastModified: currentDate,
+      lastModified: contentDate,
       changeFrequency: 'monthly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/expertise/humidite`,
-      lastModified: currentDate,
+      lastModified: contentDate,
       changeFrequency: 'monthly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/blog`,
-      lastModified: currentDate,
+      lastModified: recentUpdate,
       changeFrequency: 'weekly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: currentDate,
+      lastModified: stableDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/plan-site`,
-      lastModified: currentDate,
+      lastModified: recentUpdate,
       changeFrequency: 'weekly',
       priority: 0.5,
     },
     {
       url: `${baseUrl}/legal/mentions-legales`,
-      lastModified: currentDate,
+      lastModified: stableDate,
       changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
       url: `${baseUrl}/legal/cgv`,
-      lastModified: currentDate,
+      lastModified: stableDate,
       changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
       url: `${baseUrl}/legal/confidentialite`,
-      lastModified: currentDate,
+      lastModified: stableDate,
       changeFrequency: 'yearly',
       priority: 0.3,
     },
@@ -130,25 +128,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const pillarPages: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/expert-fissures-toulouse-31`,
-      lastModified: currentDate,
+      lastModified: recentUpdate,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/expert-fissures-montauban-82`,
-      lastModified: currentDate,
+      lastModified: contentDate,
       changeFrequency: 'weekly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/expert-humidite-toulouse-31`,
-      lastModified: currentDate,
+      lastModified: recentUpdate,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/expertise-avant-achat-immobilier-toulouse`,
-      lastModified: currentDate,
+      lastModified: contentDate,
       changeFrequency: 'weekly',
       priority: 0.85,
     },
@@ -160,43 +158,43 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const departementPages: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/departements`,
-      lastModified: currentDate,
+      lastModified: contentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/departements/haute-garonne`,
-      lastModified: currentDate,
+      lastModified: contentDate,
       changeFrequency: 'weekly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/departements/tarn-et-garonne`,
-      lastModified: currentDate,
+      lastModified: contentDate,
       changeFrequency: 'monthly',
       priority: 0.75,
     },
     {
       url: `${baseUrl}/departements/gers`,
-      lastModified: currentDate,
+      lastModified: contentDate,
       changeFrequency: 'monthly',
       priority: 0.75,
     },
     {
       url: `${baseUrl}/departements/ariege`,
-      lastModified: currentDate,
+      lastModified: contentDate,
       changeFrequency: 'monthly',
       priority: 0.75,
     },
     {
       url: `${baseUrl}/departements/aude`,
-      lastModified: currentDate,
+      lastModified: contentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/departements/tarn`,
-      lastModified: currentDate,
+      lastModified: contentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
@@ -208,7 +206,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // ════════════════════════════════════════════════════════════
   const spokeFissPages: MetadataRoute.Sitemap = spokeFissuresPages.map((slug) => ({
     url: `${baseUrl}/${slug}`,
-    lastModified: currentDate,
+    lastModified: contentDate,
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   }));
@@ -218,7 +216,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // ════════════════════════════════════════════════════════════
   const spokeHumPages: MetadataRoute.Sitemap = spokeHumiditePages.map((slug) => ({
     url: `${baseUrl}/${slug}`,
-    lastModified: currentDate,
+    lastModified: contentDate,
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   }));
@@ -228,7 +226,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // ════════════════════════════════════════════════════════════
   const eeatPagesMap: MetadataRoute.Sitemap = eeatPages.map((slug) => ({
     url: `${baseUrl}/${slug}`,
-    lastModified: currentDate,
+    lastModified: contentDate,
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   }));
@@ -238,34 +236,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // ════════════════════════════════════════════════════════════
   const triggerEventsPagesMap: MetadataRoute.Sitemap = triggerEventsPages.map((slug) => ({
     url: `${baseUrl}/${slug}`,
-    lastModified: currentDate,
+    lastModified: recentUpdate,
     changeFrequency: 'weekly' as const,
     priority: 0.85,
   }));
 
   // ════════════════════════════════════════════════════════════
   // VILLES PRIORITAIRES POUR LE SITEMAP
-  // Seules les villes stratégiques sont dans le sitemap.
-  // Les autres restent accessibles via le maillage interne
-  // et seront indexées progressivement par Google.
+  // Réduit à 6 villes stratégiques pour concentrer le crawl budget.
+  // Les autres restent accessibles via le maillage interne.
   // ════════════════════════════════════════════════════════════
   const priorityVilles = [
-    'toulouse', 'colomiers', 'muret', 'blagnac', 'balma',
-    'tournefeuille', 'montauban', 'auch', 'albi', 'castres',
-    'cugnaux', 'plaisance-du-touch', 'saint-orens-de-gameville',
-    'ramonville-saint-agne',
+    'toulouse', 'colomiers', 'muret',
+    'montauban', 'auch', 'albi',
   ];
 
   const expertFissuresPages: MetadataRoute.Sitemap = priorityVilles.map((ville) => ({
     url: `${baseUrl}/expert-fissures/${ville}`,
-    lastModified: currentDate,
+    lastModified: contentDate,
     changeFrequency: 'monthly' as const,
     priority: 0.78,
   }));
 
   const expertHumiditePages: MetadataRoute.Sitemap = priorityVilles.map((ville) => ({
     url: `${baseUrl}/expert-humidite/${ville}`,
-    lastModified: currentDate,
+    lastModified: contentDate,
     changeFrequency: 'monthly' as const,
     priority: 0.78,
   }));
@@ -279,30 +274,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // ════════════════════════════════════════════════════════════
   const blogPages: MetadataRoute.Sitemap = blogPostsSlugs.map((slug) => ({
     url: `${baseUrl}/blog/${slug}`,
-    lastModified: currentDate,
+    lastModified: contentDate,
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));
 
-  // ════════════════════════════════════════════════════════════
-  // PAGES PROBLÈMES
-  // ════════════════════════════════════════════════════════════
-  const problemPages: MetadataRoute.Sitemap = problemSlugs.map((slug) => ({
-    url: `${baseUrl}/problemes/${slug}`,
-    lastModified: currentDate,
-    changeFrequency: 'monthly' as const,
-    priority: 0.65,
-  }));
-
-  // ════════════════════════════════════════════════════════════
-  // PAGES QUARTIERS (SEO hyper-local Toulouse)
-  // ════════════════════════════════════════════════════════════
-  const quartierPages: MetadataRoute.Sitemap = quartierSlugs.map((quartier) => ({
-    url: `${baseUrl}/quartiers/${quartier}`,
-    lastModified: currentDate,
-    changeFrequency: 'monthly' as const,
-    priority: 0.68,
-  }));
+  // Quartiers et problèmes retirés du sitemap pour concentrer le crawl budget.
+  // Google les découvrira via le maillage interne quand l'autorité du site aura grandi.
 
   // ════════════════════════════════════════════════════════════
   // ASSEMBLAGE FINAL DU SITEMAP
@@ -318,8 +296,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...departementPages, 
     ...expertFissuresPages,
     ...expertHumiditePages,
-    ...blogPages, 
-    ...quartierPages,
-    ...problemPages,
+    ...blogPages,
   ];
 }
