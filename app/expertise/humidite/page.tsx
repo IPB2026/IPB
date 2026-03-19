@@ -121,8 +121,8 @@ export default function HumiditePage() {
               </div>
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
-                Murs <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Humides</span> ?
-                <span className="block text-3xl md:text-4xl mt-2 text-white">On Stoppe l'Eau. Définitivement.</span>
+                Expert <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Humidité</span> à Toulouse
+                <span className="block text-3xl md:text-4xl mt-2 text-white">Injection résine garantie 30 ans.</span>
               </h1>
               
               {/* Question directe pour engager */}

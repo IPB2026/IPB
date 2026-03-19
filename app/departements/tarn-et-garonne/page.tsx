@@ -4,8 +4,8 @@ import { Phone, MapPin, CheckCircle, ArrowRight } from 'lucide-react';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures & Humidité Tarn-et-Garonne (82) | Montauban, Moissac | IPB',
-  description: 'Expert reconnu en traitement des fissures et humidité dans le Tarn-et-Garonne (82). Intervention rapide à Montauban, Castelsarrasin, Moissac, Caussade. Diagnostic gratuit, garantie décennale.',
+  title: 'Expert Fissure Tarn-et-Garonne (82) | Montauban, Moissac, Castelsarrasin | IPB',
+  description: 'Expert fissure et humidité dans le Tarn-et-Garonne (82). Agrafage structurel garanti 10 ans à Montauban, Castelsarrasin, Moissac, Caussade. Diagnostic sous 48h. ☎ 05 82 95 33 75.',
   keywords: [
     'expert fissures tarn-et-garonne',
     'traitement humidité 82',

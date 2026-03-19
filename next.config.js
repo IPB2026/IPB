@@ -15,6 +15,21 @@ const nextConfig = {
   // Compression
   compress: true,
   
+  async redirects() {
+    return [
+      {
+        source: '/expert-fissures/toulouse',
+        destination: '/expert-fissures-toulouse-31',
+        permanent: true,
+      },
+      {
+        source: '/expert-humidite/toulouse',
+        destination: '/expert-humidite-toulouse-31',
+        permanent: true,
+      },
+    ];
+  },
+
   // Headers de sécurité
   async headers() {
     return [

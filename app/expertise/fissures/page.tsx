@@ -112,8 +112,8 @@ export default function FissuresPage() {
               </div>
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
-                Vos Fissures <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">S'Aggravent</span> ?
-                <span className="block text-3xl md:text-4xl mt-2 text-white">On Les Stoppe. Définitivement.</span>
+                Expert <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">Fissures</span> à Toulouse
+                <span className="block text-3xl md:text-4xl mt-2 text-white">Agrafage garanti 10 ans. On les stoppe.</span>
               </h1>
               
               <p className="text-xl text-slate-300 mb-6 leading-relaxed">

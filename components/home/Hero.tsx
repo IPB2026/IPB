@@ -32,11 +32,13 @@ export function Hero() {
             
             {/* H1 équilibré */}
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
+              Expert{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-300">Fissures</span>
-              {' '}ou{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Humidité</span> ?
-              <span className="block mt-2 text-white">
-                L'expert qui <span className="text-emerald-400">sauve votre maison</span>.
+              {' '}&{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Humidité</span>
+              {' '}à Toulouse
+              <span className="block mt-2 text-white text-3xl md:text-4xl lg:text-5xl">
+                On <span className="text-emerald-400">sauve votre maison</span>.
               </span>
             </h1>
             
