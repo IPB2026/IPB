@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Expert Fissures Toulouse (31) | Agrafage & Harpage | IPB',
-    description: 'Spécialiste traitement fissures structurelles à Toulouse. Agrafage 3x moins cher que micropieux. +200 maisons traitées. Garantie décennale.',
+    description: 'Spécialiste traitement fissures structurelles à Toulouse. Agrafage 3x moins cher que micropieux. +300 maisons traitées. Garantie décennale.',
     url: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31',
     type: 'website',
     images: [{

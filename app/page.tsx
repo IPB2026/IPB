@@ -84,7 +84,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "IPB Expert Fissures & Humidité | Toulouse, Montauban, Auch (31-82-32)",
-    description: "Spécialiste traitement fissures (agrafage, harpage) et humidité (injection, cuvelage) à Toulouse. +200 maisons traitées. Garantie décennale.",
+    description: "Spécialiste traitement fissures (agrafage, harpage) et humidité (injection, cuvelage) à Toulouse. +300 maisons traitées. Garantie décennale.",
     url: "https://www.ipb-expertise.fr",
     siteName: "IPB - Institut de Pathologie du Bâtiment",
     images: [

@@ -88,11 +88,11 @@ export default function ArreteSecheresse2026Page() {
       <TopBar />
       <Navbar />
 
-      {/* Alerte urgence */}
-      <div className="bg-red-600 text-white py-3">
+      {/* Alerte info */}
+      <div className="bg-amber-600 text-white py-3">
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-3">
           <AlertTriangle size={20} />
-          <span className="font-bold">⚠️ URGENT : Vous avez jusqu'au {DELAI_DECLARATION} pour déclarer votre sinistre !</span>
+          <span className="font-bold">Le délai de déclaration ({DELAI_DECLARATION}) est passé. Contactez-nous pour vérifier vos droits — des recours restent possibles.</span>
         </div>
       </div>
 

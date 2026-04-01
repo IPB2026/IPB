@@ -13,6 +13,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/notre-expert',
   },
+  openGraph: {
+    title: 'Notre Expert en Pathologie du Bâtiment | IPB Expertise',
+    description: 'Découvrez l\'équipe IPB : experts certifiés en fissures et humidité. 15+ ans d\'expérience en Occitanie.',
+    url: 'https://www.ipb-expertise.fr/notre-expert',
+    type: 'profile',
+  },
 };
 
 const certifications = [

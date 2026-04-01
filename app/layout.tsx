@@ -108,8 +108,8 @@ const localBusinessSchema = {
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": "43.6047",
-    "longitude": "1.4442"
+    "latitude": "43.5857",
+    "longitude": "1.3464"
   },
   "url": "https://www.ipb-expertise.fr",
   "telephone": "+33582953375",

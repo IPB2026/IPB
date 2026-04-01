@@ -9,7 +9,7 @@ export function TopBar() {
             <ShieldCheck size={14} className="text-orange-500 shrink-0" /> <span className="whitespace-nowrap">Garantie Décennale</span>
           </span>
           <span className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors cursor-default">
-            <MapPin size={14} className="text-orange-500 shrink-0" /> <span className="whitespace-nowrap">Intervention Haute-Garonne (31)</span>
+            <MapPin size={14} className="text-orange-500 shrink-0" /> <span className="whitespace-nowrap">Intervention 31 · 82 · 32</span>
           </span>
         </div>
         <div className="flex items-center gap-2 font-bold text-orange-400 text-center">

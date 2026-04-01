@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Activity, ArrowRight, AlertTriangle } from 'lucide-react';
-import { ImageAvantApres } from '@/components/ui/ImageAvantApres';
+
 
 export function ServicesStructure() {
   return (

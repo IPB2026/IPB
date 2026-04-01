@@ -4481,7 +4481,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>Une fissure intérieure peut être bénigne ou annonciatrice d'un problème grave. La seule façon de savoir, c'est un <strong>diagnostic professionnel</strong>. Ne faites pas l'erreur d'attendre : chaque cycle de sécheresse aggrave les mouvements de sol en Occitanie.</p>
 
-      <p>Chez IPB, nous avons diagnostiqué et traité plus de 200 maisons fissurées en Haute-Garonne, dans le Tarn-et-Garonne et le Gers. Notre <strong>agrafage structurel est garanti 10 ans</strong> avec garantie décennale.</p>
+      <p>Chez IPB, nous avons diagnostiqué et traité plus de 300 maisons fissurées en Haute-Garonne, dans le Tarn-et-Garonne et le Gers. Notre <strong>agrafage structurel est garanti 10 ans</strong> avec garantie décennale.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">📞 Diagnostic expert sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
     `

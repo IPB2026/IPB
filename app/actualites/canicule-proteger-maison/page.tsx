@@ -16,6 +16,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/actualites/canicule-proteger-maison',
   },
+  openGraph: {
+    title: 'Canicule : Comment Protéger sa Maison des Fissures',
+    description: 'Canicule et sécheresse : risques pour votre maison (fissures, RGA). Gestes préventifs et signes d\'alerte.',
+    url: 'https://www.ipb-expertise.fr/actualites/canicule-proteger-maison',
+    type: 'article',
+  },
 };
 
 const gestesPreventifs = [
@@ -52,8 +58,8 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Canicule 2026 : Comment Protéger sa Maison des Fissures",
-  "datePublished": "2026-06-15",
-  "dateModified": new Date().toISOString(),
+  "datePublished": "2025-06-15",
+  "dateModified": "2026-02-10",
   "author": { "@type": "Organization", "name": "IPB Expertise" },
   "publisher": {
     "@type": "Organization",

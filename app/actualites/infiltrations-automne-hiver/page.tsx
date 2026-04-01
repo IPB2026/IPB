@@ -16,6 +16,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/actualites/infiltrations-automne-hiver',
   },
+  openGraph: {
+    title: 'Infiltrations Automne/Hiver : Diagnostic et Solutions',
+    description: 'Comment détecter et traiter les infiltrations d\'eau en automne et hiver. Guide expert IPB.',
+    url: 'https://www.ipb-expertise.fr/actualites/infiltrations-automne-hiver',
+    type: 'article',
+  },
 };
 
 const sourcesInfiltration = [
@@ -54,8 +60,8 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Infiltrations Automne/Hiver : Diagnostic et Solutions",
-  "datePublished": "2026-09-15",
-  "dateModified": new Date().toISOString(),
+  "datePublished": "2025-09-15",
+  "dateModified": "2026-02-10",
   "author": { "@type": "Organization", "name": "IPB Expertise" },
   "publisher": {
     "@type": "Organization",

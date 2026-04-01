@@ -74,6 +74,7 @@ export function QuickCallbackForm() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Votre nom"
+                    aria-label="Votre nom"
                     required
                     className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-slate-400 focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 outline-none text-sm transition-all"
                   />
@@ -82,6 +83,7 @@ export function QuickCallbackForm() {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="06 12 34 56 78"
+                    aria-label="Votre numéro de téléphone"
                     required
                     className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-slate-400 focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 outline-none text-sm transition-all"
                   />

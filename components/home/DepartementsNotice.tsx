@@ -24,6 +24,15 @@ export function DepartementsNotice() {
           {/* Right: Links */}
           <div className="flex flex-wrap justify-center gap-3 flex-shrink-0">
             <Link
+              href="/departements/haute-garonne"
+              className="group inline-flex items-center gap-2 bg-white hover:bg-orange-50 text-orange-600 border border-orange-200 px-4 py-2 rounded-lg text-sm font-semibold transition-all shadow-sm hover:shadow"
+            >
+              <MapPin size={16} />
+              <span className="hidden sm:inline">Haute-Garonne</span>
+              <span className="sm:hidden">31</span>
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
               href="/departements/tarn-et-garonne"
               className="group inline-flex items-center gap-2 bg-white hover:bg-orange-50 text-orange-600 border border-orange-200 px-4 py-2 rounded-lg text-sm font-semibold transition-all shadow-sm hover:shadow"
             >
