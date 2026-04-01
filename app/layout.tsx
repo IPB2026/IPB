@@ -168,6 +168,20 @@ export default function RootLayout({
         {/* DNS-prefetch pour les scripts tiers */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         
+        {/* Google Ads (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17902440600"
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads-gtag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-17902440600');
+          `}
+        </Script>
+
         {/* Structured Data */}
         <script
           type="application/ld+json"
