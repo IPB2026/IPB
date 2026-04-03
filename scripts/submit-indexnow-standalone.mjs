@@ -32,6 +32,8 @@ const blogPosts = [
   'diagnostic-structurel-maison', 'revente-maison-fissuree',
   'merule-champignon-maison-danger',
   'catastrophe-naturelle-secheresse-demarches-indemnisation',
+  'fissure-mur-interieur-causes-solutions',
+  'prix-agrafage-fissures-2026',
 ];
 
 const triggerEvents = [
