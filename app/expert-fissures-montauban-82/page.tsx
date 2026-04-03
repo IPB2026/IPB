@@ -216,6 +216,81 @@ export default function ExpertFissuresMontauban82Page() {
         </div>
       </section>
 
+      {/* Contexte RGA Tarn-et-Garonne */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-8">
+            Le Tarn-et-Garonne : l&apos;un des départements les plus exposés au RGA
+          </h2>
+          
+          <div className="space-y-6 text-slate-700 text-lg leading-relaxed">
+            <p>
+              Le <strong>retrait-gonflement des argiles (RGA)</strong> est la première cause de fissuration des maisons en France. Le Tarn-et-Garonne fait partie des départements les plus touchés : <strong>plus de 70% du territoire est classé en risque moyen à fort</strong>. Les communes de Montauban, Castelsarrasin, Moissac, Caussade et Valence-d&apos;Agen sont particulièrement concernées.
+            </p>
+
+            <p>
+              Le mécanisme est simple mais redoutable : quand il fait sec, les sols argileux se rétractent et créent des <strong>vides sous les fondations</strong>. Quand il pleut, ils gonflent et exercent une pression latérale. Ce cycle répété provoque des <strong>tassements différentiels</strong> : une partie de la maison s&apos;enfonce plus que l&apos;autre, créant des fissures caractéristiques en escalier.
+            </p>
+
+            <div className="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-lg my-8">
+              <p className="font-bold text-orange-900 mb-2">Chiffre clé :</p>
+              <p className="text-orange-800">Depuis 2020, <strong>23 communes du Tarn-et-Garonne</strong> ont bénéficié d&apos;au moins un arrêté de catastrophe naturelle sécheresse. Si votre commune est concernée, votre assurance peut prendre en charge les réparations — à condition de déclarer dans les 10 jours.</p>
+            </div>
+
+            <h3 className="text-xl font-bold text-slate-900 mt-8 mb-4">Les types de fissures que nous traitons à Montauban</h3>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3">
+                <CheckCircle className="text-orange-600 mt-1 flex-shrink-0" size={18} />
+                <span><strong>Fissures en escalier</strong> : suivent les joints de maçonnerie, signe de tassement différentiel</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="text-orange-600 mt-1 flex-shrink-0" size={18} />
+                <span><strong>Fissures horizontales</strong> : sur murs porteurs, indiquent une poussée latérale du sol</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="text-orange-600 mt-1 flex-shrink-0" size={18} />
+                <span><strong>Fissures autour des ouvertures</strong> : portes et fenêtres qui frottent ou ne ferment plus</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="text-orange-600 mt-1 flex-shrink-0" size={18} />
+                <span><strong>Fissures de fondation</strong> : visibles en bas des murs, nécessitent un diagnostic technique</span>
+              </li>
+            </ul>
+
+            <h3 className="text-xl font-bold text-slate-900 mt-8 mb-4">L&apos;agrafage : la solution la plus adaptée au 82</h3>
+            <p>
+              Pour 90% des maisons fissurées du Tarn-et-Garonne, l&apos;<strong>agrafage structurel</strong> est la solution optimale. Cette technique redonne au mur sa cohérence monolithique en insérant des agrafes en acier inoxydable dans des saignées, puis en les scellant avec un mortier haute performance. Le résultat : un mur stabilisé, une <strong>garantie décennale</strong>, et un coût <strong>3 fois inférieur aux micropieux</strong>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Guides fissures - Topic Cluster */}
+      <section className="py-16 md:py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Guides par type de fissure</h2>
+            <p className="text-slate-600">Tout comprendre sur les fissures : causes, diagnostic et solutions</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { href: '/fissure-en-escalier-causes', icon: '📐', title: 'Fissure en escalier', desc: 'Causes et solutions pour les fissures en marches d\'escalier' },
+              { href: '/fissure-horizontale-danger', icon: '➖', title: 'Fissure horizontale', desc: 'Danger structurel : quand intervenir en urgence' },
+              { href: '/microfissure-quand-sinquieter', icon: '🔍', title: 'Microfissure', desc: 'Comment différencier une fissure bénigne d\'un danger' },
+              { href: '/fissure-secheresse-indemnisation', icon: '☀️', title: 'Sécheresse & CAT-NAT', desc: 'Démarches pour être indemnisé par votre assurance' },
+              { href: '/fissure-fondation-maison', icon: '🏠', title: 'Fissure de fondation', desc: 'Quand les fondations sont en cause : solutions' },
+              { href: '/expertise/fissures', icon: '📋', title: 'Guide complet fissures', desc: 'Notre expertise complète en traitement des fissures' },
+            ].map((item, i) => (
+              <Link key={i} href={item.href} className="group bg-white hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-2xl p-6 transition-all">
+                <div className="text-3xl mb-3">{item.icon}</div>
+                <h3 className="text-lg font-bold text-slate-900 group-hover:text-orange-600 mb-2">{item.title}</h3>
+                <p className="text-slate-600 text-sm">{item.desc}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Tarifs */}
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

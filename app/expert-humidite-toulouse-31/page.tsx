@@ -235,6 +235,69 @@ export default function ExpertHumiditeToulouse31Page() {
         </div>
       </section>
 
+      {/* Pourquoi Toulouse est touchée */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-8">
+            Pourquoi Toulouse et la Haute-Garonne sont si touchées par l&apos;humidité ?
+          </h2>
+          
+          <div className="prose prose-slate max-w-none">
+            <p className="text-lg text-slate-700 mb-6">
+              La Haute-Garonne concentre plusieurs facteurs qui favorisent les problèmes d&apos;humidité dans les maisons. Comprendre ces causes locales est essentiel pour choisir le bon traitement.
+            </p>
+
+            <h3 className="text-xl font-bold text-slate-900 mt-8 mb-4">Les sols argileux du bassin toulousain</h3>
+            <p className="text-slate-700 mb-4">
+              Plus de <strong>80% des sols en Haute-Garonne sont argileux</strong>. L&apos;argile retient l&apos;eau comme une éponge : elle gonfle en période de pluie et pousse l&apos;humidité vers les fondations. Les maisons construites sans barrière étanche (la majorité des constructions avant 1990) absorbent cette humidité par capillarité. Le phénomène est particulièrement marqué dans les quartiers anciens de Toulouse (Saint-Cyprien, Minimes, Côte Pavée) et les communes périphériques comme Colomiers, Tournefeuille ou Muret.
+            </p>
+
+            <h3 className="text-xl font-bold text-slate-900 mt-8 mb-4">Le climat semi-continental</h3>
+            <p className="text-slate-700 mb-4">
+              Toulouse alterne entre des <strong>hivers humides</strong> (800 mm de précipitations annuelles) et des <strong>étés caniculaires</strong>. Ce contraste provoque des cycles de gonflement/retrait du sol qui stressent les fondations et aggravent les remontées capillaires. En hiver, la condensation sur les murs froids crée un terrain propice aux moisissures, surtout dans les logements mal ventilés.
+            </p>
+
+            <h3 className="text-xl font-bold text-slate-900 mt-8 mb-4">Le parc immobilier ancien</h3>
+            <p className="text-slate-700 mb-4">
+              <strong>42% des logements toulousains ont été construits avant 1975</strong>, avant les réglementations thermiques et les normes d&apos;étanchéité modernes. Ces maisons n&apos;ont souvent ni membrane d&apos;étanchéité en fondation, ni ventilation mécanique. Résultat : les remontées capillaires remontent parfois jusqu&apos;à <strong>1,50 m de hauteur</strong> sur les murs intérieurs.
+            </p>
+
+            <h3 className="text-xl font-bold text-slate-900 mt-8 mb-4">Les signaux qui doivent vous alerter</h3>
+            <ul className="space-y-2 mb-6">
+              <li className="flex items-start gap-2 text-slate-700">
+                <span className="text-red-500 font-bold mt-1">1.</span>
+                <span>Peinture qui cloque ou se décolle en bas des murs</span>
+              </li>
+              <li className="flex items-start gap-2 text-slate-700">
+                <span className="text-red-500 font-bold mt-1">2.</span>
+                <span>Odeur de moisi persistante, même en aérant</span>
+              </li>
+              <li className="flex items-start gap-2 text-slate-700">
+                <span className="text-red-500 font-bold mt-1">3.</span>
+                <span>Taches noires (moisissures) sur les murs ou plafonds</span>
+              </li>
+              <li className="flex items-start gap-2 text-slate-700">
+                <span className="text-red-500 font-bold mt-1">4.</span>
+                <span>Salpêtre blanc poudreux à la base des murs</span>
+              </li>
+              <li className="flex items-start gap-2 text-slate-700">
+                <span className="text-red-500 font-bold mt-1">5.</span>
+                <span>Papier peint qui se décolle ou gondole</span>
+              </li>
+              <li className="flex items-start gap-2 text-slate-700">
+                <span className="text-red-500 font-bold mt-1">6.</span>
+                <span>Taux d&apos;humidité intérieur supérieur à 65% (mesurable avec un hygromètre)</span>
+              </li>
+            </ul>
+
+            <div className="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg my-8">
+              <p className="font-bold text-blue-900 mb-2">Notre méthode : diagnostic instrumenté avant tout traitement</p>
+              <p className="text-blue-800">Contrairement aux entreprises qui vendent directement des travaux, IPB réalise d&apos;abord un <strong>diagnostic avec des instruments de mesure professionnels</strong> (humidimètre à sonde, caméra thermique, test à la bombe à carbure). Ce diagnostic identifie précisément la source de l&apos;humidité — car traiter des remontées capillaires avec un déshumidificateur, ou traiter de la condensation avec de l&apos;injection résine, c&apos;est jeter l&apos;argent par la fenêtre.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Tarifs */}
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

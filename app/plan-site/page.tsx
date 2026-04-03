@@ -148,6 +148,7 @@ export default function PlanSitePage() {
               <li><Link href="/blog/revente-maison-fissuree" className="text-slate-700 hover:text-orange-600 transition">Revente maison fissurée</Link></li>
               <li><Link href="/blog/catastrophe-naturelle-secheresse-demarches-indemnisation" className="text-slate-700 hover:text-orange-600 transition">Catastrophe naturelle sécheresse : démarches</Link></li>
               <li><Link href="/blog/fissure-mur-interieur-causes-solutions" className="text-slate-700 hover:text-orange-600 transition">Fissure mur intérieur : causes et solutions</Link></li>
+              <li><Link href="/blog/prix-agrafage-fissures-2026" className="text-slate-700 hover:text-orange-600 transition">Prix agrafage fissures 2026 : tarifs et comparatif</Link></li>
             </ul>
           </div>
 

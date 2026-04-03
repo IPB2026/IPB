@@ -339,6 +339,35 @@ export default function MoisissuresSantePage() {
         </div>
       </section>
 
+      {/* Articles connexes */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-black text-slate-900 mb-8 text-center">
+            Articles connexes
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { href: '/expertise/humidite', icon: '📋', title: 'Guide complet humidité', desc: 'Toutes nos solutions' },
+              { href: '/salpetre-mur-traitement', icon: '🧂', title: 'Salpêtre', desc: 'Causes et traitement' },
+              { href: '/remontee-capillaire-solution', icon: '💧', title: 'Remontées capillaires', desc: 'Solutions durables' },
+              { href: '/expertise/fissures', icon: '🧱', title: 'Problème de fissures ?', desc: 'Diagnostic et agrafage' },
+            ].map((item, index) => (
+              <Link 
+                key={index}
+                href={item.href}
+                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-slate-100"
+              >
+                <span className="text-4xl mb-4 block">{item.icon}</span>
+                <h3 className="font-bold text-slate-900 group-hover:text-emerald-600 transition-colors mb-1">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-slate-500">{item.desc}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">

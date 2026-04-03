@@ -265,12 +265,14 @@ export default function SalpetrePage() {
           <h2 className="text-2xl font-black text-slate-900 mb-8 text-center">
             Articles connexes
           </h2>
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
             {[
               { href: '/remontees-capillaires-traitement', icon: '💧', title: 'Remontées capillaires', desc: 'La cause du salpêtre' },
               { href: '/moisissures-maison-sante', icon: '🦠', title: 'Moisissures', desc: 'Risques santé' },
               { href: '/cave-humide-solutions', icon: '🏠', title: 'Cave humide', desc: 'Solutions cuvelage' },
               { href: '/vmi-ventilation-insufflation', icon: '💨', title: 'VMI', desc: 'Ventilation' },
+              { href: '/expertise/humidite', icon: '📋', title: 'Guide complet humidité', desc: 'Toutes nos solutions' },
+              { href: '/expertise/fissures', icon: '🧱', title: 'Problème de fissures ?', desc: 'Diagnostic et agrafage' },
             ].map((item, index) => (
               <Link 
                 key={index}

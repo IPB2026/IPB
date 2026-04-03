@@ -366,12 +366,14 @@ export default function FissureEscalierPage() {
           <h2 className="text-2xl font-black text-slate-900 mb-8 text-center">
             Articles connexes
           </h2>
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
             {[
               { href: '/fissure-horizontale-danger', icon: '➖', title: 'Fissure horizontale', desc: 'Danger structurel' },
               { href: '/microfissure-quand-sinquieter', icon: '🔍', title: 'Microfissure', desc: 'Quand s\'inquiéter ?' },
               { href: '/fissure-secheresse-indemnisation', icon: '☀️', title: 'Fissure sécheresse', desc: 'Indemnisation CAT-NAT' },
               { href: '/fissure-fondation-maison', icon: '🏠', title: 'Fissure fondation', desc: 'Solutions durables' },
+              { href: '/expertise/fissures', icon: '📋', title: 'Guide complet fissures', desc: 'Tout savoir sur nos solutions' },
+              { href: '/expertise/humidite', icon: '💧', title: 'Problème d\'humidité ?', desc: 'Nos solutions humidité' },
             ].map((item, index) => (
               <Link 
                 key={index}

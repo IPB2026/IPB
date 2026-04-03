@@ -4485,6 +4485,150 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p class="font-bold text-lg text-slate-900 mt-6">📞 Diagnostic expert sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
     `
+  },
+  'prix-agrafage-fissures-2026': {
+    slug: 'prix-agrafage-fissures-2026',
+    title: 'Prix Agrafage Fissures en 2026 : Tarifs Réels et Comparatif Complet',
+    excerpt: 'Combien coûte réellement un agrafage de fissures ? Tarifs au mètre linéaire, comparatif agrafage vs micropieux, facteurs de prix et aides financières. Les vrais chiffres d\'un expert.',
+    date: '2026-02-10',
+    readTime: '10 min',
+    category: 'fissures',
+    author: 'Expert IPB',
+    metaDescription: 'Prix agrafage fissures 2026 : de 80 à 150€/ml selon la gravité. Comparatif agrafage vs micropieux (3x moins cher). Devis détaillé, aides CAT-NAT, garantie décennale. Expert Toulouse.',
+    keywords: ['prix agrafage fissures', 'cout agrafage fissure', 'tarif agrafage mur', 'prix reparation fissure maison', 'agrafage fissure prix m2', 'devis agrafage fissures', 'cout reparation fissure facade'],
+    content: `
+      <div class="mb-8 p-6 bg-emerald-50 border-l-4 border-emerald-600 rounded-r-lg">
+        <p class="font-bold text-emerald-900 mb-2">En résumé : les prix 2026</p>
+        <p class="text-emerald-800"><strong>Agrafage simple</strong> : 80 à 120€/ml • <strong>Agrafage structurel complet</strong> : 8 000 à 15 000€ • <strong>Micropieux</strong> : 25 000 à 50 000€. L'agrafage est 3 fois moins cher que les micropieux pour 90% des cas. Diagnostic préalable : 149€ (déductible des travaux).</p>
+      </div>
+
+      <h2>Combien coûte un agrafage de fissures en 2026 ?</h2>
+
+      <p>C'est LA question que se posent tous les propriétaires confrontés à des fissures. Et c'est normal : entre les devis qui varient du simple au triple et les solutions "miracles" à bas prix, il est difficile de savoir à quoi s'attendre. Voici les <strong>vrais chiffres</strong>, issus de nos 300+ chantiers réalisés en Occitanie.</p>
+
+      <h3>Tarif au mètre linéaire</h3>
+
+      <p>Le prix de l'agrafage se calcule principalement au <strong>mètre linéaire de fissure traitée</strong> :</p>
+
+      <ul>
+        <li><strong>Fissure simple (< 2mm)</strong> : 80 à 100€/ml — ouverture, pose d'agrafes inox, scellement au mortier technique</li>
+        <li><strong>Fissure structurelle (2-5mm)</strong> : 100 à 130€/ml — agrafage renforcé avec injection de résine</li>
+        <li><strong>Fissure grave (> 5mm)</strong> : 130 à 150€/ml — agrafage multi-niveau avec reprise partielle de maçonnerie</li>
+      </ul>
+
+      <h3>Prix global d'un chantier d'agrafage</h3>
+
+      <p>En pratique, un chantier complet inclut la main d'œuvre, les matériaux, l'échafaudage et les finitions :</p>
+
+      <ul>
+        <li><strong>Petite façade</strong> (1 à 3 fissures) : <strong>3 000 à 6 000€</strong></li>
+        <li><strong>Façade moyenne</strong> (4 à 8 fissures, une face) : <strong>6 000 à 10 000€</strong></li>
+        <li><strong>Maison complète</strong> (toutes les façades) : <strong>8 000 à 15 000€</strong></li>
+        <li><strong>Cas complexe</strong> (fissures traversantes + fondation) : <strong>12 000 à 20 000€</strong></li>
+      </ul>
+
+      <h2>Agrafage vs Micropieux : le comparatif complet</h2>
+
+      <p>Les micropieux (ou reprise en sous-œuvre) sont l'alternative lourde à l'agrafage. Voici pourquoi <strong>l'agrafage est préférable dans 90% des cas</strong> :</p>
+
+      <table class="w-full border-collapse my-8">
+        <thead>
+          <tr class="bg-slate-100">
+            <th class="border border-slate-300 p-3 text-left">Critère</th>
+            <th class="border border-slate-300 p-3 text-left">Agrafage</th>
+            <th class="border border-slate-300 p-3 text-left">Micropieux</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-slate-300 p-3 font-bold">Prix moyen</td>
+            <td class="border border-slate-300 p-3 text-emerald-600 font-bold">8 000 – 15 000€</td>
+            <td class="border border-slate-300 p-3 text-red-600">25 000 – 50 000€</td>
+          </tr>
+          <tr class="bg-slate-50">
+            <td class="border border-slate-300 p-3 font-bold">Durée du chantier</td>
+            <td class="border border-slate-300 p-3">2 à 5 jours</td>
+            <td class="border border-slate-300 p-3">2 à 4 semaines</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 p-3 font-bold">Efficacité</td>
+            <td class="border border-slate-300 p-3">90% des cas</td>
+            <td class="border border-slate-300 p-3">100% (toute pathologie)</td>
+          </tr>
+          <tr class="bg-slate-50">
+            <td class="border border-slate-300 p-3 font-bold">Garantie</td>
+            <td class="border border-slate-300 p-3">Décennale (10 ans)</td>
+            <td class="border border-slate-300 p-3">Décennale (10 ans)</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 p-3 font-bold">Invasivité</td>
+            <td class="border border-slate-300 p-3 text-emerald-600">Faible (travail en surface)</td>
+            <td class="border border-slate-300 p-3 text-red-600">Forte (terrassement)</td>
+          </tr>
+          <tr class="bg-slate-50">
+            <td class="border border-slate-300 p-3 font-bold">Quand choisir</td>
+            <td class="border border-slate-300 p-3">Fissures < 10mm, sol stabilisé</td>
+            <td class="border border-slate-300 p-3">Affaissement majeur, sol instable</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Les 5 facteurs qui influencent le prix</h2>
+
+      <h3>1. La gravité des fissures</h3>
+      <p>Une micro-fissure de 1mm ne demande pas le même travail qu'une fissure de 8mm traversante. Plus la fissure est large et profonde, plus l'agrafage doit être renforcé (agrafes plus longues, espacement plus serré, injection complémentaire).</p>
+
+      <h3>2. Le nombre et la longueur des fissures</h3>
+      <p>Le prix est proportionnel au métrage linéaire total. Une maison avec 3 fissures de 2 mètres coûtera moins qu'une maison avec 15 fissures réparties sur 4 façades.</p>
+
+      <h3>3. L'accessibilité du chantier</h3>
+      <p>Un échafaudage pour une façade de 2 étages coûte plus cher qu'un travail en rez-de-chaussée. L'accès au chantier (impasse, terrain en pente, proximité des voisins) peut aussi impacter le prix.</p>
+
+      <h3>4. Le type de maçonnerie</h3>
+      <p>L'agrafage sur un mur en pierre nécessite des techniques différentes d'un mur en parpaing ou en brique. La pierre demande un <strong>forage adapté</strong> et des agrafes spécifiques, ce qui peut augmenter le coût de 10 à 20%.</p>
+
+      <h3>5. La région</h3>
+      <p>Les prix varient selon les zones géographiques. En Occitanie (Toulouse, Montauban, Auch), les tarifs sont <strong>15 à 20% moins élevés qu'en Île-de-France</strong> pour un service équivalent.</p>
+
+      <h2>Comment financer vos travaux d'agrafage ?</h2>
+
+      <h3>L'indemnisation CAT-NAT sécheresse</h3>
+      <p>Si votre commune a fait l'objet d'un <strong>arrêté de catastrophe naturelle sécheresse</strong>, votre assurance habitation couvre les travaux de réparation. La franchise légale est de 1 520€ en 2026. Attention : vous devez déclarer dans les <strong>10 jours</strong> suivant la publication de l'arrêté au Journal Officiel.</p>
+
+      <p>Un rapport d'expert indépendant (comme celui d'IPB) est un atout majeur pour <strong>maximiser votre indemnisation</strong>. L'expert d'assurance défend les intérêts de la compagnie — le nôtre défend les vôtres.</p>
+
+      <h3>Les aides de l'ANAH</h3>
+      <p>L'Agence Nationale de l'Habitat peut accorder des subventions pour les travaux de consolidation, sous conditions de ressources. Le montant varie de 35 à 50% du coût des travaux selon vos revenus.</p>
+
+      <h3>Le prêt travaux à taux préférentiel</h3>
+      <p>Certaines banques proposent des prêts travaux à taux réduit pour les réparations structurelles. Renseignez-vous auprès de votre banque — un devis détaillé facilite l'acceptation du dossier.</p>
+
+      <h2>Comment obtenir un devis fiable ?</h2>
+
+      <p>Un bon devis d'agrafage doit contenir :</p>
+
+      <ol>
+        <li><strong>Un diagnostic préalable</strong> — jamais de devis "au pif" sans visite sur site</li>
+        <li><strong>Le détail des fissures</strong> — localisation, longueur, largeur, type</li>
+        <li><strong>La technique proposée</strong> — type d'agrafes, espacement, mortier utilisé</li>
+        <li><strong>Le prix détaillé</strong> — main d'œuvre, matériaux, échafaudage, finitions</li>
+        <li><strong>La garantie</strong> — garantie décennale obligatoire pour les travaux structurels</li>
+        <li><strong>Le planning</strong> — durée estimée et date de début</li>
+      </ol>
+
+      <div class="bg-orange-50 border-l-4 border-orange-600 p-6 rounded-r-lg my-8">
+        <p class="font-bold text-orange-900 mb-2">Méfiez-vous des devis trop bas</p>
+        <p class="text-orange-800">Un devis d'agrafage complet à moins de 5 000€ pour une maison entière doit vous alerter. Soit le diagnostic est bâclé, soit les matériaux sont de mauvaise qualité, soit il n'y a pas de garantie décennale. Un travail mal fait coûtera 2 fois plus cher à refaire dans 3 ans.</p>
+      </div>
+
+      <h2>Conclusion : investir maintenant, économiser sur le long terme</h2>
+
+      <p>L'agrafage de fissures représente un investissement de 8 000 à 15 000€ en moyenne, mais il protège un patrimoine qui en vaut <strong>10 à 50 fois plus</strong>. Chaque année sans traitement, les fissures s'aggravent et le coût de réparation augmente de 15 à 20%.</p>
+
+      <p>Chez IPB, nous réalisons un <strong>diagnostic complet à 149€</strong> (déductible de la facture finale). Ce diagnostic vous donne un rapport technique précis, un devis détaillé et des recommandations claires. Pas de surprise, pas de travaux inutiles.</p>
+
+      <p class="font-bold text-lg text-slate-900 mt-6">📞 Devis gratuit sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
+    `
   }
 };
 
