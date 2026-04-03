@@ -129,11 +129,47 @@ const faqJsonLd = {
   }))
 };
 
+const howToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Comment faire réparer les fissures de sa maison à Toulouse",
+  "description": "Les 3 étapes pour diagnostiquer et traiter les fissures structurelles de votre maison en Haute-Garonne, Tarn-et-Garonne ou Gers.",
+  "totalTime": "P7D",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "EUR",
+    "value": "8000-15000"
+  },
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Diagnostic expert sur site",
+      "text": "Un expert IPB se déplace sous 48h pour inspecter les fissures, mesurer leur évolution et identifier les causes (sol argileux, tassement différentiel, sécheresse). Rapport détaillé avec photos et préconisations. Coût : 149€ déductibles des travaux.",
+      "url": "https://www.ipb-expertise.fr/diagnostic"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Devis détaillé et plan de traitement",
+      "text": "Après le diagnostic, IPB établit un devis transparent avec la solution adaptée : agrafage structurel (80% des cas), harpage ou micropieux. Le devis détaille les coûts, les délais et la garantie décennale.",
+      "url": "https://www.ipb-expertise.fr/expertise/fissures"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Travaux de réparation garantis",
+      "text": "L'agrafage structurel stabilise définitivement les fissures : insertion d'agrafes en acier inoxydable dans des saignées, scellement au mortier haute performance. Durée : 2 à 5 jours. Garantie décennale incluse."
+    }
+  ]
+};
+
 export default function ExpertFissuresToulouse31Page() {
   return (
     <div className="font-sans text-slate-800 bg-slate-50 antialiased">
       <Script id="local-business-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <Script id="howto-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }} />
       
       <TopBar />
       <Navbar />
@@ -207,9 +243,10 @@ export default function ExpertFissuresToulouse31Page() {
               </h2>
               <div className="prose prose-lg text-slate-600">
                 <p>
-                  <strong>L'Occitanie (31, 82, 32)</strong> est l'une des zones les plus touchées par le phénomène de 
+                  <strong>L&apos;Occitanie (31, 82, 32)</strong> est l&apos;une des zones les plus touchées par le phénomène de 
                   <strong> retrait-gonflement des argiles (RGA)</strong>. Les sols argileux de Toulouse, Montauban et Auch 
-                  se contractent en été et gonflent en hiver, créant des mouvements de terrain destructeurs.
+                  se contractent en été et gonflent en hiver, créant des mouvements de terrain destructeurs. 
+                  Ce phénomène provoque typiquement des <Link href="/fissure-en-escalier-causes" className="text-orange-600 underline hover:text-orange-700">fissures en escalier</Link> et des <Link href="/fissure-horizontale-danger" className="text-orange-600 underline hover:text-orange-700">fissures horizontales</Link>.
                 </p>
                 <p>
                   Depuis les sécheresses de 2022-2023, <strong>plus de 400 communes des 3 départements</strong> ont été 
@@ -223,8 +260,8 @@ export default function ExpertFissuresToulouse31Page() {
                   <div>
                     <h3 className="font-bold text-slate-900">Alerte sécheresse 2024-2025</h3>
                     <p className="text-slate-600 mt-1">
-                      De nouveaux arrêtés CAT-NAT sont attendus. Faites constater vos fissures maintenant pour 
-                      constituer votre dossier d'indemnisation.
+                          De nouveaux arrêtés CAT-NAT sont attendus. Faites constater vos fissures maintenant pour 
+                      constituer votre <Link href="/fissure-secheresse-indemnisation" className="underline hover:text-orange-700">dossier d&apos;indemnisation sécheresse</Link>.
                     </p>
                   </div>
                 </div>

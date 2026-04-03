@@ -191,16 +191,17 @@ export default function ExpertHumiditeToulouse31Page() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: '💧', title: 'Remontées capillaires', desc: 'Humidité qui monte du sol dans les murs' },
-              { icon: '🧂', title: 'Salpêtre', desc: 'Dépôts blancs sur les murs humides' },
-              { icon: '🍄', title: 'Moisissures', desc: 'Champignons sur murs et plafonds' },
-              { icon: '🏠', title: 'Cave humide', desc: 'Infiltrations et condensation en sous-sol' },
+              { href: '/remontee-capillaire-solution', icon: '💧', title: 'Remontées capillaires', desc: 'Humidité qui monte du sol dans les murs' },
+              { href: '/salpetre-mur-traitement', icon: '🧂', title: 'Salpêtre', desc: 'Dépôts blancs sur les murs humides' },
+              { href: '/moisissures-maison-sante', icon: '🍄', title: 'Moisissures', desc: 'Champignons sur murs et plafonds' },
+              { href: '/condensation-ou-infiltration', icon: '🏠', title: 'Cave humide', desc: 'Infiltrations et condensation en sous-sol' },
             ].map((item, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200">
+              <Link key={i} href={item.href} className="group bg-white rounded-2xl p-6 shadow-lg border border-slate-200 hover:border-blue-300 hover:shadow-xl transition-all">
                 <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
+                <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2">{item.title}</h3>
                 <p className="text-slate-600">{item.desc}</p>
-              </div>
+                <span className="text-blue-600 text-sm font-bold mt-3 block opacity-0 group-hover:opacity-100 transition-opacity">En savoir plus →</span>
+              </Link>
             ))}
           </div>
         </div>
