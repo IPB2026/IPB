@@ -127,11 +127,86 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p><strong>La seule solution durable</strong> : traiter la cause (stabiliser les fondations) avant de traiter le symptôme (reboucher).</p>
 
+      <h2>Les quartiers de Toulouse les plus touchés par les fissures</h2>
+
+      <p>Tous les quartiers de Toulouse ne sont pas égaux face au risque de fissuration. La nature du sous-sol varie considérablement d&apos;un secteur à l&apos;autre, et certains quartiers concentrent une proportion anormalement élevée de sinistres :</p>
+
+      <ul>
+        <li><strong>Saint-Cyprien (rive gauche)</strong> : Sol alluvionnaire de la Garonne, très sensible au retrait-gonflement. Les maisons anciennes en brique foraine, souvent sans chaînage, sont particulièrement vulnérables. <strong>Risque : élevé.</strong></li>
+        <li><strong>Côte Pavée / Côte des Demoiselles</strong> : Terrain en pente sur argile de la molasse. Le ruissellement accentue les mouvements de sol. De nombreux pavillons des années 1950-1970 présentent des fissures en escalier sur les façades exposées au sud. <strong>Risque : élevé.</strong></li>
+        <li><strong>Rangueil / Saouzelong</strong> : Sol argileux profond, exposition sud-ouest. Les cycles sécheresse/pluie provoquent des tassements différentiels marqués. <strong>Risque : élevé.</strong></li>
+        <li><strong>Les Minimes / Croix-Daurade</strong> : Sous-sol hétérogène mêlant argile et calcaire. Les maisons construites à la jonction de deux types de sol sont les plus exposées, car le tassement n&apos;est pas uniforme. <strong>Risque : modéré à élevé.</strong></li>
+        <li><strong>Lardenne / Colomiers limitrophe</strong> : Zone d&apos;urbanisation récente sur ancien sol agricole argileux. Les constructions des années 1990-2000 avec fondations à 60 cm sont régulièrement touchées. <strong>Risque : modéré.</strong></li>
+      </ul>
+
+      <p>Vous pouvez consulter la carte d&apos;aléa retrait-gonflement des argiles de votre quartier sur le site <strong>georisques.gouv.fr</strong>. Si votre parcelle est classée en aléa moyen ou fort, un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic préventif</a> est fortement recommandé.</p>
+
+      <h2>Fissures à Toulouse : vos obligations légales</h2>
+
+      <p>Au-delà de l&apos;aspect technique, les fissures impliquent des <strong>obligations juridiques</strong> que tout propriétaire toulousain doit connaître :</p>
+
+      <h3>En cas de vente</h3>
+      <p>Le Code civil (articles 1641 à 1649) impose au vendeur de déclarer tout vice caché connu. Des fissures structurelles non déclarées peuvent entraîner l&apos;<strong>annulation de la vente</strong> ou une <strong>réduction du prix</strong> (action estimatoire), même plusieurs années après la transaction. Un rapport d&apos;expertise IPB protège le vendeur en documentant l&apos;état réel du bien et les éventuels travaux réalisés.</p>
+
+      <h3>En cas de catastrophe naturelle</h3>
+      <p>Vous disposez de <strong>30 jours</strong> après la publication de l&apos;arrêté Cat-Nat au Journal Officiel pour déclarer votre sinistre à votre assureur. Passé ce délai, votre dossier sera rejeté. Toulouse et de nombreuses communes de la métropole ont été reconnues en Cat-Nat sécheresse à plusieurs reprises.</p>
+
+      <h3>Étude géotechnique obligatoire (loi ELAN)</h3>
+      <p>Depuis le 1er janvier 2020, la <strong>loi ELAN</strong> impose une étude de sol préalable (étude G1) pour toute vente de terrain constructible en zone d&apos;aléa moyen ou fort. À Toulouse, cela concerne la majorité des parcelles. Cette obligation vise à prévenir les sinistres fissures en adaptant les fondations au sol réel.</p>
+
+      <h2>Combien coûte la réparation d&apos;une maison fissurée à Toulouse ?</h2>
+
+      <p>Les prix varient selon la gravité du problème et la solution retenue :</p>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead>
+            <tr class="bg-slate-100">
+              <th class="border border-slate-300 px-4 py-2 text-left">Solution</th>
+              <th class="border border-slate-300 px-4 py-2 text-left">Budget moyen TTC</th>
+              <th class="border border-slate-300 px-4 py-2 text-left">Cas d&apos;usage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 px-4 py-2"><strong>Diagnostic expert IPB</strong></td>
+              <td class="border border-slate-300 px-4 py-2">249€</td>
+              <td class="border border-slate-300 px-4 py-2">Toute fissure suspecte — déductible sur travaux</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 px-4 py-2"><strong><a href="/agrafage-fissures" class="text-orange-600 underline hover:text-orange-700">Agrafage structurel</a></strong></td>
+              <td class="border border-slate-300 px-4 py-2">8 000€ à 15 000€</td>
+              <td class="border border-slate-300 px-4 py-2">Fissures stabilisées, mouvement modéré</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 px-4 py-2"><strong>Injection de résine</strong></td>
+              <td class="border border-slate-300 px-4 py-2">6 000€ à 12 000€</td>
+              <td class="border border-slate-300 px-4 py-2">Comblement des vides sous fondation</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 px-4 py-2"><strong><a href="/micropieux-fondations" class="text-orange-600 underline hover:text-orange-700">Micropieux</a></strong></td>
+              <td class="border border-slate-300 px-4 py-2">25 000€ à 50 000€</td>
+              <td class="border border-slate-300 px-4 py-2">Affaissement sévère, sol très instable</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>Notre recommandation</strong> : dans 70% des cas à Toulouse, l&apos;agrafage structurel suffit à résoudre le problème durablement. Les micropieux ne sont nécessaires que pour les cas les plus graves (affaissement supérieur à 10 mm). Le diagnostic à 249€ TTC permet de déterminer précisément la solution adaptée à votre situation et d&apos;éviter tout sur-traitement.</p>
+
       <h2>Conclusion : agissez avant qu'il ne soit trop tard</h2>
       
       <p>Les fissures ne sont pas une fatalité. Mais elles ne se réparent pas toutes seules. Chaque hiver qui passe aggrave la situation, et chaque mois d'attente augmente le coût de la réparation.</p>
 
       <p><strong>Notre conseil d'expert</strong> : Ne laissez pas l'inquiétude paralyser votre action. Un diagnostic précis (249€, déductible sur travaux) vous dira en 1h30 si votre maison est en danger ou si vous pouvez attendre. Cette expertise vous évitera soit une panique inutile, soit une catastrophe évitable.</p>
+
+      <h2>Pourquoi ne pas attendre ?</h2>
+
+      <p>En Occitanie, chaque été de sécheresse aggrave les fissures existantes. Les sols argileux se contractent davantage, les fondations bougent, et les fissures s&apos;élargissent. Une <a href="/microfissure-quand-sinquieter" class="text-orange-600 underline hover:text-orange-700">microfissure</a> de 1 mm aujourd&apos;hui peut devenir une <a href="/fissure-en-escalier-causes" class="text-orange-600 underline hover:text-orange-700">fissure en escalier</a> de 5 mm dans 2 ans. Le coût de réparation augmente de <strong>15 à 20% par an</strong> d&apos;attente.</p>
+
+      <p>Au-delà du coût, il y a la <strong>sécurité</strong>. Une fissure traversante de plus de 5 mm compromet la stabilité structurelle du mur. En cas de séisme (le bassin toulousain est en zone sismique 1 à 2), un mur fragilisé peut s&apos;effondrer. Et il y a la <strong>valeur de votre patrimoine</strong> : une maison fissurée non traitée perd 15 à 30% de sa valeur à la revente. Pour une maison à 300 000€, c&apos;est une perte de 45 000 à 90 000€ — bien plus que le coût d&apos;un <a href="/expertise/fissures" class="text-orange-600 underline hover:text-orange-700">agrafage structurel</a>.</p>
+
+      <p>Au-delà du coût, il y a la <strong>sécurité</strong>. Une fissure traversante de plus de 5 mm compromet la stabilité structurelle du mur. En cas de séisme (le bassin toulousain est en zone sismique 1 à 2), un mur fragilisé peut s&apos;effondrer. Et il y a la <strong>valeur de votre patrimoine</strong> : une maison fissurée non traitée perd 15 à 30% de sa valeur à la revente.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">La question n'est pas "Est-ce grave ?" mais "Quand dois-je agir ?"</p>
     `
@@ -266,6 +341,57 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>L'humidité dans les murs n'est pas une fatalité. Mais elle ne se répare pas toute seule. Chaque mois qui passe aggrave la situation et augmente le coût de la réparation.</p>
 
       <p><strong>Notre conseil d'expert</strong> : Si vous voyez du salpêtre ou des moisissures qui reviennent, ne perdez plus de temps avec des solutions cosmétiques. Un diagnostic précis (249€, déductible sur travaux) vous dira en 1h30 si vous avez une remontée capillaire ou de la condensation, et quelle solution est adaptée à votre cas.</p>
+
+      <h2>Après le traitement : la phase de séchage</h2>
+
+      <p>Vous venez de faire traiter vos remontées capillaires par <a href="/traitement-humidite-injection-resine" class="text-orange-600 underline hover:text-orange-700">injection de résine</a> ? La barrière étanche est en place, mais <strong>le travail n&apos;est pas terminé</strong>. Vos murs contiennent encore toute l&apos;eau accumulée pendant des mois, voire des années. Voici ce qui se passe ensuite.</p>
+
+      <h3>Le calendrier de séchage réaliste</h3>
+      <p>Un mur de 40 cm d&apos;épaisseur met entre <strong>6 et 12 mois</strong> pour sécher complètement après traitement. Ce délai dépend de plusieurs facteurs :</p>
+      <ul>
+        <li><strong>Épaisseur du mur</strong> : un mur de 20 cm sèche en 4-6 mois ; un mur de 60 cm (maison ancienne en Occitanie) peut prendre 12-18 mois</li>
+        <li><strong>Saison du traitement</strong> : un traitement réalisé en avril-mai bénéficie de l&apos;été pour accélérer le séchage. Un traitement en octobre devra attendre le printemps suivant.</li>
+        <li><strong>Ventilation</strong> : une pièce bien ventilée (VMC ou aération naturelle) sèche 30% plus vite</li>
+        <li><strong>Nature du mur</strong> : la brique toulousaine sèche plus vite que la pierre calcaire (porosité différente)</li>
+      </ul>
+
+      <h3>Ce qui se passe dans vos murs pendant le séchage</h3>
+      <p>Pendant les premières semaines, vous verrez peut-être le salpêtre <strong>augmenter temporairement</strong>. C&apos;est normal : l&apos;eau résiduelle remonte et s&apos;évapore par la surface, entraînant les sels minéraux avec elle. Ce phénomène cesse progressivement à mesure que le mur s&apos;assèche.</p>
+
+      <h3>Quand refaire les finitions ?</h3>
+      <p><strong>Ne refaites JAMAIS enduit ou peinture avant séchage complet.</strong> Si vous repeignez trop tôt, l&apos;humidité résiduelle va faire cloquer la nouvelle peinture en quelques semaines. Attendez que l&apos;hygromètre indique un taux d&apos;humidité du mur <strong>inférieur à 5%</strong> avant toute finition.</p>
+
+      <h3>Comment surveiller le séchage</h3>
+      <p>Procurez-vous un <strong>hygromètre à contact</strong> (30-50€ en magasin de bricolage). Mesurez l&apos;humidité du mur au même point tous les mois et notez les valeurs. Vous devriez constater une baisse régulière :</p>
+      <ul>
+        <li><strong>Mois 1-2</strong> : taux encore élevé (15-25%), apparition possible de salpêtre</li>
+        <li><strong>Mois 3-6</strong> : baisse progressive (8-15%), le salpêtre cesse</li>
+        <li><strong>Mois 6-12</strong> : stabilisation sous 5%, le mur est sec — vous pouvez enduire et peindre</li>
+      </ul>
+
+      <h2>Remontées capillaires et valeur immobilière</h2>
+
+      <p>Si vous envisagez de vendre votre bien, les remontées capillaires sont un sujet critique. Voici ce que vous devez savoir.</p>
+
+      <h3>Impact sur le DPE (Diagnostic de Performance Énergétique)</h3>
+      <p>Un mur humide est un mur qui <strong>isole mal</strong>. L&apos;eau dans la maçonnerie multiplie par 5 la conductivité thermique du matériau. Résultat : votre DPE est dégradé d&apos;une à deux classes (un logement classé D peut tomber en F). Or, depuis 2025, les logements classés G sont <strong>interdits à la location</strong>. Les F suivront en 2028. Traiter les remontées capillaires améliore mécaniquement votre DPE.</p>
+
+      <h3>Diagnostic obligatoire avant vente</h3>
+      <p>L&apos;état relatif à la présence de mérule est obligatoire dans certaines zones (arrêté préfectoral). En Occitanie, si votre bien présente des signes d&apos;humidité chronique, l&apos;acheteur (ou son notaire) exigera un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic humidité</a>. Un rapport montrant des remontées capillaires non traitées peut faire <strong>chuter le prix de vente de 15 à 30%</strong>, voire bloquer la transaction.</p>
+
+      <h3>Le calcul rentabilité : traitement vs perte de valeur</h3>
+      <p>Prenons l&apos;exemple d&apos;une maison toulousaine estimée à 280 000€ :</p>
+      <ul>
+        <li><strong>Coût du traitement par injection</strong> : 3 500€ à 6 000€ (selon le linéaire de mur)</li>
+        <li><strong>Perte de valeur si non traité</strong> : 42 000€ à 84 000€ (15 à 30%)</li>
+        <li><strong>Gain net après traitement</strong> : 36 000€ à 78 000€</li>
+      </ul>
+      <p>Le traitement est <strong>rentabilisé 6 à 15 fois</strong>. C&apos;est l&apos;un des meilleurs investissements possibles avant une vente immobilière.</p>
+
+      <div class="my-8 p-6 bg-green-50 border border-green-200 rounded-xl">
+        <h3 class="font-bold text-green-900 mb-3">✅ Conseil pour les vendeurs</h3>
+        <p class="text-green-800">Faites traiter vos remontées capillaires <strong>au moins 6 mois avant la mise en vente</strong>. Cela laisse le temps au mur de sécher et vous permet de présenter un bien avec murs secs, finitions refaites, et une <strong>attestation de traitement avec garantie décennale</strong> — un argument de vente puissant.</p>
+      </div>
 
       <p class="font-bold text-lg text-slate-900 mt-6">La question n'est pas "Est-ce que ça va sécher ?" mais "Quand vais-je traiter la cause ?"</p>
     `
@@ -455,6 +581,47 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Les micropieux restent la solution de dernier recours pour les cas les plus graves. Mais si on vous les propose directement, sans avoir évoqué l'agrafage, <strong>demandez pourquoi</strong>. Vous risquez de payer 30 000€ de trop.</p>
 
       <p><strong>Notre conseil d'expert</strong> : Un diagnostic précis (249€, déductible sur travaux) vous dira en 1h30 quelle solution est adaptée à votre situation. Cette expertise vous évitera soit une dépense inutile (micropieux quand l'agrafage suffit), soit une solution insuffisante (agrafage quand les micropieux sont nécessaires).</p>
+
+      <h2>Comment l&apos;expert choisit entre agrafage et micropieux</h2>
+
+      <p>Quand notre expert arrive chez vous, il ne tire pas à pile ou face. Il suit un <strong>arbre de décision rigoureux</strong>, basé sur quatre critères mesurables. Voici exactement comment il procède :</p>
+
+      <h3>Étape 1 : Mesure de la largeur des fissures</h3>
+      <p>À l&apos;aide d&apos;un <strong>fissuromètre de précision</strong> (gradué au 1/10e de mm), l&apos;expert mesure chaque fissure. En dessous de 5 mm d&apos;ouverture, l&apos;<a href="/expertise/fissures" class="text-orange-600 underline hover:text-orange-700">agrafage structurel</a> est presque toujours suffisant. Au-delà de 10 mm, la question des micropieux se pose sérieusement.</p>
+
+      <h3>Étape 2 : Évaluation de la stabilité du sol</h3>
+      <p>L&apos;expert consulte la <strong>carte géotechnique</strong> de votre commune et les résultats de l&apos;étude de sol G1/G2 (si elle existe). En Haute-Garonne, <strong>82% des sols sont classés en exposition moyenne à forte au RGA</strong>. Si le sol est instable mais que le mouvement est modéré (tassement < 10 cm), l&apos;agrafage stabilise la maçonnerie sans toucher aux fondations. Si le sol continue de bouger activement avec un tassement supérieur à 10-15 cm, les micropieux deviennent nécessaires pour ancrer la structure dans une couche stable en profondeur.</p>
+
+      <h3>Étape 3 : Vérification de la profondeur des fondations</h3>
+      <p>Au niveau laser, l&apos;expert mesure le <strong>dénivelé global</strong> de la maison. Si les fondations sont peu profondes (< 60 cm, fréquent sur les maisons d&apos;avant 1980 en Occitanie) et que le tassement est actif, les micropieux permettent de descendre jusqu&apos;à la roche stable (parfois 6 à 12 mètres). En revanche, si les fondations sont à bonne profondeur et que le problème est localisé, l&apos;agrafage suffit.</p>
+
+      <h3>Étape 4 : Analyse coût-bénéfice</h3>
+      <p>L&apos;expert calcule le <strong>rapport entre le coût des travaux et la valeur du bien</strong>. Pour une maison de 250 000€ avec des fissures modérées, investir 15 000€ en agrafage est logique. Proposer 45 000€ de micropieux pour le même résultat serait disproportionné. L&apos;expert vérifie aussi la couverture assurance : en zone <a href="/catastrophe-naturelle-secheresse-demarches-indemnisation" class="text-orange-600 underline hover:text-orange-700">Cat-Nat</a>, la franchise est de 1 520€ — le reste peut être pris en charge.</p>
+
+      <h2>Les solutions intermédiaires</h2>
+
+      <p>L&apos;agrafage et les micropieux ne sont pas les seules options. Dans certaines configurations, des <strong>techniques intermédiaires</strong> offrent un meilleur rapport efficacité/prix.</p>
+
+      <h3>Injection de résine expansive</h3>
+      <p>Des résines polyuréthane sont injectées sous les fondations via des forages de petit diamètre (16 mm). En se solidifiant, la résine <strong>comble les vides et stabilise le sol</strong>. Cette technique est adaptée quand le tassement est lié à des cavités ou un sol meuble localisé. <strong>Coût</strong> : 10 000€ à 20 000€. <strong>Avantage</strong> : moins invasif que les micropieux, réalisable en 1-2 jours. <strong>Limite</strong> : inefficace sur les sols argileux en retrait-gonflement actif.</p>
+
+      <h3>Longrines de renforcement</h3>
+      <p>Une longrine est une poutre en béton armé coulée à la base des fondations existantes pour <strong>redistribuer les charges</strong>. Elle est particulièrement adaptée quand une partie de la fondation est sous-dimensionnée par rapport au reste. <strong>Coût</strong> : 8 000€ à 15 000€ selon la longueur. <strong>Avantage</strong> : renforce la fondation sans avoir à descendre en profondeur.</p>
+
+      <h3>Tirants d&apos;ancrage</h3>
+      <p>Des câbles métalliques sont tendus entre des points d&apos;ancrage pour <strong>empêcher l&apos;écartement de deux murs</strong> qui se séparent. Cette technique est fréquente sur les bâtiments anciens en Occitanie (maisons en briques toulousaines). <strong>Coût</strong> : 3 000€ à 8 000€. <strong>Avantage</strong> : préserve l&apos;aspect architectural. <strong>Limite</strong> : ne traite pas le tassement, seulement la désolidarisation.</p>
+
+      <div class="my-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
+        <p class="font-bold text-orange-900 mb-2">💡 Quand privilégier une solution intermédiaire ?</p>
+        <ul class="list-disc ml-6 text-orange-800 space-y-2">
+          <li><strong>Injection de résine</strong> : sol meuble avec cavités, tassement localisé, accès difficile pour engins</li>
+          <li><strong>Longrine</strong> : fondation sous-dimensionnée sur une partie de la maison, pas de tassement actif du sol</li>
+          <li><strong>Tirants</strong> : murs qui s&apos;écartent, bâtiment ancien, pas de mouvement de fondation</li>
+        </ul>
+        <p class="mt-4 text-orange-900 font-bold">Dans tous les cas, seul un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic précis à 249€</a> permet de déterminer la bonne technique.</p>
+      </div>
+
+      <p>Le choix entre agrafage et micropieux ne devrait jamais se faire au hasard ou sur la seule base du prix. Un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic expert</a> (249€ TTC, déductible des travaux) vous donne la réponse claire : quelle technique est adaptée à VOTRE maison, VOTRE sol, VOTRE budget. En Occitanie, 85% de nos interventions se font en agrafage — mais les 15% restants nécessitent vraiment des micropieux, et il vaut mieux le savoir avant.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">La question n'est pas "Quelle est la solution la plus chère ?" mais "Quelle est la solution la plus adaptée à mon cas ?"</p>
     `
@@ -1337,6 +1504,43 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Garantie</strong> : Décennale (10 ans)</li>
       </ul>
 
+      <h2>Portes et fenêtres qui ne ferment plus : un signe de tassement différentiel</h2>
+
+      <p>Quand plusieurs portes ou fenêtres de votre maison deviennent difficiles à ouvrir ou fermer <strong>en même temps</strong>, ce n&apos;est jamais une coïncidence. C&apos;est le signe clinique d&apos;un <strong>tassement différentiel</strong> : une partie de la fondation s&apos;enfonce plus vite que l&apos;autre, déformant l&apos;ensemble de la structure.</p>
+
+      <h3>Pourquoi les ouvertures sont les premières touchées</h3>
+
+      <p>Les cadres de portes et fenêtres sont les éléments les plus <strong>rigides</strong> de votre maçonnerie. Quand le mur se déforme — même de 3 à 5 mm — le cadre rectangulaire devient un parallélogramme. Résultat : le battant frotte en haut ou en bas. C&apos;est un indicateur <strong>plus précoce</strong> que les fissures visibles, car les fissures n&apos;apparaissent que lorsque la déformation dépasse la capacité élastique du matériau.</p>
+
+      <h3>Comment mesurer la déformation</h3>
+
+      <p>Posez un <strong>niveau à bulle</strong> sur le dessus du cadre de la porte. Si la bulle est décentrée, mesurez l&apos;écart. Au-delà de <strong>5 mm sur 1 mètre</strong>, la déformation est significative et confirme un mouvement structurel. Faites ce test sur toutes les ouvertures de la maison : si plusieurs sont affectées du même côté, le tassement est localisé dans cette zone.</p>
+
+      <p>Vérifiez également les <strong>joints de fenêtre</strong> : un joint qui se décolle d&apos;un côté mais reste collé de l&apos;autre indique une déformation du cadre. Sur les fenêtres en PVC, observez les angles : un écart visible entre les profils signale un mouvement de la maçonnerie.</p>
+
+      <h3>Ce que cela signifie pour votre structure</h3>
+
+      <p>Le tassement différentiel crée des <strong>contraintes de cisaillement</strong> dans les murs porteurs. Ces contraintes se concentrent aux angles des ouvertures — d&apos;où les fissures en diagonale partant du coin supérieur de la porte ou de la fenêtre vers le plafond. Si vous constatez ce schéma sur votre maison, consultez notre guide complet sur les <a href="/expertise/fissures" class="text-orange-600 underline hover:text-orange-700">fissures structurelles</a>.</p>
+
+      <h2>Quelles réparations après stabilisation ?</h2>
+
+      <p>Une fois la structure stabilisée par <a href="/blog/prix-agrafage-fissures-2026" class="text-orange-600 underline hover:text-orange-700">agrafage structurel</a>, il faut remettre en état les ouvertures. L&apos;ordre des opérations est crucial :</p>
+
+      <h3>Étape 1 : Attendre la stabilisation complète</h3>
+      <p>Après l&apos;agrafage, attendez <strong>2 à 4 semaines</strong> avant de toucher aux menuiseries. Cela laisse le temps au mortier de consolidation de durcir et à la structure de trouver son nouvel équilibre. Toute intervention prématurée risque d&apos;être anéantie par un dernier micro-mouvement.</p>
+
+      <h3>Étape 2 : Évaluer chaque ouverture</h3>
+      <ul>
+        <li><strong>Déformation &lt; 3 mm</strong> : Simple réglage des gonds ou des paumelles. Coût : 50€ - 150€ par porte</li>
+        <li><strong>Déformation 3-8 mm</strong> : Rabotage du battant + réalignement du cadre. Coût : 150€ - 400€ par porte</li>
+        <li><strong>Déformation &gt; 8 mm</strong> : Remplacement du bloc-porte ou repose du cadre de fenêtre. Coût : 300€ - 800€ par ouverture</li>
+      </ul>
+
+      <h3>Étape 3 : Fenêtres — ajuster ou remplacer ?</h3>
+      <p>Les fenêtres PVC tolèrent mal les déformations. Au-delà de <strong>5 mm</strong>, le vitrage perd son étanchéité et le double vitrage peut se fissurer. Les fenêtres aluminium sont plus tolérantes grâce à leur cadre ajustable. Si vos fenêtres ont plus de 15 ans, profitez de la reprise pour les remplacer par du <strong>double vitrage performant</strong> — vous combinerez stabilité structurelle et économie d&apos;énergie.</p>
+
+      <p><strong>Budget global de remise en état des ouvertures</strong> : Comptez entre 1 000€ et 3 500€ pour une maison de 4-5 pièces, selon le nombre d&apos;ouvertures affectées et le degré de déformation.</p>
+
       <h2>Le piège à éviter : raboter la porte sans traiter la cause</h2>
       
       <p>Vous avez raboté la porte ? <strong>Erreur.</strong> Dans 6 mois, elle frottera à nouveau, et la fissure sera plus large. Vous aurez perdu du temps et de l'argent.</p>
@@ -1508,7 +1712,50 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Diagnostic tous les 5 ans</strong> : Si vous êtes en zone à risque</li>
       </ol>
 
-      <h2>Conclusion : le sol argileux ne pardonne pas, mais on peut s'en protéger</h2>
+      <h2>Carte des zones à risque en Haute-Garonne</h2>
+
+      <p>Toutes les communes de Haute-Garonne ne sont pas exposées de la même manière. Le <strong>Bureau de Recherches Géologiques et Minières</strong> (BRGM) classe les zones selon leur aléa retrait-gonflement des argiles :</p>
+
+      <h3>Communes à risque fort</h3>
+      <ul>
+        <li><strong>Colomiers</strong> : Sol argilo-calcaire sur molasse, taux de sinistralité parmi les plus élevés du département</li>
+        <li><strong>Cugnaux</strong> : Argiles gonflantes en surface, lotissements des années 80 très touchés</li>
+        <li><strong>Muret</strong> : Plaine alluviale avec poches d&apos;argile profonde, exposée lors des étés secs</li>
+        <li><strong>Plaisance-du-Touch</strong> : Sous-sol argileux sensible, nombreuses déclarations Cat-Nat depuis 2022</li>
+        <li><strong>Tournefeuille, Blagnac, L&apos;Union, Balma</strong> : Zones résidentielles sur argiles moyennes à fortes</li>
+      </ul>
+
+      <h3>Communes à risque moyen</h3>
+      <p>Castanet-Tolosan, Ramonville-Saint-Agne, Saint-Orens-de-Gameville, Portet-sur-Garonne. Sols mixtes (argile + limon), risque modéré mais réel en période de sécheresse prolongée.</p>
+
+      <h3>Communes à risque faible</h3>
+      <p>Bagnères-de-Luchon, Saint-Gaudens et le piémont pyrénéen en général. Sols rocheux ou graveleux, peu sensibles au retrait-gonflement.</p>
+
+      <p><strong>Vérifiez votre commune</strong> : Consultez la carte interactive sur <strong>georisques.gouv.fr</strong> (rubrique « Argiles ») pour connaître l&apos;aléa exact de votre parcelle. C&apos;est gratuit et immédiat. Si votre maison est en zone orange ou rouge, un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic préventif</a> est fortement recommandé.</p>
+
+      <h2>Prévention : protéger sa maison du cycle sécheresse-pluie</h2>
+
+      <p>Même en zone à risque, des mesures simples réduisent considérablement l&apos;impact du retrait-gonflement sur vos fondations :</p>
+
+      <h3>Maintenir l&apos;hydratation du sol en été</h3>
+      <p>L&apos;objectif est d&apos;éviter que le sol autour de vos fondations ne se dessèche brutalement. Arrosez un <strong>bandeau de 1,5 mètre de large</strong> autour de la maison, 2 à 3 fois par semaine en période de canicule. Utilisez un arrosage goutte-à-goutte ou un tuyau poreux — pas un jet violent qui éroderait le sol. L&apos;apport doit être <strong>régulier et modéré</strong> (15-20 litres/m² par semaine).</p>
+
+      <h3>Maîtriser la végétation</h3>
+      <ul>
+        <li><strong>Arbres à grand développement</strong> (chêne, peuplier, saule) : Distance minimale = <strong>1,5 fois la hauteur adulte</strong> par rapport aux fondations. Un chêne de 15 m doit être planté à au moins 22 m de la maison</li>
+        <li><strong>Haies en pied de mur</strong> : À proscrire. Les racines assèchent le sol en été et créent des variations hydriques brutales</li>
+        <li><strong>Arbustes à racines superficielles</strong> (lavande, romarin) : Acceptables à 1 m des fondations</li>
+      </ul>
+
+      <h3>Gestion des eaux pluviales</h3>
+      <p>L&apos;eau de pluie qui s&apos;infiltre massivement à côté des fondations provoque un gonflement localisé — aussi destructeur que la sécheresse. Installez des <strong>gouttières avec descentes reliées à un regard</strong> situé à minimum 2 mètres de la façade. Créez une <strong>pente de 3 à 5%</strong> sur le terrain autour de la maison pour éloigner le ruissellement.</p>
+
+      <h3>Joints de dilatation souples</h3>
+      <p>Si votre maison possède une extension ou un garage accolé, vérifiez que le <strong>joint de dilatation</strong> entre les deux structures est souple et fonctionnel. Un joint rigidifié (colmaté au ciment) empêche les mouvements différentiels et provoque des fissures en escalier. Remplacez-le par un <strong>mastic polyuréthane souple</strong> tous les 10 ans.</p>
+
+      <p>Pour un diagnostic complet de votre exposition au risque argileux, consultez notre page dédiée à la <a href="/departements/haute-garonne" class="text-orange-600 underline hover:text-orange-700">Haute-Garonne</a>.</p>
+
+      <h2>Conclusion : le sol argileux ne pardonne pas, mais on peut s&apos;en protéger</h2>
       
       <p>Le sol argileux toulousain est un ennemi invisible, mais prévisible. Si vous êtes en zone à risque (vérifiez sur Géorisques), <strong>ne laissez pas les fissures s'installer</strong>. Chaque cycle de retrait-gonflement les aggrave.</p>
 
@@ -1727,6 +1974,61 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p><strong>Notre conseil d'expert</strong> : Avant de reboucher, faites le test du scotch pendant 3-6 mois. Si la fissure évolue, investissez dans un diagnostic (249€). Cette expertise vous dira précisément si reboucher suffit ou s'il faut agrafer. Vous économiserez potentiellement 5 000€ en évitant les rebouchages inutiles.</p>
 
+      <h2>L&apos;erreur du rebouchage seul : pourquoi la fissure revient toujours</h2>
+
+      <p>C&apos;est le scénario que nous voyons le plus souvent chez les propriétaires toulousains : vous rebouchez, ça revient. Vous rebouchez mieux, ça revient encore. Voici <strong>pourquoi</strong>, en termes mécaniques simples.</p>
+
+      <h3>Le mouvement structurel ne s&apos;arrête pas</h3>
+      <p>Quand vous rebouchez une fissure avec de l&apos;enduit, vous comblez un vide. Mais <strong>le mouvement qui a créé ce vide continue</strong>. En Occitanie, le sol argileux subit des cycles de retrait-gonflement à chaque alternance sécheresse/pluie. L&apos;enduit de rebouchage, même de bonne qualité, n&apos;a aucune résistance mécanique face à ces forces : il cède en quelques mois, et la fissure réapparaît — souvent plus large, car le mouvement a continué pendant que vous pensiez le problème résolu.</p>
+
+      <h3>L&apos;enduit craque systématiquement</h3>
+      <p>L&apos;enduit de rebouchage est conçu pour combler des trous statiques (trou de cheville, impact). Il a une <strong>résistance à la traction quasi nulle</strong>. Face à un mouvement différentiel de 0,5 mm par an (courant sur sol argileux), il se fissure en quelques mois. Même les enduits « souples » ou « élastiques » ne résistent pas à un mouvement structurel continu : ils retardent l&apos;apparition de la fissure de quelques mois, sans plus.</p>
+
+      <h3>Le coût cumulé dépasse celui de la réparation définitive</h3>
+      <p>Faisons le calcul sur 5 ans pour une <a href="/expertise/fissures" class="text-orange-600 underline hover:text-orange-700">fissure structurelle</a> de façade :</p>
+      <ul>
+        <li><strong>Rebouchage n°1</strong> (année 1) : 800€ → fissure réapparaît après 8 mois</li>
+        <li><strong>Rebouchage n°2</strong> (année 2) : 800€ → fissure réapparaît après 6 mois, plus large</li>
+        <li><strong>Rebouchage n°3</strong> (année 3) : 1 000€ (la fissure est plus grande) → réapparaît après 4 mois</li>
+        <li><strong>Agrafage</strong> (année 4, car ça ne tient plus) : 16 000€ (la fissure s&apos;est étendue, le coût a augmenté)</li>
+      </ul>
+      <p><strong>Total</strong> : 18 600€. Si vous aviez agraffé dès l&apos;année 1 : 13 000€. <strong>Économie perdue : 5 600€</strong> — sans compter le stress et la dévalorisation du bien pendant 4 ans.</p>
+
+      <div class="my-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
+        <p class="font-bold text-red-900 mb-2">🚨 Le signal qui ne trompe pas</p>
+        <p class="text-red-800">Si vous avez rebouché une fissure et qu&apos;elle est réapparue en <strong>moins de 12 mois</strong>, le mouvement est actif. Chaque rebouchage supplémentaire est de l&apos;argent jeté. Faites réaliser un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic structurel (249€)</a> pour connaître la vraie cause et le bon traitement.</p>
+      </div>
+
+      <h2>Ravalement de façade et fissures : dans quel ordre ?</h2>
+
+      <p>Vous prévoyez un ravalement de façade et votre mur est fissuré ? L&apos;ordre des opérations est <strong>crucial</strong> — et beaucoup de propriétaires (et même certains artisans) se trompent.</p>
+
+      <h3>Règle absolue : traiter les fissures AVANT le ravalement</h3>
+      <p>Un ravalement coûte entre 30€ et 80€/m², soit <strong>6 000€ à 16 000€ pour une maison de 200m² de façade</strong>. Si vous faites un ravalement sur un mur fissuré sans traiter la cause, voici ce qui se passe :</p>
+      <ol>
+        <li>Le ravalement neuf masque les anciennes fissures : le résultat est beau pendant 3-6 mois</li>
+        <li>Le mouvement structurel continue : la fissure réapparaît sous le nouvel enduit</li>
+        <li>Le nouvel enduit se fissure à son tour, souvent de façon plus visible (enduit neuf = plus rigide = plus fragile)</li>
+        <li>Vous avez perdu <strong>le prix du ravalement</strong> et vous devez recommencer après avoir traité la fissure</li>
+      </ol>
+
+      <h3>Le bon séquençage</h3>
+      <p>Voici l&apos;ordre à respecter impérativement :</p>
+      <ol>
+        <li><strong>Diagnostic structurel</strong> (249€) : identifier la cause de la fissure et déterminer si elle est active</li>
+        <li><strong>Agrafage</strong> (si fissure active) : stabiliser la structure, garantie décennale</li>
+        <li><strong>Attente de 2-3 mois</strong> : vérifier que la structure est stabilisée (pas de nouvelle fissure)</li>
+        <li><strong>Ravalement</strong> : l&apos;enduit neuf est posé sur une structure stable, il tiendra des décennies</li>
+      </ol>
+
+      <h3>Coordination des artisans</h3>
+      <p>Idéalement, confiez l&apos;<a href="/expertise/fissures" class="text-orange-600 underline hover:text-orange-700">agrafage</a> et le ravalement à la même entreprise (ou à des entreprises qui travaillent ensemble). Cela évite les problèmes de garantie (« c&apos;est la faute de l&apos;autre ») et assure une continuité technique. Chez IPB, nous réalisons l&apos;agrafage avec finitions complètes, ce qui vous permet de n&apos;avoir qu&apos;un seul interlocuteur et une seule <strong>garantie décennale couvrant l&apos;ensemble</strong>.</p>
+
+      <div class="my-8 p-6 bg-green-50 border border-green-200 rounded-xl">
+        <h3 class="font-bold text-green-900 mb-3">✅ Astuce pour économiser</h3>
+        <p class="text-green-800">Si votre façade est en mauvais état et qu&apos;elle a aussi des fissures actives, <strong>combinez agrafage + ravalement dans un seul chantier</strong>. L&apos;échafaudage est monté une seule fois, et les finitions d&apos;agrafage se fondent dans le ravalement. Économie typique : 2 000€ à 4 000€ par rapport à deux chantiers séparés.</p>
+      </div>
+
       <p class="font-bold text-lg text-slate-900 mt-6">La question n'est pas "Combien ça coûte de reboucher ?" mais "Combien ça va me coûter de reboucher 3 fois avant d'agrafer ?"</p>
     `
   },
@@ -1933,6 +2235,46 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p><strong>Coût</strong> : 80€ - 150€ /m² de surface à traiter</p>
 
+      <h2>Le salpêtre peut-il revenir après traitement ?</h2>
+
+      <p>C&apos;est la question que posent 9 propriétaires sur 10 avant de signer un devis. La réponse dépend entièrement de la <strong>qualité du traitement initial</strong>.</p>
+
+      <h3>Les conditions d&apos;une récidive</h3>
+      <p>Le salpêtre peut revenir si :</p>
+      <ul>
+        <li><strong>La résine n&apos;a pas été injectée sur toute la longueur du mur</strong> : Une interruption de 50 cm suffit pour que l&apos;eau contourne la barrière et remonte à côté</li>
+        <li><strong>Le dosage était insuffisant</strong> : Un mur en pierre de 60 cm nécessite plus de résine qu&apos;un mur en brique de 20 cm. Un sous-dosage crée une barrière poreuse</li>
+        <li><strong>La source d&apos;humidité n&apos;était pas une remontée capillaire</strong> : Si c&apos;est en réalité une infiltration latérale ou de la condensation, l&apos;injection ne résoudra rien</li>
+        <li><strong>Une nouvelle source d&apos;humidité est apparue</strong> : Fuite de canalisation enterrée, modification du terrain voisin, construction d&apos;une piscine à proximité</li>
+      </ul>
+
+      <h3>Comment reconnaître un traitement raté</h3>
+      <p>Après une injection professionnelle, le salpêtre existant doit être gratté, et <strong>aucun nouveau dépôt ne doit apparaître dans les 12 mois</strong> suivants. Si vous constatez de la poudre blanche en dessous de la ligne d&apos;injection, le traitement a fonctionné (l&apos;eau est bloquée en dessous). Si elle apparaît <strong>au-dessus</strong> de la ligne, il y a un problème.</p>
+
+      <h3>La garantie IPB : 30 ans de tranquillité</h3>
+      <p>Chez IPB, notre <a href="/expertise/humidite" class="text-orange-600 underline hover:text-orange-700">traitement par injection de résine</a> est garanti <strong>30 ans sur la barrière étanche</strong>. Cette garantie couvre la réapparition de remontées capillaires dans la zone traitée. Si du salpêtre réapparaît au-dessus de la ligne d&apos;injection pendant cette période, nous réintervenons <strong>sans frais</strong>. Cette garantie est transmissible en cas de revente du bien.</p>
+
+      <h2>Salpêtre en location : qui paye ?</h2>
+
+      <p>Le salpêtre en logement loué est une source fréquente de conflits entre locataires et propriétaires. Voici ce que dit la loi.</p>
+
+      <h3>Ce qui relève du propriétaire</h3>
+      <p>Selon la <strong>loi du 6 juillet 1989</strong> (article 6), le propriétaire doit fournir un logement décent, exempt de risques pour la santé. Les remontées capillaires et le salpêtre relèvent de la <strong>structure du bâtiment</strong> : le traitement (injection de résine, cuvelage) est donc à la charge du <strong>propriétaire</strong>, sans exception.</p>
+
+      <h3>Ce qui relève du locataire</h3>
+      <p>Le locataire doit assurer une <strong>ventilation correcte</strong> du logement (ne pas obstruer les bouches d&apos;aération, aérer régulièrement) et signaler tout désordre rapidement. Si le salpêtre est causé par de la condensation due à un défaut d&apos;aération imputable au locataire, ce dernier peut être tenu responsable.</p>
+
+      <h3>Recours pour les locataires</h3>
+      <p>Si votre propriétaire refuse d&apos;agir malgré la présence de salpêtre :</p>
+      <ol>
+        <li><strong>Lettre recommandée avec AR</strong> décrivant le problème, accompagnée de photos datées</li>
+        <li><strong>Saisine de l&apos;ARS</strong> (Agence Régionale de Santé) qui peut constater l&apos;insalubrité</li>
+        <li><strong>Déclaration d&apos;insalubrité</strong> auprès de la mairie — le préfet peut ordonner les travaux et, en cas de refus, les faire exécuter aux frais du propriétaire</li>
+        <li><strong>Tribunal judiciaire</strong> : Demande de réduction de loyer et/ou de dommages-intérêts (frais médicaux, dégradation des meubles)</li>
+      </ol>
+
+      <p><strong>Important</strong> : Un rapport de <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic professionnel</a> (249€ TTC) constitue une pièce maîtresse du dossier. Il prouve objectivement la cause structurelle du problème et la responsabilité du propriétaire.</p>
+
       <h2>Conclusion : le salpêtre ne disparaît jamais tout seul</h2>
       
       <p>Le salpêtre est le symptôme visible d'un problème invisible : l'eau qui remonte du sol. Gratter, peindre, déshumidifier... tout ça masque temporairement, mais ne résout rien.</p>
@@ -2112,11 +2454,72 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>Erreur n°3 : Utiliser un déshumidificateur seul</h3>
       <p>Le déshumidificateur assèche l'air temporairement. Mais dès que vous l'éteignez, l'humidité revient (car vous n'avez pas traité la cause). C'est un <strong>pansement</strong>, pas un traitement.</p>
 
+      <h2>Les solutions définitives selon le diagnostic</h2>
+
+      <p>Une fois la cause identifiée — condensation, infiltration ou remontée capillaire — le traitement est radicalement différent. Voici les solutions éprouvées pour chaque situation :</p>
+
+      <h3>Si c&apos;est de la condensation</h3>
+      <p>La condensation est un problème de <strong>ventilation et d&apos;isolation</strong>. L&apos;air intérieur est trop humide et se condense sur les surfaces froides. Les solutions :</p>
+      <ul>
+        <li><strong>VMI (Ventilation Mécanique par Insufflation)</strong> : Insuffle de l&apos;air sec filtré dans le logement. Particulièrement efficace dans les maisons anciennes de Toulouse où l&apos;installation d&apos;une VMC double flux est complexe. Budget : 2 000€ à 4 000€ installée.</li>
+        <li><strong>Isolation thermique par l&apos;intérieur (ITI)</strong> : Supprime les ponts thermiques où la condensation se forme. Budget : 40€ à 80€/m² selon l&apos;isolant choisi (laine de verre, ouate de cellulose, liège).</li>
+        <li><strong>Absorbeurs d&apos;humidité ciblés</strong> : Complément utile dans les pièces d&apos;eau en attendant les travaux, mais <strong>jamais une solution définitive</strong>.</li>
+      </ul>
+
+      <h3>Si c&apos;est une infiltration</h3>
+      <p>L&apos;eau entre physiquement dans votre mur ou votre plafond. Il faut identifier et colmater le point d&apos;entrée :</p>
+      <ul>
+        <li><strong>Toiture</strong> : Remplacement de tuiles cassées, reprise de solin, étanchéité de cheminée — 500€ à 3 000€</li>
+        <li><strong>Façade</strong> : Rejointoiement de fissures, hydrofuge de façade, reprise d&apos;enduit — 1 500€ à 5 000€</li>
+        <li><strong>Menuiseries</strong> : Remplacement des joints de fenêtre, reprise d&apos;appui de fenêtre — 200€ à 1 500€</li>
+        <li><strong>Drainage périphérique</strong> : Si l&apos;eau entre par le pied de mur ou le sous-sol, un drainage extérieur redirige les eaux de ruissellement. Budget : 150€ à 250€/ml</li>
+      </ul>
+
+      <h3>Si c&apos;est une remontée capillaire</h3>
+      <p>L&apos;humidité remonte du sol par capillarité dans les murs poreux. C&apos;est un problème très fréquent dans les maisons anciennes d&apos;Occitanie :</p>
+      <ul>
+        <li><strong><a href="/remontees-capillaires-traitement" class="text-orange-600 underline hover:text-orange-700">Injection de résine hydrophobe</a></strong> : Technique de référence. On injecte une résine à la base du mur qui crée une barrière étanche permanente. Budget : 80€ à 120€/ml. Garantie 30 ans.</li>
+        <li><strong>Drainage intérieur</strong> : En complément si le sous-sol est très humide. Création d&apos;un caniveau périphérique avec pompe de relevage.</li>
+      </ul>
+
+      <div class="my-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <p class="font-bold text-blue-800">💡 Le diagnostic IPB détermine la solution exacte</p>
+        <p class="text-blue-700">Avec un humidimètre à sonde, une caméra thermique et un test à la bombe à carbure, un expert IPB identifie la source exacte de l&apos;humidité en 1h30. Ce <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic à 249€ TTC</a> (déductible sur travaux) vous évite de dépenser des milliers d&apos;euros dans le mauvais traitement.</p>
+      </div>
+
+      <h2>Quand la condensation et l&apos;infiltration coexistent</h2>
+
+      <p>C&apos;est le scénario le plus piégeux — et il concerne <strong>environ 25% des cas</strong> que nous diagnostiquons en Occitanie. Vous traitez la condensation (VMC neuve), mais l&apos;humidité persiste. Ou vous réparez une fuite, mais les moisissures reviennent. Pourquoi ? Parce que <strong>deux sources distinctes</strong> alimentent le problème simultanément.</p>
+
+      <h3>Les cas mixtes typiques à Toulouse</h3>
+      <ul>
+        <li><strong>Maison ancienne centre-ville</strong> : Remontées capillaires en RDC + condensation aux fenêtres simple vitrage à l&apos;étage</li>
+        <li><strong>Appartement dernier étage</strong> : Infiltration par la toiture-terrasse + condensation dans la salle de bain mal ventilée</li>
+        <li><strong>Pavillon années 70</strong> : Infiltration par fissure de façade + condensation liée à une isolation insuffisante</li>
+      </ul>
+
+      <h3>Pourquoi le diagnostic professionnel est indispensable</h3>
+      <p>Le test de la feuille d&apos;aluminium est un bon premier filtre, mais il ne détecte qu&apos;une source à la fois. Seul un diagnostic instrumenté multi-paramètres permet de <strong>cartographier toutes les sources d&apos;humidité</strong> simultanément. Chez IPB, nous utilisons :</p>
+      <ul>
+        <li><strong>Humidimètre à sonde profonde</strong> : Mesure l&apos;humidité au cœur du mur (pas seulement en surface)</li>
+        <li><strong>Caméra thermique</strong> : Révèle les ponts thermiques et les zones d&apos;infiltration invisibles à l&apos;œil nu</li>
+        <li><strong>Hygromètre d&apos;ambiance</strong> : Mesure l&apos;humidité relative de l&apos;air dans chaque pièce</li>
+        <li><strong>Test à la bombe à carbure</strong> : Quantifie précisément le taux d&apos;humidité pondérale du mur</li>
+      </ul>
+
+      <p>Cette approche multi-instruments permet d&apos;établir un <strong>plan de traitement hiérarchisé</strong> : traiter d&apos;abord la source principale, puis la source secondaire, dans le bon ordre et avec le bon budget.</p>
+
       <h2>Conclusion : 5 minutes de test = des milliers d'euros économisés</h2>
       
       <p>Avant de dépenser un centime dans des travaux d'étanchéité ou une VMC, <strong>faites le test de la feuille d'aluminium</strong>. 5 minutes de votre temps peuvent vous éviter de dépenser 5 000€ dans le mauvais traitement.</p>
 
       <p><strong>Notre conseil d'expert</strong> : Si le test n'est pas concluant ou si vous avez un doute, demandez un diagnostic précis (249€, déductible sur travaux). Un expert viendra avec un humidimètre, une caméra thermique, et vous dira avec certitude si c'est de la condensation, une infiltration, ou les deux. Cette expertise vous évitera de traiter le mauvais problème.</p>
+
+      <h2>Le coût de l&apos;erreur de diagnostic</h2>
+
+      <p>Traiter de la condensation comme une infiltration (ou l&apos;inverse) est la première cause de dépenses inutiles en rénovation. Exemple concret : un propriétaire à Colomiers a fait étanchéifier sa façade pour 4 500€ alors que son problème était de la condensation. Résultat : l&apos;humidité a empiré car le mur ne pouvait plus respirer. Il a finalement dû installer une VMI (2 800€) et refaire l&apos;enduit intérieur (1 500€). Coût total : <strong>8 800€ au lieu de 2 800€</strong>.</p>
+
+      <p>Un diagnostic professionnel à 249€ TTC vous évite ce genre d&apos;erreur. Chez IPB, l&apos;expert utilise une <strong>caméra thermique</strong> (qui révèle les ponts thermiques sources de condensation), un <strong>humidimètre à sonde</strong> (qui mesure l&apos;humidité en profondeur dans le mur) et un <strong>test à la bombe à carbure</strong> (qui donne le taux d&apos;humidité exact du matériau). Ces 3 instruments combinés permettent un diagnostic fiable à <strong>98%</strong>.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">La question n'est pas "J'ai de l'humidité" mais "D'où vient cette humidité ?"</p>
     `
@@ -2366,6 +2769,53 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p><strong>Notre conseil d'expert</strong> : Ne signez JAMAIS un devis sans avoir eu un diagnostic détaillé avec mesures objectives. 249€ de diagnostic peuvent vous éviter 30 000€ de travaux inutiles.</p>
 
+      <h2>Les instruments de mesure utilisés par nos experts</h2>
+
+      <p>Un diagnostic sérieux ne se fait pas à l&apos;œil nu. Voici les cinq instruments que nos experts apportent systématiquement lors d&apos;une visite, et ce que chacun mesure concrètement :</p>
+
+      <h3>Le fissuromètre (précision 0,05 mm)</h3>
+      <p>C&apos;est une jauge graduée (ou un comparateur à cadran) qui mesure la <strong>largeur exacte de chaque fissure</strong>. La différence entre 0,3 mm et 3 mm change tout : la première est probablement superficielle, la seconde est structurelle. Sans cette mesure, impossible de classer la gravité. L&apos;expert pose aussi des <strong>témoins de fissure</strong> (jauges fixées de part et d&apos;autre) pour mesurer l&apos;évolution dans le temps — essentiel pour les dossiers d&apos;assurance.</p>
+
+      <h3>Le niveau laser rotatif</h3>
+      <p>Projeté sur les murs et les sols, il révèle les <strong>dénivelés invisibles à l&apos;œil</strong>. Un affaissement de 2 cm sur 5 mètres est imperceptible pour vous, mais il traduit un mouvement de fondation significatif. L&apos;expert mesure le dénivelé en plusieurs points pour cartographier le mouvement de la structure : quelle partie s&apos;enfonce, dans quelle direction, et de combien. Ces données sont essentielles pour choisir entre <a href="/agrafage-vs-micropieux-choix" class="text-orange-600 underline hover:text-orange-700">agrafage et micropieux</a>.</p>
+
+      <h3>La caméra thermique (infrarouge)</h3>
+      <p>Elle visualise les <strong>ponts thermiques et les zones d&apos;humidité cachée</strong> derrière les murs. Une tache bleue sur l&apos;image infrarouge indique une zone froide et humide, même si le mur paraît sec en surface. C&apos;est l&apos;outil clé pour différencier une <a href="/expertise/humidite" class="text-orange-600 underline hover:text-orange-700">infiltration d&apos;eau</a> (tache localisée) d&apos;un problème de condensation (zone diffuse). Elle détecte aussi les fuites de canalisation encastrées sans casser le mur.</p>
+
+      <h3>L&apos;humidimètre à sonde profonde</h3>
+      <p>Contrairement aux humidimètres de surface (vendus en grande surface), notre humidimètre à sonde mesure l&apos;humidité <strong>en profondeur dans le mur</strong> (jusqu&apos;à 20 cm). C&apos;est la seule façon de savoir si un mur qui paraît sec en surface est en réalité gorgé d&apos;eau en profondeur — situation fréquente après un enduit hydrofuge mal posé. Le taux critique est de 5% : au-delà, le mur est trop humide pour recevoir des finitions.</p>
+
+      <h3>La bombe à carbure (test au carbure de calcium)</h3>
+      <p>C&apos;est la mesure de référence normalisée (NF P 05-202) pour déterminer le <strong>taux d&apos;humidité pondérale</strong> d&apos;un matériau. L&apos;expert prélève un échantillon de mur (par perçage), le place dans une chambre avec du carbure de calcium, et mesure la pression du gaz dégagé. Résultat : un chiffre <strong>précis et incontestable</strong>, accepté par les tribunaux et les assurances. C&apos;est la mesure qui tranche les litiges.</p>
+
+      <h2>Diagnostic IPB vs diagnostic d&apos;assurance : les différences</h2>
+
+      <p>Quand vous déclarez un sinistre, votre assurance mandate son propre expert. Beaucoup de propriétaires pensent que cet expert travaille pour eux. <strong>C&apos;est faux.</strong> Voici les différences fondamentales :</p>
+
+      <h3>L&apos;expert d&apos;assurance : un intérêt contradictoire</h3>
+      <p>L&apos;expert mandaté par l&apos;assurance est payé par l&apos;assurance. Son intérêt (conscient ou non) est de <strong>minimiser le montant de l&apos;indemnisation</strong>. Concrètement :</p>
+      <ul>
+        <li>Il passe 20-30 minutes maximum sur site</li>
+        <li>Il prend quelques photos sans mesures instrumentées</li>
+        <li>Son rapport conclut souvent à des « désordres esthétiques » plutôt que structurels</li>
+        <li>Il propose des réparations a minima (rebouchage) plutôt que le traitement adapté (agrafage)</li>
+      </ul>
+
+      <h3>L&apos;expert IPB : votre défenseur technique</h3>
+      <p>Notre diagnostic (249€ TTC, déductible des travaux) est réalisé dans <strong>votre intérêt exclusif</strong> :</p>
+      <ul>
+        <li>Visite de 1h à 1h30 avec tous les instruments de mesure</li>
+        <li>Rapport détaillé de 15-20 pages avec photos annotées et mesures chiffrées</li>
+        <li>Classification de gravité objective (superficielle / modérée / grave / critique)</li>
+        <li>Préconisations techniques précises avec chiffrage</li>
+        <li>Lien de causalité établi (sol argileux, défaut de construction, etc.)</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
+        <p class="font-bold text-orange-900 mb-2">💡 Pourquoi votre rapport IPB change tout</p>
+        <p class="text-orange-800">Lors de l&apos;expertise contradictoire avec l&apos;expert de l&apos;assurance, <strong>votre rapport IPB l&apos;empêche de minimiser</strong>. Il ne peut pas dire « c&apos;est esthétique » quand votre rapport montre un tassement de 8 mm au niveau laser. Il ne peut pas refuser l&apos;agrafage quand les mesures au fissuromètre prouvent une fissure active de 4 mm. Les chiffres ne mentent pas. Notre taux de succès avec rapport contradictoire : <strong>95%</strong>.</p>
+      </div>
+
       <p class="font-bold text-lg text-slate-900 mt-6">Un bon diagnostic = le meilleur investissement que vous ferez pour votre maison.</p>
     `
   },
@@ -2591,7 +3041,56 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>VMI (évacuation humidité résiduelle)</li>
       </ol>
 
-      <h2>Conclusion : l'injection résine, le seul traitement définitif</h2>
+      <h2>Les différents types de résine et leurs performances</h2>
+
+      <p>Toutes les résines ne se valent pas. Le choix du produit dépend du <strong>type de maçonnerie</strong>, de la <strong>porosité du mur</strong> et de la <strong>pression hydrostatique</strong>. Voici les trois familles principales utilisées par les professionnels :</p>
+
+      <h3>Résine silane/siloxane — la référence pour brique et pierre</h3>
+      <ul>
+        <li><strong>Durée de vie</strong> : 30 ans et plus</li>
+        <li><strong>Principe</strong> : Pénètre dans les capillaires du matériau et crée une barrière hydrophobe par réaction chimique avec les silicates de la maçonnerie</li>
+        <li><strong>Matériaux adaptés</strong> : Brique pleine, pierre calcaire, pierre de taille, moellon. Excellente affinité avec les matériaux poreux traditionnels</li>
+        <li><strong>Pression d&apos;injection</strong> : Basse pression (3-5 bars) ou par gravité — respecte les maçonneries anciennes fragiles</li>
+      </ul>
+      <p>C&apos;est la résine que nous utilisons chez IPB pour 80% des chantiers en Occitanie. Les maisons toulousaines en <strong>brique foraine</strong> répondent particulièrement bien à ce traitement.</p>
+
+      <h3>Résine acrylate (gel acrylique) — pour béton et parpaing</h3>
+      <ul>
+        <li><strong>Durée de vie</strong> : 15 à 20 ans</li>
+        <li><strong>Principe</strong> : Forme un gel souple qui colmate les pores du béton. Conserve une certaine élasticité, ce qui la rend adaptée aux structures soumises à des vibrations</li>
+        <li><strong>Matériaux adaptés</strong> : Béton, parpaing, agglo. Moins performante sur matériaux très poreux (brique ancienne)</li>
+        <li><strong>Pression d&apos;injection</strong> : Moyenne pression (5-10 bars)</li>
+      </ul>
+
+      <h3>Silicone micro-émulsion — le polyvalent</h3>
+      <ul>
+        <li><strong>Durée de vie</strong> : 20 à 25 ans</li>
+        <li><strong>Principe</strong> : Micro-particules de silicone en suspension aqueuse qui pénètrent profondément même dans les matériaux très denses</li>
+        <li><strong>Matériaux adaptés</strong> : Tous types de maçonnerie, y compris les murs mixtes (brique + pierre + mortier de chaux)</li>
+        <li><strong>Avantage</strong> : Ne nécessite pas de solvant, sans odeur, utilisable en milieu habité</li>
+      </ul>
+
+      <p><strong>Comment savoir quelle résine choisir ?</strong> C&apos;est précisément le rôle du <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic préalable</a>. L&apos;expert identifie le type de maçonnerie, mesure l&apos;épaisseur du mur et le taux d&apos;humidité, puis prescrit la résine adaptée. Un mauvais choix de résine = un traitement qui échoue.</p>
+
+      <h2>Injection DIY vs professionnelle : les risques</h2>
+
+      <p>On trouve sur Internet des <strong>kits d&apos;injection « à faire soi-même »</strong> entre 200€ et 400€ pour 10 mètres linéaires. Tentant quand un professionnel facture 800€ à 1 200€ pour la même longueur. Mais voici pourquoi ces kits échouent dans <strong>8 cas sur 10</strong> :</p>
+
+      <h3>Problème 1 : Le mauvais produit</h3>
+      <p>Les kits grand public contiennent généralement une résine silicone bas de gamme, mal dosée pour les maçonneries anciennes. Sur un mur en brique foraine de 50 cm, cette résine ne pénètre que les 10 premiers centimètres. L&apos;eau contourne la barrière par le centre du mur.</p>
+
+      <h3>Problème 2 : Le mauvais dosage</h3>
+      <p>La quantité de résine nécessaire dépend de la <strong>porosité du matériau</strong>. Un mur en pierre calcaire absorbe 3 à 5 fois plus de résine qu&apos;un mur en brique. Les kits fournissent une quantité fixe, insuffisante pour les murs épais ou très absorbants.</p>
+
+      <h3>Problème 3 : La mauvaise pression</h3>
+      <p>L&apos;injection par gravité (simple entonnoir) ne fonctionne que sur les murs très poreux de moins de 30 cm. Pour un mur de 50 cm en pierre, il faut une <strong>pompe à basse pression</strong> (3-5 bars) qui coûte à elle seule plus cher que le kit complet.</p>
+
+      <h3>Problème 4 : Aucune garantie</h3>
+      <p>Un traitement DIY n&apos;est couvert par <strong>aucune garantie décennale</strong>. Si le salpêtre revient dans 2 ans, vous devrez tout refaire — cette fois en payant un professionnel. Coût total : kit DIY (300€) + traitement professionnel (1 200€) = <strong>1 500€ au lieu de 1 200€</strong>. Vous aurez perdu 300€ et 2 ans.</p>
+
+      <p>Notre recommandation : réservez le DIY pour des <a href="/blog/humidite-salpetre-traitement" class="text-orange-600 underline hover:text-orange-700">petites surfaces de salpêtre</a> sur un mur mince (&lt; 20 cm) en brique. Pour tout le reste, faites appel à un professionnel certifié.</p>
+
+      <h2>Conclusion : l&apos;injection résine, le seul traitement définitif</h2>
       
       <p>Après 30 ans d'expérience dans le traitement de l'humidité, je peux vous le dire : <strong>il n'y a qu'une seule méthode qui fonctionne durablement contre les remontées capillaires</strong>. C'est l'injection de résine.</p>
 
@@ -2783,6 +3282,56 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Si votre maison est en zone classée "catastrophe naturelle sécheresse", c'est paradoxalement un <strong>argument de vente</strong> si les travaux sont faits :</p>
 
       <p><strong>Argument</strong> : "Cette maison a subi les conséquences de la sécheresse 2022-2023 (comme 80% des maisons toulousaines). Mais contrairement aux autres, <strong>elle a été réparée</strong>. Vous achetez une maison dont le problème a été traité, alors que vos voisins devront peut-être le faire dans 2-3 ans."</p>
+
+      <h2>Les diagnostics obligatoires avant vente d&apos;une maison fissurée</h2>
+
+      <p>Vendre une maison fissurée sans respecter les obligations d&apos;information expose le vendeur à des <strong>sanctions lourdes</strong>. Voici ce que vous devez impérativement fournir :</p>
+
+      <h3>Le dossier de diagnostic technique (DDT)</h3>
+      <p>Le DDT est obligatoire pour toute vente immobilière et doit inclure :</p>
+      <ul>
+        <li><strong>Diagnostic de performance énergétique</strong> (DPE)</li>
+        <li><strong>État des risques et pollutions</strong> (ERP) — qui mentionne l&apos;exposition au risque retrait-gonflement des argiles</li>
+        <li><strong>Diagnostic amiante, plomb, termites</strong> selon l&apos;âge du bâtiment</li>
+      </ul>
+      <p>Mais le DDT ne couvre <strong>pas</strong> les fissures structurelles. C&apos;est là que les problèmes commencent.</p>
+
+      <h3>L&apos;obligation de déclaration des fissures</h3>
+      <p>L&apos;article <strong>1112-1 du Code civil</strong> impose au vendeur de communiquer toute information dont l&apos;absence pourrait vicier le consentement de l&apos;acheteur. Des fissures structurelles non déclarées constituent un <strong>vice caché</strong> (article 1641 du Code civil). Les sanctions sont sévères :</p>
+      <ul>
+        <li><strong>Nullité de la vente</strong> : L&apos;acheteur peut demander l&apos;annulation pure et simple de la transaction</li>
+        <li><strong>Réduction du prix</strong> : Le tribunal peut ordonner un remboursement partiel correspondant au coût des réparations</li>
+        <li><strong>Dommages-intérêts</strong> : Si le vendeur connaissait le problème (ce qui est facile à prouver si des fissures sont visibles), l&apos;acheteur peut obtenir la réparation de son préjudice moral et financier</li>
+      </ul>
+      <p><strong>Délai de recours</strong> : L&apos;acheteur dispose de <strong>2 ans</strong> à compter de la découverte du vice pour agir. En pratique, les litiges surviennent souvent après le premier été de sécheresse post-achat.</p>
+
+      <p>Un rapport de <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic structurel</a> annexé à l&apos;acte de vente vous protège : l&apos;acheteur ne pourra pas prétendre qu&apos;il ignorait la situation.</p>
+
+      <h2>Stratégie : vendre en l&apos;état ou réparer avant ?</h2>
+
+      <p>C&apos;est LA question. Voici une analyse chiffrée pour vous aider à décider :</p>
+
+      <h3>Scénario 1 : Vendre en l&apos;état</h3>
+      <ul>
+        <li><strong>Valeur estimée sans fissures</strong> : 300 000€</li>
+        <li><strong>Décote fissures</strong> : -20% à -30% → Prix de vente : 210 000€ à 240 000€</li>
+        <li><strong>Perte nette</strong> : 60 000€ à 90 000€</li>
+        <li><strong>Délai de vente estimé</strong> : 6 à 12 mois (les acheteurs hésitent, les banques refusent souvent le prêt)</li>
+      </ul>
+
+      <h3>Scénario 2 : Réparer puis vendre</h3>
+      <ul>
+        <li><strong>Coût de l&apos;agrafage</strong> : 12 000€ à 18 000€</li>
+        <li><strong>Valeur récupérée après travaux</strong> : 280 000€ à 295 000€ (décote résiduelle de 2-5% malgré la garantie décennale)</li>
+        <li><strong>Gain net</strong> : 42 000€ à 73 000€ par rapport à la vente en l&apos;état</li>
+        <li><strong>Délai de vente estimé</strong> : 2 à 4 mois (l&apos;attestation décennale rassure les acheteurs et les banques)</li>
+      </ul>
+
+      <h3>Le facteur temps</h3>
+      <p>L&apos;agrafage prend <strong>3 à 5 jours</strong>. Le ravalement (si nécessaire) ajoute 1 à 2 semaines. Autrement dit, en un mois vous transformez un bien difficilement vendable en un bien attractif. Chaque mois d&apos;attente sans vendre coûte en charges (taxe foncière, assurance, entretien), soit environ <strong>500€ à 1 000€ par mois</strong>.</p>
+
+      <h3>Le levier de négociation</h3>
+      <p>Si vous réparez avant la mise en vente, vous pouvez mettre en avant : « Maison expertisée, fondations stabilisées par agrafage, <strong>garantie décennale transmissible</strong>, rapport technique complet inclus dans le dossier ». C&apos;est un argument de vente puissant, surtout en zone Cat-Nat où les acheteurs sont de plus en plus vigilants. Consultez notre guide sur les <a href="/blog/catastrophe-naturelle-secheresse-demarches-indemnisation" class="text-orange-600 underline hover:text-orange-700">démarches d&apos;indemnisation Cat-Nat</a> pour comprendre le financement possible.</p>
 
       <h2>Conclusion : réparer = valoriser (et dormir tranquille)</h2>
       
@@ -3005,6 +3554,56 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ol>
 
       <p><strong>Notre conseil d'expert</strong> : En cas de doute, un diagnostic rapide (249€, déductible sur travaux) vous dira en 30 minutes si c'est bénin ou grave. Cette expertise peut vous éviter soit une panique inutile, soit un effondrement partiel dans 6 mois.</p>
+
+      <h2>Fissure plafond en appartement : les particularités</h2>
+
+      <p>En maison individuelle, la responsabilité est claire : c&apos;est votre problème. En <strong>copropriété</strong>, c&apos;est plus compliqué — et c&apos;est souvent source de conflits entre voisins, syndic et assurances.</p>
+
+      <h3>Parties communes vs parties privatives : qui est responsable ?</h3>
+      <p>Le plafond de votre appartement est aussi le <strong>plancher de votre voisin du dessus</strong>. La règle juridique est la suivante :</p>
+      <ul>
+        <li><strong>La structure porteuse (dalle béton, solivage)</strong> = partie commune. C&apos;est la copropriété qui paye, via le fonds de travaux.</li>
+        <li><strong>Les revêtements (enduit, peinture, placo du dessous)</strong> = partie privative. C&apos;est vous qui payez la réfection de votre plafond.</li>
+        <li><strong>Le carrelage/parquet du dessus</strong> = partie privative de votre voisin.</li>
+      </ul>
+      <p>En pratique, si la fissure est causée par un mouvement de la dalle (partie commune), le syndic doit mandater un expert et faire voter les travaux en assemblée générale. Si la fissure est liée à une surcharge créée par votre voisin (piscine sur terrasse, cloison lourde non autorisée), c&apos;est son assurance responsabilité civile qui intervient.</p>
+
+      <h3>Le rôle du syndic</h3>
+      <p>Signalez la fissure au syndic <strong>par courrier recommandé</strong> (pas par simple e-mail). Le syndic a l&apos;obligation de :</p>
+      <ol>
+        <li>Faire constater le désordre par un professionnel</li>
+        <li>Déclarer le sinistre à l&apos;assurance de la copropriété si c&apos;est structurel</li>
+        <li>Inscrire les travaux à l&apos;ordre du jour de la prochaine AG (ou convoquer une AG extraordinaire si urgence)</li>
+      </ol>
+      <p>Si le syndic ne réagit pas, vous pouvez le mettre en demeure. En dernier recours, un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">rapport d&apos;expertise indépendant (249€)</a> constitue une preuve juridique recevable pour contraindre le syndic à agir.</p>
+
+      <h3>Qui paye quoi ?</h3>
+      <ul>
+        <li><strong>Fissure structurelle (dalle, poutre)</strong> : charges communes, réparties selon les tantièmes</li>
+        <li><strong>Fissure liée à un dégât des eaux venant du dessus</strong> : assurance habitation du voisin + votre assurance pour les finitions</li>
+        <li><strong>Fissure esthétique (retrait d&apos;enduit)</strong> : à votre charge (partie privative)</li>
+      </ul>
+
+      <h2>Les réparations selon le type de plafond</h2>
+
+      <p>Le plafond n&apos;est pas un bloc monolithique. Selon le matériau, la technique de réparation et le coût varient considérablement.</p>
+
+      <h3>Plafond en plâtre traditionnel</h3>
+      <p>Fréquent dans les immeubles toulousains d&apos;avant 1970. La réparation consiste à <strong>ouvrir la fissure en V</strong>, appliquer une bande de calicot (fibre de verre adhésive), puis enduire en deux couches avec un enduit de rebouchage. Finition au papier grain 120 et deux couches de peinture. <strong>Coût</strong> : 80€ à 200€ le mètre linéaire (main d&apos;œuvre incluse). <strong>Attention</strong> : sur les plâtres anciens, vérifiez l&apos;absence d&apos;amiante si le plafond contient un flocage.</p>
+
+      <h3>Plafond en plaques de plâtre (placo)</h3>
+      <p>Les fissures apparaissent souvent aux <strong>jonctions entre plaques</strong>. La réparation classique : déposer l&apos;ancienne bande à joint, reposer une bande calicot neuve avec enduit à joint, poncer et repeindre. Si la plaque est déformée ou humide, il faut la remplacer (démonter la vis, poser une plaque neuve). <strong>Coût</strong> : 50€ à 150€ le mètre linéaire pour un rejointement, 200€ à 400€ pour un remplacement de plaque.</p>
+
+      <h3>Plafond en béton (dalle)</h3>
+      <p>Les fissures dans une dalle béton sont toujours à prendre au sérieux. La réparation se fait par <strong>injection de résine époxy</strong> dans la fissure sous pression contrôlée. La résine pénètre dans toute l&apos;épaisseur de la dalle et restaure la continuité structurelle. <strong>Coût</strong> : 150€ à 400€ le mètre linéaire. Cette intervention doit impérativement être réalisée par un professionnel qualifié.</p>
+
+      <h3>Plafond avec poutres apparentes</h3>
+      <p>Si la fissure se situe <strong>le long d&apos;une poutre</strong> ou si la poutre elle-même est fissurée, il faut vérifier son état structurel. Un expert sonde la poutre (test au marteau, sondage à l&apos;aiguille pour détecter la vermoulure) et mesure sa flèche (déformation sous charge). Si la poutre est saine, un simple rejointement suffit. Si elle est attaquée (insectes xylophages, pourriture), un <strong>renforcement par plat métallique ou remplacement partiel</strong> sera nécessaire. <strong>Coût</strong> : 500€ à 3 000€ selon l&apos;intervention.</p>
+
+      <div class="my-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
+        <p class="font-bold text-orange-900 mb-2">💡 Conseil pour les propriétaires d&apos;appartement</p>
+        <p class="text-orange-800">Avant de reboucher une fissure au plafond, <strong>identifiez si c&apos;est une partie commune ou privative</strong>. Si vous rebouchez vous-même une fissure structurelle, vous masquez un problème qui relève de la copropriété — et vous pourriez perdre votre recours. Faites d&apos;abord constater par un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">expert indépendant</a>, puis informez le syndic.</p>
+      </div>
 
       <p class="font-bold text-lg text-slate-900 mt-6">Mieux vaut 249€ de diagnostic que 15 000€ de réparation d'urgence.</p>
     `
@@ -3255,6 +3854,53 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Déclaration</strong> : Autorisation de travaux si changement de destination</li>
       </ul>
 
+      <h2>Aménager une cave humide : les étapes dans le bon ordre</h2>
+
+      <p>Transformer une cave humide en pièce utile (buanderie, atelier, bureau, salle de sport) est tout à fait possible — mais l&apos;ordre des opérations est <strong>crucial</strong>. Inverser deux étapes peut ruiner des milliers d&apos;euros de travaux.</p>
+
+      <h3>Étape 1 : Diagnostic de la cause exacte</h3>
+      <p>Avant toute chose, un expert doit identifier la <strong>source précise</strong> de l&apos;humidité avec des outils de mesure (humidimètre à sonde, caméra thermique, test à la bombe à carbure). Est-ce une remontée capillaire ? Une infiltration latérale ? De la condensation ? Chaque cause a son traitement spécifique. Un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic professionnel</a> (249€ TTC, déductible sur travaux) vous évitera des erreurs coûteuses.</p>
+
+      <h3>Étape 2 : Traitement de la source d&apos;humidité</h3>
+      <p>Selon le diagnostic :</p>
+      <ul>
+        <li><strong>Remontées capillaires</strong> → <a href="/remontees-capillaires-traitement" class="text-orange-600 underline hover:text-orange-700">Injection de résine</a> à la base des murs</li>
+        <li><strong>Infiltrations latérales</strong> → Cuvelage (résine époxy ou mortier étanche) sur les murs enterrés</li>
+        <li><strong>Condensation</strong> → Installation d&apos;une <a href="/vmi-ventilation-insufflation" class="text-orange-600 underline hover:text-orange-700">VMI</a> (Ventilation Mécanique par Insufflation)</li>
+        <li><strong>Causes multiples</strong> → Combinaison des traitements dans l&apos;ordre : injection → cuvelage → VMI</li>
+      </ul>
+
+      <h3>Étape 3 : Période de séchage (NE PAS SAUTER)</h3>
+      <p>C&apos;est l&apos;étape que <strong>90% des propriétaires impatients</strong> veulent supprimer. Après le traitement, les murs doivent sécher complètement. Comptez :</p>
+      <ul>
+        <li><strong>Mur de 20 cm</strong> : 6 à 8 mois</li>
+        <li><strong>Mur de 40 cm</strong> : 10 à 14 mois</li>
+        <li><strong>Mur de 60 cm (pierre)</strong> : 14 à 18 mois</li>
+      </ul>
+      <p>Vérifiez le taux d&apos;humidité résiduelle avec un humidimètre avant de passer à la suite. Le mur doit être <strong>en dessous de 5%</strong> d&apos;humidité pondérale.</p>
+
+      <h3>Étape 4 : Isolation des murs et du sol</h3>
+      <p>Une fois les murs secs, isolez avec des matériaux <strong>résistants à l&apos;humidité résiduelle</strong> :</p>
+      <ul>
+        <li><strong>Murs</strong> : Panneaux de polystyrène extrudé (XPS) de 6 à 10 cm, posés sur rail métallique (pas collés directement pour permettre la ventilation derrière)</li>
+        <li><strong>Sol</strong> : Film polyéthylène + isolant XPS 4 cm + chape flottante</li>
+        <li><strong>À éviter</strong> : Laine de verre, laine de roche, plâtre standard — ces matériaux absorbent l&apos;humidité résiduelle et moisissent</li>
+      </ul>
+
+      <h3>Étape 5 : Aménagement et finitions</h3>
+      <p>Maintenant seulement, vous pouvez :</p>
+      <ul>
+        <li>Poser du <strong>placo hydrofuge</strong> (plaques vertes) sur les rails</li>
+        <li>Installer l&apos;électricité et l&apos;éclairage</li>
+        <li>Appliquer une peinture <strong>microporeuse</strong> (pas de peinture vinylique étanche)</li>
+        <li>Poser le revêtement de sol (carrelage ou PVC, pas de parquet massif)</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-red-50 border border-red-200 rounded-xl">
+        <h3 class="font-bold text-red-900 mb-3">❌ L&apos;erreur la plus fréquente</h3>
+        <p class="text-red-800"><strong>Aménager AVANT de traiter.</strong> Nous voyons chaque mois des propriétaires qui ont investi 8 000€ à 15 000€ dans l&apos;aménagement d&apos;une cave sans traiter l&apos;humidité au préalable. Résultat en 6 à 12 mois : placo gonflé et moisi, isolation saturée d&apos;eau, odeur de moisi persistante, peinture qui cloque. Ils doivent tout arracher et recommencer — cette fois dans le bon ordre. Coût total : le double.</p>
+      </div>
+
       <h2>Conclusion : identifiez la source AVANT de dépenser</h2>
       
       <p>L'humidité en cave a toujours une cause. Mais <strong>traiter la mauvaise cause</strong> vous fera perdre du temps et de l'argent :</p>
@@ -3439,6 +4085,56 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <p><strong>Notre conseil</strong> : Faites réaliser un diagnostic gratuit dès les premiers signes. Un expert se déplace chez vous, évalue la situation, et vous propose des solutions adaptées à votre cas et votre budget.</p>
+
+      <h2>Les erreurs les plus courantes dans le Gers</h2>
+
+      <p>En intervenant dans tout le département depuis plusieurs années, nous constatons que les mêmes erreurs reviennent systématiquement chez les propriétaires gersois :</p>
+
+      <h3>Erreur n°1 : Reboucher sans diagnostiquer</h3>
+      <p>C&apos;est le réflexe le plus répandu — et le plus coûteux. Un propriétaire voit une fissure, achète un tube de mastic ou d&apos;enduit de rebouchage, et colmate. Résultat : la fissure réapparaît dans les 6 à 12 mois, souvent <strong>plus large et plus longue</strong>. Pourquoi ? Parce que le mouvement de terrain qui cause la fissure n&apos;a pas été traité. Vous avez juste masqué le symptôme. À Auch comme à Condom, nous voyons régulièrement des maisons où le propriétaire a rebouché 3 ou 4 fois avant de consulter un expert — perdant 2 à 3 ans et aggravant significativement les dégâts.</p>
+
+      <h3>Erreur n°2 : Confondre fissure esthétique et fissure structurelle</h3>
+      <p>Toutes les fissures ne se valent pas. Un faïençage d&apos;enduit (réseau de micro-fissures superficielles) est généralement bénin. En revanche, une fissure <strong>en escalier suivant les joints de maçonnerie</strong>, ou une fissure verticale aux angles du bâtiment, signale un mouvement de structure potentiellement grave. Sans instruments de mesure (fissuromètre, niveau laser), il est impossible de faire la distinction à l&apos;œil nu. Un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic professionnel</a> est le seul moyen fiable.</p>
+
+      <h3>Erreur n°3 : Ne pas déclarer à l&apos;assurance</h3>
+      <p>Beaucoup de propriétaires dans le Gers ignorent que leurs fissures peuvent être couvertes par l&apos;assurance habitation, notamment dans le cadre du régime <strong>Catastrophe Naturelle (Cat-Nat)</strong>. Le Gers a été reconnu en état de catastrophe naturelle sécheresse à de multiples reprises ces dernières années. Ne pas déclarer, c&apos;est renoncer à une prise en charge qui peut atteindre <strong>plusieurs dizaines de milliers d&apos;euros</strong>.</p>
+
+      <h3>Erreur n°4 : Planter des arbres trop près des fondations</h3>
+      <p>Les arbres à fort développement racinaire (chênes, peupliers, saules, platanes) assèchent le sol argileux dans un rayon de <strong>1 à 1,5 fois leur hauteur adulte</strong>. Un chêne de 15 mètres peut dessécher le sol jusqu&apos;à 20 mètres autour de lui. Dans le sol argileux du Gers, cet assèchement provoque un retrait du terrain qui déstabilise les fondations. Respectez une distance minimale de <strong>10 mètres</strong> entre tout arbre à grand développement et votre maison.</p>
+
+      <h2>Fissures et assurance habitation dans le Gers</h2>
+
+      <p>Le département du Gers (32) est régulièrement touché par des épisodes de sécheresse qui provoquent des mouvements de terrain. Le régime Cat-Nat est souvent le principal levier financier pour les propriétaires gersois.</p>
+
+      <h3>Le processus Cat-Nat étape par étape</h3>
+      <ol>
+        <li><strong>Arrêté interministériel</strong> : La commune est reconnue en état de catastrophe naturelle (publication au Journal Officiel)</li>
+        <li><strong>Déclaration</strong> : Vous avez <strong>30 jours</strong> après la publication de l&apos;arrêté pour déclarer le sinistre à votre assureur</li>
+        <li><strong>Expertise d&apos;assurance</strong> : L&apos;assureur mandate son expert sous 3 mois</li>
+        <li><strong>Proposition d&apos;indemnisation</strong> : L&apos;assureur vous fait une offre dans les 3 mois suivant l&apos;expertise</li>
+        <li><strong>Travaux de réparation</strong> : Vous réalisez les travaux et transmettez les factures</li>
+      </ol>
+
+      <h3>La franchise Cat-Nat : 1 520€</h3>
+      <p>La franchise légale pour un sinistre Cat-Nat est de <strong>1 520€</strong> (montant 2026). Attention : si votre commune n&apos;a pas de Plan de Prévention des Risques Naturels (PPRN) et a fait l&apos;objet de plus de 3 arrêtés Cat-Nat en 5 ans, la franchise peut être <strong>doublée, triplée ou quadruplée</strong>. Plusieurs communes du Gers sont dans cette situation.</p>
+
+      <h3>Comment le rapport IPB vous aide</h3>
+      <p>Le rapport d&apos;expertise IPB constitue une <strong>pièce technique opposable</strong> qui renforce considérablement votre dossier d&apos;indemnisation. Il documente précisément l&apos;étendue des dégâts, identifie les causes, et chiffre les travaux nécessaires. Face à un expert d&apos;assurance qui tenterait de minimiser le sinistre, votre rapport IPB permet de <strong>négocier sur une base technique solide</strong>.</p>
+
+      <div class="my-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+        <p class="font-bold text-amber-800">📋 Délai moyen d&apos;indemnisation dans le Gers</p>
+        <p class="text-amber-700">Entre la déclaration et le versement de l&apos;indemnité, comptez <strong>6 à 18 mois</strong> selon la complexité du dossier. Les dossiers accompagnés d&apos;un rapport d&apos;expertise indépendant sont généralement traités 30% plus rapidement par les assureurs.</p>
+      </div>
+
+      <h2>Fissures dans le Gers : agir maintenant coûte moins cher</h2>
+
+      <p>Chaque été de sécheresse aggrave les fissures existantes et en crée de nouvelles. Le coût de l&apos;inaction est mesurable : une <a href="/fissure-en-escalier-causes" class="text-orange-600 underline hover:text-orange-700">fissure en escalier</a> de 3 mm traitée aujourd&apos;hui coûte environ 10 000€ en agrafage. La même fissure à 8 mm dans 3 ans nécessitera des micropieux à 35 000€. C&apos;est une augmentation de <strong>250%</strong>.</p>
+
+      <p>Notre diagnostic à 249€ TTC (déductible des travaux) vous donne un état précis de la situation : gravité des fissures, cause identifiée, solutions chiffrées. Ce rapport est aussi un atout précieux pour votre dossier d&apos;assurance en cas de <a href="/fissure-secheresse-indemnisation" class="text-orange-600 underline hover:text-orange-700">catastrophe naturelle sécheresse</a>.</p>
+
+      <p>Le Gers est un département où le patrimoine immobilier représente souvent l&apos;essentiel de l&apos;épargne d&apos;une famille. Protéger votre maison contre les fissures, c&apos;est protéger votre avenir financier. Avec plus de 300 maisons traitées en Occitanie depuis 2019 et un taux de satisfaction de 98%, IPB est votre partenaire de confiance pour le diagnostic et le traitement des fissures dans tout le Gers.</p>
+
+      <p>N&apos;attendez pas que les fissures atteignent le stade critique. Un diagnostic précoce permet de choisir la solution la moins coûteuse et la moins invasive. À Auch comme à Condom ou Fleurance, notre expert se déplace sous 5 jours avec ses instruments de mesure professionnels pour vous donner un avis clair et des solutions concrètes.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">📞 IPB intervient dans tout le Gers. Diagnostic gratuit sous 5 jours : 05 82 95 33 75</p>
     `
@@ -3678,6 +4374,66 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Traiter la cause</strong> (humidité) et pas seulement les symptômes</li>
       </ul>
 
+      <h2>Mérule et assurance habitation</h2>
+
+      <p>La question du financement est cruciale quand on découvre de la mérule : les traitements coûtent entre <strong>5 000€ et 30 000€</strong> selon l&apos;étendue de l&apos;infestation. Que couvre réellement votre assurance habitation ?</p>
+
+      <h3>Ce que couvre l&apos;assurance (sous conditions)</h3>
+      <ul>
+        <li><strong>Dégât des eaux à l&apos;origine de la mérule</strong> : Si la mérule est la conséquence directe d&apos;un dégât des eaux couvert (fuite de canalisation, infiltration par toiture), les frais de traitement peuvent être pris en charge</li>
+        <li><strong>Garantie « champignon et insectes »</strong> : Certains contrats multirisques habitation incluent cette garantie optionnelle. Vérifiez vos conditions particulières.</li>
+        <li><strong>Vice caché à l&apos;achat</strong> : Si vous avez acheté une maison contaminée sans en être informé, l&apos;assurance protection juridique peut financer les procédures contre le vendeur</li>
+      </ul>
+
+      <h3>Les exclusions fréquentes</h3>
+      <ul>
+        <li><strong>Défaut d&apos;entretien</strong> : Si la mérule résulte d&apos;un manque de ventilation ou d&apos;un entretien insuffisant du bâtiment, l&apos;assureur refusera la prise en charge</li>
+        <li><strong>Mérule préexistante</strong> : Si la contamination existait avant la souscription du contrat</li>
+        <li><strong>Absence de déclaration rapide</strong> : Vous devez déclarer le sinistre dans les <strong>5 jours ouvrés</strong> suivant la découverte</li>
+      </ul>
+
+      <h3>Maximiser votre indemnisation</h3>
+      <p>Pour obtenir la meilleure prise en charge possible :</p>
+      <ol>
+        <li>Faites réaliser un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic indépendant</a> avant de contacter l&apos;assurance (rapport technique opposable)</li>
+        <li>Documentez tout avec des photos datées et géolocalisées</li>
+        <li>Identifiez la cause d&apos;humidité à l&apos;origine de la mérule (fuite, infiltration, remontée capillaire)</li>
+        <li>Conservez tous les devis et factures de traitement</li>
+      </ol>
+
+      <p>Le rapport d&apos;expertise IPB à 249€ TTC constitue une <strong>pièce technique décisive</strong> dans votre dossier d&apos;assurance. Il documente l&apos;étendue de l&apos;infestation, identifie la cause, et chiffre les travaux nécessaires — autant d&apos;éléments que l&apos;expert d&apos;assurance ne peut pas contester.</p>
+
+      <h2>Prévention : comment protéger sa maison de la mérule</h2>
+
+      <p>La mérule est un champignon opportuniste. Supprimez les conditions favorables à son développement et vous éliminez le risque. Voici les mesures préventives concrètes :</p>
+
+      <h3>Contrôler l&apos;humidité (priorité n°1)</h3>
+      <ul>
+        <li><strong>Ventilation permanente</strong> : Assurez une circulation d&apos;air dans toutes les pièces, y compris les combles, sous-sols et vides sanitaires. Une VMC ou VMI en bon état est indispensable.</li>
+        <li><strong>Traiter les fuites immédiatement</strong> : Un dégât des eaux non traité dans les 48h crée les conditions idéales pour la mérule. Ne laissez jamais une fuite persister.</li>
+        <li><strong>Surveiller le taux d&apos;humidité</strong> : Un hygromètre d&apos;intérieur (15€ en grande surface) doit indiquer un taux entre 45% et 60%. Au-delà, investiguez la cause.</li>
+      </ul>
+
+      <h3>Protéger le bois</h3>
+      <ul>
+        <li><strong>Bois traité classe 3 ou 4</strong> : Pour tout remplacement de pièce de charpente, de solivage ou de menuiserie, exigez du bois traité autoclave (imprégnation fongicide et insecticide en profondeur)</li>
+        <li><strong>Éviter le contact bois/maçonnerie humide</strong> : Intercalez toujours une lame d&apos;air ou un isolant imperméable entre les pièces de bois et les murs en maçonnerie</li>
+        <li><strong>Traitement préventif des boiseries existantes</strong> : Un produit fongicide appliqué tous les 10 ans sur les charpentes et solivages accessibles réduit considérablement le risque</li>
+      </ul>
+
+      <h3>Inspecter régulièrement</h3>
+      <p>Planifiez une <strong>inspection visuelle annuelle</strong> de vos combles, sous-sol, vide sanitaire et arrières de placards. Recherchez :</p>
+      <ul>
+        <li>Toute odeur de champignon ou de moisi persistante</li>
+        <li>Des filaments blancs (mycélium) sur le bois ou la maçonnerie</li>
+        <li>Du bois qui s&apos;enfonce facilement sous la pression du doigt</li>
+        <li>Des taches brunâtres en forme de galette sur les surfaces</li>
+      </ul>
+
+      <p>En Occitanie, la mérule est moins fréquente qu&apos;en Bretagne ou dans le Nord, mais elle existe dans les maisons anciennes avec des problèmes d&apos;<a href="/expertise/humidite" class="text-orange-600 underline hover:text-orange-700">humidité non traitée</a>. La prévention coûte quelques centaines d&apos;euros par an. Le traitement curatif peut en coûter plusieurs dizaines de milliers. Le calcul est vite fait.</p>
+
+      <p>La mérule est l&apos;un des rares cas où <strong>chaque semaine compte</strong>. Un diagnostic rapide (249€ TTC) permet d&apos;évaluer l&apos;étendue de la contamination et de planifier le traitement avant que les dégâts ne deviennent irréversibles. En Occitanie, IPB intervient sous 48h pour les cas suspectés de mérule.</p>
+
       <p class="font-bold text-lg text-slate-900 mt-6">📞 Suspicion de mérule ou champignon ? Diagnostic expert : 05 82 95 33 75</p>
     `
   },
@@ -3823,6 +4579,121 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>Faire diagnostiquer la source exacte d'humidité</li>
         <li>Traiter avec une injection de résine professionnelle</li>
       </ol>
+
+      <h2>Le salpêtre est-il dangereux pour la santé ?</h2>
+
+      <p>Le salpêtre (nitrate de potassium, KNO₃) n&apos;est pas toxique en lui-même au contact de la peau. En revanche, sa présence signale un <strong>taux d&apos;humidité anormalement élevé</strong> dans votre logement — et c&apos;est cette humidité chronique qui représente un vrai danger sanitaire.</p>
+
+      <h3>Effets sur le système respiratoire</h3>
+      <p>Selon l&apos;Organisation Mondiale de la Santé (OMS), un logement dont le taux d&apos;humidité dépasse 60% de manière prolongée favorise :</p>
+      <ul>
+        <li><strong>Les infections respiratoires récurrentes</strong> : bronchites, rhinites, sinusites chroniques</li>
+        <li><strong>L&apos;aggravation de l&apos;asthme</strong> : les crises sont 2 à 3 fois plus fréquentes dans un logement humide</li>
+        <li><strong>Les allergies aux acariens</strong> : les acariens prolifèrent au-delà de 65% d&apos;humidité relative</li>
+        <li><strong>Les douleurs articulaires</strong> : rhumatismes aggravés par l&apos;humidité ambiante</li>
+      </ul>
+
+      <div class="my-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+        <p class="font-bold text-red-800">⚠️ Populations vulnérables</p>
+        <p class="text-red-700">Les enfants de moins de 5 ans, les personnes asthmatiques et les personnes âgées sont particulièrement exposés. Une étude de l&apos;INSERM montre que les enfants vivant dans un logement humide ont <strong>40% de risques supplémentaires</strong> de développer de l&apos;asthme avant 7 ans.</p>
+      </div>
+
+      <p>En Occitanie, les maisons toulousaines construites avant 1960 sont souvent dépourvues de barrière anti-humidité dans les fondations. Résultat : les remontées capillaires créent un environnement idéal pour le salpêtre <strong>et</strong> pour les moisissures associées. Un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic professionnel</a> permet de mesurer précisément le taux d&apos;humidité et d&apos;identifier la source du problème.</p>
+
+      <h2>Combien de temps pour que le mur sèche après traitement ?</h2>
+
+      <p>Après une <a href="/remontees-capillaires-traitement" class="text-orange-600 underline hover:text-orange-700">injection de résine</a>, le mur ne sèche pas du jour au lendemain. Il faut comprendre le processus pour éviter toute déception :</p>
+
+      <h3>Le calendrier réaliste de séchage</h3>
+      <ul>
+        <li><strong>Semaines 1 à 4</strong> : La résine polymérise et crée la barrière étanche. Les remontées capillaires cessent. Aucun changement visible.</li>
+        <li><strong>Mois 2 à 4</strong> : L&apos;humidité résiduelle commence à s&apos;évaporer. Vous pouvez constater un blanchiment de la surface du mur.</li>
+        <li><strong>Mois 4 à 8</strong> : Le taux d&apos;humidité baisse significativement. Les mesures à l&apos;humidimètre montrent une amélioration nette.</li>
+        <li><strong>Mois 8 à 12</strong> : Le mur atteint un taux d&apos;humidité normal (inférieur à 5%). C&apos;est à ce stade que vous pouvez appliquer un enduit de rénovation.</li>
+      </ul>
+
+      <p><strong>Règle de base</strong> : comptez environ <strong>1 mois de séchage par centimètre d&apos;épaisseur de mur</strong>. Un mur en pierre de 40 cm à Toulouse prendra donc 10 à 14 mois pour sécher complètement, contre 6 à 8 mois pour un mur en brique de 20 cm.</p>
+
+      <div class="my-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <p class="font-bold text-blue-800">💡 Erreur fréquente à Toulouse</p>
+        <p class="text-blue-700">Ne posez <strong>jamais</strong> un enduit étanche (type enduit ciment) avant séchage complet. L&apos;humidité résiduelle serait piégée dans le mur et provoquerait des cloques, voire un décollement total de l&apos;enduit. Utilisez un enduit à la chaux, perméable à la vapeur d&apos;eau, qui laisse le mur respirer pendant le séchage.</p>
+      </div>
+
+      <h2>Salpêtre vs moisissures : comment les différencier ?</h2>
+
+      <p>Salpêtre et moisissures apparaissent souvent dans les mêmes environnements humides, mais ce sont deux problèmes <strong>fondamentalement différents</strong> qui nécessitent des traitements distincts.</p>
+
+      <h3>Identifier visuellement</h3>
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead>
+            <tr class="bg-slate-100">
+              <th class="border border-slate-300 px-4 py-2 text-left">Critère</th>
+              <th class="border border-slate-300 px-4 py-2 text-left">Salpêtre</th>
+              <th class="border border-slate-300 px-4 py-2 text-left">Moisissures</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 px-4 py-2"><strong>Couleur</strong></td>
+              <td class="border border-slate-300 px-4 py-2">Blanc, cristallin, poudreux</td>
+              <td class="border border-slate-300 px-4 py-2">Noir, vert, gris ou brun</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 px-4 py-2"><strong>Texture</strong></td>
+              <td class="border border-slate-300 px-4 py-2">Sec, cristaux friables</td>
+              <td class="border border-slate-300 px-4 py-2">Humide, velouté, parfois visqueux</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 px-4 py-2"><strong>Odeur</strong></td>
+              <td class="border border-slate-300 px-4 py-2">Aucune odeur</td>
+              <td class="border border-slate-300 px-4 py-2">Odeur de moisi caractéristique</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 px-4 py-2"><strong>Localisation</strong></td>
+              <td class="border border-slate-300 px-4 py-2">Bas des murs (0-80 cm)</td>
+              <td class="border border-slate-300 px-4 py-2">Coins, plafonds, derrière meubles</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 px-4 py-2"><strong>Cause principale</strong></td>
+              <td class="border border-slate-300 px-4 py-2">Remontées capillaires</td>
+              <td class="border border-slate-300 px-4 py-2">Condensation ou infiltration</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Traitements différents</h3>
+      <p>Le salpêtre se traite en coupant les remontées capillaires (injection de résine). Les <a href="/moisissures-maison-sante" class="text-orange-600 underline hover:text-orange-700">moisissures</a> se traitent en améliorant la ventilation (VMC/VMI) ou en réparant l&apos;infiltration. Attention : dans les maisons anciennes de Toulouse, il est fréquent de trouver les <strong>deux problèmes simultanément</strong>. Un diagnostic complet à 249€ TTC permet de cartographier toutes les sources d&apos;humidité et de prioriser les interventions.</p>
+
+      <h2>Comment vérifier que le traitement a fonctionné ?</h2>
+
+      <p>Après l&apos;injection de résine, le mur ne sèche pas du jour au lendemain. Voici comment suivre l&apos;efficacité du traitement :</p>
+
+      <h3>Les 3 premiers mois</h3>
+      <p>Le mur reste humide en surface. C&apos;est <strong>normal</strong> : l&apos;eau déjà présente dans le mur doit s&apos;évaporer naturellement. La barrière de résine empêche la nouvelle eau de monter, mais l&apos;humidité résiduelle met du temps à partir. Comptez environ <strong>1 mois de séchage par centimètre d&apos;épaisseur de mur</strong>.</p>
+
+      <h3>De 3 à 12 mois</h3>
+      <p>Vous devriez observer une <strong>ligne de démarcation</strong> qui descend progressivement : la partie haute du mur sèche en premier. Le salpêtre cesse d&apos;apparaître au-dessus de cette ligne. C&apos;est le signe que la barrière fonctionne. Utilisez un <strong>hygromètre de contact</strong> (30€ en magasin de bricolage) pour mesurer : en dessous de 5% d&apos;humidité résiduelle, le mur est sec.</p>
+
+      <h3>Après 12 mois</h3>
+      <p>Le mur doit être sec sur toute sa hauteur. Vous pouvez alors appliquer un <strong>enduit de rénovation</strong> (enduit à la chaux de préférence, qui laisse respirer le mur) et repeindre. Ne refaites <strong>jamais</strong> les finitions avant que le mur soit complètement sec, sinon l&apos;humidité résiduelle détruira votre nouveau revêtement.</p>
+
+      <h2>Le salpêtre est-il dangereux pour la santé ?</h2>
+
+      <p>Le salpêtre en lui-même (nitrate de potassium) est peu toxique. Mais l&apos;humidité qui le cause favorise le développement de <a href="/moisissures-maison-sante" class="text-orange-600 underline hover:text-orange-700">moisissures</a> dont les spores sont dangereuses pour les voies respiratoires. L&apos;OMS estime que vivre dans un logement humide augmente de <strong>40% le risque d&apos;asthme</strong> et de 30% celui de rhinite allergique. Les enfants et les personnes asthmatiques sont les plus vulnérables. Si vous voyez du salpêtre, vérifiez aussi la présence de moisissures cachées derrière les meubles ou sous les plinthes.</p>
+
+      <h2>Salpêtre en copropriété : qui est responsable ?</h2>
+
+      <p>En copropriété, le traitement du salpêtre dépend de l&apos;origine du problème :</p>
+
+      <ul>
+        <li><strong>Parties communes</strong> (façade, fondations, cave commune) : le <strong>syndic</strong> doit organiser les travaux, financés par le budget copropriété</li>
+        <li><strong>Parties privatives</strong> (murs intérieurs d&apos;un appartement) : à la charge du <strong>propriétaire</strong>, sauf si la cause vient des parties communes</li>
+        <li><strong>Logement loué</strong> : le <strong>propriétaire-bailleur</strong> est responsable (article 6 de la loi du 6 juillet 1989). Le locataire peut exiger des travaux sous peine de réduction de loyer</li>
+      </ul>
+
+      <p>Dans tous les cas, un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic professionnel</a> (249€ TTC) permet d&apos;identifier la source exacte et de déterminer les responsabilités.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">📞 Salpêtre à Toulouse ? Diagnostic gratuit : 05 82 95 33 75</p>
     `
@@ -4005,6 +4876,89 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Le Tarn-et-Garonne est un département où les fissures sont <strong>fréquentes mais pas inévitables</strong>. Avec le bon diagnostic et les bonnes solutions, votre maison peut retrouver sa stabilité pour des décennies.</p>
 
       <p><strong>L'erreur à éviter</strong> : Attendre que les fissures s'aggravent. Chaque été de sécheresse aggrave la situation et augmente le coût des travaux.</p>
+
+      <h2>Fissures et valeur immobilière dans le 82</h2>
+
+      <p>Les fissures ne sont pas qu&apos;un problème technique : elles ont un <strong>impact direct et mesurable sur la valeur de votre bien immobilier</strong> dans le Tarn-et-Garonne.</p>
+
+      <h3>La décote réelle constatée</h3>
+      <p>D&apos;après les données des notaires d&apos;Occitanie, une maison présentant des fissures visibles non traitées subit une décote de :</p>
+      <ul>
+        <li><strong>10 à 15%</strong> pour des microfissures esthétiques (faïençage, retrait d&apos;enduit)</li>
+        <li><strong>15 à 25%</strong> pour des fissures structurelles visibles (en escalier, traversantes)</li>
+        <li><strong>25 à 30%</strong> pour des fissures avec signes de mouvement actif (portes bloquées, carrelage fissuré)</li>
+      </ul>
+      <p>Sur une maison estimée à 200 000€ à Montauban, cela représente une perte potentielle de <strong>30 000 à 60 000€</strong>. Un traitement par <a href="/agrafage-fissures" class="text-orange-600 underline hover:text-orange-700">agrafage structurel</a> (8 000 à 15 000€) peut restaurer la quasi-totalité de cette valeur.</p>
+
+      <h3>Obligations légales en cas de vente</h3>
+      <p>Depuis la loi du 17 juin 2015, le vendeur est tenu à une <strong>obligation de transparence totale</strong> sur l&apos;état de son bien. Concrètement :</p>
+      <ul>
+        <li>Les fissures connues doivent figurer dans le <strong>dossier de diagnostic technique (DDT)</strong></li>
+        <li>Tout arrêté de catastrophe naturelle affectant la commune doit être mentionné dans l&apos;<strong>état des risques (ERP)</strong></li>
+        <li>En cas de dissimulation, l&apos;acheteur peut invoquer un <strong>vice caché</strong> et demander l&apos;annulation de la vente ou une réduction du prix</li>
+      </ul>
+      <p>Dans le Tarn-et-Garonne, où de nombreuses communes (Montauban, Castelsarrasin, Moissac, Valence-d&apos;Agen) ont été reconnues en état de catastrophe naturelle sécheresse, cette obligation est particulièrement surveillée. Un <a href="/revente-maison-fissuree" class="text-orange-600 underline hover:text-orange-700">rapport d&apos;expertise indépendant</a> sécurise juridiquement la transaction pour les deux parties.</p>
+
+      <h2>Le rôle de l&apos;expert indépendant vs l&apos;expert d&apos;assurance</h2>
+
+      <p>Quand vous déclarez un sinistre fissures à votre assurance, celle-ci mandate <strong>son propre expert</strong>. Mais cet expert n&apos;est pas neutre : il est rémunéré par la compagnie d&apos;assurance et son objectif est de <strong>minimiser l&apos;indemnisation</strong>.</p>
+
+      <h3>Expert d&apos;assurance : les limites</h3>
+      <ul>
+        <li>Visite rapide (30 min en moyenne vs 1h30 pour un indépendant)</li>
+        <li>Pas d&apos;instruments de mesure systématiques (fissuromètre, niveau laser)</li>
+        <li>Tendance à classer les fissures comme « esthétiques » pour réduire le montant des travaux</li>
+        <li>Rapport orienté vers la position de l&apos;assureur</li>
+      </ul>
+
+      <h3>Expert indépendant (IPB) : la différence</h3>
+      <ul>
+        <li><strong>Diagnostic instrumenté complet</strong> : fissuromètre numérique, niveau laser, humidimètre à sonde</li>
+        <li><strong>Rapport technique détaillé</strong> : cartographie des fissures, mesures d&apos;ouverture, analyse des causes</li>
+        <li><strong>Position neutre</strong> : notre seul objectif est de décrire la réalité technique</li>
+        <li><strong>Opposable en justice</strong> : le rapport IPB est recevable comme pièce technique devant les tribunaux</li>
+      </ul>
+
+      <div class="my-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+        <p class="font-bold text-green-800">💡 Résultat concret</p>
+        <p class="text-green-700">En Tarn-et-Garonne, les propriétaires qui disposent d&apos;un rapport d&apos;expertise indépendant IPB obtiennent en moyenne une <strong>indemnisation 35 à 50% supérieure</strong> à ceux qui se contentent de l&apos;expertise de l&apos;assureur. Notre diagnostic à 249€ TTC est souvent amorti dès la première négociation avec l&apos;assurance.</p>
+      </div>
+
+      <h2>Chronologie type d&apos;une intervention dans le 82</h2>
+
+      <p>Voici comment se déroule concrètement une prise en charge par IPB dans le Tarn-et-Garonne :</p>
+
+      <ol>
+        <li><strong>Jour 1 — Contact et prise de rendez-vous</strong> : Appel ou <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">formulaire en ligne</a>. Un créneau est fixé sous 48h à 5 jours selon l&apos;urgence.</li>
+        <li><strong>Jour 3 à 5 — Diagnostic sur site</strong> : L&apos;expert se déplace avec ses instruments (fissuromètre, niveau laser, humidimètre). Visite complète de la maison, mesures, photos. Durée : 1h30 à 2h.</li>
+        <li><strong>Jour 8 — Remise du rapport</strong> : Rapport technique détaillé (15-25 pages) avec photos annotées, mesures, identification des causes, et <strong>préconisations chiffrées</strong> de traitement.</li>
+        <li><strong>Jour 10 — Devis détaillé</strong> : Si des travaux sont nécessaires, devis transparent poste par poste. Pas de surprise.</li>
+        <li><strong>Jour 15 à 20 — Début des travaux</strong> : Agrafage en 3-5 jours, finitions incluses. Chantier propre, voisinage prévenu.</li>
+        <li><strong>Suivi post-travaux</strong> : Contrôle à 6 mois et 1 an pour vérifier la stabilisation. Inclus dans la prestation.</li>
+      </ol>
+
+      <h2>L&apos;impact des fissures sur la valeur de votre maison</h2>
+
+      <p>À Montauban, le prix moyen au m² est d&apos;environ <strong>1 800 à 2 200€</strong> (source : DVF 2025). Une maison de 100 m² fissurée sans traitement subit une <strong>décote de 15 à 30%</strong>, soit une perte de <strong>27 000 à 66 000€</strong>. En comparaison, un agrafage complet coûte 8 000 à 15 000€ — un investissement largement rentable.</p>
+
+      <p>De plus, depuis 2023, le <strong>vendeur a l&apos;obligation légale de mentionner les fissures</strong> dans le dossier de diagnostic technique (DDT). Dissimuler un vice structurel expose à l&apos;annulation de la vente ou à des dommages-intérêts pouvant dépasser le prix des travaux. Consultez notre guide sur la <a href="/blog/revente-maison-fissuree" class="text-orange-600 underline hover:text-orange-700">revente d&apos;une maison fissurée</a> pour en savoir plus.</p>
+
+      <h2>Les erreurs à ne surtout pas commettre</h2>
+
+      <p>Face aux fissures, beaucoup de propriétaires du Tarn-et-Garonne commettent des erreurs coûteuses :</p>
+
+      <ul>
+        <li><strong>Reboucher avec de l&apos;enduit</strong> : la fissure revient en pire dans les 6 mois car le mouvement structurel continue</li>
+        <li><strong>Attendre le prochain arrêté Cat-Nat</strong> : pendant ce temps, les fissures s&apos;aggravent et le coût de réparation augmente de 15 à 20% par an</li>
+        <li><strong>Accepter le premier devis sans diagnostic</strong> : certaines entreprises proposent des <a href="/blog/agrafage-vs-micropieux-choix" class="text-orange-600 underline hover:text-orange-700">micropieux à 40 000€</a> alors qu&apos;un agrafage à 12 000€ suffirait</li>
+        <li><strong>Ne pas documenter les fissures</strong> : sans photos datées ni rapport technique, votre dossier d&apos;assurance sera fragile</li>
+      </ul>
+
+      <div class="my-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+        <p class="font-bold text-green-800">💰 Le calcul est simple : 12 000€ d&apos;agrafage aujourd&apos;hui peuvent sauver 50 000€ de valeur immobilière demain. Sans compter que chaque cycle sécheresse-pluie aggrave les fissures et augmente le coût des travaux de 15 à 20% par an.</p>
+      </div>
+
+      <p>IPB est l&apos;un des rares experts à couvrir l&apos;intégralité du Tarn-et-Garonne, de Montauban à Moissac en passant par Castelsarrasin et Caussade. Notre connaissance approfondie des sols du département nous permet de proposer la solution la plus adaptée — et la plus économique — à chaque situation. Consultez également nos <a href="/expertise/fissures" class="text-orange-600 underline hover:text-orange-700">guides complets sur les fissures</a> pour approfondir le sujet.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">📞 Expert fissures Tarn-et-Garonne - Diagnostic gratuit : 05 82 95 33 75</p>
     `
@@ -4477,6 +5431,70 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>Fissure mur intérieur en location : qui paie ?</h3>
       <p>Si la fissure est structurelle (cause liée au bâti), c'est le <strong>propriétaire</strong> qui est responsable des réparations. Si elle est superficielle et liée à l'usage (trou de cheville, usure normale), c'est au <strong>locataire</strong> de la reboucher.</p>
 
+      <h2>Le test du témoin en plâtre : mode d&apos;emploi</h2>
+
+      <p>Avant de faire intervenir un expert, vous pouvez <strong>surveiller vous-même</strong> l&apos;évolution d&apos;une fissure intérieure avec le test du témoin en plâtre. C&apos;est simple, gratuit, et cela fournit des données précieuses pour le diagnostic ultérieur.</p>
+
+      <h3>Matériel nécessaire</h3>
+      <ul>
+        <li><strong>Plâtre de Paris</strong> (2-3€ en grande surface de bricolage)</li>
+        <li>Un peu d&apos;eau</li>
+        <li>Un marqueur indélébile</li>
+        <li>Un appareil photo (votre téléphone suffit)</li>
+      </ul>
+
+      <h3>Pose du témoin étape par étape</h3>
+      <ol>
+        <li><strong>Nettoyez</strong> la zone autour de la fissure (pas de poussière ni d&apos;enduit qui s&apos;effrite)</li>
+        <li><strong>Préparez</strong> un plâtre assez épais (consistance de pâte à modeler)</li>
+        <li><strong>Appliquez</strong> un « pont » de plâtre de 10 cm de long, 3 cm de large et 5 mm d&apos;épaisseur, à cheval sur la fissure</li>
+        <li><strong>Inscrivez</strong> la date directement sur le plâtre frais avec le marqueur</li>
+        <li><strong>Photographiez</strong> le témoin avec une règle à côté (pour l&apos;échelle)</li>
+        <li><strong>Posez 2 à 3 témoins</strong> sur la même fissure (début, milieu, fin) pour identifier la zone la plus active</li>
+      </ol>
+
+      <h3>Lecture des résultats</h3>
+      <ul>
+        <li><strong>Le plâtre reste intact après 6 mois</strong> → La fissure est <strong>inactive</strong>. Un simple rebouchage cosmétique suffit</li>
+        <li><strong>Le plâtre se fissure après 3 à 6 mois</strong> → La fissure est <strong>lentement évolutive</strong>. Un diagnostic professionnel est recommandé, mais ce n&apos;est pas une urgence</li>
+        <li><strong>Le plâtre casse en moins de 3 mois</strong> → La fissure est <strong>active et rapide</strong>. Faites réaliser un <a href="/expertise/fissures" class="text-orange-600 underline hover:text-orange-700">diagnostic structurel</a> rapidement</li>
+        <li><strong>Le plâtre se décale</strong> (les deux parties ne sont plus au même niveau) → Il y a un <strong>affaissement différentiel</strong> — c&apos;est le signe le plus préoccupant</li>
+      </ul>
+
+      <h3>Documenter pour votre dossier</h3>
+      <p>Photographiez chaque témoin <strong>une fois par mois</strong>, toujours avec la même règle et le même angle. Ces photos constituent une preuve d&apos;évolution précieuse pour un éventuel dossier d&apos;assurance ou de <a href="/blog/catastrophe-naturelle-secheresse-demarches-indemnisation" class="text-orange-600 underline hover:text-orange-700">déclaration Cat-Nat</a>. Notez également la date et les conditions météo (période de sécheresse, fortes pluies).</p>
+
+      <h2>Fissures mur intérieur et assurance habitation</h2>
+
+      <p>Votre assurance habitation couvre-t-elle les fissures intérieures ? La réponse dépend de la <strong>cause</strong> de la fissure.</p>
+
+      <h3>Ce qui est couvert : le régime Cat-Nat</h3>
+      <p>Si les fissures sont causées par un <strong>mouvement de terrain lié à la sécheresse</strong> (retrait-gonflement des argiles), elles relèvent du régime des catastrophes naturelles. Pour être indemnisé :</p>
+      <ol>
+        <li>Votre commune doit avoir fait l&apos;objet d&apos;un <strong>arrêté de catastrophe naturelle</strong> (publication au Journal Officiel)</li>
+        <li>Vous devez déclarer le sinistre à votre assureur dans les <strong>10 jours</strong> suivant la publication de l&apos;arrêté</li>
+        <li>Un expert d&apos;assurance évaluera les dégâts</li>
+      </ol>
+      <p><strong>Franchise légale</strong> : 1 520€ pour les mouvements de terrain liés à la sécheresse.</p>
+
+      <h3>Ce qui n&apos;est PAS couvert</h3>
+      <ul>
+        <li><strong>Usure normale</strong> : Fissures de retrait d&apos;enduit, faïençage lié au vieillissement</li>
+        <li><strong>Défaut de construction</strong> : Relève de la garantie décennale du constructeur (10 ans)</li>
+        <li><strong>Mauvais entretien</strong> : Fissures aggravées par l&apos;absence de gouttières, arbres trop proches non élagués</li>
+      </ul>
+
+      <h3>Comment monter un dossier solide</h3>
+      <p>Les experts d&apos;assurance sous-évaluent fréquemment les dégâts. Pour contrer cela :</p>
+      <ul>
+        <li><strong>Faites réaliser un rapport d&apos;expertise indépendant</strong> (249€ TTC chez IPB) : mesures objectives, photos, analyse des causes, préconisations chiffrées</li>
+        <li><strong>Documentez l&apos;évolution</strong> : Photos des témoins en plâtre, historique des fissures</li>
+        <li><strong>Conservez tous les devis et factures</strong> de travaux antérieurs (rebouchages, ravalements)</li>
+        <li><strong>Demandez une contre-expertise</strong> si l&apos;indemnisation proposée ne couvre pas les travaux nécessaires</li>
+      </ul>
+
+      <p>Le rapport d&apos;un expert indépendant comme IPB pèse fortement face à l&apos;expert mandaté par l&apos;assurance. Il démontre le <strong>lien de causalité</strong> entre la sécheresse et les fissures, et chiffre précisément les réparations nécessaires.</p>
+
       <h2>Conclusion : agissez maintenant, économisez plus tard</h2>
 
       <p>Une fissure intérieure peut être bénigne ou annonciatrice d'un problème grave. La seule façon de savoir, c'est un <strong>diagnostic professionnel</strong>. Ne faites pas l'erreur d'attendre : chaque cycle de sécheresse aggrave les mouvements de sol en Occitanie.</p>
@@ -4627,6 +5645,83 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>Chez IPB, nous réalisons un <strong>diagnostic complet à 249€</strong> (déductible de la facture finale). Ce diagnostic vous donne un rapport technique précis, un devis détaillé et des recommandations claires. Pas de surprise, pas de travaux inutiles.</p>
 
+      <h2>Exemples de chantiers réels et leurs coûts</h2>
+
+      <p>Pour vous donner une idée concrète des budgets, voici trois chantiers d&apos;agrafage réalisés récemment en Occitanie :</p>
+
+      <h3>Cas n°1 : Maison de ville à Toulouse — 7 500€</h3>
+      <p><strong>Contexte</strong> : Maison mitoyenne de 90 m² dans le quartier des Minimes, construite en 1965. Trois fissures en escalier sur la façade arrière, ouverture maximale de 3 mm. Cause : tassement différentiel lié au retrait du sol argileux après la sécheresse de 2023.</p>
+      <ul>
+        <li>Diagnostic IPB : 249€ TTC</li>
+        <li>Agrafage structurel : 3 fissures, 12 agrafes en inox — <strong>6 200€ HT</strong></li>
+        <li>Rebouchage et finition : 1 050€ HT</li>
+        <li><strong>Total TTC : 7 500€</strong> (durée du chantier : 3 jours)</li>
+      </ul>
+
+      <h3>Cas n°2 : Pavillon à Montauban — 12 000€</h3>
+      <p><strong>Contexte</strong> : Pavillon de 120 m² sur sous-sol, construit en 1982. Fissures multiples sur deux façades (7 fissures au total), portes qui frottent, carrelage fissuré au RDC. Cause : sol argileux + drainage défaillant côté nord.</p>
+      <ul>
+        <li>Diagnostic IPB : 249€ TTC</li>
+        <li>Agrafage structurel complet : 7 fissures, 28 agrafes — <strong>9 800€ HT</strong></li>
+        <li>Reprise des joints et finitions : 1 700€ HT</li>
+        <li><strong>Total TTC : 12 000€</strong> (durée du chantier : 5 jours)</li>
+      </ul>
+
+      <h3>Cas n°3 : Maison ancienne à Auch — 18 000€</h3>
+      <p><strong>Contexte</strong> : Maison en pierre de 150 m², construite en 1930. Fissures traversantes avec affaissement de 8 mm côté sud-est. Nécessité de stabiliser la fondation avant agrafage. Cause : fondations peu profondes (45 cm) sur sol argileux instable.</p>
+      <ul>
+        <li>Diagnostic IPB : 249€ TTC</li>
+        <li>Injection de résine expansive sous fondation : <strong>5 500€ HT</strong></li>
+        <li>Agrafage structurel : 5 fissures, 20 agrafes — <strong>8 200€ HT</strong></li>
+        <li>Reprise enduit façade : 1 800€ HT</li>
+        <li><strong>Total TTC : 18 000€</strong> (durée du chantier : 8 jours)</li>
+      </ul>
+
+      <h2>L&apos;agrafage est-il rentable ? Calcul du retour sur investissement</h2>
+
+      <p>La question n&apos;est pas « Combien coûte l&apos;agrafage ? » mais « <strong>Combien coûte le fait de ne rien faire ?</strong> »</p>
+
+      <h3>Le coût de l&apos;inaction</h3>
+      <p>Les fissures non traitées s&apos;aggravent mécaniquement avec chaque cycle de retrait-gonflement du sol argileux. D&apos;après notre retour d&apos;expérience sur plus de 300 chantiers en Occitanie :</p>
+      <ul>
+        <li>Le coût de réparation augmente de <strong>15 à 20% par an</strong> sans traitement</li>
+        <li>Une fissure de 2 mm aujourd&apos;hui peut atteindre 8-10 mm en 3 ans, nécessitant des <a href="/micropieux-fondations" class="text-orange-600 underline hover:text-orange-700">micropieux</a> (25 000 à 50 000€) au lieu d&apos;un simple agrafage (8 000 à 15 000€)</li>
+        <li>La valeur immobilière chute de <strong>15 à 30%</strong> tant que les fissures sont visibles et non traitées</li>
+      </ul>
+
+      <h3>Le calcul concret</h3>
+      <div class="my-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+        <p class="font-bold text-green-800">📊 Exemple sur une maison à 250 000€</p>
+        <p class="text-green-700"><strong>Sans traitement</strong> : perte de valeur de 50 000€ (20%) + aggravation vers micropieux à 35 000€ = <strong>coût total : 85 000€</strong></p>
+        <p class="text-green-700"><strong>Avec agrafage immédiat</strong> : diagnostic 249€ + agrafage 12 000€ + récupération de la valeur = <strong>coût total : 12 249€</strong></p>
+        <p class="text-green-700 font-bold mt-2">Économie réalisée : 72 751€</p>
+      </div>
+
+      <p>L&apos;agrafage n&apos;est pas une dépense, c&apos;est un <strong>investissement patrimonial</strong> avec un retour mesurable. Plus vous intervenez tôt, plus le ratio coût/bénéfice est favorable.</p>
+
+      <h2>Garantie et suivi après agrafage</h2>
+
+      <p>Un agrafage réalisé par un professionnel qualifié est couvert par la <strong>garantie décennale</strong> (10 ans). Chez IPB, nous effectuons un suivi post-travaux systématique : un contrôle à 6 mois et un contrôle à 1 an pour vérifier que les fissures sont stabilisées. En cas de réapparition (ce qui arrive dans moins de 2% des cas), nous intervenons gratuitement dans le cadre de la garantie.</p>
+
+      <p>Conservez précieusement votre <strong>attestation de garantie décennale</strong> et votre <strong>facture détaillée</strong>. Ces documents sont essentiels si vous revendez votre maison dans les 10 ans : ils prouvent que les fissures ont été traitées professionnellement et rassurent l&apos;acheteur.</p>
+
+      <h2>Questions fréquentes sur le prix de l&apos;agrafage</h2>
+
+      <h3>L&apos;agrafage est-il couvert par l&apos;assurance ?</h3>
+      <p>Oui, si votre commune est reconnue en <a href="/fissure-secheresse-indemnisation" class="text-orange-600 underline hover:text-orange-700">catastrophe naturelle sécheresse</a>. La franchise légale est de 1 520€ en 2026. Le reste est pris en charge par votre assurance habitation. Un rapport d&apos;expert indépendant (comme celui d&apos;IPB) augmente significativement le montant de l&apos;indemnisation par rapport à l&apos;évaluation de l&apos;expert d&apos;assurance.</p>
+
+      <h3>Peut-on payer en plusieurs fois ?</h3>
+      <p>Oui. IPB propose un <strong>échelonnement en 3 à 4 versements</strong> sans frais pour les chantiers supérieurs à 5 000€. Un premier acompte de 30% au démarrage, le solde réparti sur la durée du chantier et après réception.</p>
+
+      <h3>L&apos;agrafage abîme-t-il la façade ?</h3>
+      <p>Non. Les saignées sont réalisées dans les joints de maçonnerie. Après scellement des agrafes et rebouchage au mortier technique, la finition est quasi invisible. Un <strong>enduit de ravalement</strong> peut ensuite couvrir l&apos;ensemble pour un résultat esthétique parfait.</p>
+
+      <h3>Combien de temps durent les travaux ?</h3>
+      <p>Un chantier d&apos;agrafage dure en moyenne <strong>2 à 5 jours ouvrés</strong>. C&apos;est 5 à 10 fois plus rapide que les micropieux (2 à 4 semaines). Vous pouvez rester dans votre maison pendant les travaux — aucune évacuation nécessaire.</p>
+
+      <h3>Faut-il faire agrafage ET micropieux ?</h3>
+      <p>Dans de rares cas (environ 5% de nos chantiers), les deux techniques sont combinées : micropieux pour stabiliser les fondations, puis agrafage pour réparer les fissures murales. Le coût combiné est élevé (30 000 à 60 000€), mais c&apos;est la seule solution quand le sol est réellement instable en profondeur. Un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic instrumenté</a> permet de trancher.</p>
+
       <p class="font-bold text-lg text-slate-900 mt-6">📞 Devis gratuit sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
     `
   },
@@ -4739,6 +5834,84 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Si votre maison neuve se fissure, <strong>vous avez des droits solides</strong>. La garantie décennale est l'une des protections les plus fortes du droit français. Mais elle ne s'active pas toute seule : il faut documenter, déclarer, et surtout avoir un <strong>rapport d'expertise indépendant</strong> pour peser dans la balance.</p>
 
       <p>Chez IPB, nous accompagnons chaque année des dizaines de propriétaires de maisons neuves en Occitanie dans leurs démarches. Notre diagnostic (249€ TTC, déductible) est souvent le premier pas vers une indemnisation complète.</p>
+
+      <h2>Exemples réels de recours réussis en Occitanie</h2>
+
+      <p>Chaque année, nous accompagnons des propriétaires de maisons neuves dans toute l&apos;Occitanie. Voici trois dossiers représentatifs traités par nos experts, qui illustrent les différentes situations que vous pouvez rencontrer.</p>
+
+      <h3>Cas n°1 : Maison neuve à Colomiers — fissures à 3 ans, indemnisation de 18 000€</h3>
+      <p>Un couple constate des <a href="/expertise/fissures" class="text-orange-600 underline hover:text-orange-700">fissures en escalier</a> sur la façade sud de leur pavillon construit en 2021. Le constructeur refuse d&apos;intervenir, arguant que « c&apos;est normal, le béton travaille ». Notre diagnostic instrumenté révèle un <strong>tassement différentiel de 8 mm</strong> lié à un défaut de fondation sur sol argileux. Le rapport IPB, accompagné de photos et de mesures au fissuromètre, permet d&apos;activer la garantie décennale. L&apos;assureur du constructeur prend en charge l&apos;<strong>agrafage complet de la façade</strong>, soit 18 000€ de travaux. Franchise du propriétaire : 0€ (garantie décennale, pas de franchise).</p>
+
+      <h3>Cas n°2 : Pavillon à Montauban — garantie décennale et agrafage intégral</h3>
+      <p>À Montauban, un propriétaire observe des fissures traversantes sur deux façades de sa maison livrée en 2019. L&apos;étude de sol G2 prévue par la loi ELAN n&apos;avait pas été réalisée par le constructeur — une faute lourde. Notre expert établit un rapport détaillé reliant les fissures au retrait-gonflement des argiles (RGA). Le tribunal ordonne la <strong>reprise intégrale par agrafage structurel</strong>, financée par l&apos;assurance décennale du constructeur. Coût total des travaux : 22 000€, intégralement pris en charge. Le dossier a abouti en 14 mois.</p>
+
+      <h3>Cas n°3 : Lotissement à Auch — vices cachés, procédure collective</h3>
+      <p>Dans un lotissement de 12 maisons livré en 2020, sept propriétaires constatent des fissures similaires dès la deuxième année. Notre diagnostic révèle un <strong>défaut de compactage du remblai</strong> lors de la viabilisation du terrain. Les propriétaires se regroupent pour une procédure collective. Le rapport d&apos;expertise IPB, commun aux sept maisons, sert de pièce maîtresse. Résultat : le promoteur et son assureur sont condamnés solidairement. Les travaux d&apos;agrafage et de reprise de fondation sont intégralement financés, pour un montant total de 145 000€.</p>
+
+      <div class="my-8 p-6 bg-green-50 border border-green-200 rounded-xl">
+        <h3 class="font-bold text-green-900 mb-3">💡 Le point commun de ces trois dossiers</h3>
+        <p class="text-green-800">Dans chaque cas, c&apos;est le <strong>rapport d&apos;expertise indépendant</strong> qui a fait basculer le dossier. Sans mesures objectives (fissuromètre, niveau laser, analyse de sol), l&apos;assureur du constructeur aurait minimisé les dommages ou refusé la prise en charge.</p>
+      </div>
+
+      <h2>Les délais à respecter impérativement</h2>
+
+      <p>En matière de construction, les délais sont <strong>stricts et non négociables</strong>. Passé la date limite, vous perdez vos droits, même si le préjudice est avéré. Voici le tableau récapitulatif que tout propriétaire de maison neuve doit connaître :</p>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead>
+            <tr class="bg-slate-100">
+              <th class="border border-slate-300 p-4 text-left font-bold">Garantie / Procédure</th>
+              <th class="border border-slate-300 p-4 text-center font-bold">Délai</th>
+              <th class="border border-slate-300 p-4 text-left font-bold">À compter de…</th>
+              <th class="border border-slate-300 p-4 text-left font-bold">Ce qu&apos;elle couvre</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-4 font-bold">Dommage-ouvrage</td>
+              <td class="border border-slate-300 p-4 text-center text-red-700 font-bold">5 jours</td>
+              <td class="border border-slate-300 p-4">La découverte du sinistre</td>
+              <td class="border border-slate-300 p-4">Préfinancement des réparations sans attendre la décision de justice</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-4 font-bold">Catastrophe naturelle (Cat-Nat)</td>
+              <td class="border border-slate-300 p-4 text-center text-red-700 font-bold">10 jours</td>
+              <td class="border border-slate-300 p-4">La publication de l&apos;arrêté au Journal Officiel</td>
+              <td class="border border-slate-300 p-4">Sinistres liés à un événement naturel reconnu (sécheresse, inondation)</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-4 font-bold">Garantie de parfait achèvement</td>
+              <td class="border border-slate-300 p-4 text-center font-bold">1 an</td>
+              <td class="border border-slate-300 p-4">La réception des travaux</td>
+              <td class="border border-slate-300 p-4">Tous les désordres signalés par le maître d&apos;ouvrage</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-4 font-bold">Garantie biennale</td>
+              <td class="border border-slate-300 p-4 text-center font-bold">2 ans</td>
+              <td class="border border-slate-300 p-4">La réception des travaux</td>
+              <td class="border border-slate-300 p-4">Équipements dissociables (volets, chaudière, robinetterie)</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-4 font-bold">Garantie décennale</td>
+              <td class="border border-slate-300 p-4 text-center text-green-700 font-bold">10 ans</td>
+              <td class="border border-slate-300 p-4">La réception des travaux</td>
+              <td class="border border-slate-300 p-4">Atteintes à la solidité ou à la destination de l&apos;ouvrage (fissures structurelles, fondations)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="my-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
+        <p class="font-bold text-red-900 mb-2">🚨 Attention aux pièges de délai</p>
+        <ul class="list-disc ml-6 text-red-800 space-y-2">
+          <li><strong>Le délai Cat-Nat de 10 jours est souvent méconnu</strong>. Beaucoup de propriétaires laissent passer l&apos;arrêté sans réagir et perdent leur droit à indemnisation.</li>
+          <li><strong>La garantie de parfait achèvement expire vite</strong> : notez chaque défaut sur un carnet dès l&apos;emménagement et envoyez une LRAR avant le premier anniversaire.</li>
+          <li><strong>Le point de départ de la décennale est la réception</strong>, pas la livraison. Si vous n&apos;avez pas signé de PV de réception, faites-vous assister par un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">expert indépendant</a>.</li>
+        </ul>
+      </div>
+
+      <p>En cas de doute sur un délai, <strong>agissez d&apos;abord, vérifiez ensuite</strong>. Envoyer une lettre recommandée ne coûte que quelques euros, mais manquer un délai peut vous coûter des dizaines de milliers d&apos;euros de travaux non pris en charge.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">📞 Diagnostic expert sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
     `
@@ -4879,6 +6052,88 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Quelle que soit la cause — condensation, remontée capillaire ou infiltration — <strong>il existe une solution définitive</strong>. Le plus important est de <strong>traiter la bonne cause</strong>. Un diagnostic précis vous évitera de dépenser de l'argent dans des traitements inefficaces et protégera la santé de votre famille.</p>
 
       <p>Chez IPB, nous avons traité plus de 500 cas d'humidité en Occitanie (Toulouse, Montauban, Auch). Notre <a href="/expertise/humidite" class="text-orange-600 underline hover:text-orange-700">expertise humidité</a> inclut diagnostic instrumenté, rapport technique et préconisations adaptées à votre situation.</p>
+
+      <h2>Coût des traitements selon la cause</h2>
+
+      <p>Le prix de la réparation dépend entièrement de la <strong>cause identifiée</strong>. Voici un tableau transparent des coûts réels constatés en 2025-2026 en Occitanie :</p>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead>
+            <tr class="bg-slate-100">
+              <th class="border border-slate-300 p-4 text-left font-bold">Cause</th>
+              <th class="border border-slate-300 p-4 text-left font-bold">Solution adaptée</th>
+              <th class="border border-slate-300 p-4 text-center font-bold">Fourchette de prix</th>
+              <th class="border border-slate-300 p-4 text-center font-bold">Durée travaux</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-4 font-bold">Condensation</td>
+              <td class="border border-slate-300 p-4">VMI (Ventilation Mécanique par Insufflation)</td>
+              <td class="border border-slate-300 p-4 text-center text-green-700 font-bold">1 500€ — 3 000€</td>
+              <td class="border border-slate-300 p-4 text-center">1 jour</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-4 font-bold">Remontée capillaire</td>
+              <td class="border border-slate-300 p-4"><a href="/traitement-humidite-injection-resine" class="text-orange-600 underline hover:text-orange-700">Injection de résine hydrophobe</a></td>
+              <td class="border border-slate-300 p-4 text-center text-orange-700 font-bold">2 500€ — 6 000€</td>
+              <td class="border border-slate-300 p-4 text-center">1-2 jours</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-4 font-bold">Infiltration par façade</td>
+              <td class="border border-slate-300 p-4">Étanchéité extérieure (enduit, membrane)</td>
+              <td class="border border-slate-300 p-4 text-center text-red-700 font-bold">500€ — 8 000€</td>
+              <td class="border border-slate-300 p-4 text-center">1-5 jours</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-4 font-bold">Infiltration par toiture</td>
+              <td class="border border-slate-300 p-4">Réparation couverture / zinguerie</td>
+              <td class="border border-slate-300 p-4 text-center text-red-700 font-bold">800€ — 5 000€</td>
+              <td class="border border-slate-300 p-4 text-center">1-3 jours</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-4 font-bold">Fuite de canalisation</td>
+              <td class="border border-slate-300 p-4">Détection + réparation plomberie</td>
+              <td class="border border-slate-300 p-4 text-center font-bold">300€ — 2 000€</td>
+              <td class="border border-slate-300 p-4 text-center">< 1 jour</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>La fourchette large pour les infiltrations s&apos;explique par la diversité des cas : une simple reprise de joint de fenêtre coûte 500€, tandis qu&apos;une étanchéité complète de façade avec ravalement peut atteindre 8 000€. C&apos;est pourquoi le <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic préalable à 249€</a> est indispensable : il évite de payer 6 000€ d&apos;injection sur un problème de condensation qui ne coûterait que 2 000€ à traiter correctement.</p>
+
+      <h2>Chambre d&apos;enfant humide : mesures d&apos;urgence</h2>
+
+      <p>L&apos;humidité dans une chambre d&apos;enfant est une <strong>urgence sanitaire</strong>. Les enfants sont 3 à 4 fois plus sensibles aux moisissures que les adultes : leur système respiratoire est encore en développement, et ils passent 10 à 12 heures par nuit dans cette pièce. Voici les mesures à prendre <strong>immédiatement</strong>, en attendant le traitement définitif.</p>
+
+      <h3>Étape 1 : Installer un déshumidificateur provisoire</h3>
+      <p>Placez un déshumidificateur électrique dans la chambre, réglé sur 50% d&apos;humidité relative. Ce n&apos;est pas une solution définitive, mais cela <strong>réduit immédiatement le risque de moisissures</strong>. Coût d&apos;achat : 100-200€. Coût d&apos;utilisation : environ 15€/mois en électricité. Videz le bac quotidiennement.</p>
+
+      <h3>Étape 2 : Aérer matin et soir, même en hiver</h3>
+      <p>Ouvrez la fenêtre <strong>10 minutes matin et soir</strong>, volets ouverts. En hiver, l&apos;air froid extérieur est plus sec que l&apos;air intérieur chaud et humide. Cette ventilation par à-coups évacue l&apos;humidité sans refroidir excessivement la pièce. Fermez la porte de la chambre pendant l&apos;aération pour éviter la diffusion de l&apos;humidité dans les autres pièces.</p>
+
+      <h3>Étape 3 : Éloigner le lit du mur humide</h3>
+      <p>Déplacez le lit à <strong>au moins 20 cm du mur touché</strong>. L&apos;enfant ne doit pas dormir au contact d&apos;une paroi humide. Si l&apos;espace est contraint, interposez un meuble bas (commode, étagère) entre le lit et le mur, en laissant un espace de ventilation derrière le meuble.</p>
+
+      <h3>Étape 4 : Nettoyer les moisissures visibles</h3>
+      <p>Mélangez <strong>1 volume de vinaigre blanc pour 1 volume d&apos;eau tiède</strong>. Appliquez sur les moisissures avec une éponge, laissez agir 15 minutes, puis frottez et séchez. Le vinaigre blanc est un antifongique naturel, non toxique pour les enfants (contrairement à la Javel, qui dégage des vapeurs irritantes). Renouvelez l&apos;opération chaque semaine tant que le problème n&apos;est pas traité à la source.</p>
+
+      <h3>Étape 5 : Surveiller la santé de l&apos;enfant</h3>
+      <p>Consultez votre médecin si l&apos;enfant présente :</p>
+      <ul>
+        <li>Toux sèche persistante, surtout la nuit</li>
+        <li>Nez qui coule en permanence sans rhume</li>
+        <li>Yeux rouges ou irrités au réveil</li>
+        <li>Crises d&apos;asthme ou sifflements respiratoires</li>
+      </ul>
+      <p>Ces symptômes peuvent être liés aux <strong>spores de moisissures</strong> (Aspergillus, Stachybotrys) présentes dans l&apos;air de la chambre. Le médecin pourra prescrire un bilan allergologique si nécessaire.</p>
+
+      <div class="my-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
+        <p class="font-bold text-red-900 mb-2">🚨 Ne temporisez pas</p>
+        <p class="text-red-800">Ces mesures d&apos;urgence ne remplacent pas un traitement définitif. Elles <strong>limitent les risques</strong> en attendant l&apos;intervention d&apos;un professionnel. Plus vous attendez, plus les moisissures se développent en profondeur dans le mur, rendant le traitement futur plus coûteux. Faites réaliser un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic expert (249€ TTC)</a> dans les meilleurs délais.</p>
+      </div>
 
       <p class="font-bold text-lg text-slate-900 mt-6">📞 Diagnostic expert sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
     `
