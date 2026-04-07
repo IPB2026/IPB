@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { blogPostsSlugs } from '@/app/data/blog';
+import { blogPostsSlugs, blogPostsList } from '@/app/data/blog';
 
 // ═══════════════════════════════════════════════════════════════
 // SITEMAP SEO OPTIMISÉ - IPB EXPERTISE
@@ -272,9 +272,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // ════════════════════════════════════════════════════════════
   // ARTICLES DE BLOG
   // ════════════════════════════════════════════════════════════
-  const blogPages: MetadataRoute.Sitemap = blogPostsSlugs.map((slug) => ({
-    url: `${baseUrl}/blog/${slug}`,
-    lastModified: contentDate,
+  const blogPages: MetadataRoute.Sitemap = blogPostsList.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.dateModified || post.date),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));

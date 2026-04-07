@@ -57,6 +57,7 @@ export function generateArticleJsonLd(article: {
   title: string;
   excerpt: string;
   date: string;
+  dateModified?: string;
   author: string;
   slug: string;
   keywords: string[];
@@ -65,7 +66,6 @@ export function generateArticleJsonLd(article: {
 }) {
   const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr').replace(/\/+$/, '');
   
-  // Calcul du wordCount approximatif basé sur readTime (200 mots/min)
   const readTimeMinutes = article.readTime ? parseInt(article.readTime) : 8;
   const wordCount = readTimeMinutes * 200;
   
@@ -82,24 +82,23 @@ export function generateArticleJsonLd(article: {
       height: 630,
     },
     datePublished: article.date,
-    dateModified: new Date().toISOString().split('T')[0], // Date actuelle pour freshness
+    dateModified: article.dateModified || article.date,
     author: {
-      '@type': 'Organization',
-      '@id': `${baseUrl}#organization`,
-      name: 'IPB - Institut de Pathologie du Bâtiment',
-      url: baseUrl,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${baseUrl}/images/IPB_Logo_HD.png`,
+      '@type': 'Person',
+      name: article.author,
+      url: `${baseUrl}/notre-expert`,
+      jobTitle: 'Expert en Pathologie du Bâtiment',
+      worksFor: {
+        '@type': 'Organization',
+        '@id': `${baseUrl}#organization`,
+        name: 'IPB - Institut de Pathologie du Bâtiment',
       },
-      sameAs: [
-        'https://www.google.com/maps/place/IPB+-+Expert+Fissures+%26+Humidit%C3%A9/@43.6047,1.4442,15z',
-      ],
     },
     publisher: {
       '@type': 'Organization',
       '@id': `${baseUrl}#organization`,
       name: 'IPB - Institut de Pathologie du Bâtiment',
+      url: baseUrl,
       logo: {
         '@type': 'ImageObject',
         url: `${baseUrl}/images/IPB_Logo_HD.png`,

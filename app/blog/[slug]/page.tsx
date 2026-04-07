@@ -81,7 +81,7 @@ export async function generateMetadata(
       locale: 'fr_FR',
       type: 'article',
       publishedTime: post.date,
-      modifiedTime: post.date,
+      modifiedTime: post.dateModified || post.date,
       authors: [post.author],
       images: [
         {
@@ -282,6 +282,25 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
               />
 
             </article>
+
+            {/* E-E-A-T : Encart auteur */}
+            <div className="mt-8 bg-white border border-slate-200 rounded-2xl p-6 flex items-start gap-5">
+              <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-white text-2xl font-extrabold shadow-lg">
+                {post.author.charAt(0)}
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-wider text-slate-500 font-bold mb-1">Rédigé par</p>
+                <Link href="/notre-expert" className="text-lg font-extrabold text-slate-900 hover:text-orange-600 transition">
+                  {post.author}
+                </Link>
+                <p className="text-sm text-slate-600 mt-1">
+                  Expert en pathologie du bâtiment chez IPB. Spécialisé dans le diagnostic de fissures structurelles et le traitement de l'humidité en Occitanie (Toulouse, Montauban, Auch).
+                </p>
+                <Link href="/notre-expert" className="inline-block mt-2 text-sm text-orange-600 font-bold hover:text-orange-700 transition">
+                  Voir le profil →
+                </Link>
+              </div>
+            </div>
             
             {/* 🎯 SEO BOOST : Maillage interne contextuel intelligent */}
             {contextualLinks.length > 0 && (

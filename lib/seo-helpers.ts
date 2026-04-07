@@ -59,7 +59,7 @@ export function generateHowToSchema(title: string, steps: string[]) {
     estimatedCost: {
       '@type': 'MonetaryAmount',
       currency: 'EUR',
-      value: '149'
+      value: '249'
     },
     step: steps.map((step, index) => ({
       '@type': 'HowToStep',

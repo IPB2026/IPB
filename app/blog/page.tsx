@@ -17,12 +17,11 @@ interface BlogPostDisplay {
   date: string;
   readTime: string;
   category: 'fissures' | 'humidite' | 'conseils' | 'expertise';
+  author: string;
   image?: string;
   featured?: boolean;
 }
 
-// Convertir les articles complets en format d'affichage (liste blog)
-// Triés par date décroissante (plus récents en premier)
 const blogPosts: BlogPostDisplay[] = blogPostsList
   .map(post => ({
     slug: post.slug,
@@ -31,7 +30,8 @@ const blogPosts: BlogPostDisplay[] = blogPostsList
     date: post.date,
     readTime: post.readTime,
     category: post.category,
-    featured: false // Tous false par défaut
+    author: post.author,
+    featured: false,
   }))
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
@@ -172,6 +172,9 @@ export default function BlogPage() {
                         <Clock size={14} />
                         {post.readTime}
                       </span>
+                      <span className="text-orange-600 font-medium">
+                        Par {post.author}
+                      </span>
                     </div>
                   </div>
                 </Link>
@@ -230,6 +233,9 @@ export default function BlogPage() {
                         <Calendar size={12} />
                         {new Date(post.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}
                       </span>
+                      <span className="text-orange-600 font-medium truncate max-w-[100px]">
+                        {post.author}
+                      </span>
                       <span className="flex items-center gap-1">
                         <Clock size={12} />
                         {post.readTime}
@@ -287,6 +293,24 @@ export default function BlogPage() {
         </div>
 
         <InternalLinks variant="blog" />
+
+        {/* SEO : Texte d'expertise pour topical authority */}
+        <div className="mt-14 bg-white border border-slate-200 rounded-3xl p-8">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">
+            Expertise fissures et humidité : le blog de référence en Occitanie
+          </h2>
+          <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4">
+            <p>
+              Le blog IPB est rédigé par nos experts en pathologie du bâtiment intervenant à <strong>Toulouse (31)</strong>, <strong>Montauban (82)</strong>, <strong>Auch (32)</strong> et dans toute l'Occitanie. Chaque article s'appuie sur des cas réels rencontrés sur le terrain : fissures structurelles liées au retrait-gonflement des argiles (RGA), remontées capillaires en rez-de-chaussée, mérule dans les caves ou salpêtre sur les murs anciens.
+            </p>
+            <p>
+              Nos guides couvrent l'ensemble du cycle de vie d'un sinistre : de l'identification du problème (microfissure, fissure en escalier, taches d'humidité) au choix de la solution technique (<Link href="/blog/agrafage-vs-micropieux-choix" className="text-orange-600 hover:text-orange-700 font-bold">agrafage vs micropieux</Link>, <Link href="/blog/traitement-humidite-injection-resine" className="text-orange-600 hover:text-orange-700 font-bold">injection de résine</Link>, ventilation VMC), en passant par les démarches administratives (<Link href="/blog/catastrophe-naturelle-secheresse-demarches-indemnisation" className="text-orange-600 hover:text-orange-700 font-bold">déclaration de catastrophe naturelle</Link>, <Link href="/blog/garantie-decennale-travaux-structure" className="text-orange-600 hover:text-orange-700 font-bold">garantie décennale</Link>).
+            </p>
+            <p>
+              Tous les articles sont mis à jour régulièrement pour intégrer les dernières réglementations, les arrêtés de catastrophe naturelle et les retours d'expérience de nos chantiers. <Link href="/diagnostic" className="text-orange-600 hover:text-orange-700 font-bold">Demandez un diagnostic personnalisé</Link> pour votre situation.
+            </p>
+          </div>
+        </div>
       </div>
 
       <Footer />

@@ -36,6 +36,17 @@ const blogPosts = [
   'prix-agrafage-fissures-2026',
   'fissure-maison-neuve-garantie-decennale',
   'humidite-mur-chambre-causes-solutions',
+  'garantie-decennale-travaux-structure',
+  'ventilation-humidite-condensation',
+  'secheresse-argile-haute-garonne',
+  'fissure-facade-reboucher-ou-reparer',
+  'condensation-ou-infiltration',
+  'traitement-humidite-injection-resine',
+  'fissure-plafond-que-faire',
+  'humidite-cave-sous-sol',
+  'expert-fissures-gers-guide-complet',
+  'salpetre-toulouse-traitement-definitif',
+  'fissures-maison-tarn-et-garonne-solutions',
 ];
 
 const triggerEvents = [
