@@ -49,8 +49,8 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
 
   // Description personnalisée
   const description = villeData.risqueRGA === 'tres-fort' || villeData.risqueRGA === 'fort'
-    ? `Expert fissures à ${villeNom} (${deptCode}) - Zone à risque RGA ${villeData.risqueRGA}. Diagnostic 149€, agrafage garanti 10 ans. ${villeData.tauxSinistralite ? `Taux de sinistralité : ${villeData.tauxSinistralite}` : ''} ☎ 05 82 95 33 75`
-    : `Expert fissures maison à ${villeNom} et ${villeData.communesProches?.[0] || 'communes voisines'}. Diagnostic 149€ déductible, agrafage structurel, harpage. Intervention 48h. ☎ 05 82 95 33 75`;
+    ? `Expert fissures à ${villeNom} (${deptCode}) - Zone à risque RGA ${villeData.risqueRGA}. Diagnostic 249€, agrafage garanti 10 ans. ${villeData.tauxSinistralite ? `Taux de sinistralité : ${villeData.tauxSinistralite}` : ''} ☎ 05 82 95 33 75`
+    : `Expert fissures maison à ${villeNom} et ${villeData.communesProches?.[0] || 'communes voisines'}. Diagnostic 249€ déductible, agrafage structurel, harpage. Intervention 48h. ☎ 05 82 95 33 75`;
 
   return {
     title: `Expert Fissures ${villeNom} (${deptCode}) | Agrafage Garanti 10 ans | IPB`,
@@ -148,7 +148,7 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
     },
     {
       question: `Combien coûte un diagnostic fissures à ${villeData.nom} ?`,
-      answer: `Le diagnostic coûte 149€, déductibles des travaux si vous nous confiez la réparation. Ce tarif inclut le déplacement sur ${villeData.nom}, les mesures (niveau laser, fissuromètre), et un rapport détaillé avec photos et recommandations.`
+      answer: `Le diagnostic coûte 249€, déductibles des travaux si vous nous confiez la réparation. Ce tarif inclut le déplacement sur ${villeData.nom}, les mesures (niveau laser, fissuromètre), et un rapport détaillé avec photos et recommandations.`
     },
     {
       question: `Ma maison à ${villeData.nom} est-elle éligible à la garantie CAT-NAT ?`,
@@ -327,7 +327,7 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
               <div className="text-slate-600 text-sm">Intervention</div>
             </div>
             <div>
-              <div className="text-3xl font-extrabold text-orange-600">149€</div>
+              <div className="text-3xl font-extrabold text-orange-600">249€</div>
               <div className="text-slate-600 text-sm">Diagnostic complet</div>
             </div>
             <div>
@@ -500,7 +500,7 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-slate-800 rounded-2xl p-6 text-center">
               <h3 className="font-bold mb-2">Diagnostic Expert</h3>
-              <div className="text-4xl font-extrabold text-orange-400 mb-2">149€</div>
+              <div className="text-4xl font-extrabold text-orange-400 mb-2">249€</div>
               <p className="text-slate-400 text-sm mb-4">Déductible des travaux</p>
               <ul className="text-sm text-slate-300 text-left space-y-2">
                 <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Visite sur site (1h30)</li>

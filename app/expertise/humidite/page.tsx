@@ -14,7 +14,7 @@ import { ExpertiseHumiditeBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
   title: 'Expert Humidité Occitanie (31-82-32) | Injection Résine Garantie 30 ans | IPB',
-  description: 'Murs humides, salpêtre, moisissures ? Solutions complètes : injection résine, cuvelage, drainage, ventilation (VMC/VMI), traitement condensation. Garantie 30 ans. Diagnostic 149€. ☎ 05 82 95 33 75. Intervention 48h.',
+  description: 'Murs humides, salpêtre, moisissures ? Solutions complètes : injection résine, cuvelage, drainage, ventilation (VMC/VMI), traitement condensation. Garantie 30 ans. Diagnostic 249€. ☎ 05 82 95 33 75. Intervention 48h.',
   keywords: [
     'expert humidité toulouse',
     'traitement humidité murs',

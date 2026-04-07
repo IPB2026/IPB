@@ -46,7 +46,7 @@ const reviews = [
     rating: 5,
     date: '2025-12-20',
     title: 'Excellent diagnostic',
-    text: 'Le diagnostic à 149€ a été très complet et m\'a permis de comprendre l\'origine des fissures. L\'expert a pris le temps d\'expliquer les solutions possibles. Très satisfaite.',
+    text: 'Le diagnostic à 249€ a été très complet et m\'a permis de comprendre l\'origine des fissures. L\'expert a pris le temps d\'expliquer les solutions possibles. Très satisfaite.',
     service: 'Diagnostic fissures',
   },
   {

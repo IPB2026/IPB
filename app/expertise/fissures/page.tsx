@@ -13,8 +13,8 @@ import { DiagnosticHowToSchema, AgrafageHowToSchema } from '@/components/seo/How
 import { ExpertiseFissuresBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
-  title: 'Expert Fissures Occitanie (31-82-32) | Agrafage Garanti 10 ans | Diagnostic 149€ | IPB',
-  description: 'Fissures maison Toulouse, Montauban, Auch ? Diagnostic expert, agrafage/harpage, reprise en sous-oeuvre, renforts structurels. Garantie décennale. Diagnostic 149€ (déductible). ☎ 05 82 95 33 75. Intervention 48h.',
+  title: 'Expert Fissures Occitanie (31-82-32) | Agrafage Garanti 10 ans | Diagnostic 249€ | IPB',
+  description: 'Fissures maison Toulouse, Montauban, Auch ? Diagnostic expert, agrafage/harpage, reprise en sous-oeuvre, renforts structurels. Garantie décennale. Diagnostic 249€ (déductible). ☎ 05 82 95 33 75. Intervention 48h.',
   keywords: [
     'expert fissures toulouse',
     'agrafage fissures toulouse',

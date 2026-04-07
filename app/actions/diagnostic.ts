@@ -946,7 +946,7 @@ export async function requestDiagnosticReport(
                 <p>Pour obtenir un diagnostic complet et un devis personnalisé, nous vous invitons à :</p>
                 <ul>
                   <li>Appeler notre équipe au <strong>05 82 95 33 75</strong></li>
-                  <li>Ou réserver directement une expertise sur site (149€, déductible sur travaux)</li>
+                  <li>Ou réserver directement une expertise sur site (249€, déductible sur travaux)</li>
                 </ul>
               </div>
               

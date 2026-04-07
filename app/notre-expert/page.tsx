@@ -278,7 +278,7 @@ export default function NotreExpertPage() {
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h3 className="font-bold text-slate-900 mb-4">💰 Prix Affichés</h3>
               <p className="text-slate-600 mb-4">
-                Nos tarifs sont transparents : diagnostic 149€, agrafage 8-15K€, injection 2-5K€.
+                Nos tarifs sont transparents : diagnostic 249€, agrafage 8-15K€, injection 2-5K€.
               </p>
               <Link href="/diagnostic" className="text-orange-600 font-bold hover:underline">
                 Voir les tarifs →

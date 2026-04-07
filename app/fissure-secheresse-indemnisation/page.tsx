@@ -81,7 +81,7 @@ const faqSchema = {
       name: 'Peut-on contester l\'expertise de l\'assurance pour des fissures sécheresse ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Oui, vous pouvez faire réaliser une contre-expertise indépendante si l\'expert de votre assurance sous-évalue les dommages ou conteste le lien avec la sécheresse. Un rapport technique indépendant renforce considérablement votre dossier. En Occitanie, IPB réalise des expertises à 149€ (déductibles des travaux) avec rapport détaillé.',
+        text: 'Oui, vous pouvez faire réaliser une contre-expertise indépendante si l\'expert de votre assurance sous-évalue les dommages ou conteste le lien avec la sécheresse. Un rapport technique indépendant renforce considérablement votre dossier. En Occitanie, IPB réalise des expertises à 249€ (déductibles des travaux) avec rapport détaillé.',
       },
     },
   ],
@@ -331,7 +331,7 @@ export default function FissureSecheressePage() {
                   <Euro className="w-10 h-10 text-amber-400" />
                   <div>
                     <div className="text-sm text-amber-300 font-bold">DIAGNOSTIC</div>
-                    <div className="text-3xl font-black text-white">149€</div>
+                    <div className="text-3xl font-black text-white">249€</div>
                     <div className="text-slate-400 text-sm">Déductible si travaux avec nous</div>
                   </div>
                 </div>

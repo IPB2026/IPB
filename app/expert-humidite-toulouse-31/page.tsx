@@ -73,7 +73,7 @@ const faqItems = [
   },
   {
     question: "Combien coûte un traitement humidité à Toulouse ?",
-    answer: "Le traitement par injection résine coûte entre 80 et 150€/ml de mur traité. Pour une maison moyenne, comptez 2500 à 6000€. Diagnostic à 149€ déductible des travaux."
+    answer: "Le traitement par injection résine coûte entre 80 et 150€/ml de mur traité. Pour une maison moyenne, comptez 2500 à 6000€. Diagnostic à 249€ déductible des travaux."
   },
   {
     question: "Quelle est la durée de la garantie ?",
@@ -308,7 +308,7 @@ export default function ExpertHumiditeToulouse31Page() {
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-8 text-center">
               <h3 className="text-xl font-bold text-slate-900 mb-2">Diagnostic</h3>
-              <div className="text-4xl font-extrabold text-blue-600 mb-4">149€</div>
+              <div className="text-4xl font-extrabold text-blue-600 mb-4">249€</div>
               <p className="text-slate-600">Déductible des travaux</p>
             </div>
             <div className="bg-white rounded-2xl shadow-lg border-2 border-blue-500 p-8 text-center">

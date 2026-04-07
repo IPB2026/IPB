@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     `étanchéité ${villeNomLower}`,
   ];
 
-  const description = `Expert traitement humidité à ${villeNom} (${deptCode}). Injection résine garantie 30 ans, cuvelage, VMI. Diagnostic 149€. Remontées capillaires, salpêtre, moisissures. ☎ 05 82 95 33 75`;
+  const description = `Expert traitement humidité à ${villeNom} (${deptCode}). Injection résine garantie 30 ans, cuvelage, VMI. Diagnostic 249€. Remontées capillaires, salpêtre, moisissures. ☎ 05 82 95 33 75`;
 
   return {
     title: `Expert Humidité ${villeNom} (${deptCode}) | Injection Résine Garantie 30 ans | IPB`,
@@ -118,7 +118,7 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
     },
     {
       question: `Combien coûte un traitement humidité à ${villeData.nom} ?`,
-      answer: `Le diagnostic coûte 149€ (déductible des travaux). L'injection résine coûte 80-120€/ml (soit 8 000-15 000€ pour une maison standard). Le cuvelage (caves) coûte 150-250€/m². Ces tarifs incluent le déplacement sur ${villeData.nom} et la garantie 30 ans.`
+      answer: `Le diagnostic coûte 249€ (déductible des travaux). L'injection résine coûte 80-120€/ml (soit 8 000-15 000€ pour une maison standard). Le cuvelage (caves) coûte 150-250€/m². Ces tarifs incluent le déplacement sur ${villeData.nom} et la garantie 30 ans.`
     },
     {
       question: `Quelle est la différence entre condensation et remontées capillaires ?`,
@@ -383,7 +383,7 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-slate-800 rounded-2xl p-6 text-center">
               <h3 className="font-bold mb-2">Diagnostic Expert</h3>
-              <div className="text-4xl font-extrabold text-cyan-400 mb-2">149€</div>
+              <div className="text-4xl font-extrabold text-cyan-400 mb-2">249€</div>
               <p className="text-slate-400 text-sm mb-4">Déductible des travaux</p>
               <ul className="text-sm text-slate-300 text-left space-y-2">
                 <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Visite sur site (1h30)</li>
@@ -614,7 +614,7 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
             <p className="text-sm">
               ✓ <strong>30 ans</strong> de garantie sur injection résine<br />
               ✓ <strong>95%</strong> d'efficacité prouvée<br />
-              ✓ <strong>149€</strong> de diagnostic déductible des travaux
+              ✓ <strong>249€</strong> de diagnostic déductible des travaux
             </p>
           </div>
           
