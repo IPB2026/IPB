@@ -7,7 +7,7 @@ import { useRecaptcha } from '@/hooks/useRecaptcha';
 import { trackEvent } from '@/lib/analytics';
 
 function trackPhoneClick() {
-  trackEvent('phone_call_click', { send_to: 'AW-17902440600' });
+  trackEvent('conversion', { send_to: 'AW-17902440600/0aY8COSl6JccEJlhxthC' });
 }
 
 function trackFormSubmit() {
