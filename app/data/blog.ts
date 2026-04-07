@@ -4629,6 +4629,259 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p class="font-bold text-lg text-slate-900 mt-6">📞 Devis gratuit sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
     `
+  },
+  'fissure-maison-neuve-garantie-decennale': {
+    slug: 'fissure-maison-neuve-garantie-decennale',
+    title: 'Fissure Maison Neuve : Vos Droits et la Garantie Décennale (Guide 2026)',
+    excerpt: 'Votre maison de moins de 10 ans se fissure ? Vous êtes protégé par la garantie décennale. Démarches, délais, recours : tout ce qu\'il faut savoir pour être indemnisé.',
+    date: '2026-02-10',
+    readTime: '9 min',
+    category: 'fissures',
+    author: 'Expert IPB',
+    metaDescription: 'Fissure maison neuve : garantie décennale, garantie de parfait achèvement, dommage-ouvrage. Démarches pour faire jouer vos garanties. Guide expert 2026.',
+    keywords: ['fissure maison neuve', 'garantie décennale fissure', 'fissure maison moins de 10 ans', 'garantie constructeur fissure', 'dommage ouvrage fissure', 'recours constructeur fissure maison', 'maison neuve qui se fissure'],
+    content: `
+      <div class="mb-8 p-6 bg-emerald-50 border-l-4 border-emerald-600 rounded-r-lg">
+        <p class="font-bold text-emerald-900 mb-2">L'essentiel à retenir</p>
+        <p class="text-emerald-800">Si votre maison a <strong>moins de 10 ans</strong>, le constructeur est tenu de réparer les fissures structurelles à ses frais (garantie décennale). Si vous avez une assurance <strong>dommage-ouvrage</strong>, les réparations sont préfinancées sans attendre le jugement. Agissez vite : les délais de déclaration sont stricts.</p>
+      </div>
+
+      <h2>Maison neuve qui se fissure : est-ce normal ?</h2>
+
+      <p><strong>Non.</strong> Contrairement à une idée reçue, une maison neuve ne devrait pas se fissurer. Si des fissures apparaissent dans les premières années, c'est le signe d'un défaut :</p>
+
+      <ul>
+        <li><strong>Étude de sol absente ou bâclée</strong> — le constructeur n'a pas adapté les fondations au terrain</li>
+        <li><strong>Fondations sous-dimensionnées</strong> — pas assez profondes ou pas assez armées pour le sol argileux</li>
+        <li><strong>Malfaçons</strong> — chainages absents, joints de dilatation oubliés, béton de mauvaise qualité</li>
+        <li><strong>Drainage inexistant</strong> — l'eau stagne autour des fondations et provoque des tassements</li>
+      </ul>
+
+      <p>En Occitanie, le problème est amplifié par les <strong>sols argileux</strong> du bassin toulousain. Les sécheresses de 2022-2024 ont révélé des centaines de maisons neuves mal fondées, construites sans étude géotechnique G2 (pourtant obligatoire depuis la loi ELAN de 2020).</p>
+
+      <h2>Les 3 garanties qui vous protègent</h2>
+
+      <h3>1. Garantie de parfait achèvement (1 an)</h3>
+
+      <p>Valable <strong>1 an après la réception des travaux</strong>, elle couvre tous les désordres, même esthétiques. C'est la plus facile à activer : le constructeur doit réparer sans discuter.</p>
+
+      <ul>
+        <li><strong>Ce qu'elle couvre</strong> : microfissures, fissures de retrait, défauts de finition</li>
+        <li><strong>Comment l'activer</strong> : lettre recommandée AR au constructeur décrivant les désordres</li>
+        <li><strong>Délai</strong> : le constructeur a 60 jours pour intervenir</li>
+      </ul>
+
+      <h3>2. Garantie décennale (10 ans)</h3>
+
+      <p>C'est <strong>la garantie la plus puissante</strong>. Elle couvre pendant 10 ans tous les dommages qui compromettent la solidité de l'ouvrage ou le rendent impropre à sa destination. Les fissures structurelles en font partie.</p>
+
+      <ul>
+        <li><strong>Ce qu'elle couvre</strong> : <a href="/fissure-en-escalier-causes" class="text-orange-600 underline hover:text-orange-700">fissures en escalier</a>, <a href="/fissure-fondation-maison" class="text-orange-600 underline hover:text-orange-700">fissures de fondation</a>, <a href="/fissure-horizontale-danger" class="text-orange-600 underline hover:text-orange-700">fissures horizontales</a> sur murs porteurs, tassements différentiels</li>
+        <li><strong>Ce qu'elle ne couvre PAS</strong> : microfissures purement esthétiques (< 0,2 mm), fissures dues à un défaut d'entretien du propriétaire</li>
+        <li><strong>Qui est responsable</strong> : le constructeur, l'architecte, le maître d'œuvre, les sous-traitants — tous solidairement</li>
+      </ul>
+
+      <div class="bg-orange-50 border-l-4 border-orange-600 p-6 rounded-r-lg my-8">
+        <p class="font-bold text-orange-900 mb-2">Attention : la décennale est une responsabilité de plein droit</p>
+        <p class="text-orange-800">Vous n'avez <strong>pas besoin de prouver la faute du constructeur</strong>. Il suffit de prouver que le dommage existe et qu'il compromet la solidité ou l'habitabilité. C'est au constructeur de prouver qu'il n'est pas responsable (cause étrangère, cas de force majeure).</p>
+      </div>
+
+      <h3>3. Assurance dommage-ouvrage</h3>
+
+      <p>Souscrite par le maître d'ouvrage <strong>avant le début des travaux</strong>, cette assurance préfinance les réparations <strong>sans attendre qu'un tribunal désigne le responsable</strong>. C'est un accélérateur considérable :</p>
+
+      <ul>
+        <li><strong>Délai de réponse</strong> : 60 jours après la déclaration pour vous notifier sa décision</li>
+        <li><strong>Délai d'indemnisation</strong> : 90 jours après l'accord pour verser les fonds</li>
+        <li><strong>Recours</strong> : l'assureur se retourne ensuite contre le constructeur — pas votre problème</li>
+      </ul>
+
+      <p>Si vous n'avez pas souscrit de dommage-ouvrage (ce qui est malheureusement fréquent), vous devrez actionner directement la décennale du constructeur, ce qui peut prendre 2 à 5 ans en cas de litige.</p>
+
+      <h2>Les démarches concrètes en 5 étapes</h2>
+
+      <h3>Étape 1 : Documenter les fissures</h3>
+      <p>Photographiez chaque fissure avec une règle graduée pour montrer la largeur. Notez la date d'apparition, la localisation exacte, et si elle évolue (posez un témoin en plâtre ou un <a href="/microfissure-quand-sinquieter" class="text-orange-600 underline hover:text-orange-700">fissuromètre</a>).</p>
+
+      <h3>Étape 2 : Faire réaliser un diagnostic indépendant</h3>
+      <p>C'est l'étape la plus importante. Un <strong>expert indépendant</strong> (pas celui du constructeur, pas celui de l'assurance) établit un rapport technique objectif qui identifie les causes et évalue la gravité. Ce rapport est votre arme principale pour les démarches.</p>
+
+      <p>Chez IPB, le diagnostic expert coûte <strong>249€ TTC</strong> (déductible des travaux). Il inclut les mesures instrumentées, le rapport détaillé avec photos, et les préconisations de traitement.</p>
+
+      <h3>Étape 3 : Déclarer le sinistre</h3>
+      <p>Envoyez une <strong>lettre recommandée AR</strong> au constructeur ET à votre assureur dommage-ouvrage (si vous en avez un). Joignez le rapport d'expertise, les photos, et décrivez précisément les désordres. Gardez une copie de tout.</p>
+
+      <h3>Étape 4 : L'expertise contradictoire</h3>
+      <p>L'assureur mandatera son propre expert. Vous avez le droit d'être présent et de vous faire assister par votre expert indépendant. C'est là que le rapport IPB fait la différence : il empêche l'expert d'assurance de minimiser les dommages.</p>
+
+      <h3>Étape 5 : Les travaux de réparation</h3>
+      <p>Une fois la prise en charge acceptée, les travaux sont réalisés. Les solutions les plus courantes : <a href="/expertise/fissures" class="text-orange-600 underline hover:text-orange-700">agrafage structurel</a> (8 000 à 15 000€), reprise en sous-œuvre par micropieux (25 000 à 50 000€), ou injection de résine expansive (10 000 à 20 000€).</p>
+
+      <h2>Cas particulier : la loi ELAN et l'étude de sol obligatoire</h2>
+
+      <p>Depuis le <strong>1er janvier 2020</strong>, la loi ELAN impose une <strong>étude géotechnique G1</strong> pour tout terrain en zone d'exposition au RGA (retrait-gonflement des argiles). Le constructeur doit ensuite réaliser une <strong>étude G2</strong> pour adapter les fondations.</p>
+
+      <p>Si votre maison neuve se fissure et que le constructeur n'a pas fait d'étude de sol, c'est une faute lourde qui renforce considérablement votre dossier. En Haute-Garonne et Tarn-et-Garonne, <strong>plus de 80% des sols sont argileux</strong> — l'étude de sol n'est pas un luxe, c'est une obligation légale.</p>
+
+      <h2>Que faire si le constructeur a fait faillite ?</h2>
+
+      <p>C'est un cas fréquent, surtout pour les petites entreprises de construction. La bonne nouvelle : <strong>la garantie décennale est une assurance</strong>, pas un engagement personnel. Même si le constructeur disparaît, son assureur reste tenu de couvrir les dommages pendant 10 ans.</p>
+
+      <p>Retrouvez les coordonnées de l'assureur décennale sur :</p>
+      <ul>
+        <li>L'attestation d'assurance remise à la signature du contrat</li>
+        <li>Le CCMI (Contrat de Construction de Maison Individuelle)</li>
+        <li>Le Registre du Commerce (extrait Kbis de l'entreprise)</li>
+      </ul>
+
+      <h2>Conclusion : ne laissez pas passer vos droits</h2>
+
+      <p>Si votre maison neuve se fissure, <strong>vous avez des droits solides</strong>. La garantie décennale est l'une des protections les plus fortes du droit français. Mais elle ne s'active pas toute seule : il faut documenter, déclarer, et surtout avoir un <strong>rapport d'expertise indépendant</strong> pour peser dans la balance.</p>
+
+      <p>Chez IPB, nous accompagnons chaque année des dizaines de propriétaires de maisons neuves en Occitanie dans leurs démarches. Notre diagnostic (249€ TTC, déductible) est souvent le premier pas vers une indemnisation complète.</p>
+
+      <p class="font-bold text-lg text-slate-900 mt-6">📞 Diagnostic expert sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
+    `
+  },
+  'humidite-mur-chambre-causes-solutions': {
+    slug: 'humidite-mur-chambre-causes-solutions',
+    title: 'Humidité Mur Chambre : Causes, Risques Santé et Solutions Définitives',
+    excerpt: 'Mur humide dans la chambre ? Moisissures, odeur de moisi, peinture qui cloque : découvrez les causes réelles et les traitements qui marchent vraiment.',
+    date: '2026-02-10',
+    readTime: '8 min',
+    category: 'humidite',
+    author: 'Expert IPB',
+    metaDescription: 'Humidité mur chambre : causes (condensation, infiltration, remontée capillaire), risques santé (asthme, allergies) et solutions durables. Guide expert 2026.',
+    keywords: ['humidité mur chambre', 'mur humide chambre', 'moisissure chambre', 'humidité chambre à coucher', 'mur qui suinte chambre', 'condensation mur chambre', 'traitement humidité chambre'],
+    content: `
+      <div class="mb-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
+        <p class="font-bold text-red-900 mb-2">Alerte santé</p>
+        <p class="text-red-800">Un mur humide dans une chambre n'est pas qu'un problème esthétique. Vous passez <strong>8 heures par nuit</strong> à respirer l'air de cette pièce. Les moisissures libèrent des spores qui provoquent allergies, asthme et infections respiratoires. C'est encore plus dangereux pour les <strong>enfants et les personnes âgées</strong>.</p>
+      </div>
+
+      <h2>Les 3 causes d'un mur humide dans une chambre</h2>
+
+      <p>Avant de traiter, il faut comprendre. Un mur humide dans une chambre a toujours l'une de ces 3 causes — et chacune demande un traitement différent.</p>
+
+      <h3>Cause n°1 : La condensation (60% des cas)</h3>
+
+      <p>C'est la cause la plus fréquente, surtout dans les <strong>chambres mal ventilées</strong>. Pendant la nuit, vous produisez environ <strong>1 litre de vapeur d'eau</strong> par personne (respiration + transpiration). Si la chambre est fermée et mal ventilée, cette humidité se condense sur les murs froids — en particulier les murs donnant sur l'extérieur.</p>
+
+      <p><strong>Comment la reconnaître :</strong></p>
+      <ul>
+        <li>Buée sur les fenêtres le matin</li>
+        <li><a href="/moisissures-maison-sante" class="text-orange-600 underline hover:text-orange-700">Moisissures noires</a> dans les angles hauts de la pièce (jonction mur/plafond)</li>
+        <li>Humidité plus forte en hiver qu'en été</li>
+        <li>Phénomène aggravé quand on fait sécher du linge dans la chambre</li>
+      </ul>
+
+      <p><strong>Les solutions :</strong></p>
+      <ul>
+        <li><strong>Ventilation</strong> : installer une VMC simple flux (500 à 1 500€) ou une <a href="/vmi-ventilation-insufflation" class="text-orange-600 underline hover:text-orange-700">VMI (ventilation mécanique par insufflation)</a> — la solution la plus efficace pour les chambres</li>
+        <li><strong>Isolation</strong> : traiter les ponts thermiques (ITI ou ITE) pour que le mur ne soit plus un point froid</li>
+        <li><strong>Habitudes</strong> : aérer 10 minutes le matin, ne pas bloquer les grilles de ventilation, ne pas coller les meubles contre les murs extérieurs</li>
+      </ul>
+
+      <h3>Cause n°2 : Les remontées capillaires (25% des cas)</h3>
+
+      <p>L'eau du sol remonte dans les murs par capillarité. Ce phénomène touche les murs en <strong>rez-de-chaussée</strong> des maisons anciennes (avant 1990) qui n'ont pas de barrière étanche en fondation.</p>
+
+      <p><strong>Comment la reconnaître :</strong></p>
+      <ul>
+        <li>Humidité qui part du <strong>bas du mur</strong> et remonte (jusqu'à 1,50 m)</li>
+        <li><a href="/salpetre-mur-traitement" class="text-orange-600 underline hover:text-orange-700">Salpêtre</a> (poudre blanche) à la base des murs</li>
+        <li>Peinture qui cloque et enduit qui se décolle en bas de mur</li>
+        <li>Phénomène constant, quelle que soit la saison</li>
+      </ul>
+
+      <p><strong>La solution :</strong> l'<a href="/remontee-capillaire-solution" class="text-orange-600 underline hover:text-orange-700">injection de résine hydrophobe</a> dans le mur crée une barrière étanche définitive. Coût : 80 à 120€/ml (soit 2 500 à 6 000€ pour une maison). Garantie 30 ans.</p>
+
+      <h3>Cause n°3 : L'infiltration (15% des cas)</h3>
+
+      <p>L'eau pénètre dans le mur depuis l'extérieur : fissure en façade, joint de fenêtre défaillant, gouttière percée, défaut d'étanchéité en toiture.</p>
+
+      <p><strong>Comment la reconnaître :</strong></p>
+      <ul>
+        <li>Tache d'humidité <strong>localisée</strong> (pas sur tout le mur, juste une zone)</li>
+        <li>Apparition ou aggravation <strong>quand il pleut</strong></li>
+        <li>Souvent proche d'une fenêtre, d'un angle de façade ou sous le toit</li>
+        <li>La zone humide peut être en <strong>hauteur</strong> (pas seulement en bas du mur)</li>
+      </ul>
+
+      <p><strong>La solution :</strong> identifier et colmater le point d'entrée. Cela peut aller d'un simple rejointoiement de fissure (500€) à une reprise d'étanchéité de toiture (2 000 à 8 000€). Un <a href="/condensation-ou-infiltration" class="text-orange-600 underline hover:text-orange-700">diagnostic précis</a> est indispensable pour ne pas traiter au mauvais endroit.</p>
+
+      <h2>Les risques santé : pourquoi c'est urgent dans une chambre</h2>
+
+      <p>L'humidité dans une chambre est plus dangereuse que dans n'importe quelle autre pièce de la maison, pour une raison simple : <strong>vous y respirez 8 heures consécutives</strong>, dans un espace fermé.</p>
+
+      <h3>Les moisissures et leurs spores</h3>
+      <p>Les <a href="/moisissures-maison-sante" class="text-orange-600 underline hover:text-orange-700">moisissures</a> se développent dès que l'humidité relative dépasse <strong>65%</strong>. Elles libèrent en permanence des spores microscopiques qui provoquent :</p>
+
+      <ul>
+        <li><strong>Allergies respiratoires</strong> : rhinite, toux chronique, éternuements</li>
+        <li><strong>Asthme</strong> : l'OMS estime que l'humidité intérieure augmente de <strong>40%</strong> le risque d'asthme</li>
+        <li><strong>Infections pulmonaires</strong> : chez les personnes immunodéprimées (aspergillose)</li>
+        <li><strong>Irritations</strong> : yeux rouges, maux de tête, fatigue chronique</li>
+      </ul>
+
+      <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg my-8">
+        <p class="font-bold text-blue-900 mb-2">Les enfants sont les plus vulnérables</p>
+        <p class="text-blue-800">Un enfant qui dort dans une chambre humide a <strong>2 à 3 fois plus de risques</strong> de développer de l'asthme. Leur système immunitaire, encore immature, est particulièrement sensible aux mycotoxines des moisissures. Si votre enfant tousse la nuit ou a le nez qui coule en permanence, vérifiez les murs de sa chambre.</p>
+      </div>
+
+      <h3>Les acariens</h3>
+      <p>L'humidité favorise aussi la prolifération des <strong>acariens</strong> dans la literie et les textiles. Ces micro-organismes sont la première cause d'allergie en France (25% de la population). Un mur humide dans la chambre = un lit infesté d'acariens.</p>
+
+      <h2>Le test pour identifier la cause vous-même</h2>
+
+      <p>Avant de faire appel à un expert, vous pouvez faire un premier diagnostic vous-même :</p>
+
+      <ol>
+        <li><strong>Achetez un hygromètre</strong> (10-20€ en magasin de bricolage). Placez-le dans la chambre pendant 48h. Au-dessus de 65% d'humidité relative, il y a un problème.</li>
+        <li><strong>Le test de la feuille d'aluminium</strong> : collez un carré d'aluminium (30×30 cm) contre le mur humide avec du ruban adhésif. Laissez 48h.
+          <ul>
+            <li>Si l'eau est <strong>côté pièce</strong> (face visible) → condensation</li>
+            <li>Si l'eau est <strong>côté mur</strong> (face cachée) → infiltration ou remontée capillaire</li>
+          </ul>
+        </li>
+        <li><strong>Observez la localisation</strong> : en bas du mur = remontée capillaire. En haut ou localisé = condensation ou infiltration. Partout = problème majeur, appelez un expert.</li>
+      </ol>
+
+      <h2>Les erreurs à éviter absolument</h2>
+
+      <h3>Erreur n°1 : Peindre par-dessus avec de la peinture "anti-humidité"</h3>
+      <p>Ces peintures ne traitent pas la cause. Au mieux, elles masquent le problème pendant 6 mois. Au pire, elles <strong>emprisonnent l'humidité dans le mur</strong>, ce qui accélère sa dégradation.</p>
+
+      <h3>Erreur n°2 : Poser un déshumidificateur comme solution unique</h3>
+      <p>Un déshumidificateur traite les symptômes, pas la cause. Il consomme de l'électricité en permanence (300 à 500€/an) sans résoudre le problème. C'est un pansement, pas un traitement.</p>
+
+      <h3>Erreur n°3 : Appliquer un enduit hydrofuge sur un mur avec remontées capillaires</h3>
+      <p>Si l'humidité monte du sol, bloquer la surface ne fait que déplacer le problème : l'humidité remonte <strong>plus haut</strong> et peut attaquer les poutres et planchers.</p>
+
+      <h3>Erreur n°4 : Aérer sans traiter</h3>
+      <p>Aérer c'est bien, mais si le problème est une remontée capillaire ou une infiltration, aucune quantité d'aération ne résoudra rien. Il faut traiter à la source.</p>
+
+      <h2>Quand faire appel à un expert ?</h2>
+
+      <p>Faites appel à un professionnel si :</p>
+      <ul>
+        <li>Le problème persiste malgré l'aération et le chauffage</li>
+        <li>Les moisissures reviennent après nettoyage</li>
+        <li>Vous ne parvenez pas à identifier la cause (condensation ? infiltration ?)</li>
+        <li>Vous ou vos enfants avez des symptômes respiratoires</li>
+        <li>La tache d'humidité s'étend ou s'aggrave</li>
+      </ul>
+
+      <p>Un diagnostic professionnel avec <strong>humidimètre à sonde, caméra thermique et test à la bombe à carbure</strong> identifie la cause exacte en 1h30. Chez IPB, ce diagnostic coûte 249€ TTC (déductible des travaux).</p>
+
+      <h2>Conclusion : un mur humide dans la chambre, ça se règle</h2>
+
+      <p>Quelle que soit la cause — condensation, remontée capillaire ou infiltration — <strong>il existe une solution définitive</strong>. Le plus important est de <strong>traiter la bonne cause</strong>. Un diagnostic précis vous évitera de dépenser de l'argent dans des traitements inefficaces et protégera la santé de votre famille.</p>
+
+      <p>Chez IPB, nous avons traité plus de 500 cas d'humidité en Occitanie (Toulouse, Montauban, Auch). Notre <a href="/expertise/humidite" class="text-orange-600 underline hover:text-orange-700">expertise humidité</a> inclut diagnostic instrumenté, rapport technique et préconisations adaptées à votre situation.</p>
+
+      <p class="font-bold text-lg text-slate-900 mt-6">📞 Diagnostic expert sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
+    `
   }
 };
 

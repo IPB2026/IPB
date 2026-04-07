@@ -34,6 +34,8 @@ const blogPosts = [
   'catastrophe-naturelle-secheresse-demarches-indemnisation',
   'fissure-mur-interieur-causes-solutions',
   'prix-agrafage-fissures-2026',
+  'fissure-maison-neuve-garantie-decennale',
+  'humidite-mur-chambre-causes-solutions',
 ];
 
 const triggerEvents = [
