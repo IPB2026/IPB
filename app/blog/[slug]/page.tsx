@@ -9,6 +9,7 @@ import { Navbar } from '@/components/home/Navbar';
 import { Breadcrumbs } from '@/components/blog/Breadcrumbs';
 import { TableOfContents } from '@/components/blog/TableOfContents';
 import { InternalLinks } from '@/components/seo/InternalLinks';
+import { AuthorBox } from '@/components/blog/AuthorBox';
 import {
   extractTocFromContent,
   addIdsToHeadings,
@@ -284,28 +285,12 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
             </article>
 
             {/* E-E-A-T : Encart auteur */}
-            <div className="mt-8 bg-white border border-slate-200 rounded-2xl p-6 flex items-start gap-5">
-              <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-white text-2xl font-extrabold shadow-lg">
-                {post.author.charAt(0)}
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-wider text-slate-500 font-bold mb-1">Rédigé par</p>
-                <Link href="/notre-expert" className="text-lg font-extrabold text-slate-900 hover:text-orange-600 transition">
-                  {post.author}
-                </Link>
-                <p className="text-sm text-slate-600 mt-1">
-                  Expert en pathologie du bâtiment chez IPB. Spécialisé dans le diagnostic de fissures structurelles et le traitement de l'humidité en Occitanie (Toulouse, Montauban, Auch).
-                </p>
-                <Link href="/notre-expert" className="inline-block mt-2 text-sm text-orange-600 font-bold hover:text-orange-700 transition">
-                  Voir le profil →
-                </Link>
-              </div>
-            </div>
+            <AuthorBox name={post.author} />
             
             {/* 🎯 SEO BOOST : Maillage interne contextuel intelligent */}
             {contextualLinks.length > 0 && (
               <div className="mt-8 bg-gradient-to-br from-orange-50 to-orange-100 border-2 border-orange-200 rounded-2xl p-6">
-                <h3 className="text-xl font-extrabold text-orange-900 mb-4">🔗 Ressources complémentaires</h3>
+                <h3 className="text-xl font-extrabold text-orange-900 mb-4">Ressources complémentaires</h3>
                 <div className="grid md:grid-cols-2 gap-3">
                   {contextualLinks.map((link, idx) => (
                     <Link 
@@ -324,7 +309,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
             {/* 🎯 SEO BOOST : Articles similaires par keywords (augmente temps sur page) */}
             {relatedByKeywords.length > 0 && (
               <div className="mt-8 bg-slate-50 border border-slate-200 rounded-2xl p-6">
-                <h3 className="text-xl font-extrabold text-slate-900 mb-4">📚 Articles similaires recommandés</h3>
+                <h3 className="text-xl font-extrabold text-slate-900 mb-4">Articles similaires recommandés</h3>
                 <div className="space-y-3">
                   {relatedByKeywords.map((related) => {
                     const relatedPost = blogPosts[related.slug];
@@ -334,7 +319,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                         href={`/blog/${related.slug}`}
                         className="flex items-start gap-3 bg-white border border-slate-200 rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition group"
                       >
-                        <span className="text-2xl group-hover:scale-110 transition">📖</span>
+                        <span className="text-2xl text-orange-500 group-hover:scale-110 transition">→</span>
                         <div>
                           <h4 className="font-bold text-slate-900 group-hover:text-orange-600 transition mb-1">{related.title}</h4>
                           <p className="text-sm text-slate-600 line-clamp-2">{relatedPost.excerpt}</p>
@@ -348,7 +333,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
             )}
             
             <div className="mt-8 bg-slate-50 border border-slate-200 rounded-2xl p-6">
-              <h3 className="text-xl font-extrabold text-slate-900 mb-4">🎯 Besoin d'un expert ?</h3>
+              <h3 className="text-xl font-extrabold text-slate-900 mb-4">Besoin d'un expert ?</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <Link href="/expertise/fissures" className="bg-white border border-slate-200 rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition">
                   <h4 className="font-bold text-slate-900 mb-1">Expertise fissures</h4>

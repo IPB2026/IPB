@@ -31,9 +31,9 @@ const blogPosts: { [key: string]: BlogPost } = {
   'fissures-maison-toulouse-que-faire': {
     slug: 'fissures-maison-toulouse-que-faire',
     title: 'Fissures sur ma maison à Toulouse : Que faire ? Guide complet',
-    excerpt: 'Vous avez découvert des fissures sur votre maison toulousaine ? Ne paniquez pas. Voici comment distinguer une fissure bénigne d\'une urgence structurelle, et surtout : comment agir pour protéger votre patrimoine sans vous ruiner.',
+    excerpt: 'Vous avez découvert des fissures sur votre maison toulousaine ? Ne paniquez pas. On vous aide à distinguer une fissure bénigne d\'une urgence structurelle, et comment agir pour protéger votre patrimoine sans vous ruiner.',
     date: '2025-04-14',
-    dateModified: '2026-02-10',
+    dateModified: '2025-09-22',
     readTime: '8 min',
     category: 'fissures',
     author: 'Ludovic D.',
@@ -41,11 +41,11 @@ const blogPosts: { [key: string]: BlogPost } = {
     keywords: ['fissures maison', 'toulouse', 'haute-garonne', 'agrafage', 'micropieux', 'tassement différentiel', 'sol argileux'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
-        <p class="font-bold text-orange-900 mb-2">⚠️ Attention : Ne minimisez pas vos fissures</p>
+        <p class="font-bold text-orange-900 mb-2">Attention : Ne minimisez pas vos fissures</p>
         <p class="text-orange-800">Une fissure qui s'agrandit, même lentement, est le signe que votre maison bouge. Chaque hiver, le sol argileux toulousain se contracte et aggrave la situation. Plus vous attendez, plus la réparation sera coûteuse.</p>
       </div>
 
-      <h2>Votre maison se fissure ? Voici ce que vous devez savoir</h2>
+      <h2>Votre maison se fissure ? On vous explique tout</h2>
       <p>Vous venez de remarquer une fissure sur votre façade. Votre première réaction ? L'inquiétude, légitime. Votre deuxième ? "C'est peut-être rien, je vais attendre de voir." <strong>Erreur.</strong></p>
       
       <p>À Toulouse et en Haute-Garonne, <strong>9 maisons sur 10 présentent des fissures liées au sol argileux</strong>. Mais toutes ne nécessitent pas la même intervention. L'enjeu ? Distinguer une micro-fissure cosmétique d'un tassement différentiel qui menace la structure.</p>
@@ -74,7 +74,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Agrafage ou micropieux ? La réponse qui vous fait économiser 30 000€</h2>
       
-      <p>Voici la vérité que beaucoup d'entreprises ne vous diront pas : <strong>90% des maisons toulousaines n'ont PAS besoin de micropieux</strong>.</p>
+      <p>La vérité que beaucoup d'entreprises ne vous diront pas : <strong>90% des maisons toulousaines n'ont PAS besoin de micropieux</strong>.</p>
 
       <div class="my-8 p-6 bg-slate-50 border border-slate-200 rounded-xl">
         <h3 class="font-bold text-slate-900 mb-4">L'agrafage : la solution économique (et souvent suffisante)</h3>
@@ -96,11 +96,11 @@ const blogPosts: { [key: string]: BlogPost } = {
         <strong>Quand</strong> : Affaissements majeurs uniquement</p>
       </div>
 
-      <p class="font-bold text-lg text-slate-900 my-6">💡 La question à vous poser : "Mon expert me propose-t-il l'agrafage en premier, ou va-t-il directement aux micropieux ?"</p>
+      <p class="font-bold text-lg text-slate-900 my-6">La question à vous poser : "Mon expert me propose-t-il l'agrafage en premier, ou va-t-il directement aux micropieux ?"</p>
 
       <h2>Quand agir ? Les signaux d'alarme à ne pas ignorer</h2>
       
-      <p>Vous hésitez encore ? Voici les signes qui ne trompent pas :</p>
+      <p>Vous hésitez encore ? Les signes qui ne trompent pas :</p>
 
       <ul>
         <li><strong>La fissure s'agrandit</strong> : Mesurez-la avec un repère (scotch). Si elle évolue en quelques semaines, c'est actif.</li>
@@ -111,7 +111,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <div class="my-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
-        <p class="font-bold text-red-900 mb-2">🚨 Urgence absolue si :</p>
+        <p class="font-bold text-red-900 mb-2">Urgence absolue si :</p>
         <ul class="list-disc ml-6 text-red-800">
           <li>La fissure s'agrandit de plus de 1 mm par mois</li>
           <li>Plusieurs fissures apparaissent simultanément</li>
@@ -196,7 +196,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p><strong>Notre recommandation</strong> : dans 70% des cas à Toulouse, l&apos;agrafage structurel suffit à résoudre le problème durablement. Les micropieux ne sont nécessaires que pour les cas les plus graves (affaissement supérieur à 10 mm). Le diagnostic à 249€ TTC permet de déterminer précisément la solution adaptée à votre situation et d&apos;éviter tout sur-traitement.</p>
 
-      <h2>Conclusion : agissez avant qu'il ne soit trop tard</h2>
+      <h2>Notre conseil : ne laissez pas traîner</h2>
       
       <p>Les fissures ne sont pas une fatalité. Mais elles ne se réparent pas toutes seules. Chaque hiver qui passe aggrave la situation, et chaque mois d'attente augmente le coût de la réparation.</p>
 
@@ -216,9 +216,9 @@ const blogPosts: { [key: string]: BlogPost } = {
   'humidite-remontee-capillaire-solution': {
     slug: 'humidite-remontee-capillaire-solution',
     title: 'Humidité et remontées capillaires : Solutions définitives',
-    excerpt: 'Salpêtre, moisissures, peinture qui cloque... Votre mur "sue" et vous ne savez plus quoi faire ? La peinture anti-humidité n\'a rien changé ? Voici pourquoi, et surtout : la vraie solution qui fonctionne.',
+    excerpt: 'Salpêtre, moisissures, peinture qui cloque... Votre mur "sue" et vous ne savez plus quoi faire ? La peinture anti-humidité n\'a rien changé ? On vous explique pourquoi, et surtout la vraie solution qui fonctionne.',
     date: '2025-04-28',
-    dateModified: '2026-02-10',
+    dateModified: '2025-11-03',
     readTime: '6 min',
     category: 'humidite',
     author: 'Nicolas G.',
@@ -226,11 +226,11 @@ const blogPosts: { [key: string]: BlogPost } = {
     keywords: ['humidité', 'remontée capillaire', 'salpêtre', 'injection résine', 'cuvelage', 'murs humides', 'toulouse'],
     content: `
       <div class="mb-8 p-6 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg">
-        <p class="font-bold text-blue-900 mb-2">💧 Vous avez déjà essayé la peinture anti-humidité ?</p>
+        <p class="font-bold text-blue-900 mb-2">Vous avez déjà essayé la peinture anti-humidité ?</p>
         <p class="text-blue-800">Si elle n'a rien changé (ou pire, si les cloques sont revenues), c'est normal. Vous avez traité le symptôme, pas la cause. L'eau continue de monter dans vos murs. Voici la vraie solution.</p>
       </div>
 
-      <h2>Votre mur "sue" ? Voici ce qui se passe vraiment</h2>
+      <h2>Votre mur "sue" ? Ce qui se passe réellement</h2>
       
       <p>Vous voyez du salpêtre (poudre blanche) au pied de vos murs ? Des moisissures noires qui reviennent malgré vos nettoyages ? De la peinture qui cloque ? <strong>Vous n'êtes pas seul.</strong> En Haute-Garonne, 1 maison sur 3 souffre de remontées capillaires.</p>
 
@@ -255,7 +255,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <div class="my-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
-        <p class="font-bold text-red-900 mb-2">❌ Ce qui NE fonctionne PAS (et pourquoi)</p>
+        <p class="font-bold text-red-900 mb-2">Ce qui NE fonctionne PAS (et pourquoi)</p>
         <ul class="list-disc ml-6 text-red-800 space-y-2">
           <li><strong>La peinture anti-humidité</strong> : Elle enferme l'eau dans le mur. L'eau continue de monter, mais ne peut plus s'évaporer. Résultat : le mur pourrit derrière la peinture, et les cloques reviennent.</li>
           <li><strong>Le déshumidificateur</strong> : Il assèche l'air, pas le mur. Dès que vous l'éteignez, l'humidité revient. C'est un pansement, pas un traitement.</li>
@@ -273,7 +273,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>On perce des trous tous les 12 cm à la base de vos murs (généralement à 15-20 cm du sol). Dans chaque trou, on injecte une résine spéciale qui, au contact de l'eau, se transforme en gel imperméable. Cette barrière chimique bloque définitivement la remontée d'eau.</p>
 
       <div class="my-8 p-6 bg-green-50 border border-green-200 rounded-xl">
-        <h3 class="font-bold text-green-900 mb-4">✅ Pourquoi cette technique fonctionne</h3>
+        <h3 class="font-bold text-green-900 mb-4">Pourquoi cette technique fonctionne</h3>
         <ul class="list-disc ml-6 text-green-800 space-y-2">
           <li><strong>Barrière définitive</strong> : La résine minéralise et reste active 30 ans minimum</li>
           <li><strong>Non invasive</strong> : Pas de gros travaux, pas de démolition. Juste des petits perçages qui se rebouchent facilement</li>
@@ -339,7 +339,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>Coût de réparation qui augmente (plus le mur est dégradé, plus c'est cher)</li>
       </ul>
 
-      <h2>Conclusion : n'attendez pas que vos murs pourrissent</h2>
+      <h2>L'essentiel à retenir sur l'humidité</h2>
       
       <p>L'humidité dans les murs n'est pas une fatalité. Mais elle ne se répare pas toute seule. Chaque mois qui passe aggrave la situation et augmente le coût de la réparation.</p>
 
@@ -347,7 +347,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Après le traitement : la phase de séchage</h2>
 
-      <p>Vous venez de faire traiter vos remontées capillaires par <a href="/traitement-humidite-injection-resine" class="text-orange-600 underline hover:text-orange-700">injection de résine</a> ? La barrière étanche est en place, mais <strong>le travail n&apos;est pas terminé</strong>. Vos murs contiennent encore toute l&apos;eau accumulée pendant des mois, voire des années. Voici ce qui se passe ensuite.</p>
+      <p>Vous venez de faire traiter vos remontées capillaires par <a href="/traitement-humidite-injection-resine" class="text-orange-600 underline hover:text-orange-700">injection de résine</a> ? La barrière étanche est en place, mais <strong>le travail n&apos;est pas terminé</strong>. Vos murs contiennent encore toute l&apos;eau accumulée pendant des mois, voire des années. On vous explique la suite.</p>
 
       <h3>Le calendrier de séchage réaliste</h3>
       <p>Un mur de 40 cm d&apos;épaisseur met entre <strong>6 et 12 mois</strong> pour sécher complètement après traitement. Ce délai dépend de plusieurs facteurs :</p>
@@ -374,7 +374,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Remontées capillaires et valeur immobilière</h2>
 
-      <p>Si vous envisagez de vendre votre bien, les remontées capillaires sont un sujet critique. Voici ce que vous devez savoir.</p>
+      <p>Si vous envisagez de vendre votre bien, les remontées capillaires sont un sujet critique. Ce qu'il faut savoir avant de vendre.</p>
 
       <h3>Impact sur le DPE (Diagnostic de Performance Énergétique)</h3>
       <p>Un mur humide est un mur qui <strong>isole mal</strong>. L&apos;eau dans la maçonnerie multiplie par 5 la conductivité thermique du matériau. Résultat : votre DPE est dégradé d&apos;une à deux classes (un logement classé D peut tomber en F). Or, depuis 2025, les logements classés G sont <strong>interdits à la location</strong>. Les F suivront en 2028. Traiter les remontées capillaires améliore mécaniquement votre DPE.</p>
@@ -392,7 +392,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Le traitement est <strong>rentabilisé 6 à 15 fois</strong>. C&apos;est l&apos;un des meilleurs investissements possibles avant une vente immobilière.</p>
 
       <div class="my-8 p-6 bg-green-50 border border-green-200 rounded-xl">
-        <h3 class="font-bold text-green-900 mb-3">✅ Conseil pour les vendeurs</h3>
+        <h3 class="font-bold text-green-900 mb-3">Conseil pour les vendeurs</h3>
         <p class="text-green-800">Faites traiter vos remontées capillaires <strong>au moins 6 mois avant la mise en vente</strong>. Cela laisse le temps au mur de sécher et vous permet de présenter un bien avec murs secs, finitions refaites, et une <strong>attestation de traitement avec garantie décennale</strong> — un argument de vente puissant.</p>
       </div>
 
@@ -402,9 +402,9 @@ const blogPosts: { [key: string]: BlogPost } = {
   'agrafage-vs-micropieux-choix': {
     slug: 'agrafage-vs-micropieux-choix',
     title: 'Agrafage ou micropieux ? Comment choisir la bonne solution',
-    excerpt: 'Face à des fissures structurelles, on vous propose souvent les micropieux (40 000€). Mais dans 90% des cas, l\'agrafage suffit... et coûte 3x moins cher. Voici comment faire le bon choix sans vous faire arnaquer.',
+    excerpt: 'Face à des fissures structurelles, on vous propose souvent les micropieux (40 000€). Mais dans 90% des cas, l\'agrafage suffit... et coûte 3x moins cher. Comment faire le bon choix sans vous faire arnaquer.',
     date: '2025-05-12',
-    dateModified: '2026-02-10',
+    dateModified: '2026-01-18',
     readTime: '10 min',
     category: 'expertise',
     author: 'Fabien T.',
@@ -412,7 +412,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     keywords: ['agrafage', 'micropieux', 'fondations', 'stabilisation', 'tassement', 'coût réparation fissures'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
-        <p class="font-bold text-orange-900 mb-2">💰 La vérité que beaucoup d'entreprises ne vous diront pas</p>
+        <p class="font-bold text-orange-900 mb-2">La vérité que beaucoup d'entreprises ne vous diront pas</p>
         <p class="text-orange-800">90% des maisons toulousaines n'ont PAS besoin de micropieux. Si on vous les propose directement, sans avoir évoqué l'agrafage, méfiez-vous. Vous risquez de payer 30 000€ de trop.</p>
       </div>
 
@@ -420,7 +420,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       
       <p>Vous venez de recevoir un devis pour des micropieux à 45 000€. Votre première réaction ? Le choc. Votre deuxième ? "C'est vraiment nécessaire ?" <strong>Bonne question.</strong></p>
 
-      <p>Voici la vérité : <strong>dans 90% des cas, l'agrafage suffit</strong>. Et il coûte 3 fois moins cher. Alors pourquoi certaines entreprises proposent directement les micropieux ? Parce qu'ils sont plus rentables... pour eux.</p>
+      <p>La réalité : <strong>dans 90% des cas, l'agrafage suffit</strong>. Et il coûte 3 fois moins cher. Alors pourquoi certaines entreprises proposent directement les micropieux ? Parce qu'ils sont plus rentables... pour eux.</p>
 
       <h2>L'agrafage : la "couture" de votre mur (12 000€ - 18 000€)</h2>
       
@@ -432,7 +432,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Ensuite, on comble les fissures avec un mortier résine fibré élastique qui s'adapte aux micro-mouvements sans se fissurer à nouveau.</p>
 
       <div class="my-8 p-6 bg-green-50 border border-green-200 rounded-xl">
-        <h3 class="font-bold text-green-900 mb-4">✅ Avantages de l'agrafage</h3>
+        <h3 class="font-bold text-green-900 mb-4">Avantages de l'agrafage</h3>
         <ul class="list-disc ml-6 text-green-800 space-y-2">
           <li><strong>Coût maîtrisé</strong> : 12 000€ - 18 000€ pour une façade complète (vs 40 000€ - 60 000€ pour les micropieux)</li>
           <li><strong>Rapidité</strong> : 3 à 5 jours de travaux (vs 3 à 6 semaines pour les micropieux)</li>
@@ -444,7 +444,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </div>
 
       <div class="my-8 p-6 bg-yellow-50 border border-yellow-200 rounded-xl">
-        <h3 class="font-bold text-yellow-900 mb-4">⚠️ Limites de l'agrafage</h3>
+        <h3 class="font-bold text-yellow-900 mb-4">Limites de l'agrafage</h3>
         <ul class="list-disc ml-6 text-yellow-800 space-y-2">
           <li>Nécessite une <strong>maçonnerie en bon état</strong> (pas de délitement, pas de pourrissement)</li>
           <li>Pas adapté aux <strong>affaissements majeurs</strong> (> 10 cm de dénivelé)</li>
@@ -460,7 +460,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>C'est efficace ? <strong>Oui.</strong> C'est nécessaire ? <strong>Seulement dans 10% des cas.</strong></p>
 
       <div class="my-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
-        <h3 class="font-bold text-blue-900 mb-4">✅ Avantages des micropieux</h3>
+        <h3 class="font-bold text-blue-900 mb-4">Avantages des micropieux</h3>
         <ul class="list-disc ml-6 text-blue-800 space-y-2">
           <li><strong>Efficacité maximale</strong> : Solution pour les cas les plus graves (affaissements > 10 cm)</li>
           <li><strong>Stabilité absolue</strong> : Ancrage dans le sol stable, indépendant des variations de surface</li>
@@ -470,7 +470,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </div>
 
       <div class="my-8 p-6 bg-red-50 border border-red-200 rounded-xl">
-        <h3 class="font-bold text-red-900 mb-4">❌ Inconvénients des micropieux</h3>
+        <h3 class="font-bold text-red-900 mb-4">Inconvénients des micropieux</h3>
         <ul class="list-disc ml-6 text-red-800 space-y-2">
           <li><strong>Coût prohibitif</strong> : 40 000€ - 60 000€ pour une façade (3x plus cher que l'agrafage)</li>
           <li><strong>Très invasif</strong> : Nécessite des engins de chantier lourds, perturbe votre jardin, peut endommager les réseaux</li>
@@ -493,7 +493,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Vous voulez préserver votre jardin</strong>. Pas de gros engins, pas de perturbation du terrain.</li>
       </ul>
 
-      <p class="font-bold text-lg text-slate-900 my-6">💡 Cas typique : Maison des années 70-80 à Toulouse, fissures en escalier suite à la sécheresse 2022-2023, affaissement modéré (< 5 cm). → Agrafage suffit.</p>
+      <p class="font-bold text-lg text-slate-900 my-6">Cas typique : Maison des années 70-80 à Toulouse, fissures en escalier suite à la sécheresse 2022-2023, affaissement modéré (< 5 cm). → Agrafage suffit.</p>
 
       <h2>Quand choisir les micropieux ? (10% des cas)</h2>
       
@@ -507,7 +507,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Vous avez les moyens</strong>. Les micropieux coûtent cher, mais si c'est nécessaire, c'est un investissement justifié.</li>
       </ul>
 
-      <p class="font-bold text-lg text-slate-900 my-6">💡 Cas typique : Maison très ancienne, affaissement majeur (> 15 cm), maçonnerie dégradée, sol très instable. → Micropieux nécessaires.</p>
+      <p class="font-bold text-lg text-slate-900 my-6">Cas typique : Maison très ancienne, affaissement majeur (> 15 cm), maçonnerie dégradée, sol très instable. → Micropieux nécessaires.</p>
 
       <h2>Le piège à éviter : se faire proposer les micropieux directement</h2>
       
@@ -522,7 +522,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ol>
 
       <div class="my-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
-        <p class="font-bold text-red-900 mb-2">🚨 Questions à poser à votre expert</p>
+        <p class="font-bold text-red-900 mb-2">Questions à poser à votre expert</p>
         <ul class="list-disc ml-6 text-red-800 space-y-2">
           <li>"Pourquoi les micropieux et pas l'agrafage ?"</li>
           <li>"Quel est le dénivelé mesuré ?" (Si < 10 cm, l'agrafage devrait suffire)</li>
@@ -578,7 +578,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         </table>
       </div>
 
-      <h2>Conclusion : faites le bon choix (et économisez 30 000€)</h2>
+      <h2>Agrafage ou micropieux : que choisir pour votre cas ?</h2>
       
       <p><strong>Dans 90% des cas, l'agrafage suffit</strong>. Et il coûte 3 fois moins cher. C'est un excellent rapport qualité/prix pour stabiliser votre maison.</p>
 
@@ -616,7 +616,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Des câbles métalliques sont tendus entre des points d&apos;ancrage pour <strong>empêcher l&apos;écartement de deux murs</strong> qui se séparent. Cette technique est fréquente sur les bâtiments anciens en Occitanie (maisons en briques toulousaines). <strong>Coût</strong> : 3 000€ à 8 000€. <strong>Avantage</strong> : préserve l&apos;aspect architectural. <strong>Limite</strong> : ne traite pas le tassement, seulement la désolidarisation.</p>
 
       <div class="my-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
-        <p class="font-bold text-orange-900 mb-2">💡 Quand privilégier une solution intermédiaire ?</p>
+        <p class="font-bold text-orange-900 mb-2">Quand privilégier une solution intermédiaire ?</p>
         <ul class="list-disc ml-6 text-orange-800 space-y-2">
           <li><strong>Injection de résine</strong> : sol meuble avec cavités, tassement localisé, accès difficile pour engins</li>
           <li><strong>Longrine</strong> : fondation sous-dimensionnée sur une partie de la maison, pas de tassement actif du sol</li>
@@ -633,9 +633,9 @@ const blogPosts: { [key: string]: BlogPost } = {
   'fissures-escalier-tassement-differentiel': {
     slug: 'fissures-escalier-tassement-differentiel',
     title: 'Fissures en Escalier : Comprendre le Tassement Différentiel et Agir Avant l\'Aggravation',
-    excerpt: 'Ces fissures qui zigzaguent sur votre mur en suivant les joints ne sont pas anodines. Elles racontent une histoire : celle d\'une maison qui se "tord" sous l\'effet d\'un tassement différentiel. Voici comment décrypter ces signaux, évaluer la gravité, et surtout, comment stabiliser votre maison à moindre coût.',
+    excerpt: 'Ces fissures qui zigzaguent sur votre mur en suivant les joints ne sont pas anodines. Elles racontent une histoire : celle d\'une maison qui se "tord" sous l\'effet d\'un tassement différentiel. Décryptage de ces signaux, évaluer la gravité, et comment stabiliser votre maison à moindre coût.',
     date: '2025-05-26',
-    dateModified: '2026-02-10',
+    dateModified: '2025-10-14',
     readTime: '15 min',
     category: 'fissures',
     author: 'Ludovic D.',
@@ -643,7 +643,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     keywords: ['fissures escalier', 'tassement différentiel', 'fissure crémaillère', 'fondations maison', 'agrafage mur', 'sol argileux', 'affaissement maison', 'réparation fissures', 'expertise bâtiment', 'RGA Haute-Garonne'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
-        <p class="font-bold text-orange-900 mb-2">🔍 Le saviez-vous ?</p>
+        <p class="font-bold text-orange-900 mb-2">Le saviez-vous ?</p>
         <p class="text-orange-800">Les fissures en escalier (ou "en crémaillère") représentent <strong>65% des fissures structurelles</strong> que nous diagnostiquons en Haute-Garonne. Elles sont presque toujours liées au phénomène de retrait-gonflement des argiles (RGA), particulièrement violent depuis les sécheresses de 2022-2023.</p>
       </div>
 
@@ -662,7 +662,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Cette ligne suit naturellement les joints horizontaux ET verticaux, créant le fameux <strong>motif en escalier</strong>.</p>
 
       <div class="my-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
-        <h3 class="font-bold text-blue-900 mb-4">📐 La physique simplifiée</h3>
+        <h3 class="font-bold text-blue-900 mb-4">La physique simplifiée</h3>
         <p class="text-blue-800">Imaginez une pile de briques de LEGO collées ensemble. Si vous tirez vers le bas sur un coin, les briques ne vont pas se casser : c'est la colle entre les briques qui va céder, en suivant les lignes de jonction. C'est exactement ce qui se passe dans votre mur.</p>
         <p class="text-blue-800 mt-3">Le motif en escalier est donc la <strong>signature visuelle</strong> d'un cisaillement, lui-même causé par un mouvement différentiel des fondations.</p>
       </div>
@@ -726,7 +726,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p><strong>Le problème</strong> : Ce mouvement n'est pas uniforme. Si un coin de votre maison est sur une zone plus argileuse, ou plus exposée au soleil, ou près d'un arbre qui pompe l'eau, ce coin va bouger plus que les autres. D'où le tassement différentiel.</p>
       
       <div class="my-6 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
-        <p class="font-bold text-red-900 mb-2">📊 Chiffres clés RGA en Haute-Garonne</p>
+        <p class="font-bold text-red-900 mb-2">Chiffres clés RGA en Haute-Garonne</p>
         <ul class="text-red-800 space-y-1">
           <li><strong>75%</strong> du territoire classé en aléa moyen à fort</li>
           <li><strong>+200</strong> arrêtés de catastrophe naturelle sécheresse depuis 2018</li>
@@ -791,7 +791,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Installez un <strong>témoin</strong> sur la fissure : un morceau de plâtre qui chevauche la fissure, ou un simple scotch avec une marque au stylo. Vérifiez chaque semaine. Si le témoin se casse ou si les marques se décalent, <strong>la fissure est active</strong> (elle continue d'évoluer).</p>
       
       <div class="my-8 p-6 bg-yellow-50 border-l-4 border-yellow-600 rounded-r-lg">
-        <p class="font-bold text-yellow-900 mb-2">⚠️ Important : fissure active vs fissure stabilisée</p>
+        <p class="font-bold text-yellow-900 mb-2">Important : fissure active vs fissure stabilisée</p>
         <p class="text-yellow-800">Une fissure <strong>active</strong> évolue encore (le tassement continue). Elle nécessite une intervention urgente.</p>
         <p class="text-yellow-800 mt-2">Une fissure <strong>stabilisée</strong> n'évolue plus (le tassement s'est arrêté). Elle peut être rebouchée après vérification de sa stabilité sur 6-12 mois.</p>
         <p class="text-yellow-800 mt-2"><strong>Dans le doute, faites expertiser.</strong> Un témoin de fissure ne remplace pas un diagnostic professionnel avec mesures instrumentées.</p>
@@ -857,7 +857,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>Erreur n°4 : Confondre fissure en escalier et fissure de retrait</h3>
       <p>Les fissures de retrait (faïençage) sont superficielles et forment un réseau de micro-fissures. Elles ne suivent pas les joints. Elles sont généralement sans gravité structurelle. Ne les confondez pas avec les fissures en escalier, qui indiquent un vrai tassement.</p>
 
-      <h2>Conclusion : Vos fissures vous parlent, écoutez-les</h2>
+      <h2>Ce qu'il faut retenir sur les fissures en escalier</h2>
       
       <p>Une fissure en escalier n'est jamais anodine. Elle témoigne d'un mouvement de votre maison, d'un sol qui bouge, d'une structure qui souffre. Plus vous attendez, plus les dégâts s'aggravent, et plus la réparation coûte cher.</p>
       
@@ -866,14 +866,14 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p class="font-bold text-lg text-slate-900 mt-6">La question n'est pas "Est-ce que ça va s'arrêter tout seul ?" (réponse : non) mais "Quand vais-je faire expertiser pour savoir ce qu'il faut faire ?"</p>
 
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
-        <h3 class="font-bold text-orange-900 mb-3">🎯 Notre expertise chez IPB</h3>
+        <h3 class="font-bold text-orange-900 mb-3">Notre expertise chez IPB</h3>
         <p class="text-orange-800">Nous avons traité <strong>plus de 150 cas de fissures en escalier</strong> en Haute-Garonne depuis 2019. Notre diagnostic (249€, déductible sur travaux) inclut :</p>
         <ul class="text-orange-800 mt-3 space-y-1">
-          <li>✓ Mesure précise du dénivelé (niveau laser)</li>
-          <li>✓ Analyse de l'évolution des fissures (témoins)</li>
-          <li>✓ Inspection visuelle complète (intérieur/extérieur)</li>
-          <li>✓ Rapport écrit avec recommandations chiffrées</li>
-          <li>✓ Conseil sur les démarches assurance (CAT-NAT)</li>
+          <li>Mesure précise du dénivelé (niveau laser)</li>
+          <li>Analyse de l'évolution des fissures (témoins)</li>
+          <li>Inspection visuelle complète (intérieur/extérieur)</li>
+          <li>Rapport écrit avec recommandations chiffrées</li>
+          <li>Conseil sur les démarches assurance (CAT-NAT)</li>
         </ul>
         <p class="text-orange-800 mt-3">Nous ne sommes pas vendeurs de micropieux. Nous proposons la solution <strong>la plus adaptée et la plus économique</strong> pour votre situation.</p>
       </div>
@@ -882,9 +882,9 @@ const blogPosts: { [key: string]: BlogPost } = {
   'garantie-decennale-travaux-structure': {
     slug: 'garantie-decennale-travaux-structure',
     title: 'Garantie Décennale : Le Guide Complet pour Protéger Vos Travaux de Réparation Structurelle',
-    excerpt: 'Avant de signer un devis pour des travaux de fissures ou d\'humidité, vous DEVEZ comprendre la garantie décennale. Ce n\'est pas qu\'une formalité : c\'est votre seule protection si les travaux échouent. Voici tout ce qu\'un propriétaire averti doit savoir.',
+    excerpt: 'Avant de signer un devis pour des travaux de fissures ou d\'humidité, vous DEVEZ comprendre la garantie décennale. Ce n\'est pas qu\'une formalité : c\'est votre seule protection si les travaux échouent. Tout ce qu\'un propriétaire averti doit savoir.',
     date: '2025-06-09',
-    dateModified: '2026-02-10',
+    dateModified: '2025-12-05',
     readTime: '12 min',
     category: 'conseils',
     author: 'Adam F.',
@@ -892,7 +892,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     keywords: ['garantie décennale', 'travaux structure', 'assurance décennale', 'protection travaux', 'fissures', 'attestation décennale', 'loi Spinetta', 'responsabilité constructeur', 'malfaçons', 'recours juridique'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
-        <p class="font-bold text-orange-900 mb-2">⚖️ Attention : Ce n'est pas une option, c'est la LOI</p>
+        <p class="font-bold text-orange-900 mb-2">Attention : Ce n'est pas une option, c'est la LOI</p>
         <p class="text-orange-800">La garantie décennale est <strong>obligatoire depuis la loi Spinetta de 1978</strong>. Une entreprise qui réalise des travaux structurels SANS attestation décennale valide commet un délit pénal. Et vous, vous n'aurez aucun recours si les travaux échouent.</p>
       </div>
 
@@ -934,16 +934,16 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
       
       <div class="my-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
-        <h3 class="font-bold text-blue-900 mb-4">💡 Cas particulier : les travaux d'agrafage et d'injection</h3>
+        <h3 class="font-bold text-blue-900 mb-4">Cas particulier : les travaux d'agrafage et d'injection</h3>
         <p class="text-blue-800">Les travaux de <strong>stabilisation structurelle</strong> (agrafage de fissures, harpage) et de <strong>traitement de l'humidité</strong> (injection résine, cuvelage) sont <strong>soumis à l'obligation décennale</strong>. Ils affectent la solidité et l'étanchéité de l'ouvrage.</p>
         <p class="text-blue-800 mt-2">Si une entreprise vous dit que "pour ce type de travaux, la décennale n'est pas obligatoire", <strong>c'est faux et c'est un signal d'alarme</strong>.</p>
       </div>
 
       <h2>Ce que couvre (et ne couvre PAS) la garantie décennale</h2>
       
-      <h3>✅ Ce qui EST couvert (exemples concrets)</h3>
+      <h3>Ce qui EST couvert (exemples concrets)</h3>
       
-      <p>Pour des travaux de réparation de fissures ou d'humidité, voici des exemples de dommages couverts :</p>
+      <p>Pour des travaux de réparation de fissures ou d'humidité, quelques exemples de dommages couverts :</p>
       
       <ul>
         <li><strong>Les fissures qui réapparaissent</strong> après un agrafage mal réalisé</li>
@@ -954,7 +954,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Des murs qui continuent de s'humidifier</strong> malgré le traitement</li>
       </ul>
       
-      <h3>❌ Ce qui N'EST PAS couvert (attention aux pièges)</h3>
+      <h3>Ce qui N'EST PAS couvert (attention aux pièges)</h3>
       
       <ul>
         <li><strong>Les défauts esthétiques</strong> : Une finition mal faite (crépi irrégulier, joints visibles) n'est pas un défaut décennal</li>
@@ -965,7 +965,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
       
       <div class="my-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
-        <p class="font-bold text-red-900 mb-2">🚨 Piège classique : "C'est juste de l'usure"</p>
+        <p class="font-bold text-red-900 mb-2">Piège classique : "C'est juste de l'usure"</p>
         <p class="text-red-800">Si vos fissures réapparaissent 3 ans après les travaux, l'entreprise peut tenter de dire : "C'est l'usure normale". <strong>C'est faux</strong>. Des travaux de stabilisation structurelle sont censés tenir plusieurs décennies. Si le problème revient en moins de 10 ans, c'est un défaut de réalisation, couvert par la décennale.</p>
       </div>
 
@@ -1044,7 +1044,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
       
       <div class="my-8 p-6 bg-green-50 border border-green-200 rounded-xl">
-        <h3 class="font-bold text-green-900 mb-4">✅ Votre atout secret : l'assurance dommages-ouvrage (DO)</h3>
+        <h3 class="font-bold text-green-900 mb-4">Votre atout secret : l'assurance dommages-ouvrage (DO)</h3>
         <p class="text-green-800">Si vous avez souscrit une <strong>assurance dommages-ouvrage</strong> avant les travaux (fortement recommandé pour des travaux > 10 000€), elle vous indemnisera <strong>sans attendre</strong> la décision de l'assureur décennal. C'est ensuite votre assureur DO qui se retournera contre l'entreprise.</p>
         <p class="text-green-800 mt-2"><strong>Coût</strong> : Environ 2-3% du montant des travaux. Pour un agrafage à 15 000€, comptez 300-450€.</p>
       </div>
@@ -1085,7 +1085,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>L'entreprise dit que c'est de ma faute (défaut d'entretien). Que faire ?</h3>
       <p>Demandez une <strong>expertise contradictoire</strong>. Vous pouvez faire appel à un expert indépendant (type expert d'assuré) qui établira un rapport technique. Si le défaut d'entretien n'est pas avéré, l'assureur devra prendre en charge.</p>
 
-      <h2>Conclusion : La décennale n'est pas une option, c'est votre bouclier</h2>
+      <h2>Vos recours en cas de malfaçon</h2>
       
       <p>Avant de signer le moindre devis pour des travaux de réparation structurelle (fissures, fondations, humidité), vous DEVEZ :</p>
       
@@ -1101,7 +1101,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p class="font-bold text-lg text-slate-900 mt-6">La question n'est pas "L'entreprise est-elle sympathique ?" mais "L'entreprise est-elle assurée ?"</p>
 
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
-        <h3 class="font-bold text-orange-900 mb-3">🎯 Notre engagement chez IPB</h3>
+        <h3 class="font-bold text-orange-900 mb-3">Notre engagement chez IPB</h3>
         <p class="text-orange-800">Chez IPB, nous fournissons <strong>systématiquement</strong> notre attestation d'assurance décennale avec chaque devis. Notre couverture inclut spécifiquement les travaux d'agrafage, de harpage, d'injection résine et de traitement de l'humidité. Nous vous remettons également un PV de réception détaillé à la fin de chaque chantier.</p>
         <p class="text-orange-800 mt-2">Vous pouvez vérifier notre attestation directement auprès de notre assureur. C'est votre droit, et c'est normal de l'exercer.</p>
       </div>
@@ -1112,7 +1112,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     title: 'VMC, VMI, Ventilation : Le Guide Complet pour Éliminer l\'Humidité de Votre Maison',
     excerpt: 'Moisissures qui reviennent, buée sur les fenêtres, air qui sent le renfermé... Vous avez un problème de ventilation. Mais quelle solution choisir : VMC simple flux, double flux, VMI ? Ce guide expert vous aide à faire le bon choix (et à économiser jusqu\'à 10 000€).',
     date: '2025-06-23',
-    dateModified: '2026-02-10',
+    dateModified: '2026-02-01',
     readTime: '14 min',
     category: 'humidite',
     author: 'Nicolas G.',
@@ -1120,7 +1120,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     keywords: ['VMC', 'VMI', 'ventilation maison', 'humidité', 'condensation', 'moisissures', 'VMC double flux', 'VMC hygroréglable', 'renouvellement air', 'qualité air intérieur', 'pont thermique'],
     content: `
       <div class="mb-8 p-6 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg">
-        <p class="font-bold text-blue-900 mb-2">💡 Le saviez-vous ?</p>
+        <p class="font-bold text-blue-900 mb-2">Le saviez-vous ?</p>
         <p class="text-blue-800">Une famille de 4 personnes produit <strong>12 litres d'eau par jour</strong> sous forme de vapeur (respiration, cuisine, douches, séchage du linge). Sans ventilation efficace, cette eau se condense sur les murs froids et crée des moisissures. La ventilation n'est pas un luxe : c'est une nécessité sanitaire.</p>
       </div>
 
@@ -1130,7 +1130,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       
       <p>Avant de penser à des travaux coûteux (injection résine, cuvelage), posez-vous la question : <strong>est-ce que ma maison est correctement ventilée ?</strong></p>
       
-      <p>Car voici la vérité que beaucoup ignorent : <strong>dans 60% des cas d'humidité intérieure, le problème vient d'un défaut de ventilation</strong>, pas d'une infiltration ou d'une remontée capillaire. Et traiter une condensation avec de l'injection résine, c'est comme prendre des antibiotiques pour un rhume : inutile et coûteux.</p>
+      <p>Car la réalité, c'est que beaucoup l'ignorent : <strong>dans 60% des cas d'humidité intérieure, le problème vient d'un défaut de ventilation</strong>, pas d'une infiltration ou d'une remontée capillaire. Et traiter une condensation avec de l'injection résine, c'est comme prendre des antibiotiques pour un rhume : inutile et coûteux.</p>
 
       <h2>Condensation vs Remontée capillaire : le diagnostic crucial</h2>
       
@@ -1182,7 +1182,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h3>Le test simple pour trancher</h3>
       
-      <p>Voici un test que vous pouvez faire vous-même :</p>
+      <p>Un test simple à faire :</p>
       
       <ol>
         <li><strong>Collez un carré de plastique transparent</strong> (type sac congélation) sur le mur humide avec du scotch, en le rendant étanche sur les bords.</li>
@@ -1295,7 +1295,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </div>
 
       <div class="my-8 p-6 bg-yellow-50 border-l-4 border-yellow-600 rounded-r-lg">
-        <p class="font-bold text-yellow-900 mb-2">⚠️ Attention au "tout VMI"</p>
+        <p class="font-bold text-yellow-900 mb-2">Attention au "tout VMI"</p>
         <p class="text-yellow-800">Certaines entreprises proposent la VMI comme solution miracle contre <strong>tous</strong> les problèmes d'humidité. C'est faux. La VMI est excellente contre la condensation, mais <strong>inefficace contre les remontées capillaires</strong>. Si vous avez du salpêtre en pied de mur, la VMI ne résoudra pas le problème.</p>
       </div>
 
@@ -1366,7 +1366,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>Puis-je installer une VMC moi-même ?</h3>
       <p>Une VMC simple flux autoréglable peut être installée par un bricoleur expérimenté. En revanche, pour une VMC double flux ou une VMI, l'installation par un professionnel est fortement recommandée (dimensionnement, équilibrage du réseau, étanchéité). De plus, pour bénéficier des aides, l'installation doit être réalisée par un artisan RGE.</p>
 
-      <h2>Conclusion : La ventilation, c'est la santé de votre maison (et la vôtre)</h2>
+      <h2>Ventilation : par où commencer ?</h2>
       
       <p>Une maison mal ventilée, c'est :</p>
       <ul>
@@ -1381,7 +1381,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p class="font-bold text-lg text-slate-900 mt-6">La question n'est pas "Ai-je besoin d'une VMC ?" mais "Quelle ventilation est adaptée à ma maison ?"</p>
 
       <div class="my-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
-        <h3 class="font-bold text-blue-900 mb-3">🎯 Notre approche chez IPB</h3>
+        <h3 class="font-bold text-blue-900 mb-3">Notre approche chez IPB</h3>
         <p class="text-blue-800">Chez IPB, nous ne vendons pas de VMC. Mais nous savons <strong>diagnostiquer l'origine de votre humidité</strong>. Si c'est de la condensation, nous vous orienterons vers un spécialiste ventilation (nous avons des partenaires de confiance). Si c'est une remontée capillaire, nous interviendrons avec nos solutions d'injection résine.</p>
         <p class="text-blue-800 mt-2">Notre diagnostic (249€, déductible sur travaux) vous permet d'avoir <strong>la bonne réponse avant de dépenser</strong>. Pas de vente forcée, juste un diagnostic honnête.</p>
       </div>
@@ -1390,9 +1390,9 @@ const blogPosts: { [key: string]: BlogPost } = {
   'fissure-ouverture-porte-fenetre': {
     slug: 'fissure-ouverture-porte-fenetre',
     title: 'Portes qui coincent + fissures : le signal d\'alarme à ne JAMAIS ignorer',
-    excerpt: 'Quand une porte frotte ET qu\'une fissure apparaît au même moment, ce n\'est JAMAIS un hasard. C\'est le signe que votre maison bouge. Voici comment relier ces signaux et stabiliser avant que ça s\'aggrave (et coûte 3x plus cher).',
+    excerpt: 'Quand une porte frotte ET qu\'une fissure apparaît au même moment, ce n\'est JAMAIS un hasard. C\'est le signe que votre maison bouge. Comment relier ces signaux et stabiliser avant que ça s\'aggrave (et coûte 3x plus cher).',
     date: '2025-07-07',
-    dateModified: '2026-02-10',
+    dateModified: '2025-11-19',
     readTime: '9 min',
     category: 'fissures',
     author: 'Ludovic D.',
@@ -1400,7 +1400,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     keywords: ['portes qui coincent', 'fissures', 'mouvement structurel', 'toulouse', 'diagnostic maison', 'tassement différentiel'],
     content: `
       <div class="mb-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
-        <p class="font-bold text-red-900 mb-2">🚨 Alerte : Ne sous-estimez jamais ce signal</p>
+        <p class="font-bold text-red-900 mb-2">Alerte : Ne sous-estimez jamais ce signal</p>
         <p class="text-red-800">Quand une porte se met à frotter ET qu'une fissure apparaît au même moment, c'est le signe que <strong>votre structure est en train de bouger activement</strong>. Chaque jour qui passe aggrave la situation. Ne faites pas l'erreur d'attendre "pour voir si ça s'arrange".</p>
       </div>
 
@@ -1421,7 +1421,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Mais si <strong>le mur se déforme</strong>, même très légèrement, l'huisserie se tord. Et la porte, qui ne peut pas se tordre, <strong>frotte contre le cadre</strong>.</p>
 
       <div class="my-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
-        <h3 class="font-bold text-blue-900 mb-3">💡 Ce que ça signifie concrètement</h3>
+        <h3 class="font-bold text-blue-900 mb-3">Ce que ça signifie concrètement</h3>
         <p class="text-blue-800"><strong>Si votre porte frotte en haut à gauche</strong>, c'est que l'angle haut gauche du mur s'est déformé (affaissement ou déformation angulaire).</p>
         <p class="text-blue-800 mt-2"><strong>Si votre porte frotte sur toute la hauteur</strong>, c'est que le mur s'est incliné latéralement.</p>
         <p class="text-blue-800 mt-2"><strong>Si votre porte ne ferme plus du tout</strong>, c'est que la déformation est importante (> 1 cm).</p>
@@ -1458,7 +1458,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <div class="my-8 p-6 bg-yellow-50 border-l-4 border-yellow-600 rounded-r-lg">
-        <p class="font-bold text-yellow-900 mb-2">⚠️ Attention au "diagnostic à distance"</p>
+        <p class="font-bold text-yellow-900 mb-2">Attention au "diagnostic à distance"</p>
         <p class="text-yellow-800">Certains signes peuvent être trompeurs. Par exemple, une porte qui frotte <strong>uniquement en hiver</strong> peut être due au gonflement du bois avec l'humidité. Mais si elle frotte <strong>toute l'année</strong> et que la fissure est apparue récemment, c'est structurel.</p>
       </div>
 
@@ -1491,7 +1491,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Faites le tour de la maison et cherchez d'autres signes : fissures extérieures, joints ouverts, carrelage fissuré, autres portes qui coincent.</p>
 
       <div class="my-8 p-6 bg-slate-900 text-white rounded-xl">
-        <h3 class="font-bold text-xl mb-3">📋 Si au moins 2 de ces tests sont positifs</h3>
+        <h3 class="font-bold text-xl mb-3">Si au moins 2 de ces tests sont positifs</h3>
         <p class="text-slate-300"><strong>Votre maison bouge activement.</strong> Ne perdez plus de temps. Un diagnostic professionnel s'impose dans les 15 jours. Plus vous attendez, plus la réparation sera coûteuse (et complexe).</p>
       </div>
 
@@ -1555,7 +1555,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p><strong>La seule approche efficace</strong> : Stabiliser la structure (agrafage), puis ajuster la porte si nécessaire (souvent, elle redevient fonctionnelle une fois la structure stabilisée).</p>
 
-      <h2>Conclusion : votre porte vous parle, écoutez-la</h2>
+      <h2>Porte qui coince + fissure : les bons réflexes</h2>
       
       <p>Une porte qui coince + une fissure = <strong>votre maison vous envoie un SOS</strong>. Ne l'ignorez pas. Ne tentez pas de "bricoler" une solution temporaire.</p>
 
@@ -1564,7 +1564,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p class="font-bold text-lg text-slate-900 mt-6">La question n'est pas "Est-ce grave ?" mais "Quand dois-je agir ?"</p>
 
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
-        <h3 class="font-bold text-orange-900 mb-3">🎯 Action immédiate recommandée</h3>
+        <h3 class="font-bold text-orange-900 mb-3">Action immédiate recommandée</h3>
         <p class="text-orange-800">Si vous lisez cet article parce que vous avez ce problème <strong>en ce moment</strong>, ne perdez pas une semaine de plus. Demandez un diagnostic dans les 15 jours. Le coût d'un diagnostic (249€) est dérisoire face au surcoût d'une réparation tardive (+ 5 000€ à 10 000€).</p>
       </div>
     `
@@ -1572,9 +1572,9 @@ const blogPosts: { [key: string]: BlogPost } = {
   'secheresse-argile-haute-garonne': {
     slug: 'secheresse-argile-haute-garonne',
     title: 'Sol argileux et sécheresse en Haute-Garonne : le cycle infernal qui fissure votre maison',
-    excerpt: 'Les sols argileux de Toulouse se rétractent en été et gonflent en hiver, créant un cycle destructeur pour vos fondations. Après les sécheresses 2022-2023, des milliers de maisons se fissurent. Voici pourquoi, et surtout : comment protéger votre patrimoine.',
+    excerpt: 'Les sols argileux de Toulouse se rétractent en été et gonflent en hiver, créant un cycle destructeur pour vos fondations. Après les sécheresses 2022-2023, des milliers de maisons se fissurent. Explications et surtout : comment protéger votre patrimoine.',
     date: '2025-07-21',
-    dateModified: '2026-02-10',
+    dateModified: '2025-12-28',
     readTime: '10 min',
     category: 'expertise',
     author: 'Adam F.',
@@ -1582,7 +1582,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     keywords: ['sol argileux', 'sécheresse', 'haute-garonne', 'fondations', 'fissures', 'catastrophe naturelle', 'retrait-gonflement'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
-        <p class="font-bold text-orange-900 mb-2">🌡️ Été 2022-2023 : années record</p>
+        <p class="font-bold text-orange-900 mb-2">Été 2022-2023 : années record</p>
         <p class="text-orange-800">Les sécheresses historiques de 2022 et 2023 ont provoqué un <strong>record de tassements différentiels</strong> en Haute-Garonne. Des milliers de maisons toulousaines ont développé des fissures structurelles. Si votre maison a moins de 30 ans et qu'elle se fissure, il y a 90% de chances que ce soit lié au sol argileux.</p>
       </div>
 
@@ -1599,7 +1599,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Ce phénomène, appelé <strong>retrait-gonflement des argiles (RGA)</strong>, est naturel. Mais il devient problématique quand il est <strong>non-uniforme</strong> sous votre maison. C'est-à-dire quand une partie du sol se rétracte plus que l'autre, créant un <strong>tassement différentiel</strong>.</p>
 
       <div class="my-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
-        <h3 class="font-bold text-blue-900 mb-4">📐 Chiffres clés du phénomène</h3>
+        <h3 class="font-bold text-blue-900 mb-4">Chiffres clés du phénomène</h3>
         <ul class="list-disc ml-6 text-blue-800 space-y-2">
           <li><strong>Amplitude du mouvement</strong> : 2 à 5 cm de variation verticale en surface selon les années</li>
           <li><strong>Profondeur affectée</strong> : Les 2 premiers mètres de sol (zone des fondations superficielles)</li>
@@ -1631,15 +1631,15 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Après X cycles (généralement 5 à 15 ans), la maçonnerie cède. Une fissure apparaît, souvent en escalier (le long des joints). C'est le <strong>point de rupture</strong>. La structure ne peut plus absorber les contraintes.</p>
 
       <div class="my-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
-        <p class="font-bold text-red-900 mb-2">🚨 Une fois la fissure apparue</p>
+        <p class="font-bold text-red-900 mb-2">Une fois la fissure apparue</p>
         <p class="text-red-800">Chaque nouveau cycle de retrait-gonflement <strong>aggrave la fissure</strong>. Elle s'élargit, s'allonge, et d'autres fissures apparaissent. C'est un processus auto-aggravant. Il ne s'arrêtera pas tout seul. Seule une intervention structurelle (agrafage) peut stopper le phénomène.</p>
       </div>
 
       <h2>Les zones les plus à risque en Haute-Garonne</h2>
       
-      <p>Toutes les communes toulousaines ne sont pas égales face au risque argileux. Voici la carte des risques (selon le Bureau de Recherches Géologiques et Minières - BRGM) :</p>
+      <p>Toutes les communes toulousaines ne sont pas égales face au risque argileux. La carte des risques parle d'elle-même (selon le Bureau de Recherches Géologiques et Minières - BRGM) :</p>
 
-      <h3>🔴 Aléa FORT (risque maximum)</h3>
+      <h3>Aléa FORT (risque maximum)</h3>
       <ul>
         <li>Toulouse (centre-ville, Minimes, Roseraie, Croix-Daurade)</li>
         <li>Colomiers</li>
@@ -1649,7 +1649,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>L'Union</li>
       </ul>
 
-      <h3>🟠 Aléa MOYEN (risque significatif)</h3>
+      <h3>Aléa MOYEN (risque significatif)</h3>
       <ul>
         <li>Blagnac</li>
         <li>Plaisance-du-Touch</li>
@@ -1659,7 +1659,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <div class="my-8 p-6 bg-yellow-50 border-l-4 border-yellow-600 rounded-r-lg">
-        <p class="font-bold text-yellow-900 mb-2">💡 Vérifiez votre commune</p>
+        <p class="font-bold text-yellow-900 mb-2">Vérifiez votre commune</p>
         <p class="text-yellow-800">Rendez-vous sur <a href="https://www.georisques.gouv.fr" class="underline">Géorisques.gouv.fr</a> et entrez votre adresse. Vous saurez instantanément si votre maison est en zone à risque (et si votre commune a été classée en "catastrophe naturelle sécheresse").</p>
       </div>
 
@@ -1692,7 +1692,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ol>
 
       <div class="my-8 p-6 bg-green-50 border border-green-200 rounded-xl">
-        <h3 class="font-bold text-green-900 mb-4">✅ Notre accompagnement Cat-Nat</h3>
+        <h3 class="font-bold text-green-900 mb-4">Notre accompagnement Cat-Nat</h3>
         <p class="text-green-800">Nous vous accompagnons dans votre dossier d'assurance : diagnostic conforme aux exigences, rapport détaillé, photos, mesures, lien de causalité sécheresse-fissures. Notre taux de succès : 95% de dossiers acceptés.</p>
       </div>
 
@@ -1764,7 +1764,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>Pour un diagnostic complet de votre exposition au risque argileux, consultez notre page dédiée à la <a href="/departements/haute-garonne" class="text-orange-600 underline hover:text-orange-700">Haute-Garonne</a>.</p>
 
-      <h2>Conclusion : le sol argileux ne pardonne pas, mais on peut s&apos;en protéger</h2>
+      <h2>Vivre sur sol argileux : les précautions à prendre</h2>
       
       <p>Le sol argileux toulousain est un ennemi invisible, mais prévisible. Si vous êtes en zone à risque (vérifiez sur Géorisques), <strong>ne laissez pas les fissures s'installer</strong>. Chaque cycle de retrait-gonflement les aggrave.</p>
 
@@ -1776,9 +1776,9 @@ const blogPosts: { [key: string]: BlogPost } = {
   'fissure-facade-reboucher-ou-reparer': {
     slug: 'fissure-facade-reboucher-ou-reparer',
     title: 'Fissure façade : reboucher ou réparer ? L\'erreur à 5 000€ que font 90% des propriétaires',
-    excerpt: 'Reboucher sans traiter la cause, c\'est jeter l\'argent par les fenêtres. La fissure revient dans les 6 mois, souvent plus large. Voici la méthode professionnelle pour savoir QUAND reboucher suffit et QUAND il faut réparer structurellement.',
+    excerpt: 'Reboucher sans traiter la cause, c\'est jeter l\'argent par les fenêtres. La fissure revient dans les 6 mois, souvent plus large. La méthode pro pour savoir QUAND reboucher suffit et QUAND il faut réparer structurellement.',
     date: '2025-08-04',
-    dateModified: '2026-02-10',
+    dateModified: '2026-01-09',
     readTime: '9 min',
     category: 'conseils',
     author: 'Fabien T.',
@@ -1786,7 +1786,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     keywords: ['fissure façade', 'reboucher fissure', 'agrafage', 'ravalement', 'diagnostic', 'réparation fissure'],
     content: `
       <div class="mb-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
-        <p class="font-bold text-red-900 mb-2">💸 L'erreur à 5 000€</p>
+        <p class="font-bold text-red-900 mb-2">L'erreur à 5 000€</p>
         <p class="text-red-800">Vous rebouchez une fissure structurelle avec de l'enduit. Résultat : elle revient dans 6 mois, plus large. Vous rebouchez à nouveau. Elle revient. Après 2-3 ans de ce cycle, vous appelez enfin un expert. Diagnostic : il aurait fallu agrafer dès le début. Coût total : rebouchages multiples (2 000€) + agrafage (15 000€) = <strong>17 000€ au lieu de 12 000€</strong>. Vous avez perdu 5 000€ et 3 ans.</p>
       </div>
 
@@ -1813,7 +1813,7 @@ const blogPosts: { [key: string]: BlogPost } = {
           </ul>
         </div>
         <div class="p-6 bg-green-50 border border-green-200 rounded-xl">
-          <h3 class="font-bold text-green-900 mb-3">🔧 RÉPARER (structurel)</h3>
+          <h3 class="font-bold text-green-900 mb-3">RÉPARER (structurel)</h3>
           <p class="text-green-800 mb-3">Vous traitez la cause (mouvement de fondation) en agrafant le mur. C'est comme suturer une plaie : ça soigne durablement.</p>
           <ul class="list-disc ml-6 text-green-800 space-y-1 text-sm">
             <li><strong>Coût</strong> : 12 000€ - 18 000€ (façade complète)</li>
@@ -1839,7 +1839,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ol>
 
       <div class="my-8 p-6 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg">
-        <p class="font-bold text-blue-900 mb-2">💡 Conseil pro</p>
+        <p class="font-bold text-blue-900 mb-2">Conseil pro</p>
         <p class="text-blue-800">Faites ce test pendant l'été (juin-septembre) si vous êtes en zone argileuse. C'est pendant la sécheresse que le sol bouge le plus. Si le scotch ne se déchire pas pendant l'été, il y a de fortes chances que la fissure soit stabilisée.</p>
       </div>
 
@@ -1923,7 +1923,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Portes qui coincent, fenêtres déformées, carrelage fissuré, joints ouverts... Tous ces signes indiquent que <strong>toute la structure bouge</strong>. Reboucher la fissure visible ne résoudra rien. <strong>Solution</strong> : Expertise structurelle + agrafage si nécessaire.</p>
 
       <div class="my-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
-        <p class="font-bold text-red-900 mb-2">🚨 L'erreur fatale</p>
+        <p class="font-bold text-red-900 mb-2">L'erreur fatale</p>
         <p class="text-red-800">Reboucher une fissure structurelle, c'est comme mettre du chatterton sur une fuite de canalisation. Ça masque temporairement, mais <strong>pendant ce temps, la structure continue de se dégrader</strong>. Chaque mois qui passe rend la réparation future plus coûteuse.</p>
       </div>
 
@@ -1944,7 +1944,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Le piège des "rebouchages multiples"</h2>
       
-      <p>Voici le scénario classique que je vois trop souvent :</p>
+      <p>Le scénario classique que je vois trop souvent :</p>
 
       <ul>
         <li><strong>Année 1</strong> : Vous rebouchez. Coût : 800€. La fissure revient après 8 mois.</li>
@@ -1959,18 +1959,18 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h2>L'arbre de décision (suivez ce schéma)</h2>
       
       <div class="my-8 p-6 bg-slate-50 border border-slate-200 rounded-xl">
-        <h3 class="font-bold text-slate-900 mb-4">🌳 Votre fissure est-elle évolutive ?</h3>
+        <h3 class="font-bold text-slate-900 mb-4">Votre fissure est-elle évolutive ?</h3>
         <p class="text-slate-800 mb-2"><strong>↓ Test du scotch pendant 3-6 mois</strong></p>
         <p class="text-slate-800 mb-4">↓</p>
         <div class="grid md:grid-cols-2 gap-4">
           <div class="p-4 bg-green-50 border border-green-200 rounded-lg">
-            <p class="font-bold text-green-900 mb-2">✅ NON (scotch intact)</p>
+            <p class="font-bold text-green-900 mb-2">NON (scotch intact)</p>
             <p class="text-green-800 text-sm">→ La fissure est inactive</p>
             <p class="text-green-800 text-sm">→ Rebouchage suffit</p>
             <p class="text-green-800 text-sm">→ Coût : 500€ - 1 500€</p>
           </div>
           <div class="p-4 bg-red-50 border border-red-200 rounded-lg">
-            <p class="font-bold text-red-900 mb-2">❌ OUI (scotch déchiré)</p>
+            <p class="font-bold text-red-900 mb-2">OUI (scotch déchiré)</p>
             <p class="text-red-800 text-sm">→ La fissure est active</p>
             <p class="text-red-800 text-sm">→ Diagnostic + agrafage</p>
             <p class="text-red-800 text-sm">→ Coût : 12 000€ - 18 000€</p>
@@ -1978,7 +1978,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         </div>
       </div>
 
-      <h2>Conclusion : investissez dans le diagnostic, pas dans le rebouchage multiple</h2>
+      <h2>Le vrai coût d'un rebouchage sans diagnostic</h2>
       
       <p>Le rebouchage coûte moins cher à court terme (800€ vs 15 000€). Mais si la fissure est structurelle, vous allez reboucher 2, 3, 4 fois... et finir par agrafer quand même. <strong>Coût total : plus cher qu'agrafer dès le début.</strong></p>
 
@@ -2005,7 +2005,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p><strong>Total</strong> : 18 600€. Si vous aviez agraffé dès l&apos;année 1 : 13 000€. <strong>Économie perdue : 5 600€</strong> — sans compter le stress et la dévalorisation du bien pendant 4 ans.</p>
 
       <div class="my-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
-        <p class="font-bold text-red-900 mb-2">🚨 Le signal qui ne trompe pas</p>
+        <p class="font-bold text-red-900 mb-2">Le signal qui ne trompe pas</p>
         <p class="text-red-800">Si vous avez rebouché une fissure et qu&apos;elle est réapparue en <strong>moins de 12 mois</strong>, le mouvement est actif. Chaque rebouchage supplémentaire est de l&apos;argent jeté. Faites réaliser un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic structurel (249€)</a> pour connaître la vraie cause et le bon traitement.</p>
       </div>
 
@@ -2014,7 +2014,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Vous prévoyez un ravalement de façade et votre mur est fissuré ? L&apos;ordre des opérations est <strong>crucial</strong> — et beaucoup de propriétaires (et même certains artisans) se trompent.</p>
 
       <h3>Règle absolue : traiter les fissures AVANT le ravalement</h3>
-      <p>Un ravalement coûte entre 30€ et 80€/m², soit <strong>6 000€ à 16 000€ pour une maison de 200m² de façade</strong>. Si vous faites un ravalement sur un mur fissuré sans traiter la cause, voici ce qui se passe :</p>
+      <p>Un ravalement coûte entre 30€ et 80€/m², soit <strong>6 000€ à 16 000€ pour une maison de 200m² de façade</strong>. Si vous faites un ravalement sur un mur fissuré sans traiter la cause, le résultat est prévisible :</p>
       <ol>
         <li>Le ravalement neuf masque les anciennes fissures : le résultat est beau pendant 3-6 mois</li>
         <li>Le mouvement structurel continue : la fissure réapparaît sous le nouvel enduit</li>
@@ -2035,7 +2035,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Idéalement, confiez l&apos;<a href="/expertise/fissures" class="text-orange-600 underline hover:text-orange-700">agrafage</a> et le ravalement à la même entreprise (ou à des entreprises qui travaillent ensemble). Cela évite les problèmes de garantie (« c&apos;est la faute de l&apos;autre ») et assure une continuité technique. Chez IPB, nous réalisons l&apos;agrafage avec finitions complètes, ce qui vous permet de n&apos;avoir qu&apos;un seul interlocuteur et une seule <strong>garantie décennale couvrant l&apos;ensemble</strong>.</p>
 
       <div class="my-8 p-6 bg-green-50 border border-green-200 rounded-xl">
-        <h3 class="font-bold text-green-900 mb-3">✅ Astuce pour économiser</h3>
+        <h3 class="font-bold text-green-900 mb-3">Astuce pour économiser</h3>
         <p class="text-green-800">Si votre façade est en mauvais état et qu&apos;elle a aussi des fissures actives, <strong>combinez agrafage + ravalement dans un seul chantier</strong>. L&apos;échafaudage est monté une seule fois, et les finitions d&apos;agrafage se fondent dans le ravalement. Économie typique : 2 000€ à 4 000€ par rapport à deux chantiers séparés.</p>
       </div>
 
@@ -2045,9 +2045,9 @@ const blogPosts: { [key: string]: BlogPost } = {
   'humidite-salpetre-traitement': {
     slug: 'humidite-salpetre-traitement',
     title: 'Salpêtre sur vos murs : ce que cette poudre blanche révèle (et comment l\'éliminer définitivement)',
-    excerpt: 'Le salpêtre n\'est pas de la moisissure. C\'est le signe visible d\'un problème invisible : l\'eau qui remonte du sol dans vos murs. Voici comment confirmer le diagnostic, pourquoi le gratter ne sert à rien, et la seule solution qui fonctionne.',
+    excerpt: 'Le salpêtre n\'est pas de la moisissure. C\'est le signe visible d\'un problème invisible : l\'eau qui remonte du sol dans vos murs. Comment confirmer le diagnostic, pourquoi le gratter ne sert à rien, et la seule solution qui fonctionne.',
     date: '2025-08-18',
-    dateModified: '2026-02-10',
+    dateModified: '2025-10-30',
     readTime: '8 min',
     category: 'humidite',
     author: 'Nicolas G.',
@@ -2055,7 +2055,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     keywords: ['salpêtre', 'remontée capillaire', 'murs humides', 'injection résine', 'nitrate de potassium', 'poudre blanche'],
     content: `
       <div class="mb-8 p-6 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg">
-        <p class="font-bold text-blue-900 mb-2">💧 Le salpêtre = diagnostic certain à 95%</p>
+        <p class="font-bold text-blue-900 mb-2">Le salpêtre = diagnostic certain à 95%</p>
         <p class="text-blue-800">Si vous voyez cette poudre blanche au pied de vos murs (surtout dans les caves, garages ou pièces en rez-de-chaussée), il y a <strong>95% de chances</strong> que ce soit une remontée capillaire. Le salpêtre est la "signature chimique" de l'eau qui remonte du sol dans vos murs.</p>
       </div>
 
@@ -2130,7 +2130,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         </table>
       </div>
 
-      <p class="font-bold text-lg text-slate-900 my-6">💡 Règle simple : Si c'est blanc ET en bas de mur = salpêtre. Si c'est noir ET en haut de mur = moisissure.</p>
+      <p class="font-bold text-lg text-slate-900 my-6">Règle simple : Si c'est blanc ET en bas de mur = salpêtre. Si c'est noir ET en haut de mur = moisissure.</p>
 
       <h2>Test simple pour confirmer que c'est du salpêtre</h2>
       
@@ -2150,7 +2150,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p><strong>Pourquoi ?</strong> Parce que vous avez traité le symptôme (la poudre blanche), pas la cause (l'eau qui remonte du sol).</p>
 
       <div class="my-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
-        <p class="font-bold text-red-900 mb-2">❌ Ce qui NE fonctionne PAS</p>
+        <p class="font-bold text-red-900 mb-2">Ce qui NE fonctionne PAS</p>
         <ul class="list-disc ml-6 text-red-800 space-y-2">
           <li><strong>Gratter et repeindre</strong> : L'eau continue de monter, le salpêtre revient sous la peinture</li>
           <li><strong>Appliquer un traitement anti-salpêtre</strong> : Ces produits "bloquent" temporairement, mais l'eau continue de monter et pourrit le mur derrière</li>
@@ -2177,7 +2177,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ol>
 
       <div class="my-8 p-6 bg-green-50 border border-green-200 rounded-xl">
-        <h3 class="font-bold text-green-900 mb-4">✅ Pourquoi cette technique fonctionne</h3>
+        <h3 class="font-bold text-green-900 mb-4">Pourquoi cette technique fonctionne</h3>
         <ul class="list-disc ml-6 text-green-800 space-y-2">
           <li><strong>Barrière définitive</strong> : La résine minéralise et reste active 30 ans minimum</li>
           <li><strong>Non invasive</strong> : Pas de démolition, pas de gros travaux. Juste des petits perçages</li>
@@ -2199,7 +2199,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <div class="my-8 p-6 bg-yellow-50 border-l-4 border-yellow-600 rounded-r-lg">
-        <p class="font-bold text-yellow-900 mb-2">⚠️ Patience = clé du succès</p>
+        <p class="font-bold text-yellow-900 mb-2">Patience = clé du succès</p>
         <p class="text-yellow-800">Ne vous attendez pas à un résultat en 2 semaines. Le séchage d'un mur de 20 cm prend 6 à 10 mois. C'est long, mais c'est le temps nécessaire pour un assainissement durable. Si on vous promet un résultat en 1 mois, fuyez.</p>
       </div>
 
@@ -2233,7 +2233,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ol>
 
       <div class="my-8 p-6 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg">
-        <p class="font-bold text-blue-900 mb-2">💡 Ne peignez PAS trop tôt</p>
+        <p class="font-bold text-blue-900 mb-2">Ne peignez PAS trop tôt</p>
         <p class="text-blue-800">Si vous peignez avant que le mur soit complètement sec, l'humidité résiduelle fera cloquer la peinture. Attendez au moins 6 mois après l'injection, et vérifiez l'humidité du mur avec un humidimètre (< 5% = OK).</p>
       </div>
 
@@ -2267,7 +2267,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Salpêtre en location : qui paye ?</h2>
 
-      <p>Le salpêtre en logement loué est une source fréquente de conflits entre locataires et propriétaires. Voici ce que dit la loi.</p>
+      <p>Le salpêtre en logement loué est une source fréquente de conflits entre locataires et propriétaires. Ce que dit la loi.</p>
 
       <h3>Ce qui relève du propriétaire</h3>
       <p>Selon la <strong>loi du 6 juillet 1989</strong> (article 6), le propriétaire doit fournir un logement décent, exempt de risques pour la santé. Les remontées capillaires et le salpêtre relèvent de la <strong>structure du bâtiment</strong> : le traitement (injection de résine, cuvelage) est donc à la charge du <strong>propriétaire</strong>, sans exception.</p>
@@ -2286,7 +2286,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p><strong>Important</strong> : Un rapport de <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic professionnel</a> (249€ TTC) constitue une pièce maîtresse du dossier. Il prouve objectivement la cause structurelle du problème et la responsabilité du propriétaire.</p>
 
-      <h2>Conclusion : le salpêtre ne disparaît jamais tout seul</h2>
+      <h2>Le salpêtre : un problème qui ne se règle pas tout seul</h2>
       
       <p>Le salpêtre est le symptôme visible d'un problème invisible : l'eau qui remonte du sol. Gratter, peindre, déshumidifier... tout ça masque temporairement, mais ne résout rien.</p>
 
@@ -2298,9 +2298,9 @@ const blogPosts: { [key: string]: BlogPost } = {
   'condensation-ou-infiltration': {
     slug: 'condensation-ou-infiltration',
     title: 'Condensation ou infiltration ? Le test simple pour ne plus se tromper',
-    excerpt: 'Taches noires, murs humides, moisissures... Ce n\'est pas toujours une fuite. 60% des gens traitent le mauvais problème et dépensent de l\'argent inutilement. Voici le test décisif pour savoir si c\'est de la condensation (VMC) ou une infiltration (étanchéité).',
+    excerpt: 'Taches noires, murs humides, moisissures... Ce n\'est pas toujours une fuite. 60% des gens traitent le mauvais problème et dépensent de l\'argent inutilement. Le test décisif pour savoir si c\'est de la condensation (VMC) ou une infiltration (étanchéité).',
     date: '2025-09-01',
-    dateModified: '2026-02-10',
+    dateModified: '2026-01-22',
     readTime: '8 min',
     category: 'humidite',
     author: 'Nicolas G.',
@@ -2308,7 +2308,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     keywords: ['condensation', 'infiltration', 'humidité', 'diagnostic', 'VMC', 'étanchéité', 'moisissures'],
     content: `
       <div class="mb-8 p-6 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg">
-        <p class="font-bold text-blue-900 mb-2">⚠️ L'erreur à 5 000€</p>
+        <p class="font-bold text-blue-900 mb-2">L'erreur à 5 000€</p>
         <p class="text-blue-800">Vous voyez de l'humidité sur vos murs. Vous pensez : "C'est une infiltration, il faut refaire l'étanchéité." Vous dépensez 5 000€. Résultat : l'humidité revient. Pourquoi ? Parce que c'était de la <strong>condensation</strong>, pas une infiltration. Une simple VMC à 2 000€ aurait suffi.</p>
       </div>
 
@@ -2364,7 +2364,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <div class="my-8 p-6 bg-green-50 border border-green-200 rounded-xl">
-        <h3 class="font-bold text-green-900 mb-3">✅ Ce test est fiable à 95%</h3>
+        <h3 class="font-bold text-green-900 mb-3">Ce test est fiable à 95%</h3>
         <p class="text-green-800">C'est la méthode qu'utilisent les experts. Simple, rapide, et quasi infaillible. Si vous avez un doute, faites ce test avant de dépenser 1 centime dans des travaux.</p>
       </div>
 
@@ -2468,7 +2468,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Les solutions définitives selon le diagnostic</h2>
 
-      <p>Une fois la cause identifiée — condensation, infiltration ou remontée capillaire — le traitement est radicalement différent. Voici les solutions éprouvées pour chaque situation :</p>
+      <p>Une fois la cause identifiée — condensation, infiltration ou remontée capillaire — le traitement est radicalement différent. Les solutions éprouvées pour chaque situation :</p>
 
       <h3>Si c&apos;est de la condensation</h3>
       <p>La condensation est un problème de <strong>ventilation et d&apos;isolation</strong>. L&apos;air intérieur est trop humide et se condense sur les surfaces froides. Les solutions :</p>
@@ -2495,7 +2495,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <div class="my-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-        <p class="font-bold text-blue-800">💡 Le diagnostic IPB détermine la solution exacte</p>
+        <p class="font-bold text-blue-800">Le diagnostic IPB détermine la solution exacte</p>
         <p class="text-blue-700">Avec un humidimètre à sonde, une caméra thermique et un test à la bombe à carbure, un expert IPB identifie la source exacte de l&apos;humidité en 1h30. Ce <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic à 249€ TTC</a> (déductible sur travaux) vous évite de dépenser des milliers d&apos;euros dans le mauvais traitement.</p>
       </div>
 
@@ -2521,7 +2521,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>Cette approche multi-instruments permet d&apos;établir un <strong>plan de traitement hiérarchisé</strong> : traiter d&apos;abord la source principale, puis la source secondaire, dans le bon ordre et avec le bon budget.</p>
 
-      <h2>Conclusion : 5 minutes de test = des milliers d'euros économisés</h2>
+      <h2>Condensation ou infiltration : trancher en 5 minutes</h2>
       
       <p>Avant de dépenser un centime dans des travaux d'étanchéité ou une VMC, <strong>faites le test de la feuille d'aluminium</strong>. 5 minutes de votre temps peuvent vous éviter de dépenser 5 000€ dans le mauvais traitement.</p>
 
@@ -2539,9 +2539,9 @@ const blogPosts: { [key: string]: BlogPost } = {
   'diagnostic-structurel-maison': {
     slug: 'diagnostic-structurel-maison',
     title: 'Diagnostic structurel : les 7 choses qu\'un vrai expert vérifie (et que 90% des "pros" oublient)',
-    excerpt: 'Un diagnostic à l\'œil nu ne vaut rien. Un vrai expert arrive avec un fissuromètre, un niveau laser, un humidimètre... et 15 ans d\'expérience. Voici exactement ce qu\'il observe, mesure, et analyse pour vous dire si votre maison est en danger ou non.',
+    excerpt: 'Un diagnostic à l\'œil nu ne vaut rien. Un vrai expert arrive avec un fissuromètre, un niveau laser, un humidimètre... et 15 ans d\'expérience. Découvrez exactement ce qu\'il observe, mesure, et analyse pour vous dire si votre maison est en danger ou non.',
     date: '2025-09-15',
-    dateModified: '2026-02-10',
+    dateModified: '2025-12-11',
     readTime: '10 min',
     category: 'expertise',
     author: 'Fabien T.',
@@ -2549,7 +2549,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     keywords: ['diagnostic structurel', 'expertise', 'fissuromètre', 'mesures', 'niveau laser', 'diagnostic fissures'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
-        <p class="font-bold text-orange-900 mb-2">⚠️ Un diagnostic à l'œil nu ne vaut RIEN</p>
+        <p class="font-bold text-orange-900 mb-2">Un diagnostic à l'œil nu ne vaut RIEN</p>
         <p class="text-orange-800">Vous appelez un "expert" qui regarde vos fissures 10 minutes, prend 2 photos avec son téléphone, et vous dit : "Il faut des micropieux, 45 000€." Aucune mesure, aucun outil, aucun rapport. <strong>Fuyez.</strong> Un vrai diagnostic structurel prend 1h30 minimum et repose sur des <strong>mesures objectives</strong>, pas sur des impressions.</p>
       </div>
 
@@ -2594,7 +2594,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p><strong>Pourquoi c'est crucial</strong> : Une fissure inactive (stabilisée) peut être rebouchée. Une fissure active (évolutive) nécessite une réparation structurelle. Sans test d'évolutivité, impossible de savoir.</p>
 
       <div class="my-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
-        <h3 class="font-bold text-blue-900 mb-3">💡 Le diagnostic en 2 temps</h3>
+        <h3 class="font-bold text-blue-900 mb-3">Le diagnostic en 2 temps</h3>
         <p class="text-blue-800">Un expert sérieux peut vous proposer un diagnostic en 2 temps : une première visite pour analyser et poser des témoins, puis une seconde visite 3-6 mois plus tard pour vérifier l'évolutivité. C'est la méthode la plus fiable (et recommandée par les assurances Cat-Nat).</p>
       </div>
 
@@ -2709,7 +2709,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         </table>
       </div>
 
-      <p class="font-bold text-lg text-slate-900 my-6">💡 Si l'expert n'a AUCUN de ces outils, ce n'est pas un expert.</p>
+      <p class="font-bold text-lg text-slate-900 my-6">Si l'expert n'a AUCUN de ces outils, ce n'est pas un expert.</p>
 
       <h2>Le rapport de diagnostic : ce qu'il doit contenir (minimum)</h2>
       
@@ -2724,7 +2724,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ol>
 
       <div class="my-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
-        <p class="font-bold text-red-900 mb-2">🚨 Red flags d'un mauvais diagnostic</p>
+        <p class="font-bold text-red-900 mb-2">Red flags d'un mauvais diagnostic</p>
         <ul class="list-disc ml-6 text-red-800 space-y-2">
           <li>Aucune mesure chiffrée ("c'est grave" sans préciser pourquoi)</li>
           <li>Pas de rapport écrit (juste un devis)</li>
@@ -2744,7 +2744,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <div class="my-8 p-6 bg-green-50 border border-green-200 rounded-xl">
-        <h3 class="font-bold text-green-900 mb-3">✅ Notre formule</h3>
+        <h3 class="font-bold text-green-900 mb-3">Notre formule</h3>
         <p class="text-green-800"><strong>249€ déductibles sur travaux</strong>. Si vous signez avec nous, le diagnostic est offert. Si vous ne signez pas, vous payez 249€ pour le rapport complet (photos, mesures, solutions).</p>
       </div>
 
@@ -2770,7 +2770,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p class="font-bold text-lg text-slate-900 my-6">Un diagnostic gratuit vous coûte souvent plus cher (sur-traitement) qu'un diagnostic payant (solution adaptée).</p>
 
-      <h2>Conclusion : investissez dans le diagnostic, économisez sur les travaux</h2>
+      <h2>Pourquoi le diagnostic vous fera économiser gros</h2>
       
       <p>Un diagnostic structurel complet (249€ - 300€) peut vous faire économiser <strong>des milliers d'euros</strong> en évitant :</p>
 
@@ -2784,7 +2784,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Les instruments de mesure utilisés par nos experts</h2>
 
-      <p>Un diagnostic sérieux ne se fait pas à l&apos;œil nu. Voici les cinq instruments que nos experts apportent systématiquement lors d&apos;une visite, et ce que chacun mesure concrètement :</p>
+      <p>Un diagnostic sérieux ne se fait pas à l&apos;œil nu. Les cinq instruments que nos experts apportent systématiquement lors d&apos;une visite, et ce que chacun mesure concrètement :</p>
 
       <h3>Le fissuromètre (précision 0,05 mm)</h3>
       <p>C&apos;est une jauge graduée (ou un comparateur à cadran) qui mesure la <strong>largeur exacte de chaque fissure</strong>. La différence entre 0,3 mm et 3 mm change tout : la première est probablement superficielle, la seconde est structurelle. Sans cette mesure, impossible de classer la gravité. L&apos;expert pose aussi des <strong>témoins de fissure</strong> (jauges fixées de part et d&apos;autre) pour mesurer l&apos;évolution dans le temps — essentiel pour les dossiers d&apos;assurance.</p>
@@ -2803,7 +2803,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Diagnostic IPB vs diagnostic d&apos;assurance : les différences</h2>
 
-      <p>Quand vous déclarez un sinistre, votre assurance mandate son propre expert. Beaucoup de propriétaires pensent que cet expert travaille pour eux. <strong>C&apos;est faux.</strong> Voici les différences fondamentales :</p>
+      <p>Quand vous déclarez un sinistre, votre assurance mandate son propre expert. Beaucoup de propriétaires pensent que cet expert travaille pour eux. <strong>C&apos;est faux.</strong> Les différences sont fondamentales :</p>
 
       <h3>L&apos;expert d&apos;assurance : un intérêt contradictoire</h3>
       <p>L&apos;expert mandaté par l&apos;assurance est payé par l&apos;assurance. Son intérêt (conscient ou non) est de <strong>minimiser le montant de l&apos;indemnisation</strong>. Concrètement :</p>
@@ -2825,7 +2825,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <div class="my-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
-        <p class="font-bold text-orange-900 mb-2">💡 Pourquoi votre rapport IPB change tout</p>
+        <p class="font-bold text-orange-900 mb-2">Pourquoi votre rapport IPB change tout</p>
         <p class="text-orange-800">Lors de l&apos;expertise contradictoire avec l&apos;expert de l&apos;assurance, <strong>votre rapport IPB l&apos;empêche de minimiser</strong>. Il ne peut pas dire « c&apos;est esthétique » quand votre rapport montre un tassement de 8 mm au niveau laser. Il ne peut pas refuser l&apos;agrafage quand les mesures au fissuromètre prouvent une fissure active de 4 mm. Les chiffres ne mentent pas. Notre taux de succès avec rapport contradictoire : <strong>95%</strong>.</p>
       </div>
 
@@ -2835,9 +2835,9 @@ const blogPosts: { [key: string]: BlogPost } = {
   'traitement-humidite-injection-resine': {
     slug: 'traitement-humidite-injection-resine',
     title: 'Injection résine : la seule solution définitive contre les remontées capillaires (explications + prix)',
-    excerpt: 'Vous avez du salpêtre qui revient malgré vos nettoyages ? L\'injection de résine crée une barrière étanche à la base de vos murs qui bloque l\'eau pendant 30 ans. Voici comment ça marche exactement, combien de temps ça prend, et combien ça coûte (tarifs transparents).',
+    excerpt: 'Vous avez du salpêtre qui revient malgré vos nettoyages ? L\'injection de résine crée une barrière étanche à la base de vos murs qui bloque l\'eau pendant 30 ans. Comment ça marche exactement, combien de temps ça prend, et combien ça coûte (tarifs transparents).',
     date: '2025-09-29',
-    dateModified: '2026-02-10',
+    dateModified: '2025-11-07',
     readTime: '9 min',
     category: 'humidite',
     author: 'Nicolas G.',
@@ -2845,7 +2845,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     keywords: ['injection résine', 'barrière étanche', 'remontées capillaires', 'humidité', 'salpêtre', 'traitement humidité'],
     content: `
       <div class="mb-8 p-6 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg">
-        <p class="font-bold text-blue-900 mb-2">💧 Efficacité : 95% sur les remontées capillaires</p>
+        <p class="font-bold text-blue-900 mb-2">Efficacité : 95% sur les remontées capillaires</p>
         <p class="text-blue-800">L'injection de résine est la <strong>seule technique reconnue</strong> par les experts du bâtiment pour stopper définitivement les remontées capillaires. Toutes les autres méthodes (peinture étanche, déshumidificateur, drainage extérieur seul) ne sont que des pansements temporaires.</p>
       </div>
 
@@ -2987,7 +2987,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <div class="my-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
-        <h3 class="font-bold text-blue-900 mb-3">💰 Coût total réel (exemple cave 30m²)</h3>
+        <h3 class="font-bold text-blue-900 mb-3">Coût total réel (exemple cave 30m²)</h3>
         <ul class="list-none text-blue-800 space-y-1">
           <li>→ Diagnostic : 249€</li>
           <li>→ Injection résine (15ml de mur) : 1 200€ - 1 800€</li>
@@ -3015,7 +3015,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <div class="my-8 p-6 bg-yellow-50 border-l-4 border-yellow-600 rounded-r-lg">
-        <p class="font-bold text-yellow-900 mb-2">⚠️ Patience = clé du succès</p>
+        <p class="font-bold text-yellow-900 mb-2">Patience = clé du succès</p>
         <p class="text-yellow-800">Si on vous promet un résultat en 1 mois, <strong>fuyez</strong>. Le séchage d'un mur saturé d'eau prend 6 à 12 mois minimum. C'est physique, incompressible. Toute entreprise qui promet un miracle rapide est soit incompétente, soit malhonnête.</p>
       </div>
 
@@ -3104,7 +3104,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>Notre recommandation : réservez le DIY pour des <a href="/blog/humidite-salpetre-traitement" class="text-orange-600 underline hover:text-orange-700">petites surfaces de salpêtre</a> sur un mur mince (&lt; 20 cm) en brique. Pour tout le reste, faites appel à un professionnel certifié.</p>
 
-      <h2>Conclusion : l&apos;injection résine, le seul traitement définitif</h2>
+      <h2>Injection résine : le traitement qui dure</h2>
       
       <p>Après 30 ans d'expérience dans le traitement de l'humidité, je peux vous le dire : <strong>il n'y a qu'une seule méthode qui fonctionne durablement contre les remontées capillaires</strong>. C'est l'injection de résine.</p>
 
@@ -3120,7 +3120,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     title: 'Vendre une maison fissurée : la décote à -30% (et comment l\'éviter)',
     excerpt: 'Une maison fissurée perd 20 à 30% de sa valeur. Les acheteurs paniquent, les banques refusent les prêts. Mais avec un traitement structurel garanti (agrafage + attestation décennale), la revente redevient possible... et parfois PLUS facile que prévu.',
     date: '2025-10-13',
-    dateModified: '2026-02-10',
+    dateModified: '2026-02-04',
     readTime: '8 min',
     category: 'conseils',
     author: 'Adam F.',
@@ -3128,7 +3128,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     keywords: ['revente maison fissurée', 'décote', 'garantie décennale', 'agrafage', 'vente maison fissures', 'diagnostic technique'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
-        <p class="font-bold text-orange-900 mb-2">💰 La décote moyenne : -25%</p>
+        <p class="font-bold text-orange-900 mb-2">La décote moyenne : -25%</p>
         <p class="text-orange-800">Une maison estimée à 300 000€ perd en moyenne <strong>60 000€ à 90 000€</strong> si elle présente des fissures structurelles non traitées. Mais si vous la faites réparer AVANT la vente (agrafage + attestation décennale), vous récupérez 80% de la valeur... et parfois même 100%.</p>
       </div>
 
@@ -3192,7 +3192,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         </table>
       </div>
 
-      <p class="font-bold text-lg text-slate-900 my-6">💡 Faire réparer AVANT de vendre = récupérer 60 000€ à 75 000€ sur le prix de vente.</p>
+      <p class="font-bold text-lg text-slate-900 my-6">Faire réparer AVANT de vendre = récupérer 60 000€ à 75 000€ sur le prix de vente.</p>
 
       <h2>Vendre "en l'état" : risques juridiques</h2>
       
@@ -3214,7 +3214,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p><strong>Délai</strong> : L'acheteur a 2 ans après la découverte pour agir en justice.</p>
 
       <div class="my-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
-        <p class="font-bold text-red-900 mb-2">🚨 Ne tentez jamais de cacher</p>
+        <p class="font-bold text-red-900 mb-2">Ne tentez jamais de cacher</p>
         <p class="text-red-800">Reboucher et repeindre pour cacher les fissures avant une vente est une <strong>fraude</strong>. L'expert de la banque ou le diagnostiqueur les détectera (caméra thermique, humidimètre). Et si l'acheteur découvre après l'achat que vous avez maquillé, vous risquez l'annulation de la vente + poursuites.</p>
       </div>
 
@@ -3284,11 +3284,11 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Comment présenter les travaux aux acheteurs</h2>
       
-      <h3>❌ Ce qu'il NE faut PAS dire</h3>
+      <h3>Ce qu'il NE faut PAS dire</h3>
       <p>"La maison avait des fissures, mais on les a réparées. Normalement ça devrait tenir..."</p>
       <p><strong>Pourquoi c'est mauvais</strong> : Vous mettez l'accent sur le problème ("avait des fissures") et vous semez le doute ("normalement").</p>
 
-      <h3>✅ Ce qu'il FAUT dire</h3>
+      <h3>Ce qu'il FAUT dire</h3>
       <p>"La maison a fait l'objet d'une expertise structurelle complète en [année]. Les fondations ont été stabilisées par agrafage, avec une garantie décennale transmissible de [X] ans restants. Vous avez l'attestation et le rapport d'expertise complets dans le dossier."</p>
       <p><strong>Pourquoi c'est bon</strong> : Vous montrez que vous avez été <strong>proactif et responsable</strong>. Vous transformez un point faible en argument de vente (maison expertisée = sérénité).</p>
 
@@ -3300,7 +3300,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Les diagnostics obligatoires avant vente d&apos;une maison fissurée</h2>
 
-      <p>Vendre une maison fissurée sans respecter les obligations d&apos;information expose le vendeur à des <strong>sanctions lourdes</strong>. Voici ce que vous devez impérativement fournir :</p>
+      <p>Vendre une maison fissurée sans respecter les obligations d&apos;information expose le vendeur à des <strong>sanctions lourdes</strong>. Ce que vous devez impérativement fournir :</p>
 
       <h3>Le dossier de diagnostic technique (DDT)</h3>
       <p>Le DDT est obligatoire pour toute vente immobilière et doit inclure :</p>
@@ -3348,7 +3348,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>Le levier de négociation</h3>
       <p>Si vous réparez avant la mise en vente, vous pouvez mettre en avant : « Maison expertisée, fondations stabilisées par agrafage, <strong>garantie décennale transmissible</strong>, rapport technique complet inclus dans le dossier ». C&apos;est un argument de vente puissant, surtout en zone Cat-Nat où les acheteurs sont de plus en plus vigilants. Consultez notre guide sur les <a href="/blog/catastrophe-naturelle-secheresse-demarches-indemnisation" class="text-orange-600 underline hover:text-orange-700">démarches d&apos;indemnisation Cat-Nat</a> pour comprendre le financement possible.</p>
 
-      <h2>Conclusion : réparer = valoriser (et dormir tranquille)</h2>
+      <h2>Réparer avant de vendre : le calcul gagnant</h2>
       
       <p>Vendre une maison fissurée "en l'état", c'est :</p>
       <ul>
@@ -3372,9 +3372,9 @@ const blogPosts: { [key: string]: BlogPost } = {
   'fissure-plafond-que-faire': {
     slug: 'fissure-plafond-que-faire',
     title: 'Fissure au plafond : grave ou pas ? Le test simple pour savoir',
-    excerpt: 'Une fissure au plafond peut être bénigne (retrait d\'enduit) ou alarmante (mouvement de charpente). Voici comment faire la différence en 5 minutes, sans paniquer inutilement ni minimiser un vrai danger.',
+    excerpt: 'Une fissure au plafond peut être bénigne (retrait d\'enduit) ou alarmante (mouvement de charpente). Apprenez à faire la différence en 5 minutes, sans paniquer inutilement ni minimiser un vrai danger.',
     date: '2025-10-27',
-    dateModified: '2026-02-10',
+    dateModified: '2025-12-19',
     readTime: '8 min',
     category: 'fissures',
     author: 'Ludovic D.',
@@ -3382,7 +3382,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     keywords: ['fissures plafond', 'fissures maison', 'diagnostic', 'structure', 'charpente', 'retrait enduit'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
-        <p class="font-bold text-orange-900 mb-2">🔍 Règle simple</p>
+        <p class="font-bold text-orange-900 mb-2">Règle simple</p>
         <p class="text-orange-800"><strong>Fissure fine + horizontale + ancienne = souvent bénigne</strong> (retrait d'enduit). <strong>Fissure large + en étoile + récente = potentiellement grave</strong> (mouvement structurel). Si en plus vous entendez des craquements ou voyez des fissures aux murs, c'est une urgence.</p>
       </div>
 
@@ -3402,7 +3402,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       
       <p><strong>Cause</strong> : Retrait de l'enduit lors du séchage (maison neuve ou après rénovation), ou dilatation thermique du plâtre</p>
       
-      <p><strong>Gravité</strong> : <span class="text-green-700 font-bold">✅ BÉNIGNE</span> - Purement esthétique</p>
+      <p><strong>Gravité</strong> : <span class="text-green-700 font-bold">BÉNIGNE</span> - Purement esthétique</p>
       
       <p><strong>Action</strong> : Surveillance pendant 6 mois (test du scotch). Si stable, simple rebouchage suffit.</p>
 
@@ -3412,7 +3412,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       
       <p><strong>Cause</strong> : Fatigue de l'enduit de finition, excès d'humidité lors de l'application, ou peinture trop rigide</p>
       
-      <p><strong>Gravité</strong> : <span class="text-green-700 font-bold">✅ BÉNIGNE</span> - Esthétique uniquement</p>
+      <p><strong>Gravité</strong> : <span class="text-green-700 font-bold">BÉNIGNE</span> - Esthétique uniquement</p>
       
       <p><strong>Action</strong> : Ponçage + enduit de lissage + peinture</p>
 
@@ -3422,7 +3422,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       
       <p><strong>Cause</strong> : Soit mouvement différentiel entre le mur et le plafond (dilatation), soit défaut de chaînage entre les deux éléments</p>
       
-      <p><strong>Gravité</strong> : <span class="text-yellow-700 font-bold">⚠️ SURVEILLANCE</span> - Peut être bénin ou révélateur d'un mouvement</p>
+      <p><strong>Gravité</strong> : <span class="text-yellow-700 font-bold">SURVEILLANCE</span> - Peut être bénin ou révélateur d'un mouvement</p>
       
       <p><strong>Action</strong> : Test d'évolutivité pendant 6 mois. Si elle s'agrandit ET que vous avez d'autres signes (portes qui coincent, fissures aux murs), diagnostic structurel recommandé.</p>
 
@@ -3432,7 +3432,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       
       <p><strong>Cause</strong> : Flexion excessive du plafond (plancher au-dessus trop chargé, poutre qui fléchit, ou défaut structurel)</p>
       
-      <p><strong>Gravité</strong> : <span class="text-red-700 font-bold">🚨 POTENTIELLEMENT GRAVE</span> - Indique une contrainte localisée importante</p>
+      <p><strong>Gravité</strong> : <span class="text-red-700 font-bold">POTENTIELLEMENT GRAVE</span> - Indique une contrainte localisée importante</p>
       
       <p><strong>Action</strong> : Diagnostic structurel immédiat. Vérifier la capacité portante du plancher/poutre.</p>
 
@@ -3442,7 +3442,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       
       <p><strong>Cause</strong> : Défaillance structurelle (poutre qui cède, solivage insuffisant, surcharge importante, ou mouvement de fondations qui se répercute)</p>
       
-      <p><strong>Gravité</strong> : <span class="text-red-700 font-bold">🚨🚨 URGENCE</span> - Risque d'effondrement partiel</p>
+      <p><strong>Gravité</strong> : <span class="text-red-700 font-bold">URGENCE</span> - Risque d'effondrement partiel</p>
       
       <p><strong>Action</strong> : Expertise structurelle URGENTE. Ne pas utiliser la pièce au-dessus tant que la sécurité n'est pas confirmée.</p>
 
@@ -3512,7 +3512,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h2>Quand faire appel à un expert</h2>
       
       <div class="my-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
-        <p class="font-bold text-red-900 mb-2">🚨 Appelez un expert si :</p>
+        <p class="font-bold text-red-900 mb-2">Appelez un expert si :</p>
         <ul class="list-disc ml-6 text-red-800 space-y-2">
           <li>La fissure fait > 2 mm de large</li>
           <li>Elle évolue (test du scotch positif)</li>
@@ -3559,7 +3559,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p><strong>Action</strong> : Contactez l'entreprise qui a réalisé les travaux. Si c'est une surcharge, ils doivent renforcer le solivage (garantie décennale).</p>
 
-      <h2>Conclusion : ne paniquez pas, mais ne minimisez pas</h2>
+      <h2>Fissure au plafond : quand faut-il vraiment s'inquiéter ?</h2>
       
       <p>Une fissure au plafond est <strong>rarement une urgence immédiate</strong>, mais elle mérite toujours une attention. Voici la démarche à suivre :</p>
 
@@ -3617,7 +3617,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Si la fissure se situe <strong>le long d&apos;une poutre</strong> ou si la poutre elle-même est fissurée, il faut vérifier son état structurel. Un expert sonde la poutre (test au marteau, sondage à l&apos;aiguille pour détecter la vermoulure) et mesure sa flèche (déformation sous charge). Si la poutre est saine, un simple rejointement suffit. Si elle est attaquée (insectes xylophages, pourriture), un <strong>renforcement par plat métallique ou remplacement partiel</strong> sera nécessaire. <strong>Coût</strong> : 500€ à 3 000€ selon l&apos;intervention.</p>
 
       <div class="my-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
-        <p class="font-bold text-orange-900 mb-2">💡 Conseil pour les propriétaires d&apos;appartement</p>
+        <p class="font-bold text-orange-900 mb-2">Conseil pour les propriétaires d&apos;appartement</p>
         <p class="text-orange-800">Avant de reboucher une fissure au plafond, <strong>identifiez si c&apos;est une partie commune ou privative</strong>. Si vous rebouchez vous-même une fissure structurelle, vous masquez un problème qui relève de la copropriété — et vous pourriez perdre votre recours. Faites d&apos;abord constater par un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">expert indépendant</a>, puis informez le syndic.</p>
       </div>
 
@@ -3627,9 +3627,9 @@ const blogPosts: { [key: string]: BlogPost } = {
   'humidite-cave-sous-sol': {
     slug: 'humidite-cave-sous-sol',
     title: 'Cave humide : les 3 causes (et les 3 solutions qui marchent vraiment)',
-    excerpt: 'Votre cave sent le moisi, les murs suintent, le salpêtre revient ? L\'humidité en cave vient de 3 sources : remontées capillaires, infiltrations latérales, ou condensation. Voici comment identifier LA bonne cause et appliquer LA bonne solution (injection, cuvelage, ou VMI).',
+    excerpt: 'Votre cave sent le moisi, les murs suintent, le salpêtre revient ? L\'humidité en cave vient de 3 sources : remontées capillaires, infiltrations latérales, ou condensation. Comment identifier LA bonne cause et appliquer LA bonne solution (injection, cuvelage, ou VMI).',
     date: '2025-11-10',
-    dateModified: '2026-02-10',
+    dateModified: '2026-01-14',
     readTime: '10 min',
     category: 'humidite',
     author: 'Nicolas G.',
@@ -3637,7 +3637,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     keywords: ['humidité cave', 'cuvelage', 'injection résine', 'ventilation', 'VMI', 'sous-sol humide', 'cave enterrée'],
     content: `
       <div class="mb-8 p-6 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg">
-        <p class="font-bold text-blue-900 mb-2">💧 L'erreur à 8 000€</p>
+        <p class="font-bold text-blue-900 mb-2">L'erreur à 8 000€</p>
         <p class="text-blue-800">Vous faites un cuvelage complet de votre cave pour 8 000€. Résultat : l'humidité persiste. Pourquoi ? Parce que c'était de la <strong>condensation</strong>, pas une infiltration. Une simple VMI à 2 500€ aurait suffi. Ne traitez JAMAIS sans avoir identifié la source exacte de l'humidité.</p>
       </div>
 
@@ -3766,7 +3766,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <div class="my-8 p-6 bg-yellow-50 border-l-4 border-yellow-600 rounded-r-lg">
-        <p class="font-bold text-yellow-900 mb-2">⚠️ Cuvelage seul = insuffisant si remontées capillaires</p>
+        <p class="font-bold text-yellow-900 mb-2">Cuvelage seul = insuffisant si remontées capillaires</p>
         <p class="text-yellow-800">Le cuvelage bloque l'eau latérale, mais <strong>pas l'eau qui remonte du sol</strong>. Si vous avez AUSSI des remontées capillaires, il faut faire : injection résine (bas de mur) + cuvelage (reste du mur + sol).</p>
       </div>
 
@@ -3914,11 +3914,11 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <div class="my-8 p-6 bg-red-50 border border-red-200 rounded-xl">
-        <h3 class="font-bold text-red-900 mb-3">❌ L&apos;erreur la plus fréquente</h3>
+        <h3 class="font-bold text-red-900 mb-3">L&apos;erreur la plus fréquente</h3>
         <p class="text-red-800"><strong>Aménager AVANT de traiter.</strong> Nous voyons chaque mois des propriétaires qui ont investi 8 000€ à 15 000€ dans l&apos;aménagement d&apos;une cave sans traiter l&apos;humidité au préalable. Résultat en 6 à 12 mois : placo gonflé et moisi, isolation saturée d&apos;eau, odeur de moisi persistante, peinture qui cloque. Ils doivent tout arracher et recommencer — cette fois dans le bon ordre. Coût total : le double.</p>
       </div>
 
-      <h2>Conclusion : identifiez la source AVANT de dépenser</h2>
+      <h2>Cave humide : la marche à suivre</h2>
       
       <p>L'humidité en cave a toujours une cause. Mais <strong>traiter la mauvaise cause</strong> vous fera perdre du temps et de l'argent :</p>
 
@@ -3943,7 +3943,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     title: 'Expert Fissures dans le Gers (32) : Guide Complet',
     excerpt: 'Votre maison gersoise se fissure ? Découvrez les causes spécifiques au sol gascon, les solutions adaptées et comment choisir le bon expert dans le Gers. Guide complet par IPB.',
     date: '2025-11-24',
-    dateModified: '2026-02-10',
+    dateModified: '2026-02-07',
     readTime: '10 min',
     category: 'fissures',
     author: 'Adam F.',
@@ -3951,7 +3951,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     keywords: ['expert fissures gers', 'fissures maison gers', 'agrafage fissures 32', 'expert fissure auch', 'fissures condom', 'sol argileux gascogne', 'réparation fissures gers'],
     content: `
       <div class="mb-8 p-6 bg-amber-50 border-l-4 border-amber-600 rounded-r-lg">
-        <p class="font-bold text-amber-900 mb-2">📍 Vous êtes dans le Gers ?</p>
+        <p class="font-bold text-amber-900 mb-2">Vous êtes dans le Gers ?</p>
         <p class="text-amber-800">Ce guide est spécialement conçu pour les propriétaires gersois. Nous intervenons à Auch, Condom, Fleurance, L'Isle-Jourdain, Mirande et dans tout le département.</p>
       </div>
 
@@ -4011,7 +4011,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
       
       <div class="my-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-        <p class="font-bold text-green-800">✅ Avantage Gers : L'agrafage est particulièrement efficace sur les maisons gasconnes en brique, car il s'adapte parfaitement à ce type de maçonnerie.</p>
+        <p class="font-bold text-green-800">Avantage Gers : L'agrafage est particulièrement efficace sur les maisons gasconnes en brique, car il s'adapte parfaitement à ce type de maçonnerie.</p>
       </div>
 
       <h3>L'injection de résine : pour les fondations</h3>
@@ -4093,7 +4093,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Lectoure, Gimont, Lombez</strong> : Et toutes les communes du département</li>
       </ul>
 
-      <h2>Conclusion : agissez avant que ça s'aggrave</h2>
+      <h2>Fissures dans le Gers : les prochaines étapes</h2>
       
       <p>Les fissures dans le Gers ne sont pas une fatalité. Mais plus vous attendez, plus :</p>
       <ul>
@@ -4140,7 +4140,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Le rapport d&apos;expertise IPB constitue une <strong>pièce technique opposable</strong> qui renforce considérablement votre dossier d&apos;indemnisation. Il documente précisément l&apos;étendue des dégâts, identifie les causes, et chiffre les travaux nécessaires. Face à un expert d&apos;assurance qui tenterait de minimiser le sinistre, votre rapport IPB permet de <strong>négocier sur une base technique solide</strong>.</p>
 
       <div class="my-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
-        <p class="font-bold text-amber-800">📋 Délai moyen d&apos;indemnisation dans le Gers</p>
+        <p class="font-bold text-amber-800">Délai moyen d&apos;indemnisation dans le Gers</p>
         <p class="text-amber-700">Entre la déclaration et le versement de l&apos;indemnité, comptez <strong>6 à 18 mois</strong> selon la complexité du dossier. Les dossiers accompagnés d&apos;un rapport d&apos;expertise indépendant sont généralement traités 30% plus rapidement par les assureurs.</p>
       </div>
 
@@ -4154,7 +4154,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>N&apos;attendez pas que les fissures atteignent le stade critique. Un diagnostic précoce permet de choisir la solution la moins coûteuse et la moins invasive. À Auch comme à Condom ou Fleurance, notre expert se déplace sous 5 jours avec ses instruments de mesure professionnels pour vous donner un avis clair et des solutions concrètes.</p>
 
-      <p class="font-bold text-lg text-slate-900 mt-6">📞 IPB intervient dans tout le Gers. Diagnostic gratuit sous 5 jours : 05 82 95 33 75</p>
+      <p class="font-bold text-lg text-slate-900 mt-6">IPB intervient dans tout le Gers. Diagnostic gratuit sous 5 jours : 05 82 95 33 75</p>
     `
   },
 
@@ -4163,7 +4163,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     title: 'Mérule : Le Champignon qui Dévore les Maisons (Guide Complet)',
     excerpt: 'La mérule est le cauchemar des propriétaires. Ce champignon lignivore détruit silencieusement les charpentes et boiseries. Comment l\'identifier, l\'éliminer et surtout : comment éviter qu\'elle ne revienne.',
     date: '2025-12-08',
-    dateModified: '2026-02-10',
+    dateModified: '2025-12-08',
     readTime: '12 min',
     category: 'humidite',
     author: 'Fabien T.',
@@ -4171,7 +4171,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     keywords: ['mérule', 'merule', 'champignon maison', 'champignon bois', 'mérule pleureuse', 'traitement mérule', 'mérule toulouse', 'champignon lignivore', 'pourriture bois'],
     content: `
       <div class="mb-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
-        <p class="font-bold text-red-900 mb-2">🚨 La mérule est une urgence</p>
+        <p class="font-bold text-red-900 mb-2">La mérule est une urgence</p>
         <p class="text-red-800">La mérule peut détruire une charpente en quelques mois. Si vous suspectez sa présence, <strong>n'attendez pas</strong>. Chaque semaine de retard aggrave les dégâts et augmente le coût des travaux.</p>
       </div>
 
@@ -4213,7 +4213,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <div class="my-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
-        <p class="font-bold text-amber-800">💡 Bon à savoir : La mérule est plus fréquente dans les régions humides (Bretagne, Nord, Normandie) mais elle existe aussi en Occitanie, notamment dans les maisons anciennes avec problèmes d'humidité.</p>
+        <p class="font-bold text-amber-800">Bon à savoir : La mérule est plus fréquente dans les régions humides (Bretagne, Nord, Normandie) mais elle existe aussi en Occitanie, notamment dans les maisons anciennes avec problèmes d'humidité.</p>
       </div>
 
       <h2>Mérule vs autres champignons : ne pas confondre</h2>
@@ -4314,7 +4314,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ol>
 
       <div class="my-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-        <p class="font-bold text-red-800">⚠️ Attention : Un traitement superficiel (juste "tuer" le champignon visible) est inefficace. La mérule reviendra si vous ne traitez pas la source d'humidité ET tous les matériaux contaminés.</p>
+        <p class="font-bold text-red-800">Attention : Un traitement superficiel (juste "tuer" le champignon visible) est inefficace. La mérule reviendra si vous ne traitez pas la source d'humidité ET tous les matériaux contaminés.</p>
       </div>
 
       <h2>Coût du traitement de la mérule</h2>
@@ -4384,7 +4384,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>N'attendez pas</strong> : Chaque semaine compte avec la mérule</li>
       </ol>
 
-      <h2>Conclusion</h2>
+      <h2>Mérule détectée : que faire maintenant ?</h2>
 
       <p>La mérule est un problème grave mais pas une fatalité. Détectée tôt, elle peut être traitée efficacement. La clé est de :</p>
       <ul>
@@ -4453,7 +4453,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>La mérule est l&apos;un des rares cas où <strong>chaque semaine compte</strong>. Un diagnostic rapide (249€ TTC) permet d&apos;évaluer l&apos;étendue de la contamination et de planifier le traitement avant que les dégâts ne deviennent irréversibles. En Occitanie, IPB intervient sous 48h pour les cas suspectés de mérule.</p>
 
-      <p class="font-bold text-lg text-slate-900 mt-6">📞 Suspicion de mérule ou champignon ? Diagnostic expert : 05 82 95 33 75</p>
+      <p class="font-bold text-lg text-slate-900 mt-6">Suspicion de mérule ou champignon ? Diagnostic expert : 05 82 95 33 75</p>
     `
   },
 
@@ -4462,7 +4462,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     title: 'Salpêtre à Toulouse : Causes, Diagnostic et Traitement Définitif',
     excerpt: 'Poudre blanche sur vos murs à Toulouse ? C\'est probablement du salpêtre, signe de remontées capillaires. Découvrez pourquoi les maisons toulousaines sont touchées et comment éliminer ce problème définitivement.',
     date: '2025-12-22',
-    dateModified: '2026-02-10',
+    dateModified: '2026-01-30',
     readTime: '8 min',
     category: 'humidite',
     author: 'Nicolas G.',
@@ -4470,7 +4470,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     keywords: ['salpêtre toulouse', 'salpetre mur toulouse', 'traitement salpêtre 31', 'poudre blanche mur', 'remontée capillaire toulouse', 'humidité mur toulouse'],
     content: `
       <div class="mb-8 p-6 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg">
-        <p class="font-bold text-blue-900 mb-2">📍 Vous êtes à Toulouse ou en Haute-Garonne ?</p>
+        <p class="font-bold text-blue-900 mb-2">Vous êtes à Toulouse ou en Haute-Garonne ?</p>
         <p class="text-blue-800">Ce guide traite spécifiquement du salpêtre dans les maisons de la région toulousaine, avec ses particularités liées au sol argileux et au bâti local.</p>
       </div>
 
@@ -4508,13 +4508,13 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Les erreurs à éviter</h2>
 
-      <h3>❌ Gratter le salpêtre</h3>
+      <h3>Gratter le salpêtre</h3>
       <p>Ça ne sert à rien. Le salpêtre n'est que le symptôme visible. Tant que l'eau continue de monter, il reviendra dans les semaines suivantes.</p>
 
-      <h3>❌ Repeindre par-dessus</h3>
+      <h3>Repeindre par-dessus</h3>
       <p>La peinture "anti-humidité" ne traite pas le problème. Elle se contentera de cloquer à nouveau dans quelques mois.</p>
 
-      <h3>❌ Poser un revêtement étanche</h3>
+      <h3>Poser un revêtement étanche</h3>
       <p>Certains posent du carrelage ou un enduit étanche en bas de mur. Résultat : l'eau remonte toujours mais ne peut plus s'évaporer. Elle monte plus haut, crée des dégâts sur une plus grande surface, et peut attaquer les structures en bois.</p>
 
       <h2>Le traitement qui fonctionne : l'injection de résine</h2>
@@ -4591,7 +4591,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Pas de sur-traitement</strong> : On traite ce qui est nécessaire, pas plus</li>
       </ul>
 
-      <h2>Conclusion</h2>
+      <h2>Salpêtre à Toulouse : le plan d'action</h2>
 
       <p>Le salpêtre est un problème fréquent dans les maisons toulousaines, mais il se traite efficacement avec les bonnes techniques. L'essentiel est de :</p>
       <ol>
@@ -4614,7 +4614,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <div class="my-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-        <p class="font-bold text-red-800">⚠️ Populations vulnérables</p>
+        <p class="font-bold text-red-800">Populations vulnérables</p>
         <p class="text-red-700">Les enfants de moins de 5 ans, les personnes asthmatiques et les personnes âgées sont particulièrement exposés. Une étude de l&apos;INSERM montre que les enfants vivant dans un logement humide ont <strong>40% de risques supplémentaires</strong> de développer de l&apos;asthme avant 7 ans.</p>
       </div>
 
@@ -4635,7 +4635,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p><strong>Règle de base</strong> : comptez environ <strong>1 mois de séchage par centimètre d&apos;épaisseur de mur</strong>. Un mur en pierre de 40 cm à Toulouse prendra donc 10 à 14 mois pour sécher complètement, contre 6 à 8 mois pour un mur en brique de 20 cm.</p>
 
       <div class="my-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-        <p class="font-bold text-blue-800">💡 Erreur fréquente à Toulouse</p>
+        <p class="font-bold text-blue-800">Erreur fréquente à Toulouse</p>
         <p class="text-blue-700">Ne posez <strong>jamais</strong> un enduit étanche (type enduit ciment) avant séchage complet. L&apos;humidité résiduelle serait piégée dans le mur et provoquerait des cloques, voire un décollement total de l&apos;enduit. Utilisez un enduit à la chaux, perméable à la vapeur d&apos;eau, qui laisse le mur respirer pendant le séchage.</p>
       </div>
 
@@ -4715,7 +4715,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>Dans tous les cas, un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic professionnel</a> (249€ TTC) permet d&apos;identifier la source exacte et de déterminer les responsabilités.</p>
 
-      <p class="font-bold text-lg text-slate-900 mt-6">📞 Salpêtre à Toulouse ? Diagnostic gratuit : 05 82 95 33 75</p>
+      <p class="font-bold text-lg text-slate-900 mt-6">Salpêtre à Toulouse ? Diagnostic gratuit : 05 82 95 33 75</p>
     `
   },
 
@@ -4724,7 +4724,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     title: 'Fissures Maison Tarn-et-Garonne : Causes et Solutions Efficaces',
     excerpt: 'Fissures sur votre maison à Montauban, Castelsarrasin ou Moissac ? Découvrez pourquoi le Tarn-et-Garonne est particulièrement touché et les solutions durables pour protéger votre patrimoine.',
     date: '2026-01-05',
-    dateModified: '2026-02-10',
+    dateModified: '2026-01-28',
     readTime: '9 min',
     category: 'fissures',
     author: 'Ludovic D.',
@@ -4732,7 +4732,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     keywords: ['expert fissures tarn et garonne', 'fissures maison montauban', 'fissure 82', 'agrafage tarn et garonne', 'expert fissure castelsarrasin', 'sol argileux 82'],
     content: `
       <div class="mb-8 p-6 bg-rose-50 border-l-4 border-rose-600 rounded-r-lg">
-        <p class="font-bold text-rose-900 mb-2">🏠 Propriétaire dans le 82 ?</p>
+        <p class="font-bold text-rose-900 mb-2">Propriétaire dans le 82 ?</p>
         <p class="text-rose-800">Le Tarn-et-Garonne fait partie des départements les plus touchés par les fissures liées à la sécheresse. Ce guide vous aide à comprendre et agir.</p>
       </div>
 
@@ -4761,7 +4761,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
       
       <div class="my-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
-        <p class="font-bold text-amber-800">💡 Bon à savoir : Si votre commune est reconnue en catastrophe naturelle, votre assurance habitation peut couvrir une partie des travaux. Vérifiez auprès de votre assureur.</p>
+        <p class="font-bold text-amber-800">Bon à savoir : Si votre commune est reconnue en catastrophe naturelle, votre assurance habitation peut couvrir une partie des travaux. Vérifiez auprès de votre assureur.</p>
       </div>
 
       <h3>Un parc immobilier vulnérable</h3>
@@ -4869,7 +4869,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ol>
 
       <div class="my-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-        <p class="font-bold text-blue-800">📋 Notre conseil : Même si l'arrêté n'est pas encore publié, faites constater les dégâts par un expert indépendant. Ce document sera précieux pour votre dossier d'assurance.</p>
+        <p class="font-bold text-blue-800">Notre conseil : Même si l'arrêté n'est pas encore publié, faites constater les dégâts par un expert indépendant. Ce document sera précieux pour votre dossier d'assurance.</p>
       </div>
 
       <h2>Prévenir les futures fissures</h2>
@@ -4892,7 +4892,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Prix transparents</strong> : Devis détaillé, pas de surprise</li>
       </ul>
 
-      <h2>Conclusion</h2>
+      <h2>Fissures dans le 82 : on en sort comment ?</h2>
       
       <p>Le Tarn-et-Garonne est un département où les fissures sont <strong>fréquentes mais pas inévitables</strong>. Avec le bon diagnostic et les bonnes solutions, votre maison peut retrouver sa stabilité pour des décennies.</p>
 
@@ -4941,7 +4941,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <div class="my-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-        <p class="font-bold text-green-800">💡 Résultat concret</p>
+        <p class="font-bold text-green-800">Résultat concret</p>
         <p class="text-green-700">En Tarn-et-Garonne, les propriétaires qui disposent d&apos;un rapport d&apos;expertise indépendant IPB obtiennent en moyenne une <strong>indemnisation 35 à 50% supérieure</strong> à ceux qui se contentent de l&apos;expertise de l&apos;assureur. Notre diagnostic à 249€ TTC est souvent amorti dès la première négociation avec l&apos;assurance.</p>
       </div>
 
@@ -4976,20 +4976,20 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <div class="my-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-        <p class="font-bold text-green-800">💰 Le calcul est simple : 12 000€ d&apos;agrafage aujourd&apos;hui peuvent sauver 50 000€ de valeur immobilière demain. Sans compter que chaque cycle sécheresse-pluie aggrave les fissures et augmente le coût des travaux de 15 à 20% par an.</p>
+        <p class="font-bold text-green-800">Le calcul est simple : 12 000€ d&apos;agrafage aujourd&apos;hui peuvent sauver 50 000€ de valeur immobilière demain. Sans compter que chaque cycle sécheresse-pluie aggrave les fissures et augmente le coût des travaux de 15 à 20% par an.</p>
       </div>
 
       <p>IPB est l&apos;un des rares experts à couvrir l&apos;intégralité du Tarn-et-Garonne, de Montauban à Moissac en passant par Castelsarrasin et Caussade. Notre connaissance approfondie des sols du département nous permet de proposer la solution la plus adaptée — et la plus économique — à chaque situation. Consultez également nos <a href="/expertise/fissures" class="text-orange-600 underline hover:text-orange-700">guides complets sur les fissures</a> pour approfondir le sujet.</p>
 
-      <p class="font-bold text-lg text-slate-900 mt-6">📞 Expert fissures Tarn-et-Garonne - Diagnostic gratuit : 05 82 95 33 75</p>
+      <p class="font-bold text-lg text-slate-900 mt-6">Expert fissures Tarn-et-Garonne - Diagnostic gratuit : 05 82 95 33 75</p>
     `
   },
   'catastrophe-naturelle-secheresse-demarches-indemnisation': {
     slug: 'catastrophe-naturelle-secheresse-demarches-indemnisation',
     title: 'Catastrophe Naturelle Sécheresse : Le Guide Complet pour Être Indemnisé (Démarches, Délais, Pièges)',
-    excerpt: 'Votre commune est reconnue en catastrophe naturelle sécheresse ? Voici exactement comment déclarer votre sinistre, les délais à respecter, la franchise à payer, et les erreurs qui font perdre des milliers d\'euros à 40% des sinistrés.',
+    excerpt: 'Votre commune est reconnue en catastrophe naturelle sécheresse ? Guide complet pour déclarer votre sinistre, les délais à respecter, la franchise à payer, et les erreurs qui font perdre des milliers d\'euros à 40% des sinistrés.',
     date: '2026-01-19',
-    dateModified: '2026-02-10',
+    dateModified: '2026-02-03',
     readTime: '12 min',
     category: 'conseils',
     author: 'Adam F.',
@@ -5009,7 +5009,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     ],
     content: `
       <div class="mb-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
-        <p class="font-bold text-red-900 mb-2">⏰ Attention : Vous avez 10 jours après la publication de l'arrêté</p>
+        <p class="font-bold text-red-900 mb-2">Attention : Vous avez 10 jours après la publication de l'arrêté</p>
         <p class="text-red-800">Le délai pour déclarer votre sinistre CAT-NAT sécheresse à votre assurance est de <strong>10 jours</strong> après la parution de l'arrêté au Journal Officiel. Passé ce délai, votre dossier peut être refusé. Agissez maintenant.</p>
       </div>
 
@@ -5020,7 +5020,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Ce phénomène porte un nom technique : le <strong>retrait-gonflement des argiles (RGA)</strong>. Et quand il est suffisamment intense, l'État peut reconnaître votre commune en <strong>état de catastrophe naturelle</strong>, ce qui ouvre droit à une indemnisation par votre assurance habitation.</p>
 
       <div class="my-6 p-5 bg-slate-50 border border-slate-200 rounded-xl">
-        <p class="font-bold text-slate-800 mb-3">📊 Quelques chiffres clés</p>
+        <p class="font-bold text-slate-800 mb-3">Quelques chiffres clés</p>
         <ul class="space-y-2 text-slate-700">
           <li>• <strong>10,4 millions</strong> de maisons en zone d'exposition forte au RGA en France</li>
           <li>• <strong>3,2 milliards €</strong> d'indemnisation sécheresse en 2022 (record historique)</li>
@@ -5039,7 +5039,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <h3>Communes récemment reconnues (notre zone d'intervention)</h3>
-      <p>Voici un aperçu des dernières reconnaissances CAT-NAT sécheresse dans les départements où nous intervenons :</p>
+      <p>Petit tour d'horizon des dernières reconnaissances CAT-NAT sécheresse dans les départements où nous intervenons :</p>
 
       <div class="my-6 overflow-x-auto">
         <table class="w-full border-collapse border border-slate-200">
@@ -5086,7 +5086,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Dès la publication de l'arrêté au Journal Officiel, vous disposez de <strong>10 jours</strong> pour envoyer votre déclaration de sinistre à votre assureur. Ce délai est fixé par la loi (article L. 125-2 du Code des assurances).</p>
 
       <div class="my-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
-        <p class="font-bold text-amber-800">💡 Conseil IPB : Envoyez votre déclaration en recommandé avec accusé de réception. En cas de litige, vous aurez la preuve de votre envoi dans les délais.</p>
+        <p class="font-bold text-amber-800">Conseil IPB : Envoyez votre déclaration en recommandé avec accusé de réception. En cas de litige, vous aurez la preuve de votre envoi dans les délais.</p>
       </div>
 
       <h3>Que doit contenir votre déclaration ?</h3>
@@ -5112,14 +5112,14 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <div class="my-6 p-5 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
-        <p class="font-bold text-orange-900 mb-2">🔑 Le secret d'un dossier réussi</p>
+        <p class="font-bold text-orange-900 mb-2">Le secret d'un dossier réussi</p>
         <p class="text-orange-800">Faites réaliser un <strong>diagnostic indépendant AVANT</strong> le passage de l'expert d'assurance. Ce rapport technique, réalisé par un professionnel qui n'a aucun intérêt à minimiser les dégâts, donnera du poids à votre dossier et peut faire la différence entre une indemnisation de 5 000€ et de 25 000€.</p>
       </div>
 
       <h2>Étape 3 : L'expertise d'assurance</h2>
 
       <h3>Comment se déroule l'expertise ?</h3>
-      <p>Après votre déclaration, l'assureur mandate un <strong>expert d'assurance</strong> pour évaluer les dégâts. Voici ce que vous devez savoir :</p>
+      <p>Après votre déclaration, l'assureur mandate un <strong>expert d'assurance</strong> pour évaluer les dégâts. Ce qu'il faut savoir :</p>
       <ul>
         <li>L'expert d'assurance est payé par l'assureur (conflit d'intérêt potentiel)</li>
         <li>Il se rend sur place pour constater les dégâts</li>
@@ -5162,7 +5162,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </div>
 
       <div class="my-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-        <p class="font-bold text-blue-800">📋 Attention à la majoration</p>
+        <p class="font-bold text-blue-800">Attention à la majoration</p>
         <p class="text-blue-700 mt-1">Si votre commune a fait l'objet de <strong>3 arrêtés CAT-NAT ou plus en 5 ans</strong> sans avoir adopté de plan de prévention des risques (PPR), la franchise peut être <strong>doublée, triplée ou quadruplée</strong>. Renseignez-vous auprès de votre mairie.</p>
       </div>
 
@@ -5225,7 +5225,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </div>
 
       <div class="my-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
-        <p class="font-bold text-amber-800">⚠️ Délai total moyen : 12 à 24 mois entre l'apparition des fissures et l'indemnisation. C'est long, mais pendant ce temps, les fissures continuent de s'aggraver. N'attendez pas l'indemnisation pour faire diagnostiquer votre maison.</p>
+        <p class="font-bold text-amber-800">Délai total moyen : 12 à 24 mois entre l'apparition des fissures et l'indemnisation. C'est long, mais pendant ce temps, les fissures continuent de s'aggraver. N'attendez pas l'indemnisation pour faire diagnostiquer votre maison.</p>
       </div>
 
       <h2>Les 5 erreurs qui coûtent cher aux sinistrés</h2>
@@ -5268,19 +5268,19 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <div class="my-6 grid md:grid-cols-2 gap-4">
         <div class="p-5 bg-orange-50 border border-orange-200 rounded-xl">
-          <p class="font-bold text-orange-800 mb-2">🔍 Diagnostic technique</p>
+          <p class="font-bold text-orange-800 mb-2">Diagnostic technique</p>
           <p class="text-orange-700 text-sm">Rapport détaillé avec mesures, photos, analyse des causes. Ce document sera votre meilleur allié face à l'expert d'assurance.</p>
         </div>
         <div class="p-5 bg-blue-50 border border-blue-200 rounded-xl">
-          <p class="font-bold text-blue-800 mb-2">📋 Devis détaillé</p>
+          <p class="font-bold text-blue-800 mb-2">Devis détaillé</p>
           <p class="text-blue-700 text-sm">Estimation précise des travaux nécessaires. L'assureur ne pourra pas minimiser le montant si vous avez un devis professionnel.</p>
         </div>
         <div class="p-5 bg-green-50 border border-green-200 rounded-xl">
-          <p class="font-bold text-green-800 mb-2">🔧 Travaux de réparation</p>
+          <p class="font-bold text-green-800 mb-2">Travaux de réparation</p>
           <p class="text-green-700 text-sm">Agrafage, injection de résine, reprise en sous-œuvre. Tous nos travaux sont couverts par la garantie décennale (10 ans).</p>
         </div>
         <div class="p-5 bg-purple-50 border border-purple-200 rounded-xl">
-          <p class="font-bold text-purple-800 mb-2">🤝 Accompagnement assurance</p>
+          <p class="font-bold text-purple-800 mb-2">Accompagnement assurance</p>
           <p class="text-purple-700 text-sm">Nous pouvons être présents lors du passage de l'expert d'assurance pour défendre techniquement votre dossier.</p>
         </div>
       </div>
@@ -5299,7 +5299,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>Peut-on cumuler CAT-NAT et aides de l'État ?</h3>
       <p>Oui. En complément de l'indemnisation assurance, vous pouvez bénéficier de l'aide de l'ANAH (Agence Nationale de l'Habitat) pour certains travaux, sous conditions de ressources.</p>
 
-      <h2>Conclusion : N'attendez pas pour protéger votre patrimoine</h2>
+      <h2>Sécheresse et indemnisation : les erreurs à éviter</h2>
 
       <p>La procédure CAT-NAT sécheresse est votre droit. Mais pour en bénéficier pleinement, vous devez :</p>
       <ol>
@@ -5311,7 +5311,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>Chez IPB, nous avons accompagné des centaines de propriétaires dans leurs démarches CAT-NAT en Haute-Garonne, dans le Tarn, le Gers et le Tarn-et-Garonne. Notre diagnostic technique a permis à de nombreux sinistrés d'obtenir une <strong>indemnisation juste</strong>, couvrant réellement les travaux nécessaires.</p>
 
-      <p class="font-bold text-lg text-slate-900 mt-6">📞 Besoin d'un diagnostic pour votre dossier CAT-NAT ? Appelez-nous : 05 82 95 33 75 — Diagnostic sous 48h</p>
+      <p class="font-bold text-lg text-slate-900 mt-6">Besoin d'un diagnostic pour votre dossier CAT-NAT ? Appelez-nous : 05 82 95 33 75 — Diagnostic sous 48h</p>
     `
   },
   'fissure-mur-interieur-causes-solutions': {
@@ -5319,7 +5319,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     title: 'Fissure Mur Intérieur : Causes, Gravité et Solutions (Guide Expert 2026)',
     excerpt: 'Une fissure apparaît sur votre mur intérieur ? Ce guide expert vous aide à identifier sa gravité, comprendre ses causes et choisir la bonne solution. Ne confondez plus fissure esthétique et danger structurel.',
     date: '2026-01-26',
-    dateModified: '2026-02-10',
+    dateModified: '2026-01-26',
     readTime: '12 min',
     category: 'fissures',
     author: 'Fabien T.',
@@ -5327,7 +5327,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     keywords: ['fissure mur intérieur', 'fissure mur intérieur maison', 'fissure mur intérieur cause', 'réparer fissure mur intérieur', 'fissure mur porteur', 'fissure plâtre intérieur', 'fissure cloison', 'expert fissures toulouse'],
     content: `
       <div class="mb-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
-        <p class="font-bold text-red-900 mb-2">⚠️ Règle d'or : ne rebouchez jamais une fissure intérieure sans diagnostic</p>
+        <p class="font-bold text-red-900 mb-2">Règle d'or : ne rebouchez jamais une fissure intérieure sans diagnostic</p>
         <p class="text-red-800">Reboucher une fissure avec de l'enduit, c'est cacher un symptôme. Si la cause est un tassement différentiel ou un problème de fondation, la fissure reviendra en pire — et votre mur pourrait devenir dangereux. Un diagnostic technique coûte 249€ (déductible des travaux). Ignorer le problème peut coûter 10 000€+.</p>
       </div>
 
@@ -5425,7 +5425,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h2>Les erreurs à éviter absolument</h2>
 
       <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
-        <h3 class="text-red-600 font-bold mb-4">❌ Les 5 erreurs les plus courantes</h3>
+        <h3 class="text-red-600 font-bold mb-4">Les 5 erreurs les plus courantes</h3>
         <ol>
           <li><strong>Reboucher sans diagnostic</strong> : la fissure reviendra en pire et vous aurez perdu temps et argent</li>
           <li><strong>Utiliser un enduit rigide</strong> : il cassera à nouveau. Utilisez un enduit souple ou fibre de verre</li>
@@ -5518,13 +5518,13 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>Le rapport d&apos;un expert indépendant comme IPB pèse fortement face à l&apos;expert mandaté par l&apos;assurance. Il démontre le <strong>lien de causalité</strong> entre la sécheresse et les fissures, et chiffre précisément les réparations nécessaires.</p>
 
-      <h2>Conclusion : agissez maintenant, économisez plus tard</h2>
+      <h2>Fissure intérieure : le récap' des actions à mener</h2>
 
       <p>Une fissure intérieure peut être bénigne ou annonciatrice d'un problème grave. La seule façon de savoir, c'est un <strong>diagnostic professionnel</strong>. Ne faites pas l'erreur d'attendre : chaque cycle de sécheresse aggrave les mouvements de sol en Occitanie.</p>
 
       <p>Chez IPB, nous avons diagnostiqué et traité plus de 300 maisons fissurées en Haute-Garonne, dans le Tarn-et-Garonne et le Gers. Notre <strong>agrafage structurel est garanti 10 ans</strong> avec garantie décennale.</p>
 
-      <p class="font-bold text-lg text-slate-900 mt-6">📞 Diagnostic expert sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
+      <p class="font-bold text-lg text-slate-900 mt-6">Diagnostic expert sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
     `
   },
   'prix-agrafage-fissures-2026': {
@@ -5532,7 +5532,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     title: 'Prix Agrafage Fissures en 2026 : Tarifs Réels et Comparatif Complet',
     excerpt: 'Combien coûte réellement un agrafage de fissures ? Tarifs au mètre linéaire, comparatif agrafage vs micropieux, facteurs de prix et aides financières. Les vrais chiffres d\'un expert.',
     date: '2026-02-02',
-    dateModified: '2026-02-10',
+    dateModified: '2026-02-09',
     readTime: '10 min',
     category: 'fissures',
     author: 'Ludovic D.',
@@ -5663,7 +5663,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p class="text-orange-800">Un devis d'agrafage complet à moins de 5 000€ pour une maison entière doit vous alerter. Soit le diagnostic est bâclé, soit les matériaux sont de mauvaise qualité, soit il n'y a pas de garantie décennale. Un travail mal fait coûtera 2 fois plus cher à refaire dans 3 ans.</p>
       </div>
 
-      <h2>Conclusion : investir maintenant, économiser sur le long terme</h2>
+      <h2>Budget agrafage : à quoi s'attendre concrètement</h2>
 
       <p>L'agrafage de fissures représente un investissement de 8 000 à 15 000€ en moyenne, mais il protège un patrimoine qui en vaut <strong>10 à 50 fois plus</strong>. Chaque année sans traitement, les fissures s'aggravent et le coût de réparation augmente de 15 à 20%.</p>
 
@@ -5715,7 +5715,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h3>Le calcul concret</h3>
       <div class="my-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-        <p class="font-bold text-green-800">📊 Exemple sur une maison à 250 000€</p>
+        <p class="font-bold text-green-800">Exemple sur une maison à 250 000€</p>
         <p class="text-green-700"><strong>Sans traitement</strong> : perte de valeur de 50 000€ (20%) + aggravation vers micropieux à 35 000€ = <strong>coût total : 85 000€</strong></p>
         <p class="text-green-700"><strong>Avec agrafage immédiat</strong> : diagnostic 249€ + agrafage 12 000€ + récupération de la valeur = <strong>coût total : 12 249€</strong></p>
         <p class="text-green-700 font-bold mt-2">Économie réalisée : 72 751€</p>
@@ -5746,7 +5746,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>Faut-il faire agrafage ET micropieux ?</h3>
       <p>Dans de rares cas (environ 5% de nos chantiers), les deux techniques sont combinées : micropieux pour stabiliser les fondations, puis agrafage pour réparer les fissures murales. Le coût combiné est élevé (30 000 à 60 000€), mais c&apos;est la seule solution quand le sol est réellement instable en profondeur. Un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic instrumenté</a> permet de trancher.</p>
 
-      <p class="font-bold text-lg text-slate-900 mt-6">📞 Devis gratuit sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
+      <p class="font-bold text-lg text-slate-900 mt-6">Devis gratuit sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
     `
   },
   'fissure-maison-neuve-garantie-decennale': {
@@ -5754,7 +5754,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     title: 'Fissure Maison Neuve : Vos Droits et la Garantie Décennale (Guide 2026)',
     excerpt: 'Votre maison de moins de 10 ans se fissure ? Vous êtes protégé par la garantie décennale. Démarches, délais, recours : tout ce qu\'il faut savoir pour être indemnisé.',
     date: '2026-02-06',
-    dateModified: '2026-02-10',
+    dateModified: '2026-02-06',
     readTime: '9 min',
     category: 'fissures',
     author: 'Adam F.',
@@ -5854,7 +5854,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>Le Registre du Commerce (extrait Kbis de l'entreprise)</li>
       </ul>
 
-      <h2>Conclusion : ne laissez pas passer vos droits</h2>
+      <h2>Maison neuve fissurée : vos droits en bref</h2>
 
       <p>Si votre maison neuve se fissure, <strong>vous avez des droits solides</strong>. La garantie décennale est l'une des protections les plus fortes du droit français. Mais elle ne s'active pas toute seule : il faut documenter, déclarer, et surtout avoir un <strong>rapport d'expertise indépendant</strong> pour peser dans la balance.</p>
 
@@ -5874,7 +5874,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Dans un lotissement de 12 maisons livré en 2020, sept propriétaires constatent des fissures similaires dès la deuxième année. Notre diagnostic révèle un <strong>défaut de compactage du remblai</strong> lors de la viabilisation du terrain. Les propriétaires se regroupent pour une procédure collective. Le rapport d&apos;expertise IPB, commun aux sept maisons, sert de pièce maîtresse. Résultat : le promoteur et son assureur sont condamnés solidairement. Les travaux d&apos;agrafage et de reprise de fondation sont intégralement financés, pour un montant total de 145 000€.</p>
 
       <div class="my-8 p-6 bg-green-50 border border-green-200 rounded-xl">
-        <h3 class="font-bold text-green-900 mb-3">💡 Le point commun de ces trois dossiers</h3>
+        <h3 class="font-bold text-green-900 mb-3">Le point commun de ces trois dossiers</h3>
         <p class="text-green-800">Dans chaque cas, c&apos;est le <strong>rapport d&apos;expertise indépendant</strong> qui a fait basculer le dossier. Sans mesures objectives (fissuromètre, niveau laser, analyse de sol), l&apos;assureur du constructeur aurait minimisé les dommages ou refusé la prise en charge.</p>
       </div>
 
@@ -5928,7 +5928,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </div>
 
       <div class="my-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
-        <p class="font-bold text-red-900 mb-2">🚨 Attention aux pièges de délai</p>
+        <p class="font-bold text-red-900 mb-2">Attention aux pièges de délai</p>
         <ul class="list-disc ml-6 text-red-800 space-y-2">
           <li><strong>Le délai Cat-Nat de 10 jours est souvent méconnu</strong>. Beaucoup de propriétaires laissent passer l&apos;arrêté sans réagir et perdent leur droit à indemnisation.</li>
           <li><strong>La garantie de parfait achèvement expire vite</strong> : notez chaque défaut sur un carnet dès l&apos;emménagement et envoyez une LRAR avant le premier anniversaire.</li>
@@ -5938,7 +5938,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>En cas de doute sur un délai, <strong>agissez d&apos;abord, vérifiez ensuite</strong>. Envoyer une lettre recommandée ne coûte que quelques euros, mais manquer un délai peut vous coûter des dizaines de milliers d&apos;euros de travaux non pris en charge.</p>
 
-      <p class="font-bold text-lg text-slate-900 mt-6">📞 Diagnostic expert sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
+      <p class="font-bold text-lg text-slate-900 mt-6">Diagnostic expert sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
     `
   },
   'humidite-mur-chambre-causes-solutions': {
@@ -6073,7 +6073,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>Un diagnostic professionnel avec <strong>humidimètre à sonde, caméra thermique et test à la bombe à carbure</strong> identifie la cause exacte en 1h30. Chez IPB, ce diagnostic coûte 249€ TTC (déductible des travaux).</p>
 
-      <h2>Conclusion : un mur humide dans la chambre, ça se règle</h2>
+      <h2>Mur humide en chambre : par où commencer</h2>
 
       <p>Quelle que soit la cause — condensation, remontée capillaire ou infiltration — <strong>il existe une solution définitive</strong>. Le plus important est de <strong>traiter la bonne cause</strong>. Un diagnostic précis vous évitera de dépenser de l'argent dans des traitements inefficaces et protégera la santé de votre famille.</p>
 
@@ -6157,11 +6157,11 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Ces symptômes peuvent être liés aux <strong>spores de moisissures</strong> (Aspergillus, Stachybotrys) présentes dans l&apos;air de la chambre. Le médecin pourra prescrire un bilan allergologique si nécessaire.</p>
 
       <div class="my-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
-        <p class="font-bold text-red-900 mb-2">🚨 Ne temporisez pas</p>
+        <p class="font-bold text-red-900 mb-2">Ne temporisez pas</p>
         <p class="text-red-800">Ces mesures d&apos;urgence ne remplacent pas un traitement définitif. Elles <strong>limitent les risques</strong> en attendant l&apos;intervention d&apos;un professionnel. Plus vous attendez, plus les moisissures se développent en profondeur dans le mur, rendant le traitement futur plus coûteux. Faites réaliser un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic expert (249€ TTC)</a> dans les meilleurs délais.</p>
       </div>
 
-      <p class="font-bold text-lg text-slate-900 mt-6">📞 Diagnostic expert sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
+      <p class="font-bold text-lg text-slate-900 mt-6">Diagnostic expert sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
     `
   }
 };
