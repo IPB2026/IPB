@@ -4,6 +4,19 @@ import React, { useState, useEffect } from 'react';
 import { submitDiagnosticCallback, submitDiagnosticLead } from '@/app/actions/diagnostic';
 import { submitQuickCallback } from '@/app/actions/quickCallback';
 import { useRecaptcha } from '@/hooks/useRecaptcha';
+import { trackEvent } from '@/lib/analytics';
+
+function trackPhoneClick() {
+  trackEvent('phone_call_click', { send_to: 'AW-17902440600' });
+}
+
+function trackFormSubmit() {
+  trackEvent('diagnostic_form_submit', { send_to: 'AW-17902440600' });
+}
+
+function trackCallbackRequest() {
+  trackEvent('callback_request', { send_to: 'AW-17902440600' });
+}
 
 // Types
 type PathType = 'fissure' | 'humidite' | null;
@@ -443,6 +456,7 @@ export default function DiagnosticPage() {
     if (!contactInfo.address.trim()) { alert('Veuillez saisir l\'adresse du bien'); return; }
 
     setIsAnalyzing(true);
+    trackFormSubmit();
     const score = calculateRisk(path!, answers);
     setRiskScore(score);
 
@@ -489,6 +503,7 @@ export default function DiagnosticPage() {
       return;
     }
     setIsSubmitting(true);
+    trackCallbackRequest();
     const recaptchaToken = await getToken('diagnostic_callback');
     try {
       const formData = new FormData();
@@ -529,6 +544,7 @@ export default function DiagnosticPage() {
       {/* Barre d'appel mobile fixe — visible uniquement sur mobile */}
       <a
         href="tel:0582953375"
+        onClick={trackPhoneClick}
         className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-slate-900 text-white flex items-center justify-center gap-2.5 py-3 safe-area-bottom"
         style={{ paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}
       >
@@ -709,6 +725,7 @@ export default function DiagnosticPage() {
                   </div>
                   <a
                     href="tel:0582953375"
+                    onClick={trackPhoneClick}
                     className="bg-green-500 hover:bg-green-600 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors flex-shrink-0"
                   >
                     Appeler
@@ -1206,7 +1223,7 @@ export default function DiagnosticPage() {
                       </div>
 
                       <div className="text-center pt-2 border-t border-slate-100">
-                        <a href="tel:0582953375" className="text-slate-500 text-xs hover:text-slate-700 transition-colors font-medium">
+                        <a href="tel:0582953375" onClick={trackPhoneClick} className="text-slate-500 text-xs hover:text-slate-700 transition-colors font-medium">
                           📞 Appel direct : 05 82 95 33 75
                         </a>
                       </div>
@@ -1341,6 +1358,7 @@ export default function DiagnosticPage() {
                 </div>
                 <a
                   href="tel:0582953375"
+                  onClick={trackPhoneClick}
                   className="inline-flex items-center gap-2 mt-5 text-slate-600 hover:text-slate-800 text-sm font-medium transition-colors"
                 >
                   📞 05 82 95 33 75
@@ -1358,7 +1376,7 @@ export default function DiagnosticPage() {
               ⏱️ Encore {totalQuestions - step + 1} question{totalQuestions - step > 0 ? 's' : ''} • Réponses confidentielles
             </p>
             <div className="text-center">
-              <a href="tel:0582953375" className="inline-flex items-center gap-1.5 text-slate-400 hover:text-orange-600 text-xs transition-colors">
+              <a href="tel:0582953375" onClick={trackPhoneClick} className="inline-flex items-center gap-1.5 text-slate-400 hover:text-orange-600 text-xs transition-colors">
                 📞 Préférez appeler ? <span className="font-semibold text-slate-500 hover:text-orange-600">05 82 95 33 75</span>
               </a>
             </div>
