@@ -1,24 +1,32 @@
-import { Search, FileText, Hammer, ShieldCheck } from 'lucide-react';
+import { Phone, Search, FileText, Hammer, ShieldCheck } from 'lucide-react';
 
 const steps = [
   {
     number: '01',
-    icon: Search,
-    title: 'Diagnostic instrumenté',
-    description: 'Visite sur site avec instrumentation technique (fissuromètre, hygromètre, caméra thermique). Mesures objectives pour identifier l\'origine exacte du problème.',
-    detail: 'Rapport de 10 à 15 pages',
+    icon: Phone,
+    title: 'Échange de découverte',
+    description: 'Premier contact par téléphone ou en ligne. On écoute, on analyse votre contexte (historique du bâtiment, symptômes, urgence) et on programme l\'intervention sur site.',
+    detail: 'Gratuit & sans engagement',
     color: 'orange',
   },
   {
     number: '02',
-    icon: FileText,
-    title: 'Plan de remédiation',
-    description: 'Sur la base du diagnostic, nous établissons un plan de remédiation détaillé : technique préconisée, chiffrage, planning d\'intervention.',
-    detail: 'Devis détaillé sous 7 jours',
+    icon: Search,
+    title: 'Diagnostic sur site',
+    description: 'Visite technique avec instrumentation de terrain : fissuromètre, niveau laser, hygromètre, caméra thermique. Relevés, mesures et analyse de l\'existant.',
+    detail: 'Rapport de 10 à 15 pages',
     color: 'blue',
   },
   {
     number: '03',
+    icon: FileText,
+    title: 'Plan de remédiation',
+    description: 'Sur la base du diagnostic, nous établissons un plan de remédiation détaillé : technique préconisée, chiffrage et planning d\'intervention.',
+    detail: 'Devis détaillé sous 7 jours',
+    color: 'cyan',
+  },
+  {
+    number: '04',
     icon: Hammer,
     title: 'Réalisation des travaux',
     description: 'Nos équipes interviennent directement : agrafage structurel, injection résine, cuvelage, ventilation. Un seul interlocuteur du début à la fin.',
@@ -26,7 +34,7 @@ const steps = [
     color: 'emerald',
   },
   {
-    number: '04',
+    number: '05',
     icon: ShieldCheck,
     title: 'Suivi post-intervention',
     description: 'Contrôle qualité après travaux, vérification des mesures, accompagnement pour les démarches assurance ou copropriété. On ne vous lâche pas.',
@@ -49,6 +57,13 @@ const colorMap = {
     border: 'border-blue-200',
     line: 'bg-blue-400',
     badge: 'bg-blue-100 text-blue-700',
+  },
+  cyan: {
+    bg: 'bg-cyan-50',
+    text: 'text-cyan-600',
+    border: 'border-cyan-200',
+    line: 'bg-cyan-400',
+    badge: 'bg-cyan-100 text-cyan-700',
   },
   emerald: {
     bg: 'bg-emerald-50',
@@ -83,9 +98,9 @@ export function Roadmap() {
         <div className="hidden md:block">
           <div className="relative">
             {/* Ligne de connexion */}
-            <div className="absolute top-16 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-orange-300 via-blue-300 via-emerald-300 to-violet-300 z-0" />
+            <div className="absolute top-16 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-orange-300 via-blue-300 via-cyan-300 via-emerald-300 to-violet-300 z-0" />
 
-            <div className="grid grid-cols-4 gap-6 relative z-10">
+            <div className="grid grid-cols-5 gap-5 relative z-10">
               {steps.map((step) => {
                 const colors = colorMap[step.color as keyof typeof colorMap];
                 const Icon = step.icon;
