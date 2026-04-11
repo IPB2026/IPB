@@ -11,6 +11,7 @@ import { ContactSection } from '@/components/home/ContactSection';
 import { Footer } from '@/components/home/Footer';
 import { InternalLinks } from '@/components/seo/InternalLinks';
 import { QuickCallbackForm } from '@/components/home/QuickCallbackForm';
+import { Roadmap } from '@/components/home/Roadmap';
 import Link from 'next/link';
 import Script from 'next/script';
 import type { Metadata } from 'next';
@@ -151,6 +152,7 @@ export default function HomePage() {
       <QuickCallbackForm />
       <DepartementsNotice />
       <TrustSignals />
+      <Roadmap />
       <ServicesStructure />
       <ServicesHumidity />
       <Testimonials />
