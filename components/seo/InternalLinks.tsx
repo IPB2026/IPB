@@ -40,7 +40,7 @@ const linkSets: Record<NonNullable<InternalLinksProps['variant']>, LinkItem[]> =
   diagnostic: [
     { href: '/expertise/fissures', label: 'Expertise fissures', description: 'Agrafage et stabilisation.' },
     { href: '/expertise/humidite', label: 'Expertise humidité', description: 'Injection résine & cuvelage.' },
-    { href: '/blog', label: 'Conseils experts', description: 'Comprendre avant d’agir.' },
+    { href: '/blog', label: 'Conseils experts', description: 'Comprendre avant d\u2019agir.' },
     { href: '/contact', label: 'Contact direct', description: 'Appelez-nous au 05 82 95 33 75.' },
   ],
   contact: [
@@ -62,26 +62,25 @@ export function InternalLinks({ variant = 'default', title, links }: InternalLin
   const heading = title || 'Liens utiles';
 
   return (
-    <section className="bg-white border-2 border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
-      <h3 className="text-lg font-extrabold text-slate-900 mb-4 flex items-center gap-2">
-        <span className="text-orange-600">🔗</span>
-        {heading}
-      </h3>
-      <div className="space-y-3">
-        {items.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className="block bg-slate-50 border border-slate-200 rounded-lg p-3 hover:bg-orange-50 hover:border-orange-300 transition-all group"
-          >
-            <h4 className="font-bold text-slate-900 group-hover:text-orange-600 transition text-sm mb-1">
-              {item.label}
-            </h4>
-            {item.description && (
-              <p className="text-xs text-slate-600 line-clamp-2">{item.description}</p>
-            )}
-          </Link>
-        ))}
+    <section className="bg-[#fafafa] py-12">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-6">{heading}</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {items.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="group p-4 rounded-xl hover:bg-white transition-colors"
+            >
+              <p className="font-medium text-slate-900 text-[15px] group-hover:text-orange-600 transition-colors mb-0.5">
+                {item.label}
+              </p>
+              {item.description && (
+                <p className="text-[13px] text-slate-400">{item.description}</p>
+              )}
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );

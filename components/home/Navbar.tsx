@@ -2,128 +2,72 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Search, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-slate-200 transition-all">
+    <nav className="bg-white/80 backdrop-blur-xl sticky top-0 z-50 border-b border-black/[0.04]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* LOGO */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="bg-gradient-to-br from-orange-600 to-orange-700 text-white p-2.5 rounded-xl font-black text-2xl shadow-lg shadow-orange-900/20 tracking-tighter group-hover:scale-105 transition-transform duration-300">
-              IPB
-            </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-xl text-slate-900 leading-none tracking-tight group-hover:text-orange-600 transition-colors">Institut Pathologie</span>
-              <span className="font-bold text-xs text-blue-700 leading-none uppercase tracking-widest mt-1">du Bâtiment</span>
-            </div>
+        <div className="flex justify-between items-center h-16">
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <span className="text-[22px] font-black tracking-tight text-slate-900">IPB</span>
+            <span className="hidden sm:block text-[11px] text-slate-400 font-medium tracking-widest uppercase border-l border-slate-200 pl-2.5">Institut de Pathologie<br />du Bâtiment</span>
           </Link>
           
-          {/* MENU DESKTOP */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/expertise/fissures" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide">Fissures</Link>
-            <Link href="/expertise/humidite" className="text-slate-600 hover:text-blue-600 font-semibold transition text-sm uppercase tracking-wide">Humidité</Link>
-            <Link href="/zones-intervention" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide">Zones</Link>
-            <Link href="/blog" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide">Blog</Link>
-            <Link href="/avis-clients" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide flex items-center gap-1">
-              <span className="text-orange-500 text-xs">★</span> Avis
+          <div className="hidden md:flex items-center gap-8">
+            <Link href="/expertise/fissures" className="text-[13px] text-slate-500 hover:text-slate-900 transition-colors font-medium">Fissures</Link>
+            <Link href="/expertise/humidite" className="text-[13px] text-slate-500 hover:text-slate-900 transition-colors font-medium">Humidité</Link>
+            <Link href="/zones-intervention" className="text-[13px] text-slate-500 hover:text-slate-900 transition-colors font-medium">Zones</Link>
+            <Link href="/avis-clients" className="text-[13px] text-slate-500 hover:text-slate-900 transition-colors font-medium">Avis</Link>
+            <Link href="/blog" className="text-[13px] text-slate-500 hover:text-slate-900 transition-colors font-medium">Blog</Link>
+            <Link href="/contact" className="text-[13px] text-slate-500 hover:text-slate-900 transition-colors font-medium">Contact</Link>
+            <Link
+              href="/diagnostic"
+              className="bg-slate-900 text-white px-5 py-2 rounded-full text-[13px] font-semibold hover:bg-slate-800 transition-colors"
+            >
+              Diagnostic gratuit
             </Link>
-            <Link href="/contact" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide">Contact</Link>
-            
-            <div className="flex items-center gap-3 ml-4 pl-4 border-l border-slate-200">
-              <Link
-                href="/diagnostic"
-                aria-label="Accéder au diagnostic gratuit en ligne"
-                className="bg-orange-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-700 transition-all shadow-lg shadow-orange-600/30 text-sm flex items-center gap-2 transform hover:-translate-y-0.5 duration-200 ring-2 ring-orange-600 ring-offset-2"
-              >
-                <Search size={18} aria-hidden="true" />
-                Mon Diagnostic Gratuit
-              </Link>
-            </div>
           </div>
 
-          {/* MOBILE BURGER */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-              aria-expanded={isMenuOpen}
-              aria-controls="mobile-menu"
-              className="text-slate-700 p-2 hover:bg-slate-100 rounded-lg transition-colors"
-            >
-              {isMenuOpen ? <X size={28} aria-hidden="true" /> : <Menu size={28} aria-hidden="true" />}
-            </button>
-          </div>
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={isMenuOpen}
+            className="md:hidden p-2 text-slate-600"
+          >
+            {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </div>
       </div>
 
-      {/* MOBILE MENU DROPDOWN */}
       {isMenuOpen && (
-        <div
-          id="mobile-menu"
-          role="menu"
-          aria-label="Menu de navigation mobile"
-          className="md:hidden bg-white border-t border-slate-100 absolute w-full z-50 shadow-2xl"
-        >
-          <div className="px-4 py-6 space-y-4">
-            <Link
-              href="/expertise/fissures"
-              onClick={() => setIsMenuOpen(false)}
-              role="menuitem"
-              className="block text-slate-800 font-bold text-lg border-l-4 border-orange-500 pl-4 py-2 bg-slate-50"
-            >
-              Expertise Fissures
-            </Link>
-            <Link
-              href="/expertise/humidite"
-              onClick={() => setIsMenuOpen(false)}
-              role="menuitem"
-              className="block text-slate-800 font-bold text-lg border-l-4 border-blue-500 pl-4 py-2 bg-slate-50"
-            >
-              Expertise Humidité
-            </Link>
-            <Link
-              href="/zones-intervention"
-              onClick={() => setIsMenuOpen(false)}
-              role="menuitem"
-              className="block text-slate-600 font-medium pl-5 py-2"
-            >
-              Zones d&apos;intervention
-            </Link>
-            <Link
-              href="/blog"
-              onClick={() => setIsMenuOpen(false)}
-              role="menuitem"
-              className="block text-slate-600 font-medium pl-5 py-2"
-            >
-              Blog & Conseils
-            </Link>
-            <Link
-              href="/avis-clients"
-              onClick={() => setIsMenuOpen(false)}
-              role="menuitem"
-              className="block text-slate-600 font-medium pl-5 py-2"
-            >
-              Avis Clients (4.9/5)
-            </Link>
-            <Link
-              href="/contact"
-              onClick={() => setIsMenuOpen(false)}
-              role="menuitem"
-              className="block text-slate-600 font-medium pl-5 py-2"
-            >
-              Contact
-            </Link>
+        <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-black/[0.04] absolute w-full z-50">
+          <div className="px-6 py-8 space-y-1">
+            {[
+              { href: '/expertise/fissures', label: 'Expertise Fissures' },
+              { href: '/expertise/humidite', label: 'Expertise Humidité' },
+              { href: '/zones-intervention', label: 'Zones d\'intervention' },
+              { href: '/avis-clients', label: 'Avis Clients' },
+              { href: '/blog', label: 'Blog' },
+              { href: '/contact', label: 'Contact' },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsMenuOpen(false)}
+                className="block py-3 text-slate-600 font-medium text-[15px] border-b border-slate-100 last:border-0"
+              >
+                {link.label}
+              </Link>
+            ))}
             <Link
               href="/diagnostic"
               onClick={() => setIsMenuOpen(false)}
-              role="menuitem"
-              className="block w-full bg-orange-600 text-white text-center py-4 rounded-xl font-bold shadow-lg mt-4"
+              className="block w-full bg-slate-900 text-white text-center py-3.5 rounded-full font-semibold mt-4 text-[15px]"
             >
-              Lancer le Diagnostic
+              Diagnostic gratuit
             </Link>
           </div>
         </div>
@@ -131,4 +75,3 @@ export function Navbar() {
     </nav>
   );
 }
-
