@@ -1,6 +1,18 @@
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+export function createEmailTransporter() {
+  if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    throw new Error('Variables SMTP_USER et SMTP_PASS doivent être configurées');
+  }
+
+  return nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+  });
+}
 
 interface EmailAttachment {
   filename: string;
@@ -17,32 +29,24 @@ export async function sendEmail(options: {
   replyTo?: string;
   attachments?: EmailAttachment[];
 }) {
-  if (!process.env.RESEND_API_KEY) {
-    console.error('RESEND_API_KEY non configuré');
-    return { success: false, error: 'RESEND_API_KEY non configuré' };
+  if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    console.error('Email non configuré: SMTP_USER ou SMTP_PASS manquant');
+    return { success: false, error: 'SMTP_USER ou SMTP_PASS non configuré' };
   }
 
   try {
-    const resendAttachments = options.attachments?.map((a) => ({
-      filename: a.filename,
-      content: Buffer.from(a.content, 'base64'),
-    }));
+    const transporter = createEmailTransporter();
 
-    const { data, error } = await resend.emails.send({
-      from: options.from || process.env.EMAIL_FROM || 'IPB <noreply@ipb-expertise.fr>',
+    const info = await transporter.sendMail({
+      from: options.from || process.env.EMAIL_FROM || process.env.SMTP_USER,
       to: options.to,
       subject: options.subject,
       html: options.html,
       replyTo: options.replyTo,
-      attachments: resendAttachments,
+      attachments: options.attachments,
     });
 
-    if (error) {
-      console.error('Erreur Resend:', error);
-      return { success: false, error: error.message };
-    }
-
-    return { success: true, messageId: data?.id };
+    return { success: true, messageId: info.messageId };
   } catch (error) {
     console.error('Erreur envoi email:', error);
     return { success: false, error: String(error) };
