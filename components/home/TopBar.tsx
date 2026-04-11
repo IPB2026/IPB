@@ -1,15 +1,23 @@
-import { Phone } from 'lucide-react';
+import { ShieldCheck, MapPin } from 'lucide-react';
 
 export function TopBar() {
   return (
-    <div className="bg-[#0a0a0a] text-white/70 py-2 px-4 text-[11px] tracking-wide">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <span className="hidden sm:inline">Cabinet spécialisé en pathologie du bâtiment — Occitanie</span>
-        <a href="tel:0582953375" className="flex items-center gap-1.5 text-white/90 hover:text-white transition-colors ml-auto sm:ml-0">
-          <Phone size={11} />
-          05 82 95 33 75
-        </a>
+    <div className="bg-slate-900 text-white py-2 md:py-2.5 px-4 text-xs font-medium border-b border-white/10">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+        <div className="flex flex-wrap items-center gap-3 md:gap-6 justify-center md:justify-start">
+          <span className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors cursor-default">
+            <ShieldCheck size={14} className="text-orange-500 shrink-0" /> <span className="whitespace-nowrap">Garantie Décennale</span>
+          </span>
+          <span className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors cursor-default">
+            <MapPin size={14} className="text-orange-500 shrink-0" /> <span className="whitespace-nowrap">Intervention 31 · 82 · 32 · 81</span>
+          </span>
+        </div>
+        <div className="flex items-center gap-2 font-bold text-orange-400 text-center">
+          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse shrink-0"></div>
+          <span className="whitespace-nowrap">Expert disponible au <a href="tel:0582953375" className="hover:text-orange-300 underline">05 82 95 33 75</a></span>
+        </div>
       </div>
     </div>
   );
 }
+

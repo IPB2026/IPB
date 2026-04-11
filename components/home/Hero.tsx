@@ -1,48 +1,169 @@
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowRight, Phone, CheckCircle, Shield, Star, Activity, Droplets } from 'lucide-react';
 
 export function Hero() {
   return (
-    <section className="relative bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 md:pt-32 md:pb-36 lg:pt-40 lg:pb-44">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-[13px] font-semibold tracking-[0.2em] uppercase text-slate-400 mb-6">
-            Expertise bâtiment — Occitanie
-          </p>
+    <div className="relative bg-slate-900 text-white overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
+      <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+      
+      {/* Cercles décoratifs - Orange (fissures) et Bleu (humidité) */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-500/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-28">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="max-w-2xl">
+            {/* Double badge - Fissures ET Humidité */}
+            <div className="flex flex-wrap gap-2 mb-6">
+              <span className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/40 text-orange-300 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+                <Activity size={12} />
+                Expert Fissures
+              </span>
+              <span className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-500/40 text-blue-300 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+                <Droplets size={12} />
+                Expert Humidité
+              </span>
+            </div>
+            
+            {/* H1 — match exact "expert fissures toulouse" */}
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-300">Expert Fissures</span>
+              {' '}à Toulouse
+              <span className="block mt-2 text-3xl md:text-4xl lg:text-5xl">
+                &{' '}<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Traitement Humidité</span>{' '}en Occitanie
+              </span>
+              <span className="block mt-3 text-white text-xl md:text-2xl lg:text-3xl font-medium tracking-normal">
+                Diagnostic. Analyse. <span className="text-emerald-400">Solution durable.</span>
+              </span>
+            </h1>
+            
+            <p className="text-lg md:text-xl text-slate-200 mb-6 max-w-2xl leading-relaxed">
+              Cabinet spécialisé en <strong className="text-orange-300">pathologie du bâtiment</strong>.
+              Nous identifions l'origine exacte de vos <strong className="text-orange-300">fissures</strong> et 
+              de vos <strong className="text-blue-300">problèmes d'humidité</strong>, puis nous les traitons à la source.
+              850+ diagnostics réalisés en Occitanie.
+            </p>
+            
+            {/* Double expertise - Cards côte à côte */}
+            <div className="grid grid-cols-2 gap-3 mb-8">
+              <div className="bg-orange-500/10 border border-orange-500/30 rounded-xl p-3">
+                <div className="flex items-center gap-2 mb-1">
+                  <Activity size={16} className="text-orange-400" />
+                  <span className="text-orange-300 text-xs font-bold uppercase">Structure</span>
+                </div>
+                <p className="text-white text-sm font-bold">Agrafage structurel</p>
+                <p className="text-slate-300 text-xs">Garanti 10 ans</p>
+              </div>
+              <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-3">
+                <div className="flex items-center gap-2 mb-1">
+                  <Droplets size={16} className="text-blue-400" />
+                  <span className="text-blue-300 text-xs font-bold uppercase">Humidité</span>
+                </div>
+                <p className="text-white text-sm font-bold">Injection résine</p>
+                <p className="text-slate-300 text-xs">Garanti 30 ans</p>
+              </div>
+            </div>
+            
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-4">
+              <Link 
+                href="/diagnostic" 
+                className="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl shadow-orange-900/30 transition-all flex items-center justify-center gap-3 hover:-translate-y-1"
+              >
+                Diagnostic gratuit
+                <ArrowRight size={20} />
+              </Link>
+              <a 
+                href="tel:0582953375" 
+                className="bg-white/5 backdrop-blur border border-white/10 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-all flex items-center justify-center gap-3"
+              >
+                <Phone size={20} className="text-orange-400" />
+                05 82 95 33 75
+              </a>
+            </div>
 
-          <h1 className="text-[clamp(2.25rem,5vw,4.5rem)] font-bold tracking-tight leading-[1.08] text-slate-900 mb-6">
-            Diagnostic et traitement{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-500">des fissures</span>{' '}
-            et de{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-500">l&apos;humidité</span>
-          </h1>
-
-          <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
-            Nous identifions l&apos;origine exacte des pathologies de votre bâtiment, 
-            puis nous les traitons à la source. Méthodologie instrumentée, 
-            rapport technique opposable, garantie décennale.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/diagnostic"
-              className="group bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-full font-semibold text-base transition-all flex items-center gap-3"
-            >
-              Lancer le diagnostic gratuit
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <a
-              href="tel:0582953375"
-              className="text-slate-500 hover:text-slate-900 font-medium text-base transition-colors px-4 py-4"
-            >
-              ou appelez le 05 82 95 33 75
-            </a>
+            {/* Bandeau appel direct - très visible */}
+            <div className="bg-green-500/20 border border-green-400/40 rounded-xl p-3 mb-8 flex items-center gap-3">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse flex-shrink-0" />
+              <p className="text-green-200 text-sm flex-1">
+                <strong className="text-green-100">Expert disponible</strong> — Diagnostic sur site sous 48h
+              </p>
+              <a href="tel:0582953375" className="bg-green-500 hover:bg-green-600 text-white text-sm font-bold px-4 py-1.5 rounded-lg transition-colors flex-shrink-0">
+                Appeler
+              </a>
+            </div>
+            
+            {/* Trust badges */}
+            <div className="flex flex-wrap items-center gap-4 text-sm">
+              <span className="flex items-center gap-2">
+                <CheckCircle size={16} className="text-emerald-400" /> 
+                <span className="text-slate-200">Réponse <strong className="text-white">24h</strong></span>
+              </span>
+              <span className="flex items-center gap-2">
+                <Shield size={16} className="text-blue-400" /> 
+                <span className="text-slate-200">Garantie <strong className="text-white">décennale</strong></span>
+              </span>
+              <span className="flex items-center gap-2">
+                <Star size={16} className="text-yellow-400 fill-yellow-400" /> 
+                <span className="text-slate-200"><strong className="text-white">4.9/5</strong> Google</span>
+              </span>
+            </div>
+          </div>
+          
+          {/* Images côte à côte - Fissure ET Humidité */}
+          <div className="hidden lg:grid grid-cols-2 gap-4">
+            {/* Image Fissure */}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-orange-500/30">
+              <Image
+                src="/images/fissure-facade-verticale.webp"
+                alt="Fissure structurelle façade - Expert fissures Toulouse Montauban Auch (31-82-32)"
+                width={300}
+                height={400}
+                sizes="(max-width: 1024px) 0px, 300px"
+                className="w-full h-64 object-cover"
+                loading="lazy"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent p-4">
+                <div className="flex items-center gap-2">
+                  <Activity className="text-orange-400" size={18} />
+                  <span className="text-white font-bold text-sm">Fissures</span>
+                </div>
+                <p className="text-slate-200 text-xs">Agrafage structurel</p>
+              </div>
+            </div>
+            
+            {/* Image Humidité */}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-blue-500/30 mt-8">
+              <Image
+                src="/images/salpetre-avant-apres.webp"
+                alt="Traitement humidité salpêtre - Expert humidité Occitanie (31-82-32) remontées capillaires"
+                width={300}
+                height={400}
+                sizes="(max-width: 1024px) 0px, 300px"
+                className="w-full h-64 object-cover"
+                loading="lazy"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent p-4">
+                <div className="flex items-center gap-2">
+                  <Droplets className="text-blue-400" size={18} />
+                  <span className="text-white font-bold text-sm">Humidité</span>
+                </div>
+                <p className="text-slate-200 text-xs">Injection résine</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Séparateur subtil */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
-    </section>
+      
+      {/* Vague de transition */}
+      <div className="absolute bottom-0 left-0 right-0">
+        <svg viewBox="0 0 1440 80" fill="none" className="w-full h-auto">
+          <path d="M0 80L60 70C120 60 240 40 360 35C480 30 600 40 720 45C840 50 960 50 1080 45C1200 40 1320 30 1380 25L1440 20V80H0Z" fill="#F8FAFC"/>
+        </svg>
+      </div>
+    </div>
   );
 }
