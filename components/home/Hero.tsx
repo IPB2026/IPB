@@ -36,15 +36,15 @@ export function Hero() {
                 &{' '}<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Traitement Humidité</span>{' '}en Occitanie
               </span>
               <span className="block mt-3 text-white text-xl md:text-2xl lg:text-3xl font-medium tracking-normal">
-                Diagnostic. Analyse. <span className="text-emerald-400">Solution durable.</span>
+                Du diagnostic aux travaux. <span className="text-emerald-400">Un seul interlocuteur.</span>
               </span>
             </h1>
             
             <p className="text-lg md:text-xl text-slate-200 mb-6 max-w-2xl leading-relaxed">
-              Cabinet spécialisé en <strong className="text-orange-300">pathologie du bâtiment</strong>.
-              Nous identifions l'origine exacte de vos <strong className="text-orange-300">fissures</strong> et 
-              de vos <strong className="text-blue-300">problèmes d'humidité</strong>, puis nous les traitons à la source.
-              850+ diagnostics réalisés en Occitanie.
+              Cabinet indépendant spécialisé en <strong className="text-orange-300">pathologie du bâtiment</strong>.
+              Nous vous accompagnons de A à Z : diagnostic instrumenté, plan de remédiation, 
+              <strong className="text-orange-300">réalisation des travaux</strong> et suivi post-intervention.
+              850+ clients accompagnés en Occitanie.
             </p>
             
             {/* Double expertise - Cards côte à côte */}
@@ -89,7 +89,7 @@ export function Hero() {
             <div className="bg-green-500/20 border border-green-400/40 rounded-xl p-3 mb-8 flex items-center gap-3">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse flex-shrink-0" />
               <p className="text-green-200 text-sm flex-1">
-                <strong className="text-green-100">Expert disponible</strong> — Diagnostic sur site sous 48h
+                <strong className="text-green-100">Expert disponible</strong> — Intervention sur site sous 48h
               </p>
               <a href="tel:0582953375" className="bg-green-500 hover:bg-green-600 text-white text-sm font-bold px-4 py-1.5 rounded-lg transition-colors flex-shrink-0">
                 Appeler

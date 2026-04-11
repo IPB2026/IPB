@@ -14,8 +14,8 @@ export function ServicesStructure() {
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-6 md:mb-8 leading-tight">Comprendre vos fissures pour les traiter définitivement</h2>
             <p className="text-slate-600 text-base md:text-lg mb-6 md:mb-8 leading-relaxed">
-              Une fissure n'est jamais anodine. C'est le symptôme visible d'un mouvement structurel — tassement différentiel, retrait-gonflement des argiles, défaut de fondation. 
-              <strong className="text-slate-900"> Reboucher sans diagnostiquer, c'est masquer le problème.</strong> Notre approche : identifier la cause, puis appliquer la technique adaptée — agrafage, harpage ou reprise en sous-oeuvre.
+              Une fissure n'est jamais anodine. C'est le symptôme visible d'un mouvement structurel — tassement différentiel, retrait-gonflement des argiles, défaut de fondation.
+              <strong className="text-slate-900"> Reboucher sans diagnostiquer, c'est masquer le problème.</strong> Notre approche : diagnostic instrumenté, plan de remédiation, puis réalisation des travaux adaptés — agrafage, harpage ou reprise en sous-œuvre — avec suivi post-intervention.
             </p>
             
             <div className="space-y-4 md:space-y-6">
@@ -74,7 +74,7 @@ export function ServicesStructure() {
                 <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></div>
                 <span className="text-xs font-bold text-slate-400 uppercase tracking-wide">Solution IPB</span>
               </div>
-              <p className="font-bold text-sm text-slate-900">Rapport technique <span className="text-orange-600">détaillé remis sous 7 jours</span></p>
+              <p className="font-bold text-sm text-slate-900">De l'expertise aux travaux : <span className="text-orange-600">un seul interlocuteur</span></p>
             </div>
             
             {/* Galerie mini-images */}
@@ -100,7 +100,7 @@ export function ServicesStructure() {
               <div className="flex-1 rounded-xl bg-orange-600 flex items-center justify-center h-24">
                 <div className="text-center text-white px-2">
                   <p className="font-bold text-lg">850+</p>
-                  <p className="text-xs">diagnostics réalisés</p>
+                  <p className="text-xs">clients accompagnés</p>
                 </div>
               </div>
             </div>

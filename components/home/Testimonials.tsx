@@ -44,7 +44,7 @@ export function Testimonials() {
               Ce que disent nos clients
             </h2>
             <p className="text-slate-500 mt-2">
-              850+ diagnostics réalisés en Occitanie. Noté 4.9/5 sur Google.
+              850+ clients accompagnés en Occitanie. Noté 4.9/5 sur Google.
             </p>
           </div>
           

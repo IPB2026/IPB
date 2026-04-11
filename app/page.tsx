@@ -32,7 +32,7 @@ const organizationSchema = {
     "caption": "IPB - Institut de Pathologie du Bâtiment"
   },
   "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
-  "description": "Expert en diagnostic et traitement des fissures et de l'humidité en Occitanie (31, 82, 32, 81). Agrafage structurel, injection résine, micropieux. Garantie décennale.",
+  "description": "Cabinet indépendant spécialisé en pathologie du bâtiment en Occitanie (31, 82, 32, 81). Diagnostic, plan de remédiation, travaux (agrafage, injection résine) et suivi post-intervention. Garantie décennale.",
   "foundingDate": "2019",
   "numberOfEmployees": { "@type": "QuantitativeValue", "value": "8" },
   "address": {
@@ -65,7 +65,7 @@ const organizationSchema = {
 
 export const metadata: Metadata = {
   title: "Expert Fissures & Humidité Toulouse (31) | IPB",
-  description: "Cabinet spécialisé en pathologie du bâtiment. Diagnostic instrumenté fissures et humidité. Agrafage garanti 10 ans. 850+ diagnostics en Occitanie.",
+  description: "Cabinet indépendant spécialisé en pathologie du bâtiment. Du diagnostic instrumenté aux travaux (agrafage, injection résine) avec suivi post-intervention. 850+ clients accompagnés en Occitanie.",
   keywords: [
     // Fissures - Mots clés principaux
     'expert fissures toulouse',
@@ -101,7 +101,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "IPB Expert Fissures & Humidité | Toulouse, Montauban, Auch (31-82-32)",
-    description: "Spécialiste traitement fissures (agrafage, harpage) et humidité (injection, cuvelage) à Toulouse. 850+ diagnostics réalisés. Garantie décennale.",
+    description: "Expert fissures et humidité à Toulouse. Du diagnostic aux travaux (agrafage, injection résine) avec suivi. 850+ clients accompagnés. Garantie décennale.",
     url: "https://www.ipb-expertise.fr",
     siteName: "IPB - Institut de Pathologie du Bâtiment",
     images: [
@@ -118,7 +118,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Expert Fissures & Humidité Toulouse | IPB",
-    description: "Diagnostic gratuit sous 48h. Agrafage fissures, traitement humidité. Garantie décennale.",
+    description: "Du diagnostic aux travaux, un seul interlocuteur. Agrafage fissures, traitement humidité. Garantie décennale.",
   },
   alternates: {
     canonical: "https://www.ipb-expertise.fr",
@@ -162,10 +162,10 @@ export default function HomePage() {
           <h2 className="text-2xl font-extrabold text-slate-900 mb-6">Cabinet spécialisé en pathologie du bâtiment</h2>
           <div className="prose prose-slate max-w-none text-slate-600">
             <p>
-              IPB intervient exclusivement sur deux domaines : le <Link href="/expertise/fissures" className="text-orange-600 font-semibold hover:text-orange-700">diagnostic et le traitement des fissures structurelles</Link>, et le <Link href="/expertise/humidite" className="text-orange-600 font-semibold hover:text-orange-700">traitement de l&apos;humidité</Link> (remontées capillaires, infiltrations, mérule). Cette spécialisation nous permet d&apos;intervenir avec une méthodologie rigoureuse — diagnostic instrumenté, rapport technique détaillé, préconisation de la solution la plus adaptée — à <Link href="/expert-fissures/toulouse" className="text-orange-600 font-semibold hover:text-orange-700">Toulouse</Link>, <Link href="/expert-fissures/montauban" className="text-orange-600 font-semibold hover:text-orange-700">Montauban</Link>, <Link href="/expert-fissures/auch" className="text-orange-600 font-semibold hover:text-orange-700">Auch</Link>, <Link href="/expert-fissures/albi" className="text-orange-600 font-semibold hover:text-orange-700">Albi</Link> et dans nos <Link href="/zones-intervention" className="text-orange-600 font-semibold hover:text-orange-700">56 communes d&apos;intervention</Link>.
+              IPB est un cabinet indépendant qui accompagne ses clients sur l&apos;ensemble du cycle : <Link href="/expertise/fissures" className="text-orange-600 font-semibold hover:text-orange-700">diagnostic et traitement des fissures structurelles</Link>, <Link href="/expertise/humidite" className="text-orange-600 font-semibold hover:text-orange-700">traitement de l&apos;humidité</Link> (remontées capillaires, infiltrations, mérule). Du diagnostic instrumenté au plan de remédiation, de la réalisation des travaux au suivi post-intervention — un seul interlocuteur à <Link href="/expert-fissures/toulouse" className="text-orange-600 font-semibold hover:text-orange-700">Toulouse</Link>, <Link href="/expert-fissures/montauban" className="text-orange-600 font-semibold hover:text-orange-700">Montauban</Link>, <Link href="/expert-fissures/auch" className="text-orange-600 font-semibold hover:text-orange-700">Auch</Link>, <Link href="/expert-fissures/albi" className="text-orange-600 font-semibold hover:text-orange-700">Albi</Link> et dans nos <Link href="/zones-intervention" className="text-orange-600 font-semibold hover:text-orange-700">56 communes d&apos;intervention</Link>.
             </p>
             <p>
-              Nos rapports servent de base aux démarches d&apos;<Link href="/blog/assurance-fissures-maison-indemnisation" className="text-orange-600 font-semibold hover:text-orange-700">indemnisation assurance</Link> et constituent une contre-expertise opposable. Pour choisir entre <Link href="/blog/agrafage-vs-micropieux-choix" className="text-orange-600 font-semibold hover:text-orange-700">agrafage et micropieux</Link>, le diagnostic préalable est indispensable. Consultez nos <Link href="/avis-clients" className="text-orange-600 font-semibold hover:text-orange-700">avis clients (4.9/5 sur Google)</Link>.
+              Nos rapports servent de base aux démarches d&apos;<Link href="/blog/assurance-fissures-maison-indemnisation" className="text-orange-600 font-semibold hover:text-orange-700">indemnisation assurance</Link> et constituent une contre-expertise opposable. Pour choisir entre <Link href="/blog/agrafage-vs-micropieux-choix" className="text-orange-600 font-semibold hover:text-orange-700">agrafage et micropieux</Link>, nous réalisons le diagnostic, préconisons la solution et assurons les travaux. Consultez nos <Link href="/avis-clients" className="text-orange-600 font-semibold hover:text-orange-700">avis clients (4.9/5 sur Google)</Link>.
             </p>
           </div>
         </div>

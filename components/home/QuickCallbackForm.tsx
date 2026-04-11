@@ -61,7 +61,7 @@ export function QuickCallbackForm() {
                 Parlez à un expert sous 2h
               </h2>
               <p className="text-slate-400 text-sm">
-                Décrivez votre situation par téléphone à un spécialiste en pathologie du bâtiment.
+                Diagnostic, travaux, suivi : décrivez votre situation à un spécialiste qui vous accompagne de A à Z.
               </p>
             </div>
 

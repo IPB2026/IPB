@@ -18,7 +18,7 @@ export function TrustSignals() {
             </div>
             <h3 className="font-display font-bold text-xl text-slate-900 mb-2">Diagnostic instrumenté</h3>
             <p className="text-slate-500 text-sm leading-relaxed">
-              Fissuromètre, niveau laser, hygromètre, caméra thermique. Chaque diagnostic repose sur des mesures, pas sur des impressions.
+              Fissuromètre, niveau laser, hygromètre, caméra thermique. Chaque intervention commence par des mesures, pas par des impressions.
             </p>
           </div>
           
@@ -30,9 +30,9 @@ export function TrustSignals() {
             <div className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-bold mb-3">
               Depuis 2019
             </div>
-            <h3 className="font-display font-bold text-xl text-slate-900 mb-2">Spécialiste pathologie bâtiment</h3>
+            <h3 className="font-display font-bold text-xl text-slate-900 mb-2">Un seul interlocuteur, de A à Z</h3>
             <p className="text-slate-500 text-sm leading-relaxed">
-              Nous ne faisons que ça : fissures et humidité. Cette spécialisation nous permet de poser le bon diagnostic dès la première visite.
+              Diagnostic, plan de remédiation, travaux et suivi post-intervention. Un accompagnement complet par un cabinet indépendant spécialisé.
             </p>
           </div>
           
@@ -46,7 +46,7 @@ export function TrustSignals() {
             </div>
             <h3 className="font-display font-bold text-xl text-slate-900 mb-2">Garantie décennale</h3>
             <p className="text-slate-500 text-sm leading-relaxed">
-              Chaque intervention est couverte par notre assurance décennale. Rapport technique détaillé remis sous 7 jours.
+              Chaque chantier est couvert par notre assurance décennale. Rapport technique remis sous 7 jours, suivi post-travaux inclus.
             </p>
           </div>
         </div>

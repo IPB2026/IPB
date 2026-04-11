@@ -14,7 +14,7 @@ export function ServicesHumidity() {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-6 md:mb-8 leading-tight">Identifier la source de l'humidité pour la traiter à l'origine</h2>
             <p className="text-slate-600 text-base md:text-lg mb-6 md:mb-8 leading-relaxed">
               Salpêtre, moisissures, peinture qui cloque : ces symptômes ont des causes distinctes — remontées capillaires, infiltration latérale, condensation, défaut de ventilation. 
-              <strong className="text-slate-900">Un déshumidificateur ne résout rien si le diagnostic est faux.</strong> Nous mesurons le taux d'humidité dans la masse du mur avant de prescrire le traitement adapté.
+              <strong className="text-slate-900">Un déshumidificateur ne résout rien si le diagnostic est faux.</strong> Nous mesurons, diagnostiquons, prescrivons le plan de remédiation et réalisons les travaux. Un seul interlocuteur du début à la fin.
             </p>
             
             <div className="space-y-4 md:space-y-6">
