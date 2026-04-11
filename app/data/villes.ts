@@ -1317,5 +1317,48 @@ export const villesData: Record<string, VilleInfo> = {
 // Liste des slugs de villes pour la génération statique
 export const villeSlugs = Object.keys(villesData);
 
+// Mapping département → villes (pour maillage interne et pages SEO)
+export type DepartementInfo = {
+  nom: string;
+  code: string;
+  slug: string;
+  villes: string[]; // slugs des villes
+};
+
+export const departementsMapping: DepartementInfo[] = (() => {
+  const deptMap: Record<string, { nom: string; code: string; slug: string; villes: string[] }> = {};
+  
+  const deptSlugMap: Record<string, string> = {
+    'Haute-Garonne (31)': 'haute-garonne',
+    'Tarn-et-Garonne (82)': 'tarn-et-garonne',
+    'Gers (32)': 'gers',
+    'Tarn (81)': 'tarn',
+  };
+
+  for (const [slug, ville] of Object.entries(villesData)) {
+    const deptKey = ville.departement;
+    if (!deptMap[deptKey]) {
+      const code = deptKey.match(/\((\d+)\)/)?.[1] || '';
+      deptMap[deptKey] = {
+        nom: deptKey.replace(/\s*\(\d+\)/, ''),
+        code,
+        slug: deptSlugMap[deptKey] || deptKey.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, ''),
+        villes: [],
+      };
+    }
+    deptMap[deptKey].villes.push(slug);
+  }
+
+  return Object.values(deptMap);
+})();
+
+// Récupérer les villes du même département qu'une ville donnée
+export function getVillesMemesDepartement(villeSlug: string): string[] {
+  const ville = villesData[villeSlug];
+  if (!ville) return [];
+  const dept = departementsMapping.find(d => `${d.nom} (${d.code})` === ville.departement);
+  return dept?.villes.filter(v => v !== villeSlug) || [];
+}
+
 // Export pour utilisation dans les pages dynamiques
 export type { VilleInfo as VilleData };

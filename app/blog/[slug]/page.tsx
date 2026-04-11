@@ -144,7 +144,6 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
   const breadcrumbJsonLd = generateBreadcrumbJsonLd([
     { name: 'Accueil', url: '/' },
     { name: 'Blog', url: '/blog' },
-    { name: categoryLabels[post.category], url: `/blog?category=${post.category}` },
     { name: post.title, url: `/blog/${post.slug}` },
   ]);
 
@@ -168,9 +167,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
   const howToSteps = extractHowToSteps(post.content);
   const howToSchema = howToSteps.length >= 3 ? generateHowToSchema(post.title, howToSteps) : null;
 
-  // 💣 ARME NUCLÉAIRE : Injection de liens internes automatiques dans le contenu
-  // DÉSACTIVÉ : Cause des problèmes de formatage HTML
-  const contentWithLinks = enrichedContent; // injectInternalLinks(enrichedContent, post.slug);
+  const contentWithLinks = injectInternalLinks(enrichedContent, post.slug);
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -228,7 +225,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
         <Breadcrumbs
           items={[
             { label: 'Blog', href: '/blog' },
-            { label: categoryLabels[post.category], href: `/blog?category=${post.category}` },
+            { label: categoryLabels[post.category] },
             { label: post.title },
           ]}
         />

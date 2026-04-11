@@ -7,7 +7,7 @@ import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
 import { Testimonials } from '@/components/home/Testimonials';
 import { CheckCircle, Phone, ArrowRight, MapPin, Shield, Clock, Droplets, AlertTriangle, Home, Award, Users, ThermometerSun, Wind } from 'lucide-react';
-import { villesData, villeSlugs, type VilleInfo } from '@/app/data/villes';
+import { villesData, villeSlugs, getVillesMemesDepartement, type VilleInfo } from '@/app/data/villes';
 import { RelatedPagesLinks } from '@/components/seo/RelatedPagesLinks';
 import { VilleBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
@@ -46,10 +46,10 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     `étanchéité ${villeNomLower}`,
   ];
 
-  const description = `Expert traitement humidité à ${villeNom} (${deptCode}). Injection résine garantie 30 ans, cuvelage, VMI. Diagnostic 249€. Remontées capillaires, salpêtre, moisissures. ☎ 05 82 95 33 75`;
+  const description = `Expert humidité à ${villeNom} (${deptCode}). Injection résine garantie 30 ans, diagnostic 249€. Salpêtre, moisissures, remontées capillaires. 05 82 95 33 75`;
 
   return {
-    title: `Expert Humidité ${villeNom} (${deptCode}) | Injection Résine Garantie 30 ans | IPB`,
+    title: `Expert Humidité ${villeNom} (${deptCode}) | IPB`,
     description,
     keywords,
     alternates: {
@@ -102,7 +102,7 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "14"
+      "reviewCount": "47"
     }
   };
 
@@ -634,13 +634,13 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
       
       {/* Maillage interne SEO - Autres villes */}
       <RelatedPagesLinks
-        title={`Nos experts humidité dans votre région`}
+        title={`Nos experts humidité dans votre département`}
         pages={[
           { href: '/expertise/humidite', label: 'Nos solutions humidité', description: 'Toutes nos méthodes' },
+          { href: '/zones-intervention', label: 'Toutes nos zones', description: '56 villes couvertes' },
           { href: '/diagnostic', label: 'Diagnostic gratuit', description: 'Évaluez votre situation' },
-          ...villeSlugs
-            .filter(v => v !== ville)
-            .slice(0, 8)
+          ...getVillesMemesDepartement(ville)
+            .slice(0, 10)
             .map(v => ({
               href: `/expert-humidite/${v}`,
               label: `Expert humidité ${villesData[v]?.nom || v}`,

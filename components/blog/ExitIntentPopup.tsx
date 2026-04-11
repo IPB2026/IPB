@@ -78,7 +78,7 @@ export function ExitIntentPopup() {
       emoji: '⚠️',
       title: 'Un problème sur votre maison ?',
       subtitle: 'Fissures ou humidité, on a la solution',
-      stat: 'Plus de 300 maisons sauvées depuis 2019',
+      stat: '850+ diagnostics réalisés en Occitanie depuis 2019',
       offer: 'Diagnostic gratuit en 5 minutes',
       urgency: 'Expert disponible maintenant',
     };

@@ -79,9 +79,10 @@ export default function HauteGaronnePage() {
       email: 'contact@ipb-expertise.fr',
       address: {
         '@type': 'PostalAddress',
-        addressLocality: 'Toulouse',
+        streetAddress: '54 avenue Jean Jaurès',
+        addressLocality: 'Tournefeuille',
         addressRegion: 'Haute-Garonne',
-        postalCode: '31000',
+        postalCode: '31170',
         addressCountry: 'FR',
       },
       areaServed: {
@@ -95,7 +96,7 @@ export default function HauteGaronnePage() {
       aggregateRating: {
         '@type': 'AggregateRating',
         ratingValue: '4.9',
-        reviewCount: '14',
+        reviewCount: '47',
       },
     },
     description: 'Expert n°1 en traitement des fissures et de l\'humidité en Haute-Garonne (31). Basé à Toulouse.',
@@ -207,8 +208,8 @@ export default function HauteGaronnePage() {
               {/* Stats */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/20">
-                  <div className="text-4xl font-extrabold text-white mb-2">500+</div>
-                  <div className="text-orange-100">Maisons traitées en 31</div>
+                  <div className="text-4xl font-extrabold text-white mb-2">850+</div>
+                  <div className="text-orange-100">Diagnostics réalisés</div>
                 </div>
                 <div className="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/20">
                   <div className="text-4xl font-extrabold text-white mb-2">4.9★</div>

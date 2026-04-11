@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Diagnostic Gratuit Fissures & Humidité en Ligne | IPB Toulouse',
-  description: 'Réalisez votre diagnostic gratuit en ligne en 3 minutes. Identifiez la gravité de vos fissures ou problèmes d\'humidité et obtenez des recommandations d\'expert. Service 100% gratuit et sans engagement.',
+  title: 'Diagnostic Gratuit Fissures & Humidité | IPB',
+  description: 'Diagnostic en ligne gratuit en 3 minutes. Évaluez vos fissures ou problèmes d\'humidité et recevez les recommandations d\'un expert. Sans engagement.',
   keywords: [
     'diagnostic fissures gratuit',
     'diagnostic humidité en ligne',

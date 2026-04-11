@@ -41,10 +41,10 @@ export function Testimonials() {
         <div className="flex flex-col md:flex-row items-center justify-between mb-12 md:mb-16 gap-6">
           <div>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-slate-900">
-              Ils nous ont fait confiance
+              Ce que disent nos clients
             </h2>
             <p className="text-slate-500 mt-2">
-              Plus de 500 propriétaires ont choisi IPB pour sauver leur patrimoine.
+              850+ diagnostics réalisés en Occitanie. Noté 4.9/5 sur Google.
             </p>
           </div>
           

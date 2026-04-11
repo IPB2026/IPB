@@ -11,7 +11,7 @@ import { ContactSection } from '@/components/home/ContactSection';
 import { Footer } from '@/components/home/Footer';
 import Link from 'next/link';
 import { InternalLinks } from '@/components/seo/InternalLinks';
-import { villesData as villesDataSource, villeSlugs } from '@/app/data/villes';
+import { villesData as villesDataSource, villeSlugs, getVillesMemesDepartement } from '@/app/data/villes';
 
 // Données villes centralisées dans app/data/villes.ts
 
@@ -248,6 +248,35 @@ export default async function VillePage({ params }: PageProps) {
       <Testimonials />
       <FAQ />
       <ContactSection />
+      {/* Maillage inter-villes par département */}
+      <section className="py-12 bg-white border-t border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-extrabold text-slate-900 mb-6">
+            Nos experts dans votre département
+          </h2>
+          <div className="flex flex-wrap gap-3">
+            {getVillesMemesDepartement(ville.toLowerCase()).slice(0, 12).map((v) => {
+              const vData = villesData[v];
+              if (!vData) return null;
+              return (
+                <Link
+                  key={v}
+                  href={`/expert-fissures/${v}`}
+                  className="bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-300 text-slate-700 hover:text-orange-600 px-4 py-2 rounded-lg text-sm font-medium transition"
+                >
+                  Expert fissures {vData.nom}
+                </Link>
+              );
+            })}
+            <Link
+              href="/zones-intervention"
+              className="bg-orange-50 border border-orange-200 text-orange-600 hover:bg-orange-100 px-4 py-2 rounded-lg text-sm font-bold transition"
+            >
+              Voir les 56 villes →
+            </Link>
+          </div>
+        </div>
+      </section>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
         <InternalLinks variant="ville" />
       </div>

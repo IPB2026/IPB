@@ -11,7 +11,7 @@ import { ContactSection } from '@/components/home/ContactSection';
 import { Footer } from '@/components/home/Footer';
 import { InternalLinks } from '@/components/seo/InternalLinks';
 import { QuickCallbackForm } from '@/components/home/QuickCallbackForm';
-import { ExitIntentPopup } from '@/components/blog/ExitIntentPopup';
+import Link from 'next/link';
 import Script from 'next/script';
 import type { Metadata } from 'next';
 
@@ -19,12 +19,22 @@ import type { Metadata } from 'next';
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": "https://www.ipb-expertise.fr#organization",
   "name": "IPB - Institut de Pathologie du Bâtiment",
   "alternateName": "IPB Expertise",
   "url": "https://www.ipb-expertise.fr",
-  "logo": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
-  "description": "Expert en diagnostic et traitement des fissures et de l'humidité en Occitanie. Solutions techniques avec garantie décennale.",
+  "logo": {
+    "@type": "ImageObject",
+    "@id": "https://www.ipb-expertise.fr#logo",
+    "url": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
+    "width": 600,
+    "height": 60,
+    "caption": "IPB - Institut de Pathologie du Bâtiment"
+  },
+  "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
+  "description": "Expert en diagnostic et traitement des fissures et de l'humidité en Occitanie (31, 82, 32, 81). Agrafage structurel, injection résine, micropieux. Garantie décennale.",
   "foundingDate": "2019",
+  "numberOfEmployees": { "@type": "QuantitativeValue", "value": "8" },
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "54 avenue Jean Jaurès",
@@ -38,7 +48,14 @@ const organizationSchema = {
     "telephone": "+33-5-82-95-33-75",
     "contactType": "customer service",
     "availableLanguage": "French",
-    "areaServed": ["FR-31", "FR-82", "FR-32"]
+    "areaServed": ["FR-31", "FR-82", "FR-32", "FR-81"]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "47",
+    "bestRating": "5",
+    "worstRating": "1"
   },
   "sameAs": [
     "https://www.facebook.com/ipbexpertise",
@@ -47,8 +64,8 @@ const organizationSchema = {
 };
 
 export const metadata: Metadata = {
-  title: "Expert Fissures & Humidité Toulouse (31) | Diagnostic Gratuit 48h | IPB",
-  description: "Expert fissures maison et traitement humidité à Toulouse, Montauban, Auch. Agrafage structurel, injection résine hydrophobe. Garantie décennale. Devis gratuit ☎ 05 82 95 33 75",
+  title: "Expert Fissures & Humidité Toulouse (31) | IPB",
+  description: "Cabinet spécialisé en pathologie du bâtiment. Diagnostic instrumenté fissures et humidité. Agrafage garanti 10 ans. 850+ diagnostics en Occitanie.",
   keywords: [
     // Fissures - Mots clés principaux
     'expert fissures toulouse',
@@ -84,7 +101,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "IPB Expert Fissures & Humidité | Toulouse, Montauban, Auch (31-82-32)",
-    description: "Spécialiste traitement fissures (agrafage, harpage) et humidité (injection, cuvelage) à Toulouse. +300 maisons traitées. Garantie décennale.",
+    description: "Spécialiste traitement fissures (agrafage, harpage) et humidité (injection, cuvelage) à Toulouse. 850+ diagnostics réalisés. Garantie décennale.",
     url: "https://www.ipb-expertise.fr",
     siteName: "IPB - Institut de Pathologie du Bâtiment",
     images: [
@@ -128,7 +145,6 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
-      <ExitIntentPopup />
       <TopBar />
       <Navbar />
       <Hero />
@@ -139,6 +155,22 @@ export default function HomePage() {
       <ServicesHumidity />
       <Testimonials />
       <FAQ />
+
+      {/* Bloc SEO — maillage vers pages piliers */}
+      <section className="py-12 bg-white border-t border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-extrabold text-slate-900 mb-6">Cabinet spécialisé en pathologie du bâtiment</h2>
+          <div className="prose prose-slate max-w-none text-slate-600">
+            <p>
+              IPB intervient exclusivement sur deux domaines : le <Link href="/expertise/fissures" className="text-orange-600 font-semibold hover:text-orange-700">diagnostic et le traitement des fissures structurelles</Link>, et le <Link href="/expertise/humidite" className="text-orange-600 font-semibold hover:text-orange-700">traitement de l&apos;humidité</Link> (remontées capillaires, infiltrations, mérule). Cette spécialisation nous permet d&apos;intervenir avec une méthodologie rigoureuse — diagnostic instrumenté, rapport technique détaillé, préconisation de la solution la plus adaptée — à <Link href="/expert-fissures/toulouse" className="text-orange-600 font-semibold hover:text-orange-700">Toulouse</Link>, <Link href="/expert-fissures/montauban" className="text-orange-600 font-semibold hover:text-orange-700">Montauban</Link>, <Link href="/expert-fissures/auch" className="text-orange-600 font-semibold hover:text-orange-700">Auch</Link>, <Link href="/expert-fissures/albi" className="text-orange-600 font-semibold hover:text-orange-700">Albi</Link> et dans nos <Link href="/zones-intervention" className="text-orange-600 font-semibold hover:text-orange-700">56 communes d&apos;intervention</Link>.
+            </p>
+            <p>
+              Nos rapports servent de base aux démarches d&apos;<Link href="/blog/assurance-fissures-maison-indemnisation" className="text-orange-600 font-semibold hover:text-orange-700">indemnisation assurance</Link> et constituent une contre-expertise opposable. Pour choisir entre <Link href="/blog/agrafage-vs-micropieux-choix" className="text-orange-600 font-semibold hover:text-orange-700">agrafage et micropieux</Link>, le diagnostic préalable est indispensable. Consultez nos <Link href="/avis-clients" className="text-orange-600 font-semibold hover:text-orange-700">avis clients (4.9/5 sur Google)</Link>.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <ContactSection />
       <InternalLinks variant="default" />
       <Footer />

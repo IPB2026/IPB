@@ -12,28 +12,28 @@ import {
 
 const faqData = [
   {
-    question: "Pourquoi le diagnostic expert sur site est-il payant ?",
-    answer: "Contrairement à un simple devis commercial 'à la louche', nous réalisons une véritable expertise technique instrumentée. Nous analysons les sols, mesurons les écartements et l'humidité. Cependant, ce montant est un acompte : il est déduit à 100% de votre facture finale si vous nous confiez les travaux."
+    question: "Pourquoi le diagnostic sur site est-il payant (249€) ?",
+    answer: "Parce que ce n'est pas un devis : c'est une expertise technique. Nous utilisons un fissuromètre, un niveau laser, un hygromètre et une caméra thermique pour mesurer objectivement la situation. Le rapport de 15 à 25 pages que nous remettons est un document technique opposable — notamment face à un expert d'assurance. Ces 249€ sont intégralement déduits si vous nous confiez les travaux."
   },
   {
-    question: "L'agrafage est-il une solution aussi durable que les micropieux ?",
-    answer: "Pour 90% des maisons touchées par la sécheresse, OUI. Les micropieux sont des travaux lourds (30k€+) réservés aux affaissements majeurs. L'agrafage redonne au mur sa cohérence monolithique pour un coût divisé par 3, avec une Garantie Décennale identique."
+    question: "L'agrafage est-il aussi durable que les micropieux ?",
+    answer: "Ce sont deux réponses à deux problèmes différents. L'agrafage traite les fissures liées à un tassement différentiel modéré (< 10 mm) en redonnant au mur sa cohésion. Les micropieux stabilisent les fondations quand le sol est profondément instable. Dans 90% des cas que nous traitons en Occitanie, l'agrafage est la réponse adaptée. Les deux sont couverts par la même garantie décennale."
   },
   {
-    question: "Comment savoir si mes fissures sont structurelles ou esthétiques ?",
-    answer: "Trois indices ne trompent pas : 1. La forme en escalier (suit les joints). 2. La fissure est traversante (visible dedans et dehors). 3. Vos portes ou fenêtres commencent à frotter. Si vous avez un doute, utilisez notre Diagnostic Digital gratuit en haut de page pour une pré-analyse immédiate."
+    question: "Comment distinguer une fissure structurelle d'une fissure esthétique ?",
+    answer: "Trois critères techniques : 1. Le tracé en escalier qui suit les joints de maçonnerie (signe de tassement). 2. La fissure traversante, visible à l'intérieur et à l'extérieur. 3. Des signes collatéraux : portes qui frottent, carrelage qui casse, fenêtres qui ne ferment plus. En cas de doute, notre diagnostic en ligne gratuit vous donne une première évaluation en 3 minutes."
   },
   {
-    question: "Traitez-vous l'humidité par l'intérieur ou l'extérieur ?",
-    answer: "Nous privilégions l'intervention par l'intérieur pour éviter de détruire vos aménagements extérieurs. Nous créons une barrière étanche par injection de résine à la base des murs. Le produit se diffuse dans toute l'épaisseur du mur pour bloquer définitivement les remontées capillaires."
+    question: "Traitez-vous l'humidité par l'intérieur ou par l'extérieur ?",
+    answer: "Cela dépend du diagnostic. Les remontées capillaires se traitent par injection intérieure à la base du mur — la résine polymérise dans la masse et crée une barrière étanche. Les infiltrations latérales peuvent nécessiter un traitement extérieur (drainage, étanchéité). C'est pourquoi le diagnostic précède toujours l'intervention : la méthode dépend de la cause."
   },
   {
-    question: "Quelle est la durée moyenne d'un chantier ?",
-    answer: "Nos interventions sont rapides et peu invasives. Comptez 2 à 4 jours pour un agrafage de façade complète, et 1 à 2 jours pour un traitement d'humidité standard. Nous mettons un point d'honneur à laisser le chantier propre après notre passage."
+    question: "Combien de temps dure un chantier ?",
+    answer: "Un agrafage de façade complète : 3 à 5 jours. Un traitement d'humidité par injection : 1 à 2 jours. Un cuvelage de sous-sol : 2 à 4 jours. Nos interventions sont conçues pour être peu invasives — nous travaillons en intérieur quand c'est possible et le chantier est nettoyé chaque soir."
   },
   {
-    question: "Vos travaux sont-ils couverts par une assurance ?",
-    answer: "Absolument. IPB dispose d'une Garantie Décennale et d'une Responsabilité Civile Professionnelle spécifiques aux activités de renforcement de structure et de traitement de l'humidité. Votre patrimoine est protégé pendant 10 ans."
+    question: "Vos travaux sont-ils assurés ?",
+    answer: "IPB est assuré en Garantie Décennale et en Responsabilité Civile Professionnelle auprès de la SMABTP, pour les activités de renforcement structurel et de traitement de l'humidité. Les attestations sont fournies sur demande et jointes à chaque devis."
   }
 ];
 
@@ -68,7 +68,7 @@ export function FAQ() {
             </h2>
           </div>
           <p className="text-base md:text-lg text-slate-600">
-            Tout savoir sur notre méthode d'intervention et nos garanties.
+            Ce que nos clients nous demandent le plus souvent avant d'intervenir.
           </p>
         </div>
 

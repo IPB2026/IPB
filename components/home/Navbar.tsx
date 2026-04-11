@@ -26,7 +26,11 @@ export function Navbar() {
           <div className="hidden md:flex items-center space-x-8">
             <Link href="/expertise/fissures" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide">Fissures</Link>
             <Link href="/expertise/humidite" className="text-slate-600 hover:text-blue-600 font-semibold transition text-sm uppercase tracking-wide">Humidité</Link>
+            <Link href="/zones-intervention" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide">Zones</Link>
             <Link href="/blog" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide">Blog</Link>
+            <Link href="/avis-clients" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide flex items-center gap-1">
+              <span className="text-orange-500 text-xs">★</span> Avis
+            </Link>
             <Link href="/contact" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide">Contact</Link>
             
             <div className="flex items-center gap-3 ml-4 pl-4 border-l border-slate-200">
@@ -82,12 +86,28 @@ export function Navbar() {
               Expertise Humidité
             </Link>
             <Link
+              href="/zones-intervention"
+              onClick={() => setIsMenuOpen(false)}
+              role="menuitem"
+              className="block text-slate-600 font-medium pl-5 py-2"
+            >
+              Zones d&apos;intervention
+            </Link>
+            <Link
               href="/blog"
               onClick={() => setIsMenuOpen(false)}
               role="menuitem"
               className="block text-slate-600 font-medium pl-5 py-2"
             >
               Blog & Conseils
+            </Link>
+            <Link
+              href="/avis-clients"
+              onClick={() => setIsMenuOpen(false)}
+              role="menuitem"
+              className="block text-slate-600 font-medium pl-5 py-2"
+            >
+              Avis Clients (4.9/5)
             </Link>
             <Link
               href="/contact"

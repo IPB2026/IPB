@@ -63,8 +63,30 @@ export default function BlogPage() {
   const featuredPosts = blogPosts.filter(post => post.featured);
   const regularPosts = filteredPosts.filter(post => !post.featured);
 
+  const collectionSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Blog IPB - Conseils Fissures & Humidité',
+    description: "Guides experts et conseils techniques sur les fissures et l'humidité.",
+    url: 'https://www.ipb-expertise.fr/blog',
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: blogPosts.length,
+      itemListElement: blogPosts.map((post, idx) => ({
+        '@type': 'ListItem',
+        position: idx + 1,
+        url: `https://www.ipb-expertise.fr/blog/${post.slug}`,
+        name: post.title,
+      })),
+    },
+  };
+
   return (
     <div className="min-h-screen bg-slate-50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
       <TopBar />
       <Navbar />
       

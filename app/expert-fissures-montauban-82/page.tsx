@@ -8,7 +8,7 @@ import { CheckCircle, Phone, ArrowRight, MapPin, AlertTriangle, Shield, FileText
 
 export const metadata: Metadata = {
   title: 'Expert Fissures Montauban (82) | Diagnostic Indépendant | IPB Expertise',
-  description: 'Expert fissures maison à Montauban et Tarn-et-Garonne (82). Diagnostic indépendant sous 48h, agrafage structurel garanti 10 ans, garantie décennale. Devis gratuit ☎ 05 82 95 33 75. +300 maisons traitées en Occitanie.',
+  description: 'Expert fissures maison à Montauban et Tarn-et-Garonne (82). Diagnostic instrumenté sous 48h, agrafage structurel garanti 10 ans, garantie décennale. 850+ diagnostics en Occitanie.',
   keywords: ['expert fissures montauban', 'fissures maison 82', 'diagnostic fissures tarn-et-garonne', 'expert bâtiment montauban'],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/expert-fissures-montauban-82',

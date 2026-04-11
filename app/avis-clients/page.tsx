@@ -7,8 +7,8 @@ import Link from 'next/link';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-  title: 'Avis Clients IPB | 4.9/5 sur Google | Expert Fissures & Humidité Toulouse',
-  description: 'Découvrez les avis vérifiés de nos clients à Toulouse, Montauban et Auch. Note 4.9/5 sur Google. Plus de 500 chantiers réalisés avec garantie décennale.',
+  title: 'Avis Clients IPB | 4.9/5 sur Google | Toulouse',
+  description: 'Avis vérifiés clients IPB : 4.9/5 sur Google. Expert fissures et humidité à Toulouse, Montauban, Auch. 850+ diagnostics, garantie décennale.',
   keywords: ['avis IPB', 'avis expert fissures toulouse', 'témoignages clients', 'IPB expertise avis'],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/avis-clients',
@@ -101,6 +101,7 @@ function generateReviewsSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": "https://www.ipb-expertise.fr#organization",
     "name": "IPB - Institut de Pathologie du Bâtiment",
     "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
     "address": {
@@ -115,7 +116,7 @@ function generateReviewsSchema() {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": reviews.length.toString(),
+      "reviewCount": "47",
       "bestRating": "5",
       "worstRating": "1"
     },
@@ -185,7 +186,7 @@ export default function AvisClientsPage() {
               Ce que nos clients disent de nous
             </h1>
             <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-              Plus de 500 chantiers réalisés en Occitanie. Découvrez les témoignages de nos clients satisfaits.
+              850+ diagnostics réalisés en Occitanie. Découvrez les retours de nos clients.
             </p>
             
             <div className="flex flex-wrap justify-center gap-6 text-sm">
@@ -210,8 +211,8 @@ export default function AvisClientsPage() {
           <div className="max-w-5xl mx-auto px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div>
-                <p className="text-4xl font-extrabold text-orange-600">500+</p>
-                <p className="text-slate-600">Chantiers réalisés</p>
+                <p className="text-4xl font-extrabold text-orange-600">850+</p>
+                <p className="text-slate-600">Diagnostics réalisés</p>
               </div>
               <div>
                 <p className="text-4xl font-extrabold text-orange-600">4.9/5</p>
@@ -281,10 +282,10 @@ export default function AvisClientsPage() {
         <section className="py-16 bg-gradient-to-r from-orange-600 to-red-600 text-white">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
-              Rejoignez nos clients satisfaits
+              Besoin d'un avis d'expert ?
             </h2>
             <p className="text-xl text-orange-100 mb-8">
-              Obtenez votre diagnostic gratuit et découvrez nos solutions
+              Diagnostic en ligne gratuit en 3 minutes, ou prenez rendez-vous avec un expert.
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4">

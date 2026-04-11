@@ -41,7 +41,7 @@ const comparatifSolutions = [
     delai: '3-5 jours',
     garantie: '10 ans',
     adapte: '85% des cas',
-    avantages: ['3x moins cher que micropieux', 'Intervention rapide', 'Pas de terrassement lourd'],
+    avantages: ['Adapté au bâti courant', 'Intervention rapide', 'Pas de terrassement lourd'],
     recommande: true,
   },
   {
@@ -146,7 +146,7 @@ export default function FissureFondationPage() {
               <p className="text-xl text-slate-300 mb-8 leading-relaxed max-w-xl">
                 Quand les fissures viennent des fondations, c'est que le bâtiment bouge. 
                 En <strong className="text-white">Occitanie (31, 82, 32)</strong>, 85% des cas sont liés au sol argileux. 
-                La bonne nouvelle : l'agrafage résout 85% des situations pour 3x moins cher que les micropieux.
+                L'agrafage structurel est la solution adaptée dans la majorité des cas de fissures sur bâti courant.
               </p>
 
               <div className="bg-red-500/20 border border-red-400/40 rounded-2xl p-6 mb-8">

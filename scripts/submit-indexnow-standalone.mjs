@@ -9,7 +9,17 @@
 const SITE_URL = 'https://www.ipb-expertise.fr';
 const INDEXNOW_KEY = '3c7f0e731bd5699d57a1a6e9c52c915e';
 
-const priorityVilles = ['toulouse', 'colomiers', 'muret', 'montauban', 'auch', 'albi'];
+const allVilles = [
+  'toulouse', 'colomiers', 'muret', 'blagnac', 'balma', 'tournefeuille',
+  'ramonville-saint-agne', 'lunion', 'cugnaux', 'plaisance-du-touch',
+  'montauban', 'auch', 'castanet-tolosan', 'fonsorbes', 'portet-sur-garonne',
+  'labege', 'villeneuve-tolosane', 'cornebarrieu', 'pibrac', 'seysses',
+  'frouzins', 'roques', 'auzeville-tolosane', 'escalquens', 'saint-orens-de-gameville',
+  'quint-fonsegrives', 'flourens', 'launaguet', 'beauzelle', 'saint-jean', 'montrabe',
+  'castelsarrasin', 'moissac', 'caussade', 'condom', 'fleurance', 'lectoure', 'lisle-jourdain',
+  'albi', 'castres', 'gaillac', 'lavaur', 'mazamet', 'graulhet', 'rabastens', 'carmaux',
+  'castelginest', 'fenouillet', 'aucamville', 'mirande', 'valence-agen', 'saint-sulpice-la-pointe',
+];
 
 const spokeFissures = [
   'fissure-en-escalier-causes', 'fissure-horizontale-danger',
@@ -47,6 +57,9 @@ const blogPosts = [
   'expert-fissures-gers-guide-complet',
   'salpetre-toulouse-traitement-definitif',
   'fissures-maison-tarn-et-garonne-solutions',
+  'assurance-fissures-maison-indemnisation',
+  'expert-batiment-independant-vs-expert-assurance',
+  'fondations-maison-ancienne-renforcement',
 ];
 
 const triggerEvents = [
@@ -88,8 +101,11 @@ function generateAllUrls() {
   urls.push(`${SITE_URL}/departements`);
   departements.forEach(dept => urls.push(`${SITE_URL}/departements/${dept}`));
 
-  // Expert par ville (uniquement villes prioritaires)
-  priorityVilles.forEach(ville => {
+  // Page zones d'intervention
+  urls.push(`${SITE_URL}/zones-intervention`);
+
+  // Expert par ville (toutes les villes)
+  allVilles.forEach(ville => {
     urls.push(`${SITE_URL}/expert-fissures/${ville}`);
     urls.push(`${SITE_URL}/expert-humidite/${ville}`);
   });

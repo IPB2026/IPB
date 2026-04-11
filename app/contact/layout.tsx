@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact Expert Fissures & Humidité Toulouse | Devis Gratuit IPB',
-  description: 'Contactez IPB, expert en fissures et humidité à Toulouse. Intervention rapide dans un rayon de 50 km. Devis gratuit, diagnostic sur place. Appelez le 05 82 95 33 75 ou remplissez le formulaire.',
+  title: 'Contact Expert Fissures & Humidité | IPB',
+  description: 'Contactez IPB, expert fissures et humidité à Toulouse. Devis gratuit, intervention sous 48h. 05 82 95 33 75 ou formulaire en ligne.',
   keywords: [
     'contact expert fissures toulouse',
     'devis gratuit fissures',

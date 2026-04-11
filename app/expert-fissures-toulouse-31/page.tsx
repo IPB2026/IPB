@@ -8,8 +8,8 @@ import { Testimonials } from '@/components/home/Testimonials';
 import { CheckCircle, Phone, ArrowRight, MapPin, AlertTriangle, Shield, FileText, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures Toulouse (31) | Agrafage Structurel Garanti 10 ans | IPB',
-  description: 'Expert fissures maison Toulouse, Montauban, Auch (31-82-32). Agrafage structurel, harpage, réparation fondations. Diagnostic 249€ (déductible). ☎ 05 82 95 33 75. Intervention 48h.',
+  title: 'Expert Fissures Toulouse (31) | Agrafage Garanti | IPB',
+  description: 'Expert fissures à Toulouse et Haute-Garonne. Agrafage structurel garanti 10 ans, diagnostic 249€ déductible. Intervention 48h. 05 82 95 33 75',
   keywords: [
     'expert fissures toulouse',
     'fissures maison toulouse',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Expert Fissures Toulouse (31) | Agrafage & Harpage | IPB',
-    description: 'Spécialiste traitement fissures structurelles à Toulouse. Agrafage 3x moins cher que micropieux. +300 maisons traitées. Garantie décennale.',
+    description: 'Spécialiste traitement fissures structurelles à Toulouse. Agrafage garanti 10 ans, diagnostic instrumenté. 850+ diagnostics. Garantie décennale.',
     url: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31',
     type: 'website',
     images: [{
@@ -82,7 +82,7 @@ const faqItems = [
   },
   {
     question: "Quelle est la différence entre agrafage et micropieux ?",
-    answer: "L'agrafage stabilise les murs fissurés pour 3x moins cher que les micropieux. C'est la solution recommandée pour 80% des cas de fissures en Occitanie."
+    answer: "L'agrafage stabilise les murs fissurés par couture structurelle de la maçonnerie. C'est la technique adaptée dans la majorité des cas de fissures sur bâti courant en Occitanie."
   },
   {
     question: "Intervenez-vous au-delà de Toulouse ?",
@@ -347,7 +347,7 @@ export default function ExpertFissuresToulouse31Page() {
               <ul className="space-y-3 text-slate-600">
                 <li className="flex items-center gap-2"><CheckCircle size={18} className="text-green-500" /> Solution durable</li>
                 <li className="flex items-center gap-2"><CheckCircle size={18} className="text-green-500" /> Garantie décennale</li>
-                <li className="flex items-center gap-2"><CheckCircle size={18} className="text-green-500" /> 3x moins cher que micropieux</li>
+                <li className="flex items-center gap-2"><CheckCircle size={18} className="text-green-500" /> Technique adaptée au bâti courant</li>
                 <li className="flex items-center gap-2"><CheckCircle size={18} className="text-green-500" /> Travaux en 3-5 jours</li>
               </ul>
             </div>

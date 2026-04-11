@@ -13,8 +13,8 @@ import { TraitementHumiditeHowToSchema } from '@/components/seo/HowToSchema';
 import { ExpertiseHumiditeBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
-  title: 'Expert Humidité Occitanie (31-82-32) | Injection Résine Garantie 30 ans | IPB',
-  description: 'Murs humides, salpêtre, moisissures ? Solutions complètes : injection résine, cuvelage, drainage, ventilation (VMC/VMI), traitement condensation. Garantie 30 ans. Diagnostic 249€. ☎ 05 82 95 33 75. Intervention 48h.',
+  title: 'Expert Humidité Toulouse & Occitanie | IPB',
+  description: 'Murs humides, salpêtre, moisissures ? Injection résine garantie 30 ans, diagnostic 249€ déductible. Intervention 48h. 05 82 95 33 75',
   keywords: [
     'expert humidité toulouse',
     'traitement humidité murs',
@@ -62,10 +62,10 @@ const generateServiceJsonLd = () => ({
     "@type": "LocalBusiness",
     "name": "IPB - Institut de Pathologie du Bâtiment",
     "telephone": "+33582953375",
-    "address": { "@type": "PostalAddress", "addressLocality": "Toulouse", "addressRegion": "Occitanie", "postalCode": "31000", "addressCountry": "FR" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "14" }
+    "address": { "@type": "PostalAddress", "streetAddress": "54 avenue Jean Jaurès", "addressLocality": "Tournefeuille", "addressRegion": "Occitanie", "postalCode": "31170", "addressCountry": "FR" },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "bestRating": "5", "worstRating": "1", "reviewCount": "47" }
   },
-  "areaServed": [{ "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" }, { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" }, { "@type": "AdministrativeArea", "name": "Gers (32)" }],
+  "areaServed": [{ "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" }, { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" }, { "@type": "AdministrativeArea", "name": "Gers (32)" }, { "@type": "AdministrativeArea", "name": "Tarn (81)" }],
   "description": "Expert en traitement de l'humidité. Injection résine hydrophobe, cuvelage, VMI. Solution définitive contre remontées capillaires avec garantie 30 ans."
 });
 
@@ -98,13 +98,6 @@ export default function HumiditePage() {
         />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Accroche immédiate - Hook émotionnel */}
-          <div className="text-center mb-10 lg:hidden">
-            <div className="inline-flex items-center gap-2 bg-red-500/20 border border-red-500/40 text-red-300 px-4 py-2 rounded-full text-sm font-bold mb-4 animate-pulse">
-              ⚠️ L'humidité détruit votre maison silencieusement
-            </div>
-          </div>
-          
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               {/* Badge confiance */}
@@ -115,8 +108,8 @@ export default function HumiditePage() {
                 <span className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-500/40 text-blue-300 px-3 py-1.5 rounded-full text-xs font-bold">
                   <Shield size={12} /> Garantie 30 ans
                 </span>
-                <span className="hidden lg:inline-flex items-center gap-2 bg-red-500/20 border border-red-500/40 text-red-300 px-3 py-1.5 rounded-full text-xs font-bold animate-pulse">
-                  ⚠️ Agir maintenant
+                <span className="hidden lg:inline-flex items-center gap-2 bg-white/10 border border-white/20 text-slate-300 px-3 py-1.5 rounded-full text-xs font-bold">
+                  <Clock size={12} /> Intervention sous 48h
                 </span>
               </div>
               
@@ -125,17 +118,9 @@ export default function HumiditePage() {
                 <span className="block text-3xl md:text-4xl mt-2 text-white">Injection résine garantie 30 ans.</span>
               </h1>
               
-              {/* Question directe pour engager */}
-              <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4 mb-6">
-                <p className="text-blue-200 text-lg font-medium">
-                  🤔 Salpêtre ? Moisissures ? Peinture qui cloque ?<br/>
-                  <span className="text-white font-bold">Vous êtes au bon endroit.</span>
-                </p>
-              </div>
-              
               <p className="text-xl text-slate-300 mb-6 leading-relaxed">
-                <strong className="text-white">+300 maisons assainies</strong> sur les départements 31, 82 et 32.
-                Injection résine hydrophobe = <strong className="text-blue-300">barrière étanche permanente</strong>.
+                <strong className="text-white">850+ diagnostics réalisés</strong> en Haute-Garonne, Tarn-et-Garonne et Gers.
+                Injection résine hydrophobe : <strong className="text-blue-300">barrière étanche créée directement dans le mur</strong>.
               </p>
               
               {/* Chiffre clé */}
@@ -159,7 +144,7 @@ export default function HumiditePage() {
               {/* CTAs - Plus visibles */}
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <Link href="/diagnostic" className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white px-8 py-5 rounded-xl font-bold text-lg shadow-xl flex items-center justify-center gap-2 transition-all hover:-translate-y-1 hover:shadow-2xl">
-                  🎯 Diagnostic gratuit en 3 min
+                  Diagnostic gratuit en 3 min
                   <ArrowRight size={20} />
                 </Link>
                 <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 text-white px-8 py-5 rounded-xl font-bold text-lg hover:bg-white/20 flex items-center justify-center gap-2">
@@ -194,7 +179,7 @@ export default function HumiditePage() {
                     </div>
                     <div>
                       <p className="font-bold text-white">Garantie 30 ans</p>
-                      <p className="text-sm text-slate-400">La plus longue du marché</p>
+                      <p className="text-sm text-slate-400">Sur l'injection résine</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
@@ -202,8 +187,8 @@ export default function HumiditePage() {
                       <Award className="text-orange-400" size={24} />
                     </div>
                     <div>
-                      <p className="font-bold text-white">+300 interventions</p>
-                      <p className="text-sm text-slate-400">en Occitanie (31-82-32)</p>
+                      <p className="font-bold text-white">850+ diagnostics</p>
+                      <p className="text-sm text-slate-400">en Occitanie (31-82-32-81)</p>
                     </div>
                   </div>
                 </div>
@@ -233,7 +218,7 @@ export default function HumiditePage() {
                   </li>
                 </ul>
                 <p className="mt-4 text-xs text-slate-400">
-                  👉 Si vous cochez 2+ symptômes, une intervention est recommandée.
+                  Un diagnostic instrumenté permet d'identifier la cause exacte et de choisir le bon traitement.
                 </p>
               </div>
             </div>
@@ -241,33 +226,32 @@ export default function HumiditePage() {
         </div>
       </section>
 
-      {/* Mini checklist mobile - Engagement immédiat */}
       <section className="lg:hidden py-6 bg-gradient-to-b from-slate-100 to-white">
         <div className="max-w-xl mx-auto px-4">
           <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-5">
             <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2 text-lg">
-              <AlertTriangle className="text-yellow-500" size={20} />
-              Reconnaissez-vous ces signes ?
+              <Droplets className="text-blue-500" size={20} />
+              Symptômes fréquents
             </h3>
             <div className="grid grid-cols-2 gap-2 text-sm mb-4">
               <div className="flex items-center gap-2 p-2 bg-blue-50 rounded-lg">
-                <span>🧂</span> Salpêtre
+                <CheckCircle size={14} className="text-blue-500 shrink-0" /> Salpêtre
               </div>
               <div className="flex items-center gap-2 p-2 bg-blue-50 rounded-lg">
-                <span>🦠</span> Moisissures
+                <CheckCircle size={14} className="text-blue-500 shrink-0" /> Moisissures
               </div>
               <div className="flex items-center gap-2 p-2 bg-blue-50 rounded-lg">
-                <span>🎨</span> Peinture qui cloque
+                <CheckCircle size={14} className="text-blue-500 shrink-0" /> Peinture qui cloque
               </div>
               <div className="flex items-center gap-2 p-2 bg-blue-50 rounded-lg">
-                <span>👃</span> Odeur de moisi
+                <CheckCircle size={14} className="text-blue-500 shrink-0" /> Odeur de moisi
               </div>
             </div>
             <Link 
               href="/diagnostic" 
               className="w-full bg-blue-600 text-white py-3 rounded-xl font-bold text-center flex items-center justify-center gap-2 shadow-md"
             >
-              Oui, je veux un diagnostic gratuit →
+              Évaluer ma situation gratuitement
             </Link>
           </div>
         </div>
@@ -277,7 +261,7 @@ export default function HumiditePage() {
       <section className="py-8 bg-white border-b border-slate-200">
         <div className="max-w-6xl mx-auto px-4">
           <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
-            <h2 className="text-lg font-bold text-slate-900 mb-4">📋 Sur cette page</h2>
+            <h2 className="text-lg font-bold text-slate-900 mb-4">Sur cette page</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
               <a href="#probleme" className="flex items-center gap-2 text-blue-600 hover:text-blue-700 hover:underline">
                 <span className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center text-xs font-bold text-blue-600">1</span>
@@ -308,8 +292,8 @@ export default function HumiditePage() {
       <section id="probleme" className="py-16 md:py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-red-100 text-red-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
-              <AlertTriangle size={16} /> L'humidité détruit votre maison et votre santé
+            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
+              <Droplets size={16} /> Comprendre les mécanismes de l'humidité
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
               L'eau remonte du sol dans vos murs
@@ -469,27 +453,27 @@ export default function HumiditePage() {
                 </thead>
                 <tbody className="divide-y divide-slate-200">
                   <tr className="hover:bg-slate-50">
-                    <td className="px-6 py-4 font-bold text-slate-900">✅ Efficacité</td>
+                    <td className="px-6 py-4 font-bold text-slate-900">Efficacité</td>
                     <td className="px-6 py-4 text-center text-green-600 font-bold">Définitive</td>
                     <td className="px-6 py-4 text-center text-orange-600">Partielle</td>
                     <td className="px-6 py-4 text-center text-red-600">Temporaire</td>
                   </tr>
                   <tr className="hover:bg-slate-50">
-                    <td className="px-6 py-4 font-bold text-slate-900">🛡️ Garantie</td>
+                    <td className="px-6 py-4 font-bold text-slate-900">Garantie</td>
                     <td className="px-6 py-4 text-center text-blue-600 font-bold">30 ans</td>
                     <td className="px-6 py-4 text-center">5-10 ans</td>
                     <td className="px-6 py-4 text-center">Aucune</td>
                   </tr>
                   <tr className="hover:bg-slate-50">
-                    <td className="px-6 py-4 font-bold text-slate-900">💰 Coût</td>
+                    <td className="px-6 py-4 font-bold text-slate-900">Coût indicatif</td>
                     <td className="px-6 py-4 text-center font-bold">80-120€/ml</td>
                     <td className="px-6 py-4 text-center">150-200€/ml</td>
-                    <td className="px-6 py-4 text-center">Achat + élec</td>
+                    <td className="px-6 py-4 text-center">Achat + consommation</td>
                   </tr>
                   <tr className="hover:bg-slate-50">
-                    <td className="px-6 py-4 font-bold text-slate-900">🔧 Invasivité</td>
+                    <td className="px-6 py-4 font-bold text-slate-900">Invasivité</td>
                     <td className="px-6 py-4 text-center text-green-600 font-bold">Faible</td>
-                    <td className="px-6 py-4 text-center text-red-600">Très élevée</td>
+                    <td className="px-6 py-4 text-center text-red-600">Élevée</td>
                     <td className="px-6 py-4 text-center">Aucune</td>
                   </tr>
                 </tbody>

@@ -11,25 +11,25 @@ export function ServicesHumidity() {
             <div className="inline-flex items-center gap-2 text-blue-600 font-bold mb-6 bg-blue-50 px-5 py-2 rounded-full uppercase text-xs tracking-wider border border-blue-100">
               <Droplets size={16} /> Pôle Sanitaire
             </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-6 md:mb-8 leading-tight">Dites adieu à l'humidité qui ronge vos murs</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-6 md:mb-8 leading-tight">Identifier la source de l'humidité pour la traiter à l'origine</h2>
             <p className="text-slate-600 text-base md:text-lg mb-6 md:mb-8 leading-relaxed">
-              Salpêtre qui blanchit vos murs, moisissures qui envahissent, peinture qui se décolle ? L'eau remonte inexorablement du sol. 
-              Ventiler ou déshumidifier ne suffit pas : <strong className="text-slate-900">nous créons une barrière étanche au cœur même de vos murs</strong>, pour stopper définitivement les remontées capillaires.
+              Salpêtre, moisissures, peinture qui cloque : ces symptômes ont des causes distinctes — remontées capillaires, infiltration latérale, condensation, défaut de ventilation. 
+              <strong className="text-slate-900">Un déshumidificateur ne résout rien si le diagnostic est faux.</strong> Nous mesurons le taux d'humidité dans la masse du mur avant de prescrire le traitement adapté.
             </p>
             
             <div className="space-y-4 md:space-y-6">
               <div className="flex gap-4 md:gap-5 p-4 md:p-5 rounded-xl md:rounded-2xl bg-white hover:bg-blue-50 transition border border-blue-100/50 group shadow-sm">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0 font-bold group-hover:scale-110 transition text-sm md:text-base">1</div>
                 <div>
-                  <h3 className="font-bold text-base md:text-lg text-slate-900 mb-1">Injection hydrophobe : un bouclier invisible dans vos murs</h3>
-                  <p className="text-sm md:text-base text-slate-500">Nous injectons une résine spéciale qui se transforme en barrière étanche au contact de l'eau. Résultat : les remontées capillaires sont stoppées à la source. <strong className="text-blue-600">Garantie 30 ans, résultat visible en 3 mois.</strong></p>
+                  <h3 className="font-bold text-base md:text-lg text-slate-900 mb-1">Injection de résine hydrophobe : couper la remontée capillaire</h3>
+                  <p className="text-sm md:text-base text-slate-500">La résine siloxane est injectée sous pression dans le bas du mur. Elle polymérise au contact de l'humidité et forme une barrière étanche continue sur toute l'épaisseur. <strong className="text-blue-600">Résultat mesurable sous 3 mois, garanti 30 ans.</strong></p>
                 </div>
               </div>
               <div className="flex gap-4 md:gap-5 p-4 md:p-5 rounded-xl md:rounded-2xl bg-white hover:bg-blue-50 transition border border-blue-100/50 group shadow-sm">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0 font-bold group-hover:scale-110 transition text-sm md:text-base">2</div>
                 <div>
-                  <h3 className="font-bold text-base md:text-lg text-slate-900 mb-1">Cuvelage & ventilation : la solution complète</h3>
-                  <p className="text-sm md:text-base text-slate-500">Pour les caves et sous-sols, nous appliquons un traitement époxy étanche et installons une VMI (Ventilation Mécanique par Insufflation) pour éliminer définitivement l'humidité résiduelle et la condensation.</p>
+                  <h3 className="font-bold text-base md:text-lg text-slate-900 mb-1">Cuvelage et ventilation : traiter les sous-sols en profondeur</h3>
+                  <p className="text-sm md:text-base text-slate-500">Le cuvelage époxy étanchéifie les parois enterrées. La VMI (Ventilation Mécanique par Insufflation) crée une surpression qui empêche l'humidité de stagner. Deux techniques complémentaires pour un résultat pérenne.</p>
                 </div>
               </div>
             </div>

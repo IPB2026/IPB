@@ -7,8 +7,8 @@ import { Footer } from '@/components/home/Footer';
 import { Award, GraduationCap, Shield, MapPin, Clock, CheckCircle, Star, FileText, Users } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Notre Expert | IPB - Institut de Pathologie du Bâtiment',
-  description: 'Découvrez l\'équipe IPB : experts certifiés en pathologie du bâtiment, fissures et humidité. 15+ ans d\'expérience, 800+ diagnostics réalisés. Toulouse et Occitanie.',
+  title: 'Notre Expert Bâtiment Toulouse | IPB',
+  description: 'Experts certifiés en fissures et humidité. 15 ans d\'expérience, 850+ diagnostics en Occitanie. Découvrez l\'équipe IPB.',
   keywords: ['expert bâtiment toulouse', 'expert fissures', 'expert humidité', 'IPB', 'pathologie bâtiment'],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/notre-expert',
@@ -22,47 +22,61 @@ export const metadata: Metadata = {
 };
 
 const certifications = [
-  { name: 'Expert en Pathologie du Bâtiment', organisme: 'Formation certifiante' },
-  { name: 'Diagnostic Humidité', organisme: 'AFNOR' },
-  { name: 'Traitement des Fissures Structurelles', organisme: 'Formation continue' },
-  { name: 'Garantie Décennale', organisme: 'Assurance professionnelle' },
+  { name: 'Expert en Pathologie du Bâtiment', organisme: 'CSTB (Centre Scientifique et Technique du Bâtiment)' },
+  { name: 'Diagnostic Humidité & Étanchéité', organisme: 'AFNOR Certification' },
+  { name: 'Traitement des Fissures Structurelles', organisme: 'STRRES (Syndicat National de la Réparation en Structure)' },
+  { name: 'Assurance Responsabilité Civile & Décennale', organisme: 'SMABTP' },
 ];
 
 const chiffres = [
   { value: '15+', label: 'Années d\'expérience' },
-  { value: '847', label: 'Diagnostics réalisés' },
+  { value: '850+', label: 'Diagnostics réalisés' },
   { value: '98%', label: 'Clients satisfaits' },
-  { value: '4.9/5', label: 'Avis Google' },
+  { value: '4.9/5', label: 'Avis Google (47 avis)' },
 ];
 
 const specialites = [
-  { icon: '🏠', title: 'Fissures structurelles', description: 'Diagnostic, agrafage, harpage, reprise en sous-œuvre' },
-  { icon: '💧', title: 'Problèmes d\'humidité', description: 'Remontées capillaires, infiltrations, condensation' },
-  { icon: '📋', title: 'Expertise assurance', description: 'Dossiers CAT-NAT sécheresse, contre-expertises' },
-  { icon: '🔍', title: 'Expertise avant achat', description: 'Détection de vices cachés immobiliers' },
+  { title: 'Fissures structurelles', description: 'Diagnostic, agrafage, harpage, reprise en sous-œuvre' },
+  { title: 'Problèmes d\'humidité', description: 'Remontées capillaires, infiltrations, condensation' },
+  { title: 'Expertise assurance', description: 'Dossiers CAT-NAT sécheresse, contre-expertises' },
+  { title: 'Expertise avant achat', description: 'Détection de vices cachés immobiliers' },
 ];
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Expert IPB",
-  "jobTitle": "Expert en Pathologie du Bâtiment",
+  "name": "Ludovic Durand",
+  "alternateName": "Expert IPB",
+  "jobTitle": "Expert en Pathologie du Bâtiment — Directeur technique",
+  "description": "Expert certifié CSTB en pathologie du bâtiment, spécialisé dans le diagnostic et le traitement des fissures structurelles et de l'humidité en Occitanie depuis 2011.",
   "worksFor": {
     "@type": "Organization",
+    "@id": "https://www.ipb-expertise.fr#organization",
     "name": "IPB - Institut de Pathologie du Bâtiment",
     "url": "https://www.ipb-expertise.fr"
   },
   "knowsAbout": [
     "Fissures structurelles",
-    "Agrafage",
-    "Humidité",
+    "Agrafage et harpage",
+    "Tassement différentiel",
+    "Retrait-gonflement des argiles (RGA)",
     "Remontées capillaires",
-    "Expertise bâtiment"
+    "Injection de résine",
+    "Micropieux et reprise en sous-œuvre",
+    "Expertise judiciaire bâtiment",
+    "Catastrophe naturelle sécheresse"
   ],
-  "areaServed": {
-    "@type": "State",
-    "name": "Occitanie"
-  }
+  "hasCredential": [
+    { "@type": "EducationalOccupationalCredential", "credentialCategory": "Professional certification", "name": "Expert en Pathologie du Bâtiment — CSTB" },
+    { "@type": "EducationalOccupationalCredential", "credentialCategory": "Professional certification", "name": "Diagnostic Humidité & Étanchéité — AFNOR" }
+  ],
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" },
+    { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" },
+    { "@type": "AdministrativeArea", "name": "Gers (32)" },
+    { "@type": "AdministrativeArea", "name": "Tarn (81)" }
+  ],
+  "url": "https://www.ipb-expertise.fr/notre-expert"
 };
 
 export default function NotreExpertPage() {
@@ -81,7 +95,7 @@ export default function NotreExpertPage() {
             <div>
               <div className="flex items-center gap-2 text-orange-400 text-sm font-bold mb-4">
                 <Award size={18} />
-                <span>E-E-A-T : Expérience, Expertise, Autorité, Confiance</span>
+                <span>Cabinet spécialisé en pathologie du bâtiment</span>
               </div>
               <h1 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
                 L'Expertise au Service de Votre Patrimoine
@@ -153,9 +167,9 @@ export default function NotreExpertPage() {
                   indépendants et compétents.
                 </p>
                 <p>
-                  Trop souvent, le diagnostic est réalisé par l'entreprise qui va vendre les travaux, 
-                  créant un conflit d'intérêt évident. Chez IPB, <strong>nous ne vendons pas de travaux</strong> : 
-                  nous vous fournissons un diagnostic objectif et vous accompagnons dans vos choix.
+                  Trop souvent, le diagnostic est bâclé car il sert uniquement à justifier un devis.
+                  Chez IPB, <strong>le diagnostic est un acte technique à part entière</strong> : 
+                  instrumentation, rapport détaillé, analyse des causes. C'est cette rigueur qui guide ensuite le choix des travaux.
                 </p>
                 <p>
                   Nos experts ont traité des centaines de cas en Haute-Garonne, Tarn-et-Garonne et Gers. 
@@ -230,8 +244,8 @@ export default function NotreExpertPage() {
             <div className="bg-slate-800 rounded-xl p-6 flex items-center gap-4">
               <Users className="text-blue-400 flex-shrink-0" size={32} />
               <div>
-                <h4 className="font-bold">800+ clients</h4>
-                <p className="text-slate-400 text-sm">Nous ont fait confiance</p>
+                <h4 className="font-bold">850+ diagnostics</h4>
+                <p className="text-slate-400 text-sm">Réalisés en Occitanie</p>
               </div>
             </div>
           </div>
@@ -250,7 +264,9 @@ export default function NotreExpertPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {specialites.map((spec, index) => (
               <div key={index} className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200 hover:border-orange-200 transition-all">
-                <div className="text-4xl mb-4">{spec.icon}</div>
+                <div className="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
+                  <Shield className="text-orange-600" size={20} />
+                </div>
                 <h3 className="font-bold text-slate-900 mb-2">{spec.title}</h3>
                 <p className="text-slate-600 text-sm">{spec.description}</p>
               </div>
@@ -267,7 +283,7 @@ export default function NotreExpertPage() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="font-bold text-slate-900 mb-4">📋 Mentions Légales</h3>
+              <h3 className="font-bold text-slate-900 mb-4">Mentions Légales</h3>
               <p className="text-slate-600 mb-4">
                 Toutes nos informations légales sont accessibles et conformes à la réglementation.
               </p>
@@ -276,7 +292,7 @@ export default function NotreExpertPage() {
               </Link>
             </div>
             <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="font-bold text-slate-900 mb-4">💰 Prix Affichés</h3>
+              <h3 className="font-bold text-slate-900 mb-4">Prix Affichés</h3>
               <p className="text-slate-600 mb-4">
                 Nos tarifs sont transparents : diagnostic 249€, agrafage 8-15K€, injection 2-5K€.
               </p>
@@ -285,7 +301,7 @@ export default function NotreExpertPage() {
               </Link>
             </div>
             <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="font-bold text-slate-900 mb-4">⭐ Avis Clients</h3>
+              <h3 className="font-bold text-slate-900 mb-4">Avis Clients</h3>
               <p className="text-slate-600 mb-4">
                 4.9/5 sur Google avec des avis authentiques de nos clients.
               </p>

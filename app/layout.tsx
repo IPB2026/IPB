@@ -2,10 +2,12 @@ import type { Metadata } from "next"
 import { Inter, Space_Grotesk } from "next/font/google"
 import "./globals.css"
 import Script from "next/script"
+import dynamic from "next/dynamic"
 import { Analytics } from "@/components/layout/Analytics"
-import { CookieBanner } from "@/components/CookieBanner"
-import { StickyDiagnosticCta } from "@/components/StickyDiagnosticCta"
-import { ExitIntentPopup } from "@/components/blog/ExitIntentPopup"
+
+const CookieBanner = dynamic(() => import("@/components/CookieBanner").then(m => m.CookieBanner), { ssr: false })
+const StickyDiagnosticCta = dynamic(() => import("@/components/StickyDiagnosticCta").then(m => m.StickyDiagnosticCta), { ssr: false })
+const ExitIntentPopup = dynamic(() => import("@/components/blog/ExitIntentPopup").then(m => m.ExitIntentPopup), { ssr: false })
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -95,6 +97,7 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
+  "@id": "https://www.ipb-expertise.fr#organization",
   "name": "IPB - Institut de Pathologie du Bâtiment",
   "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
   "description": "Expert en traitement des fissures et de l'humidité en Occitanie (31, 82, 32). Solutions techniques (agrafage, injection résine, cuvelage, VMI) avec garantie décennale. Toulouse, Montauban, Auch et environs.",
@@ -117,7 +120,8 @@ const localBusinessSchema = {
   "areaServed": [
     { "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" },
     { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" },
-    { "@type": "AdministrativeArea", "name": "Gers (32)" }
+    { "@type": "AdministrativeArea", "name": "Gers (32)" },
+    { "@type": "AdministrativeArea", "name": "Tarn (81)" }
   ],
   "serviceArea": {
     "@type": "GeoCircle",
@@ -153,7 +157,9 @@ const localBusinessSchema = {
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.9",
-    "reviewCount": "14"
+    "bestRating": "5",
+    "worstRating": "1",
+    "reviewCount": "47"
   }
 };
 
@@ -165,15 +171,14 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
-        {/* DNS-prefetch pour les scripts tiers */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         
-        {/* Google Ads (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-17902440600"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-ads-gtag" strategy="afterInteractive">
+        <Script id="google-ads-gtag" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -182,10 +187,31 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Structured Data */}
+        {/* Structured Data — LocalBusiness */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+        {/* Structured Data — WebSite + SearchAction (sitelinks Google) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "@id": "https://www.ipb-expertise.fr#website",
+            "name": "IPB - Expert Fissures & Humidité",
+            "url": "https://www.ipb-expertise.fr",
+            "publisher": { "@id": "https://www.ipb-expertise.fr#organization" },
+            "inLanguage": "fr-FR",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://www.ipb-expertise.fr/blog?q={search_term_string}"
+              },
+              "query-input": "required name=search_term_string"
+            }
+          }) }}
         />
         
         {/* Theme color for mobile browsers */}

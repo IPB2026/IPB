@@ -58,7 +58,7 @@ const signesGravite = [
 const faqItems = [
   { q: 'Une fissure en escalier est-elle dangereuse ?', a: 'Oui, c\'est le signe d\'un mouvement structurel actif. Sans traitement, elle va s\'aggraver et peut compromettre la stabilité du bâtiment.' },
   { q: 'Peut-on simplement reboucher une fissure en escalier ?', a: 'Non, reboucher sans traiter la cause est inutile. La fissure réapparaîtra. Il faut d\'abord stabiliser la structure (agrafage) puis réparer.' },
-  { q: 'Combien coûte la réparation ?', a: 'L\'agrafage coûte entre 8 000€ et 18 000€ selon l\'étendue. C\'est 3x moins cher que les micropieux et convient à 85% des cas.' },
+  { q: 'Combien coûte la réparation ?', a: 'L\'agrafage coûte entre 8 000€ et 18 000€ selon l\'étendue des désordres. Cette technique convient à la majorité des cas de fissures structurelles sur bâti courant.' },
   { q: 'La fissure est-elle couverte par l\'assurance ?', a: 'Si votre commune est reconnue en catastrophe naturelle sécheresse, oui. Nous vous aidons à constituer votre dossier.' },
 ];
 
@@ -400,7 +400,7 @@ export default function FissureEscalierPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm font-bold mb-6">
             <TrendingUp size={16} />
-            +300 maisons sauvées depuis 2019
+            850+ diagnostics réalisés en Occitanie
           </div>
           
           <h2 className="text-3xl md:text-5xl font-black mb-6">

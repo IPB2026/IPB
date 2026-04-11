@@ -6163,7 +6163,409 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p class="font-bold text-lg text-slate-900 mt-6">Diagnostic expert sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
     `
-  }
+  },
+  'assurance-fissures-maison-indemnisation': {
+    slug: 'assurance-fissures-maison-indemnisation',
+    title: 'Assurance Fissures Maison : Comment Être Indemnisé (Guide 2026)',
+    excerpt: 'Votre maison se fissure et votre assurance refuse de payer ? Entre franchise CAT-NAT, expert d\'assurance partial et délais serrés, on décrypte les pièges et les recours pour obtenir une indemnisation juste.',
+    date: '2026-02-24',
+    dateModified: '2026-03-15',
+    readTime: '11 min',
+    category: 'fissures' as const,
+    author: 'Nicolas G.',
+    metaDescription: 'Guide complet assurance fissures maison 2026. Démarches indemnisation, franchise catastrophe naturelle, expert d\'assuré vs expert assurance. Recours en cas de refus.',
+    keywords: ['assurance fissures maison', 'indemnisation fissures', 'catastrophe naturelle', 'expert assurance', 'franchise cat-nat', 'recours assurance'],
+    content: `
+      <div class="mb-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
+        <p class="font-bold text-red-900 mb-2">40% des sinistrés n'obtiennent pas l'indemnisation qu'ils méritent</p>
+        <p class="text-red-800">La raison ? Ils ne connaissent pas les règles du jeu. L'expert envoyé par votre assurance ne travaille pas pour vous. Ce guide vous donne les armes pour défendre vos droits.</p>
+      </div>
+
+      <h2>Fissures et assurance : qui paie quoi ?</h2>
+      <p>Quand des fissures apparaissent sur votre maison, la première question est toujours la même : <strong>est-ce couvert par mon assurance ?</strong> La réponse dépend de la cause.</p>
+
+      <p>Votre assurance multirisques habitation couvre les fissures dans <strong>deux cas précis</strong> :</p>
+      <ul>
+        <li><strong>Catastrophe naturelle reconnue par arrêté</strong> (sécheresse, inondation, mouvement de terrain) — c'est le cas le plus fréquent en Occitanie</li>
+        <li><strong>Garantie décennale</strong> si la maison a moins de 10 ans et que les fissures résultent d'un vice de construction</li>
+      </ul>
+
+      <p>En dehors de ces deux cas, les fissures liées à l'usure normale, à un défaut d'entretien ou à des travaux de voisinage <strong>ne sont pas couvertes</strong>. Mais attention : beaucoup d'assureurs refusent des dossiers qui devraient être acceptés. C'est là que le bras de fer commence.</p>
+
+      <h2>Catastrophe naturelle sécheresse : le parcours d'indemnisation</h2>
+
+      <h3>Étape 1 : Vérifier que votre commune est reconnue</h3>
+      <p>Consultez le site <strong>Géorisques</strong> (georisques.gouv.fr) ou le Journal Officiel. Votre commune doit avoir fait l'objet d'un <strong>arrêté de reconnaissance de catastrophe naturelle</strong> pour la période où vos fissures sont apparues. En Haute-Garonne, les arrêtés sécheresse 2022 et 2023 couvrent la majorité des communes.</p>
+
+      <h3>Étape 2 : Déclarer le sinistre dans les 10 jours</h3>
+      <p>Vous avez <strong>10 jours</strong> après la publication de l'arrêté au Journal Officiel pour déclarer le sinistre à votre assurance. Passé ce délai, votre dossier peut être rejeté. Envoyez un <strong>courrier recommandé avec accusé de réception</strong> — jamais un simple email ou appel.</p>
+
+      <div class="my-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
+        <p class="font-bold text-orange-900 mb-2">Délai de 10 jours : ne le ratez pas</p>
+        <p class="text-orange-800">Ce délai court à partir de la publication de l'arrêté au Journal Officiel, pas à partir de l'apparition des fissures. Surveillez les publications sur legifrance.gouv.fr ou inscrivez-vous aux alertes de votre mairie.</p>
+      </div>
+
+      <h3>Étape 3 : L'expert d'assurance passe chez vous</h3>
+      <p>L'assureur mandate un expert pour évaluer les dégâts. C'est l'étape la plus critique, et c'est là que la plupart des propriétaires perdent de l'argent.</p>
+
+      <p>Ce que vous devez comprendre : <strong>l'expert d'assurance est payé par l'assurance</strong>. Son intérêt est de minimiser l'indemnisation. Ce n'est pas un allié, c'est un évaluateur mandaté par la partie adverse.</p>
+
+      <h2>Expert d'assurance vs expert d'assuré : la différence qui vaut des milliers d'euros</h2>
+
+      <table class="w-full border-collapse my-6">
+        <thead>
+          <tr class="bg-slate-100">
+            <th class="border border-slate-300 px-4 py-2 text-left text-sm font-bold">Critère</th>
+            <th class="border border-slate-300 px-4 py-2 text-left text-sm font-bold">Expert d'assurance</th>
+            <th class="border border-slate-300 px-4 py-2 text-left text-sm font-bold">Expert d'assuré (vous)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="border border-slate-300 px-4 py-2 text-sm">Payé par</td><td class="border border-slate-300 px-4 py-2 text-sm">L'assureur</td><td class="border border-slate-300 px-4 py-2 text-sm">Vous (le propriétaire)</td></tr>
+          <tr><td class="border border-slate-300 px-4 py-2 text-sm">Objectif</td><td class="border border-slate-300 px-4 py-2 text-sm">Limiter le coût du sinistre</td><td class="border border-slate-300 px-4 py-2 text-sm">Obtenir une juste indemnisation</td></tr>
+          <tr><td class="border border-slate-300 px-4 py-2 text-sm">Rapport</td><td class="border border-slate-300 px-4 py-2 text-sm">Envoyé à l'assureur uniquement</td><td class="border border-slate-300 px-4 py-2 text-sm">Envoyé à vous et opposable</td></tr>
+          <tr><td class="border border-slate-300 px-4 py-2 text-sm">Coût</td><td class="border border-slate-300 px-4 py-2 text-sm">Gratuit pour vous</td><td class="border border-slate-300 px-4 py-2 text-sm">500€ à 1 500€ (déductible fiscalement)</td></tr>
+          <tr><td class="border border-slate-300 px-4 py-2 text-sm">Gain moyen</td><td class="border border-slate-300 px-4 py-2 text-sm">—</td><td class="border border-slate-300 px-4 py-2 text-sm">+30 à 50% sur l'indemnisation</td></tr>
+        </tbody>
+      </table>
+
+      <p>Chez IPB, nous réalisons des <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostics instrumentés</a> qui servent de contre-expertise. Notre rapport, rédigé par un expert en pathologie du bâtiment, est opposable à l'expert d'assurance et fait souvent basculer la négociation en votre faveur.</p>
+
+      <h2>La franchise catastrophe naturelle : combien ça coûte ?</h2>
+      <p>Même en cas de reconnaissance CAT-NAT, vous devez payer une <strong>franchise</strong>. Elle est fixée par la loi et n'est pas négociable :</p>
+      <ul>
+        <li><strong>Franchise standard</strong> : 1 520€ pour les dommages aux biens</li>
+        <li><strong>Franchise majorée</strong> : la franchise double, triple ou quadruple si votre commune n'a pas adopté de Plan de Prévention des Risques Naturels (PPRn) après plusieurs arrêtés CAT-NAT successifs</li>
+      </ul>
+
+      <p>En Haute-Garonne, certaines communes qui ont connu 3 ou 4 arrêtés sécheresse successifs sans PPRn voient leur franchise atteindre <strong>6 080€</strong>. C'est une somme importante, mais souvent bien inférieure au coût des travaux (un <a href="/blog/prix-agrafage-fissures-2026" class="text-orange-600 underline hover:text-orange-700">agrafage coûte entre 8 000€ et 25 000€</a>).</p>
+
+      <h2>Les 5 motifs de refus les plus fréquents (et comment les contrer)</h2>
+
+      <h3>1. "Les fissures sont antérieures à la sécheresse"</h3>
+      <p>L'assureur prétend que les fissures existaient avant l'épisode de sécheresse. <strong>Votre parade</strong> : fournir des photos datées (Google Street View est un allié précieux), des témoignages de voisins, ou un rapport d'expert prouvant la corrélation entre l'apparition des fissures et la période de sécheresse.</p>
+
+      <h3>2. "C'est un problème d'entretien, pas une catastrophe naturelle"</h3>
+      <p>L'assureur attribue les fissures à un défaut d'entretien (gouttière mal entretenue, drainage inexistant). <strong>Votre parade</strong> : un <a href="/blog/diagnostic-structurel-maison" class="text-orange-600 underline hover:text-orange-700">diagnostic structurel</a> par un expert indépendant qui prouve que la cause est bien le retrait-gonflement des argiles.</p>
+
+      <h3>3. "Les travaux proposés sont disproportionnés"</h3>
+      <p>L'expert d'assurance chiffre les travaux à 5 000€ quand la réalité est à 15 000€. <strong>Votre parade</strong> : obtenir 2 ou 3 devis d'entreprises spécialisées (pas de généralistes) et un rapport d'expert indépendant chiffrant précisément les travaux nécessaires.</p>
+
+      <h3>4. "Votre déclaration est hors délai"</h3>
+      <p>Vous avez dépassé les 10 jours. <strong>Votre parade</strong> : les tribunaux sont souvent indulgents si le dépassement est raisonnable et que vous pouvez justifier d'un motif (ignorance de l'arrêté, hospitalisation, etc.). Consultez un avocat spécialisé.</p>
+
+      <h3>5. "La commune n'est pas reconnue CAT-NAT"</h3>
+      <p>Votre commune n'a pas fait l'objet d'un arrêté. <strong>Votre parade</strong> : le maire peut faire une demande de réexamen auprès de la préfecture. Mobilisez vos voisins qui ont le même problème — les demandes collectives ont plus de poids.</p>
+
+      <h2>Le recours en cas de refus : vos options</h2>
+
+      <p>Si votre assurance refuse l'indemnisation malgré tout, trois recours s'offrent à vous :</p>
+
+      <ol>
+        <li><strong>Le médiateur de l'assurance</strong> — gratuit, réponse sous 90 jours. Environ 40% des médiations aboutissent en faveur de l'assuré.</li>
+        <li><strong>L'expertise contradictoire</strong> — vous mandatez votre propre expert. Si les deux experts ne s'accordent pas, un troisième est désigné d'un commun accord.</li>
+        <li><strong>Le tribunal judiciaire</strong> — en dernier recours. Les frais d'avocat sont souvent couverts par la protection juridique de votre contrat d'assurance (vérifiez vos garanties).</li>
+      </ol>
+
+      <h2>Préparer son dossier : la check-list du propriétaire averti</h2>
+      <p>Un dossier solide augmente considérablement vos chances. Rassemblez ces pièces <strong>avant</strong> le passage de l'expert d'assurance :</p>
+      <ul>
+        <li>Photos datées des fissures (avec un mètre ou une pièce de monnaie pour l'échelle)</li>
+        <li>Photos anciennes de la maison sans fissures (Google Street View, photos personnelles)</li>
+        <li>Factures d'entretien récentes (preuve de bon entretien)</li>
+        <li>Rapport de <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic expert indépendant</a></li>
+        <li>2 ou 3 devis d'entreprises spécialisées en <a href="/blog/agrafage-vs-micropieux-choix" class="text-orange-600 underline hover:text-orange-700">agrafage ou micropieux</a></li>
+        <li>Copie de l'arrêté CAT-NAT</li>
+        <li>Copie du contrat d'assurance avec les garanties applicables</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-green-50 border-l-4 border-green-600 rounded-r-lg">
+        <p class="font-bold text-green-900 mb-2">Notre conseil</p>
+        <p class="text-green-800">Faites réaliser un diagnostic expert <strong>avant</strong> le passage de l'expert d'assurance. Quand vous posez un rapport instrumenté de 20 pages sur la table face à un expert qui a passé 30 minutes chez vous, la négociation change de nature. Nos <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostics à 249€ TTC</a> sont déductibles des travaux et constituent une arme redoutable en cas de contestation.</p>
+      </div>
+
+      <h2>Ce que ça change concrètement : un cas réel en Haute-Garonne</h2>
+      <p>M. et Mme D., propriétaires à Colomiers (31), ont déclaré des fissures en escalier sur leur façade après la sécheresse 2023. L'expert d'assurance a chiffré les travaux à <strong>4 200€</strong> — juste un rebouchage cosmétique. Insuffisant.</p>
+
+      <p>Après notre diagnostic instrumenté (relevés au fissuromètre, analyse des fondations, étude de sol), nous avons documenté un tassement différentiel de 12 mm et recommandé un agrafage structurel. Coût réel : <strong>14 800€</strong>.</p>
+
+      <p>Avec notre rapport en main, les propriétaires ont obtenu une indemnisation de <strong>13 280€</strong> (14 800€ - franchise de 1 520€). Sans contre-expertise, ils auraient reçu 2 680€. <strong>Différence : 10 600€.</strong></p>
+
+      <h2>Protéger votre patrimoine : les prochaines étapes</h2>
+      <p>L'assurance ne résout pas le problème structurel — elle finance la réparation. Mais encore faut-il que la réparation soit la bonne. Un simple rebouchage sur des fissures actives, c'est de l'argent jeté. Il faut <strong>stabiliser les fondations</strong> avant de réparer l'esthétique.</p>
+
+      <p>Si votre maison présente des fissures et que vous envisagez une déclaration d'assurance, commencez par un diagnostic professionnel. C'est la base de tout le processus.</p>
+
+      <p class="font-bold text-lg text-slate-900 mt-6">Diagnostic expert sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
+    `
+  },
+  'expert-batiment-independant-vs-expert-assurance': {
+    slug: 'expert-batiment-independant-vs-expert-assurance',
+    title: 'Expert Bâtiment Indépendant vs Expert d\'Assurance : Les Vraies Différences',
+    excerpt: 'L\'expert envoyé par votre assurance ne travaille pas pour vous. Comprendre cette différence peut vous faire gagner des milliers d\'euros sur votre indemnisation fissures ou humidité.',
+    date: '2026-03-10',
+    dateModified: '2026-03-10',
+    readTime: '9 min',
+    category: 'expertise' as const,
+    author: 'Nicolas G.',
+    metaDescription: 'Expert bâtiment indépendant vs expert assurance : rôles, coûts, partialité. Pourquoi mandater son propre expert pour une contre-expertise fissures ou humidité.',
+    keywords: ['expert bâtiment indépendant', 'expert assurance', 'contre-expertise', 'expert fissures', 'expert d assuré', 'expertise contradictoire'],
+    content: `
+      <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
+        <p class="font-bold text-orange-900 mb-2">Un chiffre à retenir</p>
+        <p class="text-orange-800">Les propriétaires qui mandatent un expert indépendant en plus de l'expert d'assurance obtiennent en moyenne <strong>30 à 50% d'indemnisation supplémentaire</strong>. La différence se chiffre souvent en milliers d'euros.</p>
+      </div>
+
+      <h2>Deux experts, deux casquettes</h2>
+      <p>Quand vous déclarez un sinistre fissures à votre assurance, un "expert" passe chez vous. Beaucoup de propriétaires pensent que cet expert est neutre, qu'il est là pour constater objectivement les dégâts. <strong>C'est faux.</strong></p>
+
+      <p>L'expert d'assurance est mandaté et rémunéré par la compagnie d'assurance. Sa mission : évaluer le sinistre au coût le plus juste <em>pour l'assureur</em>. Il n'a aucune obligation envers vous. Il ne vous doit même pas une copie de son rapport.</p>
+
+      <p>L'expert indépendant (ou "expert d'assuré"), en revanche, <strong>travaille pour vous</strong>. Vous le choisissez, vous le payez, et il défend vos intérêts. Son rapport est opposable et constitue un levier de négociation puissant.</p>
+
+      <h2>Ce que fait (et ne fait pas) l'expert d'assurance</h2>
+
+      <h3>Sa visite : 30 minutes chrono</h3>
+      <p>L'expert d'assurance passe en moyenne <strong>20 à 40 minutes</strong> chez vous. Il prend quelques photos, note les fissures visibles, mesure éventuellement leur largeur à l'oeil. Il ne sort généralement aucun instrument de mesure professionnel.</p>
+
+      <h3>Son rapport : orienté vers le minimum</h3>
+      <p>Son rapport — que vous ne verrez probablement jamais en intégralité — tend à :</p>
+      <ul>
+        <li>Minimiser la gravité des fissures ("fissures d'enduit", "retrait superficiel")</li>
+        <li>Sous-estimer le coût des travaux (rebouchage plutôt qu'agrafage)</li>
+        <li>Attribuer les dégâts à des causes non couvertes (usure, entretien)</li>
+        <li>Exclure les dommages "indirects" (carrelage, portes, plomberie déplacée)</li>
+      </ul>
+
+      <h3>Ce qu'il ne fait jamais</h3>
+      <ul>
+        <li>Poser un fissuromètre pour mesurer l'évolution</li>
+        <li>Utiliser un niveau laser pour détecter les déformations</li>
+        <li>Analyser le sol (nature argileuse, teneur en eau)</li>
+        <li>Chercher des fissures cachées (sous enduit, en combles)</li>
+        <li>Évaluer l'état des fondations</li>
+      </ul>
+
+      <h2>Ce que fait un expert bâtiment indépendant</h2>
+
+      <h3>Une visite approfondie : 2 à 3 heures</h3>
+      <p>Chez IPB, chaque <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic sur site</a> dure entre 2 et 3 heures. L'expert inspecte l'intégralité du bâtiment : façades, intérieur, combles, sous-sol, abords. Il cherche ce qui ne se voit pas à l'oeil nu.</p>
+
+      <h3>Des instruments de mesure professionnels</h3>
+      <p>Notre expert arrive avec :</p>
+      <ul>
+        <li><strong>Fissuromètre</strong> : mesure l'ouverture des fissures au 1/10ème de millimètre</li>
+        <li><strong>Niveau laser</strong> : détecte les affaissements de plancher invisibles à l'oeil (à partir de 2 mm)</li>
+        <li><strong>Hygromètre professionnel</strong> : mesure le taux d'humidité dans les murs en profondeur</li>
+        <li><strong>Caméra thermique</strong> : révèle les ponts thermiques et infiltrations cachées</li>
+        <li><strong>Jauge de contrainte</strong> : évalue si une fissure est encore active ou stabilisée</li>
+      </ul>
+
+      <h3>Un rapport détaillé et opposable</h3>
+      <p>Le rapport fait entre <strong>15 et 25 pages</strong>. Il comprend :</p>
+      <ul>
+        <li>Un relevé complet de toutes les pathologies constatées</li>
+        <li>Des mesures chiffrées (ouverture des fissures, déformation, taux d'humidité)</li>
+        <li>L'identification précise des causes (tassement différentiel, RGA, vice de construction)</li>
+        <li>La solution technique recommandée avec chiffrage</li>
+        <li>Des photos annotées et légendées</li>
+      </ul>
+
+      <p>Ce rapport est un <strong>document technique opposable</strong>. Quand vous le présentez à votre assureur face au rapport de 2 pages de son expert, le rapport de force change immédiatement.</p>
+
+      <h2>Comparatif détaillé : les chiffres parlent</h2>
+
+      <table class="w-full border-collapse my-6">
+        <thead>
+          <tr class="bg-slate-100">
+            <th class="border border-slate-300 px-4 py-2 text-left text-sm font-bold">Critère</th>
+            <th class="border border-slate-300 px-4 py-2 text-left text-sm font-bold">Expert assurance</th>
+            <th class="border border-slate-300 px-4 py-2 text-left text-sm font-bold">Expert indépendant IPB</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="border border-slate-300 px-4 py-2 text-sm">Durée visite</td><td class="border border-slate-300 px-4 py-2 text-sm">20-40 min</td><td class="border border-slate-300 px-4 py-2 text-sm">2-3 heures</td></tr>
+          <tr><td class="border border-slate-300 px-4 py-2 text-sm">Instruments</td><td class="border border-slate-300 px-4 py-2 text-sm">Aucun ou mètre ruban</td><td class="border border-slate-300 px-4 py-2 text-sm">5 instruments pro</td></tr>
+          <tr><td class="border border-slate-300 px-4 py-2 text-sm">Rapport</td><td class="border border-slate-300 px-4 py-2 text-sm">2-5 pages (non transmis)</td><td class="border border-slate-300 px-4 py-2 text-sm">15-25 pages (remis au client)</td></tr>
+          <tr><td class="border border-slate-300 px-4 py-2 text-sm">Coût pour vous</td><td class="border border-slate-300 px-4 py-2 text-sm">0€ (payé par l'assureur)</td><td class="border border-slate-300 px-4 py-2 text-sm">249€ TTC (déductible travaux)</td></tr>
+          <tr><td class="border border-slate-300 px-4 py-2 text-sm">Parti pris</td><td class="border border-slate-300 px-4 py-2 text-sm">Intérêt de l'assureur</td><td class="border border-slate-300 px-4 py-2 text-sm">Intérêt du propriétaire</td></tr>
+          <tr><td class="border border-slate-300 px-4 py-2 text-sm">Délai rapport</td><td class="border border-slate-300 px-4 py-2 text-sm">3-6 semaines</td><td class="border border-slate-300 px-4 py-2 text-sm">5-7 jours ouvrés</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Quand mandater un expert indépendant ?</h2>
+      <p>Tous les sinistres ne nécessitent pas une contre-expertise. Mais dans ces situations, elle est quasiment indispensable :</p>
+
+      <ul>
+        <li><strong>L'assureur propose un rebouchage</strong> alors que les fissures semblent structurelles</li>
+        <li><strong>L'indemnisation proposée est inférieure à 5 000€</strong> pour des fissures sur les murs porteurs</li>
+        <li><strong>L'expert d'assurance est passé en moins de 30 minutes</strong> sans instrument</li>
+        <li><strong>Vous avez des signes collatéraux</strong> (portes qui coincent, carrelage fissuré, infiltrations) que l'expert n'a pas relevés</li>
+        <li><strong>L'assureur invoque un défaut d'entretien</strong> pour refuser la prise en charge</li>
+      </ul>
+
+      <h2>Le processus d'expertise contradictoire</h2>
+
+      <p>Si vous n'êtes pas d'accord avec l'évaluation de l'expert d'assurance, vous pouvez demander une <strong>expertise contradictoire</strong>. Le processus :</p>
+
+      <ol>
+        <li><strong>Vous mandatez votre expert</strong> — il réalise son propre diagnostic et rédige un rapport</li>
+        <li><strong>Réunion contradictoire</strong> — les deux experts se rencontrent sur place pour confronter leurs analyses</li>
+        <li><strong>Accord ou désaccord</strong> — s'ils s'accordent, l'indemnisation est fixée. Sinon, un troisième expert est désigné d'un commun accord</li>
+        <li><strong>Le tiers-expert tranche</strong> — sa décision s'impose aux deux parties</li>
+      </ol>
+
+      <p>Dans la grande majorité des cas, la simple présentation d'un rapport d'expert indépendant suffit à faire réévaluer l'indemnisation. L'expertise contradictoire formelle n'est nécessaire que dans 20% des dossiers.</p>
+
+      <h2>Comment choisir son expert indépendant ?</h2>
+      <p>Tous les "experts bâtiment" ne se valent pas. Vérifiez ces critères avant de mandater quelqu'un :</p>
+
+      <ul>
+        <li><strong>Spécialisation en pathologie du bâtiment</strong> — pas un diagnostiqueur immobilier généraliste</li>
+        <li><strong>Assurance responsabilité civile professionnelle</strong> — indispensable pour que le rapport soit opposable</li>
+        <li><strong>Indépendance réelle</strong> — il ne doit pas vendre de travaux lui-même (conflit d'intérêts)</li>
+        <li><strong>Instruments de mesure professionnels</strong> — un expert qui arrive les mains vides n'est pas un expert</li>
+        <li><strong>Connaissance du terrain local</strong> — les pathologies en Occitanie (sol argileux, RGA) sont spécifiques</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg">
+        <p class="font-bold text-blue-900 mb-2">Chez IPB</p>
+        <p class="text-blue-800">Nos experts sont spécialisés en pathologie du bâtiment depuis plus de 10 ans. Nous intervenons exclusivement en Occitanie (31, 82, 32) et connaissons parfaitement les problématiques locales. Notre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic à 249€ TTC</a> est déductible des travaux si vous faites appel à nous pour la réparation.</p>
+      </div>
+
+      <h2>L'investissement qui rapporte le plus</h2>
+      <p>Un diagnostic indépendant à 249€ qui vous fait gagner 5 000€, 10 000€ ou 15 000€ d'indemnisation supplémentaire, c'est le meilleur investissement que vous ferez dans la vie de votre maison. Ne laissez pas l'expert de l'assurance décider seul du sort de votre patrimoine.</p>
+
+      <p class="font-bold text-lg text-slate-900 mt-6">Besoin d'une contre-expertise ? Appelez le 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
+    `
+  },
+  'fondations-maison-ancienne-renforcement': {
+    slug: 'fondations-maison-ancienne-renforcement',
+    title: 'Fondations Maison Ancienne : Signes de Faiblesse et Solutions de Renforcement',
+    excerpt: 'Votre maison a plus de 30 ans et des fissures apparaissent ? Les fondations des maisons anciennes n\'ont pas été conçues pour résister au retrait-gonflement des argiles. Comment savoir si vos fondations lâchent, et que faire.',
+    date: '2026-03-24',
+    dateModified: '2026-03-24',
+    readTime: '12 min',
+    category: 'fissures' as const,
+    author: 'Fabien T.',
+    metaDescription: 'Fondations maison ancienne : signes de faiblesse, diagnostic, solutions de renforcement (agrafage, micropieux, longrines). Guide technique par IPB Expert Bâtiment Toulouse.',
+    keywords: ['fondations maison ancienne', 'renforcement fondations', 'fissures fondations', 'reprise en sous-oeuvre', 'agrafage fondations', 'micropieux maison'],
+    content: `
+      <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
+        <p class="font-bold text-orange-900 mb-2">80% des maisons construites avant 1990 ont des fondations sous-dimensionnées</p>
+        <p class="text-orange-800">Avant les normes DTU 13.12, les fondations étaient souvent réalisées en semelles filantes peu profondes (40-60 cm). Sur sol argileux, c'est insuffisant. Le mouvement de terrain finit toujours par gagner.</p>
+      </div>
+
+      <h2>Pourquoi les maisons anciennes se fissurent-elles plus ?</h2>
+      <p>Une maison des années 60, 70 ou 80, c'est souvent du solide : murs épais, charpente bois, brique foraine pour les toulousaines. Mais les fondations sont leur talon d'Achille.</p>
+
+      <p>Les constructeurs de l'époque coulaient des <strong>semelles filantes de 40 à 60 cm de profondeur</strong>. C'était la norme. Personne n'anticipait les épisodes de sécheresse intense qui assèchent le sol argileux sur 2 mètres de profondeur. Résultat : les fondations "flottent" sur un sol qui bouge, et la maison suit.</p>
+
+      <p>Aujourd'hui, le DTU 13.12 impose des fondations à <strong>80 cm minimum en zone argileuse</strong>, voire 1,20 m en exposition forte. Mais votre maison de 1975 n'a pas bénéficié de cette règle.</p>
+
+      <h2>Les 7 signes que vos fondations faiblissent</h2>
+
+      <p>Les fondations ne lâchent pas d'un coup. Elles envoient des signaux pendant des mois, parfois des années. Les reconnaître tôt permet d'intervenir avant la catastrophe.</p>
+
+      <h3>1. Fissures en escalier sur les façades</h3>
+      <p>Le signe le plus classique. Les fissures suivent les joints de maçonnerie en formant un escalier — elles "montent" d'un côté de la maison. C'est le signe d'un <strong>tassement différentiel</strong> : une partie de la fondation s'enfonce plus que l'autre. Plus d'infos dans notre guide sur les <a href="/blog/fissures-escalier-tassement-differentiel" class="text-orange-600 underline hover:text-orange-700">fissures en escalier</a>.</p>
+
+      <h3>2. Portes et fenêtres qui coincent</h3>
+      <p>Vos portes frottaient bien cet été mais coincent maintenant ? Ou l'inverse ? Ce n'est pas un problème de menuiserie. La maison se déforme sous l'effet du mouvement des fondations, et les cadres de porte ne sont plus d'aplomb. Un article détaillé sur le lien entre <a href="/blog/fissure-ouverture-porte-fenetre" class="text-orange-600 underline hover:text-orange-700">fissures et portes qui coincent</a>.</p>
+
+      <h3>3. Carrelage qui se fissure ou se soulève</h3>
+      <p>Un carrelage qui craque au sol — surtout en diagonale — indique que la dalle bouge. C'est un signe sérieux de mouvement des fondations sous-jacentes.</p>
+
+      <h3>4. Décollements entre la maison et une extension</h3>
+      <p>L'endroit le plus vulnérable d'une maison ancienne, c'est la jonction avec un garage, une véranda ou une extension ajoutée après coup. Ces ajouts ont souvent des fondations encore moins profondes que la maison principale.</p>
+
+      <h3>5. Fissures qui s'ouvrent en été et se referment en hiver</h3>
+      <p>C'est le signe caractéristique du <strong>retrait-gonflement des argiles</strong> (RGA). Le sol se contracte en été (les fissures s'ouvrent) et gonfle en hiver (les fissures se referment partiellement). Si vous observez ce cycle, vos fondations subissent des contraintes cycliques qui les fragilisent d'année en année.</p>
+
+      <h3>6. Murs qui ne sont plus verticaux</h3>
+      <p>Placez un fil à plomb contre un mur intérieur. Si l'écart dépasse <strong>1 cm sur 2 mètres de hauteur</strong>, c'est que le mur s'incline — signe d'un mouvement de fondation. Nos experts mesurent cet écart au <strong>niveau laser</strong> avec une précision de 0,5 mm.</p>
+
+      <h3>7. Apparition de fissures au plafond</h3>
+      <p>Des fissures au plafond combinées à des fissures en façade : la structure entière est sollicitée. Ce n'est plus un problème localisé mais un mouvement d'ensemble. Consultez notre guide sur les <a href="/blog/fissure-plafond-que-faire" class="text-orange-600 underline hover:text-orange-700">fissures au plafond</a> pour en savoir plus.</p>
+
+      <div class="my-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
+        <p class="font-bold text-red-900 mb-2">Plus de 3 signes simultanés = diagnostic urgent</p>
+        <p class="text-red-800">Si vous reconnaissez 3 signes ou plus dans cette liste, vos fondations sont probablement en train de céder. Chaque cycle saisonnier aggrave la situation. Un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic instrumenté</a> permettra de mesurer précisément l'ampleur du problème et de recommander la bonne intervention.</p>
+      </div>
+
+      <h2>Le diagnostic des fondations : ce que mesure un expert</h2>
+
+      <p>On ne peut pas voir les fondations sans creuser. Mais un expert expérimenté sait les "lire" à travers les symptômes du bâtiment :</p>
+
+      <ul>
+        <li><strong>Relevé au fissuromètre</strong> : mesure l'ouverture exacte de chaque fissure et détermine si elle est active (en mouvement) ou stabilisée</li>
+        <li><strong>Nivellement au laser</strong> : détecte les affaissements de plancher et les déformations de murs — même de quelques millimètres</li>
+        <li><strong>Analyse du sol</strong> : identification de la nature argileuse, de la profondeur d'assise et de la sensibilité au RGA via les cartes BRGM</li>
+        <li><strong>Relevé de la végétation</strong> : arbres à proximité, racines agressives, impact sur l'assèchement du sol</li>
+        <li><strong>Historique des sinistres</strong> : consultation des arrêtés CAT-NAT, des travaux antérieurs, et de l'âge de la construction</li>
+      </ul>
+
+      <p>L'ensemble de ces données permet de poser un <strong>diagnostic précis</strong> et de choisir la bonne technique de renforcement — ni trop légère (le problème revient), ni trop lourde (surcoût inutile).</p>
+
+      <h2>Les 3 solutions de renforcement des fondations</h2>
+
+      <h3>Solution 1 : L'agrafage structurel (la plus fréquente)</h3>
+      <p><strong>Principe</strong> : des agrafes en acier inoxydable sont scellées en travers des fissures dans la maçonnerie. Elles "recousent" le mur et empêchent la fissure de s'ouvrir davantage. Des longrines en béton armé peuvent être ajoutées en pied de mur pour solidariser les fondations.</p>
+      <p><strong>Quand l'utiliser</strong> : tassement modéré (&lt; 10 mm), fissures en escalier, sol argileux sans instabilité majeure.</p>
+      <p><strong>Coût</strong> : 8 000€ à 25 000€ selon l'étendue. Voir notre <a href="/blog/prix-agrafage-fissures-2026" class="text-orange-600 underline hover:text-orange-700">guide des prix agrafage 2026</a>.</p>
+      <p><strong>Durée</strong> : 3 à 7 jours de chantier.</p>
+
+      <h3>Solution 2 : Les micropieux (cas sévères)</h3>
+      <p><strong>Principe</strong> : des pieux métalliques sont enfoncés à travers les fondations existantes jusqu'au sol stable (5 à 15 m de profondeur). La maison repose alors sur un sol dur, indépendamment des mouvements d'argile en surface.</p>
+      <p><strong>Quand l'utiliser</strong> : tassement important (&gt; 15 mm), sol très instable, maison lourde (R+1 ou plus), fondations très superficielles.</p>
+      <p><strong>Coût</strong> : 25 000€ à 60 000€. C'est une intervention lourde mais parfois inévitable.</p>
+      <p><strong>Durée</strong> : 1 à 3 semaines de chantier.</p>
+
+      <h3>Solution 3 : L'injection de résine expansive</h3>
+      <p><strong>Principe</strong> : de la résine polyuréthane est injectée sous les fondations. En se dilatant, elle compacte le sol et comble les vides créés par le retrait de l'argile. Elle peut aussi "relever" légèrement une fondation qui s'est affaissée.</p>
+      <p><strong>Quand l'utiliser</strong> : tassement modéré avec vides sous les fondations, sol meuble mais pas instable.</p>
+      <p><strong>Coût</strong> : 5 000€ à 15 000€.</p>
+      <p><strong>Durée</strong> : 1 à 2 jours.</p>
+
+      <h2>Comment choisir entre ces solutions ?</h2>
+
+      <table class="w-full border-collapse my-6">
+        <thead>
+          <tr class="bg-slate-100">
+            <th class="border border-slate-300 px-4 py-2 text-left text-sm font-bold">Situation</th>
+            <th class="border border-slate-300 px-4 py-2 text-left text-sm font-bold">Solution recommandée</th>
+            <th class="border border-slate-300 px-4 py-2 text-left text-sm font-bold">Budget indicatif</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="border border-slate-300 px-4 py-2 text-sm">Fissures en escalier, tassement &lt; 10 mm</td><td class="border border-slate-300 px-4 py-2 text-sm">Agrafage</td><td class="border border-slate-300 px-4 py-2 text-sm">8 000 - 25 000€</td></tr>
+          <tr><td class="border border-slate-300 px-4 py-2 text-sm">Affaissement important, sol très instable</td><td class="border border-slate-300 px-4 py-2 text-sm">Micropieux</td><td class="border border-slate-300 px-4 py-2 text-sm">25 000 - 60 000€</td></tr>
+          <tr><td class="border border-slate-300 px-4 py-2 text-sm">Tassement modéré, vides sous fondations</td><td class="border border-slate-300 px-4 py-2 text-sm">Injection résine</td><td class="border border-slate-300 px-4 py-2 text-sm">5 000 - 15 000€</td></tr>
+          <tr><td class="border border-slate-300 px-4 py-2 text-sm">Fissures + humidité en pied de mur</td><td class="border border-slate-300 px-4 py-2 text-sm">Agrafage + drainage</td><td class="border border-slate-300 px-4 py-2 text-sm">12 000 - 30 000€</td></tr>
+        </tbody>
+      </table>
+
+      <p>Dans <strong>90% des cas</strong> que nous traitons en Occitanie, l'<a href="/blog/agrafage-vs-micropieux-choix" class="text-orange-600 underline hover:text-orange-700">agrafage suffit</a>. Les micropieux sont réservés aux cas les plus graves. Méfiez-vous d'un artisan qui vous propose directement les micropieux sans avoir exploré l'agrafage — c'est 3 fois plus rentable pour lui.</p>
+
+      <h2>Prévenir plutôt que guérir : protéger vos fondations</h2>
+
+      <p>Quelques mesures simples permettent de limiter les mouvements de sol autour de vos fondations :</p>
+
+      <ul>
+        <li><strong>Maintenir une humidité constante autour de la maison</strong> : arrosez le pied de vos murs en été sec (1 heure de goutte-à-goutte par semaine). Ça empêche le sol argileux de se rétracter brutalement.</li>
+        <li><strong>Éloigner les arbres</strong> : tout arbre à moins de sa hauteur adulte de la maison est un risque. Un platane de 15 m devrait être à 15 m de la façade.</li>
+        <li><strong>Vérifier les gouttières et le drainage</strong> : l'eau de pluie qui stagne au pied des murs gonfle l'argile et crée des surpressions sur les fondations.</li>
+        <li><strong>Ne pas creuser à proximité</strong> : piscine, tranchée, terrassement — tout travail de sol à moins de 5 m de la maison peut déstabiliser les fondations.</li>
+      </ul>
+
+      <h2>Quand agir : le bon timing</h2>
+      <p>Le pire moment pour agir, c'est quand il est trop tard. Un agrafage sur des fissures de 2 mm coûte 10 000€. Le même agrafage sur des fissures de 10 mm, après 3 ans d'attente, coûte 25 000€ — et il faut parfois ajouter des micropieux.</p>
+
+      <p>Si votre maison a plus de 30 ans et que vous voyez apparaître des fissures, même fines, faites réaliser un diagnostic. Mieux vaut dépenser 249€ maintenant pour un diagnostic que 40 000€ dans 5 ans pour des micropieux.</p>
+
+      <p class="font-bold text-lg text-slate-900 mt-6">Diagnostic fondations sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
+    `
+  },
 };
 
 // ═══════════════════════════════════════════════════════════════

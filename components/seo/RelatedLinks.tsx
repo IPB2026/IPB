@@ -82,50 +82,58 @@ export function RelatedLinks({
  * Données de liens pour le maillage interne - Fissures
  */
 export const fissuresRelatedLinks: LinkItem[] = [
-  { href: '/fissure-en-escalier-causes/', label: 'Fissures en escalier', description: 'Causes et dangers' },
-  { href: '/fissure-horizontale-danger/', label: 'Fissures horizontales', description: 'Risques structurels' },
-  { href: '/microfissure-quand-sinquieter/', label: 'Microfissures', description: 'Quand s\'inquiéter ?' },
-  { href: '/fissure-secheresse-indemnisation/', label: 'Fissures & sécheresse', description: 'Indemnisation CAT-NAT' },
-  { href: '/fissure-fondation-maison/', label: 'Fissures de fondation', description: 'Diagnostic et solutions' },
+  { href: '/fissure-en-escalier-causes', label: 'Fissures en escalier', description: 'Causes et dangers' },
+  { href: '/fissure-horizontale-danger', label: 'Fissures horizontales', description: 'Risques structurels' },
+  { href: '/microfissure-quand-sinquieter', label: 'Microfissures', description: 'Quand s\'inquiéter ?' },
+  { href: '/fissure-secheresse-indemnisation', label: 'Fissures & sécheresse', description: 'Indemnisation CAT-NAT' },
+  { href: '/fissure-fondation-maison', label: 'Fissures de fondation', description: 'Diagnostic et solutions' },
 ];
 
 /**
  * Données de liens pour le maillage interne - Humidité
  */
 export const humiditeRelatedLinks: LinkItem[] = [
-  { href: '/remontees-capillaires-traitement/', label: 'Remontées capillaires', description: 'Causes et traitement' },
-  { href: '/moisissures-maison-sante/', label: 'Moisissures', description: 'Risques santé' },
-  { href: '/cave-humide-solutions/', label: 'Cave humide', description: 'Solutions efficaces' },
-  { href: '/ponts-thermiques-condensation/', label: 'Ponts thermiques', description: 'Condensation' },
-  { href: '/salpetre-mur-traitement/', label: 'Salpêtre', description: 'Traitement définitif' },
-  { href: '/condensation-ou-infiltration/', label: 'Condensation vs infiltration', description: 'Comment différencier' },
-  { href: '/vmi-ventilation-insufflation/', label: 'VMI', description: 'Ventilation mécanique' },
-  { href: '/merule-champignon-traitement/', label: 'Mérule', description: 'Traitement champignon' },
+  { href: '/remontees-capillaires-traitement', label: 'Remontées capillaires', description: 'Causes et traitement' },
+  { href: '/moisissures-maison-sante', label: 'Moisissures', description: 'Risques santé' },
+  { href: '/cave-humide-solutions', label: 'Cave humide', description: 'Solutions efficaces' },
+  { href: '/ponts-thermiques-condensation', label: 'Ponts thermiques', description: 'Condensation' },
+  { href: '/salpetre-mur-traitement', label: 'Salpêtre', description: 'Traitement définitif' },
+  { href: '/condensation-ou-infiltration', label: 'Condensation vs infiltration', description: 'Comment différencier' },
+  { href: '/vmi-ventilation-insufflation', label: 'VMI', description: 'Ventilation mécanique' },
+  { href: '/merule-champignon-traitement', label: 'Mérule', description: 'Traitement champignon' },
 ];
 
 /**
  * Données de liens pour les villes principales
  */
 export const villesFissuresLinks: LinkItem[] = [
-  { href: '/expert-fissures/toulouse/', label: 'Toulouse' },
-  { href: '/expert-fissures/colomiers/', label: 'Colomiers' },
-  { href: '/expert-fissures/blagnac/', label: 'Blagnac' },
-  { href: '/expert-fissures/muret/', label: 'Muret' },
-  { href: '/expert-fissures/tournefeuille/', label: 'Tournefeuille' },
-  { href: '/expert-fissures/montauban/', label: 'Montauban' },
-  { href: '/expert-fissures/albi/', label: 'Albi' },
-  { href: '/expert-fissures/auch/', label: 'Auch' },
+  { href: '/expert-fissures/toulouse', label: 'Toulouse (31)' },
+  { href: '/expert-fissures/colomiers', label: 'Colomiers (31)' },
+  { href: '/expert-fissures/muret', label: 'Muret (31)' },
+  { href: '/expert-fissures/blagnac', label: 'Blagnac (31)' },
+  { href: '/expert-fissures/tournefeuille', label: 'Tournefeuille (31)' },
+  { href: '/expert-fissures/balma', label: 'Balma (31)' },
+  { href: '/expert-fissures/montauban', label: 'Montauban (82)' },
+  { href: '/expert-fissures/castelsarrasin', label: 'Castelsarrasin (82)' },
+  { href: '/expert-fissures/auch', label: 'Auch (32)' },
+  { href: '/expert-fissures/albi', label: 'Albi (81)' },
+  { href: '/expert-fissures/castres', label: 'Castres (81)' },
+  { href: '/zones-intervention', label: '56 villes →', description: 'Voir toutes nos zones' },
 ];
 
 export const villesHumiditeLinks: LinkItem[] = [
-  { href: '/expert-humidite/toulouse/', label: 'Toulouse' },
-  { href: '/expert-humidite/colomiers/', label: 'Colomiers' },
-  { href: '/expert-humidite/blagnac/', label: 'Blagnac' },
-  { href: '/expert-humidite/muret/', label: 'Muret' },
-  { href: '/expert-humidite/tournefeuille/', label: 'Tournefeuille' },
-  { href: '/expert-humidite/montauban/', label: 'Montauban' },
-  { href: '/expert-humidite/albi/', label: 'Albi' },
-  { href: '/expert-humidite/auch/', label: 'Auch' },
+  { href: '/expert-humidite/toulouse', label: 'Toulouse (31)' },
+  { href: '/expert-humidite/colomiers', label: 'Colomiers (31)' },
+  { href: '/expert-humidite/muret', label: 'Muret (31)' },
+  { href: '/expert-humidite/blagnac', label: 'Blagnac (31)' },
+  { href: '/expert-humidite/tournefeuille', label: 'Tournefeuille (31)' },
+  { href: '/expert-humidite/balma', label: 'Balma (31)' },
+  { href: '/expert-humidite/montauban', label: 'Montauban (82)' },
+  { href: '/expert-humidite/castelsarrasin', label: 'Castelsarrasin (82)' },
+  { href: '/expert-humidite/auch', label: 'Auch (32)' },
+  { href: '/expert-humidite/albi', label: 'Albi (81)' },
+  { href: '/expert-humidite/castres', label: 'Castres (81)' },
+  { href: '/zones-intervention', label: '56 villes →', description: 'Voir toutes nos zones' },
 ];
 
 /**

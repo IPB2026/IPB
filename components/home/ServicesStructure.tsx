@@ -12,25 +12,25 @@ export function ServicesStructure() {
             <div className="inline-flex items-center gap-2 text-orange-600 font-bold mb-6 bg-orange-50 px-5 py-2 rounded-full uppercase text-xs tracking-wider border border-orange-100">
               <Activity size={16} /> Pôle Structure
             </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-6 md:mb-8 leading-tight">Arrêtez l'expansion des fissures avant qu'il ne soit trop tard</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-6 md:mb-8 leading-tight">Comprendre vos fissures pour les traiter définitivement</h2>
             <p className="text-slate-600 text-base md:text-lg mb-6 md:mb-8 leading-relaxed">
-              Le sol argileux toulousain se contracte et se dilate avec les saisons, fragilisant vos fondations. Chaque hiver, les fissures s'agrandissent. 
-              <strong className="text-slate-900"> Ne perdez plus de temps avec des rustines</strong> : notre technique d'agrafage redonne à votre maison sa solidité d'origine, <strong className="text-orange-600">pour 3 fois moins cher que les micropieux</strong>.
+              Une fissure n'est jamais anodine. C'est le symptôme visible d'un mouvement structurel — tassement différentiel, retrait-gonflement des argiles, défaut de fondation. 
+              <strong className="text-slate-900"> Reboucher sans diagnostiquer, c'est masquer le problème.</strong> Notre approche : identifier la cause, puis appliquer la technique adaptée — agrafage, harpage ou reprise en sous-oeuvre.
             </p>
             
             <div className="space-y-4 md:space-y-6">
               <div className="flex gap-4 md:gap-5 p-4 md:p-5 rounded-xl md:rounded-2xl bg-slate-50 hover:bg-orange-50 transition border border-slate-100 group">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white flex items-center justify-center text-orange-600 shrink-0 font-bold shadow-sm group-hover:scale-110 transition text-sm md:text-base">1</div>
                 <div>
-                  <h3 className="font-bold text-base md:text-lg text-slate-900 mb-1">Agrafage & Harpage : la suture de votre mur</h3>
-                  <p className="text-sm md:text-base text-slate-500">Nous insérons des aciers torsadés haute résistance tous les 40cm dans votre maçonnerie. Résultat : votre mur retrouve sa cohérence structurelle et résiste aux mouvements du sol.</p>
+                  <h3 className="font-bold text-base md:text-lg text-slate-900 mb-1">Agrafage structurel : redonner sa cohésion au mur</h3>
+                  <p className="text-sm md:text-base text-slate-500">Des agrafes en acier inoxydable sont scellées dans la maçonnerie tous les 40 cm pour solidariser les deux lèvres de la fissure. Le mur retrouve son comportement monolithique et absorbe les contraintes du sol.</p>
                 </div>
               </div>
               <div className="flex gap-4 md:gap-5 p-4 md:p-5 rounded-xl md:rounded-2xl bg-slate-50 hover:bg-orange-50 transition border border-slate-100 group">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white flex items-center justify-center text-orange-600 shrink-0 font-bold shadow-sm group-hover:scale-110 transition text-sm md:text-base">2</div>
                 <div>
-                  <h3 className="font-bold text-base md:text-lg text-slate-900 mb-1">Matage élastique : fini les réparations à répétition</h3>
-                  <p className="text-sm md:text-base text-slate-500">Nous comblons les fissures avec un mortier résine fibré qui s'adapte aux micro-mouvements. Contrairement à l'enduit classique, il ne se fissurera plus, même en cas de sécheresse.</p>
+                  <h3 className="font-bold text-base md:text-lg text-slate-900 mb-1">Matage résine fibré : absorber les micro-mouvements</h3>
+                  <p className="text-sm md:text-base text-slate-500">Le comblement des fissures est réalisé avec un mortier résine fibré à module d'élasticité contrôlé. Il accompagne les variations dimensionnelles du support sans rompre, contrairement à un enduit rigide classique.</p>
                 </div>
               </div>
             </div>
@@ -74,7 +74,7 @@ export function ServicesStructure() {
                 <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></div>
                 <span className="text-xs font-bold text-slate-400 uppercase tracking-wide">Solution IPB</span>
               </div>
-              <p className="font-bold text-sm text-slate-900">Agrafage structurel <span className="text-orange-600">3x moins cher</span> que les micropieux</p>
+              <p className="font-bold text-sm text-slate-900">Rapport technique <span className="text-orange-600">détaillé remis sous 7 jours</span></p>
             </div>
             
             {/* Galerie mini-images */}
@@ -99,8 +99,8 @@ export function ServicesStructure() {
               </div>
               <div className="flex-1 rounded-xl bg-orange-600 flex items-center justify-center h-24">
                 <div className="text-center text-white px-2">
-                  <p className="font-bold text-lg">+200</p>
-                  <p className="text-xs">maisons sauvées</p>
+                  <p className="font-bold text-lg">850+</p>
+                  <p className="text-xs">diagnostics réalisés</p>
                 </div>
               </div>
             </div>

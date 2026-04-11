@@ -69,10 +69,10 @@ export function ContactSection() {
               Zone d'intervention
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6 leading-tight">
-              Nous intervenons en <span className="text-orange-600">Haute-Garonne, Tarn-et-Garonne et Gers</span>
+              Parlons de votre <span className="text-orange-600">situation</span>
             </h2>
             <p className="text-slate-600 text-lg mb-8 leading-relaxed">
-              Nos experts se déplacent rapidement à Toulouse, Montauban, Auch et dans toute la région Occitanie (31, 82, 32) pour diagnostiquer et traiter vos problèmes de fissures et d'humidité.
+              Chaque bâtiment est un cas particulier. Décrivez-nous votre problème — nos experts en pathologie du bâtiment vous orienteront vers la bonne démarche. Intervention sur Toulouse, Montauban, Auch et 56 communes en Occitanie.
             </p>
 
             {/* Coordonnées */}
@@ -109,9 +109,9 @@ export function ContactSection() {
           <div>
             {/* Formulaire de contact */}
             <div className="bg-slate-50 rounded-3xl p-8 md:p-10 border border-slate-200">
-              <h3 className="text-2xl font-extrabold text-slate-900 mb-4">Contactez-nous</h3>
+              <h3 className="text-2xl font-extrabold text-slate-900 mb-4">Demander un avis d'expert</h3>
               <p className="text-slate-600 mb-6">
-                Une question ? Un projet ? Nos experts sont à votre écoute pour vous conseiller.
+                Décrivez votre situation. Un expert en pathologie du bâtiment vous répond sous 24h.
               </p>
 
               {isSubmitted ? (
@@ -213,8 +213,8 @@ export function ContactSection() {
                 <div className="w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
               </div>
               <div>
-                <p className="font-bold text-slate-900 text-lg">Disponible 7j/7 pour les urgences</p>
-                <p className="text-slate-600 text-sm">Intervention rapide dans un rayon de 50 km autour de Toulouse</p>
+                <p className="font-bold text-slate-900 text-lg">Expert disponible 7j/7</p>
+                <p className="text-slate-600 text-sm">Diagnostic sur site sous 48h — 56 communes couvertes en Occitanie</p>
               </div>
             </div>
             <Link

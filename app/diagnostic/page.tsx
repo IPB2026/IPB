@@ -295,13 +295,55 @@ export default function DiagnosticPage() {
   const [riskScore, setRiskScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showCallbackForm, setShowCallbackForm] = useState(false);
   const [callbackInfo, setCallbackInfo] = useState({ name: '', phone: '', email: '' });
   const [photoFile, setPhotoFile] = useState<File | null>(null);
   const [photoPreview, setPhotoPreview] = useState<string | null>(null);
-  const [selectedNeed, setSelectedNeed] = useState<'expertise' | 'travaux' | null>(null);
   const [callbackPhotoFile, setCallbackPhotoFile] = useState<File | null>(null);
   const [callbackPhotoPreview, setCallbackPhotoPreview] = useState<string | null>(null);
+
+  const resizeImage = (file: File, maxWidth = 1200, quality = 0.8): Promise<File> => {
+    return new Promise((resolve) => {
+      const img = new window.Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        let { width, height } = img;
+        if (width > maxWidth) {
+          height = Math.round((height * maxWidth) / width);
+          width = maxWidth;
+        }
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d')!;
+        ctx.drawImage(img, 0, 0, width, height);
+        canvas.toBlob(
+          (blob) => {
+            if (blob) {
+              resolve(new File([blob], file.name, { type: 'image/jpeg' }));
+            } else {
+              resolve(file);
+            }
+          },
+          'image/jpeg',
+          quality
+        );
+      };
+      img.onerror = () => resolve(file);
+      img.src = URL.createObjectURL(file);
+    });
+  };
+
+  const handlePhotoSelect = async (file: File, target: 'main' | 'callback') => {
+    if (file.size > 10 * 1024 * 1024) { alert('La photo ne doit pas dépasser 10 Mo'); return; }
+    const resized = await resizeImage(file);
+    const previewUrl = URL.createObjectURL(resized);
+    if (target === 'main') {
+      setPhotoFile(resized);
+      setPhotoPreview(previewUrl);
+    } else {
+      setCallbackPhotoFile(resized);
+      setCallbackPhotoPreview(previewUrl);
+    }
+  };
   const [submitted, setSubmitted] = useState(false);
   const [earlyPhone, setEarlyPhone] = useState('');
   const [earlyPhoneCaptured, setEarlyPhoneCaptured] = useState(false);
@@ -418,14 +460,8 @@ export default function DiagnosticPage() {
     }
   };
 
-  // Ref pour le container scrollable
-  const scrollRef = React.useRef<HTMLDivElement>(null);
-
-  // Reset scroll interne à chaque changement d'étape
   useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = 0;
-    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [step, isAnalyzing, showResult, submitted]);
 
   // Gestion du choix de parcours
@@ -474,9 +510,8 @@ export default function DiagnosticPage() {
       formData.append('answers', JSON.stringify(answers));
       formData.append('riskScore', String(score));
       if (recaptchaToken) formData.append('recaptchaToken', recaptchaToken);
-      if (photoPreview && photoFile) {
-        formData.append('photo', photoPreview);
-        formData.append('photoName', photoFile.name);
+      if (photoFile) {
+        formData.append('photoFile', photoFile);
       }
       const result = await submitDiagnosticLead(formData);
       if (!result.success && process.env.NODE_ENV === 'development') {
@@ -498,7 +533,9 @@ export default function DiagnosticPage() {
   // Callback
   const handleSubmitCallback = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!callbackInfo.name.trim() || !callbackInfo.phone.trim()) {
+    const name = (callbackInfo.name || contactInfo.name).trim();
+    const phone = callbackInfo.phone.trim();
+    if (!name || !phone) {
       alert('Merci de renseigner votre nom et votre téléphone.');
       return;
     }
@@ -507,29 +544,26 @@ export default function DiagnosticPage() {
     const recaptchaToken = await getToken('diagnostic_callback');
     try {
       const formData = new FormData();
-      formData.append('name', callbackInfo.name);
-      formData.append('phone', callbackInfo.phone);
+      formData.append('name', name);
+      formData.append('phone', phone);
       formData.append('email', callbackInfo.email || contactInfo.email || '');
       formData.append('path', path || 'fissure');
       formData.append('answers', JSON.stringify(answers));
       formData.append('riskScore', String(riskScore));
       formData.append('needType', 'diagnostic');
       if (recaptchaToken) formData.append('recaptchaToken', recaptchaToken);
-      if (callbackPhotoPreview && callbackPhotoFile) {
-        formData.append('photo', callbackPhotoPreview);
-        formData.append('photoName', callbackPhotoFile.name);
-      } else if (photoPreview && photoFile) {
-        formData.append('photo', photoPreview);
-        formData.append('photoName', photoFile.name);
+      if (callbackPhotoFile) {
+        formData.append('photoFile', callbackPhotoFile);
+      } else if (photoFile) {
+        formData.append('photoFile', photoFile);
       }
       const result = await submitDiagnosticCallback(formData);
       if (result.success) {
         setSubmitted(true);
-        setShowCallbackForm(false);
       } else {
         alert(result.message);
       }
-    } catch (error) {
+    } catch {
       alert('Erreur lors de la demande. Appelez-nous au 05 82 95 33 75.');
     }
     setIsSubmitting(false);
@@ -540,24 +574,12 @@ export default function DiagnosticPage() {
   const expertReport = showResult && path ? getExpertReport(path, riskScore) : null;
 
   return (
-    <div className="h-[100dvh] bg-gradient-to-br from-slate-50 via-white to-orange-50/30 flex justify-center overflow-hidden">
-      {/* Barre d'appel mobile fixe — visible uniquement sur mobile */}
-      <a
-        href="tel:0582953375"
-        onClick={trackPhoneClick}
-        className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-slate-900 text-white flex items-center justify-center gap-2.5 py-3 safe-area-bottom"
-        style={{ paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}
-      >
-        <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-        <span className="text-sm font-semibold">05 82 95 33 75</span>
-        <span className="text-xs text-slate-400">— Appeler un expert</span>
-      </a>
+    <div className="min-h-[100dvh] bg-gradient-to-br from-slate-50 via-white to-orange-50/30 flex justify-center">
 
-      <div ref={scrollRef} className="w-full max-w-2xl md:max-w-3xl overflow-y-auto overscroll-none px-4 pt-6 pb-20 md:pb-8 md:pt-8">
+      <div className="w-full max-w-2xl md:max-w-3xl px-4 pt-6 pb-10 md:pt-8">
 
-        {/* ===== RETOUR ACCUEIL (desktop uniquement, pas de logo) ===== */}
         {step > 0 && (
-          <div className="hidden md:flex items-center mb-4">
+          <div className="flex items-center mb-4">
             <a href="/" className="flex items-center gap-2 text-slate-400 hover:text-slate-700 transition-colors">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
               <span className="text-xs font-medium">Retour au site</span>
@@ -687,8 +709,8 @@ export default function DiagnosticPage() {
                     <p className="text-[10px] text-slate-400 font-medium">⭐ Google</p>
                   </div>
                   <div className="bg-slate-50 rounded-lg p-2.5 text-center">
-                    <p className="text-lg font-extrabold text-slate-900">+200</p>
-                    <p className="text-[10px] text-slate-400 font-medium">chantiers réalisés</p>
+                    <p className="text-lg font-extrabold text-slate-900">850+</p>
+                    <p className="text-[10px] text-slate-400 font-medium">diagnostics réalisés</p>
                   </div>
                   <div className="bg-slate-50 rounded-lg p-2.5 text-center">
                     <p className="text-lg font-extrabold text-slate-900">10 ans</p>
@@ -923,7 +945,7 @@ export default function DiagnosticPage() {
                   <p className="text-orange-600 text-[11px] font-medium bg-orange-50 border border-orange-200 rounded-lg px-3 py-1.5">
                     Renseignez au moins votre email ou téléphone pour recevoir le diagnostic
                   </p>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className="block text-xs font-semibold text-slate-600 mb-1">Email {!contactInfo.phone.trim() ? '*' : ''}</label>
                       <input
@@ -964,7 +986,7 @@ export default function DiagnosticPage() {
                     />
                   </div>
 
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className="block text-xs font-semibold text-slate-600 mb-1">Année construction</label>
                       <select
@@ -1003,13 +1025,7 @@ export default function DiagnosticPage() {
                       accept="image/*"
                       onChange={(e) => {
                         const file = e.target.files?.[0];
-                        if (file) {
-                          if (file.size > 5 * 1024 * 1024) { alert('La photo ne doit pas dépasser 5 Mo'); return; }
-                          setPhotoFile(file);
-                          const reader = new FileReader();
-                          reader.onloadend = () => setPhotoPreview(reader.result as string);
-                          reader.readAsDataURL(file);
-                        }
+                        if (file) handlePhotoSelect(file, 'main');
                       }}
                       className="hidden"
                       id="photo-upload"
@@ -1182,72 +1198,21 @@ export default function DiagnosticPage() {
                     </div>
                   </div>
 
-                  {/* Formulaire de rappel */}
-                  {!showCallbackForm ? (
-                    <div className="space-y-3">
-                      <div className="grid grid-cols-2 gap-3">
+                  <form onSubmit={handleSubmitCallback} className="space-y-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div>
+                        <label className="block text-xs font-semibold text-slate-600 mb-1">Nom *</label>
                         <input
                           type="text"
                           value={callbackInfo.name || contactInfo.name}
                           onChange={(e) => setCallbackInfo({ ...callbackInfo, name: e.target.value })}
                           placeholder="Votre nom"
                           className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all"
-                        />
-                        <input
-                          type="tel"
-                          value={callbackInfo.phone}
-                          onChange={(e) => setCallbackInfo({ ...callbackInfo, phone: e.target.value })}
-                          placeholder="Votre téléphone"
-                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all"
-                        />
-                      </div>
-
-                      <button
-                        type="button"
-                        onClick={() => {
-                          if (!callbackInfo.name && !contactInfo.name) { alert('Merci de renseigner votre nom'); return; }
-                          if (!callbackInfo.phone) { alert('Merci de renseigner votre téléphone'); return; }
-                          setCallbackInfo({ ...callbackInfo, name: callbackInfo.name || contactInfo.name });
-                          setSelectedNeed('expertise');
-                          setShowCallbackForm(true);
-                        }}
-                        className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3.5 rounded-xl transition-colors"
-                      >
-                        Être rappelé sous 24h
-                      </button>
-
-                      <div className="flex items-center justify-center gap-4 text-[10px] text-slate-400">
-                        <span>✓ Sans engagement</span>
-                        <span>✓ Rappel gratuit</span>
-                        <span>✓ Intervention 48-72h</span>
-                      </div>
-
-                      <div className="text-center pt-2 border-t border-slate-100">
-                        <a href="tel:0582953375" onClick={trackPhoneClick} className="text-slate-500 text-xs hover:text-slate-700 transition-colors font-medium">
-                          📞 Appel direct : 05 82 95 33 75
-                        </a>
-                      </div>
-                    </div>
-                  ) : (
-                    <form onSubmit={handleSubmitCallback} className="space-y-3">
-                      <div className="bg-green-50 border border-green-100 rounded-xl p-3 text-center mb-1">
-                        <p className="text-green-700 text-xs font-medium">
-                          Confirmez vos coordonnées pour que notre expert vous rappelle
-                        </p>
-                      </div>
-
-                      <div>
-                        <label className="block text-xs font-semibold text-slate-600 mb-1">Nom</label>
-                        <input
-                          type="text"
-                          value={callbackInfo.name || contactInfo.name}
-                          onChange={(e) => setCallbackInfo({ ...callbackInfo, name: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all"
                           required
                         />
                       </div>
                       <div>
-                        <label className="block text-xs font-semibold text-slate-600 mb-1">Téléphone</label>
+                        <label className="block text-xs font-semibold text-slate-600 mb-1">Téléphone *</label>
                         <input
                           type="tel"
                           value={callbackInfo.phone}
@@ -1257,72 +1222,69 @@ export default function DiagnosticPage() {
                           required
                         />
                       </div>
+                    </div>
 
-                      {/* Photo optionnelle si pas déjà transmise */}
-                      {!photoPreview && (
-                        <div className="border border-dashed border-slate-200 rounded-xl p-3 hover:border-slate-300 transition-colors">
-                          <input
-                            type="file"
-                            accept="image/*"
-                            onChange={(e) => {
-                              const file = e.target.files?.[0];
-                              if (file) {
-                                if (file.size > 5 * 1024 * 1024) { alert('La photo ne doit pas dépasser 5 Mo'); return; }
-                                setCallbackPhotoFile(file);
-                                const reader = new FileReader();
-                                reader.onloadend = () => setCallbackPhotoPreview(reader.result as string);
-                                reader.readAsDataURL(file);
-                              }
-                            }}
-                            className="hidden"
-                            id="callback-photo-upload"
-                          />
-                          <label htmlFor="callback-photo-upload" className="flex items-center gap-2.5 cursor-pointer text-xs">
-                            {callbackPhotoPreview ? (
-                              <div className="flex items-center gap-2.5 w-full">
-                                <img src={callbackPhotoPreview} alt="Aperçu" className="w-10 h-10 object-cover rounded-lg" />
-                                <span className="text-green-600 font-medium flex-1">Photo ajoutée</span>
-                                <button
-                                  type="button"
-                                  onClick={(e) => { e.preventDefault(); setCallbackPhotoFile(null); setCallbackPhotoPreview(null); }}
-                                  className="text-red-400 hover:text-red-600"
-                                >✕</button>
-                              </div>
-                            ) : (
-                              <span className="text-slate-400">📷 Ajouter une photo (optionnel)</span>
-                            )}
-                          </label>
-                        </div>
+                    {!photoPreview && (
+                      <div className="border border-dashed border-slate-200 rounded-xl p-3 hover:border-slate-300 transition-colors">
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) handlePhotoSelect(file, 'callback');
+                          }}
+                          className="hidden"
+                          id="callback-photo-upload"
+                        />
+                        <label htmlFor="callback-photo-upload" className="flex items-center gap-2.5 cursor-pointer text-xs">
+                          {callbackPhotoPreview ? (
+                            <div className="flex items-center gap-2.5 w-full">
+                              <img src={callbackPhotoPreview} alt="Aperçu" className="w-10 h-10 object-cover rounded-lg" />
+                              <span className="text-green-600 font-medium flex-1">Photo ajoutée</span>
+                              <button
+                                type="button"
+                                onClick={(e) => { e.preventDefault(); setCallbackPhotoFile(null); setCallbackPhotoPreview(null); }}
+                                className="text-red-400 hover:text-red-600"
+                              >✕</button>
+                            </div>
+                          ) : (
+                            <span className="text-slate-400">📷 Ajouter une photo (optionnel)</span>
+                          )}
+                        </label>
+                      </div>
+                    )}
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3.5 rounded-xl transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                          Envoi en cours...
+                        </>
+                      ) : (
+                        'Être rappelé sous 24h →'
                       )}
+                    </button>
 
-                      <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3.5 rounded-xl transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
-                      >
-                        {isSubmitting ? (
-                          <>
-                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                            Envoi en cours...
-                          </>
-                        ) : (
-                          'Confirmer ma demande de rappel'
-                        )}
-                      </button>
+                    <div className="flex items-center justify-center gap-4 text-[10px] text-slate-400">
+                      <span>✓ Sans engagement</span>
+                      <span>✓ Rappel gratuit</span>
+                      <span>✓ Intervention 48-72h</span>
+                    </div>
 
-                      <button
-                        type="button"
-                        onClick={() => { setShowCallbackForm(false); setCallbackPhotoFile(null); setCallbackPhotoPreview(null); }}
-                        className="w-full text-slate-400 hover:text-slate-600 text-xs py-1 transition-colors"
-                      >
-                        ← Retour
-                      </button>
+                    <div className="text-center pt-2 border-t border-slate-100">
+                      <a href="tel:0582953375" onClick={trackPhoneClick} className="text-slate-500 text-xs hover:text-slate-700 transition-colors font-medium">
+                        📞 Appel direct : 05 82 95 33 75
+                      </a>
+                    </div>
 
-                      <p className="text-[10px] text-slate-400 text-center">
-                        🔒 Données sécurisées et confidentielles
-                      </p>
-                    </form>
-                  )}
+                    <p className="text-[10px] text-slate-400 text-center">
+                      🔒 Données sécurisées et confidentielles
+                    </p>
+                  </form>
                 </div>
               </div>
             )}
@@ -1371,15 +1333,10 @@ export default function DiagnosticPage() {
 
         {/* Footer info */}
         {step > 0 && step <= totalQuestions && (
-          <div className="mt-4 space-y-2">
+          <div className="mt-4">
             <p className="text-center text-slate-400 text-xs">
               ⏱️ Encore {totalQuestions - step + 1} question{totalQuestions - step > 0 ? 's' : ''} • Réponses confidentielles
             </p>
-            <div className="text-center">
-              <a href="tel:0582953375" onClick={trackPhoneClick} className="inline-flex items-center gap-1.5 text-slate-400 hover:text-orange-600 text-xs transition-colors">
-                📞 Préférez appeler ? <span className="font-semibold text-slate-500 hover:text-orange-600">05 82 95 33 75</span>
-              </a>
-            </div>
           </div>
         )}
       </div>

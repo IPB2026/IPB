@@ -1,5 +1,3 @@
-"use client"
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Phone, CheckCircle, Shield, Star, Activity, Droplets } from 'lucide-react';
@@ -30,23 +28,23 @@ export function Hero() {
               </span>
             </div>
             
-            {/* H1 équilibré */}
+            {/* H1 — match exact "expert fissures toulouse" */}
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
-              Expert{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-300">Fissures</span>
-              {' '}&{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Humidité</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-300">Expert Fissures</span>
               {' '}à Toulouse
-              <span className="block mt-2 text-white text-3xl md:text-4xl lg:text-5xl">
-                On <span className="text-emerald-400">sauve votre maison</span>.
+              <span className="block mt-2 text-3xl md:text-4xl lg:text-5xl">
+                &{' '}<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Traitement Humidité</span>{' '}en Occitanie
+              </span>
+              <span className="block mt-3 text-white text-xl md:text-2xl lg:text-3xl font-medium tracking-normal">
+                Diagnostic. Analyse. <span className="text-emerald-400">Solution durable.</span>
               </span>
             </h1>
             
-            {/* Sous-titre équilibré */}
             <p className="text-lg md:text-xl text-slate-200 mb-6 max-w-2xl leading-relaxed">
-              Depuis 2019, nous traitons les <strong className="text-orange-300">fissures structurelles</strong> et 
-              les <strong className="text-blue-300">problèmes d'humidité</strong> en Haute-Garonne, Tarn-et-Garonne et Gers. 
-              Diagnostic expert sous 48h.
+              Cabinet spécialisé en <strong className="text-orange-300">pathologie du bâtiment</strong>.
+              Nous identifions l'origine exacte de vos <strong className="text-orange-300">fissures</strong> et 
+              de vos <strong className="text-blue-300">problèmes d'humidité</strong>, puis nous les traitons à la source.
+              850+ diagnostics réalisés en Occitanie.
             </p>
             
             {/* Double expertise - Cards côte à côte */}
@@ -54,18 +52,18 @@ export function Hero() {
               <div className="bg-orange-500/10 border border-orange-500/30 rounded-xl p-3">
                 <div className="flex items-center gap-2 mb-1">
                   <Activity size={16} className="text-orange-400" />
-                  <span className="text-orange-300 text-xs font-bold uppercase">Fissures</span>
+                  <span className="text-orange-300 text-xs font-bold uppercase">Structure</span>
                 </div>
-                <p className="text-white text-sm font-bold">Agrafage & Harpage</p>
-                <p className="text-slate-300 text-xs">Garantie décennale</p>
+                <p className="text-white text-sm font-bold">Agrafage structurel</p>
+                <p className="text-slate-300 text-xs">Garanti 10 ans</p>
               </div>
               <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-3">
                 <div className="flex items-center gap-2 mb-1">
                   <Droplets size={16} className="text-blue-400" />
                   <span className="text-blue-300 text-xs font-bold uppercase">Humidité</span>
                 </div>
-                <p className="text-white text-sm font-bold">Injection & Cuvelage</p>
-                <p className="text-slate-300 text-xs">Garantie 30 ans</p>
+                <p className="text-white text-sm font-bold">Injection résine</p>
+                <p className="text-slate-300 text-xs">Garanti 30 ans</p>
               </div>
             </div>
             
@@ -91,7 +89,7 @@ export function Hero() {
             <div className="bg-green-500/20 border border-green-400/40 rounded-xl p-3 mb-8 flex items-center gap-3">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse flex-shrink-0" />
               <p className="text-green-200 text-sm flex-1">
-                <strong className="text-green-100">Disponible maintenant</strong> — Réponse en moins de 2h
+                <strong className="text-green-100">Expert disponible</strong> — Diagnostic sur site sous 48h
               </p>
               <a href="tel:0582953375" className="bg-green-500 hover:bg-green-600 text-white text-sm font-bold px-4 py-1.5 rounded-lg transition-colors flex-shrink-0">
                 Appeler
@@ -126,7 +124,7 @@ export function Hero() {
                 height={400}
                 sizes="(max-width: 1024px) 0px, 300px"
                 className="w-full h-64 object-cover"
-                priority
+                loading="lazy"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent p-4">
                 <div className="flex items-center gap-2">

@@ -7,14 +7,14 @@ import { Testimonials } from '@/components/home/Testimonials';
 import { fissureFaq } from '@/app/data/faqs';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Activity, AlertTriangle, CheckCircle, ArrowRight, Shield, Phone, Clock, Star, TrendingDown, Award } from 'lucide-react';
+import { Activity, AlertTriangle, CheckCircle, ArrowRight, Shield, Phone, Clock, Star, Award } from 'lucide-react';
 import Script from 'next/script';
 import { DiagnosticHowToSchema, AgrafageHowToSchema } from '@/components/seo/HowToSchema';
 import { ExpertiseFissuresBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
-  title: 'Expert Fissures Occitanie (31-82-32) | Agrafage Garanti 10 ans | Diagnostic 249€ | IPB',
-  description: 'Fissures maison Toulouse, Montauban, Auch ? Diagnostic expert, agrafage/harpage, reprise en sous-oeuvre, renforts structurels. Garantie décennale. Diagnostic 249€ (déductible). ☎ 05 82 95 33 75. Intervention 48h.',
+  title: 'Expert Fissures Toulouse & Occitanie | Agrafage | IPB',
+  description: 'Fissures maison à Toulouse, Montauban, Auch ? Agrafage garanti 10 ans, diagnostic 249€ déductible. Intervention sous 48h. 05 82 95 33 75',
   keywords: [
     'expert fissures toulouse',
     'agrafage fissures toulouse',
@@ -62,10 +62,10 @@ const generateServiceJsonLd = () => ({
     "@type": "LocalBusiness",
     "name": "IPB - Institut de Pathologie du Bâtiment",
     "telephone": "+33582953375",
-    "address": { "@type": "PostalAddress", "addressLocality": "Toulouse", "addressRegion": "Occitanie", "postalCode": "31000", "addressCountry": "FR" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "14" }
+    "address": { "@type": "PostalAddress", "streetAddress": "54 avenue Jean Jaurès", "addressLocality": "Tournefeuille", "addressRegion": "Occitanie", "postalCode": "31170", "addressCountry": "FR" },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "bestRating": "5", "worstRating": "1", "reviewCount": "47" }
   },
-  "areaServed": [{ "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" }, { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" }, { "@type": "AdministrativeArea", "name": "Gers (32)" }],
+  "areaServed": [{ "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" }, { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" }, { "@type": "AdministrativeArea", "name": "Gers (32)" }, { "@type": "AdministrativeArea", "name": "Tarn (81)" }],
   "description": "Expert en traitement des fissures structurelles. Agrafage, harpage. Alternative économique aux micropieux avec garantie décennale."
 });
 
@@ -113,27 +113,27 @@ export default function FissuresPage() {
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
                 Expert <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">Fissures</span> à Toulouse
-                <span className="block text-3xl md:text-4xl mt-2 text-white">Agrafage garanti 10 ans. On les stoppe.</span>
+                <span className="block text-3xl md:text-4xl mt-2 text-white">Diagnostic instrumenté. Agrafage garanti 10 ans.</span>
               </h1>
               
               <p className="text-xl text-slate-300 mb-6 leading-relaxed">
-                <strong className="text-white">+300 maisons sauvées</strong> sur les départements 31, 82 et 32 depuis 2019.
-                Agrafage structurel <strong className="text-orange-300">3x moins cher que les micropieux</strong>.
+                <strong className="text-white">850+ diagnostics réalisés</strong> en Haute-Garonne, Tarn-et-Garonne et Gers depuis 2019.
+                Agrafage structurel adapté au <strong className="text-orange-300">bâti sur sol argileux</strong>.
               </p>
               
-              {/* Chiffre clé */}
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mb-8 border border-white/20">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-slate-400">Coût moyen agrafage</p>
-                    <p className="text-2xl font-bold text-white">8 000€ - 15 000€</p>
+                    <p className="text-sm text-slate-400">Diagnostic expert sur site</p>
+                    <p className="text-2xl font-bold text-white">249€ TTC</p>
                   </div>
                   <div className="text-center px-4 border-l border-white/20">
-                    <p className="text-sm text-slate-400">vs Micropieux</p>
-                    <p className="text-lg font-bold text-slate-400 line-through">40 000€+</p>
+                    <p className="text-sm text-slate-400">Agrafage (ordre de grandeur)</p>
+                    <p className="text-lg font-bold text-white">8 000€ – 15 000€</p>
                   </div>
                   <div className="bg-green-500/20 px-3 py-2 rounded-lg">
-                    <p className="text-green-400 font-bold text-lg">-65%</p>
+                    <p className="text-green-400 font-bold text-xs">Déductible</p>
+                    <p className="text-green-400 font-bold text-sm">des travaux</p>
                   </div>
                 </div>
               </div>
@@ -162,11 +162,11 @@ export default function FissuresPage() {
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center">
-                      <TrendingDown className="text-orange-400" size={24} />
+                      <Activity className="text-orange-400" size={24} />
                     </div>
                     <div>
-                      <p className="font-bold text-white">3x moins cher</p>
-                      <p className="text-sm text-slate-400">que les micropieux</p>
+                      <p className="font-bold text-white">Diagnostic instrumenté</p>
+                      <p className="text-sm text-slate-400">Fissuromètre, laser, rapport détaillé</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
@@ -175,7 +175,7 @@ export default function FissuresPage() {
                     </div>
                     <div>
                       <p className="font-bold text-white">Garantie décennale</p>
-                      <p className="text-sm text-slate-400">Travaux assurés 10 ans</p>
+                      <p className="text-sm text-slate-400">Travaux assurés SMABTP</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
@@ -183,8 +183,8 @@ export default function FissuresPage() {
                       <Award className="text-green-400" size={24} />
                     </div>
                     <div>
-                      <p className="font-bold text-white">+200 interventions</p>
-                      <p className="text-sm text-slate-400">en Occitanie (31-82-32)</p>
+                      <p className="font-bold text-white">850+ diagnostics</p>
+                      <p className="text-sm text-slate-400">en Occitanie (31-82-32-81)</p>
                     </div>
                   </div>
                 </div>
@@ -329,16 +329,12 @@ export default function FissuresPage() {
             </div>
           </div>
           
-          {/* CTA intermédiaire */}
           <div className="bg-orange-600 rounded-2xl p-8 text-white text-center">
-            <p className="text-xl font-bold mb-4">Fissures qui s'aggravent ?</p>
-            <p className="text-orange-100 mb-6">Chaque mois d'attente = +15% sur la facture finale</p>
+            <p className="text-xl font-bold mb-4">Vous constatez des fissures ?</p>
+            <p className="text-orange-100 mb-6">Un diagnostic précoce permet de dimensionner l'intervention au juste nécessaire.</p>
             <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-50 transition-all">
-              Évaluer mes fissures gratuitement <ArrowRight size={20} />
+              Évaluer ma situation gratuitement <ArrowRight size={20} />
             </Link>
-            <p className="text-xs text-orange-100 mt-4">
-              Note : nous ne réalisons pas le micropieux, mais nous vous orientons vers des solutions pertinentes si nécessaire.
-            </p>
           </div>
         </div>
       </section>
@@ -363,26 +359,26 @@ export default function FissuresPage() {
                 </thead>
                 <tbody className="divide-y divide-slate-200">
                   <tr className="hover:bg-slate-50">
-                    <td className="px-6 py-4 font-bold text-slate-900">💰 Coût</td>
-                    <td className="px-6 py-4 text-center text-orange-600 font-bold">8 - 15k€</td>
-                    <td className="px-6 py-4 text-center text-slate-600">40 - 50k€</td>
-                    <td className="px-6 py-4 text-center text-slate-600">5 - 8k€</td>
+                    <td className="px-6 py-4 font-bold text-slate-900">Coût indicatif</td>
+                    <td className="px-6 py-4 text-center text-orange-600 font-bold">8 – 15 k€</td>
+                    <td className="px-6 py-4 text-center text-slate-600">40 – 50 k€</td>
+                    <td className="px-6 py-4 text-center text-slate-600">5 – 8 k€</td>
                   </tr>
                   <tr className="hover:bg-slate-50">
-                    <td className="px-6 py-4 font-bold text-slate-900">⏱️ Durée</td>
+                    <td className="px-6 py-4 font-bold text-slate-900">Durée chantier</td>
                     <td className="px-6 py-4 text-center font-bold">2-4 jours</td>
                     <td className="px-6 py-4 text-center">2-3 semaines</td>
                     <td className="px-6 py-4 text-center">1-2 jours</td>
                   </tr>
                   <tr className="hover:bg-slate-50">
-                    <td className="px-6 py-4 font-bold text-slate-900">✅ Efficacité</td>
-                    <td className="px-6 py-4 text-center text-green-600 font-bold">90% des cas</td>
+                    <td className="px-6 py-4 font-bold text-slate-900">Efficacité</td>
+                    <td className="px-6 py-4 text-center text-green-600 font-bold">Adapté dans 90% des cas</td>
                     <td className="px-6 py-4 text-center text-green-600">Efficace</td>
-                    <td className="px-6 py-4 text-center text-orange-600">Aléatoire</td>
+                    <td className="px-6 py-4 text-center text-orange-600">Variable</td>
                   </tr>
                   <tr className="hover:bg-slate-50">
-                    <td className="px-6 py-4 font-bold text-slate-900">🛡️ Garantie</td>
-                    <td className="px-6 py-4 text-center text-blue-600 font-bold">10 ans</td>
+                    <td className="px-6 py-4 font-bold text-slate-900">Garantie</td>
+                    <td className="px-6 py-4 text-center text-blue-600 font-bold">Décennale (10 ans)</td>
                     <td className="px-6 py-4 text-center">10 ans</td>
                     <td className="px-6 py-4 text-center">2-5 ans</td>
                   </tr>

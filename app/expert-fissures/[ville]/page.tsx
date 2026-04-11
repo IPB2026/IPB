@@ -7,7 +7,7 @@ import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
 import { Testimonials } from '@/components/home/Testimonials';
 import { CheckCircle, Phone, ArrowRight, MapPin, Shield, Clock, FileText, AlertTriangle, Home, TreeDeciduous, Droplets, TrendingUp, Calendar, Users, Award } from 'lucide-react';
-import { villesData, villeSlugs, type VilleInfo } from '@/app/data/villes';
+import { villesData, villeSlugs, getVillesMemesDepartement, type VilleInfo } from '@/app/data/villes';
 import { RelatedPagesLinks } from '@/components/seo/RelatedPagesLinks';
 import { VilleBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
@@ -49,11 +49,11 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
 
   // Description personnalisée
   const description = villeData.risqueRGA === 'tres-fort' || villeData.risqueRGA === 'fort'
-    ? `Expert fissures à ${villeNom} (${deptCode}) - Zone à risque RGA ${villeData.risqueRGA}. Diagnostic 249€, agrafage garanti 10 ans. ${villeData.tauxSinistralite ? `Taux de sinistralité : ${villeData.tauxSinistralite}` : ''} ☎ 05 82 95 33 75`
-    : `Expert fissures maison à ${villeNom} et ${villeData.communesProches?.[0] || 'communes voisines'}. Diagnostic 249€ déductible, agrafage structurel, harpage. Intervention 48h. ☎ 05 82 95 33 75`;
+    ? `Expert fissures à ${villeNom} (${deptCode}). Zone RGA ${villeData.risqueRGA}, diagnostic 249€, agrafage garanti 10 ans. 05 82 95 33 75`
+    : `Expert fissures à ${villeNom} (${deptCode}). Diagnostic 249€ déductible, agrafage garanti 10 ans. Intervention 48h. 05 82 95 33 75`;
 
   return {
-    title: `Expert Fissures ${villeNom} (${deptCode}) | Agrafage Garanti 10 ans | IPB`,
+    title: `Expert Fissures ${villeNom} (${deptCode}) | IPB`,
     description,
     keywords,
     alternates: {
@@ -132,7 +132,7 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "14"
+      "reviewCount": "47"
     }
   };
 
@@ -638,13 +638,13 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
       
       {/* Maillage interne SEO - Autres villes */}
       <RelatedPagesLinks
-        title={`Nos experts fissures dans votre région`}
+        title={`Nos experts fissures dans votre département`}
         pages={[
           { href: '/expertise/fissures', label: 'Nos solutions fissures', description: 'Toutes nos méthodes' },
+          { href: '/zones-intervention', label: 'Toutes nos zones', description: '56 villes couvertes' },
           { href: '/diagnostic', label: 'Diagnostic gratuit', description: 'Évaluez votre situation' },
-          ...villeSlugs
-            .filter(v => v !== ville)
-            .slice(0, 8)
+          ...getVillesMemesDepartement(ville)
+            .slice(0, 10)
             .map(v => ({
               href: `/expert-fissures/${v}`,
               label: `Expert fissures ${villesData[v]?.nom || v}`,

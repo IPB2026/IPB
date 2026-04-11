@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { blogPostsSlugs, blogPostsList } from '@/app/data/blog';
+import { villeSlugs } from '@/app/data/villes';
 
 // ═══════════════════════════════════════════════════════════════
 // SITEMAP SEO OPTIMISÉ - IPB EXPERTISE
@@ -242,32 +243,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // ════════════════════════════════════════════════════════════
-  // VILLES PRIORITAIRES POUR LE SITEMAP
-  // Réduit à 6 villes stratégiques pour concentrer le crawl budget.
-  // Les autres restent accessibles via le maillage interne.
+  // PAGE ZONES D'INTERVENTION (mapping complet)
   // ════════════════════════════════════════════════════════════
-  const priorityVilles = [
-    'toulouse', 'colomiers', 'muret',
-    'montauban', 'auch', 'albi',
+  const zonesPage: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/zones-intervention`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.85,
+    },
   ];
 
-  const expertFissuresPages: MetadataRoute.Sitemap = priorityVilles.map((ville) => ({
+  // ════════════════════════════════════════════════════════════
+  // TOUTES LES VILLES — expert-fissures + expert-humidite
+  // Chaque page ville a du contenu unique (géologie, stats, FAQ)
+  // ════════════════════════════════════════════════════════════
+  const priorityVillesSlugs = ['toulouse', 'colomiers', 'muret', 'montauban', 'auch', 'albi'];
+
+  const expertFissuresPages: MetadataRoute.Sitemap = villeSlugs.map((ville) => ({
     url: `${baseUrl}/expert-fissures/${ville}`,
     lastModified: contentDate,
     changeFrequency: 'monthly' as const,
-    priority: 0.78,
+    priority: priorityVillesSlugs.includes(ville) ? 0.8 : 0.68,
   }));
 
-  const expertHumiditePages: MetadataRoute.Sitemap = priorityVilles.map((ville) => ({
+  const expertHumiditePages: MetadataRoute.Sitemap = villeSlugs.map((ville) => ({
     url: `${baseUrl}/expert-humidite/${ville}`,
     lastModified: contentDate,
     changeFrequency: 'monthly' as const,
-    priority: 0.78,
+    priority: priorityVillesSlugs.includes(ville) ? 0.78 : 0.65,
   }));
-
-  // /villes/ et /agrafage-fissures/ /traitement-humidite/ par ville
-  // retirées du sitemap — trop de pages similaires dilue le crawl budget.
-  // Google les découvrira via le maillage interne.
 
   // ════════════════════════════════════════════════════════════
   // ARTICLES DE BLOG
@@ -289,6 +294,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticPages, 
     ...pillarPages, 
+    ...zonesPage,
     ...eeatPagesMap,
     ...triggerEventsPagesMap,
     ...spokeFissPages,

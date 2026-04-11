@@ -11,15 +11,17 @@ export function StickyDiagnosticCta() {
   const [isExpanded, setIsExpanded] = useState(true);
   const [hasScrolled, setHasScrolled] = useState(false);
 
-  // Déterminer le contexte (fissures ou humidité)
+  const isHiddenPage = pathname?.startsWith("/diagnostic") || pathname?.startsWith("/legal") || pathname?.startsWith("/contact");
+
   const isFissuresPage = pathname?.includes('fissure') || pathname?.includes('agrafage');
   const isHumiditePage = pathname?.includes('humid') || pathname?.includes('capillaire') || 
                          pathname?.includes('moisissure') || pathname?.includes('cave') ||
                          pathname?.includes('vmi') || pathname?.includes('condensation') ||
                          pathname?.includes('salpetre') || pathname?.includes('merule');
 
-  // Animation d'entrée après scroll
   useEffect(() => {
+    if (isHiddenPage) return;
+
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       if (scrollTop > 300 && !hasScrolled) {
@@ -28,7 +30,6 @@ export function StickyDiagnosticCta() {
       }
     };
 
-    // Afficher après 2 secondes si pas de scroll
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 2000);
@@ -38,10 +39,9 @@ export function StickyDiagnosticCta() {
       window.removeEventListener('scroll', handleScroll);
       clearTimeout(timer);
     };
-  }, [hasScrolled]);
+  }, [hasScrolled, isHiddenPage]);
 
-  // Pages où ne pas afficher
-  if (pathname?.startsWith("/diagnostic") || pathname?.startsWith("/legal") || pathname?.startsWith("/contact")) {
+  if (isHiddenPage) {
     return null;
   }
 

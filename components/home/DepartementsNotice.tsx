@@ -13,10 +13,10 @@ export function DepartementsNotice() {
             </div>
             <div>
               <h2 className="text-lg md:text-xl font-bold text-slate-900 mb-1">
-                Des experts près de chez vous
+                56 communes couvertes en Occitanie
               </h2>
               <p className="text-slate-600 text-sm md:text-base">
-                <strong className="text-orange-600">Haute-Garonne</strong>, <strong className="text-orange-600">Tarn-et-Garonne</strong> et <strong className="text-blue-600">Gers</strong> : nos experts interviennent dans les <strong>3 départements</strong> pour une proximité et un service de qualité.
+                <strong className="text-orange-600">Haute-Garonne (31)</strong>, <strong className="text-orange-600">Tarn-et-Garonne (82)</strong>, <strong className="text-blue-600">Gers (32)</strong> et <strong className="text-blue-600">Tarn (81)</strong> — diagnostic sur site sous 48h.
               </p>
             </div>
           </div>

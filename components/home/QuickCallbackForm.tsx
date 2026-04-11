@@ -58,10 +58,10 @@ export function QuickCallbackForm() {
                 <span className="text-green-400 text-xs font-bold uppercase tracking-wider">Rappel gratuit</span>
               </div>
               <h2 className="text-white text-xl md:text-2xl font-bold mb-1">
-                Un expert vous rappelle sous 2h
+                Parlez à un expert sous 2h
               </h2>
               <p className="text-slate-400 text-sm">
-                Fissures ou humidité ? Décrivez votre situation par téléphone à un spécialiste.
+                Décrivez votre situation par téléphone à un spécialiste en pathologie du bâtiment.
               </p>
             </div>
 

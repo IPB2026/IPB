@@ -72,21 +72,33 @@ export default function PlanSitePage() {
             </ul>
           </div>
 
-          {/* Villes d'intervention */}
+          {/* Zones d'intervention */}
           <div className="bg-white rounded-xl shadow-md p-6">
             <h2 className="text-xl font-bold text-orange-600 mb-4 flex items-center gap-2">
-              <span>📍</span> Villes d'intervention
+              <span>📍</span> Zones d'intervention
             </h2>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/villes/toulouse" className="text-slate-700 hover:text-orange-600 transition">Toulouse</Link></li>
-              <li><Link href="/villes/colomiers" className="text-slate-700 hover:text-orange-600 transition">Colomiers</Link></li>
-              <li><Link href="/villes/tournefeuille" className="text-slate-700 hover:text-orange-600 transition">Tournefeuille</Link></li>
-              <li><Link href="/villes/blagnac" className="text-slate-700 hover:text-orange-600 transition">Blagnac</Link></li>
-              <li><Link href="/villes/cugnaux" className="text-slate-700 hover:text-orange-600 transition">Cugnaux</Link></li>
-              <li><Link href="/villes/balma" className="text-slate-700 hover:text-orange-600 transition">Balma</Link></li>
-              <li><Link href="/villes/plaisance-du-touch" className="text-slate-700 hover:text-orange-600 transition">Plaisance-du-Touch</Link></li>
-              <li><Link href="/villes/ramonville-saint-agne" className="text-slate-700 hover:text-orange-600 transition">Ramonville</Link></li>
-              <li className="text-slate-500 text-xs mt-2">+ 30 autres villes...</li>
+              <li><Link href="/zones-intervention" className="text-orange-600 hover:text-orange-700 transition font-bold">Mapping complet (56 villes)</Link></li>
+              <li className="text-xs text-slate-500 font-bold mt-3 uppercase">Haute-Garonne (31)</li>
+              <li><Link href="/expert-fissures/toulouse" className="text-slate-700 hover:text-orange-600 transition">Toulouse</Link></li>
+              <li><Link href="/expert-fissures/colomiers" className="text-slate-700 hover:text-orange-600 transition">Colomiers</Link></li>
+              <li><Link href="/expert-fissures/muret" className="text-slate-700 hover:text-orange-600 transition">Muret</Link></li>
+              <li><Link href="/expert-fissures/tournefeuille" className="text-slate-700 hover:text-orange-600 transition">Tournefeuille</Link></li>
+              <li><Link href="/expert-fissures/blagnac" className="text-slate-700 hover:text-orange-600 transition">Blagnac</Link></li>
+              <li><Link href="/expert-fissures/balma" className="text-slate-700 hover:text-orange-600 transition">Balma</Link></li>
+              <li className="text-xs text-slate-500 font-bold mt-3 uppercase">Tarn-et-Garonne (82)</li>
+              <li><Link href="/expert-fissures/montauban" className="text-slate-700 hover:text-orange-600 transition">Montauban</Link></li>
+              <li><Link href="/expert-fissures/castelsarrasin" className="text-slate-700 hover:text-orange-600 transition">Castelsarrasin</Link></li>
+              <li><Link href="/expert-fissures/moissac" className="text-slate-700 hover:text-orange-600 transition">Moissac</Link></li>
+              <li className="text-xs text-slate-500 font-bold mt-3 uppercase">Gers (32)</li>
+              <li><Link href="/expert-fissures/auch" className="text-slate-700 hover:text-orange-600 transition">Auch</Link></li>
+              <li><Link href="/expert-fissures/condom" className="text-slate-700 hover:text-orange-600 transition">Condom</Link></li>
+              <li><Link href="/expert-fissures/fleurance" className="text-slate-700 hover:text-orange-600 transition">Fleurance</Link></li>
+              <li className="text-xs text-slate-500 font-bold mt-3 uppercase">Tarn (81)</li>
+              <li><Link href="/expert-fissures/albi" className="text-slate-700 hover:text-orange-600 transition">Albi</Link></li>
+              <li><Link href="/expert-fissures/castres" className="text-slate-700 hover:text-orange-600 transition">Castres</Link></li>
+              <li><Link href="/expert-fissures/gaillac" className="text-slate-700 hover:text-orange-600 transition">Gaillac</Link></li>
+              <li className="text-slate-500 text-xs mt-2"><Link href="/zones-intervention" className="text-orange-600 hover:text-orange-700 underline">Voir les 56 villes →</Link></li>
             </ul>
           </div>
 
@@ -151,6 +163,8 @@ export default function PlanSitePage() {
               <li><Link href="/blog/prix-agrafage-fissures-2026" className="text-slate-700 hover:text-orange-600 transition">Prix agrafage fissures 2026 : tarifs et comparatif</Link></li>
               <li><Link href="/blog/fissure-maison-neuve-garantie-decennale" className="text-slate-700 hover:text-orange-600 transition">Fissure maison neuve : garantie décennale</Link></li>
               <li><Link href="/blog/humidite-mur-chambre-causes-solutions" className="text-slate-700 hover:text-orange-600 transition">Humidité mur chambre : causes et solutions</Link></li>
+              <li><Link href="/blog/assurance-fissures-maison-indemnisation" className="text-slate-700 hover:text-orange-600 transition">Assurance fissures : comment être indemnisé</Link></li>
+              <li><Link href="/blog/fondations-maison-ancienne-renforcement" className="text-slate-700 hover:text-orange-600 transition">Fondations maison ancienne : renforcement</Link></li>
             </ul>
           </div>
 
@@ -161,6 +175,7 @@ export default function PlanSitePage() {
             </h2>
             <ul className="space-y-2 text-sm">
               <li><Link href="/blog/secheresse-argile-haute-garonne" className="text-slate-700 hover:text-orange-600 transition">Sol argileux Haute-Garonne</Link></li>
+              <li><Link href="/blog/expert-batiment-independant-vs-expert-assurance" className="text-slate-700 hover:text-orange-600 transition">Expert indépendant vs expert assurance</Link></li>
             </ul>
           </div>
 

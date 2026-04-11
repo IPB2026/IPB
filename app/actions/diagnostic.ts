@@ -219,9 +219,15 @@ export async function submitDiagnosticLead(
       'indifferent': 'Indifférent',
     };
 
-    // Récupérer la photo si présente
-    const photoBase64 = formData.get('photo') as string | null;
-    const photoName = formData.get('photoName') as string | null;
+    // Récupérer la photo si présente (File object envoyé par le client)
+    const photoFileRaw = formData.get('photoFile');
+    let photoBase64: string | null = null;
+    let photoName: string | null = null;
+    if (photoFileRaw && photoFileRaw instanceof File && photoFileRaw.size > 0) {
+      const buffer = Buffer.from(await photoFileRaw.arrayBuffer());
+      photoBase64 = buffer.toString('base64');
+      photoName = photoFileRaw.name;
+    }
 
     let validatedData;
     try {
@@ -386,10 +392,9 @@ export async function submitDiagnosticLead(
             
           </div>
         `,
-        // Ajouter la photo en pièce jointe si présente
         attachments: photoBase64 ? [{
           filename: photoName || 'photo-client.jpg',
-          content: photoBase64.replace(/^data:image\/\w+;base64,/, ''),
+          content: photoBase64,
           encoding: 'base64' as const,
         }] : undefined,
       });
@@ -501,6 +506,16 @@ export async function submitDiagnosticCallback(
       answers: JSON.parse(formData.get('answers') as string || '{}'),
       riskScore: parseInt(formData.get('riskScore') as string, 10) || 0,
     };
+
+    // Récupérer la photo si présente
+    const photoFileRaw = formData.get('photoFile');
+    let photoBase64: string | null = null;
+    let photoName: string | null = null;
+    if (photoFileRaw && photoFileRaw instanceof File && photoFileRaw.size > 0) {
+      const buffer = Buffer.from(await photoFileRaw.arrayBuffer());
+      photoBase64 = buffer.toString('base64');
+      photoName = photoFileRaw.name;
+    }
 
     const rateKey = `diagnostic-callback:${rawData.phone || rawData.name}`;
     const rateLimit = checkRateLimit(rateKey, { limit: 5, windowMs: 10 * 60 * 1000 });
@@ -616,6 +631,15 @@ export async function submitDiagnosticCallback(
               ${answersHtml}
             </div>
             
+            ${photoBase64 ? `
+            <!-- Photo jointe -->
+            <div style="background: #ecfdf5; margin: 16px; padding: 20px; border-radius: 12px; border: 2px solid #10b981;">
+              <h2 style="margin: 0 0 12px; color: #059669; font-size: 18px;">📷 PHOTO JOINTE</h2>
+              <p style="margin: 0; color: #047857;">Le client a joint une photo : <strong>${photoName || 'photo.jpg'}</strong></p>
+              <p style="margin: 8px 0 0; color: #065f46; font-size: 14px;">→ Voir la pièce jointe de cet email</p>
+            </div>
+            ` : ''}
+            
             <!-- Footer -->
             <div style="text-align: center; padding: 16px; color: #64748b; font-size: 12px;">
               <p style="margin: 0;">ID: ${callbackId} • ${new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' })}</p>
@@ -624,6 +648,11 @@ export async function submitDiagnosticCallback(
             
           </div>
         `,
+        attachments: photoBase64 ? [{
+          filename: photoName || 'photo-client.jpg',
+          content: photoBase64,
+          encoding: 'base64' as const,
+        }] : undefined,
       });
 
       if (!emailResult.success && process.env.NODE_ENV === 'production') {

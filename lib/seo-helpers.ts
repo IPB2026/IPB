@@ -148,6 +148,20 @@ export function getContextualLinks(currentSlug: string, keywords: string[]): Arr
       { text: 'humidité murs', url: '/expertise/humidite' },
       { text: 'diagnostic humidité', url: '/diagnostic' }
     ],
+    'assurance': [
+      { text: 'indemnisation assurance fissures', url: '/blog/assurance-fissures-maison-indemnisation' },
+      { text: 'expert indépendant vs assurance', url: '/blog/expert-batiment-independant-vs-expert-assurance' },
+      { text: 'catastrophe naturelle démarches', url: '/blog/catastrophe-naturelle-secheresse-demarches-indemnisation' }
+    ],
+    'fondations': [
+      { text: 'renforcement fondations', url: '/blog/fondations-maison-ancienne-renforcement' },
+      { text: 'agrafage structurel', url: '/expertise/fissures' },
+      { text: 'micropieux', url: '/blog/agrafage-vs-micropieux-choix' }
+    ],
+    'indemnisation': [
+      { text: 'guide indemnisation fissures', url: '/blog/assurance-fissures-maison-indemnisation' },
+      { text: 'expert d\'assuré', url: '/blog/expert-batiment-independant-vs-expert-assurance' }
+    ],
     'diagnostic': [
       { text: 'diagnostic structurel', url: '/blog/diagnostic-structurel-maison' },
       { text: 'diagnostic gratuit', url: '/diagnostic' },
@@ -156,7 +170,7 @@ export function getContextualLinks(currentSlug: string, keywords: string[]): Arr
     'toulouse': [
       { text: 'expert Toulouse', url: '/villes/toulouse' },
       { text: 'sol argileux Haute-Garonne', url: '/blog/secheresse-argile-haute-garonne' },
-      { text: 'zones d\'intervention', url: '/contact' },
+      { text: 'zones d\'intervention', url: '/zones-intervention' },
       { text: 'expert Haute-Garonne', url: '/departements/haute-garonne' }
     ],
     'gers': [
@@ -262,7 +276,7 @@ export function optimizeMetaDescription(description: string, category: string): 
 export function generateSearchSuggestions(keywords: string[]): string[] {
   const templates = [
     'Comment [ACTION] [KEYWORD] ?',
-    'Prix [KEYWORD] 2025',
+    'Prix [KEYWORD] 2026',
     '[KEYWORD] Toulouse',
     'Solution [KEYWORD]',
     'Expert [KEYWORD] Haute-Garonne'
@@ -301,7 +315,7 @@ export function generateReviewSchema(_articleTitle: string) {
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '4.9',
-      reviewCount: '14',
+      reviewCount: '47',
       bestRating: '5',
       worstRating: '1'
     }
@@ -331,7 +345,11 @@ export function injectInternalLinks(content: string, currentSlug: string): strin
     // Services
     'expert fissures': '/expertise/fissures',
     'traitement humidité': '/expertise/humidite',
-    'garantie décennale': '/blog/garantie-decennale-travaux-structure'
+    'garantie décennale': '/blog/garantie-decennale-travaux-structure',
+    'expert indépendant': '/blog/expert-batiment-independant-vs-expert-assurance',
+    'fondations': '/blog/fondations-maison-ancienne-renforcement',
+    'catastrophe naturelle': '/blog/catastrophe-naturelle-secheresse-demarches-indemnisation',
+    'zones d\'intervention': '/zones-intervention'
   };
 
   let modifiedContent = content;

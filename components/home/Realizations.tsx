@@ -6,7 +6,7 @@ export function Realizations() {
     <section id="realisations" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Des résultats visibles, des maisons sauvées</h2>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Des résultats visibles, des pathologies traitées</h2>
           <p className="text-lg text-slate-500">Découvrez les transformations réalisées chez nos clients en Haute-Garonne.</p>
         </div>
 
