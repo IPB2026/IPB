@@ -6,7 +6,7 @@ const steps = [
     icon: Search,
     title: 'Diagnostic instrumenté',
     description: 'Visite sur site avec instrumentation technique (fissuromètre, hygromètre, caméra thermique). Mesures objectives pour identifier l\'origine exacte du problème.',
-    detail: 'Rapport de 15 à 25 pages',
+    detail: 'Rapport de 10 à 15 pages',
     color: 'orange',
   },
   {
