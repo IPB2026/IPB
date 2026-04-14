@@ -11,9 +11,9 @@ export function JsonLd() {
     "description": "Expert en traitement des fissures et de l'humidité en Haute-Garonne. Solutions techniques (agrafage, injection résine) avec garantie décennale.",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "54 avenue Jean Jaurès",
-      "addressLocality": "Tournefeuille",
-      "postalCode": "31170",
+      "streetAddress": "13 rue du Recteur Dottin",
+      "addressLocality": "Toulouse",
+      "postalCode": "31100",
       "addressRegion": "Haute-Garonne",
       "addressCountry": "FR"
     },

@@ -64,7 +64,7 @@ export function Footer() {
                 </a>
                 <div className="flex items-start gap-2">
                   <MapPin size={14} className="mt-0.5" aria-hidden="true" />
-                  <span>54 avenue Jean Jaurès<br />31170 Tournefeuille</span>
+                  <span>13 rue du Recteur Dottin<br />31100 Toulouse</span>
                 </div>
               </address>
             </div>
@@ -159,9 +159,9 @@ export function Footer() {
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-slate-500">
               <p>
                 <span>&copy; {new Date().getFullYear()} </span>
-                <strong className="text-slate-400">MGRCP31</strong>
+                <strong className="text-slate-400">Bâti Halli</strong>
                 <span> - IPB Institut de Pathologie du Bâtiment</span>
-                <span className="hidden md:inline"> • SIRET 951 105 881 00019</span>
+                <span className="hidden md:inline"> • SIRET 398 185 421 00037</span>
               </p>
               <div className="flex items-center gap-6">
                 <span className="flex items-center gap-2 text-emerald-500 text-xs">

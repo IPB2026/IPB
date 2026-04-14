@@ -106,9 +106,9 @@ function generateReviewsSchema() {
     "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "54 avenue Jean Jaurès",
-      "addressLocality": "Tournefeuille",
-      "postalCode": "31170",
+      "streetAddress": "13 rue du Recteur Dottin",
+      "addressLocality": "Toulouse",
+      "postalCode": "31100",
       "addressCountry": "FR"
     },
     "telephone": "+33582953375",

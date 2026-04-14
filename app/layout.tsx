@@ -103,9 +103,9 @@ const localBusinessSchema = {
   "description": "Expert en traitement des fissures et de l'humidité en Occitanie (31, 82, 32). Solutions techniques (agrafage, injection résine, cuvelage, VMI) avec garantie décennale. Toulouse, Montauban, Auch et environs.",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "54 avenue Jean Jaurès",
-    "addressLocality": "Tournefeuille",
-    "postalCode": "31170",
+    "streetAddress": "13 rue du Recteur Dottin",
+    "addressLocality": "Toulouse",
+    "postalCode": "31100",
     "addressRegion": "Occitanie",
     "addressCountry": "FR"
   },

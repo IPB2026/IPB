@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 export const metadata = {
   title: 'Conditions Générales de Vente (CGV) - IPB Institut de Pathologie du Bâtiment',
-  description: 'Conditions Générales de Vente complètes de l\'Institut de Pathologie du Bâtiment (IPB) - MGRCP31. Diagnostics, travaux, garanties, paiement, rétractation.',
+  description: 'Conditions Générales de Vente complètes de l\'Institut de Pathologie du Bâtiment (IPB) - Bâti Halli. Diagnostics, travaux, garanties, paiement, rétractation.',
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/legal/cgv',
   },
@@ -50,7 +50,7 @@ export default function CGVPage() {
             <p className="text-lg text-slate-600 leading-relaxed">
               Les présentes Conditions Générales de Vente (ci-après « CGV ») constituent le socle unique 
               de la relation commerciale entre les parties. Elles régissent l'ensemble des prestations 
-              de services et travaux proposés par la société MGRCP31 à ses clients.
+              de services et travaux proposés par la société Bâti Halli à ses clients.
             </p>
             <div className="mt-4 bg-orange-50 border border-orange-200 rounded-lg p-4">
               <p className="text-sm text-orange-800">
@@ -100,7 +100,7 @@ export default function CGVPage() {
                 <dl className="space-y-2">
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-slate-900 sm:w-56">Dénomination sociale :</dt>
-                    <dd>MGRCP31</dd>
+                    <dd>Bâti Halli</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-slate-900 sm:w-56">Enseigne commerciale :</dt>
@@ -112,19 +112,19 @@ export default function CGVPage() {
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-slate-900 sm:w-56">Siège social :</dt>
-                    <dd>54 avenue Jean Jaurès, 31170 Tournefeuille</dd>
+                    <dd>13 rue du Recteur Dottin, 31100 Toulouse</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-slate-900 sm:w-56">SIRET :</dt>
-                    <dd>951 105 881 00019</dd>
+                    <dd>398 185 421 00037</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-slate-900 sm:w-56">RCS :</dt>
-                    <dd>Toulouse B 951 105 881</dd>
+                    <dd>Toulouse B 398 185 421</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-slate-900 sm:w-56">N° TVA intracommunautaire :</dt>
-                    <dd>FR 17 951 105 881</dd>
+                    <dd>FR14398185421</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-slate-900 sm:w-56">Téléphone :</dt>
@@ -146,7 +146,7 @@ export default function CGVPage() {
               </h2>
               <p>
                 <strong>2.1.</strong> Les présentes CGV ont pour objet de définir les conditions dans lesquelles 
-                la société MGRCP31 (ci-après « le Prestataire » ou « IPB ») fournit les prestations suivantes à 
+                la société Bâti Halli (ci-après « le Prestataire » ou « IPB ») fournit les prestations suivantes à 
                 ses clients professionnels ou particuliers (ci-après « le Client ») :
               </p>
               <ul className="list-disc pl-6 mt-4 space-y-2">
@@ -326,7 +326,7 @@ export default function CGVPage() {
               <p className="mt-4"><strong>6.2. Moyens de paiement acceptés</strong></p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
                 <li>Virement bancaire (IBAN communiqué sur facture)</li>
-                <li>Chèque à l'ordre de MGRCP31</li>
+                <li>Chèque à l'ordre de Bâti Halli</li>
                 <li>Carte bancaire (via lien de paiement sécurisé)</li>
                 <li>Espèces (dans la limite légale de 1 000€ pour les particuliers)</li>
               </ul>
@@ -375,8 +375,8 @@ export default function CGVPage() {
                 annexé) à l'adresse suivante :
               </p>
               <p className="mt-2 bg-slate-100 p-3 rounded-lg">
-                MGRCP31 - IPB<br />
-                54 avenue Jean Jaurès, 31170 Tournefeuille<br />
+                Bâti Halli - IPB<br />
+                13 rue du Recteur Dottin, 31100 Toulouse<br />
                 Email : <a href="mailto:contact@ipb-expertise.fr" className="text-orange-600">contact@ipb-expertise.fr</a>
               </p>
 
@@ -641,7 +641,7 @@ export default function CGVPage() {
                 <strong>16.2. Règlement amiable</strong><br />
                 En cas de litige, les parties s'engagent à rechercher une solution amiable avant toute 
                 action judiciaire. Le Client peut adresser ses réclamations à :<br />
-                <span className="text-sm">MGRCP31 - IPB, 54 avenue Jean Jaurès, 31170 Tournefeuille<br />
+                <span className="text-sm">Bâti Halli - IPB, 13 rue du Recteur Dottin, 31100 Toulouse<br />
                 Email : <a href="mailto:contact@ipb-expertise.fr" className="text-orange-600">contact@ipb-expertise.fr</a></span>
               </p>
               
@@ -708,8 +708,8 @@ export default function CGVPage() {
             </p>
             <div className="bg-white p-4 rounded-lg border border-slate-200 text-sm">
               <p className="mb-3">À l'attention de :<br />
-              <strong>MGRCP31 - IPB</strong><br />
-              54 avenue Jean Jaurès, 31170 Tournefeuille<br />
+              <strong>Bâti Halli - IPB</strong><br />
+              13 rue du Recteur Dottin, 31100 Toulouse<br />
               Email : contact@ipb-expertise.fr</p>
               
               <p className="mb-3">Je/Nous (*) vous notifie/notifions (*) par la présente ma/notre (*) rétractation du contrat 

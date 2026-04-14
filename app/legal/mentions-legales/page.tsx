@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 export const metadata = {
   title: 'Mentions Légales - IPB Institut de Pathologie du Bâtiment',
-  description: 'Mentions légales complètes de l\'Institut de Pathologie du Bâtiment (IPB) - MGRCP31. Informations légales, protection des données, propriété intellectuelle.',
+  description: 'Mentions légales complètes de l\'Institut de Pathologie du Bâtiment (IPB) - Bâti Halli. Informations légales, protection des données, propriété intellectuelle.',
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/legal/mentions-legales',
   },
@@ -89,7 +89,7 @@ export default function MentionsLegalesPage() {
                 <dl className="space-y-3">
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-slate-900 sm:w-48">Dénomination sociale :</dt>
-                    <dd>MGRCP31</dd>
+                    <dd>Bâti Halli</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-slate-900 sm:w-48">Nom commercial :</dt>
@@ -101,15 +101,15 @@ export default function MentionsLegalesPage() {
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-slate-900 sm:w-48">Siège social :</dt>
-                    <dd>54 avenue Jean Jaurès, 31170 Tournefeuille, France</dd>
+                    <dd>13 rue du Recteur Dottin, 31100 Toulouse, France</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-slate-900 sm:w-48">SIRET :</dt>
-                    <dd>951 105 881 00019</dd>
+                    <dd>398 185 421 00037</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-slate-900 sm:w-48">SIREN :</dt>
-                    <dd>951 105 881</dd>
+                    <dd>398 185 421</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-slate-900 sm:w-48">Code APE/NAF :</dt>
@@ -117,11 +117,11 @@ export default function MentionsLegalesPage() {
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-slate-900 sm:w-48">RCS :</dt>
-                    <dd>Toulouse B 951 105 881</dd>
+                    <dd>Toulouse B 398 185 421</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-slate-900 sm:w-48">N° TVA intracommunautaire :</dt>
-                    <dd>FR 17 951 105 881</dd>
+                    <dd>FR14398185421</dd>
                   </div>
                 </dl>
               </div>
@@ -135,7 +135,7 @@ export default function MentionsLegalesPage() {
               </h2>
               <p>
                 Le directeur de la publication du site internet <strong>www.ipb-expertise.fr</strong> est 
-                le représentant légal de la société MGRCP31, en sa qualité de gérant.
+                le représentant légal de la société Bâti Halli, en sa qualité de gérant.
               </p>
               <p className="mt-4">
                 Conformément à l'article 93-2 de la loi n° 82-652 du 29 juillet 1982, le directeur de la 
@@ -207,8 +207,8 @@ export default function MentionsLegalesPage() {
                     <span className="font-bold text-slate-900">Adresse</span>
                   </div>
                   <address className="not-italic text-slate-700 text-sm">
-                    54 avenue Jean Jaurès<br />
-                    31170 Tournefeuille
+                    13 rue du Recteur Dottin<br />
+                    31100 Toulouse
                   </address>
                 </div>
               </div>
@@ -221,7 +221,7 @@ export default function MentionsLegalesPage() {
                 5. Activité professionnelle et qualifications
               </h2>
               <p>
-                La société MGRCP31, exerçant sous l'enseigne IPB (Institut de Pathologie du Bâtiment), 
+                La société Bâti Halli, exerçant sous l'enseigne IPB (Institut de Pathologie du Bâtiment), 
                 est spécialisée dans :
               </p>
               <ul className="list-disc pl-6 mt-4 space-y-2">
@@ -252,7 +252,7 @@ export default function MentionsLegalesPage() {
                   <h3 className="font-bold text-green-900 mb-3">Garantie Décennale</h3>
                   <p className="text-green-800 mb-4">
                     Conformément à l'article L. 241-1 du Code des assurances et aux articles 1792 et suivants 
-                    du Code civil, la société MGRCP31 est couverte par une assurance de responsabilité civile 
+                    du Code civil, la société Bâti Halli est couverte par une assurance de responsabilité civile 
                     décennale pour l'ensemble de ses travaux de construction.
                   </p>
                   <dl className="space-y-2 text-sm">
@@ -308,7 +308,7 @@ export default function MentionsLegalesPage() {
                 <p className="text-amber-800">
                   Toute reproduction, représentation, modification, publication, transmission, dénaturation, 
                   totale ou partielle du site ou de son contenu, par quelque procédé que ce soit, et sur 
-                  quelque support que ce soit est interdite sans l'autorisation écrite préalable de MGRCP31.
+                  quelque support que ce soit est interdite sans l'autorisation écrite préalable de Bâti Halli.
                 </p>
               </div>
 
@@ -320,7 +320,7 @@ export default function MentionsLegalesPage() {
 
               <p className="mt-4">
                 La marque « IPB », le logo et l'ensemble des signes distinctifs reproduits sur le site 
-                sont la propriété exclusive de MGRCP31 ou font l'objet d'une autorisation d'utilisation.
+                sont la propriété exclusive de Bâti Halli ou font l'objet d'une autorisation d'utilisation.
               </p>
             </section>
 
@@ -334,15 +334,15 @@ export default function MentionsLegalesPage() {
               <p>
                 Conformément au Règlement (UE) 2016/679 du Parlement européen et du Conseil du 27 avril 2016 
                 (Règlement Général sur la Protection des Données - RGPD) et à la loi n° 78-17 du 6 janvier 1978 
-                modifiée relative à l'informatique, aux fichiers et aux libertés, MGRCP31 s'engage à protéger 
+                modifiée relative à l'informatique, aux fichiers et aux libertés, Bâti Halli s'engage à protéger 
                 les données personnelles des utilisateurs du site.
               </p>
 
               <div className="mt-6 space-y-4">
                 <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
                   <h3 className="font-bold text-slate-900 mb-3">Responsable du traitement</h3>
-                  <p>MGRCP31, représentée par son gérant</p>
-                  <p>54 avenue Jean Jaurès, 31170 Tournefeuille</p>
+                  <p>Bâti Halli, représentée par son gérant</p>
+                  <p>13 rue du Recteur Dottin, 31100 Toulouse</p>
                   <p>Email : <a href="mailto:contact@ipb-expertise.fr" className="text-orange-600 hover:underline">contact@ipb-expertise.fr</a></p>
                 </div>
 
@@ -438,13 +438,13 @@ export default function MentionsLegalesPage() {
               </h2>
               
               <p>
-                MGRCP31 s'efforce d'assurer au mieux l'exactitude et la mise à jour des informations 
-                diffusées sur le site. Toutefois, MGRCP31 ne peut garantir l'exactitude, la précision 
+                Bâti Halli s'efforce d'assurer au mieux l'exactitude et la mise à jour des informations 
+                diffusées sur le site. Toutefois, Bâti Halli ne peut garantir l'exactitude, la précision 
                 ou l'exhaustivité des informations mises à disposition sur le site.
               </p>
 
               <p className="mt-4">
-                En conséquence, MGRCP31 décline toute responsabilité :
+                En conséquence, Bâti Halli décline toute responsabilité :
               </p>
               <ul className="list-disc pl-6 mt-4 space-y-2">
                 <li>Pour toute imprécision, inexactitude ou omission portant sur des informations disponibles sur le site</li>
@@ -468,7 +468,7 @@ export default function MentionsLegalesPage() {
               </h2>
               
               <p>
-                Le site peut contenir des liens hypertextes vers d'autres sites internet. MGRCP31 n'exerce 
+                Le site peut contenir des liens hypertextes vers d'autres sites internet. Bâti Halli n'exerce 
                 aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu ou aux 
                 éventuels collectes et traitements de données personnelles effectués par ces sites.
               </p>
@@ -494,7 +494,7 @@ export default function MentionsLegalesPage() {
               <p className="mt-4">
                 En cas de litige relatif à l'interprétation ou l'exécution des présentes, les parties 
                 s'efforceront de trouver une solution amiable. À défaut, le litige sera porté devant 
-                les tribunaux compétents du ressort du siège social de MGRCP31.
+                les tribunaux compétents du ressort du siège social de Bâti Halli.
               </p>
 
               <div className="mt-6 bg-slate-50 rounded-xl p-6 border border-slate-200">
