@@ -299,6 +299,17 @@ export default function ExpertHumiditeToulouse31Page() {
         </div>
       </section>
 
+      {/* CTA intermédiaire */}
+      <section className="py-8 bg-blue-50 border-y border-blue-100">
+        <div className="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
+          <p className="text-slate-700 font-medium text-sm">Murs humides, salpêtre, moisissures ? Identifions la cause avant qu'elle ne s'aggrave.</p>
+          <div className="flex items-center gap-3">
+            <Link href="/diagnostic" className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2.5 rounded-full text-sm transition-colors whitespace-nowrap">Diagnostic gratuit →</Link>
+            <a href="tel:0582953375" className="text-slate-600 hover:text-slate-900 font-medium text-sm whitespace-nowrap">📞 05 82 95 33 75</a>
+          </div>
+        </div>
+      </section>
+
       {/* Tarifs */}
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

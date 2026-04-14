@@ -36,12 +36,15 @@ export function ServicesStructure() {
             </div>
             
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
-              <Link href="/expertise/fissures" className="inline-flex items-center gap-3 text-orange-600 font-bold text-lg hover:gap-5 transition-all group">
-                En savoir plus sur les fissures <ArrowRight size={20} />
+              <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-7 py-3 rounded-full transition-colors text-sm">
+                Évaluer ma situation <ArrowRight size={16} />
               </Link>
-              <Link href="/diagnostic" className="inline-flex items-center gap-3 text-slate-600 font-bold text-lg hover:text-orange-600 transition-all group">
-                Diagnostic gratuit <ArrowRight size={20} />
+              <Link href="/expertise/fissures" className="inline-flex items-center gap-2 border-2 border-slate-200 hover:border-slate-300 text-slate-700 font-bold px-7 py-3 rounded-full transition-colors text-sm">
+                En savoir plus <ArrowRight size={16} />
               </Link>
+              <a href="tel:0582953375" className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 font-medium text-sm transition-colors py-3">
+                📞 05 82 95 33 75
+              </a>
             </div>
           </div>
           

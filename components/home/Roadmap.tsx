@@ -161,6 +161,17 @@ export function Roadmap() {
             </div>
           </div>
         </div>
+
+        <div className="text-center mt-12">
+          <a
+            href="/diagnostic"
+            className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-bold px-8 py-3.5 rounded-full transition-colors text-sm"
+          >
+            Démarrer l'étape 1 — Échange découverte
+            <span aria-hidden="true">→</span>
+          </a>
+          <p className="text-slate-400 text-xs mt-3">Gratuit · Sans engagement · 3 minutes</p>
+        </div>
       </div>
     </section>
   );

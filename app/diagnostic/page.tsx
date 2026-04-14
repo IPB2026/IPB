@@ -295,6 +295,7 @@ export default function DiagnosticPage() {
   const [riskScore, setRiskScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formError, setFormError] = useState('');
   const [callbackInfo, setCallbackInfo] = useState({ name: '', phone: '', email: '' });
   const [photoFile, setPhotoFile] = useState<File | null>(null);
   const [photoPreview, setPhotoPreview] = useState<string | null>(null);
@@ -333,7 +334,7 @@ export default function DiagnosticPage() {
   };
 
   const handlePhotoSelect = async (file: File, target: 'main' | 'callback') => {
-    if (file.size > 10 * 1024 * 1024) { alert('La photo ne doit pas dépasser 10 Mo'); return; }
+    if (file.size > 10 * 1024 * 1024) { setFormError('La photo ne doit pas dépasser 10 Mo'); return; }
     const resized = await resizeImage(file);
     const previewUrl = URL.createObjectURL(resized);
     if (target === 'main') {
@@ -487,9 +488,10 @@ export default function DiagnosticPage() {
   // Soumission coordonnées + génération résultat
   const handleSubmitContact = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!contactInfo.name.trim()) { alert('Veuillez saisir votre nom'); return; }
-    if (!contactInfo.email.trim() && !contactInfo.phone.trim()) { alert('Veuillez saisir au moins un email ou un téléphone'); return; }
-    if (!contactInfo.address.trim()) { alert('Veuillez saisir l\'adresse du bien'); return; }
+    setFormError('');
+    if (!contactInfo.name.trim()) { setFormError('Veuillez saisir votre nom'); return; }
+    if (!contactInfo.email.trim() && !contactInfo.phone.trim()) { setFormError('Veuillez saisir au moins un email ou un téléphone'); return; }
+    if (!contactInfo.address.trim()) { setFormError('Veuillez saisir l\'adresse du bien'); return; }
 
     setIsAnalyzing(true);
     trackFormSubmit();
@@ -534,9 +536,10 @@ export default function DiagnosticPage() {
   const handleSubmitCallback = async (e: React.FormEvent) => {
     e.preventDefault();
     const name = (callbackInfo.name || contactInfo.name).trim();
-    const phone = callbackInfo.phone.trim();
+    const phone = (callbackInfo.phone || contactInfo.phone).trim();
+    setFormError('');
     if (!name || !phone) {
-      alert('Merci de renseigner votre nom et votre téléphone.');
+      setFormError('Merci de renseigner votre téléphone pour être rappelé.');
       return;
     }
     setIsSubmitting(true);
@@ -561,10 +564,10 @@ export default function DiagnosticPage() {
       if (result.success) {
         setSubmitted(true);
       } else {
-        alert(result.message);
+        setFormError(result.message);
       }
     } catch {
-      alert('Erreur lors de la demande. Appelez-nous au 05 82 95 33 75.');
+      setFormError('Erreur lors de la demande. Appelez-nous au 05 82 95 33 75.');
     }
     setIsSubmitting(false);
   };
@@ -695,7 +698,7 @@ export default function DiagnosticPage() {
 
                 {/* Réassurance rapide */}
                 <div className="flex items-center justify-center gap-4 text-xs text-slate-400 mb-4">
-                  <span className="flex items-center gap-1">⏱️ 2 min</span>
+                  <span className="flex items-center gap-1">⏱️ 3 min</span>
                   <span className="w-1 h-1 bg-slate-300 rounded-full" />
                   <span className="flex items-center gap-1">🔒 Sécurisé</span>
                   <span className="w-1 h-1 bg-slate-300 rounded-full" />
@@ -1049,6 +1052,12 @@ export default function DiagnosticPage() {
                     </label>
                   </div>
 
+                  {formError && (
+                    <div className="bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl px-4 py-2.5">
+                      {formError}
+                    </div>
+                  )}
+
                   <button
                     type="submit"
                     className="w-full bg-slate-900 text-white font-semibold py-3.5 rounded-xl hover:bg-slate-800 transition-colors text-sm"
@@ -1128,14 +1137,14 @@ export default function DiagnosticPage() {
                 <div className="mb-5">
                   <div className="flex items-center justify-between text-xs mb-1">
                     <span className="text-slate-400 font-medium">Score de risque</span>
-                    <span className="font-bold text-slate-700">{riskScore}/50</span>
+                    <span className="font-bold text-slate-700">{riskScore}/100</span>
                   </div>
                   <div className="h-2.5 bg-slate-100 rounded-full overflow-hidden">
                     <div
                       className={`h-full rounded-full transition-all duration-1000 ease-out ${
                         riskScore >= 40 ? 'bg-red-500' : riskScore >= 20 ? 'bg-orange-500' : 'bg-green-500'
                       }`}
-                      style={{ width: `${riskScore * 2}%` }}
+                      style={{ width: `${riskScore}%` }}
                     />
                   </div>
                 </div>
@@ -1199,20 +1208,14 @@ export default function DiagnosticPage() {
                   </div>
 
                   <form onSubmit={handleSubmitCallback} className="space-y-3">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      <div>
-                        <label className="block text-xs font-semibold text-slate-600 mb-1">Nom *</label>
-                        <input
-                          type="text"
-                          value={callbackInfo.name || contactInfo.name}
-                          onChange={(e) => setCallbackInfo({ ...callbackInfo, name: e.target.value })}
-                          placeholder="Votre nom"
-                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all"
-                          required
-                        />
+                    {(contactInfo.phone || callbackInfo.phone) ? (
+                      <div className="bg-slate-50 rounded-xl p-3 text-center">
+                        <p className="text-xs text-slate-500 mb-1">Nous vous rappelons au</p>
+                        <p className="font-bold text-slate-900">{callbackInfo.phone || contactInfo.phone}</p>
                       </div>
+                    ) : (
                       <div>
-                        <label className="block text-xs font-semibold text-slate-600 mb-1">Téléphone *</label>
+                        <label className="block text-xs font-semibold text-slate-600 mb-1">Votre téléphone pour être rappelé *</label>
                         <input
                           type="tel"
                           value={callbackInfo.phone}
@@ -1222,35 +1225,11 @@ export default function DiagnosticPage() {
                           required
                         />
                       </div>
-                    </div>
+                    )}
 
-                    {!photoPreview && (
-                      <div className="border border-dashed border-slate-200 rounded-xl p-3 hover:border-slate-300 transition-colors">
-                        <input
-                          type="file"
-                          accept="image/*"
-                          onChange={(e) => {
-                            const file = e.target.files?.[0];
-                            if (file) handlePhotoSelect(file, 'callback');
-                          }}
-                          className="hidden"
-                          id="callback-photo-upload"
-                        />
-                        <label htmlFor="callback-photo-upload" className="flex items-center gap-2.5 cursor-pointer text-xs">
-                          {callbackPhotoPreview ? (
-                            <div className="flex items-center gap-2.5 w-full">
-                              <img src={callbackPhotoPreview} alt="Aperçu" className="w-10 h-10 object-cover rounded-lg" />
-                              <span className="text-green-600 font-medium flex-1">Photo ajoutée</span>
-                              <button
-                                type="button"
-                                onClick={(e) => { e.preventDefault(); setCallbackPhotoFile(null); setCallbackPhotoPreview(null); }}
-                                className="text-red-400 hover:text-red-600"
-                              >✕</button>
-                            </div>
-                          ) : (
-                            <span className="text-slate-400">📷 Ajouter une photo (optionnel)</span>
-                          )}
-                        </label>
+                    {formError && (
+                      <div className="bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl px-4 py-2.5">
+                        {formError}
                       </div>
                     )}
 

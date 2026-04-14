@@ -1,4 +1,4 @@
-import { Award, Microscope, Shield } from 'lucide-react';
+import { Award, Microscope, Phone, Shield } from 'lucide-react';
 
 export function TrustSignals() {
   return (
@@ -48,6 +48,24 @@ export function TrustSignals() {
             <p className="text-slate-500 text-sm leading-relaxed">
               Chaque chantier est couvert par notre assurance décennale. Rapport technique remis sous 7 jours, suivi post-travaux inclus.
             </p>
+          </div>
+        </div>
+
+        <div className="text-center mt-10 pt-8 border-t border-slate-100">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href="/diagnostic"
+              className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-7 py-3 rounded-full transition-colors text-sm"
+            >
+              Évaluer ma situation gratuitement
+            </a>
+            <a
+              href="tel:0582953375"
+              className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 font-medium text-sm transition-colors"
+            >
+              <Phone size={16} />
+              05 82 95 33 75
+            </a>
           </div>
         </div>
       </div>

@@ -40,7 +40,7 @@ export function Navbar() {
                 className="bg-orange-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-700 transition-all shadow-lg shadow-orange-600/30 text-sm flex items-center gap-2 transform hover:-translate-y-0.5 duration-200 ring-2 ring-orange-600 ring-offset-2"
               >
                 <Search size={18} aria-hidden="true" />
-                Mon Diagnostic Gratuit
+                Diagnostic en ligne gratuit
               </Link>
             </div>
           </div>
