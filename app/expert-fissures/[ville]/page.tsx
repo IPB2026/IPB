@@ -49,8 +49,8 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
 
   // Description personnalisée
   const description = villeData.risqueRGA === 'tres-fort' || villeData.risqueRGA === 'fort'
-    ? `Expert fissures à ${villeNom} (${deptCode}). Zone RGA ${villeData.risqueRGA}, diagnostic 249€, agrafage garanti 10 ans. 05 82 95 33 75`
-    : `Expert fissures à ${villeNom} (${deptCode}). Diagnostic 249€ déductible, agrafage garanti 10 ans. Intervention 48h. 05 82 95 33 75`;
+    ? `Expert fissures à ${villeNom} (${deptCode}). Zone RGA ${villeData.risqueRGA}, diagnostic sur site + agrafage garanti 10 ans. 05 82 95 33 75`
+    : `Expert fissures à ${villeNom} (${deptCode}). Diagnostic expert sur site, agrafage garanti 10 ans. Intervention 48h. 05 82 95 33 75`;
 
   return {
     title: `Expert Fissures ${villeNom} (${deptCode}) | IPB`,
@@ -142,8 +142,8 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
       answer: `${villeData.nom} est classée en aléa RGA ${getRisqueLabel(villeData.risqueRGA).toLowerCase()}. ${villeData.geologie || ''} ${villeData.tauxSinistralite ? `Le taux de sinistralité local est de ${villeData.tauxSinistralite}.` : ''}`
     },
     {
-      question: `Combien coûte un diagnostic fissures à ${villeData.nom} ?`,
-      answer: `Le diagnostic coûte 249€, déductibles des travaux si vous nous confiez la réparation. Ce tarif inclut le déplacement sur ${villeData.nom}, les mesures (niveau laser, fissuromètre), et un rapport détaillé avec photos et recommandations.`
+      question: `Comment se déroule un diagnostic fissures à ${villeData.nom} ?`,
+      answer: `Le diagnostic est une prestation d'expertise réalisée sur site, incluant le déplacement sur ${villeData.nom}, les mesures instrumentées (niveau laser, fissuromètre) et un rapport détaillé avec photos et recommandations. Son coût est déductible des travaux si vous nous confiez la réparation.`
     },
     {
       question: `Ma maison à ${villeData.nom} est-elle éligible à la garantie CAT-NAT ?`,
@@ -304,7 +304,7 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
               <a href="#stats-cles" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Statistiques clés</a>
               <a href="#contexte-local" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Contexte local</a>
-              <a href="#tarifs" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Tarifs</a>
+              <a href="#tarifs" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Prestations</a>
               <a href="#solutions" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Solutions & méthode</a>
               <a href="#avis" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Avis clients</a>
               <a href="#faq" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">FAQ</a>
@@ -322,8 +322,8 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
               <div className="text-slate-600 text-sm">Intervention</div>
             </div>
             <div>
-              <div className="text-3xl font-extrabold text-orange-600">249€</div>
-              <div className="text-slate-600 text-sm">Diagnostic complet</div>
+              <div className="text-3xl font-extrabold text-orange-600">Expert</div>
+              <div className="text-slate-600 text-sm">Diagnostic sur site</div>
             </div>
             <div>
               <div className="text-3xl font-extrabold text-orange-600">10 ans</div>
@@ -489,13 +489,13 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
       {/* Tarifs */}
       <section id="tarifs" className="py-16 bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-center mb-4">Tarifs à {villeData.nom}</h2>
+          <h2 className="text-3xl font-extrabold text-center mb-4">Nos prestations à {villeData.nom}</h2>
           <p className="text-slate-400 text-center mb-12">Déplacement inclus dans le rayon de {villeData.distance} depuis Toulouse</p>
           
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-slate-800 rounded-2xl p-6 text-center">
               <h3 className="font-bold mb-2">Diagnostic Expert</h3>
-              <div className="text-4xl font-extrabold text-orange-400 mb-2">249€</div>
+              <div className="text-2xl font-extrabold text-orange-400 mb-2">Sur devis</div>
               <p className="text-slate-400 text-sm mb-4">Déductible des travaux</p>
               <ul className="text-sm text-slate-300 text-left space-y-2">
                 <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Visite sur site (1h30)</li>

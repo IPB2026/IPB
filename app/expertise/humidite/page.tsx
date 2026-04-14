@@ -14,7 +14,7 @@ import { ExpertiseHumiditeBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
   title: 'Expert Humidité Toulouse & Occitanie | IPB',
-  description: 'Murs humides, salpêtre, moisissures ? Injection résine garantie 30 ans, diagnostic 249€ déductible. Intervention 48h. 05 82 95 33 75',
+  description: 'Murs humides, salpêtre, moisissures ? Injection résine garantie 30 ans, diagnostic expert sur site. Intervention 48h. 05 82 95 33 75',
   keywords: [
     'expert humidité toulouse',
     'traitement humidité murs',

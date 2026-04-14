@@ -198,7 +198,7 @@ export default function CGVPage() {
               <p className="mt-4"><strong>3.2. Tarification et nature de l'acompte</strong></p>
               <div className="mt-2 bg-green-50 border border-green-200 rounded-xl p-4">
                 <p className="text-green-800">
-                  Le diagnostic expert est facturé <strong className="text-green-900">249€ TTC</strong>.<br />
+                  Le diagnostic expert est facturé selon le <strong className="text-green-900">tarif communiqué lors de l'échange découverte</strong>.<br />
                   Ce montant constitue un <strong className="text-green-900">acompte déductible</strong> : il sera 
                   intégralement soustrait du montant total des travaux si le Client confie au Prestataire la 
                   réalisation des travaux préconisés dans un délai de 6 mois suivant le diagnostic.
@@ -303,7 +303,7 @@ export default function CGVPage() {
                     <CheckCircle size={20} className="text-green-600 mt-1 flex-shrink-0" aria-hidden="true" />
                     <div>
                       <strong className="text-slate-900">Diagnostic expert :</strong>
-                      <span className="text-slate-700"> 249€ TTC payables à la réservation (acompte déductible sur travaux)</span>
+                      <span className="text-slate-700"> tarif communiqué lors de la réservation, payable à la prise de rendez-vous (acompte déductible sur travaux)</span>
                     </div>
                   </li>
                   <li className="flex items-start gap-3">

@@ -72,7 +72,7 @@ const faqSchema = {
       name: 'Combien coûte la réparation d\'une fissure horizontale ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Le coût dépend de la cause et de la gravité. Un diagnostic expert coûte environ 249€ (déductible des travaux). L\'agrafage structurel revient entre 8 000 et 18 000€ pour 85% des cas. Les micropieux, réservés aux cas graves, coûtent entre 25 000 et 50 000€. Plus vous intervenez tôt, moins c\'est cher.',
+        text: 'Le coût dépend de la cause et de la gravité. Le diagnostic expert est une prestation sur site, déductible des travaux. L\'agrafage structurel revient entre 8 000 et 18 000€ pour 85% des cas. Les micropieux, réservés aux cas graves, coûtent entre 25 000 et 50 000€. Plus vous intervenez tôt, moins c\'est cher.',
       },
     },
     {

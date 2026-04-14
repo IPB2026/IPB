@@ -95,7 +95,7 @@ const faqSchema = {
       name: 'Combien coûte un diagnostic humidité pour identifier la cause ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Un diagnostic humidité professionnel coûte 249€ chez IPB Expertise, déductible si vous réalisez les travaux. L\'expert identifie en 1h30 la cause exacte (condensation, infiltration, remontées capillaires) grâce à des mesures d\'humidité et une analyse technique. Un rapport écrit avec préconisations de traitement vous est remis.',
+        text: 'Le diagnostic humidité est une prestation d\'expertise réalisée sur site par IPB, déductible si vous réalisez les travaux. L\'expert identifie en 1h30 la cause exacte (condensation, infiltration, remontées capillaires) grâce à des mesures d\'humidité et une analyse technique. Un rapport écrit avec préconisations de traitement vous est remis.',
       },
     },
   ],
@@ -338,7 +338,7 @@ export default function CondensationInfiltrationPage() {
             <span className="block text-purple-200">L'expert tranche en 1h30.</span>
           </h2>
           <p className="text-xl text-purple-100 mb-8">
-            Diagnostic 249€ (déductible des travaux) • Réponse claire et écrite
+            Diagnostic expert sur site (déductible des travaux) • Réponse claire et écrite
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="group bg-white text-purple-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-purple-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">

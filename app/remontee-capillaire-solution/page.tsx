@@ -201,7 +201,7 @@ export default function RemonteeCapillairePage() {
 
             <h2>Tarifs traitement remontées capillaires</h2>
             <ul>
-              <li><strong>Diagnostic :</strong> 249€ (déductible des travaux)</li>
+              <li><strong>Diagnostic :</strong> prestation sur devis (déductible des travaux)</li>
               <li><strong>Injection résine :</strong> 80-120€/mètre linéaire</li>
               <li><strong>Maison individuelle type :</strong> 2 000 - 5 000€</li>
             </ul>

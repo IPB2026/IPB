@@ -354,7 +354,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
               <div className="relative z-10">
                 <h2 className="text-2xl font-extrabold mb-4">Cet article vous a aidé ?</h2>
                 <p className="text-slate-300 mb-6">
-                  Obtenez un diagnostic personnalisé pour votre situation. 249€ déductibles sur travaux.
+                  Obtenez un diagnostic personnalisé pour votre situation. Prestation déductible des travaux.
                 </p>
                 <Link
                   href="/diagnostic"

@@ -312,7 +312,7 @@ export default function FissureEscalierPage() {
             <div className="grid md:grid-cols-3 gap-8 items-center">
               <div className="text-center md:text-left">
                 <div className="text-sm text-orange-300 font-bold mb-2">DIAGNOSTIC</div>
-                <div className="text-4xl font-black text-white">249€</div>
+                <div className="text-3xl font-black text-white">Sur devis</div>
                 <div className="text-slate-400">Déductible des travaux</div>
               </div>
               <div className="text-center border-y md:border-y-0 md:border-x border-white/10 py-8 md:py-0">

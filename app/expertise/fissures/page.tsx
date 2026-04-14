@@ -14,7 +14,7 @@ import { ExpertiseFissuresBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
   title: 'Expert Fissures Toulouse & Occitanie | Agrafage | IPB',
-  description: 'Fissures maison à Toulouse, Montauban, Auch ? Agrafage garanti 10 ans, diagnostic 249€ déductible. Intervention sous 48h. 05 82 95 33 75',
+  description: 'Fissures maison à Toulouse, Montauban, Auch ? Diagnostic expert sur site + agrafage garanti 10 ans. Intervention sous 48h. 05 82 95 33 75',
   keywords: [
     'expert fissures toulouse',
     'agrafage fissures toulouse',
@@ -124,15 +124,15 @@ export default function FissuresPage() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-slate-400">Diagnostic expert sur site</p>
-                    <p className="text-2xl font-bold text-white">249€ TTC</p>
+                    <p className="text-2xl font-bold text-white">Prestation sur devis</p>
                   </div>
                   <div className="text-center px-4 border-l border-white/20">
                     <p className="text-sm text-slate-400">Agrafage (ordre de grandeur)</p>
                     <p className="text-lg font-bold text-white">8 000€ – 15 000€</p>
                   </div>
                   <div className="bg-green-500/20 px-3 py-2 rounded-lg">
-                    <p className="text-green-400 font-bold text-xs">Déductible</p>
-                    <p className="text-green-400 font-bold text-sm">des travaux</p>
+                    <p className="text-green-400 font-bold text-xs">Diagnostic</p>
+                    <p className="text-green-400 font-bold text-sm">déductible des travaux</p>
                   </div>
                 </div>
               </div>

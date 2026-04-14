@@ -12,8 +12,8 @@ import {
 
 const faqData = [
   {
-    question: "Pourquoi le diagnostic sur site est-il payant (249€) ?",
-    answer: "Parce que ce n'est pas un devis : c'est une expertise technique. Nous utilisons un fissuromètre, un niveau laser, un hygromètre et une caméra thermique pour mesurer objectivement la situation. Le rapport de 10 à 15 pages que nous remettons est un document technique opposable — notamment face à un expert d'assurance. Ces 249€ sont intégralement déduits si vous nous confiez les travaux."
+    question: "Pourquoi le diagnostic sur site est-il payant ?",
+    answer: "Parce que ce n'est pas un devis : c'est une expertise technique. Nous utilisons un fissuromètre, un niveau laser, un hygromètre et une caméra thermique pour mesurer objectivement la situation. Le rapport de 10 à 15 pages que nous remettons est un document technique opposable — notamment face à un expert d'assurance. Le coût du diagnostic est intégralement déduit si vous nous confiez les travaux."
   },
   {
     question: "L'agrafage est-il aussi durable que les micropieux ?",

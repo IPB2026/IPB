@@ -37,7 +37,7 @@ const faqItems = [
   },
   {
     question: "Quel est le coût d'un diagnostic à Montauban ?",
-    answer: "Le diagnostic coûte 249€, déductibles si vous réalisez les travaux avec nous. Il inclut le déplacement, l'analyse complète et le rapport détaillé."
+    answer: "Le diagnostic est une prestation d'expertise sur site, déductible si vous réalisez les travaux avec nous. Il inclut le déplacement, l'analyse complète et le rapport détaillé. Le tarif vous est communiqué lors de l'échange découverte."
   },
   {
     question: "Combien de temps pour recevoir le rapport ?",
@@ -300,7 +300,7 @@ export default function ExpertFissuresMontauban82Page() {
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-8 text-center">
               <h3 className="text-xl font-bold text-slate-900 mb-2">Diagnostic</h3>
-              <div className="text-4xl font-extrabold text-orange-600 mb-4">249€</div>
+              <div className="text-2xl font-extrabold text-orange-600 mb-4">Sur devis</div>
               <p className="text-slate-600">Déductible des travaux</p>
             </div>
             <div className="bg-white rounded-2xl shadow-lg border-2 border-orange-500 p-8 text-center">

@@ -9,7 +9,7 @@ import { CheckCircle, Phone, ArrowRight, MapPin, AlertTriangle, Shield, FileText
 
 export const metadata: Metadata = {
   title: 'Expert Fissures Toulouse (31) | Agrafage Garanti | IPB',
-  description: 'Expert fissures à Toulouse et Haute-Garonne. Agrafage structurel garanti 10 ans, diagnostic 249€ déductible. Intervention 48h. 05 82 95 33 75',
+  description: 'Expert fissures à Toulouse et Haute-Garonne. Agrafage structurel garanti 10 ans, diagnostic expert sur site. Intervention 48h. 05 82 95 33 75',
   keywords: [
     'expert fissures toulouse',
     'fissures maison toulouse',
@@ -69,8 +69,8 @@ const communesHauteGaronne = [
 
 const faqItems = [
   {
-    question: "Combien coûte un diagnostic fissures à Toulouse ?",
-    answer: "Le diagnostic fissures coûte 249€, déductibles des travaux si vous nous confiez la réparation. Ce tarif inclut le déplacement, l'inspection complète et le rapport détaillé avec préconisations."
+    question: "Comment se déroule un diagnostic fissures à Toulouse ?",
+    answer: "Le diagnostic fissures est une prestation d'expertise sur site, déductible des travaux si vous nous confiez la réparation. Il inclut le déplacement, l'inspection complète et un rapport détaillé avec préconisations. Le tarif vous est communiqué lors de l'échange découverte."
   },
   {
     question: "Quels sont les délais d'intervention ?",
@@ -145,7 +145,7 @@ const howToJsonLd = {
       "@type": "HowToStep",
       "position": 1,
       "name": "Diagnostic expert sur site",
-      "text": "Un expert IPB se déplace sous 48h pour inspecter les fissures, mesurer leur évolution et identifier les causes (sol argileux, tassement différentiel, sécheresse). Rapport détaillé avec photos et préconisations. Coût : 249€ déductibles des travaux.",
+      "text": "Un expert IPB se déplace sous 48h pour inspecter les fissures, mesurer leur évolution et identifier les causes (sol argileux, tassement différentiel, sécheresse). Rapport détaillé avec photos et préconisations. Prestation déductible des travaux.",
       "url": "https://www.ipb-expertise.fr/diagnostic"
     },
     {
@@ -332,7 +332,7 @@ export default function ExpertFissuresToulouse31Page() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-8">
               <h3 className="text-xl font-bold text-slate-900 mb-2">Diagnostic fissures</h3>
-              <div className="text-4xl font-extrabold text-orange-600 mb-4">249€</div>
+              <div className="text-2xl font-extrabold text-orange-600 mb-4">Sur devis</div>
               <ul className="space-y-3 text-slate-600">
                 <li className="flex items-center gap-2"><CheckCircle size={18} className="text-green-500" /> Déplacement inclus</li>
                 <li className="flex items-center gap-2"><CheckCircle size={18} className="text-green-500" /> Rapport détaillé</li>

@@ -1188,7 +1188,8 @@ export default function DiagnosticPage() {
                         <p className="text-white/60 text-xs">Instrumenté + rapport détaillé</p>
                       </div>
                       <div className="text-right">
-                        <p className="font-extrabold text-lg">249€ <span className="text-xs font-normal text-white/60">TTC</span></p>
+                        <p className="font-extrabold text-sm text-orange-400">Prestation payante</p>
+                        <p className="text-[10px] text-white/60">Tarif communiqué par téléphone</p>
                       </div>
                     </div>
                     <div className="flex flex-wrap gap-2 text-[10px]">
@@ -1310,7 +1311,7 @@ export default function DiagnosticPage() {
                     </div>
                     <div className="flex items-start gap-2">
                       <span className="bg-orange-100 text-orange-600 font-bold rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 text-[10px]">2</span>
-                      <span>Diagnostic instrumenté sur site (249€ TTC)</span>
+                      <span>Diagnostic instrumenté sur site (tarif communiqué par téléphone)</span>
                     </div>
                     <div className="flex items-start gap-2">
                       <span className="bg-orange-100 text-orange-600 font-bold rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 text-[10px]">3</span>
