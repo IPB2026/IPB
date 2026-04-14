@@ -294,7 +294,7 @@ export default function NotreExpertPage() {
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h3 className="font-bold text-slate-900 mb-4">Prix Affichés</h3>
               <p className="text-slate-600 mb-4">
-                Nos tarifs sont transparents et communiqués dès l'échange découverte. Le diagnostic est déductible des travaux.
+                Nos tarifs sont transparents. Le montant du diagnostic est intégralement déduit si vous nous confiez les travaux.
               </p>
               <Link href="/diagnostic" className="text-orange-600 font-bold hover:underline">
                 Voir les tarifs →

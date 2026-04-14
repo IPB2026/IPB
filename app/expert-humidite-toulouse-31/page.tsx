@@ -308,8 +308,8 @@ export default function ExpertHumiditeToulouse31Page() {
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-8 text-center">
               <h3 className="text-xl font-bold text-slate-900 mb-2">Diagnostic</h3>
-              <div className="text-2xl font-extrabold text-blue-600 mb-4">Sur devis</div>
-              <p className="text-slate-600">Déductible des travaux</p>
+              <div className="inline-block bg-green-100 text-green-700 text-sm font-bold px-3 py-1 rounded-full mb-2">Déduit à 100% des travaux</div>
+              <p className="text-slate-600">Expertise sur site · Rapport détaillé</p>
             </div>
             <div className="bg-white rounded-2xl shadow-lg border-2 border-blue-500 p-8 text-center">
               <h3 className="text-xl font-bold text-slate-900 mb-2">Injection résine</h3>

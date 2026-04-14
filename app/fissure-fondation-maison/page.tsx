@@ -348,7 +348,7 @@ export default function FissureFondationPage() {
             Vos fondations méritent un expert.
           </h2>
           <p className="text-xl text-orange-100 mb-8">
-            Diagnostic expert sur site (déductible des travaux) • Devis gratuit • Garantie décennale
+            Diagnostic expert sur site (déduit à 100% des travaux) • Devis gratuit • Garantie décennale
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="group bg-white text-orange-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-orange-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">

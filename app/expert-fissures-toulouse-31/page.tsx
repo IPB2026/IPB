@@ -69,8 +69,8 @@ const communesHauteGaronne = [
 
 const faqItems = [
   {
-    question: "Comment se déroule un diagnostic fissures à Toulouse ?",
-    answer: "Le diagnostic fissures est une prestation d'expertise sur site, déductible des travaux si vous nous confiez la réparation. Il inclut le déplacement, l'inspection complète et un rapport détaillé avec préconisations. Le tarif vous est communiqué lors de l'échange découverte."
+    question: "Le diagnostic fissures est-il gratuit à Toulouse ?",
+    answer: "Le diagnostic est une vraie expertise technique : il inclut le déplacement, l'inspection complète avec instruments de mesure et un rapport détaillé avec préconisations. C'est une prestation payante, mais son montant est intégralement déduit si vous nous confiez les travaux."
   },
   {
     question: "Quels sont les délais d'intervention ?",
@@ -332,7 +332,7 @@ export default function ExpertFissuresToulouse31Page() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-8">
               <h3 className="text-xl font-bold text-slate-900 mb-2">Diagnostic fissures</h3>
-              <div className="text-2xl font-extrabold text-orange-600 mb-4">Sur devis</div>
+              <div className="inline-block bg-green-100 text-green-700 text-sm font-bold px-3 py-1 rounded-full mb-4">Déduit à 100% des travaux</div>
               <ul className="space-y-3 text-slate-600">
                 <li className="flex items-center gap-2"><CheckCircle size={18} className="text-green-500" /> Déplacement inclus</li>
                 <li className="flex items-center gap-2"><CheckCircle size={18} className="text-green-500" /> Rapport détaillé</li>

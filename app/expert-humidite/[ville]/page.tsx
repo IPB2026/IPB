@@ -113,7 +113,7 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
     },
     {
       question: `Combien coûte un traitement humidité à ${villeData.nom} ?`,
-      answer: `Le diagnostic est une prestation d'expertise sur site, déductible des travaux. L'injection résine coûte 80-120€/ml (soit 8 000-15 000€ pour une maison standard). Le cuvelage (caves) coûte 150-250€/m². Ces tarifs incluent le déplacement sur ${villeData.nom} et la garantie 30 ans.`
+      answer: `Le diagnostic est une expertise sur site dont le montant est intégralement déduit si vous nous confiez les travaux. L'injection résine coûte 80-120€/ml (soit 8 000-15 000€ pour une maison standard). Le cuvelage (caves) coûte 150-250€/m². Ces tarifs incluent le déplacement sur ${villeData.nom} et la garantie 30 ans.`
     },
     {
       question: `Quelle est la différence entre condensation et remontées capillaires ?`,
@@ -378,8 +378,8 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-slate-800 rounded-2xl p-6 text-center">
               <h3 className="font-bold mb-2">Diagnostic Expert</h3>
-              <div className="text-2xl font-extrabold text-cyan-400 mb-2">Sur devis</div>
-              <p className="text-slate-400 text-sm mb-4">Déductible des travaux</p>
+              <div className="inline-block bg-green-500/20 text-green-400 text-sm font-bold px-3 py-1 rounded-full mb-2">Déduit à 100% des travaux</div>
+              <p className="text-slate-400 text-sm mb-4">Expertise sur site · Rapport détaillé</p>
               <ul className="text-sm text-slate-300 text-left space-y-2">
                 <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Visite sur site (1h30)</li>
                 <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Mesures humidité</li>

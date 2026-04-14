@@ -338,7 +338,7 @@ export default function CondensationInfiltrationPage() {
             <span className="block text-purple-200">L'expert tranche en 1h30.</span>
           </h2>
           <p className="text-xl text-purple-100 mb-8">
-            Diagnostic expert sur site (déductible des travaux) • Réponse claire et écrite
+            Diagnostic expert sur site (déduit à 100% des travaux) • Réponse claire et écrite
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="group bg-white text-purple-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-purple-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">

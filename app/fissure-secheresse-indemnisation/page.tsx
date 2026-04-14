@@ -331,8 +331,8 @@ export default function FissureSecheressePage() {
                   <Euro className="w-10 h-10 text-amber-400" />
                   <div>
                     <div className="text-sm text-amber-300 font-bold">DIAGNOSTIC</div>
-                    <div className="text-2xl font-black text-white">Sur devis</div>
-                    <div className="text-slate-400 text-sm">Déductible si travaux avec nous</div>
+                    <div className="inline-block bg-green-500/20 text-green-400 text-sm font-bold px-3 py-1 rounded-full my-1">Déduit à 100%</div>
+                    <div className="text-slate-400 text-sm">du montant des travaux</div>
                   </div>
                 </div>
               </div>

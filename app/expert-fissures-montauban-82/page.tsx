@@ -36,8 +36,8 @@ const faqItems = [
     answer: "Oui, le département 82 présente des sols argileux similaires à la Haute-Garonne. De nombreuses communes ont été reconnues en catastrophe naturelle sécheresse ces dernières années."
   },
   {
-    question: "Quel est le coût d'un diagnostic à Montauban ?",
-    answer: "Le diagnostic est une prestation d'expertise sur site, déductible si vous réalisez les travaux avec nous. Il inclut le déplacement, l'analyse complète et le rapport détaillé. Le tarif vous est communiqué lors de l'échange découverte."
+    question: "Le diagnostic est-il gratuit à Montauban ?",
+    answer: "Le diagnostic est une vraie expertise technique sur site : c'est une prestation payante qui inclut le déplacement, l'analyse complète et un rapport détaillé. La bonne nouvelle : son montant est intégralement déduit si vous nous confiez les travaux."
   },
   {
     question: "Combien de temps pour recevoir le rapport ?",
@@ -300,8 +300,8 @@ export default function ExpertFissuresMontauban82Page() {
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-8 text-center">
               <h3 className="text-xl font-bold text-slate-900 mb-2">Diagnostic</h3>
-              <div className="text-2xl font-extrabold text-orange-600 mb-4">Sur devis</div>
-              <p className="text-slate-600">Déductible des travaux</p>
+              <div className="inline-block bg-green-100 text-green-700 text-sm font-bold px-3 py-1 rounded-full mb-2">Déduit à 100% des travaux</div>
+              <p className="text-slate-600">Expertise sur site · Rapport détaillé</p>
             </div>
             <div className="bg-white rounded-2xl shadow-lg border-2 border-orange-500 p-8 text-center">
               <h3 className="text-xl font-bold text-slate-900 mb-2">Agrafage</h3>
