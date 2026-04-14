@@ -258,7 +258,7 @@ export default function MentionsLegalesPage() {
                   <dl className="space-y-2 text-sm">
                     <div className="flex flex-col sm:flex-row sm:gap-4">
                       <dt className="font-bold text-green-900 sm:w-40">Assureur :</dt>
-                      <dd className="text-green-800">Compagnie d'assurance française agréée</dd>
+                      <dd className="text-green-800">AXA France — Contrat n° 0000022511730204</dd>
                     </div>
                     <div className="flex flex-col sm:flex-row sm:gap-4">
                       <dt className="font-bold text-green-900 sm:w-40">Couverture :</dt>

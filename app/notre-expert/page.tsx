@@ -25,7 +25,7 @@ const certifications = [
   { name: 'Expert en Pathologie du Bâtiment', organisme: 'CSTB (Centre Scientifique et Technique du Bâtiment)' },
   { name: 'Diagnostic Humidité & Étanchéité', organisme: 'AFNOR Certification' },
   { name: 'Traitement des Fissures Structurelles', organisme: 'STRRES (Syndicat National de la Réparation en Structure)' },
-  { name: 'Assurance Responsabilité Civile & Décennale', organisme: 'SMABTP' },
+  { name: 'Assurance Responsabilité Civile & Décennale', organisme: 'AXA France' },
 ];
 
 const chiffres = [

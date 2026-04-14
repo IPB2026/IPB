@@ -42,7 +42,7 @@ export function TrustSignals() {
               <Shield size={32} />
             </div>
             <div className="bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full text-sm font-bold mb-3">
-              Assuré SMABTP
+              Assuré AXA France
             </div>
             <h3 className="font-display font-bold text-xl text-slate-900 mb-2">Garantie décennale</h3>
             <p className="text-slate-500 text-sm leading-relaxed">

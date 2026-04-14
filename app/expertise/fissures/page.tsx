@@ -175,7 +175,7 @@ export default function FissuresPage() {
                     </div>
                     <div>
                       <p className="font-bold text-white">Garantie décennale</p>
-                      <p className="text-sm text-slate-400">Travaux assurés SMABTP</p>
+                      <p className="text-sm text-slate-400">Travaux assurés AXA France</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">

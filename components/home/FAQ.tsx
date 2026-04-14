@@ -33,7 +33,7 @@ const faqData = [
   },
   {
     question: "Vos travaux sont-ils assurés ?",
-    answer: "IPB est assuré en Garantie Décennale et en Responsabilité Civile Professionnelle auprès de la SMABTP, pour les activités de renforcement structurel et de traitement de l'humidité. Les attestations sont fournies sur demande et jointes à chaque devis."
+    answer: "IPB est assuré en Garantie Décennale et en Responsabilité Civile Professionnelle auprès d'AXA France (n° 0000022511730204), pour les activités de renforcement structurel et de traitement de l'humidité. Les attestations sont fournies sur demande et jointes à chaque devis."
   }
 ];
 
