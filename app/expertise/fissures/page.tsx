@@ -14,7 +14,7 @@ import { ExpertiseFissuresBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
   title: 'Expert Fissures Toulouse & Occitanie | Agrafage | IPB',
-  description: 'Fissures maison à Toulouse, Montauban, Auch ? Diagnostic expert sur site + agrafage garanti 10 ans. Intervention sous 48h. 05 82 95 33 75',
+  description: 'Fissures maison à Toulouse, Montauban, Auch ? Diagnostic expert sur site + agrafage structurel garanti 10 ans. Intervention sous 48h. 05 82 95 33 75.',
   keywords: [
     'expert fissures toulouse',
     'agrafage fissures toulouse',
@@ -157,7 +157,7 @@ export default function FissuresPage() {
             {/* Trust signals desktop */}
             <div className="hidden lg:block">
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-                <h3 className="text-xl font-bold mb-6 text-center">Pourquoi IPB ?</h3>
+                <h2 className="text-xl font-bold mb-6 text-center">Pourquoi IPB ?</h2>
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center">

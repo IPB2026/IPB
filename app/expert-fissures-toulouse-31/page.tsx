@@ -9,7 +9,7 @@ import { CheckCircle, Phone, ArrowRight, MapPin, AlertTriangle, Shield, FileText
 
 export const metadata: Metadata = {
   title: 'Expert Fissures Toulouse (31) | Agrafage Garanti | IPB',
-  description: 'Expert fissures à Toulouse et Haute-Garonne. Agrafage structurel garanti 10 ans, diagnostic expert sur site. Intervention 48h. 05 82 95 33 75',
+  description: 'Expert fissures à Toulouse et Haute-Garonne. Agrafage structurel garanti 10 ans, diagnostic expert sur site. Intervention 48h. Garantie décennale AXA.',
   keywords: [
     'expert fissures toulouse',
     'fissures maison toulouse',

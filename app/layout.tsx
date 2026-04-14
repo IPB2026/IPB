@@ -97,7 +97,7 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.ipb-expertise.fr#organization",
+  "@id": "https://www.ipb-expertise.fr#localbusiness",
   "name": "IPB - Institut de Pathologie du Bâtiment",
   "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
   "description": "Expert en traitement des fissures et de l'humidité en Occitanie (31, 82, 32). Solutions techniques (agrafage, injection résine, cuvelage, VMI) avec garantie décennale. Toulouse, Montauban, Auch et environs.",

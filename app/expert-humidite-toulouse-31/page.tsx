@@ -8,8 +8,8 @@ import { Testimonials } from '@/components/home/Testimonials';
 import { CheckCircle, Phone, ArrowRight, MapPin, Droplets, Shield, FileText, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Expert Humidité Toulouse (31) | Injection Résine Garantie 30 ans | IPB',
-  description: 'Expert humidité maison à Toulouse, Montauban, Auch (31-82-32). Traitement remontées capillaires, salpêtre, moisissures. Injection résine, cuvelage, VMI. ☎ 05 82 95 33 75. Garantie 30 ans.',
+  title: 'Expert Humidité Toulouse (31) | Injection Résine | IPB',
+  description: 'Expert humidité à Toulouse et Haute-Garonne. Traitement remontées capillaires, salpêtre, moisissures. Injection résine garantie 30 ans. 05 82 95 33 75.',
   keywords: [
     'expert humidité toulouse',
     'traitement humidité maison 31',

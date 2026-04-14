@@ -58,8 +58,8 @@ const organizationSchema = {
 };
 
 export const metadata: Metadata = {
-  title: "Expert Fissures & Humidité Toulouse (31) | IPB",
-  description: "Cabinet indépendant spécialisé en pathologie du bâtiment. Du diagnostic instrumenté aux travaux (agrafage, injection résine) avec suivi post-intervention. 850+ clients accompagnés en Occitanie.",
+  title: "Expert Fissures & Humidité à Toulouse | IPB Expertise",
+  description: "Cabinet indépendant en pathologie du bâtiment à Toulouse. Diagnostic instrumenté, agrafage, injection résine et suivi post-travaux. 850+ clients accompagnés.",
   keywords: [
     // Fissures - Mots clés principaux
     'expert fissures toulouse',
@@ -113,6 +113,14 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Expert Fissures & Humidité Toulouse | IPB",
     description: "Du diagnostic aux travaux, un seul interlocuteur. Agrafage fissures, traitement humidité. Garantie décennale.",
+    images: [
+      {
+        url: "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
+        width: 1200,
+        height: 630,
+        alt: "IPB Expertise - Expert fissures et humidité à Toulouse",
+      },
+    ],
   },
   alternates: {
     canonical: "https://www.ipb-expertise.fr",

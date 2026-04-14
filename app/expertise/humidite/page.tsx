@@ -13,8 +13,8 @@ import { TraitementHumiditeHowToSchema } from '@/components/seo/HowToSchema';
 import { ExpertiseHumiditeBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
-  title: 'Expert Humidité Toulouse & Occitanie | IPB',
-  description: 'Murs humides, salpêtre, moisissures ? Injection résine garantie 30 ans, diagnostic expert sur site. Intervention 48h. 05 82 95 33 75',
+  title: 'Expert Humidité Toulouse & Occitanie | Traitement | IPB',
+  description: 'Murs humides, salpêtre, moisissures ? Diagnostic expert sur site + injection résine garantie 30 ans. Intervention sous 48h en Haute-Garonne. 05 82 95 33 75.',
   keywords: [
     'expert humidité toulouse',
     'traitement humidité murs',
@@ -161,7 +161,7 @@ export default function HumiditePage() {
             {/* Trust signals desktop + Mini-diagnostic */}
             <div className="hidden lg:block">
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 mb-6">
-                <h3 className="text-xl font-bold mb-6 text-center">Pourquoi choisir IPB ?</h3>
+                <h2 className="text-xl font-bold mb-6 text-center">Pourquoi choisir IPB ?</h2>
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
@@ -228,10 +228,10 @@ export default function HumiditePage() {
       <section className="lg:hidden py-6 bg-gradient-to-b from-slate-100 to-white">
         <div className="max-w-xl mx-auto px-4">
           <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-5">
-            <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2 text-lg">
+            <h2 className="font-bold text-slate-900 mb-3 flex items-center gap-2 text-lg">
               <Droplets className="text-blue-500" size={20} />
               Symptômes fréquents
-            </h3>
+            </h2>
             <div className="grid grid-cols-2 gap-2 text-sm mb-4">
               <div className="flex items-center gap-2 p-2 bg-blue-50 rounded-lg">
                 <CheckCircle size={14} className="text-blue-500 shrink-0" /> Salpêtre

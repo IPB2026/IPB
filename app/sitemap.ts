@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next';
-import { blogPostsSlugs, blogPostsList } from '@/app/data/blog';
+import { blogPostsList } from '@/app/data/blog';
 import { villeSlugs } from '@/app/data/villes';
+import { problemPages } from '@/app/data/problems';
+import { quartierSlugs } from '@/app/data/quartiers';
 
 // ═══════════════════════════════════════════════════════════════
 // SITEMAP SEO OPTIMISÉ - IPB EXPERTISE
@@ -27,13 +29,16 @@ const spokeFissuresPages = [
 ];
 
 // 🎯 Pages SPOKE Humidité (Topic Clusters - Hub & Spoke)
-// Réduit aux 5 pages les plus fortes ; les 4 retirées restent accessibles via maillage interne
 const spokeHumiditePages = [
   'remontee-capillaire-solution',
   'salpetre-mur-traitement',
   'condensation-ou-infiltration',
   'merule-champignon-traitement',
   'moisissures-maison-sante',
+  'cave-humide-solutions',
+  'ponts-thermiques-condensation',
+  'remontees-capillaires-traitement',
+  'vmi-ventilation-insufflation',
 ];
 
 // 📋 Pages E-E-A-T (Expertise, Experience, Authoritativeness, Trustworthiness)
@@ -284,12 +289,55 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  // Quartiers et problèmes retirés du sitemap pour concentrer le crawl budget.
-  // Google les découvrira via le maillage interne quand l'autorité du site aura grandi.
+  // ════════════════════════════════════════════════════════════
+  // PAGES AGRAFAGE-FISSURES + TRAITEMENT-HUMIDITE PAR VILLE
+  // ════════════════════════════════════════════════════════════
+  const agrafageFissuresPages: MetadataRoute.Sitemap = villeSlugs.map((ville) => ({
+    url: `${baseUrl}/agrafage-fissures/${ville}`,
+    lastModified: contentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.65,
+  }));
+
+  const traitementHumiditePages: MetadataRoute.Sitemap = villeSlugs.map((ville) => ({
+    url: `${baseUrl}/traitement-humidite/${ville}`,
+    lastModified: contentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.65,
+  }));
+
+  // ════════════════════════════════════════════════════════════
+  // PAGES VILLES GÉNÉRIQUES
+  // ════════════════════════════════════════════════════════════
+  const villesPages: MetadataRoute.Sitemap = villeSlugs.map((ville) => ({
+    url: `${baseUrl}/villes/${ville}`,
+    lastModified: contentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }));
+
+  // ════════════════════════════════════════════════════════════
+  // PAGES PROBLÈMES (Topic Cluster)
+  // ════════════════════════════════════════════════════════════
+  const problemesPages: MetadataRoute.Sitemap = problemPages.map((p) => ({
+    url: `${baseUrl}/problemes/${p.slug}`,
+    lastModified: contentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.65,
+  }));
+
+  // ════════════════════════════════════════════════════════════
+  // PAGES QUARTIERS TOULOUSE
+  // ════════════════════════════════════════════════════════════
+  const quartiersPages: MetadataRoute.Sitemap = quartierSlugs.map((q) => ({
+    url: `${baseUrl}/quartiers/${q}`,
+    lastModified: contentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }));
 
   // ════════════════════════════════════════════════════════════
   // ASSEMBLAGE FINAL DU SITEMAP
-  // Ordre de priorité décroissante pour une meilleure lisibilité
   // ════════════════════════════════════════════════════════════
   return [
     ...staticPages, 
@@ -302,6 +350,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...departementPages, 
     ...expertFissuresPages,
     ...expertHumiditePages,
+    ...agrafageFissuresPages,
+    ...traitementHumiditePages,
+    ...villesPages,
+    ...problemesPages,
+    ...quartiersPages,
     ...blogPages,
   ];
 }
