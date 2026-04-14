@@ -51,13 +51,6 @@ const organizationSchema = {
     "availableLanguage": "French",
     "areaServed": ["FR-31", "FR-82", "FR-32", "FR-81"]
   },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "47",
-    "bestRating": "5",
-    "worstRating": "1"
-  },
   "sameAs": [
     "https://www.facebook.com/ipbexpertise",
     "https://www.linkedin.com/company/ipb-expertise"

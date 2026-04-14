@@ -93,11 +93,6 @@ export default function HauteGaronnePage() {
           name: v.nom,
         })),
       },
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        reviewCount: '47',
-      },
     },
     description: 'Expert n°1 en traitement des fissures et de l\'humidité en Haute-Garonne (31). Basé à Toulouse.',
   };

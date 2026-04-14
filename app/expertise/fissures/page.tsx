@@ -62,8 +62,7 @@ const generateServiceJsonLd = () => ({
     "@type": "LocalBusiness",
     "name": "IPB - Institut de Pathologie du Bâtiment",
     "telephone": "+33582953375",
-    "address": { "@type": "PostalAddress", "streetAddress": "13 rue du Recteur Dottin", "addressLocality": "Toulouse", "addressRegion": "Occitanie", "postalCode": "31100", "addressCountry": "FR" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "bestRating": "5", "worstRating": "1", "reviewCount": "47" }
+    "address": { "@type": "PostalAddress", "streetAddress": "13 rue du Recteur Dottin", "addressLocality": "Toulouse", "addressRegion": "Occitanie", "postalCode": "31100", "addressCountry": "FR" }
   },
   "areaServed": [{ "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" }, { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" }, { "@type": "AdministrativeArea", "name": "Gers (32)" }, { "@type": "AdministrativeArea", "name": "Tarn (81)" }],
   "description": "Expert en traitement des fissures structurelles. Agrafage, harpage. Alternative économique aux micropieux avec garantie décennale."

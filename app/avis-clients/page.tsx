@@ -113,13 +113,6 @@ function generateReviewsSchema() {
     },
     "telephone": "+33582953375",
     "url": "https://www.ipb-expertise.fr",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "47",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
     "review": reviews.map(review => ({
       "@type": "Review",
       "author": {

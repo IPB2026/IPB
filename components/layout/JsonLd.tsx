@@ -63,13 +63,6 @@ export function JsonLd() {
         }
       ]
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "47",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
   };
 
   return (

@@ -98,12 +98,7 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
       { "@type": "City", "name": villeData.nom },
       ...(villeData.communesProches?.map(c => ({ "@type": "City", "name": c })) || [])
     ],
-    "priceRange": "€€",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "47"
-    }
+    "priceRange": "€€"
   };
 
   // FAQ personnalisée humidité
