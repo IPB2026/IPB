@@ -1,9 +1,13 @@
 import type { Metadata } from 'next';
 import '../blog-article.css';
 
+const site = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr').replace(/\/+$/, '');
+const ogImage = `${site}/images/IPB_Logo_HD.png`;
+
 export const metadata: Metadata = {
-  title: 'Blog Expert Fissures & Humidité | IPB',
-  description: "Guides experts sur les fissures, l'humidité et la structure. Conseils pour propriétaires en Occitanie : agrafage, assurance, fondations.",
+  title: 'Blog Fissures & Humidité — Guides Experts | IPB Toulouse',
+  description:
+    'Guides techniques sur fissures, humidité et structure en Occitanie. Agrafage, injection résine, assurance, revente : articles rédigés par des experts du bâtiment.',
   keywords: [
     'fissures maison',
     'humidité murs',
@@ -14,22 +18,48 @@ export const metadata: Metadata = {
     'expert bâtiment toulouse',
   ],
   alternates: {
-    canonical: 'https://www.ipb-expertise.fr/blog',
+    canonical: `${site}/blog`,
   },
   openGraph: {
-    title: 'Blog IPB | Conseils Fissures & Humidité à Toulouse',
-    description: "Guides experts, conseils pratiques et analyses techniques sur les fissures, l'humidité et la structure.",
-    url: 'https://www.ipb-expertise.fr/blog',
+    title: 'Blog IPB | Fissures, humidité & expertise bâtiment',
+    description:
+      'Articles et guides pour propriétaires : diagnostic, travaux, garantie décennale et valorisation de votre bien en Haute-Garonne et Occitanie.',
+    url: `${site}/blog`,
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
     locale: 'fr_FR',
     type: 'website',
-    images: [{ url: '/images/IPB_Logo_HD.png', width: 1200, height: 630, alt: 'Blog IPB' }],
+    images: [
+      {
+        url: ogImage,
+        width: 1200,
+        height: 630,
+        alt: 'Blog IPB Expertise — fissures et humidité',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Blog IPB | Conseils Fissures & Humidité',
-    description: 'Guides experts et conseils techniques IPB.',
-    images: ['/images/IPB_Logo_HD.png'],
+    title: 'Blog IPB | Fissures, humidité & expertise bâtiment',
+    description: 'Guides experts et conseils techniques pour votre maison en Occitanie.',
+    images: [
+      {
+        url: ogImage,
+        width: 1200,
+        height: 630,
+        alt: 'Blog IPB Expertise',
+      },
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+    },
   },
 };
 

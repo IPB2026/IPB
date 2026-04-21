@@ -65,8 +65,10 @@ export async function generateMetadata(
     };
   }
 
+  const pageTitle = post.metaTitle ?? `${post.title} | IPB Expertise`;
+
   return {
-    title: `${post.title} | IPB Expertise`,
+    title: pageTitle,
     description: post.metaDescription,
     keywords: post.keywords,
     authors: [{ name: post.author }],

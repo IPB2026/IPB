@@ -15,6 +15,8 @@
 interface BlogPost {
   slug: string;
   title: string;
+  /** Titre court pour la balise <title> (SERP ~50–60 car.) ; si absent, title + suffixe IPB */
+  metaTitle?: string;
   excerpt: string;
   date: string;
   dateModified: string;
@@ -3117,6 +3119,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'revente-maison-fissuree': {
     slug: 'revente-maison-fissuree',
+    metaTitle: 'Revente maison fissurée : décote, banque, agrafage | IPB',
     title: 'Vendre une maison fissurée : la décote à -30% (et comment l\'éviter)',
     excerpt: 'Une maison fissurée perd 20 à 30% de sa valeur. Les acheteurs paniquent, les banques refusent les prêts. Mais avec un traitement structurel garanti (agrafage + attestation décennale), la revente redevient possible... et parfois PLUS facile que prévu.',
     date: '2025-10-13',
@@ -3124,7 +3127,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '8 min',
     category: 'conseils',
     author: 'Adam F.',
-    metaDescription: 'Revente maison fissurée : décote 20-30%, risques banque/notaire, solutions (agrafage + garantie décennale), valorisation post-travaux. Expert Toulouse.',
+    metaDescription: 'Revente d\'une maison fissurée : décote 20-30%, refus de prêt, solutions structurelles (agrafage, garantie décennale) et valorisation. Cabinet expert Occitanie.',
     keywords: ['revente maison fissurée', 'décote', 'garantie décennale', 'agrafage', 'vente maison fissures', 'diagnostic technique'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
