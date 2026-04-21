@@ -6569,6 +6569,318 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p class="font-bold text-lg text-slate-900 mt-6">Diagnostic fondations sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
     `
   },
+
+  // ─── ARTICLE 1 / 2 nouveaux : acheter une maison fissurée ───
+  'acheter-maison-fissuree': {
+    slug: 'acheter-maison-fissuree',
+    metaTitle: 'Acheter une maison fissurée : risques, négociation, guide | IPB',
+    title: 'Acheter une maison fissurée : comment négocier le prix (et ne pas se faire piéger)',
+    excerpt: 'Une maison affichant des fissures peut devenir une excellente affaire… ou un gouffre financier. Tout dépend d\'une chose : savoir distinguer une fissure cosmétique d\'une fissure structurelle. Notre guide pour acheter sans mauvaise surprise.',
+    date: '2026-04-10',
+    dateModified: '2026-04-21',
+    readTime: '9 min',
+    category: 'conseils',
+    author: 'Adam F.',
+    metaDescription: 'Acheter une maison fissurée : comment évaluer les risques, négocier le prix, exiger un diagnostic expert et éviter les pièges juridiques. Guide complet Occitanie.',
+    keywords: ['acheter maison fissurée', 'négociation prix', 'diagnostic fissures avant achat', 'vice caché', 'expertise avant achat', 'agrafage'],
+    content: `
+      <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
+        <p class="font-bold text-orange-900 mb-2">La règle d'or de l'acheteur avisé</p>
+        <p class="text-orange-800">Une fissure visible n'est pas forcément dangereuse. Mais une fissure <strong>invisible peut ruiner votre achat</strong>. Avant de signer, exigez toujours un rapport d'expertise structurelle indépendant — pas celui du vendeur, pas celui de l'agence.</p>
+      </div>
+
+      <h2>Maison fissurée à vendre : opportunité ou piège ?</h2>
+
+      <p>Vous visitez une maison qui vous plaît. Le prix est attractif. L'agence vous rassure : "Oh, ces fissures, c'est rien, juste l'enduit qui vieillit." Votre instinct vous dit de creuser. Il a raison.</p>
+
+      <p>En Haute-Garonne et en Occitanie, <strong>les fissures liées aux sols argileux sont extrêmement courantes</strong>. Les étés 2022-2024 ont particulièrement fragilisé les fondations de milliers de maisons. Résultat : les biens fissurés se multiplient sur le marché… parfois sans transparence totale de la part des vendeurs.</p>
+
+      <p>Bonne nouvelle : une maison fissurée peut être une <strong>affaire exceptionnelle</strong>. À condition de savoir ce que vous achetez et de négocier intelligemment.</p>
+
+      <h2>Fissure cosmétique ou structurelle ? La distinction qui change tout</h2>
+
+      <h3>Les fissures sans risque</h3>
+      <p>Ces fissures sont inesthétiques mais ne menacent pas la structure :</p>
+      <ul>
+        <li><strong>Faïençage</strong> : réseau de micro-fissures en toile d'araignée (< 0,2 mm) sur les enduits. Cause : vieillissement des matériaux, cycles thermiques. Coût : ravalement 3 000€ à 8 000€.</li>
+        <li><strong>Fissures d'enduit</strong> : fissures superficielles qui ne traversent pas le mur. Coût : quelques centaines d'euros.</li>
+        <li><strong>Fissures de retrait</strong> : fines lézardes verticales dues au séchage du béton. Pas d'urgence structurelle.</li>
+      </ul>
+
+      <h3>Les fissures qui doivent vous alerter</h3>
+      <p>Ces signaux indiquent potentiellement un problème structurel :</p>
+      <ul>
+        <li><strong>Fissure en escalier</strong> le long des joints de maçonnerie → tassement différentiel probable</li>
+        <li><strong>Fissure horizontale</strong> sur un mur porteur → poussée des terres ou défaillance de la structure</li>
+        <li><strong>Fissure > 2 mm</strong>, ou qui s'ouvre sur toute l'épaisseur du mur</li>
+        <li><strong>Portes ou fenêtres qui coincent</strong>, carrelage qui se soulève, plancher dénivelé</li>
+        <li><strong>Fissures récentes ou évolutives</strong> (demandez les photos de l'annonce d'il y a 6 mois)</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-yellow-50 border-l-4 border-yellow-500 rounded-r-lg">
+        <p class="font-bold text-yellow-900 mb-2">Astuce : le test des photos anciennes</p>
+        <p class="text-yellow-800">Avant la visite, regardez les anciennes photos sur les portails immobiliers (SeLoger, LeBonCoin gardent les archives). Comparez avec les fissures visibles aujourd'hui. Si elles ont grossi en quelques mois : <strong>la structure bouge encore</strong>. Négociez en conséquence.</p>
+      </div>
+
+      <h2>Comment évaluer le coût réel des travaux</h2>
+
+      <p>Avant de formuler une offre, vous devez estimer le coût de mise en état. Voici les ordres de grandeur pour l'Occitanie (2026) :</p>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead class="bg-slate-900 text-white">
+            <tr>
+              <th class="border border-slate-300 p-3 text-left">Type d'intervention</th>
+              <th class="border border-slate-300 p-3 text-center">Fourchette de prix</th>
+              <th class="border border-slate-300 p-3 text-center">Délai</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-3">Ravalement simple (micro-fissures)</td>
+              <td class="border border-slate-300 p-3 text-center">3 000€ – 10 000€</td>
+              <td class="border border-slate-300 p-3 text-center">1-2 semaines</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3">Agrafage structurel (maison 100m²)</td>
+              <td class="border border-slate-300 p-3 text-center font-bold">8 000€ – 20 000€</td>
+              <td class="border border-slate-300 p-3 text-center">3-5 jours</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3">Injection résine anti-remontées</td>
+              <td class="border border-slate-300 p-3 text-center">4 000€ – 12 000€</td>
+              <td class="border border-slate-300 p-3 text-center">1-3 jours</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3">Micropieux (tassement important)</td>
+              <td class="border border-slate-300 p-3 text-center text-red-700 font-bold">25 000€ – 60 000€</td>
+              <td class="border border-slate-300 p-3 text-center">2-4 semaines</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>Attention</strong> : sans diagnostic expert, vous ne savez pas quelle solution est vraiment nécessaire. Certaines entreprises proposent des micropieux là où un agrafage suffirait — soit par manque de qualification, soit par intérêt commercial.</p>
+
+      <h2>La stratégie de négociation en 4 étapes</h2>
+
+      <h3>Étape 1 : Ne montrez pas votre anxiété</h3>
+      <p>En visite, ne réagissez pas aux fissures comme si c'était catastrophique. Restez neutre. Notez simplement tout dans votre tête (ou en photos discrètes). L'anxiété visible de l'acheteur réduit son pouvoir de négociation.</p>
+
+      <h3>Étape 2 : Exigez un diagnostic avant offre</h3>
+      <p>Proposez d'organiser (à vos frais) un diagnostic expert indépendant <strong>avant de formuler une offre ferme</strong>. Deux scénarios :</p>
+      <ul>
+        <li><strong>Le vendeur accepte</strong> : bon signe de bonne foi. Vous avez les éléments pour négocier précisément.</li>
+        <li><strong>Le vendeur refuse</strong> : signal d'alarme. Soit il cache quelque chose, soit il ne sait pas lui-même. Dans les deux cas, prenez vos précautions.</li>
+      </ul>
+
+      <h3>Étape 3 : Formulez une offre conditionnée</h3>
+      <p>Incluez dans votre offre une <strong>clause suspensive</strong> : "offre valable sous réserve d'un rapport d'expertise structurelle conforme à nos attentes". Ainsi, si l'expert révèle un problème plus grave que prévu, vous pouvez vous retirer sans perdre votre acompte.</p>
+
+      <h3>Étape 4 : Négociez sur la base du devis expert</h3>
+      <p>Une fois le diagnostic en main, vous avez un levier en béton : "Le coût des travaux structurels est estimé à X€ par l'expert indépendant. Je propose le prix suivant : [prix affiché - X€ - 15% de marge risque]."</p>
+
+      <div class="my-8 p-6 bg-green-50 border-l-4 border-green-600 rounded-r-lg">
+        <p class="font-bold text-green-900 mb-2">Exemple réel (Toulouse, 2025)</p>
+        <p class="text-green-800">Maison affichée à 320 000€, fissures visibles en façade. Diagnostic IPB : tassement différentiel modéré, coût agrafage estimé 14 000€. Offre négociée : 295 000€ (soit -25 000€ de marge). Après travaux (14 000€), valeur réelle : ≈ 320 000€. <strong>Gain immédiat : 11 000€ de plus-value latente.</strong></p>
+      </div>
+
+      <h2>Les questions à poser impérativement au vendeur</h2>
+
+      <ul>
+        <li><strong>"Ces fissures ont-elles fait l'objet d'un rapport d'expertise ?"</strong> — Si oui, exigez le document. S'il n'existe pas, c'est votre argument pour commander le vôtre.</li>
+        <li><strong>"Y a-t-il eu des travaux de réparation sur les fissures ?"</strong> — Si oui, exigez les factures, l'attestation décennale et la description des travaux. Si les travaux ont été faits sans garantie décennale, cela ne vaut rien juridiquement.</li>
+        <li><strong>"La commune est-elle classée en zone de retrait-gonflement des argiles ?"</strong> — Vérifiable sur <a href="https://georisques.gouv.fr" target="_blank" rel="noopener noreferrer" class="text-orange-600 underline hover:text-orange-700">georisques.gouv.fr</a>. En Haute-Garonne, 80% des communes sont concernées.</li>
+        <li><strong>"Y a-t-il eu une déclaration de sinistre pour catastrophe naturelle sécheresse ?"</strong> — Si oui, est-ce que le dossier est clos ou en cours ? Un dossier en cours peut être une opportunité (l'assurance peut financer les travaux).</li>
+      </ul>
+
+      <h2>La clause suspensive : votre filet de sécurité</h2>
+
+      <p>Ne signez jamais un compromis pour une maison fissurée <strong>sans clause suspensive d'expertise</strong>. Voici la formulation recommandée à soumettre à votre notaire :</p>
+
+      <div class="my-8 p-6 bg-slate-50 border border-slate-200 rounded-xl font-mono text-sm text-slate-700">
+        <p>"La présente promesse est consentie et acceptée sous la condition suspensive que le rapport d'expertise structurelle réalisé par [expert indépendant], remis dans un délai de [21 jours] à compter de la signature des présentes, ne révèle pas de désordres structurels dont le coût de réparation serait supérieur à [X€], ce que les parties conviennent d'apprécier selon le devis contradictoire annexé audit rapport."</p>
+      </div>
+
+      <p>Cette clause vous protège. Si l'expertise révèle un problème plus grave que prévu, vous récupérez votre dépôt de garantie et sortez sans perte.</p>
+
+      <h2>Le risque Cat-Nat : opportunité ou problème ?</h2>
+
+      <p>Si la maison est dans une commune ayant fait l'objet d'un <strong>arrêté de catastrophe naturelle sécheresse</strong> (consultable en mairie ou sur Légifrance), deux scénarios :</p>
+
+      <h3>Dossier sinistre non ouvert</h3>
+      <p>En tant que nouvel acquéreur, <strong>vous ne pouvez plus ouvrir ce dossier</strong> pour les sinistres antérieurs à votre acquisition. C'est le vendeur qui doit le faire avant la vente. Assurez-vous que c'est le cas si les fissures sont d'origine sécheresse.</p>
+
+      <h3>Dossier sinistre ouvert et en cours</h3>
+      <p>C'est une bonne nouvelle. L'assurance va financer les travaux. La transmission du dossier est possible sous conditions (renseignez-vous auprès de l'assureur). Négociez que le vendeur gère la déclaration avant la signature définitive.</p>
+
+      <h2>Après l'achat : sécuriser votre investissement</h2>
+
+      <p>Vous avez acheté. Voici les 3 premières actions à réaliser :</p>
+
+      <h3>1. Faire réaliser les travaux par un professionnel assuré en décennale</h3>
+      <p>L'attestation décennale que vous obtiendrez vous protège 10 ans ET renforce la valeur de revente future de votre bien.</p>
+
+      <h3>2. Documenter l'état initial</h3>
+      <p>Faites des photos datées de TOUTES les fissures dès la remise des clés. Si une fissure s'aggrave sous votre propriété, vous aurez la preuve que le problème préexistait.</p>
+
+      <h3>3. Vérifier votre assurance habitation</h3>
+      <p>Certaines assurances habitation excluent les dommages liés aux fissures déjà présentes à l'acquisition. Lisez les exclusions de votre contrat avec attention.</p>
+
+      <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
+        <p class="font-bold text-orange-900 mb-3">Vous visitez une maison fissurée en Occitanie ?</p>
+        <p class="text-orange-800 mb-4">IPB réalise des <strong>expertises pré-achat</strong> dans les 48h. Rapport complet avec estimation des travaux : vous négociez avec des arguments chiffrés, pas avec des intuitions.</p>
+        <a href="/diagnostic" class="inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition-colors">Demander une expertise pré-achat →</a>
+      </div>
+    `
+  },
+
+  // ─── ARTICLE 2 / 2 nouveaux : succession et maison fissurée ───
+  'succession-maison-fissuree': {
+    slug: 'succession-maison-fissuree',
+    metaTitle: 'Succession maison fissurée : héritage, vente, valeur | IPB',
+    title: 'Succession et maison fissurée : tout ce qu\'il faut savoir pour hériter sans mauvaise surprise',
+    excerpt: 'Vous héritez d\'une maison avec des fissures ? Entre estimation du bien, obligations vis-à-vis des autres héritiers et décision de vendre ou conserver, les pièges sont nombreux. Notre guide pour naviguer sereinement.',
+    date: '2026-04-14',
+    dateModified: '2026-04-21',
+    readTime: '8 min',
+    category: 'conseils',
+    author: 'Adam F.',
+    metaDescription: 'Hériter d\'une maison fissurée : comment estimer le bien, gérer l\'indivision, décider entre vente et rénovation, et sécuriser juridiquement la succession. Guide expert IPB.',
+    keywords: ['succession maison fissurée', 'héritage fissures', 'indivision maison', 'estimation bien fissuré', 'vente succession', 'expert structurel'],
+    content: `
+      <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
+        <p class="font-bold text-orange-900 mb-2">Hériter d'une maison fissurée : la première chose à faire</p>
+        <p class="text-orange-800">Avant toute décision (vendre, conserver, rénover), faites réaliser un <strong>diagnostic structurel indépendant</strong>. Sans lui, vous ne savez pas ce que vous détenez vraiment — ni sa valeur, ni son état réel, ni les risques que vous prenez.</p>
+      </div>
+
+      <h2>La réalité d'un héritage immobilier fissuré</h2>
+
+      <p>Votre parent est décédé. Parmi les biens à partager se trouve une maison — celle de l'enfance, peut-être — avec des fissures visibles sur la façade ou à l'intérieur. Le notaire vous demande une <strong>estimation du bien</strong>. Les autres héritiers ont des avis divergents. Et vous, vous ne savez pas vraiment ce que valent ces fissures.</p>
+
+      <p>C'est une situation que nous rencontrons régulièrement en Occitanie. Les maisons construites dans les années 1960-1980, sur des sols argileux, sont particulièrement touchées par les mouvements de terrain liés aux sécheresses. Beaucoup de propriétaires âgés n'ont jamais fait traiter les fissures, estimant que "ça a toujours été comme ça".</p>
+
+      <h2>Pourquoi les fissures compliquent la succession</h2>
+
+      <h3>Problème n°1 : L'estimation est difficile sans expertise</h3>
+      <p>Un notaire, un agent immobilier, voire un expert judiciaire non spécialisé peut sous-évaluer ou sur-évaluer le bien selon son interprétation des fissures. Sans rapport technique structurel, l'estimation reste approximative — et contestable.</p>
+
+      <h3>Problème n°2 : Les désaccords entre héritiers</h3>
+      <p>Imaginons 3 héritiers : l'un veut vendre rapidement (il a besoin de liquidités), l'un veut conserver et louer (il est attaché à la maison), l'un veut rénover et habiter. Les fissures ajoutent une couche d'incertitude : "Combien ça va coûter de réparer ?" devient LE point de blocage des discussions.</p>
+
+      <h3>Problème n°3 : La responsabilité en cas de vente</h3>
+      <p>Si vous vendez la maison en succession sans déclarer les fissures structurelles, <strong>tous les héritiers sont solidairement responsables</strong> d'un éventuel vice caché. L'acheteur peut se retourner contre n'importe lequel d'entre vous dans les 2 ans suivant la découverte.</p>
+
+      <h3>Problème n°4 : L'indivision peut durer</h3>
+      <p>Si les héritiers ne trouvent pas d'accord, le bien reste en indivision. Pendant ce temps, la maison se dégrade, les fissures s'aggravent (chaque cycle sécheresse-pluie empire les choses) et la valeur baisse. Une inaction qui coûte cher.</p>
+
+      <h2>L'expertise structurelle : le document pivot de la succession</h2>
+
+      <p>Un rapport d'expertise IPB sur une maison fissurée en succession apporte 4 réponses fondamentales :</p>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead class="bg-slate-900 text-white">
+            <tr>
+              <th class="border border-slate-300 p-3 text-left">Question</th>
+              <th class="border border-slate-300 p-3 text-left">Ce que le rapport apporte</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-3 font-bold">C'est grave ?</td>
+              <td class="border border-slate-300 p-3">Classification objective des fissures (superficielle / structurelle / critique)</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3 font-bold">Ça coûte combien ?</td>
+              <td class="border border-slate-300 p-3">Estimation chiffrée des travaux nécessaires (de 0€ à 50 000€+)</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3 font-bold">On peut vendre à quel prix ?</td>
+              <td class="border border-slate-300 p-3">Base technique pour ajuster l'estimation du notaire / agence</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3 font-bold">On est responsables de quoi ?</td>
+              <td class="border border-slate-300 p-3">Clarification de l'état connu au moment de la succession (protection juridique)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Ce rapport est souvent demandé par les notaires eux-mêmes pour des successions en indivision, notamment en Haute-Garonne et Tarn-et-Garonne où les fissures de sécheresse sont fréquentes.</p>
+
+      <h2>Les 3 décisions possibles et comment chacune est impactée</h2>
+
+      <h3>Option 1 : Vendre en l'état (rapidement)</h3>
+      <p>C'est la solution privilégiée quand les héritiers veulent clôturer rapidement la succession. Mais vendre une maison fissurée sans expertise vous expose à :</p>
+      <ul>
+        <li>Une décote importante (-20% à -30% selon les fissures)</li>
+        <li>Des acheteurs qui conditionnent leur offre à une expertise de leur côté</li>
+        <li>Un risque juridique si les fissures s'avèrent plus graves que déclaré</li>
+      </ul>
+      <p><strong>Recommandation</strong> : Faites réaliser une expertise avant la mise en vente. Vous contrôlez le récit, vous protégez les héritiers, et vous vendez plus vite (les acheteurs sont rassurés par un rapport existant).</p>
+
+      <h3>Option 2 : Rénover avant de vendre</h3>
+      <p>Si les fissures sont structurelles mais que la maison a une belle valeur potentielle, <strong>réparer avant de vendre peut dégager 30 000€ à 60 000€ de plus-value</strong> par rapport à une vente en l'état. La décision dépend :</p>
+      <ul>
+        <li>Du coût des travaux (agrafage : 8 000€ à 20 000€ en général)</li>
+        <li>Du marché local (Toulouse, Montauban, Auch : marchés actifs)</li>
+        <li>De l'accord des héritiers pour financer les travaux (à répartir selon les quotes-parts)</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-green-50 border-l-4 border-green-600 rounded-r-lg">
+        <p class="font-bold text-green-900 mb-2">Calcul type pour une maison à Toulouse</p>
+        <p class="text-green-800">Maison héritée valeur saine : 280 000€. Fissures structurelles → décote estimée -25% = vente en l'état à 210 000€. Coût agrafage : 13 000€. Vente après travaux : 270 000€ (décote résiduelle -4%). <strong>Gain net pour les héritiers : +47 000€</strong> (270 000€ - 210 000€ - 13 000€).</p>
+      </div>
+
+      <h3>Option 3 : Conserver et louer (ou habiter)</h3>
+      <p>Si l'un des héritiers souhaite racheter les parts des autres ou que le bien est destiné à la location, les fissures doivent <strong>impérativement être traitées avant mise en location</strong>. Un bailleur qui loue un bien avec des fissures structurelles connues engage sa responsabilité sur la sécurité des occupants.</p>
+
+      <h2>Le cas du dossier catastrophe naturelle : un actif souvent ignoré</h2>
+
+      <p>Dans de nombreuses successions en Occitanie, on découvre que la commune est classée en <strong>catastrophe naturelle sécheresse</strong> pour les années 2022-2023. Si le défunt n'a jamais déclaré de sinistre, les héritiers peuvent <strong>ouvrir un dossier en leur nom</strong> à condition de le faire avant la vente et dans les délais légaux (10 ans après la publication de l'arrêté ministeriel).</p>
+
+      <p>Ce dossier Cat-Nat peut <strong>financer jusqu'à 100% des travaux de réparation</strong> (hors franchise de 1 520€ pour les particuliers), selon l'ampleur des désordres et les conditions du contrat d'assurance.</p>
+
+      <p><strong>Étapes</strong> :</p>
+      <ul>
+        <li>Vérifier que la commune est bien classée sur <a href="https://www.georisques.gouv.fr" target="_blank" rel="noopener noreferrer" class="text-orange-600 underline hover:text-orange-700">georisques.gouv.fr</a></li>
+        <li>Retrouver le contrat d'assurance habitation du défunt (ou ouvrir un nouveau contrat en tant que propriétaires en indivision)</li>
+        <li>Mandater un expert indépendant pour le rapport technique (exigé par les assureurs)</li>
+        <li>Déclarer le sinistre à l'assurance avant toute transaction</li>
+      </ul>
+
+      <h2>Comment accélérer la succession quand la maison est fissurée</h2>
+
+      <h3>Nommez un mandataire successoral</h3>
+      <p>Si les héritiers sont nombreux et en désaccord, un mandataire successoral (désigné par le tribunal) peut prendre les décisions urgentes, notamment faire réaliser des expertises et des devis de travaux, sans attendre l'accord unanime.</p>
+
+      <h3>Utilisez la procédure de licitation</h3>
+      <p>Si un héritier bloque et refuse la vente, le bien peut être mis en vente aux enchères judiciaires (licitation). La présence d'un rapport d'expertise structurel améliore significativement le prix obtenu aux enchères.</p>
+
+      <h3>Documentez l'état du bien dès l'ouverture de la succession</h3>
+      <p>Photos datées, rapport d'expertise, inventaire des désordres visibles : ce dossier vous protège contre toute réclamation future d'un acquéreur ou d'un héritier qui prétendrait que les fissures "se sont aggravées pendant la succession".</p>
+
+      <h2>Checklist pratique pour les héritiers</h2>
+
+      <ul>
+        <li>✅ Faire réaliser un <strong>diagnostic structurel indépendant</strong> dans les 30 jours suivant l'ouverture de la succession</li>
+        <li>✅ Vérifier le <strong>classement Cat-Nat</strong> de la commune sur georisques.gouv.fr</li>
+        <li>✅ Retrouver et analyser le <strong>contrat d'assurance habitation</strong> du défunt</li>
+        <li>✅ Obtenir l'<strong>estimation du notaire</strong> après communication du rapport expert (pas avant)</li>
+        <li>✅ Réunir les héritiers pour décider : vendre en l'état, rénover, ou conserver</li>
+        <li>✅ Si vente : joindre le rapport d'expertise au dossier de vente (protection juridique)</li>
+        <li>✅ Si rénovation : exiger une attestation de <strong>garantie décennale</strong> transmissible</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
+        <p class="font-bold text-orange-900 mb-3">Vous gérez une succession avec un bien fissuré en Occitanie ?</p>
+        <p class="text-orange-800 mb-4">IPB intervient dans les <strong>48h</strong> pour un rapport d'expertise complet. Ce document devient la base technique de votre succession : estimation juste, décision éclairée, protection juridique pour tous les héritiers.</p>
+        <a href="/diagnostic" class="inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition-colors">Demander un diagnostic →</a>
+      </div>
+    `
+  },
+
 };
 
 // ═══════════════════════════════════════════════════════════════
