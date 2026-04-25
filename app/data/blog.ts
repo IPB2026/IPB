@@ -178,7 +178,7 @@ const blogPosts: { [key: string]: BlogPost } = {
               <td class="border border-slate-300 px-4 py-2">Toute fissure suspecte — déductible sur travaux</td>
             </tr>
             <tr>
-              <td class="border border-slate-300 px-4 py-2"><strong><a href="/agrafage-fissures" class="text-orange-600 underline hover:text-orange-700">Agrafage structurel</a></strong></td>
+              <td class="border border-slate-300 px-4 py-2"><strong><a href="/expertise/fissures" class="text-orange-600 underline hover:text-orange-700">Agrafage structurel</a></strong></td>
               <td class="border border-slate-300 px-4 py-2">8 000€ à 15 000€</td>
               <td class="border border-slate-300 px-4 py-2">Fissures stabilisées, mouvement modéré</td>
             </tr>
@@ -188,7 +188,7 @@ const blogPosts: { [key: string]: BlogPost } = {
               <td class="border border-slate-300 px-4 py-2">Comblement des vides sous fondation</td>
             </tr>
             <tr>
-              <td class="border border-slate-300 px-4 py-2"><strong><a href="/micropieux-fondations" class="text-orange-600 underline hover:text-orange-700">Micropieux</a></strong></td>
+              <td class="border border-slate-300 px-4 py-2"><strong><a href="/blog/agrafage-vs-micropieux-choix" class="text-orange-600 underline hover:text-orange-700">Micropieux</a></strong></td>
               <td class="border border-slate-300 px-4 py-2">25 000€ à 50 000€</td>
               <td class="border border-slate-300 px-4 py-2">Affaissement sévère, sol très instable</td>
             </tr>
@@ -349,7 +349,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Après le traitement : la phase de séchage</h2>
 
-      <p>Vous venez de faire traiter vos remontées capillaires par <a href="/traitement-humidite-injection-resine" class="text-orange-600 underline hover:text-orange-700">injection de résine</a> ? La barrière étanche est en place, mais <strong>le travail n&apos;est pas terminé</strong>. Vos murs contiennent encore toute l&apos;eau accumulée pendant des mois, voire des années. On vous explique la suite.</p>
+      <p>Vous venez de faire traiter vos remontées capillaires par <a href="/blog/traitement-humidite-injection-resine" class="text-orange-600 underline hover:text-orange-700">injection de résine</a> ? La barrière étanche est en place, mais <strong>le travail n&apos;est pas terminé</strong>. Vos murs contiennent encore toute l&apos;eau accumulée pendant des mois, voire des années. On vous explique la suite.</p>
 
       <h3>Le calendrier de séchage réaliste</h3>
       <p>Un mur de 40 cm d&apos;épaisseur met entre <strong>6 et 12 mois</strong> pour sécher complètement après traitement. Ce délai dépend de plusieurs facteurs :</p>
@@ -602,7 +602,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Au niveau laser, l&apos;expert mesure le <strong>dénivelé global</strong> de la maison. Si les fondations sont peu profondes (< 60 cm, fréquent sur les maisons d&apos;avant 1980 en Occitanie) et que le tassement est actif, les micropieux permettent de descendre jusqu&apos;à la roche stable (parfois 6 à 12 mètres). En revanche, si les fondations sont à bonne profondeur et que le problème est localisé, l&apos;agrafage suffit.</p>
 
       <h3>Étape 4 : Analyse coût-bénéfice</h3>
-      <p>L&apos;expert calcule le <strong>rapport entre le coût des travaux et la valeur du bien</strong>. Pour une maison de 250 000€ avec des fissures modérées, investir 15 000€ en agrafage est logique. Proposer 45 000€ de micropieux pour le même résultat serait disproportionné. L&apos;expert vérifie aussi la couverture assurance : en zone <a href="/catastrophe-naturelle-secheresse-demarches-indemnisation" class="text-orange-600 underline hover:text-orange-700">Cat-Nat</a>, la franchise est de 1 520€ — le reste peut être pris en charge.</p>
+      <p>L&apos;expert calcule le <strong>rapport entre le coût des travaux et la valeur du bien</strong>. Pour une maison de 250 000€ avec des fissures modérées, investir 15 000€ en agrafage est logique. Proposer 45 000€ de micropieux pour le même résultat serait disproportionné. L&apos;expert vérifie aussi la couverture assurance : en zone <a href="/blog/catastrophe-naturelle-secheresse-demarches-indemnisation" class="text-orange-600 underline hover:text-orange-700">Cat-Nat</a>, la franchise est de 1 520€ — le reste peut être pris en charge.</p>
 
       <h2>Les solutions intermédiaires</h2>
 
@@ -2792,7 +2792,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>C&apos;est une jauge graduée (ou un comparateur à cadran) qui mesure la <strong>largeur exacte de chaque fissure</strong>. La différence entre 0,3 mm et 3 mm change tout : la première est probablement superficielle, la seconde est structurelle. Sans cette mesure, impossible de classer la gravité. L&apos;expert pose aussi des <strong>témoins de fissure</strong> (jauges fixées de part et d&apos;autre) pour mesurer l&apos;évolution dans le temps — essentiel pour les dossiers d&apos;assurance.</p>
 
       <h3>Le niveau laser rotatif</h3>
-      <p>Projeté sur les murs et les sols, il révèle les <strong>dénivelés invisibles à l&apos;œil</strong>. Un affaissement de 2 cm sur 5 mètres est imperceptible pour vous, mais il traduit un mouvement de fondation significatif. L&apos;expert mesure le dénivelé en plusieurs points pour cartographier le mouvement de la structure : quelle partie s&apos;enfonce, dans quelle direction, et de combien. Ces données sont essentielles pour choisir entre <a href="/agrafage-vs-micropieux-choix" class="text-orange-600 underline hover:text-orange-700">agrafage et micropieux</a>.</p>
+      <p>Projeté sur les murs et les sols, il révèle les <strong>dénivelés invisibles à l&apos;œil</strong>. Un affaissement de 2 cm sur 5 mètres est imperceptible pour vous, mais il traduit un mouvement de fondation significatif. L&apos;expert mesure le dénivelé en plusieurs points pour cartographier le mouvement de la structure : quelle partie s&apos;enfonce, dans quelle direction, et de combien. Ces données sont essentielles pour choisir entre <a href="/blog/agrafage-vs-micropieux-choix" class="text-orange-600 underline hover:text-orange-700">agrafage et micropieux</a>.</p>
 
       <h3>La caméra thermique (infrarouge)</h3>
       <p>Elle visualise les <strong>ponts thermiques et les zones d&apos;humidité cachée</strong> derrière les murs. Une tache bleue sur l&apos;image infrarouge indique une zone froide et humide, même si le mur paraît sec en surface. C&apos;est l&apos;outil clé pour différencier une <a href="/expertise/humidite" class="text-orange-600 underline hover:text-orange-700">infiltration d&apos;eau</a> (tache localisée) d&apos;un problème de condensation (zone diffuse). Elle détecte aussi les fuites de canalisation encastrées sans casser le mur.</p>
@@ -4912,7 +4912,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>15 à 25%</strong> pour des fissures structurelles visibles (en escalier, traversantes)</li>
         <li><strong>25 à 30%</strong> pour des fissures avec signes de mouvement actif (portes bloquées, carrelage fissuré)</li>
       </ul>
-      <p>Sur une maison estimée à 200 000€ à Montauban, cela représente une perte potentielle de <strong>30 000 à 60 000€</strong>. Un traitement par <a href="/agrafage-fissures" class="text-orange-600 underline hover:text-orange-700">agrafage structurel</a> (8 000 à 15 000€) peut restaurer la quasi-totalité de cette valeur.</p>
+      <p>Sur une maison estimée à 200 000€ à Montauban, cela représente une perte potentielle de <strong>30 000 à 60 000€</strong>. Un traitement par <a href="/expertise/fissures" class="text-orange-600 underline hover:text-orange-700">agrafage structurel</a> (8 000 à 15 000€) peut restaurer la quasi-totalité de cette valeur.</p>
 
       <h3>Obligations légales en cas de vente</h3>
       <p>Depuis la loi du 17 juin 2015, le vendeur est tenu à une <strong>obligation de transparence totale</strong> sur l&apos;état de son bien. Concrètement :</p>
@@ -4921,7 +4921,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>Tout arrêté de catastrophe naturelle affectant la commune doit être mentionné dans l&apos;<strong>état des risques (ERP)</strong></li>
         <li>En cas de dissimulation, l&apos;acheteur peut invoquer un <strong>vice caché</strong> et demander l&apos;annulation de la vente ou une réduction du prix</li>
       </ul>
-      <p>Dans le Tarn-et-Garonne, où de nombreuses communes (Montauban, Castelsarrasin, Moissac, Valence-d&apos;Agen) ont été reconnues en état de catastrophe naturelle sécheresse, cette obligation est particulièrement surveillée. Un <a href="/revente-maison-fissuree" class="text-orange-600 underline hover:text-orange-700">rapport d&apos;expertise indépendant</a> sécurise juridiquement la transaction pour les deux parties.</p>
+      <p>Dans le Tarn-et-Garonne, où de nombreuses communes (Montauban, Castelsarrasin, Moissac, Valence-d&apos;Agen) ont été reconnues en état de catastrophe naturelle sécheresse, cette obligation est particulièrement surveillée. Un <a href="/blog/revente-maison-fissuree" class="text-orange-600 underline hover:text-orange-700">rapport d&apos;expertise indépendant</a> sécurise juridiquement la transaction pour les deux parties.</p>
 
       <h2>Le rôle de l&apos;expert indépendant vs l&apos;expert d&apos;assurance</h2>
 
@@ -5712,7 +5712,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Les fissures non traitées s&apos;aggravent mécaniquement avec chaque cycle de retrait-gonflement du sol argileux. D&apos;après notre retour d&apos;expérience sur plus de 300 chantiers en Occitanie :</p>
       <ul>
         <li>Le coût de réparation augmente de <strong>15 à 20% par an</strong> sans traitement</li>
-        <li>Une fissure de 2 mm aujourd&apos;hui peut atteindre 8-10 mm en 3 ans, nécessitant des <a href="/micropieux-fondations" class="text-orange-600 underline hover:text-orange-700">micropieux</a> (25 000 à 50 000€) au lieu d&apos;un simple agrafage (8 000 à 15 000€)</li>
+        <li>Une fissure de 2 mm aujourd&apos;hui peut atteindre 8-10 mm en 3 ans, nécessitant des <a href="/blog/agrafage-vs-micropieux-choix" class="text-orange-600 underline hover:text-orange-700">micropieux</a> (25 000 à 50 000€) au lieu d&apos;un simple agrafage (8 000 à 15 000€)</li>
         <li>La valeur immobilière chute de <strong>15 à 30%</strong> tant que les fissures sont visibles et non traitées</li>
       </ul>
 
@@ -6105,7 +6105,7 @@ const blogPosts: { [key: string]: BlogPost } = {
             </tr>
             <tr class="bg-slate-50">
               <td class="border border-slate-300 p-4 font-bold">Remontée capillaire</td>
-              <td class="border border-slate-300 p-4"><a href="/traitement-humidite-injection-resine" class="text-orange-600 underline hover:text-orange-700">Injection de résine hydrophobe</a></td>
+              <td class="border border-slate-300 p-4"><a href="/blog/traitement-humidite-injection-resine" class="text-orange-600 underline hover:text-orange-700">Injection de résine hydrophobe</a></td>
               <td class="border border-slate-300 p-4 text-center text-orange-700 font-bold">2 500€ — 6 000€</td>
               <td class="border border-slate-300 p-4 text-center">1-2 jours</td>
             </tr>

@@ -79,6 +79,7 @@ export default function PlanSitePage() {
             </h2>
             <ul className="space-y-2 text-sm">
               <li><Link href="/zones-intervention" className="text-orange-600 hover:text-orange-700 transition font-bold">Mapping complet (56 villes)</Link></li>
+              <li><Link href="/quartiers" className="text-slate-700 hover:text-orange-600 transition font-medium">Quartiers Toulouse (fiches locales)</Link></li>
               <li className="text-xs text-slate-500 font-bold mt-3 uppercase">Haute-Garonne (31)</li>
               <li><Link href="/expert-fissures/toulouse" className="text-slate-700 hover:text-orange-600 transition">Toulouse</Link></li>
               <li><Link href="/expert-fissures/colomiers" className="text-slate-700 hover:text-orange-600 transition">Colomiers</Link></li>

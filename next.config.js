@@ -45,6 +45,25 @@ const nextConfig = {
         destination: '/zones-intervention',
         permanent: true,
       },
+      // Anciennes URL racine (liens internes / backlinks) → pages réelles
+      { source: '/agrafage-fissures', destination: '/expertise/fissures', permanent: true },
+      { source: '/micropieux-fondations', destination: '/blog/agrafage-vs-micropieux-choix', permanent: true },
+      {
+        source: '/traitement-humidite-injection-resine',
+        destination: '/blog/traitement-humidite-injection-resine',
+        permanent: true,
+      },
+      {
+        source: '/catastrophe-naturelle-secheresse-demarches-indemnisation',
+        destination: '/blog/catastrophe-naturelle-secheresse-demarches-indemnisation',
+        permanent: true,
+      },
+      {
+        source: '/agrafage-vs-micropieux-choix',
+        destination: '/blog/agrafage-vs-micropieux-choix',
+        permanent: true,
+      },
+      { source: '/revente-maison-fissuree', destination: '/blog/revente-maison-fissuree', permanent: true },
     ];
   },
 
