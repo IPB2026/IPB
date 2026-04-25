@@ -109,6 +109,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
     {
+      url: `${baseUrl}/quartiers`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.68,
+    },
+    {
       url: `${baseUrl}/legal/mentions-legales`,
       lastModified: stableDate,
       changeFrequency: 'yearly',

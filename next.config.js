@@ -34,6 +34,17 @@ const nextConfig = {
         destination: '/expert-humidite-toulouse-31',
         permanent: true,
       },
+      // Anciennes URLs sans page dédiée (404 GSC) → pages utiles
+      {
+        source: '/traitement-humidite/varilhes',
+        destination: '/departements/ariege',
+        permanent: true,
+      },
+      {
+        source: '/traitement-humidite/villate',
+        destination: '/zones-intervention',
+        permanent: true,
+      },
     ];
   },
 
