@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Phone, CheckCircle, Shield, Star, Activity, Droplets } from 'lucide-react';
+import { ArrowRight, Phone, CheckCircle, Shield, Star, Activity, Hammer } from 'lucide-react';
 
 export function Hero() {
   return (
@@ -9,31 +9,28 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
       <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
       
-      {/* Cercles décoratifs - Orange (fissures) et Bleu (humidité) */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-500/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-amber-500/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-28">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="max-w-2xl">
-            {/* Double badge - Fissures ET Humidité */}
             <div className="flex flex-wrap gap-2 mb-6">
               <span className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/40 text-orange-300 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
                 <Activity size={12} />
                 Expert Fissures
               </span>
-              <span className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-500/40 text-blue-300 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
-                <Droplets size={12} />
-                Expert Humidité
+              <span className="inline-flex items-center gap-2 bg-amber-500/20 border border-amber-500/40 text-amber-300 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+                <Hammer size={12} />
+                Ouverture Mur Porteur
               </span>
             </div>
             
-            {/* H1 — match exact "expert fissures toulouse" */}
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-300">Expert Fissures</span>
               {' '}à Toulouse
               <span className="block mt-2 text-3xl md:text-4xl lg:text-5xl">
-                &{' '}<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Traitement Humidité</span>{' '}en Occitanie
+                &{' '}<span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-300">Ouverture Mur Porteur</span>{' '}en Occitanie
               </span>
               <span className="block mt-3 text-white text-xl md:text-2xl lg:text-3xl font-medium tracking-normal">
                 Du diagnostic aux travaux. <span className="text-emerald-400">Un seul interlocuteur.</span>
@@ -47,23 +44,22 @@ export function Hero() {
               850+ clients accompagnés en Occitanie.
             </p>
             
-            {/* Double expertise - Cards côte à côte */}
             <div className="grid grid-cols-2 gap-3 mb-8">
               <div className="bg-orange-500/10 border border-orange-500/30 rounded-xl p-3">
                 <div className="flex items-center gap-2 mb-1">
                   <Activity size={16} className="text-orange-400" />
-                  <span className="text-orange-300 text-xs font-bold uppercase">Structure</span>
+                  <span className="text-orange-300 text-xs font-bold uppercase">Fissures</span>
                 </div>
                 <p className="text-white text-sm font-bold">Agrafage structurel</p>
                 <p className="text-slate-300 text-xs">Garanti 10 ans</p>
               </div>
-              <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-3">
+              <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-3">
                 <div className="flex items-center gap-2 mb-1">
-                  <Droplets size={16} className="text-blue-400" />
-                  <span className="text-blue-300 text-xs font-bold uppercase">Humidité</span>
+                  <Hammer size={16} className="text-amber-400" />
+                  <span className="text-amber-300 text-xs font-bold uppercase">Mur Porteur</span>
                 </div>
-                <p className="text-white text-sm font-bold">Injection résine</p>
-                <p className="text-slate-300 text-xs">Garanti 30 ans</p>
+                <p className="text-white text-sm font-bold">Ouverture & baie vitrée</p>
+                <p className="text-slate-300 text-xs">Garanti 10 ans</p>
               </div>
             </div>
             
@@ -135,11 +131,11 @@ export function Hero() {
               </div>
             </div>
             
-            {/* Image Humidité */}
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-blue-500/30 mt-8">
+            {/* Image Mur Porteur */}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-amber-500/30 mt-8">
               <Image
-                src="/images/salpetre-avant-apres.webp"
-                alt="Traitement humidité salpêtre - Expert humidité Occitanie (31-82-32) remontées capillaires"
+                src="/images/fissure-facade-diagonale.webp"
+                alt="Ouverture mur porteur création baie vitrée - IPB Expertise Toulouse Occitanie"
                 width={300}
                 height={400}
                 sizes="(max-width: 1024px) 0px, 300px"
@@ -148,10 +144,10 @@ export function Hero() {
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent p-4">
                 <div className="flex items-center gap-2">
-                  <Droplets className="text-blue-400" size={18} />
-                  <span className="text-white font-bold text-sm">Humidité</span>
+                  <Hammer className="text-amber-400" size={18} />
+                  <span className="text-white font-bold text-sm">Mur Porteur</span>
                 </div>
-                <p className="text-slate-200 text-xs">Injection résine</p>
+                <p className="text-slate-200 text-xs">Ouverture & baie vitrée</p>
               </div>
             </div>
           </div>

@@ -58,44 +58,42 @@ const organizationSchema = {
 };
 
 export const metadata: Metadata = {
-  title: "Expert Fissures & Humidité à Toulouse | IPB Expertise",
-  description: "Cabinet indépendant en pathologie du bâtiment à Toulouse. Diagnostic instrumenté, agrafage, injection résine et suivi post-travaux. 850+ clients accompagnés.",
+  title: "Expert Fissures & Mur Porteur à Toulouse | IPB Expertise",
+  description: "Cabinet indépendant en pathologie du bâtiment à Toulouse. Diagnostic, agrafage fissures, ouverture mur porteur et création baie vitrée. 850+ clients accompagnés.",
   keywords: [
-    // Fissures - Mots clés principaux
+    // Fissures
     'expert fissures toulouse',
     'expert fissures maison 31',
     'fissure maison toulouse',
     'agrafage fissures toulouse',
     'réparation fissures façade',
-    'fissure mur extérieur',
     'fissure structurelle maison',
     'tassement différentiel fondation',
     'expert bâtiment fissures',
-    // Humidité - Mots clés principaux
-    'expert humidité toulouse',
-    'traitement humidité murs',
-    'remontées capillaires traitement',
-    'injection résine hydrophobe',
-    'salpêtre mur traitement',
-    'moisissures maison solution',
-    'cave humide traitement',
-    'cuvelage cave toulouse',
+    // Mur porteur & baie vitrée
+    'ouverture mur porteur toulouse',
+    'création baie vitrée toulouse',
+    'mur porteur prix toulouse',
+    'étude structure mur porteur',
+    'abattre mur porteur toulouse',
+    'bureau études structure toulouse',
+    'poutre IPN mur porteur',
+    'agrandissement baie vitrée toulouse',
     // Géographique
     'expert fissures montauban 82',
-    'expert humidité auch 32',
+    'ouverture mur porteur auch 32',
     'haute-garonne expert bâtiment',
-    'tarn-et-garonne fissures',
-    'gers humidité maison',
+    'tarn-et-garonne mur porteur',
     // Longue traîne
     'prix agrafage fissures',
-    'devis traitement humidité',
+    'devis ouverture mur porteur',
     'diagnostic fissures gratuit',
     'sol argileux fissures maison',
     'catastrophe naturelle sécheresse',
   ],
   openGraph: {
-    title: "IPB Expert Fissures & Humidité | Toulouse, Montauban, Auch (31-82-32)",
-    description: "Expert fissures et humidité à Toulouse. Du diagnostic aux travaux (agrafage, injection résine) avec suivi. 850+ clients accompagnés. Garantie décennale.",
+    title: "IPB Expert Fissures & Mur Porteur | Toulouse, Montauban, Auch (31-82-32)",
+    description: "Expert fissures et ouverture mur porteur à Toulouse. Du diagnostic aux travaux (agrafage, création baie vitrée) avec suivi. 850+ clients accompagnés. Garantie décennale.",
     url: "https://www.ipb-expertise.fr",
     siteName: "IPB - Institut de Pathologie du Bâtiment",
     images: [
