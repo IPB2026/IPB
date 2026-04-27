@@ -101,7 +101,7 @@ export const metadata: Metadata = {
         url: "/images/IPB_Logo_HD.png",
         width: 1200,
         height: 630,
-        alt: "IPB Expert Fissures Humidité Toulouse - Agrafage Injection Résine Garantie Décennale",
+        alt: "IPB Expert Fissures & Mur Porteur Toulouse - Agrafage Structurel Garantie Décennale",
       },
     ],
     locale: "fr_FR",
@@ -109,14 +109,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Expert Fissures & Humidité Toulouse | IPB",
-    description: "Du diagnostic aux travaux, un seul interlocuteur. Agrafage fissures, traitement humidité. Garantie décennale.",
+    title: "Expert Fissures & Mur Porteur Toulouse | IPB",
+    description: "Du diagnostic aux travaux, un seul interlocuteur. Agrafage fissures, ouverture mur porteur, baie vitrée. Garantie décennale.",
     images: [
       {
         url: "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
         width: 1200,
         height: 630,
-        alt: "IPB Expertise - Expert fissures et humidité à Toulouse",
+        alt: "IPB Expertise - Expert fissures et mur porteur à Toulouse",
       },
     ],
   },
@@ -163,7 +163,7 @@ export default function HomePage() {
           <h2 className="text-2xl font-extrabold text-slate-900 mb-6">Cabinet spécialisé en pathologie du bâtiment</h2>
           <div className="prose prose-slate max-w-none text-slate-600">
             <p>
-              IPB est un cabinet indépendant qui accompagne ses clients sur l&apos;ensemble du cycle : <Link href="/expertise/fissures" className="text-orange-600 font-semibold hover:text-orange-700">diagnostic et traitement des fissures structurelles</Link>, <Link href="/expertise/humidite" className="text-orange-600 font-semibold hover:text-orange-700">traitement de l&apos;humidité</Link> (remontées capillaires, infiltrations, mérule). Du diagnostic instrumenté au plan de remédiation, de la réalisation des travaux au suivi post-intervention — un seul interlocuteur à <Link href="/expert-fissures/toulouse" className="text-orange-600 font-semibold hover:text-orange-700">Toulouse</Link>, <Link href="/expert-fissures/montauban" className="text-orange-600 font-semibold hover:text-orange-700">Montauban</Link>, <Link href="/expert-fissures/auch" className="text-orange-600 font-semibold hover:text-orange-700">Auch</Link>, <Link href="/expert-fissures/albi" className="text-orange-600 font-semibold hover:text-orange-700">Albi</Link> et dans nos <Link href="/zones-intervention" className="text-orange-600 font-semibold hover:text-orange-700">56 communes d&apos;intervention</Link>.
+              IPB est un cabinet indépendant spécialisé en structure et pathologie du bâtiment : <Link href="/expertise/fissures" className="text-orange-600 font-semibold hover:text-orange-700">diagnostic et traitement des fissures structurelles</Link>, <Link href="/expertise/mur-porteur" className="text-orange-600 font-semibold hover:text-orange-700">ouverture de mur porteur et création de baie vitrée</Link> (étude structure, travaux, garantie décennale). Du diagnostic au plan de remédiation, de la réalisation des travaux au suivi post-intervention — un seul interlocuteur à <Link href="/expert-fissures/toulouse" className="text-orange-600 font-semibold hover:text-orange-700">Toulouse</Link>, <Link href="/expert-fissures/montauban" className="text-orange-600 font-semibold hover:text-orange-700">Montauban</Link>, <Link href="/expert-fissures/auch" className="text-orange-600 font-semibold hover:text-orange-700">Auch</Link>, <Link href="/expert-fissures/albi" className="text-orange-600 font-semibold hover:text-orange-700">Albi</Link> et dans nos <Link href="/zones-intervention" className="text-orange-600 font-semibold hover:text-orange-700">56 communes d&apos;intervention</Link>.
             </p>
             <p>
               Nos rapports servent de base aux démarches d&apos;<Link href="/blog/assurance-fissures-maison-indemnisation" className="text-orange-600 font-semibold hover:text-orange-700">indemnisation assurance</Link> et constituent une contre-expertise opposable. Pour choisir entre <Link href="/blog/agrafage-vs-micropieux-choix" className="text-orange-600 font-semibold hover:text-orange-700">agrafage et micropieux</Link>, nous réalisons le diagnostic, préconisons la solution et assurons les travaux. Consultez nos <Link href="/avis-clients" className="text-orange-600 font-semibold hover:text-orange-700">avis clients (4.9/5 sur Google)</Link>.

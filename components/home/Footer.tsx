@@ -51,7 +51,7 @@ export function Footer() {
                 <span className="font-display text-2xl font-bold text-white">IPB<span className="text-orange-500">.</span></span>
               </Link>
               <p className="text-slate-500 mb-6 leading-relaxed">
-                Institut de Pathologie du Bâtiment. Du diagnostic aux travaux, un accompagnement complet fissures et humidité depuis 2019.
+                Institut de Pathologie du Bâtiment. Expert fissures et mur porteur en Occitanie depuis 2019.
               </p>
               <address className="not-italic space-y-2">
                 <a href="tel:0582953375" className="flex items-center gap-2 hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">
@@ -82,16 +82,16 @@ export function Footer() {
               </ul>
             </nav>
             
-            {/* Expertises Humidité */}
-            <nav aria-label="Expertise Humidité">
-              <h4 className="text-white font-bold mb-6">Expert Humidité</h4>
+            {/* Mur Porteur & Baie Vitrée */}
+            <nav aria-label="Mur Porteur et Baie Vitrée">
+              <h4 className="text-white font-bold mb-6">Mur Porteur</h4>
               <ul className="space-y-3" role="list">
-                <li><Link href="/expertise/humidite" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Expertise Humidité</Link></li>
-                <li><Link href="/remontees-capillaires-traitement" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Remontées capillaires</Link></li>
-                <li><Link href="/moisissures-maison-sante" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Moisissures</Link></li>
-                <li><Link href="/cave-humide-solutions" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Cave humide</Link></li>
-                <li><Link href="/salpetre-mur-traitement" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Salpêtre</Link></li>
-                <li><Link href="/merule-champignon-traitement" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Mérule</Link></li>
+                <li><Link href="/expertise/mur-porteur" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Ouverture Mur Porteur</Link></li>
+                <li><Link href="/expertise/mur-porteur#baie-vitree" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Création Baie Vitrée</Link></li>
+                <li><Link href="/expertise/mur-porteur#prix" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Prix & Devis</Link></li>
+                <li><Link href="/expertise/mur-porteur#processus" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Notre Processus</Link></li>
+                <li><Link href="/expertise/mur-porteur#comment-savoir" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Identifier un mur porteur</Link></li>
+                <li><Link href="/diagnostic" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Devis gratuit</Link></li>
               </ul>
             </nav>
             
@@ -136,8 +136,6 @@ export function Footer() {
               <div className="flex flex-wrap gap-2">
                 <Link href="/expert-fissures-toulouse-31" className="hover:text-slate-400 transition">expert fissures Toulouse</Link>
                 <span>•</span>
-                <Link href="/expert-humidite-toulouse-31" className="hover:text-slate-400 transition">expert humidité Toulouse</Link>
-                <span>•</span>
                 <Link href="/expert-fissures-montauban-82" className="hover:text-slate-400 transition">expert fissures Montauban</Link>
                 <span>•</span>
                 <Link href="/expertise-avant-achat-immobilier-toulouse" className="hover:text-slate-400 transition">expertise avant achat</Link>
@@ -146,7 +144,7 @@ export function Footer() {
                 <span>•</span>
                 <Link href="/fissure-en-escalier-causes" className="hover:text-slate-400 transition">fissure en escalier</Link>
                 <span>•</span>
-                <Link href="/remontee-capillaire-solution" className="hover:text-slate-400 transition">remontées capillaires</Link>
+                <Link href="/expertise/mur-porteur" className="hover:text-slate-400 transition">ouverture mur porteur</Link>
                 <span>•</span>
                 <Link href="/departements/haute-garonne" className="hover:text-slate-400 transition">Haute-Garonne</Link>
                 <span>•</span>
