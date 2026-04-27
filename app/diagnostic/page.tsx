@@ -19,7 +19,7 @@ function trackCallbackRequest() {
 }
 
 // Types
-type PathType = 'fissure' | 'humidite' | null;
+type PathType = 'fissure' | 'mur-porteur' | null;
 
 interface Question {
   id: string;
@@ -29,7 +29,7 @@ interface Question {
 }
 
 // Questions par parcours
-const questionsData: Record<'fissure' | 'humidite', Question[]> = {
+const questionsData: Record<'fissure' | 'mur-porteur', Question[]> = {
   fissure: [
     {
       id: 'TYPE_BATIMENT',
@@ -125,7 +125,7 @@ const questionsData: Record<'fissure' | 'humidite', Question[]> = {
       ],
     },
   ],
-  humidite: [
+  'mur-porteur': [
     {
       id: 'TYPE_BATIMENT',
       text: 'Quel type de bâtiment ?',
@@ -136,70 +136,64 @@ const questionsData: Record<'fissure' | 'humidite', Question[]> = {
       ],
     },
     {
-      id: 'LOCALISATION',
-      text: 'Où se situe l\'humidité ?',
+      id: 'PROJET',
+      text: 'Quel est votre projet ?',
       options: [
-        { value: 'bas_mur', label: 'Bas des murs', icon: '⬇️' },
-        { value: 'haut_mur', label: 'Haut des murs / Plafond', icon: '⬆️' },
-        { value: 'angle', label: 'Angles / Coins', icon: '📐' },
-        { value: 'partout', label: 'Partout', icon: '💧' },
-        { value: 'ne_sais_pas', label: 'Je ne sais pas', icon: '❓' },
+        { value: 'abattre', label: 'Abattre un mur porteur', icon: '🔨' },
+        { value: 'agrandir', label: 'Agrandir une ouverture existante', icon: '↔️' },
+        { value: 'baie', label: 'Créer une baie vitrée', icon: '🪟' },
+        { value: 'ne_sais_pas', label: 'Je ne sais pas encore', icon: '❓' },
       ],
-      multiSelect: true,
     },
     {
-      id: 'MANIFESTATION',
-      text: 'Comment se manifeste l\'humidité ?',
+      id: 'PORTEE',
+      text: 'Quelle ouverture souhaitez-vous ?',
       options: [
-        { value: 'salpetre', label: 'Salpêtre (poudre blanche)', icon: '❄️' },
-        { value: 'moisissure', label: 'Moisissures noires', icon: '🦠' },
-        { value: 'peinture', label: 'Peinture qui cloque', icon: '🎨' },
-        { value: 'odeur', label: 'Odeur de moisi', icon: '👃' },
-        { value: 'ne_sais_pas', label: 'Je ne sais pas', icon: '❓' },
-      ],
-      multiSelect: true,
-    },
-    {
-      id: 'ANCIENNETE',
-      text: 'Depuis quand ce problème existe-t-il ?',
-      options: [
-        { value: 'recent', label: 'Moins de 6 mois', icon: '🆕' },
-        { value: 'moyen', label: '6 mois à 2 ans', icon: '📅' },
-        { value: 'ancien', label: 'Plus de 2 ans', icon: '📆' },
+        { value: 'petite', label: 'Petite (≤ 1,5 m)', icon: '▪️' },
+        { value: 'moyenne', label: 'Moyenne (1,5 à 3 m)', icon: '▬' },
+        { value: 'grande', label: 'Grande (> 3 m)', icon: '▬▬' },
         { value: 'ne_sais_pas', label: 'Je ne sais pas', icon: '❓' },
       ],
     },
     {
-      id: 'SAISONNALITE',
-      text: 'Le problème est-il saisonnier ?',
+      id: 'NATURE_MUR',
+      text: 'De quoi est fait le mur ?',
       options: [
-        { value: 'hiver', label: 'Pire en hiver', icon: '❄️' },
-        { value: 'ete', label: 'Pire en été / après pluie', icon: '☀️' },
-        { value: 'permanent', label: 'Présent toute l\'année', icon: '🔄' },
+        { value: 'pierre', label: 'Pierre / Brique ancienne', icon: '🧱' },
+        { value: 'beton', label: 'Béton armé', icon: '🏗️' },
+        { value: 'parpaing', label: 'Parpaing', icon: '⬛' },
         { value: 'ne_sais_pas', label: 'Je ne sais pas', icon: '❓' },
       ],
     },
     {
-      id: 'VENTILATION',
-      text: 'Avez-vous une VMC / ventilation ?',
+      id: 'ETAGE',
+      text: 'Le mur se situe à quel niveau ?',
       options: [
-        { value: 'oui_fonctionne', label: 'Oui, elle fonctionne', icon: '✓' },
-        { value: 'oui_panne', label: 'Oui, mais en panne', icon: '⚠️' },
+        { value: 'rdc_plancher', label: 'RDC avec étage au-dessus', icon: '🏠' },
+        { value: 'rdc_combles', label: 'RDC sous combles / toiture', icon: '🔺' },
+        { value: 'etage', label: 'Étage intermédiaire', icon: '🏢' },
+        { value: 'ne_sais_pas', label: 'Je ne sais pas', icon: '❓' },
+      ],
+    },
+    {
+      id: 'PLANS',
+      text: 'Avez-vous les plans de la maison ?',
+      options: [
+        { value: 'oui', label: 'Oui, je les ai', icon: '📐' },
         { value: 'non', label: 'Non', icon: '✗' },
+        { value: 'recherche', label: 'En cours de recherche', icon: '🔍' },
         { value: 'ne_sais_pas', label: 'Je ne sais pas', icon: '❓' },
       ],
     },
     {
-      id: 'TENTATIVES',
-      text: 'Avez-vous déjà tenté de traiter ?',
+      id: 'DEVIS_EXISTANT',
+      text: 'Avez-vous déjà un devis ou un avis ?',
       options: [
-        { value: 'peinture', label: 'Peinture anti-humidité', icon: '🎨' },
-        { value: 'deshu', label: 'Déshumidificateur', icon: '💨' },
-        { value: 'travaux', label: 'Travaux (injection, cuvelage...)', icon: '🔧' },
-        { value: 'rien', label: 'Rien pour l\'instant', icon: '✗' },
+        { value: 'oui_structure', label: 'Oui, étude structure faite', icon: '✓' },
+        { value: 'oui_devis', label: 'Oui, devis d\'un artisan', icon: '📄' },
+        { value: 'non', label: 'Non, je commence', icon: '🆕' },
         { value: 'ne_sais_pas', label: 'Je ne sais pas', icon: '❓' },
       ],
-      multiSelect: true,
     },
     {
       id: 'STATUT',
@@ -207,18 +201,18 @@ const questionsData: Record<'fissure' | 'humidite', Question[]> = {
       options: [
         { value: 'proprietaire', label: 'Propriétaire occupant', icon: '🏠' },
         { value: 'bailleur', label: 'Propriétaire bailleur', icon: '🔑' },
-        { value: 'locataire', label: 'Locataire', icon: '👤' },
         { value: 'achat', label: 'En projet d\'achat', icon: '📝' },
+        { value: 'autre', label: 'Autre', icon: '👤' },
       ],
     },
     {
-      id: 'URGENCE',
-      text: 'Comment ressentez-vous l\'urgence ?',
+      id: 'HORIZON',
+      text: 'Quel est votre horizon de travaux ?',
       options: [
-        { value: 'immediate', label: 'Très urgent, ça empire', icon: '🔴' },
-        { value: 'modere', label: 'Gênant, à traiter rapidement', icon: '🟠' },
-        { value: 'surveille', label: 'À surveiller, pas d\'urgence', icon: '🟢' },
-        { value: 'ne_sais_pas', label: 'Je ne sais pas', icon: '❓' },
+        { value: 'urgent', label: 'Le plus tôt possible', icon: '🔴' },
+        { value: 'trimestre', label: 'Dans les 3 prochains mois', icon: '🟠' },
+        { value: 'annee', label: 'D\'ici 6 à 12 mois', icon: '🟢' },
+        { value: 'reflexion', label: 'Encore en réflexion', icon: '💭' },
       ],
     },
   ],
@@ -253,28 +247,24 @@ const expertTips: Record<string, string> = {
   'fissure:URGENCE:immediate': '🔴 Nous comprenons votre inquiétude. Nos experts interviennent sous 48-72h pour les situations urgentes.',
   'fissure:URGENCE:modere': '💡 Vous avez raison d\'agir maintenant. Plus tôt on traite, moins les travaux sont importants (et coûteux).',
 
-  // HUMIDITÉ
-  'humidite:TYPE_BATIMENT:maison': '💡 Les maisons de plus de 30 ans sans barrière d\'étanchéité sont les plus touchées par les remontées capillaires en Occitanie.',
-  'humidite:TYPE_BATIMENT:immeuble': '💡 En immeuble, l\'humidité peut venir des parties communes. Un diagnostic précis identifie l\'origine exacte.',
-  'humidite:TYPE_BATIMENT:local': '💡 L\'humidité dans un local professionnel peut engager la responsabilité du propriétaire (décence du logement).',
-  'humidite:LOCALISATION:bas_mur': '⚠️ L\'humidité en bas de mur est le signe classique de remontées capillaires. C\'est notre spécialité — traitement par injection de résine.',
-  'humidite:LOCALISATION:haut_mur': '💡 L\'humidité en haut des murs évoque plutôt un problème de condensation ou de pont thermique.',
-  'humidite:LOCALISATION:angle': '💡 L\'humidité dans les angles est souvent causée par des ponts thermiques — des zones froides où la condensation se forme.',
-  'humidite:LOCALISATION:partout': '🔴 De l\'humidité généralisée indique un problème sérieux. Plusieurs causes peuvent être combinées (capillarité + condensation).',
-  'humidite:MANIFESTATION:salpetre': '⚠️ Le salpêtre (efflorescence blanche) est la preuve que de l\'eau chargée en sels minéraux traverse vos murs. C\'est une remontée capillaire.',
-  'humidite:MANIFESTATION:moisissure': '🔴 Les moisissures noires sont un risque pour la santé (allergies, problèmes respiratoires). Ne pas traiter seulement en surface.',
-  'humidite:MANIFESTATION:peinture': '💡 Une peinture qui cloque indique une pression d\'humidité derrière le revêtement. Repeindre sans traiter ne sert à rien.',
-  'humidite:MANIFESTATION:odeur': '⚠️ Une odeur de moisi persistante signifie une humidité profonde dans les matériaux. Un traitement de fond est nécessaire.',
-  'humidite:ANCIENNETE:recent': '💡 Un problème récent peut être lié à un événement ponctuel (fuite, inondation) ou au début d\'un phénomène chronique.',
-  'humidite:ANCIENNETE:ancien': '⚠️ Plus de 2 ans d\'humidité non traitée : les matériaux sont probablement dégradés en profondeur. L\'intervention sera plus conséquente.',
-  'humidite:SAISONNALITE:hiver': '💡 Un problème aggravé en hiver pointe vers la condensation. La différence de température intérieur/extérieur crée de l\'humidité sur les parois froides.',
-  'humidite:SAISONNALITE:permanent': '⚠️ Un problème permanent toute l\'année indique des remontées capillaires — l\'eau monte en permanence depuis le sol.',
-  'humidite:VENTILATION:non': '⚠️ Sans ventilation, l\'air humide stagne et se condense. L\'installation d\'une VMI peut réduire l\'humidité de 30 à 50%.',
-  'humidite:VENTILATION:oui_panne': '💡 Une VMC en panne aggrave considérablement les problèmes d\'humidité. C\'est souvent un facteur déclencheur.',
-  'humidite:TENTATIVES:peinture': '💡 La peinture anti-humidité bloque l\'évaporation mais n\'arrête pas la remontée. Le mur reste humide en profondeur et se dégrade.',
-  'humidite:TENTATIVES:deshu': '💡 Un déshumidificateur traite le symptôme, pas la cause. Il consomme de l\'énergie sans résoudre le problème structurel.',
-  'humidite:URGENCE:immediate': '🔴 Nous comprenons l\'urgence. L\'humidité non traitée dégrade la structure et impacte votre santé. Intervention rapide possible.',
-  'humidite:URGENCE:modere': '💡 Agir maintenant évite une aggravation et des travaux plus lourds. Un diagnostic précis permet de cibler la bonne solution.',
+  // MUR PORTEUR
+  'mur-porteur:TYPE_BATIMENT:maison': '💡 Pour une maison individuelle, l\'ouverture de mur porteur est généralement réalisable en 2 à 5 jours. L\'étude structure est l\'étape clé.',
+  'mur-porteur:TYPE_BATIMENT:immeuble': '⚠️ En immeuble, l\'accord de la copropriété est obligatoire. Nous vous aidons à constituer le dossier technique pour l\'AG.',
+  'mur-porteur:TYPE_BATIMENT:local': '💡 Dans un local professionnel, le mur porteur peut avoir des charges importantes. L\'ingénieur structure calcule la poutre adaptée.',
+  'mur-porteur:PROJET:abattre': '⚠️ Abattre un mur porteur sans étude structure est illégal et dangereux. Notre ingénieur dimensionne la poutre de reprise avant tout chantier.',
+  'mur-porteur:PROJET:agrandir': '💡 Agrandir une ouverture existante est souvent plus simple — le linteau est déjà en place. L\'étude vérifie si la portée peut être étendue.',
+  'mur-porteur:PROJET:baie': '💡 Une baie vitrée nécessite l\'ouverture du mur ET la pose du dormant. Nous coordonnons les deux corps de métier.',
+  'mur-porteur:PORTEE:grande': '⚠️ Au-delà de 3 m, la poutre est plus massive (HEB 200+ ou béton armé) et le coût augmente significativement. Un calcul précis est indispensable.',
+  'mur-porteur:PORTEE:moyenne': '💡 Entre 1,5 et 3 m, la solution la plus fréquente est un IPN ou HEB standard. C\'est la portée que nous réalisons le plus souvent.',
+  'mur-porteur:PORTEE:petite': '✅ Pour une petite ouverture (< 1,5 m), un linteau préfabriqué suffit souvent. Moins coûteux, chantier de 1 à 2 jours.',
+  'mur-porteur:NATURE_MUR:pierre': '⚠️ Les murs en pierre ou brique ancienne sont souvent porteurs. L\'étaiement provisoire est crucial pour éviter tout mouvement pendant les travaux.',
+  'mur-porteur:NATURE_MUR:beton': '💡 Le béton armé peut contenir des aciers. Nous réalisons un sondage avant découpe pour éviter de sectionner les armatures porteuses.',
+  'mur-porteur:ETAGE:rdc_plancher': '⚠️ Un mur en RDC avec un étage au-dessus reprend des charges importantes. L\'étude structure est non négociable — la poutre doit être parfaitement dimensionnée.',
+  'mur-porteur:ETAGE:rdc_combles': '💡 Sous combles, les charges sont moindres qu\'avec un étage habité. Mais un mur sous ferme ou sous panne reste porteur — à vérifier.',
+  'mur-porteur:PLANS:non': '⚠️ Sans plans, nous réalisons un sondage pour identifier les aciers et la nature exacte du mur. C\'est une étape indispensable avant tout devis.',
+  'mur-porteur:PLANS:oui': '✅ Avoir les plans accélère l\'étude structure. Notre ingénieur peut souvent dimensionner la poutre sans déplacement préalable.',
+  'mur-porteur:DEVIS_EXISTANT:oui_devis': '⚠️ Un devis d\'artisan sans étude structure est incomplet. Sans note de calcul, l\'artisan ne peut pas garantir le dimensionnement de la poutre.',
+  'mur-porteur:HORIZON:urgent': '💡 Pour les travaux urgents, nous pouvons mobiliser notre ingénieur sous 48h pour l\'étude préalable.',
 };
 
 // Étapes de l'animation d'analyse
@@ -358,7 +348,7 @@ export default function DiagnosticPage() {
   const progress = path ? (step / totalQuestions) * 100 : 0;
 
   // Calcul du score de risque en temps réel
-  const calculateRisk = (pathType: 'fissure' | 'humidite', ans: Record<string, any>) => {
+  const calculateRisk = (pathType: 'fissure' | 'mur-porteur', ans: Record<string, any>) => {
     let score = 0;
     if (pathType === 'fissure') {
       if (ans.LARGEUR === 'large') score += 25;
@@ -371,18 +361,22 @@ export default function DiagnosticPage() {
       if (ans.URGENCE === 'immediate') score += 10;
       else if (ans.URGENCE === 'modere') score += 5;
     } else {
-      if (ans.MANIFESTATION?.includes('salpetre')) score += 20;
-      if (ans.MANIFESTATION?.includes('moisissure')) score += 15;
-      if (ans.SAISONNALITE === 'permanent') score += 15;
-      if (ans.VENTILATION === 'non') score += 10;
-      if (ans.TENTATIVES?.includes('peinture')) score += 5;
-      if (ans.URGENCE === 'immediate') score += 10;
-      else if (ans.URGENCE === 'modere') score += 5;
+      if (ans.PORTEE === 'grande') score += 25;
+      else if (ans.PORTEE === 'moyenne') score += 15;
+      else if (ans.PORTEE === 'petite') score += 5;
+      if (ans.ETAGE === 'rdc_plancher') score += 20;
+      else if (ans.ETAGE === 'rdc_combles') score += 10;
+      if (ans.NATURE_MUR === 'beton') score += 10;
+      else if (ans.NATURE_MUR === 'pierre') score += 10;
+      if (ans.PLANS === 'non') score += 10;
+      if (ans.DEVIS_EXISTANT === 'oui_devis') score += 5;
+      if (ans.HORIZON === 'urgent') score += 10;
+      else if (ans.HORIZON === 'trimestre') score += 5;
     }
     return Math.min(score, 100);
   };
 
-  const liveRisk = path ? calculateRisk(path, answers) : 0;
+  const liveRisk = path ? calculateRisk(path as 'fissure' | 'mur-porteur', answers) : 0;
   const riskLabel = liveRisk >= 40 ? 'Élevé' : liveRisk >= 20 ? 'Modéré' : 'Faible';
   const riskColor = liveRisk >= 40 ? 'red' : liveRisk >= 20 ? 'orange' : 'green';
 
@@ -399,7 +393,7 @@ export default function DiagnosticPage() {
   }, [isAnalyzing]);
 
   // Diagnostic expert
-  const getExpertReport = (pathType: 'fissure' | 'humidite', score: number) => {
+  const getExpertReport = (pathType: 'fissure' | 'mur-porteur', score: number) => {
     if (pathType === 'fissure') {
       if (score >= 40) {
         return {
@@ -432,30 +426,30 @@ export default function DiagnosticPage() {
     } else {
       if (score >= 40) {
         return {
-          urgency: 'Urgent',
+          urgency: 'Projet complexe',
           urgencyIcon: '🔴',
           urgencyColor: 'red',
-          diagnosis: 'Vous présentez les signes caractéristiques de remontées capillaires importantes. L\'humidité ascensionnelle dégrade vos murs et crée un environnement malsain (moisissures, salpêtre, allergènes).',
-          solution: 'Injection de résine hydrophobe en pied de mur + traitement curatif (assèchement, cuvelage si cave). Installation d\'une VMI recommandée en complément pour assainir l\'air intérieur.',
-          delay: 'Sous 4 à 6 semaines',
+          diagnosis: 'Votre projet implique une grande portée et/ou des charges importantes (étage au-dessus, mur béton). Une étude structure approfondie est indispensable avant tout chantier — c\'est la sécurité de votre bâtiment qui est en jeu.',
+          solution: 'Étude structure complète par notre ingénieur, note de calcul officielle, dimensionnement de la poutre HEB/IPN. Coordination de l\'ensemble du chantier avec étaiement et finitions inclus.',
+          delay: 'Étude sous 48h — travaux sous 3 à 6 semaines',
         };
       } else if (score >= 20) {
         return {
-          urgency: 'À traiter',
+          urgency: 'Projet standard',
           urgencyIcon: '🟠',
           urgencyColor: 'orange',
-          diagnosis: 'Votre problème d\'humidité est significatif et nécessite un traitement adapté. Il peut s\'agir de remontées capillaires, de condensation excessive ou d\'infiltrations localisées.',
-          solution: 'Un diagnostic précis permettra d\'identifier la cause exacte. Selon le cas : injection résine, amélioration de la ventilation (VMC/VMI), ou réparation des infiltrations.',
-          delay: 'Sous 2 à 3 mois',
+          diagnosis: 'Votre projet est réalisable mais nécessite une étude structure pour dimensionner correctement la poutre. L\'intervention est de complexité modérée selon la portée et la nature du mur.',
+          solution: 'Visite technique de notre ingénieur pour confirmer la faisabilité, sondage si nécessaire, devis détaillé. Travaux réalisables en 2 à 4 jours selon la portée.',
+          delay: 'Devis sous 24h — travaux sous 2 à 4 semaines',
         };
       } else {
         return {
-          urgency: 'Surveillance',
+          urgency: 'Projet accessible',
           urgencyIcon: '🟢',
           urgencyColor: 'green',
-          diagnosis: 'Votre problème d\'humidité semble modéré et probablement lié à un défaut de ventilation (condensation) plutôt qu\'à une infiltration structurelle.',
-          solution: 'Amélioration de la ventilation (une VMC simple flux suffit souvent). Si le problème persiste, un diagnostic confirmera l\'absence de remontées capillaires.',
-          delay: 'Pas d\'urgence immédiate',
+          diagnosis: 'Votre projet semble de faible complexité (petite portée, charges modérées). Une étude structure rapide permettra de confirmer la faisabilité et de dimensionner le linteau.',
+          solution: 'Étude structure simplifiée, pose d\'un linteau préfabriqué ou IPN léger. Chantier propre en 1 à 2 jours. Devis gratuit établi après visite technique.',
+          delay: 'Devis sous 24h — travaux sous 1 à 3 semaines',
         };
       }
     }
@@ -466,7 +460,7 @@ export default function DiagnosticPage() {
   }, [step, isAnalyzing, showResult, submitted]);
 
   // Gestion du choix de parcours
-  const selectPath = (selectedPath: 'fissure' | 'humidite') => {
+  const selectPath = (selectedPath: 'fissure' | 'mur-porteur') => {
     setPath(selectedPath);
     setStep(1);
   };
@@ -495,7 +489,7 @@ export default function DiagnosticPage() {
 
     setIsAnalyzing(true);
     trackFormSubmit();
-    const score = calculateRisk(path!, answers);
+    const score = calculateRisk(path! as 'fissure' | 'mur-porteur', answers);
     setRiskScore(score);
 
     const recaptchaToken = await getToken('diagnostic_lead');
@@ -574,7 +568,7 @@ export default function DiagnosticPage() {
 
   const currentQuestion = currentQuestions[step - 1];
   const isMultiQuestion = currentQuestion?.multiSelect;
-  const expertReport = showResult && path ? getExpertReport(path, riskScore) : null;
+  const expertReport = showResult && path ? getExpertReport(path as 'fissure' | 'mur-porteur', riskScore) : null;
 
   return (
     <div className="min-h-[100dvh] bg-gradient-to-br from-slate-50 via-white to-orange-50/30 flex justify-center">
@@ -649,11 +643,11 @@ export default function DiagnosticPage() {
                     Diagnostic en ligne gratuit
                   </div>
                   <h1 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-2 leading-tight">
-                    Diagnostic fissures & humidité<br />
+                    Diagnostic fissures & mur porteur<br />
                     <span className="text-orange-500">gratuit en 3 minutes</span>
                   </h1>
                   <p className="text-slate-500 text-sm max-w-md mx-auto">
-                    Répondez à 9 questions et obtenez immédiatement l&apos;avis d&apos;un expert en pathologie du bâtiment.
+                    Répondez à 9 questions et obtenez immédiatement l&apos;avis d&apos;un expert en structure du bâtiment.
                   </p>
                 </div>
 
@@ -678,19 +672,19 @@ export default function DiagnosticPage() {
                   </button>
 
                   <button
-                    onClick={() => selectPath('humidite')}
-                    className="group relative bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 hover:border-blue-400 rounded-xl p-5 transition-all text-left hover:shadow-md"
+                    onClick={() => selectPath('mur-porteur')}
+                    className="group relative bg-gradient-to-br from-amber-50 to-white border-2 border-amber-200 hover:border-amber-400 rounded-xl p-5 transition-all text-left hover:shadow-md"
                   >
                     <div className="flex items-start gap-3">
-                      <span className="text-3xl">💧</span>
+                      <span className="text-3xl">🪟</span>
                       <div>
-                        <h2 className="font-bold text-slate-900 text-base mb-0.5">Humidité & Infiltrations</h2>
+                        <h2 className="font-bold text-slate-900 text-base mb-0.5">Mur Porteur & Baie Vitrée</h2>
                         <p className="text-slate-500 text-xs leading-relaxed">
-                          Salpêtre, moisissures, murs humides, odeur de moisi...
+                          Abattre un mur, créer une ouverture, agrandir, baie vitrée...
                         </p>
                       </div>
                     </div>
-                    <span className="absolute bottom-3 right-3 text-blue-400 group-hover:text-blue-600 text-sm font-semibold transition-colors">
+                    <span className="absolute bottom-3 right-3 text-amber-400 group-hover:text-amber-600 text-sm font-semibold transition-colors">
                       Commencer →
                     </span>
                   </button>
