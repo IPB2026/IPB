@@ -13,27 +13,27 @@ import {
 const faqData = [
   {
     question: "Le diagnostic sur site est-il gratuit ?",
-    answer: "Le diagnostic est une vraie expertise technique, pas un simple devis. Nous intervenons avec un fissuromètre, un niveau laser, un hygromètre et une caméra thermique pour mesurer objectivement la situation. Le rapport de 10 à 15 pages que nous remettons est un document opposable — notamment face à un expert d'assurance. C'est pourquoi c'est une prestation payante, mais son montant est intégralement déduit si vous nous confiez les travaux."
+    answer: "Le diagnostic est une vraie expertise technique, pas un simple devis commercial. Nous intervenons avec un fissuromètre, un niveau laser et une caméra thermique pour mesurer objectivement la situation. Le rapport de 10 à 15 pages que nous remettons est un document opposable — notamment face à un expert d'assurance. C'est pourquoi c'est une prestation payante, mais son montant est intégralement déduit des travaux si vous nous confiez le chantier."
   },
   {
-    question: "L'agrafage est-il aussi durable que les micropieux ?",
-    answer: "Ce sont deux réponses à deux problèmes différents. L'agrafage traite les fissures liées à un tassement différentiel modéré (< 10 mm) en redonnant au mur sa cohésion. Les micropieux stabilisent les fondations quand le sol est profondément instable. Dans 90% des cas que nous traitons en Occitanie, l'agrafage est la réponse adaptée. Les deux sont couverts par la même garantie décennale."
+    question: "Comment savoir si mon mur est porteur avant de le toucher ?",
+    answer: "Trois indices forts : le mur est perpendiculaire aux solives du plancher, il y a un poteau ou une poutre visible au-dessus, ou il se situe en RDC sous une pièce habitée à l'étage. Mais ces indices ne suffisent pas — seul notre ingénieur, avec les plans ou un sondage, peut le confirmer avec certitude. Ne jamais ouvrir un mur sans note de calcul signée : c'est illégal et dangereux."
   },
   {
     question: "Comment distinguer une fissure structurelle d'une fissure esthétique ?",
-    answer: "Trois critères techniques : 1. Le tracé en escalier qui suit les joints de maçonnerie (signe de tassement). 2. La fissure traversante, visible à l'intérieur et à l'extérieur. 3. Des signes collatéraux : portes qui frottent, carrelage qui casse, fenêtres qui ne ferment plus. En cas de doute, notre diagnostic en ligne gratuit vous donne une première évaluation en 3 minutes."
+    answer: "Trois critères techniques : 1. Le tracé en escalier qui suit les joints de maçonnerie — signe classique de tassement différentiel. 2. La fissure traversante, visible des deux côtés du mur. 3. Des signes collatéraux : portes qui frottent, carrelage qui casse, volets qui ne ferment plus. En cas de doute, notre diagnostic en ligne gratuit vous donne une première évaluation en 3 minutes."
   },
   {
-    question: "Traitez-vous l'humidité par l'intérieur ou par l'extérieur ?",
-    answer: "Cela dépend du diagnostic. Les remontées capillaires se traitent par injection intérieure à la base du mur — la résine polymérise dans la masse et crée une barrière étanche. Les infiltrations latérales peuvent nécessiter un traitement extérieur (drainage, étanchéité). C'est pourquoi le diagnostic précède toujours l'intervention : la méthode dépend de la cause."
+    question: "L'agrafage est-il aussi durable que les micropieux ?",
+    answer: "Ce sont deux réponses à deux problèmes différents. L'agrafage traite les fissures liées à un tassement différentiel modéré (< 10 mm) en redonnant au mur sa cohésion structurelle. Les micropieux stabilisent les fondations quand le sol est profondément instable. Dans 90% des cas traités en Occitanie, l'agrafage est la réponse adaptée — et bien moins invasif. Les deux sont couverts par la même garantie décennale."
   },
   {
-    question: "Combien de temps dure un chantier ?",
-    answer: "Un agrafage de façade complète : 3 à 5 jours. Un traitement d'humidité par injection : 1 à 2 jours. Un cuvelage de sous-sol : 2 à 4 jours. Nos interventions sont conçues pour être peu invasives — nous travaillons en intérieur quand c'est possible et le chantier est nettoyé chaque soir."
+    question: "Combien de temps dure un chantier d'ouverture de mur porteur ?",
+    answer: "L'intervention proprement dite dure 2 à 5 jours selon la portée. Mais la phase préparatoire est indispensable : étude structure (1 à 2 semaines), déclaration préalable si nécessaire, commande et livraison de la poutre. Au total, comptez 3 à 6 semaines entre le premier appel et la réception de chantier. Un agrafage de façade, lui, dure 3 à 5 jours."
   },
   {
     question: "Vos travaux sont-ils assurés ?",
-    answer: "IPB est assuré en Garantie Décennale et en Responsabilité Civile Professionnelle auprès d'AXA France (n° 0000022511730204), pour les activités de renforcement structurel et de traitement de l'humidité. Les attestations sont fournies sur demande et jointes à chaque devis."
+    answer: "IPB est assuré en Garantie Décennale et en Responsabilité Civile Professionnelle auprès d'AXA France (n° 0000022511730204), pour les activités de renforcement structurel, d'ouverture de murs porteurs et de création de baies vitrées. Les attestations d'assurance sont fournies sur demande et systématiquement jointes à chaque devis."
   }
 ];
 
