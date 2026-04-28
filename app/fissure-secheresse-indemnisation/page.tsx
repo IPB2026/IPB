@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, ChevronRight, Sun, FileText, Clock, CheckCircle, AlertTriangle, Calendar, Euro } from 'lucide-react';
 
@@ -97,6 +98,7 @@ export default function FissureSecheressePage() {
       />
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-amber-900 via-orange-900 to-red-950 text-white overflow-hidden">

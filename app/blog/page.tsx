@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Search } from 'lucide-react';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { TrustRibbon } from '@/components/ui/TrustRibbon';
 import { Footer } from '@/components/home/Footer';
 import { Eyebrow } from '@/components/ui/Eyebrow';
@@ -97,6 +98,7 @@ export default function BlogPage() {
       <TopBar />
       <TrustRibbon />
       <Navbar />
+      <SmartBackBar />
 
       {/* HERO éditorial blog — cohérent avec la home */}
       <section className="bg-ipb-cream relative">

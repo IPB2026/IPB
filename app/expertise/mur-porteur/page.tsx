@@ -1,5 +1,6 @@
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { CtaFinal } from '@/components/home/CtaFinal';
 import { Eyebrow } from '@/components/ui/Eyebrow';
@@ -88,10 +89,38 @@ const generateServiceJsonLd = () => ({
 });
 
 const typesProjets = [
-  { titre: 'Cuisine ouverte sur séjour', desc: 'Le projet le plus fréquent. Ouverture de 2 à 3 m, poutre IPN ou HEB selon les charges.', portee: '2 à 3 m', budget: '5 000 – 8 000 €' },
-  { titre: 'Baie vitrée sur jardin', desc: "Création d'une grande ouverture sur la façade arrière. Permis souvent nécessaire.", portee: '3 à 5 m', budget: '10 000 – 18 000 €' },
-  { titre: 'Suite parentale étendue', desc: 'Ouverture entre deux chambres pour créer un dressing ou une salle de bain attenante.', portee: '1,5 à 2,5 m', budget: '4 000 – 6 500 €' },
-  { titre: 'Loft ou plateau', desc: 'Plusieurs ouvertures dans un plateau brut. Étude globale avec plan d\'exécution complet.', portee: 'Variable', budget: 'Sur devis' },
+  {
+    titre: 'Cuisine ouverte sur séjour',
+    desc: 'Le projet le plus fréquent. Ouverture de 2 à 3 m, poutre IPN ou HEB selon les charges.',
+    portee: '2 à 3 m',
+    budget: '5 000 – 8 000 €',
+    image: '/images/ouverture-mur-porteur.webp',
+    imageAlt: 'Ouverture de mur porteur entre cuisine et séjour avec pose de poutre — chantier IPB Toulouse',
+  },
+  {
+    titre: 'Baie vitrée sur jardin',
+    desc: "Création d'une grande ouverture sur la façade arrière. Permis souvent nécessaire.",
+    portee: '3 à 5 m',
+    budget: '10 000 – 18 000 €',
+    image: '/images/creation-baie-vitree-1.webp',
+    imageAlt: 'Création d\'une baie vitrée sur façade arrière donnant sur jardin — chantier IPB',
+  },
+  {
+    titre: 'Suite parentale étendue',
+    desc: 'Ouverture entre deux chambres pour créer un dressing ou une salle de bain attenante.',
+    portee: '1,5 à 2,5 m',
+    budget: '4 000 – 6 500 €',
+    image: '/images/etude-cas-baie-vitree-1.webp',
+    imageAlt: 'Ouverture entre chambres pour suite parentale avec dressing — chantier IPB',
+  },
+  {
+    titre: 'Loft ou plateau',
+    desc: 'Plusieurs ouvertures dans un plateau brut. Étude globale avec plan d\'exécution complet.',
+    portee: 'Variable',
+    budget: 'Sur devis',
+    image: '/images/etude-cas-baie-vitree-2.webp',
+    imageAlt: 'Plateau loft avec plusieurs ouvertures structurelles — chantier IPB',
+  },
 ];
 
 export default function MurPorteurPage() {
@@ -102,6 +131,7 @@ export default function MurPorteurPage() {
 
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       <main id="main-content">
         {/* HERO */}
@@ -179,21 +209,33 @@ export default function MurPorteurPage() {
             <div className="grid md:grid-cols-2 gap-6">
               {typesProjets.map((p, i) => (
                 <RevealOnScroll key={p.titre} delay={i * 0.06}>
-                  <article className="bg-ipb-cream border border-ipb-rule rounded-[6px] p-8 h-full">
-                    <h3 className="font-serif text-ipb-text font-bold text-[24px] leading-tight mb-4">
-                      {p.titre}
-                    </h3>
-                    <p className="text-[14px] leading-[1.75] font-light text-ipb-muted mb-6">
-                      {p.desc}
-                    </p>
-                    <div className="grid grid-cols-2 gap-4 pt-5 border-t border-ipb-rule">
-                      <div>
-                        <p className="text-[10px] uppercase tracking-[0.14em] text-ipb-light mb-1">Portée</p>
-                        <p className="font-serif text-ipb-text font-bold text-[16px]">{p.portee}</p>
-                      </div>
-                      <div>
-                        <p className="text-[10px] uppercase tracking-[0.14em] text-ipb-light mb-1">Budget</p>
-                        <p className="font-serif text-ipb-text font-bold text-[16px]">{p.budget}</p>
+                  <article className="bg-ipb-cream border border-ipb-rule rounded-[6px] overflow-hidden h-full flex flex-col group hover:shadow-[0_12px_36px_rgba(11,24,38,0.07)] transition-shadow duration-500">
+                    <div className="relative aspect-[16/10] bg-ipb-stone overflow-hidden">
+                      <Image
+                        src={p.image}
+                        alt={p.imageAlt}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="p-8 flex-1 flex flex-col">
+                      <h3 className="font-serif text-ipb-text font-bold text-[24px] leading-tight mb-4">
+                        {p.titre}
+                      </h3>
+                      <p className="text-[14px] leading-[1.75] font-light text-ipb-muted mb-6 flex-1">
+                        {p.desc}
+                      </p>
+                      <div className="grid grid-cols-2 gap-4 pt-5 border-t border-ipb-rule">
+                        <div>
+                          <p className="text-[10px] uppercase tracking-[0.14em] text-ipb-light mb-1">Portée</p>
+                          <p className="font-serif text-ipb-text font-bold text-[16px]">{p.portee}</p>
+                        </div>
+                        <div>
+                          <p className="text-[10px] uppercase tracking-[0.14em] text-ipb-light mb-1">Budget</p>
+                          <p className="font-serif text-ipb-text font-bold text-[16px]">{p.budget}</p>
+                        </div>
                       </div>
                     </div>
                   </article>

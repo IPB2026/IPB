@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { CloudRain, ArrowRight, Phone, AlertTriangle, CheckCircle, Droplets, Home, Wind } from 'lucide-react';
 
@@ -77,6 +78,7 @@ export default function InfiltrationsAutomnePage() {
       
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Alerte saison */}
       <div className="bg-gradient-to-r from-blue-600 to-slate-700 text-white py-3">

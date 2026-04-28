@@ -4,6 +4,7 @@ import { Phone, MapPin, CheckCircle, ArrowRight, Shield, Award, Clock } from 'lu
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 
 export const metadata: Metadata = {
@@ -151,9 +152,10 @@ export default function HauteGaronnePage() {
       <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white font-sans antialiased">
         <TopBar />
         <Navbar />
+      <SmartBackBar />
 
         {/* Hero Section - Orange theme pour Haute-Garonne */}
-        <div className="relative bg-gradient-to-br from-orange-600 via-orange-700 to-red-700 text-white py-20 lg:py-28">
+        <div className="relative bg-ipb-orange text-white py-20 lg:py-28">
           <div className="absolute inset-0 bg-black/10"></div>
           <div className="absolute inset-0 bg-[url('/images/pattern-dots.svg')] opacity-5"></div>
           
@@ -236,7 +238,7 @@ export default function HauteGaronnePage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl border border-ipb-rule">
+              <div className="bg-ipb-orange p-8 rounded-2xl border border-ipb-rule">
                 <div className="w-14 h-14 bg-ipb-orange rounded-xl flex items-center justify-center mb-6">
                   <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
@@ -405,7 +407,7 @@ export default function HauteGaronnePage() {
         </div>
 
         {/* CTA Final */}
-        <div className="bg-gradient-to-br from-orange-600 to-red-600 py-16">
+        <div className="bg-ipb-orange py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-6">
               Fissures ou humidité en Haute-Garonne ?

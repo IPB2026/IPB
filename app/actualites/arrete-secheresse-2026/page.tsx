@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { AlertTriangle, ArrowRight, Phone, Calendar, MapPin, Clock, FileText, CheckCircle } from 'lucide-react';
 
@@ -87,6 +88,7 @@ export default function ArreteSecheresse2026Page() {
       
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Alerte info */}
       <div className="bg-amber-600 text-white py-3">
@@ -271,7 +273,7 @@ export default function ArreteSecheresse2026Page() {
           </div>
 
           {/* CTA milieu */}
-          <div className="my-12 p-8 bg-gradient-to-br from-orange-500 to-amber-500 rounded-2xl text-white text-center">
+          <div className="my-12 p-8 bg-ipb-orange rounded-2xl text-white text-center">
             <h3 className="text-2xl font-extrabold mb-4">Votre maison est fissurée ?</h3>
             <p className="text-ipb-orange-l mb-6">
               Faites constater les dégâts par un expert indépendant pour renforcer votre dossier.

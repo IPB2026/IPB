@@ -1,5 +1,6 @@
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -33,6 +34,7 @@ export default function MarchandsDeBiensPage() {
     <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
       <TopBar />
       <Navbar />
+      <SmartBackBar />
       <main id="main-content">
         {/* HERO avec photo chantier */}
         <section className="relative bg-ipb-navy text-white py-16 md:py-24 overflow-hidden">
@@ -44,7 +46,7 @@ export default function MarchandsDeBiensPage() {
                   Programme pros · Marchands de biens & investisseurs
                 </p>
                 <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight tracking-tight">
-                  Vos T3 des <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300">Carmes, Saint-Cyprien & Minimes</span>,
+                  Vos T3 des <span className="text-transparent bg-clip-text bg-ipb-orange">Carmes, Saint-Cyprien & Minimes</span>,
                   <span className="block mt-2 text-white">ouverts en 5 jours.</span>
                 </h1>
                 <p className="text-xl text-white/70 mb-4 leading-relaxed">
@@ -164,7 +166,7 @@ export default function MarchandsDeBiensPage() {
         </section>
 
         {/* CTA */}
-        <section className="py-16 bg-gradient-to-r from-orange-600 to-amber-600 text-white">
+        <section className="py-16 bg-ipb-orange text-white">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Un bien acheté ? Chiffrage sous 24h.</h2>
             <p className="text-xl text-ipb-orange-l mb-8">Envoyez-nous l'adresse + plan, nous revenons avec un devis ferme.</p>

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { CheckCircle, Phone, ArrowRight, AlertTriangle, Minus, ArrowDown, Layers, Clock, Shield, TrendingUp, ChevronRight, XCircle } from 'lucide-react';
 
@@ -96,6 +97,7 @@ export default function FissureHorizontalePage() {
       />
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Hero - Style Urgence */}
       <section className="relative bg-gradient-to-br from-red-900 via-red-800 to-slate-900 text-white overflow-hidden">

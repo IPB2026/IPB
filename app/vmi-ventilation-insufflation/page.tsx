@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, Wind, ChevronRight, Shield, CheckCircle, XCircle, ThermometerSun, Droplets, Home } from 'lucide-react';
 
@@ -35,6 +36,7 @@ export default function VMIPage() {
     <div className="font-sans text-ipb-text bg-white antialiased">
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-teal-900 via-emerald-900 to-slate-900 text-white overflow-hidden">

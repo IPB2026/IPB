@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, AlertTriangle, Home, ChevronRight, Shield, CheckCircle, Clock, TrendingDown, Layers } from 'lucide-react';
 
@@ -113,6 +114,7 @@ export default function FissureFondationPage() {
       />
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-orange-950/40 text-white overflow-hidden">
@@ -138,7 +140,7 @@ export default function FissureFondationPage() {
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.1]">
                 Fissures de
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">
+                <span className="block text-transparent bg-clip-text bg-ipb-orange">
                   Fondation
                 </span>
               </h1>
@@ -163,7 +165,7 @@ export default function FissureFondationPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/diagnostic" className="group bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl">
+                <Link href="/diagnostic" className="group bg-ipb-orange hover:bg-[#b35519] text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl">
                   Diagnostic fondations
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -342,7 +344,7 @@ export default function FissureFondationPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-orange-600 to-red-600 text-white">
+      <section className="py-20 bg-ipb-orange text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-5xl font-black mb-6">
             Vos fondations méritent un expert.

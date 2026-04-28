@@ -4,6 +4,7 @@ import Script from 'next/script';
 import { notFound } from 'next/navigation';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { InternalLinks } from '@/components/seo/InternalLinks';
 import { quartiersData as quartiersDataSource, quartierSlugs } from '@/app/data/quartiers';
@@ -162,6 +163,7 @@ export default async function QuartierPage({ params }: PageProps) {
       
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Breadcrumbs visuels */}
       <div className="bg-white border-b border-ipb-rule">

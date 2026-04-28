@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Sun, ArrowRight, Phone, AlertTriangle, CheckCircle, Thermometer, Droplets } from 'lucide-react';
 
@@ -75,9 +76,10 @@ export default function CaniculeProtegerMaisonPage() {
       
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Alerte canicule */}
-      <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white py-3">
+      <div className="bg-ipb-orange text-white py-3">
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-3">
           <Sun size={20} />
           <span className="font-bold">🌡️ Alerte Canicule : Protégez votre maison du risque de fissures</span>
@@ -85,7 +87,7 @@ export default function CaniculeProtegerMaisonPage() {
       </div>
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-orange-900 to-red-900 text-white py-16 md:py-24">
+      <section className="bg-ipb-orange text-white py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4">
           <div className="flex items-center gap-2 text-ipb-orange-l text-sm font-bold mb-4">
             <Thermometer size={18} />
@@ -204,7 +206,7 @@ export default function CaniculeProtegerMaisonPage() {
       </section>
 
       {/* CTA milieu */}
-      <section className="py-16 bg-gradient-to-r from-orange-600 to-red-600 text-white">
+      <section className="py-16 bg-ipb-orange text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-extrabold mb-6">Votre maison montre des signes de fatigue ?</h2>
           <p className="text-xl text-ipb-orange-l mb-8">

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, AlertTriangle, Heart, Baby, Stethoscope, Wind, ChevronRight, Shield, CheckCircle, XCircle } from 'lucide-react';
 
@@ -93,6 +94,7 @@ export default function MoisissuresSantePage() {
       />
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Hero - Style Santé/Alerte */}
       <section className="relative bg-gradient-to-br from-emerald-900 via-teal-900 to-slate-900 text-white overflow-hidden">
@@ -202,7 +204,7 @@ export default function MoisissuresSantePage() {
             {risquesSante.map((risque, index) => (
               <div key={index} className={`rounded-3xl p-8 ${
                 risque.couleur === 'red' ? 'bg-gradient-to-br from-red-50 to-rose-50 border-2 border-red-200' :
-                risque.couleur === 'orange' ? 'bg-gradient-to-br from-orange-50 to-amber-50 border-2 border-ipb-rule' :
+                risque.couleur === 'orange' ? 'bg-ipb-orange border-2 border-ipb-rule' :
                 'bg-gradient-to-br from-purple-50 to-violet-50 border-2 border-purple-200'
               }`}>
                 <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 ${

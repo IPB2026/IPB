@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { MapPin, ArrowRight } from 'lucide-react';
 import { quartiersData, quartierSlugs } from '@/app/data/quartiers';
@@ -54,6 +55,7 @@ export default function QuartiersIndexPage() {
       />
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       <header className="bg-ipb-navy text-white py-14 md:py-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">

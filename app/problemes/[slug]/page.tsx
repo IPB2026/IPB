@@ -4,6 +4,7 @@ import Script from 'next/script';
 import { notFound } from 'next/navigation';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { InternalLinks } from '@/components/seo/InternalLinks';
 import { problemBySlug, problemPages, problemSlugs } from '@/app/data/problems';
@@ -97,6 +98,7 @@ export default async function ProblemPage({ params }: PageProps) {
       <Script id="problem-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <TopBar />
       <Navbar />
+      <SmartBackBar />
       <main id="main-content" className="max-w-6xl mx-auto px-4 py-16">
         <div className="max-w-3xl">
           <p className="text-ipb-orange font-semibold uppercase tracking-widest text-xs mb-3">

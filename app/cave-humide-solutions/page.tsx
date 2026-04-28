@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, AlertTriangle, Home, ChevronRight, Shield, CheckCircle, Droplets, Wind } from 'lucide-react';
 
@@ -63,6 +64,7 @@ export default function CaveHumidePage() {
     <div className="font-sans text-ipb-text bg-white antialiased">
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-slate-900 via-blue-950 to-cyan-950 text-white overflow-hidden">

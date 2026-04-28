@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { MapPin, Phone, ArrowRight, Shield, AlertTriangle } from 'lucide-react';
 import { villesData, departementsMapping } from '@/app/data/villes';
@@ -59,6 +60,7 @@ export default function ZonesInterventionPage() {
 
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Hero */}
       <section className="relative bg-ipb-navy text-white py-16 md:py-24 overflow-hidden">
@@ -261,7 +263,7 @@ export default function ZonesInterventionPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-r from-orange-600 to-red-600 text-white">
+      <section className="py-16 bg-ipb-orange text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
             Votre ville est dans la liste ?

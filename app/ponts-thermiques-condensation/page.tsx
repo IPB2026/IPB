@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, ChevronRight, Home, CheckCircle, AlertTriangle, Droplets, Thermometer } from 'lucide-react';
 
@@ -46,6 +47,7 @@ export default function PontsThermiquesPage() {
     <div className="font-sans text-ipb-text bg-white antialiased">
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-sky-900 via-blue-900 to-slate-900 text-white overflow-hidden">

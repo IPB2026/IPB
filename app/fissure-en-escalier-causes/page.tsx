@@ -4,6 +4,7 @@ import Script from 'next/script';
 import Image from 'next/image';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { CheckCircle, Phone, ArrowRight, AlertTriangle, Home, Layers, TreeDeciduous, Construction, Clock, Shield, TrendingUp, ChevronRight } from 'lucide-react';
 
@@ -80,6 +81,7 @@ export default function FissureEscalierPage() {
       
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Hero Premium */}
       <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-orange-950 text-white overflow-hidden">
@@ -108,7 +110,7 @@ export default function FissureEscalierPage() {
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.1]">
                 Fissure en
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">
+                <span className="block text-transparent bg-clip-text bg-ipb-orange">
                   Escalier
                 </span>
               </h1>
@@ -120,7 +122,7 @@ export default function FissureEscalierPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/diagnostic" className="group bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl shadow-orange-500/25">
+                <Link href="/diagnostic" className="group bg-ipb-orange hover:bg-[#b35519] text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl shadow-orange-500/25">
                   Diagnostic gratuit
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -236,7 +238,7 @@ export default function FissureEscalierPage() {
                       className={`h-full rounded-full transition-all duration-1000 ${
                         item.color === 'green' ? 'bg-gradient-to-r from-green-400 to-green-500' :
                         item.color === 'yellow' ? 'bg-gradient-to-r from-yellow-400 to-yellow-500' :
-                        item.color === 'orange' ? 'bg-gradient-to-r from-orange-400 to-orange-500' :
+                        item.color === 'orange' ? 'bg-ipb-orange' :
                         'bg-gradient-to-r from-red-400 to-red-500'
                       }`}
                       style={{ width: item.width }}
@@ -392,7 +394,7 @@ export default function FissureEscalierPage() {
       </section>
 
       {/* CTA Final */}
-      <section className="py-20 bg-gradient-to-r from-orange-500 via-red-500 to-orange-600 text-white relative overflow-hidden">
+      <section className="py-20 bg-ipb-orange text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, white 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
         </div>

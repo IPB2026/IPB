@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export default function PlanSitePage() {
     <div className="min-h-screen bg-ipb-cream">
       <TopBar />
       <Navbar />
+      <SmartBackBar />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h1 className="text-4xl font-extrabold text-ipb-text mb-4">Plan du site</h1>
@@ -194,7 +196,7 @@ export default function PlanSitePage() {
         </div>
 
         {/* CTA */}
-        <div className="mt-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl p-8 text-center text-white">
+        <div className="mt-12 bg-ipb-orange rounded-2xl p-8 text-center text-white">
           <h2 className="text-3xl font-extrabold mb-4">Besoin d'un expert ?</h2>
           <p className="text-xl text-ipb-orange-l mb-6">Diagnostic gratuit de votre situation en 5 minutes</p>
           <Link 

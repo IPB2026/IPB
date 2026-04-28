@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
@@ -25,6 +26,7 @@ export default function RdvCabinetPage() {
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       <main id="main-content">
         {/* HERO + 3 chemins de prise de RDV */}

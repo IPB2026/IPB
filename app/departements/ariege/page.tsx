@@ -4,6 +4,7 @@ import { Phone, MapPin, CheckCircle, ArrowRight, Mountain, Shield } from 'lucide
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 
 export const metadata: Metadata = {
@@ -127,6 +128,7 @@ export default function AriegePage() {
       <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white font-sans antialiased">
         <TopBar />
         <Navbar />
+      <SmartBackBar />
 
         {/* Hero Section - Vert montagne pour l'Ariège */}
         <div className="relative bg-gradient-to-br from-emerald-700 via-emerald-800 to-teal-900 text-white py-20 lg:py-28">

@@ -5,7 +5,7 @@ import Script from 'next/script';
 import { notFound } from 'next/navigation';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
-import { BackButton } from '@/components/ui/BackButton';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { CtaFinal } from '@/components/home/CtaFinal';
 import { Eyebrow } from '@/components/ui/Eyebrow';
@@ -111,15 +111,9 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
 
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       <main id="main-content">
-        {/* Bandeau retour discret éditorial */}
-        <div className="bg-ipb-cream border-b border-ipb-rule">
-          <div className="max-w-ipb mx-auto px-6 lg:px-12 py-3">
-            <BackButton href="/expertise/fissures" label="Retour à l'expertise fissures" />
-          </div>
-        </div>
-
         {/* HERO local */}
         <section className="bg-ipb-cream">
           <div className="max-w-ipb mx-auto grid lg:grid-cols-[58fr_42fr] gap-12 lg:gap-16 px-6 lg:px-12 pt-12 lg:pt-16 pb-20 lg:pb-28 items-center">

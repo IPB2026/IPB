@@ -39,17 +39,30 @@ export function Navbar() {
       }`}
       style={{ height: '68px' }}
     >
-      <div className="max-w-ipb mx-auto px-6 lg:px-12 h-full flex items-center justify-between">
-        {/* LOGO carré orange */}
-        <Link href="/" className="flex items-center gap-3 group" aria-label="IPB Expertise — Accueil">
-          <div className="w-9 h-9 bg-ipb-orange text-white rounded-[4px] flex items-center justify-center font-extrabold text-[13px] tracking-tight transition-transform duration-200 group-hover:-rotate-[4deg]">
-            IPB
-          </div>
-          <div className="hidden lg:flex flex-col leading-tight">
-            <span className="font-serif text-[15px] text-ipb-text font-medium leading-none">Institut</span>
-            <span className="text-[10px] text-ipb-muted uppercase tracking-[0.14em] mt-0.5">Pathologie du bâtiment</span>
-          </div>
-        </Link>
+      <div className="max-w-ipb mx-auto px-6 lg:px-12 h-full flex items-center justify-between gap-3">
+        {/* LOGO + CTA Diagnostic gratuit collés à gauche */}
+        <div className="flex items-center gap-3 lg:gap-4">
+          <Link href="/" className="flex items-center gap-3 group shrink-0" aria-label="IPB Expertise — Accueil">
+            <div className="w-9 h-9 bg-ipb-orange text-white rounded-[4px] flex items-center justify-center font-extrabold text-[13px] tracking-tight transition-transform duration-200 group-hover:-rotate-[4deg]">
+              IPB
+            </div>
+            <div className="hidden lg:flex flex-col leading-tight">
+              <span className="font-serif text-[15px] text-ipb-text font-medium leading-none">Institut</span>
+              <span className="text-[10px] text-ipb-muted uppercase tracking-[0.14em] mt-0.5">Pathologie du bâtiment</span>
+            </div>
+          </Link>
+
+          {/* CTA Diagnostic gratuit collé au logo — visible mobile et desktop */}
+          <Link
+            href="/diagnostic"
+            className="group inline-flex items-center gap-1.5 bg-ipb-orange hover:bg-[#b35519] text-white px-3 lg:px-4 py-2 rounded-[3px] font-semibold text-[11px] lg:text-[12px] tracking-[0.02em] transition-colors duration-300 shrink-0"
+            aria-label="Lancer un diagnostic gratuit"
+          >
+            <span className="sm:hidden">Diagnostic</span>
+            <span className="hidden sm:inline">Diagnostic gratuit</span>
+            <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+          </Link>
+        </div>
 
         {/* MENU DESKTOP */}
         <div className="hidden md:flex items-center gap-8">
@@ -62,12 +75,6 @@ export function Navbar() {
               {label}
             </Link>
           ))}
-          <Link
-            href="/diagnostic"
-            className="bg-ipb-orange text-white px-5 py-2.5 rounded-[3px] font-semibold text-[12px] tracking-[0.02em] hover:bg-[#b35519] transition-all hover:shadow-[0_8px_24px_rgba(200,96,31,0.25)] hover:-translate-y-px ml-2"
-          >
-            Diagnostic gratuit
-          </Link>
         </div>
 
         {/* MOBILE BURGER */}

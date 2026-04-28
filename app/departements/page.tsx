@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { MapPin, ArrowRight, Phone } from 'lucide-react';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 
 export const metadata: Metadata = {
@@ -69,6 +70,7 @@ export default function DepartementsPage() {
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white font-sans antialiased">
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -118,7 +120,7 @@ export default function DepartementsPage() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-orange-600 to-red-600 py-16">
+      <section className="bg-ipb-orange py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-6">
             Fissures ou humidité ?
