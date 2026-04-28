@@ -297,7 +297,7 @@ export default function BlogPage() {
                   Un cas concret <em>vaut mille articles.</em>
                 </h2>
                 <p className="text-[15px] leading-[1.85] font-light text-white/65 max-w-[560px]">
-                  Nos articles donnent les bonnes pistes — mais chaque maison est singulière. Décrivez votre situation à l’institut, nous vous répondons sous 24 heures.
+                  Nos articles donnent les bonnes pistes — mais chaque maison est singulière. Décrivez-nous votre situation, nous vous répondons sous 24 heures.
                 </p>
               </div>
               <div className="lg:col-span-4 flex flex-col gap-3 lg:items-end">
@@ -399,7 +399,7 @@ export default function BlogPage() {
                   </p>
                   <p>
                     Tous les articles sont mis à jour régulièrement pour intégrer les dernières réglementations et les retours d&apos;expérience de nos chantiers récents. Pour un cas spécifique,{' '}
-                    <Link href="/diagnostic" className="text-ipb-orange hover:text-[#b35519] font-medium transition-colors">décrivez votre situation à l’institut</Link>.
+                    <Link href="/diagnostic" className="text-ipb-orange hover:text-[#b35519] font-medium transition-colors">décrivez-nous votre situation</Link>.
                   </p>
                 </div>
               </RevealOnScroll>

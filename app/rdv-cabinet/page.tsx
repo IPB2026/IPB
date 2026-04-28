@@ -120,7 +120,7 @@ export default function RdvCabinetPage() {
                   >
                     <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-3">Le plus posé</p>
                     <h3 className="font-serif text-ipb-text font-bold text-[22px] leading-tight mb-3 group-hover:text-ipb-orange transition-colors">
-                      Écrire à l’institut
+                      Nous écrire
                     </h3>
                     <p className="text-[13px] font-light text-ipb-muted leading-[1.75] mb-5">
                       Si vous préférez l'écrit, ou si vous voulez nous transmettre des photos / plans en amont, le formulaire de contact est là pour ça. Réponse sous 24 heures ouvrées.

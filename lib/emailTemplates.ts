@@ -255,7 +255,7 @@ export const emailTemplates = {
 };
 
 export const emailSequence = [
-  { offsetDays: 0, name: 'j0Confirmation', subject: (ctx: PathContext) => `Votre demande à l’institut IPB est prise en compte` },
+  { offsetDays: 0, name: 'j0Confirmation', subject: (ctx: PathContext) => `Votre demande IPB est prise en compte` },
   { offsetDays: 1, name: 'j1Synthese', subject: (ctx: PathContext) => `Voici ce que nous voyons dans votre situation` },
   { offsetDays: 3, name: 'j3CaseStudy', subject: (ctx: PathContext) => `Un chantier IPB raconté — pour vous donner du concret` },
   { offsetDays: 7, name: 'j7ReprisePoint', subject: (ctx: PathContext) => `Souhaitez-vous échanger 15 minutes ?` },

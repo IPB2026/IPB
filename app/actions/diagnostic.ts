@@ -426,7 +426,7 @@ export async function submitDiagnosticLead(
       const firstName = validatedData.name.split(' ')[0] || validatedData.name;
       await sendEmail({
         to: validatedData.email,
-        subject: 'Votre demande à l’institut IPB est prise en compte',
+        subject: 'Votre demande IPB est prise en compte',
         html: emailTemplates.j0Confirmation({
           firstName,
           city: rawData.address as string | undefined,

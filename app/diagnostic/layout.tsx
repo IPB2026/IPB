@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Décrire ma situation à l’institut · Fissures et mur porteur · IPB Toulouse',
-  description: "Décrivez votre situation à l’institut IPB : fissures sur la maison, projet d'ouverture de mur porteur, création de baie vitrée. Réponse d'un expert sous 24 heures.",
+  title: 'Décrire ma situation · Fissures et mur porteur · IPB Toulouse',
+  description: "Décrivez votre situation : fissures sur la maison, projet d'ouverture de mur porteur, création de baie vitrée. Réponse d'un expert IPB sous 24 heures.",
   keywords: [
     'expertise fissures toulouse',
     'expertise mur porteur toulouse',

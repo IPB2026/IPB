@@ -36,7 +36,7 @@ export function CtaFinal() {
                   Décrire ma situation
                 </MagneticButton>
                 <MagneticButton href="/contact" variant="ghost">
-                  Écrire à l’institut
+                  Nous écrire
                 </MagneticButton>
               </div>
             </div>

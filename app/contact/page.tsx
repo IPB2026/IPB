@@ -61,7 +61,7 @@ export default function ContactPage() {
           <div className="max-w-ipb mx-auto grid lg:grid-cols-[42fr_58fr] gap-12 lg:gap-16 px-6 lg:px-12 pt-16 lg:pt-24 pb-20 lg:pb-28">
             {/* Colonne gauche : informations institut */}
             <RevealOnScroll>
-              <Eyebrow>Écrire à l’institut</Eyebrow>
+              <Eyebrow>Nous écrire</Eyebrow>
               <h1
                 className="font-serif text-ipb-text mb-8"
                 style={{
