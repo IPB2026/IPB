@@ -1,5 +1,6 @@
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { TrustRibbon } from '@/components/ui/TrustRibbon';
 import { Hero } from '@/components/home/Hero';
 import { PullQuote } from '@/components/home/PullQuote';
 import { ServiceList } from '@/components/home/ServiceList';
@@ -128,6 +129,7 @@ export default function HomePage() {
       />
 
       <TopBar />
+      <TrustRibbon />
       <Navbar />
 
       {/* 1. Hero — split éditorial avec crack SVG signature */}

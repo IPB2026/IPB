@@ -255,6 +255,15 @@
     pointer-events: none;
   }
 
+  /* Masque la scrollbar tout en gardant le scroll fonctionnel — pour carousel mobile */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
   /* Espace pour le sticky CTA mobile */
   .pb-safe {
     padding-bottom: env(safe-area-inset-bottom, 0);

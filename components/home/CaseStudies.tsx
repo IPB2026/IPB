@@ -96,7 +96,68 @@ export function CaseStudies() {
           </div>
         </RevealOnScroll>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {/* Hint de swipe mobile — disparaît dès qu'on scrolle */}
+        <p className="md:hidden text-[11px] text-ipb-light tracking-[0.16em] uppercase mb-4 flex items-center gap-2">
+          <span className="h-px w-6 bg-ipb-rule" aria-hidden="true" />
+          Glisser pour découvrir
+          <span className="text-ipb-orange">→</span>
+        </p>
+
+        <div className="-mx-6 px-6 flex md:hidden overflow-x-auto snap-x snap-mandatory gap-4 pb-6 scrollbar-hide [scroll-padding-left:1.5rem]">
+          {cases.map((c, i) => (
+            <RevealOnScroll key={c.title} delay={i * 0.06} className="snap-start shrink-0 w-[85vw] max-w-[360px]">
+              <article className="bg-ipb-white border border-ipb-rule rounded-[6px] overflow-hidden h-full flex flex-col group hover:shadow-[0_12px_36px_rgba(11,24,38,0.07)] transition-shadow duration-500">
+                {/* Photo avec parallax doux scroll-tied */}
+                <div className="relative aspect-[4/3] bg-ipb-stone">
+                  <ParallaxImage
+                    src={c.image}
+                    alt={c.imageAlt}
+                    intensity={0.18}
+                    sizes="85vw"
+                    className="absolute inset-0"
+                    imageClassName="transition-transform duration-700 group-hover:scale-[1.05]"
+                  />
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="bg-ipb-white/90 backdrop-blur-sm text-ipb-text text-[10px] uppercase tracking-[0.16em] font-medium px-3 py-1.5 rounded-[2px]">
+                      {c.type}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Contenu */}
+                <div className="p-7 flex-1 flex flex-col">
+                  <h3 className="font-serif text-ipb-text text-[22px] font-bold leading-[1.3] mb-3">
+                    {c.title}
+                  </h3>
+
+                  <div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-ipb-light uppercase tracking-[0.1em] mb-5">
+                    <span>{c.location}</span>
+                    <span aria-hidden="true">·</span>
+                    <span>{c.surface}</span>
+                    <span aria-hidden="true">·</span>
+                    <span>{c.duree}</span>
+                  </div>
+
+                  <ul className="space-y-2.5 mb-6 flex-1">
+                    {c.facts.map((fact) => (
+                      <li key={fact} className="flex gap-3 text-[13px] text-ipb-muted leading-[1.6] font-light">
+                        <span className="text-ipb-orange flex-shrink-0 mt-1.5" aria-hidden="true">—</span>
+                        <span>{fact}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <p className="text-[13px] text-ipb-text italic leading-[1.6] pt-5 border-t border-ipb-rule">
+                    {c.constat}
+                  </p>
+                </div>
+              </article>
+            </RevealOnScroll>
+          ))}
+        </div>
+
+        {/* Version tablet/desktop : grid statique */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {cases.map((c, i) => (
             <RevealOnScroll key={c.title} delay={i * 0.06}>
               <article className="bg-ipb-white border border-ipb-rule rounded-[6px] overflow-hidden h-full flex flex-col group hover:shadow-[0_12px_36px_rgba(11,24,38,0.07)] transition-shadow duration-500">
