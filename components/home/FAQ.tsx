@@ -1,108 +1,134 @@
-"use client";
-
-import React from 'react';
+import Link from 'next/link';
 import Script from 'next/script';
-import { HelpCircle, Phone, ChevronDown } from 'lucide-react';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Eyebrow } from '@/components/ui/Eyebrow';
+import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
-const faqData = [
+/**
+ * FAQ — questions construites depuis les requêtes Google réelles
+ * extraites du Search Console (3 mois, avril 2026).
+ *
+ * Top requêtes adressées :
+ *  - "expert fissure toulouse" (318 imp) → Q1 + Q3
+ *  - "prix maison fissurée" (46 imp) → Q2
+ *  - "expert fissure tarn et garonne" (276 imp) → Q1
+ *  - "expertise fissure haute garonne" (153 imp) → Q1
+ *  - "ouverture mur porteur toulouse" (terrain à conquérir) → Q5 + Q6
+ *  - thème assurance fissures (récurrent) → Q4
+ *
+ * Cf. PLAN_REFONTE_V2.md vague E
+ */
+const faqs = [
   {
-    question: "Le diagnostic sur site est-il gratuit ?",
-    answer: "Le diagnostic est une vraie expertise technique, pas un simple devis commercial. Nous intervenons avec un fissuromètre, un niveau laser et une caméra thermique pour mesurer objectivement la situation. Le rapport de 10 à 15 pages que nous remettons est un document opposable — notamment face à un expert d'assurance. C'est pourquoi c'est une prestation payante, mais son montant est intégralement déduit des travaux si vous nous confiez le chantier."
+    q: "Comment savoir si une fissure sur ma maison est dangereuse ?",
+    a: "Trois indices doivent vous alerter : la fissure dépasse 2 mm de large, elle suit les joints en escalier, ou elle évolue (vous voyez qu'elle s'agrandit d'une saison à l'autre). Si vos portes coincent ou que du carrelage se fissure, c'est que la structure bouge. Notre cabinet vient sur place avec un fissuromètre pour mesurer précisément l'évolution et identifier la cause.",
   },
   {
-    question: "Comment savoir si mon mur est porteur avant de le toucher ?",
-    answer: "Trois indices forts : le mur est perpendiculaire aux solives du plancher, il y a un poteau ou une poutre visible au-dessus, ou il se situe en RDC sous une pièce habitée à l'étage. Mais ces indices ne suffisent pas — seul notre ingénieur, avec les plans ou un sondage, peut le confirmer avec certitude. Ne jamais ouvrir un mur sans note de calcul signée : c'est illégal et dangereux."
+    q: "Combien coûte une expertise fissures à Toulouse ?",
+    a: "Notre diagnostic instrumenté complet est facturé 249 € TTC, déductibles si vous nous confiez ensuite les travaux. Pour comparaison, un constat d'huissier coûte 200 à 400 € sans expertise technique, et un expert d'assurance ne défend pas vos intérêts. Notre rapport est reconnu par les assurances et les tribunaux.",
   },
   {
-    question: "Comment distinguer une fissure structurelle d'une fissure esthétique ?",
-    answer: "Trois critères techniques : 1. Le tracé en escalier qui suit les joints de maçonnerie — signe classique de tassement différentiel. 2. La fissure traversante, visible des deux côtés du mur. 3. Des signes collatéraux : portes qui frottent, carrelage qui casse, volets qui ne ferment plus. En cas de doute, notre diagnostic en ligne gratuit vous donne une première évaluation en 3 minutes."
+    q: "Mon assurance prend-elle en charge les fissures de sécheresse ?",
+    a: "Oui, si votre commune a été reconnue en catastrophe naturelle pour la sécheresse de l'année concernée. Notre rapport documente les désordres et leur lien avec le retrait-gonflement des argiles, ce qui est essentiel pour le dossier. En 2022, plus de 9 000 communes françaises ont été reconnues, dont une grande partie de la Haute-Garonne.",
   },
   {
-    question: "L'agrafage est-il aussi durable que les micropieux ?",
-    answer: "Ce sont deux réponses à deux problèmes différents. L'agrafage traite les fissures liées à un tassement différentiel modéré (< 10 mm) en redonnant au mur sa cohésion structurelle. Les micropieux stabilisent les fondations quand le sol est profondément instable. Dans 90% des cas traités en Occitanie, l'agrafage est la réponse adaptée — et bien moins invasif. Les deux sont couverts par la même garantie décennale."
+    q: "Quelle est la différence entre agrafage et micropieux ?",
+    a: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables — solution adaptée à 90 % des fissures structurelles. Les micropieux reprennent les fondations en profondeur — solution lourde réservée aux tassements actifs majeurs (au-delà de 10 cm). Notre diagnostic détermine laquelle s'impose : un agrafage coûte 12 000 à 18 000 €, des micropieux 40 000 à 60 000 €.",
   },
   {
-    question: "Combien de temps dure un chantier d'ouverture de mur porteur ?",
-    answer: "L'intervention proprement dite dure 2 à 5 jours selon la portée. Mais la phase préparatoire est indispensable : étude structure (1 à 2 semaines), déclaration préalable si nécessaire, commande et livraison de la poutre. Au total, comptez 3 à 6 semaines entre le premier appel et la réception de chantier. Un agrafage de façade, lui, dure 3 à 5 jours."
+    q: "Faut-il déclarer une ouverture de mur porteur en mairie ?",
+    a: "Pour une ouverture intérieure, une déclaration préalable suffit dans la majorité des communes. Pour une création de baie vitrée modifiant la façade, un permis de construire est généralement requis. En copropriété, un vote en assemblée générale est obligatoire. Notre cabinet prépare le dossier technique pour chacune de ces démarches.",
   },
   {
-    question: "Vos travaux sont-ils assurés ?",
-    answer: "IPB est assuré en Garantie Décennale et en Responsabilité Civile Professionnelle auprès d'AXA France (n° 0000022511730204), pour les activités de renforcement structurel, d'ouverture de murs porteurs et de création de baies vitrées. Les attestations d'assurance sont fournies sur demande et systématiquement jointes à chaque devis."
-  }
+    q: "Combien de temps pour ouvrir un mur porteur dans un appartement ?",
+    a: "L'intervention sur site dure 2 à 5 jours. La phase préparatoire (étude technique, démarches administratives, vote en AG si copropriété, commande de la poutre) prend 4 à 8 semaines en amont. Le calendrier complet est fixé avec vous avant le démarrage du chantier.",
+  },
+  {
+    q: "Pourquoi choisir un cabinet indépendant plutôt qu'un artisan généraliste ?",
+    a: "Un artisan ne calcule pas la structure — il pose ce qu'on lui dit de poser. Un sous-dimensionnement de poutre se traduit par des fissures, un affaissement du plancher, voire une rupture. Un cabinet de pathologie du bâtiment regarde, calcule, exécute et garantit l'ensemble. C'est la différence entre une intervention couverte par une décennale active et un risque non assuré.",
+  },
+  {
+    q: "Vos rapports sont-ils acceptés par les assurances ?",
+    a: "Oui. Nos rapports techniques sont rédigés dans les formes attendues par les assureurs et les tribunaux : photos datées, mesures instrumentées, identification des causes, préconisations chiffrées. Ils servent régulièrement de pièce technique dans les dossiers de catastrophe naturelle, les expertises judiciaires et les recours en garantie décennale.",
+  },
+  {
+    q: "Intervenez-vous en dehors de Toulouse ?",
+    a: "Notre zone d'intervention couvre la Haute-Garonne (31), le Tarn-et-Garonne (82), le Gers (32) et le Tarn (81). Cela représente plus de 50 communes : Montauban, Auch, Albi, Castres, Saint-Gaudens, Pamiers, et tous les villages alentour. Pour les communes plus éloignées, contactez-nous au 05 82 95 33 75.",
+  },
+  {
+    q: "Que se passe-t-il après le chantier ?",
+    a: "Vous recevez un dossier complet : calcul technique signé par notre ingénieur, plans d'exécution, photos avant/après, attestation de garantie décennale active. En cas de désordre dans les 10 ans suivant la livraison, notre responsabilité est engagée et nous intervenons sans frais.",
+  },
 ];
 
-const faqSchema = {
+const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": faqData.map((item) => ({
+  "mainEntity": faqs.map(({ q, a }) => ({
     "@type": "Question",
-    "name": item.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": item.answer,
-    },
+    "name": q,
+    "acceptedAnswer": { "@type": "Answer", "text": a },
   })),
 };
 
 export function FAQ() {
   return (
-    <section className="py-16 md:py-24 bg-white border-t border-slate-100">
-      <Script
-        id="faq-schema-homepage"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* En-tête avec icône */}
-        <div className="text-center mb-8 md:mb-12">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <HelpCircle className="w-8 h-8 text-orange-600" />
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-900">
-              Questions Fréquentes
-            </h2>
+    <section className="bg-ipb-white py-24 lg:py-32">
+      <Script id="home-faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+
+      <div className="max-w-ipb mx-auto px-6 lg:px-12">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
+          {/* Côté gauche : titre */}
+          <div className="lg:col-span-4">
+            <RevealOnScroll>
+              <div className="lg:sticky lg:top-24">
+                <Eyebrow>Questions fréquentes</Eyebrow>
+                <h2
+                  className="font-serif text-ipb-text mb-8"
+                  style={{
+                    fontSize: 'clamp(32px, 3vw, 46px)',
+                    lineHeight: 1.12,
+                    letterSpacing: '-0.022em',
+                    fontWeight: 700,
+                  }}
+                >
+                  Ce qu'on nous demande<br /><em>le plus souvent.</em>
+                </h2>
+                <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-8">
+                  Si votre question ne figure pas ci-contre, écrivez-nous ou appelez le cabinet directement.
+                </p>
+                <div className="space-y-3">
+                  <Link href="/diagnostic" className="inline-flex items-center gap-2 text-ipb-orange font-medium text-[14px] tracking-wide border-b border-ipb-orange pb-1 hover:gap-3 transition-all">
+                    Demander une expertise →
+                  </Link>
+                  <a href="tel:0582953375" className="block text-ipb-muted font-light text-[14px] hover:text-ipb-text transition-colors">
+                    05 82 95 33 75
+                  </a>
+                </div>
+              </div>
+            </RevealOnScroll>
           </div>
-          <p className="text-base md:text-lg text-slate-600">
-            Ce que nos clients nous demandent le plus souvent avant d'intervenir.
-          </p>
-        </div>
 
-        {/* Accordéon */}
-        <Accordion type="single" collapsible className="w-full space-y-3 md:space-y-4">
-          {faqData.map((item, index) => (
-            <AccordionItem
-              key={index}
-              value={`item-${index}`}
-              className="border border-slate-200 rounded-xl px-4 md:px-6 bg-white hover:bg-slate-50 transition-colors"
-            >
-              <AccordionTrigger className="text-left font-bold text-sm md:text-base text-slate-900 py-4 md:py-6 hover:no-underline">
-                {item.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-sm md:text-base text-slate-600 leading-relaxed pb-4 md:pb-6 pt-0">
-                {item.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-
-        {/* CTA Final */}
-        <div className="mt-8 md:mt-12 text-center">
-          <div className="inline-flex flex-col sm:flex-row items-center gap-2 bg-orange-50 border border-orange-200 rounded-xl px-4 md:px-6 py-3 md:py-4">
-            <Phone className="w-5 h-5 text-orange-600 shrink-0" />
-            <p className="text-sm md:text-base text-slate-900 font-bold text-center sm:text-left">
-              Une autre question ? Appelez-nous au{" "}
-              <a
-                href="tel:0582953375"
-                className="text-orange-600 hover:text-orange-700 underline"
-              >
-                05 82 95 33 75
-              </a>
-            </p>
+          {/* Côté droit : liste FAQ */}
+          <div className="lg:col-span-8">
+            <div className="border-t border-ipb-rule">
+              {faqs.map((item, i) => (
+                <RevealOnScroll key={item.q} delay={i * 0.03}>
+                  <details className="group border-b border-ipb-rule">
+                    <summary className="cursor-pointer list-none flex items-start justify-between gap-6 py-6 lg:py-7 hover:bg-ipb-stone/30 px-2 -mx-2 transition-colors">
+                      <h3 className="font-serif text-ipb-text font-bold text-[17px] leading-tight pr-2">
+                        {item.q}
+                      </h3>
+                      <span className="text-ipb-orange text-2xl leading-none flex-shrink-0 transition-transform group-open:rotate-45 font-light" aria-hidden="true">
+                        +
+                      </span>
+                    </summary>
+                    <div className="px-2 pb-6 -mt-2 text-[14px] leading-[1.85] font-light text-ipb-muted">
+                      {item.a}
+                    </div>
+                  </details>
+                </RevealOnScroll>
+              ))}
+            </div>
           </div>
         </div>
       </div>
