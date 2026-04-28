@@ -5,6 +5,7 @@ import { DepartementsNotice } from '@/components/home/DepartementsNotice';
 import { TrustSignals } from '@/components/home/TrustSignals';
 import { ServicesStructure } from '@/components/home/ServicesStructure';
 import { ServicesHumidity } from '@/components/home/ServicesHumidity';
+import { CaseStudies } from '@/components/home/CaseStudies';
 import { Testimonials } from '@/components/home/Testimonials';
 import { FAQ } from '@/components/home/FAQ';
 import { ContactSection } from '@/components/home/ContactSection';
@@ -153,6 +154,7 @@ export default function HomePage() {
       <TrustSignals />
       <Roadmap />
       <ServicesStructure />
+      <CaseStudies />
       <ServicesHumidity />
       <Testimonials />
       <FAQ />

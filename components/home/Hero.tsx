@@ -17,15 +17,19 @@ export function Hero() {
           {/* COLONNE GAUCHE — Copy */}
           <div className="max-w-2xl">
 
-            {/* Badges autorité */}
+            {/* Badges autorité — assurance + ingénieur en interne */}
             <div className="flex flex-wrap gap-2 mb-8">
               <span className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/40 text-orange-300 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
                 <Activity size={12} />
-                Expert Fissures
+                Diagnostic Fissures
               </span>
               <span className="inline-flex items-center gap-2 bg-amber-500/20 border border-amber-500/40 text-amber-300 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
                 <Hammer size={12} />
                 Ouverture Mur Porteur
+              </span>
+              <span className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-400/40 text-blue-300 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+                <Shield size={12} />
+                Décennale AXA
               </span>
               <span className="inline-flex items-center gap-2 bg-green-500/20 border border-green-400/40 text-green-300 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
                 <Star size={12} className="fill-current" />
@@ -33,29 +37,32 @@ export function Hero() {
               </span>
             </div>
 
-            {/* H1 — double ancrage SEO + émotionnel */}
+            {/* Tagline marque — positionnement haut de gamme */}
+            <p className="text-orange-300 font-semibold text-sm uppercase tracking-[0.2em] mb-4">
+              Les spécialistes de la structure de votre habitat
+            </p>
+
+            {/* H1 — pivot positionnement structure */}
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] mb-6">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-300">
-                Votre maison se fissure.
+              <span className="text-white">Diagnostic Fissures</span>
+              <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300">
+                & Ouvertures de Murs Porteurs
               </span>
-              <span className="block mt-2 text-white">
-                Un mur porteur à abattre.
-              </span>
-              <span className="block mt-2 text-2xl md:text-3xl lg:text-4xl text-slate-300 font-medium tracking-normal leading-snug">
-                Il faut <span className="text-white font-bold">le bon expert.</span>{' '}
-                Pas juste un artisan.
+              <span className="block mt-3 text-2xl md:text-3xl lg:text-4xl text-slate-300 font-medium tracking-normal leading-snug">
+                Toulouse, Montauban, Auch.{' '}
+                <span className="text-white font-bold">Bureau d'études + travaux</span> en un seul interlocuteur.
               </span>
             </h1>
 
-            {/* Proposition de valeur — 2 phrases, chacune fait le travail */}
+            {/* Proposition de valeur — autorité technique */}
             <p className="text-lg md:text-xl text-slate-300 mb-2 leading-relaxed">
-              Cabinet indépendant spécialisé en{' '}
+              Cabinet indépendant en{' '}
               <strong className="text-white">pathologie et structure du bâtiment</strong>.
-              Nous diagnostiquons avec précision, calculons avec rigueur, et réalisons les travaux avec une{' '}
-              <strong className="text-orange-300">garantie décennale</strong>.
+              Notre ingénieur calcule la poutre IPN/HEB, nos équipes la posent — chantier garanti{' '}
+              <strong className="text-orange-300">10 ans par AXA France</strong>.
             </p>
             <p className="text-base text-slate-400 mb-8 leading-relaxed">
-              Pas de solution préconçue. Pas de sous-traitance. Nos ingénieurs et nos équipes terrain — un seul interlocuteur du premier appel à la réception de chantier.
+              Pas d'artisan généraliste, pas de sous-traitance cachée. Étude structure, étaiement, pose, finitions, DOE — un cabinet, un chantier, une garantie.
             </p>
 
             {/* Deux parcours clients — cards */}

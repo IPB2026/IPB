@@ -26,6 +26,7 @@ export function Navbar() {
           <div className="hidden md:flex items-center space-x-8">
             <Link href="/expertise/fissures" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide">Fissures</Link>
             <Link href="/expertise/mur-porteur" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide">Mur Porteur</Link>
+            <Link href="/partenaires" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide">Pros</Link>
             <Link href="/zones-intervention" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide">Zones</Link>
             <Link href="/blog" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide">Blog</Link>
             <Link href="/avis-clients" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide flex items-center gap-1">
@@ -84,6 +85,14 @@ export function Navbar() {
               className="block text-slate-800 font-bold text-lg border-l-4 border-orange-500 pl-4 py-2 bg-slate-50"
             >
               Ouverture Mur Porteur
+            </Link>
+            <Link
+              href="/partenaires"
+              onClick={() => setIsMenuOpen(false)}
+              role="menuitem"
+              className="block text-slate-800 font-bold text-lg border-l-4 border-amber-500 pl-4 py-2 bg-slate-50"
+            >
+              Pros & Partenaires
             </Link>
             <Link
               href="/zones-intervention"

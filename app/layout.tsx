@@ -27,10 +27,10 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.ipb-expertise.fr'),
   title: {
-    default: "IPB - Expert Fissures, Mur Porteur & Baie Vitrée | Toulouse, Montauban, Auch",
+    default: "IPB - Spécialistes de la structure de votre habitat | Diagnostic Fissures & Ouverture Mur Porteur Toulouse",
     template: "%s | IPB"
   },
-  description: "Cabinet indépendant en pathologie et structure du bâtiment. Expertise fissures, ouverture mur porteur, création baie vitrée. Étude structure + travaux, garantie décennale. Toulouse, Montauban, Auch (31-82-32).",
+  description: "Les spécialistes de la structure de votre habitat. Diagnostic fissures, ouverture de mur porteur, création de baie vitrée. Bureau d'études + travaux. Décennale AXA. Toulouse, Montauban, Auch (31-82-32).",
   keywords: ["expert fissures Toulouse", "ouverture mur porteur Toulouse", "création baie vitrée Toulouse", "étude structure bâtiment", "agrafage fissures", "poutre IPN HEB", "fissures maison", "expert structure Toulouse", "Montauban", "Auch", "Haute-Garonne", "Tarn-et-Garonne", "Gers", "Tarn", "pathologie du bâtiment", "garantie décennale", "humidité murs", "injection résine"],
   authors: [{ name: "IPB - Institut de Pathologie du Bâtiment" }],
   creator: "IPB",
@@ -54,8 +54,8 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://www.ipb-expertise.fr",
     siteName: "IPB - Institut de Pathologie du Bâtiment",
-    title: "IPB - Expert Fissures, Mur Porteur & Baie Vitrée | Toulouse, Montauban, Auch",
-    description: "Cabinet indépendant en pathologie et structure du bâtiment en Occitanie (31, 82, 32). Du diagnostic aux travaux : agrafage fissures, ouverture mur porteur, création baie vitrée. Garantie décennale.",
+    title: "IPB - Spécialistes de la structure de votre habitat | Toulouse, Montauban, Auch",
+    description: "Les spécialistes de la structure de votre habitat. Diagnostic fissures, ouverture de mur porteur (étude IPN/HEB), création de baie vitrée. Bureau d'études + travaux, décennale AXA.",
     images: [
       {
         url: "/images/IPB_Logo_HD.png",
@@ -67,8 +67,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "IPB - Expert Fissures, Mur Porteur & Baie Vitrée (31-82-32)",
-    description: "Cabinet pathologie & structure du bâtiment en Occitanie. Étude + travaux, un seul interlocuteur. Garantie décennale.",
+    title: "IPB - Spécialistes de la structure de votre habitat (31-82-32)",
+    description: "Diagnostic fissures, ouverture de mur porteur, création de baie vitrée. Bureau d'études + travaux. Décennale AXA.",
     images: ["/images/IPB_Logo_HD.png"],
   },
   robots: {

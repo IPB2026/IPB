@@ -91,6 +91,42 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${baseUrl}/expertise/mur-porteur`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/bureau-etude-structure-toulouse`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/partenaires`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/partenaires/architectes-interieur`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/partenaires/marchands-de-biens`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/partenaires/agences-immobilieres`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/blog`,
       lastModified: recentUpdate,
       changeFrequency: 'weekly',
@@ -286,6 +322,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // ════════════════════════════════════════════════════════════
+  // PAGES MUR PORTEUR PAR VILLE (Toulouse, Montauban, Auch, Albi)
+  // Forte priorité — pivot stratégique
+  // ════════════════════════════════════════════════════════════
+  const expertMurPorteurPages: MetadataRoute.Sitemap = ['toulouse', 'montauban', 'auch', 'albi'].map((ville) => ({
+    url: `${baseUrl}/expert-mur-porteur/${ville}`,
+    lastModified: recentUpdate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.85,
+  }));
+
+  // ════════════════════════════════════════════════════════════
   // ARTICLES DE BLOG
   // ════════════════════════════════════════════════════════════
   const blogPages: MetadataRoute.Sitemap = blogPostsList.map((post) => ({
@@ -356,6 +403,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...departementPages, 
     ...expertFissuresPages,
     ...expertHumiditePages,
+    ...expertMurPorteurPages,
     ...agrafageFissuresPages,
     ...traitementHumiditePages,
     ...villesPages,
