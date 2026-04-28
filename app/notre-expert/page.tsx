@@ -107,7 +107,7 @@ export default function NotreExpertPage() {
                     Diagnostic gratuit
                   </MagneticButton>
                   <MagneticButton href="/contact" variant="ghost">
-                    Écrire à l’institut
+                    Nous écrire
                   </MagneticButton>
                 </div>
               </RevealOnScroll>
@@ -122,7 +122,7 @@ export default function NotreExpertPage() {
               {[
                 { value: 2019, label: 'Année de création', sublabel: '7 ans d\'activité' },
                 { value: 850, suffix: '+', label: 'Chantiers livrés', sublabel: 'Occitanie' },
-                { value: 8, label: 'Personnes à l’institut', sublabel: 'Étude + travaux' },
+                { value: 8, label: 'Effectif', sublabel: 'Étude + travaux' },
                 { value: 4.9, decimals: 1, suffix: '/5', label: 'Avis Google', sublabel: 'Vérifiés sur Google' },
               ].map((s, i) => (
                 <RevealOnScroll key={s.label} delay={i * 0.06}>

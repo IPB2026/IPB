@@ -426,7 +426,7 @@ export async function submitDiagnosticLead(
       const firstName = validatedData.name.split(' ')[0] || validatedData.name;
       await sendEmail({
         to: validatedData.email,
-        subject: 'Votre demande à l’institut IPB est prise en compte',
+        subject: 'Votre demande IPB est prise en compte',
         html: emailTemplates.j0Confirmation({
           firstName,
           city: rawData.address as string | undefined,
@@ -944,7 +944,7 @@ export async function requestDiagnosticReport(
                 <p>Pour obtenir un diagnostic complet et un devis personnalisé, nous vous invitons à :</p>
                 <ul>
                   <li>Appeler notre équipe au <strong>05 82 95 33 75</strong></li>
-                  <li>Ou réserver directement une expertise sur site (249€, déductible sur travaux)</li>
+                  <li>Ou réserver directement une expertise sur site (déductible des travaux)</li>
                 </ul>
               </div>
               
