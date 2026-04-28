@@ -27,11 +27,11 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.ipb-expertise.fr'),
   title: {
-    default: "IPB - Expert Fissures & Humidité | Toulouse, Montauban, Auch (31-82-32)",
+    default: "IPB - Expert Fissures, Mur Porteur & Baie Vitrée | Toulouse, Montauban, Auch",
     template: "%s | IPB"
   },
-  description: "Expert fissures et humidité en Occitanie (31, 82, 32). Agrafage, injection résine, garantie décennale. Toulouse, Montauban, Auch. Diagnostic gratuit.",
-  keywords: ["fissures maison", "humidité murs", "Toulouse", "Montauban", "Auch", "Haute-Garonne", "Tarn-et-Garonne", "Gers", "agrafage", "injection résine", "expert bâtiment", "garantie décennale"],
+  description: "Cabinet indépendant en pathologie et structure du bâtiment. Expertise fissures, ouverture mur porteur, création baie vitrée. Étude structure + travaux, garantie décennale. Toulouse, Montauban, Auch (31-82-32).",
+  keywords: ["expert fissures Toulouse", "ouverture mur porteur Toulouse", "création baie vitrée Toulouse", "étude structure bâtiment", "agrafage fissures", "poutre IPN HEB", "fissures maison", "expert structure Toulouse", "Montauban", "Auch", "Haute-Garonne", "Tarn-et-Garonne", "Gers", "Tarn", "pathologie du bâtiment", "garantie décennale", "humidité murs", "injection résine"],
   authors: [{ name: "IPB - Institut de Pathologie du Bâtiment" }],
   creator: "IPB",
   publisher: "IPB",
@@ -54,21 +54,21 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://www.ipb-expertise.fr",
     siteName: "IPB - Institut de Pathologie du Bâtiment",
-    title: "IPB - Expert Fissures & Humidité | Toulouse, Montauban, Auch",
-    description: "Expert fissures et humidité en Occitanie (31, 82, 32). Agrafage, injection résine, cuvelage, VMI. Garantie décennale.",
+    title: "IPB - Expert Fissures, Mur Porteur & Baie Vitrée | Toulouse, Montauban, Auch",
+    description: "Cabinet indépendant en pathologie et structure du bâtiment en Occitanie (31, 82, 32). Du diagnostic aux travaux : agrafage fissures, ouverture mur porteur, création baie vitrée. Garantie décennale.",
     images: [
       {
         url: "/images/IPB_Logo_HD.png",
         width: 1200,
         height: 630,
-        alt: "IPB Expert Fissures Humidité Toulouse Montauban Auch - Agrafage Injection Résine Garantie Décennale",
+        alt: "IPB Expert Fissures, Mur Porteur & Baie Vitrée — Toulouse, Montauban, Auch — Étude structure et garantie décennale",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "IPB - Expert Fissures & Humidité (31-82-32)",
-    description: "Expert fissures et humidité en Occitanie. Toulouse, Montauban, Auch et environs.",
+    title: "IPB - Expert Fissures, Mur Porteur & Baie Vitrée (31-82-32)",
+    description: "Cabinet pathologie & structure du bâtiment en Occitanie. Étude + travaux, un seul interlocuteur. Garantie décennale.",
     images: ["/images/IPB_Logo_HD.png"],
   },
   robots: {
@@ -100,7 +100,7 @@ const localBusinessSchema = {
   "@id": "https://www.ipb-expertise.fr#localbusiness",
   "name": "IPB - Institut de Pathologie du Bâtiment",
   "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
-  "description": "Expert en traitement des fissures et de l'humidité en Occitanie (31, 82, 32). Solutions techniques (agrafage, injection résine, cuvelage, VMI) avec garantie décennale. Toulouse, Montauban, Auch et environs.",
+  "description": "Cabinet indépendant en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Expertise fissures (agrafage, micropieux), ouverture de mur porteur et création de baie vitrée (étude structure, pose poutre IPN/HEB), traitement de l'humidité (injection résine, cuvelage). Étude et travaux sous garantie décennale. Toulouse, Montauban, Auch et environs.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "13 rue du Recteur Dottin",
@@ -140,8 +140,16 @@ const localBusinessSchema = {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Traitement des fissures structurelles",
-          "description": "Agrafage et harpage pour stabiliser les fondations"
+          "name": "Expertise et traitement des fissures structurelles",
+          "description": "Diagnostic structure, agrafage et harpage, reprise en sous-œuvre par micropieux. Garantie décennale."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Ouverture de mur porteur et création de baie vitrée",
+          "description": "Étude structure, dimensionnement et pose de poutre IPN/HEB, étaiement, ouverture, finitions. Garantie décennale sur l'étude et les travaux."
         }
       },
       {
@@ -149,7 +157,7 @@ const localBusinessSchema = {
         "itemOffered": {
           "@type": "Service",
           "name": "Traitement de l'humidité",
-          "description": "Injection résine hydrophobe et cuvelage"
+          "description": "Injection de résine hydrophobe, cuvelage et VMI pour murs humides et infiltrations."
         }
       }
     ]
@@ -199,7 +207,8 @@ export default function RootLayout({
             "@context": "https://schema.org",
             "@type": "WebSite",
             "@id": "https://www.ipb-expertise.fr#website",
-            "name": "IPB - Expert Fissures & Humidité",
+            "name": "IPB - Expert Fissures, Mur Porteur & Baie Vitrée",
+            "alternateName": "IPB - Institut de Pathologie du Bâtiment",
             "url": "https://www.ipb-expertise.fr",
             "publisher": { "@id": "https://www.ipb-expertise.fr#organization" },
             "inLanguage": "fr-FR",
