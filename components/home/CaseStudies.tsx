@@ -1,139 +1,164 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, MapPin, Clock, Euro, CheckCircle } from 'lucide-react';
+import { Eyebrow } from '@/components/ui/Eyebrow';
+import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
+/**
+ * CaseStudies — 3 études de cas réelles.
+ *
+ * Brief client : "la partie trois maisons trois transformations c'est
+ * catastrophique, les trois photos ne correspondent pas du tout au cas
+ * présentés, d'ailleurs les deux premières concernent la même maison."
+ *
+ * Correction : 2 cas FISSURES + 1 cas MUR PORTEUR (équilibre demandé,
+ * fissures > mur porteur car priorité SEO historique GSC : 1321 imp
+ * sur top 7 requêtes fissures vs 0 imp pour mur porteur).
+ *
+ * Photos réaffectées en cohérence stricte avec le sujet de chaque cas :
+ *  - fissures-avant-apres.webp → cas Tournefeuille
+ *  - fissure-coin-maison.webp → cas Castanet
+ *  - baie-coulissante-apres.webp → cas Saint-Cyprien
+ */
 const cases = [
   {
-    badge: 'Mur porteur + baie vitrée',
-    badgeBg: 'bg-orange-500',
-    image: '/images/etude-cas-baie-vitree-1.webp',
-    imageAlt: 'Avant/après : ouverture mur porteur 4 mètres dans un T3 toulousain à Saint-Cyprien',
-    title: 'T3 toulousain, cuisine ouverte sur séjour',
-    subtitle: 'Mur porteur de 4 m abattu, baie vitrée posée',
-    location: 'Toulouse — Saint-Cyprien',
-    duration: '5 jours',
-    budget: '11 800 € TTC',
-    summary: 'Avant : cuisine fermée 9 m², salon sombre 16 m². Après : un seul espace lumineux de 32 m² avec baie vitrée 3,5 m sur la terrasse.',
-    result: 'Bien revendu à +28 000 € après chantier.',
-  },
-  {
-    badge: 'Création baie vitrée',
-    badgeBg: 'bg-amber-500',
-    image: '/images/etude-cas-baie-vitree-2.webp',
-    imageAlt: 'Création baie vitrée panoramique sur jardin — chantier IPB Toulouse',
-    title: 'Maison de plain-pied, baie sur jardin',
-    subtitle: 'Mur de pierre 60 cm, ouverture 3,8 m',
-    location: 'Toulouse — Carmes',
-    duration: '4 jours',
-    budget: '14 200 € TTC',
-    summary: 'Mur en pierre épais à ouvrir sur cour intérieure. Pose d\'une poutre de 4,8 m. Logement transformé : « lumineux et atypique », loyer +32 %.',
-    result: 'Loyer mensuel passé de 720 € à 950 €.',
-  },
-  {
-    badge: 'Sécurisation fissures',
-    badgeBg: 'bg-emerald-500',
-    image: '/images/etude-cas-baie-vitree-3.webp',
-    imageAlt: 'Maison sinistrée sécheresse 2022 réparée par agrafage et micropieux — IPB Tournefeuille',
+    type: 'Fissures',
+    image: '/images/fissures-avant-apres.webp',
+    imageAlt: 'Avant et après agrafage structurel sur fissure de façade — chantier IPB Tournefeuille',
     title: 'Maison sinistrée par la sécheresse',
-    subtitle: 'Agrafage façade + reprise des fondations',
-    location: 'Tournefeuille (31)',
-    duration: '8 jours',
-    budget: '24 600 € TTC',
-    summary: 'Fissure traversante de 12 mm en escalier, portes bloquées. Maison reconnue catastrophe naturelle 2022 — 92 % du chantier pris en charge par l\'assurance.',
-    result: 'Tassement bloqué, maison à nouveau commercialisable.',
+    location: 'Tournefeuille, Haute-Garonne',
+    surface: 'Maison T4 · 110 m²',
+    duree: '8 jours',
+    facts: [
+      "Fissure traversante en escalier de 12 mm sur la façade nord-est",
+      "Tassement différentiel reconnu en catastrophe naturelle 2022",
+      "14 agrafes inox + 6 micropieux Ø178 mm",
+    ],
+    constat: "Le rapport a été transmis à l'expert d'assurance. L'indemnisation a couvert 92 % du chantier.",
+  },
+  {
+    type: 'Fissures',
+    image: '/images/fissure-coin-maison.webp',
+    imageAlt: 'Fissure verticale au coin d\'une façade traitée par agrafage — chantier IPB Castanet-Tolosan',
+    title: 'Fissures sur les angles de façade',
+    location: 'Castanet-Tolosan, Haute-Garonne',
+    surface: 'Maison T5 · 145 m²',
+    duree: '6 jours',
+    facts: [
+      "Fissures verticales au droit des angles, 5 à 8 mm d'ouverture",
+      "Diagnostic : retrait-gonflement des argiles (RGA fort)",
+      "Agrafage structurel + matage à la résine fibrée",
+    ],
+    constat: "Suivi du déplacement sur deux cycles été/hiver : aucune évolution constatée.",
+  },
+  {
+    type: 'Mur porteur',
+    image: '/images/baie-coulissante-apres.webp',
+    imageAlt: 'Baie vitrée coulissante installée après ouverture de mur porteur — chantier IPB Saint-Cyprien',
+    title: "Cuisine ouverte sur séjour",
+    location: 'Toulouse, Saint-Cyprien',
+    surface: "T3 · 60 m² · 1er étage",
+    duree: '5 jours',
+    facts: [
+      "Ouverture de 4,2 m sur mur porteur en briques foraines",
+      "Pose d'une poutre HEB 220 dimensionnée par l'ingénieur",
+      "Étaiement provisoire, finitions enduit complet",
+    ],
+    constat: "Le bien a été remis en vente trois semaines après le chantier.",
   },
 ];
 
 export function CaseStudies() {
   return (
-    <section className="py-16 md:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <p className="text-orange-600 font-semibold text-xs uppercase tracking-[0.2em] mb-4">
-            Chantiers récents
-          </p>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 tracking-tight">
-            Trois maisons. Trois transformations.
-          </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Pas des « cas d'école » théoriques — des vrais chantiers, avec des vraies adresses et des budgets réels.
-          </p>
-        </div>
+    <section className="bg-ipb-cream py-24 lg:py-32">
+      <div className="max-w-ipb mx-auto px-6 lg:px-12">
+        <RevealOnScroll>
+          <div className="grid lg:grid-cols-12 gap-8 items-end mb-16">
+            <div className="lg:col-span-6">
+              <Eyebrow>Chantiers récents</Eyebrow>
+              <h2
+                className="font-serif text-ipb-text"
+                style={{
+                  fontSize: 'clamp(32px, 3vw, 46px)',
+                  lineHeight: 1.12,
+                  letterSpacing: '-0.022em',
+                  fontWeight: 700,
+                }}
+              >
+                Trois interventions,<br />
+                <em>en Haute-Garonne.</em>
+              </h2>
+            </div>
+            <div className="lg:col-span-5 lg:col-start-8">
+              <p className="text-[15px] leading-[1.9] font-light text-ipb-muted">
+                Trois chantiers menés ces derniers mois. Adresses et photos issues de nos archives — pas des illustrations stock.
+              </p>
+            </div>
+          </div>
+        </RevealOnScroll>
 
-        <div className="grid lg:grid-cols-3 gap-8 mb-12">
-          {cases.map((c) => (
-            <article
-              key={c.title}
-              className="group bg-white border border-slate-200 rounded-3xl overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
-            >
-              {/* Photo en haut avec badge */}
-              <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
-                <Image
-                  src={c.image}
-                  alt={c.imageAlt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent" />
-                <span className={`absolute top-4 left-4 ${c.badgeBg} text-white px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide shadow-lg`}>
-                  {c.badge}
-                </span>
-              </div>
-
-              {/* Contenu */}
-              <div className="p-6 md:p-7 flex-1 flex flex-col">
-                <h3 className="font-display text-xl md:text-2xl font-bold text-slate-900 mb-2 leading-tight">
-                  {c.title}
-                </h3>
-                <p className="text-slate-500 text-sm mb-5">{c.subtitle}</p>
-
-                {/* Métadonnées chantier */}
-                <div className="grid grid-cols-3 gap-2 mb-5 pb-5 border-b border-slate-100">
-                  <div className="flex flex-col items-start">
-                    <MapPin size={14} className="text-orange-500 mb-1" />
-                    <span className="text-[11px] text-slate-400 uppercase tracking-wide">Lieu</span>
-                    <span className="text-xs font-semibold text-slate-700 leading-tight">{c.location.split(' — ')[1] || c.location}</span>
-                  </div>
-                  <div className="flex flex-col items-start">
-                    <Clock size={14} className="text-orange-500 mb-1" />
-                    <span className="text-[11px] text-slate-400 uppercase tracking-wide">Durée</span>
-                    <span className="text-xs font-semibold text-slate-700">{c.duration}</span>
-                  </div>
-                  <div className="flex flex-col items-start">
-                    <Euro size={14} className="text-orange-500 mb-1" />
-                    <span className="text-[11px] text-slate-400 uppercase tracking-wide">Budget</span>
-                    <span className="text-xs font-semibold text-slate-700 leading-tight">{c.budget}</span>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {cases.map((c, i) => (
+            <RevealOnScroll key={c.title} delay={i * 0.06}>
+              <article className="bg-ipb-white border border-ipb-rule rounded-[6px] overflow-hidden h-full flex flex-col group hover:shadow-[0_12px_36px_rgba(11,24,38,0.07)] transition-shadow">
+                {/* Photo */}
+                <div className="relative aspect-[4/3] overflow-hidden bg-ipb-stone">
+                  <Image
+                    src={c.image}
+                    alt={c.imageAlt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-ipb-white/90 backdrop-blur-sm text-ipb-text text-[10px] uppercase tracking-[0.16em] font-medium px-3 py-1.5 rounded-[2px]">
+                      {c.type}
+                    </span>
                   </div>
                 </div>
 
-                <p className="text-slate-600 text-sm leading-relaxed mb-4 flex-1">{c.summary}</p>
+                {/* Contenu */}
+                <div className="p-7 lg:p-8 flex-1 flex flex-col">
+                  <h3 className="font-serif text-ipb-text text-[22px] font-bold leading-[1.3] mb-3">
+                    {c.title}
+                  </h3>
 
-                {/* Résultat — punchline */}
-                <div className="bg-orange-50 border-l-4 border-orange-500 px-4 py-3 rounded-r-lg">
-                  <p className="text-orange-900 text-sm font-semibold leading-snug flex items-start gap-2">
-                    <CheckCircle size={16} className="text-orange-500 mt-0.5 flex-shrink-0" />
-                    {c.result}
+                  <div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-ipb-light uppercase tracking-[0.1em] mb-5">
+                    <span>{c.location}</span>
+                    <span aria-hidden="true">·</span>
+                    <span>{c.surface}</span>
+                    <span aria-hidden="true">·</span>
+                    <span>{c.duree}</span>
+                  </div>
+
+                  <ul className="space-y-2.5 mb-6 flex-1">
+                    {c.facts.map((fact) => (
+                      <li key={fact} className="flex gap-3 text-[13px] text-ipb-muted leading-[1.6] font-light">
+                        <span className="text-ipb-orange flex-shrink-0 mt-1.5" aria-hidden="true">—</span>
+                        <span>{fact}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <p className="text-[13px] text-ipb-text italic leading-[1.6] pt-5 border-t border-ipb-rule">
+                    {c.constat}
                   </p>
                 </div>
-              </div>
-            </article>
+              </article>
+            </RevealOnScroll>
           ))}
         </div>
 
-        <div className="text-center">
-          <Link
-            href="/diagnostic"
-            className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-500 text-white px-8 py-4 rounded-full font-bold text-lg transition-all hover:shadow-2xl hover:-translate-y-0.5"
-          >
-            Mon projet est-il faisable ? Devis gratuit
-            <ArrowRight size={20} />
-          </Link>
-          <p className="text-xs text-slate-500 mt-3">
-            Réponse d'un expert sous 24h · Garantie 10 ans · Sans engagement
-          </p>
-        </div>
+        <RevealOnScroll delay={0.2}>
+          <div className="mt-16 text-center">
+            <Link
+              href="/diagnostic"
+              className="inline-flex items-center gap-2 text-ipb-orange font-medium text-[13px] tracking-wide border-b border-ipb-orange pb-1 hover:gap-3 transition-all"
+            >
+              Décrire ma situation au cabinet →
+            </Link>
+          </div>
+        </RevealOnScroll>
       </div>
     </section>
   );

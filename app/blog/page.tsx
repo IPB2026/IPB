@@ -16,37 +16,63 @@ interface BlogPostDisplay {
   excerpt: string;
   date: string;
   readTime: string;
-  category: 'fissures' | 'humidite' | 'conseils' | 'expertise';
+  category: 'fissures' | 'humidite' | 'conseils' | 'expertise' | 'mur-porteur';
   author: string;
   image?: string;
   featured?: boolean;
 }
 
+// Détecte automatiquement les articles "mur porteur" via leur slug ou keywords
+// (sans toucher au type 'expertise' qui couvre les contenus avancés généralistes)
+function detectCategory(post: typeof blogPostsList[number]): BlogPostDisplay['category'] {
+  if (post.category) return post.category as BlogPostDisplay['category'];
+  return 'expertise';
+}
+
 const blogPosts: BlogPostDisplay[] = blogPostsList
-  .map(post => ({
-    slug: post.slug,
-    title: post.title,
-    excerpt: post.excerpt,
-    date: post.date,
-    readTime: post.readTime,
-    category: post.category,
-    author: post.author,
-    featured: false,
-  }))
+  .map((post) => {
+    let category: BlogPostDisplay['category'] = post.category as BlogPostDisplay['category'];
+    // Re-classifier les articles mur porteur (pivot stratégique)
+    const lowerKw = (post.keywords || []).join(' ').toLowerCase();
+    if (lowerKw.includes('mur porteur') || lowerKw.includes('baie vitree') || post.slug.includes('mur-porteur') || post.slug.includes('baie-vitree')) {
+      category = 'mur-porteur';
+    }
+    return {
+      slug: post.slug,
+      title: post.title,
+      excerpt: post.excerpt,
+      date: post.date,
+      readTime: post.readTime,
+      category,
+      author: post.author,
+      featured: false,
+    };
+  })
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-const categoryColors = {
+// Filtres affichés en UI (humidité MASQUÉE — articles toujours indexés)
+// Brief client : "pour le blog je voit toujours ecrit fissures et humidité, c'est pas bon"
+const visibleFilters: Array<{ key: BlogPostDisplay['category']; label: string }> = [
+  { key: 'fissures', label: 'Fissures' },
+  { key: 'mur-porteur', label: 'Mur porteur' },
+  { key: 'expertise', label: 'Expertise' },
+  { key: 'conseils', label: 'Conseils' },
+];
+
+const categoryColors: Record<BlogPostDisplay['category'], string> = {
   fissures: 'bg-orange-100 text-orange-700 border-orange-200',
+  'mur-porteur': 'bg-amber-100 text-amber-800 border-amber-200',
   humidite: 'bg-blue-100 text-blue-700 border-blue-200',
   conseils: 'bg-slate-100 text-slate-700 border-slate-200',
-  expertise: 'bg-purple-100 text-purple-700 border-purple-200'
+  expertise: 'bg-purple-100 text-purple-700 border-purple-200',
 };
 
-const categoryLabels = {
+const categoryLabels: Record<BlogPostDisplay['category'], string> = {
   fissures: 'Fissures',
+  'mur-porteur': 'Mur porteur',
   humidite: 'Humidité',
   conseils: 'Conseils',
-  expertise: 'Expertise'
+  expertise: 'Expertise',
 };
 
 export default function BlogPage() {
@@ -67,7 +93,7 @@ export default function BlogPage() {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name: 'Blog IPB - Conseils Fissures & Humidité',
-    description: "Guides experts et conseils techniques sur les fissures et l'humidité.",
+    description: "Guides experts et conseils techniques sur la structure du bâtiment : diagnostic de fissures, ouverture de mur porteur, expertises pré-achat.",
     url: 'https://www.ipb-expertise.fr/blog',
     mainEntity: {
       '@type': 'ItemList',
@@ -104,7 +130,7 @@ export default function BlogPage() {
               Blog Expert <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-200">Fissures & Humidité</span>
             </h1>
             <p className="text-base md:text-lg lg:text-xl text-slate-300 mb-6 md:mb-8 leading-relaxed">
-              Retrouvez nos guides techniques, conseils pratiques et analyses d'experts pour comprendre et résoudre vos problèmes de fissures et d'humidité.
+              Guides techniques et analyses d'experts sur la structure du bâtiment : diagnostic de fissures, ouverture de mur porteur, expertise avant achat immobilier.
             </p>
             
             {/* Barre de recherche */}
@@ -135,7 +161,7 @@ export default function BlogPage() {
           >
             Tous les articles
           </button>
-          {Object.entries(categoryLabels).map(([key, label]) => (
+          {visibleFilters.map(({ key, label }) => (
             <button
               key={key}
               onClick={() => setSelectedCategory(selectedCategory === key ? null : key)}
@@ -319,17 +345,17 @@ export default function BlogPage() {
         {/* SEO : Texte d'expertise pour topical authority */}
         <div className="mt-14 bg-white border border-slate-200 rounded-3xl p-8">
           <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">
-            Expertise fissures et humidité : le blog de référence en Occitanie
+            Le journal du cabinet : structure, fissures et ouvertures de murs porteurs
           </h2>
           <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4">
             <p>
-              Le blog IPB est rédigé par nos experts en pathologie du bâtiment intervenant à <strong>Toulouse (31)</strong>, <strong>Montauban (82)</strong>, <strong>Auch (32)</strong> et dans toute l'Occitanie. Chaque article s'appuie sur des cas réels rencontrés sur le terrain : fissures structurelles liées au retrait-gonflement des argiles (RGA), remontées capillaires en rez-de-chaussée, mérule dans les caves ou salpêtre sur les murs anciens.
+              Le journal IPB est rédigé par nos experts en pathologie et structure du bâtiment, intervenant à <strong>Toulouse (31)</strong>, <strong>Montauban (82)</strong>, <strong>Auch (32)</strong> et dans toute l'Occitanie. Chaque article s'appuie sur des cas réels rencontrés sur le terrain : fissures structurelles liées au retrait-gonflement des argiles, ouvertures de murs porteurs en immeubles anciens, expertises avant achat immobilier.
             </p>
             <p>
-              Nos guides couvrent l'ensemble du cycle de vie d'un sinistre : de l'identification du problème (microfissure, fissure en escalier, taches d'humidité) au choix de la solution technique (<Link href="/blog/agrafage-vs-micropieux-choix" className="text-orange-600 hover:text-orange-700 font-bold">agrafage vs micropieux</Link>, <Link href="/blog/traitement-humidite-injection-resine" className="text-orange-600 hover:text-orange-700 font-bold">injection de résine</Link>, ventilation VMC), en passant par les démarches administratives (<Link href="/blog/catastrophe-naturelle-secheresse-demarches-indemnisation" className="text-orange-600 hover:text-orange-700 font-bold">déclaration de catastrophe naturelle</Link>, <Link href="/blog/garantie-decennale-travaux-structure" className="text-orange-600 hover:text-orange-700 font-bold">garantie décennale</Link>).
+              Nos guides couvrent l'ensemble du cycle d'un projet : de l'identification du problème (microfissure, fissure en escalier, mur à ouvrir) au choix de la solution technique (<Link href="/blog/agrafage-vs-micropieux-choix" className="text-orange-600 hover:text-orange-700 font-bold">agrafage ou micropieux</Link>, <Link href="/blog/prix-ouverture-mur-porteur-toulouse-2026" className="text-orange-600 hover:text-orange-700 font-bold">dimensionnement de la poutre</Link>), en passant par les démarches administratives (<Link href="/blog/catastrophe-naturelle-secheresse-demarches-indemnisation" className="text-orange-600 hover:text-orange-700 font-bold">déclaration de catastrophe naturelle</Link>, <Link href="/blog/garantie-decennale-travaux-structure" className="text-orange-600 hover:text-orange-700 font-bold">garantie décennale</Link>).
             </p>
             <p>
-              Tous les articles sont mis à jour régulièrement pour intégrer les dernières réglementations, les arrêtés de catastrophe naturelle et les retours d'expérience de nos chantiers. <Link href="/diagnostic" className="text-orange-600 hover:text-orange-700 font-bold">Demandez un diagnostic personnalisé</Link> pour votre situation.
+              Tous les articles sont mis à jour régulièrement pour intégrer les dernières réglementations et les retours d'expérience de nos chantiers. <Link href="/diagnostic" className="text-orange-600 hover:text-orange-700 font-bold">Décrivez votre situation</Link> pour échanger avec le cabinet.
             </p>
           </div>
         </div>

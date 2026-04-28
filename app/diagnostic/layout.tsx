@@ -1,22 +1,21 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Diagnostic Gratuit Fissures & Humidité | IPB',
-  description: 'Diagnostic en ligne gratuit en 3 minutes. Évaluez vos fissures ou problèmes d\'humidité et recevez les recommandations d\'un expert. Sans engagement.',
+  title: 'Décrire ma situation au cabinet · Fissures et mur porteur · IPB Toulouse',
+  description: "Décrivez votre situation au cabinet IPB : fissures sur la maison, projet d'ouverture de mur porteur, création de baie vitrée. Réponse d'un expert sous 24 heures.",
   keywords: [
-    'diagnostic fissures gratuit',
-    'diagnostic humidité en ligne',
-    'évaluation fissures toulouse',
+    'expertise fissures toulouse',
+    'expertise mur porteur toulouse',
     'diagnostic structure maison',
-    'évaluation gratuite',
-    'expertise en ligne',
-    'haute-garonne',
+    'cabinet pathologie bâtiment toulouse',
+    'expert fissures haute-garonne',
+    'rapport fissure assurance',
   ],
   openGraph: {
-    title: 'Diagnostic Gratuit en Ligne - Fissures & Humidité | IPB',
-    description: 'Évaluez gratuitement vos problèmes de fissures ou d\'humidité en 3 minutes. Recommandations d\'expert personnalisées.',
+    title: 'Décrire ma situation · Cabinet IPB Toulouse',
+    description: "Échange technique avec le cabinet IPB. Fissures, mur porteur, baie vitrée. Réponse sous 24 heures.",
     url: 'https://www.ipb-expertise.fr/diagnostic',
-    siteName: 'IPB - Expert Fissures & Humidité',
+    siteName: 'IPB - Cabinet de pathologie du bâtiment',
     locale: 'fr_FR',
     type: 'website',
     images: [
@@ -24,14 +23,14 @@ export const metadata: Metadata = {
         url: '/images/IPB_Logo_HD.png',
         width: 1200,
         height: 630,
-        alt: 'Diagnostic gratuit IPB',
+        alt: 'Cabinet IPB Toulouse',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Diagnostic Gratuit Fissures & Humidité | IPB',
-    description: 'Évaluez vos problèmes en 3 minutes. 100% gratuit et sans engagement.',
+    title: 'Décrire ma situation · Cabinet IPB Toulouse',
+    description: "Échange technique avec le cabinet IPB. Réponse sous 24 heures.",
     images: ['/images/IPB_Logo_HD.png'],
   },
   alternates: {

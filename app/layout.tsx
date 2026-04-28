@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Inter, Space_Grotesk } from "next/font/google"
+import { Playfair_Display, DM_Sans } from "next/font/google"
 import "./globals.css"
 import Script from "next/script"
 import dynamic from "next/dynamic"
@@ -9,19 +9,22 @@ const CookieBanner = dynamic(() => import("@/components/CookieBanner").then(m =>
 const StickyDiagnosticCta = dynamic(() => import("@/components/StickyDiagnosticCta").then(m => m.StickyDiagnosticCta), { ssr: false })
 const ExitIntentPopup = dynamic(() => import("@/components/blog/ExitIntentPopup").then(m => m.ExitIntentPopup), { ssr: false })
 
-const inter = Inter({ 
+// DM Sans — corps de texte et UI (charte IPB Design Handoff)
+const dmSans = DM_Sans({
   subsets: ["latin"],
   display: 'swap',
   preload: true,
-  variable: '--font-inter',
+  variable: '--font-sans',
+  weight: ['300', '400', '500', '600', '700'],
 })
 
-// Police display distinctive pour les titres
-const spaceGrotesk = Space_Grotesk({
+// Playfair Display — titres serif italique signature éditoriale
+const playfair = Playfair_Display({
   subsets: ["latin"],
   display: 'swap',
-  variable: '--font-display',
-  weight: ['500', '600', '700'],
+  variable: '--font-serif',
+  weight: ['400', '500', '700'],
+  style: ['normal', 'italic'],
 })
 
 export const metadata: Metadata = {
@@ -177,7 +180,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang="fr" className={`${dmSans.variable} ${playfair.variable}`}>
       <head>
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
@@ -228,7 +231,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       </head>
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${dmSans.className} antialiased bg-ipb-cream text-ipb-text`}>
         {/* Skip link for accessibility - allows keyboard users to skip navigation */}
         <a 
           href="#main-content" 
