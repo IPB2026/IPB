@@ -4,6 +4,7 @@ import { diagnosticFormSchema, diagnosticLeadSchema, diagnosticReportSchema } fr
 import { z } from 'zod';
 import { sendEmail } from '@/lib/email';
 import { checkRateLimit } from '@/lib/rateLimit';
+import { calculateLeadScore, isInServiceArea, renderScoringBanner } from '@/lib/leadScoring';
 
 /**
  * Server Actions pour le diagnostic
@@ -129,57 +130,58 @@ const formatAnswersHtml = (answers: Record<string, unknown>) => {
 };
 
 // Génère le diagnostic expert
-const getExpertDiagnosis = (path: 'fissure' | 'humidite', score: number) => {
+const getExpertDiagnosis = (path: 'fissure' | 'mur-porteur', score: number) => {
   if (path === 'fissure') {
     if (score >= 40) {
       return {
-        urgency: '🔴 INTERVENTION URGENTE',
-        urgencyColor: '#dc2626',
+        urgency: 'Intervention prioritaire',
+        urgencyColor: '#C8601F',
         diagnosis: 'Tassement différentiel actif. La structure est en mouvement et nécessite une intervention rapide.',
-        solution: 'Agrafage structurel avec renfort des façades. Calage des fondations possible si nécessaire.',
-        delay: 'Intervention recommandée sous 2-4 semaines',
+        solution: 'Agrafage structurel avec renfort des façades. Reprise en sous-œuvre par micropieux possible si nécessaire.',
+        delay: 'Visite recommandée sous 2 semaines',
       };
     } else if (score >= 20) {
       return {
-        urgency: '🟠 À TRAITER RAPIDEMENT',
-        urgencyColor: '#ea580c',
-        diagnosis: 'Fissures en évolution modérée. Situation qui mérite une surveillance active.',
-        solution: 'Agrafage localisé ou surveillance instrumentée (fissuromètre) avant travaux.',
-        delay: 'Diagnostic sur site recommandé sous 1-2 mois',
+        urgency: 'À traiter rapidement',
+        urgencyColor: '#F08040',
+        diagnosis: "Fissures en évolution modérée. Situation qui mérite une surveillance active et une mesure instrumentée.",
+        solution: 'Diagnostic instrumenté au fissuromètre. Agrafage localisé selon résultats.',
+        delay: 'Diagnostic sur site recommandé sous 1 à 2 mois',
       };
     } else {
       return {
-        urgency: '🟢 SURVEILLANCE',
-        urgencyColor: '#16a34a',
-        diagnosis: 'Fissures stables et superficielles. Pas de danger immédiat pour la structure.',
-        solution: 'Surveillance visuelle. Rebouchage esthétique possible après confirmation de stabilité.',
-        delay: 'Pas d\'urgence, surveiller l\'évolution',
+        urgency: 'Surveillance simple',
+        urgencyColor: '#0F2033',
+        diagnosis: 'Fissures stables ou superficielles. Pas de danger immédiat pour la structure.',
+        solution: "Surveillance visuelle. Rebouchage esthétique possible après confirmation de la stabilité.",
+        delay: "Pas d'urgence, surveiller l'évolution sur un cycle été/hiver",
       };
     }
   } else {
+    // mur-porteur
     if (score >= 40) {
       return {
-        urgency: '🔴 INTERVENTION URGENTE',
-        urgencyColor: '#dc2626',
-        diagnosis: 'Remontées capillaires importantes. Environnement malsain (moisissures, salpêtre).',
-        solution: 'Injection résine hydrophobe + traitement curatif. VMI recommandée en complément.',
-        delay: 'Intervention recommandée sous 4-6 semaines',
+        urgency: 'Projet à très court terme',
+        urgencyColor: '#C8601F',
+        diagnosis: 'Projet d\'ouverture de mur porteur clairement défini. Probablement déjà comparé à plusieurs devis.',
+        solution: 'Étude technique sous 7 jours, devis ferme, planning détaillé. Chantier sous 4 à 6 semaines.',
+        delay: "Visite technique recommandée sous 1 semaine",
       };
     } else if (score >= 20) {
       return {
-        urgency: '🟠 À TRAITER',
-        urgencyColor: '#ea580c',
-        diagnosis: 'Problème d\'humidité significatif nécessitant un traitement adapté.',
-        solution: 'Diagnostic précis pour identifier la cause. Injection résine, ventilation, ou réparation infiltrations.',
-        delay: 'Diagnostic sur site recommandé sous 2-3 mois',
+        urgency: 'Projet à confirmer',
+        urgencyColor: '#F08040',
+        diagnosis: "Projet d'ouverture identifié, plusieurs paramètres techniques à valider sur site.",
+        solution: "Visite technique pour confirmer la faisabilité, dimensionner la poutre et chiffrer.",
+        delay: 'Visite technique recommandée sous 2 à 3 semaines',
       };
     } else {
       return {
-        urgency: '🟢 SURVEILLANCE',
-        urgencyColor: '#16a34a',
-        diagnosis: 'Problème modéré, probablement lié à un manque de ventilation (condensation).',
-        solution: 'Amélioration de la ventilation (VMC). Si persistance, diagnostic pour confirmer.',
-        delay: 'Améliorer la ventilation d\'abord',
+        urgency: 'Projet en réflexion',
+        urgencyColor: '#0F2033',
+        diagnosis: 'Projet encore en phase de réflexion. Plusieurs scénarios à étudier avant engagement.',
+        solution: 'Conseil téléphonique posé pour cadrer le projet et orienter les choix techniques.',
+        delay: "Pas d'urgence — appel ou échange écrit selon vos disponibilités",
       };
     }
   }
@@ -199,7 +201,7 @@ export async function submitDiagnosticLead(
       address: (formData.get('address') as string) || '',
       yearBuilt: (formData.get('yearBuilt') as string) || '',
       preferredTime: (formData.get('preferredTime') as string) || '',
-      path: formData.get('path') as 'fissure' | 'humidite',
+      path: formData.get('path') as 'fissure' | 'mur-porteur',
       answers: JSON.parse(formData.get('answers') as string || '{}'),
       riskScore: parseInt(formData.get('riskScore') as string, 10) || 0,
     };
@@ -256,24 +258,35 @@ export async function submitDiagnosticLead(
     const expertDiagnosis = getExpertDiagnosis(validatedData.path, validatedData.riskScore);
     const answersHtml = formatAnswersHtml(validatedData.answers);
     
-    console.log('📧 Lead validé, envoi email à:', process.env.EMAIL_TO || '⚠️ EMAIL_TO NON DÉFINI');
+    // ─── Scoring lead automatique ───────────────────────────────
+    // Insère un bandeau HOT/WARM/COLD dans l'email interne pour
+    // permettre la priorisation des rappels en 30 secondes.
+    const scoring = calculateLeadScore({
+      path: validatedData.path,
+      answers: validatedData.answers as Record<string, string>,
+      hasPhone: !!validatedData.phone,
+      hasEmail: !!validatedData.email,
+      inServiceArea: isInServiceArea(rawData.address as string | undefined),
+      preferredTime: rawData.preferredTime as string | undefined,
+    });
+    const scoringBanner = renderScoringBanner(scoring);
+
+    console.log(`📧 Lead validé [${scoring.tier} ${scoring.score}/${scoring.maxScore}], envoi email à:`, process.env.EMAIL_TO || '⚠️ EMAIL_TO NON DÉFINI');
     if (process.env.EMAIL_TO) {
       const leadEmailResult = await sendEmail({
         to: process.env.EMAIL_TO,
-        subject: `🎯 NOUVEAU LEAD [${expertDiagnosis.urgency}] - ${validatedData.name} - ${rawData.address || validatedData.phone || validatedData.email}`,
+        subject: `[${scoring.tier} ${scoring.score}/${scoring.maxScore}] ${scoring.tierEmoji} ${validatedData.name} — ${rawData.address || validatedData.phone || validatedData.email}`,
         html: `
           <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 700px; margin: 0 auto; background: #f8fafc;">
             
             <!-- Header -->
-            <div style="background: linear-gradient(135deg, #0f172a, #1e293b); color: white; padding: 24px; text-align: center;">
-              <h1 style="margin: 0; font-size: 24px;">🎯 Nouveau Lead IPB</h1>
-              <p style="margin: 8px 0 0; opacity: 0.8; font-size: 14px;">Diagnostic en ligne complété</p>
+            <div style="background: linear-gradient(135deg, #0B1826, #0F2033); color: white; padding: 24px; text-align: center;">
+              <h1 style="margin: 0; font-size: 24px;">Nouveau lead IPB</h1>
+              <p style="margin: 8px 0 0; opacity: 0.7; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">Diagnostic en ligne complété</p>
             </div>
-            
-            <!-- Alerte urgence -->
-            <div style="background: ${expertDiagnosis.urgencyColor}; color: white; padding: 16px 24px; text-align: center;">
-              <span style="font-size: 18px; font-weight: bold;">${expertDiagnosis.urgency}</span>
-            </div>
+
+            <!-- Bandeau scoring HOT/WARM/COLD -->
+            ${scoringBanner}
             
             <!-- Contact Client - Section prioritaire -->
             <div style="background: white; margin: 16px; padding: 20px; border-radius: 12px; border: 2px solid #ea580c;">
@@ -502,7 +515,7 @@ export async function submitDiagnosticCallback(
       name: formData.get('name') as string,
       phone: formData.get('phone') as string,
       email: (formData.get('email') as string) || '',
-      path: formData.get('path') as 'fissure' | 'humidite',
+      path: formData.get('path') as 'fissure' | 'mur-porteur',
       answers: JSON.parse(formData.get('answers') as string || '{}'),
       riskScore: parseInt(formData.get('riskScore') as string, 10) || 0,
     };
@@ -744,7 +757,7 @@ export async function submitDiagnosticAppointment(
       name: formData.get('name') as string,
       phone: formData.get('phone') as string,
       email: formData.get('email') as string | null,
-      path: formData.get('path') as 'fissure' | 'humidite',
+      path: formData.get('path') as 'fissure' | 'mur-porteur',
       answers: JSON.parse(formData.get('answers') as string),
       riskScore: parseInt(formData.get('riskScore') as string, 10),
     };
@@ -923,7 +936,7 @@ export async function requestDiagnosticReport(
   try {
     const rawData = {
       email: formData.get('email') as string,
-      path: formData.get('path') as 'fissure' | 'humidite',
+      path: formData.get('path') as 'fissure' | 'mur-porteur',
       answers: JSON.parse(formData.get('answers') as string),
       riskScore: parseInt(formData.get('riskScore') as string, 10),
     };

@@ -5,7 +5,7 @@ import { z } from 'zod';
  * Tous les inputs utilisateur doivent passer par ces validations
  */
 
-export const diagnosticPathSchema = z.enum(['fissure', 'humidite'], {
+export const diagnosticPathSchema = z.enum(['fissure', 'mur-porteur'], {
   message: 'Type de diagnostic invalide',
 });
 
