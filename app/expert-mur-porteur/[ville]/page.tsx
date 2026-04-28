@@ -335,7 +335,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
         <section className="py-16 md:py-20 bg-gradient-to-r from-orange-600 to-amber-600 text-white">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Votre projet à {villeNom}, notre expertise</h2>
-            <p className="text-xl text-orange-100 mb-8">Devis gratuit en 3 minutes. Réponse d'un ingénieur structure sous 24h.</p>
+            <p className="text-xl text-orange-100 mb-8">Décrivez votre projet à notre cabinet. Réponse d'un ingénieur structure sous 24 heures.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link href="/diagnostic" className="bg-white text-orange-600 px-10 py-5 rounded-xl font-bold text-lg hover:bg-orange-50 flex items-center justify-center gap-2 shadow-xl">
                 Lancer mon devis gratuit <ArrowRight size={20} />
