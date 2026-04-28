@@ -105,7 +105,7 @@ const faqSchema = {
 
 export default function FissureFondationPage() {
   return (
-    <div className="font-sans text-slate-800 bg-white antialiased">
+    <div className="font-sans text-ipb-text bg-white antialiased">
       <Script
         id="faq-schema-fissure-fondation-maison"
         type="application/ld+json"
@@ -121,7 +121,7 @@ export default function FissureFondationPage() {
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <nav className="flex items-center gap-2 text-sm text-slate-300 mb-8">
+          <nav className="flex items-center gap-2 text-sm text-white/70 mb-8">
             <Link href="/" className="hover:text-white transition">Accueil</Link>
             <ChevronRight size={14} />
             <Link href="/expert-fissures-toulouse-31" className="hover:text-white transition">Expert Fissures</Link>
@@ -131,7 +131,7 @@ export default function FissureFondationPage() {
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-400/30 text-orange-300 px-4 py-2 rounded-full text-sm font-bold mb-6">
+              <div className="inline-flex items-center gap-2 bg-ipb-orange/20 border border-orange-400/30 text-ipb-orange-l px-4 py-2 rounded-full text-sm font-bold mb-6">
                 <Home size={16} />
                 Problème structurel majeur
               </div>
@@ -143,7 +143,7 @@ export default function FissureFondationPage() {
                 </span>
               </h1>
 
-              <p className="text-xl text-slate-300 mb-8 leading-relaxed max-w-xl">
+              <p className="text-xl text-white/70 mb-8 leading-relaxed max-w-xl">
                 Quand les fissures viennent des fondations, c'est que le bâtiment bouge. 
                 En <strong className="text-white">Occitanie (31, 82, 32)</strong>, 85% des cas sont liés au sol argileux. 
                 L'agrafage structurel est la solution adaptée dans la majorité des cas de fissures sur bâti courant.
@@ -177,20 +177,20 @@ export default function FissureFondationPage() {
             {/* Stats impact */}
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
-                <div className="text-5xl font-black text-orange-400">85%</div>
-                <div className="text-slate-300 text-sm mt-2">des cas liés au sol argileux en Occitanie</div>
+                <div className="text-5xl font-black text-ipb-orange-l">85%</div>
+                <div className="text-white/70 text-sm mt-2">des cas liés au sol argileux en Occitanie</div>
               </div>
               <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
                 <div className="text-5xl font-black text-green-400">-65%</div>
-                <div className="text-slate-300 text-sm mt-2">coût agrafage vs micropieux</div>
+                <div className="text-white/70 text-sm mt-2">coût agrafage vs micropieux</div>
               </div>
               <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
                 <div className="text-5xl font-black text-red-400">+15%</div>
-                <div className="text-slate-300 text-sm mt-2">aggravation par an sans traitement</div>
+                <div className="text-white/70 text-sm mt-2">aggravation par an sans traitement</div>
               </div>
               <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
                 <div className="text-5xl font-black text-cyan-400">10 ans</div>
-                <div className="text-slate-300 text-sm mt-2">garantie décennale</div>
+                <div className="text-white/70 text-sm mt-2">garantie décennale</div>
               </div>
             </div>
           </div>
@@ -207,23 +207,23 @@ export default function FissureFondationPage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="inline-block bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
+            <span className="inline-block bg-ipb-stone text-ipb-orange px-4 py-2 rounded-full text-sm font-bold mb-4">
               Comprendre le problème
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
               Pourquoi vos fondations bougent ?
             </h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {causesFondation.map((cause, index) => (
-              <div key={index} className="bg-gradient-to-br from-slate-50 to-orange-50 rounded-3xl p-8 border border-slate-200 hover:shadow-xl transition-all">
-                <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600 mb-6">
+              <div key={index} className="bg-gradient-to-br from-slate-50 to-orange-50 rounded-3xl p-8 border border-ipb-rule hover:shadow-xl transition-all">
+                <div className="w-16 h-16 bg-ipb-stone rounded-2xl flex items-center justify-center text-ipb-orange mb-6">
                   {cause.icon}
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{cause.titre}</h3>
-                <p className="text-slate-600 mb-4">{cause.description}</p>
-                <div className="inline-block bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-bold">
+                <h3 className="text-xl font-bold text-ipb-text mb-3">{cause.titre}</h3>
+                <p className="text-ipb-muted mb-4">{cause.description}</p>
+                <div className="inline-block bg-ipb-stone text-ipb-orange px-4 py-2 rounded-full text-sm font-bold">
                   {cause.frequence} des cas
                 </div>
               </div>
@@ -233,7 +233,7 @@ export default function FissureFondationPage() {
       </section>
 
       {/* Comparatif solutions */}
-      <section className="py-20 bg-slate-900 text-white">
+      <section className="py-20 bg-ipb-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="inline-block bg-green-500/20 text-green-300 px-4 py-2 rounded-full text-sm font-bold mb-4">
@@ -242,7 +242,7 @@ export default function FissureFondationPage() {
             <h2 className="text-3xl md:text-4xl font-black mb-4">
               Quelle solution pour vos fondations ?
             </h2>
-            <p className="text-xl text-slate-400">
+            <p className="text-xl text-ipb-light">
               L'agrafage convient à 85% des cas. Les micropieux sont réservés aux situations extrêmes.
             </p>
           </div>
@@ -266,27 +266,27 @@ export default function FissureFondationPage() {
                 
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between items-center">
-                    <span className="text-slate-400">Prix</span>
+                    <span className="text-ipb-light">Prix</span>
                     <span className="font-bold text-xl">{sol.prix}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-slate-400">Délai</span>
+                    <span className="text-ipb-light">Délai</span>
                     <span className="font-bold">{sol.delai}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-slate-400">Garantie</span>
+                    <span className="text-ipb-light">Garantie</span>
                     <span className="font-bold">{sol.garantie}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-slate-400">Adapté pour</span>
-                    <span className="font-bold text-orange-400">{sol.adapte}</span>
+                    <span className="text-ipb-light">Adapté pour</span>
+                    <span className="font-bold text-ipb-orange-l">{sol.adapte}</span>
                   </div>
                 </div>
 
                 <ul className="space-y-2">
                   {sol.avantages.map((av, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-slate-300">
-                      <CheckCircle size={16} className={sol.recommande ? 'text-green-400' : 'text-slate-500'} />
+                    <li key={i} className="flex items-center gap-2 text-sm text-white/70">
+                      <CheckCircle size={16} className={sol.recommande ? 'text-green-400' : 'text-ipb-muted'} />
                       {av}
                     </li>
                   ))}
@@ -313,7 +313,7 @@ export default function FissureFondationPage() {
       {/* Articles connexes */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-slate-900 mb-8 text-center">
+          <h2 className="text-2xl font-black text-ipb-text mb-8 text-center">
             Articles connexes
           </h2>
           <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
@@ -328,13 +328,13 @@ export default function FissureFondationPage() {
               <Link 
                 key={index}
                 href={item.href}
-                className="group bg-slate-50 rounded-2xl p-6 hover:bg-orange-50 transition-all hover:-translate-y-1 border border-slate-100 hover:border-orange-200"
+                className="group bg-ipb-cream rounded-2xl p-6 hover:bg-ipb-stone transition-all hover:-translate-y-1 border border-ipb-rule hover:border-ipb-rule"
               >
                 <span className="text-4xl mb-4 block">{item.icon}</span>
-                <h3 className="font-bold text-slate-900 group-hover:text-orange-600 transition-colors mb-1">
+                <h3 className="font-bold text-ipb-text group-hover:text-ipb-orange transition-colors mb-1">
                   {item.title}
                 </h3>
-                <p className="text-sm text-slate-500">{item.desc}</p>
+                <p className="text-sm text-ipb-muted">{item.desc}</p>
               </Link>
             ))}
           </div>
@@ -347,11 +347,11 @@ export default function FissureFondationPage() {
           <h2 className="text-3xl md:text-5xl font-black mb-6">
             Vos fondations méritent un expert.
           </h2>
-          <p className="text-xl text-orange-100 mb-8">
+          <p className="text-xl text-ipb-orange-l mb-8">
             Diagnostic expert sur site (déduit à 100% des travaux) • Devis gratuit • Garantie décennale
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/diagnostic" className="group bg-white text-orange-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-orange-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">
+            <Link href="/diagnostic" className="group bg-white text-ipb-orange px-10 py-5 rounded-2xl font-bold text-lg hover:bg-ipb-stone flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">
               Diagnostic fondations
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>

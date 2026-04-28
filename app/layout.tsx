@@ -244,7 +244,7 @@ export default function RootLayout({
         {/* Skip link for accessibility - allows keyboard users to skip navigation */}
         <a 
           href="#main-content" 
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-orange-600 focus:text-white focus:px-6 focus:py-3 focus:rounded-lg focus:font-bold focus:shadow-lg focus:outline-none"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-ipb-orange focus:text-white focus:px-6 focus:py-3 focus:rounded-lg focus:font-bold focus:shadow-lg focus:outline-none"
           tabIndex={0}
         >
           Aller au contenu principal

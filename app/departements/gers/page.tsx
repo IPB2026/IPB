@@ -161,10 +161,10 @@ export default function GersPage() {
 
         {/* Villes Section */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-4">
             Nos interventions dans le Gers
           </h2>
-          <p className="text-lg text-slate-600 mb-8 max-w-3xl">
+          <p className="text-lg text-ipb-muted mb-8 max-w-3xl">
             IPB intervient dans toutes les communes du département pour le traitement des fissures structurelles et de l'humidité.
           </p>
 
@@ -173,19 +173,19 @@ export default function GersPage() {
               <Link
                 key={ville.slug}
                 href={`/villes/${ville.slug}`}
-                className="group p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all border border-slate-100 hover:border-blue-200"
+                className="group p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all border border-ipb-rule hover:border-blue-200"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-xl font-bold text-ipb-text group-hover:text-blue-600 transition-colors">
                       {ville.nom}
                     </h3>
-                    <p className="text-sm text-slate-500">{ville.habitants} habitants</p>
+                    <p className="text-sm text-ipb-muted">{ville.habitants} habitants</p>
                   </div>
-                  <ArrowRight size={20} className="text-slate-400 group-hover:text-blue-600 transition-colors" />
+                  <ArrowRight size={20} className="text-ipb-light group-hover:text-blue-600 transition-colors" />
                 </div>
                 
-                <div className="space-y-2 text-sm text-slate-600">
+                <div className="space-y-2 text-sm text-ipb-muted">
                   <div className="flex items-center gap-2">
                     <CheckCircle size={16} className="text-green-500" />
                     Diagnostic gratuit
@@ -196,8 +196,8 @@ export default function GersPage() {
                   </div>
                 </div>
 
-                <div className="mt-4 pt-4 border-t border-slate-100 flex gap-2">
-                  <span className="text-xs bg-orange-50 text-orange-600 px-2 py-1 rounded font-medium">
+                <div className="mt-4 pt-4 border-t border-ipb-rule flex gap-2">
+                  <span className="text-xs bg-ipb-stone text-ipb-orange px-2 py-1 rounded font-medium">
                     Fissures
                   </span>
                   <span className="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded font-medium">
@@ -210,19 +210,19 @@ export default function GersPage() {
         </div>
 
         {/* FAQ Section */}
-        <div className="bg-slate-50 py-16">
+        <div className="bg-ipb-cream py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-8">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-8">
               Questions fréquentes - Gers
             </h2>
 
             <div className="space-y-6">
               {faqSchema.mainEntity.map((faq, index) => (
                 <div key={index} className="bg-white p-6 rounded-xl shadow-sm">
-                  <h3 className="text-lg font-bold text-slate-900 mb-3">
+                  <h3 className="text-lg font-bold text-ipb-text mb-3">
                     {faq.name}
                   </h3>
-                  <p className="text-slate-600 leading-relaxed">
+                  <p className="text-ipb-muted leading-relaxed">
                     {faq.acceptedAnswer.text}
                   </p>
                 </div>

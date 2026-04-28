@@ -78,7 +78,7 @@ const typesFissures = [
   },
   {
     severity: 'Vigilance',
-    severityColor: 'bg-orange-500',
+    severityColor: 'bg-ipb-orange',
     title: 'Fissures verticales',
     width: '0,2 à 2 mm',
     desc: "Fissure rectiligne au droit d'un angle ou d'une ouverture. Souvent liée à un retrait de la maçonnerie ou un léger tassement.",

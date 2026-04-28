@@ -66,7 +66,7 @@ const faqJsonLd = {
 
 export default function ExpertiseAvantAchatPage() {
   return (
-    <div className="font-sans text-slate-800 bg-slate-50 antialiased">
+    <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
       <Script id="jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       
@@ -74,7 +74,7 @@ export default function ExpertiseAvantAchatPage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative bg-slate-900 text-white py-20 md:py-28 overflow-hidden">
+      <section className="relative bg-ipb-navy text-white py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-950/30"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
@@ -85,7 +85,7 @@ export default function ExpertiseAvantAchatPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
               Expertise <span className="text-emerald-400">Avant Achat</span> Immobilier à Toulouse
             </h1>
-            <p className="text-xl text-slate-300 mb-8 max-w-2xl">
+            <p className="text-xl text-white/70 mb-8 max-w-2xl">
               Vous achetez une maison à Toulouse ? Ne signez pas avant d'avoir fait inspecter le bien. 
               Détection des vices cachés, fissures, humidité. Rapport complet sous 48h.
             </p>
@@ -106,10 +106,10 @@ export default function ExpertiseAvantAchatPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">
+              <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-6">
                 Pourquoi une expertise avant achat ?
               </h2>
-              <div className="prose prose-lg text-slate-600">
+              <div className="prose prose-lg text-ipb-muted">
                 <p>
                   <strong>80% des litiges immobiliers</strong> concernent des vices cachés découverts après l'achat. 
                   Fissures structurelles, remontées capillaires, problèmes de toiture... Ces défauts ne sont pas 
@@ -124,8 +124,8 @@ export default function ExpertiseAvantAchatPage() {
                 <div className="flex items-start gap-3">
                   <AlertTriangle className="text-red-600 flex-shrink-0 mt-1" size={24} />
                   <div>
-                    <h3 className="font-bold text-slate-900">Les diagnostics obligatoires ne suffisent pas</h3>
-                    <p className="text-slate-600 mt-1">
+                    <h3 className="font-bold text-ipb-text">Les diagnostics obligatoires ne suffisent pas</h3>
+                    <p className="text-ipb-muted mt-1">
                       DPE, amiante, plomb... Ces diagnostics ne vérifient pas l'état structurel du bien. 
                       Seule une expertise technique détecte les vrais problèmes.
                     </p>
@@ -134,7 +134,7 @@ export default function ExpertiseAvantAchatPage() {
               </div>
             </div>
             <div className="bg-white rounded-2xl shadow-xl p-8">
-              <h3 className="text-xl font-bold text-slate-900 mb-6">Ce que nous inspectons</h3>
+              <h3 className="text-xl font-bold text-ipb-text mb-6">Ce que nous inspectons</h3>
               <div className="space-y-4">
                 {[
                   { icon: '🔍', label: 'Fissures structurelles', desc: 'Murs, façades, fondations' },
@@ -144,11 +144,11 @@ export default function ExpertiseAvantAchatPage() {
                   { icon: '🧱', label: 'Maçonnerie', desc: 'État des murs, joints, enduits' },
                   { icon: '📋', label: 'Conformité', desc: 'Extensions, modifications' },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-4 p-3 bg-slate-50 rounded-xl">
+                  <div key={i} className="flex items-start gap-4 p-3 bg-ipb-cream rounded-xl">
                     <span className="text-2xl">{item.icon}</span>
                     <div>
-                      <div className="font-bold text-slate-900">{item.label}</div>
-                      <div className="text-sm text-slate-600">{item.desc}</div>
+                      <div className="font-bold text-ipb-text">{item.label}</div>
+                      <div className="text-sm text-ipb-muted">{item.desc}</div>
                     </div>
                   </div>
                 ))}
@@ -159,12 +159,12 @@ export default function ExpertiseAvantAchatPage() {
       </section>
 
       {/* Tarif */}
-      <section className="py-16 md:py-24 bg-slate-900 text-white">
+      <section className="py-16 md:py-24 bg-ipb-navy text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold mb-8">Tarif expertise avant achat</h2>
-          <div className="bg-slate-800 rounded-3xl p-10 max-w-md mx-auto">
+          <div className="bg-ipb-navy-2 rounded-3xl p-10 max-w-md mx-auto">
             <div className="text-6xl font-extrabold text-emerald-400 mb-4">299€</div>
-            <div className="text-slate-400 mb-6">TTC - Déplacement inclus</div>
+            <div className="text-ipb-light mb-6">TTC - Déplacement inclus</div>
             <ul className="text-left space-y-3 mb-8">
               <li className="flex items-center gap-3"><CheckCircle className="text-emerald-400" size={20} /> Inspection complète sur site</li>
               <li className="flex items-center gap-3"><CheckCircle className="text-emerald-400" size={20} /> Mesures humidité à l'appareil</li>
@@ -184,7 +184,7 @@ export default function ExpertiseAvantAchatPage() {
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Comment ça marche ?</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-4">Comment ça marche ?</h2>
           </div>
           <div className="grid md:grid-cols-4 gap-6">
             {[
@@ -197,8 +197,8 @@ export default function ExpertiseAvantAchatPage() {
                 <div className="w-16 h-16 bg-emerald-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                   {item.step}
                 </div>
-                <h3 className="font-bold text-slate-900 mb-2">{item.title}</h3>
-                <p className="text-slate-600 text-sm">{item.desc}</p>
+                <h3 className="font-bold text-ipb-text mb-2">{item.title}</h3>
+                <p className="text-ipb-muted text-sm">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -206,19 +206,19 @@ export default function ExpertiseAvantAchatPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-16 md:py-24 bg-slate-100">
+      <section className="py-16 md:py-24 bg-ipb-stone">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Questions fréquentes</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-4">Questions fréquentes</h2>
           </div>
           <div className="space-y-4">
             {faqItems.map((item, index) => (
-              <details key={index} className="bg-white rounded-xl shadow-sm border border-slate-200 group">
-                <summary className="p-6 cursor-pointer font-bold text-slate-900 flex items-center justify-between">
+              <details key={index} className="bg-white rounded-xl shadow-sm border border-ipb-rule group">
+                <summary className="p-6 cursor-pointer font-bold text-ipb-text flex items-center justify-between">
                   {item.question}
                   <span className="text-emerald-600 group-open:rotate-180 transition-transform">▼</span>
                 </summary>
-                <div className="px-6 pb-6 text-slate-600">{item.answer}</div>
+                <div className="px-6 pb-6 text-ipb-muted">{item.answer}</div>
               </details>
             ))}
           </div>
