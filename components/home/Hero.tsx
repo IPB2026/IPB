@@ -42,27 +42,25 @@ export function Hero() {
               Les spécialistes de la structure de votre habitat
             </p>
 
-            {/* H1 — pivot positionnement structure */}
+            {/* H1 — clair et direct */}
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] mb-6">
               <span className="text-white">Diagnostic Fissures</span>
               <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300">
-                & Ouvertures de Murs Porteurs
+                & Ouverture de Mur Porteur
               </span>
               <span className="block mt-3 text-2xl md:text-3xl lg:text-4xl text-slate-300 font-medium tracking-normal leading-snug">
                 Toulouse, Montauban, Auch.{' '}
-                <span className="text-white font-bold">Bureau d'études + travaux</span> en un seul interlocuteur.
+                <span className="text-white font-bold">L'étude + les travaux</span>, un seul interlocuteur.
               </span>
             </h1>
 
-            {/* Proposition de valeur — autorité technique */}
+            {/* Proposition de valeur — humain, sans jargon */}
             <p className="text-lg md:text-xl text-slate-300 mb-2 leading-relaxed">
-              Cabinet indépendant en{' '}
-              <strong className="text-white">pathologie et structure du bâtiment</strong>.
-              Notre ingénieur calcule la poutre IPN/HEB, nos équipes la posent — chantier garanti{' '}
-              <strong className="text-orange-300">10 ans par AXA France</strong>.
+              On regarde votre maison, on vous dit ce qu'elle a, et on s'occupe de tout — du calcul technique aux finitions. Garantie{' '}
+              <strong className="text-orange-300">10 ans par AXA France.</strong>
             </p>
             <p className="text-base text-slate-400 mb-8 leading-relaxed">
-              Pas d'artisan généraliste, pas de sous-traitance cachée. Étude structure, étaiement, pose, finitions, DOE — un cabinet, un chantier, une garantie.
+              Pas d'artisan généraliste, pas de sous-traitant à coordonner. Notre ingénieur calcule, nos équipes installent. Vous, vous appelez une seule personne du devis à la livraison.
             </p>
 
             {/* Deux parcours clients — cards */}
@@ -139,62 +137,66 @@ export function Hero() {
             </div>
           </div>
 
-          {/* COLONNE DROITE — Visuels */}
-          <div className="hidden lg:grid grid-cols-2 gap-4">
-            {/* Image Fissure */}
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-orange-500/30">
+          {/* COLONNE DROITE — Visuels (photos chantiers réels IPB) */}
+          <div className="hidden lg:flex flex-col gap-4">
+            {/* Image principale — Baie vitrée installée (résultat final, premium) */}
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/10 group">
               <Image
-                src="/images/fissure-facade-verticale.webp"
-                alt="Fissure structurelle façade — Expert fissures Toulouse Montauban Auch (31-82-32)"
-                width={300}
-                height={400}
-                sizes="(max-width: 1024px) 0px, 300px"
-                className="w-full h-64 object-cover"
-                loading="lazy"
+                src="/images/baie-coulissante-apres.webp"
+                alt="Baie coulissante après ouverture de mur porteur — chantier IPB Toulouse"
+                width={800}
+                height={500}
+                sizes="(max-width: 1024px) 0px, 600px"
+                className="w-full h-[340px] object-cover transition-transform duration-700 group-hover:scale-105"
+                priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <div className="flex items-center gap-2 mb-1">
-                  <Activity className="text-orange-400" size={16} />
-                  <span className="text-white font-bold text-sm">Fissures</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/85 via-slate-900/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div className="flex items-center gap-2 mb-2">
+                  <Hammer className="text-orange-400" size={18} />
+                  <span className="text-orange-300 text-xs font-bold uppercase tracking-wider">Chantier IPB</span>
                 </div>
-                <p className="text-slate-300 text-xs">Diagnostic + agrafage structurel</p>
+                <p className="text-white font-bold text-lg leading-tight">
+                  Mur porteur ouvert, baie vitrée posée.
+                </p>
+                <p className="text-slate-300 text-sm mt-1">5 jours de chantier · Garanti 10 ans</p>
               </div>
             </div>
 
-            {/* Image Mur Porteur */}
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-amber-500/30 mt-8">
-              <Image
-                src="/images/fissure-facade-diagonale.webp"
-                alt="Ouverture mur porteur création baie vitrée — IPB Expertise Toulouse Occitanie"
-                width={300}
-                height={400}
-                sizes="(max-width: 1024px) 0px, 300px"
-                className="w-full h-64 object-cover"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <div className="flex items-center gap-2 mb-1">
-                  <Hammer className="text-amber-400" size={16} />
-                  <span className="text-white font-bold text-sm">Mur Porteur</span>
+            {/* Photo secondaire + stats */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="relative rounded-2xl overflow-hidden shadow-xl ring-1 ring-white/10 group">
+                <Image
+                  src="/images/ouverture-mur-porteur.webp"
+                  alt="Ouverture d'un mur porteur en cours — pose de poutre IPN par les équipes IPB"
+                  width={400}
+                  height={300}
+                  sizes="(max-width: 1024px) 0px, 300px"
+                  className="w-full h-32 object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-3">
+                  <div className="flex items-center gap-1">
+                    <Activity className="text-amber-400" size={12} />
+                    <span className="text-white font-bold text-xs">Pendant le chantier</span>
+                  </div>
                 </div>
-                <p className="text-slate-300 text-xs">Étude structure + baie vitrée</p>
               </div>
-            </div>
 
-            {/* Stats flottantes */}
-            <div className="col-span-2 grid grid-cols-3 gap-3">
-              {[
-                { val: '850+', label: 'Chantiers réalisés' },
-                { val: '4.9/5', label: 'Note Google' },
-                { val: '10 ans', label: 'Garantie décennale' },
-              ].map(({ val, label }) => (
-                <div key={label} className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
-                  <p className="text-white font-extrabold text-lg">{val}</p>
-                  <p className="text-slate-400 text-xs">{label}</p>
-                </div>
-              ))}
+              {/* Stats compactes */}
+              <div className="grid grid-rows-3 gap-2">
+                {[
+                  { val: '850+', label: 'Chantiers' },
+                  { val: '4.9/5', label: 'Avis Google' },
+                  { val: '10 ans', label: 'Garantie' },
+                ].map(({ val, label }) => (
+                  <div key={label} className="bg-white/5 border border-white/10 rounded-xl p-2 text-center backdrop-blur-sm">
+                    <p className="text-white font-extrabold text-base leading-tight">{val}</p>
+                    <p className="text-slate-400 text-[10px] uppercase tracking-wider">{label}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

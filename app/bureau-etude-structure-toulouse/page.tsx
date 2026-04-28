@@ -64,11 +64,11 @@ export default function BureauEtudeStructurePage() {
               <span className="block text-3xl md:text-4xl mt-2 text-white">à Toulouse & Occitanie (31, 82, 32, 81)</span>
             </h1>
             <p className="text-xl text-slate-300 mb-8 max-w-3xl">
-              Note de calcul opposable, dimensionnement <strong className="text-white">IPN/HEB/IPE</strong>, étude charge, expertise mur porteur, contrôle des ouvrages. Pour particuliers, architectes, marchands de biens et entreprises générales.
+              Calcul technique signé par notre ingénieur, dimensionnement de la poutre <strong className="text-white">(IPN, HEB ou IPE)</strong>, expertise mur porteur, contrôle des ouvrages. On travaille avec des particuliers, des architectes, des marchands de biens et des entreprises du bâtiment.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/diagnostic" className="bg-orange-600 hover:bg-orange-500 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
-                Demander une note de calcul <ArrowRight size={20} />
+                Demander un calcul de poutre <ArrowRight size={20} />
               </Link>
               <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
                 <Phone size={20} /> 05 82 95 33 75
@@ -88,7 +88,7 @@ export default function BureauEtudeStructurePage() {
               {[
                 { icon: <Calculator className="text-orange-600" size={28} />, title: 'Dimensionnement IPN/HEB/IPE', desc: 'Calcul des charges reprises, choix de la poutre, vérification flèche et déversement. Note de calcul signée.' },
                 { icon: <Ruler className="text-orange-600" size={28} />, title: 'Étude mur porteur', desc: 'Identification du caractère porteur, descente de charges, méthode d\'étaiement, plan d\'exécution.' },
-                { icon: <Building2 className="text-orange-600" size={28} />, title: 'Diagnostic structure', desc: 'Avant achat, après sinistre, fissures, désordres. Rapport opposable à l\'assurance et à l\'expert judiciaire.' },
+                { icon: <Building2 className="text-orange-600" size={28} />, title: 'Diagnostic structure', desc: 'Avant achat, après sinistre, fissures, désordres. Rapport reconnu par les assurances et les tribunaux.' },
                 { icon: <FileText className="text-orange-600" size={28} />, title: 'Béton armé', desc: 'Plancher, longrine, semelle, poteau. Calculs Eurocode 2, plans de ferraillage.' },
                 { icon: <Award className="text-orange-600" size={28} />, title: 'Mission de maîtrise d\'œuvre', desc: 'Conception, consultation entreprises, suivi de chantier, réception. Pour rénovations lourdes.' },
                 { icon: <Shield className="text-orange-600" size={28} />, title: 'Contre-expertise', desc: 'Confrontation avec un rapport d\'expert d\'assurance, contestation amiable ou judiciaire.' },
@@ -145,8 +145,8 @@ export default function BureauEtudeStructurePage() {
             <div className="grid md:grid-cols-3 gap-6">
               {[
                 { icon: <Shield className="text-blue-600" size={32} />, label: 'Décennale AXA France', desc: 'Police n° 10564321 — couvre étude + travaux' },
-                { icon: <CheckCircle className="text-emerald-600" size={32} />, label: 'Note de calcul opposable', desc: 'Signée ingénieur, valable assurance et tribunal' },
-                { icon: <FileText className="text-orange-600" size={32} />, label: 'DOE remis systématiquement', desc: 'Dossier des Ouvrages Exécutés à la livraison' },
+                { icon: <CheckCircle className="text-emerald-600" size={32} />, label: 'Calcul technique signé', desc: 'Signé par notre ingénieur, valable face à une assurance ou un tribunal' },
+                { icon: <FileText className="text-orange-600" size={32} />, label: 'Dossier complet à la livraison', desc: 'Tous les documents du chantier vous sont remis' },
               ].map(({ icon, label, desc }) => (
                 <div key={label} className="flex flex-col items-center p-6">
                   <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mb-4">{icon}</div>
@@ -161,7 +161,7 @@ export default function BureauEtudeStructurePage() {
         {/* CTA Final */}
         <section className="py-16 bg-gradient-to-r from-orange-600 to-amber-600 text-white">
           <div className="max-w-4xl mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Besoin d'une note de calcul ?</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Besoin du calcul d'une poutre ?</h2>
             <p className="text-xl text-orange-100 mb-8">Réponse d'un ingénieur structure sous 24h. Devis gratuit, sans engagement.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link href="/diagnostic" className="bg-white text-orange-600 px-10 py-5 rounded-xl font-bold text-lg hover:bg-orange-50 flex items-center justify-center gap-2 shadow-xl">

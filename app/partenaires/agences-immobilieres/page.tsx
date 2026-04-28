@@ -45,7 +45,7 @@ export default function AgencesImmobilieresPage() {
               <span className="block mt-2 text-white">On débloque sous 7 jours.</span>
             </h1>
             <p className="text-xl text-slate-300 mb-8 max-w-3xl">
-              L'acquéreur a vu une fissure et veut « réfléchir ». Le compromis est suspendu à un rapport. Nous intervenons sous 48h, livrons un rapport opposable sous 7 jours, et chiffrons les éventuels travaux. Votre commission est sauvée.
+              L'acquéreur a vu une fissure et veut « réfléchir ». Le compromis est suspendu à un rapport. On passe sous 48h, on vous livre un rapport reconnu par les assurances sous 7 jours, et on chiffre les éventuels travaux. Votre commission est sauvée.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact" className="bg-orange-600 hover:bg-orange-500 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
@@ -107,7 +107,7 @@ export default function AgencesImmobilieresPage() {
               {[
                 { num: 1, title: 'Vous nous appelez', desc: 'Décrivez la situation en 2 minutes au 05 82 95 33 75. Nous validons que c\'est dans notre périmètre et programmons la visite.' },
                 { num: 2, title: 'Visite sous 48h', desc: 'Notre expert se déplace, mesure les fissures (fissuromètre), photographie, écoute les inquiétudes de l\'acquéreur si nécessaire.' },
-                { num: 3, title: 'Rapport sous 7 jours', desc: 'Document PDF opposable : nature des désordres, gravité, recommandations, chiffrage. Vous le transmettez à l\'acquéreur et au notaire.' },
+                { num: 3, title: 'Rapport sous 7 jours', desc: 'Document PDF reconnu par les assurances : nature des désordres, gravité, recommandations, chiffrage. Vous le transmettez à l\'acquéreur et au notaire.' },
                 { num: 4, title: 'Vente débloquée', desc: 'Soit le rapport rassure (la fissure est cosmétique), soit il chiffre des travaux que vous intégrez à la négociation. Dans 80% des cas, la vente repart.' },
               ].map(({ num, title, desc }) => (
                 <div key={num} className="bg-white border border-slate-200 rounded-2xl p-6 flex gap-5 items-start shadow-sm">

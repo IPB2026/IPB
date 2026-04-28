@@ -186,8 +186,8 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
                         <Ruler className="text-orange-400" size={24} />
                       </div>
                       <div>
-                        <p className="font-bold text-white">Bureau d'études en interne</p>
-                        <p className="text-sm text-slate-400">Note de calcul opposable, signée ingénieur</p>
+                        <p className="font-bold text-white">Calcul technique en interne</p>
+                        <p className="text-sm text-slate-400">Le dimensionnement de la poutre est signé par notre ingénieur</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
@@ -244,7 +244,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
             <div className="mt-10 bg-orange-50 border-l-4 border-orange-500 rounded-r-xl p-6">
               <p className="font-bold text-orange-900 mb-1">⚠️ La règle d'or à {villeNom}</p>
               <p className="text-orange-800">
-                Ne jamais commander de travaux sans <strong>note de calcul écrite et signée par un ingénieur structure</strong>. Un sous-dimensionnement de poutre peut provoquer fissures, affaissement de plancher ou effondrement partiel. Les artisans généralistes ne sont pas habilités à dimensionner.
+                Ne jamais commander de travaux sans <strong>un calcul de la poutre écrit et signé par un ingénieur</strong>. Une poutre trop fine et c'est la garantie de fissures, d'un affaissement du plancher, voire d'un effondrement partiel. Les artisans généralistes n'ont pas les compétences pour ce calcul.
               </p>
             </div>
           </div>
@@ -264,10 +264,10 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
 
             <div className="grid md:grid-cols-4 gap-6">
               {[
-                { num: 1, icon: <FileText size={24} className="text-orange-600" />, title: 'Étude structure', detail: 'Visite technique, relevé des charges, calcul de la poutre (IPN/HEB/IPE), note de calcul signée.' },
-                { num: 2, icon: <Ruler size={24} className="text-orange-600" />, title: 'Démarches', detail: 'Déclaration préalable ou permis selon le projet. Si copropriété : dossier pour AG.' },
-                { num: 3, icon: <Hammer size={24} className="text-orange-600" />, title: 'Travaux 2–5 j', detail: 'Étaiement, découpe, pose poutre, scellement, linteaux, finitions enduit.' },
-                { num: 4, icon: <Shield size={24} className="text-orange-600" />, title: 'Réception + DOE', detail: 'Levée des étais, contrôle, remise du DOE et de l\'attestation décennale.' },
+                { num: 1, icon: <FileText size={24} className="text-orange-600" />, title: 'Étude technique', detail: 'On vient sur place, on regarde le mur, on calcule la poutre. Calcul signé par notre ingénieur.' },
+                { num: 2, icon: <Ruler size={24} className="text-orange-600" />, title: 'Démarches', detail: 'On s\'occupe des papiers en mairie. Si copropriété : on prépare le dossier pour l\'assemblée générale.' },
+                { num: 3, icon: <Hammer size={24} className="text-orange-600" />, title: 'Travaux 2 à 5 jours', detail: 'On installe les étais, on découpe le mur, on pose la poutre, on fait les finitions.' },
+                { num: 4, icon: <Shield size={24} className="text-orange-600" />, title: 'Livraison', detail: 'Contrôle final, retrait des étais. On vous remet tous les documents du chantier et l\'attestation de garantie 10 ans.' },
               ].map(({ num, icon, title, detail }) => (
                 <div key={num} className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200 text-center">
                   <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">{icon}</div>
