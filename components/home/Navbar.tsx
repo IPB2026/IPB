@@ -1,64 +1,85 @@
 "use client"
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Search, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
+/**
+ * Navbar — sticky 68px, fond cream, premium éditorial.
+ * Logo carré orange 36×36, liens uppercase 11px, CTA compact.
+ *
+ * Cf. IPB_Design_Handoff.md §5.1
+ */
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const links = [
+    { href: '/expertise/fissures', label: 'Fissures' },
+    { href: '/expertise/mur-porteur', label: 'Mur porteur' },
+    { href: '/notre-expert', label: 'Le cabinet' },
+    { href: '/partenaires', label: 'Pros' },
+    { href: '/blog', label: 'Journal' },
+    { href: '/contact', label: 'Contact' },
+  ];
 
   return (
-    <nav className="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-slate-200 transition-all">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* LOGO */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="bg-gradient-to-br from-orange-600 to-orange-700 text-white p-2.5 rounded-xl font-black text-2xl shadow-lg shadow-orange-900/20 tracking-tighter group-hover:scale-105 transition-transform duration-300">
-              IPB
-            </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-xl text-slate-900 leading-none tracking-tight group-hover:text-orange-600 transition-colors">Institut Pathologie</span>
-              <span className="font-bold text-xs text-blue-700 leading-none uppercase tracking-widest mt-1">du Bâtiment</span>
-            </div>
-          </Link>
-          
-          {/* MENU DESKTOP */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/expertise/fissures" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide">Fissures</Link>
-            <Link href="/expertise/mur-porteur" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide">Mur Porteur</Link>
-            <Link href="/partenaires" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide">Pros</Link>
-            <Link href="/zones-intervention" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide">Zones</Link>
-            <Link href="/blog" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide">Blog</Link>
-            <Link href="/avis-clients" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide flex items-center gap-1">
-              <span className="text-orange-500 text-xs">★</span> Avis
-            </Link>
-            <Link href="/contact" className="text-slate-600 hover:text-orange-600 font-semibold transition text-sm uppercase tracking-wide">Contact</Link>
-            
-            <div className="flex items-center gap-3 ml-4 pl-4 border-l border-slate-200">
-              <Link
-                href="/diagnostic"
-                aria-label="Accéder au diagnostic gratuit en ligne"
-                className="bg-orange-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-700 transition-all shadow-lg shadow-orange-600/30 text-sm flex items-center gap-2 transform hover:-translate-y-0.5 duration-200 ring-2 ring-orange-600 ring-offset-2"
-              >
-                <Search size={18} aria-hidden="true" />
-                Diagnostic en ligne gratuit
-              </Link>
-            </div>
+    <nav
+      className={`bg-ipb-white sticky top-0 z-50 transition-all border-b ${
+        scrolled
+          ? 'border-ipb-rule shadow-[0_2px_20px_rgba(0,0,0,0.05)]'
+          : 'border-transparent'
+      }`}
+      style={{ height: '68px' }}
+    >
+      <div className="max-w-ipb mx-auto px-6 lg:px-12 h-full flex items-center justify-between">
+        {/* LOGO carré orange */}
+        <Link href="/" className="flex items-center gap-3 group" aria-label="IPB Expertise — Accueil">
+          <div className="w-9 h-9 bg-ipb-orange text-white rounded-[4px] flex items-center justify-center font-extrabold text-[13px] tracking-tight transition-transform duration-200 group-hover:-rotate-[4deg]">
+            IPB
           </div>
+          <div className="hidden lg:flex flex-col leading-tight">
+            <span className="font-serif text-[15px] text-ipb-text font-medium leading-none">Institut</span>
+            <span className="text-[10px] text-ipb-muted uppercase tracking-[0.14em] mt-0.5">Pathologie du bâtiment</span>
+          </div>
+        </Link>
 
-          {/* MOBILE BURGER */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-              aria-expanded={isMenuOpen}
-              aria-controls="mobile-menu"
-              className="text-slate-700 p-2 hover:bg-slate-100 rounded-lg transition-colors"
+        {/* MENU DESKTOP */}
+        <div className="hidden md:flex items-center gap-8">
+          {links.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              className="text-[11px] uppercase tracking-[0.09em] font-medium text-ipb-muted hover:text-ipb-orange transition-colors py-2 border-b border-transparent hover:border-ipb-orange"
             >
-              {isMenuOpen ? <X size={28} aria-hidden="true" /> : <Menu size={28} aria-hidden="true" />}
-            </button>
-          </div>
+              {label}
+            </Link>
+          ))}
+          <Link
+            href="/diagnostic"
+            className="bg-ipb-orange text-white px-5 py-2.5 rounded-[3px] font-semibold text-[12px] tracking-[0.02em] hover:bg-[#b35519] transition-all hover:shadow-[0_8px_24px_rgba(200,96,31,0.25)] hover:-translate-y-px ml-2"
+          >
+            Demander une expertise
+          </Link>
         </div>
+
+        {/* MOBILE BURGER */}
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
+          className="md:hidden text-ipb-text p-2 hover:bg-ipb-stone rounded-[3px] transition-colors"
+        >
+          {isMenuOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
+        </button>
       </div>
 
       {/* MOBILE MENU DROPDOWN */}
@@ -67,72 +88,27 @@ export function Navbar() {
           id="mobile-menu"
           role="menu"
           aria-label="Menu de navigation mobile"
-          className="md:hidden bg-white border-t border-slate-100 absolute w-full z-50 shadow-2xl"
+          className="md:hidden bg-ipb-white border-t border-ipb-rule absolute w-full z-50 shadow-2xl"
         >
-          <div className="px-4 py-6 space-y-4">
-            <Link
-              href="/expertise/fissures"
-              onClick={() => setIsMenuOpen(false)}
-              role="menuitem"
-              className="block text-slate-800 font-bold text-lg border-l-4 border-orange-500 pl-4 py-2 bg-slate-50"
-            >
-              Expertise Fissures
-            </Link>
-            <Link
-              href="/expertise/mur-porteur"
-              onClick={() => setIsMenuOpen(false)}
-              role="menuitem"
-              className="block text-slate-800 font-bold text-lg border-l-4 border-orange-500 pl-4 py-2 bg-slate-50"
-            >
-              Ouverture Mur Porteur
-            </Link>
-            <Link
-              href="/partenaires"
-              onClick={() => setIsMenuOpen(false)}
-              role="menuitem"
-              className="block text-slate-800 font-bold text-lg border-l-4 border-amber-500 pl-4 py-2 bg-slate-50"
-            >
-              Pros & Partenaires
-            </Link>
-            <Link
-              href="/zones-intervention"
-              onClick={() => setIsMenuOpen(false)}
-              role="menuitem"
-              className="block text-slate-600 font-medium pl-5 py-2"
-            >
-              Zones d&apos;intervention
-            </Link>
-            <Link
-              href="/blog"
-              onClick={() => setIsMenuOpen(false)}
-              role="menuitem"
-              className="block text-slate-600 font-medium pl-5 py-2"
-            >
-              Blog & Conseils
-            </Link>
-            <Link
-              href="/avis-clients"
-              onClick={() => setIsMenuOpen(false)}
-              role="menuitem"
-              className="block text-slate-600 font-medium pl-5 py-2"
-            >
-              Avis Clients (4.9/5)
-            </Link>
-            <Link
-              href="/contact"
-              onClick={() => setIsMenuOpen(false)}
-              role="menuitem"
-              className="block text-slate-600 font-medium pl-5 py-2"
-            >
-              Contact
-            </Link>
+          <div className="px-6 py-6 space-y-1">
+            {links.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                onClick={() => setIsMenuOpen(false)}
+                role="menuitem"
+                className="block py-3 font-serif text-xl text-ipb-text hover:text-ipb-orange transition-colors"
+              >
+                {label}
+              </Link>
+            ))}
             <Link
               href="/diagnostic"
               onClick={() => setIsMenuOpen(false)}
               role="menuitem"
-              className="block w-full bg-orange-600 text-white text-center py-4 rounded-xl font-bold shadow-lg mt-4"
+              className="block w-full bg-ipb-orange text-white text-center py-4 rounded-[3px] font-semibold text-sm mt-4"
             >
-              Lancer le Diagnostic
+              Demander une expertise
             </Link>
           </div>
         </div>
@@ -140,4 +116,3 @@ export function Navbar() {
     </nav>
   );
 }
-
