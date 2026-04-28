@@ -9,7 +9,6 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { fissureFaq } from '@/app/data/faqs';
 import Image from 'next/image';
 import Script from 'next/script';
-import { DiagnosticHowToSchema, AgrafageHowToSchema } from '@/components/seo/HowToSchema';
 import { ExpertiseFissuresBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
@@ -108,8 +107,6 @@ export default function FissuresPage() {
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFaqJsonLd()) }} />
       <Script id="service-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateServiceJsonLd()) }} />
-      <DiagnosticHowToSchema />
-      <AgrafageHowToSchema />
       <ExpertiseFissuresBreadcrumb />
 
       <TopBar />

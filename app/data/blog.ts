@@ -26,6 +26,8 @@ interface BlogPost {
   author: string;
   metaDescription: string;
   keywords: string[];
+  /** Image de couverture (Open Graph + Article JSON-LD). Si absente, fallback par catégorie */
+  coverImage?: string;
 }
 
 // Base de données des articles avec copywriting expert et orienté conversion
