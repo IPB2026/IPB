@@ -28,11 +28,11 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
   const slug = ville;
 
   const description = villeData.risqueRGA === 'tres-fort' || villeData.risqueRGA === 'fort'
-    ? `Cabinet de pathologie du bâtiment à ${villeNom} (${deptCode}). Diagnostic instrumenté de fissures, agrafage structurel, reprise en sous-œuvre. Zone à risque RGA ${villeData.risqueRGA}. Décennale AXA.`
-    : `Cabinet de pathologie du bâtiment à ${villeNom} (${deptCode}). Diagnostic instrumenté de fissures, agrafage structurel et reprise en sous-œuvre. Rapports reconnus par les assurances.`;
+    ? `Institut de pathologie du bâtiment à ${villeNom} (${deptCode}). Diagnostic instrumenté de fissures, agrafage structurel, reprise en sous-œuvre. Zone à risque RGA ${villeData.risqueRGA}. Décennale AXA.`
+    : `Institut de pathologie du bâtiment à ${villeNom} (${deptCode}). Diagnostic instrumenté de fissures, agrafage structurel et reprise en sous-œuvre. Rapports reconnus par les assurances.`;
 
   return {
-    title: `Expert fissures ${villeNom} (${deptCode}) · Cabinet IPB`,
+    title: `Expert fissures ${villeNom} (${deptCode}) · Institut IPB`,
     description,
     keywords: [
       `expert fissures ${slug}`,
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
       `fissures maison ${slug}`,
       `agrafage fissures ${slug}`,
       `diagnostic fissures ${deptCode}`,
-      `cabinet pathologie bâtiment ${slug}`,
+      `institut pathologie bâtiment ${slug}`,
       `tassement différentiel ${slug}`,
       `sol argileux ${slug}`,
       `RGA ${slug}`,
@@ -49,8 +49,8 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     ],
     alternates: { canonical: `https://www.ipb-expertise.fr/expert-fissures/${ville}` },
     openGraph: {
-      title: `Expert fissures ${villeNom} · Cabinet IPB`,
-      description: `Cabinet de pathologie du bâtiment intervenant à ${villeNom}. Diagnostic, agrafage, reprise en sous-œuvre.`,
+      title: `Expert fissures ${villeNom} · Institut IPB`,
+      description: `Institut de pathologie du bâtiment intervenant à ${villeNom}. Diagnostic, agrafage, reprise en sous-œuvre.`,
       url: `https://www.ipb-expertise.fr/expert-fissures/${ville}`,
       type: 'website',
       images: [{ url: '/images/fissures-avant-apres.webp', width: 1200, height: 630, alt: `Expert fissures ${villeNom} — IPB` }],
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     twitter: {
       card: 'summary_large_image',
       title: `Expert fissures ${villeNom} · IPB`,
-      description: `Cabinet de pathologie du bâtiment à ${villeNom}.`,
+      description: `Institut de pathologie du bâtiment à ${villeNom}.`,
     },
     robots: { index: true, follow: true },
   };
@@ -85,7 +85,7 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": `IPB · Expert fissures ${villeNom}`,
-    "description": `Cabinet de pathologie du bâtiment intervenant à ${villeNom}. Diagnostic instrumenté, agrafage structurel et reprise en sous-œuvre.`,
+    "description": `Institut de pathologie du bâtiment intervenant à ${villeNom}. Diagnostic instrumenté, agrafage structurel et reprise en sous-œuvre.`,
     "areaServed": { "@type": "City", "name": villeNom },
     "provider": {
       "@type": "LocalBusiness",
@@ -156,7 +156,7 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
               <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
                 <Image
                   src="/images/fissures-avant-apres.webp"
-                  alt={`Expert fissures à ${villeNom} — Cabinet IPB`}
+                  alt={`Expert fissures à ${villeNom} — Institut IPB`}
                   fill
                   sizes="(max-width: 1024px) 0px, 500px"
                   className="object-cover"
@@ -246,7 +246,7 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
                         <em className="not-italic text-ipb-orange">&nbsp;»</em>
                       </p>
                       <p className="text-[11px] text-ipb-light uppercase tracking-[0.14em] mt-3 not-italic">
-                        — Ludovic D., fondateur du cabinet
+                        — Ludovic D., fondateur de l’institut
                       </p>
                     </div>
                   </RevealOnScroll>
@@ -342,7 +342,7 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
           <div className="max-w-ipb mx-auto px-6 lg:px-12 grid md:grid-cols-3 gap-6">
             {[
               { href: '/expertise/fissures', titre: 'Notre méthode', desc: 'Diagnostic instrumenté, agrafage, reprise en sous-œuvre.' },
-              { href: `/expert-mur-porteur/${villeMurPorteur}`, titre: 'Ouverture de mur porteur', desc: 'Étude de structure et travaux par notre cabinet.' },
+              { href: `/expert-mur-porteur/${villeMurPorteur}`, titre: 'Ouverture de mur porteur', desc: 'Étude de structure et travaux par notre institut.' },
               { href: '/blog/agrafage-vs-micropieux-choix', titre: 'Agrafage ou micropieux ?', desc: 'Notre guide pour choisir la bonne solution structurelle.' },
             ].map((card) => (
               <Link

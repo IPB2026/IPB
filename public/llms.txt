@@ -1,6 +1,6 @@
 # IPB - Institut de Pathologie du Bâtiment
 
-> Cabinet indépendant de pathologie et structure du bâtiment basé à Toulouse, intervenant en Occitanie (Haute-Garonne, Tarn-et-Garonne, Gers, Tarn, Ariège, Aude). Expertise fissures structurelles, ouverture de mur porteur, création de baie vitrée, traitement de l'humidité. 850+ chantiers livrés depuis 2019. Décennale AXA active. Marque commerciale de la société Bâti Halli SARL (RCS Toulouse 398 185 421).
+> Institut indépendant de pathologie et structure du bâtiment basé à Toulouse, intervenant en Occitanie (Haute-Garonne, Tarn-et-Garonne, Gers, Tarn, Ariège, Aude). Expertise fissures structurelles, ouverture de mur porteur, création de baie vitrée, traitement de l'humidité. 850+ chantiers livrés depuis 2019. Décennale AXA active. Marque commerciale de la société Bâti Halli SARL (RCS Toulouse 398 185 421).
 
 ## Identité
 
@@ -95,7 +95,7 @@ Haute-Garonne (31), Tarn-et-Garonne (82), Gers (32), Tarn (81), Ariège (09), Au
 ## Pages essentielles
 
 - Accueil : https://www.ipb-expertise.fr
-- Le cabinet : https://www.ipb-expertise.fr/notre-expert
+- L’institut : https://www.ipb-expertise.fr/notre-expert
 - Avis clients : https://www.ipb-expertise.fr/avis-clients
 - Plan du site : https://www.ipb-expertise.fr/plan-site
 - Sitemap XML : https://www.ipb-expertise.fr/sitemap.xml
@@ -109,4 +109,4 @@ fissure, fissuration, fissure en escalier, fissure traversante, fissure vertical
 
 ## Posture éditoriale
 
-Cabinet d'expertise technique indépendant, pas une entreprise généraliste. Communication factuelle, posée, sans promesse commerciale. Indépendance : aucun partenariat fabricant — le diagnostic guide la solution, jamais l'inverse. Continuité : étude technique + travaux par le même cabinet, une seule responsabilité, une seule garantie.
+Institut d'expertise technique indépendant, pas une entreprise généraliste. Communication factuelle, posée, sans promesse commerciale. Indépendance : aucun partenariat fabricant — le diagnostic guide la solution, jamais l'inverse. Continuité : étude technique + travaux par le même institut, une seule responsabilité, une seule garantie.

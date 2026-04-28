@@ -12,7 +12,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "Ouverture de mur porteur · IPB Toulouse",
-  description: "Cabinet de structure du bâtiment : ouverture de mur porteur (cuisine ouverte, suite parentale, plateau loft) et — sur projet de façade — création de baie vitrée. Étude technique, dimensionnement de poutre, exécution. Décennale AXA. Toulouse, Montauban, Auch, Albi.",
+  description: "Institut de structure du bâtiment : ouverture de mur porteur (cuisine ouverte, suite parentale, plateau loft) et — sur projet de façade — création de baie vitrée. Étude technique, dimensionnement de poutre, exécution. Décennale AXA. Toulouse, Montauban, Auch, Albi.",
   keywords: [
     'ouverture mur porteur toulouse',
     'création baie vitrée toulouse',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 const faqMurPorteur = [
   {
     question: "Comment savoir si mon mur est porteur ?",
-    answer: "Un mur porteur supporte des charges venues du plancher du dessus ou de la toiture. Les indices visuels sont peu fiables. Notre cabinet identifie le caractère porteur d'un mur lors d'une visite technique : observation du sens des solives, recherche des chaînages, sondage si nécessaire. Sans cette vérification, ne touchez à aucun mur.",
+    answer: "Un mur porteur supporte des charges venues du plancher du dessus ou de la toiture. Les indices visuels sont peu fiables. Notre institut identifie le caractère porteur d'un mur lors d'une visite technique : observation du sens des solives, recherche des chaînages, sondage si nécessaire. Sans cette vérification, ne touchez à aucun mur.",
   },
   {
     question: "Combien coûte une ouverture de mur porteur à Toulouse ?",
@@ -48,7 +48,7 @@ const faqMurPorteur = [
   },
   {
     question: "Faut-il un permis de construire pour ouvrir un mur porteur ?",
-    answer: "Pour une ouverture intérieure (entre deux pièces), une déclaration préalable suffit dans la plupart des cas. Pour une création de baie vitrée modifiant la façade, un permis de construire peut être nécessaire selon la commune et la surface créée. Notre cabinet vous accompagne dans les démarches.",
+    answer: "Pour une ouverture intérieure (entre deux pièces), une déclaration préalable suffit dans la plupart des cas. Pour une création de baie vitrée modifiant la façade, un permis de construire peut être nécessaire selon la commune et la surface créée. Notre institut vous accompagne dans les démarches.",
   },
   {
     question: "Combien de temps prennent les travaux ?",
@@ -200,7 +200,7 @@ export default function MurPorteurPage() {
                 </div>
                 <div className="lg:col-span-5 lg:col-start-8">
                   <p className="text-[15px] leading-[1.9] font-light text-ipb-muted">
-                    Notre cabinet intervient sur les configurations les plus fréquentes en Occitanie. Voici les ordres de grandeur constatés sur nos chantiers récents.
+                    Notre institut intervient sur les configurations les plus fréquentes en Occitanie. Voici les ordres de grandeur constatés sur nos chantiers récents.
                   </p>
                 </div>
               </div>

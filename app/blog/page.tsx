@@ -74,8 +74,8 @@ export default function BlogPage() {
   const collectionSchema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Blog du cabinet IPB — Structure, fissures, mur porteur',
-    description: "Articles techniques rédigés par le cabinet IPB sur la structure du bâtiment : diagnostic de fissures, ouverture de mur porteur, expertise avant achat immobilier.",
+    name: 'Blog de l’institut IPB — Structure, fissures, mur porteur',
+    description: "Articles techniques rédigés par l’institut IPB sur la structure du bâtiment : diagnostic de fissures, ouverture de mur porteur, expertise avant achat immobilier.",
     url: 'https://www.ipb-expertise.fr/blog',
     mainEntity: {
       '@type': 'ItemList',
@@ -106,7 +106,7 @@ export default function BlogPage() {
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-end">
             <div className="lg:col-span-7">
               <RevealOnScroll>
-                <Eyebrow>Le blog du cabinet · IPB</Eyebrow>
+                <Eyebrow>Le blog de l’institut · IPB</Eyebrow>
               </RevealOnScroll>
 
               <RevealOnScroll delay={0.06} variant="editorial">
@@ -125,7 +125,7 @@ export default function BlogPage() {
 
               <RevealOnScroll delay={0.12} variant="subtle">
                 <p className="text-[16px] leading-[1.85] font-light text-ipb-muted max-w-[580px]">
-                  Articles rédigés par notre cabinet à partir de cas réels rencontrés sur nos chantiers en Occitanie. Diagnostic de fissures, ouverture de mur porteur, expertise avant achat — chaque sujet est traité comme on traiterait un dossier client.
+                  Articles rédigés par notre institut à partir de cas réels rencontrés sur nos chantiers en Occitanie. Diagnostic de fissures, ouverture de mur porteur, expertise avant achat — chaque sujet est traité comme on traiterait un dossier client.
                 </p>
               </RevealOnScroll>
             </div>
@@ -297,7 +297,7 @@ export default function BlogPage() {
                   Un cas concret <em>vaut mille articles.</em>
                 </h2>
                 <p className="text-[15px] leading-[1.85] font-light text-white/65 max-w-[560px]">
-                  Nos articles donnent les bonnes pistes — mais chaque maison est singulière. Décrivez votre situation au cabinet, nous vous répondons sous 24 heures.
+                  Nos articles donnent les bonnes pistes — mais chaque maison est singulière. Décrivez votre situation à l’institut, nous vous répondons sous 24 heures.
                 </p>
               </div>
               <div className="lg:col-span-4 flex flex-col gap-3 lg:items-end">
@@ -386,7 +386,7 @@ export default function BlogPage() {
               <RevealOnScroll delay={0.06} variant="subtle">
                 <div className="space-y-5 text-[15px] leading-[1.9] font-light text-ipb-muted">
                   <p>
-                    Les articles sont rédigés par le cabinet IPB à partir de cas réels rencontrés sur nos chantiers à <strong className="text-ipb-text not-italic font-medium">Toulouse (31)</strong>, <strong className="text-ipb-text not-italic font-medium">Montauban (82)</strong>, <strong className="text-ipb-text not-italic font-medium">Auch (32)</strong> et dans toute l&apos;Occitanie. Fissures structurelles liées au retrait-gonflement des argiles, ouvertures de murs porteurs en immeubles anciens, expertises avant achat immobilier — chaque sujet vient du terrain.
+                    Les articles sont rédigés par l’institut IPB à partir de cas réels rencontrés sur nos chantiers à <strong className="text-ipb-text not-italic font-medium">Toulouse (31)</strong>, <strong className="text-ipb-text not-italic font-medium">Montauban (82)</strong>, <strong className="text-ipb-text not-italic font-medium">Auch (32)</strong> et dans toute l&apos;Occitanie. Fissures structurelles liées au retrait-gonflement des argiles, ouvertures de murs porteurs en immeubles anciens, expertises avant achat immobilier — chaque sujet vient du terrain.
                   </p>
                   <p>
                     Nos guides couvrent l&apos;ensemble du cycle d&apos;un dossier : de l&apos;identification du problème (microfissure, fissure en escalier, mur à ouvrir) au choix de la solution technique (
@@ -399,7 +399,7 @@ export default function BlogPage() {
                   </p>
                   <p>
                     Tous les articles sont mis à jour régulièrement pour intégrer les dernières réglementations et les retours d&apos;expérience de nos chantiers récents. Pour un cas spécifique,{' '}
-                    <Link href="/diagnostic" className="text-ipb-orange hover:text-[#b35519] font-medium transition-colors">décrivez votre situation au cabinet</Link>.
+                    <Link href="/diagnostic" className="text-ipb-orange hover:text-[#b35519] font-medium transition-colors">décrivez votre situation à l’institut</Link>.
                   </p>
                 </div>
               </RevealOnScroll>

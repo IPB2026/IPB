@@ -24,7 +24,7 @@ export function Footer() {
             </Link>
 
             <p className="text-[14px] leading-[1.85] font-light text-white/55 max-w-[420px] mb-8">
-              Cabinet indépendant en structure du bâtiment. Diagnostic de fissures, ouverture de mur porteur, création de baie vitrée. Décennale AXA active depuis 2019.
+              Institut indépendant en structure du bâtiment. Diagnostic de fissures, ouverture de mur porteur, création de baie vitrée. Décennale AXA active depuis 2019.
             </p>
 
             <div className="space-y-5 mb-6">
@@ -73,14 +73,14 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Cabinet */}
+          {/* Institut */}
           <div>
             <p className="text-[10px] text-white/30 uppercase tracking-[0.18em] font-medium mb-5">
-              Cabinet
+              Institut
             </p>
             <ul className="space-y-3 text-[14px] font-light">
               {[
-                ['/notre-expert', 'Le cabinet'],
+                ['/notre-expert', 'L’institut'],
                 ['/avis-clients', 'Avis clients'],
                 ['/blog', 'Blog'],
                 ['/zones-intervention', "Zones d'intervention"],
@@ -123,7 +123,7 @@ export function Footer() {
         {/* Bandeau légal */}
         <div className="pt-10 border-t border-white/6 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
           <p className="text-[12px] text-white/35">
-            © {new Date().getFullYear()} IPB Expertise — Cabinet de pathologie du bâtiment · Toulouse
+            © {new Date().getFullYear()} IPB Expertise — Institut de pathologie du bâtiment · Toulouse
           </p>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-[12px] text-white/35">
             <Link href="/legal/mentions-legales" className="hover:text-white/60 transition-colors">

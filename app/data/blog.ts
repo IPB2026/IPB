@@ -3129,7 +3129,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '8 min',
     category: 'conseils',
     author: 'Adam F.',
-    metaDescription: 'Revente d\'une maison fissurée : décote 20-30%, refus de prêt, solutions structurelles (agrafage, garantie décennale) et valorisation. Cabinet expert Occitanie.',
+    metaDescription: 'Revente d\'une maison fissurée : décote 20-30%, refus de prêt, solutions structurelles (agrafage, garantie décennale) et valorisation. Institut expert Occitanie.',
     keywords: ['revente maison fissurée', 'décote', 'garantie décennale', 'agrafage', 'vente maison fissures', 'diagnostic technique'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">

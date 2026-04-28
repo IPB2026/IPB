@@ -9,12 +9,12 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Prendre rendez-vous avec le cabinet · IPB Toulouse',
-  description: "Échangez 15 minutes par téléphone avec Ludovic, fondateur du cabinet IPB. Diagnostic préalable gratuit, sans engagement. Toulouse, Montauban, Auch, Albi.",
+  title: 'Prendre rendez-vous avec l’institut · IPB Toulouse',
+  description: "Échangez 15 minutes par téléphone avec Ludovic, fondateur de l’institut IPB. Diagnostic préalable gratuit, sans engagement. Toulouse, Montauban, Auch, Albi.",
   keywords: ['rendez-vous expert fissures', 'rdv cabinet structure toulouse', 'appel ludovic ipb', 'consultation expert bâtiment'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/rdv-cabinet' },
   openGraph: {
-    title: 'Prendre rendez-vous avec le cabinet IPB',
+    title: 'Prendre rendez-vous avec l’institut IPB',
     description: "15 minutes au téléphone avec Ludovic pour qualifier votre situation et planifier la suite.",
     url: 'https://www.ipb-expertise.fr/rdv-cabinet',
     type: 'website',
@@ -35,7 +35,7 @@ export default function RdvCabinetPage() {
             <div className="grid lg:grid-cols-12 gap-12">
               {/* Côté gauche : pitch */}
               <RevealOnScroll className="lg:col-span-5">
-                <Eyebrow>Échanger avec le cabinet</Eyebrow>
+                <Eyebrow>Échanger avec l’institut</Eyebrow>
                 <h1
                   className="font-serif text-ipb-text mb-8"
                   style={{
@@ -49,7 +49,7 @@ export default function RdvCabinetPage() {
                 </h1>
 
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-6">
-                  Avant de vous déplacer ou de vous engager, nous vous proposons un premier échange par téléphone avec Ludovic, fondateur du cabinet. Vous décrivez votre situation, nous vous disons posément ce qu'il en est.
+                  Avant de vous déplacer ou de vous engager, nous vous proposons un premier échange par téléphone avec Ludovic, fondateur de l’institut. Vous décrivez votre situation, nous vous disons posément ce qu'il en est.
                 </p>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10">
                   Cet appel est <strong className="font-medium text-ipb-text not-italic">gratuit</strong> et <strong className="font-medium text-ipb-text not-italic">sans engagement</strong>. À l'issue, nous décidons ensemble de la suite — visite sur site, étude technique, ou simple conseil si rien n'est urgent.
@@ -120,7 +120,7 @@ export default function RdvCabinetPage() {
                   >
                     <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-3">Le plus posé</p>
                     <h3 className="font-serif text-ipb-text font-bold text-[22px] leading-tight mb-3 group-hover:text-ipb-orange transition-colors">
-                      Écrire au cabinet
+                      Écrire à l’institut
                     </h3>
                     <p className="text-[13px] font-light text-ipb-muted leading-[1.75] mb-5">
                       Si vous préférez l'écrit, ou si vous voulez nous transmettre des photos / plans en amont, le formulaire de contact est là pour ça. Réponse sous 24 heures ouvrées.
@@ -152,7 +152,7 @@ export default function RdvCabinetPage() {
               {[
                 {
                   num: '01',
-                  titre: 'Vous laissez le cabinet venir sur site',
+                  titre: 'Vous laissez l’institut venir sur site',
                   desc: "Nous fixons un créneau pour la visite technique. Mesures au fissuromètre, photos, lecture du bâti. Rapport écrit remis sous 7 jours, reconnu par les assurances.",
                 },
                 {

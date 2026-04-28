@@ -11,7 +11,7 @@ import { StatCounter } from '@/components/ui/StatCounter';
  * Hero — split 58/42, panel navy avec crack SVG signature.
  *
  * Positionnement éditorial cabinet de prestige.
- * Pas de promesse commerciale, juste l'identité du cabinet.
+ * Pas de promesse commerciale, juste l'identité de l’institut.
  *
  * Cf. IPB_Design_Handoff.md §8 — Homepage
  */
@@ -23,7 +23,7 @@ export function Hero() {
         {/* COLONNE GAUCHE — Texte éditorial 58% */}
         <div className="flex flex-col justify-center pr-0 lg:pr-8">
           <RevealOnScroll>
-            <Eyebrow>Cabinet de pathologie du bâtiment · depuis 2019</Eyebrow>
+            <Eyebrow>Institut de pathologie du bâtiment · depuis 2019</Eyebrow>
           </RevealOnScroll>
 
           <RevealOnScroll delay={0.06} variant="editorial">
@@ -43,7 +43,7 @@ export function Hero() {
 
           <RevealOnScroll delay={0.12} variant="subtle">
             <p className="text-[15px] leading-[1.9] font-light text-ipb-muted max-w-[540px] mb-10">
-              Cabinet indépendant en structure du bâtiment. Nous diagnostiquons les fissures qui inquiètent, étudions et réalisons les ouvertures de murs porteurs et baies vitrées. Nos rapports sont reconnus par les assurances. Nos travaux sont garantis dix ans.
+              Institut indépendant en structure du bâtiment. Nous diagnostiquons les fissures qui inquiètent, étudions et réalisons les ouvertures de murs porteurs et baies vitrées. Nos rapports sont reconnus par les assurances. Nos travaux sont garantis dix ans.
             </p>
           </RevealOnScroll>
 
@@ -53,7 +53,7 @@ export function Hero() {
                 Diagnostic gratuit
               </MagneticButton>
               <MagneticButton href="/notre-expert" variant="ghost">
-                Découvrir le cabinet
+                Découvrir l’institut
               </MagneticButton>
             </div>
           </RevealOnScroll>

@@ -222,7 +222,7 @@ export function CaseStudies() {
               href="/diagnostic"
               className="inline-flex items-center gap-2 text-ipb-orange font-medium text-[13px] tracking-wide border-b border-ipb-orange pb-1 hover:gap-3 transition-all"
             >
-              Décrire ma situation au cabinet →
+              Décrire ma situation à l’institut â
             </Link>
           </div>
         </RevealOnScroll>

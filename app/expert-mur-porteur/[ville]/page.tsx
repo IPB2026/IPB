@@ -101,7 +101,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
       {
         "@type": "Question",
         "name": `Combien de temps prennent les travaux à ${villeNom} ?`,
-        "acceptedAnswer": { "@type": "Answer", "text": "L'intervention chantier dure 2 à 5 jours. La phase préparatoire (étude structure, démarches en mairie, commande poutre IPN/HEB) prend 3 à 6 semaines. Notre cabinet coordonne l'ensemble." }
+        "acceptedAnswer": { "@type": "Answer", "text": "L'intervention chantier dure 2 à 5 jours. La phase préparatoire (étude structure, démarches en mairie, commande poutre IPN/HEB) prend 3 à 6 semaines. Notre institut coordonne l'ensemble." }
       },
       {
         "@type": "Question",
@@ -337,7 +337,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
         <section className="py-16 md:py-20 bg-ipb-orange text-white">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Votre projet à {villeNom}, notre expertise</h2>
-            <p className="text-xl text-ipb-orange-l mb-8">Décrivez votre projet à notre cabinet. Réponse d'un ingénieur structure sous 24 heures.</p>
+            <p className="text-xl text-ipb-orange-l mb-8">Décrivez votre projet à notre institut. Réponse d'un ingénieur structure sous 24 heures.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link href="/diagnostic" className="bg-white text-ipb-orange px-10 py-5 rounded-xl font-bold text-lg hover:bg-ipb-stone flex items-center justify-center gap-2 shadow-xl">
                 Lancer mon devis gratuit <ArrowRight size={20} />

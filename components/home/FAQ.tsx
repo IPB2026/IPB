@@ -20,7 +20,7 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 const faqs = [
   {
     q: "Comment savoir si une fissure sur ma maison est dangereuse ?",
-    a: "Trois indices doivent vous alerter : la fissure dépasse 2 mm de large, elle suit les joints en escalier, ou elle évolue (vous voyez qu'elle s'agrandit d'une saison à l'autre). Si vos portes coincent ou que du carrelage se fissure, c'est que la structure bouge. Notre cabinet vient sur place avec un fissuromètre pour mesurer précisément l'évolution et identifier la cause.",
+    a: "Trois indices doivent vous alerter : la fissure dépasse 2 mm de large, elle suit les joints en escalier, ou elle évolue (vous voyez qu'elle s'agrandit d'une saison à l'autre). Si vos portes coincent ou que du carrelage se fissure, c'est que la structure bouge. Notre institut vient sur place avec un fissuromètre pour mesurer précisément l'évolution et identifier la cause.",
   },
   {
     q: "Combien coûte une expertise fissures à Toulouse ?",
@@ -36,15 +36,15 @@ const faqs = [
   },
   {
     q: "Faut-il déclarer une ouverture de mur porteur en mairie ?",
-    a: "Pour une ouverture intérieure, une déclaration préalable suffit dans la majorité des communes. Pour une création de baie vitrée modifiant la façade, un permis de construire est généralement requis. En copropriété, un vote en assemblée générale est obligatoire. Notre cabinet prépare le dossier technique pour chacune de ces démarches.",
+    a: "Pour une ouverture intérieure, une déclaration préalable suffit dans la majorité des communes. Pour une création de baie vitrée modifiant la façade, un permis de construire est généralement requis. En copropriété, un vote en assemblée générale est obligatoire. Notre institut prépare le dossier technique pour chacune de ces démarches.",
   },
   {
     q: "Combien de temps pour ouvrir un mur porteur dans un appartement ?",
     a: "L'intervention sur site dure 2 à 5 jours. La phase préparatoire (étude technique, démarches administratives, vote en AG si copropriété, commande de la poutre) prend 4 à 8 semaines en amont. Le calendrier complet est fixé avec vous avant le démarrage du chantier.",
   },
   {
-    q: "Pourquoi choisir un cabinet indépendant plutôt qu'un artisan généraliste ?",
-    a: "Un artisan ne calcule pas la structure — il pose ce qu'on lui dit de poser. Un sous-dimensionnement de poutre se traduit par des fissures, un affaissement du plancher, voire une rupture. Un cabinet de pathologie du bâtiment regarde, calcule, exécute et garantit l'ensemble. C'est la différence entre une intervention couverte par une décennale active et un risque non assuré.",
+    q: "Pourquoi choisir un institut indépendant plutôt qu'un artisan généraliste ?",
+    a: "Un artisan ne calcule pas la structure — il pose ce qu'on lui dit de poser. Un sous-dimensionnement de poutre se traduit par des fissures, un affaissement du plancher, voire une rupture. Un institut de pathologie du bâtiment regarde, calcule, exécute et garantit l'ensemble. C'est la différence entre une intervention couverte par une décennale active et un risque non assuré.",
   },
   {
     q: "Vos rapports sont-ils acceptés par les assurances ?",
@@ -94,7 +94,7 @@ export function FAQ() {
                   Ce qu'on nous demande<br /><em>le plus souvent.</em>
                 </h2>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-8">
-                  Si votre question ne figure pas ci-contre, écrivez-nous ou appelez le cabinet directement.
+                  Si votre question ne figure pas ci-contre, écrivez-nous ou appelez l’institut directement.
                 </p>
                 <div className="space-y-3">
                   <Link href="/diagnostic" className="inline-flex items-center gap-2 text-ipb-orange font-medium text-[14px] tracking-wide border-b border-ipb-orange pb-1 hover:gap-3 transition-all">

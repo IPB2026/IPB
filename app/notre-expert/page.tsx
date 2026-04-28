@@ -13,13 +13,13 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
-  title: 'Le cabinet · Ludovic D. · IPB Toulouse',
-  description: "IPB est un cabinet de pathologie et de structure du bâtiment fondé en 2019 à Toulouse. Ludovic D. en est le fondateur, ingénieur structure. 850 chantiers livrés en Occitanie.",
-  keywords: ['cabinet pathologie bâtiment toulouse', 'expert fissures toulouse', "Ludovic IPB", 'ingénieur structure toulouse', "expertise bâtiment Haute-Garonne"],
+  title: 'L’institut · Ludovic D. · IPB Toulouse',
+  description: "IPB est un institut de pathologie et de structure du bâtiment fondé en 2019 à Toulouse. Ludovic D. en est le fondateur, ingénieur structure. 850 chantiers livrés en Occitanie.",
+  keywords: ['institut pathologie bâtiment toulouse', 'expert fissures toulouse', "Ludovic IPB", 'ingénieur structure toulouse', "expertise bâtiment Haute-Garonne"],
   alternates: { canonical: 'https://www.ipb-expertise.fr/notre-expert' },
   openGraph: {
-    title: 'Le cabinet · Ludovic D. · IPB Toulouse',
-    description: "Cabinet de pathologie et de structure du bâtiment fondé en 2019 à Toulouse. 850 chantiers livrés.",
+    title: 'L’institut · Ludovic D. · IPB Toulouse',
+    description: "Institut de pathologie et de structure du bâtiment fondé en 2019 à Toulouse. 850 chantiers livrés.",
     url: 'https://www.ipb-expertise.fr/notre-expert',
     type: 'profile',
   },
@@ -47,7 +47,7 @@ const certifications = [
 
 const valeurs = [
   { titre: "Indépendance", desc: "Aucun partenariat avec un fabricant. Le diagnostic guide la solution, jamais l'inverse." },
-  { titre: "Continuité", desc: "L'étude technique et les travaux sont réalisés par le même cabinet. Une seule responsabilité, une seule garantie." },
+  { titre: "Continuité", desc: "L'étude technique et les travaux sont réalisés par le même institut. Une seule responsabilité, une seule garantie." },
   { titre: "Documentation", desc: "Chaque intervention est documentée : photos, mesures, plans, attestations. Le dossier est à vous à la livraison." },
 ];
 
@@ -68,7 +68,7 @@ export default function NotreExpertPage() {
               <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
                 <Image
                   src="/images/ludovic-expert-ipb.webp"
-                  alt="Ludovic D., fondateur du cabinet IPB Expertise et ingénieur structure"
+                  alt="Ludovic D., fondateur de l’institut IPB Expertise et ingénieur structure"
                   fill
                   sizes="(max-width: 1024px) 100vw, 500px"
                   className="object-cover"
@@ -79,7 +79,7 @@ export default function NotreExpertPage() {
 
             <div>
               <RevealOnScroll delay={0.06}>
-                <Eyebrow>Le cabinet</Eyebrow>
+                <Eyebrow>L’institut</Eyebrow>
                 <h1
                   className="font-serif text-ipb-text mb-8"
                   style={{
@@ -95,7 +95,7 @@ export default function NotreExpertPage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-6">
-                  J'ai créé IPB en 2019 après quinze ans passés sur des chantiers de bâtiment et en bureau d'études. L'idée était simple : faire le diagnostic et les travaux dans le même cabinet, sans renvoyer le client d'un prestataire à l'autre, et sans vendre une solution préconçue.
+                  J'ai créé IPB en 2019 après quinze ans passés sur des chantiers de bâtiment et en bureau d'études. L'idée était simple : faire le diagnostic et les travaux dans le même institut, sans renvoyer le client d'un prestataire à l'autre, et sans vendre une solution préconçue.
                 </p>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10">
                   Aujourd'hui, nous sommes huit. L'équipe travaille en Haute-Garonne, dans le Tarn-et-Garonne, le Gers et le Tarn. Nous traitons en moyenne soixante-dix dossiers par an — diagnostic de fissures, ouverture de mur porteur, expertises avant achat. Chaque chantier est documenté, signé, garanti.
@@ -107,7 +107,7 @@ export default function NotreExpertPage() {
                     Diagnostic gratuit
                   </MagneticButton>
                   <MagneticButton href="/contact" variant="ghost">
-                    Écrire au cabinet
+                    Écrire à l’institut
                   </MagneticButton>
                 </div>
               </RevealOnScroll>
@@ -122,7 +122,7 @@ export default function NotreExpertPage() {
               {[
                 { value: 2019, label: 'Année de création', sublabel: '7 ans d\'activité' },
                 { value: 850, suffix: '+', label: 'Chantiers livrés', sublabel: 'Occitanie' },
-                { value: 8, label: 'Personnes au cabinet', sublabel: 'Étude + travaux' },
+                { value: 8, label: 'Personnes à l’institut', sublabel: 'Étude + travaux' },
                 { value: 4.9, decimals: 1, suffix: '/5', label: 'Avis Google', sublabel: 'Vérifiés sur Google' },
               ].map((s, i) => (
                 <RevealOnScroll key={s.label} delay={i * 0.06}>

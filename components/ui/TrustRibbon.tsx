@@ -13,7 +13,7 @@ const items = [
   { value: '10 ans', label: 'décennale AXA' },
   { value: '48h', label: 'délai de réponse' },
   { value: '7j', label: 'délai de visite' },
-  { value: '2019', label: 'cabinet créé en' },
+  { value: '2019', label: 'institut créé en' },
 ];
 
 function RibbonItems({ ariaHidden = false }: { ariaHidden?: boolean }) {
@@ -43,7 +43,7 @@ export function TrustRibbon() {
     <div
       className="lg:hidden bg-ipb-stone border-b border-ipb-rule overflow-hidden"
       role="region"
-      aria-label="Preuves de confiance du cabinet"
+      aria-label="Preuves de confiance de l’institut"
     >
       <div className="flex animate-marquee whitespace-nowrap py-2.5 will-change-transform">
         {/* Trois copies pour une boucle parfaitement fluide (translate -33.33%) */}

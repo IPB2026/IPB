@@ -59,9 +59,9 @@ export default function ContactPage() {
         {/* HERO + FORM (split éditorial) */}
         <section className="bg-ipb-cream">
           <div className="max-w-ipb mx-auto grid lg:grid-cols-[42fr_58fr] gap-12 lg:gap-16 px-6 lg:px-12 pt-16 lg:pt-24 pb-20 lg:pb-28">
-            {/* Colonne gauche : informations cabinet */}
+            {/* Colonne gauche : informations institut */}
             <RevealOnScroll>
-              <Eyebrow>Écrire au cabinet</Eyebrow>
+              <Eyebrow>Écrire à l’institut</Eyebrow>
               <h1
                 className="font-serif text-ipb-text mb-8"
                 style={{
@@ -75,7 +75,7 @@ export default function ContactPage() {
               </h1>
 
               <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10">
-                Notre cabinet répond à tous les messages sous 24 heures ouvrées. Pour les situations qui demandent un échange de vive voix, le téléphone reste le moyen le plus direct.
+                Notre institut répond à tous les messages sous 24 heures ouvrées. Pour les situations qui demandent un échange de vive voix, le téléphone reste le moyen le plus direct.
               </p>
 
               <div className="space-y-7">
@@ -128,7 +128,7 @@ export default function ContactPage() {
                 <div className="pt-4 border-t border-ipb-rule">
                   <div className="flex items-center gap-3 text-[11px] text-ipb-light uppercase tracking-[0.14em]">
                     <CrackSVG variant="mini" />
-                    <span>Cabinet de pathologie du bâtiment · Depuis 2019</span>
+                    <span>Institut de pathologie du bâtiment · Depuis 2019</span>
                   </div>
                 </div>
               </div>
@@ -152,7 +152,7 @@ export default function ContactPage() {
                       Message reçu.
                     </h2>
                     <p className="text-[14px] leading-[1.85] font-light text-ipb-muted max-w-sm mx-auto">
-                      Notre cabinet vous répond sous 24 heures ouvrées. Si votre demande est urgente, le téléphone reste le moyen le plus direct.
+                      Notre institut vous répond sous 24 heures ouvrées. Si votre demande est urgente, le téléphone reste le moyen le plus direct.
                     </p>
                   </div>
                 ) : (
@@ -220,7 +220,7 @@ export default function ContactPage() {
                     </div>
 
                     <p className="text-[11px] text-ipb-light leading-[1.6] pt-2">
-                      Vos données sont traitées uniquement pour répondre à votre demande. Le cabinet ne pratique aucune relance commerciale.
+                      Vos données sont traitées uniquement pour répondre à votre demande. L’institut ne pratique aucune relance commerciale.
                     </p>
 
                     <MagneticButton type="submit" variant="primary" className="w-full">

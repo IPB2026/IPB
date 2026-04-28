@@ -187,7 +187,7 @@ export function CalculatorClient() {
           Estimez le prix de votre<br /><em>ouverture de mur porteur.</em>
         </h2>
         <p className="text-[15px] leading-[1.85] font-light text-ipb-muted max-w-xl mx-auto mb-10">
-          Quatre questions, deux minutes. Vous obtenez une fourchette précise basée sur les chantiers récents du cabinet à Toulouse et alentour.
+          Quatre questions, deux minutes. Vous obtenez une fourchette précise basée sur les chantiers récents de l’institut à Toulouse et alentour.
         </p>
         <MagneticButton onClick={handleStart} variant="primary">
           Démarrer l'estimation
@@ -212,7 +212,7 @@ export function CalculatorClient() {
             Estimation envoyée.
           </h2>
           <p className="text-[14px] leading-[1.85] font-light text-ipb-muted max-w-md mx-auto">
-            Vous recevez le détail par email dans quelques minutes. Notre cabinet vous contactera sous 24 heures pour un échange technique si vous le souhaitez.
+            Vous recevez le détail par email dans quelques minutes. Notre institut vous contactera sous 24 heures pour un échange technique si vous le souhaitez.
           </p>
         </div>
       );

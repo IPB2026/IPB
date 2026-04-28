@@ -29,14 +29,14 @@ export function CtaFinal() {
                 <em>une question.</em>
               </h2>
               <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[520px]">
-                Décrivez-nous votre situation en quelques minutes. Notre cabinet vous répondra sous 24 heures, par téléphone ou par mail, selon ce que vous préférez.
+                Décrivez-nous votre situation en quelques minutes. Notre institut vous répondra sous 24 heures, par téléphone ou par mail, selon ce que vous préférez.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <MagneticButton href="/diagnostic" variant="primary">
                   Décrire ma situation
                 </MagneticButton>
                 <MagneticButton href="/contact" variant="ghost">
-                  Écrire au cabinet
+                  Écrire à l’institut
                 </MagneticButton>
               </div>
             </div>

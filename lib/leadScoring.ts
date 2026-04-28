@@ -18,7 +18,7 @@ export interface LeadScoreResult {
   tierEmoji: string;
   reasons: string[];          // raisons positives (pourquoi c'est chaud)
   signals: string[];          // signaux faibles ou négatifs (pour Ludovic)
-  recommendedAction: string;  // ce que le cabinet devrait faire
+  recommendedAction: string;  // ce que l’institut devrait faire
   callbackPriority: 'P1_4H' | 'P2_24H' | 'P3_72H';
 }
 
