@@ -63,8 +63,8 @@ const faqItems = [
     answer: "Notre institut vient sur site avec un fissuromètre, un niveau laser et une caméra thermique si nécessaire. Nous mesurons l'évolution, identifions la cause (sécheresse, tassement, défaut de chaînage) et rédigeons un rapport écrit sous 7 jours. Ce rapport est reconnu par votre assurance.",
   },
   {
-    question: "Combien coûte une expertise fissures à Toulouse ?",
-    answer: "Le diagnostic complet est facturé 249 € TTC, déductible si vous nous confiez ensuite les travaux. Cela inclut le déplacement, les mesures instrumentées et le rapport écrit.",
+    question: "Comment se passe une expertise fissures à Toulouse ?",
+    answer: "Le diagnostic complet est réalisé sur site et déductible des travaux si vous nous confiez ensuite l'intervention. Il inclut le déplacement, les mesures instrumentées et le rapport écrit. Le tarif précis vous est communiqué sous 24 heures après description de votre situation.",
   },
   {
     question: "Mon assurance prend-elle en charge les fissures de sécheresse ?",

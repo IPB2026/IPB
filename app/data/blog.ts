@@ -176,7 +176,7 @@ const blogPosts: { [key: string]: BlogPost } = {
           <tbody>
             <tr>
               <td class="border border-slate-300 px-4 py-2"><strong>Diagnostic expert IPB</strong></td>
-              <td class="border border-slate-300 px-4 py-2">249€</td>
+              <td class="border border-slate-300 px-4 py-2">Sur devis</td>
               <td class="border border-slate-300 px-4 py-2">Toute fissure suspecte — déductible sur travaux</td>
             </tr>
             <tr>
@@ -198,13 +198,13 @@ const blogPosts: { [key: string]: BlogPost } = {
         </table>
       </div>
 
-      <p><strong>Notre recommandation</strong> : dans 70% des cas à Toulouse, l&apos;agrafage structurel suffit à résoudre le problème durablement. Les micropieux ne sont nécessaires que pour les cas les plus graves (affaissement supérieur à 10 mm). Le diagnostic à 249€ TTC permet de déterminer précisément la solution adaptée à votre situation et d&apos;éviter tout sur-traitement.</p>
+      <p><strong>Notre recommandation</strong> : dans 70% des cas à Toulouse, l&apos;agrafage structurel suffit à résoudre le problème durablement. Les micropieux ne sont nécessaires que pour les cas les plus graves (affaissement supérieur à 10 mm). Le diagnostic permet de déterminer précisément la solution adaptée à votre situation et d&apos;éviter tout sur-traitement.</p>
 
       <h2>Notre conseil : ne laissez pas traîner</h2>
       
       <p>Les fissures ne sont pas une fatalité. Mais elles ne se réparent pas toutes seules. Chaque hiver qui passe aggrave la situation, et chaque mois d'attente augmente le coût de la réparation.</p>
 
-      <p><strong>Notre conseil d'expert</strong> : Ne laissez pas l'inquiétude paralyser votre action. Un diagnostic précis (249€, déductible sur travaux) vous dira en 1h30 si votre maison est en danger ou si vous pouvez attendre. Cette expertise vous évitera soit une panique inutile, soit une catastrophe évitable.</p>
+      <p><strong>Notre conseil d'expert</strong> : Ne laissez pas l'inquiétude paralyser votre action. Un diagnostic précis (déductible des travaux) vous dira en 1h30 si votre maison est en danger ou si vous pouvez attendre. Cette expertise vous évitera soit une panique inutile, soit une catastrophe évitable.</p>
 
       <h2>Pourquoi ne pas attendre ?</h2>
 
@@ -347,7 +347,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       
       <p>L'humidité dans les murs n'est pas une fatalité. Mais elle ne se répare pas toute seule. Chaque mois qui passe aggrave la situation et augmente le coût de la réparation.</p>
 
-      <p><strong>Notre conseil d'expert</strong> : Si vous voyez du salpêtre ou des moisissures qui reviennent, ne perdez plus de temps avec des solutions cosmétiques. Un diagnostic précis (249€, déductible sur travaux) vous dira en 1h30 si vous avez une remontée capillaire ou de la condensation, et quelle solution est adaptée à votre cas.</p>
+      <p><strong>Notre conseil d'expert</strong> : Si vous voyez du salpêtre ou des moisissures qui reviennent, ne perdez plus de temps avec des solutions cosmétiques. Un diagnostic précis (déductible des travaux) vous dira en 1h30 si vous avez une remontée capillaire ou de la condensation, et quelle solution est adaptée à votre cas.</p>
 
       <h2>Après le traitement : la phase de séchage</h2>
 
@@ -588,7 +588,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>Les micropieux restent la solution de dernier recours pour les cas les plus graves. Mais si on vous les propose directement, sans avoir évoqué l'agrafage, <strong>demandez pourquoi</strong>. Vous risquez de payer 30 000€ de trop.</p>
 
-      <p><strong>Notre conseil d'expert</strong> : Un diagnostic précis (249€, déductible sur travaux) vous dira en 1h30 quelle solution est adaptée à votre situation. Cette expertise vous évitera soit une dépense inutile (micropieux quand l'agrafage suffit), soit une solution insuffisante (agrafage quand les micropieux sont nécessaires).</p>
+      <p><strong>Notre conseil d'expert</strong> : Un diagnostic précis (déductible des travaux) vous dira en 1h30 quelle solution est adaptée à votre situation. Cette expertise vous évitera soit une dépense inutile (micropieux quand l'agrafage suffit), soit une solution insuffisante (agrafage quand les micropieux sont nécessaires).</p>
 
       <h2>Comment l&apos;expert choisit entre agrafage et micropieux</h2>
 
@@ -626,10 +626,10 @@ const blogPosts: { [key: string]: BlogPost } = {
           <li><strong>Longrine</strong> : fondation sous-dimensionnée sur une partie de la maison, pas de tassement actif du sol</li>
           <li><strong>Tirants</strong> : murs qui s&apos;écartent, bâtiment ancien, pas de mouvement de fondation</li>
         </ul>
-        <p class="mt-4 text-orange-900 font-bold">Dans tous les cas, seul un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic précis à 249€</a> permet de déterminer la bonne technique.</p>
+        <p class="mt-4 text-orange-900 font-bold">Dans tous les cas, seul un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic précis</a> permet de déterminer la bonne technique.</p>
       </div>
 
-      <p>Le choix entre agrafage et micropieux ne devrait jamais se faire au hasard ou sur la seule base du prix. Un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic expert</a> (249€ TTC, déductible des travaux) vous donne la réponse claire : quelle technique est adaptée à VOTRE maison, VOTRE sol, VOTRE budget. En Occitanie, 85% de nos interventions se font en agrafage — mais les 15% restants nécessitent vraiment des micropieux, et il vaut mieux le savoir avant.</p>
+      <p>Le choix entre agrafage et micropieux ne devrait jamais se faire au hasard ou sur la seule base du prix. Un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic expert</a> (déductible des travaux) vous donne la réponse claire : quelle technique est adaptée à VOTRE maison, VOTRE sol, VOTRE budget. En Occitanie, 85% de nos interventions se font en agrafage — mais les 15% restants nécessitent vraiment des micropieux, et il vaut mieux le savoir avant.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">La question n'est pas "Quelle est la solution la plus chère ?" mais "Quelle est la solution la plus adaptée à mon cas ?"</p>
     `
@@ -871,7 +871,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
         <h3 class="font-bold text-orange-900 mb-3">Notre expertise chez IPB</h3>
-        <p class="text-orange-800">Nous avons traité <strong>plus de 150 cas de fissures en escalier</strong> en Haute-Garonne depuis 2019. Notre diagnostic (249€, déductible sur travaux) inclut :</p>
+        <p class="text-orange-800">Nous avons traité <strong>plus de 150 cas de fissures en escalier</strong> en Haute-Garonne depuis 2019. Notre diagnostic (déductible des travaux) inclut :</p>
         <ul class="text-orange-800 mt-3 space-y-1">
           <li>Mesure précise du dénivelé (niveau laser)</li>
           <li>Analyse de l'évolution des fissures (témoins)</li>
@@ -1387,7 +1387,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <div class="my-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
         <h3 class="font-bold text-blue-900 mb-3">Notre approche chez IPB</h3>
         <p class="text-blue-800">Chez IPB, nous ne vendons pas de VMC. Mais nous savons <strong>diagnostiquer l'origine de votre humidité</strong>. Si c'est de la condensation, nous vous orienterons vers un spécialiste ventilation (nous avons des partenaires de confiance). Si c'est une remontée capillaire, nous interviendrons avec nos solutions d'injection résine.</p>
-        <p class="text-blue-800 mt-2">Notre diagnostic (249€, déductible sur travaux) vous permet d'avoir <strong>la bonne réponse avant de dépenser</strong>. Pas de vente forcée, juste un diagnostic honnête.</p>
+        <p class="text-blue-800 mt-2">Notre diagnostic (déductible des travaux) vous permet d'avoir <strong>la bonne réponse avant de dépenser</strong>. Pas de vente forcée, juste un diagnostic honnête.</p>
       </div>
     `
   },
@@ -1563,13 +1563,13 @@ const blogPosts: { [key: string]: BlogPost } = {
       
       <p>Une porte qui coince + une fissure = <strong>votre maison vous envoie un SOS</strong>. Ne l'ignorez pas. Ne tentez pas de "bricoler" une solution temporaire.</p>
 
-      <p><strong>Notre conseil d'expert</strong> : Un diagnostic précis (249€, déductible sur travaux) vous dira en 1h30 si votre maison bouge, pourquoi, et quelle solution est adaptée. Cette expertise vous évitera soit une panique inutile, soit une catastrophe évitable (et des réparations qui coûtent 3x plus cher).</p>
+      <p><strong>Notre conseil d'expert</strong> : Un diagnostic précis (déductible des travaux) vous dira en 1h30 si votre maison bouge, pourquoi, et quelle solution est adaptée. Cette expertise vous évitera soit une panique inutile, soit une catastrophe évitable (et des réparations qui coûtent 3x plus cher).</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">La question n'est pas "Est-ce grave ?" mais "Quand dois-je agir ?"</p>
 
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
         <h3 class="font-bold text-orange-900 mb-3">Action immédiate recommandée</h3>
-        <p class="text-orange-800">Si vous lisez cet article parce que vous avez ce problème <strong>en ce moment</strong>, ne perdez pas une semaine de plus. Demandez un diagnostic dans les 15 jours. Le coût d'un diagnostic (249€) est dérisoire face au surcoût d'une réparation tardive (+ 5 000€ à 10 000€).</p>
+        <p class="text-orange-800">Si vous lisez cet article parce que vous avez ce problème <strong>en ce moment</strong>, ne perdez pas une semaine de plus. Demandez un diagnostic dans les 15 jours. Le coût d'un diagnostic est dérisoire face au surcoût d'une réparation tardive (+ 5 000€ à 10 000€).</p>
       </div>
     `
   },
@@ -1772,7 +1772,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       
       <p>Le sol argileux toulousain est un ennemi invisible, mais prévisible. Si vous êtes en zone à risque (vérifiez sur Géorisques), <strong>ne laissez pas les fissures s'installer</strong>. Chaque cycle de retrait-gonflement les aggrave.</p>
 
-      <p><strong>Notre conseil d'expert</strong> : Si vous voyez des fissures apparaître après une période de sécheresse, ne les minimisez pas. Un diagnostic précis (249€, déductible sur travaux) vous dira si c'est lié au sol argileux, si c'est évolutif, et quelle solution est adaptée. Cette expertise peut aussi servir de base pour un dossier Cat-Nat auprès de votre assurance.</p>
+      <p><strong>Notre conseil d'expert</strong> : Si vous voyez des fissures apparaître après une période de sécheresse, ne les minimisez pas. Un diagnostic précis (déductible des travaux) vous dira si c'est lié au sol argileux, si c'est évolutif, et quelle solution est adaptée. Cette expertise peut aussi servir de base pour un dossier Cat-Nat auprès de votre assurance.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">Le sol argileux ne changera jamais. Votre maison, si.</p>
     `
@@ -1940,7 +1940,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h3>Coût réel (transparent)</h3>
       <ul>
-        <li><strong>Diagnostic</strong> : 249€ (déductible sur devis)</li>
+        <li><strong>Diagnostic</strong> : déductible des travaux</li>
         <li><strong>Agrafage + finitions</strong> : 12 000€ - 18 000€ pour une façade de 100m²</li>
         <li><strong>Garantie</strong> : Décennale (10 ans)</li>
         <li><strong>Durée</strong> : 3 à 5 jours</li>
@@ -1986,7 +1986,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       
       <p>Le rebouchage coûte moins cher à court terme (800€ vs 15 000€). Mais si la fissure est structurelle, vous allez reboucher 2, 3, 4 fois... et finir par agrafer quand même. <strong>Coût total : plus cher qu'agrafer dès le début.</strong></p>
 
-      <p><strong>Notre conseil d'expert</strong> : Avant de reboucher, faites le test du scotch pendant 3-6 mois. Si la fissure évolue, investissez dans un diagnostic (249€). Cette expertise vous dira précisément si reboucher suffit ou s'il faut agrafer. Vous économiserez potentiellement 5 000€ en évitant les rebouchages inutiles.</p>
+      <p><strong>Notre conseil d'expert</strong> : Avant de reboucher, faites le test du scotch pendant 3-6 mois. Si la fissure évolue, investissez dans un diagnostic . Cette expertise vous dira précisément si reboucher suffit ou s'il faut agrafer. Vous économiserez potentiellement 5 000€ en évitant les rebouchages inutiles.</p>
 
       <h2>L&apos;erreur du rebouchage seul : pourquoi la fissure revient toujours</h2>
 
@@ -2010,7 +2010,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <div class="my-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
         <p class="font-bold text-red-900 mb-2">Le signal qui ne trompe pas</p>
-        <p class="text-red-800">Si vous avez rebouché une fissure et qu&apos;elle est réapparue en <strong>moins de 12 mois</strong>, le mouvement est actif. Chaque rebouchage supplémentaire est de l&apos;argent jeté. Faites réaliser un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic structurel (249€)</a> pour connaître la vraie cause et le bon traitement.</p>
+        <p class="text-red-800">Si vous avez rebouché une fissure et qu&apos;elle est réapparue en <strong>moins de 12 mois</strong>, le mouvement est actif. Chaque rebouchage supplémentaire est de l&apos;argent jeté. Faites réaliser un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic structurel </a> pour connaître la vraie cause et le bon traitement.</p>
       </div>
 
       <h2>Ravalement de façade et fissures : dans quel ordre ?</h2>
@@ -2029,7 +2029,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>Le bon séquençage</h3>
       <p>Voici l&apos;ordre à respecter impérativement :</p>
       <ol>
-        <li><strong>Diagnostic structurel</strong> (249€) : identifier la cause de la fissure et déterminer si elle est active</li>
+        <li><strong>Diagnostic structurel</strong>  : identifier la cause de la fissure et déterminer si elle est active</li>
         <li><strong>Agrafage</strong> (si fissure active) : stabiliser la structure, garantie décennale</li>
         <li><strong>Attente de 2-3 mois</strong> : vérifier que la structure est stabilisée (pas de nouvelle fissure)</li>
         <li><strong>Ravalement</strong> : l&apos;enduit neuf est posé sur une structure stable, il tiendra des décennies</li>
@@ -2219,7 +2219,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h3>Prix moyens 2025</h3>
       <ul>
-        <li><strong>Diagnostic</strong> : 249€ (déductible sur devis)</li>
+        <li><strong>Diagnostic</strong> : déductible des travaux</li>
         <li><strong>Injection résine</strong> : 80€ - 120€ /ml</li>
         <li><strong>Exemple</strong> : Mur de 10 mètres = 800€ - 1 200€</li>
         <li><strong>Garantie</strong> : 30 ans sur la barrière étanche</li>
@@ -2288,13 +2288,13 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Tribunal judiciaire</strong> : Demande de réduction de loyer et/ou de dommages-intérêts (frais médicaux, dégradation des meubles)</li>
       </ol>
 
-      <p><strong>Important</strong> : Un rapport de <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic professionnel</a> (249€ TTC) constitue une pièce maîtresse du dossier. Il prouve objectivement la cause structurelle du problème et la responsabilité du propriétaire.</p>
+      <p><strong>Important</strong> : Un rapport de <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic professionnel</a> constitue une pièce maîtresse du dossier. Il prouve objectivement la cause structurelle du problème et la responsabilité du propriétaire.</p>
 
       <h2>Le salpêtre : un problème qui ne se règle pas tout seul</h2>
       
       <p>Le salpêtre est le symptôme visible d'un problème invisible : l'eau qui remonte du sol. Gratter, peindre, déshumidifier... tout ça masque temporairement, mais ne résout rien.</p>
 
-      <p><strong>Notre conseil d'expert</strong> : Si vous voyez du salpêtre au bas de vos murs, ne perdez pas de temps avec des solutions cosmétiques. Un diagnostic précis (249€, déductible sur travaux) vous dira si c'est une remontée capillaire (injection résine) ou autre chose (infiltration, condensation). Cette expertise vous évitera de dépenser de l'argent dans des traitements inefficaces.</p>
+      <p><strong>Notre conseil d'expert</strong> : Si vous voyez du salpêtre au bas de vos murs, ne perdez pas de temps avec des solutions cosmétiques. Un diagnostic précis (déductible des travaux) vous dira si c'est une remontée capillaire (injection résine) ou autre chose (infiltration, condensation). Cette expertise vous évitera de dépenser de l'argent dans des traitements inefficaces.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">Le salpêtre ne ment jamais. Il vous dit : "L'eau remonte." Écoutez-le.</p>
     `
@@ -2500,7 +2500,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <div class="my-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
         <p class="font-bold text-blue-800">Le diagnostic IPB détermine la solution exacte</p>
-        <p class="text-blue-700">Avec un humidimètre à sonde, une caméra thermique et un test à la bombe à carbure, un expert IPB identifie la source exacte de l&apos;humidité en 1h30. Ce <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic à 249€ TTC</a> (déductible sur travaux) vous évite de dépenser des milliers d&apos;euros dans le mauvais traitement.</p>
+        <p class="text-blue-700">Avec un humidimètre à sonde, une caméra thermique et un test à la bombe à carbure, un expert IPB identifie la source exacte de l&apos;humidité en 1h30. Ce <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic</a> (déductible sur travaux) vous évite de dépenser des milliers d&apos;euros dans le mauvais traitement.</p>
       </div>
 
       <h2>Quand la condensation et l&apos;infiltration coexistent</h2>
@@ -2529,13 +2529,13 @@ const blogPosts: { [key: string]: BlogPost } = {
       
       <p>Avant de dépenser un centime dans des travaux d'étanchéité ou une VMC, <strong>faites le test de la feuille d'aluminium</strong>. 5 minutes de votre temps peuvent vous éviter de dépenser 5 000€ dans le mauvais traitement.</p>
 
-      <p><strong>Notre conseil d'expert</strong> : Si le test n'est pas concluant ou si vous avez un doute, demandez un diagnostic précis (249€, déductible sur travaux). Un expert viendra avec un humidimètre, une caméra thermique, et vous dira avec certitude si c'est de la condensation, une infiltration, ou les deux. Cette expertise vous évitera de traiter le mauvais problème.</p>
+      <p><strong>Notre conseil d'expert</strong> : Si le test n'est pas concluant ou si vous avez un doute, demandez un diagnostic précis (déductible des travaux). Un expert viendra avec un humidimètre, une caméra thermique, et vous dira avec certitude si c'est de la condensation, une infiltration, ou les deux. Cette expertise vous évitera de traiter le mauvais problème.</p>
 
       <h2>Le coût de l&apos;erreur de diagnostic</h2>
 
       <p>Traiter de la condensation comme une infiltration (ou l&apos;inverse) est la première cause de dépenses inutiles en rénovation. Exemple concret : un propriétaire à Colomiers a fait étanchéifier sa façade pour 4 500€ alors que son problème était de la condensation. Résultat : l&apos;humidité a empiré car le mur ne pouvait plus respirer. Il a finalement dû installer une VMI (2 800€) et refaire l&apos;enduit intérieur (1 500€). Coût total : <strong>8 800€ au lieu de 2 800€</strong>.</p>
 
-      <p>Un diagnostic professionnel à 249€ TTC vous évite ce genre d&apos;erreur. Chez IPB, l&apos;expert utilise une <strong>caméra thermique</strong> (qui révèle les ponts thermiques sources de condensation), un <strong>humidimètre à sonde</strong> (qui mesure l&apos;humidité en profondeur dans le mur) et un <strong>test à la bombe à carbure</strong> (qui donne le taux d&apos;humidité exact du matériau). Ces 3 instruments combinés permettent un diagnostic fiable à <strong>98%</strong>.</p>
+      <p>Un diagnostic professionnel vous évite ce genre d&apos;erreur. Chez IPB, l&apos;expert utilise une <strong>caméra thermique</strong> (qui révèle les ponts thermiques sources de condensation), un <strong>humidimètre à sonde</strong> (qui mesure l&apos;humidité en profondeur dans le mur) et un <strong>test à la bombe à carbure</strong> (qui donne le taux d&apos;humidité exact du matériau). Ces 3 instruments combinés permettent un diagnostic fiable à <strong>98%</strong>.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">La question n'est pas "J'ai de l'humidité" mais "D'où vient cette humidité ?"</p>
     `
@@ -2742,14 +2742,14 @@ const blogPosts: { [key: string]: BlogPost } = {
       
       <h3>Prix du marché (2025)</h3>
       <ul>
-        <li><strong>Diagnostic basique</strong> (visite + rapport simple) : 249€ - 300€</li>
+        <li><strong>Diagnostic basique</strong> (visite + rapport simple) : Sur devis</li>
         <li><strong>Diagnostic complet</strong> (visite + mesures + rapport détaillé + photos) : 300€ - 500€</li>
         <li><strong>Expertise assurance</strong> (pour dossier Cat-Nat) : 500€ - 1 000€</li>
       </ul>
 
       <div class="my-8 p-6 bg-green-50 border border-green-200 rounded-xl">
         <h3 class="font-bold text-green-900 mb-3">Notre formule</h3>
-        <p class="text-green-800"><strong>249€ déductibles sur travaux</strong>. Si vous signez avec nous, le diagnostic est offert. Si vous ne signez pas, vous payez 249€ pour le rapport complet (photos, mesures, solutions).</p>
+        <p class="text-green-800"><strong>Déductible des travaux</strong>. Si vous signez avec nous, le diagnostic est offert. Si vous ne signez pas, vous payez le rapport complet (photos, mesures, solutions).</p>
       </div>
 
       <h2>Diagnostic gratuit : faut-il s'en méfier ?</h2>
@@ -2776,7 +2776,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Pourquoi le diagnostic vous fera économiser gros</h2>
       
-      <p>Un diagnostic structurel complet (249€ - 300€) peut vous faire économiser <strong>des milliers d'euros</strong> en évitant :</p>
+      <p>Un diagnostic structurel complet (Sur devis) peut vous faire économiser <strong>des milliers d'euros</strong> en évitant :</p>
 
       <ul>
         <li>Le sur-traitement (micropieux à 45 000€ alors que l'agrafage à 15 000€ suffit)</li>
@@ -2784,7 +2784,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>Le mauvais traitement (VMC alors que c'est une infiltration)</li>
       </ul>
 
-      <p><strong>Notre conseil d'expert</strong> : Ne signez JAMAIS un devis sans avoir eu un diagnostic détaillé avec mesures objectives. 249€ de diagnostic peuvent vous éviter 30 000€ de travaux inutiles.</p>
+      <p><strong>Notre conseil d'expert</strong> : Ne signez JAMAIS un devis sans avoir eu un diagnostic détaillé avec mesures objectives. Un diagnostic peut vous éviter 30 000€ de travaux inutiles.</p>
 
       <h2>Les instruments de mesure utilisés par nos experts</h2>
 
@@ -2819,7 +2819,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <h3>L&apos;expert IPB : votre défenseur technique</h3>
-      <p>Notre diagnostic (249€ TTC, déductible des travaux) est réalisé dans <strong>votre intérêt exclusif</strong> :</p>
+      <p>Notre diagnostic (déductible des travaux) est réalisé dans <strong>votre intérêt exclusif</strong> :</p>
       <ul>
         <li>Visite de 1h à 1h30 avec tous les instruments de mesure</li>
         <li>Rapport détaillé de 15-20 pages avec photos annotées et mesures chiffrées</li>
@@ -2983,7 +2983,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h3>Grille tarifaire 2025</h3>
       <ul>
-        <li><strong>Diagnostic préalable</strong> : 249€ (déductible sur devis)</li>
+        <li><strong>Diagnostic préalable</strong> : sur devis (déductible des travaux)</li>
         <li><strong>Injection résine</strong> : 80€ - 120€ /ml</li>
         <li><strong>Exemple mur 10m</strong> : 800€ - 1 200€</li>
         <li><strong>Exemple mur 20m</strong> : 1 600€ - 2 400€</li>
@@ -2993,7 +2993,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <div class="my-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
         <h3 class="font-bold text-blue-900 mb-3">Coût total réel (exemple cave 30m²)</h3>
         <ul class="list-none text-blue-800 space-y-1">
-          <li>→ Diagnostic : 249€</li>
+          <li>→ Diagnostic : sur devis</li>
           <li>→ Injection résine (15ml de mur) : 1 200€ - 1 800€</li>
           <li>→ VMI (ventilation) : 2 000€ - 3 000€</li>
           <li>→ Finitions (enduit + peinture) : 1 000€ - 1 500€</li>
@@ -3114,7 +3114,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>Toutes les autres méthodes (drainage seul, peinture étanche, déshumidificateur) sont soit des compléments, soit des pansements temporaires.</p>
 
-      <p><strong>Notre conseil d'expert</strong> : Si vous voyez du salpêtre au pied de vos murs, ne perdez pas de temps avec des solutions cosmétiques. Un diagnostic précis (249€, déductible sur travaux) vous confirmera si c'est une remontée capillaire et vous donnera un devis transparent pour l'injection résine. Une fois traité, vous n'aurez plus jamais ce problème.</p>
+      <p><strong>Notre conseil d'expert</strong> : Si vous voyez du salpêtre au pied de vos murs, ne perdez pas de temps avec des solutions cosmétiques. Un diagnostic précis (déductible des travaux) vous confirmera si c'est une remontée capillaire et vous donnera un devis transparent pour l'injection résine. Une fois traité, vous n'aurez plus jamais ce problème.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">L'injection résine : un investissement pour 30 ans de tranquillité.</p>
     `
@@ -3369,7 +3369,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>Dormir tranquille (aucun risque de vice caché)</li>
       </ul>
 
-      <p><strong>Notre conseil d'expert</strong> : Si vous envisagez de vendre dans les 2 ans, faites réaliser un diagnostic structurel maintenant (249€). Vous saurez exactement quels travaux faire, combien ça coûte, et combien vous allez récupérer à la revente. Dans 95% des cas, investir dans l'agrafage avant la vente est <strong>rentable</strong>.</p>
+      <p><strong>Notre conseil d'expert</strong> : Si vous envisagez de vendre dans les 2 ans, faites réaliser un diagnostic structurel maintenant . Vous saurez exactement quels travaux faire, combien ça coûte, et combien vous allez récupérer à la revente. Dans 95% des cas, investir dans l'agrafage avant la vente est <strong>rentable</strong>.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">Une maison réparée + garantie = un argument de vente, pas un boulet.</p>
     `
@@ -3574,7 +3574,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Décidez</strong> : Si inactive + aucun signe = rebouchez. Si active ou signes collatéraux = diagnostic.</li>
       </ol>
 
-      <p><strong>Notre conseil d'expert</strong> : En cas de doute, un diagnostic rapide (249€, déductible sur travaux) vous dira en 30 minutes si c'est bénin ou grave. Cette expertise peut vous éviter soit une panique inutile, soit un effondrement partiel dans 6 mois.</p>
+      <p><strong>Notre conseil d'expert</strong> : En cas de doute, un diagnostic rapide (déductible des travaux) vous dira en 30 minutes si c'est bénin ou grave. Cette expertise peut vous éviter soit une panique inutile, soit un effondrement partiel dans 6 mois.</p>
 
       <h2>Fissure plafond en appartement : les particularités</h2>
 
@@ -3596,7 +3596,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>Déclarer le sinistre à l&apos;assurance de la copropriété si c&apos;est structurel</li>
         <li>Inscrire les travaux à l&apos;ordre du jour de la prochaine AG (ou convoquer une AG extraordinaire si urgence)</li>
       </ol>
-      <p>Si le syndic ne réagit pas, vous pouvez le mettre en demeure. En dernier recours, un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">rapport d&apos;expertise indépendant (249€)</a> constitue une preuve juridique recevable pour contraindre le syndic à agir.</p>
+      <p>Si le syndic ne réagit pas, vous pouvez le mettre en demeure. En dernier recours, un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">rapport d&apos;expertise indépendant </a> constitue une preuve juridique recevable pour contraindre le syndic à agir.</p>
 
       <h3>Qui paye quoi ?</h3>
       <ul>
@@ -3626,7 +3626,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p class="text-orange-800">Avant de reboucher une fissure au plafond, <strong>identifiez si c&apos;est une partie commune ou privative</strong>. Si vous rebouchez vous-même une fissure structurelle, vous masquez un problème qui relève de la copropriété — et vous pourriez perdre votre recours. Faites d&apos;abord constater par un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">expert indépendant</a>, puis informez le syndic.</p>
       </div>
 
-      <p class="font-bold text-lg text-slate-900 mt-6">Mieux vaut 249€ de diagnostic que 15 000€ de réparation d'urgence.</p>
+      <p class="font-bold text-lg text-slate-900 mt-6">Mieux vaut un diagnostic que 15 000€ de réparation d'urgence.</p>
     `
   },
   'humidite-cave-sous-sol': {
@@ -3881,7 +3881,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Transformer une cave humide en pièce utile (buanderie, atelier, bureau, salle de sport) est tout à fait possible — mais l&apos;ordre des opérations est <strong>crucial</strong>. Inverser deux étapes peut ruiner des milliers d&apos;euros de travaux.</p>
 
       <h3>Étape 1 : Diagnostic de la cause exacte</h3>
-      <p>Avant toute chose, un expert doit identifier la <strong>source précise</strong> de l&apos;humidité avec des outils de mesure (humidimètre à sonde, caméra thermique, test à la bombe à carbure). Est-ce une remontée capillaire ? Une infiltration latérale ? De la condensation ? Chaque cause a son traitement spécifique. Un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic professionnel</a> (249€ TTC, déductible sur travaux) vous évitera des erreurs coûteuses.</p>
+      <p>Avant toute chose, un expert doit identifier la <strong>source précise</strong> de l&apos;humidité avec des outils de mesure (humidimètre à sonde, caméra thermique, test à la bombe à carbure). Est-ce une remontée capillaire ? Une infiltration latérale ? De la condensation ? Chaque cause a son traitement spécifique. Un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic professionnel</a> (sur devis, déductible sur travaux) vous évitera des erreurs coûteuses.</p>
 
       <h3>Étape 2 : Traitement de la source d&apos;humidité</h3>
       <p>Selon le diagnostic :</p>
@@ -3933,7 +3933,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>Injection seule alors qu'il faut aussi du cuvelage = traitement incomplet</li>
       </ul>
 
-      <p><strong>Notre conseil d'expert</strong> : Avant tout travaux, faites réaliser un diagnostic précis (249€, déductible sur travaux). Un expert viendra avec un humidimètre, identifiera les sources d'humidité, et vous proposera LA bonne solution (pas la plus chère, la plus adaptée). Cette expertise vous fera économiser des milliers d'euros en évitant le mauvais traitement.</p>
+      <p><strong>Notre conseil d'expert</strong> : Avant tout travaux, faites réaliser un diagnostic précis (déductible des travaux). Un expert viendra avec un humidimètre, identifiera les sources d'humidité, et vous proposera LA bonne solution (pas la plus chère, la plus adaptée). Cette expertise vous fera économiser des milliers d'euros en évitant le mauvais traitement.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">Une cave saine = un diagnostic précis + le bon traitement.</p>
     `
@@ -4153,7 +4153,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>Chaque été de sécheresse aggrave les fissures existantes et en crée de nouvelles. Le coût de l&apos;inaction est mesurable : une <a href="/fissure-en-escalier-causes" class="text-orange-600 underline hover:text-orange-700">fissure en escalier</a> de 3 mm traitée aujourd&apos;hui coûte environ 10 000€ en agrafage. La même fissure à 8 mm dans 3 ans nécessitera des micropieux à 35 000€. C&apos;est une augmentation de <strong>250%</strong>.</p>
 
-      <p>Notre diagnostic à 249€ TTC (déductible des travaux) vous donne un état précis de la situation : gravité des fissures, cause identifiée, solutions chiffrées. Ce rapport est aussi un atout précieux pour votre dossier d&apos;assurance en cas de <a href="/fissure-secheresse-indemnisation" class="text-orange-600 underline hover:text-orange-700">catastrophe naturelle sécheresse</a>.</p>
+      <p>Notre diagnostic (déductible des travaux) vous donne un état précis de la situation : gravité des fissures, cause identifiée, solutions chiffrées. Ce rapport est aussi un atout précieux pour votre dossier d&apos;assurance en cas de <a href="/fissure-secheresse-indemnisation" class="text-orange-600 underline hover:text-orange-700">catastrophe naturelle sécheresse</a>.</p>
 
       <p>Le Gers est un département où le patrimoine immobilier représente souvent l&apos;essentiel de l&apos;épargne d&apos;une famille. Protéger votre maison contre les fissures, c&apos;est protéger votre avenir financier. Avec plus de 300 maisons traitées en Occitanie depuis 2019 et un taux de satisfaction de 98%, IPB est votre partenaire de confiance pour le diagnostic et le traitement des fissures dans tout le Gers.</p>
 
@@ -4425,7 +4425,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>Conservez tous les devis et factures de traitement</li>
       </ol>
 
-      <p>Le rapport d&apos;expertise IPB à 249€ TTC constitue une <strong>pièce technique décisive</strong> dans votre dossier d&apos;assurance. Il documente l&apos;étendue de l&apos;infestation, identifie la cause, et chiffre les travaux nécessaires — autant d&apos;éléments que l&apos;expert d&apos;assurance ne peut pas contester.</p>
+      <p>Le rapport d&apos;expertise IPB constitue une <strong>pièce technique décisive</strong> dans votre dossier d&apos;assurance. Il documente l&apos;étendue de l&apos;infestation, identifie la cause, et chiffre les travaux nécessaires — autant d&apos;éléments que l&apos;expert d&apos;assurance ne peut pas contester.</p>
 
       <h2>Prévention : comment protéger sa maison de la mérule</h2>
 
@@ -4456,7 +4456,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>En Occitanie, la mérule est moins fréquente qu&apos;en Bretagne ou dans le Nord, mais elle existe dans les maisons anciennes avec des problèmes d&apos;<a href="/expertise/humidite" class="text-orange-600 underline hover:text-orange-700">humidité non traitée</a>. La prévention coûte quelques centaines d&apos;euros par an. Le traitement curatif peut en coûter plusieurs dizaines de milliers. Le calcul est vite fait.</p>
 
-      <p>La mérule est l&apos;un des rares cas où <strong>chaque semaine compte</strong>. Un diagnostic rapide (249€ TTC) permet d&apos;évaluer l&apos;étendue de la contamination et de planifier le traitement avant que les dégâts ne deviennent irréversibles. En Occitanie, IPB intervient sous 48h pour les cas suspectés de mérule.</p>
+      <p>La mérule est l&apos;un des rares cas où <strong>chaque semaine compte</strong>. Un diagnostic rapide permet d&apos;évaluer l&apos;étendue de la contamination et de planifier le traitement avant que les dégâts ne deviennent irréversibles. En Occitanie, IPB intervient sous 48h pour les cas suspectés de mérule.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">Suspicion de mérule ou champignon ? Diagnostic expert : 05 82 95 33 75</p>
     `
@@ -4689,7 +4689,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </div>
 
       <h3>Traitements différents</h3>
-      <p>Le salpêtre se traite en coupant les remontées capillaires (injection de résine). Les <a href="/moisissures-maison-sante" class="text-orange-600 underline hover:text-orange-700">moisissures</a> se traitent en améliorant la ventilation (VMC/VMI) ou en réparant l&apos;infiltration. Attention : dans les maisons anciennes de Toulouse, il est fréquent de trouver les <strong>deux problèmes simultanément</strong>. Un diagnostic complet à 249€ TTC permet de cartographier toutes les sources d&apos;humidité et de prioriser les interventions.</p>
+      <p>Le salpêtre se traite en coupant les remontées capillaires (injection de résine). Les <a href="/moisissures-maison-sante" class="text-orange-600 underline hover:text-orange-700">moisissures</a> se traitent en améliorant la ventilation (VMC/VMI) ou en réparant l&apos;infiltration. Attention : dans les maisons anciennes de Toulouse, il est fréquent de trouver les <strong>deux problèmes simultanément</strong>. Un diagnostic complet permet de cartographier toutes les sources d&apos;humidité et de prioriser les interventions.</p>
 
       <h2>Comment vérifier que le traitement a fonctionné ?</h2>
 
@@ -4718,7 +4718,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Logement loué</strong> : le <strong>propriétaire-bailleur</strong> est responsable (article 6 de la loi du 6 juillet 1989). Le locataire peut exiger des travaux sous peine de réduction de loyer</li>
       </ul>
 
-      <p>Dans tous les cas, un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic professionnel</a> (249€ TTC) permet d&apos;identifier la source exacte et de déterminer les responsabilités.</p>
+      <p>Dans tous les cas, un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic professionnel</a> permet d&apos;identifier la source exacte et de déterminer les responsabilités.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">Salpêtre à Toulouse ? Diagnostic gratuit : 05 82 95 33 75</p>
     `
@@ -4947,7 +4947,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <div class="my-6 p-4 bg-green-50 border border-green-200 rounded-lg">
         <p class="font-bold text-green-800">Résultat concret</p>
-        <p class="text-green-700">En Tarn-et-Garonne, les propriétaires qui disposent d&apos;un rapport d&apos;expertise indépendant IPB obtiennent en moyenne une <strong>indemnisation 35 à 50% supérieure</strong> à ceux qui se contentent de l&apos;expertise de l&apos;assureur. Notre diagnostic à 249€ TTC est souvent amorti dès la première négociation avec l&apos;assurance.</p>
+        <p class="text-green-700">En Tarn-et-Garonne, les propriétaires qui disposent d&apos;un rapport d&apos;expertise indépendant IPB obtiennent en moyenne une <strong>indemnisation 35 à 50% supérieure</strong> à ceux qui se contentent de l&apos;expertise de l&apos;assureur. Notre diagnostic est souvent amorti dès la première négociation avec l&apos;assurance.</p>
       </div>
 
       <h2>Chronologie type d&apos;une intervention dans le 82</h2>
@@ -5333,7 +5333,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     content: `
       <div class="mb-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
         <p class="font-bold text-red-900 mb-2">Règle d'or : ne rebouchez jamais une fissure intérieure sans diagnostic</p>
-        <p class="text-red-800">Reboucher une fissure avec de l'enduit, c'est cacher un symptôme. Si la cause est un tassement différentiel ou un problème de fondation, la fissure reviendra en pire — et votre mur pourrait devenir dangereux. Un diagnostic technique coûte 249€ (déductible des travaux). Ignorer le problème peut coûter 10 000€+.</p>
+        <p class="text-red-800">Reboucher une fissure avec de l'enduit, c'est cacher un symptôme. Si la cause est un tassement différentiel ou un problème de fondation, la fissure reviendra en pire — et votre mur pourrait devenir dangereux. Un diagnostic technique est sur devis (déductible des travaux). Ignorer le problème peut coûter 10 000€+.</p>
       </div>
 
       <h2>Fissure mur intérieur : faut-il s'inquiéter ?</h2>
@@ -5381,7 +5381,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p><strong>Gravité : faible.</strong> Retrait normal des matériaux de finition. Traitement : rebouchage à l'enduit souple après vérification qu'elle n'évolue pas. Coût : 50 à 200€ en DIY.</p>
 
       <h3>Type 2 : La fissure de retrait/dilatation (0,2 à 2 mm)</h3>
-      <p><strong>Gravité : moyenne.</strong> Peut être liée à un mouvement structurel léger. Nécessite un diagnostic pour déterminer la cause. Coût du diagnostic : 249€ chez IPB (déductible des travaux).</p>
+      <p><strong>Gravité : moyenne.</strong> Peut être liée à un mouvement structurel léger. Nécessite un diagnostic pour déterminer la cause. Coût du diagnostic : sur devis chez IPB (déductible des travaux).</p>
 
       <h3>Type 3 : La fissure structurelle (> 2 mm)</h3>
       <p><strong>Gravité : élevée.</strong> Tassement différentiel, problème de fondation, ou mouvement actif. Nécessite une intervention technique : <strong>agrafage structurel</strong> (3 000 à 8 000€) ou reprise en sous-œuvre (15 000 à 40 000€ selon la gravité).</p>
@@ -5454,7 +5454,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <h3>Combien coûte un expert fissures ?</h3>
-      <p>Chez IPB, le diagnostic expert coûte <strong>249€</strong>. Ce montant est <strong>déductible à 100%</strong> de votre facture si vous nous confiez les travaux. Vous recevez un rapport technique détaillé sous 48h, utilisable pour votre dossier assurance ou pour demander des devis.</p>
+      <p>Chez IPB, le diagnostic expert est sur devis. Ce montant est <strong>déductible à 100%</strong> de votre facture si vous nous confiez les travaux. Vous recevez un rapport technique détaillé sous 48h, utilisable pour votre dossier assurance ou pour demander des devis.</p>
 
       <h3>Fissure mur intérieur en location : qui paie ?</h3>
       <p>Si la fissure est structurelle (cause liée au bâti), c'est le <strong>propriétaire</strong> qui est responsable des réparations. Si elle est superficielle et liée à l'usage (trou de cheville, usure normale), c'est au <strong>locataire</strong> de la reboucher.</p>
@@ -5515,7 +5515,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>Comment monter un dossier solide</h3>
       <p>Les experts d&apos;assurance sous-évaluent fréquemment les dégâts. Pour contrer cela :</p>
       <ul>
-        <li><strong>Faites réaliser un rapport d&apos;expertise indépendant</strong> (249€ TTC chez IPB) : mesures objectives, photos, analyse des causes, préconisations chiffrées</li>
+        <li><strong>Faites réaliser un rapport d&apos;expertise indépendant</strong> (sur devis chez IPB) : mesures objectives, photos, analyse des causes, préconisations chiffrées</li>
         <li><strong>Documentez l&apos;évolution</strong> : Photos des témoins en plâtre, historique des fissures</li>
         <li><strong>Conservez tous les devis et factures</strong> de travaux antérieurs (rebouchages, ravalements)</li>
         <li><strong>Demandez une contre-expertise</strong> si l&apos;indemnisation proposée ne couvre pas les travaux nécessaires</li>
@@ -5546,7 +5546,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     content: `
       <div class="mb-8 p-6 bg-emerald-50 border-l-4 border-emerald-600 rounded-r-lg">
         <p class="font-bold text-emerald-900 mb-2">En résumé : les prix 2026</p>
-        <p class="text-emerald-800"><strong>Agrafage simple</strong> : 80 à 120€/ml • <strong>Agrafage structurel complet</strong> : 8 000 à 15 000€ • <strong>Micropieux</strong> : 25 000 à 50 000€. L'agrafage est 3 fois moins cher que les micropieux pour 90% des cas. Diagnostic préalable : 249€ (déductible des travaux).</p>
+        <p class="text-emerald-800"><strong>Agrafage simple</strong> : 80 à 120€/ml • <strong>Agrafage structurel complet</strong> : 8 000 à 15 000€ • <strong>Micropieux</strong> : 25 000 à 50 000€. L'agrafage est 3 fois moins cher que les micropieux pour 90% des cas. Diagnostic préalable : sur devis (déductible).</p>
       </div>
 
       <h2>Combien coûte un agrafage de fissures en 2026 ?</h2>
@@ -5672,7 +5672,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>L'agrafage de fissures représente un investissement de 8 000 à 15 000€ en moyenne, mais il protège un patrimoine qui en vaut <strong>10 à 50 fois plus</strong>. Chaque année sans traitement, les fissures s'aggravent et le coût de réparation augmente de 15 à 20%.</p>
 
-      <p>Chez IPB, nous réalisons un <strong>diagnostic complet à 249€</strong> (déductible de la facture finale). Ce diagnostic vous donne un rapport technique précis, un devis détaillé et des recommandations claires. Pas de surprise, pas de travaux inutiles.</p>
+      <p>Chez IPB, nous réalisons un <strong>diagnostic complet</strong> (déductible de la facture finale). Ce diagnostic vous donne un rapport technique précis, un devis détaillé et des recommandations claires. Pas de surprise, pas de travaux inutiles.</p>
 
       <h2>Exemples de chantiers réels et leurs coûts</h2>
 
@@ -5681,7 +5681,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>Cas n°1 : Maison de ville à Toulouse — 7 500€</h3>
       <p><strong>Contexte</strong> : Maison mitoyenne de 90 m² dans le quartier des Minimes, construite en 1965. Trois fissures en escalier sur la façade arrière, ouverture maximale de 3 mm. Cause : tassement différentiel lié au retrait du sol argileux après la sécheresse de 2023.</p>
       <ul>
-        <li>Diagnostic IPB : 249€ TTC</li>
+        <li>Diagnostic IPB : sur devis</li>
         <li>Agrafage structurel : 3 fissures, 12 agrafes en inox — <strong>6 200€ HT</strong></li>
         <li>Rebouchage et finition : 1 050€ HT</li>
         <li><strong>Total TTC : 7 500€</strong> (durée du chantier : 3 jours)</li>
@@ -5690,7 +5690,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>Cas n°2 : Pavillon à Montauban — 12 000€</h3>
       <p><strong>Contexte</strong> : Pavillon de 120 m² sur sous-sol, construit en 1982. Fissures multiples sur deux façades (7 fissures au total), portes qui frottent, carrelage fissuré au RDC. Cause : sol argileux + drainage défaillant côté nord.</p>
       <ul>
-        <li>Diagnostic IPB : 249€ TTC</li>
+        <li>Diagnostic IPB : sur devis</li>
         <li>Agrafage structurel complet : 7 fissures, 28 agrafes — <strong>9 800€ HT</strong></li>
         <li>Reprise des joints et finitions : 1 700€ HT</li>
         <li><strong>Total TTC : 12 000€</strong> (durée du chantier : 5 jours)</li>
@@ -5699,7 +5699,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>Cas n°3 : Maison ancienne à Auch — 18 000€</h3>
       <p><strong>Contexte</strong> : Maison en pierre de 150 m², construite en 1930. Fissures traversantes avec affaissement de 8 mm côté sud-est. Nécessité de stabiliser la fondation avant agrafage. Cause : fondations peu profondes (45 cm) sur sol argileux instable.</p>
       <ul>
-        <li>Diagnostic IPB : 249€ TTC</li>
+        <li>Diagnostic IPB : sur devis</li>
         <li>Injection de résine expansive sous fondation : <strong>5 500€ HT</strong></li>
         <li>Agrafage structurel : 5 fissures, 20 agrafes — <strong>8 200€ HT</strong></li>
         <li>Reprise enduit façade : 1 800€ HT</li>
@@ -5722,7 +5722,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <div class="my-6 p-4 bg-green-50 border border-green-200 rounded-lg">
         <p class="font-bold text-green-800">Exemple sur une maison à 250 000€</p>
         <p class="text-green-700"><strong>Sans traitement</strong> : perte de valeur de 50 000€ (20%) + aggravation vers micropieux à 35 000€ = <strong>coût total : 85 000€</strong></p>
-        <p class="text-green-700"><strong>Avec agrafage immédiat</strong> : diagnostic 249€ + agrafage 12 000€ + récupération de la valeur = <strong>coût total : 12 249€</strong></p>
+        <p class="text-green-700"><strong>Avec agrafage immédiat</strong> : diagnostic + agrafage 12 000€ = <strong>coût total : 12 000 €</strong></p>
         <p class="text-green-700 font-bold mt-2">Économie réalisée : 72 751€</p>
       </div>
 
@@ -5831,7 +5831,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>Étape 2 : Faire réaliser un diagnostic indépendant</h3>
       <p>C'est l'étape la plus importante. Un <strong>expert indépendant</strong> (pas celui du constructeur, pas celui de l'assurance) établit un rapport technique objectif qui identifie les causes et évalue la gravité. Ce rapport est votre arme principale pour les démarches.</p>
 
-      <p>Chez IPB, le diagnostic expert coûte <strong>249€ TTC</strong> (déductible des travaux). Il inclut les mesures instrumentées, le rapport détaillé avec photos, et les préconisations de traitement.</p>
+      <p>Chez IPB, le diagnostic expert coûte <strong>sur devis</strong> (déductible des travaux). Il inclut les mesures instrumentées, le rapport détaillé avec photos, et les préconisations de traitement.</p>
 
       <h3>Étape 3 : Déclarer le sinistre</h3>
       <p>Envoyez une <strong>lettre recommandée AR</strong> au constructeur ET à votre assureur dommage-ouvrage (si vous en avez un). Joignez le rapport d'expertise, les photos, et décrivez précisément les désordres. Gardez une copie de tout.</p>
@@ -5863,7 +5863,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>Si votre maison neuve se fissure, <strong>vous avez des droits solides</strong>. La garantie décennale est l'une des protections les plus fortes du droit français. Mais elle ne s'active pas toute seule : il faut documenter, déclarer, et surtout avoir un <strong>rapport d'expertise indépendant</strong> pour peser dans la balance.</p>
 
-      <p>Chez IPB, nous accompagnons chaque année des dizaines de propriétaires de maisons neuves en Occitanie dans leurs démarches. Notre diagnostic (249€ TTC, déductible) est souvent le premier pas vers une indemnisation complète.</p>
+      <p>Chez IPB, nous accompagnons chaque année des dizaines de propriétaires de maisons neuves en Occitanie dans leurs démarches. Notre diagnostic (sur devis, déductible) est souvent le premier pas vers une indemnisation complète.</p>
 
       <h2>Exemples réels de recours réussis en Occitanie</h2>
 
@@ -6076,7 +6076,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>La tache d'humidité s'étend ou s'aggrave</li>
       </ul>
 
-      <p>Un diagnostic professionnel avec <strong>humidimètre à sonde, caméra thermique et test à la bombe à carbure</strong> identifie la cause exacte en 1h30. Chez IPB, ce diagnostic coûte 249€ TTC (déductible des travaux).</p>
+      <p>Un diagnostic professionnel avec <strong>humidimètre à sonde, caméra thermique et test à la bombe à carbure</strong> identifie la cause exacte en 1h30. Chez IPB, ce diagnostic coûte sur devis (déductible des travaux).</p>
 
       <h2>Mur humide en chambre : par où commencer</h2>
 
@@ -6133,7 +6133,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         </table>
       </div>
 
-      <p>La fourchette large pour les infiltrations s&apos;explique par la diversité des cas : une simple reprise de joint de fenêtre coûte 500€, tandis qu&apos;une étanchéité complète de façade avec ravalement peut atteindre 8 000€. C&apos;est pourquoi le <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic préalable à 249€</a> est indispensable : il évite de payer 6 000€ d&apos;injection sur un problème de condensation qui ne coûterait que 2 000€ à traiter correctement.</p>
+      <p>La fourchette large pour les infiltrations s&apos;explique par la diversité des cas : une simple reprise de joint de fenêtre coûte 500€, tandis qu&apos;une étanchéité complète de façade avec ravalement peut atteindre 8 000€. C&apos;est pourquoi le <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic préalable</a> est indispensable : il évite de payer 6 000€ d&apos;injection sur un problème de condensation qui ne coûterait que 2 000€ à traiter correctement.</p>
 
       <h2>Chambre d&apos;enfant humide : mesures d&apos;urgence</h2>
 
@@ -6163,7 +6163,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <div class="my-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
         <p class="font-bold text-red-900 mb-2">Ne temporisez pas</p>
-        <p class="text-red-800">Ces mesures d&apos;urgence ne remplacent pas un traitement définitif. Elles <strong>limitent les risques</strong> en attendant l&apos;intervention d&apos;un professionnel. Plus vous attendez, plus les moisissures se développent en profondeur dans le mur, rendant le traitement futur plus coûteux. Faites réaliser un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic expert (249€ TTC)</a> dans les meilleurs délais.</p>
+        <p class="text-red-800">Ces mesures d&apos;urgence ne remplacent pas un traitement définitif. Elles <strong>limitent les risques</strong> en attendant l&apos;intervention d&apos;un professionnel. Plus vous attendez, plus les moisissures se développent en profondeur dans le mur, rendant le traitement futur plus coûteux. Faites réaliser un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic expert</a> dans les meilleurs délais.</p>
       </div>
 
       <p class="font-bold text-lg text-slate-900 mt-6">Diagnostic expert sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
@@ -6286,7 +6286,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <div class="my-8 p-6 bg-green-50 border-l-4 border-green-600 rounded-r-lg">
         <p class="font-bold text-green-900 mb-2">Notre conseil</p>
-        <p class="text-green-800">Faites réaliser un diagnostic expert <strong>avant</strong> le passage de l'expert d'assurance. Quand vous posez un rapport instrumenté de 20 pages sur la table face à un expert qui a passé 30 minutes chez vous, la négociation change de nature. Nos <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostics à 249€ TTC</a> sont déductibles des travaux et constituent une arme redoutable en cas de contestation.</p>
+        <p class="text-green-800">Faites réaliser un diagnostic expert <strong>avant</strong> le passage de l'expert d'assurance. Quand vous posez un rapport instrumenté de 20 pages sur la table face à un expert qui a passé 30 minutes chez vous, la négociation change de nature. Nos <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostics</a> sont déductibles des travaux et constituent une arme redoutable en cas de contestation.</p>
       </div>
 
       <h2>Ce que ça change concrètement : un cas réel en Haute-Garonne</h2>
@@ -6392,7 +6392,7 @@ const blogPosts: { [key: string]: BlogPost } = {
           <tr><td class="border border-slate-300 px-4 py-2 text-sm">Durée visite</td><td class="border border-slate-300 px-4 py-2 text-sm">20-40 min</td><td class="border border-slate-300 px-4 py-2 text-sm">2-3 heures</td></tr>
           <tr><td class="border border-slate-300 px-4 py-2 text-sm">Instruments</td><td class="border border-slate-300 px-4 py-2 text-sm">Aucun ou mètre ruban</td><td class="border border-slate-300 px-4 py-2 text-sm">5 instruments pro</td></tr>
           <tr><td class="border border-slate-300 px-4 py-2 text-sm">Rapport</td><td class="border border-slate-300 px-4 py-2 text-sm">2-5 pages (non transmis)</td><td class="border border-slate-300 px-4 py-2 text-sm">15-25 pages (remis au client)</td></tr>
-          <tr><td class="border border-slate-300 px-4 py-2 text-sm">Coût pour vous</td><td class="border border-slate-300 px-4 py-2 text-sm">0€ (payé par l'assureur)</td><td class="border border-slate-300 px-4 py-2 text-sm">249€ TTC (déductible travaux)</td></tr>
+          <tr><td class="border border-slate-300 px-4 py-2 text-sm">Coût pour vous</td><td class="border border-slate-300 px-4 py-2 text-sm">0€ (payé par l'assureur)</td><td class="border border-slate-300 px-4 py-2 text-sm">sur devis (déductible travaux)</td></tr>
           <tr><td class="border border-slate-300 px-4 py-2 text-sm">Parti pris</td><td class="border border-slate-300 px-4 py-2 text-sm">Intérêt de l'assureur</td><td class="border border-slate-300 px-4 py-2 text-sm">Intérêt du propriétaire</td></tr>
           <tr><td class="border border-slate-300 px-4 py-2 text-sm">Délai rapport</td><td class="border border-slate-300 px-4 py-2 text-sm">3-6 semaines</td><td class="border border-slate-300 px-4 py-2 text-sm">5-7 jours ouvrés</td></tr>
         </tbody>
@@ -6435,11 +6435,11 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <div class="my-8 p-6 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg">
         <p class="font-bold text-blue-900 mb-2">Chez IPB</p>
-        <p class="text-blue-800">Nos experts sont spécialisés en pathologie du bâtiment depuis plus de 10 ans. Nous intervenons exclusivement en Occitanie (31, 82, 32) et connaissons parfaitement les problématiques locales. Notre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic à 249€ TTC</a> est déductible des travaux si vous faites appel à nous pour la réparation.</p>
+        <p class="text-blue-800">Nos experts sont spécialisés en pathologie du bâtiment depuis plus de 10 ans. Nous intervenons exclusivement en Occitanie (31, 82, 32) et connaissons parfaitement les problématiques locales. Notre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic</a> est déductible des travaux si vous faites appel à nous pour la réparation.</p>
       </div>
 
       <h2>L'investissement qui rapporte le plus</h2>
-      <p>Un diagnostic indépendant à 249€ qui vous fait gagner 5 000€, 10 000€ ou 15 000€ d'indemnisation supplémentaire, c'est le meilleur investissement que vous ferez dans la vie de votre maison. Ne laissez pas l'expert de l'assurance décider seul du sort de votre patrimoine.</p>
+      <p>Un diagnostic indépendant qui vous fait gagner 5 000€, 10 000€ ou 15 000€ d'indemnisation supplémentaire, c'est le meilleur investissement que vous ferez dans la vie de votre maison. Ne laissez pas l'expert de l'assurance décider seul du sort de votre patrimoine.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">Besoin d'une contre-expertise ? Appelez le 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
     `
@@ -6566,7 +6566,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h2>Quand agir : le bon timing</h2>
       <p>Le pire moment pour agir, c'est quand il est trop tard. Un agrafage sur des fissures de 2 mm coûte 10 000€. Le même agrafage sur des fissures de 10 mm, après 3 ans d'attente, coûte 25 000€ — et il faut parfois ajouter des micropieux.</p>
 
-      <p>Si votre maison a plus de 30 ans et que vous voyez apparaître des fissures, même fines, faites réaliser un diagnostic. Mieux vaut dépenser 249€ maintenant pour un diagnostic que 40 000€ dans 5 ans pour des micropieux.</p>
+      <p>Si votre maison a plus de 30 ans et que vous voyez apparaître des fissures, même fines, faites réaliser un diagnostic. Mieux vaut un diagnostic maintenant qu'un chantier de 40 000 € dans 5 ans pour des micropieux.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">Diagnostic fondations sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
     `

@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 const faqItems = [
   {
     question: "Pourquoi faire une expertise avant d'acheter ?",
-    answer: "L'expertise avant achat vous permet de détecter les problèmes cachés (fissures structurelles, humidité, défauts de construction) AVANT de signer. C'est un investissement de 299€ qui peut vous faire économiser des dizaines de milliers d'euros."
+    answer: "L'expertise avant achat vous permet de détecter les problèmes cachés (fissures structurelles, humidité, défauts de construction) AVANT de signer. C'est un investissement modeste qui peut vous faire économiser des dizaines de milliers d'euros — soit en vous évitant un mauvais achat, soit en vous donnant les arguments techniques pour négocier."
   },
   {
     question: "Que comprend l'expertise avant achat ?",
@@ -118,8 +118,8 @@ export default function ExpertiseAvantAchatPage() {
                   couverts par les diagnostics obligatoires.
                 </p>
                 <p>
-                  Une expertise avant achat de <strong>299€</strong> peut vous éviter des travaux de 
-                  <strong> 15 000 à 50 000€</strong> ou vous permettre de négocier une réduction significative du prix.
+                  Une expertise avant achat peut vous éviter des travaux de
+                  <strong> 15 000 à 50 000 €</strong> non détectés à la signature, ou vous donner les arguments techniques pour négocier une réduction significative du prix.
                 </p>
               </div>
               <div className="mt-8 p-6 bg-red-50 border-l-4 border-red-500 rounded-r-xl">
@@ -160,23 +160,24 @@ export default function ExpertiseAvantAchatPage() {
         </div>
       </section>
 
-      {/* Tarif */}
+      {/* Ce que comprend l'expertise */}
       <section className="py-16 md:py-24 bg-ipb-navy text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-8">Tarif expertise avant achat</h2>
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Ce que comprend l&apos;expertise</h2>
+          <p className="text-ipb-light mb-8 max-w-2xl mx-auto">
+            Tarif communiqué sous 24 heures après description de votre bien et de la date de visite souhaitée.
+          </p>
           <div className="bg-ipb-navy-2 rounded-3xl p-10 max-w-md mx-auto">
-            <div className="text-6xl font-extrabold text-emerald-400 mb-4">299€</div>
-            <div className="text-ipb-light mb-6">TTC - Déplacement inclus</div>
             <ul className="text-left space-y-3 mb-8">
               <li className="flex items-center gap-3"><CheckCircle className="text-emerald-400" size={20} /> Inspection complète sur site</li>
-              <li className="flex items-center gap-3"><CheckCircle className="text-emerald-400" size={20} /> Mesures humidité à l'appareil</li>
+              <li className="flex items-center gap-3"><CheckCircle className="text-emerald-400" size={20} /> Mesures humidité à l&apos;appareil</li>
               <li className="flex items-center gap-3"><CheckCircle className="text-emerald-400" size={20} /> Analyse des fissures</li>
               <li className="flex items-center gap-3"><CheckCircle className="text-emerald-400" size={20} /> Rapport détaillé avec photos</li>
               <li className="flex items-center gap-3"><CheckCircle className="text-emerald-400" size={20} /> Estimation coût des travaux</li>
               <li className="flex items-center gap-3"><CheckCircle className="text-emerald-400" size={20} /> Livraison sous 48-72h</li>
             </ul>
             <Link href="/diagnostic" className="block w-full bg-emerald-600 hover:bg-emerald-500 text-white py-4 rounded-xl font-bold text-lg transition-all">
-              Réserver mon expertise
+              Demander un devis
             </Link>
           </div>
         </div>
