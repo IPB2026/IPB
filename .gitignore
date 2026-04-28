@@ -34,3 +34,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# python (for .claude/skills/ scripts)
+__pycache__/
+*.pyc
+
