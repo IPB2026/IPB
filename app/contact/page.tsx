@@ -1,41 +1,29 @@
 "use client";
 
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button';
-import { MapPin, Phone, Mail, Send, CheckCircle } from 'lucide-react';
+import { Eyebrow } from '@/components/ui/Eyebrow';
+import { MagneticButton } from '@/components/ui/MagneticButton';
+import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
+import { CrackSVG } from '@/components/ui/CrackSVG';
 import { submitContactForm } from '@/app/actions/contact';
-import { InternalLinks } from '@/components/seo/InternalLinks';
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Empêcher double soumission
     if (isSubmitting) return;
-    
+
     setIsSubmitting(true);
-    
     try {
       const formDataToSend = new FormData();
       formDataToSend.append('name', formData.name);
@@ -48,231 +36,192 @@ export default function ContactPage() {
       if (result.success) {
         setIsSubmitted(true);
         setFormData({ name: '', email: '', subject: '', message: '' });
-        // Réinitialiser le message de succès après 5 secondes
-        setTimeout(() => setIsSubmitted(false), 5000);
+        setTimeout(() => setIsSubmitted(false), 6000);
       } else {
         alert(result.message);
       }
     } catch (error) {
-      if (process.env.NODE_ENV === 'development') {
-        console.error('Erreur:', error);
-      }
-      alert('Une erreur est survenue. Veuillez réessayer ou nous appeler au 05 82 95 33 75.');
+      if (process.env.NODE_ENV === 'development') console.error(error);
+      alert("Une erreur est survenue. Vous pouvez nous appeler au 05 82 95 33 75.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="font-sans text-slate-800 bg-slate-50 antialiased">
+    <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <TopBar />
       <Navbar />
-      
-      <main className="bg-white min-h-screen py-12 md:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* En-tête */}
-          <div className="text-center mb-8 md:mb-12">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-3 md:mb-4">
-              Contact Expert Fissures & Humidité Toulouse
-            </h1>
-            <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto">
-              Une question ? Un projet ? Notre équipe d'experts est à votre écoute pour vous accompagner.
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-            {/* Colonne gauche - Informations */}
-            <div className="space-y-6 md:space-y-8">
-              <div>
-                <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-4 md:mb-6">Nos coordonnées</h2>
-                <div className="space-y-4 md:space-y-6">
-                  {/* Zone d'intervention */}
-                  <div className="flex items-start gap-3 md:gap-4">
-                    <div className="w-10 h-10 md:w-12 md:h-12 bg-orange-100 rounded-xl flex items-center justify-center shrink-0">
-                      <MapPin className="w-5 h-5 md:w-6 md:h-6 text-orange-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-sm md:text-base text-slate-900 mb-1">Zone d'intervention</h3>
-                      <p className="text-sm md:text-base text-slate-600">
-                        3 départements couverts<br />
-                        31 • 82 • 32
-                      </p>
-                      <p className="text-xs text-slate-500 mt-2">
-                        Toulouse, Montauban, Auch, Colomiers, Castelsarrasin, Condom...
-                      </p>
-                    </div>
-                  </div>
+      <main id="main-content">
+        {/* HERO + FORM (split éditorial) */}
+        <section className="bg-ipb-cream">
+          <div className="max-w-ipb mx-auto grid lg:grid-cols-[42fr_58fr] gap-12 lg:gap-16 px-6 lg:px-12 pt-16 lg:pt-24 pb-20 lg:pb-28">
+            {/* Colonne gauche : informations cabinet */}
+            <RevealOnScroll>
+              <Eyebrow>Écrire au cabinet</Eyebrow>
+              <h1
+                className="font-serif text-ipb-text mb-8"
+                style={{
+                  fontSize: 'clamp(40px, 4vw, 62px)',
+                  lineHeight: 1.06,
+                  letterSpacing: '-0.025em',
+                  fontWeight: 700,
+                }}
+              >
+                Une question,<br /><em>une réponse posée.</em>
+              </h1>
 
-                  {/* Téléphone */}
-                  <div className="flex items-start gap-3 md:gap-4">
-                    <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-100 rounded-xl flex items-center justify-center shrink-0">
-                      <Phone className="w-5 h-5 md:w-6 md:h-6 text-blue-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-sm md:text-base text-slate-900 mb-1">Téléphone</h3>
-                      <a
-                        href="tel:0582953375"
-                        className="text-slate-600 hover:text-orange-600 font-medium"
-                      >
-                        05 82 95 33 75
-                      </a>
-                      <p className="text-sm text-slate-500 mt-1">Du lundi au vendredi, 9h-18h</p>
-                    </div>
-                  </div>
+              <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10">
+                Notre cabinet répond à tous les messages sous 24 heures ouvrées. Pour les situations qui demandent un échange de vive voix, le téléphone reste le moyen le plus direct.
+              </p>
 
-                  {/* Email */}
-                  <div className="flex items-start gap-3 md:gap-4">
-                    <div className="w-10 h-10 md:w-12 md:h-12 bg-slate-100 rounded-xl flex items-center justify-center shrink-0">
-                      <Mail className="w-5 h-5 md:w-6 md:h-6 text-slate-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-sm md:text-base text-slate-900 mb-1">Email</h3>
-                      <a
-                        href="mailto:contact@ipb-expertise.fr"
-                        className="text-slate-600 hover:text-orange-600 font-medium"
-                      >
-                        contact@ipb-expertise.fr
-                      </a>
-                      <p className="text-sm text-slate-500 mt-1">Réponse sous 24h</p>
-                    </div>
+              <div className="space-y-7">
+                {/* Téléphone */}
+                <div>
+                  <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-2">Téléphone</p>
+                  <a
+                    href="tel:0582953375"
+                    className="block font-serif text-ipb-text hover:text-ipb-orange transition-colors leading-none mb-1"
+                    style={{ fontSize: 'clamp(28px, 2.6vw, 36px)', letterSpacing: '-0.02em', fontWeight: 700 }}
+                  >
+                    05 82 95 33 75
+                  </a>
+                  <p className="text-[12px] font-light text-ipb-muted leading-[1.7]">
+                    Lundi au vendredi · 8h&nbsp;–&nbsp;19h
+                  </p>
+                </div>
+
+                {/* Adresse */}
+                <div>
+                  <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-2">Cabinet</p>
+                  <p className="font-serif text-ipb-text font-medium text-[16px] mb-1">
+                    13 rue du Recteur Dottin
+                  </p>
+                  <p className="text-[14px] font-light text-ipb-muted">
+                    31100 Toulouse — Occitanie
+                  </p>
+                </div>
+
+                {/* Zone */}
+                <div>
+                  <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-2">Zone d'intervention</p>
+                  <p className="text-[14px] font-light text-ipb-muted leading-[1.85]">
+                    Haute-Garonne (31) · Tarn-et-Garonne (82) · Gers (32) · Tarn (81). 50 communes couvertes en moyenne.
+                  </p>
+                </div>
+
+                {/* Decoration crack */}
+                <div className="pt-4 border-t border-ipb-rule">
+                  <div className="flex items-center gap-3 text-[11px] text-ipb-light uppercase tracking-[0.14em]">
+                    <CrackSVG variant="mini" />
+                    <span>Cabinet de pathologie du bâtiment · Depuis 2019</span>
                   </div>
                 </div>
               </div>
+            </RevealOnScroll>
 
-              {/* Carte Google Maps - Où nous trouver */}
-              <div className="mt-6 md:mt-8">
-                <h3 className="font-bold text-base md:text-lg text-slate-900 mb-3 md:mb-4">Où nous trouver</h3>
-                <div className="rounded-xl overflow-hidden border border-slate-200 shadow-lg">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46389.48938!2d1.3366!3d43.5846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebc0b6a5e6e2d%3A0x406f69c2f411030!2sTournefeuille!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr"
-                    width="100%"
-                    height="250"
-                    className="w-full md:h-[300px]"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Zone d'intervention - Tournefeuille et environs"
-                  ></iframe>
-                </div>
-                <p className="text-sm text-slate-500 mt-2 text-center">
-                  Zone d'intervention : <span className="text-orange-600 font-semibold">Toulouse et 50 km autour</span>
+            {/* Colonne droite : formulaire */}
+            <RevealOnScroll direction="right" delay={0.1}>
+              <div className="bg-ipb-white border border-ipb-rule rounded-[6px] p-7 lg:p-10">
+                <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-6">
+                  Formulaire de contact
                 </p>
-              </div>
-            </div>
 
-            {/* Colonne droite - Formulaire */}
-            <div>
-              <div className="bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-200">
-                <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-4 md:mb-6">Envoyez-nous un message</h2>
-                
                 {isSubmitted ? (
-                  <div className="bg-green-50 border border-green-200 rounded-xl p-6 text-center">
-                    <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-4" />
-                    <p className="text-green-800 font-bold mb-2">Message envoyé avec succès !</p>
-                    <p className="text-green-700 text-sm">Nous vous répondrons dans les plus brefs délais.</p>
+                  <div className="py-12 text-center">
+                    <div className="w-12 h-12 rounded-full border border-ipb-orange flex items-center justify-center mx-auto mb-6">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                        <path d="M5 10L8.5 13.5L15 7" stroke="var(--ipb-orange)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                    <h2 className="font-serif text-ipb-text font-bold text-[24px] leading-tight mb-3">
+                      Message reçu.
+                    </h2>
+                    <p className="text-[14px] leading-[1.85] font-light text-ipb-muted max-w-sm mx-auto">
+                      Notre cabinet vous répond sous 24 heures ouvrées. Si votre demande est urgente, le téléphone reste le moyen le plus direct.
+                    </p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-5">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-bold text-slate-900 mb-2">
-                        Nom et Prénom *
+                      <label htmlFor="name" className="block text-[10px] uppercase tracking-[0.14em] text-ipb-light font-medium mb-2">
+                        Votre nom
                       </label>
-                      <Input
+                      <input
+                        type="text"
                         id="name"
                         name="name"
-                        type="text"
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full"
-                        placeholder="Votre nom complet"
+                        className="w-full px-4 py-[13px] border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-[14px] font-light focus:outline-none focus:border-ipb-orange transition-colors"
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="email" className="block text-sm font-bold text-slate-900 mb-2">
-                        Email *
+                      <label htmlFor="email" className="block text-[10px] uppercase tracking-[0.14em] text-ipb-light font-medium mb-2">
+                        Adresse email
                       </label>
-                      <Input
+                      <input
+                        type="email"
                         id="email"
                         name="email"
-                        type="email"
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full"
-                        placeholder="votre@email.com"
+                        className="w-full px-4 py-[13px] border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-[14px] font-light focus:outline-none focus:border-ipb-orange transition-colors"
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="subject" className="block text-sm font-bold text-slate-900 mb-2">
-                        Sujet *
+                      <label htmlFor="subject" className="block text-[10px] uppercase tracking-[0.14em] text-ipb-light font-medium mb-2">
+                        Sujet
                       </label>
-                      <Input
+                      <input
+                        type="text"
                         id="subject"
                         name="subject"
-                        type="text"
                         required
                         value={formData.subject}
                         onChange={handleChange}
-                        className="w-full"
-                        placeholder="Objet de votre message"
+                        placeholder="Fissure sur ma façade, projet d'ouverture de mur, demande d'attestation…"
+                        className="w-full px-4 py-[13px] border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-[14px] font-light placeholder-ipb-light/70 focus:outline-none focus:border-ipb-orange transition-colors"
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="message" className="block text-sm font-bold text-slate-900 mb-2">
-                        Message *
+                      <label htmlFor="message" className="block text-[10px] uppercase tracking-[0.14em] text-ipb-light font-medium mb-2">
+                        Votre message
                       </label>
-                      <Textarea
+                      <textarea
                         id="message"
                         name="message"
                         required
+                        rows={6}
                         value={formData.message}
                         onChange={handleChange}
-                        className="w-full min-h-[150px]"
-                        placeholder="Décrivez votre demande ou votre projet..."
+                        placeholder="Décrivez votre situation. Vous pouvez préciser la commune, l'âge du bâtiment, les désordres observés…"
+                        className="w-full px-4 py-3 border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-[14px] font-light leading-[1.7] placeholder-ipb-light/70 focus:outline-none focus:border-ipb-orange transition-colors resize-none"
                       />
                     </div>
 
-                    <Button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-6 text-lg"
-                    >
-                      {isSubmitting ? (
-                        'Envoi en cours...'
-                      ) : (
-                        <>
-                          <Send className="w-5 h-5 mr-2" />
-                          Envoyer le message
-                        </>
-                      )}
-                    </Button>
-
-                    <p className="text-xs text-slate-500 text-center">
-                      * Champs obligatoires. Vos données sont traitées conformément à notre{' '}
-                      <a href="/legal/confidentialite" className="text-orange-600 hover:text-orange-700 underline">
-                        politique de confidentialité
-                      </a>
-                      .
+                    <p className="text-[11px] text-ipb-light leading-[1.6] pt-2">
+                      Vos données sont traitées uniquement pour répondre à votre demande. Le cabinet ne pratique aucune relance commerciale.
                     </p>
+
+                    <MagneticButton type="submit" variant="primary" className="w-full">
+                      {isSubmitting ? 'Envoi en cours…' : 'Envoyer le message'}
+                    </MagneticButton>
                   </form>
                 )}
               </div>
-            </div>
+            </RevealOnScroll>
           </div>
-        </div>
+        </section>
       </main>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-        <InternalLinks variant="contact" />
-      </div>
 
       <Footer />
     </div>
   );
 }
-

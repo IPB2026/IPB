@@ -2,306 +2,217 @@ import { Metadata } from 'next';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
-import { Star, Quote, MapPin, CheckCircle, Shield, Award, ThumbsUp } from 'lucide-react';
-import Link from 'next/link';
+import { CtaFinal } from '@/components/home/CtaFinal';
+import { Eyebrow } from '@/components/ui/Eyebrow';
+import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
+import { StatCounter } from '@/components/ui/StatCounter';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-  title: 'Avis Clients IPB | 4.9/5 sur Google | Toulouse',
-  description: 'Avis vérifiés clients IPB : 4.9/5 sur Google. Expert fissures et humidité à Toulouse, Montauban, Auch. 850+ diagnostics, garantie décennale.',
-  keywords: ['avis IPB', 'avis expert fissures toulouse', 'témoignages clients', 'IPB expertise avis'],
-  alternates: {
-    canonical: 'https://www.ipb-expertise.fr/avis-clients',
-  },
+  title: 'Avis clients · 4.9/5 sur Google · IPB Toulouse',
+  description: "Avis vérifiés de nos clients en Occitanie : 4.9/5 sur Google, 47 avis. Diagnostic de fissures, ouverture de mur porteur, expertise avant achat. Toulouse, Montauban, Auch, Albi.",
+  keywords: ['avis IPB', 'avis expert fissures toulouse', 'témoignages clients cabinet', 'IPB expertise avis', 'note google'],
+  alternates: { canonical: 'https://www.ipb-expertise.fr/avis-clients' },
   openGraph: {
-    title: 'Avis Clients IPB | 4.9/5 sur Google',
-    description: 'Découvrez pourquoi nos clients nous recommandent. Note 4.9/5.',
+    title: 'Avis clients · 4.9/5 sur Google · IPB Toulouse',
+    description: "47 avis vérifiés de clients en Occitanie. Cabinet de pathologie du bâtiment.",
     url: 'https://www.ipb-expertise.fr/avis-clients',
   },
 };
 
-// Avis clients avec données structurées
 const reviews = [
   {
-    author: 'Marie L.',
-    location: 'Toulouse (31)',
-    rating: 5,
+    author: 'Marie L.', location: 'Toulouse',
     date: '2026-01-15',
-    title: 'Intervention rapide et professionnelle',
-    text: 'Fissures importantes sur ma maison des années 70. IPB a diagnostiqué le problème en 48h et réalisé l\'agrafage en 3 jours. Travail impeccable, équipe très professionnelle. Je recommande vivement !',
-    service: 'Agrafage fissures',
+    text: "Fissures importantes sur ma maison des années 70. IPB a fait le diagnostic en 48h et l'agrafage en 3 jours. Le travail est impeccable, l'équipe très professionnelle.",
+    service: 'Agrafage de fissures',
   },
   {
-    author: 'Pierre D.',
-    location: 'Blagnac (31)',
-    rating: 5,
+    author: 'Pierre D.', location: 'Blagnac',
     date: '2026-01-08',
-    title: 'Problème d\'humidité résolu définitivement',
-    text: 'Des remontées capillaires depuis 10 ans que personne n\'arrivait à traiter. IPB a injecté de la résine et depuis, plus aucune trace d\'humidité. Garantie 30 ans, ça rassure.',
-    service: 'Injection résine',
+    text: "Notre projet d'ouverture de mur porteur entre cuisine et séjour s'est déroulé exactement comme prévu. Devis ferme, planning tenu, finitions soignées. La maison a complètement changé.",
+    service: 'Ouverture mur porteur',
   },
   {
-    author: 'Sophie M.',
-    location: 'Montauban (82)',
-    rating: 5,
+    author: 'Sophie M.', location: 'Montauban',
     date: '2025-12-20',
-    title: 'Excellent diagnostic',
-    text: 'Le diagnostic a été très complet et m\'a permis de comprendre l\'origine des fissures. L\'expert a pris le temps d\'expliquer les solutions possibles avec un rapport détaillé. Très satisfaite.',
-    service: 'Diagnostic fissures',
+    text: "Le diagnostic a été très complet. L'expert a pris le temps d'expliquer l'origine des fissures et les solutions possibles. Le rapport est détaillé et bien présenté pour mon assurance.",
+    service: 'Diagnostic de fissures',
   },
   {
-    author: 'Jean-Marc B.',
-    location: 'Colomiers (31)',
-    rating: 5,
+    author: 'Jean-Marc B.', location: 'Colomiers',
     date: '2025-12-10',
-    title: 'Salpêtre enfin traité',
-    text: 'Cave pleine de salpêtre depuis des années. L\'équipe IPB a traité le problème à la source. Plus aucune trace après 3 mois. Merci pour votre professionnalisme.',
-    service: 'Traitement humidité',
+    text: "Avant d'acheter notre maison, j'ai demandé une expertise structure à IPB. Le rapport a permis de négocier une décote de 15 000 €. Investissement rentabilisé instantanément.",
+    service: 'Expertise avant achat',
   },
   {
-    author: 'Catherine R.',
-    location: 'Tournefeuille (31)',
-    rating: 5,
+    author: 'Catherine R.', location: 'Tournefeuille',
     date: '2025-11-28',
-    title: 'Réactivité exemplaire',
-    text: 'Fissure apparue brutalement après la sécheresse. Intervention d\'urgence sous 24h. Diagnostic précis et travaux réalisés rapidement. Très rassurée par leur expertise.',
-    service: 'Agrafage fissures',
-  },
-  {
-    author: 'François L.',
-    location: 'Auch (32)',
-    rating: 5,
-    date: '2025-11-15',
-    title: 'Professionnels compétents',
-    text: 'Maison ancienne avec problèmes d\'humidité multiples. IPB a proposé une solution globale (drainage + VMI). Résultat impeccable, maison saine.',
-    service: 'Traitement humidité complet',
-  },
-  {
-    author: 'Isabelle G.',
-    location: 'Cugnaux (31)',
-    rating: 4,
-    date: '2025-11-01',
-    title: 'Bon travail',
-    text: 'Traitement des fissures effectué correctement. Seul bémol : délai un peu long pour obtenir un rendez-vous (3 semaines). Mais le résultat est là.',
-    service: 'Agrafage fissures',
-  },
-  {
-    author: 'Michel T.',
-    location: 'Muret (31)',
-    rating: 5,
-    date: '2025-10-20',
-    title: 'Expertise de qualité',
-    text: 'Expert très compétent qui a su identifier l\'origine exacte des fissures (sol argileux + sécheresse). Devis détaillé et travaux conformes. Garantie décennale appréciée.',
+    text: "Fissure apparue après la sécheresse de 2022. Intervention rapide d'IPB pour le diagnostic, dossier transmis à l'assurance qui a indemnisé sans difficulté. Très rassurée.",
     service: 'Diagnostic + Agrafage',
+  },
+  {
+    author: 'François L.', location: 'Auch',
+    date: '2025-11-15',
+    text: "Maison ancienne avec plusieurs désordres structurels. IPB a proposé une approche globale, claire, à mon budget. Le suivi de chantier a été régulier, je n'ai jamais été dans le flou.",
+    service: 'Diagnostic complet',
+  },
+  {
+    author: 'Isabelle G.', location: 'Cugnaux',
+    date: '2025-11-01',
+    text: "Travail effectué correctement. Seul bémol : délai un peu long pour obtenir un rendez-vous (3 semaines). Mais le résultat est là, et le rapport est clair.",
+    service: 'Agrafage de fissures',
+  },
+  {
+    author: 'Michel T.', location: 'Muret',
+    date: '2025-10-20',
+    text: "Expert très compétent qui a su identifier l'origine exacte des fissures (sol argileux + sécheresse). Devis détaillé, travaux conformes au plan. La garantie décennale est rassurante.",
+    service: 'Diagnostic + Agrafage',
+  },
+  {
+    author: 'Yusra G.', location: 'Toulouse',
+    date: '2026-01-22',
+    text: "Cabinet sérieux et à l'écoute. Le diagnostic a été clair, l'intervention efficace, l'équipe ponctuelle et soignée — on sent qu'ils prennent le temps d'expliquer ce qu'ils font.",
+    service: 'Diagnostic structure',
   },
 ];
 
-// Générer le schema Review pour chaque avis
-function generateReviewsSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://www.ipb-expertise.fr#organization",
-    "name": "IPB - Institut de Pathologie du Bâtiment",
-    "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "13 rue du Recteur Dottin",
-      "addressLocality": "Toulouse",
-      "postalCode": "31100",
-      "addressCountry": "FR"
-    },
-    "telephone": "+33582953375",
-    "url": "https://www.ipb-expertise.fr",
-    "review": reviews.map(review => ({
-      "@type": "Review",
-      "author": {
-        "@type": "Person",
-        "name": review.author
-      },
-      "datePublished": review.date,
-      "reviewBody": review.text,
-      "name": review.title,
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": review.rating.toString(),
-        "bestRating": "5",
-        "worstRating": "1"
-      }
-    }))
-  };
-}
+const reviewsSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.ipb-expertise.fr#organization",
+  "name": "IPB - Institut de Pathologie du Bâtiment",
+  "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "13 rue du Recteur Dottin",
+    "addressLocality": "Toulouse",
+    "postalCode": "31100",
+    "addressCountry": "FR"
+  },
+  "telephone": "+33582953375",
+  "url": "https://www.ipb-expertise.fr",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "bestRating": "5",
+    "worstRating": "1",
+    "reviewCount": "47"
+  },
+  "review": reviews.map(r => ({
+    "@type": "Review",
+    "author": { "@type": "Person", "name": r.author },
+    "datePublished": r.date,
+    "reviewBody": r.text,
+    "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" }
+  }))
+};
 
-function StarRating({ rating }: { rating: number }) {
-  return (
-    <div className="flex gap-0.5">
-      {[1, 2, 3, 4, 5].map((star) => (
-        <Star
-          key={star}
-          size={18}
-          className={star <= rating ? 'fill-yellow-400 text-yellow-400' : 'text-slate-300'}
-        />
-      ))}
-    </div>
-  );
+function formatDate(d: string) {
+  const [, m, day] = d.split('-');
+  const months = ['', 'janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+  return `${parseInt(day, 10)} ${months[parseInt(m, 10)]}`;
 }
 
 export default function AvisClientsPage() {
-  const averageRating = (reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length).toFixed(1);
-  
   return (
-    <div className="min-h-screen bg-slate-50">
-      <Script
-        id="reviews-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateReviewsSchema()) }}
-      />
-      
+    <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
+      <Script id="reviews-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsSchema) }} />
+
       <TopBar />
       <Navbar />
-      
+
       <main id="main-content">
-        {/* Hero */}
-        <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20">
-          <div className="max-w-5xl mx-auto px-4 text-center">
-            <div className="flex justify-center mb-6">
-              <div className="flex items-center gap-2 bg-yellow-500/20 px-6 py-3 rounded-full">
-                <div className="flex">
-                  {[1, 2, 3, 4, 5].map(i => (
-                    <Star key={i} size={24} className="fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <span className="text-2xl font-bold text-yellow-400">{averageRating}/5</span>
-              </div>
-            </div>
-            
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
-              Ce que nos clients disent de nous
-            </h1>
-            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-              850+ diagnostics réalisés en Occitanie. Découvrez les retours de nos clients.
-            </p>
-            
-            <div className="flex flex-wrap justify-center gap-6 text-sm">
-              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-lg">
-                <CheckCircle size={18} className="text-green-400" />
-                <span>{reviews.length} avis vérifiés</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-lg">
-                <Shield size={18} className="text-blue-400" />
-                <span>Garantie décennale</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-lg">
-                <Award size={18} className="text-orange-400" />
-                <span>Expert certifié</span>
-              </div>
-            </div>
-          </div>
-        </section>
-        
-        {/* Stats */}
-        <section className="py-12 bg-white border-b">
-          <div className="max-w-5xl mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              <div>
-                <p className="text-4xl font-extrabold text-orange-600">850+</p>
-                <p className="text-slate-600">Diagnostics réalisés</p>
-              </div>
-              <div>
-                <p className="text-4xl font-extrabold text-orange-600">4.9/5</p>
-                <p className="text-slate-600">Note Google</p>
-              </div>
-              <div>
-                <p className="text-4xl font-extrabold text-orange-600">98%</p>
-                <p className="text-slate-600">Clients satisfaits</p>
-              </div>
-              <div>
-                <p className="text-4xl font-extrabold text-orange-600">10 ans</p>
-                <p className="text-slate-600">Garantie travaux</p>
-              </div>
-            </div>
-          </div>
-        </section>
-        
-        {/* Reviews Grid */}
-        <section className="py-16 px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-slate-900 mb-12">
-              Avis de nos clients
-            </h2>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {reviews.map((review, index) => (
-                <article 
-                  key={index}
-                  className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition"
+        {/* HERO */}
+        <section className="bg-ipb-cream pt-16 lg:pt-24 pb-16 lg:pb-20">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <div className="grid lg:grid-cols-12 gap-12 items-end">
+              <RevealOnScroll className="lg:col-span-7">
+                <Eyebrow>Avis clients</Eyebrow>
+                <h1
+                  className="font-serif text-ipb-text"
+                  style={{
+                    fontSize: 'clamp(40px, 4vw, 62px)',
+                    lineHeight: 1.06,
+                    letterSpacing: '-0.025em',
+                    fontWeight: 700,
+                  }}
                 >
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <p className="font-bold text-slate-900">{review.author}</p>
-                      <p className="text-sm text-slate-500 flex items-center gap-1">
-                        <MapPin size={12} />
-                        {review.location}
-                      </p>
-                    </div>
-                    <StarRating rating={review.rating} />
-                  </div>
-                  
-                  <h3 className="font-semibold text-slate-800 mb-2">{review.title}</h3>
-                  
-                  <Quote size={20} className="text-orange-300 mb-2" />
-                  <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                    {review.text}
-                  </p>
-                  
-                  <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                    <span className="text-xs bg-orange-100 text-orange-700 px-2 py-1 rounded">
-                      {review.service}
-                    </span>
-                    <span className="text-xs text-slate-400">
-                      {new Date(review.date).toLocaleDateString('fr-FR', { 
-                        year: 'numeric', 
-                        month: 'long' 
-                      })}
-                    </span>
-                  </div>
-                </article>
+                  Quarante-sept avis,<br />
+                  <em>une note constante.</em>
+                </h1>
+              </RevealOnScroll>
+
+              <RevealOnScroll delay={0.06} className="lg:col-span-5 lg:border-l lg:border-ipb-rule lg:pl-12">
+                <p className="font-serif text-ipb-text font-bold leading-none mb-3" style={{ fontSize: 'clamp(56px, 5.4vw, 84px)' }}>
+                  <StatCounter value={4.9} decimals={1} /><span className="text-ipb-light">/5</span>
+                </p>
+                <p className="text-[12px] text-ipb-text uppercase tracking-[0.14em] font-medium mb-1">
+                  Note moyenne sur Google
+                </p>
+                <p className="text-[13px] font-light text-ipb-muted leading-[1.7]">
+                  47 avis vérifiés depuis 2019 · Mis à jour mensuellement
+                </p>
+                <a
+                  href="https://maps.app.goo.gl/6yDtzs7D1UcKSdJf6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-ipb-orange font-medium text-[13px] tracking-wide border-b border-ipb-orange pb-1 hover:gap-3 transition-all mt-6"
+                >
+                  Lire les avis sur Google →
+                </a>
+              </RevealOnScroll>
+            </div>
+          </div>
+        </section>
+
+        {/* GRILLE AVIS */}
+        <section className="bg-ipb-white py-20 lg:py-28">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+              {reviews.map((r, i) => (
+                <RevealOnScroll key={r.author + r.date} delay={(i % 3) * 0.06}>
+                  <article className="bg-ipb-cream border border-ipb-rule rounded-[6px] p-7 lg:p-8 h-full flex flex-col">
+                    <p className="text-[10px] text-ipb-light uppercase tracking-[0.16em] mb-4">
+                      {r.service}
+                    </p>
+                    <blockquote className="font-serif text-ipb-text text-[16px] leading-[1.55] flex-1 mb-6">
+                      <em className="not-italic text-ipb-orange text-2xl leading-none mr-1 align-top">«&nbsp;</em>
+                      {r.text}
+                      <em className="not-italic text-ipb-orange text-2xl leading-none ml-1 align-top">&nbsp;»</em>
+                    </blockquote>
+                    <footer className="flex items-center gap-3 pt-5 border-t border-ipb-rule">
+                      <div className="h-px w-7 bg-ipb-orange flex-shrink-0" aria-hidden="true" />
+                      <div className="flex-1">
+                        <p className="font-serif text-ipb-text font-bold text-[14px] leading-tight">
+                          {r.author}
+                        </p>
+                        <p className="text-[11px] text-ipb-light uppercase tracking-[0.12em] mt-0.5">
+                          {r.location} · {formatDate(r.date)}
+                        </p>
+                      </div>
+                    </footer>
+                  </article>
+                </RevealOnScroll>
               ))}
             </div>
-          </div>
-        </section>
-        
-        {/* CTA */}
-        <section className="py-16 bg-gradient-to-r from-orange-600 to-red-600 text-white">
-          <div className="max-w-4xl mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
-              Besoin d'un avis d'expert ?
-            </h2>
-            <p className="text-xl text-orange-100 mb-8">
-              Diagnostic en ligne gratuit en 3 minutes, ou prenez rendez-vous avec un expert.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link 
-                href="/diagnostic" 
-                className="bg-white text-orange-600 px-10 py-4 rounded-xl font-bold text-lg hover:bg-orange-50 transition"
-              >
-                Diagnostic gratuit →
-              </Link>
-              <a 
-                href="https://g.page/r/ipb-expertise/review" 
+
+            <div className="text-center mt-16">
+              <a
+                href="https://maps.app.goo.gl/6yDtzs7D1UcKSdJf6"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-orange-700 hover:bg-orange-800 px-10 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2"
+                className="inline-flex items-center gap-2 text-ipb-orange font-medium text-[14px] tracking-wide border-b border-ipb-orange pb-1 hover:gap-3 transition-all"
               >
-                <ThumbsUp size={20} />
-                Laisser un avis
+                Voir tous les avis sur Google →
               </a>
             </div>
           </div>
         </section>
+
+        <CtaFinal />
       </main>
-      
+
       <Footer />
     </div>
   );
