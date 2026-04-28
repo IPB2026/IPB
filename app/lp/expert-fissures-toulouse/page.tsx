@@ -17,7 +17,7 @@ import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
   title: "Expert fissures Toulouse — Diagnostic sous 7 jours · IPB",
-  description: "Cabinet de pathologie du bâtiment à Toulouse. Diagnostic instrumenté, agrafage structurel. Décennale AXA. 850 chantiers livrés.",
+  description: "Institut de pathologie du bâtiment à Toulouse. Diagnostic instrumenté, agrafage structurel. Décennale AXA. 850 chantiers livrés.",
   robots: { index: false, follow: false }, // Landing Ads : ne pas indexer (évite duplicate content avec la page SEO)
   alternates: { canonical: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31' },
 };
@@ -42,7 +42,7 @@ export default function LandingFissuresToulouse() {
           <div className="grid lg:grid-cols-[6fr_5fr] gap-10 lg:gap-12 items-center">
             <div>
               <p className="text-ipb-orange text-[11px] uppercase tracking-[0.18em] font-medium mb-4">
-                Cabinet à Toulouse · Décennale AXA
+                Institut à Toulouse · Décennale AXA
               </p>
               <h1
                 className="font-serif text-ipb-text mb-6"
@@ -54,7 +54,7 @@ export default function LandingFissuresToulouse() {
                 }}
               >
                 Une fissure dans votre maison&nbsp;?<br />
-                <em>Notre cabinet vient sur place sous 7 jours.</em>
+                <em>Notre institut vient sur place sous 7 jours.</em>
               </h1>
               <p className="text-[15px] leading-[1.85] font-light text-ipb-muted mb-8">
                 Diagnostic instrumenté (fissuromètre, niveau laser), rapport écrit reconnu par les assurances, agrafage structurel par nos équipes. Tout en interne, garantie 10 ans AXA.
@@ -80,7 +80,7 @@ export default function LandingFissuresToulouse() {
                 {[
                   '<strong class="text-ipb-text not-italic font-medium">Rapport reconnu par les assurances</strong> — opposable en cas de litige CAT-NAT',
                   '<strong class="text-ipb-text not-italic font-medium">Agrafage par nos équipes</strong> — pas de sous-traitance, garantie unique',
-                  '<strong class="text-ipb-text not-italic font-medium">Cabinet créé en 2019</strong> — 850 chantiers livrés en Occitanie',
+                  '<strong class="text-ipb-text not-italic font-medium">Institut créé en 2019</strong> — 850 chantiers livrés en Occitanie',
                 ].map((item) => (
                   <li key={item} className="flex gap-3">
                     <span className="text-ipb-orange flex-shrink-0">—</span>
@@ -94,7 +94,7 @@ export default function LandingFissuresToulouse() {
             <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
               <Image
                 src="/images/fissures-avant-apres.webp"
-                alt="Avant/après agrafage de fissure structurelle — Cabinet IPB Toulouse"
+                alt="Avant/après agrafage de fissure structurelle — Institut IPB Toulouse"
                 fill
                 sizes="(max-width: 1024px) 100vw, 480px"
                 className="object-cover"
@@ -146,7 +146,7 @@ export default function LandingFissuresToulouse() {
           <div className="grid md:grid-cols-3 gap-8 lg:gap-10">
             {[
               { num: '01', titre: 'Vous nous décrivez la situation', desc: "En ligne en 2 minutes ou par téléphone. On valide la zone d'intervention et l'urgence." },
-              { num: '02', titre: 'Visite technique sous 7 jours', desc: "Notre cabinet vient sur place avec instruments de mesure. Diagnostic en 1h, rapport sous 7 jours." },
+              { num: '02', titre: 'Visite technique sous 7 jours', desc: "Notre institut vient sur place avec instruments de mesure. Diagnostic en 1h, rapport sous 7 jours." },
               { num: '03', titre: 'Travaux par nos équipes', desc: "Si l'agrafage est nécessaire : devis ferme, planning précis, exécution sous garantie 10 ans." },
             ].map((etape) => (
               <div key={etape.num}>
@@ -163,7 +163,7 @@ export default function LandingFissuresToulouse() {
       <section className="bg-ipb-cream py-16 lg:py-20 text-center">
         <div className="max-w-2xl mx-auto px-6">
           <h2 className="font-serif text-ipb-text mb-6" style={{ fontSize: 'clamp(26px, 2.4vw, 36px)', lineHeight: 1.18, letterSpacing: '-0.022em', fontWeight: 700 }}>
-            Prêt à faire venir le cabinet&nbsp;?
+            Prêt à faire venir l’institut&nbsp;?
           </h2>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <MagneticButton href="/diagnostic?utm_source=ads&utm_medium=cpc&utm_campaign=fissures_toulouse" variant="primary">

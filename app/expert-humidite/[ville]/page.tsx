@@ -18,8 +18,8 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
   const villeNom = villeData.nom;
 
   return {
-    title: `Expert humidité ${villeNom} (${deptCode}) · Cabinet IPB`,
-    description: `Cabinet de pathologie du bâtiment à ${villeNom}. Diagnostic d'humidité instrumenté, injection de résine, cuvelage, ventilation. Décennale AXA.`,
+    title: `Expert humidité ${villeNom} (${deptCode}) · Institut IPB`,
+    description: `Institut de pathologie du bâtiment à ${villeNom}. Diagnostic d'humidité instrumenté, injection de résine, cuvelage, ventilation. Décennale AXA.`,
     keywords: [
       `expert humidité ${ville}`,
       `diagnostic humidité ${ville}`,
@@ -27,11 +27,11 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
       `injection résine ${ville}`,
       `cuvelage ${ville}`,
       `salpêtre ${ville}`,
-      `cabinet pathologie bâtiment ${ville}`,
+      `institut pathologie bâtiment ${ville}`,
     ],
     alternates: { canonical: `https://www.ipb-expertise.fr/expert-humidite/${ville}` },
     openGraph: {
-      title: `Expert humidité ${villeNom} · Cabinet IPB`,
+      title: `Expert humidité ${villeNom} · Institut IPB`,
       description: `Diagnostic et traitement de l'humidité à ${villeNom}.`,
       url: `https://www.ipb-expertise.fr/expert-humidite/${ville}`,
       type: 'website',
@@ -52,7 +52,7 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": `IPB · Expert humidité ${villeNom}`,
-    "description": `Cabinet de pathologie du bâtiment intervenant à ${villeNom}. Diagnostic et traitement de l'humidité.`,
+    "description": `Institut de pathologie du bâtiment intervenant à ${villeNom}. Diagnostic et traitement de l'humidité.`,
     "areaServed": { "@type": "City", "name": villeNom },
     "provider": {
       "@type": "LocalBusiness",
@@ -71,9 +71,9 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
         ville={ville}
         serviceTitle="Diagnostic et traitement de l'humidité"
         eyebrowLabel="Expertise · Humidité du bâti"
-        description={`Notre cabinet intervient à ${villeNom} pour identifier la cause de l'humidité (remontées capillaires, condensation, infiltration, cave humide) et préconiser le traitement adapté. Hygromètre, caméra thermique, rapport reconnu par les assurances.`}
+        description={`Notre institut intervient à ${villeNom} pour identifier la cause de l'humidité (remontées capillaires, condensation, infiltration, cave humide) et préconiser le traitement adapté. Hygromètre, caméra thermique, rapport reconnu par les assurances.`}
         heroImage="/images/humidite-avant-apres.webp"
-        heroAlt={`Diagnostic humidité à ${villeNom} — Cabinet IPB`}
+        heroAlt={`Diagnostic humidité à ${villeNom} — Institut IPB`}
         methodHref="/expertise/humidite"
         contextField={villeData.specificitesHumidite ? 'specificitesHumidite' : undefined}
         relatedCards={[

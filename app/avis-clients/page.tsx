@@ -12,11 +12,11 @@ import Script from 'next/script';
 export const metadata: Metadata = {
   title: 'Avis clients · 4.9/5 sur Google · IPB Toulouse',
   description: "Avis vérifiés de nos clients en Occitanie : 4.9/5 sur Google. Diagnostic de fissures, ouverture de mur porteur, expertise avant achat. Toulouse, Montauban, Auch, Albi.",
-  keywords: ['avis IPB', 'avis expert fissures toulouse', 'témoignages clients cabinet', 'IPB expertise avis', 'note google'],
+  keywords: ['avis IPB', 'avis expert fissures toulouse', 'témoignages clients institut', 'IPB expertise avis', 'note google'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/avis-clients' },
   openGraph: {
     title: 'Avis clients · 4.9/5 sur Google · IPB Toulouse',
-    description: "Avis vérifiés de clients en Occitanie. Cabinet de pathologie du bâtiment.",
+    description: "Avis vérifiés de clients en Occitanie. Institut de pathologie du bâtiment.",
     url: 'https://www.ipb-expertise.fr/avis-clients',
   },
 };
@@ -73,7 +73,7 @@ const reviews = [
   {
     author: 'Yusra G.', location: 'Toulouse',
     date: '2026-01-22',
-    text: "Cabinet sérieux et à l'écoute. Le diagnostic a été clair, l'intervention efficace, l'équipe ponctuelle et soignée — on sent qu'ils prennent le temps d'expliquer ce qu'ils font.",
+    text: "Institut sérieux et à l'écoute. Le diagnostic a été clair, l'intervention efficace, l'équipe ponctuelle et soignée — on sent qu'ils prennent le temps d'expliquer ce qu'ils font.",
     service: 'Diagnostic structure',
   },
 ];

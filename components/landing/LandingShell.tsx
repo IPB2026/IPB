@@ -57,7 +57,7 @@ export function LandingShell({ children, phoneNumber = '0582953375' }: LandingSh
           <CrackSVG variant="mini" />
           <div className="text-[11px] text-white/50 leading-[1.7] uppercase tracking-[0.08em]">
             <p>IPB Expertise — 13 rue du Recteur Dottin, 31100 Toulouse</p>
-            <p>Décennale AXA France IARD · Cabinet créé en 2019</p>
+            <p>Décennale AXA France IARD · Institut créé en 2019</p>
           </div>
           <div className="flex gap-4 text-[11px] text-white/40">
             <Link href="/legal/mentions-legales" className="hover:text-white/70 transition-colors">Mentions légales</Link>

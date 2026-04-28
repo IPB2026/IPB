@@ -635,13 +635,13 @@ export default function DiagnosticPage() {
               <div>
                 <div className="text-center mb-10">
                   <p className="text-ipb-orange text-[10px] uppercase tracking-[0.18em] font-medium mb-4">
-                    Échange technique avec le cabinet
+                    Échange technique avec l’institut
                   </p>
                   <h1 className="font-serif text-ipb-text mb-4" style={{ fontSize: 'clamp(28px, 3vw, 44px)', lineHeight: 1.1, letterSpacing: '-0.022em', fontWeight: 700 }}>
                     Décrivez-nous<br /><em>votre situation.</em>
                   </h1>
                   <p className="text-[15px] leading-[1.85] font-light text-ipb-muted max-w-xl mx-auto">
-                    Quelques minutes pour nous donner les éléments essentiels. Notre cabinet vous répond sous 24 heures, par téléphone ou par mail.
+                    Quelques minutes pour nous donner les éléments essentiels. Notre institut vous répond sous 24 heures, par téléphone ou par mail.
                   </p>
                 </div>
 

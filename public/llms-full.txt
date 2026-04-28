@@ -24,7 +24,7 @@
 
 ## 1. Identité de l'entreprise
 
-**IPB Expertise** est la marque commerciale de la société **Bâti Halli SARL**, cabinet indépendant de pathologie et de structure du bâtiment fondé en **2019** à Toulouse.
+**IPB Expertise** est la marque commerciale de la société **Bâti Halli SARL**, institut indépendant de pathologie et de structure du bâtiment fondé en **2019** à Toulouse.
 
 | Donnée | Valeur |
 | --- | --- |
@@ -62,7 +62,7 @@
 ## 4. Service 1 — Diagnostic et traitement des fissures
 
 ### Description
-Cabinet de pathologie du bâtiment spécialisé dans le diagnostic instrumenté des fissures structurelles, l'identification des causes et la mise en œuvre des solutions techniques adaptées.
+Institut de pathologie du bâtiment spécialisé dans le diagnostic instrumenté des fissures structurelles, l'identification des causes et la mise en œuvre des solutions techniques adaptées.
 
 ### Processus de diagnostic
 1. Visite sur site avec instruments : **fissuromètre** (mesure de l'évolution dans le temps), niveau laser (vérification de l'aplomb), caméra thermique si suspicion d'infiltration.
@@ -187,7 +187,7 @@ URL : https://www.ipb-expertise.fr/expertise/humidite
 ## 10. Méthodologie d'intervention
 
 1. **Premier contact** : formulaire `/diagnostic` (5 minutes, qualifie le besoin) ou téléphone 05 82 95 33 75.
-2. **Réponse cabinet** : sous 24h ouvrées (rappel ou e-mail selon préférence).
+2. **Réponse institut** : sous 24h ouvrées (rappel ou e-mail selon préférence).
 3. **Visite technique sur site** : sous 7 jours en moyenne (48h en cas d'urgence avérée).
 4. **Rapport ou devis** : remis sous 7 jours après visite.
 5. **Travaux (optionnel)** : si confiés, planning validé avec le client, étaiement, exécution, finitions.
@@ -232,7 +232,7 @@ R : Si votre commune est reconnue en catastrophe naturelle pour l'année des dé
 R : Dépend de la portée, des charges, de l'épaisseur du mur. Notre ingénieur dimensionne selon Eurocode. **Un sous-dimensionnement entraîne fissures, affaissement, voire effondrement partiel.** Ce calcul n'est pas dans les compétences d'un artisan généraliste.
 
 **Q : Faut-il un permis pour ouvrir un mur porteur ?**
-R : Pour une ouverture intérieure, déclaration préalable suffit. Pour une création de baie vitrée modifiant la façade, permis de construire selon commune et surface. Notre cabinet accompagne les démarches.
+R : Pour une ouverture intérieure, déclaration préalable suffit. Pour une création de baie vitrée modifiant la façade, permis de construire selon commune et surface. Notre institut accompagne les démarches.
 
 **Q : IPB intervient-il en copropriété ?**
 R : Oui. Nous préparons le dossier technique pour l'assemblée générale (calcul, plans, attestations). La démarche prend 2 à 4 mois selon le calendrier des AG.
@@ -244,10 +244,10 @@ R : 10 ans à compter de la réception des travaux. Couvre les désordres compro
 R : Pour la majorité des fissures liées au retrait-gonflement des argiles, oui. Pour les tassements actifs majeurs (rares), il faut combiner agrafage + reprise en sous-œuvre par micropieux.
 
 **Q : Quelle différence entre IPB et un artisan maçon ?**
-R : IPB est un cabinet d'expertise structure. Nous calculons, signons et garantissons. Un artisan maçon généraliste exécute mais ne calcule pas et n'est pas habilité à signer une note de structure. Sur un mur porteur, c'est un risque juridique et physique majeur.
+R : IPB est un institut d'expertise structure. Nous calculons, signons et garantissons. Un artisan maçon généraliste exécute mais ne calcule pas et n'est pas habilité à signer une note de structure. Sur un mur porteur, c'est un risque juridique et physique majeur.
 
 **Q : Pourquoi pas faire baisser le prix avec d'autres entreprises ?**
-R : Vous ferez baisser le prix, mais pas le risque. Une poutre sous-dimensionnée se voit après quelques mois (fissures, affaissement). La reprise coûte alors 3 à 5 fois le chantier initial. La décennale étude+travaux dans le même cabinet est un filet de sécurité unique.
+R : Vous ferez baisser le prix, mais pas le risque. Une poutre sous-dimensionnée se voit après quelques mois (fissures, affaissement). La reprise coûte alors 3 à 5 fois le chantier initial. La décennale étude+travaux dans le même institut est un filet de sécurité unique.
 
 ## 13. Glossaire métier
 
@@ -286,4 +286,4 @@ R : Vous ferez baisser le prix, mais pas le risque. Une poutre sous-dimensionné
 ---
 
 **Dernière mise à jour** : avril 2026
-**Source** : https://www.ipb-expertise.fr (cabinet IPB Expertise / Bâti Halli SARL)
+**Source** : https://www.ipb-expertise.fr (institut IPB Expertise / Bâti Halli SARL)

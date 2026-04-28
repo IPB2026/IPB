@@ -13,7 +13,7 @@ import { ExpertiseFissuresBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
   title: 'Diagnostic et traitement des fissures · Toulouse · IPB',
-  description: 'Cabinet de pathologie du bâtiment. Diagnostic instrumenté, agrafage structurel, reprise en sous-œuvre. Rapports reconnus par les assurances. Toulouse, Montauban, Auch, Albi.',
+  description: 'Institut de pathologie du bâtiment. Diagnostic instrumenté, agrafage structurel, reprise en sous-œuvre. Rapports reconnus par les assurances. Toulouse, Montauban, Auch, Albi.',
   keywords: [
     'expert fissures toulouse',
     'expertise fissure toulouse',
@@ -33,7 +33,7 @@ export const metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/fissures' },
   openGraph: {
-    title: 'Diagnostic et traitement des fissures · Cabinet IPB Toulouse',
+    title: 'Diagnostic et traitement des fissures · Institut IPB Toulouse',
     description: "Diagnostic instrumenté, agrafage structurel, reprise en sous-œuvre. Rapports reconnus par les assurances. Décennale AXA.",
     url: 'https://www.ipb-expertise.fr/expertise/fissures',
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
@@ -137,7 +137,7 @@ export default function FissuresPage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">
-                  Une fissure n'est jamais anodine, mais elle n'est pas toujours grave. Notre cabinet vient sur place avec ses instruments, identifie la cause, et vous remet un rapport clair. Si des travaux sont nécessaires, ce sont nos équipes qui les exécutent — sous garantie décennale.
+                  Une fissure n'est jamais anodine, mais elle n'est pas toujours grave. Notre institut vient sur place avec ses instruments, identifie la cause, et vous remet un rapport clair. Si des travaux sont nécessaires, ce sont nos équipes qui les exécutent — sous garantie décennale.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>
@@ -180,7 +180,7 @@ export default function FissuresPage() {
                 </div>
                 <div className="lg:col-span-5 lg:col-start-8">
                   <p className="text-[15px] leading-[1.9] font-light text-ipb-muted">
-                    Toutes les fissures n'ont pas la même origine ni la même gravité. Voici comment notre cabinet les classe à l'observation, avant le diagnostic instrumenté.
+                    Toutes les fissures n'ont pas la même origine ni la même gravité. Voici comment notre institut les classe à l'observation, avant le diagnostic instrumenté.
                   </p>
                 </div>
               </div>

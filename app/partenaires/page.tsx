@@ -125,7 +125,7 @@ export default function PartenairesPage() {
             <RevealOnScroll>
               <Eyebrow className="justify-center">Une autre activité ?</Eyebrow>
               <p className="font-serif text-ipb-text text-[22px] lg:text-[26px] leading-[1.4] mb-6">
-                Promoteur, contractant général, syndic, expert d'assurance, notaire — appelez le cabinet, on adapte le cadre de collaboration à votre métier.
+                Promoteur, contractant général, syndic, expert d'assurance, notaire — appelez l’institut, on adapte le cadre de collaboration à votre métier.
               </p>
               <a href="tel:0582953375" className="inline-flex items-center gap-2 text-ipb-orange font-medium text-[14px] tracking-wide border-b border-ipb-orange pb-1 hover:gap-3 transition-all">
                 05 82 95 33 75 →

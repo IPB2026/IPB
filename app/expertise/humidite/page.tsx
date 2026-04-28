@@ -12,15 +12,15 @@ import Script from 'next/script';
 import { ExpertiseHumiditeBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
-  title: "Diagnostic et traitement de l'humidité · Cabinet IPB Toulouse",
-  description: "Cabinet de pathologie du bâtiment : diagnostic d'humidité instrumenté (caméra thermique, hygromètre), injection de résine, cuvelage, ventilation. Toulouse, Montauban, Auch et Albi.",
+  title: "Diagnostic et traitement de l'humidité · Institut IPB Toulouse",
+  description: "Institut de pathologie du bâtiment : diagnostic d'humidité instrumenté (caméra thermique, hygromètre), injection de résine, cuvelage, ventilation. Toulouse, Montauban, Auch et Albi.",
   keywords: [
     'expert humidité toulouse',
     'expertise humidité haute-garonne',
     'diagnostic humidité maison',
     'injection résine remontées capillaires',
     'traitement humidité murs',
-    'cabinet pathologie bâtiment toulouse',
+    'institut pathologie bâtiment toulouse',
     'salpêtre traitement',
     'cuvelage cave',
     'VMI ventilation',
@@ -28,11 +28,11 @@ export const metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/humidite' },
   openGraph: {
-    title: "Diagnostic et traitement de l'humidité · Cabinet IPB Toulouse",
-    description: "Diagnostic instrumenté, injection de résine, cuvelage, ventilation. Cabinet indépendant en pathologie du bâtiment.",
+    title: "Diagnostic et traitement de l'humidité · Institut IPB Toulouse",
+    description: "Diagnostic instrumenté, injection de résine, cuvelage, ventilation. Institut indépendant en pathologie du bâtiment.",
     url: 'https://www.ipb-expertise.fr/expertise/humidite',
     type: 'website',
-    images: [{ url: '/images/humidite-avant-apres.webp', width: 1200, height: 630, alt: 'Avant et après traitement humidité — Cabinet IPB' }],
+    images: [{ url: '/images/humidite-avant-apres.webp', width: 1200, height: 630, alt: 'Avant et après traitement humidité — Institut IPB' }],
   },
 };
 
@@ -126,7 +126,7 @@ export default function HumiditePage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">
-                  Tâches sur les murs, peinture qui cloque, odeur persistante : avant de traiter, il faut comprendre. Notre cabinet vient sur place avec hygromètre et caméra thermique pour identifier la cause exacte — et préconiser le traitement adapté.
+                  Tâches sur les murs, peinture qui cloque, odeur persistante : avant de traiter, il faut comprendre. Notre institut vient sur place avec hygromètre et caméra thermique pour identifier la cause exacte — et préconiser le traitement adapté.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>

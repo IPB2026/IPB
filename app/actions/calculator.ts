@@ -114,7 +114,7 @@ export async function submitCalculatorLead(input: CalculatorLeadInput): Promise<
       html: `
         <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #F3EFE8; color: #1A1917;">
           <div style="background: #0B1826; color: white; padding: 28px 24px; text-align: center;">
-            <p style="margin: 0; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.6;">IPB · Cabinet de pathologie du bâtiment</p>
+            <p style="margin: 0; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.6;">IPB · Institut de pathologie du bâtiment</p>
             <h1 style="margin: 12px 0 0; font-family: Georgia, serif; font-size: 26px; font-weight: 700;">Votre estimation</h1>
           </div>
 
@@ -140,10 +140,10 @@ export async function submitCalculatorLead(input: CalculatorLeadInput): Promise<
           <div style="background: white; margin: 16px; padding: 28px; border-radius: 6px; border: 1px solid #D8D2C9; font-size: 14px; line-height: 1.85; color: #736D67;">
             <p>Bonjour,</p>
             <p>Vous avez utilisé notre calculateur pour estimer le coût de votre ouverture de mur porteur à <strong style="color: #1A1917;">${input.city}</strong>. Voici la fourchette indicative.</p>
-            <p>Cette estimation est basée sur des paramètres saisis. Pour un devis ferme, notre cabinet doit venir sur place — c'est gratuit et sans engagement.</p>
+            <p>Cette estimation est basée sur des paramètres saisis. Pour un devis ferme, notre institut doit venir sur place — c'est gratuit et sans engagement.</p>
             <p>Notre ingénieur structure vous appellera sous 24 heures ouvrées pour préciser les éléments techniques et planifier la visite si vous le souhaitez.</p>
             <p style="margin-top: 24px;">À très vite,</p>
-            <p style="font-family: Georgia, serif; font-style: italic; color: #1A1917;">Ludovic D. — Fondateur du cabinet IPB</p>
+            <p style="font-family: Georgia, serif; font-style: italic; color: #1A1917;">Ludovic D. — Fondateur de l’institut IPB</p>
           </div>
 
           <div style="margin: 16px; padding: 24px; background: #C8601F; border-radius: 6px; text-align: center;">

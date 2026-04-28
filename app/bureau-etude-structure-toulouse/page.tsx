@@ -112,7 +112,7 @@ export default function BureauEtudeStructurePage() {
               Pour qui travaillons-nous ?
             </h2>
             <p className="text-lg text-ipb-muted text-center mb-12 max-w-3xl mx-auto">
-              Particuliers, mais aussi architectes d'intérieur, marchands de biens et agences immobilières s'appuient sur notre cabinet.
+              Particuliers, mais aussi architectes d'intérieur, marchands de biens et agences immobilières s'appuient sur notre institut.
             </p>
 
             <div className="grid md:grid-cols-2 gap-6">

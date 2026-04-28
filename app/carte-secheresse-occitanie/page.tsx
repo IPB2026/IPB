@@ -191,7 +191,7 @@ export default function CarteSecheressePage() {
 
             <RevealOnScroll delay={0.2}>
               <p className="text-[12px] font-light text-ipb-light text-center mt-10 leading-[1.7] max-w-xl mx-auto">
-                Données indicatives consolidées par notre cabinet à partir des arrêtés CAT-NAT publiés au Journal Officiel et des fichiers Géorisques. Pour vérifier le statut d'une commune précise : <a href="https://www.georisques.gouv.fr/" target="_blank" rel="noopener noreferrer" className="text-ipb-orange underline">Géorisques.gouv.fr</a>
+                Données indicatives consolidées par notre institut à partir des arrêtés CAT-NAT publiés au Journal Officiel et des fichiers Géorisques. Pour vérifier le statut d'une commune précise : <a href="https://www.georisques.gouv.fr/" target="_blank" rel="noopener noreferrer" className="text-ipb-orange underline">Géorisques.gouv.fr</a>
               </p>
             </RevealOnScroll>
           </div>
@@ -215,7 +215,7 @@ export default function CarteSecheressePage() {
                 { titre: 'Vérifier que votre commune est reconnue', desc: "Consultez Géorisques ou notre carte ci-dessus. La commune doit être citée dans un arrêté CAT-NAT publié au Journal Officiel pour la sécheresse de l'année où sont apparus vos désordres." },
                 { titre: 'Déclarer le sinistre à votre assurance', desc: "Déclaration sous 10 jours après publication de l'arrêté. La plupart des assureurs acceptent une déclaration écrite (lettre recommandée ou espace client en ligne)." },
                 { titre: "Faire venir l'expert d'assurance", desc: "L'assureur missionne un expert. Sa mission : constater les désordres et chiffrer. Sa difficulté principale : il défend les intérêts de l'assureur, pas les vôtres." },
-                { titre: 'Faire produire un rapport indépendant', desc: "C'est ici que notre cabinet intervient. Notre rapport documente précisément les désordres, leur lien avec le RGA, et chiffre les travaux nécessaires. Il devient une pièce technique opposable." },
+                { titre: 'Faire produire un rapport indépendant', desc: "C'est ici que notre institut intervient. Notre rapport documente précisément les désordres, leur lien avec le RGA, et chiffre les travaux nécessaires. Il devient une pièce technique opposable." },
                 { titre: 'Négocier sur des bases techniques', desc: 'Avec notre rapport, vous négociez sur des éléments factuels. Dans 92 % des cas que nous avons accompagnés en 2022-2024, l\'indemnisation finale a été conforme ou supérieure à notre chiffrage.' },
               ].map((etape, i) => (
                 <RevealOnScroll key={etape.titre} delay={i * 0.06}>
@@ -239,7 +239,7 @@ export default function CarteSecheressePage() {
             <div className="mt-16 text-center">
               <RevealOnScroll>
                 <p className="font-serif text-ipb-text text-[20px] lg:text-[24px] leading-[1.45] mb-8 max-w-xl mx-auto">
-                  Votre maison est touchée et votre commune reconnue&nbsp;? Notre cabinet documente votre dossier sous 7 jours.
+                  Votre maison est touchée et votre commune reconnue&nbsp;? Notre institut documente votre dossier sous 7 jours.
                 </p>
                 <MagneticButton href="/diagnostic" variant="primary">
                   Demander un rapport CAT-NAT
@@ -263,7 +263,7 @@ export default function CarteSecheressePage() {
                 Journalistes, élus, particuliers : vous pouvez citer et reprendre cette synthèse en mentionnant simplement <strong className="font-medium text-ipb-text not-italic">IPB Expertise — ipb-expertise.fr</strong>.
               </p>
               <p className="text-[13px] font-light text-ipb-muted">
-                Pour des données plus détaillées par commune, contactez le cabinet : <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange underline">contact@ipb-expertise.fr</a>
+                Pour des données plus détaillées par commune, contactez l’institut : <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange underline">contact@ipb-expertise.fr</a>
               </p>
             </RevealOnScroll>
           </div>

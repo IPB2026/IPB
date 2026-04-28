@@ -65,7 +65,7 @@ export function ServiceList() {
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
               <p className="text-[15px] leading-[1.9] font-light text-ipb-muted">
-                Notre cabinet s'occupe de la structure des bâtiments anciens et neufs en Occitanie. Particuliers comme professionnels font appel à IPB pour la rigueur de nos diagnostics et la qualité de nos chantiers.
+                Notre institut s'occupe de la structure des bâtiments anciens et neufs en Occitanie. Particuliers comme professionnels font appel à IPB pour la rigueur de nos diagnostics et la qualité de nos chantiers.
               </p>
             </div>
           </div>
