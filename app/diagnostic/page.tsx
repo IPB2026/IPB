@@ -719,7 +719,7 @@ export default function DiagnosticPage() {
                         <span className="text-yellow-500 text-xs ml-1">★★★★★</span>
                       </div>
                     </div>
-                    <span className="text-[10px] text-slate-400 font-medium">47 avis vérifiés Google</span>
+                    <span className="text-[10px] text-slate-400 font-medium">Avis vérifiés sur Google</span>
                   </div>
                   <div className="grid grid-cols-3 gap-2 text-center">
                     <div className="bg-slate-50 rounded-lg py-2">

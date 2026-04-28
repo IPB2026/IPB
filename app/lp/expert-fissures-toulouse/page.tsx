@@ -32,7 +32,7 @@ export default function LandingFissuresToulouse() {
           "name": "IPB · Expert fissures Toulouse",
           "telephone": "+33582953375",
           "address": { "@type": "PostalAddress", "addressLocality": "Toulouse", "postalCode": "31100" },
-          "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "47" },
+          "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "15" },
         })
       }} />
 
@@ -118,7 +118,7 @@ export default function LandingFissuresToulouse() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             {[
               { value: 850, suffix: '+', label: 'Chantiers livrés' },
-              { value: 4.9, decimals: 1, suffix: '/5', label: '47 avis Google' },
+              { value: 4.9, decimals: 1, suffix: '/5', label: 'Avis Google' },
               { value: 7, suffix: ' j', label: 'Délai de visite' },
               { value: 10, suffix: ' ans', label: 'Décennale AXA' },
             ].map((s) => (

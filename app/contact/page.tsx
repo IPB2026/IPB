@@ -92,15 +92,26 @@ export default function ContactPage() {
                   </p>
                 </div>
 
-                {/* Adresse */}
-                <div>
-                  <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-2">Cabinet</p>
-                  <p className="font-serif text-ipb-text font-medium text-[16px] mb-1">
-                    13 rue du Recteur Dottin
-                  </p>
-                  <p className="text-[14px] font-light text-ipb-muted">
-                    31100 Toulouse — Occitanie
-                  </p>
+                {/* Adresses */}
+                <div className="space-y-5">
+                  <div>
+                    <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-2">Siège social</p>
+                    <p className="font-serif text-ipb-text font-medium text-[16px] mb-1">
+                      13 rue du Recteur Dottin
+                    </p>
+                    <p className="text-[14px] font-light text-ipb-muted">
+                      31100 Toulouse — Occitanie
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-2">Bureau IPB Expertise</p>
+                    <p className="font-serif text-ipb-text font-medium text-[16px] mb-1">
+                      54 avenue Jean Jaurès
+                    </p>
+                    <p className="text-[14px] font-light text-ipb-muted">
+                      31170 Tournefeuille — Occitanie
+                    </p>
+                  </div>
                 </div>
 
                 {/* Zone */}

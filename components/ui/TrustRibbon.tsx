@@ -9,7 +9,7 @@
  */
 const items = [
   { value: '850+', label: 'chantiers livrés' },
-  { value: '4.9/5', label: 'Google · 47 avis' },
+  { value: '4.9/5', label: 'Google' },
   { value: '10 ans', label: 'décennale AXA' },
   { value: '48h', label: 'délai de réponse' },
   { value: '7j', label: 'délai de visite' },

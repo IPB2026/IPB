@@ -24,8 +24,8 @@ const services = [
   },
   {
     num: '02',
-    title: 'Ouverture de mur porteur et baie vitrée',
-    desc: "Étude de structure par notre ingénieur, dimensionnement de la poutre IPN ou HEB, étaiement, ouverture, finitions. Chantier en 3 à 5 jours.",
+    title: 'Ouverture de mur porteur',
+    desc: "Étude de structure par notre ingénieur, dimensionnement de la poutre IPN ou HEB, étaiement, ouverture, finitions. Pour une cuisine ouverte ou — sur projet de façade — la création d'une baie vitrée.",
     href: '/expertise/mur-porteur',
   },
   {

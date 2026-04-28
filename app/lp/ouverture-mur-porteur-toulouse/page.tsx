@@ -23,7 +23,7 @@ export default function LandingMurPorteurToulouse() {
           "name": "IPB · Ouverture mur porteur Toulouse",
           "telephone": "+33582953375",
           "address": { "@type": "PostalAddress", "addressLocality": "Toulouse", "postalCode": "31100" },
-          "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "47" },
+          "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "15" },
           "offers": { "@type": "Offer", "priceRange": "4000-20000 EUR", "priceCurrency": "EUR" }
         })
       }} />

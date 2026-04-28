@@ -3,9 +3,10 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Calendar, Clock, Share2, Facebook, Twitter, Linkedin } from 'lucide-react';
+import { Calendar, Clock, Share2, Facebook, Twitter, Linkedin } from 'lucide-react';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { BackButton } from '@/components/ui/BackButton';
 import { Breadcrumbs } from '@/components/blog/Breadcrumbs';
 import { TableOfContents } from '@/components/blog/TableOfContents';
 import { InternalLinks } from '@/components/seo/InternalLinks';
@@ -209,16 +210,10 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
       <TopBar />
       <Navbar />
       
-      {/* Header */}
-      <div className="bg-white border-b border-slate-200 sticky top-0 z-40">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-slate-600 hover:text-orange-600 font-bold transition-colors"
-          >
-            <ArrowLeft size={18} />
-            Retour au blog
-          </Link>
+      {/* Bandeau retour discret éditorial */}
+      <div className="bg-ipb-cream border-b border-ipb-rule">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+          <BackButton href="/blog" label="Retour au blog" />
         </div>
       </div>
 

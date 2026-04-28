@@ -85,7 +85,7 @@ export function ServiceVilleTemplate({
               <RevealOnScroll delay={0.18}>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <MagneticButton href="/diagnostic" variant="primary">
-                    Demander une expertise
+                    Diagnostic gratuit
                   </MagneticButton>
                   <MagneticButton href={methodHref} variant="ghost">
                     Notre méthode

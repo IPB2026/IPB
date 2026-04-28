@@ -144,7 +144,7 @@ export default function FissuresPage() {
               <RevealOnScroll delay={0.18}>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <MagneticButton href="/diagnostic" variant="primary">
-                    Demander une expertise
+                    Diagnostic gratuit
                   </MagneticButton>
                   <MagneticButton href="/blog/agrafage-vs-micropieux-choix" variant="ghost">
                     Agrafage ou micropieux ?

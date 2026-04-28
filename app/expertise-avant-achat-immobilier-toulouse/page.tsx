@@ -91,7 +91,7 @@ export default function ExpertiseAvantAchatPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/diagnostic" className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all">
-                Demander une expertise <ArrowRight size={20} />
+                Diagnostic gratuit <ArrowRight size={20} />
               </Link>
               <a href="tel:0582953375" className="bg-white/10 border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all">
                 <Phone size={20} /> 05 82 95 33 75

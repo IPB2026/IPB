@@ -152,8 +152,16 @@ const localBusinessSchema = {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Ouverture de mur porteur et création de baie vitrée",
-          "description": "Étude structure, dimensionnement et pose de poutre IPN/HEB, étaiement, ouverture, finitions. Garantie décennale sur l'étude et les travaux."
+          "name": "Ouverture de mur porteur",
+          "description": "Étude structure, dimensionnement et pose de poutre IPN/HEB, étaiement, ouverture, finitions. Cuisine ouverte, suite parentale, plateau loft. Garantie décennale sur l'étude et les travaux."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Création de baie vitrée",
+          "description": "Création d'une baie vitrée sur projet de façade. Étude technique, ouverture du mur porteur, pose du dormant et finitions. Démarches administratives accompagnées (déclaration préalable ou permis de construire). Garantie décennale."
         }
       },
       {
@@ -171,7 +179,7 @@ const localBusinessSchema = {
     "ratingValue": "4.9",
     "bestRating": "5",
     "worstRating": "1",
-    "reviewCount": "47"
+    "reviewCount": "15"
   }
 };
 

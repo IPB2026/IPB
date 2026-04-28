@@ -4,6 +4,7 @@ import Script from 'next/script';
 import { notFound } from 'next/navigation';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { BackButton } from '@/components/ui/BackButton';
 import { Footer } from '@/components/home/Footer';
 import { Testimonials } from '@/components/home/Testimonials';
 import { CheckCircle, Phone, ArrowRight, Shield, Clock, FileText, Hammer, Ruler, Award, AlertTriangle, Eye } from 'lucide-react';
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
 
   return {
     title: `Ouverture Mur Porteur ${villeNom} (${deptCode}) — Étude IPN/HEB + Travaux | IPB`,
-    description: `Ouverture mur porteur à ${villeNom} : bureau d'études structure intégré, dimensionnement IPN/HEB, pose et création baie vitrée. Devis gratuit sous 24h. Décennale AXA. ☎ 05 82 95 33 75`,
+    description: `Ouverture de mur porteur à ${villeNom} : bureau d'études structure intégré, dimensionnement IPN/HEB, pose. Création de baie vitrée sur projet de façade. Devis gratuit sous 24h. Décennale AXA. ☎ 05 82 95 33 75`,
     keywords: [
       `ouverture mur porteur ${slug}`,
       `prix ouverture mur porteur ${slug}`,
@@ -69,7 +70,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "serviceType": `Ouverture de mur porteur et création de baie vitrée à ${villeNom}`,
+    "serviceType": `Ouverture de mur porteur à ${villeNom}`,
     "areaServed": { "@type": "City", "name": villeNom, "addressRegion": villeData.departement },
     "provider": {
       "@type": "LocalBusiness",
@@ -125,6 +126,13 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
       <TopBar />
       <Navbar />
       <main id="main-content">
+        {/* Bandeau retour discret éditorial */}
+        <div className="bg-slate-50 border-b border-slate-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <BackButton href="/expertise/mur-porteur" label="Retour à l'expertise mur porteur" />
+          </div>
+        </div>
+
         {/* HERO */}
         <section className="relative bg-slate-900 text-white overflow-hidden py-16 md:py-24">
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-orange-950/60"></div>
