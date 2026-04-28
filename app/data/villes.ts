@@ -1311,6 +1311,93 @@ export const villesData: Record<string, VilleInfo> = {
     specificitesHumidite: 'La nappe phréatique haute crée des problèmes de remontées capillaires dans les sous-sols.',
     conseillExpert: 'À Saint-Sulpice, faites systématiquement vérifier les fondations avant achat. La quasi-totalité de la commune est en zone à risque très fort.',
     tauxSinistralite: '16,7%'
+  },
+
+  // ─── Ariège (09) — réponse à la requête GSC "expert fissure ariège" 71 imp ───
+  pamiers: {
+    nom: 'Pamiers',
+    codePostal: '09100',
+    departement: 'Ariège (09)',
+    distance: '70 km',
+    description: "Sous-préfecture de l'Ariège (15 000 habitants), Pamiers connaît un boom pavillonnaire depuis 20 ans. Les coteaux argileux qui entourent la ville exposent une grande partie du parc immobilier au retrait-gonflement des argiles.",
+    population: '14 924',
+    superficie: '74,9 km²',
+    geologie: "Plaine de l'Ariège (alluvions) en centre-ville, coteaux molassiques argileux à l'est et à l'ouest. Aléa RGA fort à très fort sur les zones pavillonnaires en hauteur.",
+    risqueRGA: 'fort',
+    arretesCATNAT: ['Sécheresse 2022', 'Sécheresse 2023', 'Sécheresse 2018'],
+    quartiersRisque: ['Coteaux du Mas-Saint-Antoine', 'Lestang', 'Lotissements de Verniolle limitrophe'],
+    typesConstruction: "Pavillons des années 1980-2000 majoritaires sur les coteaux. Les normes parasismiques modernes n'étaient pas appliquées.",
+    problemesFrequents: ['Fissures structurelles', 'Décollements façade', 'Tassements de seuils'],
+    historiqueLocal: 'Pamiers concentre une part importante des dossiers CAT-NAT du département depuis la sécheresse de 2022.',
+    communesProches: ['Foix', 'Saverdun', 'Mazères', 'Verniolle', 'Saint-Jean-du-Falga'],
+    specificitesFissures: "Maisons en briques foraines vulnérables aux mouvements de terrain. La majorité des chantiers IPB en Ariège commence par un diagnostic à Pamiers ou alentour.",
+    specificitesHumidite: "Caves humides courantes en centre-ville, liées à la proximité de l'Ariège.",
+    conseillExpert: "Avant tout achat à Pamiers, exigez un diagnostic structure — surtout pour les pavillons sur coteau construits avant 2000.",
+    tauxSinistralite: '8,4%'
+  },
+  foix: {
+    nom: 'Foix',
+    codePostal: '09000',
+    departement: 'Ariège (09)',
+    distance: '90 km',
+    description: "Préfecture de l'Ariège (10 000 habitants), Foix est encadrée de reliefs et bâtie sur des sols hétérogènes. Le centre médiéval et les pavillons des coteaux rencontrent des problématiques structurelles différentes.",
+    population: '9 720',
+    geologie: 'Vallée de l\'Ariège : alluvions en fond de vallée, schistes et molasses argileuses sur les versants. Risque RGA moyen à fort selon le secteur.',
+    risqueRGA: 'moyen',
+    arretesCATNAT: ['Sécheresse 2022', 'Sécheresse 2023'],
+    quartiersRisque: ['Quartier du Val', 'Coteaux de Saint-Volusien'],
+    typesConstruction: 'Centre médiéval en pierre, pavillons modernes en périphérie sur coteaux argileux.',
+    problemesFrequents: ['Fissures sur murs anciens en pierre', 'Tassements en pavillonnaire'],
+    communesProches: ['Pamiers', 'Tarascon-sur-Ariège', 'Lavelanet', 'Saint-Paul-de-Jarrat'],
+    specificitesFissures: 'Le bâti médiéval foixéen présente des fissures stables anciennes à distinguer des fissures structurelles actives. Diagnostic instrumenté indispensable.',
+    specificitesHumidite: "Murs en pierre épais sujets aux remontées capillaires en bas de vallée.",
+    conseillExpert: "Sur le bâti ancien foixéen, ne traitez jamais une fissure sans avoir vérifié si elle est active ou stabilisée — la mauvaise lecture coûte cher.",
+    tauxSinistralite: '5,9%'
+  },
+  saverdun: {
+    nom: 'Saverdun',
+    codePostal: '09700',
+    departement: 'Ariège (09)',
+    distance: '55 km',
+    description: 'Bastide ariégeoise de 5 500 habitants, Saverdun est une commune dortoir de Toulouse en pleine croissance pavillonnaire. Les sols argileux sont particulièrement exposés au RGA.',
+    population: '5 433',
+    geologie: 'Plateau molassique argileux à fort potentiel de retrait-gonflement.',
+    risqueRGA: 'fort',
+    arretesCATNAT: ['Sécheresse 2022', 'Sécheresse 2023'],
+    communesProches: ['Pamiers', 'Mazères', 'Cintegabelle', 'Auterive'],
+    specificitesFissures: 'Les lotissements pavillonnaires des années 1990-2010 sont les plus touchés par les fissures de tassement.',
+    specificitesHumidite: 'Phénomènes de condensation fréquents dans les pavillons mal ventilés.',
+    conseillExpert: 'À Saverdun, ne minimisez jamais une fissure en escalier sur un pavillon — c\'est la signature d\'un tassement actif.',
+    tauxSinistralite: '7,8%'
+  },
+  lavelanet: {
+    nom: 'Lavelanet',
+    codePostal: '09300',
+    departement: 'Ariège (09)',
+    distance: '110 km',
+    description: 'Commune de 6 500 habitants au pied des Pyrénées, Lavelanet conjugue patrimoine ancien (anciennes filatures) et pavillonnaire récent.',
+    population: '6 351',
+    geologie: 'Piémont pyrénéen avec sols argileux et schisteux. Aléa RGA moyen mais ponctuellement fort.',
+    risqueRGA: 'moyen',
+    arretesCATNAT: ['Sécheresse 2022'],
+    communesProches: ['Foix', 'Mirepoix', 'Bélesta', 'Laroque-d\'Olmes'],
+    specificitesFissures: 'Bâti industriel ancien souvent fragilisé par les vibrations, à distinguer des désordres modernes liés au RGA.',
+    specificitesHumidite: 'Murs anciens sujets aux infiltrations latérales en pied.',
+    tauxSinistralite: '5,2%'
+  },
+  'saint-girons': {
+    nom: 'Saint-Girons',
+    codePostal: '09200',
+    departement: 'Ariège (09)',
+    distance: '120 km',
+    description: 'Sous-préfecture de l\'Ariège (6 000 habitants), Saint-Girons est traversée par le Salat et bâtie en partie sur des terrasses alluviales.',
+    population: '5 869',
+    geologie: 'Vallée du Salat, alluvions et molasses argileuses sur versants.',
+    risqueRGA: 'moyen',
+    arretesCATNAT: ['Sécheresse 2022'],
+    communesProches: ['Foix', 'Saint-Lizier', 'La Bastide-de-Sérou', 'Massat'],
+    specificitesFissures: 'Désordres ponctuels sur le bâti ancien en pierre. Les pavillons récents en périphérie sont plus exposés.',
+    tauxSinistralite: '4,8%'
   }
 };
 
@@ -1333,6 +1420,7 @@ export const departementsMapping: DepartementInfo[] = (() => {
     'Tarn-et-Garonne (82)': 'tarn-et-garonne',
     'Gers (32)': 'gers',
     'Tarn (81)': 'tarn',
+    'Ariège (09)': 'ariege',
   };
 
   for (const [slug, ville] of Object.entries(villesData)) {
