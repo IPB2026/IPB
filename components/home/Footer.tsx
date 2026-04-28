@@ -112,8 +112,13 @@ export function Footer() {
             
             {/* Ressources & Légal */}
             <nav aria-label="Ressources et informations légales">
-              <h4 className="text-white font-bold mb-6">Ressources</h4>
+              <h4 className="text-white font-bold mb-6">Ressources & Pros</h4>
               <ul className="space-y-3" role="list">
+                <li><Link href="/partenaires" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded font-medium text-orange-400/80">Programme Pros & Partenaires</Link></li>
+                <li><Link href="/partenaires/architectes-interieur" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded text-xs pl-3">↳ Architectes d'intérieur</Link></li>
+                <li><Link href="/partenaires/marchands-de-biens" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded text-xs pl-3">↳ Marchands de biens</Link></li>
+                <li><Link href="/partenaires/agences-immobilieres" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded text-xs pl-3">↳ Agences immobilières</Link></li>
+                <li><Link href="/bureau-etude-structure-toulouse" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Bureau d'études structure</Link></li>
                 <li><Link href="/blog" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Blog & Conseils</Link></li>
                 <li><Link href="/avis-clients" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Avis Clients</Link></li>
                 <li><Link href="/notre-expert" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">Notre Expert</Link></li>

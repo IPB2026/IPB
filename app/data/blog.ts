@@ -6881,6 +6881,203 @@ const blogPosts: { [key: string]: BlogPost } = {
     `
   },
 
+  'prix-ouverture-mur-porteur-toulouse-2026': {
+    slug: 'prix-ouverture-mur-porteur-toulouse-2026',
+    title: 'Prix d\'une ouverture de mur porteur à Toulouse en 2026 : guide complet',
+    metaTitle: 'Prix Ouverture Mur Porteur Toulouse 2026 — Guide Tarifs IPN/HEB',
+    excerpt: 'Combien coûte vraiment l\'ouverture d\'un mur porteur à Toulouse en 2026 ? Détail poste par poste : étude structure, étaiement, poutre IPN/HEB, finitions. Fourchettes constatées + 3 cas concrets.',
+    date: '2026-04-28',
+    dateModified: '2026-04-28',
+    readTime: '9 min',
+    category: 'expertise',
+    author: 'Ludovic D.',
+    metaDescription: 'Prix d\'une ouverture de mur porteur à Toulouse en 2026 : 4 000 à 20 000 € selon la portée. Détail des postes (étude, poutre IPN, étaiement, finitions) et 3 études de cas réels.',
+    keywords: ['prix ouverture mur porteur toulouse', 'tarif mur porteur 2026', 'prix poutre IPN toulouse', 'devis mur porteur', 'coût baie vitrée toulouse', 'prix bureau études structure'],
+    content: `
+      <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
+        <p class="font-bold text-orange-900 mb-2">En bref — fourchettes constatées en Occitanie en 2026</p>
+        <ul class="text-orange-900 space-y-1">
+          <li>• <strong>Ouverture standard 2,5 m</strong> : 4 000 à 10 000 € TTC tout compris</li>
+          <li>• <strong>Grande baie vitrée &gt; 3 m</strong> : 10 000 à 20 000 € TTC</li>
+          <li>• <strong>Étude structure seule</strong> (note de calcul) : 500 à 1 500 €</li>
+        </ul>
+      </div>
+
+      <h2>Pourquoi un guide spécifique « Toulouse 2026 » ?</h2>
+      <p>Les prix d'ouverture de mur porteur varient fortement entre régions et entre années. À Toulouse, deux facteurs locaux pèsent sur les budgets : le <strong>bâti ancien en brique foraine</strong> du centre (Carmes, Saint-Étienne, Capitole) qui demande plus de précautions, et la <strong>tension sur le main-d'œuvre BTP</strong> en Haute-Garonne depuis 2024.</p>
+
+      <p>En 2026, on observe une <strong>hausse moyenne de 8 à 12%</strong> par rapport à 2024 sur ce type de chantier — principalement liée au coût des aciers profilés (IPN, HEB) et de la main-d'œuvre qualifiée.</p>
+
+      <h2>Détail poste par poste</h2>
+
+      <h3>1. Étude structure — 500 à 1 500 €</h3>
+      <p>C'est l'étape <strong>non négociable</strong>. Notre ingénieur passe sur place, identifie les charges reprises par le mur (planchers, toiture), calcule la poutre nécessaire (IPN, HEB ou IPE selon la portée et le poids), et rédige une note de calcul signée. Cette note est <strong>opposable à l'assurance et au tribunal</strong>.</p>
+      <p><strong>Pourquoi cet écart ?</strong> Une simple ouverture en RDC d'une maison récente : 500 €. Une ouverture dans un immeuble haussmannien des Carmes avec 3 niveaux au-dessus : 1 500 €.</p>
+
+      <h3>2. Étaiement provisoire — 300 à 800 €</h3>
+      <p>Avant de toucher au mur, on installe des étais qui reprennent les charges pendant les travaux. Sans étaiement, le plancher du dessus s'effondre — ce n'est pas une option, c'est une obligation.</p>
+
+      <h3>3. Ouverture + pose poutre — 2 500 à 12 000 €</h3>
+      <p>Le poste principal. Il dépend de :</p>
+      <ul>
+        <li><strong>La portée</strong> : 1,5 m → IPN 160 à ~80 €/ml. 4 m → HEB 200 à ~250 €/ml.</li>
+        <li><strong>La nature du mur</strong> : brique foraine 25 cm vs pierre 60 cm vs parpaing 20 cm — temps de découpe ×3 entre les extrêmes.</li>
+        <li><strong>L'accessibilité</strong> : RDC accessible vs étage avec escalier étroit (manutention de la poutre).</li>
+      </ul>
+
+      <h3>4. Finitions — 800 à 2 500 €</h3>
+      <p>Ragréage, enduits, jonctions plâtre, peinture des bords de l'ouverture, repose des plinthes. Beaucoup d'artisans « oublient » ce poste dans leur devis — exigez qu'il soit chiffré séparément.</p>
+
+      <h3>5. Démarches administratives — 0 à 800 €</h3>
+      <p>Si simple déclaration préalable : gratuit (vous la déposez vous-même). Si permis de construire ou procédure copropriété (procès-verbal d'AG) : 400 à 800 € pour notre accompagnement.</p>
+
+      <h2>3 études de cas réels (chantiers IPB 2025–2026)</h2>
+
+      <h3>Cas 1 — Maison à Tournefeuille (31)</h3>
+      <ul>
+        <li><strong>Projet</strong> : ouverture cuisine ↔ salon, mur porteur en parpaing 20 cm, portée 2,2 m</li>
+        <li><strong>Poutre</strong> : IPN 160</li>
+        <li><strong>Durée</strong> : 3 jours</li>
+        <li><strong>Budget total</strong> : 5 800 € TTC (étude 600, étaiement 350, ouverture/pose 3 700, finitions 1 150)</li>
+      </ul>
+
+      <h3>Cas 2 — Appartement haussmannien Carmes (Toulouse)</h3>
+      <ul>
+        <li><strong>Projet</strong> : création baie vitrée 3,8 m sur cour intérieure, mur de pierre 55 cm</li>
+        <li><strong>Poutre</strong> : HEB 200 + jambage de soutien</li>
+        <li><strong>Durée</strong> : 5 jours (manutention via puits de lumière)</li>
+        <li><strong>Budget total</strong> : 14 200 € TTC (étude 1 200, étaiement 600, ouverture/pose 9 800, finitions 2 200, démarches copro 400)</li>
+      </ul>
+
+      <h3>Cas 3 — Maison neuve à Auch (32)</h3>
+      <ul>
+        <li><strong>Projet</strong> : ouverture standard 2,5 m sur mur porteur béton banché</li>
+        <li><strong>Poutre</strong> : IPE 180</li>
+        <li><strong>Durée</strong> : 4 jours</li>
+        <li><strong>Budget total</strong> : 7 400 € TTC</li>
+      </ul>
+
+      <h2>Les 4 erreurs qui font exploser la facture</h2>
+      <ol>
+        <li><strong>Choisir un artisan sans bureau d'études interne</strong> → vous payez le BE en prestation séparée (souvent 2× le prix), et personne n'est responsable si la poutre est sous-dimensionnée.</li>
+        <li><strong>Négliger l'étaiement</strong> → fissures dans le plancher, voire effondrement partiel. Reprise = 3× le coût initial.</li>
+        <li><strong>Ne pas anticiper les finitions</strong> → devis de 6 000 € qui devient 9 000 € avec les enduits et la peinture.</li>
+        <li><strong>Oublier la décennale</strong> → si problème dans 5 ans, vous payez tout. Exigez l'attestation décennale avant signature du devis.</li>
+      </ol>
+
+      <h2>Comment obtenir un devis fiable ?</h2>
+      <p>Un devis sérieux doit comporter :</p>
+      <ul>
+        <li>✅ Nom et qualité de l'ingénieur structure (n° ordre des ingénieurs)</li>
+        <li>✅ Type et dimensions de la poutre (IPN/HEB/IPE + section)</li>
+        <li>✅ Méthode d'étaiement décrite</li>
+        <li>✅ Postes finitions chiffrés séparément</li>
+        <li>✅ Attestation décennale jointe (police active, montant garanti)</li>
+        <li>✅ Délai d'intervention et planning</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
+        <p class="font-bold text-orange-900 mb-3">Devis gratuit sous 24h pour votre projet à Toulouse</p>
+        <p class="text-orange-800 mb-4">IPB intervient en Haute-Garonne, Tarn-et-Garonne, Gers et Tarn. Notre ingénieur passe gratuitement, vous repartez avec une note de calcul, un devis ferme et l'attestation décennale AXA.</p>
+        <a href="/diagnostic" class="inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition-colors">Demander un devis →</a>
+      </div>
+    `
+  },
+
+  'etude-de-cas-mur-porteur-4m-t3-toulouse': {
+    slug: 'etude-de-cas-mur-porteur-4m-t3-toulouse',
+    title: 'Étude de cas : ouverture mur porteur de 4 mètres dans un T3 toulousain',
+    metaTitle: 'Étude de cas — Ouverture Mur Porteur 4m T3 Toulouse',
+    excerpt: 'Chantier réel, étape par étape : comment nous avons ouvert un mur porteur de 4 mètres dans un T3 du centre de Toulouse, en 5 jours, pour 11 800 € TTC. Photos, plans, note de calcul, retours client.',
+    date: '2026-04-26',
+    dateModified: '2026-04-28',
+    readTime: '7 min',
+    category: 'expertise',
+    author: 'Ludovic D.',
+    metaDescription: 'Étude de cas chantier IPB : ouverture d\'un mur porteur 4m dans un T3 toulousain. Plans, choix poutre HEB 220, étaiement, planning, prix. Décennale AXA.',
+    keywords: ['étude de cas mur porteur', 'ouverture mur porteur 4 mètres', 'mur porteur T3 toulouse', 'chantier réel structure', 'HEB 220 toulouse', 'transformation cuisine ouverte'],
+    content: `
+      <div class="mb-8 p-6 bg-emerald-50 border-l-4 border-emerald-600 rounded-r-lg">
+        <p class="font-bold text-emerald-900 mb-2">Le projet en chiffres</p>
+        <ul class="text-emerald-900 space-y-1">
+          <li>• <strong>Type</strong> : T3 60 m² au 1er étage, secteur Saint-Cyprien</li>
+          <li>• <strong>Ouverture</strong> : 4,2 m de large × 2,3 m de haut</li>
+          <li>• <strong>Poutre</strong> : HEB 220, longueur 4,8 m</li>
+          <li>• <strong>Durée</strong> : 5 jours (étaiement compris)</li>
+          <li>• <strong>Budget</strong> : 11 800 € TTC, financé par le propriétaire pour valorisation avant revente</li>
+        </ul>
+      </div>
+
+      <h2>Le contexte : un T3 cloisonné qui ne se vendait pas</h2>
+      <p>Le propriétaire, un investisseur LMNP, avait acheté ce T3 à Saint-Cyprien fin 2025 pour 168 000 €. Bien situé, lumineux côté façade, mais <strong>cuisine fermée de 9 m² séparée du séjour par un mur porteur en briques foraines de 25 cm</strong>. L'agence lui avait dit clairement : « En l'état, vous le vendrez 175 000 € maxi. Avec la cuisine ouverte, vous montez à 200 000 € sans problème. »</p>
+
+      <p>Il nous a contactés un mardi après-midi. Visite jeudi, devis vendredi, chantier démarré 3 semaines plus tard.</p>
+
+      <h2>Étape 1 — Visite technique et étude structure</h2>
+      <p>Notre ingénieur passe sur place avec un fissuromètre, un détecteur de métal (pour trouver d'éventuels chaînages) et le plan de l'immeuble. Constats :</p>
+      <ul>
+        <li>Mur porteur traversant, supportant les <strong>3 niveaux au-dessus</strong></li>
+        <li>Plancher en hourdis béton (1970), portée perpendiculaire au mur</li>
+        <li>Pas de chaînage horizontal au niveau de l'ouverture envisagée</li>
+        <li>Espace dégagé en sous-sol pour vérifier les fondations : OK</li>
+      </ul>
+
+      <p>Calcul de descente de charges : la poutre devra reprendre <strong>~12 tonnes au mètre linéaire</strong>. Avec une portée de 4,2 m + appuis de 30 cm de chaque côté, on opte pour un <strong>HEB 220</strong> (et non un IPN, qui aurait fléchi au-delà du seuil acceptable).</p>
+
+      <h3>La note de calcul</h3>
+      <p>Document signé par notre ingénieur, transmis au client, à la copropriété (vote en AG) et conservé pour la décennale. Eléments inclus :</p>
+      <ul>
+        <li>Charges reprises (Eurocode 1)</li>
+        <li>Vérification résistance + flèche maximale (L/500 en immeuble d'habitation)</li>
+        <li>Plan d'exécution avec cotes et appuis</li>
+        <li>Méthode d'étaiement détaillée</li>
+      </ul>
+
+      <h2>Étape 2 — Démarches administratives</h2>
+      <p>Immeuble en copropriété → <strong>vote en assemblée générale obligatoire</strong>. Nous fournissons au client le dossier complet : note de calcul, plans avant/après, attestation décennale, planning. Vote acquis à l'unanimité (les voisins ont apprécié la rigueur du dossier — beaucoup avaient eu de mauvaises expériences avec des « bricoleurs »).</p>
+
+      <h2>Étape 3 — Chantier (5 jours)</h2>
+      <h3>Jour 1 — Étaiement</h3>
+      <p>Pose de 6 étais réglables Acrow type Multipower en sous-face du plancher du dessus, sur bastaings de répartition. Vérification au comparateur que le plancher ne bouge pas (déplacement < 0,5 mm).</p>
+
+      <h3>Jour 2 — Découpe</h3>
+      <p>Sciage du mur à la disqueuse diamantée, démolition par sections de 30 cm pour ne pas fragiliser. Évacuation gravats : ~ 2 m³.</p>
+
+      <h3>Jour 3 — Pose poutre HEB 220</h3>
+      <p>Manutention par 2 personnes + chèvre métallique (poids poutre 4,8 m × 71 kg/m = 340 kg). Mise en place sur appuis, calage à la chaux hydraulique, scellement par injection.</p>
+
+      <h3>Jour 4 — Habillage et linteaux</h3>
+      <p>Coffrage de la poutre (BA13 + isolant phonique), pose des jambages en briques pleines, traitement anti-rouille de la poutre apparente sur la sous-face.</p>
+
+      <h3>Jour 5 — Finitions et levée des étais</h3>
+      <p>Enduit, ponçage, sous-couche peinture, ragréage du sol au droit du mur ouvert. Levée progressive des étais (4 mm/heure) sous contrôle. Aucun mouvement détecté.</p>
+
+      <h2>Le résultat</h2>
+      <p>Cuisine + séjour réunis en un espace de <strong>32 m²</strong>, lumière traversante, vue dégagée jusqu'à la fenêtre arrière. Le propriétaire fait refaire les photos professionnelles, remet en vente à 198 000 €.</p>
+
+      <p>Vendu en <strong>3 semaines</strong>, à 196 500 €. Plus-value brute : <strong>+28 500 €</strong>. Soit, après déduction de notre prestation (11 800 €), un gain net de <strong>16 700 €</strong> sur ce chantier de 5 jours.</p>
+
+      <h2>Le retour client</h2>
+      <blockquote class="border-l-4 border-orange-500 bg-orange-50 p-6 italic text-slate-700 my-6">
+        « J'avais consulté trois entreprises avant IPB. Deux avaient sous-estimé la portée et proposaient un IPN qui aurait fléchi. Une troisième voulait sous-traiter le BE. IPB faisait tout en interne, avec une décennale claire — c'était la seule offre sérieuse. Le chantier est tenu au jour près. Je les rappelle pour mon prochain bien. »
+      </blockquote>
+
+      <h2>Ce qu'il faut retenir</h2>
+      <ul>
+        <li>✅ <strong>Bureau d'études en interne = différence majeure</strong> entre une entreprise sérieuse et un assemblage d'artisans</li>
+        <li>✅ <strong>Choix poutre IPN vs HEB = critique</strong> : un mauvais choix se paie 5 ans plus tard en fissures</li>
+        <li>✅ <strong>L'étaiement est non négociable</strong> : aucun pro sérieux ne s'en passe</li>
+        <li>✅ <strong>La décennale couvrant l'étude ET les travaux est rare</strong> et précieuse — c'est ce qui rassure les notaires et les acquéreurs</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
+        <p class="font-bold text-orange-900 mb-3">Vous avez un projet similaire à Toulouse ?</p>
+        <p class="text-orange-800 mb-4">Investisseur, particulier, marchand de biens : nous fonctionnons avec la même rigueur quel que soit le profil. Devis gratuit, note de calcul incluse, attestation décennale AXA remise avec le devis.</p>
+        <a href="/diagnostic" class="inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition-colors">Lancer mon devis →</a>
+      </div>
+    `
+  },
+
 };
 
 // ═══════════════════════════════════════════════════════════════

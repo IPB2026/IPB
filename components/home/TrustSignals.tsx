@@ -1,8 +1,34 @@
-import { Award, Microscope, Phone, Shield } from 'lucide-react';
+import { Award, FileCheck, Microscope, Phone, Shield, Building2 } from 'lucide-react';
 
 export function TrustSignals() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+      {/* Bandeau autorité — assurance décennale en évidence */}
+      <div className="bg-gradient-to-r from-blue-900 to-slate-900 rounded-2xl p-6 md:p-8 mb-10 shadow-2xl border border-blue-800/40">
+        <div className="grid md:grid-cols-[auto_1fr_auto] gap-6 items-center">
+          <div className="w-20 h-20 bg-blue-500/20 border-2 border-blue-400/50 rounded-2xl flex items-center justify-center mx-auto md:mx-0">
+            <Shield className="text-blue-300" size={40} />
+          </div>
+          <div className="text-center md:text-left">
+            <p className="text-blue-300 text-xs font-bold uppercase tracking-[0.2em] mb-2">Couverture décennale active</p>
+            <h2 className="text-white font-bold text-xl md:text-2xl mb-2">
+              Assuré <span className="text-blue-300">AXA France IARD</span> — police n° 10564321
+            </h2>
+            <p className="text-slate-300 text-sm leading-relaxed">
+              Étude structure, ouverture de mur porteur, agrafage de fissures et travaux de structure — chaque chantier est couvert 10 ans.
+              <strong className="text-white"> Attestation remise systématiquement avec le devis.</strong>
+            </p>
+          </div>
+          <a
+            href="/contact"
+            className="bg-blue-500 hover:bg-blue-400 text-white font-bold px-6 py-3 rounded-xl text-sm whitespace-nowrap transition-colors flex items-center gap-2 justify-center"
+          >
+            <FileCheck size={16} />
+            Demander l'attestation
+          </a>
+        </div>
+      </div>
+
       <div className="bg-white rounded-3xl shadow-xl border border-slate-100 p-8 md:p-12">
         {/* Bande colorée en haut */}
         <div className="h-1 w-full bg-gradient-to-r from-orange-500 via-amber-500 to-emerald-500 rounded-full mb-10 -mt-4"></div>
@@ -22,31 +48,31 @@ export function TrustSignals() {
             </p>
           </div>
 
-          {/* Expertise structure */}
+          {/* Bureau d'études intégré */}
           <div className="flex flex-col items-center md:border-x md:border-slate-100 md:px-8">
             <div className="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 mb-5 hover:scale-110 transition-transform">
               <Award size={32} />
             </div>
             <div className="bg-amber-50 text-amber-700 px-3 py-1 rounded-full text-sm font-bold mb-3">
-              Ingénieur structure en interne
+              Bureau d'études en interne
             </div>
-            <h3 className="font-display font-bold text-xl text-slate-900 mb-2">De l'étude au chantier</h3>
+            <h3 className="font-display font-bold text-xl text-slate-900 mb-2">De la note de calcul au DOE</h3>
             <p className="text-slate-500 text-sm leading-relaxed">
-              Notre ingénieur calcule la poutre, nos équipes réalisent les travaux. Pas de sous-traitance cachée, pas de coordination à votre charge. Un seul interlocuteur.
+              Notre ingénieur structure dimensionne la poutre IPN/HEB, rédige la note de calcul, supervise le chantier. Note remise au client à la livraison, opposable à l'assurance.
             </p>
           </div>
 
-          {/* Garantie */}
+          {/* Garantie / Travaux intégrés */}
           <div className="flex flex-col items-center">
             <div className="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-5 hover:scale-110 transition-transform">
-              <Shield size={32} />
+              <Building2 size={32} />
             </div>
             <div className="bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full text-sm font-bold mb-3">
-              Assuré AXA France
+              Étude + travaux
             </div>
-            <h3 className="font-display font-bold text-xl text-slate-900 mb-2">Garantie décennale sur tout</h3>
+            <h3 className="font-display font-bold text-xl text-slate-900 mb-2">Un seul interlocuteur, une seule responsabilité</h3>
             <p className="text-slate-500 text-sm leading-relaxed">
-              Fissures, mur porteur, baie vitrée — chaque chantier est couvert 10 ans. Rapport technique remis sous 7 jours, attestation fournie avec le devis.
+              Pas de jeu de ping-pong entre bureau d'études et entreprise. C'est nous qui calculons, nous qui ouvrons, nous qui posons. La décennale couvre l'ensemble.
             </p>
           </div>
         </div>
