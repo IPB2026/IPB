@@ -18,8 +18,12 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-display)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-sans)', 'DM Sans', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-serif)', 'Playfair Display', 'Georgia', 'serif'],
+        display: ['var(--font-serif)', 'Playfair Display', 'Georgia', 'serif'],
+      },
+      maxWidth: {
+        'ipb': '1240px',
       },
       colors: {
         border: "hsl(var(--border))",
@@ -28,12 +32,12 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#EA580C",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "#C8601F",
+          foreground: "#FAF9F7",
         },
         secondary: {
-          DEFAULT: "#2563EB",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "#0B1826",
+          foreground: "#FAF9F7",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -55,11 +59,19 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Palette IPB — Cabinet de pathologie du bâtiment
         ipb: {
-          orange: "#EA580C",
-          blue: "#2563EB",
-          slate: "#0F172A",
-          background: "#F8FAFC",
+          navy: '#0B1826',
+          'navy-2': '#0F2033',
+          orange: '#C8601F',
+          'orange-l': '#F08040',
+          cream: '#F3EFE8',
+          stone: '#E8E2D9',
+          white: '#FAF9F7',
+          rule: '#D8D2C9',
+          text: '#1A1917',
+          muted: '#736D67',
+          light: '#A09A93',
         },
       },
       borderRadius: {
