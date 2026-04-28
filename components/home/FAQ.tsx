@@ -98,7 +98,7 @@ export function FAQ() {
                 </p>
                 <div className="space-y-3">
                   <Link href="/diagnostic" className="inline-flex items-center gap-2 text-ipb-orange font-medium text-[14px] tracking-wide border-b border-ipb-orange pb-1 hover:gap-3 transition-all">
-                    Demander une expertise →
+                    Diagnostic gratuit →
                   </Link>
                   <a href="tel:0582953375" className="block text-ipb-muted font-light text-[14px] hover:text-ipb-text transition-colors">
                     05 82 95 33 75

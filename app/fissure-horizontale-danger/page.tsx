@@ -88,7 +88,7 @@ const faqSchema = {
 
 export default function FissureHorizontalePage() {
   return (
-    <div className="font-sans text-slate-800 bg-white antialiased">
+    <div className="font-sans text-ipb-text bg-white antialiased">
       <Script
         id="faq-schema-fissure-horizontale-danger"
         type="application/ld+json"
@@ -161,13 +161,13 @@ export default function FissureHorizontalePage() {
             <div className="relative">
               <div className="bg-white/10 backdrop-blur rounded-3xl p-8 border border-white/20">
                 <div className="text-center mb-8">
-                  <div className="inline-block bg-slate-800 rounded-2xl p-8 relative">
-                    <div className="w-48 h-32 bg-slate-700 rounded-lg relative">
+                  <div className="inline-block bg-ipb-navy-2 rounded-2xl p-8 relative">
+                    <div className="w-48 h-32 bg-ipb-navy-2 rounded-lg relative">
                       {/* Mur avec fissure horizontale */}
                       <div className="absolute top-1/2 left-0 right-0 h-1 bg-red-500 transform -translate-y-1/2"></div>
                       <div className="absolute top-1/2 left-4 right-4 border-t-2 border-dashed border-red-300 transform -translate-y-1/2"></div>
                     </div>
-                    <p className="text-slate-400 text-sm mt-4">Représentation schématique</p>
+                    <p className="text-ipb-light text-sm mt-4">Représentation schématique</p>
                   </div>
                 </div>
                 
@@ -178,7 +178,7 @@ export default function FissureHorizontalePage() {
                   </div>
                   <div className="bg-white/10 rounded-xl p-4 text-center">
                     <div className="text-3xl font-black text-white">24h</div>
-                    <div className="text-xs text-slate-300">Intervention urgente</div>
+                    <div className="text-xs text-white/70">Intervention urgente</div>
                   </div>
                 </div>
               </div>
@@ -200,7 +200,7 @@ export default function FissureHorizontalePage() {
             <span className="inline-block bg-red-100 text-red-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
               Causes principales
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
               Pourquoi cette fissure est dangereuse
             </h2>
           </div>
@@ -209,18 +209,18 @@ export default function FissureHorizontalePage() {
             {dangers.map((item, index) => (
               <div key={index} className={`relative rounded-3xl p-8 ${
                 item.severity === 'critical' ? 'bg-red-50 border-2 border-red-200' :
-                item.severity === 'high' ? 'bg-orange-50 border-2 border-orange-200' :
+                item.severity === 'high' ? 'bg-ipb-stone border-2 border-ipb-rule' :
                 'bg-yellow-50 border-2 border-yellow-200'
               }`}>
                 <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${
                   item.severity === 'critical' ? 'bg-red-100 text-red-600' :
-                  item.severity === 'high' ? 'bg-orange-100 text-orange-600' :
+                  item.severity === 'high' ? 'bg-ipb-stone text-ipb-orange' :
                   'bg-yellow-100 text-yellow-600'
                 }`}>
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
-                <p className="text-slate-600">{item.description}</p>
+                <h3 className="text-xl font-bold text-ipb-text mb-3">{item.title}</h3>
+                <p className="text-ipb-muted">{item.description}</p>
                 
                 {item.severity === 'critical' && (
                   <div className="absolute -top-3 -right-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">
@@ -234,19 +234,19 @@ export default function FissureHorizontalePage() {
       </section>
 
       {/* Comparatif */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-ipb-cream">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
               Comparatif des types de fissures
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-ipb-muted">
               La fissure horizontale est la plus urgente à traiter.
             </p>
           </div>
 
           <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
-            <div className="grid grid-cols-5 bg-slate-900 text-white text-sm font-bold">
+            <div className="grid grid-cols-5 bg-ipb-navy text-white text-sm font-bold">
               <div className="p-4">Type</div>
               <div className="p-4 text-center">Danger</div>
               <div className="p-4 text-center">Urgence</div>
@@ -254,20 +254,20 @@ export default function FissureHorizontalePage() {
               <div className="p-4 text-center">Icône</div>
             </div>
             {comparaison.map((row, index) => (
-              <div key={index} className={`grid grid-cols-5 border-b border-slate-100 ${index === 0 ? 'bg-red-50' : ''}`}>
-                <div className="p-4 font-bold text-slate-900">{row.type}</div>
+              <div key={index} className={`grid grid-cols-5 border-b border-ipb-rule ${index === 0 ? 'bg-red-50' : ''}`}>
+                <div className="p-4 font-bold text-ipb-text">{row.type}</div>
                 <div className="p-4 text-center">
                   <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${
                     row.danger === 'Très élevé' ? 'bg-red-100 text-red-700' :
-                    row.danger === 'Élevé' ? 'bg-orange-100 text-orange-700' :
+                    row.danger === 'Élevé' ? 'bg-ipb-stone text-ipb-orange' :
                     row.danger === 'Modéré' ? 'bg-yellow-100 text-yellow-700' :
                     'bg-green-100 text-green-700'
                   }`}>
                     {row.danger}
                   </span>
                 </div>
-                <div className="p-4 text-center text-slate-600">{row.urgence}</div>
-                <div className="p-4 text-center text-slate-600">{row.cause}</div>
+                <div className="p-4 text-center text-ipb-muted">{row.urgence}</div>
+                <div className="p-4 text-center text-ipb-muted">{row.cause}</div>
                 <div className="p-4 text-center text-2xl">{row.icon}</div>
               </div>
             ))}
@@ -276,7 +276,7 @@ export default function FissureHorizontalePage() {
       </section>
 
       {/* Que faire */}
-      <section className="py-20 bg-slate-900 text-white">
+      <section className="py-20 bg-ipb-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-black mb-4">
@@ -299,7 +299,7 @@ export default function FissureHorizontalePage() {
                   'Appeler un expert pour un diagnostic sous 48h',
                   'Prévenir votre assurance si évolution rapide',
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-slate-300">
+                  <li key={i} className="flex items-start gap-3 text-white/70">
                     <CheckCircle size={18} className="text-green-400 flex-shrink-0 mt-1" />
                     {item}
                   </li>
@@ -321,7 +321,7 @@ export default function FissureHorizontalePage() {
                   'Faire des travaux lourds à proximité',
                   'Tarder à faire diagnostiquer',
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-slate-300">
+                  <li key={i} className="flex items-start gap-3 text-white/70">
                     <XCircle size={18} className="text-red-400 flex-shrink-0 mt-1" />
                     {item}
                   </li>
@@ -335,7 +335,7 @@ export default function FissureHorizontalePage() {
       {/* Articles connexes */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-slate-900 mb-8 text-center">
+          <h2 className="text-2xl font-black text-ipb-text mb-8 text-center">
             Articles connexes
           </h2>
           <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
@@ -350,13 +350,13 @@ export default function FissureHorizontalePage() {
               <Link 
                 key={index}
                 href={item.href}
-                className="group bg-slate-50 rounded-2xl p-6 hover:bg-orange-50 transition-all hover:-translate-y-1 border border-slate-100 hover:border-orange-200"
+                className="group bg-ipb-cream rounded-2xl p-6 hover:bg-ipb-stone transition-all hover:-translate-y-1 border border-ipb-rule hover:border-ipb-rule"
               >
                 <span className="text-4xl mb-4 block">{item.icon}</span>
-                <h3 className="font-bold text-slate-900 group-hover:text-orange-600 transition-colors mb-1">
+                <h3 className="font-bold text-ipb-text group-hover:text-ipb-orange transition-colors mb-1">
                   {item.title}
                 </h3>
-                <p className="text-sm text-slate-500">{item.desc}</p>
+                <p className="text-sm text-ipb-muted">{item.desc}</p>
               </Link>
             ))}
           </div>

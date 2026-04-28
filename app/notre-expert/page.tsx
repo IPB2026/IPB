@@ -102,7 +102,7 @@ export default function NotreExpertPage() {
               <RevealOnScroll delay={0.18}>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <MagneticButton href="/diagnostic" variant="primary">
-                    Demander une expertise
+                    Diagnostic gratuit
                   </MagneticButton>
                   <MagneticButton href="/contact" variant="ghost">
                     Écrire au cabinet
@@ -121,7 +121,7 @@ export default function NotreExpertPage() {
                 { value: 2019, label: 'Année de création', sublabel: '7 ans d\'activité' },
                 { value: 850, suffix: '+', label: 'Chantiers livrés', sublabel: 'Occitanie' },
                 { value: 8, label: 'Personnes au cabinet', sublabel: 'Étude + travaux' },
-                { value: 4.9, decimals: 1, suffix: '/5', label: 'Avis Google', sublabel: '47 avis vérifiés' },
+                { value: 4.9, decimals: 1, suffix: '/5', label: 'Avis Google', sublabel: 'Vérifiés sur Google' },
               ].map((s, i) => (
                 <RevealOnScroll key={s.label} delay={i * 0.06}>
                   <div className="text-center lg:text-left">

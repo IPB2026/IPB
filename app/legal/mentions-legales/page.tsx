@@ -19,9 +19,9 @@ export const metadata = {
 
 export default function MentionsLegalesPage() {
   return (
-    <div className="font-sans text-slate-800 bg-slate-50 antialiased">
+    <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
       {/* Skip link for accessibility */}
-      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-orange-600 text-white px-4 py-2 rounded-lg z-50">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-ipb-orange text-white px-4 py-2 rounded-lg z-50">
         Aller au contenu principal
       </a>
       
@@ -39,15 +39,15 @@ export default function MentionsLegalesPage() {
           </nav>
 
           {/* En-tête */}
-          <header className="mb-8 pb-6 border-b border-slate-200">
-            <div className="flex items-center gap-2 text-sm text-slate-500 mb-4">
+          <header className="mb-8 pb-6 border-b border-ipb-rule">
+            <div className="flex items-center gap-2 text-sm text-ipb-muted mb-4">
               <Calendar size={16} aria-hidden="true" />
               <time dateTime="2026-02-01">Mis à jour le 1er février 2026</time>
             </div>
-            <h1 id="page-title" className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+            <h1 id="page-title" className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-4">
               Mentions Légales
             </h1>
-            <p className="text-lg text-slate-600 leading-relaxed">
+            <p className="text-lg text-ipb-muted leading-relaxed">
               Conformément aux dispositions des articles 6-III et 19 de la Loi n° 2004-575 du 21 juin 2004 
               pour la Confiance dans l'économie numérique, dite L.C.E.N., nous portons à la connaissance 
               des utilisateurs et visiteurs du site les informations suivantes.
@@ -55,72 +55,72 @@ export default function MentionsLegalesPage() {
           </header>
 
           {/* Table des matières */}
-          <nav aria-labelledby="toc-title" className="mb-10 p-6 bg-slate-50 rounded-xl border border-slate-200">
-            <h2 id="toc-title" className="font-bold text-slate-900 mb-4 flex items-center gap-2">
+          <nav aria-labelledby="toc-title" className="mb-10 p-6 bg-ipb-cream rounded-xl border border-ipb-rule">
+            <h2 id="toc-title" className="font-bold text-ipb-text mb-4 flex items-center gap-2">
               <FileText size={18} aria-hidden="true" />
               Sommaire
             </h2>
             <ol className="space-y-2 text-sm">
-              <li><a href="#editeur" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">1. Éditeur du site et identification de l'entreprise</a></li>
-              <li><a href="#directeur" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">2. Directeur de la publication</a></li>
-              <li><a href="#hebergeur" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">3. Hébergeur</a></li>
-              <li><a href="#contact" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">4. Coordonnées de contact</a></li>
-              <li><a href="#activite" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">5. Activité professionnelle et qualifications</a></li>
-              <li><a href="#assurances" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">6. Assurances professionnelles</a></li>
-              <li><a href="#propriete" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">7. Propriété intellectuelle</a></li>
-              <li><a href="#donnees" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">8. Protection des données personnelles</a></li>
-              <li><a href="#cookies" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">9. Gestion des cookies</a></li>
-              <li><a href="#responsabilite" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">10. Limitation de responsabilité</a></li>
-              <li><a href="#liens" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">11. Liens hypertextes</a></li>
-              <li><a href="#litige" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">12. Règlement des litiges et droit applicable</a></li>
+              <li><a href="#editeur" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">1. Éditeur du site et identification de l'entreprise</a></li>
+              <li><a href="#directeur" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">2. Directeur de la publication</a></li>
+              <li><a href="#hebergeur" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">3. Hébergeur</a></li>
+              <li><a href="#contact" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">4. Coordonnées de contact</a></li>
+              <li><a href="#activite" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">5. Activité professionnelle et qualifications</a></li>
+              <li><a href="#assurances" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">6. Assurances professionnelles</a></li>
+              <li><a href="#propriete" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">7. Propriété intellectuelle</a></li>
+              <li><a href="#donnees" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">8. Protection des données personnelles</a></li>
+              <li><a href="#cookies" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">9. Gestion des cookies</a></li>
+              <li><a href="#responsabilite" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">10. Limitation de responsabilité</a></li>
+              <li><a href="#liens" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">11. Liens hypertextes</a></li>
+              <li><a href="#litige" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">12. Règlement des litiges et droit applicable</a></li>
             </ol>
           </nav>
 
           {/* Contenu */}
-          <article className="prose prose-lg max-w-none space-y-10 text-slate-700">
+          <article className="prose prose-lg max-w-none space-y-10 text-ipb-text">
             
             {/* Section 1 */}
             <section id="editeur" aria-labelledby="editeur-title">
-              <h2 id="editeur-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <Building2 size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="editeur-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <Building2 size={24} className="text-ipb-orange" aria-hidden="true" />
                 1. Éditeur du site et identification de l'entreprise
               </h2>
-              <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
+              <div className="bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
                 <dl className="space-y-3">
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-slate-900 sm:w-48">Dénomination sociale :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-48">Dénomination sociale :</dt>
                     <dd>Bâti Halli</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-slate-900 sm:w-48">Nom commercial :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-48">Nom commercial :</dt>
                     <dd>IPB - Institut de Pathologie du Bâtiment</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-slate-900 sm:w-48">Forme juridique :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-48">Forme juridique :</dt>
                     <dd>Société à Responsabilité Limitée (SARL) au capital de 1 000 €</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-slate-900 sm:w-48">Siège social :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-48">Siège social :</dt>
                     <dd>13 rue du Recteur Dottin, 31100 Toulouse, France</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-slate-900 sm:w-48">SIRET :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-48">SIRET :</dt>
                     <dd>398 185 421 00037</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-slate-900 sm:w-48">SIREN :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-48">SIREN :</dt>
                     <dd>398 185 421</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-slate-900 sm:w-48">Code APE/NAF :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-48">Code APE/NAF :</dt>
                     <dd>4399C - Travaux de maçonnerie générale et gros œuvre de bâtiment</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-slate-900 sm:w-48">RCS :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-48">RCS :</dt>
                     <dd>Toulouse B 398 185 421</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-slate-900 sm:w-48">N° TVA intracommunautaire :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-48">N° TVA intracommunautaire :</dt>
                     <dd>FR14398185421</dd>
                   </div>
                 </dl>
@@ -129,8 +129,8 @@ export default function MentionsLegalesPage() {
 
             {/* Section 2 */}
             <section id="directeur" aria-labelledby="directeur-title">
-              <h2 id="directeur-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <Scale size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="directeur-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <Scale size={24} className="text-ipb-orange" aria-hidden="true" />
                 2. Directeur de la publication
               </h2>
               <p>
@@ -145,32 +145,32 @@ export default function MentionsLegalesPage() {
 
             {/* Section 3 */}
             <section id="hebergeur" aria-labelledby="hebergeur-title">
-              <h2 id="hebergeur-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <Server size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="hebergeur-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <Server size={24} className="text-ipb-orange" aria-hidden="true" />
                 3. Hébergeur
               </h2>
-              <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
+              <div className="bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
                 <dl className="space-y-3">
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-slate-900 sm:w-48">Raison sociale :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-48">Raison sociale :</dt>
                     <dd>Vercel Inc.</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-slate-900 sm:w-48">Adresse :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-48">Adresse :</dt>
                     <dd>340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-slate-900 sm:w-48">Site web :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-48">Site web :</dt>
                     <dd>
                       <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" 
-                         className="text-orange-600 hover:text-orange-700 underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">
+                         className="text-ipb-orange hover:text-ipb-orange underline focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">
                         https://vercel.com
                       </a>
                     </dd>
                   </div>
                 </dl>
               </div>
-              <p className="mt-4 text-sm text-slate-600">
+              <p className="mt-4 text-sm text-ipb-muted">
                 L'hébergement est assuré sur des serveurs sécurisés disposant d'un certificat SSL (HTTPS) 
                 garantissant le chiffrement des données échangées entre l'utilisateur et le serveur.
               </p>
@@ -178,35 +178,35 @@ export default function MentionsLegalesPage() {
 
             {/* Section 4 */}
             <section id="contact" aria-labelledby="contact-title">
-              <h2 id="contact-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <Mail size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="contact-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <Mail size={24} className="text-ipb-orange" aria-hidden="true" />
                 4. Coordonnées de contact
               </h2>
               <div className="grid sm:grid-cols-3 gap-4">
-                <div className="bg-orange-50 rounded-xl p-4 border border-orange-200">
+                <div className="bg-ipb-stone rounded-xl p-4 border border-ipb-rule">
                   <div className="flex items-center gap-2 mb-2">
-                    <Phone size={18} className="text-orange-600" aria-hidden="true" />
-                    <span className="font-bold text-slate-900">Téléphone</span>
+                    <Phone size={18} className="text-ipb-orange" aria-hidden="true" />
+                    <span className="font-bold text-ipb-text">Téléphone</span>
                   </div>
-                  <a href="tel:0582953375" className="text-orange-600 hover:text-orange-700 font-bold text-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">
+                  <a href="tel:0582953375" className="text-ipb-orange hover:text-ipb-orange font-bold text-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">
                     05 82 95 33 75
                   </a>
                 </div>
-                <div className="bg-orange-50 rounded-xl p-4 border border-orange-200">
+                <div className="bg-ipb-stone rounded-xl p-4 border border-ipb-rule">
                   <div className="flex items-center gap-2 mb-2">
-                    <Mail size={18} className="text-orange-600" aria-hidden="true" />
-                    <span className="font-bold text-slate-900">Email</span>
+                    <Mail size={18} className="text-ipb-orange" aria-hidden="true" />
+                    <span className="font-bold text-ipb-text">Email</span>
                   </div>
-                  <a href="mailto:contact@ipb-expertise.fr" className="text-orange-600 hover:text-orange-700 font-bold break-all focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">
+                  <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange hover:text-ipb-orange font-bold break-all focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded">
                     contact@ipb-expertise.fr
                   </a>
                 </div>
-                <div className="bg-orange-50 rounded-xl p-4 border border-orange-200">
+                <div className="bg-ipb-stone rounded-xl p-4 border border-ipb-rule">
                   <div className="flex items-center gap-2 mb-2">
-                    <MapPin size={18} className="text-orange-600" aria-hidden="true" />
-                    <span className="font-bold text-slate-900">Adresse</span>
+                    <MapPin size={18} className="text-ipb-orange" aria-hidden="true" />
+                    <span className="font-bold text-ipb-text">Adresse</span>
                   </div>
-                  <address className="not-italic text-slate-700 text-sm">
+                  <address className="not-italic text-ipb-text text-sm">
                     13 rue du Recteur Dottin<br />
                     31100 Toulouse
                   </address>
@@ -216,8 +216,8 @@ export default function MentionsLegalesPage() {
 
             {/* Section 5 */}
             <section id="activite" aria-labelledby="activite-title">
-              <h2 id="activite-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <Building2 size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="activite-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <Building2 size={24} className="text-ipb-orange" aria-hidden="true" />
                 5. Activité professionnelle et qualifications
               </h2>
               <p>
@@ -242,8 +242,8 @@ export default function MentionsLegalesPage() {
 
             {/* Section 6 */}
             <section id="assurances" aria-labelledby="assurances-title">
-              <h2 id="assurances-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <Shield size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="assurances-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <Shield size={24} className="text-ipb-orange" aria-hidden="true" />
                 6. Assurances professionnelles
               </h2>
               
@@ -280,7 +280,7 @@ export default function MentionsLegalesPage() {
                 </div>
               </div>
 
-              <p className="mt-4 text-sm text-slate-600">
+              <p className="mt-4 text-sm text-ipb-muted">
                 Sur simple demande, une attestation d'assurance peut être fournie au client préalablement 
                 à toute intervention.
               </p>
@@ -288,8 +288,8 @@ export default function MentionsLegalesPage() {
 
             {/* Section 7 */}
             <section id="propriete" aria-labelledby="propriete-title">
-              <h2 id="propriete-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <FileText size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="propriete-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <FileText size={24} className="text-ipb-orange" aria-hidden="true" />
                 7. Propriété intellectuelle
               </h2>
               <p>
@@ -326,8 +326,8 @@ export default function MentionsLegalesPage() {
 
             {/* Section 8 */}
             <section id="donnees" aria-labelledby="donnees-title">
-              <h2 id="donnees-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <Shield size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="donnees-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <Shield size={24} className="text-ipb-orange" aria-hidden="true" />
                 8. Protection des données personnelles
               </h2>
               
@@ -339,25 +339,25 @@ export default function MentionsLegalesPage() {
               </p>
 
               <div className="mt-6 space-y-4">
-                <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-                  <h3 className="font-bold text-slate-900 mb-3">Responsable du traitement</h3>
+                <div className="bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
+                  <h3 className="font-bold text-ipb-text mb-3">Responsable du traitement</h3>
                   <p>Bâti Halli, représentée par son gérant</p>
                   <p>13 rue du Recteur Dottin, 31100 Toulouse</p>
-                  <p>Email : <a href="mailto:contact@ipb-expertise.fr" className="text-orange-600 hover:underline">contact@ipb-expertise.fr</a></p>
+                  <p>Email : <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange hover:underline">contact@ipb-expertise.fr</a></p>
                 </div>
 
-                <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-                  <h3 className="font-bold text-slate-900 mb-3">Données collectées et finalités</h3>
-                  <ul className="space-y-2 text-slate-700">
+                <div className="bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
+                  <h3 className="font-bold text-ipb-text mb-3">Données collectées et finalités</h3>
+                  <ul className="space-y-2 text-ipb-text">
                     <li><strong>Formulaires de contact/diagnostic :</strong> nom, prénom, email, téléphone, adresse - pour répondre à vos demandes et vous recontacter</li>
                     <li><strong>Données de navigation :</strong> cookies, adresse IP, pages visitées - pour améliorer l'expérience utilisateur et les statistiques</li>
                   </ul>
                 </div>
 
-                <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-                  <h3 className="font-bold text-slate-900 mb-3">Vos droits</h3>
+                <div className="bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
+                  <h3 className="font-bold text-ipb-text mb-3">Vos droits</h3>
                   <p className="mb-3">Conformément aux articles 15 à 22 du RGPD, vous disposez des droits suivants :</p>
-                  <ul className="grid sm:grid-cols-2 gap-2 text-slate-700">
+                  <ul className="grid sm:grid-cols-2 gap-2 text-ipb-text">
                     <li>• Droit d'accès</li>
                     <li>• Droit de rectification</li>
                     <li>• Droit à l'effacement (« droit à l'oubli »)</li>
@@ -366,13 +366,13 @@ export default function MentionsLegalesPage() {
                     <li>• Droit d'opposition</li>
                   </ul>
                   <p className="mt-4 text-sm">
-                    Pour exercer ces droits, contactez-nous à : <a href="mailto:contact@ipb-expertise.fr" className="text-orange-600 hover:underline">contact@ipb-expertise.fr</a>
+                    Pour exercer ces droits, contactez-nous à : <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange hover:underline">contact@ipb-expertise.fr</a>
                   </p>
                 </div>
 
-                <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-                  <h3 className="font-bold text-slate-900 mb-3">Durée de conservation</h3>
-                  <ul className="space-y-2 text-slate-700">
+                <div className="bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
+                  <h3 className="font-bold text-ipb-text mb-3">Durée de conservation</h3>
+                  <ul className="space-y-2 text-ipb-text">
                     <li><strong>Données prospects :</strong> 3 ans à compter du dernier contact</li>
                     <li><strong>Données clients :</strong> durée de la relation contractuelle + 5 ans (prescription civile)</li>
                     <li><strong>Documents comptables :</strong> 10 ans (obligation légale)</li>
@@ -384,19 +384,19 @@ export default function MentionsLegalesPage() {
               <p className="mt-6">
                 En cas de réclamation, vous pouvez également saisir la Commission Nationale de l'Informatique 
                 et des Libertés (CNIL) : <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" 
-                className="text-orange-600 hover:underline">www.cnil.fr</a>
+                className="text-ipb-orange hover:underline">www.cnil.fr</a>
               </p>
 
               <p className="mt-4">
-                Pour plus de détails, consultez notre <Link href="/legal/confidentialite" className="text-orange-600 hover:underline font-bold">
+                Pour plus de détails, consultez notre <Link href="/legal/confidentialite" className="text-ipb-orange hover:underline font-bold">
                 Politique de confidentialité complète</Link>.
               </p>
             </section>
 
             {/* Section 9 */}
             <section id="cookies" aria-labelledby="cookies-title">
-              <h2 id="cookies-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <FileText size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="cookies-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <FileText size={24} className="text-ipb-orange" aria-hidden="true" />
                 9. Gestion des cookies
               </h2>
               <p>
@@ -405,9 +405,9 @@ export default function MentionsLegalesPage() {
               </p>
               
               <div className="mt-6 space-y-4">
-                <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-                  <h3 className="font-bold text-slate-900 mb-3">Types de cookies utilisés</h3>
-                  <ul className="space-y-3 text-slate-700">
+                <div className="bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
+                  <h3 className="font-bold text-ipb-text mb-3">Types de cookies utilisés</h3>
+                  <ul className="space-y-3 text-ipb-text">
                     <li>
                       <strong>Cookies strictement nécessaires :</strong> essentiels au fonctionnement du site 
                       (session, préférences de consentement). Ils ne nécessitent pas votre consentement.
@@ -432,8 +432,8 @@ export default function MentionsLegalesPage() {
 
             {/* Section 10 */}
             <section id="responsabilite" aria-labelledby="responsabilite-title">
-              <h2 id="responsabilite-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <AlertCircle size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="responsabilite-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <AlertCircle size={24} className="text-ipb-orange" aria-hidden="true" />
                 10. Limitation de responsabilité
               </h2>
               
@@ -462,8 +462,8 @@ export default function MentionsLegalesPage() {
 
             {/* Section 11 */}
             <section id="liens" aria-labelledby="liens-title">
-              <h2 id="liens-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <FileText size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="liens-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <FileText size={24} className="text-ipb-orange" aria-hidden="true" />
                 11. Liens hypertextes
               </h2>
               
@@ -482,8 +482,8 @@ export default function MentionsLegalesPage() {
 
             {/* Section 12 */}
             <section id="litige" aria-labelledby="litige-title">
-              <h2 id="litige-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <Gavel size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="litige-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <Gavel size={24} className="text-ipb-orange" aria-hidden="true" />
                 12. Règlement des litiges et droit applicable
               </h2>
               
@@ -497,19 +497,19 @@ export default function MentionsLegalesPage() {
                 les tribunaux compétents du ressort du siège social de Bâti Halli.
               </p>
 
-              <div className="mt-6 bg-slate-50 rounded-xl p-6 border border-slate-200">
-                <h3 className="font-bold text-slate-900 mb-3">Médiation de la consommation</h3>
-                <p className="text-slate-700">
+              <div className="mt-6 bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
+                <h3 className="font-bold text-ipb-text mb-3">Médiation de la consommation</h3>
+                <p className="text-ipb-text">
                   Conformément aux articles L. 612-1 et suivants du Code de la consommation, en cas de 
                   litige non résolu, le consommateur peut recourir gratuitement à un médiateur de la 
                   consommation. Le médiateur compétent est :
                 </p>
-                <p className="mt-3 font-bold text-slate-900">
+                <p className="mt-3 font-bold text-ipb-text">
                   CNPM - MÉDIATION DE LA CONSOMMATION<br />
-                  <span className="font-normal text-slate-700">
+                  <span className="font-normal text-ipb-text">
                     27 avenue de la Libération, 42400 Saint-Chamond<br />
                     <a href="https://www.cnpm-mediation-consommation.eu" target="_blank" rel="noopener noreferrer" 
-                       className="text-orange-600 hover:underline">www.cnpm-mediation-consommation.eu</a>
+                       className="text-ipb-orange hover:underline">www.cnpm-mediation-consommation.eu</a>
                   </span>
                 </p>
               </div>
@@ -528,8 +528,8 @@ export default function MentionsLegalesPage() {
           </article>
 
           {/* Date de dernière mise à jour */}
-          <footer className="mt-12 pt-8 border-t border-slate-200">
-            <p className="text-sm text-slate-500 text-center">
+          <footer className="mt-12 pt-8 border-t border-ipb-rule">
+            <p className="text-sm text-ipb-muted text-center">
               Dernière mise à jour de ces mentions légales : <time dateTime="2026-02-01">1er février 2026</time>
             </p>
           </footer>

@@ -104,7 +104,7 @@ const jsonLd = {
     "ratingValue": "4.9",
     "bestRating": "5",
     "worstRating": "1",
-    "reviewCount": "47"
+    "reviewCount": "15"
   }
 };
 
@@ -157,7 +157,7 @@ export default function ExpertFissuresToulousePage() {
               <RevealOnScroll delay={0.18}>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <MagneticButton href="/diagnostic" variant="primary">
-                    Demander une expertise
+                    Diagnostic gratuit
                   </MagneticButton>
                   <MagneticButton href="/expertise/fissures" variant="ghost">
                     Voir notre méthode

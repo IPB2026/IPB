@@ -103,7 +103,7 @@ const faqSchema = {
 
 export default function CondensationInfiltrationPage() {
   return (
-    <div className="font-sans text-slate-800 bg-white antialiased">
+    <div className="font-sans text-ipb-text bg-white antialiased">
       <Script
         id="faq-schema-condensation-ou-infiltration"
         type="application/ld+json"
@@ -190,13 +190,13 @@ export default function CondensationInfiltrationPage() {
             <span className="inline-block bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
               Comparatif détaillé
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
               5 critères pour différencier
             </h2>
           </div>
 
-          <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
-            <div className="grid grid-cols-3 bg-slate-900 text-white font-bold">
+          <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-ipb-rule">
+            <div className="grid grid-cols-3 bg-ipb-navy text-white font-bold">
               <div className="p-4">Critère</div>
               <div className="p-4 text-center bg-blue-600">
                 <ThermometerSun size={20} className="inline mr-2" />
@@ -208,10 +208,10 @@ export default function CondensationInfiltrationPage() {
               </div>
             </div>
             {comparatif.map((row, index) => (
-              <div key={index} className="grid grid-cols-3 border-b border-slate-100">
-                <div className="p-4 font-bold text-slate-900 bg-slate-50">{row.critere}</div>
-                <div className="p-4 text-slate-600 bg-blue-50/50">{row.condensation}</div>
-                <div className="p-4 text-slate-600 bg-cyan-50/50">{row.infiltration}</div>
+              <div key={index} className="grid grid-cols-3 border-b border-ipb-rule">
+                <div className="p-4 font-bold text-ipb-text bg-ipb-cream">{row.critere}</div>
+                <div className="p-4 text-ipb-muted bg-blue-50/50">{row.condensation}</div>
+                <div className="p-4 text-ipb-muted bg-cyan-50/50">{row.infiltration}</div>
               </div>
             ))}
           </div>
@@ -219,25 +219,25 @@ export default function CondensationInfiltrationPage() {
       </section>
 
       {/* Tests DIY */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-ipb-cream">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="inline-block bg-amber-100 text-amber-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
               À faire vous-même
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
               3 tests simples
             </h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {tests.map((test, index) => (
-              <div key={index} className="bg-white rounded-3xl p-8 shadow-lg border border-slate-200">
+              <div key={index} className="bg-white rounded-3xl p-8 shadow-lg border border-ipb-rule">
                 <div className="text-5xl mb-4">{test.icon}</div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{test.nom}</h3>
-                <div className="bg-slate-50 rounded-xl p-4 mb-4">
-                  <div className="text-sm text-slate-600 font-medium mb-2">Méthode :</div>
-                  <p className="text-slate-700">{test.methode}</p>
+                <h3 className="text-xl font-bold text-ipb-text mb-3">{test.nom}</h3>
+                <div className="bg-ipb-cream rounded-xl p-4 mb-4">
+                  <div className="text-sm text-ipb-muted font-medium mb-2">Méthode :</div>
+                  <p className="text-ipb-text">{test.methode}</p>
                 </div>
                 <div className="bg-purple-50 rounded-xl p-4">
                   <div className="text-sm text-purple-600 font-medium mb-2">Interprétation :</div>
@@ -250,7 +250,7 @@ export default function CondensationInfiltrationPage() {
       </section>
 
       {/* Solutions */}
-      <section className="py-20 bg-slate-900 text-white">
+      <section className="py-20 bg-ipb-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-black mb-4">
@@ -270,21 +270,21 @@ export default function CondensationInfiltrationPage() {
                   <CheckCircle size={20} className="text-blue-400 flex-shrink-0 mt-1" />
                   <div>
                     <strong className="text-white">VMI (Ventilation par Insufflation)</strong>
-                    <p className="text-slate-400 text-sm">Renouvelle l'air et évacue l'humidité. 2 500-4 500€</p>
+                    <p className="text-ipb-light text-sm">Renouvelle l'air et évacue l'humidité. 2 500-4 500€</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle size={20} className="text-blue-400 flex-shrink-0 mt-1" />
                   <div>
                     <strong className="text-white">Isolation des ponts thermiques</strong>
-                    <p className="text-slate-400 text-sm">Supprime les zones froides où se forme la condensation</p>
+                    <p className="text-ipb-light text-sm">Supprime les zones froides où se forme la condensation</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle size={20} className="text-blue-400 flex-shrink-0 mt-1" />
                   <div>
                     <strong className="text-white">Aération quotidienne</strong>
-                    <p className="text-slate-400 text-sm">10 min/jour minimum, même en hiver</p>
+                    <p className="text-ipb-light text-sm">10 min/jour minimum, même en hiver</p>
                   </div>
                 </li>
               </ul>
@@ -304,21 +304,21 @@ export default function CondensationInfiltrationPage() {
                   <CheckCircle size={20} className="text-cyan-400 flex-shrink-0 mt-1" />
                   <div>
                     <strong className="text-white">Injection résine (remontées capillaires)</strong>
-                    <p className="text-slate-400 text-sm">Barrière étanche à la base des murs. 80-120€/ml</p>
+                    <p className="text-ipb-light text-sm">Barrière étanche à la base des murs. 80-120€/ml</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle size={20} className="text-cyan-400 flex-shrink-0 mt-1" />
                   <div>
                     <strong className="text-white">Cuvelage (caves/sous-sols)</strong>
-                    <p className="text-slate-400 text-sm">Étanchéité des parois enterrées. 150-250€/m²</p>
+                    <p className="text-ipb-light text-sm">Étanchéité des parois enterrées. 150-250€/m²</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle size={20} className="text-cyan-400 flex-shrink-0 mt-1" />
                   <div>
                     <strong className="text-white">Réparation toiture/façade</strong>
-                    <p className="text-slate-400 text-sm">Si l'eau vient de l'extérieur (fissures, joints)</p>
+                    <p className="text-ipb-light text-sm">Si l'eau vient de l'extérieur (fissures, joints)</p>
                   </div>
                 </li>
               </ul>

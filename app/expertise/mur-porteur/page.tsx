@@ -10,8 +10,8 @@ import Script from 'next/script';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Ouverture de mur porteur · Création de baie vitrée · IPB Toulouse",
-  description: "Cabinet de structure du bâtiment. Étude technique, dimensionnement de la poutre, exécution des travaux et finitions. Décennale AXA. Toulouse, Montauban, Auch, Albi.",
+  title: "Ouverture de mur porteur · IPB Toulouse",
+  description: "Cabinet de structure du bâtiment : ouverture de mur porteur (cuisine ouverte, suite parentale, plateau loft) et — sur projet de façade — création de baie vitrée. Étude technique, dimensionnement de poutre, exécution. Décennale AXA. Toulouse, Montauban, Auch, Albi.",
   keywords: [
     'ouverture mur porteur toulouse',
     'création baie vitrée toulouse',
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/mur-porteur' },
   openGraph: {
-    title: 'Ouverture de mur porteur · Création de baie vitrée · IPB Toulouse',
-    description: "Étude technique, dimensionnement de la poutre, exécution des travaux et finitions. Décennale AXA.",
+    title: 'Ouverture de mur porteur · IPB Toulouse',
+    description: "Étude technique, dimensionnement de la poutre, exécution des travaux et finitions. Création de baie vitrée sur projet de façade. Décennale AXA.",
     url: 'https://www.ipb-expertise.fr/expertise/mur-porteur',
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
     locale: 'fr_FR',
@@ -76,7 +76,7 @@ const generateFaqJsonLd = () => ({
 const generateServiceJsonLd = () => ({
   "@context": "https://schema.org",
   "@type": "Service",
-  "serviceType": "Ouverture de mur porteur et création de baie vitrée",
+  "serviceType": "Ouverture de mur porteur",
   "provider": {
     "@type": "LocalBusiness",
     "name": "IPB - Institut de Pathologie du Bâtiment",

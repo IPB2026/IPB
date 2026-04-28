@@ -62,7 +62,7 @@ const faqSchema = {
 
 export default function SalpetrePage() {
   return (
-    <div className="font-sans text-slate-800 bg-white antialiased">
+    <div className="font-sans text-ipb-text bg-white antialiased">
       <Script
         id="faq-schema-salpetre-mur-traitement"
         type="application/ld+json"
@@ -130,7 +130,7 @@ export default function SalpetrePage() {
             <div className="relative">
               <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20">
                 <h3 className="text-lg font-bold text-white mb-4 text-center">Avant / Après traitement</h3>
-                <div className="relative rounded-2xl overflow-hidden aspect-video bg-slate-800">
+                <div className="relative rounded-2xl overflow-hidden aspect-video bg-ipb-navy-2">
                   <Image
                     src="/images/salpetre-avant-apres.webp"
                     alt="Traitement salpêtre avant après - IPB"
@@ -160,10 +160,10 @@ export default function SalpetrePage() {
             <span className="inline-block bg-red-100 text-red-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
               Attention aux fausses solutions
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
               Ce qui ne fonctionne PAS
             </h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            <p className="text-xl text-ipb-muted max-w-2xl mx-auto">
               Beaucoup de propriétaires perdent du temps et de l'argent avec des solutions inefficaces.
             </p>
           </div>
@@ -175,8 +175,8 @@ export default function SalpetrePage() {
                   <div className="flex items-center gap-4">
                     <XCircle className="w-6 h-6 text-red-500" />
                     <div>
-                      <div className="font-bold text-slate-900">{item.solution}</div>
-                      <div className="text-sm text-slate-500">{item.resultat}</div>
+                      <div className="font-bold text-ipb-text">{item.solution}</div>
+                      <div className="text-sm text-ipb-muted">{item.resultat}</div>
                     </div>
                   </div>
                   <div className="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-bold">
@@ -191,8 +191,8 @@ export default function SalpetrePage() {
                 <div className="flex items-center gap-4">
                   <CheckCircle className="w-8 h-8 text-green-500" />
                   <div>
-                    <div className="font-bold text-slate-900 text-lg">✅ Injection résine hydrophobe</div>
-                    <div className="text-slate-600">Traitement de la cause = résultat définitif</div>
+                    <div className="font-bold text-ipb-text text-lg">✅ Injection résine hydrophobe</div>
+                    <div className="text-ipb-muted">Traitement de la cause = résultat définitif</div>
                   </div>
                 </div>
                 <div className="bg-green-100 text-green-700 px-4 py-2 rounded-full font-bold">
@@ -205,13 +205,13 @@ export default function SalpetrePage() {
       </section>
 
       {/* Comment ça marche */}
-      <section className="py-20 bg-slate-900 text-white">
+      <section className="py-20 bg-ipb-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-black mb-4">
               Le seul traitement efficace
             </h2>
-            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+            <p className="text-xl text-ipb-light max-w-2xl mx-auto">
               Stopper les remontées capillaires = éliminer le salpêtre définitivement
             </p>
           </div>
@@ -229,7 +229,7 @@ export default function SalpetrePage() {
                   <span className="text-5xl font-black text-white/10">{etape.num}</span>
                 </div>
                 <h3 className="text-lg font-bold mb-2">{etape.titre}</h3>
-                <p className="text-slate-400 text-sm mb-4">{etape.desc}</p>
+                <p className="text-ipb-light text-sm mb-4">{etape.desc}</p>
                 <div className="flex items-center gap-2 text-amber-400 text-sm">
                   <Clock size={14} />
                   {etape.duree}
@@ -243,15 +243,15 @@ export default function SalpetrePage() {
               <div className="grid md:grid-cols-3 gap-8">
                 <div>
                   <div className="text-4xl font-black text-amber-400">80-120€</div>
-                  <div className="text-slate-400">par mètre linéaire</div>
+                  <div className="text-ipb-light">par mètre linéaire</div>
                 </div>
                 <div>
                   <div className="text-4xl font-black text-amber-400">30 ans</div>
-                  <div className="text-slate-400">de garantie</div>
+                  <div className="text-ipb-light">de garantie</div>
                 </div>
                 <div>
                   <div className="text-4xl font-black text-amber-400">95%</div>
-                  <div className="text-slate-400">d'efficacité</div>
+                  <div className="text-ipb-light">d'efficacité</div>
                 </div>
               </div>
             </div>
@@ -260,9 +260,9 @@ export default function SalpetrePage() {
       </section>
 
       {/* Articles connexes */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-ipb-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-slate-900 mb-8 text-center">
+          <h2 className="text-2xl font-black text-ipb-text mb-8 text-center">
             Articles connexes
           </h2>
           <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
@@ -277,13 +277,13 @@ export default function SalpetrePage() {
               <Link 
                 key={index}
                 href={item.href}
-                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-slate-100"
+                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-ipb-rule"
               >
                 <span className="text-4xl mb-4 block">{item.icon}</span>
-                <h3 className="font-bold text-slate-900 group-hover:text-amber-600 transition-colors mb-1">
+                <h3 className="font-bold text-ipb-text group-hover:text-amber-600 transition-colors mb-1">
                   {item.title}
                 </h3>
-                <p className="text-sm text-slate-500">{item.desc}</p>
+                <p className="text-sm text-ipb-muted">{item.desc}</p>
               </Link>
             ))}
           </div>

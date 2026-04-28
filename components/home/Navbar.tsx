@@ -26,7 +26,7 @@ export function Navbar() {
     { href: '/expertise/mur-porteur', label: 'Mur porteur' },
     { href: '/notre-expert', label: 'Le cabinet' },
     { href: '/partenaires', label: 'Pros' },
-    { href: '/blog', label: 'Journal' },
+    { href: '/blog', label: 'Blog' },
     { href: '/contact', label: 'Contact' },
   ];
 
@@ -66,7 +66,7 @@ export function Navbar() {
             href="/diagnostic"
             className="bg-ipb-orange text-white px-5 py-2.5 rounded-[3px] font-semibold text-[12px] tracking-[0.02em] hover:bg-[#b35519] transition-all hover:shadow-[0_8px_24px_rgba(200,96,31,0.25)] hover:-translate-y-px ml-2"
           >
-            Demander une expertise
+            Diagnostic gratuit
           </Link>
         </div>
 
@@ -108,7 +108,7 @@ export function Navbar() {
               role="menuitem"
               className="block w-full bg-ipb-orange text-white text-center py-4 rounded-[3px] font-semibold text-sm mt-4"
             >
-              Demander une expertise
+              Diagnostic gratuit
             </Link>
           </div>
         </div>

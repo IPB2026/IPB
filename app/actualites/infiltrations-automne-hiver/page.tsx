@@ -72,7 +72,7 @@ const jsonLd = {
 
 export default function InfiltrationsAutomnePage() {
   return (
-    <div className="font-sans text-slate-800 bg-slate-50 antialiased">
+    <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
       <Script id="article-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       
       <TopBar />
@@ -97,7 +97,7 @@ export default function InfiltrationsAutomnePage() {
             Infiltrations d'Eau : <br/>
             <span className="text-blue-300">Diagnostic et Solutions</span>
           </h1>
-          <p className="text-xl text-slate-300 mb-8">
+          <p className="text-xl text-white/70 mb-8">
             Le retour des pluies révèle souvent des problèmes d'étanchéité. 
             Toiture, façade, fenêtres : comment identifier la source et agir vite.
           </p>
@@ -115,7 +115,7 @@ export default function InfiltrationsAutomnePage() {
       {/* Pourquoi l'automne */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
+          <h2 className="text-3xl font-extrabold text-ipb-text mb-8 text-center">
             Pourquoi les infiltrations apparaissent-elles en automne ?
           </h2>
           <div className="prose prose-lg max-w-none">
@@ -141,14 +141,14 @@ export default function InfiltrationsAutomnePage() {
       </section>
 
       {/* Sources d'infiltration */}
-      <section className="py-16 bg-slate-100">
+      <section className="py-16 bg-ipb-stone">
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
+          <h2 className="text-3xl font-extrabold text-ipb-text mb-8 text-center">
             Les 3 sources principales d'infiltration
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             {sourcesInfiltration.map((source, index) => (
-              <div key={index} className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200">
+              <div key={index} className="bg-white rounded-2xl p-6 shadow-lg border border-ipb-rule">
                 <div className="flex items-center gap-3 mb-4">
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
                     source.urgence === 'haute' ? 'bg-red-100' : 'bg-amber-100'
@@ -156,7 +156,7 @@ export default function InfiltrationsAutomnePage() {
                     <source.icon className={source.urgence === 'haute' ? 'text-red-600' : 'text-amber-600'} size={24} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-slate-900">{source.titre}</h3>
+                    <h3 className="font-bold text-ipb-text">{source.titre}</h3>
                     <span className={`text-xs font-bold px-2 py-0.5 rounded ${
                       source.urgence === 'haute' 
                         ? 'bg-red-100 text-red-700' 
@@ -168,10 +168,10 @@ export default function InfiltrationsAutomnePage() {
                 </div>
                 
                 <div className="mb-4">
-                  <p className="text-sm font-bold text-slate-700 mb-2">Signes révélateurs :</p>
+                  <p className="text-sm font-bold text-ipb-text mb-2">Signes révélateurs :</p>
                   <ul className="space-y-1">
                     {source.signes.map((signe, i) => (
-                      <li key={i} className="flex items-center gap-2 text-sm text-slate-600">
+                      <li key={i} className="flex items-center gap-2 text-sm text-ipb-muted">
                         <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
                         {signe}
                       </li>
@@ -179,8 +179,8 @@ export default function InfiltrationsAutomnePage() {
                   </ul>
                 </div>
 
-                <div className="pt-4 border-t border-slate-100">
-                  <p className="text-sm text-slate-500">
+                <div className="pt-4 border-t border-ipb-rule">
+                  <p className="text-sm text-ipb-muted">
                     <strong>Causes :</strong> {source.causes}
                   </p>
                 </div>
@@ -193,20 +193,20 @@ export default function InfiltrationsAutomnePage() {
       {/* Checklist */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
+          <h2 className="text-3xl font-extrabold text-ipb-text mb-8 text-center">
             ✅ Checklist prévention automne
           </h2>
-          <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
+          <div className="bg-ipb-cream rounded-2xl p-8 border border-ipb-rule">
             <div className="space-y-4">
               {checklistAutomne.map((item, index) => (
-                <div key={index} className="flex items-center justify-between p-4 bg-white rounded-xl border border-slate-100">
+                <div key={index} className="flex items-center justify-between p-4 bg-white rounded-xl border border-ipb-rule">
                   <div className="flex items-center gap-3">
                     <div className="w-6 h-6 border-2 border-blue-500 rounded flex items-center justify-center">
                       <CheckCircle className="text-blue-500" size={14} />
                     </div>
-                    <span className="font-medium text-slate-800">{item.action}</span>
+                    <span className="font-medium text-ipb-text">{item.action}</span>
                   </div>
-                  <span className="text-sm text-slate-500">{item.frequence}</span>
+                  <span className="text-sm text-ipb-muted">{item.frequence}</span>
                 </div>
               ))}
             </div>
@@ -215,30 +215,30 @@ export default function InfiltrationsAutomnePage() {
       </section>
 
       {/* Différencier infiltration / condensation */}
-      <section className="py-16 bg-slate-100">
+      <section className="py-16 bg-ipb-stone">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
+          <h2 className="text-3xl font-extrabold text-ipb-text mb-8 text-center">
             Infiltration ou condensation ?
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-blue-50 rounded-2xl p-6 border-2 border-blue-200">
               <div className="flex items-center gap-3 mb-4">
                 <CloudRain className="text-blue-600" size={28} />
-                <h3 className="text-xl font-bold text-slate-900">Infiltration</h3>
+                <h3 className="text-xl font-bold text-ipb-text">Infiltration</h3>
               </div>
-              <ul className="space-y-2 text-slate-700">
+              <ul className="space-y-2 text-ipb-text">
                 <li>• Apparaît <strong>pendant ou après</strong> la pluie</li>
                 <li>• Taches localisées, souvent en haut des murs</li>
                 <li>• Peut ruisseler ou former des gouttes</li>
                 <li>• Source identifiable (toiture, façade)</li>
               </ul>
             </div>
-            <div className="bg-slate-50 rounded-2xl p-6 border-2 border-slate-200">
+            <div className="bg-ipb-cream rounded-2xl p-6 border-2 border-ipb-rule">
               <div className="flex items-center gap-3 mb-4">
-                <Droplets className="text-slate-600" size={28} />
-                <h3 className="text-xl font-bold text-slate-900">Condensation</h3>
+                <Droplets className="text-ipb-muted" size={28} />
+                <h3 className="text-xl font-bold text-ipb-text">Condensation</h3>
               </div>
-              <ul className="space-y-2 text-slate-700">
+              <ul className="space-y-2 text-ipb-text">
                 <li>• Présente <strong>en permanence</strong>, surtout en hiver</li>
                 <li>• Buée sur les vitres, angles humides</li>
                 <li>• Moisissures noires superficielles</li>
@@ -270,37 +270,37 @@ export default function InfiltrationsAutomnePage() {
       {/* Solutions */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
+          <h2 className="text-3xl font-extrabold text-ipb-text mb-8 text-center">
             Nos solutions anti-infiltration
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-              <h3 className="font-bold text-slate-900 mb-3">🏠 Toiture</h3>
-              <ul className="space-y-2 text-slate-600 text-sm">
+            <div className="bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
+              <h3 className="font-bold text-ipb-text mb-3">🏠 Toiture</h3>
+              <ul className="space-y-2 text-ipb-muted text-sm">
                 <li>• Réparation de tuiles/ardoises</li>
                 <li>• Réfection de solins et faîtages</li>
                 <li>• Nettoyage et réparation gouttières</li>
               </ul>
             </div>
-            <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-              <h3 className="font-bold text-slate-900 mb-3">🧱 Façade</h3>
-              <ul className="space-y-2 text-slate-600 text-sm">
+            <div className="bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
+              <h3 className="font-bold text-ipb-text mb-3">🧱 Façade</h3>
+              <ul className="space-y-2 text-ipb-muted text-sm">
                 <li>• Traitement des fissures</li>
                 <li>• Hydrofugation de façade</li>
                 <li>• Réfection des joints</li>
               </ul>
             </div>
-            <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-              <h3 className="font-bold text-slate-900 mb-3">🪟 Menuiseries</h3>
-              <ul className="space-y-2 text-slate-600 text-sm">
+            <div className="bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
+              <h3 className="font-bold text-ipb-text mb-3">🪟 Menuiseries</h3>
+              <ul className="space-y-2 text-ipb-muted text-sm">
                 <li>• Remplacement de joints</li>
                 <li>• Réglage des ouvrants</li>
                 <li>• Reprise d'étanchéité</li>
               </ul>
             </div>
-            <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-              <h3 className="font-bold text-slate-900 mb-3">🏚️ Terrasse</h3>
-              <ul className="space-y-2 text-slate-600 text-sm">
+            <div className="bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
+              <h3 className="font-bold text-ipb-text mb-3">🏚️ Terrasse</h3>
+              <ul className="space-y-2 text-ipb-muted text-sm">
                 <li>• Réfection membrane d'étanchéité</li>
                 <li>• Traitement des joints</li>
                 <li>• Contrôle des évacuations</li>
@@ -311,33 +311,33 @@ export default function InfiltrationsAutomnePage() {
       </section>
 
       {/* Liens connexes */}
-      <section className="py-16 bg-slate-100">
+      <section className="py-16 bg-ipb-stone">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
+          <h2 className="text-3xl font-extrabold text-ipb-text mb-8 text-center">
             Articles connexes
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
-            <Link href="/expert-humidite-toulouse-31" className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 hover:border-blue-200 transition-all group">
-              <h3 className="font-bold text-slate-900 group-hover:text-blue-600 mb-2">
+            <Link href="/expert-humidite-toulouse-31" className="bg-white rounded-xl p-6 shadow-lg border border-ipb-rule hover:border-blue-200 transition-all group">
+              <h3 className="font-bold text-ipb-text group-hover:text-blue-600 mb-2">
                 💧 Expert humidité Toulouse
               </h3>
-              <p className="text-slate-600 text-sm">Tous les problèmes d'humidité et leurs solutions</p>
+              <p className="text-ipb-muted text-sm">Tous les problèmes d'humidité et leurs solutions</p>
             </Link>
-            <Link href="/condensation-ou-infiltration" className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 hover:border-blue-200 transition-all group">
-              <h3 className="font-bold text-slate-900 group-hover:text-blue-600 mb-2">
+            <Link href="/condensation-ou-infiltration" className="bg-white rounded-xl p-6 shadow-lg border border-ipb-rule hover:border-blue-200 transition-all group">
+              <h3 className="font-bold text-ipb-text group-hover:text-blue-600 mb-2">
                 🌧️ Condensation ou infiltration ?
               </h3>
-              <p className="text-slate-600 text-sm">Comment différencier ces deux problèmes</p>
+              <p className="text-ipb-muted text-sm">Comment différencier ces deux problèmes</p>
             </Link>
           </div>
         </div>
       </section>
 
       {/* CTA final */}
-      <section className="py-16 bg-slate-900 text-white">
+      <section className="py-16 bg-ipb-navy text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-extrabold mb-6">L'humidité s'invite chez vous ?</h2>
-          <p className="text-xl text-slate-300 mb-8">
+          <p className="text-xl text-white/70 mb-8">
             Diagnostic sous 48h pour identifier la source et proposer la bonne solution.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">

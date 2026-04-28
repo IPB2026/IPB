@@ -60,7 +60,7 @@ const causesCave = [
 
 export default function CaveHumidePage() {
   return (
-    <div className="font-sans text-slate-800 bg-white antialiased">
+    <div className="font-sans text-ipb-text bg-white antialiased">
       <TopBar />
       <Navbar />
 
@@ -154,10 +154,10 @@ export default function CaveHumidePage() {
             <span className="inline-block bg-cyan-100 text-cyan-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
               Nos solutions
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
               4 solutions selon votre problème
             </h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            <p className="text-xl text-ipb-muted max-w-2xl mx-auto">
               Le diagnostic détermine la cause exacte et la solution adaptée.
             </p>
           </div>
@@ -174,20 +174,20 @@ export default function CaveHumidePage() {
                 }`}
               >
                 <div className="text-5xl mb-4">{sol.icon}</div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">{sol.titre}</h3>
-                <p className="text-slate-600 text-sm mb-4">{sol.description}</p>
+                <h3 className="text-xl font-bold text-ipb-text mb-2">{sol.titre}</h3>
+                <p className="text-ipb-muted text-sm mb-4">{sol.description}</p>
                 
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Prix</span>
-                    <span className="font-bold text-slate-900">{sol.prix}</span>
+                    <span className="text-ipb-muted">Prix</span>
+                    <span className="font-bold text-ipb-text">{sol.prix}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Adapté pour</span>
-                    <span className="font-bold text-slate-900">{sol.adapte}</span>
+                    <span className="text-ipb-muted">Adapté pour</span>
+                    <span className="font-bold text-ipb-text">{sol.adapte}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Garantie</span>
+                    <span className="text-ipb-muted">Garantie</span>
                     <span className="font-bold text-cyan-600">{sol.garantie}</span>
                   </div>
                 </div>
@@ -198,7 +198,7 @@ export default function CaveHumidePage() {
       </section>
 
       {/* Focus Cuvelage */}
-      <section className="py-20 bg-slate-900 text-white">
+      <section className="py-20 bg-ipb-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -208,7 +208,7 @@ export default function CaveHumidePage() {
               <h2 className="text-3xl md:text-4xl font-black mb-6">
                 Le cuvelage : l'étanchéité totale
               </h2>
-              <p className="text-slate-300 text-lg mb-6">
+              <p className="text-white/70 text-lg mb-6">
                 Le cuvelage consiste à appliquer un revêtement étanche (mortier hydrofuge ou résine époxy) 
                 sur toutes les parois de la cave. Il résiste à la pression de l'eau et transforme 
                 votre cave humide en espace sain et utilisable.
@@ -219,21 +219,21 @@ export default function CaveHumidePage() {
                   <CheckCircle size={20} className="text-cyan-400 flex-shrink-0 mt-1" />
                   <div>
                     <strong className="text-white">Préparation du support</strong>
-                    <p className="text-slate-400 text-sm">Nettoyage, traitement des fissures, application d'un primaire</p>
+                    <p className="text-ipb-light text-sm">Nettoyage, traitement des fissures, application d'un primaire</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle size={20} className="text-cyan-400 flex-shrink-0 mt-1" />
                   <div>
                     <strong className="text-white">Application multicouche</strong>
-                    <p className="text-slate-400 text-sm">2 à 3 couches de mortier ou résine selon le support</p>
+                    <p className="text-ipb-light text-sm">2 à 3 couches de mortier ou résine selon le support</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle size={20} className="text-cyan-400 flex-shrink-0 mt-1" />
                   <div>
                     <strong className="text-white">Résistance à la pression</strong>
-                    <p className="text-slate-400 text-sm">Jusqu'à 7 bars de pression d'eau (équivalent 70m de profondeur)</p>
+                    <p className="text-ipb-light text-sm">Jusqu'à 7 bars de pression d'eau (équivalent 70m de profondeur)</p>
                   </div>
                 </li>
               </ul>
@@ -242,7 +242,7 @@ export default function CaveHumidePage() {
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="text-sm text-cyan-300 font-bold">PRIX CUVELAGE</div>
-                    <div className="text-4xl font-black text-white">150-250€<span className="text-lg text-slate-400">/m²</span></div>
+                    <div className="text-4xl font-black text-white">150-250€<span className="text-lg text-ipb-light">/m²</span></div>
                   </div>
                   <div className="text-right">
                     <div className="text-sm text-cyan-300 font-bold">GARANTIE</div>
@@ -262,7 +262,7 @@ export default function CaveHumidePage() {
                   'Projet d\'aménagement du sous-sol',
                   'Cave avec salpêtre persistant',
                 ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-slate-300">
+                  <li key={i} className="flex items-center gap-3 text-white/70">
                     <CheckCircle size={18} className="text-cyan-400" />
                     {item}
                   </li>
@@ -284,9 +284,9 @@ export default function CaveHumidePage() {
       </section>
 
       {/* Articles connexes */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-ipb-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-slate-900 mb-8 text-center">
+          <h2 className="text-2xl font-black text-ipb-text mb-8 text-center">
             Articles connexes
           </h2>
           <div className="grid md:grid-cols-4 gap-6">
@@ -299,13 +299,13 @@ export default function CaveHumidePage() {
               <Link 
                 key={index}
                 href={item.href}
-                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-slate-100"
+                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-ipb-rule"
               >
                 <span className="text-4xl mb-4 block">{item.icon}</span>
-                <h3 className="font-bold text-slate-900 group-hover:text-cyan-600 transition-colors mb-1">
+                <h3 className="font-bold text-ipb-text group-hover:text-cyan-600 transition-colors mb-1">
                   {item.title}
                 </h3>
-                <p className="text-sm text-slate-500">{item.desc}</p>
+                <p className="text-sm text-ipb-muted">{item.desc}</p>
               </Link>
             ))}
           </div>

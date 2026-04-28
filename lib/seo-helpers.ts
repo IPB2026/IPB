@@ -2,6 +2,14 @@
  * Helpers SEO avancés pour maximiser le trafic organique
  */
 
+/**
+ * Constantes IPB centralisées — utilisées dans tous les schemas JSON-LD.
+ * Mettre à jour ICI une seule fois pour propager partout.
+ */
+export const IPB_REVIEW_COUNT = '15';
+export const IPB_RATING_VALUE = '4.9';
+
+
 interface FAQItem {
   question: string;
   answer: string;
@@ -314,8 +322,8 @@ export function generateReviewSchema(_articleTitle: string) {
     },
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '47',
+      ratingValue: IPB_RATING_VALUE,
+      reviewCount: IPB_REVIEW_COUNT,
       bestRating: '5',
       worstRating: '1'
     }

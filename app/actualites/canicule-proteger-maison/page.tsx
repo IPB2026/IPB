@@ -70,7 +70,7 @@ const jsonLd = {
 
 export default function CaniculeProtegerMaisonPage() {
   return (
-    <div className="font-sans text-slate-800 bg-slate-50 antialiased">
+    <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
       <Script id="article-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       
       <TopBar />
@@ -87,20 +87,20 @@ export default function CaniculeProtegerMaisonPage() {
       {/* Hero */}
       <section className="bg-gradient-to-br from-orange-900 to-red-900 text-white py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="flex items-center gap-2 text-orange-300 text-sm font-bold mb-4">
+          <div className="flex items-center gap-2 text-ipb-orange-l text-sm font-bold mb-4">
             <Thermometer size={18} />
             <span>Actualité Canicule 2026</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
             Canicule : Comment Protéger <br/>
-            <span className="text-orange-300">Votre Maison des Fissures</span>
+            <span className="text-ipb-orange-l">Votre Maison des Fissures</span>
           </h1>
-          <p className="text-xl text-orange-100 mb-8">
+          <p className="text-xl text-ipb-orange-l mb-8">
             Les fortes chaleurs et la sécheresse font souffrir les sols argileux. 
             Votre maison peut se fissurer en quelques semaines. Voici comment réagir.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/diagnostic" className="bg-white text-orange-700 hover:bg-orange-50 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
+            <Link href="/diagnostic" className="bg-white text-ipb-orange hover:bg-ipb-stone px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
               Faire vérifier ma maison <ArrowRight size={18} />
             </Link>
             <a href="tel:0582953375" className="bg-white/10 border border-white/20 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
@@ -113,7 +113,7 @@ export default function CaniculeProtegerMaisonPage() {
       {/* Explication RGA */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
+          <h2 className="text-3xl font-extrabold text-ipb-text mb-8 text-center">
             Pourquoi la canicule fissure les maisons ?
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -121,8 +121,8 @@ export default function CaniculeProtegerMaisonPage() {
               <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Sun className="text-amber-600" size={32} />
               </div>
-              <h3 className="font-bold text-slate-900 mb-2">1. Le sol sèche</h3>
-              <p className="text-slate-600 text-sm">
+              <h3 className="font-bold text-ipb-text mb-2">1. Le sol sèche</h3>
+              <p className="text-ipb-muted text-sm">
                 Les argiles perdent leur eau et se rétractent, créant des vides sous les fondations.
               </p>
             </div>
@@ -130,17 +130,17 @@ export default function CaniculeProtegerMaisonPage() {
               <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <AlertTriangle className="text-red-600" size={32} />
               </div>
-              <h3 className="font-bold text-slate-900 mb-2">2. Tassement différentiel</h3>
-              <p className="text-slate-600 text-sm">
+              <h3 className="font-bold text-ipb-text mb-2">2. Tassement différentiel</h3>
+              <p className="text-ipb-muted text-sm">
                 Certaines parties de la maison s'enfoncent plus que d'autres.
               </p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-ipb-stone rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-3xl">🏠</span>
               </div>
-              <h3 className="font-bold text-slate-900 mb-2">3. Fissures apparaissent</h3>
-              <p className="text-slate-600 text-sm">
+              <h3 className="font-bold text-ipb-text mb-2">3. Fissures apparaissent</h3>
+              <p className="text-ipb-muted text-sm">
                 Les murs subissent des contraintes et se fissurent, souvent en diagonale.
               </p>
             </div>
@@ -157,23 +157,23 @@ export default function CaniculeProtegerMaisonPage() {
       </section>
 
       {/* Gestes préventifs */}
-      <section className="py-16 bg-slate-100">
+      <section className="py-16 bg-ipb-stone">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
+          <h2 className="text-3xl font-extrabold text-ipb-text mb-8 text-center">
             3 gestes pour protéger votre maison
           </h2>
           <div className="space-y-6">
             {gestesPreventifs.map((geste, index) => (
-              <div key={index} className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200 flex gap-6">
+              <div key={index} className="bg-white rounded-2xl p-6 shadow-lg border border-ipb-rule flex gap-6">
                 <div className="flex-shrink-0">
-                  <div className="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center">
-                    <geste.icon className="text-orange-600" size={28} />
+                  <div className="w-14 h-14 bg-ipb-stone rounded-xl flex items-center justify-center">
+                    <geste.icon className="text-ipb-orange" size={28} />
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 text-lg mb-2">{geste.titre}</h3>
-                  <p className="text-slate-600 mb-2">{geste.description}</p>
-                  <p className="text-sm text-orange-600 font-medium">📅 {geste.quand}</p>
+                  <h3 className="font-bold text-ipb-text text-lg mb-2">{geste.titre}</h3>
+                  <p className="text-ipb-muted mb-2">{geste.description}</p>
+                  <p className="text-sm text-ipb-orange font-medium">📅 {geste.quand}</p>
                 </div>
               </div>
             ))}
@@ -184,7 +184,7 @@ export default function CaniculeProtegerMaisonPage() {
       {/* Signes d'alerte */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
+          <h2 className="text-3xl font-extrabold text-ipb-text mb-8 text-center">
             Signes d'alerte à surveiller
           </h2>
           <div className="bg-amber-50 rounded-2xl p-8 border border-amber-200">
@@ -195,7 +195,7 @@ export default function CaniculeProtegerMaisonPage() {
               {signesAlerte.map((signe, index) => (
                 <div key={index} className="flex items-start gap-3">
                   <AlertTriangle className="text-amber-600 flex-shrink-0 mt-0.5" size={18} />
-                  <span className="text-slate-700">{signe}</span>
+                  <span className="text-ipb-text">{signe}</span>
                 </div>
               ))}
             </div>
@@ -207,19 +207,19 @@ export default function CaniculeProtegerMaisonPage() {
       <section className="py-16 bg-gradient-to-r from-orange-600 to-red-600 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-extrabold mb-6">Votre maison montre des signes de fatigue ?</h2>
-          <p className="text-xl text-orange-100 mb-8">
+          <p className="text-xl text-ipb-orange-l mb-8">
             Mieux vaut prévenir que guérir. Un diagnostic précoce peut vous faire économiser des milliers d'euros.
           </p>
-          <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-50">
+          <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-white text-ipb-orange px-8 py-4 rounded-xl font-bold text-lg hover:bg-ipb-stone">
             Demander un diagnostic <ArrowRight size={20} />
           </Link>
         </div>
       </section>
 
       {/* Après la canicule */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-ipb-cream">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
+          <h2 className="text-3xl font-extrabold text-ipb-text mb-8 text-center">
             Et après la canicule ?
           </h2>
           <div className="prose prose-lg max-w-none">
@@ -236,31 +236,31 @@ export default function CaniculeProtegerMaisonPage() {
           </div>
 
           <div className="mt-8 grid md:grid-cols-2 gap-6">
-            <Link href="/fissure-secheresse-indemnisation" className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 hover:border-orange-200 transition-all group">
-              <h3 className="font-bold text-slate-900 group-hover:text-orange-600 mb-2">
+            <Link href="/fissure-secheresse-indemnisation" className="bg-white rounded-xl p-6 shadow-lg border border-ipb-rule hover:border-ipb-rule transition-all group">
+              <h3 className="font-bold text-ipb-text group-hover:text-ipb-orange mb-2">
                 📋 Indemnisation CAT-NAT
               </h3>
-              <p className="text-slate-600 text-sm">Comment être indemnisé après une sécheresse</p>
+              <p className="text-ipb-muted text-sm">Comment être indemnisé après une sécheresse</p>
             </Link>
-            <Link href="/expert-fissures-toulouse-31" className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 hover:border-orange-200 transition-all group">
-              <h3 className="font-bold text-slate-900 group-hover:text-orange-600 mb-2">
+            <Link href="/expert-fissures-toulouse-31" className="bg-white rounded-xl p-6 shadow-lg border border-ipb-rule hover:border-ipb-rule transition-all group">
+              <h3 className="font-bold text-ipb-text group-hover:text-ipb-orange mb-2">
                 🔍 Expert fissures Toulouse
               </h3>
-              <p className="text-slate-600 text-sm">Diagnostic et solutions pour vos fissures</p>
+              <p className="text-ipb-muted text-sm">Diagnostic et solutions pour vos fissures</p>
             </Link>
           </div>
         </div>
       </section>
 
       {/* CTA final */}
-      <section className="py-16 bg-slate-900 text-white">
+      <section className="py-16 bg-ipb-navy text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-extrabold mb-6">Questions sur votre maison ?</h2>
-          <p className="text-xl text-slate-300 mb-8">
+          <p className="text-xl text-white/70 mb-8">
             Notre équipe est disponible pour répondre à vos questions et intervenir rapidement.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/diagnostic" className="bg-orange-600 hover:bg-orange-500 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
+            <Link href="/diagnostic" className="bg-ipb-orange hover:bg-ipb-orange px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
               Diagnostic fissures <ArrowRight size={20} />
             </Link>
             <a href="tel:0582953375" className="bg-white/10 border border-white/20 hover:bg-white/20 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">

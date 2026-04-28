@@ -21,7 +21,7 @@ const linkSets: Record<NonNullable<InternalLinksProps['variant']>, LinkItem[]> =
   ],
   fissures: [
     { href: '/diagnostic', label: 'Diagnostic fissures', description: 'Recevez un avis expert rapide.' },
-    { href: '/expertise/mur-porteur', label: 'Mur porteur & baie vitree', description: 'Etude structure et travaux garantis.' },
+    { href: '/expertise/mur-porteur', label: 'Ouverture de mur porteur', description: 'Etude structure et travaux garantis.' },
     { href: '/blog', label: 'Guides fissures', description: 'Comprendre les causes et solutions.' },
     { href: '/contact', label: 'Parler a un expert', description: 'Conseil gratuit par telephone.' },
   ],
@@ -52,7 +52,7 @@ const linkSets: Record<NonNullable<InternalLinksProps['variant']>, LinkItem[]> =
   ville: [
     { href: '/diagnostic', label: 'Diagnostic gratuit', description: 'Analyse rapide de votre cas.' },
     { href: '/expertise/fissures', label: 'Fissures & structure', description: 'Agrafage et stabilisation.' },
-    { href: '/expertise/mur-porteur', label: 'Mur porteur & baie vitree', description: 'Etude structure cle en main.' },
+    { href: '/expertise/mur-porteur', label: 'Ouverture de mur porteur', description: 'Etude structure cle en main.' },
     { href: '/contact', label: 'Contact IPB', description: 'Intervention locale rapide.' },
   ],
 };

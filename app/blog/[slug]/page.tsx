@@ -3,9 +3,10 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Calendar, Clock, Share2, Facebook, Twitter, Linkedin } from 'lucide-react';
+import { Calendar, Clock, Share2, Facebook, Twitter, Linkedin } from 'lucide-react';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { BackButton } from '@/components/ui/BackButton';
 import { Breadcrumbs } from '@/components/blog/Breadcrumbs';
 import { TableOfContents } from '@/components/blog/TableOfContents';
 import { InternalLinks } from '@/components/seo/InternalLinks';
@@ -121,9 +122,9 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
   
   if (!slug) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+      <div className="min-h-screen bg-ipb-cream flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-slate-900 mb-4">Chargement...</h1>
+          <h1 className="text-3xl font-bold text-ipb-text mb-4">Chargement...</h1>
         </div>
       </div>
     );
@@ -172,7 +173,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
   const contentWithLinks = injectInternalLinks(enrichedContent, post.slug);
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-ipb-cream">
       {/* JSON-LD pour SEO */}
       <Script
         id="article-schema"
@@ -209,16 +210,10 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
       <TopBar />
       <Navbar />
       
-      {/* Header */}
-      <div className="bg-white border-b border-slate-200 sticky top-0 z-40">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-slate-600 hover:text-orange-600 font-bold transition-colors"
-          >
-            <ArrowLeft size={18} />
-            Retour au blog
-          </Link>
+      {/* Bandeau retour discret éditorial */}
+      <div className="bg-ipb-cream border-b border-ipb-rule">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+          <BackButton href="/blog" label="Retour au blog" />
         </div>
       </div>
 
@@ -288,17 +283,17 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
             
             {/* 🎯 SEO BOOST : Maillage interne contextuel intelligent */}
             {contextualLinks.length > 0 && (
-              <div className="mt-8 bg-gradient-to-br from-orange-50 to-orange-100 border-2 border-orange-200 rounded-2xl p-6">
+              <div className="mt-8 bg-gradient-to-br from-orange-50 to-orange-100 border-2 border-ipb-rule rounded-2xl p-6">
                 <h3 className="text-xl font-extrabold text-orange-900 mb-4">Ressources complémentaires</h3>
                 <div className="grid md:grid-cols-2 gap-3">
                   {contextualLinks.map((link, idx) => (
                     <Link 
                       key={idx}
                       href={link.url} 
-                      className="flex items-center gap-2 bg-white border border-orange-200 rounded-lg p-3 hover:border-orange-400 hover:shadow-md transition group"
+                      className="flex items-center gap-2 bg-white border border-ipb-rule rounded-lg p-3 hover:border-orange-400 hover:shadow-md transition group"
                     >
-                      <span className="text-orange-600 group-hover:text-orange-700 transition">→</span>
-                      <span className="text-sm font-bold text-slate-900 group-hover:text-orange-600 transition">{link.text}</span>
+                      <span className="text-ipb-orange group-hover:text-ipb-orange transition">→</span>
+                      <span className="text-sm font-bold text-ipb-text group-hover:text-ipb-orange transition">{link.text}</span>
                     </Link>
                   ))}
                 </div>
@@ -307,8 +302,8 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
 
             {/* 🎯 SEO BOOST : Articles similaires par keywords (augmente temps sur page) */}
             {relatedByKeywords.length > 0 && (
-              <div className="mt-8 bg-slate-50 border border-slate-200 rounded-2xl p-6">
-                <h3 className="text-xl font-extrabold text-slate-900 mb-4">Articles similaires recommandés</h3>
+              <div className="mt-8 bg-ipb-cream border border-ipb-rule rounded-2xl p-6">
+                <h3 className="text-xl font-extrabold text-ipb-text mb-4">Articles similaires recommandés</h3>
                 <div className="space-y-3">
                   {relatedByKeywords.map((related) => {
                     const relatedPost = blogPosts[related.slug];
@@ -316,13 +311,13 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                       <Link 
                         key={related.slug}
                         href={`/blog/${related.slug}`}
-                        className="flex items-start gap-3 bg-white border border-slate-200 rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition group"
+                        className="flex items-start gap-3 bg-white border border-ipb-rule rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition group"
                       >
-                        <span className="text-2xl text-orange-500 group-hover:scale-110 transition">→</span>
+                        <span className="text-2xl text-ipb-orange group-hover:scale-110 transition">→</span>
                         <div>
-                          <h4 className="font-bold text-slate-900 group-hover:text-orange-600 transition mb-1">{related.title}</h4>
-                          <p className="text-sm text-slate-600 line-clamp-2">{relatedPost.excerpt}</p>
-                          <p className="text-xs text-orange-600 font-bold mt-2">Pertinence : {related.score} points communs</p>
+                          <h4 className="font-bold text-ipb-text group-hover:text-ipb-orange transition mb-1">{related.title}</h4>
+                          <p className="text-sm text-ipb-muted line-clamp-2">{relatedPost.excerpt}</p>
+                          <p className="text-xs text-ipb-orange font-bold mt-2">Pertinence : {related.score} points communs</p>
                         </div>
                       </Link>
                     );
@@ -331,36 +326,36 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
               </div>
             )}
             
-            <div className="mt-8 bg-slate-50 border border-slate-200 rounded-2xl p-6">
-              <h3 className="text-xl font-extrabold text-slate-900 mb-4">Besoin d'un expert ?</h3>
+            <div className="mt-8 bg-ipb-cream border border-ipb-rule rounded-2xl p-6">
+              <h3 className="text-xl font-extrabold text-ipb-text mb-4">Besoin d'un expert ?</h3>
               <div className="grid md:grid-cols-2 gap-4">
-                <Link href="/expertise/fissures" className="bg-white border border-slate-200 rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition">
-                  <h4 className="font-bold text-slate-900 mb-1">Expertise fissures</h4>
-                  <p className="text-sm text-slate-600">Agrafage et stabilisation des fondations.</p>
+                <Link href="/expertise/fissures" className="bg-white border border-ipb-rule rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition">
+                  <h4 className="font-bold text-ipb-text mb-1">Expertise fissures</h4>
+                  <p className="text-sm text-ipb-muted">Agrafage et stabilisation des fondations.</p>
                 </Link>
-                <Link href="/expertise/humidite" className="bg-white border border-slate-200 rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition">
-                  <h4 className="font-bold text-slate-900 mb-1">Traitement humidité</h4>
-                  <p className="text-sm text-slate-600">Injection résine et cuvelage durable.</p>
+                <Link href="/expertise/humidite" className="bg-white border border-ipb-rule rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition">
+                  <h4 className="font-bold text-ipb-text mb-1">Traitement humidité</h4>
+                  <p className="text-sm text-ipb-muted">Injection résine et cuvelage durable.</p>
                 </Link>
               </div>
               <div className="mt-4">
-                <Link href="/diagnostic" className="text-orange-600 font-bold hover:text-orange-700">
+                <Link href="/diagnostic" className="text-ipb-orange font-bold hover:text-ipb-orange">
                   Lancer un diagnostic gratuit →
                 </Link>
               </div>
             </div>
 
             {/* CTA */}
-            <div className="mt-12 bg-slate-900 rounded-2xl p-8 text-center text-white relative overflow-hidden">
+            <div className="mt-12 bg-ipb-navy rounded-2xl p-8 text-center text-white relative overflow-hidden">
               <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-500 via-slate-900 to-slate-900"></div>
               <div className="relative z-10">
                 <h2 className="text-2xl font-extrabold mb-4">Cet article vous a aidé ?</h2>
-                <p className="text-slate-300 mb-6">
+                <p className="text-white/70 mb-6">
                   Obtenez un diagnostic personnalisé pour votre situation. Montant déduit à 100% des travaux.
                 </p>
                 <Link
                   href="/diagnostic"
-                  className="inline-flex items-center gap-2 bg-orange-600 text-white px-8 py-4 rounded-xl font-bold shadow-xl hover:bg-orange-500 transition-all transform hover:-translate-y-1"
+                  className="inline-flex items-center gap-2 bg-ipb-orange text-white px-8 py-4 rounded-xl font-bold shadow-xl hover:bg-ipb-orange transition-all transform hover:-translate-y-1"
                 >
                   Lancer mon diagnostic gratuit
                 </Link>
@@ -383,8 +378,8 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
       </article>
 
       {/* Articles similaires */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-slate-200">
-        <h2 className="text-2xl font-extrabold text-slate-900 mb-8">Articles similaires</h2>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-ipb-rule">
+        <h2 className="text-2xl font-extrabold text-ipb-text mb-8">Articles similaires</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {Object.values(blogPosts)
             .filter(p => p.category === post.category && p.slug !== post.slug)
@@ -393,14 +388,14 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
               <Link
                 key={relatedPost.slug}
                 href={`/blog/${relatedPost.slug}`}
-                className="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden hover:shadow-lg transition-all"
+                className="bg-white rounded-xl shadow-md border border-ipb-rule overflow-hidden hover:shadow-lg transition-all"
               >
                 <div className="h-40 bg-gradient-to-br from-slate-200 to-slate-300"></div>
                 <div className="p-5">
-                  <h3 className="text-lg font-bold text-slate-900 mb-2 line-clamp-2">
+                  <h3 className="text-lg font-bold text-ipb-text mb-2 line-clamp-2">
                     {relatedPost.title}
                   </h3>
-                  <p className="text-sm text-slate-600 line-clamp-2">
+                  <p className="text-sm text-ipb-muted line-clamp-2">
                     {relatedPost.excerpt}
                   </p>
                 </div>

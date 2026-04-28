@@ -180,10 +180,10 @@ export default function AriegePage() {
         <div className="py-16 lg:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-4">
                 Les défis du bâti ariégeois
               </h2>
-              <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+              <p className="text-lg text-ipb-muted max-w-3xl mx-auto">
                 L'Ariège présente des caractéristiques uniques qui nécessitent une expertise spécifique.
               </p>
             </div>
@@ -193,8 +193,8 @@ export default function AriegePage() {
                 <div className="w-14 h-14 bg-emerald-600 rounded-xl flex items-center justify-center mb-6">
                   <Mountain size={28} className="text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Terrain montagneux</h3>
-                <p className="text-slate-600">
+                <h3 className="text-xl font-bold text-ipb-text mb-3">Terrain montagneux</h3>
+                <p className="text-ipb-muted">
                   Pentes, terrains instables, ruissellements. Les fondations des maisons ariégeoises subissent des contraintes spécifiques liées au relief pyrénéen.
                 </p>
               </div>
@@ -205,8 +205,8 @@ export default function AriegePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Bâti ancien en pierre</h3>
-                <p className="text-slate-600">
+                <h3 className="text-xl font-bold text-ipb-text mb-3">Bâti ancien en pierre</h3>
+                <p className="text-ipb-muted">
                   Maisons traditionnelles pyrénéennes, fermes anciennes, granges reconverties. Ce patrimoine demande des techniques adaptées pour traiter fissures et humidité.
                 </p>
               </div>
@@ -217,8 +217,8 @@ export default function AriegePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Climat humide</h3>
-                <p className="text-slate-600">
+                <h3 className="text-xl font-bold text-ipb-text mb-3">Climat humide</h3>
+                <p className="text-ipb-muted">
                   Précipitations importantes, fonte des neiges, nappes phréatiques élevées. L'humidité est un problème récurrent dans les maisons ariégeoises.
                 </p>
               </div>
@@ -227,11 +227,11 @@ export default function AriegePage() {
         </div>
 
         {/* Villes Section */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-slate-50">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-ipb-cream">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-4">
             Nos interventions en Ariège
           </h2>
-          <p className="text-lg text-slate-600 mb-8 max-w-3xl">
+          <p className="text-lg text-ipb-muted mb-8 max-w-3xl">
             IPB intervient dans toutes les communes du département, de la plaine aux vallées pyrénéennes.
           </p>
 
@@ -239,18 +239,18 @@ export default function AriegePage() {
             {villes.map((ville, index) => (
               <div
                 key={index}
-                className="group p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all border border-slate-100 hover:border-emerald-200"
+                className="group p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all border border-ipb-rule hover:border-emerald-200"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <h3 className="text-xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
+                    <h3 className="text-xl font-bold text-ipb-text group-hover:text-emerald-600 transition-colors">
                       {ville.nom}
                     </h3>
-                    <p className="text-sm text-slate-500">{ville.habitants} hab. • {ville.description}</p>
+                    <p className="text-sm text-ipb-muted">{ville.habitants} hab. • {ville.description}</p>
                   </div>
                 </div>
                 
-                <div className="space-y-2 text-sm text-slate-600">
+                <div className="space-y-2 text-sm text-ipb-muted">
                   <div className="flex items-center gap-2">
                     <CheckCircle size={16} className="text-green-500" />
                     Diagnostic gratuit
@@ -261,8 +261,8 @@ export default function AriegePage() {
                   </div>
                 </div>
 
-                <div className="mt-4 pt-4 border-t border-slate-100 flex gap-2">
-                  <span className="text-xs bg-orange-50 text-orange-600 px-2 py-1 rounded font-medium">
+                <div className="mt-4 pt-4 border-t border-ipb-rule flex gap-2">
+                  <span className="text-xs bg-ipb-stone text-ipb-orange px-2 py-1 rounded font-medium">
                     Fissures
                   </span>
                   <span className="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded font-medium">
@@ -283,17 +283,17 @@ export default function AriegePage() {
         {/* FAQ Section */}
         <div className="bg-white py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-8">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-8">
               Questions fréquentes - Ariège
             </h2>
 
             <div className="space-y-6">
               {faqSchema.mainEntity.map((faq, index) => (
-                <div key={index} className="bg-slate-50 p-6 rounded-xl border border-slate-100">
-                  <h3 className="text-lg font-bold text-slate-900 mb-3">
+                <div key={index} className="bg-ipb-cream p-6 rounded-xl border border-ipb-rule">
+                  <h3 className="text-lg font-bold text-ipb-text mb-3">
                     {faq.name}
                   </h3>
-                  <p className="text-slate-600 leading-relaxed">
+                  <p className="text-ipb-muted leading-relaxed">
                     {faq.acceptedAnswer.text}
                   </p>
                 </div>

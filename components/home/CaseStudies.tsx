@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { ParallaxImage } from '@/components/ui/ParallaxImage';
@@ -107,15 +108,20 @@ export function CaseStudies() {
           {cases.map((c, i) => (
             <RevealOnScroll key={c.title} delay={i * 0.06} className="snap-start shrink-0 w-[85vw] max-w-[360px]">
               <article className="bg-ipb-white border border-ipb-rule rounded-[6px] overflow-hidden h-full flex flex-col group hover:shadow-[0_12px_36px_rgba(11,24,38,0.07)] transition-shadow duration-500">
-                {/* Photo avec parallax doux scroll-tied */}
-                <div className="relative aspect-[4/3] bg-ipb-stone">
-                  <ParallaxImage
+                {/* Photo plein cadre — pas de parallax mobile (incompatible carousel horizontal) */}
+                <div className="relative aspect-[5/4] bg-ipb-stone overflow-hidden">
+                  <Image
                     src={c.image}
                     alt={c.imageAlt}
-                    intensity={0.18}
+                    fill
                     sizes="85vw"
-                    className="absolute inset-0"
-                    imageClassName="transition-transform duration-700 group-hover:scale-[1.05]"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                    loading="lazy"
+                  />
+                  {/* Gradient subtil bas pour donner de la profondeur sans assombrir l'image */}
+                  <div
+                    className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/25 to-transparent pointer-events-none"
+                    aria-hidden="true"
                   />
                   <div className="absolute top-4 left-4 z-10">
                     <span className="bg-ipb-white/90 backdrop-blur-sm text-ipb-text text-[10px] uppercase tracking-[0.16em] font-medium px-3 py-1.5 rounded-[2px]">

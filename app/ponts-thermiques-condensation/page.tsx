@@ -43,7 +43,7 @@ const solutions = [
 
 export default function PontsThermiquesPage() {
   return (
-    <div className="font-sans text-slate-800 bg-white antialiased">
+    <div className="font-sans text-ipb-text bg-white antialiased">
       <TopBar />
       <Navbar />
 
@@ -134,7 +134,7 @@ export default function PontsThermiquesPage() {
             <span className="inline-block bg-sky-100 text-sky-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
               Reconnaitre le probleme
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
               Symptomes dun pont thermique
             </h2>
           </div>
@@ -148,8 +148,8 @@ export default function PontsThermiquesPage() {
             ].map((item, index) => (
               <div key={index} className="bg-sky-50 rounded-3xl p-6 border border-sky-100 hover:shadow-lg transition-all">
                 <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="font-bold text-slate-900 mb-2">{item.symptome}</h3>
-                <p className="text-slate-600 text-sm">{item.detail}</p>
+                <h3 className="font-bold text-ipb-text mb-2">{item.symptome}</h3>
+                <p className="text-ipb-muted text-sm">{item.detail}</p>
               </div>
             ))}
           </div>
@@ -157,13 +157,13 @@ export default function PontsThermiquesPage() {
       </section>
 
       {/* Solutions */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-ipb-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
               Solutions
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
               Comment traiter un pont thermique ?
             </h2>
           </div>
@@ -173,25 +173,25 @@ export default function PontsThermiquesPage() {
               <div key={index} className={`rounded-3xl p-8 ${
                 sol.efficacite === '95%' 
                   ? 'bg-gradient-to-br from-sky-50 to-blue-50 border-2 border-sky-300' 
-                  : 'bg-white border border-slate-200'
+                  : 'bg-white border border-ipb-rule'
               }`}>
                 {sol.efficacite === '95%' && (
                   <div className="inline-block bg-sky-500 text-white px-3 py-1 rounded-full text-xs font-bold mb-4">
                     SOLUTION OPTIMALE
                   </div>
                 )}
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{sol.titre}</h3>
-                <p className="text-slate-600 text-sm mb-6">{sol.description}</p>
+                <h3 className="text-xl font-bold text-ipb-text mb-3">{sol.titre}</h3>
+                <p className="text-ipb-muted text-sm mb-6">{sol.description}</p>
                 
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between items-center">
-                    <span className="text-slate-500">Prix</span>
-                    <span className="font-bold text-slate-900">{sol.prix}</span>
+                    <span className="text-ipb-muted">Prix</span>
+                    <span className="font-bold text-ipb-text">{sol.prix}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-slate-500">Efficacite</span>
+                    <span className="text-ipb-muted">Efficacite</span>
                     <span className={`font-bold ${
-                      sol.efficacite === '95%' ? 'text-sky-600' : 'text-slate-900'
+                      sol.efficacite === '95%' ? 'text-sky-600' : 'text-ipb-text'
                     }`}>{sol.efficacite}</span>
                   </div>
                 </div>
@@ -217,7 +217,7 @@ export default function PontsThermiquesPage() {
       {/* Articles connexes */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-slate-900 mb-8 text-center">
+          <h2 className="text-2xl font-black text-ipb-text mb-8 text-center">
             Articles connexes
           </h2>
           <div className="grid md:grid-cols-4 gap-6">
@@ -230,13 +230,13 @@ export default function PontsThermiquesPage() {
               <Link 
                 key={index}
                 href={item.href}
-                className="group bg-slate-50 rounded-2xl p-6 hover:bg-sky-50 transition-all hover:-translate-y-1 border border-slate-100 hover:border-sky-200"
+                className="group bg-ipb-cream rounded-2xl p-6 hover:bg-sky-50 transition-all hover:-translate-y-1 border border-ipb-rule hover:border-sky-200"
               >
                 <span className="text-4xl mb-4 block">{item.icon}</span>
-                <h3 className="font-bold text-slate-900 group-hover:text-sky-600 transition-colors mb-1">
+                <h3 className="font-bold text-ipb-text group-hover:text-sky-600 transition-colors mb-1">
                   {item.title}
                 </h3>
-                <p className="text-sm text-slate-500">{item.desc}</p>
+                <p className="text-sm text-ipb-muted">{item.desc}</p>
               </Link>
             ))}
           </div>
