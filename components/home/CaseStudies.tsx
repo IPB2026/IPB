@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { Eyebrow } from '@/components/ui/Eyebrow';
+import { ParallaxImage } from '@/components/ui/ParallaxImage';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 /**
@@ -99,18 +99,18 @@ export function CaseStudies() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {cases.map((c, i) => (
             <RevealOnScroll key={c.title} delay={i * 0.06}>
-              <article className="bg-ipb-white border border-ipb-rule rounded-[6px] overflow-hidden h-full flex flex-col group hover:shadow-[0_12px_36px_rgba(11,24,38,0.07)] transition-shadow">
-                {/* Photo */}
-                <div className="relative aspect-[4/3] overflow-hidden bg-ipb-stone">
-                  <Image
+              <article className="bg-ipb-white border border-ipb-rule rounded-[6px] overflow-hidden h-full flex flex-col group hover:shadow-[0_12px_36px_rgba(11,24,38,0.07)] transition-shadow duration-500">
+                {/* Photo avec parallax doux scroll-tied */}
+                <div className="relative aspect-[4/3] bg-ipb-stone">
+                  <ParallaxImage
                     src={c.image}
                     alt={c.imageAlt}
-                    fill
+                    intensity={0.18}
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                    loading="lazy"
+                    className="absolute inset-0"
+                    imageClassName="transition-transform duration-700 group-hover:scale-[1.05]"
                   />
-                  <div className="absolute top-4 left-4">
+                  <div className="absolute top-4 left-4 z-10">
                     <span className="bg-ipb-white/90 backdrop-blur-sm text-ipb-text text-[10px] uppercase tracking-[0.16em] font-medium px-3 py-1.5 rounded-[2px]">
                       {c.type}
                     </span>
