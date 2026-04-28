@@ -19,14 +19,14 @@ const partenaires = [
     iconBg: 'bg-purple-50',
     title: 'Architectes d\'intérieur & décorateurs',
     desc: 'Vos projets « espace ouvert » nécessitent une étude structure et une décennale. Nous sommes votre partenaire technique sous-traité ou co-traitant.',
-    bullets: ['Co-traitance ou sous-traitance', 'Note de calcul opposable', 'Tarif partenaire dès 3 projets/an'],
+    bullets: ['Co-traitance ou sous-traitance', 'Calcul technique signé par notre ingénieur', 'Tarif partenaire dès 3 projets/an'],
   },
   {
     href: '/partenaires/marchands-de-biens',
     icon: <Building2 className="text-emerald-600" size={32} />,
     iconBg: 'bg-emerald-50',
     title: 'Marchands de biens & investisseurs',
-    desc: 'Vous achetez un T3 dans les Carmes, Saint-Cyprien ou Minimes pour ouvrir cuisine + salon avant revente ? Chiffrage 24h, chantier 5 jours, DOE complet.',
+    desc: 'Vous achetez un T3 dans les Carmes, Saint-Cyprien ou Minimes pour ouvrir cuisine + salon avant revente ? Chiffrage sous 24h, chantier en 5 jours, tous les documents pour le notaire.',
     bullets: ['Devis sous 24h', 'Chantier 5 jours max', 'Décennale transmissible à l\'acheteur'],
   },
   {
@@ -35,7 +35,7 @@ const partenaires = [
     iconBg: 'bg-blue-50',
     title: 'Agences immobilières & mandataires',
     desc: 'Une vente bloquée par une fissure inquiétante ou un mur porteur à valider ? Notre rapport sous 7 jours débloque la transaction.',
-    bullets: ['Visite sous 48h', 'Rapport opposable sous 7 jours', 'Discrétion totale'],
+    bullets: ['Visite sous 48h', 'Rapport reconnu par les assurances sous 7 jours', 'Discrétion totale'],
   },
 ];
 

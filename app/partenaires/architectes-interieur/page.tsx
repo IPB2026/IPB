@@ -2,6 +2,7 @@ import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
 import Link from 'next/link';
+import Image from 'next/image';
 import Script from 'next/script';
 import { ArrowRight, Phone, Shield, Ruler, FileText, CheckCircle, Award, Hammer, Users } from 'lucide-react';
 import type { Metadata } from 'next';
@@ -42,27 +43,54 @@ export default function ArchitectesInterieurPage() {
       <TopBar />
       <Navbar />
       <main id="main-content">
-        {/* HERO */}
+        {/* HERO avec photo Ludovic */}
         <section className="relative bg-slate-900 text-white py-16 md:py-24 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-950/30 to-slate-900"></div>
-          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="text-purple-300 font-semibold text-xs uppercase tracking-[0.2em] mb-4">
-              Programme partenaire · Architectes d'intérieur & décorateurs
-            </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-              Vos projets <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300">« espace ouvert »</span>,
-              <span className="block mt-2 text-white">notre étude structure.</span>
-            </h1>
-            <p className="text-xl text-slate-300 mb-8 max-w-3xl">
-              Une cuisine ouverte sur séjour, un salon traversant, une suite parentale qui « mange » la chambre voisine. Sans nous, le projet bloque sur la décennale et le calcul de poutre. Avec nous, vous livrez votre client.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/contact" className="bg-orange-600 hover:bg-orange-500 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
-                Devenir partenaire <ArrowRight size={20} />
-              </Link>
-              <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
-                <Phone size={20} /> 05 82 95 33 75
-              </a>
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-[1.5fr_1fr] gap-10 lg:gap-14 items-center">
+              <div>
+                <p className="text-orange-300 font-semibold text-xs uppercase tracking-[0.2em] mb-4">
+                  Programme pros · Architectes d'intérieur & décorateurs
+                </p>
+                <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight tracking-tight">
+                  Vos projets <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300">« espace ouvert »</span>,
+                  <span className="block mt-2 text-white">on s'occupe de la structure.</span>
+                </h1>
+                <p className="text-xl text-slate-300 mb-4 leading-relaxed">
+                  Une cuisine ouverte sur le séjour, un salon traversant, une suite parentale qui « mange » la chambre voisine. <strong className="text-white">Vous concevez l'espace, on s'occupe du mur porteur.</strong>
+                </p>
+                <p className="text-base text-slate-400 mb-8 leading-relaxed">
+                  Notre ingénieur calcule la poutre, nos équipes l'installent, votre client reçoit toutes les attestations à la livraison. Vous gardez la relation, on vous fournit la technique.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link href="/contact" className="bg-orange-500 hover:bg-orange-400 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 shadow-xl hover:-translate-y-0.5 transition-all">
+                    Devenir partenaire <ArrowRight size={20} />
+                  </Link>
+                  <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 hover:bg-white/15">
+                    <Phone size={20} /> 05 82 95 33 75
+                  </a>
+                </div>
+              </div>
+
+              {/* Photo Ludovic — humanisation */}
+              <div className="hidden lg:block relative">
+                <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/10">
+                  <Image
+                    src="/images/ludovic-expert-ipb.webp"
+                    alt="Ludovic, expert structure et fondateur d'IPB Expertise — votre interlocuteur unique"
+                    fill
+                    sizes="(max-width: 1024px) 0px, 400px"
+                    className="object-cover"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <p className="text-orange-300 text-xs font-bold uppercase tracking-wider mb-2">Votre interlocuteur</p>
+                    <p className="text-white font-display font-bold text-2xl leading-tight">Ludovic</p>
+                    <p className="text-slate-300 text-sm mt-1">15 ans · 850+ chantiers · Expert structure</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -80,10 +108,10 @@ export default function ArchitectesInterieurPage() {
             <div className="grid md:grid-cols-3 gap-6">
               {[
                 { icon: <Shield className="text-blue-600" size={28} />, title: 'Décennale AXA active', desc: 'Notre assurance couvre l\'étude ET les travaux. Votre client ne dépend pas de plusieurs polices différentes.' },
-                { icon: <Ruler className="text-orange-600" size={28} />, title: 'Note de calcul opposable', desc: 'Ingénieur structure interne. Note signée, valable assurance, contrôleur technique et tribunal.' },
+                { icon: <Ruler className="text-orange-600" size={28} />, title: 'Calcul technique signé', desc: 'Ingénieur structure en interne. Document valable face à une assurance, un contrôleur technique ou un tribunal.' },
                 { icon: <Hammer className="text-amber-600" size={28} />, title: 'Travaux sous 5 jours', desc: 'Étaiement, ouverture, pose poutre, finitions. Nos équipes interviennent vite, sans embolisme votre planning.' },
                 { icon: <Users className="text-purple-600" size={28} />, title: 'Interlocuteur unique', desc: 'Vous discutez avec un seul chargé d\'affaires. Pas de ping-pong entre BE et entreprise générale.' },
-                { icon: <FileText className="text-emerald-600" size={28} />, title: 'DOE livré au client', desc: 'Dossier complet remis : plans d\'exécution, note de calcul, attestation décennale. Votre client est rassuré.' },
+                { icon: <FileText className="text-emerald-600" size={28} />, title: 'Dossier complet pour le client', desc: 'À la livraison, on remet à votre client tous les documents du chantier : plans, calcul de la poutre, attestation de garantie 10 ans.' },
                 { icon: <Award className="text-rose-600" size={28} />, title: 'Tarif partenaire', desc: 'Conditions négociées si vous nous référencez sur ≥3 projets/an. Pas de marge cachée, devis transparent.' },
               ].map(({ icon, title, desc }) => (
                 <div key={title} className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
@@ -107,9 +135,9 @@ export default function ArchitectesInterieurPage() {
               {[
                 { num: 1, title: 'Brief projet', desc: 'Vous nous envoyez plans + photos via WhatsApp ou mail. Nous identifions les murs porteurs et chiffrons sous 24h.' },
                 { num: 2, title: 'Visite technique', desc: 'Notre ingénieur passe sur site avec vous (ou seul si vous êtes pris). Relevé de charges, plan d\'exécution.' },
-                { num: 3, title: 'Devis + note de calcul', desc: 'Devis ferme remis sous 48h. Note de calcul signée, dimensionnement IPN/HEB, méthode d\'étaiement.' },
+                { num: 3, title: 'Devis + calcul technique', desc: 'Devis ferme sous 48h. Calcul de la poutre signé par notre ingénieur, méthode pour étayer le chantier.' },
                 { num: 4, title: 'Co-traitance ou sous-traitance', desc: 'À votre choix : nous facturons votre client (vous touchez l\'apport) ou nous vous facturons (vous refacturez). Tout est possible.' },
-                { num: 5, title: 'Travaux + livraison', desc: '2 à 5 jours sur place. DOE remis, attestation décennale signée, photos avant/après pour votre book.' },
+                { num: 5, title: 'Travaux + livraison', desc: '2 à 5 jours sur place. Tous les documents remis, attestation de garantie 10 ans signée, photos avant/après pour votre book.' },
               ].map(({ num, title, desc }) => (
                 <div key={num} className="bg-white border border-slate-200 rounded-2xl p-6 flex gap-5 items-start shadow-sm">
                   <div className="w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0">{num}</div>

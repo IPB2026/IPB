@@ -3,6 +3,7 @@ import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
 import { Testimonials } from '@/components/home/Testimonials';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Activity, AlertTriangle, CheckCircle, ArrowRight, Shield, Phone, Clock, Star, Award, Ruler, FileText, Hammer, Eye } from 'lucide-react';
 import Script from 'next/script';
 import type { Metadata } from 'next';
@@ -246,6 +247,63 @@ export default function MurPorteurPage() {
           </div>
         </section>
 
+        {/* Section visuelle — schéma technique + chantier réel */}
+        <section className="py-16 md:py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <p className="text-orange-600 text-xs font-bold uppercase tracking-[0.2em] mb-3">
+                Concrètement, ça donne quoi ?
+              </p>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-slate-900 leading-tight tracking-tight max-w-3xl mx-auto">
+                Le schéma à gauche. Le résultat à droite.
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+              {/* Schéma technique */}
+              <div className="relative bg-slate-50 rounded-3xl overflow-hidden shadow-xl ring-1 ring-slate-200 p-4 md:p-6 flex flex-col">
+                <p className="text-orange-600 text-xs font-bold uppercase tracking-wider mb-3">Le principe</p>
+                <div className="relative flex-1 min-h-[300px] rounded-2xl overflow-hidden bg-white">
+                  <Image
+                    src="/images/schema-ouverture-mur-porteur.webp"
+                    alt="Schéma technique d'une ouverture de mur porteur — pose d'une poutre IPN avec étaiement et reprise des charges"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-contain"
+                  />
+                </div>
+                <p className="text-slate-600 text-sm mt-4 leading-relaxed">
+                  On installe d'abord des étais sous le plancher du dessus pour reprendre les charges. Puis on découpe le mur, on glisse une poutre métallique, et on la scelle. <strong className="text-slate-900">Tout repose maintenant sur la poutre.</strong>
+                </p>
+              </div>
+
+              {/* Photo chantier */}
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-slate-200 group">
+                <div className="aspect-square md:aspect-auto md:h-full">
+                  <Image
+                    src="/images/baie-coulissante-apres.webp"
+                    alt="Baie coulissante installée après ouverture de mur porteur — chantier IPB Toulouse"
+                    width={800}
+                    height={800}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                  <p className="text-orange-300 text-xs font-bold uppercase tracking-wider mb-2">Le résultat</p>
+                  <h3 className="text-white font-display font-bold text-2xl md:text-3xl leading-tight mb-2">
+                    Un espace ouvert, lumineux.
+                  </h3>
+                  <p className="text-slate-200 text-sm leading-relaxed">
+                    Une baie vitrée coulissante posée sur l'ouverture. Plus de mur entre vous et le jardin.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Sommaire */}
         <section className="py-8 bg-white border-b border-slate-200">
           <div className="max-w-6xl mx-auto px-4">
@@ -355,7 +413,7 @@ export default function MurPorteurPage() {
                   num: 1,
                   icon: <FileText size={24} className="text-orange-600" />,
                   title: 'Étude structure',
-                  detail: 'Notre ingénieur analyse le mur, les charges reprises, dimensionne la poutre (IPN, HEB ou BA) et rédige la note de calcul.',
+                  detail: 'Notre ingénieur regarde le mur, calcule ce qu\'il supporte, choisit la bonne poutre et signe le calcul technique.',
                 },
                 {
                   num: 2,
@@ -373,7 +431,7 @@ export default function MurPorteurPage() {
                   num: 4,
                   icon: <Shield size={24} className="text-orange-600" />,
                   title: 'Réception & garantie',
-                  detail: 'Levée des étais, contrôle final, remise du DOE (Dossier des Ouvrages Exécutés) et activation de la garantie décennale.',
+                  detail: 'On retire les étais, on vérifie que tout est bon, on vous remet tous les documents du chantier et l\'attestation de garantie 10 ans.',
                 },
               ].map(({ num, icon, title, detail }) => (
                 <div key={num} className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200 text-center">
