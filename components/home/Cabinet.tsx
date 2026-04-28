@@ -127,7 +127,7 @@ export function Cabinet() {
                   href="/notre-expert"
                   className="inline-flex items-center gap-2 text-ipb-orange font-medium text-[13px] tracking-wide border-b border-ipb-orange pb-1 hover:gap-3 transition-all"
                 >
-                  Découvrir le parcours de l’institut â
+                  Découvrir le parcours de l’institut →
                 </Link>
                 <span className="text-ipb-light text-[12px] hidden sm:inline">·</span>
                 <Link
