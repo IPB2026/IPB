@@ -597,12 +597,8 @@ export default function DiagnosticPage() {
                 </span>
               </div>
               {step > 2 && (
-                <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${
-                  riskColor === 'red' ? 'bg-red-100 text-red-700' :
-                  riskColor === 'orange' ? 'bg-orange-100 text-orange-700' :
-                  'bg-green-100 text-green-700'
-                }`}>
-                  {riskColor === 'red' ? '⚠️' : riskColor === 'orange' ? '🔶' : '✅'} Risque {riskLabel}
+                <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-ipb-stone/60 text-ipb-muted uppercase tracking-wider">
+                  Étape {step + 1} sur {totalQuestions + 1}
                 </span>
               )}
             </div>
@@ -637,67 +633,76 @@ export default function DiagnosticPage() {
             {/* ===== ÉTAPE 0 : ACCUEIL ===== */}
             {step === 0 && (
               <div>
-                <div className="text-center mb-5">
-                  <div className="inline-flex items-center gap-1.5 bg-orange-100 text-orange-700 text-xs font-semibold px-3 py-1 rounded-full mb-3">
-                    <span className="w-1.5 h-1.5 bg-orange-500 rounded-full animate-pulse" />
-                    Diagnostic en ligne gratuit
-                  </div>
-                  <h1 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-2 leading-tight">
-                    Diagnostic fissures & mur porteur<br />
-                    <span className="text-orange-500">gratuit en 3 minutes</span>
+                <div className="text-center mb-10">
+                  <p className="text-ipb-orange text-[10px] uppercase tracking-[0.18em] font-medium mb-4">
+                    Échange technique avec le cabinet
+                  </p>
+                  <h1 className="font-serif text-ipb-text mb-4" style={{ fontSize: 'clamp(28px, 3vw, 44px)', lineHeight: 1.1, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                    Décrivez-nous<br /><em>votre situation.</em>
                   </h1>
-                  <p className="text-slate-500 text-sm max-w-md mx-auto">
-                    Répondez à 9 questions et obtenez immédiatement l&apos;avis d&apos;un expert en structure du bâtiment.
+                  <p className="text-[15px] leading-[1.85] font-light text-ipb-muted max-w-xl mx-auto">
+                    Quelques minutes pour nous donner les éléments essentiels. Notre cabinet vous répond sous 24 heures, par téléphone ou par mail.
                   </p>
                 </div>
 
-                {/* Boutons de choix */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+                {/* 3 cartes égales — Fissures (en 1er, priorité) · Mur porteur · Autre */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                  {/* Carte 1 — Fissures (priorité) */}
                   <button
                     onClick={() => selectPath('fissure')}
-                    className="group relative bg-gradient-to-br from-orange-50 to-white border-2 border-orange-200 hover:border-orange-400 rounded-xl p-5 transition-all text-left hover:shadow-md"
+                    className="group relative bg-ipb-cream border border-ipb-rule hover:border-ipb-orange rounded-[6px] p-7 transition-all text-left hover:shadow-[0_12px_36px_rgba(11,24,38,0.07)] hover:-translate-y-0.5 flex flex-col h-full"
                   >
-                    <div className="flex items-start gap-3">
-                      <span className="text-3xl">🏠</span>
-                      <div>
-                        <h2 className="font-bold text-slate-900 text-base mb-0.5">Fissures & Structure</h2>
-                        <p className="text-slate-500 text-xs leading-relaxed">
-                          Fissures en façade, murs, tassement, portes qui coincent...
-                        </p>
-                      </div>
-                    </div>
-                    <span className="absolute bottom-3 right-3 text-orange-400 group-hover:text-orange-600 text-sm font-semibold transition-colors">
+                    <span className="font-serif text-ipb-rule group-hover:text-ipb-orange transition-colors text-[12px] font-bold tracking-wider mb-6">01</span>
+                    <h2 className="font-serif text-ipb-text font-bold text-[20px] leading-tight mb-3">
+                      J'ai des fissures<br />qui m'inquiètent
+                    </h2>
+                    <p className="text-[13px] leading-[1.7] font-light text-ipb-muted flex-1 mb-6">
+                      Fissures en façade, murs intérieurs, plafond. Évolution dans le temps, portes qui coincent, carrelage qui se fend.
+                    </p>
+                    <span className="inline-flex items-center gap-2 text-ipb-orange text-[13px] font-medium border-b border-ipb-orange pb-1 self-start group-hover:gap-3 transition-all">
                       Commencer →
                     </span>
                   </button>
 
+                  {/* Carte 2 — Mur porteur */}
                   <button
                     onClick={() => selectPath('mur-porteur')}
-                    className="group relative bg-gradient-to-br from-amber-50 to-white border-2 border-amber-200 hover:border-amber-400 rounded-xl p-5 transition-all text-left hover:shadow-md"
+                    className="group relative bg-ipb-cream border border-ipb-rule hover:border-ipb-orange rounded-[6px] p-7 transition-all text-left hover:shadow-[0_12px_36px_rgba(11,24,38,0.07)] hover:-translate-y-0.5 flex flex-col h-full"
                   >
-                    <div className="flex items-start gap-3">
-                      <span className="text-3xl">🪟</span>
-                      <div>
-                        <h2 className="font-bold text-slate-900 text-base mb-0.5">Mur Porteur & Baie Vitrée</h2>
-                        <p className="text-slate-500 text-xs leading-relaxed">
-                          Abattre un mur, créer une ouverture, agrandir, baie vitrée...
-                        </p>
-                      </div>
-                    </div>
-                    <span className="absolute bottom-3 right-3 text-amber-400 group-hover:text-amber-600 text-sm font-semibold transition-colors">
+                    <span className="font-serif text-ipb-rule group-hover:text-ipb-orange transition-colors text-[12px] font-bold tracking-wider mb-6">02</span>
+                    <h2 className="font-serif text-ipb-text font-bold text-[20px] leading-tight mb-3">
+                      Je veux ouvrir un mur<br />ou poser une baie vitrée
+                    </h2>
+                    <p className="text-[13px] leading-[1.7] font-light text-ipb-muted flex-1 mb-6">
+                      Abattre un mur, créer une cuisine ouverte, agrandir une fenêtre en baie. Maison ou appartement.
+                    </p>
+                    <span className="inline-flex items-center gap-2 text-ipb-orange text-[13px] font-medium border-b border-ipb-orange pb-1 self-start group-hover:gap-3 transition-all">
                       Commencer →
                     </span>
                   </button>
+
+                  {/* Carte 3 — Échange direct */}
+                  <a
+                    href="tel:0582953375"
+                    className="group relative bg-ipb-navy text-white rounded-[6px] p-7 transition-all hover:shadow-[0_12px_36px_rgba(11,24,38,0.15)] hover:-translate-y-0.5 flex flex-col h-full text-left"
+                  >
+                    <span className="font-serif text-white/30 group-hover:text-ipb-orange-l transition-colors text-[12px] font-bold tracking-wider mb-6">03</span>
+                    <h2 className="font-serif text-white font-bold text-[20px] leading-tight mb-3">
+                      Je préfère expliquer<br />de vive voix
+                    </h2>
+                    <p className="text-[13px] leading-[1.7] font-light text-white/65 flex-1 mb-6">
+                      Appelez Ludovic directement. Il pourra mieux comprendre votre situation à l'oral et orienter le rendez-vous.
+                    </p>
+                    <span className="inline-flex items-center gap-2 text-ipb-orange-l text-[13px] font-medium border-b border-ipb-orange-l pb-1 self-start group-hover:gap-3 transition-all">
+                      05 82 95 33 75 →
+                    </span>
+                  </a>
                 </div>
 
-                {/* Réassurance rapide */}
-                <div className="flex items-center justify-center gap-4 text-xs text-slate-400 mb-4">
-                  <span className="flex items-center gap-1">⏱️ 3 min</span>
-                  <span className="w-1 h-1 bg-slate-300 rounded-full" />
-                  <span className="flex items-center gap-1">🔒 Sécurisé</span>
-                  <span className="w-1 h-1 bg-slate-300 rounded-full" />
-                  <span className="flex items-center gap-1">✓ Sans engagement</span>
-                </div>
+                {/* Réassurance discrète */}
+                <p className="text-center text-[11px] text-ipb-light uppercase tracking-[0.14em] mb-4">
+                  Confidentiel · Réponse sous 24 heures · Sans engagement
+                </p>
 
                 {/* Trust signals pour trafic froid (Google Ads) */}
                 <div className="bg-white border border-slate-200 rounded-xl p-3.5 mb-4">
@@ -856,7 +861,6 @@ export default function DiagnosticPage() {
                             }
                           `}
                         >
-                          <span className="text-lg flex-shrink-0">{option.icon}</span>
                           <span className={`font-medium flex-1 text-sm ${isSelected ? 'text-orange-700' : 'text-slate-700'}`}>
                             {option.label}
                           </span>
