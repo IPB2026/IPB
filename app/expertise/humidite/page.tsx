@@ -1,49 +1,40 @@
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
-import { FaqSection } from '@/components/ui/FaqSection';
-import { InternalLinks } from '@/components/seo/InternalLinks';
-import { Testimonials } from '@/components/home/Testimonials';
+import { CtaFinal } from '@/components/home/CtaFinal';
+import { Eyebrow } from '@/components/ui/Eyebrow';
+import { MagneticButton } from '@/components/ui/MagneticButton';
+import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { humidityFaq } from '@/app/data/faqs';
-import Link from 'next/link';
 import Image from 'next/image';
-import { Droplets, AlertTriangle, CheckCircle, ArrowRight, Shield, Phone, Clock, Star, Home, Wind, Award } from 'lucide-react';
 import Script from 'next/script';
-import { TraitementHumiditeHowToSchema } from '@/components/seo/HowToSchema';
 import { ExpertiseHumiditeBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
-  title: 'Expert Humidité Toulouse & Occitanie | Traitement | IPB',
-  description: 'Murs humides, salpêtre, moisissures ? Diagnostic expert sur site + injection résine garantie 30 ans. Intervention sous 48h en Haute-Garonne. 05 82 95 33 75.',
+  title: "Diagnostic et traitement de l'humidité · Cabinet IPB Toulouse",
+  description: "Cabinet de pathologie du bâtiment : diagnostic d'humidité instrumenté (caméra thermique, hygromètre), injection de résine, cuvelage, ventilation. Toulouse, Montauban, Auch et Albi.",
   keywords: [
     'expert humidité toulouse',
+    'expertise humidité haute-garonne',
+    'diagnostic humidité maison',
+    'injection résine remontées capillaires',
     'traitement humidité murs',
-    'remontées capillaires toulouse',
-    'injection résine hydrophobe',
+    'cabinet pathologie bâtiment toulouse',
     'salpêtre traitement',
-    'moisissures maison',
-    'cuvelage cave toulouse',
+    'cuvelage cave',
     'VMI ventilation',
-    'humidité ascensionnelle',
-    'assèchement murs',
-    'peinture qui cloque',
-    'diagnostic humidité prix',
+    'condensation murs',
   ],
-  alternates: {
-    canonical: 'https://www.ipb-expertise.fr/expertise/humidite',
-  },
+  alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/humidite' },
   openGraph: {
-    title: 'Expert Humidité Occitanie (31-82-32) | Solutions complètes | IPB',
-    description: 'Injection résine, cuvelage, ventilation, drainage, traitement condensation. Diagnostic 48h.',
+    title: "Diagnostic et traitement de l'humidité · Cabinet IPB Toulouse",
+    description: "Diagnostic instrumenté, injection de résine, cuvelage, ventilation. Cabinet indépendant en pathologie du bâtiment.",
     url: 'https://www.ipb-expertise.fr/expertise/humidite',
-    siteName: 'IPB - Institut de Pathologie du Bâtiment',
-    locale: 'fr_FR',
     type: 'website',
-    images: [{ url: '/images/salpetre-avant-apres.webp', width: 1200, height: 630, alt: 'Expert Humidité Toulouse Montauban Auch - Injection Résine - IPB Occitanie' }],
+    images: [{ url: '/images/humidite-avant-apres.webp', width: 1200, height: 630, alt: 'Avant et après traitement humidité — Cabinet IPB' }],
   },
 };
 
-// JSON-LD schemas
 const generateFaqJsonLd = () => ({
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -57,7 +48,7 @@ const generateFaqJsonLd = () => ({
 const generateServiceJsonLd = () => ({
   "@context": "https://schema.org",
   "@type": "Service",
-  "serviceType": "Traitement de l'humidité",
+  "serviceType": "Diagnostic et traitement de l'humidité",
   "provider": {
     "@type": "LocalBusiness",
     "name": "IPB - Institut de Pathologie du Bâtiment",
@@ -65,462 +56,231 @@ const generateServiceJsonLd = () => ({
     "address": { "@type": "PostalAddress", "streetAddress": "13 rue du Recteur Dottin", "addressLocality": "Toulouse", "addressRegion": "Occitanie", "postalCode": "31100", "addressCountry": "FR" }
   },
   "areaServed": [{ "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" }, { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" }, { "@type": "AdministrativeArea", "name": "Gers (32)" }, { "@type": "AdministrativeArea", "name": "Tarn (81)" }],
-  "description": "Expert en traitement de l'humidité. Injection résine hydrophobe, cuvelage, VMI. Solution définitive contre remontées capillaires avec garantie 30 ans."
+  "description": "Diagnostic instrumenté de l'humidité, injection de résine, cuvelage, traitement du salpêtre, ventilation. Décennale AXA."
 });
+
+const typesHumidite = [
+  {
+    severity: 'Cause',
+    severityColor: 'bg-blue-500',
+    title: 'Remontées capillaires',
+    desc: "L'humidité du sol monte par capillarité dans les murs. Symptômes : taches blanches (salpêtre), enduit qui s'effrite, odeur en bas de murs.",
+    action: "Injection de résine hydrophobe à la base du mur. Solution durable, garantie sur la durée.",
+  },
+  {
+    severity: 'Cause',
+    severityColor: 'bg-cyan-500',
+    title: 'Condensation',
+    desc: "Air chaud humide qui se condense sur les murs froids. Souvent lié à une mauvaise ventilation. Taches noires (moisissures), gouttelettes sur fenêtres.",
+    action: "Étude des flux d'air, pose ou remplacement d'une VMC ou d'une VMI.",
+  },
+  {
+    severity: 'Cause',
+    severityColor: 'bg-teal-500',
+    title: 'Infiltrations',
+    desc: "Eau qui pénètre par la toiture, les murs extérieurs ou les fondations. Souvent ponctuel mais aggravable. Auréoles sur murs ou plafond.",
+    action: "Identification du point d'entrée, traitement de l'étanchéité (toiture, façade, sous-sol).",
+  },
+  {
+    severity: 'Cause',
+    severityColor: 'bg-emerald-500',
+    title: 'Cave humide',
+    desc: "Sous-sol enterré soumis à la pression hydrostatique. Murs visiblement humides, odeur caractéristique, peinture qui cloque.",
+    action: "Cuvelage par enduit imperméable ou drainage périphérique selon configuration.",
+  },
+];
 
 export default function HumiditePage() {
   return (
-    <div className="font-sans text-slate-800 bg-slate-50 antialiased">
+    <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFaqJsonLd()) }} />
       <Script id="service-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateServiceJsonLd()) }} />
-      
-      {/* HowTo Schema pour Featured Snippets Google */}
-      <TraitementHumiditeHowToSchema />
-      
-      {/* Breadcrumb Schema pour SERP */}
       <ExpertiseHumiditeBreadcrumb />
-      
+
       <TopBar />
       <Navbar />
+
       <main id="main-content">
-      
-      {/* HERO - Conversion optimisée avec accroche immédiate */}
-      <section className="relative bg-slate-900 text-white overflow-hidden py-16 md:py-24">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950/80"></div>
-        <Image
-          src="/images/salpetre-avant-apres.webp"
-          alt="Mur avec salpêtre avant traitement"
-          fill
-          style={{ objectFit: 'cover', objectPosition: 'center' }}
-          className="opacity-20"
-          priority
-        />
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        {/* HERO */}
+        <section className="bg-ipb-cream">
+          <div className="max-w-ipb mx-auto grid lg:grid-cols-[58fr_42fr] gap-12 lg:gap-16 px-6 lg:px-12 pt-16 lg:pt-24 pb-20 lg:pb-28 items-center">
             <div>
-              {/* Badge confiance */}
-              <div className="flex flex-wrap gap-2 mb-6">
-                <span className="inline-flex items-center gap-2 bg-green-500/20 border border-green-500/40 text-green-300 px-3 py-1.5 rounded-full text-xs font-bold">
-                  <Star size={12} className="fill-current" /> 4.9/5 sur Google
-                </span>
-                <span className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-500/40 text-blue-300 px-3 py-1.5 rounded-full text-xs font-bold">
-                  <Shield size={12} /> Garantie 30 ans
-                </span>
-                <span className="hidden lg:inline-flex items-center gap-2 bg-white/10 border border-white/20 text-slate-300 px-3 py-1.5 rounded-full text-xs font-bold">
-                  <Clock size={12} /> Intervention sous 48h
-                </span>
-              </div>
-              
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
-                Expert <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Humidité</span> à Toulouse
-                <span className="block text-3xl md:text-4xl mt-2 text-white">Injection résine garantie 30 ans.</span>
-              </h1>
-              
-              <p className="text-xl text-slate-300 mb-6 leading-relaxed">
-                <strong className="text-white">850+ diagnostics réalisés</strong> en Haute-Garonne, Tarn-et-Garonne et Gers.
-                Injection résine hydrophobe : <strong className="text-blue-300">barrière étanche créée directement dans le mur</strong>.
-              </p>
-              
-              {/* Chiffre clé */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mb-8 border border-white/20">
-                <div className="flex items-center justify-between flex-wrap gap-4">
-                  <div>
-                    <p className="text-sm text-slate-400">Traitement injection</p>
-                    <p className="text-2xl font-bold text-white">80€ - 120€/ml</p>
-                  </div>
-                  <div className="text-center px-4 border-l border-white/20">
-                    <p className="text-sm text-slate-400">Maison moyenne</p>
-                    <p className="text-lg font-bold text-white">2 500€ - 5 000€</p>
-                  </div>
-                  <div className="bg-green-500/20 px-3 py-2 rounded-lg">
-                    <p className="text-green-400 font-bold text-sm">Garanti</p>
-                    <p className="text-green-400 font-bold text-lg">30 ans</p>
-                  </div>
-                </div>
-              </div>
-              
-              {/* CTAs - Plus visibles */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-6">
-                <Link href="/diagnostic" className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white px-8 py-5 rounded-xl font-bold text-lg shadow-xl flex items-center justify-center gap-2 transition-all hover:-translate-y-1 hover:shadow-2xl">
-                  Diagnostic gratuit en 3 min
-                  <ArrowRight size={20} />
-                </Link>
-                <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 text-white px-8 py-5 rounded-xl font-bold text-lg hover:bg-white/20 flex items-center justify-center gap-2">
-                  <Phone size={20} /> 05 82 95 33 75
-                </a>
-              </div>
-              
-              <div className="flex items-center gap-4 text-sm text-slate-400">
-                <span className="flex items-center gap-1"><Clock size={14} /> Réponse 24h</span>
-                <span className="flex items-center gap-1"><CheckCircle size={14} className="text-green-400" /> Devis gratuit</span>
-                <span className="flex items-center gap-1"><CheckCircle size={14} className="text-green-400" /> Sans engagement</span>
-              </div>
-            </div>
-            
-            {/* Trust signals desktop + Mini-diagnostic */}
-            <div className="hidden lg:block">
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 mb-6">
-                <h2 className="text-xl font-bold mb-6 text-center">Pourquoi choisir IPB ?</h2>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
-                      <Droplets className="text-blue-400" size={24} />
-                    </div>
-                    <div>
-                      <p className="font-bold text-white">Solution définitive</p>
-                      <p className="text-sm text-slate-400">Barrière étanche dans le mur</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
-                      <Shield className="text-green-400" size={24} />
-                    </div>
-                    <div>
-                      <p className="font-bold text-white">Garantie 30 ans</p>
-                      <p className="text-sm text-slate-400">Sur l'injection résine</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center">
-                      <Award className="text-orange-400" size={24} />
-                    </div>
-                    <div>
-                      <p className="font-bold text-white">850+ diagnostics</p>
-                      <p className="text-sm text-slate-400">en Occitanie (31-82-32-81)</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Mini checklist pour auto-diagnostic */}
-              <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
-                <h4 className="font-bold text-white mb-4 flex items-center gap-2">
-                  <AlertTriangle className="text-yellow-400" size={18} />
-                  Avez-vous ces symptômes ?
-                </h4>
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-center gap-2 text-slate-300">
-                    <span className="text-blue-400">✓</span> Poudre blanche sur les murs (salpêtre)
-                  </li>
-                  <li className="flex items-center gap-2 text-slate-300">
-                    <span className="text-blue-400">✓</span> Taches noires / moisissures
-                  </li>
-                  <li className="flex items-center gap-2 text-slate-300">
-                    <span className="text-blue-400">✓</span> Peinture qui cloque ou s'écaille
-                  </li>
-                  <li className="flex items-center gap-2 text-slate-300">
-                    <span className="text-blue-400">✓</span> Odeur de moisi persistante
-                  </li>
-                  <li className="flex items-center gap-2 text-slate-300">
-                    <span className="text-blue-400">✓</span> Humidité visible en bas des murs
-                  </li>
-                </ul>
-                <p className="mt-4 text-xs text-slate-400">
-                  Un diagnostic instrumenté permet d'identifier la cause exacte et de choisir le bon traitement.
+              <RevealOnScroll>
+                <Eyebrow>Expertise · Humidité du bâti</Eyebrow>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.06}>
+                <h1
+                  className="font-serif text-ipb-text mb-8"
+                  style={{
+                    fontSize: 'clamp(40px, 4vw, 62px)',
+                    lineHeight: 1.06,
+                    letterSpacing: '-0.025em',
+                    fontWeight: 700,
+                  }}
+                >
+                  L'humidité dans votre maison.<br />
+                  <em>Identifier la cause, pas masquer le symptôme.</em>
+                </h1>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.12}>
+                <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">
+                  Tâches sur les murs, peinture qui cloque, odeur persistante : avant de traiter, il faut comprendre. Notre cabinet vient sur place avec hygromètre et caméra thermique pour identifier la cause exacte — et préconiser le traitement adapté.
                 </p>
-              </div>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.18}>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <MagneticButton href="/diagnostic" variant="primary">
+                    Demander un diagnostic
+                  </MagneticButton>
+                  <MagneticButton href="/blog/humidite-remontee-capillaire-solution" variant="ghost">
+                    Comprendre les remontées capillaires
+                  </MagneticButton>
+                </div>
+              </RevealOnScroll>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <section className="lg:hidden py-6 bg-gradient-to-b from-slate-100 to-white">
-        <div className="max-w-xl mx-auto px-4">
-          <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-5">
-            <h2 className="font-bold text-slate-900 mb-3 flex items-center gap-2 text-lg">
-              <Droplets className="text-blue-500" size={20} />
-              Symptômes fréquents
-            </h2>
-            <div className="grid grid-cols-2 gap-2 text-sm mb-4">
-              <div className="flex items-center gap-2 p-2 bg-blue-50 rounded-lg">
-                <CheckCircle size={14} className="text-blue-500 shrink-0" /> Salpêtre
+            <RevealOnScroll direction="right" delay={0.1} className="hidden lg:block">
+              <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
+                <Image
+                  src="/images/humidite-avant-apres.webp"
+                  alt="Avant et après traitement de l'humidité — chantier IPB"
+                  fill
+                  sizes="(max-width: 1024px) 0px, 500px"
+                  className="object-cover"
+                  priority
+                />
               </div>
-              <div className="flex items-center gap-2 p-2 bg-blue-50 rounded-lg">
-                <CheckCircle size={14} className="text-blue-500 shrink-0" /> Moisissures
-              </div>
-              <div className="flex items-center gap-2 p-2 bg-blue-50 rounded-lg">
-                <CheckCircle size={14} className="text-blue-500 shrink-0" /> Peinture qui cloque
-              </div>
-              <div className="flex items-center gap-2 p-2 bg-blue-50 rounded-lg">
-                <CheckCircle size={14} className="text-blue-500 shrink-0" /> Odeur de moisi
-              </div>
-            </div>
-            <Link 
-              href="/diagnostic" 
-              className="w-full bg-blue-600 text-white py-3 rounded-xl font-bold text-center flex items-center justify-center gap-2 shadow-md"
-            >
-              Évaluer ma situation gratuitement
-            </Link>
+            </RevealOnScroll>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Sommaire */}
-      <section className="py-8 bg-white border-b border-slate-200">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
-            <h2 className="text-lg font-bold text-slate-900 mb-4">Sur cette page</h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
-              <a href="#probleme" className="flex items-center gap-2 text-blue-600 hover:text-blue-700 hover:underline">
-                <span className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center text-xs font-bold text-blue-600">1</span>
-                Comprendre le problème
-              </a>
-              <a href="#solution" className="flex items-center gap-2 text-blue-600 hover:text-blue-700 hover:underline">
-                <span className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center text-xs font-bold text-blue-600">2</span>
-                Nos solutions
-              </a>
-              <a href="#comparatif" className="flex items-center gap-2 text-blue-600 hover:text-blue-700 hover:underline">
-                <span className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center text-xs font-bold text-blue-600">3</span>
-                Comparatif techniques
-              </a>
-              <a href="#avis" className="flex items-center gap-2 text-blue-600 hover:text-blue-700 hover:underline">
-                <span className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center text-xs font-bold text-blue-600">4</span>
-                Avis clients
-              </a>
-              <a href="#faq" className="flex items-center gap-2 text-blue-600 hover:text-blue-700 hover:underline">
-                <span className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center text-xs font-bold text-blue-600">5</span>
-                FAQ
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section Problème */}
-      <section id="probleme" className="py-16 md:py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
-              <Droplets size={16} /> Comprendre les mécanismes de l'humidité
-            </div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
-              L'eau remonte du sol dans vos murs
-            </h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-              Les matériaux traditionnels (brique, pierre) agissent comme des éponges. 
-              L'eau chargée de sels minéraux remonte par capillarité.
-            </p>
-          </div>
-          
-          <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl p-8">
-            <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-              <AlertTriangle className="text-blue-600" size={24} />
-              Les dégâts que vous constatez :
-            </h3>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="flex items-start gap-3">
-                <CheckCircle className="text-blue-600 shrink-0 mt-1" size={20} />
-                <div>
-                  <p className="font-bold text-slate-900">Salpêtre (poudre blanche)</p>
-                  <p className="text-sm text-slate-600">Corrosif pour les matériaux</p>
+        {/* QUATRE FAMILLES */}
+        <section className="bg-ipb-white py-24 lg:py-32">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="grid lg:grid-cols-12 gap-8 items-end mb-16">
+                <div className="lg:col-span-6">
+                  <Eyebrow>Quatre causes possibles</Eyebrow>
+                  <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                    Identifier la cause<br /><em>avant tout traitement.</em>
+                  </h2>
+                </div>
+                <div className="lg:col-span-5 lg:col-start-8">
+                  <p className="text-[15px] leading-[1.9] font-light text-ipb-muted">
+                    Quatre familles couvrent la majorité des cas que nous traitons en Occitanie. Chacune appelle un traitement différent — appliquer le mauvais ne sert à rien.
+                  </p>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="text-blue-600 shrink-0 mt-1" size={20} />
-                <div>
-                  <p className="font-bold text-slate-900">Moisissures noires</p>
-                  <p className="text-sm text-slate-600">Allergies, problèmes respiratoires</p>
+            </RevealOnScroll>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {typesHumidite.map((h, i) => (
+                <RevealOnScroll key={h.title} delay={i * 0.06}>
+                  <article className="relative bg-ipb-cream border border-ipb-rule rounded-[6px] p-8 pl-10 h-full">
+                    <div className={`absolute left-0 top-8 bottom-8 w-1 ${h.severityColor} rounded-r-sm`} aria-hidden="true" />
+                    <p className="text-[10px] uppercase tracking-[0.16em] text-ipb-light font-medium mb-3">
+                      {h.severity}
+                    </p>
+                    <h3 className="font-serif text-ipb-text font-bold text-[24px] leading-tight mb-4">
+                      {h.title}
+                    </h3>
+                    <p className="text-[14px] leading-[1.75] font-light text-ipb-muted mb-5">
+                      {h.desc}
+                    </p>
+                    <p className="text-[13px] leading-[1.6] text-ipb-text font-medium pt-4 border-t border-ipb-rule">
+                      {h.action}
+                    </p>
+                  </article>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* MÉTHODE */}
+        <section className="bg-ipb-navy py-24 lg:py-32">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              <RevealOnScroll direction="left" className="lg:col-span-5">
+                <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
+                  <Image
+                    src="/images/salpetre-avant-apres.webp"
+                    alt="Salpêtre traité par IPB sur les murs d'une maison ancienne"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="object-cover"
+                  />
                 </div>
+              </RevealOnScroll>
+
+              <div className="lg:col-span-7">
+                <RevealOnScroll>
+                  <Eyebrow variant="dark">Notre méthode</Eyebrow>
+                  <h2 className="font-serif text-white mb-10" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                    Du diagnostic instrumenté<br /><em>au traitement durable.</em>
+                  </h2>
+                </RevealOnScroll>
+
+                <ul className="space-y-8">
+                  {[
+                    { titre: 'Diagnostic sur place', desc: "Visite avec hygromètre, caméra thermique et test à la pesée. Mesure du taux d'humidité dans les murs, identification de la cause exacte." },
+                    { titre: 'Rapport et préconisations', desc: 'Document écrit sous 7 jours avec photos, mesures, cause identifiée et solutions chiffrées. Reconnu par les assurances en cas de litige.' },
+                    { titre: 'Choix du traitement', desc: "Injection de résine, cuvelage, ventilation, drainage : la solution dépend du diagnostic, jamais d'un produit qu'on voudrait vendre." },
+                    { titre: 'Travaux par nos équipes', desc: 'Exécution sous garantie décennale AXA. Vérification post-traitement à 6 mois pour confirmer la disparition des symptômes.' },
+                  ].map((etape, i) => (
+                    <RevealOnScroll key={etape.titre} delay={0.08 + i * 0.06}>
+                      <li className="grid grid-cols-[40px_1fr] gap-5 items-start pb-8 border-b border-white/10">
+                        <span className="font-serif text-ipb-orange-l text-[14px] font-bold tracking-wider pt-2">
+                          0{i + 1}
+                        </span>
+                        <div>
+                          <h3 className="font-serif text-white text-[20px] font-bold leading-tight mb-2">{etape.titre}</h3>
+                          <p className="text-[14px] leading-[1.75] font-light text-white/65">{etape.desc}</p>
+                        </div>
+                      </li>
+                    </RevealOnScroll>
+                  ))}
+                </ul>
               </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="text-blue-600 shrink-0 mt-1" size={20} />
-                <div>
-                  <p className="font-bold text-slate-900">Peinture qui cloque</p>
-                  <p className="text-sm text-slate-600">Revêtements qui se décollent</p>
-                </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="bg-ipb-cream py-24 lg:py-32">
+          <div className="max-w-4xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="text-center mb-16">
+                <Eyebrow className="justify-center">Questions fréquentes</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Sur l'humidité<br /><em>et son traitement.</em>
+                </h2>
               </div>
+            </RevealOnScroll>
+
+            <div className="space-y-3">
+              {humidityFaq.map((item, i) => (
+                <RevealOnScroll key={item.question} delay={i * 0.04}>
+                  <details className="group bg-ipb-white border border-ipb-rule rounded-[6px]">
+                    <summary className="cursor-pointer list-none flex items-start justify-between gap-6 p-6 lg:p-7">
+                      <h3 className="font-serif text-ipb-text font-bold text-[17px] leading-tight pr-2">
+                        {item.question}
+                      </h3>
+                      <span className="text-ipb-orange text-2xl leading-none flex-shrink-0 transition-transform group-open:rotate-45 font-light" aria-hidden="true">+</span>
+                    </summary>
+                    <div className="px-6 lg:px-7 pb-7 -mt-2 text-[14px] leading-[1.85] font-light text-ipb-muted">
+                      {item.answer}
+                    </div>
+                  </details>
+                </RevealOnScroll>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Section Solution */}
-      <section id="solution" className="py-16 md:py-20 bg-slate-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
-              Nos solutions humidité : traitement global
-            </h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-              L’humidité n’a pas une seule cause, donc pas une seule solution. Nous mettons en œuvre
-              l’ensemble des techniques efficaces selon la cause réelle.
-            </p>
-          </div>
-
-          <div className="bg-white rounded-2xl border border-slate-200 p-6 mb-10">
-            <h3 className="text-xl font-bold text-slate-900 mb-2">1) Remontées capillaires : injection résine</h3>
-            <p className="text-slate-600 text-sm">
-              La barrière hydrophobe est la solution de référence contre l’eau qui remonte par capillarité.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-6 mb-12">
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200 text-center">
-              <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-xl font-bold text-blue-600">1</span>
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Forage</h3>
-              <p className="text-sm text-slate-600">Perçage tous les <strong>10-15cm</strong> en bas du mur.</p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200 text-center">
-              <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-xl font-bold text-blue-600">2</span>
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Injection</h3>
-              <p className="text-sm text-slate-600">Résine silane/siloxane <strong>sous pression</strong>.</p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200 text-center">
-              <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-xl font-bold text-blue-600">3</span>
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Barrière</h3>
-              <p className="text-sm text-slate-600">Zone <strong>totalement étanche</strong> créée.</p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200 text-center">
-              <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-xl font-bold text-blue-600">4</span>
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Assèchement</h3>
-              <p className="text-sm text-slate-600">Mur sèche en <strong>6-12 mois</strong>.</p>
-            </div>
-          </div>
-          
-          {/* Solutions complémentaires */}
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            <div className="bg-orange-50 border-2 border-orange-200 rounded-2xl p-6">
-              <div className="flex items-center gap-4 mb-4">
-                <Home className="text-orange-600" size={32} />
-                <h3 className="text-xl font-bold text-slate-900">Cuvelage cave</h3>
-              </div>
-              <p className="text-slate-600 mb-3">Caisson étanche pour caves et sous-sols enterrés.</p>
-              <p className="text-sm text-orange-700 font-medium">→ Infiltrations latérales, pression hydrostatique</p>
-            </div>
-            <div className="bg-green-50 border-2 border-green-200 rounded-2xl p-6">
-              <div className="flex items-center gap-4 mb-4">
-                <Wind className="text-green-600" size={32} />
-                <h3 className="text-xl font-bold text-slate-900">VMI Ventilation</h3>
-              </div>
-              <p className="text-slate-600 mb-3">Air sec et filtré pour chasser l'humidité résiduelle.</p>
-              <p className="text-sm text-green-700 font-medium">→ Condensation, moisissures, atmosphère humide</p>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-2xl border border-slate-200 p-6 mb-8">
-            <h3 className="text-xl font-bold text-slate-900 mb-4">Autres solutions que nous réalisons</h3>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm text-slate-600">
-              <div>• Drainage périphérique et gestion des eaux</div>
-              <div>• Étanchéité / imperméabilisation des murs</div>
-              <div>• Traitement du salpêtre et des moisissures</div>
-              <div>• Ventilation (VMC, VMI) et correction condensation</div>
-              <div>• Assèchement contrôlé des supports</div>
-              <div>• Traitements curatifs et préventifs adaptés</div>
-            </div>
-            <p className="text-xs text-slate-500 mt-4">
-              Objectif : supprimer la cause, pas masquer le symptôme.
-            </p>
-          </div>
-          
-          {/* CTA intermédiaire */}
-          <div className="bg-blue-600 rounded-2xl p-8 text-white text-center">
-            <p className="text-xl font-bold mb-4">Murs humides depuis des mois ?</p>
-            <p className="text-blue-100 mb-6">Plus vous attendez, plus les dégâts s'aggravent (structure, santé)</p>
-            <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all">
-              Diagnostiquer mon problème gratuitement <ArrowRight size={20} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Comparatif */}
-      <section id="comparatif" className="py-16 md:py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Pourquoi la bonne solution IPB ?</h2>
-          </div>
-
-          <div className="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead className="bg-slate-900 text-white">
-                  <tr>
-                    <th className="px-6 py-4 text-left font-bold">Critère</th>
-                    <th className="px-6 py-4 text-center font-bold bg-blue-600">Injection IPB</th>
-                    <th className="px-6 py-4 text-center font-bold">Drainage</th>
-                    <th className="px-6 py-4 text-center font-bold">Déshumidificateur</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-200">
-                  <tr className="hover:bg-slate-50">
-                    <td className="px-6 py-4 font-bold text-slate-900">Efficacité</td>
-                    <td className="px-6 py-4 text-center text-green-600 font-bold">Définitive</td>
-                    <td className="px-6 py-4 text-center text-orange-600">Partielle</td>
-                    <td className="px-6 py-4 text-center text-red-600">Temporaire</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50">
-                    <td className="px-6 py-4 font-bold text-slate-900">Garantie</td>
-                    <td className="px-6 py-4 text-center text-blue-600 font-bold">30 ans</td>
-                    <td className="px-6 py-4 text-center">5-10 ans</td>
-                    <td className="px-6 py-4 text-center">Aucune</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50">
-                    <td className="px-6 py-4 font-bold text-slate-900">Coût indicatif</td>
-                    <td className="px-6 py-4 text-center font-bold">80-120€/ml</td>
-                    <td className="px-6 py-4 text-center">150-200€/ml</td>
-                    <td className="px-6 py-4 text-center">Achat + consommation</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50">
-                    <td className="px-6 py-4 font-bold text-slate-900">Invasivité</td>
-                    <td className="px-6 py-4 text-center text-green-600 font-bold">Faible</td>
-                    <td className="px-6 py-4 text-center text-red-600">Élevée</td>
-                    <td className="px-6 py-4 text-center">Aucune</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Avis Google */}
-      <section id="avis" className="bg-white">
-        <Testimonials />
-      </section>
-
-      {/* FAQ */}
-      <section id="faq" className="bg-slate-50">
-        <FaqSection 
-          title="Questions fréquentes" 
-          data={humidityFaq} 
-          theme="blue"
-          linksVariant="humidite"
-          linksTitle="Guides humidité"
-        />
-      </section>
-
-      {/* CTA Final */}
-      <section className="py-16 md:py-20 bg-gradient-to-r from-blue-600 to-cyan-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-6">
-            Vos murs sont humides ?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Diagnostic gratuit en 3 minutes. Réponse d'un expert sous 24h.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/diagnostic" className="bg-white text-blue-600 px-10 py-5 rounded-xl font-bold text-lg hover:bg-blue-50 flex items-center justify-center gap-2 shadow-xl">
-              Lancer mon diagnostic gratuit <ArrowRight size={20} />
-            </Link>
-            <a href="tel:0582953375" className="bg-blue-700 hover:bg-blue-800 px-8 py-5 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
-              <Phone size={20} /> 05 82 95 33 75
-            </a>
-          </div>
-          <p className="text-sm text-blue-200 mt-6">✓ Gratuit · ✓ Sans engagement · ✓ Réponse 24h</p>
-        </div>
-      </section>
-
-      <InternalLinks variant="humidite" />
+        <CtaFinal />
       </main>
+
       <Footer />
     </div>
   );

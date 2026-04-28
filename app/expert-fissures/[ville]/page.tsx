@@ -1,652 +1,369 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import Script from 'next/script';
 import { notFound } from 'next/navigation';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
-import { Testimonials } from '@/components/home/Testimonials';
-import { CheckCircle, Phone, ArrowRight, MapPin, Shield, Clock, FileText, AlertTriangle, Home, TreeDeciduous, Droplets, TrendingUp, Calendar, Users, Award } from 'lucide-react';
-import { villesData, villeSlugs, getVillesMemesDepartement, type VilleInfo } from '@/app/data/villes';
-import { RelatedPagesLinks } from '@/components/seo/RelatedPagesLinks';
+import { CtaFinal } from '@/components/home/CtaFinal';
+import { Eyebrow } from '@/components/ui/Eyebrow';
+import { MagneticButton } from '@/components/ui/MagneticButton';
+import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
+import { villesData, villeSlugs, type VilleInfo } from '@/app/data/villes';
 import { VilleBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
-// Génération statique des pages
 export async function generateStaticParams() {
   return villeSlugs.map((ville) => ({ ville }));
 }
 
-// Génération des métadonnées SEO
 export async function generateMetadata({ params }: { params: Promise<{ ville: string }> }): Promise<Metadata> {
   const { ville } = await params;
   const villeData = villesData[ville];
-  
-  if (!villeData) {
-    return { title: 'Expert Fissures | IPB Expertise' };
-  }
+  if (!villeData) return { title: 'Expert fissures | IPB' };
 
   const deptCode = villeData.codePostal.slice(0, 2);
   const villeNom = villeData.nom;
-  const villeNomLower = villeNom.toLowerCase().replace(/\s+/g, '-');
+  const slug = ville;
 
-  // Mots-clés enrichis avec données locales
-  const keywords = [
-    `expert fissures ${villeNomLower}`,
-    `fissures maison ${villeNomLower}`,
-    `agrafage fissures ${villeNomLower}`,
-    `diagnostic fissures ${deptCode}`,
-    `réparation fissures ${villeNomLower}`,
-    `expert bâtiment ${villeNomLower}`,
-    `fissure mur ${villeNomLower}`,
-    `tassement différentiel ${villeNomLower}`,
-    `sol argileux ${villeNomLower}`,
-    `fissure façade ${deptCode}`,
-    `RGA ${villeNomLower}`,
-    `catastrophe naturelle sécheresse ${villeNomLower}`,
-    `micropieux ${villeNomLower}`,
-    `stabilisation fondations ${villeNomLower}`,
-  ];
-
-  // Description personnalisée
   const description = villeData.risqueRGA === 'tres-fort' || villeData.risqueRGA === 'fort'
-    ? `Expert fissures à ${villeNom} (${deptCode}). Zone RGA ${villeData.risqueRGA}, diagnostic sur site + agrafage garanti 10 ans. 05 82 95 33 75`
-    : `Expert fissures à ${villeNom} (${deptCode}). Diagnostic expert sur site, agrafage garanti 10 ans. Intervention 48h. 05 82 95 33 75`;
+    ? `Cabinet de pathologie du bâtiment à ${villeNom} (${deptCode}). Diagnostic instrumenté de fissures, agrafage structurel, reprise en sous-œuvre. Zone à risque RGA ${villeData.risqueRGA}. Décennale AXA.`
+    : `Cabinet de pathologie du bâtiment à ${villeNom} (${deptCode}). Diagnostic instrumenté de fissures, agrafage structurel et reprise en sous-œuvre. Rapports reconnus par les assurances.`;
 
   return {
-    title: `Expert Fissures ${villeNom} (${deptCode}) | IPB`,
+    title: `Expert fissures ${villeNom} (${deptCode}) · Cabinet IPB`,
     description,
-    keywords,
-    alternates: {
-      canonical: `https://www.ipb-expertise.fr/expert-fissures/${ville}`,
-    },
+    keywords: [
+      `expert fissures ${slug}`,
+      `expertise fissure ${slug}`,
+      `fissures maison ${slug}`,
+      `agrafage fissures ${slug}`,
+      `diagnostic fissures ${deptCode}`,
+      `cabinet pathologie bâtiment ${slug}`,
+      `tassement différentiel ${slug}`,
+      `sol argileux ${slug}`,
+      `RGA ${slug}`,
+      `catastrophe naturelle sécheresse ${slug}`,
+      `micropieux ${slug}`,
+    ],
+    alternates: { canonical: `https://www.ipb-expertise.fr/expert-fissures/${ville}` },
     openGraph: {
-      title: `Expert Fissures ${villeNom} (${deptCode}) | IPB`,
-      description: `Spécialiste fissures à ${villeNom}. ${villeData.arretesCATNAT?.length || 0} arrêtés CAT-NAT récents. Diagnostic 48h.`,
+      title: `Expert fissures ${villeNom} · Cabinet IPB`,
+      description: `Cabinet de pathologie du bâtiment intervenant à ${villeNom}. Diagnostic, agrafage, reprise en sous-œuvre.`,
       url: `https://www.ipb-expertise.fr/expert-fissures/${ville}`,
       type: 'website',
-      images: [{ url: '/images/fissure-facade-verticale.webp', width: 1200, height: 630, alt: `Expert fissures ${villeNom}` }],
+      images: [{ url: '/images/fissures-avant-apres.webp', width: 1200, height: 630, alt: `Expert fissures ${villeNom} — IPB` }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `Expert Fissures ${villeNom} | IPB`,
-      description: `Agrafage structurel garanti 10 ans à ${villeNom}. Diagnostic sous 48h. ☎ 05 82 95 33 75`,
+      title: `Expert fissures ${villeNom} · IPB`,
+      description: `Cabinet de pathologie du bâtiment à ${villeNom}.`,
     },
     robots: { index: true, follow: true },
   };
 }
 
-// Fonction pour obtenir la couleur du risque RGA
-function getRisqueColor(risque?: string) {
-  switch (risque) {
-    case 'tres-fort': return 'text-red-600 bg-red-100';
-    case 'fort': return 'text-orange-600 bg-orange-100';
-    case 'moyen': return 'text-yellow-600 bg-yellow-100';
-    case 'faible': return 'text-green-600 bg-green-100';
-    default: return 'text-slate-600 bg-slate-100';
-  }
+function risqueLabel(r?: string) {
+  if (r === 'tres-fort') return 'Très fort';
+  if (r === 'fort') return 'Fort';
+  if (r === 'moyen') return 'Moyen';
+  if (r === 'faible') return 'Faible';
+  return 'À évaluer';
 }
 
-function getRisqueLabel(risque?: string) {
-  switch (risque) {
-    case 'tres-fort': return 'Très Fort';
-    case 'fort': return 'Fort';
-    case 'moyen': return 'Moyen';
-    case 'faible': return 'Faible';
-    default: return 'Non évalué';
-  }
-}
+const villesMurPorteur = ['toulouse', 'montauban', 'auch', 'albi'];
 
 export default async function ExpertFissuresVillePage({ params }: { params: Promise<{ ville: string }> }) {
   const { ville } = await params;
-  const villeData = villesData[ville];
+  const villeData: VilleInfo | undefined = villesData[ville];
+  if (!villeData) notFound();
 
-  if (!villeData) {
-    notFound();
-  }
+  const villeNom = villeData.nom;
 
-  // JSON-LD enrichi
-  const jsonLd = {
+  const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": `IPB - Expert Fissures ${villeData.nom}`,
-    "description": villeData.description,
-    "url": `https://www.ipb-expertise.fr/expert-fissures/${ville}`,
-    "telephone": "+33582953375",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": villeData.nom,
-      "addressRegion": villeData.departement,
-      "postalCode": villeData.codePostal,
-      "addressCountry": "FR"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "43.6047",
-      "longitude": "1.4442"
-    },
-    "areaServed": [
-      { "@type": "City", "name": villeData.nom },
-      ...(villeData.communesProches?.map(c => ({ "@type": "City", "name": c })) || [])
-    ],
-    "priceRange": "€€"
-  };
-
-  // FAQ personnalisée
-  const faqItems = [
-    {
-      question: `Intervenez-vous à ${villeData.nom} pour les fissures ?`,
-      answer: `Oui, nous intervenons régulièrement à ${villeData.nom} et dans les communes environnantes : ${villeData.communesProches?.join(', ') || 'toute la zone'}. ${villeData.specificitesFissures || ''} Diagnostic sous 48h, déplacement inclus.`
-    },
-    {
-      question: `Quel est le risque de fissures à ${villeData.nom} ?`,
-      answer: `${villeData.nom} est classée en aléa RGA ${getRisqueLabel(villeData.risqueRGA).toLowerCase()}. ${villeData.geologie || ''} ${villeData.tauxSinistralite ? `Le taux de sinistralité local est de ${villeData.tauxSinistralite}.` : ''}`
-    },
-    {
-      question: `Le diagnostic fissures est-il gratuit à ${villeData.nom} ?`,
-      answer: `Le diagnostic est une expertise technique sur site : déplacement sur ${villeData.nom}, mesures instrumentées (niveau laser, fissuromètre) et rapport détaillé avec photos et recommandations. C'est une prestation payante, mais son montant est intégralement déduit si vous nous confiez les travaux.`
-    },
-    {
-      question: `Ma maison à ${villeData.nom} est-elle éligible à la garantie CAT-NAT ?`,
-      answer: `${villeData.arretesCATNAT && villeData.arretesCATNAT.length > 0 
-        ? `${villeData.nom} a fait l'objet de ${villeData.arretesCATNAT.length} arrêtés de catastrophe naturelle sécheresse récents : ${villeData.arretesCATNAT.slice(0, 2).join(', ')}... Votre assurance peut prendre en charge une partie des travaux.`
-        : `Nous vous aidons à vérifier l'éligibilité de votre commune et à constituer votre dossier d'indemnisation.`}`
-    },
-    {
-      question: `Quelle solution pour les fissures à ${villeData.nom} ?`,
-      answer: `${villeData.conseillExpert || `Selon le diagnostic, nous proposons l'agrafage structurel (8-15K€, garantie 10 ans) ou les micropieux pour les cas graves. L'agrafage convient à 85% des situations.`}`
+    "name": `IPB · Expert fissures ${villeNom}`,
+    "description": `Cabinet de pathologie du bâtiment intervenant à ${villeNom}. Diagnostic instrumenté, agrafage structurel et reprise en sous-œuvre.`,
+    "areaServed": { "@type": "City", "name": villeNom },
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "IPB - Institut de Pathologie du Bâtiment",
+      "telephone": "+33582953375",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "13 rue du Recteur Dottin",
+        "addressLocality": "Toulouse",
+        "postalCode": "31100",
+        "addressRegion": "Occitanie",
+        "addressCountry": "FR"
+      }
     }
-  ];
-
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqItems.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": { "@type": "Answer", "text": item.answer }
-    }))
   };
+
+  const villeMurPorteur = villesMurPorteur.includes(ville) ? ville : 'toulouse';
 
   return (
-    <div className="font-sans text-slate-800 bg-slate-50 antialiased">
-      <Script id="local-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
-      
+    <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
+      <Script id="service-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <VilleBreadcrumb villeName={villeNom} villeSlug={ville} service="fissures" />
+
       <TopBar />
       <Navbar />
-      <VilleBreadcrumb villeName={villeData.nom} villeSlug={ville} service="fissures" />
 
       <main id="main-content">
-
-      {/* Hero enrichi */}
-      <section className="relative bg-slate-900 text-white py-16 md:py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-orange-950/30"></div>
-        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+        {/* HERO local */}
+        <section className="bg-ipb-cream">
+          <div className="max-w-ipb mx-auto grid lg:grid-cols-[58fr_42fr] gap-12 lg:gap-16 px-6 lg:px-12 pt-16 lg:pt-24 pb-20 lg:pb-28 items-center">
             <div>
-              {/* Badge risque RGA */}
-              <div className="flex flex-wrap items-center gap-3 mb-6">
-                <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold ${getRisqueColor(villeData.risqueRGA)}`}>
-                  <AlertTriangle size={16} />
-                  Risque RGA : {getRisqueLabel(villeData.risqueRGA)}
+              <RevealOnScroll>
+                <Eyebrow>Page locale · {villeData.departement}</Eyebrow>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.06}>
+                <h1
+                  className="font-serif text-ipb-text mb-8"
+                  style={{
+                    fontSize: 'clamp(40px, 4vw, 62px)',
+                    lineHeight: 1.06,
+                    letterSpacing: '-0.025em',
+                    fontWeight: 700,
+                  }}
+                >
+                  Expert fissures<br />
+                  <em>à {villeNom}.</em>
+                </h1>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.12}>
+                <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">
+                  {villeData.description}
+                </p>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.18}>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <MagneticButton href="/diagnostic" variant="primary">
+                    Demander une expertise à {villeNom}
+                  </MagneticButton>
+                  <MagneticButton href="/expertise/fissures" variant="ghost">
+                    Notre méthode
+                  </MagneticButton>
                 </div>
-                {villeData.arretesCATNAT && villeData.arretesCATNAT.length > 0 && (
-                  <div className="inline-flex items-center gap-2 bg-red-500/20 text-red-300 px-4 py-2 rounded-full text-sm font-bold">
-                    <Calendar size={16} />
-                    {villeData.arretesCATNAT.length} arrêtés CAT-NAT
-                  </div>
-                )}
-              </div>
-
-              <h1 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
-                Expert Fissures à <span className="text-orange-400">{villeData.nom}</span>
-                <span className="block text-2xl md:text-3xl text-slate-300 mt-2">({villeData.codePostal})</span>
-              </h1>
-
-              <p className="text-lg text-slate-300 mb-6 leading-relaxed">
-                {villeData.description}
-              </p>
-
-              {villeData.tauxSinistralite && (
-                <div className="bg-orange-500/20 border border-orange-500/40 rounded-xl p-4 mb-8">
-                  <p className="text-orange-200">
-                    <strong className="text-white">📊 Statistique locale :</strong> {villeData.tauxSinistralite} des maisons de {villeData.nom} ont déclaré des fissures liées au RGA.
-                    {villeData.risqueRGA === 'tres-fort' || villeData.risqueRGA === 'fort' 
-                      ? " Ne sous-estimez pas ce risque."
-                      : " Un diagnostic préventif peut vous faire économiser des milliers d'euros."}
-                  </p>
-                </div>
-              )}
-
-              <div className="flex flex-col sm:flex-row gap-4 mb-6">
-                <Link href="/diagnostic" className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all shadow-xl">
-                  🚨 DIAGNOSTIC GRATUIT <ArrowRight size={20} />
-                </Link>
-                <a href="tel:0582953375" className="bg-white/10 border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all">
-                  <Phone size={20} /> 05 82 95 33 75
-                </a>
-              </div>
-
-              <div className="flex flex-wrap gap-4 text-sm text-slate-400">
-                <span className="flex items-center gap-2">
-                  <CheckCircle size={16} className="text-green-500" /> Intervention {villeData.distance} de Toulouse
-                </span>
-                <span className="flex items-center gap-2">
-                  <Clock size={16} className="text-orange-400" /> Diagnostic sous 48h
-                </span>
-                <span className="flex items-center gap-2">
-                  <Shield size={16} className="text-blue-400" /> Garantie décennale
-                </span>
-              </div>
+              </RevealOnScroll>
             </div>
 
-            {/* Encart données locales */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-              <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                <MapPin size={20} className="text-orange-400" />
-                Données locales {villeData.nom}
-              </h2>
-              
-              <div className="space-y-4">
-                {villeData.population && (
-                  <div className="flex items-center gap-3">
-                    <Users size={18} className="text-slate-400" />
-                    <div>
-                      <div className="text-sm text-slate-400">Population</div>
-                      <div className="text-white font-bold">{villeData.population} habitants</div>
-                    </div>
-                  </div>
-                )}
-                
-                {villeData.quartiersRisque && villeData.quartiersRisque.length > 0 && (
-                  <div>
-                    <div className="text-sm text-slate-400 mb-2 flex items-center gap-2">
-                      <Home size={16} /> Quartiers les plus touchés
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {villeData.quartiersRisque.slice(0, 4).map((q, i) => (
-                        <span key={i} className="bg-red-500/20 text-red-300 px-3 py-1 rounded-full text-xs font-medium">
-                          {q.split(' (')[0]}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {villeData.arretesCATNAT && villeData.arretesCATNAT.length > 0 && (
-                  <div>
-                    <div className="text-sm text-slate-400 mb-2 flex items-center gap-2">
-                      <FileText size={16} /> Derniers arrêtés CAT-NAT
-                    </div>
-                    <ul className="text-sm text-slate-300 space-y-1">
-                      {villeData.arretesCATNAT.slice(0, 3).map((arr, i) => (
-                        <li key={i} className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 bg-orange-400 rounded-full"></span>
-                          {arr}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+            <RevealOnScroll direction="right" delay={0.1} className="hidden lg:block">
+              <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
+                <Image
+                  src="/images/fissures-avant-apres.webp"
+                  alt={`Expert fissures à ${villeNom} — Cabinet IPB`}
+                  fill
+                  sizes="(max-width: 1024px) 0px, 500px"
+                  className="object-cover"
+                  priority
+                />
               </div>
-            </div>
+            </RevealOnScroll>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Sommaire */}
-      <section className="py-8 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
-            <h2 className="text-lg font-bold text-slate-900 mb-4">Sommaire de la page</h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
-              <a href="#stats-cles" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Statistiques clés</a>
-              <a href="#contexte-local" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Contexte local</a>
-              <a href="#tarifs" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Prestations</a>
-              <a href="#solutions" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Solutions & méthode</a>
-              <a href="#avis" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">Avis clients</a>
-              <a href="#faq" className="text-orange-600 hover:text-orange-700 underline-offset-2 hover:underline">FAQ</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats clés */}
-      <section id="stats-cles" className="py-10 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div>
-              <div className="text-3xl font-extrabold text-orange-600">48h</div>
-              <div className="text-slate-600 text-sm">Intervention</div>
-            </div>
-            <div>
-              <div className="text-3xl font-extrabold text-orange-600">Expert</div>
-              <div className="text-slate-600 text-sm">Diagnostic sur site</div>
-            </div>
-            <div>
-              <div className="text-3xl font-extrabold text-orange-600">10 ans</div>
-              <div className="text-slate-600 text-sm">Garantie agrafage</div>
-            </div>
-            <div>
-              <div className="text-3xl font-extrabold text-orange-600">-65%</div>
-              <div className="text-slate-600 text-sm">vs micropieux</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contexte géologique local */}
-      {villeData.geologie && (
-        <section id="contexte-local" className="py-16 bg-slate-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12">
-              <div>
-                <h2 className="text-3xl font-extrabold text-slate-900 mb-6">
-                  Pourquoi les maisons de {villeData.nom} se fissurent
+        {/* CONTEXTE LOCAL */}
+        <section className="bg-ipb-white py-24 lg:py-32">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+              <RevealOnScroll className="lg:col-span-5">
+                <Eyebrow>Le bâti à {villeNom}</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Pourquoi les maisons<br /><em>de {villeNom} fissurent.</em>
                 </h2>
-                
-                <div className="prose prose-lg text-slate-600">
-                  <p className="mb-4">{villeData.geologie}</p>
-                  
-                  {villeData.historiqueLocal && (
-                    <p className="mb-4">{villeData.historiqueLocal}</p>
-                  )}
-                  
-                  {villeData.typesConstruction && (
-                    <div className="bg-slate-100 rounded-xl p-6 my-6">
-                      <h3 className="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
-                        <Home size={20} className="text-orange-600" />
-                        Parc immobilier local
-                      </h3>
-                      <p className="text-slate-600 text-base">{villeData.typesConstruction}</p>
+
+                {/* Stats locales */}
+                <div className="mt-10 grid grid-cols-2 gap-6">
+                  {villeData.population && (
+                    <div>
+                      <p className="text-[10px] text-ipb-light uppercase tracking-[0.16em] mb-1">Habitants</p>
+                      <p className="font-serif text-ipb-text font-bold text-[22px] leading-tight">
+                        {villeData.population}
+                      </p>
                     </div>
                   )}
+                  {villeData.risqueRGA && (
+                    <div>
+                      <p className="text-[10px] text-ipb-light uppercase tracking-[0.16em] mb-1">Risque RGA</p>
+                      <p className="font-serif text-ipb-text font-bold text-[22px] leading-tight">
+                        {risqueLabel(villeData.risqueRGA)}
+                      </p>
+                    </div>
+                  )}
+                  {villeData.tauxSinistralite && (
+                    <div>
+                      <p className="text-[10px] text-ipb-light uppercase tracking-[0.16em] mb-1">Taux sinistralité</p>
+                      <p className="font-serif text-ipb-text font-bold text-[22px] leading-tight">
+                        {villeData.tauxSinistralite}
+                      </p>
+                    </div>
+                  )}
+                  <div>
+                    <p className="text-[10px] text-ipb-light uppercase tracking-[0.16em] mb-1">Distance</p>
+                    <p className="font-serif text-ipb-text font-bold text-[22px] leading-tight">
+                      {villeData.distance} de Toulouse
+                    </p>
+                  </div>
                 </div>
+              </RevealOnScroll>
 
-                {villeData.problemesFrequents && villeData.problemesFrequents.length > 0 && (
-                  <div className="mt-8">
-                    <h3 className="text-lg font-bold text-slate-900 mb-4">
-                      Problèmes fréquents à {villeData.nom}
-                    </h3>
-                    <ul className="space-y-3">
-                      {villeData.problemesFrequents.map((p, i) => (
-                        <li key={i} className="flex items-start gap-3 text-slate-600">
-                          <AlertTriangle size={18} className="text-orange-600 flex-shrink-0 mt-1" />
-                          {p}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+              <div className="lg:col-span-7 space-y-5 text-[15px] leading-[1.9] font-light text-ipb-muted">
+                {villeData.geologie && (
+                  <RevealOnScroll delay={0.06}>
+                    <p>
+                      <strong className="font-medium text-ipb-text not-italic">Géologie locale.</strong>{' '}
+                      {villeData.geologie}
+                    </p>
+                  </RevealOnScroll>
                 )}
-              </div>
-
-              <div className="space-y-6">
-                {/* Conseil expert */}
-                {villeData.conseillExpert && (
-                  <div className="bg-orange-50 border-l-4 border-orange-600 rounded-r-xl p-6">
-                    <h3 className="font-bold text-orange-900 mb-3 flex items-center gap-2">
-                      <Award size={20} />
-                      Conseil de notre expert pour {villeData.nom}
-                    </h3>
-                    <p className="text-orange-800">{villeData.conseillExpert}</p>
-                  </div>
-                )}
-
-                {/* Spécificités fissures */}
                 {villeData.specificitesFissures && (
-                  <div className="bg-slate-100 rounded-xl p-6">
-                    <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2">
-                      <TrendingUp size={20} className="text-orange-600" />
-                      Ce que nous observons à {villeData.nom}
-                    </h3>
-                    <p className="text-slate-600">{villeData.specificitesFissures}</p>
-                  </div>
+                  <RevealOnScroll delay={0.12}>
+                    <p>
+                      <strong className="font-medium text-ipb-text not-italic">Spécificités à {villeNom}.</strong>{' '}
+                      {villeData.specificitesFissures}
+                    </p>
+                  </RevealOnScroll>
                 )}
-
-                {/* Communes proches */}
-                {villeData.communesProches && villeData.communesProches.length > 0 && (
-                  <div className="bg-white rounded-xl p-6 border border-slate-200">
-                    <h3 className="font-bold text-slate-900 mb-4">
-                      Nous intervenons aussi à proximité
-                    </h3>
-                    <div className="flex flex-wrap gap-2">
-                      {villeData.communesProches.map((commune, i) => {
-                        const communeSlug = commune.toLowerCase().replace(/[']/g, '').replace(/\s+/g, '-');
-                        return (
-                          <Link 
-                            key={i} 
-                            href={`/expert-fissures/${communeSlug}`}
-                            className="bg-slate-100 hover:bg-orange-100 text-slate-700 hover:text-orange-700 px-4 py-2 rounded-full text-sm font-medium transition-colors"
-                          >
-                            {commune}
-                          </Link>
-                        );
-                      })}
+                {villeData.historiqueLocal && (
+                  <RevealOnScroll delay={0.18}>
+                    <p>
+                      <strong className="font-medium text-ipb-text not-italic">Historique local.</strong>{' '}
+                      {villeData.historiqueLocal}
+                    </p>
+                  </RevealOnScroll>
+                )}
+                {villeData.conseillExpert && (
+                  <RevealOnScroll delay={0.24}>
+                    <div className="border-l-2 border-ipb-orange pl-6 mt-4">
+                      <p className="font-serif text-[16px] italic">
+                        <em className="not-italic text-ipb-orange">«&nbsp;</em>
+                        {villeData.conseillExpert}
+                        <em className="not-italic text-ipb-orange">&nbsp;»</em>
+                      </p>
+                      <p className="text-[11px] text-ipb-light uppercase tracking-[0.14em] mt-3 not-italic">
+                        — Ludovic D., fondateur du cabinet
+                      </p>
                     </div>
-                  </div>
+                  </RevealOnScroll>
                 )}
               </div>
             </div>
           </div>
         </section>
-      )}
 
-      {/* Solutions & méthode */}
-      <section id="solutions" className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">
-              Notre méthode IPB pour stabiliser durablement les fissures
-            </h2>
-            <p className="text-lg text-slate-600">
-              À {villeData.nom}, les fissures sont souvent liées au retrait-gonflement des argiles. 
-              Nous appliquons une méthode en 3 étapes, documentée et reproductible, pour stopper l’évolution.
-            </p>
-          </div>
+        {/* QUARTIERS / PROBLÈMES */}
+        {(!!villeData.quartiersRisque?.length || !!villeData.problemesFrequents?.length) && (
+          <section className="bg-ipb-cream py-24 lg:py-32">
+            <div className="max-w-ipb mx-auto px-6 lg:px-12">
+              <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+                {!!villeData.quartiersRisque?.length && (
+                  <RevealOnScroll>
+                    <Eyebrow>Quartiers à surveiller</Eyebrow>
+                    <h3 className="font-serif text-ipb-text font-bold text-[24px] leading-tight mb-6">
+                      Les zones les plus touchées<br />à {villeNom}
+                    </h3>
+                    <ul className="space-y-3 text-[14px] leading-[1.7]">
+                      {villeData.quartiersRisque.map((q) => (
+                        <li key={q} className="flex gap-3 text-ipb-muted">
+                          <span className="text-ipb-orange flex-shrink-0">—</span>
+                          {q}
+                        </li>
+                      ))}
+                    </ul>
+                  </RevealOnScroll>
+                )}
 
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200">
-              <h3 className="text-lg font-bold text-slate-900 mb-3">1. Diagnostic expert sur site</h3>
-              <p className="text-slate-600 text-sm mb-4">
-                Relevés précis, prise de mesures, analyse des causes et des zones de tension.
-              </p>
-              <ul className="text-sm text-slate-600 space-y-2">
-                <li>• Mesures d’ouverture des fissures</li>
-                <li>• Analyse des fondations et du sol</li>
-                <li>• Rapport écrit + préconisations</li>
-              </ul>
-            </div>
-
-            <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200">
-              <h3 className="text-lg font-bold text-slate-900 mb-3">2. Stabilisation structurelle</h3>
-              <p className="text-slate-600 text-sm mb-4">
-                Intervention ciblée selon la gravité : agrafage, harpage, renforts ou micropieux.
-              </p>
-              <ul className="text-sm text-slate-600 space-y-2">
-                <li>• Agrafes inox et mortiers techniques</li>
-                <li>• Reprise en sous-œuvre si nécessaire</li>
-                <li>• Garantie décennale sur travaux</li>
-              </ul>
-            </div>
-
-            <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200">
-              <h3 className="text-lg font-bold text-slate-900 mb-3">3. Suivi et prévention</h3>
-              <p className="text-slate-600 text-sm mb-4">
-                Conseils d’entretien et surveillance pour éviter la réapparition des fissures.
-              </p>
-              <ul className="text-sm text-slate-600 space-y-2">
-                <li>• Conseils sur gestion des eaux</li>
-                <li>• Prévention des mouvements de sol</li>
-                <li>• Contrôle périodique recommandé</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Tarifs */}
-      <section id="tarifs" className="py-16 bg-slate-900 text-white">
-        <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-center mb-4">Nos prestations à {villeData.nom}</h2>
-          <p className="text-slate-400 text-center mb-12">Déplacement inclus dans le rayon de {villeData.distance} depuis Toulouse</p>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-slate-800 rounded-2xl p-6 text-center">
-              <h3 className="font-bold mb-2">Diagnostic Expert</h3>
-              <div className="inline-block bg-green-500/20 text-green-400 text-sm font-bold px-3 py-1 rounded-full mb-2">Déduit à 100% des travaux</div>
-              <p className="text-slate-400 text-sm mb-4">Expertise sur site · Rapport détaillé</p>
-              <ul className="text-sm text-slate-300 text-left space-y-2">
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Visite sur site (1h30)</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Mesures niveau laser</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Rapport photos + recommandations</li>
-              </ul>
-            </div>
-            <div className="bg-slate-800 rounded-2xl p-6 text-center border-2 border-orange-500 relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-orange-500 text-white px-4 py-1 rounded-full text-xs font-bold">
-                85% DES CAS
+                {!!villeData.problemesFrequents?.length && (
+                  <RevealOnScroll delay={0.06}>
+                    <Eyebrow>Problèmes fréquents</Eyebrow>
+                    <h3 className="font-serif text-ipb-text font-bold text-[24px] leading-tight mb-6">
+                      Ce qu'on observe le plus souvent<br />sur les chantiers
+                    </h3>
+                    <ul className="space-y-3 text-[14px] leading-[1.7]">
+                      {villeData.problemesFrequents.map((p) => (
+                        <li key={p} className="flex gap-3 text-ipb-muted">
+                          <span className="text-ipb-orange flex-shrink-0">—</span>
+                          {p}
+                        </li>
+                      ))}
+                    </ul>
+                  </RevealOnScroll>
+                )}
               </div>
-              <h3 className="font-bold mb-2">Agrafage Structurel</h3>
-              <div className="text-4xl font-extrabold text-orange-400 mb-2">8-18K€</div>
-              <p className="text-slate-400 text-sm mb-4">Garantie 10 ans</p>
-              <ul className="text-sm text-slate-300 text-left space-y-2">
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Agrafes inox tous les 40cm</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Mortier fibré élastique</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Finition enduit</li>
-              </ul>
             </div>
-            <div className="bg-slate-800 rounded-2xl p-6 text-center">
-              <h3 className="font-bold mb-2">Micropieux</h3>
-              <div className="text-4xl font-extrabold text-orange-400 mb-2">25-50K€</div>
-              <p className="text-slate-400 text-sm mb-4">Cas graves uniquement</p>
-              <ul className="text-sm text-slate-300 text-left space-y-2">
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Ancrage profond (10-15m)</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Affaissements &gt; 5cm</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500" /> Garantie décennale</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+          </section>
+        )}
 
-      {/* FAQ locale */}
-      <section id="faq" className="py-16 bg-slate-100">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">
-            Questions fréquentes - {villeData.nom}
-          </h2>
-          <div className="space-y-4">
-            {faqItems.map((item, index) => (
-              <details key={index} className="bg-white rounded-xl shadow-sm border border-slate-200 group">
-                <summary className="p-6 cursor-pointer font-bold text-slate-900 flex items-center justify-between">
-                  {item.question}
-                  <span className="text-orange-600 group-open:rotate-180 transition-transform">▼</span>
-                </summary>
-                <div className="px-6 pb-6 text-slate-600">{item.answer}</div>
-              </details>
+        {/* COMMUNES PROCHES */}
+        {!!villeData.communesProches?.length && (
+          <section className="bg-ipb-white py-20 lg:py-24 border-y border-ipb-rule">
+            <div className="max-w-ipb mx-auto px-6 lg:px-12 text-center">
+              <RevealOnScroll>
+                <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-4">
+                  Communes alentour également couvertes
+                </p>
+                <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto">
+                  {villeData.communesProches.map((c) => {
+                    const slugProche = c
+                      .toLowerCase()
+                      .normalize('NFD')
+                      .replace(/[̀-ͯ]/g, '')
+                      .replace(/['\s]+/g, '-');
+                    return villeSlugs.includes(slugProche) ? (
+                      <Link
+                        key={c}
+                        href={`/expert-fissures/${slugProche}`}
+                        className="bg-ipb-cream border border-ipb-rule rounded-[3px] px-4 py-2 text-[13px] font-light text-ipb-text hover:border-ipb-orange transition-colors"
+                      >
+                        {c}
+                      </Link>
+                    ) : (
+                      <span
+                        key={c}
+                        className="bg-ipb-cream border border-ipb-rule rounded-[3px] px-4 py-2 text-[13px] font-light text-ipb-text"
+                      >
+                        {c}
+                      </span>
+                    );
+                  })}
+                </div>
+              </RevealOnScroll>
+            </div>
+          </section>
+        )}
+
+        {/* LIENS INTERNES */}
+        <section className="bg-ipb-cream py-20 lg:py-24">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12 grid md:grid-cols-3 gap-6">
+            {[
+              { href: '/expertise/fissures', titre: 'Notre méthode', desc: 'Diagnostic instrumenté, agrafage, reprise en sous-œuvre.' },
+              { href: `/expert-mur-porteur/${villeMurPorteur}`, titre: 'Ouverture de mur porteur', desc: 'Étude de structure et travaux par notre cabinet.' },
+              { href: '/blog/agrafage-vs-micropieux-choix', titre: 'Agrafage ou micropieux ?', desc: 'Notre guide pour choisir la bonne solution structurelle.' },
+            ].map((card) => (
+              <Link
+                key={card.href}
+                href={card.href}
+                className="group bg-ipb-white border border-ipb-rule rounded-[6px] p-7 hover:border-ipb-orange hover:shadow-[0_12px_36px_rgba(11,24,38,0.07)] hover:-translate-y-0.5 transition-all"
+              >
+                <p className="text-[10px] text-ipb-light uppercase tracking-[0.16em] mb-3">Pour aller plus loin</p>
+                <h3 className="font-serif text-ipb-text font-bold text-[20px] leading-tight mb-3 group-hover:text-ipb-orange transition-colors">
+                  {card.titre}
+                </h3>
+                <p className="text-[13px] leading-[1.7] font-light text-ipb-muted mb-4">{card.desc}</p>
+                <span className="text-ipb-orange text-[12px] font-medium border-b border-ipb-orange pb-0.5">
+                  Lire →
+                </span>
+              </Link>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Topic Cluster - Liens vers spokes */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-2xl font-extrabold text-slate-900 mb-8 text-center">
-            Guides par type de fissure
-          </h2>
-          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
-            <Link href="/fissure-en-escalier-causes" className="bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-xl p-4 transition-all group">
-              <span className="text-2xl mb-2 block">🪜</span>
-              <h3 className="font-bold text-slate-900 group-hover:text-orange-600 text-sm">Fissure en escalier</h3>
-              <p className="text-xs text-slate-500 mt-1">Tassement différentiel</p>
-            </Link>
-            <Link href="/fissure-horizontale-danger" className="bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-xl p-4 transition-all group">
-              <span className="text-2xl mb-2 block">➖</span>
-              <h3 className="font-bold text-slate-900 group-hover:text-orange-600 text-sm">Fissure horizontale</h3>
-              <p className="text-xs text-slate-500 mt-1">Poussée ou flexion</p>
-            </Link>
-            <Link href="/microfissure-quand-sinquieter" className="bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-xl p-4 transition-all group">
-              <span className="text-2xl mb-2 block">🔍</span>
-              <h3 className="font-bold text-slate-900 group-hover:text-orange-600 text-sm">Microfissure</h3>
-              <p className="text-xs text-slate-500 mt-1">Quand s'inquiéter ?</p>
-            </Link>
-            <Link href="/fissure-secheresse-indemnisation" className="bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-xl p-4 transition-all group">
-              <span className="text-2xl mb-2 block">☀️</span>
-              <h3 className="font-bold text-slate-900 group-hover:text-orange-600 text-sm">Fissure sécheresse</h3>
-              <p className="text-xs text-slate-500 mt-1">CAT-NAT & indemnisation</p>
-            </Link>
-            <Link href="/fissure-fondation-maison" className="bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-orange-200 rounded-xl p-4 transition-all group">
-              <span className="text-2xl mb-2 block">🏠</span>
-              <h3 className="font-bold text-slate-900 group-hover:text-orange-600 text-sm">Fissure fondation</h3>
-              <p className="text-xs text-slate-500 mt-1">Stabilisation urgente</p>
-            </Link>
-          </div>
-          <div className="mt-8 text-center">
-            <Link href="/expert-fissures-toulouse-31" className="inline-flex items-center gap-2 text-orange-600 font-bold hover:text-orange-700">
-              Consultez notre guide complet Expert Fissures <ArrowRight size={18} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Avis Google */}
-      <section id="avis" className="bg-white">
-        <Testimonials />
-      </section>
-
-      {/* CTA Final */}
-      <section className="py-16 bg-gradient-to-r from-orange-600 to-red-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-orange-200 font-bold mb-3">⏰ Vous habitez {villeData.nom} ?</p>
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
-            Chaque Mois D'Attente Coûte +15% de Réparation
-          </h2>
-          <p className="text-xl text-orange-100 mb-6">
-            Une fissure traitée rapidement = <strong className="text-white">8 000€</strong><br />
-            La même fissure dans 2 ans = <strong className="text-white">25 000€ minimum</strong>
-          </p>
-          
-          {villeData.tauxSinistralite && (
-            <div className="bg-white/10 rounded-xl p-4 mb-8 max-w-md mx-auto backdrop-blur-sm">
-              <p className="text-sm">
-                📊 <strong>{villeData.tauxSinistralite}</strong> de sinistralité à {villeData.nom}<br />
-                ⭐ <strong>4.9/5</strong> sur Google · <strong>10 ans</strong> de garantie
-              </p>
-            </div>
-          )}
-          
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/diagnostic" className="bg-white text-orange-600 px-10 py-5 rounded-xl font-bold text-lg hover:bg-orange-50 flex items-center justify-center gap-2 shadow-2xl transform hover:scale-105 transition-all">
-              JE VEUX MON DIAGNOSTIC GRATUIT <ArrowRight size={20} />
-            </Link>
-            <a href="tel:0582953375" className="bg-orange-700 hover:bg-orange-800 px-8 py-5 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
-              <Phone size={20} /> 05 82 95 33 75
-            </a>
-          </div>
-          <p className="text-sm text-orange-200 mt-4">Réponse garantie sous 24h · Déplacement gratuit sur {villeData.nom}</p>
-        </div>
-      </section>
-
+        <CtaFinal />
       </main>
-      
-      {/* Maillage interne SEO - Autres villes */}
-      <RelatedPagesLinks
-        title={`Nos experts fissures dans votre département`}
-        pages={[
-          { href: '/expertise/fissures', label: 'Nos solutions fissures', description: 'Toutes nos méthodes' },
-          { href: '/zones-intervention', label: 'Toutes nos zones', description: '56 villes couvertes' },
-          { href: '/diagnostic', label: 'Diagnostic gratuit', description: 'Évaluez votre situation' },
-          ...getVillesMemesDepartement(ville)
-            .slice(0, 10)
-            .map(v => ({
-              href: `/expert-fissures/${v}`,
-              label: `Expert fissures ${villesData[v]?.nom || v}`,
-            })),
-        ]}
-      />
-      
+
       <Footer />
     </div>
   );

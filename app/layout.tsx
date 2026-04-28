@@ -8,6 +8,7 @@ import { Analytics } from "@/components/layout/Analytics"
 const CookieBanner = dynamic(() => import("@/components/CookieBanner").then(m => m.CookieBanner), { ssr: false })
 const StickyDiagnosticCta = dynamic(() => import("@/components/StickyDiagnosticCta").then(m => m.StickyDiagnosticCta), { ssr: false })
 const ExitIntentPopup = dynamic(() => import("@/components/blog/ExitIntentPopup").then(m => m.ExitIntentPopup), { ssr: false })
+const LeadWidget = dynamic(() => import("@/components/ui/LeadWidget").then(m => m.LeadWidget), { ssr: false })
 
 // DM Sans — corps de texte et UI (charte IPB Design Handoff)
 const dmSans = DM_Sans({
@@ -243,6 +244,7 @@ export default function RootLayout({
         <main id="main-content">
           {children}
         </main>
+        <LeadWidget />
         <StickyDiagnosticCta />
         <ExitIntentPopup />
         <CookieBanner />
