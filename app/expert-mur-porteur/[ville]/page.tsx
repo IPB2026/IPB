@@ -4,7 +4,7 @@ import Script from 'next/script';
 import { notFound } from 'next/navigation';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
-import { BackButton } from '@/components/ui/BackButton';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Testimonials } from '@/components/home/Testimonials';
 import { CheckCircle, Phone, ArrowRight, Shield, Clock, FileText, Hammer, Ruler, Award, AlertTriangle, Eye } from 'lucide-react';
@@ -125,14 +125,8 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
 
       <TopBar />
       <Navbar />
+      <SmartBackBar />
       <main id="main-content">
-        {/* Bandeau retour discret éditorial */}
-        <div className="bg-ipb-cream border-b border-ipb-rule">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-            <BackButton href="/expertise/mur-porteur" label="Retour à l'expertise mur porteur" />
-          </div>
-        </div>
-
         {/* HERO */}
         <section className="relative bg-ipb-navy text-white overflow-hidden py-16 md:py-24">
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-orange-950/60"></div>
@@ -146,7 +140,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
                 </p>
 
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
-                  Ouverture <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400">Mur Porteur</span>
+                  Ouverture <span className="text-transparent bg-clip-text bg-ipb-orange">Mur Porteur</span>
                   <span className="block text-3xl md:text-4xl mt-2 text-white">à {villeNom} ({deptCode})</span>
                 </h1>
 
@@ -169,7 +163,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4 mb-6">
-                  <Link href="/diagnostic" className="bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white px-8 py-5 rounded-xl font-bold text-lg shadow-xl flex items-center justify-center gap-2">
+                  <Link href="/diagnostic" className="bg-ipb-orange hover:bg-[#b35519] text-white px-8 py-5 rounded-xl font-bold text-lg shadow-xl flex items-center justify-center gap-2">
                     Devis gratuit sous 24h <ArrowRight size={20} />
                   </Link>
                   <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 text-white px-8 py-5 rounded-xl font-bold text-lg hover:bg-white/20 flex items-center justify-center gap-2">
@@ -340,7 +334,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
         </section>
 
         {/* CTA Final */}
-        <section className="py-16 md:py-20 bg-gradient-to-r from-orange-600 to-amber-600 text-white">
+        <section className="py-16 md:py-20 bg-ipb-orange text-white">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Votre projet à {villeNom}, notre expertise</h2>
             <p className="text-xl text-ipb-orange-l mb-8">Décrivez votre projet à notre cabinet. Réponse d'un ingénieur structure sous 24 heures.</p>

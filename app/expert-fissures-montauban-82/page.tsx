@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { CheckCircle, Phone, ArrowRight, MapPin, AlertTriangle, Shield, FileText, Clock } from 'lucide-react';
 
@@ -87,6 +88,7 @@ export default function ExpertFissuresMontauban82Page() {
       
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Hero Section */}
       <section className="relative bg-ipb-navy text-white py-20 md:py-28 overflow-hidden">

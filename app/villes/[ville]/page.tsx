@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { TrustSignals } from '@/components/home/TrustSignals';
 import { ServicesStructure } from '@/components/home/ServicesStructure';
 import { ServicesHumidity } from '@/components/home/ServicesHumidity';
@@ -117,6 +118,7 @@ export default async function VillePage({ params }: PageProps) {
 
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Hero Section adaptée pour la ville */}
       <section className="relative bg-ipb-navy text-white overflow-hidden pb-24 pt-20 md:py-32 lg:pb-40">
@@ -130,7 +132,7 @@ export default async function VillePage({ params }: PageProps) {
               Intervention à {villeData.nom} ({villeData.distance} de Toulouse)
             </div>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-8 drop-shadow-sm">
-              Expert Fissures & Humidité à <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-200">{villeData.nom}</span>
+              Expert Fissures & Humidité à <span className="text-transparent bg-clip-text bg-ipb-orange">{villeData.nom}</span>
             </h1>
             <p className="text-lg md:text-xl text-white/70 mb-10 max-w-2xl leading-relaxed">
               <strong className="text-white">IPB intervient à {villeData.nom} ({villeData.codePostal})</strong> pour le traitement des fissures structurelles et de l'humidité.

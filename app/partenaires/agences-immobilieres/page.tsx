@@ -1,5 +1,6 @@
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import Link from 'next/link';
 import Script from 'next/script';
@@ -32,6 +33,7 @@ export default function AgencesImmobilieresPage() {
     <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
       <TopBar />
       <Navbar />
+      <SmartBackBar />
       <main id="main-content">
         {/* HERO */}
         <section className="relative bg-ipb-navy text-white py-16 md:py-24 overflow-hidden">
@@ -41,7 +43,7 @@ export default function AgencesImmobilieresPage() {
               Programme partenaire · Agences & mandataires immobiliers
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-              Une vente bloquée par <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300">une fissure</span> ?
+              Une vente bloquée par <span className="text-transparent bg-clip-text bg-ipb-orange">une fissure</span> ?
               <span className="block mt-2 text-white">On débloque sous 7 jours.</span>
             </h1>
             <p className="text-xl text-white/70 mb-8 max-w-3xl">

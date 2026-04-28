@@ -1,5 +1,6 @@
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -42,6 +43,7 @@ export default function ArchitectesInterieurPage() {
       <Script id="archi-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(offerJsonLd) }} />
       <TopBar />
       <Navbar />
+      <SmartBackBar />
       <main id="main-content">
         {/* HERO avec photo Ludovic */}
         <section className="relative bg-ipb-navy text-white py-16 md:py-24 overflow-hidden">
@@ -53,7 +55,7 @@ export default function ArchitectesInterieurPage() {
                   Programme pros · Architectes d'intérieur & décorateurs
                 </p>
                 <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight tracking-tight">
-                  Vos projets <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300">« espace ouvert »</span>,
+                  Vos projets <span className="text-transparent bg-clip-text bg-ipb-orange">« espace ouvert »</span>,
                   <span className="block mt-2 text-white">on s'occupe de la structure.</span>
                 </h1>
                 <p className="text-xl text-white/70 mb-4 leading-relaxed">
@@ -154,7 +156,7 @@ export default function ArchitectesInterieurPage() {
         {/* Engagement */}
         <section className="py-16 bg-white">
           <div className="max-w-4xl mx-auto px-4 text-center">
-            <div className="bg-gradient-to-br from-orange-50 to-amber-50 border-2 border-ipb-rule rounded-3xl p-8 md:p-12">
+            <div className="bg-ipb-orange border-2 border-ipb-rule rounded-3xl p-8 md:p-12">
               <h2 className="text-3xl font-extrabold text-ipb-text mb-4">Notre engagement partenaire</h2>
               <ul className="space-y-3 text-left max-w-2xl mx-auto mb-8">
                 {[

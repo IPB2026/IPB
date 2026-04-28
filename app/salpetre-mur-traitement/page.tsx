@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, AlertTriangle, Droplets, ChevronRight, Shield, CheckCircle, XCircle, Clock } from 'lucide-react';
 
@@ -70,6 +71,7 @@ export default function SalpetrePage() {
       />
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-amber-900 via-orange-900 to-slate-900 text-white overflow-hidden">

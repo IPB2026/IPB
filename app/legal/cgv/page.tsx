@@ -1,5 +1,6 @@
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { Calendar, FileText, Shield, CreditCard, Clock, AlertTriangle, CheckCircle, Gavel, Phone, Mail, Building2, Scale, RotateCcw, Wrench } from 'lucide-react';
@@ -27,6 +28,7 @@ export default function CGVPage() {
       
       <TopBar />
       <Navbar />
+      <SmartBackBar />
       
       <main id="main-content" className="bg-white min-h-screen py-12 md:py-16" role="main" aria-labelledby="page-title">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

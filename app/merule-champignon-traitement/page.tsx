@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, ChevronRight, AlertTriangle, CheckCircle, XCircle, Clock, Shield } from 'lucide-react';
 
@@ -72,6 +73,7 @@ export default function MerulePage() {
       />
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Hero - URGENCE */}
       <section className="relative bg-gradient-to-br from-red-900 via-rose-900 to-slate-900 text-white overflow-hidden">

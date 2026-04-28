@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation';
 import { Calendar, Clock, Share2, Facebook, Twitter, Linkedin } from 'lucide-react';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
-import { BackButton } from '@/components/ui/BackButton';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Breadcrumbs } from '@/components/blog/Breadcrumbs';
 import { TableOfContents } from '@/components/blog/TableOfContents';
 import { InternalLinks } from '@/components/seo/InternalLinks';
@@ -209,13 +209,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
 
       <TopBar />
       <Navbar />
-      
-      {/* Bandeau retour discret éditorial */}
-      <div className="bg-ipb-cream border-b border-ipb-rule">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-          <BackButton href="/blog" label="Retour au blog" />
-        </div>
-      </div>
+      <SmartBackBar />
 
       <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumbs */}
@@ -283,7 +277,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
             
             {/* 🎯 SEO BOOST : Maillage interne contextuel intelligent */}
             {contextualLinks.length > 0 && (
-              <div className="mt-8 bg-gradient-to-br from-orange-50 to-orange-100 border-2 border-ipb-rule rounded-2xl p-6">
+              <div className="mt-8 bg-ipb-orange border-2 border-ipb-rule rounded-2xl p-6">
                 <h3 className="text-xl font-extrabold text-orange-900 mb-4">Ressources complémentaires</h3>
                 <div className="grid md:grid-cols-2 gap-3">
                   {contextualLinks.map((link, idx) => (

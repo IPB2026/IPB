@@ -1,5 +1,6 @@
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import Link from 'next/link';
 import Script from 'next/script';
@@ -51,6 +52,7 @@ export default function BureauEtudeStructurePage() {
       <Script id="bureau-etudes-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
       <TopBar />
       <Navbar />
+      <SmartBackBar />
       <main id="main-content">
         {/* HERO */}
         <section className="relative bg-ipb-navy text-white py-16 md:py-24 overflow-hidden">
@@ -60,7 +62,7 @@ export default function BureauEtudeStructurePage() {
               Bureau d'études intégré · Décennale AXA France
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-              Bureau d'Études <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300">Structure</span>
+              Bureau d'Études <span className="text-transparent bg-clip-text bg-ipb-orange">Structure</span>
               <span className="block text-3xl md:text-4xl mt-2 text-white">à Toulouse & Occitanie (31, 82, 32, 81)</span>
             </h1>
             <p className="text-xl text-white/70 mb-8 max-w-3xl">
@@ -159,7 +161,7 @@ export default function BureauEtudeStructurePage() {
         </section>
 
         {/* CTA Final */}
-        <section className="py-16 bg-gradient-to-r from-orange-600 to-amber-600 text-white">
+        <section className="py-16 bg-ipb-orange text-white">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Besoin du calcul d'une poutre ?</h2>
             <p className="text-xl text-ipb-orange-l mb-8">Réponse d'un ingénieur structure sous 24h. Devis gratuit, sans engagement.</p>

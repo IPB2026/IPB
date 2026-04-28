@@ -113,7 +113,7 @@ export default function TarnEtGaronnePage() {
 
       <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
         {/* Hero Section */}
-        <div className="relative bg-gradient-to-br from-orange-600 via-orange-700 to-orange-800 text-white py-20">
+        <div className="relative bg-ipb-orange text-white py-20">
           <div className="absolute inset-0 bg-black/10"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Breadcrumbs
@@ -232,7 +232,7 @@ export default function TarnEtGaronnePage() {
         </div>
 
         {/* CTA Final */}
-        <div className="bg-gradient-to-br from-orange-600 to-orange-700 py-16">
+        <div className="bg-ipb-orange py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-6">
               Besoin d'un expert dans le Tarn-et-Garonne ?

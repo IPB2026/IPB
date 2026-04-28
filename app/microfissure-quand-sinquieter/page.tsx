@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, AlertTriangle, Search, ChevronRight, Shield, CheckCircle, Eye, Ruler, Clock } from 'lucide-react';
 
@@ -108,6 +109,7 @@ export default function MicrofissurePage() {
       />
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-slate-800 via-slate-700 to-amber-900/30 text-white overflow-hidden">

@@ -1,5 +1,6 @@
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Calendar } from 'lucide-react';
 
@@ -20,6 +21,7 @@ export default function ConfidentialitePage() {
     <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
       <TopBar />
       <Navbar />
+      <SmartBackBar />
       
       <main className="bg-white min-h-screen py-12 md:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

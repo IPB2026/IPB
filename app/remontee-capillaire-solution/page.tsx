@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { ArrowRight, Phone, Droplets, CheckCircle, AlertTriangle } from 'lucide-react';
 
@@ -51,6 +52,7 @@ export default function RemonteeCapillairePage() {
       
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Breadcrumb */}
       <div className="bg-white border-b border-ipb-rule py-3">
