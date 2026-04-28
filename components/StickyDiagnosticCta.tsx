@@ -62,55 +62,58 @@ export function StickyDiagnosticCta() {
 
   return (
     <>
-      {/* Version Mobile/Tablet - Sticky Bottom (Intermédiaire) */}
-      <div className={`lg:hidden fixed bottom-0 left-0 right-0 z-50 transform transition-all duration-500 ${
+      {/* Version Mobile/Tablet — Bottom bar éditorial signature IPB */}
+      <div className={`lg:hidden fixed bottom-0 left-0 right-0 z-50 transform transition-all duration-700 ease-[cubic-bezier(.16,1,.3,1)] ${
         isVisible ? 'translate-y-0' : 'translate-y-full'
       }`}>
-        {/* Bandeau de confiance compact */}
-        <div className="bg-slate-900 text-white/90 text-xs py-1.5 px-4 flex items-center justify-center gap-4">
-          <span className="flex items-center gap-1">
-            <Star size={11} className="text-yellow-400 fill-yellow-400" />
-            <strong>4.9/5</strong>
+        {/* Bandeau supérieur navy — trust signals éditoriaux */}
+        <div className="bg-ipb-navy text-white/85 text-[11px] py-2 px-4 flex items-center justify-center gap-3 border-b border-white/5">
+          <span className="flex items-center gap-1.5">
+            <span className="font-serif italic text-ipb-orange-l text-[13px] font-bold leading-none">4.9</span>
+            <span className="text-white/50 tracking-[0.08em]">Google</span>
           </span>
-          <span className="text-white/40">•</span>
-          <span className="flex items-center gap-1">
-            <Clock size={11} />
-            Réponse 48h
+          <span className="text-white/20" aria-hidden="true">·</span>
+          <span className="flex items-center gap-1.5">
+            <span className="font-serif italic text-ipb-orange-l text-[13px] font-bold leading-none">850+</span>
+            <span className="text-white/50 tracking-[0.08em]">chantiers</span>
           </span>
-          <span className="text-white/40">•</span>
-          <span className="flex items-center gap-1">
-            <Shield size={11} className="text-green-400" />
-            Garantie
-          </span>
+          <span className="text-white/20" aria-hidden="true">·</span>
+          <span className="text-white/50 tracking-[0.08em]">Décennale AXA</span>
         </div>
-        
-        {/* CTA Principal */}
-        <div className="bg-gradient-to-r from-orange-600 to-orange-500 px-4 py-3 shadow-[0_-4px_20px_rgba(234,88,12,0.35)]">
+
+        {/* CTA principal — fond cream avec filet orange signature */}
+        <div className="relative bg-ipb-cream px-4 py-3 shadow-[0_-12px_32px_rgba(11,24,38,0.12)] border-t border-ipb-rule">
+          {/* Filet orange vertical signature à gauche */}
+          <span aria-hidden="true" className="absolute left-0 top-0 bottom-0 w-[3px] bg-ipb-orange" />
+
           <div className="flex items-center gap-3">
-            {/* Texte contextuel */}
-            <div className="text-white text-sm leading-tight hidden xs:block">
-              <div className="font-bold">{getContextText()}</div>
-              <div className="text-orange-200 text-xs">{getSubText()}</div>
+            {/* Texte contextuel éditorial */}
+            <div className="flex-1 min-w-0 pl-1">
+              <div className="font-serif text-ipb-text font-bold text-[15px] leading-tight truncate">
+                {getContextText()}
+              </div>
+              <div className="text-ipb-muted text-[11px] tracking-wide mt-0.5">
+                {getSubText()} · sans engagement
+              </div>
             </div>
-            
-            {/* Bouton principal */}
+
+            {/* CTA primaire — orange éditorial */}
             <Link
               href="/diagnostic"
-              className="flex-1 flex items-center justify-center gap-2 bg-white text-orange-600 font-bold py-3 px-5 rounded-xl shadow-lg hover:bg-orange-50 transition-all active:scale-[0.98]"
+              className="group inline-flex items-center justify-center gap-1.5 bg-ipb-orange hover:bg-[#b35519] text-white font-medium py-2.5 px-4 rounded-[3px] text-[13px] tracking-wide transition-colors duration-300 active:scale-[0.98]"
               aria-label="Lancer le diagnostic gratuit"
             >
-              <span>Diagnostic gratuit</span>
-              <ArrowRight size={18} />
+              <span>Démarrer</span>
+              <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5" />
             </Link>
 
-            {/* Bouton téléphone */}
+            {/* CTA téléphone — discret, navy outline */}
             <a
               href="tel:0582953375"
-              className="flex items-center justify-center gap-2 bg-white/20 text-white py-3 px-4 rounded-xl border border-white/30 hover:bg-white/30 transition-all"
+              className="flex items-center justify-center bg-ipb-navy text-white p-2.5 rounded-[3px] border border-ipb-navy hover:bg-ipb-navy-2 transition-colors duration-300"
               aria-label="Appeler le 05 82 95 33 75"
             >
-              <Phone size={20} />
-              <span className="hidden sm:inline font-semibold text-sm">Appeler</span>
+              <Phone size={16} />
             </a>
           </div>
         </div>

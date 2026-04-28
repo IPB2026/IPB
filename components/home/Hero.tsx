@@ -3,6 +3,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { CrackSVG } from '@/components/ui/CrackSVG';
+import { HeroAtmosphere } from '@/components/ui/HeroAtmosphere';
 import { StatCounter } from '@/components/ui/StatCounter';
 
 /**
@@ -24,7 +25,7 @@ export function Hero() {
             <Eyebrow>Cabinet de pathologie du bâtiment · depuis 2019</Eyebrow>
           </RevealOnScroll>
 
-          <RevealOnScroll delay={0.06}>
+          <RevealOnScroll delay={0.06} variant="editorial">
             <h1
               className="font-serif text-ipb-text mb-8"
               style={{
@@ -39,7 +40,7 @@ export function Hero() {
             </h1>
           </RevealOnScroll>
 
-          <RevealOnScroll delay={0.12}>
+          <RevealOnScroll delay={0.12} variant="subtle">
             <p className="text-[15px] leading-[1.9] font-light text-ipb-muted max-w-[540px] mb-10">
               Cabinet indépendant en structure du bâtiment. Nous diagnostiquons les fissures qui inquiètent, étudions et réalisons les ouvertures de murs porteurs et baies vitrées. Nos rapports sont reconnus par les assurances. Nos travaux sont garantis dix ans.
             </p>
@@ -53,6 +54,35 @@ export function Hero() {
               <MagneticButton href="/notre-expert" variant="ghost">
                 Découvrir le cabinet
               </MagneticButton>
+            </div>
+          </RevealOnScroll>
+
+          {/* Panel navy mobile — version compacte full-bleed (signature visuelle) */}
+          <RevealOnScroll delay={0.2} className="lg:hidden -mx-6 mb-12">
+            <div className="relative bg-ipb-navy overflow-hidden aspect-[4/3] flex flex-col">
+              <HeroAtmosphere />
+              <CrackSVG variant="hero" />
+
+              {/* Liens services compactés en bas du panel mobile */}
+              <div className="relative z-10 mt-auto p-6 border-t border-white/5">
+                <p className="text-[10px] text-white/40 uppercase tracking-[0.18em] mb-3">Nos expertises</p>
+                <div className="flex flex-col gap-2.5">
+                  <Link
+                    href="/expertise/fissures"
+                    className="group flex items-center justify-between text-white border-b border-white/10 pb-2.5 hover:border-ipb-orange-l transition-colors"
+                  >
+                    <span className="font-serif text-base">Diagnostic de fissures</span>
+                    <span className="text-ipb-orange-l text-sm transition-transform group-hover:translate-x-1">→</span>
+                  </Link>
+                  <Link
+                    href="/expertise/mur-porteur"
+                    className="group flex items-center justify-between text-white border-b border-white/10 pb-2.5 hover:border-ipb-orange-l transition-colors"
+                  >
+                    <span className="font-serif text-base">Ouverture de mur porteur</span>
+                    <span className="text-ipb-orange-l text-sm transition-transform group-hover:translate-x-1">→</span>
+                  </Link>
+                </div>
+              </div>
             </div>
           </RevealOnScroll>
 
@@ -87,6 +117,9 @@ export function Hero() {
         {/* COLONNE DROITE — Panel navy avec crack SVG signature 42% */}
         <RevealOnScroll direction="right" delay={0.1} className="hidden lg:block">
           <div className="relative bg-ipb-navy rounded-[6px] overflow-hidden h-full min-h-[560px] flex flex-col">
+            {/* Couches atmosphériques (lueur + grain) */}
+            <HeroAtmosphere />
+
             {/* Crack SVG animé */}
             <CrackSVG variant="hero" />
 

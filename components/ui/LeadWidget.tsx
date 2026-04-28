@@ -77,7 +77,7 @@ export function LeadWidget() {
 
   return (
     <div
-      className="fixed bottom-4 right-4 lg:bottom-6 lg:right-6 z-40 w-[290px]"
+      className="hidden lg:block fixed lg:bottom-6 lg:right-6 z-40 w-[290px]"
       style={{
         animation: 'slideUpFade 0.4s cubic-bezier(.16,1,.3,1) both',
       }}
