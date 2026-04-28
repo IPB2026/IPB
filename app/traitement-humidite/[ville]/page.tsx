@@ -1,103 +1,83 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
+import Script from 'next/script';
 import { notFound } from 'next/navigation';
+import { ServiceVilleTemplate } from '@/components/templates/ServiceVilleTemplate';
 import { villesData, villeSlugs } from '@/app/data/villes';
-import { TopBar } from '@/components/home/TopBar';
-import { Navbar } from '@/components/home/Navbar';
-import { Footer } from '@/components/home/Footer';
-import { InternalLinks } from '@/components/seo/InternalLinks';
-
-interface PageProps {
-  params: Promise<{ ville: string }>;
-}
-
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { ville } = await params;
-  const villeData = villesData[ville.toLowerCase()];
-
-  if (!villeData) {
-    return { title: 'Traitement humidité | IPB' };
-  }
-
-  const title = `Traitement humidité à ${villeData.nom} (${villeData.codePostal}) | IPB`;
-  const description = `Traitement définitif de l’humidité à ${villeData.nom}. Injection résine, cuvelage, VMI. Intervention rapide, garantie 30 ans.`;
-
-  return {
-    title,
-    description,
-    alternates: {
-      canonical: `https://www.ipb-expertise.fr/traitement-humidite/${ville}`,
-    },
-    openGraph: {
-      title,
-      description,
-      url: `https://www.ipb-expertise.fr/traitement-humidite/${ville}`,
-      siteName: 'IPB',
-      locale: 'fr_FR',
-      type: 'website',
-      images: [
-        { url: '/images/IPB_Logo_HD.png', width: 1200, height: 630, alt: title },
-      ],
-    },
-  };
-}
-
-export default async function HumiditeVillePage({ params }: PageProps) {
-  const { ville } = await params;
-  const villeData = villesData[ville.toLowerCase()];
-
-  if (!villeData) {
-    notFound();
-  }
-
-  return (
-    <div className="font-sans text-slate-800 bg-slate-50 antialiased">
-      <TopBar />
-      <Navbar />
-
-      <section className="bg-slate-900 text-white py-16 md:py-24">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
-            Traitement de l’humidité à {villeData.nom}
-          </h1>
-          <p className="text-lg text-slate-300 max-w-3xl">
-            Intervention rapide à {villeData.nom} ({villeData.codePostal}). 
-            Traitement des remontées capillaires et infiltrations avec injection résine et garantie 30 ans.
-          </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-4">
-            <Link href="/diagnostic" className="bg-orange-600 text-white px-8 py-4 rounded-xl font-bold shadow-xl hover:bg-orange-500 transition">
-              Diagnostic gratuit
-            </Link>
-            <a href="tel:0582953375" className="bg-white/10 border border-white/20 px-8 py-4 rounded-xl font-bold hover:bg-white/20 transition">
-              Appeler un expert
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-extrabold mb-4">Solutions durables</h2>
-          <p className="text-slate-600 mb-6">
-            Notre traitement bloque l’eau à la source et assainit durablement vos murs.
-          </p>
-          <ul className="list-disc pl-6 text-slate-600 space-y-2">
-            <li>Injection résine hydrophobe à {villeData.nom}</li>
-            <li>Assèchement progressif des murs</li>
-            <li>Garantie 30 ans</li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-        <InternalLinks variant="humidite" title="Services complémentaires" />
-      </div>
-
-      <Footer />
-    </div>
-  );
-}
 
 export async function generateStaticParams() {
   return villeSlugs.map((ville) => ({ ville }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ ville: string }> }): Promise<Metadata> {
+  const { ville } = await params;
+  const villeData = villesData[ville];
+  if (!villeData) return { title: "Traitement humidité | IPB" };
+
+  const deptCode = villeData.codePostal.slice(0, 2);
+  const villeNom = villeData.nom;
+
+  return {
+    title: `Traitement de l'humidité ${villeNom} (${deptCode}) · Cabinet IPB`,
+    description: `Cabinet de pathologie du bâtiment à ${villeNom}. Injection de résine, cuvelage, ventilation, drainage : solution adaptée selon diagnostic. Décennale AXA.`,
+    keywords: [
+      `traitement humidité ${ville}`,
+      `injection résine ${ville}`,
+      `cuvelage ${ville}`,
+      `traitement remontées capillaires ${ville}`,
+      `cabinet pathologie bâtiment ${ville}`,
+    ],
+    alternates: { canonical: `https://www.ipb-expertise.fr/traitement-humidite/${ville}` },
+    openGraph: {
+      title: `Traitement de l'humidité ${villeNom} · Cabinet IPB`,
+      description: `Solutions d'humidité durables à ${villeNom}, posées sous garantie décennale.`,
+      url: `https://www.ipb-expertise.fr/traitement-humidite/${ville}`,
+      type: 'website',
+      images: [{ url: '/images/humidite-avant-apres.webp', width: 1200, height: 630, alt: `Traitement humidité ${villeNom}` }],
+    },
+    robots: { index: true, follow: true },
+  };
+}
+
+export default async function TraitementHumiditeVillePage({ params }: { params: Promise<{ ville: string }> }) {
+  const { ville } = await params;
+  const villeData = villesData[ville];
+  if (!villeData) notFound();
+
+  const villeNom = villeData.nom;
+
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": `IPB · Traitement de l'humidité ${villeNom}`,
+    "description": `Traitement durable de l'humidité à ${villeNom} : injection de résine, cuvelage, ventilation.`,
+    "areaServed": { "@type": "City", "name": villeNom },
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "IPB - Institut de Pathologie du Bâtiment",
+      "telephone": "+33582953375",
+    }
+  };
+
+  return (
+    <>
+      <Script id="service-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+
+      <ServiceVilleTemplate
+        villeData={villeData}
+        ville={ville}
+        serviceTitle="Traitement de l'humidité"
+        eyebrowLabel="Travaux · Humidité du bâti"
+        description={`Notre cabinet réalise les traitements d'humidité à ${villeNom} : injection de résine hydrophobe pour les remontées capillaires, cuvelage pour les caves, ventilation pour la condensation. Solution adaptée au diagnostic, garantie décennale.`}
+        heroImage="/images/humidite-avant-apres.webp"
+        heroAlt={`Traitement humidité à ${villeNom} — Cabinet IPB`}
+        methodHref="/expertise/humidite"
+        contextField={villeData.specificitesHumidite ? 'specificitesHumidite' : undefined}
+        relatedCards={[
+          { href: '/expertise/humidite', titre: 'Notre méthode', desc: "Diagnostic instrumenté avant tout traitement." },
+          { href: '/blog/humidite-salpetre-traitement', titre: 'Salpêtre : que faire ?', desc: "Origine, traitement et prévention du salpêtre." },
+          { href: `/expert-humidite/${ville}`, titre: `Expert humidité à ${villeNom}`, desc: `Page dédiée à notre intervention à ${villeNom}.` },
+        ]}
+      />
+    </>
+  );
 }
