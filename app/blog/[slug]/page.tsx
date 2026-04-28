@@ -16,14 +16,13 @@ import {
   addIdsToHeadings,
   generateArticleJsonLd,
   generateBreadcrumbJsonLd,
+  getCategoryFallbackImage,
 } from '@/lib/blog-helpers';
 import {
   extractFAQsFromContent,
   generateFAQSchema,
   getContextualLinks,
   getRelatedPosts,
-  extractHowToSteps,
-  generateHowToSchema,
   injectInternalLinks,
 } from '@/lib/seo-helpers';
 import { ReadingProgress } from '@/components/blog/ReadingProgress';
@@ -68,6 +67,10 @@ export async function generateMetadata(
 
   const pageTitle = post.metaTitle ?? `${post.title} | IPB Expertise`;
 
+  // Image de couverture pertinente (cf. SEO audit C2 — pas le logo générique)
+  const coverPath = post.coverImage || getCategoryFallbackImage(post.category, post.keywords);
+  const coverUrl = coverPath.startsWith('http') ? coverPath : `${baseUrl}${coverPath}`;
+
   return {
     title: pageTitle,
     description: post.metaDescription,
@@ -89,7 +92,7 @@ export async function generateMetadata(
       authors: [post.author],
       images: [
         {
-          url: `${baseUrl}/images/IPB_Logo_HD.png`,
+          url: coverUrl,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -100,7 +103,7 @@ export async function generateMetadata(
       card: 'summary_large_image',
       title: post.title,
       description: post.metaDescription,
-      images: [`${baseUrl}/images/IPB_Logo_HD.png`],
+      images: [coverUrl],
       creator: '@IPBExpertise',
     },
     robots: {
@@ -166,10 +169,6 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
   }));
   const relatedByKeywords = getRelatedPosts(post.slug, post.keywords, allPostsData);
 
-  // 💣 ARME NUCLÉAIRE : Schema HowTo pour tutoriels (Rich Snippets "How-To")
-  const howToSteps = extractHowToSteps(post.content);
-  const howToSchema = howToSteps.length >= 3 ? generateHowToSchema(post.title, howToSteps) : null;
-
   const contentWithLinks = injectInternalLinks(enrichedContent, post.slug);
 
   return (
@@ -193,15 +192,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       )}
-      {/* 💣 ARME NUCLÉAIRE : HowTo Schema pour tutoriels */}
-      {howToSchema && (
-        <Script
-          id="howto-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-        />
-      )}
-      {/* 💣 ARME NUCLÉAIRE : Reading Progress Bar */}
+      {/* Reading Progress Bar */}
       <ReadingProgress />
 
       {/* 💣 ARME NUCLÉAIRE : Exit-Intent Popup (capture leads) */}

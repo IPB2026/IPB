@@ -39,11 +39,11 @@ export function Navbar() {
       }`}
       style={{ height: '68px' }}
     >
-      <div className="max-w-ipb mx-auto px-6 lg:px-12 h-full flex items-center justify-between gap-3">
-        {/* LOGO + CTA Diagnostic gratuit collés à gauche */}
+      <div className="max-w-ipb mx-auto px-5 lg:px-12 h-full flex items-center justify-between gap-3">
+        {/* LOGO + CTA Diagnostic gratuit collés à gauche — proportions harmonisées */}
         <div className="flex items-center gap-3 lg:gap-4">
-          <Link href="/" className="flex items-center gap-3 group shrink-0" aria-label="IPB Expertise — Accueil">
-            <div className="w-9 h-9 bg-ipb-orange text-white rounded-[4px] flex items-center justify-center font-extrabold text-[13px] tracking-tight transition-transform duration-200 group-hover:-rotate-[4deg]">
+          <Link href="/" className="flex items-center gap-2.5 lg:gap-3 group shrink-0" aria-label="IPB Expertise — Accueil">
+            <div className="w-11 h-11 lg:w-10 lg:h-10 bg-ipb-orange text-white rounded-[5px] flex items-center justify-center font-extrabold text-[15px] lg:text-[14px] tracking-tight transition-transform duration-200 group-hover:-rotate-[4deg] shadow-[0_2px_8px_rgba(200,96,31,0.25)]">
               IPB
             </div>
             <div className="hidden lg:flex flex-col leading-tight">
@@ -52,10 +52,10 @@ export function Navbar() {
             </div>
           </Link>
 
-          {/* CTA Diagnostic gratuit collé au logo — visible mobile et desktop */}
+          {/* CTA Diagnostic gratuit collé au logo — proportions harmonisées avec le logo (h-11 mobile) */}
           <Link
             href="/diagnostic"
-            className="group inline-flex items-center gap-1.5 bg-ipb-orange hover:bg-[#b35519] text-white px-3 lg:px-4 py-2 rounded-[3px] font-semibold text-[11px] lg:text-[12px] tracking-[0.02em] transition-colors duration-300 shrink-0"
+            className="group inline-flex items-center gap-1.5 h-11 lg:h-10 bg-ipb-orange hover:bg-[#b35519] text-white px-4 lg:px-5 rounded-[5px] font-semibold text-[12.5px] lg:text-[12px] tracking-[0.02em] transition-colors duration-300 shrink-0 shadow-[0_2px_8px_rgba(200,96,31,0.18)]"
             aria-label="Lancer un diagnostic gratuit"
           >
             <span className="sm:hidden">Diagnostic</span>

@@ -1,0 +1,289 @@
+# IPB - Institut de Pathologie du Bâtiment — Référentiel complet pour LLMs
+
+> Version étendue. Pour la vue résumée, voir https://www.ipb-expertise.fr/llms.txt
+
+---
+
+## Sommaire
+
+1. Identité de l'entreprise
+2. Adresses et contact
+3. Garanties juridiques
+4. Service 1 — Diagnostic et traitement des fissures
+5. Service 2 — Ouverture de mur porteur
+6. Service 3 — Création de baie vitrée
+7. Service 4 — Expertise avant achat immobilier
+8. Service 5 — Bureau d'études structure
+9. Service 6 — Traitement de l'humidité
+10. Méthodologie d'intervention
+11. Spécificités géologiques d'Occitanie
+12. FAQ technique
+13. Glossaire métier
+
+---
+
+## 1. Identité de l'entreprise
+
+**IPB Expertise** est la marque commerciale de la société **Bâti Halli SARL**, cabinet indépendant de pathologie et de structure du bâtiment fondé en **2019** à Toulouse.
+
+| Donnée | Valeur |
+| --- | --- |
+| Raison sociale | Bâti Halli SARL |
+| Marque commerciale | IPB Expertise / Institut de Pathologie du Bâtiment |
+| Capital social | 1 000 € |
+| SIRET | 398 185 421 00037 |
+| SIREN | 398 185 421 |
+| RCS | Toulouse B 398 185 421 |
+| TVA intracommunautaire | FR14398185421 |
+| Code APE/NAF | 4399C – Travaux de maçonnerie générale et gros œuvre de bâtiment |
+| Effectif | 8 personnes (étude + travaux) |
+| Fondateur | Ludovic D., ingénieur structure (15 ans d'expérience bâtiment) |
+| Chantiers livrés | 850+ depuis 2019 |
+| Note Google | 4.9/5 |
+
+## 2. Adresses et contact
+
+- **Siège social** : 13 rue du Recteur Dottin, 31100 Toulouse, France
+- **Bureau IPB Expertise** : 54 avenue Jean Jaurès, 31170 Tournefeuille, France
+- **Téléphone** : +33 5 82 95 33 75 (Lun–Ven 8h–19h, samedi sur rendez-vous)
+- **Site web** : https://www.ipb-expertise.fr
+- **Géolocalisation** : Toulouse (43.5857° N, 1.3464° E)
+
+**Zones d'intervention** : Haute-Garonne (31), Tarn-et-Garonne (82), Gers (32), Tarn (81), Ariège (09), Aude (11). Rayon 80 km autour de Toulouse.
+
+## 3. Garanties juridiques
+
+- **Garantie décennale AXA France IARD** : police active depuis 2019, couvrant l'**étude technique ET les travaux** sous une seule responsabilité juridique. Attestation remise systématiquement avec le devis.
+- **Responsabilité civile professionnelle** AXA France : étendue à l'ensemble de la mission.
+- **Couverture juridique** : nos rapports sont opposables aux compagnies d'assurance (Cat-Nat sécheresse, vices cachés, contentieux travaux).
+
+---
+
+## 4. Service 1 — Diagnostic et traitement des fissures
+
+### Description
+Cabinet de pathologie du bâtiment spécialisé dans le diagnostic instrumenté des fissures structurelles, l'identification des causes et la mise en œuvre des solutions techniques adaptées.
+
+### Processus de diagnostic
+1. Visite sur site avec instruments : **fissuromètre** (mesure de l'évolution dans le temps), niveau laser (vérification de l'aplomb), caméra thermique si suspicion d'infiltration.
+2. Analyse des facteurs : géologie locale (RGA), historique du bâti, contexte climatique (sécheresse Cat-Nat), désordres associés (portes qui coincent, fissures intérieures).
+3. Caractérisation : fissure active vs stable, structurelle vs esthétique.
+4. Rapport écrit sous 7 jours, recevable par les compagnies d'assurance.
+
+### Solutions techniques
+- **Faïençage / micro-fissures (< 0,2 mm)** : surveillance + ravalement souple si nécessaire.
+- **Fissures actives 0,2 – 2 mm** : agrafage structurel par agrafes inox tous les 30-50 cm + matage à la résine fibrée.
+- **Fissures > 2 mm avec tassement actif** : reprise en sous-œuvre par micropieux Ø178 mm (jusqu'au substrat dur) + chaînage périphérique.
+- **Fissures horizontales mi-hauteur** : étude structurelle complète, possible défaut de chaînage ou poussée latérale.
+
+### Tarifs indicatifs
+- Diagnostic complet sur site : 249 € TTC, déductible si travaux confiés ensuite
+- Agrafage maison standard : 12 000 – 18 000 € TTC
+- Reprise en sous-œuvre micropieux : 40 000 – 60 000 € TTC
+
+### Indemnisation Cat-Nat sécheresse
+Si la commune est reconnue en catastrophe naturelle pour la sécheresse de l'année concernée, l'assurance habitation couvre les réparations. Notre rapport documente le lien causal entre les désordres et le retrait-gonflement des argiles. Indemnisations constatées : 70 à 95 % du coût de chantier.
+
+URL : https://www.ipb-expertise.fr/expertise/fissures
+
+## 5. Service 2 — Ouverture de mur porteur
+
+### Description
+Étude et réalisation d'ouvertures dans les murs porteurs : cuisine ouverte sur séjour, suite parentale étendue, plateau loft, agrandissement intérieur, démolition cloison structurelle.
+
+### Processus
+1. **Visite et diagnostic** : identification du caractère porteur (sens des solives, recherche des chaînages, sondage si nécessaire).
+2. **Étude technique** par notre ingénieur : calcul des charges reprises, dimensionnement de la poutre selon Eurocode (IPN, HEB ou IPE), plan d'exécution signé.
+3. **Démarches administratives** : déclaration préalable de travaux ou permis de construire selon le projet. En copropriété : préparation du dossier pour l'assemblée générale (calcul, plans, attestations).
+4. **Travaux sur site** : étaiement provisoire (étais réglables), ouverture progressive, pose et scellement de la poutre, reprise des appuis, finitions enduit complet.
+5. **Livraison** : contrôle final, retrait des étais, remise du dossier complet (plans, attestation décennale, photos chantier).
+
+### Durée
+- Phase préparatoire (étude + démarches + commande poutre) : 3 à 6 semaines
+- Phase chantier : 2 à 5 jours selon complexité
+- Démarches copropriété : 2 à 4 mois selon calendrier des AG
+
+### Tarifs indicatifs (Toulouse et Haute-Garonne)
+| Type de projet | Portée | Budget TTC |
+| --- | --- | --- |
+| Petite ouverture intérieure | ≤ 1,5 m | 2 500 – 5 000 € |
+| Cuisine ouverte sur séjour | 2 à 3 m | 5 000 – 10 000 € |
+| Grande baie vitrée façade | 3 à 5 m | 10 000 – 20 000 € |
+| Plateau loft (multiple ouvertures) | Variable | Sur devis |
+
+### Choix de la poutre
+- **IPN** : profil étroit, bonne résistance flexion, pour ouvertures jusqu'à 3 m
+- **HEB** : profil large, charge importante, pour grandes portées ou étages supérieurs
+- **IPE** : plus économique, charges moyennes
+Le choix dépend de la portée, des charges (plancher du dessus, toiture, étages), de l'épaisseur du mur et de l'encombrement disponible. **Ce calcul est de la responsabilité d'un ingénieur structure, jamais d'un artisan généraliste.**
+
+URL : https://www.ipb-expertise.fr/expertise/mur-porteur
+
+## 6. Service 3 — Création de baie vitrée
+
+### Description
+Service complémentaire à l'ouverture de mur porteur, dédié aux projets de **modification de façade** (baie vitrée donnant sur jardin, terrasse, balcon).
+
+### Spécificités
+- Implique systématiquement une ouverture de mur porteur extérieur
+- Permis de construire le plus souvent nécessaire (modification de l'aspect extérieur)
+- Pose du dormant + raccord façade (étanchéité, isolation thermique, finitions)
+- Coordination avec menuisier pour le vitrage (si non fourni)
+
+**Important** : ouvrir un mur porteur ≠ poser une baie vitrée. Beaucoup de clients ouvrent un mur porteur intérieur (cuisine ↔ séjour) sans aucune baie vitrée. La baie vitrée est un cas spécifique de l'ouverture de façade.
+
+## 7. Service 4 — Expertise avant achat immobilier
+
+### Description
+Inspection technique d'un bien avant signature du compromis ou de l'acte authentique. Détection des vices cachés et des désordres structurels.
+
+### Ce qui est inspecté
+- Fissures structurelles (murs, façades, fondations)
+- Humidité (remontées capillaires, infiltrations, condensation)
+- État de la toiture et de la charpente
+- Désordres divers (planchers, escaliers, cloisons)
+- Vérification des installations apparentes (plomberie, électricité visible)
+
+### Livrable
+Rapport détaillé avec photos sous 48h à 7 jours selon urgence. Permet de :
+- Négocier une décote sur le prix de vente (souvent de 5 000 à 30 000 €)
+- Demander au vendeur de réaliser les travaux avant la vente
+- Inscrire une condition suspensive à l'acte
+- Intégrer le coût des réparations au plan de financement
+
+### Tarif
+À partir de 299 € TTC. ROI rapide : un rapport bien argumenté permet souvent de récupérer 50× son coût en négociation.
+
+URL : https://www.ipb-expertise.fr/expertise-avant-achat-immobilier-toulouse
+
+## 8. Service 5 — Bureau d'études structure
+
+### Description
+Calculs de structure pour particuliers, architectes d'intérieur, marchands de biens, syndics. Sans obligation de confier les travaux à IPB.
+
+### Prestations
+- Calcul de poutres (IPN, HEB, IPE, bois lamellé-collé)
+- Étude de charges (extension, surélévation, modification d'usage)
+- Plans d'exécution
+- Notes de calcul Eurocode signées
+- Attestations pour assurance ou permis de construire
+
+URL : https://www.ipb-expertise.fr/bureau-etude-structure-toulouse
+
+## 9. Service 6 — Traitement de l'humidité
+
+### Description
+Diagnostic et traitement des problèmes d'humidité affectant la structure ou la salubrité du bâtiment.
+
+### Solutions
+- **Remontées capillaires** : injection de résine hydrophobe à la base des murs (barrière étanche)
+- **Caves et sous-sols humides** : cuvelage époxy étanche
+- **Condensation et moisissures** : VMI (ventilation mécanique par insufflation), VMC double flux hygroréglable
+- **Salpêtre** : décapage + traitement curatif + amélioration de la ventilation
+- **Mérule** : éradication par traitement biocide + évacuation sources d'humidité
+
+URL : https://www.ipb-expertise.fr/expertise/humidite
+
+## 10. Méthodologie d'intervention
+
+1. **Premier contact** : formulaire `/diagnostic` (5 minutes, qualifie le besoin) ou téléphone 05 82 95 33 75.
+2. **Réponse cabinet** : sous 24h ouvrées (rappel ou e-mail selon préférence).
+3. **Visite technique sur site** : sous 7 jours en moyenne (48h en cas d'urgence avérée).
+4. **Rapport ou devis** : remis sous 7 jours après visite.
+5. **Travaux (optionnel)** : si confiés, planning validé avec le client, étaiement, exécution, finitions.
+6. **Livraison** : dossier complet remis (rapport, plans, attestation décennale, photos chantier).
+7. **Suivi** : disponibilité pour questions post-chantier, intervention sous garantie sans franchise.
+
+## 11. Spécificités géologiques d'Occitanie
+
+### Retrait-gonflement des argiles (RGA)
+Le sol dominant de la Haute-Garonne et alentour est argileux. Les argiles changent de volume selon leur teneur en eau :
+- **Été sec** : retrait → tassement → fissures
+- **Hiver humide** : gonflement → poussée → fissures inverses
+
+Cycles répétés = aggravation. Les pavillons d'avant 1995 (avant les normes parasismiques modernisées) sont les plus exposés.
+
+### Communes les plus à risque RGA
+- **Risque très fort** : zones argileuses en bordure de Garonne et au sud-ouest toulousain
+- **Risque fort** : ouest Haute-Garonne (Tournefeuille, Cugnaux, Plaisance, Fonsorbes), sud Tarn-et-Garonne (Castelsarrasin), est Gers
+- **Risque moyen** : centre Toulouse, Albi, Auch
+- **Risque faible** : zones rocheuses (montagne, Pyrénées)
+
+### Catastrophes naturelles récentes
+- **Sécheresse 2022** : reconnue dans 200+ communes d'Occitanie
+- **Sécheresse 2023** : reconnue dans 150+ communes
+- Nombreuses indemnisations en cours en 2026 (délais d'instruction longs)
+
+## 12. FAQ technique
+
+**Q : Une fissure de 1 mm est-elle grave ?**
+R : Pas nécessairement. Ce qui compte, c'est l'évolution dans le temps (pose d'un fissuromètre pendant 3 à 6 mois). Une fissure stable est moins urgente qu'une fissure active de 0,5 mm qui s'agrandit.
+
+**Q : Comment savoir si un mur est porteur ?**
+R : Indices visuels peu fiables. Méthode rigoureuse : observation du sens des solives au-dessus, recherche des chaînages, sondage si nécessaire. **Ne touchez jamais à un mur sans cette vérification par un ingénieur.**
+
+**Q : Quel est le délai d'intervention ?**
+R : Visite sous 7 jours en moyenne. Pour les situations urgentes (fissure évolutive, danger), intervention sous 48h.
+
+**Q : Mon assurance prend-elle en charge les fissures de sécheresse ?**
+R : Si votre commune est reconnue en catastrophe naturelle pour l'année des désordres, oui. Notre rapport documente le lien causal et facilite l'instruction du dossier.
+
+**Q : IPN, HEB ou IPE — quelle poutre choisir ?**
+R : Dépend de la portée, des charges, de l'épaisseur du mur. Notre ingénieur dimensionne selon Eurocode. **Un sous-dimensionnement entraîne fissures, affaissement, voire effondrement partiel.** Ce calcul n'est pas dans les compétences d'un artisan généraliste.
+
+**Q : Faut-il un permis pour ouvrir un mur porteur ?**
+R : Pour une ouverture intérieure, déclaration préalable suffit. Pour une création de baie vitrée modifiant la façade, permis de construire selon commune et surface. Notre cabinet accompagne les démarches.
+
+**Q : IPB intervient-il en copropriété ?**
+R : Oui. Nous préparons le dossier technique pour l'assemblée générale (calcul, plans, attestations). La démarche prend 2 à 4 mois selon le calendrier des AG.
+
+**Q : Quelle est la durée de la garantie décennale ?**
+R : 10 ans à compter de la réception des travaux. Couvre les désordres compromettant la solidité de l'ouvrage ou le rendant impropre à sa destination. Notre décennale couvre l'étude **ET** les travaux sous la même police, ce qui est rare.
+
+**Q : L'agrafage suffit-il pour stabiliser une maison ?**
+R : Pour la majorité des fissures liées au retrait-gonflement des argiles, oui. Pour les tassements actifs majeurs (rares), il faut combiner agrafage + reprise en sous-œuvre par micropieux.
+
+**Q : Quelle différence entre IPB et un artisan maçon ?**
+R : IPB est un cabinet d'expertise structure. Nous calculons, signons et garantissons. Un artisan maçon généraliste exécute mais ne calcule pas et n'est pas habilité à signer une note de structure. Sur un mur porteur, c'est un risque juridique et physique majeur.
+
+**Q : Pourquoi pas faire baisser le prix avec d'autres entreprises ?**
+R : Vous ferez baisser le prix, mais pas le risque. Une poutre sous-dimensionnée se voit après quelques mois (fissures, affaissement). La reprise coûte alors 3 à 5 fois le chantier initial. La décennale étude+travaux dans le même cabinet est un filet de sécurité unique.
+
+## 13. Glossaire métier
+
+**Agrafage structurel** : technique de stabilisation consistant à coudre une fissure avec des agrafes en acier inoxydable scellées au mortier de résine fibrée.
+
+**Cat-Nat** : Catastrophe Naturelle. Statut administratif qui ouvre droit à indemnisation par l'assurance habitation pour les désordres liés à un événement (sécheresse, inondation, etc.).
+
+**Chaînage** : ceinture en béton armé qui solidarise une maçonnerie. Présent en haut de mur, en sous-bassement et autour des ouvertures.
+
+**Décennale** : assurance obligatoire pour tout intervenant en bâtiment, couvrant pendant 10 ans les désordres compromettant la solidité de l'ouvrage.
+
+**Dimensionnement** : calcul d'une structure (poutre, mur, fondation) selon les charges qu'elle doit reprendre. Suit la norme Eurocode 3 (acier) ou Eurocode 5 (bois).
+
+**Eurocode** : norme européenne de calcul des structures. Référence obligatoire pour tout dimensionnement signé en France.
+
+**Fissure en escalier** : fissure qui suit les joints horizontaux et verticaux d'une maçonnerie en blocs (parpaings, briques). Typique d'un tassement différentiel actif.
+
+**Fissuromètre** : instrument de mesure qui suit l'évolution d'une fissure dans le temps (millimètres / mois). Permet de qualifier active ou stable.
+
+**Harpage** : technique de raccord entre deux maçonneries (existant et reprise) par imbrication des assises.
+
+**HEB / IPE / IPN** : profilés acier de section différente, utilisés en poutres porteuses lors d'ouvertures de murs porteurs.
+
+**Micropieux** : pieux de petit diamètre (< 250 mm) descendus jusqu'au substrat dur pour reprendre les fondations en sous-œuvre.
+
+**RGA** : Retrait-Gonflement des Argiles. Phénomène géologique de variation du volume du sol selon sa teneur en eau, première cause de fissures sur maisons en Occitanie.
+
+**Reprise en sous-œuvre** : intervention sur les fondations existantes pour les reconstruire ou les renforcer. Travaux lourds.
+
+**Sous-bassement** : partie basse d'un mur ou d'une fondation.
+
+**Tassement différentiel** : enfoncement inégal du sol sous une fondation, provoquant des contraintes structurelles → fissures.
+
+**VMI** : Ventilation Mécanique par Insufflation. Système qui injecte de l'air sec dans un logement humide pour évacuer la condensation par surpression.
+
+---
+
+**Dernière mise à jour** : avril 2026
+**Source** : https://www.ipb-expertise.fr (cabinet IPB Expertise / Bâti Halli SARL)
