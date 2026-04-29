@@ -141,6 +141,27 @@ export default function HomePage() {
       {/* 3. Liste architecturale 4 services (fissures en 1er) */}
       <ServiceList />
 
+      {/* 3bis. Bandeau calculateur mur porteur — capture de leads chauds */}
+      <section className="bg-ipb-navy text-white py-16 md:py-20">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <p className="text-ipb-orange-l text-[11px] uppercase tracking-[0.18em] font-medium mb-4">
+            Outil · Estimation gratuite, sans inscription
+          </p>
+          <h2 className="font-serif mb-5" style={{ fontSize: 'clamp(26px, 2.6vw, 36px)', lineHeight: 1.18, letterSpacing: '-0.022em', fontWeight: 700 }}>
+            Un projet d'ouverture de mur porteur ?<br /><em className="text-ipb-orange-l">Combien ça va vous coûter.</em>
+          </h2>
+          <p className="text-white/75 text-[15px] leading-[1.85] mb-8 max-w-xl mx-auto">
+            Notre calculateur, basé sur les chantiers IPB récents en Occitanie, vous donne une fourchette précise en deux minutes. Vous recevez le détail par email.
+          </p>
+          <a
+            href="/calcul-prix-mur-porteur?utm_source=site&utm_medium=home_banner&utm_campaign=mur_porteur"
+            className="inline-flex items-center justify-center gap-2 bg-ipb-orange text-white font-bold px-8 py-4 rounded-[3px] text-[14px] tracking-[0.03em] hover:bg-[#b35519] transition-colors"
+          >
+            Lancer le calcul → 2 min
+          </a>
+        </div>
+      </section>
+
       {/* 4. Méthode 5 étapes (accompagnement complet) */}
       <Methode />
 

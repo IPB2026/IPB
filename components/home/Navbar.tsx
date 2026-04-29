@@ -24,6 +24,7 @@ export function Navbar() {
   const links = [
     { href: '/expertise/fissures', label: 'Fissures' },
     { href: '/expertise/mur-porteur', label: 'Mur porteur' },
+    { href: '/calcul-prix-mur-porteur', label: 'Calculer un prix', highlight: true },
     { href: '/notre-expert', label: 'L’institut' },
     { href: '/partenaires', label: 'Pros' },
     { href: '/blog', label: 'Blog' },
@@ -69,12 +70,16 @@ export function Navbar() {
         </div>
 
         {/* MENU DESKTOP */}
-        <div className="hidden md:flex items-center gap-8">
-          {links.map(({ href, label }) => (
+        <div className="hidden md:flex items-center gap-6 lg:gap-8">
+          {links.map(({ href, label, highlight }) => (
             <Link
               key={href}
               href={href}
-              className="text-[11px] uppercase tracking-[0.09em] font-medium text-ipb-muted hover:text-ipb-orange transition-colors py-2 border-b border-transparent hover:border-ipb-orange"
+              className={
+                highlight
+                  ? "text-[11px] uppercase tracking-[0.09em] font-semibold text-ipb-orange hover:text-[#b35519] transition-colors py-2 border-b border-ipb-orange/40 hover:border-ipb-orange"
+                  : "text-[11px] uppercase tracking-[0.09em] font-medium text-ipb-muted hover:text-ipb-orange transition-colors py-2 border-b border-transparent hover:border-ipb-orange"
+              }
             >
               {label}
             </Link>
@@ -102,13 +107,17 @@ export function Navbar() {
           className="md:hidden bg-ipb-white border-t border-ipb-rule absolute w-full z-50 shadow-2xl"
         >
           <div className="px-6 py-6 space-y-1">
-            {links.map(({ href, label }) => (
+            {links.map(({ href, label, highlight }) => (
               <Link
                 key={href}
                 href={href}
                 onClick={() => setIsMenuOpen(false)}
                 role="menuitem"
-                className="block py-3 font-serif text-xl text-ipb-text hover:text-ipb-orange transition-colors"
+                className={
+                  highlight
+                    ? "block py-3 font-serif text-xl text-ipb-orange font-semibold transition-colors"
+                    : "block py-3 font-serif text-xl text-ipb-text hover:text-ipb-orange transition-colors"
+                }
               >
                 {label}
               </Link>

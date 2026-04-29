@@ -318,6 +318,37 @@ export default function MurPorteurPage() {
           </div>
         </section>
 
+        {/* Bandeau calculateur — capture leads chauds */}
+        <section className="bg-ipb-navy text-white py-20 lg:py-24">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <RevealOnScroll>
+              <p className="text-ipb-orange-l text-[11px] uppercase tracking-[0.18em] font-medium mb-4">
+                Estimation gratuite · Sans inscription
+              </p>
+              <h2 className="font-serif mb-5" style={{ fontSize: 'clamp(28px, 2.8vw, 40px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                Combien va vous coûter<br /><em className="text-ipb-orange-l">votre projet ?</em>
+              </h2>
+              <p className="text-white/75 text-[15px] md:text-[16px] leading-[1.85] mb-9 max-w-2xl mx-auto">
+                Notre calculateur, basé sur les chantiers IPB récents en Occitanie, vous donne une fourchette précise en deux minutes. Vous recevez le détail par email — sans engagement.
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center gap-3">
+                <a
+                  href="/calcul-prix-mur-porteur?utm_source=site&utm_medium=expertise_hub&utm_campaign=mur_porteur"
+                  className="inline-flex items-center justify-center gap-2 bg-ipb-orange text-white font-bold px-8 py-4 rounded-[3px] text-[14px] tracking-[0.03em] hover:bg-[#b35519] transition-colors"
+                >
+                  Lancer le calcul → 2 min
+                </a>
+                <a
+                  href="tel:0582953375"
+                  className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white font-bold px-8 py-4 rounded-[3px] text-[14px] tracking-[0.03em] hover:bg-white/20 transition-colors"
+                >
+                  Ou parler à un ingénieur
+                </a>
+              </div>
+            </RevealOnScroll>
+          </div>
+        </section>
+
         {/* FAQ */}
         <section className="bg-ipb-white py-24 lg:py-32">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">

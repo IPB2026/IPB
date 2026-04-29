@@ -61,6 +61,7 @@ export function Footer() {
               {[
                 ['/expertise/fissures', 'Diagnostic de fissures'],
                 ['/expertise/mur-porteur', 'Ouverture de mur porteur'],
+                ['/calcul-prix-mur-porteur', 'Calculateur prix mur porteur'],
                 ['/expertise-avant-achat-immobilier-toulouse', 'Avant achat immobilier'],
                 ['/bureau-etude-structure-toulouse', "Bureau d'études"],
               ].map(([href, label]) => (
