@@ -1,72 +1,69 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Script from 'next/script';
-import Image from 'next/image';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
-import { CheckCircle, Phone, ArrowRight, AlertTriangle, Home, Layers, TreeDeciduous, Construction, Clock, Shield, TrendingUp, ChevronRight } from 'lucide-react';
+import { CtaFinal } from '@/components/home/CtaFinal';
+import { Eyebrow } from '@/components/ui/Eyebrow';
+import { MagneticButton } from '@/components/ui/MagneticButton';
+import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Fissure en Escalier : Causes, Dangers et Réparation | Expert Occitanie',
-  description: 'Fissure en escalier sur votre mur ? ⚠️ Signe de tassement différentiel. Causes (sol argileux, sécheresse), dangers structurels et solutions (agrafage). Expert Toulouse, Montauban, Auch (31-82-32).',
+  title: 'Fissure en escalier · Causes, dangers et réparation · Institut IPB',
+  description: "Fissure en escalier sur votre mur ? C'est le signe d'un tassement différentiel. Causes (sol argileux, sécheresse), dangers structurels et solutions (agrafage, micropieux). Institut IPB Toulouse, Montauban, Auch.",
   keywords: ['fissure en escalier', 'fissure diagonale', 'tassement différentiel', 'sol argileux', 'agrafage fissures', 'expert fissures toulouse'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/fissure-en-escalier-causes' },
   openGraph: {
-    title: 'Fissure en Escalier : Causes et Solutions | IPB',
-    description: 'Une fissure en escalier révèle un tassement différentiel. Diagnostic et traitement par agrafage. Expert Occitanie.',
+    title: 'Fissure en escalier · Institut IPB',
+    description: "Une fissure en escalier révèle un tassement différentiel. Diagnostic instrumenté et traitement par agrafage. Institut IPB Occitanie.",
     url: 'https://www.ipb-expertise.fr/fissure-en-escalier-causes',
     type: 'article',
-    images: [{ url: '/images/fissure-facade-diagonale.webp', width: 1200, height: 630, alt: 'Fissure en escalier sur mur' }],
+    images: [{ url: '/images/fissure-facade-diagonale.webp', width: 1200, height: 630, alt: 'Fissure en escalier sur mur — Institut IPB' }],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
   },
 };
 
 const causes = [
-  {
-    icon: <Layers className="w-8 h-8" />,
-    title: 'Tassement différentiel',
-    description: 'Quand une partie de la fondation s\'enfonce plus qu\'une autre, le mur subit des contraintes de cisaillement.',
-    color: 'orange',
-  },
-  {
-    icon: <TreeDeciduous className="w-8 h-8" />,
-    title: 'Retrait-gonflement des argiles',
-    description: 'Les sols argileux gonflent avec l\'eau et se rétractent en sécheresse. Cause n°1 en Occitanie.',
-    color: 'red',
-  },
-  {
-    icon: <Home className="w-8 h-8" />,
-    title: 'Défaut de fondations',
-    description: 'Fondations sous-dimensionnées ou mal ancrées. Fréquent dans les maisons des années 60-80.',
-    color: 'amber',
-  },
-  {
-    icon: <Construction className="w-8 h-8" />,
-    title: 'Travaux environnants',
-    description: 'Construction voisine, piscine, arbres trop proches... Ces modifications déstabilisent le sol.',
-    color: 'yellow',
-  },
+  { titre: 'Tassement différentiel', desc: "Une partie de la fondation s'enfonce plus que l'autre — le mur subit des contraintes de cisaillement qui suivent les joints." },
+  { titre: 'Retrait-gonflement des argiles (RGA)', desc: "Les sols argileux gonflent avec l'eau, se rétractent en sécheresse. C'est la cause numéro 1 en Occitanie." },
+  { titre: 'Défaut de fondations', desc: "Fondations sous-dimensionnées ou mal ancrées. Fréquent dans les maisons des années 1960-1980." },
+  { titre: 'Travaux environnants', desc: 'Construction voisine, piscine, arbres trop proches : ces modifications déstabilisent le sol et déséquilibrent les fondations.' },
 ];
 
 const signesGravite = [
-  { signe: 'Ouverture < 2mm', niveau: 'Surveillance', color: 'green', width: '25%' },
-  { signe: 'Ouverture 2-5mm', niveau: 'Intervention recommandée', color: 'yellow', width: '50%' },
-  { signe: 'Ouverture 5-10mm', niveau: 'Urgence modérée', color: 'orange', width: '75%' },
-  { signe: 'Ouverture > 10mm', niveau: 'Urgence structurelle', color: 'red', width: '100%' },
+  { signe: 'Ouverture < 2 mm', niveau: 'Surveillance', niveauColor: 'emerald' },
+  { signe: 'Ouverture 2 – 5 mm', niveau: 'Intervention recommandée', niveauColor: 'amber' },
+  { signe: 'Ouverture 5 – 10 mm', niveau: 'Urgence modérée', niveauColor: 'orange' },
+  { signe: 'Ouverture > 10 mm', niveau: 'Urgence structurelle', niveauColor: 'red' },
 ];
 
 const faqItems = [
-  { q: 'Une fissure en escalier est-elle dangereuse ?', a: 'Oui, c\'est le signe d\'un mouvement structurel actif. Sans traitement, elle va s\'aggraver et peut compromettre la stabilité du bâtiment.' },
-  { q: 'Peut-on simplement reboucher une fissure en escalier ?', a: 'Non, reboucher sans traiter la cause est inutile. La fissure réapparaîtra. Il faut d\'abord stabiliser la structure (agrafage) puis réparer.' },
-  { q: 'Combien coûte la réparation ?', a: 'L\'agrafage coûte entre 8 000€ et 18 000€ selon l\'étendue des désordres. Cette technique convient à la majorité des cas de fissures structurelles sur bâti courant.' },
-  { q: 'La fissure est-elle couverte par l\'assurance ?', a: 'Si votre commune est reconnue en catastrophe naturelle sécheresse, oui. Nous vous aidons à constituer votre dossier.' },
+  { question: 'Une fissure en escalier est-elle dangereuse ?', answer: "Oui, c'est le signe d'un mouvement structurel actif. Sans traitement, elle va s'aggraver et peut compromettre la stabilité du bâtiment. Une intervention de stabilisation est généralement nécessaire." },
+  { question: 'Peut-on simplement reboucher une fissure en escalier ?', answer: "Non, reboucher sans traiter la cause est inutile : la fissure réapparaîtra. Il faut d'abord stabiliser la structure (agrafage), puis réparer." },
+  { question: 'Combien coûte la réparation ?', answer: "L'agrafage coûte entre 8 000 et 18 000 € selon l'étendue des désordres. Cette technique convient à la grande majorité des cas de fissures structurelles sur bâti courant." },
+  { question: "La fissure est-elle couverte par l'assurance ?", answer: "Si votre commune est reconnue en catastrophe naturelle sécheresse pour l'année concernée, oui. Notre rapport documente le lien avec le RGA et accompagne votre dossier." },
 ];
 
-const jsonLd = {
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+};
+
+const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Fissure en Escalier : Causes, Dangers et Solutions de Réparation",
+  "headline": "Fissure en escalier · Causes, dangers et solutions de réparation",
   "description": "Guide complet sur les fissures en escalier : comprendre les causes, évaluer la gravité et choisir la bonne solution de réparation.",
   "author": { "@type": "Organization", "name": "IPB - Institut de Pathologie du Bâtiment" },
   "publisher": { "@type": "Organization", "name": "IPB", "logo": { "@type": "ImageObject", "url": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png" } },
@@ -76,356 +73,240 @@ const jsonLd = {
 
 export default function FissureEscalierPage() {
   return (
-    <div className="font-sans text-ipb-text bg-white antialiased">
-      <Script id="article-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      
+    <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
+      <Script id="article-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <Script id="faq-schema-escalier" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
       <TopBar />
       <Navbar />
       <SmartBackBar />
 
-      {/* Hero Premium */}
-      <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-orange-950 text-white overflow-hidden">
-        {/* Pattern de fond */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,0.03) 35px, rgba(255,255,255,0.03) 70px)' }}></div>
+      <div className="bg-ipb-cream border-b border-ipb-rule py-3">
+        <div className="max-w-ipb mx-auto px-6 lg:px-12 text-sm text-ipb-muted">
+          <Link href="/" className="hover:text-ipb-orange transition-colors">Accueil</Link>
+          <span className="mx-2" aria-hidden="true">›</span>
+          <Link href="/expertise/fissures" className="hover:text-ipb-orange transition-colors">Expert fissures</Link>
+          <span className="mx-2" aria-hidden="true">›</span>
+          <span className="text-ipb-text">Fissure en escalier</span>
         </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          {/* Breadcrumb stylé */}
-          <nav className="flex items-center gap-2 text-sm text-ipb-light mb-8">
-            <Link href="/" className="hover:text-white transition">Accueil</Link>
-            <ChevronRight size={14} />
-            <Link href="/expert-fissures-toulouse-31" className="hover:text-white transition">Expert Fissures</Link>
-            <ChevronRight size={14} />
-            <span className="text-ipb-orange-l">Fissure en escalier</span>
-          </nav>
+      </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-red-500/20 border border-red-500/30 text-red-300 px-4 py-2 rounded-full text-sm font-bold mb-6 animate-pulse">
-                <AlertTriangle size={16} />
-                Mouvement structurel actif
-              </div>
-
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.1]">
-                Fissure en
-                <span className="block text-transparent bg-clip-text bg-ipb-orange">
-                  Escalier
-                </span>
-              </h1>
-
-              <p className="text-xl text-white/70 mb-8 leading-relaxed max-w-xl">
-                Une fissure diagonale qui suit les joints de mortier ? C'est le signe d'un 
-                <strong className="text-white"> tassement différentiel</strong>. 
-                Votre fondation bouge. Il faut agir.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/diagnostic" className="group bg-ipb-orange hover:bg-[#b35519] text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl shadow-orange-500/25">
-                  Diagnostic gratuit
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all">
-                  <Phone size={20} />
-                  05 82 95 33 75
-                </a>
-              </div>
-            </div>
-
-            {/* Visual Card */}
-            <div className="relative">
-              <div className="bg-gradient-to-br from-orange-500/20 to-red-500/20 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
-                <div className="bg-white/10 rounded-2xl p-6 mb-6" aria-label="Schéma typique d'une fissure en escalier">
-                  <div className="text-6xl mb-4" aria-hidden="true">🪜</div>
-                  <p className="text-base font-bold text-white mb-2">Schéma typique</p>
-                  <p className="text-white/70 text-sm">La fissure suit les joints en « marches d'escalier » car c'est le chemin de moindre résistance du mur.</p>
+      <main id="main-content">
+        {/* HERO */}
+        <section className="bg-ipb-cream">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12 pt-16 lg:pt-24 pb-20 lg:pb-28">
+            <div className="max-w-3xl">
+              <RevealOnScroll>
+                <Eyebrow>Mouvement structurel actif</Eyebrow>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.06}>
+                <h1
+                  className="font-serif text-ipb-text mb-8"
+                  style={{
+                    fontSize: 'clamp(40px, 4vw, 62px)',
+                    lineHeight: 1.06,
+                    letterSpacing: '-0.025em',
+                    fontWeight: 700,
+                  }}
+                >
+                  Fissure en escalier.<br />
+                  <em>La signature du tassement différentiel.</em>
+                </h1>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.12}>
+                <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[620px]">
+                  Une fissure diagonale qui suit les joints de mortier en marches d'escalier signe presque toujours un tassement différentiel : une partie de la maison s'enfonce plus que l'autre. C'est le cas le plus fréquent que nous traitons en zone toulousaine.
+                </p>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.18}>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <MagneticButton href="/diagnostic" variant="primary">
+                    Diagnostic structure
+                  </MagneticButton>
+                  <MagneticButton href="/expertise/fissures" variant="ghost">
+                    Voir notre méthode
+                  </MagneticButton>
                 </div>
-                
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white/5 rounded-xl p-4 text-center">
-                    <div className="text-3xl font-black text-ipb-orange-l">85%</div>
-                    <div className="text-xs text-ipb-light mt-1">Liées au sol argileux</div>
-                  </div>
-                  <div className="bg-white/5 rounded-xl p-4 text-center">
-                    <div className="text-3xl font-black text-red-400">+15%</div>
-                    <div className="text-xs text-ipb-light mt-1">Par mois sans traitement</div>
-                  </div>
-                </div>
-              </div>
+              </RevealOnScroll>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Vague décorative */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 100" fill="none" className="w-full">
-            <path d="M0 50L60 45C120 40 240 30 360 35C480 40 600 60 720 65C840 70 960 60 1080 50C1200 40 1320 30 1380 25L1440 20V100H1380C1320 100 1200 100 1080 100C960 100 840 100 720 100C600 100 480 100 360 100C240 100 120 100 60 100H0V50Z" fill="white"/>
-          </svg>
-        </div>
-      </section>
-
-      {/* Section Causes - Cards Premium */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-ipb-stone text-ipb-orange px-4 py-2 rounded-full text-sm font-bold mb-4">
-              Comprendre les causes
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
-              Pourquoi cette fissure apparaît ?
-            </h2>
-            <p className="text-xl text-ipb-muted max-w-2xl mx-auto">
-              Une fissure en escalier n'est jamais anodine. Elle révèle un problème sous vos fondations.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {causes.map((cause, index) => (
-              <div 
-                key={index}
-                className="group relative bg-white rounded-3xl p-8 shadow-xl shadow-slate-200/50 border border-ipb-rule hover:shadow-2xl hover:shadow-orange-500/10 hover:border-ipb-rule transition-all duration-300 hover:-translate-y-1"
-              >
-                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 bg-${cause.color}-100 text-${cause.color}-600 group-hover:scale-110 transition-transform`}>
-                  {cause.icon}
-                </div>
-                <h3 className="text-xl font-bold text-ipb-text mb-3">{cause.title}</h3>
-                <p className="text-ipb-muted leading-relaxed">{cause.description}</p>
-                
-                {index === 1 && (
-                  <div className="absolute -top-3 -right-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-                    N°1 en Occitanie
-                  </div>
-                )}
+        {/* SCHEMA TYPIQUE */}
+        <section className="bg-ipb-white py-24 lg:py-32">
+          <div className="max-w-3xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-12 max-w-2xl">
+                <Eyebrow>Reconnaître le motif</Eyebrow>
+                <h2 className="font-serif text-ipb-text mb-6" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Pourquoi en escalier&nbsp;?<br /><em>Le chemin de moindre résistance.</em>
+                </h2>
+                <p className="text-[15px] leading-[1.85] font-light text-ipb-muted">
+                  La fissure suit les joints horizontaux et verticaux de la maçonnerie en formant des « marches d'escalier » parce que c'est le chemin de moindre résistance dans le mur. Le mortier des joints cède avant les briques ou parpaings.
+                </p>
               </div>
-            ))}
+            </RevealOnScroll>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Section Gravité - Visual Gauge */}
-      <section className="py-20 bg-ipb-cream">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-red-100 text-red-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
-              Évaluer la gravité
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
-              Votre fissure est-elle grave ?
-            </h2>
-            <p className="text-xl text-ipb-muted max-w-2xl mx-auto">
-              L'ouverture de la fissure détermine l'urgence d'intervention.
-            </p>
-          </div>
+        {/* CAUSES */}
+        <section className="bg-ipb-cream py-24 lg:py-32">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-16 max-w-2xl">
+                <Eyebrow>Quatre causes principales</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Pourquoi cette fissure<br /><em>apparaît-elle&nbsp;?</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
 
-          <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12">
-            <div className="space-y-6">
-              {signesGravite.map((item, index) => (
-                <div key={index} className="relative">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-bold text-ipb-text">{item.signe}</span>
-                    <span className={`text-sm font-bold px-3 py-1 rounded-full ${
-                      item.color === 'green' ? 'bg-green-100 text-green-700' :
-                      item.color === 'yellow' ? 'bg-yellow-100 text-yellow-700' :
-                      item.color === 'orange' ? 'bg-ipb-stone text-ipb-orange' :
-                      'bg-red-100 text-red-700'
-                    }`}>
-                      {item.niveau}
+            <div className="grid md:grid-cols-2 gap-px bg-ipb-rule border border-ipb-rule">
+              {causes.map((c, i) => (
+                <RevealOnScroll key={c.titre} delay={i * 0.04}>
+                  <article className="bg-ipb-white p-8 lg:p-10 h-full">
+                    <span className="font-serif text-ipb-orange text-[12px] font-bold tracking-[0.18em] mb-4 block">
+                      0{i + 1}
                     </span>
-                  </div>
-                  <div className="h-4 bg-ipb-stone rounded-full overflow-hidden">
-                    <div 
-                      className={`h-full rounded-full transition-all duration-1000 ${
-                        item.color === 'green' ? 'bg-gradient-to-r from-green-400 to-green-500' :
-                        item.color === 'yellow' ? 'bg-gradient-to-r from-yellow-400 to-yellow-500' :
-                        item.color === 'orange' ? 'bg-ipb-orange' :
-                        'bg-gradient-to-r from-red-400 to-red-500'
-                      }`}
-                      style={{ width: item.width }}
-                    ></div>
-                  </div>
-                </div>
+                    <h3 className="font-serif text-ipb-text font-bold text-[20px] leading-tight mb-3">
+                      {c.titre}
+                    </h3>
+                    <p className="text-[14px] leading-[1.85] font-light text-ipb-muted">
+                      {c.desc}
+                    </p>
+                  </article>
+                </RevealOnScroll>
               ))}
             </div>
+          </div>
+        </section>
 
-            <div className="mt-10 p-6 bg-red-50 border border-red-200 rounded-2xl">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <AlertTriangle className="w-6 h-6 text-red-600" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-red-900 mb-1">⚠️ Signe d'alerte supplémentaire</h3>
-                  <p className="text-red-800">
-                    Si la fissure <strong>s'agrandit</strong>, si vos <strong>portes coincent</strong>, ou si vous voyez des fissures 
-                    <strong> à l'intérieur</strong> également : intervention urgente recommandée.
-                  </p>
-                </div>
+        {/* GRAVITÉ */}
+        <section className="bg-ipb-navy py-24 lg:py-32">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-16 max-w-2xl">
+                <Eyebrow variant="dark">Évaluer la gravité</Eyebrow>
+                <h2 className="font-serif text-white" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Votre fissure<br /><em>est-elle grave&nbsp;?</em>
+                </h2>
               </div>
+            </RevealOnScroll>
+
+            <div className="space-y-3">
+              {signesGravite.map((s, i) => (
+                <RevealOnScroll key={s.signe} delay={0.06 + i * 0.05}>
+                  <div className="grid grid-cols-[80px_1fr_auto] gap-6 items-center bg-white/5 border border-white/10 p-5 lg:p-6 rounded-[6px]">
+                    <span className="font-serif text-ipb-orange-l text-[14px] font-bold tracking-wider">
+                      0{i + 1}
+                    </span>
+                    <h3 className="font-serif text-white text-[16px] font-bold">{s.signe}</h3>
+                    <span className={`text-[11px] uppercase tracking-[0.18em] font-bold px-2 py-1 rounded-[3px] border whitespace-nowrap ${
+                      s.niveauColor === 'red' ? 'text-red-400 border-red-400/30 bg-red-500/10' :
+                      s.niveauColor === 'orange' ? 'text-ipb-orange-l border-ipb-orange-l/30 bg-ipb-orange-l/10' :
+                      s.niveauColor === 'amber' ? 'text-amber-300 border-amber-300/30 bg-amber-300/10' :
+                      'text-emerald-300 border-emerald-300/30 bg-emerald-300/10'
+                    }`}>{s.niveau}</span>
+                  </div>
+                </RevealOnScroll>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Section Solution - Timeline */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-ipb-orange/20 text-ipb-orange-l px-4 py-2 rounded-full text-sm font-bold mb-4">
-              Notre méthode
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black mb-4">
-              Comment nous réparons votre fissure
-            </h2>
-            <p className="text-xl text-ipb-light max-w-2xl mx-auto">
-              L'agrafage structurel : la solution éprouvée pour 85% des cas, 3x moins chère que les micropieux.
-            </p>
+        {/* RÉPARATION */}
+        <section className="bg-ipb-white py-24 lg:py-32">
+          <div className="max-w-3xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-12 max-w-2xl">
+                <Eyebrow>Notre méthode</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Comment nous réparons<br /><em>votre fissure.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <RevealOnScroll delay={0.06}>
+              <ol className="space-y-6 text-[15px] leading-[1.85] font-light text-ipb-muted">
+                <li className="grid grid-cols-[40px_1fr] gap-5 items-start">
+                  <span className="font-serif text-ipb-orange text-[14px] font-bold tracking-wider pt-1">01</span>
+                  <p><strong className="text-ipb-text font-medium">Diagnostic instrumenté</strong> sur site avec fissuromètre et niveau laser. Pose de témoins datés, identification de la cause.</p>
+                </li>
+                <li className="grid grid-cols-[40px_1fr] gap-5 items-start">
+                  <span className="font-serif text-ipb-orange text-[14px] font-bold tracking-wider pt-1">02</span>
+                  <p><strong className="text-ipb-text font-medium">Étude structure</strong> : note de calcul signée par notre ingénieur, choix de la technique de stabilisation (agrafage dans 90 % des cas).</p>
+                </li>
+                <li className="grid grid-cols-[40px_1fr] gap-5 items-start">
+                  <span className="font-serif text-ipb-orange text-[14px] font-bold tracking-wider pt-1">03</span>
+                  <p><strong className="text-ipb-text font-medium">Agrafage structurel</strong> : couture du mur avec des aciers inoxydables scellés au mortier haute performance. Le mur retrouve sa cohérence monolithique.</p>
+                </li>
+                <li className="grid grid-cols-[40px_1fr] gap-5 items-start">
+                  <span className="font-serif text-ipb-orange text-[14px] font-bold tracking-wider pt-1">04</span>
+                  <p><strong className="text-ipb-text font-medium">Reprise des finitions</strong> : enduit, peinture si demandée. Levée des étais. Tous les documents techniques vous sont remis.</p>
+                </li>
+              </ol>
+            </RevealOnScroll>
           </div>
+        </section>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { step: '01', title: 'Diagnostic expert', desc: 'Analyse complète de la fissure, des fondations et du sol. Rapport détaillé avec préconisations.', icon: '🔍', duration: '1h30' },
-              { step: '02', title: 'Agrafage structurel', desc: 'Pose d\'agrafes inox tous les 40cm, scellement au mortier fibré. Stabilise définitivement la structure.', icon: '🔧', duration: '2-3 jours' },
-              { step: '03', title: 'Finition & garantie', desc: 'Enduit de finition, peinture. Garantie décennale sur les travaux. Suivi post-intervention.', icon: '✅', duration: 'Garanti 10 ans' },
-            ].map((item, index) => (
-              <div key={index} className="relative">
-                <div className="bg-white/5 backdrop-blur border border-white/10 rounded-3xl p-8 h-full hover:bg-white/10 transition-all">
-                  <div className="flex items-center gap-4 mb-6">
-                    <span className="text-5xl">{item.icon}</span>
-                    <span className="text-6xl font-black text-white/10">{item.step}</span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                  <p className="text-ipb-light mb-4">{item.desc}</p>
-                  <div className="flex items-center gap-2 text-ipb-orange-l text-sm font-bold">
-                    <Clock size={16} />
-                    {item.duration}
-                  </div>
-                </div>
-                {index < 2 && (
-                  <div className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
-                    <ArrowRight className="text-ipb-orange" size={24} />
-                  </div>
-                )}
+        {/* FAQ */}
+        <section className="bg-ipb-cream py-24 lg:py-32">
+          <div className="max-w-4xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="text-center mb-16">
+                <Eyebrow className="justify-center">Questions fréquentes</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Sur les fissures<br /><em>en escalier.</em>
+                </h2>
               </div>
-            ))}
-          </div>
+            </RevealOnScroll>
 
-          {/* Prix */}
-          <div className="mt-16 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-3xl p-8 md:p-12 border border-ipb-orange/30">
-            <div className="grid md:grid-cols-3 gap-8 items-center">
-              <div className="text-center md:text-left">
-                <div className="text-sm text-ipb-orange-l font-bold mb-2">DIAGNOSTIC</div>
-                <div className="inline-block bg-green-500/20 text-green-400 text-sm font-bold px-3 py-1 rounded-full mb-1">Déduit à 100%</div>
-                <div className="text-ipb-light">du montant des travaux</div>
-              </div>
-              <div className="text-center border-y md:border-y-0 md:border-x border-white/10 py-8 md:py-0">
-                <div className="text-sm text-ipb-orange-l font-bold mb-2">AGRAFAGE</div>
-                <div className="text-4xl font-black text-white">8-18K€</div>
-                <div className="text-ipb-light">Selon étendue • Garantie 10 ans</div>
-              </div>
-              <div className="text-center md:text-right">
-                <div className="text-sm text-green-300 font-bold mb-2">ÉCONOMIE VS MICROPIEUX</div>
-                <div className="text-4xl font-black text-green-400">-65%</div>
-                <div className="text-ipb-light">Soit 15 000€ à 30 000€ économisés</div>
-              </div>
+            <div className="space-y-3">
+              {faqItems.map((item, i) => (
+                <RevealOnScroll key={item.question} delay={i * 0.04}>
+                  <details className="group bg-ipb-white border border-ipb-rule rounded-[6px]">
+                    <summary className="cursor-pointer list-none flex items-start justify-between gap-6 p-6 lg:p-7">
+                      <h3 className="font-serif text-ipb-text font-bold text-[17px] leading-tight pr-2">
+                        {item.question}
+                      </h3>
+                      <span className="text-ipb-orange text-2xl leading-none flex-shrink-0 transition-transform group-open:rotate-45 font-light" aria-hidden="true">+</span>
+                    </summary>
+                    <div className="px-6 lg:px-7 pb-7 -mt-2 text-[14px] leading-[1.85] font-light text-ipb-muted">
+                      {item.answer}
+                    </div>
+                  </details>
+                </RevealOnScroll>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* FAQ Premium */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-ipb-stone text-ipb-text px-4 py-2 rounded-full text-sm font-bold mb-4">
-              Questions fréquentes
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black text-ipb-text">
-              Vos questions, nos réponses
-            </h2>
+        {/* Articles connexes */}
+        <nav aria-label="Articles connexes" className="bg-ipb-white py-20 lg:py-24">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <p className="text-2xl font-serif font-bold text-ipb-text mb-8 text-center">Articles connexes</p>
+            <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-px bg-ipb-rule border border-ipb-rule">
+              {[
+                { href: '/fissure-horizontale-danger', title: 'Fissure horizontale', desc: 'Danger structurel' },
+                { href: '/microfissure-quand-sinquieter', title: 'Microfissure', desc: "Quand s'inquiéter" },
+                { href: '/fissure-fondation-maison', title: 'Fissure de fondation', desc: 'Solutions durables' },
+                { href: '/fissure-secheresse-indemnisation', title: 'Sécheresse / CAT-NAT', desc: 'Démarches assurance' },
+                { href: '/expertise/fissures', title: 'Guide complet fissures', desc: 'Notre expertise' },
+                { href: '/expertise/humidite', title: 'Humidité', desc: "Diagnostic et solutions" },
+              ].map((item) => (
+                <Link key={item.href} href={item.href} className="group block bg-ipb-white p-6 hover:bg-ipb-stone transition-colors duration-300">
+                  <h3 className="font-serif text-ipb-text font-bold text-[15px] leading-tight mb-2 group-hover:text-ipb-orange transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-[13px] leading-[1.7] font-light text-ipb-muted">{item.desc}</p>
+                </Link>
+              ))}
+            </div>
           </div>
+        </nav>
 
-          <div className="space-y-4">
-            {faqItems.map((item, index) => (
-              <details key={index} className="group bg-ipb-cream rounded-2xl overflow-hidden">
-                <summary className="flex items-center justify-between p-6 cursor-pointer hover:bg-ipb-stone transition-colors">
-                  <span className="font-bold text-ipb-text pr-8">{item.q}</span>
-                  <span className="w-8 h-8 bg-ipb-stone rounded-full flex items-center justify-center text-ipb-orange group-open:rotate-180 transition-transform flex-shrink-0">
-                    <ChevronRight size={18} className="rotate-90" />
-                  </span>
-                </summary>
-                <div className="px-6 pb-6 text-ipb-muted leading-relaxed">
-                  {item.a}
-                </div>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Articles connexes */}
-      <nav aria-label="Articles connexes" className="py-20 bg-ipb-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-2xl font-black text-ipb-text mb-8 text-center">
-            Articles connexes
-          </p>
-          <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {[
-              { href: '/fissure-horizontale-danger', icon: '➖', title: 'Fissure horizontale', desc: 'Danger structurel' },
-              { href: '/microfissure-quand-sinquieter', icon: '🔍', title: 'Microfissure', desc: 'Quand s\'inquiéter ?' },
-              { href: '/fissure-secheresse-indemnisation', icon: '☀️', title: 'Fissure sécheresse', desc: 'Indemnisation CAT-NAT' },
-              { href: '/fissure-fondation-maison', icon: '🏠', title: 'Fissure fondation', desc: 'Solutions durables' },
-              { href: '/expertise/fissures', icon: '📋', title: 'Guide complet fissures', desc: 'Tout savoir sur nos solutions' },
-              { href: '/expertise/humidite', icon: '💧', title: 'Problème d\'humidité ?', desc: 'Nos solutions humidité' },
-            ].map((item, index) => (
-              <Link 
-                key={index}
-                href={item.href}
-                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-ipb-rule"
-              >
-                <span className="text-4xl mb-4 block">{item.icon}</span>
-                <h3 className="font-bold text-ipb-text group-hover:text-ipb-orange transition-colors mb-1">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-ipb-muted">{item.desc}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </nav>
-
-      {/* CTA Final */}
-      <section className="py-20 bg-ipb-orange text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, white 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
-        </div>
-        
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm font-bold mb-6">
-            <TrendingUp size={16} />
-            850+ diagnostics réalisés en Occitanie
-          </div>
-          
-          <h2 className="text-3xl md:text-5xl font-black mb-6">
-            Votre fissure n'attendra pas.
-            <span className="block text-ipb-orange-l">Nous non plus.</span>
-          </h2>
-          
-          <p className="text-xl text-ipb-orange-l mb-8 max-w-2xl mx-auto">
-            Diagnostic sous 48h • Devis gratuit • Garantie décennale
-          </p>
-
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/diagnostic" className="group bg-white text-ipb-orange px-10 py-5 rounded-2xl font-bold text-lg hover:bg-ipb-stone flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">
-              Je demande mon diagnostic gratuit
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/30 hover:bg-white/20 px-8 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all">
-              <Phone size={20} />
-              05 82 95 33 75
-            </a>
-          </div>
-        </div>
-      </section>
+        <CtaFinal />
+      </main>
 
       <Footer />
     </div>

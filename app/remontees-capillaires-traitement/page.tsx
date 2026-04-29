@@ -5,412 +5,270 @@ import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
-import { CheckCircle, Phone, ArrowRight, Droplets, AlertTriangle, Home, Clock, Shield, ChevronRight, Zap, ThermometerSun } from 'lucide-react';
+import { CtaFinal } from '@/components/home/CtaFinal';
+import { Eyebrow } from '@/components/ui/Eyebrow';
+import { MagneticButton } from '@/components/ui/MagneticButton';
+import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Remontées Capillaires : Traitement Définitif par Injection | Expert Occitanie',
-  description: 'Remontées capillaires dans les murs ? Salpêtre, moisissures, peinture qui cloque. Traitement par injection résine hydrophobe. Garantie 30 ans. Expert Toulouse, Montauban, Auch (31-82-32) ☎ 05 82 95 33 75',
+  title: 'Traitement remontées capillaires · Injection résine hydrophobe · Institut IPB',
+  description: "Traitement définitif des remontées capillaires par injection de résine hydrophobe. Processus, durée, prix, garantie 30 ans. Institut IPB Toulouse, Montauban, Auch (31-82-32).",
   keywords: ['remontées capillaires', 'injection résine', 'humidité murs', 'salpêtre', 'traitement humidité'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/remontees-capillaires-traitement' },
   openGraph: {
-    title: 'Remontées Capillaires : Traitement Définitif | IPB',
-    description: 'Traitement définitif des remontées capillaires par injection. Résultat visible en 3 mois. Expert Occitanie.',
+    title: 'Traitement remontées capillaires · Institut IPB',
+    description: "Traitement définitif des remontées capillaires par injection. Résultat visible en 3 mois. Garantie 30 ans.",
     url: 'https://www.ipb-expertise.fr/remontees-capillaires-traitement',
     type: 'article',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
   },
 };
 
 const symptomes = [
-  { icon: '🧂', titre: 'Salpêtre', description: 'Poudre blanche cristalline au pied des murs', severity: 'high' },
-  { icon: '🎨', titre: 'Peinture qui cloque', description: 'Cloques et écaillage en partie basse', severity: 'high' },
-  { icon: '🦠', titre: 'Moisissures', description: 'Taches noires persistantes près du sol', severity: 'medium' },
-  { icon: '👃', titre: 'Odeur de moisi', description: 'Odeur persistante même après aération', severity: 'medium' },
-  { icon: '📏', titre: 'Auréoles', description: 'Marques d\'humidité montant du sol (< 1m50)', severity: 'high' },
-  { icon: '🧱', titre: 'Enduit dégradé', description: 'Enduit qui se décolle ou s\'effrite', severity: 'medium' },
+  { titre: 'Salpêtre', desc: 'Poudre blanche cristalline au pied des murs.' },
+  { titre: 'Peinture qui cloque', desc: 'Cloques et écaillage en partie basse.' },
+  { titre: 'Moisissures', desc: 'Taches noires persistantes près du sol.' },
+  { titre: 'Odeur de moisi', desc: 'Odeur persistante même après aération.' },
+  { titre: 'Auréoles humides', desc: "Marques d'humidité qui montent du sol jusqu'à 1,50 m." },
+  { titre: 'Enduit dégradé', desc: "Enduit qui se décolle ou s'effrite, plinthes qui gondolent." },
 ];
 
 const etapesTraitement = [
   {
-    num: '01',
-    titre: 'Diagnostic précis',
-    description: 'Mesure du taux d\'humidité à différentes hauteurs. Identification des zones touchées.',
-    duree: '1h30',
-    icon: '🔍',
+    titre: 'Diagnostic instrumenté',
+    desc: "Mesure du taux d'humidité à différentes hauteurs avec humidimètre à sonde. Identification précise des zones concernées et de leur ampleur.",
+    duree: '1 h 30',
   },
   {
-    num: '02',
     titre: 'Perçage calibré',
-    description: 'Perçage tous les 12cm à la base du mur, en quinconce. Profondeur = 2/3 de l\'épaisseur.',
+    desc: "Perçage tous les 10 à 15 cm à la base du mur, en quinconce. Profondeur égale aux deux tiers de l'épaisseur du mur.",
     duree: '1 jour',
-    icon: '🔧',
   },
   {
-    num: '03',
-    titre: 'Injection résine',
-    description: 'Injection basse pression de résine hydrophobe. Création d\'une barrière étanche continue.',
-    duree: '1-2 jours',
-    icon: '💧',
+    titre: 'Injection résine hydrophobe',
+    desc: "Injection basse pression de résine silicone ou silane. Diffusion progressive et formation d'une barrière étanche continue.",
+    duree: '1 à 2 jours',
   },
   {
-    num: '04',
     titre: 'Séchage naturel',
-    description: 'Le mur évacue l\'humidité accumulée. Comptez 1 mois par cm d\'épaisseur.',
-    duree: '6-12 mois',
-    icon: '☀️',
+    desc: "Le mur évacue progressivement l'humidité accumulée. Comptez environ 1 mois par centimètre d'épaisseur. Suivi inclus à 3 et 6 mois.",
+    duree: '6 à 12 mois',
   },
 ];
 
 export default function RemonteesCapillairesPage() {
   return (
-    <div className="font-sans text-ipb-text bg-white antialiased">
+    <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <TopBar />
       <Navbar />
       <SmartBackBar />
 
-      {/* Hero - Style Humidité */}
-      <section className="relative bg-gradient-to-br from-blue-900 via-cyan-900 to-slate-900 text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 30% 70%, rgba(59, 130, 246, 0.3) 0%, transparent 50%)' }}></div>
-          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 70% 30%, rgba(6, 182, 212, 0.2) 0%, transparent 50%)' }}></div>
+      <div className="bg-ipb-cream border-b border-ipb-rule py-3">
+        <div className="max-w-ipb mx-auto px-6 lg:px-12 text-sm text-ipb-muted">
+          <Link href="/" className="hover:text-ipb-orange transition-colors">Accueil</Link>
+          <span className="mx-2" aria-hidden="true">›</span>
+          <Link href="/expert-humidite-toulouse-31" className="hover:text-ipb-orange transition-colors">Expert humidité</Link>
+          <span className="mx-2" aria-hidden="true">›</span>
+          <span className="text-ipb-text">Traitement remontées capillaires</span>
         </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <nav className="flex items-center gap-2 text-sm text-blue-200 mb-8">
-            <Link href="/" className="hover:text-white transition">Accueil</Link>
-            <ChevronRight size={14} />
-            <Link href="/expert-humidite-toulouse-31" className="hover:text-white transition">Expert Humidité</Link>
-            <ChevronRight size={14} />
-            <span className="text-white">Remontées capillaires</span>
-          </nav>
+      </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-cyan-500/20 border border-cyan-400/30 text-cyan-300 px-4 py-2 rounded-full text-sm font-bold mb-6">
-                <Droplets size={16} />
-                Traitement garanti 30 ans
-              </div>
-
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.1]">
-                Remontées
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
-                  Capillaires
-                </span>
-              </h1>
-
-              <p className="text-xl text-blue-100 mb-8 leading-relaxed max-w-xl">
-                L'eau du sol remonte dans vos murs par capillarité, comme une éponge. 
-                <strong className="text-white"> Notre injection de résine hydrophobe</strong> crée 
-                une barrière étanche définitive.
-              </p>
-
-              <div className="grid grid-cols-3 gap-4 mb-8">
-                <div className="bg-white/10 backdrop-blur rounded-2xl p-4 text-center">
-                  <div className="text-3xl font-black text-cyan-400">30</div>
-                  <div className="text-xs text-blue-200">ans de garantie</div>
+      <main id="main-content">
+        {/* HERO */}
+        <section className="bg-ipb-cream">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12 pt-16 lg:pt-24 pb-20 lg:pb-28">
+            <div className="max-w-3xl">
+              <RevealOnScroll>
+                <Eyebrow>Traitement par injection — garanti 30 ans</Eyebrow>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.06}>
+                <h1
+                  className="font-serif text-ipb-text mb-8"
+                  style={{
+                    fontSize: 'clamp(40px, 4vw, 62px)',
+                    lineHeight: 1.06,
+                    letterSpacing: '-0.025em',
+                    fontWeight: 700,
+                  }}
+                >
+                  Traitement des remontées capillaires.<br />
+                  <em>Injection résine hydrophobe.</em>
+                </h1>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.12}>
+                <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[620px]">
+                  L'eau du sol remonte dans vos murs par capillarité — comme une éponge. L'injection de résine hydrophobe en pied de mur crée une barrière étanche durable qui stoppe le phénomène. Voici la méthode IPB en quatre étapes.
+                </p>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.18}>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <MagneticButton href="/diagnostic" variant="primary">
+                    Diagnostic gratuit
+                  </MagneticButton>
+                  <MagneticButton href="/remontee-capillaire-solution" variant="ghost">
+                    Comprendre le phénomène
+                  </MagneticButton>
                 </div>
-                <div className="bg-white/10 backdrop-blur rounded-2xl p-4 text-center">
-                  <div className="text-3xl font-black text-cyan-400">95%</div>
-                  <div className="text-xs text-blue-200">d'efficacité</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur rounded-2xl p-4 text-center">
-                  <div className="text-3xl font-black text-cyan-400">48h</div>
-                  <div className="text-xs text-blue-200">barrière active</div>
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/diagnostic" className="group bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl shadow-cyan-500/25">
-                  Diagnostic gratuit
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all">
-                  <Phone size={20} />
-                  05 82 95 33 75
-                </a>
-              </div>
+              </RevealOnScroll>
             </div>
 
-            {/* Schéma visuel */}
-            <div className="relative">
-              <div className="bg-white/10 backdrop-blur rounded-3xl p-8 border border-white/20">
-                <h3 className="text-lg font-bold text-white mb-6 text-center">Le phénomène expliqué</h3>
-                
-                <div className="relative bg-gradient-to-t from-blue-600/30 to-transparent rounded-2xl p-6 h-64">
-                  {/* Sol */}
-                  <div className="absolute bottom-0 left-0 right-0 h-16 bg-amber-800/50 rounded-b-2xl flex items-center justify-center">
-                    <span className="text-amber-200 text-sm font-bold">SOL HUMIDE</span>
-                  </div>
-                  
-                  {/* Mur */}
-                  <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 w-24 h-40 bg-slate-600/50 rounded-t-lg border-2 border-slate-500/50">
-                    {/* Eau qui monte */}
-                    <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-blue-500/60 to-transparent rounded-t-lg animate-pulse"></div>
-                    <span className="absolute top-2 left-1/2 transform -translate-x-1/2 text-white text-xs font-bold">MUR</span>
-                  </div>
-                  
-                  {/* Flèches */}
-                  <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2">
-                    <div className="flex flex-col items-center">
-                      <ArrowRight size={24} className="text-cyan-400 rotate-[-90deg] animate-bounce" />
-                      <span className="text-cyan-300 text-xs mt-1">Capillarité</span>
+            <RevealOnScroll delay={0.24}>
+              <div className="mt-16 grid grid-cols-3 gap-8 lg:gap-12 max-w-2xl pt-12 border-t border-ipb-rule">
+                <div>
+                  <p className="font-serif text-ipb-text font-bold leading-none mb-3" style={{ fontSize: 'clamp(36px, 4vw, 56px)' }}>
+                    30<span className="text-ipb-orange"> ans</span>
+                  </p>
+                  <p className="text-[12px] text-ipb-muted uppercase tracking-[0.14em] font-medium">de garantie</p>
+                </div>
+                <div>
+                  <p className="font-serif text-ipb-text font-bold leading-none mb-3" style={{ fontSize: 'clamp(36px, 4vw, 56px)' }}>
+                    95<span className="text-ipb-orange"> %</span>
+                  </p>
+                  <p className="text-[12px] text-ipb-muted uppercase tracking-[0.14em] font-medium">d'efficacité</p>
+                </div>
+                <div>
+                  <p className="font-serif text-ipb-text font-bold leading-none mb-3" style={{ fontSize: 'clamp(36px, 4vw, 56px)' }}>
+                    48<span className="text-ipb-orange"> h</span>
+                  </p>
+                  <p className="text-[12px] text-ipb-muted uppercase tracking-[0.14em] font-medium">barrière active</p>
+                </div>
+              </div>
+            </RevealOnScroll>
+          </div>
+        </section>
+
+        {/* SYMPTÔMES */}
+        <section className="bg-ipb-white py-24 lg:py-32">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-16 max-w-2xl">
+                <Eyebrow>Reconnaître les remontées capillaires</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Six symptômes<br /><em>en pied de mur.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-ipb-rule border border-ipb-rule">
+              {symptomes.map((s, i) => (
+                <RevealOnScroll key={s.titre} delay={i * 0.04}>
+                  <article className="bg-ipb-white p-7 lg:p-8 h-full">
+                    <span className="font-serif text-ipb-orange text-[12px] font-bold tracking-[0.18em] mb-4 block">
+                      0{i + 1}
+                    </span>
+                    <h3 className="font-serif text-ipb-text font-bold text-[18px] leading-tight mb-3">
+                      {s.titre}
+                    </h3>
+                    <p className="text-[13px] leading-[1.8] font-light text-ipb-muted">
+                      {s.desc}
+                    </p>
+                  </article>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* PROCESSUS */}
+        <section className="bg-ipb-navy py-24 lg:py-32">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-16 max-w-2xl">
+                <Eyebrow variant="dark">Notre méthode en 4 étapes</Eyebrow>
+                <h2 className="font-serif text-white" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Du diagnostic<br /><em>au mur sec.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <ul className="space-y-8">
+              {etapesTraitement.map((etape, i) => (
+                <RevealOnScroll key={etape.titre} delay={0.08 + i * 0.06}>
+                  <li className="grid grid-cols-[40px_1fr_auto] gap-5 items-start pb-8 border-b border-white/10">
+                    <span className="font-serif text-ipb-orange-l text-[14px] font-bold tracking-wider pt-2">
+                      0{i + 1}
+                    </span>
+                    <div>
+                      <h3 className="font-serif text-white text-[20px] font-bold leading-tight mb-2">{etape.titre}</h3>
+                      <p className="text-[14px] leading-[1.75] font-light text-white/65">{etape.desc}</p>
                     </div>
-                  </div>
-                </div>
+                    <span className="text-[11px] uppercase tracking-[0.18em] font-bold text-ipb-orange-l whitespace-nowrap pt-3">
+                      {etape.duree}
+                    </span>
+                  </li>
+                </RevealOnScroll>
+              ))}
+            </ul>
+          </div>
+        </section>
 
-                <p className="text-center text-blue-200 text-sm mt-4">
-                  L'eau remonte dans les micro-pores du mur, comme du café dans un sucre.
-                </p>
+        {/* PRIX */}
+        <section className="bg-ipb-cream py-24 lg:py-32">
+          <div className="max-w-3xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-12 max-w-2xl">
+                <Eyebrow>Tarifs traitement injection</Eyebrow>
+                <h2 className="font-serif text-ipb-text mb-6" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Trois lignes,<br /><em>tout est dit.</em>
+                </h2>
               </div>
-            </div>
-          </div>
-        </div>
+            </RevealOnScroll>
 
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 100" fill="none" className="w-full">
-            <path d="M0 50L60 45C120 40 240 30 360 35C480 40 600 60 720 65C840 70 960 60 1080 50C1200 40 1320 30 1380 25L1440 20V100H0V50Z" fill="white"/>
-          </svg>
-        </div>
-      </section>
-
-      {/* Symptômes */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
-              Reconnaître le problème
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
-              6 signes qui ne trompent pas
-            </h2>
-            <p className="text-xl text-ipb-muted max-w-2xl mx-auto">
-              Si vous observez 2 ou plus de ces symptômes, vous avez probablement des remontées capillaires.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {symptomes.map((item, index) => (
-              <div 
-                key={index}
-                className={`relative rounded-3xl p-6 ${
-                  item.severity === 'high' 
-                    ? 'bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200' 
-                    : 'bg-ipb-cream border border-ipb-rule'
-                } hover:shadow-lg transition-all`}
-              >
-                <div className="flex items-start gap-4">
-                  <span className="text-4xl">{item.icon}</span>
+            <RevealOnScroll delay={0.06}>
+              <div className="bg-ipb-white border border-ipb-rule rounded-[6px] divide-y divide-ipb-rule">
+                <div className="flex items-center justify-between p-6 lg:p-7">
                   <div>
-                    <h3 className="text-lg font-bold text-ipb-text mb-1">{item.titre}</h3>
-                    <p className="text-ipb-muted text-sm">{item.description}</p>
+                    <h3 className="font-serif text-ipb-text font-bold text-[17px] leading-tight mb-1">Diagnostic instrumenté</h3>
+                    <p className="text-[13px] font-light text-ipb-muted">Expertise sur site, rapport détaillé, déduit à 100 % des travaux.</p>
                   </div>
                 </div>
-                {item.severity === 'high' && (
-                  <div className="absolute -top-2 -right-2 bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-                    Typique
+                <div className="flex items-center justify-between p-6 lg:p-7">
+                  <div className="flex-1">
+                    <h3 className="font-serif text-ipb-text font-bold text-[17px] leading-tight mb-1">Injection résine</h3>
+                    <p className="text-[13px] font-light text-ipb-muted">Par mètre linéaire de mur traité.</p>
                   </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Processus de traitement */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 to-blue-950 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-cyan-500/20 text-cyan-300 px-4 py-2 rounded-full text-sm font-bold mb-4">
-              Notre méthode
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black mb-4">
-              Traitement en 4 étapes
-            </h2>
-            <p className="text-xl text-ipb-light max-w-2xl mx-auto">
-              L'injection de résine hydrophobe : la solution définitive, garantie 30 ans.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {etapesTraitement.map((etape, index) => (
-              <div key={index} className="relative">
-                <div className="bg-white/5 backdrop-blur border border-white/10 rounded-3xl p-6 h-full hover:bg-white/10 transition-all">
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-5xl">{etape.icon}</span>
-                    <span className="text-6xl font-black text-white/10">{etape.num}</span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">{etape.titre}</h3>
-                  <p className="text-ipb-light text-sm mb-4">{etape.description}</p>
-                  <div className="flex items-center gap-2 text-cyan-400 text-sm font-bold">
-                    <Clock size={14} />
-                    {etape.duree}
-                  </div>
+                  <span className="font-serif text-ipb-orange font-bold text-[20px] leading-none">80 – 120 €</span>
                 </div>
-                {index < 3 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
-                    <ArrowRight className="text-cyan-500" size={20} />
+                <div className="flex items-center justify-between p-6 lg:p-7">
+                  <div className="flex-1">
+                    <h3 className="font-serif text-ipb-text font-bold text-[17px] leading-tight mb-1">Maison individuelle type</h3>
+                    <p className="text-[13px] font-light text-ipb-muted">Selon le linéaire à traiter.</p>
                   </div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* Encart résultat */}
-          <div className="mt-16 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-3xl p-8 md:p-12 border border-cyan-500/30">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h3 className="text-2xl font-bold mb-4">Résultat garanti</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-center gap-3 text-white/70">
-                    <CheckCircle size={20} className="text-cyan-400" />
-                    Barrière étanche active en 48h
-                  </li>
-                  <li className="flex items-center gap-3 text-white/70">
-                    <CheckCircle size={20} className="text-cyan-400" />
-                    Séchage progressif visible en 3 mois
-                  </li>
-                  <li className="flex items-center gap-3 text-white/70">
-                    <CheckCircle size={20} className="text-cyan-400" />
-                    Murs secs et sains en 6-12 mois
-                  </li>
-                  <li className="flex items-center gap-3 text-white/70">
-                    <CheckCircle size={20} className="text-cyan-400" />
-                    Garantie 30 ans sur l'injection
-                  </li>
-                </ul>
-              </div>
-              <div className="text-center">
-                <div className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
-                  80-120€
+                  <span className="font-serif text-ipb-orange font-bold text-[20px] leading-none">2 000 – 5 000 €</span>
                 </div>
-                <div className="text-ipb-light mt-2">par mètre linéaire</div>
-                <div className="text-sm text-cyan-300 mt-4">Soit 8 000 à 15 000€ pour une maison standard</div>
               </div>
+            </RevealOnScroll>
+          </div>
+        </section>
+
+        {/* Articles connexes */}
+        <nav aria-label="Articles connexes" className="bg-ipb-white py-20 lg:py-24">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <p className="text-2xl font-serif font-bold text-ipb-text mb-8 text-center">Articles connexes</p>
+            <div className="grid md:grid-cols-4 gap-px bg-ipb-rule border border-ipb-rule">
+              {[
+                { href: '/remontee-capillaire-solution', title: 'Remontées capillaires', desc: 'Comprendre le phénomène' },
+                { href: '/salpetre-mur-traitement', title: 'Salpêtre', desc: 'Symptôme visible' },
+                { href: '/cave-humide-solutions', title: 'Cave humide', desc: 'Cuvelage et drainage' },
+                { href: '/expertise/humidite', title: 'Guide humidité', desc: 'Toutes nos solutions' },
+              ].map((item) => (
+                <Link key={item.href} href={item.href} className="group block bg-ipb-white p-6 hover:bg-ipb-stone transition-colors duration-300">
+                  <h3 className="font-serif text-ipb-text font-bold text-[15px] leading-tight mb-2 group-hover:text-ipb-orange transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-[13px] leading-[1.7] font-light text-ipb-muted">{item.desc}</p>
+                </Link>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </nav>
 
-      {/* Comparatif solutions */}
-      <section className="py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
-              Pourquoi l'injection plutôt qu'autre chose ?
-            </h2>
-          </div>
-
-          <div className="bg-ipb-cream rounded-3xl overflow-hidden">
-            <table className="w-full">
-              <thead className="bg-ipb-navy text-white">
-                <tr>
-                  <th className="p-4 text-left">Solution</th>
-                  <th className="p-4 text-center">Efficacité</th>
-                  <th className="p-4 text-center">Prix</th>
-                  <th className="p-4 text-center">Durée</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="bg-cyan-50 border-l-4 border-cyan-500">
-                  <td className="p-4 font-bold text-ipb-text">✅ Injection résine</td>
-                  <td className="p-4 text-center"><span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-bold">95%</span></td>
-                  <td className="p-4 text-center text-ipb-muted">8-15K€</td>
-                  <td className="p-4 text-center text-ipb-muted">30 ans</td>
-                </tr>
-                <tr className="border-b border-ipb-rule">
-                  <td className="p-4 font-bold text-ipb-text">Drainage périphérique</td>
-                  <td className="p-4 text-center"><span className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-bold">70%</span></td>
-                  <td className="p-4 text-center text-ipb-muted">15-30K€</td>
-                  <td className="p-4 text-center text-ipb-muted">20 ans</td>
-                </tr>
-                <tr className="border-b border-ipb-rule">
-                  <td className="p-4 font-bold text-ipb-text">Électro-osmose</td>
-                  <td className="p-4 text-center"><span className="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm font-bold">50%</span></td>
-                  <td className="p-4 text-center text-ipb-muted">5-10K€</td>
-                  <td className="p-4 text-center text-ipb-muted">Variable</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-bold text-ipb-text">Peinture "anti-humidité"</td>
-                  <td className="p-4 text-center"><span className="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-bold">0%</span></td>
-                  <td className="p-4 text-center text-ipb-muted">200-500€</td>
-                  <td className="p-4 text-center text-ipb-muted">6 mois max</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div className="mt-8 p-6 bg-amber-50 border border-amber-200 rounded-2xl">
-            <div className="flex items-start gap-4">
-              <AlertTriangle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
-              <div>
-                <h4 className="font-bold text-amber-900 mb-1">Attention aux "solutions miracles"</h4>
-                <p className="text-amber-800 text-sm">
-                  Les peintures anti-humidité et enduits "respirants" ne traitent pas la cause. 
-                  Ils masquent temporairement le problème qui réapparaît ensuite de plus belle.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Articles connexes */}
-      <section className="py-20 bg-ipb-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-ipb-text mb-8 text-center">
-            Articles connexes
-          </h2>
-          <div className="grid md:grid-cols-4 gap-6">
-            {[
-              { href: '/salpetre-mur-traitement', icon: '🧂', title: 'Salpêtre', desc: 'Causes et traitement' },
-              { href: '/moisissures-maison-sante', icon: '🦠', title: 'Moisissures', desc: 'Risques santé' },
-              { href: '/cave-humide-solutions', icon: '🏠', title: 'Cave humide', desc: 'Solutions cuvelage' },
-              { href: '/condensation-ou-infiltration', icon: '❓', title: 'Condensation ?', desc: 'Comment distinguer' },
-            ].map((item, index) => (
-              <Link 
-                key={index}
-                href={item.href}
-                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-ipb-rule"
-              >
-                <span className="text-4xl mb-4 block">{item.icon}</span>
-                <h3 className="font-bold text-ipb-text group-hover:text-blue-600 transition-colors mb-1">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-ipb-muted">{item.desc}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-cyan-600 to-blue-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm font-bold mb-6">
-            <Shield size={16} />
-            Garantie 30 ans sur l'injection
-          </div>
-          
-          <h2 className="text-3xl md:text-5xl font-black mb-6">
-            Murs humides depuis trop longtemps ?
-          </h2>
-          
-          <p className="text-xl text-cyan-100 mb-8 max-w-2xl mx-auto">
-            Chaque mois qui passe dégrade vos murs, vos boiseries et votre santé.
-            Un diagnostic aujourd'hui peut vous éviter une facture x3 demain.
-          </p>
-
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/diagnostic" className="group bg-white text-cyan-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-cyan-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">
-              Je veux des murs secs
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/30 hover:bg-white/20 px-8 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all">
-              <Phone size={20} />
-              05 82 95 33 75
-            </a>
-          </div>
-        </div>
-      </section>
+        <CtaFinal />
+      </main>
 
       <Footer />
     </div>

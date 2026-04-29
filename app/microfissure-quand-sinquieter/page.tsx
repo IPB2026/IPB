@@ -5,57 +5,37 @@ import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
-import { Phone, ArrowRight, AlertTriangle, Search, ChevronRight, Shield, CheckCircle, Eye, Ruler, Clock } from 'lucide-react';
+import { CtaFinal } from '@/components/home/CtaFinal';
+import { Eyebrow } from '@/components/ui/Eyebrow';
+import { MagneticButton } from '@/components/ui/MagneticButton';
+import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Microfissure Façade : Quand S\'inquiéter ? Guide Expert | Occitanie (31-82-32)',
-  description: 'Microfissures sur votre façade ? Toutes ne sont pas dangereuses. Guide pour différencier fissure esthétique et structurelle. Critères d\'alerte et quand appeler un expert. Toulouse, Montauban, Auch.',
-  keywords: ['microfissure', 'fissure façade', 'faïençage', 'fissure superficielle', 'quand s\'inquiéter fissure'],
+  title: "Microfissure : quand s'inquiéter ? · Guide expert · Institut IPB",
+  description: "Microfissures sur votre façade ? Toutes ne sont pas dangereuses. Guide pour différencier fissure esthétique et structurelle, critères d'alerte. Institut IPB Toulouse, Montauban, Auch.",
+  keywords: ['microfissure', 'fissure façade', 'faïençage', 'fissure superficielle', "quand s'inquiéter fissure"],
   alternates: { canonical: 'https://www.ipb-expertise.fr/microfissure-quand-sinquieter' },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
+  },
 };
 
 const typesClassification = [
-  {
-    type: 'Faïençage',
-    ouverture: '< 0.2mm',
-    aspect: 'Réseau de fines lignes',
-    danger: 'Aucun',
-    action: 'Surveillance',
-    couleur: 'green',
-  },
-  {
-    type: 'Microfissure',
-    ouverture: '0.2 - 1mm',
-    aspect: 'Ligne unique visible',
-    danger: 'Faible',
-    action: 'Surveiller évolution',
-    couleur: 'yellow',
-  },
-  {
-    type: 'Fissure légère',
-    ouverture: '1 - 2mm',
-    aspect: 'Visible, peut être suivie',
-    danger: 'Modéré',
-    action: 'Diagnostic recommandé',
-    couleur: 'orange',
-  },
-  {
-    type: 'Fissure structurelle',
-    ouverture: '> 2mm',
-    aspect: 'Large, traversante',
-    danger: 'Élevé',
-    action: 'Intervention urgente',
-    couleur: 'red',
-  },
+  { type: 'Faïençage', ouverture: '< 0,2 mm', aspect: 'Réseau de fines lignes', danger: 'Aucun', action: 'Surveillance simple', niveau: 'faible' },
+  { type: 'Microfissure', ouverture: '0,2 – 1 mm', aspect: 'Ligne unique visible', danger: 'Faible', action: 'Surveiller évolution', niveau: 'faible' },
+  { type: 'Fissure légère', ouverture: '1 – 2 mm', aspect: 'Visible, peut être suivie', danger: 'Modéré', action: 'Diagnostic recommandé', niveau: 'moyen' },
+  { type: 'Fissure structurelle', ouverture: '> 2 mm', aspect: 'Large, parfois traversante', danger: 'Élevé', action: 'Intervention urgente', niveau: 'eleve' },
 ];
 
 const signesAlerte = [
-  { signe: 'La fissure s\'agrandit au fil des semaines', urgent: true },
+  { signe: "La fissure s'agrandit au fil des semaines", urgent: true },
   { signe: 'Forme en escalier (suit les joints)', urgent: true },
   { signe: 'Portes ou fenêtres qui coincent', urgent: true },
-  { signe: 'Fissures visibles à l\'intérieur aussi', urgent: true },
+  { signe: "Fissures visibles à l'intérieur aussi", urgent: true },
   { signe: 'Craquements dans les murs', urgent: true },
-  { signe: 'Fissure uniquement sur l\'enduit extérieur', urgent: false },
+  { signe: "Fissure uniquement sur l'enduit extérieur", urgent: false },
   { signe: 'Réseau de petites lignes (faïençage)', urgent: false },
   { signe: 'Fissure stable depuis des années', urgent: false },
 ];
@@ -66,10 +46,10 @@ const faqSchema = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'Quand faut-il s\'inquiéter d\'une microfissure sur une façade ?',
+      name: "Quand faut-il s'inquiéter d'une microfissure sur une façade ?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Il faut s\'inquiéter si la microfissure s\'agrandit au fil des semaines, si elle a une forme en escalier (suivant les joints), si vos portes ou fenêtres coincent, si des fissures apparaissent aussi à l\'intérieur, ou si vous entendez des craquements. En revanche, un faïençage (réseau de petites lignes < 0.2mm) stable est généralement bénin. 70% des microfissures sont sans danger.',
+        text: "Il faut s'inquiéter si la microfissure s'agrandit, si elle a une forme en escalier (suivant les joints de maçonnerie), si vos portes ou fenêtres coincent, si des fissures apparaissent aussi à l'intérieur, ou si vous entendez des craquements. En revanche, un faïençage (réseau de petites lignes inférieur à 0,2 mm) stable est généralement bénin.",
       },
     },
     {
@@ -77,328 +57,264 @@ const faqSchema = {
       name: 'Comment savoir si une microfissure est structurelle ou superficielle ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'La classification se fait par l\'ouverture : moins de 0.2mm (faïençage, aucun danger), 0.2 à 1mm (microfissure, surveillance), 1 à 2mm (fissure légère, diagnostic recommandé), plus de 2mm (fissure structurelle, intervention urgente). Le test du témoin (ruban adhésif daté en travers de la fissure) permet de surveiller l\'évolution.',
+        text: "La classification se fait principalement par l'ouverture : moins de 0,2 mm (faïençage, aucun danger), 0,2 à 1 mm (microfissure, surveillance), 1 à 2 mm (fissure légère, diagnostic recommandé), plus de 2 mm (fissure structurelle, intervention urgente). Le test du témoin (ruban adhésif daté collé en travers de la fissure) permet de surveiller l'évolution.",
       },
     },
     {
       '@type': 'Question',
-      name: 'Faut-il réparer les microfissures sur une façade ?',
+      name: 'Une microfissure peut-elle disparaître toute seule ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Les microfissures de moins de 0.2mm (faïençage) ne nécessitent qu\'une surveillance. Entre 0.2 et 1mm, il faut surveiller l\'évolution. Au-delà de 1mm, un diagnostic professionnel est recommandé pour identifier la cause (tassement, retrait, poussée) et choisir le bon traitement. Reboucher sans traiter la cause est inutile car la fissure réapparaîtra.',
+        text: "Non, une fissure ne se referme pas spontanément. Elle peut être stabilisée si la cause (mouvement de terrain, sécheresse, retrait du béton) cesse. Le faïençage peut être masqué par un nouvel enduit. Une microfissure structurelle nécessite un traitement (agrafage, injection résine époxy ou polyuréthane).",
       },
     },
     {
       '@type': 'Question',
-      name: 'Comment surveiller l\'évolution d\'une microfissure ?',
+      name: 'Combien coûte un diagnostic de microfissure ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Posez un ruban adhésif en travers de la fissure avec la date inscrite dessus. Si le ruban se déchire dans les semaines suivantes, la fissure évolue et il faut consulter un expert. Vous pouvez aussi mesurer l\'ouverture avec une règle et noter les mesures régulièrement. Des photos datées permettent de documenter l\'évolution.',
+        text: "Le diagnostic instrumenté est une prestation d'expertise sur site, déductible à 100 % si vous nous confiez les travaux. L'expert mesure les fissures (fissuromètre), pose des témoins, identifie la cause et rédige un rapport opposable.",
       },
     },
   ],
 };
 
+const faqItems = faqSchema.mainEntity.map((q) => ({ question: q.name, answer: q.acceptedAnswer.text }));
+
 export default function MicrofissurePage() {
   return (
-    <div className="font-sans text-ipb-text bg-white antialiased">
-      <Script
-        id="faq-schema-microfissure-quand-sinquieter"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+    <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
+      <Script id="faq-schema-microfissure" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
       <TopBar />
       <Navbar />
       <SmartBackBar />
 
-      {/* Hero */}
-      <section className="relative bg-gradient-to-br from-slate-800 via-slate-700 to-amber-900/30 text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
+      <div className="bg-ipb-cream border-b border-ipb-rule py-3">
+        <div className="max-w-ipb mx-auto px-6 lg:px-12 text-sm text-ipb-muted">
+          <Link href="/" className="hover:text-ipb-orange transition-colors">Accueil</Link>
+          <span className="mx-2" aria-hidden="true">›</span>
+          <Link href="/expertise/fissures" className="hover:text-ipb-orange transition-colors">Expert fissures</Link>
+          <span className="mx-2" aria-hidden="true">›</span>
+          <span className="text-ipb-text">Microfissure</span>
         </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <nav className="flex items-center gap-2 text-sm text-white/70 mb-8">
-            <Link href="/" className="hover:text-white transition">Accueil</Link>
-            <ChevronRight size={14} />
-            <Link href="/expert-fissures-toulouse-31" className="hover:text-white transition">Expert Fissures</Link>
-            <ChevronRight size={14} />
-            <span className="text-white">Microfissure</span>
-          </nav>
+      </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-amber-500/20 border border-amber-400/30 text-amber-300 px-4 py-2 rounded-full text-sm font-bold mb-6">
-                <Search size={16} />
-                Guide de diagnostic
-              </div>
-
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.1]">
-                Microfissure :
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-300">
-                  Quand s'inquiéter ?
-                </span>
-              </h1>
-
-              <p className="text-xl text-white/70 mb-8 leading-relaxed max-w-xl">
-                Toutes les fissures ne sont pas dangereuses. Certaines sont purement esthétiques, 
-                d'autres révèlent un problème structurel. Ce guide vous aide à 
-                <strong className="text-white"> faire la différence</strong>.
-              </p>
-
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                <div className="bg-green-500/20 border border-green-400/30 rounded-2xl p-4 text-center">
-                  <div className="text-3xl font-black text-green-400">70%</div>
-                  <div className="text-xs text-green-200">des microfissures sont bénignes</div>
-                </div>
-                <div className="bg-red-500/20 border border-red-400/30 rounded-2xl p-4 text-center">
-                  <div className="text-3xl font-black text-red-400">30%</div>
-                  <div className="text-xs text-red-200">nécessitent une intervention</div>
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/diagnostic" className="group bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl">
-                  Diagnostic gratuit
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all">
-                  <Phone size={20} />
-                  05 82 95 33 75
-                </a>
-              </div>
-            </div>
-
-            {/* Mini-guide visuel */}
-            <div className="bg-white/10 backdrop-blur rounded-3xl p-8 border border-white/20">
-              <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
-                <Ruler size={24} className="text-amber-400" />
-                Le test de la règle
-              </h3>
-              
-              <div className="space-y-4">
-                <div className="bg-white/5 rounded-2xl p-4">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center text-green-400 font-bold">
-                      &lt;1mm
-                    </div>
-                    <div>
-                      <div className="text-white font-bold">Microfissure</div>
-                      <div className="text-ipb-light text-sm">Surveillance simple</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="bg-white/5 rounded-2xl p-4">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center text-yellow-400 font-bold">
-                      1-2mm
-                    </div>
-                    <div>
-                      <div className="text-white font-bold">Fissure légère</div>
-                      <div className="text-ipb-light text-sm">Diagnostic conseillé</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="bg-white/5 rounded-2xl p-4">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center text-red-400 font-bold">
-                      &gt;2mm
-                    </div>
-                    <div>
-                      <div className="text-white font-bold">Fissure structurelle</div>
-                      <div className="text-ipb-light text-sm">Intervention nécessaire</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 100" fill="none" className="w-full">
-            <path d="M0 50L60 45C120 40 240 30 360 35C480 40 600 60 720 65C840 70 960 60 1080 50C1200 40 1320 30 1380 25L1440 20V100H0V50Z" fill="white"/>
-          </svg>
-        </div>
-      </section>
-
-      {/* Classification détaillée */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-ipb-stone text-ipb-text px-4 py-2 rounded-full text-sm font-bold mb-4">
-              Classification officielle
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
-              Les 4 types de fissures
-            </h2>
-            <p className="text-xl text-ipb-muted max-w-2xl mx-auto">
-              La classification se fait principalement sur l'ouverture de la fissure.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {typesClassification.map((type, index) => (
-              <div 
-                key={index}
-                className={`rounded-3xl p-6 border-2 ${
-                  type.couleur === 'green' ? 'bg-green-50 border-green-200' :
-                  type.couleur === 'yellow' ? 'bg-yellow-50 border-yellow-200' :
-                  type.couleur === 'orange' ? 'bg-ipb-stone border-ipb-rule' :
-                  'bg-red-50 border-red-200'
-                }`}
-              >
-                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-4 ${
-                  type.couleur === 'green' ? 'bg-green-100 text-green-600' :
-                  type.couleur === 'yellow' ? 'bg-yellow-100 text-yellow-600' :
-                  type.couleur === 'orange' ? 'bg-ipb-stone text-ipb-orange' :
-                  'bg-red-100 text-red-600'
-                }`}>
-                  <Eye size={24} />
-                </div>
-                <h3 className="text-lg font-bold text-ipb-text mb-2">{type.type}</h3>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-ipb-muted">Ouverture</span>
-                    <span className="font-bold text-ipb-text">{type.ouverture}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-ipb-muted">Danger</span>
-                    <span className={`font-bold ${
-                      type.couleur === 'green' ? 'text-green-600' :
-                      type.couleur === 'yellow' ? 'text-yellow-600' :
-                      type.couleur === 'orange' ? 'text-ipb-orange' :
-                      'text-red-600'
-                    }`}>{type.danger}</span>
-                  </div>
-                </div>
-                <div className={`mt-4 px-3 py-2 rounded-full text-xs font-bold text-center ${
-                  type.couleur === 'green' ? 'bg-green-100 text-green-700' :
-                  type.couleur === 'yellow' ? 'bg-yellow-100 text-yellow-700' :
-                  type.couleur === 'orange' ? 'bg-ipb-stone text-ipb-orange' :
-                  'bg-red-100 text-red-700'
-                }`}>
-                  {type.action}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Signes d'alerte */}
-      <section className="py-20 bg-ipb-cream">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-red-100 text-red-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
-              Checklist
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
-              Signes qui doivent vous alerter
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-red-50 rounded-3xl p-8 border-2 border-red-200">
-              <h3 className="text-xl font-bold text-red-800 mb-6 flex items-center gap-3">
-                <AlertTriangle size={24} className="text-red-600" />
-                🚨 Consultez un expert SI :
-              </h3>
-              <ul className="space-y-4">
-                {signesAlerte.filter(s => s.urgent).map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-red-800">
-                    <AlertTriangle size={18} className="text-red-500 flex-shrink-0 mt-1" />
-                    {item.signe}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="bg-green-50 rounded-3xl p-8 border-2 border-green-200">
-              <h3 className="text-xl font-bold text-green-800 mb-6 flex items-center gap-3">
-                <CheckCircle size={24} className="text-green-600" />
-                ✅ Pas d'urgence SI :
-              </h3>
-              <ul className="space-y-4">
-                {signesAlerte.filter(s => !s.urgent).map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-green-800">
-                    <CheckCircle size={18} className="text-green-500 flex-shrink-0 mt-1" />
-                    {item.signe}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-8 p-6 bg-amber-50 border border-amber-200 rounded-2xl">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                <Clock className="w-6 h-6 text-amber-600" />
-              </div>
-              <div>
-                <h4 className="font-bold text-amber-900 mb-1">💡 Astuce : le test du témoin</h4>
-                <p className="text-amber-800 text-sm">
-                  Posez un ruban adhésif en travers de la fissure avec la date. Si le ruban se déchire 
-                  dans les semaines suivantes, la fissure évolue → consultez un expert.
+      <main id="main-content">
+        {/* HERO */}
+        <section className="bg-ipb-cream">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12 pt-16 lg:pt-24 pb-20 lg:pb-28">
+            <div className="max-w-3xl">
+              <RevealOnScroll>
+                <Eyebrow>Guide d'évaluation</Eyebrow>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.06}>
+                <h1
+                  className="font-serif text-ipb-text mb-8"
+                  style={{
+                    fontSize: 'clamp(40px, 4vw, 62px)',
+                    lineHeight: 1.06,
+                    letterSpacing: '-0.025em',
+                    fontWeight: 700,
+                  }}
+                >
+                  Microfissure&nbsp;:<br />
+                  <em>quand faut-il s'inquiéter&nbsp;?</em>
+                </h1>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.12}>
+                <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[620px]">
+                  Toutes les microfissures ne sont pas dangereuses. Le critère qui compte vraiment, c'est l'ouverture (en millimètres) — couplée à l'évolution dans le temps. Ce guide détaille la classification professionnelle des fissures pour vous aider à décider.
                 </p>
-              </div>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.18}>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <MagneticButton href="/diagnostic" variant="primary">
+                    Diagnostic gratuit
+                  </MagneticButton>
+                  <MagneticButton href="/expertise/fissures" variant="ghost">
+                    Voir notre méthode
+                  </MagneticButton>
+                </div>
+              </RevealOnScroll>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Articles connexes */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-ipb-text mb-8 text-center">
-            Articles connexes
-          </h2>
-          <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {[
-              { href: '/fissure-en-escalier-causes', icon: '🪜', title: 'Fissure en escalier', desc: 'Tassement différentiel' },
-              { href: '/fissure-horizontale-danger', icon: '➖', title: 'Fissure horizontale', desc: 'Danger structurel' },
-              { href: '/fissure-secheresse-indemnisation', icon: '☀️', title: 'Fissure sécheresse', desc: 'Indemnisation CAT-NAT' },
-              { href: '/fissure-fondation-maison', icon: '🏠', title: 'Fissure fondation', desc: 'Solutions durables' },
-              { href: '/expertise/fissures', icon: '📋', title: 'Guide complet fissures', desc: 'Tout savoir sur nos solutions' },
-              { href: '/expertise/humidite', icon: '💧', title: 'Problème d\'humidité ?', desc: 'Nos solutions humidité' },
-            ].map((item, index) => (
-              <Link 
-                key={index}
-                href={item.href}
-                className="group bg-ipb-cream rounded-2xl p-6 hover:bg-ipb-stone transition-all hover:-translate-y-1 border border-ipb-rule hover:border-ipb-rule"
-              >
-                <span className="text-4xl mb-4 block">{item.icon}</span>
-                <h3 className="font-bold text-ipb-text group-hover:text-ipb-orange transition-colors mb-1">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-ipb-muted">{item.desc}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+        {/* CLASSIFICATION */}
+        <section className="bg-ipb-white py-24 lg:py-32">
+          <div className="max-w-5xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-16 max-w-2xl">
+                <Eyebrow>Classification professionnelle</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Quatre niveaux,<br /><em>une lecture en mm.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
 
-      {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-slate-800 to-slate-900 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-black mb-6">
-            Un doute sur vos fissures ?
-          </h2>
-          <p className="text-xl text-white/70 mb-8">
-            Le diagnostic est gratuit et sans engagement. Mieux vaut vérifier que regretter.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/diagnostic" className="group bg-gradient-to-r from-amber-500 to-orange-500 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:from-amber-400 hover:to-orange-400 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">
-              Vérifier mes fissures
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/30 hover:bg-white/20 px-8 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3">
-              <Phone size={20} />
-              05 82 95 33 75
-            </a>
+            <RevealOnScroll delay={0.06}>
+              <div className="border border-ipb-rule rounded-[6px] overflow-hidden">
+                <div className="grid grid-cols-5 bg-ipb-navy text-white">
+                  <div className="p-5 font-serif font-bold text-[14px]">Type</div>
+                  <div className="p-5 font-serif font-bold text-[14px] border-l border-white/10 text-center">Ouverture</div>
+                  <div className="p-5 font-serif font-bold text-[14px] border-l border-white/10">Aspect</div>
+                  <div className="p-5 font-serif font-bold text-[14px] border-l border-white/10 text-center">Danger</div>
+                  <div className="p-5 font-serif font-bold text-[14px] border-l border-white/10">Action</div>
+                </div>
+                {typesClassification.map((row, i) => (
+                  <div key={row.type} className={`grid grid-cols-5 ${i < typesClassification.length - 1 ? 'border-b border-ipb-rule' : ''} ${row.niveau === 'eleve' ? 'bg-red-50' : 'bg-ipb-white'}`}>
+                    <div className="p-5 font-serif font-bold text-[14px] text-ipb-text">{row.type}</div>
+                    <div className="p-5 font-serif font-bold text-[14px] text-ipb-orange text-center border-l border-ipb-rule">{row.ouverture}</div>
+                    <div className="p-5 text-[13px] font-light text-ipb-muted border-l border-ipb-rule">{row.aspect}</div>
+                    <div className="p-5 text-[13px] text-center border-l border-ipb-rule">
+                      <span className={`text-[11px] uppercase tracking-[0.14em] font-bold px-2 py-1 rounded-[3px] border ${
+                        row.niveau === 'eleve' ? 'text-red-700 border-red-200 bg-red-50' :
+                        row.niveau === 'moyen' ? 'text-ipb-orange border-ipb-orange/30 bg-ipb-orange/5' :
+                        'text-emerald-700 border-emerald-200 bg-emerald-50'
+                      }`}>{row.danger}</span>
+                    </div>
+                    <div className="p-5 text-[13px] font-light text-ipb-text border-l border-ipb-rule">{row.action}</div>
+                  </div>
+                ))}
+              </div>
+            </RevealOnScroll>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* SIGNES D'ALERTE */}
+        <section className="bg-ipb-cream py-24 lg:py-32">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-16 max-w-2xl">
+                <Eyebrow>Lire les autres signes</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  L'ouverture seule<br /><em>ne suffit pas.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+              <RevealOnScroll delay={0.06}>
+                <div>
+                  <p className="font-serif text-red-700 text-[12px] font-bold tracking-[0.18em] mb-5">SIGNAUX D'URGENCE</p>
+                  <ul className="space-y-3">
+                    {signesAlerte.filter((s) => s.urgent).map((s) => (
+                      <li key={s.signe} className="flex items-start gap-3 bg-ipb-white border-l-4 border-red-500 p-4">
+                        <span className="text-red-500 mt-0.5" aria-hidden="true">▸</span>
+                        <span className="text-[14px] leading-[1.7] text-ipb-text">{s.signe}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </RevealOnScroll>
+
+              <RevealOnScroll delay={0.14}>
+                <div>
+                  <p className="font-serif text-emerald-700 text-[12px] font-bold tracking-[0.18em] mb-5">SIGNAUX RASSURANTS</p>
+                  <ul className="space-y-3">
+                    {signesAlerte.filter((s) => !s.urgent).map((s) => (
+                      <li key={s.signe} className="flex items-start gap-3 bg-ipb-white border-l-4 border-emerald-500 p-4">
+                        <span className="text-emerald-500 mt-0.5" aria-hidden="true">▸</span>
+                        <span className="text-[14px] leading-[1.7] text-ipb-text">{s.signe}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </RevealOnScroll>
+            </div>
+          </div>
+        </section>
+
+        {/* TEST TÉMOIN */}
+        <section className="bg-ipb-navy py-24 lg:py-32">
+          <div className="max-w-3xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-12 max-w-2xl">
+                <Eyebrow variant="dark">Le test du témoin</Eyebrow>
+                <h2 className="font-serif text-white" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Évolue ou stable&nbsp;?<br /><em>Trois minutes pour le savoir.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <RevealOnScroll delay={0.08}>
+              <ol className="space-y-6 text-[15px] leading-[1.85] font-light text-white/85">
+                <li className="grid grid-cols-[40px_1fr] gap-5 items-start">
+                  <span className="font-serif text-ipb-orange-l text-[14px] font-bold tracking-wider pt-1">01</span>
+                  <p>Collez un ruban adhésif (ou un témoin plâtre) <strong className="text-white font-medium">en travers de la fissure</strong>, en notant la date au stylo.</p>
+                </li>
+                <li className="grid grid-cols-[40px_1fr] gap-5 items-start">
+                  <span className="font-serif text-ipb-orange-l text-[14px] font-bold tracking-wider pt-1">02</span>
+                  <p>Attendez <strong className="text-white font-medium">3 à 6 mois</strong>, en passant par une période sèche et une période humide si possible.</p>
+                </li>
+                <li className="grid grid-cols-[40px_1fr] gap-5 items-start">
+                  <span className="font-serif text-ipb-orange-l text-[14px] font-bold tracking-wider pt-1">03</span>
+                  <p>Si le témoin est <strong className="text-white font-medium">cassé ou décollé</strong>, la fissure est active : un diagnostic instrumenté est nécessaire. Si intact, elle est probablement stabilisée.</p>
+                </li>
+              </ol>
+            </RevealOnScroll>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="bg-ipb-white py-24 lg:py-32">
+          <div className="max-w-4xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="text-center mb-16">
+                <Eyebrow className="justify-center">Questions fréquentes</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Sur les microfissures<br /><em>et leur évaluation.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <div className="space-y-3">
+              {faqItems.map((item, i) => (
+                <RevealOnScroll key={item.question} delay={i * 0.04}>
+                  <details className="group bg-ipb-cream border border-ipb-rule rounded-[6px]">
+                    <summary className="cursor-pointer list-none flex items-start justify-between gap-6 p-6 lg:p-7">
+                      <h3 className="font-serif text-ipb-text font-bold text-[17px] leading-tight pr-2">
+                        {item.question}
+                      </h3>
+                      <span className="text-ipb-orange text-2xl leading-none flex-shrink-0 transition-transform group-open:rotate-45 font-light" aria-hidden="true">+</span>
+                    </summary>
+                    <div className="px-6 lg:px-7 pb-7 -mt-2 text-[14px] leading-[1.85] font-light text-ipb-muted">
+                      {item.answer}
+                    </div>
+                  </details>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Articles connexes */}
+        <nav aria-label="Articles connexes" className="bg-ipb-cream py-20 lg:py-24">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <p className="text-2xl font-serif font-bold text-ipb-text mb-8 text-center">Articles connexes</p>
+            <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-px bg-ipb-rule border border-ipb-rule">
+              {[
+                { href: '/fissure-en-escalier-causes', title: 'Fissure en escalier', desc: 'Tassement différentiel' },
+                { href: '/fissure-horizontale-danger', title: 'Fissure horizontale', desc: 'Danger structurel' },
+                { href: '/fissure-fondation-maison', title: 'Fissure de fondation', desc: 'Solutions durables' },
+                { href: '/fissure-secheresse-indemnisation', title: 'Sécheresse / CAT-NAT', desc: 'Démarches assurance' },
+                { href: '/expertise/fissures', title: 'Guide complet fissures', desc: 'Notre expertise' },
+                { href: '/expertise/humidite', title: 'Humidité', desc: 'Diagnostic et solutions' },
+              ].map((item) => (
+                <Link key={item.href} href={item.href} className="group block bg-ipb-white p-6 hover:bg-ipb-stone transition-colors duration-300">
+                  <h3 className="font-serif text-ipb-text font-bold text-[15px] leading-tight mb-2 group-hover:text-ipb-orange transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-[13px] leading-[1.7] font-light text-ipb-muted">{item.desc}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </nav>
+
+        <CtaFinal />
+      </main>
 
       <Footer />
     </div>

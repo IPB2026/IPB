@@ -4,311 +4,267 @@ import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
-import { Phone, ArrowRight, Wind, ChevronRight, Shield, CheckCircle, XCircle, ThermometerSun, Droplets, Home } from 'lucide-react';
+import { CtaFinal } from '@/components/home/CtaFinal';
+import { Eyebrow } from '@/components/ui/Eyebrow';
+import { MagneticButton } from '@/components/ui/MagneticButton';
+import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: 'VMI Ventilation Insufflation : Prix, Avis et Installation | Expert Occitanie',
-  description: 'VMI (Ventilation Mécanique par Insufflation) : solution anti-condensation et moisissures. Prix 2500-4500€ installée. Avantages vs VMC. Installateur Toulouse, Montauban, Auch (31-82-32).',
+  title: 'VMI · Ventilation par insufflation · Prix, avantages et installation · Institut IPB',
+  description: "VMI (ventilation mécanique par insufflation) : solution anti-condensation et moisissures. Prix 2 500 à 4 500 € installée. Avantages versus VMC. Installateur Toulouse, Montauban, Auch.",
   keywords: ['VMI', 'ventilation insufflation', 'anti condensation', 'VMI prix', 'VMI vs VMC'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/vmi-ventilation-insufflation' },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
+  },
 };
 
 const avantagesVMI = [
-  { avantage: 'Élimine la condensation', detail: 'L\'air insufflé assèche naturellement les surfaces froides' },
-  { avantage: 'Supprime les moisissures', detail: 'En supprimant l\'humidité, vous supprimez leur milieu de vie' },
-  { avantage: 'Air filtré', detail: 'Filtration des pollens, particules fines et polluants extérieurs' },
-  { avantage: 'Air préchauffé', detail: 'L\'air entre à température ambiante, pas de sensation de froid' },
-  { avantage: 'Économies chauffage', detail: 'Jusqu\'à 30% d\'économies en hiver (air sec = air facile à chauffer)' },
-  { avantage: 'Installation simple', detail: 'Pas de gaines dans toutes les pièces, juste un point central' },
+  { titre: 'Élimine la condensation', desc: "L'air insufflé assèche naturellement les surfaces froides et abaisse l'hygrométrie." },
+  { titre: 'Supprime les moisissures', desc: "En supprimant l'humidité ambiante, on supprime leur milieu de vie." },
+  { titre: 'Air filtré', desc: 'Filtration des pollens, particules fines et polluants extérieurs (filtres G4 + F7).' },
+  { titre: 'Air préchauffé', desc: "L'air entre à température ambiante grâce à l'échangeur, pas de sensation de froid." },
+  { titre: 'Économies de chauffage', desc: "Jusqu'à 30 % d'économies en hiver — l'air sec est plus facile à chauffer." },
+  { titre: 'Installation simple', desc: 'Pas de gaines dans toutes les pièces — un seul point central suffit.' },
 ];
 
 const comparatif = [
-  { critere: 'Principe', vmi: 'Insuffle de l\'air neuf (surpression)', vmc: 'Aspire l\'air vicié (dépression)' },
-  { critere: 'Condensation', vmi: '✅ Élimine efficacement', vmc: '⚠️ Peut aggraver' },
-  { critere: 'Air entrant', vmi: '✅ Filtré et préchauffé', vmc: '❌ Non filtré' },
-  { critere: 'Installation', vmi: '✅ Simple (1 point)', vmc: '❌ Complexe (gaines)' },
-  { critere: 'Rénovation', vmi: '✅ Idéal', vmc: '⚠️ Travaux importants' },
-  { critere: 'Prix installé', vmi: '2 500 - 4 500€', vmc: '3 000 - 8 000€' },
+  { critere: 'Principe', vmi: "Insuffle de l'air neuf (surpression)", vmc: "Aspire l'air vicié (dépression)" },
+  { critere: 'Condensation', vmi: 'Élimine efficacement', vmc: 'Peut aggraver dans certains cas' },
+  { critere: 'Air entrant', vmi: 'Filtré et préchauffé', vmc: 'Non filtré' },
+  { critere: 'Installation', vmi: 'Simple — un point unique', vmc: 'Complexe — gaines à tirer' },
+  { critere: 'Rénovation', vmi: 'Idéale', vmc: 'Travaux importants' },
+  { critere: 'Prix installé', vmi: '2 500 – 4 500 €', vmc: '3 000 – 8 000 €' },
 ];
 
 export default function VMIPage() {
   return (
-    <div className="font-sans text-ipb-text bg-white antialiased">
+    <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <TopBar />
       <Navbar />
       <SmartBackBar />
 
-      {/* Hero */}
-      <section className="relative bg-gradient-to-br from-teal-900 via-emerald-900 to-slate-900 text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 70% 30%, rgba(20, 184, 166, 0.4) 0%, transparent 50%)' }}></div>
+      <div className="bg-ipb-cream border-b border-ipb-rule py-3">
+        <div className="max-w-ipb mx-auto px-6 lg:px-12 text-sm text-ipb-muted">
+          <Link href="/" className="hover:text-ipb-orange transition-colors">Accueil</Link>
+          <span className="mx-2" aria-hidden="true">›</span>
+          <Link href="/expert-humidite-toulouse-31" className="hover:text-ipb-orange transition-colors">Expert humidité</Link>
+          <span className="mx-2" aria-hidden="true">›</span>
+          <span className="text-ipb-text">VMI</span>
         </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <nav className="flex items-center gap-2 text-sm text-teal-200 mb-8">
-            <Link href="/" className="hover:text-white transition">Accueil</Link>
-            <ChevronRight size={14} />
-            <Link href="/expert-humidite-toulouse-31" className="hover:text-white transition">Expert Humidité</Link>
-            <ChevronRight size={14} />
-            <span className="text-white">VMI</span>
-          </nav>
+      </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-teal-500/20 border border-teal-400/30 text-teal-300 px-4 py-2 rounded-full text-sm font-bold mb-6">
-                <Wind size={16} />
-                Solution anti-condensation
-              </div>
-
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.1]">
-                VMI®
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">
-                  Ventilation par Insufflation
-                </span>
-              </h1>
-
-              <p className="text-xl text-teal-100 mb-8 leading-relaxed max-w-xl">
-                La VMI insuffle de l'air filtré et préchauffé dans votre maison, créant une 
-                <strong className="text-white"> légère surpression</strong> qui évacue naturellement 
-                l'humidité et empêche la condensation. Idéale en rénovation.
-              </p>
-
-              <div className="grid grid-cols-3 gap-4 mb-8">
-                <div className="bg-white/10 backdrop-blur rounded-2xl p-4 text-center">
-                  <div className="text-3xl font-black text-teal-400">-70%</div>
-                  <div className="text-xs text-teal-200">condensation</div>
+      <main id="main-content">
+        {/* HERO */}
+        <section className="bg-ipb-cream">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12 pt-16 lg:pt-24 pb-20 lg:pb-28">
+            <div className="max-w-3xl">
+              <RevealOnScroll>
+                <Eyebrow>Solution anti-condensation</Eyebrow>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.06}>
+                <h1
+                  className="font-serif text-ipb-text mb-8"
+                  style={{
+                    fontSize: 'clamp(40px, 4vw, 62px)',
+                    lineHeight: 1.06,
+                    letterSpacing: '-0.025em',
+                    fontWeight: 700,
+                  }}
+                >
+                  VMI — ventilation par insufflation.<br />
+                  <em>L'air entre, l'humidité sort.</em>
+                </h1>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.12}>
+                <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[620px]">
+                  La VMI insuffle de l'air filtré et préchauffé dans votre maison, créant une légère surpression qui évacue naturellement l'humidité et empêche la condensation. Idéale en rénovation : pas de gaines à tirer, un seul point d'installation.
+                </p>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.18}>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <MagneticButton href="/diagnostic" variant="primary">
+                    Devis VMI gratuit
+                  </MagneticButton>
+                  <MagneticButton href="/expert-humidite-toulouse-31" variant="ghost">
+                    Voir notre méthode
+                  </MagneticButton>
                 </div>
-                <div className="bg-white/10 backdrop-blur rounded-2xl p-4 text-center">
-                  <div className="text-3xl font-black text-teal-400">-30%</div>
-                  <div className="text-xs text-teal-200">chauffage</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur rounded-2xl p-4 text-center">
-                  <div className="text-3xl font-black text-teal-400">10 ans</div>
-                  <div className="text-xs text-teal-200">garantie</div>
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/diagnostic" className="group bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl">
-                  Devis VMI gratuit
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all">
-                  <Phone size={20} />
-                  05 82 95 33 75
-                </a>
-              </div>
+              </RevealOnScroll>
             </div>
 
-            {/* Schéma fonctionnement */}
-            <div className="bg-white/10 backdrop-blur rounded-3xl p-8 border border-white/20">
-              <h3 className="text-xl font-bold text-white mb-6 text-center">Comment ça marche ?</h3>
-              
-              <div className="relative bg-ipb-navy-2/50 rounded-2xl p-6 h-64">
-                {/* Maison schématique */}
-                <div className="absolute inset-4 border-2 border-teal-400/50 rounded-lg">
-                  {/* Toit */}
-                  <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-32 h-12 bg-ipb-navy-2/50 rounded-t-lg"></div>
-                  
-                  {/* VMI au centre */}
-                  <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center animate-pulse">
-                    <Wind size={24} className="text-white" />
-                  </div>
-                  
-                  {/* Flèches d'air */}
-                  <div className="absolute top-20 left-1/2 transform -translate-x-1/2 flex gap-8">
-                    <ArrowRight size={20} className="text-teal-400 animate-pulse" style={{ animationDelay: '0.2s' }} />
-                    <ArrowRight size={20} className="text-teal-400 rotate-90 animate-pulse" style={{ animationDelay: '0.4s' }} />
-                    <ArrowRight size={20} className="text-teal-400 rotate-180 animate-pulse" style={{ animationDelay: '0.6s' }} />
-                  </div>
-                  
-                  {/* Légende */}
-                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center">
-                    <div className="text-teal-300 text-sm font-bold">Air filtré + préchauffé</div>
-                    <div className="text-ipb-light text-xs">→ Surpression → Évacuation humidité</div>
-                  </div>
+            <RevealOnScroll delay={0.24}>
+              <div className="mt-16 grid grid-cols-3 gap-12 lg:gap-8 max-w-3xl pt-12 border-t border-ipb-rule">
+                <div>
+                  <p className="font-serif text-ipb-text font-bold leading-none mb-3" style={{ fontSize: 'clamp(36px, 4vw, 56px)' }}>
+                    −70<span className="text-ipb-orange"> %</span>
+                  </p>
+                  <p className="text-[12px] text-ipb-muted uppercase tracking-[0.14em] font-medium">condensation</p>
+                </div>
+                <div>
+                  <p className="font-serif text-ipb-text font-bold leading-none mb-3" style={{ fontSize: 'clamp(36px, 4vw, 56px)' }}>
+                    −30<span className="text-ipb-orange"> %</span>
+                  </p>
+                  <p className="text-[12px] text-ipb-muted uppercase tracking-[0.14em] font-medium">chauffage</p>
+                </div>
+                <div>
+                  <p className="font-serif text-ipb-text font-bold leading-none mb-3" style={{ fontSize: 'clamp(36px, 4vw, 56px)' }}>
+                    10<span className="text-ipb-orange"> ans</span>
+                  </p>
+                  <p className="text-[12px] text-ipb-muted uppercase tracking-[0.14em] font-medium">garantie</p>
                 </div>
               </div>
+            </RevealOnScroll>
+          </div>
+        </section>
+
+        {/* AVANTAGES */}
+        <section className="bg-ipb-white py-24 lg:py-32">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-16 max-w-2xl">
+                <Eyebrow>Pourquoi la VMI</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Six bénéfices,<br /><em>une installation simple.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-ipb-rule border border-ipb-rule">
+              {avantagesVMI.map((item, i) => (
+                <RevealOnScroll key={item.titre} delay={i * 0.04}>
+                  <article className="bg-ipb-white p-7 lg:p-8 h-full">
+                    <span className="font-serif text-ipb-orange text-[12px] font-bold tracking-[0.18em] mb-4 block">
+                      0{i + 1}
+                    </span>
+                    <h3 className="font-serif text-ipb-text font-bold text-[18px] leading-tight mb-3">
+                      {item.titre}
+                    </h3>
+                    <p className="text-[13px] leading-[1.8] font-light text-ipb-muted">
+                      {item.desc}
+                    </p>
+                  </article>
+                </RevealOnScroll>
+              ))}
             </div>
           </div>
-        </div>
+        </section>
 
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 100" fill="none" className="w-full">
-            <path d="M0 50L60 45C120 40 240 30 360 35C480 40 600 60 720 65C840 70 960 60 1080 50C1200 40 1320 30 1380 25L1440 20V100H0V50Z" fill="white"/>
-          </svg>
-        </div>
-      </section>
+        {/* COMPARATIF VMI / VMC */}
+        <section className="bg-ipb-cream py-24 lg:py-32">
+          <div className="max-w-5xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-16 max-w-2xl">
+                <Eyebrow>Comparatif technique</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  VMI versus VMC,<br /><em>quelle différence&nbsp;?</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
 
-      {/* Avantages */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-teal-100 text-teal-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
-              Pourquoi la VMI ?
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
-              6 avantages de la VMI
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {avantagesVMI.map((item, index) => (
-              <div key={index} className="bg-gradient-to-br from-teal-50 to-emerald-50 rounded-3xl p-6 border border-teal-100 hover:shadow-lg transition-all">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-teal-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <CheckCircle size={20} className="text-teal-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-ipb-text mb-1">{item.avantage}</h3>
-                    <p className="text-ipb-muted text-sm">{item.detail}</p>
-                  </div>
+            <RevealOnScroll delay={0.06}>
+              <div className="border border-ipb-rule rounded-[6px] overflow-hidden">
+                <div className="grid grid-cols-3 bg-ipb-navy text-white">
+                  <div className="p-5 font-serif font-bold text-[14px]">Critère</div>
+                  <div className="p-5 font-serif font-bold text-[14px] text-center border-l border-white/10 bg-ipb-orange/10 text-ipb-orange-l">VMI</div>
+                  <div className="p-5 font-serif font-bold text-[14px] text-center border-l border-white/10">VMC</div>
                 </div>
+                {comparatif.map((row, i) => (
+                  <div key={row.critere} className={`grid grid-cols-3 ${i < comparatif.length - 1 ? 'border-b border-ipb-rule' : ''}`}>
+                    <div className="p-5 bg-ipb-white font-serif font-bold text-[14px] text-ipb-text">{row.critere}</div>
+                    <div className="p-5 bg-ipb-cream text-[13px] leading-[1.7] text-ipb-text border-l border-ipb-rule">{row.vmi}</div>
+                    <div className="p-5 bg-ipb-white text-[13px] leading-[1.7] font-light text-ipb-muted border-l border-ipb-rule">{row.vmc}</div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </RevealOnScroll>
 
-      {/* Comparatif VMI vs VMC */}
-      <section className="py-20 bg-ipb-cream">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-slate-200 text-ipb-text px-4 py-2 rounded-full text-sm font-bold mb-4">
-              Comparatif
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
-              VMI vs VMC : quelle différence ?
-            </h2>
-          </div>
-
-          <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
-            <div className="grid grid-cols-3 bg-ipb-navy text-white font-bold">
-              <div className="p-4">Critère</div>
-              <div className="p-4 text-center bg-teal-600">VMI ✓</div>
-              <div className="p-4 text-center">VMC</div>
-            </div>
-            {comparatif.map((row, index) => (
-              <div key={index} className="grid grid-cols-3 border-b border-ipb-rule">
-                <div className="p-4 font-bold text-ipb-text">{row.critere}</div>
-                <div className="p-4 text-center bg-teal-50 text-ipb-text">{row.vmi}</div>
-                <div className="p-4 text-center text-ipb-muted">{row.vmc}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 p-6 bg-teal-50 border border-teal-200 rounded-2xl">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                <Home className="w-6 h-6 text-teal-600" />
-              </div>
-              <div>
-                <h4 className="font-bold text-teal-900 mb-1">💡 Idéal en rénovation</h4>
-                <p className="text-teal-800 text-sm">
-                  Contrairement à la VMC qui nécessite des gaines dans toutes les pièces, la VMI s'installe 
-                  en un seul point (combles ou placard technique). Parfait pour les maisons anciennes.
+            <RevealOnScroll delay={0.2}>
+              <div className="mt-12 bg-ipb-white border-l-4 border-ipb-orange p-6 lg:p-7">
+                <p className="font-serif text-ipb-orange text-[12px] font-bold tracking-[0.18em] mb-3">IDÉALE EN RÉNOVATION</p>
+                <p className="text-[14px] leading-[1.85] text-ipb-text">
+                  Contrairement à la VMC qui nécessite des gaines dans toutes les pièces, la VMI s'installe en un seul point (combles ou placard technique). Parfait pour les maisons anciennes du centre toulousain, des Minimes ou de Côte Pavée.
                 </p>
               </div>
+            </RevealOnScroll>
+          </div>
+        </section>
+
+        {/* PRIX */}
+        <section className="bg-ipb-navy py-24 lg:py-32">
+          <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
+            <RevealOnScroll>
+              <Eyebrow variant="dark" className="justify-center">Prix VMI installée</Eyebrow>
+              <h2 className="font-serif text-white mb-12" style={{ fontSize: 'clamp(48px, 6vw, 96px)', lineHeight: 1.05, letterSpacing: '-0.025em', fontWeight: 700 }}>
+                2 500 – 4 500&nbsp;€
+              </h2>
+              <p className="text-[14px] text-white/65 uppercase tracking-[0.14em] font-medium mb-16">
+                Fourniture · installation · mise en service
+              </p>
+            </RevealOnScroll>
+
+            <div className="grid md:grid-cols-3 gap-px bg-white/10 border border-white/10 text-left">
+              <RevealOnScroll delay={0.08}>
+                <div className="bg-ipb-navy p-7 h-full">
+                  <p className="font-serif text-ipb-orange-l text-[12px] font-bold tracking-[0.18em] mb-4">INCLUS</p>
+                  <ul className="text-[13px] leading-[1.85] text-white/85 space-y-1.5">
+                    <li>▸ Centrale VMI</li>
+                    <li>▸ Filtres G4 + F7</li>
+                    <li>▸ Pose et raccordement</li>
+                    <li>▸ Mise en service</li>
+                  </ul>
+                </div>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.14}>
+                <div className="bg-ipb-navy p-7 h-full">
+                  <p className="font-serif text-ipb-orange-l text-[12px] font-bold tracking-[0.18em] mb-4">DÉLAIS</p>
+                  <ul className="text-[13px] leading-[1.85] text-white/85 space-y-1.5">
+                    <li>▸ Installation : 1 journée</li>
+                    <li>▸ Effet immédiat</li>
+                    <li>▸ Garantie 10 ans</li>
+                  </ul>
+                </div>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.2}>
+                <div className="bg-ipb-navy p-7 h-full">
+                  <p className="font-serif text-ipb-orange-l text-[12px] font-bold tracking-[0.18em] mb-4">ENTRETIEN</p>
+                  <ul className="text-[13px] leading-[1.85] text-white/85 space-y-1.5">
+                    <li>▸ Filtres : 50 à 100 €/an</li>
+                    <li>▸ Conso élec : ~100 €/an</li>
+                    <li>▸ Maintenance minimale</li>
+                  </ul>
+                </div>
+              </RevealOnScroll>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Prix */}
-      <section className="py-20 bg-ipb-navy text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-black mb-12">
-            Prix VMI installée
-          </h2>
-
-          <div className="bg-gradient-to-br from-teal-500/20 to-emerald-500/20 rounded-3xl p-8 md:p-12 border border-teal-500/30">
-            <div className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400 mb-4">
-              2 500 - 4 500€
-            </div>
-            <div className="text-ipb-light mb-8">Fourniture + installation + mise en service</div>
-
-            <div className="grid md:grid-cols-3 gap-6 text-left">
-              <div className="bg-white/5 rounded-2xl p-4">
-                <div className="font-bold text-white mb-2">Inclus</div>
-                <ul className="text-ipb-light text-sm space-y-1">
-                  <li>✓ Centrale VMI</li>
-                  <li>✓ Filtres G4 + F7</li>
-                  <li>✓ Pose et raccordement</li>
-                  <li>✓ Mise en service</li>
-                </ul>
-              </div>
-              <div className="bg-white/5 rounded-2xl p-4">
-                <div className="font-bold text-white mb-2">Durée</div>
-                <ul className="text-ipb-light text-sm space-y-1">
-                  <li>• Installation : 1 journée</li>
-                  <li>• Effet immédiat</li>
-                  <li>• Garantie 10 ans</li>
-                </ul>
-              </div>
-              <div className="bg-white/5 rounded-2xl p-4">
-                <div className="font-bold text-white mb-2">Entretien</div>
-                <ul className="text-ipb-light text-sm space-y-1">
-                  <li>• Filtres : 50-100€/an</li>
-                  <li>• Conso élec : ~100€/an</li>
-                  <li>• Maintenance minimale</li>
-                </ul>
-              </div>
+        {/* Articles connexes */}
+        <nav aria-label="Articles connexes" className="bg-ipb-cream py-20 lg:py-24">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <p className="text-2xl font-serif font-bold text-ipb-text mb-8 text-center">Articles connexes</p>
+            <div className="grid md:grid-cols-4 gap-px bg-ipb-rule border border-ipb-rule">
+              {[
+                { href: '/condensation-ou-infiltration', title: 'Condensation ou infiltration ?', desc: 'Comment distinguer' },
+                { href: '/moisissures-maison-sante', title: 'Moisissures', desc: 'Risques santé' },
+                { href: '/ponts-thermiques-condensation', title: 'Ponts thermiques', desc: 'Zones froides' },
+                { href: '/remontees-capillaires-traitement', title: 'Remontées capillaires', desc: 'Autre cause humidité' },
+              ].map((item) => (
+                <Link key={item.href} href={item.href} className="group block bg-ipb-white p-6 hover:bg-ipb-stone transition-colors duration-300">
+                  <h3 className="font-serif text-ipb-text font-bold text-[15px] leading-tight mb-2 group-hover:text-ipb-orange transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-[13px] leading-[1.7] font-light text-ipb-muted">{item.desc}</p>
+                </Link>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </nav>
 
-      {/* Articles connexes */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-ipb-text mb-8 text-center">
-            Articles connexes
-          </h2>
-          <div className="grid md:grid-cols-4 gap-6">
-            {[
-              { href: '/condensation-ou-infiltration', icon: '❓', title: 'Condensation ?', desc: 'Comment distinguer' },
-              { href: '/moisissures-maison-sante', icon: '🦠', title: 'Moisissures', desc: 'Risques santé' },
-              { href: '/ponts-thermiques-condensation', icon: '🌡️', title: 'Ponts thermiques', desc: 'Zones froides' },
-              { href: '/remontees-capillaires-traitement', icon: '💧', title: 'Remontées capillaires', desc: 'Autre cause humidité' },
-            ].map((item, index) => (
-              <Link 
-                key={index}
-                href={item.href}
-                className="group bg-ipb-cream rounded-2xl p-6 hover:bg-teal-50 transition-all hover:-translate-y-1 border border-ipb-rule hover:border-teal-200"
-              >
-                <span className="text-4xl mb-4 block">{item.icon}</span>
-                <h3 className="font-bold text-ipb-text group-hover:text-teal-600 transition-colors mb-1">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-ipb-muted">{item.desc}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-teal-600 to-emerald-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-black mb-6">
-            Un air sain.
-            <span className="block text-teal-200">Une maison sèche.</span>
-          </h2>
-          <p className="text-xl text-teal-100 mb-8">
-            Devis gratuit • Installation en 1 jour • Garantie 10 ans
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/diagnostic" className="group bg-white text-teal-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-teal-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">
-              Devis VMI gratuit
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/30 hover:bg-white/20 px-8 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3">
-              <Phone size={20} />
-              05 82 95 33 75
-            </a>
-          </div>
-        </div>
-      </section>
+        <CtaFinal />
+      </main>
 
       <Footer />
     </div>

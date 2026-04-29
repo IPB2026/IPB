@@ -5,62 +5,35 @@ import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
-import { Phone, ArrowRight, ChevronRight, Droplets, ThermometerSun, Cloud, CheckCircle } from 'lucide-react';
+import { CtaFinal } from '@/components/home/CtaFinal';
+import { Eyebrow } from '@/components/ui/Eyebrow';
+import { MagneticButton } from '@/components/ui/MagneticButton';
+import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Condensation ou Infiltration ? Guide Diagnostic Humidité | Expert Occitanie',
-  description: 'Murs humides : condensation ou infiltration ? Comment différencier, identifier la cause exacte et choisir le bon traitement. Diagnostic expert Toulouse, Montauban, Auch (31-82-32) 48h.',
+  title: 'Condensation ou infiltration ? · Guide diagnostic humidité · Institut IPB',
+  description: "Murs humides : condensation ou infiltration ? Comment différencier, identifier la cause exacte et choisir le bon traitement. Diagnostic instrumenté Institut IPB Toulouse, Montauban, Auch.",
   keywords: ['condensation mur', 'infiltration eau', 'diagnostic humidité', 'différence condensation infiltration'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/condensation-ou-infiltration' },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
+  },
 };
 
 const comparatif = [
-  {
-    critere: 'Localisation',
-    condensation: 'Fenêtres, angles, murs froids (nord)',
-    infiltration: 'Partout, souvent en bas de mur ou plafond',
-  },
-  {
-    critere: 'Moment',
-    condensation: 'Hiver surtout, quand il fait froid dehors',
-    infiltration: 'Après la pluie ou en permanence',
-  },
-  {
-    critere: 'Aspect',
-    condensation: 'Buée, gouttelettes, moisissures noires',
-    infiltration: 'Taches humides, auréoles, coulures',
-  },
-  {
-    critere: 'Toucher',
-    condensation: 'Surface mouillée mais mur sec derrière',
-    infiltration: 'Mur humide en profondeur',
-  },
-  {
-    critere: 'Odeur',
-    condensation: 'Moisi localisé',
-    infiltration: 'Humidité généralisée, cave',
-  },
+  { critere: 'Localisation', condensation: 'Fenêtres, angles, murs froids (nord)', infiltration: 'Partout, souvent en bas de mur ou plafond' },
+  { critere: 'Moment', condensation: "Hiver surtout, quand il fait froid dehors", infiltration: 'Après la pluie ou en permanence' },
+  { critere: 'Aspect', condensation: 'Buée, gouttelettes, moisissures noires', infiltration: 'Taches humides, auréoles, coulures' },
+  { critere: 'Toucher', condensation: 'Surface mouillée mais mur sec en profondeur', infiltration: 'Mur humide en profondeur' },
+  { critere: 'Odeur', condensation: 'Moisi localisé', infiltration: 'Humidité généralisée, odeur de cave' },
 ];
 
 const tests = [
-  {
-    nom: 'Test de la feuille alu',
-    methode: 'Collez une feuille d\'alu sur le mur humide pendant 48h',
-    resultat: 'Si humidité côté mur = infiltration. Si côté pièce = condensation.',
-    icon: '📄',
-  },
-  {
-    nom: 'Test météo',
-    methode: 'Observez si l\'humidité augmente après la pluie',
-    resultat: 'Oui = infiltration. Non (augmente quand il fait froid) = condensation.',
-    icon: '🌧️',
-  },
-  {
-    nom: 'Test saison',
-    methode: 'Le problème est-il pire en hiver ?',
-    resultat: 'Oui = probablement condensation. Toute l\'année = infiltration.',
-    icon: '❄️',
-  },
+  { nom: 'Test de la feuille alu', methode: "Collez une feuille d'alu sur le mur humide pendant 48 h", resultat: "Si humidité côté mur = infiltration. Si côté pièce = condensation." },
+  { nom: 'Test météo', methode: "Observez si l'humidité augmente après la pluie", resultat: "Oui = infiltration. Non (augmente quand il fait froid) = condensation." },
+  { nom: 'Test saison', methode: 'Le problème est-il pire en hiver ?', resultat: "Oui = probablement condensation. Toute l'année = infiltration." },
 ];
 
 const faqSchema = {
@@ -69,10 +42,10 @@ const faqSchema = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'Comment savoir si c\'est de la condensation ou une infiltration d\'eau ?',
+      name: "Comment savoir si c'est de la condensation ou une infiltration d'eau ?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'La condensation se manifeste par de la buée et des gouttelettes sur les fenêtres et murs froids (surtout en hiver, côté nord), avec des moisissures noires localisées. L\'infiltration produit des taches humides, auréoles et coulures, souvent après la pluie ou en permanence, avec un mur humide en profondeur. Le test de la feuille d\'aluminium (collée 48h sur le mur) permet de trancher : humidité côté mur = infiltration, côté pièce = condensation.',
+        text: "La condensation se manifeste par de la buée et des gouttelettes sur les fenêtres et murs froids (surtout en hiver, côté nord), avec des moisissures noires localisées. L'infiltration produit des taches humides, auréoles et coulures, souvent après la pluie ou en permanence, avec un mur humide en profondeur. Le test de la feuille d'aluminium (collée 48 h sur le mur) permet de trancher.",
       },
     },
     {
@@ -80,15 +53,15 @@ const faqSchema = {
       name: 'Quel est le meilleur traitement contre la condensation dans une maison ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'La solution la plus efficace contre la condensation est l\'installation d\'une VMI (Ventilation Mécanique par Insufflation) qui renouvelle l\'air et évacue l\'humidité (2 500 à 4 500€). L\'isolation des ponts thermiques supprime les zones froides où se forme la condensation. En complément, une aération quotidienne de 10 minutes minimum, même en hiver, est recommandée.',
+        text: "La solution la plus efficace est l'installation d'une VMI (ventilation mécanique par insufflation) qui renouvelle l'air et évacue l'humidité (2 500 à 4 500 €). L'isolation des ponts thermiques supprime les zones froides où se forme la condensation. En complément, une aération quotidienne de 10 minutes minimum est recommandée.",
       },
     },
     {
       '@type': 'Question',
-      name: 'Quels sont les signes d\'une infiltration d\'eau dans un mur ?',
+      name: "Quels sont les signes d'une infiltration d'eau dans un mur ?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Les signes d\'infiltration sont : des taches humides persistantes, des auréoles ou coulures sur les murs ou plafonds, un mur humide en profondeur (pas seulement en surface), une odeur d\'humidité généralisée, et une aggravation après les épisodes de pluie. Contrairement à la condensation, l\'infiltration peut se manifester toute l\'année et pas uniquement en hiver.',
+        text: "Taches humides persistantes, auréoles ou coulures, mur humide en profondeur (pas seulement en surface), odeur d'humidité généralisée, aggravation après les épisodes de pluie. Contrairement à la condensation, l'infiltration peut se manifester toute l'année.",
       },
     },
     {
@@ -96,264 +69,261 @@ const faqSchema = {
       name: 'Combien coûte un diagnostic humidité pour identifier la cause ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Le diagnostic humidité est une prestation d\'expertise réalisée sur site par IPB, déductible si vous réalisez les travaux. L\'expert identifie en 1h30 la cause exacte (condensation, infiltration, remontées capillaires) grâce à des mesures d\'humidité et une analyse technique. Un rapport écrit avec préconisations de traitement vous est remis.',
+        text: "Le diagnostic humidité est une prestation d'expertise réalisée sur site par l'institut, déductible à 100 % si vous nous confiez les travaux. L'expert identifie la cause exacte (condensation, infiltration, remontées capillaires) en 1 h 30 grâce à des mesures instrumentées (humidimètre, caméra thermique).",
       },
     },
   ],
 };
 
+const faqItems = faqSchema.mainEntity.map((q) => ({ question: q.name, answer: q.acceptedAnswer.text }));
+
 export default function CondensationInfiltrationPage() {
   return (
-    <div className="font-sans text-ipb-text bg-white antialiased">
-      <Script
-        id="faq-schema-condensation-ou-infiltration"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+    <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
+      <Script id="faq-schema-condensation" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
       <TopBar />
       <Navbar />
       <SmartBackBar />
 
-      {/* Hero */}
-      <section className="relative bg-gradient-to-br from-indigo-900 via-purple-900 to-slate-900 text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 30% 70%, rgba(139, 92, 246, 0.3) 0%, transparent 50%)' }}></div>
+      <div className="bg-ipb-cream border-b border-ipb-rule py-3">
+        <div className="max-w-ipb mx-auto px-6 lg:px-12 text-sm text-ipb-muted">
+          <Link href="/" className="hover:text-ipb-orange transition-colors">Accueil</Link>
+          <span className="mx-2" aria-hidden="true">›</span>
+          <Link href="/expert-humidite-toulouse-31" className="hover:text-ipb-orange transition-colors">Expert humidité</Link>
+          <span className="mx-2" aria-hidden="true">›</span>
+          <span className="text-ipb-text">Condensation ou infiltration</span>
         </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <nav className="flex items-center gap-2 text-sm text-purple-200 mb-8">
-            <Link href="/" className="hover:text-white transition">Accueil</Link>
-            <ChevronRight size={14} />
-            <Link href="/expert-humidite-toulouse-31" className="hover:text-white transition">Expert Humidité</Link>
-            <ChevronRight size={14} />
-            <span className="text-white">Condensation ou Infiltration</span>
-          </nav>
+      </div>
 
-          <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 bg-purple-500/20 border border-purple-400/30 text-purple-300 px-4 py-2 rounded-full text-sm font-bold mb-6">
-              <Droplets size={16} />
-              Guide de diagnostic
-            </div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.1]">
-              Condensation
-              <span className="text-purple-400"> ou </span>
-              Infiltration ?
-            </h1>
-
-            <p className="text-xl text-purple-100 mb-8 leading-relaxed max-w-2xl">
-              La question est cruciale car <strong className="text-white">le traitement est totalement différent</strong>. 
-              Se tromper de diagnostic = perdre du temps et de l'argent. Ce guide vous aide à identifier la cause.
-            </p>
-
-            <div className="grid grid-cols-2 gap-6 mb-8">
-              <div className="bg-blue-500/20 border border-blue-400/30 rounded-2xl p-6">
-                <div className="flex items-center gap-3 mb-3">
-                  <ThermometerSun size={24} className="text-blue-400" />
-                  <h3 className="font-bold text-white">Condensation</h3>
+      <main id="main-content">
+        {/* HERO */}
+        <section className="bg-ipb-cream">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12 pt-16 lg:pt-24 pb-20 lg:pb-28">
+            <div className="max-w-3xl">
+              <RevealOnScroll>
+                <Eyebrow>Guide de diagnostic</Eyebrow>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.06}>
+                <h1
+                  className="font-serif text-ipb-text mb-8"
+                  style={{
+                    fontSize: 'clamp(40px, 4vw, 62px)',
+                    lineHeight: 1.06,
+                    letterSpacing: '-0.025em',
+                    fontWeight: 700,
+                  }}
+                >
+                  Condensation ou infiltration&nbsp;?<br />
+                  <em>Le traitement n'est pas le même.</em>
+                </h1>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.12}>
+                <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[620px]">
+                  La question est cruciale : se tromper de diagnostic, c'est perdre du temps et de l'argent. Ce guide vous aide à identifier la cause à partir de critères visuels, de tests simples et — si le doute persiste — d'un diagnostic instrumenté sur site.
+                </p>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.18}>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <MagneticButton href="/diagnostic" variant="primary">
+                    Diagnostic expert
+                  </MagneticButton>
+                  <MagneticButton href="/expert-humidite-toulouse-31" variant="ghost">
+                    Voir notre méthode
+                  </MagneticButton>
                 </div>
-                <p className="text-blue-200 text-sm">Air chaud + surface froide = gouttelettes</p>
-                <div className="mt-3 text-xs text-blue-300">→ Solution : VMI, isolation</div>
-              </div>
-              <div className="bg-cyan-500/20 border border-cyan-400/30 rounded-2xl p-6">
-                <div className="flex items-center gap-3 mb-3">
-                  <Droplets size={24} className="text-cyan-400" />
-                  <h3 className="font-bold text-white">Infiltration</h3>
+              </RevealOnScroll>
+            </div>
+
+            <RevealOnScroll delay={0.24}>
+              <div className="mt-16 grid md:grid-cols-2 gap-px bg-ipb-rule border border-ipb-rule">
+                <div className="bg-ipb-white p-8">
+                  <p className="font-serif text-ipb-orange text-[12px] font-bold tracking-[0.18em] mb-3">CONDENSATION</p>
+                  <h3 className="font-serif text-ipb-text font-bold text-[19px] leading-tight mb-3">
+                    Air chaud + surface froide = gouttelettes
+                  </h3>
+                  <p className="text-[13px] leading-[1.75] font-light text-ipb-muted">
+                    Solution : VMI, isolation des ponts thermiques, aération.
+                  </p>
                 </div>
-                <p className="text-cyan-200 text-sm">Eau qui entre par fissure, joint, étanchéité</p>
-                <div className="mt-3 text-xs text-cyan-300">→ Solution : Réparation, étanchéité</div>
-              </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/diagnostic" className="group bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-400 hover:to-indigo-400 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl">
-                Diagnostic expert
-                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all">
-                <Phone size={20} />
-                05 82 95 33 75
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 100" fill="none" className="w-full">
-            <path d="M0 50L60 45C120 40 240 30 360 35C480 40 600 60 720 65C840 70 960 60 1080 50C1200 40 1320 30 1380 25L1440 20V100H0V50Z" fill="white"/>
-          </svg>
-        </div>
-      </section>
-
-      {/* Tableau comparatif */}
-      <section className="py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
-              Comparatif détaillé
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
-              5 critères pour différencier
-            </h2>
-          </div>
-
-          <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-ipb-rule">
-            <div className="grid grid-cols-3 bg-ipb-navy text-white font-bold">
-              <div className="p-4">Critère</div>
-              <div className="p-4 text-center bg-blue-600">
-                <ThermometerSun size={20} className="inline mr-2" />
-                Condensation
-              </div>
-              <div className="p-4 text-center bg-cyan-600">
-                <Droplets size={20} className="inline mr-2" />
-                Infiltration
-              </div>
-            </div>
-            {comparatif.map((row, index) => (
-              <div key={index} className="grid grid-cols-3 border-b border-ipb-rule">
-                <div className="p-4 font-bold text-ipb-text bg-ipb-cream">{row.critere}</div>
-                <div className="p-4 text-ipb-muted bg-blue-50/50">{row.condensation}</div>
-                <div className="p-4 text-ipb-muted bg-cyan-50/50">{row.infiltration}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Tests DIY */}
-      <section className="py-20 bg-ipb-cream">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-amber-100 text-amber-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
-              À faire vous-même
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
-              3 tests simples
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {tests.map((test, index) => (
-              <div key={index} className="bg-white rounded-3xl p-8 shadow-lg border border-ipb-rule">
-                <div className="text-5xl mb-4">{test.icon}</div>
-                <h3 className="text-xl font-bold text-ipb-text mb-3">{test.nom}</h3>
-                <div className="bg-ipb-cream rounded-xl p-4 mb-4">
-                  <div className="text-sm text-ipb-muted font-medium mb-2">Méthode :</div>
-                  <p className="text-ipb-text">{test.methode}</p>
-                </div>
-                <div className="bg-purple-50 rounded-xl p-4">
-                  <div className="text-sm text-purple-600 font-medium mb-2">Interprétation :</div>
-                  <p className="text-purple-900 text-sm">{test.resultat}</p>
+                <div className="bg-ipb-white p-8">
+                  <p className="font-serif text-ipb-orange text-[12px] font-bold tracking-[0.18em] mb-3">INFILTRATION</p>
+                  <h3 className="font-serif text-ipb-text font-bold text-[19px] leading-tight mb-3">
+                    Eau qui entre par fissure, joint ou défaut d'étanchéité
+                  </h3>
+                  <p className="text-[13px] leading-[1.75] font-light text-ipb-muted">
+                    Solution : injection résine, cuvelage, réparation du clos-couvert.
+                  </p>
                 </div>
               </div>
-            ))}
+            </RevealOnScroll>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Solutions */}
-      <section className="py-20 bg-ipb-navy text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-black mb-4">
-              La solution selon la cause
-            </h2>
+        {/* COMPARATIF */}
+        <section className="bg-ipb-white py-24 lg:py-32">
+          <div className="max-w-5xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-16 max-w-2xl">
+                <Eyebrow>Comparatif détaillé</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Cinq critères<br /><em>pour différencier.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <RevealOnScroll delay={0.06}>
+              <div className="border border-ipb-rule rounded-[6px] overflow-hidden">
+                <div className="grid grid-cols-3 bg-ipb-navy text-white">
+                  <div className="p-5 font-serif font-bold text-[14px]">Critère</div>
+                  <div className="p-5 font-serif font-bold text-[14px] text-center border-l border-white/10">Condensation</div>
+                  <div className="p-5 font-serif font-bold text-[14px] text-center border-l border-white/10">Infiltration</div>
+                </div>
+                {comparatif.map((row, i) => (
+                  <div key={row.critere} className={`grid grid-cols-3 ${i < comparatif.length - 1 ? 'border-b border-ipb-rule' : ''}`}>
+                    <div className="p-5 bg-ipb-cream font-serif font-bold text-[14px] text-ipb-text">{row.critere}</div>
+                    <div className="p-5 bg-ipb-white text-[13px] leading-[1.7] font-light text-ipb-muted border-l border-ipb-rule">{row.condensation}</div>
+                    <div className="p-5 bg-ipb-white text-[13px] leading-[1.7] font-light text-ipb-muted border-l border-ipb-rule">{row.infiltration}</div>
+                  </div>
+                ))}
+              </div>
+            </RevealOnScroll>
           </div>
+        </section>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Condensation */}
-            <div className="bg-blue-500/10 border border-blue-500/30 rounded-3xl p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <ThermometerSun size={32} className="text-blue-400" />
-                <h3 className="text-2xl font-bold">Si c'est de la condensation</h3>
+        {/* TESTS DIY */}
+        <section className="bg-ipb-cream py-24 lg:py-32">
+          <div className="max-w-5xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-16 max-w-2xl">
+                <Eyebrow>À faire vous-même</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Trois tests simples<br /><em>avant l'expertise.</em>
+                </h2>
               </div>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <CheckCircle size={20} className="text-blue-400 flex-shrink-0 mt-1" />
-                  <div>
-                    <strong className="text-white">VMI (Ventilation par Insufflation)</strong>
-                    <p className="text-ipb-light text-sm">Renouvelle l'air et évacue l'humidité. 2 500-4 500€</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle size={20} className="text-blue-400 flex-shrink-0 mt-1" />
-                  <div>
-                    <strong className="text-white">Isolation des ponts thermiques</strong>
-                    <p className="text-ipb-light text-sm">Supprime les zones froides où se forme la condensation</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle size={20} className="text-blue-400 flex-shrink-0 mt-1" />
-                  <div>
-                    <strong className="text-white">Aération quotidienne</strong>
-                    <p className="text-ipb-light text-sm">10 min/jour minimum, même en hiver</p>
-                  </div>
-                </li>
-              </ul>
-              <Link href="/vmi-ventilation-insufflation" className="mt-6 inline-flex items-center gap-2 text-blue-400 font-bold hover:text-blue-300">
-                En savoir plus sur la VMI <ArrowRight size={16} />
-              </Link>
-            </div>
+            </RevealOnScroll>
 
-            {/* Infiltration */}
-            <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-3xl p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <Droplets size={32} className="text-cyan-400" />
-                <h3 className="text-2xl font-bold">Si c'est une infiltration</h3>
-              </div>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <CheckCircle size={20} className="text-cyan-400 flex-shrink-0 mt-1" />
-                  <div>
-                    <strong className="text-white">Injection résine (remontées capillaires)</strong>
-                    <p className="text-ipb-light text-sm">Barrière étanche à la base des murs. 80-120€/ml</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle size={20} className="text-cyan-400 flex-shrink-0 mt-1" />
-                  <div>
-                    <strong className="text-white">Cuvelage (caves/sous-sols)</strong>
-                    <p className="text-ipb-light text-sm">Étanchéité des parois enterrées. 150-250€/m²</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle size={20} className="text-cyan-400 flex-shrink-0 mt-1" />
-                  <div>
-                    <strong className="text-white">Réparation toiture/façade</strong>
-                    <p className="text-ipb-light text-sm">Si l'eau vient de l'extérieur (fissures, joints)</p>
-                  </div>
-                </li>
-              </ul>
-              <Link href="/remontees-capillaires-traitement" className="mt-6 inline-flex items-center gap-2 text-cyan-400 font-bold hover:text-cyan-300">
-                En savoir plus sur l'injection <ArrowRight size={16} />
-              </Link>
+            <div className="grid md:grid-cols-3 gap-px bg-ipb-rule border border-ipb-rule">
+              {tests.map((test, i) => (
+                <RevealOnScroll key={test.nom} delay={i * 0.06}>
+                  <article className="bg-ipb-white p-7 lg:p-8 h-full flex flex-col">
+                    <span className="font-serif text-ipb-orange text-[12px] font-bold tracking-[0.18em] mb-4">
+                      0{i + 1}
+                    </span>
+                    <h3 className="font-serif text-ipb-text font-bold text-[18px] leading-tight mb-4">
+                      {test.nom}
+                    </h3>
+                    <div className="mb-4">
+                      <p className="text-[11px] uppercase tracking-[0.14em] text-ipb-muted font-bold mb-1">Méthode</p>
+                      <p className="text-[13px] leading-[1.75] font-light text-ipb-muted">{test.methode}</p>
+                    </div>
+                    <div className="pt-4 border-t border-ipb-rule">
+                      <p className="text-[11px] uppercase tracking-[0.14em] text-ipb-orange font-bold mb-1">Interprétation</p>
+                      <p className="text-[13px] leading-[1.75] text-ipb-text">{test.resultat}</p>
+                    </div>
+                  </article>
+                </RevealOnScroll>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-black mb-6">
-            Encore un doute ?
-            <span className="block text-purple-200">L'expert tranche en 1h30.</span>
-          </h2>
-          <p className="text-xl text-purple-100 mb-8">
-            Diagnostic expert sur site (déduit à 100% des travaux) • Réponse claire et écrite
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/diagnostic" className="group bg-white text-purple-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-purple-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">
-              Diagnostic expert
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/30 hover:bg-white/20 px-8 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3">
-              <Phone size={20} />
-              05 82 95 33 75
-            </a>
+        {/* SOLUTIONS */}
+        <section className="bg-ipb-navy py-24 lg:py-32">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-16 max-w-2xl">
+                <Eyebrow variant="dark">La solution selon la cause</Eyebrow>
+                <h2 className="font-serif text-white" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Deux pathologies,<br /><em>deux familles de traitements.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+              <RevealOnScroll delay={0.08}>
+                <div>
+                  <p className="font-serif text-ipb-orange-l text-[12px] font-bold tracking-[0.18em] mb-4">SI C'EST DE LA CONDENSATION</p>
+                  <ul className="space-y-5">
+                    <li>
+                      <h3 className="font-serif text-white text-[18px] font-bold mb-1">VMI (ventilation par insufflation)</h3>
+                      <p className="text-[13px] leading-[1.75] font-light text-white/65">Renouvelle l'air et évacue l'humidité. 2 500 à 4 500 €.</p>
+                    </li>
+                    <li>
+                      <h3 className="font-serif text-white text-[18px] font-bold mb-1">Isolation des ponts thermiques</h3>
+                      <p className="text-[13px] leading-[1.75] font-light text-white/65">Supprime les zones froides où se forme la condensation.</p>
+                    </li>
+                    <li>
+                      <h3 className="font-serif text-white text-[18px] font-bold mb-1">Aération quotidienne</h3>
+                      <p className="text-[13px] leading-[1.75] font-light text-white/65">10 min par jour minimum, même en hiver.</p>
+                    </li>
+                  </ul>
+                  <Link href="/vmi-ventilation-insufflation" className="mt-8 inline-block text-[13px] text-ipb-orange-l font-medium hover:underline">
+                    En savoir plus sur la VMI →
+                  </Link>
+                </div>
+              </RevealOnScroll>
+
+              <RevealOnScroll delay={0.14}>
+                <div>
+                  <p className="font-serif text-ipb-orange-l text-[12px] font-bold tracking-[0.18em] mb-4">SI C'EST UNE INFILTRATION</p>
+                  <ul className="space-y-5">
+                    <li>
+                      <h3 className="font-serif text-white text-[18px] font-bold mb-1">Injection résine (remontées capillaires)</h3>
+                      <p className="text-[13px] leading-[1.75] font-light text-white/65">Barrière étanche à la base des murs. 80 à 120 € par mètre linéaire.</p>
+                    </li>
+                    <li>
+                      <h3 className="font-serif text-white text-[18px] font-bold mb-1">Cuvelage (caves et sous-sols)</h3>
+                      <p className="text-[13px] leading-[1.75] font-light text-white/65">Étanchéité des parois enterrées. 150 à 250 €/m².</p>
+                    </li>
+                    <li>
+                      <h3 className="font-serif text-white text-[18px] font-bold mb-1">Réparation du clos-couvert</h3>
+                      <p className="text-[13px] leading-[1.75] font-light text-white/65">Si l'eau vient de l'extérieur (toiture, joints, façade).</p>
+                    </li>
+                  </ul>
+                  <Link href="/remontees-capillaires-traitement" className="mt-8 inline-block text-[13px] text-ipb-orange-l font-medium hover:underline">
+                    En savoir plus sur l'injection résine →
+                  </Link>
+                </div>
+              </RevealOnScroll>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* FAQ */}
+        <section className="bg-ipb-white py-24 lg:py-32">
+          <div className="max-w-4xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="text-center mb-16">
+                <Eyebrow className="justify-center">Questions fréquentes</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Distinguer<br /><em>les deux pathologies.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <div className="space-y-3">
+              {faqItems.map((item, i) => (
+                <RevealOnScroll key={item.question} delay={i * 0.04}>
+                  <details className="group bg-ipb-cream border border-ipb-rule rounded-[6px]">
+                    <summary className="cursor-pointer list-none flex items-start justify-between gap-6 p-6 lg:p-7">
+                      <h3 className="font-serif text-ipb-text font-bold text-[17px] leading-tight pr-2">
+                        {item.question}
+                      </h3>
+                      <span className="text-ipb-orange text-2xl leading-none flex-shrink-0 transition-transform group-open:rotate-45 font-light" aria-hidden="true">+</span>
+                    </summary>
+                    <div className="px-6 lg:px-7 pb-7 -mt-2 text-[14px] leading-[1.85] font-light text-ipb-muted">
+                      {item.answer}
+                    </div>
+                  </details>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <CtaFinal />
+      </main>
 
       <Footer />
     </div>

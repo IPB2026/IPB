@@ -4,338 +4,303 @@ import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
-import { Phone, ArrowRight, AlertTriangle, Home, ChevronRight, Shield, CheckCircle, Droplets, Wind } from 'lucide-react';
+import { CtaFinal } from '@/components/home/CtaFinal';
+import { Eyebrow } from '@/components/ui/Eyebrow';
+import { MagneticButton } from '@/components/ui/MagneticButton';
+import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Cave Humide : Cuvelage, Drainage et Solutions | Prix Occitanie (31-82-32)',
-  description: 'Cave humide ou sous-sol inondé ? Causes (infiltrations, nappe, condensation). Solutions : cuvelage (200-400€/m²), drainage, VMI. Diagnostic gratuit Toulouse, Montauban, Auch.',
+  title: 'Cave humide · Cuvelage, drainage et solutions · Institut IPB Toulouse',
+  description: "Cave humide ou sous-sol inondé ? Causes (infiltrations, nappe, condensation), solutions techniques (cuvelage, drainage, VMI) et tarifs. Institut IPB Toulouse, Montauban, Auch.",
   keywords: ['cave humide', 'cuvelage cave', 'drainage sous-sol', 'infiltration cave', 'étanchéité sous-sol'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/cave-humide-solutions' },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
+  },
 };
 
 const solutions = [
   {
     titre: 'Cuvelage',
-    description: 'Revêtement étanche appliqué sur les parois. Résiste à la pression de l\'eau.',
-    prix: '150-250€/m²',
+    description: "Revêtement étanche appliqué sur les parois. Résiste à la pression de l'eau.",
+    prix: '150–250 €/m²',
     adapte: 'Infiltrations latérales',
     garantie: '10 ans',
-    icon: '🛡️',
-    couleur: 'blue',
   },
   {
     titre: 'Drainage périphérique',
-    description: 'Tranchée drainante autour des fondations. Évacue l\'eau avant qu\'elle n\'entre.',
-    prix: '150-300€/ml',
+    description: "Tranchée drainante autour des fondations, qui évacue l'eau avant qu'elle n'entre.",
+    prix: '150–300 €/ml',
     adapte: 'Nappe phréatique haute',
     garantie: '20 ans',
-    icon: '🚰',
-    couleur: 'cyan',
   },
   {
     titre: 'Pompe de relevage',
-    description: 'Évacue l\'eau qui s\'accumule dans un puisard. Solution complémentaire.',
-    prix: '800-2000€',
+    description: "Évacue l'eau qui s'accumule dans un puisard. Solution complémentaire au drainage.",
+    prix: '800–2 000 €',
     adapte: 'Inondations récurrentes',
     garantie: '5 ans',
-    icon: '⬆️',
-    couleur: 'teal',
   },
   {
-    titre: 'VMI',
-    description: 'Ventilation par insufflation. Élimine la condensation et l\'humidité ambiante.',
-    prix: '2500-4500€',
+    titre: 'VMI — ventilation par insufflation',
+    description: "Élimine la condensation et l'humidité ambiante par insufflation d'air sain.",
+    prix: '2 500–4 500 €',
     adapte: 'Condensation',
     garantie: '10 ans',
-    icon: '💨',
-    couleur: 'emerald',
   },
 ];
 
 const causesCave = [
-  { cause: 'Infiltrations latérales', frequence: '45%', signe: 'Eau qui suinte des murs' },
-  { cause: 'Remontées par le sol', frequence: '25%', signe: 'Sol toujours humide' },
-  { cause: 'Condensation', frequence: '20%', signe: 'Buée, moisissures' },
-  { cause: 'Nappe phréatique', frequence: '10%', signe: 'Inondation saisonnière' },
+  { cause: 'Infiltrations latérales', frequence: '45 %', signe: "Eau qui suinte des murs" },
+  { cause: 'Remontées par le sol', frequence: '25 %', signe: 'Sol toujours humide' },
+  { cause: 'Condensation', frequence: '20 %', signe: 'Buée, moisissures' },
+  { cause: 'Nappe phréatique', frequence: '10 %', signe: 'Inondation saisonnière' },
+];
+
+const cuvelageEtapes = [
+  { titre: 'Préparation du support', desc: "Nettoyage, traitement des fissures, application d'un primaire d'accrochage." },
+  { titre: 'Application multicouche', desc: 'Deux à trois couches de mortier hydrofuge ou résine époxy selon le support.' },
+  { titre: "Résistance à la pression", desc: "Jusqu'à 7 bars de pression d'eau (équivalent 70 m de profondeur)." },
+];
+
+const cuvelageQuand = [
+  "Infiltrations d'eau à travers les murs",
+  'Cave régulièrement inondée',
+  "Pression d'eau latérale (nappe)",
+  "Projet d'aménagement du sous-sol",
+  'Cave avec salpêtre persistant',
 ];
 
 export default function CaveHumidePage() {
   return (
-    <div className="font-sans text-ipb-text bg-white antialiased">
+    <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <TopBar />
       <Navbar />
       <SmartBackBar />
 
-      {/* Hero */}
-      <section className="relative bg-gradient-to-br from-slate-900 via-blue-950 to-cyan-950 text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 30% 70%, rgba(6, 182, 212, 0.3) 0%, transparent 50%)' }}></div>
+      {/* Breadcrumb */}
+      <div className="bg-ipb-cream border-b border-ipb-rule py-3">
+        <div className="max-w-ipb mx-auto px-6 lg:px-12 text-sm text-ipb-muted">
+          <Link href="/" className="hover:text-ipb-orange transition-colors">Accueil</Link>
+          <span className="mx-2" aria-hidden="true">›</span>
+          <Link href="/expert-humidite-toulouse-31" className="hover:text-ipb-orange transition-colors">Expert humidité</Link>
+          <span className="mx-2" aria-hidden="true">›</span>
+          <span className="text-ipb-text">Cave humide</span>
         </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <nav className="flex items-center gap-2 text-sm text-cyan-200 mb-8">
-            <Link href="/" className="hover:text-white transition">Accueil</Link>
-            <ChevronRight size={14} />
-            <Link href="/expert-humidite-toulouse-31" className="hover:text-white transition">Expert Humidité</Link>
-            <ChevronRight size={14} />
-            <span className="text-white">Cave humide</span>
-          </nav>
+      </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <main id="main-content">
+        {/* HERO */}
+        <section className="bg-ipb-cream">
+          <div className="max-w-ipb mx-auto grid lg:grid-cols-[58fr_42fr] gap-12 lg:gap-16 px-6 lg:px-12 pt-16 lg:pt-24 pb-20 lg:pb-28 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 bg-cyan-500/20 border border-cyan-400/30 text-cyan-300 px-4 py-2 rounded-full text-sm font-bold mb-6">
-                <Home size={16} />
-                Sous-sols et caves
-              </div>
-
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.1]">
-                Cave
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
-                  Humide ?
-                </span>
-              </h1>
-
-              <p className="text-xl text-cyan-100 mb-8 leading-relaxed max-w-xl">
-                <strong className="text-white">70% des caves en Occitanie</strong> présentent des problèmes d'humidité. 
-                Infiltrations, remontées, condensation : chaque cause a sa solution. 
-                Le cuvelage est la plus efficace pour les espaces enterrés.
-              </p>
-
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                <div className="bg-white/10 backdrop-blur rounded-2xl p-4 text-center">
-                  <div className="text-3xl font-black text-cyan-400">70%</div>
-                  <div className="text-xs text-cyan-200">des caves concernées</div>
+              <RevealOnScroll>
+                <Eyebrow>Sous-sols et caves enterrées</Eyebrow>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.06}>
+                <h1
+                  className="font-serif text-ipb-text mb-8"
+                  style={{
+                    fontSize: 'clamp(40px, 4vw, 62px)',
+                    lineHeight: 1.06,
+                    letterSpacing: '-0.025em',
+                    fontWeight: 700,
+                  }}
+                >
+                  Cave humide.<br />
+                  <em>Cuvelage, drainage, VMI.</em>
+                </h1>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.12}>
+                <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">
+                  En Occitanie, une grande partie des caves présente un défaut d'étanchéité — infiltrations latérales, remontées par le sol ou condensation. Chaque cause a sa solution. Le cuvelage reste la plus durable pour les espaces enterrés soumis à la pression de l'eau.
+                </p>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.18}>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <MagneticButton href="/diagnostic" variant="primary">
+                    Diagnostic cave gratuit
+                  </MagneticButton>
+                  <MagneticButton href="/expert-humidite-toulouse-31" variant="ghost">
+                    Voir notre méthode
+                  </MagneticButton>
                 </div>
-                <div className="bg-white/10 backdrop-blur rounded-2xl p-4 text-center">
-                  <div className="text-3xl font-black text-cyan-400">10 ans</div>
-                  <div className="text-xs text-cyan-200">garantie cuvelage</div>
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/diagnostic" className="group bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl">
-                  Diagnostic cave gratuit
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all">
-                  <Phone size={20} />
-                  05 82 95 33 75
-                </a>
-              </div>
+              </RevealOnScroll>
             </div>
 
-            {/* Causes fréquentes */}
-            <div className="bg-white/10 backdrop-blur rounded-3xl p-8 border border-white/20">
-              <h3 className="text-xl font-bold text-white mb-6">Quelle est la cause ?</h3>
-              <div className="space-y-4">
-                {causesCave.map((item, index) => (
-                  <div key={index} className="flex items-center justify-between bg-white/5 rounded-2xl p-4">
+            <RevealOnScroll direction="right" delay={0.1} className="hidden lg:block">
+              <div className="bg-ipb-white border border-ipb-rule rounded-[6px] p-8">
+                <p className="font-serif text-ipb-orange text-[12px] font-bold tracking-[0.18em] mb-6">
+                  QUELLE EST LA CAUSE ?
+                </p>
+                <ul className="space-y-5">
+                  {causesCave.map((item) => (
+                    <li key={item.cause} className="flex items-start justify-between gap-4 pb-4 border-b border-ipb-rule last:border-b-0 last:pb-0">
+                      <div className="flex-1 min-w-0">
+                        <p className="font-serif text-ipb-text font-bold text-[15px] leading-tight mb-1">{item.cause}</p>
+                        <p className="text-[12px] text-ipb-muted leading-relaxed">{item.signe}</p>
+                      </div>
+                      <span className="font-serif text-ipb-orange font-bold text-[20px] leading-none flex-shrink-0">{item.frequence}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </RevealOnScroll>
+          </div>
+        </section>
+
+        {/* SOLUTIONS */}
+        <section className="bg-ipb-white py-24 lg:py-32">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-16 max-w-2xl">
+                <Eyebrow>Quatre solutions techniques</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Selon votre cause,<br /><em>la bonne technique.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-ipb-rule border border-ipb-rule">
+              {solutions.map((s, i) => (
+                <RevealOnScroll key={s.titre} delay={i * 0.04}>
+                  <article className="bg-ipb-white p-7 lg:p-8 h-full flex flex-col">
+                    <span className="font-serif text-ipb-orange text-[12px] font-bold tracking-[0.18em] mb-4">
+                      0{i + 1}
+                    </span>
+                    <h3 className="font-serif text-ipb-text font-bold text-[19px] leading-tight mb-3">
+                      {s.titre}
+                    </h3>
+                    <p className="text-[13px] leading-[1.8] font-light text-ipb-muted mb-6 flex-grow">
+                      {s.description}
+                    </p>
+                    <dl className="text-[12px] space-y-1.5 pt-4 border-t border-ipb-rule">
+                      <div className="flex justify-between">
+                        <dt className="text-ipb-muted">Prix</dt>
+                        <dd className="font-medium text-ipb-text">{s.prix}</dd>
+                      </div>
+                      <div className="flex justify-between">
+                        <dt className="text-ipb-muted">Adapté</dt>
+                        <dd className="font-medium text-ipb-text">{s.adapte}</dd>
+                      </div>
+                      <div className="flex justify-between">
+                        <dt className="text-ipb-muted">Garantie</dt>
+                        <dd className="font-medium text-ipb-orange">{s.garantie}</dd>
+                      </div>
+                    </dl>
+                  </article>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FOCUS CUVELAGE */}
+        <section className="bg-ipb-navy py-24 lg:py-32">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+              <RevealOnScroll className="lg:col-span-6">
+                <Eyebrow variant="dark">Solution principale</Eyebrow>
+                <h2 className="font-serif text-white mb-8" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Le cuvelage,<br /><em>l'étanchéité totale.</em>
+                </h2>
+                <p className="text-[15px] leading-[1.9] font-light text-white/65 mb-10">
+                  Le cuvelage consiste à appliquer un revêtement étanche (mortier hydrofuge ou résine époxy) sur toutes les parois de la cave. Il résiste à la pression de l'eau et transforme votre cave humide en espace sain et utilisable.
+                </p>
+
+                <ul className="space-y-6">
+                  {cuvelageEtapes.map((etape, i) => (
+                    <RevealOnScroll key={etape.titre} delay={0.08 + i * 0.06}>
+                      <li className="grid grid-cols-[40px_1fr] gap-5 items-start pb-6 border-b border-white/10">
+                        <span className="font-serif text-ipb-orange-l text-[14px] font-bold tracking-wider pt-1">
+                          0{i + 1}
+                        </span>
+                        <div>
+                          <h3 className="font-serif text-white text-[18px] font-bold leading-tight mb-2">{etape.titre}</h3>
+                          <p className="text-[13px] leading-[1.75] font-light text-white/65">{etape.desc}</p>
+                        </div>
+                      </li>
+                    </RevealOnScroll>
+                  ))}
+                </ul>
+
+                <RevealOnScroll delay={0.3}>
+                  <div className="mt-10 grid grid-cols-2 gap-8 pt-8 border-t border-white/10">
                     <div>
-                      <div className="font-bold text-white">{item.cause}</div>
-                      <div className="text-cyan-300 text-sm">{item.signe}</div>
+                      <p className="text-[10px] text-ipb-orange-l uppercase tracking-[0.18em] font-bold mb-2">Prix cuvelage</p>
+                      <p className="font-serif text-white font-bold leading-none" style={{ fontSize: 'clamp(28px, 3vw, 40px)' }}>
+                        150–250<span className="text-ipb-orange-l text-[18px]"> €/m²</span>
+                      </p>
                     </div>
-                    <div className="text-2xl font-black text-cyan-400">{item.frequence}</div>
+                    <div>
+                      <p className="text-[10px] text-ipb-orange-l uppercase tracking-[0.18em] font-bold mb-2">Garantie</p>
+                      <p className="font-serif text-white font-bold leading-none" style={{ fontSize: 'clamp(28px, 3vw, 40px)' }}>
+                        10<span className="text-ipb-orange-l text-[18px]"> ans</span>
+                      </p>
+                    </div>
                   </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+                </RevealOnScroll>
+              </RevealOnScroll>
 
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 100" fill="none" className="w-full">
-            <path d="M0 50L60 45C120 40 240 30 360 35C480 40 600 60 720 65C840 70 960 60 1080 50C1200 40 1320 30 1380 25L1440 20V100H0V50Z" fill="white"/>
-          </svg>
-        </div>
-      </section>
-
-      {/* Solutions */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-cyan-100 text-cyan-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
-              Nos solutions
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
-              4 solutions selon votre problème
-            </h2>
-            <p className="text-xl text-ipb-muted max-w-2xl mx-auto">
-              Le diagnostic détermine la cause exacte et la solution adaptée.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {solutions.map((sol, index) => (
-              <div 
-                key={index}
-                className={`rounded-3xl p-6 border-2 hover:shadow-xl transition-all ${
-                  sol.couleur === 'blue' ? 'bg-blue-50 border-blue-200 hover:border-blue-400' :
-                  sol.couleur === 'cyan' ? 'bg-cyan-50 border-cyan-200 hover:border-cyan-400' :
-                  sol.couleur === 'teal' ? 'bg-teal-50 border-teal-200 hover:border-teal-400' :
-                  'bg-emerald-50 border-emerald-200 hover:border-emerald-400'
-                }`}
-              >
-                <div className="text-5xl mb-4">{sol.icon}</div>
-                <h3 className="text-xl font-bold text-ipb-text mb-2">{sol.titre}</h3>
-                <p className="text-ipb-muted text-sm mb-4">{sol.description}</p>
-                
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-ipb-muted">Prix</span>
-                    <span className="font-bold text-ipb-text">{sol.prix}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-ipb-muted">Adapté pour</span>
-                    <span className="font-bold text-ipb-text">{sol.adapte}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-ipb-muted">Garantie</span>
-                    <span className="font-bold text-cyan-600">{sol.garantie}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Focus Cuvelage */}
-      <section className="py-20 bg-ipb-navy text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="inline-block bg-cyan-500/20 text-cyan-300 px-4 py-2 rounded-full text-sm font-bold mb-6">
-                Solution principale
-              </span>
-              <h2 className="text-3xl md:text-4xl font-black mb-6">
-                Le cuvelage : l'étanchéité totale
-              </h2>
-              <p className="text-white/70 text-lg mb-6">
-                Le cuvelage consiste à appliquer un revêtement étanche (mortier hydrofuge ou résine époxy) 
-                sur toutes les parois de la cave. Il résiste à la pression de l'eau et transforme 
-                votre cave humide en espace sain et utilisable.
-              </p>
-
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-start gap-3">
-                  <CheckCircle size={20} className="text-cyan-400 flex-shrink-0 mt-1" />
-                  <div>
-                    <strong className="text-white">Préparation du support</strong>
-                    <p className="text-ipb-light text-sm">Nettoyage, traitement des fissures, application d'un primaire</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle size={20} className="text-cyan-400 flex-shrink-0 mt-1" />
-                  <div>
-                    <strong className="text-white">Application multicouche</strong>
-                    <p className="text-ipb-light text-sm">2 à 3 couches de mortier ou résine selon le support</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle size={20} className="text-cyan-400 flex-shrink-0 mt-1" />
-                  <div>
-                    <strong className="text-white">Résistance à la pression</strong>
-                    <p className="text-ipb-light text-sm">Jusqu'à 7 bars de pression d'eau (équivalent 70m de profondeur)</p>
-                  </div>
-                </li>
-              </ul>
-
-              <div className="bg-cyan-500/20 rounded-2xl p-6 border border-cyan-500/30">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-sm text-cyan-300 font-bold">PRIX CUVELAGE</div>
-                    <div className="text-4xl font-black text-white">150-250€<span className="text-lg text-ipb-light">/m²</span></div>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-sm text-cyan-300 font-bold">GARANTIE</div>
-                    <div className="text-4xl font-black text-cyan-400">10 ans</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white/5 rounded-3xl p-8 border border-white/10">
-              <h3 className="text-xl font-bold text-white mb-6">Quand choisir le cuvelage ?</h3>
-              <ul className="space-y-4">
-                {[
-                  'Infiltrations d\'eau à travers les murs',
-                  'Cave régulièrement inondée',
-                  'Pression d\'eau latérale (nappe)',
-                  'Projet d\'aménagement du sous-sol',
-                  'Cave avec salpêtre persistant',
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-white/70">
-                    <CheckCircle size={18} className="text-cyan-400" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-8 p-4 bg-amber-500/20 rounded-xl border border-amber-500/30">
-                <div className="flex items-start gap-3">
-                  <AlertTriangle size={18} className="text-amber-400 flex-shrink-0 mt-1" />
-                  <p className="text-amber-200 text-sm">
-                    Le cuvelage ne convient pas si le problème vient uniquement de la condensation. 
-                    Dans ce cas, la VMI est plus adaptée.
+              <RevealOnScroll className="lg:col-span-6" delay={0.1}>
+                <div className="bg-white/5 border border-white/10 rounded-[6px] p-8 lg:p-10">
+                  <p className="font-serif text-ipb-orange-l text-[12px] font-bold tracking-[0.18em] mb-5">
+                    QUAND CHOISIR LE CUVELAGE ?
                   </p>
+                  <ul className="space-y-4">
+                    {cuvelageQuand.map((item) => (
+                      <li key={item} className="flex items-start gap-3 text-[14px] leading-[1.7] text-white/85">
+                        <span className="text-ipb-orange-l mt-1.5" aria-hidden="true">▸</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-8 p-5 bg-ipb-orange/10 border-l-4 border-ipb-orange-l rounded-r-[3px]">
+                    <p className="text-[13px] leading-[1.75] text-white/85">
+                      <strong className="text-white font-medium">À noter :</strong> le cuvelage ne convient pas si le problème vient uniquement de la condensation. Dans ce cas, la VMI est plus adaptée.
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </RevealOnScroll>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Articles connexes */}
-      <section className="py-20 bg-ipb-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-ipb-text mb-8 text-center">
-            Articles connexes
-          </h2>
-          <div className="grid md:grid-cols-4 gap-6">
-            {[
-              { href: '/remontees-capillaires-traitement', icon: '💧', title: 'Remontées capillaires', desc: 'Injection résine' },
-              { href: '/moisissures-maison-sante', icon: '🦠', title: 'Moisissures', desc: 'Risques santé' },
-              { href: '/vmi-ventilation-insufflation', icon: '💨', title: 'VMI', desc: 'Ventilation' },
-              { href: '/condensation-ou-infiltration', icon: '❓', title: 'Condensation ?', desc: 'Comment distinguer' },
-            ].map((item, index) => (
-              <Link 
-                key={index}
-                href={item.href}
-                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-ipb-rule"
-              >
-                <span className="text-4xl mb-4 block">{item.icon}</span>
-                <h3 className="font-bold text-ipb-text group-hover:text-cyan-600 transition-colors mb-1">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-ipb-muted">{item.desc}</p>
-              </Link>
-            ))}
+        {/* Articles connexes */}
+        <nav aria-label="Articles connexes" className="bg-ipb-cream py-20 lg:py-24">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <p className="text-2xl font-serif font-bold text-ipb-text mb-8 text-center">
+              Articles connexes
+            </p>
+            <div className="grid md:grid-cols-4 gap-px bg-ipb-rule border border-ipb-rule">
+              {[
+                { href: '/remontees-capillaires-traitement', title: 'Remontées capillaires', desc: 'Injection résine' },
+                { href: '/moisissures-maison-sante', title: 'Moisissures', desc: 'Risques santé' },
+                { href: '/vmi-ventilation-insufflation', title: 'VMI', desc: 'Ventilation par insufflation' },
+                { href: '/condensation-ou-infiltration', title: 'Condensation ou infiltration ?', desc: 'Comment distinguer' },
+              ].map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="group block bg-ipb-white p-6 lg:p-7 hover:bg-ipb-stone transition-colors duration-300"
+                >
+                  <h3 className="font-serif text-ipb-text font-bold text-[15px] leading-tight mb-2 group-hover:text-ipb-orange transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-[13px] leading-[1.7] font-light text-ipb-muted">
+                    {item.desc}
+                  </p>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </nav>
 
-      {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-cyan-600 to-blue-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-black mb-6">
-            Transformez votre cave humide
-            <span className="block text-cyan-200">en espace sain.</span>
-          </h2>
-          <p className="text-xl text-cyan-100 mb-8">
-            Diagnostic gratuit • Devis personnalisé • Garantie décennale
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/diagnostic" className="group bg-white text-cyan-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-cyan-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">
-              Diagnostic cave gratuit
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/30 hover:bg-white/20 px-8 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3">
-              <Phone size={20} />
-              05 82 95 33 75
-            </a>
-          </div>
-        </div>
-      </section>
+        <CtaFinal />
+      </main>
 
       <Footer />
     </div>

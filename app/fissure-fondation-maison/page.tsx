@@ -5,62 +5,55 @@ import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
-import { Phone, ArrowRight, AlertTriangle, Home, ChevronRight, Shield, CheckCircle, Clock, TrendingDown, Layers } from 'lucide-react';
+import { CtaFinal } from '@/components/home/CtaFinal';
+import { Eyebrow } from '@/components/ui/Eyebrow';
+import { MagneticButton } from '@/components/ui/MagneticButton';
+import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Fissure Fondation Maison : Causes et Solutions Durables | Expert Occitanie',
-  description: 'Fissures dues aux fondations ? Causes (tassement, sol argileux, RGA). Comparatif solutions : agrafage (8-15k€) vs micropieux (25-50k€). Expert fondations Toulouse, Montauban, Auch (31-82-32).',
-  keywords: ['fissure fondation', 'tassement fondation', 'reprise en sous-oeuvre', 'micropieux', 'agrafage fissures'],
+  title: 'Fissure de fondation · Causes et solutions durables · Institut IPB',
+  description: "Fissures dues aux fondations ? Causes (tassement différentiel, sol argileux, RGA). Comparatif des solutions : agrafage, micropieux, résine expansive. Institut IPB Toulouse, Montauban, Auch.",
+  keywords: ['fissure fondation', 'tassement fondation', 'reprise en sous-œuvre', 'micropieux', 'agrafage fissures'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/fissure-fondation-maison' },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
+  },
 };
 
 const causesFondation = [
-  {
-    icon: <TrendingDown className="w-8 h-8" />,
-    titre: 'Tassement différentiel',
-    description: 'Une partie de la fondation s\'enfonce plus que l\'autre. Cause principale des fissures en escalier.',
-    frequence: '60%',
-  },
-  {
-    icon: <Layers className="w-8 h-8" />,
-    titre: 'Sol argileux (RGA)',
-    description: 'Les argiles gonflent et se rétractent selon l\'humidité. Phénomène amplifié par les sécheresses.',
-    frequence: '85%',
-  },
-  {
-    icon: <Home className="w-8 h-8" />,
-    titre: 'Fondations sous-dimensionnées',
-    description: 'Fréquent dans les maisons des années 60-80. Semelles trop étroites ou pas assez profondes.',
-    frequence: '40%',
-  },
+  { titre: 'Tassement différentiel', desc: "Une partie de la fondation s'enfonce plus que l'autre. Cause principale des fissures en escalier sur façade.", frequence: '60 %' },
+  { titre: 'Sol argileux (RGA)', desc: "Les argiles gonflent et se rétractent selon l'humidité. Phénomène amplifié par les sécheresses récentes.", frequence: '85 %' },
+  { titre: 'Fondations sous-dimensionnées', desc: "Fréquent dans les maisons des années 1960-1980. Semelles trop étroites ou pas assez profondes au regard du sol.", frequence: '40 %' },
 ];
 
 const comparatifSolutions = [
   {
     solution: 'Agrafage structurel',
-    prix: '8 000 - 18 000€',
-    delai: '3-5 jours',
+    prix: '8 000 – 18 000 €',
+    delai: '3 à 5 jours',
     garantie: '10 ans',
-    adapte: '85% des cas',
+    adapte: '85 % des cas',
     avantages: ['Adapté au bâti courant', 'Intervention rapide', 'Pas de terrassement lourd'],
     recommande: true,
   },
   {
     solution: 'Micropieux',
-    prix: '25 000 - 50 000€',
-    delai: '2-3 semaines',
+    prix: '25 000 – 50 000 €',
+    delai: '2 à 3 semaines',
     garantie: '10 ans',
     adapte: 'Cas graves',
-    avantages: ['Ancrage profond (10-15m)', 'Cas extrêmes', 'Bâtiments lourds'],
+    avantages: ['Ancrage profond (10 à 15 m)', 'Tassements actifs majeurs', 'Bâtiments lourds'],
     recommande: false,
   },
   {
     solution: 'Résine expansive',
-    prix: '5 000 - 15 000€',
-    delai: '1-2 jours',
+    prix: '5 000 – 15 000 €',
+    delai: '1 à 2 jours',
     garantie: '10 ans',
     adapte: 'Tassements légers',
-    avantages: ['Moins invasif', 'Rapide', 'Sols compatibles'],
+    avantages: ['Moins invasif', 'Rapide', "Sols compatibles uniquement"],
     recommande: false,
   },
 ];
@@ -74,7 +67,7 @@ const faqSchema = {
       name: 'Comment savoir si les fissures de ma maison viennent des fondations ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Les fissures de fondation se reconnaissent par leur forme en escalier (suivant les joints de maçonnerie), leur présence sur plusieurs murs, des portes et fenêtres qui coincent, et une évolution progressive. En Occitanie, 85% des cas sont liés au sol argileux (retrait-gonflement des argiles). Un diagnostic professionnel permet de confirmer l\'origine.',
+        text: "Les fissures de fondation se reconnaissent par leur forme en escalier (suivant les joints de maçonnerie), leur présence sur plusieurs murs, des portes et fenêtres qui coincent, et une évolution progressive. En Occitanie, une grande majorité des cas est liée au sol argileux (retrait-gonflement des argiles). Un diagnostic professionnel permet de confirmer l'origine.",
       },
     },
     {
@@ -82,288 +75,246 @@ const faqSchema = {
       name: 'Combien coûte la réparation de fondations fissurées ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Le coût dépend de la solution : l\'agrafage structurel coûte entre 8 000 et 18 000€ et convient à 85% des cas. Les micropieux reviennent entre 25 000 et 50 000€ pour les cas graves. La résine expansive coûte entre 5 000 et 15 000€ pour les tassements légers. Toutes ces solutions sont couvertes par une garantie décennale de 10 ans.',
+        text: "Cela dépend de la solution : agrafage structurel entre 8 000 et 18 000 € (convient à la majorité des cas), micropieux entre 25 000 et 50 000 € pour les cas graves, résine expansive entre 5 000 et 15 000 € pour les tassements légers. Toutes ces solutions sont couvertes par la garantie décennale.",
       },
     },
     {
       '@type': 'Question',
-      name: 'L\'agrafage structurel est-il efficace pour les fissures de fondation ?',
+      name: "L'agrafage structurel est-il efficace pour les fissures de fondation ?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Oui, l\'agrafage structurel est la solution recommandée pour 85% des cas de fissures de fondation. Il est 3 fois moins cher que les micropieux, l\'intervention est rapide (3 à 5 jours), ne nécessite pas de terrassement lourd et bénéficie d\'une garantie décennale de 10 ans. Il est particulièrement adapté aux maisons individuelles en Occitanie.',
+        text: "Oui, dans la grande majorité des cas. L'agrafage est la solution adaptée pour le bâti individuel courant : il redonne au mur sa cohérence en cousant la fissure avec des aciers inoxydables, sans terrassement. Pour les tassements actifs majeurs, on bascule sur micropieux.",
       },
     },
     {
       '@type': 'Question',
-      name: 'Les fissures de fondation s\'aggravent-elles avec le temps ?',
+      name: "L'assurance prend-elle en charge les fissures de fondation ?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Oui, une fissure de fondation s\'aggrave en moyenne de 15% par an sans traitement. Ce qui coûte 8 000€ aujourd\'hui peut en coûter 25 000€ dans 3 ans. Les cycles de sécheresse et de pluie en Occitanie accélèrent le phénomène de retrait-gonflement des argiles, aggravant les mouvements de fondation.',
+        text: "Oui, si votre commune a été reconnue en état de catastrophe naturelle pour la sécheresse de l'année concernée. Notre rapport documente les désordres et leur lien avec le retrait-gonflement des argiles. Voir notre guide indemnisation CAT-NAT.",
       },
     },
   ],
 };
 
+const faqItems = faqSchema.mainEntity.map((q) => ({ question: q.name, answer: q.acceptedAnswer.text }));
+
 export default function FissureFondationPage() {
   return (
-    <div className="font-sans text-ipb-text bg-white antialiased">
-      <Script
-        id="faq-schema-fissure-fondation-maison"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+    <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
+      <Script id="faq-schema-fondation" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
       <TopBar />
       <Navbar />
       <SmartBackBar />
 
-      {/* Hero */}
-      <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-orange-950/40 text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.03) 45%, rgba(255,255,255,0.03) 55%, transparent 55%)', backgroundSize: '20px 20px' }}></div>
+      <div className="bg-ipb-cream border-b border-ipb-rule py-3">
+        <div className="max-w-ipb mx-auto px-6 lg:px-12 text-sm text-ipb-muted">
+          <Link href="/" className="hover:text-ipb-orange transition-colors">Accueil</Link>
+          <span className="mx-2" aria-hidden="true">›</span>
+          <Link href="/expertise/fissures" className="hover:text-ipb-orange transition-colors">Expert fissures</Link>
+          <span className="mx-2" aria-hidden="true">›</span>
+          <span className="text-ipb-text">Fissure de fondation</span>
         </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <nav className="flex items-center gap-2 text-sm text-white/70 mb-8">
-            <Link href="/" className="hover:text-white transition">Accueil</Link>
-            <ChevronRight size={14} />
-            <Link href="/expert-fissures-toulouse-31" className="hover:text-white transition">Expert Fissures</Link>
-            <ChevronRight size={14} />
-            <span className="text-white">Fondations</span>
-          </nav>
+      </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-ipb-orange/20 border border-orange-400/30 text-ipb-orange-l px-4 py-2 rounded-full text-sm font-bold mb-6">
-                <Home size={16} />
-                Problème structurel majeur
-              </div>
-
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.1]">
-                Fissures de
-                <span className="block text-transparent bg-clip-text bg-ipb-orange">
-                  Fondation
-                </span>
-              </h1>
-
-              <p className="text-xl text-white/70 mb-8 leading-relaxed max-w-xl">
-                Quand les fissures viennent des fondations, c'est que le bâtiment bouge. 
-                En <strong className="text-white">Occitanie (31, 82, 32)</strong>, 85% des cas sont liés au sol argileux. 
-                L'agrafage structurel est la solution adaptée dans la majorité des cas de fissures sur bâti courant.
-              </p>
-
-              <div className="bg-red-500/20 border border-red-400/40 rounded-2xl p-6 mb-8">
-                <div className="flex items-start gap-4">
-                  <AlertTriangle className="w-8 h-8 text-red-400 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-bold text-white mb-2">Pourquoi ne pas attendre ?</h3>
-                    <p className="text-red-100">
-                      Une fissure de fondation <strong className="text-white">s'aggrave de 15% par an</strong> en moyenne. 
-                      Ce qui coûte 8 000€ aujourd'hui peut en coûter 25 000€ dans 3 ans.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/diagnostic" className="group bg-ipb-orange hover:bg-[#b35519] text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl">
-                  Diagnostic fondations
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all">
-                  <Phone size={20} />
-                  05 82 95 33 75
-                </a>
-              </div>
-            </div>
-
-            {/* Stats impact */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
-                <div className="text-5xl font-black text-ipb-orange-l">85%</div>
-                <div className="text-white/70 text-sm mt-2">des cas liés au sol argileux en Occitanie</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
-                <div className="text-5xl font-black text-green-400">-65%</div>
-                <div className="text-white/70 text-sm mt-2">coût agrafage vs micropieux</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
-                <div className="text-5xl font-black text-red-400">+15%</div>
-                <div className="text-white/70 text-sm mt-2">aggravation par an sans traitement</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
-                <div className="text-5xl font-black text-cyan-400">10 ans</div>
-                <div className="text-white/70 text-sm mt-2">garantie décennale</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 100" fill="none" className="w-full">
-            <path d="M0 50L60 45C120 40 240 30 360 35C480 40 600 60 720 65C840 70 960 60 1080 50C1200 40 1320 30 1380 25L1440 20V100H0V50Z" fill="white"/>
-          </svg>
-        </div>
-      </section>
-
-      {/* Causes */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-ipb-stone text-ipb-orange px-4 py-2 rounded-full text-sm font-bold mb-4">
-              Comprendre le problème
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
-              Pourquoi vos fondations bougent ?
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {causesFondation.map((cause, index) => (
-              <div key={index} className="bg-gradient-to-br from-slate-50 to-orange-50 rounded-3xl p-8 border border-ipb-rule hover:shadow-xl transition-all">
-                <div className="w-16 h-16 bg-ipb-stone rounded-2xl flex items-center justify-center text-ipb-orange mb-6">
-                  {cause.icon}
-                </div>
-                <h3 className="text-xl font-bold text-ipb-text mb-3">{cause.titre}</h3>
-                <p className="text-ipb-muted mb-4">{cause.description}</p>
-                <div className="inline-block bg-ipb-stone text-ipb-orange px-4 py-2 rounded-full text-sm font-bold">
-                  {cause.frequence} des cas
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Comparatif solutions */}
-      <section className="py-20 bg-ipb-navy text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-green-500/20 text-green-300 px-4 py-2 rounded-full text-sm font-bold mb-4">
-              Comparatif
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black mb-4">
-              Quelle solution pour vos fondations ?
-            </h2>
-            <p className="text-xl text-ipb-light">
-              L'agrafage convient à 85% des cas. Les micropieux sont réservés aux situations extrêmes.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {comparatifSolutions.map((sol, index) => (
-              <div 
-                key={index} 
-                className={`rounded-3xl p-8 ${
-                  sol.recommande 
-                    ? 'bg-gradient-to-br from-green-500/20 to-emerald-500/20 border-2 border-green-500/50' 
-                    : 'bg-white/5 border border-white/10'
-                }`}
-              >
-                {sol.recommande && (
-                  <div className="inline-block bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold mb-4">
-                    ✓ RECOMMANDÉ
-                  </div>
-                )}
-                <h3 className="text-2xl font-bold mb-4">{sol.solution}</h3>
-                
-                <div className="space-y-4 mb-6">
-                  <div className="flex justify-between items-center">
-                    <span className="text-ipb-light">Prix</span>
-                    <span className="font-bold text-xl">{sol.prix}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-ipb-light">Délai</span>
-                    <span className="font-bold">{sol.delai}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-ipb-light">Garantie</span>
-                    <span className="font-bold">{sol.garantie}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-ipb-light">Adapté pour</span>
-                    <span className="font-bold text-ipb-orange-l">{sol.adapte}</span>
-                  </div>
-                </div>
-
-                <ul className="space-y-2">
-                  {sol.avantages.map((av, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-white/70">
-                      <CheckCircle size={16} className={sol.recommande ? 'text-green-400' : 'text-ipb-muted'} />
-                      {av}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 p-6 bg-amber-500/20 border border-amber-500/30 rounded-2xl">
-            <div className="flex items-start gap-4">
-              <AlertTriangle className="w-6 h-6 text-amber-400 flex-shrink-0 mt-1" />
-              <div>
-                <h4 className="font-bold text-amber-300 mb-1">📝 Note importante</h4>
-                <p className="text-amber-100 text-sm">
-                  IPB ne réalise pas les micropieux (nous ne sommes pas équipés pour cette intervention lourde). 
-                  Nous vous orientons vers des partenaires qualifiés si votre cas l'exige. Notre spécialité : l'agrafage structurel.
+      <main id="main-content">
+        {/* HERO */}
+        <section className="bg-ipb-cream">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12 pt-16 lg:pt-24 pb-20 lg:pb-28">
+            <div className="max-w-3xl">
+              <RevealOnScroll>
+                <Eyebrow>Pathologie structurelle profonde</Eyebrow>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.06}>
+                <h1
+                  className="font-serif text-ipb-text mb-8"
+                  style={{
+                    fontSize: 'clamp(40px, 4vw, 62px)',
+                    lineHeight: 1.06,
+                    letterSpacing: '-0.025em',
+                    fontWeight: 700,
+                  }}
+                >
+                  Fissure de fondation.<br />
+                  <em>Quand le sol bouge sous la maison.</em>
+                </h1>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.12}>
+                <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[620px]">
+                  Les fissures qui partent du sol et remontent en escalier sur la façade signent un mouvement des fondations. Trois solutions techniques existent — agrafage, micropieux, résine expansive — et le diagnostic détermine laquelle s'impose.
                 </p>
-              </div>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.18}>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <MagneticButton href="/diagnostic" variant="primary">
+                    Diagnostic structure
+                  </MagneticButton>
+                  <MagneticButton href="/expertise/fissures" variant="ghost">
+                    Voir notre méthode
+                  </MagneticButton>
+                </div>
+              </RevealOnScroll>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Articles connexes */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-ipb-text mb-8 text-center">
-            Articles connexes
-          </h2>
-          <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {[
-              { href: '/fissure-en-escalier-causes', icon: '🪜', title: 'Fissure en escalier', desc: 'Tassement différentiel' },
-              { href: '/fissure-horizontale-danger', icon: '➖', title: 'Fissure horizontale', desc: 'Danger structurel' },
-              { href: '/microfissure-quand-sinquieter', icon: '🔍', title: 'Microfissure', desc: 'Quand s\'inquiéter ?' },
-              { href: '/fissure-secheresse-indemnisation', icon: '☀️', title: 'Fissure sécheresse', desc: 'Indemnisation CAT-NAT' },
-              { href: '/expertise/fissures', icon: '📋', title: 'Guide complet fissures', desc: 'Tout savoir sur nos solutions' },
-              { href: '/expertise/humidite', icon: '💧', title: 'Problème d\'humidité ?', desc: 'Nos solutions humidité' },
-            ].map((item, index) => (
-              <Link 
-                key={index}
-                href={item.href}
-                className="group bg-ipb-cream rounded-2xl p-6 hover:bg-ipb-stone transition-all hover:-translate-y-1 border border-ipb-rule hover:border-ipb-rule"
-              >
-                <span className="text-4xl mb-4 block">{item.icon}</span>
-                <h3 className="font-bold text-ipb-text group-hover:text-ipb-orange transition-colors mb-1">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-ipb-muted">{item.desc}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+        {/* CAUSES */}
+        <section className="bg-ipb-white py-24 lg:py-32">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-16 max-w-2xl">
+                <Eyebrow>Trois causes dominantes</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Identifier la cause<br /><em>avant de choisir la solution.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
 
-      {/* CTA */}
-      <section className="py-20 bg-ipb-orange text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-black mb-6">
-            Vos fondations méritent un expert.
-          </h2>
-          <p className="text-xl text-ipb-orange-l mb-8">
-            Diagnostic expert sur site (déduit à 100% des travaux) • Devis gratuit • Garantie décennale
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/diagnostic" className="group bg-white text-ipb-orange px-10 py-5 rounded-2xl font-bold text-lg hover:bg-ipb-stone flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">
-              Diagnostic fondations
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/30 hover:bg-white/20 px-8 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3">
-              <Phone size={20} />
-              05 82 95 33 75
-            </a>
+            <div className="grid md:grid-cols-3 gap-px bg-ipb-rule border border-ipb-rule">
+              {causesFondation.map((c, i) => (
+                <RevealOnScroll key={c.titre} delay={i * 0.06}>
+                  <article className="bg-ipb-white p-8 lg:p-10 h-full flex flex-col">
+                    <span className="font-serif text-ipb-orange text-[12px] font-bold tracking-[0.18em] mb-4">
+                      0{i + 1}
+                    </span>
+                    <h3 className="font-serif text-ipb-text font-bold text-[20px] leading-tight mb-3">
+                      {c.titre}
+                    </h3>
+                    <p className="text-[14px] leading-[1.85] font-light text-ipb-muted mb-6 flex-grow">
+                      {c.desc}
+                    </p>
+                    <div className="pt-4 border-t border-ipb-rule">
+                      <span className="font-serif text-ipb-orange font-bold text-[28px] leading-none">{c.frequence}</span>
+                      <span className="text-[12px] text-ipb-muted uppercase tracking-[0.14em] font-medium ml-2">des cas</span>
+                    </div>
+                  </article>
+                </RevealOnScroll>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* COMPARATIF SOLUTIONS */}
+        <section className="bg-ipb-cream py-24 lg:py-32">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-16 max-w-2xl">
+                <Eyebrow>Comparatif des solutions</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Trois techniques,<br /><em>une bonne lecture du sol.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <div className="grid md:grid-cols-3 gap-px bg-ipb-rule border border-ipb-rule">
+              {comparatifSolutions.map((s, i) => (
+                <RevealOnScroll key={s.solution} delay={i * 0.06}>
+                  <article className={`p-8 lg:p-10 h-full flex flex-col relative ${s.recommande ? 'bg-ipb-white border-t-2 border-ipb-orange' : 'bg-ipb-white'}`}>
+                    {s.recommande && (
+                      <span className="absolute top-6 right-6 text-[10px] uppercase tracking-[0.18em] font-bold text-ipb-orange border border-ipb-orange/30 bg-ipb-orange/5 px-2 py-1 rounded-[3px]">
+                        Recommandé
+                      </span>
+                    )}
+                    <span className="font-serif text-ipb-orange text-[12px] font-bold tracking-[0.18em] mb-4">
+                      0{i + 1}
+                    </span>
+                    <h3 className="font-serif text-ipb-text font-bold text-[20px] leading-tight mb-4">
+                      {s.solution}
+                    </h3>
+
+                    <dl className="text-[12px] space-y-1.5 mb-6">
+                      <div className="flex justify-between">
+                        <dt className="text-ipb-muted">Prix</dt>
+                        <dd className="font-medium text-ipb-text">{s.prix}</dd>
+                      </div>
+                      <div className="flex justify-between">
+                        <dt className="text-ipb-muted">Délai</dt>
+                        <dd className="font-medium text-ipb-text">{s.delai}</dd>
+                      </div>
+                      <div className="flex justify-between">
+                        <dt className="text-ipb-muted">Garantie</dt>
+                        <dd className="font-medium text-ipb-orange">{s.garantie}</dd>
+                      </div>
+                      <div className="flex justify-between">
+                        <dt className="text-ipb-muted">Adapté</dt>
+                        <dd className="font-medium text-ipb-text">{s.adapte}</dd>
+                      </div>
+                    </dl>
+
+                    <ul className="space-y-2 pt-4 border-t border-ipb-rule">
+                      {s.avantages.map((a) => (
+                        <li key={a} className="flex items-start gap-2 text-[12px] leading-[1.6] text-ipb-muted">
+                          <span className="text-ipb-orange mt-0.5" aria-hidden="true">▸</span>
+                          <span>{a}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="bg-ipb-white py-24 lg:py-32">
+          <div className="max-w-4xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="text-center mb-16">
+                <Eyebrow className="justify-center">Questions fréquentes</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Sur les fissures<br /><em>de fondation.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <div className="space-y-3">
+              {faqItems.map((item, i) => (
+                <RevealOnScroll key={item.question} delay={i * 0.04}>
+                  <details className="group bg-ipb-cream border border-ipb-rule rounded-[6px]">
+                    <summary className="cursor-pointer list-none flex items-start justify-between gap-6 p-6 lg:p-7">
+                      <h3 className="font-serif text-ipb-text font-bold text-[17px] leading-tight pr-2">
+                        {item.question}
+                      </h3>
+                      <span className="text-ipb-orange text-2xl leading-none flex-shrink-0 transition-transform group-open:rotate-45 font-light" aria-hidden="true">+</span>
+                    </summary>
+                    <div className="px-6 lg:px-7 pb-7 -mt-2 text-[14px] leading-[1.85] font-light text-ipb-muted">
+                      {item.answer}
+                    </div>
+                  </details>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Articles connexes */}
+        <nav aria-label="Articles connexes" className="bg-ipb-cream py-20 lg:py-24">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <p className="text-2xl font-serif font-bold text-ipb-text mb-8 text-center">Articles connexes</p>
+            <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-px bg-ipb-rule border border-ipb-rule">
+              {[
+                { href: '/fissure-en-escalier-causes', title: 'Fissure en escalier', desc: 'Tassement différentiel' },
+                { href: '/fissure-horizontale-danger', title: 'Fissure horizontale', desc: 'Danger structurel' },
+                { href: '/microfissure-quand-sinquieter', title: 'Microfissure', desc: 'Quand s\'inquiéter' },
+                { href: '/fissure-secheresse-indemnisation', title: 'Sécheresse / CAT-NAT', desc: 'Démarches assurance' },
+                { href: '/expertise/fissures', title: 'Guide complet fissures', desc: 'Notre expertise' },
+                { href: '/expertise/humidite', title: 'Humidité', desc: 'Diagnostic et solutions' },
+              ].map((item) => (
+                <Link key={item.href} href={item.href} className="group block bg-ipb-white p-6 hover:bg-ipb-stone transition-colors duration-300">
+                  <h3 className="font-serif text-ipb-text font-bold text-[15px] leading-tight mb-2 group-hover:text-ipb-orange transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-[13px] leading-[1.7] font-light text-ipb-muted">{item.desc}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </nav>
+
+        <CtaFinal />
+      </main>
 
       <Footer />
     </div>

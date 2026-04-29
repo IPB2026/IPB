@@ -5,386 +5,300 @@ import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
-import { CheckCircle, Phone, ArrowRight, AlertTriangle, Minus, ArrowDown, Layers, Clock, Shield, TrendingUp, ChevronRight, XCircle } from 'lucide-react';
+import { CtaFinal } from '@/components/home/CtaFinal';
+import { Eyebrow } from '@/components/ui/Eyebrow';
+import { MagneticButton } from '@/components/ui/MagneticButton';
+import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Fissure Horizontale Mur : Danger Structurel à Traiter d\'Urgence | Expert Occitanie',
-  description: 'Fissure horizontale sur mur porteur ? ⚠️ Signe de poussée latérale ou désolidarisation plancher. Causes, diagnostic et réparation urgente. Expert fissures Toulouse, Montauban, Auch (31-82-32).',
-  keywords: ['fissure horizontale', 'fissure mur porteur', 'poussée latérale', 'désolidarisation plancher', 'urgence structurelle'],
+  title: 'Fissure horizontale · Danger structurel et solutions · Institut IPB',
+  description: "Fissure horizontale sur un mur porteur ? C'est un signal d'alerte prioritaire selon les guides de pathologie du bâtiment (CSTB, AQC, CTMNC). Diagnostic urgent recommandé. Institut IPB Toulouse, Montauban, Auch.",
+  keywords: ['fissure horizontale', 'fissure mur porteur', 'tassement structurel', 'agrafage', 'expert fissures'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/fissure-horizontale-danger' },
-  openGraph: {
-    title: 'Fissure Horizontale : Danger Structurel | IPB',
-    description: 'La fissure horizontale est souvent plus grave qu\'une fissure en escalier. Diagnostic urgent recommandé.',
-    url: 'https://www.ipb-expertise.fr/fissure-horizontale-danger',
-    type: 'article',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
   },
 };
 
-const dangers = [
-  {
-    icon: <ArrowDown className="w-6 h-6" />,
-    title: 'Désolidarisation du plancher',
-    description: 'Le plancher se "décolle" du mur porteur. La fissure apparaît à la jonction.',
-    severity: 'critical',
-  },
-  {
-    icon: <Layers className="w-6 h-6" />,
-    title: 'Poussée de la charpente',
-    description: 'Une charpente mal contreventée pousse les murs vers l\'extérieur.',
-    severity: 'high',
-  },
-  {
-    icon: <Minus className="w-6 h-6" />,
-    title: 'Flexion de linteau',
-    description: 'Au-dessus des ouvertures (fenêtres, portes), le linteau fléchit sous la charge.',
-    severity: 'medium',
-  },
+const causes = [
+  { titre: 'Poussée des terres', desc: 'Pression latérale exercée par un remblai, un terrain en pente ou une nappe phréatique sur un mur enterré.' },
+  { titre: 'Désolidarisation du plancher', desc: "Le plancher a perdu son ancrage dans le mur — chaînage défaillant, déformation excessive du bois ou du béton." },
+  { titre: 'Flexion du linteau', desc: "Au-dessus d'une ouverture, le linteau plie sous la charge. Une fissure horizontale peut apparaître juste sous lui." },
+  { titre: 'Tassement de la fondation', desc: 'Mouvement du sol sous une partie du bâti qui crée une rotation du mur et une fissure horizontale en bas.' },
 ];
 
-const comparaison = [
-  { type: 'Fissure horizontale', danger: 'Très élevé', urgence: 'Immédiate', cause: 'Poussée / Flexion', icon: '➖' },
-  { type: 'Fissure en escalier', danger: 'Élevé', urgence: '1-3 mois', cause: 'Tassement', icon: '🪜' },
-  { type: 'Fissure verticale', danger: 'Modéré', urgence: '6-12 mois', cause: 'Retrait', icon: '|' },
-  { type: 'Microfissure', danger: 'Faible', urgence: 'Surveillance', cause: 'Superficielle', icon: '·' },
+const comparatifTypes = [
+  { type: 'Verticale', danger: 'Faible à modéré', cause: 'Retrait, mouvement léger', niveauColor: 'amber' },
+  { type: 'En escalier', danger: 'Modéré à élevé', cause: 'Tassement différentiel', niveauColor: 'orange' },
+  { type: 'Horizontale (mur porteur)', danger: 'Élevé — alerte prioritaire', cause: 'Contrainte structurelle majeure', niveauColor: 'red' },
+  { type: 'Faïençage', danger: 'Très faible', cause: "Retrait de l'enduit", niveauColor: 'emerald' },
 ];
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'Une fissure horizontale est-elle dangereuse pour la structure ?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Oui, une fissure horizontale sur un mur porteur est un signe de contrainte structurelle majeure (poussée latérale, désolidarisation du plancher, flexion de linteau). Les guides de pathologie du bâtiment (CSTB, AQC, CTMNC) la classent parmi les signaux d\'alerte prioritaires sur un élément porteur. Un diagnostic expert est recommandé sous 24 à 48h.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Comment reconnaître une fissure horizontale sur un mur porteur ?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Une fissure horizontale se présente sous forme d\'une ligne parfaitement horizontale sur le mur, souvent à la jonction entre le plancher et le mur porteur, ou au-dessus des ouvertures (fenêtres, portes). Elle peut s\'accompagner de portes qui coincent, de craquements ou de décollements visibles.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Combien coûte la réparation d\'une fissure horizontale ?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Le coût dépend de la cause et de la gravité. Le diagnostic expert est une prestation sur site, déductible des travaux. L\'agrafage structurel revient entre 8 000 et 18 000€ pour 85% des cas. Les micropieux, réservés aux cas graves, coûtent entre 25 000 et 50 000€. Plus vous intervenez tôt, moins c\'est cher.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Peut-on rester dans une maison avec une fissure horizontale ?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Il est déconseillé de rester sans avis d\'expert. Une fissure horizontale peut indiquer un risque d\'effondrement partiel. Faites réaliser un diagnostic en urgence sous 24-48h. En attendant, surveillez l\'évolution avec un témoin (ruban adhésif daté), ne faites pas de travaux lourds à proximité et prévenez votre assurance si la fissure évolue rapidement.',
-      },
-    },
-  ],
+const queFaire = [
+  { titre: 'À FAIRE', items: [
+    'Photographier la fissure avec une règle pour mesurer (date sur la photo)',
+    'Poser un témoin daté en travers (ruban adhésif ou plâtre)',
+    'Surveiller l\'évolution sur 2 à 4 semaines',
+    'Contacter un expert en pathologie du bâtiment sous 24 à 48 h',
+  ] },
+  { titre: 'À NE PAS FAIRE', items: [
+    'Reboucher la fissure sans diagnostic préalable',
+    'Repeindre par-dessus en espérant que ça tienne',
+    'Ignorer si la fissure traverse de part en part',
+    'Procéder à des travaux sans note de calcul d\'ingénieur',
+  ] },
+];
+
+const faqItems = [
+  { question: 'Une fissure horizontale est-elle plus grave qu\'une fissure verticale ?', answer: "Oui. Sur un mur porteur, une fissure horizontale est classée par les guides de pathologie du bâtiment (CSTB, AQC, CTMNC) parmi les signaux d'alerte prioritaires. Une fissure verticale signale plutôt un retrait ou un mouvement léger." },
+  { question: "Une fissure horizontale peut-elle apparaître soudainement ?", answer: "Oui, après un événement (séisme léger, fuite d'eau majeure, modification structurelle voisine). Mais le plus souvent, elle se développe progressivement sous l'effet de contraintes répétées." },
+  { question: "Quel délai pour intervenir ?", answer: "Un diagnostic instrumenté est recommandé sous 24 à 48 h. La pose de témoins permet de mesurer l'activité du mouvement et de prioriser l'intervention." },
+  { question: "Quel traitement appliquer ?", answer: "Selon le diagnostic : agrafage si la cause est latérale (poussée, désolidarisation), reprise du linteau si la cause est en partie haute, micropieux si le mouvement vient des fondations. Une note de calcul d'ingénieur est indispensable avant tout chantier." },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map((item) => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": { "@type": "Answer", "text": item.answer },
+  })),
 };
 
 export default function FissureHorizontalePage() {
   return (
-    <div className="font-sans text-ipb-text bg-white antialiased">
-      <Script
-        id="faq-schema-fissure-horizontale-danger"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+    <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
+      <Script id="faq-jsonld-horizontale" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+
       <TopBar />
       <Navbar />
       <SmartBackBar />
 
-      {/* Hero - Style Urgence */}
-      <section className="relative bg-gradient-to-br from-red-900 via-red-800 to-slate-900 text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px)' }}></div>
+      <div className="bg-ipb-cream border-b border-ipb-rule py-3">
+        <div className="max-w-ipb mx-auto px-6 lg:px-12 text-sm text-ipb-muted">
+          <Link href="/" className="hover:text-ipb-orange transition-colors">Accueil</Link>
+          <span className="mx-2" aria-hidden="true">›</span>
+          <Link href="/expertise/fissures" className="hover:text-ipb-orange transition-colors">Expert fissures</Link>
+          <span className="mx-2" aria-hidden="true">›</span>
+          <span className="text-ipb-text">Fissure horizontale</span>
         </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <nav className="flex items-center gap-2 text-sm text-red-200 mb-8">
-            <Link href="/" className="hover:text-white transition">Accueil</Link>
-            <ChevronRight size={14} />
-            <Link href="/expert-fissures-toulouse-31" className="hover:text-white transition">Expert Fissures</Link>
-            <ChevronRight size={14} />
-            <span className="text-white">Fissure horizontale</span>
-          </nav>
+      </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-red-500 text-white px-4 py-2 rounded-full text-sm font-bold mb-6 animate-pulse">
-                <AlertTriangle size={16} />
-                URGENCE STRUCTURELLE
+      <main id="main-content">
+        {/* HERO */}
+        <section className="bg-ipb-cream">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12 pt-16 lg:pt-24 pb-20 lg:pb-28">
+            <div className="max-w-3xl">
+              <RevealOnScroll>
+                <Eyebrow>Signal d'alerte prioritaire — pathologie du bâtiment</Eyebrow>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.06}>
+                <h1
+                  className="font-serif text-ipb-text mb-8"
+                  style={{
+                    fontSize: 'clamp(40px, 4vw, 62px)',
+                    lineHeight: 1.06,
+                    letterSpacing: '-0.025em',
+                    fontWeight: 700,
+                  }}
+                >
+                  Fissure horizontale.<br />
+                  <em>Quand le mur porteur souffre.</em>
+                </h1>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.12}>
+                <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[620px]">
+                  Une fissure parfaitement horizontale sur un mur porteur figure parmi les signaux d'alerte prioritaires identifiés par les guides de pathologie du bâtiment (CSTB, AQC, CTMNC). Un diagnostic expert est recommandé sous 24 à 48 h.
+                </p>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.18}>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <MagneticButton href="/diagnostic" variant="primary">
+                    Diagnostic urgence
+                  </MagneticButton>
+                  <MagneticButton href="/expertise/fissures" variant="ghost">
+                    Voir notre méthode
+                  </MagneticButton>
+                </div>
+              </RevealOnScroll>
+            </div>
+
+            <RevealOnScroll delay={0.24}>
+              <div className="mt-16 bg-ipb-white border-l-4 border-red-500 p-6 lg:p-7 max-w-3xl">
+                <p className="font-serif text-red-700 text-[12px] font-bold tracking-[0.18em] mb-3">SIGNAL D'ALERTE PRIORITAIRE</p>
+                <p className="text-[14px] leading-[1.85] text-ipb-text">
+                  Une fissure parfaitement horizontale sur un mur porteur — surtout si elle traverse, si elle s'élargit, ou si elle s'accompagne de portes/fenêtres qui coincent — appelle un diagnostic instrumenté <strong className="text-ipb-text font-medium">sous 24 à 48 h</strong>.
+                </p>
               </div>
+            </RevealOnScroll>
+          </div>
+        </section>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.1]">
-                Fissure
-                <span className="block text-red-300">Horizontale</span>
-              </h1>
+        {/* CAUSES */}
+        <section className="bg-ipb-white py-24 lg:py-32">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-16 max-w-2xl">
+                <Eyebrow>Pourquoi cette fissure est dangereuse</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Quatre mécanismes<br /><em>qui mettent le mur sous contrainte.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
 
-              <p className="text-xl text-red-100 mb-8 leading-relaxed max-w-xl">
-                Une fissure parfaitement horizontale sur un mur porteur est le signe d'une 
-                <strong className="text-white"> contrainte structurelle majeure</strong>. 
-                Ne prenez aucun risque.
-              </p>
-
-              <div className="bg-red-500/30 border border-red-400/50 rounded-2xl p-6 mb-8">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-red-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <AlertTriangle className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-white mb-1">Signal d'alerte prioritaire</h3>
-                    <p className="text-red-100">
-                      Une fissure parfaitement horizontale sur un mur porteur figure parmi les <strong className="text-white">signaux d'alerte prioritaires</strong> identifiés par les guides de pathologie du bâtiment (CSTB, AQC, CTMNC).
+            <div className="grid md:grid-cols-2 gap-px bg-ipb-rule border border-ipb-rule">
+              {causes.map((c, i) => (
+                <RevealOnScroll key={c.titre} delay={i * 0.04}>
+                  <article className="bg-ipb-white p-8 lg:p-10 h-full">
+                    <span className="font-serif text-ipb-orange text-[12px] font-bold tracking-[0.18em] mb-4 block">
+                      0{i + 1}
+                    </span>
+                    <h3 className="font-serif text-ipb-text font-bold text-[20px] leading-tight mb-3">
+                      {c.titre}
+                    </h3>
+                    <p className="text-[14px] leading-[1.85] font-light text-ipb-muted">
+                      {c.desc}
                     </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/diagnostic" className="group bg-white text-red-600 px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl hover:scale-105">
-                  Diagnostic URGENT
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all">
-                  <Phone size={20} />
-                  05 82 95 33 75
-                </a>
-              </div>
+                  </article>
+                </RevealOnScroll>
+              ))}
             </div>
+          </div>
+        </section>
 
-            {/* Visual */}
-            <div className="relative">
-              <div className="bg-white/10 backdrop-blur rounded-3xl p-8 border border-white/20">
-                <div className="text-center mb-8">
-                  <div className="inline-block bg-ipb-navy-2 rounded-2xl p-8 relative">
-                    <div className="w-48 h-32 bg-ipb-navy-2 rounded-lg relative">
-                      {/* Mur avec fissure horizontale */}
-                      <div className="absolute top-1/2 left-0 right-0 h-1 bg-red-500 transform -translate-y-1/2"></div>
-                      <div className="absolute top-1/2 left-4 right-4 border-t-2 border-dashed border-red-300 transform -translate-y-1/2"></div>
+        {/* COMPARATIF DES TYPES */}
+        <section className="bg-ipb-cream py-24 lg:py-32">
+          <div className="max-w-5xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-16 max-w-2xl">
+                <Eyebrow>Comparatif des types de fissures</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Toutes les fissures<br /><em>n'ont pas le même poids.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <RevealOnScroll delay={0.06}>
+              <div className="border border-ipb-rule rounded-[6px] overflow-hidden">
+                <div className="grid grid-cols-3 bg-ipb-navy text-white">
+                  <div className="p-5 font-serif font-bold text-[14px]">Type</div>
+                  <div className="p-5 font-serif font-bold text-[14px] border-l border-white/10 text-center">Niveau de danger</div>
+                  <div className="p-5 font-serif font-bold text-[14px] border-l border-white/10">Cause typique</div>
+                </div>
+                {comparatifTypes.map((row, i) => (
+                  <div key={row.type} className={`grid grid-cols-3 ${i < comparatifTypes.length - 1 ? 'border-b border-ipb-rule' : ''} ${row.niveauColor === 'red' ? 'bg-red-50' : 'bg-ipb-white'}`}>
+                    <div className="p-5 font-serif font-bold text-[14px] text-ipb-text">{row.type}</div>
+                    <div className="p-5 text-[13px] text-center border-l border-ipb-rule">
+                      <span className={`text-[11px] uppercase tracking-[0.14em] font-bold px-2 py-1 rounded-[3px] border ${
+                        row.niveauColor === 'red' ? 'text-red-700 border-red-200 bg-red-50' :
+                        row.niveauColor === 'orange' ? 'text-ipb-orange border-ipb-orange/30 bg-ipb-orange/5' :
+                        row.niveauColor === 'amber' ? 'text-amber-700 border-amber-200 bg-amber-50' :
+                        'text-emerald-700 border-emerald-200 bg-emerald-50'
+                      }`}>{row.danger}</span>
                     </div>
-                    <p className="text-ipb-light text-sm mt-4">Représentation schématique</p>
+                    <div className="p-5 text-[13px] font-light text-ipb-muted border-l border-ipb-rule">{row.cause}</div>
                   </div>
-                </div>
-                
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-red-500/20 rounded-xl p-4 text-center">
-                    <div className="text-2xl font-black text-red-400 leading-tight">MAJEUR</div>
-                    <div className="text-xs text-red-200 mt-1">Niveau de risque</div>
-                  </div>
-                  <div className="bg-white/10 rounded-xl p-4 text-center">
-                    <div className="text-2xl font-black text-white leading-tight">24-48 h</div>
-                    <div className="text-xs text-white/70 mt-1">Diagnostic recommandé</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 100" fill="none" className="w-full">
-            <path d="M0 50L60 45C120 40 240 30 360 35C480 40 600 60 720 65C840 70 960 60 1080 50C1200 40 1320 30 1380 25L1440 20V100H0V50Z" fill="white"/>
-          </svg>
-        </div>
-      </section>
-
-      {/* Dangers */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-red-100 text-red-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
-              Causes principales
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
-              Pourquoi cette fissure est dangereuse
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {dangers.map((item, index) => (
-              <div key={index} className={`relative rounded-3xl p-8 ${
-                item.severity === 'critical' ? 'bg-red-50 border-2 border-red-200' :
-                item.severity === 'high' ? 'bg-ipb-stone border-2 border-ipb-rule' :
-                'bg-yellow-50 border-2 border-yellow-200'
-              }`}>
-                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${
-                  item.severity === 'critical' ? 'bg-red-100 text-red-600' :
-                  item.severity === 'high' ? 'bg-ipb-stone text-ipb-orange' :
-                  'bg-yellow-100 text-yellow-600'
-                }`}>
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-bold text-ipb-text mb-3">{item.title}</h3>
-                <p className="text-ipb-muted">{item.description}</p>
-                
-                {item.severity === 'critical' && (
-                  <div className="absolute -top-3 -right-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-                    CRITIQUE
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Comparatif */}
-      <section className="py-20 bg-ipb-cream">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
-              Comparatif des types de fissures
-            </h2>
-            <p className="text-xl text-ipb-muted">
-              La fissure horizontale est la plus urgente à traiter.
-            </p>
-          </div>
-
-          <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
-            <div className="grid grid-cols-5 bg-ipb-navy text-white text-sm font-bold">
-              <div className="p-4">Type</div>
-              <div className="p-4 text-center">Danger</div>
-              <div className="p-4 text-center">Urgence</div>
-              <div className="p-4 text-center">Cause</div>
-              <div className="p-4 text-center">Icône</div>
-            </div>
-            {comparaison.map((row, index) => (
-              <div key={index} className={`grid grid-cols-5 border-b border-ipb-rule ${index === 0 ? 'bg-red-50' : ''}`}>
-                <div className="p-4 font-bold text-ipb-text">{row.type}</div>
-                <div className="p-4 text-center">
-                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${
-                    row.danger === 'Très élevé' ? 'bg-red-100 text-red-700' :
-                    row.danger === 'Élevé' ? 'bg-ipb-stone text-ipb-orange' :
-                    row.danger === 'Modéré' ? 'bg-yellow-100 text-yellow-700' :
-                    'bg-green-100 text-green-700'
-                  }`}>
-                    {row.danger}
-                  </span>
-                </div>
-                <div className="p-4 text-center text-ipb-muted">{row.urgence}</div>
-                <div className="p-4 text-center text-ipb-muted">{row.cause}</div>
-                <div className="p-4 text-center text-2xl">{row.icon}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Que faire */}
-      <section className="py-20 bg-ipb-navy text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-black mb-4">
-              Que faire immédiatement ?
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* À faire */}
-            <div className="bg-green-500/10 border border-green-500/30 rounded-3xl p-8">
-              <h3 className="text-xl font-bold text-green-400 mb-6 flex items-center gap-3">
-                <CheckCircle size={24} />
-                À FAIRE
-              </h3>
-              <ul className="space-y-4">
-                {[
-                  'Prendre des photos datées de la fissure',
-                  'Mesurer l\'ouverture (avec une règle)',
-                  'Poser un témoin (ruban adhésif) pour surveiller l\'évolution',
-                  'Appeler un expert pour un diagnostic sous 48h',
-                  'Prévenir votre assurance si évolution rapide',
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-white/70">
-                    <CheckCircle size={18} className="text-green-400 flex-shrink-0 mt-1" />
-                    {item}
-                  </li>
                 ))}
-              </ul>
+              </div>
+            </RevealOnScroll>
+          </div>
+        </section>
+
+        {/* QUE FAIRE */}
+        <section className="bg-ipb-navy py-24 lg:py-32">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-16 max-w-2xl">
+                <Eyebrow variant="dark">Que faire immédiatement</Eyebrow>
+                <h2 className="font-serif text-white" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Les bons réflexes,<br /><em>les pièges à éviter.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+              {queFaire.map((bloc, i) => (
+                <RevealOnScroll key={bloc.titre} delay={0.06 + i * 0.06}>
+                  <div>
+                    <p className={`font-serif text-[12px] font-bold tracking-[0.18em] mb-5 ${bloc.titre === 'À FAIRE' ? 'text-emerald-300' : 'text-red-300'}`}>
+                      {bloc.titre}
+                    </p>
+                    <ul className="space-y-3">
+                      {bloc.items.map((item) => (
+                        <li key={item} className="flex items-start gap-3 text-[14px] leading-[1.7] text-white/85">
+                          <span className={`mt-1 ${bloc.titre === 'À FAIRE' ? 'text-emerald-400' : 'text-red-400'}`} aria-hidden="true">▸</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </RevealOnScroll>
+              ))}
             </div>
+          </div>
+        </section>
 
-            {/* À ne pas faire */}
-            <div className="bg-red-500/10 border border-red-500/30 rounded-3xl p-8">
-              <h3 className="text-xl font-bold text-red-400 mb-6 flex items-center gap-3">
-                <XCircle size={24} />
-                À NE PAS FAIRE
-              </h3>
-              <ul className="space-y-4">
-                {[
-                  'Reboucher la fissure sans traiter la cause',
-                  'Attendre "que ça se stabilise"',
-                  'Ignorer les signaux (portes qui coincent)',
-                  'Faire des travaux lourds à proximité',
-                  'Tarder à faire diagnostiquer',
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-white/70">
-                    <XCircle size={18} className="text-red-400 flex-shrink-0 mt-1" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+        {/* FAQ */}
+        <section className="bg-ipb-white py-24 lg:py-32">
+          <div className="max-w-4xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="text-center mb-16">
+                <Eyebrow className="justify-center">Questions fréquentes</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Sur les fissures<br /><em>horizontales.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <div className="space-y-3">
+              {faqItems.map((item, i) => (
+                <RevealOnScroll key={item.question} delay={i * 0.04}>
+                  <details className="group bg-ipb-cream border border-ipb-rule rounded-[6px]">
+                    <summary className="cursor-pointer list-none flex items-start justify-between gap-6 p-6 lg:p-7">
+                      <h3 className="font-serif text-ipb-text font-bold text-[17px] leading-tight pr-2">
+                        {item.question}
+                      </h3>
+                      <span className="text-ipb-orange text-2xl leading-none flex-shrink-0 transition-transform group-open:rotate-45 font-light" aria-hidden="true">+</span>
+                    </summary>
+                    <div className="px-6 lg:px-7 pb-7 -mt-2 text-[14px] leading-[1.85] font-light text-ipb-muted">
+                      {item.answer}
+                    </div>
+                  </details>
+                </RevealOnScroll>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Articles connexes */}
-      <nav aria-label="Articles connexes" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-2xl font-black text-ipb-text mb-8 text-center">
-            Articles connexes
-          </p>
-          <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {[
-              { href: '/fissure-en-escalier-causes', icon: '🪜', title: 'Fissure en escalier', desc: 'Tassement différentiel' },
-              { href: '/microfissure-quand-sinquieter', icon: '🔍', title: 'Microfissure', desc: 'Quand s\'inquiéter ?' },
-              { href: '/fissure-secheresse-indemnisation', icon: '☀️', title: 'Fissure sécheresse', desc: 'Indemnisation CAT-NAT' },
-              { href: '/fissure-fondation-maison', icon: '🏠', title: 'Fissure fondation', desc: 'Solutions durables' },
-              { href: '/expertise/fissures', icon: '📋', title: 'Guide complet fissures', desc: 'Tout savoir sur nos solutions' },
-              { href: '/expertise/humidite', icon: '💧', title: 'Problème d\'humidité ?', desc: 'Nos solutions humidité' },
-            ].map((item, index) => (
-              <Link 
-                key={index}
-                href={item.href}
-                className="group bg-ipb-cream rounded-2xl p-6 hover:bg-ipb-stone transition-all hover:-translate-y-1 border border-ipb-rule hover:border-ipb-rule"
-              >
-                <span className="text-4xl mb-4 block">{item.icon}</span>
-                <h3 className="font-bold text-ipb-text group-hover:text-ipb-orange transition-colors mb-1">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-ipb-muted">{item.desc}</p>
-              </Link>
-            ))}
+        {/* Articles connexes */}
+        <nav aria-label="Articles connexes" className="bg-ipb-cream py-20 lg:py-24">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <p className="text-2xl font-serif font-bold text-ipb-text mb-8 text-center">Articles connexes</p>
+            <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-px bg-ipb-rule border border-ipb-rule">
+              {[
+                { href: '/fissure-en-escalier-causes', title: 'Fissure en escalier', desc: 'Tassement différentiel' },
+                { href: '/microfissure-quand-sinquieter', title: 'Microfissure', desc: "Quand s'inquiéter" },
+                { href: '/fissure-fondation-maison', title: 'Fissure de fondation', desc: 'Solutions durables' },
+                { href: '/fissure-secheresse-indemnisation', title: 'Sécheresse / CAT-NAT', desc: 'Démarches assurance' },
+                { href: '/expertise/fissures', title: 'Guide complet fissures', desc: 'Notre expertise' },
+                { href: '/expertise/humidite', title: 'Humidité', desc: 'Diagnostic et solutions' },
+              ].map((item) => (
+                <Link key={item.href} href={item.href} className="group block bg-ipb-white p-6 hover:bg-ipb-stone transition-colors duration-300">
+                  <h3 className="font-serif text-ipb-text font-bold text-[15px] leading-tight mb-2 group-hover:text-ipb-orange transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-[13px] leading-[1.7] font-light text-ipb-muted">{item.desc}</p>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
 
-      {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-red-600 to-orange-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-black mb-6">
-            N'attendez pas l'irréparable.
-          </h2>
-          <p className="text-xl text-red-100 mb-8">
-            Diagnostic urgent sous 24-48h • Devis gratuit • Garantie décennale
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/diagnostic" className="group bg-white text-red-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-red-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">
-              Diagnostic URGENT
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/30 hover:bg-white/20 px-8 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3">
-              <Phone size={20} />
-              05 82 95 33 75
-            </a>
-          </div>
-        </div>
-      </section>
+        <CtaFinal />
+      </main>
 
       <Footer />
     </div>

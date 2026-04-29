@@ -5,36 +5,38 @@ import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
-import { Phone, ArrowRight, AlertTriangle, Heart, Baby, Stethoscope, Wind, ChevronRight, Shield, CheckCircle, XCircle } from 'lucide-react';
+import { CtaFinal } from '@/components/home/CtaFinal';
+import { Eyebrow } from '@/components/ui/Eyebrow';
+import { MagneticButton } from '@/components/ui/MagneticButton';
+import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Moisissures Maison : Risques Santé et Traitement Définitif | Expert Occitanie',
-  description: 'Moisissures dans votre maison ? ⚠️ Risques santé : allergies, asthme, infections respiratoires. Causes (humidité, ventilation) et traitement définitif. Expert Toulouse, Montauban, Auch (31-82-32).',
+  title: 'Moisissures et santé · Risques et traitement définitif · Institut IPB',
+  description: "Moisissures dans votre maison ? Risques santé (allergies, asthme, infections respiratoires), causes (humidité, ventilation) et traitement durable. Institut IPB Toulouse, Montauban, Auch.",
   keywords: ['moisissures maison', 'risques santé moisissures', 'traitement moisissures', 'allergies moisissures', 'ventilation maison'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/moisissures-maison-sante' },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
+  },
 };
 
 const risquesSante = [
   {
-    icon: <Stethoscope className="w-8 h-8" />,
     titre: 'Problèmes respiratoires',
-    description: 'Toux chronique, essoufflement, crises d\'asthme aggravées. Les spores irritent les voies respiratoires.',
-    personnes: 'Tout le monde',
-    couleur: 'red',
+    desc: "Toux chronique, essoufflement, crises d'asthme aggravées. Les spores irritent les voies respiratoires.",
+    cible: 'Tout le monde',
   },
   {
-    icon: <Heart className="w-8 h-8" />,
     titre: 'Allergies',
-    description: 'Rhinite, yeux qui piquent, éternuements fréquents. 30% des allergies respiratoires sont liées aux moisissures.',
-    personnes: 'Personnes allergiques',
-    couleur: 'orange',
+    desc: "Rhinite, yeux qui piquent, éternuements fréquents. Une part importante des allergies respiratoires est liée aux moisissures.",
+    cible: 'Personnes allergiques',
   },
   {
-    icon: <Baby className="w-8 h-8" />,
-    titre: 'Risque accru enfants',
-    description: 'Système immunitaire en développement = plus vulnérable. Risque de développer de l\'asthme x2.',
-    personnes: 'Enfants < 6 ans',
-    couleur: 'purple',
+    titre: "Risque accru chez l'enfant",
+    desc: "Système immunitaire en développement = plus vulnérable. L'INSERM observe un risque accru d'asthme chez les enfants exposés.",
+    cible: 'Enfants < 6 ans',
   },
 ];
 
@@ -42,7 +44,13 @@ const typesMoisissures = [
   { nom: 'Aspergillus', couleur: 'Noir/vert', danger: 'Élevé', lieu: 'Salles d\'eau, cuisines' },
   { nom: 'Cladosporium', couleur: 'Vert olive', danger: 'Modéré', lieu: 'Fenêtres, tissus' },
   { nom: 'Penicillium', couleur: 'Bleu/vert', danger: 'Modéré', lieu: 'Papiers peints, tapis' },
-  { nom: 'Stachybotrys', couleur: 'Noir profond', danger: 'Très élevé', lieu: 'Murs humides (grave)' },
+  { nom: 'Stachybotrys', couleur: 'Noir profond', danger: 'Très élevé', lieu: 'Murs humides — cas grave' },
+];
+
+const etapes = [
+  { titre: 'Identifier la source', desc: "Remontées capillaires ? Condensation ? Infiltration ? Le diagnostic instrumenté détermine la cause exacte de l'humidité." },
+  { titre: "Traiter l'humidité", desc: "Selon le diagnostic : injection résine (remontées capillaires), VMI (condensation), cuvelage (infiltrations). Garanties de 10 à 30 ans." },
+  { titre: "Assainir l'air", desc: "Installation d'une VMI si nécessaire pour renouveler l'air et éviter toute récidive — air filtré, hygrométrie contrôlée." },
 ];
 
 const faqSchema = {
@@ -54,23 +62,23 @@ const faqSchema = {
       name: 'Les moisissures dans la maison sont-elles dangereuses pour la santé ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Oui, les moisissures libèrent des spores toxiques dans l\'air qui causent des problèmes respiratoires (toux chronique, asthme), des allergies (rhinite, yeux irrités) et représentent un risque accru pour les enfants de moins de 6 ans. Selon l\'INSERM, les enfants vivant dans un logement avec moisissures ont 2 fois plus de risque de développer de l\'asthme. 30% des allergies respiratoires sont liées aux moisissures.',
+        text: "Oui. Les moisissures libèrent des spores dans l'air qui causent des problèmes respiratoires (toux chronique, asthme), des allergies (rhinite, yeux irrités) et représentent un risque accru pour les enfants. Selon l'INSERM, les enfants vivant dans un logement avec moisissures ont un risque accru de développer de l'asthme. Une part importante des allergies respiratoires est liée aux moisissures.",
       },
     },
     {
       '@type': 'Question',
-      name: 'Comment éliminer définitivement les moisissures d\'une maison ?',
+      name: "Comment éliminer définitivement les moisissures d'une maison ?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Pour éliminer définitivement les moisissures, il faut traiter la cause de l\'humidité, pas seulement nettoyer. Selon l\'origine : injection de résine hydrophobe pour les remontées capillaires, installation d\'une VMI (Ventilation par Insufflation) pour la condensation, ou cuvelage/réparation pour les infiltrations. Le traitement de l\'humidité est garanti de 10 à 30 ans selon la solution.',
+        text: "Il faut traiter la cause de l'humidité, pas seulement nettoyer. Selon l'origine : injection de résine hydrophobe pour les remontées capillaires, installation d'une VMI (ventilation par insufflation) pour la condensation, cuvelage ou réparation pour les infiltrations. Le traitement de l'humidité est garanti de 10 à 30 ans selon la solution.",
       },
     },
     {
       '@type': 'Question',
-      name: 'Quels sont les symptômes d\'une exposition aux moisissures ?',
+      name: "Quels sont les symptômes d'une exposition aux moisissures ?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Les symptômes courants sont : toux chronique, essoufflement, crises d\'asthme aggravées, rhinite, yeux qui piquent, éternuements fréquents, irritations de la peau. Les personnes les plus vulnérables sont les enfants de moins de 6 ans, les personnes allergiques, les asthmatiques et les personnes immunodéprimées. La moisissure noire Stachybotrys est particulièrement dangereuse car elle libère des mycotoxines.',
+        text: "Toux chronique, essoufflement, crises d'asthme aggravées, rhinite, yeux qui piquent, éternuements fréquents, irritations cutanées. Les personnes les plus vulnérables sont les enfants, les personnes allergiques, les asthmatiques et les personnes immunodéprimées. La moisissure noire Stachybotrys est particulièrement à surveiller — elle libère des mycotoxines.",
       },
     },
     {
@@ -78,326 +86,252 @@ const faqSchema = {
       name: 'Comment éviter le retour des moisissures après nettoyage ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Les moisissures reviennent systématiquement si la source d\'humidité n\'est pas traitée. Les solutions durables sont : identifier la cause exacte (diagnostic professionnel), traiter l\'humidité à la source (injection, VMI, cuvelage), assurer une ventilation suffisante (10 min d\'aération par jour minimum), et contrôler le taux d\'humidité intérieur (idéalement entre 40 et 60%).',
+        text: "Les moisissures reviennent systématiquement si la source d'humidité n'est pas traitée. Solutions durables : diagnostic professionnel pour identifier la cause exacte, traitement à la source (injection, VMI, cuvelage), ventilation suffisante (10 minutes d'aération par jour minimum), contrôle du taux d'humidité intérieur (idéalement 40 à 60 %).",
       },
     },
   ],
 };
 
+const faqItems = faqSchema.mainEntity.map((q) => ({ question: q.name, answer: q.acceptedAnswer.text }));
+
 export default function MoisissuresSantePage() {
   return (
-    <div className="font-sans text-ipb-text bg-white antialiased">
-      <Script
-        id="faq-schema-moisissures-maison-sante"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+    <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
+      <Script id="faq-schema-moisissures" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
       <TopBar />
       <Navbar />
       <SmartBackBar />
 
-      {/* Hero - Style Santé/Alerte */}
-      <section className="relative bg-gradient-to-br from-emerald-900 via-teal-900 to-slate-900 text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.4) 0%, transparent 50%)' }}></div>
+      <div className="bg-ipb-cream border-b border-ipb-rule py-3">
+        <div className="max-w-ipb mx-auto px-6 lg:px-12 text-sm text-ipb-muted">
+          <Link href="/" className="hover:text-ipb-orange transition-colors">Accueil</Link>
+          <span className="mx-2" aria-hidden="true">›</span>
+          <Link href="/expert-humidite-toulouse-31" className="hover:text-ipb-orange transition-colors">Expert humidité</Link>
+          <span className="mx-2" aria-hidden="true">›</span>
+          <span className="text-ipb-text">Moisissures et santé</span>
         </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <nav className="flex items-center gap-2 text-sm text-emerald-200 mb-8">
-            <Link href="/" className="hover:text-white transition">Accueil</Link>
-            <ChevronRight size={14} />
-            <Link href="/expert-humidite-toulouse-31" className="hover:text-white transition">Expert Humidité</Link>
-            <ChevronRight size={14} />
-            <span className="text-white">Moisissures & Santé</span>
-          </nav>
+      </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-red-500/20 border border-red-400/30 text-red-300 px-4 py-2 rounded-full text-sm font-bold mb-6 animate-pulse">
-                <AlertTriangle size={16} />
-                Risque sanitaire avéré
-              </div>
-
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.1]">
-                Moisissures
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">
-                  & Santé
-                </span>
-              </h1>
-
-              <p className="text-xl text-emerald-100 mb-8 leading-relaxed max-w-xl">
-                Les moisissures ne sont pas qu'un problème esthétique. Elles libèrent des 
-                <strong className="text-white"> spores toxiques</strong> dans l'air que vous respirez 
-                chaque jour. Votre santé et celle de votre famille sont en jeu.
-              </p>
-
-              <div className="bg-red-500/20 border border-red-400/40 rounded-2xl p-6 mb-8">
-                <div className="flex items-start gap-4">
-                  <Heart className="w-8 h-8 text-red-400 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-bold text-white mb-2">Étude INSERM 2023</h3>
-                    <p className="text-red-100">
-                      <strong className="text-white">Les enfants vivant dans un logement avec moisissures ont 
-                      2x plus de risque de développer de l'asthme</strong> dans les 5 premières années de vie.
-                    </p>
-                  </div>
+      <main id="main-content">
+        {/* HERO */}
+        <section className="bg-ipb-cream">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12 pt-16 lg:pt-24 pb-20 lg:pb-28">
+            <div className="max-w-3xl">
+              <RevealOnScroll>
+                <Eyebrow>Risque sanitaire avéré</Eyebrow>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.06}>
+                <h1
+                  className="font-serif text-ipb-text mb-8"
+                  style={{
+                    fontSize: 'clamp(40px, 4vw, 62px)',
+                    lineHeight: 1.06,
+                    letterSpacing: '-0.025em',
+                    fontWeight: 700,
+                  }}
+                >
+                  Moisissures et santé.<br />
+                  <em>L'humidité a des conséquences invisibles.</em>
+                </h1>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.12}>
+                <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[620px]">
+                  Les moisissures ne sont pas qu'un problème esthétique. Elles libèrent dans l'air des spores que vous respirez chaque jour. Pour s'en débarrasser durablement, il faut traiter la cause — l'humidité — et pas seulement nettoyer la surface.
+                </p>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.18}>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <MagneticButton href="/diagnostic" variant="primary">
+                    Diagnostic sanitaire
+                  </MagneticButton>
+                  <MagneticButton href="/expert-humidite-toulouse-31" variant="ghost">
+                    Voir notre méthode
+                  </MagneticButton>
                 </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/diagnostic" className="group bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl">
-                  Diagnostic sanitaire
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all">
-                  <Phone size={20} />
-                  05 82 95 33 75
-                </a>
-              </div>
+              </RevealOnScroll>
             </div>
 
-            {/* Stats santé */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
-                <div className="text-5xl font-black text-red-400">30%</div>
-                <div className="text-emerald-200 text-sm mt-2">des allergies respiratoires liées aux moisissures</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
-                <div className="text-5xl font-black text-ipb-orange-l">x2</div>
-                <div className="text-emerald-200 text-sm mt-2">risque d'asthme chez l'enfant exposé</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
-                <div className="text-5xl font-black text-yellow-400">40%</div>
-                <div className="text-emerald-200 text-sm mt-2">des logements français concernés</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
-                <div className="text-5xl font-black text-emerald-400">95%</div>
-                <div className="text-emerald-200 text-sm mt-2">d'efficacité de nos traitements</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 100" fill="none" className="w-full">
-            <path d="M0 50L60 45C120 40 240 30 360 35C480 40 600 60 720 65C840 70 960 60 1080 50C1200 40 1320 30 1380 25L1440 20V100H0V50Z" fill="white"/>
-          </svg>
-        </div>
-      </section>
-
-      {/* Risques santé détaillés */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-red-100 text-red-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
-              Comprendre les risques
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
-              Impact sur votre santé
-            </h2>
-            <p className="text-xl text-ipb-muted max-w-2xl mx-auto">
-              Les spores de moisissures sont invisibles mais présentes dans l'air. Vous les respirez sans le savoir.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {risquesSante.map((risque, index) => (
-              <div key={index} className={`rounded-3xl p-8 ${
-                risque.couleur === 'red' ? 'bg-gradient-to-br from-red-50 to-rose-50 border-2 border-red-200' :
-                risque.couleur === 'orange' ? 'bg-ipb-orange border-2 border-ipb-rule' :
-                'bg-gradient-to-br from-purple-50 to-violet-50 border-2 border-purple-200'
-              }`}>
-                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 ${
-                  risque.couleur === 'red' ? 'bg-red-100 text-red-600' :
-                  risque.couleur === 'orange' ? 'bg-ipb-stone text-ipb-orange' :
-                  'bg-purple-100 text-purple-600'
-                }`}>
-                  {risque.icon}
-                </div>
-                <h3 className="text-xl font-bold text-ipb-text mb-3">{risque.titre}</h3>
-                <p className="text-ipb-muted mb-4">{risque.description}</p>
-                <div className={`inline-block px-3 py-1 rounded-full text-sm font-bold ${
-                  risque.couleur === 'red' ? 'bg-red-100 text-red-700' :
-                  risque.couleur === 'orange' ? 'bg-ipb-stone text-ipb-orange' :
-                  'bg-purple-100 text-purple-700'
-                }`}>
-                  {risque.personnes}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Types de moisissures */}
-      <section className="py-20 bg-ipb-cream">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
-              Les types de moisissures
-            </h2>
-            <p className="text-xl text-ipb-muted">
-              Toutes ne sont pas égales face au danger. Certaines sont particulièrement toxiques.
-            </p>
-          </div>
-
-          <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
-            <div className="grid grid-cols-4 bg-ipb-navy text-white text-sm font-bold">
-              <div className="p-4">Type</div>
-              <div className="p-4 text-center">Couleur</div>
-              <div className="p-4 text-center">Danger</div>
-              <div className="p-4">Localisation</div>
-            </div>
-            {typesMoisissures.map((type, index) => (
-              <div key={index} className={`grid grid-cols-4 border-b border-ipb-rule ${
-                type.danger === 'Très élevé' ? 'bg-red-50' : ''
-              }`}>
-                <div className="p-4 font-bold text-ipb-text">{type.nom}</div>
-                <div className="p-4 text-center text-ipb-muted">{type.couleur}</div>
-                <div className="p-4 text-center">
-                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${
-                    type.danger === 'Très élevé' ? 'bg-red-100 text-red-700' :
-                    type.danger === 'Élevé' ? 'bg-ipb-stone text-ipb-orange' :
-                    'bg-yellow-100 text-yellow-700'
-                  }`}>
-                    {type.danger}
-                  </span>
-                </div>
-                <div className="p-4 text-ipb-muted text-sm">{type.lieu}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 p-6 bg-red-50 border border-red-200 rounded-2xl">
-            <div className="flex items-start gap-4">
-              <AlertTriangle className="w-6 h-6 text-red-600 flex-shrink-0 mt-1" />
-              <div>
-                <h4 className="font-bold text-red-900 mb-1">⚠️ Moisissure noire (Stachybotrys)</h4>
-                <p className="text-red-800 text-sm">
-                  Si vous observez des taches noires profondes et humides, quittez la pièce et appelez un expert immédiatement. 
-                  Cette moisissure libère des mycotoxines dangereuses.
+            <RevealOnScroll delay={0.24}>
+              <div className="mt-16 bg-ipb-white border-l-4 border-ipb-orange p-6 lg:p-7 max-w-3xl">
+                <p className="font-serif text-ipb-orange text-[12px] font-bold tracking-[0.18em] mb-3">SIGNAL INSERM</p>
+                <p className="text-[14px] leading-[1.85] text-ipb-text">
+                  Selon l'INSERM, les enfants vivant dans un logement présentant des moisissures ont un risque accru de développer de l'asthme dans les premières années de vie. Une part importante des allergies respiratoires est attribuée à l'exposition aux spores fongiques.
                 </p>
               </div>
+            </RevealOnScroll>
+          </div>
+        </section>
+
+        {/* RISQUES SANTÉ */}
+        <section className="bg-ipb-white py-24 lg:py-32">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-16 max-w-2xl">
+                <Eyebrow>Comprendre les risques</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Trois familles d'effets<br /><em>sur la santé.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <div className="grid md:grid-cols-3 gap-px bg-ipb-rule border border-ipb-rule">
+              {risquesSante.map((r, i) => (
+                <RevealOnScroll key={r.titre} delay={i * 0.06}>
+                  <article className="bg-ipb-white p-8 lg:p-10 h-full flex flex-col">
+                    <span className="font-serif text-ipb-orange text-[12px] font-bold tracking-[0.18em] mb-4">
+                      0{i + 1}
+                    </span>
+                    <h3 className="font-serif text-ipb-text font-bold text-[19px] leading-tight mb-3">
+                      {r.titre}
+                    </h3>
+                    <p className="text-[13px] leading-[1.85] font-light text-ipb-muted mb-6 flex-grow">
+                      {r.desc}
+                    </p>
+                    <p className="text-[11px] uppercase tracking-[0.18em] font-bold text-ipb-orange border-t border-ipb-rule pt-4">
+                      {r.cible}
+                    </p>
+                  </article>
+                </RevealOnScroll>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Solutions */}
-      <section className="py-20 bg-ipb-navy text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-emerald-500/20 text-emerald-300 px-4 py-2 rounded-full text-sm font-bold mb-4">
-              Notre approche
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black mb-4">
-              Traiter la cause, pas le symptôme
-            </h2>
-            <p className="text-xl text-ipb-light max-w-2xl mx-auto">
-              Nettoyer les moisissures sans traiter l'humidité = elles reviendront. Notre méthode s'attaque à la source.
-            </p>
+        {/* TYPES DE MOISISSURES */}
+        <section className="bg-ipb-cream py-24 lg:py-32">
+          <div className="max-w-5xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-16 max-w-2xl">
+                <Eyebrow>Les principaux types</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Toutes ne sont pas égales<br /><em>face au danger.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <RevealOnScroll delay={0.06}>
+              <div className="border border-ipb-rule rounded-[6px] overflow-hidden">
+                <div className="grid grid-cols-4 bg-ipb-navy text-white">
+                  <div className="p-5 font-serif font-bold text-[14px]">Type</div>
+                  <div className="p-5 font-serif font-bold text-[14px] border-l border-white/10">Couleur</div>
+                  <div className="p-5 font-serif font-bold text-[14px] border-l border-white/10 text-center">Danger</div>
+                  <div className="p-5 font-serif font-bold text-[14px] border-l border-white/10">Localisation</div>
+                </div>
+                {typesMoisissures.map((t, i) => (
+                  <div key={t.nom} className={`grid grid-cols-4 ${i < typesMoisissures.length - 1 ? 'border-b border-ipb-rule' : ''} ${t.danger === 'Très élevé' ? 'bg-red-50' : 'bg-ipb-white'}`}>
+                    <div className="p-5 font-serif font-bold text-[14px] text-ipb-text">{t.nom}</div>
+                    <div className="p-5 text-[13px] font-light text-ipb-muted border-l border-ipb-rule">{t.couleur}</div>
+                    <div className="p-5 text-[13px] text-center border-l border-ipb-rule">
+                      <span className={`text-[11px] uppercase tracking-[0.14em] font-bold px-2 py-1 rounded-[3px] border ${
+                        t.danger === 'Très élevé' ? 'text-red-700 border-red-200 bg-red-50' :
+                        t.danger === 'Élevé' ? 'text-ipb-orange border-ipb-orange/30 bg-ipb-orange/5' :
+                        'text-amber-700 border-amber-200 bg-amber-50'
+                      }`}>{t.danger}</span>
+                    </div>
+                    <div className="p-5 text-[13px] font-light text-ipb-muted border-l border-ipb-rule">{t.lieu}</div>
+                  </div>
+                ))}
+              </div>
+            </RevealOnScroll>
+
+            <RevealOnScroll delay={0.2}>
+              <div className="mt-12 bg-ipb-white border-l-4 border-red-500 p-6 lg:p-7">
+                <p className="font-serif text-red-700 text-[12px] font-bold tracking-[0.18em] mb-3">MOISISSURE NOIRE — STACHYBOTRYS</p>
+                <p className="text-[14px] leading-[1.85] text-ipb-text">
+                  Si vous observez des taches noires profondes et humides, quittez la pièce et appelez un expert sans délai. Cette moisissure libère des mycotoxines dangereuses pour la santé.
+                </p>
+              </div>
+            </RevealOnScroll>
           </div>
+        </section>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white/5 backdrop-blur border border-white/10 rounded-3xl p-8">
-              <div className="text-4xl mb-4">🔍</div>
-              <h3 className="text-xl font-bold mb-3">1. Identifier la source</h3>
-              <p className="text-ipb-light mb-4">
-                Remontées capillaires ? Condensation ? Infiltration ? Le diagnostic détermine la cause exacte de l'humidité.
-              </p>
-              <ul className="text-sm text-ipb-muted space-y-2">
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Mesure du taux d'humidité</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Localisation des zones touchées</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Identification des moisissures</li>
-              </ul>
+        {/* MÉTHODE EN 3 ÉTAPES */}
+        <section className="bg-ipb-navy py-24 lg:py-32">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-16 max-w-2xl">
+                <Eyebrow variant="dark">Notre approche</Eyebrow>
+                <h2 className="font-serif text-white" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Traiter la cause,<br /><em>pas le symptôme.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <ul className="space-y-8">
+              {etapes.map((etape, i) => (
+                <RevealOnScroll key={etape.titre} delay={0.08 + i * 0.06}>
+                  <li className="grid grid-cols-[40px_1fr] gap-5 items-start pb-8 border-b border-white/10">
+                    <span className="font-serif text-ipb-orange-l text-[14px] font-bold tracking-wider pt-2">
+                      0{i + 1}
+                    </span>
+                    <div>
+                      <h3 className="font-serif text-white text-[20px] font-bold leading-tight mb-2">{etape.titre}</h3>
+                      <p className="text-[14px] leading-[1.75] font-light text-white/65">{etape.desc}</p>
+                    </div>
+                  </li>
+                </RevealOnScroll>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="bg-ipb-white py-24 lg:py-32">
+          <div className="max-w-4xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="text-center mb-16">
+                <Eyebrow className="justify-center">Questions fréquentes</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Sur les moisissures<br /><em>et la santé.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <div className="space-y-3">
+              {faqItems.map((item, i) => (
+                <RevealOnScroll key={item.question} delay={i * 0.04}>
+                  <details className="group bg-ipb-cream border border-ipb-rule rounded-[6px]">
+                    <summary className="cursor-pointer list-none flex items-start justify-between gap-6 p-6 lg:p-7">
+                      <h3 className="font-serif text-ipb-text font-bold text-[17px] leading-tight pr-2">
+                        {item.question}
+                      </h3>
+                      <span className="text-ipb-orange text-2xl leading-none flex-shrink-0 transition-transform group-open:rotate-45 font-light" aria-hidden="true">+</span>
+                    </summary>
+                    <div className="px-6 lg:px-7 pb-7 -mt-2 text-[14px] leading-[1.85] font-light text-ipb-muted">
+                      {item.answer}
+                    </div>
+                  </details>
+                </RevealOnScroll>
+              ))}
             </div>
+          </div>
+        </section>
 
-            <div className="bg-white/5 backdrop-blur border border-white/10 rounded-3xl p-8">
-              <div className="text-4xl mb-4">💧</div>
-              <h3 className="text-xl font-bold mb-3">2. Traiter l'humidité</h3>
-              <p className="text-ipb-light mb-4">
-                Selon le diagnostic : injection résine (capillaires), VMI (condensation), cuvelage (infiltrations).
-              </p>
-              <ul className="text-sm text-ipb-muted space-y-2">
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Solution adaptée à la cause</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Garantie 10 à 30 ans</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Effet durable</li>
-              </ul>
-            </div>
-
-            <div className="bg-white/5 backdrop-blur border border-white/10 rounded-3xl p-8">
-              <div className="text-4xl mb-4">🌬️</div>
-              <h3 className="text-xl font-bold mb-3">3. Assainir l'air</h3>
-              <p className="text-ipb-light mb-4">
-                Installation VMI si nécessaire pour renouveler l'air et éviter toute récidive de moisissures.
-              </p>
-              <ul className="text-sm text-ipb-muted space-y-2">
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Air filtré et préchauffé</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Taux d'humidité contrôlé</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Confort thermique amélioré</li>
-              </ul>
+        {/* Articles connexes */}
+        <nav aria-label="Articles connexes" className="bg-ipb-cream py-20 lg:py-24">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <p className="text-2xl font-serif font-bold text-ipb-text mb-8 text-center">Articles connexes</p>
+            <div className="grid md:grid-cols-4 gap-px bg-ipb-rule border border-ipb-rule">
+              {[
+                { href: '/expertise/humidite', title: 'Guide humidité', desc: 'Toutes nos solutions' },
+                { href: '/salpetre-mur-traitement', title: 'Salpêtre', desc: 'Causes et traitement' },
+                { href: '/remontee-capillaire-solution', title: 'Remontées capillaires', desc: 'Solutions durables' },
+                { href: '/merule-champignon-traitement', title: 'Mérule', desc: "Le champignon lignivore" },
+              ].map((item) => (
+                <Link key={item.href} href={item.href} className="group block bg-ipb-white p-6 hover:bg-ipb-stone transition-colors duration-300">
+                  <h3 className="font-serif text-ipb-text font-bold text-[15px] leading-tight mb-2 group-hover:text-ipb-orange transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-[13px] leading-[1.7] font-light text-ipb-muted">{item.desc}</p>
+                </Link>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </nav>
 
-      {/* Articles connexes */}
-      <section className="py-20 bg-ipb-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-ipb-text mb-8 text-center">
-            Articles connexes
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { href: '/expertise/humidite', icon: '📋', title: 'Guide complet humidité', desc: 'Toutes nos solutions' },
-              { href: '/salpetre-mur-traitement', icon: '🧂', title: 'Salpêtre', desc: 'Causes et traitement' },
-              { href: '/remontee-capillaire-solution', icon: '💧', title: 'Remontées capillaires', desc: 'Solutions durables' },
-              { href: '/expertise/fissures', icon: '🧱', title: 'Problème de fissures ?', desc: 'Diagnostic et agrafage' },
-            ].map((item, index) => (
-              <Link 
-                key={index}
-                href={item.href}
-                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-ipb-rule"
-              >
-                <span className="text-4xl mb-4 block">{item.icon}</span>
-                <h3 className="font-bold text-ipb-text group-hover:text-emerald-600 transition-colors mb-1">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-ipb-muted">{item.desc}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm font-bold mb-6">
-            <Heart size={16} />
-            Protégez votre famille
-          </div>
-          
-          <h2 className="text-3xl md:text-5xl font-black mb-6">
-            Votre santé n'a pas de prix.
-          </h2>
-          
-          <p className="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
-            Les moisissures ne disparaissent jamais seules. Plus vous attendez, plus les risques augmentent.
-          </p>
-
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/diagnostic" className="group bg-white text-emerald-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-emerald-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">
-              Diagnostic sanitaire gratuit
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/30 hover:bg-white/20 px-8 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3">
-              <Phone size={20} />
-              05 82 95 33 75
-            </a>
-          </div>
-        </div>
-      </section>
+        <CtaFinal />
+      </main>
 
       <Footer />
     </div>

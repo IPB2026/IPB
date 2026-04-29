@@ -5,288 +5,309 @@ import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
-import { ArrowRight, Phone, Droplets, CheckCircle, AlertTriangle } from 'lucide-react';
+import { CtaFinal } from '@/components/home/CtaFinal';
+import { Eyebrow } from '@/components/ui/Eyebrow';
+import { MagneticButton } from '@/components/ui/MagneticButton';
+import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Remontées Capillaires : Causes et Solutions Durables | IPB Expertise',
-  description: 'Remontées capillaires dans vos murs ? Causes, signes et traitement par injection de résine. Garantie 30 ans. Expert Toulouse, Montauban, Auch (31-82-32) →',
-  keywords: ['remontée capillaire', 'humidité ascensionnelle', 'injection résine', 'mur humide', 'traitement humidité'],
+  title: 'Remontées capillaires · Causes et traitement durable · Institut IPB',
+  description: "Remontées capillaires dans vos murs ? Causes, signes, processus de traitement par injection de résine hydrophobe (garantie 30 ans). Institut IPB Toulouse, Montauban, Auch.",
+  keywords: ['remontée capillaire', 'humidité ascensionnelle', 'injection résine', 'mur humide', 'traitement humidité', 'salpêtre toulouse'],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/remontee-capillaire-solution',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
   },
 };
 
 const faqItems = [
   {
     question: "Comment savoir si j'ai des remontées capillaires ?",
-    answer: "Signes révélateurs : humidité au bas des murs (jusqu'à 1,5m), salpêtre, peinture qui cloque, papier peint qui se décolle, odeur de moisi, plinthes qui se décollent."
+    answer: "Signes révélateurs : humidité au bas des murs (jusqu'à 1,5 m), salpêtre, peinture qui cloque, papier peint qui se décolle, odeur de moisi, plinthes qui gondolent. Notre humidimètre confirme la mesure.",
   },
   {
-    question: "Quelle différence avec l'infiltration ?",
-    answer: "Les remontées capillaires viennent du sol et touchent le bas des murs. Les infiltrations viennent de l'extérieur (toiture, façade) et peuvent toucher n'importe quelle zone."
+    question: "Quelle différence avec une infiltration ?",
+    answer: "Les remontées capillaires viennent du sol et touchent le bas des murs sur toute la périphérie. Les infiltrations viennent de l'extérieur (toiture, façade, joint de menuiserie) et peuvent toucher n'importe quelle zone. Le diagnostic instrumenté distingue les deux.",
   },
   {
     question: "L'injection de résine est-elle efficace ?",
-    answer: "Oui, c'est la solution la plus fiable. La résine crée une barrière étanche qui stoppe définitivement les remontées. Garantie 30 ans."
+    answer: "Oui, c'est la solution la plus durable. La résine hydrophobe crée une barrière étanche au cœur du mur qui stoppe la remontée. Notre traitement est garanti 30 ans.",
   },
   {
     question: "Combien de temps pour que les murs sèchent ?",
-    answer: "Après l'injection, les murs sèchent progressivement sur 6 à 12 mois selon leur épaisseur et l'humidité initiale."
-  }
+    answer: "Le traitement est efficace immédiatement (la barrière hydrophobe est posée dès l'injection), mais le séchage des murs eux-mêmes prend 6 à 12 mois selon leur épaisseur et leur exposition. Un suivi est inclus à 3 et 6 mois.",
+  },
 ];
 
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": faqItems.map(item => ({
+  "mainEntity": faqItems.map((item) => ({
     "@type": "Question",
     "name": item.question,
-    "acceptedAnswer": { "@type": "Answer", "text": item.answer }
-  }))
+    "acceptedAnswer": { "@type": "Answer", "text": item.answer },
+  })),
 };
 
 export default function RemonteeCapillairePage() {
   return (
-    <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
+    <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
-      
+
       <TopBar />
       <Navbar />
       <SmartBackBar />
 
       {/* Breadcrumb */}
-      <div className="bg-white border-b border-ipb-rule py-3">
-        <div className="max-w-7xl mx-auto px-4 text-sm text-ipb-muted">
-          <Link href="/" className="hover:text-blue-600">Accueil</Link>
-          <span className="mx-2">›</span>
-          <Link href="/expert-humidite-toulouse-31" className="hover:text-blue-600">Expert Humidité</Link>
-          <span className="mx-2">›</span>
+      <div className="bg-ipb-cream border-b border-ipb-rule py-3">
+        <div className="max-w-ipb mx-auto px-6 lg:px-12 text-sm text-ipb-muted">
+          <Link href="/" className="hover:text-ipb-orange transition-colors">Accueil</Link>
+          <span className="mx-2" aria-hidden="true">›</span>
+          <Link href="/expert-humidite-toulouse-31" className="hover:text-ipb-orange transition-colors">Expert humidité</Link>
+          <span className="mx-2" aria-hidden="true">›</span>
           <span className="text-ipb-text">Remontées capillaires</span>
         </div>
       </div>
 
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="flex items-center gap-2 text-blue-400 text-sm font-bold mb-4">
-            <Droplets size={18} />
-            <span>Humidité ascensionnelle</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
-            Remontées Capillaires : Le Guide Complet
-          </h1>
-          <p className="text-xl text-white/70 mb-8">
-            L'eau du sol remonte dans vos murs par capillarité. Découvrez comment identifier ce phénomène 
-            et le stopper définitivement avec une solution garantie 30 ans.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/diagnostic" className="bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
-              Diagnostic gratuit <ArrowRight size={18} />
-            </Link>
-            <a href="tel:0582953375" className="bg-white/10 border border-white/20 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
-              <Phone size={18} /> 05 82 95 33 75
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Contenu */}
-      <article className="py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="prose prose-lg max-w-none">
-            <h2>Qu'est-ce que la remontée capillaire ?</h2>
-            <p>
-              La <strong>remontée capillaire</strong> (ou humidité ascensionnelle) est un phénomène physique : 
-              l'eau contenue dans le sol remonte dans les murs par les micro-canaux de la maçonnerie, 
-              comme l'eau monte dans une éponge.
-            </p>
-            <p>
-              Ce phénomène peut faire monter l'humidité jusqu'à <strong>1,5 mètre de hauteur</strong>, 
-              voire plus dans certains cas. Il touche principalement les maisons anciennes sans coupure 
-              de capillarité, mais aussi les constructions récentes sur terrain humide.
-            </p>
-
-            <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-xl my-8 not-prose">
-              <h3 className="font-bold text-ipb-text mb-2">📊 Chiffres clés</h3>
-              <ul className="text-ipb-text space-y-1">
-                <li>• <strong>30%</strong> des maisons anciennes sont touchées</li>
-                <li>• Hauteur max : <strong>1,5m</strong> (parfois plus)</li>
-                <li>• Évaporation : <strong>15-20 litres/jour</strong> par mètre linéaire</li>
-              </ul>
+      <main id="main-content">
+        {/* HERO */}
+        <section className="bg-ipb-cream">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12 pt-16 lg:pt-24 pb-20 lg:pb-28">
+            <div className="max-w-3xl">
+              <RevealOnScroll>
+                <Eyebrow>Humidité ascensionnelle</Eyebrow>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.06}>
+                <h1
+                  className="font-serif text-ipb-text mb-8"
+                  style={{
+                    fontSize: 'clamp(40px, 4vw, 62px)',
+                    lineHeight: 1.06,
+                    letterSpacing: '-0.025em',
+                    fontWeight: 700,
+                  }}
+                >
+                  Remontées capillaires&nbsp;à Toulouse.<br />
+                  <em>Le guide complet.</em>
+                </h1>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.12}>
+                <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[620px]">
+                  L'eau du sol remonte dans vos murs par capillarité. Ce guide détaille comment identifier le phénomène, ses causes en zone toulousaine, et la solution la plus durable — l'injection de résine hydrophobe garantie 30 ans.
+                </p>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.18}>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <MagneticButton href="/diagnostic" variant="primary">
+                    Diagnostic gratuit
+                  </MagneticButton>
+                  <MagneticButton href="/expert-humidite-toulouse-31" variant="ghost">
+                    Voir notre méthode
+                  </MagneticButton>
+                </div>
+              </RevealOnScroll>
             </div>
+          </div>
+        </section>
 
-            <h2>Comment reconnaître les remontées capillaires ?</h2>
+        {/* CONTENU ÉDITORIAL */}
+        <section className="bg-ipb-white py-24 lg:py-32">
+          <div className="max-w-3xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <article className="prose prose-slate prose-lg max-w-none prose-headings:font-serif prose-headings:text-ipb-text prose-h2:text-[28px] prose-h2:mt-12 prose-h3:text-[20px] prose-p:text-[15px] prose-p:leading-[1.9] prose-p:font-light prose-p:text-ipb-muted prose-strong:text-ipb-text prose-strong:font-medium prose-a:text-ipb-orange prose-a:no-underline hover:prose-a:underline">
+                <h2>Qu'est-ce que la remontée capillaire ?</h2>
+                <p>
+                  La <strong>remontée capillaire</strong> (ou humidité ascensionnelle) est un phénomène physique : l'eau contenue dans le sol remonte dans les murs par les micro-canaux de la maçonnerie, comme l'eau monte dans une éponge.
+                </p>
+                <p>
+                  Ce phénomène peut faire monter l'humidité jusqu'à <strong>1,5 mètre de hauteur</strong>, voire plus dans certains cas. Il touche principalement les maisons anciennes sans coupure de capillarité, mais aussi les constructions récentes sur terrain humide.
+                </p>
 
-            <div className="bg-ipb-stone rounded-2xl p-6 my-8 not-prose">
-              <h3 className="text-xl font-bold text-ipb-text mb-4">Signes révélateurs</h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="flex items-start gap-3">
-                  <AlertTriangle className="text-amber-500 flex-shrink-0 mt-1" size={20} />
-                  <span>Humidité au bas des murs (0 à 1,5m)</span>
+                <div className="not-prose bg-ipb-cream border-l-4 border-ipb-orange p-6 lg:p-7 my-10">
+                  <p className="font-serif text-ipb-orange text-[12px] font-bold tracking-[0.18em] mb-3">CHIFFRES CLÉS</p>
+                  <ul className="space-y-2 text-[14px] text-ipb-text">
+                    <li>▸ <strong>30 %</strong> des maisons anciennes touchées en France</li>
+                    <li>▸ Hauteur d'ascension typique : <strong>0,5 à 1,5 m</strong></li>
+                    <li>▸ Évaporation : <strong>15 à 20 litres / jour</strong> par mètre linéaire de mur</li>
+                  </ul>
                 </div>
-                <div className="flex items-start gap-3">
-                  <AlertTriangle className="text-amber-500 flex-shrink-0 mt-1" size={20} />
-                  <span>Salpêtre (dépôts blancs poudreux)</span>
+
+                <h2>Comment reconnaître les remontées capillaires ?</h2>
+
+                <div className="not-prose bg-ipb-cream border border-ipb-rule rounded-[6px] p-6 lg:p-8 my-10">
+                  <p className="font-serif text-ipb-orange text-[12px] font-bold tracking-[0.18em] mb-5">SIGNES RÉVÉLATEURS</p>
+                  <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3 text-[14px] text-ipb-text">
+                    <li className="flex items-start gap-3">
+                      <span className="text-ipb-orange mt-1" aria-hidden="true">▸</span>
+                      <span>Humidité au bas des murs (0 à 1,5 m)</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-ipb-orange mt-1" aria-hidden="true">▸</span>
+                      <span>Salpêtre — dépôts blancs poudreux</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-ipb-orange mt-1" aria-hidden="true">▸</span>
+                      <span>Peinture qui cloque et se décolle</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-ipb-orange mt-1" aria-hidden="true">▸</span>
+                      <span>Papier peint qui se décolle</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-ipb-orange mt-1" aria-hidden="true">▸</span>
+                      <span>Plinthes qui gondolent</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-ipb-orange mt-1" aria-hidden="true">▸</span>
+                      <span>Odeur de moisi persistante</span>
+                    </li>
+                  </ul>
                 </div>
-                <div className="flex items-start gap-3">
-                  <AlertTriangle className="text-amber-500 flex-shrink-0 mt-1" size={20} />
-                  <span>Peinture qui cloque et se décolle</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <AlertTriangle className="text-amber-500 flex-shrink-0 mt-1" size={20} />
-                  <span>Papier peint qui se décolle</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <AlertTriangle className="text-amber-500 flex-shrink-0 mt-1" size={20} />
-                  <span>Plinthes qui gondolent</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <AlertTriangle className="text-amber-500 flex-shrink-0 mt-1" size={20} />
-                  <span>Odeur de moisi persistante</span>
-                </div>
-              </div>
-            </div>
 
-            <h2>Les causes des remontées capillaires</h2>
-            
-            <h3>1. Absence de coupure de capillarité</h3>
-            <p>
-              Les maisons construites avant 1960 n'ont généralement pas de membrane étanche entre 
-              les fondations et les murs. C'est la cause principale.
-            </p>
+                <h2>Les causes des remontées capillaires</h2>
 
-            <h3>2. Sols argileux ou humides</h3>
-            <p>
-              En Occitanie (31, 82, 32), les sols argileux retiennent l'eau et alimentent en permanence les 
-              remontées capillaires.
-            </p>
+                <h3>1. Absence de coupure de capillarité</h3>
+                <p>
+                  Les maisons construites avant 1960 n'ont généralement pas de membrane étanche entre les fondations et les murs. C'est la cause principale, et elle concerne la majorité du bâti ancien toulousain.
+                </p>
 
-            <h3>3. Nappe phréatique haute</h3>
-            <p>
-              Dans certaines zones (bords de Garonne, vallées), la nappe phréatique est proche de 
-              la surface, amplifiant le phénomène.
-            </p>
+                <h3>2. Sols argileux ou humides</h3>
+                <p>
+                  En Occitanie (31, 82, 32), les sols argileux retiennent l'eau et alimentent en permanence les remontées capillaires. Plus de 80 % des sols de la Haute-Garonne sont concernés.
+                </p>
 
-            <h3>4. Enduits étanches inadaptés</h3>
-            <p>
-              Un enduit ciment (imperméable) empêche l'évaporation et concentre l'humidité, 
-              aggravant les dégâts en hauteur.
-            </p>
+                <h3>3. Nappe phréatique haute</h3>
+                <p>
+                  Dans certaines zones (bords de Garonne, vallées), la nappe phréatique est proche de la surface, amplifiant le phénomène en saison humide.
+                </p>
 
-            <h2>La solution : l'injection de résine hydrophobe</h2>
-            <p>
-              C'est la méthode la plus efficace et la plus durable pour traiter les remontées capillaires. 
-              Elle crée une barrière étanche au cœur du mur.
-            </p>
+                <h3>4. Enduits étanches inadaptés</h3>
+                <p>
+                  Un enduit ciment (imperméable) empêche l'évaporation et concentre l'humidité, aggravant les dégâts en hauteur. Toujours préférer un enduit à la chaux respirant sur du bâti ancien.
+                </p>
 
-            <h3>Le processus IPB</h3>
-            <ol>
-              <li><strong>Diagnostic hygrométrique :</strong> Mesure précise du taux d'humidité</li>
-              <li><strong>Forage :</strong> Trous espacés de 10-15cm à la base du mur</li>
-              <li><strong>Injection :</strong> Résine silicone ou silane injectée par gravité ou sous pression</li>
-              <li><strong>Polymérisation :</strong> La résine se diffuse et crée une barrière étanche</li>
-              <li><strong>Séchage :</strong> Les murs s'assèchent en 6-12 mois</li>
-            </ol>
+                <h2>La solution : l'injection de résine hydrophobe</h2>
+                <p>
+                  C'est la méthode la plus efficace et la plus durable pour traiter les remontées capillaires. Elle crée une <strong>barrière étanche au cœur du mur</strong>, en pied de mur, qui bloque définitivement l'absorption d'eau du sol.
+                </p>
 
-            <div className="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-xl my-8 not-prose">
-              <div className="flex items-start gap-3">
-                <CheckCircle className="text-green-600 flex-shrink-0 mt-1" size={24} />
-                <div>
-                  <h3 className="font-bold text-ipb-text mb-2">Garantie 30 ans</h3>
-                  <p className="text-ipb-text">
-                    Notre traitement est garanti 30 ans contre les remontées capillaires. 
-                    Si le problème réapparaît, nous intervenons gratuitement.
+                <h3>Le processus IPB</h3>
+                <ol>
+                  <li><strong>Diagnostic hygrométrique :</strong> mesure précise du taux d'humidité avec humidimètre à sonde et caméra thermique</li>
+                  <li><strong>Forage :</strong> trous espacés de 10-15 cm à la base du mur, sur la périphérie concernée</li>
+                  <li><strong>Injection :</strong> résine silicone ou silane injectée par gravité ou sous pression</li>
+                  <li><strong>Polymérisation :</strong> la résine se diffuse dans la maçonnerie et forme une barrière étanche</li>
+                  <li><strong>Suivi de séchage :</strong> les murs s'assèchent en 6 à 12 mois, suivi inclus à 3 et 6 mois</li>
+                </ol>
+
+                <div className="not-prose bg-ipb-cream border-l-4 border-ipb-orange p-6 lg:p-7 my-10">
+                  <p className="font-serif text-ipb-orange text-[12px] font-bold tracking-[0.18em] mb-3">GARANTIE 30 ANS</p>
+                  <p className="text-[14px] leading-[1.85] text-ipb-text">
+                    Notre traitement par injection résine est garanti 30 ans contre les remontées capillaires. Si le problème réapparaît dans cette période, nous intervenons sans frais.
                   </p>
                 </div>
-              </div>
-            </div>
 
-            <h2>Tarifs traitement remontées capillaires</h2>
-            <ul>
-              <li><strong>Diagnostic :</strong> expertise sur site (montant déduit à 100% des travaux)</li>
-              <li><strong>Injection résine :</strong> 80-120€/mètre linéaire</li>
-              <li><strong>Maison individuelle type :</strong> 2 000 - 5 000€</li>
-            </ul>
+                <h2>Tarifs traitement remontées capillaires</h2>
+                <ul>
+                  <li><strong>Diagnostic instrumenté :</strong> expertise sur site, montant déduit à 100 % des travaux si nous les réalisons</li>
+                  <li><strong>Injection résine :</strong> 80 à 120 € par mètre linéaire de mur traité</li>
+                  <li><strong>Maison individuelle type :</strong> 2 000 à 5 000 € selon le linéaire concerné</li>
+                </ul>
 
-            <h2>Les fausses solutions à éviter</h2>
-            <ul>
-              <li>❌ <strong>Peinture anti-humidité :</strong> Ne traite que le symptôme</li>
-              <li>❌ <strong>Enduit étanche :</strong> Aggrave le problème</li>
-              <li>❌ <strong>Drainage seul :</strong> Inefficace contre la capillarité</li>
-              <li>❌ <strong>Assècheurs électroniques :</strong> Efficacité non prouvée</li>
-            </ul>
-          </div>
+                <h2>Les fausses solutions à éviter</h2>
+                <ul>
+                  <li><strong>Peinture anti-humidité :</strong> ne traite que le symptôme, pas la cause. L'humidité ressortira à côté.</li>
+                  <li><strong>Enduit étanche au ciment :</strong> aggrave le problème en bloquant l'évaporation, fait monter l'humidité plus haut.</li>
+                  <li><strong>Drainage périphérique seul :</strong> inefficace contre la capillarité, traite uniquement les infiltrations.</li>
+                  <li><strong>Assécheurs électroniques :</strong> efficacité jamais démontrée scientifiquement.</li>
+                </ul>
+              </article>
+            </RevealOnScroll>
 
-          {/* Lien vers le HUB */}
-          <div className="mt-12 p-8 bg-blue-50 border-2 border-blue-200 rounded-2xl">
-            <h3 className="text-xl font-bold text-ipb-text mb-4">💧 En savoir plus</h3>
-            <p className="text-ipb-muted mb-4">
-              Consultez notre guide complet sur tous les problèmes d'humidité.
-            </p>
-            <Link href="/expert-humidite-toulouse-31" className="inline-flex items-center gap-2 text-blue-600 font-bold hover:text-blue-700">
-              Guide Expert Humidité <ArrowRight size={18} />
-            </Link>
-          </div>
-        </div>
-      </article>
-
-      {/* FAQ */}
-      <section className="py-16 bg-ipb-stone">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-ipb-text mb-8 text-center">Questions fréquentes</h2>
-          <div className="space-y-4">
-            {faqItems.map((item, index) => (
-              <details key={index} className="bg-white rounded-xl shadow-sm border border-ipb-rule group">
-                <summary className="p-6 cursor-pointer font-bold text-ipb-text flex items-center justify-between">
-                  {item.question}
-                  <span className="text-blue-600 group-open:rotate-180 transition-transform">▼</span>
-                </summary>
-                <div className="px-6 pb-6 text-ipb-muted">{item.answer}</div>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Articles connexes */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-ipb-text mb-8 text-center">
-            Articles connexes
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { href: '/expertise/humidite', icon: '📋', title: 'Guide complet humidité', desc: 'Toutes nos solutions' },
-              { href: '/salpetre-mur-traitement', icon: '🧂', title: 'Salpêtre', desc: 'Causes et traitement' },
-              { href: '/moisissures-maison-sante', icon: '🦠', title: 'Moisissures', desc: 'Risques santé' },
-              { href: '/expertise/fissures', icon: '🧱', title: 'Problème de fissures ?', desc: 'Diagnostic et agrafage' },
-            ].map((item, index) => (
-              <Link 
-                key={index}
-                href={item.href}
-                className="group bg-ipb-cream rounded-2xl p-6 hover:bg-blue-50 transition-all hover:-translate-y-1 border border-ipb-rule hover:border-blue-200"
-              >
-                <span className="text-4xl mb-4 block">{item.icon}</span>
-                <h3 className="font-bold text-ipb-text group-hover:text-blue-600 transition-colors mb-1">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-ipb-muted">{item.desc}</p>
+            {/* Lien vers le HUB */}
+            <div className="mt-16 bg-ipb-cream border border-ipb-rule rounded-[6px] p-8 lg:p-10">
+              <p className="font-serif text-ipb-orange text-[12px] font-bold tracking-[0.18em] mb-3">EN SAVOIR PLUS</p>
+              <h3 className="font-serif text-ipb-text font-bold text-[22px] leading-tight mb-3">
+                Toutes les pathologies de l'humidité
+              </h3>
+              <p className="text-[14px] leading-[1.85] font-light text-ipb-muted mb-6">
+                Consultez notre guide complet sur tous les problèmes d'humidité du bâti — remontées capillaires, salpêtre, moisissures, condensation, mérule.
+              </p>
+              <Link href="/expert-humidite-toulouse-31" className="text-[13px] text-ipb-orange font-medium hover:underline">
+                Guide expert humidité Toulouse →
               </Link>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA */}
-      <section className="py-16 bg-blue-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-extrabold mb-6">Vos murs sont humides ?</h2>
-          <p className="text-xl text-blue-100 mb-8">Diagnostic sous 48h. Solution garantie 30 ans.</p>
-          <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50">
-            Demander un diagnostic <ArrowRight size={20} />
-          </Link>
-        </div>
-      </section>
+        {/* FAQ */}
+        <section className="bg-ipb-cream py-24 lg:py-32">
+          <div className="max-w-4xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="text-center mb-16">
+                <Eyebrow className="justify-center">Questions fréquentes</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Sur les remontées<br /><em>capillaires.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <div className="space-y-3">
+              {faqItems.map((item, i) => (
+                <RevealOnScroll key={item.question} delay={i * 0.04}>
+                  <details className="group bg-ipb-white border border-ipb-rule rounded-[6px]">
+                    <summary className="cursor-pointer list-none flex items-start justify-between gap-6 p-6 lg:p-7">
+                      <h3 className="font-serif text-ipb-text font-bold text-[17px] leading-tight pr-2">
+                        {item.question}
+                      </h3>
+                      <span className="text-ipb-orange text-2xl leading-none flex-shrink-0 transition-transform group-open:rotate-45 font-light" aria-hidden="true">+</span>
+                    </summary>
+                    <div className="px-6 lg:px-7 pb-7 -mt-2 text-[14px] leading-[1.85] font-light text-ipb-muted">
+                      {item.answer}
+                    </div>
+                  </details>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Articles connexes */}
+        <nav aria-label="Articles connexes" className="bg-ipb-white py-20 lg:py-24">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <p className="text-2xl font-serif font-bold text-ipb-text mb-8 text-center">
+              Articles connexes
+            </p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-ipb-rule border border-ipb-rule">
+              {[
+                { href: '/expertise/humidite', title: "Guide complet humidité", desc: 'Toutes nos solutions' },
+                { href: '/salpetre-mur-traitement', title: 'Salpêtre', desc: 'Causes et traitement' },
+                { href: '/moisissures-maison-sante', title: 'Moisissures', desc: 'Risques santé' },
+                { href: '/expertise/fissures', title: 'Fissures structurelles', desc: 'Diagnostic et agrafage' },
+              ].map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="group block bg-ipb-white p-6 lg:p-7 hover:bg-ipb-stone transition-colors duration-300"
+                >
+                  <h3 className="font-serif text-ipb-text font-bold text-[16px] leading-tight mb-2 group-hover:text-ipb-orange transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-[13px] leading-[1.7] font-light text-ipb-muted">
+                    {item.desc}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </nav>
+
+        <CtaFinal />
+      </main>
 
       <Footer />
     </div>
