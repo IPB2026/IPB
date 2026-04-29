@@ -131,7 +131,7 @@ export default function FissuresPage() {
                     fontWeight: 700,
                   }}
                 >
-                  Une fissure dans votre maison.<br />
+                  Une fissure dans votre maison&nbsp;à Toulouse.<br />
                   <em>Notre métier depuis 2019.</em>
                 </h1>
               </RevealOnScroll>

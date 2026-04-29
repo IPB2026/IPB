@@ -136,10 +136,10 @@ export default function FissureEscalierPage() {
             {/* Visual Card */}
             <div className="relative">
               <div className="bg-gradient-to-br from-orange-500/20 to-red-500/20 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
-                <div className="bg-white/10 rounded-2xl p-6 mb-6">
-                  <div className="text-6xl mb-4">🪜</div>
-                  <h2 className="text-xl font-bold text-white mb-2">Schéma typique</h2>
-                  <p className="text-white/70 text-sm">La fissure suit les joints en "marches d'escalier" car c'est le chemin de moindre résistance du mur.</p>
+                <div className="bg-white/10 rounded-2xl p-6 mb-6" aria-label="Schéma typique d'une fissure en escalier">
+                  <div className="text-6xl mb-4" aria-hidden="true">🪜</div>
+                  <p className="text-base font-bold text-white mb-2">Schéma typique</p>
+                  <p className="text-white/70 text-sm">La fissure suit les joints en « marches d'escalier » car c'est le chemin de moindre résistance du mur.</p>
                 </div>
                 
                 <div className="grid grid-cols-2 gap-4">
@@ -363,11 +363,11 @@ export default function FissureEscalierPage() {
       </section>
 
       {/* Articles connexes */}
-      <section className="py-20 bg-ipb-cream">
+      <nav aria-label="Articles connexes" className="py-20 bg-ipb-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-ipb-text mb-8 text-center">
+          <p className="text-2xl font-black text-ipb-text mb-8 text-center">
             Articles connexes
-          </h2>
+          </p>
           <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
             {[
               { href: '/fissure-horizontale-danger', icon: '➖', title: 'Fissure horizontale', desc: 'Danger structurel' },
@@ -391,7 +391,7 @@ export default function FissureEscalierPage() {
             ))}
           </div>
         </div>
-      </section>
+      </nav>
 
       {/* CTA Final */}
       <section className="py-20 bg-ipb-orange text-white relative overflow-hidden">

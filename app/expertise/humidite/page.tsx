@@ -120,7 +120,7 @@ export default function HumiditePage() {
                     fontWeight: 700,
                   }}
                 >
-                  L'humidité dans votre maison.<br />
+                  L'humidité dans votre maison&nbsp;à Toulouse.<br />
                   <em>Identifier la cause, pas masquer le symptôme.</em>
                 </h1>
               </RevealOnScroll>

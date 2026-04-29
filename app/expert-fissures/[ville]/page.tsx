@@ -27,6 +27,12 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
   const villeNom = villeData.nom;
   const slug = ville;
 
+  // Canonical override : sur Toulouse, /expert-fissures/toulouse pointe vers /expert-fissures-toulouse-31
+  // pour résoudre la cannibalisation entre les 3 URLs ciblant la même intention.
+  const canonicalUrl = ville === 'toulouse'
+    ? 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31'
+    : `https://www.ipb-expertise.fr/expert-fissures/${ville}`;
+
   const description = villeData.risqueRGA === 'tres-fort' || villeData.risqueRGA === 'fort'
     ? `Institut de pathologie du bâtiment à ${villeNom} (${deptCode}). Diagnostic instrumenté de fissures, agrafage structurel, reprise en sous-œuvre. Zone à risque RGA ${villeData.risqueRGA}. Décennale AXA.`
     : `Institut de pathologie du bâtiment à ${villeNom} (${deptCode}). Diagnostic instrumenté de fissures, agrafage structurel et reprise en sous-œuvre. Rapports reconnus par les assurances.`;
@@ -47,7 +53,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
       `catastrophe naturelle sécheresse ${slug}`,
       `micropieux ${slug}`,
     ],
-    alternates: { canonical: `https://www.ipb-expertise.fr/expert-fissures/${ville}` },
+    alternates: { canonical: canonicalUrl },
     openGraph: {
       title: `Expert fissures ${villeNom} · Institut IPB`,
       description: `Institut de pathologie du bâtiment intervenant à ${villeNom}. Diagnostic, agrafage, reprise en sous-œuvre.`,

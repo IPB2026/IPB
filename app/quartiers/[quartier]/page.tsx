@@ -178,6 +178,7 @@ export default async function QuartierPage({ params }: PageProps) {
         </div>
       </div>
 
+      <main id="main-content">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-orange-900 text-white py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-500 via-transparent to-transparent"></div>
@@ -213,7 +214,6 @@ export default async function QuartierPage({ params }: PageProps) {
         </div>
       </section>
 
-      <main id="main-content">
         {/* Caractéristiques du quartier */}
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4">

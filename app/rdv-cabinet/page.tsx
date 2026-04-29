@@ -45,7 +45,7 @@ export default function RdvCabinetPage() {
                     fontWeight: 700,
                   }}
                 >
-                  Quinze minutes,<br /><em>un échange technique.</em>
+                  Prendre rendez-vous avec l'institut IPB&nbsp;à Toulouse.<br /><em>Quinze minutes, un échange technique.</em>
                 </h1>
 
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-6">
