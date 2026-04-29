@@ -2,36 +2,44 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { X, Phone, ArrowRight, Clock, Shield, Star, AlertTriangle, CheckCircle } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
+/**
+ * ExitIntentPopup — déclenchement à la sortie souris (PC).
+ *
+ * Refonte 2026-04-29 : style éditorial IPB sobre.
+ * Plus d'emoji, plus de gradient orange-red, plus de copy alarmiste.
+ *
+ * Cf. PLAN_REFONTE_V2.md (charte cabinet de prestige)
+ */
 export function ExitIntentPopup() {
   const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(false);
   const [hasShown, setHasShown] = useState(false);
 
-  // Contexte de la page
+  // Contexte de la page (fissures vs mur porteur)
   const isFissuresPage = pathname?.includes('fissure') || pathname?.includes('agrafage');
-  const isHumiditePage = pathname?.includes('humid') || pathname?.includes('capillaire') || 
-                         pathname?.includes('moisissure') || pathname?.includes('cave') ||
-                         pathname?.includes('vmi') || pathname?.includes('condensation') ||
-                         pathname?.includes('salpetre') || pathname?.includes('merule');
+  const isMurPorteurPage = pathname?.includes('mur-porteur') || pathname?.includes('baie-vitree');
 
   useEffect(() => {
-    // Ne pas afficher sur la page diagnostic ou contact
-    if (pathname?.startsWith('/diagnostic') || pathname?.startsWith('/contact')) {
+    // Pages où le popup ne doit pas apparaître
+    if (
+      pathname?.startsWith('/diagnostic') ||
+      pathname?.startsWith('/contact') ||
+      pathname?.startsWith('/rdv-cabinet') ||
+      pathname?.startsWith('/lp/') ||
+      pathname?.startsWith('/legal') ||
+      pathname?.startsWith('/calcul-prix-mur-porteur')
+    ) {
       return;
     }
 
-    // Vérifier si déjà montré dans cette session
-    const alreadyShown = sessionStorage.getItem('exitPopupShown');
-    if (alreadyShown) {
+    if (sessionStorage.getItem('exitPopupShown')) {
       setHasShown(true);
       return;
     }
 
     const handleMouseLeave = (e: MouseEvent) => {
-      // Détecter si la souris quitte par le haut (intention de fermer)
       if (e.clientY <= 0 && !hasShown) {
         setIsVisible(true);
         setHasShown(true);
@@ -39,7 +47,6 @@ export function ExitIntentPopup() {
       }
     };
 
-    // Attendre 8 secondes avant d'activer (éviter popup trop rapide)
     const timer = setTimeout(() => {
       document.addEventListener('mouseleave', handleMouseLeave);
     }, 8000);
@@ -52,135 +59,125 @@ export function ExitIntentPopup() {
 
   if (!isVisible) return null;
 
-  // Contenu contextuel
-  const getContent = () => {
+  // Contenu adapté au contexte de la page (fissures > mur porteur > générique)
+  const content = (() => {
     if (isFissuresPage) {
       return {
-        emoji: '🏠',
-        title: 'Votre maison se fissure ?',
-        subtitle: 'Ne laissez pas le problème s\'aggraver',
-        stat: '+15% d\'aggravation par an sans traitement',
-        offer: 'Diagnostic expert offert',
-        urgency: '3 places disponibles cette semaine',
+        eyebrow: 'Avant de partir',
+        title: 'Une fissure observée',
+        titleItalic: 'mérite un avis posé.',
+        body: "Notre cabinet vient sur place sous sept jours, mesure ce qu'il y a à mesurer, et vous remet un rapport écrit. Sans engagement de votre part.",
+        primaryCta: 'Décrire ma situation',
+        primaryHref: '/diagnostic',
       };
     }
-    if (isHumiditePage) {
+    if (isMurPorteurPage) {
       return {
-        emoji: '💧',
-        title: 'L\'humidité détruit votre maison',
-        subtitle: 'Moisissures, salpêtre, odeurs...',
-        stat: '40% des maisons en Occitanie sont touchées',
-        offer: 'Diagnostic gratuit + devis',
-        urgency: 'Intervention possible sous 48h',
+        eyebrow: 'Avant de partir',
+        title: 'Un projet en tête,',
+        titleItalic: 'une estimation en deux minutes.',
+        body: "Notre calculateur vous donne une fourchette précise basée sur les chantiers récents en Occitanie. Sans inscription.",
+        primaryCta: "Estimer mon projet",
+        primaryHref: '/calcul-prix-mur-porteur',
       };
     }
     return {
-      emoji: '⚠️',
-      title: 'Un problème sur votre maison ?',
-      subtitle: 'Fissures ou humidité, on a la solution',
-      stat: '850+ diagnostics réalisés en Occitanie depuis 2019',
-      offer: 'Diagnostic gratuit en 5 minutes',
-      urgency: 'Expert disponible maintenant',
+      eyebrow: 'Avant de partir',
+      title: 'Une question technique,',
+      titleItalic: 'une réponse posée.',
+      body: "Notre cabinet répond à toutes les demandes sous 24 heures ouvrées, sans pression commerciale. Vous décrivez, nous analysons.",
+      primaryCta: 'Échanger avec le cabinet',
+      primaryHref: '/rdv-cabinet',
     };
-  };
-
-  const content = getContent();
+  })();
 
   return (
-    <div 
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-ipb-navy/85 backdrop-blur-sm p-4"
       onClick={(e) => e.target === e.currentTarget && setIsVisible(false)}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="exit-popup-title"
     >
-      <div 
-        className="relative bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden animate-in zoom-in-95 slide-in-from-bottom-4 duration-300"
-        role="dialog"
-        aria-modal="true"
+      <div
+        className="relative bg-ipb-cream max-w-lg w-full rounded-[6px] overflow-hidden border border-ipb-rule"
+        style={{
+          animation: 'exitPopupIn 0.4s cubic-bezier(.16,1,.3,1) both',
+          boxShadow: '0 30px 80px rgba(11, 24, 38, 0.35)',
+        }}
       >
-        {/* Header gradient */}
-        <div className="relative bg-gradient-to-br from-orange-600 via-orange-500 to-red-500 p-6 text-white">
-          {/* Bouton fermer */}
-          <button
-            onClick={() => setIsVisible(false)}
-            className="absolute top-4 right-4 text-white/70 hover:text-white p-1.5 rounded-full hover:bg-white/10 transition"
-            aria-label="Fermer"
-          >
-            <X size={20} />
-          </button>
+        <style jsx>{`
+          @keyframes exitPopupIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+        `}</style>
 
-          {/* Badge urgence */}
-          <div className="inline-flex items-center gap-2 bg-red-500/30 backdrop-blur px-3 py-1.5 rounded-full text-sm font-bold mb-3 animate-pulse">
-            <Clock size={14} />
-            {content.urgency}
-          </div>
+        {/* Bouton fermer */}
+        <button
+          onClick={() => setIsVisible(false)}
+          className="absolute top-4 right-4 text-ipb-light hover:text-ipb-text transition-colors p-1.5"
+          aria-label="Fermer"
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M4 4L14 14M14 4L4 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+          </svg>
+        </button>
 
-          <div className="text-5xl mb-3">{content.emoji}</div>
-          <h2 className="text-2xl font-black mb-2">{content.title}</h2>
-          <p className="text-orange-100">{content.subtitle}</p>
+        {/* Header navy minimaliste */}
+        <div className="bg-ipb-navy text-white px-8 lg:px-10 pt-8 pb-6">
+          <p className="text-[10px] uppercase tracking-[0.18em] text-white/40 font-medium mb-3">
+            {content.eyebrow}
+          </p>
+          <p className="font-serif text-white text-[12px] tracking-[0.16em] uppercase opacity-50">
+            IPB · Cabinet de pathologie du bâtiment
+          </p>
         </div>
 
         {/* Corps */}
-        <div className="p-6">
-          {/* Stat alarmante */}
-          <div className="bg-red-50 border border-red-200 rounded-xl p-4 mb-6">
-            <div className="flex items-start gap-3">
-              <AlertTriangle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-              <p className="text-red-800 text-sm font-medium">{content.stat}</p>
-            </div>
-          </div>
-
-          {/* Offre */}
-          <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-4 mb-6">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                <CheckCircle className="w-5 h-5 text-green-600" />
-              </div>
-              <div>
-                <div className="font-bold text-green-900">{content.offer}</div>
-                <div className="text-green-700 text-sm">Sans engagement</div>
-              </div>
-            </div>
-          </div>
-
-          {/* CTA Principal */}
-          <Link
-            href="/diagnostic"
-            onClick={() => setIsVisible(false)}
-            className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg shadow-orange-500/30 transition-all transform hover:scale-[1.02] mb-4"
+        <div className="px-8 lg:px-10 py-8 lg:py-10">
+          <h2
+            id="exit-popup-title"
+            className="font-serif text-ipb-text mb-5"
+            style={{
+              fontSize: 'clamp(24px, 3vw, 32px)',
+              lineHeight: 1.15,
+              letterSpacing: '-0.022em',
+              fontWeight: 700,
+            }}
           >
-            Lancer le diagnostic gratuit
-            <ArrowRight size={20} />
-          </Link>
+            {content.title}<br />
+            <em className="text-ipb-orange not-italic" style={{ fontStyle: 'italic' }}>{content.titleItalic}</em>
+          </h2>
 
-          {/* CTA Secondaire - Téléphone */}
-          <a
-            href="tel:0582953375"
-            onClick={() => setIsVisible(false)}
-            className="w-full flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-3 rounded-xl transition-all"
-          >
-            <Phone size={18} />
-            Ou appelez : 05 82 95 33 75
-          </a>
+          <p className="text-[14px] leading-[1.85] font-light text-ipb-muted mb-8">
+            {content.body}
+          </p>
 
-          {/* Réassurance */}
-          <div className="mt-6 flex items-center justify-center gap-6 text-xs text-slate-500">
-            <span className="flex items-center gap-1.5">
-              <Star size={14} className="text-yellow-500 fill-yellow-500" />
-              <span><strong className="text-slate-700">4.9/5</strong></span>
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Shield size={14} className="text-green-500" />
-              <span>Garanti 10 ans</span>
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Clock size={14} className="text-blue-500" />
-              <span>RDV sous 48h</span>
-            </span>
+          <div className="space-y-3">
+            <Link
+              href={content.primaryHref}
+              onClick={() => setIsVisible(false)}
+              className="inline-flex items-center justify-center w-full gap-2 bg-ipb-orange text-white font-semibold text-[13px] tracking-[0.03em] rounded-[3px] px-7 py-[14px] hover:bg-[#b35519] transition-colors"
+            >
+              {content.primaryCta}
+            </Link>
+
+            <a
+              href="tel:0582953375"
+              onClick={() => setIsVisible(false)}
+              className="inline-flex items-center justify-center w-full gap-2 border border-ipb-rule text-ipb-text font-medium text-[13px] rounded-[3px] px-7 py-[13px] hover:border-ipb-orange hover:text-ipb-orange transition-all"
+            >
+              <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M3 1h2.5l1 3-1.5 1c1 2 2.5 3.5 4.5 4.5l1-1.5 3 1V12c0 .5-.5 1-1 1-6 0-11-5-11-11 0-.5.5-1 1-1z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              05 82 95 33 75
+            </a>
           </div>
 
-          {/* Lien discret */}
           <button
             onClick={() => setIsVisible(false)}
-            className="w-full mt-4 text-sm text-slate-400 hover:text-slate-600 transition"
+            className="block w-full mt-6 text-[12px] text-ipb-light hover:text-ipb-muted transition-colors"
           >
             Non merci, je continue ma navigation
           </button>
