@@ -487,6 +487,24 @@ export default function DiagnosticPage() {
     if (!contactInfo.email.trim() && !contactInfo.phone.trim()) { setFormError('Veuillez saisir au moins un email ou un téléphone'); return; }
     if (!contactInfo.address.trim()) { setFormError('Veuillez saisir l\'adresse du bien'); return; }
 
+    // Validation locale du téléphone (si renseigné) — évite l'aller-retour serveur
+    const rawPhone = contactInfo.phone.trim();
+    if (rawPhone) {
+      const cleanedPhone = rawPhone.replace(/[\s.\-()]/g, '');
+      const phoneRegex = /^(\+33|0033|0)[1-9]\d{8}$/;
+      if (!phoneRegex.test(cleanedPhone)) {
+        setFormError('Le numéro de téléphone est incomplet ou mal formaté. Format attendu : 06 12 34 56 78 (ou +33 6 12 34 56 78).');
+        return;
+      }
+    }
+
+    // Validation locale email (si renseigné)
+    const rawEmail = contactInfo.email.trim();
+    if (rawEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(rawEmail)) {
+      setFormError("L'adresse email semble invalide. Vérifiez qu'elle contient un \"@\" et un domaine.");
+      return;
+    }
+
     setIsAnalyzing(true);
     trackFormSubmit();
     const score = calculateRisk(path! as 'fissure' | 'mur-porteur', answers);
@@ -494,6 +512,7 @@ export default function DiagnosticPage() {
 
     const recaptchaToken = await getToken('diagnostic_lead');
 
+    let leadSucceeded = false;
     try {
       const formData = new FormData();
       formData.append('name', contactInfo.name);
@@ -510,20 +529,32 @@ export default function DiagnosticPage() {
         formData.append('photoFile', photoFile);
       }
       const result = await submitDiagnosticLead(formData);
-      if (!result.success && process.env.NODE_ENV === 'development') {
-        console.error('Erreur lead:', result.message);
+      leadSucceeded = result.success;
+      if (!result.success) {
+        // Erreur backend : on NE simule PAS un succès — l'utilisateur doit savoir
+        setIsAnalyzing(false);
+        setFormError(result.message || "Une erreur est survenue lors de l'envoi. Vérifiez vos coordonnées ou appelez le 05 82 95 33 75.");
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Erreur lead:', result.message);
+        }
+        return;
       }
     } catch (error) {
+      setIsAnalyzing(false);
+      setFormError("Connexion impossible. Réessayez ou appelez-nous directement au 05 82 95 33 75.");
       if (process.env.NODE_ENV === 'development') {
         console.error('Erreur envoi lead:', error);
       }
+      return;
     }
 
-    setTimeout(() => {
-      setIsAnalyzing(false);
-      setShowResult(true);
-      setCallbackInfo({ name: contactInfo.name, phone: contactInfo.phone, email: contactInfo.email });
-    }, 3500);
+    if (leadSucceeded) {
+      setTimeout(() => {
+        setIsAnalyzing(false);
+        setShowResult(true);
+        setCallbackInfo({ name: contactInfo.name, phone: contactInfo.phone, email: contactInfo.email });
+      }, 3500);
+    }
   };
 
   // Callback
