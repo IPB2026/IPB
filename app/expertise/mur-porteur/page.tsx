@@ -9,6 +9,7 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import Image from 'next/image';
 import Script from 'next/script';
 import type { Metadata } from 'next';
+import { MurPorteurDiagram } from '@/components/ui/MurPorteurDiagram';
 
 export const metadata: Metadata = {
   title: "Ouverture de mur porteur · IPB Toulouse",
@@ -252,8 +253,8 @@ export default function MurPorteurPage() {
               <RevealOnScroll direction="left" className="lg:col-span-5">
                 <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
                   <Image
-                    src="/images/calcul-technique-finitions.webp"
-                    alt="Du calcul technique aux finitions — étapes d'une ouverture de mur porteur par IPB"
+                    src="/images/creation-baie-vitree-1.webp"
+                    alt="Création d'une baie vitrée après ouverture de mur porteur — chantier IPB Toulouse"
                     fill
                     sizes="(max-width: 1024px) 100vw, 40vw"
                     className="object-cover"
@@ -310,15 +311,8 @@ export default function MurPorteurPage() {
             </RevealOnScroll>
 
             <RevealOnScroll delay={0.08}>
-              <div className="relative w-full aspect-[16/9] lg:aspect-[16/8] rounded-[6px] overflow-hidden bg-ipb-white border border-ipb-rule">
-                <Image
-                  src="/images/schema-ouverture-mur-porteur.webp"
-                  alt="Schéma technique d'une ouverture de mur porteur avec étaiement et pose de poutre IPN"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 1240px"
-                  className="object-contain p-4 lg:p-8"
-                  priority={false}
-                />
+              <div className="bg-ipb-white border border-ipb-rule rounded-[6px] p-6 lg:p-10">
+                <MurPorteurDiagram />
               </div>
             </RevealOnScroll>
           </div>

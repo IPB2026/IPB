@@ -119,8 +119,12 @@ export function StickyDiagnosticCta() {
         </div>
       </div>
 
-      {/* Version Desktop - Floating Side CTA */}
-      <div className={`hidden lg:block fixed right-6 bottom-6 z-50 transform transition-all duration-500 ${
+      {/* Version Desktop : désactivée pour éviter la superposition avec
+          components/ui/LeadWidget (bottom-right z-40). Le LeadWidget récent
+          assure la capture progressive 3 étapes sur desktop, plus aligné
+          avec la charte éditoriale IPB. Le bloc ci-dessous reste désactivé
+          sur desktop (lg:hidden), à supprimer dans une refonte ultérieure. */}
+      <div className={`hidden fixed right-6 bottom-6 z-40 transform transition-all duration-500 ${
         isVisible ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
       }`}>
         {isExpanded ? (
