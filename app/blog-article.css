@@ -273,15 +273,29 @@
   font-weight: 600;
 }
 
-.article-body a {
+/* Liens textuels intégrés dans les paragraphes — orange souligné.
+   Exclut les boutons CTA (qui ont déjà bg-* et text-* Tailwind) pour
+   éviter que leur texte ne soit forcé en orange sur fond orange. */
+.article-body a:not([class*="bg-"]):not([class*="text-white"]) {
   color: var(--ipb-orange);
   text-decoration: none;
   border-bottom: 1px solid var(--ipb-orange);
   transition: opacity 0.15s;
 }
 
-.article-body a:hover {
+.article-body a:not([class*="bg-"]):not([class*="text-white"]):hover {
   opacity: 0.7;
+}
+
+/* Boutons CTA dans le body : préserver les classes Tailwind, juste un peu de polish */
+.article-body a[class*="bg-"] {
+  text-decoration: none;
+  border-bottom: none;
+  transition: transform 0.15s, box-shadow 0.15s, background-color 0.15s;
+}
+
+.article-body a[class*="bg-"]:hover {
+  transform: translateY(-1px);
 }
 
 /* ═══════════════════════════════════════════════════════════════
