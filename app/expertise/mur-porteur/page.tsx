@@ -311,7 +311,7 @@ export default function MurPorteurPage() {
             </RevealOnScroll>
 
             <RevealOnScroll delay={0.08}>
-              <div className="bg-ipb-white border border-ipb-rule rounded-[6px] p-6 lg:p-10">
+              <div className="bg-ipb-white border border-ipb-rule rounded-[6px] p-4 md:p-6 lg:p-10 overflow-hidden">
                 <MurPorteurDiagram />
               </div>
             </RevealOnScroll>
