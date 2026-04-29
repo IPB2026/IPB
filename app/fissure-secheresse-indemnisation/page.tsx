@@ -90,10 +90,26 @@ const faqSchema = {
 
 const faqItems = faqSchema.mainEntity.map((q) => ({ question: q.name, answer: q.acceptedAnswer.text }));
 
+const howToJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'Comment être indemnisé pour des fissures dues à la sécheresse (CAT-NAT)',
+  description: "Démarche complète d'indemnisation après reconnaissance de catastrophe naturelle sécheresse, en quatre étapes.",
+  totalTime: 'P5M',
+  step: etapesIndemnisation.map((etape, i) => ({
+    '@type': 'HowToStep',
+    position: i + 1,
+    name: etape.titre,
+    text: etape.desc,
+    url: `https://www.ipb-expertise.fr/fissure-secheresse-indemnisation#etape-${i + 1}`,
+  })),
+};
+
 export default function FissureSecheressePage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <Script id="faq-schema-secheresse" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <Script id="howto-jsonld-secheresse" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }} />
 
       <TopBar />
       <Navbar />

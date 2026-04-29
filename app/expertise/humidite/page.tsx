@@ -9,10 +9,11 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { humidityFaq } from '@/app/data/faqs';
 import Image from 'next/image';
 import Script from 'next/script';
+import { SpeakableSchema } from '@/components/seo/SpeakableSchema';
 import { ExpertiseHumiditeBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
-  title: "Diagnostic et traitement de l'humidité · Institut IPB Toulouse",
+  title: "Humidité maison : guide complet & solutions · IPB Toulouse 2026",
   description: "Identifiez la cause de l'humidité avant de la traiter. Institut IPB : caméra thermique, hygromètre, injection de résine, cuvelage, VMI. Toulouse, Montauban, Auch, Albi.",
   keywords: [
     'expert humidité toulouse',
@@ -28,7 +29,7 @@ export const metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/humidite' },
   openGraph: {
-    title: "Diagnostic et traitement de l'humidité · Institut IPB Toulouse",
+    title: "Humidité maison : guide complet & solutions · IPB Toulouse 2026",
     description: "Identifiez la cause de l'humidité avant de la traiter. Diagnostic instrumenté, injection de résine, cuvelage, VMI. Institut IPB indépendant.",
     url: 'https://www.ipb-expertise.fr/expertise/humidite',
     type: 'website',
@@ -96,6 +97,7 @@ export default function HumiditePage() {
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFaqJsonLd()) }} />
       <Script id="service-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateServiceJsonLd()) }} />
+      <SpeakableSchema url="https://www.ipb-expertise.fr/expertise/humidite" />
       <ExpertiseHumiditeBreadcrumb />
 
       <TopBar />
@@ -123,6 +125,14 @@ export default function HumiditePage() {
                   L'humidité dans votre maison&nbsp;à Toulouse.<br />
                   <em>Identifier la cause, pas masquer le symptôme.</em>
                 </h1>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.10}>
+                <aside className="snippet-bait bg-ipb-white border-l-4 border-ipb-orange p-5 mb-8 max-w-[560px]" aria-label="Définition rapide">
+                  <p className="font-serif text-ipb-orange text-[11px] font-bold tracking-[0.18em] mb-2">EN BREF</p>
+                  <p className="text-[14px] leading-[1.7] text-ipb-text">
+                    L'humidité dans une maison provient de trois mécanismes principaux : remontées capillaires (l'eau du sol monte dans les murs), condensation (l'air chaud rencontre une surface froide) et infiltration (eau qui entre par un défaut d'étanchéité). Chaque cause appelle un traitement différent — d'où la nécessité d'un diagnostic instrumenté avant tout chantier.
+                  </p>
+                </aside>
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">

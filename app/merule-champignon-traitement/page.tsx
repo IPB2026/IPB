@@ -80,10 +80,34 @@ const faqSchema = {
 
 const faqItems = faqSchema.mainEntity.map((q) => ({ question: q.name, answer: q.acceptedAnswer.text }));
 
+const howToJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'Comment éradiquer la mérule (Serpula lacrymans) dans une maison',
+  description: "Méthode professionnelle de l'institut IPB en cinq étapes pour éliminer la mérule, le champignon lignivore le plus destructeur du bâtiment.",
+  totalTime: 'P3M',
+  supply: [
+    { '@type': 'HowToSupply', name: 'Fongicide certifié contre champignons lignivores' },
+    { '@type': 'HowToSupply', name: 'Bois de structure de remplacement' },
+  ],
+  tool: [
+    { '@type': 'HowToTool', name: 'Hygromètre' },
+    { '@type': 'HowToTool', name: 'Pompe à injection fongicide' },
+  ],
+  step: etapesTraitement.map((etape, i) => ({
+    '@type': 'HowToStep',
+    position: i + 1,
+    name: etape.titre,
+    text: etape.desc,
+    url: `https://www.ipb-expertise.fr/merule-champignon-traitement#etape-${i + 1}`,
+  })),
+};
+
 export default function MerulePage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <Script id="faq-schema-merule" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <Script id="howto-jsonld-merule" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }} />
 
       <TopBar />
       <Navbar />

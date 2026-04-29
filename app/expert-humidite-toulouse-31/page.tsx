@@ -10,9 +10,10 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
+import { SpeakableSchema } from '@/components/seo/SpeakableSchema';
 
 export const metadata: Metadata = {
-  title: 'Expert humidité Toulouse (31) · Institut IPB · Diagnostic instrumenté et injection résine',
+  title: 'Expert humidité Toulouse (31) · Injection résine 30 ans · IPB 2026',
   description: "Stoppez l'humidité dans vos murs à Toulouse. Institut IPB : diagnostic instrumenté (humidimètre, caméra thermique), injection résine hydrophobe garantie 30 ans, cuvelage, VMI. Décennale AXA.",
   keywords: [
     'expert humidité toulouse',
@@ -156,6 +157,7 @@ export default function ExpertHumiditeToulousePage() {
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <Script id="jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <SpeakableSchema url="https://www.ipb-expertise.fr/expert-humidite-toulouse-31" />
 
       <TopBar />
       <Navbar />

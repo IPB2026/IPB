@@ -60,9 +60,35 @@ const etapesTraitement = [
   },
 ];
 
+const howToJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'Comment traiter des remontées capillaires par injection résine hydrophobe',
+  description: "Méthode professionnelle de l'institut IPB en quatre étapes pour stopper durablement les remontées capillaires.",
+  totalTime: 'P12M',
+  estimatedCost: { '@type': 'MonetaryAmount', currency: 'EUR', value: '3500' },
+  supply: [
+    { '@type': 'HowToSupply', name: 'Résine hydrophobe silicone ou silane' },
+  ],
+  tool: [
+    { '@type': 'HowToTool', name: 'Humidimètre à sonde' },
+    { '@type': 'HowToTool', name: 'Perforateur professionnel' },
+    { '@type': 'HowToTool', name: 'Pompe à injection basse pression' },
+  ],
+  step: etapesTraitement.map((etape, i) => ({
+    '@type': 'HowToStep',
+    position: i + 1,
+    name: etape.titre,
+    text: etape.desc,
+    url: `https://www.ipb-expertise.fr/remontees-capillaires-traitement#etape-${i + 1}`,
+  })),
+};
+
 export default function RemonteesCapillairesPage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
+      <Script id="howto-jsonld-remontees-capillaires" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }} />
+
       <TopBar />
       <Navbar />
       <SmartBackBar />

@@ -9,10 +9,11 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { fissureFaq } from '@/app/data/faqs';
 import Image from 'next/image';
 import Script from 'next/script';
+import { SpeakableSchema } from '@/components/seo/SpeakableSchema';
 import { ExpertiseFissuresBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
-  title: 'Diagnostic et traitement des fissures · Toulouse · IPB',
+  title: 'Fissures maison : guide complet & solutions · IPB Toulouse 2026',
   description: "Réparez vos fissures durablement avec l'institut IPB. Diagnostic instrumenté, agrafage structurel, reprise en sous-œuvre — rapport opposable aux assurances. Toulouse, Montauban, Auch, Albi.",
   keywords: [
     'expert fissures toulouse',
@@ -107,6 +108,7 @@ export default function FissuresPage() {
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFaqJsonLd()) }} />
       <Script id="service-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateServiceJsonLd()) }} />
+      <SpeakableSchema url="https://www.ipb-expertise.fr/expertise/fissures" />
       <ExpertiseFissuresBreadcrumb />
 
       <TopBar />
@@ -134,6 +136,14 @@ export default function FissuresPage() {
                   Une fissure dans votre maison&nbsp;à Toulouse.<br />
                   <em>Notre métier depuis 2019.</em>
                 </h1>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.10}>
+                <aside className="snippet-bait bg-ipb-white border-l-4 border-ipb-orange p-5 mb-8 max-w-[560px]" aria-label="Définition rapide">
+                  <p className="font-serif text-ipb-orange text-[11px] font-bold tracking-[0.18em] mb-2">EN BREF</p>
+                  <p className="text-[14px] leading-[1.7] text-ipb-text">
+                    Une fissure structurelle est une rupture de continuité d'un mur ou d'une fondation, causée le plus souvent par un tassement différentiel sur sol argileux. Sur le bâti courant, l'agrafage structurel inox la stabilise durablement dans 90 % des cas, sous garantie décennale.
+                  </p>
+                </aside>
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">

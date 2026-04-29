@@ -71,11 +71,60 @@ const articleJsonLd = {
   "dateModified": "2025-02-04",
 };
 
+const howToJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'Comment réparer une fissure en escalier sur un mur',
+  description: "Méthode IPB en quatre étapes pour stabiliser durablement une fissure en escalier — diagnostic instrumenté, étude de structure, agrafage, finitions.",
+  totalTime: 'P14D',
+  estimatedCost: { '@type': 'MonetaryAmount', currency: 'EUR', value: '13000' },
+  supply: [
+    { '@type': 'HowToSupply', name: 'Aciers inoxydables pour agrafage' },
+    { '@type': 'HowToSupply', name: 'Mortier haute performance' },
+  ],
+  tool: [
+    { '@type': 'HowToTool', name: 'Fissuromètre' },
+    { '@type': 'HowToTool', name: 'Niveau laser' },
+    { '@type': 'HowToTool', name: 'Caméra thermique' },
+  ],
+  step: [
+    {
+      '@type': 'HowToStep',
+      position: 1,
+      name: 'Diagnostic instrumenté',
+      text: "Diagnostic sur site avec fissuromètre et niveau laser. Pose de témoins datés, identification de la cause.",
+      url: 'https://www.ipb-expertise.fr/fissure-en-escalier-causes#etape-1',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 2,
+      name: 'Étude de structure',
+      text: "Note de calcul signée par notre ingénieur, choix de la technique de stabilisation (agrafage dans 90 % des cas).",
+      url: 'https://www.ipb-expertise.fr/fissure-en-escalier-causes#etape-2',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 3,
+      name: 'Agrafage structurel',
+      text: "Couture du mur avec des aciers inoxydables scellés au mortier haute performance. Le mur retrouve sa cohérence monolithique.",
+      url: 'https://www.ipb-expertise.fr/fissure-en-escalier-causes#etape-3',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 4,
+      name: 'Reprise des finitions',
+      text: "Enduit, peinture si demandée. Levée des étais. Tous les documents techniques sont remis au client.",
+      url: 'https://www.ipb-expertise.fr/fissure-en-escalier-causes#etape-4',
+    },
+  ],
+};
+
 export default function FissureEscalierPage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <Script id="article-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
       <Script id="faq-schema-escalier" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <Script id="howto-jsonld-escalier" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }} />
 
       <TopBar />
       <Navbar />

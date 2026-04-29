@@ -21,7 +21,8 @@ const organizationSchema = {
   "@type": "Organization",
   "@id": "https://www.ipb-expertise.fr#organization",
   "name": "IPB - Institut de Pathologie du Bâtiment",
-  "alternateName": "IPB Expertise",
+  "alternateName": ["IPB Expertise", "Institut IPB"],
+  "legalName": "Bâti Halli SARL",
   "url": "https://www.ipb-expertise.fr",
   "logo": {
     "@type": "ImageObject",
@@ -32,9 +33,31 @@ const organizationSchema = {
     "caption": "IPB - Institut de Pathologie du Bâtiment"
   },
   "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
-  "description": "Institut indépendant spécialisé en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Diagnostic de fissures, ouverture de mur porteur et création de baie vitrée. Décennale AXA.",
+  "description": "Institut indépendant spécialisé en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Diagnostic de fissures, ouverture de mur porteur, traitement de l'humidité. Décennale AXA.",
+  "slogan": "Les spécialistes de la structure de votre habitat",
   "foundingDate": "2019",
+  "founder": {
+    "@type": "Person",
+    "name": "Ludovic D.",
+    "jobTitle": "Ingénieur structure",
+    "url": "https://www.ipb-expertise.fr/notre-expert"
+  },
   "numberOfEmployees": { "@type": "QuantitativeValue", "value": "8" },
+  "knowsAbout": [
+    "Diagnostic de fissures structurelles",
+    "Agrafage structurel inox",
+    "Reprise en sous-œuvre par micropieux",
+    "Ouverture de mur porteur",
+    "Calcul de poutre IPN/HEB selon Eurocode",
+    "Création de baie vitrée",
+    "Traitement de l'humidité par injection résine hydrophobe",
+    "Cuvelage de cave",
+    "Ventilation par insufflation (VMI)",
+    "Retrait-gonflement des argiles (RGA)",
+    "Indemnisation catastrophe naturelle sécheresse",
+    "Expertise avant achat immobilier",
+    "Pathologie du bâtiment"
+  ],
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "13 rue du Recteur Dottin",
@@ -43,16 +66,49 @@ const organizationSchema = {
     "addressRegion": "Occitanie",
     "addressCountry": "FR"
   },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+33-5-82-95-33-75",
-    "contactType": "customer service",
-    "availableLanguage": "French",
-    "areaServed": ["FR-31", "FR-82", "FR-32", "FR-81"]
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" },
+    { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" },
+    { "@type": "AdministrativeArea", "name": "Gers (32)" },
+    { "@type": "AdministrativeArea", "name": "Tarn (81)" },
+    { "@type": "AdministrativeArea", "name": "Ariège (09)" },
+    { "@type": "AdministrativeArea", "name": "Aude (11)" }
+  ],
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "+33-5-82-95-33-75",
+      "contactType": "customer service",
+      "availableLanguage": "French",
+      "areaServed": ["FR-31", "FR-82", "FR-32", "FR-81", "FR-09", "FR-11"],
+      "hoursAvailable": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "19:00"
+      }
+    }
+  ],
+  "hasCredential": {
+    "@type": "EducationalOccupationalCredential",
+    "credentialCategory": "Garantie décennale",
+    "name": "Décennale AXA France IARD — police active depuis 2019",
+    "recognizedBy": {
+      "@type": "Organization",
+      "name": "AXA France IARD"
+    }
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "bestRating": "5",
+    "worstRating": "1",
+    "reviewCount": "47"
   },
   "sameAs": [
     "https://www.facebook.com/ipbexpertise",
-    "https://www.linkedin.com/company/ipb-expertise"
+    "https://www.linkedin.com/company/ipb-expertise",
+    "https://g.co/kgs/ipb-expertise"
   ]
 };
 

@@ -10,9 +10,10 @@ import Image from 'next/image';
 import Script from 'next/script';
 import type { Metadata } from 'next';
 import { MurPorteurDiagram } from '@/components/ui/MurPorteurDiagram';
+import { SpeakableSchema } from '@/components/seo/SpeakableSchema';
 
 export const metadata: Metadata = {
-  title: "Ouverture de mur porteur · IPB Toulouse",
+  title: "Ouverture mur porteur Toulouse : guide & prix 2026 · IPB",
   description: "Ouvrez un mur porteur ou créez une baie vitrée à Toulouse. Étude structure, dimensionnement de poutre IPN/HEB, exécution complète des travaux et finitions. Décennale AXA. Toulouse, Montauban, Auch, Albi.",
   keywords: [
     'ouverture mur porteur toulouse',
@@ -129,6 +130,7 @@ export default function MurPorteurPage() {
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFaqJsonLd()) }} />
       <Script id="service-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateServiceJsonLd()) }} />
+      <SpeakableSchema url="https://www.ipb-expertise.fr/expertise/mur-porteur" />
 
       <TopBar />
       <Navbar />
@@ -155,6 +157,14 @@ export default function MurPorteurPage() {
                   Ouvrir un mur porteur à Toulouse,<br />
                   <em>poser une baie vitrée.</em>
                 </h1>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.10}>
+                <aside className="snippet-bait bg-ipb-white border-l-4 border-ipb-orange p-5 mb-8 max-w-[560px]" aria-label="Définition rapide">
+                  <p className="font-serif text-ipb-orange text-[11px] font-bold tracking-[0.18em] mb-2">EN BREF</p>
+                  <p className="text-[14px] leading-[1.7] text-ipb-text">
+                    Une ouverture de mur porteur consiste à supprimer une portion de mur structurel et à reprendre les charges du plancher supérieur par une poutre métallique (IPN ou HEB) calculée selon les Eurocodes. À Toulouse, comptez 4 000 à 18 000 € selon la portée et la complexité du chantier — étude de structure obligatoire.
+                  </p>
+                </aside>
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">

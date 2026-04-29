@@ -81,10 +81,33 @@ const faqItems = faqSchema.mainEntity.map((q) => ({
   answer: q.acceptedAnswer.text,
 }));
 
+const howToJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'Comment traiter le salpêtre sur un mur définitivement',
+  description: "Méthode professionnelle de l'institut IPB pour éliminer le salpêtre en coupant la cause à la base du mur (injection résine hydrophobe).",
+  totalTime: 'P6M',
+  estimatedCost: { '@type': 'MonetaryAmount', currency: 'EUR', value: '3500' },
+  supply: [{ '@type': 'HowToSupply', name: 'Résine hydrophobe silicone ou silane' }],
+  tool: [
+    { '@type': 'HowToTool', name: 'Humidimètre à sonde' },
+    { '@type': 'HowToTool', name: 'Perforateur professionnel' },
+    { '@type': 'HowToTool', name: 'Pompe à injection' },
+  ],
+  step: etapesTraitement.map((etape, i) => ({
+    '@type': 'HowToStep',
+    position: i + 1,
+    name: etape.titre,
+    text: etape.desc,
+    url: `https://www.ipb-expertise.fr/salpetre-mur-traitement#etape-${i + 1}`,
+  })),
+};
+
 export default function SalpetrePage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <Script id="faq-schema-salpetre" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <Script id="howto-jsonld-salpetre" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }} />
 
       <TopBar />
       <Navbar />

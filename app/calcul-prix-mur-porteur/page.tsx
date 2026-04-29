@@ -10,7 +10,7 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { CalculatorClient } from './CalculatorClient';
 
 export const metadata: Metadata = {
-  title: "Calculateur prix ouverture de mur porteur · Estimation gratuite · IPB Toulouse",
+  title: "Prix ouverture mur porteur Toulouse · Calculateur 2 min · IPB",
   description: "Estimez en 2 minutes le prix d'une ouverture de mur porteur à Toulouse. Fourchette précise basée sur les chantiers récents de l'institut IPB en Occitanie. Sans inscription.",
   keywords: [
     'prix ouverture mur porteur toulouse',

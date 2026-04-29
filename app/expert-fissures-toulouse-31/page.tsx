@@ -11,9 +11,10 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
+import { SpeakableSchema } from '@/components/seo/SpeakableSchema';
 
 export const metadata: Metadata = {
-  title: 'Expert fissures Toulouse (31) · Institut IPB · Diagnostic et agrafage structurel',
+  title: 'Expert fissures Toulouse (31) · Diagnostic + agrafage · IPB 2026',
   description: "Diagnostiquez et stabilisez vos fissures à Toulouse. Institut IPB indépendant : diagnostic instrumenté, agrafage structurel, reprise en sous-œuvre. Rapport opposable aux assurances. Décennale AXA.",
   keywords: [
     'expert fissures toulouse',
@@ -124,6 +125,7 @@ export default function ExpertFissuresToulousePage() {
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <Script id="json-ld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <SpeakableSchema url="https://www.ipb-expertise.fr/expert-fissures-toulouse-31" />
 
       <TopBar />
       <Navbar />

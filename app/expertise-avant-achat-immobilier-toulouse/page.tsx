@@ -11,7 +11,7 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: "Expertise avant achat immobilier à Toulouse · Institut IPB",
+  title: "Expertise avant achat immobilier Toulouse · 48 h · IPB 2026",
   description: "Sécurisez votre achat immobilier à Toulouse. Expertise indépendante avant signature : détection des fissures, humidité et désordres structurels. Rapport opposable sous 48 à 72 h pour négocier le prix.",
   keywords: [
     'expertise avant achat toulouse',

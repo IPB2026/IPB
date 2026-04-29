@@ -31,7 +31,7 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.ipb-expertise.fr'),
   title: {
-    default: "IPB - Spécialistes de la structure de votre habitat | Diagnostic Fissures & Ouverture Mur Porteur Toulouse",
+    default: "IPB · Expert fissures, mur porteur & humidité Toulouse · 2026",
     template: "%s | IPB"
   },
   description: "Diagnostiquez vos fissures, ouvrez un mur porteur, créez une baie vitrée à Toulouse. Institut IPB — bureau d'études et travaux, décennale AXA. Réponse sous 24 h. (31-82-32).",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://www.ipb-expertise.fr",
     siteName: "IPB - Institut de Pathologie du Bâtiment",
-    title: "IPB - Spécialistes de la structure de votre habitat | Toulouse, Montauban, Auch",
+    title: "IPB · Expert fissures, mur porteur & humidité Toulouse · 2026",
     description: "Diagnostiquez vos fissures, ouvrez un mur porteur (étude IPN/HEB), créez une baie vitrée. Institut IPB — bureau d'études et travaux, décennale AXA. Toulouse, Montauban, Auch.",
     images: [
       {
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "IPB - Spécialistes de la structure de votre habitat (31-82-32)",
+    title: "IPB · Fissures, mur porteur & humidité Toulouse (31-82-32)",
     description: "Diagnostiquez vos fissures, ouvrez un mur porteur, créez une baie vitrée. Institut IPB — bureau d'études et travaux. Décennale AXA.",
     images: ["/images/IPB_Logo_HD.png"],
   },
