@@ -470,6 +470,33 @@ export default function ExpertHumiditeToulouse31Page() {
         </div>
       </section>
 
+      {/* Aller plus loin — maillage interne blog */}
+      <section className="bg-ipb-cream border-t border-ipb-rule py-16 lg:py-20">
+        <div className="max-w-5xl mx-auto px-6 lg:px-12">
+          <div className="text-center mb-10">
+            <div className="text-[11px] uppercase tracking-wider text-ipb-orange font-bold mb-2">Pour aller plus loin</div>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-ipb-text">Comprendre l'humidité avant le traitement</h2>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-4">
+            <Link href="/remontees-capillaires-traitement" className="group block bg-white border border-ipb-rule rounded-[6px] p-6 hover:border-ipb-orange transition-colors">
+              <div className="text-[11px] uppercase tracking-wider text-ipb-orange font-bold mb-2">Article expertise</div>
+              <h3 className="font-bold text-ipb-text text-[16px] leading-snug mb-3 group-hover:text-ipb-orange transition-colors">Remontées capillaires : diagnostic et traitement</h3>
+              <p className="text-[13px] text-ipb-muted leading-relaxed">Causes, signes typiques, et techniques d'arrêt durable (injection résine, drainage).</p>
+            </Link>
+            <Link href="/condensation-ou-infiltration" className="group block bg-white border border-ipb-rule rounded-[6px] p-6 hover:border-ipb-orange transition-colors">
+              <div className="text-[11px] uppercase tracking-wider text-ipb-orange font-bold mb-2">Diagnostic</div>
+              <h3 className="font-bold text-ipb-text text-[16px] leading-snug mb-3 group-hover:text-ipb-orange transition-colors">Condensation ou infiltration : reconnaître la cause</h3>
+              <p className="text-[13px] text-ipb-muted leading-relaxed">Distinguer les deux pathologies pour ne pas se tromper de traitement.</p>
+            </Link>
+            <Link href="/salpetre-mur-traitement" className="group block bg-white border border-ipb-rule rounded-[6px] p-6 hover:border-ipb-orange transition-colors">
+              <div className="text-[11px] uppercase tracking-wider text-ipb-orange font-bold mb-2">Article expertise</div>
+              <h3 className="font-bold text-ipb-text text-[16px] leading-snug mb-3 group-hover:text-ipb-orange transition-colors">Salpêtre sur mur : traitement définitif</h3>
+              <p className="text-[13px] text-ipb-muted leading-relaxed">Pourquoi le salpêtre revient et comment l'éliminer durablement.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );

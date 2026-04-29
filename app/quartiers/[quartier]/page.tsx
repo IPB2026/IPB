@@ -8,6 +8,7 @@ import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { InternalLinks } from '@/components/seo/InternalLinks';
 import { quartiersData as quartiersDataSource, quartierSlugs } from '@/app/data/quartiers';
+import { generateLocalFAQ, buildFAQPageJsonLd, IPB_AGGREGATE_RATING } from '@/lib/seo/localFAQ';
 import { ArrowRight, MapPin, AlertTriangle, CheckCircle, Shield } from 'lucide-react';
 
 const quartiersData = quartiersDataSource;
@@ -112,6 +113,7 @@ export default async function QuartierPage({ params }: PageProps) {
       containedIn: 'Toulouse',
     },
     priceRange: '€€',
+    aggregateRating: IPB_AGGREGATE_RATING,
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
@@ -121,6 +123,14 @@ export default async function QuartierPage({ params }: PageProps) {
       },
     ],
   };
+
+  // FAQPage géolocalisé — rich snippets locales
+  const localFAQ = generateLocalFAQ({
+    villeNom: `${quartierInfo.nom} (Toulouse)`,
+    codePostal: '31000',
+    departement: 'Haute-Garonne',
+  });
+  const faqPageJsonLd = buildFAQPageJsonLd(localFAQ);
 
   // Breadcrumb JSON-LD
   const breadcrumbJsonLd = {
@@ -160,7 +170,12 @@ export default async function QuartierPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      
+      <Script
+        id="jsonld-faq"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd) }}
+      />
+
       <TopBar />
       <Navbar />
       <SmartBackBar />

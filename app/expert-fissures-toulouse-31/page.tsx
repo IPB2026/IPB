@@ -305,6 +305,37 @@ export default function ExpertFissuresToulousePage() {
           </div>
         </section>
 
+        {/* Aller plus loin — maillage interne blog */}
+        <section className="bg-ipb-cream border-t border-ipb-rule py-20 lg:py-24">
+          <div className="max-w-5xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="text-center mb-12">
+                <Eyebrow className="justify-center">Pour aller plus loin</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(24px, 2.2vw, 32px)', lineHeight: 1.2, letterSpacing: '-0.02em', fontWeight: 700 }}>
+                  Comprendre ses fissures <em>avant l'expertise.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+            <div className="grid sm:grid-cols-3 gap-4">
+              <Link href="/fissure-en-escalier-causes" className="group block bg-white border border-ipb-rule rounded-[6px] p-6 hover:border-ipb-orange transition-colors">
+                <div className="text-[11px] uppercase tracking-wider text-ipb-orange font-bold mb-2">Article expertise</div>
+                <h3 className="font-serif font-bold text-ipb-text text-[16px] leading-snug mb-3 group-hover:text-ipb-orange transition-colors">Fissures en escalier : causes et danger réel</h3>
+                <p className="text-[13px] text-ipb-muted leading-relaxed">Pourquoi elles apparaissent à Toulouse, et comment les distinguer des fissures cosmétiques.</p>
+              </Link>
+              <Link href="/microfissure-quand-sinquieter" className="group block bg-white border border-ipb-rule rounded-[6px] p-6 hover:border-ipb-orange transition-colors">
+                <div className="text-[11px] uppercase tracking-wider text-ipb-orange font-bold mb-2">Article expertise</div>
+                <h3 className="font-serif font-bold text-ipb-text text-[16px] leading-snug mb-3 group-hover:text-ipb-orange transition-colors">Microfissure : quand s'inquiéter ?</h3>
+                <p className="text-[13px] text-ipb-muted leading-relaxed">Critères de gravité, signes d'évolution, et seuil d'intervention pour un expert.</p>
+              </Link>
+              <Link href="/fissure-secheresse-indemnisation" className="group block bg-white border border-ipb-rule rounded-[6px] p-6 hover:border-ipb-orange transition-colors">
+                <div className="text-[11px] uppercase tracking-wider text-ipb-orange font-bold mb-2">Démarches</div>
+                <h3 className="font-serif font-bold text-ipb-text text-[16px] leading-snug mb-3 group-hover:text-ipb-orange transition-colors">Sécheresse RGA : indemnisation CAT-NAT</h3>
+                <p className="text-[13px] text-ipb-muted leading-relaxed">Constituer son dossier, contre-expertise, délais. Spécifique Haute-Garonne.</p>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <CtaFinal />
       </main>
 

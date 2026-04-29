@@ -13,6 +13,7 @@ import { Footer } from '@/components/home/Footer';
 import Link from 'next/link';
 import { InternalLinks } from '@/components/seo/InternalLinks';
 import { villesData as villesDataSource, villeSlugs, getVillesMemesDepartement } from '@/app/data/villes';
+import { generateLocalFAQ, buildFAQPageJsonLd, IPB_AGGREGATE_RATING } from '@/lib/seo/localFAQ';
 
 // Données villes centralisées dans app/data/villes.ts
 
@@ -81,6 +82,17 @@ export default async function VillePage({ params }: PageProps) {
     notFound();
   }
 
+  // FAQ géolocalisée pour rich snippets
+  const localFAQ = generateLocalFAQ({
+    villeNom: villeData.nom,
+    codePostal: villeData.codePostal,
+    departement: villeData.departement,
+    risqueRGA: villeData.risqueRGA,
+    quartiersRisque: villeData.quartiersRisque,
+    typesConstruction: villeData.typesConstruction,
+  });
+  const faqPageJsonLd = buildFAQPageJsonLd(localFAQ);
+
   return (
     <div className="font-sans text-ipb-text bg-ipb-cream antialiased scroll-smooth">
       {/* JSON-LD pour SEO local */}
@@ -106,6 +118,7 @@ export default async function VillePage({ params }: PageProps) {
             url: `https://www.ipb-expertise.fr/villes/${ville}`,
             telephone: '+33582953375',
             priceRange: '€€',
+            aggregateRating: IPB_AGGREGATE_RATING,
             serviceArea: {
               '@type': 'GeoCircle',
               geoMidpoint: {
@@ -120,6 +133,12 @@ export default async function VillePage({ params }: PageProps) {
             },
           }),
         }}
+      />
+
+      {/* JSON-LD FAQPage — rich snippets locales */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd) }}
       />
 
       <TopBar />

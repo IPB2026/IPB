@@ -243,6 +243,57 @@ export function j14Closure(ctx: PathContext): string {
 }
 
 // ─────────────────────────────────────────────────────────────────
+// Template J+7 post-chantier : demande d'avis Google
+// ─────────────────────────────────────────────────────────────────
+//
+// Envoyé 7 jours après la fin d'un chantier (livraison de rapport
+// d'expertise ou réception travaux). Objectif : générer 30+ avis
+// Google sur 6 mois pour booster le local pack Toulouse.
+//
+// Cf. AUDIT_SEO_LOCAL_2026.md — Levier #3 (orchestration GMB)
+//
+// Le lien Google Reviews `IPB_GOOGLE_REVIEW_URL` doit être renseigné
+// avec l'URL courte officielle de la fiche IPB Expertise (format
+// https://g.page/r/<id>/review). À compléter dans .env.local :
+//   IPB_GOOGLE_REVIEW_URL=...
+// ─────────────────────────────────────────────────────────────────
+
+interface ReviewRequestContext extends BaseContext {
+  /** Type d'intervention récente */
+  serviceType?: 'expertise' | 'chantier' | 'diagnostic';
+  /** URL Google Reviews courte (sinon fallback vers la fiche) */
+  googleReviewUrl?: string;
+}
+
+export function postChantierReviewRequest(ctx: ReviewRequestContext): string {
+  const reviewUrl = ctx.googleReviewUrl
+    || process.env.IPB_GOOGLE_REVIEW_URL
+    || 'https://www.google.com/search?q=IPB+Expertise+Toulouse&hl=fr';
+
+  const intervention = ctx.serviceType === 'chantier'
+    ? 'la fin de votre chantier'
+    : ctx.serviceType === 'diagnostic'
+    ? 'votre diagnostic'
+    : 'la remise de votre rapport d\'expertise';
+
+  const inner = `
+    ${card(`
+      ${eyebrow('Votre retour compte beaucoup')}
+      ${heading('Bonjour ' + ctx.firstName + ',', 'un mot après notre intervention.')}
+      ${para('Une semaine s\'est écoulée depuis ' + intervention + (ctx.city ? ` à ${ctx.city}` : '') + '. J\'espère que vous y voyez plus clair sur la situation et que les recommandations que nous vous avons remises vous sont utiles.')}
+      ${para('À l\'institut, nous avançons grâce à la confiance que les particuliers, les architectes et les marchands de biens nous accordent. Le bouche-à-oreille reste notre principale source de nouveaux dossiers — et un avis public de votre part nous aide énormément à le porter.')}
+      ${para('Si l\'expérience vous a paru sérieuse et utile, prendriez-vous deux minutes pour partager votre retour sur Google ? Quelques phrases honnêtes suffisent.')}
+      <p style="margin: 28px 0;">
+        ${button('Laisser un avis sur Google', reviewUrl)}
+      </p>
+      ${para('Si quelque chose ne vous a pas convenu, dites-le moi en répondant directement à cet email. Je lis chaque message personnellement et je m\'engage à reprendre contact avec vous sous 48 h.')}
+      ${signature}
+    `)}
+  `;
+  return wrap(inner, { eyebrow: 'J+7 post-intervention · Demande d\'avis', unsubscribeUrl: ctx.unsubscribeUrl });
+}
+
+// ─────────────────────────────────────────────────────────────────
 // Export consolidé
 // ─────────────────────────────────────────────────────────────────
 
@@ -252,6 +303,7 @@ export const emailTemplates = {
   j3CaseStudy,
   j7ReprisePoint,
   j14Closure,
+  postChantierReviewRequest,
 };
 
 export const emailSequence = [
@@ -260,4 +312,16 @@ export const emailSequence = [
   { offsetDays: 3, name: 'j3CaseStudy', subject: (ctx: PathContext) => `Un chantier IPB raconté — pour vous donner du concret` },
   { offsetDays: 7, name: 'j7ReprisePoint', subject: (ctx: PathContext) => `Souhaitez-vous échanger 15 minutes ?` },
   { offsetDays: 14, name: 'j14Closure', subject: (ctx: PathContext) => `Dernier message si ce n'est plus d'actualité` },
+] as const;
+
+/**
+ * Séquence post-chantier (déclenchée après livraison rapport ou fin chantier).
+ * À brancher sur un cron séparé qui scrute les chantiers livrés.
+ */
+export const postChantierSequence = [
+  {
+    offsetDays: 7,
+    name: 'postChantierReviewRequest',
+    subject: (ctx: ReviewRequestContext) => `${ctx.firstName}, deux minutes pour un avis sur l'institut ?`,
+  },
 ] as const;

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#ffffff"/>
+      <circle cx="22" cy="22" r="1.5" fill="#ffffff"/>
+    </pattern>
+  </defs>
+  <rect width="40" height="40" fill="url(#dots)"/>
+</svg>

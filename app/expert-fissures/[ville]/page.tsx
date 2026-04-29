@@ -13,6 +13,7 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { villesData, villeSlugs, type VilleInfo } from '@/app/data/villes';
 import { VilleBreadcrumb } from '@/components/seo/BreadcrumbSchema';
+import { generateLocalFAQ, buildFAQPageJsonLd, IPB_AGGREGATE_RATING } from '@/lib/seo/localFAQ';
 
 export async function generateStaticParams() {
   return villeSlugs.map((ville) => ({ ville }));
@@ -93,10 +94,12 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
     "name": `IPB · Expert fissures ${villeNom}`,
     "description": `Institut de pathologie du bâtiment intervenant à ${villeNom}. Diagnostic instrumenté, agrafage structurel et reprise en sous-œuvre.`,
     "areaServed": { "@type": "City", "name": villeNom },
+    "aggregateRating": IPB_AGGREGATE_RATING,
     "provider": {
       "@type": "LocalBusiness",
       "name": "IPB - Institut de Pathologie du Bâtiment",
       "telephone": "+33582953375",
+      "aggregateRating": IPB_AGGREGATE_RATING,
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "13 rue du Recteur Dottin",
@@ -108,11 +111,23 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
     }
   };
 
+  // FAQPage géolocalisé — rich snippets locales
+  const localFAQ = generateLocalFAQ({
+    villeNom,
+    codePostal: villeData.codePostal,
+    departement: villeData.departement,
+    risqueRGA: villeData.risqueRGA,
+    quartiersRisque: villeData.quartiersRisque,
+    typesConstruction: villeData.typesConstruction,
+  });
+  const faqPageJsonLd = buildFAQPageJsonLd(localFAQ);
+
   const villeMurPorteur = villesMurPorteur.includes(ville) ? ville : 'toulouse';
 
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <Script id="service-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd) }} />
       <VilleBreadcrumb villeName={villeNom} villeSlug={ville} service="fissures" />
 
       <TopBar />
