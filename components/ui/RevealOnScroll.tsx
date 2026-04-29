@@ -56,6 +56,14 @@ export function RevealOnScroll({
           el.style.opacity = '1';
           el.style.transform = 'none';
           observer.unobserve(el);
+          // Libère le layer GPU une fois la transition jouée — évite
+          // d'accumuler des composites pour des éléments figés
+          // (cause perçue de "vibration" sur les pages chargées).
+          const cleanup = () => {
+            el.style.willChange = 'auto';
+            el.removeEventListener('transitionend', cleanup);
+          };
+          el.addEventListener('transitionend', cleanup);
         }
       },
       { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }

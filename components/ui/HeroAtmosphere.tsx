@@ -16,7 +16,7 @@ export function HeroAtmosphere() {
         aria-hidden="true"
       />
       <div
-        className="ipb-grain absolute inset-0 z-0 opacity-[0.18]"
+        className="ipb-grain absolute inset-0 z-0 opacity-[0.08]"
         aria-hidden="true"
       />
     </>

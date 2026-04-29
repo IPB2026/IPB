@@ -123,8 +123,10 @@ export function Testimonials() {
               </ul>
             </div>
 
-            {/* Côté droite : citation active */}
-            <div className="lg:col-span-8 lg:pl-8 lg:border-l lg:border-ipb-rule min-h-[280px]">
+            {/* Côté droite : citation active.
+                min-h-[380px] dimensionne pour le témoignage le plus long
+                (Luc C., 256 caractères) — évite tout reflow lors du swap. */}
+            <div className="lg:col-span-8 lg:pl-8 lg:border-l lg:border-ipb-rule min-h-[420px] lg:min-h-[380px]">
               <div
                 className="transition-opacity duration-300"
                 style={{ opacity: isFading ? 0 : 1 }}
