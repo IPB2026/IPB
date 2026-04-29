@@ -176,8 +176,8 @@ export default function MurPorteurPage() {
                   <MagneticButton href="/diagnostic" variant="primary">
                     Décrire mon projet
                   </MagneticButton>
-                  <MagneticButton href="/blog/prix-ouverture-mur-porteur-toulouse-2026" variant="ghost">
-                    Voir les tarifs détaillés
+                  <MagneticButton href="/calcul-prix-mur-porteur" variant="ghost">
+                    Estimer le prix en 2 min
                   </MagneticButton>
                 </div>
               </RevealOnScroll>

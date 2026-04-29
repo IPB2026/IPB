@@ -11,6 +11,7 @@ import { StatsBlock } from '@/components/home/StatsBlock';
 import { Testimonials } from '@/components/home/Testimonials';
 import { FAQ } from '@/components/home/FAQ';
 import { CtaFinal } from '@/components/home/CtaFinal';
+import { CalculatorTeaser } from '@/components/home/CalculatorTeaser';
 import { Footer } from '@/components/home/Footer';
 import Script from 'next/script';
 import type { Metadata } from 'next';
@@ -197,7 +198,10 @@ export default function HomePage() {
       {/* 3. Liste architecturale 4 services (fissures en 1er) */}
       <ServiceList />
 
-      {/* 4. Méthode 5 étapes (accompagnement complet) */}
+      {/* 4. Calculateur prix mur porteur — outil interactif sans inscription */}
+      <CalculatorTeaser />
+
+      {/* 5. Méthode 5 étapes (accompagnement complet) */}
       <Methode />
 
       {/* 5. Cabinet (REMPLACE TrustSignals "indépendants/tout en interne") */}

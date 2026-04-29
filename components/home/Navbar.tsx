@@ -24,8 +24,8 @@ export function Navbar() {
   const links = [
     { href: '/expertise/fissures', label: 'Fissures' },
     { href: '/expertise/mur-porteur', label: 'Mur porteur' },
+    { href: '/calcul-prix-mur-porteur', label: 'Calculateur' },
     { href: '/notre-expert', label: 'L’institut' },
-    { href: '/partenaires', label: 'Pros' },
     { href: '/blog', label: 'Blog' },
     { href: '/contact', label: 'Contact' },
   ];
