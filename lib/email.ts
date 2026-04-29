@@ -1,15 +1,29 @@
 import nodemailer from 'nodemailer';
 
+/**
+ * Récupère le mot de passe SMTP en acceptant deux noms de variable :
+ * - SMTP_PASS (nom historique du code)
+ * - SMTP_PASSWORD (nom utilisé dans la doc ENV_VARIABLES.md)
+ *
+ * Cette tolérance évite les surprises quand quelqu'un configure Vercel à partir
+ * de la doc et nomme la variable SMTP_PASSWORD : les emails partaient
+ * silencieusement à la corbeille (le code retournait early sans erreur visible).
+ */
+function getSmtpPassword(): string | undefined {
+  return process.env.SMTP_PASS || process.env.SMTP_PASSWORD;
+}
+
 export function createEmailTransporter() {
-  if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    throw new Error('Variables SMTP_USER et SMTP_PASS doivent être configurées');
+  const password = getSmtpPassword();
+  if (!process.env.SMTP_USER || !password) {
+    throw new Error('Variables SMTP_USER et SMTP_PASS (ou SMTP_PASSWORD) doivent être configurées');
   }
 
   return nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
+      pass: password,
     },
   });
 }
@@ -29,9 +43,18 @@ export async function sendEmail(options: {
   replyTo?: string;
   attachments?: EmailAttachment[];
 }) {
-  if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    console.error('Email non configuré: SMTP_USER ou SMTP_PASS manquant');
-    return { success: false, error: 'SMTP_USER ou SMTP_PASS non configuré' };
+  const password = getSmtpPassword();
+  if (!process.env.SMTP_USER || !password) {
+    console.error(
+      '[email] Configuration SMTP manquante. Vérifiez SMTP_USER et SMTP_PASS (ou SMTP_PASSWORD) dans Vercel > Settings > Environment Variables.',
+      {
+        SMTP_USER: process.env.SMTP_USER ? '✓ défini' : '✗ manquant',
+        SMTP_PASS: process.env.SMTP_PASS ? '✓ défini' : '✗ manquant',
+        SMTP_PASSWORD: process.env.SMTP_PASSWORD ? '✓ défini' : '✗ manquant',
+        EMAIL_TO: process.env.EMAIL_TO ? '✓ défini' : '✗ manquant (les leads ne seront pas envoyés à l\'équipe)',
+      }
+    );
+    return { success: false, error: 'Configuration SMTP manquante' };
   }
 
   try {
@@ -48,7 +71,7 @@ export async function sendEmail(options: {
 
     return { success: true, messageId: info.messageId };
   } catch (error) {
-    console.error('Erreur envoi email:', error);
+    console.error('[email] Erreur envoi:', error);
     return { success: false, error: String(error) };
   }
 }

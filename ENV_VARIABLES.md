@@ -11,20 +11,35 @@ Aller dans **Project Settings → Environment Variables** et définir :
 NEXT_PUBLIC_SITE_URL = https://www.ipb-expertise.fr
 ```
 
-#### **2. EMAIL SERVICE** (Obligatoire)
+#### **2. EMAIL SERVICE** (Obligatoire — sinon aucun lead n'arrive dans ta boîte)
 ```
-SMTP_HOST = smtp.gmail.com
-SMTP_PORT = 587
 SMTP_USER = contact@ipb-expertise.fr
-SMTP_PASSWORD = xxxx xxxx xxxx xxxx (App Password Gmail)
+SMTP_PASS = xxxx xxxx xxxx xxxx        (App Password Gmail — nom officiel)
+SMTP_PASSWORD = xxxx xxxx xxxx xxxx     (alias accepté en fallback)
 EMAIL_FROM = contact@ipb-expertise.fr
 EMAIL_TO = contact@ipb-expertise.fr
 ```
 
-**⚠️ Important pour SMTP_PASSWORD :**
-1. Activer vérification en 2 étapes sur Gmail
-2. Générer un "Mot de passe d'application" : https://myaccount.google.com/apppasswords
-3. Utiliser ce mot de passe (format: xxxx xxxx xxxx xxxx)
+**⚠️ Variables critiques pour la remontée des leads** :
+- `SMTP_USER` + `SMTP_PASS` (ou `SMTP_PASSWORD`) → si absentes, **aucun email** ne part (ni à toi, ni au client)
+- `EMAIL_TO` → si absente, le client reçoit son récap mais **toi tu ne reçois pas le lead** (silencieux)
+- Le code accepte les deux noms `SMTP_PASS` et `SMTP_PASSWORD` (`SMTP_PASS` en priorité)
+
+**Comment obtenir le mot de passe d'application Gmail** :
+1. Activer la vérification en 2 étapes sur le compte Gmail
+2. Générer un « Mot de passe d'application » : https://myaccount.google.com/apppasswords
+3. Coller ce mot de passe (format `xxxx xxxx xxxx xxxx`) dans `SMTP_PASS` sur Vercel
+
+**Pages qui remontent un lead par email vers `EMAIL_TO`** :
+- `/diagnostic` → action `submitDiagnosticLead`
+- `/calcul-prix-mur-porteur` → action `submitCalculatorLead` (estimation + projet détaillé)
+- `/contact` → action `submitContact`
+- Bouton « Rappel rapide » → action `submitQuickCallback`
+
+**Test après config Vercel** :
+1. Aller sur `/calcul-prix-mur-porteur` en prod
+2. Remplir le calculateur, cliquer « Recevoir l'estimation par email »
+3. Vérifier que **2 emails arrivent** : un récap dans ta boîte perso + un lead dans `EMAIL_TO`
 
 #### **3. CALENDLY** (Obligatoire)
 ```
@@ -73,10 +88,8 @@ Créer un fichier `.env.local` à la racine :
 # .env.local (ne JAMAIS committer ce fichier !)
 
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
 SMTP_USER=contact@ipb-expertise.fr
-SMTP_PASSWORD=xxxx xxxx xxxx xxxx
+SMTP_PASS=xxxx xxxx xxxx xxxx
 EMAIL_FROM=contact@ipb-expertise.fr
 EMAIL_TO=contact@ipb-expertise.fr
 NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/contact-ipb-expertise/nouvelle-reunion
@@ -123,12 +136,10 @@ npm run dev
 | Variable | Type | Où | Obligatoire |
 |----------|------|-----|-------------|
 | `NEXT_PUBLIC_SITE_URL` | Public | Metadata, Sitemap, Emails | ✅ Oui |
-| `SMTP_HOST` | Secret | Server Actions (email) | ✅ Oui |
-| `SMTP_PORT` | Secret | Server Actions (email) | ✅ Oui |
 | `SMTP_USER` | Secret | Server Actions (email) | ✅ Oui |
-| `SMTP_PASSWORD` | Secret | Server Actions (email) | ✅ Oui |
+| `SMTP_PASS` | Secret | Server Actions (email) | ✅ Oui (ou `SMTP_PASSWORD`) |
 | `EMAIL_FROM` | Secret | Server Actions (email) | ✅ Oui |
-| `EMAIL_TO` | Secret | Server Actions (email) | ✅ Oui |
+| `EMAIL_TO` | Secret | Server Actions (email) | ✅ Oui (sinon pas de lead remonté) |
 | `NEXT_PUBLIC_CALENDLY_URL` | Public | Diagnostic page | ✅ Oui |
 | `NEXT_PUBLIC_CRISP_WEBSITE_ID` | Public | Chat widget | ⚠️ Recommandé |
 | `NEXT_PUBLIC_CRISP_ENABLED` | Public | Chat activation | ⚠️ Recommandé |
