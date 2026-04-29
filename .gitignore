@@ -38,3 +38,7 @@ next-env.d.ts
 __pycache__/
 *.pyc
 
+# Claude Code local state
+.claude/settings.local.json
+.claude/worktrees/
+
