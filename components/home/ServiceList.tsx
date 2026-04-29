@@ -24,8 +24,8 @@ const services = [
   },
   {
     num: '02',
-    title: 'Ouverture de mur porteur et baie vitrée',
-    desc: "Étude de structure par notre ingénieur, dimensionnement de la poutre IPN ou HEB, étaiement, ouverture, finitions. Chantier en 3 à 5 jours.",
+    title: 'Ouverture de mur porteur',
+    desc: "Étude de structure par notre ingénieur, dimensionnement de la poutre IPN ou HEB, étaiement, ouverture, finitions. Pour une cuisine ouverte ou — sur projet de façade — la création d'une baie vitrée.",
     href: '/expertise/mur-porteur',
   },
   {
@@ -65,7 +65,7 @@ export function ServiceList() {
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
               <p className="text-[15px] leading-[1.9] font-light text-ipb-muted">
-                Notre cabinet s'occupe de la structure des bâtiments anciens et neufs en Occitanie. Particuliers comme professionnels font appel à IPB pour la rigueur de nos diagnostics et la qualité de nos chantiers.
+                Notre institut s'occupe de la structure des bâtiments anciens et neufs en Occitanie. Particuliers comme professionnels font appel à IPB pour la rigueur de nos diagnostics et la qualité de nos chantiers.
               </p>
             </div>
           </div>
@@ -76,14 +76,19 @@ export function ServiceList() {
             <RevealOnScroll key={service.num} delay={i * 0.06}>
               <Link
                 href={service.href}
-                className="group grid grid-cols-[56px_1fr_48px] lg:grid-cols-[80px_1fr_64px] gap-4 lg:gap-8 items-center py-8 lg:py-12 border-b border-ipb-rule hover:bg-ipb-stone/50 transition-colors px-2 -mx-2"
+                className="group relative grid grid-cols-[56px_1fr_48px] lg:grid-cols-[80px_1fr_64px] gap-4 lg:gap-8 items-center py-8 lg:py-12 border-b border-ipb-rule px-2 -mx-2"
               >
-                <span className="font-serif text-[12px] font-bold text-ipb-rule group-hover:text-ipb-orange transition-colors tracking-wider">
+                {/* Ligne orange qui s'étend de gauche à droite au hover */}
+                <span
+                  aria-hidden="true"
+                  className="absolute left-0 right-0 -bottom-px h-px bg-ipb-orange origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)]"
+                />
+                <span className="font-serif text-[12px] font-bold text-ipb-rule group-hover:text-ipb-orange transition-colors duration-500 tracking-wider">
                   {service.num}
                 </span>
-                <div>
+                <div className="transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:translate-x-1.5">
                   <h3
-                    className="font-serif text-ipb-text mb-2 group-hover:text-ipb-orange transition-colors"
+                    className="font-serif text-ipb-text mb-2 group-hover:text-ipb-orange transition-colors duration-500"
                     style={{ fontSize: 'clamp(20px, 1.8vw, 26px)', fontWeight: 700, lineHeight: 1.3 }}
                   >
                     {service.title}
@@ -93,9 +98,9 @@ export function ServiceList() {
                   </p>
                 </div>
                 <div
-                  className="w-10 h-10 rounded-full border-[1.5px] border-ipb-rule group-hover:border-ipb-orange flex items-center justify-center text-ipb-rule group-hover:text-ipb-orange transition-all justify-self-end"
+                  className="w-10 h-10 rounded-full border-[1.5px] border-ipb-rule group-hover:border-ipb-orange flex items-center justify-center text-ipb-rule group-hover:text-ipb-orange transition-all duration-500 justify-self-end"
                 >
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="transition-transform group-hover:translate-x-1" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:translate-x-1" aria-hidden="true">
                     <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>

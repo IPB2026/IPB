@@ -157,7 +157,7 @@ export function Testimonials() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-[13px] text-ipb-muted hover:text-ipb-orange transition-colors"
                 >
-                  Lire les 47 avis sur Google
+                  Lire les avis sur Google
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                     <path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>

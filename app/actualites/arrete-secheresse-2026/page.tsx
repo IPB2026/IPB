@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { AlertTriangle, ArrowRight, Phone, Calendar, MapPin, Clock, FileText, CheckCircle } from 'lucide-react';
 
@@ -82,11 +83,12 @@ const jsonLd = {
 
 export default function ArreteSecheresse2026Page() {
   return (
-    <div className="font-sans text-slate-800 bg-slate-50 antialiased">
+    <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
       <Script id="article-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Alerte info */}
       <div className="bg-amber-600 text-white py-3">
@@ -107,12 +109,12 @@ export default function ArreteSecheresse2026Page() {
             Arrêté Sécheresse {ARRETE_DATE} : <br/>
             <span className="text-amber-400">Communes Reconnues CAT-NAT</span>
           </h1>
-          <p className="text-xl text-slate-300 mb-8">
+          <p className="text-xl text-white/70 mb-8">
             L'arrêté de catastrophe naturelle sécheresse vient d'être publié. 
             Vérifiez si votre commune est concernée et agissez dans les 10 jours.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/diagnostic" className="bg-amber-500 hover:bg-amber-400 text-slate-900 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
+            <Link href="/diagnostic" className="bg-amber-500 hover:bg-amber-400 text-ipb-text px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
               Faire constater mes fissures <ArrowRight size={18} />
             </Link>
             <a href="tel:0582953375" className="bg-white/10 border border-white/20 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
@@ -129,12 +131,12 @@ export default function ArreteSecheresse2026Page() {
             <div className="flex items-center gap-4">
               <Clock className="text-amber-600" size={32} />
               <div>
-                <p className="font-bold text-slate-900">Délai de déclaration</p>
+                <p className="font-bold text-ipb-text">Délai de déclaration</p>
                 <p className="text-amber-700">10 jours après publication au Journal Officiel</p>
               </div>
             </div>
             <div className="text-center md:text-right">
-              <p className="text-sm text-slate-600">Date limite</p>
+              <p className="text-sm text-ipb-muted">Date limite</p>
               <p className="text-2xl font-extrabold text-red-600">{DELAI_DECLARATION}</p>
             </div>
           </div>
@@ -171,17 +173,17 @@ export default function ArreteSecheresse2026Page() {
           {/* Communes par département */}
           <div className="space-y-8 my-8">
             {/* Haute-Garonne */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200">
+            <div className="bg-white rounded-2xl p-6 shadow-lg border border-ipb-rule">
               <div className="flex items-center gap-3 mb-4">
-                <MapPin className="text-orange-600" size={24} />
-                <h3 className="text-xl font-bold text-slate-900">Haute-Garonne (31)</h3>
-                <span className="bg-orange-100 text-orange-700 text-sm px-3 py-1 rounded-full font-bold">
+                <MapPin className="text-ipb-orange" size={24} />
+                <h3 className="text-xl font-bold text-ipb-text">Haute-Garonne (31)</h3>
+                <span className="bg-ipb-stone text-ipb-orange text-sm px-3 py-1 rounded-full font-bold">
                   {COMMUNES_31.length} communes
                 </span>
               </div>
               <div className="flex flex-wrap gap-2">
                 {COMMUNES_31.map((commune) => (
-                  <span key={commune} className="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm">
+                  <span key={commune} className="bg-ipb-stone text-ipb-text px-3 py-1 rounded-full text-sm">
                     {commune}
                   </span>
                 ))}
@@ -189,17 +191,17 @@ export default function ArreteSecheresse2026Page() {
             </div>
 
             {/* Tarn-et-Garonne */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200">
+            <div className="bg-white rounded-2xl p-6 shadow-lg border border-ipb-rule">
               <div className="flex items-center gap-3 mb-4">
                 <MapPin className="text-blue-600" size={24} />
-                <h3 className="text-xl font-bold text-slate-900">Tarn-et-Garonne (82)</h3>
+                <h3 className="text-xl font-bold text-ipb-text">Tarn-et-Garonne (82)</h3>
                 <span className="bg-blue-100 text-blue-700 text-sm px-3 py-1 rounded-full font-bold">
                   {COMMUNES_82.length} communes
                 </span>
               </div>
               <div className="flex flex-wrap gap-2">
                 {COMMUNES_82.map((commune) => (
-                  <span key={commune} className="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm">
+                  <span key={commune} className="bg-ipb-stone text-ipb-text px-3 py-1 rounded-full text-sm">
                     {commune}
                   </span>
                 ))}
@@ -207,17 +209,17 @@ export default function ArreteSecheresse2026Page() {
             </div>
 
             {/* Gers */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200">
+            <div className="bg-white rounded-2xl p-6 shadow-lg border border-ipb-rule">
               <div className="flex items-center gap-3 mb-4">
                 <MapPin className="text-green-600" size={24} />
-                <h3 className="text-xl font-bold text-slate-900">Gers (32)</h3>
+                <h3 className="text-xl font-bold text-ipb-text">Gers (32)</h3>
                 <span className="bg-green-100 text-green-700 text-sm px-3 py-1 rounded-full font-bold">
                   {COMMUNES_32.length} communes
                 </span>
               </div>
               <div className="flex flex-wrap gap-2">
                 {COMMUNES_32.map((commune) => (
-                  <span key={commune} className="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm">
+                  <span key={commune} className="bg-ipb-stone text-ipb-text px-3 py-1 rounded-full text-sm">
                     {commune}
                   </span>
                 ))}
@@ -232,12 +234,12 @@ export default function ArreteSecheresse2026Page() {
           {/* Étapes */}
           <div className="grid md:grid-cols-2 gap-6 my-8">
             {etapesDemarche.map((etape) => (
-              <div key={etape.numero} className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 relative">
-                <div className="absolute -top-3 -left-3 w-10 h-10 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold">
+              <div key={etape.numero} className="bg-white rounded-xl p-6 shadow-lg border border-ipb-rule relative">
+                <div className="absolute -top-3 -left-3 w-10 h-10 bg-ipb-orange rounded-full flex items-center justify-center text-white font-bold">
                   {etape.numero}
                 </div>
-                <h3 className="font-bold text-slate-900 mb-2 ml-6">{etape.titre}</h3>
-                <p className="text-slate-600 text-sm mb-3">{etape.description}</p>
+                <h3 className="font-bold text-ipb-text mb-2 ml-6">{etape.titre}</h3>
+                <p className="text-ipb-muted text-sm mb-3">{etape.description}</p>
                 <div className="flex items-center gap-2 text-amber-600 text-sm font-bold">
                   <Clock size={14} />
                   <span>{etape.delai}</span>
@@ -271,12 +273,12 @@ export default function ArreteSecheresse2026Page() {
           </div>
 
           {/* CTA milieu */}
-          <div className="my-12 p-8 bg-gradient-to-br from-orange-500 to-amber-500 rounded-2xl text-white text-center">
+          <div className="my-12 p-8 bg-ipb-orange rounded-2xl text-white text-center">
             <h3 className="text-2xl font-extrabold mb-4">Votre maison est fissurée ?</h3>
-            <p className="text-orange-100 mb-6">
+            <p className="text-ipb-orange-l mb-6">
               Faites constater les dégâts par un expert indépendant pour renforcer votre dossier.
             </p>
-            <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-50">
+            <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-white text-ipb-orange px-8 py-4 rounded-xl font-bold text-lg hover:bg-ipb-stone">
               Demander un diagnostic <ArrowRight size={20} />
             </Link>
           </div>
@@ -301,14 +303,14 @@ export default function ArreteSecheresse2026Page() {
       </article>
 
       {/* CTA final */}
-      <section className="py-16 bg-slate-900 text-white">
+      <section className="py-16 bg-ipb-navy text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-extrabold mb-6">N'attendez pas le dernier moment</h2>
-          <p className="text-xl text-slate-300 mb-8">
+          <p className="text-xl text-white/70 mb-8">
             Délai de déclaration : <span className="text-amber-400 font-bold">{DELAI_DECLARATION}</span>
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/diagnostic" className="bg-orange-600 hover:bg-orange-500 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
+            <Link href="/diagnostic" className="bg-ipb-orange hover:bg-ipb-orange px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
               Diagnostic fissures <ArrowRight size={20} />
             </Link>
             <a href="tel:0582953375" className="bg-white/10 border border-white/20 hover:bg-white/20 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">

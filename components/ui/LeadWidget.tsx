@@ -36,15 +36,15 @@ const timingLabels: Record<Exclude<Timing, null>, string> = {
 
 function buildMessage(topic: Topic, timing: Timing): string {
   if (topic === 'fissures') {
-    if (timing === 'recent') return "Une fissure récente mérite une mesure précise pour suivre son évolution. Notre cabinet vient sur place avec un fissuromètre.";
+    if (timing === 'recent') return "Une fissure récente mérite une mesure précise pour suivre son évolution. Notre institut vient sur place avec un fissuromètre.";
     if (timing === 'moyen') return "Une fissure observée depuis plusieurs mois doit être caractérisée : active ou stable, structurelle ou esthétique. Diagnostic recommandé.";
     if (timing === 'ancien') return "Une fissure ancienne reste à surveiller — elle peut s'aggraver après un cycle sécheresse. Notre rapport documente l'état actuel.";
   }
   if (topic === 'mur-porteur') {
-    if (timing === 'projet') return "Pour un projet d'ouverture, un calcul technique préalable est indispensable. Notre cabinet réalise l'étude et les travaux dans la même mission.";
-    return "Notre cabinet étudie la faisabilité, calcule la poutre et exécute les travaux. Tout est pris en charge en interne.";
+    if (timing === 'projet') return "Pour un projet d'ouverture, un calcul technique préalable est indispensable. Notre institut réalise l'étude et les travaux dans la même mission.";
+    return "Notre institut étudie la faisabilité, calcule la poutre et exécute les travaux. Tout est pris en charge en interne.";
   }
-  return "Notre cabinet vous répond sous 24 heures pour préciser ce qui est possible et ce qui ne l'est pas.";
+  return "Notre institut vous répond sous 24 heures pour préciser ce qui est possible et ce qui ne l'est pas.";
 }
 
 export function LeadWidget() {
@@ -77,7 +77,7 @@ export function LeadWidget() {
 
   return (
     <div
-      className="fixed bottom-4 right-4 lg:bottom-6 lg:right-6 z-40 w-[290px]"
+      className="hidden lg:block fixed lg:bottom-6 lg:right-6 z-40 w-[290px]"
       style={{
         animation: 'slideUpFade 0.4s cubic-bezier(.16,1,.3,1) both',
       }}

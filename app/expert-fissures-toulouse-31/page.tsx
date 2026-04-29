@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { CtaFinal } from '@/components/home/CtaFinal';
 import { Eyebrow } from '@/components/ui/Eyebrow';
@@ -12,8 +13,8 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
-  title: 'Expert fissures Toulouse (31) · Cabinet IPB · Diagnostic et agrafage structurel',
-  description: "Cabinet de pathologie du bâtiment à Toulouse. Diagnostic instrumenté de fissures, agrafage structurel et reprise en sous-œuvre. Rapports reconnus par les assurances. Décennale AXA.",
+  title: 'Expert fissures Toulouse (31) · Institut IPB · Diagnostic et agrafage structurel',
+  description: "Institut de pathologie du bâtiment à Toulouse. Diagnostic instrumenté de fissures, agrafage structurel et reprise en sous-œuvre. Rapports reconnus par les assurances. Décennale AXA.",
   keywords: [
     'expert fissures toulouse',
     'expert fissure toulouse',
@@ -28,19 +29,19 @@ export const metadata: Metadata = {
     'catastrophe naturelle sécheresse toulouse',
     'micropieux toulouse',
     'rapport fissure assurance toulouse',
-    'cabinet pathologie bâtiment toulouse',
+    'institut pathologie bâtiment toulouse',
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31' },
   openGraph: {
-    title: 'Expert fissures Toulouse · Cabinet IPB',
-    description: "Diagnostic instrumenté, agrafage structurel, reprise en sous-œuvre. Cabinet indépendant à Toulouse depuis 2019.",
+    title: 'Expert fissures Toulouse · Institut IPB',
+    description: "Diagnostic instrumenté, agrafage structurel, reprise en sous-œuvre. Institut indépendant à Toulouse depuis 2019.",
     url: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31',
     type: 'website',
     images: [{
       url: '/images/fissures-avant-apres.webp',
       width: 1200,
       height: 630,
-      alt: 'Avant et après agrafage de fissure structurelle — Cabinet IPB Toulouse',
+      alt: 'Avant et après agrafage de fissure structurelle — Institut IPB Toulouse',
     }],
   },
   robots: {
@@ -59,11 +60,11 @@ const communes = [
 const faqItems = [
   {
     question: "Comment se déroule une expertise fissures à Toulouse ?",
-    answer: "Notre cabinet vient sur site avec un fissuromètre, un niveau laser et une caméra thermique si nécessaire. Nous mesurons l'évolution, identifions la cause (sécheresse, tassement, défaut de chaînage) et rédigeons un rapport écrit sous 7 jours. Ce rapport est reconnu par votre assurance.",
+    answer: "Notre institut vient sur site avec un fissuromètre, un niveau laser et une caméra thermique si nécessaire. Nous mesurons l'évolution, identifions la cause (sécheresse, tassement, défaut de chaînage) et rédigeons un rapport écrit sous 7 jours. Ce rapport est reconnu par votre assurance.",
   },
   {
-    question: "Combien coûte une expertise fissures à Toulouse ?",
-    answer: "Le diagnostic complet est facturé 249 € TTC, déductible si vous nous confiez ensuite les travaux. Cela inclut le déplacement, les mesures instrumentées et le rapport écrit.",
+    question: "Comment se passe une expertise fissures à Toulouse ?",
+    answer: "Le diagnostic complet est réalisé sur site et déductible des travaux si vous nous confiez ensuite l'intervention. Il inclut le déplacement, les mesures instrumentées et le rapport écrit. Le tarif précis vous est communiqué sous 24 heures après description de votre situation.",
   },
   {
     question: "Mon assurance prend-elle en charge les fissures de sécheresse ?",
@@ -75,15 +76,15 @@ const faqItems = [
   },
   {
     question: "Quels sont les délais d'intervention ?",
-    answer: "Notre cabinet se déplace sous 7 jours en moyenne sur Toulouse et la Haute-Garonne. Pour les situations urgentes (fissure évolutive, danger), nous pouvons intervenir sous 48 heures.",
+    answer: "Notre institut se déplace sous 7 jours en moyenne sur Toulouse et la Haute-Garonne. Pour les situations urgentes (fissure évolutive, danger), nous pouvons intervenir sous 48 heures.",
   },
 ];
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "name": "IPB - Cabinet de pathologie du bâtiment Toulouse",
-  "description": "Cabinet indépendant en diagnostic et traitement des fissures structurelles. Toulouse, Haute-Garonne et Occitanie.",
+  "name": "IPB - Institut de pathologie du bâtiment Toulouse",
+  "description": "Institut indépendant en diagnostic et traitement des fissures structurelles. Toulouse, Haute-Garonne et Occitanie.",
   "url": "https://www.ipb-expertise.fr/expert-fissures-toulouse-31",
   "telephone": "+33582953375",
   "address": {
@@ -104,7 +105,7 @@ const jsonLd = {
     "ratingValue": "4.9",
     "bestRating": "5",
     "worstRating": "1",
-    "reviewCount": "47"
+    "reviewCount": "15"
   }
 };
 
@@ -126,6 +127,7 @@ export default function ExpertFissuresToulousePage() {
 
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       <main id="main-content">
         {/* HERO */}
@@ -151,13 +153,13 @@ export default function ExpertFissuresToulousePage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">
-                  Cabinet IPB — pathologie du bâtiment à Toulouse depuis 2019. Diagnostic instrumenté, agrafage structurel et reprise en sous-œuvre. Nos rapports sont reconnus par les assurances et nous traitons en moyenne soixante-dix dossiers par an en Haute-Garonne.
+                  Institut IPB — pathologie du bâtiment à Toulouse depuis 2019. Diagnostic instrumenté, agrafage structurel et reprise en sous-œuvre. Nos rapports sont reconnus par les assurances et nous traitons en moyenne soixante-dix dossiers par an en Haute-Garonne.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <MagneticButton href="/diagnostic" variant="primary">
-                    Demander une expertise
+                    Diagnostic gratuit
                   </MagneticButton>
                   <MagneticButton href="/expertise/fissures" variant="ghost">
                     Voir notre méthode
@@ -170,7 +172,7 @@ export default function ExpertFissuresToulousePage() {
               <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
                 <Image
                   src="/images/fissures-avant-apres.webp"
-                  alt="Avant/après agrafage structurel à Toulouse — Cabinet IPB"
+                  alt="Avant/après agrafage structurel à Toulouse — Institut IPB"
                   fill
                   sizes="(max-width: 1024px) 0px, 500px"
                   className="object-cover"
@@ -205,7 +207,7 @@ export default function ExpertFissuresToulousePage() {
                 </RevealOnScroll>
                 <RevealOnScroll delay={0.18}>
                   <p>
-                    Notre cabinet est spécialisé dans le diagnostic de ces désordres : nous identifions la cause exacte, mesurons l'évolution, et préconisons la solution la plus adaptée — agrafage dans 90 % des cas, micropieux pour les tassements majeurs.
+                    Notre institut est spécialisé dans le diagnostic de ces désordres : nous identifions la cause exacte, mesurons l'évolution, et préconisons la solution la plus adaptée — agrafage dans 90 % des cas, micropieux pour les tassements majeurs.
                   </p>
                 </RevealOnScroll>
               </div>
@@ -246,7 +248,7 @@ export default function ExpertFissuresToulousePage() {
               <div className="text-center mb-12 max-w-2xl mx-auto">
                 <Eyebrow className="justify-center">Communes couvertes</Eyebrow>
                 <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
-                  Notre cabinet intervient<br /><em>partout en Haute-Garonne.</em>
+                  Notre institut intervient<br /><em>partout en Haute-Garonne.</em>
                 </h2>
               </div>
             </RevealOnScroll>

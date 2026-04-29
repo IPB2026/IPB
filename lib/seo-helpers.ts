@@ -2,6 +2,14 @@
  * Helpers SEO avancés pour maximiser le trafic organique
  */
 
+/**
+ * Constantes IPB centralisées — utilisées dans tous les schemas JSON-LD.
+ * Mettre à jour ICI une seule fois pour propager partout.
+ */
+export const IPB_REVIEW_COUNT = '15';
+export const IPB_RATING_VALUE = '4.9';
+
+
 interface FAQItem {
   question: string;
   answer: string;
@@ -45,57 +53,6 @@ export function extractFAQsFromContent(content: string): FAQItem[] {
   }
   
   return faqs;
-}
-
-/**
- * Génère le JSON-LD HowTo pour les articles techniques
- */
-export function generateHowToSchema(title: string, steps: string[]) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'HowTo',
-    name: title,
-    totalTime: 'PT10M',
-    estimatedCost: {
-      '@type': 'MonetaryAmount',
-      currency: 'EUR',
-      value: '249'
-    },
-    step: steps.map((step, index) => ({
-      '@type': 'HowToStep',
-      position: index + 1,
-      name: `Étape ${index + 1}`,
-      text: step,
-      itemListElement: [{
-        '@type': 'HowToDirection',
-        text: step
-      }]
-    }))
-  };
-}
-
-/**
- * Extrait automatiquement les étapes HowTo d'un article (détecte les listes numérotées)
- */
-export function extractHowToSteps(content: string): string[] {
-  const steps: string[] = [];
-  
-  // Pattern : <ol> avec <li> ou pattern numérique
-  const olRegex = /<ol[^>]*>([\s\S]*?)<\/ol>/g;
-  const liRegex = /<li[^>]*>([\s\S]*?)<\/li>/g;
-  
-  const olMatches = content.match(olRegex);
-  if (olMatches && olMatches[0]) {
-    let liMatch;
-    while ((liMatch = liRegex.exec(olMatches[0])) !== null) {
-      const step = liMatch[1].replace(/<[^>]+>/g, '').trim();
-      if (step && step.length > 10) {
-        steps.push(step);
-      }
-    }
-  }
-  
-  return steps.slice(0, 8); // Max 8 étapes
 }
 
 /**
@@ -314,8 +271,8 @@ export function generateReviewSchema(_articleTitle: string) {
     },
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '47',
+      ratingValue: IPB_RATING_VALUE,
+      reviewCount: IPB_REVIEW_COUNT,
       bestRating: '5',
       worstRating: '1'
     }

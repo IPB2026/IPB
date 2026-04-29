@@ -17,19 +17,19 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
   const villeNom = villeData.nom;
 
   return {
-    title: `Agrafage de fissures ${villeNom} (${deptCode}) · Cabinet IPB`,
-    description: `Cabinet de pathologie du bâtiment à ${villeNom}. Agrafage structurel pour stabiliser les fissures de maçonnerie. Solution adaptée à 90 % des cas. Décennale AXA.`,
+    title: `Agrafage de fissures ${villeNom} (${deptCode}) · Institut IPB`,
+    description: `Institut de pathologie du bâtiment à ${villeNom}. Agrafage structurel pour stabiliser les fissures de maçonnerie. Solution adaptée à 90 % des cas. Décennale AXA.`,
     keywords: [
       `agrafage fissures ${ville}`,
       `agrafage maçonnerie ${ville}`,
       `réparation fissure mur ${ville}`,
       `stabilisation fissure ${ville}`,
       `harpage ${ville}`,
-      `cabinet pathologie bâtiment ${ville}`,
+      `institut pathologie bâtiment ${ville}`,
     ],
     alternates: { canonical: `https://www.ipb-expertise.fr/agrafage-fissures/${ville}` },
     openGraph: {
-      title: `Agrafage de fissures ${villeNom} · Cabinet IPB`,
+      title: `Agrafage de fissures ${villeNom} · Institut IPB`,
       description: `Stabilisation par agrafage structurel à ${villeNom}.`,
       url: `https://www.ipb-expertise.fr/agrafage-fissures/${ville}`,
       type: 'website',
@@ -68,9 +68,9 @@ export default async function AgrafageFissuresVillePage({ params }: { params: Pr
         ville={ville}
         serviceTitle="Agrafage structurel de fissures"
         eyebrowLabel="Travaux · Agrafage de maçonnerie"
-        description={`Notre cabinet réalise l'agrafage structurel à ${villeNom} : pose d'aciers inoxydables qui « cousent » la fissure tous les 40 cm pour rendre la maçonnerie monolithique. Solution adaptée à 90 % des fissures de maison individuelle. Garantie décennale AXA.`}
+        description={`Notre institut réalise l'agrafage structurel à ${villeNom} : pose d'aciers inoxydables qui « cousent » la fissure tous les 40 cm pour rendre la maçonnerie monolithique. Solution adaptée à 90 % des fissures de maison individuelle. Garantie décennale AXA.`}
         heroImage="/images/fissures-avant-apres.webp"
-        heroAlt={`Agrafage de fissures à ${villeNom} — Cabinet IPB`}
+        heroAlt={`Agrafage de fissures à ${villeNom} — Institut IPB`}
         methodHref="/expertise/fissures"
         contextField={villeData.specificitesFissures ? 'specificitesFissures' : undefined}
         relatedCards={[

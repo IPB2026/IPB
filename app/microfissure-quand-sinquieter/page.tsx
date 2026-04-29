@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, AlertTriangle, Search, ChevronRight, Shield, CheckCircle, Eye, Ruler, Clock } from 'lucide-react';
 
@@ -100,7 +101,7 @@ const faqSchema = {
 
 export default function MicrofissurePage() {
   return (
-    <div className="font-sans text-slate-800 bg-white antialiased">
+    <div className="font-sans text-ipb-text bg-white antialiased">
       <Script
         id="faq-schema-microfissure-quand-sinquieter"
         type="application/ld+json"
@@ -108,6 +109,7 @@ export default function MicrofissurePage() {
       />
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-slate-800 via-slate-700 to-amber-900/30 text-white overflow-hidden">
@@ -116,7 +118,7 @@ export default function MicrofissurePage() {
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <nav className="flex items-center gap-2 text-sm text-slate-300 mb-8">
+          <nav className="flex items-center gap-2 text-sm text-white/70 mb-8">
             <Link href="/" className="hover:text-white transition">Accueil</Link>
             <ChevronRight size={14} />
             <Link href="/expert-fissures-toulouse-31" className="hover:text-white transition">Expert Fissures</Link>
@@ -138,7 +140,7 @@ export default function MicrofissurePage() {
                 </span>
               </h1>
 
-              <p className="text-xl text-slate-300 mb-8 leading-relaxed max-w-xl">
+              <p className="text-xl text-white/70 mb-8 leading-relaxed max-w-xl">
                 Toutes les fissures ne sont pas dangereuses. Certaines sont purement esthétiques, 
                 d'autres révèlent un problème structurel. Ce guide vous aide à 
                 <strong className="text-white"> faire la différence</strong>.
@@ -182,7 +184,7 @@ export default function MicrofissurePage() {
                     </div>
                     <div>
                       <div className="text-white font-bold">Microfissure</div>
-                      <div className="text-slate-400 text-sm">Surveillance simple</div>
+                      <div className="text-ipb-light text-sm">Surveillance simple</div>
                     </div>
                   </div>
                 </div>
@@ -193,7 +195,7 @@ export default function MicrofissurePage() {
                     </div>
                     <div>
                       <div className="text-white font-bold">Fissure légère</div>
-                      <div className="text-slate-400 text-sm">Diagnostic conseillé</div>
+                      <div className="text-ipb-light text-sm">Diagnostic conseillé</div>
                     </div>
                   </div>
                 </div>
@@ -204,7 +206,7 @@ export default function MicrofissurePage() {
                     </div>
                     <div>
                       <div className="text-white font-bold">Fissure structurelle</div>
-                      <div className="text-slate-400 text-sm">Intervention nécessaire</div>
+                      <div className="text-ipb-light text-sm">Intervention nécessaire</div>
                     </div>
                   </div>
                 </div>
@@ -224,13 +226,13 @@ export default function MicrofissurePage() {
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="inline-block bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
+            <span className="inline-block bg-ipb-stone text-ipb-text px-4 py-2 rounded-full text-sm font-bold mb-4">
               Classification officielle
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
               Les 4 types de fissures
             </h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            <p className="text-xl text-ipb-muted max-w-2xl mx-auto">
               La classification se fait principalement sur l'ouverture de la fissure.
             </p>
           </div>
@@ -242,30 +244,30 @@ export default function MicrofissurePage() {
                 className={`rounded-3xl p-6 border-2 ${
                   type.couleur === 'green' ? 'bg-green-50 border-green-200' :
                   type.couleur === 'yellow' ? 'bg-yellow-50 border-yellow-200' :
-                  type.couleur === 'orange' ? 'bg-orange-50 border-orange-200' :
+                  type.couleur === 'orange' ? 'bg-ipb-stone border-ipb-rule' :
                   'bg-red-50 border-red-200'
                 }`}
               >
                 <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-4 ${
                   type.couleur === 'green' ? 'bg-green-100 text-green-600' :
                   type.couleur === 'yellow' ? 'bg-yellow-100 text-yellow-600' :
-                  type.couleur === 'orange' ? 'bg-orange-100 text-orange-600' :
+                  type.couleur === 'orange' ? 'bg-ipb-stone text-ipb-orange' :
                   'bg-red-100 text-red-600'
                 }`}>
                   <Eye size={24} />
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2">{type.type}</h3>
+                <h3 className="text-lg font-bold text-ipb-text mb-2">{type.type}</h3>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Ouverture</span>
-                    <span className="font-bold text-slate-900">{type.ouverture}</span>
+                    <span className="text-ipb-muted">Ouverture</span>
+                    <span className="font-bold text-ipb-text">{type.ouverture}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Danger</span>
+                    <span className="text-ipb-muted">Danger</span>
                     <span className={`font-bold ${
                       type.couleur === 'green' ? 'text-green-600' :
                       type.couleur === 'yellow' ? 'text-yellow-600' :
-                      type.couleur === 'orange' ? 'text-orange-600' :
+                      type.couleur === 'orange' ? 'text-ipb-orange' :
                       'text-red-600'
                     }`}>{type.danger}</span>
                   </div>
@@ -273,7 +275,7 @@ export default function MicrofissurePage() {
                 <div className={`mt-4 px-3 py-2 rounded-full text-xs font-bold text-center ${
                   type.couleur === 'green' ? 'bg-green-100 text-green-700' :
                   type.couleur === 'yellow' ? 'bg-yellow-100 text-yellow-700' :
-                  type.couleur === 'orange' ? 'bg-orange-100 text-orange-700' :
+                  type.couleur === 'orange' ? 'bg-ipb-stone text-ipb-orange' :
                   'bg-red-100 text-red-700'
                 }`}>
                   {type.action}
@@ -285,13 +287,13 @@ export default function MicrofissurePage() {
       </section>
 
       {/* Signes d'alerte */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-ipb-cream">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="inline-block bg-red-100 text-red-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
               Checklist
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
               Signes qui doivent vous alerter
             </h2>
           </div>
@@ -348,7 +350,7 @@ export default function MicrofissurePage() {
       {/* Articles connexes */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-slate-900 mb-8 text-center">
+          <h2 className="text-2xl font-black text-ipb-text mb-8 text-center">
             Articles connexes
           </h2>
           <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
@@ -363,13 +365,13 @@ export default function MicrofissurePage() {
               <Link 
                 key={index}
                 href={item.href}
-                className="group bg-slate-50 rounded-2xl p-6 hover:bg-orange-50 transition-all hover:-translate-y-1 border border-slate-100 hover:border-orange-200"
+                className="group bg-ipb-cream rounded-2xl p-6 hover:bg-ipb-stone transition-all hover:-translate-y-1 border border-ipb-rule hover:border-ipb-rule"
               >
                 <span className="text-4xl mb-4 block">{item.icon}</span>
-                <h3 className="font-bold text-slate-900 group-hover:text-orange-600 transition-colors mb-1">
+                <h3 className="font-bold text-ipb-text group-hover:text-ipb-orange transition-colors mb-1">
                   {item.title}
                 </h3>
-                <p className="text-sm text-slate-500">{item.desc}</p>
+                <p className="text-sm text-ipb-muted">{item.desc}</p>
               </Link>
             ))}
           </div>
@@ -382,7 +384,7 @@ export default function MicrofissurePage() {
           <h2 className="text-3xl md:text-5xl font-black mb-6">
             Un doute sur vos fissures ?
           </h2>
-          <p className="text-xl text-slate-300 mb-8">
+          <p className="text-xl text-white/70 mb-8">
             Le diagnostic est gratuit et sans engagement. Mieux vaut vérifier que regretter.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">

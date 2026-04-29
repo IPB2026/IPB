@@ -24,16 +24,32 @@ export function Footer() {
             </Link>
 
             <p className="text-[14px] leading-[1.85] font-light text-white/55 max-w-[420px] mb-8">
-              Cabinet indépendant en structure du bâtiment. Diagnostic de fissures, ouverture de mur porteur et création de baie vitrée. Décennale AXA active depuis 2019.
+              Institut indépendant en structure du bâtiment. Diagnostic de fissures, ouverture de mur porteur, création de baie vitrée. Décennale AXA active depuis 2019.
             </p>
 
-            <div className="flex items-start gap-3 text-[13px] text-white/45 leading-[1.7]">
-              <CrackSVG variant="mini" />
-              <div>
-                <p>13 rue du Recteur Dottin</p>
-                <p>31100 Toulouse — Occitanie</p>
+            <div className="space-y-5 mb-6">
+              <div className="flex items-start gap-3 text-[13px] text-white/45 leading-[1.7]">
+                <CrackSVG variant="mini" />
+                <div>
+                  <p className="text-white/65 text-[11px] uppercase tracking-[0.14em] font-medium mb-1">Siège social</p>
+                  <p>13 rue du Recteur Dottin</p>
+                  <p>31100 Toulouse — Occitanie</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 text-[13px] text-white/45 leading-[1.7] pl-[26px]">
+                <div>
+                  <p className="text-white/65 text-[11px] uppercase tracking-[0.14em] font-medium mb-1">Bureau IPB Expertise</p>
+                  <p>54 avenue Jean Jaurès</p>
+                  <p>31170 Tournefeuille — Occitanie</p>
+                </div>
               </div>
             </div>
+
+            <p className="text-[11px] text-white/30 leading-[1.6] max-w-[420px]">
+              IPB Expertise est la marque commerciale de Bâti Halli SARL ·
+              SIRET 398 185 421 00037 · RCS Toulouse B 398 185 421.
+            </p>
           </div>
 
           {/* Expertises */}
@@ -57,16 +73,16 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Cabinet */}
+          {/* Institut */}
           <div>
             <p className="text-[10px] text-white/30 uppercase tracking-[0.18em] font-medium mb-5">
-              Cabinet
+              Institut
             </p>
             <ul className="space-y-3 text-[14px] font-light">
               {[
-                ['/notre-expert', 'Le cabinet'],
+                ['/notre-expert', 'L’institut'],
                 ['/avis-clients', 'Avis clients'],
-                ['/blog', 'Journal'],
+                ['/blog', 'Blog'],
                 ['/zones-intervention', "Zones d'intervention"],
                 ['/partenaires', 'Pros & partenaires'],
                 ['/contact', 'Contact'],
@@ -99,7 +115,7 @@ export function Footer() {
               href="/diagnostic"
               className="inline-flex items-center gap-2 text-ipb-orange-l text-[13px] font-medium border-b border-ipb-orange-l pb-1 hover:gap-3 transition-all"
             >
-              Demander une expertise →
+              Diagnostic gratuit →
             </Link>
           </div>
         </div>
@@ -107,7 +123,7 @@ export function Footer() {
         {/* Bandeau légal */}
         <div className="pt-10 border-t border-white/6 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
           <p className="text-[12px] text-white/35">
-            © {new Date().getFullYear()} IPB Expertise — Cabinet de pathologie du bâtiment · Toulouse
+            © {new Date().getFullYear()} IPB Expertise — Institut de pathologie du bâtiment · Toulouse
           </p>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-[12px] text-white/35">
             <Link href="/legal/mentions-legales" className="hover:text-white/60 transition-colors">

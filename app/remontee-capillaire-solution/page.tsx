@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { ArrowRight, Phone, Droplets, CheckCircle, AlertTriangle } from 'lucide-react';
 
@@ -46,20 +47,21 @@ const faqJsonLd = {
 
 export default function RemonteeCapillairePage() {
   return (
-    <div className="font-sans text-slate-800 bg-slate-50 antialiased">
+    <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
       <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Breadcrumb */}
-      <div className="bg-white border-b border-slate-200 py-3">
-        <div className="max-w-7xl mx-auto px-4 text-sm text-slate-600">
+      <div className="bg-white border-b border-ipb-rule py-3">
+        <div className="max-w-7xl mx-auto px-4 text-sm text-ipb-muted">
           <Link href="/" className="hover:text-blue-600">Accueil</Link>
           <span className="mx-2">›</span>
           <Link href="/expert-humidite-toulouse-31" className="hover:text-blue-600">Expert Humidité</Link>
           <span className="mx-2">›</span>
-          <span className="text-slate-900">Remontées capillaires</span>
+          <span className="text-ipb-text">Remontées capillaires</span>
         </div>
       </div>
 
@@ -73,7 +75,7 @@ export default function RemonteeCapillairePage() {
           <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
             Remontées Capillaires : Le Guide Complet
           </h1>
-          <p className="text-xl text-slate-300 mb-8">
+          <p className="text-xl text-white/70 mb-8">
             L'eau du sol remonte dans vos murs par capillarité. Découvrez comment identifier ce phénomène 
             et le stopper définitivement avec une solution garantie 30 ans.
           </p>
@@ -105,8 +107,8 @@ export default function RemonteeCapillairePage() {
             </p>
 
             <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-xl my-8 not-prose">
-              <h3 className="font-bold text-slate-900 mb-2">📊 Chiffres clés</h3>
-              <ul className="text-slate-700 space-y-1">
+              <h3 className="font-bold text-ipb-text mb-2">📊 Chiffres clés</h3>
+              <ul className="text-ipb-text space-y-1">
                 <li>• <strong>30%</strong> des maisons anciennes sont touchées</li>
                 <li>• Hauteur max : <strong>1,5m</strong> (parfois plus)</li>
                 <li>• Évaporation : <strong>15-20 litres/jour</strong> par mètre linéaire</li>
@@ -115,8 +117,8 @@ export default function RemonteeCapillairePage() {
 
             <h2>Comment reconnaître les remontées capillaires ?</h2>
 
-            <div className="bg-slate-100 rounded-2xl p-6 my-8 not-prose">
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Signes révélateurs</h3>
+            <div className="bg-ipb-stone rounded-2xl p-6 my-8 not-prose">
+              <h3 className="text-xl font-bold text-ipb-text mb-4">Signes révélateurs</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="flex items-start gap-3">
                   <AlertTriangle className="text-amber-500 flex-shrink-0 mt-1" size={20} />
@@ -190,8 +192,8 @@ export default function RemonteeCapillairePage() {
               <div className="flex items-start gap-3">
                 <CheckCircle className="text-green-600 flex-shrink-0 mt-1" size={24} />
                 <div>
-                  <h3 className="font-bold text-slate-900 mb-2">Garantie 30 ans</h3>
-                  <p className="text-slate-700">
+                  <h3 className="font-bold text-ipb-text mb-2">Garantie 30 ans</h3>
+                  <p className="text-ipb-text">
                     Notre traitement est garanti 30 ans contre les remontées capillaires. 
                     Si le problème réapparaît, nous intervenons gratuitement.
                   </p>
@@ -217,8 +219,8 @@ export default function RemonteeCapillairePage() {
 
           {/* Lien vers le HUB */}
           <div className="mt-12 p-8 bg-blue-50 border-2 border-blue-200 rounded-2xl">
-            <h3 className="text-xl font-bold text-slate-900 mb-4">💧 En savoir plus</h3>
-            <p className="text-slate-600 mb-4">
+            <h3 className="text-xl font-bold text-ipb-text mb-4">💧 En savoir plus</h3>
+            <p className="text-ipb-muted mb-4">
               Consultez notre guide complet sur tous les problèmes d'humidité.
             </p>
             <Link href="/expert-humidite-toulouse-31" className="inline-flex items-center gap-2 text-blue-600 font-bold hover:text-blue-700">
@@ -229,17 +231,17 @@ export default function RemonteeCapillairePage() {
       </article>
 
       {/* FAQ */}
-      <section className="py-16 bg-slate-100">
+      <section className="py-16 bg-ipb-stone">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Questions fréquentes</h2>
+          <h2 className="text-3xl font-extrabold text-ipb-text mb-8 text-center">Questions fréquentes</h2>
           <div className="space-y-4">
             {faqItems.map((item, index) => (
-              <details key={index} className="bg-white rounded-xl shadow-sm border border-slate-200 group">
-                <summary className="p-6 cursor-pointer font-bold text-slate-900 flex items-center justify-between">
+              <details key={index} className="bg-white rounded-xl shadow-sm border border-ipb-rule group">
+                <summary className="p-6 cursor-pointer font-bold text-ipb-text flex items-center justify-between">
                   {item.question}
                   <span className="text-blue-600 group-open:rotate-180 transition-transform">▼</span>
                 </summary>
-                <div className="px-6 pb-6 text-slate-600">{item.answer}</div>
+                <div className="px-6 pb-6 text-ipb-muted">{item.answer}</div>
               </details>
             ))}
           </div>
@@ -249,7 +251,7 @@ export default function RemonteeCapillairePage() {
       {/* Articles connexes */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-slate-900 mb-8 text-center">
+          <h2 className="text-2xl font-black text-ipb-text mb-8 text-center">
             Articles connexes
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -262,13 +264,13 @@ export default function RemonteeCapillairePage() {
               <Link 
                 key={index}
                 href={item.href}
-                className="group bg-slate-50 rounded-2xl p-6 hover:bg-blue-50 transition-all hover:-translate-y-1 border border-slate-100 hover:border-blue-200"
+                className="group bg-ipb-cream rounded-2xl p-6 hover:bg-blue-50 transition-all hover:-translate-y-1 border border-ipb-rule hover:border-blue-200"
               >
                 <span className="text-4xl mb-4 block">{item.icon}</span>
-                <h3 className="font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-1">
+                <h3 className="font-bold text-ipb-text group-hover:text-blue-600 transition-colors mb-1">
                   {item.title}
                 </h3>
-                <p className="text-sm text-slate-500">{item.desc}</p>
+                <p className="text-sm text-ipb-muted">{item.desc}</p>
               </Link>
             ))}
           </div>

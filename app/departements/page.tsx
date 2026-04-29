@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { MapPin, ArrowRight, Phone } from 'lucide-react';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 
 export const metadata: Metadata = {
@@ -69,6 +70,7 @@ export default function DepartementsPage() {
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white font-sans antialiased">
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -78,9 +80,9 @@ export default function DepartementsPage() {
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
             Expert Fissures & Humidité<br />
-            <span className="text-orange-400">dans le Sud-Ouest</span>
+            <span className="text-ipb-orange-l">dans le Sud-Ouest</span>
           </h1>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+          <p className="text-xl text-white/70 max-w-2xl mx-auto">
             Basés à Toulouse, nous intervenons dans 6 départements pour traiter vos fissures et problèmes d'humidité.
           </p>
         </div>
@@ -93,7 +95,7 @@ export default function DepartementsPage() {
               <Link
                 key={dept.slug}
                 href={`/departements/${dept.slug}`}
-                className="group relative bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all border border-slate-100 hover:border-orange-200 overflow-hidden"
+                className="group relative bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all border border-ipb-rule hover:border-ipb-rule overflow-hidden"
               >
                 <div className={`bg-gradient-to-br ${dept.color} p-6 text-white`}>
                   <div className="flex items-center justify-between">
@@ -107,8 +109,8 @@ export default function DepartementsPage() {
                   )}
                 </div>
                 <div className="p-6">
-                  <p className="text-sm text-slate-600 mb-4">{dept.villes}</p>
-                  <span className="text-sm font-bold text-orange-600 group-hover:text-orange-700 flex items-center gap-1">
+                  <p className="text-sm text-ipb-muted mb-4">{dept.villes}</p>
+                  <span className="text-sm font-bold text-ipb-orange group-hover:text-ipb-orange flex items-center gap-1">
                     Voir les interventions <ArrowRight size={14} />
                   </span>
                 </div>
@@ -118,7 +120,7 @@ export default function DepartementsPage() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-orange-600 to-red-600 py-16">
+      <section className="bg-ipb-orange py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-6">
             Fissures ou humidité ?
@@ -129,7 +131,7 @@ export default function DepartementsPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/diagnostic"
-              className="inline-flex items-center justify-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-50 transition-all shadow-xl"
+              className="inline-flex items-center justify-center gap-2 bg-white text-ipb-orange px-8 py-4 rounded-xl font-bold text-lg hover:bg-ipb-stone transition-all shadow-xl"
             >
               Faire mon diagnostic gratuit
               <ArrowRight size={20} />

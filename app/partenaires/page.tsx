@@ -1,5 +1,6 @@
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { CtaFinal } from '@/components/home/CtaFinal';
 import { Eyebrow } from '@/components/ui/Eyebrow';
@@ -43,6 +44,7 @@ export default function PartenairesPage() {
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       <main id="main-content">
         {/* HERO */}
@@ -123,7 +125,7 @@ export default function PartenairesPage() {
             <RevealOnScroll>
               <Eyebrow className="justify-center">Une autre activité ?</Eyebrow>
               <p className="font-serif text-ipb-text text-[22px] lg:text-[26px] leading-[1.4] mb-6">
-                Promoteur, contractant général, syndic, expert d'assurance, notaire — appelez le cabinet, on adapte le cadre de collaboration à votre métier.
+                Promoteur, contractant général, syndic, expert d'assurance, notaire — appelez l’institut, on adapte le cadre de collaboration à votre métier.
               </p>
               <a href="tel:0582953375" className="inline-flex items-center gap-2 text-ipb-orange font-medium text-[14px] tracking-wide border-b border-ipb-orange pb-1 hover:gap-3 transition-all">
                 05 82 95 33 75 →

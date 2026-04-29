@@ -51,6 +51,24 @@ export function addIdsToHeadings(htmlContent: string): string {
 }
 
 /**
+ * Image de couverture par défaut selon la catégorie de l'article.
+ * Utilisée comme fallback quand `coverImage` n'est pas défini.
+ *
+ * Bonne pratique SEO : Google Discover, rich snippets et partages sociaux
+ * exigent une image pertinente au contenu (pas le logo générique).
+ */
+export function getCategoryFallbackImage(category: string, keywords: string[] = []): string {
+  const kw = keywords.join(' ').toLowerCase();
+  if (kw.includes('mur porteur') || kw.includes('baie vitree') || kw.includes('baie vitrée')) {
+    return '/images/ouverture-mur-porteur.webp';
+  }
+  if (category === 'fissures') return '/images/fissures-avant-apres.webp';
+  if (category === 'humidite') return '/images/humidite-avant-apres.webp';
+  if (category === 'expertise') return '/images/ludovic-expert-ipb.webp';
+  return '/images/fissures-avant-apres.webp'; // catégorie 'conseils' et autres
+}
+
+/**
  * Génère le JSON-LD Article pour SEO (version enrichie)
  */
 export function generateArticleJsonLd(article: {
@@ -63,12 +81,16 @@ export function generateArticleJsonLd(article: {
   keywords: string[];
   category: string;
   readTime?: string;
+  coverImage?: string;
 }) {
   const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr').replace(/\/+$/, '');
-  
+
   const readTimeMinutes = article.readTime ? parseInt(article.readTime) : 8;
   const wordCount = readTimeMinutes * 200;
-  
+
+  const imagePath = article.coverImage || getCategoryFallbackImage(article.category, article.keywords);
+  const imageUrl = imagePath.startsWith('http') ? imagePath : `${baseUrl}${imagePath}`;
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -77,7 +99,7 @@ export function generateArticleJsonLd(article: {
     description: article.excerpt,
     image: {
       '@type': 'ImageObject',
-      url: `${baseUrl}/images/IPB_Logo_HD.png`,
+      url: imageUrl,
       width: 1200,
       height: 630,
     },

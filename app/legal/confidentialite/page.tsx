@@ -1,5 +1,6 @@
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Calendar } from 'lucide-react';
 
@@ -17,41 +18,42 @@ export const metadata = {
 
 export default function ConfidentialitePage() {
   return (
-    <div className="font-sans text-slate-800 bg-slate-50 antialiased">
+    <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
       <TopBar />
       <Navbar />
+      <SmartBackBar />
       
       <main className="bg-white min-h-screen py-12 md:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* En-tête avec date de mise à jour */}
-          <div className="mb-6 md:mb-8 pb-4 md:pb-6 border-b border-slate-200">
-            <div className="flex items-center gap-2 text-xs md:text-sm text-slate-500 mb-3 md:mb-4">
+          <div className="mb-6 md:mb-8 pb-4 md:pb-6 border-b border-ipb-rule">
+            <div className="flex items-center gap-2 text-xs md:text-sm text-ipb-muted mb-3 md:mb-4">
               <Calendar size={16} />
               <span>Mis à jour le 01/01/2026</span>
             </div>
-            <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3 md:mb-4">Politique de Confidentialité</h1>
-            <p className="text-base md:text-lg text-slate-600">
+            <h1 className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-3 md:mb-4">Politique de Confidentialité</h1>
+            <p className="text-base md:text-lg text-ipb-muted">
               Bâti Halli (enseigne commerciale : IPB) s'engage à protéger la confidentialité et la sécurité 
               des données personnelles collectées dans le cadre de ses prestations.
             </p>
           </div>
 
           {/* Contenu */}
-          <div className="prose prose-lg max-w-none space-y-8 text-slate-700">
+          <div className="prose prose-lg max-w-none space-y-8 text-ipb-text">
             <section>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">1. Responsable du traitement</h2>
+              <h2 className="text-2xl font-bold text-ipb-text mb-4">1. Responsable du traitement</h2>
               <div className="space-y-2">
                 <p><strong>Raison sociale :</strong> Bâti Halli</p>
                 <p><strong>Enseigne commerciale :</strong> IPB (Institut de Pathologie du Bâtiment)</p>
                 <p><strong>Siège social :</strong> 13 rue du Recteur Dottin, 31100 Toulouse, France</p>
                 <p><strong>SIRET :</strong> 398 185 421 00037</p>
-                <p><strong>Email :</strong> <a href="mailto:contact@ipb-expertise.fr" className="text-orange-600 hover:text-orange-700 underline">contact@ipb-expertise.fr</a></p>
-                <p><strong>Téléphone :</strong> <a href="tel:0582953375" className="text-orange-600 hover:text-orange-700 underline">05 82 95 33 75</a></p>
+                <p><strong>Email :</strong> <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange hover:text-ipb-orange underline">contact@ipb-expertise.fr</a></p>
+                <p><strong>Téléphone :</strong> <a href="tel:0582953375" className="text-ipb-orange hover:text-ipb-orange underline">05 82 95 33 75</a></p>
               </div>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">2. Données collectées</h2>
+              <h2 className="text-2xl font-bold text-ipb-text mb-4">2. Données collectées</h2>
               <p>
                 Dans le cadre de nos prestations, nous collectons les données personnelles suivantes :
               </p>
@@ -64,7 +66,7 @@ export default function ConfidentialitePage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">3. Finalités du traitement</h2>
+              <h2 className="text-2xl font-bold text-ipb-text mb-4">3. Finalités du traitement</h2>
               <p>
                 Les données personnelles collectées sont utilisées pour les finalités suivantes :
               </p>
@@ -79,9 +81,9 @@ export default function ConfidentialitePage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">4. Stockage sécurisé des données du diagnostic</h2>
+              <h2 className="text-2xl font-bold text-ipb-text mb-4">4. Stockage sécurisé des données du diagnostic</h2>
               <div className="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg">
-                <p className="font-bold text-slate-900 mb-2">Protection des données du diagnostic</p>
+                <p className="font-bold text-ipb-text mb-2">Protection des données du diagnostic</p>
                 <p>
                   Les données collectées dans le cadre du diagnostic (photos, adresses, descriptions) sont stockées de manière <strong>sécurisée</strong> 
                   pour l'analyse technique et la préparation des devis. Ces données sont :
@@ -97,7 +99,7 @@ export default function ConfidentialitePage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">5. Base légale du traitement</h2>
+              <h2 className="text-2xl font-bold text-ipb-text mb-4">5. Base légale du traitement</h2>
               <p>
                 Le traitement de vos données personnelles est fondé sur :
               </p>
@@ -110,7 +112,7 @@ export default function ConfidentialitePage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">6. Destinataires des données</h2>
+              <h2 className="text-2xl font-bold text-ipb-text mb-4">6. Destinataires des données</h2>
               <p>
                 Vos données personnelles sont destinées à :
               </p>
@@ -125,7 +127,7 @@ export default function ConfidentialitePage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">7. Durée de conservation</h2>
+              <h2 className="text-2xl font-bold text-ipb-text mb-4">7. Durée de conservation</h2>
               <p>
                 Les données personnelles sont conservées pour les durées suivantes :
               </p>
@@ -138,9 +140,9 @@ export default function ConfidentialitePage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">8. Vos droits (RGPD)</h2>
-              <div className="bg-orange-50 border-l-4 border-orange-600 p-6 rounded-r-lg">
-                <p className="font-bold text-slate-900 mb-2">Droit d'accès RGPD</p>
+              <h2 className="text-2xl font-bold text-ipb-text mb-4">8. Vos droits (RGPD)</h2>
+              <div className="bg-ipb-stone border-l-4 border-ipb-orange p-6 rounded-r-lg">
+                <p className="font-bold text-ipb-text mb-2">Droit d'accès RGPD</p>
                 <p>
                   Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants :
                 </p>
@@ -153,7 +155,7 @@ export default function ConfidentialitePage() {
                   <li><strong>Droit d'opposition :</strong> Vous pouvez vous opposer au traitement de vos données</li>
                 </ul>
                 <p className="mt-4">
-                  Pour exercer ces droits, contactez-nous à : <a href="mailto:contact@ipb-expertise.fr" className="text-orange-600 hover:text-orange-700 underline font-bold">contact@ipb-expertise.fr</a>
+                  Pour exercer ces droits, contactez-nous à : <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange hover:text-ipb-orange underline font-bold">contact@ipb-expertise.fr</a>
                 </p>
                 <p className="mt-2">
                   Vous avez également le droit d'introduire une réclamation auprès de la CNIL (Commission Nationale de l'Informatique et des Libertés) 
@@ -163,7 +165,7 @@ export default function ConfidentialitePage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">9. Cookies</h2>
+              <h2 className="text-2xl font-bold text-ipb-text mb-4">9. Cookies</h2>
               <p>
                 Notre site utilise des cookies pour améliorer l'expérience utilisateur et analyser le trafic. 
                 Vous pouvez configurer votre navigateur pour refuser les cookies, mais cela peut affecter certaines fonctionnalités du site.
@@ -171,7 +173,7 @@ export default function ConfidentialitePage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">10. Sécurité des données</h2>
+              <h2 className="text-2xl font-bold text-ipb-text mb-4">10. Sécurité des données</h2>
               <p>
                 Bâti Halli met en œuvre toutes les mesures techniques et organisationnelles appropriées pour protéger vos données personnelles 
                 contre tout accès non autorisé, perte, destruction ou altération.
@@ -179,7 +181,7 @@ export default function ConfidentialitePage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">11. Modifications</h2>
+              <h2 className="text-2xl font-bold text-ipb-text mb-4">11. Modifications</h2>
               <p>
                 La présente politique de confidentialité peut être modifiée à tout moment. 
                 La date de dernière mise à jour est indiquée en haut de cette page.

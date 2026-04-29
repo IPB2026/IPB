@@ -17,18 +17,18 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
   const villeNom = villeData.nom;
 
   return {
-    title: `Traitement de l'humidité ${villeNom} (${deptCode}) · Cabinet IPB`,
-    description: `Cabinet de pathologie du bâtiment à ${villeNom}. Injection de résine, cuvelage, ventilation, drainage : solution adaptée selon diagnostic. Décennale AXA.`,
+    title: `Traitement de l'humidité ${villeNom} (${deptCode}) · Institut IPB`,
+    description: `Institut de pathologie du bâtiment à ${villeNom}. Injection de résine, cuvelage, ventilation, drainage : solution adaptée selon diagnostic. Décennale AXA.`,
     keywords: [
       `traitement humidité ${ville}`,
       `injection résine ${ville}`,
       `cuvelage ${ville}`,
       `traitement remontées capillaires ${ville}`,
-      `cabinet pathologie bâtiment ${ville}`,
+      `institut pathologie bâtiment ${ville}`,
     ],
     alternates: { canonical: `https://www.ipb-expertise.fr/traitement-humidite/${ville}` },
     openGraph: {
-      title: `Traitement de l'humidité ${villeNom} · Cabinet IPB`,
+      title: `Traitement de l'humidité ${villeNom} · Institut IPB`,
       description: `Solutions d'humidité durables à ${villeNom}, posées sous garantie décennale.`,
       url: `https://www.ipb-expertise.fr/traitement-humidite/${ville}`,
       type: 'website',
@@ -67,9 +67,9 @@ export default async function TraitementHumiditeVillePage({ params }: { params: 
         ville={ville}
         serviceTitle="Traitement de l'humidité"
         eyebrowLabel="Travaux · Humidité du bâti"
-        description={`Notre cabinet réalise les traitements d'humidité à ${villeNom} : injection de résine hydrophobe pour les remontées capillaires, cuvelage pour les caves, ventilation pour la condensation. Solution adaptée au diagnostic, garantie décennale.`}
+        description={`Notre institut réalise les traitements d'humidité à ${villeNom} : injection de résine hydrophobe pour les remontées capillaires, cuvelage pour les caves, ventilation pour la condensation. Solution adaptée au diagnostic, garantie décennale.`}
         heroImage="/images/humidite-avant-apres.webp"
-        heroAlt={`Traitement humidité à ${villeNom} — Cabinet IPB`}
+        heroAlt={`Traitement humidité à ${villeNom} — Institut IPB`}
         methodHref="/expertise/humidite"
         contextField={villeData.specificitesHumidite ? 'specificitesHumidite' : undefined}
         relatedCards={[

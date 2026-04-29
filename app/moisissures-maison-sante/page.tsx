@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, AlertTriangle, Heart, Baby, Stethoscope, Wind, ChevronRight, Shield, CheckCircle, XCircle } from 'lucide-react';
 
@@ -85,7 +86,7 @@ const faqSchema = {
 
 export default function MoisissuresSantePage() {
   return (
-    <div className="font-sans text-slate-800 bg-white antialiased">
+    <div className="font-sans text-ipb-text bg-white antialiased">
       <Script
         id="faq-schema-moisissures-maison-sante"
         type="application/ld+json"
@@ -93,6 +94,7 @@ export default function MoisissuresSantePage() {
       />
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Hero - Style Santé/Alerte */}
       <section className="relative bg-gradient-to-br from-emerald-900 via-teal-900 to-slate-900 text-white overflow-hidden">
@@ -161,7 +163,7 @@ export default function MoisissuresSantePage() {
                 <div className="text-emerald-200 text-sm mt-2">des allergies respiratoires liées aux moisissures</div>
               </div>
               <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
-                <div className="text-5xl font-black text-orange-400">x2</div>
+                <div className="text-5xl font-black text-ipb-orange-l">x2</div>
                 <div className="text-emerald-200 text-sm mt-2">risque d'asthme chez l'enfant exposé</div>
               </div>
               <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
@@ -190,10 +192,10 @@ export default function MoisissuresSantePage() {
             <span className="inline-block bg-red-100 text-red-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
               Comprendre les risques
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
               Impact sur votre santé
             </h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            <p className="text-xl text-ipb-muted max-w-2xl mx-auto">
               Les spores de moisissures sont invisibles mais présentes dans l'air. Vous les respirez sans le savoir.
             </p>
           </div>
@@ -202,21 +204,21 @@ export default function MoisissuresSantePage() {
             {risquesSante.map((risque, index) => (
               <div key={index} className={`rounded-3xl p-8 ${
                 risque.couleur === 'red' ? 'bg-gradient-to-br from-red-50 to-rose-50 border-2 border-red-200' :
-                risque.couleur === 'orange' ? 'bg-gradient-to-br from-orange-50 to-amber-50 border-2 border-orange-200' :
+                risque.couleur === 'orange' ? 'bg-ipb-orange border-2 border-ipb-rule' :
                 'bg-gradient-to-br from-purple-50 to-violet-50 border-2 border-purple-200'
               }`}>
                 <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 ${
                   risque.couleur === 'red' ? 'bg-red-100 text-red-600' :
-                  risque.couleur === 'orange' ? 'bg-orange-100 text-orange-600' :
+                  risque.couleur === 'orange' ? 'bg-ipb-stone text-ipb-orange' :
                   'bg-purple-100 text-purple-600'
                 }`}>
                   {risque.icon}
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{risque.titre}</h3>
-                <p className="text-slate-600 mb-4">{risque.description}</p>
+                <h3 className="text-xl font-bold text-ipb-text mb-3">{risque.titre}</h3>
+                <p className="text-ipb-muted mb-4">{risque.description}</p>
                 <div className={`inline-block px-3 py-1 rounded-full text-sm font-bold ${
                   risque.couleur === 'red' ? 'bg-red-100 text-red-700' :
-                  risque.couleur === 'orange' ? 'bg-orange-100 text-orange-700' :
+                  risque.couleur === 'orange' ? 'bg-ipb-stone text-ipb-orange' :
                   'bg-purple-100 text-purple-700'
                 }`}>
                   {risque.personnes}
@@ -228,40 +230,40 @@ export default function MoisissuresSantePage() {
       </section>
 
       {/* Types de moisissures */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-ipb-cream">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
               Les types de moisissures
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-ipb-muted">
               Toutes ne sont pas égales face au danger. Certaines sont particulièrement toxiques.
             </p>
           </div>
 
           <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
-            <div className="grid grid-cols-4 bg-slate-900 text-white text-sm font-bold">
+            <div className="grid grid-cols-4 bg-ipb-navy text-white text-sm font-bold">
               <div className="p-4">Type</div>
               <div className="p-4 text-center">Couleur</div>
               <div className="p-4 text-center">Danger</div>
               <div className="p-4">Localisation</div>
             </div>
             {typesMoisissures.map((type, index) => (
-              <div key={index} className={`grid grid-cols-4 border-b border-slate-100 ${
+              <div key={index} className={`grid grid-cols-4 border-b border-ipb-rule ${
                 type.danger === 'Très élevé' ? 'bg-red-50' : ''
               }`}>
-                <div className="p-4 font-bold text-slate-900">{type.nom}</div>
-                <div className="p-4 text-center text-slate-600">{type.couleur}</div>
+                <div className="p-4 font-bold text-ipb-text">{type.nom}</div>
+                <div className="p-4 text-center text-ipb-muted">{type.couleur}</div>
                 <div className="p-4 text-center">
                   <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${
                     type.danger === 'Très élevé' ? 'bg-red-100 text-red-700' :
-                    type.danger === 'Élevé' ? 'bg-orange-100 text-orange-700' :
+                    type.danger === 'Élevé' ? 'bg-ipb-stone text-ipb-orange' :
                     'bg-yellow-100 text-yellow-700'
                   }`}>
                     {type.danger}
                   </span>
                 </div>
-                <div className="p-4 text-slate-600 text-sm">{type.lieu}</div>
+                <div className="p-4 text-ipb-muted text-sm">{type.lieu}</div>
               </div>
             ))}
           </div>
@@ -282,7 +284,7 @@ export default function MoisissuresSantePage() {
       </section>
 
       {/* Solutions */}
-      <section className="py-20 bg-slate-900 text-white">
+      <section className="py-20 bg-ipb-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="inline-block bg-emerald-500/20 text-emerald-300 px-4 py-2 rounded-full text-sm font-bold mb-4">
@@ -291,7 +293,7 @@ export default function MoisissuresSantePage() {
             <h2 className="text-3xl md:text-4xl font-black mb-4">
               Traiter la cause, pas le symptôme
             </h2>
-            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+            <p className="text-xl text-ipb-light max-w-2xl mx-auto">
               Nettoyer les moisissures sans traiter l'humidité = elles reviendront. Notre méthode s'attaque à la source.
             </p>
           </div>
@@ -300,10 +302,10 @@ export default function MoisissuresSantePage() {
             <div className="bg-white/5 backdrop-blur border border-white/10 rounded-3xl p-8">
               <div className="text-4xl mb-4">🔍</div>
               <h3 className="text-xl font-bold mb-3">1. Identifier la source</h3>
-              <p className="text-slate-400 mb-4">
+              <p className="text-ipb-light mb-4">
                 Remontées capillaires ? Condensation ? Infiltration ? Le diagnostic détermine la cause exacte de l'humidité.
               </p>
-              <ul className="text-sm text-slate-500 space-y-2">
+              <ul className="text-sm text-ipb-muted space-y-2">
                 <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Mesure du taux d'humidité</li>
                 <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Localisation des zones touchées</li>
                 <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Identification des moisissures</li>
@@ -313,10 +315,10 @@ export default function MoisissuresSantePage() {
             <div className="bg-white/5 backdrop-blur border border-white/10 rounded-3xl p-8">
               <div className="text-4xl mb-4">💧</div>
               <h3 className="text-xl font-bold mb-3">2. Traiter l'humidité</h3>
-              <p className="text-slate-400 mb-4">
+              <p className="text-ipb-light mb-4">
                 Selon le diagnostic : injection résine (capillaires), VMI (condensation), cuvelage (infiltrations).
               </p>
-              <ul className="text-sm text-slate-500 space-y-2">
+              <ul className="text-sm text-ipb-muted space-y-2">
                 <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Solution adaptée à la cause</li>
                 <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Garantie 10 à 30 ans</li>
                 <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Effet durable</li>
@@ -326,10 +328,10 @@ export default function MoisissuresSantePage() {
             <div className="bg-white/5 backdrop-blur border border-white/10 rounded-3xl p-8">
               <div className="text-4xl mb-4">🌬️</div>
               <h3 className="text-xl font-bold mb-3">3. Assainir l'air</h3>
-              <p className="text-slate-400 mb-4">
+              <p className="text-ipb-light mb-4">
                 Installation VMI si nécessaire pour renouveler l'air et éviter toute récidive de moisissures.
               </p>
-              <ul className="text-sm text-slate-500 space-y-2">
+              <ul className="text-sm text-ipb-muted space-y-2">
                 <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Air filtré et préchauffé</li>
                 <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Taux d'humidité contrôlé</li>
                 <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Confort thermique amélioré</li>
@@ -340,9 +342,9 @@ export default function MoisissuresSantePage() {
       </section>
 
       {/* Articles connexes */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-ipb-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-slate-900 mb-8 text-center">
+          <h2 className="text-2xl font-black text-ipb-text mb-8 text-center">
             Articles connexes
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -355,13 +357,13 @@ export default function MoisissuresSantePage() {
               <Link 
                 key={index}
                 href={item.href}
-                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-slate-100"
+                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-ipb-rule"
               >
                 <span className="text-4xl mb-4 block">{item.icon}</span>
-                <h3 className="font-bold text-slate-900 group-hover:text-emerald-600 transition-colors mb-1">
+                <h3 className="font-bold text-ipb-text group-hover:text-emerald-600 transition-colors mb-1">
                   {item.title}
                 </h3>
-                <p className="text-sm text-slate-500">{item.desc}</p>
+                <p className="text-sm text-ipb-muted">{item.desc}</p>
               </Link>
             ))}
           </div>

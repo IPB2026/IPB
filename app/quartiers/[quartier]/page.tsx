@@ -4,6 +4,7 @@ import Script from 'next/script';
 import { notFound } from 'next/navigation';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { InternalLinks } from '@/components/seo/InternalLinks';
 import { quartiersData as quartiersDataSource, quartierSlugs } from '@/app/data/quartiers';
@@ -148,7 +149,7 @@ export default async function QuartierPage({ params }: PageProps) {
   };
 
   return (
-    <div className="font-sans text-slate-800 bg-slate-50 antialiased">
+    <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
       <Script
         id="jsonld-quartier"
         type="application/ld+json"
@@ -162,16 +163,17 @@ export default async function QuartierPage({ params }: PageProps) {
       
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Breadcrumbs visuels */}
-      <div className="bg-white border-b border-slate-200">
+      <div className="bg-white border-b border-ipb-rule">
         <div className="max-w-7xl mx-auto px-4 py-3">
-          <nav className="flex items-center gap-2 text-sm text-slate-600" aria-label="Fil d'Ariane">
-            <Link href="/" className="hover:text-orange-600 transition">Accueil</Link>
+          <nav className="flex items-center gap-2 text-sm text-ipb-muted" aria-label="Fil d'Ariane">
+            <Link href="/" className="hover:text-ipb-orange transition">Accueil</Link>
             <span aria-hidden="true">/</span>
-            <Link href="/quartiers" className="hover:text-orange-600 transition">Quartiers</Link>
+            <Link href="/quartiers" className="hover:text-ipb-orange transition">Quartiers</Link>
             <span aria-hidden="true">/</span>
-            <span className="text-slate-900 font-medium" aria-current="page">{quartierInfo.nom}</span>
+            <span className="text-ipb-text font-medium" aria-current="page">{quartierInfo.nom}</span>
           </nav>
         </div>
       </div>
@@ -181,29 +183,29 @@ export default async function QuartierPage({ params }: PageProps) {
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-500 via-transparent to-transparent"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4">
           <div className="flex items-center gap-2 mb-6">
-            <MapPin className="text-orange-500" size={24} aria-hidden="true" />
-            <span className="text-orange-400 font-semibold text-sm uppercase tracking-widest">
+            <MapPin className="text-ipb-orange" size={24} aria-hidden="true" />
+            <span className="text-ipb-orange-l font-semibold text-sm uppercase tracking-widest">
               Quartier {quartierInfo.nom}
             </span>
           </div>
           <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight">
             Expert Fissures & Humidité<br />
-            <span className="text-orange-400">{quartierInfo.nom}</span> - Toulouse
+            <span className="text-ipb-orange-l">{quartierInfo.nom}</span> - Toulouse
           </h1>
-          <p className="text-xl md:text-2xl text-slate-300 mb-8 max-w-3xl leading-relaxed">
+          <p className="text-xl md:text-2xl text-white/70 mb-8 max-w-3xl leading-relaxed">
             {quartierInfo.description}. Intervention rapide, diagnostic gratuit, solutions durables avec garantie décennale.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/diagnostic"
-              className="inline-flex items-center justify-center gap-2 bg-orange-600 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-2xl hover:bg-orange-500 transition-all transform hover:-translate-y-1"
+              className="inline-flex items-center justify-center gap-2 bg-ipb-orange text-white px-8 py-4 rounded-xl font-bold text-lg shadow-2xl hover:bg-ipb-orange transition-all transform hover:-translate-y-1"
             >
               Diagnostic gratuit
               <ArrowRight size={20} aria-hidden="true" />
             </Link>
             <a
               href="tel:0582953375"
-              className="inline-flex items-center justify-center gap-2 bg-white text-slate-900 px-8 py-4 rounded-xl font-bold text-lg shadow-xl hover:bg-slate-100 transition-all"
+              className="inline-flex items-center justify-center gap-2 bg-white text-ipb-text px-8 py-4 rounded-xl font-bold text-lg shadow-xl hover:bg-ipb-stone transition-all"
             >
               📞 05 82 95 33 75
             </a>
@@ -215,14 +217,14 @@ export default async function QuartierPage({ params }: PageProps) {
         {/* Caractéristiques du quartier */}
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-8">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-8">
               Caractéristiques du quartier {quartierInfo.nom}
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               {quartierInfo.caracteristiques.map((carac, idx) => (
-                <div key={idx} className="flex items-start gap-3 p-4 bg-slate-50 rounded-lg border border-slate-200">
-                  <CheckCircle className="text-orange-600 flex-shrink-0 mt-1" size={20} aria-hidden="true" />
-                  <p className="text-slate-700">{carac}</p>
+                <div key={idx} className="flex items-start gap-3 p-4 bg-ipb-cream rounded-lg border border-ipb-rule">
+                  <CheckCircle className="text-ipb-orange flex-shrink-0 mt-1" size={20} aria-hidden="true" />
+                  <p className="text-ipb-text">{carac}</p>
                 </div>
               ))}
             </div>
@@ -230,22 +232,22 @@ export default async function QuartierPage({ params }: PageProps) {
         </section>
 
         {/* Problématiques fréquentes */}
-        <section className="py-16 bg-slate-50">
+        <section className="py-16 bg-ipb-cream">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center gap-3 mb-8">
-              <AlertTriangle className="text-orange-600" size={32} aria-hidden="true" />
-              <h2 className="text-3xl md:text-4xl font-black text-slate-900">
+              <AlertTriangle className="text-ipb-orange" size={32} aria-hidden="true" />
+              <h2 className="text-3xl md:text-4xl font-black text-ipb-text">
                 Problématiques fréquentes au {quartierInfo.nom}
               </h2>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {quartierInfo.problematiques.map((prob, idx) => (
-                <div key={idx} className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
-                    <AlertTriangle className="text-orange-600" size={24} aria-hidden="true" />
+                <div key={idx} className="bg-white p-6 rounded-xl border border-ipb-rule shadow-sm">
+                  <div className="w-12 h-12 bg-ipb-stone rounded-lg flex items-center justify-center mb-4">
+                    <AlertTriangle className="text-ipb-orange" size={24} aria-hidden="true" />
                   </div>
-                  <h3 className="font-bold text-slate-900 mb-2">{prob}</h3>
-                  <p className="text-sm text-slate-600">
+                  <h3 className="font-bold text-ipb-text mb-2">{prob}</h3>
+                  <p className="text-sm text-ipb-muted">
                     Notre expertise technique permet de diagnostiquer et traiter cette pathologie rapidement.
                   </p>
                 </div>
@@ -257,56 +259,56 @@ export default async function QuartierPage({ params }: PageProps) {
         {/* Nos services pour ce quartier */}
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-12 text-center">
               Nos expertises au {quartierInfo.nom}
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-gradient-to-br from-orange-50 to-white p-8 rounded-2xl border border-orange-200">
-                <h3 className="text-2xl font-bold text-slate-900 mb-4">🏗️ Traitement des fissures</h3>
+              <div className="bg-gradient-to-br from-orange-50 to-white p-8 rounded-2xl border border-ipb-rule">
+                <h3 className="text-2xl font-bold text-ipb-text mb-4">🏗️ Traitement des fissures</h3>
                 <ul className="space-y-3 mb-6">
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="text-orange-600 flex-shrink-0 mt-1" size={18} aria-hidden="true" />
-                    <span className="text-slate-700">Diagnostic instrumenté (fissuromètre, laser)</span>
+                    <CheckCircle className="text-ipb-orange flex-shrink-0 mt-1" size={18} aria-hidden="true" />
+                    <span className="text-ipb-text">Diagnostic instrumenté (fissuromètre, laser)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="text-orange-600 flex-shrink-0 mt-1" size={18} aria-hidden="true" />
-                    <span className="text-slate-700">Agrafage et harpage structurel</span>
+                    <CheckCircle className="text-ipb-orange flex-shrink-0 mt-1" size={18} aria-hidden="true" />
+                    <span className="text-ipb-text">Agrafage et harpage structurel</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="text-orange-600 flex-shrink-0 mt-1" size={18} aria-hidden="true" />
-                    <span className="text-slate-700">Alternative économique aux micropieux</span>
+                    <CheckCircle className="text-ipb-orange flex-shrink-0 mt-1" size={18} aria-hidden="true" />
+                    <span className="text-ipb-text">Alternative économique aux micropieux</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="text-orange-600 flex-shrink-0 mt-1" size={18} aria-hidden="true" />
-                    <span className="text-slate-700">Garantie décennale incluse</span>
+                    <CheckCircle className="text-ipb-orange flex-shrink-0 mt-1" size={18} aria-hidden="true" />
+                    <span className="text-ipb-text">Garantie décennale incluse</span>
                   </li>
                 </ul>
                 <Link
                   href="/expertise/fissures"
-                  className="inline-flex items-center gap-2 text-orange-600 font-bold hover:text-orange-700 transition"
+                  className="inline-flex items-center gap-2 text-ipb-orange font-bold hover:text-ipb-orange transition"
                 >
                   En savoir plus <ArrowRight size={18} aria-hidden="true" />
                 </Link>
               </div>
 
               <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl border border-blue-200">
-                <h3 className="text-2xl font-bold text-slate-900 mb-4">💧 Traitement de l'humidité</h3>
+                <h3 className="text-2xl font-bold text-ipb-text mb-4">💧 Traitement de l'humidité</h3>
                 <ul className="space-y-3 mb-6">
                   <li className="flex items-start gap-2">
                     <CheckCircle className="text-blue-600 flex-shrink-0 mt-1" size={18} aria-hidden="true" />
-                    <span className="text-slate-700">Diagnostic hygrométrique complet</span>
+                    <span className="text-ipb-text">Diagnostic hygrométrique complet</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="text-blue-600 flex-shrink-0 mt-1" size={18} aria-hidden="true" />
-                    <span className="text-slate-700">Injection résine hydrophobe</span>
+                    <span className="text-ipb-text">Injection résine hydrophobe</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="text-blue-600 flex-shrink-0 mt-1" size={18} aria-hidden="true" />
-                    <span className="text-slate-700">Cuvelage et drainage périphérique</span>
+                    <span className="text-ipb-text">Cuvelage et drainage périphérique</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="text-blue-600 flex-shrink-0 mt-1" size={18} aria-hidden="true" />
-                    <span className="text-slate-700">Garantie 30 ans sur barrière étanche</span>
+                    <span className="text-ipb-text">Garantie 30 ans sur barrière étanche</span>
                   </li>
                 </ul>
                 <Link
@@ -321,29 +323,29 @@ export default async function QuartierPage({ params }: PageProps) {
         </section>
 
         {/* CTA Final */}
-        <section className="py-20 bg-slate-900 text-white">
+        <section className="py-20 bg-ipb-navy text-white">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <div className="flex items-center justify-center gap-2 mb-6">
-              <Shield className="text-orange-500" size={32} aria-hidden="true" />
+              <Shield className="text-ipb-orange" size={32} aria-hidden="true" />
             </div>
             <h2 className="text-3xl md:text-5xl font-black mb-6">
               Habitant du {quartierInfo.nom} ?<br />Intervention rapide garantie
             </h2>
-            <p className="text-xl text-slate-300 mb-10 leading-relaxed">
+            <p className="text-xl text-white/70 mb-10 leading-relaxed">
               En tant qu'expert local, nous intervenons rapidement dans votre quartier. 
               Diagnostic gratuit sous 48h, devis clair, travaux garantis.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/diagnostic"
-                className="inline-flex items-center justify-center gap-2 bg-orange-600 text-white px-10 py-5 rounded-xl font-bold text-lg shadow-2xl hover:bg-orange-500 transition-all transform hover:-translate-y-1"
+                className="inline-flex items-center justify-center gap-2 bg-ipb-orange text-white px-10 py-5 rounded-xl font-bold text-lg shadow-2xl hover:bg-ipb-orange transition-all transform hover:-translate-y-1"
               >
                 Lancer le diagnostic
                 <ArrowRight size={20} aria-hidden="true" />
               </Link>
               <a
                 href="tel:0582953375"
-                className="inline-flex items-center justify-center gap-2 bg-white text-slate-900 px-10 py-5 rounded-xl font-bold text-lg shadow-xl hover:bg-slate-100 transition-all"
+                className="inline-flex items-center justify-center gap-2 bg-white text-ipb-text px-10 py-5 rounded-xl font-bold text-lg shadow-xl hover:bg-ipb-stone transition-all"
               >
                 📞 Appeler maintenant
               </a>

@@ -104,7 +104,7 @@ const localBusinessSchema = {
   "@id": "https://www.ipb-expertise.fr#localbusiness",
   "name": "IPB - Institut de Pathologie du Bâtiment",
   "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
-  "description": "Cabinet indépendant en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Expertise fissures (agrafage, micropieux), ouverture de mur porteur et création de baie vitrée (étude structure, pose poutre IPN/HEB), traitement de l'humidité (injection résine, cuvelage). Étude et travaux sous garantie décennale. Toulouse, Montauban, Auch et environs.",
+  "description": "Institut indépendant en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Expertise fissures (agrafage, micropieux), ouverture de mur porteur et création de baie vitrée (étude structure, pose poutre IPN/HEB), traitement de l'humidité (injection résine, cuvelage). Étude et travaux sous garantie décennale. Toulouse, Montauban, Auch et environs.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "13 rue du Recteur Dottin",
@@ -152,8 +152,16 @@ const localBusinessSchema = {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Ouverture de mur porteur et création de baie vitrée",
-          "description": "Étude structure, dimensionnement et pose de poutre IPN/HEB, étaiement, ouverture, finitions. Garantie décennale sur l'étude et les travaux."
+          "name": "Ouverture de mur porteur",
+          "description": "Étude structure, dimensionnement et pose de poutre IPN/HEB, étaiement, ouverture, finitions. Cuisine ouverte, suite parentale, plateau loft. Garantie décennale sur l'étude et les travaux."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Création de baie vitrée",
+          "description": "Création d'une baie vitrée sur projet de façade. Étude technique, ouverture du mur porteur, pose du dormant et finitions. Démarches administratives accompagnées (déclaration préalable ou permis de construire). Garantie décennale."
         }
       },
       {
@@ -171,7 +179,7 @@ const localBusinessSchema = {
     "ratingValue": "4.9",
     "bestRating": "5",
     "worstRating": "1",
-    "reviewCount": "47"
+    "reviewCount": "15"
   }
 };
 
@@ -236,7 +244,7 @@ export default function RootLayout({
         {/* Skip link for accessibility - allows keyboard users to skip navigation */}
         <a 
           href="#main-content" 
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-orange-600 focus:text-white focus:px-6 focus:py-3 focus:rounded-lg focus:font-bold focus:shadow-lg focus:outline-none"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-ipb-orange focus:text-white focus:px-6 focus:py-3 focus:rounded-lg focus:font-bold focus:shadow-lg focus:outline-none"
           tabIndex={0}
         >
           Aller au contenu principal

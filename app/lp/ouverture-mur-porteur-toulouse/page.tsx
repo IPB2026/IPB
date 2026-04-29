@@ -8,7 +8,7 @@ import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
   title: "Ouverture de mur porteur Toulouse — Devis sous 7 jours · IPB",
-  description: "Cabinet structure intégré : étude technique, calcul de poutre, ouverture, finitions. 4 000 à 10 000 € pour 2,5 m. Décennale AXA.",
+  description: "Institut structure intégré : étude technique, calcul de poutre, ouverture, finitions. 4 000 à 10 000 € pour 2,5 m. Décennale AXA.",
   robots: { index: false, follow: false },
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/mur-porteur' },
 };
@@ -23,7 +23,7 @@ export default function LandingMurPorteurToulouse() {
           "name": "IPB · Ouverture mur porteur Toulouse",
           "telephone": "+33582953375",
           "address": { "@type": "PostalAddress", "addressLocality": "Toulouse", "postalCode": "31100" },
-          "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "47" },
+          "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "15" },
           "offers": { "@type": "Offer", "priceRange": "4000-20000 EUR", "priceCurrency": "EUR" }
         })
       }} />
@@ -45,7 +45,7 @@ export default function LandingMurPorteurToulouse() {
                 }}
               >
                 Ouvrir un mur porteur à Toulouse&nbsp;?<br />
-                <em>Étude + travaux par le même cabinet.</em>
+                <em>Étude + travaux par le même institut.</em>
               </h1>
               <p className="text-[15px] leading-[1.85] font-light text-ipb-muted mb-8">
                 Notre ingénieur calcule la poutre IPN ou HEB. Nos équipes l'installent. Tout en interne, tout sous décennale unique. <strong className="font-medium text-ipb-text not-italic">Estimation sous 7 jours.</strong>

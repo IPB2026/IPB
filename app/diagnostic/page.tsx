@@ -577,7 +577,7 @@ export default function DiagnosticPage() {
 
         {step > 0 && (
           <div className="flex items-center mb-4">
-            <a href="/" className="flex items-center gap-2 text-slate-400 hover:text-slate-700 transition-colors">
+            <a href="/" className="flex items-center gap-2 text-ipb-light hover:text-ipb-text transition-colors">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
               <span className="text-xs font-medium">Retour au site</span>
             </a>
@@ -589,10 +589,10 @@ export default function DiagnosticPage() {
           <div className="mb-5">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
-                <span className="bg-slate-800 text-white font-bold px-2.5 py-1 rounded-full text-xs tracking-wide">
+                <span className="bg-ipb-navy-2 text-white font-bold px-2.5 py-1 rounded-full text-xs tracking-wide">
                   {step}/{totalQuestions}
                 </span>
-                <span className="text-slate-500 text-xs font-medium">
+                <span className="text-ipb-muted text-xs font-medium">
                   {step <= 3 ? 'Analyse du problème' : step <= 6 ? 'Évaluation de gravité' : 'Finalisation'}
                 </span>
               </div>
@@ -604,19 +604,19 @@ export default function DiagnosticPage() {
             </div>
             <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-orange-400 to-orange-600 rounded-full transition-all duration-500 ease-out"
+                className="h-full bg-ipb-orange rounded-full transition-all duration-500 ease-out"
                 style={{ width: `${Math.max(progress, 8)}%` }}
               />
             </div>
             {/* Jauge de risque en temps réel */}
             {step > 2 && (
               <div className="mt-2 flex items-center gap-2">
-                <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Criticité</span>
-                <div className="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                <span className="text-[10px] text-ipb-light uppercase tracking-wider font-semibold">Criticité</span>
+                <div className="flex-1 h-1.5 bg-ipb-stone rounded-full overflow-hidden">
                   <div
                     className={`h-full rounded-full transition-all duration-700 ease-out ${
                       riskColor === 'red' ? 'bg-red-500' :
-                      riskColor === 'orange' ? 'bg-orange-500' : 'bg-green-500'
+                      riskColor === 'orange' ? 'bg-ipb-orange' : 'bg-green-500'
                     }`}
                     style={{ width: `${Math.max(liveRisk * 2, 5)}%` }}
                   />
@@ -627,7 +627,7 @@ export default function DiagnosticPage() {
         )}
 
         {/* ===== CARTE PRINCIPALE ===== */}
-        <div className="bg-white rounded-2xl shadow-lg border border-slate-100">
+        <div className="bg-white rounded-2xl shadow-lg border border-ipb-rule">
           <div className="p-5 md:p-8">
 
             {/* ===== ÉTAPE 0 : ACCUEIL ===== */}
@@ -635,13 +635,13 @@ export default function DiagnosticPage() {
               <div>
                 <div className="text-center mb-10">
                   <p className="text-ipb-orange text-[10px] uppercase tracking-[0.18em] font-medium mb-4">
-                    Échange technique avec le cabinet
+                    Échange technique avec l’institut
                   </p>
                   <h1 className="font-serif text-ipb-text mb-4" style={{ fontSize: 'clamp(28px, 3vw, 44px)', lineHeight: 1.1, letterSpacing: '-0.022em', fontWeight: 700 }}>
                     Décrivez-nous<br /><em>votre situation.</em>
                   </h1>
                   <p className="text-[15px] leading-[1.85] font-light text-ipb-muted max-w-xl mx-auto">
-                    Quelques minutes pour nous donner les éléments essentiels. Notre cabinet vous répond sous 24 heures, par téléphone ou par mail.
+                    Quelques minutes pour nous donner les éléments essentiels. Notre institut vous répond sous 24 heures, par téléphone ou par mail.
                   </p>
                 </div>
 
@@ -705,7 +705,7 @@ export default function DiagnosticPage() {
                 </p>
 
                 {/* Trust signals pour trafic froid (Google Ads) */}
-                <div className="bg-white border border-slate-200 rounded-xl p-3.5 mb-4">
+                <div className="bg-white border border-ipb-rule rounded-xl p-3.5 mb-4">
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-2">
                       <svg viewBox="0 0 24 24" className="w-5 h-5" aria-hidden="true">
@@ -715,46 +715,46 @@ export default function DiagnosticPage() {
                         <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
                       </svg>
                       <div>
-                        <span className="font-bold text-slate-900 text-sm">4.9</span>
+                        <span className="font-bold text-ipb-text text-sm">4.9</span>
                         <span className="text-yellow-500 text-xs ml-1">★★★★★</span>
                       </div>
                     </div>
-                    <span className="text-[10px] text-slate-400 font-medium">47 avis vérifiés Google</span>
+                    <span className="text-[10px] text-ipb-light font-medium">Avis vérifiés sur Google</span>
                   </div>
                   <div className="grid grid-cols-3 gap-2 text-center">
-                    <div className="bg-slate-50 rounded-lg py-2">
-                      <p className="text-base font-extrabold text-slate-900">850+</p>
-                      <p className="text-[9px] text-slate-400 font-medium">clients accompagnés</p>
+                    <div className="bg-ipb-cream rounded-lg py-2">
+                      <p className="text-base font-extrabold text-ipb-text">850+</p>
+                      <p className="text-[9px] text-ipb-light font-medium">clients accompagnés</p>
                     </div>
-                    <div className="bg-slate-50 rounded-lg py-2">
-                      <p className="text-base font-extrabold text-slate-900">10 ans</p>
-                      <p className="text-[9px] text-slate-400 font-medium">garantie décennale</p>
+                    <div className="bg-ipb-cream rounded-lg py-2">
+                      <p className="text-base font-extrabold text-ipb-text">10 ans</p>
+                      <p className="text-[9px] text-ipb-light font-medium">garantie décennale</p>
                     </div>
-                    <div className="bg-slate-50 rounded-lg py-2">
-                      <p className="text-base font-extrabold text-slate-900">AXA</p>
-                      <p className="text-[9px] text-slate-400 font-medium">assurance décennale</p>
+                    <div className="bg-ipb-cream rounded-lg py-2">
+                      <p className="text-base font-extrabold text-ipb-text">AXA</p>
+                      <p className="text-[9px] text-ipb-light font-medium">assurance décennale</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Social proof — 2 témoignages */}
                 <div className="space-y-2 mb-4">
-                  <div className="bg-slate-50 rounded-xl p-3 flex items-start gap-3">
-                    <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center text-sm flex-shrink-0">P</div>
+                  <div className="bg-ipb-cream rounded-xl p-3 flex items-start gap-3">
+                    <div className="w-8 h-8 bg-ipb-stone rounded-full flex items-center justify-center text-sm flex-shrink-0">P</div>
                     <div>
-                      <p className="text-slate-600 text-xs italic leading-relaxed">
+                      <p className="text-ipb-muted text-xs italic leading-relaxed">
                         &quot;J&apos;ai compris la gravité de mes fissures. L&apos;expert m&apos;a rappelé le lendemain, intervention réalisée en 3 jours.&quot;
                       </p>
-                      <p className="text-slate-400 text-[10px] mt-1 font-medium">Pierre M. — Toulouse <span className="text-yellow-500">★★★★★</span></p>
+                      <p className="text-ipb-light text-[10px] mt-1 font-medium">Pierre M. — Toulouse <span className="text-yellow-500">★★★★★</span></p>
                     </div>
                   </div>
-                  <div className="bg-slate-50 rounded-xl p-3 flex items-start gap-3">
+                  <div className="bg-ipb-cream rounded-xl p-3 flex items-start gap-3">
                     <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-sm flex-shrink-0">S</div>
                     <div>
-                      <p className="text-slate-600 text-xs italic leading-relaxed">
+                      <p className="text-ipb-muted text-xs italic leading-relaxed">
                         &quot;Diagnostic très complet, rapport détaillé avec photos. On voit que c&apos;est un vrai professionnel, pas un commercial.&quot;
                       </p>
-                      <p className="text-slate-400 text-[10px] mt-1 font-medium">Sophie L. — Colomiers <span className="text-yellow-500">★★★★★</span></p>
+                      <p className="text-ipb-light text-[10px] mt-1 font-medium">Sophie L. — Colomiers <span className="text-yellow-500">★★★★★</span></p>
                     </div>
                   </div>
                 </div>
@@ -766,7 +766,7 @@ export default function DiagnosticPage() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-white text-sm font-bold">Besoin d&apos;un avis immédiat ?</p>
-                    <p className="text-slate-400 text-[10px] flex items-center gap-1">
+                    <p className="text-ipb-light text-[10px] flex items-center gap-1">
                       <span className="w-1.5 h-1.5 bg-green-400 rounded-full inline-block" />
                       Expert disponible — réponse rapide
                     </p>
@@ -790,7 +790,7 @@ export default function DiagnosticPage() {
                   <div className="bg-blue-50 border border-blue-200 rounded-xl p-3 mb-4 flex items-center gap-3">
                     <span className="text-lg flex-shrink-0">📱</span>
                     <div className="flex-1 min-w-0">
-                      <p className="text-slate-700 text-xs font-medium">Recevez votre diagnostic par SMS</p>
+                      <p className="text-ipb-text text-xs font-medium">Recevez votre diagnostic par SMS</p>
                       <div className="flex items-center gap-2 mt-1.5">
                         <input
                           type="tel"
@@ -816,7 +816,7 @@ export default function DiagnosticPage() {
                         </button>
                       </div>
                     </div>
-                    <button type="button" onClick={() => setEarlyPhoneDismissed(true)} className="text-slate-400 hover:text-slate-600 text-sm flex-shrink-0">✕</button>
+                    <button type="button" onClick={() => setEarlyPhoneDismissed(true)} className="text-ipb-light hover:text-ipb-muted text-sm flex-shrink-0">✕</button>
                   </div>
                 )}
                 {step === 4 && earlyPhoneCaptured && (
@@ -826,10 +826,10 @@ export default function DiagnosticPage() {
                 )}
 
                 <div className="flex-1">
-                  <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-1 leading-snug">
+                  <h2 className="text-xl md:text-2xl font-bold text-ipb-text mb-1 leading-snug">
                     {currentQuestion.text}
                   </h2>
-                  <p className="text-slate-400 text-xs md:text-sm mb-4 md:mb-5">
+                  <p className="text-ipb-light text-xs md:text-sm mb-4 md:mb-5">
                     {isMultiQuestion ? 'Plusieurs réponses possibles' : 'Sélectionnez votre réponse'}
                   </p>
 
@@ -856,16 +856,16 @@ export default function DiagnosticPage() {
                           className={`
                             w-full flex items-center gap-3 px-4 py-3 md:px-5 md:py-3.5 rounded-xl border-2 transition-all duration-150 text-left
                             ${isSelected
-                              ? 'bg-orange-50 border-orange-500 shadow-sm'
-                              : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50'
+                              ? 'bg-ipb-stone border-ipb-orange shadow-sm'
+                              : 'bg-white border-ipb-rule hover:border-ipb-rule hover:bg-ipb-cream'
                             }
                           `}
                         >
-                          <span className={`font-medium flex-1 text-sm ${isSelected ? 'text-orange-700' : 'text-slate-700'}`}>
+                          <span className={`font-medium flex-1 text-sm ${isSelected ? 'text-ipb-orange' : 'text-ipb-text'}`}>
                             {option.label}
                           </span>
                           <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors ${
-                            isSelected ? 'bg-orange-500 border-orange-500' : 'border-slate-300'
+                            isSelected ? 'bg-ipb-orange border-ipb-orange' : 'border-ipb-rule'
                           }`}>
                             {isSelected && (
                               <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -890,13 +890,13 @@ export default function DiagnosticPage() {
                     }, null);
                     if (!tip) return null;
                     return (
-                      <div className="mt-3 bg-slate-50 border border-slate-200 rounded-xl p-3 flex items-start gap-2.5">
+                      <div className="mt-3 bg-ipb-cream border border-ipb-rule rounded-xl p-3 flex items-start gap-2.5">
                         <div className="flex-shrink-0 w-6 h-6 bg-slate-200 rounded-full flex items-center justify-center">
                           <span className="text-xs">🎓</span>
                         </div>
                         <div>
-                          <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-0.5">Avis expert IPB</p>
-                          <p className="text-slate-600 text-xs leading-relaxed">{tip}</p>
+                          <p className="text-[10px] text-ipb-light font-bold uppercase tracking-wider mb-0.5">Avis expert IPB</p>
+                          <p className="text-ipb-muted text-xs leading-relaxed">{tip}</p>
                         </div>
                       </div>
                     );
@@ -912,13 +912,13 @@ export default function DiagnosticPage() {
                         ? !answers[currentQuestion.id] || (answers[currentQuestion.id] as string[]).length === 0
                         : !answers[currentQuestion.id]
                     }
-                    className="w-full bg-slate-900 text-white font-semibold py-3.5 rounded-xl hover:bg-slate-800 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                    className="w-full bg-ipb-navy text-white font-semibold py-3.5 rounded-xl hover:bg-ipb-navy-2 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
                   >
                     {step === totalQuestions ? 'Voir mon diagnostic' : 'Suivant'} →
                   </button>
                   <button
                     onClick={() => setStep(step === 1 ? 0 : step - 1)}
-                    className="w-full text-slate-400 hover:text-slate-600 text-sm py-1 transition-colors"
+                    className="w-full text-ipb-light hover:text-ipb-muted text-sm py-1 transition-colors"
                   >
                     ← {step === 1 ? 'Revenir au choix' : 'Question précédente'}
                   </button>
@@ -935,18 +935,18 @@ export default function DiagnosticPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h2 className="text-xl font-bold text-slate-900 mb-1">
+                  <h2 className="text-xl font-bold text-ipb-text mb-1">
                     Vos réponses sont enregistrées !
                   </h2>
-                  <p className="text-slate-500 text-sm">
+                  <p className="text-ipb-muted text-sm">
                     Dernière étape : renseignez vos coordonnées pour recevoir votre diagnostic personnalisé.
                   </p>
                 </div>
 
                 {/* Ce que vous allez recevoir */}
-                <div className="bg-slate-50 rounded-xl p-4 mb-5 border border-slate-100">
-                  <p className="text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide">Votre rapport comprend :</p>
-                  <div className="grid grid-cols-2 gap-2 text-xs text-slate-600">
+                <div className="bg-ipb-cream rounded-xl p-4 mb-5 border border-ipb-rule">
+                  <p className="text-xs font-bold text-ipb-text mb-2 uppercase tracking-wide">Votre rapport comprend :</p>
+                  <div className="grid grid-cols-2 gap-2 text-xs text-ipb-muted">
                     <span className="flex items-center gap-1.5"><span className="text-green-500">✓</span> Niveau de gravité</span>
                     <span className="flex items-center gap-1.5"><span className="text-green-500">✓</span> Solution adaptée</span>
                     <span className="flex items-center gap-1.5"><span className="text-green-500">✓</span> Délai recommandé</span>
@@ -956,68 +956,68 @@ export default function DiagnosticPage() {
 
                 <form onSubmit={handleSubmitContact} className="space-y-3">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 mb-1">Nom & Prénom *</label>
+                    <label className="block text-xs font-semibold text-ipb-muted mb-1">Nom & Prénom *</label>
                     <input
                       type="text"
                       value={contactInfo.name}
                       onChange={(e) => setContactInfo({ ...contactInfo, name: e.target.value })}
                       placeholder="Jean Dupont"
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all"
+                      className="w-full px-4 py-3 rounded-xl border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all"
                       required
                     />
                   </div>
 
-                  <p className="text-orange-600 text-[11px] font-medium bg-orange-50 border border-orange-200 rounded-lg px-3 py-1.5">
+                  <p className="text-ipb-orange text-[11px] font-medium bg-ipb-stone border border-ipb-rule rounded-lg px-3 py-1.5">
                     Renseignez au moins votre email ou téléphone pour recevoir le diagnostic
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-xs font-semibold text-slate-600 mb-1">Email {!contactInfo.phone.trim() ? '*' : ''}</label>
+                      <label className="block text-xs font-semibold text-ipb-muted mb-1">Email {!contactInfo.phone.trim() ? '*' : ''}</label>
                       <input
                         type="email"
                         value={contactInfo.email}
                         onChange={(e) => setContactInfo({ ...contactInfo, email: e.target.value })}
                         placeholder="jean@email.com"
                         required={!contactInfo.phone.trim()}
-                        className={`w-full px-4 py-3 rounded-xl border focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all ${
-                          !contactInfo.email.trim() && !contactInfo.phone.trim() ? 'border-orange-300 bg-orange-50/30' : 'border-slate-200'
+                        className={`w-full px-4 py-3 rounded-xl border focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all ${
+                          !contactInfo.email.trim() && !contactInfo.phone.trim() ? 'border-orange-300 bg-ipb-stone/30' : 'border-ipb-rule'
                         }`}
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-semibold text-slate-600 mb-1">Téléphone {!contactInfo.email.trim() ? '*' : ''}</label>
+                      <label className="block text-xs font-semibold text-ipb-muted mb-1">Téléphone {!contactInfo.email.trim() ? '*' : ''}</label>
                       <input
                         type="tel"
                         value={contactInfo.phone}
                         onChange={(e) => setContactInfo({ ...contactInfo, phone: e.target.value })}
                         placeholder="06 12 34 56 78"
                         required={!contactInfo.email.trim()}
-                        className={`w-full px-4 py-3 rounded-xl border focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all ${
-                          !contactInfo.email.trim() && !contactInfo.phone.trim() ? 'border-orange-300 bg-orange-50/30' : 'border-slate-200'
+                        className={`w-full px-4 py-3 rounded-xl border focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all ${
+                          !contactInfo.email.trim() && !contactInfo.phone.trim() ? 'border-orange-300 bg-ipb-stone/30' : 'border-ipb-rule'
                         }`}
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 mb-1">Adresse du bien *</label>
+                    <label className="block text-xs font-semibold text-ipb-muted mb-1">Adresse du bien *</label>
                     <input
                       type="text"
                       value={contactInfo.address}
                       onChange={(e) => setContactInfo({ ...contactInfo, address: e.target.value })}
                       placeholder="12 rue des Lilas, 31000 Toulouse"
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all"
+                      className="w-full px-4 py-3 rounded-xl border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all"
                       required
                     />
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-xs font-semibold text-slate-600 mb-1">Année construction</label>
+                      <label className="block text-xs font-semibold text-ipb-muted mb-1">Année construction</label>
                       <select
                         value={contactInfo.yearBuilt}
                         onChange={(e) => setContactInfo({ ...contactInfo, yearBuilt: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none text-sm bg-white transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-sm bg-white transition-all"
                       >
                         <option value="">Choisir</option>
                         <option value="avant_1950">Avant 1950</option>
@@ -1028,11 +1028,11 @@ export default function DiagnosticPage() {
                       </select>
                     </div>
                     <div>
-                      <label className="block text-xs font-semibold text-slate-600 mb-1">Créneau de rappel</label>
+                      <label className="block text-xs font-semibold text-ipb-muted mb-1">Créneau de rappel</label>
                       <select
                         value={contactInfo.preferredTime}
                         onChange={(e) => setContactInfo({ ...contactInfo, preferredTime: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none text-sm bg-white transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-sm bg-white transition-all"
                       >
                         <option value="">Choisir</option>
                         <option value="matin">Matin (9h-12h)</option>
@@ -1044,7 +1044,7 @@ export default function DiagnosticPage() {
                   </div>
 
                   {/* Photo */}
-                  <div className="border border-dashed border-slate-200 rounded-xl p-3 hover:border-slate-300 transition-colors">
+                  <div className="border border-dashed border-ipb-rule rounded-xl p-3 hover:border-ipb-rule transition-colors">
                     <input
                       type="file"
                       accept="image/*"
@@ -1069,7 +1069,7 @@ export default function DiagnosticPage() {
                           </button>
                         </div>
                       ) : (
-                        <span className="text-slate-400 text-xs">📷 Ajouter une photo du problème <span className="text-slate-300">(optionnel, aide l'expert)</span></span>
+                        <span className="text-ipb-light text-xs">📷 Ajouter une photo du problème <span className="text-white/70">(optionnel, aide l'expert)</span></span>
                       )}
                     </label>
                   </div>
@@ -1082,12 +1082,12 @@ export default function DiagnosticPage() {
 
                   <button
                     type="submit"
-                    className="w-full bg-slate-900 text-white font-semibold py-3.5 rounded-xl hover:bg-slate-800 transition-colors text-sm"
+                    className="w-full bg-ipb-navy text-white font-semibold py-3.5 rounded-xl hover:bg-ipb-navy-2 transition-colors text-sm"
                   >
                     Accéder à mon diagnostic →
                   </button>
 
-                  <p className="text-[10px] text-slate-400 text-center leading-relaxed">
+                  <p className="text-[10px] text-ipb-light text-center leading-relaxed">
                     🔒 Vos données sont protégées et ne seront jamais partagées. En validant, vous acceptez d'être recontacté par IPB.
                   </p>
                 </form>
@@ -1099,14 +1099,14 @@ export default function DiagnosticPage() {
               <div className="py-4">
                 <div className="text-center mb-6">
                   <div className="relative w-16 h-16 mx-auto mb-4">
-                    <div className="absolute inset-0 border-[3px] border-slate-200 rounded-full" />
+                    <div className="absolute inset-0 border-[3px] border-ipb-rule rounded-full" />
                     <div className="absolute inset-0 border-[3px] border-transparent border-t-orange-500 rounded-full animate-spin" />
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span className="text-xl">🔍</span>
                     </div>
                   </div>
-                  <h2 className="text-lg font-bold text-slate-900 mb-1">Notre expert analyse vos réponses</h2>
-                  <p className="text-slate-400 text-xs">Veuillez patienter quelques instants...</p>
+                  <h2 className="text-lg font-bold text-ipb-text mb-1">Notre expert analyse vos réponses</h2>
+                  <p className="text-ipb-light text-xs">Veuillez patienter quelques instants...</p>
                 </div>
 
                 <div className="space-y-2.5 max-w-sm mx-auto">
@@ -1117,8 +1117,8 @@ export default function DiagnosticPage() {
                         analysisStep > i
                           ? 'bg-green-50 border-green-200'
                           : analysisStep === i
-                            ? 'bg-orange-50 border-orange-200'
-                            : 'bg-slate-50 border-slate-100 opacity-40'
+                            ? 'bg-ipb-stone border-ipb-rule'
+                            : 'bg-ipb-cream border-ipb-rule opacity-40'
                       }`}
                     >
                       {analysisStep > i ? (
@@ -1126,9 +1126,9 @@ export default function DiagnosticPage() {
                       ) : analysisStep === i ? (
                         <div className="w-4 h-4 border-2 border-orange-400 border-t-transparent rounded-full animate-spin" />
                       ) : (
-                        <div className="w-4 h-4 rounded-full border border-slate-300" />
+                        <div className="w-4 h-4 rounded-full border border-ipb-rule" />
                       )}
-                      <span className={`text-sm ${analysisStep > i ? 'text-green-700 font-medium' : analysisStep === i ? 'text-orange-700 font-medium' : 'text-slate-400'}`}>
+                      <span className={`text-sm ${analysisStep > i ? 'text-green-700 font-medium' : analysisStep === i ? 'text-ipb-orange font-medium' : 'text-ipb-light'}`}>
                         {s.text}
                       </span>
                     </div>
@@ -1143,12 +1143,12 @@ export default function DiagnosticPage() {
                 {/* Header résultat */}
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider mb-0.5">Votre diagnostic</p>
-                    <h2 className="text-xl font-bold text-slate-900">Rapport d'analyse</h2>
+                    <p className="text-xs text-ipb-light font-semibold uppercase tracking-wider mb-0.5">Votre diagnostic</p>
+                    <h2 className="text-xl font-bold text-ipb-text">Rapport d'analyse</h2>
                   </div>
                   <div className={`px-3 py-1.5 rounded-lg text-xs font-bold ${
                     expertReport.urgencyColor === 'red' ? 'bg-red-100 text-red-700' :
-                    expertReport.urgencyColor === 'orange' ? 'bg-orange-100 text-orange-700' :
+                    expertReport.urgencyColor === 'orange' ? 'bg-ipb-stone text-ipb-orange' :
                     'bg-green-100 text-green-700'
                   }`}>
                     {expertReport.urgencyIcon} {expertReport.urgency}
@@ -1158,13 +1158,13 @@ export default function DiagnosticPage() {
                 {/* Score bar */}
                 <div className="mb-5">
                   <div className="flex items-center justify-between text-xs mb-1">
-                    <span className="text-slate-400 font-medium">Score de risque</span>
-                    <span className="font-bold text-slate-700">{riskScore}/100</span>
+                    <span className="text-ipb-light font-medium">Score de risque</span>
+                    <span className="font-bold text-ipb-text">{riskScore}/100</span>
                   </div>
-                  <div className="h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                  <div className="h-2.5 bg-ipb-stone rounded-full overflow-hidden">
                     <div
                       className={`h-full rounded-full transition-all duration-1000 ease-out ${
-                        riskScore >= 40 ? 'bg-red-500' : riskScore >= 20 ? 'bg-orange-500' : 'bg-green-500'
+                        riskScore >= 40 ? 'bg-red-500' : riskScore >= 20 ? 'bg-ipb-orange' : 'bg-green-500'
                       }`}
                       style={{ width: `${riskScore}%` }}
                     />
@@ -1175,38 +1175,38 @@ export default function DiagnosticPage() {
                 <div className="space-y-3 mb-5">
                   <div className={`rounded-xl p-4 border-l-4 ${
                     expertReport.urgencyColor === 'red' ? 'bg-red-50 border-red-500' :
-                    expertReport.urgencyColor === 'orange' ? 'bg-orange-50 border-orange-500' :
+                    expertReport.urgencyColor === 'orange' ? 'bg-ipb-stone border-ipb-orange' :
                     'bg-green-50 border-green-500'
                   }`}>
-                    <p className="font-bold text-slate-800 text-sm mb-1">Diagnostic</p>
-                    <p className="text-slate-600 text-sm leading-relaxed">{expertReport.diagnosis}</p>
+                    <p className="font-bold text-ipb-text text-sm mb-1">Diagnostic</p>
+                    <p className="text-ipb-muted text-sm leading-relaxed">{expertReport.diagnosis}</p>
                   </div>
 
-                  <div className="bg-slate-50 rounded-xl p-4 border border-slate-100">
-                    <p className="font-bold text-slate-800 text-sm mb-1">Solution recommandée</p>
-                    <p className="text-slate-600 text-sm leading-relaxed">{expertReport.solution}</p>
+                  <div className="bg-ipb-cream rounded-xl p-4 border border-ipb-rule">
+                    <p className="font-bold text-ipb-text text-sm mb-1">Solution recommandée</p>
+                    <p className="text-ipb-muted text-sm leading-relaxed">{expertReport.solution}</p>
                   </div>
 
-                  <div className="bg-slate-50 rounded-xl p-3 border border-slate-100 flex items-center justify-between">
-                    <span className="text-xs text-slate-500 font-medium">Délai d'intervention conseillé</span>
-                    <span className="font-bold text-slate-800 text-sm">{expertReport.delay}</span>
+                  <div className="bg-ipb-cream rounded-xl p-3 border border-ipb-rule flex items-center justify-between">
+                    <span className="text-xs text-ipb-muted font-medium">Délai d'intervention conseillé</span>
+                    <span className="font-bold text-ipb-text text-sm">{expertReport.delay}</span>
                   </div>
                 </div>
 
                 {/* Séparateur */}
-                <div className="border-t border-slate-100 my-5" />
+                <div className="border-t border-ipb-rule my-5" />
 
                 {/* ===== CTA PASSAGE À L'ACTION ===== */}
                 <div>
                   <div className="text-center mb-4">
-                    <h3 className="text-lg font-bold text-slate-900 mb-1">
+                    <h3 className="text-lg font-bold text-ipb-text mb-1">
                       {riskScore >= 40
                         ? "Votre situation nécessite une intervention rapide"
                         : riskScore >= 20
                           ? "Confirmez ce diagnostic avec un expert terrain"
                           : "Besoin d'un avis professionnel sur place ?"}
                     </h3>
-                    <p className="text-slate-500 text-xs">
+                    <p className="text-ipb-muted text-xs">
                       Un expert certifié vous rappelle pour organiser l'intervention.
                     </p>
                   </div>
@@ -1231,19 +1231,19 @@ export default function DiagnosticPage() {
 
                   <form onSubmit={handleSubmitCallback} className="space-y-3">
                     {(contactInfo.phone || callbackInfo.phone) ? (
-                      <div className="bg-slate-50 rounded-xl p-3 text-center">
-                        <p className="text-xs text-slate-500 mb-1">Nous vous rappelons au</p>
-                        <p className="font-bold text-slate-900">{callbackInfo.phone || contactInfo.phone}</p>
+                      <div className="bg-ipb-cream rounded-xl p-3 text-center">
+                        <p className="text-xs text-ipb-muted mb-1">Nous vous rappelons au</p>
+                        <p className="font-bold text-ipb-text">{callbackInfo.phone || contactInfo.phone}</p>
                       </div>
                     ) : (
                       <div>
-                        <label className="block text-xs font-semibold text-slate-600 mb-1">Votre téléphone pour être rappelé *</label>
+                        <label className="block text-xs font-semibold text-ipb-muted mb-1">Votre téléphone pour être rappelé *</label>
                         <input
                           type="tel"
                           value={callbackInfo.phone}
                           onChange={(e) => setCallbackInfo({ ...callbackInfo, phone: e.target.value })}
                           placeholder="06 12 34 56 78"
-                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all"
+                          className="w-full px-4 py-3 rounded-xl border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all"
                           required
                         />
                       </div>
@@ -1258,7 +1258,7 @@ export default function DiagnosticPage() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3.5 rounded-xl transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+                      className="w-full bg-ipb-orange hover:bg-ipb-orange text-white font-bold py-3.5 rounded-xl transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
                     >
                       {isSubmitting ? (
                         <>
@@ -1270,19 +1270,19 @@ export default function DiagnosticPage() {
                       )}
                     </button>
 
-                    <div className="flex items-center justify-center gap-4 text-[10px] text-slate-400">
+                    <div className="flex items-center justify-center gap-4 text-[10px] text-ipb-light">
                       <span>✓ Sans engagement</span>
                       <span>✓ Rappel gratuit</span>
                       <span>✓ Intervention 48-72h</span>
                     </div>
 
-                    <div className="text-center pt-2 border-t border-slate-100">
-                      <a href="tel:0582953375" onClick={trackPhoneClick} className="text-slate-500 text-xs hover:text-slate-700 transition-colors font-medium">
+                    <div className="text-center pt-2 border-t border-ipb-rule">
+                      <a href="tel:0582953375" onClick={trackPhoneClick} className="text-ipb-muted text-xs hover:text-ipb-text transition-colors font-medium">
                         📞 Appel direct : 05 82 95 33 75
                       </a>
                     </div>
 
-                    <p className="text-[10px] text-slate-400 text-center">
+                    <p className="text-[10px] text-ipb-light text-center">
                       🔒 Données sécurisées et confidentielles
                     </p>
                   </form>
@@ -1298,23 +1298,23 @@ export default function DiagnosticPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h2 className="text-xl font-bold text-slate-900 mb-2">Demande envoyée avec succès !</h2>
-                <p className="text-slate-500 text-sm mb-4">
+                <h2 className="text-xl font-bold text-ipb-text mb-2">Demande envoyée avec succès !</h2>
+                <p className="text-ipb-muted text-sm mb-4">
                   Un expert IPB vous rappellera sous 24h pour organiser votre diagnostic sur site.
                 </p>
-                <div className="bg-slate-50 rounded-xl p-4 text-left max-w-sm mx-auto">
-                  <p className="text-xs font-bold text-slate-700 mb-2">Prochaines étapes :</p>
-                  <div className="space-y-2 text-xs text-slate-600">
+                <div className="bg-ipb-cream rounded-xl p-4 text-left max-w-sm mx-auto">
+                  <p className="text-xs font-bold text-ipb-text mb-2">Prochaines étapes :</p>
+                  <div className="space-y-2 text-xs text-ipb-muted">
                     <div className="flex items-start gap-2">
-                      <span className="bg-orange-100 text-orange-600 font-bold rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 text-[10px]">1</span>
+                      <span className="bg-ipb-stone text-ipb-orange font-bold rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 text-[10px]">1</span>
                       <span>Appel de notre expert sous 24h</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <span className="bg-orange-100 text-orange-600 font-bold rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 text-[10px]">2</span>
+                      <span className="bg-ipb-stone text-ipb-orange font-bold rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 text-[10px]">2</span>
                       <span>Diagnostic instrumenté sur site (déduit des travaux)</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <span className="bg-orange-100 text-orange-600 font-bold rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 text-[10px]">3</span>
+                      <span className="bg-ipb-stone text-ipb-orange font-bold rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 text-[10px]">3</span>
                       <span>Rapport + devis détaillé gratuit</span>
                     </div>
                   </div>
@@ -1322,7 +1322,7 @@ export default function DiagnosticPage() {
                 <a
                   href="tel:0582953375"
                   onClick={trackPhoneClick}
-                  className="inline-flex items-center gap-2 mt-5 text-slate-600 hover:text-slate-800 text-sm font-medium transition-colors"
+                  className="inline-flex items-center gap-2 mt-5 text-ipb-muted hover:text-ipb-text text-sm font-medium transition-colors"
                 >
                   📞 05 82 95 33 75
                 </a>
@@ -1335,7 +1335,7 @@ export default function DiagnosticPage() {
         {/* Footer info */}
         {step > 0 && step <= totalQuestions && (
           <div className="mt-4">
-            <p className="text-center text-slate-400 text-xs">
+            <p className="text-center text-ipb-light text-xs">
               ⏱️ Encore {totalQuestions - step + 1} question{totalQuestions - step > 0 ? 's' : ''} • Réponses confidentielles
             </p>
           </div>

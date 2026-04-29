@@ -1,6 +1,7 @@
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
+import { StaggerDigits } from '@/components/ui/StaggerDigits';
 
 /**
  * CtaFinal — split éditorial : texte gauche / grand téléphone Playfair droite.
@@ -28,14 +29,14 @@ export function CtaFinal() {
                 <em>une question.</em>
               </h2>
               <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[520px]">
-                Décrivez-nous votre situation en quelques minutes. Notre cabinet vous répondra sous 24 heures, par téléphone ou par mail, selon ce que vous préférez.
+                Décrivez-nous votre situation en quelques minutes. Notre institut vous répondra sous 24 heures, par téléphone ou par mail, selon ce que vous préférez.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <MagneticButton href="/diagnostic" variant="primary">
                   Décrire ma situation
                 </MagneticButton>
                 <MagneticButton href="/contact" variant="ghost">
-                  Écrire au cabinet
+                  Nous écrire
                 </MagneticButton>
               </div>
             </div>
@@ -46,14 +47,19 @@ export function CtaFinal() {
               </p>
               <a
                 href="tel:0582953375"
-                className="block font-serif text-ipb-text hover:text-ipb-orange transition-colors leading-none mb-3"
+                className="group relative inline-block font-serif text-ipb-text hover:text-ipb-orange transition-colors duration-500 leading-none mb-3"
                 style={{
                   fontSize: 'clamp(34px, 3.6vw, 52px)',
                   letterSpacing: '-0.02em',
                   fontWeight: 700,
                 }}
+                aria-label="Téléphone : 05 82 95 33 75"
               >
-                05 82 95 33 75
+                <StaggerDigits text="05 82 95 33 75" />
+                <span
+                  aria-hidden="true"
+                  className="absolute left-0 right-0 -bottom-1 h-px bg-ipb-orange origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)]"
+                />
               </a>
               <p className="text-[13px] font-light text-ipb-muted leading-[1.7]">
                 Lundi au vendredi, 8h&nbsp;–&nbsp;19h.<br />

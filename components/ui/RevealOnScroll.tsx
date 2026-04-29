@@ -5,27 +5,37 @@ import { useEffect, useRef, type ReactNode } from 'react';
 /**
  * RevealOnScroll — anime un bloc à son entrée dans le viewport.
  *
- * Pattern signature IPB :
- * État initial : opacity 0, translateY(28px)
- * État final : opacity 1, transform none
- * Transition : 0.9s cubic-bezier(.16,1,.3,1) avec délai paramétrable
- * IntersectionObserver threshold 0.08
+ * Variants d'amplitude pour créer une hiérarchie cinétique :
+ *   - subtle    : 12px / 0.6s     — textes courants, listes, légendes
+ *   - default   : 28px / 0.9s     — comportement historique (compat)
+ *   - editorial : 40px + scale    — H2/H3 Playfair, titres de section
+ *   - mass      : 60px / 1.2s     — pull-quotes, stats monumentaux
  *
- * Respecte prefers-reduced-motion.
- *
- * Cf. IPB_Design_Handoff.md §7
+ * Toutes respectent prefers-reduced-motion.
  */
+type Variant = 'subtle' | 'default' | 'editorial' | 'mass';
+type Direction = 'up' | 'left' | 'right' | 'none';
+
 interface RevealOnScrollProps {
   children: ReactNode;
-  delay?: number; // en secondes (échelonner 0, 0.06, 0.12, etc.)
-  direction?: 'up' | 'left' | 'right' | 'none';
+  delay?: number;
+  direction?: Direction;
+  variant?: Variant;
   className?: string;
 }
+
+const VARIANTS: Record<Variant, { distance: number; duration: number; scale?: number }> = {
+  subtle:    { distance: 12, duration: 0.6 },
+  default:   { distance: 28, duration: 0.9 },
+  editorial: { distance: 40, duration: 1.1, scale: 0.985 },
+  mass:      { distance: 60, duration: 1.2, scale: 0.97 },
+};
 
 export function RevealOnScroll({
   children,
   delay = 0,
   direction = 'up',
+  variant = 'default',
   className = '',
 }: RevealOnScrollProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -55,11 +65,17 @@ export function RevealOnScroll({
     return () => observer.disconnect();
   }, []);
 
-  const initialTransform =
-    direction === 'up' ? 'translateY(28px)' :
-    direction === 'left' ? 'translateX(-28px)' :
-    direction === 'right' ? 'translateX(28px)' :
-    'none';
+  const { distance, duration, scale } = VARIANTS[variant];
+
+  const translate =
+    direction === 'up'    ? `translateY(${distance}px)` :
+    direction === 'left'  ? `translateX(-${distance}px)` :
+    direction === 'right' ? `translateX(${distance}px)` :
+    '';
+
+  const initialTransform = scale
+    ? `${translate} scale(${scale})`.trim()
+    : translate || 'none';
 
   return (
     <div
@@ -68,7 +84,7 @@ export function RevealOnScroll({
       style={{
         opacity: 0,
         transform: initialTransform,
-        transition: `opacity 0.9s cubic-bezier(.16,1,.3,1) ${delay}s, transform 0.9s cubic-bezier(.16,1,.3,1) ${delay}s`,
+        transition: `opacity ${duration}s cubic-bezier(.16,1,.3,1) ${delay}s, transform ${duration}s cubic-bezier(.16,1,.3,1) ${delay}s`,
         willChange: 'opacity, transform',
       }}
     >

@@ -48,7 +48,7 @@ const wrap = (innerHtml: string, opts?: { eyebrow?: string; unsubscribeUrl?: str
     <!-- Header navy minimaliste -->
     <div style="background: #0B1826; color: white; padding: 24px; text-align: center;">
       <p style="margin: 0; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5);">
-        ${opts?.eyebrow || 'IPB · Cabinet de pathologie du bâtiment'}
+        ${opts?.eyebrow || 'IPB · Institut de pathologie du bâtiment'}
       </p>
       <p style="margin: 12px 0 0; font-family: Georgia, serif; font-size: 22px; font-weight: 700; letter-spacing: -0.02em;">
         Institut Pathologie du Bâtiment
@@ -66,8 +66,8 @@ const wrap = (innerHtml: string, opts?: { eyebrow?: string; unsubscribeUrl?: str
         <a href="https://www.ipb-expertise.fr" style="color: rgba(255,255,255,0.7); text-decoration: none;">ipb-expertise.fr</a>
       </p>
       <p style="margin: 0; color: rgba(255,255,255,0.3); font-size: 10px;">
-        Vous recevez cet email parce que vous avez sollicité notre cabinet.
-        ${opts?.unsubscribeUrl ? `<br /><a href="${opts.unsubscribeUrl}" style="color: rgba(255,255,255,0.4); text-decoration: underline;">Ne plus recevoir d'emails du cabinet</a>` : ''}
+        Vous recevez cet email parce que vous avez sollicité notre institut.
+        ${opts?.unsubscribeUrl ? `<br /><a href="${opts.unsubscribeUrl}" style="color: rgba(255,255,255,0.4); text-decoration: underline;">Ne plus recevoir d'emails de l’institut</a>` : ''}
       </p>
     </div>
 
@@ -109,7 +109,7 @@ const para = (text: string) => `
 
 const signature = `
   <p style="margin: 28px 0 0; font-family: Georgia, serif; font-style: italic; color: #1A1917; font-size: 15px;">
-    Ludovic D. — Fondateur du cabinet
+    Ludovic D. — Fondateur de l’institut
   </p>
   <p style="margin: 4px 0 0; font-size: 11px; color: #A09A93; letter-spacing: 0.12em; text-transform: uppercase;">
     Ingénieur structure
@@ -131,7 +131,7 @@ export function j0Confirmation(ctx: PathContext): string {
     ${card(`
       ${eyebrow('Votre demande est en cours d\'analyse')}
       ${heading('Bonjour ' + ctx.firstName + ',', 'votre dossier est ouvert.')}
-      ${para('Notre cabinet vient de recevoir votre demande concernant ' + (ctx.path === 'fissure' ? 'des fissures sur votre habitation' : 'votre projet d\'ouverture de mur porteur') + (ctx.city ? ` à ${ctx.city}` : '') + '. Nous l\'étudions avec attention.')}
+      ${para('Notre institut vient de recevoir votre demande concernant ' + (ctx.path === 'fissure' ? 'des fissures sur votre habitation' : 'votre projet d\'ouverture de mur porteur') + (ctx.city ? ` à ${ctx.city}` : '') + '. Nous l\'étudions avec attention.')}
       ${para(tierMessage)}
       ${para('En attendant, vous pouvez nous appeler directement si vous avez la moindre question.')}
       <p style="margin: 28px 0;">
@@ -234,7 +234,7 @@ export function j14Closure(ctx: PathContext): string {
       ${para('Sans réponse de votre part dans les 7 prochains jours, nous classerons votre dossier. Vous pouvez bien sûr nous rappeler à tout moment — votre dossier sera rouvert sans formalité.')}
       ${para('Si vous souhaitez rester en contact pour les analyses régulières que nous publions sur la pathologie du bâtiment et les ouvertures de murs porteurs en Occitanie, vous pouvez vous inscrire à notre journal mensuel.')}
       <p style="margin: 28px 0;">
-        ${button('Recevoir le journal du cabinet', 'https://www.ipb-expertise.fr/blog')}
+        ${button('Recevoir le journal de l’institut', 'https://www.ipb-expertise.fr/blog')}
       </p>
       ${signature}
     `)}
@@ -255,7 +255,7 @@ export const emailTemplates = {
 };
 
 export const emailSequence = [
-  { offsetDays: 0, name: 'j0Confirmation', subject: (ctx: PathContext) => `Votre demande au cabinet IPB est prise en compte` },
+  { offsetDays: 0, name: 'j0Confirmation', subject: (ctx: PathContext) => `Votre demande IPB est prise en compte` },
   { offsetDays: 1, name: 'j1Synthese', subject: (ctx: PathContext) => `Voici ce que nous voyons dans votre situation` },
   { offsetDays: 3, name: 'j3CaseStudy', subject: (ctx: PathContext) => `Un chantier IPB raconté — pour vous donner du concret` },
   { offsetDays: 7, name: 'j7ReprisePoint', subject: (ctx: PathContext) => `Souhaitez-vous échanger 15 minutes ?` },

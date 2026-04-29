@@ -4,6 +4,7 @@ import Script from 'next/script';
 import Image from 'next/image';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { CheckCircle, Phone, ArrowRight, AlertTriangle, Home, Layers, TreeDeciduous, Construction, Clock, Shield, TrendingUp, ChevronRight } from 'lucide-react';
 
@@ -75,11 +76,12 @@ const jsonLd = {
 
 export default function FissureEscalierPage() {
   return (
-    <div className="font-sans text-slate-800 bg-white antialiased">
+    <div className="font-sans text-ipb-text bg-white antialiased">
       <Script id="article-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Hero Premium */}
       <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-orange-950 text-white overflow-hidden">
@@ -90,12 +92,12 @@ export default function FissureEscalierPage() {
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
           {/* Breadcrumb stylé */}
-          <nav className="flex items-center gap-2 text-sm text-slate-400 mb-8">
+          <nav className="flex items-center gap-2 text-sm text-ipb-light mb-8">
             <Link href="/" className="hover:text-white transition">Accueil</Link>
             <ChevronRight size={14} />
             <Link href="/expert-fissures-toulouse-31" className="hover:text-white transition">Expert Fissures</Link>
             <ChevronRight size={14} />
-            <span className="text-orange-400">Fissure en escalier</span>
+            <span className="text-ipb-orange-l">Fissure en escalier</span>
           </nav>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -108,19 +110,19 @@ export default function FissureEscalierPage() {
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.1]">
                 Fissure en
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">
+                <span className="block text-transparent bg-clip-text bg-ipb-orange">
                   Escalier
                 </span>
               </h1>
 
-              <p className="text-xl text-slate-300 mb-8 leading-relaxed max-w-xl">
+              <p className="text-xl text-white/70 mb-8 leading-relaxed max-w-xl">
                 Une fissure diagonale qui suit les joints de mortier ? C'est le signe d'un 
                 <strong className="text-white"> tassement différentiel</strong>. 
                 Votre fondation bouge. Il faut agir.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/diagnostic" className="group bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl shadow-orange-500/25">
+                <Link href="/diagnostic" className="group bg-ipb-orange hover:bg-[#b35519] text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl shadow-orange-500/25">
                   Diagnostic gratuit
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -137,17 +139,17 @@ export default function FissureEscalierPage() {
                 <div className="bg-white/10 rounded-2xl p-6 mb-6">
                   <div className="text-6xl mb-4">🪜</div>
                   <h2 className="text-xl font-bold text-white mb-2">Schéma typique</h2>
-                  <p className="text-slate-300 text-sm">La fissure suit les joints en "marches d'escalier" car c'est le chemin de moindre résistance du mur.</p>
+                  <p className="text-white/70 text-sm">La fissure suit les joints en "marches d'escalier" car c'est le chemin de moindre résistance du mur.</p>
                 </div>
                 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-white/5 rounded-xl p-4 text-center">
-                    <div className="text-3xl font-black text-orange-400">85%</div>
-                    <div className="text-xs text-slate-400 mt-1">Liées au sol argileux</div>
+                    <div className="text-3xl font-black text-ipb-orange-l">85%</div>
+                    <div className="text-xs text-ipb-light mt-1">Liées au sol argileux</div>
                   </div>
                   <div className="bg-white/5 rounded-xl p-4 text-center">
                     <div className="text-3xl font-black text-red-400">+15%</div>
-                    <div className="text-xs text-slate-400 mt-1">Par mois sans traitement</div>
+                    <div className="text-xs text-ipb-light mt-1">Par mois sans traitement</div>
                   </div>
                 </div>
               </div>
@@ -167,13 +169,13 @@ export default function FissureEscalierPage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="inline-block bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
+            <span className="inline-block bg-ipb-stone text-ipb-orange px-4 py-2 rounded-full text-sm font-bold mb-4">
               Comprendre les causes
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
               Pourquoi cette fissure apparaît ?
             </h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            <p className="text-xl text-ipb-muted max-w-2xl mx-auto">
               Une fissure en escalier n'est jamais anodine. Elle révèle un problème sous vos fondations.
             </p>
           </div>
@@ -182,13 +184,13 @@ export default function FissureEscalierPage() {
             {causes.map((cause, index) => (
               <div 
                 key={index}
-                className="group relative bg-white rounded-3xl p-8 shadow-xl shadow-slate-200/50 border border-slate-100 hover:shadow-2xl hover:shadow-orange-500/10 hover:border-orange-200 transition-all duration-300 hover:-translate-y-1"
+                className="group relative bg-white rounded-3xl p-8 shadow-xl shadow-slate-200/50 border border-ipb-rule hover:shadow-2xl hover:shadow-orange-500/10 hover:border-ipb-rule transition-all duration-300 hover:-translate-y-1"
               >
                 <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 bg-${cause.color}-100 text-${cause.color}-600 group-hover:scale-110 transition-transform`}>
                   {cause.icon}
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{cause.title}</h3>
-                <p className="text-slate-600 leading-relaxed">{cause.description}</p>
+                <h3 className="text-xl font-bold text-ipb-text mb-3">{cause.title}</h3>
+                <p className="text-ipb-muted leading-relaxed">{cause.description}</p>
                 
                 {index === 1 && (
                   <div className="absolute -top-3 -right-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">
@@ -202,16 +204,16 @@ export default function FissureEscalierPage() {
       </section>
 
       {/* Section Gravité - Visual Gauge */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-ipb-cream">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="inline-block bg-red-100 text-red-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
               Évaluer la gravité
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
               Votre fissure est-elle grave ?
             </h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            <p className="text-xl text-ipb-muted max-w-2xl mx-auto">
               L'ouverture de la fissure détermine l'urgence d'intervention.
             </p>
           </div>
@@ -221,22 +223,22 @@ export default function FissureEscalierPage() {
               {signesGravite.map((item, index) => (
                 <div key={index} className="relative">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-bold text-slate-900">{item.signe}</span>
+                    <span className="font-bold text-ipb-text">{item.signe}</span>
                     <span className={`text-sm font-bold px-3 py-1 rounded-full ${
                       item.color === 'green' ? 'bg-green-100 text-green-700' :
                       item.color === 'yellow' ? 'bg-yellow-100 text-yellow-700' :
-                      item.color === 'orange' ? 'bg-orange-100 text-orange-700' :
+                      item.color === 'orange' ? 'bg-ipb-stone text-ipb-orange' :
                       'bg-red-100 text-red-700'
                     }`}>
                       {item.niveau}
                     </span>
                   </div>
-                  <div className="h-4 bg-slate-100 rounded-full overflow-hidden">
+                  <div className="h-4 bg-ipb-stone rounded-full overflow-hidden">
                     <div 
                       className={`h-full rounded-full transition-all duration-1000 ${
                         item.color === 'green' ? 'bg-gradient-to-r from-green-400 to-green-500' :
                         item.color === 'yellow' ? 'bg-gradient-to-r from-yellow-400 to-yellow-500' :
-                        item.color === 'orange' ? 'bg-gradient-to-r from-orange-400 to-orange-500' :
+                        item.color === 'orange' ? 'bg-ipb-orange' :
                         'bg-gradient-to-r from-red-400 to-red-500'
                       }`}
                       style={{ width: item.width }}
@@ -268,13 +270,13 @@ export default function FissureEscalierPage() {
       <section className="py-20 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="inline-block bg-orange-500/20 text-orange-300 px-4 py-2 rounded-full text-sm font-bold mb-4">
+            <span className="inline-block bg-ipb-orange/20 text-ipb-orange-l px-4 py-2 rounded-full text-sm font-bold mb-4">
               Notre méthode
             </span>
             <h2 className="text-3xl md:text-4xl font-black mb-4">
               Comment nous réparons votre fissure
             </h2>
-            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+            <p className="text-xl text-ipb-light max-w-2xl mx-auto">
               L'agrafage structurel : la solution éprouvée pour 85% des cas, 3x moins chère que les micropieux.
             </p>
           </div>
@@ -292,15 +294,15 @@ export default function FissureEscalierPage() {
                     <span className="text-6xl font-black text-white/10">{item.step}</span>
                   </div>
                   <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                  <p className="text-slate-400 mb-4">{item.desc}</p>
-                  <div className="flex items-center gap-2 text-orange-400 text-sm font-bold">
+                  <p className="text-ipb-light mb-4">{item.desc}</p>
+                  <div className="flex items-center gap-2 text-ipb-orange-l text-sm font-bold">
                     <Clock size={16} />
                     {item.duration}
                   </div>
                 </div>
                 {index < 2 && (
                   <div className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
-                    <ArrowRight className="text-orange-500" size={24} />
+                    <ArrowRight className="text-ipb-orange" size={24} />
                   </div>
                 )}
               </div>
@@ -308,22 +310,22 @@ export default function FissureEscalierPage() {
           </div>
 
           {/* Prix */}
-          <div className="mt-16 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-3xl p-8 md:p-12 border border-orange-500/30">
+          <div className="mt-16 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-3xl p-8 md:p-12 border border-ipb-orange/30">
             <div className="grid md:grid-cols-3 gap-8 items-center">
               <div className="text-center md:text-left">
-                <div className="text-sm text-orange-300 font-bold mb-2">DIAGNOSTIC</div>
+                <div className="text-sm text-ipb-orange-l font-bold mb-2">DIAGNOSTIC</div>
                 <div className="inline-block bg-green-500/20 text-green-400 text-sm font-bold px-3 py-1 rounded-full mb-1">Déduit à 100%</div>
-                <div className="text-slate-400">du montant des travaux</div>
+                <div className="text-ipb-light">du montant des travaux</div>
               </div>
               <div className="text-center border-y md:border-y-0 md:border-x border-white/10 py-8 md:py-0">
-                <div className="text-sm text-orange-300 font-bold mb-2">AGRAFAGE</div>
+                <div className="text-sm text-ipb-orange-l font-bold mb-2">AGRAFAGE</div>
                 <div className="text-4xl font-black text-white">8-18K€</div>
-                <div className="text-slate-400">Selon étendue • Garantie 10 ans</div>
+                <div className="text-ipb-light">Selon étendue • Garantie 10 ans</div>
               </div>
               <div className="text-center md:text-right">
                 <div className="text-sm text-green-300 font-bold mb-2">ÉCONOMIE VS MICROPIEUX</div>
                 <div className="text-4xl font-black text-green-400">-65%</div>
-                <div className="text-slate-400">Soit 15 000€ à 30 000€ économisés</div>
+                <div className="text-ipb-light">Soit 15 000€ à 30 000€ économisés</div>
               </div>
             </div>
           </div>
@@ -334,24 +336,24 @@ export default function FissureEscalierPage() {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="inline-block bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
+            <span className="inline-block bg-ipb-stone text-ipb-text px-4 py-2 rounded-full text-sm font-bold mb-4">
               Questions fréquentes
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text">
               Vos questions, nos réponses
             </h2>
           </div>
 
           <div className="space-y-4">
             {faqItems.map((item, index) => (
-              <details key={index} className="group bg-slate-50 rounded-2xl overflow-hidden">
-                <summary className="flex items-center justify-between p-6 cursor-pointer hover:bg-slate-100 transition-colors">
-                  <span className="font-bold text-slate-900 pr-8">{item.q}</span>
-                  <span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 group-open:rotate-180 transition-transform flex-shrink-0">
+              <details key={index} className="group bg-ipb-cream rounded-2xl overflow-hidden">
+                <summary className="flex items-center justify-between p-6 cursor-pointer hover:bg-ipb-stone transition-colors">
+                  <span className="font-bold text-ipb-text pr-8">{item.q}</span>
+                  <span className="w-8 h-8 bg-ipb-stone rounded-full flex items-center justify-center text-ipb-orange group-open:rotate-180 transition-transform flex-shrink-0">
                     <ChevronRight size={18} className="rotate-90" />
                   </span>
                 </summary>
-                <div className="px-6 pb-6 text-slate-600 leading-relaxed">
+                <div className="px-6 pb-6 text-ipb-muted leading-relaxed">
                   {item.a}
                 </div>
               </details>
@@ -361,9 +363,9 @@ export default function FissureEscalierPage() {
       </section>
 
       {/* Articles connexes */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-ipb-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-slate-900 mb-8 text-center">
+          <h2 className="text-2xl font-black text-ipb-text mb-8 text-center">
             Articles connexes
           </h2>
           <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
@@ -378,13 +380,13 @@ export default function FissureEscalierPage() {
               <Link 
                 key={index}
                 href={item.href}
-                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-slate-100"
+                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-ipb-rule"
               >
                 <span className="text-4xl mb-4 block">{item.icon}</span>
-                <h3 className="font-bold text-slate-900 group-hover:text-orange-600 transition-colors mb-1">
+                <h3 className="font-bold text-ipb-text group-hover:text-ipb-orange transition-colors mb-1">
                   {item.title}
                 </h3>
-                <p className="text-sm text-slate-500">{item.desc}</p>
+                <p className="text-sm text-ipb-muted">{item.desc}</p>
               </Link>
             ))}
           </div>
@@ -392,7 +394,7 @@ export default function FissureEscalierPage() {
       </section>
 
       {/* CTA Final */}
-      <section className="py-20 bg-gradient-to-r from-orange-500 via-red-500 to-orange-600 text-white relative overflow-hidden">
+      <section className="py-20 bg-ipb-orange text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, white 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
         </div>
@@ -405,15 +407,15 @@ export default function FissureEscalierPage() {
           
           <h2 className="text-3xl md:text-5xl font-black mb-6">
             Votre fissure n'attendra pas.
-            <span className="block text-orange-200">Nous non plus.</span>
+            <span className="block text-ipb-orange-l">Nous non plus.</span>
           </h2>
           
-          <p className="text-xl text-orange-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-ipb-orange-l mb-8 max-w-2xl mx-auto">
             Diagnostic sous 48h • Devis gratuit • Garantie décennale
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/diagnostic" className="group bg-white text-orange-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-orange-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">
+            <Link href="/diagnostic" className="group bg-white text-ipb-orange px-10 py-5 rounded-2xl font-bold text-lg hover:bg-ipb-stone flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">
               Je demande mon diagnostic gratuit
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>

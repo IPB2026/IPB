@@ -2,14 +2,17 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Calendar, Clock, Search } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
+import { TrustRibbon } from '@/components/ui/TrustRibbon';
 import { Footer } from '@/components/home/Footer';
+import { Eyebrow } from '@/components/ui/Eyebrow';
+import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { InternalLinks } from '@/components/seo/InternalLinks';
 import { blogPostsList } from '@/app/data/blog';
 
-// Types pour les articles (interface locale pour la page blog)
 interface BlogPostDisplay {
   slug: string;
   title: string;
@@ -22,17 +25,9 @@ interface BlogPostDisplay {
   featured?: boolean;
 }
 
-// Détecte automatiquement les articles "mur porteur" via leur slug ou keywords
-// (sans toucher au type 'expertise' qui couvre les contenus avancés généralistes)
-function detectCategory(post: typeof blogPostsList[number]): BlogPostDisplay['category'] {
-  if (post.category) return post.category as BlogPostDisplay['category'];
-  return 'expertise';
-}
-
 const blogPosts: BlogPostDisplay[] = blogPostsList
   .map((post) => {
     let category: BlogPostDisplay['category'] = post.category as BlogPostDisplay['category'];
-    // Re-classifier les articles mur porteur (pivot stratégique)
     const lowerKw = (post.keywords || []).join(' ').toLowerCase();
     if (lowerKw.includes('mur porteur') || lowerKw.includes('baie vitree') || post.slug.includes('mur-porteur') || post.slug.includes('baie-vitree')) {
       category = 'mur-porteur';
@@ -50,22 +45,12 @@ const blogPosts: BlogPostDisplay[] = blogPostsList
   })
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-// Filtres affichés en UI (humidité MASQUÉE — articles toujours indexés)
-// Brief client : "pour le blog je voit toujours ecrit fissures et humidité, c'est pas bon"
 const visibleFilters: Array<{ key: BlogPostDisplay['category']; label: string }> = [
   { key: 'fissures', label: 'Fissures' },
   { key: 'mur-porteur', label: 'Mur porteur' },
   { key: 'expertise', label: 'Expertise' },
   { key: 'conseils', label: 'Conseils' },
 ];
-
-const categoryColors: Record<BlogPostDisplay['category'], string> = {
-  fissures: 'bg-orange-100 text-orange-700 border-orange-200',
-  'mur-porteur': 'bg-amber-100 text-amber-800 border-amber-200',
-  humidite: 'bg-blue-100 text-blue-700 border-blue-200',
-  conseils: 'bg-slate-100 text-slate-700 border-slate-200',
-  expertise: 'bg-purple-100 text-purple-700 border-purple-200',
-};
 
 const categoryLabels: Record<BlogPostDisplay['category'], string> = {
   fissures: 'Fissures',
@@ -86,14 +71,11 @@ export default function BlogPage() {
     return matchesSearch && matchesCategory;
   });
 
-  const featuredPosts = blogPosts.filter(post => post.featured);
-  const regularPosts = filteredPosts.filter(post => !post.featured);
-
   const collectionSchema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Blog IPB - Conseils Fissures & Humidité',
-    description: "Guides experts et conseils techniques sur la structure du bâtiment : diagnostic de fissures, ouverture de mur porteur, expertises pré-achat.",
+    name: 'Blog de l’institut IPB — Structure, fissures, mur porteur',
+    description: "Articles techniques rédigés par l’institut IPB sur la structure du bâtiment : diagnostic de fissures, ouverture de mur porteur, expertise avant achat immobilier.",
     url: 'https://www.ipb-expertise.fr/blog',
     mainEntity: {
       '@type': 'ItemList',
@@ -108,261 +90,325 @@ export default function BlogPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
       />
       <TopBar />
+      <TrustRibbon />
       <Navbar />
-      
-      {/* Header */}
-      <div className="bg-slate-900 text-white py-12 md:py-16 lg:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-orange-950 opacity-90"></div>
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/30 text-orange-100 px-4 py-1.5 rounded-full text-xs font-bold mb-6 uppercase tracking-wider backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse"></span> Blog Expert
+      <SmartBackBar />
+
+      {/* HERO éditorial blog — cohérent avec la home */}
+      <section className="bg-ipb-cream relative">
+        <div className="max-w-ipb mx-auto px-6 lg:px-12 pt-16 lg:pt-20 pb-12 lg:pb-16">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-end">
+            <div className="lg:col-span-7">
+              <RevealOnScroll>
+                <Eyebrow>Le blog de l’institut · IPB</Eyebrow>
+              </RevealOnScroll>
+
+              <RevealOnScroll delay={0.06} variant="editorial">
+                <h1
+                  className="font-serif text-ipb-text mb-8"
+                  style={{
+                    fontSize: 'clamp(40px, 4.6vw, 72px)',
+                    lineHeight: 1.04,
+                    letterSpacing: '-0.026em',
+                    fontWeight: 700,
+                  }}
+                >
+                  Notes de chantier <em>et guides techniques.</em>
+                </h1>
+              </RevealOnScroll>
+
+              <RevealOnScroll delay={0.12} variant="subtle">
+                <p className="text-[16px] leading-[1.85] font-light text-ipb-muted max-w-[580px]">
+                  Articles rédigés par notre institut à partir de cas réels rencontrés sur nos chantiers en Occitanie. Diagnostic de fissures, ouverture de mur porteur, expertise avant achat — chaque sujet est traité comme on traiterait un dossier client.
+                </p>
+              </RevealOnScroll>
             </div>
-            <h1 className="text-3xl md:text-4xl lg:text-6xl font-extrabold tracking-tight mb-4 md:mb-6 leading-tight">
-              Blog Expert <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-200">Fissures & Humidité</span>
-            </h1>
-            <p className="text-base md:text-lg lg:text-xl text-slate-300 mb-6 md:mb-8 leading-relaxed">
-              Guides techniques et analyses d'experts sur la structure du bâtiment : diagnostic de fissures, ouverture de mur porteur, expertise avant achat immobilier.
-            </p>
-            
-            {/* Barre de recherche */}
-            <div className="relative max-w-2xl mx-auto">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
-              <input
-                type="text"
-                placeholder="Rechercher un article..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-              />
-            </div>
+
+            <RevealOnScroll delay={0.18} className="lg:col-span-5 lg:border-l lg:border-ipb-rule lg:pl-12">
+              {/* Barre de recherche éditoriale */}
+              <label htmlFor="blog-search" className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-3 block">
+                Rechercher dans le blog
+              </label>
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-ipb-light pointer-events-none" size={16} aria-hidden="true" />
+                <input
+                  id="blog-search"
+                  type="text"
+                  placeholder="Mot-clé, sujet, type de fissure…"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-11 pr-4 py-3.5 rounded-[3px] bg-ipb-white border border-ipb-rule text-ipb-text placeholder-ipb-light text-[14px] font-light focus:outline-none focus:border-ipb-orange transition-colors"
+                />
+              </div>
+              <p className="text-[12px] text-ipb-muted mt-3">
+                {blogPosts.length} articles techniques publiés
+              </p>
+            </RevealOnScroll>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Filtres par catégorie */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 md:-mt-8 relative z-20">
-        <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-3 md:p-4 flex flex-wrap gap-2 md:gap-3 justify-center">
-          <button
-            onClick={() => setSelectedCategory(null)}
-            className={`px-6 py-2 rounded-lg font-bold text-sm transition-all ${
-              !selectedCategory
-                ? 'bg-slate-900 text-white shadow-md'
-                : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-            }`}
-          >
-            Tous les articles
-          </button>
-          {visibleFilters.map(({ key, label }) => (
+      {/* Filtres catégories — pills éditoriales sur cream */}
+      <section className="bg-ipb-cream border-y border-ipb-rule">
+        <div className="max-w-ipb mx-auto px-6 lg:px-12 py-6">
+          <div className="flex flex-wrap items-center gap-2 lg:gap-3">
+            <span className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mr-3 hidden lg:inline">Catégorie</span>
             <button
-              key={key}
-              onClick={() => setSelectedCategory(selectedCategory === key ? null : key)}
-              className={`px-6 py-2 rounded-lg font-bold text-sm transition-all border-2 ${
-                selectedCategory === key
-                  ? categoryColors[key as keyof typeof categoryColors] + ' border-current'
-                  : 'bg-white text-slate-700 border-slate-200 hover:border-slate-300'
+              onClick={() => setSelectedCategory(null)}
+              className={`text-[12px] tracking-[0.04em] font-medium px-4 py-2 rounded-[3px] border transition-all duration-300 ${
+                !selectedCategory
+                  ? 'bg-ipb-navy text-white border-ipb-navy'
+                  : 'bg-transparent text-ipb-muted border-ipb-rule hover:border-ipb-orange hover:text-ipb-orange'
               }`}
             >
-              {label}
+              Tous les articles
             </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-16">
-        {/* Articles à la une */}
-        {featuredPosts.length > 0 && searchQuery === '' && !selectedCategory && (
-          <div className="mb-16">
-            <h2 className="text-2xl font-extrabold text-slate-900 mb-8 flex items-center gap-3">
-              <span className="w-1 h-8 bg-orange-600 rounded-full"></span>
-              Articles à la une
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {featuredPosts.map((post) => (
-                <Link
-                  key={post.slug}
-                  href={`/blog/${post.slug}`}
-                  className="group bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative"
-                >
-                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-orange-500 via-orange-300 to-slate-200"></div>
-                  <div className="p-6 pt-7">
-                    <div className="flex items-center justify-between mb-4">
-                      <span className={`px-3 py-1 rounded-full text-xs font-bold border ${categoryColors[post.category]}`}>
-                        {categoryLabels[post.category]}
-                      </span>
-                      {post.featured && (
-                        <span className="bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold">
-                          À la une
-                        </span>
-                      )}
-                    </div>
-                    <div className="h-px w-16 bg-gradient-to-r from-orange-500 to-transparent mb-4"></div>
-                    <h3 className="text-xl font-extrabold text-slate-900 mb-3 group-hover:text-orange-600 transition-colors line-clamp-2">
-                      {post.title}
-                    </h3>
-                    <p className="text-slate-600 mb-4 line-clamp-2 leading-relaxed">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center gap-4 text-sm text-slate-500">
-                      <span className="flex items-center gap-1">
-                        <Calendar size={14} />
-                        {new Date(post.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Clock size={14} />
-                        {post.readTime}
-                      </span>
-                      <span className="text-orange-600 font-medium">
-                        Par {post.author}
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
+            {visibleFilters.map(({ key, label }) => (
+              <button
+                key={key}
+                onClick={() => setSelectedCategory(selectedCategory === key ? null : key)}
+                className={`text-[12px] tracking-[0.04em] font-medium px-4 py-2 rounded-[3px] border transition-all duration-300 ${
+                  selectedCategory === key
+                    ? 'bg-ipb-navy text-white border-ipb-navy'
+                    : 'bg-transparent text-ipb-muted border-ipb-rule hover:border-ipb-orange hover:text-ipb-orange'
+                }`}
+              >
+                {label}
+              </button>
+            ))}
           </div>
-        )}
+        </div>
+      </section>
 
-        {/* Tous les articles */}
-        <div>
-          <h2 className="text-2xl font-extrabold text-slate-900 mb-8 flex items-center gap-3">
-            <span className="w-1 h-8 bg-orange-600 rounded-full"></span>
-            {searchQuery || selectedCategory ? 'Résultats de recherche' : 'Tous les articles'}
+      {/* GRILLE D'ARTICLES — éditoriale */}
+      <section className="bg-ipb-cream py-16 lg:py-20">
+        <div className="max-w-ipb mx-auto px-6 lg:px-12">
+          <div className="flex items-end justify-between mb-10">
+            <h2
+              className="font-serif text-ipb-text"
+              style={{
+                fontSize: 'clamp(24px, 2.4vw, 34px)',
+                lineHeight: 1.15,
+                letterSpacing: '-0.02em',
+                fontWeight: 700,
+              }}
+            >
+              {searchQuery || selectedCategory ? 'Résultats' : 'Tous les articles'}
+            </h2>
             {filteredPosts.length > 0 && (
-              <span className="text-lg font-normal text-slate-500">({filteredPosts.length})</span>
+              <p className="text-[13px] text-ipb-light tracking-wide">
+                {filteredPosts.length} article{filteredPosts.length > 1 ? 's' : ''}
+              </p>
             )}
-          </h2>
+          </div>
 
           {filteredPosts.length === 0 ? (
-            <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-12 text-center">
-              <p className="text-slate-600 text-lg mb-4">Aucun article trouvé.</p>
+            <div className="bg-ipb-white border border-ipb-rule rounded-[6px] p-12 text-center">
+              <p className="font-serif text-ipb-text text-xl mb-4">Aucun article ne correspond.</p>
               <button
                 onClick={() => {
                   setSearchQuery('');
                   setSelectedCategory(null);
                 }}
-                className="text-orange-600 font-bold hover:text-orange-700"
+                className="text-ipb-orange font-medium text-[13px] tracking-wide border-b border-ipb-orange pb-1 hover:text-[#b35519] hover:border-[#b35519] transition-colors"
               >
                 Réinitialiser les filtres
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {regularPosts.map((post) => (
-                <Link
-                  key={post.slug}
-                  href={`/blog/${post.slug}`}
-                  className="group bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden hover:shadow-lg transition-all duration-300 relative"
-                >
-                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-slate-200 via-slate-300 to-orange-400"></div>
-                  <div className="p-5 pt-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className={`px-2 py-1 rounded-full text-xs font-bold border ${categoryColors[post.category]}`}>
-                        {categoryLabels[post.category]}
-                      </span>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+              {filteredPosts.map((post, i) => (
+                <RevealOnScroll key={post.slug} delay={Math.min(i * 0.04, 0.3)}>
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="group relative bg-ipb-white border border-ipb-rule rounded-[6px] overflow-hidden h-full flex flex-col hover:shadow-[0_12px_36px_rgba(11,24,38,0.07)] transition-all duration-500"
+                  >
+                    {/* Filet orange qui s'étend en haut au hover (signature IPB) */}
+                    <span
+                      aria-hidden="true"
+                      className="absolute top-0 left-0 right-0 h-px bg-ipb-orange origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)]"
+                    />
+
+                    <div className="p-7 flex-1 flex flex-col">
+                      {/* Catégorie + date */}
+                      <div className="flex items-center gap-3 text-[10px] text-ipb-light uppercase tracking-[0.16em] mb-5">
+                        <span className="text-ipb-orange font-medium">
+                          {categoryLabels[post.category]}
+                        </span>
+                        <span className="text-ipb-rule" aria-hidden="true">·</span>
+                        <span>
+                          {new Date(post.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' })}
+                        </span>
+                      </div>
+
+                      {/* Titre Playfair */}
+                      <h3
+                        className="font-serif text-ipb-text mb-4 group-hover:text-ipb-orange transition-colors duration-500 leading-[1.25] line-clamp-3"
+                        style={{ fontSize: 'clamp(18px, 1.4vw, 22px)', fontWeight: 700, letterSpacing: '-0.012em' }}
+                      >
+                        {post.title}
+                      </h3>
+
+                      {/* Excerpt */}
+                      <p className="text-[13.5px] leading-[1.7] font-light text-ipb-muted mb-6 line-clamp-3 flex-1">
+                        {post.excerpt}
+                      </p>
+
+                      {/* Footer card */}
+                      <div className="flex items-center justify-between pt-5 border-t border-ipb-rule mt-auto">
+                        <span className="text-[11px] text-ipb-muted font-medium tracking-wide truncate max-w-[170px]">
+                          {post.author}
+                        </span>
+                        <span className="text-[11px] text-ipb-light tracking-wide">
+                          {post.readTime}
+                        </span>
+                      </div>
                     </div>
-                    <div className="h-px w-12 bg-gradient-to-r from-slate-400 to-transparent mb-3"></div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-orange-600 transition-colors line-clamp-2">
-                      {post.title}
-                    </h3>
-                    <p className="text-sm text-slate-600 mb-4 line-clamp-2 leading-relaxed">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between text-xs text-slate-500">
-                      <span className="flex items-center gap-1">
-                        <Calendar size={12} />
-                        {new Date(post.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}
-                      </span>
-                      <span className="text-orange-600 font-medium truncate max-w-[100px]">
-                        {post.author}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Clock size={12} />
-                        {post.readTime}
-                      </span>
-                    </div>
-                  </div>
-                </Link>
+                  </Link>
+                </RevealOnScroll>
               ))}
             </div>
           )}
         </div>
+      </section>
 
-        {/* CTA Section */}
-        <div className="mt-16 bg-slate-900 rounded-3xl p-8 md:p-12 text-center text-white relative overflow-hidden">
-          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-500 via-slate-900 to-slate-900"></div>
-          <div className="relative z-10 max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Besoin d'un diagnostic personnalisé ?</h2>
-            <p className="text-slate-300 mb-8 text-lg">
-              Nos articles vous donnent des pistes, mais chaque situation est unique. Faites appel à notre expertise.
-            </p>
-            <Link
-              href="/diagnostic"
-              className="inline-flex items-center gap-2 bg-orange-600 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl hover:bg-orange-500 transition-all transform hover:-translate-y-1"
+      {/* CTA Section — cohérent avec CtaFinal home */}
+      <section className="bg-ipb-navy py-20 lg:py-24 relative overflow-hidden">
+        <div className="max-w-ipb mx-auto px-6 lg:px-12 relative z-10">
+          <RevealOnScroll variant="editorial">
+            <div className="grid lg:grid-cols-12 gap-8 items-center">
+              <div className="lg:col-span-8">
+                <Eyebrow variant="dark">Aller plus loin</Eyebrow>
+                <h2
+                  className="font-serif text-white mb-6"
+                  style={{
+                    fontSize: 'clamp(28px, 2.8vw, 42px)',
+                    lineHeight: 1.12,
+                    letterSpacing: '-0.022em',
+                    fontWeight: 700,
+                  }}
+                >
+                  Un cas concret <em>vaut mille articles.</em>
+                </h2>
+                <p className="text-[15px] leading-[1.85] font-light text-white/65 max-w-[560px]">
+                  Nos articles donnent les bonnes pistes — mais chaque maison est singulière. Décrivez-nous votre situation, nous vous répondons sous 24 heures.
+                </p>
+              </div>
+              <div className="lg:col-span-4 flex flex-col gap-3 lg:items-end">
+                <Link
+                  href="/diagnostic"
+                  className="inline-flex items-center justify-center gap-2 bg-ipb-orange hover:bg-[#b35519] text-white font-medium px-7 py-4 rounded-[3px] text-[14px] tracking-wide transition-colors duration-300 group"
+                >
+                  Diagnostic gratuit
+                  <span className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+                </Link>
+                <a
+                  href="tel:0582953375"
+                  className="text-[13px] text-white/60 hover:text-white tracking-wide font-medium transition-colors"
+                >
+                  Ou par téléphone : 05 82 95 33 75
+                </a>
+              </div>
+            </div>
+          </RevealOnScroll>
+        </div>
+      </section>
+
+      {/* Problèmes fréquents (guides rapides) — éditorial */}
+      <section className="bg-ipb-cream py-16 lg:py-20 border-t border-ipb-rule">
+        <div className="max-w-ipb mx-auto px-6 lg:px-12">
+          <RevealOnScroll>
+            <Eyebrow>Guides rapides</Eyebrow>
+            <h2
+              className="font-serif text-ipb-text mb-10"
+              style={{
+                fontSize: 'clamp(24px, 2.4vw, 34px)',
+                lineHeight: 1.15,
+                letterSpacing: '-0.02em',
+                fontWeight: 700,
+              }}
             >
-              Lancer mon diagnostic gratuit
-              <ArrowRight size={20} />
-            </Link>
+              Problèmes fréquents <em>identifiés en visite.</em>
+            </h2>
+          </RevealOnScroll>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+            {[
+              { href: '/problemes/fissure-verticale-mur-porteur', label: 'Fissure verticale sur mur porteur' },
+              { href: '/problemes/fissure-escalier-que-faire', label: 'Fissure en escalier' },
+              { href: '/problemes/portes-qui-coincent-fissures', label: 'Portes qui coincent + fissures' },
+              { href: '/problemes/humidite-murs-peinture-qui-cloque', label: 'Peinture qui cloque' },
+              { href: '/problemes/condensation-ou-remontees-capillaires', label: 'Condensation ou remontées capillaires' },
+              { href: '/problemes/moisissures-sante', label: 'Moisissures et santé' },
+            ].map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className="group flex items-center justify-between gap-4 px-5 py-4 bg-ipb-white border border-ipb-rule rounded-[3px] text-[14px] text-ipb-text hover:border-ipb-orange hover:text-ipb-orange transition-all duration-500"
+              >
+                <span className="font-light">{label}</span>
+                <span className="text-ipb-orange opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:translate-x-1">→</span>
+              </Link>
+            ))}
           </div>
         </div>
+      </section>
 
-        <div className="mt-14 bg-white border border-slate-200 rounded-3xl p-8">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-6">
-            Problèmes fréquents (guides rapides)
-          </h2>
-          <div className="grid md:grid-cols-2 gap-4 text-slate-700">
-            <Link href="/problemes/fissure-verticale-mur-porteur" className="hover:text-orange-600 transition">
-              Fissure verticale sur mur porteur
-            </Link>
-            <Link href="/problemes/fissure-escalier-que-faire" className="hover:text-orange-600 transition">
-              Fissure en escalier
-            </Link>
-            <Link href="/problemes/portes-qui-coincent-fissures" className="hover:text-orange-600 transition">
-              Portes qui coincent + fissures
-            </Link>
-            <Link href="/problemes/humidite-murs-peinture-qui-cloque" className="hover:text-orange-600 transition">
-              Peinture qui cloque
-            </Link>
-            <Link href="/problemes/condensation-ou-remontees-capillaires" className="hover:text-orange-600 transition">
-              Condensation ou remontées capillaires
-            </Link>
-            <Link href="/problemes/moisissures-sante" className="hover:text-orange-600 transition">
-              Moisissures et santé
-            </Link>
+      <InternalLinks variant="blog" />
+
+      {/* Texte d'expertise SEO — éditorial */}
+      <section className="bg-ipb-cream py-16 lg:py-20 border-t border-ipb-rule">
+        <div className="max-w-ipb mx-auto px-6 lg:px-12">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
+            <div className="lg:col-span-4">
+              <RevealOnScroll>
+                <Eyebrow>Le blog en quelques mots</Eyebrow>
+                <h2
+                  className="font-serif text-ipb-text"
+                  style={{
+                    fontSize: 'clamp(24px, 2.4vw, 34px)',
+                    lineHeight: 1.18,
+                    letterSpacing: '-0.022em',
+                    fontWeight: 700,
+                  }}
+                >
+                  Pas du contenu marketing. <em>Du retour de chantier.</em>
+                </h2>
+              </RevealOnScroll>
+            </div>
+            <div className="lg:col-span-8">
+              <RevealOnScroll delay={0.06} variant="subtle">
+                <div className="space-y-5 text-[15px] leading-[1.9] font-light text-ipb-muted">
+                  <p>
+                    Les articles sont rédigés par l’institut IPB à partir de cas réels rencontrés sur nos chantiers à <strong className="text-ipb-text not-italic font-medium">Toulouse (31)</strong>, <strong className="text-ipb-text not-italic font-medium">Montauban (82)</strong>, <strong className="text-ipb-text not-italic font-medium">Auch (32)</strong> et dans toute l&apos;Occitanie. Fissures structurelles liées au retrait-gonflement des argiles, ouvertures de murs porteurs en immeubles anciens, expertises avant achat immobilier — chaque sujet vient du terrain.
+                  </p>
+                  <p>
+                    Nos guides couvrent l&apos;ensemble du cycle d&apos;un dossier : de l&apos;identification du problème (microfissure, fissure en escalier, mur à ouvrir) au choix de la solution technique (
+                    <Link href="/blog/agrafage-vs-micropieux-choix" className="text-ipb-orange hover:text-[#b35519] font-medium transition-colors">agrafage ou micropieux</Link>,{' '}
+                    <Link href="/blog/prix-ouverture-mur-porteur-toulouse-2026" className="text-ipb-orange hover:text-[#b35519] font-medium transition-colors">dimensionnement de poutre IPN/HEB</Link>
+                    ), en passant par les démarches administratives (
+                    <Link href="/blog/catastrophe-naturelle-secheresse-demarches-indemnisation" className="text-ipb-orange hover:text-[#b35519] font-medium transition-colors">catastrophe naturelle sécheresse</Link>,{' '}
+                    <Link href="/blog/garantie-decennale-travaux-structure" className="text-ipb-orange hover:text-[#b35519] font-medium transition-colors">garantie décennale</Link>
+                    ).
+                  </p>
+                  <p>
+                    Tous les articles sont mis à jour régulièrement pour intégrer les dernières réglementations et les retours d&apos;expérience de nos chantiers récents. Pour un cas spécifique,{' '}
+                    <Link href="/diagnostic" className="text-ipb-orange hover:text-[#b35519] font-medium transition-colors">décrivez-nous votre situation</Link>.
+                  </p>
+                </div>
+              </RevealOnScroll>
+            </div>
           </div>
         </div>
-
-        <InternalLinks variant="blog" />
-
-        {/* SEO : Texte d'expertise pour topical authority */}
-        <div className="mt-14 bg-white border border-slate-200 rounded-3xl p-8">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">
-            Le journal du cabinet : structure, fissures et ouvertures de murs porteurs
-          </h2>
-          <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4">
-            <p>
-              Le journal IPB est rédigé par nos experts en pathologie et structure du bâtiment, intervenant à <strong>Toulouse (31)</strong>, <strong>Montauban (82)</strong>, <strong>Auch (32)</strong> et dans toute l'Occitanie. Chaque article s'appuie sur des cas réels rencontrés sur le terrain : fissures structurelles liées au retrait-gonflement des argiles, ouvertures de murs porteurs en immeubles anciens, expertises avant achat immobilier.
-            </p>
-            <p>
-              Nos guides couvrent l'ensemble du cycle d'un projet : de l'identification du problème (microfissure, fissure en escalier, mur à ouvrir) au choix de la solution technique (<Link href="/blog/agrafage-vs-micropieux-choix" className="text-orange-600 hover:text-orange-700 font-bold">agrafage ou micropieux</Link>, <Link href="/blog/prix-ouverture-mur-porteur-toulouse-2026" className="text-orange-600 hover:text-orange-700 font-bold">dimensionnement de la poutre</Link>), en passant par les démarches administratives (<Link href="/blog/catastrophe-naturelle-secheresse-demarches-indemnisation" className="text-orange-600 hover:text-orange-700 font-bold">déclaration de catastrophe naturelle</Link>, <Link href="/blog/garantie-decennale-travaux-structure" className="text-orange-600 hover:text-orange-700 font-bold">garantie décennale</Link>).
-            </p>
-            <p>
-              Tous les articles sont mis à jour régulièrement pour intégrer les dernières réglementations et les retours d'expérience de nos chantiers. <Link href="/diagnostic" className="text-orange-600 hover:text-orange-700 font-bold">Décrivez votre situation</Link> pour échanger avec le cabinet.
-            </p>
-          </div>
-        </div>
-      </div>
+      </section>
 
       <Footer />
     </div>
   );
 }
-

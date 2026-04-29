@@ -1,5 +1,6 @@
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import Link from 'next/link';
 import Script from 'next/script';
@@ -47,27 +48,28 @@ const serviceJsonLd = {
 
 export default function BureauEtudeStructurePage() {
   return (
-    <div className="font-sans text-slate-800 bg-slate-50 antialiased">
+    <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
       <Script id="bureau-etudes-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
       <TopBar />
       <Navbar />
+      <SmartBackBar />
       <main id="main-content">
         {/* HERO */}
-        <section className="relative bg-slate-900 text-white py-16 md:py-24 overflow-hidden">
+        <section className="relative bg-ipb-navy text-white py-16 md:py-24 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-950/40 to-slate-900"></div>
           <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-blue-300 font-semibold text-xs uppercase tracking-[0.2em] mb-4">
               Bureau d'études intégré · Décennale AXA France
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-              Bureau d'Études <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300">Structure</span>
+              Bureau d'Études <span className="text-transparent bg-clip-text bg-ipb-orange">Structure</span>
               <span className="block text-3xl md:text-4xl mt-2 text-white">à Toulouse & Occitanie (31, 82, 32, 81)</span>
             </h1>
-            <p className="text-xl text-slate-300 mb-8 max-w-3xl">
+            <p className="text-xl text-white/70 mb-8 max-w-3xl">
               Calcul technique signé par notre ingénieur, dimensionnement de la poutre <strong className="text-white">(IPN, HEB ou IPE)</strong>, expertise mur porteur, contrôle des ouvrages. On travaille avec des particuliers, des architectes, des marchands de biens et des entreprises du bâtiment.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/diagnostic" className="bg-orange-600 hover:bg-orange-500 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
+              <Link href="/diagnostic" className="bg-ipb-orange hover:bg-ipb-orange text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
                 Demander un calcul de poutre <ArrowRight size={20} />
               </Link>
               <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
@@ -80,23 +82,23 @@ export default function BureauEtudeStructurePage() {
         {/* Services */}
         <section className="py-16 bg-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text text-center mb-12">
               Nos prestations bureau d'études
             </h2>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { icon: <Calculator className="text-orange-600" size={28} />, title: 'Dimensionnement IPN/HEB/IPE', desc: 'Calcul des charges reprises, choix de la poutre, vérification flèche et déversement. Note de calcul signée.' },
-                { icon: <Ruler className="text-orange-600" size={28} />, title: 'Étude mur porteur', desc: 'Identification du caractère porteur, descente de charges, méthode d\'étaiement, plan d\'exécution.' },
-                { icon: <Building2 className="text-orange-600" size={28} />, title: 'Diagnostic structure', desc: 'Avant achat, après sinistre, fissures, désordres. Rapport reconnu par les assurances et les tribunaux.' },
-                { icon: <FileText className="text-orange-600" size={28} />, title: 'Béton armé', desc: 'Plancher, longrine, semelle, poteau. Calculs Eurocode 2, plans de ferraillage.' },
-                { icon: <Award className="text-orange-600" size={28} />, title: 'Mission de maîtrise d\'œuvre', desc: 'Conception, consultation entreprises, suivi de chantier, réception. Pour rénovations lourdes.' },
-                { icon: <Shield className="text-orange-600" size={28} />, title: 'Contre-expertise', desc: 'Confrontation avec un rapport d\'expert d\'assurance, contestation amiable ou judiciaire.' },
+                { icon: <Calculator className="text-ipb-orange" size={28} />, title: 'Dimensionnement IPN/HEB/IPE', desc: 'Calcul des charges reprises, choix de la poutre, vérification flèche et déversement. Note de calcul signée.' },
+                { icon: <Ruler className="text-ipb-orange" size={28} />, title: 'Étude mur porteur', desc: 'Identification du caractère porteur, descente de charges, méthode d\'étaiement, plan d\'exécution.' },
+                { icon: <Building2 className="text-ipb-orange" size={28} />, title: 'Diagnostic structure', desc: 'Avant achat, après sinistre, fissures, désordres. Rapport reconnu par les assurances et les tribunaux.' },
+                { icon: <FileText className="text-ipb-orange" size={28} />, title: 'Béton armé', desc: 'Plancher, longrine, semelle, poteau. Calculs Eurocode 2, plans de ferraillage.' },
+                { icon: <Award className="text-ipb-orange" size={28} />, title: 'Mission de maîtrise d\'œuvre', desc: 'Conception, consultation entreprises, suivi de chantier, réception. Pour rénovations lourdes.' },
+                { icon: <Shield className="text-ipb-orange" size={28} />, title: 'Contre-expertise', desc: 'Confrontation avec un rapport d\'expert d\'assurance, contestation amiable ou judiciaire.' },
               ].map(({ icon, title, desc }) => (
-                <div key={title} className="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:shadow-lg transition-shadow">
-                  <div className="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-4">{icon}</div>
-                  <h3 className="font-bold text-lg text-slate-900 mb-2">{title}</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">{desc}</p>
+                <div key={title} className="bg-ipb-cream border border-ipb-rule rounded-2xl p-6 hover:shadow-lg transition-shadow">
+                  <div className="w-14 h-14 bg-ipb-stone rounded-xl flex items-center justify-center mb-4">{icon}</div>
+                  <h3 className="font-bold text-lg text-ipb-text mb-2">{title}</h3>
+                  <p className="text-ipb-muted text-sm leading-relaxed">{desc}</p>
                 </div>
               ))}
             </div>
@@ -104,35 +106,35 @@ export default function BureauEtudeStructurePage() {
         </section>
 
         {/* Cible B2B */}
-        <section className="py-16 bg-slate-50">
+        <section className="py-16 bg-ipb-cream">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 text-center mb-4">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text text-center mb-4">
               Pour qui travaillons-nous ?
             </h2>
-            <p className="text-lg text-slate-600 text-center mb-12 max-w-3xl mx-auto">
-              Particuliers, mais aussi architectes d'intérieur, marchands de biens et agences immobilières s'appuient sur notre cabinet.
+            <p className="text-lg text-ipb-muted text-center mb-12 max-w-3xl mx-auto">
+              Particuliers, mais aussi architectes d'intérieur, marchands de biens et agences immobilières s'appuient sur notre institut.
             </p>
 
             <div className="grid md:grid-cols-2 gap-6">
-              <Link href="/partenaires/architectes-interieur" className="block bg-white border-2 border-slate-200 hover:border-orange-300 rounded-2xl p-6 transition-all hover:shadow-xl group">
-                <h3 className="font-bold text-xl text-slate-900 mb-2 group-hover:text-orange-600">Architectes d'intérieur & décorateurs</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">Vos projets « espace ouvert » nécessitent une étude structure ? Nous sommes votre partenaire technique sous-traité, avec décennale active. <span className="text-orange-600 font-semibold">En savoir plus →</span></p>
+              <Link href="/partenaires/architectes-interieur" className="block bg-white border-2 border-ipb-rule hover:border-orange-300 rounded-2xl p-6 transition-all hover:shadow-xl group">
+                <h3 className="font-bold text-xl text-ipb-text mb-2 group-hover:text-ipb-orange">Architectes d'intérieur & décorateurs</h3>
+                <p className="text-ipb-muted text-sm leading-relaxed">Vos projets « espace ouvert » nécessitent une étude structure ? Nous sommes votre partenaire technique sous-traité, avec décennale active. <span className="text-ipb-orange font-semibold">En savoir plus →</span></p>
               </Link>
 
-              <Link href="/partenaires/marchands-de-biens" className="block bg-white border-2 border-slate-200 hover:border-orange-300 rounded-2xl p-6 transition-all hover:shadow-xl group">
-                <h3 className="font-bold text-xl text-slate-900 mb-2 group-hover:text-orange-600">Marchands de biens & investisseurs</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">Acheter un T3 toulousain pour ouvrir cuisine + salon avant revente ? Nous chiffrons et exécutons en délai serré. <span className="text-orange-600 font-semibold">En savoir plus →</span></p>
+              <Link href="/partenaires/marchands-de-biens" className="block bg-white border-2 border-ipb-rule hover:border-orange-300 rounded-2xl p-6 transition-all hover:shadow-xl group">
+                <h3 className="font-bold text-xl text-ipb-text mb-2 group-hover:text-ipb-orange">Marchands de biens & investisseurs</h3>
+                <p className="text-ipb-muted text-sm leading-relaxed">Acheter un T3 toulousain pour ouvrir cuisine + salon avant revente ? Nous chiffrons et exécutons en délai serré. <span className="text-ipb-orange font-semibold">En savoir plus →</span></p>
               </Link>
 
-              <Link href="/partenaires/agences-immobilieres" className="block bg-white border-2 border-slate-200 hover:border-orange-300 rounded-2xl p-6 transition-all hover:shadow-xl group">
-                <h3 className="font-bold text-xl text-slate-900 mb-2 group-hover:text-orange-600">Agences immobilières</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">Une vente bloquée à cause d'une fissure ? Notre rapport rassure l'acquéreur et débloque la transaction. <span className="text-orange-600 font-semibold">En savoir plus →</span></p>
+              <Link href="/partenaires/agences-immobilieres" className="block bg-white border-2 border-ipb-rule hover:border-orange-300 rounded-2xl p-6 transition-all hover:shadow-xl group">
+                <h3 className="font-bold text-xl text-ipb-text mb-2 group-hover:text-ipb-orange">Agences immobilières</h3>
+                <p className="text-ipb-muted text-sm leading-relaxed">Une vente bloquée à cause d'une fissure ? Notre rapport rassure l'acquéreur et débloque la transaction. <span className="text-ipb-orange font-semibold">En savoir plus →</span></p>
               </Link>
 
-              <div className="bg-slate-900 text-white border-2 border-slate-800 rounded-2xl p-6">
+              <div className="bg-ipb-navy text-white border-2 border-slate-800 rounded-2xl p-6">
                 <h3 className="font-bold text-xl text-white mb-2">Particuliers</h3>
-                <p className="text-slate-300 text-sm leading-relaxed mb-4">Votre projet personnel : ouverture mur porteur, baie vitrée, agrafage de fissures, expertise avant achat.</p>
-                <Link href="/diagnostic" className="text-orange-300 font-semibold hover:text-orange-200">Lancer mon diagnostic →</Link>
+                <p className="text-white/70 text-sm leading-relaxed mb-4">Votre projet personnel : ouverture mur porteur, baie vitrée, agrafage de fissures, expertise avant achat.</p>
+                <Link href="/diagnostic" className="text-ipb-orange-l font-semibold hover:text-ipb-orange-l">Lancer mon diagnostic →</Link>
               </div>
             </div>
           </div>
@@ -141,17 +143,17 @@ export default function BureauEtudeStructurePage() {
         {/* Garanties */}
         <section className="py-16 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-extrabold text-slate-900 mb-8">Nos garanties</h2>
+            <h2 className="text-3xl font-extrabold text-ipb-text mb-8">Nos garanties</h2>
             <div className="grid md:grid-cols-3 gap-6">
               {[
                 { icon: <Shield className="text-blue-600" size={32} />, label: 'Décennale AXA France', desc: 'Police n° 10564321 — couvre étude + travaux' },
                 { icon: <CheckCircle className="text-emerald-600" size={32} />, label: 'Calcul technique signé', desc: 'Signé par notre ingénieur, valable face à une assurance ou un tribunal' },
-                { icon: <FileText className="text-orange-600" size={32} />, label: 'Dossier complet à la livraison', desc: 'Tous les documents du chantier vous sont remis' },
+                { icon: <FileText className="text-ipb-orange" size={32} />, label: 'Dossier complet à la livraison', desc: 'Tous les documents du chantier vous sont remis' },
               ].map(({ icon, label, desc }) => (
                 <div key={label} className="flex flex-col items-center p-6">
-                  <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mb-4">{icon}</div>
-                  <p className="font-bold text-slate-900 mb-1">{label}</p>
-                  <p className="text-slate-500 text-sm">{desc}</p>
+                  <div className="w-16 h-16 bg-ipb-cream rounded-2xl flex items-center justify-center mb-4">{icon}</div>
+                  <p className="font-bold text-ipb-text mb-1">{label}</p>
+                  <p className="text-ipb-muted text-sm">{desc}</p>
                 </div>
               ))}
             </div>
@@ -159,12 +161,12 @@ export default function BureauEtudeStructurePage() {
         </section>
 
         {/* CTA Final */}
-        <section className="py-16 bg-gradient-to-r from-orange-600 to-amber-600 text-white">
+        <section className="py-16 bg-ipb-orange text-white">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Besoin du calcul d'une poutre ?</h2>
-            <p className="text-xl text-orange-100 mb-8">Réponse d'un ingénieur structure sous 24h. Devis gratuit, sans engagement.</p>
+            <p className="text-xl text-ipb-orange-l mb-8">Réponse d'un ingénieur structure sous 24h. Devis gratuit, sans engagement.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link href="/diagnostic" className="bg-white text-orange-600 px-10 py-5 rounded-xl font-bold text-lg hover:bg-orange-50 flex items-center justify-center gap-2 shadow-xl">
+              <Link href="/diagnostic" className="bg-white text-ipb-orange px-10 py-5 rounded-xl font-bold text-lg hover:bg-ipb-stone flex items-center justify-center gap-2 shadow-xl">
                 Lancer mon devis <ArrowRight size={20} />
               </Link>
               <a href="tel:0582953375" className="bg-orange-700 hover:bg-orange-800 px-8 py-5 rounded-xl font-bold text-lg flex items-center justify-center gap-2">

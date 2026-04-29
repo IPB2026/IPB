@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { CtaFinal } from '@/components/home/CtaFinal';
 import { Eyebrow } from '@/components/ui/Eyebrow';
@@ -10,7 +11,7 @@ import { CalculatorClient } from './CalculatorClient';
 
 export const metadata: Metadata = {
   title: "Calculateur prix ouverture de mur porteur · Estimation gratuite · IPB Toulouse",
-  description: "Estimez en deux minutes le prix d'une ouverture de mur porteur à Toulouse. Calcul basé sur les chantiers récents du cabinet IPB. Sans inscription.",
+  description: "Estimez en deux minutes le prix d'une ouverture de mur porteur à Toulouse. Calcul basé sur les chantiers récents de l’institut IPB. Sans inscription.",
   keywords: [
     'prix ouverture mur porteur toulouse',
     'devis mur porteur en ligne',
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/calcul-prix-mur-porteur' },
   openGraph: {
     title: "Calculateur prix ouverture de mur porteur · IPB Toulouse",
-    description: "Estimation gratuite en 2 minutes. Basée sur les chantiers récents du cabinet en Occitanie.",
+    description: "Estimation gratuite en 2 minutes. Basée sur les chantiers récents de l’institut en Occitanie.",
     url: 'https://www.ipb-expertise.fr/calcul-prix-mur-porteur',
     type: 'website',
   },
@@ -50,6 +51,7 @@ export default function CalculatorPage() {
 
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       <main id="main-content">
         {/* HERO */}
@@ -115,7 +117,7 @@ export default function CalculatorPage() {
 
             <div className="mt-12 pt-10 border-t border-ipb-rule text-[13px] leading-[1.7] font-light text-ipb-muted">
               <p>
-                Cet outil donne une fourchette de prix indicative basée sur les chantiers récents du cabinet à Toulouse, Saint-Cyprien, Carmes, Tournefeuille, Pamiers et alentour. <strong className="text-ipb-text not-italic">Le devis ferme nécessite une visite technique sur site</strong> — c'est gratuit et sans engagement.
+                Cet outil donne une fourchette de prix indicative basée sur les chantiers récents de l’institut à Toulouse, Saint-Cyprien, Carmes, Tournefeuille, Pamiers et alentour. <strong className="text-ipb-text not-italic">Le devis ferme nécessite une visite technique sur site</strong> — c'est gratuit et sans engagement.
               </p>
             </div>
           </div>

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, ChevronRight, AlertTriangle, CheckCircle, XCircle, Clock, Shield } from 'lucide-react';
 
@@ -64,7 +65,7 @@ const faqSchema = {
 
 export default function MerulePage() {
   return (
-    <div className="font-sans text-slate-800 bg-white antialiased">
+    <div className="font-sans text-ipb-text bg-white antialiased">
       <Script
         id="faq-schema-merule-champignon-traitement"
         type="application/ld+json"
@@ -72,6 +73,7 @@ export default function MerulePage() {
       />
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Hero - URGENCE */}
       <section className="relative bg-gradient-to-br from-red-900 via-rose-900 to-slate-900 text-white overflow-hidden">
@@ -138,7 +140,7 @@ export default function MerulePage() {
             {/* Image + Stats */}
             <div className="space-y-6">
               <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20">
-                <div className="relative rounded-2xl overflow-hidden aspect-video bg-slate-800 mb-4">
+                <div className="relative rounded-2xl overflow-hidden aspect-video bg-ipb-navy-2 mb-4">
                   <Image
                     src="/images/merule-sol.webp"
                     alt="Mérule champignon destructeur - IPB"
@@ -156,9 +158,9 @@ export default function MerulePage() {
                   <div className="text-3xl font-black text-red-400">24h</div>
                   <div className="text-xs text-red-200">Intervention urgente</div>
                 </div>
-                <div className="bg-orange-500/20 rounded-2xl p-4 text-center">
-                  <div className="text-3xl font-black text-orange-400">100%</div>
-                  <div className="text-xs text-orange-200">Bois détruits si non traité</div>
+                <div className="bg-ipb-orange/20 rounded-2xl p-4 text-center">
+                  <div className="text-3xl font-black text-ipb-orange-l">100%</div>
+                  <div className="text-xs text-ipb-orange-l">Bois détruits si non traité</div>
                 </div>
               </div>
             </div>
@@ -179,7 +181,7 @@ export default function MerulePage() {
             <span className="inline-block bg-red-100 text-red-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
               Identification
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
               Comment reconnaître la mérule ?
             </h2>
           </div>
@@ -191,18 +193,18 @@ export default function MerulePage() {
                 className={`rounded-3xl p-6 ${
                   item.danger === 'critical' 
                     ? 'bg-red-50 border-2 border-red-300' 
-                    : 'bg-orange-50 border-2 border-orange-200'
+                    : 'bg-ipb-stone border-2 border-ipb-rule'
                 }`}
               >
                 <div className="flex items-start gap-4">
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${
-                    item.danger === 'critical' ? 'bg-red-100' : 'bg-orange-100'
+                    item.danger === 'critical' ? 'bg-red-100' : 'bg-ipb-stone'
                   }`}>
-                    <AlertTriangle size={20} className={item.danger === 'critical' ? 'text-red-600' : 'text-orange-600'} />
+                    <AlertTriangle size={20} className={item.danger === 'critical' ? 'text-red-600' : 'text-ipb-orange'} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-slate-900 mb-1">{item.signe}</h3>
-                    <p className="text-slate-600 text-sm">{item.detail}</p>
+                    <h3 className="font-bold text-ipb-text mb-1">{item.signe}</h3>
+                    <p className="text-ipb-muted text-sm">{item.detail}</p>
                   </div>
                 </div>
                 {item.danger === 'critical' && (
@@ -217,7 +219,7 @@ export default function MerulePage() {
       </section>
 
       {/* Que faire / Ne pas faire */}
-      <section className="py-20 bg-slate-900 text-white">
+      <section className="py-20 bg-ipb-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-black mb-4">
@@ -240,7 +242,7 @@ export default function MerulePage() {
                   'Isoler la zone si possible (fermer porte)',
                   'Prévenir votre assurance',
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-slate-300">
+                  <li key={i} className="flex items-start gap-3 text-white/70">
                     <CheckCircle size={18} className="text-green-400 flex-shrink-0 mt-1" />
                     {item}
                   </li>
@@ -262,7 +264,7 @@ export default function MerulePage() {
                   'Reboucher ou peindre par-dessus',
                   'Faire des travaux sans diagnostic pro',
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-slate-300">
+                  <li key={i} className="flex items-start gap-3 text-white/70">
                     <XCircle size={18} className="text-red-400 flex-shrink-0 mt-1" />
                     {item}
                   </li>
@@ -277,10 +279,10 @@ export default function MerulePage() {
       <section className="py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="inline-block bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
+            <span className="inline-block bg-ipb-stone text-ipb-text px-4 py-2 rounded-full text-sm font-bold mb-4">
               Traitement professionnel
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
               Comment on éradique la mérule
             </h2>
           </div>
@@ -293,15 +295,15 @@ export default function MerulePage() {
               { num: '4', titre: 'Traitement fongicide', desc: 'Injection et pulvérisation de produits certifiés sur murs et bois sains.', duree: '1-2 jours' },
               { num: '5', titre: 'Reconstruction', desc: 'Remplacement des bois détruits par du bois traité. Finitions.', duree: 'Variable' },
             ].map((etape, index) => (
-              <div key={index} className="flex items-start gap-6 bg-slate-50 rounded-2xl p-6">
+              <div key={index} className="flex items-start gap-6 bg-ipb-cream rounded-2xl p-6">
                 <div className="w-12 h-12 bg-red-100 text-red-600 rounded-xl flex items-center justify-center font-bold text-xl flex-shrink-0">
                   {etape.num}
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-bold text-slate-900 mb-1">{etape.titre}</h3>
-                  <p className="text-slate-600">{etape.desc}</p>
+                  <h3 className="text-lg font-bold text-ipb-text mb-1">{etape.titre}</h3>
+                  <p className="text-ipb-muted">{etape.desc}</p>
                 </div>
-                <div className="text-sm text-slate-500 flex items-center gap-2">
+                <div className="text-sm text-ipb-muted flex items-center gap-2">
                   <Clock size={14} />
                   {etape.duree}
                 </div>

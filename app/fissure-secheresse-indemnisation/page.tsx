@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, ChevronRight, Sun, FileText, Clock, CheckCircle, AlertTriangle, Calendar, Euro } from 'lucide-react';
 
@@ -89,7 +90,7 @@ const faqSchema = {
 
 export default function FissureSecheressePage() {
   return (
-    <div className="font-sans text-slate-800 bg-white antialiased">
+    <div className="font-sans text-ipb-text bg-white antialiased">
       <Script
         id="faq-schema-fissure-secheresse-indemnisation"
         type="application/ld+json"
@@ -97,6 +98,7 @@ export default function FissureSecheressePage() {
       />
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-amber-900 via-orange-900 to-red-950 text-white overflow-hidden">
@@ -165,7 +167,7 @@ export default function FissureSecheressePage() {
                 <div className="text-amber-200 text-sm mt-2">communes reconnues CAT-NAT en Occitanie (2022-2024)</div>
               </div>
               <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
-                <div className="text-5xl font-black text-orange-400">1 534€</div>
+                <div className="text-5xl font-black text-ipb-orange-l">1 534€</div>
                 <div className="text-amber-200 text-sm mt-2">franchise légale (maison individuelle)</div>
               </div>
               <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
@@ -194,7 +196,7 @@ export default function FissureSecheressePage() {
             <span className="inline-block bg-amber-100 text-amber-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
               Procédure
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
               Les 4 étapes de l'indemnisation
             </h2>
           </div>
@@ -209,8 +211,8 @@ export default function FissureSecheressePage() {
                       {etape.num}
                     </span>
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-2">{etape.titre}</h3>
-                  <p className="text-slate-600 text-sm mb-4">{etape.description}</p>
+                  <h3 className="text-lg font-bold text-ipb-text mb-2">{etape.titre}</h3>
+                  <p className="text-ipb-muted text-sm mb-4">{etape.description}</p>
                   <div className="flex items-center gap-2 text-amber-600 text-sm font-bold">
                     <Clock size={14} />
                     {etape.delai}
@@ -228,36 +230,36 @@ export default function FissureSecheressePage() {
       </section>
 
       {/* Communes touchées */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-ipb-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="inline-block bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
+            <span className="inline-block bg-ipb-stone text-ipb-orange px-4 py-2 rounded-full text-sm font-bold mb-4">
               Zone d'intervention
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
               Communes fréquemment reconnues CAT-NAT
             </h2>
-            <p className="text-slate-600">
+            <p className="text-ipb-muted">
               Cette liste n'est pas exhaustive. Vérifiez l'éligibilité de votre commune sur Légifrance.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-3xl p-6 shadow-lg border border-slate-200">
-              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <span className="w-8 h-8 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center text-sm font-bold">31</span>
+            <div className="bg-white rounded-3xl p-6 shadow-lg border border-ipb-rule">
+              <h3 className="text-xl font-bold text-ipb-text mb-4 flex items-center gap-2">
+                <span className="w-8 h-8 bg-ipb-stone text-ipb-orange rounded-lg flex items-center justify-center text-sm font-bold">31</span>
                 Haute-Garonne
               </h3>
               <div className="flex flex-wrap gap-2">
                 {communes31.map((c, i) => (
-                  <span key={i} className="bg-orange-50 text-orange-700 px-3 py-1 rounded-full text-sm">
+                  <span key={i} className="bg-ipb-stone text-ipb-orange px-3 py-1 rounded-full text-sm">
                     {c}
                   </span>
                 ))}
               </div>
             </div>
-            <div className="bg-white rounded-3xl p-6 shadow-lg border border-slate-200">
-              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <div className="bg-white rounded-3xl p-6 shadow-lg border border-ipb-rule">
+              <h3 className="text-xl font-bold text-ipb-text mb-4 flex items-center gap-2">
                 <span className="w-8 h-8 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center text-sm font-bold">82</span>
                 Tarn-et-Garonne
               </h3>
@@ -269,8 +271,8 @@ export default function FissureSecheressePage() {
                 ))}
               </div>
             </div>
-            <div className="bg-white rounded-3xl p-6 shadow-lg border border-slate-200">
-              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <div className="bg-white rounded-3xl p-6 shadow-lg border border-ipb-rule">
+              <h3 className="text-xl font-bold text-ipb-text mb-4 flex items-center gap-2">
                 <span className="w-8 h-8 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center text-sm font-bold">32</span>
                 Gers
               </h3>
@@ -287,7 +289,7 @@ export default function FissureSecheressePage() {
       </section>
 
       {/* Notre aide */}
-      <section className="py-20 bg-slate-900 text-white">
+      <section className="py-20 bg-ipb-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -297,7 +299,7 @@ export default function FissureSecheressePage() {
               <h2 className="text-3xl md:text-4xl font-black mb-6">
                 On vous aide à constituer votre dossier
               </h2>
-              <p className="text-slate-300 text-lg mb-8">
+              <p className="text-white/70 text-lg mb-8">
                 L'expertise de votre assureur peut sous-évaluer les dommages ou contester le lien avec la sécheresse. 
                 Notre rapport technique indépendant renforce votre dossier.
               </p>
@@ -307,21 +309,21 @@ export default function FissureSecheressePage() {
                   <CheckCircle size={20} className="text-amber-400 flex-shrink-0 mt-1" />
                   <div>
                     <strong className="text-white">Rapport technique détaillé</strong>
-                    <p className="text-slate-400 text-sm">Photos, mesures, analyse des causes, préconisations</p>
+                    <p className="text-ipb-light text-sm">Photos, mesures, analyse des causes, préconisations</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle size={20} className="text-amber-400 flex-shrink-0 mt-1" />
                   <div>
                     <strong className="text-white">Contre-expertise</strong>
-                    <p className="text-slate-400 text-sm">Si l'expert de l'assurance minimise les dégâts</p>
+                    <p className="text-ipb-light text-sm">Si l'expert de l'assurance minimise les dégâts</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle size={20} className="text-amber-400 flex-shrink-0 mt-1" />
                   <div>
                     <strong className="text-white">Aide aux démarches</strong>
-                    <p className="text-slate-400 text-sm">Vérification éligibilité, conseils sur la déclaration</p>
+                    <p className="text-ipb-light text-sm">Vérification éligibilité, conseils sur la déclaration</p>
                   </div>
                 </li>
               </ul>
@@ -332,7 +334,7 @@ export default function FissureSecheressePage() {
                   <div>
                     <div className="text-sm text-amber-300 font-bold">DIAGNOSTIC</div>
                     <div className="inline-block bg-green-500/20 text-green-400 text-sm font-bold px-3 py-1 rounded-full my-1">Déduit à 100%</div>
-                    <div className="text-slate-400 text-sm">du montant des travaux</div>
+                    <div className="text-ipb-light text-sm">du montant des travaux</div>
                   </div>
                 </div>
               </div>
@@ -349,7 +351,7 @@ export default function FissureSecheressePage() {
                   'Factures de travaux antérieurs (si existantes)',
                   'Éventuels rapports d\'expertise précédents',
                 ].map((doc, i) => (
-                  <li key={i} className="flex items-center gap-3 text-slate-300">
+                  <li key={i} className="flex items-center gap-3 text-white/70">
                     <FileText size={18} className="text-amber-400" />
                     {doc}
                   </li>
@@ -363,7 +365,7 @@ export default function FissureSecheressePage() {
       {/* Articles connexes */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-slate-900 mb-8 text-center">
+          <h2 className="text-2xl font-black text-ipb-text mb-8 text-center">
             Articles connexes
           </h2>
           <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
@@ -378,13 +380,13 @@ export default function FissureSecheressePage() {
               <Link 
                 key={index}
                 href={item.href}
-                className="group bg-slate-50 rounded-2xl p-6 hover:bg-orange-50 transition-all hover:-translate-y-1 border border-slate-100 hover:border-orange-200"
+                className="group bg-ipb-cream rounded-2xl p-6 hover:bg-ipb-stone transition-all hover:-translate-y-1 border border-ipb-rule hover:border-ipb-rule"
               >
                 <span className="text-4xl mb-4 block">{item.icon}</span>
-                <h3 className="font-bold text-slate-900 group-hover:text-orange-600 transition-colors mb-1">
+                <h3 className="font-bold text-ipb-text group-hover:text-ipb-orange transition-colors mb-1">
                   {item.title}
                 </h3>
-                <p className="text-sm text-slate-500">{item.desc}</p>
+                <p className="text-sm text-ipb-muted">{item.desc}</p>
               </Link>
             ))}
           </div>

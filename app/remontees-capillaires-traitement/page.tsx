@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { CheckCircle, Phone, ArrowRight, Droplets, AlertTriangle, Home, Clock, Shield, ChevronRight, Zap, ThermometerSun } from 'lucide-react';
 
@@ -61,9 +62,10 @@ const etapesTraitement = [
 
 export default function RemonteesCapillairesPage() {
   return (
-    <div className="font-sans text-slate-800 bg-white antialiased">
+    <div className="font-sans text-ipb-text bg-white antialiased">
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Hero - Style Humidité */}
       <section className="relative bg-gradient-to-br from-blue-900 via-cyan-900 to-slate-900 text-white overflow-hidden">
@@ -177,10 +179,10 @@ export default function RemonteesCapillairesPage() {
             <span className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
               Reconnaître le problème
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
               6 signes qui ne trompent pas
             </h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            <p className="text-xl text-ipb-muted max-w-2xl mx-auto">
               Si vous observez 2 ou plus de ces symptômes, vous avez probablement des remontées capillaires.
             </p>
           </div>
@@ -192,14 +194,14 @@ export default function RemonteesCapillairesPage() {
                 className={`relative rounded-3xl p-6 ${
                   item.severity === 'high' 
                     ? 'bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200' 
-                    : 'bg-slate-50 border border-slate-200'
+                    : 'bg-ipb-cream border border-ipb-rule'
                 } hover:shadow-lg transition-all`}
               >
                 <div className="flex items-start gap-4">
                   <span className="text-4xl">{item.icon}</span>
                   <div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-1">{item.titre}</h3>
-                    <p className="text-slate-600 text-sm">{item.description}</p>
+                    <h3 className="text-lg font-bold text-ipb-text mb-1">{item.titre}</h3>
+                    <p className="text-ipb-muted text-sm">{item.description}</p>
                   </div>
                 </div>
                 {item.severity === 'high' && (
@@ -223,7 +225,7 @@ export default function RemonteesCapillairesPage() {
             <h2 className="text-3xl md:text-4xl font-black mb-4">
               Traitement en 4 étapes
             </h2>
-            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+            <p className="text-xl text-ipb-light max-w-2xl mx-auto">
               L'injection de résine hydrophobe : la solution définitive, garantie 30 ans.
             </p>
           </div>
@@ -237,7 +239,7 @@ export default function RemonteesCapillairesPage() {
                     <span className="text-6xl font-black text-white/10">{etape.num}</span>
                   </div>
                   <h3 className="text-xl font-bold mb-3">{etape.titre}</h3>
-                  <p className="text-slate-400 text-sm mb-4">{etape.description}</p>
+                  <p className="text-ipb-light text-sm mb-4">{etape.description}</p>
                   <div className="flex items-center gap-2 text-cyan-400 text-sm font-bold">
                     <Clock size={14} />
                     {etape.duree}
@@ -258,19 +260,19 @@ export default function RemonteesCapillairesPage() {
               <div>
                 <h3 className="text-2xl font-bold mb-4">Résultat garanti</h3>
                 <ul className="space-y-3">
-                  <li className="flex items-center gap-3 text-slate-300">
+                  <li className="flex items-center gap-3 text-white/70">
                     <CheckCircle size={20} className="text-cyan-400" />
                     Barrière étanche active en 48h
                   </li>
-                  <li className="flex items-center gap-3 text-slate-300">
+                  <li className="flex items-center gap-3 text-white/70">
                     <CheckCircle size={20} className="text-cyan-400" />
                     Séchage progressif visible en 3 mois
                   </li>
-                  <li className="flex items-center gap-3 text-slate-300">
+                  <li className="flex items-center gap-3 text-white/70">
                     <CheckCircle size={20} className="text-cyan-400" />
                     Murs secs et sains en 6-12 mois
                   </li>
-                  <li className="flex items-center gap-3 text-slate-300">
+                  <li className="flex items-center gap-3 text-white/70">
                     <CheckCircle size={20} className="text-cyan-400" />
                     Garantie 30 ans sur l'injection
                   </li>
@@ -280,7 +282,7 @@ export default function RemonteesCapillairesPage() {
                 <div className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
                   80-120€
                 </div>
-                <div className="text-slate-400 mt-2">par mètre linéaire</div>
+                <div className="text-ipb-light mt-2">par mètre linéaire</div>
                 <div className="text-sm text-cyan-300 mt-4">Soit 8 000 à 15 000€ pour une maison standard</div>
               </div>
             </div>
@@ -292,14 +294,14 @@ export default function RemonteesCapillairesPage() {
       <section className="py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
               Pourquoi l'injection plutôt qu'autre chose ?
             </h2>
           </div>
 
-          <div className="bg-slate-50 rounded-3xl overflow-hidden">
+          <div className="bg-ipb-cream rounded-3xl overflow-hidden">
             <table className="w-full">
-              <thead className="bg-slate-900 text-white">
+              <thead className="bg-ipb-navy text-white">
                 <tr>
                   <th className="p-4 text-left">Solution</th>
                   <th className="p-4 text-center">Efficacité</th>
@@ -309,28 +311,28 @@ export default function RemonteesCapillairesPage() {
               </thead>
               <tbody>
                 <tr className="bg-cyan-50 border-l-4 border-cyan-500">
-                  <td className="p-4 font-bold text-slate-900">✅ Injection résine</td>
+                  <td className="p-4 font-bold text-ipb-text">✅ Injection résine</td>
                   <td className="p-4 text-center"><span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-bold">95%</span></td>
-                  <td className="p-4 text-center text-slate-600">8-15K€</td>
-                  <td className="p-4 text-center text-slate-600">30 ans</td>
+                  <td className="p-4 text-center text-ipb-muted">8-15K€</td>
+                  <td className="p-4 text-center text-ipb-muted">30 ans</td>
                 </tr>
-                <tr className="border-b border-slate-200">
-                  <td className="p-4 font-bold text-slate-900">Drainage périphérique</td>
+                <tr className="border-b border-ipb-rule">
+                  <td className="p-4 font-bold text-ipb-text">Drainage périphérique</td>
                   <td className="p-4 text-center"><span className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-bold">70%</span></td>
-                  <td className="p-4 text-center text-slate-600">15-30K€</td>
-                  <td className="p-4 text-center text-slate-600">20 ans</td>
+                  <td className="p-4 text-center text-ipb-muted">15-30K€</td>
+                  <td className="p-4 text-center text-ipb-muted">20 ans</td>
                 </tr>
-                <tr className="border-b border-slate-200">
-                  <td className="p-4 font-bold text-slate-900">Électro-osmose</td>
+                <tr className="border-b border-ipb-rule">
+                  <td className="p-4 font-bold text-ipb-text">Électro-osmose</td>
                   <td className="p-4 text-center"><span className="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm font-bold">50%</span></td>
-                  <td className="p-4 text-center text-slate-600">5-10K€</td>
-                  <td className="p-4 text-center text-slate-600">Variable</td>
+                  <td className="p-4 text-center text-ipb-muted">5-10K€</td>
+                  <td className="p-4 text-center text-ipb-muted">Variable</td>
                 </tr>
                 <tr>
-                  <td className="p-4 font-bold text-slate-900">Peinture "anti-humidité"</td>
+                  <td className="p-4 font-bold text-ipb-text">Peinture "anti-humidité"</td>
                   <td className="p-4 text-center"><span className="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-bold">0%</span></td>
-                  <td className="p-4 text-center text-slate-600">200-500€</td>
-                  <td className="p-4 text-center text-slate-600">6 mois max</td>
+                  <td className="p-4 text-center text-ipb-muted">200-500€</td>
+                  <td className="p-4 text-center text-ipb-muted">6 mois max</td>
                 </tr>
               </tbody>
             </table>
@@ -352,9 +354,9 @@ export default function RemonteesCapillairesPage() {
       </section>
 
       {/* Articles connexes */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-ipb-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-slate-900 mb-8 text-center">
+          <h2 className="text-2xl font-black text-ipb-text mb-8 text-center">
             Articles connexes
           </h2>
           <div className="grid md:grid-cols-4 gap-6">
@@ -367,13 +369,13 @@ export default function RemonteesCapillairesPage() {
               <Link 
                 key={index}
                 href={item.href}
-                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-slate-100"
+                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-ipb-rule"
               >
                 <span className="text-4xl mb-4 block">{item.icon}</span>
-                <h3 className="font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-1">
+                <h3 className="font-bold text-ipb-text group-hover:text-blue-600 transition-colors mb-1">
                   {item.title}
                 </h3>
-                <p className="text-sm text-slate-500">{item.desc}</p>
+                <p className="text-sm text-ipb-muted">{item.desc}</p>
               </Link>
             ))}
           </div>

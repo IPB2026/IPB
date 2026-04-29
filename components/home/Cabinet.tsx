@@ -33,7 +33,7 @@ export function Cabinet() {
               <div className="aspect-[4/5] rounded-[6px] overflow-hidden bg-ipb-stone">
                 <Image
                   src="/images/ludovic-expert-ipb.webp"
-                  alt="Ludovic D., fondateur du cabinet IPB Expertise et ingénieur structure"
+                  alt="Ludovic D., fondateur de l’institut IPB Expertise et ingénieur structure"
                   width={640}
                   height={800}
                   className="w-full h-full object-cover"
@@ -57,7 +57,7 @@ export function Cabinet() {
           {/* Texte cabinet (7 col) */}
           <div className="lg:col-span-7">
             <RevealOnScroll>
-              <Eyebrow>Le cabinet</Eyebrow>
+              <Eyebrow>L’institut</Eyebrow>
               <h2
                 className="font-serif text-ipb-text mb-8"
                 style={{
@@ -75,7 +75,7 @@ export function Cabinet() {
             <RevealOnScroll delay={0.06}>
               <div className="space-y-5 text-[15px] leading-[1.9] font-light text-ipb-muted mb-12">
                 <p>
-                  IPB Expertise est un cabinet créé en 2019 à Toulouse, spécialisé en pathologie et structure du bâtiment. Notre activité couvre deux missions distinctes : le diagnostic et le traitement des fissures, l'étude et la réalisation d'ouvertures de murs porteurs.
+                  IPB Expertise est un institut créé en 2019 à Toulouse, spécialisé en pathologie et structure du bâtiment. Notre activité couvre deux missions distinctes : le diagnostic et le traitement des fissures, l'étude et la réalisation d'ouvertures de murs porteurs.
                 </p>
                 <p>
                   Tout est traité en interne — l'étude technique par notre ingénieur, les travaux par nos équipes. Cette continuité explique pourquoi nos rapports sont reconnus par les assurances et pourquoi notre garantie décennale couvre l'étude comme la réalisation.
@@ -127,7 +127,7 @@ export function Cabinet() {
                   href="/notre-expert"
                   className="inline-flex items-center gap-2 text-ipb-orange font-medium text-[13px] tracking-wide border-b border-ipb-orange pb-1 hover:gap-3 transition-all"
                 >
-                  Découvrir le parcours du cabinet →
+                  Découvrir le parcours de l’institut →
                 </Link>
                 <span className="text-ipb-light text-[12px] hidden sm:inline">·</span>
                 <Link

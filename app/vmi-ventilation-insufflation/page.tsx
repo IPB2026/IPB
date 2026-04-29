@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, Wind, ChevronRight, Shield, CheckCircle, XCircle, ThermometerSun, Droplets, Home } from 'lucide-react';
 
@@ -32,9 +33,10 @@ const comparatif = [
 
 export default function VMIPage() {
   return (
-    <div className="font-sans text-slate-800 bg-white antialiased">
+    <div className="font-sans text-ipb-text bg-white antialiased">
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-teal-900 via-emerald-900 to-slate-900 text-white overflow-hidden">
@@ -102,11 +104,11 @@ export default function VMIPage() {
             <div className="bg-white/10 backdrop-blur rounded-3xl p-8 border border-white/20">
               <h3 className="text-xl font-bold text-white mb-6 text-center">Comment ça marche ?</h3>
               
-              <div className="relative bg-slate-800/50 rounded-2xl p-6 h-64">
+              <div className="relative bg-ipb-navy-2/50 rounded-2xl p-6 h-64">
                 {/* Maison schématique */}
                 <div className="absolute inset-4 border-2 border-teal-400/50 rounded-lg">
                   {/* Toit */}
-                  <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-32 h-12 bg-slate-700/50 rounded-t-lg"></div>
+                  <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-32 h-12 bg-ipb-navy-2/50 rounded-t-lg"></div>
                   
                   {/* VMI au centre */}
                   <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center animate-pulse">
@@ -123,7 +125,7 @@ export default function VMIPage() {
                   {/* Légende */}
                   <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center">
                     <div className="text-teal-300 text-sm font-bold">Air filtré + préchauffé</div>
-                    <div className="text-slate-400 text-xs">→ Surpression → Évacuation humidité</div>
+                    <div className="text-ipb-light text-xs">→ Surpression → Évacuation humidité</div>
                   </div>
                 </div>
               </div>
@@ -145,7 +147,7 @@ export default function VMIPage() {
             <span className="inline-block bg-teal-100 text-teal-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
               Pourquoi la VMI ?
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
               6 avantages de la VMI
             </h2>
           </div>
@@ -158,8 +160,8 @@ export default function VMIPage() {
                     <CheckCircle size={20} className="text-teal-600" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-slate-900 mb-1">{item.avantage}</h3>
-                    <p className="text-slate-600 text-sm">{item.detail}</p>
+                    <h3 className="font-bold text-ipb-text mb-1">{item.avantage}</h3>
+                    <p className="text-ipb-muted text-sm">{item.detail}</p>
                   </div>
                 </div>
               </div>
@@ -169,28 +171,28 @@ export default function VMIPage() {
       </section>
 
       {/* Comparatif VMI vs VMC */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-ipb-cream">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="inline-block bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
+            <span className="inline-block bg-slate-200 text-ipb-text px-4 py-2 rounded-full text-sm font-bold mb-4">
               Comparatif
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
               VMI vs VMC : quelle différence ?
             </h2>
           </div>
 
           <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
-            <div className="grid grid-cols-3 bg-slate-900 text-white font-bold">
+            <div className="grid grid-cols-3 bg-ipb-navy text-white font-bold">
               <div className="p-4">Critère</div>
               <div className="p-4 text-center bg-teal-600">VMI ✓</div>
               <div className="p-4 text-center">VMC</div>
             </div>
             {comparatif.map((row, index) => (
-              <div key={index} className="grid grid-cols-3 border-b border-slate-100">
-                <div className="p-4 font-bold text-slate-900">{row.critere}</div>
-                <div className="p-4 text-center bg-teal-50 text-slate-700">{row.vmi}</div>
-                <div className="p-4 text-center text-slate-600">{row.vmc}</div>
+              <div key={index} className="grid grid-cols-3 border-b border-ipb-rule">
+                <div className="p-4 font-bold text-ipb-text">{row.critere}</div>
+                <div className="p-4 text-center bg-teal-50 text-ipb-text">{row.vmi}</div>
+                <div className="p-4 text-center text-ipb-muted">{row.vmc}</div>
               </div>
             ))}
           </div>
@@ -213,7 +215,7 @@ export default function VMIPage() {
       </section>
 
       {/* Prix */}
-      <section className="py-20 bg-slate-900 text-white">
+      <section className="py-20 bg-ipb-navy text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-black mb-12">
             Prix VMI installée
@@ -223,12 +225,12 @@ export default function VMIPage() {
             <div className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400 mb-4">
               2 500 - 4 500€
             </div>
-            <div className="text-slate-400 mb-8">Fourniture + installation + mise en service</div>
+            <div className="text-ipb-light mb-8">Fourniture + installation + mise en service</div>
 
             <div className="grid md:grid-cols-3 gap-6 text-left">
               <div className="bg-white/5 rounded-2xl p-4">
                 <div className="font-bold text-white mb-2">Inclus</div>
-                <ul className="text-slate-400 text-sm space-y-1">
+                <ul className="text-ipb-light text-sm space-y-1">
                   <li>✓ Centrale VMI</li>
                   <li>✓ Filtres G4 + F7</li>
                   <li>✓ Pose et raccordement</li>
@@ -237,7 +239,7 @@ export default function VMIPage() {
               </div>
               <div className="bg-white/5 rounded-2xl p-4">
                 <div className="font-bold text-white mb-2">Durée</div>
-                <ul className="text-slate-400 text-sm space-y-1">
+                <ul className="text-ipb-light text-sm space-y-1">
                   <li>• Installation : 1 journée</li>
                   <li>• Effet immédiat</li>
                   <li>• Garantie 10 ans</li>
@@ -245,7 +247,7 @@ export default function VMIPage() {
               </div>
               <div className="bg-white/5 rounded-2xl p-4">
                 <div className="font-bold text-white mb-2">Entretien</div>
-                <ul className="text-slate-400 text-sm space-y-1">
+                <ul className="text-ipb-light text-sm space-y-1">
                   <li>• Filtres : 50-100€/an</li>
                   <li>• Conso élec : ~100€/an</li>
                   <li>• Maintenance minimale</li>
@@ -259,7 +261,7 @@ export default function VMIPage() {
       {/* Articles connexes */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-slate-900 mb-8 text-center">
+          <h2 className="text-2xl font-black text-ipb-text mb-8 text-center">
             Articles connexes
           </h2>
           <div className="grid md:grid-cols-4 gap-6">
@@ -272,13 +274,13 @@ export default function VMIPage() {
               <Link 
                 key={index}
                 href={item.href}
-                className="group bg-slate-50 rounded-2xl p-6 hover:bg-teal-50 transition-all hover:-translate-y-1 border border-slate-100 hover:border-teal-200"
+                className="group bg-ipb-cream rounded-2xl p-6 hover:bg-teal-50 transition-all hover:-translate-y-1 border border-ipb-rule hover:border-teal-200"
               >
                 <span className="text-4xl mb-4 block">{item.icon}</span>
-                <h3 className="font-bold text-slate-900 group-hover:text-teal-600 transition-colors mb-1">
+                <h3 className="font-bold text-ipb-text group-hover:text-teal-600 transition-colors mb-1">
                   {item.title}
                 </h3>
-                <p className="text-sm text-slate-500">{item.desc}</p>
+                <p className="text-sm text-ipb-muted">{item.desc}</p>
               </Link>
             ))}
           </div>

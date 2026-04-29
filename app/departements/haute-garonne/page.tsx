@@ -4,6 +4,7 @@ import { Phone, MapPin, CheckCircle, ArrowRight, Shield, Award, Clock } from 'lu
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 
 export const metadata: Metadata = {
@@ -151,9 +152,10 @@ export default function HauteGaronnePage() {
       <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white font-sans antialiased">
         <TopBar />
         <Navbar />
+      <SmartBackBar />
 
         {/* Hero Section - Orange theme pour Haute-Garonne */}
-        <div className="relative bg-gradient-to-br from-orange-600 via-orange-700 to-red-700 text-white py-20 lg:py-28">
+        <div className="relative bg-ipb-orange text-white py-20 lg:py-28">
           <div className="absolute inset-0 bg-black/10"></div>
           <div className="absolute inset-0 bg-[url('/images/pattern-dots.svg')] opacity-5"></div>
           
@@ -175,7 +177,7 @@ export default function HauteGaronnePage() {
                 
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
                   Expert Fissures & Humidité<br />
-                  <span className="text-orange-200">Haute-Garonne (31)</span>
+                  <span className="text-ipb-orange-l">Haute-Garonne (31)</span>
                 </h1>
                 
                 <p className="text-xl md:text-2xl text-orange-50 mb-8 max-w-2xl">
@@ -185,7 +187,7 @@ export default function HauteGaronnePage() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
                     href="/diagnostic"
-                    className="inline-flex items-center justify-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-50 transition-all shadow-xl"
+                    className="inline-flex items-center justify-center gap-2 bg-white text-ipb-orange px-8 py-4 rounded-xl font-bold text-lg hover:bg-ipb-stone transition-all shadow-xl"
                   >
                     Diagnostic gratuit
                     <ArrowRight size={20} />
@@ -204,19 +206,19 @@ export default function HauteGaronnePage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/20">
                   <div className="text-4xl font-extrabold text-white mb-2">850+</div>
-                  <div className="text-orange-100">Diagnostics réalisés</div>
+                  <div className="text-ipb-orange-l">Diagnostics réalisés</div>
                 </div>
                 <div className="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/20">
                   <div className="text-4xl font-extrabold text-white mb-2">4.9★</div>
-                  <div className="text-orange-100">Note Google</div>
+                  <div className="text-ipb-orange-l">Note Google</div>
                 </div>
                 <div className="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/20">
                   <div className="text-4xl font-extrabold text-white mb-2">48h</div>
-                  <div className="text-orange-100">Délai intervention</div>
+                  <div className="text-ipb-orange-l">Délai intervention</div>
                 </div>
                 <div className="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/20">
                   <div className="text-4xl font-extrabold text-white mb-2">10 ans</div>
-                  <div className="text-orange-100">Garantie décennale</div>
+                  <div className="text-ipb-orange-l">Garantie décennale</div>
                 </div>
               </div>
             </div>
@@ -227,23 +229,23 @@ export default function HauteGaronnePage() {
         <div className="py-16 lg:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-4">
                 Pourquoi la Haute-Garonne est touchée ?
               </h2>
-              <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+              <p className="text-lg text-ipb-muted max-w-3xl mx-auto">
                 Le département 31 cumule plusieurs facteurs de risque pour les fissures et l'humidité.
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl border border-orange-200">
-                <div className="w-14 h-14 bg-orange-600 rounded-xl flex items-center justify-center mb-6">
+              <div className="bg-ipb-orange p-8 rounded-2xl border border-ipb-rule">
+                <div className="w-14 h-14 bg-ipb-orange rounded-xl flex items-center justify-center mb-6">
                   <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Sol argileux omniprésent</h3>
-                <p className="text-slate-600">
+                <h3 className="text-xl font-bold text-ipb-text mb-3">Sol argileux omniprésent</h3>
+                <p className="text-ipb-muted">
                   90% du territoire toulousain repose sur des argiles gonflantes. En été, le sol se rétracte de 10-15 cm, créant des vides sous les fondations.
                 </p>
               </div>
@@ -254,8 +256,8 @@ export default function HauteGaronnePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Sécheresses répétées</h3>
-                <p className="text-slate-600">
+                <h3 className="text-xl font-bold text-ipb-text mb-3">Sécheresses répétées</h3>
+                <p className="text-ipb-muted">
                   Depuis 2019, la Haute-Garonne a connu 4 années de sécheresse exceptionnelle. Des milliers de maisons ont développé des fissures structurelles.
                 </p>
               </div>
@@ -266,8 +268,8 @@ export default function HauteGaronnePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Maisons années 70-90</h3>
-                <p className="text-slate-600">
+                <h3 className="text-xl font-bold text-ipb-text mb-3">Maisons années 70-90</h3>
+                <p className="text-ipb-muted">
                   La grande majorité des pavillons toulousains date de cette période, construits avec des fondations peu profondes, avant les normes actuelles.
                 </p>
               </div>
@@ -277,32 +279,32 @@ export default function HauteGaronnePage() {
 
         {/* Villes principales */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-4">
             Nos interventions en Haute-Garonne
           </h2>
-          <p className="text-lg text-slate-600 mb-8 max-w-3xl">
+          <p className="text-lg text-ipb-muted mb-8 max-w-3xl">
             Basés à Toulouse, nous intervenons dans un rayon de 50 km pour tous vos problèmes de fissures et d'humidité.
           </p>
 
-          <h3 className="text-xl font-bold text-slate-800 mb-6">Villes principales</h3>
+          <h3 className="text-xl font-bold text-ipb-text mb-6">Villes principales</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {villesPrincipales.map((ville) => (
               <Link
                 key={ville.slug}
                 href={`/villes/${ville.slug}`}
-                className="group p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all border border-slate-100 hover:border-orange-200"
+                className="group p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all border border-ipb-rule hover:border-ipb-rule"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <h4 className="text-xl font-bold text-slate-900 group-hover:text-orange-600 transition-colors">
+                    <h4 className="text-xl font-bold text-ipb-text group-hover:text-ipb-orange transition-colors">
                       {ville.nom}
                     </h4>
-                    <p className="text-sm text-slate-500">{ville.habitants} hab. • {ville.zone}</p>
+                    <p className="text-sm text-ipb-muted">{ville.habitants} hab. • {ville.zone}</p>
                   </div>
-                  <ArrowRight size={20} className="text-slate-400 group-hover:text-orange-600 transition-colors" />
+                  <ArrowRight size={20} className="text-ipb-light group-hover:text-ipb-orange transition-colors" />
                 </div>
                 
-                <div className="space-y-2 text-sm text-slate-600">
+                <div className="space-y-2 text-sm text-ipb-muted">
                   <div className="flex items-center gap-2">
                     <CheckCircle size={16} className="text-green-500" />
                     Diagnostic gratuit
@@ -313,8 +315,8 @@ export default function HauteGaronnePage() {
                   </div>
                 </div>
 
-                <div className="mt-4 pt-4 border-t border-slate-100 flex gap-2">
-                  <span className="text-xs bg-orange-50 text-orange-600 px-2 py-1 rounded font-medium">
+                <div className="mt-4 pt-4 border-t border-ipb-rule flex gap-2">
+                  <span className="text-xs bg-ipb-stone text-ipb-orange px-2 py-1 rounded font-medium">
                     Fissures
                   </span>
                   <span className="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded font-medium">
@@ -325,13 +327,13 @@ export default function HauteGaronnePage() {
             ))}
           </div>
 
-          <h3 className="text-xl font-bold text-slate-800 mb-6">Autres communes desservies</h3>
+          <h3 className="text-xl font-bold text-ipb-text mb-6">Autres communes desservies</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
             {villesSecondaires.map((ville) => (
               <Link
                 key={ville.slug}
                 href={`/villes/${ville.slug}`}
-                className="text-sm text-slate-600 hover:text-orange-600 transition-colors p-3 bg-slate-50 rounded-lg hover:bg-orange-50"
+                className="text-sm text-ipb-muted hover:text-ipb-orange transition-colors p-3 bg-ipb-cream rounded-lg hover:bg-ipb-stone"
               >
                 {ville.nom}
               </Link>
@@ -340,7 +342,7 @@ export default function HauteGaronnePage() {
         </div>
 
         {/* Avantages */}
-        <div className="bg-slate-900 py-16 lg:py-24">
+        <div className="bg-ipb-navy py-16 lg:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
@@ -350,31 +352,31 @@ export default function HauteGaronnePage() {
 
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-ipb-orange rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <MapPin size={32} className="text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">Basés à Toulouse</h3>
-                <p className="text-slate-400">
+                <p className="text-ipb-light">
                   Notre siège est à Toulouse. Nous connaissons parfaitement les sols, le climat et les constructions locales.
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-ipb-orange rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <Clock size={32} className="text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">Intervention rapide</h3>
-                <p className="text-slate-400">
+                <p className="text-ipb-light">
                   Diagnostic sous 48-72h dans toute la Haute-Garonne. Pas d'attente, pas de déplacement facturé.
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-ipb-orange rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <Shield size={32} className="text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">Garantie décennale</h3>
-                <p className="text-slate-400">
+                <p className="text-ipb-light">
                   10 ans de garantie sur tous nos travaux. Attestation d'assurance fournie avec chaque devis.
                 </p>
               </div>
@@ -383,19 +385,19 @@ export default function HauteGaronnePage() {
         </div>
 
         {/* FAQ Section */}
-        <div className="bg-slate-50 py-16">
+        <div className="bg-ipb-cream py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-8">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-8">
               Questions fréquentes - Haute-Garonne
             </h2>
 
             <div className="space-y-6">
               {faqSchema.mainEntity.map((faq, index) => (
-                <div key={index} className="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
-                  <h3 className="text-lg font-bold text-slate-900 mb-3">
+                <div key={index} className="bg-white p-6 rounded-xl shadow-sm border border-ipb-rule">
+                  <h3 className="text-lg font-bold text-ipb-text mb-3">
                     {faq.name}
                   </h3>
-                  <p className="text-slate-600 leading-relaxed">
+                  <p className="text-ipb-muted leading-relaxed">
                     {faq.acceptedAnswer.text}
                   </p>
                 </div>
@@ -405,7 +407,7 @@ export default function HauteGaronnePage() {
         </div>
 
         {/* CTA Final */}
-        <div className="bg-gradient-to-br from-orange-600 to-red-600 py-16">
+        <div className="bg-ipb-orange py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-6">
               Fissures ou humidité en Haute-Garonne ?
@@ -416,7 +418,7 @@ export default function HauteGaronnePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/diagnostic"
-                className="inline-flex items-center justify-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-50 transition-all shadow-xl"
+                className="inline-flex items-center justify-center gap-2 bg-white text-ipb-orange px-8 py-4 rounded-xl font-bold text-lg hover:bg-ipb-stone transition-all shadow-xl"
               >
                 Faire mon diagnostic gratuit
                 <ArrowRight size={20} />

@@ -1,5 +1,6 @@
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { Calendar, FileText, Shield, CreditCard, Clock, AlertTriangle, CheckCircle, Gavel, Phone, Mail, Building2, Scale, RotateCcw, Wrench } from 'lucide-react';
@@ -19,14 +20,15 @@ export const metadata = {
 
 export default function CGVPage() {
   return (
-    <div className="font-sans text-slate-800 bg-slate-50 antialiased">
+    <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
       {/* Skip link for accessibility */}
-      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-orange-600 text-white px-4 py-2 rounded-lg z-50">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-ipb-orange text-white px-4 py-2 rounded-lg z-50">
         Aller au contenu principal
       </a>
       
       <TopBar />
       <Navbar />
+      <SmartBackBar />
       
       <main id="main-content" className="bg-white min-h-screen py-12 md:py-16" role="main" aria-labelledby="page-title">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -39,20 +41,20 @@ export default function CGVPage() {
           </nav>
 
           {/* En-tête */}
-          <header className="mb-8 pb-6 border-b border-slate-200">
-            <div className="flex items-center gap-2 text-sm text-slate-500 mb-4">
+          <header className="mb-8 pb-6 border-b border-ipb-rule">
+            <div className="flex items-center gap-2 text-sm text-ipb-muted mb-4">
               <Calendar size={16} aria-hidden="true" />
               <time dateTime="2026-02-01">Mis à jour le 1er février 2026</time>
             </div>
-            <h1 id="page-title" className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+            <h1 id="page-title" className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-4">
               Conditions Générales de Vente
             </h1>
-            <p className="text-lg text-slate-600 leading-relaxed">
+            <p className="text-lg text-ipb-muted leading-relaxed">
               Les présentes Conditions Générales de Vente (ci-après « CGV ») constituent le socle unique 
               de la relation commerciale entre les parties. Elles régissent l'ensemble des prestations 
               de services et travaux proposés par la société Bâti Halli à ses clients.
             </p>
-            <div className="mt-4 bg-orange-50 border border-orange-200 rounded-lg p-4">
+            <div className="mt-4 bg-ipb-stone border border-ipb-rule rounded-lg p-4">
               <p className="text-sm text-orange-800">
                 <strong>Important :</strong> Toute commande implique l'acceptation sans réserve des présentes CGV. 
                 Le client déclare avoir pris connaissance des présentes conditions préalablement à sa commande.
@@ -61,78 +63,78 @@ export default function CGVPage() {
           </header>
 
           {/* Table des matières */}
-          <nav aria-labelledby="toc-title" className="mb-10 p-6 bg-slate-50 rounded-xl border border-slate-200">
-            <h2 id="toc-title" className="font-bold text-slate-900 mb-4 flex items-center gap-2">
+          <nav aria-labelledby="toc-title" className="mb-10 p-6 bg-ipb-cream rounded-xl border border-ipb-rule">
+            <h2 id="toc-title" className="font-bold text-ipb-text mb-4 flex items-center gap-2">
               <FileText size={18} aria-hidden="true" />
               Sommaire des articles
             </h2>
             <ol className="grid sm:grid-cols-2 gap-2 text-sm">
-              <li><a href="#article-1" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 1 - Identification du prestataire</a></li>
-              <li><a href="#article-2" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 2 - Objet et champ d'application</a></li>
-              <li><a href="#article-3" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 3 - Prestations de diagnostic</a></li>
-              <li><a href="#article-4" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 4 - Devis et formation du contrat</a></li>
-              <li><a href="#article-5" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 5 - Prix et conditions tarifaires</a></li>
-              <li><a href="#article-6" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 6 - Modalités de paiement</a></li>
-              <li><a href="#article-7" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 7 - Droit de rétractation</a></li>
-              <li><a href="#article-8" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 8 - Exécution des travaux</a></li>
-              <li><a href="#article-9" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 9 - Obligations du client</a></li>
-              <li><a href="#article-10" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 10 - Réception des travaux</a></li>
-              <li><a href="#article-11" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 11 - Garanties légales</a></li>
-              <li><a href="#article-12" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 12 - Assurances</a></li>
-              <li><a href="#article-13" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 13 - Responsabilité</a></li>
-              <li><a href="#article-14" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 14 - Force majeure</a></li>
-              <li><a href="#article-15" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 15 - Données personnelles</a></li>
-              <li><a href="#article-16" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 16 - Litiges et médiation</a></li>
-              <li><a href="#article-17" className="text-orange-600 hover:text-orange-700 hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 17 - Dispositions générales</a></li>
+              <li><a href="#article-1" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 1 - Identification du prestataire</a></li>
+              <li><a href="#article-2" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 2 - Objet et champ d'application</a></li>
+              <li><a href="#article-3" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 3 - Prestations de diagnostic</a></li>
+              <li><a href="#article-4" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 4 - Devis et formation du contrat</a></li>
+              <li><a href="#article-5" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 5 - Prix et conditions tarifaires</a></li>
+              <li><a href="#article-6" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 6 - Modalités de paiement</a></li>
+              <li><a href="#article-7" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 7 - Droit de rétractation</a></li>
+              <li><a href="#article-8" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 8 - Exécution des travaux</a></li>
+              <li><a href="#article-9" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 9 - Obligations du client</a></li>
+              <li><a href="#article-10" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 10 - Réception des travaux</a></li>
+              <li><a href="#article-11" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 11 - Garanties légales</a></li>
+              <li><a href="#article-12" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 12 - Assurances</a></li>
+              <li><a href="#article-13" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 13 - Responsabilité</a></li>
+              <li><a href="#article-14" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 14 - Force majeure</a></li>
+              <li><a href="#article-15" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 15 - Données personnelles</a></li>
+              <li><a href="#article-16" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 16 - Litiges et médiation</a></li>
+              <li><a href="#article-17" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 17 - Dispositions générales</a></li>
             </ol>
           </nav>
 
           {/* Contenu des articles */}
-          <article className="prose prose-lg max-w-none space-y-10 text-slate-700">
+          <article className="prose prose-lg max-w-none space-y-10 text-ipb-text">
             
             {/* Article 1 */}
             <section id="article-1" aria-labelledby="article-1-title">
-              <h2 id="article-1-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <Building2 size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="article-1-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <Building2 size={24} className="text-ipb-orange" aria-hidden="true" />
                 Article 1 - Identification du prestataire
               </h2>
-              <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
+              <div className="bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
                 <dl className="space-y-2">
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-slate-900 sm:w-56">Dénomination sociale :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-56">Dénomination sociale :</dt>
                     <dd>Bâti Halli</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-slate-900 sm:w-56">Enseigne commerciale :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-56">Enseigne commerciale :</dt>
                     <dd>IPB - Institut de Pathologie du Bâtiment</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-slate-900 sm:w-56">Forme juridique :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-56">Forme juridique :</dt>
                     <dd>SARL au capital de 1 000 €</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-slate-900 sm:w-56">Siège social :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-56">Siège social :</dt>
                     <dd>13 rue du Recteur Dottin, 31100 Toulouse</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-slate-900 sm:w-56">SIRET :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-56">SIRET :</dt>
                     <dd>398 185 421 00037</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-slate-900 sm:w-56">RCS :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-56">RCS :</dt>
                     <dd>Toulouse B 398 185 421</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-slate-900 sm:w-56">N° TVA intracommunautaire :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-56">N° TVA intracommunautaire :</dt>
                     <dd>FR14398185421</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-slate-900 sm:w-56">Téléphone :</dt>
-                    <dd><a href="tel:0582953375" className="text-orange-600 hover:underline">05 82 95 33 75</a></dd>
+                    <dt className="font-bold text-ipb-text sm:w-56">Téléphone :</dt>
+                    <dd><a href="tel:0582953375" className="text-ipb-orange hover:underline">05 82 95 33 75</a></dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-slate-900 sm:w-56">Email :</dt>
-                    <dd><a href="mailto:contact@ipb-expertise.fr" className="text-orange-600 hover:underline">contact@ipb-expertise.fr</a></dd>
+                    <dt className="font-bold text-ipb-text sm:w-56">Email :</dt>
+                    <dd><a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange hover:underline">contact@ipb-expertise.fr</a></dd>
                   </div>
                 </dl>
               </div>
@@ -140,8 +142,8 @@ export default function CGVPage() {
 
             {/* Article 2 */}
             <section id="article-2" aria-labelledby="article-2-title">
-              <h2 id="article-2-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <FileText size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="article-2-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <FileText size={24} className="text-ipb-orange" aria-hidden="true" />
                 Article 2 - Objet et champ d'application
               </h2>
               <p>
@@ -169,12 +171,12 @@ export default function CGVPage() {
 
             {/* Article 3 */}
             <section id="article-3" aria-labelledby="article-3-title">
-              <h2 id="article-3-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <Wrench size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="article-3-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <Wrench size={24} className="text-ipb-orange" aria-hidden="true" />
                 Article 3 - Prestations de diagnostic expert
               </h2>
               
-              <div className="bg-orange-50 border-l-4 border-orange-600 p-6 rounded-r-lg mb-6">
+              <div className="bg-ipb-stone border-l-4 border-ipb-orange p-6 rounded-r-lg mb-6">
                 <p className="font-bold text-orange-900 mb-3 text-lg">ARTICLE SPÉCIFIQUE - DIAGNOSTIC EXPERT SUR SITE</p>
                 <p className="text-orange-800 mb-4">
                   La prestation de diagnostic expert constitue un acte intellectuel préalable, indépendant de 
@@ -222,8 +224,8 @@ export default function CGVPage() {
 
             {/* Article 4 */}
             <section id="article-4" aria-labelledby="article-4-title">
-              <h2 id="article-4-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <FileText size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="article-4-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <FileText size={24} className="text-ipb-orange" aria-hidden="true" />
                 Article 4 - Devis et formation du contrat
               </h2>
               <p><strong>4.1. Établissement du devis</strong></p>
@@ -260,8 +262,8 @@ export default function CGVPage() {
 
             {/* Article 5 */}
             <section id="article-5" aria-labelledby="article-5-title">
-              <h2 id="article-5-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <CreditCard size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="article-5-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <CreditCard size={24} className="text-ipb-orange" aria-hidden="true" />
                 Article 5 - Prix et conditions tarifaires
               </h2>
               <p><strong>5.1. Prix</strong></p>
@@ -292,32 +294,32 @@ export default function CGVPage() {
 
             {/* Article 6 */}
             <section id="article-6" aria-labelledby="article-6-title">
-              <h2 id="article-6-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <CreditCard size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="article-6-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <CreditCard size={24} className="text-ipb-orange" aria-hidden="true" />
                 Article 6 - Modalités de paiement
               </h2>
               <p><strong>6.1. Échéancier de paiement</strong></p>
-              <div className="mt-2 bg-slate-50 rounded-xl p-6 border border-slate-200">
+              <div className="mt-2 bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
                     <CheckCircle size={20} className="text-green-600 mt-1 flex-shrink-0" aria-hidden="true" />
                     <div>
-                      <strong className="text-slate-900">Diagnostic expert :</strong>
-                      <span className="text-slate-700"> prestation payante, payable à la réservation (montant intégralement déduit des travaux)</span>
+                      <strong className="text-ipb-text">Diagnostic expert :</strong>
+                      <span className="text-ipb-text"> prestation payante, payable à la réservation (montant intégralement déduit des travaux)</span>
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle size={20} className="text-green-600 mt-1 flex-shrink-0" aria-hidden="true" />
                     <div>
-                      <strong className="text-slate-900">Travaux (montant &lt; 5 000€) :</strong>
-                      <span className="text-slate-700"> 30% à la commande, solde à la réception</span>
+                      <strong className="text-ipb-text">Travaux (montant &lt; 5 000€) :</strong>
+                      <span className="text-ipb-text"> 30% à la commande, solde à la réception</span>
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle size={20} className="text-green-600 mt-1 flex-shrink-0" aria-hidden="true" />
                     <div>
-                      <strong className="text-slate-900">Travaux (montant ≥ 5 000€) :</strong>
-                      <span className="text-slate-700"> 30% à la commande, 40% à mi-chantier, 30% à la réception</span>
+                      <strong className="text-ipb-text">Travaux (montant ≥ 5 000€) :</strong>
+                      <span className="text-ipb-text"> 30% à la commande, 40% à mi-chantier, 30% à la réception</span>
                     </div>
                   </li>
                 </ul>
@@ -345,8 +347,8 @@ export default function CGVPage() {
 
             {/* Article 7 */}
             <section id="article-7" aria-labelledby="article-7-title">
-              <h2 id="article-7-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <RotateCcw size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="article-7-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <RotateCcw size={24} className="text-ipb-orange" aria-hidden="true" />
                 Article 7 - Droit de rétractation
               </h2>
               
@@ -374,10 +376,10 @@ export default function CGVPage() {
                 déclaration dénuée d'ambiguïté (par courrier, email ou via le formulaire type de rétractation 
                 annexé) à l'adresse suivante :
               </p>
-              <p className="mt-2 bg-slate-100 p-3 rounded-lg">
+              <p className="mt-2 bg-ipb-stone p-3 rounded-lg">
                 Bâti Halli - IPB<br />
                 13 rue du Recteur Dottin, 31100 Toulouse<br />
-                Email : <a href="mailto:contact@ipb-expertise.fr" className="text-orange-600">contact@ipb-expertise.fr</a>
+                Email : <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange">contact@ipb-expertise.fr</a>
               </p>
 
               <p className="mt-4"><strong>7.3. Exceptions au droit de rétractation</strong></p>
@@ -402,8 +404,8 @@ export default function CGVPage() {
 
             {/* Article 8 */}
             <section id="article-8" aria-labelledby="article-8-title">
-              <h2 id="article-8-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <Wrench size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="article-8-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <Wrench size={24} className="text-ipb-orange" aria-hidden="true" />
                 Article 8 - Exécution des travaux
               </h2>
               <p><strong>8.1. Délais d'intervention</strong></p>
@@ -437,8 +439,8 @@ export default function CGVPage() {
 
             {/* Article 9 */}
             <section id="article-9" aria-labelledby="article-9-title">
-              <h2 id="article-9-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <CheckCircle size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="article-9-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <CheckCircle size={24} className="text-ipb-orange" aria-hidden="true" />
                 Article 9 - Obligations du Client
               </h2>
               <p>Le Client s'engage à :</p>
@@ -454,8 +456,8 @@ export default function CGVPage() {
 
             {/* Article 10 */}
             <section id="article-10" aria-labelledby="article-10-title">
-              <h2 id="article-10-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <CheckCircle size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="article-10-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <CheckCircle size={24} className="text-ipb-orange" aria-hidden="true" />
                 Article 10 - Réception des travaux
               </h2>
               <p><strong>10.1. Procès-verbal de réception</strong></p>
@@ -486,8 +488,8 @@ export default function CGVPage() {
 
             {/* Article 11 */}
             <section id="article-11" aria-labelledby="article-11-title">
-              <h2 id="article-11-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <Shield size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="article-11-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <Shield size={24} className="text-ipb-orange" aria-hidden="true" />
                 Article 11 - Garanties légales
               </h2>
               
@@ -517,7 +519,7 @@ export default function CGVPage() {
                   </p>
                 </div>
 
-                <div className="bg-orange-50 border border-orange-200 rounded-xl p-6">
+                <div className="bg-ipb-stone border border-ipb-rule rounded-xl p-6">
                   <h3 className="font-bold text-orange-900 mb-3 flex items-center gap-2">
                     <Shield size={20} aria-hidden="true" />
                     11.3. Garantie décennale (Art. 1792 et 1792-2 C. civ.)
@@ -538,8 +540,8 @@ export default function CGVPage() {
 
             {/* Article 12 */}
             <section id="article-12" aria-labelledby="article-12-title">
-              <h2 id="article-12-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <Shield size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="article-12-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <Shield size={24} className="text-ipb-orange" aria-hidden="true" />
                 Article 12 - Assurances
               </h2>
               <p>
@@ -563,8 +565,8 @@ export default function CGVPage() {
 
             {/* Article 13 */}
             <section id="article-13" aria-labelledby="article-13-title">
-              <h2 id="article-13-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <AlertTriangle size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="article-13-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <AlertTriangle size={24} className="text-ipb-orange" aria-hidden="true" />
                 Article 13 - Responsabilité
               </h2>
               <p>
@@ -589,8 +591,8 @@ export default function CGVPage() {
 
             {/* Article 14 */}
             <section id="article-14" aria-labelledby="article-14-title">
-              <h2 id="article-14-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <AlertTriangle size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="article-14-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <AlertTriangle size={24} className="text-ipb-orange" aria-hidden="true" />
                 Article 14 - Force majeure
               </h2>
               <p>
@@ -611,8 +613,8 @@ export default function CGVPage() {
 
             {/* Article 15 */}
             <section id="article-15" aria-labelledby="article-15-title">
-              <h2 id="article-15-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <Shield size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="article-15-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <Shield size={24} className="text-ipb-orange" aria-hidden="true" />
                 Article 15 - Protection des données personnelles
               </h2>
               <p>
@@ -622,15 +624,15 @@ export default function CGVPage() {
               </p>
               <p className="mt-4">
                 Pour plus d'informations sur le traitement de vos données personnelles et l'exercice de vos 
-                droits, consultez notre <Link href="/legal/confidentialite" className="text-orange-600 hover:underline font-bold">
+                droits, consultez notre <Link href="/legal/confidentialite" className="text-ipb-orange hover:underline font-bold">
                 Politique de confidentialité</Link>.
               </p>
             </section>
 
             {/* Article 16 */}
             <section id="article-16" aria-labelledby="article-16-title">
-              <h2 id="article-16-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <Gavel size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="article-16-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <Gavel size={24} className="text-ipb-orange" aria-hidden="true" />
                 Article 16 - Règlement des litiges et médiation
               </h2>
               <p>
@@ -642,21 +644,21 @@ export default function CGVPage() {
                 En cas de litige, les parties s'engagent à rechercher une solution amiable avant toute 
                 action judiciaire. Le Client peut adresser ses réclamations à :<br />
                 <span className="text-sm">Bâti Halli - IPB, 13 rue du Recteur Dottin, 31100 Toulouse<br />
-                Email : <a href="mailto:contact@ipb-expertise.fr" className="text-orange-600">contact@ipb-expertise.fr</a></span>
+                Email : <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange">contact@ipb-expertise.fr</a></span>
               </p>
               
-              <div className="mt-6 bg-slate-50 rounded-xl p-6 border border-slate-200">
-                <p className="font-bold text-slate-900 mb-3">16.3. Médiation de la consommation</p>
-                <p className="text-slate-700 mb-3">
+              <div className="mt-6 bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
+                <p className="font-bold text-ipb-text mb-3">16.3. Médiation de la consommation</p>
+                <p className="text-ipb-text mb-3">
                   Conformément aux articles L. 612-1 et suivants du Code de la consommation, le Client 
                   consommateur peut recourir gratuitement au médiateur de la consommation suivant :
                 </p>
-                <p className="font-bold text-slate-900">
+                <p className="font-bold text-ipb-text">
                   CNPM - MÉDIATION DE LA CONSOMMATION<br />
-                  <span className="font-normal text-slate-700">
+                  <span className="font-normal text-ipb-text">
                     27 avenue de la Libération, 42400 Saint-Chamond<br />
                     <a href="https://www.cnpm-mediation-consommation.eu" target="_blank" rel="noopener noreferrer" 
-                       className="text-orange-600 hover:underline">www.cnpm-mediation-consommation.eu</a>
+                       className="text-ipb-orange hover:underline">www.cnpm-mediation-consommation.eu</a>
                   </span>
                 </p>
               </div>
@@ -670,8 +672,8 @@ export default function CGVPage() {
 
             {/* Article 17 */}
             <section id="article-17" aria-labelledby="article-17-title">
-              <h2 id="article-17-title" className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <FileText size={24} className="text-orange-600" aria-hidden="true" />
+              <h2 id="article-17-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
+                <FileText size={24} className="text-ipb-orange" aria-hidden="true" />
                 Article 17 - Dispositions générales
               </h2>
               <p>
@@ -701,12 +703,12 @@ export default function CGVPage() {
           </article>
 
           {/* Annexe - Formulaire de rétractation */}
-          <div className="mt-12 p-6 bg-slate-100 rounded-xl border border-slate-300">
-            <h2 className="text-xl font-bold text-slate-900 mb-4">ANNEXE - Formulaire type de rétractation</h2>
-            <p className="text-sm text-slate-600 mb-4">
+          <div className="mt-12 p-6 bg-ipb-stone rounded-xl border border-ipb-rule">
+            <h2 className="text-xl font-bold text-ipb-text mb-4">ANNEXE - Formulaire type de rétractation</h2>
+            <p className="text-sm text-ipb-muted mb-4">
               (À compléter et renvoyer uniquement si vous souhaitez vous rétracter du contrat)
             </p>
-            <div className="bg-white p-4 rounded-lg border border-slate-200 text-sm">
+            <div className="bg-white p-4 rounded-lg border border-ipb-rule text-sm">
               <p className="mb-3">À l'attention de :<br />
               <strong>Bâti Halli - IPB</strong><br />
               13 rue du Recteur Dottin, 31100 Toulouse<br />
@@ -726,13 +728,13 @@ export default function CGVPage() {
               
               <p>Signature du (des) consommateur(s) (uniquement en cas de notification sur papier) :</p>
               
-              <p className="mt-4 text-xs text-slate-500">(*) Rayez la mention inutile</p>
+              <p className="mt-4 text-xs text-ipb-muted">(*) Rayez la mention inutile</p>
             </div>
           </div>
 
           {/* Date de dernière mise à jour */}
-          <footer className="mt-12 pt-8 border-t border-slate-200">
-            <p className="text-sm text-slate-500 text-center">
+          <footer className="mt-12 pt-8 border-t border-ipb-rule">
+            <p className="text-sm text-ipb-muted text-center">
               Dernière mise à jour des présentes CGV : <time dateTime="2026-02-01">1er février 2026</time>
             </p>
           </footer>

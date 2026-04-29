@@ -113,7 +113,7 @@ export default function TarnEtGaronnePage() {
 
       <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
         {/* Hero Section */}
-        <div className="relative bg-gradient-to-br from-orange-600 via-orange-700 to-orange-800 text-white py-20">
+        <div className="relative bg-ipb-orange text-white py-20">
           <div className="absolute inset-0 bg-black/10"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Breadcrumbs
@@ -132,7 +132,7 @@ export default function TarnEtGaronnePage() {
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
                 Expert Fissures & Humidité<br />
-                dans le <span className="text-orange-200">Tarn-et-Garonne</span>
+                dans le <span className="text-ipb-orange-l">Tarn-et-Garonne</span>
               </h1>
               
               <p className="text-xl md:text-2xl text-orange-50 mb-8 max-w-3xl">
@@ -142,7 +142,7 @@ export default function TarnEtGaronnePage() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/diagnostic"
-                  className="inline-flex items-center justify-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-orange-50 transition-all shadow-lg"
+                  className="inline-flex items-center justify-center gap-2 bg-white text-ipb-orange px-8 py-4 rounded-lg font-bold text-lg hover:bg-ipb-stone transition-all shadow-lg"
                 >
                   Diagnostic gratuit
                   <ArrowRight size={20} />
@@ -161,10 +161,10 @@ export default function TarnEtGaronnePage() {
 
         {/* Villes Section */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-4">
             Nos interventions dans le Tarn-et-Garonne
           </h2>
-          <p className="text-lg text-slate-600 mb-8 max-w-3xl">
+          <p className="text-lg text-ipb-muted mb-8 max-w-3xl">
             IPB intervient dans toutes les communes du département pour le traitement des fissures structurelles et de l'humidité.
           </p>
 
@@ -173,19 +173,19 @@ export default function TarnEtGaronnePage() {
               <Link
                 key={ville.slug}
                 href={`/villes/${ville.slug}`}
-                className="group p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all border border-slate-100 hover:border-orange-200"
+                className="group p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all border border-ipb-rule hover:border-ipb-rule"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <h3 className="text-xl font-bold text-slate-900 group-hover:text-orange-600 transition-colors">
+                    <h3 className="text-xl font-bold text-ipb-text group-hover:text-ipb-orange transition-colors">
                       {ville.nom}
                     </h3>
-                    <p className="text-sm text-slate-500">{ville.habitants} habitants</p>
+                    <p className="text-sm text-ipb-muted">{ville.habitants} habitants</p>
                   </div>
-                  <ArrowRight size={20} className="text-slate-400 group-hover:text-orange-600 transition-colors" />
+                  <ArrowRight size={20} className="text-ipb-light group-hover:text-ipb-orange transition-colors" />
                 </div>
                 
-                <div className="space-y-2 text-sm text-slate-600">
+                <div className="space-y-2 text-sm text-ipb-muted">
                   <div className="flex items-center gap-2">
                     <CheckCircle size={16} className="text-green-500" />
                     Diagnostic gratuit
@@ -196,8 +196,8 @@ export default function TarnEtGaronnePage() {
                   </div>
                 </div>
 
-                <div className="mt-4 pt-4 border-t border-slate-100 flex gap-2">
-                  <span className="text-xs bg-orange-50 text-orange-600 px-2 py-1 rounded font-medium">
+                <div className="mt-4 pt-4 border-t border-ipb-rule flex gap-2">
+                  <span className="text-xs bg-ipb-stone text-ipb-orange px-2 py-1 rounded font-medium">
                     Fissures
                   </span>
                   <span className="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded font-medium">
@@ -210,19 +210,19 @@ export default function TarnEtGaronnePage() {
         </div>
 
         {/* FAQ Section */}
-        <div className="bg-slate-50 py-16">
+        <div className="bg-ipb-cream py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-8">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-8">
               Questions fréquentes - Tarn-et-Garonne
             </h2>
 
             <div className="space-y-6">
               {faqSchema.mainEntity.map((faq, index) => (
                 <div key={index} className="bg-white p-6 rounded-xl shadow-sm">
-                  <h3 className="text-lg font-bold text-slate-900 mb-3">
+                  <h3 className="text-lg font-bold text-ipb-text mb-3">
                     {faq.name}
                   </h3>
-                  <p className="text-slate-600 leading-relaxed">
+                  <p className="text-ipb-muted leading-relaxed">
                     {faq.acceptedAnswer.text}
                   </p>
                 </div>
@@ -232,7 +232,7 @@ export default function TarnEtGaronnePage() {
         </div>
 
         {/* CTA Final */}
-        <div className="bg-gradient-to-br from-orange-600 to-orange-700 py-16">
+        <div className="bg-ipb-orange py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-6">
               Besoin d'un expert dans le Tarn-et-Garonne ?
@@ -243,7 +243,7 @@ export default function TarnEtGaronnePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/diagnostic"
-                className="inline-flex items-center justify-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-orange-50 transition-all shadow-lg"
+                className="inline-flex items-center justify-center gap-2 bg-white text-ipb-orange px-8 py-4 rounded-lg font-bold text-lg hover:bg-ipb-stone transition-all shadow-lg"
               >
                 Faire mon diagnostic
                 <ArrowRight size={20} />

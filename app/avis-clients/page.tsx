@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
+import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { CtaFinal } from '@/components/home/CtaFinal';
 import { Eyebrow } from '@/components/ui/Eyebrow';
@@ -10,12 +11,12 @@ import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Avis clients · 4.9/5 sur Google · IPB Toulouse',
-  description: "Avis vérifiés de nos clients en Occitanie : 4.9/5 sur Google, 47 avis. Diagnostic de fissures, ouverture de mur porteur, expertise avant achat. Toulouse, Montauban, Auch, Albi.",
-  keywords: ['avis IPB', 'avis expert fissures toulouse', 'témoignages clients cabinet', 'IPB expertise avis', 'note google'],
+  description: "Avis vérifiés de nos clients en Occitanie : 4.9/5 sur Google. Diagnostic de fissures, ouverture de mur porteur, expertise avant achat. Toulouse, Montauban, Auch, Albi.",
+  keywords: ['avis IPB', 'avis expert fissures toulouse', 'témoignages clients institut', 'IPB expertise avis', 'note google'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/avis-clients' },
   openGraph: {
     title: 'Avis clients · 4.9/5 sur Google · IPB Toulouse',
-    description: "47 avis vérifiés de clients en Occitanie. Cabinet de pathologie du bâtiment.",
+    description: "Avis vérifiés de clients en Occitanie. Institut de pathologie du bâtiment.",
     url: 'https://www.ipb-expertise.fr/avis-clients',
   },
 };
@@ -72,7 +73,7 @@ const reviews = [
   {
     author: 'Yusra G.', location: 'Toulouse',
     date: '2026-01-22',
-    text: "Cabinet sérieux et à l'écoute. Le diagnostic a été clair, l'intervention efficace, l'équipe ponctuelle et soignée — on sent qu'ils prennent le temps d'expliquer ce qu'ils font.",
+    text: "Institut sérieux et à l'écoute. Le diagnostic a été clair, l'intervention efficace, l'équipe ponctuelle et soignée — on sent qu'ils prennent le temps d'expliquer ce qu'ils font.",
     service: 'Diagnostic structure',
   },
 ];
@@ -97,7 +98,7 @@ const reviewsSchema = {
     "ratingValue": "4.9",
     "bestRating": "5",
     "worstRating": "1",
-    "reviewCount": "47"
+    "reviewCount": "15"
   },
   "review": reviews.map(r => ({
     "@type": "Review",
@@ -121,6 +122,7 @@ export default function AvisClientsPage() {
 
       <TopBar />
       <Navbar />
+      <SmartBackBar />
 
       <main id="main-content">
         {/* HERO */}
@@ -138,8 +140,8 @@ export default function AvisClientsPage() {
                     fontWeight: 700,
                   }}
                 >
-                  Quarante-sept avis,<br />
-                  <em>une note constante.</em>
+                  Une note constante,<br />
+                  <em>chantier après chantier.</em>
                 </h1>
               </RevealOnScroll>
 
@@ -151,7 +153,7 @@ export default function AvisClientsPage() {
                   Note moyenne sur Google
                 </p>
                 <p className="text-[13px] font-light text-ipb-muted leading-[1.7]">
-                  47 avis vérifiés depuis 2019 · Mis à jour mensuellement
+                  Avis vérifiés depuis 2019 · Mis à jour mensuellement
                 </p>
                 <a
                   href="https://maps.app.goo.gl/6yDtzs7D1UcKSdJf6"
