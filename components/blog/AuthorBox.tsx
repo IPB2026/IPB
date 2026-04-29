@@ -1,9 +1,17 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
-const authorProfiles: Record<string, { bio: string; specialty: string }> = {
+interface AuthorProfile {
+  bio: string;
+  specialty: string;
+  photo?: string;
+}
+
+const authorProfiles: Record<string, AuthorProfile> = {
   'Ludovic D.': {
     bio: "12 ans sur le terrain en Haute-Garonne. Ancien conducteur de travaux reconverti dans l'expertise après avoir constaté trop de malfaçons sur les chantiers neufs. Intervient principalement sur Toulouse et sa périphérie.",
     specialty: 'Fissures structurelles & fondations',
+    photo: '/images/ludovic-expert-ipb.webp',
   },
   'Adam F.': {
     bio: "Formé à l'école des Ponts, spécialisé dans les pathologies liées à l'eau. A traité plus de 400 cas de remontées capillaires et d'infiltrations dans le Tarn-et-Garonne et le Gers depuis 2018.",
@@ -19,30 +27,49 @@ const authorProfiles: Record<string, { bio: string; specialty: string }> = {
   },
 };
 
-const defaultProfile = {
+const defaultProfile: AuthorProfile = {
   bio: "Expert en pathologie du bâtiment chez IPB, intervenant en Occitanie.",
   specialty: 'Pathologie du bâtiment',
 };
 
 export function AuthorBox({ name }: { name: string }) {
   const profile = authorProfiles[name] || defaultProfile;
+  const initial = name.charAt(0);
 
   return (
-    <div className="mt-8 bg-white border border-slate-200 rounded-2xl p-6 flex items-start gap-5">
-      <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-white text-2xl font-extrabold shadow-lg">
-        {name.charAt(0)}
+    <div className="mt-12 bg-white border border-ipb-rule rounded-[6px] p-7 flex items-start gap-6">
+      <div className="flex-shrink-0">
+        {profile.photo ? (
+          <div className="relative w-20 h-20 rounded-full overflow-hidden ring-1 ring-ipb-rule">
+            <Image
+              src={profile.photo}
+              alt={`Photo de ${name}, ${profile.specialty}`}
+              fill
+              sizes="80px"
+              className="object-cover"
+            />
+          </div>
+        ) : (
+          <div className="w-20 h-20 bg-gradient-to-br from-ipb-orange to-[#b35519] rounded-full flex items-center justify-center text-white text-3xl font-bold shadow-md font-serif">
+            {initial}
+          </div>
+        )}
       </div>
-      <div>
-        <p className="text-xs uppercase tracking-wider text-slate-500 font-bold mb-1">Rédigé par</p>
-        <Link href="/notre-expert" className="text-lg font-extrabold text-slate-900 hover:text-orange-600 transition">
+      <div className="flex-1">
+        <p className="text-[10px] uppercase tracking-[0.16em] text-ipb-light font-semibold mb-2">
+          Rédigé par
+        </p>
+        <Link href="/notre-expert" className="font-serif text-[20px] font-bold text-ipb-text hover:text-ipb-orange transition leading-tight">
           {name}
         </Link>
-        <p className="text-xs text-orange-600 font-medium mt-0.5">{profile.specialty}</p>
-        <p className="text-sm text-slate-600 mt-1.5">
+        <p className="text-[12px] text-ipb-orange font-medium mt-1 mb-3 uppercase tracking-[0.05em]">
+          {profile.specialty}
+        </p>
+        <p className="text-[14px] leading-[1.7] text-ipb-muted">
           {profile.bio}
         </p>
-        <Link href="/notre-expert" className="inline-block mt-2 text-sm text-orange-600 font-bold hover:text-orange-700 transition">
-          Voir le profil →
+        <Link href="/notre-expert" className="inline-flex items-center gap-1 mt-3 text-[13px] text-ipb-orange font-semibold hover:gap-2 transition-all border-b border-ipb-orange pb-0.5">
+          Voir le profil de l'institut →
         </Link>
       </div>
     </div>

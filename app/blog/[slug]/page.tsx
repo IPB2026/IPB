@@ -1,9 +1,11 @@
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import Script from 'next/script';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Calendar, Clock, Share2, Facebook, Twitter, Linkedin } from 'lucide-react';
+import { Calendar, Clock } from 'lucide-react';
+import { ShareButtons } from '@/components/blog/ShareButtons';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
@@ -141,9 +143,12 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
 
   // Enrichissement du contenu avec IDs
   const enrichedContent = addIdsToHeadings(post.content);
-  
+
   // Extraction du sommaire
   const tocItems = extractTocFromContent(post.content);
+
+  // Image de couverture (avec fallback par catégorie)
+  const coverPath = post.coverImage || getCategoryFallbackImage(post.category, post.keywords);
   
   // Génération des JSON-LD
   const articleJsonLd = generateArticleJsonLd(post);
@@ -221,16 +226,26 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                 <span className={`category-badge ${post.category}`}>
                   {categoryLabels[post.category]}
                 </span>
-                
+
                 <h1 className="article-title">
                   {post.title}
                 </h1>
-                
+
+                {/* Lead paragraph — accroche éditoriale (excerpt) */}
+                <p className="article-lead">
+                  {post.excerpt}
+                </p>
+
                 <div className="article-meta">
                   <span className="meta-item">
                     <Calendar size={16} />
-                    {new Date(post.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+                    Publié le {new Date(post.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
                   </span>
+                  {post.dateModified && post.dateModified !== post.date && (
+                    <span className="meta-item">
+                      Mis à jour le {new Date(post.dateModified).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+                    </span>
+                  )}
                   <span className="meta-item">
                     <Clock size={16} />
                     {post.readTime}
@@ -239,21 +254,22 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                     Par {post.author}
                   </span>
                 </div>
-                
-                {/* Boutons de partage */}
-                <div className="share-buttons">
-                  <span className="share-label">Partager :</span>
-                  <button className="share-btn facebook" aria-label="Partager sur Facebook">
-                    <Facebook size={18} />
-                  </button>
-                  <button className="share-btn twitter" aria-label="Partager sur Twitter">
-                    <Twitter size={18} />
-                  </button>
-                  <button className="share-btn linkedin" aria-label="Partager sur LinkedIn">
-                    <Linkedin size={18} />
-                  </button>
-                </div>
+
+                {/* Boutons de partage — interactifs */}
+                <ShareButtons title={post.title} url={`https://www.ipb-expertise.fr/blog/${post.slug}`} />
               </header>
+
+              {/* Cover image — visuel d'accroche (avant le body) */}
+              <figure className="article-cover">
+                <Image
+                  src={coverPath}
+                  alt={post.title}
+                  width={1200}
+                  height={675}
+                  className="article-cover-img"
+                  priority
+                />
+              </figure>
 
               {/* Contenu de l'article - Zone de lecture optimale */}
               <div
@@ -265,87 +281,61 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
 
             {/* E-E-A-T : Encart auteur */}
             <AuthorBox name={post.author} />
-            
-            {/* 🎯 SEO BOOST : Maillage interne contextuel intelligent */}
+
+            {/* Pour aller plus loin — 1 seul bloc épuré qui fusionne les liens contextuels */}
             {contextualLinks.length > 0 && (
-              <div className="mt-8 bg-ipb-orange border-2 border-ipb-rule rounded-2xl p-6">
-                <h3 className="text-xl font-extrabold text-orange-900 mb-4">Ressources complémentaires</h3>
-                <div className="grid md:grid-cols-2 gap-3">
+              <section className="mt-12 border-t border-ipb-rule pt-10">
+                <p className="text-[11px] uppercase tracking-[0.18em] text-ipb-orange font-semibold mb-3">Pour aller plus loin</p>
+                <h3 className="font-serif text-ipb-text mb-6" style={{ fontSize: 'clamp(20px, 2vw, 26px)', lineHeight: 1.2, letterSpacing: '-0.02em', fontWeight: 700 }}>
+                  Ressources liées sur l'institut.
+                </h3>
+                <ul className="space-y-2">
                   {contextualLinks.map((link, idx) => (
-                    <Link 
-                      key={idx}
-                      href={link.url} 
-                      className="flex items-center gap-2 bg-white border border-ipb-rule rounded-lg p-3 hover:border-orange-400 hover:shadow-md transition group"
-                    >
-                      <span className="text-ipb-orange group-hover:text-ipb-orange transition">→</span>
-                      <span className="text-sm font-bold text-ipb-text group-hover:text-ipb-orange transition">{link.text}</span>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* 🎯 SEO BOOST : Articles similaires par keywords (augmente temps sur page) */}
-            {relatedByKeywords.length > 0 && (
-              <div className="mt-8 bg-ipb-cream border border-ipb-rule rounded-2xl p-6">
-                <h3 className="text-xl font-extrabold text-ipb-text mb-4">Articles similaires recommandés</h3>
-                <div className="space-y-3">
-                  {relatedByKeywords.map((related) => {
-                    const relatedPost = blogPosts[related.slug];
-                    return (
-                      <Link 
-                        key={related.slug}
-                        href={`/blog/${related.slug}`}
-                        className="flex items-start gap-3 bg-white border border-ipb-rule rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition group"
+                    <li key={idx}>
+                      <Link
+                        href={link.url}
+                        className="group flex items-baseline gap-3 py-2 border-b border-ipb-rule hover:border-ipb-orange transition-colors"
                       >
-                        <span className="text-2xl text-ipb-orange group-hover:scale-110 transition">→</span>
-                        <div>
-                          <h4 className="font-bold text-ipb-text group-hover:text-ipb-orange transition mb-1">{related.title}</h4>
-                          <p className="text-sm text-ipb-muted line-clamp-2">{relatedPost.excerpt}</p>
-                          <p className="text-xs text-ipb-orange font-bold mt-2">Pertinence : {related.score} points communs</p>
-                        </div>
+                        <span className="text-ipb-orange text-sm font-bold flex-shrink-0">→</span>
+                        <span className="text-[15px] text-ipb-text group-hover:text-ipb-orange transition-colors">
+                          {link.text}
+                        </span>
                       </Link>
-                    );
-                  })}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            {/* CTA navy — un seul, fort */}
+            <section className="mt-12 bg-ipb-navy rounded-[6px] p-10 md:p-12 text-center text-white relative overflow-hidden">
+              <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_center,_rgba(232,116,60,0.4),transparent_70%)]"></div>
+              <div className="relative z-10 max-w-xl mx-auto">
+                <p className="text-[11px] uppercase tracking-[0.18em] text-ipb-orange-l font-semibold mb-4">
+                  Cet article vous concerne ?
+                </p>
+                <h2 className="font-serif mb-5" style={{ fontSize: 'clamp(24px, 2.6vw, 32px)', lineHeight: 1.18, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Faites diagnostiquer votre situation<br /><em className="text-ipb-orange-l">par notre institut.</em>
+                </h2>
+                <p className="text-white/70 text-[14px] leading-[1.7] mb-7">
+                  Diagnostic préalable téléphonique gratuit. Réponse d'un ingénieur structure sous 24 heures.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  <Link
+                    href="/diagnostic"
+                    className="inline-flex items-center justify-center gap-2 bg-ipb-orange text-white px-7 py-4 rounded-[3px] font-bold text-[14px] tracking-[0.03em] shadow-xl hover:bg-[#b35519] transition-colors"
+                  >
+                    Lancer mon diagnostic gratuit
+                  </Link>
+                  <a
+                    href="tel:0582953375"
+                    className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white px-7 py-4 rounded-[3px] font-bold text-[14px] tracking-[0.03em] hover:bg-white/20 transition-colors"
+                  >
+                    05 82 95 33 75
+                  </a>
                 </div>
               </div>
-            )}
-            
-            <div className="mt-8 bg-ipb-cream border border-ipb-rule rounded-2xl p-6">
-              <h3 className="text-xl font-extrabold text-ipb-text mb-4">Besoin d'un expert ?</h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                <Link href="/expertise/fissures" className="bg-white border border-ipb-rule rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition">
-                  <h4 className="font-bold text-ipb-text mb-1">Expertise fissures</h4>
-                  <p className="text-sm text-ipb-muted">Agrafage et stabilisation des fondations.</p>
-                </Link>
-                <Link href="/expertise/humidite" className="bg-white border border-ipb-rule rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition">
-                  <h4 className="font-bold text-ipb-text mb-1">Traitement humidité</h4>
-                  <p className="text-sm text-ipb-muted">Injection résine et cuvelage durable.</p>
-                </Link>
-              </div>
-              <div className="mt-4">
-                <Link href="/diagnostic" className="text-ipb-orange font-bold hover:text-ipb-orange">
-                  Lancer un diagnostic gratuit →
-                </Link>
-              </div>
-            </div>
-
-            {/* CTA */}
-            <div className="mt-12 bg-ipb-navy rounded-2xl p-8 text-center text-white relative overflow-hidden">
-              <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-500 via-slate-900 to-slate-900"></div>
-              <div className="relative z-10">
-                <h2 className="text-2xl font-extrabold mb-4">Cet article vous a aidé ?</h2>
-                <p className="text-white/70 mb-6">
-                  Obtenez un diagnostic personnalisé pour votre situation. Montant déduit à 100% des travaux.
-                </p>
-                <Link
-                  href="/diagnostic"
-                  className="inline-flex items-center gap-2 bg-ipb-orange text-white px-8 py-4 rounded-xl font-bold shadow-xl hover:bg-ipb-orange transition-all transform hover:-translate-y-1"
-                >
-                  Lancer mon diagnostic gratuit
-                </Link>
-              </div>
-            </div>
+            </section>
           </div>
 
           {/* Sommaire (sidebar) */}
@@ -363,29 +353,51 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
       </main>
 
       {/* Articles similaires */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-ipb-rule">
-        <h2 className="text-2xl font-extrabold text-ipb-text mb-8">Articles similaires</h2>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-ipb-rule">
+        <p className="text-[11px] uppercase tracking-[0.18em] text-ipb-orange font-semibold mb-3">À lire ensuite</p>
+        <h2 className="font-serif text-ipb-text mb-10" style={{ fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1.18, letterSpacing: '-0.022em', fontWeight: 700 }}>
+          Sur le même sujet.
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {Object.values(blogPosts)
             .filter(p => p.category === post.category && p.slug !== post.slug)
             .slice(0, 3)
-            .map((relatedPost) => (
-              <Link
-                key={relatedPost.slug}
-                href={`/blog/${relatedPost.slug}`}
-                className="bg-white rounded-xl shadow-md border border-ipb-rule overflow-hidden hover:shadow-lg transition-all"
-              >
-                <div className="h-40 bg-gradient-to-br from-slate-200 to-slate-300"></div>
-                <div className="p-5">
-                  <h3 className="text-lg font-bold text-ipb-text mb-2 line-clamp-2">
-                    {relatedPost.title}
-                  </h3>
-                  <p className="text-sm text-ipb-muted line-clamp-2">
-                    {relatedPost.excerpt}
-                  </p>
-                </div>
-              </Link>
-            ))}
+            .map((relatedPost) => {
+              const relatedCover = relatedPost.coverImage || getCategoryFallbackImage(relatedPost.category, relatedPost.keywords);
+              return (
+                <Link
+                  key={relatedPost.slug}
+                  href={`/blog/${relatedPost.slug}`}
+                  className="group bg-white rounded-[6px] border border-ipb-rule overflow-hidden hover:border-ipb-orange hover:shadow-[0_12px_36px_rgba(11,24,38,0.08)] hover:-translate-y-0.5 transition-all flex flex-col"
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden bg-ipb-cream">
+                    <Image
+                      src={relatedCover}
+                      alt={relatedPost.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 33vw, 400px"
+                      className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="p-6 flex-1 flex flex-col">
+                    <p className="text-[10px] uppercase tracking-[0.14em] text-ipb-orange font-semibold mb-3">
+                      {categoryLabels[relatedPost.category]}
+                    </p>
+                    <h3 className="font-serif font-bold text-ipb-text text-[18px] leading-snug mb-3 line-clamp-3 group-hover:text-ipb-orange transition-colors">
+                      {relatedPost.title}
+                    </h3>
+                    <p className="text-[13px] leading-[1.7] font-light text-ipb-muted line-clamp-2 mb-4">
+                      {relatedPost.excerpt}
+                    </p>
+                    <div className="mt-auto flex items-center gap-3 text-[11px] text-ipb-light uppercase tracking-[0.12em] font-medium">
+                      <span>{relatedPost.readTime}</span>
+                      <span aria-hidden="true">·</span>
+                      <span>{relatedPost.author}</span>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
         </div>
       </div>
     </div>

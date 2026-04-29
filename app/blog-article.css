@@ -92,6 +92,39 @@
   gap: 0.5rem;
 }
 
+/* Lead paragraph — accroche éditoriale sous le H1 */
+.article-lead {
+  font-family: var(--font-serif), 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  line-height: 1.55;
+  color: var(--ipb-muted);
+  font-style: italic;
+  font-weight: 400;
+  margin: 0 0 1.75rem;
+  max-width: 38rem;
+}
+
+/* Cover image — visuel d'accroche en haut de l'article */
+.article-cover {
+  margin: 2.5rem 0 3rem;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--ipb-cream);
+  border: 1px solid var(--ipb-rule);
+}
+
+.article-cover-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .article-cover { margin: 1.5rem 0 2rem; }
+}
+
 /* Boutons de partage — éditorial discret */
 .share-buttons {
   display: flex;
@@ -99,6 +132,21 @@
   gap: 0.75rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--ipb-rule);
+  flex-wrap: wrap;
+}
+
+.share-feedback {
+  font-size: 0.75rem;
+  color: var(--ipb-orange);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin-left: 0.25rem;
+  animation: shareFeedback 2s ease-in-out;
+}
+
+@keyframes shareFeedback {
+  0%, 100% { opacity: 0; transform: translateY(-2px); }
+  10%, 80% { opacity: 1; transform: translateY(0); }
 }
 
 .share-label {
