@@ -340,25 +340,25 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
         </section>
 
         {/* Bandeau calculateur — capture de leads chauds */}
-        <section className="bg-ipb-navy text-white py-14 md:py-16">
-          <div className="max-w-4xl mx-auto px-6 text-center">
+        <section className="bg-ipb-navy text-white py-12 md:py-16">
+          <div className="max-w-4xl mx-auto px-5 sm:px-6 text-center">
             <p className="text-ipb-orange-l text-[11px] uppercase tracking-[0.18em] font-medium mb-4">
               Estimation gratuite · Sans inscription
             </p>
-            <h2 className="text-2xl md:text-3xl font-extrabold mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-4 leading-tight">
               Combien va vous coûter votre ouverture à {villeNom} ?
             </h2>
-            <p className="text-white/70 text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-white/70 text-sm md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
               Notre calculateur, basé sur les chantiers IPB récents, vous donne une fourchette précise en 2 minutes. Vous recevez le détail par email — sans engagement.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3">
               <Link
                 href={`/calcul-prix-mur-porteur?utm_source=site&utm_medium=ville_banner&utm_campaign=mur_porteur_${ville}`}
-                className="inline-flex items-center justify-center gap-2 bg-ipb-orange text-white font-bold px-8 py-4 rounded-xl text-lg hover:bg-[#b35519] transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-ipb-orange text-white font-bold px-7 md:px-8 py-4 rounded-xl text-base md:text-lg hover:bg-[#b35519] transition-colors min-h-[48px]"
               >
                 Lancer le calcul → 2 min
               </Link>
-              <a href="tel:0582953375" className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white font-bold px-8 py-4 rounded-xl text-lg hover:bg-white/20 transition-colors">
+              <a href="tel:0582953375" className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white font-bold px-7 md:px-8 py-4 rounded-xl text-base md:text-lg hover:bg-white/20 transition-colors min-h-[48px]">
                 <Phone size={20} /> 05 82 95 33 75
               </a>
             </div>

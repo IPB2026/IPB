@@ -190,7 +190,7 @@ export function CalculatorClient() {
   // ─────────────────────────────────────────────────────────────
   if (step === 0) {
     return (
-      <div className="bg-ipb-white border border-ipb-rule rounded-[6px] p-8 lg:p-12 text-center">
+      <div className="bg-ipb-white border border-ipb-rule rounded-[6px] p-6 md:p-10 lg:p-12 text-center">
         <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-4">
           Outil interactif · sans inscription
         </p>
@@ -213,7 +213,7 @@ export function CalculatorClient() {
   if (step === 5 && estimate && project) {
     if (submitted) {
       return (
-        <div className="bg-ipb-white border border-ipb-rule rounded-[6px] p-8 lg:p-12 text-center">
+        <div className="bg-ipb-white border border-ipb-rule rounded-[6px] p-6 md:p-10 lg:p-12 text-center">
           <div className="w-12 h-12 rounded-full border border-ipb-orange flex items-center justify-center mx-auto mb-6">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
               <path d="M5 10L8.5 13.5L15 7" stroke="var(--ipb-orange)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
@@ -232,7 +232,7 @@ export function CalculatorClient() {
     return (
       <div className="space-y-6">
         {/* Bandeau résultat */}
-        <div className="bg-ipb-navy text-white rounded-[6px] p-8 lg:p-10 text-center">
+        <div className="bg-ipb-navy text-white rounded-[6px] p-6 md:p-8 lg:p-10 text-center">
           <p className="text-[10px] text-white/40 uppercase tracking-[0.18em] mb-4">
             Estimation pour votre projet
           </p>
@@ -246,9 +246,9 @@ export function CalculatorClient() {
         </div>
 
         {/* Détail */}
-        <div className="bg-ipb-white border border-ipb-rule rounded-[6px] p-8">
-          <h3 className="font-serif text-ipb-text font-bold text-[20px] mb-6">Détail de l'estimation</h3>
-          <dl className="space-y-3 text-[14px] mb-6">
+        <div className="bg-ipb-white border border-ipb-rule rounded-[6px] p-6 md:p-8">
+          <h3 className="font-serif text-ipb-text font-bold text-[18px] md:text-[20px] mb-6">Détail de l'estimation</h3>
+          <dl className="space-y-3 text-[13px] md:text-[14px] mb-6">
             {[
               ['Projet', projectLabels[project]],
               ['Ouverture', `${largeur.toFixed(1)} m × ${hauteur.toFixed(1)} m`],
@@ -257,9 +257,9 @@ export function CalculatorClient() {
               ['Poutre dimensionnée', estimate.poutreType],
               ['Durée chantier estimée', estimate.duree],
             ].map(([label, val]) => (
-              <div key={label} className="flex justify-between gap-4 pb-3 border-b border-ipb-rule">
-                <dt className="text-ipb-muted">{label}</dt>
-                <dd className="text-ipb-text font-medium text-right">{val}</dd>
+              <div key={label} className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4 pb-3 border-b border-ipb-rule">
+                <dt className="text-ipb-muted text-[12px] sm:text-inherit uppercase sm:normal-case tracking-wider sm:tracking-normal sm:text-[14px]">{label}</dt>
+                <dd className="text-ipb-text font-medium sm:text-right">{val}</dd>
               </div>
             ))}
           </dl>
@@ -286,9 +286,9 @@ export function CalculatorClient() {
 
         {/* Capture lead */}
         {!showLeadForm ? (
-          <div className="bg-ipb-cream border border-ipb-rule rounded-[6px] p-8 text-center">
-            <h3 className="font-serif text-ipb-text font-bold text-[22px] leading-tight mb-3">
-              Recevez le détail<br />et un devis précis sous 24h
+          <div className="bg-ipb-cream border border-ipb-rule rounded-[6px] p-6 md:p-8 text-center">
+            <h3 className="font-serif text-ipb-text font-bold text-[20px] md:text-[22px] leading-tight mb-3">
+              Recevez le détail et un devis précis sous 24h
             </h3>
             <p className="text-[14px] font-light text-ipb-muted mb-6 max-w-md mx-auto">
               Notre ingénieur vous contacte pour valider l'étude et planifier la visite si vous le souhaitez. Sans engagement.
@@ -298,7 +298,7 @@ export function CalculatorClient() {
             </MagneticButton>
           </div>
         ) : (
-          <form onSubmit={handleLeadSubmit} className="bg-ipb-cream border border-ipb-rule rounded-[6px] p-8 space-y-4">
+          <form onSubmit={handleLeadSubmit} className="bg-ipb-cream border border-ipb-rule rounded-[6px] p-6 md:p-8 space-y-4">
             <h3 className="font-serif text-ipb-text font-bold text-[22px] leading-tight mb-2">
               Vos coordonnées
             </h3>
@@ -352,14 +352,15 @@ export function CalculatorClient() {
   return (
     <div className="bg-ipb-white border border-ipb-rule rounded-[6px] overflow-hidden">
       {/* Barre de progression */}
-      <div className="bg-ipb-cream border-b border-ipb-rule px-8 py-4">
+      <div className="bg-ipb-cream border-b border-ipb-rule px-5 md:px-8 py-4">
         <div className="flex items-center justify-between mb-3">
           <p className="text-[10px] text-ipb-light uppercase tracking-[0.16em] font-medium">
             Étape {step} sur {totalSteps}
           </p>
           <button
             onClick={() => step > 1 ? setStep((step - 1) as Step) : setStep(0)}
-            className="text-[11px] text-ipb-light hover:text-ipb-muted transition-colors"
+            className="text-[12px] text-ipb-muted hover:text-ipb-orange transition-colors px-2 py-1 -mr-2 min-h-[32px]"
+            aria-label="Revenir à l'étape précédente"
           >
             ← Revenir
           </button>
@@ -372,10 +373,10 @@ export function CalculatorClient() {
         </div>
       </div>
 
-      <div className="p-8 lg:p-10">
+      <div className="p-5 md:p-8 lg:p-10">
         {step === 1 && (
           <div>
-            <h2 className="font-serif text-ipb-text font-bold text-[24px] leading-tight mb-6">
+            <h2 className="font-serif text-ipb-text font-bold text-[20px] md:text-[24px] leading-tight mb-6">
               Quel est votre projet&nbsp;?
             </h2>
             <div className="space-y-3">
@@ -396,7 +397,7 @@ export function CalculatorClient() {
 
         {step === 2 && (
           <div>
-            <h2 className="font-serif text-ipb-text font-bold text-[24px] leading-tight mb-6">
+            <h2 className="font-serif text-ipb-text font-bold text-[20px] md:text-[24px] leading-tight mb-6">
               Dimensions de l'ouverture
             </h2>
 
@@ -434,7 +435,7 @@ export function CalculatorClient() {
 
         {step === 3 && (
           <div>
-            <h2 className="font-serif text-ipb-text font-bold text-[24px] leading-tight mb-6">
+            <h2 className="font-serif text-ipb-text font-bold text-[20px] md:text-[24px] leading-tight mb-6">
               Type de mur à ouvrir
             </h2>
             <div className="space-y-3">
@@ -455,7 +456,7 @@ export function CalculatorClient() {
 
         {step === 4 && (
           <div>
-            <h2 className="font-serif text-ipb-text font-bold text-[24px] leading-tight mb-6">
+            <h2 className="font-serif text-ipb-text font-bold text-[20px] md:text-[24px] leading-tight mb-6">
               Configuration de l'étage
             </h2>
             <p className="text-[13px] font-light text-ipb-muted mb-6 leading-[1.7]">

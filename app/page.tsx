@@ -142,20 +142,21 @@ export default function HomePage() {
       <ServiceList />
 
       {/* 3bis. Bandeau calculateur mur porteur — capture de leads chauds */}
-      <section className="bg-ipb-navy text-white py-16 md:py-20">
-        <div className="max-w-4xl mx-auto px-6 text-center">
+      <section className="bg-ipb-navy text-white py-14 md:py-20">
+        <div className="max-w-4xl mx-auto px-5 sm:px-6 text-center">
           <p className="text-ipb-orange-l text-[11px] uppercase tracking-[0.18em] font-medium mb-4">
             Outil · Estimation gratuite, sans inscription
           </p>
-          <h2 className="font-serif mb-5" style={{ fontSize: 'clamp(26px, 2.6vw, 36px)', lineHeight: 1.18, letterSpacing: '-0.022em', fontWeight: 700 }}>
-            Un projet d'ouverture de mur porteur ?<br /><em className="text-ipb-orange-l">Combien ça va vous coûter.</em>
+          <h2 className="font-serif mb-5" style={{ fontSize: 'clamp(22px, 2.6vw, 36px)', lineHeight: 1.2, letterSpacing: '-0.022em', fontWeight: 700 }}>
+            Un projet d'ouverture de mur porteur ?{' '}
+            <em className="text-ipb-orange-l block sm:inline mt-1 sm:mt-0">Combien ça va vous coûter.</em>
           </h2>
-          <p className="text-white/75 text-[15px] leading-[1.85] mb-8 max-w-xl mx-auto">
+          <p className="text-white/75 text-[14px] md:text-[15px] leading-[1.8] mb-8 max-w-xl mx-auto">
             Notre calculateur, basé sur les chantiers IPB récents en Occitanie, vous donne une fourchette précise en deux minutes. Vous recevez le détail par email.
           </p>
           <a
             href="/calcul-prix-mur-porteur?utm_source=site&utm_medium=home_banner&utm_campaign=mur_porteur"
-            className="inline-flex items-center justify-center gap-2 bg-ipb-orange text-white font-bold px-8 py-4 rounded-[3px] text-[14px] tracking-[0.03em] hover:bg-[#b35519] transition-colors"
+            className="inline-flex items-center justify-center gap-2 bg-ipb-orange text-white font-bold px-7 md:px-8 py-4 rounded-[3px] text-[13px] md:text-[14px] tracking-[0.03em] hover:bg-[#b35519] transition-colors min-h-[48px]"
           >
             Lancer le calcul → 2 min
           </a>
