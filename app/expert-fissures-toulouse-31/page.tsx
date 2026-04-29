@@ -14,7 +14,7 @@ import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
   title: 'Expert fissures Toulouse (31) · Institut IPB · Diagnostic et agrafage structurel',
-  description: "Institut de pathologie du bâtiment à Toulouse. Diagnostic instrumenté de fissures, agrafage structurel et reprise en sous-œuvre. Rapports reconnus par les assurances. Décennale AXA.",
+  description: "Diagnostiquez et stabilisez vos fissures à Toulouse. Institut IPB indépendant : diagnostic instrumenté, agrafage structurel, reprise en sous-œuvre. Rapport opposable aux assurances. Décennale AXA.",
   keywords: [
     'expert fissures toulouse',
     'expert fissure toulouse',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31' },
   openGraph: {
     title: 'Expert fissures Toulouse · Institut IPB',
-    description: "Diagnostic instrumenté, agrafage structurel, reprise en sous-œuvre. Institut indépendant à Toulouse depuis 2019.",
+    description: "Diagnostiquez et réparez vos fissures à Toulouse. Diagnostic instrumenté, agrafage structurel, reprise en sous-œuvre. Institut IPB depuis 2019.",
     url: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31',
     type: 'website',
     images: [{

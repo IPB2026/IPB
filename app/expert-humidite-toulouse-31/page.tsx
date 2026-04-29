@@ -13,7 +13,7 @@ import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
   title: 'Expert humidité Toulouse (31) · Institut IPB · Diagnostic instrumenté et injection résine',
-  description: "Institut de pathologie du bâtiment à Toulouse : diagnostic instrumenté de l'humidité (humidimètre, caméra thermique, bombe à carbure), injection résine hydrophobe, cuvelage, VMI. Décennale AXA.",
+  description: "Stoppez l'humidité dans vos murs à Toulouse. Institut IPB : diagnostic instrumenté (humidimètre, caméra thermique), injection résine hydrophobe garantie 30 ans, cuvelage, VMI. Décennale AXA.",
   keywords: [
     'expert humidité toulouse',
     'traitement humidité maison 31',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/expert-humidite-toulouse-31' },
   openGraph: {
     title: 'Expert humidité Toulouse · Institut IPB',
-    description: "Diagnostic instrumenté de l'humidité, injection résine hydrophobe, cuvelage, VMI. Institut indépendant à Toulouse depuis 2019.",
+    description: "Stoppez l'humidité chez vous à Toulouse. Diagnostic instrumenté, injection résine hydrophobe, cuvelage, VMI. Institut IPB depuis 2019.",
     url: 'https://www.ipb-expertise.fr/expert-humidite-toulouse-31',
     type: 'website',
     images: [{
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Expert humidité Toulouse · IPB',
-    description: 'Diagnostic instrumenté, injection résine, cuvelage. Décennale AXA.',
+    description: "Stoppez l'humidité chez vous à Toulouse. Diagnostic instrumenté, injection résine, cuvelage. Décennale AXA.",
   },
   robots: {
     index: true,

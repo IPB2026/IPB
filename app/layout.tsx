@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     default: "IPB - Spécialistes de la structure de votre habitat | Diagnostic Fissures & Ouverture Mur Porteur Toulouse",
     template: "%s | IPB"
   },
-  description: "Les spécialistes de la structure de votre habitat. Diagnostic fissures, ouverture de mur porteur, création de baie vitrée. Bureau d'études + travaux. Décennale AXA. Toulouse, Montauban, Auch (31-82-32).",
+  description: "Diagnostiquez vos fissures, ouvrez un mur porteur, créez une baie vitrée à Toulouse. Institut IPB — bureau d'études et travaux, décennale AXA. Réponse sous 24 h. (31-82-32).",
   keywords: ["expert fissures Toulouse", "ouverture mur porteur Toulouse", "création baie vitrée Toulouse", "étude structure bâtiment", "agrafage fissures", "poutre IPN HEB", "fissures maison", "expert structure Toulouse", "Montauban", "Auch", "Haute-Garonne", "Tarn-et-Garonne", "Gers", "Tarn", "pathologie du bâtiment", "garantie décennale", "humidité murs", "injection résine"],
   authors: [{ name: "IPB - Institut de Pathologie du Bâtiment" }],
   creator: "IPB",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     url: "https://www.ipb-expertise.fr",
     siteName: "IPB - Institut de Pathologie du Bâtiment",
     title: "IPB - Spécialistes de la structure de votre habitat | Toulouse, Montauban, Auch",
-    description: "Les spécialistes de la structure de votre habitat. Diagnostic fissures, ouverture de mur porteur (étude IPN/HEB), création de baie vitrée. Bureau d'études + travaux, décennale AXA.",
+    description: "Diagnostiquez vos fissures, ouvrez un mur porteur (étude IPN/HEB), créez une baie vitrée. Institut IPB — bureau d'études et travaux, décennale AXA. Toulouse, Montauban, Auch.",
     images: [
       {
         url: "/images/IPB_Logo_HD.png",
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "IPB - Spécialistes de la structure de votre habitat (31-82-32)",
-    description: "Diagnostic fissures, ouverture de mur porteur, création de baie vitrée. Bureau d'études + travaux. Décennale AXA.",
+    description: "Diagnostiquez vos fissures, ouvrez un mur porteur, créez une baie vitrée. Institut IPB — bureau d'études et travaux. Décennale AXA.",
     images: ["/images/IPB_Logo_HD.png"],
   },
   robots: {

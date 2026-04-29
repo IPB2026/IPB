@@ -12,7 +12,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "Bureau d'études structure à Toulouse · IPN, HEB, mur porteur · Institut IPB",
-  description: "Bureau d'études structure intégré à Toulouse. Note de calcul IPN/HEB, dimensionnement de poutre, expertise mur porteur, ouvrages neufs et rénovation. Décennale AXA. Réponse sous 24 h.",
+  description: "Confiez votre étude structure au bureau d'études intégré IPB à Toulouse. Note de calcul IPN/HEB, dimensionnement de poutre, expertise mur porteur, ouvrages neufs et rénovation. Décennale AXA, réponse 24 h.",
   keywords: [
     'bureau études structure toulouse',
     'bureau études structure haute-garonne',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/bureau-etude-structure-toulouse' },
   openGraph: {
     title: "Bureau d'études structure · IPB Toulouse",
-    description: "Ingénieur structure intégré à Toulouse. Note de calcul opposable, dimensionnement IPN/HEB, étude charge, contrôle des ouvrages. Décennale AXA.",
+    description: "Confiez votre étude structure à notre ingénieur à Toulouse. Note de calcul opposable, dimensionnement IPN/HEB, étude charge, contrôle des ouvrages. Décennale AXA.",
     url: 'https://www.ipb-expertise.fr/bureau-etude-structure-toulouse',
     type: 'website',
   },
