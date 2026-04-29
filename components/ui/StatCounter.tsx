@@ -67,7 +67,15 @@ export function StatCounter({
     : Math.floor(display).toString();
 
   return (
-    <span ref={ref} className={className}>
+    <span
+      ref={ref}
+      className={className}
+      style={{
+        display: 'inline-block',
+        fontVariantNumeric: 'tabular-nums',
+        fontFeatureSettings: '"tnum" 1, "lnum" 1',
+      }}
+    >
       {prefix}{formatted}{suffix}
     </span>
   );

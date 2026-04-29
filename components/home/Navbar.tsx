@@ -32,12 +32,16 @@ export function Navbar() {
 
   return (
     <nav
-      className={`bg-ipb-white sticky top-0 z-50 transition-all border-b ${
+      className={`bg-ipb-white sticky top-0 z-50 border-b duration-200 ${
         scrolled
           ? 'border-ipb-rule shadow-[0_2px_20px_rgba(0,0,0,0.05)]'
-          : 'border-transparent'
+          : 'border-transparent shadow-none'
       }`}
-      style={{ height: '68px' }}
+      style={{
+        height: '68px',
+        transitionProperty: 'border-color, box-shadow',
+        transitionTimingFunction: 'ease-out',
+      }}
     >
       <div className="max-w-ipb mx-auto px-5 lg:px-12 h-full flex items-center justify-between gap-3">
         {/* LOGO + CTA Diagnostic gratuit collés à gauche — proportions harmonisées */}

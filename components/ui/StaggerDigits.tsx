@@ -44,12 +44,11 @@ export function StaggerDigits({
           key={i}
           className="inline-block"
           variants={{
-            hidden: { opacity: 0, filter: 'blur(8px)', y: 8 },
+            hidden: { opacity: 0, y: 12 },
             visible: {
               opacity: 1,
-              filter: 'blur(0px)',
               y: 0,
-              transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+              transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
             },
           }}
         >
