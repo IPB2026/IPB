@@ -19,16 +19,16 @@ export function Footer() {
               </div>
               <div>
                 <p className="font-serif text-white text-[18px] font-medium leading-none">Institut</p>
-                <p className="text-[11px] text-white/40 uppercase tracking-[0.12em] mt-1">Pathologie du bâtiment</p>
+                <p className="text-[11px] text-white/65 uppercase tracking-[0.12em] mt-1">Pathologie du bâtiment</p>
               </div>
             </Link>
 
-            <p className="text-[14px] leading-[1.85] font-light text-white/55 max-w-[420px] mb-8">
+            <p className="text-[14px] leading-[1.85] font-light text-white/75 max-w-[420px] mb-8">
               Institut indépendant en structure du bâtiment. Diagnostic de fissures, ouverture de mur porteur, création de baie vitrée. Décennale AXA active depuis 2019.
             </p>
 
             <div className="space-y-5 mb-6">
-              <div className="flex items-start gap-3 text-[13px] text-white/45 leading-[1.7]">
+              <div className="flex items-start gap-3 text-[13px] text-white/70 leading-[1.7]">
                 <CrackSVG variant="mini" />
                 <div>
                   <p className="text-white/65 text-[11px] uppercase tracking-[0.14em] font-medium mb-1">Siège social</p>
@@ -37,7 +37,7 @@ export function Footer() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 text-[13px] text-white/45 leading-[1.7] pl-[26px]">
+              <div className="flex items-start gap-3 text-[13px] text-white/70 leading-[1.7] pl-[26px]">
                 <div>
                   <p className="text-white/65 text-[11px] uppercase tracking-[0.14em] font-medium mb-1">Bureau IPB Expertise</p>
                   <p>54 avenue Jean Jaurès</p>
@@ -46,7 +46,7 @@ export function Footer() {
               </div>
             </div>
 
-            <p className="text-[11px] text-white/30 leading-[1.6] max-w-[420px]">
+            <p className="text-[11px] text-white/70 leading-[1.6] max-w-[420px]">
               IPB Expertise est la marque commerciale de Bâti Halli SARL ·
               SIRET 398 185 421 00037 · RCS Toulouse B 398 185 421.
             </p>
@@ -54,7 +54,7 @@ export function Footer() {
 
           {/* Expertises */}
           <div>
-            <p className="text-[10px] text-white/30 uppercase tracking-[0.18em] font-medium mb-5">
+            <p className="text-[10px] text-white/70 uppercase tracking-[0.18em] font-medium mb-5">
               Expertises
             </p>
             <ul className="space-y-3 text-[14px] font-light">
@@ -65,7 +65,7 @@ export function Footer() {
                 ['/bureau-etude-structure-toulouse', "Bureau d'études"],
               ].map(([href, label]) => (
                 <li key={href}>
-                  <Link href={href} className="text-white/55 hover:text-white transition-colors">
+                  <Link href={href} className="text-white/75 hover:text-white transition-colors">
                     {label}
                   </Link>
                 </li>
@@ -75,7 +75,7 @@ export function Footer() {
 
           {/* Institut */}
           <div>
-            <p className="text-[10px] text-white/30 uppercase tracking-[0.18em] font-medium mb-5">
+            <p className="text-[10px] text-white/70 uppercase tracking-[0.18em] font-medium mb-5">
               Institut
             </p>
             <ul className="space-y-3 text-[14px] font-light">
@@ -88,7 +88,7 @@ export function Footer() {
                 ['/contact', 'Contact'],
               ].map(([href, label]) => (
                 <li key={href}>
-                  <Link href={href} className="text-white/55 hover:text-white transition-colors">
+                  <Link href={href} className="text-white/75 hover:text-white transition-colors">
                     {label}
                   </Link>
                 </li>
@@ -98,7 +98,7 @@ export function Footer() {
 
           {/* Contact direct */}
           <div>
-            <p className="text-[10px] text-white/30 uppercase tracking-[0.18em] font-medium mb-5">
+            <p className="text-[10px] text-white/70 uppercase tracking-[0.18em] font-medium mb-5">
               Échanger
             </p>
             <a
@@ -107,7 +107,7 @@ export function Footer() {
             >
               05 82 95 33 75
             </a>
-            <p className="text-[12px] text-white/45 leading-[1.7] mb-6">
+            <p className="text-[12px] text-white/70 leading-[1.7] mb-6">
               Lundi au vendredi<br />
               8h&nbsp;–&nbsp;19h
             </p>
@@ -122,20 +122,20 @@ export function Footer() {
 
         {/* Bandeau légal */}
         <div className="pt-10 border-t border-white/6 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
-          <p className="text-[12px] text-white/35">
+          <p className="text-[12px] text-white/55">
             © {new Date().getFullYear()} IPB Expertise — Institut de pathologie du bâtiment · Toulouse
           </p>
-          <div className="flex flex-wrap gap-x-6 gap-y-2 text-[12px] text-white/35">
-            <Link href="/legal/mentions-legales" className="hover:text-white/60 transition-colors">
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-[12px] text-white/55">
+            <Link href="/legal/mentions-legales" className="hover:text-white transition-colors">
               Mentions légales
             </Link>
-            <Link href="/legal/cgv" className="hover:text-white/60 transition-colors">
+            <Link href="/legal/cgv" className="hover:text-white transition-colors">
               CGV
             </Link>
-            <Link href="/legal/confidentialite" className="hover:text-white/60 transition-colors">
+            <Link href="/legal/confidentialite" className="hover:text-white transition-colors">
               Confidentialité
             </Link>
-            <Link href="/plan-site" className="hover:text-white/60 transition-colors">
+            <Link href="/plan-site" className="hover:text-white transition-colors">
               Plan du site
             </Link>
           </div>

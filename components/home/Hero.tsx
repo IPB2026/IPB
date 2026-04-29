@@ -145,7 +145,7 @@ export function Hero() {
 
             {/* Liens services discrets en bas du panel */}
             <div className="relative z-10 mt-auto p-10 border-t border-white/5">
-              <p className="text-[10px] text-white/40 uppercase tracking-[0.18em] mb-5">Nos expertises</p>
+              <p className="text-[10px] text-white/70 uppercase tracking-[0.18em] mb-5">Nos expertises</p>
               <div className="flex flex-col gap-4">
                 <Link
                   href="/expertise/fissures"

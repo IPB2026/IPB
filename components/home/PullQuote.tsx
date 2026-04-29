@@ -92,7 +92,7 @@ export function PullQuote() {
                     {...drawX(1.2, 0.8)}
                   />
                 )}
-                <span className="text-white/60 text-[12px] uppercase tracking-[0.14em] font-medium">
+                <span className="text-white/75 text-[12px] uppercase tracking-[0.14em] font-medium">
                   Ludovic D. — Fondateur, ingénieur structure
                 </span>
               </footer>

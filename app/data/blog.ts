@@ -87,7 +87,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p class="mt-4"><strong>Coût moyen</strong> : 12 000€ - 18 000€ pour une façade complète<br>
         <strong>Durée</strong> : 3 à 5 jours<br>
         <strong>Garantie</strong> : Décennale<br>
-        <strong>Efficacité</strong> : Adapté à 90% des cas</strong></p>
+        <strong>Efficacité</strong> : Adapté à 90% des cas</p>
       </div>
 
       <div class="my-8 p-6 bg-slate-100 border border-slate-300 rounded-xl">
@@ -211,8 +211,6 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>En Occitanie, chaque été de sécheresse aggrave les fissures existantes. Les sols argileux se contractent davantage, les fondations bougent, et les fissures s&apos;élargissent. Une <a href="/microfissure-quand-sinquieter" class="text-orange-600 underline hover:text-orange-700">microfissure</a> de 1 mm aujourd&apos;hui peut devenir une <a href="/fissure-en-escalier-causes" class="text-orange-600 underline hover:text-orange-700">fissure en escalier</a> de 5 mm dans 2 ans. Le coût de réparation augmente de <strong>15 à 20% par an</strong> d&apos;attente.</p>
 
       <p>Au-delà du coût, il y a la <strong>sécurité</strong>. Une fissure traversante de plus de 5 mm compromet la stabilité structurelle du mur. En cas de séisme (le bassin toulousain est en zone sismique 1 à 2), un mur fragilisé peut s&apos;effondrer. Et il y a la <strong>valeur de votre patrimoine</strong> : une maison fissurée non traitée perd 15 à 30% de sa valeur à la revente. Pour une maison à 300 000€, c&apos;est une perte de 45 000 à 90 000€ — bien plus que le coût d&apos;un <a href="/expertise/fissures" class="text-orange-600 underline hover:text-orange-700">agrafage structurel</a>.</p>
-
-      <p>Au-delà du coût, il y a la <strong>sécurité</strong>. Une fissure traversante de plus de 5 mm compromet la stabilité structurelle du mur. En cas de séisme (le bassin toulousain est en zone sismique 1 à 2), un mur fragilisé peut s&apos;effondrer. Et il y a la <strong>valeur de votre patrimoine</strong> : une maison fissurée non traitée perd 15 à 30% de sa valeur à la revente.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">La question n'est pas "Est-ce grave ?" mais "Quand dois-je agir ?"</p>
     `
