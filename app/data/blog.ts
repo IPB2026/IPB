@@ -6986,6 +6986,121 @@ const blogPosts: { [key: string]: BlogPost } = {
     `
   },
 
+  'comment-savoir-si-mur-porteur': {
+    slug: 'comment-savoir-si-mur-porteur',
+    title: 'Comment savoir si un mur est porteur ? Le test fiable en 4 étapes',
+    metaTitle: 'Comment savoir si un mur est porteur ? Test en 4 étapes',
+    excerpt: 'Avant de toucher un mur, vous devez savoir s\'il est porteur. Sinon, c\'est l\'effondrement. Voici les 4 vérifications fiables que fait un ingénieur structure — et celles qu\'il vaut mieux ne PAS tenter seul.',
+    date: '2026-04-29',
+    dateModified: '2026-04-29',
+    readTime: '7 min',
+    category: 'expertise',
+    author: 'Ludovic D.',
+    metaDescription: 'Comment savoir si un mur est porteur en 4 étapes : épaisseur, son au choc, plans d\'origine, alignement vertical. Cas spécifiques Toulouse (brique foraine, haussmannien). Test gratuit IPB.',
+    keywords: [
+      'comment savoir si mur porteur',
+      'reconnaitre mur porteur',
+      'mur porteur ou non',
+      'identifier mur porteur',
+      'test mur porteur',
+      'mur porteur toulouse',
+      'épaisseur mur porteur',
+      'plan mur porteur appartement',
+    ],
+    content: `
+      <div class="mb-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
+        <p class="font-bold text-red-900 mb-2">À lire avant tout coup de masse</p>
+        <p class="text-red-800">Si vous abattez un mur porteur sans étaiement préalable, le plancher du dessus s'affaisse — c'est arrivé à plusieurs reprises à Toulouse rien qu'en 2025. <strong>Ne tapez jamais dans un mur sans avoir vérifié les 4 indices ci-dessous</strong>, et idéalement sans avis d'un ingénieur structure.</p>
+      </div>
+
+      <h2>Pourquoi cette question est si importante</h2>
+      <p>Un mur porteur reprend les charges du bâtiment : poids des planchers, des étages au-dessus, parfois de la toiture. Un mur de cloison, lui, ne supporte que lui-même. La différence est radicale : ouvrir un mur porteur sans précaution, c'est faire effondrer ce qui est dessus.</p>
+      <p>À Toulouse, le bâti est varié — brique foraine du centre, parpaings des années 70, béton banché récent, pierre dans les villages alentour. <strong>Chaque type a ses propres signes</strong>, et c'est précisément pour ça qu'un test à distance n'est jamais 100 % fiable. Mais en combinant les 4 indices ci-dessous, vous obtenez une présomption sérieuse.</p>
+
+      <h2>Les 4 vérifications fiables</h2>
+
+      <h3>1. L'épaisseur du mur</h3>
+      <p>C'est le premier réflexe. Mesurez l'épaisseur du mur (sans les enduits) au niveau d'une porte, d'une fenêtre, ou en perçant un petit trou discret.</p>
+      <ul>
+        <li><strong>Moins de 10 cm</strong> : presque toujours une cloison. Souvent du placo (BA13 + ossature métallique) ou une cloison de carreaux de plâtre.</li>
+        <li><strong>10 à 15 cm</strong> : zone grise. Peut être une cloison épaisse (carreaux de plâtre 7 cm + enduits) ou un mur de refend non porteur. À vérifier autrement.</li>
+        <li><strong>15 cm et plus</strong> : <strong>fortement suspect d'être porteur</strong>. À Toulouse, la brique foraine traditionnelle fait 22 à 25 cm hors enduit. Les murs en parpaing porteurs font 20 cm. Les murs de pierre des bastides 50 à 60 cm.</li>
+      </ul>
+      <p><strong>Limite</strong> : un mur épais peut être un ancien mur extérieur devenu intérieur après extension, et donc ne plus être porteur. L'épaisseur seule ne suffit pas.</p>
+
+      <h3>2. Le test du son</h3>
+      <p>Tapotez le mur avec le manche d'un tournevis ou avec votre doigt replié.</p>
+      <ul>
+        <li><strong>Son creux, qui résonne</strong> : cloison placo ou ossature légère. Très probablement non porteur.</li>
+        <li><strong>Son sourd, plein, qui ne résonne pas</strong> : maçonnerie pleine — brique, parpaing, pierre, béton. <strong>Probablement porteur</strong>, mais peut aussi être un refend ou une cloison de carreaux de plâtre épais.</li>
+      </ul>
+      <p>Faites le test sur plusieurs points (haut, bas, milieu) et comparez avec un mur dont vous connaissez la nature (par exemple un mur extérieur). Le contraste est souvent évident.</p>
+
+      <h3>3. Les plans d'origine du bâtiment</h3>
+      <p>C'est la méthode la plus fiable, et celle que beaucoup oublient.</p>
+      <ul>
+        <li><strong>Maison individuelle</strong> : récupérez les plans auprès du constructeur, du précédent propriétaire, ou en mairie (service urbanisme — accès libre aux permis de construire de plus de 30 ans).</li>
+        <li><strong>Appartement à Toulouse</strong> : demandez au syndic de copropriété les plans d'architecte d'origine. Sur les immeubles haussmanniens des Carmes ou Saint-Étienne, ces plans existent presque toujours et indiquent clairement les murs porteurs.</li>
+        <li><strong>Bâtiment récent (post-1970)</strong> : les plans techniques (plan de structure, plan de béton armé) précisent quels murs reprennent les charges. Ils sont parfois encore au permis de construire en mairie.</li>
+      </ul>
+
+      <h3>4. L'alignement vertical d'un étage à l'autre</h3>
+      <p>Si vous êtes dans une maison à étage ou dans un immeuble, regardez si le mur que vous suspectez est <strong>aligné verticalement</strong> avec un mur de l'étage supérieur (ou la toiture). Les murs porteurs forment des "piles" continues du bas vers le haut. Une cloison non porteuse, elle, peut s'arrêter à un seul niveau.</p>
+      <p>Astuce : posez un fil à plomb depuis le plafond pour vérifier la continuité. Ou ouvrez une trappe de visite si vous avez accès aux combles.</p>
+
+      <h2>Cas spécifiques toulousains</h2>
+
+      <h3>La brique foraine du centre ancien</h3>
+      <p>Les immeubles du centre Toulouse (Carmes, Saint-Étienne, Capitole, Saint-Cyprien) sont majoritairement en brique foraine, mur épais 22–25 cm, parfois 30 cm pour les murs périphériques. <strong>La quasi-totalité des murs de refend dans ces immeubles sont porteurs</strong>. Ne supposez jamais qu'un mur épais en brique est non porteur sans avis pro.</p>
+
+      <h3>Les pavillons des années 70-80</h3>
+      <p>À Colomiers, Tournefeuille, Muret, Cugnaux, beaucoup de pavillons sont en parpaing 20 cm pour les murs porteurs et 5–7 cm pour les cloisons. La distinction est en général facile : si c'est plus épais qu'une porte standard (~5 cm), c'est probablement porteur.</p>
+
+      <h3>Les constructions modernes (post-1995)</h3>
+      <p>Le béton banché, les blocs de béton cellulaire, ou les ossatures bois changent les règles. Sur ces bâtiments, l'expertise est encore plus utile, car l'épaisseur seule ne dit rien (un mur en bois OSB peut être porteur).</p>
+
+      <h2>Les pièges classiques</h2>
+      <ol>
+        <li><strong>Confondre un refend avec une cloison</strong>. Un refend est un mur intérieur épais qui ne semble pas reprendre de charges visibles, mais qui en réalité contribue au contreventement (résistance aux efforts horizontaux). L'abattre fragilise tout le bâti.</li>
+        <li><strong>Se fier aux plans déclaratifs</strong>. Les plans annotés "non porteur" par un précédent occupant ne valent rien. Seuls les plans d'architecte d'origine ou une note de calcul d'ingénieur structure font foi.</li>
+        <li><strong>Faire un trou exploratoire dans la mauvaise zone</strong>. Certains murs sont porteurs uniquement sur certaines portions (par exemple sous une descente de charge précise). Un trou à 50 cm du bon endroit ne révèle rien.</li>
+        <li><strong>Croire que "petit" veut dire "non porteur"</strong>. Une simple poutre de 2 m peut reprendre une charge énorme si elle est sous un angle de mur. La portée n'est pas un indicateur fiable.</li>
+      </ol>
+
+      <h2>Quand faut-il appeler un ingénieur structure ?</h2>
+      <p>Dans tous les cas où vous envisagez d'<strong>ouvrir, abattre, ou même percer largement un mur</strong> dont vous n'êtes pas sûr. Le coût d'une visite-diagnostic (300 à 800 € selon la complexité) est dérisoire comparé au coût d'une reprise après effondrement (15 000 à 50 000 € minimum, parfois plus de 100 000 €).</p>
+      <p>L'ingénieur structure :</p>
+      <ul>
+        <li>identifie chaque mur porteur du logement à partir des charges réelles ;</li>
+        <li>vous remet une note écrite (utile en cas de revente, de copropriété, ou d'assurance) ;</li>
+        <li>si vous voulez ouvrir, calcule la poutre nécessaire (IPN, HEB ou IPE), définit l'étaiement, vous donne un budget réaliste.</li>
+      </ul>
+
+      <h2>Comment IPB vous aide à Toulouse</h2>
+      <p>Notre institut combine bureau d'études et travaux. Lors de la première visite, notre ingénieur :</p>
+      <ul>
+        <li>identifie les murs porteurs sur place (épaisseur, sons, plans si disponibles) ;</li>
+        <li>vous remet un plan annoté ;</li>
+        <li>si l'ouverture est possible, calcule la poutre, le mode d'étaiement et le budget total ;</li>
+        <li>vous propose un devis fermé sous 7 jours, avec décennale AXA jointe.</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
+        <p class="font-bold text-orange-900 mb-3">Estimer votre projet en 2 minutes</p>
+        <p class="text-orange-800 mb-4">Si vous avez déjà l'idée du projet (cuisine ouverte, baie vitrée, suite parentale), notre calculateur vous donne une fourchette de prix immédiate basée sur nos chantiers récents. Pas d'inscription, résultat par email.</p>
+        <a href="/calcul-prix-mur-porteur" class="inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition-colors mr-3 mb-2">Lancer le calcul →</a>
+        <a href="/diagnostic" class="inline-block bg-white text-orange-700 border border-orange-600 font-bold px-6 py-3 rounded-xl hover:bg-orange-100 transition-colors mb-2">Demander un diagnostic</a>
+      </div>
+
+      <h2>Articles liés</h2>
+      <ul>
+        <li><a href="/blog/prix-ouverture-mur-porteur-toulouse-2026" class="text-orange-700 underline">Prix d'une ouverture de mur porteur à Toulouse en 2026</a></li>
+        <li><a href="/blog/etude-de-cas-mur-porteur-4m-t3-toulouse" class="text-orange-700 underline">Étude de cas : ouverture mur porteur 4 m dans un T3 toulousain</a></li>
+        <li><a href="/expertise/mur-porteur" class="text-orange-700 underline">Notre expertise mur porteur</a></li>
+      </ul>
+    `
+  },
+
   'etude-de-cas-mur-porteur-4m-t3-toulouse': {
     slug: 'etude-de-cas-mur-porteur-4m-t3-toulouse',
     title: 'Étude de cas : ouverture mur porteur de 4 mètres dans un T3 toulousain',

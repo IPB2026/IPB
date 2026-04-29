@@ -11,6 +11,7 @@ import { CheckCircle, Phone, ArrowRight, Shield, Clock, FileText, Hammer, Ruler,
 import { villesData, type VilleInfo } from '@/app/data/villes';
 import { VILLES_MUR_PORTEUR } from '@/app/data/villes-mur-porteur';
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
+import { IPB_AGGREGATE_RATING } from '@/lib/seo/localFAQ';
 
 export async function generateStaticParams() {
   return VILLES_MUR_PORTEUR.map((ville) => ({ ville }));
@@ -75,6 +76,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
       "@type": "LocalBusiness",
       "name": "IPB - Institut de Pathologie du Bâtiment",
       "telephone": "+33582953375",
+      "aggregateRating": IPB_AGGREGATE_RATING,
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "13 rue du Recteur Dottin",
@@ -85,7 +87,8 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
       }
     },
     "description": `Bureau d'études structure intégré à ${villeNom}. Étude, dimensionnement IPN/HEB, pose et finitions. Décennale AXA.`,
-    "offers": { "@type": "Offer", "priceRange": "4000-15000 EUR", "priceCurrency": "EUR" }
+    "offers": { "@type": "Offer", "priceRange": "4000-15000 EUR", "priceCurrency": "EUR" },
+    "aggregateRating": IPB_AGGREGATE_RATING
   };
 
   const faqJsonLd = {
@@ -99,8 +102,23 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
       },
       {
         "@type": "Question",
+        "name": `Comment savoir si un mur est porteur à ${villeNom} ?`,
+        "acceptedAnswer": { "@type": "Answer", "text": `Quatre indices fiables : épaisseur supérieure à 15 cm (souvent 20-25 cm pour la brique foraine toulousaine), son sourd au choc (vs. son creux pour une cloison placo), présence sur les plans d'origine, alignement vertical d'un étage à l'autre. Mais seul un ingénieur structure peut confirmer formellement après inspection sur site. À ${villeNom}, ce diagnostic est compris dans notre prestation.` }
+      },
+      {
+        "@type": "Question",
         "name": `Combien de temps prennent les travaux à ${villeNom} ?`,
         "acceptedAnswer": { "@type": "Answer", "text": "L'intervention chantier dure 2 à 5 jours. La phase préparatoire (étude structure, démarches en mairie, commande poutre IPN/HEB) prend 3 à 6 semaines. Notre institut coordonne l'ensemble." }
+      },
+      {
+        "@type": "Question",
+        "name": `Faut-il un permis pour ouvrir un mur porteur à ${villeNom} ?`,
+        "acceptedAnswer": { "@type": "Answer", "text": `Pour une maison individuelle à ${villeNom}, une déclaration préalable de travaux suffit dans la majorité des cas. Si l'ouverture modifie la façade (création de baie vitrée), c'est obligatoire. En copropriété, vous devez obtenir l'accord en assemblée générale (procès-verbal d'AG). Notre institut prépare le dossier technique pour vous.` }
+      },
+      {
+        "@type": "Question",
+        "name": `Quelle poutre pour ouvrir un mur porteur ?`,
+        "acceptedAnswer": { "@type": "Answer", "text": "Le choix dépend de la portée et des charges reprises. IPN (profil en I) pour les portées courtes (≤2,5 m). HEB (profil en H, plus rigide) pour les grandes portées (>3 m) et les charges importantes (étages au-dessus). IPE pour les configurations intermédiaires. Notre ingénieur calcule la section exacte (poids, déformation admissible) et vous remet une note de calcul signée." }
       },
       {
         "@type": "Question",
@@ -307,10 +325,42 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
               ))}
             </div>
 
-            <div className="mt-10 text-center">
-              <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-ipb-orange hover:bg-ipb-orange text-white px-8 py-4 rounded-xl font-bold text-lg">
-                Devis gratuit pour {villeNom} <ArrowRight size={20} />
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link href={`/calcul-prix-mur-porteur?utm_source=site&utm_medium=ville&utm_campaign=mur_porteur_${ville}`} className="inline-flex items-center gap-2 bg-ipb-orange hover:bg-[#b35519] text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl transition-colors">
+                Estimer mon projet en 2 min <ArrowRight size={20} />
               </Link>
+              <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-ipb-navy text-white border border-ipb-navy hover:bg-[#1a2d40] px-8 py-4 rounded-xl font-bold text-lg transition-colors">
+                Devis détaillé sous 24h
+              </Link>
+            </div>
+            <p className="mt-4 text-center text-sm text-ipb-muted">
+              <strong className="text-ipb-text">Calcul instantané</strong> à partir de la portée et du type de mur. Recevez l'estimation par email.
+            </p>
+          </div>
+        </section>
+
+        {/* Bandeau calculateur — capture de leads chauds */}
+        <section className="bg-ipb-navy text-white py-14 md:py-16">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <p className="text-ipb-orange-l text-[11px] uppercase tracking-[0.18em] font-medium mb-4">
+              Estimation gratuite · Sans inscription
+            </p>
+            <h2 className="text-2xl md:text-3xl font-extrabold mb-4">
+              Combien va vous coûter votre ouverture à {villeNom} ?
+            </h2>
+            <p className="text-white/70 text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+              Notre calculateur, basé sur les chantiers IPB récents, vous donne une fourchette précise en 2 minutes. Vous recevez le détail par email — sans engagement.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-3">
+              <Link
+                href={`/calcul-prix-mur-porteur?utm_source=site&utm_medium=ville_banner&utm_campaign=mur_porteur_${ville}`}
+                className="inline-flex items-center justify-center gap-2 bg-ipb-orange text-white font-bold px-8 py-4 rounded-xl text-lg hover:bg-[#b35519] transition-colors"
+              >
+                Lancer le calcul → 2 min
+              </Link>
+              <a href="tel:0582953375" className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white font-bold px-8 py-4 rounded-xl text-lg hover:bg-white/20 transition-colors">
+                <Phone size={20} /> 05 82 95 33 75
+              </a>
             </div>
           </div>
         </section>
@@ -324,9 +374,13 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
             <p className="text-ipb-muted mb-4">Pour aller plus loin :</p>
             <div className="flex flex-wrap justify-center gap-3">
               <Link href="/expertise/mur-porteur" className="text-ipb-orange font-semibold hover:text-ipb-orange">→ Notre expertise mur porteur</Link>
-              <span className="text-white/70">·</span>
-              <Link href="/partenaires/architectes-interieur" className="text-ipb-orange font-semibold hover:text-ipb-orange">→ Partenariat architectes d'intérieur</Link>
-              <span className="text-white/70">·</span>
+              <span className="text-ipb-muted">·</span>
+              <Link href="/calcul-prix-mur-porteur" className="text-ipb-orange font-semibold hover:text-ipb-orange">→ Calculateur prix express</Link>
+              <span className="text-ipb-muted">·</span>
+              <Link href="/blog/prix-ouverture-mur-porteur-toulouse-2026" className="text-ipb-orange font-semibold hover:text-ipb-orange">→ Guide tarifs 2026</Link>
+              <span className="text-ipb-muted">·</span>
+              <Link href="/partenaires/architectes-interieur" className="text-ipb-orange font-semibold hover:text-ipb-orange">→ Partenariat architectes</Link>
+              <span className="text-ipb-muted">·</span>
               <Link href="/bureau-etude-structure-toulouse" className="text-ipb-orange font-semibold hover:text-ipb-orange">→ Bureau d'études structure</Link>
             </div>
           </div>
