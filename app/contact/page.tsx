@@ -15,6 +15,7 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,6 +24,22 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isSubmitting) return;
+    setErrorMessage(null);
+
+    // Validation locale email
+    const email = formData.email.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setErrorMessage("Adresse email invalide. Vérifiez qu'elle contient un \"@\" et un domaine.");
+      return;
+    }
+    if (!formData.name.trim()) {
+      setErrorMessage("Merci de renseigner votre nom.");
+      return;
+    }
+    if (!formData.message.trim()) {
+      setErrorMessage("Merci de décrire votre message.");
+      return;
+    }
 
     setIsSubmitting(true);
     try {
@@ -39,11 +56,11 @@ export default function ContactPage() {
         setFormData({ name: '', email: '', subject: '', message: '' });
         setTimeout(() => setIsSubmitted(false), 6000);
       } else {
-        alert(result.message);
+        setErrorMessage(result.message || "Une erreur est survenue.");
       }
     } catch (error) {
       if (process.env.NODE_ENV === 'development') console.error(error);
-      alert("Une erreur est survenue. Vous pouvez nous appeler au 05 82 95 33 75.");
+      setErrorMessage("Connexion impossible. Réessayez ou appelez-nous au 05 82 95 33 75.");
     } finally {
       setIsSubmitting(false);
     }
@@ -226,6 +243,11 @@ export default function ContactPage() {
                     <MagneticButton type="submit" variant="primary" className="w-full">
                       {isSubmitting ? 'Envoi en cours…' : 'Envoyer le message'}
                     </MagneticButton>
+                    {errorMessage && (
+                      <div className="bg-red-50 border border-red-200 text-red-700 text-[13px] rounded-[3px] px-4 py-3 leading-[1.5]" role="alert">
+                        {errorMessage}
+                      </div>
+                    )}
                   </form>
                 )}
               </div>

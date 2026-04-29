@@ -6,6 +6,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { trackCalculatorStart, trackCalculatorComplete, trackCalculatorLeadCapture } from '@/lib/analytics';
 import { submitCalculatorLead } from '@/app/actions/calculator';
+import { validatePhoneOrError } from '@/lib/validations/phone';
 
 /**
  * Calculateur prix mur porteur — outil interactif lead gen.
@@ -121,6 +122,7 @@ export function CalculatorClient() {
   const [leadCity, setLeadCity] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [leadError, setLeadError] = useState<string | null>(null);
 
   const estimate = useMemo<Estimate | null>(
     () => mur && etage ? calculateEstimate({ largeur, hauteur, mur, etage }) : null,
@@ -145,8 +147,17 @@ export function CalculatorClient() {
   const handleLeadSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (submitting || !estimate || !project || !mur || !etage) return;
-    setSubmitting(true);
+    setLeadError(null);
 
+    // Validation locale avant envoi
+    if (!leadEmail.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(leadEmail.trim())) {
+      setLeadError("Adresse email invalide. Vérifiez qu'elle contient un \"@\" et un domaine.");
+      return;
+    }
+    const phoneError = validatePhoneOrError(leadPhone);
+    if (phoneError) { setLeadError(phoneError); return; }
+
+    setSubmitting(true);
     try {
       const result = await submitCalculatorLead({
         email: leadEmail,
@@ -165,10 +176,10 @@ export function CalculatorClient() {
         trackCalculatorLeadCapture(leadEmail);
         setSubmitted(true);
       } else {
-        alert(result.message || 'Une erreur est survenue, vous pouvez nous appeler au 05 82 95 33 75.');
+        setLeadError(result.message || 'Une erreur est survenue. Vous pouvez nous appeler au 05 82 95 33 75.');
       }
     } catch {
-      alert('Une erreur est survenue, vous pouvez nous appeler au 05 82 95 33 75.');
+      setLeadError('Connexion impossible. Réessayez ou appelez le 05 82 95 33 75.');
     } finally {
       setSubmitting(false);
     }
@@ -314,6 +325,11 @@ export function CalculatorClient() {
             <MagneticButton type="submit" variant="primary" className="w-full">
               {submitting ? 'Envoi…' : "Envoyer mon estimation"}
             </MagneticButton>
+            {leadError && (
+              <div className="bg-red-50 border border-red-200 text-red-700 text-[13px] rounded-[3px] px-4 py-3 leading-[1.5]" role="alert">
+                {leadError}
+              </div>
+            )}
           </form>
         )}
 

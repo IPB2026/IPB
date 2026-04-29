@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Phone, MapPin, Mail, Send, CheckCircle } from 'lucide-react';
 import { submitContactForm } from '@/app/actions/contact';
+import { validatePhoneOrError } from '@/lib/validations/phone';
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -25,9 +26,22 @@ export function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setErrorMessage(null);
 
+    // Validation locale avant envoi serveur
+    if (!formData.name.trim()) { setErrorMessage('Merci de renseigner votre nom.'); return; }
+    const email = formData.email.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setErrorMessage("Adresse email invalide. Vérifiez qu'elle contient un \"@\" et un domaine.");
+      return;
+    }
+    if (formData.phone.trim()) {
+      const phoneError = validatePhoneOrError(formData.phone);
+      if (phoneError) { setErrorMessage(phoneError); return; }
+    }
+    if (!formData.message.trim()) { setErrorMessage('Merci de décrire votre situation.'); return; }
+
+    setIsSubmitting(true);
     try {
       const formDataToSend = new FormData();
       formDataToSend.append('name', formData.name);
@@ -46,13 +60,13 @@ export function ContactSection() {
         setFormData({ name: '', email: '', phone: '', message: '' });
         setTimeout(() => setIsSubmitted(false), 5000);
       } else {
-        setErrorMessage(result.message);
+        setErrorMessage(result.message || 'Une erreur est survenue.');
       }
     } catch (error) {
       if (process.env.NODE_ENV === 'development') {
         console.error('Erreur:', error);
       }
-      setErrorMessage('Une erreur est survenue. Veuillez réessayer.');
+      setErrorMessage('Connexion impossible. Réessayez ou appelez-nous au 05 82 95 33 75.');
     } finally {
       setIsSubmitting(false);
     }

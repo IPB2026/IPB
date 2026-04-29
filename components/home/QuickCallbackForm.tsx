@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Phone, CheckCircle, ArrowRight } from 'lucide-react';
 import { submitQuickCallback } from '@/app/actions/quickCallback';
+import { validatePhoneOrError } from '@/lib/validations/phone';
 
 export function QuickCallbackForm() {
   const [name, setName] = useState('');
@@ -13,11 +14,19 @@ export function QuickCallbackForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !phone.trim()) return;
+    setError(null);
+    if (!name.trim()) {
+      setError('Merci de renseigner votre nom.');
+      return;
+    }
+    const phoneError = validatePhoneOrError(phone);
+    if (phoneError) { setError(phoneError); return; }
+    if (!phone.trim()) {
+      setError('Merci de renseigner votre téléphone.');
+      return;
+    }
 
     setIsSubmitting(true);
-    setError(null);
-
     try {
       const result = await submitQuickCallback(name.trim(), phone.trim());
       if (result.success) {
@@ -26,7 +35,7 @@ export function QuickCallbackForm() {
         setError(result.message);
       }
     } catch {
-      setError('Une erreur est survenue. Appelez-nous au 05 82 95 33 75.');
+      setError('Connexion impossible. Appelez-nous au 05 82 95 33 75.');
     } finally {
       setIsSubmitting(false);
     }

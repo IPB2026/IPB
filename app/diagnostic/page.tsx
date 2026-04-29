@@ -5,6 +5,7 @@ import { submitDiagnosticCallback, submitDiagnosticLead } from '@/app/actions/di
 import { submitQuickCallback } from '@/app/actions/quickCallback';
 import { useRecaptcha } from '@/hooks/useRecaptcha';
 import { trackEvent } from '@/lib/analytics';
+import { validatePhoneOrError } from '@/lib/validations/phone';
 
 function trackPhoneClick() {
   trackEvent('conversion', { send_to: 'AW-17902440600/0aY8COSl6JccEJlhxthC' });
@@ -487,18 +488,10 @@ export default function DiagnosticPage() {
     if (!contactInfo.email.trim() && !contactInfo.phone.trim()) { setFormError('Veuillez saisir au moins un email ou un téléphone'); return; }
     if (!contactInfo.address.trim()) { setFormError('Veuillez saisir l\'adresse du bien'); return; }
 
-    // Validation locale du téléphone (si renseigné) — évite l'aller-retour serveur
-    const rawPhone = contactInfo.phone.trim();
-    if (rawPhone) {
-      const cleanedPhone = rawPhone.replace(/[\s.\-()]/g, '');
-      const phoneRegex = /^(\+33|0033|0)[1-9]\d{8}$/;
-      if (!phoneRegex.test(cleanedPhone)) {
-        setFormError('Le numéro de téléphone est incomplet ou mal formaté. Format attendu : 06 12 34 56 78 (ou +33 6 12 34 56 78).');
-        return;
-      }
-    }
+    // Validation locale téléphone + email (helpers partagés)
+    const phoneError = validatePhoneOrError(contactInfo.phone);
+    if (phoneError) { setFormError(phoneError); return; }
 
-    // Validation locale email (si renseigné)
     const rawEmail = contactInfo.email.trim();
     if (rawEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(rawEmail)) {
       setFormError("L'adresse email semble invalide. Vérifiez qu'elle contient un \"@\" et un domaine.");
@@ -567,6 +560,8 @@ export default function DiagnosticPage() {
       setFormError('Merci de renseigner votre téléphone pour être rappelé.');
       return;
     }
+    const phoneError = validatePhoneOrError(phone);
+    if (phoneError) { setFormError(phoneError); return; }
     setIsSubmitting(true);
     trackCallbackRequest();
     const recaptchaToken = await getToken('diagnostic_callback');
