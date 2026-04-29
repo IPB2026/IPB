@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
@@ -8,6 +9,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import type { VilleInfo } from '@/app/data/villes';
+import { generateLocalFAQ, buildFAQPageJsonLd } from '@/lib/seo/localFAQ';
 
 /**
  * ServiceVilleTemplate — template générique éditorial pour les pages
@@ -50,8 +52,24 @@ export function ServiceVilleTemplate({
   const villeNom = villeData.nom;
   const contextText = contextField ? (villeData[contextField] as string | undefined) : undefined;
 
+  // FAQPage JSON-LD géolocalisé — rich snippets locales pour les routes service
+  const localFAQ = generateLocalFAQ({
+    villeNom,
+    codePostal: villeData.codePostal,
+    departement: villeData.departement,
+    risqueRGA: villeData.risqueRGA,
+    quartiersRisque: villeData.quartiersRisque,
+    typesConstruction: villeData.typesConstruction,
+  });
+  const faqPageJsonLd = buildFAQPageJsonLd(localFAQ);
+
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
+      <Script
+        id="service-ville-faq-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd) }}
+      />
       <TopBar />
       <Navbar />
 

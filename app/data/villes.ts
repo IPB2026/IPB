@@ -1398,6 +1398,227 @@ export const villesData: Record<string, VilleInfo> = {
     communesProches: ['Foix', 'Saint-Lizier', 'La Bastide-de-Sérou', 'Massat'],
     specificitesFissures: 'Désordres ponctuels sur le bâti ancien en pierre. Les pavillons récents en périphérie sont plus exposés.',
     tauxSinistralite: '4,8%'
+  },
+
+  // ════════════════════════════════════════════════════════════════
+  // EXTENSION SEO LOCAL — Villes peu concurrentielles
+  // Ajoutées le 29/04/2026. Données géologiques génériques sur le
+  // bassin molassique de Garonne. Détails fins (quartiers exacts,
+  // sinistralité précise) à affiner après retours terrain.
+  // ════════════════════════════════════════════════════════════════
+
+  auterive: {
+    nom: 'Auterive',
+    codePostal: '31190',
+    departement: 'Haute-Garonne (31)',
+    distance: '30 km',
+    description: 'Sous-préfecture de 10 000 habitants au sud de Toulouse, en bord d\'Ariège. Habitat mêlant centre ancien sur coteaux et lotissements pavillonnaires en périphérie. Le sous-sol argileux et la proximité de l\'Ariège créent une combinaison fissures + humidité fréquente.',
+    population: '9 870',
+    geologie: 'Auterive repose sur des molasses tertiaires argileuses recouvertes d\'alluvions de l\'Ariège dans la basse vallée. Les coteaux de Saint-Paul et de la rive droite sont sur substrat argilo-marneux particulièrement sensible au RGA.',
+    risqueRGA: 'fort',
+    arretesCATNAT: [
+      'Sécheresse 2022 (JO du 18/01/2023)',
+      'Sécheresse 2023 (JO du 28/02/2024)',
+      'Inondations Ariège'
+    ],
+    typesConstruction: 'Mix de maisons anciennes en briques toulousaines (centre, faubourgs) et de pavillons des années 80-2000 en périphérie. Les constructions sur coteaux argileux sont les plus exposées aux désordres structurels.',
+    problemesFrequents: [
+      'Fissures sur pavillons en haut de coteau',
+      'Remontées capillaires dans le bâti ancien',
+      'Tassements liés à l\'Ariège (basse vallée)',
+      'Humidité après crue dans les caves'
+    ],
+    communesProches: ['Cintegabelle', 'Venerque', 'Miremont', 'Mauressac', 'Saint-Sulpice-sur-Lèze'],
+    specificitesFissures: 'À Auterive, les pavillons sur coteaux argileux des années 80-90 cumulent les facteurs de risque : pente, RGA, fondations souvent superficielles. Diagnostic instrumenté recommandé avant toute reprise.',
+    specificitesHumidite: 'L\'humidité est un sujet à part à Auterive : les remontées capillaires dans le centre historique côtoient les infiltrations post-crue dans les habitations proches de l\'Ariège.',
+    tauxSinistralite: '11,5%'
+  },
+
+  carbonne: {
+    nom: 'Carbonne',
+    codePostal: '31390',
+    departement: 'Haute-Garonne (31)',
+    distance: '40 km',
+    description: 'Bourg de 5 600 habitants en bord de Garonne, au sud-ouest de Toulouse. Centre ancien sur coteau, habitat pavillonnaire en plaine. La position en limite des Petites Pyrénées et du bassin molassique génère des comportements de sol contrastés.',
+    population: '5 633',
+    geologie: 'Carbonne marque la transition entre les alluvions de la Garonne (plaine) et les premiers reliefs molassiques des Petites Pyrénées (coteau). Les versants exposés sud sont les plus vulnérables au RGA.',
+    risqueRGA: 'moyen',
+    arretesCATNAT: [
+      'Sécheresse 2022',
+      'Sécheresse 2023',
+      'Sécheresse 2019'
+    ],
+    communesProches: ['Rieux-Volvestre', 'Marquefave', 'Salles-sur-Garonne', 'Lavelanet-de-Comminges'],
+    specificitesFissures: 'À Carbonne, les fissures structurelles concernent principalement les pavillons construits entre 1985 et 2000 sur les coteaux argileux. Les maisons en plaine sur alluvions sont moins touchées mais peuvent souffrir d\'humidité.',
+    specificitesHumidite: 'Les caves et sous-sols proches de la Garonne présentent fréquemment des remontées capillaires. Le diagnostic doit distinguer remontées par capillarité et infiltrations latérales.',
+    tauxSinistralite: '7,8%'
+  },
+
+  cazeres: {
+    nom: 'Cazères',
+    codePostal: '31220',
+    departement: 'Haute-Garonne (31)',
+    distance: '50 km',
+    description: 'Petite ville de 5 000 habitants en bord de Garonne, à la limite sud-ouest de la Haute-Garonne. Patrimoine bâti ancien (briques foraines, maisons à colombages) et extensions pavillonnaires sur coteaux argileux des Petites Pyrénées.',
+    population: '5 109',
+    geologie: 'Cazères se situe en limite du bassin molassique de Garonne et des terrains marno-argileux des Petites Pyrénées. Les sols sur coteaux sont fortement argileux, sensibles au retrait-gonflement.',
+    risqueRGA: 'fort',
+    arretesCATNAT: [
+      'Sécheresse 2022',
+      'Sécheresse 2023',
+      'Sécheresse 2019',
+      'Inondations Garonne'
+    ],
+    communesProches: ['Couladère', 'Le Plan', 'Martres-Tolosane', 'Palaminy', 'Mondavezan'],
+    specificitesFissures: 'À Cazères, les pavillons des coteaux sont régulièrement touchés par des fissures liées au RGA. Le bâti ancien en briques crues du centre est plus tolérant aux mouvements mais peut se fissurer après des cycles secs prolongés.',
+    specificitesHumidite: 'Le centre historique présente fréquemment des remontées capillaires dans les murs de briques anciennes, accentuées par le climat humide hivernal.',
+    tauxSinistralite: '9,5%'
+  },
+
+  verfeil: {
+    nom: 'Verfeil',
+    codePostal: '31590',
+    departement: 'Haute-Garonne (31)',
+    distance: '20 km',
+    description: 'Bourg historique de 3 200 habitants à l\'est de Toulouse, sur les coteaux du Lauragais. Bastide médiévale et habitat pavillonnaire récent sur sols argileux. Zone particulièrement exposée au retrait-gonflement.',
+    population: '3 184',
+    geologie: 'Verfeil repose sur les molasses argilo-sableuses du Lauragais, terrains parmi les plus sensibles au RGA en Haute-Garonne. Les versants à pente modérée concentrent l\'essentiel des sinistres.',
+    risqueRGA: 'tres-fort',
+    arretesCATNAT: [
+      'Sécheresse 2022 (JO du 18/01/2023)',
+      'Sécheresse 2023 (JO du 28/02/2024)',
+      'Sécheresse 2019',
+      'Sécheresse 2017'
+    ],
+    typesConstruction: 'Bastide médiévale en cœur de bourg, lotissements pavillonnaires en périphérie (années 80-2010) sur coteaux argileux. Les constructions sans étude de sol préalable sont les plus exposées.',
+    communesProches: ['Lavalette', 'Bourg-Saint-Bernard', 'Loubens-Lauragais', 'Saint-Marcel-Paulel', 'Bonrepos-Riquet'],
+    specificitesFissures: 'Verfeil est l\'une des communes les plus touchées par les fissures sécheresse en Haute-Garonne. Les pavillons sur coteau argileux du Lauragais sont prioritairement à diagnostiquer après chaque épisode sec marqué.',
+    specificitesHumidite: 'L\'humidité est un sujet secondaire à Verfeil — l\'urgence est presque toujours côté fissures et tassements différentiels.',
+    tauxSinistralite: '15,2%'
+  },
+
+  aussonne: {
+    nom: 'Aussonne',
+    codePostal: '31840',
+    departement: 'Haute-Garonne (31)',
+    distance: '15 km',
+    description: 'Commune de 8 000 habitants au nord-ouest de Toulouse, à proximité immédiate de l\'aéroport et du parc des expositions. Forte croissance démographique récente, habitat pavillonnaire des années 1990-2020 sur sols argileux.',
+    population: '7 950',
+    geologie: 'Aussonne repose sur des terrasses alluviales et des molasses argileuses du miocène. Les secteurs sud (vers Beauzelle) sont sur substrat alluvial moins exposé, le nord et l\'ouest sont sur argiles miocènes plus sensibles.',
+    risqueRGA: 'fort',
+    arretesCATNAT: [
+      'Sécheresse 2022 (JO du 18/01/2023)',
+      'Sécheresse 2023 (JO du 28/02/2024)',
+      'Sécheresse 2019'
+    ],
+    typesConstruction: 'Lotissements pavillonnaires majoritairement post-1990, avec une vague récente de constructions 2010-2020 en lien avec le développement du secteur aéroportuaire. Les pavillons sans étude de sol approfondie sont les plus à risque.',
+    communesProches: ['Beauzelle', 'Cornebarrieu', 'Mondonville', 'Seilh', 'Daux'],
+    specificitesFissures: 'À Aussonne, les sinistres se concentrent sur les pavillons des années 1990-2005, construits avec des fondations souvent insuffisamment profondes pour le RGA local. Les constructions récentes (DTU 13.1 v2020) sont mieux protégées.',
+    specificitesHumidite: 'Quelques cas de remontées capillaires sur le bâti ancien du bourg historique. Globalement, l\'humidité est moins problématique que les fissures sur Aussonne.',
+    tauxSinistralite: '10,8%'
+  },
+
+  leguevin: {
+    nom: 'Léguevin',
+    codePostal: '31490',
+    departement: 'Haute-Garonne (31)',
+    distance: '20 km',
+    description: 'Commune périurbaine de 9 500 habitants à l\'ouest de Toulouse, en lisière du Gers. Forte expansion pavillonnaire depuis les années 1980 sur coteaux argileux. Zone à fort risque RGA.',
+    population: '9 421',
+    geologie: 'Léguevin se situe sur les molasses argilo-marneuses du miocène, sur la transition entre bassin toulousain et Gascogne. L\'ensemble du territoire communal est classé en aléa RGA moyen à fort.',
+    risqueRGA: 'fort',
+    arretesCATNAT: [
+      'Sécheresse 2022 (JO du 18/01/2023)',
+      'Sécheresse 2023 (JO du 28/02/2024)',
+      'Sécheresse 2019',
+      'Sécheresse 2017'
+    ],
+    typesConstruction: 'Habitat majoritairement pavillonnaire (années 80 à aujourd\'hui), souvent sur grandes parcelles. Les lotissements anciens (avant 1995) cumulent fondations limitées et végétation mature, deux facteurs aggravants RGA.',
+    communesProches: ['Pibrac', 'Brax', 'Lévignac', 'Sainte-Livrade', 'Pradère-les-Bourguets'],
+    specificitesFissures: 'Léguevin présente l\'un des taux de sinistralité fissures les plus élevés de la périphérie ouest. Les chênes et platanes matures à proximité des maisons sont un facteur clé : 1 sinistre sur 3 implique un arbre à moins de 8 m.',
+    specificitesHumidite: 'Quelques cas isolés de remontées capillaires dans le centre ancien. La problématique principale reste les fissures structurelles.',
+    tauxSinistralite: '13,7%'
+  },
+
+  'saint-lys': {
+    nom: 'Saint-Lys',
+    codePostal: '31470',
+    departement: 'Haute-Garonne (31)',
+    distance: '25 km',
+    description: 'Commune de 8 500 habitants au sud-ouest de Toulouse, à la limite avec le Gers. Bourg historique sur coteau et extensions pavillonnaires en plaine et sur les versants. Sols argileux dominants.',
+    population: '8 472',
+    geologie: 'Saint-Lys repose sur des molasses argilo-sableuses du miocène, sur le bassin de la Save. Les coteaux argileux du nord et de l\'ouest sont les plus exposés au RGA, la plaine alluviale étant relativement plus stable.',
+    risqueRGA: 'fort',
+    arretesCATNAT: [
+      'Sécheresse 2022',
+      'Sécheresse 2023',
+      'Sécheresse 2019'
+    ],
+    communesProches: ['Fonsorbes', 'Sainte-Foy-de-Peyrolières', 'Bragayrac', 'Empeaux', 'Fontenilles'],
+    specificitesFissures: 'À Saint-Lys, les pavillons sur coteaux argileux des années 1980-2000 concentrent l\'essentiel des sinistres fissures. Diagnostic recommandé dès l\'apparition de fissures de plus de 2 mm.',
+    specificitesHumidite: 'Cas ponctuels de remontées capillaires dans les bâtisses anciennes du centre. Pas de problématique humidité majeure sur le pavillonnaire récent.',
+    tauxSinistralite: '11,2%'
+  },
+
+  bruguieres: {
+    nom: 'Bruguières',
+    codePostal: '31150',
+    departement: 'Haute-Garonne (31)',
+    distance: '15 km',
+    description: 'Commune de 5 300 habitants au nord de Toulouse, sur la route de Cahors. Habitat majoritairement pavillonnaire des années 1970 à aujourd\'hui sur sols argileux. Croissance démographique soutenue.',
+    population: '5 290',
+    geologie: 'Bruguières est implantée sur les molasses argileuses du miocène, en bordure du couloir alluvial du Girou. Les secteurs sud-ouest, sur substrat plus alluvial, sont moins exposés que le nord-est sur argiles franches.',
+    risqueRGA: 'fort',
+    arretesCATNAT: [
+      'Sécheresse 2022',
+      'Sécheresse 2023',
+      'Sécheresse 2019'
+    ],
+    communesProches: ['Saint-Jory', 'Gratentour', 'Castelnau-d\'Estrétefonds', 'Lespinasse', 'Saint-Sauveur'],
+    specificitesFissures: 'À Bruguières, les pavillons des années 70-80 cumulent fondations limitées et végétation arborée mature, ce qui en fait les premiers candidats aux fissures par tassement différentiel sécheresse.',
+    specificitesHumidite: 'Quelques sous-sols semi-enterrés des pavillons 70-80 présentent des infiltrations chroniques. Diagnostic ciblé recommandé.',
+    tauxSinistralite: '10,9%'
+  },
+
+  bessieres: {
+    nom: 'Bessières',
+    codePostal: '31660',
+    departement: 'Haute-Garonne (31)',
+    distance: '25 km',
+    description: 'Bourg de 4 000 habitants au nord-est de Toulouse, sur les rives du Tarn. Centre ancien et extensions pavillonnaires sur coteaux argileux en lisière de la vallée du Tarn.',
+    population: '4 052',
+    geologie: 'Bessières marque la limite entre la basse plaine alluviale du Tarn et les coteaux molassiques argileux du Lauragais nord. Les pavillons sur coteaux sont les plus exposés au RGA.',
+    risqueRGA: 'fort',
+    arretesCATNAT: [
+      'Sécheresse 2022',
+      'Sécheresse 2023',
+      'Sécheresse 2019',
+      'Inondations Tarn'
+    ],
+    communesProches: ['Buzet-sur-Tarn', 'Villemur-sur-Tarn', 'Mirepoix-sur-Tarn', 'Le Born', 'Bondigoux'],
+    specificitesFissures: 'À Bessières, les pavillons des coteaux sont régulièrement sinistrés depuis 2019. Les fondations historiquement limitées et l\'évolution climatique imposent souvent une reprise en sous-œuvre.',
+    specificitesHumidite: 'Habitations en plaine alluviale parfois concernées par des remontées capillaires post-crue. Diagnostic à mener après chaque évènement de crue significatif.',
+    tauxSinistralite: '11,8%'
+  },
+
+  grisolles: {
+    nom: 'Grisolles',
+    codePostal: '82170',
+    departement: 'Tarn-et-Garonne (82)',
+    distance: '30 km',
+    description: 'Commune de 4 500 habitants au sud du Tarn-et-Garonne, à la limite de la Haute-Garonne, sur l\'axe Toulouse-Montauban. Centre ancien (briques toulousaines) et lotissements récents en périphérie.',
+    population: '4 484',
+    geologie: 'Grisolles est implantée sur la basse plaine alluviale du Tarn et sur des molasses argileuses du miocène. La transition plaine-coteau crée des comportements de sol contrastés à l\'échelle de la commune.',
+    risqueRGA: 'moyen',
+    arretesCATNAT: [
+      'Sécheresse 2022',
+      'Sécheresse 2023',
+      'Inondations Tarn'
+    ],
+    communesProches: ['Pompignan', 'Fronton (31)', 'Dieupentale', 'Bessens', 'Verdun-sur-Garonne'],
+    specificitesFissures: 'À Grisolles, les pavillons construits sur les versants sud (vers Bessens) sont plus exposés au RGA que ceux de la plaine. Les bâtisses anciennes en briques tolèrent mieux les mouvements modérés.',
+    specificitesHumidite: 'Centre ancien régulièrement concerné par des remontées capillaires. Habitations en plaine sensibles aux infiltrations post-crue du Tarn.',
+    tauxSinistralite: '8,4%'
   }
 };
 
