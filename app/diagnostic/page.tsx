@@ -571,7 +571,7 @@ export default function DiagnosticPage() {
   const expertReport = showResult && path ? getExpertReport(path as 'fissure' | 'mur-porteur', riskScore) : null;
 
   return (
-    <div className="min-h-[100dvh] bg-gradient-to-br from-slate-50 via-white to-orange-50/30 flex justify-center">
+    <div className="min-h-[100dvh] bg-ipb-cream flex justify-center">
 
       <div className="w-full max-w-2xl md:max-w-3xl px-4 pt-6 pb-10 md:pt-8">
 
