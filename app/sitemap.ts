@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { blogPostsList } from '@/app/data/blog';
 import { villeSlugs } from '@/app/data/villes';
+import { VILLES_MUR_PORTEUR } from '@/app/data/villes-mur-porteur';
 import { problemPages } from '@/app/data/problems';
 import { quartierSlugs } from '@/app/data/quartiers';
 
@@ -343,7 +344,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // PAGES MUR PORTEUR PAR VILLE (Toulouse, Montauban, Auch, Albi)
   // Forte priorité — pivot stratégique
   // ════════════════════════════════════════════════════════════
-  const expertMurPorteurPages: MetadataRoute.Sitemap = ['toulouse', 'montauban', 'auch', 'albi'].map((ville) => ({
+  const expertMurPorteurPages: MetadataRoute.Sitemap = VILLES_MUR_PORTEUR.map((ville) => ({
     url: `${baseUrl}/expert-mur-porteur/${ville}`,
     lastModified: recentUpdate,
     changeFrequency: 'monthly' as const,

@@ -12,6 +12,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { villesData, villeSlugs, type VilleInfo } from '@/app/data/villes';
+import { getVilleMurPorteurFallback } from '@/app/data/villes-mur-porteur';
 import { VilleBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 import { generateLocalFAQ, buildFAQPageJsonLd, IPB_AGGREGATE_RATING } from '@/lib/seo/localFAQ';
 
@@ -79,8 +80,6 @@ function risqueLabel(r?: string) {
   return 'À évaluer';
 }
 
-const villesMurPorteur = ['toulouse', 'montauban', 'auch', 'albi'];
-
 export default async function ExpertFissuresVillePage({ params }: { params: Promise<{ ville: string }> }) {
   const { ville } = await params;
   const villeData: VilleInfo | undefined = villesData[ville];
@@ -122,7 +121,7 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
   });
   const faqPageJsonLd = buildFAQPageJsonLd(localFAQ);
 
-  const villeMurPorteur = villesMurPorteur.includes(ville) ? ville : 'toulouse';
+  const villeMurPorteur = getVilleMurPorteurFallback(ville);
 
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">

@@ -9,9 +9,8 @@ import { Footer } from '@/components/home/Footer';
 import { Testimonials } from '@/components/home/Testimonials';
 import { CheckCircle, Phone, ArrowRight, Shield, Clock, FileText, Hammer, Ruler, Award, AlertTriangle, Eye } from 'lucide-react';
 import { villesData, type VilleInfo } from '@/app/data/villes';
+import { VILLES_MUR_PORTEUR } from '@/app/data/villes-mur-porteur';
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
-
-const VILLES_MUR_PORTEUR = ['toulouse', 'montauban', 'auch', 'albi'];
 
 export async function generateStaticParams() {
   return VILLES_MUR_PORTEUR.map((ville) => ({ ville }));
@@ -62,7 +61,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
 export default async function ExpertMurPorteurVillePage({ params }: { params: Promise<{ ville: string }> }) {
   const { ville } = await params;
   const villeData: VilleInfo | undefined = villesData[ville];
-  if (!villeData || !VILLES_MUR_PORTEUR.includes(ville)) notFound();
+  if (!villeData || !(VILLES_MUR_PORTEUR as readonly string[]).includes(ville)) notFound();
 
   const deptCode = villeData.codePostal.slice(0, 2);
   const villeNom = villeData.nom;
