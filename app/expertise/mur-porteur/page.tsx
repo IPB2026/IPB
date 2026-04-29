@@ -94,7 +94,7 @@ const typesProjets = [
     desc: 'Le projet le plus fréquent. Ouverture de 2 à 3 m, poutre IPN ou HEB selon les charges.',
     portee: '2 à 3 m',
     budget: '5 000 – 8 000 €',
-    image: '/images/ouverture-mur-porteur.webp',
+    image: '/images/cuisine-ouverte-sejour.webp',
     imageAlt: 'Ouverture de mur porteur entre cuisine et séjour avec pose de poutre — chantier IPB Toulouse',
   },
   {
@@ -110,7 +110,7 @@ const typesProjets = [
     desc: 'Ouverture entre deux chambres pour créer un dressing ou une salle de bain attenante.',
     portee: '1,5 à 2,5 m',
     budget: '4 000 – 6 500 €',
-    image: '/images/etude-cas-baie-vitree-1.webp',
+    image: '/images/suite-parentale-etendue.webp',
     imageAlt: 'Ouverture entre chambres pour suite parentale avec dressing — chantier IPB',
   },
   {
@@ -118,7 +118,7 @@ const typesProjets = [
     desc: 'Plusieurs ouvertures dans un plateau brut. Étude globale avec plan d\'exécution complet.',
     portee: 'Variable',
     budget: 'Sur devis',
-    image: '/images/etude-cas-baie-vitree-2.webp',
+    image: '/images/loft-ou-plateau.webp',
     imageAlt: 'Plateau loft avec plusieurs ouvertures structurelles — chantier IPB',
   },
 ];
@@ -252,8 +252,8 @@ export default function MurPorteurPage() {
               <RevealOnScroll direction="left" className="lg:col-span-5">
                 <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
                   <Image
-                    src="/images/ouverture-mur-porteur.webp"
-                    alt="Ouverture d'un mur porteur en cours de chantier IPB"
+                    src="/images/calcul-technique-finitions.webp"
+                    alt="Du calcul technique aux finitions — étapes d'une ouverture de mur porteur par IPB"
                     fill
                     sizes="(max-width: 1024px) 100vw, 40vw"
                     className="object-cover"
@@ -295,28 +295,30 @@ export default function MurPorteurPage() {
         </section>
 
         {/* SCHÉMA TECHNIQUE — pédagogie */}
-        <section className="bg-ipb-cream py-24 lg:py-32">
-          <div className="max-w-5xl mx-auto px-6 lg:px-12">
+        <section className="bg-ipb-cream py-20 lg:py-28">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <RevealOnScroll>
-              <div className="text-center mb-12">
+              <div className="text-center mb-12 max-w-3xl mx-auto">
                 <Eyebrow className="justify-center">Comprendre le principe</Eyebrow>
                 <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}>
                   Une poutre reprend les charges<br /><em>que le mur supportait.</em>
                 </h2>
+                <p className="text-[15px] leading-[1.85] font-light text-ipb-muted mt-6">
+                  Le schéma technique illustre le principe : étaiement provisoire pour reprendre temporairement les charges du plancher, découpe du mur porteur, pose et scellement de la poutre dimensionnée par notre ingénieur, retrait des étais.
+                </p>
               </div>
             </RevealOnScroll>
 
             <RevealOnScroll delay={0.08}>
-              <div className="bg-ipb-white border border-ipb-rule rounded-[6px] p-6 lg:p-10">
-                <div className="relative w-full aspect-[16/10]">
-                  <Image
-                    src="/images/schema-ouverture-mur-porteur.webp"
-                    alt="Schéma technique d'une ouverture de mur porteur avec étaiement et pose de poutre IPN"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 80vw"
-                    className="object-contain"
-                  />
-                </div>
+              <div className="relative w-full aspect-[16/9] lg:aspect-[16/8] rounded-[6px] overflow-hidden bg-ipb-white border border-ipb-rule">
+                <Image
+                  src="/images/schema-ouverture-mur-porteur.webp"
+                  alt="Schéma technique d'une ouverture de mur porteur avec étaiement et pose de poutre IPN"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 1240px"
+                  className="object-contain p-4 lg:p-8"
+                  priority={false}
+                />
               </div>
             </RevealOnScroll>
           </div>
