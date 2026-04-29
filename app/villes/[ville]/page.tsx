@@ -37,6 +37,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = `Expert Fissures & Humidité à ${villeData.nom} (${villeData.codePostal}) | IPB`;
   const description = `Expert en traitement des fissures et de l'humidité à ${villeData.nom} (${villeData.departement}). Intervention rapide dans un rayon de 50 km autour de Toulouse. Solutions techniques avec garantie décennale.`;
 
+  // Canonical override : sur Toulouse, /villes/toulouse pointe vers /expert-fissures-toulouse-31
+  // pour résoudre la cannibalisation entre les 3 URLs ciblant la même intention.
+  const canonicalUrl = ville.toLowerCase() === 'toulouse'
+    ? 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31'
+    : `https://www.ipb-expertise.fr/villes/${ville}`;
+
   return {
     title,
     description,
@@ -55,13 +61,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: {
       title,
       description,
-      url: `https://www.ipb-expertise.fr/villes/${ville}`,
+      url: canonicalUrl,
       siteName: 'IPB',
       locale: 'fr_FR',
       type: 'website',
     },
     alternates: {
-      canonical: `https://www.ipb-expertise.fr/villes/${ville}`,
+      canonical: canonicalUrl,
     },
   };
 }
@@ -120,6 +126,7 @@ export default async function VillePage({ params }: PageProps) {
       <Navbar />
       <SmartBackBar />
 
+      <main id="main-content">
       {/* Hero Section adaptée pour la ville */}
       <section className="relative bg-ipb-navy text-white overflow-hidden pb-24 pt-20 md:py-32 lg:pb-40">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-orange-950 opacity-90"></div>
@@ -175,45 +182,131 @@ export default async function VillePage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Section spécifique à la ville */}
+      {/* Section spécifique à la ville — contenu local enrichi */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-4">
-              Expert en Pathologie du Bâtiment à {villeData.nom}
+          <div className="max-w-4xl mx-auto mb-12">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-6">
+              Expert en pathologie du bâtiment à {villeData.nom}
             </h2>
-            <p className="text-lg text-ipb-muted max-w-3xl mx-auto">
-              {villeData.description}. IPB intervient régulièrement à {villeData.nom} ({villeData.codePostal}) pour le traitement des fissures structurelles causées par la sécheresse et les mouvements de terrain argileux, ainsi que pour l'assèchement des murs touchés par les remontées capillaires.
+            <p className="text-lg text-ipb-muted leading-relaxed">
+              {villeData.description}
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mt-12">
-            <div className="bg-ipb-cream p-8 rounded-2xl border border-ipb-rule">
-              <h3 className="text-xl font-bold text-ipb-text mb-4 flex items-center gap-2">
-                <span className="text-ipb-orange">🔧</span>
-                Fissures à {villeData.nom}
+          {/* Géologie locale & risque RGA */}
+          {villeData.geologie && (
+            <div className="max-w-4xl mx-auto mb-12 grid md:grid-cols-3 gap-6 bg-ipb-cream rounded-2xl border border-ipb-rule p-8">
+              <div className="md:col-span-2">
+                <h3 className="text-xl font-bold text-ipb-text mb-3">Géologie locale</h3>
+                <p className="text-ipb-muted leading-relaxed">{villeData.geologie}</p>
+              </div>
+              {villeData.risqueRGA && (
+                <div className="border-t md:border-t-0 md:border-l border-ipb-rule pt-6 md:pt-0 md:pl-8">
+                  <p className="text-xs uppercase tracking-wider text-ipb-muted font-bold mb-2">Risque RGA</p>
+                  <p className="text-2xl font-extrabold text-ipb-orange capitalize">
+                    {villeData.risqueRGA.replace('-', ' ')}
+                  </p>
+                  {villeData.tauxSinistralite && (
+                    <p className="text-sm text-ipb-muted mt-3">
+                      <span className="font-bold text-ipb-text">{villeData.tauxSinistralite}</span> de taux de sinistralité observé localement
+                    </p>
+                  )}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Arrêtés CAT-NAT — donnée vérifiable, fort signal d'autorité */}
+          {villeData.arretesCATNAT && villeData.arretesCATNAT.length > 0 && (
+            <div className="max-w-4xl mx-auto mb-12">
+              <h3 className="text-xl font-bold text-ipb-text mb-4">
+                Arrêtés de catastrophe naturelle reconnus à {villeData.nom}
               </h3>
               <p className="text-ipb-muted mb-4">
-                Le sol argileux de {villeData.nom} est particulièrement sensible aux variations climatiques. Les maisons individuelles subissent des mouvements de terrain qui créent des fissures structurelles.
+                Si votre habitation a subi des désordres pendant l'une de ces périodes, votre assurance peut prendre en charge les réparations sous condition de déclaration sous 30 jours.
               </p>
-              <p className="text-ipb-muted">
-                Notre technique d'agrafage permet de stabiliser les fondations sans avoir recours aux micropieux coûteux, pour un coût jusqu'à 3 fois inférieur.
+              <ul className="grid sm:grid-cols-2 gap-2">
+                {villeData.arretesCATNAT.map((arrete) => (
+                  <li key={arrete} className="flex items-start gap-2 text-sm text-ipb-text">
+                    <span className="text-ipb-orange mt-0.5" aria-hidden="true">▸</span>
+                    <span>{arrete}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Quartiers les plus exposés */}
+          {villeData.quartiersRisque && villeData.quartiersRisque.length > 0 && (
+            <div className="max-w-4xl mx-auto mb-12">
+              <h3 className="text-xl font-bold text-ipb-text mb-4">
+                Quartiers les plus exposés à {villeData.nom}
+              </h3>
+              <div className="grid sm:grid-cols-2 gap-3">
+                {villeData.quartiersRisque.map((q) => (
+                  <div key={q} className="bg-white border border-ipb-rule rounded-lg p-4 text-sm text-ipb-text">
+                    {q}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Types de construction */}
+          {villeData.typesConstruction && (
+            <div className="max-w-4xl mx-auto mb-12">
+              <h3 className="text-xl font-bold text-ipb-text mb-3">
+                Le bâti à {villeData.nom}
+              </h3>
+              <p className="text-ipb-muted leading-relaxed">{villeData.typesConstruction}</p>
+            </div>
+          )}
+
+          {/* Spécificités fissures + humidité */}
+          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 mt-12">
+            <div className="bg-ipb-cream p-8 rounded-2xl border border-ipb-rule">
+              <h3 className="text-xl font-bold text-ipb-text mb-4 flex items-center gap-2">
+                <span className="text-ipb-orange" aria-hidden="true">🔧</span>
+                Fissures à {villeData.nom}
+              </h3>
+              <p className="text-ipb-muted leading-relaxed">
+                {villeData.specificitesFissures
+                  || `Le sol argileux de ${villeData.nom} réagit fortement aux variations climatiques. Notre technique d'agrafage stabilise les fondations sans recours aux micropieux, pour un coût jusqu'à 3 fois inférieur.`}
               </p>
             </div>
 
             <div className="bg-blue-50 p-8 rounded-2xl border border-blue-200">
               <h3 className="text-xl font-bold text-ipb-text mb-4 flex items-center gap-2">
-                <span className="text-blue-600">💧</span>
+                <span className="text-blue-600" aria-hidden="true">💧</span>
                 Humidité à {villeData.nom}
               </h3>
-              <p className="text-ipb-muted mb-4">
-                Les remontées capillaires sont fréquentes à {villeData.nom}, notamment dans les maisons anciennes et les sous-sols.
-              </p>
-              <p className="text-ipb-muted">
-                Notre traitement par injection résine hydrophobe crée une barrière étanche définitive, garantie 30 ans, pour stopper définitivement l'humidité.
+              <p className="text-ipb-muted leading-relaxed">
+                {villeData.specificitesHumidite
+                  || `Les remontées capillaires sont fréquentes dans les maisons anciennes de ${villeData.nom}. Notre injection résine hydrophobe crée une barrière étanche définitive, garantie 30 ans.`}
               </p>
             </div>
           </div>
+
+          {/* Conseil expert + historique local — passages citables AI */}
+          {(villeData.conseillExpert || villeData.historiqueLocal) && (
+            <div className="max-w-4xl mx-auto mt-12 grid md:grid-cols-2 gap-8">
+              {villeData.historiqueLocal && (
+                <div>
+                  <h3 className="text-xl font-bold text-ipb-text mb-3">
+                    Contexte récent à {villeData.nom}
+                  </h3>
+                  <p className="text-ipb-muted leading-relaxed">{villeData.historiqueLocal}</p>
+                </div>
+              )}
+              {villeData.conseillExpert && (
+                <div className="bg-white border-l-4 border-ipb-orange pl-6 py-2">
+                  <p className="text-xs uppercase tracking-wider text-ipb-orange font-bold mb-2">Le conseil de l'institut</p>
+                  <p className="text-ipb-text leading-relaxed">{villeData.conseillExpert}</p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </section>
 
@@ -282,6 +375,7 @@ export default async function VillePage({ params }: PageProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
         <InternalLinks variant="ville" />
       </div>
+      </main>
       <Footer />
     </div>
   );

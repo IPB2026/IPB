@@ -202,7 +202,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
       <Navbar />
       <SmartBackBar />
 
-      <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumbs */}
         <Breadcrumbs
           items={[
@@ -360,7 +360,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
             </aside>
           )}
         </div>
-      </article>
+      </main>
 
       {/* Articles similaires */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-ipb-rule">

@@ -152,7 +152,7 @@ export default function MurPorteurPage() {
                     fontWeight: 700,
                   }}
                 >
-                  Ouvrir un mur porteur,<br />
+                  Ouvrir un mur porteur à Toulouse,<br />
                   <em>poser une baie vitrée.</em>
                 </h1>
               </RevealOnScroll>
@@ -311,7 +311,7 @@ export default function MurPorteurPage() {
             </RevealOnScroll>
 
             <RevealOnScroll delay={0.08}>
-              <div className="bg-ipb-white border border-ipb-rule rounded-[6px] p-6 lg:p-10">
+              <div className="bg-ipb-white border border-ipb-rule rounded-[6px] p-4 md:p-6 lg:p-10 overflow-hidden">
                 <MurPorteurDiagram />
               </div>
             </RevealOnScroll>

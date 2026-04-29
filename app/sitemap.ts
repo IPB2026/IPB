@@ -94,7 +94,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/expertise/mur-porteur`,
       lastModified: recentUpdate,
       changeFrequency: 'monthly',
-      priority: 0.95,
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/rdv-cabinet`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/calcul-prix-mur-porteur`,
+      lastModified: contentDate,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/carte-secheresse-occitanie`,
+      lastModified: contentDate,
+      changeFrequency: 'monthly',
+      priority: 0.72,
     },
     {
       url: `${baseUrl}/bureau-etude-structure-toulouse`,
@@ -141,7 +159,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/plan-site`,
       lastModified: recentUpdate,
-      changeFrequency: 'weekly',
+      changeFrequency: 'monthly',
       priority: 0.5,
     },
     {
@@ -286,7 +304,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}/${slug}`,
     lastModified: recentUpdate,
     changeFrequency: 'weekly' as const,
-    priority: 0.85,
+    priority: 0.7,
   }));
 
   // ════════════════════════════════════════════════════════════

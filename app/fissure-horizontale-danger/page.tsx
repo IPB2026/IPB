@@ -57,7 +57,7 @@ const faqSchema = {
       name: 'Une fissure horizontale est-elle dangereuse pour la structure ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Oui, une fissure horizontale sur un mur porteur est un signe de contrainte structurelle majeure (poussée latérale, désolidarisation du plancher, flexion de linteau). En Occitanie, 43% des effondrements partiels sont précédés d\'une fissure horizontale ignorée. Un diagnostic urgent est recommandé sous 24 à 48h.',
+        text: 'Oui, une fissure horizontale sur un mur porteur est un signe de contrainte structurelle majeure (poussée latérale, désolidarisation du plancher, flexion de linteau). Les guides de pathologie du bâtiment (CSTB, AQC, CTMNC) la classent parmi les signaux d\'alerte prioritaires sur un élément porteur. Un diagnostic expert est recommandé sous 24 à 48h.',
       },
     },
     {
@@ -138,10 +138,9 @@ export default function FissureHorizontalePage() {
                     <AlertTriangle className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-white mb-1">Statistique alarmante</h3>
+                    <h3 className="font-bold text-white mb-1">Signal d'alerte prioritaire</h3>
                     <p className="text-red-100">
-                      En Occitanie, <strong className="text-white">43% des effondrements partiels</strong> sont précédés 
-                      d'une fissure horizontale ignorée pendant plus de 6 mois.
+                      Une fissure parfaitement horizontale sur un mur porteur figure parmi les <strong className="text-white">signaux d'alerte prioritaires</strong> identifiés par les guides de pathologie du bâtiment (CSTB, AQC, CTMNC).
                     </p>
                   </div>
                 </div>
@@ -175,12 +174,12 @@ export default function FissureHorizontalePage() {
                 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-red-500/20 rounded-xl p-4 text-center">
-                    <div className="text-3xl font-black text-red-400">43%</div>
-                    <div className="text-xs text-red-200">Risque effondrement</div>
+                    <div className="text-2xl font-black text-red-400 leading-tight">MAJEUR</div>
+                    <div className="text-xs text-red-200 mt-1">Niveau de risque</div>
                   </div>
                   <div className="bg-white/10 rounded-xl p-4 text-center">
-                    <div className="text-3xl font-black text-white">24h</div>
-                    <div className="text-xs text-white/70">Intervention urgente</div>
+                    <div className="text-2xl font-black text-white leading-tight">24-48 h</div>
+                    <div className="text-xs text-white/70 mt-1">Diagnostic recommandé</div>
                   </div>
                 </div>
               </div>
@@ -335,11 +334,11 @@ export default function FissureHorizontalePage() {
       </section>
 
       {/* Articles connexes */}
-      <section className="py-20 bg-white">
+      <nav aria-label="Articles connexes" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-ipb-text mb-8 text-center">
+          <p className="text-2xl font-black text-ipb-text mb-8 text-center">
             Articles connexes
-          </h2>
+          </p>
           <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
             {[
               { href: '/fissure-en-escalier-causes', icon: '🪜', title: 'Fissure en escalier', desc: 'Tassement différentiel' },
@@ -363,7 +362,7 @@ export default function FissureHorizontalePage() {
             ))}
           </div>
         </div>
-      </section>
+      </nav>
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-red-600 to-orange-600 text-white">

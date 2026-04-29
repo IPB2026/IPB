@@ -2,14 +2,17 @@ import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
+import { CtaFinal } from '@/components/home/CtaFinal';
+import { Eyebrow } from '@/components/ui/Eyebrow';
+import { MagneticButton } from '@/components/ui/MagneticButton';
+import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import Link from 'next/link';
 import Script from 'next/script';
-import { ArrowRight, Phone, Shield, Ruler, FileText, CheckCircle, Award, Building2, Calculator } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Bureau d'Études Structure Toulouse — IPN, HEB, Mur Porteur | IPB",
-  description: "Bureau d'études structure intégré à Toulouse. Note de calcul IPN/HEB, dimensionnement poutre, mur porteur, ouvrages neufs et rénovation. Décennale AXA. Devis 24h. ☎ 05 82 95 33 75",
+  title: "Bureau d'études structure à Toulouse · IPN, HEB, mur porteur · Institut IPB",
+  description: "Bureau d'études structure intégré à Toulouse. Note de calcul IPN/HEB, dimensionnement de poutre, expertise mur porteur, ouvrages neufs et rénovation. Décennale AXA. Réponse sous 24 h.",
   keywords: [
     'bureau études structure toulouse',
     'bureau études structure haute-garonne',
@@ -24,17 +27,22 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/bureau-etude-structure-toulouse' },
   openGraph: {
-    title: "Bureau d'Études Structure Toulouse — IPN, HEB, Mur Porteur | IPB",
+    title: "Bureau d'études structure · IPB Toulouse",
     description: "Ingénieur structure intégré à Toulouse. Note de calcul opposable, dimensionnement IPN/HEB, étude charge, contrôle des ouvrages. Décennale AXA.",
     url: 'https://www.ipb-expertise.fr/bureau-etude-structure-toulouse',
     type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
   },
 };
 
 const serviceJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "name": "IPB Bureau d'Études Structure",
+  "name": "IPB Bureau d'études structure",
   "@id": "https://www.ipb-expertise.fr/bureau-etude-structure-toulouse#service",
   "description": "Bureau d'études structure à Toulouse : note de calcul IPN/HEB, dimensionnement de poutre, expertise mur porteur, ouvrages neufs et rénovation.",
   "areaServed": [
@@ -42,140 +50,287 @@ const serviceJsonLd = {
     { "@type": "AdministrativeArea", "name": "Haute-Garonne" },
     { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne" },
     { "@type": "AdministrativeArea", "name": "Gers" },
+    { "@type": "AdministrativeArea", "name": "Tarn" },
   ],
-  "provider": { "@type": "LocalBusiness", "name": "IPB - Institut de Pathologie du Bâtiment", "telephone": "+33582953375" }
+  "provider": { "@type": "LocalBusiness", "name": "IPB - Institut de Pathologie du Bâtiment", "telephone": "+33582953375" },
+};
+
+const prestations = [
+  {
+    titre: 'Dimensionnement IPN, HEB ou IPE',
+    desc: "Calcul des charges reprises, choix de la poutre, vérification de la flèche et du déversement selon les normes en vigueur (Eurocode). Note de calcul signée par notre ingénieur.",
+  },
+  {
+    titre: 'Étude de mur porteur',
+    desc: "Identification du caractère porteur, descente de charges, méthode d'étaiement, plan d'exécution. Document opposable face à un syndic ou une assurance.",
+  },
+  {
+    titre: 'Diagnostic structure',
+    desc: "Avant achat, après sinistre, sur fissures et désordres. Rapport reconnu par les assurances et les tribunaux.",
+  },
+  {
+    titre: 'Béton armé',
+    desc: "Plancher, longrine, semelle, poteau. Calculs Eurocode 2, plans de ferraillage. Pour ouvrages neufs comme rénovations lourdes.",
+  },
+  {
+    titre: "Mission de maîtrise d'œuvre",
+    desc: "Conception, consultation des entreprises, suivi de chantier, réception. Pour les rénovations lourdes intégrant plusieurs corps d'état.",
+  },
+  {
+    titre: 'Contre-expertise',
+    desc: "Confrontation avec un rapport d'expert d'assurance, contestation amiable ou judiciaire. Documents techniques opposables.",
+  },
+];
+
+const faqItems = [
+  {
+    question: "Qu'est-ce qu'une note de calcul, et pourquoi est-elle opposable ?",
+    answer: "Une note de calcul est un document technique signé par un ingénieur structure. Elle justifie, selon les Eurocodes, le dimensionnement d'un ouvrage (poutre, plancher, mur porteur). Elle engage la responsabilité de son auteur et de son assureur, ce qui la rend opposable à une assurance, un syndic ou un tribunal.",
+  },
+  {
+    question: "Sous quel délai un calcul de poutre est-il rendu ?",
+    answer: "Pour une étude standard (poutre IPN ou HEB sur portée courante), notre bureau d'études rend la note de calcul sous 5 à 7 jours ouvrés après la visite. Les dossiers complexes ou comportant plusieurs ouvrages peuvent demander 10 à 15 jours.",
+  },
+  {
+    question: "Travaillez-vous avec les architectes d'intérieur et marchands de biens ?",
+    answer: "Oui. L'institut intervient régulièrement en sous-traitance technique pour les architectes d'intérieur (projets « espace ouvert »), les marchands de biens (rénovations rapides avant revente) et les agences immobilières (rapport débloquant une vente sur fissure).",
+  },
+  {
+    question: "Le calcul technique est-il inclus dans le devis travaux ?",
+    answer: "Quand l'institut réalise les travaux derrière, oui : l'étude technique est intégrée à la prestation globale et facturée une seule fois. Si vous voulez seulement la note de calcul (sans travaux), elle est facturée séparément, avec un devis transparent remis sous 24 h.",
+  },
+  {
+    question: "Êtes-vous couverts en décennale ?",
+    answer: "Oui. L'institut IPB est couvert par une garantie décennale AXA France (police n° 10564321) qui couvre à la fois l'étude technique et les travaux exécutés derrière. Une attestation est remise avec chaque devis.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map((item) => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": { "@type": "Answer", "text": item.answer },
+  })),
 };
 
 export default function BureauEtudeStructurePage() {
   return (
-    <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
+    <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <Script id="bureau-etudes-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+
       <TopBar />
       <Navbar />
       <SmartBackBar />
+
       <main id="main-content">
         {/* HERO */}
-        <section className="relative bg-ipb-navy text-white py-16 md:py-24 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-950/40 to-slate-900"></div>
-          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="text-blue-300 font-semibold text-xs uppercase tracking-[0.2em] mb-4">
-              Bureau d'études intégré · Décennale AXA France
-            </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-              Bureau d'Études <span className="text-transparent bg-clip-text bg-ipb-orange">Structure</span>
-              <span className="block text-3xl md:text-4xl mt-2 text-white">à Toulouse & Occitanie (31, 82, 32, 81)</span>
-            </h1>
-            <p className="text-xl text-white/70 mb-8 max-w-3xl">
-              Calcul technique signé par notre ingénieur, dimensionnement de la poutre <strong className="text-white">(IPN, HEB ou IPE)</strong>, expertise mur porteur, contrôle des ouvrages. On travaille avec des particuliers, des architectes, des marchands de biens et des entreprises du bâtiment.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/diagnostic" className="bg-ipb-orange hover:bg-ipb-orange text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
-                Demander un calcul de poutre <ArrowRight size={20} />
-              </Link>
-              <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
-                <Phone size={20} /> 05 82 95 33 75
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* Services */}
-        <section className="py-16 bg-white">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text text-center mb-12">
-              Nos prestations bureau d'études
-            </h2>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                { icon: <Calculator className="text-ipb-orange" size={28} />, title: 'Dimensionnement IPN/HEB/IPE', desc: 'Calcul des charges reprises, choix de la poutre, vérification flèche et déversement. Note de calcul signée.' },
-                { icon: <Ruler className="text-ipb-orange" size={28} />, title: 'Étude mur porteur', desc: 'Identification du caractère porteur, descente de charges, méthode d\'étaiement, plan d\'exécution.' },
-                { icon: <Building2 className="text-ipb-orange" size={28} />, title: 'Diagnostic structure', desc: 'Avant achat, après sinistre, fissures, désordres. Rapport reconnu par les assurances et les tribunaux.' },
-                { icon: <FileText className="text-ipb-orange" size={28} />, title: 'Béton armé', desc: 'Plancher, longrine, semelle, poteau. Calculs Eurocode 2, plans de ferraillage.' },
-                { icon: <Award className="text-ipb-orange" size={28} />, title: 'Mission de maîtrise d\'œuvre', desc: 'Conception, consultation entreprises, suivi de chantier, réception. Pour rénovations lourdes.' },
-                { icon: <Shield className="text-ipb-orange" size={28} />, title: 'Contre-expertise', desc: 'Confrontation avec un rapport d\'expert d\'assurance, contestation amiable ou judiciaire.' },
-              ].map(({ icon, title, desc }) => (
-                <div key={title} className="bg-ipb-cream border border-ipb-rule rounded-2xl p-6 hover:shadow-lg transition-shadow">
-                  <div className="w-14 h-14 bg-ipb-stone rounded-xl flex items-center justify-center mb-4">{icon}</div>
-                  <h3 className="font-bold text-lg text-ipb-text mb-2">{title}</h3>
-                  <p className="text-ipb-muted text-sm leading-relaxed">{desc}</p>
+        <section className="bg-ipb-cream">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12 pt-16 lg:pt-24 pb-20 lg:pb-28">
+            <div className="max-w-3xl">
+              <RevealOnScroll>
+                <Eyebrow>Bureau d'études structure intégré</Eyebrow>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.06}>
+                <h1
+                  className="font-serif text-ipb-text mb-8"
+                  style={{
+                    fontSize: 'clamp(40px, 4vw, 62px)',
+                    lineHeight: 1.06,
+                    letterSpacing: '-0.025em',
+                    fontWeight: 700,
+                  }}
+                >
+                  Bureau d'études structure&nbsp;à Toulouse.<br />
+                  <em>IPN, HEB, mur porteur.</em>
+                </h1>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.12}>
+                <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[620px]">
+                  Calcul technique signé par notre ingénieur, dimensionnement de la poutre (IPN, HEB ou IPE), expertise mur porteur, contrôle des ouvrages. Nous intervenons aux côtés des particuliers, des architectes, des marchands de biens et des entreprises du bâtiment.
+                </p>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.18}>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <MagneticButton href="/diagnostic" variant="primary">
+                    Demander un calcul de poutre
+                  </MagneticButton>
+                  <MagneticButton href="/expertise/mur-porteur" variant="ghost">
+                    Voir notre méthode
+                  </MagneticButton>
                 </div>
-              ))}
+              </RevealOnScroll>
             </div>
           </div>
         </section>
 
-        {/* Cible B2B */}
-        <section className="py-16 bg-ipb-cream">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text text-center mb-4">
-              Pour qui travaillons-nous ?
-            </h2>
-            <p className="text-lg text-ipb-muted text-center mb-12 max-w-3xl mx-auto">
-              Particuliers, mais aussi architectes d'intérieur, marchands de biens et agences immobilières s'appuient sur notre institut.
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              <Link href="/partenaires/architectes-interieur" className="block bg-white border-2 border-ipb-rule hover:border-orange-300 rounded-2xl p-6 transition-all hover:shadow-xl group">
-                <h3 className="font-bold text-xl text-ipb-text mb-2 group-hover:text-ipb-orange">Architectes d'intérieur & décorateurs</h3>
-                <p className="text-ipb-muted text-sm leading-relaxed">Vos projets « espace ouvert » nécessitent une étude structure ? Nous sommes votre partenaire technique sous-traité, avec décennale active. <span className="text-ipb-orange font-semibold">En savoir plus →</span></p>
-              </Link>
-
-              <Link href="/partenaires/marchands-de-biens" className="block bg-white border-2 border-ipb-rule hover:border-orange-300 rounded-2xl p-6 transition-all hover:shadow-xl group">
-                <h3 className="font-bold text-xl text-ipb-text mb-2 group-hover:text-ipb-orange">Marchands de biens & investisseurs</h3>
-                <p className="text-ipb-muted text-sm leading-relaxed">Acheter un T3 toulousain pour ouvrir cuisine + salon avant revente ? Nous chiffrons et exécutons en délai serré. <span className="text-ipb-orange font-semibold">En savoir plus →</span></p>
-              </Link>
-
-              <Link href="/partenaires/agences-immobilieres" className="block bg-white border-2 border-ipb-rule hover:border-orange-300 rounded-2xl p-6 transition-all hover:shadow-xl group">
-                <h3 className="font-bold text-xl text-ipb-text mb-2 group-hover:text-ipb-orange">Agences immobilières</h3>
-                <p className="text-ipb-muted text-sm leading-relaxed">Une vente bloquée à cause d'une fissure ? Notre rapport rassure l'acquéreur et débloque la transaction. <span className="text-ipb-orange font-semibold">En savoir plus →</span></p>
-              </Link>
-
-              <div className="bg-ipb-navy text-white border-2 border-slate-800 rounded-2xl p-6">
-                <h3 className="font-bold text-xl text-white mb-2">Particuliers</h3>
-                <p className="text-white/70 text-sm leading-relaxed mb-4">Votre projet personnel : ouverture mur porteur, baie vitrée, agrafage de fissures, expertise avant achat.</p>
-                <Link href="/diagnostic" className="text-ipb-orange-l font-semibold hover:text-ipb-orange-l">Lancer mon diagnostic →</Link>
+        {/* PRESTATIONS */}
+        <section className="bg-ipb-white py-24 lg:py-32">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-16 max-w-2xl">
+                <Eyebrow>Nos prestations</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Six missions structurelles,<br /><em>une même rigueur Eurocode.</em>
+                </h2>
               </div>
-            </div>
-          </div>
-        </section>
+            </RevealOnScroll>
 
-        {/* Garanties */}
-        <section className="py-16 bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-extrabold text-ipb-text mb-8">Nos garanties</h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                { icon: <Shield className="text-blue-600" size={32} />, label: 'Décennale AXA France', desc: 'Police n° 10564321 — couvre étude + travaux' },
-                { icon: <CheckCircle className="text-emerald-600" size={32} />, label: 'Calcul technique signé', desc: 'Signé par notre ingénieur, valable face à une assurance ou un tribunal' },
-                { icon: <FileText className="text-ipb-orange" size={32} />, label: 'Dossier complet à la livraison', desc: 'Tous les documents du chantier vous sont remis' },
-              ].map(({ icon, label, desc }) => (
-                <div key={label} className="flex flex-col items-center p-6">
-                  <div className="w-16 h-16 bg-ipb-cream rounded-2xl flex items-center justify-center mb-4">{icon}</div>
-                  <p className="font-bold text-ipb-text mb-1">{label}</p>
-                  <p className="text-ipb-muted text-sm">{desc}</p>
-                </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-ipb-rule border border-ipb-rule">
+              {prestations.map((p, i) => (
+                <RevealOnScroll key={p.titre} delay={i * 0.04}>
+                  <article className="bg-ipb-white p-8 lg:p-10 h-full flex flex-col">
+                    <span className="font-serif text-ipb-orange text-[12px] font-bold tracking-[0.18em] mb-4">
+                      0{i + 1}
+                    </span>
+                    <h3 className="font-serif text-ipb-text font-bold text-[20px] leading-tight mb-3">
+                      {p.titre}
+                    </h3>
+                    <p className="text-[14px] leading-[1.85] font-light text-ipb-muted">
+                      {p.desc}
+                    </p>
+                  </article>
+                </RevealOnScroll>
               ))}
             </div>
           </div>
         </section>
 
-        {/* CTA Final */}
-        <section className="py-16 bg-ipb-orange text-white">
-          <div className="max-w-4xl mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Besoin du calcul d'une poutre ?</h2>
-            <p className="text-xl text-ipb-orange-l mb-8">Réponse d'un ingénieur structure sous 24h. Devis gratuit, sans engagement.</p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link href="/diagnostic" className="bg-white text-ipb-orange px-10 py-5 rounded-xl font-bold text-lg hover:bg-ipb-stone flex items-center justify-center gap-2 shadow-xl">
-                Lancer mon devis <ArrowRight size={20} />
-              </Link>
-              <a href="tel:0582953375" className="bg-orange-700 hover:bg-orange-800 px-8 py-5 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
-                <Phone size={20} /> 05 82 95 33 75
-              </a>
+        {/* CIBLES B2B + PARTICULIERS */}
+        <section className="bg-ipb-cream py-24 lg:py-32">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-16 max-w-2xl">
+                <Eyebrow>Pour qui travaillons-nous</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Particuliers, architectes,<br /><em>marchands de biens, agences.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+              {[
+                {
+                  href: '/partenaires/architectes-interieur',
+                  titre: "Architectes d'intérieur & décorateurs",
+                  desc: "Vos projets « espace ouvert » nécessitent une étude structure : nous sommes votre partenaire technique sous-traité, avec décennale active et calendrier respecté.",
+                },
+                {
+                  href: '/partenaires/marchands-de-biens',
+                  titre: 'Marchands de biens & investisseurs',
+                  desc: "Acheter un T3 toulousain pour ouvrir cuisine et salon avant revente : nous chiffrons et exécutons en délai serré, dossier complet remis à la livraison.",
+                },
+                {
+                  href: '/partenaires/agences-immobilieres',
+                  titre: 'Agences immobilières',
+                  desc: "Une vente bloquée à cause d'une fissure : notre rapport rassure l'acquéreur, débloque la transaction, et le diagnostic est déductible des travaux.",
+                },
+                {
+                  href: '/diagnostic',
+                  titre: 'Particuliers',
+                  desc: "Votre projet personnel : ouverture de mur porteur, création de baie vitrée, agrafage de fissures, expertise avant achat. Un seul interlocuteur du calcul à la livraison.",
+                },
+              ].map((cible, i) => (
+                <RevealOnScroll key={cible.titre} delay={i * 0.06}>
+                  <Link
+                    href={cible.href}
+                    className="block bg-ipb-white border border-ipb-rule rounded-[6px] p-8 lg:p-10 h-full hover:shadow-[0_12px_36px_rgba(11,24,38,0.07)] transition-shadow duration-500"
+                  >
+                    <h3 className="font-serif text-ipb-text font-bold text-[22px] leading-tight mb-4">
+                      {cible.titre}
+                    </h3>
+                    <p className="text-[14px] leading-[1.85] font-light text-ipb-muted mb-6">
+                      {cible.desc}
+                    </p>
+                    <span className="text-[13px] text-ipb-orange font-medium">
+                      En savoir plus →
+                    </span>
+                  </Link>
+                </RevealOnScroll>
+              ))}
             </div>
           </div>
         </section>
+
+        {/* GARANTIES */}
+        <section className="bg-ipb-navy py-24 lg:py-28">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="mb-16 max-w-2xl">
+                <Eyebrow variant="dark">Nos garanties</Eyebrow>
+                <h2 className="font-serif text-white" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Un calcul opposable,<br /><em>une décennale active.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <div className="grid md:grid-cols-3 gap-12 lg:gap-8">
+              {[
+                {
+                  label: 'Décennale AXA France',
+                  desc: "Police n° 10564321 — couvre l'étude et les travaux exécutés derrière. Attestation remise à chaque devis.",
+                },
+                {
+                  label: 'Calcul technique signé',
+                  desc: "Note de calcul signée par notre ingénieur structure, opposable face à une assurance, un syndic ou un tribunal.",
+                },
+                {
+                  label: 'Dossier complet à la livraison',
+                  desc: "Plans d'exécution, notes de calcul, attestations, photos de chantier. Tous les documents techniques vous sont remis.",
+                },
+              ].map((g, i) => (
+                <RevealOnScroll key={g.label} delay={i * 0.06}>
+                  <div className="lg:border-l lg:border-white/10 lg:pl-8">
+                    <h3 className="font-serif text-white font-bold text-[20px] leading-tight mb-3">
+                      {g.label}
+                    </h3>
+                    <p className="text-[14px] leading-[1.85] font-light text-white/65">
+                      {g.desc}
+                    </p>
+                  </div>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="bg-ipb-cream py-24 lg:py-32">
+          <div className="max-w-4xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="text-center mb-16">
+                <Eyebrow className="justify-center">Questions fréquentes</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Sur le bureau d'études<br /><em>et les notes de calcul.</em>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <div className="space-y-3">
+              {faqItems.map((item, i) => (
+                <RevealOnScroll key={item.question} delay={i * 0.04}>
+                  <details className="group bg-ipb-white border border-ipb-rule rounded-[6px]">
+                    <summary className="cursor-pointer list-none flex items-start justify-between gap-6 p-6 lg:p-7">
+                      <h3 className="font-serif text-ipb-text font-bold text-[17px] leading-tight pr-2">
+                        {item.question}
+                      </h3>
+                      <span className="text-ipb-orange text-2xl leading-none flex-shrink-0 transition-transform group-open:rotate-45 font-light" aria-hidden="true">+</span>
+                    </summary>
+                    <div className="px-6 lg:px-7 pb-7 -mt-2 text-[14px] leading-[1.85] font-light text-ipb-muted">
+                      {item.answer}
+                    </div>
+                  </details>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <CtaFinal />
       </main>
+
       <Footer />
     </div>
   );

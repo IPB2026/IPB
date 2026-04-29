@@ -89,8 +89,8 @@ export default function NotreExpertPage() {
                     fontWeight: 700,
                   }}
                 >
-                  Ludovic D.<br />
-                  <em>Fondateur, ingénieur structure.</em>
+                  Ludovic D., ingénieur structure à Toulouse.<br />
+                  <em>Fondateur de l'institut IPB.</em>
                 </h1>
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
