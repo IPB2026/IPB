@@ -62,6 +62,12 @@ function calculateEstimate(opts: {
 
   // Calibrage : prix marché constatés sur Toulouse / Occitanie 2026.
   // Sources : 850+ chantiers IPB et observations marché concurrentiel.
+  //
+  // ── Positionnement IPB ────────────────────────────────────────────
+  // Les coefficients ci-dessous reflètent le marché. On applique ensuite
+  // PRICE_INDEX = 0.85 pour positionner IPB ~15% sous les concurrents.
+  // ──────────────────────────────────────────────────────────────────
+  const PRICE_INDEX = 0.85;
 
   // Coefficient nature du mur (effort de découpe + scellement)
   const murCoef: Record<MurType, number> = {
@@ -80,19 +86,24 @@ function calculateEstimate(opts: {
 
   const surface = largeur * hauteur;
 
-  // Étude structure : entre 500 et 1500€ selon complexité (étage + mur)
-  const etude = Math.round(500 + (etageCoef[etage] - 0.85) * 1000 + (murCoef[mur] - 0.85) * 500);
+  // Étude structure : prix marché entre 500 et 1500€ selon complexité
+  const etudeBrut = 500 + (etageCoef[etage] - 0.85) * 1000 + (murCoef[mur] - 0.85) * 500;
 
-  // Étaiement : entre 300 et 800€ selon largeur
-  const etaiement = Math.round(300 + largeur * 130);
+  // Étaiement : prix marché entre 300 et 800€ selon largeur
+  const etaiementBrut = 300 + largeur * 130;
 
-  // Ouverture + pose poutre : prix par mètre linéaire selon mur,
-  // multiplié par largeur, ajusté par étage
+  // Ouverture + pose poutre : prix marché par mètre linéaire selon mur
   const prixMl = mur === 'pierre' ? 1800 : mur === 'brique' ? 1400 : mur === 'parpaing' ? 1100 : 1500;
-  const ouverture = Math.round(prixMl * largeur * etageCoef[etage]);
+  const ouvertureBrut = prixMl * largeur * etageCoef[etage];
 
-  // Finitions : 800 à 2500€ selon surface
-  const finitions = Math.round(600 + surface * 350);
+  // Finitions : prix marché 800 à 2500€ selon surface
+  const finitionsBrut = 600 + surface * 350;
+
+  // Application du positionnement IPB (-15% vs marché)
+  const etude = Math.round(etudeBrut * PRICE_INDEX);
+  const etaiement = Math.round(etaiementBrut * PRICE_INDEX);
+  const ouverture = Math.round(ouvertureBrut * PRICE_INDEX);
+  const finitions = Math.round(finitionsBrut * PRICE_INDEX);
 
   const total = etude + etaiement + ouverture + finitions;
   // Fourchette ±20% autour du total

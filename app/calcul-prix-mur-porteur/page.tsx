@@ -77,13 +77,19 @@ export default function CalculatorPage() {
           </div>
         </section>
 
-        {/* GUIDE DES PRIX (zone éditoriale en amont du calculateur)
-            ─────────────────────────────────────────────────────────
-            SXO : Google rank des guides de prix avec tableaux sur cette
-            requête. On expose donc les fourchettes immédiatement, avant
-            le calculateur, pour matcher l'intention "informationnelle"
-            avant de proposer l'outil interactif "transactionnel". */}
-        <section className="bg-ipb-cream pt-2 pb-12">
+        {/* CALCULATEUR — placé en premier pour que l'utilisateur démarre tout
+            de suite l'estimation personnalisée. Le tableau de prix moyens
+            arrive ensuite comme repère/comparaison. */}
+        <section className="bg-ipb-cream pb-12">
+          <div className="max-w-2xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll delay={0.06}>
+              <CalculatorClient />
+            </RevealOnScroll>
+          </div>
+        </section>
+
+        {/* GUIDE DES PRIX (zone éditoriale après le calculateur) */}
+        <section className="bg-ipb-cream pb-20 lg:pb-28">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
             <RevealOnScroll>
               <h2
@@ -109,27 +115,27 @@ export default function CalculatorPage() {
                     <tr className="border-b border-ipb-rule">
                       <td className="py-3 pr-4 font-medium text-ipb-text">Cuisine ouverte standard (RDC seul, mur brique foraine)</td>
                       <td className="py-3 pr-4">2,5 m × 2,2 m</td>
-                      <td className="py-3 text-right font-bold text-ipb-text">4 000 – 7 000 €</td>
+                      <td className="py-3 text-right font-bold text-ipb-text">3 400 – 6 000 €</td>
                     </tr>
                     <tr className="border-b border-ipb-rule">
                       <td className="py-3 pr-4 font-medium text-ipb-text">Suite parentale (RDC ou étage, mur parpaing)</td>
                       <td className="py-3 pr-4">3,0 m × 2,2 m</td>
-                      <td className="py-3 text-right font-bold text-ipb-text">6 000 – 10 000 €</td>
+                      <td className="py-3 text-right font-bold text-ipb-text">5 100 – 8 500 €</td>
                     </tr>
                     <tr className="border-b border-ipb-rule">
                       <td className="py-3 pr-4 font-medium text-ipb-text">Plateau loft (étage habité au-dessus)</td>
                       <td className="py-3 pr-4">4,0 m × 2,4 m</td>
-                      <td className="py-3 text-right font-bold text-ipb-text">9 000 – 14 000 €</td>
+                      <td className="py-3 text-right font-bold text-ipb-text">7 700 – 12 000 €</td>
                     </tr>
                     <tr className="border-b border-ipb-rule">
                       <td className="py-3 pr-4 font-medium text-ipb-text">Création de baie vitrée (mur extérieur porteur)</td>
                       <td className="py-3 pr-4">3,0 m × 2,4 m</td>
-                      <td className="py-3 text-right font-bold text-ipb-text">10 000 – 18 000 €</td>
+                      <td className="py-3 text-right font-bold text-ipb-text">8 500 – 15 300 €</td>
                     </tr>
                     <tr>
                       <td className="py-3 pr-4 font-medium text-ipb-text">Grande baie vitrée signature</td>
                       <td className="py-3 pr-4">5,0 m × 2,4 m</td>
-                      <td className="py-3 text-right font-bold text-ipb-text">15 000 – 25 000 €</td>
+                      <td className="py-3 text-right font-bold text-ipb-text">12 750 – 21 250 €</td>
                     </tr>
                   </tbody>
                 </table>
@@ -148,18 +154,15 @@ export default function CalculatorPage() {
                 <li><strong className="text-ipb-text not-italic">Les démarches administratives</strong> : la déclaration préalable de travaux est suffisante dans la plupart des cas. En copropriété, l'assemblée générale ajoute 4 à 8 semaines de délai.</li>
               </ul>
 
-              <p className="text-[14px] leading-[1.85] font-light text-ipb-muted">
-                Pour une estimation chiffrée adaptée à <strong className="text-ipb-text not-italic">votre</strong> projet, l'outil ci-dessous vous donne une fourchette précise en deux minutes.
-              </p>
-            </RevealOnScroll>
-          </div>
-        </section>
-
-        {/* CALCULATEUR */}
-        <section className="bg-ipb-cream pb-20 lg:pb-28">
-          <div className="max-w-2xl mx-auto px-6 lg:px-12">
-            <RevealOnScroll delay={0.06}>
-              <CalculatorClient />
+              {/* Encadré différenciation : positionnement IPB vs marché */}
+              <div className="bg-ipb-white border-l-2 border-ipb-orange p-6 rounded-r-[3px] mb-2">
+                <p className="text-[10px] text-ipb-orange uppercase tracking-[0.18em] font-semibold mb-3">
+                  Note technique · l'approche IPB
+                </p>
+                <p className="text-[14px] leading-[1.85] font-light text-ipb-muted">
+                  Pour les ouvertures de petite portée (jusqu'à 2,5 m, charges modérées), une intervention sans note de calcul formelle est techniquement possible et fréquente sur le marché. <strong className="text-ipb-text not-italic">IPB inclut systématiquement une étude technique signée</strong> dans toutes ses interventions, garantie décennale AXA oblige.
+                </p>
+              </div>
             </RevealOnScroll>
           </div>
         </section>
