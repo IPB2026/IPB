@@ -153,6 +153,16 @@ export default function CalculatorPage() {
                 <li><strong className="text-ipb-text not-italic">Ce qui se trouve au-dessus</strong> : un seul niveau habité allège l'étaiement ; deux étages ou des combles aménagés exigent un dimensionnement renforcé.</li>
                 <li><strong className="text-ipb-text not-italic">Les démarches administratives</strong> : la déclaration préalable de travaux est suffisante dans la plupart des cas. En copropriété, l'assemblée générale ajoute 4 à 8 semaines de délai.</li>
               </ul>
+
+              {/* Encadré différenciation : positionnement IPB vs marché */}
+              <div className="bg-ipb-white border-l-2 border-ipb-orange p-6 rounded-r-[3px] mb-2">
+                <p className="text-[10px] text-ipb-orange uppercase tracking-[0.18em] font-semibold mb-3">
+                  Note technique · l'approche IPB
+                </p>
+                <p className="text-[14px] leading-[1.85] font-light text-ipb-muted">
+                  Pour les ouvertures de petite portée (jusqu'à 2,5 m, charges modérées), une intervention sans note de calcul formelle est techniquement possible et fréquente sur le marché. <strong className="text-ipb-text not-italic">IPB inclut systématiquement une étude technique signée</strong> dans toutes ses interventions, garantie décennale AXA oblige.
+                </p>
+              </div>
             </RevealOnScroll>
           </div>
         </section>
