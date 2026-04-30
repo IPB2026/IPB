@@ -32,7 +32,7 @@ const faqs = [
   },
   {
     q: "Quelle est la différence entre agrafage et micropieux ?",
-    a: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables — solution adaptée à 90 % des fissures structurelles. Les micropieux reprennent les fondations en profondeur — solution lourde réservée aux tassements actifs majeurs (au-delà de 10 cm). Notre diagnostic détermine laquelle s'impose : un agrafage coûte 12 000 à 18 000 €, des micropieux 40 000 à 60 000 €.",
+    a: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables — solution adaptée à 90 % des fissures structurelles. Les micropieux reprennent les fondations en profondeur — intervention lourde réservée aux tassements actifs majeurs (au-delà de 10 cm). Comptez 12 000 à 18 000 € pour un agrafage, 40 000 à 60 000 € pour des micropieux. Notre institut réalise l'agrafage structurel ; pour les rares cas qui nécessitent réellement des micropieux, nous orientons vers une entreprise spécialisée partenaire après diagnostic.",
   },
   {
     q: "Faut-il déclarer une ouverture de mur porteur en mairie ?",

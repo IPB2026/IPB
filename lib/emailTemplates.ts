@@ -185,7 +185,7 @@ export function j3CaseStudy(ctx: PathContext): string {
         ? "Pour vous donner une idée concrète de ce qu'on fait : il y a six mois, une maison T4 à Tournefeuille (110 m²) présentait une fissure traversante en escalier de 12 mm sur la façade nord-est. Tassement différentiel reconnu en catastrophe naturelle 2022."
         : "Pour vous donner une idée concrète de ce qu'on fait : il y a six mois, un T3 de 60 m² à Saint-Cyprien avait sa cuisine cloisonnée de 9 m² séparée du séjour par un mur porteur de 4,2 mètres en briques foraines.")}
       ${para(isFissure
-        ? "Notre intervention : 14 agrafes inox + 6 micropieux Ø 178 mm. Chantier de 8 jours. Le rapport a été transmis à l'expert d'assurance, l'indemnisation a couvert 92% du montant total."
+        ? "Notre intervention : agrafage structurel complet (18 agrafes inox) avec ravalement souple. Chantier de 8 jours. Le rapport a été transmis à l'expert d'assurance, l'indemnisation a couvert 92% du montant total."
         : "Notre intervention : étude technique signée, étaiement, pose d'une poutre HEB 220. Chantier de 5 jours. Le bien a été remis en vente trois semaines après — vendu en 21 jours avec une plus-value de 28 000 € pour le propriétaire.")}
       ${para('Chaque dossier est différent, mais le principe reste le même : poser les bons éléments avant d\'engager des travaux.')}
       <p style="margin: 28px 0;">

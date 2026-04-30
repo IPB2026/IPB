@@ -32,7 +32,7 @@ const cases = [
     facts: [
       "Fissure traversante en escalier de 12 mm sur la façade nord-est",
       "Tassement différentiel reconnu en catastrophe naturelle 2022",
-      "14 agrafes inox + 6 micropieux Ø178 mm",
+      "Agrafage structurel complet (18 agrafes inox) + ravalement souple",
     ],
     constat: "Le rapport a été transmis à l'expert d'assurance. L'indemnisation a couvert 92 % du chantier.",
   },

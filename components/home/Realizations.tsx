@@ -33,7 +33,7 @@ export function Realizations() {
               <span className="text-xs text-slate-500 font-bold flex items-center gap-1"><MapPin size={12} /> Balma (31)</span>
             </div>
             <h3 className="font-bold text-xl text-slate-900 group-hover:text-orange-600 transition">Pavillon des années 80 sauvé de la démolition</h3>
-            <p className="text-sm text-slate-500 mt-2">Fissures structurelles stabilisées par agrafage complet + ravalement souple. Maison sécurisée, économie de 25 000€ vs micropieux.</p>
+            <p className="text-sm text-slate-500 mt-2">Fissures structurelles stabilisées par agrafage complet + ravalement souple. Maison sécurisée, alternative économique à une reprise en sous-œuvre.</p>
           </div>
 
           {/* Case 2 - Humidité */}

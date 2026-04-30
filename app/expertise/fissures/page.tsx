@@ -13,7 +13,7 @@ import { ExpertiseFissuresBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
   title: 'Diagnostic et Traitement Fissures · Toulouse · AXA',
-  description: "Diagnostic instrumenté, agrafage, micropieux. Rapport opposable assurance. Décennale AXA. Toulouse, Montauban. ☎ 05 82 95 33 75",
+  description: "Diagnostic instrumenté, agrafage structurel. Rapport opposable assurance. Décennale AXA. Toulouse, Montauban. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures toulouse',
     'expertise fissure toulouse',
@@ -34,7 +34,7 @@ export const metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/fissures' },
   openGraph: {
     title: 'Diagnostic et Traitement Fissures · Toulouse · IPB',
-    description: "Diagnostic instrumenté, agrafage, micropieux. Rapport opposable assurance. Décennale AXA.",
+    description: "Diagnostic instrumenté, agrafage structurel. Rapport opposable assurance. Décennale AXA.",
     url: 'https://www.ipb-expertise.fr/expertise/fissures',
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
     locale: 'fr_FR',
@@ -241,7 +241,7 @@ export default function FissuresPage() {
                   {[
                     { titre: 'Diagnostic sur site', desc: 'Visite par notre expert sous 7 jours en moyenne. Mesure au fissuromètre, lecture du bâti, identification de la cause (sécheresse, tassement, défaut de chaînage).' },
                     { titre: 'Rapport opposable', desc: 'Document écrit reconnu par les assurances et les tribunaux. Photos, mesures, cause identifiée, préconisations chiffrées.' },
-                    { titre: 'Choix de la solution', desc: "Agrafage structurel pour stabiliser le mur. Reprise en sous-œuvre par micropieux pour les tassements actifs. Le choix dépend du diagnostic, jamais d'une solution préconçue." },
+                    { titre: 'Choix de la solution', desc: "Agrafage structurel pour stabiliser le mur — solution adaptée à 90 % des cas. Pour les rares tassements actifs nécessitant une reprise en sous-œuvre, orientation vers un partenaire spécialisé. Le choix dépend du diagnostic, jamais d'une solution préconçue." },
                     { titre: 'Travaux par nos équipes', desc: 'Exécution sous garantie décennale AXA. Chantier propre, dans les délais annoncés. Tous les documents vous sont remis à la livraison.' },
                   ].map((etape, i) => (
                     <RevealOnScroll key={etape.titre} delay={0.08 + i * 0.06}>

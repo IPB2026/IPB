@@ -108,7 +108,7 @@ const localBusinessSchema = {
   "name": "IPB - Institut de Pathologie du Bâtiment",
   "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
   "foundingDate": "2019",
-  "description": "Institut indépendant en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Expertise fissures (agrafage, micropieux), ouverture de mur porteur et création de baie vitrée (étude structure, pose poutre IPN/HEB), traitement de l'humidité (injection résine, cuvelage). Étude et travaux sous garantie décennale. Toulouse, Montauban, Auch et environs.",
+  "description": "Institut indépendant en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Expertise fissures (agrafage structurel), ouverture de mur porteur et création de baie vitrée (étude structure, pose poutre IPN/HEB), traitement de l'humidité (injection résine, cuvelage). Étude et travaux sous garantie décennale. Toulouse, Montauban, Auch et environs.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "54 avenue Jean Jaurès",
@@ -158,7 +158,7 @@ const localBusinessSchema = {
         "itemOffered": {
           "@type": "Service",
           "name": "Expertise et traitement des fissures structurelles",
-          "description": "Diagnostic structure, agrafage et harpage, reprise en sous-œuvre par micropieux. Garantie décennale."
+          "description": "Diagnostic structure, agrafage structurel et harpage. Garantie décennale."
         }
       },
       {

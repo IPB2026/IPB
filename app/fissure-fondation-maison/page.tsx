@@ -8,8 +8,8 @@ import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, AlertTriangle, Home, ChevronRight, Shield, CheckCircle, Clock, TrendingDown, Layers } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Fissure Fondation Maison · Agrafage ou Micropieux · Toulouse',
-  description: "Fissures fondations ? Comparatif agrafage (8-15k€) vs micropieux (25-50k€). Expert RGA Toulouse. ☎ 05 82 95 33 75",
+  title: 'Fissure Fondation Maison · Agrafage Structurel · Toulouse',
+  description: "Fissures fondations ? Diagnostic et agrafage structurel à Toulouse. Comparatif des solutions du marché. Décennale AXA. ☎ 05 82 95 33 75",
   keywords: ['fissure fondation', 'tassement fondation', 'reprise en sous-oeuvre', 'micropieux', 'agrafage fissures'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/fissure-fondation-maison' },
 };

@@ -14,7 +14,7 @@ import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
   title: 'Expert Fissures Toulouse 31 · Diagnostic 48h · AXA',
-  description: "Diagnostic fissures à Toulouse : agrafage, micropieux, rapport opposable assurance. 70 dossiers/an. Décennale AXA. Sous 48h. ☎ 05 82 95 33 75",
+  description: "Diagnostic fissures à Toulouse : agrafage structurel, rapport opposable assurance. 70 dossiers/an. Décennale AXA. Sous 48h. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures toulouse',
     'expert fissure toulouse',
@@ -27,14 +27,13 @@ export const metadata: Metadata = {
     'tassement différentiel toulouse',
     'sol argileux fissures toulouse',
     'catastrophe naturelle sécheresse toulouse',
-    'micropieux toulouse',
     'rapport fissure assurance toulouse',
     'institut pathologie bâtiment toulouse',
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31' },
   openGraph: {
     title: 'Expert Fissures Toulouse · Décennale AXA · IPB',
-    description: "Diagnostic, agrafage, micropieux. Rapport opposable assurance. Décennale AXA. 70 dossiers/an.",
+    description: "Diagnostic, agrafage structurel, rapport opposable assurance. Décennale AXA. 70 dossiers/an.",
     url: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31',
     type: 'website',
     images: [{
@@ -72,7 +71,7 @@ const faqItems = [
   },
   {
     question: "Quelle est la différence entre agrafage et micropieux ?",
-    answer: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables (12 000 à 18 000 €). Les micropieux reprennent les fondations en profondeur (40 000 à 60 000 €) — solution lourde réservée aux tassements actifs majeurs. Notre diagnostic détermine laquelle s'impose.",
+    answer: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables (12 000 à 18 000 €). Les micropieux reprennent les fondations en profondeur (40 000 à 60 000 €) — intervention lourde réservée aux tassements actifs majeurs. Notre institut réalise l'agrafage structurel ; pour les rares cas nécessitant des micropieux, nous orientons vers un partenaire spécialisé après diagnostic.",
   },
   {
     question: "Quels sont les délais d'intervention ?",
@@ -207,7 +206,7 @@ export default function ExpertFissuresToulousePage() {
                 </RevealOnScroll>
                 <RevealOnScroll delay={0.18}>
                   <p>
-                    Notre institut est spécialisé dans le diagnostic de ces désordres : nous identifions la cause exacte, mesurons l'évolution, et préconisons la solution la plus adaptée — agrafage dans 90 % des cas, micropieux pour les tassements majeurs.
+                    Notre institut est spécialisé dans le diagnostic de ces désordres et dans la mise en œuvre de l'agrafage structurel — solution suffisante dans 90 % des cas. Pour les rares tassements majeurs nécessitant une reprise en sous-œuvre par micropieux, nous orientons vers un partenaire spécialisé après diagnostic.
                   </p>
                 </RevealOnScroll>
               </div>
