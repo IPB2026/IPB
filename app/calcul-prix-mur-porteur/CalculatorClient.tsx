@@ -18,7 +18,7 @@ import { FormError } from '@/components/ui/FormError';
  * Cf. PLAN_LEADGEN.md §3.2
  */
 
-type Step = 0 | 1 | 2 | 3 | 4 | 5;
+type Step = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
 type ProjectType = 'cuisine_ouverte' | 'baie_jardin' | 'suite_parentale' | 'autre';
 type MurType = 'brique' | 'parpaing' | 'pierre' | 'inconnu';
@@ -127,7 +127,7 @@ export function CalculatorClient() {
   const [mur, setMur] = useState<MurType | null>(null);
   const [etage, setEtage] = useState<EtageType | null>(null);
 
-  const [showLeadForm, setShowLeadForm] = useState(false);
+  const [leadName, setLeadName] = useState('');
   const [leadEmail, setLeadEmail] = useState('');
   const [leadPhone, setLeadPhone] = useState('');
   const [leadCity, setLeadCity] = useState('');
@@ -140,14 +140,17 @@ export function CalculatorClient() {
     [largeur, hauteur, mur, etage]
   );
 
-  const totalSteps = 4;
-  const progress = (step / totalSteps) * 100;
+  // 5 étapes : 4 questions sur le projet + 1 capture lead
+  const totalSteps = 5;
+  const progress = Math.min((step / totalSteps) * 100, 100);
 
   const handleStart = () => {
     trackCalculatorStart();
     setStep(1);
   };
 
+  // Après l'étape 4 (étage), on passe à l'étape 5 = capture lead
+  // Le résultat n'est révélé qu'après soumission (étape 6 = écran résultat)
   const handleViewResult = () => {
     if (estimate) {
       trackCalculatorComplete(estimate.min, estimate.max);
@@ -161,6 +164,10 @@ export function CalculatorClient() {
     setLeadError(null);
 
     // Validation locale avant envoi
+    if (!leadName.trim() || leadName.trim().length < 2) {
+      setLeadError('Merci de renseigner votre nom complet.');
+      return;
+    }
     if (!leadEmail.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(leadEmail.trim())) {
       setLeadError("Adresse email invalide. Vérifiez qu'elle contient un \"@\" et un domaine.");
       return;
@@ -171,9 +178,10 @@ export function CalculatorClient() {
     setSubmitting(true);
     try {
       const result = await submitCalculatorLead({
-        email: leadEmail,
-        phone: leadPhone,
-        city: leadCity,
+        name: leadName.trim(),
+        email: leadEmail.trim(),
+        phone: leadPhone.trim() || undefined,
+        city: leadCity.trim() || undefined,
         project,
         largeur,
         hauteur,
@@ -186,6 +194,7 @@ export function CalculatorClient() {
       if (result.success) {
         trackCalculatorLeadCapture(leadEmail);
         setSubmitted(true);
+        setStep(6); // Révéler l'estimation après capture lead
       } else {
         setLeadError(result.message || 'Une erreur est survenue. Vous pouvez nous appeler au 05 82 95 33 75.');
       }
@@ -203,13 +212,16 @@ export function CalculatorClient() {
     return (
       <div className="bg-ipb-white border border-ipb-rule rounded-[6px] p-6 md:p-10 lg:p-12 text-center">
         <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-4">
-          Outil interactif · sans inscription
+          Outil interactif · estimation gratuite
         </p>
         <h2 className="font-serif text-ipb-text mb-6" style={{ fontSize: 'clamp(28px, 2.6vw, 40px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}>
           Estimez le prix de votre<br /><em>ouverture de mur porteur.</em>
         </h2>
-        <p className="text-[15px] leading-[1.85] font-light text-ipb-muted max-w-xl mx-auto mb-10">
-          Quatre questions, deux minutes. Vous obtenez une fourchette précise basée sur les chantiers récents de l’institut à Toulouse et alentour.
+        <p className="text-[15px] leading-[1.85] font-light text-ipb-muted max-w-xl mx-auto mb-6">
+          Quatre questions sur votre projet, puis vos coordonnées pour recevoir l'estimation détaillée par email. Deux minutes au total.
+        </p>
+        <p className="text-[12px] text-ipb-light max-w-md mx-auto mb-10">
+          Vos données ne sont utilisées que pour vous répondre. Aucune relance commerciale.
         </p>
         <MagneticButton onClick={handleStart} variant="primary">
           Démarrer l'estimation
@@ -219,29 +231,97 @@ export function CalculatorClient() {
   }
 
   // ─────────────────────────────────────────────────────────────
-  // Écran résultat (step 5)
+  // Étape 5 — Capture lead (obligatoire avant le résultat)
   // ─────────────────────────────────────────────────────────────
   if (step === 5 && estimate && project) {
-    if (submitted) {
-      return (
-        <div className="bg-ipb-white border border-ipb-rule rounded-[6px] p-6 md:p-10 lg:p-12 text-center">
-          <div className="w-12 h-12 rounded-full border border-ipb-orange flex items-center justify-center mx-auto mb-6">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M5 10L8.5 13.5L15 7" stroke="var(--ipb-orange)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    return (
+      <form onSubmit={handleLeadSubmit} className="bg-ipb-white border border-ipb-rule rounded-[6px] p-6 md:p-10 lg:p-12 space-y-5">
+        {/* Teaser : estimation prête */}
+        <div className="text-center pb-6 border-b border-ipb-rule">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-ipb-orange/15 border border-ipb-orange/30 mb-4">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C8601F" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M9 11l3 3L22 4" />
+              <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
             </svg>
           </div>
-          <h2 className="font-serif text-ipb-text font-bold text-[28px] leading-tight mb-3">
-            Estimation envoyée.
+          <p className="text-[10px] text-ipb-orange uppercase tracking-[0.18em] font-semibold mb-3">
+            Étape finale · Votre estimation est prête
+          </p>
+          <h2 className="font-serif text-ipb-text mb-3" style={{ fontSize: 'clamp(22px, 2.4vw, 30px)', lineHeight: 1.2, letterSpacing: '-0.022em', fontWeight: 700 }}>
+            Renseignez vos coordonnées<br className="hidden sm:block" /><em>pour recevoir le détail.</em>
           </h2>
-          <p className="text-[14px] leading-[1.85] font-light text-ipb-muted max-w-md mx-auto">
-            Vous recevez le détail par email dans quelques minutes. Notre institut vous contactera sous 24 heures pour un échange technique si vous le souhaitez.
+          <p className="text-[13px] md:text-[14px] font-light text-ipb-muted max-w-md mx-auto">
+            Vous voyez l'estimation immédiatement et vous recevez le récapitulatif par email. Pas de relance commerciale automatique.
           </p>
         </div>
-      );
-    }
 
+        {/* Champs */}
+        <div>
+          <label htmlFor="calc-lead-name" className="block text-[10px] uppercase tracking-[0.14em] text-ipb-muted font-medium mb-2">Nom et prénom</label>
+          <input id="calc-lead-name" type="text" required minLength={2} value={leadName} onChange={e => setLeadName(e.target.value)} autoComplete="name" placeholder="Marie Dupont"
+            className="w-full px-4 py-3 border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-[14px] font-light focus:outline-none focus:border-ipb-orange transition-colors" />
+        </div>
+        <div>
+          <label htmlFor="calc-lead-email" className="block text-[10px] uppercase tracking-[0.14em] text-ipb-muted font-medium mb-2">Email</label>
+          <input id="calc-lead-email" type="email" required value={leadEmail} onChange={e => setLeadEmail(e.target.value)} autoComplete="email" placeholder="vous@exemple.fr"
+            className="w-full px-4 py-3 border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-[14px] font-light focus:outline-none focus:border-ipb-orange transition-colors" />
+        </div>
+        <div className="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="calc-lead-phone" className="block text-[10px] uppercase tracking-[0.14em] text-ipb-muted font-medium mb-2">Téléphone (optionnel)</label>
+            <input id="calc-lead-phone" type="tel" value={leadPhone} onChange={e => setLeadPhone(e.target.value)} autoComplete="tel" placeholder="06 12 34 56 78"
+              className="w-full px-4 py-3 border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-[14px] font-light focus:outline-none focus:border-ipb-orange transition-colors" />
+          </div>
+          <div>
+            <label htmlFor="calc-lead-city" className="block text-[10px] uppercase tracking-[0.14em] text-ipb-muted font-medium mb-2">Commune (optionnel)</label>
+            <input id="calc-lead-city" type="text" value={leadCity} onChange={e => setLeadCity(e.target.value)} placeholder="Toulouse, Colomiers..." autoComplete="address-level2"
+              className="w-full px-4 py-3 border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-[14px] font-light focus:outline-none focus:border-ipb-orange transition-colors" />
+          </div>
+        </div>
+
+        <MagneticButton type="submit" variant="primary" className="w-full">
+          {submitting ? 'Envoi en cours…' : 'Voir mon estimation'}
+        </MagneticButton>
+        {leadError && <FormError message={leadError} />}
+
+        <p className="text-[11px] text-ipb-light text-center pt-2">
+          Vos données restent confidentielles. Conformité RGPD.
+        </p>
+
+        {/* Lien retour discret */}
+        <div className="text-center pt-2">
+          <button
+            type="button"
+            onClick={() => setStep(4)}
+            className="text-[12px] text-ipb-light hover:text-ipb-muted transition-colors"
+          >
+            ← Modifier mes réponses
+          </button>
+        </div>
+      </form>
+    );
+  }
+
+  // ─────────────────────────────────────────────────────────────
+  // Étape 6 — Résultat révélé après capture lead réussie
+  // ─────────────────────────────────────────────────────────────
+  if (step === 6 && estimate && project && submitted) {
     return (
       <div className="space-y-6">
+        {/* Confirmation discrète email envoyé */}
+        <div className="bg-ipb-cream border border-ipb-rule rounded-[6px] px-5 py-4 flex items-start gap-3">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" className="flex-shrink-0 mt-0.5">
+            <circle cx="10" cy="10" r="9" stroke="var(--ipb-orange)" strokeWidth="1.5" />
+            <path d="M5 10L8.5 13.5L15 7" stroke="var(--ipb-orange)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <div>
+            <p className="text-[13px] font-medium text-ipb-text leading-tight">Récapitulatif envoyé à {leadEmail}</p>
+            <p className="text-[12px] text-ipb-muted mt-1 leading-[1.6]">
+              Vous le recevez dans quelques minutes. Notre institut vous contactera sous 24 heures ouvrées pour un échange technique si vous le souhaitez.
+            </p>
+          </div>
+        </div>
+
         {/* Bandeau résultat */}
         <div className="bg-ipb-navy text-white rounded-[6px] p-6 md:p-8 lg:p-10 text-center">
           <p className="text-[10px] text-white/75 uppercase tracking-[0.18em] mb-4">
@@ -301,59 +381,31 @@ export function CalculatorClient() {
           </dl>
 
           <p className="mt-6 pt-6 border-t border-ipb-rule text-[12px] text-ipb-light leading-[1.6]">
-            Cette fourchette est indicative, basée sur des paramètres saisis. Un devis ferme nécessite une visite technique sur site.
+            Cette fourchette est indicative, basée sur les paramètres saisis. Un devis ferme nécessite une visite technique sur site.
           </p>
         </div>
 
-        {/* Capture lead */}
-        {!showLeadForm ? (
-          <div className="bg-ipb-cream border border-ipb-rule rounded-[6px] p-6 md:p-8 text-center">
-            <h3 className="font-serif text-ipb-text font-bold text-[20px] md:text-[22px] leading-tight mb-3">
-              Recevez le détail et un devis précis sous 24h
-            </h3>
-            <p className="text-[14px] font-light text-ipb-muted mb-6 max-w-md mx-auto">
-              Notre ingénieur vous contacte pour valider l'étude et planifier la visite si vous le souhaitez. Sans engagement.
-            </p>
-            <MagneticButton onClick={() => setShowLeadForm(true)} variant="primary">
-              Recevoir l'estimation par email
-            </MagneticButton>
-          </div>
-        ) : (
-          <form onSubmit={handleLeadSubmit} className="bg-ipb-cream border border-ipb-rule rounded-[6px] p-6 md:p-8 space-y-4">
-            <h3 className="font-serif text-ipb-text font-bold text-[22px] leading-tight mb-2">
-              Vos coordonnées
-            </h3>
-            <p className="text-[12px] font-light text-ipb-muted mb-4">
-              Vos données ne sont utilisées que pour vous répondre. Aucune relance commerciale.
-            </p>
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div>
-                <label htmlFor="calc-lead-email" className="block text-[10px] uppercase tracking-[0.14em] text-ipb-muted font-medium mb-2">Email</label>
-                <input id="calc-lead-email" type="email" required value={leadEmail} onChange={e => setLeadEmail(e.target.value)} autoComplete="email"
-                  className="w-full px-4 py-3 border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-[14px] font-light focus:outline-none focus:border-ipb-orange transition-colors" />
-              </div>
-              <div>
-                <label htmlFor="calc-lead-phone" className="block text-[10px] uppercase tracking-[0.14em] text-ipb-muted font-medium mb-2">Téléphone (optionnel)</label>
-                <input id="calc-lead-phone" type="tel" value={leadPhone} onChange={e => setLeadPhone(e.target.value)} autoComplete="tel"
-                  className="w-full px-4 py-3 border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-[14px] font-light focus:outline-none focus:border-ipb-orange transition-colors" />
-              </div>
-            </div>
-            <div>
-              <label htmlFor="calc-lead-city" className="block text-[10px] uppercase tracking-[0.14em] text-ipb-muted font-medium mb-2">Commune du chantier</label>
-              <input id="calc-lead-city" type="text" required value={leadCity} onChange={e => setLeadCity(e.target.value)} placeholder="Toulouse, Saint-Cyprien, Pamiers..." autoComplete="address-level2"
-                className="w-full px-4 py-3 border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-[14px] font-light focus:outline-none focus:border-ipb-orange transition-colors" />
-            </div>
-            <MagneticButton type="submit" variant="primary" className="w-full">
-              {submitting ? 'Envoi…' : "Envoyer mon estimation"}
-            </MagneticButton>
-            {leadError && <FormError message={leadError} />}
-          </form>
-        )}
+        {/* CTA prochaine étape */}
+        <div className="bg-ipb-cream border border-ipb-rule rounded-[6px] p-6 md:p-8 text-center">
+          <h3 className="font-serif text-ipb-text font-bold text-[18px] md:text-[20px] leading-tight mb-3">
+            Vous voulez aller plus loin ?
+          </h3>
+          <p className="text-[14px] font-light text-ipb-muted mb-6 max-w-md mx-auto">
+            Notre ingénieur peut passer chez vous pour valider l'étude et établir un devis ferme — gratuitement, sans engagement.
+          </p>
+          <a href="tel:0582953375" className="inline-flex items-center justify-center gap-2 bg-ipb-orange text-white font-bold px-7 py-4 rounded-[3px] text-[14px] tracking-[0.03em] hover:bg-[#b35519] transition-colors min-h-[48px]">
+            Appeler le 05 82 95 33 75
+          </a>
+        </div>
 
         {/* Réinitialiser */}
         <div className="text-center">
           <button
-            onClick={() => { setStep(0); setProject(null); setMur(null); setEtage(null); setShowLeadForm(false); setSubmitted(false); }}
+            onClick={() => {
+              setStep(0); setProject(null); setMur(null); setEtage(null);
+              setLeadName(''); setLeadEmail(''); setLeadPhone(''); setLeadCity('');
+              setSubmitted(false); setLeadError(null);
+            }}
             className="text-[12px] text-ipb-light hover:text-ipb-muted transition-colors"
           >
             ← Refaire une autre simulation
@@ -497,7 +549,7 @@ export function CalculatorClient() {
             {etage && (
               <div className="text-right">
                 <MagneticButton onClick={handleViewResult} variant="primary">
-                  Voir mon estimation →
+                  Étape suivante →
                 </MagneticButton>
               </div>
             )}

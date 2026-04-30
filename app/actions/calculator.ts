@@ -4,9 +4,10 @@ import { sendEmail } from '@/lib/email';
 import { checkRateLimit } from '@/lib/rateLimit';
 
 interface CalculatorLeadInput {
+  name: string;
   email: string;
   phone?: string;
-  city: string;
+  city?: string;
   project: string;
   largeur: number;
   hauteur: number;
@@ -44,8 +45,8 @@ const etageLabels: Record<string, string> = {
 
 export async function submitCalculatorLead(input: CalculatorLeadInput): Promise<CalculatorLeadResult> {
   try {
-    if (!input.email || !input.city || !input.project) {
-      return { success: false, message: 'Champs obligatoires manquants.' };
+    if (!input.name || !input.email || !input.project) {
+      return { success: false, message: 'Nom et email sont obligatoires.' };
     }
 
     // Rate limit basique par email
@@ -60,15 +61,16 @@ export async function submitCalculatorLead(input: CalculatorLeadInput): Promise<
     const murLabel = murLabels[input.mur] || input.mur;
     const etageLabel = etageLabels[input.etage] || input.etage;
 
-    // Détection zone IPB par CP simple
-    const cpMatch = input.city.match(/\b(\d{5})\b/);
+    // Détection zone IPB par CP simple (ville optionnelle)
+    const city = input.city || '';
+    const cpMatch = city.match(/\b(\d{5})\b/);
     const inServiceArea = cpMatch ? ['31', '32', '81', '82', '09'].includes(cpMatch[1].slice(0, 2)) : true;
 
     // Email interne — lead chaud (calculateur = warm/hot)
     if (process.env.EMAIL_TO) {
       await sendEmail({
         to: process.env.EMAIL_TO,
-        subject: `[CALC ${input.estimateMin}–${input.estimateMax}€] Mur porteur à ${input.city} — ${input.email}`,
+        subject: `[CALC ${input.estimateMin}–${input.estimateMax}€] ${input.name} · Mur porteur${city ? ' à ' + city : ''} — ${input.email}`,
         html: `
           <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 700px; margin: 0 auto; background: #F3EFE8;">
             <div style="background: #0B1826; color: white; padding: 24px; text-align: center;">
@@ -83,9 +85,10 @@ export async function submitCalculatorLead(input: CalculatorLeadInput): Promise<
 
             <div style="background: white; margin: 16px; padding: 24px; border-radius: 6px; border: 1px solid #D8D2C9;">
               <h2 style="margin: 0 0 16px; color: #C8601F; font-size: 16px;">Contact</h2>
+              <p style="margin: 6px 0;"><strong>Nom :</strong> ${input.name}</p>
               <p style="margin: 6px 0;"><strong>Email :</strong> <a href="mailto:${input.email}" style="color: #C8601F;">${input.email}</a></p>
               ${input.phone ? `<p style="margin: 6px 0;"><strong>Téléphone :</strong> <a href="tel:${input.phone}" style="color: #C8601F;">${input.phone}</a></p>` : ''}
-              <p style="margin: 6px 0;"><strong>Commune :</strong> ${input.city} ${inServiceArea ? '✅ zone' : '⚠️ hors zone à vérifier'}</p>
+              ${city ? `<p style="margin: 6px 0;"><strong>Commune :</strong> ${city} ${inServiceArea ? '✅ zone' : '⚠️ hors zone à vérifier'}</p>` : ''}
             </div>
 
             <div style="background: white; margin: 16px; padding: 24px; border-radius: 6px; border: 1px solid #D8D2C9;">
@@ -138,8 +141,8 @@ export async function submitCalculatorLead(input: CalculatorLeadInput): Promise<
           </div>
 
           <div style="background: white; margin: 16px; padding: 28px; border-radius: 6px; border: 1px solid #D8D2C9; font-size: 14px; line-height: 1.85; color: #736D67;">
-            <p>Bonjour,</p>
-            <p>Vous avez utilisé notre calculateur pour estimer le coût de votre ouverture de mur porteur à <strong style="color: #1A1917;">${input.city}</strong>. Voici la fourchette indicative.</p>
+            <p>Bonjour ${input.name.split(' ')[0]},</p>
+            <p>Vous avez utilisé notre calculateur pour estimer le coût de votre ouverture de mur porteur${city ? ` à <strong style="color: #1A1917;">${city}</strong>` : ''}. Voici la fourchette indicative.</p>
             <p>Cette estimation est basée sur des paramètres saisis. Pour un devis ferme, notre institut doit venir sur place — c'est gratuit et sans engagement.</p>
             <p>Notre ingénieur structure vous appellera sous 24 heures ouvrées pour préciser les éléments techniques et planifier la visite si vous le souhaitez.</p>
             <p style="margin-top: 24px;">À très vite,</p>
