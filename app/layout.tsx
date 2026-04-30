@@ -194,8 +194,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         
+        {/* Google Ads global tag — l'ID est défini via NEXT_PUBLIC_GOOGLE_ADS_ID
+            (fallback sur la valeur historique pour ne pas casser la prod actuelle).
+            Voir TRACKING.md. */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-17902440600"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || 'AW-17902440600'}`}
           strategy="lazyOnload"
         />
         <Script id="google-ads-gtag" strategy="lazyOnload">
@@ -203,7 +206,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'AW-17902440600');
+            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || 'AW-17902440600'}');
           `}
         </Script>
 

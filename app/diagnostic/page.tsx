@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { submitDiagnosticCallback, submitDiagnosticLead } from '@/app/actions/diagnostic';
 import { submitQuickCallback } from '@/app/actions/quickCallback';
 import { useRecaptcha } from '@/hooks/useRecaptcha';
-import { trackEvent } from '@/lib/analytics';
+import { trackEvent, trackDiagnosticLeadSubmit } from '@/lib/analytics';
 import { validatePhoneOrError } from '@/lib/validations/phone';
 import { FormError } from '@/components/ui/FormError';
 
@@ -543,6 +543,8 @@ export default function DiagnosticPage() {
     }
 
     if (leadSucceeded) {
+      // Conversion Google Ads — déclenchée une seule fois, au succès du lead
+      trackDiagnosticLeadSubmit(path! as 'fissure' | 'mur-porteur', score);
       setTimeout(() => {
         setIsAnalyzing(false);
         setShowResult(true);

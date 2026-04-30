@@ -17,8 +17,36 @@ declare global {
   }
 }
 
-/** Conversion ID Google Ads — défini dans app/layout.tsx */
-const ADS_CONVERSION_ID = 'AW-17902440600';
+// ─────────────────────────────────────────────────────────────────
+// Configuration Google Ads — variables d'environnement
+// ─────────────────────────────────────────────────────────────────
+// Voir TRACKING.md pour la procédure complète.
+// Les fallbacks préservent le comportement actuel si les env vars
+// ne sont pas encore renseignées sur Vercel.
+
+/** ID du compte Google Ads, format "AW-XXXXXXXXXX" */
+const ADS_CONVERSION_ID =
+  process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || 'AW-17902440600';
+
+/** Action de conversion "Lead diagnostic" — format "AW-XXXX/labelXxx" */
+const CONV_DIAGNOSTIC_LEAD =
+  process.env.NEXT_PUBLIC_GADS_CONV_DIAGNOSTIC ||
+  'AW-17902440600/0aY8COSl6JccEJlhxthC';
+
+/** Action de conversion "Lead calculateur mur porteur" */
+const CONV_CALCULATOR_LEAD =
+  process.env.NEXT_PUBLIC_GADS_CONV_CALCULATEUR ||
+  'AW-17902440600/0aY8COSl6JccEJlhxthC';
+
+/** Action de conversion "Clic téléphone" (micro-conversion) */
+const CONV_PHONE_CLICK =
+  process.env.NEXT_PUBLIC_GADS_CONV_PHONE ||
+  'AW-17902440600/0aY8COSl6JccEJlhxthC';
+
+/** Action de conversion "Demande de rappel" (micro-conversion) */
+const CONV_CALLBACK_REQUEST =
+  process.env.NEXT_PUBLIC_GADS_CONV_CALLBACK ||
+  'AW-17902440600/0aY8COSl6JccEJlhxthC';
 
 // ─────────────────────────────────────────────────────────────────
 // Cœur — wrapper bas niveau
@@ -132,9 +160,11 @@ export const trackDiagnosticLeadSubmit = (path: 'fissure' | 'mur-porteur', riskS
     selected_path: path,
     risk_score: riskScore,
   });
-  // Conversion Google Ads
+  // Conversion Google Ads — déclenchée une fois au succès de l'envoi du lead
   trackEvent('conversion', {
-    send_to: `${ADS_CONVERSION_ID}/0aY8COSl6JccEJlhxthC`,
+    send_to: CONV_DIAGNOSTIC_LEAD,
+    value: 50.0,
+    currency: 'EUR',
     selected_path: path,
   });
 };
@@ -159,7 +189,7 @@ export const trackPhoneClick = (location: string) => {
   });
   // Compté comme conversion micro
   trackEvent('conversion', {
-    send_to: `${ADS_CONVERSION_ID}/0aY8COSl6JccEJlhxthC`,
+    send_to: CONV_PHONE_CLICK,
     transaction_id: `phone_${Date.now()}`,
   });
 };
@@ -167,7 +197,10 @@ export const trackPhoneClick = (location: string) => {
 export const trackCallbackRequest = () => {
   trackEvent('callback_request', {
     category: 'conversion',
-    send_to: ADS_CONVERSION_ID,
+  });
+  // Conversion Google Ads — demande de rappel après rapport diagnostic
+  trackEvent('conversion', {
+    send_to: CONV_CALLBACK_REQUEST,
   });
 };
 
@@ -234,5 +267,11 @@ export const trackCalculatorLeadCapture = (email?: string) => {
     category: 'conversion',
     funnel_step: 100,
     has_email: !!email,
+  });
+  // Conversion Google Ads — déclenchée une fois au succès de l'envoi du lead
+  trackEvent('conversion', {
+    send_to: CONV_CALCULATOR_LEAD,
+    value: 30.0,
+    currency: 'EUR',
   });
 };

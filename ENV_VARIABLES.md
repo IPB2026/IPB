@@ -53,6 +53,22 @@ NEXT_PUBLIC_GA_TRACKING_ID = G-XXXXXXXXXX
 2. Créer une propriété **GA4**
 3. Récupérer le **Measurement ID** (format : G-XXXXXXXXXX)
 
+#### **5 bis. GOOGLE ADS — Conversion tracking** (Recommandé pour les campagnes)
+```
+NEXT_PUBLIC_GOOGLE_ADS_ID            = AW-XXXXXXXXXX
+NEXT_PUBLIC_GADS_CONV_DIAGNOSTIC     = AW-XXXXXXXXXX/labelDiagnostic
+NEXT_PUBLIC_GADS_CONV_CALCULATEUR    = AW-XXXXXXXXXX/labelCalculateur
+NEXT_PUBLIC_GADS_CONV_PHONE          = AW-XXXXXXXXXX/labelPhone
+NEXT_PUBLIC_GADS_CONV_CALLBACK       = AW-XXXXXXXXXX/labelCallback
+```
+
+**📌 Procédure complète documentée dans [TRACKING.md](./TRACKING.md).** En résumé :
+1. Google Ads → Outils & paramètres → Conversions → "+ Action de conversion"
+2. Type "Site Web" puis méthode "Charger l'événement", catégorie "Lead"
+3. Récupérer l'ID + libellé (format `AW-XXXXXXXXXX/abc123XYZ`)
+4. Une variable distincte par action de conversion (Diagnostic, Calculateur, etc.)
+5. Sans ces variables, le code utilise des fallbacks vers la valeur historique — la conversion remonte alors dans une seule action générique côté Google Ads
+
 #### **6. ERROR TRACKING** (Optionnel)
 ```
 NEXT_PUBLIC_SENTRY_DSN = https://xxx@xxx.ingest.sentry.io/xxx
@@ -85,6 +101,13 @@ NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/contact-ipb-expertise/nouvelle-reu
 NEXT_PUBLIC_CRISP_WEBSITE_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 NEXT_PUBLIC_CRISP_ENABLED=true
 NEXT_PUBLIC_GA_TRACKING_ID=G-XXXXXXXXXX
+
+# Google Ads — voir TRACKING.md
+NEXT_PUBLIC_GOOGLE_ADS_ID=AW-XXXXXXXXXX
+NEXT_PUBLIC_GADS_CONV_DIAGNOSTIC=AW-XXXXXXXXXX/labelDiagnostic
+NEXT_PUBLIC_GADS_CONV_CALCULATEUR=AW-XXXXXXXXXX/labelCalculateur
+NEXT_PUBLIC_GADS_CONV_PHONE=AW-XXXXXXXXXX/labelPhone
+NEXT_PUBLIC_GADS_CONV_CALLBACK=AW-XXXXXXXXXX/labelCallback
 ```
 
 ---
@@ -133,6 +156,11 @@ npm run dev
 | `NEXT_PUBLIC_CRISP_WEBSITE_ID` | Public | Chat widget | ⚠️ Recommandé |
 | `NEXT_PUBLIC_CRISP_ENABLED` | Public | Chat activation | ⚠️ Recommandé |
 | `NEXT_PUBLIC_GA_TRACKING_ID` | Public | Analytics | ⚠️ Recommandé |
+| `NEXT_PUBLIC_GOOGLE_ADS_ID` | Public | Tag global Google Ads (`app/layout.tsx`) | ⚠️ Recommandé |
+| `NEXT_PUBLIC_GADS_CONV_DIAGNOSTIC` | Public | Conversion lead diagnostic (`lib/analytics.ts`) | ⚠️ Recommandé |
+| `NEXT_PUBLIC_GADS_CONV_CALCULATEUR` | Public | Conversion lead calculateur (`lib/analytics.ts`) | ⚠️ Recommandé |
+| `NEXT_PUBLIC_GADS_CONV_PHONE` | Public | Conversion clic téléphone | ⚠️ Optionnel |
+| `NEXT_PUBLIC_GADS_CONV_CALLBACK` | Public | Conversion demande de rappel | ⚠️ Optionnel |
 | `NEXT_PUBLIC_SENTRY_DSN` | Public | Error tracking | ⚠️ Optionnel |
 | `NODE_ENV` | Auto | Partout | ✅ Auto |
 
