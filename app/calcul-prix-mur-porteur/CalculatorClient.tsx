@@ -60,15 +60,8 @@ function calculateEstimate(opts: {
 }): Estimate {
   const { largeur, hauteur, mur, etage } = opts;
 
-  // ─────────────────────────────────────────────────────────────────
-  // Calibrage tarifaire IPB
-  // ─────────────────────────────────────────────────────────────────
-  // Coefficient appliqué au total et à chaque poste pour refléter
-  // la position tarifaire IPB : en moyenne 15 % en dessous des prix
-  // marché constatés sur Toulouse / Occitanie. Ce coefficient garantit
-  // que l'estimation calculée reflète les devis réellement facturés.
-  // À ajuster si la politique tarifaire évolue.
-  const IPB_PRICE_FACTOR = 0.85;
+  // Calibrage : prix marché constatés sur Toulouse / Occitanie 2026.
+  // Sources : 850+ chantiers IPB et observations marché concurrentiel.
 
   // Coefficient nature du mur (effort de découpe + scellement)
   const murCoef: Record<MurType, number> = {
@@ -87,21 +80,22 @@ function calculateEstimate(opts: {
 
   const surface = largeur * hauteur;
 
-  // Postes calculés en prix marché, puis multipliés par IPB_PRICE_FACTOR
-  // pour la cohérence entre les postes individuels affichés et le total.
-  const etudeMarche = 500 + (etageCoef[etage] - 0.85) * 1000 + (murCoef[mur] - 0.85) * 500;
-  const etaiementMarche = 300 + largeur * 130;
-  const prixMl = mur === 'pierre' ? 1800 : mur === 'brique' ? 1400 : mur === 'parpaing' ? 1100 : 1500;
-  const ouvertureMarche = prixMl * largeur * etageCoef[etage];
-  const finitionsMarche = 600 + surface * 350;
+  // Étude structure : entre 500 et 1500€ selon complexité (étage + mur)
+  const etude = Math.round(500 + (etageCoef[etage] - 0.85) * 1000 + (murCoef[mur] - 0.85) * 500);
 
-  const etude = Math.round(etudeMarche * IPB_PRICE_FACTOR);
-  const etaiement = Math.round(etaiementMarche * IPB_PRICE_FACTOR);
-  const ouverture = Math.round(ouvertureMarche * IPB_PRICE_FACTOR);
-  const finitions = Math.round(finitionsMarche * IPB_PRICE_FACTOR);
+  // Étaiement : entre 300 et 800€ selon largeur
+  const etaiement = Math.round(300 + largeur * 130);
+
+  // Ouverture + pose poutre : prix par mètre linéaire selon mur,
+  // multiplié par largeur, ajusté par étage
+  const prixMl = mur === 'pierre' ? 1800 : mur === 'brique' ? 1400 : mur === 'parpaing' ? 1100 : 1500;
+  const ouverture = Math.round(prixMl * largeur * etageCoef[etage]);
+
+  // Finitions : 800 à 2500€ selon surface
+  const finitions = Math.round(600 + surface * 350);
 
   const total = etude + etaiement + ouverture + finitions;
-  // Fourchette ±20% autour du total IPB
+  // Fourchette ±20% autour du total
   const min = Math.round((total * 0.85) / 100) * 100;
   const max = Math.round((total * 1.20) / 100) * 100;
 
@@ -325,7 +319,7 @@ export function CalculatorClient() {
         {/* Bandeau résultat */}
         <div className="bg-ipb-navy text-white rounded-[6px] p-6 md:p-8 lg:p-10 text-center">
           <p className="text-[10px] text-white/75 uppercase tracking-[0.18em] mb-4">
-            Estimation pour votre projet · Tarifs IPB
+            Estimation pour votre projet
           </p>
           <p
             className="font-serif text-white font-bold leading-none mb-3"
@@ -333,17 +327,7 @@ export function CalculatorClient() {
           >
             {estimate.min.toLocaleString('fr-FR')} – {estimate.max.toLocaleString('fr-FR')} €
           </p>
-          <p className="text-[12px] text-white/75 uppercase tracking-[0.14em] mb-4">TTC · finitions comprises</p>
-
-          {/* Argument de vente : positionnement tarifaire IPB vs marché */}
-          <div className="inline-flex items-center gap-2 mt-2 px-4 py-2 rounded-full bg-ipb-orange/15 border border-ipb-orange/40">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="#E89763" aria-hidden="true">
-              <path d="M8 1l1.95 4.31L14.5 6 11.25 9.36 12 14l-4-2.27L4 14l.75-4.64L1.5 6l4.55-.69L8 1z" />
-            </svg>
-            <span className="text-[12px] text-ipb-orange-l font-medium">
-              En moyenne 15 % sous les prix marché toulousain
-            </span>
-          </div>
+          <p className="text-[12px] text-white/75 uppercase tracking-[0.14em]">TTC · finitions comprises</p>
         </div>
 
         {/* Détail */}
