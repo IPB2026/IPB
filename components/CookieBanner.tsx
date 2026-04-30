@@ -31,8 +31,9 @@ export function CookieBanner() {
         return;
       }
     }
-    // Afficher après 2 secondes
-    const timer = setTimeout(() => setIsVisible(true), 2000);
+    // Afficher après 4 secondes pour laisser le visiteur découvrir le hero et
+    // interagir avec les CTA above-the-fold avant que le bandeau apparaisse.
+    const timer = setTimeout(() => setIsVisible(true), 4000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -82,8 +83,8 @@ export function CookieBanner() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-md z-50 animate-in slide-in-from-bottom-4 duration-300">
-      <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-4 relative">
+    <div className="fixed bottom-3 left-3 right-3 md:left-auto md:right-6 md:bottom-6 max-w-sm md:max-w-md mx-auto md:mx-0 z-50 animate-in slide-in-from-bottom-4 duration-300">
+      <div className="bg-white rounded-xl md:rounded-2xl shadow-lg border border-slate-200 p-3 md:p-4 relative">
         {/* Bouton fermer (X) - très visible */}
         <button
           onClick={acceptNecessary}

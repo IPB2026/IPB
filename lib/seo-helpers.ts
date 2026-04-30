@@ -265,8 +265,10 @@ export function generateReviewSchema(_articleTitle: string) {
     telephone: '+33582953375',
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Tournefeuille',
-      postalCode: '31170',
+      streetAddress: '13 rue du Recteur Dottin',
+      addressLocality: 'Toulouse',
+      postalCode: '31100',
+      addressRegion: 'Occitanie',
       addressCountry: 'FR'
     },
     aggregateRating: {

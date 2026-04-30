@@ -77,6 +77,84 @@ export default function CalculatorPage() {
           </div>
         </section>
 
+        {/* GUIDE DES PRIX (zone éditoriale en amont du calculateur)
+            ─────────────────────────────────────────────────────────
+            SXO : Google rank des guides de prix avec tableaux sur cette
+            requête. On expose donc les fourchettes immédiatement, avant
+            le calculateur, pour matcher l'intention "informationnelle"
+            avant de proposer l'outil interactif "transactionnel". */}
+        <section className="bg-ipb-cream pt-2 pb-12">
+          <div className="max-w-4xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <h2
+                className="font-serif text-ipb-text mb-8"
+                style={{ fontSize: 'clamp(24px, 2.4vw, 34px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}
+              >
+                Prix moyens d'une ouverture de mur porteur à Toulouse
+              </h2>
+              <p className="text-[15px] leading-[1.85] font-light text-ipb-muted mb-8 max-w-2xl">
+                Les fourchettes ci-dessous sont calculées à partir de chantiers IPB livrés ces 24 derniers mois. Elles incluent l'étude structure, la pose de la poutre, l'étaiement, l'ouverture et les finitions. <strong className="text-ipb-text not-italic">Décennale AXA incluse</strong>.
+              </p>
+
+              <div className="overflow-x-auto -mx-6 lg:mx-0 px-6 lg:px-0 mb-10">
+                <table className="w-full text-[14px] border-collapse">
+                  <thead>
+                    <tr className="border-b-2 border-ipb-rule">
+                      <th className="text-left py-3 pr-4 font-serif font-bold text-ipb-text">Configuration</th>
+                      <th className="text-left py-3 pr-4 font-serif font-bold text-ipb-text">Largeur d'ouverture</th>
+                      <th className="text-right py-3 font-serif font-bold text-ipb-text">Prix TTC*</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-ipb-muted">
+                    <tr className="border-b border-ipb-rule">
+                      <td className="py-3 pr-4 font-medium text-ipb-text">Cuisine ouverte standard (RDC seul, mur brique foraine)</td>
+                      <td className="py-3 pr-4">2,5 m × 2,2 m</td>
+                      <td className="py-3 text-right font-bold text-ipb-text">4 000 – 7 000 €</td>
+                    </tr>
+                    <tr className="border-b border-ipb-rule">
+                      <td className="py-3 pr-4 font-medium text-ipb-text">Suite parentale (RDC ou étage, mur parpaing)</td>
+                      <td className="py-3 pr-4">3,0 m × 2,2 m</td>
+                      <td className="py-3 text-right font-bold text-ipb-text">6 000 – 10 000 €</td>
+                    </tr>
+                    <tr className="border-b border-ipb-rule">
+                      <td className="py-3 pr-4 font-medium text-ipb-text">Plateau loft (étage habité au-dessus)</td>
+                      <td className="py-3 pr-4">4,0 m × 2,4 m</td>
+                      <td className="py-3 text-right font-bold text-ipb-text">9 000 – 14 000 €</td>
+                    </tr>
+                    <tr className="border-b border-ipb-rule">
+                      <td className="py-3 pr-4 font-medium text-ipb-text">Création de baie vitrée (mur extérieur porteur)</td>
+                      <td className="py-3 pr-4">3,0 m × 2,4 m</td>
+                      <td className="py-3 text-right font-bold text-ipb-text">10 000 – 18 000 €</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 pr-4 font-medium text-ipb-text">Grande baie vitrée signature</td>
+                      <td className="py-3 pr-4">5,0 m × 2,4 m</td>
+                      <td className="py-3 text-right font-bold text-ipb-text">15 000 – 25 000 €</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p className="text-[12px] text-ipb-light mt-3">
+                  *Étude structure + dimensionnement IPN/HEB + étaiement + travaux + finitions. Hors démarches mairie spécifiques.
+                </p>
+              </div>
+
+              <h3 className="font-serif text-ipb-text mb-4 font-bold not-italic" style={{ fontSize: 'clamp(20px, 1.8vw, 24px)' }}>
+                Ce qui fait varier le prix
+              </h3>
+              <ul className="text-[14px] leading-[1.85] font-light text-ipb-muted space-y-2 mb-8 list-disc pl-5">
+                <li><strong className="text-ipb-text not-italic">La portée de l'ouverture</strong> : au-delà de 3 m, on passe d'un IPN classique à un HEB plus lourd, ce qui ajoute 500 à 2 000 € selon le profil.</li>
+                <li><strong className="text-ipb-text not-italic">La nature du mur</strong> : la brique foraine toulousaine se découpe relativement bien ; le parpaing armé ou la pierre nécessitent plus de matage et de scellement.</li>
+                <li><strong className="text-ipb-text not-italic">Ce qui se trouve au-dessus</strong> : un seul niveau habité allège l'étaiement ; deux étages ou des combles aménagés exigent un dimensionnement renforcé.</li>
+                <li><strong className="text-ipb-text not-italic">Les démarches administratives</strong> : la déclaration préalable de travaux est suffisante dans la plupart des cas. En copropriété, l'assemblée générale ajoute 4 à 8 semaines de délai.</li>
+              </ul>
+
+              <p className="text-[14px] leading-[1.85] font-light text-ipb-muted">
+                Pour une estimation chiffrée adaptée à <strong className="text-ipb-text not-italic">votre</strong> projet, l'outil ci-dessous vous donne une fourchette précise en deux minutes.
+              </p>
+            </RevealOnScroll>
+          </div>
+        </section>
+
         {/* CALCULATEUR */}
         <section className="bg-ipb-cream pb-20 lg:pb-28">
           <div className="max-w-2xl mx-auto px-6 lg:px-12">
