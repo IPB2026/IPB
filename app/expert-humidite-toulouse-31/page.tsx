@@ -99,9 +99,10 @@ const jsonLd = {
   "telephone": "+33582953375",
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "13 rue du Recteur Dottin",
     "addressLocality": "Toulouse",
     "addressRegion": "Occitanie",
-    "postalCode": "31000",
+    "postalCode": "31100",
     "addressCountry": "FR"
   },
   "areaServed": [

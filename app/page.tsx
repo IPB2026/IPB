@@ -20,6 +20,9 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "@id": "https://www.ipb-expertise.fr#organization",
+  // Lien sémantique bidirectionnel avec le LocalBusiness déclaré dans app/layout.tsx.
+  // Permet à Google de fusionner les deux entités dans son Knowledge Graph.
+  "subOrganization": { "@id": "https://www.ipb-expertise.fr#localbusiness" },
   "name": "IPB - Institut de Pathologie du Bâtiment",
   "alternateName": "IPB Expertise",
   "url": "https://www.ipb-expertise.fr",
@@ -45,7 +48,7 @@ const organizationSchema = {
   },
   "contactPoint": {
     "@type": "ContactPoint",
-    "telephone": "+33-5-82-95-33-75",
+    "telephone": "+33582953375",
     "contactType": "customer service",
     "availableLanguage": "French",
     "areaServed": ["FR-31", "FR-82", "FR-32", "FR-81"]

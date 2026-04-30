@@ -22,41 +22,37 @@ export function Hero() {
 
         {/* COLONNE GAUCHE — Texte éditorial 58% */}
         <div className="flex flex-col justify-center pr-0 lg:pr-8">
-          <RevealOnScroll>
-            <Eyebrow>Institut de pathologie du bâtiment · depuis 2019</Eyebrow>
-          </RevealOnScroll>
+          {/* Above-the-fold critique : eyebrow + H1 + description + CTA rendus
+              directement (sans RevealOnScroll) pour optimiser le LCP mobile.
+              L'animation reveal sur ces éléments retardait le LCP de 400-800ms
+              car le H1 candidat LCP démarrait à opacity:0 jusqu'à hydratation. */}
+          <Eyebrow>Institut de pathologie du bâtiment · depuis 2019</Eyebrow>
 
-          <RevealOnScroll delay={0.06} variant="editorial">
-            <h1
-              className="font-serif text-ipb-text mb-8"
-              style={{
-                fontSize: 'clamp(48px, 5.6vw, 80px)',
-                lineHeight: 1.04,
-                letterSpacing: '-0.028em',
-                fontWeight: 700,
-              }}
-            >
-              Diagnostic de fissures<br />
-              <em>et ouverture de mur porteur.</em>
-            </h1>
-          </RevealOnScroll>
+          <h1
+            className="font-serif text-ipb-text mb-8"
+            style={{
+              fontSize: 'clamp(48px, 5.6vw, 80px)',
+              lineHeight: 1.04,
+              letterSpacing: '-0.028em',
+              fontWeight: 700,
+            }}
+          >
+            Diagnostic de fissures<br />
+            <em>et ouverture de mur porteur.</em>
+          </h1>
 
-          <RevealOnScroll delay={0.12} variant="subtle">
-            <p className="text-[15px] leading-[1.9] font-light text-ipb-muted max-w-[540px] mb-10">
-              Institut indépendant en structure du bâtiment. Nous diagnostiquons les fissures qui inquiètent, étudions et réalisons les ouvertures de murs porteurs et baies vitrées. Nos rapports sont reconnus par les assurances. Nos travaux sont garantis dix ans.
-            </p>
-          </RevealOnScroll>
+          <p className="text-[15px] leading-[1.9] font-light text-ipb-muted max-w-[540px] mb-10">
+            Institut indépendant en structure du bâtiment. Nous diagnostiquons les fissures qui inquiètent, étudions et réalisons les ouvertures de murs porteurs et baies vitrées. Nos rapports sont reconnus par les assurances. Nos travaux sont garantis dix ans.
+          </p>
 
-          <RevealOnScroll delay={0.18}>
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <MagneticButton href="/diagnostic" variant="primary">
-                Diagnostic gratuit
-              </MagneticButton>
-              <MagneticButton href="/notre-expert" variant="ghost">
-                Découvrir l’institut
-              </MagneticButton>
-            </div>
-          </RevealOnScroll>
+          <div className="flex flex-col sm:flex-row gap-4 mb-12">
+            <MagneticButton href="/diagnostic" variant="primary">
+              Diagnostic gratuit
+            </MagneticButton>
+            <MagneticButton href="/notre-expert" variant="ghost">
+              Découvrir l’institut
+            </MagneticButton>
+          </div>
 
           {/* Panel mobile — photo chantier réelle avec overlay navy + crack signature */}
           <RevealOnScroll delay={0.2} className="lg:hidden -mx-6 mb-12">
@@ -106,27 +102,27 @@ export function Hero() {
             </div>
           </RevealOnScroll>
 
-          {/* Stats compactes en ligne */}
+          {/* Stats compactes en ligne — flex-wrap pour éviter overflow mobile */}
           <RevealOnScroll delay={0.24}>
-            <div className="flex items-center gap-8 lg:gap-12 pt-8 border-t border-ipb-rule">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-4 sm:gap-x-8 lg:gap-x-12 pt-8 border-t border-ipb-rule">
               <div>
-                <p className="font-serif text-3xl text-ipb-text font-bold leading-none">
+                <p className="font-serif text-2xl sm:text-3xl text-ipb-text font-bold leading-none">
                   <StatCounter value={850} />
                   <span className="text-ipb-orange">+</span>
                 </p>
                 <p className="text-[10px] text-ipb-light uppercase tracking-[0.16em] mt-2">Chantiers livrés</p>
               </div>
-              <div className="h-10 w-px bg-ipb-rule" aria-hidden="true" />
+              <div className="h-10 w-px bg-ipb-rule hidden xs:block" aria-hidden="true" />
               <div>
-                <p className="font-serif text-3xl text-ipb-text font-bold leading-none">
-                  <StatCounter value={4.9} decimals={1} /><span className="text-ipb-light text-2xl">/5</span>
+                <p className="font-serif text-2xl sm:text-3xl text-ipb-text font-bold leading-none">
+                  <StatCounter value={4.9} decimals={1} /><span className="text-ipb-light text-xl sm:text-2xl">/5</span>
                 </p>
                 <p className="text-[10px] text-ipb-light uppercase tracking-[0.16em] mt-2">Note Google</p>
               </div>
               <div className="h-10 w-px bg-ipb-rule hidden sm:block" aria-hidden="true" />
-              <div className="hidden sm:block">
-                <p className="font-serif text-3xl text-ipb-text font-bold leading-none">
-                  10<span className="text-ipb-light text-2xl"> ans</span>
+              <div>
+                <p className="font-serif text-2xl sm:text-3xl text-ipb-text font-bold leading-none">
+                  10<span className="text-ipb-light text-xl sm:text-2xl"> ans</span>
                 </p>
                 <p className="text-[10px] text-ipb-light uppercase tracking-[0.16em] mt-2">Décennale AXA</p>
               </div>

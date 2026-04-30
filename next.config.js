@@ -89,13 +89,16 @@ const nextConfig = {
               "base-uri 'self'",
               "form-action 'self'",
               "frame-ancestors 'none'",
-              "frame-src https://www.google.com https://maps.google.com",
+              // Google Ads (conversions) + Maps : iframes nécessaires pour bid.g, googleads.g et bedrock
+              "frame-src https://www.google.com https://maps.google.com https://googleads.g.doubleclick.net https://bid.g.doubleclick.net https://td.doubleclick.net",
               "object-src 'none'",
               "img-src 'self' data: https:",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://www.google.com https://www.gstatic.com",
+              // Ads tag : pagead2.googlesyndication.com et adtrafficquality.google
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://www.google.com https://www.gstatic.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google",
               "style-src 'self' 'unsafe-inline'",
               "font-src 'self' data:",
-              "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://www.google.com",
+              // Conversions Ads : googleads.g.doubleclick.net + *.doubleclick.net pour le ping de conversion
+              "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://www.google.com https://googleads.g.doubleclick.net https://*.doubleclick.net https://pagead2.googlesyndication.com https://*.adtrafficquality.google",
             ].join('; ') + ';',
           },
           {

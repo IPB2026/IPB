@@ -59,9 +59,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr').replace(/\/+$/, '');
   
   // Dates réalistes — Google pénalise les sitemaps où tout est marqué "modifié aujourd'hui"
-  const recentUpdate = new Date('2026-02-10');
-  const contentDate = new Date('2026-01-15');
-  const stableDate = new Date('2025-11-01');
+  // Dates dynamiques pour donner un signal de fraîcheur fiable à Google.
+  // Auparavant les dates étaient hardcodées et figées au 2026-01-15 sur 134
+  // URLs, ce qui faisait ignorer le `lastmod` par les crawlers (signal jugé
+  // peu fiable). On utilise maintenant la date du build, avec un léger décalage
+  // par catégorie pour refléter la fréquence réelle de mise à jour.
+  const now = new Date();
+  const recentUpdate = now;
+  // Pages de contenu éducatif : on simule une mise à jour 30j en arrière
+  // (plus stable, évite de re-prompter Google à recrawler chaque déploiement).
+  const contentDate = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+  const stableDate = new Date(now.getTime() - 90 * 24 * 60 * 60 * 1000);
 
   // ════════════════════════════════════════════════════════════
   // PAGES STATIQUES PRINCIPALES
@@ -326,19 +334,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // ════════════════════════════════════════════════════════════
   const priorityVillesSlugs = ['toulouse', 'colomiers', 'muret', 'montauban', 'auch', 'albi'];
 
-  const expertFissuresPages: MetadataRoute.Sitemap = villeSlugs.map((ville) => ({
-    url: `${baseUrl}/expert-fissures/${ville}`,
-    lastModified: contentDate,
-    changeFrequency: 'monthly' as const,
-    priority: priorityVillesSlugs.includes(ville) ? 0.8 : 0.68,
-  }));
+  // Toulouse est exclu : la canonique est /expert-fissures-toulouse-31 (page statique).
+  // Le middleware redirige /expert-fissures/toulouse → /expert-fissures-toulouse-31 en 301.
+  const expertFissuresPages: MetadataRoute.Sitemap = villeSlugs
+    .filter((ville) => ville !== 'toulouse')
+    .map((ville) => ({
+      url: `${baseUrl}/expert-fissures/${ville}`,
+      lastModified: contentDate,
+      changeFrequency: 'monthly' as const,
+      priority: priorityVillesSlugs.includes(ville) ? 0.8 : 0.68,
+    }));
 
-  const expertHumiditePages: MetadataRoute.Sitemap = villeSlugs.map((ville) => ({
-    url: `${baseUrl}/expert-humidite/${ville}`,
-    lastModified: contentDate,
-    changeFrequency: 'monthly' as const,
-    priority: priorityVillesSlugs.includes(ville) ? 0.78 : 0.65,
-  }));
+  // Idem : Toulouse exclu, canonique = /expert-humidite-toulouse-31.
+  const expertHumiditePages: MetadataRoute.Sitemap = villeSlugs
+    .filter((ville) => ville !== 'toulouse')
+    .map((ville) => ({
+      url: `${baseUrl}/expert-humidite/${ville}`,
+      lastModified: contentDate,
+      changeFrequency: 'monthly' as const,
+      priority: priorityVillesSlugs.includes(ville) ? 0.78 : 0.65,
+    }));
 
   // ════════════════════════════════════════════════════════════
   // PAGES MUR PORTEUR PAR VILLE (Toulouse, Montauban, Auch, Albi)

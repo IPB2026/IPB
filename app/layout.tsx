@@ -102,8 +102,12 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": "https://www.ipb-expertise.fr#localbusiness",
+  // Lien sémantique bidirectionnel avec l'Organization déclarée dans app/page.tsx.
+  // Permet à Google de fusionner les deux entités dans son Knowledge Graph.
+  "parentOrganization": { "@id": "https://www.ipb-expertise.fr#organization" },
   "name": "IPB - Institut de Pathologie du Bâtiment",
   "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
+  "foundingDate": "2019",
   "description": "Institut indépendant en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Expertise fissures (agrafage, micropieux), ouverture de mur porteur et création de baie vitrée (étude structure, pose poutre IPN/HEB), traitement de l'humidité (injection résine, cuvelage). Étude et travaux sous garantie décennale. Toulouse, Montauban, Auch et environs.",
   "address": {
     "@type": "PostalAddress",
@@ -120,7 +124,16 @@ const localBusinessSchema = {
   },
   "url": "https://www.ipb-expertise.fr",
   "telephone": "+33582953375",
+  "email": "contact@ipb-expertise.fr",
   "priceRange": "€€",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    }
+  ],
   "areaServed": [
     { "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" },
     { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" },
