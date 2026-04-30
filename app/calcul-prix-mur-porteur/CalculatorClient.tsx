@@ -245,7 +245,7 @@ export function CalculatorClient() {
         {/* Bandeau résultat */}
         <div className="bg-ipb-navy text-white rounded-[6px] p-6 md:p-8 lg:p-10 text-center">
           <p className="text-[10px] text-white/75 uppercase tracking-[0.18em] mb-4">
-            Estimation pour votre projet
+            Estimation pour votre projet · Tarifs IPB
           </p>
           <p
             className="font-serif text-white font-bold leading-none mb-3"
@@ -253,7 +253,17 @@ export function CalculatorClient() {
           >
             {estimate.min.toLocaleString('fr-FR')} – {estimate.max.toLocaleString('fr-FR')} €
           </p>
-          <p className="text-[12px] text-white/75 uppercase tracking-[0.14em]">TTC · finitions comprises</p>
+          <p className="text-[12px] text-white/75 uppercase tracking-[0.14em] mb-4">TTC · finitions comprises</p>
+
+          {/* Argument de vente : positionnement tarifaire IPB vs marché */}
+          <div className="inline-flex items-center gap-2 mt-2 px-4 py-2 rounded-full bg-ipb-orange/15 border border-ipb-orange/40">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="#E89763" aria-hidden="true">
+              <path d="M8 1l1.95 4.31L14.5 6 11.25 9.36 12 14l-4-2.27L4 14l.75-4.64L1.5 6l4.55-.69L8 1z" />
+            </svg>
+            <span className="text-[12px] text-ipb-orange-l font-medium">
+              En moyenne 15 % sous les prix marché toulousain
+            </span>
+          </div>
         </div>
 
         {/* Détail */}
