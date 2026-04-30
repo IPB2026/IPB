@@ -318,33 +318,82 @@ export default function MurPorteurPage() {
           </div>
         </section>
 
-        {/* Bandeau calculateur — capture leads chauds */}
-        <section className="bg-ipb-navy text-white py-14 md:py-20 lg:py-24">
-          <div className="max-w-4xl mx-auto px-5 sm:px-6 text-center">
+        {/* Bandeau calculateur — outil interactif, capture leads chauds */}
+        <section className="bg-ipb-navy text-white py-16 md:py-20 lg:py-24 relative overflow-hidden">
+          {/* Halo orange en arrière-plan pour signaler l'interactivité */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 opacity-40 pointer-events-none"
+            style={{
+              background:
+                'radial-gradient(circle at 50% 0%, rgba(232,116,60,0.25) 0%, transparent 60%)',
+            }}
+          />
+
+          <div className="relative max-w-3xl mx-auto px-5 sm:px-6">
             <RevealOnScroll>
-              <p className="text-ipb-orange-l text-[11px] uppercase tracking-[0.18em] font-medium mb-4">
-                Estimation gratuite · Sans inscription
-              </p>
-              <h2 className="font-serif mb-5" style={{ fontSize: 'clamp(24px, 2.8vw, 40px)', lineHeight: 1.2, letterSpacing: '-0.022em', fontWeight: 700 }}>
-                Combien va vous coûter{' '}
-                <em className="text-ipb-orange-l block sm:inline mt-1 sm:mt-0">votre projet ?</em>
-              </h2>
-              <p className="text-white/75 text-[14px] md:text-[16px] leading-[1.8] mb-9 max-w-2xl mx-auto">
-                Notre calculateur, basé sur les chantiers IPB récents en Occitanie, vous donne une fourchette précise en deux minutes. Vous recevez le détail par email — sans engagement.
-              </p>
-              <div className="flex flex-col sm:flex-row justify-center gap-3">
+              {/* Carte outil — délimitation visuelle claire */}
+              <div className="bg-white/5 backdrop-blur-sm border border-white/15 rounded-[8px] p-7 md:p-10 lg:p-12 text-center">
+                {/* Icône calculatrice — signal visuel "outil" */}
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-ipb-orange/15 border border-ipb-orange/30 mb-6">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E89763" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <rect x="4" y="2" width="16" height="20" rx="2" />
+                    <line x1="8" y1="6" x2="16" y2="6" />
+                    <line x1="8" y1="11" x2="8" y2="11" />
+                    <line x1="12" y1="11" x2="12" y2="11" />
+                    <line x1="16" y1="11" x2="16" y2="11" />
+                    <line x1="8" y1="15" x2="8" y2="15" />
+                    <line x1="12" y1="15" x2="12" y2="15" />
+                    <line x1="16" y1="15" x2="16" y2="19" />
+                    <line x1="8" y1="19" x2="12" y2="19" />
+                  </svg>
+                </div>
+
+                <p className="text-ipb-orange-l text-[11px] uppercase tracking-[0.18em] font-semibold mb-3">
+                  Outil interactif · Gratuit · 2 minutes
+                </p>
+                <h2 className="font-serif mb-5" style={{ fontSize: 'clamp(24px, 2.6vw, 36px)', lineHeight: 1.18, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Estimez le prix de votre ouverture<br className="hidden sm:block" />
+                  <em className="text-ipb-orange-l">avant de nous parler.</em>
+                </h2>
+                <p className="text-white/80 text-[14px] md:text-[15px] leading-[1.8] mb-7 max-w-xl mx-auto">
+                  Quatre questions sur votre projet (type de mur, dimensions, étage…) et notre calculateur vous donne une fourchette précise basée sur nos chantiers récents en Occitanie. Vous recevez le détail par email.
+                </p>
+
+                {/* Aperçu visuel des étapes — montre que c'est un outil structuré */}
+                <div className="flex flex-wrap items-center justify-center gap-2 mb-8 text-[11px] uppercase tracking-[0.06em] text-white/70">
+                  <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">1. Projet</span>
+                  <span aria-hidden="true" className="text-ipb-orange-l">→</span>
+                  <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">2. Dimensions</span>
+                  <span aria-hidden="true" className="text-ipb-orange-l">→</span>
+                  <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">3. Type de mur</span>
+                  <span aria-hidden="true" className="text-ipb-orange-l">→</span>
+                  <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">4. Étage</span>
+                </div>
+
                 <a
                   href="/calcul-prix-mur-porteur?utm_source=site&utm_medium=expertise_hub&utm_campaign=mur_porteur"
-                  className="inline-flex items-center justify-center gap-2 bg-ipb-orange text-white font-bold px-7 md:px-8 py-4 rounded-[3px] text-[13px] md:text-[14px] tracking-[0.03em] hover:bg-[#b35519] transition-colors min-h-[48px]"
+                  className="inline-flex items-center justify-center gap-2 bg-ipb-orange text-white font-bold px-9 md:px-10 py-4 rounded-[3px] text-[14px] md:text-[15px] tracking-[0.03em] hover:bg-[#b35519] transition-colors min-h-[52px] shadow-[0_8px_24px_rgba(200,96,31,0.35)]"
                 >
-                  Lancer le calcul → 2 min
+                  Lancer le calculateur
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </a>
-                <a
-                  href="tel:0582953375"
-                  className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white font-bold px-7 md:px-8 py-4 rounded-[3px] text-[13px] md:text-[14px] tracking-[0.03em] hover:bg-white/20 transition-colors min-h-[48px]"
-                >
-                  Ou parler à un ingénieur
-                </a>
+
+                {/* Trust signals + alternative téléphone */}
+                <div className="mt-7 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-[12px] text-white/65">
+                  <span className="flex items-center gap-1.5">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="#E89763" aria-hidden="true">
+                      <path d="M8 1l1.95 4.31L14.5 6 11.25 9.36 12 14l-4-2.27L4 14l.75-4.64L1.5 6l4.55-.69L8 1z" />
+                    </svg>
+                    4,9/5 · 850 chantiers livrés
+                  </span>
+                  <span className="hidden sm:inline text-white/30" aria-hidden="true">·</span>
+                  <a href="tel:0582953375" className="inline-flex items-center gap-1.5 hover:text-white transition-colors">
+                    Préférez parler ? Appelez le 05 82 95 33 75
+                  </a>
+                </div>
               </div>
             </RevealOnScroll>
           </div>
