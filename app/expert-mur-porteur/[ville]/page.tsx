@@ -343,9 +343,9 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
         <section className="bg-ipb-navy text-white py-12 md:py-16">
           <div className="max-w-4xl mx-auto px-5 sm:px-6 text-center">
             <p className="text-ipb-orange-l text-[11px] uppercase tracking-[0.18em] font-medium mb-4">
-              Estimation gratuite · Sans inscription
+              Estimation gratuite
             </p>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-4 leading-tight">
+            <h2 className="text-white text-xl sm:text-2xl md:text-3xl font-extrabold mb-4 leading-tight">
               Combien va vous coûter votre ouverture à {villeNom} ?
             </h2>
             <p className="text-white/70 text-sm md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
@@ -389,7 +389,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
         {/* CTA Final */}
         <section className="py-16 md:py-20 bg-ipb-orange text-white">
           <div className="max-w-4xl mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Votre projet à {villeNom}, notre expertise</h2>
+            <h2 className="text-white text-3xl md:text-4xl font-extrabold mb-6">Votre projet à {villeNom}, notre expertise</h2>
             <p className="text-xl text-ipb-orange-l mb-8">Décrivez votre projet à notre institut. Réponse d'un ingénieur structure sous 24 heures.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link href="/diagnostic" className="bg-white text-ipb-orange px-10 py-5 rounded-xl font-bold text-lg hover:bg-ipb-stone flex items-center justify-center gap-2 shadow-xl">

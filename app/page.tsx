@@ -145,11 +145,11 @@ export default function HomePage() {
       <section className="bg-ipb-navy text-white py-14 md:py-20">
         <div className="max-w-4xl mx-auto px-5 sm:px-6 text-center">
           <p className="text-ipb-orange-l text-[11px] uppercase tracking-[0.18em] font-medium mb-4">
-            Outil · Estimation gratuite, sans inscription
+            Estimation gratuite
           </p>
-          <h2 className="font-serif mb-5" style={{ fontSize: 'clamp(22px, 2.6vw, 36px)', lineHeight: 1.2, letterSpacing: '-0.022em', fontWeight: 700 }}>
+          <h2 className="text-white font-serif mb-5" style={{ fontSize: 'clamp(22px, 2.6vw, 36px)', lineHeight: 1.2, letterSpacing: '-0.022em', fontWeight: 700 }}>
             Un projet d'ouverture de mur porteur ?{' '}
-            <em className="text-ipb-orange-l block sm:inline mt-1 sm:mt-0">Combien ça va vous coûter.</em>
+            <em className="text-ipb-orange-l block sm:inline mt-1 sm:mt-0 not-italic sm:italic">Combien ça va vous coûter.</em>
           </h2>
           <p className="text-white/75 text-[14px] md:text-[15px] leading-[1.8] mb-8 max-w-xl mx-auto">
             Notre calculateur, basé sur les chantiers IPB récents en Occitanie, vous donne une fourchette précise en deux minutes. Vous recevez le détail par email.

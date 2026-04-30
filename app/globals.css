@@ -69,11 +69,17 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif), 'Playfair Display', Georgia, serif;
-    color: var(--ipb-text);
+    /* color: inherit — les titres prennent la couleur du contexte parent.
+       Sur fond clair, body color = var(--ipb-text) → titres noirs.
+       Sur fond navy avec text-white → titres blancs.
+       Évite d'avoir à mettre text-white explicite sur chaque H2 navy. */
+    color: inherit;
     font-weight: 700;
   }
 
-  /* Signature éditoriale : <em> dans les titres = italique orange */
+  /* Signature éditoriale : <em> dans les titres = italique orange.
+     Sur fonds sombres, override possible via une classe Tailwind
+     text-ipb-orange-l (orange clair) directement sur le <em>. */
   h1 em, h2 em {
     font-style: italic;
     color: var(--ipb-orange);

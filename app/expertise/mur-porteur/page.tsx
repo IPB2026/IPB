@@ -352,9 +352,9 @@ export default function MurPorteurPage() {
                 <p className="text-ipb-orange-l text-[11px] uppercase tracking-[0.18em] font-semibold mb-3">
                   Outil interactif · Gratuit · 2 minutes
                 </p>
-                <h2 className="font-serif mb-5" style={{ fontSize: 'clamp(24px, 2.6vw, 36px)', lineHeight: 1.18, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                <h2 className="text-white font-serif mb-5" style={{ fontSize: 'clamp(24px, 2.6vw, 36px)', lineHeight: 1.18, letterSpacing: '-0.022em', fontWeight: 700 }}>
                   Estimez le prix de votre ouverture<br className="hidden sm:block" />
-                  <em className="text-ipb-orange-l">avant de nous parler.</em>
+                  <em className="text-ipb-orange-l not-italic sm:italic">avant de nous parler.</em>
                 </h2>
                 <p className="text-white/80 text-[14px] md:text-[15px] leading-[1.8] mb-7 max-w-xl mx-auto">
                   Quatre questions sur votre projet (type de mur, dimensions, étage…) et notre calculateur vous donne une fourchette précise basée sur nos chantiers récents en Occitanie. Vous recevez le détail par email.
