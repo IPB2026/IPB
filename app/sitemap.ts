@@ -362,31 +362,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // ════════════════════════════════════════════════════════════
-  // PAGES AGRAFAGE-FISSURES + TRAITEMENT-HUMIDITE PAR VILLE
+  // ⚠️ SECTIONS RETIRÉES — résolution cannibalisation SEO (levier #1)
   // ════════════════════════════════════════════════════════════
-  const agrafageFissuresPages: MetadataRoute.Sitemap = villeSlugs.map((ville) => ({
-    url: `${baseUrl}/agrafage-fissures/${ville}`,
-    lastModified: contentDate,
-    changeFrequency: 'monthly' as const,
-    priority: 0.65,
-  }));
-
-  const traitementHumiditePages: MetadataRoute.Sitemap = villeSlugs.map((ville) => ({
-    url: `${baseUrl}/traitement-humidite/${ville}`,
-    lastModified: contentDate,
-    changeFrequency: 'monthly' as const,
-    priority: 0.65,
-  }));
-
-  // ════════════════════════════════════════════════════════════
-  // PAGES VILLES GÉNÉRIQUES
-  // ════════════════════════════════════════════════════════════
-  const villesPages: MetadataRoute.Sitemap = villeSlugs.map((ville) => ({
-    url: `${baseUrl}/villes/${ville}`,
-    lastModified: contentDate,
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }));
+  // Les routes /agrafage-fissures/{ville}, /traitement-humidite/{ville} et
+  // /villes/{ville} sont désormais redirigées 301 vers leurs versions canoniques
+  // (/expert-fissures/{ville} et /expert-humidite/{ville}) via middleware.ts.
+  // Elles sont volontairement absentes du sitemap pour ne pas signaler de
+  // duplicate content à Google.
 
   // ════════════════════════════════════════════════════════════
   // PAGES PROBLÈMES (Topic Cluster)
@@ -423,9 +405,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...expertFissuresPages,
     ...expertHumiditePages,
     ...expertMurPorteurPages,
-    ...agrafageFissuresPages,
-    ...traitementHumiditePages,
-    ...villesPages,
     ...problemesPages,
     ...quartiersPages,
     ...blogPages,
