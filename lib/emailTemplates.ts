@@ -59,7 +59,7 @@ const wrap = (innerHtml: string, opts?: { eyebrow?: string; unsubscribeUrl?: str
 
     <!-- Footer -->
     <div style="background: #0B1826; color: rgba(255,255,255,0.5); padding: 28px 24px; text-align: center; font-size: 11px; line-height: 1.7;">
-      <p style="margin: 0 0 4px;">IPB Expertise · 13 rue du Recteur Dottin, 31100 Toulouse</p>
+      <p style="margin: 0 0 4px;">IPB Expertise · 54 avenue Jean Jaurès, 31170 Tournefeuille</p>
       <p style="margin: 0 0 16px;">
         <a href="tel:0582953375" style="color: rgba(255,255,255,0.7); text-decoration: none;">05 82 95 33 75</a>
         &nbsp;·&nbsp;

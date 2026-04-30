@@ -80,10 +80,10 @@ export default function HauteGaronnePage() {
       email: 'contact@ipb-expertise.fr',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: '13 rue du Recteur Dottin',
-        addressLocality: 'Toulouse',
+        streetAddress: '54 avenue Jean Jaurès',
+        addressLocality: 'Tournefeuille',
         addressRegion: 'Haute-Garonne',
-        postalCode: '31100',
+        postalCode: '31170',
         addressCountry: 'FR',
       },
       areaServed: {

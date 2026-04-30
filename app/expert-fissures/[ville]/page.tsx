@@ -101,9 +101,9 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
       "aggregateRating": IPB_AGGREGATE_RATING,
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "13 rue du Recteur Dottin",
-        "addressLocality": "Toulouse",
-        "postalCode": "31100",
+        "streetAddress": "54 avenue Jean Jaurès",
+        "addressLocality": "Tournefeuille",
+        "postalCode": "31170",
         "addressRegion": "Occitanie",
         "addressCountry": "FR"
       }

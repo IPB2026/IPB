@@ -103,7 +103,11 @@ export default function MentionsLegalesPage() {
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-ipb-text sm:w-48">Siège social :</dt>
-                    <dd>13 rue du Recteur Dottin, 31100 Toulouse, France</dd>
+                    <dd>13 rue du Recteur Dottin, 31100 Toulouse, France <em>(domiciliation administrative)</em></dd>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:gap-4">
+                    <dt className="font-bold text-ipb-text sm:w-48">Adresse d'exercice :</dt>
+                    <dd>54 avenue Jean Jaurès, 31170 Tournefeuille, France</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-ipb-text sm:w-48">SIRET :</dt>
@@ -209,8 +213,8 @@ export default function MentionsLegalesPage() {
                     <span className="font-bold text-ipb-text">Adresse</span>
                   </div>
                   <address className="not-italic text-ipb-text text-sm">
-                    13 rue du Recteur Dottin<br />
-                    31100 Toulouse
+                    54 avenue Jean Jaurès<br />
+                    31170 Tournefeuille
                   </address>
                 </div>
               </div>
@@ -344,7 +348,7 @@ export default function MentionsLegalesPage() {
                 <div className="bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
                   <h3 className="font-bold text-ipb-text mb-3">Responsable du traitement</h3>
                   <p>Bâti Halli, représentée par son gérant</p>
-                  <p>13 rue du Recteur Dottin, 31100 Toulouse</p>
+                  <p>54 avenue Jean Jaurès, 31170 Tournefeuille</p>
                   <p>Email : <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange hover:underline">contact@ipb-expertise.fr</a></p>
                 </div>
 

@@ -40,9 +40,9 @@ const organizationSchema = {
   "numberOfEmployees": { "@type": "QuantitativeValue", "value": "8" },
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "13 rue du Recteur Dottin",
-    "addressLocality": "Toulouse",
-    "postalCode": "31100",
+    "streetAddress": "54 avenue Jean Jaurès",
+    "addressLocality": "Tournefeuille",
+    "postalCode": "31170",
     "addressRegion": "Occitanie",
     "addressCountry": "FR"
   },
