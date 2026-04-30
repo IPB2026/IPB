@@ -102,29 +102,41 @@ export function Hero() {
             </div>
           </RevealOnScroll>
 
-          {/* Stats compactes en ligne — flex-wrap pour éviter overflow mobile */}
+          {/* Stats compactes — sur mobile : 3 colonnes égales centrées avec
+              séparateurs verticaux fins. Sur desktop : layout horizontal
+              à gauche avec gaps généreux. */}
           <RevealOnScroll delay={0.24}>
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-4 sm:gap-x-8 lg:gap-x-12 pt-8 border-t border-ipb-rule">
-              <div>
-                <p className="font-serif text-2xl sm:text-3xl text-ipb-text font-bold leading-none">
+            <div className="flex items-stretch justify-between sm:justify-start sm:gap-x-10 lg:gap-x-12 pt-8 border-t border-ipb-rule">
+              <div className="flex-1 sm:flex-initial text-center sm:text-left">
+                <p className="font-serif text-[26px] sm:text-3xl text-ipb-text font-bold leading-none whitespace-nowrap">
                   <StatCounter value={850} />
                   <span className="text-ipb-orange">+</span>
                 </p>
-                <p className="text-[10px] text-ipb-light uppercase tracking-[0.16em] mt-2">Chantiers livrés</p>
-              </div>
-              <div className="h-10 w-px bg-ipb-rule hidden xs:block" aria-hidden="true" />
-              <div>
-                <p className="font-serif text-2xl sm:text-3xl text-ipb-text font-bold leading-none">
-                  <StatCounter value={4.9} decimals={1} /><span className="text-ipb-light text-xl sm:text-2xl">/5</span>
+                <p className="text-[9px] sm:text-[10px] text-ipb-light uppercase tracking-[0.14em] sm:tracking-[0.16em] mt-2 whitespace-nowrap">
+                  Chantiers livrés
                 </p>
-                <p className="text-[10px] text-ipb-light uppercase tracking-[0.16em] mt-2">Note Google</p>
               </div>
-              <div className="h-10 w-px bg-ipb-rule hidden sm:block" aria-hidden="true" />
-              <div>
-                <p className="font-serif text-2xl sm:text-3xl text-ipb-text font-bold leading-none">
-                  10<span className="text-ipb-light text-xl sm:text-2xl"> ans</span>
+
+              <div className="w-px bg-ipb-rule self-center h-10 mx-1 sm:mx-0" aria-hidden="true" />
+
+              <div className="flex-1 sm:flex-initial text-center sm:text-left">
+                <p className="font-serif text-[26px] sm:text-3xl text-ipb-text font-bold leading-none whitespace-nowrap">
+                  <StatCounter value={4.9} decimals={1} /><span className="text-ipb-light text-lg sm:text-2xl">/5</span>
                 </p>
-                <p className="text-[10px] text-ipb-light uppercase tracking-[0.16em] mt-2">Décennale AXA</p>
+                <p className="text-[9px] sm:text-[10px] text-ipb-light uppercase tracking-[0.14em] sm:tracking-[0.16em] mt-2 whitespace-nowrap">
+                  Note Google
+                </p>
+              </div>
+
+              <div className="w-px bg-ipb-rule self-center h-10 mx-1 sm:mx-0" aria-hidden="true" />
+
+              <div className="flex-1 sm:flex-initial text-center sm:text-left">
+                <p className="font-serif text-[26px] sm:text-3xl text-ipb-text font-bold leading-none whitespace-nowrap">
+                  10<span className="text-ipb-light text-lg sm:text-2xl"> ans</span>
+                </p>
+                <p className="text-[9px] sm:text-[10px] text-ipb-light uppercase tracking-[0.14em] sm:tracking-[0.16em] mt-2 whitespace-nowrap">
+                  Décennale AXA
+                </p>
               </div>
             </div>
           </RevealOnScroll>
