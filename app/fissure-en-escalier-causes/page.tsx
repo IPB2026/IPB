@@ -9,13 +9,13 @@ import { Footer } from '@/components/home/Footer';
 import { CheckCircle, Phone, ArrowRight, AlertTriangle, Home, Layers, TreeDeciduous, Construction, Clock, Shield, TrendingUp, ChevronRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Fissure en Escalier : Causes, Dangers et Réparation | Expert Occitanie',
-  description: 'Fissure en escalier sur votre mur ? ⚠️ Signe de tassement différentiel. Causes (sol argileux, sécheresse), dangers structurels et solutions (agrafage). Expert Toulouse, Montauban, Auch (31-82-32).',
+  title: 'Fissure en Escalier · Tassement Différentiel · Toulouse',
+  description: "⚠️ Fissure en escalier = tassement différentiel. Causes (sol argileux, sécheresse) et agrafage. Expert Toulouse. ☎ 05 82 95 33 75",
   keywords: ['fissure en escalier', 'fissure diagonale', 'tassement différentiel', 'sol argileux', 'agrafage fissures', 'expert fissures toulouse'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/fissure-en-escalier-causes' },
   openGraph: {
-    title: 'Fissure en Escalier : Causes et Solutions | IPB',
-    description: 'Une fissure en escalier révèle un tassement différentiel. Diagnostic et traitement par agrafage. Expert Occitanie.',
+    title: 'Fissure en Escalier · Causes et Solutions · IPB',
+    description: "Tassement différentiel. Diagnostic et traitement par agrafage. Décennale AXA.",
     url: 'https://www.ipb-expertise.fr/fissure-en-escalier-causes',
     type: 'article',
     images: [{ url: '/images/fissure-facade-diagonale.webp', width: 1200, height: 630, alt: 'Fissure en escalier sur mur' }],

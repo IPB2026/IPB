@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
   const villeNom = villeData.nom;
 
   return {
-    title: `Traitement de l'humidité ${villeNom} (${deptCode}) · Institut IPB`,
-    description: `Institut de pathologie du bâtiment à ${villeNom}. Injection de résine, cuvelage, ventilation, drainage : solution adaptée selon diagnostic. Décennale AXA.`,
+    title: `Traitement Humidité ${villeNom} ${deptCode} · Garantie 30 ans`,
+    description: `Traitement humidité à ${villeNom} : injection résine, cuvelage, VMI, drainage. Garantie 30 ans. Décennale AXA. ☎ 05 82 95 33 75`,
     keywords: [
       `traitement humidité ${ville}`,
       `injection résine ${ville}`,
@@ -28,8 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     ],
     alternates: { canonical: `https://www.ipb-expertise.fr/traitement-humidite/${ville}` },
     openGraph: {
-      title: `Traitement de l'humidité ${villeNom} · Institut IPB`,
-      description: `Solutions d'humidité durables à ${villeNom}, posées sous garantie décennale.`,
+      title: `Traitement Humidité ${villeNom} · IPB`,
+      description: `Injection résine, cuvelage, VMI à ${villeNom}. Garantie 30 ans. Décennale AXA.`,
       url: `https://www.ipb-expertise.fr/traitement-humidite/${ville}`,
       type: 'website',
       images: [{ url: '/images/humidite-avant-apres.webp', width: 1200, height: 630, alt: `Traitement humidité ${villeNom}` }],

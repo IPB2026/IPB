@@ -16,8 +16,8 @@ import { StatCounter } from '@/components/ui/StatCounter';
  */
 
 export const metadata: Metadata = {
-  title: "Expert fissures Toulouse — Diagnostic sous 7 jours · IPB",
-  description: "Institut de pathologie du bâtiment à Toulouse. Diagnostic instrumenté, agrafage structurel. Décennale AXA. 850 chantiers livrés.",
+  title: "Expert Fissures Toulouse · Diagnostic Sous 7 Jours · AXA",
+  description: "Diagnostic structurel à Toulouse, agrafage. 850 chantiers depuis 2019. Décennale AXA. Sous 7 jours. ☎ 05 82 95 33 75",
   robots: { index: false, follow: false }, // Landing Ads : ne pas indexer (évite duplicate content avec la page SEO)
   alternates: { canonical: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31' },
 };

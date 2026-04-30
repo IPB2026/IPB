@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Décrire ma situation · Fissures et mur porteur · IPB Toulouse',
-  description: "Décrivez votre situation : fissures sur la maison, projet d'ouverture de mur porteur, création de baie vitrée. Réponse d'un expert IPB sous 24 heures.",
+  title: 'Diagnostic Fissures & Mur Porteur Toulouse · Gratuit',
+  description: "Décrivez votre situation : fissures, mur porteur, baie vitrée. Réponse d'un expert IPB sous 24h. Gratuit, sans engagement. ☎ 05 82 95 33 75",
   keywords: [
     'expertise fissures toulouse',
     'expertise mur porteur toulouse',
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     'rapport fissure assurance',
   ],
   openGraph: {
-    title: 'Décrire ma situation · Institut IPB Toulouse',
+    title: 'Diagnostic Fissures & Mur Porteur · IPB Toulouse',
     description: "Échange technique avec l’institut IPB. Fissures, mur porteur, baie vitrée. Réponse sous 24 heures.",
     url: 'https://www.ipb-expertise.fr/diagnostic',
     siteName: 'IPB - Institut de pathologie du bâtiment',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Décrire ma situation · Institut IPB Toulouse',
+    title: 'Diagnostic Fissures & Mur Porteur · IPB Toulouse',
     description: "Échange technique avec l’institut IPB. Réponse sous 24 heures.",
     images: ['/images/IPB_Logo_HD.png'],
   },

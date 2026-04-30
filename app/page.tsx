@@ -57,8 +57,8 @@ const organizationSchema = {
 };
 
 export const metadata: Metadata = {
-  title: "IPB — Institut de pathologie du bâtiment · Diagnostic de fissures et ouverture de mur porteur · Toulouse",
-  description: "Institut indépendant spécialisé en structure du bâtiment. Diagnostic de fissures et ouverture de mur porteur en Occitanie. Décennale AXA. 850 chantiers livrés depuis 2019.",
+  title: "Expert Fissures & Mur Porteur Toulouse · Décennale AXA",
+  description: "Diagnostic fissures, ouverture mur porteur, baie vitrée à Toulouse. 850 chantiers depuis 2019. Décennale AXA. Réponse 24h. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures Toulouse',
     'expertise fissures Haute-Garonne',
@@ -74,8 +74,8 @@ export const metadata: Metadata = {
     'Toulouse', 'Montauban', 'Auch', 'Albi',
   ],
   openGraph: {
-    title: "IPB — Institut de pathologie du bâtiment · Toulouse",
-    description: "Diagnostic de fissures et ouverture de mur porteur en Occitanie. Institut indépendant. Décennale AXA. 850 chantiers livrés.",
+    title: "Expert Fissures & Mur Porteur Toulouse · IPB",
+    description: "Diagnostic fissures et ouverture mur porteur en Occitanie. 850 chantiers depuis 2019. Décennale AXA.",
     url: "https://www.ipb-expertise.fr",
     siteName: "IPB - Institut de Pathologie du Bâtiment",
     images: [
@@ -91,8 +91,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "IPB — Institut de pathologie du bâtiment · Toulouse",
-    description: "Diagnostic de fissures et ouverture de mur porteur en Occitanie. Décennale AXA.",
+    title: "Expert Fissures & Mur Porteur Toulouse · IPB",
+    description: "Diagnostic fissures et ouverture mur porteur Toulouse. Décennale AXA.",
     images: [
       {
         url: "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",

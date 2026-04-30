@@ -7,8 +7,8 @@ import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, Wind, ChevronRight, Shield, CheckCircle, XCircle, ThermometerSun, Droplets, Home } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'VMI Ventilation Insufflation : Prix, Avis et Installation | Expert Occitanie',
-  description: 'VMI (Ventilation Mécanique par Insufflation) : solution anti-condensation et moisissures. Prix 2500-4500€ installée. Avantages vs VMC. Installateur Toulouse, Montauban, Auch (31-82-32).',
+  title: 'VMI Ventilation Insufflation · Prix 2500-4500€ Toulouse',
+  description: "VMI : solution anti-condensation et moisissures. Prix 2500-4500€ installée. Installateur Toulouse, Montauban. ☎ 05 82 95 33 75",
   keywords: ['VMI', 'ventilation insufflation', 'anti condensation', 'VMI prix', 'VMI vs VMC'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/vmi-ventilation-insufflation' },
 };

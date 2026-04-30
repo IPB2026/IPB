@@ -8,8 +8,8 @@ import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, AlertTriangle, Search, ChevronRight, Shield, CheckCircle, Eye, Ruler, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Microfissure Façade : Quand S\'inquiéter ? Guide Expert | Occitanie (31-82-32)',
-  description: 'Microfissures sur votre façade ? Toutes ne sont pas dangereuses. Guide pour différencier fissure esthétique et structurelle. Critères d\'alerte et quand appeler un expert. Toulouse, Montauban, Auch.',
+  title: "Microfissure Façade · Quand s'inquiéter ? · Toulouse",
+  description: "Microfissures façade : esthétique ou structurelle ? Critères d'alerte et quand appeler un expert. Toulouse, Montauban. ☎ 05 82 95 33 75",
   keywords: ['microfissure', 'fissure façade', 'faïençage', 'fissure superficielle', 'quand s\'inquiéter fissure'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/microfissure-quand-sinquieter' },
 };

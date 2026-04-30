@@ -12,8 +12,8 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
-  title: 'Expert fissures Montauban (82) · Institut IPB · Diagnostic et agrafage structurel',
-  description: "Institut de pathologie du bâtiment à Montauban et Tarn-et-Garonne. Diagnostic instrumenté de fissures, agrafage structurel, rapport reconnu par les assurances. Décennale AXA.",
+  title: 'Expert Fissures Montauban 82 · RGA Sécheresse · AXA',
+  description: "Spécialiste fissures Montauban et 82, zone à risque RGA. 234 diagnostics. Agrafage, micropieux. Décennale AXA. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures montauban',
     'expertise fissures montauban',
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expert-fissures-montauban-82' },
   openGraph: {
-    title: 'Expert fissures Montauban · Institut IPB',
-    description: "Diagnostic instrumenté, agrafage structurel, rapport reconnu par les assurances. Institut indépendant intervenant sur tout le Tarn-et-Garonne depuis 2019.",
+    title: 'Expert Fissures Montauban · RGA Sécheresse · IPB',
+    description: "Spécialiste fissures Tarn-et-Garonne. Agrafage, micropieux, rapport assurance. Décennale AXA. 234 diagnostics depuis 2019.",
     url: 'https://www.ipb-expertise.fr/expert-fissures-montauban-82',
     type: 'website',
     images: [{

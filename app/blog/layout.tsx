@@ -5,9 +5,8 @@ const site = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr'
 const ogImage = `${site}/images/IPB_Logo_HD.png`;
 
 export const metadata: Metadata = {
-  title: 'Blog Fissures & Humidité — Guides Experts | IPB Toulouse',
-  description:
-    'Guides techniques sur fissures, humidité et structure en Occitanie. Agrafage, injection résine, assurance, revente : articles rédigés par des experts du bâtiment.',
+  title: 'Blog Fissures & Humidité · Guides Experts Toulouse',
+  description: "Guides techniques sur fissures, humidité, structure. Agrafage, injection résine, assurance, revente. Décennale AXA. ☎ 05 82 95 33 75",
   keywords: [
     'fissures maison',
     'humidité murs',

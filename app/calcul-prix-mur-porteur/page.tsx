@@ -10,8 +10,8 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { CalculatorClient } from './CalculatorClient';
 
 export const metadata: Metadata = {
-  title: "Calculateur prix ouverture de mur porteur · Estimation gratuite · IPB Toulouse",
-  description: "Estimez en deux minutes le prix d'une ouverture de mur porteur à Toulouse. Calcul basé sur les chantiers récents de l’institut IPB. Sans inscription.",
+  title: "Calculateur Prix Mur Porteur Toulouse · Gratuit 2 min",
+  description: "Estimez votre prix d'ouverture mur porteur Toulouse en 2 min. Gratuit, sans inscription. Tarifs réels IPB. Décennale AXA. ☎ 05 82 95 33 75",
   keywords: [
     'prix ouverture mur porteur toulouse',
     'devis mur porteur en ligne',
@@ -22,8 +22,8 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/calcul-prix-mur-porteur' },
   openGraph: {
-    title: "Calculateur prix ouverture de mur porteur · IPB Toulouse",
-    description: "Estimation gratuite en 2 minutes. Basée sur les chantiers récents de l’institut en Occitanie.",
+    title: "Calculateur Prix Mur Porteur Toulouse · IPB",
+    description: "Estimation gratuite en 2 minutes. Tarifs réels IPB. Décennale AXA.",
     url: 'https://www.ipb-expertise.fr/calcul-prix-mur-porteur',
     type: 'website',
   },

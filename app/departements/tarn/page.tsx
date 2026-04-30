@@ -8,8 +8,8 @@ import { Footer } from '@/components/home/Footer';
 import { MapPin, ArrowRight, Phone, CheckCircle, AlertTriangle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures et Humidité Tarn (81) | IPB Expertise',
-  description: 'Expert en fissures et humidité dans le Tarn (81). Intervention Albi, Castres, Gaillac. Diagnostic sous 48h.',
+  title: 'Expert Fissures & Humidité Tarn 81 · Albi · AXA',
+  description: "Expert fissures et humidité Tarn (81) : Albi, Castres, Gaillac. Diagnostic 48h. Décennale AXA. ☎ 05 82 95 33 75",
   keywords: ['expert fissures tarn', 'expert humidité 81', 'fissures albi', 'humidité castres'],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/departements/tarn',

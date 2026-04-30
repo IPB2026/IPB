@@ -9,8 +9,8 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Prendre rendez-vous avec l’institut · IPB Toulouse',
-  description: "Échangez 15 minutes par téléphone avec Ludovic, fondateur de l’institut IPB. Diagnostic préalable gratuit, sans engagement. Toulouse, Montauban, Auch, Albi.",
+  title: 'Prendre RDV avec l\'institut · IPB Toulouse · 15 min',
+  description: "15 min au téléphone avec Ludovic, fondateur d'IPB. Diagnostic préalable gratuit, sans engagement. ☎ 05 82 95 33 75",
   keywords: ['rendez-vous expert fissures', 'rdv cabinet structure toulouse', 'appel ludovic ipb', 'consultation expert bâtiment'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/rdv-cabinet' },
   openGraph: {

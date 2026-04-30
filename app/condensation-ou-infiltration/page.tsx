@@ -8,8 +8,8 @@ import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, ChevronRight, Droplets, ThermometerSun, Cloud, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Condensation ou Infiltration ? Guide Diagnostic Humidité | Expert Occitanie',
-  description: 'Murs humides : condensation ou infiltration ? Comment différencier, identifier la cause exacte et choisir le bon traitement. Diagnostic expert Toulouse, Montauban, Auch (31-82-32) 48h.',
+  title: 'Condensation ou Infiltration · Guide Diagnostic Toulouse',
+  description: "Murs humides : condensation ou infiltration ? Comment différencier et choisir le bon traitement. Diagnostic 48h. ☎ 05 82 95 33 75",
   keywords: ['condensation mur', 'infiltration eau', 'diagnostic humidité', 'différence condensation infiltration'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/condensation-ou-infiltration' },
 };

@@ -11,16 +11,14 @@ import { quartiersData, quartierSlugs } from '@/app/data/quartiers';
 const site = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr').replace(/\/+$/, '');
 
 export const metadata: Metadata = {
-  title: 'Quartiers Toulouse — Fissures & humidité | IPB Expertise',
-  description:
-    'Pages dédiées par quartier toulousain : risques RGA, humidité, fissures et solutions. Expertise indépendante sur mesure à Toulouse et Haute-Garonne.',
+  title: 'Quartiers Toulouse · Fissures & Humidité · AXA',
+  description: "Pages par quartier toulousain : risques RGA, humidité, fissures, solutions. Expertise indépendante. Décennale AXA. ☎ 05 82 95 33 75",
   alternates: {
     canonical: `${site}/quartiers`,
   },
   openGraph: {
-    title: 'Quartiers Toulouse — Expert fissures & humidité | IPB',
-    description:
-      'Découvrez nos analyses locales par quartier : Capitole, Saint-Cyprien, Minimes, Côte Pavée et plus encore.',
+    title: 'Quartiers Toulouse · Expert Fissures & Humidité · IPB',
+    description: "Analyses par quartier : Capitole, Saint-Cyprien, Minimes, Côte Pavée. Décennale AXA.",
     url: `${site}/quartiers`,
     siteName: 'IPB Expertise',
     locale: 'fr_FR',

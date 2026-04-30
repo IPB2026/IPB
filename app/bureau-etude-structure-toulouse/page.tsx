@@ -11,8 +11,8 @@ import Script from 'next/script';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Bureau d'études structure à Toulouse · IPN, HEB, mur porteur · Institut IPB",
-  description: "Bureau d'études structure intégré à Toulouse. Note de calcul IPN/HEB, dimensionnement de poutre, expertise mur porteur, ouvrages neufs et rénovation. Décennale AXA. Réponse sous 24 h.",
+  title: "Bureau d'Études Structure Toulouse · IPN/HEB · 24h",
+  description: "Bureau d'études structure Toulouse : note de calcul IPN/HEB, dimensionnement poutre. Décennale AXA. Réponse 24h. ☎ 05 82 95 33 75",
   keywords: [
     'bureau études structure toulouse',
     'bureau études structure haute-garonne',

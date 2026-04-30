@@ -9,8 +9,8 @@ import { ArrowRight, Phone, Shield, Ruler, FileText, CheckCircle, Award, Hammer,
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Partenariat Architectes d'Intérieur Toulouse — Bureau d'Études Mur Porteur | IPB",
-  description: "Architectes d'intérieur, décorateurs : IPB est votre partenaire technique pour les projets « espace ouvert ». Étude structure IPN/HEB, ouverture mur porteur, décennale AXA. Co-traitance simple, devis sous 24h.",
+  title: "Architectes d'Intérieur Toulouse · BE Mur Porteur · 24h",
+  description: "Partenaire structure pour architectes d'intérieur Toulouse : étude IPN/HEB, ouverture mur porteur. Décennale AXA. Devis 24h. ☎ 05 82 95 33 75",
   keywords: [
     'partenariat architecte intérieur toulouse',
     'bureau études structure pour architectes',
@@ -22,8 +22,8 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/partenaires/architectes-interieur' },
   openGraph: {
-    title: "Partenariat Architectes d'Intérieur — Bureau d'Études Mur Porteur Toulouse | IPB",
-    description: "Vos projets « espace ouvert » nécessitent un partenaire structure fiable, assuré et rapide. Co-traitance ou sous-traitance, tarif pro.",
+    title: "Architectes d'Intérieur · BE Structure Toulouse · IPB",
+    description: "Partenaire structure pour vos projets « espace ouvert ». Co-traitance simple, devis 24h. Décennale AXA.",
     url: 'https://www.ipb-expertise.fr/partenaires/architectes-interieur',
     type: 'website',
   },

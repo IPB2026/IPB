@@ -9,8 +9,8 @@ import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, ChevronRight, AlertTriangle, CheckCircle, XCircle, Clock, Shield } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Mérule : Identification, Dangers et Traitement Urgence | Expert Occitanie',
-  description: 'Mérule (champignon destructeur du bois) ? ⚠️ URGENCE. Comment la reconnaître, dangers pour la maison, traitement professionnel. Intervention urgente Toulouse, Montauban, Auch (31-82-32) 24-48h.',
+  title: 'Mérule · Reconnaître, Traiter en Urgence · Toulouse',
+  description: "⚠️ Mérule (champignon destructeur) : reconnaissance, dangers, traitement professionnel. Intervention 24-48h Toulouse, Montauban, Auch. ☎ 05 82 95 33 75",
   keywords: ['mérule', 'champignon bois', 'traitement mérule', 'mérule pleureuse', 'pourriture bois'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/merule-champignon-traitement' },
 };

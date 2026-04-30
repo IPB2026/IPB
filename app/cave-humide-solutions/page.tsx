@@ -7,8 +7,8 @@ import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, AlertTriangle, Home, ChevronRight, Shield, CheckCircle, Droplets, Wind } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Cave Humide : Cuvelage, Drainage et Solutions | Prix Occitanie (31-82-32)',
-  description: 'Cave humide ou sous-sol inondé ? Causes (infiltrations, nappe, condensation). Solutions : cuvelage (200-400€/m²), drainage, VMI. Diagnostic gratuit Toulouse, Montauban, Auch.',
+  title: 'Cave Humide · Cuvelage 200-400€/m² · Drainage Toulouse',
+  description: "Cave ou sous-sol humide ? Cuvelage (200-400€/m²), drainage, VMI. Diagnostic gratuit Toulouse, Montauban, Auch. ☎ 05 82 95 33 75",
   keywords: ['cave humide', 'cuvelage cave', 'drainage sous-sol', 'infiltration cave', 'étanchéité sous-sol'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/cave-humide-solutions' },
 };

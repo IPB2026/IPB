@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact Expert Fissures & Humidité | IPB',
-  description: 'Contactez IPB, expert fissures et humidité à Toulouse. Devis gratuit, intervention sous 48h. 05 82 95 33 75 ou formulaire en ligne.',
+  title: 'Contact IPB · Expert Fissures & Humidité Toulouse',
+  description: "Contactez IPB Toulouse : devis gratuit, intervention sous 48h. Décennale AXA. Formulaire ou ☎ 05 82 95 33 75",
   keywords: [
     'contact expert fissures toulouse',
     'devis gratuit fissures',
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     '31',
   ],
   openGraph: {
-    title: 'Contactez IPB - Expert Fissures & Humidité Toulouse',
+    title: 'Contact IPB · Expert Fissures & Humidité Toulouse',
     description: 'Intervention rapide dans un rayon de 50 km autour de Toulouse. Devis gratuit et diagnostic professionnel.',
     url: 'https://www.ipb-expertise.fr/contact',
     siteName: 'IPB - Expert Fissures & Humidité',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Contactez IPB - Expert Fissures & Humidité Toulouse',
+    title: 'Contact IPB · Expert Fissures & Humidité Toulouse',
     description: 'Intervention rapide. Devis gratuit. Appelez le 05 82 95 33 75.',
     images: ['/images/IPB_Logo_HD.png'],
   },

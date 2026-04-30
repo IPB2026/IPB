@@ -11,8 +11,8 @@ import { CloudRain, ArrowRight, Phone, AlertTriangle, CheckCircle, Droplets, Hom
 // Pertinent : Retour des pluies, saison des infiltrations
 
 export const metadata: Metadata = {
-  title: 'Infiltrations Automne/Hiver : Diagnostic et Solutions | IPB Expertise',
-  description: 'Retour des pluies : comment détecter et traiter les infiltrations d\'eau. Toiture, façade, fenêtres. Expert humidité Toulouse.',
+  title: 'Infiltrations Automne/Hiver · Diagnostic Toulouse',
+  description: "Retour des pluies : détecter et traiter les infiltrations (toiture, façade, fenêtres). Expert humidité Toulouse. ☎ 05 82 95 33 75",
   keywords: ['infiltration eau', 'infiltration toiture', 'infiltration façade', 'humidité automne', 'fuite toiture'],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/actualites/infiltrations-automne-hiver',

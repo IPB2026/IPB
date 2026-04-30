@@ -8,8 +8,8 @@ import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures & Humidité Haute-Garonne (31) | Toulouse et environs | IPB',
-  description: 'Expert n°1 en traitement des fissures et humidité en Haute-Garonne (31). Intervention rapide à Toulouse, Colomiers, Blagnac, Muret, Tournefeuille. Diagnostic gratuit, garantie décennale 10 ans. Sols argileux, sécheresse.',
+  title: 'Expert Fissures & Humidité Haute-Garonne 31 · AXA',
+  description: "Expert fissures et humidité Haute-Garonne (Toulouse, Colomiers, Muret). Diagnostic gratuit, décennale AXA. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures haute-garonne',
     'expert fissures toulouse',

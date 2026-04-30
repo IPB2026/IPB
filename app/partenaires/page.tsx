@@ -9,8 +9,8 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Programme partenaires · Architectes, marchands de biens, agences · IPB Toulouse",
-  description: "IPB est le partenaire structure des professionnels toulousains : architectes d'intérieur, marchands de biens, agences immobilières. Bureau d'études + travaux. Décennale AXA.",
+  title: "Programme Partenaires Toulouse · Architectes & Pros",
+  description: "Partenaire structure des architectes, marchands de biens, agences immobilières Toulouse. Bureau d'études + travaux. Décennale AXA. ☎ 05 82 95 33 75",
   keywords: ['partenariat structure toulouse', 'sous-traitance bureau études', 'partenaire architecte intérieur', 'partenaire marchand de biens', 'partenaire agence immobilière'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/partenaires' },
 };

@@ -7,8 +7,8 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
-  title: "Ouverture de mur porteur Toulouse — Devis sous 7 jours · IPB",
-  description: "Institut structure intégré : étude technique, calcul de poutre, ouverture, finitions. 4 000 à 10 000 € pour 2,5 m. Décennale AXA.",
+  title: "Ouverture Mur Porteur Toulouse · Devis Sous 7 Jours · AXA",
+  description: "Étude IPN/HEB, ouverture, finitions à Toulouse. 4 000 à 10 000 € pour 2,5 m. Décennale AXA. Devis 7j. ☎ 05 82 95 33 75",
   robots: { index: false, follow: false },
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/mur-porteur' },
 };

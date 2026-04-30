@@ -12,8 +12,8 @@ import Script from 'next/script';
 import { ExpertiseFissuresBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
-  title: 'Diagnostic et traitement des fissures · Toulouse · IPB',
-  description: 'Institut de pathologie du bâtiment. Diagnostic instrumenté, agrafage structurel, reprise en sous-œuvre. Rapports reconnus par les assurances. Toulouse, Montauban, Auch, Albi.',
+  title: 'Diagnostic et Traitement Fissures · Toulouse · AXA',
+  description: "Diagnostic instrumenté, agrafage, micropieux. Rapport opposable assurance. Décennale AXA. Toulouse, Montauban. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures toulouse',
     'expertise fissure toulouse',
@@ -33,8 +33,8 @@ export const metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/fissures' },
   openGraph: {
-    title: 'Diagnostic et traitement des fissures · Institut IPB Toulouse',
-    description: "Diagnostic instrumenté, agrafage structurel, reprise en sous-œuvre. Rapports reconnus par les assurances. Décennale AXA.",
+    title: 'Diagnostic et Traitement Fissures · Toulouse · IPB',
+    description: "Diagnostic instrumenté, agrafage, micropieux. Rapport opposable assurance. Décennale AXA.",
     url: 'https://www.ipb-expertise.fr/expertise/fissures',
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
     locale: 'fr_FR',
