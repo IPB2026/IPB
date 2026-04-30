@@ -120,7 +120,7 @@ export default function CarteSecheressePage() {
                     <p className="text-[12px] text-white uppercase tracking-[0.14em] font-medium mb-1">
                       {s.label}
                     </p>
-                    <p className="text-[11px] text-white/40 tracking-wide">{s.sublabel}</p>
+                    <p className="text-[11px] text-white/75 tracking-wide">{s.sublabel}</p>
                   </div>
                 </RevealOnScroll>
               ))}

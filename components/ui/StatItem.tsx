@@ -61,7 +61,7 @@ export function StatItem({
       <p className="text-[13px] text-white uppercase tracking-[0.14em] font-medium mb-1">
         {label}
       </p>
-      <p className="text-[11px] text-white/40 tracking-wide">{sublabel}</p>
+      <p className="text-[11px] text-white/75 tracking-wide">{sublabel}</p>
     </div>
   );
 }

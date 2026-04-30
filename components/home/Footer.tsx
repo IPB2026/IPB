@@ -123,10 +123,10 @@ export function Footer() {
 
         {/* Bandeau légal */}
         <div className="pt-10 border-t border-white/6 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
-          <p className="text-[12px] text-white/55">
+          <p className="text-[12px] text-white/70">
             © {new Date().getFullYear()} IPB Expertise — Institut de pathologie du bâtiment · Toulouse
           </p>
-          <div className="flex flex-wrap gap-x-6 gap-y-2 text-[12px] text-white/55">
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-[12px] text-white/70">
             <Link href="/legal/mentions-legales" className="hover:text-white transition-colors">
               Mentions légales
             </Link>

@@ -8,7 +8,7 @@ export function TopBar() {
   return (
     <div className="bg-ipb-navy text-white px-6 py-[9px]">
       <div className="max-w-ipb mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
-        <div className="hidden md:flex items-center gap-6 text-[11px] tracking-[0.04em] text-white/35 uppercase">
+        <div className="hidden md:flex items-center gap-6 text-[11px] tracking-[0.04em] text-white/65 uppercase">
           <span>Institut de pathologie du bâtiment</span>
           <span aria-hidden="true">·</span>
           <span>Toulouse · Montauban · Auch · Albi</span>

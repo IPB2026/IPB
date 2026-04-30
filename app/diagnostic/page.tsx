@@ -6,6 +6,7 @@ import { submitQuickCallback } from '@/app/actions/quickCallback';
 import { useRecaptcha } from '@/hooks/useRecaptcha';
 import { trackEvent } from '@/lib/analytics';
 import { validatePhoneOrError } from '@/lib/validations/phone';
+import { FormError } from '@/components/ui/FormError';
 
 function trackPhoneClick() {
   trackEvent('conversion', { send_to: 'AW-17902440600/0aY8COSl6JccEJlhxthC' });
@@ -712,7 +713,7 @@ export default function DiagnosticPage() {
                     href="tel:0582953375"
                     className="group relative bg-ipb-navy text-white rounded-[6px] p-7 transition-all hover:shadow-[0_12px_36px_rgba(11,24,38,0.15)] hover:-translate-y-0.5 flex flex-col h-full text-left"
                   >
-                    <span className="font-serif text-white/30 group-hover:text-ipb-orange-l transition-colors text-[12px] font-bold tracking-wider mb-6">03</span>
+                    <span className="font-serif text-white/60 group-hover:text-ipb-orange-l transition-colors text-[12px] font-bold tracking-wider mb-6">03</span>
                     <h2 className="font-serif text-white font-bold text-[20px] leading-tight mb-3">
                       Je préfère expliquer<br />de vive voix
                     </h2>
@@ -1100,11 +1101,8 @@ export default function DiagnosticPage() {
                     </label>
                   </div>
 
-                  {formError && (
-                    <div className="bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl px-4 py-2.5">
-                      {formError}
-                    </div>
-                  )}
+                  <FormError message={formError} />
+                  {/* keep original spacing */}
 
                   <button
                     type="submit"

@@ -7,6 +7,7 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 import { trackCalculatorStart, trackCalculatorComplete, trackCalculatorLeadCapture } from '@/lib/analytics';
 import { submitCalculatorLead } from '@/app/actions/calculator';
 import { validatePhoneOrError } from '@/lib/validations/phone';
+import { FormError } from '@/components/ui/FormError';
 
 /**
  * Calculateur prix mur porteur — outil interactif lead gen.
@@ -233,7 +234,7 @@ export function CalculatorClient() {
       <div className="space-y-6">
         {/* Bandeau résultat */}
         <div className="bg-ipb-navy text-white rounded-[6px] p-6 md:p-8 lg:p-10 text-center">
-          <p className="text-[10px] text-white/40 uppercase tracking-[0.18em] mb-4">
+          <p className="text-[10px] text-white/75 uppercase tracking-[0.18em] mb-4">
             Estimation pour votre projet
           </p>
           <p
@@ -242,7 +243,7 @@ export function CalculatorClient() {
           >
             {estimate.min.toLocaleString('fr-FR')} – {estimate.max.toLocaleString('fr-FR')} €
           </p>
-          <p className="text-[12px] text-white/55 uppercase tracking-[0.14em]">TTC · finitions comprises</p>
+          <p className="text-[12px] text-white/75 uppercase tracking-[0.14em]">TTC · finitions comprises</p>
         </div>
 
         {/* Détail */}
@@ -307,29 +308,25 @@ export function CalculatorClient() {
             </p>
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-[10px] uppercase tracking-[0.14em] text-ipb-light font-medium mb-2">Email</label>
-                <input type="email" required value={leadEmail} onChange={e => setLeadEmail(e.target.value)}
+                <label htmlFor="calc-lead-email" className="block text-[10px] uppercase tracking-[0.14em] text-ipb-muted font-medium mb-2">Email</label>
+                <input id="calc-lead-email" type="email" required value={leadEmail} onChange={e => setLeadEmail(e.target.value)} autoComplete="email"
                   className="w-full px-4 py-3 border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-[14px] font-light focus:outline-none focus:border-ipb-orange transition-colors" />
               </div>
               <div>
-                <label className="block text-[10px] uppercase tracking-[0.14em] text-ipb-light font-medium mb-2">Téléphone (optionnel)</label>
-                <input type="tel" value={leadPhone} onChange={e => setLeadPhone(e.target.value)}
+                <label htmlFor="calc-lead-phone" className="block text-[10px] uppercase tracking-[0.14em] text-ipb-muted font-medium mb-2">Téléphone (optionnel)</label>
+                <input id="calc-lead-phone" type="tel" value={leadPhone} onChange={e => setLeadPhone(e.target.value)} autoComplete="tel"
                   className="w-full px-4 py-3 border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-[14px] font-light focus:outline-none focus:border-ipb-orange transition-colors" />
               </div>
             </div>
             <div>
-              <label className="block text-[10px] uppercase tracking-[0.14em] text-ipb-light font-medium mb-2">Commune du chantier</label>
-              <input type="text" required value={leadCity} onChange={e => setLeadCity(e.target.value)} placeholder="Toulouse, Saint-Cyprien, Pamiers..."
+              <label htmlFor="calc-lead-city" className="block text-[10px] uppercase tracking-[0.14em] text-ipb-muted font-medium mb-2">Commune du chantier</label>
+              <input id="calc-lead-city" type="text" required value={leadCity} onChange={e => setLeadCity(e.target.value)} placeholder="Toulouse, Saint-Cyprien, Pamiers..." autoComplete="address-level2"
                 className="w-full px-4 py-3 border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-[14px] font-light focus:outline-none focus:border-ipb-orange transition-colors" />
             </div>
             <MagneticButton type="submit" variant="primary" className="w-full">
               {submitting ? 'Envoi…' : "Envoyer mon estimation"}
             </MagneticButton>
-            {leadError && (
-              <div className="bg-red-50 border border-red-200 text-red-700 text-[13px] rounded-[3px] px-4 py-3 leading-[1.5]" role="alert">
-                {leadError}
-              </div>
-            )}
+            {leadError && <FormError message={leadError} />}
           </form>
         )}
 
@@ -404,24 +401,26 @@ export function CalculatorClient() {
             <div className="space-y-8">
               <div>
                 <div className="flex justify-between items-end mb-3">
-                  <label className="text-[12px] uppercase tracking-[0.14em] text-ipb-light font-medium">Largeur</label>
-                  <span className="font-serif text-ipb-text text-[24px] font-bold">{largeur.toFixed(1)} m</span>
+                  <label htmlFor="calc-largeur" className="text-[12px] uppercase tracking-[0.14em] text-ipb-muted font-medium">Largeur</label>
+                  <span className="font-serif text-ipb-text text-[24px] font-bold" aria-hidden="true">{largeur.toFixed(1)} m</span>
                 </div>
-                <input type="range" min="1" max="5" step="0.1" value={largeur} onChange={e => setLargeur(parseFloat(e.target.value))}
+                <input id="calc-largeur" type="range" min="1" max="5" step="0.1" value={largeur} onChange={e => setLargeur(parseFloat(e.target.value))}
+                  aria-valuemin={1} aria-valuemax={5} aria-valuenow={largeur} aria-valuetext={`${largeur.toFixed(1)} mètres`}
                   className="w-full accent-ipb-orange" />
-                <div className="flex justify-between text-[11px] text-ipb-light mt-1">
+                <div className="flex justify-between text-[11px] text-ipb-muted mt-1" aria-hidden="true">
                   <span>1 m</span><span>5 m</span>
                 </div>
               </div>
 
               <div>
                 <div className="flex justify-between items-end mb-3">
-                  <label className="text-[12px] uppercase tracking-[0.14em] text-ipb-light font-medium">Hauteur</label>
-                  <span className="font-serif text-ipb-text text-[24px] font-bold">{hauteur.toFixed(1)} m</span>
+                  <label htmlFor="calc-hauteur" className="text-[12px] uppercase tracking-[0.14em] text-ipb-muted font-medium">Hauteur</label>
+                  <span className="font-serif text-ipb-text text-[24px] font-bold" aria-hidden="true">{hauteur.toFixed(1)} m</span>
                 </div>
-                <input type="range" min="2" max="3" step="0.1" value={hauteur} onChange={e => setHauteur(parseFloat(e.target.value))}
+                <input id="calc-hauteur" type="range" min="2" max="3" step="0.1" value={hauteur} onChange={e => setHauteur(parseFloat(e.target.value))}
+                  aria-valuemin={2} aria-valuemax={3} aria-valuenow={hauteur} aria-valuetext={`${hauteur.toFixed(1)} mètres`}
                   className="w-full accent-ipb-orange" />
-                <div className="flex justify-between text-[11px] text-ipb-light mt-1">
+                <div className="flex justify-between text-[11px] text-ipb-muted mt-1" aria-hidden="true">
                   <span>2 m</span><span>3 m</span>
                 </div>
               </div>

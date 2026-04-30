@@ -93,7 +93,7 @@ export function LeadWidget() {
         {/* Header */}
         <div className="bg-ipb-navy text-white px-5 py-3.5 flex items-center justify-between">
           <div>
-            <p className="text-[10px] uppercase tracking-[0.16em] text-white/40 font-medium">
+            <p className="text-[10px] uppercase tracking-[0.16em] text-white/75 font-medium">
               Étape {step} sur 3
             </p>
             <p className="font-serif text-[14px] font-medium leading-tight mt-0.5">
@@ -102,7 +102,7 @@ export function LeadWidget() {
           </div>
           <button
             onClick={open ? dismiss : () => setOpen(true)}
-            className="text-white/60 hover:text-white transition-colors p-1 -mr-1"
+            className="text-white/80 hover:text-white transition-colors p-1 -mr-1"
             aria-label={open ? 'Fermer' : 'Ouvrir'}
           >
             {open ? (

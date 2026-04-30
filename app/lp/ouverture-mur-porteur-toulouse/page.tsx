@@ -112,7 +112,7 @@ export default function LandingMurPorteurToulouse() {
                   <StatCounter value={s.value} decimals={s.decimals || 0} />
                   <span className="text-ipb-orange-l">{s.suffix}</span>
                 </p>
-                <p className="text-[10px] text-white/55 uppercase tracking-[0.14em]">{s.label}</p>
+                <p className="text-[10px] text-white/75 uppercase tracking-[0.14em]">{s.label}</p>
               </div>
             ))}
           </div>

@@ -79,8 +79,8 @@ export default function RdvCabinetPage() {
                     href="tel:0582953375"
                     className="group block bg-ipb-navy text-white rounded-[6px] p-7 lg:p-8 hover:shadow-2xl transition-all hover:-translate-y-0.5"
                   >
-                    <p className="text-[10px] text-white/40 uppercase tracking-[0.18em] mb-3">Le plus rapide</p>
-                    <p className="font-serif text-[15px] text-white/55 mb-2">Appeler maintenant</p>
+                    <p className="text-[10px] text-white/75 uppercase tracking-[0.18em] mb-3">Le plus rapide</p>
+                    <p className="font-serif text-[15px] text-white/75 mb-2">Appeler maintenant</p>
                     <p
                       className="font-serif text-white font-bold leading-none mb-4"
                       style={{ fontSize: 'clamp(36px, 3.6vw, 52px)', letterSpacing: '-0.02em' }}

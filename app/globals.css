@@ -102,17 +102,33 @@
     @apply outline-none ring-2 ring-orange-500 ring-offset-2 rounded bg-orange-50;
   }
   
-  /* Désactiver les outlines par défaut du navigateur pour utiliser les nôtres */
+  /* Focus visible accessibilité (WCAG 2.4.7) — outline custom IPB
+     Affiché uniquement sur navigation clavier (focus-visible), pas au clic souris */
   *:focus {
     outline: none;
   }
-  
-  /* Maintenir l'accessibilité pour les utilisateurs qui ont besoin d'outlines */
+  *:focus-visible {
+    outline: 2px solid var(--ipb-orange);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  /* Sur fonds sombres, ring blanc + halo orange pour contraster */
+  .bg-ipb-navy *:focus-visible,
+  .bg-ipb-text *:focus-visible,
+  [class*="bg-slate-9"] *:focus-visible {
+    outline-color: #ffffff;
+    box-shadow: 0 0 0 4px var(--ipb-orange);
+  }
+
+  /* Respect des préférences utilisateur — animations réduites */
   @media (prefers-reduced-motion: reduce) {
-    * {
+    *,
+    *::before,
+    *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
     }
   }
   

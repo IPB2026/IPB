@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Phone, MapPin, Mail, Send, CheckCircle } from 'lucide-react';
 import { submitContactForm } from '@/app/actions/contact';
 import { validatePhoneOrError } from '@/lib/validations/phone';
+import { FormError } from '@/components/ui/FormError';
 
 export function ContactSection() {
   const [formData, setFormData] = useState({

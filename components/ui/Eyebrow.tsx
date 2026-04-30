@@ -14,7 +14,7 @@ interface EyebrowProps {
 
 export function Eyebrow({ children, variant = 'light', className = '' }: EyebrowProps) {
   const ruleColor = variant === 'dark' ? 'bg-ipb-orange' : 'bg-ipb-rule';
-  const textColor = variant === 'dark' ? 'text-white/50' : 'text-ipb-light';
+  const textColor = variant === 'dark' ? 'text-white/75' : 'text-ipb-light';
 
   return (
     <div className={`flex items-center gap-3 mb-5 ${className}`}>

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Phone, CheckCircle, ArrowRight } from 'lucide-react';
 import { submitQuickCallback } from '@/app/actions/quickCallback';
 import { validatePhoneOrError } from '@/lib/validations/phone';
+import { FormError } from '@/components/ui/FormError';
 
 export function QuickCallbackForm() {
   const [name, setName] = useState('');
@@ -115,7 +116,7 @@ export function QuickCallbackForm() {
                     </>
                   )}
                 </button>
-                {error && <p className="text-red-400 text-xs text-center">{error}</p>}
+                {error && <FormError message={error} />}
                 <p className="text-slate-500 text-[10px] text-center">
                   Sans engagement • Vos données restent confidentielles
                 </p>

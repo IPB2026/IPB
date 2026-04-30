@@ -70,15 +70,15 @@ export function StickyDiagnosticCta() {
         <div className="bg-ipb-navy text-white/85 text-[11px] py-2 px-4 flex items-center justify-center gap-3 border-b border-white/5">
           <span className="flex items-center gap-1.5">
             <span className="font-serif italic text-ipb-orange-l text-[13px] font-bold leading-none">4.9</span>
-            <span className="text-white/50 tracking-[0.08em]">Google</span>
+            <span className="text-white/75 tracking-[0.08em]">Google</span>
           </span>
           <span className="text-white/20" aria-hidden="true">·</span>
           <span className="flex items-center gap-1.5">
             <span className="font-serif italic text-ipb-orange-l text-[13px] font-bold leading-none">850+</span>
-            <span className="text-white/50 tracking-[0.08em]">chantiers</span>
+            <span className="text-white/75 tracking-[0.08em]">chantiers</span>
           </span>
           <span className="text-white/20" aria-hidden="true">·</span>
-          <span className="text-white/50 tracking-[0.08em]">Décennale AXA</span>
+          <span className="text-white/75 tracking-[0.08em]">Décennale AXA</span>
         </div>
 
         {/* CTA principal — fond cream avec filet orange signature */}

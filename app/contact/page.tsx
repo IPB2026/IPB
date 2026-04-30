@@ -9,6 +9,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { CrackSVG } from '@/components/ui/CrackSVG';
+import { FormError } from '@/components/ui/FormError';
 import { submitContactForm } from '@/app/actions/contact';
 
 export default function ContactPage() {
@@ -243,11 +244,7 @@ export default function ContactPage() {
                     <MagneticButton type="submit" variant="primary" className="w-full">
                       {isSubmitting ? 'Envoi en cours…' : 'Envoyer le message'}
                     </MagneticButton>
-                    {errorMessage && (
-                      <div className="bg-red-50 border border-red-200 text-red-700 text-[13px] rounded-[3px] px-4 py-3 leading-[1.5]" role="alert">
-                        {errorMessage}
-                      </div>
-                    )}
+                    {errorMessage && <FormError message={errorMessage} />}
                   </form>
                 )}
               </div>

@@ -184,7 +184,7 @@ export default function NotreExpertPage() {
                 <h2 className="font-serif text-white" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}>
                   Des assurances actives,<br /><em>vérifiables.</em>
                 </h2>
-                <p className="mt-6 text-[14px] leading-[1.85] font-light text-white/55">
+                <p className="mt-6 text-[14px] leading-[1.85] font-light text-white/75">
                   Notre attestation décennale et notre RCP sont remises sur simple demande, avec le devis. Vous pouvez les transmettre à votre notaire, votre assureur ou votre conseil avant tout engagement.
                 </p>
                 <Link
@@ -206,7 +206,7 @@ export default function NotreExpertPage() {
                         <h3 className="font-serif text-white text-[18px] font-bold leading-tight mb-1">
                           {c.name}
                         </h3>
-                        <p className="text-[13px] leading-[1.6] font-light text-white/55">
+                        <p className="text-[13px] leading-[1.6] font-light text-white/75">
                           {c.detail}
                         </p>
                       </div>

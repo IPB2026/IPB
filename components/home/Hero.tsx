@@ -85,7 +85,7 @@ export function Hero() {
 
               {/* Liens services compactés en bas du panel mobile */}
               <div className="relative z-10 mt-auto p-6 border-t border-white/10 bg-gradient-to-t from-ipb-navy via-ipb-navy/95 to-transparent">
-                <p className="text-[10px] text-white/55 uppercase tracking-[0.18em] mb-3 font-medium">Nos expertises</p>
+                <p className="text-[10px] text-white/75 uppercase tracking-[0.18em] mb-3 font-medium">Nos expertises</p>
                 <div className="flex flex-col gap-2.5">
                   <Link
                     href="/expertise/fissures"
