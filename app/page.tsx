@@ -73,7 +73,6 @@ export const metadata: Metadata = {
     'expertise structure bâtiment Toulouse',
     'expert bâtiment Toulouse',
     'rapport fissure assurance',
-    'micropieux Haute-Garonne',
     'Toulouse', 'Montauban', 'Auch', 'Albi',
   ],
   openGraph: {

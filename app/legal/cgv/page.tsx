@@ -157,7 +157,7 @@ export default function CGVPage() {
               </p>
               <ul className="list-disc pl-6 mt-4 space-y-2">
                 <li><strong>Diagnostics et expertises techniques :</strong> analyse des pathologies du bâtiment, identification des causes, préconisations</li>
-                <li><strong>Travaux de stabilisation structurelle :</strong> agrafage de maçonnerie, harpage, matage technique, reprise en sous-œuvre, micropieux</li>
+                <li><strong>Travaux de stabilisation structurelle :</strong> agrafage de maçonnerie, harpage, matage technique</li>
                 <li><strong>Traitements contre l'humidité :</strong> injection de résine hydrophobe, cuvelage de caves et sous-sols, drainage périphérique, installation de ventilation (VMI/VMC)</li>
                 <li><strong>Travaux de façade :</strong> ravalement, enduit, imperméabilisation, réparation de fissures</li>
               </ul>

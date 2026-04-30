@@ -47,7 +47,7 @@ export const nurturingSequence = {
               <ul style="margin: 0; padding-left: 20px;">
                 <li style="margin-bottom: 8px;"><strong>✅ Comment identifier une fissure structurelle</strong> vs une microfissure bénigne</li>
                 <li style="margin-bottom: 8px;"><strong>✅ Les 3 erreurs fatales</strong> qui aggravent les fissures</li>
-                <li style="margin-bottom: 8px;"><strong>✅ Solutions comparées</strong> : Agrafage (5k€) vs Micropieux (40k€)</li>
+                <li style="margin-bottom: 8px;"><strong>✅ Solutions comparées</strong> : agrafage structurel (5k€) vs reprise en sous-œuvre (40k€)</li>
                 <li style="margin-bottom: 8px;"><strong>✅ Cas pratiques</strong> de maisons sauvées à Toulouse, Montauban, Auch</li>
               </ul>
             </div>

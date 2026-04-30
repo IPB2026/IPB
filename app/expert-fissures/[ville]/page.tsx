@@ -36,8 +36,8 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     : `https://www.ipb-expertise.fr/expert-fissures/${ville}`;
 
   const description = villeData.risqueRGA === 'tres-fort' || villeData.risqueRGA === 'fort'
-    ? `Diagnostic fissures à ${villeNom} (${deptCode}) : zone RGA ${villeData.risqueRGA}. Agrafage, micropieux. Décennale AXA. ☎ 05 82 95 33 75`
-    : `Diagnostic fissures à ${villeNom} (${deptCode}) : agrafage, micropieux, rapport assurance. Décennale AXA. ☎ 05 82 95 33 75`;
+    ? `Diagnostic fissures à ${villeNom} (${deptCode}) : zone RGA ${villeData.risqueRGA}. Agrafage structurel. Décennale AXA. ☎ 05 82 95 33 75`
+    : `Diagnostic fissures à ${villeNom} (${deptCode}) : agrafage structurel, rapport assurance. Décennale AXA. ☎ 05 82 95 33 75`;
 
   return {
     title: `Expert Fissures ${villeNom} ${deptCode} · Décennale AXA`,
@@ -53,12 +53,11 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
       `sol argileux ${slug}`,
       `RGA ${slug}`,
       `catastrophe naturelle sécheresse ${slug}`,
-      `micropieux ${slug}`,
     ],
     alternates: { canonical: canonicalUrl },
     openGraph: {
       title: `Expert Fissures ${villeNom} · Décennale AXA · IPB`,
-      description: `Diagnostic, agrafage, micropieux à ${villeNom}. Rapport opposable assurance. Décennale AXA.`,
+      description: `Diagnostic, agrafage structurel à ${villeNom}. Rapport opposable assurance. Décennale AXA.`,
       url: `https://www.ipb-expertise.fr/expert-fissures/${ville}`,
       type: 'website',
       images: [{ url: '/images/fissures-avant-apres.webp', width: 1200, height: 630, alt: `Expert fissures ${villeNom} — IPB` }],

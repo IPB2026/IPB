@@ -232,7 +232,7 @@ export default function MentionsLegalesPage() {
               </p>
               <ul className="list-disc pl-6 mt-4 space-y-2">
                 <li><strong>Le diagnostic et l'expertise</strong> des pathologies du bâtiment (fissures, humidité, désordres structurels)</li>
-                <li><strong>Les travaux de stabilisation structurelle</strong> : agrafage, harpage, reprise en sous-œuvre, micropieux</li>
+                <li><strong>Les travaux de stabilisation structurelle</strong> : agrafage de maçonnerie, harpage, matage technique</li>
                 <li><strong>Les traitements contre l'humidité</strong> : injection de résine hydrophobe, cuvelage, drainage, ventilation</li>
                 <li><strong>La rénovation de façades</strong> : ravalement, enduit, imperméabilisation</li>
               </ul>

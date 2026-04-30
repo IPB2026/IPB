@@ -138,7 +138,7 @@ const getExpertDiagnosis = (path: 'fissure' | 'mur-porteur', score: number) => {
         urgency: 'Intervention prioritaire',
         urgencyColor: '#C8601F',
         diagnosis: 'Tassement différentiel actif. La structure est en mouvement et nécessite une intervention rapide.',
-        solution: 'Agrafage structurel avec renfort des façades. Reprise en sous-œuvre par micropieux possible si nécessaire.',
+        solution: 'Agrafage structurel avec renfort des façades. Pour les rares cas nécessitant une reprise en sous-œuvre, orientation vers un partenaire spécialisé.',
         delay: 'Visite recommandée sous 2 semaines',
       };
     } else if (score >= 20) {

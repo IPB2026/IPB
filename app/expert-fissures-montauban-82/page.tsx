@@ -13,7 +13,7 @@ import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
   title: 'Expert Fissures Montauban 82 · RGA Sécheresse · AXA',
-  description: "Spécialiste fissures Montauban et 82, zone à risque RGA. 234 diagnostics. Agrafage, micropieux. Décennale AXA. ☎ 05 82 95 33 75",
+  description: "Spécialiste fissures Montauban et 82, zone à risque RGA. 234 diagnostics. Agrafage structurel. Décennale AXA. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures montauban',
     'expertise fissures montauban',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/expert-fissures-montauban-82' },
   openGraph: {
     title: 'Expert Fissures Montauban · RGA Sécheresse · IPB',
-    description: "Spécialiste fissures Tarn-et-Garonne. Agrafage, micropieux, rapport assurance. Décennale AXA. 234 diagnostics depuis 2019.",
+    description: "Spécialiste fissures Tarn-et-Garonne. Agrafage structurel, rapport assurance. Décennale AXA. 234 diagnostics depuis 2019.",
     url: 'https://www.ipb-expertise.fr/expert-fissures-montauban-82',
     type: 'website',
     images: [{
@@ -71,7 +71,7 @@ const faqItems = [
   },
   {
     question: "Quelle est la différence entre agrafage et micropieux ?",
-    answer: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables (8 000 à 15 000 €). Les micropieux reprennent les fondations en profondeur (25 000 à 50 000 €) — solution lourde réservée aux tassements actifs majeurs. Notre diagnostic détermine laquelle s'impose.",
+    answer: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables (8 000 à 15 000 €). Les micropieux reprennent les fondations en profondeur (25 000 à 50 000 €) — intervention lourde réservée aux tassements actifs majeurs. Notre institut réalise l'agrafage structurel ; pour les rares cas nécessitant des micropieux, nous orientons vers un partenaire spécialisé après diagnostic.",
   },
   {
     question: "Combien de temps pour recevoir le rapport ?",
@@ -185,7 +185,7 @@ export default function ExpertFissuresMontaubanPage() {
                 </RevealOnScroll>
                 <RevealOnScroll delay={0.18}>
                   <p>
-                    Notre institut est spécialisé dans le diagnostic de ces désordres : nous identifions la cause exacte, mesurons l'évolution, et préconisons la solution la plus adaptée — agrafage dans 90 % des cas, micropieux pour les tassements majeurs.
+                    Notre institut est spécialisé dans le diagnostic de ces désordres et dans la mise en œuvre de l'agrafage structurel — solution suffisante dans 90 % des cas. Pour les rares tassements majeurs nécessitant une reprise en sous-œuvre par micropieux, nous orientons vers un partenaire spécialisé après diagnostic.
                   </p>
                 </RevealOnScroll>
               </div>
@@ -285,7 +285,7 @@ export default function ExpertFissuresMontaubanPage() {
               <RevealOnScroll delay={0.24}>
                 <div>
                   <h3 className="font-serif text-ipb-text font-bold text-[20px] mb-2">Fissures de fondation</h3>
-                  <p>Visibles en bas des murs ou en sous-sol. Nécessitent un diagnostic technique : agrafage si la cause est latérale, micropieux si la reprise doit aller en profondeur.</p>
+                  <p>Visibles en bas des murs ou en sous-sol. Nécessitent un diagnostic technique : agrafage structurel dans 90 % des cas. Pour les reprises en profondeur (micropieux), nous orientons vers un partenaire spécialisé.</p>
                 </div>
               </RevealOnScroll>
             </div>
