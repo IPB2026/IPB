@@ -31,7 +31,7 @@ export default function LandingFissuresToulouse() {
           "@type": "ProfessionalService",
           "name": "IPB · Expert fissures Toulouse",
           "telephone": "+33582953375",
-          "address": { "@type": "PostalAddress", "addressLocality": "Toulouse", "postalCode": "31100" },
+          "address": { "@type": "PostalAddress", "streetAddress": "54 avenue Jean Jaurès", "addressLocality": "Tournefeuille", "postalCode": "31170" },
           "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "15" },
         })
       }} />

@@ -157,7 +157,7 @@ export async function submitCalculatorLead(input: CalculatorLeadInput): Promise<
           </div>
 
           <div style="text-align: center; padding: 20px; font-size: 11px; color: #A09A93;">
-            IPB Expertise · 13 rue du Recteur Dottin, 31100 Toulouse
+            IPB Expertise · 54 avenue Jean Jaurès, 31170 Tournefeuille
           </div>
         </div>
       `,

@@ -111,9 +111,9 @@ const localBusinessSchema = {
   "description": "Institut indépendant en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Expertise fissures (agrafage, micropieux), ouverture de mur porteur et création de baie vitrée (étude structure, pose poutre IPN/HEB), traitement de l'humidité (injection résine, cuvelage). Étude et travaux sous garantie décennale. Toulouse, Montauban, Auch et environs.",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "13 rue du Recteur Dottin",
-    "addressLocality": "Toulouse",
-    "postalCode": "31100",
+    "streetAddress": "54 avenue Jean Jaurès",
+    "addressLocality": "Tournefeuille",
+    "postalCode": "31170",
     "addressRegion": "Occitanie",
     "addressCountry": "FR"
   },

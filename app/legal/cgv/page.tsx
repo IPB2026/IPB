@@ -114,7 +114,11 @@ export default function CGVPage() {
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-ipb-text sm:w-56">Siège social :</dt>
-                    <dd>13 rue du Recteur Dottin, 31100 Toulouse</dd>
+                    <dd>13 rue du Recteur Dottin, 31100 Toulouse <em>(domiciliation administrative)</em></dd>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:gap-4">
+                    <dt className="font-bold text-ipb-text sm:w-56">Adresse d'exercice :</dt>
+                    <dd>54 avenue Jean Jaurès, 31170 Tournefeuille</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-ipb-text sm:w-56">SIRET :</dt>
@@ -378,7 +382,7 @@ export default function CGVPage() {
               </p>
               <p className="mt-2 bg-ipb-stone p-3 rounded-lg">
                 Bâti Halli - IPB<br />
-                13 rue du Recteur Dottin, 31100 Toulouse<br />
+                54 avenue Jean Jaurès, 31170 Tournefeuille<br />
                 Email : <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange">contact@ipb-expertise.fr</a>
               </p>
 
@@ -643,7 +647,7 @@ export default function CGVPage() {
                 <strong>16.2. Règlement amiable</strong><br />
                 En cas de litige, les parties s'engagent à rechercher une solution amiable avant toute 
                 action judiciaire. Le Client peut adresser ses réclamations à :<br />
-                <span className="text-sm">Bâti Halli - IPB, 13 rue du Recteur Dottin, 31100 Toulouse<br />
+                <span className="text-sm">Bâti Halli - IPB, 54 avenue Jean Jaurès, 31170 Tournefeuille<br />
                 Email : <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange">contact@ipb-expertise.fr</a></span>
               </p>
               
@@ -711,7 +715,7 @@ export default function CGVPage() {
             <div className="bg-white p-4 rounded-lg border border-ipb-rule text-sm">
               <p className="mb-3">À l'attention de :<br />
               <strong>Bâti Halli - IPB</strong><br />
-              13 rue du Recteur Dottin, 31100 Toulouse<br />
+              54 avenue Jean Jaurès, 31170 Tournefeuille<br />
               Email : contact@ipb-expertise.fr</p>
               
               <p className="mb-3">Je/Nous (*) vous notifie/notifions (*) par la présente ma/notre (*) rétractation du contrat 

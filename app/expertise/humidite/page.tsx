@@ -54,7 +54,7 @@ const generateServiceJsonLd = () => ({
     "@type": "LocalBusiness",
     "name": "IPB - Institut de Pathologie du Bâtiment",
     "telephone": "+33582953375",
-    "address": { "@type": "PostalAddress", "streetAddress": "13 rue du Recteur Dottin", "addressLocality": "Toulouse", "addressRegion": "Occitanie", "postalCode": "31100", "addressCountry": "FR" }
+    "address": { "@type": "PostalAddress", "streetAddress": "54 avenue Jean Jaurès", "addressLocality": "Tournefeuille", "addressRegion": "Occitanie", "postalCode": "31170", "addressCountry": "FR" }
   },
   "areaServed": [{ "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" }, { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" }, { "@type": "AdministrativeArea", "name": "Gers (32)" }, { "@type": "AdministrativeArea", "name": "Tarn (81)" }],
   "description": "Diagnostic instrumenté de l'humidité, injection de résine, cuvelage, traitement du salpêtre, ventilation. Décennale AXA."
