@@ -37,14 +37,29 @@ export function CookieBanner() {
   }, []);
 
   const applyConsent = (consentData: CookieConsent) => {
-    if (typeof window !== 'undefined') {
-      const gtag = (window as Window & { gtag?: (command: string, ...args: unknown[]) => void }).gtag;
-      if (gtag) {
-        gtag('consent', 'update', {
-          'analytics_storage': consentData.analytics ? 'granted' : 'denied',
-          'ad_storage': consentData.marketing ? 'granted' : 'denied',
-        });
-      }
+    if (typeof window === 'undefined') return;
+
+    // Google Consent Mode v2 — on pousse l'update directement dans dataLayer
+    // pour que ça fonctionne même si gtag.js n'est pas encore chargé
+    // (lazyOnload). Quand gtag.js arrivera, il rejouera la file d'attente.
+    const w = window as Window & {
+      dataLayer?: unknown[];
+      gtag?: (command: string, ...args: unknown[]) => void;
+    };
+    w.dataLayer = w.dataLayer || [];
+
+    const consentUpdate = {
+      'ad_storage': consentData.marketing ? 'granted' : 'denied',
+      'ad_user_data': consentData.marketing ? 'granted' : 'denied',
+      'ad_personalization': consentData.marketing ? 'granted' : 'denied',
+      'analytics_storage': consentData.analytics ? 'granted' : 'denied',
+    };
+
+    if (w.gtag) {
+      w.gtag('consent', 'update', consentUpdate);
+    } else {
+      // Fallback si gtag n'est pas encore initialisé : push direct dataLayer
+      w.dataLayer.push(['consent', 'update', consentUpdate]);
     }
   };
 

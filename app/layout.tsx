@@ -193,7 +193,34 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        
+
+        {/* RGPD — Google Consent Mode v2
+            Ce script DOIT s'exécuter avant le chargement de gtag.js pour que
+            tous les services Google démarrent en mode "consentement refusé".
+            Le bandeau cookies (components/CookieBanner.tsx) appellera ensuite
+            `gtag('consent', 'update', ...)` quand l'utilisateur fera son choix.
+            wait_for_update: 500ms = on laisse le bandeau le temps de répondre
+            avant que les hits par défaut ne soient mis en file d'attente. */}
+        <Script id="consent-default" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              'ad_storage': 'denied',
+              'ad_user_data': 'denied',
+              'ad_personalization': 'denied',
+              'analytics_storage': 'denied',
+              'functionality_storage': 'granted',
+              'security_storage': 'granted',
+              'wait_for_update': 500
+            });
+            // Active la modélisation des conversions Google Ads en cas de refus
+            // (forme anonymisée et autorisée par la CNIL)
+            gtag('set', 'ads_data_redaction', true);
+            gtag('set', 'url_passthrough', true);
+          `}
+        </Script>
+
         {/* Google Ads global tag — l'ID est défini via NEXT_PUBLIC_GOOGLE_ADS_ID
             (fallback sur la valeur historique pour ne pas casser la prod actuelle).
             Voir TRACKING.md. */}
