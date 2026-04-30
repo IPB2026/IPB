@@ -8,8 +8,8 @@ import { ArrowRight, Phone, Shield, Clock, FileText, CheckCircle, Home, AlertTri
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Partenariat Agences Immobilières Toulouse — Expertise Fissures Vente Bloquée | IPB",
-  description: "Agents immobiliers : votre vente bloque à cause d'une fissure inquiétante ou d'un mur porteur à ouvrir ? IPB rassure l'acquéreur avec un rapport opposable sous 7 jours. Décennale AXA. Toulouse, Montauban, Auch.",
+  title: "Agences Immobilières Toulouse · Expertise Vente · 7j",
+  description: "Vente bloquée par une fissure ? Rapport IPB opposable sous 7 jours pour rassurer l'acquéreur. Toulouse, Montauban. ☎ 05 82 95 33 75",
   keywords: [
     'partenariat agence immobilière toulouse',
     'expert fissures pour agence immobilière',
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/partenaires/agences-immobilieres' },
   openGraph: {
-    title: "Partenariat Agences Immobilières — Expert Fissures & Mur Porteur Toulouse | IPB",
-    description: "Une vente bloquée ? Un acquéreur inquiet d'une fissure ? Notre rapport sous 7 jours débloque la transaction.",
+    title: "Agences Immobilières · Expertise Vente Toulouse · IPB",
+    description: "Vente bloquée par une fissure ? Notre rapport sous 7 jours débloque la transaction. Décennale AXA.",
     url: 'https://www.ipb-expertise.fr/partenaires/agences-immobilieres',
     type: 'website',
   },

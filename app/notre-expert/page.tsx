@@ -13,13 +13,13 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
-  title: 'L’institut · Ludovic D. · IPB Toulouse',
-  description: "IPB est un institut de pathologie et de structure du bâtiment fondé en 2019 à Toulouse. Ludovic D. en est le fondateur, ingénieur structure. 850 chantiers livrés en Occitanie.",
+  title: 'Ludovic D., fondateur IPB · Ingénieur structure Toulouse',
+  description: "Ludovic D., ingénieur structure et fondateur d'IPB. 850 chantiers depuis 2019 en Occitanie. Décennale AXA. ☎ 05 82 95 33 75",
   keywords: ['institut pathologie bâtiment toulouse', 'expert fissures toulouse', "Ludovic IPB", 'ingénieur structure toulouse', "expertise bâtiment Haute-Garonne"],
   alternates: { canonical: 'https://www.ipb-expertise.fr/notre-expert' },
   openGraph: {
-    title: 'L’institut · Ludovic D. · IPB Toulouse',
-    description: "Institut de pathologie et de structure du bâtiment fondé en 2019 à Toulouse. 850 chantiers livrés.",
+    title: 'Ludovic D., fondateur IPB · Ingénieur structure Toulouse',
+    description: "Ingénieur structure, fondateur d'IPB. 850 chantiers depuis 2019 en Occitanie. Décennale AXA.",
     url: 'https://www.ipb-expertise.fr/notre-expert',
     type: 'profile',
   },

@@ -12,8 +12,8 @@ import Script from 'next/script';
 import { ExpertiseHumiditeBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
-  title: "Diagnostic et traitement de l'humidité · Institut IPB Toulouse",
-  description: "Institut de pathologie du bâtiment : diagnostic d'humidité instrumenté (caméra thermique, hygromètre), injection de résine, cuvelage, ventilation. Toulouse, Montauban, Auch et Albi.",
+  title: "Diagnostic et Traitement Humidité · Toulouse · 30 ans",
+  description: "Diagnostic instrumenté humidité, injection résine, cuvelage, VMI. Garantie 30 ans. Décennale AXA. ☎ 05 82 95 33 75",
   keywords: [
     'expert humidité toulouse',
     'expertise humidité haute-garonne',
@@ -28,8 +28,8 @@ export const metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/humidite' },
   openGraph: {
-    title: "Diagnostic et traitement de l'humidité · Institut IPB Toulouse",
-    description: "Diagnostic instrumenté, injection de résine, cuvelage, ventilation. Institut indépendant en pathologie du bâtiment.",
+    title: "Diagnostic et Traitement Humidité · Toulouse · IPB",
+    description: "Injection résine, cuvelage, VMI. Garantie 30 ans. Décennale AXA.",
     url: 'https://www.ipb-expertise.fr/expertise/humidite',
     type: 'website',
     images: [{ url: '/images/humidite-avant-apres.webp', width: 1200, height: 630, alt: 'Avant et après traitement humidité — Institut IPB' }],

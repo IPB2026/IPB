@@ -9,8 +9,8 @@ import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, AlertTriangle, Droplets, ChevronRight, Shield, CheckCircle, XCircle, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Salpêtre Mur : Causes, Dangers et Traitement Injection | Expert Occitanie',
-  description: 'Salpêtre (poudre blanche) sur vos murs ? ⚠️ Signe de remontées capillaires. Traitement par injection résine hydrophobe. Garantie 30 ans. Expert Toulouse, Montauban, Auch (31-82-32) ☎ 05 82 95 33 75',
+  title: 'Salpêtre Mur · Causes et Traitement · Injection Résine',
+  description: "⚠️ Salpêtre (poudre blanche) sur vos murs ? Signe de remontées capillaires. Injection résine. Garantie 30 ans. ☎ 05 82 95 33 75",
   keywords: ['salpêtre mur', 'poudre blanche mur', 'nitrate potassium', 'traitement salpêtre', 'humidité murs'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/salpetre-mur-traitement' },
 };

@@ -13,8 +13,8 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
-  title: 'Expert fissures Toulouse (31) · Institut IPB · Diagnostic et agrafage structurel',
-  description: "Institut de pathologie du bâtiment à Toulouse. Diagnostic instrumenté de fissures, agrafage structurel et reprise en sous-œuvre. Rapports reconnus par les assurances. Décennale AXA.",
+  title: 'Expert Fissures Toulouse 31 · Diagnostic 48h · AXA',
+  description: "Diagnostic fissures à Toulouse : agrafage, micropieux, rapport opposable assurance. 70 dossiers/an. Décennale AXA. Sous 48h. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures toulouse',
     'expert fissure toulouse',
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31' },
   openGraph: {
-    title: 'Expert fissures Toulouse · Institut IPB',
-    description: "Diagnostic instrumenté, agrafage structurel, reprise en sous-œuvre. Institut indépendant à Toulouse depuis 2019.",
+    title: 'Expert Fissures Toulouse · Décennale AXA · IPB',
+    description: "Diagnostic, agrafage, micropieux. Rapport opposable assurance. Décennale AXA. 70 dossiers/an.",
     url: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31',
     type: 'website',
     images: [{

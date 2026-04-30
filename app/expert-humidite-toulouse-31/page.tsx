@@ -9,8 +9,8 @@ import { Testimonials } from '@/components/home/Testimonials';
 import { CheckCircle, Phone, ArrowRight, MapPin, Droplets, Shield, FileText, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Expert Humidité Toulouse (31) | Injection Résine | IPB',
-  description: 'Expert humidité à Toulouse et Haute-Garonne. Traitement remontées capillaires, salpêtre, moisissures. Injection résine garantie 30 ans. 05 82 95 33 75.',
+  title: 'Expert Humidité Toulouse · Injection Résine 30 ans',
+  description: "Traitement humidité Toulouse : remontées capillaires, salpêtre, moisissures. Injection résine garantie 30 ans. Décennale AXA. ☎ 05 82 95 33 75",
   keywords: [
     'expert humidité toulouse',
     'traitement humidité maison 31',
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
     canonical: 'https://www.ipb-expertise.fr/expert-humidite-toulouse-31',
   },
   openGraph: {
-    title: 'Expert Humidité Toulouse (31) | Injection & Cuvelage | IPB',
-    description: 'Traitement définitif humidité à Toulouse. Remontées capillaires, salpêtre, moisissures. Résultat visible 3 mois. Garantie 30 ans.',
+    title: 'Expert Humidité Toulouse · Injection & Cuvelage · IPB',
+    description: "Traitement définitif à Toulouse. Remontées capillaires, salpêtre, moisissures. Garantie 30 ans. Décennale AXA.",
     url: 'https://www.ipb-expertise.fr/expert-humidite-toulouse-31',
     type: 'website',
     images: [{
@@ -48,8 +48,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Expert Humidité Toulouse | IPB',
-    description: 'Injection résine garantie 30 ans. Diagnostic 48h.',
+    title: 'Expert Humidité Toulouse · IPB',
+    description: "Injection résine garantie 30 ans. Diagnostic 48h. ☎ 05 82 95 33 75",
   },
   robots: {
     index: true,

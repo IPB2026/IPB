@@ -12,8 +12,8 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
-  title: 'Carte des communes touchées par la sécheresse en Occitanie · IPB',
-  description: "Toutes les communes d'Occitanie reconnues en catastrophe naturelle pour la sécheresse depuis 2018. Cartographie indicative par département, taux de sinistralité, démarches d'indemnisation.",
+  title: 'Carte Sécheresse Occitanie · Communes CAT-NAT · IPB',
+  description: "Communes d'Occitanie reconnues CAT-NAT sécheresse depuis 2018. Carte par département, sinistralité, démarches. ☎ 05 82 95 33 75",
   keywords: [
     'carte sécheresse occitanie',
     'communes catastrophe naturelle haute-garonne',

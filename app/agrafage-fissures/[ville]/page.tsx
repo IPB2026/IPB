@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
   const villeNom = villeData.nom;
 
   return {
-    title: `Agrafage de fissures ${villeNom} (${deptCode}) · Institut IPB`,
-    description: `Institut de pathologie du bâtiment à ${villeNom}. Agrafage structurel pour stabiliser les fissures de maçonnerie. Solution adaptée à 90 % des cas. Décennale AXA.`,
+    title: `Agrafage Fissures ${villeNom} ${deptCode} · Décennale AXA`,
+    description: `Agrafage structurel à ${villeNom} : stabilisation des fissures, solution dans 90% des cas. Décennale AXA. ☎ 05 82 95 33 75`,
     keywords: [
       `agrafage fissures ${ville}`,
       `agrafage maçonnerie ${ville}`,
@@ -29,8 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     ],
     alternates: { canonical: `https://www.ipb-expertise.fr/agrafage-fissures/${ville}` },
     openGraph: {
-      title: `Agrafage de fissures ${villeNom} · Institut IPB`,
-      description: `Stabilisation par agrafage structurel à ${villeNom}.`,
+      title: `Agrafage Fissures ${villeNom} · IPB`,
+      description: `Stabilisation par agrafage structurel à ${villeNom}. Décennale AXA.`,
       url: `https://www.ipb-expertise.fr/agrafage-fissures/${ville}`,
       type: 'website',
       images: [{ url: '/images/fissures-avant-apres.webp', width: 1200, height: 630, alt: `Agrafage fissures ${villeNom}` }],

@@ -7,8 +7,8 @@ import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 
 export const metadata: Metadata = {
-  title: 'Zones d\'intervention | Expert Fissures & Humidité | IPB Expertise',
-  description: 'IPB Expertise intervient en Haute-Garonne (31), Tarn-et-Garonne (82), Gers (32), Tarn (81), Ariège (09) et Aude (11). Diagnostic fissures et humidité sous 48h.',
+  title: "Départements Occitanie · Expert Fissures & Humidité",
+  description: "IPB intervient en Haute-Garonne, Tarn-et-Garonne, Gers, Tarn, Ariège, Aude. Diagnostic sous 48h. Décennale AXA. ☎ 05 82 95 33 75",
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/departements',
   },

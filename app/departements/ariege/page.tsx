@@ -8,8 +8,8 @@ import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures & Humidité Ariège (09) | Foix, Pamiers, Saint-Girons | IPB',
-  description: 'Expert en traitement des fissures et humidité en Ariège (09). Intervention à Foix, Pamiers, Saint-Girons, Lavelanet. Maisons de montagne, bâti ancien pyrénéen. Diagnostic gratuit, garantie décennale.',
+  title: 'Expert Fissures & Humidité Ariège 09 · Foix · AXA',
+  description: "Expert fissures et humidité Ariège (09) : Foix, Pamiers, Saint-Girons. Bâti ancien pyrénéen. Décennale AXA. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures ariège',
     'expert fissures foix',

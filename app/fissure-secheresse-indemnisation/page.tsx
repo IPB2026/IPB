@@ -8,8 +8,8 @@ import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, ChevronRight, Sun, FileText, Clock, CheckCircle, AlertTriangle, Calendar, Euro } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Fissure Sécheresse : Indemnisation CAT-NAT et Démarches | Expert Occitanie',
-  description: 'Fissures maison après sécheresse ? Guide complet indemnisation CAT-NAT : démarches, délais (10 jours), franchise, expertise assurance. Aide pour votre dossier (31, 82, 32).',
+  title: 'Fissure Sécheresse · Indemnisation CAT-NAT · Toulouse',
+  description: "Fissures après sécheresse ? Guide CAT-NAT : démarches, délais 10j, franchise, expertise. Aide dossier 31-82-32. ☎ 05 82 95 33 75",
   keywords: ['fissure sécheresse', 'CAT-NAT', 'catastrophe naturelle', 'indemnisation fissures', 'RGA'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/fissure-secheresse-indemnisation' },
 };

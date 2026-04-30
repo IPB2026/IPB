@@ -18,8 +18,8 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
   const villeNom = villeData.nom;
 
   return {
-    title: `Expert humidité ${villeNom} (${deptCode}) · Institut IPB`,
-    description: `Institut de pathologie du bâtiment à ${villeNom}. Diagnostic d'humidité instrumenté, injection de résine, cuvelage, ventilation. Décennale AXA.`,
+    title: `Expert Humidité ${villeNom} ${deptCode} · Injection 30 ans`,
+    description: `Traitement humidité à ${villeNom} : injection résine, cuvelage, VMI. Garantie 30 ans. Décennale AXA. ☎ 05 82 95 33 75`,
     keywords: [
       `expert humidité ${ville}`,
       `diagnostic humidité ${ville}`,
@@ -31,8 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     ],
     alternates: { canonical: `https://www.ipb-expertise.fr/expert-humidite/${ville}` },
     openGraph: {
-      title: `Expert humidité ${villeNom} · Institut IPB`,
-      description: `Diagnostic et traitement de l'humidité à ${villeNom}.`,
+      title: `Expert Humidité ${villeNom} · Décennale AXA · IPB`,
+      description: `Injection résine, cuvelage, VMI à ${villeNom}. Garantie 30 ans. Décennale AXA.`,
       url: `https://www.ipb-expertise.fr/expert-humidite/${ville}`,
       type: 'website',
       images: [{ url: '/images/humidite-avant-apres.webp', width: 1200, height: 630, alt: `Expert humidité ${villeNom}` }],

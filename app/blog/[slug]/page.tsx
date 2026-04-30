@@ -67,7 +67,19 @@ export async function generateMetadata(
     };
   }
 
-  const pageTitle = post.metaTitle ?? `${post.title} | IPB Expertise`;
+  // Le suffixe "| IPB" est déjà ajouté automatiquement par le template root.
+  // On laisse donc le metaTitle / title tel quel sans rajouter "| IPB Expertise".
+  const pageTitle = post.metaTitle ?? post.title;
+
+  // Description SEO : on s'assure que le téléphone et un signal d'urgence
+  // soient visibles pour le CTR Google (clic-to-call mobile).
+  const callSignature = ' · ☎ 05 82 95 33 75';
+  const baseDescription = post.metaDescription || '';
+  const seoDescription = baseDescription.includes('05 82 95 33 75')
+    ? baseDescription
+    : (baseDescription.length + callSignature.length <= 155
+      ? `${baseDescription}${callSignature}`
+      : `${baseDescription.slice(0, 154 - callSignature.length).trimEnd()}…${callSignature}`);
 
   // Image de couverture pertinente (cf. SEO audit C2 — pas le logo générique)
   const coverPath = post.coverImage || getCategoryFallbackImage(post.category, post.keywords);
@@ -75,7 +87,7 @@ export async function generateMetadata(
 
   return {
     title: pageTitle,
-    description: post.metaDescription,
+    description: seoDescription,
     keywords: post.keywords,
     authors: [{ name: post.author }],
     category: categoryLabels[post.category],
@@ -84,7 +96,7 @@ export async function generateMetadata(
     },
     openGraph: {
       title: post.title,
-      description: post.metaDescription,
+      description: seoDescription,
       url,
       siteName: 'IPB - Institut de Pathologie du Bâtiment',
       locale: 'fr_FR',
@@ -104,7 +116,7 @@ export async function generateMetadata(
     twitter: {
       card: 'summary_large_image',
       title: post.title,
-      description: post.metaDescription,
+      description: seoDescription,
       images: [coverUrl],
       creator: '@IPBExpertise',
     },

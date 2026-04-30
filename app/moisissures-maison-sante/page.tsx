@@ -8,8 +8,8 @@ import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, AlertTriangle, Heart, Baby, Stethoscope, Wind, ChevronRight, Shield, CheckCircle, XCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Moisissures Maison : Risques Santé et Traitement Définitif | Expert Occitanie',
-  description: 'Moisissures dans votre maison ? ⚠️ Risques santé : allergies, asthme, infections respiratoires. Causes (humidité, ventilation) et traitement définitif. Expert Toulouse, Montauban, Auch (31-82-32).',
+  title: 'Moisissures Maison · Risques Santé · Traitement Toulouse',
+  description: "⚠️ Moisissures = risques santé (allergies, asthme). Causes et traitement définitif. Expert Toulouse, Montauban, Auch. ☎ 05 82 95 33 75",
   keywords: ['moisissures maison', 'risques santé moisissures', 'traitement moisissures', 'allergies moisissures', 'ventilation maison'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/moisissures-maison-sante' },
 };

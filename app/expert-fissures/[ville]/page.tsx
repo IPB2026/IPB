@@ -36,11 +36,11 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     : `https://www.ipb-expertise.fr/expert-fissures/${ville}`;
 
   const description = villeData.risqueRGA === 'tres-fort' || villeData.risqueRGA === 'fort'
-    ? `Institut de pathologie du bâtiment à ${villeNom} (${deptCode}). Diagnostic instrumenté de fissures, agrafage structurel, reprise en sous-œuvre. Zone à risque RGA ${villeData.risqueRGA}. Décennale AXA.`
-    : `Institut de pathologie du bâtiment à ${villeNom} (${deptCode}). Diagnostic instrumenté de fissures, agrafage structurel et reprise en sous-œuvre. Rapports reconnus par les assurances.`;
+    ? `Diagnostic fissures à ${villeNom} (${deptCode}) : zone RGA ${villeData.risqueRGA}. Agrafage, micropieux. Décennale AXA. ☎ 05 82 95 33 75`
+    : `Diagnostic fissures à ${villeNom} (${deptCode}) : agrafage, micropieux, rapport assurance. Décennale AXA. ☎ 05 82 95 33 75`;
 
   return {
-    title: `Expert fissures ${villeNom} (${deptCode}) · Institut IPB`,
+    title: `Expert Fissures ${villeNom} ${deptCode} · Décennale AXA`,
     description,
     keywords: [
       `expert fissures ${slug}`,
@@ -57,16 +57,16 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     ],
     alternates: { canonical: canonicalUrl },
     openGraph: {
-      title: `Expert fissures ${villeNom} · Institut IPB`,
-      description: `Institut de pathologie du bâtiment intervenant à ${villeNom}. Diagnostic, agrafage, reprise en sous-œuvre.`,
+      title: `Expert Fissures ${villeNom} · Décennale AXA · IPB`,
+      description: `Diagnostic, agrafage, micropieux à ${villeNom}. Rapport opposable assurance. Décennale AXA.`,
       url: `https://www.ipb-expertise.fr/expert-fissures/${ville}`,
       type: 'website',
       images: [{ url: '/images/fissures-avant-apres.webp', width: 1200, height: 630, alt: `Expert fissures ${villeNom} — IPB` }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `Expert fissures ${villeNom} · IPB`,
-      description: `Institut de pathologie du bâtiment à ${villeNom}.`,
+      title: `Expert Fissures ${villeNom} · IPB`,
+      description: `Diagnostic, agrafage, rapport assurance à ${villeNom}. Décennale AXA.`,
     },
     robots: { index: true, follow: true },
   };

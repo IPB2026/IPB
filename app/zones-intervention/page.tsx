@@ -9,8 +9,8 @@ import { MapPin, Phone, ArrowRight, Shield, AlertTriangle } from 'lucide-react';
 import { villesData, departementsMapping } from '@/app/data/villes';
 
 export const metadata: Metadata = {
-  title: 'Zones d\'Intervention | IPB Expert Occitanie',
-  description: '56 villes couvertes : Haute-Garonne, Tarn-et-Garonne, Gers, Tarn. Expert fissures et humidité, diagnostic sous 48h. 05 82 95 33 75',
+  title: "Zones Intervention · 56 villes Occitanie · Sous 48h",
+  description: "56 villes en Occitanie : Toulouse, Montauban, Auch, Albi. Expert fissures et humidité, diagnostic sous 48h. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures Occitanie', 'expert fissures Haute-Garonne', 'expert fissures Tarn',
     'agrafage fissures Toulouse', 'expert humidité 31', 'expert bâtiment 82',
@@ -20,8 +20,8 @@ export const metadata: Metadata = {
     canonical: 'https://www.ipb-expertise.fr/zones-intervention',
   },
   openGraph: {
-    title: 'Zones d\'Intervention | IPB Expert Bâtiment Occitanie',
-    description: '56 villes couvertes en Haute-Garonne, Tarn-et-Garonne, Gers et Tarn. Diagnostic fissures et humidité sous 48h.',
+    title: "Zones Intervention · 56 villes Occitanie · IPB",
+    description: "56 villes en Occitanie. Expert fissures et humidité, diagnostic sous 48h. Décennale AXA.",
     url: 'https://www.ipb-expertise.fr/zones-intervention',
     type: 'website',
   },

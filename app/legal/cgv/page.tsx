@@ -7,8 +7,8 @@ import { Calendar, FileText, Shield, CreditCard, Clock, AlertTriangle, CheckCirc
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Conditions Générales de Vente (CGV) - IPB Institut de Pathologie du Bâtiment',
-  description: 'Conditions Générales de Vente complètes de l\'Institut de Pathologie du Bâtiment (IPB) - Bâti Halli. Diagnostics, travaux, garanties, paiement, rétractation.',
+  title: 'Conditions Générales de Vente · CGV · IPB',
+  description: "CGV de l'Institut de Pathologie du Bâtiment (IPB). Diagnostics, travaux, garanties, paiement, rétractation.",
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/legal/cgv',
   },

@@ -8,8 +8,8 @@ import { Footer } from '@/components/home/Footer';
 import { ArrowRight, Phone, Droplets, CheckCircle, AlertTriangle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Remontées Capillaires : Causes et Solutions Durables | IPB Expertise',
-  description: 'Remontées capillaires dans vos murs ? Causes, signes et traitement par injection de résine. Garantie 30 ans. Expert Toulouse, Montauban, Auch (31-82-32) →',
+  title: 'Remontées Capillaires · Causes et Solutions · Toulouse',
+  description: "Remontées capillaires dans vos murs ? Causes, signes, traitement par injection résine. Garantie 30 ans. Décennale AXA. ☎ 05 82 95 33 75",
   keywords: ['remontée capillaire', 'humidité ascensionnelle', 'injection résine', 'mur humide', 'traitement humidité'],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/remontee-capillaire-solution',

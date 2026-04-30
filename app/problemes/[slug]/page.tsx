@@ -30,14 +30,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const canonical = `https://www.ipb-expertise.fr/problemes/${problem.slug}`;
 
+  // Construit une description SEO-optimisée : excerpt tronqué + CTA téléphone
+  // pour maximiser le CTR (le téléphone devient cliquable sur mobile dans Google).
+  const callSignature = ' · ☎ 05 82 95 33 75';
+  const maxExcerptLen = 155 - callSignature.length;
+  const trimmedExcerpt = problem.excerpt.length > maxExcerptLen
+    ? problem.excerpt.slice(0, maxExcerptLen - 1).trimEnd() + '…'
+    : problem.excerpt;
+  const seoDescription = `${trimmedExcerpt}${callSignature}`;
+
+  // Title court : on s'appuie sur le suffixe template root "%s | IPB"
+  const seoTitle = problem.title;
+
   return {
-    title: `${problem.title} | IPB`,
-    description: problem.excerpt,
+    title: seoTitle,
+    description: seoDescription,
     keywords: problem.keywords,
     alternates: { canonical },
     openGraph: {
-      title: `${problem.title} | IPB`,
-      description: problem.excerpt,
+      title: `${problem.title} · IPB`,
+      description: seoDescription,
       url: canonical,
       siteName: 'IPB - Institut de Pathologie du Bâtiment',
       locale: 'fr_FR',
@@ -53,8 +65,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${problem.title} | IPB`,
-      description: problem.excerpt,
+      title: `${problem.title} · IPB`,
+      description: seoDescription,
       images: ['/images/IPB_Logo_HD.png'],
     },
     robots: { index: true, follow: true },

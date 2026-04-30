@@ -11,8 +11,8 @@ import { Sun, ArrowRight, Phone, AlertTriangle, CheckCircle, Thermometer, Drople
 // Pertinent : Juin à Septembre, lors des vagues de chaleur
 
 export const metadata: Metadata = {
-  title: 'Canicule 2026 : Comment Protéger sa Maison des Fissures | IPB Expertise',
-  description: 'Canicule et sécheresse : risques pour votre maison (fissures, RGA). Gestes préventifs et signes d\'alerte. Expert Toulouse.',
+  title: 'Canicule 2026 · Protéger sa Maison des Fissures · Toulouse',
+  description: "Canicule et sécheresse : risques fissures (RGA). Gestes préventifs et signes d'alerte. Expert Toulouse. ☎ 05 82 95 33 75",
   keywords: ['canicule fissures', 'sécheresse maison', 'RGA', 'retrait gonflement argiles', 'protéger maison canicule'],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/actualites/canicule-proteger-maison',

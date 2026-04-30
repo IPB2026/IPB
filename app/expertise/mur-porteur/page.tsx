@@ -12,8 +12,8 @@ import type { Metadata } from 'next';
 import { MurPorteurDiagram } from '@/components/ui/MurPorteurDiagram';
 
 export const metadata: Metadata = {
-  title: "Ouverture de mur porteur · IPB Toulouse",
-  description: "Institut de structure du bâtiment : ouverture de mur porteur (cuisine ouverte, suite parentale, plateau loft) et — sur projet de façade — création de baie vitrée. Étude technique, dimensionnement de poutre, exécution. Décennale AXA. Toulouse, Montauban, Auch, Albi.",
+  title: "Ouverture Mur Porteur Toulouse · IPN/HEB · AXA",
+  description: "Ouverture mur porteur Toulouse : étude IPN/HEB, dimensionnement poutre, travaux clé en main. Décennale AXA. Devis sous 24h. ☎ 05 82 95 33 75",
   keywords: [
     'ouverture mur porteur toulouse',
     'création baie vitrée toulouse',
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/mur-porteur' },
   openGraph: {
-    title: 'Ouverture de mur porteur · IPB Toulouse',
-    description: "Étude technique, dimensionnement de la poutre, exécution des travaux et finitions. Création de baie vitrée sur projet de façade. Décennale AXA.",
+    title: 'Ouverture Mur Porteur Toulouse · IPB',
+    description: "Étude IPN/HEB, dimensionnement poutre, travaux clé en main. Décennale AXA. Devis sous 24h.",
     url: 'https://www.ipb-expertise.fr/expertise/mur-porteur',
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
     locale: 'fr_FR',

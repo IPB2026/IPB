@@ -27,8 +27,8 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
   const slug = ville;
 
   return {
-    title: `Ouverture Mur Porteur ${villeNom} (${deptCode}) — Étude IPN/HEB + Travaux | IPB`,
-    description: `Ouverture de mur porteur à ${villeNom} : bureau d'études structure intégré, dimensionnement IPN/HEB, pose. Création de baie vitrée sur projet de façade. Devis gratuit sous 24h. Décennale AXA. ☎ 05 82 95 33 75`,
+    title: `Ouverture Mur Porteur ${villeNom} ${deptCode} · IPN/HEB · AXA`,
+    description: `Mur porteur à ${villeNom} : étude IPN/HEB, pose poutre, travaux clé en main. Décennale AXA. Devis 24h. ☎ 05 82 95 33 75`,
     keywords: [
       `ouverture mur porteur ${slug}`,
       `prix ouverture mur porteur ${slug}`,
@@ -44,8 +44,8 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     ],
     alternates: { canonical: `https://www.ipb-expertise.fr/expert-mur-porteur/${slug}` },
     openGraph: {
-      title: `Ouverture Mur Porteur ${villeNom} (${deptCode}) | IPB`,
-      description: `Bureau d'études + travaux : étude IPN/HEB, étaiement, ouverture, finitions. Décennale AXA. Intervention sous 48h à ${villeNom}.`,
+      title: `Ouverture Mur Porteur ${villeNom} · IPB`,
+      description: `Étude IPN/HEB, étaiement, ouverture, finitions à ${villeNom}. Décennale AXA. Devis 24h.`,
       url: `https://www.ipb-expertise.fr/expert-mur-porteur/${slug}`,
       type: 'website',
       images: [{ url: '/images/IPB_Logo_HD.png', width: 1200, height: 630, alt: `Ouverture mur porteur ${villeNom}` }],

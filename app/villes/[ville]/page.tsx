@@ -35,8 +35,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const title = `Expert Fissures & Humidité à ${villeData.nom} (${villeData.codePostal}) | IPB`;
-  const description = `Expert en traitement des fissures et de l'humidité à ${villeData.nom} (${villeData.departement}). Intervention rapide dans un rayon de 50 km autour de Toulouse. Solutions techniques avec garantie décennale.`;
+  const deptCode = villeData.codePostal.slice(0, 2);
+  const title = `Expert Fissures & Humidité ${villeData.nom} ${deptCode} · AXA`;
+  const description = `Expert fissures et humidité à ${villeData.nom} (${villeData.departement}). Diagnostic sous 48h. Décennale AXA. ☎ 05 82 95 33 75`;
 
   // Canonical override : sur Toulouse, /villes/toulouse pointe vers /expert-fissures-toulouse-31
   // pour résoudre la cannibalisation entre les 3 URLs ciblant la même intention.

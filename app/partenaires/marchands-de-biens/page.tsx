@@ -8,8 +8,8 @@ import { ArrowRight, Phone, Shield, Clock, FileText, CheckCircle, TrendingUp, Ha
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Partenariat Marchands de Biens & Investisseurs Toulouse — Mur Porteur Express | IPB",
-  description: "Marchands de biens, investisseurs LMNP, opérateurs colocation : IPB ouvre vos murs porteurs en délai serré pour valoriser un T3 ou T4 toulousain avant revente. Devis 24h, chantier 5 jours, décennale AXA.",
+  title: "Marchands de Biens Toulouse · Mur Porteur Express 5j",
+  description: "Marchands de biens, investisseurs : ouverture mur porteur express. Devis 24h, chantier 5 jours, décennale AXA. ☎ 05 82 95 33 75",
   keywords: [
     'partenaire marchand de biens toulouse',
     'mur porteur investisseur toulouse',
@@ -22,8 +22,8 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/partenaires/marchands-de-biens' },
   openGraph: {
-    title: "Partenariat Marchands de Biens — Mur Porteur Express Toulouse | IPB",
-    description: "Vous achetez un T3 toulousain pour ouvrir cuisine + salon avant revente ? IPB chiffre en 24h, exécute en 5 jours. Décennale AXA, DOE complet pour l'acheteur final.",
+    title: "Marchands de Biens · Mur Porteur Express · IPB",
+    description: "Devis 24h, chantier 5 jours. Décennale AXA, DOE complet pour l'acheteur final.",
     url: 'https://www.ipb-expertise.fr/partenaires/marchands-de-biens',
     type: 'website',
   },

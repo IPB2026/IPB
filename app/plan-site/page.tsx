@@ -5,8 +5,8 @@ import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Plan du site - IPB Expertise Fissures & Humidité Toulouse',
-  description: 'Plan complet du site IPB : toutes nos pages, services, villes d\'intervention, et articles de blog. Expert fissures et humidité en Occitanie (31, 82, 32).',
+  title: 'Plan du Site · IPB Expert Fissures & Humidité Toulouse',
+  description: "Plan complet du site IPB : services, villes d'intervention, blog. Expert fissures et humidité en Occitanie. ☎ 05 82 95 33 75",
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/plan-site'
   }

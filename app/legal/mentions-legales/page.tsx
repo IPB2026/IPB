@@ -7,8 +7,8 @@ import { Calendar, Scale, Shield, Building2, Server, Mail, Phone, MapPin, FileTe
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Mentions Légales - IPB Institut de Pathologie du Bâtiment',
-  description: 'Mentions légales complètes de l\'Institut de Pathologie du Bâtiment (IPB) - Bâti Halli. Informations légales, protection des données, propriété intellectuelle.',
+  title: 'Mentions Légales · IPB',
+  description: "Mentions légales de l'Institut de Pathologie du Bâtiment (IPB). Infos légales, données, propriété intellectuelle.",
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/legal/mentions-legales',
   },

@@ -32,8 +32,8 @@ const COMMUNES_32 = [
 ];
 
 export const metadata: Metadata = {
-  title: `Arrêté Sécheresse ${ARRETE_DATE} : Communes Reconnues CAT-NAT | IPB`,
-  description: `Arrêté catastrophe naturelle sécheresse ${ARRETE_DATE}. Liste des communes Haute-Garonne, Tarn-et-Garonne, Gers. Démarches indemnisation. Délai 10 jours.`,
+  title: `Arrêté Sécheresse ${ARRETE_DATE} · CAT-NAT · Délai 10j`,
+  description: `Arrêté CAT-NAT sécheresse ${ARRETE_DATE}. Liste communes 31-82-32. Démarches indemnisation, délai 10j. ☎ 05 82 95 33 75`,
   keywords: ['arrêté sécheresse 2026', 'CAT-NAT', 'catastrophe naturelle', 'fissures sécheresse', 'indemnisation'],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/actualites/arrete-secheresse-2026',

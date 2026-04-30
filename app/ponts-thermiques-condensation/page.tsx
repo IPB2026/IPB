@@ -7,8 +7,8 @@ import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, ChevronRight, Home, CheckCircle, AlertTriangle, Droplets, Thermometer } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Ponts Thermiques et Condensation : Causes et Solutions | Expert Occitanie',
-  description: 'Condensation, moisissures aux angles des murs ? Ponts thermiques = zones froides. Diagnostic et solutions (isolation, VMI). Expert Toulouse, Montauban, Auch (31-82-32).',
+  title: 'Ponts Thermiques et Condensation · Solutions Toulouse',
+  description: "Moisissures aux angles ? Ponts thermiques = zones froides. Solutions isolation, VMI. Expert Toulouse, Montauban. ☎ 05 82 95 33 75",
   keywords: ['pont thermique', 'condensation mur', 'moisissures angles', 'isolation thermique'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/ponts-thermiques-condensation' },
 };
