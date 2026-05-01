@@ -13,7 +13,7 @@ import { MurPorteurDiagram } from '@/components/ui/MurPorteurDiagram';
 
 export const metadata: Metadata = {
   title: "Ouverture Mur Porteur Toulouse · IPN/HEB · AXA",
-  description: "Ouverture mur porteur Toulouse : étude IPN/HEB, dimensionnement poutre, travaux clé en main. Décennale AXA. Devis sous 24h. ☎ 05 82 95 33 75",
+  description: "Ouverture mur porteur Toulouse : étude IPN/HEB, dimensionnement poutre selon Eurocodes, travaux clé en main. Décennale AXA. Pré-étude sous 24h. ☎ 05 82 95 33 75",
   keywords: [
     'ouverture mur porteur toulouse',
     'création baie vitrée toulouse',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/mur-porteur' },
   openGraph: {
     title: 'Ouverture Mur Porteur Toulouse · IPB',
-    description: "Étude IPN/HEB, dimensionnement poutre, travaux clé en main. Décennale AXA. Devis sous 24h.",
+    description: "Étude IPN/HEB, dimensionnement poutre selon Eurocodes, travaux clé en main. Décennale AXA. Pré-étude sous 24h.",
     url: 'https://www.ipb-expertise.fr/expertise/mur-porteur',
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
     locale: 'fr_FR',
@@ -44,8 +44,8 @@ const faqMurPorteur = [
     answer: "Un mur porteur supporte des charges venues du plancher du dessus ou de la toiture. Les indices visuels sont peu fiables. Notre institut identifie le caractère porteur d'un mur lors d'une visite technique : observation du sens des solives, recherche des chaînages, sondage si nécessaire. Sans cette vérification, ne touchez à aucun mur.",
   },
   {
-    question: "Combien coûte une ouverture de mur porteur à Toulouse ?",
-    answer: "À Toulouse, comptez 4 000 à 10 000 € TTC pour une ouverture standard de 2,5 m, finitions comprises. Pour une grande baie vitrée (au-delà de 3 m), le budget se situe entre 10 000 et 20 000 €. Le devis ferme est remis sous 7 jours après visite.",
+    question: "Comment dimensionne-t-on la poutre d'une ouverture de mur porteur ?",
+    answer: "Le dimensionnement repose sur la descente de charges (poids des murs, dalles et charges d'exploitation au-dessus), la portée libre de l'ouverture, et la nature des appuis. Notre ingénieur structure établit la note de calcul selon les Eurocodes (EN 1993 pour l'acier, EN 1992 pour le béton). Le profil retenu — IPN, IPE ou HEB — dépend du moment de flexion à reprendre et de la flèche admissible. Sur une portée standard de 2,5 m sous étage habité, un IPN 200 ou un HEB 160 sont les profils les plus fréquents en construction toulousaine.",
   },
   {
     question: "Faut-il un permis de construire pour ouvrir un mur porteur ?",
@@ -94,7 +94,6 @@ const typesProjets = [
     titre: 'Cuisine ouverte sur séjour',
     desc: 'Le projet le plus fréquent. Ouverture de 2 à 3 m, poutre IPN ou HEB selon les charges.',
     portee: '2 à 3 m',
-    budget: '5 000 – 8 000 €',
     image: '/images/cuisine-ouverte-sejour.webp',
     imageAlt: 'Ouverture de mur porteur entre cuisine et séjour avec pose de poutre — chantier IPB Toulouse',
   },
@@ -102,7 +101,6 @@ const typesProjets = [
     titre: 'Baie vitrée sur jardin',
     desc: "Création d'une grande ouverture sur la façade arrière. Permis souvent nécessaire.",
     portee: '3 à 5 m',
-    budget: '10 000 – 18 000 €',
     image: '/images/creation-baie-vitree-1.webp',
     imageAlt: 'Création d\'une baie vitrée sur façade arrière donnant sur jardin — chantier IPB',
   },
@@ -110,7 +108,6 @@ const typesProjets = [
     titre: 'Suite parentale étendue',
     desc: 'Ouverture entre deux chambres pour créer un dressing ou une salle de bain attenante.',
     portee: '1,5 à 2,5 m',
-    budget: '4 000 – 6 500 €',
     image: '/images/suite-parentale-etendue.webp',
     imageAlt: 'Ouverture entre chambres pour suite parentale avec dressing — chantier IPB',
   },
@@ -118,7 +115,6 @@ const typesProjets = [
     titre: 'Loft ou plateau',
     desc: 'Plusieurs ouvertures dans un plateau brut. Étude globale avec plan d\'exécution complet.',
     portee: 'Variable',
-    budget: 'Sur devis',
     image: '/images/loft-ou-plateau.webp',
     imageAlt: 'Plateau loft avec plusieurs ouvertures structurelles — chantier IPB',
   },
@@ -158,7 +154,7 @@ export default function MurPorteurPage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">
-                  Notre ingénieur dimensionne la poutre, nos équipes l'installent. Un seul interlocuteur, un seul devis, une seule garantie. Le projet aboutit dans les délais annoncés, avec tous les documents techniques remis à la livraison.
+                  Notre ingénieur dimensionne la poutre selon les Eurocodes, nos équipes l'installent. Un seul interlocuteur de l'étude à la livraison, garantie décennale AXA, documents techniques remis en fin de chantier.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>
@@ -166,8 +162,8 @@ export default function MurPorteurPage() {
                   <MagneticButton href="/diagnostic" variant="primary">
                     Décrire mon projet
                   </MagneticButton>
-                  <MagneticButton href="/blog/prix-ouverture-mur-porteur-toulouse-2026" variant="ghost">
-                    Voir les tarifs détaillés
+                  <MagneticButton href="/notre-expert" variant="ghost">
+                    Notre approche technique
                   </MagneticButton>
                 </div>
               </RevealOnScroll>
@@ -228,15 +224,9 @@ export default function MurPorteurPage() {
                       <p className="text-[14px] leading-[1.75] font-light text-ipb-muted mb-6 flex-1">
                         {p.desc}
                       </p>
-                      <div className="grid grid-cols-2 gap-4 pt-5 border-t border-ipb-rule">
-                        <div>
-                          <p className="text-[10px] uppercase tracking-[0.14em] text-ipb-light mb-1">Portée</p>
-                          <p className="font-serif text-ipb-text font-bold text-[16px]">{p.portee}</p>
-                        </div>
-                        <div>
-                          <p className="text-[10px] uppercase tracking-[0.14em] text-ipb-light mb-1">Budget</p>
-                          <p className="font-serif text-ipb-text font-bold text-[16px]">{p.budget}</p>
-                        </div>
+                      <div className="pt-5 border-t border-ipb-rule">
+                        <p className="text-[10px] uppercase tracking-[0.14em] text-ipb-light mb-1">Portée typique</p>
+                        <p className="font-serif text-ipb-text font-bold text-[16px]">{p.portee}</p>
                       </div>
                     </div>
                   </article>
@@ -273,7 +263,7 @@ export default function MurPorteurPage() {
                 <ul className="space-y-8">
                   {[
                     { titre: "Visite et étude technique", desc: "Notre ingénieur regarde le mur, identifie les charges reprises, vérifie les contraintes de la copropriété si applicable. Il calcule la poutre selon les normes en vigueur." },
-                    { titre: "Devis ferme et planning", desc: "Devis détaillé sous 7 jours après la visite. Calendrier précis : démarches administratives, commande poutre, dates de chantier." },
+                    { titre: "Note de calcul et planning", desc: "Note de calcul signée sous 7 jours après la visite. Calendrier précis : démarches administratives, commande poutre, dates de chantier." },
                     { titre: "Étaiement et ouverture", desc: "Pose des étais pour reprendre les charges du plancher du dessus. Découpe progressive du mur. Pose et scellement de la poutre." },
                     { titre: "Finitions et livraison", desc: "Habillage de la poutre, ragréage, jonctions, peinture si demandée. Levée des étais. Tous les documents du chantier vous sont remis." },
                   ].map((etape, i) => (
