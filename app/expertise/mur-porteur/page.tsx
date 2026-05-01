@@ -13,11 +13,10 @@ import { MurPorteurDiagram } from '@/components/ui/MurPorteurDiagram';
 
 export const metadata: Metadata = {
   title: "Ouverture Mur Porteur Toulouse · IPN/HEB · AXA",
-  description: "Ouverture mur porteur Toulouse : étude IPN/HEB, dimensionnement poutre, travaux clé en main. Décennale AXA. Devis sous 24h. ☎ 05 82 95 33 75",
+  description: "Ouverture mur porteur Toulouse : étude IPN/HEB, dimensionnement poutre selon Eurocodes, travaux clé en main. Décennale AXA. Pré-étude sous 24h. ☎ 05 82 95 33 75",
   keywords: [
     'ouverture mur porteur toulouse',
     'création baie vitrée toulouse',
-    'mur porteur prix toulouse',
     'étude structure mur porteur',
     'calcul poutre IPN HEB',
     'bureau études structure toulouse',
@@ -25,11 +24,12 @@ export const metadata: Metadata = {
     'abattre mur porteur toulouse',
     'expert structure bâtiment',
     'mur porteur copropriété',
+    'dimensionnement IPN',
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/mur-porteur' },
   openGraph: {
     title: 'Ouverture Mur Porteur Toulouse · IPB',
-    description: "Étude IPN/HEB, dimensionnement poutre, travaux clé en main. Décennale AXA. Devis sous 24h.",
+    description: "Étude IPN/HEB, dimensionnement poutre selon Eurocodes, travaux clé en main. Décennale AXA. Pré-étude sous 24h.",
     url: 'https://www.ipb-expertise.fr/expertise/mur-porteur',
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
     locale: 'fr_FR',
@@ -44,8 +44,8 @@ const faqMurPorteur = [
     answer: "Un mur porteur supporte des charges venues du plancher du dessus ou de la toiture. Les indices visuels sont peu fiables. Notre institut identifie le caractère porteur d'un mur lors d'une visite technique : observation du sens des solives, recherche des chaînages, sondage si nécessaire. Sans cette vérification, ne touchez à aucun mur.",
   },
   {
-    question: "Combien coûte une ouverture de mur porteur à Toulouse ?",
-    answer: "À Toulouse, comptez 4 000 à 10 000 € TTC pour une ouverture standard de 2,5 m, finitions comprises. Pour une grande baie vitrée (au-delà de 3 m), le budget se situe entre 10 000 et 20 000 €. Le devis ferme est remis sous 7 jours après visite.",
+    question: "Comment dimensionne-t-on la poutre d'une ouverture de mur porteur ?",
+    answer: "Le dimensionnement repose sur la descente de charges (poids des murs, dalles et charges d'exploitation au-dessus), la portée libre de l'ouverture, et la nature des appuis. Notre ingénieur structure établit la note de calcul selon les Eurocodes (EN 1993 pour l'acier, EN 1992 pour le béton). Le profil retenu — IPN, IPE ou HEB — dépend du moment de flexion à reprendre et de la flèche admissible. Sur une portée standard de 2,5 m sous étage habité, un IPN 200 ou un HEB 160 sont les profils les plus fréquents en construction toulousaine.",
   },
   {
     question: "Faut-il un permis de construire pour ouvrir un mur porteur ?",
@@ -154,7 +154,7 @@ export default function MurPorteurPage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">
-                  Notre ingénieur dimensionne la poutre, nos équipes l'installent. Un seul interlocuteur, un seul devis, une seule garantie. Le projet aboutit dans les délais annoncés, avec tous les documents techniques remis à la livraison.
+                  Notre ingénieur dimensionne la poutre selon les Eurocodes, nos équipes l'installent. Un seul interlocuteur de l'étude à la livraison, garantie décennale AXA, documents techniques remis en fin de chantier.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>
@@ -162,8 +162,8 @@ export default function MurPorteurPage() {
                   <MagneticButton href="/diagnostic" variant="primary">
                     Décrire mon projet
                   </MagneticButton>
-                  <MagneticButton href="/blog/prix-ouverture-mur-porteur-toulouse-2026" variant="ghost">
-                    Voir les tarifs détaillés
+                  <MagneticButton href="/notre-expert" variant="ghost">
+                    Notre approche technique
                   </MagneticButton>
                 </div>
               </RevealOnScroll>
@@ -263,7 +263,7 @@ export default function MurPorteurPage() {
                 <ul className="space-y-8">
                   {[
                     { titre: "Visite et étude technique", desc: "Notre ingénieur regarde le mur, identifie les charges reprises, vérifie les contraintes de la copropriété si applicable. Il calcule la poutre selon les normes en vigueur." },
-                    { titre: "Devis ferme et planning", desc: "Devis détaillé sous 7 jours après la visite. Calendrier précis : démarches administratives, commande poutre, dates de chantier." },
+                    { titre: "Note de calcul et planning", desc: "Note de calcul signée sous 7 jours après la visite. Calendrier précis : démarches administratives, commande poutre, dates de chantier." },
                     { titre: "Étaiement et ouverture", desc: "Pose des étais pour reprendre les charges du plancher du dessus. Découpe progressive du mur. Pose et scellement de la poutre." },
                     { titre: "Finitions et livraison", desc: "Habillage de la poutre, ragréage, jonctions, peinture si demandée. Levée des étais. Tous les documents du chantier vous sont remis." },
                   ].map((etape, i) => (
@@ -340,32 +340,32 @@ export default function MurPorteurPage() {
                 </div>
 
                 <p className="text-ipb-orange-l text-[11px] uppercase tracking-[0.18em] font-semibold mb-3">
-                  Outil interactif · Gratuit · 2 minutes
+                  Pré-étude technique · Sous 24h
                 </p>
                 <h2 className="text-white font-serif mb-5" style={{ fontSize: 'clamp(24px, 2.6vw, 36px)', lineHeight: 1.18, letterSpacing: '-0.022em', fontWeight: 700 }}>
-                  Estimez le prix de votre ouverture<br className="hidden sm:block" />
-                  <em className="text-ipb-orange-l not-italic sm:italic">avant de nous parler.</em>
+                  Échangez avec notre<br className="hidden sm:block" />
+                  <em className="text-ipb-orange-l not-italic sm:italic">ingénieur structure.</em>
                 </h2>
                 <p className="text-white/80 text-[14px] md:text-[15px] leading-[1.8] mb-7 max-w-xl mx-auto">
-                  Quatre questions sur votre projet (type de mur, dimensions, étage…) et notre calculateur vous donne une fourchette précise basée sur nos chantiers récents en Occitanie. Vous recevez le détail par email.
+                  Décrivez votre projet en quelques minutes. Notre ingénieur revient vers vous sous 24 heures ouvrées avec une première analyse : faisabilité, profil de poutre envisageable, contraintes spécifiques à votre bâti, démarches à anticiper.
                 </p>
 
-                {/* Aperçu visuel des étapes — montre que c'est un outil structuré */}
+                {/* Aperçu des étapes du parcours expertise */}
                 <div className="flex flex-wrap items-center justify-center gap-2 mb-8 text-[11px] uppercase tracking-[0.06em] text-white/70">
-                  <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">1. Projet</span>
+                  <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">1. Votre projet</span>
                   <span aria-hidden="true" className="text-ipb-orange-l">→</span>
-                  <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">2. Dimensions</span>
+                  <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">2. Pré-analyse</span>
                   <span aria-hidden="true" className="text-ipb-orange-l">→</span>
-                  <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">3. Type de mur</span>
+                  <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">3. Visite technique</span>
                   <span aria-hidden="true" className="text-ipb-orange-l">→</span>
-                  <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">4. Étage</span>
+                  <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">4. Note de calcul</span>
                 </div>
 
                 <a
-                  href="/calcul-prix-mur-porteur?utm_source=site&utm_medium=expertise_hub&utm_campaign=mur_porteur"
+                  href="/diagnostic?utm_source=site&utm_medium=expertise_hub&utm_campaign=mur_porteur"
                   className="inline-flex items-center justify-center gap-2 bg-ipb-orange text-white font-bold px-9 md:px-10 py-4 rounded-[3px] text-[14px] md:text-[15px] tracking-[0.03em] hover:bg-[#b35519] transition-colors min-h-[52px] shadow-[0_8px_24px_rgba(200,96,31,0.35)]"
                 >
-                  Lancer le calculateur
+                  Démarrer la pré-étude
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                     <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
