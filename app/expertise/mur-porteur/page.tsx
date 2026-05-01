@@ -340,32 +340,32 @@ export default function MurPorteurPage() {
                 </div>
 
                 <p className="text-ipb-orange-l text-[11px] uppercase tracking-[0.18em] font-semibold mb-3">
-                  Pré-étude technique · Sous 24h
+                  Outil interactif · Gratuit · 2 minutes
                 </p>
                 <h2 className="text-white font-serif mb-5" style={{ fontSize: 'clamp(24px, 2.6vw, 36px)', lineHeight: 1.18, letterSpacing: '-0.022em', fontWeight: 700 }}>
-                  Échangez avec notre<br className="hidden sm:block" />
-                  <em className="text-ipb-orange-l not-italic sm:italic">ingénieur structure.</em>
+                  Estimez le prix de votre ouverture<br className="hidden sm:block" />
+                  <em className="text-ipb-orange-l not-italic sm:italic">avant de nous parler.</em>
                 </h2>
                 <p className="text-white/80 text-[14px] md:text-[15px] leading-[1.8] mb-7 max-w-xl mx-auto">
-                  Décrivez votre projet en quelques minutes. Notre ingénieur revient vers vous sous 24 heures ouvrées avec une première analyse : faisabilité, profil de poutre envisageable, contraintes spécifiques à votre bâti, démarches à anticiper.
+                  Quatre questions sur votre projet (type de mur, dimensions, étage…) et notre calculateur vous donne une fourchette précise basée sur nos chantiers récents en Occitanie. Vous recevez le détail par email.
                 </p>
 
-                {/* Aperçu des étapes du parcours expertise */}
+                {/* Aperçu visuel des étapes — montre que c'est un outil structuré */}
                 <div className="flex flex-wrap items-center justify-center gap-2 mb-8 text-[11px] uppercase tracking-[0.06em] text-white/70">
-                  <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">1. Votre projet</span>
+                  <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">1. Projet</span>
                   <span aria-hidden="true" className="text-ipb-orange-l">→</span>
-                  <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">2. Pré-analyse</span>
+                  <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">2. Dimensions</span>
                   <span aria-hidden="true" className="text-ipb-orange-l">→</span>
-                  <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">3. Visite technique</span>
+                  <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">3. Type de mur</span>
                   <span aria-hidden="true" className="text-ipb-orange-l">→</span>
-                  <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">4. Note de calcul</span>
+                  <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">4. Étage</span>
                 </div>
 
                 <a
-                  href="/diagnostic?utm_source=site&utm_medium=expertise_hub&utm_campaign=mur_porteur"
+                  href="/calcul-prix-mur-porteur?utm_source=site&utm_medium=expertise_hub&utm_campaign=mur_porteur"
                   className="inline-flex items-center justify-center gap-2 bg-ipb-orange text-white font-bold px-9 md:px-10 py-4 rounded-[3px] text-[14px] md:text-[15px] tracking-[0.03em] hover:bg-[#b35519] transition-colors min-h-[52px] shadow-[0_8px_24px_rgba(200,96,31,0.35)]"
                 >
-                  Démarrer la pré-étude
+                  Lancer le calculateur
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                     <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
