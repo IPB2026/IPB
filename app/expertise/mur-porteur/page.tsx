@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   keywords: [
     'ouverture mur porteur toulouse',
     'création baie vitrée toulouse',
+    'mur porteur prix toulouse',
     'étude structure mur porteur',
     'calcul poutre IPN HEB',
     'bureau études structure toulouse',
@@ -24,7 +25,6 @@ export const metadata: Metadata = {
     'abattre mur porteur toulouse',
     'expert structure bâtiment',
     'mur porteur copropriété',
-    'dimensionnement IPN',
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/mur-porteur' },
   openGraph: {
