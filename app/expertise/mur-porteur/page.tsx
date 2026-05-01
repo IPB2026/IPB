@@ -94,7 +94,6 @@ const typesProjets = [
     titre: 'Cuisine ouverte sur séjour',
     desc: 'Le projet le plus fréquent. Ouverture de 2 à 3 m, poutre IPN ou HEB selon les charges.',
     portee: '2 à 3 m',
-    budget: '5 000 – 8 000 €',
     image: '/images/cuisine-ouverte-sejour.webp',
     imageAlt: 'Ouverture de mur porteur entre cuisine et séjour avec pose de poutre — chantier IPB Toulouse',
   },
@@ -102,7 +101,6 @@ const typesProjets = [
     titre: 'Baie vitrée sur jardin',
     desc: "Création d'une grande ouverture sur la façade arrière. Permis souvent nécessaire.",
     portee: '3 à 5 m',
-    budget: '10 000 – 18 000 €',
     image: '/images/creation-baie-vitree-1.webp',
     imageAlt: 'Création d\'une baie vitrée sur façade arrière donnant sur jardin — chantier IPB',
   },
@@ -110,7 +108,6 @@ const typesProjets = [
     titre: 'Suite parentale étendue',
     desc: 'Ouverture entre deux chambres pour créer un dressing ou une salle de bain attenante.',
     portee: '1,5 à 2,5 m',
-    budget: '4 000 – 6 500 €',
     image: '/images/suite-parentale-etendue.webp',
     imageAlt: 'Ouverture entre chambres pour suite parentale avec dressing — chantier IPB',
   },
@@ -118,7 +115,6 @@ const typesProjets = [
     titre: 'Loft ou plateau',
     desc: 'Plusieurs ouvertures dans un plateau brut. Étude globale avec plan d\'exécution complet.',
     portee: 'Variable',
-    budget: 'Sur devis',
     image: '/images/loft-ou-plateau.webp',
     imageAlt: 'Plateau loft avec plusieurs ouvertures structurelles — chantier IPB',
   },
@@ -228,15 +224,9 @@ export default function MurPorteurPage() {
                       <p className="text-[14px] leading-[1.75] font-light text-ipb-muted mb-6 flex-1">
                         {p.desc}
                       </p>
-                      <div className="grid grid-cols-2 gap-4 pt-5 border-t border-ipb-rule">
-                        <div>
-                          <p className="text-[10px] uppercase tracking-[0.14em] text-ipb-light mb-1">Portée</p>
-                          <p className="font-serif text-ipb-text font-bold text-[16px]">{p.portee}</p>
-                        </div>
-                        <div>
-                          <p className="text-[10px] uppercase tracking-[0.14em] text-ipb-light mb-1">Budget</p>
-                          <p className="font-serif text-ipb-text font-bold text-[16px]">{p.budget}</p>
-                        </div>
+                      <div className="pt-5 border-t border-ipb-rule">
+                        <p className="text-[10px] uppercase tracking-[0.14em] text-ipb-light mb-1">Portée typique</p>
+                        <p className="font-serif text-ipb-text font-bold text-[16px]">{p.portee}</p>
                       </div>
                     </div>
                   </article>
