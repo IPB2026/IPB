@@ -196,8 +196,8 @@ export default function ExpertFissuresToulousePage() {
             <RevealOnScroll direction="right" delay={0.1} className="hidden lg:block">
               <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
                 <Image
-                  src="/images/fissures-avant-apres.webp"
-                  alt="Avant/après agrafage structurel à Toulouse — Institut IPB"
+                  src="/images/fissure-mur-toulousain-real.webp"
+                  alt="Fissure structurelle sur un mur toulousain — diagnostic IPB Haute-Garonne"
                   fill
                   sizes="(max-width: 1024px) 0px, 500px"
                   className="object-cover"
@@ -210,28 +210,44 @@ export default function ExpertFissuresToulousePage() {
 
         {/* RECONNAISSANCE DU PROBLÈME (PAS — miroir du visiteur) */}
         <section className="bg-ipb-white py-20 lg:py-24 border-t border-ipb-rule">
-          <div className="max-w-3xl mx-auto px-6 lg:px-12">
-            <RevealOnScroll>
-              <Eyebrow>Si vous lisez cette page…</Eyebrow>
-              <h2 className="font-serif text-ipb-text mb-8" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.18, letterSpacing: '-0.022em', fontWeight: 700 }}>
-                Vous avez vu apparaître des fissures<br /><em>et vous vous demandez si c'est grave.</em>
-              </h2>
-            </RevealOnScroll>
-            <div className="space-y-5 text-[15px] leading-[1.9] font-light text-ipb-muted">
-              <RevealOnScroll delay={0.06}>
-                <p>
-                  Elles se sont peut-être agrandies cet été. Elles sont peut-être en escalier le long d'un angle, ou horizontales à mi-hauteur d'un mur. Vous hésitez : <em>est-ce qu'une lézarde de 2 mm est dangereuse ?</em> Est-ce que ça va s'arrêter tout seul ? Est-ce que votre assurance prendra en charge ?
-                </p>
-              </RevealOnScroll>
-              <RevealOnScroll delay={0.12}>
-                <p>
-                  Surtout, vous ne voulez pas faire la mauvaise chose : payer 15 000 € de rustines qui fissureront à nouveau l'été prochain. Ou attendre trop longtemps et voir le devis passer de 12 000 € à 35 000 €.
-                </p>
-              </RevealOnScroll>
-              <RevealOnScroll delay={0.18}>
-                <p className="text-ipb-text">
-                  Notre rôle commence avant les travaux. Notre ingénieur se déplace, mesure l'évolution, identifie la <strong className="not-italic">cause exacte</strong> — sécheresse, défaut de chaînage, infiltration — et vous dit honnêtement si une intervention est nécessaire ou si vous pouvez attendre.
-                </p>
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+              <div className="lg:col-span-7">
+                <RevealOnScroll>
+                  <Eyebrow>Si vous lisez cette page…</Eyebrow>
+                  <h2 className="font-serif text-ipb-text mb-8" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.18, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                    Vous avez vu apparaître des fissures<br /><em>et vous vous demandez si c'est grave.</em>
+                  </h2>
+                </RevealOnScroll>
+                <div className="space-y-5 text-[15px] leading-[1.9] font-light text-ipb-muted">
+                  <RevealOnScroll delay={0.06}>
+                    <p>
+                      Elles se sont peut-être agrandies cet été. Elles sont peut-être en escalier le long d'un angle, ou horizontales à mi-hauteur d'un mur. Vous hésitez : <em>est-ce qu'une lézarde de 2 mm est dangereuse ?</em> Est-ce que ça va s'arrêter tout seul ? Est-ce que votre assurance prendra en charge ?
+                    </p>
+                  </RevealOnScroll>
+                  <RevealOnScroll delay={0.12}>
+                    <p>
+                      Surtout, vous ne voulez pas faire la mauvaise chose : payer 15 000 € de rustines qui fissureront à nouveau l'été prochain. Ou attendre trop longtemps et voir le devis passer de 12 000 € à 35 000 €.
+                    </p>
+                  </RevealOnScroll>
+                  <RevealOnScroll delay={0.18}>
+                    <p className="text-ipb-text">
+                      Notre rôle commence avant les travaux. Notre ingénieur se déplace, mesure l'évolution, identifie la <strong className="not-italic">cause exacte</strong> — sécheresse, défaut de chaînage, infiltration — et vous dit honnêtement si une intervention est nécessaire ou si vous pouvez attendre.
+                    </p>
+                  </RevealOnScroll>
+                </div>
+              </div>
+
+              <RevealOnScroll direction="right" delay={0.1} className="lg:col-span-5">
+                <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
+                  <Image
+                    src="/images/fissure-mur-real.webp"
+                    alt="Fissure structurelle observée sur une maison en Haute-Garonne — diagnostic IPB"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 420px"
+                    className="object-cover"
+                  />
+                </div>
               </RevealOnScroll>
             </div>
           </div>

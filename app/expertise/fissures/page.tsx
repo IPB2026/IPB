@@ -3,6 +3,7 @@ import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { CtaFinal } from '@/components/home/CtaFinal';
+import { Testimonials } from '@/components/home/Testimonials';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
@@ -143,20 +144,45 @@ export default function FissuresPage() {
               <RevealOnScroll delay={0.18}>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <MagneticButton href="/diagnostic" variant="primary">
-                    Diagnostic gratuit
+                    Diagnostic gratuit en 2 min
                   </MagneticButton>
-                  <MagneticButton href="/blog/agrafage-vs-micropieux-choix" variant="ghost">
-                    Agrafage ou micropieux ?
-                  </MagneticButton>
+                  <a
+                    href="tel:0582953375"
+                    className="inline-flex items-center justify-center gap-2 border border-ipb-text/15 text-ipb-text font-medium px-7 py-4 rounded-[3px] text-[14px] tracking-[0.02em] hover:border-ipb-orange hover:text-ipb-orange transition-colors min-h-[48px]"
+                    aria-label="Appeler IPB au 05 82 95 33 75"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                    05 82 95 33 75
+                  </a>
                 </div>
+              </RevealOnScroll>
+
+              {/* Mini trust-line sous les CTA — preuves rapides scannables */}
+              <RevealOnScroll delay={0.22}>
+                <ul className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-5 text-[12px] text-ipb-muted font-light">
+                  <li className="flex items-center gap-1.5">
+                    <span className="text-ipb-orange" aria-hidden="true">✓</span>
+                    <span>Sans engagement</span>
+                  </li>
+                  <li className="flex items-center gap-1.5">
+                    <span className="text-ipb-orange" aria-hidden="true">✓</span>
+                    <span>Réponse sous 48h</span>
+                  </li>
+                  <li className="flex items-center gap-1.5">
+                    <span className="text-ipb-orange" aria-hidden="true">✓</span>
+                    <span>Décennale AXA</span>
+                  </li>
+                </ul>
               </RevealOnScroll>
             </div>
 
             <RevealOnScroll direction="right" delay={0.1} className="hidden lg:block">
               <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
                 <Image
-                  src="/images/fissures-avant-apres.webp"
-                  alt="Avant et après agrafage de fissure structurelle — chantier IPB Tournefeuille"
+                  src="/images/fissure-mur-real.webp"
+                  alt="Fissure structurelle observée sur une maison en Occitanie — diagnostic IPB"
                   fill
                   sizes="(max-width: 1024px) 0px, 500px"
                   className="object-cover"
@@ -167,8 +193,53 @@ export default function FissuresPage() {
           </div>
         </section>
 
+        {/* RECONNAISSANCE DU PROBLÈME (PAS — miroir du visiteur) */}
+        <section className="bg-ipb-white py-20 lg:py-24 border-t border-ipb-rule">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+              <div className="lg:col-span-7">
+                <RevealOnScroll>
+                  <Eyebrow>Si vous lisez cette page…</Eyebrow>
+                  <h2 className="font-serif text-ipb-text mb-8" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.18, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                    Vous avez vu apparaître une fissure<br /><em>et vous vous demandez si c'est grave.</em>
+                  </h2>
+                </RevealOnScroll>
+                <div className="space-y-5 text-[15px] leading-[1.9] font-light text-ipb-muted">
+                  <RevealOnScroll delay={0.06}>
+                    <p>
+                      Elle s'est peut-être agrandie cet été. Elle est peut-être en escalier le long d'un angle, ou horizontale à mi-hauteur d'un mur. Vous hésitez : <em>est-ce qu'une lézarde de 2 mm est dangereuse ?</em> Est-ce que ça va s'arrêter tout seul ? Est-ce que votre assurance prendra en charge ?
+                    </p>
+                  </RevealOnScroll>
+                  <RevealOnScroll delay={0.12}>
+                    <p>
+                      Surtout, vous ne voulez pas faire la mauvaise chose : payer 15 000 € de rustines qui fissureront à nouveau l'été prochain. Ou attendre trop longtemps et voir le devis passer de 12 000 € à 35 000 €.
+                    </p>
+                  </RevealOnScroll>
+                  <RevealOnScroll delay={0.18}>
+                    <p className="text-ipb-text">
+                      Notre rôle commence avant les travaux. Notre ingénieur se déplace, mesure l'évolution, identifie la <strong className="not-italic">cause exacte</strong> — sécheresse, défaut de chaînage, infiltration — et vous dit honnêtement si une intervention est nécessaire ou si vous pouvez attendre.
+                    </p>
+                  </RevealOnScroll>
+                </div>
+              </div>
+
+              <RevealOnScroll direction="right" delay={0.1} className="lg:col-span-5">
+                <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
+                  <Image
+                    src="/images/fissure-facade-verticale.webp"
+                    alt="Fissure verticale traversante sur façade en Haute-Garonne — observée lors d'un diagnostic IPB"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 420px"
+                    className="object-cover"
+                  />
+                </div>
+              </RevealOnScroll>
+            </div>
+          </div>
+        </section>
+
         {/* SECTION TYPES DE FISSURES — 2x2 avec barre colorée latérale */}
-        <section className="bg-ipb-white py-24 lg:py-32">
+        <section className="bg-ipb-cream py-24 lg:py-32">
           <div className="max-w-ipb mx-auto px-6 lg:px-12">
             <RevealOnScroll>
               <div className="grid lg:grid-cols-12 gap-8 items-end mb-16">
@@ -257,10 +328,29 @@ export default function FissuresPage() {
                     </RevealOnScroll>
                   ))}
                 </ul>
+
+                {/* CTA après la liste — démarre l'étape 1 */}
+                <RevealOnScroll delay={0.36}>
+                  <div className="mt-10 pt-2">
+                    <a
+                      href="/diagnostic"
+                      className="inline-flex items-center justify-center gap-2 bg-ipb-orange text-white font-bold px-8 py-4 rounded-[3px] text-[14px] tracking-[0.03em] hover:bg-[#b35519] transition-colors min-h-[48px]"
+                    >
+                      Commencer par l'étape 1
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </a>
+                    <p className="mt-3 text-[12px] text-white/55">Diagnostic en ligne · 2 minutes · sans engagement</p>
+                  </div>
+                </RevealOnScroll>
               </div>
             </div>
           </div>
         </section>
+
+        {/* PREUVE SOCIALE — avis clients vérifiés */}
+        <Testimonials />
 
         {/* FAQ */}
         <section className="bg-ipb-cream py-24 lg:py-32">
@@ -291,6 +381,23 @@ export default function FissuresPage() {
                 </RevealOnScroll>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* RENVERSEMENT DU RISQUE — bloc d'apaisement avant le CTA final */}
+        <section className="bg-ipb-white py-16 lg:py-20 border-t border-ipb-rule">
+          <div className="max-w-3xl mx-auto px-6 lg:px-12 text-center">
+            <RevealOnScroll>
+              <p className="text-[10px] text-ipb-orange uppercase tracking-[0.18em] font-semibold mb-4">
+                Vous hésitez ?
+              </p>
+              <p className="font-serif text-ipb-text mb-5" style={{ fontSize: 'clamp(20px, 2vw, 26px)', lineHeight: 1.4, letterSpacing: '-0.015em', fontWeight: 500 }}>
+                Le diagnostic en ligne ne vous engage à rien.
+              </p>
+              <p className="text-[15px] leading-[1.85] font-light text-ipb-muted">
+                Vous obtenez un premier avis d'un ingénieur structure, gratuitement. <strong className="text-ipb-text not-italic">Si la situation ne nécessite pas d'intervention, on vous le dira</strong> — c'est l'engagement de l'institut. Mieux vaut un avis juste qu'un devis vendu.
+              </p>
+            </RevealOnScroll>
           </div>
         </section>
 
