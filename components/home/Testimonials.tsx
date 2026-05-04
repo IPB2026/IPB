@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
+import { googleReviews, type Review } from '@/app/data/testimonials';
 
 /**
  * Testimonials — carousel éditorial avec navigation latérale nommée.
@@ -10,43 +11,17 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
  * Auto-rotate 7 secondes. Fade out 0.35s → swap → fade in.
  * Navigation par prénom + ville + barre orange active.
  *
- * Cf. IPB_Design_Handoff.md §7 + §8
+ * Par défaut : vrais avis Google d'IPB (`googleReviews`).
+ * Pour cibler une page service spécifique (mur porteur), passer un
+ * dataset alternatif via la prop `reviews` :
+ *   <Testimonials reviews={murPorteurReviews} />
+ *
+ * Cf. IPB_Design_Handoff.md §7 + §8 et app/data/testimonials.ts
  */
-
-const reviews = [
-  {
-    id: 'yusra',
-    name: "Yusra G.",
-    location: "Toulouse",
-    date: "Janvier 2026",
-    text: "Diagnostic clair, intervention efficace. L'équipe est ponctuelle et soignée — on sent qu'ils prennent le temps d'expliquer ce qu'ils font.",
-  },
-  {
-    id: 'luc',
-    name: "Luc C.",
-    location: "Castanet-Tolosan",
-    date: "Septembre 2025",
-    text: "J'avais remarqué que la peinture commençait à cloquer en bas du mur avec des traces blanches. L'expert IPB a tout de suite identifié le problème. Intervention rapide et efficace.",
-  },
-  {
-    id: 'paul',
-    name: "Paul T.",
-    location: "Tournefeuille",
-    date: "Janvier 2026",
-    text: "Le travail a été réalisé avec soin et dans les délais annoncés. Le rapport est complet, l'attestation décennale m'a été remise à la livraison. Je recommande.",
-  },
-  {
-    id: 'arnaud',
-    name: "Arnaud B.",
-    location: "Saint-Cyprien",
-    date: "Janvier 2026",
-    text: "Mur porteur ouvert chez moi en 5 jours, comme prévu. L'équipe est professionnelle, le chantier propre. Le bien a été remis en vente trois semaines après.",
-  },
-];
 
 const GOOGLE_REVIEWS_URL = "https://maps.app.goo.gl/6yDtzs7D1UcKSdJf6";
 
-export function Testimonials() {
+export function Testimonials({ reviews = googleReviews }: { reviews?: Review[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isFading, setIsFading] = useState(false);
 
@@ -60,7 +35,12 @@ export function Testimonials() {
       }, 350);
     }, 7000);
     return () => clearInterval(interval);
-  }, []);
+  }, [reviews.length]);
+
+  // Reset index si on change de dataset (sécurité)
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [reviews]);
 
   const goTo = (i: number) => {
     if (i === activeIndex) return;

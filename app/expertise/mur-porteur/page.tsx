@@ -4,6 +4,7 @@ import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { CtaFinal } from '@/components/home/CtaFinal';
 import { Testimonials } from '@/components/home/Testimonials';
+import { murPorteurReviews } from '@/app/data/testimonials';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
@@ -460,8 +461,8 @@ export default function MurPorteurPage() {
           </div>
         </section>
 
-        {/* PREUVE SOCIALE — avis clients vérifiés */}
-        <Testimonials />
+        {/* PREUVE SOCIALE — avis clients ciblés mur porteur / baie vitrée */}
+        <Testimonials reviews={murPorteurReviews} />
 
         {/* FAQ */}
         <section className="bg-ipb-white py-24 lg:py-32">

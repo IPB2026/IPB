@@ -1,36 +1,16 @@
 "use client"
 
 import { Star, ExternalLink } from 'lucide-react';
+import { googleReviews } from '@/app/data/testimonials';
 
-// Vrais avis Google My Business - IPB
-// ⚠️ Source de vérité : ce tableau est synchronisé avec components/home/Testimonials.tsx.
-// Toute modification de texte doit être reportée dans les DEUX fichiers pour rester cohérent.
-const reviews = [
-  {
-    name: "Yusra G.",
-    date: "Janvier 2026",
-    rating: 5,
-    text: "Diagnostic clair, intervention efficace. L'équipe est ponctuelle et soignée — on sent qu'ils prennent le temps d'expliquer ce qu'ils font.",
-  },
-  {
-    name: "Luc C.",
-    date: "Septembre 2025",
-    rating: 5,
-    text: "J'avais remarqué que la peinture commençait à cloquer en bas du mur avec des traces blanches. L'expert IPB a tout de suite identifié le problème. Intervention rapide et efficace.",
-  },
-  {
-    name: "Paul T.",
-    date: "Janvier 2026",
-    rating: 5,
-    text: "Le travail a été réalisé avec soin et dans les délais annoncés. Le rapport est complet, l'attestation décennale m'a été remise à la livraison. Je recommande.",
-  },
-  {
-    name: "Arnaud B.",
-    date: "Janvier 2026",
-    rating: 5,
-    text: "Mur porteur ouvert chez moi en 5 jours, comme prévu. L'équipe est professionnelle, le chantier propre. Le bien a été remis en vente trois semaines après.",
-  },
-];
+// Source unique des vrais avis Google d'IPB : app/data/testimonials.ts
+// On adapte ici juste pour ajouter `rating: 5` (commun à tous les avis affichés).
+const reviews = googleReviews.map((r) => ({
+  name: r.name,
+  date: r.date,
+  rating: 5,
+  text: r.text,
+}));
 
 const GOOGLE_REVIEWS_URL = "https://maps.app.goo.gl/6yDtzs7D1UcKSdJf6";
 
