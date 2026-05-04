@@ -3,6 +3,7 @@ import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { CtaFinal } from '@/components/home/CtaFinal';
+import { Testimonials } from '@/components/home/Testimonials';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
@@ -162,10 +163,35 @@ export default function MurPorteurPage() {
                   <MagneticButton href="/diagnostic" variant="primary">
                     Décrire mon projet
                   </MagneticButton>
-                  <MagneticButton href="/notre-expert" variant="ghost">
-                    Notre approche technique
-                  </MagneticButton>
+                  <a
+                    href="tel:0582953375"
+                    className="inline-flex items-center justify-center gap-2 border border-ipb-text/15 text-ipb-text font-medium px-7 py-4 rounded-[3px] text-[14px] tracking-[0.02em] hover:border-ipb-orange hover:text-ipb-orange transition-colors min-h-[48px]"
+                    aria-label="Appeler IPB au 05 82 95 33 75"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                    05 82 95 33 75
+                  </a>
                 </div>
+              </RevealOnScroll>
+
+              {/* Mini trust-line sous les CTA — preuves rapides scannables */}
+              <RevealOnScroll delay={0.22}>
+                <ul className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-5 text-[12px] text-ipb-muted font-light">
+                  <li className="flex items-center gap-1.5">
+                    <span className="text-ipb-orange" aria-hidden="true">✓</span>
+                    <span>Sans engagement</span>
+                  </li>
+                  <li className="flex items-center gap-1.5">
+                    <span className="text-ipb-orange" aria-hidden="true">✓</span>
+                    <span>Pré-étude sous 24h</span>
+                  </li>
+                  <li className="flex items-center gap-1.5">
+                    <span className="text-ipb-orange" aria-hidden="true">✓</span>
+                    <span>Décennale AXA</span>
+                  </li>
+                </ul>
               </RevealOnScroll>
             </div>
 
@@ -181,6 +207,35 @@ export default function MurPorteurPage() {
                 />
               </div>
             </RevealOnScroll>
+          </div>
+        </section>
+
+        {/* RECONNAISSANCE DU PROBLÈME (PAS — miroir du visiteur) */}
+        <section className="bg-ipb-white py-20 lg:py-24 border-t border-ipb-rule">
+          <div className="max-w-3xl mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <Eyebrow>Si vous lisez cette page…</Eyebrow>
+              <h2 className="font-serif text-ipb-text mb-8" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.18, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                Vous voulez agrandir une pièce<br /><em>en ouvrant un mur porteur.</em>
+              </h2>
+            </RevealOnScroll>
+            <div className="space-y-5 text-[15px] leading-[1.9] font-light text-ipb-muted">
+              <RevealOnScroll delay={0.06}>
+                <p>
+                  Le maçon vous demande une étude de structure. Un voisin vous a parlé de « la poutre IPN ». Vous lisez sur internet des fourchettes de prix qui vont du simple au triple. Vous vous demandez : <em>est-ce qu'on me vend un document inutile ? Comment savoir si la poutre proposée est correctement dimensionnée ?</em>
+                </p>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.12}>
+                <p>
+                  Surtout, vous ne voulez pas la mauvaise issue : un dimensionnement trop juste, un affaissement à 5 ans, et un sinistre que ni l'assurance habitation ni le maçon ne couvriront — parce que personne n'a signé de note de calcul.
+                </p>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.18}>
+                <p className="text-ipb-text">
+                  Notre rôle, c'est précisément ce calcul. Notre ingénieur structure dimensionne la poutre selon les <strong className="not-italic">Eurocodes</strong>, signe une note opposable, puis pilote le chantier. Un seul interlocuteur de l'étude à la livraison, garantie décennale AXA sur l'étude <em>et</em> les travaux.
+                </p>
+              </RevealOnScroll>
+            </div>
           </div>
         </section>
 
@@ -389,6 +444,9 @@ export default function MurPorteurPage() {
           </div>
         </section>
 
+        {/* PREUVE SOCIALE — avis clients vérifiés */}
+        <Testimonials />
+
         {/* FAQ */}
         <section className="bg-ipb-white py-24 lg:py-32">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
@@ -418,6 +476,23 @@ export default function MurPorteurPage() {
                 </RevealOnScroll>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* RENVERSEMENT DU RISQUE — bloc d'apaisement avant le CTA final */}
+        <section className="bg-ipb-cream py-16 lg:py-20 border-t border-ipb-rule">
+          <div className="max-w-3xl mx-auto px-6 lg:px-12 text-center">
+            <RevealOnScroll>
+              <p className="text-[10px] text-ipb-orange uppercase tracking-[0.18em] font-semibold mb-4">
+                Vous hésitez ?
+              </p>
+              <p className="font-serif text-ipb-text mb-5" style={{ fontSize: 'clamp(20px, 2vw, 26px)', lineHeight: 1.4, letterSpacing: '-0.015em', fontWeight: 500 }}>
+                Décrire votre projet ne vous engage à rien.
+              </p>
+              <p className="text-[15px] leading-[1.85] font-light text-ipb-muted">
+                Notre ingénieur structure revient vers vous sous 24h ouvrées avec une première analyse de faisabilité. <strong className="text-ipb-text not-italic">Si votre projet n'est pas compatible avec une ouverture (sécurité, copropriété, contraintes de bâti), on vous le dira clairement</strong> — et on vous expliquera les alternatives.
+              </p>
+            </RevealOnScroll>
           </div>
         </section>
 
