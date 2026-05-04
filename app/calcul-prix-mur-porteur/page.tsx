@@ -142,6 +142,9 @@ export default function CalculatorPage() {
                 <p className="text-[12px] text-ipb-light mt-3">
                   *Étude structure + dimensionnement IPN/HEB + étaiement + travaux + finitions. Hors démarches mairie spécifiques.
                 </p>
+                <p className="text-[12px] text-ipb-muted mt-3 leading-[1.7]">
+                  Ces fourchettes correspondent aux <strong className="text-ipb-text not-italic">tarifs les plus serrés</strong> constatés sur des chantiers standards. L'estimation personnalisée délivrée par le calculateur ci-dessus tient compte des spécificités de votre projet (étage habité, nature du mur, finitions demandées) et peut donc se situer dans cette fourchette ou légèrement au-dessus selon votre configuration.
+                </p>
               </div>
 
               <h3 className="font-serif text-ipb-text mb-4 font-bold not-italic" style={{ fontSize: 'clamp(20px, 1.8vw, 24px)' }}>
