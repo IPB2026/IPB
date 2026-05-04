@@ -95,29 +95,29 @@ const typesProjets = [
     titre: 'Cuisine ouverte sur séjour',
     desc: 'Le projet le plus fréquent. Ouverture de 2 à 3 m, poutre IPN ou HEB selon les charges.',
     portee: '2 à 3 m',
-    image: '/images/cuisine-ouverte-sejour.webp',
-    imageAlt: 'Ouverture de mur porteur entre cuisine et séjour avec pose de poutre — chantier IPB Toulouse',
+    image: '/images/baie-vitree-cuisine.webp',
+    imageAlt: 'Cuisine ouverte sur séjour après ouverture de mur porteur — chantier IPB Toulouse',
   },
   {
     titre: 'Baie vitrée sur jardin',
     desc: "Création d'une grande ouverture sur la façade arrière. Permis souvent nécessaire.",
     portee: '3 à 5 m',
-    image: '/images/creation-baie-vitree-1.webp',
-    imageAlt: 'Création d\'une baie vitrée sur façade arrière donnant sur jardin — chantier IPB',
+    image: '/images/baie-vitree-cuisine-salon.webp',
+    imageAlt: 'Création d\'une baie vitrée entre cuisine et salon — chantier IPB',
   },
   {
     titre: 'Suite parentale étendue',
     desc: 'Ouverture entre deux chambres pour créer un dressing ou une salle de bain attenante.',
     portee: '1,5 à 2,5 m',
-    image: '/images/suite-parentale-etendue.webp',
-    imageAlt: 'Ouverture entre chambres pour suite parentale avec dressing — chantier IPB',
+    image: '/images/ouverture-mur-porteur-maison-ancienne.webp',
+    imageAlt: 'Ouverture de mur porteur dans une maison ancienne — chantier IPB',
   },
   {
     titre: 'Loft ou plateau',
     desc: 'Plusieurs ouvertures dans un plateau brut. Étude globale avec plan d\'exécution complet.',
     portee: 'Variable',
-    image: '/images/loft-ou-plateau.webp',
-    imageAlt: 'Plateau loft avec plusieurs ouvertures structurelles — chantier IPB',
+    image: '/images/ouverture-mur-porteur-grange.webp',
+    imageAlt: 'Ouverture structurelle dans une grange réhabilitée en plateau — chantier IPB',
   },
 ];
 
@@ -198,8 +198,8 @@ export default function MurPorteurPage() {
             <RevealOnScroll direction="right" delay={0.1} className="hidden lg:block">
               <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
                 <Image
-                  src="/images/baie-coulissante-apres.webp"
-                  alt="Baie coulissante installée après ouverture d'un mur porteur — chantier IPB Toulouse"
+                  src="/images/chantier-ouverture-mur-porteur.webp"
+                  alt="Chantier d'ouverture de mur porteur en cours — étaiement et pose de poutre par l'institut IPB"
                   fill
                   sizes="(max-width: 1024px) 0px, 500px"
                   className="object-cover"
@@ -212,28 +212,44 @@ export default function MurPorteurPage() {
 
         {/* RECONNAISSANCE DU PROBLÈME (PAS — miroir du visiteur) */}
         <section className="bg-ipb-white py-20 lg:py-24 border-t border-ipb-rule">
-          <div className="max-w-3xl mx-auto px-6 lg:px-12">
-            <RevealOnScroll>
-              <Eyebrow>Si vous lisez cette page…</Eyebrow>
-              <h2 className="font-serif text-ipb-text mb-8" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.18, letterSpacing: '-0.022em', fontWeight: 700 }}>
-                Vous voulez agrandir une pièce<br /><em>en ouvrant un mur porteur.</em>
-              </h2>
-            </RevealOnScroll>
-            <div className="space-y-5 text-[15px] leading-[1.9] font-light text-ipb-muted">
-              <RevealOnScroll delay={0.06}>
-                <p>
-                  Le maçon vous demande une étude de structure. Un voisin vous a parlé de « la poutre IPN ». Vous lisez sur internet des fourchettes de prix qui vont du simple au triple. Vous vous demandez : <em>est-ce qu'on me vend un document inutile ? Comment savoir si la poutre proposée est correctement dimensionnée ?</em>
-                </p>
-              </RevealOnScroll>
-              <RevealOnScroll delay={0.12}>
-                <p>
-                  Surtout, vous ne voulez pas la mauvaise issue : un dimensionnement trop juste, un affaissement à 5 ans, et un sinistre que ni l'assurance habitation ni le maçon ne couvriront — parce que personne n'a signé de note de calcul.
-                </p>
-              </RevealOnScroll>
-              <RevealOnScroll delay={0.18}>
-                <p className="text-ipb-text">
-                  Notre rôle, c'est précisément ce calcul. Notre ingénieur structure dimensionne la poutre selon les <strong className="not-italic">Eurocodes</strong>, signe une note opposable, puis pilote le chantier. Un seul interlocuteur de l'étude à la livraison, garantie décennale AXA sur l'étude <em>et</em> les travaux.
-                </p>
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+              <div className="lg:col-span-7">
+                <RevealOnScroll>
+                  <Eyebrow>Si vous lisez cette page…</Eyebrow>
+                  <h2 className="font-serif text-ipb-text mb-8" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.18, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                    Vous voulez agrandir une pièce<br /><em>en ouvrant un mur porteur.</em>
+                  </h2>
+                </RevealOnScroll>
+                <div className="space-y-5 text-[15px] leading-[1.9] font-light text-ipb-muted">
+                  <RevealOnScroll delay={0.06}>
+                    <p>
+                      Le maçon vous demande une étude de structure. Un voisin vous a parlé de « la poutre IPN ». Vous lisez sur internet des fourchettes de prix qui vont du simple au triple. Vous vous demandez : <em>est-ce qu'on me vend un document inutile ? Comment savoir si la poutre proposée est correctement dimensionnée ?</em>
+                    </p>
+                  </RevealOnScroll>
+                  <RevealOnScroll delay={0.12}>
+                    <p>
+                      Surtout, vous ne voulez pas la mauvaise issue : un dimensionnement trop juste, un affaissement à 5 ans, et un sinistre que ni l'assurance habitation ni le maçon ne couvriront — parce que personne n'a signé de note de calcul.
+                    </p>
+                  </RevealOnScroll>
+                  <RevealOnScroll delay={0.18}>
+                    <p className="text-ipb-text">
+                      Notre rôle, c'est précisément ce calcul. Notre ingénieur structure dimensionne la poutre selon les <strong className="not-italic">Eurocodes</strong>, signe une note opposable, puis pilote le chantier. Un seul interlocuteur de l'étude à la livraison, garantie décennale AXA sur l'étude <em>et</em> les travaux.
+                    </p>
+                  </RevealOnScroll>
+                </div>
+              </div>
+
+              <RevealOnScroll direction="right" delay={0.1} className="lg:col-span-5">
+                <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
+                  <Image
+                    src="/images/ouverture-mur-porteur-realisation.webp"
+                    alt="Réalisation IPB d'une ouverture de mur porteur — note de calcul signée et chantier livré"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 420px"
+                    className="object-cover"
+                  />
+                </div>
               </RevealOnScroll>
             </div>
           </div>
