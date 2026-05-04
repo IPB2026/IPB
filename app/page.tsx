@@ -61,7 +61,7 @@ const organizationSchema = {
 
 export const metadata: Metadata = {
   title: "Expert Fissures & Mur Porteur Toulouse · Décennale AXA",
-  description: "Diagnostic fissures, mur porteur, baie vitrée. Toulouse, Montauban, Albi, Auch. 850 chantiers depuis 2019. Décennale AXA. ☎ 05 82 95 33 75",
+  description: "Diagnostic fissures, ouverture mur porteur, baie vitrée à Toulouse. 850 chantiers depuis 2019. Décennale AXA. Réponse 24h. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures Toulouse',
     'expertise fissures Haute-Garonne',
@@ -94,7 +94,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Expert Fissures & Mur Porteur Toulouse · IPB",
-    description: "Diagnostic fissures et ouverture mur porteur en Occitanie. Décennale AXA.",
+    description: "Diagnostic fissures et ouverture mur porteur Toulouse. Décennale AXA.",
     images: [
       {
         url: "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",

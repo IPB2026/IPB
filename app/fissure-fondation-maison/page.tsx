@@ -9,7 +9,7 @@ import { Phone, ArrowRight, AlertTriangle, Home, ChevronRight, Shield, CheckCirc
 
 export const metadata: Metadata = {
   title: 'Fissure Fondation Maison · Agrafage Structurel · Toulouse',
-  description: "Fissures fondations ? Diagnostic et agrafage structurel en Occitanie. Comparatif des solutions du marché. Décennale AXA. ☎ 05 82 95 33 75",
+  description: "Fissures fondations ? Diagnostic et agrafage structurel à Toulouse. Comparatif des solutions du marché. Décennale AXA. ☎ 05 82 95 33 75",
   keywords: ['fissure fondation', 'tassement fondation', 'reprise en sous-oeuvre', 'micropieux', 'agrafage fissures'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/fissure-fondation-maison' },
 };

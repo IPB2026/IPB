@@ -8,7 +8,7 @@ import { Phone, ArrowRight, Wind, ChevronRight, Shield, CheckCircle, XCircle, Th
 
 export const metadata: Metadata = {
   title: 'VMI Ventilation Insufflation · Prix 2500-4500€ Toulouse',
-  description: "VMI : solution anti-condensation et moisissures. Prix 2500-4500€ installée. Installateur Toulouse, Montauban, Albi. ☎ 05 82 95 33 75",
+  description: "VMI : solution anti-condensation et moisissures. Prix 2500-4500€ installée. Installateur Toulouse, Montauban. ☎ 05 82 95 33 75",
   keywords: ['VMI', 'ventilation insufflation', 'anti condensation', 'VMI prix', 'VMI vs VMC'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/vmi-ventilation-insufflation' },
 };

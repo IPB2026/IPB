@@ -10,7 +10,7 @@ import { CheckCircle, Phone, ArrowRight, AlertTriangle, Home, Layers, TreeDecidu
 
 export const metadata: Metadata = {
   title: 'Fissure en Escalier · Tassement Différentiel · Toulouse',
-  description: "⚠️ Fissure en escalier = tassement différentiel. Causes (sol argileux, sécheresse) et agrafage. Expert Occitanie. ☎ 05 82 95 33 75",
+  description: "⚠️ Fissure en escalier = tassement différentiel. Causes (sol argileux, sécheresse) et agrafage. Expert Toulouse. ☎ 05 82 95 33 75",
   keywords: ['fissure en escalier', 'fissure diagonale', 'tassement différentiel', 'sol argileux', 'agrafage fissures', 'expert fissures toulouse'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/fissure-en-escalier-causes' },
   openGraph: {

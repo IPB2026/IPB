@@ -14,7 +14,7 @@ import { ExpertiseFissuresBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
   title: 'Diagnostic et Traitement Fissures · Toulouse · AXA',
-  description: "Diagnostic instrumenté, agrafage structurel. Rapport opposable assurance. Décennale AXA. Toulouse, Montauban, Albi, Auch. ☎ 05 82 95 33 75",
+  description: "Diagnostic instrumenté, agrafage structurel. Rapport opposable assurance. Décennale AXA. Toulouse, Montauban. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures toulouse',
     'expertise fissure toulouse',

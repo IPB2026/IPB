@@ -14,7 +14,7 @@ import { MurPorteurDiagram } from '@/components/ui/MurPorteurDiagram';
 
 export const metadata: Metadata = {
   title: "Ouverture Mur Porteur Toulouse · IPN/HEB · AXA",
-  description: "Ouverture mur porteur en Occitanie : étude IPN/HEB, dimensionnement Eurocodes, travaux clé en main. Décennale AXA. Pré-étude 24h. ☎ 05 82 95 33 75",
+  description: "Ouverture mur porteur Toulouse : étude IPN/HEB, dimensionnement poutre selon Eurocodes, travaux clé en main. Décennale AXA. Pré-étude sous 24h. ☎ 05 82 95 33 75",
   keywords: [
     'ouverture mur porteur toulouse',
     'création baie vitrée toulouse',
