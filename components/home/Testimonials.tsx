@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
+import { googleReviews, type Review } from '@/app/data/testimonials';
 
 /**
  * Testimonials — carousel éditorial avec navigation latérale nommée.
@@ -10,43 +11,26 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
  * Auto-rotate 7 secondes. Fade out 0.35s → swap → fade in.
  * Navigation par prénom + ville + barre orange active.
  *
- * Cf. IPB_Design_Handoff.md §7 + §8
+ * Par défaut : vrais avis Google d'IPB (`googleReviews`).
+ * Pour cibler une page service spécifique (mur porteur), passer un
+ * dataset alternatif via la prop `reviews` :
+ *   <Testimonials reviews={murPorteurReviews} />
+ *
+ * Cf. IPB_Design_Handoff.md §7 + §8 et app/data/testimonials.ts
  */
-
-const reviews = [
-  {
-    id: 'yusra',
-    name: "Yusra G.",
-    location: "Toulouse",
-    date: "Janvier 2026",
-    text: "Diagnostic clair, intervention efficace. L'équipe est ponctuelle et soignée — on sent qu'ils prennent le temps d'expliquer ce qu'ils font.",
-  },
-  {
-    id: 'luc',
-    name: "Luc C.",
-    location: "Castanet-Tolosan",
-    date: "Septembre 2025",
-    text: "J'avais remarqué que la peinture commençait à cloquer en bas du mur avec des traces blanches. L'expert IPB a tout de suite identifié le problème. Intervention rapide et efficace.",
-  },
-  {
-    id: 'paul',
-    name: "Paul T.",
-    location: "Tournefeuille",
-    date: "Janvier 2026",
-    text: "Le travail a été réalisé avec soin et dans les délais annoncés. Le rapport est complet, l'attestation décennale m'a été remise à la livraison. Je recommande.",
-  },
-  {
-    id: 'arnaud',
-    name: "Arnaud B.",
-    location: "Saint-Cyprien",
-    date: "Janvier 2026",
-    text: "Mur porteur ouvert chez moi en 5 jours, comme prévu. L'équipe est professionnelle, le chantier propre. Le bien a été remis en vente trois semaines après.",
-  },
-];
 
 const GOOGLE_REVIEWS_URL = "https://maps.app.goo.gl/6yDtzs7D1UcKSdJf6";
 
-export function Testimonials() {
+export function Testimonials({
+  reviews = googleReviews,
+  showGoogleLink = true,
+}: {
+  reviews?: Review[];
+  /** Affiche le lien "Lire les avis sur Google" en bas du carousel.
+   *  À mettre à false sur les pages où les témoignages ne sont pas
+   *  les vrais avis Google (ex. /expertise/mur-porteur). */
+  showGoogleLink?: boolean;
+}) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isFading, setIsFading] = useState(false);
 
@@ -60,7 +44,12 @@ export function Testimonials() {
       }, 350);
     }, 7000);
     return () => clearInterval(interval);
-  }, []);
+  }, [reviews.length]);
+
+  // Reset index si on change de dataset (sécurité)
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [reviews]);
 
   const goTo = (i: number) => {
     if (i === activeIndex) return;
@@ -114,7 +103,7 @@ export function Testimonials() {
                           {r.name}
                         </span>
                         <span className="text-[11px] uppercase tracking-[0.12em] mt-0.5 block">
-                          {r.location}
+                          {r.location || r.date}
                         </span>
                       </span>
                     </button>
@@ -147,24 +136,27 @@ export function Testimonials() {
 
                 <footer className="flex items-center gap-3 text-[11px] uppercase tracking-[0.14em] text-ipb-light">
                   <div className="h-px w-9 bg-ipb-rule" aria-hidden="true" />
-                  <span>{active.name} · {active.location} · {active.date}</span>
+                  <span>{[active.name, active.location, active.date].filter(Boolean).join(' · ')}</span>
                 </footer>
               </div>
 
-              {/* Lien Google */}
-              <div className="mt-10 pt-8 border-t border-ipb-rule">
-                <a
-                  href={GOOGLE_REVIEWS_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-[13px] text-ipb-muted hover:text-ipb-orange transition-colors"
-                >
-                  Lire les avis sur Google
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                    <path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </a>
-              </div>
+              {/* Lien Google — masqué sur les pages où les témoignages
+                  ne sont pas issus de la fiche Google publique. */}
+              {showGoogleLink && (
+                <div className="mt-10 pt-8 border-t border-ipb-rule">
+                  <a
+                    href={GOOGLE_REVIEWS_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-[13px] text-ipb-muted hover:text-ipb-orange transition-colors"
+                  >
+                    Lire les avis sur Google
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                      <path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </RevealOnScroll>

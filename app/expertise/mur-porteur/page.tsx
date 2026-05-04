@@ -4,6 +4,7 @@ import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { CtaFinal } from '@/components/home/CtaFinal';
 import { Testimonials } from '@/components/home/Testimonials';
+import { murPorteurReviews } from '@/app/data/testimonials';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
@@ -314,8 +315,8 @@ export default function MurPorteurPage() {
               <RevealOnScroll direction="left" className="lg:col-span-5">
                 <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
                   <Image
-                    src="/images/creation-baie-vitree-1.webp"
-                    alt="Création d'une baie vitrée après ouverture de mur porteur — chantier IPB Toulouse"
+                    src="/images/ouverture-mur-porteur-maison-ancienne.webp"
+                    alt="Ouverture de mur porteur en cours dans une maison ancienne — chantier IPB"
                     fill
                     sizes="(max-width: 1024px) 100vw, 40vw"
                     className="object-cover"
@@ -460,8 +461,10 @@ export default function MurPorteurPage() {
           </div>
         </section>
 
-        {/* PREUVE SOCIALE — avis clients vérifiés */}
-        <Testimonials />
+        {/* PREUVE SOCIALE — avis clients ciblés mur porteur / baie vitrée.
+            On masque le lien Google car ces avis ne figurent pas sur la fiche
+            publique (ils sont spécifiques au service mur porteur). */}
+        <Testimonials reviews={murPorteurReviews} showGoogleLink={false} />
 
         {/* FAQ */}
         <section className="bg-ipb-white py-24 lg:py-32">

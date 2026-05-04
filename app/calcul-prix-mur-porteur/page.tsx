@@ -115,32 +115,35 @@ export default function CalculatorPage() {
                     <tr className="border-b border-ipb-rule">
                       <td className="py-3 pr-4 font-medium text-ipb-text">Cuisine ouverte standard (RDC seul, mur brique foraine)</td>
                       <td className="py-3 pr-4">2,5 m × 2,2 m</td>
-                      <td className="py-3 text-right font-bold text-ipb-text">3 400 – 6 000 €</td>
+                      <td className="py-3 text-right font-bold text-ipb-text">2 900 – 5 100 €</td>
                     </tr>
                     <tr className="border-b border-ipb-rule">
                       <td className="py-3 pr-4 font-medium text-ipb-text">Suite parentale (RDC ou étage, mur parpaing)</td>
                       <td className="py-3 pr-4">3,0 m × 2,2 m</td>
-                      <td className="py-3 text-right font-bold text-ipb-text">5 100 – 8 500 €</td>
+                      <td className="py-3 text-right font-bold text-ipb-text">4 300 – 7 200 €</td>
                     </tr>
                     <tr className="border-b border-ipb-rule">
                       <td className="py-3 pr-4 font-medium text-ipb-text">Plateau loft (étage habité au-dessus)</td>
                       <td className="py-3 pr-4">4,0 m × 2,4 m</td>
-                      <td className="py-3 text-right font-bold text-ipb-text">7 700 – 12 000 €</td>
+                      <td className="py-3 text-right font-bold text-ipb-text">6 500 – 10 200 €</td>
                     </tr>
                     <tr className="border-b border-ipb-rule">
                       <td className="py-3 pr-4 font-medium text-ipb-text">Création de baie vitrée (mur extérieur porteur)</td>
                       <td className="py-3 pr-4">3,0 m × 2,4 m</td>
-                      <td className="py-3 text-right font-bold text-ipb-text">8 500 – 15 300 €</td>
+                      <td className="py-3 text-right font-bold text-ipb-text">7 200 – 13 000 €</td>
                     </tr>
                     <tr>
                       <td className="py-3 pr-4 font-medium text-ipb-text">Grande baie vitrée signature</td>
                       <td className="py-3 pr-4">5,0 m × 2,4 m</td>
-                      <td className="py-3 text-right font-bold text-ipb-text">12 750 – 21 250 €</td>
+                      <td className="py-3 text-right font-bold text-ipb-text">10 800 – 18 100 €</td>
                     </tr>
                   </tbody>
                 </table>
                 <p className="text-[12px] text-ipb-light mt-3">
                   *Étude structure + dimensionnement IPN/HEB + étaiement + travaux + finitions. Hors démarches mairie spécifiques.
+                </p>
+                <p className="text-[12px] text-ipb-muted mt-3 leading-[1.7]">
+                  Ces fourchettes correspondent aux <strong className="text-ipb-text not-italic">tarifs les plus serrés</strong> constatés sur des chantiers standards. L'estimation personnalisée délivrée par le calculateur ci-dessus tient compte des spécificités de votre projet (étage habité, nature du mur, finitions demandées) et peut donc se situer dans cette fourchette ou légèrement au-dessus selon votre configuration.
                 </p>
               </div>
 
