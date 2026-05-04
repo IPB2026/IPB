@@ -315,8 +315,8 @@ export default function MurPorteurPage() {
               <RevealOnScroll direction="left" className="lg:col-span-5">
                 <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
                   <Image
-                    src="/images/ouverture-mur-porteur-maison-ancienne.webp"
-                    alt="Ouverture de mur porteur en cours dans une maison ancienne — chantier IPB"
+                    src="/images/calcul-technique-finitions.webp"
+                    alt="Calcul technique et finitions d'une ouverture de mur porteur — chantier IPB"
                     fill
                     sizes="(max-width: 1024px) 100vw, 40vw"
                     className="object-cover"
