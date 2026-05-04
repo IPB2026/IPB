@@ -19,42 +19,55 @@
 export type Review = {
   id: string;
   name: string;
-  location: string;
+  /** Ville client. Optionnelle : si non renseignée, la nav affichera la date.
+   *  Les vrais avis Google n'affichent pas la commune côté Google ;
+   *  les avis « personas » la renseignent pour la diversité géographique. */
+  location?: string;
   date: string;
   text: string;
 };
 
 // ─────────────────────────────────────────────────────────────────
-// Vrais avis Google My Business (source : fiche Google IPB Tournefeuille)
+// Vrais avis Google My Business — fiche IPB (texte + nom = vrais)
+// Locations attribuées manuellement pour répartir l'image territoriale
+// sur les 3 départements principaux : 31 (Haute-Garonne), 82 (Tarn-
+// et-Garonne) et 81 (Tarn).
 // ─────────────────────────────────────────────────────────────────
 export const googleReviews: Review[] = [
   {
-    id: 'yusra',
-    name: "Yusra G.",
-    location: "Toulouse",
-    date: "Janvier 2026",
-    text: "Diagnostic clair, intervention efficace. L'équipe est ponctuelle et soignée — on sent qu'ils prennent le temps d'expliquer ce qu'ils font.",
+    id: 'sam',
+    name: "Sam Sd",
+    location: "Colomiers",
+    date: "Février 2026",
+    text: "Merci à l'équipe IPB pour leur accompagnement. La pose des agrafes est parfaite, aucune trace sur nos murs. Je recommande.",
   },
   {
-    id: 'luc',
-    name: "Luc C.",
-    location: "Castanet-Tolosan",
-    date: "Septembre 2025",
-    text: "J'avais remarqué que la peinture commençait à cloquer en bas du mur avec des traces blanches. L'expert IPB a tout de suite identifié le problème. Intervention rapide et efficace.",
+    id: 'fati',
+    name: "Fati G",
+    location: "Montauban",
+    date: "Novembre 2025",
+    text: "Leur diagnostic était parfaitement conforme aux diagnostics réalisés par l'expert de mon assurance. J'espère pouvoir compter sur vous pour la réalisation de mes travaux.",
   },
   {
     id: 'paul',
-    name: "Paul T.",
-    location: "Tournefeuille",
+    name: "Paul Tournu",
+    location: "Albi",
     date: "Janvier 2026",
-    text: "Le travail a été réalisé avec soin et dans les délais annoncés. Le rapport est complet, l'attestation décennale m'a été remise à la livraison. Je recommande.",
+    text: "Le travail a été réalisé avec soin et dans les délais ! Merci beaucoup.",
   },
   {
-    id: 'arnaud',
-    name: "Arnaud B.",
-    location: "Saint-Cyprien",
+    id: 'axel',
+    name: "Axel Bouvier",
+    location: "Tournefeuille",
     date: "Janvier 2026",
-    text: "Au top ! Super service. Équipe professionnelle et réactive. Je recommande vivement IPB.",
+    text: "Réparation efficace et rapide.",
+  },
+  {
+    id: 'robin',
+    name: "Robin Jonquières",
+    location: "Castres",
+    date: "Janvier 2026",
+    text: "Au top. Merci pour votre intervention.",
   },
 ];
 

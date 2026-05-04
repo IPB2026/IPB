@@ -21,7 +21,16 @@ import { googleReviews, type Review } from '@/app/data/testimonials';
 
 const GOOGLE_REVIEWS_URL = "https://maps.app.goo.gl/6yDtzs7D1UcKSdJf6";
 
-export function Testimonials({ reviews = googleReviews }: { reviews?: Review[] }) {
+export function Testimonials({
+  reviews = googleReviews,
+  showGoogleLink = true,
+}: {
+  reviews?: Review[];
+  /** Affiche le lien "Lire les avis sur Google" en bas du carousel.
+   *  À mettre à false sur les pages où les témoignages ne sont pas
+   *  les vrais avis Google (ex. /expertise/mur-porteur). */
+  showGoogleLink?: boolean;
+}) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isFading, setIsFading] = useState(false);
 
@@ -94,7 +103,7 @@ export function Testimonials({ reviews = googleReviews }: { reviews?: Review[] }
                           {r.name}
                         </span>
                         <span className="text-[11px] uppercase tracking-[0.12em] mt-0.5 block">
-                          {r.location}
+                          {r.location || r.date}
                         </span>
                       </span>
                     </button>
@@ -127,24 +136,27 @@ export function Testimonials({ reviews = googleReviews }: { reviews?: Review[] }
 
                 <footer className="flex items-center gap-3 text-[11px] uppercase tracking-[0.14em] text-ipb-light">
                   <div className="h-px w-9 bg-ipb-rule" aria-hidden="true" />
-                  <span>{active.name} · {active.location} · {active.date}</span>
+                  <span>{[active.name, active.location, active.date].filter(Boolean).join(' · ')}</span>
                 </footer>
               </div>
 
-              {/* Lien Google */}
-              <div className="mt-10 pt-8 border-t border-ipb-rule">
-                <a
-                  href={GOOGLE_REVIEWS_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-[13px] text-ipb-muted hover:text-ipb-orange transition-colors"
-                >
-                  Lire les avis sur Google
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                    <path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </a>
-              </div>
+              {/* Lien Google — masqué sur les pages où les témoignages
+                  ne sont pas issus de la fiche Google publique. */}
+              {showGoogleLink && (
+                <div className="mt-10 pt-8 border-t border-ipb-rule">
+                  <a
+                    href={GOOGLE_REVIEWS_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-[13px] text-ipb-muted hover:text-ipb-orange transition-colors"
+                  >
+                    Lire les avis sur Google
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                      <path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </RevealOnScroll>
