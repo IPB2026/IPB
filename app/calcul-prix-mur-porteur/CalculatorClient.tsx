@@ -44,10 +44,17 @@ const etageLabels: Record<EtageType, string> = {
   etage_etage: 'Étage avec étage(s) au-dessus',
 };
 
+interface Range {
+  min: number;
+  max: number;
+}
+
 interface Estimate {
   min: number;
   max: number;
-  detail: { etude: number; etaiement: number; ouverture: number; finitions: number };
+  // Postes fixes : livrable cadré (étude signée, étaiement standard).
+  // Postes en fourchette : forte variabilité projet (ouverture, finitions).
+  detail: { etude: number; etaiement: number; ouverture: Range; finitions: Range };
   poutreType: string;
   duree: string;
 }
@@ -99,16 +106,34 @@ function calculateEstimate(opts: {
   // Finitions : prix marché 800 à 2500€ selon surface
   const finitionsBrut = 600 + surface * 350;
 
-  // Application du positionnement IPB (-15% vs marché)
-  const etude = Math.round(etudeBrut * PRICE_INDEX);
-  const etaiement = Math.round(etaiementBrut * PRICE_INDEX);
-  const ouverture = Math.round(ouvertureBrut * PRICE_INDEX);
-  const finitions = Math.round(finitionsBrut * PRICE_INDEX);
+  // Application du positionnement IPB (-15% vs marché) au centre de chaque poste
+  const etudeCentre = etudeBrut * PRICE_INDEX;
+  const etaiementCentre = etaiementBrut * PRICE_INDEX;
+  const ouvertureCentre = ouvertureBrut * PRICE_INDEX;
+  const finitionsCentre = finitionsBrut * PRICE_INDEX;
 
-  const total = etude + etaiement + ouverture + finitions;
-  // Fourchette ±20% autour du total
-  const min = Math.round((total * 0.85) / 100) * 100;
-  const max = Math.round((total * 1.20) / 100) * 100;
+  // Fourchette pour les postes à forte variabilité : -15% / +20% autour du centre.
+  // Arrondi au pas de 50 € pour la lisibilité du détail.
+  const range = (centre: number): Range => ({
+    min: Math.max(Math.round((centre * 0.85) / 50) * 50, 50),
+    max: Math.round((centre * 1.20) / 50) * 50,
+  });
+
+  // Postes FIXES (livrable cadré, peu de variabilité projet).
+  // Arrondi au pas de 50 €.
+  const etude = Math.round(etudeCentre / 50) * 50;
+  const etaiement = Math.round(etaiementCentre / 50) * 50;
+
+  // Postes en FOURCHETTE (forte variabilité selon les spécificités du chantier).
+  const ouverture = range(ouvertureCentre);
+  const finitions = range(finitionsCentre);
+
+  // Total = somme cohérente fixe + bornes (arrondi à la centaine pour
+  // le bandeau résultat principal).
+  const totalMin = etude + etaiement + ouverture.min + finitions.min;
+  const totalMax = etude + etaiement + ouverture.max + finitions.max;
+  const min = Math.round(totalMin / 100) * 100;
+  const max = Math.round(totalMax / 100) * 100;
 
   // Type de poutre selon largeur et étage
   let poutreType = 'IPN 160';
@@ -362,17 +387,22 @@ export function CalculatorClient() {
 
           <h4 className="font-serif text-ipb-text font-bold text-[16px] mb-4">Postes inclus</h4>
           <dl className="space-y-2 text-[13px]">
-            {[
-              ['Étude technique signée', estimate.detail.etude],
-              ['Étaiement provisoire', estimate.detail.etaiement],
-              ['Ouverture + pose poutre', estimate.detail.ouverture],
-              ['Finitions (enduit, jonctions)', estimate.detail.finitions],
-            ].map(([label, val]) => (
-              <div key={label as string} className="flex justify-between gap-4 text-ipb-muted">
-                <dt>{label}</dt>
-                <dd className="font-medium">{(val as number).toLocaleString('fr-FR')} €</dd>
-              </div>
-            ))}
+            <div className="flex justify-between gap-4 text-ipb-muted">
+              <dt>Étude technique signée</dt>
+              <dd className="font-medium">{estimate.detail.etude.toLocaleString('fr-FR')} €</dd>
+            </div>
+            <div className="flex justify-between gap-4 text-ipb-muted">
+              <dt>Étaiement provisoire</dt>
+              <dd className="font-medium">{estimate.detail.etaiement.toLocaleString('fr-FR')} €</dd>
+            </div>
+            <div className="flex justify-between gap-4 text-ipb-muted">
+              <dt>Ouverture + pose poutre</dt>
+              <dd className="font-medium">{estimate.detail.ouverture.min.toLocaleString('fr-FR')} – {estimate.detail.ouverture.max.toLocaleString('fr-FR')} €</dd>
+            </div>
+            <div className="flex justify-between gap-4 text-ipb-muted">
+              <dt>Finitions (enduit, jonctions)</dt>
+              <dd className="font-medium">{estimate.detail.finitions.min.toLocaleString('fr-FR')} – {estimate.detail.finitions.max.toLocaleString('fr-FR')} €</dd>
+            </div>
           </dl>
 
           <p className="mt-6 pt-6 border-t border-ipb-rule text-[12px] text-ipb-light leading-[1.6]">
