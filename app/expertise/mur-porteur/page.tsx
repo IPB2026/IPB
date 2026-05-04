@@ -149,7 +149,7 @@ export default function MurPorteurPage() {
                     fontWeight: 700,
                   }}
                 >
-                  Ouvrir un mur porteur à Toulouse,<br />
+                  Ouvrir un mur porteur,<br />
                   <em>poser une baie vitrée.</em>
                 </h1>
               </RevealOnScroll>

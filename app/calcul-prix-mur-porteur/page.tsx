@@ -68,7 +68,7 @@ export default function CalculatorPage() {
                   fontWeight: 700,
                 }}
               >
-                Combien coûte une ouverture de mur porteur&nbsp;à Toulouse&nbsp;?<br /><em>Estimation en deux minutes.</em>
+                Combien coûte une ouverture de mur porteur&nbsp;?<br /><em>Estimation en deux minutes.</em>
               </h1>
               <p className="text-[15px] leading-[1.85] font-light text-ipb-muted max-w-xl mx-auto">
                 Quatre questions, deux minutes. Notre calculateur vous donne une fourchette précise, basée sur les chantiers réalisés ces derniers mois en Haute-Garonne, Tarn-et-Garonne, Gers, Tarn et Ariège.
