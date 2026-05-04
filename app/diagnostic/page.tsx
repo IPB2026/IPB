@@ -224,7 +224,7 @@ const questionsData: Record<'fissure' | 'mur-porteur', Question[]> = {
 const expertTips: Record<string, string> = {
   // FISSURES
   'fissure:TYPE_BATIMENT:maison': '💡 En Haute-Garonne, 70% des maisons individuelles sur sol argileux développent des fissures dans les 15 premières années.',
-  'fissure:TYPE_BATIMENT:immeuble': '💡 Les immeubles anciens en briques foraines sont particulièrement sensibles aux mouvements de terrain.',
+  'fissure:TYPE_BATIMENT:immeuble': '💡 Les immeubles anciens de Toulouse (briques foraines) sont particulièrement sensibles aux mouvements de terrain.',
   'fissure:TYPE_BATIMENT:local': '💡 Les locaux professionnels ont des obligations réglementaires strictes en matière de solidité structurelle.',
   'fissure:LOCALISATION:facade': '💡 Les fissures en façade sont les plus fréquentes et souvent liées à un tassement différentiel des fondations.',
   'fissure:LOCALISATION:interieur': '💡 Des fissures intérieures qui traversent le mur de part en part indiquent généralement un mouvement structurel.',

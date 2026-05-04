@@ -23,7 +23,7 @@ const faqs = [
     a: "Trois indices doivent vous alerter : la fissure dépasse 2 mm de large, elle suit les joints en escalier, ou elle évolue (vous voyez qu'elle s'agrandit d'une saison à l'autre). Si vos portes coincent ou que du carrelage se fissure, c'est que la structure bouge. Notre institut vient sur place avec un fissuromètre pour mesurer précisément l'évolution et identifier la cause.",
   },
   {
-    q: "Comment se passe une expertise fissures avec votre institut ?",
+    q: "Comment se passe une expertise fissures à Toulouse ?",
     a: "Notre diagnostic instrumenté complet est réalisé sur site, et déductible des travaux si vous nous confiez ensuite l'intervention. Il inclut le déplacement, les mesures au fissuromètre, l'analyse des causes et un rapport écrit reconnu par les assurances et les tribunaux. Pour le tarif précis selon votre situation, nous vous répondons sous 24 heures.",
   },
   {

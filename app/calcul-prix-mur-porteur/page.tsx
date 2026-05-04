@@ -96,7 +96,7 @@ export default function CalculatorPage() {
                 className="font-serif text-ipb-text mb-8"
                 style={{ fontSize: 'clamp(24px, 2.4vw, 34px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}
               >
-                Prix moyens d'une ouverture de mur porteur
+                Prix moyens d'une ouverture de mur porteur à Toulouse
               </h2>
               <p className="text-[15px] leading-[1.85] font-light text-ipb-muted mb-8 max-w-2xl">
                 Les fourchettes ci-dessous sont calculées à partir de chantiers IPB livrés ces 24 derniers mois. Elles incluent l'étude structure, la pose de la poutre, l'étaiement, l'ouverture et les finitions. <strong className="text-ipb-text not-italic">Décennale AXA incluse</strong>.
@@ -198,7 +198,7 @@ export default function CalculatorPage() {
 
             <div className="mt-12 pt-10 border-t border-ipb-rule text-[13px] leading-[1.7] font-light text-ipb-muted">
               <p>
-                Cet outil donne une fourchette de prix indicative basée sur les chantiers récents de l’institut en Occitanie. <strong className="text-ipb-text not-italic">Le devis ferme nécessite une visite technique sur site</strong> — c'est gratuit et sans engagement.
+                Cet outil donne une fourchette de prix indicative basée sur les chantiers récents de l’institut à Toulouse, Saint-Cyprien, Carmes, Tournefeuille, Pamiers et alentour. <strong className="text-ipb-text not-italic">Le devis ferme nécessite une visite technique sur site</strong> — c'est gratuit et sans engagement.
               </p>
             </div>
           </div>

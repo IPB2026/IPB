@@ -102,15 +102,15 @@ const typesProjets = [
     titre: 'Baie vitrée sur jardin',
     desc: "Création d'une grande ouverture sur la façade arrière. Permis souvent nécessaire.",
     portee: '3 à 5 m',
-    image: '/images/baie-vitree-cuisine-salon.webp',
-    imageAlt: 'Création d\'une baie vitrée entre cuisine et salon — chantier IPB',
+    image: '/images/creation-baie-vitree-1.webp',
+    imageAlt: 'Création d\'une baie vitrée sur façade arrière donnant sur jardin — chantier IPB',
   },
   {
     titre: 'Suite parentale étendue',
     desc: 'Ouverture entre deux chambres pour créer un dressing ou une salle de bain attenante.',
     portee: '1,5 à 2,5 m',
-    image: '/images/ouverture-mur-porteur-maison-ancienne.webp',
-    imageAlt: 'Ouverture de mur porteur dans une maison ancienne — chantier IPB',
+    image: '/images/suite-parentale-etendue.webp',
+    imageAlt: 'Ouverture entre chambres pour suite parentale avec dressing — chantier IPB',
   },
   {
     titre: 'Loft ou plateau',
@@ -414,7 +414,7 @@ export default function MurPorteurPage() {
                   Outil interactif · Gratuit · 2 minutes
                 </p>
                 <h2 className="text-white font-serif mb-5" style={{ fontSize: 'clamp(24px, 2.6vw, 36px)', lineHeight: 1.18, letterSpacing: '-0.022em', fontWeight: 700 }}>
-                  Estimez le prix de votre ouverture<br className="hidden sm:block" />
+                  Estimez le prix de votre ouverture{' '}<br className="hidden sm:block" />
                   <em className="text-ipb-orange-l not-italic sm:italic">avant de nous parler.</em>
                 </h2>
                 <p className="text-white/80 text-[14px] md:text-[15px] leading-[1.8] mb-7 max-w-xl mx-auto">

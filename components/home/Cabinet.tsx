@@ -75,7 +75,7 @@ export function Cabinet() {
             <RevealOnScroll delay={0.06}>
               <div className="space-y-5 text-[15px] leading-[1.9] font-light text-ipb-muted mb-12">
                 <p>
-                  IPB Expertise est un institut créé en 2019, spécialisé en pathologie et structure du bâtiment. Notre activité couvre deux missions distinctes : le diagnostic et le traitement des fissures, l'étude et la réalisation d'ouvertures de murs porteurs.
+                  IPB Expertise est un institut créé en 2019 à Toulouse, spécialisé en pathologie et structure du bâtiment. Notre activité couvre deux missions distinctes : le diagnostic et le traitement des fissures, l'étude et la réalisation d'ouvertures de murs porteurs.
                 </p>
                 <p>
                   Tout est traité en interne — l'étude technique par notre ingénieur, les travaux par nos équipes. Cette continuité explique pourquoi nos rapports sont reconnus par les assurances et pourquoi notre garantie décennale couvre l'étude comme la réalisation.
