@@ -211,11 +211,6 @@ export default function FissuresPage() {
                     </p>
                   </RevealOnScroll>
                   <RevealOnScroll delay={0.12}>
-                    <p>
-                      Surtout, vous ne voulez pas faire la mauvaise chose : payer 15 000 € de rustines qui fissureront à nouveau l'été prochain. Ou attendre trop longtemps et voir le devis passer de 12 000 € à 35 000 €.
-                    </p>
-                  </RevealOnScroll>
-                  <RevealOnScroll delay={0.18}>
                     <p className="text-ipb-text">
                       Notre rôle commence avant les travaux. Notre ingénieur se déplace, mesure l'évolution, identifie la <strong className="not-italic">cause exacte</strong> — sécheresse, défaut de chaînage, infiltration — et vous dit honnêtement si une intervention est nécessaire ou si vous pouvez attendre.
                     </p>

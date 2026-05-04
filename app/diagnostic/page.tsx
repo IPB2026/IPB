@@ -774,7 +774,7 @@ export default function DiagnosticPage() {
                       <p className="text-ipb-muted text-xs italic leading-relaxed">
                         &quot;J&apos;ai compris la gravité de mes fissures. L&apos;expert m&apos;a rappelé le lendemain, intervention réalisée en 3 jours.&quot;
                       </p>
-                      <p className="text-ipb-light text-[10px] mt-1 font-medium">Pierre M. — Toulouse <span className="text-yellow-500">★★★★★</span></p>
+                      <p className="text-ipb-light text-[10px] mt-1 font-medium">Pierre M. — Castres <span className="text-yellow-500">★★★★★</span></p>
                     </div>
                   </div>
                   <div className="bg-ipb-cream rounded-xl p-3 flex items-start gap-3">
@@ -1034,7 +1034,7 @@ export default function DiagnosticPage() {
                       type="text"
                       value={contactInfo.address}
                       onChange={(e) => setContactInfo({ ...contactInfo, address: e.target.value })}
-                      placeholder="12 rue des Lilas, 31000 Toulouse"
+                      placeholder="12 rue des Lilas, votre commune"
                       className="w-full px-4 py-3 rounded-xl border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all"
                       required
                     />

@@ -279,7 +279,7 @@ export function CalculatorClient() {
           </div>
           <div>
             <label htmlFor="calc-lead-city" className="block text-[10px] uppercase tracking-[0.14em] text-ipb-muted font-medium mb-2">Commune (optionnel)</label>
-            <input id="calc-lead-city" type="text" value={leadCity} onChange={e => setLeadCity(e.target.value)} placeholder="Toulouse, Colomiers..." autoComplete="address-level2"
+            <input id="calc-lead-city" type="text" value={leadCity} onChange={e => setLeadCity(e.target.value)} placeholder="Votre commune" autoComplete="address-level2"
               className="w-full px-4 py-3 border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-[14px] font-light focus:outline-none focus:border-ipb-orange transition-colors" />
           </div>
         </div>

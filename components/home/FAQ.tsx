@@ -51,8 +51,8 @@ const faqs = [
     a: "Oui. Nos rapports techniques sont rédigés dans les formes attendues par les assureurs et les tribunaux : photos datées, mesures instrumentées, identification des causes, préconisations chiffrées. Ils servent régulièrement de pièce technique dans les dossiers de catastrophe naturelle, les expertises judiciaires et les recours en garantie décennale.",
   },
   {
-    q: "Intervenez-vous en dehors de Toulouse ?",
-    a: "Notre zone d'intervention couvre la Haute-Garonne (31), le Tarn-et-Garonne (82), le Gers (32) et le Tarn (81). Cela représente plus de 50 communes : Montauban, Auch, Albi, Castres, Saint-Gaudens, Pamiers, et tous les villages alentour. Pour les communes plus éloignées, contactez-nous au 05 82 95 33 75.",
+    q: "Quelles sont vos zones d'intervention ?",
+    a: "Notre zone d'intervention couvre la Haute-Garonne (31), le Tarn-et-Garonne (82), le Gers (32), le Tarn (81), l'Ariège (09) et l'Aude (11). Cela représente plus de 50 communes — pour vérifier la couverture sur votre commune précise, appelez-nous au 05 82 95 33 75 ou démarrez le diagnostic en ligne.",
   },
   {
     q: "Que se passe-t-il après le chantier ?",
