@@ -9,7 +9,7 @@ import { CheckCircle, Phone, ArrowRight, AlertTriangle, Minus, ArrowDown, Layers
 
 export const metadata: Metadata = {
   title: "Fissure Horizontale Mur · Danger Structurel · Toulouse",
-  description: "⚠️ Fissure horizontale sur mur porteur = poussée latérale. Diagnostic et réparation urgente. Expert Toulouse. ☎ 05 82 95 33 75",
+  description: "⚠️ Fissure horizontale sur mur porteur = poussée latérale. Diagnostic et réparation urgente. Expert Occitanie. ☎ 05 82 95 33 75",
   keywords: ['fissure horizontale', 'fissure mur porteur', 'poussée latérale', 'désolidarisation plancher', 'urgence structurelle'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/fissure-horizontale-danger' },
   openGraph: {

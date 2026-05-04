@@ -8,7 +8,7 @@ import { Phone, ArrowRight, ChevronRight, Home, CheckCircle, AlertTriangle, Drop
 
 export const metadata: Metadata = {
   title: 'Ponts Thermiques et Condensation · Solutions Toulouse',
-  description: "Moisissures aux angles ? Ponts thermiques = zones froides. Solutions isolation, VMI. Expert Toulouse, Montauban. ☎ 05 82 95 33 75",
+  description: "Moisissures aux angles ? Ponts thermiques = zones froides. Solutions isolation, VMI. Expert Toulouse, Montauban, Albi. ☎ 05 82 95 33 75",
   keywords: ['pont thermique', 'condensation mur', 'moisissures angles', 'isolation thermique'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/ponts-thermiques-condensation' },
 };

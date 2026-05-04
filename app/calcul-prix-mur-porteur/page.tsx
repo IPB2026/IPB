@@ -11,7 +11,7 @@ import { CalculatorClient } from './CalculatorClient';
 
 export const metadata: Metadata = {
   title: "Calculateur Prix Mur Porteur Toulouse · Gratuit 2 min",
-  description: "Estimez votre prix d'ouverture mur porteur Toulouse en 2 min. Gratuit, sans inscription. Tarifs réels IPB. Décennale AXA. ☎ 05 82 95 33 75",
+  description: "Estimez votre prix d'ouverture mur porteur en 2 min. Gratuit, sans inscription. Tarifs IPB Occitanie. Décennale AXA. ☎ 05 82 95 33 75",
   keywords: [
     'prix ouverture mur porteur toulouse',
     'devis mur porteur en ligne',
