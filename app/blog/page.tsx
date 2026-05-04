@@ -386,7 +386,7 @@ export default function BlogPage() {
               <RevealOnScroll delay={0.06} variant="subtle">
                 <div className="space-y-5 text-[15px] leading-[1.9] font-light text-ipb-muted">
                   <p>
-                    Les articles sont rédigés par l’institut IPB à partir de cas réels rencontrés sur nos chantiers à <strong className="text-ipb-text not-italic font-medium">Toulouse (31)</strong>, <strong className="text-ipb-text not-italic font-medium">Montauban (82)</strong>, <strong className="text-ipb-text not-italic font-medium">Auch (32)</strong> et dans toute l&apos;Occitanie. Fissures structurelles liées au retrait-gonflement des argiles, ouvertures de murs porteurs en immeubles anciens, expertises avant achat immobilier — chaque sujet vient du terrain.
+                    Les articles sont rédigés par l’institut IPB à partir de cas réels rencontrés sur nos chantiers en <strong className="text-ipb-text not-italic font-medium">Occitanie</strong> (Haute-Garonne, Tarn-et-Garonne, Gers, Tarn, Ariège, Aude). Fissures structurelles liées au retrait-gonflement des argiles, ouvertures de murs porteurs en immeubles anciens, expertises avant achat immobilier — chaque sujet vient du terrain.
                   </p>
                   <p>
                     Nos guides couvrent l&apos;ensemble du cycle d&apos;un dossier : de l&apos;identification du problème (microfissure, fissure en escalier, mur à ouvrir) au choix de la solution technique (

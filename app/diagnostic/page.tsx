@@ -224,7 +224,7 @@ const questionsData: Record<'fissure' | 'mur-porteur', Question[]> = {
 const expertTips: Record<string, string> = {
   // FISSURES
   'fissure:TYPE_BATIMENT:maison': '💡 En Haute-Garonne, 70% des maisons individuelles sur sol argileux développent des fissures dans les 15 premières années.',
-  'fissure:TYPE_BATIMENT:immeuble': '💡 Les immeubles anciens de Toulouse (briques foraines) sont particulièrement sensibles aux mouvements de terrain.',
+  'fissure:TYPE_BATIMENT:immeuble': '💡 Les immeubles anciens en briques foraines sont particulièrement sensibles aux mouvements de terrain.',
   'fissure:TYPE_BATIMENT:local': '💡 Les locaux professionnels ont des obligations réglementaires strictes en matière de solidité structurelle.',
   'fissure:LOCALISATION:facade': '💡 Les fissures en façade sont les plus fréquentes et souvent liées à un tassement différentiel des fondations.',
   'fissure:LOCALISATION:interieur': '💡 Des fissures intérieures qui traversent le mur de part en part indiquent généralement un mouvement structurel.',
@@ -774,7 +774,7 @@ export default function DiagnosticPage() {
                       <p className="text-ipb-muted text-xs italic leading-relaxed">
                         &quot;J&apos;ai compris la gravité de mes fissures. L&apos;expert m&apos;a rappelé le lendemain, intervention réalisée en 3 jours.&quot;
                       </p>
-                      <p className="text-ipb-light text-[10px] mt-1 font-medium">Pierre M. — Toulouse <span className="text-yellow-500">★★★★★</span></p>
+                      <p className="text-ipb-light text-[10px] mt-1 font-medium">Pierre M. — Castres <span className="text-yellow-500">★★★★★</span></p>
                     </div>
                   </div>
                   <div className="bg-ipb-cream rounded-xl p-3 flex items-start gap-3">
@@ -1034,7 +1034,7 @@ export default function DiagnosticPage() {
                       type="text"
                       value={contactInfo.address}
                       onChange={(e) => setContactInfo({ ...contactInfo, address: e.target.value })}
-                      placeholder="12 rue des Lilas, 31000 Toulouse"
+                      placeholder="12 rue des Lilas, votre commune"
                       className="w-full px-4 py-3 rounded-xl border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all"
                       required
                     />

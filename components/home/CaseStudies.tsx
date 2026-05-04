@@ -56,7 +56,7 @@ const cases = [
     image: '/images/baie-coulissante-apres.webp',
     imageAlt: 'Baie vitrée coulissante installée après ouverture de mur porteur — chantier IPB Saint-Cyprien',
     title: "Cuisine ouverte sur séjour",
-    location: 'Toulouse, Saint-Cyprien',
+    location: 'Saint-Cyprien, Haute-Garonne',
     surface: "T3 · 60 m² · 1er étage",
     duree: '5 jours',
     facts: [

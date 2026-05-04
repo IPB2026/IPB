@@ -11,7 +11,7 @@ export function TopBar() {
         <div className="hidden md:flex items-center gap-6 text-[11px] tracking-[0.04em] text-white/65 uppercase">
           <span>Institut de pathologie du bâtiment</span>
           <span aria-hidden="true">·</span>
-          <span>Toulouse · Montauban · Auch · Albi</span>
+          <span>Intervention en Occitanie · 31 · 82 · 32 · 81 · 09 · 11</span>
         </div>
         <div className="flex items-center gap-3 text-[11px] tracking-[0.04em]">
           <a
