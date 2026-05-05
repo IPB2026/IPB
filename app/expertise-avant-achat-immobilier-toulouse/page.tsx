@@ -11,8 +11,8 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: "Expertise Avant Achat Immobilier Toulouse · 48-72h",
-  description: "Expertise indépendante avant achat Toulouse : fissures, humidité, structure. Rapport opposable sous 48-72h. ☎ 05 82 95 33 75",
+  title: "Expertise Avant Achat Immobilier Toulouse · Rapport sous 72h",
+  description: "80% des litiges après achat concernent des défauts de structure invisibles à l'œil nu. Inspection par un institut indépendant, rapport opposable sous 72h.",
   keywords: [
     'expertise avant achat toulouse',
     'expertise immobilière toulouse',
@@ -27,8 +27,8 @@ export const metadata: Metadata = {
     canonical: 'https://www.ipb-expertise.fr/expertise-avant-achat-immobilier-toulouse',
   },
   openGraph: {
-    title: 'Expertise Avant Achat Immobilier · Toulouse · IPB',
-    description: "Inspection technique complète avant signature. Rapport opposable sous 48-72h. Décennale AXA.",
+    title: 'Expertise Avant Achat Immobilier Toulouse · Rapport sous 72h',
+    description: "80% des litiges après achat concernent des défauts de structure invisibles. Inspection par un institut indépendant, rapport opposable sous 72h.",
     url: 'https://www.ipb-expertise.fr/expertise-avant-achat-immobilier-toulouse',
     type: 'website',
   },

@@ -9,9 +9,9 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Plan du Site · IPB Expert Fissures & Humidité Toulouse',
+  title: 'Plan du site · IPB Expertise',
   description:
-    "Plan complet du site IPB : services, villes d'intervention, blog. Expert fissures et humidité en Occitanie. ☎ 05 82 95 33 75",
+    "Toutes les pages du site IPB en un coup d'œil : expertises, villes d'intervention en Occitanie, articles techniques sur les fissures et l'humidité.",
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/plan-site',
   },
