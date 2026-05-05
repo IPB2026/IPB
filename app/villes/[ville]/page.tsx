@@ -39,11 +39,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = `Expert Fissures & Humidité ${villeData.nom} ${deptCode} · AXA`;
   const description = `Expert fissures et humidité à ${villeData.nom} (${villeData.departement}). Diagnostic sous 48h. Décennale AXA. ☎ 05 82 95 33 75`;
 
-  // Canonical override : sur Toulouse, /villes/toulouse pointe vers /expert-fissures-toulouse-31
-  // pour résoudre la cannibalisation entre les 3 URLs ciblant la même intention.
-  const canonicalUrl = ville.toLowerCase() === 'toulouse'
+  // Canonical : /villes/{ville} est redirigé 301 par le middleware vers /expert-fissures/{ville}
+  // (sauf Toulouse → page d'autorité). Le canonical doit pointer vers la CIBLE du redirect,
+  // pas vers la page elle-même, sinon Google reçoit deux signaux contradictoires
+  // ("redirect to A" vs "canonical to B=self") et marque la page en doublon sans canonique.
+  const slug = ville.toLowerCase();
+  const canonicalUrl = slug === 'toulouse'
     ? 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31'
-    : `https://www.ipb-expertise.fr/villes/${ville}`;
+    : `https://www.ipb-expertise.fr/expert-fissures/${slug}`;
 
   return {
     title,

@@ -79,6 +79,22 @@ const nextConfig = {
           },
         ],
       },
+      // Ressources statiques Next.js : on les laisse crawlables pour le rendu Googlebot
+      // (CSS/JS critique) mais on indique noindex pour ne pas polluer GSC avec les .woff2,
+      // chunks JS, etc. (cf. rapport "Explorée actuellement non indexée").
+      {
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex',
+          },
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
       {
         source: '/(.*)',
         headers: [
