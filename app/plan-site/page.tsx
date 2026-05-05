@@ -1,213 +1,248 @@
 import Link from 'next/link';
+import { Metadata } from 'next';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
-import { SmartBackBar } from "@/components/ui/SmartBackBar";
-import { Metadata } from 'next';
+import { SmartBackBar } from '@/components/ui/SmartBackBar';
+import { Footer } from '@/components/home/Footer';
+import { CtaFinal } from '@/components/home/CtaFinal';
+import { Eyebrow } from '@/components/ui/Eyebrow';
+import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
   title: 'Plan du Site · IPB Expert Fissures & Humidité Toulouse',
-  description: "Plan complet du site IPB : services, villes d'intervention, blog. Expert fissures et humidité en Occitanie. ☎ 05 82 95 33 75",
+  description:
+    "Plan complet du site IPB : services, villes d'intervention, blog. Expert fissures et humidité en Occitanie. ☎ 05 82 95 33 75",
   alternates: {
-    canonical: 'https://www.ipb-expertise.fr/plan-site'
-  }
+    canonical: 'https://www.ipb-expertise.fr/plan-site',
+  },
 };
+
+type Section = {
+  eyebrow: string;
+  titre: string;
+  links: { href: string; label: string; sub?: string }[];
+};
+
+const sections: Section[] = [
+  {
+    eyebrow: '01',
+    titre: 'Pages principales',
+    links: [
+      { href: '/', label: 'Accueil' },
+      { href: '/diagnostic', label: 'Diagnostic gratuit' },
+      { href: '/contact', label: 'Contact' },
+      { href: '/notre-expert', label: "L'expert" },
+      { href: '/avis-clients', label: 'Avis clients' },
+      { href: '/blog', label: 'Blog' },
+    ],
+  },
+  {
+    eyebrow: '02',
+    titre: 'Nos expertises',
+    links: [
+      { href: '/expertise/fissures', label: 'Expertise fissures & agrafage' },
+      { href: '/expertise/humidite', label: "Traitement de l'humidité" },
+      { href: '/expertise/mur-porteur', label: 'Ouverture de mur porteur' },
+    ],
+  },
+  {
+    eyebrow: '03',
+    titre: 'Départements',
+    links: [
+      { href: '/departements', label: 'Vue d’ensemble' },
+      { href: '/departements/haute-garonne', label: 'Haute-Garonne (31)' },
+      { href: '/departements/tarn-et-garonne', label: 'Tarn-et-Garonne (82)' },
+      { href: '/departements/gers', label: 'Gers (32)' },
+      { href: '/departements/tarn', label: 'Tarn (81)' },
+      { href: '/departements/ariege', label: 'Ariège (09)' },
+      { href: '/departements/aude', label: 'Aude (11)' },
+    ],
+  },
+  {
+    eyebrow: '04',
+    titre: "Zones d'intervention",
+    links: [
+      { href: '/zones-intervention', label: 'Mapping complet (56 villes)' },
+      { href: '/quartiers', label: 'Quartiers Toulouse — fiches locales' },
+      { href: '/expert-fissures-toulouse-31', label: 'Toulouse · pillar fissures' },
+      { href: '/expert-humidite-toulouse-31', label: 'Toulouse · pillar humidité' },
+      { href: '/expert-fissures-montauban-82', label: 'Montauban · pillar fissures' },
+    ],
+  },
+  {
+    eyebrow: '05',
+    titre: 'Villes — Haute-Garonne',
+    links: [
+      { href: '/expert-fissures/colomiers', label: 'Colomiers' },
+      { href: '/expert-fissures/muret', label: 'Muret' },
+      { href: '/expert-fissures/tournefeuille', label: 'Tournefeuille' },
+      { href: '/expert-fissures/blagnac', label: 'Blagnac' },
+      { href: '/expert-fissures/balma', label: 'Balma' },
+      { href: '/expert-fissures/cugnaux', label: 'Cugnaux' },
+      { href: '/expert-fissures/plaisance-du-touch', label: 'Plaisance-du-Touch' },
+    ],
+  },
+  {
+    eyebrow: '06',
+    titre: 'Villes — autres départements',
+    links: [
+      { href: '/expert-fissures/castelsarrasin', label: 'Castelsarrasin (82)' },
+      { href: '/expert-fissures/moissac', label: 'Moissac (82)' },
+      { href: '/expert-fissures/auch', label: 'Auch (32)' },
+      { href: '/expert-fissures/condom', label: 'Condom (32)' },
+      { href: '/expert-fissures/fleurance', label: 'Fleurance (32)' },
+      { href: '/expert-fissures/albi', label: 'Albi (81)' },
+      { href: '/expert-fissures/castres', label: 'Castres (81)' },
+      { href: '/expert-fissures/gaillac', label: 'Gaillac (81)' },
+    ],
+  },
+  {
+    eyebrow: '07',
+    titre: "Humidité par ville",
+    links: [
+      { href: '/expert-humidite/blagnac', label: 'Humidité Blagnac' },
+      { href: '/expert-humidite/colomiers', label: 'Humidité Colomiers' },
+      { href: '/expert-humidite/muret', label: 'Humidité Muret' },
+      { href: '/expert-humidite/tournefeuille', label: 'Humidité Tournefeuille' },
+    ],
+  },
+  {
+    eyebrow: '08',
+    titre: 'Blog — Fissures',
+    links: [
+      { href: '/blog/fissures-maison-toulouse-que-faire', label: 'Fissures maison Toulouse' },
+      { href: '/blog/agrafage-vs-micropieux-choix', label: 'Agrafage vs micropieux' },
+      { href: '/blog/fissures-escalier-tassement-differentiel', label: 'Fissures en escalier' },
+      { href: '/blog/fissure-ouverture-porte-fenetre', label: 'Portes qui coincent' },
+      { href: '/blog/fissure-facade-reboucher-ou-reparer', label: 'Reboucher ou réparer' },
+      { href: '/blog/fissure-plafond-que-faire', label: 'Fissures au plafond' },
+      { href: '/blog/prix-agrafage-fissures-2026', label: 'Prix agrafage 2026' },
+    ],
+  },
+  {
+    eyebrow: '09',
+    titre: 'Blog — Humidité',
+    links: [
+      { href: '/blog/humidite-remontee-capillaire-solution', label: 'Remontées capillaires' },
+      { href: '/blog/humidite-salpetre-traitement', label: 'Traitement salpêtre' },
+      { href: '/blog/salpetre-toulouse-traitement-definitif', label: 'Salpêtre Toulouse' },
+      { href: '/blog/merule-champignon-maison-danger', label: 'Mérule : le champignon' },
+      { href: '/blog/traitement-humidite-injection-resine', label: 'Injection résine' },
+      { href: '/blog/condensation-ou-infiltration', label: 'Condensation ou infiltration' },
+      { href: '/blog/humidite-cave-sous-sol', label: 'Humidité en cave' },
+    ],
+  },
+  {
+    eyebrow: '10',
+    titre: 'Blog — Conseils & assurance',
+    links: [
+      { href: '/blog/diagnostic-structurel-maison', label: 'Diagnostic structurel' },
+      { href: '/blog/garantie-decennale-travaux-structure', label: 'Garantie décennale' },
+      { href: '/blog/revente-maison-fissuree', label: 'Revente maison fissurée' },
+      {
+        href: '/blog/catastrophe-naturelle-secheresse-demarches-indemnisation',
+        label: 'CAT-NAT sécheresse : démarches',
+      },
+      { href: '/blog/fondations-maison-ancienne-renforcement', label: 'Renforcement fondations' },
+      { href: '/blog/assurance-fissures-maison-indemnisation', label: 'Assurance fissures' },
+    ],
+  },
+  {
+    eyebrow: '11',
+    titre: 'Blog — Mur porteur',
+    links: [
+      { href: '/blog/prix-ouverture-mur-porteur-toulouse-2026', label: 'Prix ouverture mur porteur' },
+      { href: '/blog/comment-savoir-si-mur-porteur', label: 'Reconnaître un mur porteur' },
+      { href: '/blog/etude-de-cas-mur-porteur-4m-t3-toulouse', label: 'Étude de cas : T3 Toulouse' },
+    ],
+  },
+  {
+    eyebrow: '12',
+    titre: 'Mentions légales',
+    links: [
+      { href: '/legal/mentions-legales', label: 'Mentions légales' },
+      { href: '/legal/confidentialite', label: 'Politique de confidentialité' },
+      { href: '/legal/cgv', label: 'Conditions générales de vente' },
+    ],
+  },
+];
 
 export default function PlanSitePage() {
   return (
-    <div className="min-h-screen bg-ipb-cream">
+    <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <TopBar />
       <Navbar />
       <SmartBackBar />
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="text-4xl font-extrabold text-ipb-text mb-4">Plan du site</h1>
-        <p className="text-lg text-ipb-muted mb-12">Accédez rapidement à toutes les pages de notre site</p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          
-          {/* Pages principales */}
-          <div className="bg-white rounded-xl shadow-md p-6">
-            <h2 className="text-xl font-bold text-ipb-orange mb-4 flex items-center gap-2">
-              <span>🏠</span> Pages principales
-            </h2>
-            <ul className="space-y-2">
-              <li><Link href="/" className="text-ipb-text hover:text-ipb-orange transition font-medium">Accueil</Link></li>
-              <li><Link href="/diagnostic" className="text-ipb-text hover:text-ipb-orange transition font-medium">Diagnostic gratuit</Link></li>
-              <li><Link href="/contact" className="text-ipb-text hover:text-ipb-orange transition font-medium">Contact</Link></li>
-              <li><Link href="/blog" className="text-ipb-text hover:text-ipb-orange transition font-medium">Blog</Link></li>
-            </ul>
+      <main id="main-content">
+        {/* HERO éditorial */}
+        <section className="bg-ipb-cream">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12 pt-12 lg:pt-16 pb-16 lg:pb-20">
+            <div className="max-w-3xl">
+              <RevealOnScroll>
+                <Eyebrow>Plan du site</Eyebrow>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.06}>
+                <h1
+                  className="font-serif text-ipb-text mb-8"
+                  style={{
+                    fontSize: 'clamp(40px, 4.4vw, 64px)',
+                    lineHeight: 1.06,
+                    letterSpacing: '-0.025em',
+                    fontWeight: 700,
+                  }}
+                >
+                  Toutes les pages,<br />
+                  <em>en une seule vue.</em>
+                </h1>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.12}>
+                <p className="text-[15px] leading-[1.9] font-light text-ipb-muted max-w-[580px]">
+                  Navigation complète du site IPB : expertises, départements, villes
+                  d'intervention, articles de fond. Pour aller à l'essentiel, partez du
+                  diagnostic gratuit.
+                </p>
+              </RevealOnScroll>
+            </div>
           </div>
+        </section>
 
-          {/* Expertises */}
-          <div className="bg-white rounded-xl shadow-md p-6">
-            <h2 className="text-xl font-bold text-ipb-orange mb-4 flex items-center gap-2">
-              <span>🔧</span> Nos expertises
-            </h2>
-            <ul className="space-y-2">
-              <li><Link href="/expertise/fissures" className="text-ipb-text hover:text-ipb-orange transition font-medium">Expertise fissures & agrafage</Link></li>
-              <li><Link href="/expertise/humidite" className="text-ipb-text hover:text-ipb-orange transition font-medium">Traitement humidité</Link></li>
-            </ul>
+        {/* GRILLE SECTIONS */}
+        <section className="bg-ipb-white py-16 lg:py-20 border-y border-ipb-rule">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {sections.map((section, i) => (
+                <RevealOnScroll key={section.titre} delay={(i % 3) * 0.05}>
+                  <div className="bg-ipb-cream border border-ipb-rule rounded-[6px] p-7 h-full">
+                    <p className="text-[10px] text-ipb-orange uppercase tracking-[0.18em] mb-3 font-medium">
+                      {section.eyebrow}
+                    </p>
+                    <h2 className="font-serif text-ipb-text font-bold text-[20px] leading-tight mb-5">
+                      {section.titre}
+                    </h2>
+                    <ul className="space-y-2.5">
+                      {section.links.map((link) => (
+                        <li key={link.href}>
+                          <Link
+                            href={link.href}
+                            className="text-[13px] leading-[1.7] font-light text-ipb-muted hover:text-ipb-orange transition-colors"
+                          >
+                            {link.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </RevealOnScroll>
+              ))}
+            </div>
           </div>
+        </section>
 
-          {/* Départements */}
-          <div className="bg-white rounded-xl shadow-md p-6">
-            <h2 className="text-xl font-bold text-ipb-orange mb-4 flex items-center gap-2">
-              <span>🗺️</span> Départements
-            </h2>
-            <ul className="space-y-2">
-              <li><Link href="/departements/haute-garonne" className="text-ipb-text hover:text-ipb-orange transition font-medium">Haute-Garonne (31)</Link></li>
-              <li><Link href="/departements/tarn-et-garonne" className="text-ipb-text hover:text-ipb-orange transition font-medium">Tarn-et-Garonne (82)</Link></li>
-              <li><Link href="/departements/gers" className="text-ipb-text hover:text-ipb-orange transition font-medium">Gers (32)</Link></li>
-              <li><Link href="/departements/ariege" className="text-ipb-text hover:text-ipb-orange transition font-medium">Ariège (09)</Link></li>
-            </ul>
-          </div>
+        <CtaFinal />
+      </main>
 
-          {/* Mentions légales */}
-          <div className="bg-white rounded-xl shadow-md p-6">
-            <h2 className="text-xl font-bold text-ipb-orange mb-4 flex items-center gap-2">
-              <span>⚖️</span> Mentions légales
-            </h2>
-            <ul className="space-y-2">
-              <li><Link href="/legal/mentions-legales" className="text-ipb-text hover:text-ipb-orange transition font-medium">Mentions légales</Link></li>
-              <li><Link href="/legal/confidentialite" className="text-ipb-text hover:text-ipb-orange transition font-medium">Politique de confidentialité</Link></li>
-              <li><Link href="/legal/cgv" className="text-ipb-text hover:text-ipb-orange transition font-medium">CGV</Link></li>
-            </ul>
-          </div>
-
-          {/* Zones d'intervention */}
-          <div className="bg-white rounded-xl shadow-md p-6">
-            <h2 className="text-xl font-bold text-ipb-orange mb-4 flex items-center gap-2">
-              <span>📍</span> Zones d'intervention
-            </h2>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="/zones-intervention" className="text-ipb-orange hover:text-ipb-orange transition font-bold">Mapping complet (56 villes)</Link></li>
-              <li><Link href="/quartiers" className="text-ipb-text hover:text-ipb-orange transition font-medium">Quartiers Toulouse (fiches locales)</Link></li>
-              <li className="text-xs text-ipb-muted font-bold mt-3 uppercase">Haute-Garonne (31)</li>
-              <li><Link href="/expert-fissures/toulouse" className="text-ipb-text hover:text-ipb-orange transition">Toulouse</Link></li>
-              <li><Link href="/expert-fissures/colomiers" className="text-ipb-text hover:text-ipb-orange transition">Colomiers</Link></li>
-              <li><Link href="/expert-fissures/muret" className="text-ipb-text hover:text-ipb-orange transition">Muret</Link></li>
-              <li><Link href="/expert-fissures/tournefeuille" className="text-ipb-text hover:text-ipb-orange transition">Tournefeuille</Link></li>
-              <li><Link href="/expert-fissures/blagnac" className="text-ipb-text hover:text-ipb-orange transition">Blagnac</Link></li>
-              <li><Link href="/expert-fissures/balma" className="text-ipb-text hover:text-ipb-orange transition">Balma</Link></li>
-              <li className="text-xs text-ipb-muted font-bold mt-3 uppercase">Tarn-et-Garonne (82)</li>
-              <li><Link href="/expert-fissures/montauban" className="text-ipb-text hover:text-ipb-orange transition">Montauban</Link></li>
-              <li><Link href="/expert-fissures/castelsarrasin" className="text-ipb-text hover:text-ipb-orange transition">Castelsarrasin</Link></li>
-              <li><Link href="/expert-fissures/moissac" className="text-ipb-text hover:text-ipb-orange transition">Moissac</Link></li>
-              <li className="text-xs text-ipb-muted font-bold mt-3 uppercase">Gers (32)</li>
-              <li><Link href="/expert-fissures/auch" className="text-ipb-text hover:text-ipb-orange transition">Auch</Link></li>
-              <li><Link href="/expert-fissures/condom" className="text-ipb-text hover:text-ipb-orange transition">Condom</Link></li>
-              <li><Link href="/expert-fissures/fleurance" className="text-ipb-text hover:text-ipb-orange transition">Fleurance</Link></li>
-              <li className="text-xs text-ipb-muted font-bold mt-3 uppercase">Tarn (81)</li>
-              <li><Link href="/expert-fissures/albi" className="text-ipb-text hover:text-ipb-orange transition">Albi</Link></li>
-              <li><Link href="/expert-fissures/castres" className="text-ipb-text hover:text-ipb-orange transition">Castres</Link></li>
-              <li><Link href="/expert-fissures/gaillac" className="text-ipb-text hover:text-ipb-orange transition">Gaillac</Link></li>
-              <li className="text-ipb-muted text-xs mt-2"><Link href="/zones-intervention" className="text-ipb-orange hover:text-ipb-orange underline">Voir les 56 villes →</Link></li>
-            </ul>
-          </div>
-
-          {/* Services par ville */}
-          <div className="bg-white rounded-xl shadow-md p-6">
-            <h2 className="text-xl font-bold text-ipb-orange mb-4 flex items-center gap-2">
-              <span>🛠️</span> Services par ville
-            </h2>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="/agrafage-fissures/toulouse" className="text-ipb-text hover:text-ipb-orange transition">Agrafage Toulouse</Link></li>
-              <li><Link href="/agrafage-fissures/colomiers" className="text-ipb-text hover:text-ipb-orange transition">Agrafage Colomiers</Link></li>
-              <li><Link href="/traitement-humidite/toulouse" className="text-ipb-text hover:text-ipb-orange transition">Humidité Toulouse</Link></li>
-              <li><Link href="/traitement-humidite/blagnac" className="text-ipb-text hover:text-ipb-orange transition">Humidité Blagnac</Link></li>
-              <li className="text-ipb-muted text-xs mt-2">+ 60 autres pages services...</li>
-            </ul>
-          </div>
-
-          {/* Blog - Fissures */}
-          <div className="bg-white rounded-xl shadow-md p-6">
-            <h2 className="text-xl font-bold text-ipb-orange mb-4 flex items-center gap-2">
-              <span>📝</span> Blog - Fissures
-            </h2>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="/blog/fissures-maison-toulouse-que-faire" className="text-ipb-text hover:text-ipb-orange transition">Fissures maison Toulouse</Link></li>
-              <li><Link href="/blog/agrafage-vs-micropieux-choix" className="text-ipb-text hover:text-ipb-orange transition">Agrafage vs micropieux</Link></li>
-              <li><Link href="/blog/fissures-escalier-tassement-differentiel" className="text-ipb-text hover:text-ipb-orange transition">Fissures en escalier</Link></li>
-              <li><Link href="/blog/fissure-ouverture-porte-fenetre" className="text-ipb-text hover:text-ipb-orange transition">Portes qui coincent</Link></li>
-              <li><Link href="/blog/fissure-facade-reboucher-ou-reparer" className="text-ipb-text hover:text-ipb-orange transition">Reboucher ou réparer</Link></li>
-              <li><Link href="/blog/fissure-plafond-que-faire" className="text-ipb-text hover:text-ipb-orange transition">Fissures au plafond</Link></li>
-            </ul>
-          </div>
-
-          {/* Blog - Humidité */}
-          <div className="bg-white rounded-xl shadow-md p-6">
-            <h2 className="text-xl font-bold text-ipb-orange mb-4 flex items-center gap-2">
-              <span>💧</span> Blog - Humidité
-            </h2>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="/blog/humidite-remontee-capillaire-solution" className="text-ipb-text hover:text-ipb-orange transition">Remontées capillaires</Link></li>
-              <li><Link href="/blog/humidite-salpetre-traitement" className="text-ipb-text hover:text-ipb-orange transition">Traitement salpêtre</Link></li>
-              <li><Link href="/blog/salpetre-toulouse-traitement-definitif" className="text-ipb-text hover:text-ipb-orange transition font-medium text-ipb-orange">Salpêtre Toulouse</Link></li>
-              <li><Link href="/blog/merule-champignon-maison-danger" className="text-ipb-text hover:text-ipb-orange transition font-medium text-ipb-orange">Mérule : le champignon destructeur</Link></li>
-              <li><Link href="/blog/traitement-humidite-injection-resine" className="text-ipb-text hover:text-ipb-orange transition">Injection résine</Link></li>
-              <li><Link href="/blog/ventilation-humidite-condensation" className="text-ipb-text hover:text-ipb-orange transition">VMC et condensation</Link></li>
-              <li><Link href="/blog/condensation-ou-infiltration" className="text-ipb-text hover:text-ipb-orange transition">Condensation vs infiltration</Link></li>
-              <li><Link href="/blog/humidite-cave-sous-sol" className="text-ipb-text hover:text-ipb-orange transition">Humidité en cave</Link></li>
-            </ul>
-          </div>
-
-          {/* Blog - Conseils */}
-          <div className="bg-white rounded-xl shadow-md p-6">
-            <h2 className="text-xl font-bold text-ipb-orange mb-4 flex items-center gap-2">
-              <span>💡</span> Blog - Conseils
-            </h2>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="/blog/agrafage-vs-micropieux-choix" className="text-ipb-text hover:text-ipb-orange transition">Agrafage vs micropieux : quel choix ?</Link></li>
-              <li><Link href="/blog/diagnostic-structurel-maison" className="text-ipb-text hover:text-ipb-orange transition">Diagnostic structurel</Link></li>
-              <li><Link href="/blog/garantie-decennale-travaux-structure" className="text-ipb-text hover:text-ipb-orange transition">Garantie décennale</Link></li>
-              <li><Link href="/blog/revente-maison-fissuree" className="text-ipb-text hover:text-ipb-orange transition">Revente maison fissurée</Link></li>
-              <li><Link href="/blog/catastrophe-naturelle-secheresse-demarches-indemnisation" className="text-ipb-text hover:text-ipb-orange transition">Catastrophe naturelle sécheresse : démarches</Link></li>
-              <li><Link href="/blog/fissure-mur-interieur-causes-solutions" className="text-ipb-text hover:text-ipb-orange transition">Fissure mur intérieur : causes et solutions</Link></li>
-              <li><Link href="/blog/prix-agrafage-fissures-2026" className="text-ipb-text hover:text-ipb-orange transition">Prix agrafage fissures 2026 : tarifs et comparatif</Link></li>
-              <li><Link href="/blog/fissure-maison-neuve-garantie-decennale" className="text-ipb-text hover:text-ipb-orange transition">Fissure maison neuve : garantie décennale</Link></li>
-              <li><Link href="/blog/humidite-mur-chambre-causes-solutions" className="text-ipb-text hover:text-ipb-orange transition">Humidité mur chambre : causes et solutions</Link></li>
-              <li><Link href="/blog/assurance-fissures-maison-indemnisation" className="text-ipb-text hover:text-ipb-orange transition">Assurance fissures : comment être indemnisé</Link></li>
-              <li><Link href="/blog/fondations-maison-ancienne-renforcement" className="text-ipb-text hover:text-ipb-orange transition">Fondations maison ancienne : renforcement</Link></li>
-            </ul>
-          </div>
-
-          {/* Blog - Expertise */}
-          <div className="bg-white rounded-xl shadow-md p-6">
-            <h2 className="text-xl font-bold text-ipb-orange mb-4 flex items-center gap-2">
-              <span>🎓</span> Blog - Expertise
-            </h2>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="/blog/secheresse-argile-haute-garonne" className="text-ipb-text hover:text-ipb-orange transition">Sol argileux Haute-Garonne</Link></li>
-              <li><Link href="/blog/expert-batiment-independant-vs-expert-assurance" className="text-ipb-text hover:text-ipb-orange transition">Expert indépendant vs expert assurance</Link></li>
-            </ul>
-          </div>
-
-          {/* Blog - Départements */}
-          <div className="bg-white rounded-xl shadow-md p-6">
-            <h2 className="text-xl font-bold text-ipb-orange mb-4 flex items-center gap-2">
-              <span>📍</span> Blog - Départements
-            </h2>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="/blog/expert-fissures-gers-guide-complet" className="text-ipb-text hover:text-ipb-orange transition">Expert fissures Gers</Link></li>
-              <li><Link href="/blog/fissures-maison-tarn-et-garonne-solutions" className="text-ipb-text hover:text-ipb-orange transition">Fissures Tarn-et-Garonne</Link></li>
-            </ul>
-          </div>
-
-        </div>
-
-        {/* CTA */}
-        <div className="mt-12 bg-ipb-orange rounded-2xl p-8 text-center text-white">
-          <h2 className="text-3xl font-extrabold mb-4">Besoin d'un expert ?</h2>
-          <p className="text-xl text-ipb-orange-l mb-6">Diagnostic gratuit de votre situation en 5 minutes</p>
-          <Link 
-            href="/diagnostic"
-            className="inline-block bg-white text-ipb-orange px-8 py-4 rounded-xl font-bold text-lg hover:bg-ipb-stone transition shadow-xl"
-          >
-            Lancer le diagnostic →
-          </Link>
-        </div>
-
-      </div>
+      <Footer />
     </div>
   );
 }
