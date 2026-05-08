@@ -65,6 +65,18 @@ const faqMurPorteur = [
     question: "IPN, HEB ou IPE : quelle poutre choisir ?",
     answer: "Le choix dépend de la portée, des charges à reprendre et de l'épaisseur du mur. Notre ingénieur dimensionne la poutre selon les normes en vigueur (Eurocode). Un sous-dimensionnement entraîne fissures, affaissement de plancher, voire rupture. Ce calcul n'est jamais à la charge d'un artisan généraliste.",
   },
+  {
+    question: "Quel est le prix d'une ouverture de mur porteur ?",
+    answer: "Le budget dépend principalement de la portée. Pour une ouverture standard (2 à 3 m, mur en parpaing ou brique foraine), comptez 6 500 à 10 000 € TTC tout compris (étude, étaiement, poutre, pose, finitions). Pour une grande baie vitrée (3 à 4,5 m), prévoyez 10 000 à 16 000 €. Les chantiers sur béton banché ou pierre majorent de 15 à 30 %. Devis ferme remis sous 24 h après visite gratuite.",
+  },
+  {
+    question: "Faut-il prévoir un étaiement pendant les travaux ?",
+    answer: "Oui, l'étaiement est non négociable. Avant toute découpe du mur porteur, on installe des étais qui reprennent les charges du plancher du dessus pendant l'intervention. Sans étaiement, le plancher du dessus s'affaisse — ça arrive plusieurs fois par an à Toulouse sur des chantiers mal préparés. Coût de l'étaiement : 300 à 800 € selon la portée. Tout devis sérieux le chiffre séparément.",
+  },
+  {
+    question: "Les finitions sont-elles incluses dans le devis ?",
+    answer: "Beaucoup d'artisans \"oublient\" les finitions dans leur devis pour afficher un prix plus bas. Chez IPB, nous les chiffrons systématiquement : ragréage des coupes, jonctions plâtre, peinture des bords de l'ouverture, repose des plinthes. Budget typique 800 à 2 500 € selon la complexité. Vous pouvez les externaliser si vous voulez gérer cette partie vous-même : nous le précisons alors clairement dans le devis.",
+  },
 ];
 
 const generateFaqJsonLd = () => ({

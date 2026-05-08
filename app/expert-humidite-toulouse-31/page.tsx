@@ -70,23 +70,39 @@ const communesHauteGaronne = [
 const faqItems = [
   {
     question: "Comment savoir si j'ai des remontées capillaires ?",
-    answer: "Les signes typiques sont : salpêtre (poudre blanche), peinture qui cloque, papier peint qui se décolle, odeur de moisi, taches d'humidité en bas des murs (jusqu'à 1,5m de haut)."
+    answer: "Les signes typiques sont : salpêtre (poudre blanche cristalline en bas des murs), peinture qui cloque, papier peint qui se décolle, odeur de moisi persistante, taches d'humidité en bas des murs (jusqu'à 1,5 m de haut), enduit qui s'effrite. Notre institut confirme le diagnostic à l'humidimètre, qui mesure le taux d'humidité à différentes hauteurs du mur."
+  },
+  {
+    question: "Pourquoi la peinture anti-humidité ne fonctionne pas ?",
+    answer: "Les peintures anti-humidité créent une barrière étanche en surface, ce qui ne traite pas la cause (l'eau qui monte par capillarité depuis le sol). L'eau bloquée se redistribue vers le haut du mur ou repousse la peinture, qui finit par cloquer après 2-3 ans. Seule une barrière étanche à la base du mur (injection résine hydrophobe) règle le problème durablement."
   },
   {
     question: "Combien coûte un traitement humidité à Toulouse ?",
-    answer: "Le traitement par injection résine coûte entre 80 et 150€/ml de mur traité. Pour une maison moyenne, comptez 2500 à 6000€. Le diagnostic est une prestation sur site, déductible des travaux."
+    answer: "Le traitement par injection résine coûte entre 80 et 150 €/ml de mur traité. Pour une maison moyenne (50 ml de murs en remontées capillaires), comptez 4 000 à 7 500 €. Le diagnostic instrumenté préalable est une prestation séparée (300-600 €), déductible si vous nous confiez les travaux."
   },
   {
-    question: "Quelle est la durée de la garantie ?",
-    answer: "Nos traitements par injection sont garantis 30 ans. C'est la solution la plus durable contre les remontées capillaires."
+    question: "Mon assurance habitation couvre-t-elle l'injection résine ?",
+    answer: "L'humidité courante par remontées capillaires est généralement exclue (vétusté, défaut d'entretien). En revanche, si l'humidité résulte d'un sinistre couvert (dégât des eaux, inondation, fuite canalisation), les travaux sont pris en charge. Notre rapport identifie précisément la cause pour orienter votre dossier d'assurance."
   },
   {
-    question: "Combien de temps pour assécher les murs ?",
-    answer: "Après injection, les murs s'assèchent progressivement en 6 à 12 mois selon leur épaisseur. Le traitement est efficace immédiatement, seul le séchage prend du temps."
+    question: "Combien de temps dure le chantier d'injection ?",
+    answer: "Le chantier d'injection résine dure 1 à 3 jours selon le linéaire de mur. Il s'effectue depuis l'extérieur ou l'intérieur selon l'accessibilité, sans casser les murs. Vous pouvez rester chez vous pendant les travaux. Le séchage des murs après injection prend ensuite 6 à 12 mois (compter 1 mois par cm d'épaisseur)."
+  },
+  {
+    question: "Combien de temps pour assécher les murs après traitement ?",
+    answer: "Après injection, les murs s'assèchent progressivement en 6 à 12 mois selon leur épaisseur (1 mois par cm). Le traitement est efficace dès l'injection (l'eau ne monte plus), mais l'humidité accumulée pendant des années met du temps à s'évacuer. Les finitions intérieures (enduits, peinture) ne doivent pas être refaites avant 12 mois pour ne pas emprisonner l'humidité."
+  },
+  {
+    question: "Quelle est la durée de la garantie sur l'injection résine ?",
+    answer: "Nos traitements par injection résine sont garantis 30 ans. C'est la solution la plus durable contre les remontées capillaires. La garantie couvre la barrière étanche elle-même : si elle perd son efficacité avant 30 ans, l'institut intervient à ses frais. Cette garantie est transmissible en cas de revente du bien."
   },
   {
     question: "Intervenez-vous en cave et sous-sol ?",
-    answer: "Oui, nous proposons le cuvelage pour les caves et sous-sols. C'est la solution pour les espaces enterrés soumis à la pression de l'eau."
+    answer: "Oui, nous proposons le cuvelage pour les caves et sous-sols. C'est la solution pour les espaces enterrés soumis à la pression de l'eau (où l'injection seule est insuffisante). Le cuvelage consiste à appliquer un revêtement étanche sur les parois et le sol. Coût moyen : 200-350 €/m². Garantie 10 ans (décennale)."
+  },
+  {
+    question: "Faut-il évacuer la maison pendant les travaux ?",
+    answer: "Non, dans la quasi-totalité des cas. L'injection résine se fait de manière propre, sans gros œuvre, et n'émet pas de produits toxiques. Vous pouvez rester chez vous pendant le chantier. Pour le cuvelage en sous-sol enterré, certaines pièces peuvent être inaccessibles 2 à 4 jours, mais le reste de la maison reste habitable."
   }
 ];
 

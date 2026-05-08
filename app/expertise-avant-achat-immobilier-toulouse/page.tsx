@@ -64,6 +64,18 @@ const faqItems = [
     question: "Intervenez-vous seulement à Toulouse ?",
     answer: "Notre institut intervient sur toute la Haute-Garonne (31), le Tarn-et-Garonne (82), le Gers (32), le Tarn (81) et l'Ariège (09). Le déplacement est inclus dans la prestation jusqu'à 50 km autour de Toulouse, au-delà il est facturé au coût réel.",
   },
+  {
+    question: "Quelle est la différence entre votre expertise et le DDT obligatoire ?",
+    answer: "Le DDT (Dossier de Diagnostic Technique) couvre 9 diagnostics obligatoires : amiante, plomb, termites, gaz, électricité, DPE, ERP, assainissement, loi Carrez. Aucun ne porte sur la structure du bâtiment. Notre expertise complète le DDT en analysant les fissures, l'humidité, l'état des fondations et des murs porteurs — précisément les défauts qui concentrent 80 % des litiges après-vente et que le DDT ignore légalement.",
+  },
+  {
+    question: "Comment intégrer mon rapport d'expertise au compromis de vente ?",
+    answer: "Le rapport doit être annexé au compromis (pas seulement à l'acte authentique). Demandez à votre notaire d'inscrire une mention manuscrite : « Pris connaissance du rapport d'expertise structurelle IPB du XX/XX/XXXX ». L'acheteur le signe en annexe. À partir de ce moment, il ne peut plus invoquer un vice caché sur les éléments documentés dans le rapport.",
+  },
+  {
+    question: "Le vendeur peut-il refuser que je fasse une expertise avant achat ?",
+    answer: "Non, le vendeur ne peut pas vous interdire de faire venir un expert (c'est votre droit). En revanche, il peut refuser de différer la signature du compromis. La parade : faire inscrire dans le compromis une condition suspensive d'expertise structurelle favorable. Si le vendeur refuse cette clause, c'est un signal d'alarme — un vendeur transparent n'a aucune raison de s'y opposer.",
+  },
 ];
 
 const jsonLd = {

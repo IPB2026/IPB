@@ -60,23 +60,39 @@ const communes = [
 const faqItems = [
   {
     question: "Comment se déroule une expertise fissures à Toulouse ?",
-    answer: "Notre institut vient sur site avec un fissuromètre, un niveau laser et une caméra thermique si nécessaire. Nous mesurons l'évolution, identifions la cause (sécheresse, tassement, défaut de chaînage) et rédigeons un rapport écrit sous 7 jours. Ce rapport est reconnu par votre assurance.",
+    answer: "Notre institut vient sur site avec fissuromètre, niveau laser et caméra thermique si nécessaire. Visite de 1 h 30 à 2 h, mesures instrumentées de chaque fissure, identification de la cause (sécheresse, tassement, défaut de chaînage) et rapport écrit sous 7 jours, reconnu par les assurances et les tribunaux.",
   },
   {
-    question: "Comment se passe une expertise fissures à Toulouse ?",
-    answer: "Le diagnostic complet est réalisé sur site et déductible des travaux si vous nous confiez ensuite l'intervention. Il inclut le déplacement, les mesures instrumentées et le rapport écrit. Le tarif précis vous est communiqué sous 24 heures après description de votre situation.",
+    question: "Quel est le coût d'une expertise fissures à Toulouse ?",
+    answer: "Une expertise structurelle complète à Toulouse coûte entre 800 et 1 500 € TTC selon la complexité (taille du bâti, nombre de désordres, contexte juridique). Le diagnostic inclut le déplacement, les mesures instrumentées et le rapport opposable. Si vous nous confiez ensuite les travaux, le coût du diagnostic est intégralement déduit de la facture finale.",
+  },
+  {
+    question: "Mes fissures peuvent-elles attendre ou faut-il agir rapidement ?",
+    answer: "Trois critères imposent une expertise immédiate : fissure horizontale (même fine), fissure qui évolue de plus d'1 mm en 6 mois, ou présence de signes collatéraux (portes qui coincent, carrelage soulevé). Pour les fissures verticales fines stabilisées, une surveillance annuelle suffit. Le pire scénario, c'est d'attendre 5 ans : un agrafage à 14 000 € peut alors devenir un chantier micropieux à 50 000 €.",
   },
   {
     question: "Mon assurance prend-elle en charge les fissures de sécheresse ?",
-    answer: "Si votre commune a été reconnue en catastrophe naturelle pour la sécheresse de l'année concernée, votre assurance habitation couvre les réparations. Notre rapport documente les désordres et leur lien avec le retrait-gonflement des argiles.",
+    answer: "Oui, si votre commune a été reconnue en catastrophe naturelle pour la sécheresse de l'année concernée (arrêté CAT-NAT). Une grande partie de la Haute-Garonne a été reconnue en 2022 et 2023. Notre rapport documente les désordres et leur lien avec le retrait-gonflement des argiles, c'est la pièce technique exigée par votre assureur.",
+  },
+  {
+    question: "Quelle franchise pour les fissures CAT-NAT en 2026 ?",
+    answer: "La franchise légale pour les sinistres sécheresse au titre de la garantie catastrophes naturelles est de 1 520 € en 2026. Cette franchise s'applique automatiquement, peu importe votre contrat. Beaucoup de propriétaires découvrent ce montant tardivement — nous le rappelons systématiquement dans notre rapport pour anticiper le reste à charge.",
+  },
+  {
+    question: "Que faire si l'expert d'assurance minimise mes fissures ?",
+    answer: "Vous avez le droit de mandater une contre-expertise indépendante (article L.121-1 du Code des assurances). 75 % des contre-expertises débouchent sur une réévaluation à la hausse de l'indemnisation, gain moyen de +30 à +50 %. Notre rapport est conçu spécifiquement pour faire le poids face à l'évaluation initiale d'un expert d'assureur.",
   },
   {
     question: "Quelle est la différence entre agrafage et micropieux ?",
     answer: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables (12 000 à 18 000 €). Les micropieux reprennent les fondations en profondeur (40 000 à 60 000 €) — intervention lourde réservée aux tassements actifs majeurs. Notre institut réalise l'agrafage structurel ; pour les rares cas nécessitant des micropieux, nous orientons vers un partenaire spécialisé après diagnostic.",
   },
   {
+    question: "Le rapport d'expertise est-il opposable au tribunal ?",
+    answer: "Oui. Un rapport rédigé par un institut indépendant est opposable devant un tribunal civil, devant l'assurance de l'acheteur en cas de revente, et devant le notaire. Il sert régulièrement de pièce technique dans les expertises judiciaires, les procédures de garantie décennale et les recours après catastrophe naturelle.",
+  },
+  {
     question: "Quels sont les délais d'intervention ?",
-    answer: "Notre institut se déplace sous 7 jours en moyenne sur Toulouse et la Haute-Garonne. Pour les situations urgentes (fissure évolutive, danger), nous pouvons intervenir sous 48 heures.",
+    answer: "Notre institut se déplace sous 7 jours en moyenne sur Toulouse et la Haute-Garonne. Pour les situations urgentes (fissure évolutive, danger imminent, compromis de vente en cours), nous intervenons sous 48 heures. Le rapport écrit est livré sous 5 à 7 jours après la visite.",
   },
 ];
 
