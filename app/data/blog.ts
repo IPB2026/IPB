@@ -6310,6 +6310,68 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>Avec notre rapport en main, les propriétaires ont obtenu une indemnisation de <strong>13 280€</strong> (14 800€ - franchise de 1 520€). Sans contre-expertise, ils auraient reçu 2 680€. <strong>Différence : 10 600€.</strong></p>
 
+      <h2>Les 5 erreurs qui font refuser une indemnisation</h2>
+
+      <ol>
+        <li><strong>Déclarer le sinistre trop tard</strong> : vous avez <strong>5 jours ouvrés</strong> à compter de la découverte du sinistre (ou de la publication de l'arrêté CAT-NAT). Au-delà, l'assureur peut invoquer la déchéance.</li>
+        <li><strong>Réaliser des travaux avant l'expertise</strong> : si vous rebouchez, peignez, ou modifiez la zone sinistrée avant le passage de l'expert, vous perdez automatiquement le droit à indemnisation. Photos OK, travaux non.</li>
+        <li><strong>Sous-déclarer les désordres collatéraux</strong> : portes qui coincent, carrelage soulevé, plomberie déformée, fissures intérieures — tout doit être déclaré dès le départ. Une déclaration "fissures façades" qui omet les désordres intérieurs limite l'indemnisation.</li>
+        <li><strong>Accepter la première proposition sans vérification</strong> : 80 % des propriétaires acceptent l'évaluation initiale par fatigue. Or 75 % des contre-expertises débouchent sur une réévaluation à la hausse.</li>
+        <li><strong>Oublier la franchise CAT-NAT</strong> : 1 520 € en 2026 sur les sinistres sécheresse. Beaucoup de propriétaires découvrent cette franchise à la fin du processus et se retrouvent surpris. Anticipez-la dans votre projet de réparation.</li>
+      </ol>
+
+      <h2>Délais légaux à connaître</h2>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead class="bg-slate-900 text-white">
+            <tr>
+              <th class="border border-slate-300 p-3 text-left">Étape</th>
+              <th class="border border-slate-300 p-3 text-center">Délai légal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-3">Déclaration de sinistre (sinistre courant)</td>
+              <td class="border border-slate-300 p-3 text-center">5 jours ouvrés</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3">Déclaration de sinistre (CAT-NAT)</td>
+              <td class="border border-slate-300 p-3 text-center">10 jours après publication de l'arrêté</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3">Visite de l'expert d'assurance</td>
+              <td class="border border-slate-300 p-3 text-center">15 jours à 2 mois</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3">Indemnisation après accord</td>
+              <td class="border border-slate-300 p-3 text-center">3 mois maximum</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3">Action en justice contre l'assureur</td>
+              <td class="border border-slate-300 p-3 text-center">2 ans à partir du sinistre</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>FAQ — Assurance fissures maison</h2>
+
+      <h3>Mes fissures sont-elles couvertes par mon assurance habitation ?</h3>
+      <p>Oui, à deux conditions : (1) elles résultent d'un événement couvert par votre contrat (sécheresse CAT-NAT, inondation, dégât des eaux), et (2) la maison était bien entretenue. Les fissures de retrait (vieillissement) ne sont jamais couvertes.</p>
+
+      <h3>Faut-il que ma commune soit en CAT-NAT pour être indemnisé ?</h3>
+      <p>Non, sauf si le sinistre est lié à une sécheresse. Pour les autres causes (mouvement de terrain, inondation), votre assurance peut intervenir hors CAT-NAT.</p>
+
+      <h3>Que faire si mon assureur refuse la prise en charge ?</h3>
+      <p>Demandez le rapport de l'expert en LRAR. S'il invoque un défaut d'entretien ou une cause non couverte, mandatez un expert indépendant. Une contre-expertise change la donne dans 75 % des cas.</p>
+
+      <h3>L'assurance prend-elle en charge l'expertise indépendante ?</h3>
+      <p>Si votre contrat inclut l'option "défense recours" ou "protection juridique", oui — partiellement ou totalement. Vérifiez vos garanties annexes : beaucoup de propriétaires ignorent en bénéficier.</p>
+
+      <h3>Puis-je faire les travaux moi-même et me faire rembourser ?</h3>
+      <p>Non. L'indemnisation est conditionnée à la fourniture de factures d'entreprise (avec attestation décennale). Les travaux en autoréalisation ne sont pas remboursés, sauf clause spécifique très rare.</p>
+
       <h2>Protéger votre patrimoine : les prochaines étapes</h2>
       <p>L'assurance ne résout pas le problème structurel — elle finance la réparation. Mais encore faut-il que la réparation soit la bonne. Un simple rebouchage sur des fissures actives, c'est de l'argent jeté. Il faut <strong>stabiliser les fondations</strong> avant de réparer l'esthétique.</p>
 
@@ -6697,6 +6759,76 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>Si votre maison a plus de 30 ans et que vous voyez apparaître des fissures, même fines, faites réaliser un diagnostic. Mieux vaut un diagnostic maintenant qu'un chantier de 40 000 € dans 5 ans pour des micropieux.</p>
 
+      <h2>Comparatif des solutions de renforcement</h2>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead class="bg-slate-900 text-white">
+            <tr>
+              <th class="border border-slate-300 p-3 text-left">Technique</th>
+              <th class="border border-slate-300 p-3 text-center">Quand l'utiliser</th>
+              <th class="border border-slate-300 p-3 text-center">Coût moyen</th>
+              <th class="border border-slate-300 p-3 text-center">Durée chantier</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-3"><strong>Agrafage structurel</strong></td>
+              <td class="border border-slate-300 p-3 text-center">Fissures actives, mouvements légers à modérés</td>
+              <td class="border border-slate-300 p-3 text-center text-green-700">10 000 - 18 000 €</td>
+              <td class="border border-slate-300 p-3 text-center">3-7 jours</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3"><strong>Injection de résine</strong></td>
+              <td class="border border-slate-300 p-3 text-center">Stabilisation des sols sous-fondations</td>
+              <td class="border border-slate-300 p-3 text-center text-orange-700">15 000 - 25 000 €</td>
+              <td class="border border-slate-300 p-3 text-center">5-10 jours</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3"><strong>Micropieux</strong></td>
+              <td class="border border-slate-300 p-3 text-center">Affaissements majeurs (&gt; 8 mm), fondations cédant</td>
+              <td class="border border-slate-300 p-3 text-center text-red-700">35 000 - 70 000 €</td>
+              <td class="border border-slate-300 p-3 text-center">3-6 semaines</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3"><strong>Longrines béton</strong></td>
+              <td class="border border-slate-300 p-3 text-center">Reprise globale d'une portion de fondation</td>
+              <td class="border border-slate-300 p-3 text-center text-red-700">25 000 - 50 000 €</td>
+              <td class="border border-slate-300 p-3 text-center">2-4 semaines</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Cas spécifique : fondations en pierre du XIXe siècle</h2>
+
+      <p>Sur le bâti ancien (avant 1900) typique du centre Toulouse (Carmes, Saint-Étienne, Saint-Cyprien) ou des bastides du Tarn-et-Garonne, les fondations sont souvent en <strong>pierre maçonnée à la chaux</strong>, posées directement sur le sol sans semelle béton. Elles ont tenu 150 ans, mais sont vulnérables aux contraintes modernes :</p>
+
+      <ul>
+        <li><strong>Sécheresse RGA</strong> : l'argile sous-jacente n'était pas un problème en 1880 — elle l'est depuis 2003.</li>
+        <li><strong>Cycles gel-dégel intensifiés</strong> : les pierres calcaires se délitent.</li>
+        <li><strong>Vibrations urbaines</strong> : tramway, BTP voisin, trafic routier dense.</li>
+      </ul>
+
+      <p>Les solutions modernes (micropieux, injection résine) sont parfois inadaptées aux fondations en pierre maçonnée. Le bon réflexe : un diagnostic spécifique par un institut spécialisé en bâti ancien, qui peut préconiser des techniques traditionnelles (sous-œuvre maçonnée, longrines en pierre reconstituée) plus respectueuses du bâti.</p>
+
+      <h2>FAQ — Fondations maison ancienne</h2>
+
+      <h3>Comment savoir si mes fondations sont en cause ?</h3>
+      <p>3 indices : (1) fissures qui démarrent en bas du mur et remontent, (2) fissures obliques en escalier, (3) portes/fenêtres qui coincent. La confirmation passe par un diagnostic au niveau laser et au fissuromètre.</p>
+
+      <h3>Mon assurance couvre-t-elle un renforcement de fondations ?</h3>
+      <p>Oui, si le désordre est lié à un événement CAT-NAT (sécheresse principalement) ou à un sinistre couvert. Pour la sécheresse, comptez en moyenne 60-80 % des travaux pris en charge après franchise.</p>
+
+      <h3>Faut-il évacuer la maison pendant les travaux ?</h3>
+      <p>Pour l'agrafage et l'injection résine : non, vous restez chez vous. Pour les micropieux ou longrines : oui sur 2 à 4 semaines selon l'ampleur.</p>
+
+      <h3>Le renforcement augmente-t-il la valeur de la maison ?</h3>
+      <p>Oui, à condition de fournir les attestations décennales et la note de calcul à la revente. Une maison "stabilisée structurellement avec garantie" se revend sans décote, alors qu'une maison fissurée non traitée perd 20-30 %.</p>
+
+      <h3>Combien de temps dure un renforcement de fondations ?</h3>
+      <p>Garantie décennale obligatoire (10 ans). En pratique, un agrafage ou un micropieu correctement exécuté tient 50 à 100 ans, soit la durée résiduelle du bâtiment.</p>
+
       <p class="font-bold text-lg text-slate-900 mt-6">Diagnostic fondations sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
     `
   },
@@ -6858,6 +6990,57 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>3. Vérifier votre assurance habitation</h3>
       <p>Certaines assurances habitation excluent les dommages liés aux fissures déjà présentes à l'acquisition. Lisez les exclusions de votre contrat avec attention.</p>
 
+      <h2>Le rapport pré-achat : ce qu'il contient</h2>
+
+      <p>Un rapport d'expertise pré-achat sérieux (par un institut indépendant comme IPB) fait 15 à 25 pages et contient :</p>
+
+      <ul>
+        <li><strong>Identification précise de chaque fissure</strong> : localisation, orientation, largeur (mesurée au pied à coulisse), profondeur estimée</li>
+        <li><strong>Diagnostic des causes</strong> : tassement différentiel, retrait des matériaux, défaut de construction, désordre lié à un sinistre antérieur</li>
+        <li><strong>Évaluation du caractère évolutif</strong> : la fissure est-elle stabilisée ou active ? Mesures comparatives sur photos, jauges, niveau laser</li>
+        <li><strong>Préconisations chiffrées</strong> : agrafage, micropieux, simple rebouchage cosmétique — avec fourchettes de prix actualisées</li>
+        <li><strong>Pronostic à 5 ans</strong> : que se passera-t-il si vous n'agissez pas ? Risque de dégradation, coût d'inaction</li>
+        <li><strong>Photos annotées</strong> avec échelle, datées, localisées sur plan</li>
+      </ul>
+
+      <p>Ce rapport est <strong>opposable</strong>. Il sert :</p>
+      <ul>
+        <li>De levier de négociation immédiat (réduction de prix justifiée par une expertise tierce)</li>
+        <li>De preuve devant un tribunal en cas de vice caché ultérieur</li>
+        <li>De document de référence pour votre future décennale (si vous faites les travaux)</li>
+      </ul>
+
+      <h2>Cas concret : 25 000 € négociés à Cugnaux (31)</h2>
+
+      <p>Un acheteur prospect signe un compromis sur une maison à Cugnaux pour <strong>295 000 €</strong>. Visites groupées, agent immobilier pressant, "bonne affaire à saisir". L'acheteur remarque deux fissures verticales sur la façade arrière. L'agent : "rien de grave, juste l'enduit".</p>
+
+      <p>Heureusement, l'acheteur fait réaliser une expertise pré-achat IPB avant la levée de la condition suspensive. Notre rapport documente :</p>
+      <ul>
+        <li>Tassement différentiel actif (mesures comparatives au fissuromètre sur 3 semaines)</li>
+        <li>Quartier classé en zone RGA fort, arrêté CAT-NAT 2022</li>
+        <li>Fondations limitées (pavillon 1985 sur sol argileux)</li>
+        <li>Travaux nécessaires : agrafage + reprise drainage = <strong>22 000 €</strong> TTC</li>
+      </ul>
+
+      <p>L'acheteur a renégocié le compromis sur la base du rapport : <strong>270 000 €</strong>, soit une réduction de 25 000 €. Le vendeur a accepté pour ne pas perdre la vente. <strong>Coût de l'expertise pré-achat : 1 200 €. Économie : 23 800 € net.</strong></p>
+
+      <h2>FAQ — Acheter une maison fissurée</h2>
+
+      <h3>Faut-il systématiquement renoncer à acheter une maison fissurée ?</h3>
+      <p>Non. Beaucoup de fissures sont anodines (retrait, faïençage). Le vrai sujet est de savoir si elles sont actives et combien coûtent les travaux. Une expertise pré-achat répond à ces deux questions en 72 h.</p>
+
+      <h3>Le compromis de vente est-il rétractable si je découvre des fissures graves ?</h3>
+      <p>Oui, dans le délai de rétractation de 10 jours après la signature. Au-delà, vous restez engagé sauf condition suspensive expresse (par exemple : "obtention d'une expertise structurelle favorable").</p>
+
+      <h3>Comment intégrer une condition suspensive d'expertise dans le compromis ?</h3>
+      <p>Demandez à votre notaire d'inscrire une clause type : <em>"Le présent compromis est conclu sous la condition suspensive de la production d'une expertise structurelle indépendante concluant à l'absence de désordres rédhibitoires, dans un délai de X jours."</em></p>
+
+      <h3>Et si le vendeur refuse l'expertise ?</h3>
+      <p>C'est un signal d'alarme. Un vendeur sain n'a rien à cacher. Refuser l'expertise pré-achat doit vous faire reculer ou exiger une décote significative.</p>
+
+      <h3>L'expertise pré-achat est-elle déductible des impôts ?</h3>
+      <p>Non, c'est un frais d'acquisition non déductible. Mais elle peut s'intégrer aux frais d'agence si vous négociez avec votre agent.</p>
+
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
         <p class="font-bold text-orange-900 mb-3">Vous visitez une maison fissurée en Occitanie ?</p>
         <p class="text-orange-800 mb-4">IPB réalise des <strong>expertises pré-achat</strong> dans les 48h. Rapport complet avec estimation des travaux : vous négociez avec des arguments chiffrés, pas avec des intuitions.</p>
@@ -7003,6 +7186,43 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>✅ Si vente : joindre le rapport d'expertise au dossier de vente (protection juridique)</li>
         <li>✅ Si rénovation : exiger une attestation de <strong>garantie décennale</strong> transmissible</li>
       </ul>
+
+      <h2>Indivision : comment décider à plusieurs</h2>
+
+      <p>Quand plusieurs héritiers se retrouvent en indivision sur un bien fissuré, les conflits sont fréquents. Trois positions classiques s'opposent :</p>
+
+      <ul>
+        <li><strong>L'attaché émotionnel</strong> : veut conserver la maison familiale, prêt à payer les travaux</li>
+        <li><strong>Le pragmatique</strong> : veut vendre vite, même décoté</li>
+        <li><strong>L'opportuniste</strong> : pousse à la rénovation pour valoriser sa quote-part à la revente</li>
+      </ul>
+
+      <p>Le rapport d'expertise structurelle indépendant est le seul outil neutre qui dépolitise la décision. Il transforme un débat émotionnel ("la maison de Maman") en discussion technique chiffrée ("travaux à 18 000 €, valorisation post-travaux à +12 %"). Sans rapport, l'indivision peut bloquer la succession des années.</p>
+
+      <p>Si l'indivision est insurmontable, sachez que <strong>tout indivisaire peut demander le partage judiciaire</strong> (article 815 du Code civil). Le tribunal ordonne alors la vente forcée du bien aux enchères — mais avec une décote massive (-30 à -40 %). À éviter par tous les moyens.</p>
+
+      <h2>Frais et droits de succession sur un bien fissuré</h2>
+
+      <p>Un bien fissuré pose un problème spécifique : <strong>l'estimation pour les droits de succession</strong>. Les notaires sont tenus de retenir une "valeur vénale" qui correspond au prix de marché. Un bien fissuré non documenté risque d'être surestimé (les notaires n'ont pas l'expertise technique), entraînant des droits de succession excessifs.</p>
+
+      <p>La parade : un rapport d'expertise structurelle joint à la déclaration de succession. Le notaire l'intègre dans son estimation. Selon les cas, la décote documentée peut représenter <strong>10 à 25 % de la valeur du bien</strong>, soit potentiellement 5 000 à 30 000 € de droits de succession évités.</p>
+
+      <h2>FAQ — Succession et maison fissurée</h2>
+
+      <h3>Combien de temps avons-nous pour décider en succession ?</h3>
+      <p>Légalement, l'option successorale doit être exercée dans les 4 mois (acceptation pure et simple, acceptation à concurrence de l'actif net, ou renonciation). Mais en pratique, l'indivision peut durer beaucoup plus longtemps.</p>
+
+      <h3>L'expertise est-elle déductible de l'actif successoral ?</h3>
+      <p>Oui, à hauteur des frais payés et justifiés (factures). Comptez 800 à 1 500 € déductibles selon la complexité du dossier.</p>
+
+      <h3>Si un héritier refuse l'expertise, que faire ?</h3>
+      <p>Tout indivisaire peut commander une expertise indépendante à ses frais. Le rapport est ensuite opposable à tous, qu'ils l'aient ou non commandée.</p>
+
+      <h3>Peut-on vendre une maison fissurée non encore expertisée ?</h3>
+      <p>Oui, mais à vos risques. Sans expertise documentée, vous restez exposés au vice caché 30 ans (responsabilité solidaire des héritiers). Une expertise et son annexion au compromis = protection juridique pour tous.</p>
+
+      <h3>Les fissures découvertes après acceptation de la succession sont-elles à notre charge ?</h3>
+      <p>Oui. C'est précisément pour ça qu'il faut faire l'expertise <strong>avant</strong> d'accepter la succession (option d'acceptation à concurrence de l'actif net si les travaux sont prohibitifs).</p>
 
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
         <p class="font-bold text-orange-900 mb-3">Vous gérez une succession avec un bien fissuré en Occitanie ?</p>
@@ -7668,6 +7888,53 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Étape 4 — Remise au notaire / annexion au compromis</strong> : nous vous accompagnons dans la transmission juridique du rapport.</li>
       </ul>
 
+      <h2>Le cadre juridique : article 1641 du Code civil</h2>
+
+      <p>L'article 1641 du Code civil est le pilier de la garantie des vices cachés. Il dispose que le vendeur est tenu de la garantie pour les <strong>défauts cachés de la chose vendue qui la rendent impropre à l'usage auquel on la destine, ou qui diminuent tellement cet usage que l'acheteur ne l'aurait pas acquise, ou n'en aurait donné qu'un moindre prix, s'il les avait connus</strong>.</p>
+
+      <p>Concrètement, pour une maison fissurée :</p>
+
+      <ul>
+        <li><strong>"Défauts cachés"</strong> : les fissures structurelles non visibles à l'œil nu, ou minimisées dans la déclaration du vendeur, sont des vices cachés</li>
+        <li><strong>"Impropre à l'usage"</strong> : si la maison est juridiquement habitable mais nécessite des travaux structurels lourds, le vice caché est constitué</li>
+        <li><strong>"Moindre prix"</strong> : c'est le levier juridique principal — l'acheteur peut demander la <strong>réduction du prix</strong> ou l'<strong>annulation de la vente</strong> (action rédhibitoire)</li>
+      </ul>
+
+      <p>Le délai d'action : <strong>2 ans à compter de la découverte du vice</strong> (article 1648). Mais attention : la responsabilité du vendeur peut être engagée jusqu'à <strong>30 ans</strong> après la vente au titre de la garantie décennale étendue, si les travaux ont été réalisés sans déclaration.</p>
+
+      <h2>Compromis vs acte authentique : à quel moment annexer le rapport ?</h2>
+
+      <p>Le rapport d'expertise structurelle doit être annexé au <strong>compromis de vente</strong>, pas seulement à l'acte authentique. Pourquoi ? Parce que le compromis fixe juridiquement le consentement des parties. Si le rapport n'est annexé qu'à l'acte authentique (3 mois plus tard), l'acheteur peut arguer qu'il n'avait pas connaissance des éléments lors de son engagement initial.</p>
+
+      <p>La meilleure pratique :</p>
+      <ol>
+        <li>Réalisez l'expertise <strong>avant la mise en vente</strong></li>
+        <li>Mentionnez son existence dans l'annonce (signal de transparence valorisant)</li>
+        <li>Fournissez le rapport dès la 2ᵉ visite à l'acheteur intéressé</li>
+        <li>Annexez-le au compromis avec mention manuscrite ("Pris connaissance du rapport d'expertise structurelle IPB du XX/XX/XXXX")</li>
+        <li>L'acte authentique reprendra automatiquement cette annexe</li>
+      </ol>
+
+      <h2>FAQ — Diagnostic structurel avant vente</h2>
+
+      <h3>Mon notaire peut-il refuser de faire la vente sans rapport structurel ?</h3>
+      <p>Non. Le diagnostic structurel n'est pas légalement obligatoire. Mais un notaire diligent peut <strong>recommander</strong> son réalisation, surtout en zone RGA, et noter dans l'acte que la recommandation a été déclinée si vous refusez.</p>
+
+      <h3>Le DPE remplace-t-il le diagnostic structurel ?</h3>
+      <p>Absolument pas. Le DPE évalue uniquement la performance énergétique. Il ne dit rien sur les fissures, les fondations, ou la stabilité du bâti.</p>
+
+      <h3>Je vends "en l'état" — suis-je dispensé de l'expertise ?</h3>
+      <p>Non. La clause "vente en l'état" ne vous protège pas du vice caché. Elle vous dispense de garantir la conformité, mais pas les défauts structurels cachés. La jurisprudence est constante sur ce point.</p>
+
+      <h3>Puis-je refacturer l'expertise à l'acheteur ?</h3>
+      <p>Oui, c'est négociable dans le compromis. Beaucoup de vendeurs avisés intègrent le coût de l'expertise dans le prix de vente, qui se trouve valorisé d'autant.</p>
+
+      <h3>L'expertise est-elle valable combien de temps ?</h3>
+      <p>Pas de durée légale, mais en pratique 6 mois maximum entre l'expertise et la signature de l'acte. Au-delà, l'acheteur peut demander une mise à jour (généralement gratuite chez IPB si le délai n'excède pas 12 mois).</p>
+
+      <h3>Que se passe-t-il si le rapport révèle un défaut majeur ?</h3>
+      <p>Trois options : (1) faire les travaux avant la vente (récupération du prix), (2) vendre en mentionnant le défaut avec décote justifiée, (3) ne pas vendre. La pire stratégie : cacher le défaut découvert.</p>
+
       <h2>Pour aller plus loin</h2>
       <ul>
         <li>Sur la dépréciation d'une maison fissurée et comment l'éviter : <a href="/blog/revente-maison-fissuree">Vendre une maison fissurée : la décote à -30 %</a></li>
@@ -7853,6 +8120,62 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>Toute fissure qui s'est ouverte de plus d'1 mm en 6 mois</li>
         <li>Toute fissure accompagnée de signes collatéraux : portes qui coincent, carrelage qui décolle, sol incliné perceptible</li>
       </ul>
+
+      <h2>Fissure intérieure vs extérieure : la même fissure, deux interprétations</h2>
+
+      <p>Une fissure peut traverser un mur de part en part (intérieur ET extérieur), ou se manifester d'un seul côté. La localisation change le diagnostic.</p>
+
+      <h3>Fissure visible uniquement à l'extérieur</h3>
+      <p>Souvent liée à un défaut de l'enduit ou à des contraintes climatiques (gel, choc thermique). L'enduit cède avant le mur porteur. <strong>Gravité généralement modérée</strong>, sauf si la fissure traverse plusieurs niveaux ou suit le tracé des joints de maçonnerie.</p>
+
+      <h3>Fissure visible uniquement à l'intérieur</h3>
+      <p>Souvent liée au plâtre, aux joints, ou à une déformation locale (poutre fléchissante, sol qui bouge). Si le plafond fissure horizontalement à la jonction d'un mur, c'est un signe de tassement vertical. <strong>Diagnostic recommandé.</strong></p>
+
+      <h3>Fissure traversante (intérieur + extérieur, même endroit)</h3>
+      <p>C'est <strong>le plus alarmant</strong>. Une fissure traversante signifie que la maçonnerie a cédé sur toute son épaisseur. Cause typique : tassement différentiel important, ou défaut de chaînage. <strong>Expertise immédiate.</strong></p>
+
+      <h2>Fissures multiples : que signifie un hachage ?</h2>
+
+      <p>Quand un mur présente plusieurs fissures parallèles ou en réseau, on parle de <strong>hachage</strong>. Trois cas typiques :</p>
+
+      <ul>
+        <li><strong>Hachage de fissures verticales fines parallèles</strong> sur enduit récent : retrait du mortier. Cosmétique, pas dangereux.</li>
+        <li><strong>Hachage de fissures obliques convergentes</strong> vers un même point : tassement localisé sous une fondation précise. Diagnostic rapide.</li>
+        <li><strong>Hachage en faïençage (toile d'araignée)</strong> sur surfaces planes : vieillissement de l'enduit ou défaut de pose. Cosmétique.</li>
+      </ul>
+
+      <p>La règle : plus le hachage est <strong>convergent</strong> (les fissures pointent vers un même endroit), plus la cause est structurelle. Plus il est <strong>diffus</strong> (réseau aléatoire), plus c'est cosmétique.</p>
+
+      <h2>Fissure qui traverse un linteau de porte/fenêtre</h2>
+
+      <p>Cas particulier mais fréquent. Une fissure qui démarre <strong>au coin supérieur</strong> d'une porte ou d'une fenêtre et remonte en oblique signale presque toujours un <strong>tassement asymétrique</strong> de la maison. Le linteau (la pierre ou la poutre au-dessus de l'ouverture) est le point faible où les contraintes se concentrent.</p>
+
+      <p>À surveiller particulièrement si :</p>
+      <ul>
+        <li>La porte ou la fenêtre commence à coincer (signe que le bâti se déforme)</li>
+        <li>La fissure est récente (apparue dans les 6-12 derniers mois)</li>
+        <li>Le linteau lui-même est fissuré (cas grave : risque d'effondrement de l'ouverture)</li>
+      </ul>
+
+      <h2>FAQ — Lecture des fissures</h2>
+
+      <h3>Une fissure peut-elle changer d'orientation au cours du temps ?</h3>
+      <p>Rarement, sauf en cas de mouvement structurel majeur. Une fissure verticale qui devient oblique est un signe de tassement actif et nécessite une expertise immédiate.</p>
+
+      <h3>Comment mesurer la largeur d'une fissure avec précision ?</h3>
+      <p>Avec un <strong>pied à coulisse</strong> (5-10 €) ou une <strong>jauge fissuromètre</strong> (gradation au 1/10 mm, 10-15 €). Les apps smartphone "fissuromètre" sont des gadgets imprécis, à éviter pour un suivi sérieux.</p>
+
+      <h3>Faut-il s'inquiéter d'une fissure qui apparaît en une nuit ?</h3>
+      <p>Oui, sauf cas évident (choc, dégât des eaux). Une fissure qui apparaît brutalement signale un mouvement rapide, souvent lié à un sinistre récent (sécheresse, inondation, vibration travaux voisins).</p>
+
+      <h3>Combien de temps pour qu'une fissure cosmétique évolue ?</h3>
+      <p>Une fissure de retrait stabilisée n'évolue plus après 6-12 mois. Si vous mesurez une variation de plus de 0,5 mm sur 6 mois, ce n'est plus du retrait — c'est un mouvement structurel.</p>
+
+      <h3>Le silicone ou l'enduit suffit-il à réparer une fissure ?</h3>
+      <p>Pour une fissure cosmétique stabilisée : oui (mastic souple ou enduit fin). Pour une fissure active : <strong>non</strong>, le silicone se déchirera dans les semaines suivantes. Il faut traiter la cause structurelle d'abord.</p>
+
+      <h3>Mon assurance couvre-t-elle l'expertise de mes fissures ?</h3>
+      <p>Pas l'expertise préventive. Mais si vous déclarez un sinistre (CAT-NAT sécheresse principalement) et que l'expert d'assurance sous-évalue, votre option "défense recours" peut prendre en charge tout ou partie d'une contre-expertise indépendante.</p>
 
       <h2>Pour aller plus loin</h2>
       <ul>
