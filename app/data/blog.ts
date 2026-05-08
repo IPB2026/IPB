@@ -7193,6 +7193,351 @@ const blogPosts: { [key: string]: BlogPost } = {
     `
   },
 
+  'diagnostic-structurel-avant-vente-maison': {
+    slug: 'diagnostic-structurel-avant-vente-maison',
+    metaTitle: "Diagnostic Structurel Avant Vente · Sécuriser sa Vente | IPB",
+    title: "Diagnostic structurel avant vente : pourquoi vendre sans expertise est risqué",
+    excerpt: "Les 9 diagnostics obligatoires ne couvrent pas la structure. Vous restez responsable du vice caché pendant 30 ans. Le diagnostic structurel avant vente, opposable, est votre seule vraie protection — et coûte 100x moins qu'un litige.",
+    date: '2026-05-08',
+    dateModified: '2026-05-08',
+    readTime: '9 min',
+    category: 'conseils',
+    author: 'Ludovic D.',
+    metaDescription: "Le diagnostic structurel avant vente vous protège du vice caché pendant 30 ans. Rapport opposable par institut indépendant en Occitanie. Délai 72h, décennale AXA.",
+    keywords: ['diagnostic structurel avant vente', 'expertise maison avant vente', 'vice caché vente maison', 'vendre maison fissure', 'rapport opposable', 'expertise structurelle vendeur'],
+    content: `
+      <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
+        <p class="font-bold text-orange-900 mb-2">La règle des 30 ans : la responsabilité que vous ignorez</p>
+        <p class="text-orange-800">Lorsque vous vendez votre maison, vous restez juridiquement responsable des défauts structurels cachés pendant <strong>30 ans</strong> au titre de la garantie décennale étendue. Un acheteur qui découvre une fissure structurelle 5, 10 ou 20 ans après la vente peut vous attaquer en justice. Le diagnostic structurel avant vente est votre seule véritable protection.</p>
+      </div>
+
+      <h2>Les 9 diagnostics obligatoires NE couvrent PAS la structure</h2>
+
+      <p>Vous mettez votre maison en vente et votre notaire vous demande de fournir le <strong>Dossier de Diagnostic Technique (DDT)</strong>. Vous payez 300 à 600 € pour faire réaliser les 9 diagnostics légaux : amiante, plomb, termites, gaz, électricité, DPE, ERP, assainissement, et superficie loi Carrez. Vous pensez que vous êtes "couvert".</p>
+
+      <p class="font-bold text-lg text-slate-900 my-6">Vous ne l'êtes pas.</p>
+
+      <p>Aucun de ces diagnostics ne porte sur <strong>la structure du bâtiment</strong> : ni les fissures, ni l'état des fondations, ni les éventuels mouvements de terrain, ni la santé des murs porteurs. Ce n'est tout simplement pas dans le périmètre légal du DDT.</p>
+
+      <p>Pourtant, c'est exactement là que se concentrent <strong>80 % des litiges après-vente</strong>. Les défauts visibles sont négociés au moment de la vente. Les défauts <em>invisibles</em>, eux, refont surface plus tard — et coûtent cher au vendeur.</p>
+
+      <h2>Le diagnostic structurel : c'est quoi exactement ?</h2>
+
+      <p>Le diagnostic structurel avant vente est une expertise <strong>facultative mais hautement recommandée</strong>, réalisée par un institut indépendant. Contrairement aux diagnostics obligatoires (qui sont des contrôles de conformité), le diagnostic structurel est une véritable analyse technique du comportement de votre bâti.</p>
+
+      <h3>Ce que comprend une expertise structurelle complète</h3>
+      <ul>
+        <li><strong>Inspection visuelle de l'enveloppe</strong> : façades, pignons, toiture accessible, regards et ouvertures</li>
+        <li><strong>Lecture des fissures</strong> : orientation, largeur (mesurée au pied à coulisse), profondeur, évolution</li>
+        <li><strong>Test instrumenté si nécessaire</strong> : jauge fissuromètre, niveau laser, hygromètre</li>
+        <li><strong>Analyse géotechnique du contexte</strong> : nature du sol, risque RGA, arrêtés CAT-NAT historiques</li>
+        <li><strong>Vérification de la stabilité des murs porteurs et des planchers</strong></li>
+        <li><strong>Rapport écrit détaillé</strong> avec photos, mesures et préconisations chiffrées</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-slate-50 border border-slate-200 rounded-xl">
+        <h3 class="font-bold text-slate-900 mb-3">Diagnostic obligatoire vs diagnostic structurel : la différence en 3 points</h3>
+        <p><strong>1. L'obligation</strong> — DDT légal = obligatoire. Diagnostic structurel = facultatif.</p>
+        <p><strong>2. Le périmètre</strong> — DDT couvre la salubrité (amiante, plomb…) et la conformité (élec, gaz). Le structurel couvre la stabilité du bâti.</p>
+        <p><strong>3. La portée juridique</strong> — Le DDT ne vous protège pas du vice caché structurel. Le diagnostic structurel, oui — s'il est réalisé par un expert indépendant et opposable.</p>
+      </div>
+
+      <h2>Quand faut-il faire un diagnostic structurel avant vente ?</h2>
+
+      <p>Toutes les ventes ne nécessitent pas une expertise structurelle. Voici les <strong>5 situations</strong> où c'est fortement recommandé, voire indispensable :</p>
+
+      <h3>1. Votre maison est située en zone RGA (retrait-gonflement des argiles)</h3>
+      <p>En Occitanie, c'est plus de <strong>80 % du territoire</strong>. La Haute-Garonne, le Tarn-et-Garonne, le Gers et l'Aude sont massivement exposés. Si votre maison est dans une zone classée moyenne, forte ou très forte, le diagnostic structurel devient un quasi-obligatoire moral.</p>
+
+      <h3>2. Des fissures sont visibles, même petites</h3>
+      <p>Une micro-fissure de 0,3 mm peut être anodine… ou être le premier signe d'un tassement actif. Sans expertise, vous ne le savez pas. Et en cas de litige, l'acheteur invoquera votre négligence.</p>
+
+      <h3>3. Votre commune a fait l'objet d'un arrêté CAT-NAT sécheresse</h3>
+      <p>Les épisodes 2017, 2019, 2022 et 2023 ont déclenché des arrêtés sur des centaines de communes du Sud-Ouest. Si votre maison est concernée, l'acheteur le saura (mention obligatoire dans l'État des Risques) — autant prouver dès la mise en vente que la structure a été contrôlée.</p>
+
+      <h3>4. La maison a plus de 40 ans</h3>
+      <p>Les fondations limitées des maisons des années 70-80, combinées à l'évolution climatique, créent une vulnérabilité structurelle réelle. Une expertise rassure les acquéreurs et leurs banques.</p>
+
+      <h3>5. Vous vendez à un investisseur ou à un professionnel</h3>
+      <p>Les marchands de biens et les SCI achètent rarement sans diagnostic structurel préalable. Anticiper, c'est négocier d'égal à égal.</p>
+
+      <h2>Le rapport opposable : votre bouclier juridique pendant 30 ans</h2>
+
+      <p>Voici l'élément que la plupart des vendeurs ignorent : <strong>un rapport d'expertise structurelle réalisé par un institut indépendant est opposable</strong>. Cela signifie qu'il fait foi devant un tribunal, devant l'assurance de l'acheteur, et devant le notaire.</p>
+
+      <p>Concrètement :</p>
+      <ul>
+        <li>Si vous transmettez ce rapport à l'acheteur au moment de la vente, et que celui-ci le signe en annexe au compromis, <strong>il ne pourra plus invoquer un vice caché sur les éléments contrôlés</strong>.</li>
+        <li>Si une fissure s'aggrave 5 ans plus tard, vous pourrez démontrer qu'elle n'existait pas (ou existait dans un état précis et déclaré) au moment de la vente.</li>
+        <li>Si l'acheteur tente une action en justice, votre rapport opposable est la pièce qui clôt le débat.</li>
+      </ul>
+
+      <p class="font-bold text-lg text-slate-900 my-6">Sans diagnostic structurel, c'est votre parole contre celle de l'acheteur. Avec, c'est un document signé par un expert opposable face à un juge.</p>
+
+      <h2>Combien coûte une expertise structurelle avant vente ?</h2>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead class="bg-slate-900 text-white">
+            <tr>
+              <th class="border border-slate-300 p-3 text-left">Type d'expertise</th>
+              <th class="border border-slate-300 p-3 text-center">Tarif moyen</th>
+              <th class="border border-slate-300 p-3 text-center">Délai rapport</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-3">Inspection visuelle simple (sans rapport)</td>
+              <td class="border border-slate-300 p-3 text-center">300 à 500 €</td>
+              <td class="border border-slate-300 p-3 text-center">Verbal</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3"><strong>Expertise structurelle complète + rapport opposable</strong></td>
+              <td class="border border-slate-300 p-3 text-center"><strong>800 à 1 500 €</strong></td>
+              <td class="border border-slate-300 p-3 text-center"><strong>72 h</strong></td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3">Expertise judiciaire (post-litige)</td>
+              <td class="border border-slate-300 p-3 text-center">2 500 à 5 000 €</td>
+              <td class="border border-slate-300 p-3 text-center">2 à 4 semaines</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>À mettre en perspective : un litige post-vente coûte en moyenne <strong>15 000 à 80 000 €</strong> au vendeur (annulation de vente, dommages-intérêts, frais d'avocat, expertise judiciaire). Une expertise préventive à 1 200 € est, mathématiquement, l'investissement le plus rentable du processus de vente.</p>
+
+      <h2>Trois cas réels (anonymisés) du Sud-Ouest</h2>
+
+      <h3>Cas n°1 — Maison à Tournefeuille, vendue 320 000 € avec rapport IPB</h3>
+      <p>Le vendeur (retraité) avait remarqué une fissure verticale fine sur la façade arrière. Notre rapport a confirmé qu'il s'agissait d'une fissure de retrait stabilisée (non évolutive), liée à la rétractation des enduits et non à un mouvement structurel. <strong>Rapport remis à l'acheteur, signé en annexe au compromis. Vente conclue en 6 semaines au prix demandé.</strong> 14 mois plus tard, l'acheteur a tenté d'invoquer un vice caché — débouté immédiatement grâce au rapport.</p>
+
+      <h3>Cas n°2 — Maison à Castelsarrasin, refus du diagnostic préventif</h3>
+      <p>La vendeuse a refusé l'expertise structurelle, jugée "inutile". Vente réalisée 280 000 € en 2022. En 2024, l'acheteur découvre des fissures évolutives en façade après l'épisode de sécheresse. Action en justice, expertise judiciaire confirmant un tassement antérieur à la vente. <strong>La vendeuse a été condamnée à rembourser 45 000 € + frais.</strong> Coût qu'une expertise à 1 200 € aurait évité.</p>
+
+      <h3>Cas n°3 — Maison à Auch, valorisation par le diagnostic</h3>
+      <p>Le vendeur a fait réaliser le diagnostic structurel <em>avant</em> la mise en agence. Notre rapport a documenté l'absence de désordres structurels et la qualité des fondations. <strong>L'agent immobilier a pu valoriser ce rapport dans l'annonce. Vente conclue en 3 semaines, sans négociation à la baisse.</strong> Le rapport a même servi à rassurer la banque de l'acheteur.</p>
+
+      <h2>Comment se déroule le diagnostic structurel IPB ?</h2>
+
+      <ul>
+        <li><strong>Étape 1 — Échange préalable (15 min, gratuit)</strong> : on comprend votre situation, l'âge de la maison, les éventuels signes que vous avez observés.</li>
+        <li><strong>Étape 2 — Visite sur site (1 h 30 à 2 h)</strong> : un de nos experts inspecte l'enveloppe, mesure les fissures éventuelles, contrôle les murs porteurs, étudie le contexte géologique.</li>
+        <li><strong>Étape 3 — Rapport sous 72 h</strong> : document écrit, signé, opposable. Photos, mesures, conclusions, préconisations le cas échéant.</li>
+        <li><strong>Étape 4 — Remise au notaire / annexion au compromis</strong> : nous vous accompagnons dans la transmission juridique du rapport.</li>
+      </ul>
+
+      <h2>Pour aller plus loin</h2>
+      <ul>
+        <li>Sur la dépréciation d'une maison fissurée et comment l'éviter : <a href="/blog/revente-maison-fissuree">Vendre une maison fissurée : la décote à -30 %</a></li>
+        <li>Sur la prise en charge par les assurances : <a href="/blog/assurance-fissures-maison-indemnisation">Assurance fissures : comment être indemnisé</a></li>
+        <li>Vous êtes acheteur et non vendeur ? Voir notre page <a href="/expertise-avant-achat-immobilier-toulouse">Expertise avant achat immobilier</a></li>
+      </ul>
+
+      <h2>Ce qu'il faut retenir</h2>
+
+      <ul>
+        <li>✅ <strong>Le DDT obligatoire ne couvre PAS la structure</strong> — vous restez exposé au vice caché 30 ans</li>
+        <li>✅ <strong>Le diagnostic structurel est facultatif mais opposable</strong> — il vous protège juridiquement</li>
+        <li>✅ <strong>1 200 € d'expertise = jusqu'à 80 000 € de litige évité</strong></li>
+        <li>✅ <strong>L'institut indépendant est la condition de l'opposabilité</strong> — un artisan ne peut pas délivrer ce rapport</li>
+        <li>✅ <strong>Plus la maison est ancienne, plus l'expertise est recommandée</strong> — surtout en zone RGA Occitanie</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
+        <p class="font-bold text-orange-900 mb-3">Vous mettez votre maison en vente en Occitanie ?</p>
+        <p class="text-orange-800 mb-4">Notre institut intervient sous 72 h pour réaliser un diagnostic structurel opposable. Rapport signé, photos, mesures, préconisations. Décennale AXA. Devis gratuit.</p>
+        <a href="/diagnostic" class="inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition-colors">Demander mon diagnostic →</a>
+      </div>
+    `
+  },
+
+  'lire-fissures-verticale-horizontale-oblique': {
+    slug: 'lire-fissures-verticale-horizontale-oblique',
+    metaTitle: "Fissure Verticale, Horizontale ou Oblique · Décoder l'Orientation | IPB",
+    title: "Fissure verticale, horizontale ou oblique : que révèle l'orientation sur la gravité ?",
+    excerpt: "Une fissure n'est jamais \"juste une fissure\". Sa direction — verticale, horizontale ou oblique — révèle la cause du mouvement et la gravité du désordre. Apprenez à lire les fissures comme un institut de pathologie du bâtiment.",
+    date: '2026-05-08',
+    dateModified: '2026-05-08',
+    readTime: '8 min',
+    category: 'fissures',
+    author: 'Ludovic D.',
+    metaDescription: "L'orientation d'une fissure révèle sa cause et sa dangerosité. Verticale, horizontale, oblique : comment lire chaque type et quand consulter un expert IPB.",
+    keywords: ['fissure verticale', 'fissure horizontale danger', 'fissure oblique cause', 'lire une fissure mur', 'interpréter fissure maison', 'orientation fissure', 'fissure en escalier'],
+    content: `
+      <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
+        <p class="font-bold text-orange-900 mb-2">L'orientation d'une fissure raconte une histoire</p>
+        <p class="text-orange-800">Une fissure n'est jamais "juste une fissure". Sa <strong>direction</strong> — verticale, horizontale, oblique — révèle l'origine du mouvement structurel, et donc la gravité du désordre. Apprendre à les lire, c'est anticiper l'urgence.</p>
+      </div>
+
+      <h2>Pourquoi l'orientation est le premier indice de gravité</h2>
+
+      <p>Quand un mur fissure, ce n'est jamais "au hasard". La fissure suit le chemin de la <strong>rupture mécanique</strong> — c'est-à-dire la zone où la maçonnerie n'a plus pu encaisser une contrainte. Cette contrainte a une direction, et la fissure y répond perpendiculairement.</p>
+
+      <p>Conséquence : <strong>l'orientation d'une fissure révèle quasi-systématiquement la cause du mouvement</strong>. Cette lecture, banale pour un institut de pathologie du bâtiment, est ignorée de la grande majorité des propriétaires. Pourtant, elle suffit à orienter le diagnostic dans 80 % des cas.</p>
+
+      <p>Trois orientations principales : <strong>verticale, horizontale, oblique</strong>. Chacune raconte une histoire différente.</p>
+
+      <h2>1. La fissure verticale : retrait, compression, tassement vertical</h2>
+
+      <p>Une fissure verticale court de haut en bas (ou inversement) sur un mur. C'est l'orientation <strong>la plus fréquente</strong>, et heureusement souvent la moins grave — mais pas toujours.</p>
+
+      <h3>Causes possibles d'une fissure verticale</h3>
+      <ul>
+        <li><strong>Le retrait de l'enduit ou du mortier</strong> (cause la plus fréquente, et la plus bénigne) : les matériaux humides perdent du volume en séchant. Apparaît typiquement dans les 2 à 5 ans après une rénovation.</li>
+        <li><strong>La compression verticale localisée</strong> : la maison "tasse" sous son propre poids. Phénomène normal sur les bâtiments neufs.</li>
+        <li><strong>Le tassement vertical d'une fondation</strong> (cas grave) : un appui de fondation s'enfonce plus vite que les autres. La fissure remonte verticalement depuis le bas du mur.</li>
+      </ul>
+
+      <h3>Comment évaluer la gravité d'une fissure verticale ?</h3>
+      <ul>
+        <li><strong>Largeur &lt; 1 mm, stable, isolée</strong> : faïençage ou retrait. Surveillance simple suffit.</li>
+        <li><strong>Largeur 1 à 3 mm, démarrant en bas du mur</strong> : possible tassement vertical. Diagnostic recommandé.</li>
+        <li><strong>Largeur &gt; 3 mm, ouverture progressive observable d'un mois à l'autre</strong> : tassement actif. <strong>Expertise immédiate.</strong></li>
+      </ul>
+
+      <div class="my-8 p-6 bg-slate-50 border border-slate-200 rounded-xl">
+        <p class="font-bold text-slate-900 mb-2">Cas particulier : la fissure verticale en angle de bâtiment</p>
+        <p class="text-slate-800">Une fissure verticale qui apparaît exactement à l'angle de deux murs (jonction façade/pignon) signale presque toujours un mouvement de séparation entre les deux pans. Cause typique : tassement différentiel d'une zone de la maison. <strong>À ne pas négliger.</strong></p>
+      </div>
+
+      <h2>2. La fissure horizontale : la plus alarmante</h2>
+
+      <p>Une fissure horizontale traverse le mur de gauche à droite. Elle est <strong>statistiquement la moins fréquente</strong>, mais aussi <strong>la plus inquiétante</strong> : elle signale presque toujours une contrainte mécanique anormale.</p>
+
+      <h3>Causes possibles d'une fissure horizontale</h3>
+      <ul>
+        <li><strong>La poussée latérale d'un terrain</strong> (le plus grave) : le terrain pousse contre un mur enterré ou semi-enterré. Typique des sous-sols, caves, murs de soutènement.</li>
+        <li><strong>L'effet du gel-dégel</strong> sur un mur exposé : l'eau infiltrée gèle, fait éclater le matériau de l'intérieur.</li>
+        <li><strong>Le tassement asymétrique d'une fondation</strong> : un côté de la maison s'enfonce, créant un effet de levier qui ouvre une fissure horizontale à mi-hauteur.</li>
+        <li><strong>La rupture d'un chaînage horizontal</strong> (cas extrême) : la ceinture en béton armé qui solidarise les murs cède. Risque structurel majeur.</li>
+      </ul>
+
+      <h3>Pourquoi l'horizontale est plus grave que la verticale</h3>
+      <p>Un mur est conçu pour reprendre des charges <strong>verticales</strong> (le poids de la toiture et des étages). Quand une fissure horizontale apparaît, c'est qu'une <strong>contrainte non prévue</strong> s'exerce — généralement latérale. Or les murs traditionnels (parpaing, brique) résistent mal aux poussées latérales.</p>
+
+      <p class="font-bold text-lg text-slate-900 my-6">Une fissure horizontale visible doit toujours déclencher un diagnostic professionnel, quelle que soit sa largeur.</p>
+
+      <h2>3. La fissure oblique : le tassement différentiel à l'œuvre</h2>
+
+      <p>Une fissure oblique forme un angle avec l'horizontale. Elle suit souvent les joints de maçonnerie en escalier (d'où son autre nom de "fissure en escalier"), ou trace une diagonale plus franche dans les enduits monolithiques.</p>
+
+      <p>C'est <strong>la signature classique du tassement différentiel</strong> — pathologie n°1 des maisons d'Occitanie en zone argileuse.</p>
+
+      <h3>Le tassement différentiel : qu'est-ce que c'est ?</h3>
+      <p>Le sol sous votre maison ne tasse pas uniformément. Une partie s'enfonce plus que l'autre. Conséquence : la maison "se déforme" comme un bloc qui pivote, et les fissures apparaissent obliquement, traduisant cette rotation.</p>
+
+      <p>Causes les plus fréquentes en Occitanie :</p>
+      <ul>
+        <li><strong>Sécheresse + sol argileux</strong> : l'argile se rétracte sous une partie de la maison. Voir notre article sur <a href="/blog/secheresse-argile-haute-garonne">la sécheresse argile en Haute-Garonne</a>.</li>
+        <li><strong>Arbre à proximité</strong> : ses racines assèchent le sol côté arbre, créant un déséquilibre.</li>
+        <li><strong>Drainage défectueux</strong> : l'eau s'accumule d'un côté de la maison, crée un sol mou.</li>
+        <li><strong>Fondations hétérogènes</strong> : profondeurs différentes selon les zones (typique des extensions ajoutées).</li>
+      </ul>
+
+      <h3>La fissure en escalier : un signal sans ambiguïté</h3>
+      <p>Si vos fissures suivent les joints en escalier (montant d'un parpaing à l'autre), il n'y a aucun doute : c'est du tassement différentiel. Voir notre <a href="/blog/fissures-escalier-tassement-differentiel">guide dédié aux fissures en escalier</a>.</p>
+
+      <h2>Tableau récapitulatif : orientation, cause, gravité</h2>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead class="bg-slate-900 text-white">
+            <tr>
+              <th class="border border-slate-300 p-3 text-left">Orientation</th>
+              <th class="border border-slate-300 p-3 text-left">Cause la plus probable</th>
+              <th class="border border-slate-300 p-3 text-center">Gravité typique</th>
+              <th class="border border-slate-300 p-3 text-center">Action recommandée</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-3"><strong>Verticale fine (&lt; 1 mm)</strong></td>
+              <td class="border border-slate-300 p-3">Retrait des enduits</td>
+              <td class="border border-slate-300 p-3 text-center text-green-700">Faible</td>
+              <td class="border border-slate-300 p-3 text-center">Surveillance</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3"><strong>Verticale large (&gt; 3 mm) en bas du mur</strong></td>
+              <td class="border border-slate-300 p-3">Tassement vertical</td>
+              <td class="border border-slate-300 p-3 text-center text-orange-700">Élevée</td>
+              <td class="border border-slate-300 p-3 text-center">Expertise rapide</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3"><strong>Horizontale</strong></td>
+              <td class="border border-slate-300 p-3">Poussée latérale, gel, asymétrie</td>
+              <td class="border border-slate-300 p-3 text-center text-red-700 font-bold">Très élevée</td>
+              <td class="border border-slate-300 p-3 text-center font-bold">Expertise immédiate</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3"><strong>Oblique / en escalier</strong></td>
+              <td class="border border-slate-300 p-3">Tassement différentiel (RGA, arbre, drainage)</td>
+              <td class="border border-slate-300 p-3 text-center text-red-700 font-bold">Élevée</td>
+              <td class="border border-slate-300 p-3 text-center font-bold">Expertise + agrafage</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Erreur fréquente : confondre orientation et direction d'apparition</h2>
+
+      <p>Une fissure peut apparaître <strong>de bas en haut</strong> (signe d'un mouvement venant des fondations) ou <strong>de haut en bas</strong> (signe d'un mouvement venant de la toiture, charpente, ou linteau). L'orientation est la <strong>direction finale</strong> de la fissure — pas son sens d'évolution.</p>
+
+      <p>Pour repérer le sens d'apparition, observez :</p>
+      <ul>
+        <li>L'extrémité la plus large = l'origine du mouvement</li>
+        <li>L'extrémité fine = la direction de propagation</li>
+      </ul>
+
+      <h2>Comment surveiller une fissure soi-même</h2>
+
+      <p>Si la fissure ne semble pas alarmante (verticale fine, isolée), une surveillance simple peut suffire avant de consulter :</p>
+
+      <ol>
+        <li><strong>Marquez les extrémités</strong> au crayon ou à la peinture (date du marquage incluse).</li>
+        <li><strong>Mesurez la largeur</strong> avec un pied à coulisse ou une jauge fissuromètre (quelques euros).</li>
+        <li><strong>Photographiez régulièrement</strong> : tous les mois pendant 6 mois, avec un mètre-ruban dans le cadre pour l'échelle.</li>
+        <li><strong>Notez les variations saisonnières</strong> : ouverture en été (sécheresse) ou en hiver (gel) ?</li>
+      </ol>
+
+      <p>Si après 6 mois la fissure n'a pas évolué, c'est probablement une fissure stabilisée. Si elle s'est ouverte, ne serait-ce que d'1 mm, c'est un signe de mouvement actif — <strong>diagnostic professionnel nécessaire</strong>.</p>
+
+      <h2>Quand consulter un institut de pathologie du bâtiment ?</h2>
+
+      <p>Faites appel à un expert <strong>sans attendre</strong> dans les cas suivants :</p>
+      <ul>
+        <li>Toute fissure horizontale, quelle que soit sa largeur</li>
+        <li>Toute fissure oblique ou en escalier supérieure à 1 mm</li>
+        <li>Toute fissure verticale supérieure à 3 mm</li>
+        <li>Toute fissure qui s'est ouverte de plus d'1 mm en 6 mois</li>
+        <li>Toute fissure accompagnée de signes collatéraux : portes qui coincent, carrelage qui décolle, sol incliné perceptible</li>
+      </ul>
+
+      <h2>Pour aller plus loin</h2>
+      <ul>
+        <li>Sur le choix entre agrafage et micropieux : <a href="/blog/agrafage-vs-micropieux-choix">Agrafage ou micropieux : quel choix ?</a></li>
+        <li>Sur la cause n°1 des fissures en Occitanie : <a href="/blog/secheresse-argile-haute-garonne">Sécheresse et sol argileux en Haute-Garonne</a></li>
+        <li>Sur les fissures qui touchent les portes et fenêtres : <a href="/blog/fissure-ouverture-porte-fenetre">Pourquoi vos portes coincent à cause des fissures</a></li>
+      </ul>
+
+      <h2>Ce qu'il faut retenir</h2>
+
+      <ul>
+        <li>✅ <strong>Verticale fine et isolée</strong> = souvent bénigne (retrait des matériaux)</li>
+        <li>✅ <strong>Horizontale</strong> = toujours alarmante, expertise systématique</li>
+        <li>✅ <strong>Oblique / escalier</strong> = signature du tassement différentiel, fréquent en Occitanie argileuse</li>
+        <li>✅ <strong>L'évolution dans le temps prime sur la largeur initiale</strong> — surveillez et photographiez</li>
+        <li>✅ <strong>Une fissure ne se "guérit" jamais seule</strong> : si elle évolue, le mouvement structurel est actif</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
+        <p class="font-bold text-orange-900 mb-3">Une fissure vous inquiète ?</p>
+        <p class="text-orange-800 mb-4">Notre institut intervient en Occitanie pour lire vos fissures et vous dire ce qui relève d'une simple cosmétique ou d'un vrai désordre structurel. Diagnostic gratuit, rapport opposable si besoin, décennale AXA.</p>
+        <a href="/diagnostic" class="inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition-colors">Lancer mon diagnostic →</a>
+      </div>
+    `
+  },
+
 };
 
 // ═══════════════════════════════════════════════════════════════
