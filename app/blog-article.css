@@ -253,6 +253,26 @@
   font-style: italic;
 }
 
+/* Drop cap éditoriale — 1ère lettre du tout 1er paragraphe de l'article.
+   Pattern signature des magazines / éditions soignées. Discret mais
+   marque l'identité éditoriale dès le premier coup d'œil. */
+.article-body > p:first-of-type::first-letter {
+  font-family: var(--font-serif), 'Playfair Display', Georgia, serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 0.9;
+  float: left;
+  padding: 0.35rem 0.75rem 0 0;
+  color: var(--ipb-orange);
+}
+
+@media (max-width: 768px) {
+  .article-body > p:first-of-type::first-letter {
+    font-size: 3rem;
+    padding: 0.25rem 0.5rem 0 0;
+  }
+}
+
 /* ═══════════════════════════════════════════════════════════════
  * 5. PARAGRAPHES
  * ═══════════════════════════════════════════════════════════════ */

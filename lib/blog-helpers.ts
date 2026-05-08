@@ -155,7 +155,7 @@ export function generateArticleJsonLd(article: {
  */
 export function generateBreadcrumbJsonLd(breadcrumbs: { name: string; url: string }[]) {
   const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr').replace(/\/+$/, '');
-  
+
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -164,6 +164,84 @@ export function generateBreadcrumbJsonLd(breadcrumbs: { name: string; url: strin
       position: index + 1,
       name: crumb.name,
       item: `${baseUrl}${crumb.url}`,
+    })),
+  };
+}
+
+/**
+ * Extrait les "key takeaways" d'un article pour générer un bloc TL;DR
+ * en début d'article (boost AI Overviews + lisibilité).
+ *
+ * Stratégie :
+ *   1. Cherche un <h2> du type "Ce qu'il faut retenir" / "À retenir" / "L'essentiel"
+ *   2. Extrait les <li> de l'<ul> qui suit
+ *   3. Nettoie le HTML interne (garde <strong> mais retire ✅/❌ emojis)
+ *
+ * Retourne null si aucune section "à retenir" trouvée — la page n'affiche
+ * alors pas le bloc TL;DR.
+ */
+export function extractKeyTakeaways(htmlContent: string): string[] | null {
+  // Cherche <h2>Pattern "à retenir"</h2><ul>...</ul>
+  const pattern = /<h2[^>]*>\s*(?:Ce qu'il faut retenir|À retenir|A retenir|L['']essentiel|En bref|Récap|Résumé)[\s\S]*?<\/h2>\s*<ul[^>]*>([\s\S]*?)<\/ul>/i;
+  const match = htmlContent.match(pattern);
+  if (!match) return null;
+
+  const ulContent = match[1];
+  const liPattern = /<li[^>]*>([\s\S]*?)<\/li>/g;
+  const items: string[] = [];
+  let liMatch;
+  while ((liMatch = liPattern.exec(ulContent)) !== null) {
+    let item = liMatch[1].trim();
+    // Retirer les emojis ✅/❌/💡/⚠️ en début (le bloc TL;DR a son propre style)
+    item = item.replace(/^(?:✅|❌|💡|⚠️|⭐|🔴|🟠|🟡|🟢)\s*/, '');
+    // Garder les <strong> mais retirer les autres tags
+    item = item.replace(/<(?!\/?strong\b)[^>]+>/g, '').trim();
+    if (item) items.push(item);
+  }
+
+  return items.length >= 2 ? items : null;
+}
+
+/**
+ * Génère un schema HowTo pour les articles structurés en étapes.
+ * Détecte la présence d'au moins 3 <h3> commençant par "Étape", "1.", "01"
+ * ou similaire pour confirmer la structure step-by-step.
+ *
+ * Retourne null si l'article n'est pas structuré comme un how-to.
+ */
+export function generateHowToSchema(article: {
+  title: string;
+  metaDescription: string;
+  slug: string;
+  date: string;
+  content: string;
+}): object | null {
+  // Détection : on cherche des <h3> qui ressemblent à des étapes
+  const stepPattern = /<h3[^>]*>\s*(?:Étape\s+\d+|\d+\.|0?\d\s*[—–-]?\s*)([^<]+?)<\/h3>\s*<p[^>]*>([\s\S]*?)<\/p>/gi;
+  const steps: { name: string; text: string }[] = [];
+  let match;
+  while ((match = stepPattern.exec(article.content)) !== null) {
+    const name = match[1].replace(/<[^>]+>/g, '').trim();
+    const text = match[2].replace(/<[^>]+>/g, '').trim();
+    if (name && text) steps.push({ name, text });
+  }
+
+  // Need at least 3 steps to qualify as HowTo
+  if (steps.length < 3) return null;
+
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr').replace(/\/+$/, '');
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: article.title,
+    description: article.metaDescription,
+    url: `${baseUrl}/blog/${article.slug}`,
+    datePublished: article.date,
+    step: steps.map((s, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: s.name,
+      text: s.text,
     })),
   };
 }

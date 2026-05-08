@@ -19,7 +19,10 @@ import {
   generateArticleJsonLd,
   generateBreadcrumbJsonLd,
   getCategoryFallbackImage,
+  extractKeyTakeaways,
+  generateHowToSchema,
 } from '@/lib/blog-helpers';
+import { KeyTakeaways } from '@/components/blog/KeyTakeaways';
 import {
   extractFAQsFromContent,
   generateFAQSchema,
@@ -175,6 +178,18 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
   const faqs = extractFAQsFromContent(post.content);
   const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : null;
 
+  // 🎯 AI OVERVIEWS BOOST : bloc "L'essentiel" auto-extrait
+  const keyTakeaways = extractKeyTakeaways(post.content);
+
+  // 🎯 RICH SNIPPETS : schema HowTo si l'article est structuré en étapes
+  const howToSchema = generateHowToSchema({
+    title: post.title,
+    metaDescription: post.metaDescription,
+    slug: post.slug,
+    date: post.date,
+    content: post.content,
+  });
+
   // 🎯 SEO BOOST : Liens contextuels intelligents
   const contextualLinks = getContextualLinks(post.slug, post.keywords);
 
@@ -208,6 +223,14 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
           id="faq-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+      {/* 🎯 HowTo Schema pour articles structurés en étapes */}
+      {howToSchema && (
+        <Script
+          id="howto-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
         />
       )}
       {/* Reading Progress Bar */}
@@ -283,6 +306,16 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                   priority
                 />
               </figure>
+
+              {/* 🎯 Bloc "L'essentiel" — visible immédiatement après la cover.
+                  Boost AI Overviews + lisibilité pour les lecteurs pressés. */}
+              {keyTakeaways && <KeyTakeaways items={keyTakeaways} />}
+
+              {/* Sommaire mobile inline (collapsible) — la sidebar TOC est cachée
+                  en < lg, donc sans ça le mobile n'a aucun aperçu de l'article. */}
+              {tocItems.length > 0 && (
+                <TableOfContents items={tocItems} variant="mobile" />
+              )}
 
               {/* Contenu de l'article - Zone de lecture optimale */}
               <div
