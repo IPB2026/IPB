@@ -103,6 +103,22 @@ const faqItems = [
     question: "Êtes-vous couverts en décennale ?",
     answer: "Oui. L'institut IPB est couvert par une garantie décennale AXA France (police n° 10564321) qui couvre à la fois l'étude technique et les travaux exécutés derrière. Une attestation est remise avec chaque devis.",
   },
+  {
+    question: "Quel est le tarif d'une note de calcul seule ?",
+    answer: "Une note de calcul standalone (sans travaux derrière) est facturée entre 500 € et 1 500 € TTC selon la complexité : 500-700 € pour une poutre IPN simple en RDC, 800-1 200 € pour une portée importante ou un dossier copropriété avec plusieurs niveaux, 1 200-1 500 € pour les ouvrages complexes (dalles, planchers, contreventements). Le devis vous est remis sous 24 h après description du projet.",
+  },
+  {
+    question: "Pouvez-vous valider une note de calcul faite par un autre BE ?",
+    answer: "Oui. Nous proposons une mission d'avis technique sur étude tierce : nous vérifions le dimensionnement, les hypothèses retenues et la conformité aux Eurocodes. Coût : 400-800 € selon la complexité. Utile pour les marchands de biens et architectes qui veulent un second regard avant d'engager des travaux importants, ou les copropriétés qui doutent d'une étude reçue.",
+  },
+  {
+    question: "Travaillez-vous sur des bâtiments tertiaires ou industriels ?",
+    answer: "Notre cœur d'activité est le résidentiel (maison individuelle, immeuble en copropriété). Nous intervenons sur des projets tertiaires de petite taille (rénovation de boutiques, bureaux jusqu'à 500 m²). Pour les ouvrages industriels lourds, nous orientons vers des bureaux d'études spécialisés partenaires.",
+  },
+  {
+    question: "Combien d'ingénieurs structure dans votre équipe ?",
+    answer: "L'institut compte 8 collaborateurs dont 3 ingénieurs structure (formés Ponts, INSA, ENTPE) et 2 techniciens de diagnostic certifiés. Cette taille nous permet de traiter chaque dossier rapidement (note de calcul sous 5-7 jours) tout en gardant un suivi humain personnalisé. Ludovic D., fondateur, supervise les dossiers complexes.",
+  },
 ];
 
 const faqJsonLd = {

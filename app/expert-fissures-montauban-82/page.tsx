@@ -77,6 +77,18 @@ const faqItems = [
     question: "Combien de temps pour recevoir le rapport ?",
     answer: "Vous recevez votre rapport détaillé sous 48 à 72 h après la visite, avec photos, analyse instrumentée et préconisations de traitement.",
   },
+  {
+    question: "Quel est le prix d'un agrafage à Montauban ?",
+    answer: "Le prix d'un agrafage structurel à Montauban et dans le Tarn-et-Garonne se situe entre 8 000 et 15 000 € TTC pour une façade complète, soit en moyenne 100 à 130 €/ml de fissure traitée. Le tarif varie selon la nature du mur (brique foraine, parpaing, pierre), la longueur de la fissure et la complexité d'accès. Devis ferme remis sous 7 jours après diagnostic.",
+  },
+  {
+    question: "Ma commune est-elle reconnue en CAT-NAT sécheresse pour 2022 et 2023 ?",
+    answer: "De nombreuses communes du Tarn-et-Garonne ont été reconnues en catastrophe naturelle sécheresse pour 2022 (arrêté JO du 18/01/2023) et 2023 (arrêté JO du 28/02/2024). Vérifiez sur georisques.gouv.fr ou demandez-nous : nous tenons à jour la liste des arrêtés sur tout le 82. Si votre commune est reconnue, vous avez 10 jours après publication pour déclarer votre sinistre à l'assureur.",
+  },
+  {
+    question: "Combien de temps entre le diagnostic et la fin des travaux ?",
+    answer: "Le calendrier type d'un chantier fissures à Montauban : diagnostic + rapport sous 7-10 jours, devis sous 14 jours après le rapport, démarrage du chantier 3 à 4 semaines après acceptation du devis (commande matériel + planning), travaux 5 à 10 jours selon l'ampleur. Soit en moyenne 2 à 3 mois entre la première visite et la livraison du chantier.",
+  },
 ];
 
 const jsonLd = {
