@@ -34,6 +34,7 @@ interface BlogPost {
 const blogPosts: { [key: string]: BlogPost } = {
   'fissures-maison-toulouse-que-faire': {
     slug: 'fissures-maison-toulouse-que-faire',
+    metaTitle: 'Fissures Maison Toulouse · Que Faire · Guide Expert',
     title: 'Fissures sur ma maison à Toulouse : Que faire ? Guide complet',
     excerpt: 'Vous avez découvert des fissures sur votre maison toulousaine ? Ne paniquez pas. On vous aide à distinguer une fissure bénigne d\'une urgence structurelle, et comment agir pour protéger votre patrimoine sans vous ruiner.',
     date: '2025-04-14',
@@ -41,7 +42,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '8 min',
     category: 'fissures',
     author: 'Ludovic D.',
-    metaDescription: 'Guide expert sur les fissures de maison à Toulouse. Comment identifier les fissures dangereuses, leurs causes (sol argileux, sécheresse) et les solutions économiques (agrafage vs micropieux).',
+    metaDescription: 'Guide expert pour identifier les fissures dangereuses sur votre maison à Toulouse. Causes (sol argileux), solutions (agrafage vs micropieux), prix réels.',
     keywords: ['fissures maison', 'toulouse', 'haute-garonne', 'agrafage', 'micropieux', 'tassement différentiel', 'sol argileux'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
@@ -641,7 +642,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '15 min',
     category: 'fissures',
     author: 'Ludovic D.',
-    metaDescription: 'Guide complet fissures en escalier 2026 : diagnostic tassement différentiel, causes (sol argileux, sécheresse), mesure gravité, solutions agrafage vs micropieux. Expert Toulouse Haute-Garonne.',
+    metaDescription: 'Fissures en escalier : diagnostic du tassement différentiel, causes (sol argileux, sécheresse), mesure de gravité, solutions agrafage vs micropieux.',
     keywords: ['fissures escalier', 'tassement différentiel', 'fissure crémaillère', 'fondations maison', 'agrafage mur', 'sol argileux', 'affaissement maison', 'réparation fissures', 'expertise bâtiment', 'RGA Haute-Garonne'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
@@ -883,6 +884,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'garantie-decennale-travaux-structure': {
     slug: 'garantie-decennale-travaux-structure',
+    metaTitle: 'Garantie Décennale Travaux Structure · Guide Complet',
     title: 'Garantie Décennale : Le Guide Complet pour Protéger Vos Travaux de Réparation Structurelle',
     excerpt: 'Avant de signer un devis pour des travaux de fissures ou d\'humidité, vous DEVEZ comprendre la garantie décennale. Ce n\'est pas qu\'une formalité : c\'est votre seule protection si les travaux échouent. Tout ce qu\'un propriétaire averti doit savoir.',
     date: '2025-06-09',
@@ -890,7 +892,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '12 min',
     category: 'conseils',
     author: 'Adam F.',
-    metaDescription: 'Guide complet garantie décennale 2026 : obligation légale, couverture, exclusions, vérification attestation, recours. Protégez vos travaux de réparation fissures et fondations.',
+    metaDescription: "Garantie décennale 2026 : obligation, couverture, exclusions, vérification de l'attestation, recours. Protégez vos travaux de réparation structurelle.",
     keywords: ['garantie décennale', 'travaux structure', 'assurance décennale', 'protection travaux', 'fissures', 'attestation décennale', 'loi Spinetta', 'responsabilité constructeur', 'malfaçons', 'recours juridique'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
@@ -1118,7 +1120,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '14 min',
     category: 'humidite',
     author: 'Nicolas G.',
-    metaDescription: 'Guide complet ventilation maison 2026 : VMC simple flux, double flux, VMI, hygroréglable. Comparatif, prix, installation. Éliminer condensation et moisissures. Expert Toulouse.',
+    metaDescription: 'Ventilation maison 2026 : VMC simple flux, double flux, VMI, hygroréglable. Comparatif, prix, installation pour éliminer condensation et moisissures.',
     keywords: ['VMC', 'VMI', 'ventilation maison', 'humidité', 'condensation', 'moisissures', 'VMC double flux', 'VMC hygroréglable', 'renouvellement air', 'qualité air intérieur', 'pont thermique'],
     content: `
       <div class="mb-8 p-6 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg">
@@ -1573,6 +1575,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'secheresse-argile-haute-garonne': {
     slug: 'secheresse-argile-haute-garonne',
+    metaTitle: 'Sécheresse & Argile Haute-Garonne · Fissures',
     title: 'Sol argileux et sécheresse en Haute-Garonne : le cycle infernal qui fissure votre maison',
     excerpt: 'Les sols argileux de Toulouse se rétractent en été et gonflent en hiver, créant un cycle destructeur pour vos fondations. Après les sécheresses 2022-2023, des milliers de maisons se fissurent. Explications et surtout : comment protéger votre patrimoine.',
     date: '2025-07-21',
@@ -1849,7 +1852,9 @@ const blogPosts: { [key: string]: BlogPost } = {
       
       <p>Même sans attendre 6 mois, vous pouvez avoir des indices sur l'évolutivité de votre fissure :</p>
 
-      <table class="w-full border-collapse border border-slate-300 my-6">
+      <div class="my-8 overflow-x-auto">
+
+        <table class="w-full border-collapse border border-slate-300 my-6">
         <thead class="bg-slate-900 text-white">
           <tr>
             <th class="border border-slate-300 p-3 text-left">Critère</th>
@@ -1885,6 +1890,8 @@ const blogPosts: { [key: string]: BlogPost } = {
           </tr>
         </tbody>
       </table>
+
+      </div>
 
       <p class="font-bold text-lg text-slate-900 my-6">Si au moins 3 critères pointent vers "fissure active", ne rebouchez pas. Faites un diagnostic.</p>
 
@@ -2299,6 +2306,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'condensation-ou-infiltration': {
     slug: 'condensation-ou-infiltration',
+    metaTitle: 'Condensation ou Infiltration · Le Test Infaillible',
     title: 'Condensation ou infiltration ? Le test simple pour ne plus se tromper',
     excerpt: 'Taches noires, murs humides, moisissures... Ce n\'est pas toujours une fuite. 60% des gens traitent le mauvais problème et dépensent de l\'argent inutilement. Le test décisif pour savoir si c\'est de la condensation (VMC) ou une infiltration (étanchéité).',
     date: '2025-09-01',
@@ -2836,6 +2844,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'traitement-humidite-injection-resine': {
     slug: 'traitement-humidite-injection-resine',
+    metaTitle: 'Injection Résine · Solution Anti-Remontées Capillaires',
     title: 'Injection résine : la seule solution définitive contre les remontées capillaires (explications + prix)',
     excerpt: 'Vous avez du salpêtre qui revient malgré vos nettoyages ? L\'injection de résine crée une barrière étanche à la base de vos murs qui bloque l\'eau pendant 30 ans. Comment ça marche exactement, combien de temps ça prend, et combien ça coûte (tarifs transparents).',
     date: '2025-09-29',
@@ -3374,6 +3383,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'fissure-plafond-que-faire': {
     slug: 'fissure-plafond-que-faire',
+    metaTitle: 'Fissure au Plafond · Grave ou Pas ? Le Test Simple',
     title: 'Fissure au plafond : grave ou pas ? Le test simple pour savoir',
     excerpt: 'Une fissure au plafond peut être bénigne (retrait d\'enduit) ou alarmante (mouvement de charpente). Apprenez à faire la différence en 5 minutes, sans paniquer inutilement ni minimiser un vrai danger.',
     date: '2025-10-27',
@@ -3629,6 +3639,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'humidite-cave-sous-sol': {
     slug: 'humidite-cave-sous-sol',
+    metaTitle: 'Cave Humide · 3 Causes, 3 Solutions Définitives',
     title: 'Cave humide : les 3 causes (et les 3 solutions qui marchent vraiment)',
     excerpt: 'Votre cave sent le moisi, les murs suintent, le salpêtre revient ? L\'humidité en cave vient de 3 sources : remontées capillaires, infiltrations latérales, ou condensation. Comment identifier LA bonne cause et appliquer LA bonne solution (injection, cuvelage, ou VMI).',
     date: '2025-11-10',
@@ -3950,7 +3961,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '10 min',
     category: 'fissures',
     author: 'Adam F.',
-    metaDescription: 'Expert fissures Gers : causes des fissures sur les maisons gasconnes, sols argileux, solutions (agrafage, injection). Prix, délais, garanties. Diagnostic gratuit à Auch, Condom, Fleurance.',
+    metaDescription: 'Expert fissures dans le Gers : causes sur le bâti gascon, sols argileux, solutions agrafage. Prix, délais, garanties à Auch, Condom, Fleurance.',
     keywords: ['expert fissures gers', 'fissures maison gers', 'agrafage fissures 32', 'expert fissure auch', 'fissures condom', 'sol argileux gascogne', 'réparation fissures gers'],
     content: `
       <div class="mb-8 p-6 bg-amber-50 border-l-4 border-amber-600 rounded-r-lg">
@@ -4163,6 +4174,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
   'merule-champignon-maison-danger': {
     slug: 'merule-champignon-maison-danger',
+    metaTitle: 'Mérule · Le Champignon qui Dévore les Maisons',
     title: 'Mérule : Le Champignon qui Dévore les Maisons (Guide Complet)',
     excerpt: 'La mérule est le cauchemar des propriétaires. Ce champignon lignivore détruit silencieusement les charpentes et boiseries. Comment l\'identifier, l\'éliminer et surtout : comment éviter qu\'elle ne revienne.',
     date: '2025-12-08',
@@ -4462,6 +4474,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
   'salpetre-toulouse-traitement-definitif': {
     slug: 'salpetre-toulouse-traitement-definitif',
+    metaTitle: 'Salpêtre à Toulouse · Traitement Définitif',
     title: 'Salpêtre à Toulouse : Causes, Diagnostic et Traitement Définitif',
     excerpt: 'Poudre blanche sur vos murs à Toulouse ? C\'est probablement du salpêtre, signe de remontées capillaires. Découvrez pourquoi les maisons toulousaines sont touchées et comment éliminer ce problème définitivement.',
     date: '2025-12-22',
@@ -4724,6 +4737,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
   'fissures-maison-tarn-et-garonne-solutions': {
     slug: 'fissures-maison-tarn-et-garonne-solutions',
+    metaTitle: 'Fissures Maison Tarn-et-Garonne · Solutions',
     title: 'Fissures Maison Tarn-et-Garonne : Causes et Solutions Efficaces',
     excerpt: 'Fissures sur votre maison à Montauban, Castelsarrasin ou Moissac ? Découvrez pourquoi le Tarn-et-Garonne est particulièrement touché et les solutions durables pour protéger votre patrimoine.',
     date: '2026-01-05',
@@ -4731,7 +4745,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '9 min',
     category: 'fissures',
     author: 'Ludovic D.',
-    metaDescription: 'Expert fissures Tarn-et-Garonne : causes des fissures à Montauban, Castelsarrasin, Moissac. Sol argileux, sécheresse. Solutions agrafage, injection. Diagnostic gratuit.',
+    metaDescription: 'Expert fissures Tarn-et-Garonne : causes à Montauban, Castelsarrasin, Moissac. Sol argileux, sécheresse, solutions agrafage. Diagnostic gratuit.',
     keywords: ['expert fissures tarn et garonne', 'fissures maison montauban', 'fissure 82', 'agrafage tarn et garonne', 'expert fissure castelsarrasin', 'sol argileux 82'],
     content: `
       <div class="mb-8 p-6 bg-rose-50 border-l-4 border-rose-600 rounded-r-lg">
@@ -4989,6 +5003,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'catastrophe-naturelle-secheresse-demarches-indemnisation': {
     slug: 'catastrophe-naturelle-secheresse-demarches-indemnisation',
+    metaTitle: "CAT-NAT Sécheresse · Démarches d'Indemnisation",
     title: 'Catastrophe Naturelle Sécheresse : Le Guide Complet pour Être Indemnisé (Démarches, Délais, Pièges)',
     excerpt: 'Votre commune est reconnue en catastrophe naturelle sécheresse ? Guide complet pour déclarer votre sinistre, les délais à respecter, la franchise à payer, et les erreurs qui font perdre des milliers d\'euros à 40% des sinistrés.',
     date: '2026-01-19',
@@ -4996,7 +5011,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '12 min',
     category: 'conseils',
     author: 'Adam F.',
-    metaDescription: 'Catastrophe naturelle sécheresse : démarches, délais, indemnisation. Comment déclarer un sinistre fissures, franchise CAT-NAT, expertise assurance. Guide complet Haute-Garonne, Tarn, Gers.',
+    metaDescription: 'CAT-NAT sécheresse : démarches, délais, indemnisation. Comment déclarer un sinistre fissures, franchise, expertise assurance. Guide complet Occitanie.',
     keywords: [
       'catastrophe naturelle sécheresse',
       'déclaration cat nat sécheresse',
@@ -5319,6 +5334,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'fissure-mur-interieur-causes-solutions': {
     slug: 'fissure-mur-interieur-causes-solutions',
+    metaTitle: 'Fissure Mur Intérieur · Causes & Solutions',
     title: 'Fissure Mur Intérieur : Causes, Gravité et Solutions (Guide Expert 2026)',
     excerpt: 'Une fissure apparaît sur votre mur intérieur ? Ce guide expert vous aide à identifier sa gravité, comprendre ses causes et choisir la bonne solution. Ne confondez plus fissure esthétique et danger structurel.',
     date: '2026-01-26',
@@ -5326,7 +5342,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '12 min',
     category: 'fissures',
     author: 'Fabien T.',
-    metaDescription: 'Fissure mur intérieur : comment évaluer la gravité ? Causes (tassement, sécheresse, malfaçon), différences entre micro-fissure et fissure structurelle, solutions durables. Guide expert IPB Toulouse.',
+    metaDescription: 'Fissure mur intérieur : comment évaluer la gravité ? Causes (tassement, sécheresse), différences micro-fissure / structurelle, solutions durables IPB.',
     keywords: ['fissure mur intérieur', 'fissure mur intérieur maison', 'fissure mur intérieur cause', 'réparer fissure mur intérieur', 'fissure mur porteur', 'fissure plâtre intérieur', 'fissure cloison', 'expert fissures toulouse'],
     content: `
       <div class="mb-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
@@ -5532,6 +5548,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'prix-agrafage-fissures-2026': {
     slug: 'prix-agrafage-fissures-2026',
+    metaTitle: 'Prix Agrafage Fissures 2026 · Tarifs Réels',
     title: 'Prix Agrafage Fissures en 2026 : Tarifs Réels et Comparatif Complet',
     excerpt: 'Combien coûte réellement un agrafage de fissures ? Tarifs au mètre linéaire, comparatif agrafage vs micropieux, facteurs de prix et aides financières. Les vrais chiffres d\'un expert.',
     date: '2026-02-02',
@@ -5539,7 +5556,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '10 min',
     category: 'fissures',
     author: 'Ludovic D.',
-    metaDescription: 'Prix agrafage fissures 2026 : de 80 à 150€/ml selon la gravité. Comparatif agrafage vs micropieux (3x moins cher). Devis détaillé, aides CAT-NAT, garantie décennale. Expert Toulouse.',
+    metaDescription: 'Prix agrafage fissures 2026 : de 80 à 150€/ml. Comparatif agrafage vs micropieux (3x moins cher). Devis détaillé, aides CAT-NAT, décennale AXA.',
     keywords: ['prix agrafage fissures', 'cout agrafage fissure', 'tarif agrafage mur', 'prix reparation fissure maison', 'agrafage fissure prix m2', 'devis agrafage fissures', 'cout reparation fissure facade'],
     content: `
       <div class="mb-8 p-6 bg-emerald-50 border-l-4 border-emerald-600 rounded-r-lg">
@@ -5576,7 +5593,9 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>Les micropieux (ou reprise en sous-œuvre) sont l'alternative lourde à l'agrafage. Voici pourquoi <strong>l'agrafage est préférable dans 90% des cas</strong> :</p>
 
-      <table class="w-full border-collapse my-8">
+      <div class="my-8 overflow-x-auto">
+
+        <table class="w-full border-collapse my-8">
         <thead>
           <tr class="bg-slate-100">
             <th class="border border-slate-300 p-3 text-left">Critère</th>
@@ -5617,6 +5636,8 @@ const blogPosts: { [key: string]: BlogPost } = {
           </tr>
         </tbody>
       </table>
+
+      </div>
 
       <h2>Les 5 facteurs qui influencent le prix</h2>
 
@@ -5754,6 +5775,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'fissure-maison-neuve-garantie-decennale': {
     slug: 'fissure-maison-neuve-garantie-decennale',
+    metaTitle: 'Fissure Maison Neuve · Garantie Décennale 2026',
     title: 'Fissure Maison Neuve : Vos Droits et la Garantie Décennale (Guide 2026)',
     excerpt: 'Votre maison de moins de 10 ans se fissure ? Vous êtes protégé par la garantie décennale. Démarches, délais, recours : tout ce qu\'il faut savoir pour être indemnisé.',
     date: '2026-02-06',
@@ -5946,6 +5968,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'humidite-mur-chambre-causes-solutions': {
     slug: 'humidite-mur-chambre-causes-solutions',
+    metaTitle: 'Humidité Mur Chambre · Causes & Solutions Santé',
     title: 'Humidité Mur Chambre : Causes, Risques Santé et Solutions Définitives',
     excerpt: 'Mur humide dans la chambre ? Moisissures, odeur de moisi, peinture qui cloque : découvrez les causes réelles et les traitements qui marchent vraiment.',
     date: '2026-02-10',
@@ -6169,6 +6192,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'assurance-fissures-maison-indemnisation': {
     slug: 'assurance-fissures-maison-indemnisation',
+    metaTitle: 'Assurance Fissures Maison · Comment Être Indemnisé',
     title: 'Assurance Fissures Maison : Comment Être Indemnisé (Guide 2026)',
     excerpt: 'Votre maison se fissure et votre assurance refuse de payer ? Entre franchise CAT-NAT, expert d\'assurance partial et délais serrés, on décrypte les pièges et les recours pour obtenir une indemnisation juste.',
     date: '2026-02-24',
@@ -6215,7 +6239,9 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Expert d'assurance vs expert d'assuré : la différence qui vaut des milliers d'euros</h2>
 
-      <table class="w-full border-collapse my-6">
+      <div class="my-8 overflow-x-auto">
+
+        <table class="w-full border-collapse my-6">
         <thead>
           <tr class="bg-slate-100">
             <th class="border border-slate-300 px-4 py-2 text-left text-sm font-bold">Critère</th>
@@ -6231,6 +6257,8 @@ const blogPosts: { [key: string]: BlogPost } = {
           <tr><td class="border border-slate-300 px-4 py-2 text-sm">Gain moyen</td><td class="border border-slate-300 px-4 py-2 text-sm">—</td><td class="border border-slate-300 px-4 py-2 text-sm">+30 à 50% sur l'indemnisation</td></tr>
         </tbody>
       </table>
+
+      </div>
 
       <p>Chez IPB, nous réalisons des <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostics instrumentés</a> qui servent de contre-expertise. Notre rapport, rédigé par un expert en pathologie du bâtiment, est opposable à l'expert d'assurance et fait souvent basculer la négociation en votre faveur.</p>
 
@@ -6293,6 +6321,68 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Après notre diagnostic instrumenté (relevés au fissuromètre, analyse des fondations, étude de sol), nous avons documenté un tassement différentiel de 12 mm et recommandé un agrafage structurel. Coût réel : <strong>14 800€</strong>.</p>
 
       <p>Avec notre rapport en main, les propriétaires ont obtenu une indemnisation de <strong>13 280€</strong> (14 800€ - franchise de 1 520€). Sans contre-expertise, ils auraient reçu 2 680€. <strong>Différence : 10 600€.</strong></p>
+
+      <h2>Les 5 erreurs qui font refuser une indemnisation</h2>
+
+      <ol>
+        <li><strong>Déclarer le sinistre trop tard</strong> : vous avez <strong>5 jours ouvrés</strong> à compter de la découverte du sinistre (ou de la publication de l'arrêté CAT-NAT). Au-delà, l'assureur peut invoquer la déchéance.</li>
+        <li><strong>Réaliser des travaux avant l'expertise</strong> : si vous rebouchez, peignez, ou modifiez la zone sinistrée avant le passage de l'expert, vous perdez automatiquement le droit à indemnisation. Photos OK, travaux non.</li>
+        <li><strong>Sous-déclarer les désordres collatéraux</strong> : portes qui coincent, carrelage soulevé, plomberie déformée, fissures intérieures — tout doit être déclaré dès le départ. Une déclaration "fissures façades" qui omet les désordres intérieurs limite l'indemnisation.</li>
+        <li><strong>Accepter la première proposition sans vérification</strong> : 80 % des propriétaires acceptent l'évaluation initiale par fatigue. Or 75 % des contre-expertises débouchent sur une réévaluation à la hausse.</li>
+        <li><strong>Oublier la franchise CAT-NAT</strong> : 1 520 € en 2026 sur les sinistres sécheresse. Beaucoup de propriétaires découvrent cette franchise à la fin du processus et se retrouvent surpris. Anticipez-la dans votre projet de réparation.</li>
+      </ol>
+
+      <h2>Délais légaux à connaître</h2>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead class="bg-slate-900 text-white">
+            <tr>
+              <th class="border border-slate-300 p-3 text-left">Étape</th>
+              <th class="border border-slate-300 p-3 text-center">Délai légal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-3">Déclaration de sinistre (sinistre courant)</td>
+              <td class="border border-slate-300 p-3 text-center">5 jours ouvrés</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3">Déclaration de sinistre (CAT-NAT)</td>
+              <td class="border border-slate-300 p-3 text-center">10 jours après publication de l'arrêté</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3">Visite de l'expert d'assurance</td>
+              <td class="border border-slate-300 p-3 text-center">15 jours à 2 mois</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3">Indemnisation après accord</td>
+              <td class="border border-slate-300 p-3 text-center">3 mois maximum</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3">Action en justice contre l'assureur</td>
+              <td class="border border-slate-300 p-3 text-center">2 ans à partir du sinistre</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>FAQ — Assurance fissures maison</h2>
+
+      <h3>Mes fissures sont-elles couvertes par mon assurance habitation ?</h3>
+      <p>Oui, à deux conditions : (1) elles résultent d'un événement couvert par votre contrat (sécheresse CAT-NAT, inondation, dégât des eaux), et (2) la maison était bien entretenue. Les fissures de retrait (vieillissement) ne sont jamais couvertes.</p>
+
+      <h3>Faut-il que ma commune soit en CAT-NAT pour être indemnisé ?</h3>
+      <p>Non, sauf si le sinistre est lié à une sécheresse. Pour les autres causes (mouvement de terrain, inondation), votre assurance peut intervenir hors CAT-NAT.</p>
+
+      <h3>Que faire si mon assureur refuse la prise en charge ?</h3>
+      <p>Demandez le rapport de l'expert en LRAR. S'il invoque un défaut d'entretien ou une cause non couverte, mandatez un expert indépendant. Une contre-expertise change la donne dans 75 % des cas.</p>
+
+      <h3>L'assurance prend-elle en charge l'expertise indépendante ?</h3>
+      <p>Si votre contrat inclut l'option "défense recours" ou "protection juridique", oui — partiellement ou totalement. Vérifiez vos garanties annexes : beaucoup de propriétaires ignorent en bénéficier.</p>
+
+      <h3>Puis-je faire les travaux moi-même et me faire rembourser ?</h3>
+      <p>Non. L'indemnisation est conditionnée à la fourniture de factures d'entreprise (avec attestation décennale). Les travaux en autoréalisation ne sont pas remboursés, sauf clause spécifique très rare.</p>
 
       <h2>Protéger votre patrimoine : les prochaines étapes</h2>
       <p>L'assurance ne résout pas le problème structurel — elle finance la réparation. Mais encore faut-il que la réparation soit la bonne. Un simple rebouchage sur des fissures actives, c'est de l'argent jeté. Il faut <strong>stabiliser les fondations</strong> avant de réparer l'esthétique.</p>
@@ -6378,7 +6468,9 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Comparatif détaillé : les chiffres parlent</h2>
 
-      <table class="w-full border-collapse my-6">
+      <div class="my-8 overflow-x-auto">
+
+        <table class="w-full border-collapse my-6">
         <thead>
           <tr class="bg-slate-100">
             <th class="border border-slate-300 px-4 py-2 text-left text-sm font-bold">Critère</th>
@@ -6395,6 +6487,8 @@ const blogPosts: { [key: string]: BlogPost } = {
           <tr><td class="border border-slate-300 px-4 py-2 text-sm">Délai rapport</td><td class="border border-slate-300 px-4 py-2 text-sm">3-6 semaines</td><td class="border border-slate-300 px-4 py-2 text-sm">5-7 jours ouvrés</td></tr>
         </tbody>
       </table>
+
+      </div>
 
       <h2>Quand mandater un expert indépendant ?</h2>
       <p>Tous les sinistres ne nécessitent pas une contre-expertise. Mais dans ces situations, elle est quasiment indispensable :</p>
@@ -6436,14 +6530,129 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p class="text-blue-800">Nos experts sont spécialisés en pathologie du bâtiment depuis plus de 10 ans. Nous intervenons exclusivement en Occitanie (31, 82, 32) et connaissons parfaitement les problématiques locales. Notre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic</a> est déductible des travaux si vous faites appel à nous pour la réparation.</p>
       </div>
 
+      <h2>3 cas concrets : indemnisations multipliées par 3</h2>
+
+      <h3>Cas 1 — Maison à Tournefeuille, fissures sécheresse 2023</h3>
+      <p>Sinistre déclaré après l'arrêté CAT-NAT 2023. Expert d'assurance : "fissures cosmétiques, rebouchage". Proposition : <strong>3 800 €</strong>. Notre contre-expertise instrumentée : tassement différentiel actif 9 mm, agrafage structurel + reprise des fondations nécessaires. Coût réel : 18 200 €. Indemnisation finale obtenue : <strong>16 700 €</strong> (franchise déduite). Différence : <strong>+12 900 €</strong>.</p>
+
+      <h3>Cas 2 — Appartement haussmannien Toulouse centre, infiltrations</h3>
+      <p>Infiltrations sur mur mitoyen de copropriété. Expert d'assurance : "défaut d'entretien", refus de prise en charge. Notre rapport : infiltration depuis canalisation collective défectueuse, problème structurel non lié à l'entretien. Indemnisation obtenue après expertise contradictoire : <strong>8 400 €</strong> (vs 0 € initial). Différence : <strong>+8 400 €</strong>.</p>
+
+      <h3>Cas 3 — Pavillon à Castelsarrasin, fissures multiples</h3>
+      <p>Expert d'assurance reconnaît un sinistre mais propose un rebouchage à <strong>4 500 €</strong>. Notre rapport démontre que les fissures sont actives (mesures sur 6 semaines au fissuromètre) et qu'un rebouchage seul est insuffisant. Solution préconisée : agrafage + injection de résine. Coût : 16 800 €. Indemnisation finale : <strong>14 700 €</strong>. Différence : <strong>+10 200 €</strong>.</p>
+
+      <p class="font-bold text-lg text-slate-900 my-6">Sur ces 3 dossiers, le coût total des contre-expertises IPB a été de 3 200 €. Le gain total pour les propriétaires : <strong>31 500 €</strong>. ROI : ×10.</p>
+
+      <h2>Calendrier détaillé d'une expertise contradictoire</h2>
+
+      <p>Si l'évaluation de l'expert d'assurance ne vous convient pas, voici le déroulé typique :</p>
+
+      <ul>
+        <li><strong>J1 — Réception du rapport assurance</strong> : vous le demandez en LRAR si l'assureur ne vous le transmet pas spontanément (article L.121-1 du Code des assurances).</li>
+        <li><strong>J + 7 — Mandat de votre expert</strong> : signature de la convention, fourniture des documents (rapport assurance, photos, courriers).</li>
+        <li><strong>J + 14 — Visite contradictoire programmée</strong> : votre expert se rend sur site, idéalement en présence de l'expert d'assurance.</li>
+        <li><strong>J + 21 à 28 — Rapport contradictoire IPB</strong> : analyse instrumentée, photos comparées, chiffrage détaillé.</li>
+        <li><strong>J + 30 — Transmission du rapport à l'assureur</strong> : par LRAR avec demande de réévaluation sous 15 jours (délai légal).</li>
+        <li><strong>J + 45 — Réponse de l'assureur</strong> : 80 % des cas se règlent à l'amiable à ce stade.</li>
+        <li><strong>J + 60 (si désaccord persistant) — Tiers-expertise</strong> : un troisième expert tranche, sa décision s'impose aux deux parties.</li>
+      </ul>
+
+      <p>Comptez en moyenne <strong>2 à 3 mois</strong> du déclenchement à l'indemnisation finale. Sans contre-expertise, vous restez bloqué à l'évaluation initiale (qui ne bouge presque jamais).</p>
+
+      <h2>Documents à préparer pour votre expert indépendant</h2>
+
+      <p>Pour optimiser le rendu et éviter les allers-retours, rassemblez en amont :</p>
+
+      <ul>
+        <li><strong>Tout votre dossier d'assurance habitation</strong> : contrat, conditions générales, avenants, attestations annuelles</li>
+        <li><strong>La déclaration de sinistre</strong> que vous avez envoyée et l'accusé de réception de l'assureur</li>
+        <li><strong>Le rapport de l'expert d'assurance</strong> (si reçu — sinon le demander en LRAR)</li>
+        <li><strong>Les photos datées</strong> des désordres, idéalement avec un objet d'échelle (pièce de monnaie, mètre)</li>
+        <li><strong>Les arrêtés CAT-NAT</strong> de votre commune (téléchargeables sur georisques.gouv.fr)</li>
+        <li><strong>L'historique des travaux</strong> sur la maison : factures, devis antérieurs, attestations décennales d'autres entreprises</li>
+        <li><strong>Les plans</strong> si vous les avez (plan d'origine, plan cadastral)</li>
+        <li><strong>Tout courrier ou échange</strong> avec l'assureur : refus, propositions, mises en demeure</li>
+      </ul>
+
+      <h2>Combien coûte vraiment un expert indépendant ?</h2>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead class="bg-slate-900 text-white">
+            <tr>
+              <th class="border border-slate-300 p-3 text-left">Type de mission</th>
+              <th class="border border-slate-300 p-3 text-center">Tarif IPB</th>
+              <th class="border border-slate-300 p-3 text-center">Délai rapport</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-3">Diagnostic technique simple</td>
+              <td class="border border-slate-300 p-3 text-center">800 - 1 200 €</td>
+              <td class="border border-slate-300 p-3 text-center">5-7 j</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3"><strong>Contre-expertise sinistre assurance</strong></td>
+              <td class="border border-slate-300 p-3 text-center"><strong>1 500 - 2 800 €</strong></td>
+              <td class="border border-slate-300 p-3 text-center"><strong>10-15 j</strong></td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3">Expertise judiciaire (procédure)</td>
+              <td class="border border-slate-300 p-3 text-center">3 500 - 6 000 €</td>
+              <td class="border border-slate-300 p-3 text-center">3-6 sem</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3">Diagnostic structurel avant achat / vente</td>
+              <td class="border border-slate-300 p-3 text-center">800 - 1 500 €</td>
+              <td class="border border-slate-300 p-3 text-center">72 h</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Le coût semble élevé en absolu, mais doit être mis en perspective :</p>
+      <ul>
+        <li><strong>Sur les sinistres &gt; 10 000 €</strong> : le gain moyen d'indemnisation (5 à 15 000 €) couvre largement la prestation.</li>
+        <li><strong>Le coût est déductible</strong> dans le cadre des travaux ultérieurs (devis IPB) si vous faites appel à nous pour la réparation.</li>
+        <li><strong>Certaines protections juridiques</strong> incluses dans votre assurance habitation (option "défense recours") prennent en charge tout ou partie de l'expert d'assuré. Vérifiez votre contrat — beaucoup de propriétaires ignorent en bénéficier.</li>
+      </ul>
+
+      <h2>FAQ — Expert bâtiment indépendant</h2>
+
+      <h3>Mon assureur peut-il refuser que je prenne un expert d'assuré ?</h3>
+      <p>Non. C'est un droit garanti par le Code des assurances (article L.121-1). L'assureur peut contester les conclusions, jamais le principe.</p>
+
+      <h3>Si mon expert et celui de l'assureur ne sont pas d'accord, qui paie le tiers-expert ?</h3>
+      <p>Les frais du tiers-expert sont partagés à 50/50 entre vous et l'assureur. Comptez 2 000 à 4 000 € au total selon la complexité.</p>
+
+      <h3>Combien de temps après la déclaration de sinistre puis-je mandater un expert ?</h3>
+      <p>Tant que le dossier n'est pas clos. L'idéal est de le faire <strong>avant</strong> l'expert d'assurance pour avoir vos propres mesures de référence, mais c'est aussi possible après.</p>
+
+      <h3>Mon expert peut-il être présent lors de la visite de l'expert d'assurance ?</h3>
+      <p>Oui, et c'est même recommandé sur les dossiers importants. Cela permet d'éviter qu'il "loupe" certains désordres et facilite la suite contradictoire.</p>
+
+      <h3>L'expert indépendant garantit-il une indemnisation supérieure ?</h3>
+      <p>Non, aucune garantie. Mais <strong>statistiquement, 75 % des contre-expertises débouchent sur une réévaluation à la hausse</strong>, avec un gain moyen de +30 à +50 % sur l'indemnisation initiale.</p>
+
+      <h3>Que faire si mon assureur refuse même le principe d'une contre-expertise ?</h3>
+      <p>Mise en demeure par LRAR, puis saisine du médiateur de l'assurance (gratuit). En dernier recours, action devant le tribunal judiciaire — la jurisprudence est massivement en faveur de l'assuré qui demande une expertise contradictoire.</p>
+
       <h2>L'investissement qui rapporte le plus</h2>
       <p>Un diagnostic indépendant qui vous fait gagner 5 000€, 10 000€ ou 15 000€ d'indemnisation supplémentaire, c'est le meilleur investissement que vous ferez dans la vie de votre maison. Ne laissez pas l'expert de l'assurance décider seul du sort de votre patrimoine.</p>
+
+      <h2>Pour aller plus loin</h2>
+      <ul>
+        <li><a href="/blog/assurance-fissures-maison-indemnisation">Assurance fissures maison : comment être indemnisé</a></li>
+        <li><a href="/blog/catastrophe-naturelle-secheresse-demarches-indemnisation">CAT-NAT sécheresse : démarches d'indemnisation</a></li>
+        <li><a href="/blog/diagnostic-structurel-avant-vente-maison">Diagnostic structurel avant vente : pourquoi c'est essentiel</a></li>
+      </ul>
 
       <p class="font-bold text-lg text-slate-900 mt-6">Besoin d'une contre-expertise ? Appelez le 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
     `
   },
   'fondations-maison-ancienne-renforcement': {
     slug: 'fondations-maison-ancienne-renforcement',
+    metaTitle: 'Fondations Maison Ancienne · Renforcement Expert',
     title: 'Fondations Maison Ancienne : Signes de Faiblesse et Solutions de Renforcement',
     excerpt: 'Votre maison a plus de 30 ans et des fissures apparaissent ? Les fondations des maisons anciennes n\'ont pas été conçues pour résister au retrait-gonflement des argiles. Comment savoir si vos fondations lâchent, et que faire.',
     date: '2026-03-24',
@@ -6451,7 +6660,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '12 min',
     category: 'fissures' as const,
     author: 'Fabien T.',
-    metaDescription: 'Fondations maison ancienne : signes de faiblesse, diagnostic, solutions de renforcement (agrafage, micropieux, longrines). Guide technique par IPB Expert Bâtiment Toulouse.',
+    metaDescription: 'Fondations de maison ancienne : signes de faiblesse, diagnostic, solutions de renforcement (agrafage, micropieux, longrines) par institut indépendant.',
     keywords: ['fondations maison ancienne', 'renforcement fondations', 'fissures fondations', 'reprise en sous-oeuvre', 'agrafage fondations', 'micropieux maison'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
@@ -6532,7 +6741,9 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Comment choisir entre ces solutions ?</h2>
 
-      <table class="w-full border-collapse my-6">
+      <div class="my-8 overflow-x-auto">
+
+        <table class="w-full border-collapse my-6">
         <thead>
           <tr class="bg-slate-100">
             <th class="border border-slate-300 px-4 py-2 text-left text-sm font-bold">Situation</th>
@@ -6547,6 +6758,8 @@ const blogPosts: { [key: string]: BlogPost } = {
           <tr><td class="border border-slate-300 px-4 py-2 text-sm">Fissures + humidité en pied de mur</td><td class="border border-slate-300 px-4 py-2 text-sm">Agrafage + drainage</td><td class="border border-slate-300 px-4 py-2 text-sm">12 000 - 30 000€</td></tr>
         </tbody>
       </table>
+
+      </div>
 
       <p>Dans <strong>90% des cas</strong> que nous traitons en Occitanie, l'<a href="/blog/agrafage-vs-micropieux-choix" class="text-orange-600 underline hover:text-orange-700">agrafage suffit</a>. Les micropieux sont réservés aux cas les plus graves. Méfiez-vous d'un artisan qui vous propose directement les micropieux sans avoir exploré l'agrafage — c'est 3 fois plus rentable pour lui.</p>
 
@@ -6565,6 +6778,76 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Le pire moment pour agir, c'est quand il est trop tard. Un agrafage sur des fissures de 2 mm coûte 10 000€. Le même agrafage sur des fissures de 10 mm, après 3 ans d'attente, coûte 25 000€ — et il faut parfois ajouter des micropieux.</p>
 
       <p>Si votre maison a plus de 30 ans et que vous voyez apparaître des fissures, même fines, faites réaliser un diagnostic. Mieux vaut un diagnostic maintenant qu'un chantier de 40 000 € dans 5 ans pour des micropieux.</p>
+
+      <h2>Comparatif des solutions de renforcement</h2>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead class="bg-slate-900 text-white">
+            <tr>
+              <th class="border border-slate-300 p-3 text-left">Technique</th>
+              <th class="border border-slate-300 p-3 text-center">Quand l'utiliser</th>
+              <th class="border border-slate-300 p-3 text-center">Coût moyen</th>
+              <th class="border border-slate-300 p-3 text-center">Durée chantier</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-3"><strong>Agrafage structurel</strong></td>
+              <td class="border border-slate-300 p-3 text-center">Fissures actives, mouvements légers à modérés</td>
+              <td class="border border-slate-300 p-3 text-center text-green-700">10 000 - 18 000 €</td>
+              <td class="border border-slate-300 p-3 text-center">3-7 jours</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3"><strong>Injection de résine</strong></td>
+              <td class="border border-slate-300 p-3 text-center">Stabilisation des sols sous-fondations</td>
+              <td class="border border-slate-300 p-3 text-center text-orange-700">15 000 - 25 000 €</td>
+              <td class="border border-slate-300 p-3 text-center">5-10 jours</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3"><strong>Micropieux</strong></td>
+              <td class="border border-slate-300 p-3 text-center">Affaissements majeurs (&gt; 8 mm), fondations cédant</td>
+              <td class="border border-slate-300 p-3 text-center text-red-700">35 000 - 70 000 €</td>
+              <td class="border border-slate-300 p-3 text-center">3-6 semaines</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3"><strong>Longrines béton</strong></td>
+              <td class="border border-slate-300 p-3 text-center">Reprise globale d'une portion de fondation</td>
+              <td class="border border-slate-300 p-3 text-center text-red-700">25 000 - 50 000 €</td>
+              <td class="border border-slate-300 p-3 text-center">2-4 semaines</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Cas spécifique : fondations en pierre du XIXe siècle</h2>
+
+      <p>Sur le bâti ancien (avant 1900) typique du centre Toulouse (Carmes, Saint-Étienne, Saint-Cyprien) ou des bastides du Tarn-et-Garonne, les fondations sont souvent en <strong>pierre maçonnée à la chaux</strong>, posées directement sur le sol sans semelle béton. Elles ont tenu 150 ans, mais sont vulnérables aux contraintes modernes :</p>
+
+      <ul>
+        <li><strong>Sécheresse RGA</strong> : l'argile sous-jacente n'était pas un problème en 1880 — elle l'est depuis 2003.</li>
+        <li><strong>Cycles gel-dégel intensifiés</strong> : les pierres calcaires se délitent.</li>
+        <li><strong>Vibrations urbaines</strong> : tramway, BTP voisin, trafic routier dense.</li>
+      </ul>
+
+      <p>Les solutions modernes (micropieux, injection résine) sont parfois inadaptées aux fondations en pierre maçonnée. Le bon réflexe : un diagnostic spécifique par un institut spécialisé en bâti ancien, qui peut préconiser des techniques traditionnelles (sous-œuvre maçonnée, longrines en pierre reconstituée) plus respectueuses du bâti.</p>
+
+      <h2>FAQ — Fondations maison ancienne</h2>
+
+      <h3>Comment savoir si mes fondations sont en cause ?</h3>
+      <p>3 indices : (1) fissures qui démarrent en bas du mur et remontent, (2) fissures obliques en escalier, (3) portes/fenêtres qui coincent. La confirmation passe par un diagnostic au niveau laser et au fissuromètre.</p>
+
+      <h3>Mon assurance couvre-t-elle un renforcement de fondations ?</h3>
+      <p>Oui, si le désordre est lié à un événement CAT-NAT (sécheresse principalement) ou à un sinistre couvert. Pour la sécheresse, comptez en moyenne 60-80 % des travaux pris en charge après franchise.</p>
+
+      <h3>Faut-il évacuer la maison pendant les travaux ?</h3>
+      <p>Pour l'agrafage et l'injection résine : non, vous restez chez vous. Pour les micropieux ou longrines : oui sur 2 à 4 semaines selon l'ampleur.</p>
+
+      <h3>Le renforcement augmente-t-il la valeur de la maison ?</h3>
+      <p>Oui, à condition de fournir les attestations décennales et la note de calcul à la revente. Une maison "stabilisée structurellement avec garantie" se revend sans décote, alors qu'une maison fissurée non traitée perd 20-30 %.</p>
+
+      <h3>Combien de temps dure un renforcement de fondations ?</h3>
+      <p>Garantie décennale obligatoire (10 ans). En pratique, un agrafage ou un micropieu correctement exécuté tient 50 à 100 ans, soit la durée résiduelle du bâtiment.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">Diagnostic fondations sous 48h : 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
     `
@@ -6727,6 +7010,57 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>3. Vérifier votre assurance habitation</h3>
       <p>Certaines assurances habitation excluent les dommages liés aux fissures déjà présentes à l'acquisition. Lisez les exclusions de votre contrat avec attention.</p>
 
+      <h2>Le rapport pré-achat : ce qu'il contient</h2>
+
+      <p>Un rapport d'expertise pré-achat sérieux (par un institut indépendant comme IPB) fait 15 à 25 pages et contient :</p>
+
+      <ul>
+        <li><strong>Identification précise de chaque fissure</strong> : localisation, orientation, largeur (mesurée au pied à coulisse), profondeur estimée</li>
+        <li><strong>Diagnostic des causes</strong> : tassement différentiel, retrait des matériaux, défaut de construction, désordre lié à un sinistre antérieur</li>
+        <li><strong>Évaluation du caractère évolutif</strong> : la fissure est-elle stabilisée ou active ? Mesures comparatives sur photos, jauges, niveau laser</li>
+        <li><strong>Préconisations chiffrées</strong> : agrafage, micropieux, simple rebouchage cosmétique — avec fourchettes de prix actualisées</li>
+        <li><strong>Pronostic à 5 ans</strong> : que se passera-t-il si vous n'agissez pas ? Risque de dégradation, coût d'inaction</li>
+        <li><strong>Photos annotées</strong> avec échelle, datées, localisées sur plan</li>
+      </ul>
+
+      <p>Ce rapport est <strong>opposable</strong>. Il sert :</p>
+      <ul>
+        <li>De levier de négociation immédiat (réduction de prix justifiée par une expertise tierce)</li>
+        <li>De preuve devant un tribunal en cas de vice caché ultérieur</li>
+        <li>De document de référence pour votre future décennale (si vous faites les travaux)</li>
+      </ul>
+
+      <h2>Cas concret : 25 000 € négociés à Cugnaux (31)</h2>
+
+      <p>Un acheteur prospect signe un compromis sur une maison à Cugnaux pour <strong>295 000 €</strong>. Visites groupées, agent immobilier pressant, "bonne affaire à saisir". L'acheteur remarque deux fissures verticales sur la façade arrière. L'agent : "rien de grave, juste l'enduit".</p>
+
+      <p>Heureusement, l'acheteur fait réaliser une expertise pré-achat IPB avant la levée de la condition suspensive. Notre rapport documente :</p>
+      <ul>
+        <li>Tassement différentiel actif (mesures comparatives au fissuromètre sur 3 semaines)</li>
+        <li>Quartier classé en zone RGA fort, arrêté CAT-NAT 2022</li>
+        <li>Fondations limitées (pavillon 1985 sur sol argileux)</li>
+        <li>Travaux nécessaires : agrafage + reprise drainage = <strong>22 000 €</strong> TTC</li>
+      </ul>
+
+      <p>L'acheteur a renégocié le compromis sur la base du rapport : <strong>270 000 €</strong>, soit une réduction de 25 000 €. Le vendeur a accepté pour ne pas perdre la vente. <strong>Coût de l'expertise pré-achat : 1 200 €. Économie : 23 800 € net.</strong></p>
+
+      <h2>FAQ — Acheter une maison fissurée</h2>
+
+      <h3>Faut-il systématiquement renoncer à acheter une maison fissurée ?</h3>
+      <p>Non. Beaucoup de fissures sont anodines (retrait, faïençage). Le vrai sujet est de savoir si elles sont actives et combien coûtent les travaux. Une expertise pré-achat répond à ces deux questions en 72 h.</p>
+
+      <h3>Le compromis de vente est-il rétractable si je découvre des fissures graves ?</h3>
+      <p>Oui, dans le délai de rétractation de 10 jours après la signature. Au-delà, vous restez engagé sauf condition suspensive expresse (par exemple : "obtention d'une expertise structurelle favorable").</p>
+
+      <h3>Comment intégrer une condition suspensive d'expertise dans le compromis ?</h3>
+      <p>Demandez à votre notaire d'inscrire une clause type : <em>"Le présent compromis est conclu sous la condition suspensive de la production d'une expertise structurelle indépendante concluant à l'absence de désordres rédhibitoires, dans un délai de X jours."</em></p>
+
+      <h3>Et si le vendeur refuse l'expertise ?</h3>
+      <p>C'est un signal d'alarme. Un vendeur sain n'a rien à cacher. Refuser l'expertise pré-achat doit vous faire reculer ou exiger une décote significative.</p>
+
+      <h3>L'expertise pré-achat est-elle déductible des impôts ?</h3>
+      <p>Non, c'est un frais d'acquisition non déductible. Mais elle peut s'intégrer aux frais d'agence si vous négociez avec votre agent.</p>
+
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
         <p class="font-bold text-orange-900 mb-3">Vous visitez une maison fissurée en Occitanie ?</p>
         <p class="text-orange-800 mb-4">IPB réalise des <strong>expertises pré-achat</strong> dans les 48h. Rapport complet avec estimation des travaux : vous négociez avec des arguments chiffrés, pas avec des intuitions.</p>
@@ -6873,6 +7207,43 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>✅ Si rénovation : exiger une attestation de <strong>garantie décennale</strong> transmissible</li>
       </ul>
 
+      <h2>Indivision : comment décider à plusieurs</h2>
+
+      <p>Quand plusieurs héritiers se retrouvent en indivision sur un bien fissuré, les conflits sont fréquents. Trois positions classiques s'opposent :</p>
+
+      <ul>
+        <li><strong>L'attaché émotionnel</strong> : veut conserver la maison familiale, prêt à payer les travaux</li>
+        <li><strong>Le pragmatique</strong> : veut vendre vite, même décoté</li>
+        <li><strong>L'opportuniste</strong> : pousse à la rénovation pour valoriser sa quote-part à la revente</li>
+      </ul>
+
+      <p>Le rapport d'expertise structurelle indépendant est le seul outil neutre qui dépolitise la décision. Il transforme un débat émotionnel ("la maison de Maman") en discussion technique chiffrée ("travaux à 18 000 €, valorisation post-travaux à +12 %"). Sans rapport, l'indivision peut bloquer la succession des années.</p>
+
+      <p>Si l'indivision est insurmontable, sachez que <strong>tout indivisaire peut demander le partage judiciaire</strong> (article 815 du Code civil). Le tribunal ordonne alors la vente forcée du bien aux enchères — mais avec une décote massive (-30 à -40 %). À éviter par tous les moyens.</p>
+
+      <h2>Frais et droits de succession sur un bien fissuré</h2>
+
+      <p>Un bien fissuré pose un problème spécifique : <strong>l'estimation pour les droits de succession</strong>. Les notaires sont tenus de retenir une "valeur vénale" qui correspond au prix de marché. Un bien fissuré non documenté risque d'être surestimé (les notaires n'ont pas l'expertise technique), entraînant des droits de succession excessifs.</p>
+
+      <p>La parade : un rapport d'expertise structurelle joint à la déclaration de succession. Le notaire l'intègre dans son estimation. Selon les cas, la décote documentée peut représenter <strong>10 à 25 % de la valeur du bien</strong>, soit potentiellement 5 000 à 30 000 € de droits de succession évités.</p>
+
+      <h2>FAQ — Succession et maison fissurée</h2>
+
+      <h3>Combien de temps avons-nous pour décider en succession ?</h3>
+      <p>Légalement, l'option successorale doit être exercée dans les 4 mois (acceptation pure et simple, acceptation à concurrence de l'actif net, ou renonciation). Mais en pratique, l'indivision peut durer beaucoup plus longtemps.</p>
+
+      <h3>L'expertise est-elle déductible de l'actif successoral ?</h3>
+      <p>Oui, à hauteur des frais payés et justifiés (factures). Comptez 800 à 1 500 € déductibles selon la complexité du dossier.</p>
+
+      <h3>Si un héritier refuse l'expertise, que faire ?</h3>
+      <p>Tout indivisaire peut commander une expertise indépendante à ses frais. Le rapport est ensuite opposable à tous, qu'ils l'aient ou non commandée.</p>
+
+      <h3>Peut-on vendre une maison fissurée non encore expertisée ?</h3>
+      <p>Oui, mais à vos risques. Sans expertise documentée, vous restez exposés au vice caché 30 ans (responsabilité solidaire des héritiers). Une expertise et son annexion au compromis = protection juridique pour tous.</p>
+
+      <h3>Les fissures découvertes après acceptation de la succession sont-elles à notre charge ?</h3>
+      <p>Oui. C'est précisément pour ça qu'il faut faire l'expertise <strong>avant</strong> d'accepter la succession (option d'acceptation à concurrence de l'actif net si les travaux sont prohibitifs).</p>
+
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
         <p class="font-bold text-orange-900 mb-3">Vous gérez une succession avec un bien fissuré en Occitanie ?</p>
         <p class="text-orange-800 mb-4">IPB intervient dans les <strong>48h</strong> pour un rapport d'expertise complet. Ce document devient la base technique de votre succession : estimation juste, décision éclairée, protection juridique pour tous les héritiers.</p>
@@ -6974,6 +7345,126 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>✅ Postes finitions chiffrés séparément</li>
         <li>✅ Attestation décennale jointe (police active, montant garanti)</li>
         <li>✅ Délai d'intervention et planning</li>
+      </ul>
+
+      <h2>Tableau récapitulatif des prix par configuration</h2>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead class="bg-slate-900 text-white">
+            <tr>
+              <th class="border border-slate-300 p-3 text-left">Configuration</th>
+              <th class="border border-slate-300 p-3 text-center">Portée</th>
+              <th class="border border-slate-300 p-3 text-center">Poutre type</th>
+              <th class="border border-slate-300 p-3 text-center">Budget TTC</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-3">Petite ouverture (passage / cuisine)</td>
+              <td class="border border-slate-300 p-3 text-center">1,2 à 2 m</td>
+              <td class="border border-slate-300 p-3 text-center">IPN 140-160</td>
+              <td class="border border-slate-300 p-3 text-center text-green-700 font-bold">4 000 à 6 500 €</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3">Ouverture standard (cuisine ↔ salon)</td>
+              <td class="border border-slate-300 p-3 text-center">2 à 3 m</td>
+              <td class="border border-slate-300 p-3 text-center">IPN 180-200 / IPE 200</td>
+              <td class="border border-slate-300 p-3 text-center text-orange-700 font-bold">6 500 à 10 000 €</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3">Grande baie vitrée</td>
+              <td class="border border-slate-300 p-3 text-center">3 à 4,5 m</td>
+              <td class="border border-slate-300 p-3 text-center">HEB 200-240</td>
+              <td class="border border-slate-300 p-3 text-center text-red-700 font-bold">10 000 à 16 000 €</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3">Très grande ouverture / loft</td>
+              <td class="border border-slate-300 p-3 text-center">&gt; 4,5 m</td>
+              <td class="border border-slate-300 p-3 text-center">HEB 260-300 + jambage</td>
+              <td class="border border-slate-300 p-3 text-center text-red-700 font-bold">16 000 à 25 000 €</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-[13px] text-slate-500 italic">Fourchettes constatées en Occitanie 2026, mur porteur en parpaing ou brique foraine, accès standard. Pierre / béton banché / accès difficile : majoration de 15 à 30 %.</p>
+
+      <h2>IPN, HEB ou IPE : quelle poutre pour quoi ?</h2>
+
+      <p>Les trois grandes familles d'aciers profilés ne sont pas interchangeables. Le choix dépend de la <strong>portée</strong> (longueur de l'ouverture) et de la <strong>charge reprise</strong> (poids des étages au-dessus).</p>
+
+      <h3>IPN — la poutre historique</h3>
+      <p>Profilé en I avec ailes inclinées. Économique et adaptée aux <strong>petites portées (jusqu'à 2,5 m)</strong> sur charge modérée. Très utilisée sur les pavillons des années 70-80 toulousains. Inconvénient : moins efficace sur grande portée que le HEB.</p>
+
+      <h3>IPE — l'optimisation moderne</h3>
+      <p>Profilé en I à ailes parallèles, plus optimisé que l'IPN à poids égal. Adapté aux <strong>portées moyennes (2 à 3,5 m)</strong>. Bon compromis prix/performance pour la grande majorité des ouvertures résidentielles modernes.</p>
+
+      <h3>HEB — la poutre des grandes ouvertures</h3>
+      <p>Profilé en H, plus large et plus rigide. Indispensable dès que la portée dépasse <strong>3 m</strong> ou qu'il y a plusieurs étages au-dessus. Plus chère mais évite les flèches (déformations) qui fissurent les plafonds dans le temps.</p>
+
+      <div class="my-8 p-6 bg-slate-50 border border-slate-200 rounded-xl">
+        <p class="font-bold text-slate-900 mb-2">L'erreur classique du devis low-cost</p>
+        <p class="text-slate-800">Certains artisans dimensionnent une IPN 160 sur une portée de 3,5 m pour gagner 200 € sur le devis. Résultat : la poutre fléchit de 4 à 6 mm avec le temps, le plafond fissure, les portes de l'étage coincent. Reprise : 8 000 à 15 000 €. <strong>Une note de calcul signée par un ingénieur structure est non négociable.</strong></p>
+      </div>
+
+      <h2>Les 5 frais cachés que beaucoup oublient</h2>
+
+      <ol>
+        <li><strong>La TVA à 10 % vs 20 %</strong> : la TVA réduite à 10 % s'applique sur les travaux dans un logement de plus de 2 ans. Si l'artisan facture en 20 % par méconnaissance, vous perdez plusieurs centaines d'euros.</li>
+        <li><strong>Frais de syndic en copropriété</strong> : si vous habitez en immeuble, le PV d'AG (procédure copropriété) coûte 200 à 600 € selon le syndic. À anticiper.</li>
+        <li><strong>Stationnement / aire de manutention</strong> : sur les chantiers du centre Toulouse (Carmes, Saint-Étienne), la livraison de la poutre nécessite parfois un arrêté de voirie payant (50 à 150 € la journée).</li>
+        <li><strong>Évacuation des gravats</strong> : un mur porteur abattu génère 1 à 3 m³ de gravats. Location de benne ou transport en déchèterie : 150 à 400 €. Souvent oublié dans les devis "tout compris".</li>
+        <li><strong>Reprise des sols / plinthes</strong> : la zone d'ouverture casse forcément les sols et les plinthes existants. La rejointure ou le remplacement total : 300 à 1 000 € selon les matériaux.</li>
+      </ol>
+
+      <h2>Calendrier d'un chantier type (ouverture 3 m)</h2>
+
+      <ul>
+        <li><strong>J1</strong> — Visite + relevés + démarches administratives (déclaration préalable mairie, ou inscription à l'AG copro)</li>
+        <li><strong>J + 7</strong> — Note de calcul livrée. Devis ferme transmis. Commande poutre.</li>
+        <li><strong>J + 21 à 30</strong> — Délai administratif (1 mois si DP, 2-3 mois si copro)</li>
+        <li><strong>J + 30</strong> — Démarrage chantier : étaiement (jour 1-2)</li>
+        <li><strong>J + 32</strong> — Découpe progressive du mur (jour 3-4)</li>
+        <li><strong>J + 34</strong> — Pose et scellement de la poutre (jour 5)</li>
+        <li><strong>J + 37</strong> — Levée des étais, ragréage, finitions (jour 6-8)</li>
+        <li><strong>J + 40</strong> — Livraison + remise des documents (note de calcul, attestation décennale, factures)</li>
+      </ul>
+
+      <p>Soit en moyenne <strong>5 à 6 semaines</strong> entre la visite initiale et la livraison, dont 1 à 3 jours uniquement de présence d'ouvriers chez vous.</p>
+
+      <h2>Bureau d'études interne vs externe : pourquoi ça change tout</h2>
+
+      <p>La majorité des artisans toulousains <strong>sous-traitent l'étude structure</strong> à un BE externe. Vous payez deux prestations distinctes (étude 800 € + travaux 7 000 €), avec deux interlocuteurs et deux assurances décennales. Si la poutre est sous-dimensionnée, le BE rejette la faute sur l'artisan, et inversement.</p>
+
+      <p>Un institut comme IPB intègre le bureau d'études et les travaux : <strong>une seule responsabilité</strong>, <strong>une seule décennale couvrant l'ensemble</strong>, et un coût global souvent inférieur de 10 à 20 %. C'est la configuration que les notaires et les acquéreurs reconnaissent comme la plus solide à la revente.</p>
+
+      <h2>FAQ — Prix ouverture mur porteur Toulouse 2026</h2>
+
+      <h3>Faut-il un permis de construire ?</h3>
+      <p>Non, dans la quasi-totalité des cas une simple <strong>déclaration préalable de travaux</strong> en mairie suffit. Le permis de construire ne devient obligatoire que si l'ouverture modifie l'aspect extérieur du bâtiment et que vous êtes en zone classée.</p>
+
+      <h3>Combien de temps prend la déclaration préalable ?</h3>
+      <p>1 mois en zone non protégée. 2 mois en zone classée (centre Toulouse, secteurs sauvegardés). Vous ne pouvez pas commencer les travaux avant la fin du délai sans recours.</p>
+
+      <h3>Et si je suis en copropriété ?</h3>
+      <p>Vous devez obtenir l'<strong>autorisation de l'assemblée générale</strong> à la majorité absolue (article 25 de la loi de 1965). Comptez 2 à 4 mois entre l'inscription du sujet à l'ordre du jour et l'AG votante. Un dossier technique complet (plans, note de calcul) doit être joint à la convocation.</p>
+
+      <h3>Puis-je faire les finitions moi-même pour économiser ?</h3>
+      <p>Oui, mais à une condition : exiger que le devis sépare clairement le poste "finitions" pour le supprimer. Économie : 800 à 2 500 €. Attention, la décennale ne couvre alors que la pose de la poutre, pas les finitions.</p>
+
+      <h3>Y a-t-il des aides financières ?</h3>
+      <p>Pas pour l'ouverture de mur porteur en tant que telle. Mais si l'ouverture s'inscrit dans une rénovation énergétique (création de baie vitrée pour optimiser les apports solaires), certaines aides comme MaPrimeRénov' peuvent s'appliquer sur l'enveloppe globale.</p>
+
+      <h3>Le devis le moins cher est-il toujours le pire ?</h3>
+      <p>Pas toujours, mais 9 fois sur 10. Un devis 30 % en dessous du marché traduit presque systématiquement : pas d'étude, poutre sous-dimensionnée, pas de décennale couvrant l'étude, ou finitions non chiffrées. Demandez l'attestation décennale AVANT signature — c'est le seul critère vraiment objectif.</p>
+
+      <h2>Pour aller plus loin</h2>
+      <ul>
+        <li><a href="/blog/comment-savoir-si-mur-porteur">Comment savoir si un mur est porteur ? Le test fiable en 4 étapes</a></li>
+        <li><a href="/blog/etude-de-cas-mur-porteur-4m-t3-toulouse">Étude de cas : ouverture mur porteur 4 m dans un T3 toulousain</a></li>
+        <li><a href="/expertise/mur-porteur">Notre expertise mur porteur en détail</a></li>
+        <li><a href="/calcul-prix-mur-porteur">Calculer le prix de votre projet en 2 minutes</a></li>
       </ul>
 
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
@@ -7083,6 +7574,96 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>vous propose un devis fermé sous 7 jours, avec décennale AXA jointe.</li>
       </ul>
 
+      <h2>Tableau récapitulatif : les 4 indices à croiser</h2>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead class="bg-slate-900 text-white">
+            <tr>
+              <th class="border border-slate-300 p-3 text-left">Indice</th>
+              <th class="border border-slate-300 p-3 text-center">Probablement porteur si…</th>
+              <th class="border border-slate-300 p-3 text-center">Probablement cloison si…</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-3"><strong>Épaisseur</strong></td>
+              <td class="border border-slate-300 p-3 text-center">≥ 15 cm (hors enduit)</td>
+              <td class="border border-slate-300 p-3 text-center">&lt; 10 cm</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3"><strong>Son</strong></td>
+              <td class="border border-slate-300 p-3 text-center">Sourd, plein</td>
+              <td class="border border-slate-300 p-3 text-center">Creux, qui résonne</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3"><strong>Plans d'origine</strong></td>
+              <td class="border border-slate-300 p-3 text-center">Marqué "porteur" ou présent dans le plan de structure</td>
+              <td class="border border-slate-300 p-3 text-center">Absent du plan de structure / cloison déclarée</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3"><strong>Alignement vertical</strong></td>
+              <td class="border border-slate-300 p-3 text-center">Mur continu d'un étage à l'autre</td>
+              <td class="border border-slate-300 p-3 text-center">Mur isolé sur un seul niveau</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="font-bold text-lg text-slate-900 my-6">Règle d'or : si <strong>3 indices sur 4</strong> pointent vers "porteur", considérez-le comme porteur jusqu'à preuve du contraire d'un ingénieur structure.</p>
+
+      <h2>Le risque juridique : abattre un mur porteur sans autorisation</h2>
+
+      <p>Au-delà du risque physique (effondrement), abattre un mur porteur sans autorisation expose à des conséquences juridiques sérieuses :</p>
+
+      <ul>
+        <li><strong>En copropriété</strong> : modification de la structure de l'immeuble sans accord de l'AG = nullité des travaux, obligation de remise en état à vos frais. La copropriété peut vous assigner devant le tribunal.</li>
+        <li><strong>En propriété privée</strong> : si l'ouverture nécessitait une déclaration préalable (modification du plancher porteur), la mairie peut exiger une remise en état dans les 6 ans.</li>
+        <li><strong>En cas de revente</strong> : les diagnostics immobiliers obligatoires révèlent fréquemment les modifications structurelles non déclarées. Le notaire peut bloquer la vente, l'acheteur peut demander une réduction de prix.</li>
+        <li><strong>En cas de sinistre</strong> : si la maison subit un dégât (fissures, affaissement) lié à la modification non déclarée, votre assurance habitation peut refuser la prise en charge — la décennale ne couvre QUE les travaux exécutés selon les règles de l'art ET déclarés.</li>
+      </ul>
+
+      <h2>Cas concret : une erreur à 80 000 € à Tournefeuille</h2>
+
+      <p>En 2024, un propriétaire de Tournefeuille (31) a abattu un mur de refend de 22 cm dans son rez-de-chaussée pour créer un grand séjour. Il avait fait le test du son : "creux, donc cloison". Mauvaise lecture — le mur était en brique foraine épaisse, et le son creux venait simplement d'un coffrage en placo posé devant.</p>
+
+      <p>Trois mois plus tard, des fissures sont apparues à l'étage. Six mois plus tard, le plancher du R+1 s'est affaissé de 4 cm. Diagnostic IPB : reprise complète avec pose d'une poutre HEB 220 + reprise du plancher = <strong>78 500 € TTC</strong>. La décennale de l'artisan d'origine (qui n'avait pas calculé la poutre) a refusé la prise en charge.</p>
+
+      <p class="font-bold text-lg text-slate-900 my-6">Coût d'une visite ingénieur structure préalable : 400 €. Coût de l'erreur : 78 500 €. Le ratio se passe de commentaire.</p>
+
+      <h2>Outils utiles à acheter (10-50 €)</h2>
+
+      <p>Si vous voulez tester sérieusement avant d'appeler un pro :</p>
+
+      <ul>
+        <li><strong>Détecteur de matériaux multifonction (Bosch Truvo, Stanley Stud Sensor)</strong> — 25-50 €. Détecte le métal (chevrons, ferraillage du béton), le bois (ossatures), parfois la densité. Pas infaillible mais aide à compléter le test du son.</li>
+        <li><strong>Endoscope USB</strong> — 20-40 €. Vous percez un petit trou (5 mm) et filmez l'intérieur du mur. Permet de voir s'il y a une lame d'air (cloison double parois) ou si c'est plein.</li>
+        <li><strong>Mètre laser</strong> — 25-50 €. Plus précis qu'un mètre ruban pour mesurer l'épaisseur exacte sans déformer la mesure.</li>
+        <li><strong>Niveau laser</strong> — 30-100 €. Pour vérifier l'alignement vertical sur plusieurs étages.</li>
+      </ul>
+
+      <p>Ces outils ne remplacent pas un ingénieur, mais ils valent largement les 50-100 € investis pour réduire l'incertitude avant de décider.</p>
+
+      <h2>FAQ — Comment identifier un mur porteur</h2>
+
+      <h3>Un mur en placo peut-il être porteur ?</h3>
+      <p>Le placo lui-même ne porte rien, mais il peut être l'<strong>habillage</strong> d'un mur porteur en maçonnerie ou d'une ossature bois porteuse. Ne vous fiez jamais à la couche de finition, percez un trou ou retirez une plinthe pour voir ce qu'il y a derrière.</p>
+
+      <h3>Tous les murs extérieurs sont-ils porteurs ?</h3>
+      <p>Dans 95 % des cas, oui — les murs extérieurs portent la toiture et les planchers d'étages. Exception : certains lofts ou extensions modernes en ossature légère où la structure porteuse est dans des poteaux invisibles, et les murs extérieurs sont juste de l'enveloppe.</p>
+
+      <h3>Et un mur de séparation entre deux logements ?</h3>
+      <p>Mur mitoyen en immeuble = quasi-systématiquement porteur. Mur de séparation entre deux maisons accolées (mitoyenneté) = porteur dans 90 % des cas. Toute intervention nécessite l'accord du voisin et une note d'ingénieur.</p>
+
+      <h3>Mon poteau au milieu de la pièce est-il un signe ?</h3>
+      <p>Oui — un poteau visible (ou caché dans une cloison) indique qu'il y a une descente de charges importante à cet endroit. Tout mur qui rejoint ce poteau est probablement porteur.</p>
+
+      <h3>Quelle est la différence entre un mur porteur et un mur de refend ?</h3>
+      <p>Un mur de refend est un type de mur porteur intérieur. Tous les refends sont porteurs, mais tous les murs porteurs ne sont pas des refends (ex : murs extérieurs).</p>
+
+      <h3>Le diagnostic ingénieur est-il obligatoire avant des travaux ?</h3>
+      <p>Pas légalement obligatoire pour les particuliers en travaux mineurs. Mais la décennale du professionnel qui exécutera les travaux <strong>l'exigera systématiquement</strong> avant de vous couvrir. Sans note de calcul, pas de décennale, pas de chantier sécurisé.</p>
+
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
         <p class="font-bold text-orange-900 mb-3">Estimer votre projet en 2 minutes</p>
         <p class="text-orange-800 mb-4">Si vous avez déjà l'idée du projet (cuisine ouverte, baie vitrée, suite parentale), notre calculateur vous donne une fourchette de prix immédiate basée sur nos chantiers récents. Pas d'inscription, résultat par email.</p>
@@ -7189,6 +7770,454 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p class="font-bold text-orange-900 mb-3">Vous avez un projet similaire à Toulouse ?</p>
         <p class="text-orange-800 mb-4">Investisseur, particulier, marchand de biens : nous fonctionnons avec la même rigueur quel que soit le profil. Devis gratuit, note de calcul incluse, attestation décennale AXA remise avec le devis.</p>
         <a href="/diagnostic" class="inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition-colors">Lancer mon devis →</a>
+      </div>
+    `
+  },
+
+  'diagnostic-structurel-avant-vente-maison': {
+    slug: 'diagnostic-structurel-avant-vente-maison',
+    metaTitle: "Diagnostic Structurel Avant Vente · Sécuriser sa Vente | IPB",
+    title: "Diagnostic structurel avant vente : pourquoi vendre sans expertise est risqué",
+    excerpt: "Les 9 diagnostics obligatoires ne couvrent pas la structure. Vous restez responsable du vice caché pendant 30 ans. Le diagnostic structurel avant vente, opposable, est votre seule vraie protection — et coûte 100x moins qu'un litige.",
+    date: '2026-05-08',
+    dateModified: '2026-05-08',
+    readTime: '9 min',
+    category: 'conseils',
+    author: 'Ludovic D.',
+    metaDescription: "Le diagnostic structurel avant vente vous protège du vice caché pendant 30 ans. Rapport opposable par institut indépendant en Occitanie. Délai 72h, décennale AXA.",
+    keywords: ['diagnostic structurel avant vente', 'expertise maison avant vente', 'vice caché vente maison', 'vendre maison fissure', 'rapport opposable', 'expertise structurelle vendeur'],
+    content: `
+      <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
+        <p class="font-bold text-orange-900 mb-2">La règle des 30 ans : la responsabilité que vous ignorez</p>
+        <p class="text-orange-800">Lorsque vous vendez votre maison, vous restez juridiquement responsable des défauts structurels cachés pendant <strong>30 ans</strong> au titre de la garantie décennale étendue. Un acheteur qui découvre une fissure structurelle 5, 10 ou 20 ans après la vente peut vous attaquer en justice. Le diagnostic structurel avant vente est votre seule véritable protection.</p>
+      </div>
+
+      <h2>Les 9 diagnostics obligatoires NE couvrent PAS la structure</h2>
+
+      <p>Vous mettez votre maison en vente et votre notaire vous demande de fournir le <strong>Dossier de Diagnostic Technique (DDT)</strong>. Vous payez 300 à 600 € pour faire réaliser les 9 diagnostics légaux : amiante, plomb, termites, gaz, électricité, DPE, ERP, assainissement, et superficie loi Carrez. Vous pensez que vous êtes "couvert".</p>
+
+      <p class="font-bold text-lg text-slate-900 my-6">Vous ne l'êtes pas.</p>
+
+      <p>Aucun de ces diagnostics ne porte sur <strong>la structure du bâtiment</strong> : ni les fissures, ni l'état des fondations, ni les éventuels mouvements de terrain, ni la santé des murs porteurs. Ce n'est tout simplement pas dans le périmètre légal du DDT.</p>
+
+      <p>Pourtant, c'est exactement là que se concentrent <strong>80 % des litiges après-vente</strong>. Les défauts visibles sont négociés au moment de la vente. Les défauts <em>invisibles</em>, eux, refont surface plus tard — et coûtent cher au vendeur.</p>
+
+      <h2>Le diagnostic structurel : c'est quoi exactement ?</h2>
+
+      <p>Le diagnostic structurel avant vente est une expertise <strong>facultative mais hautement recommandée</strong>, réalisée par un institut indépendant. Contrairement aux diagnostics obligatoires (qui sont des contrôles de conformité), le diagnostic structurel est une véritable analyse technique du comportement de votre bâti.</p>
+
+      <h3>Ce que comprend une expertise structurelle complète</h3>
+      <ul>
+        <li><strong>Inspection visuelle de l'enveloppe</strong> : façades, pignons, toiture accessible, regards et ouvertures</li>
+        <li><strong>Lecture des fissures</strong> : orientation, largeur (mesurée au pied à coulisse), profondeur, évolution</li>
+        <li><strong>Test instrumenté si nécessaire</strong> : jauge fissuromètre, niveau laser, hygromètre</li>
+        <li><strong>Analyse géotechnique du contexte</strong> : nature du sol, risque RGA, arrêtés CAT-NAT historiques</li>
+        <li><strong>Vérification de la stabilité des murs porteurs et des planchers</strong></li>
+        <li><strong>Rapport écrit détaillé</strong> avec photos, mesures et préconisations chiffrées</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-slate-50 border border-slate-200 rounded-xl">
+        <h3 class="font-bold text-slate-900 mb-3">Diagnostic obligatoire vs diagnostic structurel : la différence en 3 points</h3>
+        <p><strong>1. L'obligation</strong> — DDT légal = obligatoire. Diagnostic structurel = facultatif.</p>
+        <p><strong>2. Le périmètre</strong> — DDT couvre la salubrité (amiante, plomb…) et la conformité (élec, gaz). Le structurel couvre la stabilité du bâti.</p>
+        <p><strong>3. La portée juridique</strong> — Le DDT ne vous protège pas du vice caché structurel. Le diagnostic structurel, oui — s'il est réalisé par un expert indépendant et opposable.</p>
+      </div>
+
+      <h2>Quand faut-il faire un diagnostic structurel avant vente ?</h2>
+
+      <p>Toutes les ventes ne nécessitent pas une expertise structurelle. Voici les <strong>5 situations</strong> où c'est fortement recommandé, voire indispensable :</p>
+
+      <h3>1. Votre maison est située en zone RGA (retrait-gonflement des argiles)</h3>
+      <p>En Occitanie, c'est plus de <strong>80 % du territoire</strong>. La Haute-Garonne, le Tarn-et-Garonne, le Gers et l'Aude sont massivement exposés. Si votre maison est dans une zone classée moyenne, forte ou très forte, le diagnostic structurel devient un quasi-obligatoire moral.</p>
+
+      <h3>2. Des fissures sont visibles, même petites</h3>
+      <p>Une micro-fissure de 0,3 mm peut être anodine… ou être le premier signe d'un tassement actif. Sans expertise, vous ne le savez pas. Et en cas de litige, l'acheteur invoquera votre négligence.</p>
+
+      <h3>3. Votre commune a fait l'objet d'un arrêté CAT-NAT sécheresse</h3>
+      <p>Les épisodes 2017, 2019, 2022 et 2023 ont déclenché des arrêtés sur des centaines de communes du Sud-Ouest. Si votre maison est concernée, l'acheteur le saura (mention obligatoire dans l'État des Risques) — autant prouver dès la mise en vente que la structure a été contrôlée.</p>
+
+      <h3>4. La maison a plus de 40 ans</h3>
+      <p>Les fondations limitées des maisons des années 70-80, combinées à l'évolution climatique, créent une vulnérabilité structurelle réelle. Une expertise rassure les acquéreurs et leurs banques.</p>
+
+      <h3>5. Vous vendez à un investisseur ou à un professionnel</h3>
+      <p>Les marchands de biens et les SCI achètent rarement sans diagnostic structurel préalable. Anticiper, c'est négocier d'égal à égal.</p>
+
+      <h2>Le rapport opposable : votre bouclier juridique pendant 30 ans</h2>
+
+      <p>Voici l'élément que la plupart des vendeurs ignorent : <strong>un rapport d'expertise structurelle réalisé par un institut indépendant est opposable</strong>. Cela signifie qu'il fait foi devant un tribunal, devant l'assurance de l'acheteur, et devant le notaire.</p>
+
+      <p>Concrètement :</p>
+      <ul>
+        <li>Si vous transmettez ce rapport à l'acheteur au moment de la vente, et que celui-ci le signe en annexe au compromis, <strong>il ne pourra plus invoquer un vice caché sur les éléments contrôlés</strong>.</li>
+        <li>Si une fissure s'aggrave 5 ans plus tard, vous pourrez démontrer qu'elle n'existait pas (ou existait dans un état précis et déclaré) au moment de la vente.</li>
+        <li>Si l'acheteur tente une action en justice, votre rapport opposable est la pièce qui clôt le débat.</li>
+      </ul>
+
+      <p class="font-bold text-lg text-slate-900 my-6">Sans diagnostic structurel, c'est votre parole contre celle de l'acheteur. Avec, c'est un document signé par un expert opposable face à un juge.</p>
+
+      <h2>Combien coûte une expertise structurelle avant vente ?</h2>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead class="bg-slate-900 text-white">
+            <tr>
+              <th class="border border-slate-300 p-3 text-left">Type d'expertise</th>
+              <th class="border border-slate-300 p-3 text-center">Tarif moyen</th>
+              <th class="border border-slate-300 p-3 text-center">Délai rapport</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-3">Inspection visuelle simple (sans rapport)</td>
+              <td class="border border-slate-300 p-3 text-center">300 à 500 €</td>
+              <td class="border border-slate-300 p-3 text-center">Verbal</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3"><strong>Expertise structurelle complète + rapport opposable</strong></td>
+              <td class="border border-slate-300 p-3 text-center"><strong>800 à 1 500 €</strong></td>
+              <td class="border border-slate-300 p-3 text-center"><strong>72 h</strong></td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3">Expertise judiciaire (post-litige)</td>
+              <td class="border border-slate-300 p-3 text-center">2 500 à 5 000 €</td>
+              <td class="border border-slate-300 p-3 text-center">2 à 4 semaines</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>À mettre en perspective : un litige post-vente coûte en moyenne <strong>15 000 à 80 000 €</strong> au vendeur (annulation de vente, dommages-intérêts, frais d'avocat, expertise judiciaire). Une expertise préventive à 1 200 € est, mathématiquement, l'investissement le plus rentable du processus de vente.</p>
+
+      <h2>Trois cas réels (anonymisés) du Sud-Ouest</h2>
+
+      <h3>Cas n°1 — Maison à Tournefeuille, vendue 320 000 € avec rapport IPB</h3>
+      <p>Le vendeur (retraité) avait remarqué une fissure verticale fine sur la façade arrière. Notre rapport a confirmé qu'il s'agissait d'une fissure de retrait stabilisée (non évolutive), liée à la rétractation des enduits et non à un mouvement structurel. <strong>Rapport remis à l'acheteur, signé en annexe au compromis. Vente conclue en 6 semaines au prix demandé.</strong> 14 mois plus tard, l'acheteur a tenté d'invoquer un vice caché — débouté immédiatement grâce au rapport.</p>
+
+      <h3>Cas n°2 — Maison à Castelsarrasin, refus du diagnostic préventif</h3>
+      <p>La vendeuse a refusé l'expertise structurelle, jugée "inutile". Vente réalisée 280 000 € en 2022. En 2024, l'acheteur découvre des fissures évolutives en façade après l'épisode de sécheresse. Action en justice, expertise judiciaire confirmant un tassement antérieur à la vente. <strong>La vendeuse a été condamnée à rembourser 45 000 € + frais.</strong> Coût qu'une expertise à 1 200 € aurait évité.</p>
+
+      <h3>Cas n°3 — Maison à Auch, valorisation par le diagnostic</h3>
+      <p>Le vendeur a fait réaliser le diagnostic structurel <em>avant</em> la mise en agence. Notre rapport a documenté l'absence de désordres structurels et la qualité des fondations. <strong>L'agent immobilier a pu valoriser ce rapport dans l'annonce. Vente conclue en 3 semaines, sans négociation à la baisse.</strong> Le rapport a même servi à rassurer la banque de l'acheteur.</p>
+
+      <h2>Comment se déroule le diagnostic structurel IPB ?</h2>
+
+      <ul>
+        <li><strong>Étape 1 — Échange préalable (15 min, gratuit)</strong> : on comprend votre situation, l'âge de la maison, les éventuels signes que vous avez observés.</li>
+        <li><strong>Étape 2 — Visite sur site (1 h 30 à 2 h)</strong> : un de nos experts inspecte l'enveloppe, mesure les fissures éventuelles, contrôle les murs porteurs, étudie le contexte géologique.</li>
+        <li><strong>Étape 3 — Rapport sous 72 h</strong> : document écrit, signé, opposable. Photos, mesures, conclusions, préconisations le cas échéant.</li>
+        <li><strong>Étape 4 — Remise au notaire / annexion au compromis</strong> : nous vous accompagnons dans la transmission juridique du rapport.</li>
+      </ul>
+
+      <h2>Le cadre juridique : article 1641 du Code civil</h2>
+
+      <p>L'article 1641 du Code civil est le pilier de la garantie des vices cachés. Il dispose que le vendeur est tenu de la garantie pour les <strong>défauts cachés de la chose vendue qui la rendent impropre à l'usage auquel on la destine, ou qui diminuent tellement cet usage que l'acheteur ne l'aurait pas acquise, ou n'en aurait donné qu'un moindre prix, s'il les avait connus</strong>.</p>
+
+      <p>Concrètement, pour une maison fissurée :</p>
+
+      <ul>
+        <li><strong>"Défauts cachés"</strong> : les fissures structurelles non visibles à l'œil nu, ou minimisées dans la déclaration du vendeur, sont des vices cachés</li>
+        <li><strong>"Impropre à l'usage"</strong> : si la maison est juridiquement habitable mais nécessite des travaux structurels lourds, le vice caché est constitué</li>
+        <li><strong>"Moindre prix"</strong> : c'est le levier juridique principal — l'acheteur peut demander la <strong>réduction du prix</strong> ou l'<strong>annulation de la vente</strong> (action rédhibitoire)</li>
+      </ul>
+
+      <p>Le délai d'action : <strong>2 ans à compter de la découverte du vice</strong> (article 1648). Mais attention : la responsabilité du vendeur peut être engagée jusqu'à <strong>30 ans</strong> après la vente au titre de la garantie décennale étendue, si les travaux ont été réalisés sans déclaration.</p>
+
+      <h2>Compromis vs acte authentique : à quel moment annexer le rapport ?</h2>
+
+      <p>Le rapport d'expertise structurelle doit être annexé au <strong>compromis de vente</strong>, pas seulement à l'acte authentique. Pourquoi ? Parce que le compromis fixe juridiquement le consentement des parties. Si le rapport n'est annexé qu'à l'acte authentique (3 mois plus tard), l'acheteur peut arguer qu'il n'avait pas connaissance des éléments lors de son engagement initial.</p>
+
+      <p>La meilleure pratique :</p>
+      <ol>
+        <li>Réalisez l'expertise <strong>avant la mise en vente</strong></li>
+        <li>Mentionnez son existence dans l'annonce (signal de transparence valorisant)</li>
+        <li>Fournissez le rapport dès la 2ᵉ visite à l'acheteur intéressé</li>
+        <li>Annexez-le au compromis avec mention manuscrite ("Pris connaissance du rapport d'expertise structurelle IPB du XX/XX/XXXX")</li>
+        <li>L'acte authentique reprendra automatiquement cette annexe</li>
+      </ol>
+
+      <h2>FAQ — Diagnostic structurel avant vente</h2>
+
+      <h3>Mon notaire peut-il refuser de faire la vente sans rapport structurel ?</h3>
+      <p>Non. Le diagnostic structurel n'est pas légalement obligatoire. Mais un notaire diligent peut <strong>recommander</strong> son réalisation, surtout en zone RGA, et noter dans l'acte que la recommandation a été déclinée si vous refusez.</p>
+
+      <h3>Le DPE remplace-t-il le diagnostic structurel ?</h3>
+      <p>Absolument pas. Le DPE évalue uniquement la performance énergétique. Il ne dit rien sur les fissures, les fondations, ou la stabilité du bâti.</p>
+
+      <h3>Je vends "en l'état" — suis-je dispensé de l'expertise ?</h3>
+      <p>Non. La clause "vente en l'état" ne vous protège pas du vice caché. Elle vous dispense de garantir la conformité, mais pas les défauts structurels cachés. La jurisprudence est constante sur ce point.</p>
+
+      <h3>Puis-je refacturer l'expertise à l'acheteur ?</h3>
+      <p>Oui, c'est négociable dans le compromis. Beaucoup de vendeurs avisés intègrent le coût de l'expertise dans le prix de vente, qui se trouve valorisé d'autant.</p>
+
+      <h3>L'expertise est-elle valable combien de temps ?</h3>
+      <p>Pas de durée légale, mais en pratique 6 mois maximum entre l'expertise et la signature de l'acte. Au-delà, l'acheteur peut demander une mise à jour (généralement gratuite chez IPB si le délai n'excède pas 12 mois).</p>
+
+      <h3>Que se passe-t-il si le rapport révèle un défaut majeur ?</h3>
+      <p>Trois options : (1) faire les travaux avant la vente (récupération du prix), (2) vendre en mentionnant le défaut avec décote justifiée, (3) ne pas vendre. La pire stratégie : cacher le défaut découvert.</p>
+
+      <h2>Pour aller plus loin</h2>
+      <ul>
+        <li>Sur la dépréciation d'une maison fissurée et comment l'éviter : <a href="/blog/revente-maison-fissuree">Vendre une maison fissurée : la décote à -30 %</a></li>
+        <li>Sur la prise en charge par les assurances : <a href="/blog/assurance-fissures-maison-indemnisation">Assurance fissures : comment être indemnisé</a></li>
+        <li>Vous êtes acheteur et non vendeur ? Voir notre page <a href="/expertise-avant-achat-immobilier-toulouse">Expertise avant achat immobilier</a></li>
+      </ul>
+
+      <h2>Ce qu'il faut retenir</h2>
+
+      <ul>
+        <li>✅ <strong>Le DDT obligatoire ne couvre PAS la structure</strong> — vous restez exposé au vice caché 30 ans</li>
+        <li>✅ <strong>Le diagnostic structurel est facultatif mais opposable</strong> — il vous protège juridiquement</li>
+        <li>✅ <strong>1 200 € d'expertise = jusqu'à 80 000 € de litige évité</strong></li>
+        <li>✅ <strong>L'institut indépendant est la condition de l'opposabilité</strong> — un artisan ne peut pas délivrer ce rapport</li>
+        <li>✅ <strong>Plus la maison est ancienne, plus l'expertise est recommandée</strong> — surtout en zone RGA Occitanie</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
+        <p class="font-bold text-orange-900 mb-3">Vous mettez votre maison en vente en Occitanie ?</p>
+        <p class="text-orange-800 mb-4">Notre institut intervient sous 72 h pour réaliser un diagnostic structurel opposable. Rapport signé, photos, mesures, préconisations. Décennale AXA. Devis gratuit.</p>
+        <a href="/diagnostic" class="inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition-colors">Demander mon diagnostic →</a>
+      </div>
+    `
+  },
+
+  'lire-fissures-verticale-horizontale-oblique': {
+    slug: 'lire-fissures-verticale-horizontale-oblique',
+    metaTitle: "Fissure Verticale, Horizontale ou Oblique · Décoder l'Orientation | IPB",
+    title: "Fissure verticale, horizontale ou oblique : que révèle l'orientation sur la gravité ?",
+    excerpt: "Une fissure n'est jamais \"juste une fissure\". Sa direction — verticale, horizontale ou oblique — révèle la cause du mouvement et la gravité du désordre. Apprenez à lire les fissures comme un institut de pathologie du bâtiment.",
+    date: '2026-05-08',
+    dateModified: '2026-05-08',
+    readTime: '8 min',
+    category: 'fissures',
+    author: 'Ludovic D.',
+    metaDescription: "L'orientation d'une fissure révèle sa cause et sa dangerosité. Verticale, horizontale, oblique : comment lire chaque type et quand consulter un expert IPB.",
+    keywords: ['fissure verticale', 'fissure horizontale danger', 'fissure oblique cause', 'lire une fissure mur', 'interpréter fissure maison', 'orientation fissure', 'fissure en escalier'],
+    content: `
+      <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
+        <p class="font-bold text-orange-900 mb-2">L'orientation d'une fissure raconte une histoire</p>
+        <p class="text-orange-800">Une fissure n'est jamais "juste une fissure". Sa <strong>direction</strong> — verticale, horizontale, oblique — révèle l'origine du mouvement structurel, et donc la gravité du désordre. Apprendre à les lire, c'est anticiper l'urgence.</p>
+      </div>
+
+      <h2>Pourquoi l'orientation est le premier indice de gravité</h2>
+
+      <p>Quand un mur fissure, ce n'est jamais "au hasard". La fissure suit le chemin de la <strong>rupture mécanique</strong> — c'est-à-dire la zone où la maçonnerie n'a plus pu encaisser une contrainte. Cette contrainte a une direction, et la fissure y répond perpendiculairement.</p>
+
+      <p>Conséquence : <strong>l'orientation d'une fissure révèle quasi-systématiquement la cause du mouvement</strong>. Cette lecture, banale pour un institut de pathologie du bâtiment, est ignorée de la grande majorité des propriétaires. Pourtant, elle suffit à orienter le diagnostic dans 80 % des cas.</p>
+
+      <p>Trois orientations principales : <strong>verticale, horizontale, oblique</strong>. Chacune raconte une histoire différente.</p>
+
+      <h2>1. La fissure verticale : retrait, compression, tassement vertical</h2>
+
+      <p>Une fissure verticale court de haut en bas (ou inversement) sur un mur. C'est l'orientation <strong>la plus fréquente</strong>, et heureusement souvent la moins grave — mais pas toujours.</p>
+
+      <h3>Causes possibles d'une fissure verticale</h3>
+      <ul>
+        <li><strong>Le retrait de l'enduit ou du mortier</strong> (cause la plus fréquente, et la plus bénigne) : les matériaux humides perdent du volume en séchant. Apparaît typiquement dans les 2 à 5 ans après une rénovation.</li>
+        <li><strong>La compression verticale localisée</strong> : la maison "tasse" sous son propre poids. Phénomène normal sur les bâtiments neufs.</li>
+        <li><strong>Le tassement vertical d'une fondation</strong> (cas grave) : un appui de fondation s'enfonce plus vite que les autres. La fissure remonte verticalement depuis le bas du mur.</li>
+      </ul>
+
+      <h3>Comment évaluer la gravité d'une fissure verticale ?</h3>
+      <ul>
+        <li><strong>Largeur &lt; 1 mm, stable, isolée</strong> : faïençage ou retrait. Surveillance simple suffit.</li>
+        <li><strong>Largeur 1 à 3 mm, démarrant en bas du mur</strong> : possible tassement vertical. Diagnostic recommandé.</li>
+        <li><strong>Largeur &gt; 3 mm, ouverture progressive observable d'un mois à l'autre</strong> : tassement actif. <strong>Expertise immédiate.</strong></li>
+      </ul>
+
+      <div class="my-8 p-6 bg-slate-50 border border-slate-200 rounded-xl">
+        <p class="font-bold text-slate-900 mb-2">Cas particulier : la fissure verticale en angle de bâtiment</p>
+        <p class="text-slate-800">Une fissure verticale qui apparaît exactement à l'angle de deux murs (jonction façade/pignon) signale presque toujours un mouvement de séparation entre les deux pans. Cause typique : tassement différentiel d'une zone de la maison. <strong>À ne pas négliger.</strong></p>
+      </div>
+
+      <h2>2. La fissure horizontale : la plus alarmante</h2>
+
+      <p>Une fissure horizontale traverse le mur de gauche à droite. Elle est <strong>statistiquement la moins fréquente</strong>, mais aussi <strong>la plus inquiétante</strong> : elle signale presque toujours une contrainte mécanique anormale.</p>
+
+      <h3>Causes possibles d'une fissure horizontale</h3>
+      <ul>
+        <li><strong>La poussée latérale d'un terrain</strong> (le plus grave) : le terrain pousse contre un mur enterré ou semi-enterré. Typique des sous-sols, caves, murs de soutènement.</li>
+        <li><strong>L'effet du gel-dégel</strong> sur un mur exposé : l'eau infiltrée gèle, fait éclater le matériau de l'intérieur.</li>
+        <li><strong>Le tassement asymétrique d'une fondation</strong> : un côté de la maison s'enfonce, créant un effet de levier qui ouvre une fissure horizontale à mi-hauteur.</li>
+        <li><strong>La rupture d'un chaînage horizontal</strong> (cas extrême) : la ceinture en béton armé qui solidarise les murs cède. Risque structurel majeur.</li>
+      </ul>
+
+      <h3>Pourquoi l'horizontale est plus grave que la verticale</h3>
+      <p>Un mur est conçu pour reprendre des charges <strong>verticales</strong> (le poids de la toiture et des étages). Quand une fissure horizontale apparaît, c'est qu'une <strong>contrainte non prévue</strong> s'exerce — généralement latérale. Or les murs traditionnels (parpaing, brique) résistent mal aux poussées latérales.</p>
+
+      <p class="font-bold text-lg text-slate-900 my-6">Une fissure horizontale visible doit toujours déclencher un diagnostic professionnel, quelle que soit sa largeur.</p>
+
+      <h2>3. La fissure oblique : le tassement différentiel à l'œuvre</h2>
+
+      <p>Une fissure oblique forme un angle avec l'horizontale. Elle suit souvent les joints de maçonnerie en escalier (d'où son autre nom de "fissure en escalier"), ou trace une diagonale plus franche dans les enduits monolithiques.</p>
+
+      <p>C'est <strong>la signature classique du tassement différentiel</strong> — pathologie n°1 des maisons d'Occitanie en zone argileuse.</p>
+
+      <h3>Le tassement différentiel : qu'est-ce que c'est ?</h3>
+      <p>Le sol sous votre maison ne tasse pas uniformément. Une partie s'enfonce plus que l'autre. Conséquence : la maison "se déforme" comme un bloc qui pivote, et les fissures apparaissent obliquement, traduisant cette rotation.</p>
+
+      <p>Causes les plus fréquentes en Occitanie :</p>
+      <ul>
+        <li><strong>Sécheresse + sol argileux</strong> : l'argile se rétracte sous une partie de la maison. Voir notre article sur <a href="/blog/secheresse-argile-haute-garonne">la sécheresse argile en Haute-Garonne</a>.</li>
+        <li><strong>Arbre à proximité</strong> : ses racines assèchent le sol côté arbre, créant un déséquilibre.</li>
+        <li><strong>Drainage défectueux</strong> : l'eau s'accumule d'un côté de la maison, crée un sol mou.</li>
+        <li><strong>Fondations hétérogènes</strong> : profondeurs différentes selon les zones (typique des extensions ajoutées).</li>
+      </ul>
+
+      <h3>La fissure en escalier : un signal sans ambiguïté</h3>
+      <p>Si vos fissures suivent les joints en escalier (montant d'un parpaing à l'autre), il n'y a aucun doute : c'est du tassement différentiel. Voir notre <a href="/blog/fissures-escalier-tassement-differentiel">guide dédié aux fissures en escalier</a>.</p>
+
+      <h2>Tableau récapitulatif : orientation, cause, gravité</h2>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead class="bg-slate-900 text-white">
+            <tr>
+              <th class="border border-slate-300 p-3 text-left">Orientation</th>
+              <th class="border border-slate-300 p-3 text-left">Cause la plus probable</th>
+              <th class="border border-slate-300 p-3 text-center">Gravité typique</th>
+              <th class="border border-slate-300 p-3 text-center">Action recommandée</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-3"><strong>Verticale fine (&lt; 1 mm)</strong></td>
+              <td class="border border-slate-300 p-3">Retrait des enduits</td>
+              <td class="border border-slate-300 p-3 text-center text-green-700">Faible</td>
+              <td class="border border-slate-300 p-3 text-center">Surveillance</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3"><strong>Verticale large (&gt; 3 mm) en bas du mur</strong></td>
+              <td class="border border-slate-300 p-3">Tassement vertical</td>
+              <td class="border border-slate-300 p-3 text-center text-orange-700">Élevée</td>
+              <td class="border border-slate-300 p-3 text-center">Expertise rapide</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3"><strong>Horizontale</strong></td>
+              <td class="border border-slate-300 p-3">Poussée latérale, gel, asymétrie</td>
+              <td class="border border-slate-300 p-3 text-center text-red-700 font-bold">Très élevée</td>
+              <td class="border border-slate-300 p-3 text-center font-bold">Expertise immédiate</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3"><strong>Oblique / en escalier</strong></td>
+              <td class="border border-slate-300 p-3">Tassement différentiel (RGA, arbre, drainage)</td>
+              <td class="border border-slate-300 p-3 text-center text-red-700 font-bold">Élevée</td>
+              <td class="border border-slate-300 p-3 text-center font-bold">Expertise + agrafage</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Erreur fréquente : confondre orientation et direction d'apparition</h2>
+
+      <p>Une fissure peut apparaître <strong>de bas en haut</strong> (signe d'un mouvement venant des fondations) ou <strong>de haut en bas</strong> (signe d'un mouvement venant de la toiture, charpente, ou linteau). L'orientation est la <strong>direction finale</strong> de la fissure — pas son sens d'évolution.</p>
+
+      <p>Pour repérer le sens d'apparition, observez :</p>
+      <ul>
+        <li>L'extrémité la plus large = l'origine du mouvement</li>
+        <li>L'extrémité fine = la direction de propagation</li>
+      </ul>
+
+      <h2>Comment surveiller une fissure soi-même</h2>
+
+      <p>Si la fissure ne semble pas alarmante (verticale fine, isolée), une surveillance simple peut suffire avant de consulter :</p>
+
+      <ol>
+        <li><strong>Marquez les extrémités</strong> au crayon ou à la peinture (date du marquage incluse).</li>
+        <li><strong>Mesurez la largeur</strong> avec un pied à coulisse ou une jauge fissuromètre (quelques euros).</li>
+        <li><strong>Photographiez régulièrement</strong> : tous les mois pendant 6 mois, avec un mètre-ruban dans le cadre pour l'échelle.</li>
+        <li><strong>Notez les variations saisonnières</strong> : ouverture en été (sécheresse) ou en hiver (gel) ?</li>
+      </ol>
+
+      <p>Si après 6 mois la fissure n'a pas évolué, c'est probablement une fissure stabilisée. Si elle s'est ouverte, ne serait-ce que d'1 mm, c'est un signe de mouvement actif — <strong>diagnostic professionnel nécessaire</strong>.</p>
+
+      <h2>Quand consulter un institut de pathologie du bâtiment ?</h2>
+
+      <p>Faites appel à un expert <strong>sans attendre</strong> dans les cas suivants :</p>
+      <ul>
+        <li>Toute fissure horizontale, quelle que soit sa largeur</li>
+        <li>Toute fissure oblique ou en escalier supérieure à 1 mm</li>
+        <li>Toute fissure verticale supérieure à 3 mm</li>
+        <li>Toute fissure qui s'est ouverte de plus d'1 mm en 6 mois</li>
+        <li>Toute fissure accompagnée de signes collatéraux : portes qui coincent, carrelage qui décolle, sol incliné perceptible</li>
+      </ul>
+
+      <h2>Fissure intérieure vs extérieure : la même fissure, deux interprétations</h2>
+
+      <p>Une fissure peut traverser un mur de part en part (intérieur ET extérieur), ou se manifester d'un seul côté. La localisation change le diagnostic.</p>
+
+      <h3>Fissure visible uniquement à l'extérieur</h3>
+      <p>Souvent liée à un défaut de l'enduit ou à des contraintes climatiques (gel, choc thermique). L'enduit cède avant le mur porteur. <strong>Gravité généralement modérée</strong>, sauf si la fissure traverse plusieurs niveaux ou suit le tracé des joints de maçonnerie.</p>
+
+      <h3>Fissure visible uniquement à l'intérieur</h3>
+      <p>Souvent liée au plâtre, aux joints, ou à une déformation locale (poutre fléchissante, sol qui bouge). Si le plafond fissure horizontalement à la jonction d'un mur, c'est un signe de tassement vertical. <strong>Diagnostic recommandé.</strong></p>
+
+      <h3>Fissure traversante (intérieur + extérieur, même endroit)</h3>
+      <p>C'est <strong>le plus alarmant</strong>. Une fissure traversante signifie que la maçonnerie a cédé sur toute son épaisseur. Cause typique : tassement différentiel important, ou défaut de chaînage. <strong>Expertise immédiate.</strong></p>
+
+      <h2>Fissures multiples : que signifie un hachage ?</h2>
+
+      <p>Quand un mur présente plusieurs fissures parallèles ou en réseau, on parle de <strong>hachage</strong>. Trois cas typiques :</p>
+
+      <ul>
+        <li><strong>Hachage de fissures verticales fines parallèles</strong> sur enduit récent : retrait du mortier. Cosmétique, pas dangereux.</li>
+        <li><strong>Hachage de fissures obliques convergentes</strong> vers un même point : tassement localisé sous une fondation précise. Diagnostic rapide.</li>
+        <li><strong>Hachage en faïençage (toile d'araignée)</strong> sur surfaces planes : vieillissement de l'enduit ou défaut de pose. Cosmétique.</li>
+      </ul>
+
+      <p>La règle : plus le hachage est <strong>convergent</strong> (les fissures pointent vers un même endroit), plus la cause est structurelle. Plus il est <strong>diffus</strong> (réseau aléatoire), plus c'est cosmétique.</p>
+
+      <h2>Fissure qui traverse un linteau de porte/fenêtre</h2>
+
+      <p>Cas particulier mais fréquent. Une fissure qui démarre <strong>au coin supérieur</strong> d'une porte ou d'une fenêtre et remonte en oblique signale presque toujours un <strong>tassement asymétrique</strong> de la maison. Le linteau (la pierre ou la poutre au-dessus de l'ouverture) est le point faible où les contraintes se concentrent.</p>
+
+      <p>À surveiller particulièrement si :</p>
+      <ul>
+        <li>La porte ou la fenêtre commence à coincer (signe que le bâti se déforme)</li>
+        <li>La fissure est récente (apparue dans les 6-12 derniers mois)</li>
+        <li>Le linteau lui-même est fissuré (cas grave : risque d'effondrement de l'ouverture)</li>
+      </ul>
+
+      <h2>FAQ — Lecture des fissures</h2>
+
+      <h3>Une fissure peut-elle changer d'orientation au cours du temps ?</h3>
+      <p>Rarement, sauf en cas de mouvement structurel majeur. Une fissure verticale qui devient oblique est un signe de tassement actif et nécessite une expertise immédiate.</p>
+
+      <h3>Comment mesurer la largeur d'une fissure avec précision ?</h3>
+      <p>Avec un <strong>pied à coulisse</strong> (5-10 €) ou une <strong>jauge fissuromètre</strong> (gradation au 1/10 mm, 10-15 €). Les apps smartphone "fissuromètre" sont des gadgets imprécis, à éviter pour un suivi sérieux.</p>
+
+      <h3>Faut-il s'inquiéter d'une fissure qui apparaît en une nuit ?</h3>
+      <p>Oui, sauf cas évident (choc, dégât des eaux). Une fissure qui apparaît brutalement signale un mouvement rapide, souvent lié à un sinistre récent (sécheresse, inondation, vibration travaux voisins).</p>
+
+      <h3>Combien de temps pour qu'une fissure cosmétique évolue ?</h3>
+      <p>Une fissure de retrait stabilisée n'évolue plus après 6-12 mois. Si vous mesurez une variation de plus de 0,5 mm sur 6 mois, ce n'est plus du retrait — c'est un mouvement structurel.</p>
+
+      <h3>Le silicone ou l'enduit suffit-il à réparer une fissure ?</h3>
+      <p>Pour une fissure cosmétique stabilisée : oui (mastic souple ou enduit fin). Pour une fissure active : <strong>non</strong>, le silicone se déchirera dans les semaines suivantes. Il faut traiter la cause structurelle d'abord.</p>
+
+      <h3>Mon assurance couvre-t-elle l'expertise de mes fissures ?</h3>
+      <p>Pas l'expertise préventive. Mais si vous déclarez un sinistre (CAT-NAT sécheresse principalement) et que l'expert d'assurance sous-évalue, votre option "défense recours" peut prendre en charge tout ou partie d'une contre-expertise indépendante.</p>
+
+      <h2>Pour aller plus loin</h2>
+      <ul>
+        <li>Sur le choix entre agrafage et micropieux : <a href="/blog/agrafage-vs-micropieux-choix">Agrafage ou micropieux : quel choix ?</a></li>
+        <li>Sur la cause n°1 des fissures en Occitanie : <a href="/blog/secheresse-argile-haute-garonne">Sécheresse et sol argileux en Haute-Garonne</a></li>
+        <li>Sur les fissures qui touchent les portes et fenêtres : <a href="/blog/fissure-ouverture-porte-fenetre">Pourquoi vos portes coincent à cause des fissures</a></li>
+      </ul>
+
+      <h2>Ce qu'il faut retenir</h2>
+
+      <ul>
+        <li>✅ <strong>Verticale fine et isolée</strong> = souvent bénigne (retrait des matériaux)</li>
+        <li>✅ <strong>Horizontale</strong> = toujours alarmante, expertise systématique</li>
+        <li>✅ <strong>Oblique / escalier</strong> = signature du tassement différentiel, fréquent en Occitanie argileuse</li>
+        <li>✅ <strong>L'évolution dans le temps prime sur la largeur initiale</strong> — surveillez et photographiez</li>
+        <li>✅ <strong>Une fissure ne se "guérit" jamais seule</strong> : si elle évolue, le mouvement structurel est actif</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
+        <p class="font-bold text-orange-900 mb-3">Une fissure vous inquiète ?</p>
+        <p class="text-orange-800 mb-4">Notre institut intervient en Occitanie pour lire vos fissures et vous dire ce qui relève d'une simple cosmétique ou d'un vrai désordre structurel. Diagnostic gratuit, rapport opposable si besoin, décennale AXA.</p>
+        <a href="/diagnostic" class="inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition-colors">Lancer mon diagnostic →</a>
       </div>
     `
   },

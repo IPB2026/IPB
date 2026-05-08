@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { List } from 'lucide-react';
 
 interface TocItem {
   id: string;
@@ -11,12 +10,15 @@ interface TocItem {
 
 interface TableOfContentsProps {
   items: TocItem[];
+  /** "desktop" : sidebar sticky (≥ lg). "mobile" : details collapsible inline. */
+  variant?: 'desktop' | 'mobile';
 }
 
-export function TableOfContents({ items }: TableOfContentsProps) {
+export function TableOfContents({ items, variant = 'desktop' }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>('');
 
   useEffect(() => {
+    if (variant !== 'desktop') return; // ne suit l'active que sur la sidebar
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -34,7 +36,7 @@ export function TableOfContents({ items }: TableOfContentsProps) {
     });
 
     return () => observer.disconnect();
-  }, [items]);
+  }, [items, variant]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -43,55 +45,95 @@ export function TableOfContents({ items }: TableOfContentsProps) {
     }
   };
 
+  // Filtrer aux H2 uniquement pour le mobile (compact). Garder H2+H3 desktop.
+  const displayedItems = variant === 'mobile' ? items.filter(i => i.level === 2) : items;
+
+  if (variant === 'mobile') {
+    return (
+      <details className="my-8 border border-ipb-rule rounded-[6px] bg-ipb-white group lg:hidden">
+        <summary className="flex items-center justify-between cursor-pointer px-5 py-4 list-none">
+          <span className="flex items-center gap-3">
+            <span className="h-px w-9 bg-ipb-orange" aria-hidden="true" />
+            <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-ipb-light">
+              Sommaire de l'article
+            </span>
+          </span>
+          <span
+            aria-hidden="true"
+            className="text-ipb-orange text-[14px] transition-transform group-open:rotate-180"
+          >
+            ▾
+          </span>
+        </summary>
+        <nav className="px-5 pb-5 pt-1">
+          <ol className="space-y-2 list-none p-0 m-0">
+            {displayedItems.map((item, i) => (
+              <li key={item.id} className="flex gap-3">
+                <span className="font-serif text-ipb-orange text-[13px] font-bold flex-shrink-0 leading-[1.6] pt-0.5 tabular-nums">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <button
+                  onClick={() => scrollToSection(item.id)}
+                  className="text-left text-[14px] leading-[1.6] text-ipb-text hover:text-ipb-orange transition-colors"
+                >
+                  {item.title}
+                </button>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      </details>
+    );
+  }
+
+  // Desktop sidebar — éditorial, sobre, sticky
   return (
-    <div className="bg-white border-2 border-slate-200 rounded-xl p-6 sticky top-24 shadow-lg hover:shadow-xl transition-shadow">
-      <div className="flex items-center gap-2 mb-4">
-        <List className="text-orange-600" size={20} />
-        <h3 className="font-bold text-slate-900">Sommaire</h3>
-        {/* Badge "interactive" */}
-        <span className="ml-auto text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full font-medium">
-          interactif
-        </span>
+    <div className="sticky top-24 bg-ipb-white border border-ipb-rule rounded-[6px] p-6">
+      <div className="flex items-center gap-3 mb-5">
+        <span className="h-px w-9 bg-ipb-orange" aria-hidden="true" />
+        <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-ipb-light">
+          Sommaire
+        </p>
       </div>
       <nav>
-        <ul className="space-y-2 max-h-[60vh] overflow-y-auto custom-scrollbar pr-2">
-          {items.map((item) => (
+        <ol className="space-y-1 list-none p-0 m-0 max-h-[65vh] overflow-y-auto pr-2 toc-scroll">
+          {displayedItems.map((item, i) => (
             <li
               key={item.id}
-              className={`
-                ${item.level === 2 ? 'ml-0' : 'ml-4'}
-                transition-all duration-200
-              `}
+              className={item.level === 3 ? 'pl-6' : ''}
             >
               <button
                 onClick={() => scrollToSection(item.id)}
                 className={`
-                  text-left text-sm hover:text-orange-600 transition-all w-full rounded-lg px-3 py-2 border-l-2
+                  text-left text-[13px] leading-[1.6] w-full py-1.5 border-l-2 pl-3 transition-colors
                   ${
                     activeId === item.id
-                      ? 'text-orange-600 font-bold bg-orange-50 border-orange-500'
-                      : 'text-slate-600 border-transparent hover:bg-slate-50'
+                      ? 'text-ipb-orange font-medium border-ipb-orange'
+                      : 'text-ipb-muted border-transparent hover:text-ipb-text hover:border-ipb-rule'
                   }
                 `}
               >
+                {item.level === 2 && (
+                  <span className="font-serif text-ipb-light text-[11px] mr-2 tabular-nums">
+                    {String(displayedItems.filter(d => d.level === 2).indexOf(item) + 1).padStart(2, '0')}
+                  </span>
+                )}
                 {item.title}
               </button>
             </li>
           ))}
-        </ul>
+        </ol>
       </nav>
-      
-      {/* Custom scrollbar style */}
+
       <style jsx>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 4px;
+        .toc-scroll::-webkit-scrollbar {
+          width: 3px;
         }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: #f1f5f9;
-          border-radius: 4px;
+        .toc-scroll::-webkit-scrollbar-track {
+          background: transparent;
         }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #f97316;
+        .toc-scroll::-webkit-scrollbar-thumb {
+          background: var(--ipb-rule);
           border-radius: 4px;
         }
       `}</style>

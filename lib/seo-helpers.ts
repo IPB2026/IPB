@@ -335,3 +335,21 @@ export function injectInternalLinks(content: string, currentSlug: string): strin
 
   return modifiedContent;
 }
+
+/**
+ * Ajoute `class="checklist"` aux <ul> dont les items commencent par
+ * ✅ / ❌ / 💡 / ⚠️ pour que la CSS supprime la puce native (sinon double
+ * marker visuel : disque orange + emoji).
+ */
+export function injectListClasses(content: string): string {
+  return content.replace(/<ul([^>]*)>([\s\S]*?)<\/ul>/g, (full, attrs, inner) => {
+    // Détecte si au moins un <li> commence par un emoji checklist
+    const hasChecklistEmoji = /<li[^>]*>\s*(?:✅|❌|💡|⚠️|⭐|🔴|🟠|🟡|🟢)/.test(inner);
+    if (!hasChecklistEmoji) return full;
+    // Ne pas écraser une classe existante
+    if (/class=/.test(attrs)) {
+      return full.replace(/class="([^"]*)"/, (_m, cls) => `class="${cls} checklist"`);
+    }
+    return `<ul${attrs} class="checklist">${inner}</ul>`;
+  });
+}
