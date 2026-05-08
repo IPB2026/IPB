@@ -146,7 +146,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Lardenne / Colomiers limitrophe</strong> : Zone d&apos;urbanisation récente sur ancien sol agricole argileux. Les constructions des années 1990-2000 avec fondations à 60 cm sont régulièrement touchées. <strong>Risque : modéré.</strong></li>
       </ul>
 
-      <p>Vous pouvez consulter la carte d&apos;aléa retrait-gonflement des argiles de votre quartier sur le site <strong>georisques.gouv.fr</strong>. Si votre parcelle est classée en aléa moyen ou fort, un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic préventif</a> est fortement recommandé.</p>
+      <p>Vous pouvez consulter la carte d&apos;aléa retrait-gonflement des argiles de votre quartier sur le site <strong><a href="https://www.georisques.gouv.fr" target="_blank" rel="noopener noreferrer" class="text-orange-600 underline hover:text-orange-700">georisques.gouv.fr</a></strong>. Si votre parcelle est classée en aléa moyen ou fort, un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic préventif</a> est fortement recommandé.</p>
 
       <h2>Fissures à Toulouse : vos obligations légales</h2>
 
@@ -1745,7 +1745,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>Communes à risque faible</h3>
       <p>Bagnères-de-Luchon, Saint-Gaudens et le piémont pyrénéen en général. Sols rocheux ou graveleux, peu sensibles au retrait-gonflement.</p>
 
-      <p><strong>Vérifiez votre commune</strong> : Consultez la carte interactive sur <strong>georisques.gouv.fr</strong> (rubrique « Argiles ») pour connaître l&apos;aléa exact de votre parcelle. C&apos;est gratuit et immédiat. Si votre maison est en zone orange ou rouge, un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic préventif</a> est fortement recommandé.</p>
+      <p><strong>Vérifiez votre commune</strong> : Consultez la carte interactive sur <strong><a href="https://www.georisques.gouv.fr" target="_blank" rel="noopener noreferrer" class="text-orange-600 underline hover:text-orange-700">georisques.gouv.fr</a></strong> (rubrique « Argiles ») pour connaître l&apos;aléa exact de votre parcelle. C&apos;est gratuit et immédiat. Si votre maison est en zone orange ou rouge, un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic préventif</a> est fortement recommandé.</p>
 
       <h2>Prévention : protéger sa maison du cycle sécheresse-pluie</h2>
 
@@ -5052,7 +5052,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>Où consulter les arrêtés ?</h3>
       <p>Les arrêtés de catastrophe naturelle sécheresse sont publiés au <strong>Journal Officiel de la République française</strong>. Vous pouvez vérifier si votre commune est concernée de deux façons :</p>
       <ul>
-        <li><strong>Site Géorisques</strong> (georisques.gouv.fr) : Tapez votre adresse et consultez l'historique des arrêtés CAT-NAT</li>
+        <li><strong>Site Géorisques</strong> (<a href="https://www.georisques.gouv.fr" target="_blank" rel="noopener noreferrer" class="text-orange-600 underline hover:text-orange-700">georisques.gouv.fr</a>) : Tapez votre adresse et consultez l'historique des arrêtés CAT-NAT</li>
         <li><strong>Mairie</strong> : Votre mairie est informée et affiche généralement l'arrêté</li>
       </ul>
 
@@ -6222,14 +6222,14 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h2>Catastrophe naturelle sécheresse : le parcours d'indemnisation</h2>
 
       <h3>Étape 1 : Vérifier que votre commune est reconnue</h3>
-      <p>Consultez le site <strong>Géorisques</strong> (georisques.gouv.fr) ou le Journal Officiel. Votre commune doit avoir fait l'objet d'un <strong>arrêté de reconnaissance de catastrophe naturelle</strong> pour la période où vos fissures sont apparues. En Haute-Garonne, les arrêtés sécheresse 2022 et 2023 couvrent la majorité des communes.</p>
+      <p>Consultez le site <strong>Géorisques</strong> (<a href="https://www.georisques.gouv.fr" target="_blank" rel="noopener noreferrer" class="text-orange-600 underline hover:text-orange-700">georisques.gouv.fr</a>) ou le Journal Officiel. Votre commune doit avoir fait l'objet d'un <strong>arrêté de reconnaissance de catastrophe naturelle</strong> pour la période où vos fissures sont apparues. En Haute-Garonne, les arrêtés sécheresse 2022 et 2023 couvrent la majorité des communes.</p>
 
       <h3>Étape 2 : Déclarer le sinistre dans les 10 jours</h3>
       <p>Vous avez <strong>10 jours</strong> après la publication de l'arrêté au Journal Officiel pour déclarer le sinistre à votre assurance. Passé ce délai, votre dossier peut être rejeté. Envoyez un <strong>courrier recommandé avec accusé de réception</strong> — jamais un simple email ou appel.</p>
 
       <div class="my-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
         <p class="font-bold text-orange-900 mb-2">Délai de 10 jours : ne le ratez pas</p>
-        <p class="text-orange-800">Ce délai court à partir de la publication de l'arrêté au Journal Officiel, pas à partir de l'apparition des fissures. Surveillez les publications sur legifrance.gouv.fr ou inscrivez-vous aux alertes de votre mairie.</p>
+        <p class="text-orange-800">Ce délai court à partir de la publication de l'arrêté au Journal Officiel, pas à partir de l'apparition des fissures. Surveillez les publications sur <a href="https://www.legifrance.gouv.fr" target="_blank" rel="noopener noreferrer" class="text-orange-600 underline hover:text-orange-700">legifrance.gouv.fr</a> ou inscrivez-vous aux alertes de votre mairie.</p>
       </div>
 
       <h3>Étape 3 : L'expert d'assurance passe chez vous</h3>
