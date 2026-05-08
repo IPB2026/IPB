@@ -1852,7 +1852,9 @@ const blogPosts: { [key: string]: BlogPost } = {
       
       <p>Même sans attendre 6 mois, vous pouvez avoir des indices sur l'évolutivité de votre fissure :</p>
 
-      <table class="w-full border-collapse border border-slate-300 my-6">
+      <div class="my-8 overflow-x-auto">
+
+        <table class="w-full border-collapse border border-slate-300 my-6">
         <thead class="bg-slate-900 text-white">
           <tr>
             <th class="border border-slate-300 p-3 text-left">Critère</th>
@@ -1888,6 +1890,8 @@ const blogPosts: { [key: string]: BlogPost } = {
           </tr>
         </tbody>
       </table>
+
+      </div>
 
       <p class="font-bold text-lg text-slate-900 my-6">Si au moins 3 critères pointent vers "fissure active", ne rebouchez pas. Faites un diagnostic.</p>
 
@@ -5589,7 +5593,9 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>Les micropieux (ou reprise en sous-œuvre) sont l'alternative lourde à l'agrafage. Voici pourquoi <strong>l'agrafage est préférable dans 90% des cas</strong> :</p>
 
-      <table class="w-full border-collapse my-8">
+      <div class="my-8 overflow-x-auto">
+
+        <table class="w-full border-collapse my-8">
         <thead>
           <tr class="bg-slate-100">
             <th class="border border-slate-300 p-3 text-left">Critère</th>
@@ -5630,6 +5636,8 @@ const blogPosts: { [key: string]: BlogPost } = {
           </tr>
         </tbody>
       </table>
+
+      </div>
 
       <h2>Les 5 facteurs qui influencent le prix</h2>
 
@@ -6231,7 +6239,9 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Expert d'assurance vs expert d'assuré : la différence qui vaut des milliers d'euros</h2>
 
-      <table class="w-full border-collapse my-6">
+      <div class="my-8 overflow-x-auto">
+
+        <table class="w-full border-collapse my-6">
         <thead>
           <tr class="bg-slate-100">
             <th class="border border-slate-300 px-4 py-2 text-left text-sm font-bold">Critère</th>
@@ -6247,6 +6257,8 @@ const blogPosts: { [key: string]: BlogPost } = {
           <tr><td class="border border-slate-300 px-4 py-2 text-sm">Gain moyen</td><td class="border border-slate-300 px-4 py-2 text-sm">—</td><td class="border border-slate-300 px-4 py-2 text-sm">+30 à 50% sur l'indemnisation</td></tr>
         </tbody>
       </table>
+
+      </div>
 
       <p>Chez IPB, nous réalisons des <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostics instrumentés</a> qui servent de contre-expertise. Notre rapport, rédigé par un expert en pathologie du bâtiment, est opposable à l'expert d'assurance et fait souvent basculer la négociation en votre faveur.</p>
 
@@ -6456,7 +6468,9 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Comparatif détaillé : les chiffres parlent</h2>
 
-      <table class="w-full border-collapse my-6">
+      <div class="my-8 overflow-x-auto">
+
+        <table class="w-full border-collapse my-6">
         <thead>
           <tr class="bg-slate-100">
             <th class="border border-slate-300 px-4 py-2 text-left text-sm font-bold">Critère</th>
@@ -6473,6 +6487,8 @@ const blogPosts: { [key: string]: BlogPost } = {
           <tr><td class="border border-slate-300 px-4 py-2 text-sm">Délai rapport</td><td class="border border-slate-300 px-4 py-2 text-sm">3-6 semaines</td><td class="border border-slate-300 px-4 py-2 text-sm">5-7 jours ouvrés</td></tr>
         </tbody>
       </table>
+
+      </div>
 
       <h2>Quand mandater un expert indépendant ?</h2>
       <p>Tous les sinistres ne nécessitent pas une contre-expertise. Mais dans ces situations, elle est quasiment indispensable :</p>
@@ -6725,7 +6741,9 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Comment choisir entre ces solutions ?</h2>
 
-      <table class="w-full border-collapse my-6">
+      <div class="my-8 overflow-x-auto">
+
+        <table class="w-full border-collapse my-6">
         <thead>
           <tr class="bg-slate-100">
             <th class="border border-slate-300 px-4 py-2 text-left text-sm font-bold">Situation</th>
@@ -6740,6 +6758,8 @@ const blogPosts: { [key: string]: BlogPost } = {
           <tr><td class="border border-slate-300 px-4 py-2 text-sm">Fissures + humidité en pied de mur</td><td class="border border-slate-300 px-4 py-2 text-sm">Agrafage + drainage</td><td class="border border-slate-300 px-4 py-2 text-sm">12 000 - 30 000€</td></tr>
         </tbody>
       </table>
+
+      </div>
 
       <p>Dans <strong>90% des cas</strong> que nous traitons en Occitanie, l'<a href="/blog/agrafage-vs-micropieux-choix" class="text-orange-600 underline hover:text-orange-700">agrafage suffit</a>. Les micropieux sont réservés aux cas les plus graves. Méfiez-vous d'un artisan qui vous propose directement les micropieux sans avoir exploré l'agrafage — c'est 3 fois plus rentable pour lui.</p>
 

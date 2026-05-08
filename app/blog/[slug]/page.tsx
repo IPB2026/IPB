@@ -26,6 +26,7 @@ import {
   getContextualLinks,
   getRelatedPosts,
   injectInternalLinks,
+  injectListClasses,
 } from '@/lib/seo-helpers';
 import { ReadingProgress } from '@/components/blog/ReadingProgress';
 import { ExitIntentPopup } from '@/components/blog/ExitIntentPopup';
@@ -186,7 +187,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
   }));
   const relatedByKeywords = getRelatedPosts(post.slug, post.keywords, allPostsData);
 
-  const contentWithLinks = injectInternalLinks(enrichedContent, post.slug);
+  const contentWithLinks = injectListClasses(injectInternalLinks(enrichedContent, post.slug));
 
   return (
     <div className="min-h-screen bg-ipb-cream">
