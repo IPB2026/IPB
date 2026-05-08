@@ -34,6 +34,7 @@ interface BlogPost {
 const blogPosts: { [key: string]: BlogPost } = {
   'fissures-maison-toulouse-que-faire': {
     slug: 'fissures-maison-toulouse-que-faire',
+    metaTitle: 'Fissures Maison Toulouse · Que Faire · Guide Expert',
     title: 'Fissures sur ma maison à Toulouse : Que faire ? Guide complet',
     excerpt: 'Vous avez découvert des fissures sur votre maison toulousaine ? Ne paniquez pas. On vous aide à distinguer une fissure bénigne d\'une urgence structurelle, et comment agir pour protéger votre patrimoine sans vous ruiner.',
     date: '2025-04-14',
@@ -883,6 +884,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'garantie-decennale-travaux-structure': {
     slug: 'garantie-decennale-travaux-structure',
+    metaTitle: 'Garantie Décennale Travaux Structure · Guide Complet',
     title: 'Garantie Décennale : Le Guide Complet pour Protéger Vos Travaux de Réparation Structurelle',
     excerpt: 'Avant de signer un devis pour des travaux de fissures ou d\'humidité, vous DEVEZ comprendre la garantie décennale. Ce n\'est pas qu\'une formalité : c\'est votre seule protection si les travaux échouent. Tout ce qu\'un propriétaire averti doit savoir.',
     date: '2025-06-09',
@@ -1573,6 +1575,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'secheresse-argile-haute-garonne': {
     slug: 'secheresse-argile-haute-garonne',
+    metaTitle: 'Sécheresse & Argile Haute-Garonne · Fissures',
     title: 'Sol argileux et sécheresse en Haute-Garonne : le cycle infernal qui fissure votre maison',
     excerpt: 'Les sols argileux de Toulouse se rétractent en été et gonflent en hiver, créant un cycle destructeur pour vos fondations. Après les sécheresses 2022-2023, des milliers de maisons se fissurent. Explications et surtout : comment protéger votre patrimoine.',
     date: '2025-07-21',
@@ -2299,6 +2302,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'condensation-ou-infiltration': {
     slug: 'condensation-ou-infiltration',
+    metaTitle: 'Condensation ou Infiltration · Le Test Infaillible',
     title: 'Condensation ou infiltration ? Le test simple pour ne plus se tromper',
     excerpt: 'Taches noires, murs humides, moisissures... Ce n\'est pas toujours une fuite. 60% des gens traitent le mauvais problème et dépensent de l\'argent inutilement. Le test décisif pour savoir si c\'est de la condensation (VMC) ou une infiltration (étanchéité).',
     date: '2025-09-01',
@@ -2836,6 +2840,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'traitement-humidite-injection-resine': {
     slug: 'traitement-humidite-injection-resine',
+    metaTitle: 'Injection Résine · Solution Anti-Remontées Capillaires',
     title: 'Injection résine : la seule solution définitive contre les remontées capillaires (explications + prix)',
     excerpt: 'Vous avez du salpêtre qui revient malgré vos nettoyages ? L\'injection de résine crée une barrière étanche à la base de vos murs qui bloque l\'eau pendant 30 ans. Comment ça marche exactement, combien de temps ça prend, et combien ça coûte (tarifs transparents).',
     date: '2025-09-29',
@@ -3374,6 +3379,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'fissure-plafond-que-faire': {
     slug: 'fissure-plafond-que-faire',
+    metaTitle: 'Fissure au Plafond · Grave ou Pas ? Le Test Simple',
     title: 'Fissure au plafond : grave ou pas ? Le test simple pour savoir',
     excerpt: 'Une fissure au plafond peut être bénigne (retrait d\'enduit) ou alarmante (mouvement de charpente). Apprenez à faire la différence en 5 minutes, sans paniquer inutilement ni minimiser un vrai danger.',
     date: '2025-10-27',
@@ -3629,6 +3635,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'humidite-cave-sous-sol': {
     slug: 'humidite-cave-sous-sol',
+    metaTitle: 'Cave Humide · 3 Causes, 3 Solutions Définitives',
     title: 'Cave humide : les 3 causes (et les 3 solutions qui marchent vraiment)',
     excerpt: 'Votre cave sent le moisi, les murs suintent, le salpêtre revient ? L\'humidité en cave vient de 3 sources : remontées capillaires, infiltrations latérales, ou condensation. Comment identifier LA bonne cause et appliquer LA bonne solution (injection, cuvelage, ou VMI).',
     date: '2025-11-10',
@@ -4163,6 +4170,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
   'merule-champignon-maison-danger': {
     slug: 'merule-champignon-maison-danger',
+    metaTitle: 'Mérule · Le Champignon qui Dévore les Maisons',
     title: 'Mérule : Le Champignon qui Dévore les Maisons (Guide Complet)',
     excerpt: 'La mérule est le cauchemar des propriétaires. Ce champignon lignivore détruit silencieusement les charpentes et boiseries. Comment l\'identifier, l\'éliminer et surtout : comment éviter qu\'elle ne revienne.',
     date: '2025-12-08',
@@ -4462,6 +4470,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
   'salpetre-toulouse-traitement-definitif': {
     slug: 'salpetre-toulouse-traitement-definitif',
+    metaTitle: 'Salpêtre à Toulouse · Traitement Définitif',
     title: 'Salpêtre à Toulouse : Causes, Diagnostic et Traitement Définitif',
     excerpt: 'Poudre blanche sur vos murs à Toulouse ? C\'est probablement du salpêtre, signe de remontées capillaires. Découvrez pourquoi les maisons toulousaines sont touchées et comment éliminer ce problème définitivement.',
     date: '2025-12-22',
@@ -4724,6 +4733,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
   'fissures-maison-tarn-et-garonne-solutions': {
     slug: 'fissures-maison-tarn-et-garonne-solutions',
+    metaTitle: 'Fissures Maison Tarn-et-Garonne · Solutions',
     title: 'Fissures Maison Tarn-et-Garonne : Causes et Solutions Efficaces',
     excerpt: 'Fissures sur votre maison à Montauban, Castelsarrasin ou Moissac ? Découvrez pourquoi le Tarn-et-Garonne est particulièrement touché et les solutions durables pour protéger votre patrimoine.',
     date: '2026-01-05',
@@ -4989,6 +4999,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'catastrophe-naturelle-secheresse-demarches-indemnisation': {
     slug: 'catastrophe-naturelle-secheresse-demarches-indemnisation',
+    metaTitle: "CAT-NAT Sécheresse · Démarches d'Indemnisation",
     title: 'Catastrophe Naturelle Sécheresse : Le Guide Complet pour Être Indemnisé (Démarches, Délais, Pièges)',
     excerpt: 'Votre commune est reconnue en catastrophe naturelle sécheresse ? Guide complet pour déclarer votre sinistre, les délais à respecter, la franchise à payer, et les erreurs qui font perdre des milliers d\'euros à 40% des sinistrés.',
     date: '2026-01-19',
@@ -5319,6 +5330,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'fissure-mur-interieur-causes-solutions': {
     slug: 'fissure-mur-interieur-causes-solutions',
+    metaTitle: 'Fissure Mur Intérieur · Causes & Solutions',
     title: 'Fissure Mur Intérieur : Causes, Gravité et Solutions (Guide Expert 2026)',
     excerpt: 'Une fissure apparaît sur votre mur intérieur ? Ce guide expert vous aide à identifier sa gravité, comprendre ses causes et choisir la bonne solution. Ne confondez plus fissure esthétique et danger structurel.',
     date: '2026-01-26',
@@ -5532,6 +5544,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'prix-agrafage-fissures-2026': {
     slug: 'prix-agrafage-fissures-2026',
+    metaTitle: 'Prix Agrafage Fissures 2026 · Tarifs Réels',
     title: 'Prix Agrafage Fissures en 2026 : Tarifs Réels et Comparatif Complet',
     excerpt: 'Combien coûte réellement un agrafage de fissures ? Tarifs au mètre linéaire, comparatif agrafage vs micropieux, facteurs de prix et aides financières. Les vrais chiffres d\'un expert.',
     date: '2026-02-02',
@@ -5754,6 +5767,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'fissure-maison-neuve-garantie-decennale': {
     slug: 'fissure-maison-neuve-garantie-decennale',
+    metaTitle: 'Fissure Maison Neuve · Garantie Décennale 2026',
     title: 'Fissure Maison Neuve : Vos Droits et la Garantie Décennale (Guide 2026)',
     excerpt: 'Votre maison de moins de 10 ans se fissure ? Vous êtes protégé par la garantie décennale. Démarches, délais, recours : tout ce qu\'il faut savoir pour être indemnisé.',
     date: '2026-02-06',
@@ -5946,6 +5960,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'humidite-mur-chambre-causes-solutions': {
     slug: 'humidite-mur-chambre-causes-solutions',
+    metaTitle: 'Humidité Mur Chambre · Causes & Solutions Santé',
     title: 'Humidité Mur Chambre : Causes, Risques Santé et Solutions Définitives',
     excerpt: 'Mur humide dans la chambre ? Moisissures, odeur de moisi, peinture qui cloque : découvrez les causes réelles et les traitements qui marchent vraiment.',
     date: '2026-02-10',
@@ -6169,6 +6184,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'assurance-fissures-maison-indemnisation': {
     slug: 'assurance-fissures-maison-indemnisation',
+    metaTitle: 'Assurance Fissures Maison · Comment Être Indemnisé',
     title: 'Assurance Fissures Maison : Comment Être Indemnisé (Guide 2026)',
     excerpt: 'Votre maison se fissure et votre assurance refuse de payer ? Entre franchise CAT-NAT, expert d\'assurance partial et délais serrés, on décrypte les pièges et les recours pour obtenir une indemnisation juste.',
     date: '2026-02-24',
@@ -6444,6 +6460,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'fondations-maison-ancienne-renforcement': {
     slug: 'fondations-maison-ancienne-renforcement',
+    metaTitle: 'Fondations Maison Ancienne · Renforcement Expert',
     title: 'Fondations Maison Ancienne : Signes de Faiblesse et Solutions de Renforcement',
     excerpt: 'Votre maison a plus de 30 ans et des fissures apparaissent ? Les fondations des maisons anciennes n\'ont pas été conçues pour résister au retrait-gonflement des argiles. Comment savoir si vos fondations lâchent, et que faire.',
     date: '2026-03-24',
