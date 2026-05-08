@@ -6452,8 +6452,122 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p class="text-blue-800">Nos experts sont spécialisés en pathologie du bâtiment depuis plus de 10 ans. Nous intervenons exclusivement en Occitanie (31, 82, 32) et connaissons parfaitement les problématiques locales. Notre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic</a> est déductible des travaux si vous faites appel à nous pour la réparation.</p>
       </div>
 
+      <h2>3 cas concrets : indemnisations multipliées par 3</h2>
+
+      <h3>Cas 1 — Maison à Tournefeuille, fissures sécheresse 2023</h3>
+      <p>Sinistre déclaré après l'arrêté CAT-NAT 2023. Expert d'assurance : "fissures cosmétiques, rebouchage". Proposition : <strong>3 800 €</strong>. Notre contre-expertise instrumentée : tassement différentiel actif 9 mm, agrafage structurel + reprise des fondations nécessaires. Coût réel : 18 200 €. Indemnisation finale obtenue : <strong>16 700 €</strong> (franchise déduite). Différence : <strong>+12 900 €</strong>.</p>
+
+      <h3>Cas 2 — Appartement haussmannien Toulouse centre, infiltrations</h3>
+      <p>Infiltrations sur mur mitoyen de copropriété. Expert d'assurance : "défaut d'entretien", refus de prise en charge. Notre rapport : infiltration depuis canalisation collective défectueuse, problème structurel non lié à l'entretien. Indemnisation obtenue après expertise contradictoire : <strong>8 400 €</strong> (vs 0 € initial). Différence : <strong>+8 400 €</strong>.</p>
+
+      <h3>Cas 3 — Pavillon à Castelsarrasin, fissures multiples</h3>
+      <p>Expert d'assurance reconnaît un sinistre mais propose un rebouchage à <strong>4 500 €</strong>. Notre rapport démontre que les fissures sont actives (mesures sur 6 semaines au fissuromètre) et qu'un rebouchage seul est insuffisant. Solution préconisée : agrafage + injection de résine. Coût : 16 800 €. Indemnisation finale : <strong>14 700 €</strong>. Différence : <strong>+10 200 €</strong>.</p>
+
+      <p class="font-bold text-lg text-slate-900 my-6">Sur ces 3 dossiers, le coût total des contre-expertises IPB a été de 3 200 €. Le gain total pour les propriétaires : <strong>31 500 €</strong>. ROI : ×10.</p>
+
+      <h2>Calendrier détaillé d'une expertise contradictoire</h2>
+
+      <p>Si l'évaluation de l'expert d'assurance ne vous convient pas, voici le déroulé typique :</p>
+
+      <ul>
+        <li><strong>J1 — Réception du rapport assurance</strong> : vous le demandez en LRAR si l'assureur ne vous le transmet pas spontanément (article L.121-1 du Code des assurances).</li>
+        <li><strong>J + 7 — Mandat de votre expert</strong> : signature de la convention, fourniture des documents (rapport assurance, photos, courriers).</li>
+        <li><strong>J + 14 — Visite contradictoire programmée</strong> : votre expert se rend sur site, idéalement en présence de l'expert d'assurance.</li>
+        <li><strong>J + 21 à 28 — Rapport contradictoire IPB</strong> : analyse instrumentée, photos comparées, chiffrage détaillé.</li>
+        <li><strong>J + 30 — Transmission du rapport à l'assureur</strong> : par LRAR avec demande de réévaluation sous 15 jours (délai légal).</li>
+        <li><strong>J + 45 — Réponse de l'assureur</strong> : 80 % des cas se règlent à l'amiable à ce stade.</li>
+        <li><strong>J + 60 (si désaccord persistant) — Tiers-expertise</strong> : un troisième expert tranche, sa décision s'impose aux deux parties.</li>
+      </ul>
+
+      <p>Comptez en moyenne <strong>2 à 3 mois</strong> du déclenchement à l'indemnisation finale. Sans contre-expertise, vous restez bloqué à l'évaluation initiale (qui ne bouge presque jamais).</p>
+
+      <h2>Documents à préparer pour votre expert indépendant</h2>
+
+      <p>Pour optimiser le rendu et éviter les allers-retours, rassemblez en amont :</p>
+
+      <ul>
+        <li><strong>Tout votre dossier d'assurance habitation</strong> : contrat, conditions générales, avenants, attestations annuelles</li>
+        <li><strong>La déclaration de sinistre</strong> que vous avez envoyée et l'accusé de réception de l'assureur</li>
+        <li><strong>Le rapport de l'expert d'assurance</strong> (si reçu — sinon le demander en LRAR)</li>
+        <li><strong>Les photos datées</strong> des désordres, idéalement avec un objet d'échelle (pièce de monnaie, mètre)</li>
+        <li><strong>Les arrêtés CAT-NAT</strong> de votre commune (téléchargeables sur georisques.gouv.fr)</li>
+        <li><strong>L'historique des travaux</strong> sur la maison : factures, devis antérieurs, attestations décennales d'autres entreprises</li>
+        <li><strong>Les plans</strong> si vous les avez (plan d'origine, plan cadastral)</li>
+        <li><strong>Tout courrier ou échange</strong> avec l'assureur : refus, propositions, mises en demeure</li>
+      </ul>
+
+      <h2>Combien coûte vraiment un expert indépendant ?</h2>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead class="bg-slate-900 text-white">
+            <tr>
+              <th class="border border-slate-300 p-3 text-left">Type de mission</th>
+              <th class="border border-slate-300 p-3 text-center">Tarif IPB</th>
+              <th class="border border-slate-300 p-3 text-center">Délai rapport</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-3">Diagnostic technique simple</td>
+              <td class="border border-slate-300 p-3 text-center">800 - 1 200 €</td>
+              <td class="border border-slate-300 p-3 text-center">5-7 j</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3"><strong>Contre-expertise sinistre assurance</strong></td>
+              <td class="border border-slate-300 p-3 text-center"><strong>1 500 - 2 800 €</strong></td>
+              <td class="border border-slate-300 p-3 text-center"><strong>10-15 j</strong></td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3">Expertise judiciaire (procédure)</td>
+              <td class="border border-slate-300 p-3 text-center">3 500 - 6 000 €</td>
+              <td class="border border-slate-300 p-3 text-center">3-6 sem</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3">Diagnostic structurel avant achat / vente</td>
+              <td class="border border-slate-300 p-3 text-center">800 - 1 500 €</td>
+              <td class="border border-slate-300 p-3 text-center">72 h</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Le coût semble élevé en absolu, mais doit être mis en perspective :</p>
+      <ul>
+        <li><strong>Sur les sinistres &gt; 10 000 €</strong> : le gain moyen d'indemnisation (5 à 15 000 €) couvre largement la prestation.</li>
+        <li><strong>Le coût est déductible</strong> dans le cadre des travaux ultérieurs (devis IPB) si vous faites appel à nous pour la réparation.</li>
+        <li><strong>Certaines protections juridiques</strong> incluses dans votre assurance habitation (option "défense recours") prennent en charge tout ou partie de l'expert d'assuré. Vérifiez votre contrat — beaucoup de propriétaires ignorent en bénéficier.</li>
+      </ul>
+
+      <h2>FAQ — Expert bâtiment indépendant</h2>
+
+      <h3>Mon assureur peut-il refuser que je prenne un expert d'assuré ?</h3>
+      <p>Non. C'est un droit garanti par le Code des assurances (article L.121-1). L'assureur peut contester les conclusions, jamais le principe.</p>
+
+      <h3>Si mon expert et celui de l'assureur ne sont pas d'accord, qui paie le tiers-expert ?</h3>
+      <p>Les frais du tiers-expert sont partagés à 50/50 entre vous et l'assureur. Comptez 2 000 à 4 000 € au total selon la complexité.</p>
+
+      <h3>Combien de temps après la déclaration de sinistre puis-je mandater un expert ?</h3>
+      <p>Tant que le dossier n'est pas clos. L'idéal est de le faire <strong>avant</strong> l'expert d'assurance pour avoir vos propres mesures de référence, mais c'est aussi possible après.</p>
+
+      <h3>Mon expert peut-il être présent lors de la visite de l'expert d'assurance ?</h3>
+      <p>Oui, et c'est même recommandé sur les dossiers importants. Cela permet d'éviter qu'il "loupe" certains désordres et facilite la suite contradictoire.</p>
+
+      <h3>L'expert indépendant garantit-il une indemnisation supérieure ?</h3>
+      <p>Non, aucune garantie. Mais <strong>statistiquement, 75 % des contre-expertises débouchent sur une réévaluation à la hausse</strong>, avec un gain moyen de +30 à +50 % sur l'indemnisation initiale.</p>
+
+      <h3>Que faire si mon assureur refuse même le principe d'une contre-expertise ?</h3>
+      <p>Mise en demeure par LRAR, puis saisine du médiateur de l'assurance (gratuit). En dernier recours, action devant le tribunal judiciaire — la jurisprudence est massivement en faveur de l'assuré qui demande une expertise contradictoire.</p>
+
       <h2>L'investissement qui rapporte le plus</h2>
       <p>Un diagnostic indépendant qui vous fait gagner 5 000€, 10 000€ ou 15 000€ d'indemnisation supplémentaire, c'est le meilleur investissement que vous ferez dans la vie de votre maison. Ne laissez pas l'expert de l'assurance décider seul du sort de votre patrimoine.</p>
+
+      <h2>Pour aller plus loin</h2>
+      <ul>
+        <li><a href="/blog/assurance-fissures-maison-indemnisation">Assurance fissures maison : comment être indemnisé</a></li>
+        <li><a href="/blog/catastrophe-naturelle-secheresse-demarches-indemnisation">CAT-NAT sécheresse : démarches d'indemnisation</a></li>
+        <li><a href="/blog/diagnostic-structurel-avant-vente-maison">Diagnostic structurel avant vente : pourquoi c'est essentiel</a></li>
+      </ul>
 
       <p class="font-bold text-lg text-slate-900 mt-6">Besoin d'une contre-expertise ? Appelez le 05 82 95 33 75 — ou faites votre <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic en ligne gratuit</a></p>
     `
@@ -6993,6 +7107,126 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>✅ Délai d'intervention et planning</li>
       </ul>
 
+      <h2>Tableau récapitulatif des prix par configuration</h2>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead class="bg-slate-900 text-white">
+            <tr>
+              <th class="border border-slate-300 p-3 text-left">Configuration</th>
+              <th class="border border-slate-300 p-3 text-center">Portée</th>
+              <th class="border border-slate-300 p-3 text-center">Poutre type</th>
+              <th class="border border-slate-300 p-3 text-center">Budget TTC</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-3">Petite ouverture (passage / cuisine)</td>
+              <td class="border border-slate-300 p-3 text-center">1,2 à 2 m</td>
+              <td class="border border-slate-300 p-3 text-center">IPN 140-160</td>
+              <td class="border border-slate-300 p-3 text-center text-green-700 font-bold">4 000 à 6 500 €</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3">Ouverture standard (cuisine ↔ salon)</td>
+              <td class="border border-slate-300 p-3 text-center">2 à 3 m</td>
+              <td class="border border-slate-300 p-3 text-center">IPN 180-200 / IPE 200</td>
+              <td class="border border-slate-300 p-3 text-center text-orange-700 font-bold">6 500 à 10 000 €</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3">Grande baie vitrée</td>
+              <td class="border border-slate-300 p-3 text-center">3 à 4,5 m</td>
+              <td class="border border-slate-300 p-3 text-center">HEB 200-240</td>
+              <td class="border border-slate-300 p-3 text-center text-red-700 font-bold">10 000 à 16 000 €</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3">Très grande ouverture / loft</td>
+              <td class="border border-slate-300 p-3 text-center">&gt; 4,5 m</td>
+              <td class="border border-slate-300 p-3 text-center">HEB 260-300 + jambage</td>
+              <td class="border border-slate-300 p-3 text-center text-red-700 font-bold">16 000 à 25 000 €</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-[13px] text-slate-500 italic">Fourchettes constatées en Occitanie 2026, mur porteur en parpaing ou brique foraine, accès standard. Pierre / béton banché / accès difficile : majoration de 15 à 30 %.</p>
+
+      <h2>IPN, HEB ou IPE : quelle poutre pour quoi ?</h2>
+
+      <p>Les trois grandes familles d'aciers profilés ne sont pas interchangeables. Le choix dépend de la <strong>portée</strong> (longueur de l'ouverture) et de la <strong>charge reprise</strong> (poids des étages au-dessus).</p>
+
+      <h3>IPN — la poutre historique</h3>
+      <p>Profilé en I avec ailes inclinées. Économique et adaptée aux <strong>petites portées (jusqu'à 2,5 m)</strong> sur charge modérée. Très utilisée sur les pavillons des années 70-80 toulousains. Inconvénient : moins efficace sur grande portée que le HEB.</p>
+
+      <h3>IPE — l'optimisation moderne</h3>
+      <p>Profilé en I à ailes parallèles, plus optimisé que l'IPN à poids égal. Adapté aux <strong>portées moyennes (2 à 3,5 m)</strong>. Bon compromis prix/performance pour la grande majorité des ouvertures résidentielles modernes.</p>
+
+      <h3>HEB — la poutre des grandes ouvertures</h3>
+      <p>Profilé en H, plus large et plus rigide. Indispensable dès que la portée dépasse <strong>3 m</strong> ou qu'il y a plusieurs étages au-dessus. Plus chère mais évite les flèches (déformations) qui fissurent les plafonds dans le temps.</p>
+
+      <div class="my-8 p-6 bg-slate-50 border border-slate-200 rounded-xl">
+        <p class="font-bold text-slate-900 mb-2">L'erreur classique du devis low-cost</p>
+        <p class="text-slate-800">Certains artisans dimensionnent une IPN 160 sur une portée de 3,5 m pour gagner 200 € sur le devis. Résultat : la poutre fléchit de 4 à 6 mm avec le temps, le plafond fissure, les portes de l'étage coincent. Reprise : 8 000 à 15 000 €. <strong>Une note de calcul signée par un ingénieur structure est non négociable.</strong></p>
+      </div>
+
+      <h2>Les 5 frais cachés que beaucoup oublient</h2>
+
+      <ol>
+        <li><strong>La TVA à 10 % vs 20 %</strong> : la TVA réduite à 10 % s'applique sur les travaux dans un logement de plus de 2 ans. Si l'artisan facture en 20 % par méconnaissance, vous perdez plusieurs centaines d'euros.</li>
+        <li><strong>Frais de syndic en copropriété</strong> : si vous habitez en immeuble, le PV d'AG (procédure copropriété) coûte 200 à 600 € selon le syndic. À anticiper.</li>
+        <li><strong>Stationnement / aire de manutention</strong> : sur les chantiers du centre Toulouse (Carmes, Saint-Étienne), la livraison de la poutre nécessite parfois un arrêté de voirie payant (50 à 150 € la journée).</li>
+        <li><strong>Évacuation des gravats</strong> : un mur porteur abattu génère 1 à 3 m³ de gravats. Location de benne ou transport en déchèterie : 150 à 400 €. Souvent oublié dans les devis "tout compris".</li>
+        <li><strong>Reprise des sols / plinthes</strong> : la zone d'ouverture casse forcément les sols et les plinthes existants. La rejointure ou le remplacement total : 300 à 1 000 € selon les matériaux.</li>
+      </ol>
+
+      <h2>Calendrier d'un chantier type (ouverture 3 m)</h2>
+
+      <ul>
+        <li><strong>J1</strong> — Visite + relevés + démarches administratives (déclaration préalable mairie, ou inscription à l'AG copro)</li>
+        <li><strong>J + 7</strong> — Note de calcul livrée. Devis ferme transmis. Commande poutre.</li>
+        <li><strong>J + 21 à 30</strong> — Délai administratif (1 mois si DP, 2-3 mois si copro)</li>
+        <li><strong>J + 30</strong> — Démarrage chantier : étaiement (jour 1-2)</li>
+        <li><strong>J + 32</strong> — Découpe progressive du mur (jour 3-4)</li>
+        <li><strong>J + 34</strong> — Pose et scellement de la poutre (jour 5)</li>
+        <li><strong>J + 37</strong> — Levée des étais, ragréage, finitions (jour 6-8)</li>
+        <li><strong>J + 40</strong> — Livraison + remise des documents (note de calcul, attestation décennale, factures)</li>
+      </ul>
+
+      <p>Soit en moyenne <strong>5 à 6 semaines</strong> entre la visite initiale et la livraison, dont 1 à 3 jours uniquement de présence d'ouvriers chez vous.</p>
+
+      <h2>Bureau d'études interne vs externe : pourquoi ça change tout</h2>
+
+      <p>La majorité des artisans toulousains <strong>sous-traitent l'étude structure</strong> à un BE externe. Vous payez deux prestations distinctes (étude 800 € + travaux 7 000 €), avec deux interlocuteurs et deux assurances décennales. Si la poutre est sous-dimensionnée, le BE rejette la faute sur l'artisan, et inversement.</p>
+
+      <p>Un institut comme IPB intègre le bureau d'études et les travaux : <strong>une seule responsabilité</strong>, <strong>une seule décennale couvrant l'ensemble</strong>, et un coût global souvent inférieur de 10 à 20 %. C'est la configuration que les notaires et les acquéreurs reconnaissent comme la plus solide à la revente.</p>
+
+      <h2>FAQ — Prix ouverture mur porteur Toulouse 2026</h2>
+
+      <h3>Faut-il un permis de construire ?</h3>
+      <p>Non, dans la quasi-totalité des cas une simple <strong>déclaration préalable de travaux</strong> en mairie suffit. Le permis de construire ne devient obligatoire que si l'ouverture modifie l'aspect extérieur du bâtiment et que vous êtes en zone classée.</p>
+
+      <h3>Combien de temps prend la déclaration préalable ?</h3>
+      <p>1 mois en zone non protégée. 2 mois en zone classée (centre Toulouse, secteurs sauvegardés). Vous ne pouvez pas commencer les travaux avant la fin du délai sans recours.</p>
+
+      <h3>Et si je suis en copropriété ?</h3>
+      <p>Vous devez obtenir l'<strong>autorisation de l'assemblée générale</strong> à la majorité absolue (article 25 de la loi de 1965). Comptez 2 à 4 mois entre l'inscription du sujet à l'ordre du jour et l'AG votante. Un dossier technique complet (plans, note de calcul) doit être joint à la convocation.</p>
+
+      <h3>Puis-je faire les finitions moi-même pour économiser ?</h3>
+      <p>Oui, mais à une condition : exiger que le devis sépare clairement le poste "finitions" pour le supprimer. Économie : 800 à 2 500 €. Attention, la décennale ne couvre alors que la pose de la poutre, pas les finitions.</p>
+
+      <h3>Y a-t-il des aides financières ?</h3>
+      <p>Pas pour l'ouverture de mur porteur en tant que telle. Mais si l'ouverture s'inscrit dans une rénovation énergétique (création de baie vitrée pour optimiser les apports solaires), certaines aides comme MaPrimeRénov' peuvent s'appliquer sur l'enveloppe globale.</p>
+
+      <h3>Le devis le moins cher est-il toujours le pire ?</h3>
+      <p>Pas toujours, mais 9 fois sur 10. Un devis 30 % en dessous du marché traduit presque systématiquement : pas d'étude, poutre sous-dimensionnée, pas de décennale couvrant l'étude, ou finitions non chiffrées. Demandez l'attestation décennale AVANT signature — c'est le seul critère vraiment objectif.</p>
+
+      <h2>Pour aller plus loin</h2>
+      <ul>
+        <li><a href="/blog/comment-savoir-si-mur-porteur">Comment savoir si un mur est porteur ? Le test fiable en 4 étapes</a></li>
+        <li><a href="/blog/etude-de-cas-mur-porteur-4m-t3-toulouse">Étude de cas : ouverture mur porteur 4 m dans un T3 toulousain</a></li>
+        <li><a href="/expertise/mur-porteur">Notre expertise mur porteur en détail</a></li>
+        <li><a href="/calcul-prix-mur-porteur">Calculer le prix de votre projet en 2 minutes</a></li>
+      </ul>
+
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
         <p class="font-bold text-orange-900 mb-3">Devis gratuit sous 24h pour votre projet à Toulouse</p>
         <p class="text-orange-800 mb-4">IPB intervient en Haute-Garonne, Tarn-et-Garonne, Gers et Tarn. Notre ingénieur passe gratuitement, vous repartez avec une note de calcul, un devis ferme et l'attestation décennale AXA.</p>
@@ -7099,6 +7333,96 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>si l'ouverture est possible, calcule la poutre, le mode d'étaiement et le budget total ;</li>
         <li>vous propose un devis fermé sous 7 jours, avec décennale AXA jointe.</li>
       </ul>
+
+      <h2>Tableau récapitulatif : les 4 indices à croiser</h2>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead class="bg-slate-900 text-white">
+            <tr>
+              <th class="border border-slate-300 p-3 text-left">Indice</th>
+              <th class="border border-slate-300 p-3 text-center">Probablement porteur si…</th>
+              <th class="border border-slate-300 p-3 text-center">Probablement cloison si…</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-3"><strong>Épaisseur</strong></td>
+              <td class="border border-slate-300 p-3 text-center">≥ 15 cm (hors enduit)</td>
+              <td class="border border-slate-300 p-3 text-center">&lt; 10 cm</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3"><strong>Son</strong></td>
+              <td class="border border-slate-300 p-3 text-center">Sourd, plein</td>
+              <td class="border border-slate-300 p-3 text-center">Creux, qui résonne</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3"><strong>Plans d'origine</strong></td>
+              <td class="border border-slate-300 p-3 text-center">Marqué "porteur" ou présent dans le plan de structure</td>
+              <td class="border border-slate-300 p-3 text-center">Absent du plan de structure / cloison déclarée</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3"><strong>Alignement vertical</strong></td>
+              <td class="border border-slate-300 p-3 text-center">Mur continu d'un étage à l'autre</td>
+              <td class="border border-slate-300 p-3 text-center">Mur isolé sur un seul niveau</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="font-bold text-lg text-slate-900 my-6">Règle d'or : si <strong>3 indices sur 4</strong> pointent vers "porteur", considérez-le comme porteur jusqu'à preuve du contraire d'un ingénieur structure.</p>
+
+      <h2>Le risque juridique : abattre un mur porteur sans autorisation</h2>
+
+      <p>Au-delà du risque physique (effondrement), abattre un mur porteur sans autorisation expose à des conséquences juridiques sérieuses :</p>
+
+      <ul>
+        <li><strong>En copropriété</strong> : modification de la structure de l'immeuble sans accord de l'AG = nullité des travaux, obligation de remise en état à vos frais. La copropriété peut vous assigner devant le tribunal.</li>
+        <li><strong>En propriété privée</strong> : si l'ouverture nécessitait une déclaration préalable (modification du plancher porteur), la mairie peut exiger une remise en état dans les 6 ans.</li>
+        <li><strong>En cas de revente</strong> : les diagnostics immobiliers obligatoires révèlent fréquemment les modifications structurelles non déclarées. Le notaire peut bloquer la vente, l'acheteur peut demander une réduction de prix.</li>
+        <li><strong>En cas de sinistre</strong> : si la maison subit un dégât (fissures, affaissement) lié à la modification non déclarée, votre assurance habitation peut refuser la prise en charge — la décennale ne couvre QUE les travaux exécutés selon les règles de l'art ET déclarés.</li>
+      </ul>
+
+      <h2>Cas concret : une erreur à 80 000 € à Tournefeuille</h2>
+
+      <p>En 2024, un propriétaire de Tournefeuille (31) a abattu un mur de refend de 22 cm dans son rez-de-chaussée pour créer un grand séjour. Il avait fait le test du son : "creux, donc cloison". Mauvaise lecture — le mur était en brique foraine épaisse, et le son creux venait simplement d'un coffrage en placo posé devant.</p>
+
+      <p>Trois mois plus tard, des fissures sont apparues à l'étage. Six mois plus tard, le plancher du R+1 s'est affaissé de 4 cm. Diagnostic IPB : reprise complète avec pose d'une poutre HEB 220 + reprise du plancher = <strong>78 500 € TTC</strong>. La décennale de l'artisan d'origine (qui n'avait pas calculé la poutre) a refusé la prise en charge.</p>
+
+      <p class="font-bold text-lg text-slate-900 my-6">Coût d'une visite ingénieur structure préalable : 400 €. Coût de l'erreur : 78 500 €. Le ratio se passe de commentaire.</p>
+
+      <h2>Outils utiles à acheter (10-50 €)</h2>
+
+      <p>Si vous voulez tester sérieusement avant d'appeler un pro :</p>
+
+      <ul>
+        <li><strong>Détecteur de matériaux multifonction (Bosch Truvo, Stanley Stud Sensor)</strong> — 25-50 €. Détecte le métal (chevrons, ferraillage du béton), le bois (ossatures), parfois la densité. Pas infaillible mais aide à compléter le test du son.</li>
+        <li><strong>Endoscope USB</strong> — 20-40 €. Vous percez un petit trou (5 mm) et filmez l'intérieur du mur. Permet de voir s'il y a une lame d'air (cloison double parois) ou si c'est plein.</li>
+        <li><strong>Mètre laser</strong> — 25-50 €. Plus précis qu'un mètre ruban pour mesurer l'épaisseur exacte sans déformer la mesure.</li>
+        <li><strong>Niveau laser</strong> — 30-100 €. Pour vérifier l'alignement vertical sur plusieurs étages.</li>
+      </ul>
+
+      <p>Ces outils ne remplacent pas un ingénieur, mais ils valent largement les 50-100 € investis pour réduire l'incertitude avant de décider.</p>
+
+      <h2>FAQ — Comment identifier un mur porteur</h2>
+
+      <h3>Un mur en placo peut-il être porteur ?</h3>
+      <p>Le placo lui-même ne porte rien, mais il peut être l'<strong>habillage</strong> d'un mur porteur en maçonnerie ou d'une ossature bois porteuse. Ne vous fiez jamais à la couche de finition, percez un trou ou retirez une plinthe pour voir ce qu'il y a derrière.</p>
+
+      <h3>Tous les murs extérieurs sont-ils porteurs ?</h3>
+      <p>Dans 95 % des cas, oui — les murs extérieurs portent la toiture et les planchers d'étages. Exception : certains lofts ou extensions modernes en ossature légère où la structure porteuse est dans des poteaux invisibles, et les murs extérieurs sont juste de l'enveloppe.</p>
+
+      <h3>Et un mur de séparation entre deux logements ?</h3>
+      <p>Mur mitoyen en immeuble = quasi-systématiquement porteur. Mur de séparation entre deux maisons accolées (mitoyenneté) = porteur dans 90 % des cas. Toute intervention nécessite l'accord du voisin et une note d'ingénieur.</p>
+
+      <h3>Mon poteau au milieu de la pièce est-il un signe ?</h3>
+      <p>Oui — un poteau visible (ou caché dans une cloison) indique qu'il y a une descente de charges importante à cet endroit. Tout mur qui rejoint ce poteau est probablement porteur.</p>
+
+      <h3>Quelle est la différence entre un mur porteur et un mur de refend ?</h3>
+      <p>Un mur de refend est un type de mur porteur intérieur. Tous les refends sont porteurs, mais tous les murs porteurs ne sont pas des refends (ex : murs extérieurs).</p>
+
+      <h3>Le diagnostic ingénieur est-il obligatoire avant des travaux ?</h3>
+      <p>Pas légalement obligatoire pour les particuliers en travaux mineurs. Mais la décennale du professionnel qui exécutera les travaux <strong>l'exigera systématiquement</strong> avant de vous couvrir. Sans note de calcul, pas de décennale, pas de chantier sécurisé.</p>
 
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
         <p class="font-bold text-orange-900 mb-3">Estimer votre projet en 2 minutes</p>
