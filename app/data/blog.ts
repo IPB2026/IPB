@@ -42,7 +42,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '8 min',
     category: 'fissures',
     author: 'Ludovic D.',
-    metaDescription: 'Guide expert sur les fissures de maison à Toulouse. Comment identifier les fissures dangereuses, leurs causes (sol argileux, sécheresse) et les solutions économiques (agrafage vs micropieux).',
+    metaDescription: 'Guide expert pour identifier les fissures dangereuses sur votre maison à Toulouse. Causes (sol argileux), solutions (agrafage vs micropieux), prix réels.',
     keywords: ['fissures maison', 'toulouse', 'haute-garonne', 'agrafage', 'micropieux', 'tassement différentiel', 'sol argileux'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
@@ -642,7 +642,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '15 min',
     category: 'fissures',
     author: 'Ludovic D.',
-    metaDescription: 'Guide complet fissures en escalier 2026 : diagnostic tassement différentiel, causes (sol argileux, sécheresse), mesure gravité, solutions agrafage vs micropieux. Expert Toulouse Haute-Garonne.',
+    metaDescription: 'Fissures en escalier : diagnostic du tassement différentiel, causes (sol argileux, sécheresse), mesure de gravité, solutions agrafage vs micropieux.',
     keywords: ['fissures escalier', 'tassement différentiel', 'fissure crémaillère', 'fondations maison', 'agrafage mur', 'sol argileux', 'affaissement maison', 'réparation fissures', 'expertise bâtiment', 'RGA Haute-Garonne'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
@@ -892,7 +892,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '12 min',
     category: 'conseils',
     author: 'Adam F.',
-    metaDescription: 'Guide complet garantie décennale 2026 : obligation légale, couverture, exclusions, vérification attestation, recours. Protégez vos travaux de réparation fissures et fondations.',
+    metaDescription: "Garantie décennale 2026 : obligation, couverture, exclusions, vérification de l'attestation, recours. Protégez vos travaux de réparation structurelle.",
     keywords: ['garantie décennale', 'travaux structure', 'assurance décennale', 'protection travaux', 'fissures', 'attestation décennale', 'loi Spinetta', 'responsabilité constructeur', 'malfaçons', 'recours juridique'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
@@ -1120,7 +1120,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '14 min',
     category: 'humidite',
     author: 'Nicolas G.',
-    metaDescription: 'Guide complet ventilation maison 2026 : VMC simple flux, double flux, VMI, hygroréglable. Comparatif, prix, installation. Éliminer condensation et moisissures. Expert Toulouse.',
+    metaDescription: 'Ventilation maison 2026 : VMC simple flux, double flux, VMI, hygroréglable. Comparatif, prix, installation pour éliminer condensation et moisissures.',
     keywords: ['VMC', 'VMI', 'ventilation maison', 'humidité', 'condensation', 'moisissures', 'VMC double flux', 'VMC hygroréglable', 'renouvellement air', 'qualité air intérieur', 'pont thermique'],
     content: `
       <div class="mb-8 p-6 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg">
@@ -3957,7 +3957,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '10 min',
     category: 'fissures',
     author: 'Adam F.',
-    metaDescription: 'Expert fissures Gers : causes des fissures sur les maisons gasconnes, sols argileux, solutions (agrafage, injection). Prix, délais, garanties. Diagnostic gratuit à Auch, Condom, Fleurance.',
+    metaDescription: 'Expert fissures dans le Gers : causes sur le bâti gascon, sols argileux, solutions agrafage. Prix, délais, garanties à Auch, Condom, Fleurance.',
     keywords: ['expert fissures gers', 'fissures maison gers', 'agrafage fissures 32', 'expert fissure auch', 'fissures condom', 'sol argileux gascogne', 'réparation fissures gers'],
     content: `
       <div class="mb-8 p-6 bg-amber-50 border-l-4 border-amber-600 rounded-r-lg">
@@ -4741,7 +4741,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '9 min',
     category: 'fissures',
     author: 'Ludovic D.',
-    metaDescription: 'Expert fissures Tarn-et-Garonne : causes des fissures à Montauban, Castelsarrasin, Moissac. Sol argileux, sécheresse. Solutions agrafage, injection. Diagnostic gratuit.',
+    metaDescription: 'Expert fissures Tarn-et-Garonne : causes à Montauban, Castelsarrasin, Moissac. Sol argileux, sécheresse, solutions agrafage. Diagnostic gratuit.',
     keywords: ['expert fissures tarn et garonne', 'fissures maison montauban', 'fissure 82', 'agrafage tarn et garonne', 'expert fissure castelsarrasin', 'sol argileux 82'],
     content: `
       <div class="mb-8 p-6 bg-rose-50 border-l-4 border-rose-600 rounded-r-lg">
@@ -5007,7 +5007,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '12 min',
     category: 'conseils',
     author: 'Adam F.',
-    metaDescription: 'Catastrophe naturelle sécheresse : démarches, délais, indemnisation. Comment déclarer un sinistre fissures, franchise CAT-NAT, expertise assurance. Guide complet Haute-Garonne, Tarn, Gers.',
+    metaDescription: 'CAT-NAT sécheresse : démarches, délais, indemnisation. Comment déclarer un sinistre fissures, franchise, expertise assurance. Guide complet Occitanie.',
     keywords: [
       'catastrophe naturelle sécheresse',
       'déclaration cat nat sécheresse',
@@ -5338,7 +5338,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '12 min',
     category: 'fissures',
     author: 'Fabien T.',
-    metaDescription: 'Fissure mur intérieur : comment évaluer la gravité ? Causes (tassement, sécheresse, malfaçon), différences entre micro-fissure et fissure structurelle, solutions durables. Guide expert IPB Toulouse.',
+    metaDescription: 'Fissure mur intérieur : comment évaluer la gravité ? Causes (tassement, sécheresse), différences micro-fissure / structurelle, solutions durables IPB.',
     keywords: ['fissure mur intérieur', 'fissure mur intérieur maison', 'fissure mur intérieur cause', 'réparer fissure mur intérieur', 'fissure mur porteur', 'fissure plâtre intérieur', 'fissure cloison', 'expert fissures toulouse'],
     content: `
       <div class="mb-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
@@ -5552,7 +5552,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '10 min',
     category: 'fissures',
     author: 'Ludovic D.',
-    metaDescription: 'Prix agrafage fissures 2026 : de 80 à 150€/ml selon la gravité. Comparatif agrafage vs micropieux (3x moins cher). Devis détaillé, aides CAT-NAT, garantie décennale. Expert Toulouse.',
+    metaDescription: 'Prix agrafage fissures 2026 : de 80 à 150€/ml. Comparatif agrafage vs micropieux (3x moins cher). Devis détaillé, aides CAT-NAT, décennale AXA.',
     keywords: ['prix agrafage fissures', 'cout agrafage fissure', 'tarif agrafage mur', 'prix reparation fissure maison', 'agrafage fissure prix m2', 'devis agrafage fissures', 'cout reparation fissure facade'],
     content: `
       <div class="mb-8 p-6 bg-emerald-50 border-l-4 border-emerald-600 rounded-r-lg">
@@ -6468,7 +6468,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '12 min',
     category: 'fissures' as const,
     author: 'Fabien T.',
-    metaDescription: 'Fondations maison ancienne : signes de faiblesse, diagnostic, solutions de renforcement (agrafage, micropieux, longrines). Guide technique par IPB Expert Bâtiment Toulouse.',
+    metaDescription: 'Fondations de maison ancienne : signes de faiblesse, diagnostic, solutions de renforcement (agrafage, micropieux, longrines) par institut indépendant.',
     keywords: ['fondations maison ancienne', 'renforcement fondations', 'fissures fondations', 'reprise en sous-oeuvre', 'agrafage fondations', 'micropieux maison'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
