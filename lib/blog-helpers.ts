@@ -2,6 +2,8 @@
  * Helpers pour le blog - SEO et structure
  */
 
+import { generatePersonSchema } from '@/lib/authors';
+
 export interface TocItem {
   id: string;
   title: string;
@@ -105,17 +107,7 @@ export function generateArticleJsonLd(article: {
     },
     datePublished: article.date,
     dateModified: article.dateModified || article.date,
-    author: {
-      '@type': 'Person',
-      name: article.author,
-      url: `${baseUrl}/notre-expert`,
-      jobTitle: 'Expert en Pathologie du Bâtiment',
-      worksFor: {
-        '@type': 'Organization',
-        '@id': `${baseUrl}#organization`,
-        name: 'IPB - Institut de Pathologie du Bâtiment',
-      },
-    },
+    author: generatePersonSchema(article.author),
     publisher: {
       '@type': 'Organization',
       '@id': `${baseUrl}#organization`,
@@ -165,6 +157,61 @@ export function generateBreadcrumbJsonLd(breadcrumbs: { name: string; url: strin
       name: crumb.name,
       item: `${baseUrl}${crumb.url}`,
     })),
+  };
+}
+
+/**
+ * Calcule le temps de lecture estimé en minutes à partir du contenu HTML.
+ *
+ * Vitesse de lecture moyenne en français : 220 mots/minute (contre 250-300 en
+ * anglais). Plus prudent pour un contenu technique avec tableaux et listes.
+ *
+ * Arrondit à la minute supérieure et formate en "X min".
+ */
+export function computeReadTime(htmlContent: string): string {
+  // Strip HTML tags pour ne compter que le contenu textuel
+  const text = htmlContent.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  const words = text.split(/\s+/).length;
+  const minutes = Math.max(1, Math.ceil(words / 220));
+  return `${minutes} min`;
+}
+
+/**
+ * Retourne l'article précédent et suivant pour la navigation en fin
+ * d'article. Logique : tri par date desc, puis prev = plus ancien,
+ * next = plus récent (chronologique inversé pour la lecture).
+ *
+ * Préfère la même catégorie quand possible (boost engagement +
+ * pertinence Google).
+ */
+export function getPrevNextArticles(
+  currentSlug: string,
+  allArticles: { slug: string; title: string; date: string; category: string }[]
+): {
+  prev: { slug: string; title: string; category: string } | null;
+  next: { slug: string; title: string; category: string } | null;
+} {
+  const sorted = [...allArticles].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+  const idx = sorted.findIndex(a => a.slug === currentSlug);
+  if (idx === -1) return { prev: null, next: null };
+
+  // Tenter d'abord la navigation dans la même catégorie
+  const currentCat = sorted[idx].category;
+  const sameCat = sorted.filter(a => a.category === currentCat);
+  const catIdx = sameCat.findIndex(a => a.slug === currentSlug);
+
+  const prevSameCat = catIdx >= 0 && catIdx < sameCat.length - 1 ? sameCat[catIdx + 1] : null;
+  const nextSameCat = catIdx > 0 ? sameCat[catIdx - 1] : null;
+
+  // Fallback global si pas d'article dans la même catégorie
+  const prevGlobal = idx < sorted.length - 1 ? sorted[idx + 1] : null;
+  const nextGlobal = idx > 0 ? sorted[idx - 1] : null;
+
+  return {
+    prev: prevSameCat ?? prevGlobal,
+    next: nextSameCat ?? nextGlobal,
   };
 }
 

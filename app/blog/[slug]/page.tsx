@@ -21,8 +21,11 @@ import {
   getCategoryFallbackImage,
   extractKeyTakeaways,
   generateHowToSchema,
+  computeReadTime,
+  getPrevNextArticles,
 } from '@/lib/blog-helpers';
 import { KeyTakeaways } from '@/components/blog/KeyTakeaways';
+import { PrevNextNav } from '@/components/blog/PrevNextNav';
 import {
   extractFAQsFromContent,
   generateFAQSchema,
@@ -190,6 +193,19 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
     content: post.content,
   });
 
+  // 🎯 LISIBILITÉ : reading time auto-calculé à partir du content réel
+  // (les valeurs manuelles dans blog.ts sont parfois obsolètes après extension)
+  const readTime = computeReadTime(post.content);
+
+  // 🎯 ENGAGEMENT : navigation chronologique entre articles (boost dwell time)
+  const navItems = Object.values(blogPosts).map(p => ({
+    slug: p.slug,
+    title: p.title,
+    date: p.date,
+    category: p.category,
+  }));
+  const { prev: prevArticle, next: nextArticle } = getPrevNextArticles(post.slug, navItems);
+
   // 🎯 SEO BOOST : Liens contextuels intelligents
   const contextualLinks = getContextualLinks(post.slug, post.keywords);
 
@@ -284,7 +300,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                   )}
                   <span className="meta-item">
                     <Clock size={16} />
-                    {post.readTime}
+                    {readTime}
                   </span>
                   <span className="meta-item">
                     Par {post.author}
@@ -352,6 +368,9 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                 </ul>
               </section>
             )}
+
+            {/* Navigation entre articles (boost engagement + découverte) */}
+            <PrevNextNav prev={prevArticle} next={nextArticle} />
 
             {/* CTA navy — un seul, fort */}
             <section className="mt-12 bg-ipb-navy rounded-[6px] p-10 md:p-12 text-center text-white relative overflow-hidden">
