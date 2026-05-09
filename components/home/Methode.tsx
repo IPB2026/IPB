@@ -75,7 +75,7 @@ export function Methode() {
                 <div className="relative text-center">
                   {/* Disque numéro */}
                   <div className="relative inline-flex items-center justify-center w-16 h-16 rounded-full bg-ipb-cream border border-ipb-rule mb-6">
-                    <span className="font-serif text-ipb-orange text-[15px] font-bold tracking-wider">
+                    <span className="font-serif text-ipb-orange-d text-[15px] font-bold tracking-wider">
                       {etape.num}
                     </span>
                   </div>

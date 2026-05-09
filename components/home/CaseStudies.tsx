@@ -220,7 +220,7 @@ export function CaseStudies() {
           <div className="mt-16 text-center">
             <Link
               href="/diagnostic"
-              className="inline-flex items-center gap-2 text-ipb-orange font-medium text-[13px] tracking-wide border-b border-ipb-orange pb-1 hover:gap-3 transition-all"
+              className="inline-flex items-center gap-2 text-ipb-orange-d font-medium text-[13px] tracking-wide border-b border-ipb-orange-d pb-1 hover:gap-3 transition-all"
             >
               Décrire ma situation →
             </Link>

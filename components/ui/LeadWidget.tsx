@@ -102,7 +102,7 @@ export function LeadWidget() {
           </div>
           <button
             onClick={open ? dismiss : () => setOpen(true)}
-            className="text-white/80 hover:text-white transition-colors p-1 -mr-1"
+            className="text-white/85 hover:text-white transition-colors w-11 h-11 -mr-2 flex items-center justify-center rounded-[3px]"
             aria-label={open ? 'Fermer' : 'Ouvrir'}
           >
             {open ? (
@@ -126,7 +126,7 @@ export function LeadWidget() {
             <p className="text-[13px] text-ipb-text leading-[1.5] mb-2">
               Échangeons en 3 questions sur votre situation.
             </p>
-            <span className="text-[12px] text-ipb-orange font-medium">
+            <span className="text-[12px] text-ipb-orange-d font-medium">
               Démarrer →
             </span>
           </button>
@@ -187,7 +187,7 @@ export function LeadWidget() {
                   <Link
                     href="/diagnostic"
                     onClick={dismiss}
-                    className="block w-full text-center bg-ipb-orange text-white px-4 py-3 rounded-[3px] text-[13px] font-semibold hover:bg-[#b35519] transition-colors"
+                    className="block w-full text-center bg-ipb-orange-d text-white px-4 py-3 rounded-[3px] text-[13px] font-semibold hover:bg-[#7E390F] transition-colors"
                   >
                     Décrire ma situation
                   </Link>
