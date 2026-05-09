@@ -100,7 +100,7 @@ export function StickyDiagnosticCta() {
             {/* CTA primaire — orange éditorial */}
             <Link
               href="/diagnostic"
-              className="group inline-flex items-center justify-center gap-1.5 bg-ipb-orange hover:bg-[#b35519] text-white font-medium py-2.5 px-4 rounded-[3px] text-[13px] tracking-wide transition-colors duration-300 active:scale-[0.98]"
+              className="group inline-flex items-center justify-center gap-1.5 bg-ipb-orange-d hover:bg-[#7E390F] text-white font-medium py-2.5 px-4 rounded-[3px] text-[13px] tracking-wide transition-colors duration-300 active:scale-[0.98]"
               aria-label="Lancer le diagnostic gratuit"
             >
               <span>Démarrer</span>

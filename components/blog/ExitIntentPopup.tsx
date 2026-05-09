@@ -113,10 +113,10 @@ export function ExitIntentPopup() {
           }
         `}</style>
 
-        {/* Bouton fermer */}
+        {/* Bouton fermer — touch target 44x44 (WCAG 2.5.5 / Lighthouse) */}
         <button
           onClick={() => setIsVisible(false)}
-          className="absolute top-4 right-4 text-ipb-light hover:text-ipb-text transition-colors p-1.5"
+          className="absolute top-2 right-2 text-ipb-muted hover:text-ipb-text transition-colors w-11 h-11 flex items-center justify-center rounded-[3px]"
           aria-label="Fermer"
         >
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">

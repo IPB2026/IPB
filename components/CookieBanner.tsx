@@ -85,39 +85,39 @@ export function CookieBanner() {
   return (
     <div className="fixed bottom-3 left-3 right-3 md:left-auto md:right-6 md:bottom-6 max-w-sm md:max-w-md mx-auto md:mx-0 z-50 animate-in slide-in-from-bottom-4 duration-300">
       <div className="bg-white rounded-xl md:rounded-2xl shadow-lg border border-slate-200 p-3 md:p-4 relative">
-        {/* Bouton fermer (X) - très visible */}
+        {/* Bouton fermer (X) — touch target 44x44 (WCAG 2.5.5 / Lighthouse) */}
         <button
           onClick={acceptNecessary}
-          className="absolute -top-2 -right-2 w-8 h-8 bg-slate-100 hover:bg-slate-200 rounded-full flex items-center justify-center text-slate-500 hover:text-slate-700 transition-colors shadow-sm border border-slate-200"
+          className="absolute -top-3 -right-3 w-11 h-11 bg-slate-100 hover:bg-slate-200 rounded-full flex items-center justify-center text-slate-700 hover:text-slate-900 transition-colors shadow-sm border border-slate-200"
           aria-label="Fermer"
         >
-          <X size={16} />
+          <X size={18} />
         </button>
-        
+
         {/* Contenu compact */}
         <div className="flex items-start gap-3 mb-4">
-          <Cookie className="text-orange-500 flex-shrink-0 mt-0.5" size={20} />
+          <Cookie className="text-ipb-orange-d flex-shrink-0 mt-0.5" size={20} aria-hidden="true" />
           <div>
             <p className="text-slate-700 text-sm leading-relaxed">
               Ce site utilise des cookies pour améliorer votre expérience.{' '}
-              <Link href="/legal/confidentialite" className="text-orange-600 underline hover:text-orange-700">
+              <Link href="/legal/confidentialite" className="text-ipb-orange-d underline hover:text-[#7E390F]">
                 En savoir plus
               </Link>
             </p>
           </div>
         </div>
-        
+
         {/* Boutons d'action */}
         <div className="flex gap-2">
           <button
             onClick={acceptNecessary}
-            className="flex-1 px-4 py-2 text-slate-600 text-sm font-medium hover:bg-slate-50 rounded-lg transition-colors"
+            className="flex-1 px-4 py-2 text-slate-700 text-sm font-medium hover:bg-slate-50 rounded-lg transition-colors"
           >
             Refuser
           </button>
           <button
             onClick={acceptAll}
-            className="flex-1 px-4 py-2 bg-orange-600 text-white text-sm font-bold rounded-lg hover:bg-orange-500 transition-colors"
+            className="flex-1 px-4 py-2 bg-ipb-orange-d text-white text-sm font-bold rounded-lg hover:bg-[#7E390F] transition-colors"
           >
             Accepter
           </button>

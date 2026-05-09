@@ -65,13 +65,17 @@ const config = {
           'navy-2': '#0F2033',
           orange: '#C8601F',
           'orange-l': '#F08040',
+          // Variante foncée pour petit texte sur fonds clairs (WCAG AA — 4.5:1 sur stone/cream)
+          'orange-d': '#9C4717',
           cream: '#F3EFE8',
           stone: '#E8E2D9',
           white: '#FAF9F7',
           rule: '#D8D2C9',
           text: '#1A1917',
-          muted: '#736D67',
-          light: '#A09A93',
+          // Tons gris assombris pour passer WCAG AA (4.5:1) sur cream/white.
+          // Anciens : muted #736D67 (4.46:1, échouait), light #A09A93 (2.43:1, échouait).
+          muted: '#6B645D',
+          light: '#6F6963',
         },
       },
       borderRadius: {

@@ -60,7 +60,7 @@ export function Navbar() {
         {/* LOGO + CTA Diagnostic gratuit collés à gauche — proportions harmonisées */}
         <div className="flex items-center gap-3 lg:gap-4">
           <Link href="/" className="flex items-center gap-2.5 lg:gap-3 group shrink-0" aria-label="IPB Expertise — Accueil">
-            <div className="w-11 h-11 lg:w-10 lg:h-10 bg-ipb-orange text-white rounded-[5px] flex items-center justify-center font-extrabold text-[15px] lg:text-[14px] tracking-tight transition-transform duration-200 group-hover:-rotate-[4deg] shadow-[0_2px_8px_rgba(200,96,31,0.25)]">
+            <div className="w-11 h-11 lg:w-10 lg:h-10 bg-ipb-orange-d text-white rounded-[5px] flex items-center justify-center font-extrabold text-[15px] lg:text-[14px] tracking-tight transition-transform duration-200 group-hover:-rotate-[4deg] shadow-[0_2px_8px_rgba(156,71,23,0.28)]">
               IPB
             </div>
             <div className="hidden lg:flex flex-col leading-tight">
@@ -72,7 +72,7 @@ export function Navbar() {
           {/* CTA Diagnostic gratuit collé au logo — proportions harmonisées avec le logo (h-11 mobile) */}
           <Link
             href="/diagnostic"
-            className="group inline-flex items-center gap-1.5 h-11 lg:h-10 bg-ipb-orange hover:bg-[#b35519] text-white px-4 lg:px-5 rounded-[5px] font-semibold text-[12.5px] lg:text-[12px] tracking-[0.02em] transition-colors duration-300 shrink-0 shadow-[0_2px_8px_rgba(200,96,31,0.18)]"
+            className="group inline-flex items-center gap-1.5 h-11 lg:h-10 bg-ipb-orange-d hover:bg-[#7E390F] text-white px-4 lg:px-5 rounded-[5px] font-semibold text-[12.5px] lg:text-[12px] tracking-[0.02em] transition-colors duration-300 shrink-0 shadow-[0_2px_8px_rgba(156,71,23,0.22)]"
             aria-label="Lancer un diagnostic gratuit"
           >
             <span className="sm:hidden">Diagnostic</span>
@@ -89,8 +89,8 @@ export function Navbar() {
               href={href}
               className={
                 highlight
-                  ? "inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.09em] font-semibold text-ipb-orange hover:text-[#b35519] transition-colors py-2 border-b border-ipb-orange/40 hover:border-ipb-orange"
-                  : "text-[11px] uppercase tracking-[0.09em] font-medium text-ipb-muted hover:text-ipb-orange transition-colors py-2 border-b border-transparent hover:border-ipb-orange"
+                  ? "inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.09em] font-semibold text-ipb-orange-d hover:text-[#7E390F] transition-colors py-2 border-b border-ipb-orange/40 hover:border-ipb-orange"
+                  : "text-[11px] uppercase tracking-[0.09em] font-medium text-ipb-muted hover:text-ipb-orange-d transition-colors py-2 border-b border-transparent hover:border-ipb-orange"
               }
               title={highlight ? "Calculateur de prix d'ouverture de mur porteur — estimation gratuite en 2 minutes" : undefined}
             >
@@ -177,7 +177,7 @@ export function Navbar() {
               href="/diagnostic"
               onClick={() => setIsMenuOpen(false)}
               role="menuitem"
-              className="block w-full bg-ipb-orange text-white text-center py-4 rounded-[3px] font-semibold text-sm mt-4"
+              className="block w-full bg-ipb-orange-d text-white text-center py-4 rounded-[3px] font-semibold text-sm mt-4"
             >
               Diagnostic gratuit
             </Link>

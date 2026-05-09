@@ -125,7 +125,7 @@ export function Cabinet() {
               <div className="mt-10 flex flex-col sm:flex-row gap-3 items-start sm:items-center">
                 <Link
                   href="/notre-expert"
-                  className="inline-flex items-center gap-2 text-ipb-orange font-medium text-[13px] tracking-wide border-b border-ipb-orange pb-1 hover:gap-3 transition-all"
+                  className="inline-flex items-center gap-2 text-ipb-orange-d font-medium text-[13px] tracking-wide border-b border-ipb-orange-d pb-1 hover:gap-3 transition-all"
                 >
                   Découvrir le parcours de l’institut →
                 </Link>

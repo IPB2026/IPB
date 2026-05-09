@@ -25,10 +25,10 @@ function RibbonItems({ ariaHidden = false }: { ariaHidden?: boolean }) {
           className="inline-flex items-center gap-2 mx-6 shrink-0"
           aria-hidden={ariaHidden || undefined}
         >
-          <span className="font-serif italic text-ipb-orange text-[14px] font-bold leading-none">
+          <span className="font-serif italic text-ipb-orange-d text-[14px] font-bold leading-none">
             {item.value}
           </span>
-          <span className="text-[11px] text-ipb-muted tracking-[0.06em]">
+          <span className="text-[11px] text-ipb-text/85 tracking-[0.06em]">
             {item.label}
           </span>
           <span className="text-ipb-rule mx-2" aria-hidden="true">·</span>

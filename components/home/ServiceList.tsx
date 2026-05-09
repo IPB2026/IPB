@@ -83,7 +83,7 @@ export function ServiceList() {
                   aria-hidden="true"
                   className="absolute left-0 right-0 -bottom-px h-px bg-ipb-orange origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)]"
                 />
-                <span className="font-serif text-[12px] font-bold text-ipb-rule group-hover:text-ipb-orange transition-colors duration-500 tracking-wider">
+                <span aria-hidden="true" className="font-serif text-[12px] font-bold text-ipb-rule group-hover:text-ipb-orange transition-colors duration-500 tracking-wider">
                   {service.num}
                 </span>
                 <div className="transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:translate-x-1.5">
