@@ -31,7 +31,7 @@ const services = [
   {
     num: '03',
     title: 'Expertise avant achat immobilier',
-    desc: "Analyse technique du bien avant signature : structure, fissures, désordres apparents et cachés. Rapport remis sous 7 jours.",
+    desc: "Analyse technique du bien avant signature : structure, fissures, désordres apparents et cachés. Rapport remis sous 3 à 5 jours ouvrés.",
     href: '/expertise-avant-achat-immobilier-toulouse',
   },
   {

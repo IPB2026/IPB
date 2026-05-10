@@ -66,7 +66,7 @@ export function ExitIntentPopup() {
         eyebrow: 'Avant de partir',
         title: 'Une fissure observée',
         titleItalic: 'mérite un avis posé.',
-        body: "Notre cabinet vient sur place sous sept jours, mesure ce qu'il y a à mesurer, et vous remet un rapport écrit. Sans engagement de votre part.",
+        body: "Notre cabinet vient sur place sous 72 heures, mesure ce qu'il y a à mesurer, et vous remet un rapport écrit. Sans engagement de votre part.",
         primaryCta: 'Décrire ma situation',
         primaryHref: '/diagnostic',
       };

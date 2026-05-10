@@ -34,8 +34,8 @@ const partenaires = [
     href: '/partenaires/agences-immobilieres',
     num: '03',
     title: 'Agences immobilières & mandataires',
-    desc: "Une vente bloquée par une fissure inquiétante ou un mur porteur à valider ? Notre rapport sous 7 jours débloque la transaction.",
-    points: ['Visite sous 48 heures', 'Rapport reconnu par les assurances sous 7 jours', 'Discrétion totale auprès du vendeur'],
+    desc: "Une vente bloquée par une fissure inquiétante ou un mur porteur à valider ? Notre rapport sous 3 à 5 jours ouvrés débloque la transaction.",
+    points: ['Visite sous 48 heures', 'Rapport reconnu par les assurances sous 3 à 5 jours ouvrés', 'Discrétion totale auprès du vendeur'],
   },
 ];
 

@@ -226,7 +226,7 @@ export default function HumiditePage() {
                 <ul className="space-y-8">
                   {[
                     { titre: 'Diagnostic sur place', desc: "Visite avec hygromètre, caméra thermique et test à la pesée. Mesure du taux d'humidité dans les murs, identification de la cause exacte." },
-                    { titre: 'Rapport et préconisations', desc: 'Document écrit sous 7 jours avec photos, mesures, cause identifiée et solutions chiffrées. Reconnu par les assurances en cas de litige.' },
+                    { titre: 'Rapport et préconisations', desc: 'Document écrit sous 3 à 5 jours ouvrés avec photos, mesures, cause identifiée et solutions chiffrées. Reconnu par les assurances en cas de litige.' },
                     { titre: 'Choix du traitement', desc: "Injection de résine, cuvelage, ventilation, drainage : la solution dépend du diagnostic, jamais d'un produit qu'on voudrait vendre." },
                     { titre: 'Travaux par nos équipes', desc: 'Exécution sous garantie décennale AXA. Vérification post-traitement à 6 mois pour confirmer la disparition des symptômes.' },
                   ].map((etape, i) => (

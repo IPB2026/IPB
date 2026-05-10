@@ -8,8 +8,8 @@ import { ArrowRight, Phone, Shield, Clock, FileText, CheckCircle, Home, AlertTri
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Agences Immobilières Toulouse · Expertise Vente · 7j",
-  description: "Vente bloquée par une fissure ? Rapport IPB opposable sous 7 jours pour rassurer l'acquéreur. Toulouse, Montauban. ☎ 05 82 95 33 75",
+  title: "Agences Immobilières Toulouse · Expertise Vente · 5j ouvrés",
+  description: "Vente bloquée par une fissure ? Rapport IPB opposable sous 3 à 5 jours ouvrés pour rassurer l'acquéreur. Toulouse, Montauban. ☎ 05 82 95 33 75",
   keywords: [
     'partenariat agence immobilière toulouse',
     'expert fissures pour agence immobilière',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/partenaires/agences-immobilieres' },
   openGraph: {
     title: "Agences Immobilières · Expertise Vente Toulouse · IPB",
-    description: "Vente bloquée par une fissure ? Notre rapport sous 7 jours débloque la transaction. Décennale AXA.",
+    description: "Vente bloquée par une fissure ? Notre rapport sous 3 à 5 jours ouvrés débloque la transaction. Décennale AXA.",
     url: 'https://www.ipb-expertise.fr/partenaires/agences-immobilieres',
     type: 'website',
   },
@@ -44,10 +44,10 @@ export default function AgencesImmobilieresPage() {
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
               Une vente bloquée par <span className="text-transparent bg-clip-text bg-ipb-orange">une fissure</span> ?
-              <span className="block mt-2 text-white">On débloque sous 7 jours.</span>
+              <span className="block mt-2 text-white">On débloque sous 5 jours ouvrés.</span>
             </h1>
             <p className="text-xl text-white/70 mb-8 max-w-3xl">
-              L'acquéreur a vu une fissure et veut « réfléchir ». Le compromis est suspendu à un rapport. On passe sous 48h, on vous livre un rapport reconnu par les assurances sous 7 jours, et on chiffre les éventuels travaux. Votre commission est sauvée.
+              L'acquéreur a vu une fissure et veut « réfléchir ». Le compromis est suspendu à un rapport. On passe sous 48h, on vous livre un rapport reconnu par les assurances sous 3 à 5 jours ouvrés, et on chiffre les éventuels travaux. Votre commission est sauvée.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact" className="bg-ipb-orange hover:bg-ipb-orange text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
@@ -109,7 +109,7 @@ export default function AgencesImmobilieresPage() {
               {[
                 { num: 1, title: 'Vous nous appelez', desc: 'Décrivez la situation en 2 minutes au 05 82 95 33 75. Nous validons que c\'est dans notre périmètre et programmons la visite.' },
                 { num: 2, title: 'Visite sous 48h', desc: 'Notre expert se déplace, mesure les fissures (fissuromètre), photographie, écoute les inquiétudes de l\'acquéreur si nécessaire.' },
-                { num: 3, title: 'Rapport sous 7 jours', desc: 'Document PDF reconnu par les assurances : nature des désordres, gravité, recommandations, chiffrage. Vous le transmettez à l\'acquéreur et au notaire.' },
+                { num: 3, title: 'Rapport sous 3 à 5 jours ouvrés', desc: 'Document PDF reconnu par les assurances : nature des désordres, gravité, recommandations, chiffrage. Vous le transmettez à l\'acquéreur et au notaire.' },
                 { num: 4, title: 'Vente débloquée', desc: 'Soit le rapport rassure (la fissure est cosmétique), soit il chiffre des travaux que vous intégrez à la négociation. Dans 80% des cas, la vente repart.' },
               ].map(({ num, title, desc }) => (
                 <div key={num} className="bg-white border border-ipb-rule rounded-2xl p-6 flex gap-5 items-start shadow-sm">
@@ -133,7 +133,7 @@ export default function AgencesImmobilieresPage() {
               <ul className="space-y-3 text-left max-w-2xl mx-auto mb-8">
                 {[
                   'Visite sous 48h ouvrées maximum',
-                  'Rapport remis sous 7 jours',
+                  'Rapport remis sous 3 à 5 jours ouvrés',
                   'Tarif fixe, pas de surprise — facturé au vendeur ou à l\'acquéreur selon votre choix',
                   'Aucun démarchage de votre vendeur après le rapport',
                   'Discrétion absolue : nous travaillons pour vous, pas contre',

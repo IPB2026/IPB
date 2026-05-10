@@ -305,7 +305,7 @@ export default function FissuresPage() {
 
                 <ul className="space-y-8">
                   {[
-                    { titre: 'Diagnostic sur site', desc: 'Visite par notre expert sous 7 jours en moyenne. Mesure au fissuromètre, lecture du bâti, identification de la cause (sécheresse, tassement, défaut de chaînage).' },
+                    { titre: 'Diagnostic sur site', desc: 'Visite par notre expert sous 72 heures en moyenne. Mesure au fissuromètre, lecture du bâti, identification de la cause (sécheresse, tassement, défaut de chaînage).' },
                     { titre: 'Rapport opposable', desc: 'Document écrit reconnu par les assurances et les tribunaux. Photos, mesures, cause identifiée, préconisations chiffrées.' },
                     { titre: 'Choix de la solution', desc: "Agrafage structurel pour stabiliser le mur — solution adaptée à 90 % des cas. Pour les rares tassements actifs nécessitant une reprise en sous-œuvre, orientation vers un partenaire spécialisé. Le choix dépend du diagnostic, jamais d'une solution préconçue." },
                     { titre: 'Travaux par nos équipes', desc: 'Exécution sous garantie décennale AXA. Chantier propre, dans les délais annoncés. Tous les documents vous sont remis à la livraison.' },

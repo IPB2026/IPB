@@ -16,8 +16,8 @@ import { StatCounter } from '@/components/ui/StatCounter';
  */
 
 export const metadata: Metadata = {
-  title: "Expert Fissures Toulouse · Diagnostic Sous 7 Jours · AXA",
-  description: "Diagnostic structurel à Toulouse, agrafage. 850 chantiers depuis 2019. Décennale AXA. Sous 7 jours. ☎ 05 82 95 33 75",
+  title: "Expert Fissures Toulouse · Diagnostic Sous 72 Heures · AXA",
+  description: "Diagnostic structurel à Toulouse, agrafage. 850 chantiers depuis 2019. Décennale AXA. Visite sous 72 heures. ☎ 05 82 95 33 75",
   robots: { index: false, follow: false }, // Landing Ads : ne pas indexer (évite duplicate content avec la page SEO)
   alternates: { canonical: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31' },
 };
@@ -54,7 +54,7 @@ export default function LandingFissuresToulouse() {
                 }}
               >
                 Une fissure dans votre maison&nbsp;?<br />
-                <em>Notre institut vient sur place sous 7 jours.</em>
+                <em>Notre institut vient sur place sous 72 heures.</em>
               </h1>
               <p className="text-[15px] leading-[1.85] font-light text-ipb-muted mb-8">
                 Diagnostic instrumenté (fissuromètre, niveau laser), rapport écrit reconnu par les assurances, agrafage structurel par nos équipes. Tout en interne, garantie 10 ans AXA.
@@ -146,7 +146,7 @@ export default function LandingFissuresToulouse() {
           <div className="grid md:grid-cols-3 gap-8 lg:gap-10">
             {[
               { num: '01', titre: 'Vous nous décrivez la situation', desc: "En ligne en 2 minutes ou par téléphone. On valide la zone d'intervention et l'urgence." },
-              { num: '02', titre: 'Visite technique sous 7 jours', desc: "Notre institut vient sur place avec instruments de mesure. Diagnostic en 1h, rapport sous 7 jours." },
+              { num: '02', titre: 'Visite technique sous 72 heures', desc: "Notre institut vient sur place avec instruments de mesure. Diagnostic en 1h, rapport sous 3 à 5 jours ouvrés." },
               { num: '03', titre: 'Travaux par nos équipes', desc: "Si l'agrafage est nécessaire : devis ferme, planning précis, exécution sous garantie 10 ans." },
             ].map((etape) => (
               <div key={etape.num}>
