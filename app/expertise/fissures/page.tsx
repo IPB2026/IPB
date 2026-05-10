@@ -4,6 +4,31 @@ import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { CtaFinal } from '@/components/home/CtaFinal';
 import { Testimonials } from '@/components/home/Testimonials';
+import { PersonaCards, type PersonaCard } from '@/components/home/PersonaCards';
+
+const fissuresPersonas: PersonaCard[] = [
+  {
+    label: 'Sinistré',
+    titre: 'Vous voyez apparaître une fissure',
+    desc: "Quelque chose a changé sur votre façade ou à l'intérieur. Nous lisons le bâti, qualifions le désordre, et vous indiquons la suite à donner.",
+    href: '/diagnostic',
+    cta: 'Décrire ma situation',
+  },
+  {
+    label: 'Vendeur',
+    titre: 'Vous vendez un bien comportant des fissures',
+    desc: "Un acheteur s'inquiète, une visite annulée, un compromis suspendu. Notre rapport sécurise la transaction et présente les éléments factuels au notaire.",
+    href: '/vendre-bien-avec-fissures',
+    cta: 'Voir la page vendeur',
+  },
+  {
+    label: 'Acheteur',
+    titre: 'Vous achetez et vous avez un doute',
+    desc: "Avant de signer, vous voulez un avis structurel indépendant. Nos délais sont compatibles avec votre rétractation ou votre clause suspensive.",
+    href: '/expertise-avant-achat-immobilier-toulouse',
+    cta: 'Voir la page acheteur',
+  },
+];
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
@@ -343,6 +368,15 @@ export default function FissuresPage() {
             </div>
           </div>
         </section>
+
+        {/* SECTION PERSONAS — trois cas typiques pour fissures */}
+        <PersonaCards
+          eyebrow="Selon votre situation"
+          title={<>Trois cas, <em>trois approches.</em></>}
+          intro="Une fissure n'a pas le même sens selon que vous habitez la maison, que vous la vendez, ou que vous l'achetez. Voici la page qui correspond à votre situation."
+          background="white"
+          personas={fissuresPersonas}
+        />
 
         {/* PREUVE SOCIALE — avis clients vérifiés */}
         <Testimonials />

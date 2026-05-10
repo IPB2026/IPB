@@ -9,11 +9,44 @@ import { Cabinet } from '@/components/home/Cabinet';
 import { CaseStudies } from '@/components/home/CaseStudies';
 import { StatsBlock } from '@/components/home/StatsBlock';
 import { Testimonials } from '@/components/home/Testimonials';
+import { PersonaCards, type PersonaCard } from '@/components/home/PersonaCards';
 import { FAQ } from '@/components/home/FAQ';
 import { CtaFinal } from '@/components/home/CtaFinal';
 import { Footer } from '@/components/home/Footer';
 import Script from 'next/script';
 import type { Metadata } from 'next';
+
+// Données des 4 personas — alignées sur §2.1 du cahier des charges.
+const homePersonas: PersonaCard[] = [
+  {
+    label: 'Sinistré',
+    titre: 'Vous voyez apparaître une fissure',
+    desc: "Quelque chose a changé sur votre façade ou à l'intérieur, et vous voulez comprendre. Nous lisons le bâti, qualifions le désordre, et vous indiquons la suite à donner — sans rien vendre que vous n'ayez besoin.",
+    href: '/expert-fissures-toulouse-31',
+    cta: 'Voir notre expertise fissures',
+  },
+  {
+    label: 'Vendeur',
+    titre: 'Vous vendez un bien comportant des fissures',
+    desc: "Un acheteur s'inquiète, une visite annulée, un compromis suspendu. Notre rapport documente précisément les désordres et présente les éléments factuels qui sécurisent la transaction.",
+    href: '/vendre-bien-avec-fissures',
+    cta: 'Voir la page vendeur',
+  },
+  {
+    label: 'Acheteur',
+    titre: 'Vous achetez et vous avez un doute',
+    desc: "Avant de signer, vous voulez un avis structurel indépendant, sans aucun lien avec le vendeur ni l'agence. Nos délais sont compatibles avec votre rétractation.",
+    href: '/expertise-avant-achat-immobilier-toulouse',
+    cta: 'Voir la page acheteur',
+  },
+  {
+    label: 'Rénovateur',
+    titre: "Vous projetez d'ouvrir un mur porteur",
+    desc: "Cuisine ouverte, suite parentale, baie vitrée. Étude de structure, dimensionnement de la poutre IPN ou HEB, exécution sous garantie décennale.",
+    href: '/expert-mur-porteur',
+    cta: 'Voir la page mur porteur',
+  },
+];
 
 // Schema Organization pour Knowledge Panel Google
 const organizationSchema = {
@@ -164,6 +197,15 @@ export default function HomePage() {
           </a>
         </div>
       </section>
+
+      {/* 3ter. Section personas — 4 cas, 4 chemins */}
+      <PersonaCards
+        eyebrow="Selon votre situation"
+        title={<>Quatre cas, <em>quatre chemins.</em></>}
+        intro="Selon ce que vous traversez, voici la page la plus utile. Notre méthode est la même quel que soit le dossier ; le point d'entrée diffère."
+        background="cream"
+        personas={homePersonas}
+      />
 
       {/* 4. Méthode 5 étapes (accompagnement complet) */}
       <Methode />
