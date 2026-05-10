@@ -124,6 +124,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${baseUrl}/lexique`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
       url: `${baseUrl}/calcul-prix-mur-porteur`,
       lastModified: contentDate,
       changeFrequency: 'monthly',
