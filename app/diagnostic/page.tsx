@@ -12,8 +12,19 @@ function trackPhoneClick() {
   trackEvent('conversion', { send_to: 'AW-17902440600/0aY8COSl6JccEJlhxthC' });
 }
 
-function trackFormSubmit() {
-  trackEvent('diagnostic_form_submit', { send_to: 'AW-17902440600' });
+// Conversion Google Ads "Envoi de formulaire de lead" — déclenchée
+// uniquement APRÈS succès de submitDiagnosticLead (cf. handleSubmit).
+// Le label vient de NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL (.env.local
+// + var d'environnement Vercel/Netlify).
+function trackLeadFormConversion() {
+  const id = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_ID;
+  const label = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL;
+  if (!id || !label) return;
+  trackEvent('conversion', {
+    send_to: `${id}/${label}`,
+    value: 1.0,
+    currency: 'EUR',
+  });
 }
 
 function trackCallbackRequest() {
@@ -500,7 +511,6 @@ export default function DiagnosticPage() {
     }
 
     setIsAnalyzing(true);
-    trackFormSubmit();
     const score = calculateRisk(path! as 'fissure' | 'mur-porteur', answers);
     setRiskScore(score);
 
@@ -543,6 +553,9 @@ export default function DiagnosticPage() {
     }
 
     if (leadSucceeded) {
+      // Conversion Google Ads — déclenchée UNIQUEMENT après succès réel
+      // de la soumission (pas en cas d'erreur reCAPTCHA, réseau ou backend).
+      trackLeadFormConversion();
       setTimeout(() => {
         setIsAnalyzing(false);
         setShowResult(true);
