@@ -65,8 +65,87 @@ export function Testimonials({
   return (
     <section className="bg-ipb-white py-24 lg:py-32">
       <div className="max-w-ipb mx-auto px-6 lg:px-12">
+        {/* ─── MOBILE (< lg) ────────────────────────────────────────
+            Stack vertical : chaque propriétaire a son témoignage
+            juste en dessous. Pas de carousel, pas de timer — le
+            visiteur scroll naturellement et lit tous les avis. */}
+        <div className="lg:hidden">
+          <RevealOnScroll>
+            <Eyebrow>Témoignages</Eyebrow>
+            <h2
+              className="font-serif text-ipb-text mb-12"
+              style={{
+                fontSize: 'clamp(28px, 2.6vw, 38px)',
+                lineHeight: 1.15,
+                letterSpacing: '-0.022em',
+                fontWeight: 700,
+              }}
+            >
+              Quatre clients,<br />
+              <em>quatre histoires.</em>
+            </h2>
+          </RevealOnScroll>
+
+          <ul className="space-y-12">
+            {reviews.map((r, i) => (
+              <RevealOnScroll key={r.id} delay={i * 0.05} variant="subtle">
+                <li className="border-t border-ipb-rule pt-7">
+                  {/* Propriétaire — au-dessus */}
+                  <header className="flex items-center gap-3 mb-5">
+                    <span className="block h-px w-9 bg-ipb-orange" aria-hidden="true" />
+                    <div>
+                      <span className="font-serif text-ipb-text text-[17px] font-bold block leading-tight">
+                        {r.name}
+                      </span>
+                      {(r.location || r.date) && (
+                        <span className="text-[11px] uppercase tracking-[0.12em] text-ipb-light mt-0.5 block">
+                          {[r.location, r.date].filter(Boolean).join(' · ')}
+                        </span>
+                      )}
+                    </div>
+                  </header>
+
+                  {/* Témoignage — en dessous */}
+                  <blockquote
+                    className="font-serif text-ipb-text"
+                    style={{
+                      fontSize: 'clamp(18px, 4.5vw, 22px)',
+                      lineHeight: 1.45,
+                      letterSpacing: '-0.01em',
+                      fontWeight: 400,
+                    }}
+                  >
+                    <em className="not-italic text-ipb-orange text-3xl leading-none mr-1 align-text-top">«&nbsp;</em>
+                    {r.text}
+                    <em className="not-italic text-ipb-orange text-3xl leading-none ml-1 align-text-top">&nbsp;»</em>
+                  </blockquote>
+                </li>
+              </RevealOnScroll>
+            ))}
+          </ul>
+
+          {showGoogleLink && (
+            <div className="mt-10 pt-8 border-t border-ipb-rule">
+              <a
+                href={GOOGLE_REVIEWS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-[13px] text-ipb-muted hover:text-ipb-orange transition-colors"
+              >
+                Lire les avis sur Google
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </a>
+            </div>
+          )}
+        </div>
+
+        {/* ─── DESKTOP (lg+) ──────────────────────────────────────────
+            Carousel éditorial inchangé : nav latérale nommée à gauche,
+            citation active à droite. Auto-rotate 7 s, fade 0.35 s. */}
         <RevealOnScroll>
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
+          <div className="hidden lg:grid lg:grid-cols-12 gap-12 lg:gap-16">
             {/* Côté gauche : navigation latérale nommée */}
             <div className="lg:col-span-4">
               <Eyebrow>Témoignages</Eyebrow>
@@ -115,7 +194,7 @@ export function Testimonials({
             {/* Côté droite : citation active.
                 min-h-[380px] dimensionne pour le témoignage le plus long
                 (Luc C., 256 caractères) — évite tout reflow lors du swap. */}
-            <div className="lg:col-span-8 lg:pl-8 lg:border-l lg:border-ipb-rule min-h-[420px] lg:min-h-[380px]">
+            <div className="lg:col-span-8 lg:pl-8 lg:border-l lg:border-ipb-rule min-h-[380px]">
               <div
                 className="transition-opacity duration-300"
                 style={{ opacity: isFading ? 0 : 1 }}
