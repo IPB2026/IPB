@@ -112,6 +112,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${baseUrl}/notre-methode`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/calcul-prix-mur-porteur`,
       lastModified: contentDate,
       changeFrequency: 'monthly',
