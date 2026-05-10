@@ -182,19 +182,40 @@ Exemple : tracker la soumission du formulaire de contact `/contact`.
 
 ---
 
-## 7. RGPD / consentement
+## 7. RGPD / consentement — Google Consent Mode v2
 
-Le site dispose d'un cookie banner ([`components/CookieBanner.tsx`](./components/CookieBanner.tsx)).
-**À ce jour, le tag Google Ads n'est PAS conditionné au consentement** — il se
-charge en `lazyOnload` dès l'arrivée sur la page.
+Le site implémente [Google Consent Mode v2](https://support.google.com/google-ads/answer/14310169),
+combiné au cookie banner ([`components/CookieBanner.tsx`](./components/CookieBanner.tsx)).
 
-Pour être 100% conforme CNIL il faudrait :
-- Soit câbler [Google Consent Mode v2](https://support.google.com/google-ads/answer/14310169) et déclencher `gtag('consent', 'update', ...)` quand l'utilisateur accepte
-- Soit conditionner le `<Script>` du tag à l'acceptation du bandeau (ne le rendre que si `localStorage.cookieConsent === 'accepted'`)
+**Comment ça marche** :
 
-C'est un sujet à part qui n'est **pas couvert par cette mise en place**.
-À traiter dans un PR dédié si la priorité monte (signalement CNIL,
-audit avocat, etc.).
+1. **Avant tout chargement** ([`app/layout.tsx`](./app/layout.tsx), script `consent-default` en `beforeInteractive`) :
+   tous les services Google démarrent en mode "consentement refusé" (`ad_storage`,
+   `ad_user_data`, `ad_personalization`, `analytics_storage` → `denied`).
+   `wait_for_update: 500` laisse 500 ms au bandeau pour répondre avant que les
+   hits par défaut ne soient mis en file d'attente.
+   `ads_data_redaction: true` + `url_passthrough: true` activent la **modélisation
+   anonymisée des conversions** autorisée par la CNIL même en cas de refus.
+
+2. **Au choix utilisateur** ([`components/CookieBanner.tsx`](./components/CookieBanner.tsx) — `applyConsent`) :
+   le bandeau pousse `gtag('consent', 'update', { ... })` avec `granted` / `denied`
+   selon les choix. Si gtag.js n'est pas encore chargé (cas `lazyOnload`), un
+   `dataLayer.push(['consent', 'update', ...])` est utilisé en fallback et sera
+   rejoué dès le chargement de gtag.
+
+3. **Persistance** : le choix est stocké dans `localStorage` sous `ipb-cookie-consent`
+   avec un TTL de 6 mois — au-delà, le bandeau réapparaît.
+
+**Conformité CNIL** :
+- Avant consentement : aucun cookie publicitaire écrit, pas de tracking nominatif
+- Après acceptation : tracking complet (conversions, attribution)
+- Après refus : modélisation anonymisée (utile pour le bidding Google Ads sans
+  identifier l'utilisateur)
+
+**Pour tester** :
+- DevTools → Application → Storage → vider `localStorage` puis recharger
+- Le bandeau réapparaît après 4 s (cf. `CookieBanner.tsx`)
+- Console : `window.dataLayer` doit contenir l'event `consent` avec les bonnes valeurs
 
 ---
 

@@ -4,21 +4,13 @@ import React, { useState, useEffect } from 'react';
 import { submitDiagnosticCallback, submitDiagnosticLead } from '@/app/actions/diagnostic';
 import { submitQuickCallback } from '@/app/actions/quickCallback';
 import { useRecaptcha } from '@/hooks/useRecaptcha';
-import { trackEvent, trackDiagnosticLeadSubmit } from '@/lib/analytics';
+import {
+  trackDiagnosticLeadSubmit,
+  trackPhoneClick,
+  trackCallbackRequest,
+} from '@/lib/analytics';
 import { validatePhoneOrError } from '@/lib/validations/phone';
 import { FormError } from '@/components/ui/FormError';
-
-function trackPhoneClick() {
-  trackEvent('conversion', { send_to: 'AW-17902440600/0aY8COSl6JccEJlhxthC' });
-}
-
-function trackFormSubmit() {
-  trackEvent('diagnostic_form_submit', { send_to: 'AW-17902440600' });
-}
-
-function trackCallbackRequest() {
-  trackEvent('callback_request', { send_to: 'AW-17902440600' });
-}
 
 // Types
 type PathType = 'fissure' | 'mur-porteur' | null;
@@ -500,7 +492,6 @@ export default function DiagnosticPage() {
     }
 
     setIsAnalyzing(true);
-    trackFormSubmit();
     const score = calculateRisk(path! as 'fissure' | 'mur-porteur', answers);
     setRiskScore(score);
 
@@ -802,7 +793,7 @@ export default function DiagnosticPage() {
                   </div>
                   <a
                     href="tel:0582953375"
-                    onClick={trackPhoneClick}
+                    onClick={() => trackPhoneClick('diagnostic-questionnaire')}
                     className="bg-green-500 hover:bg-green-600 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors flex-shrink-0"
                   >
                     Appeler
@@ -1303,7 +1294,7 @@ export default function DiagnosticPage() {
                     </div>
 
                     <div className="text-center pt-2 border-t border-ipb-rule">
-                      <a href="tel:0582953375" onClick={trackPhoneClick} className="text-ipb-muted text-xs hover:text-ipb-text transition-colors font-medium">
+                      <a href="tel:0582953375" onClick={() => trackPhoneClick('diagnostic-contact-form')} className="text-ipb-muted text-xs hover:text-ipb-text transition-colors font-medium">
                         📞 Appel direct : 05 82 95 33 75
                       </a>
                     </div>
@@ -1347,7 +1338,7 @@ export default function DiagnosticPage() {
                 </div>
                 <a
                   href="tel:0582953375"
-                  onClick={trackPhoneClick}
+                  onClick={() => trackPhoneClick('diagnostic-confirmation')}
                   className="inline-flex items-center gap-2 mt-5 text-ipb-muted hover:text-ipb-text text-sm font-medium transition-colors"
                 >
                   📞 05 82 95 33 75
