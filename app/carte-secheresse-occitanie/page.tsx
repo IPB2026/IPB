@@ -239,7 +239,7 @@ export default function CarteSecheressePage() {
             <div className="mt-16 text-center">
               <RevealOnScroll>
                 <p className="font-serif text-ipb-text text-[20px] lg:text-[24px] leading-[1.45] mb-8 max-w-xl mx-auto">
-                  Votre maison est touchée et votre commune reconnue&nbsp;? Notre institut documente votre dossier sous 7 jours.
+                  Votre maison est touchée et votre commune reconnue&nbsp;? Notre institut documente votre dossier sous 3 à 5 jours ouvrés.
                 </p>
                 <MagneticButton href="/diagnostic" variant="primary">
                   Demander un rapport CAT-NAT

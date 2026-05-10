@@ -165,7 +165,7 @@ const getExpertDiagnosis = (path: 'fissure' | 'mur-porteur', score: number) => {
         urgency: 'Projet à très court terme',
         urgencyColor: '#C8601F',
         diagnosis: 'Projet d\'ouverture de mur porteur clairement défini. Probablement déjà comparé à plusieurs devis.',
-        solution: 'Étude technique sous 7 jours, devis ferme, planning détaillé. Chantier sous 4 à 6 semaines.',
+        solution: 'Étude technique sous 3 à 5 jours ouvrés, devis ferme, planning détaillé. Chantier sous 4 à 6 semaines.',
         delay: "Visite technique recommandée sous 1 semaine",
       };
     } else if (score >= 20) {

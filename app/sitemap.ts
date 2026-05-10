@@ -106,6 +106,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${baseUrl}/expertise/retrait-gonflement-argiles`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.82,
+    },
+    {
       url: `${baseUrl}/rdv-cabinet`,
       lastModified: recentUpdate,
       changeFrequency: 'monthly',
@@ -116,6 +122,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: recentUpdate,
       changeFrequency: 'monthly',
       priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/vendre-bien-avec-fissures`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/lexique`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/calcul-prix-mur-porteur`,

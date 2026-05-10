@@ -55,7 +55,7 @@ const communesTarnEtGaronne = [
 const faqItems = [
   {
     question: "Comment se déroule une expertise fissures à Montauban ?",
-    answer: "Notre institut se déplace sur site avec fissuromètre, niveau laser et caméra thermique si nécessaire. Nous mesurons l'évolution, identifions la cause (sécheresse, tassement différentiel, défaut de chaînage) et rédigeons un rapport écrit sous 7 jours. Ce rapport est reconnu par les assurances.",
+    answer: "Notre institut se déplace sur site avec fissuromètre, niveau laser et caméra thermique si nécessaire. Nous mesurons l'évolution, identifions la cause (sécheresse, tassement différentiel, défaut de chaînage) et rédigeons un rapport écrit sous 3 à 5 jours ouvrés. Ce rapport est reconnu par les assurances.",
   },
   {
     question: "Intervenez-vous sur tout le Tarn-et-Garonne ?",

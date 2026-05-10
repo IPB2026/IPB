@@ -60,7 +60,7 @@ const communes = [
 const faqItems = [
   {
     question: "Comment se déroule une expertise fissures à Toulouse ?",
-    answer: "Notre institut vient sur site avec fissuromètre, niveau laser et caméra thermique si nécessaire. Visite de 1 h 30 à 2 h, mesures instrumentées de chaque fissure, identification de la cause (sécheresse, tassement, défaut de chaînage) et rapport écrit sous 7 jours, reconnu par les assurances et les tribunaux.",
+    answer: "Notre institut vient sur site avec fissuromètre, niveau laser et caméra thermique si nécessaire. Visite de 1 h 30 à 2 h, mesures instrumentées de chaque fissure, identification de la cause (sécheresse, tassement, défaut de chaînage) et rapport écrit sous 3 à 5 jours ouvrés, reconnu par les assurances et les tribunaux.",
   },
   {
     question: "Quel est le coût d'une expertise fissures à Toulouse ?",
@@ -92,7 +92,7 @@ const faqItems = [
   },
   {
     question: "Quels sont les délais d'intervention ?",
-    answer: "Notre institut se déplace sous 7 jours en moyenne sur Toulouse et la Haute-Garonne. Pour les situations urgentes (fissure évolutive, danger imminent, compromis de vente en cours), nous intervenons sous 48 heures. Le rapport écrit est livré sous 5 à 7 jours après la visite.",
+    answer: "Notre institut se déplace sous 72 heures en moyenne sur Toulouse et la Haute-Garonne. Pour les situations urgentes (fissure évolutive, danger imminent, compromis de vente en cours), nous intervenons sous 24 heures. Le rapport écrit est livré sous 3 à 5 jours ouvrés après la visite.",
   },
 ];
 
@@ -364,7 +364,7 @@ export default function ExpertFissuresToulousePage() {
                   },
                   {
                     titre: 'Rapport, devis, travaux',
-                    detail: 'Rapport écrit opposable aux assurances sous 7 jours. Devis détaillé. Si vous confirmez : agrafage structurel sous garantie décennale AXA, chantier 3 à 5 jours selon ampleur.',
+                    detail: 'Rapport écrit opposable aux assurances sous 3 à 5 jours ouvrés. Devis détaillé. Si vous confirmez : agrafage structurel sous garantie décennale AXA, chantier 3 à 5 jours selon ampleur.',
                     delai: 'Étape 4 · Travaux décennale',
                   },
                 ].map((etape, i) => (

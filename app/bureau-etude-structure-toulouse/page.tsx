@@ -89,7 +89,7 @@ const faqItems = [
   },
   {
     question: "Sous quel délai un calcul de poutre est-il rendu ?",
-    answer: "Pour une étude standard (poutre IPN ou HEB sur portée courante), notre bureau d'études rend la note de calcul sous 5 à 7 jours ouvrés après la visite. Les dossiers complexes ou comportant plusieurs ouvrages peuvent demander 10 à 15 jours.",
+    answer: "Pour une étude standard (poutre IPN ou HEB sur portée courante), notre bureau d'études rend la note de calcul sous 3 à 5 jours ouvrés après la visite. Les dossiers complexes ou comportant plusieurs ouvrages peuvent demander 10 à 15 jours.",
   },
   {
     question: "Travaillez-vous avec les architectes d'intérieur et marchands de biens ?",
@@ -117,7 +117,7 @@ const faqItems = [
   },
   {
     question: "Combien d'ingénieurs structure dans votre équipe ?",
-    answer: "L'institut compte 8 collaborateurs dont 3 ingénieurs structure (formés Ponts, INSA, ENTPE) et 2 techniciens de diagnostic certifiés. Cette taille nous permet de traiter chaque dossier rapidement (note de calcul sous 5-7 jours) tout en gardant un suivi humain personnalisé. Ludovic D., fondateur, supervise les dossiers complexes.",
+    answer: "L'institut compte 8 collaborateurs dont 3 ingénieurs structure (formés Ponts, INSA, ENTPE) et 2 techniciens de diagnostic certifiés. Cette taille nous permet de traiter chaque dossier rapidement (note de calcul sous 3-5 jours ouvrés) tout en gardant un suivi humain personnalisé. Ludovic D., fondateur, supervise les dossiers complexes.",
   },
 ];
 

@@ -347,7 +347,7 @@ export default function MurPorteurPage() {
                 <ul className="space-y-8">
                   {[
                     { titre: "Visite et étude technique", desc: "Notre ingénieur regarde le mur, identifie les charges reprises, vérifie les contraintes de la copropriété si applicable. Il calcule la poutre selon les normes en vigueur." },
-                    { titre: "Note de calcul et planning", desc: "Note de calcul signée sous 7 jours après la visite. Calendrier précis : démarches administratives, commande poutre, dates de chantier." },
+                    { titre: "Note de calcul et planning", desc: "Note de calcul signée sous 3 à 5 jours ouvrés après la visite. Calendrier précis : démarches administratives, commande poutre, dates de chantier." },
                     { titre: "Étaiement et ouverture", desc: "Pose des étais pour reprendre les charges du plancher du dessus. Découpe progressive du mur. Pose et scellement de la poutre." },
                     { titre: "Finitions et livraison", desc: "Habillage de la poutre, ragréage, jonctions, peinture si demandée. Levée des étais. Tous les documents du chantier vous sont remis." },
                   ].map((etape, i) => (

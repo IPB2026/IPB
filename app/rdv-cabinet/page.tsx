@@ -153,7 +153,7 @@ export default function RdvCabinetPage() {
                 {
                   num: '01',
                   titre: 'Vous laissez l’institut venir sur site',
-                  desc: "Nous fixons un créneau pour la visite technique. Mesures au fissuromètre, photos, lecture du bâti. Rapport écrit remis sous 7 jours, reconnu par les assurances.",
+                  desc: "Nous fixons un créneau pour la visite technique. Mesures au fissuromètre, photos, lecture du bâti. Rapport écrit remis sous 3 à 5 jours ouvrés, reconnu par les assurances.",
                 },
                 {
                   num: '02',

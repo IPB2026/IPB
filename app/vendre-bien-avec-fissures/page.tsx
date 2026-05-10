@@ -12,29 +12,27 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
   title:
-    "Expertise avant achat immobilier · Avis structurel indépendant · Toulouse · IPB",
+    "Rapport d'expertise fissures pour vente immobilière · Toulouse · IPB",
   description:
-    "Expertise indépendante avant achat immobilier à Toulouse. Délais compatibles avec votre rétractation : visite sous 72 heures, rapport sous 3 à 5 jours ouvrés. Sans aucun lien avec le vendeur ni l'agence.",
+    'Vous vendez un bien avec fissures. Notre rapport documente les désordres, qualifie leur nature structurelle ou esthétique, et sécurise votre transaction. Visite sous 72 heures en Occitanie.',
   keywords: [
-    'expertise avant achat toulouse',
-    'expertise immobilière toulouse',
-    'avis structurel achat',
-    'contre-expertise avant signature',
-    'clause suspensive expertise',
-    'fissure avant achat toulouse',
-    'expert bâtiment avant achat 31',
-    'rétractation acheteur immobilier',
+    'vendre maison avec fissures',
+    'rapport expertise fissure pour vendre',
+    'diagnostic fissure obligatoire vente',
+    'fissures et compromis de vente',
+    'décote maison fissure',
+    'rapport fissures vente Toulouse',
+    'expertise fissures avant mise en vente',
   ],
   alternates: {
-    canonical:
-      'https://www.ipb-expertise.fr/expertise-avant-achat-immobilier-toulouse',
+    canonical: 'https://www.ipb-expertise.fr/vendre-bien-avec-fissures',
   },
   openGraph: {
     title:
-      'Expertise avant achat immobilier · Avis structurel indépendant · Toulouse · IPB',
+      "Rapport d'expertise fissures pour vente immobilière · Toulouse · IPB",
     description:
-      "Avis structurel indépendant avant achat. Délais compatibles avec votre rétractation : visite sous 72 heures.",
-    url: 'https://www.ipb-expertise.fr/expertise-avant-achat-immobilier-toulouse',
+      'Notre rapport documente les désordres, qualifie leur nature, et présente les éléments factuels qui sécurisent la transaction.',
+    url: 'https://www.ipb-expertise.fr/vendre-bien-avec-fissures',
     type: 'website',
   },
   robots: {
@@ -46,97 +44,96 @@ export const metadata: Metadata = {
 
 const moments = [
   {
-    label: 'Moment A',
-    titre: 'Vous visitez et vous avez un doute',
-    desc: "Avant même de signer un compromis, vous voulez un avis technique. Nous nous déplaçons sur le bien (avec accord du vendeur ou de l'agence) et nous remettons un avis sous 3 à 5 jours ouvrés.",
+    titre: 'Avant la mise en vente',
+    desc: "Vous savez que votre bien comporte des fissures. Vous préférez les documenter en amont pour les présenter sereinement à vos visiteurs. Le rapport établi à froid, avec mesures et qualification, devient une pièce du dossier de vente.",
   },
   {
-    label: 'Moment B',
-    titre: 'Vous êtes en compromis avec clause suspensive',
-    desc: "Le délai de rétractation est court. Notre intervention en urgence est possible : visite sous 24 heures, avis intermédiaire dans la foulée, rapport définitif sous 3 à 5 jours ouvrés. Précisez-nous votre date butoir dès le premier échange.",
+    titre: 'Pendant les visites',
+    desc: "Plusieurs visiteurs ont commenté les fissures. Vous percevez que cela freine. Un rapport indépendant transforme une discussion émotionnelle en discussion technique : votre bien n'est plus suspect, il est documenté.",
   },
   {
-    label: 'Moment C',
-    titre: 'Vous avez signé et vous voyez quelque chose',
-    desc: "Signature passée, mais des désordres apparaissent ou s'aggravent. Selon le contexte, plusieurs voies sont ouvertes : mise en cause de la garantie décennale du constructeur, recours contre le vendeur sur dol ou vice caché. Notre rapport documente les éléments factuels indispensables au dossier.",
+    titre: 'Après une rétractation ou une renégociation',
+    desc: "Un acheteur s'est rétracté ou propose une décote significative en évoquant les fissures. Le rapport permet de qualifier précisément l'enjeu et, le cas échéant, de présenter à un autre acheteur les éléments objectifs.",
   },
 ];
 
 const contenuRapport = [
-  'Photos datées et géolocalisées des désordres observés',
+  'Photos datées et géolocalisées de chaque désordre identifié',
   'Mesures au fissuromètre, dimensionnement précis',
-  'Qualification de chaque désordre : esthétique, superficiel, structurel',
-  'Identification des causes probables et de leur évolution prévisible',
-  'Estimation des coûts de remise en état si interventions nécessaires',
-  'Avis sur la stabilité globale du bâti',
-  "Document utilisable comme pièce à un éventuel recours ou à une négociation",
+  'Qualification de chaque fissure : esthétique, superficielle, ou structurelle',
+  "Identification des causes probables (retrait-gonflement des argiles, tassement différentiel, défaut d'exécution, etc.)",
+  'Préconisations chiffrées de réparation, le cas échéant',
+  "Avis de l'ingénieur structure sur la stabilité globale du bâti",
+  'Document conforme aux attentes des notaires, agents immobiliers et acquéreurs',
 ];
 
 const etapes = [
   {
     titre: 'Premier contact',
-    desc: "Vous nous appelez ou nous écrivez. Nous évaluons en quelques heures si le dossier nécessite une visite et dans quel délai.",
-  },
-  {
-    titre: "Coordination avec le vendeur ou l'agence",
-    desc: "Nous prenons contact pour fixer le rendez-vous de visite.",
+    desc: "Vous décrivez votre situation. Nous évaluons en 24 heures si le dossier nécessite une visite.",
   },
   {
     titre: 'Visite sur site',
-    desc: "Sous 72 heures en standard. Sous 24 heures en urgence selon disponibilité.",
+    desc: "Notre ingénieur structure se déplace sous 72 heures en moyenne. Mesures, photos, échange direct.",
   },
   {
-    titre: 'Avis intermédiaire',
-    desc: "Pour les dossiers urgents, un avis technique peut être donné dans les 48 heures suivant la visite, avant le rapport définitif.",
+    titre: 'Rédaction du rapport',
+    desc: 'Document remis sous 3 à 5 jours ouvrés après la visite.',
   },
   {
-    titre: 'Rapport définitif',
-    desc: "Remis sous 3 à 5 jours ouvrés après la visite. Document complet et opposable.",
+    titre: 'Remise et accompagnement',
+    desc: "Le rapport vous est remis. Nous restons disponibles pour répondre aux questions de votre notaire ou agent immobilier.",
+  },
+  {
+    titre: 'Si nécessaire, traitement',
+    desc: "Si le rapport préconise des travaux, nous pouvons les réaliser. La décennale couvre l'étude et l'exécution.",
   },
 ];
 
 const faqItems = [
   {
-    question: "Le vendeur ne veut pas que je fasse intervenir un expert. Que faire ?",
+    question:
+      "Mon agent immobilier dit qu'un diagnostic n'est pas obligatoire. Pourquoi en faire un ?",
     answer:
-      "Le vendeur ne peut pas s'opposer à ce que vous fassiez expertiser un bien que vous envisagez d'acheter. Il peut en revanche refuser l'accès au bien — ce qui est, en soi, un signal. En pratique, dans la majorité des dossiers que nous traitons, l'accès est accordé sans difficulté, parfois en présence de l'agent immobilier. Si l'accès est refusé sans motif, nous pouvons rédiger un avis sur la base des éléments visibles depuis l'espace public et des photos disponibles.",
+      "Aucun diagnostic fissures n'est légalement obligatoire pour vendre. Mais en pratique, présenter un rapport indépendant à un acheteur transforme la discussion. Il ne s'interroge plus, il lit. Dans les ventes que nous avons accompagnées, c'est souvent ce qui a permis à la transaction de se conclure au prix prévu.",
   },
   {
-    question: "Mon agent immobilier dit que les diagnostics réglementaires suffisent. Est-ce vrai ?",
+    question: 'Combien de temps avant ma vente faut-il faire le rapport ?',
     answer:
-      "Les diagnostics réglementaires (DPE, amiante, plomb, électricité, gaz, termites, ERP) couvrent ce que la loi impose au vendeur de communiquer. Aucun de ces diagnostics ne traite de la structure du bâti, des fissures, ou de la stabilité des fondations. Pour ces sujets, une expertise indépendante est le seul moyen d'obtenir un avis technique opposable.",
+      'Idéalement 3 à 4 semaines avant la mise en ligne ou la première visite. Cela laisse le temps de la visite, du rapport, et permet de présenter le document dès la première visite.',
   },
   {
-    question: "Combien coûte un recours sur vice caché ou sur dol ?",
+    question: 'Le rapport peut-il aussi servir si je mets en location ?',
     answer:
-      "Cette question relève du droit, et nous orientons systématiquement vers un avocat spécialisé en droit immobilier. Notre intervention se limite à l'établissement du rapport technique qui documente les désordres et leurs causes — pièce centrale de tout recours, mais qui ne se substitue pas au conseil juridique.",
+      "Oui. Pour une mise en location, le rapport est moins fréquemment demandé, mais il sécurise le bailleur en cas de litige sur l'état du bâti.",
   },
   {
-    question: "Vous intervenez sur les biens en VEFA ou en construction récente ?",
+    question: 'Puis-je présenter le rapport au notaire ?',
     answer:
-      "Oui. Pour les biens en cours de livraison ou récemment livrés, nous pouvons intervenir en visite de pré-livraison, en accompagnement de réception, ou en contre-expertise après livraison. Sur les bâtiments de moins de 10 ans, la garantie décennale du constructeur peut être engagée — notre rapport documente les éléments factuels nécessaires à cette procédure.",
+      "Oui, le rapport est rédigé dans les formes attendues par les notaires et peut être annexé à l'acte si vous le souhaitez.",
   },
   {
-    question: "Peut-on faire l'expertise sans la présence du vendeur ?",
+    question:
+      'Si le rapport identifie des travaux nécessaires, dois-je les faire avant de vendre ?',
     answer:
-      "Oui, c'est même le cas le plus fréquent. La présence de l'agent immobilier suffit généralement. Le vendeur n'est pas tenu d'être présent. La visite est un échange technique entre notre ingénieur et vous (ou la personne que vous mandatez).",
+      "Non. Vous avez le choix : faire les travaux et vendre un bien réparé, ou présenter le rapport et négocier la décote correspondante avec l'acheteur. Dans les deux cas, vous avez les éléments pour décider.",
   },
 ];
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  name: 'IPB — Expertise avant achat immobilier',
+  '@type': 'Service',
+  name: "Rapport d'expertise fissures pour vente immobilière",
   description:
-    "Avis structurel indépendant avant achat. Délais compatibles avec la rétractation et les compromis sous échéance.",
-  url: 'https://www.ipb-expertise.fr/expertise-avant-achat-immobilier-toulouse',
-  telephone: '+33582953375',
-  priceRange: '€€',
+    "Diagnostic instrumenté des fissures, qualification structurelle ou esthétique, et rédaction d'un rapport conforme aux attentes des notaires et agents immobiliers.",
+  url: 'https://www.ipb-expertise.fr/vendre-bien-avec-fissures',
+  serviceType: 'Expertise en pathologie du bâtiment — vente immobilière',
+  provider: { '@id': 'https://www.ipb-expertise.fr#localbusiness' },
   areaServed: [
-    { '@type': 'City', name: 'Toulouse' },
     { '@type': 'AdministrativeArea', name: 'Haute-Garonne' },
     { '@type': 'AdministrativeArea', name: 'Tarn-et-Garonne' },
     { '@type': 'AdministrativeArea', name: 'Gers' },
+    { '@type': 'AdministrativeArea', name: 'Tarn' },
   ],
 };
 
@@ -154,17 +151,22 @@ const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.ipb-expertise.fr' },
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Accueil',
+      item: 'https://www.ipb-expertise.fr',
+    },
     {
       '@type': 'ListItem',
       position: 2,
-      name: 'Expertise avant achat immobilier',
-      item: 'https://www.ipb-expertise.fr/expertise-avant-achat-immobilier-toulouse',
+      name: 'Vendre un bien avec fissures',
+      item: 'https://www.ipb-expertise.fr/vendre-bien-avec-fissures',
     },
   ],
 };
 
-export default function ExpertiseAvantAchatPage() {
+export default function VendreBienAvecFissuresPage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <Script
@@ -193,7 +195,7 @@ export default function ExpertiseAvantAchatPage() {
           <div className="max-w-ipb mx-auto px-6 lg:px-12 pt-16 lg:pt-24 pb-20 lg:pb-28">
             <div className="max-w-3xl">
               <RevealOnScroll>
-                <Eyebrow>Acheteur</Eyebrow>
+                <Eyebrow>Vendeur</Eyebrow>
               </RevealOnScroll>
               <RevealOnScroll delay={0.06} variant="editorial">
                 <h1
@@ -205,8 +207,8 @@ export default function ExpertiseAvantAchatPage() {
                     fontWeight: 700,
                   }}
                 >
-                  Expertise avant achat<br />
-                  <em>immobilier.</em>
+                  Vendre un bien<br />
+                  <em>avec fissures.</em>
                 </h1>
               </RevealOnScroll>
               <RevealOnScroll delay={0.1}>
@@ -219,34 +221,34 @@ export default function ExpertiseAvantAchatPage() {
                     fontWeight: 400,
                   }}
                 >
-                  Avis structurel indépendant. Délais compatibles avec votre rétractation.
+                  Le rapport technique qui sécurise la transaction.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.14}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[640px]">
-                  Vous achetez. Vous avez vu des fissures, ou un doute sur la structure du bien. L'institut intervient en avis indépendant, sans aucun lien avec le vendeur ni l'agence. Notre rapport vous donne les éléments factuels pour décider — continuer, négocier, ou ne pas signer.
+                  Quand un acheteur potentiel remarque des fissures, la discussion s'enlise. Le rapport de l'institut documente précisément les désordres, qualifie leur nature, et présente les éléments factuels qui permettent à votre vente de se conclure dans les conditions prévues.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.2}>
-                <div className="flex flex-col sm:flex-row gap-4 mb-6">
+                <div className="flex flex-col sm:flex-row gap-4 mb-10">
                   <MagneticButton href="/diagnostic" variant="primary">
-                    Décrire ma situation
+                    Programmer une visite pour ma vente
                   </MagneticButton>
-                  <MagneticButton href="tel:+33582953375" variant="ghost">
-                    Pour un dossier urgent · 05 82 95 33 75
+                  <MagneticButton href="#cas-de-vente" variant="ghost">
+                    Lire un cas de vente similaire
                   </MagneticButton>
                 </div>
               </RevealOnScroll>
               <RevealOnScroll delay={0.26} variant="subtle">
-                <p className="text-[12px] leading-[1.7] tracking-[0.02em] text-ipb-light max-w-[640px]">
-                  Pour les rétractations en cours et les compromis avancés, l'appel téléphonique permet une réponse immédiate.
+                <p className="text-[12px] leading-[1.7] tracking-[0.02em] text-ipb-light">
+                  Visite sous 72 heures · Rapport remis sous 3 à 5 jours ouvrés · Conforme aux attentes des notaires et agents immobiliers
                 </p>
               </RevealOnScroll>
             </div>
           </div>
         </section>
 
-        {/* SECTION 1 — TROIS MOMENTS */}
+        {/* SECTION 1 — Les trois moments d'un vendeur */}
         <section className="bg-ipb-white py-24 lg:py-32">
           <div className="max-w-ipb mx-auto px-6 lg:px-12">
             <RevealOnScroll>
@@ -261,8 +263,8 @@ export default function ExpertiseAvantAchatPage() {
                     fontWeight: 700,
                   }}
                 >
-                  À chaque étape de votre achat,<br />
-                  <em>un rôle pour l'expertise.</em>
+                  À chaque étape de la vente,<br />
+                  <em>un rôle pour le rapport.</em>
                 </h2>
               </div>
             </RevealOnScroll>
@@ -271,9 +273,6 @@ export default function ExpertiseAvantAchatPage() {
               {moments.map((m, i) => (
                 <RevealOnScroll key={m.titre} delay={i * 0.06}>
                   <article className="border-t border-ipb-rule pt-8">
-                    <p className="font-serif text-ipb-orange text-[12px] font-bold tracking-[0.18em] uppercase mb-3">
-                      {m.label}
-                    </p>
                     <h3 className="font-serif text-ipb-text font-bold text-[20px] leading-tight mb-4">
                       {m.titre}
                     </h3>
@@ -287,44 +286,12 @@ export default function ExpertiseAvantAchatPage() {
           </div>
         </section>
 
-        {/* SECTION 2 — POURQUOI UN AVIS INDÉPENDANT */}
+        {/* SECTION 2 — Ce que contient le rapport */}
         <section className="bg-ipb-cream py-24 lg:py-32">
-          <div className="max-w-3xl mx-auto px-6 lg:px-12">
-            <RevealOnScroll>
-              <Eyebrow>L'indépendance</Eyebrow>
-              <h2
-                className="font-serif text-ipb-text mb-10"
-                style={{
-                  fontSize: 'clamp(32px, 3vw, 46px)',
-                  lineHeight: 1.12,
-                  letterSpacing: '-0.022em',
-                  fontWeight: 700,
-                }}
-              >
-                Pourquoi un avis indépendant<br />
-                <em>change la donne.</em>
-              </h2>
-            </RevealOnScroll>
-
-            <RevealOnScroll delay={0.08}>
-              <div className="space-y-6 text-[15px] leading-[1.9] font-light text-ipb-text">
-                <p>
-                  L'agent immobilier défend les intérêts du vendeur. C'est son métier, ce n'est pas un reproche. Le diagnostiqueur missionné dans le cadre de la vente couvre les diagnostics réglementaires (DPE, amiante, plomb, électricité, gaz). Aucun de ces deux acteurs n'a vocation à analyser la structure du bâti.
-                </p>
-                <p>
-                  L'institut est indépendant. Nous n'avons aucun lien avec le vendeur, l'agence, le notaire. Notre rapport dit ce que nous voyons.
-                </p>
-              </div>
-            </RevealOnScroll>
-          </div>
-        </section>
-
-        {/* SECTION 3 — CONTENU DU RAPPORT */}
-        <section className="bg-ipb-white py-24 lg:py-32">
           <div className="max-w-ipb mx-auto px-6 lg:px-12">
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
               <RevealOnScroll className="lg:col-span-5">
-                <Eyebrow>Le rapport acheteur</Eyebrow>
+                <Eyebrow>Le rapport vendeur</Eyebrow>
                 <h2
                   className="font-serif text-ipb-text mb-8"
                   style={{
@@ -338,13 +305,13 @@ export default function ExpertiseAvantAchatPage() {
                   <em>le rapport remis.</em>
                 </h2>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted">
-                  Le rapport est rédigé par l'ingénieur qui a mené la visite. Il est livré au format PDF, paginé, signé numériquement, avec les photos en pleine résolution. Il peut être annexé à l'acte ou utilisé comme pièce technique dans une négociation ou un recours.
+                  Le rapport est rédigé par l'ingénieur qui a mené la visite. Il est livré au format PDF, paginé, signé numériquement, avec les photos en pleine résolution. Il peut être annexé à un acte ou présenté à un notaire.
                 </p>
               </RevealOnScroll>
 
               <div className="lg:col-span-7">
                 <RevealOnScroll delay={0.08}>
-                  <div className="bg-ipb-cream border border-ipb-rule rounded-[6px] p-8 lg:p-10">
+                  <div className="bg-ipb-white border border-ipb-rule rounded-[6px] p-8 lg:p-10">
                     <p className="font-serif text-ipb-orange text-[12px] font-bold tracking-[0.18em] mb-6">
                       CONTENU DU RAPPORT
                     </p>
@@ -368,8 +335,8 @@ export default function ExpertiseAvantAchatPage() {
           </div>
         </section>
 
-        {/* SECTION 4 — CAS SUIVI (cas représentatif rédigé en interne, à remplacer par un cas réel quand disponible) */}
-        <section className="bg-ipb-cream py-24 lg:py-32">
+        {/* SECTION 3 — Cas suivi (cas représentatif rédigé en interne, à remplacer par un cas réel quand disponible) */}
+        <section id="cas-de-vente" className="bg-ipb-white py-24 lg:py-32 scroll-mt-24">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
             <RevealOnScroll>
               <div className="mb-12 max-w-2xl">
@@ -383,20 +350,20 @@ export default function ExpertiseAvantAchatPage() {
                     fontWeight: 700,
                   }}
                 >
-                  Toulouse Saint-Cyprien · Appartement T3<br />
+                  Léguevin · Maison T4 de plain-pied<br />
                   <em>2024.</em>
                 </h2>
               </div>
             </RevealOnScroll>
 
             <RevealOnScroll delay={0.08}>
-              <article className="bg-ipb-white border border-ipb-rule rounded-[6px] p-8 lg:p-12 space-y-6 text-[15px] leading-[1.9] font-light text-ipb-text">
+              <article className="bg-ipb-cream border border-ipb-rule rounded-[6px] p-8 lg:p-12 space-y-6 text-[15px] leading-[1.9] font-light text-ipb-text">
                 <div>
                   <h3 className="font-serif text-ipb-orange-d text-[11px] font-bold tracking-[0.18em] uppercase mb-3">
                     Contexte
                   </h3>
                   <p>
-                    Compromis signé sous condition suspensive d'expertise structurelle. Bien : T3 de 65 m² au troisième étage d'un immeuble en pierre de 1965. Acheteur ayant remarqué une fissure verticale traversante de 4 mm en façade arrière, doublée d'une fissure intérieure correspondante dans le séjour. Délai de 18 jours avant l'échéance de la condition suspensive.
+                    Succession en vue d'une mise en vente. Maison de 1992 sur dalle, 110 m², façade enduite. Une fissure verticale traversante de 8 mm sur le pignon nord-est et plusieurs fissures fines au pourtour des ouvertures. Trois visites avaient été annulées par les acheteurs après remarque sur la stabilité visible du bâti.
                   </p>
                 </div>
 
@@ -405,7 +372,7 @@ export default function ExpertiseAvantAchatPage() {
                     Intervention
                   </h3>
                   <p>
-                    Visite sur site programmée sous 24 heures avec accord de l'agence. Mesures au fissuromètre adhésif sur les deux faces de la fissure traversante, niveau laser pour vérifier l'horizontalité du plancher (basculement de 8 mm sur 5 m vers la façade), examen des indices secondaires. Consultation des archives du syndic confirmant l'absence de travaux structurels récents sur la copropriété. Avis intermédiaire transmis à l'acheteur dans les 48 heures suivant la visite. Rapport définitif remis en 4 jours ouvrés.
+                    Visite sur site programmée six jours après le premier contact. Mesures au fissuromètre adhésif sur les trois principales fissures, sondage à la tarière manuelle au pied du pignon concerné, consultation de la carte BRGM (commune classée en aléa moyen au retrait-gonflement des argiles, arrêté de catastrophe naturelle « sécheresse » 2022). Rédaction du rapport en onze jours, qualifiant les désordres comme stabilisés et liés à un épisode de retrait passé, avec préconisation de surveillance sur deux cycles saisonniers et matage cosmétique des fissures les plus visibles.
                   </p>
                 </div>
 
@@ -414,7 +381,7 @@ export default function ExpertiseAvantAchatPage() {
                     Issue
                   </h3>
                   <p>
-                    Le rapport a qualifié la fissure de stabilisée — absence de mouvement actif sur la base des indices observés (joints de carrelage intacts, pas de traces de réparation antérieure). L'acheteur a poursuivi la signature au prix annoncé, le rapport étant annexé à l'acte authentique sur recommandation du notaire.
+                    Le rapport a été présenté en quatrième visite. La transaction s'est conclue au prix annoncé, sans demande de décote ; le rapport a été annexé au compromis à la demande du notaire.
                   </p>
                 </div>
               </article>
@@ -422,7 +389,7 @@ export default function ExpertiseAvantAchatPage() {
           </div>
         </section>
 
-        {/* SECTION 5 — PROCESSUS */}
+        {/* SECTION 4 — Notre processus pour un dossier vente */}
         <section className="bg-ipb-navy py-24 lg:py-32">
           <div className="max-w-ipb mx-auto px-6 lg:px-12">
             <RevealOnScroll>
@@ -438,7 +405,7 @@ export default function ExpertiseAvantAchatPage() {
                   }}
                 >
                   Cinq étapes,<br />
-                  <em>compatibles avec vos délais.</em>
+                  <em>du premier contact à la remise.</em>
                 </h2>
               </div>
             </RevealOnScroll>
@@ -465,7 +432,7 @@ export default function ExpertiseAvantAchatPage() {
           </div>
         </section>
 
-        {/* SECTION 6 — TARIF ET DÉLAI */}
+        {/* SECTION 5 — Tarif et délai */}
         <section className="bg-ipb-cream py-24 lg:py-32">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
             <RevealOnScroll>
@@ -480,8 +447,8 @@ export default function ExpertiseAvantAchatPage() {
                     fontWeight: 700,
                   }}
                 >
-                  Une visite, un avis intermédiaire<br />
-                  <em>si urgence, un rapport en main.</em>
+                  Trois semaines, du premier contact<br />
+                  <em>au rapport en main.</em>
                 </h2>
               </div>
             </RevealOnScroll>
@@ -493,7 +460,7 @@ export default function ExpertiseAvantAchatPage() {
                     TARIF
                   </h3>
                   <p className="text-[15px] leading-[1.85] font-light text-ipb-text">
-                    Expertise standard avant achat. Pour les dossiers en urgence (rétractation en cours, compromis sous échéance), un supplément peut s'appliquer selon le délai demandé. Le tarif définitif vous est confirmé à l'issue du premier échange selon la complexité du dossier.
+                    Diagnostic instrumenté complet. Le tarif définitif vous est confirmé à l'issue du premier échange selon la complexité du dossier.
                   </p>
                 </div>
 
@@ -502,7 +469,7 @@ export default function ExpertiseAvantAchatPage() {
                     DÉLAI
                   </h3>
                   <p className="text-[15px] leading-[1.85] font-light text-ipb-text">
-                    Visite sous 72 heures en standard, sous 24 heures en urgence. Avis intermédiaire dans les 48 heures suivant la visite pour les dossiers urgents. Rapport définitif remis sous 3 à 5 jours ouvrés.
+                    Visite sous 72 heures · Rapport remis sous 3 à 5 jours ouvrés après visite · Total : moins de deux semaines entre votre demande et le rapport en main.
                   </p>
                 </div>
               </div>
@@ -510,7 +477,7 @@ export default function ExpertiseAvantAchatPage() {
           </div>
         </section>
 
-        {/* SECTION 7 — FAQ ACHETEUR */}
+        {/* SECTION 6 — FAQ vendeur */}
         <section className="bg-ipb-white py-24 lg:py-32">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
             <RevealOnScroll>
@@ -525,8 +492,8 @@ export default function ExpertiseAvantAchatPage() {
                     fontWeight: 700,
                   }}
                 >
-                  Sur l'expertise<br />
-                  <em>avant achat.</em>
+                  Sur la vente<br />
+                  <em>d'un bien avec fissures.</em>
                 </h2>
               </div>
             </RevealOnScroll>
@@ -578,19 +545,19 @@ export default function ExpertiseAvantAchatPage() {
                   fontWeight: 700,
                 }}
               >
-                Avant de signer,<br />
-                <em>faites lire le bâti.</em>
+                Une vente, un rapport,<br />
+                <em>une transaction qui se conclut.</em>
               </h2>
             </RevealOnScroll>
             <RevealOnScroll delay={0.08}>
               <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[600px] mx-auto">
-                Décrivez-nous le bien, votre échéance, et les désordres observés. Nous vous indiquons en quelques heures si nous pouvons intervenir dans vos délais.
+                Décrivez-nous votre situation et le calendrier de votre vente. Nous vous indiquons sous 24 heures si le dossier peut être traité dans vos délais.
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={0.14}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <MagneticButton href="/diagnostic" variant="primary">
-                  Décrire ma situation
+                  Programmer une visite
                 </MagneticButton>
                 <MagneticButton href="tel:+33582953375" variant="ghost">
                   Appeler l'institut · 05 82 95 33 75
