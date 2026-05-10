@@ -167,16 +167,35 @@ export default function HomePage() {
       <TrustRibbon />
       <Navbar />
 
+      {/* ─────────────────────────────────────────────────────────────
+          ORDRE STRATÉGIQUE (CRO) — 2026-05-10
+          Trois groupes selon la hauteur de page :
+          • HAUT : self-identification + capture leads chauds
+          • MILIEU : réassurance pour visiteurs tièdes
+          • BAS : humanisation + preuve sociale + conversion finale
+          ───────────────────────────────────────────────────────────── */}
+
+      {/* ─── HAUT — captation immédiate ─────────────────────────── */}
+
       {/* 1. Hero — split éditorial avec crack SVG signature */}
       <Hero />
 
-      {/* 2. Pull quote Ludovic — fond navy-2, ligne orange */}
-      <PullQuote />
+      {/* 2. Personas — self-identification immédiate.
+            Le visiteur se reconnaît dans 1 des 4 cas (sinistré /
+            vendeur / acheteur / rénovateur) et clique sur la page
+            persona dédiée. Routage SEO + conversion supérieure. */}
+      <PersonaCards
+        eyebrow="Selon votre situation"
+        title={<>Quatre cas, <em>quatre chemins.</em></>}
+        intro="Selon ce que vous traversez, voici la page la plus utile. Notre méthode est la même quel que soit le dossier ; le point d'entrée diffère."
+        background="white"
+        personas={homePersonas}
+      />
 
       {/* 3. Liste architecturale 4 services (fissures en 1er) */}
       <ServiceList />
 
-      {/* 3bis. Bandeau calculateur mur porteur — capture de leads chauds */}
+      {/* 4. Bandeau calculateur mur porteur — capture lead chaud niche */}
       <section className="bg-ipb-navy text-white py-14 md:py-20">
         <div className="max-w-4xl mx-auto px-5 sm:px-6 text-center">
           <p className="text-ipb-orange-l text-[11px] uppercase tracking-[0.18em] font-medium mb-4">
@@ -198,28 +217,29 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3ter. Section personas — 4 cas, 4 chemins */}
-      <PersonaCards
-        eyebrow="Selon votre situation"
-        title={<>Quatre cas, <em>quatre chemins.</em></>}
-        intro="Selon ce que vous traversez, voici la page la plus utile. Notre méthode est la même quel que soit le dossier ; le point d'entrée diffère."
-        background="cream"
-        personas={homePersonas}
-      />
+      {/* ─── MILIEU — réassurance ───────────────────────────────── */}
 
-      {/* 4. Méthode 5 étapes (accompagnement complet) */}
+      {/* 5. Méthode 5 étapes — comment on bosse */}
       <Methode />
 
-      {/* 5. Cabinet (REMPLACE TrustSignals "indépendants/tout en interne") */}
-      <Cabinet />
-
-      {/* 6. Études de cas (2 fissures + 1 mur porteur, photos cohérentes) */}
+      {/* 6. Études de cas — preuves concrètes */}
       <CaseStudies />
 
-      {/* 7. Stats monumentaux fond navy */}
+      {/* 7. Stats monumentaux fond navy — autorité chiffrée */}
       <StatsBlock />
 
-      {/* 8. Testimonials carousel éditorial */}
+      {/* ─── BAS — humanisation + preuve sociale + conversion ───── */}
+
+      {/* 8. Cabinet — humanisation Ludovic + équipe */}
+      <Cabinet />
+
+      {/* 9. Pull quote Ludovic — la voix de l'institut, signature
+            posée juste avant les avis clients. Cohérence sémantique
+            entre la voix interne (Cabinet → PullQuote) et la voix
+            externe (Testimonials qui suit). */}
+      <PullQuote />
+
+      {/* 10. Testimonials carousel éditorial — preuve sociale */}
       <Testimonials />
 
       {/* 9. FAQ (refaite Vague E avec questions GSC) */}

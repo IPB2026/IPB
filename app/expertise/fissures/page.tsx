@@ -218,6 +218,18 @@ export default function FissuresPage() {
           </div>
         </section>
 
+        {/* SECTION PERSONAS — placée juste après le Hero pour permettre
+            le routage immédiat. Un visiteur acheteur ou vendeur arrivé
+            sur cette page Google fissures peut basculer immédiatement
+            vers sa page persona dédiée. Conversion supérieure. */}
+        <PersonaCards
+          eyebrow="Selon votre situation"
+          title={<>Trois cas, <em>trois approches.</em></>}
+          intro="Une fissure n'a pas le même sens selon que vous habitez la maison, que vous la vendez, ou que vous l'achetez. Voici la page qui correspond à votre situation."
+          background="white"
+          personas={fissuresPersonas}
+        />
+
         {/* RECONNAISSANCE DU PROBLÈME (PAS — miroir du visiteur) */}
         <section className="bg-ipb-white py-20 lg:py-24 border-t border-ipb-rule">
           <div className="max-w-ipb mx-auto px-6 lg:px-12">
@@ -368,15 +380,6 @@ export default function FissuresPage() {
             </div>
           </div>
         </section>
-
-        {/* SECTION PERSONAS — trois cas typiques pour fissures */}
-        <PersonaCards
-          eyebrow="Selon votre situation"
-          title={<>Trois cas, <em>trois approches.</em></>}
-          intro="Une fissure n'a pas le même sens selon que vous habitez la maison, que vous la vendez, ou que vous l'achetez. Voici la page qui correspond à votre situation."
-          background="white"
-          personas={fissuresPersonas}
-        />
 
         {/* PREUVE SOCIALE — avis clients vérifiés */}
         <Testimonials />
