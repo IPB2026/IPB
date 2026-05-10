@@ -106,6 +106,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${baseUrl}/expertise/retrait-gonflement-argiles`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.82,
+    },
+    {
       url: `${baseUrl}/rdv-cabinet`,
       lastModified: recentUpdate,
       changeFrequency: 'monthly',
