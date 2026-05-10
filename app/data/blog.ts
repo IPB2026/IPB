@@ -8222,6 +8222,192 @@ const blogPosts: { [key: string]: BlogPost } = {
     `
   },
 
+  'evaluer-gravite-fissure-maison': {
+    slug: 'evaluer-gravite-fissure-maison',
+    metaTitle: "Comment évaluer la gravité d'une fissure : la grille de l'institut",
+    title: "Comment évaluer la gravité d'une fissure",
+    excerpt: "Largeur, forme, sens, évolution : la méthode en quatre critères que nous appliquons à chaque chantier pour qualifier une fissure. Article pédagogique, sans engagement, pour vous aider à comprendre ce que vous voyez avant toute intervention.",
+    date: '2026-05-10',
+    dateModified: '2026-05-10',
+    readTime: '12 min',
+    category: 'fissures',
+    author: 'Ludovic D.',
+    metaDescription: "Largeur, forme, sens, évolution : voici la méthode utilisée par l'institut pour qualifier une fissure. Article pédagogique pour comprendre ce que vous voyez sur votre maison avant toute intervention.",
+    keywords: ['fissure dangereuse maison', 'comment évaluer une fissure', 'lire une fissure', 'largeur fissure', 'fissure escalier', 'fissure traversante', 'fissure verticale', 'indices fissure structurelle', 'grille évaluation fissure'],
+    content: `
+      <p>Une fissure inquiète. La première chose à faire n'est pas de paniquer, ni d'appeler trois artisans pour comparer des devis. C'est de la lire correctement. Voici la méthode utilisée par l'institut pour qualifier une fissure — la même que celle que nous appliquons sur chaque chantier, en quatre critères.</p>
+
+      <p>Cette grille de lecture ne remplace pas un diagnostic instrumenté sur site. Elle vous permet de comprendre ce que vous voyez et d'avoir un échange éclairé avec un professionnel le moment venu. Si après lecture vous concluez à un caractère structurel, il vaut mieux ne pas attendre pour faire intervenir un ingénieur.</p>
+
+      <h2>Le critère 1 : la largeur</h2>
+
+      <p>La largeur d'une fissure est la première information que nous mesurons sur site. Elle ne dit pas tout — une fissure étroite peut être structurelle, une fissure large peut être superficielle — mais elle situe la conversation. Voici la grille que l'institut applique au quotidien.</p>
+
+      <table class="my-6 border-collapse w-full text-sm">
+        <thead>
+          <tr>
+            <th class="border border-slate-300 bg-slate-100 px-4 py-2 text-left">Largeur</th>
+            <th class="border border-slate-300 bg-slate-100 px-4 py-2 text-left">Catégorie</th>
+            <th class="border border-slate-300 bg-slate-100 px-4 py-2 text-left">Niveau d'attention</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-slate-300 px-4 py-2">Inférieure à 0,2 mm</td>
+            <td class="border border-slate-300 px-4 py-2">Microfissure</td>
+            <td class="border border-slate-300 px-4 py-2">Esthétique probable</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 px-4 py-2">0,2 à 2 mm</td>
+            <td class="border border-slate-300 px-4 py-2">Fissure fine</td>
+            <td class="border border-slate-300 px-4 py-2">À surveiller</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 px-4 py-2">2 à 10 mm</td>
+            <td class="border border-slate-300 px-4 py-2">Fissure</td>
+            <td class="border border-slate-300 px-4 py-2">Diagnostic recommandé</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 px-4 py-2">Supérieure à 10 mm</td>
+            <td class="border border-slate-300 px-4 py-2">Fissure large</td>
+            <td class="border border-slate-300 px-4 py-2">Diagnostic urgent</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Comment mesurer correctement</h3>
+
+      <p>La mesure se fait au fissuromètre. Il en existe deux types : à pince (qui se pose en travers de la fissure et mesure son écartement) et adhésif (qui se colle sur le mur et permet un suivi dans le temps). Pour un premier examen à domicile, un mètre ruban classique avec une lecture en millimètres suffit pour évaluer l'ordre de grandeur.</p>
+
+      <p>Quelques règles que nous appliquons sur le terrain : prendre la mesure au point le plus large de la fissure, à plusieurs endroits du tracé (la largeur n'est jamais constante sur toute la longueur), et noter la date. Une mesure isolée a moins de valeur qu'une mesure suivie sur plusieurs mois — c'est l'évolution dans le temps qui qualifie réellement une fissure.</p>
+
+      <p>Évitez les estimations à l'œil. Une fissure de 1,5 mm peut paraître importante sur une façade claire ou paisible sur une façade texturée. Le mètre ne ment pas, l'œil oui.</p>
+
+      <h2>Le critère 2 : la forme et le sens</h2>
+
+      <p>La forme d'une fissure raconte son origine. Une même largeur peut signaler des phénomènes très différents selon que la fissure est verticale, horizontale, en escalier, traversante, ou en réseau fin. L'institut classe les fissures en cinq formes principales.</p>
+
+      <h3>La fissure verticale</h3>
+
+      <p>Tracé vertical, généralement isolé, parfois sur la hauteur complète d'un mur. Elle traduit le plus souvent un mouvement vertical : tassement d'une partie du bâti, dilatation thermique d'un élément structurel, retrait du mortier dans une maçonnerie jeune. Une fissure verticale fine sur une maçonnerie traditionnelle est rarement structurelle. Une fissure verticale large traversant plusieurs niveaux mérite en revanche une mesure et un diagnostic.</p>
+
+      <h3>La fissure horizontale</h3>
+
+      <p>Plus rare. Elle peut signaler une poussée horizontale (charge de toiture mal reprise, pression d'un terrain en pente, dilatation d'un dallage contre une cloison). Sur un mur de soubassement ou en limite de terrain, elle peut accompagner un phénomène de poussée du sol qui s'aggrave par cycles. Une fissure horizontale est rarement banale.</p>
+
+      <h3>La fissure en escalier</h3>
+
+      <p>Elle suit les joints de la maçonnerie en formant un escalier. C'est la signature classique du tassement différentiel sur des murs en briques, parpaings ou pierre. Une partie du bâti s'est enfoncée par rapport à l'autre, et la maçonnerie a accommodé le mouvement en se cassant le long des joints, qui sont les zones les plus faibles. Très fréquente sur les bâtis touchés par le retrait-gonflement des argiles.</p>
+
+      <h3>La fissure traversante</h3>
+
+      <p>Visible des deux côtés du mur. Elle traduit une rupture mécanique nette : le mur ne tient plus comme un seul élément. C'est un signal qu'une intervention structurelle est probablement nécessaire, indépendamment de la forme et de la largeur. Une fissure traversante doit toujours être documentée par des photos prises de chaque côté.</p>
+
+      <h3>Le faïençage</h3>
+
+      <p>Réseau fin et serré de microfissures, ressemblant à un maillage de peau. Il s'agit presque toujours d'un phénomène d'enduit ou de finition : mortier trop riche, séchage trop rapide, support trop sec. Le faïençage est cosmétique. Il n'engage pas la structure du bâti et se traite par un ravalement.</p>
+
+      <h2>Le critère 3 : l'évolution dans le temps</h2>
+
+      <p>Une fissure stabilisée et une fissure active sont deux problèmes différents, même si elles se ressemblent à l'œil. La seule façon de les distinguer est de les suivre dans le temps. C'est aussi pour cette raison que l'institut prend toujours des mesures datées et géolocalisées.</p>
+
+      <h3>La méthode du suivi à domicile</h3>
+
+      <p>Si vous souhaitez surveiller vous-même une fissure entre deux saisons, voici la méthode :</p>
+
+      <ul>
+        <li><strong>Marquer les extrémités</strong> au crayon de papier, en notant la date à côté. Ne tracez pas par-dessus la fissure : marquez juste le point d'arrêt actuel.</li>
+        <li><strong>Photographier régulièrement</strong>, à intervalle d'environ un mois, avec horodatage. Cadrez la même zone à chaque fois pour permettre la comparaison.</li>
+        <li><strong>Mesurer au fissuromètre</strong> sur deux cycles été-hiver minimum. Un cycle ne suffit pas — c'est sur deux cycles complets, soit un peu plus d'un an, qu'on peut conclure.</li>
+      </ul>
+
+      <p>Une fissure qui ne bouge pas en douze mois sur deux saisons sèches et humides est probablement stabilisée. Une fissure qui s'élargit même de un millimètre par an mérite une intervention. Les fissures qui s'agrandissent rapidement — plusieurs millimètres en quelques mois — relèvent d'un diagnostic urgent.</p>
+
+      <h3>Le rôle des saisons</h3>
+
+      <p>En Occitanie, les fissures liées au retrait-gonflement des argiles sont fortement saisonnières. L'argile se rétracte en été (le sol se contracte, la maison s'enfonce), gonfle en hiver (le sol se gorge d'eau, la maison se relève). Sur une maison sensible, une fissure peut osciller de plusieurs millimètres entre juillet et janvier sans que cela traduise une aggravation. C'est l'évolution sur deux cycles complets qui dit la vérité, pas une mesure ponctuelle prise pendant la canicule.</p>
+
+      <h2>Le critère 4 : les indices secondaires</h2>
+
+      <p>Une fissure ne dit pas toute la vérité sur le bâti. La maison parle d'autres façons, qu'il faut savoir écouter. Voici les indices secondaires que l'institut relève systématiquement.</p>
+
+      <h3>Les portes et fenêtres qui coincent</h3>
+
+      <p>Si vous remarquez qu'une porte intérieure ou une fenêtre s'ouvre moins bien depuis quelques mois, ou que vous devez forcer pour la fermer, c'est un signal de mouvement structurel. Le cadre travaille parce que le mur dans lequel il est inséré bouge. Quand cet indice accompagne une fissure visible, le diagnostic devient plus probable.</p>
+
+      <h3>Les plinthes qui se décollent</h3>
+
+      <p>Une plinthe qui se détache du mur ou du sol traduit un déplacement entre deux éléments qui devaient rester solidaires. Sur un mur fissuré, c'est un signe que le mouvement se propage à l'intérieur, pas seulement à la façade.</p>
+
+      <h3>Le carrelage qui se fissure ou se descelle</h3>
+
+      <p>Une dalle qui bouge fait travailler le carrelage qui la recouvre. Si vos carreaux se fissurent en suivant les joints, ou se descellent dans une zone localisée, vous tenez un indice du mouvement de la dalle ou de la chape. Combiné à des fissures murales correspondantes, c'est un signal de tassement.</p>
+
+      <h3>Les sons</h3>
+
+      <p>Une maison qui craque ou qui claque, surtout après un épisode pluvieux ou caniculaire intense, exprime des contraintes mécaniques. Ces sons isolés ne sont pas alarmants ; ce qui compte, c'est leur fréquence et leur corrélation avec les événements extérieurs.</p>
+
+      <h3>La correspondance intérieur-extérieur</h3>
+
+      <p>Une fissure visible à l'extérieur a-t-elle une correspondance à l'intérieur ? Une fissure visible à l'intérieur correspond-elle à une fissure côté façade ? Les fissures qui traversent le mur sont structurellement plus significatives que les fissures unifaces. Faites le tour intérieur de chaque fissure extérieure observée, et inversement.</p>
+
+      <h2>La grille de synthèse de l'institut</h2>
+
+      <p>Une fois les quatre critères examinés, vous pouvez recroiser. Voici comment l'institut synthétise — non pas pour conclure définitivement (ça reste le rôle du diagnostic instrumenté) mais pour orienter une première lecture.</p>
+
+      <table class="my-6 border-collapse w-full text-sm">
+        <thead>
+          <tr>
+            <th class="border border-slate-300 bg-slate-100 px-4 py-2 text-left">Signaux d'une fissure plutôt esthétique</th>
+            <th class="border border-slate-300 bg-slate-100 px-4 py-2 text-left">Signaux d'une fissure plutôt structurelle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-slate-300 px-4 py-2">Largeur inférieure à 2 mm</td>
+            <td class="border border-slate-300 px-4 py-2">Largeur supérieure à 2 mm</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 px-4 py-2">Forme en faïençage ou verticale isolée</td>
+            <td class="border border-slate-300 px-4 py-2">Forme en escalier ou traversante</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 px-4 py-2">Pas d'évolution sur deux cycles saisonniers</td>
+            <td class="border border-slate-300 px-4 py-2">Évolution mesurable d'un cycle à l'autre</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 px-4 py-2">Aucun indice secondaire associé</td>
+            <td class="border border-slate-300 px-4 py-2">Portes qui coincent, plinthes décollées, carrelage fissuré</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 px-4 py-2">Localisation périphérique (enduit, jonction)</td>
+            <td class="border border-slate-300 px-4 py-2">Localisation aux points stratégiques (angles, ouvertures, jonctions de planchers)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Les signaux à droite ne suffisent pas pour conclure à eux seuls — un seul indice structurel sur cinq invite à la prudence. C'est l'accumulation de signaux qui fait le diagnostic. Quand trois ou quatre signaux structurels convergent, l'intervention d'un ingénieur structure devient justifiée.</p>
+
+      <h2>Que faire ensuite</h2>
+
+      <p>À l'issue de cette grille, trois cas de figure se présentent.</p>
+
+      <h3>Vous concluez à un caractère esthétique</h3>
+
+      <p>Largeur faible, forme banale, aucune évolution mesurable, aucun indice secondaire. Pas d'intervention urgente. Une surveillance simple, avec une photo annuelle pour vérifier que la situation reste stable, suffit. Si un ravalement est prévu, il sera l'occasion de traiter l'aspect cosmétique des fissures par un enduit souple.</p>
+
+      <h3>Vous avez un doute</h3>
+
+      <p>Quelques signaux mixtes, un cas qui ne tranche pas. Vous pouvez décrire votre situation via le pré-diagnostic gratuit de l'institut. Notre ingénieur consulte les éléments transmis sous quarante-huit heures et vous indique si une visite est utile.</p>
+
+      <h3>Vous concluez à un caractère structurel ou les indices s'accumulent</h3>
+
+      <p>Plusieurs signaux structurels convergent. Une fissure traversante, qui s'élargit, accompagnée de portes qui coincent et d'un carrelage qui se descelle. Le diagnostic instrumenté sur site est la prochaine étape. Ce n'est pas une décision à reporter : plus le bâti continue de bouger, plus la réparation sera complexe et coûteuse.</p>
+
+      <p class="mt-12 text-[15px] italic text-slate-600 border-t border-slate-200 pt-8">Si après lecture vous souhaitez que nous regardions votre situation, vous pouvez décrire votre cas via le <a href="/diagnostic" class="text-ipb-orange-d underline hover:no-underline">pré-diagnostic gratuit de l'institut</a>. Notre ingénieur le consulte sous quarante-huit heures.</p>
+    `
+  },
+
 };
 
 // ═══════════════════════════════════════════════════════════════
