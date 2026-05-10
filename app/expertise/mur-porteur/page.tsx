@@ -5,40 +5,6 @@ import { Footer } from '@/components/home/Footer';
 import { CtaFinal } from '@/components/home/CtaFinal';
 import { Testimonials } from '@/components/home/Testimonials';
 import { murPorteurReviews } from '@/app/data/testimonials';
-import { PersonaCards, type PersonaCard } from '@/components/home/PersonaCards';
-
-// Quatre sous-profils de projets de mur porteur — adressés directement
-// au persona Rénovateur du cahier des charges §2.1.
-const murPorteurPersonas: PersonaCard[] = [
-  {
-    label: 'Cuisine ouverte',
-    titre: 'Vous voulez ouvrir cuisine et séjour',
-    desc: "Le projet le plus fréquent : créer un espace de vie unifié en supprimant le mur porteur entre cuisine et salon. Étude de structure, dimensionnement de la poutre, exécution.",
-    href: '/diagnostic',
-    cta: 'Décrire mon projet',
-  },
-  {
-    label: 'Suite parentale',
-    titre: 'Vous regroupez chambre, dressing et salle d\'eau',
-    desc: "Réorganisation de l'étage en suite parentale, avec suppression d'un ou plusieurs murs porteurs. Coordination des corps de métier intégrée à notre intervention.",
-    href: '/diagnostic',
-    cta: 'Décrire mon projet',
-  },
-  {
-    label: 'Plateau loft',
-    titre: 'Vous créez un grand volume ouvert',
-    desc: "Suppression de plusieurs cloisons et murs intermédiaires pour un plateau ouvert. Étaiement progressif, reprise par poutre IPN ou HEB selon la portée.",
-    href: '/diagnostic',
-    cta: 'Décrire mon projet',
-  },
-  {
-    label: 'Baie vitrée',
-    titre: 'Vous créez une baie sur la façade',
-    desc: "Ouverture d'un mur porteur extérieur pour créer une baie vitrée ou agrandir une fenêtre. Étude technique, démarches administratives accompagnées si requises.",
-    href: '/diagnostic',
-    cta: 'Décrire mon projet',
-  },
-];
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
@@ -506,15 +472,6 @@ export default function MurPorteurPage() {
             </RevealOnScroll>
           </div>
         </section>
-
-        {/* SECTION PERSONAS — quatre sous-profils de projets mur porteur */}
-        <PersonaCards
-          eyebrow="Selon votre projet"
-          title={<>Quatre projets, <em>une même méthode.</em></>}
-          intro="Cuisine ouverte, suite parentale, plateau loft, création de baie vitrée. Ces projets diffèrent dans leur ampleur et leurs contraintes, mais relèvent tous de la même méthode : étude, dimensionnement, exécution sous garantie décennale."
-          background="cream"
-          personas={murPorteurPersonas}
-        />
 
         {/* PREUVE SOCIALE — avis clients ciblés mur porteur / baie vitrée.
             On masque le lien Google car ces avis ne figurent pas sur la fiche
