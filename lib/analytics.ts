@@ -31,22 +31,24 @@ const ADS_CONVERSION_ID =
 /** Action de conversion "Lead diagnostic" — format "AW-XXXX/labelXxx" */
 const CONV_DIAGNOSTIC_LEAD =
   process.env.NEXT_PUBLIC_GADS_CONV_DIAGNOSTIC ||
-  'AW-17902440600/0aY8COSl6JccEJlhxthC';
+  'AW-17902440600/gMjiCMKz-KocEJihxthC';
 
 /** Action de conversion "Lead calculateur mur porteur" */
 const CONV_CALCULATOR_LEAD =
   process.env.NEXT_PUBLIC_GADS_CONV_CALCULATEUR ||
-  'AW-17902440600/0aY8COSl6JccEJlhxthC';
+  'AW-17902440600/gMjiCMKz-KocEJihxthC';
 
 /** Action de conversion "Clic téléphone" (micro-conversion) */
 const CONV_PHONE_CLICK =
   process.env.NEXT_PUBLIC_GADS_CONV_PHONE ||
-  'AW-17902440600/0aY8COSl6JccEJlhxthC';
+  'AW-17902440600/0aY8COSl6JccEJihxthC';
 
-/** Action de conversion "Demande de rappel" (micro-conversion) */
+/** Action de conversion "Demande de rappel" (micro-conversion)
+ *  Pointe vers la même action que CONV_PHONE_CLICK : un callback est aussi
+ *  un lead téléphone, donc regroupé dans "Annonce Appel Direct". */
 const CONV_CALLBACK_REQUEST =
   process.env.NEXT_PUBLIC_GADS_CONV_CALLBACK ||
-  'AW-17902440600/0aY8COSl6JccEJlhxthC';
+  'AW-17902440600/0aY8COSl6JccEJihxthC';
 
 // ─────────────────────────────────────────────────────────────────
 // Cœur — wrapper bas niveau
