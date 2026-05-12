@@ -102,11 +102,11 @@ export default function MentionsLegalesPage() {
                     <dd>IPB · Institut de Pathologie du Bâtiment</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-ipb-text sm:w-48">Adresse de l'entreprise :</dt>
-                    <dd>13 rue du Recteur Dottin, 31100 Toulouse, France</dd>
+                    <dt className="font-bold text-ipb-text sm:w-48">Siège :</dt>
+                    <dd>13 rue du Recteur Dottin, Apt 7, 4<sup>e</sup> étage, 31100 Toulouse, France</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-ipb-text sm:w-48">Adresse d'exercice :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-48">Bureaux d'accueil :</dt>
                     <dd>54 avenue Jean Jaurès, 31170 Tournefeuille, France</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
@@ -361,7 +361,7 @@ export default function MentionsLegalesPage() {
                 <div className="bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
                   <h3 className="font-bold text-ipb-text mb-3">Responsable du traitement</h3>
                   <p>Bâti Halli, représentée par son représentant légal</p>
-                  <p>54 avenue Jean Jaurès, 31170 Tournefeuille</p>
+                  <p>13 rue du Recteur Dottin, Apt 7, 4<sup>e</sup> étage, 31100 Toulouse</p>
                   <p>Email : <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange hover:underline">contact@ipb-expertise.fr</a></p>
                 </div>
 
