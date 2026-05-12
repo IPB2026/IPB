@@ -208,10 +208,6 @@ export default function MentionsLegalesPage() {
                   </a>
                 </div>
               </div>
-              <p className="mt-4 text-sm text-ipb-muted">
-                L'institut n'a pas de bureau ouvert au public : tous les rendez-vous se déroulent
-                sur le site du projet (visite technique sur place) ou par téléphone.
-              </p>
             </section>
 
             {/* Section 5 */}
