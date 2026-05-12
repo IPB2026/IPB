@@ -244,8 +244,8 @@ const expertTips: Record<string, string> = {
   // MUR PORTEUR
   'mur-porteur:TYPE_BATIMENT:maison': '💡 Pour une maison individuelle, l\'ouverture de mur porteur est généralement réalisable en 2 à 5 jours. L\'étude structure est l\'étape clé.',
   'mur-porteur:TYPE_BATIMENT:immeuble': '⚠️ En immeuble, l\'accord de la copropriété est obligatoire. Nous vous aidons à constituer le dossier technique pour l\'AG.',
-  'mur-porteur:TYPE_BATIMENT:local': '💡 Dans un local professionnel, le mur porteur peut avoir des charges importantes. L\'ingénieur structure calcule la poutre adaptée.',
-  'mur-porteur:PROJET:abattre': '⚠️ Abattre un mur porteur sans étude structure est illégal et dangereux. Notre ingénieur dimensionne la poutre de reprise avant tout chantier.',
+  'mur-porteur:TYPE_BATIMENT:local': '💡 Dans un local professionnel, le mur porteur peut avoir des charges importantes. Notre BE structure partenaire dimensionne la poutre adaptée.',
+  'mur-porteur:PROJET:abattre': '⚠️ Abattre un mur porteur sans étude structure est illégal et dangereux. Notre BE partenaire dimensionne la poutre de reprise avant tout chantier.',
   'mur-porteur:PROJET:agrandir': '💡 Agrandir une ouverture existante est souvent plus simple — le linteau est déjà en place. L\'étude vérifie si la portée peut être étendue.',
   'mur-porteur:PROJET:baie': '💡 Une baie vitrée nécessite l\'ouverture du mur ET la pose du dormant. Nous coordonnons les deux corps de métier.',
   'mur-porteur:PORTEE:grande': '⚠️ Au-delà de 3 m, la poutre est plus massive (HEB 200+ ou béton armé) et le coût augmente significativement. Un calcul précis est indispensable.',
@@ -711,7 +711,7 @@ export default function DiagnosticPage() {
                       Je préfère expliquer<br />de vive voix
                     </h2>
                     <p className="text-[13px] leading-[1.7] font-light text-white/65 flex-1 mb-6">
-                      Appelez Ludovic directement. Il pourra mieux comprendre votre situation à l'oral et orienter le rendez-vous.
+                      Appelez directement l'institut. Notre équipe pourra mieux comprendre votre situation à l'oral et orienter le rendez-vous.
                     </p>
                     <span className="inline-flex items-center gap-2 text-ipb-orange-l text-[13px] font-medium border-b border-ipb-orange-l pb-1 self-start group-hover:gap-3 transition-all">
                       05 82 95 33 75 →

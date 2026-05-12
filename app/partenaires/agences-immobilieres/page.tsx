@@ -9,7 +9,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "Agences Immobilières Toulouse · Expertise Vente · 5j ouvrés",
-  description: "Vente bloquée par une fissure ? Rapport IPB opposable sous 3 à 5 jours ouvrés pour rassurer l'acquéreur. Toulouse, Montauban. ☎ 05 82 95 33 75",
+  description: "Vente bloquée par une fissure ? Rapport technique IPB sous 3 à 5 jours ouvrés pour rassurer l'acquéreur. Toulouse, Montauban. ☎ 05 82 95 33 75",
   keywords: [
     'partenariat agence immobilière toulouse',
     'expert fissures pour agence immobilière',

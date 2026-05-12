@@ -9,8 +9,8 @@ import { Testimonials } from '@/components/home/Testimonials';
 import { CheckCircle, Phone, ArrowRight, MapPin, Droplets, Shield, FileText, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Expert Humidité Toulouse · Injection Résine 30 ans',
-  description: "Traitement humidité Toulouse : remontées capillaires, salpêtre, moisissures. Injection résine garantie 30 ans. Décennale AXA. ☎ 05 82 95 33 75",
+  title: 'Expert Humidité Toulouse · Diagnostic & Injection Résine',
+  description: "Traitement humidité Toulouse : remontées capillaires, salpêtre, moisissures. Injection résine, cuvelage. Décennale AXA. ☎ 05 82 95 33 75",
   keywords: [
     'expert humidité toulouse',
     'traitement humidité maison 31',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Expert Humidité Toulouse · Injection & Cuvelage · IPB',
-    description: "Traitement définitif à Toulouse. Remontées capillaires, salpêtre, moisissures. Garantie 30 ans. Décennale AXA.",
+    description: "Traitement à Toulouse contre remontées capillaires, salpêtre et moisissures. Décennale AXA active.",
     url: 'https://www.ipb-expertise.fr/expert-humidite-toulouse-31',
     type: 'website',
     images: [{
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Expert Humidité Toulouse · IPB',
-    description: "Injection résine garantie 30 ans. Diagnostic 48h. ☎ 05 82 95 33 75",
+    description: "Diagnostic humidité sous 72h. Injection résine et cuvelage. ☎ 05 82 95 33 75",
   },
   robots: {
     index: true,
@@ -93,8 +93,8 @@ const faqItems = [
     answer: "Après injection, les murs s'assèchent progressivement en 6 à 12 mois selon leur épaisseur (1 mois par cm). Le traitement est efficace dès l'injection (l'eau ne monte plus), mais l'humidité accumulée pendant des années met du temps à s'évacuer. Les finitions intérieures (enduits, peinture) ne doivent pas être refaites avant 12 mois pour ne pas emprisonner l'humidité."
   },
   {
-    question: "Quelle est la durée de la garantie sur l'injection résine ?",
-    answer: "Nos traitements par injection résine sont garantis 30 ans. C'est la solution la plus durable contre les remontées capillaires. La garantie couvre la barrière étanche elle-même : si elle perd son efficacité avant 30 ans, l'institut intervient à ses frais. Cette garantie est transmissible en cas de revente du bien."
+    question: "Quelle garantie sur l'injection résine ?",
+    answer: "Les travaux d'étanchéité maçonnée par injection de résine hydrophobe sont couverts par la garantie décennale travaux AXA de l'institut (10 ans à compter de la réception). Les résines que nous utilisons bénéficient par ailleurs d'une garantie commerciale du fabricant sur la durée d'efficacité de la barrière étanche, dont les conditions précises sont communiquées au devis. Les deux garanties sont remises avec le procès-verbal de réception."
   },
   {
     question: "Intervenez-vous en cave et sous-sol ?",
@@ -161,8 +161,8 @@ export default function ExpertHumiditeToulouse31Page() {
               Expert Humidité à <span className="text-blue-400">Toulouse</span>
             </h1>
             <p className="text-xl text-white/70 mb-8 max-w-2xl">
-              Murs humides, salpêtre, moisissures ? Diagnostic expert sous 48h. 
-              Traitement définitif par injection résine, garanti 30 ans.
+              Murs humides, salpêtre, moisissures ? Diagnostic technique sous 72h.
+              Traitement par injection résine et cuvelage, sous décennale AXA active.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/diagnostic" className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all">
@@ -185,12 +185,12 @@ export default function ExpertHumiditeToulouse31Page() {
               <div className="text-ipb-muted mt-1">Maisons assainies</div>
             </div>
             <div>
-              <div className="text-4xl font-extrabold text-blue-600">30 ans</div>
-              <div className="text-ipb-muted mt-1">Garantie injection</div>
+              <div className="text-4xl font-extrabold text-blue-600">AXA</div>
+              <div className="text-ipb-muted mt-1">Décennale active</div>
             </div>
             <div>
-              <div className="text-4xl font-extrabold text-blue-600">48h</div>
-              <div className="text-ipb-muted mt-1">Délai intervention</div>
+              <div className="text-4xl font-extrabold text-blue-600">72h</div>
+              <div className="text-ipb-muted mt-1">Délai d'intervention</div>
             </div>
             <div>
               <div className="text-4xl font-extrabold text-blue-600">98%</div>
@@ -236,20 +236,20 @@ export default function ExpertHumiditeToulouse31Page() {
             <div className="bg-ipb-navy-2 rounded-2xl p-8">
               <Droplets className="text-blue-400 mb-4" size={40} />
               <h3 className="text-xl font-bold mb-3">Injection résine</h3>
-              <p className="text-ipb-light mb-4">Barrière étanche injectée dans le mur. Stoppe définitivement les remontées capillaires.</p>
-              <div className="text-blue-400 font-bold">Garantie 30 ans</div>
+              <p className="text-ipb-light mb-4">Barrière étanche injectée dans le mur pour traiter les remontées capillaires.</p>
+              <div className="text-blue-400 font-bold">Décennale AXA</div>
             </div>
             <div className="bg-ipb-navy-2 rounded-2xl p-8">
               <Shield className="text-blue-400 mb-4" size={40} />
               <h3 className="text-xl font-bold mb-3">Cuvelage cave</h3>
-              <p className="text-ipb-light mb-4">Étanchéité totale des sous-sols et caves par application d'un revêtement imperméable.</p>
-              <div className="text-blue-400 font-bold">Garantie 10 ans</div>
+              <p className="text-ipb-light mb-4">Étanchéité des sous-sols et caves par application d'un revêtement imperméable.</p>
+              <div className="text-blue-400 font-bold">Décennale AXA</div>
             </div>
             <div className="bg-ipb-navy-2 rounded-2xl p-8">
               <FileText className="text-blue-400 mb-4" size={40} />
-              <h3 className="text-xl font-bold mb-3">VMI / Ventilation</h3>
-              <p className="text-ipb-light mb-4">Système de ventilation pour traiter les problèmes de condensation et améliorer l'air.</p>
-              <div className="text-blue-400 font-bold">Solution complémentaire</div>
+              <h3 className="text-xl font-bold mb-3">Ventilation (VMI)</h3>
+              <p className="text-ipb-light mb-4">Pour la condensation et l'amélioration de l'air, installation par notre partenaire fluides agréé.</p>
+              <div className="text-blue-400 font-bold">Partenaire installateur</div>
             </div>
           </div>
         </div>
@@ -344,7 +344,7 @@ export default function ExpertHumiditeToulouse31Page() {
             <div className="bg-white rounded-2xl shadow-lg border-2 border-blue-500 p-8 text-center">
               <h3 className="text-xl font-bold text-ipb-text mb-2">Injection résine</h3>
               <div className="text-4xl font-extrabold text-blue-600 mb-4">2,5-6K€</div>
-              <p className="text-ipb-muted">Garantie 30 ans</p>
+              <p className="text-ipb-muted">Décennale AXA</p>
             </div>
             <div className="bg-white rounded-2xl shadow-lg border border-ipb-rule p-8 text-center">
               <h3 className="text-xl font-bold text-ipb-text mb-2">Cuvelage cave</h3>
@@ -475,7 +475,7 @@ export default function ExpertHumiditeToulouse31Page() {
       <section className="py-16 md:py-24 bg-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Murs humides à Toulouse ?</h2>
-          <p className="text-xl text-blue-100 mb-8">Diagnostic expert sous 48h. Traitement garanti 30 ans.</p>
+          <p className="text-xl text-blue-100 mb-8">Diagnostic technique sous 72h. Traitement sous décennale AXA.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all flex items-center justify-center gap-2">
               Demander un diagnostic <ArrowRight size={20} />

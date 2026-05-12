@@ -64,10 +64,10 @@ export function ServicesHumidity() {
             {/* Points forts */}
             <div className="grid grid-cols-2 gap-3 mb-8">
               {[
-                'Ingénieur structure en interne',
+                'Équipe expérimentée, décennale AXA active',
                 'Démarches administratives incluses',
                 'Baie vitrée : coordination menuiserie',
-                'Note de calcul officielle fournie',
+                'Note de calcul co-signée par notre BE partenaire',
               ].map((item) => (
                 <div key={item} className="flex items-center gap-2 text-sm text-slate-700">
                   <CheckCircle size={15} className="text-amber-600 shrink-0" />

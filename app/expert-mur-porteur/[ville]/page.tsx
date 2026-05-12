@@ -103,7 +103,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
       {
         "@type": "Question",
         "name": `Comment savoir si un mur est porteur à ${villeNom} ?`,
-        "acceptedAnswer": { "@type": "Answer", "text": `Quatre indices fiables : épaisseur supérieure à 15 cm (souvent 20-25 cm pour la brique foraine toulousaine), son sourd au choc (vs. son creux pour une cloison placo), présence sur les plans d'origine, alignement vertical d'un étage à l'autre. Mais seul un ingénieur structure peut confirmer formellement après inspection sur site. À ${villeNom}, ce diagnostic est compris dans notre prestation.` }
+        "acceptedAnswer": { "@type": "Answer", "text": `Quatre indices fiables : épaisseur supérieure à 15 cm (souvent 20-25 cm pour la brique foraine toulousaine), son sourd au choc (vs. son creux pour une cloison placo), présence sur les plans d'origine, alignement vertical d'un étage à l'autre. Seul un diagnostic technique sur site peut confirmer formellement le caractère porteur. À ${villeNom}, ce diagnostic est compris dans notre prestation.` }
       },
       {
         "@type": "Question",
@@ -390,7 +390,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
         <section className="py-16 md:py-20 bg-ipb-orange text-white">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h2 className="text-white text-3xl md:text-4xl font-extrabold mb-6">Votre projet à {villeNom}, notre expertise</h2>
-            <p className="text-xl text-ipb-orange-l mb-8">Décrivez votre projet à notre institut. Réponse d'un ingénieur structure sous 24 heures.</p>
+            <p className="text-xl text-ipb-orange-l mb-8">Décrivez votre projet à notre institut. Réponse de notre équipe sous 24 heures ouvrées.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link href="/diagnostic" className="bg-white text-ipb-orange px-10 py-5 rounded-xl font-bold text-lg hover:bg-ipb-stone flex items-center justify-center gap-2 shadow-xl">
                 Lancer mon devis gratuit <ArrowRight size={20} />

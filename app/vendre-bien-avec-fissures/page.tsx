@@ -63,7 +63,7 @@ const contenuRapport = [
   'Qualification de chaque fissure : esthétique, superficielle, ou structurelle',
   "Identification des causes probables (retrait-gonflement des argiles, tassement différentiel, défaut d'exécution, etc.)",
   'Préconisations chiffrées de réparation, le cas échéant',
-  "Avis de l'ingénieur structure sur la stabilité globale du bâti",
+  "Avis de l'expert structure de l'institut sur la stabilité globale du bâti",
   'Document conforme aux attentes des notaires, agents immobiliers et acquéreurs',
 ];
 
@@ -74,7 +74,7 @@ const etapes = [
   },
   {
     titre: 'Visite sur site',
-    desc: "Notre ingénieur structure se déplace sous 72 heures en moyenne. Mesures, photos, échange direct.",
+    desc: "L'équipe de l'institut se déplace sous 72 heures en moyenne. Mesures, photos, échange direct.",
   },
   {
     titre: 'Rédaction du rapport',
@@ -125,7 +125,7 @@ const jsonLd = {
   '@type': 'Service',
   name: "Rapport d'expertise fissures pour vente immobilière",
   description:
-    "Diagnostic instrumenté des fissures, qualification structurelle ou esthétique, et rédaction d'un rapport conforme aux attentes des notaires et agents immobiliers.",
+    "Diagnostic instrumenté des fissures, qualification structurelle ou esthétique, et rédaction d'un rapport technique conforme aux attentes des notaires et agents immobiliers.",
   url: 'https://www.ipb-expertise.fr/vendre-bien-avec-fissures',
   serviceType: 'Expertise en pathologie du bâtiment — vente immobilière',
   provider: { '@id': 'https://www.ipb-expertise.fr#localbusiness' },

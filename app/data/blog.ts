@@ -41,7 +41,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2025-09-22',
     readTime: '8 min',
     category: 'fissures',
-    author: 'Ludovic D.',
+    author: "L'institut IPB",
     metaDescription: 'Guide expert pour identifier les fissures dangereuses sur votre maison à Toulouse. Causes (sol argileux), solutions (agrafage vs micropieux), prix réels.',
     keywords: ['fissures maison', 'toulouse', 'haute-garonne', 'agrafage', 'micropieux', 'tassement différentiel', 'sol argileux'],
     content: `
@@ -224,7 +224,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2025-11-03',
     readTime: '6 min',
     category: 'humidite',
-    author: 'Nicolas G.',
+    author: "L'institut IPB",
     metaDescription: 'Solutions définitives contre l\'humidité et les remontées capillaires. Pourquoi la peinture anti-humidité ne fonctionne pas. Injection résine, cuvelage, traitement des murs humides en Haute-Garonne.',
     keywords: ['humidité', 'remontée capillaire', 'salpêtre', 'injection résine', 'cuvelage', 'murs humides', 'toulouse'],
     content: `
@@ -410,7 +410,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-01-18',
     readTime: '10 min',
     category: 'expertise',
-    author: 'Fabien T.',
+    author: "L'institut IPB",
     metaDescription: 'Comparatif expert agrafage vs micropieux : technique, coût (15k€ vs 45k€), efficacité, durée. Quelle solution choisir pour stabiliser les fondations sans se ruiner ?',
     keywords: ['agrafage', 'micropieux', 'fondations', 'stabilisation', 'tassement', 'coût réparation fissures'],
     content: `
@@ -641,7 +641,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2025-10-14',
     readTime: '15 min',
     category: 'fissures',
-    author: 'Ludovic D.',
+    author: "L'institut IPB",
     metaDescription: 'Fissures en escalier : diagnostic du tassement différentiel, causes (sol argileux, sécheresse), mesure de gravité, solutions agrafage vs micropieux.',
     keywords: ['fissures escalier', 'tassement différentiel', 'fissure crémaillère', 'fondations maison', 'agrafage mur', 'sol argileux', 'affaissement maison', 'réparation fissures', 'expertise bâtiment', 'RGA Haute-Garonne'],
     content: `
@@ -891,7 +891,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2025-12-05',
     readTime: '12 min',
     category: 'conseils',
-    author: 'Adam F.',
+    author: "L'institut IPB",
     metaDescription: "Garantie décennale 2026 : obligation, couverture, exclusions, vérification de l'attestation, recours. Protégez vos travaux de réparation structurelle.",
     keywords: ['garantie décennale', 'travaux structure', 'assurance décennale', 'protection travaux', 'fissures', 'attestation décennale', 'loi Spinetta', 'responsabilité constructeur', 'malfaçons', 'recours juridique'],
     content: `
@@ -1119,7 +1119,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-02-01',
     readTime: '14 min',
     category: 'humidite',
-    author: 'Nicolas G.',
+    author: "L'institut IPB",
     metaDescription: 'Ventilation maison 2026 : VMC simple flux, double flux, VMI, hygroréglable. Comparatif, prix, installation pour éliminer condensation et moisissures.',
     keywords: ['VMC', 'VMI', 'ventilation maison', 'humidité', 'condensation', 'moisissures', 'VMC double flux', 'VMC hygroréglable', 'renouvellement air', 'qualité air intérieur', 'pont thermique'],
     content: `
@@ -1399,7 +1399,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2025-11-19',
     readTime: '9 min',
     category: 'fissures',
-    author: 'Ludovic D.',
+    author: "L'institut IPB",
     metaDescription: 'Porte qui coince + fissures simultanées : signes d\'un mouvement structurel actif. Diagnostic, causes (tassement), solutions (agrafage). Expert Toulouse.',
     keywords: ['portes qui coincent', 'fissures', 'mouvement structurel', 'toulouse', 'diagnostic maison', 'tassement différentiel'],
     content: `
@@ -1582,7 +1582,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2025-12-28',
     readTime: '10 min',
     category: 'expertise',
-    author: 'Adam F.',
+    author: "L'institut IPB",
     metaDescription: 'Sol argileux et sécheresse Haute-Garonne : pourquoi les fondations bougent, le cycle retrait-gonflement, Cat-Nat 2022-2023, solutions (agrafage). Expert Toulouse.',
     keywords: ['sol argileux', 'sécheresse', 'haute-garonne', 'fondations', 'fissures', 'catastrophe naturelle', 'retrait-gonflement'],
     content: `
@@ -1786,7 +1786,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-01-09',
     readTime: '9 min',
     category: 'conseils',
-    author: 'Fabien T.',
+    author: "L'institut IPB",
     metaDescription: 'Fissure façade : reboucher vs réparer. Méthodologie experte pour éviter l\'erreur à 5000€. Test d\'évolutivité, diagnostic, agrafage. Expert Toulouse.',
     keywords: ['fissure façade', 'reboucher fissure', 'agrafage', 'ravalement', 'diagnostic', 'réparation fissure'],
     content: `
@@ -2059,7 +2059,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2025-10-30',
     readTime: '8 min',
     category: 'humidite',
-    author: 'Nicolas G.',
+    author: "L'institut IPB",
     metaDescription: 'Salpêtre murs : origine (remontée capillaire), différence avec moisissure, traitement définitif (injection résine). Expert humidité Toulouse.',
     keywords: ['salpêtre', 'remontée capillaire', 'murs humides', 'injection résine', 'nitrate de potassium', 'poudre blanche'],
     content: `
@@ -2313,7 +2313,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-01-22',
     readTime: '8 min',
     category: 'humidite',
-    author: 'Nicolas G.',
+    author: "L'institut IPB",
     metaDescription: 'Condensation vs infiltration : test simple, symptômes, causes, traitements différents (VMC vs étanchéité). Expert humidité Toulouse.',
     keywords: ['condensation', 'infiltration', 'humidité', 'diagnostic', 'VMC', 'étanchéité', 'moisissures'],
     content: `
@@ -2554,7 +2554,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2025-12-11',
     readTime: '10 min',
     category: 'expertise',
-    author: 'Fabien T.',
+    author: "L'institut IPB",
     metaDescription: 'Diagnostic structurel maison : méthodologie experte, 7 points de contrôle, outils (fissuromètre, niveau laser), rapport détaillé. Expert Toulouse.',
     keywords: ['diagnostic structurel', 'expertise', 'fissuromètre', 'mesures', 'niveau laser', 'diagnostic fissures'],
     content: `
@@ -2851,7 +2851,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2025-11-07',
     readTime: '9 min',
     category: 'humidite',
-    author: 'Nicolas G.',
+    author: "L'institut IPB",
     metaDescription: 'Injection résine humidité : principe, étapes, efficacité, délai séchage (6-12 mois), garantie 30 ans, prix 2025. Expert traitement humidité Toulouse.',
     keywords: ['injection résine', 'barrière étanche', 'remontées capillaires', 'humidité', 'salpêtre', 'traitement humidité'],
     content: `
@@ -3135,7 +3135,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-02-04',
     readTime: '8 min',
     category: 'conseils',
-    author: 'Adam F.',
+    author: "L'institut IPB",
     metaDescription: 'Revente d\'une maison fissurée : décote 20-30%, refus de prêt, solutions structurelles (agrafage, garantie décennale) et valorisation. Institut expert Occitanie.',
     keywords: ['revente maison fissurée', 'décote', 'garantie décennale', 'agrafage', 'vente maison fissures', 'diagnostic technique'],
     content: `
@@ -3390,7 +3390,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2025-12-19',
     readTime: '8 min',
     category: 'fissures',
-    author: 'Ludovic D.',
+    author: "L'institut IPB",
     metaDescription: 'Fissure plafond : grave ou pas ? Test simple, 5 types de fissures, causes (retrait/charpente/poutre), diagnostic, solutions. Expert Toulouse.',
     keywords: ['fissures plafond', 'fissures maison', 'diagnostic', 'structure', 'charpente', 'retrait enduit'],
     content: `
@@ -3646,7 +3646,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-01-14',
     readTime: '10 min',
     category: 'humidite',
-    author: 'Nicolas G.',
+    author: "L'institut IPB",
     metaDescription: 'Humidité cave/sous-sol : 3 causes, 3 solutions (cuvelage, injection résine, VMI). Diagnostic précis, prix 2025, délai séchage. Expert traitement humidité Toulouse.',
     keywords: ['humidité cave', 'cuvelage', 'injection résine', 'ventilation', 'VMI', 'sous-sol humide', 'cave enterrée'],
     content: `
@@ -3960,7 +3960,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-02-07',
     readTime: '10 min',
     category: 'fissures',
-    author: 'Adam F.',
+    author: "L'institut IPB",
     metaDescription: 'Expert fissures dans le Gers : causes sur le bâti gascon, sols argileux, solutions agrafage. Prix, délais, garanties à Auch, Condom, Fleurance.',
     keywords: ['expert fissures gers', 'fissures maison gers', 'agrafage fissures 32', 'expert fissure auch', 'fissures condom', 'sol argileux gascogne', 'réparation fissures gers'],
     content: `
@@ -4181,7 +4181,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2025-12-08',
     readTime: '12 min',
     category: 'humidite',
-    author: 'Fabien T.',
+    author: "L'institut IPB",
     metaDescription: 'Mérule maison : identification, dangers, traitement, prix. Expert champignon lignivore Toulouse. Comment reconnaître la mérule, la différencier des autres champignons, et l\'éliminer définitivement.',
     keywords: ['mérule', 'merule', 'champignon maison', 'champignon bois', 'mérule pleureuse', 'traitement mérule', 'mérule toulouse', 'champignon lignivore', 'pourriture bois'],
     content: `
@@ -4481,7 +4481,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-01-30',
     readTime: '8 min',
     category: 'humidite',
-    author: 'Nicolas G.',
+    author: "L'institut IPB",
     metaDescription: 'Salpêtre Toulouse : expert traitement définitif. Pourquoi les maisons toulousaines sont touchées, solutions injection résine, prix. Diagnostic gratuit Haute-Garonne.',
     keywords: ['salpêtre toulouse', 'salpetre mur toulouse', 'traitement salpêtre 31', 'poudre blanche mur', 'remontée capillaire toulouse', 'humidité mur toulouse'],
     content: `
@@ -4744,7 +4744,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-01-28',
     readTime: '9 min',
     category: 'fissures',
-    author: 'Ludovic D.',
+    author: "L'institut IPB",
     metaDescription: 'Expert fissures Tarn-et-Garonne : causes à Montauban, Castelsarrasin, Moissac. Sol argileux, sécheresse, solutions agrafage. Diagnostic gratuit.',
     keywords: ['expert fissures tarn et garonne', 'fissures maison montauban', 'fissure 82', 'agrafage tarn et garonne', 'expert fissure castelsarrasin', 'sol argileux 82'],
     content: `
@@ -5010,7 +5010,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-02-03',
     readTime: '12 min',
     category: 'conseils',
-    author: 'Adam F.',
+    author: "L'institut IPB",
     metaDescription: 'CAT-NAT sécheresse : démarches, délais, indemnisation. Comment déclarer un sinistre fissures, franchise, expertise assurance. Guide complet Occitanie.',
     keywords: [
       'catastrophe naturelle sécheresse',
@@ -5341,7 +5341,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-01-26',
     readTime: '12 min',
     category: 'fissures',
-    author: 'Fabien T.',
+    author: "L'institut IPB",
     metaDescription: 'Fissure mur intérieur : comment évaluer la gravité ? Causes (tassement, sécheresse), différences micro-fissure / structurelle, solutions durables IPB.',
     keywords: ['fissure mur intérieur', 'fissure mur intérieur maison', 'fissure mur intérieur cause', 'réparer fissure mur intérieur', 'fissure mur porteur', 'fissure plâtre intérieur', 'fissure cloison', 'expert fissures toulouse'],
     content: `
@@ -5555,7 +5555,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-02-09',
     readTime: '10 min',
     category: 'fissures',
-    author: 'Ludovic D.',
+    author: "L'institut IPB",
     metaDescription: 'Prix agrafage fissures 2026 : de 80 à 150€/ml. Comparatif agrafage vs micropieux (3x moins cher). Devis détaillé, aides CAT-NAT, décennale AXA.',
     keywords: ['prix agrafage fissures', 'cout agrafage fissure', 'tarif agrafage mur', 'prix reparation fissure maison', 'agrafage fissure prix m2', 'devis agrafage fissures', 'cout reparation fissure facade'],
     content: `
@@ -5782,7 +5782,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-02-06',
     readTime: '9 min',
     category: 'fissures',
-    author: 'Adam F.',
+    author: "L'institut IPB",
     metaDescription: 'Fissure maison neuve : garantie décennale, garantie de parfait achèvement, dommage-ouvrage. Démarches pour faire jouer vos garanties. Guide expert 2026.',
     keywords: ['fissure maison neuve', 'garantie décennale fissure', 'fissure maison moins de 10 ans', 'garantie constructeur fissure', 'dommage ouvrage fissure', 'recours constructeur fissure maison', 'maison neuve qui se fissure'],
     content: `
@@ -5975,7 +5975,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-02-10',
     readTime: '8 min',
     category: 'humidite',
-    author: 'Fabien T.',
+    author: "L'institut IPB",
     metaDescription: 'Humidité mur chambre : causes (condensation, infiltration, remontée capillaire), risques santé (asthme, allergies) et solutions durables. Guide expert 2026.',
     keywords: ['humidité mur chambre', 'mur humide chambre', 'moisissure chambre', 'humidité chambre à coucher', 'mur qui suinte chambre', 'condensation mur chambre', 'traitement humidité chambre'],
     content: `
@@ -6199,7 +6199,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-03-15',
     readTime: '11 min',
     category: 'fissures' as const,
-    author: 'Nicolas G.',
+    author: "L'institut IPB",
     metaDescription: 'Guide complet assurance fissures maison 2026. Démarches indemnisation, franchise catastrophe naturelle, expert d\'assuré vs expert assurance. Recours en cas de refus.',
     keywords: ['assurance fissures maison', 'indemnisation fissures', 'catastrophe naturelle', 'expert assurance', 'franchise cat-nat', 'recours assurance'],
     content: `
@@ -6400,7 +6400,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-03-10',
     readTime: '9 min',
     category: 'expertise' as const,
-    author: 'Nicolas G.',
+    author: "L'institut IPB",
     metaDescription: 'Expert bâtiment indépendant vs expert assurance : rôles, coûts, partialité. Pourquoi mandater son propre expert pour une contre-expertise fissures ou humidité.',
     keywords: ['expert bâtiment indépendant', 'expert assurance', 'contre-expertise', 'expert fissures', 'expert d assuré', 'expertise contradictoire'],
     content: `
@@ -6659,7 +6659,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-03-24',
     readTime: '12 min',
     category: 'fissures' as const,
-    author: 'Fabien T.',
+    author: "L'institut IPB",
     metaDescription: 'Fondations de maison ancienne : signes de faiblesse, diagnostic, solutions de renforcement (agrafage, micropieux, longrines) par institut indépendant.',
     keywords: ['fondations maison ancienne', 'renforcement fondations', 'fissures fondations', 'reprise en sous-oeuvre', 'agrafage fondations', 'micropieux maison'],
     content: `
@@ -6863,7 +6863,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-04-21',
     readTime: '9 min',
     category: 'conseils',
-    author: 'Adam F.',
+    author: "L'institut IPB",
     metaDescription: 'Acheter une maison fissurée : comment évaluer les risques, négocier le prix, exiger un diagnostic expert et éviter les pièges juridiques. Guide complet Occitanie.',
     keywords: ['acheter maison fissurée', 'négociation prix', 'diagnostic fissures avant achat', 'vice caché', 'expertise avant achat', 'agrafage'],
     content: `
@@ -7079,7 +7079,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-04-21',
     readTime: '8 min',
     category: 'conseils',
-    author: 'Adam F.',
+    author: "L'institut IPB",
     metaDescription: 'Hériter d\'une maison fissurée : comment estimer le bien, gérer l\'indivision, décider entre vente et rénovation, et sécuriser juridiquement la succession. Guide expert IPB.',
     keywords: ['succession maison fissurée', 'héritage fissures', 'indivision maison', 'estimation bien fissuré', 'vente succession', 'expert structurel'],
     content: `
@@ -7261,7 +7261,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-04-28',
     readTime: '9 min',
     category: 'expertise',
-    author: 'Ludovic D.',
+    author: "L'institut IPB",
     metaDescription: 'Prix d\'une ouverture de mur porteur à Toulouse en 2026 : 4 000 à 20 000 € selon la portée. Détail des postes (étude, poutre IPN, étaiement, finitions) et 3 études de cas réels.',
     keywords: ['prix ouverture mur porteur toulouse', 'tarif mur porteur 2026', 'prix poutre IPN toulouse', 'devis mur porteur', 'coût baie vitrée toulouse', 'prix bureau études structure'],
     content: `
@@ -7484,7 +7484,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-04-29',
     readTime: '7 min',
     category: 'expertise',
-    author: 'Ludovic D.',
+    author: "L'institut IPB",
     metaDescription: 'Comment savoir si un mur est porteur en 4 étapes : épaisseur, son au choc, plans d\'origine, alignement vertical. Cas spécifiques Toulouse (brique foraine, haussmannien). Test gratuit IPB.',
     keywords: [
       'comment savoir si mur porteur',
@@ -7689,7 +7689,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-04-28',
     readTime: '7 min',
     category: 'expertise',
-    author: 'Ludovic D.',
+    author: "L'institut IPB",
     metaDescription: 'Étude de cas chantier IPB : ouverture d\'un mur porteur 4m dans un T3 toulousain. Plans, choix poutre HEB 220, étaiement, planning, prix. Décennale AXA.',
     keywords: ['étude de cas mur porteur', 'ouverture mur porteur 4 mètres', 'mur porteur T3 toulouse', 'chantier réel structure', 'HEB 220 toulouse', 'transformation cuisine ouverte'],
     content: `
@@ -7783,7 +7783,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-05-08',
     readTime: '9 min',
     category: 'conseils',
-    author: 'Ludovic D.',
+    author: "L'institut IPB",
     metaDescription: "Le diagnostic structurel avant vente vous protège du vice caché pendant 30 ans. Rapport opposable par institut indépendant en Occitanie. Délai 72h, décennale AXA.",
     keywords: ['diagnostic structurel avant vente', 'expertise maison avant vente', 'vice caché vente maison', 'vendre maison fissure', 'rapport opposable', 'expertise structurelle vendeur'],
     content: `
@@ -7989,7 +7989,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-05-08',
     readTime: '8 min',
     category: 'fissures',
-    author: 'Ludovic D.',
+    author: "L'institut IPB",
     metaDescription: "L'orientation d'une fissure révèle sa cause et sa dangerosité. Verticale, horizontale, oblique : comment lire chaque type et quand consulter un expert IPB.",
     keywords: ['fissure verticale', 'fissure horizontale danger', 'fissure oblique cause', 'lire une fissure mur', 'interpréter fissure maison', 'orientation fissure', 'fissure en escalier'],
     content: `
@@ -8231,7 +8231,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     dateModified: '2026-05-10',
     readTime: '12 min',
     category: 'fissures',
-    author: 'Ludovic D.',
+    author: "L'institut IPB",
     metaDescription: "Largeur, forme, sens, évolution : voici la méthode utilisée par l'institut pour qualifier une fissure. Article pédagogique pour comprendre ce que vous voyez sur votre maison avant toute intervention.",
     keywords: ['fissure dangereuse maison', 'comment évaluer une fissure', 'lire une fissure', 'largeur fissure', 'fissure escalier', 'fissure traversante', 'fissure verticale', 'indices fissure structurelle', 'grille évaluation fissure'],
     content: `

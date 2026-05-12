@@ -144,9 +144,9 @@ export async function submitCalculatorLead(input: CalculatorLeadInput): Promise<
             <p>Bonjour ${input.name.split(' ')[0]},</p>
             <p>Vous avez utilisé notre calculateur pour estimer le coût de votre ouverture de mur porteur${city ? ` à <strong style="color: #1A1917;">${city}</strong>` : ''}. Voici la fourchette indicative.</p>
             <p>Cette estimation est basée sur des paramètres saisis. Pour un devis ferme, notre institut doit venir sur place — c'est gratuit et sans engagement.</p>
-            <p>Notre ingénieur structure vous appellera sous 24 heures ouvrées pour préciser les éléments techniques et planifier la visite si vous le souhaitez.</p>
+            <p>Notre équipe vous rappellera sous 24 heures ouvrées pour préciser les éléments techniques et planifier la visite si vous le souhaitez.</p>
             <p style="margin-top: 24px;">À très vite,</p>
-            <p style="font-family: Georgia, serif; font-style: italic; color: #1A1917;">Ludovic D. — Fondateur de l’institut IPB</p>
+            <p style="font-family: Georgia, serif; font-style: italic; color: #1A1917;">L'équipe de l'institut IPB</p>
           </div>
 
           <div style="margin: 16px; padding: 24px; background: #C8601F; border-radius: 6px; text-align: center;">

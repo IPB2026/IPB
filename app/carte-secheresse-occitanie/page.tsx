@@ -109,7 +109,7 @@ export default function CarteSecheressePage() {
                 { value: 1690, suffix: '', label: 'Communes reconnues', sublabel: 'Total Occitanie depuis 2018' },
                 { value: 9, decimals: 0, suffix: '/10', label: 'Maisons concernées', sublabel: 'Région Toulouse · sols argileux' },
                 { value: 9, suffix: ' arrêtés', label: 'Sécheresse 2022', sublabel: '5 hot wave reconnues au JO' },
-                { value: 92, suffix: '%', label: 'Indemnisation', sublabel: 'Moyenne avec rapport opposable' },
+                { value: 92, suffix: '%', label: 'Indemnisation', sublabel: 'Dossiers acceptés avec rapport technique IPB' },
               ].map((s, i) => (
                 <RevealOnScroll key={s.label} delay={i * 0.06}>
                   <div className="text-center lg:text-left lg:border-l lg:border-white/10 lg:pl-8">
@@ -215,7 +215,7 @@ export default function CarteSecheressePage() {
                 { titre: 'Vérifier que votre commune est reconnue', desc: "Consultez Géorisques ou notre carte ci-dessus. La commune doit être citée dans un arrêté CAT-NAT publié au Journal Officiel pour la sécheresse de l'année où sont apparus vos désordres." },
                 { titre: 'Déclarer le sinistre à votre assurance', desc: "Déclaration sous 10 jours après publication de l'arrêté. La plupart des assureurs acceptent une déclaration écrite (lettre recommandée ou espace client en ligne)." },
                 { titre: "Faire venir l'expert d'assurance", desc: "L'assureur missionne un expert. Sa mission : constater les désordres et chiffrer. Sa difficulté principale : il défend les intérêts de l'assureur, pas les vôtres." },
-                { titre: 'Faire produire un rapport indépendant', desc: "C'est ici que notre institut intervient. Notre rapport documente précisément les désordres, leur lien avec le RGA, et chiffre les travaux nécessaires. Il devient une pièce technique opposable." },
+                { titre: 'Faire produire un rapport indépendant', desc: "C'est ici que notre institut intervient. Notre rapport documente précisément les désordres, leur lien avec le RGA, et chiffre les travaux nécessaires. Il devient une pièce technique versable au dossier d'assurance." },
                 { titre: 'Négocier sur des bases techniques', desc: 'Avec notre rapport, vous négociez sur des éléments factuels. Dans 92 % des cas que nous avons accompagnés en 2022-2024, l\'indemnisation finale a été conforme ou supérieure à notre chiffrage.' },
               ].map((etape, i) => (
                 <RevealOnScroll key={etape.titre} delay={i * 0.06}>

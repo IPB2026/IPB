@@ -47,7 +47,7 @@ const faqMurPorteur = [
   },
   {
     question: "Comment dimensionne-t-on la poutre d'une ouverture de mur porteur ?",
-    answer: "Le dimensionnement repose sur la descente de charges (poids des murs, dalles et charges d'exploitation au-dessus), la portée libre de l'ouverture, et la nature des appuis. Notre ingénieur structure établit la note de calcul selon les Eurocodes (EN 1993 pour l'acier, EN 1992 pour le béton). Le profil retenu — IPN, IPE ou HEB — dépend du moment de flexion à reprendre et de la flèche admissible. Sur une portée standard de 2,5 m sous étage habité, un IPN 200 ou un HEB 160 sont les profils les plus fréquents en construction toulousaine.",
+    answer: "Le dimensionnement repose sur la descente de charges (poids des murs, dalles et charges d'exploitation au-dessus), la portée libre de l'ouverture, et la nature des appuis. La note de calcul est rédigée et signée par notre bureau d'études structure partenaire selon les Eurocodes (EN 1993 pour l'acier, EN 1992 pour le béton), sous sa propre décennale études. Le profil retenu — IPN, IPE ou HEB — dépend du moment de flexion à reprendre et de la flèche admissible. Sur une portée standard de 2,5 m sous étage habité, un IPN 200 ou un HEB 160 sont les profils les plus fréquents en construction toulousaine.",
   },
   {
     question: "Faut-il un permis de construire pour ouvrir un mur porteur ?",
@@ -247,7 +247,7 @@ export default function MurPorteurPage() {
                   </RevealOnScroll>
                   <RevealOnScroll delay={0.18}>
                     <p className="text-ipb-text">
-                      Notre rôle, c'est précisément ce calcul. Notre ingénieur structure dimensionne la poutre selon les <strong className="not-italic">Eurocodes</strong>, signe une note opposable, puis pilote le chantier. Un seul interlocuteur de l'étude à la livraison, garantie décennale AXA sur l'étude <em>et</em> les travaux.
+                      Notre rôle, c'est précisément ce calcul. Notre bureau d'études structure partenaire dimensionne la poutre selon les <strong className="not-italic">Eurocodes</strong> et signe la note de calcul opposable sous sa propre décennale études ; l'institut pilote ensuite le chantier sous décennale AXA travaux. Un seul interlocuteur de l'étude à la livraison, deux assurances dédiées sur leurs périmètres respectifs.
                     </p>
                   </RevealOnScroll>
                 </div>
@@ -521,7 +521,7 @@ export default function MurPorteurPage() {
                 Décrire votre projet ne vous engage à rien.
               </p>
               <p className="text-[15px] leading-[1.85] font-light text-ipb-muted">
-                Notre ingénieur structure revient vers vous sous 24h ouvrées avec une première analyse de faisabilité. <strong className="text-ipb-text not-italic">Si votre projet n'est pas compatible avec une ouverture (sécurité, copropriété, contraintes de bâti), on vous le dira clairement</strong> — et on vous expliquera les alternatives.
+                Notre équipe revient vers vous sous 24h ouvrées avec une première analyse de faisabilité. <strong className="text-ipb-text not-italic">Si votre projet n'est pas compatible avec une ouverture (sécurité, copropriété, contraintes de bâti), on vous le dira clairement</strong> — et on vous expliquera les alternatives.
               </p>
             </RevealOnScroll>
           </div>

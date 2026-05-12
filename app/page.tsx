@@ -230,10 +230,10 @@ export default function HomePage() {
 
       {/* ─── BAS — humanisation + preuve sociale + conversion ───── */}
 
-      {/* 8. Cabinet — humanisation Ludovic + équipe */}
+      {/* 8. Cabinet — institut, équipe collective */}
       <Cabinet />
 
-      {/* 9. Pull quote Ludovic — la voix de l'institut, signature
+      {/* 9. Pull quote — voix éditoriale de l'institut, signature
             posée juste avant les avis clients. Cohérence sémantique
             entre la voix interne (Cabinet → PullQuote) et la voix
             externe (Testimonials qui suit). */}

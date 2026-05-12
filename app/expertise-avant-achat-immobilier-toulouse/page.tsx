@@ -91,7 +91,7 @@ const etapes = [
   },
   {
     titre: 'Rapport définitif',
-    desc: "Remis sous 3 à 5 jours ouvrés après la visite. Document complet et opposable.",
+    desc: "Remis sous 3 à 5 jours ouvrés après la visite. Document technique complet, versable au dossier d'achat.",
   },
 ];
 
@@ -104,7 +104,7 @@ const faqItems = [
   {
     question: "Mon agent immobilier dit que les diagnostics réglementaires suffisent. Est-ce vrai ?",
     answer:
-      "Les diagnostics réglementaires (DPE, amiante, plomb, électricité, gaz, termites, ERP) couvrent ce que la loi impose au vendeur de communiquer. Aucun de ces diagnostics ne traite de la structure du bâti, des fissures, ou de la stabilité des fondations. Pour ces sujets, une expertise indépendante est le seul moyen d'obtenir un avis technique opposable.",
+      "Les diagnostics réglementaires (DPE, amiante, plomb, électricité, gaz, termites, ERP) couvrent ce que la loi impose au vendeur de communiquer. Aucun de ces diagnostics ne traite de la structure du bâti, des fissures, ou de la stabilité des fondations. Pour ces sujets, une expertise technique indépendante est le seul moyen d'obtenir un avis documenté.",
   },
   {
     question: "Combien coûte un recours sur vice caché ou sur dol ?",

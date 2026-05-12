@@ -33,8 +33,9 @@ export default function ConfidentialitePage() {
             </div>
             <h1 className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-3 md:mb-4">Politique de Confidentialité</h1>
             <p className="text-base md:text-lg text-ipb-muted">
-              Bâti Halli (enseigne commerciale : IPB) s'engage à protéger la confidentialité et la sécurité 
-              des données personnelles collectées dans le cadre de ses prestations.
+              Bâti Halli (enseignes commerciales : IPB · Institut de Pathologie du Bâtiment) s'engage à
+              protéger la confidentialité et la sécurité des données personnelles collectées dans le
+              cadre de ses prestations.
             </p>
           </div>
 
@@ -43,9 +44,10 @@ export default function ConfidentialitePage() {
             <section>
               <h2 className="text-2xl font-bold text-ipb-text mb-4">1. Responsable du traitement</h2>
               <div className="space-y-2">
-                <p><strong>Raison sociale :</strong> Bâti Halli</p>
-                <p><strong>Enseigne commerciale :</strong> IPB (Institut de Pathologie du Bâtiment)</p>
-                <p><strong>Siège social :</strong> 13 rue du Recteur Dottin, 31100 Toulouse, France <em>(domiciliation administrative)</em></p>
+                <p><strong>Dénomination :</strong> Bâti Halli</p>
+                <p><strong>Forme juridique :</strong> Entreprise Individuelle (EI)</p>
+                <p><strong>Enseignes commerciales :</strong> IPB · Institut de Pathologie du Bâtiment</p>
+                <p><strong>Adresse de l'entreprise :</strong> 13 rue du Recteur Dottin, 31100 Toulouse, France</p>
                 <p><strong>Adresse d'exercice :</strong> 54 avenue Jean Jaurès, 31170 Tournefeuille, France</p>
                 <p><strong>SIRET :</strong> 398 185 421 00037</p>
                 <p><strong>Email :</strong> <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange hover:text-ipb-orange underline">contact@ipb-expertise.fr</a></p>
@@ -113,18 +115,36 @@ export default function ConfidentialitePage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-ipb-text mb-4">6. Destinataires des données</h2>
+              <h2 className="text-2xl font-bold text-ipb-text mb-4">6. Destinataires des données et sous-traitants</h2>
               <p>
                 Vos données personnelles sont destinées à :
               </p>
               <ul className="list-disc pl-6 mt-4 space-y-2">
-                <li>Bâti Halli (IPB) - Personnel autorisé uniquement</li>
-                <li>Nos prestataires techniques (hébergement, maintenance) sous contrat de confidentialité</li>
+                <li>Bâti Halli — Personnel autorisé uniquement</li>
+                <li>Le bureau d'études structure partenaire, lorsqu'une note de calcul est requise (échange du dossier technique uniquement)</li>
+                <li>Nos sous-traitants techniques sous contrat de confidentialité : Vercel Inc. (hébergement, USA — Data Privacy Framework), Resend (envoi d'emails transactionnels), Sentry (surveillance d'erreurs)</li>
+                <li>Google LLC pour les services de mesure (Google Analytics, Google Ads), de protection (reCAPTCHA) et de prise de rendez-vous (Calendly) — transferts hors UE encadrés par les Clauses Contractuelles Types et le Data Privacy Framework</li>
                 <li>Les autorités compétentes en cas d'obligation légale</li>
               </ul>
               <p className="mt-4 font-bold">
                 Vos données ne sont <strong>jamais revendues</strong> à des tiers à des fins commerciales.
               </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-bold text-ipb-text mb-4">6 bis. Qualification commerciale automatisée (lead scoring)</h2>
+              <div className="bg-ipb-stone border-l-4 border-ipb-orange p-6 rounded-r-lg">
+                <p>
+                  Afin d'organiser nos rappels et de prioriser les demandes urgentes, les informations
+                  que vous communiquez via nos formulaires (typologie de désordres, code postal, délais)
+                  font l'objet d'un traitement de qualification automatisé interne. Ce traitement ne
+                  produit pas d'effet juridique à votre égard et n'a pour objet que l'ordonnancement
+                  interne des prises de contact. Conformément à l'article 22 du RGPD, vous pouvez à
+                  tout moment demander une intervention humaine, exprimer votre point de vue ou
+                  contester ce traitement en écrivant à{' '}
+                  <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange underline">contact@ipb-expertise.fr</a>.
+                </p>
+              </div>
             </section>
 
             <section>
@@ -166,18 +186,44 @@ export default function ConfidentialitePage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-ipb-text mb-4">9. Cookies</h2>
+              <h2 className="text-2xl font-bold text-ipb-text mb-4">9. Cookies et traceurs</h2>
               <p>
-                Notre site utilise des cookies pour améliorer l'expérience utilisateur et analyser le trafic. 
-                Vous pouvez configurer votre navigateur pour refuser les cookies, mais cela peut affecter certaines fonctionnalités du site.
+                Notre site utilise des cookies pour assurer son fonctionnement et, sous réserve de votre
+                consentement, pour mesurer l'audience et améliorer nos services :
+              </p>
+              <ul className="list-disc pl-6 mt-4 space-y-2">
+                <li><strong>Strictement nécessaires</strong> (sans consentement) : session, mémorisation de votre choix de consentement, protection anti-robots reCAPTCHA</li>
+                <li><strong>Mesure d'audience</strong> (consentement) : Google Analytics, configuré en Consent Mode v2 et anonymisation IP</li>
+                <li><strong>Publicité</strong> (consentement) : Google Ads, mesure des conversions</li>
+                <li><strong>Tiers fonctionnels</strong> (consentement) : Calendly pour la prise de rendez-vous</li>
+              </ul>
+              <p className="mt-4">
+                Vous pouvez à tout moment modifier vos préférences via le bandeau de consentement
+                (icône cookie en bas de page) ou les paramètres de votre navigateur. Vos préférences
+                sont conservées six mois maximum.
               </p>
             </section>
 
             <section>
               <h2 className="text-2xl font-bold text-ipb-text mb-4">10. Sécurité des données</h2>
               <p>
-                Bâti Halli met en œuvre toutes les mesures techniques et organisationnelles appropriées pour protéger vos données personnelles 
-                contre tout accès non autorisé, perte, destruction ou altération.
+                Bâti Halli met en œuvre les mesures techniques et organisationnelles appropriées pour
+                protéger vos données personnelles contre tout accès non autorisé, perte, destruction ou
+                altération : connexion HTTPS chiffrée, hébergement sur serveurs sécurisés, accès limité
+                au personnel autorisé, sauvegardes régulières.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-bold text-ipb-text mb-4">10 bis. Communications commerciales (emails de suivi)</h2>
+              <p>
+                Lorsque vous nous adressez une demande de diagnostic ou de devis, nous pouvons être
+                amenés à vous envoyer une séquence d'emails de suivi destinée à vous transmettre des
+                informations techniques utiles à votre projet (rappels, contenus pédagogiques, propositions
+                de créneaux). Cette communication est fondée sur l'intérêt légitime ou votre demande
+                expresse, et vous pouvez vous y opposer à tout moment via le lien de désinscription
+                présent dans chaque email ou par simple email à{' '}
+                <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange underline">contact@ipb-expertise.fr</a>.
               </p>
             </section>
 

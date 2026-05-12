@@ -11,24 +11,23 @@ import Script from 'next/script';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Bureau d'Études Structure Toulouse · IPN/HEB · 24h",
-  description: "Bureau d'études structure Toulouse : note de calcul IPN/HEB, dimensionnement poutre. Décennale AXA. Réponse 24h. ☎ 05 82 95 33 75",
+  title: "Étude structure & travaux Toulouse · Mur porteur, IPN · IPB",
+  description: "Étude technique et travaux structure à Toulouse : dimensionnement IPN/HEB, ouverture de mur porteur. Décennale AXA. Note de calcul opposable co-signée par notre BE partenaire. ☎ 05 82 95 33 75",
   keywords: [
-    'bureau études structure toulouse',
-    'bureau études structure haute-garonne',
+    'étude structure toulouse',
+    'étude structure haute-garonne',
     'note de calcul IPN toulouse',
     'dimensionnement poutre HEB',
-    'ingénieur structure toulouse',
+    'étude mur porteur toulouse',
     'calcul mur porteur toulouse',
-    'étude béton armé toulouse',
-    'bureau études bâtiment toulouse',
     'expertise structure 31',
     'note de calcul ouverture mur',
+    'bureau études structure toulouse',
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/bureau-etude-structure-toulouse' },
   openGraph: {
-    title: "Bureau d'études structure · IPB Toulouse",
-    description: "Ingénieur structure intégré à Toulouse. Note de calcul opposable, dimensionnement IPN/HEB, étude charge, contrôle des ouvrages. Décennale AXA.",
+    title: "Étude structure & travaux · IPB Toulouse",
+    description: "Étude technique et travaux portés par l'institut. Note de calcul opposable co-signée par notre bureau d'études structure partenaire. Décennale AXA active.",
     url: 'https://www.ipb-expertise.fr/bureau-etude-structure-toulouse',
     type: 'website',
   },
@@ -41,10 +40,10 @@ export const metadata: Metadata = {
 
 const serviceJsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "IPB Bureau d'études structure",
+  "@type": "Service",
+  "name": "Étude structure et travaux IPB",
   "@id": "https://www.ipb-expertise.fr/bureau-etude-structure-toulouse#service",
-  "description": "Bureau d'études structure à Toulouse : note de calcul IPN/HEB, dimensionnement de poutre, expertise mur porteur, ouvrages neufs et rénovation.",
+  "description": "Étude technique et travaux structure à Toulouse : ouverture de mur porteur, dimensionnement IPN/HEB, reprise structurelle. Notes de calcul opposables co-signées par notre bureau d'études structure partenaire.",
   "areaServed": [
     { "@type": "City", "name": "Toulouse" },
     { "@type": "AdministrativeArea", "name": "Haute-Garonne" },
@@ -52,72 +51,72 @@ const serviceJsonLd = {
     { "@type": "AdministrativeArea", "name": "Gers" },
     { "@type": "AdministrativeArea", "name": "Tarn" },
   ],
-  "provider": { "@type": "LocalBusiness", "name": "IPB - Institut de Pathologie du Bâtiment", "telephone": "+33582953375" },
+  "provider": { "@type": "LocalBusiness", "name": "IPB — Institut de Pathologie du Bâtiment", "telephone": "+33582953375" },
 };
 
 const prestations = [
   {
-    titre: 'Dimensionnement IPN, HEB ou IPE',
-    desc: "Calcul des charges reprises, choix de la poutre, vérification de la flèche et du déversement selon les normes en vigueur (Eurocode). Note de calcul signée par notre ingénieur.",
+    titre: 'Étude de faisabilité mur porteur',
+    desc: "Identification du caractère porteur, descente de charges, méthode d'étaiement, choix du profil (IPN, HEB, IPE). Étude technique remise sous 3 à 5 jours ouvrés après visite.",
   },
   {
-    titre: 'Étude de mur porteur',
-    desc: "Identification du caractère porteur, descente de charges, méthode d'étaiement, plan d'exécution. Document opposable face à un syndic ou une assurance.",
+    titre: 'Note de calcul opposable',
+    desc: "Pour les projets qui exigent un document opposable face à un syndic, un assureur ou un contrôleur technique, la note de calcul est co-signée par notre bureau d'études structure partenaire, sous sa propre décennale études.",
   },
   {
-    titre: 'Diagnostic structure',
-    desc: "Avant achat, après sinistre, sur fissures et désordres. Rapport reconnu par les assurances et les tribunaux.",
+    titre: 'Diagnostic technique de structure',
+    desc: "Avant achat, après sinistre, sur fissures et désordres. Compte-rendu écrit, mesures consignées, préconisations techniques motivées.",
   },
   {
-    titre: 'Béton armé',
-    desc: "Plancher, longrine, semelle, poteau. Calculs Eurocode 2, plans de ferraillage. Pour ouvrages neufs comme rénovations lourdes.",
+    titre: 'Pose et travaux structure',
+    desc: "Étaiement, dépose, pose du linteau ou de la poutre, finitions. Réalisation par nos équipes sous garantie décennale AXA active.",
   },
   {
-    titre: "Mission de maîtrise d'œuvre",
-    desc: "Conception, consultation des entreprises, suivi de chantier, réception. Pour les rénovations lourdes intégrant plusieurs corps d'état.",
+    titre: 'Suivi de chantier en partenariat',
+    desc: "Pour les rénovations lourdes intégrant plusieurs corps d'état, nous travaillons aux côtés des architectes et maîtres d'œuvre comme partenaire structure.",
   },
   {
-    titre: 'Contre-expertise',
-    desc: "Confrontation avec un rapport d'expert d'assurance, contestation amiable ou judiciaire. Documents techniques opposables.",
+    titre: 'Second regard sur étude tierce',
+    desc: "Lecture critique d'une étude reçue (artisan, BE externe) : cohérence du dimensionnement, hypothèses, méthode d'étaiement. Utile pour copropriétés et marchands de biens.",
   },
 ];
 
 const faqItems = [
   {
-    question: "Qu'est-ce qu'une note de calcul, et pourquoi est-elle opposable ?",
-    answer: "Une note de calcul est un document technique signé par un ingénieur structure. Elle justifie, selon les Eurocodes, le dimensionnement d'un ouvrage (poutre, plancher, mur porteur). Elle engage la responsabilité de son auteur et de son assureur, ce qui la rend opposable à une assurance, un syndic ou un tribunal.",
+    question: "Qui signe la note de calcul opposable sur vos chantiers ?",
+    answer: "Quand votre projet exige une note de calcul opposable (Eurocodes, dimensionnement IPN/HEB, descente de charges complexe), elle est rédigée et signée par notre bureau d'études structure partenaire, sous sa propre décennale études. L'institut IPB porte le diagnostic préalable, la pose et les finitions, sous décennale AXA travaux. Le client reçoit un dossier unique avec les deux attestations.",
   },
   {
-    question: "Sous quel délai un calcul de poutre est-il rendu ?",
-    answer: "Pour une étude standard (poutre IPN ou HEB sur portée courante), notre bureau d'études rend la note de calcul sous 3 à 5 jours ouvrés après la visite. Les dossiers complexes ou comportant plusieurs ouvrages peuvent demander 10 à 15 jours.",
+    question: "Sous quel délai un dossier d'étude est-il rendu ?",
+    answer: "Visite technique sous 72 heures en moyenne. Étude technique de faisabilité remise sous 3 à 5 jours ouvrés. Pour une note de calcul opposable co-signée par notre BE partenaire, le délai total est généralement de 7 à 12 jours ouvrés selon la complexité.",
   },
   {
     question: "Travaillez-vous avec les architectes d'intérieur et marchands de biens ?",
-    answer: "Oui. L'institut intervient régulièrement en sous-traitance technique pour les architectes d'intérieur (projets « espace ouvert »), les marchands de biens (rénovations rapides avant revente) et les agences immobilières (rapport débloquant une vente sur fissure).",
+    answer: "Oui. L'institut intervient régulièrement comme partenaire technique des architectes d'intérieur (projets « espace ouvert »), des marchands de biens (rénovations rapides avant revente) et des agences immobilières (compte-rendu débloquant une vente sur fissure).",
   },
   {
-    question: "Le calcul technique est-il inclus dans le devis travaux ?",
-    answer: "Quand l'institut réalise les travaux derrière, oui : l'étude technique est intégrée à la prestation globale et facturée une seule fois. Si vous voulez seulement la note de calcul (sans travaux), elle est facturée séparément, avec un devis transparent remis sous 24 h.",
+    question: "L'étude technique est-elle incluse dans le devis travaux ?",
+    answer: "Quand l'institut réalise les travaux derrière, l'étude technique est intégrée à la prestation globale et facturée une seule fois. Si vous demandez uniquement la note de calcul (sans travaux), elle est facturée séparément, avec un devis transparent remis sous 24 heures.",
   },
   {
     question: "Êtes-vous couverts en décennale ?",
-    answer: "Oui. L'institut IPB est couvert par une garantie décennale AXA France (police n° 10564321) qui couvre à la fois l'étude technique et les travaux exécutés derrière. Une attestation est remise avec chaque devis.",
+    answer: "Oui. L'institut IPB est couvert par une garantie décennale AXA France (contrat Construction BATISSUR n° 0000022511730204) sur ses activités de travaux : maçonnerie et béton armé, charpente bois, couverture, menuiseries, plâtrerie, revêtements. Pour les notes de calcul opposables, c'est la décennale études de notre BE partenaire qui s'applique. Les deux attestations sont remises avec le devis.",
   },
   {
-    question: "Quel est le tarif d'une note de calcul seule ?",
-    answer: "Une note de calcul standalone (sans travaux derrière) est facturée entre 500 € et 1 500 € TTC selon la complexité : 500-700 € pour une poutre IPN simple en RDC, 800-1 200 € pour une portée importante ou un dossier copropriété avec plusieurs niveaux, 1 200-1 500 € pour les ouvrages complexes (dalles, planchers, contreventements). Le devis vous est remis sous 24 h après description du projet.",
+    question: "Quel est le tarif d'une étude technique seule ?",
+    answer: "Une étude de faisabilité standalone (sans travaux derrière) est facturée entre 500 € et 1 500 € TTC selon la complexité : 500-700 € pour un mur porteur simple en RDC, 800-1 200 € pour une portée importante ou un dossier copropriété, 1 200-1 500 € pour les ouvrages complexes. Le devis vous est remis sous 24 h après description du projet.",
   },
   {
-    question: "Pouvez-vous valider une note de calcul faite par un autre BE ?",
-    answer: "Oui. Nous proposons une mission d'avis technique sur étude tierce : nous vérifions le dimensionnement, les hypothèses retenues et la conformité aux Eurocodes. Coût : 400-800 € selon la complexité. Utile pour les marchands de biens et architectes qui veulent un second regard avant d'engager des travaux importants, ou les copropriétés qui doutent d'une étude reçue.",
+    question: "Pouvez-vous relire une note de calcul faite par un autre BE ?",
+    answer: "Oui. Nous proposons une mission de second regard sur étude tierce : lecture critique du dimensionnement, des hypothèses, de la méthode d'étaiement. Coût : 400-800 € selon la complexité. Utile pour les marchands de biens et architectes qui veulent un avis avant d'engager des travaux importants, ou les copropriétés qui doutent d'une étude reçue.",
   },
   {
     question: "Travaillez-vous sur des bâtiments tertiaires ou industriels ?",
-    answer: "Notre cœur d'activité est le résidentiel (maison individuelle, immeuble en copropriété). Nous intervenons sur des projets tertiaires de petite taille (rénovation de boutiques, bureaux jusqu'à 500 m²). Pour les ouvrages industriels lourds, nous orientons vers des bureaux d'études spécialisés partenaires.",
+    answer: "Notre cœur d'activité est le résidentiel (maison individuelle, immeuble en copropriété). Nous intervenons sur des projets tertiaires de petite taille (rénovation de boutiques, bureaux jusqu'à 500 m²). Pour les ouvrages industriels lourds, nous orientons vers des bureaux d'études spécialisés.",
   },
   {
-    question: "Combien d'ingénieurs structure dans votre équipe ?",
-    answer: "L'institut compte 8 collaborateurs dont 3 ingénieurs structure (formés Ponts, INSA, ENTPE) et 2 techniciens de diagnostic certifiés. Cette taille nous permet de traiter chaque dossier rapidement (note de calcul sous 3-5 jours ouvrés) tout en gardant un suivi humain personnalisé. Ludovic D., fondateur, supervise les dossiers complexes.",
+    question: "Comment fonctionne le partenariat avec votre BE structure ?",
+    answer: "Nous travaillons avec un bureau d'études structure indépendant, qui dispose de sa propre décennale études et signe les notes de calcul opposables. L'institut IPB porte le diagnostic, l'interface client, la pose et les finitions. Le client a un interlocuteur unique (IPB), un devis unique, et reçoit en livraison un dossier complet avec les deux attestations d'assurance.",
   },
 ];
 
@@ -147,7 +146,7 @@ export default function BureauEtudeStructurePage() {
           <div className="max-w-ipb mx-auto px-6 lg:px-12 pt-16 lg:pt-24 pb-20 lg:pb-28">
             <div className="max-w-3xl">
               <RevealOnScroll>
-                <Eyebrow>Bureau d'études structure intégré</Eyebrow>
+                <Eyebrow>Étude & travaux, sous une seule responsabilité</Eyebrow>
               </RevealOnScroll>
               <RevealOnScroll delay={0.06}>
                 <h1
@@ -159,19 +158,19 @@ export default function BureauEtudeStructurePage() {
                     fontWeight: 700,
                   }}
                 >
-                  Bureau d'études structure&nbsp;à Toulouse.<br />
-                  <em>IPN, HEB, mur porteur.</em>
+                  On étudie. On pose.<br />
+                  <em>La décennale couvre les deux.</em>
                 </h1>
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[620px]">
-                  Calcul technique signé par notre ingénieur, dimensionnement de la poutre (IPN, HEB ou IPE), expertise mur porteur, contrôle des ouvrages. Nous intervenons aux côtés des particuliers, des architectes, des marchands de biens et des entreprises du bâtiment.
+                  Étude technique de structure à Toulouse — mur porteur, IPN, reprise structurelle. Le diagnostic, la pose et les finitions sont portés par l'institut sous décennale AXA travaux. Pour les notes de calcul opposables (Eurocodes), nous travaillons avec un bureau d'études structure partenaire qui co-signe le dossier sous sa propre décennale études.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <MagneticButton href="/diagnostic" variant="primary">
-                    Demander un calcul de poutre
+                    Demander une étude
                   </MagneticButton>
                   <MagneticButton href="/expertise/mur-porteur" variant="ghost">
                     Voir notre méthode
@@ -189,7 +188,7 @@ export default function BureauEtudeStructurePage() {
               <div className="mb-16 max-w-2xl">
                 <Eyebrow>Nos prestations</Eyebrow>
                 <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
-                  Six missions structurelles,<br /><em>une même rigueur Eurocode.</em>
+                  Six prestations structure,<br /><em>une même continuité étude-travaux.</em>
                 </h2>
               </div>
             </RevealOnScroll>
@@ -277,7 +276,7 @@ export default function BureauEtudeStructurePage() {
               <div className="mb-16 max-w-2xl">
                 <Eyebrow variant="dark">Nos garanties</Eyebrow>
                 <h2 className="font-serif text-white" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
-                  Un calcul opposable,<br /><em>une décennale active.</em>
+                  Deux décennales,<br /><em>un seul interlocuteur.</em>
                 </h2>
               </div>
             </RevealOnScroll>
@@ -285,16 +284,16 @@ export default function BureauEtudeStructurePage() {
             <div className="grid md:grid-cols-3 gap-12 lg:gap-8">
               {[
                 {
-                  label: 'Décennale AXA France',
-                  desc: "Police n° 10564321 — couvre l'étude et les travaux exécutés derrière. Attestation remise à chaque devis.",
+                  label: 'Décennale travaux AXA',
+                  desc: "Contrat Construction BATISSUR n° 0000022511730204 — couvre les travaux portés par l'institut (maçonnerie, structure bois, couverture, plâtrerie, revêtements).",
                 },
                 {
-                  label: 'Calcul technique signé',
-                  desc: "Note de calcul signée par notre ingénieur structure, opposable face à une assurance, un syndic ou un tribunal.",
+                  label: 'Décennale études partenaire',
+                  desc: "Lorsqu'une note de calcul opposable est requise, elle est co-signée par notre bureau d'études structure partenaire, sous sa propre décennale études.",
                 },
                 {
                   label: 'Dossier complet à la livraison',
-                  desc: "Plans d'exécution, notes de calcul, attestations, photos de chantier. Tous les documents techniques vous sont remis.",
+                  desc: "Plans d'exécution, étude technique, attestations d'assurance des deux acteurs, photos de chantier. Tous les documents vous sont remis.",
                 },
               ].map((g, i) => (
                 <RevealOnScroll key={g.label} delay={i * 0.06}>
@@ -319,7 +318,7 @@ export default function BureauEtudeStructurePage() {
               <div className="text-center mb-16">
                 <Eyebrow className="justify-center">Questions fréquentes</Eyebrow>
                 <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}>
-                  Sur le bureau d'études<br /><em>et les notes de calcul.</em>
+                  Sur l'étude, les notes de calcul<br /><em>et notre BE partenaire.</em>
                 </h2>
               </div>
             </RevealOnScroll>

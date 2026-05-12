@@ -6,7 +6,7 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StaggerText } from '@/components/ui/StaggerText';
 
 /**
- * PullQuote — citation éditoriale de Ludovic, fond navy-2.
+ * PullQuote — citation éditoriale de l'équipe IPB, fond navy-2.
  *
  * Animations signature :
  *  - Ligne orange verticale qui se dessine de haut en bas (scaleY)
@@ -70,7 +70,7 @@ export function PullQuote() {
                   </motion.span>
                 )}
                 <StaggerText
-                  text="Une fissure, un mur porteur, ce n'est pas un travail de bricolage. C'est de la structure. Notre métier, c'est de regarder, de calculer, et de construire — sans jamais vendre une solution qu'on ne ferait pas chez nous."
+                  text="Une fissure, un mur porteur, ce n'est pas un travail de bricolage. C'est de la structure. Notre métier, c'est de regarder, de mesurer, puis de réparer — sans jamais vendre une solution qu'on ne poserait pas chez nous."
                   delay={0.6}
                   stagger={0.025}
                 />
@@ -93,7 +93,7 @@ export function PullQuote() {
                   />
                 )}
                 <span className="text-white/75 text-[12px] uppercase tracking-[0.14em] font-medium">
-                  Ludovic D. — Fondateur, ingénieur structure
+                  L'équipe IPB · Institut de Pathologie du Bâtiment
                 </span>
               </footer>
             </div>
