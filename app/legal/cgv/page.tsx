@@ -209,11 +209,8 @@ export default function CGVPage() {
                 <li>Un devis détaillé pour les travaux éventuellement préconisés</li>
               </ul>
               <p className="mt-3 text-sm text-ipb-muted">
-                Le rapport est un document technique établi par Bâti Halli dans le cadre de son activité
-                d'entreprise du bâtiment. Il ne constitue pas un rapport d'expertise judiciaire au sens de
-                l'article 232 du Code de procédure civile, qui requiert la désignation d'un expert près
-                les tribunaux. Pour une note de calcul opposable (dimensionnement Eurocodes), Bâti Halli
-                fait intervenir son bureau d'études structure partenaire.
+                Pour les notes de calcul opposables (dimensionnement Eurocodes), Bâti Halli fait
+                intervenir son bureau d'études structure partenaire.
               </p>
 
               <p className="mt-4"><strong>3.2. Tarification et nature de l'acompte</strong></p>

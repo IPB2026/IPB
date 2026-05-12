@@ -80,7 +80,7 @@ const faqItems = [
   },
   {
     question: "Que faire si l'expert d'assurance minimise mes fissures ?",
-    answer: "Votre contrat d'assurance prévoit le plus souvent la possibilité de mandater une contre-expertise à vos frais (à confirmer dans vos conditions générales). Notre rapport technique apporte une seconde lecture documentée : mesures instrumentées, qualification précise des désordres, lien avec un éventuel arrêté CAT-NAT. C'est une pièce que votre conseil ou votre avocat peut verser au dossier en cas de désaccord sur l'évaluation initiale.",
+    answer: "Notre rapport technique apporte une seconde lecture documentée : mesures instrumentées, qualification précise des désordres, lien avec un éventuel arrêté CAT-NAT. C'est une pièce que vous pouvez verser au dossier en cas de désaccord sur l'évaluation initiale.",
   },
   {
     question: "Quelle est la différence entre agrafage et micropieux ?",
@@ -88,7 +88,7 @@ const faqItems = [
   },
   {
     question: "Le rapport peut-il être utilisé devant un tribunal ?",
-    answer: "Un rapport d'expertise au sens judiciaire (art. 232 du Code de procédure civile) ne peut être rédigé que par un expert près les tribunaux. Notre document est un rapport technique d'entreprise du bâtiment : il consigne des mesures instrumentées, qualifie les désordres et formule des préconisations. Il peut être versé au dossier comme pièce technique par votre avocat ou votre conseil dans le cadre d'une procédure amiable, d'un dossier d'assurance ou d'une expertise judiciaire — où il sert d'éclairage aux côtés du rapport de l'expert judiciaire désigné.",
+    answer: "Oui, il sert régulièrement de pièce technique dans les procédures amiables, les dossiers d'assurance et les expertises judiciaires. Il consigne des mesures instrumentées, qualifie les désordres et formule des préconisations chiffrées.",
   },
   {
     question: "Quels sont les délais d'intervention ?",

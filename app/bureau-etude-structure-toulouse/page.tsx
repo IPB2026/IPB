@@ -61,7 +61,7 @@ const prestations = [
   },
   {
     titre: 'Note de calcul opposable',
-    desc: "Pour les projets qui exigent un document opposable face à un syndic, un assureur ou un contrôleur technique, la note de calcul est co-signée par notre bureau d'études structure partenaire, sous sa propre décennale études.",
+    desc: "Pour les projets qui exigent un document opposable face à un syndic, un assureur ou un contrôleur technique, signée par notre bureau d'études structure partenaire.",
   },
   {
     titre: 'Diagnostic technique de structure',
@@ -84,7 +84,7 @@ const prestations = [
 const faqItems = [
   {
     question: "Qui signe la note de calcul opposable sur vos chantiers ?",
-    answer: "Quand votre projet exige une note de calcul opposable (Eurocodes, dimensionnement IPN/HEB, descente de charges complexe), elle est rédigée et signée par notre bureau d'études structure partenaire, sous sa propre décennale études. L'institut IPB porte le diagnostic préalable, la pose et les finitions, sous décennale AXA travaux. Le client reçoit un dossier unique avec les deux attestations.",
+    answer: "Quand votre projet exige une note de calcul opposable (Eurocodes, dimensionnement IPN/HEB), elle est signée par notre bureau d'études structure partenaire. L'institut porte le diagnostic, la pose et les finitions. Vous avez un seul interlocuteur, un seul devis, un dossier complet remis à la livraison.",
   },
   {
     question: "Sous quel délai un dossier d'étude est-il rendu ?",
@@ -100,7 +100,7 @@ const faqItems = [
   },
   {
     question: "Êtes-vous couverts en décennale ?",
-    answer: "Oui. L'institut IPB est couvert par une garantie décennale AXA France (contrat Construction BATISSUR n° 0000022511730204) sur ses activités de travaux : maçonnerie et béton armé, charpente bois, couverture, menuiseries, plâtrerie, revêtements. Pour les notes de calcul opposables, c'est la décennale études de notre BE partenaire qui s'applique. Les deux attestations sont remises avec le devis.",
+    answer: "Oui, garantie décennale AXA France active depuis 2019. Attestation remise avec chaque devis.",
   },
   {
     question: "Quel est le tarif d'une étude technique seule ?",
@@ -116,7 +116,7 @@ const faqItems = [
   },
   {
     question: "Comment fonctionne le partenariat avec votre BE structure ?",
-    answer: "Nous travaillons avec un bureau d'études structure indépendant, qui dispose de sa propre décennale études et signe les notes de calcul opposables. L'institut IPB porte le diagnostic, l'interface client, la pose et les finitions. Le client a un interlocuteur unique (IPB), un devis unique, et reçoit en livraison un dossier complet avec les deux attestations d'assurance.",
+    answer: "Notre bureau d'études structure partenaire signe les notes de calcul Eurocodes ; l'institut porte le diagnostic, la pose et les finitions. Un seul interlocuteur, un seul devis, un dossier complet à la livraison.",
   },
 ];
 
@@ -164,7 +164,7 @@ export default function BureauEtudeStructurePage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[620px]">
-                  Étude technique de structure à Toulouse — mur porteur, IPN, reprise structurelle. Le diagnostic, la pose et les finitions sont portés par l'institut sous décennale AXA travaux. Pour les notes de calcul opposables (Eurocodes), nous travaillons avec un bureau d'études structure partenaire qui co-signe le dossier sous sa propre décennale études.
+                  Étude technique et travaux structure à Toulouse — mur porteur, IPN, reprise structurelle. Diagnostic, pose et finitions portés par l'institut sous décennale AXA. Notes de calcul Eurocodes signées par notre bureau d'études structure partenaire.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>
@@ -288,8 +288,8 @@ export default function BureauEtudeStructurePage() {
                   desc: "Contrat Construction BATISSUR n° 0000022511730204 — couvre les travaux portés par l'institut (maçonnerie, structure bois, couverture, plâtrerie, revêtements).",
                 },
                 {
-                  label: 'Décennale études partenaire',
-                  desc: "Lorsqu'une note de calcul opposable est requise, elle est co-signée par notre bureau d'études structure partenaire, sous sa propre décennale études.",
+                  label: 'Note de calcul partenaire',
+                  desc: "Notes de calcul Eurocodes signées par notre bureau d'études structure partenaire.",
                 },
                 {
                   label: 'Dossier complet à la livraison',

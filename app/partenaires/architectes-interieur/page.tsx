@@ -109,8 +109,8 @@ export default function ArchitectesInterieurPage() {
 
             <div className="grid md:grid-cols-3 gap-6">
               {[
-                { icon: <Shield className="text-blue-600" size={28} />, title: 'Décennale AXA active', desc: 'L\'institut porte les travaux sous décennale AXA. Les notes de calcul opposables sont co-signées par notre BE structure partenaire sous sa propre décennale études — un dossier unique remis au client.' },
-                { icon: <Ruler className="text-ipb-orange" size={28} />, title: 'Étude technique structure', desc: 'Note de calcul co-signée par notre BE structure partenaire pour les projets qui exigent un document opposable face à un syndic, un assureur ou un contrôleur technique.' },
+                { icon: <Shield className="text-blue-600" size={28} />, title: 'Décennale AXA active', desc: 'L\'institut porte les travaux sous décennale AXA. Un dossier complet remis au client à la livraison.' },
+                { icon: <Ruler className="text-ipb-orange" size={28} />, title: 'Étude technique structure', desc: 'Note de calcul signée par notre bureau d\'études partenaire pour les projets qui exigent un document opposable.' },
                 { icon: <Hammer className="text-amber-600" size={28} />, title: 'Travaux sous 5 jours', desc: 'Étaiement, ouverture, pose poutre, finitions. Nos équipes interviennent vite, sans embolisme votre planning.' },
                 { icon: <Users className="text-purple-600" size={28} />, title: 'Interlocuteur unique', desc: 'Vous discutez avec un seul chargé d\'affaires. Pas de ping-pong entre BE et entreprise générale.' },
                 { icon: <FileText className="text-emerald-600" size={28} />, title: 'Dossier complet pour le client', desc: 'À la livraison, on remet à votre client tous les documents du chantier : plans, calcul de la poutre, attestation de garantie 10 ans.' },
