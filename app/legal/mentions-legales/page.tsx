@@ -3,7 +3,7 @@ import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
-import { Calendar, Scale, Shield, Building2, Server, Mail, Phone, MapPin, FileText, AlertCircle, Gavel } from 'lucide-react';
+import { Calendar, Scale, Shield, Building2, Server, Mail, Phone, FileText, AlertCircle, Gavel } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata = {
@@ -106,7 +106,7 @@ export default function MentionsLegalesPage() {
                     <dd>13 rue du Recteur Dottin, Apt 7, 4<sup>e</sup> étage, 31100 Toulouse, France</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-ipb-text sm:w-48">Bureaux d'accueil :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-48">Bureau :</dt>
                     <dd>54 avenue Jean Jaurès, 31170 Tournefeuille, France</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
@@ -188,7 +188,7 @@ export default function MentionsLegalesPage() {
                 <Mail size={24} className="text-ipb-orange" aria-hidden="true" />
                 4. Coordonnées de contact
               </h2>
-              <div className="grid sm:grid-cols-3 gap-4">
+              <div className="grid sm:grid-cols-2 gap-4">
                 <div className="bg-ipb-stone rounded-xl p-4 border border-ipb-rule">
                   <div className="flex items-center gap-2 mb-2">
                     <Phone size={18} className="text-ipb-orange" aria-hidden="true" />
@@ -207,17 +207,11 @@ export default function MentionsLegalesPage() {
                     contact@ipb-expertise.fr
                   </a>
                 </div>
-                <div className="bg-ipb-stone rounded-xl p-4 border border-ipb-rule">
-                  <div className="flex items-center gap-2 mb-2">
-                    <MapPin size={18} className="text-ipb-orange" aria-hidden="true" />
-                    <span className="font-bold text-ipb-text">Adresse</span>
-                  </div>
-                  <address className="not-italic text-ipb-text text-sm">
-                    54 avenue Jean Jaurès<br />
-                    31170 Tournefeuille
-                  </address>
-                </div>
               </div>
+              <p className="mt-4 text-sm text-ipb-muted">
+                L'institut n'a pas de bureau ouvert au public : tous les rendez-vous se déroulent
+                sur le site du projet (visite technique sur place) ou par téléphone.
+              </p>
             </section>
 
             {/* Section 5 */}

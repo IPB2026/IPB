@@ -118,7 +118,7 @@ export default function CGVPage() {
                     <dd>13 rue du Recteur Dottin, Apt 7, 4<sup>e</sup> étage, 31100 Toulouse</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-ipb-text sm:w-56">Bureaux d'accueil :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-56">Bureau :</dt>
                     <dd>54 avenue Jean Jaurès, 31170 Tournefeuille</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
