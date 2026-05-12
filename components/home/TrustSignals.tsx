@@ -66,30 +66,28 @@ export function TrustSignals() {
               Du premier coup d'œil<br />aux dernières finitions.
             </h3>
             <p className="text-ipb-muted leading-relaxed">
-              Notre ingénieur calcule la poutre. Nos équipes l'installent. Pas de sous-traitant à coordonner, pas de
-              jeu de ping-pong entre bureau d'études et entreprise. Vous avez un seul interlocuteur, du devis à la livraison.
+              Notre BE structure partenaire dimensionne la poutre. Nos équipes l'installent. Pas de chaîne de sous-traitants à coordonner, pas de jeu de ping-pong entre études et travaux. Vous avez un seul interlocuteur, du devis à la livraison.
             </p>
           </div>
 
-          {/* Visage humain — Ludovic */}
+          {/* Visuel chantier — preuve sociale */}
           <div className="p-8 md:p-10 relative">
             <div className="aspect-[4/5] rounded-2xl overflow-hidden mb-5 shadow-lg ring-1 ring-ipb-rule">
               <Image
-                src="/images/ludovic-expert-ipb.webp"
-                alt="Ludovic, expert structure et fondateur d'IPB Expertise à Toulouse"
+                src="/images/chantier-ouverture-mur-porteur.webp"
+                alt="Chantier IPB en cours — étaiement et pose de poutre sur ouverture de mur porteur en Occitanie"
                 width={400}
                 height={500}
                 className="w-full h-full object-cover"
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
             </div>
-            <p className="text-emerald-700 text-xs font-bold uppercase tracking-wider mb-2">Une équipe, un visage</p>
+            <p className="text-emerald-700 text-xs font-bold uppercase tracking-wider mb-2">Une équipe, des chantiers</p>
             <h3 className="font-display font-bold text-xl text-ipb-text mb-2 leading-tight">
-              Ludovic, votre interlocuteur.
+              L'institut, votre interlocuteur.
             </h3>
             <p className="text-ipb-muted leading-relaxed text-sm">
-              15 ans de chantiers, 850+ maisons accompagnées en Occitanie. C'est lui qui passe chez vous, lui qui chiffre,
-              lui qui suit le chantier. Pas un commercial, pas un sous-traitant.
+              Sept ans, 850+ chantiers en Occitanie. C'est la même équipe qui passe chez vous, qui chiffre, et qui suit le chantier. Pas un centre d'appels, pas une chaîne de sous-traitants.
             </p>
           </div>
         </div>

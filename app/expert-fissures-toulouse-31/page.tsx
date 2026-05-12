@@ -15,7 +15,7 @@ import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
   title: 'Expert Fissures Toulouse 31 · Diagnostic 48h · AXA',
-  description: "Diagnostic fissures à Toulouse : agrafage structurel, rapport opposable assurance. 70 dossiers/an. Décennale AXA. Sous 48h. ☎ 05 82 95 33 75",
+  description: "Diagnostic fissures à Toulouse : agrafage structurel, rapport technique reconnu par les assurances. 70 dossiers/an. Décennale AXA. Visite sous 72h. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures toulouse',
     'expert fissure toulouse',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31' },
   openGraph: {
     title: 'Expert Fissures Toulouse · Décennale AXA · IPB',
-    description: "Diagnostic, agrafage structurel, rapport opposable assurance. Décennale AXA. 70 dossiers/an.",
+    description: "Diagnostic, agrafage structurel, rapport technique reconnu par les assurances. Décennale AXA. 70 dossiers/an.",
     url: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31',
     type: 'website',
     images: [{
@@ -60,11 +60,11 @@ const communes = [
 const faqItems = [
   {
     question: "Comment se déroule une expertise fissures à Toulouse ?",
-    answer: "Notre institut vient sur site avec fissuromètre, niveau laser et caméra thermique si nécessaire. Visite de 1 h 30 à 2 h, mesures instrumentées de chaque fissure, identification de la cause (sécheresse, tassement, défaut de chaînage) et rapport écrit sous 3 à 5 jours ouvrés, reconnu par les assurances et les tribunaux.",
+    answer: "Notre institut vient sur site avec fissuromètre, niveau laser et caméra thermique si nécessaire. Visite de 1 h 30 à 2 h, mesures instrumentées de chaque fissure, identification de la cause (sécheresse, tassement, défaut de chaînage) et rapport écrit sous 3 à 5 jours ouvrés, reconnu comme pièce technique par les assurances dans le cadre des dossiers CAT-NAT.",
   },
   {
     question: "Quel est le coût d'une expertise fissures à Toulouse ?",
-    answer: "Une expertise structurelle complète à Toulouse coûte entre 800 et 1 500 € TTC selon la complexité (taille du bâti, nombre de désordres, contexte juridique). Le diagnostic inclut le déplacement, les mesures instrumentées et le rapport opposable. Si vous nous confiez ensuite les travaux, le coût du diagnostic est intégralement déduit de la facture finale.",
+    answer: "Une expertise structurelle complète à Toulouse coûte entre 800 et 1 500 € TTC selon la complexité (taille du bâti, nombre de désordres, contexte juridique). Le diagnostic inclut le déplacement, les mesures instrumentées et le rapport technique. Si vous nous confiez ensuite les travaux, le coût du diagnostic est intégralement déduit de la facture finale.",
   },
   {
     question: "Mes fissures peuvent-elles attendre ou faut-il agir rapidement ?",
@@ -80,15 +80,15 @@ const faqItems = [
   },
   {
     question: "Que faire si l'expert d'assurance minimise mes fissures ?",
-    answer: "Vous avez le droit de mandater une contre-expertise indépendante (article L.121-1 du Code des assurances). 75 % des contre-expertises débouchent sur une réévaluation à la hausse de l'indemnisation, gain moyen de +30 à +50 %. Notre rapport est conçu spécifiquement pour faire le poids face à l'évaluation initiale d'un expert d'assureur.",
+    answer: "Votre contrat d'assurance prévoit le plus souvent la possibilité de mandater une contre-expertise à vos frais (à confirmer dans vos conditions générales). Notre rapport technique apporte une seconde lecture documentée : mesures instrumentées, qualification précise des désordres, lien avec un éventuel arrêté CAT-NAT. C'est une pièce que votre conseil ou votre avocat peut verser au dossier en cas de désaccord sur l'évaluation initiale.",
   },
   {
     question: "Quelle est la différence entre agrafage et micropieux ?",
     answer: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables (12 000 à 18 000 €). Les micropieux reprennent les fondations en profondeur (40 000 à 60 000 €) — intervention lourde réservée aux tassements actifs majeurs. Notre institut réalise l'agrafage structurel ; pour les rares cas nécessitant des micropieux, nous orientons vers un partenaire spécialisé après diagnostic.",
   },
   {
-    question: "Le rapport d'expertise est-il opposable au tribunal ?",
-    answer: "Oui. Un rapport rédigé par un institut indépendant est opposable devant un tribunal civil, devant l'assurance de l'acheteur en cas de revente, et devant le notaire. Il sert régulièrement de pièce technique dans les expertises judiciaires, les procédures de garantie décennale et les recours après catastrophe naturelle.",
+    question: "Le rapport peut-il être utilisé devant un tribunal ?",
+    answer: "Un rapport d'expertise au sens judiciaire (art. 232 du Code de procédure civile) ne peut être rédigé que par un expert près les tribunaux. Notre document est un rapport technique d'entreprise du bâtiment : il consigne des mesures instrumentées, qualifie les désordres et formule des préconisations. Il peut être versé au dossier comme pièce technique par votre avocat ou votre conseil dans le cadre d'une procédure amiable, d'un dossier d'assurance ou d'une expertise judiciaire — où il sert d'éclairage aux côtés du rapport de l'expert judiciaire désigné.",
   },
   {
     question: "Quels sont les délais d'intervention ?",
@@ -364,7 +364,7 @@ export default function ExpertFissuresToulousePage() {
                   },
                   {
                     titre: 'Rapport, devis, travaux',
-                    detail: 'Rapport écrit opposable aux assurances sous 3 à 5 jours ouvrés. Devis détaillé. Si vous confirmez : agrafage structurel sous garantie décennale AXA, chantier 3 à 5 jours selon ampleur.',
+                    detail: 'Rapport technique écrit sous 3 à 5 jours ouvrés, reconnu par les assurances dans les dossiers CAT-NAT. Devis détaillé. Si vous confirmez : agrafage structurel sous garantie décennale AXA, chantier 3 à 5 jours selon ampleur.',
                     delai: 'Étape 4 · Travaux décennale',
                   },
                 ].map((etape, i) => (
@@ -495,7 +495,7 @@ export default function ExpertFissuresToulousePage() {
                 Le diagnostic en ligne ne vous engage à rien.
               </p>
               <p className="text-[15px] leading-[1.85] font-light text-ipb-muted">
-                Vous obtenez un premier avis d'un ingénieur structure, gratuitement. <strong className="text-ipb-text not-italic">Si la situation ne nécessite pas d'intervention, on vous le dira</strong> — c'est l'engagement de l'institut. Mieux vaut un avis juste qu'un devis vendu.
+                Vous obtenez un premier avis de notre expert structure, gratuitement. <strong className="text-ipb-text not-italic">Si la situation ne nécessite pas d'intervention, on vous le dira</strong> — c'est l'engagement de l'institut. Mieux vaut un avis juste qu'un devis vendu.
               </p>
             </RevealOnScroll>
           </div>

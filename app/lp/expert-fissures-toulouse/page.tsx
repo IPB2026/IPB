@@ -78,7 +78,7 @@ export default function LandingFissuresToulouse() {
               {/* Trust signals compact */}
               <ul className="space-y-2 text-[13px] text-ipb-muted leading-[1.7]">
                 {[
-                  '<strong class="text-ipb-text not-italic font-medium">Rapport reconnu par les assurances</strong> — opposable en cas de litige CAT-NAT',
+                  '<strong class="text-ipb-text not-italic font-medium">Rapport technique reconnu par les assurances</strong> — pièce de référence dans les dossiers CAT-NAT',
                   '<strong class="text-ipb-text not-italic font-medium">Agrafage par nos équipes</strong> — pas de sous-traitance, garantie unique',
                   '<strong class="text-ipb-text not-italic font-medium">Institut créé en 2019</strong> — 850 chantiers livrés en Occitanie',
                 ].map((item) => (

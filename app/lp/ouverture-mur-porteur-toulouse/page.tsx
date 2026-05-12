@@ -33,7 +33,7 @@ export default function LandingMurPorteurToulouse() {
           <div className="grid lg:grid-cols-[6fr_5fr] gap-10 lg:gap-12 items-center">
             <div>
               <p className="text-ipb-orange text-[11px] uppercase tracking-[0.18em] font-medium mb-4">
-                Bureau d'études + travaux · Décennale AXA
+                Étude & travaux · Décennale AXA
               </p>
               <h1
                 className="font-serif text-ipb-text mb-6"
@@ -65,7 +65,7 @@ export default function LandingMurPorteurToulouse() {
 
               <ul className="space-y-2 text-[13px] text-ipb-muted leading-[1.7]">
                 {[
-                  '<strong class="text-ipb-text not-italic font-medium">Calcul technique signé</strong> — opposable face à un assureur ou un contrôleur',
+                  '<strong class="text-ipb-text not-italic font-medium">Note de calcul co-signée par notre BE structure partenaire</strong> — opposable face à un assureur ou un contrôleur',
                   '<strong class="text-ipb-text not-italic font-medium">Chantier 3 à 5 jours</strong> — étaiement, ouverture, pose poutre, finitions',
                   '<strong class="text-ipb-text not-italic font-medium">Tarifs constatés Toulouse</strong> — 4 000 à 10 000 € pour 2,5 m TTC',
                 ].map((item) => (

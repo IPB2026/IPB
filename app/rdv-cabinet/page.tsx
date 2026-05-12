@@ -10,12 +10,12 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
   title: 'Prendre RDV avec l\'institut · IPB Toulouse · 15 min',
-  description: "15 min au téléphone avec Ludovic, fondateur d'IPB. Diagnostic préalable gratuit, sans engagement. ☎ 05 82 95 33 75",
-  keywords: ['rendez-vous expert fissures', 'rdv cabinet structure toulouse', 'appel ludovic ipb', 'consultation expert bâtiment'],
+  description: "15 min au téléphone avec l'équipe IPB. Diagnostic préalable gratuit, sans engagement. ☎ 05 82 95 33 75",
+  keywords: ['rendez-vous expert fissures', 'rdv institut structure toulouse', 'consultation expert bâtiment'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/rdv-cabinet' },
   openGraph: {
-    title: 'Prendre rendez-vous avec l’institut IPB',
-    description: "15 minutes au téléphone avec Ludovic pour qualifier votre situation et planifier la suite.",
+    title: 'Prendre rendez-vous avec l\'institut IPB',
+    description: "15 minutes au téléphone avec l'équipe IPB pour qualifier votre situation et planifier la suite.",
     url: 'https://www.ipb-expertise.fr/rdv-cabinet',
     type: 'website',
   },
@@ -49,7 +49,7 @@ export default function RdvCabinetPage() {
                 </h1>
 
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-6">
-                  Avant de vous déplacer ou de vous engager, nous vous proposons un premier échange par téléphone avec Ludovic, fondateur de l’institut. Vous décrivez votre situation, nous vous disons posément ce qu'il en est.
+                  Avant de vous déplacer ou de vous engager, nous vous proposons un premier échange par téléphone avec l'équipe de l'institut. Vous décrivez votre situation, nous vous disons posément ce qu'il en est.
                 </p>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10">
                   Cet appel est <strong className="font-medium text-ipb-text not-italic">gratuit</strong> et <strong className="font-medium text-ipb-text not-italic">sans engagement</strong>. À l'issue, nous décidons ensemble de la suite — visite sur site, étude technique, ou simple conseil si rien n'est urgent.
@@ -58,7 +58,7 @@ export default function RdvCabinetPage() {
                 {/* Garanties — mini liste */}
                 <ul className="space-y-3 text-[14px] leading-[1.7] font-light text-ipb-muted border-t border-ipb-rule pt-6">
                   {[
-                    'Échange direct avec Ludovic, ingénieur structure',
+                    'Échange direct avec l\'équipe de l\'institut',
                     'Sans engagement de votre part',
                     'Confidentialité absolue sur votre dossier',
                     'Suite proposée par écrit après l\'appel',

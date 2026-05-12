@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     alternates: { canonical: canonicalUrl },
     openGraph: {
       title: `Expert Fissures ${villeNom} · Décennale AXA · IPB`,
-      description: `Diagnostic, agrafage structurel à ${villeNom}. Rapport opposable assurance. Décennale AXA.`,
+      description: `Diagnostic, agrafage structurel à ${villeNom}. Rapport technique reconnu par les assurances. Décennale AXA.`,
       url: `https://www.ipb-expertise.fr/expert-fissures/${ville}`,
       type: 'website',
       images: [{ url: '/images/fissures-avant-apres.webp', width: 1200, height: 630, alt: `Expert fissures ${villeNom} — IPB` }],
@@ -265,7 +265,7 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
                         <em className="not-italic text-ipb-orange">&nbsp;»</em>
                       </p>
                       <p className="text-[11px] text-ipb-light uppercase tracking-[0.14em] mt-3 not-italic">
-                        — Ludovic D., fondateur de l’institut
+                        — L'équipe de l'institut
                       </p>
                     </div>
                   </RevealOnScroll>

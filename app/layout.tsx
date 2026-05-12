@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     default: "IPB - Spécialistes de la structure de votre habitat | Diagnostic Fissures & Ouverture Mur Porteur Toulouse",
     template: "%s | IPB"
   },
-  description: "Les spécialistes de la structure de votre habitat. Diagnostic fissures, ouverture de mur porteur, création de baie vitrée. Bureau d'études + travaux. Décennale AXA. Toulouse, Montauban, Auch (31-82-32).",
+  description: "Les spécialistes de la structure de votre habitat. Diagnostic fissures, ouverture de mur porteur, création de baie vitrée. Étude et travaux sous décennale AXA. Toulouse, Montauban, Auch (31-82-32).",
   keywords: ["expert fissures Toulouse", "ouverture mur porteur Toulouse", "création baie vitrée Toulouse", "étude structure bâtiment", "agrafage fissures", "poutre IPN HEB", "fissures maison", "expert structure Toulouse", "Montauban", "Auch", "Haute-Garonne", "Tarn-et-Garonne", "Gers", "Tarn", "pathologie du bâtiment", "garantie décennale", "humidité murs", "injection résine"],
   authors: [{ name: "IPB - Institut de Pathologie du Bâtiment" }],
   creator: "IPB",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     url: "https://www.ipb-expertise.fr",
     siteName: "IPB - Institut de Pathologie du Bâtiment",
     title: "IPB - Spécialistes de la structure de votre habitat | Toulouse, Montauban, Auch",
-    description: "Les spécialistes de la structure de votre habitat. Diagnostic fissures, ouverture de mur porteur (étude IPN/HEB), création de baie vitrée. Bureau d'études + travaux, décennale AXA.",
+    description: "Les spécialistes de la structure de votre habitat. Diagnostic fissures, ouverture de mur porteur (étude IPN/HEB), création de baie vitrée. Étude et travaux sous décennale AXA.",
     images: [
       {
         url: "/images/IPB_Logo_HD.png",
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "IPB - Spécialistes de la structure de votre habitat (31-82-32)",
-    description: "Diagnostic fissures, ouverture de mur porteur, création de baie vitrée. Bureau d'études + travaux. Décennale AXA.",
+    description: "Diagnostic fissures, ouverture de mur porteur, création de baie vitrée. Étude et travaux sous décennale AXA.",
     images: ["/images/IPB_Logo_HD.png"],
   },
   robots: {
@@ -106,9 +106,10 @@ const localBusinessSchema = {
   // Permet à Google de fusionner les deux entités dans son Knowledge Graph.
   "parentOrganization": { "@id": "https://www.ipb-expertise.fr#organization" },
   "name": "IPB - Institut de Pathologie du Bâtiment",
+  "legalName": "Bâti Halli",
   "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
   "foundingDate": "2019",
-  "description": "Institut indépendant en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Expertise fissures (agrafage structurel), ouverture de mur porteur et création de baie vitrée (étude structure, pose poutre IPN/HEB), traitement de l'humidité (injection résine, cuvelage). Étude et travaux sous garantie décennale. Toulouse, Montauban, Auch et environs.",
+  "description": "Institut spécialisé en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Expertise fissures (agrafage structurel), ouverture de mur porteur et création de baie vitrée (étude structure, pose poutre IPN/HEB), étanchéité maçonnée (injection résine, cuvelage). Diagnostic et travaux sous garantie décennale AXA. Toulouse, Montauban, Auch et environs.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "54 avenue Jean Jaurès",
@@ -166,7 +167,7 @@ const localBusinessSchema = {
         "itemOffered": {
           "@type": "Service",
           "name": "Ouverture de mur porteur",
-          "description": "Étude structure, dimensionnement et pose de poutre IPN/HEB, étaiement, ouverture, finitions. Cuisine ouverte, suite parentale, plateau loft. Garantie décennale sur l'étude et les travaux."
+          "description": "Étude technique, dimensionnement et pose de poutre IPN/HEB, étaiement, ouverture, finitions. Cuisine ouverte, suite parentale, plateau loft. Travaux sous garantie décennale AXA. Note de calcul opposable co-signée par notre BE structure partenaire."
         }
       },
       {
@@ -182,7 +183,7 @@ const localBusinessSchema = {
         "itemOffered": {
           "@type": "Service",
           "name": "Traitement de l'humidité",
-          "description": "Injection de résine hydrophobe, cuvelage et VMI pour murs humides et infiltrations."
+          "description": "Étanchéité maçonnée : injection de résine hydrophobe et cuvelage pour murs humides et infiltrations. Solutions complémentaires de ventilation (VMI) en partenariat avec un installateur fluides agréé."
         }
       }
     ]

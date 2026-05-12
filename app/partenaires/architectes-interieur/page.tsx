@@ -45,7 +45,7 @@ export default function ArchitectesInterieurPage() {
       <Navbar />
       <SmartBackBar />
       <main id="main-content">
-        {/* HERO avec photo Ludovic */}
+        {/* HERO avec visuel chantier */}
         <section className="relative bg-ipb-navy text-white py-16 md:py-24 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -62,7 +62,7 @@ export default function ArchitectesInterieurPage() {
                   Une cuisine ouverte sur le séjour, un salon traversant, une suite parentale qui « mange » la chambre voisine. <strong className="text-white">Vous concevez l'espace, on s'occupe du mur porteur.</strong>
                 </p>
                 <p className="text-base text-ipb-light mb-8 leading-relaxed">
-                  Notre ingénieur calcule la poutre, nos équipes l'installent, votre client reçoit toutes les attestations à la livraison. Vous gardez la relation, on vous fournit la technique.
+                  Notre BE structure partenaire dimensionne la poutre, nos équipes l'installent, votre client reçoit toutes les attestations à la livraison. Vous gardez la relation, on vous fournit la technique.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link href="/contact" className="bg-ipb-orange hover:bg-orange-400 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 shadow-xl hover:-translate-y-0.5 transition-all">
@@ -74,12 +74,12 @@ export default function ArchitectesInterieurPage() {
                 </div>
               </div>
 
-              {/* Photo Ludovic — humanisation */}
+              {/* Visuel chantier — preuve sociale */}
               <div className="hidden lg:block relative">
                 <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/10">
                   <Image
-                    src="/images/ludovic-expert-ipb.webp"
-                    alt="Ludovic, expert structure et fondateur d'IPB Expertise — votre interlocuteur unique"
+                    src="/images/chantier-ouverture-mur-porteur.webp"
+                    alt="Chantier IPB en cours — étaiement et pose de poutre IPN sur ouverture de mur porteur"
                     fill
                     sizes="(max-width: 1024px) 0px, 400px"
                     className="object-cover"
@@ -87,9 +87,9 @@ export default function ArchitectesInterieurPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <p className="text-ipb-orange-l text-xs font-bold uppercase tracking-wider mb-2">Votre interlocuteur</p>
-                    <p className="text-white font-display font-bold text-2xl leading-tight">Ludovic</p>
-                    <p className="text-white/70 text-sm mt-1">15 ans · 850+ chantiers · Expert structure</p>
+                    <p className="text-ipb-orange-l text-xs font-bold uppercase tracking-wider mb-2">Votre partenaire technique</p>
+                    <p className="text-white font-display font-bold text-2xl leading-tight">L'institut IPB</p>
+                    <p className="text-white/70 text-sm mt-1">7 ans · 850+ chantiers · Décennale AXA active</p>
                   </div>
                 </div>
               </div>
@@ -109,8 +109,8 @@ export default function ArchitectesInterieurPage() {
 
             <div className="grid md:grid-cols-3 gap-6">
               {[
-                { icon: <Shield className="text-blue-600" size={28} />, title: 'Décennale AXA active', desc: 'Notre assurance couvre l\'étude ET les travaux. Votre client ne dépend pas de plusieurs polices différentes.' },
-                { icon: <Ruler className="text-ipb-orange" size={28} />, title: 'Calcul technique signé', desc: 'Ingénieur structure en interne. Document valable face à une assurance, un contrôleur technique ou un tribunal.' },
+                { icon: <Shield className="text-blue-600" size={28} />, title: 'Décennale AXA active', desc: 'L\'institut porte les travaux sous décennale AXA. Les notes de calcul opposables sont co-signées par notre BE structure partenaire sous sa propre décennale études — un dossier unique remis au client.' },
+                { icon: <Ruler className="text-ipb-orange" size={28} />, title: 'Étude technique structure', desc: 'Note de calcul co-signée par notre BE structure partenaire pour les projets qui exigent un document opposable face à un syndic, un assureur ou un contrôleur technique.' },
                 { icon: <Hammer className="text-amber-600" size={28} />, title: 'Travaux sous 5 jours', desc: 'Étaiement, ouverture, pose poutre, finitions. Nos équipes interviennent vite, sans embolisme votre planning.' },
                 { icon: <Users className="text-purple-600" size={28} />, title: 'Interlocuteur unique', desc: 'Vous discutez avec un seul chargé d\'affaires. Pas de ping-pong entre BE et entreprise générale.' },
                 { icon: <FileText className="text-emerald-600" size={28} />, title: 'Dossier complet pour le client', desc: 'À la livraison, on remet à votre client tous les documents du chantier : plans, calcul de la poutre, attestation de garantie 10 ans.' },

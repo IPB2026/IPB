@@ -52,7 +52,7 @@ const etapes = [
     num: '02',
     titre: 'Le pré-diagnostic à distance',
     paragraphe:
-      "À partir de votre description et des photos que vous transmettez, l'ingénieur examine les éléments visibles. Il identifie les indices secondaires qu'une photo peut révéler : forme et orientation de la fissure, position dans le bâti, traces autour des ouvertures, nature de l'enduit. Cette étape ne remplace pas une visite mais elle oriente la suite. Pour environ un dossier sur cinq, le pré-diagnostic à distance suffit à donner une réponse claire — il s'agit d'un désordre stabilisé, esthétique, ou d'un cas qui ne relève pas de notre périmètre. Pour les autres, nous programmons une visite avec les bons instruments.",
+      "À partir de votre description et des photos que vous transmettez, notre équipe examine les éléments visibles. Elle identifie les indices secondaires qu'une photo peut révéler : forme et orientation de la fissure, position dans le bâti, traces autour des ouvertures, nature de l'enduit. Cette étape ne remplace pas une visite mais elle oriente la suite. Pour environ un dossier sur cinq, le pré-diagnostic à distance suffit à donner une réponse claire — il s'agit d'un désordre stabilisé, esthétique, ou d'un cas qui ne relève pas de notre périmètre. Pour les autres, nous programmons une visite avec les bons instruments.",
     terrain:
       "Les photos utiles : une vue d'ensemble du bâti, une vue rapprochée du désordre avec un repère métrique (règle, pièce de monnaie), une vue de l'environnement immédiat (terrain, arbres, présence d'eau). Une simple photo cadrée de loin sans repère est rarement exploitable.",
   },
@@ -60,7 +60,7 @@ const etapes = [
     num: '03',
     titre: 'La visite sur site',
     paragraphe:
-      "L'ingénieur structure se déplace. Selon le dossier, la visite dure entre une heure et trois heures. Elle commence par un tour du bâti à pied, sans instrument — observer d'abord, mesurer ensuite. Vient l'inspection rapprochée des désordres : mesure au fissuromètre, prise de photos datées et géolocalisées, examen des indices secondaires (portes, plinthes, carrelage, planchers). Si nécessaire, nous sondons les fondations à la tarière manuelle ou nous prélevons un échantillon de mortier. Vous êtes présent pendant la visite — c'est un échange, pas une auscultation silencieuse. Vos questions sont les bienvenues.",
+      "L'expert structure de l'institut se déplace. Selon le dossier, la visite dure entre une heure et trois heures. Elle commence par un tour du bâti à pied, sans instrument — observer d'abord, mesurer ensuite. Vient l'inspection rapprochée des désordres : mesure au fissuromètre, prise de photos datées et géolocalisées, examen des indices secondaires (portes, plinthes, carrelage, planchers). Si nécessaire, nous sondons les fondations à la tarière manuelle ou nous prélevons un échantillon de mortier. Vous êtes présent pendant la visite — c'est un échange, pas une auscultation silencieuse. Vos questions sont les bienvenues.",
     terrain:
       "Matériel standard de la visite : fissuromètre Saugnac à pince et fissuromètre adhésif (deux modes de mesure complémentaires), humidimètre Protimeter Surveymaster, niveau laser rotatif pour mesurer les défauts d'horizontalité, tarière manuelle pour les sondages de surface, appareil photo avec horodatage et géolocalisation activés.",
   },

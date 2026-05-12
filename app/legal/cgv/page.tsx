@@ -50,9 +50,10 @@ export default function CGVPage() {
               Conditions Générales de Vente
             </h1>
             <p className="text-lg text-ipb-muted leading-relaxed">
-              Les présentes Conditions Générales de Vente (ci-après « CGV ») constituent le socle unique 
-              de la relation commerciale entre les parties. Elles régissent l'ensemble des prestations 
-              de services et travaux proposés par la société Bâti Halli à ses clients.
+              Les présentes Conditions Générales de Vente (ci-après « CGV ») constituent le socle unique
+              de la relation commerciale entre les parties. Elles régissent l'ensemble des prestations
+              de services et travaux proposés par Bâti Halli (enseignes commerciales IPB · Institut de
+              Pathologie du Bâtiment) à ses clients.
             </p>
             <div className="mt-4 bg-ipb-stone border border-ipb-rule rounded-lg p-4">
               <p className="text-sm text-orange-800">
@@ -101,20 +102,20 @@ export default function CGVPage() {
               <div className="bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
                 <dl className="space-y-2">
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-ipb-text sm:w-56">Dénomination sociale :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-56">Dénomination :</dt>
                     <dd>Bâti Halli</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-ipb-text sm:w-56">Enseigne commerciale :</dt>
-                    <dd>IPB - Institut de Pathologie du Bâtiment</dd>
-                  </div>
-                  <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-ipb-text sm:w-56">Forme juridique :</dt>
-                    <dd>SARL au capital de 1 000 €</dd>
+                    <dd>Entreprise Individuelle (EI)</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-ipb-text sm:w-56">Siège social :</dt>
-                    <dd>13 rue du Recteur Dottin, 31100 Toulouse <em>(domiciliation administrative)</em></dd>
+                    <dt className="font-bold text-ipb-text sm:w-56">Enseignes commerciales :</dt>
+                    <dd>IPB · Institut de Pathologie du Bâtiment</dd>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:gap-4">
+                    <dt className="font-bold text-ipb-text sm:w-56">Adresse de l'entreprise :</dt>
+                    <dd>13 rue du Recteur Dottin, 31100 Toulouse</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-ipb-text sm:w-56">Adresse d'exercice :</dt>
@@ -125,8 +126,8 @@ export default function CGVPage() {
                     <dd>398 185 421 00037</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-ipb-text sm:w-56">RCS :</dt>
-                    <dd>Toulouse B 398 185 421</dd>
+                    <dt className="font-bold text-ipb-text sm:w-56">Immatriculation :</dt>
+                    <dd>Inscrite au Registre National des Entreprises (RNE)</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-ipb-text sm:w-56">N° TVA intracommunautaire :</dt>
@@ -151,16 +152,23 @@ export default function CGVPage() {
                 Article 2 - Objet et champ d'application
               </h2>
               <p>
-                <strong>2.1.</strong> Les présentes CGV ont pour objet de définir les conditions dans lesquelles 
-                la société Bâti Halli (ci-après « le Prestataire » ou « IPB ») fournit les prestations suivantes à 
+                <strong>2.1.</strong> Les présentes CGV ont pour objet de définir les conditions dans lesquelles
+                Bâti Halli (ci-après « le Prestataire » ou « IPB ») fournit les prestations suivantes à
                 ses clients professionnels ou particuliers (ci-après « le Client ») :
               </p>
               <ul className="list-disc pl-6 mt-4 space-y-2">
-                <li><strong>Diagnostics et expertises techniques :</strong> analyse des pathologies du bâtiment, identification des causes, préconisations</li>
-                <li><strong>Travaux de stabilisation structurelle :</strong> agrafage de maçonnerie, harpage, matage technique</li>
-                <li><strong>Traitements contre l'humidité :</strong> injection de résine hydrophobe, cuvelage de caves et sous-sols, drainage périphérique, installation de ventilation (VMI/VMC)</li>
-                <li><strong>Travaux de façade :</strong> ravalement, enduit, imperméabilisation, réparation de fissures</li>
+                <li><strong>Diagnostics techniques :</strong> analyse des pathologies du bâtiment (fissures, humidité, désordres apparents), identification des causes, préconisations techniques motivées</li>
+                <li><strong>Maçonnerie et béton armé :</strong> reprise en sous-œuvre, agrafage de maçonnerie, harpage, matage</li>
+                <li><strong>Étanchéité maçonnée :</strong> cuvelage de caves et sous-sols, injection de résine hydrophobe</li>
+                <li><strong>Charpente bois, couverture, menuiseries extérieures, plâtrerie, revêtements</strong></li>
+                <li><strong>Travaux de façade :</strong> ravalement, enduit, imperméabilisation</li>
               </ul>
+              <p className="mt-4">
+                <strong>2.4.</strong> Lorsqu'un projet nécessite une note de calcul opposable (Eurocodes,
+                dimensionnement structure), Bâti Halli travaille en partenariat avec un bureau d'études
+                structure indépendant qui rédige et co-signe l'étude technique sous sa propre responsabilité
+                civile professionnelle et décennale études. Cette intervention est précisée au devis.
+              </p>
               <p className="mt-4">
                 <strong>2.2.</strong> Les présentes CGV s'appliquent à toutes les prestations conclues par le 
                 Prestataire auprès des Clients, quelles que soient les clauses pouvant figurer sur les documents 
@@ -190,16 +198,23 @@ export default function CGVPage() {
 
               <p><strong>3.1. Nature de la prestation</strong></p>
               <p className="mt-2">
-                Le diagnostic expert sur site comprend :
+                Le diagnostic technique sur site comprend :
               </p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
                 <li>Une visite technique d'une durée approximative de 1h30 à 2h00</li>
-                <li>L'utilisation d'instruments de mesure professionnels (fissuromètre optique, hygromètre à pointe, 
+                <li>L'utilisation d'instruments de mesure professionnels (fissuromètre optique, hygromètre à pointe,
                     niveau laser, caméra thermique le cas échéant)</li>
                 <li>Un relevé photographique des désordres constatés</li>
-                <li>Un rapport d'expertise écrit comportant l'analyse technique et les préconisations</li>
+                <li>Un rapport technique écrit comportant l'analyse, les préconisations motivées et les hypothèses retenues</li>
                 <li>Un devis détaillé pour les travaux éventuellement préconisés</li>
               </ul>
+              <p className="mt-3 text-sm text-ipb-muted">
+                Le rapport est un document technique établi par Bâti Halli dans le cadre de son activité
+                d'entreprise du bâtiment. Il ne constitue pas un rapport d'expertise judiciaire au sens de
+                l'article 232 du Code de procédure civile, qui requiert la désignation d'un expert près
+                les tribunaux. Pour une note de calcul opposable (dimensionnement Eurocodes), Bâti Halli
+                fait intervenir son bureau d'études structure partenaire.
+              </p>
 
               <p className="mt-4"><strong>3.2. Tarification et nature de l'acompte</strong></p>
               <div className="mt-2 bg-green-50 border border-green-200 rounded-xl p-4">
@@ -334,7 +349,7 @@ export default function CGVPage() {
                 <li>Virement bancaire (IBAN communiqué sur facture)</li>
                 <li>Chèque à l'ordre de Bâti Halli</li>
                 <li>Carte bancaire (via lien de paiement sécurisé)</li>
-                <li>Espèces (dans la limite légale de 1 000€ pour les particuliers)</li>
+                <li>Espèces (dans la limite légale prévue par l'article L112-6 du Code monétaire et financier)</li>
               </ul>
 
               <p className="mt-4"><strong>6.3. Retard de paiement</strong></p>
@@ -381,7 +396,7 @@ export default function CGVPage() {
                 annexé) à l'adresse suivante :
               </p>
               <p className="mt-2 bg-ipb-stone p-3 rounded-lg">
-                Bâti Halli - IPB<br />
+                Bâti Halli — IPB<br />
                 54 avenue Jean Jaurès, 31170 Tournefeuille<br />
                 Email : <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange">contact@ipb-expertise.fr</a>
               </p>
@@ -530,13 +545,14 @@ export default function CGVPage() {
                   </h3>
                   <p className="text-orange-800">
                     <strong>Durée : 10 ans</strong> à compter de la réception.<br />
-                    Le Prestataire est responsable de plein droit des dommages, même résultant d'un vice du sol, 
-                    qui compromettent la solidité de l'ouvrage ou qui, l'affectant dans l'un de ses éléments 
+                    Le Prestataire est responsable de plein droit des dommages, même résultant d'un vice du sol,
+                    qui compromettent la solidité de l'ouvrage ou qui, l'affectant dans l'un de ses éléments
                     constitutifs ou d'équipement, le rendent impropre à sa destination.
                   </p>
                   <p className="text-orange-800 mt-3">
-                    <strong>Travaux couverts :</strong> agrafage, harpage, matage technique, injection résine 
-                    hydrophobe, cuvelage, reprise en sous-œuvre.
+                    <strong>Travaux couverts :</strong> selon les activités souscrites au contrat AXA France IARD
+                    n° 0000022511730204 — maçonnerie et béton armé, charpente et structure bois, couverture,
+                    menuiseries extérieures, plâtrerie, revêtements de surfaces et sols coulés.
                   </p>
                 </div>
               </div>
@@ -549,21 +565,36 @@ export default function CGVPage() {
                 Article 12 - Assurances
               </h2>
               <p>
-                <strong>12.1.</strong> Le Prestataire déclare être titulaire d'une assurance responsabilité 
-                civile décennale conforme aux dispositions de l'article L. 241-1 du Code des assurances.
+                <strong>12.1.</strong> Le Prestataire déclare être titulaire d'une assurance responsabilité
+                civile décennale conforme aux dispositions de l'article L. 241-1 du Code des assurances :
+                AXA France IARD, contrat Construction BATISSUR n° 0000022511730204, souscrit auprès de
+                l'intermédiaire Perenne Assurance (ORIAS 21 001 630).
               </p>
               <p className="mt-4">
-                <strong>12.2.</strong> Le Prestataire déclare également être titulaire d'une assurance 
-                responsabilité civile professionnelle couvrant les dommages corporels, matériels et 
-                immatériels causés aux tiers.
+                <strong>12.2.</strong> Le contrat couvre les activités suivantes : maçonnerie et béton armé,
+                charpente et structure bois, couverture, menuiseries extérieures, plâtrerie/staff/stuc/gyperie,
+                revêtements de surfaces en matériaux durs, chapes et sols coulés.
               </p>
               <p className="mt-4">
-                <strong>12.3.</strong> Sur demande du Client, une attestation d'assurance sera fournie 
-                préalablement au commencement des travaux, conformément à l'article L. 243-2 du Code des assurances.
+                <strong>12.3.</strong> Le Prestataire déclare également être titulaire de garanties de
+                responsabilité civile de l'entreprise au titre du même contrat, couvrant les dommages
+                corporels, matériels et immatériels causés aux tiers avant et après réception, dans les
+                limites et conditions du contrat.
               </p>
               <p className="mt-4">
-                <strong>12.4.</strong> Le Client est informé de l'intérêt de souscrire une assurance dommages-ouvrage 
-                (articles L. 242-1 et suivants du Code des assurances) pour les travaux de gros œuvre.
+                <strong>12.4.</strong> Lorsqu'un projet nécessite une note de calcul opposable, l'étude
+                technique est rédigée et co-signée par le bureau d'études structure partenaire de Bâti Halli,
+                lequel intervient sous sa propre responsabilité civile professionnelle et décennale études.
+              </p>
+              <p className="mt-4">
+                <strong>12.5.</strong> Sur demande du Client, l'attestation d'assurance en cours de validité
+                est transmise préalablement au commencement des travaux, conformément à l'article L. 243-2
+                du Code des assurances.
+              </p>
+              <p className="mt-4">
+                <strong>12.6.</strong> Le Client est informé de l'intérêt de souscrire une assurance
+                dommages-ouvrage (articles L. 242-1 et suivants du Code des assurances) pour les travaux
+                de gros œuvre.
               </p>
             </section>
 
@@ -645,25 +676,25 @@ export default function CGVPage() {
               </p>
               <p className="mt-4">
                 <strong>16.2. Règlement amiable</strong><br />
-                En cas de litige, les parties s'engagent à rechercher une solution amiable avant toute 
+                En cas de litige, les parties s'engagent à rechercher une solution amiable avant toute
                 action judiciaire. Le Client peut adresser ses réclamations à :<br />
-                <span className="text-sm">Bâti Halli - IPB, 54 avenue Jean Jaurès, 31170 Tournefeuille<br />
+                <span className="text-sm">Bâti Halli — IPB, 54 avenue Jean Jaurès, 31170 Tournefeuille<br />
                 Email : <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange">contact@ipb-expertise.fr</a></span>
               </p>
               
               <div className="mt-6 bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
                 <p className="font-bold text-ipb-text mb-3">16.3. Médiation de la consommation</p>
                 <p className="text-ipb-text mb-3">
-                  Conformément aux articles L. 612-1 et suivants du Code de la consommation, le Client 
-                  consommateur peut recourir gratuitement au médiateur de la consommation suivant :
+                  Conformément aux articles L. 612-1 et suivants du Code de la consommation, le Client
+                  consommateur peut, après réclamation écrite préalable restée infructueuse, recourir
+                  gratuitement à un médiateur de la consommation. La liste des médiateurs agréés est
+                  consultable sur le site officiel{' '}
+                  <a href="https://www.economie.gouv.fr/mediation-conso" target="_blank" rel="noopener noreferrer"
+                     className="text-ipb-orange hover:underline">economie.gouv.fr/mediation-conso</a>.
                 </p>
-                <p className="font-bold text-ipb-text">
-                  CNPM - MÉDIATION DE LA CONSOMMATION<br />
-                  <span className="font-normal text-ipb-text">
-                    27 avenue de la Libération, 42400 Saint-Chamond<br />
-                    <a href="https://www.cnpm-mediation-consommation.eu" target="_blank" rel="noopener noreferrer" 
-                       className="text-ipb-orange hover:underline">www.cnpm-mediation-consommation.eu</a>
-                  </span>
+                <p className="text-sm text-ipb-muted">
+                  Toute réclamation préalable doit être adressée à Bâti Halli par courrier ou email
+                  aux coordonnées indiquées à l'article 1.
                 </p>
               </div>
 
@@ -714,7 +745,7 @@ export default function CGVPage() {
             </p>
             <div className="bg-white p-4 rounded-lg border border-ipb-rule text-sm">
               <p className="mb-3">À l'attention de :<br />
-              <strong>Bâti Halli - IPB</strong><br />
+              <strong>Bâti Halli — IPB</strong><br />
               54 avenue Jean Jaurès, 31170 Tournefeuille<br />
               Email : contact@ipb-expertise.fr</p>
               

@@ -13,48 +13,50 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
-  title: 'Ludovic D., fondateur IPB · Ingénieur structure Toulouse',
-  description: "Ludovic D., ingénieur structure et fondateur d'IPB. 850 chantiers depuis 2019 en Occitanie. Décennale AXA. ☎ 05 82 95 33 75",
-  keywords: ['institut pathologie bâtiment toulouse', 'expert fissures toulouse', "Ludovic IPB", 'ingénieur structure toulouse', "expertise bâtiment Haute-Garonne"],
+  title: "L'institut IPB · Diagnostic et travaux structure Toulouse",
+  description: "L'institut IPB : équipe expérimentée en pathologie et structure du bâtiment. 850 chantiers en Occitanie depuis 2019. Décennale AXA. ☎ 05 82 95 33 75",
+  keywords: ['institut pathologie bâtiment toulouse', 'expert fissures toulouse', 'expertise structure toulouse', "expertise bâtiment Haute-Garonne"],
   alternates: { canonical: 'https://www.ipb-expertise.fr/notre-expert' },
   openGraph: {
-    title: 'Ludovic D., fondateur IPB · Ingénieur structure Toulouse',
-    description: "Ingénieur structure, fondateur d'IPB. 850 chantiers depuis 2019 en Occitanie. Décennale AXA.",
+    title: "L'institut IPB · Diagnostic et travaux structure Toulouse",
+    description: "Équipe expérimentée en pathologie et structure du bâtiment. 850 chantiers en Occitanie depuis 2019. Décennale AXA.",
     url: 'https://www.ipb-expertise.fr/notre-expert',
-    type: 'profile',
+    type: 'website',
   },
 };
 
-const personSchema = {
+const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Ludovic D.",
-  "jobTitle": "Fondateur · Ingénieur structure",
-  "worksFor": {
-    "@type": "Organization",
-    "name": "IPB - Institut de Pathologie du Bâtiment",
-    "url": "https://www.ipb-expertise.fr",
-  },
-  "image": "https://www.ipb-expertise.fr/images/ludovic-expert-ipb.webp",
-  "description": "Ingénieur structure spécialisé en diagnostic de fissures et ouverture de mur porteur. 15 ans d'expérience dans le bâtiment, 850 chantiers livrés en Occitanie depuis la création d'IPB en 2019.",
+  "@type": "Organization",
+  "name": "IPB — Institut de Pathologie du Bâtiment",
+  "url": "https://www.ipb-expertise.fr",
+  "logo": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
+  "foundingDate": "2019",
+  "description": "Institut spécialisé en pathologie et structure du bâtiment. Diagnostic et travaux sous garantie décennale AXA. Études techniques co-signées par notre bureau d'études structure partenaire.",
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "Haute-Garonne" },
+    { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne" },
+    { "@type": "AdministrativeArea", "name": "Gers" },
+    { "@type": "AdministrativeArea", "name": "Tarn" },
+  ],
 };
 
 const certifications = [
-  { name: 'Diplôme d\'ingénieur structure', detail: '15 ans de pratique en bâtiment' },
-  { name: 'Garantie décennale active', detail: 'AXA France IARD · Police active depuis 2019' },
-  { name: 'Responsabilité civile professionnelle', detail: 'AXA France · Étendue à toute la mission' },
+  { name: 'Garantie décennale active', detail: 'AXA France IARD — Construction BATISSUR · Police active depuis 2019' },
+  { name: 'Responsabilité civile de l\'entreprise', detail: 'Étendue à toute la mission, avant et après réception des travaux' },
+  { name: 'Bureau d\'études structure partenaire', detail: 'Notes de calcul opposables co-signées sous décennale études dédiée' },
 ];
 
 const valeurs = [
-  { titre: "Indépendance", desc: "Aucun partenariat avec un fabricant. Le diagnostic guide la solution, jamais l'inverse." },
-  { titre: "Continuité", desc: "L'étude technique et les travaux sont réalisés par le même institut. Une seule responsabilité, une seule garantie." },
-  { titre: "Documentation", desc: "Chaque intervention est documentée : photos, mesures, plans, attestations. Le dossier est à vous à la livraison." },
+  { titre: "Continuité", desc: "Le diagnostic, les préconisations et les travaux sont portés par la même équipe. Une seule responsabilité, une seule décennale." },
+  { titre: "Sobriété", desc: "Nous décrivons ce que nous voyons, nous expliquons ce qu'il faut faire — sans surinvestir le vocabulaire. Si rien n'est urgent, nous le disons." },
+  { titre: "Documentation", desc: "Chaque intervention est documentée : photos, mesures, plans, attestations. Le dossier complet est remis au client à la livraison." },
 ];
 
-export default function NotreExpertPage() {
+export default function NotreInstitutPage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
-      <Script id="person-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />
+      <Script id="organization-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
 
       <TopBar />
       <Navbar />
@@ -67,8 +69,8 @@ export default function NotreExpertPage() {
             <RevealOnScroll direction="left">
               <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
                 <Image
-                  src="/images/ludovic-expert-ipb.webp"
-                  alt="Ludovic D., fondateur de l’institut IPB Expertise et ingénieur structure"
+                  src="/images/chantier-ouverture-mur-porteur.webp"
+                  alt="Chantier IPB — ouverture de mur porteur en cours, étaiement et pose de poutre"
                   fill
                   sizes="(max-width: 1024px) 100vw, 500px"
                   className="object-cover"
@@ -79,7 +81,7 @@ export default function NotreExpertPage() {
 
             <div>
               <RevealOnScroll delay={0.06}>
-                <Eyebrow>L’institut</Eyebrow>
+                <Eyebrow>L'institut</Eyebrow>
                 <h1
                   className="font-serif text-ipb-text mb-8"
                   style={{
@@ -89,16 +91,19 @@ export default function NotreExpertPage() {
                     fontWeight: 700,
                   }}
                 >
-                  Ludovic D., ingénieur structure.<br />
-                  <em>Fondateur de l'institut IPB.</em>
+                  L'institut IPB.<br />
+                  <em>Une équipe, une décennale, sept ans de bâti d'Occitanie.</em>
                 </h1>
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-6">
-                  J'ai créé IPB en 2019 après quinze ans passés sur des chantiers de bâtiment et en bureau d'études. L'idée était simple : faire le diagnostic et les travaux dans le même institut, sans renvoyer le client d'un prestataire à l'autre, et sans vendre une solution préconçue.
+                  L'institut a été fondé en 2019 sur une intuition simple : faire le diagnostic et les travaux dans la même main. Ne pas renvoyer le client d'un prestataire à l'autre. Ne pas vendre une solution préconçue.
+                </p>
+                <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-6">
+                  Sept ans plus tard, l'équipe est expérimentée, la décennale AXA est active, et 850 chantiers ont été signés en Haute-Garonne, dans le Tarn-et-Garonne, le Gers et le Tarn. Nous traitons en moyenne soixante-dix dossiers par an : diagnostic de fissures, ouverture de mur porteur, expertise avant achat.
                 </p>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10">
-                  Aujourd'hui, nous sommes huit. L'équipe travaille en Haute-Garonne, dans le Tarn-et-Garonne, le Gers et le Tarn. Nous traitons en moyenne soixante-dix dossiers par an — diagnostic de fissures, ouverture de mur porteur, expertises avant achat. Chaque chantier est documenté, signé, garanti.
+                  Lorsqu'un projet exige une note de calcul opposable, nous travaillons avec un bureau d'études structure partenaire qui co-signe l'étude sous sa propre décennale études. Le reste — diagnostic, pose, finitions — nous le portons.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>
@@ -122,7 +127,7 @@ export default function NotreExpertPage() {
               {[
                 { value: 2019, label: 'Année de création', sublabel: '7 ans d\'activité' },
                 { value: 850, suffix: '+', label: 'Chantiers livrés', sublabel: 'Occitanie' },
-                { value: 8, label: 'Effectif', sublabel: 'Étude + travaux' },
+                { value: 4, label: 'Départements', sublabel: '31 · 82 · 32 · 81' },
                 { value: 4.9, decimals: 1, suffix: '/5', label: 'Avis Google', sublabel: 'Vérifiés sur Google' },
               ].map((s, i) => (
                 <RevealOnScroll key={s.label} delay={i * 0.06}>
@@ -185,7 +190,7 @@ export default function NotreExpertPage() {
                   Des assurances actives,<br /><em>vérifiables.</em>
                 </h2>
                 <p className="mt-6 text-[14px] leading-[1.85] font-light text-white/75">
-                  Notre attestation décennale et notre RCP sont remises sur simple demande, avec le devis. Vous pouvez les transmettre à votre notaire, votre assureur ou votre conseil avant tout engagement.
+                  L'attestation décennale et la responsabilité civile sont remises sur simple demande, avec le devis. Vous pouvez les transmettre à votre notaire, votre assureur ou votre conseil avant tout engagement.
                 </p>
                 <Link
                   href="/contact"

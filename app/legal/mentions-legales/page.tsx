@@ -90,20 +90,20 @@ export default function MentionsLegalesPage() {
               <div className="bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
                 <dl className="space-y-3">
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-ipb-text sm:w-48">Dénomination sociale :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-48">Dénomination :</dt>
                     <dd>Bâti Halli</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-ipb-text sm:w-48">Nom commercial :</dt>
-                    <dd>IPB - Institut de Pathologie du Bâtiment</dd>
-                  </div>
-                  <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-ipb-text sm:w-48">Forme juridique :</dt>
-                    <dd>Société à Responsabilité Limitée (SARL) au capital de 1 000 €</dd>
+                    <dd>Entreprise Individuelle (EI)</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-ipb-text sm:w-48">Siège social :</dt>
-                    <dd>13 rue du Recteur Dottin, 31100 Toulouse, France <em>(domiciliation administrative)</em></dd>
+                    <dt className="font-bold text-ipb-text sm:w-48">Enseignes commerciales :</dt>
+                    <dd>IPB · Institut de Pathologie du Bâtiment</dd>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:gap-4">
+                    <dt className="font-bold text-ipb-text sm:w-48">Adresse de l'entreprise :</dt>
+                    <dd>13 rue du Recteur Dottin, 31100 Toulouse, France</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-ipb-text sm:w-48">Adresse d'exercice :</dt>
@@ -118,12 +118,12 @@ export default function MentionsLegalesPage() {
                     <dd>398 185 421</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-ipb-text sm:w-48">Code APE/NAF :</dt>
-                    <dd>4399C - Travaux de maçonnerie générale et gros œuvre de bâtiment</dd>
+                    <dt className="font-bold text-ipb-text sm:w-48">Immatriculation :</dt>
+                    <dd>Inscrite au Registre National des Entreprises (RNE)</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-ipb-text sm:w-48">RCS :</dt>
-                    <dd>Toulouse B 398 185 421</dd>
+                    <dt className="font-bold text-ipb-text sm:w-48">Code APE/NAF :</dt>
+                    <dd>4399C — Autres travaux spécialisés de construction</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-ipb-text sm:w-48">N° TVA intracommunautaire :</dt>
@@ -140,11 +140,11 @@ export default function MentionsLegalesPage() {
                 2. Directeur de la publication
               </h2>
               <p>
-                Le directeur de la publication du site internet <strong>www.ipb-expertise.fr</strong> est 
-                le représentant légal de la société Bâti Halli, en sa qualité de gérant.
+                Le directeur de la publication du site internet <strong>www.ipb-expertise.fr</strong> est
+                le représentant légal de Bâti Halli.
               </p>
               <p className="mt-4">
-                Conformément à l'article 93-2 de la loi n° 82-652 du 29 juillet 1982, le directeur de la 
+                Conformément à l'article 93-2 de la loi n° 82-652 du 29 juillet 1982, le directeur de la
                 publication assume la responsabilité éditoriale de l'ensemble des contenus publiés sur ce site.
               </p>
             </section>
@@ -227,21 +227,25 @@ export default function MentionsLegalesPage() {
                 5. Activité professionnelle et qualifications
               </h2>
               <p>
-                La société Bâti Halli, exerçant sous l'enseigne IPB (Institut de Pathologie du Bâtiment), 
-                est spécialisée dans :
+                Bâti Halli, exerçant sous les enseignes commerciales IPB et Institut de Pathologie du Bâtiment,
+                exerce les activités suivantes :
               </p>
               <ul className="list-disc pl-6 mt-4 space-y-2">
-                <li><strong>Le diagnostic et l'expertise</strong> des pathologies du bâtiment (fissures, humidité, désordres structurels)</li>
-                <li><strong>Les travaux de stabilisation structurelle</strong> : agrafage de maçonnerie, harpage, matage technique</li>
-                <li><strong>Les traitements contre l'humidité</strong> : injection de résine hydrophobe, cuvelage, drainage, ventilation</li>
-                <li><strong>La rénovation de façades</strong> : ravalement, enduit, imperméabilisation</li>
+                <li><strong>Diagnostic technique et évaluation</strong> des pathologies du bâtiment (fissures, humidité, désordres apparents)</li>
+                <li><strong>Maçonnerie et béton armé</strong> : reprise en sous-œuvre, agrafage de maçonnerie, harpage, matage</li>
+                <li><strong>Étanchéité maçonnée</strong> : cuvelage, injection de résine hydrophobe</li>
+                <li><strong>Charpente bois, couverture, menuiseries extérieures</strong></li>
+                <li><strong>Plâtrerie, revêtements et finitions</strong></li>
               </ul>
               <div className="mt-6 bg-blue-50 border-l-4 border-blue-600 p-4 rounded-r-lg">
                 <p className="font-bold text-blue-900 mb-2">Qualifications professionnelles</p>
                 <p className="text-blue-800">
-                  L'entreprise est qualifiée pour l'exercice des métiers du bâtiment conformément aux 
-                  dispositions de la loi n° 96-603 du 5 juillet 1996 relative au développement et à la 
-                  promotion du commerce et de l'artisanat.
+                  L'entreprise est qualifiée pour l'exercice des métiers du bâtiment conformément aux
+                  dispositions de la loi n° 96-603 du 5 juillet 1996 relative au développement et à la
+                  promotion du commerce et de l'artisanat. Pour les études de structure et notes de calcul
+                  opposables (dimensionnement Eurocodes), Bâti Halli travaille en partenariat avec un
+                  bureau d'études structure indépendant, qui co-signe l'étude technique sous sa propre
+                  responsabilité civile professionnelle et décennale études.
                 </p>
               </div>
             </section>
@@ -257,22 +261,30 @@ export default function MentionsLegalesPage() {
                 <div className="bg-green-50 border border-green-200 rounded-xl p-6">
                   <h3 className="font-bold text-green-900 mb-3">Garantie Décennale</h3>
                   <p className="text-green-800 mb-4">
-                    Conformément à l'article L. 241-1 du Code des assurances et aux articles 1792 et suivants 
-                    du Code civil, la société Bâti Halli est couverte par une assurance de responsabilité civile 
-                    décennale pour l'ensemble de ses travaux de construction.
+                    Conformément à l'article L. 241-1 du Code des assurances et aux articles 1792 et suivants
+                    du Code civil, Bâti Halli est titulaire d'une assurance de responsabilité civile décennale
+                    pour l'ensemble de ses travaux de construction soumis à l'obligation d'assurance.
                   </p>
                   <dl className="space-y-2 text-sm">
                     <div className="flex flex-col sm:flex-row sm:gap-4">
                       <dt className="font-bold text-green-900 sm:w-40">Assureur :</dt>
-                      <dd className="text-green-800">AXA France — Contrat n° 0000022511730204</dd>
+                      <dd className="text-green-800">AXA France IARD — produit Construction BATISSUR</dd>
                     </div>
                     <div className="flex flex-col sm:flex-row sm:gap-4">
-                      <dt className="font-bold text-green-900 sm:w-40">Couverture :</dt>
-                      <dd className="text-green-800">Travaux d'agrafage, harpage, injection résine, cuvelage, reprise en sous-œuvre</dd>
+                      <dt className="font-bold text-green-900 sm:w-40">N° de contrat :</dt>
+                      <dd className="text-green-800">0000022511730204</dd>
+                    </div>
+                    <div className="flex flex-col sm:flex-row sm:gap-4">
+                      <dt className="font-bold text-green-900 sm:w-40">Intermédiaire :</dt>
+                      <dd className="text-green-800">Perenne Assurance (ORIAS 21 001 630)</dd>
+                    </div>
+                    <div className="flex flex-col sm:flex-row sm:gap-4">
+                      <dt className="font-bold text-green-900 sm:w-40">Activités couvertes :</dt>
+                      <dd className="text-green-800">Maçonnerie et béton armé · charpente et structure bois · couverture · menuiseries extérieures · plâtrerie, staff, stuc, gyperie · revêtements de surfaces en matériaux durs, chapes et sols coulés</dd>
                     </div>
                     <div className="flex flex-col sm:flex-row sm:gap-4">
                       <dt className="font-bold text-green-900 sm:w-40">Zone géographique :</dt>
-                      <dd className="text-green-800">France métropolitaine</dd>
+                      <dd className="text-green-800">France métropolitaine et départements d'outre-mer</dd>
                     </div>
                   </dl>
                 </div>
@@ -280,15 +292,16 @@ export default function MentionsLegalesPage() {
                 <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
                   <h3 className="font-bold text-blue-900 mb-3">Responsabilité Civile Professionnelle (RC Pro)</h3>
                   <p className="text-blue-800">
-                    La société dispose d'une assurance responsabilité civile professionnelle couvrant les 
-                    dommages corporels, matériels et immatériels causés aux tiers dans le cadre de son activité.
+                    Bâti Halli dispose d'une assurance responsabilité civile de l'entreprise couvrant les
+                    dommages corporels, matériels et immatériels causés aux tiers avant et après réception
+                    des travaux, dans les limites et conditions du contrat AXA France IARD susmentionné.
                   </p>
                 </div>
               </div>
 
               <p className="mt-4 text-sm text-ipb-muted">
-                Sur simple demande, une attestation d'assurance peut être fournie au client préalablement 
-                à toute intervention.
+                Sur simple demande, l'attestation d'assurance en cours de validité est transmise au client
+                préalablement à toute intervention.
               </p>
             </section>
 
@@ -347,7 +360,7 @@ export default function MentionsLegalesPage() {
               <div className="mt-6 space-y-4">
                 <div className="bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
                   <h3 className="font-bold text-ipb-text mb-3">Responsable du traitement</h3>
-                  <p>Bâti Halli, représentée par son gérant</p>
+                  <p>Bâti Halli, représentée par son représentant légal</p>
                   <p>54 avenue Jean Jaurès, 31170 Tournefeuille</p>
                   <p>Email : <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange hover:underline">contact@ipb-expertise.fr</a></p>
                 </div>
@@ -498,25 +511,20 @@ export default function MentionsLegalesPage() {
               </p>
 
               <p className="mt-4">
-                En cas de litige relatif à l'interprétation ou l'exécution des présentes, les parties 
-                s'efforceront de trouver une solution amiable. À défaut, le litige sera porté devant 
-                les tribunaux compétents du ressort du siège social de Bâti Halli.
+                En cas de litige relatif à l'interprétation ou l'exécution des présentes, les parties
+                s'efforceront de trouver une solution amiable. À défaut, le litige sera porté devant
+                les tribunaux compétents du ressort de l'adresse de Bâti Halli.
               </p>
 
               <div className="mt-6 bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
                 <h3 className="font-bold text-ipb-text mb-3">Médiation de la consommation</h3>
                 <p className="text-ipb-text">
-                  Conformément aux articles L. 612-1 et suivants du Code de la consommation, en cas de 
-                  litige non résolu, le consommateur peut recourir gratuitement à un médiateur de la 
-                  consommation. Le médiateur compétent est :
-                </p>
-                <p className="mt-3 font-bold text-ipb-text">
-                  CNPM - MÉDIATION DE LA CONSOMMATION<br />
-                  <span className="font-normal text-ipb-text">
-                    27 avenue de la Libération, 42400 Saint-Chamond<br />
-                    <a href="https://www.cnpm-mediation-consommation.eu" target="_blank" rel="noopener noreferrer" 
-                       className="text-ipb-orange hover:underline">www.cnpm-mediation-consommation.eu</a>
-                  </span>
+                  Conformément aux articles L. 612-1 et suivants du Code de la consommation, en cas de
+                  litige non résolu après réclamation écrite préalable, le consommateur peut recourir
+                  gratuitement à un médiateur de la consommation. La liste des médiateurs agréés est
+                  consultable sur le site officiel{' '}
+                  <a href="https://www.economie.gouv.fr/mediation-conso" target="_blank" rel="noopener noreferrer"
+                     className="text-ipb-orange hover:underline">economie.gouv.fr/mediation-conso</a>.
                 </p>
               </div>
 

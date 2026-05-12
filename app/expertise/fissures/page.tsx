@@ -39,7 +39,7 @@ import { ExpertiseFissuresBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
   title: 'Diagnostic et Traitement Fissures · Toulouse · AXA',
-  description: "Diagnostic instrumenté, agrafage structurel. Rapport opposable assurance. Décennale AXA. Toulouse, Montauban. ☎ 05 82 95 33 75",
+  description: "Diagnostic instrumenté, agrafage structurel. Rapport technique reconnu par les assurances. Décennale AXA. Toulouse, Montauban. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures toulouse',
     'expertise fissure toulouse',
@@ -60,7 +60,7 @@ export const metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/fissures' },
   openGraph: {
     title: 'Diagnostic et Traitement Fissures · Toulouse · IPB',
-    description: "Diagnostic instrumenté, agrafage structurel. Rapport opposable assurance. Décennale AXA.",
+    description: "Diagnostic instrumenté, agrafage structurel. Rapport technique reconnu par les assurances. Décennale AXA.",
     url: 'https://www.ipb-expertise.fr/expertise/fissures',
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
     locale: 'fr_FR',
@@ -343,7 +343,7 @@ export default function FissuresPage() {
                 <ul className="space-y-8">
                   {[
                     { titre: 'Diagnostic sur site', desc: 'Visite par notre expert sous 72 heures en moyenne. Mesure au fissuromètre, lecture du bâti, identification de la cause (sécheresse, tassement, défaut de chaînage).' },
-                    { titre: 'Rapport opposable', desc: 'Document écrit reconnu par les assurances et les tribunaux. Photos, mesures, cause identifiée, préconisations chiffrées.' },
+                    { titre: 'Rapport technique', desc: "Document écrit reconnu comme pièce technique par les assurances dans les dossiers CAT-NAT. Photos, mesures, cause identifiée, préconisations chiffrées." },
                     { titre: 'Choix de la solution', desc: "Agrafage structurel pour stabiliser le mur — solution adaptée à 90 % des cas. Pour les rares tassements actifs nécessitant une reprise en sous-œuvre, orientation vers un partenaire spécialisé. Le choix dépend du diagnostic, jamais d'une solution préconçue." },
                     { titre: 'Travaux par nos équipes', desc: 'Exécution sous garantie décennale AXA. Chantier propre, dans les délais annoncés. Tous les documents vous sont remis à la livraison.' },
                   ].map((etape, i) => (
@@ -427,7 +427,7 @@ export default function FissuresPage() {
                 Le diagnostic en ligne ne vous engage à rien.
               </p>
               <p className="text-[15px] leading-[1.85] font-light text-ipb-muted">
-                Vous obtenez un premier avis d'un ingénieur structure, gratuitement. <strong className="text-ipb-text not-italic">Si la situation ne nécessite pas d'intervention, on vous le dira</strong> — c'est l'engagement de l'institut. Mieux vaut un avis juste qu'un devis vendu.
+                Vous obtenez un premier avis de notre expert structure, gratuitement. <strong className="text-ipb-text not-italic">Si la situation ne nécessite pas d'intervention, on vous le dira</strong> — c'est l'engagement de l'institut. Mieux vaut un avis juste qu'un devis vendu.
               </p>
             </RevealOnScroll>
           </div>

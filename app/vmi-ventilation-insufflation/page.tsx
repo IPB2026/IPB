@@ -8,7 +8,7 @@ import { Phone, ArrowRight, Wind, ChevronRight, Shield, CheckCircle, XCircle, Th
 
 export const metadata: Metadata = {
   title: 'VMI Ventilation Insufflation · Prix 2500-4500€ Toulouse',
-  description: "VMI : solution anti-condensation et moisissures. Prix 2500-4500€ installée. Installateur Toulouse, Montauban. ☎ 05 82 95 33 75",
+  description: "VMI : solution anti-condensation et moisissures. Prix 2500-4500€ installée par notre installateur fluides partenaire à Toulouse, Montauban. ☎ 05 82 95 33 75",
   keywords: ['VMI', 'ventilation insufflation', 'anti condensation', 'VMI prix', 'VMI vs VMC'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/vmi-ventilation-insufflation' },
 };
@@ -68,9 +68,12 @@ export default function VMIPage() {
               </h1>
 
               <p className="text-xl text-teal-100 mb-8 leading-relaxed max-w-xl">
-                La VMI insuffle de l'air filtré et préchauffé dans votre maison, créant une 
-                <strong className="text-white"> légère surpression</strong> qui évacue naturellement 
+                La VMI insuffle de l'air filtré et préchauffé dans votre maison, créant une
+                <strong className="text-white"> légère surpression</strong> qui évacue naturellement
                 l'humidité et empêche la condensation. Idéale en rénovation.
+              </p>
+              <p className="text-sm text-teal-100/80 mb-8 max-w-xl">
+                L'installation est réalisée par notre installateur fluides partenaire, sous sa propre garantie d'installation. L'institut IPB porte le diagnostic préalable et la coordination du chantier.
               </p>
 
               <div className="grid grid-cols-3 gap-4 mb-8">
@@ -83,8 +86,8 @@ export default function VMIPage() {
                   <div className="text-xs text-teal-200">chauffage</div>
                 </div>
                 <div className="bg-white/10 backdrop-blur rounded-2xl p-4 text-center">
-                  <div className="text-3xl font-black text-teal-400">10 ans</div>
-                  <div className="text-xs text-teal-200">garantie</div>
+                  <div className="text-3xl font-black text-teal-400">Partenaire</div>
+                  <div className="text-xs text-teal-200">installateur fluides</div>
                 </div>
               </div>
 
