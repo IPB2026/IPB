@@ -73,7 +73,7 @@ export default function VMIPage() {
                 l'humidité et empêche la condensation. Idéale en rénovation.
               </p>
               <p className="text-sm text-teal-100/80 mb-8 max-w-xl">
-                L'installation est réalisée par notre installateur fluides partenaire, sous sa propre garantie d'installation. L'institut IPB porte le diagnostic préalable et la coordination du chantier.
+                Diagnostic préalable et coordination du chantier par l'institut, pose confiée à notre partenaire installateur.
               </p>
 
               <div className="grid grid-cols-3 gap-4 mb-8">

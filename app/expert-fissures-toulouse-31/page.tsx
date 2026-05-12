@@ -14,8 +14,8 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures Toulouse 31 · Diagnostic 48h · AXA',
-  description: "Diagnostic fissures à Toulouse : agrafage structurel, rapport technique reconnu par les assurances. 70 dossiers/an. Décennale AXA. Visite sous 72h. ☎ 05 82 95 33 75",
+  title: 'Expert Fissures Toulouse 31 · Diagnostic 72h · AXA',
+  description: "Diagnostic fissures à Toulouse : agrafage structurel, rapport technique reconnu par les assurances. 70 dossiers fissures par an. Décennale AXA. Visite sous 72h. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures toulouse',
     'expert fissure toulouse',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31' },
   openGraph: {
     title: 'Expert Fissures Toulouse · Décennale AXA · IPB',
-    description: "Diagnostic, agrafage structurel, rapport technique reconnu par les assurances. Décennale AXA. 70 dossiers/an.",
+    description: "Diagnostic, agrafage structurel, rapport technique reconnu par les assurances. Décennale AXA. 70 dossiers fissures par an.",
     url: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31',
     type: 'website',
     images: [{
@@ -80,7 +80,7 @@ const faqItems = [
   },
   {
     question: "Que faire si l'expert d'assurance minimise mes fissures ?",
-    answer: "Votre contrat d'assurance prévoit le plus souvent la possibilité de mandater une contre-expertise à vos frais (à confirmer dans vos conditions générales). Notre rapport technique apporte une seconde lecture documentée : mesures instrumentées, qualification précise des désordres, lien avec un éventuel arrêté CAT-NAT. C'est une pièce que votre conseil ou votre avocat peut verser au dossier en cas de désaccord sur l'évaluation initiale.",
+    answer: "Notre rapport technique apporte une seconde lecture documentée : mesures instrumentées, qualification précise des désordres, lien avec un éventuel arrêté CAT-NAT. C'est une pièce que vous pouvez verser au dossier en cas de désaccord sur l'évaluation initiale.",
   },
   {
     question: "Quelle est la différence entre agrafage et micropieux ?",
@@ -88,7 +88,7 @@ const faqItems = [
   },
   {
     question: "Le rapport peut-il être utilisé devant un tribunal ?",
-    answer: "Un rapport d'expertise au sens judiciaire (art. 232 du Code de procédure civile) ne peut être rédigé que par un expert près les tribunaux. Notre document est un rapport technique d'entreprise du bâtiment : il consigne des mesures instrumentées, qualifie les désordres et formule des préconisations. Il peut être versé au dossier comme pièce technique par votre avocat ou votre conseil dans le cadre d'une procédure amiable, d'un dossier d'assurance ou d'une expertise judiciaire — où il sert d'éclairage aux côtés du rapport de l'expert judiciaire désigné.",
+    answer: "Oui, il sert régulièrement de pièce technique dans les procédures amiables, les dossiers d'assurance et les expertises judiciaires. Il consigne des mesures instrumentées, qualifie les désordres et formule des préconisations chiffrées.",
   },
   {
     question: "Quels sont les délais d'intervention ?",
@@ -199,7 +199,7 @@ export default function ExpertFissuresToulousePage() {
                   </li>
                   <li className="flex items-center gap-1.5">
                     <span className="text-ipb-orange" aria-hidden="true">✓</span>
-                    <span>Réponse sous 48h</span>
+                    <span>Réponse sous 24h ouvrées</span>
                   </li>
                   <li className="flex items-center gap-1.5">
                     <span className="text-ipb-orange" aria-hidden="true">✓</span>
@@ -354,8 +354,8 @@ export default function ExpertFissuresToulousePage() {
                   },
                   {
                     titre: 'Notre ingénieur vous rappelle',
-                    detail: 'Sous 48h ouvrées, premier avis téléphonique : ce que nous lisons dans vos descriptions, urgent ou non, démarches assurance possibles. Souvent ce premier échange suffit à vous rassurer.',
-                    delai: 'Étape 2 · Sous 48h',
+                    detail: 'Sous 24h ouvrées, premier avis téléphonique : ce que nous lisons dans vos descriptions, urgent ou non, démarches assurance possibles. Souvent ce premier échange suffit à vous rassurer.',
+                    delai: 'Étape 2 · Sous 24h',
                   },
                   {
                     titre: 'Visite expert sur site',

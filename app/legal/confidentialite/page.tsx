@@ -47,8 +47,8 @@ export default function ConfidentialitePage() {
                 <p><strong>Dénomination :</strong> Bâti Halli</p>
                 <p><strong>Forme juridique :</strong> Entreprise Individuelle (EI)</p>
                 <p><strong>Enseignes commerciales :</strong> IPB · Institut de Pathologie du Bâtiment</p>
-                <p><strong>Adresse de l'entreprise :</strong> 13 rue du Recteur Dottin, 31100 Toulouse, France</p>
-                <p><strong>Adresse d'exercice :</strong> 54 avenue Jean Jaurès, 31170 Tournefeuille, France</p>
+                <p><strong>Siège :</strong> 13 rue du Recteur Dottin, Apt 7, 4<sup>e</sup> étage, 31100 Toulouse, France</p>
+                <p><strong>Bureau :</strong> 54 avenue Jean Jaurès, 31170 Tournefeuille, France</p>
                 <p><strong>SIRET :</strong> 398 185 421 00037</p>
                 <p><strong>Email :</strong> <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange hover:text-ipb-orange underline">contact@ipb-expertise.fr</a></p>
                 <p><strong>Téléphone :</strong> <a href="tel:0582953375" className="text-ipb-orange hover:text-ipb-orange underline">05 82 95 33 75</a></p>
