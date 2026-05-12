@@ -100,7 +100,7 @@ export default function NotreInstitutPage() {
                   L'institut a été fondé en 2019 sur une intuition simple : faire le diagnostic et les travaux dans la même main. Ne pas renvoyer le client d'un prestataire à l'autre. Ne pas vendre une solution préconçue.
                 </p>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-6">
-                  Sept ans plus tard, l'équipe est expérimentée, la décennale AXA est active, et 850 chantiers ont été signés en Haute-Garonne, dans le Tarn-et-Garonne, le Gers et le Tarn. Nous traitons en moyenne soixante-dix dossiers par an : diagnostic de fissures, ouverture de mur porteur, expertise avant achat.
+                  Sept ans plus tard, l'équipe est expérimentée, la décennale AXA est active, et 850 chantiers ont été signés en Haute-Garonne, dans le Tarn-et-Garonne, le Gers et le Tarn. L'institut traite en moyenne soixante-dix dossiers fissures par an, en complément des ouvertures de murs porteurs et des expertises avant achat.
                 </p>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10">
                   Lorsqu'un projet exige une note de calcul opposable, nous travaillons avec un bureau d'études structure partenaire qui co-signe l'étude sous sa propre décennale études. Le reste — diagnostic, pose, finitions — nous le portons.

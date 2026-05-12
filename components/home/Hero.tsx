@@ -42,7 +42,7 @@ export function Hero() {
           </h1>
 
           <p className="text-[15px] leading-[1.9] font-light text-ipb-muted max-w-[540px] mb-10">
-            Institut indépendant en structure du bâtiment. Nous diagnostiquons les fissures qui inquiètent, étudions et réalisons les ouvertures de murs porteurs et baies vitrées. Nos rapports sont reconnus par les assurances. Nos travaux sont garantis dix ans.
+            Institut spécialisé en pathologie et structure du bâtiment. Nous diagnostiquons les fissures qui inquiètent, préparons et réalisons les ouvertures de murs porteurs et baies vitrées. Nos rapports sont reconnus par les assurances. Nos travaux sont garantis dix ans.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-12">

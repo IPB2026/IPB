@@ -13,7 +13,7 @@ const etapes = [
   {
     num: '01',
     titre: 'On vient sur place',
-    desc: 'Visite technique sur site en moyenne sous 5 jours. Mesures, photos, échanges directs avec vous.',
+    desc: 'Visite technique sur site sous 72 heures en moyenne. Mesures, photos, échanges directs avec vous.',
   },
   {
     num: '02',
@@ -23,7 +23,7 @@ const etapes = [
   {
     num: '03',
     titre: "On chiffre l'étude",
-    desc: "Calcul technique signé par notre ingénieur, plans, dimensionnement. Devis ferme remis sous 7 jours.",
+    desc: "Rapport technique, plans et dimensionnement. Devis ferme remis sous 3 à 5 jours ouvrés.",
   },
   {
     num: '04',

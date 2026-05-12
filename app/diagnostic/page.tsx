@@ -238,7 +238,7 @@ const expertTips: Record<string, string> = {
   'fissure:SIGNES_ASSOCIES:portes': '⚠️ Des portes qui coincent confirment un mouvement de la structure. C\'est un signe que nous prenons très au sérieux.',
   'fissure:SIGNES_ASSOCIES:carrelage': '⚠️ Un carrelage fissuré au sol indique un mouvement du plancher bas, souvent lié au tassement des fondations.',
   'fissure:SIGNES_ASSOCIES:infiltration': '⚠️ Fissures + infiltrations : la combinaison aggrave les deux problèmes. L\'eau accélère la dégradation structurelle.',
-  'fissure:URGENCE:immediate': '🔴 Nous comprenons votre inquiétude. Nos experts interviennent sous 48-72h pour les situations urgentes.',
+  'fissure:URGENCE:immediate': '🔴 Nous comprenons votre inquiétude. Nous intervenons sous 24 à 72h pour les situations urgentes.',
   'fissure:URGENCE:modere': '💡 Vous avez raison d\'agir maintenant. Plus tôt on traite, moins les travaux sont importants (et coûteux).',
 
   // MUR PORTEUR
@@ -256,9 +256,9 @@ const expertTips: Record<string, string> = {
   'mur-porteur:ETAGE:rdc_plancher': '⚠️ Un mur en RDC avec un étage au-dessus reprend des charges importantes. L\'étude structure est non négociable — la poutre doit être parfaitement dimensionnée.',
   'mur-porteur:ETAGE:rdc_combles': '💡 Sous combles, les charges sont moindres qu\'avec un étage habité. Mais un mur sous ferme ou sous panne reste porteur — à vérifier.',
   'mur-porteur:PLANS:non': '⚠️ Sans plans, nous réalisons un sondage pour identifier les aciers et la nature exacte du mur. C\'est une étape indispensable avant tout devis.',
-  'mur-porteur:PLANS:oui': '✅ Avoir les plans accélère l\'étude structure. Notre ingénieur peut souvent dimensionner la poutre sans déplacement préalable.',
+  'mur-porteur:PLANS:oui': '✅ Avoir les plans accélère l\'étude structure. Notre BE partenaire peut souvent pré-dimensionner la poutre sans déplacement préalable.',
   'mur-porteur:DEVIS_EXISTANT:oui_devis': '⚠️ Un devis d\'artisan sans étude structure est incomplet. Sans note de calcul, l\'artisan ne peut pas garantir le dimensionnement de la poutre.',
-  'mur-porteur:HORIZON:urgent': '💡 Pour les travaux urgents, nous pouvons mobiliser notre ingénieur sous 48h pour l\'étude préalable.',
+  'mur-porteur:HORIZON:urgent': '💡 Pour les travaux urgents, notre BE partenaire peut être mobilisé sous 72h pour l\'étude préalable.',
 };
 
 // Étapes de l'animation d'analyse
@@ -424,8 +424,8 @@ export default function DiagnosticPage() {
           urgencyIcon: '🔴',
           urgencyColor: 'red',
           diagnosis: 'Votre projet implique une grande portée et/ou des charges importantes (étage au-dessus, mur béton). Une étude structure approfondie est indispensable avant tout chantier — c\'est la sécurité de votre bâtiment qui est en jeu.',
-          solution: 'Étude structure complète par notre ingénieur, note de calcul officielle, dimensionnement de la poutre HEB/IPN. Coordination de l\'ensemble du chantier avec étaiement et finitions inclus.',
-          delay: 'Étude sous 48h — travaux sous 3 à 6 semaines',
+          solution: 'Étude structure complète par notre BE partenaire, note de calcul, dimensionnement de la poutre HEB/IPN. Coordination de l\'ensemble du chantier avec étaiement et finitions inclus.',
+          delay: 'Étude sous 7 à 12 jours ouvrés — travaux sous 3 à 6 semaines',
         };
       } else if (score >= 20) {
         return {

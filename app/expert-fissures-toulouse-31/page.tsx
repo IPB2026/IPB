@@ -14,8 +14,8 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures Toulouse 31 · Diagnostic 48h · AXA',
-  description: "Diagnostic fissures à Toulouse : agrafage structurel, rapport technique reconnu par les assurances. 70 dossiers/an. Décennale AXA. Visite sous 72h. ☎ 05 82 95 33 75",
+  title: 'Expert Fissures Toulouse 31 · Diagnostic 72h · AXA',
+  description: "Diagnostic fissures à Toulouse : agrafage structurel, rapport technique reconnu par les assurances. 70 dossiers fissures par an. Décennale AXA. Visite sous 72h. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures toulouse',
     'expert fissure toulouse',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31' },
   openGraph: {
     title: 'Expert Fissures Toulouse · Décennale AXA · IPB',
-    description: "Diagnostic, agrafage structurel, rapport technique reconnu par les assurances. Décennale AXA. 70 dossiers/an.",
+    description: "Diagnostic, agrafage structurel, rapport technique reconnu par les assurances. Décennale AXA. 70 dossiers fissures par an.",
     url: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31',
     type: 'website',
     images: [{
@@ -199,7 +199,7 @@ export default function ExpertFissuresToulousePage() {
                   </li>
                   <li className="flex items-center gap-1.5">
                     <span className="text-ipb-orange" aria-hidden="true">✓</span>
-                    <span>Réponse sous 48h</span>
+                    <span>Réponse sous 24h ouvrées</span>
                   </li>
                   <li className="flex items-center gap-1.5">
                     <span className="text-ipb-orange" aria-hidden="true">✓</span>
@@ -354,8 +354,8 @@ export default function ExpertFissuresToulousePage() {
                   },
                   {
                     titre: 'Notre ingénieur vous rappelle',
-                    detail: 'Sous 48h ouvrées, premier avis téléphonique : ce que nous lisons dans vos descriptions, urgent ou non, démarches assurance possibles. Souvent ce premier échange suffit à vous rassurer.',
-                    delai: 'Étape 2 · Sous 48h',
+                    detail: 'Sous 24h ouvrées, premier avis téléphonique : ce que nous lisons dans vos descriptions, urgent ou non, démarches assurance possibles. Souvent ce premier échange suffit à vous rassurer.',
+                    delai: 'Étape 2 · Sous 24h',
                   },
                   {
                     titre: 'Visite expert sur site',

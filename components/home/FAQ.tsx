@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: "Comment se passe une expertise fissures à Toulouse ?",
-    a: "Notre diagnostic instrumenté complet est réalisé sur site, et déductible des travaux si vous nous confiez ensuite l'intervention. Il inclut le déplacement, les mesures au fissuromètre, l'analyse des causes et un rapport écrit reconnu par les assurances et les tribunaux. Pour le tarif précis selon votre situation, nous vous répondons sous 24 heures.",
+    a: "Notre diagnostic instrumenté complet est réalisé sur site, et déductible des travaux si vous nous confiez ensuite l'intervention. Il inclut le déplacement, les mesures au fissuromètre, l'analyse des causes et un rapport écrit reconnu par les assurances dans les dossiers CAT-NAT. Pour le tarif précis selon votre situation, nous vous répondons sous 24 heures ouvrées.",
   },
   {
     q: "Mon assurance prend-elle en charge les fissures de sécheresse ?",
@@ -43,12 +43,12 @@ const faqs = [
     a: "L'intervention sur site dure 2 à 5 jours. La phase préparatoire (étude technique, démarches administratives, vote en AG si copropriété, commande de la poutre) prend 4 à 8 semaines en amont. Le calendrier complet est fixé avec vous avant le démarrage du chantier.",
   },
   {
-    q: "Pourquoi choisir un institut indépendant plutôt qu'un artisan généraliste ?",
-    a: "Un artisan ne calcule pas la structure — il pose ce qu'on lui dit de poser. Un sous-dimensionnement de poutre se traduit par des fissures, un affaissement du plancher, voire une rupture. Un institut de pathologie du bâtiment regarde, calcule, exécute et garantit l'ensemble. C'est la différence entre une intervention couverte par une décennale active et un risque non assuré.",
+    q: "Pourquoi choisir un institut spécialisé en pathologie du bâtiment ?",
+    a: "Sur un mur porteur ou une fissure structurelle, c'est la continuité entre diagnostic, étude et travaux qui sécurise le résultat. Notre institut porte le diagnostic et les travaux sous décennale AXA active ; la note de calcul opposable est co-signée par notre BE structure partenaire. Vous avez un seul interlocuteur, un seul devis, et un dossier complet remis à la livraison.",
   },
   {
     q: "Vos rapports sont-ils acceptés par les assurances ?",
-    a: "Oui. Nos rapports techniques sont rédigés dans les formes attendues par les assureurs et les tribunaux : photos datées, mesures instrumentées, identification des causes, préconisations chiffrées. Ils servent régulièrement de pièce technique dans les dossiers de catastrophe naturelle, les expertises judiciaires et les recours en garantie décennale.",
+    a: "Oui. Nos rapports techniques sont rédigés dans les formes attendues par les assureurs : photos datées, mesures instrumentées, identification des causes, préconisations chiffrées. Ils servent régulièrement de pièce technique dans les dossiers de catastrophe naturelle et les recours en garantie décennale.",
   },
   {
     q: "Quelles sont vos zones d'intervention ?",
@@ -56,7 +56,7 @@ const faqs = [
   },
   {
     q: "Que se passe-t-il après le chantier ?",
-    a: "Vous recevez un dossier complet : calcul technique signé par notre ingénieur, plans d'exécution, photos avant/après, attestation de garantie décennale active. En cas de désordre dans les 10 ans suivant la livraison, notre responsabilité est engagée et nous intervenons sans frais.",
+    a: "Vous recevez un dossier complet : étude technique, plans d'exécution, photos avant/après, attestation de garantie décennale active. En cas de désordre dans les 10 ans suivant la livraison, notre responsabilité est engagée et nous intervenons sans frais.",
   },
 ];
 
