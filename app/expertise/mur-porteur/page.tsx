@@ -194,7 +194,7 @@ export default function MurPorteurPage() {
               <RevealOnScroll delay={0.18}>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <MagneticButton href="/diagnostic" variant="primary">
-                    Décrire mon projet
+                    Diagnostic gratuit · 2 min
                   </MagneticButton>
                   <a
                     href="tel:0582953375"

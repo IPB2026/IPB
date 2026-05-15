@@ -282,9 +282,14 @@ export default function RemonteeCapillairePage() {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-extrabold mb-6">Vos murs sont humides ?</h2>
           <p className="text-xl text-blue-100 mb-8">Diagnostic sous 48h. Solution garantie 30 ans.</p>
-          <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50">
-            Demander un diagnostic <ArrowRight size={20} />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50">
+              Diagnostic gratuit · 2 min <ArrowRight size={20} />
+            </Link>
+            <a href="tel:0582953375" className="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-xl font-bold text-lg transition-colors">
+              <Phone size={20} /> 05 82 95 33 75
+            </a>
+          </div>
         </div>
       </section>
 

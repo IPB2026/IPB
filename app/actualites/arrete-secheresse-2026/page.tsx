@@ -279,7 +279,7 @@ export default function ArreteSecheresse2026Page() {
               Faites constater les dégâts par un expert indépendant pour renforcer votre dossier.
             </p>
             <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-white text-ipb-orange px-8 py-4 rounded-xl font-bold text-lg hover:bg-ipb-stone">
-              Demander un diagnostic <ArrowRight size={20} />
+              Diagnostic gratuit · 2 min <ArrowRight size={20} />
             </Link>
           </div>
 
