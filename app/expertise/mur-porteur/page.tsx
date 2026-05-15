@@ -14,8 +14,8 @@ import type { Metadata } from 'next';
 import { MurPorteurDiagram } from '@/components/ui/MurPorteurDiagram';
 
 export const metadata: Metadata = {
-  title: "Ouverture Mur Porteur Toulouse · IPN/HEB · AXA",
-  description: "Ouverture mur porteur Toulouse : étude IPN/HEB, dimensionnement poutre selon Eurocodes, travaux clé en main. Décennale AXA. Pré-étude sous 24h. ☎ 05 82 95 33 75",
+  title: "Ouverture Mur Porteur Toulouse · IPN/HEB · Eurocodes",
+  description: "Ouverture mur porteur Toulouse : étude IPN/HEB, dimensionnement poutre selon Eurocodes, travaux clé en main. Accompagnement IPB inclus. Pré-étude sous 24h. ☎ 05 82 95 33 75",
   keywords: [
     'ouverture mur porteur toulouse',
     'création baie vitrée toulouse',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/mur-porteur' },
   openGraph: {
     title: 'Ouverture Mur Porteur Toulouse · IPB',
-    description: "Étude IPN/HEB, dimensionnement poutre selon Eurocodes, travaux clé en main. Décennale AXA. Pré-étude sous 24h.",
+    description: "Étude IPN/HEB, dimensionnement poutre selon Eurocodes, travaux clé en main. Accompagnement IPB inclus. Pré-étude sous 24h.",
     url: 'https://www.ipb-expertise.fr/expertise/mur-porteur',
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
     locale: 'fr_FR',
@@ -42,12 +42,32 @@ export const metadata: Metadata = {
 
 const faqMurPorteur = [
   {
+    question: "Combien d'interlocuteurs aurai-je sur ce projet ?",
+    answer: "Un seul : IPB. Vous décrivez votre projet, notre institut prend en charge l'opération de A à Z — calcul de la poutre selon les Eurocodes, démarches administratives, étaiement, ouverture, pose, finitions. Chaque étape est exécutée par les corps de métier requis, sous leurs décennales propres. L'accompagnement IPB est inclus dans le prix de votre chantier : vous bénéficiez de notre expertise et de notre suivi au prix d'une intervention en direct. C'est ce qui distingue notre institut d'un montage à plusieurs prestataires, où chacun renvoie vers l'autre quand quelque chose dérive.",
+  },
+  {
+    question: "Et si on découvre que mon mur n'est pas porteur, ou que l'ouverture n'est pas faisable ?",
+    answer: "C'est précisément ce que la visite technique permet de vérifier. Si votre mur n'est pas porteur, on vous le dit dès la visite, et l'intervention peut souvent se simplifier (passage d'un linteau léger, voire pas d'étude structurelle). Si l'ouverture n'est pas faisable telle que vous l'imaginez (contraintes copropriété, urbanisme, bâti ancien), on vous explique pourquoi et on chiffre les alternatives compatibles. Aucun engagement avant la signature du devis.",
+  },
+  {
+    question: "Comment se passe le chantier au quotidien — bruit, poussière, protections ?",
+    answer: "L'intervention est intense mais courte (2 à 5 jours). Avant les travaux, les sols et meubles sont protégés (bâches, films, cloisons temporaires). La poussière est contenue à la zone de chantier autant que possible. Les horaires sont conformes aux usages locaux (8h-18h hors weekends et jours fériés). Si vous êtes en copropriété ou en mitoyenneté, IPB se charge de prévenir les voisins en amont. La zone de chantier est nettoyée chaque soir, l'ensemble restitué propre à la livraison.",
+  },
+  {
+    question: "Si je change d'avis après la visite, dois-je payer quelque chose ?",
+    answer: "Non. La visite technique et la première analyse de faisabilité sont gratuites et sans engagement. Tant que vous n'avez pas signé le devis, vous ne devez rien — pas même les frais de déplacement. C'est une garantie que peu d'acteurs offrent sur ce métier : nous tenons à ce que vous décidiez en conscience, sans pression commerciale.",
+  },
+  {
+    question: "Pendant le chantier, à qui je m'adresse si j'ai une question ou un imprévu ?",
+    answer: "À IPB, votre interlocuteur unique. Un numéro direct, qui suit votre dossier de bout en bout. Vous n'avez pas à courir derrière les corps de métier ou à arbitrer entre des prestataires : tout passe par nous, du premier appel à la levée des étais.",
+  },
+  {
     question: "Comment savoir si mon mur est porteur ?",
     answer: "Un mur porteur supporte des charges venues du plancher du dessus ou de la toiture. Les indices visuels sont peu fiables. Notre institut identifie le caractère porteur d'un mur lors d'une visite technique : observation du sens des solives, recherche des chaînages, sondage si nécessaire. Sans cette vérification, ne touchez à aucun mur.",
   },
   {
     question: "Comment dimensionne-t-on la poutre d'une ouverture de mur porteur ?",
-    answer: "Le dimensionnement repose sur la descente de charges (poids des murs, dalles et charges d'exploitation au-dessus), la portée libre de l'ouverture, et la nature des appuis. La note de calcul est rédigée et signée par notre bureau d'études structure partenaire selon les Eurocodes (EN 1993 pour l'acier, EN 1992 pour le béton), sous sa propre décennale études. Le profil retenu — IPN, IPE ou HEB — dépend du moment de flexion à reprendre et de la flèche admissible. Sur une portée standard de 2,5 m sous étage habité, un IPN 200 ou un HEB 160 sont les profils les plus fréquents en construction toulousaine.",
+    answer: "Le dimensionnement repose sur la descente de charges (poids des murs, dalles et charges d'exploitation au-dessus), la portée libre de l'ouverture, et la nature des appuis. La note de calcul est rédigée selon les Eurocodes (EN 1993 pour l'acier, EN 1992 pour le béton) et signée sous décennale études dédiée. Le profil retenu — IPN, IPE ou HEB — dépend du moment de flexion à reprendre et de la flèche admissible. Sur une portée standard de 2,5 m sous étage habité, un IPN 200 ou un HEB 160 sont les profils les plus fréquents en construction toulousaine.",
   },
   {
     question: "Faut-il un permis de construire pour ouvrir un mur porteur ?",
@@ -59,23 +79,23 @@ const faqMurPorteur = [
   },
   {
     question: "IPB peut-il intervenir en copropriété ?",
-    answer: "Oui. Nous préparons le dossier technique pour le vote en assemblée générale (calcul, plans, attestations). Notre garantie décennale et nos rapports rassurent généralement les copropriétaires et le syndic. La démarche prend 2 à 4 mois selon le calendrier des AG.",
+    answer: "Oui. Nous préparons le dossier technique pour le vote en assemblée générale (calcul, plans, attestations). Les décennales métier (études et travaux) et nos rapports rassurent généralement les copropriétaires et le syndic. La démarche prend 2 à 4 mois selon le calendrier des AG.",
   },
   {
     question: "IPN, HEB ou IPE : quelle poutre choisir ?",
-    answer: "Le choix dépend de la portée, des charges à reprendre et de l'épaisseur du mur. Notre ingénieur dimensionne la poutre selon les normes en vigueur (Eurocode). Un sous-dimensionnement entraîne fissures, affaissement de plancher, voire rupture. Ce calcul n'est jamais à la charge d'un artisan généraliste.",
+    answer: "Le choix dépend de la portée, des charges à reprendre et de l'épaisseur du mur. La poutre est dimensionnée selon les normes en vigueur (Eurocode). Un sous-dimensionnement entraîne fissures, affaissement de plancher, voire rupture. Ce calcul n'est jamais à la charge d'un artisan généraliste.",
   },
   {
     question: "Quel est le prix d'une ouverture de mur porteur ?",
-    answer: "Le budget dépend principalement de la portée. Pour une ouverture standard (2 à 3 m, mur en parpaing ou brique foraine), comptez 6 500 à 10 000 € TTC tout compris (étude, étaiement, poutre, pose, finitions). Pour une grande baie vitrée (3 à 4,5 m), prévoyez 10 000 à 16 000 €. Les chantiers sur béton banché ou pierre majorent de 15 à 30 %. Devis ferme remis sous 24 h après visite gratuite.",
+    answer: "Le budget dépend de plusieurs paramètres concrets : la portée de l'ouverture, le type de mur (brique foraine, parpaing, pierre, béton banché), ce qui se trouve au-dessus (combles, étage habité), et la complexité des finitions. Plutôt qu'une fourchette générique qui peut induire en erreur, nous mettons à votre disposition un calculateur en ligne basé sur nos chantiers récents en Occitanie — 4 questions, 2 minutes, fourchette précise envoyée par email. Devis ferme remis sous 24 h après visite gratuite, accompagnement IPB inclus dans le prix.",
   },
   {
     question: "Faut-il prévoir un étaiement pendant les travaux ?",
-    answer: "Oui, l'étaiement est non négociable. Avant toute découpe du mur porteur, on installe des étais qui reprennent les charges du plancher du dessus pendant l'intervention. Sans étaiement, le plancher du dessus s'affaisse — ça arrive plusieurs fois par an à Toulouse sur des chantiers mal préparés. Coût de l'étaiement : 300 à 800 € selon la portée. Tout devis sérieux le chiffre séparément.",
+    answer: "Oui, l'étaiement est non négociable. Avant toute découpe du mur porteur, on installe des étais qui reprennent les charges du plancher du dessus pendant l'intervention. Sans étaiement, le plancher du dessus s'affaisse — ça arrive plusieurs fois par an à Toulouse sur des chantiers mal préparés. Tout devis sérieux chiffre l'étaiement séparément, ce que nous faisons systématiquement.",
   },
   {
     question: "Les finitions sont-elles incluses dans le devis ?",
-    answer: "Beaucoup d'artisans \"oublient\" les finitions dans leur devis pour afficher un prix plus bas. Chez IPB, nous les chiffrons systématiquement : ragréage des coupes, jonctions plâtre, peinture des bords de l'ouverture, repose des plinthes. Budget typique 800 à 2 500 € selon la complexité. Vous pouvez les externaliser si vous voulez gérer cette partie vous-même : nous le précisons alors clairement dans le devis.",
+    answer: "Beaucoup d'artisans \"oublient\" les finitions dans leur devis pour afficher un prix plus bas. Chez IPB, nous les chiffrons systématiquement : ragréage des coupes, jonctions plâtre, peinture des bords de l'ouverture, repose des plinthes. Le montant varie selon la complexité du projet et il est toujours détaillé dans le devis. Vous pouvez les externaliser si vous voulez gérer cette partie vous-même : nous le précisons alors clairement.",
   },
 ];
 
@@ -100,7 +120,7 @@ const generateServiceJsonLd = () => ({
     "address": { "@type": "PostalAddress", "streetAddress": "54 avenue Jean Jaurès", "addressLocality": "Tournefeuille", "postalCode": "31170", "addressRegion": "Occitanie", "addressCountry": "FR" }
   },
   "areaServed": [{ "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" }, { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" }, { "@type": "AdministrativeArea", "name": "Gers (32)" }, { "@type": "AdministrativeArea", "name": "Tarn (81)" }],
-  "description": "Étude de structure, dimensionnement de poutre IPN/HEB, ouverture de mur porteur et création de baie vitrée. Décennale AXA."
+  "description": "Étude de structure, dimensionnement de poutre IPN/HEB, ouverture de mur porteur et création de baie vitrée. Accompagnement IPB inclus dans le prix du chantier."
 });
 
 const typesProjets = [
@@ -162,13 +182,13 @@ export default function MurPorteurPage() {
                     fontWeight: 700,
                   }}
                 >
-                  Ouvrir un mur porteur,<br />
-                  <em>poser une baie vitrée.</em>
+                  Ouvrir un mur, poser une baie.<br />
+                  <em>Un seul interlocuteur, du calcul à la livraison.</em>
                 </h1>
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">
-                  Notre ingénieur dimensionne la poutre selon les Eurocodes, nos équipes l'installent. Un seul interlocuteur de l'étude à la livraison, garantie décennale AXA, documents techniques remis en fin de chantier.
+                  Vous décrivez votre projet à IPB. Nous prenons en charge l'opération de bout en bout : calcul de la poutre selon les Eurocodes, étaiement, ouverture, pose, finitions. Chaque étape est exécutée sous sa décennale métier — au prix d'un chantier en direct, avec un seul interlocuteur.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>
@@ -194,7 +214,7 @@ export default function MurPorteurPage() {
                 <ul className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-5 text-[12px] text-ipb-muted font-light">
                   <li className="flex items-center gap-1.5">
                     <span className="text-ipb-orange" aria-hidden="true">✓</span>
-                    <span>Sans engagement</span>
+                    <span>Un seul interlocuteur</span>
                   </li>
                   <li className="flex items-center gap-1.5">
                     <span className="text-ipb-orange" aria-hidden="true">✓</span>
@@ -202,7 +222,11 @@ export default function MurPorteurPage() {
                   </li>
                   <li className="flex items-center gap-1.5">
                     <span className="text-ipb-orange" aria-hidden="true">✓</span>
-                    <span>Décennale AXA</span>
+                    <span>Accompagnement inclus</span>
+                  </li>
+                  <li className="flex items-center gap-1.5">
+                    <span className="text-ipb-orange" aria-hidden="true">✓</span>
+                    <span>Décennales métier</span>
                   </li>
                 </ul>
               </RevealOnScroll>
@@ -231,23 +255,23 @@ export default function MurPorteurPage() {
                 <RevealOnScroll>
                   <Eyebrow>Si vous lisez cette page…</Eyebrow>
                   <h2 className="font-serif text-ipb-text mb-8" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.18, letterSpacing: '-0.022em', fontWeight: 700 }}>
-                    Vous voulez agrandir une pièce<br /><em>en ouvrant un mur porteur.</em>
+                    Vous voulez ouvrir un mur.<br /><em>Pas piloter cinq prestataires.</em>
                   </h2>
                 </RevealOnScroll>
                 <div className="space-y-5 text-[15px] leading-[1.9] font-light text-ipb-muted">
                   <RevealOnScroll delay={0.06}>
                     <p>
-                      Le maçon vous demande une étude de structure. Un voisin vous a parlé de « la poutre IPN ». Vous lisez sur internet des fourchettes de prix qui vont du simple au triple. Vous vous demandez : <em>est-ce qu'on me vend un document inutile ? Comment savoir si la poutre proposée est correctement dimensionnée ?</em>
+                      Un projet d'ouverture de mur porteur classique mobilise un bureau d'études pour le calcul, un maçon pour l'étaiement et la découpe, un menuisier pour la baie, un peintre pour les finitions, parfois un architecte pour les démarches. Cinq devis. Cinq factures. Cinq calendriers à coordonner — souvent depuis votre cuisine, entre deux journées de travail.
                     </p>
                   </RevealOnScroll>
                   <RevealOnScroll delay={0.12}>
                     <p>
-                      Surtout, vous ne voulez pas la mauvaise issue : un dimensionnement trop juste, un affaissement à 5 ans, et un sinistre que ni l'assurance habitation ni le maçon ne couvriront — parce que personne n'a signé de note de calcul.
+                      Et si quelque chose lâche dans cinq ans — fissure, affaissement, infiltration — la question revient toujours : <em>qui était responsable de quoi ?</em> Le maçon dira « moi je n'ai fait que poser », le bureau d'études dira « moi je n'ai fait que calculer », et votre assurance cherchera la note de calcul signée que personne ne lui remettra.
                     </p>
                   </RevealOnScroll>
                   <RevealOnScroll delay={0.18}>
                     <p className="text-ipb-text">
-                      Notre rôle, c'est précisément ce calcul. Notre bureau d'études structure partenaire dimensionne la poutre selon les <strong className="not-italic">Eurocodes</strong> et signe la note de calcul opposable sous sa propre décennale études ; l'institut pilote ensuite le chantier sous décennale AXA travaux. Un seul interlocuteur de l'étude à la livraison, deux assurances dédiées sur leurs périmètres respectifs.
+                      Notre institut a été pensé pour ne pas vous faire vivre ça. Un seul interlocuteur — IPB — vous suit du premier appel à la levée des étais. Le calcul de la poutre est rédigé selon les <strong className="not-italic">Eurocodes</strong> et couvert par une décennale études dédiée ; l'étaiement, l'ouverture, la pose et les finitions sont exécutés sous décennale travaux dédiée. Notre institut sécurise l'ensemble sous sa responsabilité civile professionnelle. <strong className="not-italic">Deux décennales métier, une RC pro IPB, un accompagnement inclus dans le prix de votre chantier.</strong>
                     </p>
                   </RevealOnScroll>
                 </div>
@@ -320,6 +344,88 @@ export default function MurPorteurPage() {
           </div>
         </section>
 
+        {/* DIFFÉRENCIATION — Un seul contact vs parcours classique */}
+        <section className="bg-ipb-cream py-24 lg:py-32 border-t border-ipb-rule">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="text-center max-w-3xl mx-auto mb-14 lg:mb-16">
+                <Eyebrow className="justify-center">Pourquoi un seul contact change tout</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Un seul contact,<br /><em>pas trois.</em>
+                </h2>
+                <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mt-6">
+                  Côte à côte, le parcours d'un projet d'ouverture classique et celui d'un projet IPB. La différence n'est pas dans le calcul de la poutre — elle est dans tout ce qu'il y a autour.
+                </p>
+              </div>
+            </RevealOnScroll>
+
+            <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
+              {/* Colonne gauche — Scénario classique */}
+              <RevealOnScroll direction="left">
+                <article className="bg-ipb-white border border-ipb-rule rounded-[6px] p-8 lg:p-10 h-full">
+                  <p className="text-[10px] uppercase tracking-[0.18em] text-ipb-light font-semibold mb-3">Le scénario classique</p>
+                  <h3 className="font-serif text-ipb-text font-bold text-[22px] leading-tight mb-7">
+                    Cinq prestataires,<br />cinq calendriers à coordonner.
+                  </h3>
+                  <ul className="space-y-5 text-[14px] leading-[1.75] font-light text-ipb-muted">
+                    <li className="grid grid-cols-[32px_1fr] gap-3 items-start">
+                      <span className="font-serif text-ipb-light text-[13px] font-bold tracking-wider pt-0.5">01</span>
+                      <p>Vous trouvez un bureau d'études pour calculer la poutre.</p>
+                    </li>
+                    <li className="grid grid-cols-[32px_1fr] gap-3 items-start">
+                      <span className="font-serif text-ipb-light text-[13px] font-bold tracking-wider pt-0.5">02</span>
+                      <p>Vous trouvez un maçon, lui transmettez la note de calcul, il chiffre l'étaiement et l'ouverture.</p>
+                    </li>
+                    <li className="grid grid-cols-[32px_1fr] gap-3 items-start">
+                      <span className="font-serif text-ipb-light text-[13px] font-bold tracking-wider pt-0.5">03</span>
+                      <p>Vous trouvez un menuisier pour la baie, vous synchronisez ses dates avec celles du maçon.</p>
+                    </li>
+                    <li className="grid grid-cols-[32px_1fr] gap-3 items-start">
+                      <span className="font-serif text-ipb-light text-[13px] font-bold tracking-wider pt-0.5">04</span>
+                      <p>Vous trouvez un peintre pour reprendre les jonctions et les finitions.</p>
+                    </li>
+                    <li className="grid grid-cols-[32px_1fr] gap-3 items-start">
+                      <span className="font-serif text-ipb-light text-[13px] font-bold tracking-wider pt-0.5">05</span>
+                      <p>Si quelque chose lâche dans cinq ans : chacun renvoie vers l'autre. Personne n'est responsable de l'ensemble.</p>
+                    </li>
+                  </ul>
+                </article>
+              </RevealOnScroll>
+
+              {/* Colonne droite — Avec IPB */}
+              <RevealOnScroll direction="right" delay={0.08}>
+                <article className="bg-ipb-navy border border-ipb-navy rounded-[6px] p-8 lg:p-10 h-full">
+                  <p className="text-[10px] uppercase tracking-[0.18em] text-ipb-orange-l font-semibold mb-3">Avec IPB</p>
+                  <h3 className="font-serif text-white font-bold text-[22px] leading-tight mb-7">
+                    Un institut,<br />du devis à la levée des étais.
+                  </h3>
+                  <ul className="space-y-5 text-[14px] leading-[1.75] font-light text-white/75">
+                    <li className="grid grid-cols-[32px_1fr] gap-3 items-start">
+                      <span className="font-serif text-ipb-orange-l text-[13px] font-bold tracking-wider pt-0.5">01</span>
+                      <p>Vous décrivez votre projet à IPB. Visite technique sous 72h, 24h en urgence.</p>
+                    </li>
+                    <li className="grid grid-cols-[32px_1fr] gap-3 items-start">
+                      <span className="font-serif text-ipb-orange-l text-[13px] font-bold tracking-wider pt-0.5">02</span>
+                      <p>Note de calcul rédigée selon les Eurocodes, couverte par une décennale études dédiée.</p>
+                    </li>
+                    <li className="grid grid-cols-[32px_1fr] gap-3 items-start">
+                      <span className="font-serif text-ipb-orange-l text-[13px] font-bold tracking-wider pt-0.5">03</span>
+                      <p>Calendrier unique piloté par IPB. Étaiement, ouverture, baie et finitions exécutés sous décennale travaux dédiée.</p>
+                    </li>
+                    <li className="grid grid-cols-[32px_1fr] gap-3 items-start">
+                      <span className="font-serif text-ipb-orange-l text-[13px] font-bold tracking-wider pt-0.5">04</span>
+                      <p>Si quelque chose lâche dans cinq ans : un seul numéro à appeler — celui d'IPB. Deux décennales métier couvrent l'étude et le chantier ; notre RC pro vous couvre sur l'accompagnement IPB.</p>
+                    </li>
+                  </ul>
+                  <p className="mt-7 pt-6 border-t border-white/10 text-[13px] leading-[1.75] text-white/60 italic">
+                    « Notre institut suit votre chantier personnellement, du premier appel à la levée des étais. Au prix d'un chantier en direct — l'accompagnement IPB est inclus. »
+                  </p>
+                </article>
+              </RevealOnScroll>
+            </div>
+          </div>
+        </section>
+
         {/* MÉTHODE */}
         <section className="bg-ipb-navy py-24 lg:py-32">
           <div className="max-w-ipb mx-auto px-6 lg:px-12">
@@ -340,16 +446,16 @@ export default function MurPorteurPage() {
                 <RevealOnScroll>
                   <Eyebrow variant="dark">Notre méthode</Eyebrow>
                   <h2 className="font-serif text-white mb-10" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
-                    Du calcul technique<br /><em>aux finitions.</em>
+                    Un seul interlocuteur,<br /><em>de la note de calcul à la levée des étais.</em>
                   </h2>
                 </RevealOnScroll>
 
                 <ul className="space-y-8">
                   {[
-                    { titre: "Visite et étude technique", desc: "Notre ingénieur regarde le mur, identifie les charges reprises, vérifie les contraintes de la copropriété si applicable. Il calcule la poutre selon les normes en vigueur." },
-                    { titre: "Note de calcul et planning", desc: "Note de calcul signée sous 3 à 5 jours ouvrés après la visite. Calendrier précis : démarches administratives, commande poutre, dates de chantier." },
-                    { titre: "Étaiement et ouverture", desc: "Pose des étais pour reprendre les charges du plancher du dessus. Découpe progressive du mur. Pose et scellement de la poutre." },
-                    { titre: "Finitions et livraison", desc: "Habillage de la poutre, ragréage, jonctions, peinture si demandée. Levée des étais. Tous les documents du chantier vous sont remis." },
+                    { titre: "Visite et étude technique", desc: "Notre institut se déplace pour identifier les charges reprises et vérifier les contraintes (copropriété, bâti, urbanisme). La poutre est ensuite dimensionnée selon les Eurocodes." },
+                    { titre: "Note de calcul et planning", desc: "Note de calcul rédigée sous 3 à 5 jours ouvrés après la visite. IPB cale le calendrier complet : démarches administratives, commande poutre, dates de chantier." },
+                    { titre: "Étaiement et ouverture", desc: "Les étais sont posés pour reprendre les charges du plancher du dessus, le mur est découpé progressivement, la poutre scellée. IPB supervise sur site." },
+                    { titre: "Finitions et livraison", desc: "Habillage de la poutre, ragréage, jonctions, peinture si demandée. Levée des étais. IPB vous remet tous les documents du chantier." },
                   ].map((etape, i) => (
                     <RevealOnScroll key={etape.titre} delay={0.08 + i * 0.06}>
                       <li className="grid grid-cols-[40px_1fr] gap-5 items-start pb-8 border-b border-white/10">
@@ -379,7 +485,7 @@ export default function MurPorteurPage() {
                   Une poutre reprend les charges<br /><em>que le mur supportait.</em>
                 </h2>
                 <p className="text-[15px] leading-[1.85] font-light text-ipb-muted mt-6">
-                  Le schéma technique illustre le principe : étaiement provisoire pour reprendre temporairement les charges du plancher, découpe du mur porteur, pose et scellement de la poutre dimensionnée par notre ingénieur, retrait des étais.
+                  Le schéma technique illustre le principe : étaiement provisoire pour reprendre temporairement les charges du plancher, découpe du mur porteur, pose et scellement de la poutre dimensionnée selon les Eurocodes, retrait des étais.
                 </p>
               </div>
             </RevealOnScroll>
@@ -521,7 +627,7 @@ export default function MurPorteurPage() {
                 Décrire votre projet ne vous engage à rien.
               </p>
               <p className="text-[15px] leading-[1.85] font-light text-ipb-muted">
-                Notre équipe revient vers vous sous 24h ouvrées avec une première analyse de faisabilité. <strong className="text-ipb-text not-italic">Si votre projet n'est pas compatible avec une ouverture (sécurité, copropriété, contraintes de bâti), on vous le dira clairement</strong> — et on vous expliquera les alternatives.
+                Notre équipe revient vers vous sous 24h ouvrées avec une première analyse de faisabilité. <strong className="text-ipb-text not-italic">Dès cet appel, vous avez un seul interlocuteur</strong> — qui vous suivra jusqu'à la levée des étais. Si votre projet n'est pas compatible avec une ouverture (sécurité, copropriété, contraintes de bâti), <strong className="text-ipb-text not-italic">on vous le dira clairement</strong>, et on vous expliquera les alternatives. Et <strong className="text-ipb-text not-italic">tant que vous n'avez pas signé le devis, vous ne devez rien</strong> — pas même les frais de déplacement.
               </p>
             </RevealOnScroll>
           </div>

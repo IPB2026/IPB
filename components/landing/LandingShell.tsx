@@ -51,13 +51,13 @@ export function LandingShell({ children, phoneNumber = '0582953375' }: LandingSh
         {children}
       </main>
 
-      {/* Footer ultra-light : adresse + décennale + lien légal seulement */}
+      {/* Footer ultra-light : adresse + accompagnement + lien légal seulement */}
       <footer className="bg-ipb-navy text-white py-10">
         <div className="max-w-ipb mx-auto px-6 lg:px-12 grid sm:grid-cols-[auto_1fr_auto] gap-6 items-center">
           <CrackSVG variant="mini" />
           <div className="text-[11px] text-white/50 leading-[1.7] uppercase tracking-[0.08em]">
             <p>IPB Expertise — 54 avenue Jean Jaurès, 31170 Tournefeuille</p>
-            <p>Décennale AXA France IARD · Institut créé en 2019</p>
+            <p>Accompagnement IPB inclus · Décennales métier dédiées · Institut créé en 2019</p>
           </div>
           <div className="flex gap-4 text-[11px] text-white/40">
             <Link href="/legal/mentions-legales" className="hover:text-white/70 transition-colors">Mentions légales</Link>

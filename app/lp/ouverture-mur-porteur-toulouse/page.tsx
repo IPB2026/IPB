@@ -7,8 +7,8 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
-  title: "Ouverture Mur Porteur Toulouse · Devis Sous 7 Jours · AXA",
-  description: "Étude IPN/HEB, ouverture, finitions à Toulouse. 4 000 à 10 000 € pour 2,5 m. Décennale AXA. Devis 7j. ☎ 05 82 95 33 75",
+  title: "Ouverture Mur Porteur Toulouse · Devis Sous 7 Jours · Accompagnement IPB",
+  description: "Étude IPN/HEB, ouverture, finitions à Toulouse. Accompagnement IPB inclus, au prix d'un chantier en direct. Devis 7j. ☎ 05 82 95 33 75",
   robots: { index: false, follow: false },
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/mur-porteur' },
 };
@@ -33,7 +33,7 @@ export default function LandingMurPorteurToulouse() {
           <div className="grid lg:grid-cols-[6fr_5fr] gap-10 lg:gap-12 items-center">
             <div>
               <p className="text-ipb-orange text-[11px] uppercase tracking-[0.18em] font-medium mb-4">
-                Étude & travaux · Décennale AXA
+                Étude & travaux coordonnés · Accompagnement IPB inclus
               </p>
               <h1
                 className="font-serif text-ipb-text mb-6"
@@ -45,10 +45,10 @@ export default function LandingMurPorteurToulouse() {
                 }}
               >
                 Ouvrir un mur porteur à Toulouse&nbsp;?<br />
-                <em>Étude + travaux par le même institut.</em>
+                <em>Un seul interlocuteur, de A à Z.</em>
               </h1>
               <p className="text-[15px] leading-[1.85] font-light text-ipb-muted mb-8">
-                Notre ingénieur calcule la poutre IPN ou HEB. Nos équipes l'installent. Tout en interne, tout sous décennale unique. <strong className="font-medium text-ipb-text not-italic">Estimation sous 7 jours.</strong>
+                IPB prend en charge l'opération de bout en bout : étude IPN/HEB, étaiement, pose de la poutre, finitions. Chaque étape sous sa décennale métier. <strong className="font-medium text-ipb-text not-italic">Au prix d'un chantier en direct, estimation sous 7 jours.</strong>
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 mb-6">
@@ -65,9 +65,9 @@ export default function LandingMurPorteurToulouse() {
 
               <ul className="space-y-2 text-[13px] text-ipb-muted leading-[1.7]">
                 {[
-                  '<strong class="text-ipb-text not-italic font-medium">Note de calcul co-signée par notre BE structure partenaire</strong> — opposable face à un assureur ou un contrôleur',
+                  '<strong class="text-ipb-text not-italic font-medium">Note de calcul signée selon les Eurocodes</strong> — opposable face à un assureur ou un contrôleur',
                   '<strong class="text-ipb-text not-italic font-medium">Chantier 3 à 5 jours</strong> — étaiement, ouverture, pose poutre, finitions',
-                  '<strong class="text-ipb-text not-italic font-medium">Tarifs constatés Toulouse</strong> — 4 000 à 10 000 € pour 2,5 m TTC',
+                  '<strong class="text-ipb-text not-italic font-medium">Au prix d\'un chantier en direct</strong> — accompagnement IPB inclus, devis ferme remis sous 7 jours',
                 ].map((item) => (
                   <li key={item} className="flex gap-3">
                     <span className="text-ipb-orange flex-shrink-0">—</span>
@@ -105,7 +105,7 @@ export default function LandingMurPorteurToulouse() {
               { value: 850, suffix: '+', label: 'Chantiers livrés' },
               { value: 5, suffix: ' j', label: 'Chantier moyen' },
               { value: 4.9, decimals: 1, suffix: '/5', label: 'Avis Google' },
-              { value: 10, suffix: ' ans', label: 'Décennale AXA' },
+              { value: 2, suffix: '', label: 'Décennales métier' },
             ].map((s) => (
               <div key={s.label}>
                 <p className="font-serif text-white font-bold leading-none mb-2" style={{ fontSize: 'clamp(28px, 3vw, 44px)' }}>
@@ -128,7 +128,7 @@ export default function LandingMurPorteurToulouse() {
           <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
             {[
               { num: '01', titre: 'Estimation en ligne', desc: 'Notre calculateur vous donne une fourchette précise en 2 minutes.' },
-              { num: '02', titre: 'Visite technique', desc: "Notre ingénieur passe sur place. Calcul de poutre, méthode d'étaiement." },
+              { num: '02', titre: 'Visite technique', desc: "Visite sur site par notre équipe technique. Calcul de poutre selon les Eurocodes, méthode d'étaiement." },
               { num: '03', titre: 'Devis ferme + planning', desc: 'Sous 7 jours après visite. Toutes les démarches préparées avec vous.' },
               { num: '04', titre: 'Chantier 3 à 5 jours', desc: "Étaiement, ouverture, pose poutre, finitions. Tous documents remis à la livraison." },
             ].map((etape) => (
@@ -158,7 +158,7 @@ export default function LandingMurPorteurToulouse() {
               05 82 95 33 75
             </a>
           </div>
-          <p className="text-[12px] text-ipb-light mt-4">Sans inscription · Devis gratuit · Décennale AXA</p>
+          <p className="text-[12px] text-ipb-light mt-4">Sans inscription · Devis gratuit · Accompagnement IPB inclus</p>
         </div>
       </section>
     </LandingShell>

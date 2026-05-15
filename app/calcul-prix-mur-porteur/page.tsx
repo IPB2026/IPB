@@ -11,7 +11,7 @@ import { CalculatorClient } from './CalculatorClient';
 
 export const metadata: Metadata = {
   title: "Calculateur Prix Mur Porteur Toulouse · Gratuit 2 min",
-  description: "Estimez votre prix d'ouverture mur porteur Toulouse en 2 min. Gratuit, sans inscription. Tarifs réels IPB. Décennale AXA. ☎ 05 82 95 33 75",
+  description: "Estimez votre prix d'ouverture mur porteur Toulouse en 2 min. Gratuit, sans inscription. Tarifs réels IPB. Accompagnement IPB inclus. ☎ 05 82 95 33 75",
   keywords: [
     'prix ouverture mur porteur toulouse',
     'devis mur porteur en ligne',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/calcul-prix-mur-porteur' },
   openGraph: {
     title: "Calculateur Prix Mur Porteur Toulouse · IPB",
-    description: "Estimation gratuite en 2 minutes. Tarifs réels IPB. Décennale AXA.",
+    description: "Estimation gratuite en 2 minutes. Tarifs réels IPB. Accompagnement IPB inclus.",
     url: 'https://www.ipb-expertise.fr/calcul-prix-mur-porteur',
     type: 'website',
   },
@@ -99,7 +99,7 @@ export default function CalculatorPage() {
                 Prix moyens d'une ouverture de mur porteur à Toulouse
               </h2>
               <p className="text-[15px] leading-[1.85] font-light text-ipb-muted mb-8 max-w-2xl">
-                Les fourchettes ci-dessous sont calculées à partir de chantiers IPB livrés ces 24 derniers mois. Elles incluent l'étude structure, la pose de la poutre, l'étaiement, l'ouverture et les finitions. <strong className="text-ipb-text not-italic">Décennale AXA incluse</strong>.
+                Les fourchettes ci-dessous sont calculées à partir de chantiers IPB livrés ces 24 derniers mois. Elles incluent l'étude structure, la pose de la poutre, l'étaiement, l'ouverture et les finitions. <strong className="text-ipb-text not-italic">Décennales métier incluses (études + travaux), accompagnement IPB inclus dans le prix</strong>.
               </p>
 
               <div className="overflow-x-auto -mx-6 lg:mx-0 px-6 lg:px-0 mb-10">
@@ -163,7 +163,7 @@ export default function CalculatorPage() {
                   Note technique · l'approche IPB
                 </p>
                 <p className="text-[14px] leading-[1.85] font-light text-ipb-muted">
-                  Pour les ouvertures de petite portée (jusqu'à 2,5 m, charges modérées), une intervention sans note de calcul formelle est techniquement possible et fréquente sur le marché. <strong className="text-ipb-text not-italic">IPB inclut systématiquement une étude technique signée</strong> dans toutes ses interventions, garantie décennale AXA oblige.
+                  Pour les ouvertures de petite portée (jusqu'à 2,5 m, charges modérées), une intervention sans note de calcul formelle est techniquement possible et fréquente sur le marché. <strong className="text-ipb-text not-italic">IPB inclut systématiquement une étude technique signée selon les Eurocodes</strong> dans toutes ses interventions, sous décennale études dédiée — c'est ce qui rend votre dossier opposable en cas de litige.
                 </p>
               </div>
             </RevealOnScroll>
