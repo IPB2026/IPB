@@ -181,7 +181,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
 
                 <div className="flex flex-col sm:flex-row gap-4 mb-6">
                   <Link href="/diagnostic" className="bg-ipb-orange hover:bg-[#b35519] text-white px-8 py-5 rounded-xl font-bold text-lg shadow-xl flex items-center justify-center gap-2">
-                    Devis gratuit sous 24h <ArrowRight size={20} />
+                    Diagnostic gratuit · 2 min <ArrowRight size={20} />
                   </Link>
                   <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 text-white px-8 py-5 rounded-xl font-bold text-lg hover:bg-white/20 flex items-center justify-center gap-2">
                     <Phone size={20} /> 05 82 95 33 75
@@ -393,7 +393,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
             <p className="text-xl text-ipb-orange-l mb-8">Décrivez votre projet à notre institut. Réponse de notre équipe sous 24 heures ouvrées.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link href="/diagnostic" className="bg-white text-ipb-orange px-10 py-5 rounded-xl font-bold text-lg hover:bg-ipb-stone flex items-center justify-center gap-2 shadow-xl">
-                Lancer mon devis gratuit <ArrowRight size={20} />
+                Diagnostic gratuit · 2 min <ArrowRight size={20} />
               </Link>
               <a href="tel:0582953375" className="bg-orange-700 hover:bg-orange-800 px-8 py-5 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
                 <Phone size={20} /> 05 82 95 33 75

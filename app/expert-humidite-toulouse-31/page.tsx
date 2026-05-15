@@ -166,7 +166,7 @@ export default function ExpertHumiditeToulouse31Page() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/diagnostic" className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all">
-                Diagnostic gratuit <ArrowRight size={20} />
+                Diagnostic gratuit · 2 min <ArrowRight size={20} />
               </Link>
               <a href="tel:0582953375" className="bg-white/10 border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all">
                 <Phone size={20} /> 05 82 95 33 75
@@ -323,7 +323,7 @@ export default function ExpertHumiditeToulouse31Page() {
         <div className="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
           <p className="text-ipb-text font-medium text-sm">Murs humides, salpêtre, moisissures ? Identifions la cause avant qu'elle ne s'aggrave.</p>
           <div className="flex items-center gap-3">
-            <Link href="/diagnostic" className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2.5 rounded-full text-sm transition-colors whitespace-nowrap">Diagnostic gratuit →</Link>
+            <Link href="/diagnostic" className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2.5 rounded-full text-sm transition-colors whitespace-nowrap">Diagnostic gratuit · 2 min →</Link>
             <a href="tel:0582953375" className="text-ipb-muted hover:text-ipb-text font-medium text-sm whitespace-nowrap">📞 05 82 95 33 75</a>
           </div>
         </div>
@@ -478,7 +478,7 @@ export default function ExpertHumiditeToulouse31Page() {
           <p className="text-xl text-blue-100 mb-8">Diagnostic technique sous 72h. Traitement sous décennale 10 ans dédiée.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all flex items-center justify-center gap-2">
-              Demander un diagnostic <ArrowRight size={20} />
+              Diagnostic gratuit · 2 min <ArrowRight size={20} />
             </Link>
             <a href="tel:0582953375" className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all">
               <Phone size={20} /> 05 82 95 33 75
