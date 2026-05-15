@@ -416,7 +416,7 @@ export function CalculatorClient() {
             Vous voulez aller plus loin ?
           </h3>
           <p className="text-[14px] font-light text-ipb-muted mb-6 max-w-md mx-auto">
-            Notre ingénieur peut passer chez vous pour valider l'étude et établir un devis ferme — gratuitement, sans engagement.
+            Notre équipe technique peut passer chez vous pour valider l'étude et établir un devis ferme — gratuitement, sans engagement.
           </p>
           <a href="tel:0582953375" className="inline-flex items-center justify-center gap-2 bg-ipb-orange text-white font-bold px-7 py-4 rounded-[3px] text-[14px] tracking-[0.03em] hover:bg-[#b35519] transition-colors min-h-[48px]">
             Appeler le 05 82 95 33 75

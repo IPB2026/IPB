@@ -24,7 +24,7 @@ export function Footer() {
             </Link>
 
             <p className="text-[14px] leading-[1.85] font-light text-white/75 max-w-[420px] mb-8">
-              Institut spécialisé en pathologie et structure du bâtiment. Diagnostic de fissures, ouverture de mur porteur, création de baie vitrée. Décennale AXA active depuis 2019.
+              Institut spécialisé en pathologie et structure du bâtiment. Diagnostic de fissures, ouverture de mur porteur, création de baie vitrée. Accompagnement IPB inclus, sous décennales métier dédiées.
             </p>
 
             <div className="space-y-5 mb-6">

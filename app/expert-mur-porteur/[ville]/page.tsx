@@ -27,8 +27,8 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
   const slug = ville;
 
   return {
-    title: `Ouverture Mur Porteur ${villeNom} ${deptCode} · IPN/HEB · AXA`,
-    description: `Mur porteur à ${villeNom} : étude IPN/HEB, pose poutre, travaux clé en main. Décennale AXA. Devis 24h. ☎ 05 82 95 33 75`,
+    title: `Ouverture Mur Porteur ${villeNom} ${deptCode} · IPN/HEB · Eurocodes`,
+    description: `Mur porteur à ${villeNom} : étude IPN/HEB, pose poutre, travaux clé en main. Accompagnement IPB inclus. Devis 24h. ☎ 05 82 95 33 75`,
     keywords: [
       `ouverture mur porteur ${slug}`,
       `prix ouverture mur porteur ${slug}`,
@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     alternates: { canonical: `https://www.ipb-expertise.fr/expert-mur-porteur/${slug}` },
     openGraph: {
       title: `Ouverture Mur Porteur ${villeNom} · IPB`,
-      description: `Étude IPN/HEB, étaiement, ouverture, finitions à ${villeNom}. Décennale AXA. Devis 24h.`,
+      description: `Étude IPN/HEB, étaiement, ouverture, finitions à ${villeNom}. Accompagnement IPB inclus. Devis 24h.`,
       url: `https://www.ipb-expertise.fr/expert-mur-porteur/${slug}`,
       type: 'website',
       images: [{ url: '/images/IPB_Logo_HD.png', width: 1200, height: 630, alt: `Ouverture mur porteur ${villeNom}` }],
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     twitter: {
       card: 'summary_large_image',
       title: `Ouverture Mur Porteur ${villeNom} | IPB`,
-      description: `Étude structure + travaux. Décennale AXA. Devis 24h à ${villeNom}. ☎ 05 82 95 33 75`,
+      description: `Étude structure + travaux. Accompagnement IPB inclus. Devis 24h à ${villeNom}. ☎ 05 82 95 33 75`,
     },
     robots: { index: true, follow: true },
   };
@@ -86,7 +86,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
         "addressCountry": "FR"
       }
     },
-    "description": `Bureau d'études structure intégré à ${villeNom}. Étude, dimensionnement IPN/HEB, pose et finitions. Décennale AXA.`,
+    "description": `Ouverture de mur porteur à ${villeNom} : étude, dimensionnement IPN/HEB, pose et finitions sous décennales métier. Accompagnement IPB inclus dans le prix du chantier.`,
     "offers": { "@type": "Offer", "priceRange": "4000-15000 EUR", "priceCurrency": "EUR" },
     "aggregateRating": IPB_AGGREGATE_RATING
   };
@@ -98,7 +98,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
       {
         "@type": "Question",
         "name": `Quel est le prix d'une ouverture de mur porteur à ${villeNom} ?`,
-        "acceptedAnswer": { "@type": "Answer", "text": `À ${villeNom}, comptez 4 000 à 10 000 € TTC pour une ouverture standard de 2,5 m (étude structure + étaiement + pose poutre + finitions). Pour une grande baie vitrée (>3 m), le budget monte à 10 000 - 20 000 €. Notre devis est gratuit et établi sous 24h après visite.` }
+        "acceptedAnswer": { "@type": "Answer", "text": `À ${villeNom}, le prix dépend de plusieurs paramètres concrets : la portée de l'ouverture, le type de mur (brique foraine, parpaing, pierre), ce qui se trouve au-dessus (combles, étage habité) et la complexité des finitions. Plutôt qu'une fourchette générique, utilisez notre calculateur en ligne basé sur nos chantiers récents — 4 questions, 2 minutes, fourchette précise par email. Devis ferme remis sous 24h après visite gratuite, accompagnement IPB inclus dans le prix.` }
       },
       {
         "@type": "Question",
@@ -118,12 +118,12 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
       {
         "@type": "Question",
         "name": `Quelle poutre pour ouvrir un mur porteur ?`,
-        "acceptedAnswer": { "@type": "Answer", "text": "Le choix dépend de la portée et des charges reprises. IPN (profil en I) pour les portées courtes (≤2,5 m). HEB (profil en H, plus rigide) pour les grandes portées (>3 m) et les charges importantes (étages au-dessus). IPE pour les configurations intermédiaires. Notre ingénieur calcule la section exacte (poids, déformation admissible) et vous remet une note de calcul signée." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Le choix dépend de la portée et des charges reprises. IPN (profil en I) pour les portées courtes (≤2,5 m). HEB (profil en H, plus rigide) pour les grandes portées (>3 m) et les charges importantes (étages au-dessus). IPE pour les configurations intermédiaires. La poutre est calculée pour reprendre les charges identifiées (poids, déformation admissible) selon les Eurocodes, et la note de calcul est signée sous décennale études dédiée." }
       },
       {
         "@type": "Question",
         "name": `IPB intervient-il sur tout type de bâtiment à ${villeNom} ?`,
-        "acceptedAnswer": { "@type": "Answer", "text": `Oui : maisons individuelles, appartements en copropriété (avec procès-verbal d'AG), immeubles haussmanniens des centres anciens de ${villeNom}, lofts, locaux commerciaux. Notre ingénieur s'adapte à la nature des planchers et à l'âge du bâti.` }
+        "acceptedAnswer": { "@type": "Answer", "text": `Oui : maisons individuelles, appartements en copropriété (avec procès-verbal d'AG), immeubles haussmanniens des centres anciens de ${villeNom}, lofts, locaux commerciaux. Notre institut s'adapte à la nature des planchers et à l'âge du bâti.` }
       }
     ]
   };
@@ -162,19 +162,19 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
                 </h1>
 
                 <p className="text-xl text-white/70 mb-6 leading-relaxed">
-                  <strong className="text-white">Bureau d'études structure intégré</strong> à {villeNom}. Notre ingénieur dimensionne la poutre IPN/HEB, nos équipes l'installent. <strong className="text-ipb-orange-l">Garantie décennale AXA sur l'ensemble.</strong>
+                  <strong className="text-white">L'institut qui prend en charge votre ouverture de mur porteur</strong> à {villeNom}. Étude, dimensionnement IPN/HEB, étaiement, pose et finitions. <strong className="text-ipb-orange-l">Au prix d'un chantier en direct, avec un seul interlocuteur.</strong>
                 </p>
 
-                {/* Prix indicatif */}
+                {/* Encadré confiance — estimation en ligne */}
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mb-8 border border-white/20">
                   <div className="flex items-center justify-between flex-wrap gap-4">
                     <div>
-                      <p className="text-sm text-ipb-light">Ouverture standard 2,5 m à {villeNom}</p>
-                      <p className="text-2xl font-bold text-white">4 000 € – 10 000 € TTC</p>
+                      <p className="text-sm text-ipb-light">Estimation personnalisée à {villeNom}</p>
+                      <p className="text-2xl font-bold text-white">Calculateur · 2 min</p>
                     </div>
                     <div className="bg-ipb-orange/20 px-3 py-2 rounded-lg">
-                      <p className="text-ipb-orange-l font-bold text-sm">Garantie</p>
-                      <p className="text-ipb-orange-l font-bold text-lg">10 ans AXA</p>
+                      <p className="text-ipb-orange-l font-bold text-sm">Accompagnement</p>
+                      <p className="text-ipb-orange-l font-bold text-lg">IPB inclus</p>
                     </div>
                   </div>
                 </div>
@@ -190,7 +190,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
 
                 <div className="flex items-center gap-4 text-sm text-ipb-light">
                   <span className="flex items-center gap-1"><Clock size={14} /> Réponse 24h</span>
-                  <span className="flex items-center gap-1"><Shield size={14} className="text-blue-400" /> Décennale AXA</span>
+                  <span className="flex items-center gap-1"><Shield size={14} className="text-blue-400" /> Accompagnement inclus</span>
                   <span className="flex items-center gap-1"><CheckCircle size={14} className="text-green-400" /> Sans engagement</span>
                 </div>
               </div>
@@ -205,8 +205,8 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
                         <Ruler className="text-ipb-orange-l" size={24} />
                       </div>
                       <div>
-                        <p className="font-bold text-white">Calcul technique en interne</p>
-                        <p className="text-sm text-ipb-light">Le dimensionnement de la poutre est signé par notre ingénieur</p>
+                        <p className="font-bold text-white">Calcul selon les Eurocodes</p>
+                        <p className="text-sm text-ipb-light">La poutre est dimensionnée selon les normes en vigueur, sous décennale études dédiée</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
@@ -214,8 +214,8 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
                         <Shield className="text-blue-400" size={24} />
                       </div>
                       <div>
-                        <p className="font-bold text-white">Décennale AXA — étude + travaux</p>
-                        <p className="text-sm text-ipb-light">Attestation remise avec le devis</p>
+                        <p className="font-bold text-white">Deux décennales métier</p>
+                        <p className="text-sm text-ipb-light">Études + travaux, chacune sous sa garantie 10 ans. Attestations remises avec le devis.</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
@@ -283,10 +283,10 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
 
             <div className="grid md:grid-cols-4 gap-6">
               {[
-                { num: 1, icon: <FileText size={24} className="text-ipb-orange" />, title: 'Étude technique', detail: 'On vient sur place, on regarde le mur, on calcule la poutre. Calcul signé par notre ingénieur.' },
-                { num: 2, icon: <Ruler size={24} className="text-ipb-orange" />, title: 'Démarches', detail: 'On s\'occupe des papiers en mairie. Si copropriété : on prépare le dossier pour l\'assemblée générale.' },
-                { num: 3, icon: <Hammer size={24} className="text-ipb-orange" />, title: 'Travaux 2 à 5 jours', detail: 'On installe les étais, on découpe le mur, on pose la poutre, on fait les finitions.' },
-                { num: 4, icon: <Shield size={24} className="text-ipb-orange" />, title: 'Livraison', detail: 'Contrôle final, retrait des étais. On vous remet tous les documents du chantier et l\'attestation de garantie 10 ans.' },
+                { num: 1, icon: <FileText size={24} className="text-ipb-orange" />, title: 'Étude technique', detail: 'Visite sur site, observation du mur. La poutre est dimensionnée selon les Eurocodes, sous décennale études dédiée.' },
+                { num: 2, icon: <Ruler size={24} className="text-ipb-orange" />, title: 'Démarches', detail: 'IPB s\'occupe des papiers en mairie. Si copropriété : préparation du dossier pour l\'assemblée générale.' },
+                { num: 3, icon: <Hammer size={24} className="text-ipb-orange" />, title: 'Travaux 2 à 5 jours', detail: 'Étais installés, mur découpé, poutre posée et finitions assurées sous décennale travaux dédiée.' },
+                { num: 4, icon: <Shield size={24} className="text-ipb-orange" />, title: 'Livraison', detail: 'Contrôle final, retrait des étais. IPB vous remet tous les documents du chantier et les attestations des décennales métier.' },
               ].map(({ num, icon, title, detail }) => (
                 <div key={num} className="bg-white rounded-2xl p-6 shadow-lg border border-ipb-rule text-center">
                   <div className="w-14 h-14 bg-ipb-stone rounded-full flex items-center justify-center mx-auto mb-4">{icon}</div>
@@ -299,28 +299,28 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
           </div>
         </section>
 
-        {/* Prix tableau */}
+        {/* Facteurs de prix — sans fourchettes brutes, redirection calculateur */}
         <section className="py-16 bg-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10">
               <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-4">
-                Prix d'une ouverture de mur porteur à {villeNom}
+                Ce qui fait varier le prix de votre projet à {villeNom}
               </h2>
               <p className="text-lg text-ipb-muted max-w-3xl mx-auto">
-                Fourchettes constatées sur nos chantiers récents à {villeNom} et communes alentour.
+                Quatre paramètres concrets, identifiés sur nos chantiers récents en Occitanie.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { titre: `Petite ouverture (≤ 1,5 m)`, prix: '2 500 – 5 000 €', ex: 'Passage cuisine ↔ salon' },
-                { titre: `Ouverture standard (1,5 – 3 m)`, prix: '5 000 – 10 000 €', ex: 'Cuisine ouverte sur séjour' },
-                { titre: `Grande baie (> 3 m)`, prix: '10 000 – 20 000 €', ex: 'Baie vitrée jardin / terrasse' },
-              ].map(({ titre, prix, ex }) => (
-                <div key={titre} className="bg-ipb-cream border border-ipb-rule rounded-2xl p-6 text-center">
-                  <p className="text-sm font-bold text-ipb-muted uppercase tracking-wide mb-2">{titre}</p>
-                  <p className="text-2xl font-extrabold text-ipb-orange mb-1">{prix}</p>
-                  <p className="text-xs text-ipb-muted">{ex}</p>
+                { titre: "La portée de l'ouverture", desc: "Au-delà de 3 m, on passe d'un IPN classique à un HEB plus lourd. Le profil retenu impacte directement le coût." },
+                { titre: 'La nature du mur', desc: 'Brique foraine, parpaing armé, pierre, béton banché — chaque matériau demande son propre effort de découpe et de scellement.' },
+                { titre: "Ce qui se trouve au-dessus", desc: "Un étage habité, des combles ou deux étages exigent un étaiement et un dimensionnement renforcés." },
+                { titre: 'Les finitions demandées', desc: 'Ragréage, jonctions plâtre, peinture, repose des plinthes — chiffrés séparément et toujours détaillés au devis.' },
+              ].map((p) => (
+                <div key={p.titre} className="bg-ipb-cream border border-ipb-rule rounded-2xl p-6">
+                  <h3 className="font-bold text-ipb-text text-lg mb-2">{p.titre}</h3>
+                  <p className="text-sm text-ipb-muted leading-relaxed">{p.desc}</p>
                 </div>
               ))}
             </div>
@@ -334,7 +334,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
               </Link>
             </div>
             <p className="mt-4 text-center text-sm text-ipb-muted">
-              <strong className="text-ipb-text">Calcul instantané</strong> à partir de la portée et du type de mur. Recevez l'estimation par email.
+              <strong className="text-ipb-text">Calcul instantané</strong> basé sur la portée, le type de mur et la configuration. Recevez l'estimation par email.
             </p>
           </div>
         </section>
@@ -399,7 +399,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
                 <Phone size={20} /> 05 82 95 33 75
               </a>
             </div>
-            <p className="text-sm text-ipb-orange-l mt-6">✓ Décennale AXA · ✓ Sans engagement · ✓ Réponse 24h</p>
+            <p className="text-sm text-ipb-orange-l mt-6">✓ Accompagnement IPB inclus · ✓ Sans engagement · ✓ Réponse 24h</p>
           </div>
         </section>
       </main>

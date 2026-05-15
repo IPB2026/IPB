@@ -78,7 +78,7 @@ export function StickyDiagnosticCta() {
             <span className="text-white/75 tracking-[0.08em]">chantiers</span>
           </span>
           <span className="text-white/20" aria-hidden="true">·</span>
-          <span className="text-white/75 tracking-[0.08em]">Décennale AXA</span>
+          <span className="text-white/75 tracking-[0.08em]">Accompagnement inclus</span>
         </div>
 
         {/* CTA principal — fond cream avec filet orange signature */}
@@ -167,7 +167,7 @@ export function StickyDiagnosticCta() {
                 </span>
                 <span className="flex items-center gap-1">
                   <Shield size={14} className="text-green-500" />
-                  Garantie décennale
+                  Décennales métier
                 </span>
               </div>
 
