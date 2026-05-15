@@ -11,7 +11,7 @@ import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Avis Clients IPB · 4.9/5 Google · Toulouse',
-  description: "Avis vérifiés en Occitanie : 4.9/5 sur Google. Diagnostic fissures, mur porteur, expertise achat. Décennale AXA. ☎ 05 82 95 33 75",
+  description: "Avis vérifiés en Occitanie : 4.9/5 sur Google. Diagnostic fissures, mur porteur, expertise achat. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
   keywords: ['avis IPB', 'avis expert fissures toulouse', 'témoignages clients institut', 'IPB expertise avis', 'note google'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/avis-clients' },
   openGraph: {

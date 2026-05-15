@@ -36,11 +36,11 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     : `https://www.ipb-expertise.fr/expert-fissures/${ville}`;
 
   const description = villeData.risqueRGA === 'tres-fort' || villeData.risqueRGA === 'fort'
-    ? `Diagnostic fissures à ${villeNom} (${deptCode}) : zone RGA ${villeData.risqueRGA}. Agrafage structurel. Décennale AXA. ☎ 05 82 95 33 75`
-    : `Diagnostic fissures à ${villeNom} (${deptCode}) : agrafage structurel, rapport assurance. Décennale AXA. ☎ 05 82 95 33 75`;
+    ? `Diagnostic fissures à ${villeNom} (${deptCode}) : zone RGA ${villeData.risqueRGA}. Agrafage structurel. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75`
+    : `Diagnostic fissures à ${villeNom} (${deptCode}) : agrafage structurel, rapport assurance. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75`;
 
   return {
-    title: `Expert Fissures ${villeNom} ${deptCode} · Décennale AXA`,
+    title: `Expert Fissures ${villeNom} ${deptCode} · Décennale 10 ans`,
     description,
     keywords: [
       `expert fissures ${slug}`,
@@ -56,8 +56,8 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     ],
     alternates: { canonical: canonicalUrl },
     openGraph: {
-      title: `Expert Fissures ${villeNom} · Décennale AXA · IPB`,
-      description: `Diagnostic, agrafage structurel à ${villeNom}. Rapport technique reconnu par les assurances. Décennale AXA.`,
+      title: `Expert Fissures ${villeNom} · Décennale 10 ans · IPB`,
+      description: `Diagnostic, agrafage structurel à ${villeNom}. Rapport technique reconnu par les assurances. Décennale 10 ans sur les travaux.`,
       url: `https://www.ipb-expertise.fr/expert-fissures/${ville}`,
       type: 'website',
       images: [{ url: '/images/fissures-avant-apres.webp', width: 1200, height: 630, alt: `Expert fissures ${villeNom} — IPB` }],
@@ -65,7 +65,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     twitter: {
       card: 'summary_large_image',
       title: `Expert Fissures ${villeNom} · IPB`,
-      description: `Diagnostic, agrafage, rapport assurance à ${villeNom}. Décennale AXA.`,
+      description: `Diagnostic, agrafage, rapport assurance à ${villeNom}. Décennale 10 ans sur les travaux.`,
     },
     robots: { index: true, follow: true },
   };

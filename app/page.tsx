@@ -42,7 +42,7 @@ const homePersonas: PersonaCard[] = [
   {
     label: 'Rénovateur',
     titre: "Vous projetez d'ouvrir un mur porteur",
-    desc: "Cuisine ouverte, suite parentale, baie vitrée. Étude technique, dimensionnement de la poutre IPN ou HEB, pose et finitions sous garantie décennale AXA.",
+    desc: "Cuisine ouverte, suite parentale, baie vitrée. Étude technique, dimensionnement de la poutre IPN ou HEB, pose et finitions sous décennale 10 ans dédiée.",
     href: '/expert-mur-porteur',
     cta: 'Voir la page mur porteur',
   },
@@ -69,7 +69,7 @@ const organizationSchema = {
     "caption": "IPB - Institut de Pathologie du Bâtiment"
   },
   "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
-  "description": "Institut spécialisé en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Diagnostic de fissures, ouverture de mur porteur et création de baie vitrée. Décennale AXA.",
+  "description": "Institut spécialisé en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Diagnostic de fissures, ouverture de mur porteur et création de baie vitrée. Décennales métier dédiées.",
   "foundingDate": "2019",
   "numberOfEmployees": { "@type": "QuantitativeValue", "value": "8" },
   "address": {

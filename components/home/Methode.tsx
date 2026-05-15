@@ -27,13 +27,13 @@ const etapes = [
   },
   {
     num: '04',
-    titre: 'On exécute les travaux',
-    desc: "Nos équipes interviennent. Pas de sous-traitance externe. Chantier propre, sécurisé, dans les délais annoncés.",
+    titre: 'On pilote les travaux',
+    desc: "Notre institut coordonne l'exécution sous décennale 10 ans dédiée. Chantier propre, sécurisé, dans les délais annoncés.",
   },
   {
     num: '05',
     titre: 'On vous remet tout',
-    desc: "Documents complets du chantier, attestation de garantie décennale active, photos. Le dossier est à vous.",
+    desc: "Documents complets du chantier, attestations des décennales métier, photos. Le dossier est à vous.",
   },
 ];
 

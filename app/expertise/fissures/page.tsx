@@ -38,8 +38,8 @@ import Script from 'next/script';
 import { ExpertiseFissuresBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
-  title: 'Diagnostic et Traitement Fissures · Toulouse · AXA',
-  description: "Diagnostic instrumenté, agrafage structurel. Rapport technique reconnu par les assurances. Décennale AXA. Toulouse, Montauban. ☎ 05 82 95 33 75",
+  title: 'Diagnostic et Traitement Fissures · Toulouse · Décennale 10 ans',
+  description: "Diagnostic instrumenté, agrafage structurel. Rapport technique reconnu par les assurances. Décennale 10 ans sur les travaux. Toulouse, Montauban. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures toulouse',
     'expertise fissure toulouse',
@@ -60,7 +60,7 @@ export const metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/fissures' },
   openGraph: {
     title: 'Diagnostic et Traitement Fissures · Toulouse · IPB',
-    description: "Diagnostic instrumenté, agrafage structurel. Rapport technique reconnu par les assurances. Décennale AXA.",
+    description: "Diagnostic instrumenté, agrafage structurel. Rapport technique reconnu par les assurances. Décennale 10 ans sur les travaux.",
     url: 'https://www.ipb-expertise.fr/expertise/fissures',
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
     locale: 'fr_FR',
@@ -90,7 +90,7 @@ const generateServiceJsonLd = () => ({
     "address": { "@type": "PostalAddress", "streetAddress": "54 avenue Jean Jaurès", "addressLocality": "Tournefeuille", "addressRegion": "Occitanie", "postalCode": "31170", "addressCountry": "FR" }
   },
   "areaServed": [{ "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" }, { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" }, { "@type": "AdministrativeArea", "name": "Gers (32)" }, { "@type": "AdministrativeArea", "name": "Tarn (81)" }],
-  "description": "Diagnostic instrumenté de fissures, agrafage structurel, reprise en sous-œuvre. Rapports reconnus par les assurances. Décennale AXA."
+  "description": "Diagnostic instrumenté de fissures, agrafage structurel, reprise en sous-œuvre. Rapports reconnus par les assurances. Décennale 10 ans dédiée sur les travaux."
 });
 
 const typesFissures = [
@@ -163,7 +163,7 @@ export default function FissuresPage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">
-                  Une fissure n'est jamais anodine, mais elle n'est pas toujours grave. Notre institut vient sur place avec ses instruments, identifie la cause, et vous remet un rapport clair. Si des travaux sont nécessaires, ce sont nos équipes qui les exécutent — sous garantie décennale.
+                  Une fissure n'est jamais anodine, mais elle n'est pas toujours grave. Notre institut intervient sur place avec ses instruments, identifie la cause, et vous remet un rapport clair. Si des travaux sont nécessaires, ils sont menés sous décennale 10 ans dédiée.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>
@@ -197,7 +197,7 @@ export default function FissuresPage() {
                   </li>
                   <li className="flex items-center gap-1.5">
                     <span className="text-ipb-orange" aria-hidden="true">✓</span>
-                    <span>Décennale AXA</span>
+                    <span>Décennale 10 ans</span>
                   </li>
                 </ul>
               </RevealOnScroll>
@@ -249,7 +249,7 @@ export default function FissuresPage() {
                   </RevealOnScroll>
                   <RevealOnScroll delay={0.12}>
                     <p className="text-ipb-text">
-                      Notre rôle commence avant les travaux. Notre ingénieur se déplace, mesure l'évolution, identifie la <strong className="not-italic">cause exacte</strong> — sécheresse, défaut de chaînage, infiltration — et vous dit honnêtement si une intervention est nécessaire ou si vous pouvez attendre.
+                      Notre rôle commence avant les travaux. Notre institut se déplace, mesure l'évolution, identifie la <strong className="not-italic">cause exacte</strong> — sécheresse, défaut de chaînage, infiltration — et vous dit honnêtement si une intervention est nécessaire ou si vous pouvez attendre.
                     </p>
                   </RevealOnScroll>
                 </div>
@@ -345,7 +345,7 @@ export default function FissuresPage() {
                     { titre: 'Diagnostic sur site', desc: 'Visite par notre expert sous 72 heures en moyenne. Mesure au fissuromètre, lecture du bâti, identification de la cause (sécheresse, tassement, défaut de chaînage).' },
                     { titre: 'Rapport technique', desc: "Document écrit reconnu comme pièce technique par les assurances dans les dossiers CAT-NAT. Photos, mesures, cause identifiée, préconisations chiffrées." },
                     { titre: 'Choix de la solution', desc: "Agrafage structurel pour stabiliser le mur — solution adaptée à 90 % des cas. Pour les rares tassements actifs nécessitant une reprise en sous-œuvre, orientation vers un partenaire spécialisé. Le choix dépend du diagnostic, jamais d'une solution préconçue." },
-                    { titre: 'Travaux par nos équipes', desc: 'Exécution sous garantie décennale AXA. Chantier propre, dans les délais annoncés. Tous les documents vous sont remis à la livraison.' },
+                    { titre: 'Travaux pilotés par notre institut', desc: 'Exécution sous décennale 10 ans dédiée. Chantier propre, dans les délais annoncés. Tous les documents vous sont remis à la livraison.' },
                   ].map((etape, i) => (
                     <RevealOnScroll key={etape.titre} delay={0.08 + i * 0.06}>
                       <li className="grid grid-cols-[40px_1fr] gap-5 items-start pb-8 border-b border-white/10">

@@ -10,7 +10,7 @@ import { StatItem } from '@/components/ui/StatItem';
 const stats = [
   { value: 850, suffix: '+', label: 'Chantiers livrés', sublabel: '2019 — 2026' },
   { value: 4.9, decimals: 1, suffix: '/5', label: 'Avis Google', sublabel: 'Vérifiés sur Google' },
-  { value: 10, suffix: ' ans', label: 'Décennale AXA', sublabel: 'Active depuis 2019' },
+  { value: 10, suffix: ' ans', label: 'Décennales métier', sublabel: 'Garanties dédiées' },
   { value: 72, suffix: ' h', label: 'Délai de visite', sublabel: 'Moyenne constatée' },
 ];
 

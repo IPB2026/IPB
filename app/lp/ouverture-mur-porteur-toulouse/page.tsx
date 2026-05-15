@@ -8,7 +8,7 @@ import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
   title: "Ouverture Mur Porteur Toulouse · Devis Sous 7 Jours · Accompagnement IPB",
-  description: "Étude IPN/HEB, ouverture, finitions à Toulouse. Accompagnement IPB inclus, au prix d'un chantier en direct. Devis 7j. ☎ 05 82 95 33 75",
+  description: "Étude IPN/HEB, ouverture, finitions à Toulouse. Un seul interlocuteur, du devis à la livraison. Devis 7j. ☎ 05 82 95 33 75",
   robots: { index: false, follow: false },
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/mur-porteur' },
 };
@@ -33,7 +33,7 @@ export default function LandingMurPorteurToulouse() {
           <div className="grid lg:grid-cols-[6fr_5fr] gap-10 lg:gap-12 items-center">
             <div>
               <p className="text-ipb-orange text-[11px] uppercase tracking-[0.18em] font-medium mb-4">
-                Étude & travaux coordonnés · Accompagnement IPB inclus
+                Étude & travaux coordonnés · Un seul interlocuteur
               </p>
               <h1
                 className="font-serif text-ipb-text mb-6"
@@ -48,7 +48,7 @@ export default function LandingMurPorteurToulouse() {
                 <em>Un seul interlocuteur, de A à Z.</em>
               </h1>
               <p className="text-[15px] leading-[1.85] font-light text-ipb-muted mb-8">
-                IPB prend en charge l'opération de bout en bout : étude IPN/HEB, étaiement, pose de la poutre, finitions. Chaque étape sous sa décennale métier. <strong className="font-medium text-ipb-text not-italic">Au prix d'un chantier en direct, estimation sous 7 jours.</strong>
+                IPB prend en charge l'opération de bout en bout : étude IPN/HEB, étaiement, pose de la poutre, finitions. Chaque étape sous sa décennale métier. <strong className="font-medium text-ipb-text not-italic">Vous décrivez le projet, on s'occupe du reste — estimation sous 7 jours.</strong>
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 mb-6">
@@ -67,7 +67,7 @@ export default function LandingMurPorteurToulouse() {
                 {[
                   '<strong class="text-ipb-text not-italic font-medium">Note de calcul signée selon les Eurocodes</strong> — opposable face à un assureur ou un contrôleur',
                   '<strong class="text-ipb-text not-italic font-medium">Chantier 3 à 5 jours</strong> — étaiement, ouverture, pose poutre, finitions',
-                  '<strong class="text-ipb-text not-italic font-medium">Au prix d\'un chantier en direct</strong> — accompagnement IPB inclus, devis ferme remis sous 7 jours',
+                  '<strong class="text-ipb-text not-italic font-medium">Un seul interlocuteur</strong> — du devis à la livraison, vous parlez à une seule personne',
                 ].map((item) => (
                   <li key={item} className="flex gap-3">
                     <span className="text-ipb-orange flex-shrink-0">—</span>
@@ -158,7 +158,7 @@ export default function LandingMurPorteurToulouse() {
               05 82 95 33 75
             </a>
           </div>
-          <p className="text-[12px] text-ipb-light mt-4">Sans inscription · Devis gratuit · Accompagnement IPB inclus</p>
+          <p className="text-[12px] text-ipb-light mt-4">Sans inscription · Devis gratuit · Un seul interlocuteur</p>
         </div>
       </section>
     </LandingShell>

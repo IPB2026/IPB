@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/fissure-en-escalier-causes' },
   openGraph: {
     title: 'Fissure en Escalier · Causes et Solutions · IPB',
-    description: "Tassement différentiel. Diagnostic et traitement par agrafage. Décennale AXA.",
+    description: "Tassement différentiel. Diagnostic et traitement par agrafage. Décennale 10 ans sur les travaux.",
     url: 'https://www.ipb-expertise.fr/fissure-en-escalier-causes',
     type: 'article',
     images: [{ url: '/images/fissure-facade-diagonale.webp', width: 1200, height: 630, alt: 'Fissure en escalier sur mur' }],

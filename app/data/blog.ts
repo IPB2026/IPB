@@ -5556,7 +5556,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '10 min',
     category: 'fissures',
     author: "L'institut IPB",
-    metaDescription: 'Prix agrafage fissures 2026 : de 80 à 150€/ml. Comparatif agrafage vs micropieux (3x moins cher). Devis détaillé, aides CAT-NAT, décennale AXA.',
+    metaDescription: 'Prix agrafage fissures 2026 : de 80 à 150€/ml. Comparatif agrafage vs micropieux (3x moins cher). Devis détaillé, aides CAT-NAT, décennale 10 ans dédiée.',
     keywords: ['prix agrafage fissures', 'cout agrafage fissure', 'tarif agrafage mur', 'prix reparation fissure maison', 'agrafage fissure prix m2', 'devis agrafage fissures', 'cout reparation fissure facade'],
     content: `
       <div class="mb-8 p-6 bg-emerald-50 border-l-4 border-emerald-600 rounded-r-lg">
@@ -7282,7 +7282,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h2>Détail poste par poste</h2>
 
       <h3>1. Étude structure — 500 à 1 500 €</h3>
-      <p>C'est l'étape <strong>non négociable</strong>. Notre ingénieur passe sur place, identifie les charges reprises par le mur (planchers, toiture), calcule la poutre nécessaire (IPN, HEB ou IPE selon la portée et le poids), et rédige une note de calcul signée. Cette note est <strong>opposable à l'assurance et au tribunal</strong>.</p>
+      <p>C'est l'étape <strong>non négociable</strong>. Notre institut passe sur place, identifie les charges reprises par le mur (planchers, toiture), calcule la poutre nécessaire (IPN, HEB ou IPE selon la portée et le poids), et rédige une note de calcul signée. Cette note est <strong>opposable à l'assurance et au tribunal</strong>.</p>
       <p><strong>Pourquoi cet écart ?</strong> Une simple ouverture en RDC d'une maison récente : 500 €. Une ouverture dans un immeuble haussmannien des Carmes avec 3 niveaux au-dessus : 1 500 €.</p>
 
       <h3>2. Étaiement provisoire — 300 à 800 €</h3>
@@ -7469,7 +7469,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
         <p class="font-bold text-orange-900 mb-3">Devis gratuit sous 24h pour votre projet à Toulouse</p>
-        <p class="text-orange-800 mb-4">IPB intervient en Haute-Garonne, Tarn-et-Garonne, Gers et Tarn. Notre ingénieur passe gratuitement, vous repartez avec une note de calcul, un devis ferme et l'attestation décennale AXA.</p>
+        <p class="text-orange-800 mb-4">IPB intervient en Haute-Garonne, Tarn-et-Garonne, Gers et Tarn. Notre institut passe gratuitement, vous repartez avec une note de calcul, un devis ferme et l'attestation décennale 10 ans dédiée.</p>
         <a href="/diagnostic" class="inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition-colors">Demander un devis →</a>
       </div>
     `
@@ -7566,12 +7566,12 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <h2>Comment IPB vous aide à Toulouse</h2>
-      <p>Notre institut combine bureau d'études et travaux. Lors de la première visite, notre ingénieur :</p>
+      <p>Notre institut combine bureau d'études et travaux. Lors de la première visite, notre institut :</p>
       <ul>
         <li>identifie les murs porteurs sur place (épaisseur, sons, plans si disponibles) ;</li>
         <li>vous remet un plan annoté ;</li>
         <li>si l'ouverture est possible, calcule la poutre, le mode d'étaiement et le budget total ;</li>
-        <li>vous propose un devis fermé sous 7 jours, avec décennale AXA jointe.</li>
+        <li>vous propose un devis fermé sous 7 jours, avec décennale 10 ans dédiée jointe.</li>
       </ul>
 
       <h2>Tableau récapitulatif : les 4 indices à croiser</h2>
@@ -7690,7 +7690,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '7 min',
     category: 'expertise',
     author: "L'institut IPB",
-    metaDescription: 'Étude de cas chantier IPB : ouverture d\'un mur porteur 4m dans un T3 toulousain. Plans, choix poutre HEB 220, étaiement, planning, prix. Décennale AXA.',
+    metaDescription: 'Étude de cas chantier IPB : ouverture d\'un mur porteur 4m dans un T3 toulousain. Plans, choix poutre HEB 220, étaiement, planning, prix. Décennale 10 ans dédiée.',
     keywords: ['étude de cas mur porteur', 'ouverture mur porteur 4 mètres', 'mur porteur T3 toulouse', 'chantier réel structure', 'HEB 220 toulouse', 'transformation cuisine ouverte'],
     content: `
       <div class="mb-8 p-6 bg-emerald-50 border-l-4 border-emerald-600 rounded-r-lg">
@@ -7710,7 +7710,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Il nous a contactés un mardi après-midi. Visite jeudi, devis vendredi, chantier démarré 3 semaines plus tard.</p>
 
       <h2>Étape 1 — Visite technique et étude structure</h2>
-      <p>Notre ingénieur passe sur place avec un fissuromètre, un détecteur de métal (pour trouver d'éventuels chaînages) et le plan de l'immeuble. Constats :</p>
+      <p>Notre institut passe sur place avec un fissuromètre, un détecteur de métal (pour trouver d'éventuels chaînages) et le plan de l'immeuble. Constats :</p>
       <ul>
         <li>Mur porteur traversant, supportant les <strong>3 niveaux au-dessus</strong></li>
         <li>Plancher en hourdis béton (1970), portée perpendiculaire au mur</li>
@@ -7721,7 +7721,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Calcul de descente de charges : la poutre devra reprendre <strong>~12 tonnes au mètre linéaire</strong>. Avec une portée de 4,2 m + appuis de 30 cm de chaque côté, on opte pour un <strong>HEB 220</strong> (et non un IPN, qui aurait fléchi au-delà du seuil acceptable).</p>
 
       <h3>La note de calcul</h3>
-      <p>Document signé par notre ingénieur, transmis au client, à la copropriété (vote en AG) et conservé pour la décennale. Eléments inclus :</p>
+      <p>Document signé par notre institut, transmis au client, à la copropriété (vote en AG) et conservé pour la décennale. Eléments inclus :</p>
       <ul>
         <li>Charges reprises (Eurocode 1)</li>
         <li>Vérification résistance + flèche maximale (L/500 en immeuble d'habitation)</li>
@@ -7768,7 +7768,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
         <p class="font-bold text-orange-900 mb-3">Vous avez un projet similaire à Toulouse ?</p>
-        <p class="text-orange-800 mb-4">Investisseur, particulier, marchand de biens : nous fonctionnons avec la même rigueur quel que soit le profil. Devis gratuit, note de calcul incluse, attestation décennale AXA remise avec le devis.</p>
+        <p class="text-orange-800 mb-4">Investisseur, particulier, marchand de biens : nous fonctionnons avec la même rigueur quel que soit le profil. Devis gratuit, note de calcul incluse, attestation décennale 10 ans dédiée remise avec le devis.</p>
         <a href="/diagnostic" class="inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition-colors">Lancer mon devis →</a>
       </div>
     `
@@ -7784,7 +7784,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '9 min',
     category: 'conseils',
     author: "L'institut IPB",
-    metaDescription: "Le diagnostic structurel avant vente vous protège du vice caché pendant 30 ans. Rapport opposable par institut indépendant en Occitanie. Délai 72h, décennale AXA.",
+    metaDescription: "Le diagnostic structurel avant vente vous protège du vice caché pendant 30 ans. Rapport opposable par institut indépendant en Occitanie. Délai 72h, décennale 10 ans dédiée.",
     keywords: ['diagnostic structurel avant vente', 'expertise maison avant vente', 'vice caché vente maison', 'vendre maison fissure', 'rapport opposable', 'expertise structurelle vendeur'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
@@ -7974,7 +7974,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
         <p class="font-bold text-orange-900 mb-3">Vous mettez votre maison en vente en Occitanie ?</p>
-        <p class="text-orange-800 mb-4">Notre institut intervient sous 72 h pour réaliser un diagnostic structurel opposable. Rapport signé, photos, mesures, préconisations. Décennale AXA. Devis gratuit.</p>
+        <p class="text-orange-800 mb-4">Notre institut intervient sous 72 h pour réaliser un diagnostic structurel opposable. Rapport signé, photos, mesures, préconisations. Décennale 10 ans dédiée. Devis gratuit.</p>
         <a href="/diagnostic" class="inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition-colors">Demander mon diagnostic →</a>
       </div>
     `
@@ -8216,7 +8216,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
         <p class="font-bold text-orange-900 mb-3">Une fissure vous inquiète ?</p>
-        <p class="text-orange-800 mb-4">Notre institut intervient en Occitanie pour lire vos fissures et vous dire ce qui relève d'une simple cosmétique ou d'un vrai désordre structurel. Diagnostic gratuit, rapport opposable si besoin, décennale AXA.</p>
+        <p class="text-orange-800 mb-4">Notre institut intervient en Occitanie pour lire vos fissures et vous dire ce qui relève d'une simple cosmétique ou d'un vrai désordre structurel. Diagnostic gratuit, rapport opposable si besoin, décennale 10 ans dédiée.</p>
         <a href="/diagnostic" class="inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition-colors">Lancer mon diagnostic →</a>
       </div>
     `
@@ -8398,13 +8398,13 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h3>Vous avez un doute</h3>
 
-      <p>Quelques signaux mixtes, un cas qui ne tranche pas. Vous pouvez décrire votre situation via le pré-diagnostic gratuit de l'institut. Notre ingénieur consulte les éléments transmis sous quarante-huit heures et vous indique si une visite est utile.</p>
+      <p>Quelques signaux mixtes, un cas qui ne tranche pas. Vous pouvez décrire votre situation via le pré-diagnostic gratuit de l'institut. Notre institut consulte les éléments transmis sous quarante-huit heures et vous indique si une visite est utile.</p>
 
       <h3>Vous concluez à un caractère structurel ou les indices s'accumulent</h3>
 
       <p>Plusieurs signaux structurels convergent. Une fissure traversante, qui s'élargit, accompagnée de portes qui coincent et d'un carrelage qui se descelle. Le diagnostic instrumenté sur site est la prochaine étape. Ce n'est pas une décision à reporter : plus le bâti continue de bouger, plus la réparation sera complexe et coûteuse.</p>
 
-      <p class="mt-12 text-[15px] italic text-slate-600 border-t border-slate-200 pt-8">Si après lecture vous souhaitez que nous regardions votre situation, vous pouvez décrire votre cas via le <a href="/diagnostic" class="text-ipb-orange-d underline hover:no-underline">pré-diagnostic gratuit de l'institut</a>. Notre ingénieur le consulte sous quarante-huit heures.</p>
+      <p class="mt-12 text-[15px] italic text-slate-600 border-t border-slate-200 pt-8">Si après lecture vous souhaitez que nous regardions votre situation, vous pouvez décrire votre cas via le <a href="/diagnostic" class="text-ipb-orange-d underline hover:no-underline">pré-diagnostic gratuit de l'institut</a>. Notre institut le consulte sous quarante-huit heures.</p>
     `
   },
 

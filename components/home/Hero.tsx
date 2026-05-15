@@ -135,7 +135,7 @@ export function Hero() {
                   10<span className="text-ipb-light text-lg sm:text-2xl"> ans</span>
                 </p>
                 <p className="text-[9px] sm:text-[10px] text-ipb-light uppercase tracking-[0.14em] sm:tracking-[0.16em] mt-2 whitespace-nowrap">
-                  Décennale AXA
+                  Décennale dédiée
                 </p>
               </div>
             </div>

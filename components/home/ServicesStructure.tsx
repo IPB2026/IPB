@@ -32,7 +32,7 @@ export function ServicesStructure() {
                     </h3>
                     <p className="text-slate-600 text-sm leading-relaxed mb-3">
                       Cuisine fermée à ouvrir sur le séjour ? Baie vitrée à percer côté jardin ?
-                      Notre ingénieur calcule la poutre, nos équipes la posent. <strong className="text-slate-800">3 à 5 jours sur place.</strong>
+                      Notre institut pilote l'étude et la pose, sous décennales métier dédiées. <strong className="text-slate-800">3 à 5 jours sur place.</strong>
                     </p>
                     <div className="flex items-center gap-2 text-orange-600 font-bold text-sm">
                       Voir comment on procède <ArrowRight size={14} className="group-hover:translate-x-1 transition" />
@@ -94,7 +94,7 @@ export function ServicesStructure() {
                 <p className="text-white font-display text-2xl font-bold leading-tight mb-1">
                   Étaiement, découpe, pose de la poutre.
                 </p>
-                <p className="text-slate-200 text-sm">Nos équipes interviennent en moyenne 3 à 5 jours.</p>
+                <p className="text-slate-200 text-sm">Intervention en moyenne 3 à 5 jours.</p>
               </div>
             </div>
 

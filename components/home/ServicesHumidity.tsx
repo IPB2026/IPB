@@ -20,7 +20,7 @@ export function ServicesHumidity() {
 
             <p className="text-slate-600 text-base md:text-lg mb-8 leading-relaxed">
               Ouvrir un mur porteur sans étude structure, c'est jouer à la roulette avec la sécurité de votre bâtiment.
-              Notre ingénieur <strong className="text-slate-900">calcule les charges, dimensionne la poutre et supervise le chantier</strong>.
+              Notre institut <strong className="text-slate-900">pilote l'étude des charges, le dimensionnement de la poutre et la supervision du chantier</strong>.
               Résultat : votre espace s'ouvre, la lumière entre, la structure tient. Pour les 100 prochaines années.
             </p>
 
@@ -32,7 +32,7 @@ export function ServicesHumidity() {
                     Étude structure : calculer avant de démolir
                   </h3>
                   <p className="text-sm md:text-base text-slate-500">
-                    Notre ingénieur analyse les charges descendantes, calcule la section de poutre (IPN, HEB ou béton armé) et rédige la note de calcul officielle.{' '}
+                    Notre institut pilote l'analyse des charges descendantes, le calcul de la section de poutre (IPN, HEB ou béton armé) et la rédaction de la note de calcul officielle, sous décennale études dédiée.{' '}
                     <strong className="text-amber-700">Sans cette étape, aucun artisan sérieux ne devrait toucher à votre mur.</strong>
                   </p>
                 </div>
@@ -45,9 +45,9 @@ export function ServicesHumidity() {
                     Chantier clé en main : étaiement, ouverture, finitions
                   </h3>
                   <p className="text-sm md:text-base text-slate-500">
-                    Nos équipes posent l'étaiement provisoire, réalisent l'ouverture, posent la poutre et gèrent les finitions. Chantier propre, livré en{' '}
+                    Étaiement provisoire, ouverture, pose de la poutre et finitions sont menés sous notre pilotage. Chantier propre, livré en{' '}
                     <strong className="text-amber-700">2 à 5 jours selon la portée.</strong>{' '}
-                    Garantie décennale sur l'ensemble.
+                    Décennale 10 ans sur les travaux.
                   </p>
                 </div>
               </div>
@@ -64,10 +64,10 @@ export function ServicesHumidity() {
             {/* Points forts */}
             <div className="grid grid-cols-2 gap-3 mb-8">
               {[
-                'Équipe expérimentée, décennale AXA active',
+                'Décennales métier 10 ans (études + travaux)',
                 'Démarches administratives incluses',
                 'Baie vitrée : coordination menuiserie',
-                'Note de calcul co-signée par notre BE partenaire',
+                'Note de calcul opposable selon les Eurocodes',
               ].map((item) => (
                 <div key={item} className="flex items-center gap-2 text-sm text-slate-700">
                   <CheckCircle size={15} className="text-amber-600 shrink-0" />

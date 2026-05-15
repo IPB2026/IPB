@@ -12,7 +12,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "Étude structure & travaux Toulouse · Mur porteur, IPN · IPB",
-  description: "Étude technique et travaux structure à Toulouse : dimensionnement IPN/HEB, ouverture de mur porteur. Note de calcul opposable selon les Eurocodes. Accompagnement IPB inclus. ☎ 05 82 95 33 75",
+  description: "Étude technique et travaux structure à Toulouse : dimensionnement IPN/HEB, ouverture de mur porteur. Note de calcul opposable selon les Eurocodes. Un seul interlocuteur, du devis à la livraison. ☎ 05 82 95 33 75",
   keywords: [
     'étude structure toulouse',
     'étude structure haute-garonne',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/bureau-etude-structure-toulouse' },
   openGraph: {
     title: "Étude structure & travaux · IPB Toulouse",
-    description: "Étude technique et travaux structure : IPB prend en charge l'opération de A à Z. Note de calcul opposable selon les Eurocodes, accompagnement IPB inclus dans le prix du chantier.",
+    description: "Étude technique et travaux structure : IPB prend en charge l'opération de A à Z. Note de calcul opposable selon les Eurocodes. Un seul interlocuteur, du devis à la livraison.",
     url: 'https://www.ipb-expertise.fr/bureau-etude-structure-toulouse',
     type: 'website',
   },
@@ -43,7 +43,7 @@ const serviceJsonLd = {
   "@type": "Service",
   "name": "Étude structure et travaux IPB",
   "@id": "https://www.ipb-expertise.fr/bureau-etude-structure-toulouse#service",
-  "description": "Étude technique et travaux structure à Toulouse : ouverture de mur porteur, dimensionnement IPN/HEB, reprise structurelle. Notes de calcul opposables selon les Eurocodes, accompagnement IPB inclus dans le prix du chantier.",
+  "description": "Étude technique et travaux structure à Toulouse : ouverture de mur porteur, dimensionnement IPN/HEB, reprise structurelle. Notes de calcul opposables selon les Eurocodes. Un seul interlocuteur, de l'étude à la livraison.",
   "areaServed": [
     { "@type": "City", "name": "Toulouse" },
     { "@type": "AdministrativeArea", "name": "Haute-Garonne" },
@@ -164,7 +164,7 @@ export default function BureauEtudeStructurePage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[620px]">
-                  Étude technique et travaux structure à Toulouse — mur porteur, IPN, reprise structurelle. IPB prend en charge l'opération de A à Z : diagnostic, étude selon les Eurocodes, étaiement, pose et finitions. Chaque étape sous sa décennale métier. Accompagnement IPB inclus dans le prix du chantier.
+                  Étude technique et travaux structure à Toulouse — mur porteur, IPN, reprise structurelle. IPB prend en charge l'opération de A à Z : diagnostic, étude selon les Eurocodes, étaiement, pose et finitions. Chaque étape sous sa décennale métier. Vous, vous parlez à une seule personne, du devis à la livraison.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>

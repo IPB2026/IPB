@@ -10,7 +10,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "Programme Partenaires Toulouse · Architectes & Pros",
-  description: "Partenaire structure des architectes, marchands de biens, agences immobilières Toulouse. Bureau d'études + travaux. Décennale AXA. ☎ 05 82 95 33 75",
+  description: "Partenaire structure des architectes, marchands de biens, agences immobilières Toulouse. Bureau d'études + travaux. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
   keywords: ['partenariat structure toulouse', 'sous-traitance bureau études', 'partenaire architecte intérieur', 'partenaire marchand de biens', 'partenaire agence immobilière'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/partenaires' },
 };
@@ -21,7 +21,7 @@ const partenaires = [
     num: '01',
     title: "Architectes d'intérieur & décorateurs",
     desc: "Vos projets « espace ouvert » nécessitent une étude de structure et une décennale. Nous sommes votre partenaire technique en sous-traitance ou co-traitance.",
-    points: ['Co-traitance ou sous-traitance', 'Calcul technique signé par notre ingénieur', 'Tarif partenaire dès 3 projets par an'],
+    points: ['Co-traitance ou sous-traitance', 'Calcul technique signé sous décennale études dédiée', 'Tarif partenaire dès 3 projets par an'],
   },
   {
     href: '/partenaires/marchands-de-biens',

@@ -8,7 +8,7 @@ import { StatCounter } from '@/components/ui/StatCounter';
  * Cabinet — bloc institutionnel, faits vérifiables.
  *
  * Approche : pas de slogans, des faits — date de création, nombre de chantiers,
- * note Google, décennale AXA. Pas de visage individuel : l'autorité narrative
+ * note Google, décennale 10 ans. Pas de visage individuel : l'autorité narrative
  * est l'institut lui-même.
  *
  * Ton : neutre, factuel, posé. Pas de promesse.
@@ -105,10 +105,10 @@ export function Cabinet() {
                 </div>
                 <div>
                   <p className="font-serif text-ipb-text font-bold leading-none mb-3" style={{ fontSize: 'clamp(40px, 4vw, 56px)' }}>
-                    AXA
+                    10 ans
                   </p>
                   <p className="text-[11px] text-ipb-light uppercase tracking-[0.14em]">
-                    Décennale active
+                    Décennale dédiée
                   </p>
                 </div>
               </div>

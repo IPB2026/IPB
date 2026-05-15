@@ -14,8 +14,8 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures Toulouse 31 · Diagnostic 72h · AXA',
-  description: "Diagnostic fissures à Toulouse : agrafage structurel, rapport technique reconnu par les assurances. 70 dossiers fissures par an. Décennale AXA. Visite sous 72h. ☎ 05 82 95 33 75",
+  title: 'Expert Fissures Toulouse 31 · Diagnostic 72h · Décennale 10 ans',
+  description: "Diagnostic fissures à Toulouse : agrafage structurel, rapport technique reconnu par les assurances. 70 dossiers fissures par an. Décennale 10 ans sur les travaux. Visite sous 72h. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures toulouse',
     'expert fissure toulouse',
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31' },
   openGraph: {
-    title: 'Expert Fissures Toulouse · Décennale AXA · IPB',
-    description: "Diagnostic, agrafage structurel, rapport technique reconnu par les assurances. Décennale AXA. 70 dossiers fissures par an.",
+    title: 'Expert Fissures Toulouse · Décennale 10 ans · IPB',
+    description: "Diagnostic, agrafage structurel, rapport technique reconnu par les assurances. Décennale 10 ans sur les travaux. 70 dossiers fissures par an.",
     url: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31',
     type: 'website',
     images: [{
@@ -203,7 +203,7 @@ export default function ExpertFissuresToulousePage() {
                   </li>
                   <li className="flex items-center gap-1.5">
                     <span className="text-ipb-orange" aria-hidden="true">✓</span>
-                    <span>Décennale AXA</span>
+                    <span>Décennale 10 ans</span>
                   </li>
                 </ul>
               </RevealOnScroll>
@@ -243,7 +243,7 @@ export default function ExpertFissuresToulousePage() {
                   </RevealOnScroll>
                   <RevealOnScroll delay={0.12}>
                     <p className="text-ipb-text">
-                      Notre rôle commence avant les travaux. Notre ingénieur se déplace, mesure l'évolution, identifie la <strong className="not-italic">cause exacte</strong> — sécheresse, défaut de chaînage, infiltration — et vous dit honnêtement si une intervention est nécessaire ou si vous pouvez attendre.
+                      Notre rôle commence avant les travaux. Notre institut se déplace, mesure l'évolution, identifie la <strong className="not-italic">cause exacte</strong> — sécheresse, défaut de chaînage, infiltration — et vous dit honnêtement si une intervention est nécessaire ou si vous pouvez attendre.
                     </p>
                   </RevealOnScroll>
                 </div>
@@ -304,7 +304,7 @@ export default function ExpertFissuresToulousePage() {
                 { value: 850, suffix: '+', label: 'Chantiers livrés' },
                 { value: 70, label: 'Dossiers par an', sublabel: 'en moyenne' },
                 { value: 4.9, decimals: 1, suffix: '/5', label: 'Avis Google' },
-                { value: 10, suffix: ' ans', label: 'Décennale AXA' },
+                { value: 10, suffix: ' ans', label: 'Décennale dédiée' },
               ].map((s, i) => (
                 <RevealOnScroll key={s.label} delay={i * 0.06}>
                   <div className="text-center lg:text-left lg:border-l lg:border-white/10 lg:pl-8">
@@ -353,7 +353,7 @@ export default function ExpertFissuresToulousePage() {
                     delai: 'Étape 1 · 2 min en ligne',
                   },
                   {
-                    titre: 'Notre ingénieur vous rappelle',
+                    titre: 'Notre institut vous rappelle',
                     detail: 'Sous 24h ouvrées, premier avis téléphonique : ce que nous lisons dans vos descriptions, urgent ou non, démarches assurance possibles. Souvent ce premier échange suffit à vous rassurer.',
                     delai: 'Étape 2 · Sous 24h',
                   },
@@ -364,7 +364,7 @@ export default function ExpertFissuresToulousePage() {
                   },
                   {
                     titre: 'Rapport, devis, travaux',
-                    detail: 'Rapport technique écrit sous 3 à 5 jours ouvrés, reconnu par les assurances dans les dossiers CAT-NAT. Devis détaillé. Si vous confirmez : agrafage structurel sous garantie décennale AXA, chantier 3 à 5 jours selon ampleur.',
+                    detail: 'Rapport technique écrit sous 3 à 5 jours ouvrés, reconnu par les assurances dans les dossiers CAT-NAT. Devis détaillé. Si vous confirmez : agrafage structurel sous décennale 10 ans dédiée, chantier 3 à 5 jours selon ampleur.',
                     delai: 'Étape 4 · Travaux décennale',
                   },
                 ].map((etape, i) => (

@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
 
   return {
     title: `Traitement Humidité ${villeNom} ${deptCode} · Garantie 30 ans`,
-    description: `Traitement humidité à ${villeNom} : injection résine, cuvelage, VMI, drainage. Garantie 30 ans. Décennale AXA. ☎ 05 82 95 33 75`,
+    description: `Traitement humidité à ${villeNom} : injection résine, cuvelage, VMI, drainage. Garantie 30 ans. Décennale 10 ans. ☎ 05 82 95 33 75`,
     keywords: [
       `traitement humidité ${ville}`,
       `injection résine ${ville}`,
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     alternates: { canonical: `https://www.ipb-expertise.fr/traitement-humidite/${ville}` },
     openGraph: {
       title: `Traitement Humidité ${villeNom} · IPB`,
-      description: `Injection résine, cuvelage, VMI à ${villeNom}. Garantie 30 ans. Décennale AXA.`,
+      description: `Injection résine, cuvelage, VMI à ${villeNom}. Garantie 30 ans. Décennale 10 ans.`,
       url: `https://www.ipb-expertise.fr/traitement-humidite/${ville}`,
       type: 'website',
       images: [{ url: '/images/humidite-avant-apres.webp', width: 1200, height: 630, alt: `Traitement humidité ${villeNom}` }],

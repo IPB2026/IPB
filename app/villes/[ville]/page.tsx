@@ -36,8 +36,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const deptCode = villeData.codePostal.slice(0, 2);
-  const title = `Expert Fissures & Humidité ${villeData.nom} ${deptCode} · AXA`;
-  const description = `Expert fissures et humidité à ${villeData.nom} (${villeData.departement}). Visite sous 72h. Décennale AXA. ☎ 05 82 95 33 75`;
+  const title = `Expert Fissures & Humidité ${villeData.nom} ${deptCode} · Décennale 10 ans`;
+  const description = `Expert fissures et humidité à ${villeData.nom} (${villeData.departement}). Visite sous 72h. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75`;
 
   // Canonical : /villes/{ville} est redirigé 301 par le middleware vers /expert-fissures/{ville}
   // (sauf Toulouse → page d'autorité). Le canonical doit pointer vers la CIBLE du redirect,

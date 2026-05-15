@@ -6,7 +6,7 @@ const ogImage = `${site}/images/IPB_Logo_HD.png`;
 
 export const metadata: Metadata = {
   title: 'Blog Fissures & Humidité · Guides Experts Toulouse',
-  description: "Guides techniques sur fissures, humidité, structure. Agrafage, injection résine, assurance, revente. Décennale AXA. ☎ 05 82 95 33 75",
+  description: "Guides techniques sur fissures, humidité, structure. Agrafage, injection résine, assurance, revente. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
   keywords: [
     'fissures maison',
     'humidité murs',
