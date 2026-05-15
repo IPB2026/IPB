@@ -78,7 +78,7 @@ export function StickyDiagnosticCta() {
             <span className="text-white/75 tracking-[0.08em]">chantiers</span>
           </span>
           <span className="text-white/20" aria-hidden="true">·</span>
-          <span className="text-white/75 tracking-[0.08em]">Accompagnement inclus</span>
+          <span className="text-white/75 tracking-[0.08em]">Un seul interlocuteur</span>
         </div>
 
         {/* CTA principal — fond cream avec filet orange signature */}

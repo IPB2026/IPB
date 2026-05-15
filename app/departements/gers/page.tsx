@@ -4,8 +4,8 @@ import { Phone, MapPin, CheckCircle, ArrowRight } from 'lucide-react';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures & Humidité Gers 32 · Auch · AXA',
-  description: "Expert fissures et humidité Gers (32) : Auch, Condom, Fleurance. Diagnostic gratuit. Décennale AXA. ☎ 05 82 95 33 75",
+  title: 'Expert Fissures & Humidité Gers 32 · Auch · Décennale 10 ans',
+  description: "Expert fissures et humidité Gers (32) : Auch, Condom, Fleurance. Diagnostic gratuit. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures gers',
     'traitement humidité 32',

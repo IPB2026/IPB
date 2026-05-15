@@ -13,7 +13,7 @@ import { ExpertiseHumiditeBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
   title: "Diagnostic et Traitement Humidité · Toulouse · 30 ans",
-  description: "Diagnostic instrumenté humidité, injection résine, cuvelage, VMI. Garantie 30 ans. Décennale AXA. ☎ 05 82 95 33 75",
+  description: "Diagnostic instrumenté humidité, injection résine, cuvelage, VMI. Garantie 30 ans. Décennale 10 ans dédiée. ☎ 05 82 95 33 75",
   keywords: [
     'expert humidité toulouse',
     'expertise humidité haute-garonne',
@@ -29,7 +29,7 @@ export const metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/humidite' },
   openGraph: {
     title: "Diagnostic et Traitement Humidité · Toulouse · IPB",
-    description: "Injection résine, cuvelage, VMI. Garantie 30 ans. Décennale AXA.",
+    description: "Injection résine, cuvelage, VMI. Garantie 30 ans. Décennale 10 ans dédiée.",
     url: 'https://www.ipb-expertise.fr/expertise/humidite',
     type: 'website',
     images: [{ url: '/images/humidite-avant-apres.webp', width: 1200, height: 630, alt: 'Avant et après traitement humidité — Institut IPB' }],
@@ -57,7 +57,7 @@ const generateServiceJsonLd = () => ({
     "address": { "@type": "PostalAddress", "streetAddress": "54 avenue Jean Jaurès", "addressLocality": "Tournefeuille", "addressRegion": "Occitanie", "postalCode": "31170", "addressCountry": "FR" }
   },
   "areaServed": [{ "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" }, { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" }, { "@type": "AdministrativeArea", "name": "Gers (32)" }, { "@type": "AdministrativeArea", "name": "Tarn (81)" }],
-  "description": "Diagnostic instrumenté de l'humidité, injection de résine, cuvelage, traitement du salpêtre, ventilation. Décennale AXA."
+  "description": "Diagnostic instrumenté de l'humidité, injection de résine, cuvelage, traitement du salpêtre, ventilation. Décennale 10 ans dédiée."
 });
 
 const typesHumidite = [
@@ -228,7 +228,7 @@ export default function HumiditePage() {
                     { titre: 'Diagnostic sur place', desc: "Visite avec hygromètre, caméra thermique et test à la pesée. Mesure du taux d'humidité dans les murs, identification de la cause exacte." },
                     { titre: 'Rapport et préconisations', desc: 'Document écrit sous 3 à 5 jours ouvrés avec photos, mesures, cause identifiée et solutions chiffrées. Reconnu par les assurances en cas de litige.' },
                     { titre: 'Choix du traitement', desc: "Injection de résine, cuvelage, ventilation, drainage : la solution dépend du diagnostic, jamais d'un produit qu'on voudrait vendre." },
-                    { titre: 'Travaux par nos équipes', desc: 'Exécution sous garantie décennale AXA. Vérification post-traitement à 6 mois pour confirmer la disparition des symptômes.' },
+                    { titre: 'Travaux pilotés par notre institut', desc: 'Exécution sous décennale 10 ans dédiée. Vérification post-traitement à 6 mois pour confirmer la disparition des symptômes.' },
                   ].map((etape, i) => (
                     <RevealOnScroll key={etape.titre} delay={0.08 + i * 0.06}>
                       <li className="grid grid-cols-[40px_1fr] gap-5 items-start pb-8 border-b border-white/10">

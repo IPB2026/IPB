@@ -29,7 +29,7 @@ const steps = [
     number: '04',
     icon: Hammer,
     title: 'Réalisation des travaux',
-    description: 'Nos équipes réalisent les travaux. Un seul interlocuteur du début à la fin.',
+    description: 'Notre institut pilote les travaux sous décennale dédiée. Un seul interlocuteur du début à la fin.',
     detail: 'Chantier de 1 à 5 jours',
     color: 'emerald',
   },
@@ -90,7 +90,7 @@ export function Roadmap() {
             Un accompagnement complet, étape par étape
           </h2>
           <p className="text-slate-500 text-base md:text-lg max-w-2xl mx-auto">
-            Du premier appel à la garantie décennale, IPB reste votre unique interlocuteur.
+            Du premier appel aux garanties décennales, IPB reste votre unique interlocuteur.
           </p>
         </div>
 

@@ -10,7 +10,7 @@ import { CheckCircle, Phone, ArrowRight, MapPin, Droplets, Shield, FileText, Clo
 
 export const metadata: Metadata = {
   title: 'Expert Humidité Toulouse · Diagnostic & Injection Résine',
-  description: "Traitement humidité Toulouse : remontées capillaires, salpêtre, moisissures. Injection résine, cuvelage. Décennale AXA. ☎ 05 82 95 33 75",
+  description: "Traitement humidité Toulouse : remontées capillaires, salpêtre, moisissures. Injection résine, cuvelage. Décennale 10 ans dédiée. ☎ 05 82 95 33 75",
   keywords: [
     'expert humidité toulouse',
     'traitement humidité maison 31',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Expert Humidité Toulouse · Injection & Cuvelage · IPB',
-    description: "Traitement à Toulouse contre remontées capillaires, salpêtre et moisissures. Décennale AXA active.",
+    description: "Traitement à Toulouse contre remontées capillaires, salpêtre et moisissures. Décennale 10 ans dédiée active.",
     url: 'https://www.ipb-expertise.fr/expert-humidite-toulouse-31',
     type: 'website',
     images: [{
@@ -94,7 +94,7 @@ const faqItems = [
   },
   {
     question: "Quelle garantie sur l'injection résine ?",
-    answer: "Les travaux d'étanchéité maçonnée par injection de résine hydrophobe sont couverts par la garantie décennale travaux AXA de l'institut (10 ans à compter de la réception). Les résines que nous utilisons bénéficient par ailleurs d'une garantie commerciale du fabricant sur la durée d'efficacité de la barrière étanche, dont les conditions précises sont communiquées au devis. Les deux garanties sont remises avec le procès-verbal de réception."
+    answer: "Les travaux d'étanchéité maçonnée par injection de résine hydrophobe sont couverts par une décennale travaux dédiée (10 ans à compter de la réception). Les résines utilisées bénéficient par ailleurs d'une garantie commerciale du fabricant sur la durée d'efficacité de la barrière étanche, dont les conditions précises sont communiquées au devis. Les deux garanties sont remises avec le procès-verbal de réception."
   },
   {
     question: "Intervenez-vous en cave et sous-sol ?",
@@ -162,7 +162,7 @@ export default function ExpertHumiditeToulouse31Page() {
             </h1>
             <p className="text-xl text-white/70 mb-8 max-w-2xl">
               Murs humides, salpêtre, moisissures ? Diagnostic technique sous 72h.
-              Traitement par injection résine et cuvelage, sous décennale AXA active.
+              Traitement par injection résine et cuvelage, sous décennale 10 ans dédiée.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/diagnostic" className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all">
@@ -185,8 +185,8 @@ export default function ExpertHumiditeToulouse31Page() {
               <div className="text-ipb-muted mt-1">Maisons assainies</div>
             </div>
             <div>
-              <div className="text-4xl font-extrabold text-blue-600">AXA</div>
-              <div className="text-ipb-muted mt-1">Décennale active</div>
+              <div className="text-4xl font-extrabold text-blue-600">10 ans</div>
+              <div className="text-ipb-muted mt-1">Décennale dédiée</div>
             </div>
             <div>
               <div className="text-4xl font-extrabold text-blue-600">72h</div>
@@ -237,13 +237,13 @@ export default function ExpertHumiditeToulouse31Page() {
               <Droplets className="text-blue-400 mb-4" size={40} />
               <h3 className="text-xl font-bold mb-3">Injection résine</h3>
               <p className="text-ipb-light mb-4">Barrière étanche injectée dans le mur pour traiter les remontées capillaires.</p>
-              <div className="text-blue-400 font-bold">Décennale AXA</div>
+              <div className="text-blue-400 font-bold">Décennale 10 ans dédiée</div>
             </div>
             <div className="bg-ipb-navy-2 rounded-2xl p-8">
               <Shield className="text-blue-400 mb-4" size={40} />
               <h3 className="text-xl font-bold mb-3">Cuvelage cave</h3>
               <p className="text-ipb-light mb-4">Étanchéité des sous-sols et caves par application d'un revêtement imperméable.</p>
-              <div className="text-blue-400 font-bold">Décennale AXA</div>
+              <div className="text-blue-400 font-bold">Décennale 10 ans dédiée</div>
             </div>
             <div className="bg-ipb-navy-2 rounded-2xl p-8">
               <FileText className="text-blue-400 mb-4" size={40} />
@@ -344,7 +344,7 @@ export default function ExpertHumiditeToulouse31Page() {
             <div className="bg-white rounded-2xl shadow-lg border-2 border-blue-500 p-8 text-center">
               <h3 className="text-xl font-bold text-ipb-text mb-2">Injection résine</h3>
               <div className="text-4xl font-extrabold text-blue-600 mb-4">2,5-6K€</div>
-              <p className="text-ipb-muted">Décennale AXA</p>
+              <p className="text-ipb-muted">Décennale 10 ans dédiée</p>
             </div>
             <div className="bg-white rounded-2xl shadow-lg border border-ipb-rule p-8 text-center">
               <h3 className="text-xl font-bold text-ipb-text mb-2">Cuvelage cave</h3>
@@ -475,7 +475,7 @@ export default function ExpertHumiditeToulouse31Page() {
       <section className="py-16 md:py-24 bg-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Murs humides à Toulouse ?</h2>
-          <p className="text-xl text-blue-100 mb-8">Diagnostic technique sous 72h. Traitement sous décennale AXA.</p>
+          <p className="text-xl text-blue-100 mb-8">Diagnostic technique sous 72h. Traitement sous décennale 10 ans dédiée.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all flex items-center justify-center gap-2">
               Demander un diagnostic <ArrowRight size={20} />

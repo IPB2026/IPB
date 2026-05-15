@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/partenaires/agences-immobilieres' },
   openGraph: {
     title: "Agences Immobilières · Expertise Vente Toulouse · IPB",
-    description: "Vente bloquée par une fissure ? Notre rapport sous 3 à 5 jours ouvrés débloque la transaction. Décennale AXA.",
+    description: "Vente bloquée par une fissure ? Notre rapport sous 3 à 5 jours ouvrés débloque la transaction. Décennale 10 ans sur les travaux.",
     url: 'https://www.ipb-expertise.fr/partenaires/agences-immobilieres',
     type: 'website',
   },

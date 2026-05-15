@@ -14,12 +14,12 @@ import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
   title: "L'institut IPB · Diagnostic et travaux structure Toulouse",
-  description: "L'institut IPB : équipe expérimentée en pathologie et structure du bâtiment. 850 chantiers en Occitanie depuis 2019. Décennale AXA. ☎ 05 82 95 33 75",
+  description: "L'institut IPB : équipe expérimentée en pathologie et structure du bâtiment. 850 chantiers en Occitanie depuis 2019. Décennales métier dédiées. ☎ 05 82 95 33 75",
   keywords: ['institut pathologie bâtiment toulouse', 'expert fissures toulouse', 'expertise structure toulouse', "expertise bâtiment Haute-Garonne"],
   alternates: { canonical: 'https://www.ipb-expertise.fr/notre-expert' },
   openGraph: {
     title: "L'institut IPB · Diagnostic et travaux structure Toulouse",
-    description: "Équipe expérimentée en pathologie et structure du bâtiment. 850 chantiers en Occitanie depuis 2019. Décennale AXA.",
+    description: "Équipe expérimentée en pathologie et structure du bâtiment. 850 chantiers en Occitanie depuis 2019. Décennales métier dédiées.",
     url: 'https://www.ipb-expertise.fr/notre-expert',
     type: 'website',
   },
@@ -32,7 +32,7 @@ const organizationSchema = {
   "url": "https://www.ipb-expertise.fr",
   "logo": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
   "foundingDate": "2019",
-  "description": "Institut spécialisé en pathologie et structure du bâtiment. Diagnostic et travaux sous garantie décennale AXA. Études techniques co-signées par notre bureau d'études structure partenaire.",
+  "description": "Institut spécialisé en pathologie et structure du bâtiment. Diagnostic et travaux sous décennales métier dédiées (10 ans). Études techniques signées sous décennale études dédiée.",
   "areaServed": [
     { "@type": "AdministrativeArea", "name": "Haute-Garonne" },
     { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne" },
@@ -42,13 +42,13 @@ const organizationSchema = {
 };
 
 const certifications = [
-  { name: 'Garantie décennale active', detail: 'AXA France IARD — Construction BATISSUR · Police active depuis 2019' },
-  { name: 'Responsabilité civile de l\'entreprise', detail: 'Étendue à toute la mission, avant et après réception des travaux' },
-  { name: 'Bureau d\'études structure partenaire', detail: 'Notes de calcul opposables co-signées sous décennale études dédiée' },
+  { name: 'Décennale travaux dédiée', detail: 'Travaux d\'agrafage, ouverture de mur porteur, finitions menés sous décennale 10 ans dédiée' },
+  { name: 'Décennale études dédiée', detail: 'Notes de calcul opposables signées selon les Eurocodes sous décennale études dédiée' },
+  { name: 'RC pro IPB', detail: 'Responsabilité civile professionnelle sur le diagnostic, l\'accompagnement et la coordination' },
 ];
 
 const valeurs = [
-  { titre: "Continuité", desc: "Le diagnostic, les préconisations et les travaux sont portés par la même équipe. Une seule responsabilité, une seule décennale." },
+  { titre: "Continuité", desc: "Le diagnostic, les préconisations et les travaux sont pilotés par le même institut. Un seul interlocuteur, sous décennales métier dédiées." },
   { titre: "Sobriété", desc: "Nous décrivons ce que nous voyons, nous expliquons ce qu'il faut faire — sans surinvestir le vocabulaire. Si rien n'est urgent, nous le disons." },
   { titre: "Documentation", desc: "Chaque intervention est documentée : photos, mesures, plans, attestations. Le dossier complet est remis au client à la livraison." },
 ];
@@ -100,7 +100,7 @@ export default function NotreInstitutPage() {
                   L'institut a été fondé en 2019 sur une intuition simple : faire le diagnostic et les travaux dans la même main. Ne pas renvoyer le client d'un prestataire à l'autre. Ne pas vendre une solution préconçue.
                 </p>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-6">
-                  Sept ans plus tard, l'équipe est expérimentée, la décennale AXA est active, et 850 chantiers ont été signés en Haute-Garonne, dans le Tarn-et-Garonne, le Gers et le Tarn. L'institut traite en moyenne soixante-dix dossiers fissures par an, en complément des ouvertures de murs porteurs et des expertises avant achat.
+                  Sept ans plus tard, l'équipe est expérimentée, les décennales métier sont actives, et 850 chantiers ont été signés en Haute-Garonne, dans le Tarn-et-Garonne, le Gers et le Tarn. L'institut traite en moyenne soixante-dix dossiers fissures par an, en complément des ouvertures de murs porteurs et des expertises avant achat.
                 </p>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10">
                   Lorsqu'un projet exige une note de calcul opposable, nous travaillons avec un bureau d'études structure partenaire qui co-signe l'étude sous sa propre décennale études. Le reste — diagnostic, pose, finitions — nous le portons.

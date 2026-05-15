@@ -119,7 +119,7 @@ const faqItems = [
   {
     question: "Peut-on faire l'expertise sans la présence du vendeur ?",
     answer:
-      "Oui, c'est même le cas le plus fréquent. La présence de l'agent immobilier suffit généralement. Le vendeur n'est pas tenu d'être présent. La visite est un échange technique entre notre ingénieur et vous (ou la personne que vous mandatez).",
+      "Oui, c'est même le cas le plus fréquent. La présence de l'agent immobilier suffit généralement. Le vendeur n'est pas tenu d'être présent. La visite est un échange technique entre notre institut et vous (ou la personne que vous mandatez).",
   },
 ];
 

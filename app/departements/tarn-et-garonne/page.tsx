@@ -4,8 +4,8 @@ import { Phone, MapPin, CheckCircle, ArrowRight } from 'lucide-react';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures & Humidité Tarn-et-Garonne 82 · AXA',
-  description: "Expert fissures et humidité 82 (Montauban, Castelsarrasin, Moissac). Zone RGA. Décennale AXA. Diagnostic 48h. ☎ 05 82 95 33 75",
+  title: 'Expert Fissures & Humidité Tarn-et-Garonne 82 · Décennale 10 ans',
+  description: "Expert fissures et humidité 82 (Montauban, Castelsarrasin, Moissac). Zone RGA. Décennale 10 ans sur les travaux. Diagnostic 48h. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures tarn-et-garonne',
     'traitement humidité 82',

@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     default: "IPB - Spécialistes de la structure de votre habitat | Diagnostic Fissures & Ouverture Mur Porteur Toulouse",
     template: "%s | IPB"
   },
-  description: "Les spécialistes de la structure de votre habitat. Diagnostic fissures, ouverture de mur porteur, création de baie vitrée. Étude et travaux sous décennale AXA. Toulouse, Montauban, Auch (31-82-32).",
+  description: "Les spécialistes de la structure de votre habitat. Diagnostic fissures, ouverture de mur porteur, création de baie vitrée. Étude et travaux sous décennale 10 ans dédiée. Toulouse, Montauban, Auch (31-82-32).",
   keywords: ["expert fissures Toulouse", "ouverture mur porteur Toulouse", "création baie vitrée Toulouse", "étude structure bâtiment", "agrafage fissures", "poutre IPN HEB", "fissures maison", "expert structure Toulouse", "Montauban", "Auch", "Haute-Garonne", "Tarn-et-Garonne", "Gers", "Tarn", "pathologie du bâtiment", "garantie décennale", "humidité murs", "injection résine"],
   authors: [{ name: "IPB - Institut de Pathologie du Bâtiment" }],
   creator: "IPB",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     url: "https://www.ipb-expertise.fr",
     siteName: "IPB - Institut de Pathologie du Bâtiment",
     title: "IPB - Spécialistes de la structure de votre habitat | Toulouse, Montauban, Auch",
-    description: "Les spécialistes de la structure de votre habitat. Diagnostic fissures, ouverture de mur porteur (étude IPN/HEB), création de baie vitrée. Étude et travaux sous décennale AXA.",
+    description: "Les spécialistes de la structure de votre habitat. Diagnostic fissures, ouverture de mur porteur (étude IPN/HEB), création de baie vitrée. Étude et travaux sous décennale 10 ans dédiée.",
     images: [
       {
         url: "/images/IPB_Logo_HD.png",
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "IPB - Spécialistes de la structure de votre habitat (31-82-32)",
-    description: "Diagnostic fissures, ouverture de mur porteur, création de baie vitrée. Étude et travaux sous décennale AXA.",
+    description: "Diagnostic fissures, ouverture de mur porteur, création de baie vitrée. Étude et travaux sous décennale 10 ans dédiée.",
     images: ["/images/IPB_Logo_HD.png"],
   },
   robots: {
@@ -109,7 +109,7 @@ const localBusinessSchema = {
   "legalName": "Bâti Halli",
   "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
   "foundingDate": "2019",
-  "description": "Institut spécialisé en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Expertise fissures (agrafage structurel), ouverture de mur porteur et création de baie vitrée (étude structure, pose poutre IPN/HEB), étanchéité maçonnée (injection résine, cuvelage). Diagnostic et travaux sous garantie décennale AXA. Toulouse, Montauban, Auch et environs.",
+  "description": "Institut spécialisé en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Expertise fissures (agrafage structurel), ouverture de mur porteur et création de baie vitrée (étude structure, pose poutre IPN/HEB), étanchéité maçonnée (injection résine, cuvelage). Diagnostic et travaux sous décennales métier dédiées (10 ans). Toulouse, Montauban, Auch et environs.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "54 avenue Jean Jaurès",
@@ -167,7 +167,7 @@ const localBusinessSchema = {
         "itemOffered": {
           "@type": "Service",
           "name": "Ouverture de mur porteur",
-          "description": "Étude technique, dimensionnement et pose de poutre IPN/HEB, étaiement, ouverture, finitions. Cuisine ouverte, suite parentale, plateau loft. Travaux sous garantie décennale AXA. Note de calcul opposable co-signée par notre BE structure partenaire."
+          "description": "Étude technique, dimensionnement et pose de poutre IPN/HEB, étaiement, ouverture, finitions. Cuisine ouverte, suite parentale, plateau loft. Travaux sous décennale 10 ans dédiée. Note de calcul opposable selon les Eurocodes."
         }
       },
       {

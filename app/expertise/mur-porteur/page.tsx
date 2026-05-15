@@ -15,7 +15,7 @@ import { MurPorteurDiagram } from '@/components/ui/MurPorteurDiagram';
 
 export const metadata: Metadata = {
   title: "Ouverture Mur Porteur Toulouse · IPN/HEB · Eurocodes",
-  description: "Ouverture mur porteur Toulouse : étude IPN/HEB, dimensionnement poutre selon Eurocodes, travaux clé en main. Accompagnement IPB inclus. Pré-étude sous 24h. ☎ 05 82 95 33 75",
+  description: "Ouverture mur porteur Toulouse : étude IPN/HEB, dimensionnement poutre selon Eurocodes, travaux clé en main. Un seul interlocuteur, du devis à la livraison. Pré-étude sous 24h. ☎ 05 82 95 33 75",
   keywords: [
     'ouverture mur porteur toulouse',
     'création baie vitrée toulouse',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/mur-porteur' },
   openGraph: {
     title: 'Ouverture Mur Porteur Toulouse · IPB',
-    description: "Étude IPN/HEB, dimensionnement poutre selon Eurocodes, travaux clé en main. Accompagnement IPB inclus. Pré-étude sous 24h.",
+    description: "Étude IPN/HEB, dimensionnement poutre selon Eurocodes, travaux clé en main. Un seul interlocuteur, du devis à la livraison. Pré-étude sous 24h.",
     url: 'https://www.ipb-expertise.fr/expertise/mur-porteur',
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
     locale: 'fr_FR',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 const faqMurPorteur = [
   {
     question: "Combien d'interlocuteurs aurai-je sur ce projet ?",
-    answer: "Un seul : IPB. Vous décrivez votre projet, notre institut prend en charge l'opération de A à Z — calcul de la poutre selon les Eurocodes, démarches administratives, étaiement, ouverture, pose, finitions. Chaque étape est exécutée par les corps de métier requis, sous leurs décennales propres. L'accompagnement IPB est inclus dans le prix de votre chantier : vous bénéficiez de notre expertise et de notre suivi au prix d'une intervention en direct. C'est ce qui distingue notre institut d'un montage à plusieurs prestataires, où chacun renvoie vers l'autre quand quelque chose dérive.",
+    answer: "Un seul : IPB. Vous décrivez votre projet, notre institut prend en charge l'opération de A à Z — calcul de la poutre selon les Eurocodes, démarches administratives, étaiement, ouverture, pose, finitions. Chaque étape est exécutée par les corps de métier requis, sous leurs décennales propres. Vous, vous parlez à une seule personne, du premier appel à la levée des étais. C'est ce qui distingue notre institut d'un montage à plusieurs prestataires, où chacun renvoie vers l'autre quand quelque chose dérive.",
   },
   {
     question: "Et si on découvre que mon mur n'est pas porteur, ou que l'ouverture n'est pas faisable ?",
@@ -87,7 +87,7 @@ const faqMurPorteur = [
   },
   {
     question: "Quel est le prix d'une ouverture de mur porteur ?",
-    answer: "Le budget dépend de plusieurs paramètres concrets : la portée de l'ouverture, le type de mur (brique foraine, parpaing, pierre, béton banché), ce qui se trouve au-dessus (combles, étage habité), et la complexité des finitions. Plutôt qu'une fourchette générique qui peut induire en erreur, nous mettons à votre disposition un calculateur en ligne basé sur nos chantiers récents en Occitanie — 4 questions, 2 minutes, fourchette précise envoyée par email. Devis ferme remis sous 24 h après visite gratuite, accompagnement IPB inclus dans le prix.",
+    answer: "Le budget dépend de plusieurs paramètres concrets : la portée de l'ouverture, le type de mur (brique foraine, parpaing, pierre, béton banché), ce qui se trouve au-dessus (combles, étage habité), et la complexité des finitions. Plutôt qu'une fourchette générique qui peut induire en erreur, nous mettons à votre disposition un calculateur en ligne basé sur nos chantiers récents en Occitanie — 4 questions, 2 minutes, fourchette précise envoyée par email. Devis ferme remis sous 24 h après visite gratuite, un seul interlocuteur de A à Z.",
   },
   {
     question: "Faut-il prévoir un étaiement pendant les travaux ?",
@@ -120,7 +120,7 @@ const generateServiceJsonLd = () => ({
     "address": { "@type": "PostalAddress", "streetAddress": "54 avenue Jean Jaurès", "addressLocality": "Tournefeuille", "postalCode": "31170", "addressRegion": "Occitanie", "addressCountry": "FR" }
   },
   "areaServed": [{ "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" }, { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" }, { "@type": "AdministrativeArea", "name": "Gers (32)" }, { "@type": "AdministrativeArea", "name": "Tarn (81)" }],
-  "description": "Étude de structure, dimensionnement de poutre IPN/HEB, ouverture de mur porteur et création de baie vitrée. Accompagnement IPB inclus dans le prix du chantier."
+  "description": "Étude de structure, dimensionnement de poutre IPN/HEB, ouverture de mur porteur et création de baie vitrée. Un seul interlocuteur, de l'étude à la livraison."
 });
 
 const typesProjets = [
@@ -188,7 +188,7 @@ export default function MurPorteurPage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">
-                  Vous décrivez votre projet à IPB. Nous prenons en charge l'opération de bout en bout : calcul de la poutre selon les Eurocodes, étaiement, ouverture, pose, finitions. Chaque étape est exécutée sous sa décennale métier — au prix d'un chantier en direct, avec un seul interlocuteur.
+                  Vous décrivez votre projet à IPB. Nous prenons en charge l'opération de bout en bout : calcul de la poutre selon les Eurocodes, étaiement, ouverture, pose, finitions. Chaque étape est exécutée sous sa décennale métier. Vous, vous parlez à une seule personne, du premier appel à la levée des étais.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>
@@ -222,7 +222,7 @@ export default function MurPorteurPage() {
                   </li>
                   <li className="flex items-center gap-1.5">
                     <span className="text-ipb-orange" aria-hidden="true">✓</span>
-                    <span>Accompagnement inclus</span>
+                    <span>Du devis à la livraison</span>
                   </li>
                   <li className="flex items-center gap-1.5">
                     <span className="text-ipb-orange" aria-hidden="true">✓</span>
@@ -271,7 +271,7 @@ export default function MurPorteurPage() {
                   </RevealOnScroll>
                   <RevealOnScroll delay={0.18}>
                     <p className="text-ipb-text">
-                      Notre institut a été pensé pour ne pas vous faire vivre ça. Un seul interlocuteur — IPB — vous suit du premier appel à la levée des étais. Le calcul de la poutre est rédigé selon les <strong className="not-italic">Eurocodes</strong> et couvert par une décennale études dédiée ; l'étaiement, l'ouverture, la pose et les finitions sont exécutés sous décennale travaux dédiée. Notre institut sécurise l'ensemble sous sa responsabilité civile professionnelle. <strong className="not-italic">Deux décennales métier, une RC pro IPB, un accompagnement inclus dans le prix de votre chantier.</strong>
+                      Notre institut a été pensé pour ne pas vous faire vivre ça. Un seul interlocuteur — IPB — vous suit du premier appel à la levée des étais. Le calcul de la poutre est rédigé selon les <strong className="not-italic">Eurocodes</strong> et couvert par une décennale études dédiée ; l'étaiement, l'ouverture, la pose et les finitions sont exécutés sous décennale travaux dédiée. Notre institut sécurise l'ensemble sous sa responsabilité civile professionnelle. <strong className="not-italic">Deux décennales métier, une RC pro IPB, un seul interlocuteur pour vous — du devis à la livraison.</strong>
                     </p>
                   </RevealOnScroll>
                 </div>
@@ -418,7 +418,7 @@ export default function MurPorteurPage() {
                     </li>
                   </ul>
                   <p className="mt-7 pt-6 border-t border-white/10 text-[13px] leading-[1.75] text-white/60 italic">
-                    « Notre institut suit votre chantier personnellement, du premier appel à la levée des étais. Au prix d'un chantier en direct — l'accompagnement IPB est inclus. »
+                    « Notre institut suit votre chantier personnellement, du premier appel à la levée des étais. Vous, vous vous concentrez sur votre maison ; nous, sur ceux qui la transforment. »
                   </p>
                 </article>
               </RevealOnScroll>

@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
 
   return {
     title: `Ouverture Mur Porteur ${villeNom} ${deptCode} · IPN/HEB · Eurocodes`,
-    description: `Mur porteur à ${villeNom} : étude IPN/HEB, pose poutre, travaux clé en main. Accompagnement IPB inclus. Devis 24h. ☎ 05 82 95 33 75`,
+    description: `Mur porteur à ${villeNom} : étude IPN/HEB, pose poutre, travaux clé en main. Un seul interlocuteur, du devis à la livraison. Devis 24h. ☎ 05 82 95 33 75`,
     keywords: [
       `ouverture mur porteur ${slug}`,
       `prix ouverture mur porteur ${slug}`,
@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     alternates: { canonical: `https://www.ipb-expertise.fr/expert-mur-porteur/${slug}` },
     openGraph: {
       title: `Ouverture Mur Porteur ${villeNom} · IPB`,
-      description: `Étude IPN/HEB, étaiement, ouverture, finitions à ${villeNom}. Accompagnement IPB inclus. Devis 24h.`,
+      description: `Étude IPN/HEB, étaiement, ouverture, finitions à ${villeNom}. Un seul interlocuteur, du devis à la livraison. Devis 24h.`,
       url: `https://www.ipb-expertise.fr/expert-mur-porteur/${slug}`,
       type: 'website',
       images: [{ url: '/images/IPB_Logo_HD.png', width: 1200, height: 630, alt: `Ouverture mur porteur ${villeNom}` }],
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     twitter: {
       card: 'summary_large_image',
       title: `Ouverture Mur Porteur ${villeNom} | IPB`,
-      description: `Étude structure + travaux. Accompagnement IPB inclus. Devis 24h à ${villeNom}. ☎ 05 82 95 33 75`,
+      description: `Étude structure + travaux. Un seul interlocuteur, du devis à la livraison. Devis 24h à ${villeNom}. ☎ 05 82 95 33 75`,
     },
     robots: { index: true, follow: true },
   };
@@ -86,7 +86,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
         "addressCountry": "FR"
       }
     },
-    "description": `Ouverture de mur porteur à ${villeNom} : étude, dimensionnement IPN/HEB, pose et finitions sous décennales métier. Accompagnement IPB inclus dans le prix du chantier.`,
+    "description": `Ouverture de mur porteur à ${villeNom} : étude, dimensionnement IPN/HEB, pose et finitions sous décennales métier. Un seul interlocuteur, de l'étude à la livraison.`,
     "offers": { "@type": "Offer", "priceRange": "4000-15000 EUR", "priceCurrency": "EUR" },
     "aggregateRating": IPB_AGGREGATE_RATING
   };
@@ -98,7 +98,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
       {
         "@type": "Question",
         "name": `Quel est le prix d'une ouverture de mur porteur à ${villeNom} ?`,
-        "acceptedAnswer": { "@type": "Answer", "text": `À ${villeNom}, le prix dépend de plusieurs paramètres concrets : la portée de l'ouverture, le type de mur (brique foraine, parpaing, pierre), ce qui se trouve au-dessus (combles, étage habité) et la complexité des finitions. Plutôt qu'une fourchette générique, utilisez notre calculateur en ligne basé sur nos chantiers récents — 4 questions, 2 minutes, fourchette précise par email. Devis ferme remis sous 24h après visite gratuite, accompagnement IPB inclus dans le prix.` }
+        "acceptedAnswer": { "@type": "Answer", "text": `À ${villeNom}, le prix dépend de plusieurs paramètres concrets : la portée de l'ouverture, le type de mur (brique foraine, parpaing, pierre), ce qui se trouve au-dessus (combles, étage habité) et la complexité des finitions. Plutôt qu'une fourchette générique, utilisez notre calculateur en ligne basé sur nos chantiers récents — 4 questions, 2 minutes, fourchette précise par email. Devis ferme remis sous 24h après visite gratuite, un seul interlocuteur de A à Z.` }
       },
       {
         "@type": "Question",
@@ -162,7 +162,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
                 </h1>
 
                 <p className="text-xl text-white/70 mb-6 leading-relaxed">
-                  <strong className="text-white">L'institut qui prend en charge votre ouverture de mur porteur</strong> à {villeNom}. Étude, dimensionnement IPN/HEB, étaiement, pose et finitions. <strong className="text-ipb-orange-l">Au prix d'un chantier en direct, avec un seul interlocuteur.</strong>
+                  <strong className="text-white">L'institut qui prend en charge votre ouverture de mur porteur</strong> à {villeNom}. Étude, dimensionnement IPN/HEB, étaiement, pose et finitions. <strong className="text-ipb-orange-l">Un seul interlocuteur, du premier appel à la livraison.</strong>
                 </p>
 
                 {/* Encadré confiance — estimation en ligne */}
@@ -190,7 +190,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
 
                 <div className="flex items-center gap-4 text-sm text-ipb-light">
                   <span className="flex items-center gap-1"><Clock size={14} /> Réponse 24h</span>
-                  <span className="flex items-center gap-1"><Shield size={14} className="text-blue-400" /> Accompagnement inclus</span>
+                  <span className="flex items-center gap-1"><Shield size={14} className="text-blue-400" /> Du devis à la livraison</span>
                   <span className="flex items-center gap-1"><CheckCircle size={14} className="text-green-400" /> Sans engagement</span>
                 </div>
               </div>
@@ -399,7 +399,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
                 <Phone size={20} /> 05 82 95 33 75
               </a>
             </div>
-            <p className="text-sm text-ipb-orange-l mt-6">✓ Accompagnement IPB inclus · ✓ Sans engagement · ✓ Réponse 24h</p>
+            <p className="text-sm text-ipb-orange-l mt-6">✓ Un seul interlocuteur · ✓ Sans engagement · ✓ Réponse 24h</p>
           </div>
         </section>
       </main>

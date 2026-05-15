@@ -15,23 +15,23 @@ export function TrustSignals() {
 
           <div className="text-center md:text-left">
             <p className="text-orange-300 text-xs font-bold uppercase tracking-[0.2em] mb-2">
-              Garantie 10 ans · Assurés par AXA France
+              Décennales métier 10 ans · Un seul interlocuteur
             </p>
             <h2 className="text-white font-bold text-2xl md:text-3xl mb-2 font-display tracking-tight">
               Si ça bouge, on revient. Gratuitement.
             </h2>
             <p className="text-white/75 text-base leading-relaxed max-w-2xl">
-              Tout ce qu'on fait — étude, ouverture de mur, agrafage de fissure — est couvert pendant 10 ans.
-              Une seule attestation, une seule responsabilité. <strong className="text-white">On vous la remet avec le devis.</strong>
+              Étude, ouverture de mur, agrafage de fissure — chaque étape est menée sous décennale 10 ans dédiée.
+              Un seul interlocuteur pour vous, des garanties métier solides derrière. <strong className="text-white">Attestations remises avec le devis.</strong>
             </p>
           </div>
 
           <a
-            href="/contact"
+            href="/diagnostic"
             className="bg-orange-500 hover:bg-orange-400 text-white font-bold px-7 py-3.5 rounded-xl text-sm whitespace-nowrap transition-all flex items-center gap-2 justify-center hover:shadow-2xl hover:-translate-y-0.5"
           >
             <FileCheck size={16} />
-            Voir l'attestation
+            Diagnostic gratuit
           </a>
         </div>
       </div>
@@ -61,12 +61,12 @@ export function TrustSignals() {
             <div className="w-14 h-14 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 mb-6">
               <Hammer size={28} />
             </div>
-            <p className="text-amber-700 text-xs font-bold uppercase tracking-wider mb-2">Tout en interne</p>
+            <p className="text-amber-700 text-xs font-bold uppercase tracking-wider mb-2">Pilotage complet</p>
             <h3 className="font-display font-bold text-2xl text-ipb-text mb-3 leading-tight">
               Du premier coup d'œil<br />aux dernières finitions.
             </h3>
             <p className="text-ipb-muted leading-relaxed">
-              Notre BE structure partenaire dimensionne la poutre. Nos équipes l'installent. Pas de chaîne de sous-traitants à coordonner, pas de jeu de ping-pong entre études et travaux. Vous avez un seul interlocuteur, du devis à la livraison.
+              Notre institut pilote l'opération : du diagnostic au dimensionnement de la poutre, jusqu'à la pose et aux finitions. Pas de jeu de ping-pong entre études et travaux. Vous avez un seul interlocuteur, du devis à la livraison.
             </p>
           </div>
 

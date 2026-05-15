@@ -547,9 +547,9 @@ export default function CGVPage() {
                     constitutifs ou d'équipement, le rendent impropre à sa destination.
                   </p>
                   <p className="text-orange-800 mt-3">
-                    <strong>Travaux couverts :</strong> selon les activités souscrites au contrat AXA France IARD
-                    n° 0000022511730204 — maçonnerie et béton armé, charpente et structure bois, couverture,
-                    menuiseries extérieures, plâtrerie, revêtements de surfaces et sols coulés.
+                    <strong>Travaux couverts :</strong> selon les activités souscrites par les entreprises titulaires
+                    des décennales travaux dédiées — maçonnerie et béton armé, charpente et structure bois, couverture,
+                    menuiseries extérieures, plâtrerie, revêtements de surfaces et sols coulés. Attestations remises avec le devis.
                   </p>
                 </div>
               </div>
@@ -562,15 +562,16 @@ export default function CGVPage() {
                 Article 12 - Assurances
               </h2>
               <p>
-                <strong>12.1.</strong> Le Prestataire déclare être titulaire d'une assurance responsabilité
-                civile décennale conforme aux dispositions de l'article L. 241-1 du Code des assurances :
-                AXA France IARD, contrat Construction BATISSUR n° 0000022511730204, souscrit auprès de
-                l'intermédiaire Perenne Assurance (ORIAS 21 001 630).
+                <strong>12.1.</strong> Le Prestataire déclare être titulaire d'une assurance Responsabilité
+                Civile Professionnelle dédiée à son activité de coordination et d'accompagnement. Les attestations
+                d'assurance, y compris les attestations de décennale travaux et de décennale études portées par
+                les entreprises titulaires intervenant sur le chantier, sont remises au Client avec le devis.
               </p>
               <p className="mt-4">
-                <strong>12.2.</strong> Le contrat couvre les activités suivantes : maçonnerie et béton armé,
+                <strong>12.2.</strong> Les travaux exécutés sur le chantier (maçonnerie et béton armé,
                 charpente et structure bois, couverture, menuiseries extérieures, plâtrerie/staff/stuc/gyperie,
-                revêtements de surfaces en matériaux durs, chapes et sols coulés.
+                revêtements de surfaces en matériaux durs, chapes et sols coulés) sont couverts par les décennales
+                travaux des entreprises titulaires, conformément à l'article L. 241-1 du Code des assurances.
               </p>
               <p className="mt-4">
                 <strong>12.3.</strong> Le Prestataire déclare également être titulaire de garanties de

@@ -433,7 +433,7 @@ export default function DiagnosticPage() {
           urgencyIcon: '🟠',
           urgencyColor: 'orange',
           diagnosis: 'Votre projet est réalisable mais nécessite une étude structure pour dimensionner correctement la poutre. L\'intervention est de complexité modérée selon la portée et la nature du mur.',
-          solution: 'Visite technique de notre ingénieur pour confirmer la faisabilité, sondage si nécessaire, devis détaillé. Travaux réalisables en 2 à 4 jours selon la portée.',
+          solution: 'Visite technique de notre institut pour confirmer la faisabilité, sondage si nécessaire, devis détaillé. Travaux réalisables en 2 à 4 jours selon la portée.',
           delay: 'Devis sous 24h — travaux sous 2 à 4 semaines',
         };
       } else {
@@ -751,8 +751,8 @@ export default function DiagnosticPage() {
                       <p className="text-[9px] text-ipb-light font-medium">garantie décennale</p>
                     </div>
                     <div className="bg-ipb-cream rounded-lg py-2">
-                      <p className="text-base font-extrabold text-ipb-text">AXA</p>
-                      <p className="text-[9px] text-ipb-light font-medium">assurance décennale</p>
+                      <p className="text-base font-extrabold text-ipb-text">RC pro</p>
+                      <p className="text-[9px] text-ipb-light font-medium">+ décennales métier</p>
                     </div>
                   </div>
                 </div>

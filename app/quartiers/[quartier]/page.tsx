@@ -33,8 +33,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const title = `Expert Fissures & Humidité ${quartierInfo.nom} Toulouse · AXA`;
-  const description = `Expert fissures et humidité ${quartierInfo.nom}, Toulouse. Diagnostic gratuit, agrafage, injection résine. Décennale AXA. ☎ 05 82 95 33 75`;
+  const title = `Expert Fissures & Humidité ${quartierInfo.nom} Toulouse · Décennale 10 ans`;
+  const description = `Expert fissures et humidité ${quartierInfo.nom}, Toulouse. Diagnostic gratuit, agrafage, injection résine. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75`;
 
   return {
     title,

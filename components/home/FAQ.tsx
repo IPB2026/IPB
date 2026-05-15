@@ -44,7 +44,7 @@ const faqs = [
   },
   {
     q: "Pourquoi choisir un institut spécialisé en pathologie du bâtiment ?",
-    a: "Sur un mur porteur ou une fissure structurelle, c'est la continuité entre diagnostic, étude et travaux qui sécurise le résultat. Notre institut porte le diagnostic et les travaux sous décennale AXA active ; la note de calcul opposable est co-signée par notre BE structure partenaire. Vous avez un seul interlocuteur, un seul devis, et un dossier complet remis à la livraison.",
+    a: "Sur un mur porteur ou une fissure structurelle, c'est la continuité entre diagnostic, étude et travaux qui sécurise le résultat. Notre institut pilote l'ensemble : le diagnostic et la coordination des travaux sont menés sous nos garanties professionnelles ; la note de calcul opposable et les travaux d'exécution sont menés sous décennales métier dédiées. Vous avez un seul interlocuteur, et un dossier complet remis à la livraison.",
   },
   {
     q: "Vos rapports sont-ils acceptés par les assurances ?",
@@ -56,7 +56,7 @@ const faqs = [
   },
   {
     q: "Que se passe-t-il après le chantier ?",
-    a: "Vous recevez un dossier complet : étude technique, plans d'exécution, photos avant/après, attestation de garantie décennale active. En cas de désordre dans les 10 ans suivant la livraison, notre responsabilité est engagée et nous intervenons sans frais.",
+    a: "Vous recevez un dossier complet : étude technique, plans d'exécution, photos avant/après, attestations des décennales métier dédiées. En cas de désordre dans les 10 ans suivant la livraison, vous avez un seul interlocuteur — IPB — qui actionne les garanties et coordonne la reprise.",
   },
 ];
 

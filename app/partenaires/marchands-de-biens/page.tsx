@@ -9,7 +9,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "Marchands de Biens Toulouse · Mur Porteur Express 5j",
-  description: "Marchands de biens, investisseurs : ouverture mur porteur express. Devis 24h, chantier 5 jours, décennale AXA. ☎ 05 82 95 33 75",
+  description: "Marchands de biens, investisseurs : ouverture mur porteur express. Devis 24h, chantier 5 jours, décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
   keywords: [
     'partenaire marchand de biens toulouse',
     'mur porteur investisseur toulouse',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/partenaires/marchands-de-biens' },
   openGraph: {
     title: "Marchands de Biens · Mur Porteur Express · IPB",
-    description: "Devis 24h, chantier 5 jours. Décennale AXA, DOE complet pour l'acheteur final.",
+    description: "Devis 24h, chantier 5 jours. Décennale 10 ans sur les travaux, DOE complet pour l'acheteur final.",
     url: 'https://www.ipb-expertise.fr/partenaires/marchands-de-biens',
     type: 'website',
   },
@@ -102,7 +102,7 @@ export default function MarchandsDeBiensPage() {
                 { icon: <Clock className="text-ipb-orange" size={28} />, title: 'Devis sous 24h', desc: 'Vous achetez un bien lundi, nous chiffrons l\'ouverture mardi. Vous calculez votre prix de revente immédiatement.' },
                 { icon: <Hammer className="text-amber-600" size={28} />, title: 'Chantier 5 jours max', desc: 'Étaiement, ouverture, pose poutre IPN/HEB, finitions. Nous tenons votre planning de revente.' },
                 { icon: <TrendingUp className="text-emerald-600" size={28} />, title: 'Plus-value moyenne +18%', desc: 'Une cuisine ouverte sur séjour valorise un T3 toulousain de 15 à 25%. ROI atteint sur le premier projet.' },
-                { icon: <Shield className="text-blue-600" size={28} />, title: 'Décennale → acquéreur', desc: 'L\'attestation décennale AXA est transmissible à l\'acheteur final. Aucun frein notarial à la revente.' },
+                { icon: <Shield className="text-blue-600" size={28} />, title: 'Décennale → acquéreur', desc: 'L\'attestation de décennale 10 ans dédiée est transmissible à l\'acheteur final. Aucun frein notarial à la revente.' },
                 { icon: <FileText className="text-purple-600" size={28} />, title: 'Dossier complet pour le notaire', desc: 'Tous les documents prêts pour l\'acte de vente : calcul de la poutre, plans, attestations. Pas de litige possible après la vente.' },
                 { icon: <Euro className="text-rose-600" size={28} />, title: 'Tarif volume', desc: 'À partir de 3 chantiers/an, tarif partenaire négocié. Facturation mensuelle si vous le souhaitez.' },
               ].map(({ icon, title, desc }) => (

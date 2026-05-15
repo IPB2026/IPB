@@ -248,43 +248,35 @@ export default function MentionsLegalesPage() {
               </h2>
               
               <div className="space-y-4">
-                <div className="bg-green-50 border border-green-200 rounded-xl p-6">
-                  <h3 className="font-bold text-green-900 mb-3">Garantie Décennale</h3>
-                  <p className="text-green-800 mb-4">
-                    Conformément à l'article L. 241-1 du Code des assurances et aux articles 1792 et suivants
-                    du Code civil, Bâti Halli est titulaire d'une assurance de responsabilité civile décennale
-                    pour l'ensemble de ses travaux de construction soumis à l'obligation d'assurance.
+                <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+                  <h3 className="font-bold text-blue-900 mb-3">Responsabilité Civile Professionnelle (RC Pro coordination)</h3>
+                  <p className="text-blue-800">
+                    Bâti Halli est titulaire d'une assurance Responsabilité Civile Professionnelle dédiée à
+                    son activité de coordination, d'accompagnement et de diagnostic, couvrant les dommages
+                    corporels, matériels et immatériels causés aux tiers avant et après réception des
+                    prestations. Les attestations en cours de validité sont transmises au Client préalablement
+                    à toute intervention.
                   </p>
-                  <dl className="space-y-2 text-sm">
-                    <div className="flex flex-col sm:flex-row sm:gap-4">
-                      <dt className="font-bold text-green-900 sm:w-40">Assureur :</dt>
-                      <dd className="text-green-800">AXA France IARD — produit Construction BATISSUR</dd>
-                    </div>
-                    <div className="flex flex-col sm:flex-row sm:gap-4">
-                      <dt className="font-bold text-green-900 sm:w-40">N° de contrat :</dt>
-                      <dd className="text-green-800">0000022511730204</dd>
-                    </div>
-                    <div className="flex flex-col sm:flex-row sm:gap-4">
-                      <dt className="font-bold text-green-900 sm:w-40">Intermédiaire :</dt>
-                      <dd className="text-green-800">Perenne Assurance (ORIAS 21 001 630)</dd>
-                    </div>
-                    <div className="flex flex-col sm:flex-row sm:gap-4">
-                      <dt className="font-bold text-green-900 sm:w-40">Activités couvertes :</dt>
-                      <dd className="text-green-800">Maçonnerie et béton armé · charpente et structure bois · couverture · menuiseries extérieures · plâtrerie, staff, stuc, gyperie · revêtements de surfaces en matériaux durs, chapes et sols coulés</dd>
-                    </div>
-                    <div className="flex flex-col sm:flex-row sm:gap-4">
-                      <dt className="font-bold text-green-900 sm:w-40">Zone géographique :</dt>
-                      <dd className="text-green-800">France métropolitaine et départements d'outre-mer</dd>
-                    </div>
-                  </dl>
                 </div>
 
-                <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
-                  <h3 className="font-bold text-blue-900 mb-3">Responsabilité Civile Professionnelle (RC Pro)</h3>
-                  <p className="text-blue-800">
-                    Bâti Halli dispose d'une assurance responsabilité civile de l'entreprise couvrant les
-                    dommages corporels, matériels et immatériels causés aux tiers avant et après réception
-                    des travaux, dans les limites et conditions du contrat AXA France IARD susmentionné.
+                <div className="bg-green-50 border border-green-200 rounded-xl p-6">
+                  <h3 className="font-bold text-green-900 mb-3">Décennales métier (entreprises titulaires)</h3>
+                  <p className="text-green-800 mb-4">
+                    Conformément à l'article L. 241-1 du Code des assurances et aux articles 1792 et suivants
+                    du Code civil, les travaux de construction soumis à l'obligation d'assurance (maçonnerie
+                    et béton armé, charpente et structure bois, couverture, menuiseries extérieures, plâtrerie,
+                    revêtements et sols coulés) sont exécutés par des entreprises titulaires d'une garantie
+                    décennale dédiée à leur activité.
+                  </p>
+                  <p className="text-green-800 mb-4">
+                    Pour les études techniques et notes de calcul opposables (dimensionnement Eurocodes),
+                    Bâti Halli travaille en partenariat avec un bureau d'études structure indépendant, qui
+                    co-signe l'étude technique sous sa propre responsabilité civile professionnelle et sa
+                    décennale études dédiée.
+                  </p>
+                  <p className="text-green-800 text-sm">
+                    Les attestations des décennales métier des entreprises titulaires intervenant sur le
+                    chantier sont remises au Client avec le devis ou sur simple demande.
                   </p>
                 </div>
               </div>

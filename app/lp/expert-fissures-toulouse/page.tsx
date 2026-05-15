@@ -16,8 +16,8 @@ import { StatCounter } from '@/components/ui/StatCounter';
  */
 
 export const metadata: Metadata = {
-  title: "Expert Fissures Toulouse · Diagnostic Sous 72 Heures · AXA",
-  description: "Diagnostic structurel à Toulouse, agrafage. 850 chantiers depuis 2019. Décennale AXA. Visite sous 72 heures. ☎ 05 82 95 33 75",
+  title: "Expert Fissures Toulouse · Diagnostic Sous 72 Heures · Décennale 10 ans",
+  description: "Diagnostic structurel à Toulouse, agrafage. 850 chantiers depuis 2019. Décennale 10 ans sur les travaux. Visite sous 72 heures. ☎ 05 82 95 33 75",
   robots: { index: false, follow: false }, // Landing Ads : ne pas indexer (évite duplicate content avec la page SEO)
   alternates: { canonical: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31' },
 };
@@ -42,7 +42,7 @@ export default function LandingFissuresToulouse() {
           <div className="grid lg:grid-cols-[6fr_5fr] gap-10 lg:gap-12 items-center">
             <div>
               <p className="text-ipb-orange text-[11px] uppercase tracking-[0.18em] font-medium mb-4">
-                Institut à Toulouse · Décennale AXA
+                Institut à Toulouse · Décennale 10 ans
               </p>
               <h1
                 className="font-serif text-ipb-text mb-6"
@@ -57,7 +57,7 @@ export default function LandingFissuresToulouse() {
                 <em>Notre institut vient sur place sous 72 heures.</em>
               </h1>
               <p className="text-[15px] leading-[1.85] font-light text-ipb-muted mb-8">
-                Diagnostic instrumenté (fissuromètre, niveau laser), rapport écrit reconnu par les assurances, agrafage structurel par nos équipes. Tout en interne, garantie 10 ans AXA.
+                Diagnostic instrumenté (fissuromètre, niveau laser), rapport écrit reconnu par les assurances, agrafage structurel mené sous décennale 10 ans dédiée. Un seul interlocuteur, du premier appel à la livraison.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 mb-6">
@@ -79,7 +79,7 @@ export default function LandingFissuresToulouse() {
               <ul className="space-y-2 text-[13px] text-ipb-muted leading-[1.7]">
                 {[
                   '<strong class="text-ipb-text not-italic font-medium">Rapport technique reconnu par les assurances</strong> — pièce de référence dans les dossiers CAT-NAT',
-                  '<strong class="text-ipb-text not-italic font-medium">Agrafage par nos équipes</strong> — pas de sous-traitance, garantie unique',
+                  '<strong class="text-ipb-text not-italic font-medium">Agrafage sous décennale dédiée</strong> — un seul interlocuteur, du diagnostic à la livraison',
                   '<strong class="text-ipb-text not-italic font-medium">Institut créé en 2019</strong> — 850 chantiers livrés en Occitanie',
                 ].map((item) => (
                   <li key={item} className="flex gap-3">
@@ -120,7 +120,7 @@ export default function LandingFissuresToulouse() {
               { value: 850, suffix: '+', label: 'Chantiers livrés' },
               { value: 4.9, decimals: 1, suffix: '/5', label: 'Avis Google' },
               { value: 7, suffix: ' j', label: 'Délai de visite' },
-              { value: 10, suffix: ' ans', label: 'Décennale AXA' },
+              { value: 10, suffix: ' ans', label: 'Décennale dédiée' },
             ].map((s) => (
               <div key={s.label}>
                 <p className="font-serif text-white font-bold leading-none mb-2" style={{ fontSize: 'clamp(28px, 3vw, 44px)' }}>
@@ -147,7 +147,7 @@ export default function LandingFissuresToulouse() {
             {[
               { num: '01', titre: 'Vous nous décrivez la situation', desc: "En ligne en 2 minutes ou par téléphone. On valide la zone d'intervention et l'urgence." },
               { num: '02', titre: 'Visite technique sous 72 heures', desc: "Notre institut vient sur place avec instruments de mesure. Diagnostic en 1h, rapport sous 3 à 5 jours ouvrés." },
-              { num: '03', titre: 'Travaux par nos équipes', desc: "Si l'agrafage est nécessaire : devis ferme, planning précis, exécution sous garantie 10 ans." },
+              { num: '03', titre: 'Travaux pilotés par notre institut', desc: "Si l'agrafage est nécessaire : devis ferme, planning précis, exécution sous décennale 10 ans dédiée." },
             ].map((etape) => (
               <div key={etape.num}>
                 <p className="font-serif text-ipb-orange text-[14px] font-bold tracking-wider mb-4">{etape.num}</p>

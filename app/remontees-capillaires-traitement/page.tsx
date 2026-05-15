@@ -9,12 +9,12 @@ import { CheckCircle, Phone, ArrowRight, Droplets, AlertTriangle, Home, Clock, S
 
 export const metadata: Metadata = {
   title: 'Traitement Remontées Capillaires · Injection Résine 30 ans',
-  description: "Salpêtre, moisissures, peinture qui cloque ? Injection résine hydrophobe. Garantie 30 ans. Décennale AXA. ☎ 05 82 95 33 75",
+  description: "Salpêtre, moisissures, peinture qui cloque ? Injection résine hydrophobe. Garantie 30 ans. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
   keywords: ['remontées capillaires', 'injection résine', 'humidité murs', 'salpêtre', 'traitement humidité'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/remontees-capillaires-traitement' },
   openGraph: {
     title: 'Traitement Remontées Capillaires · Injection Résine · IPB',
-    description: "Injection résine hydrophobe. Résultat visible en 3 mois. Garantie 30 ans. Décennale AXA.",
+    description: "Injection résine hydrophobe. Résultat visible en 3 mois. Garantie 30 ans. Décennale 10 ans sur les travaux.",
     url: 'https://www.ipb-expertise.fr/remontees-capillaires-traitement',
     type: 'article',
   },
