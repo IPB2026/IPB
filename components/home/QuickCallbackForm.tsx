@@ -71,7 +71,7 @@ export function QuickCallbackForm() {
                 Parlez à un expert sous 2h
               </h2>
               <p className="text-slate-400 text-sm">
-                Diagnostic, travaux, suivi : décrivez votre situation à un spécialiste qui vous accompagne de A à Z.
+                Diagnostic, conception, coordination : décrivez votre situation à un spécialiste qui vous accompagne du diagnostic à la livraison.
               </p>
             </div>
 

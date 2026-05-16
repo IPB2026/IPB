@@ -347,7 +347,7 @@ export function CalculatorClient() {
           <div>
             <p className="text-[13px] font-medium text-ipb-text leading-tight">Récapitulatif envoyé à {leadEmail}</p>
             <p className="text-[12px] text-ipb-muted mt-1 leading-[1.6]">
-              Vous le recevez dans quelques minutes. Notre institut vous contactera sous 24 heures ouvrées pour un échange technique si vous le souhaitez.
+              Vous le recevez dans quelques minutes. Notre institut vous contactera sous 48 heures pour un échange technique si vous le souhaitez.
             </p>
           </div>
         </div>

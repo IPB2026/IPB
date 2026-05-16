@@ -12,27 +12,27 @@ import Script from 'next/script';
 import { ExpertiseHumiditeBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
-  title: "Diagnostic et Traitement Humidité · Toulouse · 30 ans",
-  description: "Diagnostic instrumenté humidité, injection résine, cuvelage, VMI. Garantie 30 ans. Décennale 10 ans dédiée. ☎ 05 82 95 33 75",
+  title: "Diagnostic Humidité et Infiltrations · Toulouse · IPB",
+  description: "Remontées capillaires, infiltrations, condensation, salpêtre : l'institut identifie la cause exacte et conçoit le traitement. Travaux exécutés par les équipes du réseau IPB sous décennale 10 ans. ☎ 05 82 95 33 75",
   keywords: [
     'expert humidité toulouse',
     'expertise humidité haute-garonne',
     'diagnostic humidité maison',
-    'injection résine remontées capillaires',
+    'remontées capillaires',
     'traitement humidité murs',
     'institut pathologie bâtiment toulouse',
     'salpêtre traitement',
     'cuvelage cave',
-    'VMI ventilation',
     'condensation murs',
+    'infiltrations',
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/humidite' },
   openGraph: {
-    title: "Diagnostic et Traitement Humidité · Toulouse · IPB",
-    description: "Injection résine, cuvelage, VMI. Garantie 30 ans. Décennale 10 ans dédiée.",
+    title: "Diagnostic Humidité et Infiltrations · Toulouse · IPB",
+    description: "L'institut identifie la cause exacte de l'humidité, conçoit la solution, et la met en œuvre avec ses équipes de réalisation. Travaux sous décennale 10 ans.",
     url: 'https://www.ipb-expertise.fr/expertise/humidite',
     type: 'website',
-    images: [{ url: '/images/humidite-avant-apres.webp', width: 1200, height: 630, alt: 'Avant et après traitement humidité — Institut IPB' }],
+    images: [{ url: '/images/humidite-avant-apres.webp', width: 1200, height: 630, alt: 'Avant et après traitement humidité — chantier du réseau IPB' }],
   },
 };
 
@@ -57,7 +57,7 @@ const generateServiceJsonLd = () => ({
     "address": { "@type": "PostalAddress", "streetAddress": "54 avenue Jean Jaurès", "addressLocality": "Tournefeuille", "addressRegion": "Occitanie", "postalCode": "31170", "addressCountry": "FR" }
   },
   "areaServed": [{ "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" }, { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" }, { "@type": "AdministrativeArea", "name": "Gers (32)" }, { "@type": "AdministrativeArea", "name": "Tarn (81)" }],
-  "description": "Diagnostic instrumenté de l'humidité, injection de résine, cuvelage, traitement du salpêtre, ventilation. Décennale 10 ans dédiée."
+  "description": "Diagnostic instrumenté de l'humidité (remontées capillaires, infiltrations, condensation, cave humide). L'institut identifie la cause exacte, conçoit la solution juste, et la met en œuvre avec les équipes de réalisation du réseau IPB sous garantie décennale 10 ans."
 });
 
 const typesHumidite = [
@@ -126,7 +126,7 @@ export default function HumiditePage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">
-                  Tâches sur les murs, peinture qui cloque, odeur persistante : avant de traiter, il faut comprendre. Notre institut vient sur place avec hygromètre et caméra thermique pour identifier la cause exacte — et préconiser le traitement adapté.
+                  Tâches sur les murs, peinture qui cloque, odeur persistante&nbsp;: avant de traiter, il faut comprendre. L'institut vient sur place avec hygromètre et caméra thermique pour identifier la cause exacte. Si des travaux sont nécessaires, l'institut conçoit la solution et nos équipes de réalisation l'exécutent sous décennale 10 ans.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>
@@ -152,7 +152,7 @@ export default function HumiditePage() {
               <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
                 <Image
                   src="/images/humidite-avant-apres.webp"
-                  alt="Avant et après traitement de l'humidité — chantier IPB"
+                  alt="Avant et après traitement de l'humidité — chantier du réseau IPB"
                   fill
                   sizes="(max-width: 1024px) 0px, 500px"
                   className="object-cover"
@@ -214,7 +214,7 @@ export default function HumiditePage() {
                 <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
                   <Image
                     src="/images/salpetre-avant-apres.webp"
-                    alt="Salpêtre traité par IPB sur les murs d'une maison ancienne"
+                    alt="Salpêtre traité par les équipes du réseau IPB sur les murs d'une maison ancienne"
                     fill
                     sizes="(max-width: 1024px) 100vw, 40vw"
                     className="object-cover"
@@ -233,9 +233,9 @@ export default function HumiditePage() {
                 <ul className="space-y-8">
                   {[
                     { titre: 'Diagnostic sur place', desc: "Visite avec hygromètre, caméra thermique et test à la pesée. Mesure du taux d'humidité dans les murs, identification de la cause exacte." },
-                    { titre: 'Rapport et préconisations', desc: 'Document écrit sous 3 à 5 jours ouvrés avec photos, mesures, cause identifiée et solutions chiffrées. Reconnu par les assurances en cas de litige.' },
-                    { titre: 'Choix du traitement', desc: "Injection de résine, cuvelage, ventilation, drainage : la solution dépend du diagnostic, jamais d'un produit qu'on voudrait vendre." },
-                    { titre: 'Travaux pilotés par notre institut', desc: 'Exécution sous décennale 10 ans dédiée. Vérification post-traitement à 6 mois pour confirmer la disparition des symptômes.' },
+                    { titre: 'Rapport et préconisations', desc: "Document écrit sous 3 à 5 jours avec photos, mesures, cause identifiée et solutions chiffrées. Reconnu par les assurances en cas de litige." },
+                    { titre: 'Conception du traitement', desc: "Injection de résine, cuvelage, ventilation, drainage&nbsp;: l'institut choisit la solution selon le diagnostic, jamais selon un produit qu'on voudrait vendre." },
+                    { titre: 'Travaux exécutés par nos équipes de réalisation', desc: "L'institut coordonne le chantier ; les équipes de réalisation du réseau IPB exécutent les travaux sous garantie décennale 10 ans. Vérification post-traitement à 6 mois pour confirmer la disparition des symptômes." },
                   ].map((etape, i) => (
                     <RevealOnScroll key={etape.titre} delay={0.08 + i * 0.06}>
                       <li className="grid grid-cols-[40px_1fr] gap-5 items-start pb-8 border-b border-white/10">

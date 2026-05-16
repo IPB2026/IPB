@@ -14,7 +14,7 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures Toulouse 31 · Diagnostic 72h · Décennale 10 ans',
+  title: 'Expert Fissures Toulouse 31 · Visite 72h · Décennale 10 ans',
   description: "Diagnostic fissures à Toulouse : agrafage structurel, rapport technique reconnu par les assurances. 70 dossiers fissures par an. Décennale 10 ans sur les travaux. Visite sous 72h. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures toulouse',
@@ -84,7 +84,7 @@ const faqItems = [
   },
   {
     question: "Quelle est la différence entre agrafage et micropieux ?",
-    answer: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables (12 000 à 18 000 €). Les micropieux reprennent les fondations en profondeur (40 000 à 60 000 €) — intervention lourde réservée aux tassements actifs majeurs. Notre institut réalise l'agrafage structurel ; pour les rares cas nécessitant des micropieux, nous orientons vers un partenaire spécialisé après diagnostic.",
+    answer: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables (12 000 à 18 000 €). Les micropieux reprennent les fondations en profondeur (40 000 à 60 000 €) — intervention lourde réservée aux tassements actifs majeurs. L'institut conçoit l'agrafage structurel et nos équipes de réalisation l'exécutent ; pour les rares cas nécessitant des micropieux, nous coordonnons l'intervention avec un spécialiste après diagnostic.",
   },
   {
     question: "Le rapport peut-il être utilisé devant un tribunal ?",
@@ -92,7 +92,7 @@ const faqItems = [
   },
   {
     question: "Quels sont les délais d'intervention ?",
-    answer: "Notre institut se déplace sous 72 heures en moyenne sur Toulouse et la Haute-Garonne. Pour les situations urgentes (fissure évolutive, danger imminent, compromis de vente en cours), nous intervenons sous 24 heures. Le rapport écrit est livré sous 3 à 5 jours ouvrés après la visite.",
+    answer: "Notre institut se déplace sous 72h en moyenne sur Toulouse et la Haute-Garonne. Pour les situations urgentes (fissure évolutive, danger imminent, compromis de vente en cours), nous intervenons sous 24 heures. Le rapport écrit est livré sous 3 à 5 jours ouvrés après la visite.",
   },
 ];
 
@@ -169,7 +169,7 @@ export default function ExpertFissuresToulousePage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">
-                  Institut IPB — pathologie du bâtiment à Toulouse depuis 2019. Diagnostic instrumenté, agrafage structurel et reprise en sous-œuvre. Nos rapports sont reconnus par les assurances et nous traitons en moyenne soixante-dix dossiers par an en Haute-Garonne.
+                  Institut IPB — pathologie du bâtiment. Réseau IPB actif à Toulouse depuis 2019. Diagnostic instrumenté, conception de la solution (agrafage structurel, reprise en sous-œuvre) ; travaux exécutés par les équipes de réalisation du réseau IPB sous décennale. Nos rapports sont reconnus par les assurances et nous traitons en moyenne soixante-dix dossiers par an en Haute-Garonne.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>
@@ -199,7 +199,7 @@ export default function ExpertFissuresToulousePage() {
                   </li>
                   <li className="flex items-center gap-1.5">
                     <span className="text-ipb-orange" aria-hidden="true">✓</span>
-                    <span>Réponse sous 24h ouvrées</span>
+                    <span>Réponse sous 48 heures</span>
                   </li>
                   <li className="flex items-center gap-1.5">
                     <span className="text-ipb-orange" aria-hidden="true">✓</span>
@@ -301,7 +301,7 @@ export default function ExpertFissuresToulousePage() {
           <div className="max-w-ipb mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
               {[
-                { value: 850, suffix: '+', label: 'Chantiers livrés' },
+                { value: 850, suffix: '+', label: 'Chantiers · réseau IPB' },
                 { value: 70, label: 'Dossiers par an', sublabel: 'en moyenne' },
                 { value: 4.9, decimals: 1, suffix: '/5', label: 'Avis Google' },
                 { value: 10, suffix: ' ans', label: 'Décennale dédiée' },
@@ -354,7 +354,7 @@ export default function ExpertFissuresToulousePage() {
                   },
                   {
                     titre: 'Notre institut vous rappelle',
-                    detail: 'Sous 24h ouvrées, premier avis téléphonique : ce que nous lisons dans vos descriptions, urgent ou non, démarches assurance possibles. Souvent ce premier échange suffit à vous rassurer.',
+                    detail: 'Sous 48 heures, premier avis téléphonique : ce que nous lisons dans vos descriptions, urgent ou non, démarches assurance possibles. Souvent ce premier échange suffit à vous rassurer.',
                     delai: 'Étape 2 · Sous 24h',
                   },
                   {
@@ -364,7 +364,7 @@ export default function ExpertFissuresToulousePage() {
                   },
                   {
                     titre: 'Rapport, devis, travaux',
-                    detail: 'Rapport technique écrit sous 3 à 5 jours ouvrés, reconnu par les assurances dans les dossiers CAT-NAT. Devis détaillé. Si vous confirmez : agrafage structurel sous décennale 10 ans dédiée, chantier 3 à 5 jours selon ampleur.',
+                    detail: 'Rapport technique écrit sous 3 à 5 jours ouvrés, reconnu par les assurances dans les dossiers CAT-NAT. Devis détaillé. Si vous confirmez : agrafage structurel sous garantie décennale 10 ans, chantier 3 à 5 jours selon ampleur.',
                     delai: 'Étape 4 · Travaux décennale',
                   },
                 ].map((etape, i) => (

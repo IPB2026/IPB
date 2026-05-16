@@ -81,8 +81,8 @@ export function Testimonials({
                 fontWeight: 700,
               }}
             >
-              Quatre clients,<br />
-              <em>quatre histoires.</em>
+              Ce que disent<br />
+              <em>nos clients.</em>
             </h2>
           </RevealOnScroll>
 
@@ -158,8 +158,8 @@ export function Testimonials({
                   fontWeight: 700,
                 }}
               >
-                Quatre clients,<br />
-                <em>quatre histoires.</em>
+                Ce que disent<br />
+                <em>nos clients.</em>
               </h2>
 
               <ul className="space-y-1">

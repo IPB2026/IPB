@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: "Comment se passe une expertise fissures à Toulouse ?",
-    a: "Notre diagnostic instrumenté complet est réalisé sur site, et déductible des travaux si vous nous confiez ensuite l'intervention. Il inclut le déplacement, les mesures au fissuromètre, l'analyse des causes et un rapport écrit reconnu par les assurances dans les dossiers CAT-NAT. Pour le tarif précis selon votre situation, nous vous répondons sous 24 heures ouvrées.",
+    a: "Le diagnostic instrumenté complet se fait sur site, et reste déductible des travaux si vous nous confiez ensuite l'intervention. Il inclut le déplacement, les mesures au fissuromètre, l'analyse des causes et un rapport écrit reconnu par les assurances dans les dossiers CAT-NAT. Pour le tarif précis selon votre situation, nous vous répondons sous 48h.",
   },
   {
     q: "Mon assurance prend-elle en charge les fissures de sécheresse ?",
@@ -32,11 +32,11 @@ const faqs = [
   },
   {
     q: "Quelle est la différence entre agrafage et micropieux ?",
-    a: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables — solution adaptée à 90 % des fissures structurelles. Les micropieux reprennent les fondations en profondeur — intervention lourde réservée aux tassements actifs majeurs (au-delà de 10 cm). Comptez 12 000 à 18 000 € pour un agrafage, 40 000 à 60 000 € pour des micropieux. Notre institut réalise l'agrafage structurel ; pour les rares cas qui nécessitent réellement des micropieux, nous orientons vers une entreprise spécialisée partenaire après diagnostic.",
+    a: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables — solution adaptée à 90 % des fissures structurelles. Les micropieux reprennent les fondations en profondeur — intervention lourde réservée aux tassements actifs majeurs (au-delà de 10 cm). Comptez 12 000 à 18 000 € pour un agrafage, 40 000 à 60 000 € pour des micropieux. L'institut conçoit l'agrafage structurel et nos équipes de réalisation l'exécutent ; pour les rares cas qui nécessitent réellement des micropieux, nous coordonnons l'intervention avec un spécialiste après diagnostic.",
   },
   {
     q: "Faut-il déclarer une ouverture de mur porteur en mairie ?",
-    a: "Pour une ouverture intérieure, une déclaration préalable suffit dans la majorité des communes. Pour une création de baie vitrée modifiant la façade, un permis de construire est généralement requis. En copropriété, un vote en assemblée générale est obligatoire. Notre institut prépare le dossier technique pour chacune de ces démarches.",
+    a: "Pour une ouverture intérieure, une déclaration préalable suffit dans la majorité des communes. Pour une création de baie vitrée modifiant la façade, un permis de construire est généralement requis. En copropriété, un vote en assemblée générale est obligatoire. L'institut prépare le dossier technique pour chacune de ces démarches.",
   },
   {
     q: "Combien de temps pour ouvrir un mur porteur dans un appartement ?",
@@ -44,7 +44,7 @@ const faqs = [
   },
   {
     q: "Pourquoi choisir un institut spécialisé en pathologie du bâtiment ?",
-    a: "Sur un mur porteur ou une fissure structurelle, c'est la continuité entre diagnostic, étude et travaux qui sécurise le résultat. Notre institut pilote l'ensemble : le diagnostic et la coordination des travaux sont menés sous nos garanties professionnelles ; la note de calcul opposable et les travaux d'exécution sont menés sous décennales métier dédiées. Vous avez un seul interlocuteur, et un dossier complet remis à la livraison.",
+    a: "Sur un mur porteur ou une fissure structurelle, c'est la continuité entre diagnostic, conception et travaux qui sécurise le résultat. L'institut coordonne l'ensemble : nous diagnostiquons la cause, nous concevons la solution, et nos équipes de réalisation l'exécutent sous garantie décennale 10 ans. Vous avez un seul interlocuteur, et un dossier complet remis à la livraison.",
   },
   {
     q: "Vos rapports sont-ils acceptés par les assurances ?",
@@ -56,7 +56,7 @@ const faqs = [
   },
   {
     q: "Que se passe-t-il après le chantier ?",
-    a: "Vous recevez un dossier complet : étude technique, plans d'exécution, photos avant/après, attestations des décennales métier dédiées. En cas de désordre dans les 10 ans suivant la livraison, vous avez un seul interlocuteur — IPB — qui actionne les garanties et coordonne la reprise.",
+    a: "Vous recevez un dossier complet : étude technique, plans d'exécution, photos avant/après, attestations de garantie décennale. En cas de désordre dans les 10 ans suivant la livraison, vous avez un seul interlocuteur — IPB — qui actionne les garanties et coordonne la reprise.",
   },
 ];
 
@@ -94,7 +94,7 @@ export function FAQ() {
                   Ce qu'on nous demande<br /><em>le plus souvent.</em>
                 </h2>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-8">
-                  Si votre question ne figure pas ci-contre, écrivez-nous ou appelez l’institut directement.
+                  Si votre question ne figure pas ci-contre, écrivez-nous ou appelez l'institut directement.
                 </p>
                 <div className="space-y-3">
                   <Link href="/diagnostic" className="inline-flex items-center gap-2 text-ipb-orange-d font-medium text-[14px] tracking-wide border-b border-ipb-orange-d pb-1 hover:gap-3 transition-all">

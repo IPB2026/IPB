@@ -32,7 +32,7 @@ export function ServicesStructure() {
                     </h3>
                     <p className="text-slate-600 text-sm leading-relaxed mb-3">
                       Cuisine fermée à ouvrir sur le séjour ? Baie vitrée à percer côté jardin ?
-                      Notre institut pilote l'étude et la pose, sous décennales métier dédiées. <strong className="text-slate-800">3 à 5 jours sur place.</strong>
+                      Notre institut pilote l'étude et la pose, sous garantie décennale 10 ans. <strong className="text-slate-800">3 à 5 jours sur place.</strong>
                     </p>
                     <div className="flex items-center gap-2 text-orange-600 font-bold text-sm">
                       Voir comment on procède <ArrowRight size={14} className="group-hover:translate-x-1 transition" />
@@ -105,7 +105,7 @@ export function ServicesStructure() {
                 <span className="text-xs font-bold text-slate-400 uppercase tracking-wide">En direct</span>
               </div>
               <p className="font-display font-bold text-2xl text-slate-900 leading-tight">850+</p>
-              <p className="text-sm text-slate-600 leading-tight mt-1">chantiers livrés en Occitanie</p>
+              <p className="text-sm text-slate-600 leading-tight mt-1">chantiers · réseau IPB</p>
             </div>
 
             {/* Mini-galerie sous l'image principale */}

@@ -172,13 +172,13 @@ export function calculateLeadScore(input: ScoringInput): LeadScoreResult {
     tier = 'WARM';
     tierColor = '#0F2033';
     tierEmoji = '🌡️';
-    recommendedAction = 'Rappel sous 24 heures ouvrées. Préparer un argumentaire chiffré.';
+    recommendedAction = 'Rappel sous 48 heures. Préparer un argumentaire chiffré.';
     callbackPriority = 'P2_24H';
   } else {
     tier = 'COLD';
     tierColor = '#736D67';
     tierEmoji = '❄️';
-    recommendedAction = 'Email automatique de suivi. Rappel téléphonique sous 72 heures si non répondu.';
+    recommendedAction = 'Email automatique de suivi. Rappel téléphonique sous 48 heures si non répondu.';
     callbackPriority = 'P3_72H';
   }
 

@@ -16,35 +16,36 @@ import { Footer } from '@/components/home/Footer';
 import Script from 'next/script';
 import type { Metadata } from 'next';
 
-// Données des 4 personas — alignées sur §2.1 du cahier des charges.
+// 4 portes d'entrée — HOME-IPB-CONTENU-FINAL §4.
+// Fissures / Humidité / Achat immobilier / Mur porteur.
 const homePersonas: PersonaCard[] = [
   {
-    label: 'Sinistré',
-    titre: 'Vous voyez apparaître une fissure',
-    desc: "Quelque chose a changé sur votre façade ou à l'intérieur, et vous voulez comprendre. Nous lisons le bâti, qualifions le désordre, et vous indiquons la suite à donner — sans rien vendre que vous n'ayez besoin.",
-    href: '/expert-fissures-toulouse-31',
-    cta: 'Voir notre expertise fissures',
+    label: 'Fissures',
+    titre: 'Une fissure vous inquiète',
+    desc: "Elle apparaît, s'élargit, suit les joints en escalier. On lit le bâti, on mesure, on identifie la cause — et on vous dit si c'est grave.",
+    href: '/expertise/fissures',
+    cta: 'Diagnostiquer ma fissure',
   },
   {
-    label: 'Vendeur',
-    titre: 'Vous vendez un bien comportant des fissures',
-    desc: "Un acheteur s'inquiète, une visite annulée, un compromis suspendu. Notre rapport documente précisément les désordres et présente les éléments factuels qui sécurisent la transaction.",
-    href: '/vendre-bien-avec-fissures',
-    cta: 'Voir la page vendeur',
+    label: 'Humidité',
+    titre: "De l'humidité s'est installée",
+    desc: "Remontées, infiltrations, salpêtre, condensation. On identifie la vraie origine — souvent confondue — avant de traiter.",
+    href: '/expertise/humidite',
+    cta: 'Diagnostiquer mon humidité',
   },
   {
-    label: 'Acheteur',
+    label: 'Achat immobilier',
     titre: 'Vous achetez et vous avez un doute',
-    desc: "Avant de signer, vous voulez un avis structurel indépendant, sans aucun lien avec le vendeur ni l'agence. Nos délais sont compatibles avec votre rétractation.",
+    desc: "Avant de signer, un avis structurel indépendant, sans lien avec le vendeur ni l'agence. Rapport remis dans vos délais de rétractation.",
     href: '/expertise-avant-achat-immobilier-toulouse',
-    cta: 'Voir la page acheteur',
+    cta: 'Faire expertiser le bien',
   },
   {
-    label: 'Rénovateur',
-    titre: "Vous projetez d'ouvrir un mur porteur",
-    desc: "Cuisine ouverte, suite parentale, baie vitrée. Étude technique, dimensionnement de la poutre IPN ou HEB, pose et finitions sous décennale 10 ans dédiée.",
-    href: '/expert-mur-porteur',
-    cta: 'Voir la page mur porteur',
+    label: 'Mur porteur',
+    titre: 'Vous voulez ouvrir un mur porteur',
+    desc: "Cuisine ouverte, baie vitrée. Étude de structure, conception, réalisation sous décennale.",
+    href: '/expertise/mur-porteur',
+    cta: 'Étudier mon projet',
   },
 ];
 
@@ -69,14 +70,14 @@ const organizationSchema = {
     "caption": "IPB - Institut de Pathologie du Bâtiment"
   },
   "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
-  "description": "Institut spécialisé en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Diagnostic de fissures, ouverture de mur porteur et création de baie vitrée. Décennales métier dédiées.",
+  "description": "Institut spécialisé en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Diagnostic de fissures, expertise humidité, expertise avant achat et ouverture de mur porteur. Diagnostic et coordination assurés par IPB ; travaux réalisés sous décennale par les équipes de réalisation du réseau IPB.",
+  // foundingDate du réseau IPB (et non d'IPB en tant qu'entité juridique).
   "foundingDate": "2019",
-  "numberOfEmployees": { "@type": "QuantitativeValue", "value": "8" },
+  // Adresse à compléter par le client — voir [ADRESSE_IPB] dans le livrable.
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "54 avenue Jean Jaurès",
-    "addressLocality": "Tournefeuille",
-    "postalCode": "31170",
+    "streetAddress": "[ADRESSE_IPB]",
+    "addressLocality": "Toulouse",
     "addressRegion": "Occitanie",
     "addressCountry": "FR"
   },
@@ -94,15 +95,16 @@ const organizationSchema = {
 };
 
 export const metadata: Metadata = {
-  title: "L'Institut de Pathologies & Structure du Bâtiment · IPB",
-  description: "IPB, institut de pathologies du bâtiment et expert en structure. Diagnostic de fissures, ouverture de mur porteur, traitement de l'humidité en Occitanie.",
+  title: "Institut de pathologie & structure du bâtiment · IPB",
+  description: "IPB diagnostique fissures, humidité et désordres structurels, conçoit la solution et la met en œuvre avec ses équipes de réalisation. Un seul interlocuteur, du diagnostic à la livraison. Occitanie.",
   keywords: [
     'expert fissures Toulouse',
     'expertise fissures Haute-Garonne',
     'expert fissure maison Toulouse',
     'agrafage fissures',
     'ouverture mur porteur Toulouse',
-    'création baie vitrée Toulouse',
+    'expertise humidité Toulouse',
+    'expertise avant achat immobilier Toulouse',
     'institut pathologie du bâtiment',
     'expertise structure bâtiment Toulouse',
     'expert bâtiment Toulouse',
@@ -110,8 +112,8 @@ export const metadata: Metadata = {
     'Toulouse', 'Montauban', 'Auch', 'Albi',
   ],
   openGraph: {
-    title: "L'Institut de Pathologies & Structure du Bâtiment · IPB",
-    description: "Institut de pathologies du bâtiment et expert en structure. Diagnostic de fissures, ouverture de mur porteur, traitement de l'humidité en Occitanie.",
+    title: "Institut de pathologie & structure du bâtiment · IPB",
+    description: "IPB diagnostique les pathologies du bâti, conçoit la solution, et la met en œuvre avec ses équipes de réalisation. Fissures, humidité, mur porteur. Occitanie.",
     url: "https://www.ipb-expertise.fr",
     siteName: "IPB - Institut de Pathologie du Bâtiment",
     images: [
@@ -127,8 +129,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "L'Institut de Pathologies & Structure du Bâtiment · IPB",
-    description: "Institut de pathologies du bâtiment, expert en structure. Diagnostic, mur porteur, humidité en Occitanie.",
+    title: "Institut de pathologie & structure du bâtiment · IPB",
+    description: "IPB diagnostique fissures, humidité et désordres structurels, conçoit la solution, et la met en œuvre avec ses équipes. Occitanie.",
     images: [
       {
         url: "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
@@ -187,8 +189,8 @@ export default function HomePage() {
             persona dédiée. Routage SEO + conversion supérieure. */}
       <PersonaCards
         eyebrow="Selon votre situation"
-        title={<>Quatre cas, <em>quatre chemins.</em></>}
-        intro="Selon ce que vous traversez, voici la page la plus utile. Notre méthode est la même quel que soit le dossier ; le point d'entrée diffère."
+        title={<>Vous êtes <em>confronté à quoi&nbsp;?</em></>}
+        intro="Quatre situations, une même rigueur. Voici la porte d'entrée la plus utile pour vous."
         background="white"
         personas={homePersonas}
       />
@@ -203,17 +205,17 @@ export default function HomePage() {
             Estimation gratuite
           </p>
           <h2 className="text-white font-serif mb-5" style={{ fontSize: 'clamp(22px, 2.6vw, 36px)', lineHeight: 1.2, letterSpacing: '-0.022em', fontWeight: 700 }}>
-            Un projet d'ouverture de mur porteur ?{' '}
-            <em className="text-ipb-orange-l block sm:inline mt-1 sm:mt-0 not-italic sm:italic">Combien ça va vous coûter.</em>
+            Un projet de mur porteur ?{' '}
+            <em className="text-ipb-orange-l block sm:inline mt-1 sm:mt-0 not-italic sm:italic">Découvrez le budget en 2 minutes.</em>
           </h2>
           <p className="text-white/75 text-[14px] md:text-[15px] leading-[1.8] mb-8 max-w-xl mx-auto">
-            Notre calculateur, basé sur les chantiers IPB récents en Occitanie, vous donne une fourchette précise en deux minutes. Vous recevez le détail par email.
+            Notre calculateur, basé sur des chantiers récents du réseau IPB en Occitanie, vous donne une fourchette précise. Vous recevez le détail par email.
           </p>
           <a
             href="/calcul-prix-mur-porteur?utm_source=site&utm_medium=home_banner&utm_campaign=mur_porteur"
             className="inline-flex items-center justify-center gap-2 bg-ipb-orange-d text-white font-bold px-7 md:px-8 py-4 rounded-[3px] text-[13px] md:text-[14px] tracking-[0.03em] hover:bg-[#7E390F] transition-colors min-h-[48px]"
           >
-            Lancer le calcul → 2 min
+            Lancer le calcul
           </a>
         </div>
       </section>

@@ -15,14 +15,13 @@ export function TrustSignals() {
 
           <div className="text-center md:text-left">
             <p className="text-orange-300 text-xs font-bold uppercase tracking-[0.2em] mb-2">
-              Décennales métier 10 ans · Un seul interlocuteur
+              Garantie décennale 10 ans · Un seul interlocuteur
             </p>
             <h2 className="text-white font-bold text-2xl md:text-3xl mb-2 font-display tracking-tight">
               Si ça bouge, on revient. Gratuitement.
             </h2>
             <p className="text-white/75 text-base leading-relaxed max-w-2xl">
-              Étude, ouverture de mur, agrafage de fissure — chaque étape est menée sous décennale 10 ans dédiée.
-              Un seul interlocuteur pour vous, des garanties métier solides derrière. <strong className="text-white">Attestations remises avec le devis.</strong>
+              L'institut diagnostique et coordonne ; les équipes de réalisation du réseau IPB exécutent les travaux sous garantie décennale 10 ans. Un seul interlocuteur du diagnostic à la livraison. <strong className="text-white">Attestations remises avec le devis.</strong>
             </p>
           </div>
 
@@ -52,7 +51,7 @@ export function TrustSignals() {
               On ne vend pas<br />de produits.
             </h3>
             <p className="text-ipb-muted leading-relaxed">
-              Pas de partenariat avec un fabricant, pas de commission cachée. On regarde votre maison, on vous dit ce qu'elle a, et on propose la solution la plus adaptée — pas la plus rentable pour nous.
+              Aucun lien commercial avec un fabricant, aucune commission cachée. On regarde votre bâti, on vous dit ce qu'il a, et on propose la solution la plus adaptée — pas la plus rentable pour nous.
             </p>
           </div>
 
@@ -61,12 +60,12 @@ export function TrustSignals() {
             <div className="w-14 h-14 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 mb-6">
               <Hammer size={28} />
             </div>
-            <p className="text-amber-700 text-xs font-bold uppercase tracking-wider mb-2">Pilotage complet</p>
+            <p className="text-amber-700 text-xs font-bold uppercase tracking-wider mb-2">Coordination complète</p>
             <h3 className="font-display font-bold text-2xl text-ipb-text mb-3 leading-tight">
               Du premier coup d'œil<br />aux dernières finitions.
             </h3>
             <p className="text-ipb-muted leading-relaxed">
-              Notre institut pilote l'opération : du diagnostic au dimensionnement de la poutre, jusqu'à la pose et aux finitions. Pas de jeu de ping-pong entre études et travaux. Vous avez un seul interlocuteur, du devis à la livraison.
+              L'institut diagnostique, conçoit et coordonne l'opération&nbsp;; nos équipes de réalisation exécutent les travaux sous décennale. Pas de jeu de ping-pong entre études et travaux. Vous avez un seul interlocuteur, du diagnostic à la livraison.
             </p>
           </div>
 
@@ -75,19 +74,19 @@ export function TrustSignals() {
             <div className="aspect-[4/5] rounded-2xl overflow-hidden mb-5 shadow-lg ring-1 ring-ipb-rule">
               <Image
                 src="/images/chantier-ouverture-mur-porteur.webp"
-                alt="Chantier IPB en cours — étaiement et pose de poutre sur ouverture de mur porteur en Occitanie"
+                alt="Chantier du réseau IPB en cours — étaiement et pose de poutre sur ouverture de mur porteur en Occitanie"
                 width={400}
                 height={500}
                 className="w-full h-full object-cover"
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
             </div>
-            <p className="text-emerald-700 text-xs font-bold uppercase tracking-wider mb-2">Une équipe, des chantiers</p>
+            <p className="text-emerald-700 text-xs font-bold uppercase tracking-wider mb-2">Un institut, un réseau</p>
             <h3 className="font-display font-bold text-xl text-ipb-text mb-2 leading-tight">
               L'institut, votre interlocuteur.
             </h3>
             <p className="text-ipb-muted leading-relaxed text-sm">
-              Sept ans, 850+ chantiers en Occitanie. La même personne vous reçoit, vous chiffre, et suit le chantier de bout en bout. Pas un centre d'appels, pas un dossier qui passe de main en main.
+              Réseau IPB actif depuis 2019, plus de 850 chantiers en Occitanie. La même personne vous reçoit, vous chiffre, et suit le chantier de bout en bout. Pas un centre d'appels, pas un dossier qui passe de main en main.
             </p>
           </div>
         </div>

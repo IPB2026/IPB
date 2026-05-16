@@ -8,10 +8,10 @@ import { StatItem } from '@/components/ui/StatItem';
  * Cf. IPB_Design_Handoff.md §8 Homepage section 5
  */
 const stats = [
-  { value: 850, suffix: '+', label: 'Chantiers livrés', sublabel: '2019 — 2026' },
-  { value: 4.9, decimals: 1, suffix: '/5', label: 'Avis Google', sublabel: 'Vérifiés sur Google' },
-  { value: 10, suffix: ' ans', label: 'Décennales métier', sublabel: 'Garanties dédiées' },
-  { value: 72, suffix: ' h', label: 'Délai de visite', sublabel: 'Moyenne constatée' },
+  { value: 850, suffix: '+', label: 'Chantiers · réseau IPB', sublabel: 'Occitanie · depuis 2019' },
+  { value: 4.9, decimals: 1, suffix: '/5', label: 'Note Google', sublabel: 'Avis clients vérifiés' },
+  { value: 10, suffix: ' ans', label: 'Garantie décennale', sublabel: 'Travaux assurés · AXA' },
+  { value: 48, suffix: ' h', label: 'Délai de réponse', sublabel: "De l'institut · moyenne" },
 ];
 
 export function StatsBlock() {
@@ -20,7 +20,7 @@ export function StatsBlock() {
       <div className="max-w-ipb mx-auto px-6 lg:px-12 relative z-10">
         <RevealOnScroll variant="editorial">
           <div className="text-center mb-16 max-w-2xl mx-auto">
-            <Eyebrow variant="dark" className="justify-center">L’institut en chiffres</Eyebrow>
+            <Eyebrow variant="dark" className="justify-center">L'institut en chiffres</Eyebrow>
             <h2
               className="font-serif text-white"
               style={{
@@ -30,8 +30,8 @@ export function StatsBlock() {
                 fontWeight: 700,
               }}
             >
-              Pas des promesses,<br />
-              <em>des faits.</em>
+              Pas des promesses.<br />
+              <em>Des faits vérifiables.</em>
             </h2>
           </div>
         </RevealOnScroll>

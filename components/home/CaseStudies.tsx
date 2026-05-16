@@ -24,7 +24,7 @@ const cases = [
   {
     type: 'Fissures',
     image: '/images/fissures-avant-apres.webp',
-    imageAlt: 'Avant et après agrafage structurel sur fissure de façade — chantier IPB Tournefeuille',
+    imageAlt: "Avant et après agrafage structurel sur fissure de façade — chantier du réseau IPB à Tournefeuille",
     title: 'Maison sinistrée par la sécheresse',
     location: 'Tournefeuille, Haute-Garonne',
     surface: 'Maison T4 · 110 m²',
@@ -34,12 +34,12 @@ const cases = [
       "Tassement différentiel reconnu en catastrophe naturelle 2022",
       "Agrafage structurel complet (18 agrafes inox) + ravalement souple",
     ],
-    constat: "Le rapport a été transmis à l'expert d'assurance. L'indemnisation a couvert 92 % du chantier.",
+    constat: "Le rapport IPB a été transmis à l'expert d'assurance. L'indemnisation a couvert 92 % du chantier.",
   },
   {
     type: 'Fissures',
     image: '/images/fissure-coin-maison.webp',
-    imageAlt: 'Fissure verticale au coin d\'une façade traitée par agrafage — chantier IPB Castanet-Tolosan',
+    imageAlt: "Fissure verticale au coin d'une façade traitée par agrafage — chantier du réseau IPB à Castanet-Tolosan",
     title: 'Fissures sur les angles de façade',
     location: 'Castanet-Tolosan, Haute-Garonne',
     surface: 'Maison T5 · 145 m²',
@@ -54,14 +54,14 @@ const cases = [
   {
     type: 'Mur porteur',
     image: '/images/baie-coulissante-apres.webp',
-    imageAlt: 'Baie vitrée coulissante installée après ouverture de mur porteur — chantier IPB Saint-Cyprien',
-    title: "Cuisine ouverte sur séjour",
+    imageAlt: "Baie vitrée coulissante installée après ouverture de mur porteur — chantier du réseau IPB à Saint-Cyprien",
+    title: 'Cuisine ouverte sur séjour',
     location: 'Toulouse, Saint-Cyprien',
-    surface: "T3 · 60 m² · 1er étage",
+    surface: 'T3 · 60 m² · 1er étage',
     duree: '5 jours',
     facts: [
       "Ouverture de 4,2 m sur mur porteur en briques foraines",
-      "Pose d'une poutre HEB 220 dimensionnée par l'ingénieur",
+      "Pose d'une poutre HEB 220 dimensionnée par le bureau d'études",
       "Étaiement provisoire, finitions enduit complet",
     ],
     constat: "Le bien a été remis en vente trois semaines après le chantier.",
@@ -91,7 +91,7 @@ export function CaseStudies() {
             </div>
             <div className="lg:col-span-5 lg:col-start-8">
               <p className="text-[15px] leading-[1.9] font-light text-ipb-muted">
-                Trois chantiers menés ces derniers mois. Adresses et photos issues de nos archives — pas des illustrations stock.
+                Trois chantiers menés par le réseau IPB ces derniers mois. Photos issues de nos archives — pas des illustrations.
               </p>
             </div>
           </div>

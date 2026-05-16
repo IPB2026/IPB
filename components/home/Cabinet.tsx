@@ -41,7 +41,7 @@ export function Cabinet() {
                   L'institut IPB
                 </p>
                 <p className="text-[12px] text-ipb-muted uppercase tracking-[0.14em]">
-                  Diagnostic et travaux · Occitanie
+                  Diagnostic, conception, coordination · Occitanie
                 </p>
               </div>
             </div>
@@ -50,7 +50,7 @@ export function Cabinet() {
           {/* Texte cabinet (7 col) */}
           <div className="lg:col-span-7">
             <RevealOnScroll>
-              <Eyebrow>L'institut</Eyebrow>
+              <Eyebrow>L'institut IPB</Eyebrow>
               <h2
                 className="font-serif text-ipb-text mb-8"
                 style={{
@@ -60,18 +60,18 @@ export function Cabinet() {
                   fontWeight: 700,
                 }}
               >
-                Sept ans d'expérience.<br />
-                <em>Un seul interlocuteur.</em>
+                Un institut spécialisé.<br />
+                <em>Un interlocuteur unique.</em>
               </h2>
             </RevealOnScroll>
 
             <RevealOnScroll delay={0.06}>
               <div className="space-y-5 text-[15px] leading-[1.9] font-light text-ipb-muted mb-12">
                 <p>
-                  IPB est un institut créé en 2019 à Toulouse, spécialisé en pathologie et structure du bâtiment. Son activité couvre deux missions principales : le diagnostic et le traitement des fissures, l'ouverture de mur porteur et la création de baie vitrée.
+                  IPB est un institut spécialisé en pathologie et structure du bâtiment, basé à Toulouse et intervenant en Occitanie. Notre métier couvre le diagnostic et le traitement des fissures, l'expertise humidité, l'expertise structurelle avant achat, et l'ouverture de murs porteurs.
                 </p>
                 <p>
-                  Notre institut assure le diagnostic et la coordination des travaux, du premier appel à la livraison — un seul interlocuteur pour vous accompagner. Chaque étape est couverte par sa décennale métier dédiée : décennale études pour la note de calcul opposable, décennale travaux pour l'exécution.
+                  L'institut diagnostique, conçoit, et met en œuvre avec ses équipes de réalisation — des artisans structure intégrés au réseau IPB, formés à notre protocole et assurés en décennale. Du premier appel à la livraison, vous avez un seul interlocuteur et une seule responsabilité de coordination.
                 </p>
               </div>
             </RevealOnScroll>
@@ -84,7 +84,7 @@ export function Cabinet() {
                     2019
                   </p>
                   <p className="text-[11px] text-ipb-light uppercase tracking-[0.14em]">
-                    Année de création
+                    Réseau IPB actif depuis
                   </p>
                 </div>
                 <div>
@@ -92,7 +92,7 @@ export function Cabinet() {
                     <StatCounter value={850} /><span className="text-ipb-orange">+</span>
                   </p>
                   <p className="text-[11px] text-ipb-light uppercase tracking-[0.14em]">
-                    Chantiers livrés
+                    Chantiers · réseau IPB
                   </p>
                 </div>
                 <div>
@@ -108,7 +108,7 @@ export function Cabinet() {
                     10 ans
                   </p>
                   <p className="text-[11px] text-ipb-light uppercase tracking-[0.14em]">
-                    Décennale dédiée
+                    Travaux sous décennale
                   </p>
                 </div>
               </div>
@@ -127,7 +127,7 @@ export function Cabinet() {
                   href="/contact"
                   className="text-ipb-muted hover:text-ipb-text font-light text-[13px] tracking-wide transition-colors"
                 >
-                  Demander l'attestation décennale
+                  Demander l'attestation décennale des travaux
                 </Link>
               </div>
             </RevealOnScroll>

@@ -62,7 +62,7 @@ export default function ArchitectesInterieurPage() {
                   Une cuisine ouverte sur le séjour, un salon traversant, une suite parentale qui « mange » la chambre voisine. <strong className="text-white">Vous concevez l'espace, on s'occupe du mur porteur.</strong>
                 </p>
                 <p className="text-base text-ipb-light mb-8 leading-relaxed">
-                  Notre institut pilote l'étude et les travaux sous décennales métier dédiées. Votre client reçoit toutes les attestations à la livraison. Vous gardez la relation, on vous fournit la technique.
+                  Notre institut pilote l'étude et les travaux sous garantie décennale 10 ans. Votre client reçoit toutes les attestations à la livraison. Vous gardez la relation, on vous fournit la technique.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link href="/contact" className="bg-ipb-orange hover:bg-orange-400 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 shadow-xl hover:-translate-y-0.5 transition-all">
@@ -89,7 +89,7 @@ export default function ArchitectesInterieurPage() {
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <p className="text-ipb-orange-l text-xs font-bold uppercase tracking-wider mb-2">Votre partenaire technique</p>
                     <p className="text-white font-display font-bold text-2xl leading-tight">L'institut IPB</p>
-                    <p className="text-white/70 text-sm mt-1">7 ans · 850+ chantiers · Décennales métier dédiées</p>
+                    <p className="text-white/70 text-sm mt-1">Réseau IPB depuis 2019 · 850+ chantiers · Garantie décennale 10 ans</p>
                   </div>
                 </div>
               </div>
@@ -109,8 +109,8 @@ export default function ArchitectesInterieurPage() {
 
             <div className="grid md:grid-cols-3 gap-6">
               {[
-                { icon: <Shield className="text-blue-600" size={28} />, title: 'Décennale 10 ans dédiée', desc: 'Les travaux sont menés sous décennale 10 ans dédiée. Un dossier complet remis au client à la livraison.' },
-                { icon: <Ruler className="text-ipb-orange" size={28} />, title: 'Étude technique structure', desc: 'Note de calcul signée sous décennale études dédiée pour les projets qui exigent un document opposable.' },
+                { icon: <Shield className="text-blue-600" size={28} />, title: 'Garantie décennale 10 ans', desc: 'Les travaux sont menés sous garantie décennale 10 ans. Un dossier complet remis au client à la livraison.' },
+                { icon: <Ruler className="text-ipb-orange" size={28} />, title: 'Étude technique structure', desc: 'Note de calcul signée sous note de calcul signée par un bureau d'études pour les projets qui exigent un document opposable.' },
                 { icon: <Hammer className="text-amber-600" size={28} />, title: 'Travaux sous 5 jours', desc: 'Étaiement, ouverture, pose poutre, finitions. Intervention rapide, sans bloquer votre planning.' },
                 { icon: <Users className="text-purple-600" size={28} />, title: 'Interlocuteur unique', desc: 'Vous discutez avec un seul chargé d\'affaires. Pas de ping-pong entre BE et entreprise générale.' },
                 { icon: <FileText className="text-emerald-600" size={28} />, title: 'Dossier complet pour le client', desc: 'À la livraison, on remet à votre client tous les documents du chantier : plans, calcul de la poutre, attestation de garantie 10 ans.' },
@@ -137,7 +137,7 @@ export default function ArchitectesInterieurPage() {
               {[
                 { num: 1, title: 'Brief projet', desc: 'Vous nous envoyez plans + photos via WhatsApp ou mail. Nous identifions les murs porteurs et chiffrons sous 24h.' },
                 { num: 2, title: 'Visite technique', desc: 'Notre institut passe sur site avec vous (ou seul si vous êtes pris). Relevé de charges, plan d\'exécution.' },
-                { num: 3, title: 'Devis + calcul technique', desc: 'Devis ferme sous 48h. Calcul de la poutre signé sous décennale études dédiée, méthode pour étayer le chantier.' },
+                { num: 3, title: 'Devis + calcul technique', desc: 'Devis ferme sous 48h. Calcul de la poutre signé sous note de calcul signée par un bureau d'études, méthode pour étayer le chantier.' },
                 { num: 4, title: 'Co-traitance ou sous-traitance', desc: 'À votre choix : nous facturons votre client (vous touchez l\'apport) ou nous vous facturons (vous refacturez). Tout est possible.' },
                 { num: 5, title: 'Travaux + livraison', desc: '2 à 5 jours sur place. Tous les documents remis, attestation de garantie 10 ans signée, photos avant/après pour votre book.' },
               ].map(({ num, title, desc }) => (

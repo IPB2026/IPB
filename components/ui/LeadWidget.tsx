@@ -41,10 +41,10 @@ function buildMessage(topic: Topic, timing: Timing): string {
     if (timing === 'ancien') return "Une fissure ancienne reste à surveiller — elle peut s'aggraver après un cycle sécheresse. Notre rapport documente l'état actuel.";
   }
   if (topic === 'mur-porteur') {
-    if (timing === 'projet') return "Pour un projet d'ouverture, un calcul technique préalable est indispensable. Notre institut réalise l'étude et les travaux dans la même mission.";
-    return "Notre institut étudie la faisabilité, calcule la poutre et exécute les travaux. Tout est pris en charge en interne.";
+    if (timing === 'projet') return "Pour un projet d'ouverture, un calcul technique préalable est indispensable. L'institut conçoit l'étude de structure ; nos équipes de réalisation exécutent ensuite les travaux sous garantie décennale 10 ans.";
+    return "L'institut étudie la faisabilité et conçoit le dimensionnement de la poutre ; nos équipes de réalisation exécutent les travaux sous décennale. Un seul interlocuteur du diagnostic à la livraison.";
   }
-  return "Notre institut vous répond sous 24 heures pour préciser ce qui est possible et ce qui ne l'est pas.";
+  return "Notre institut vous répond sous 48 heures pour préciser ce qui est possible et ce qui ne l'est pas.";
 }
 
 export function LeadWidget() {

@@ -10,9 +10,13 @@ import Link from 'next/link';
 import Script from 'next/script';
 import type { Metadata } from 'next';
 
+// EN ATTENTE DÉCISION CLIENT (brief §5) : reformulation en
+// « Coordination d'études structure » — IPB n'a pas de bureau d'études
+// intégré et fait intervenir un bureau d'études pour les projets le
+// nécessitant. URL conservée pour ne pas casser le SEO historique.
 export const metadata: Metadata = {
-  title: "Étude structure & travaux Toulouse · Mur porteur, IPN · IPB",
-  description: "Étude technique et travaux structure à Toulouse : dimensionnement IPN/HEB, ouverture de mur porteur. Note de calcul opposable selon les Eurocodes. Un seul interlocuteur, du devis à la livraison. ☎ 05 82 95 33 75",
+  title: "Coordination d'études structure · Toulouse · IPB",
+  description: "L'institut IPB coordonne l'étude de structure de votre projet (mur porteur, baie vitrée, reprise) et le chantier qui suit. Étude réalisée par un bureau d'études partenaire&nbsp;; travaux exécutés par les équipes du réseau IPB sous décennale. ☎ 05 82 95 33 75",
   keywords: [
     'étude structure toulouse',
     'étude structure haute-garonne',
@@ -21,13 +25,13 @@ export const metadata: Metadata = {
     'étude mur porteur toulouse',
     'calcul mur porteur toulouse',
     'expertise structure 31',
-    'note de calcul ouverture mur',
+    'coordination étude structure toulouse',
     'bureau études structure toulouse',
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/bureau-etude-structure-toulouse' },
   openGraph: {
-    title: "Étude structure & travaux · IPB Toulouse",
-    description: "Étude technique et travaux structure : IPB prend en charge l'opération de A à Z. Note de calcul opposable selon les Eurocodes. Un seul interlocuteur, du devis à la livraison.",
+    title: "Coordination d'études structure · IPB Toulouse",
+    description: "L'institut IPB coordonne l'étude de structure de votre projet et le chantier qui suit. Note de calcul rédigée selon les Eurocodes par un bureau d'études&nbsp;; travaux exécutés par les équipes du réseau IPB sous décennale.",
     url: 'https://www.ipb-expertise.fr/bureau-etude-structure-toulouse',
     type: 'website',
   },
@@ -41,9 +45,9 @@ export const metadata: Metadata = {
 const serviceJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Étude structure et travaux IPB",
+  "name": "Coordination d'études structure IPB",
   "@id": "https://www.ipb-expertise.fr/bureau-etude-structure-toulouse#service",
-  "description": "Étude technique et travaux structure à Toulouse : ouverture de mur porteur, dimensionnement IPN/HEB, reprise structurelle. Notes de calcul opposables selon les Eurocodes. Un seul interlocuteur, de l'étude à la livraison.",
+  "description": "L'institut IPB coordonne l'étude de structure (mur porteur, IPN/HEB, reprise structurelle) et les travaux qui suivent. Note de calcul rédigée selon les Eurocodes par un bureau d'études&nbsp;; travaux exécutés sous décennale par les équipes du réseau IPB.",
   "areaServed": [
     { "@type": "City", "name": "Toulouse" },
     { "@type": "AdministrativeArea", "name": "Haute-Garonne" },
@@ -57,23 +61,23 @@ const serviceJsonLd = {
 const prestations = [
   {
     titre: 'Étude de faisabilité mur porteur',
-    desc: "Identification du caractère porteur, descente de charges, méthode d'étaiement, choix du profil (IPN, HEB, IPE). Étude technique remise sous 3 à 5 jours ouvrés après visite.",
+    desc: "Identification du caractère porteur, descente de charges, méthode d'étaiement, choix du profil (IPN, HEB, IPE). Étude technique remise sous 3 à 5 jours après visite.",
   },
   {
-    titre: 'Note de calcul opposable',
-    desc: "Pour les projets qui exigent un document opposable face à un syndic, un assureur ou un contrôleur technique. Rédigée selon les Eurocodes et signée sous décennale études dédiée.",
+    titre: 'Coordination de la note de calcul opposable',
+    desc: "Pour les projets qui exigent un document opposable face à un syndic, un assureur ou un contrôleur technique. L'institut commande la note de calcul à un bureau d'études, la relit, et l'intègre au dossier remis au client.",
   },
   {
     titre: 'Diagnostic technique de structure',
     desc: "Avant achat, après sinistre, sur fissures et désordres. Compte-rendu écrit, mesures consignées, préconisations techniques motivées.",
   },
   {
-    titre: 'Pose et travaux structure',
-    desc: "Étaiement, dépose, pose du linteau ou de la poutre, finitions. Exécution sous décennale travaux dédiée (10 ans).",
+    titre: 'Travaux de structure',
+    desc: "Étaiement, dépose, pose du linteau ou de la poutre, finitions. L'institut coordonne ; les équipes de réalisation du réseau IPB exécutent sous garantie décennale 10 ans.",
   },
   {
-    titre: 'Suivi de chantier en partenariat',
-    desc: "Pour les rénovations lourdes intégrant plusieurs corps d'état, nous travaillons aux côtés des architectes et maîtres d'œuvre comme partenaire structure.",
+    titre: "Accompagnement de l'architecte ou du maître d'œuvre",
+    desc: "Pour les rénovations lourdes intégrant plusieurs corps d'état, l'institut intervient aux côtés des architectes et maîtres d'œuvre comme référent structure.",
   },
   {
     titre: 'Second regard sur étude tierce',
@@ -84,27 +88,27 @@ const prestations = [
 const faqItems = [
   {
     question: "Qui signe la note de calcul opposable sur vos chantiers ?",
-    answer: "Quand votre projet exige une note de calcul opposable (Eurocodes, dimensionnement IPN/HEB), elle est rédigée selon les Eurocodes et signée sous décennale études dédiée. IPB porte le diagnostic et coordonne l'ensemble du chantier. Vous avez un seul interlocuteur, un dossier complet remis à la livraison.",
+    answer: "Quand votre projet exige une note de calcul opposable (Eurocodes, dimensionnement IPN/HEB), elle est rédigée et signée par un bureau d'études structure que l'institut mandate. IPB coordonne le dossier, relit la note, et l'intègre à votre livrable. Vous avez un seul interlocuteur, un dossier complet remis à la livraison.",
   },
   {
     question: "Sous quel délai un dossier d'étude est-il rendu ?",
-    answer: "Visite technique sous 72 heures en moyenne. Étude technique de faisabilité remise sous 3 à 5 jours ouvrés. Pour une note de calcul opposable, le délai total est généralement de 7 à 12 jours ouvrés selon la complexité.",
+    answer: "Visite technique sous 72h en moyenne. Étude technique de faisabilité remise sous 3 à 5 jours. Pour une note de calcul opposable produite par notre bureau d'études partenaire, le délai total est généralement de 10 à 15 jours ouvrés selon la complexité.",
   },
   {
     question: "Travaillez-vous avec les architectes d'intérieur et marchands de biens ?",
-    answer: "Oui. L'institut intervient régulièrement comme partenaire technique des architectes d'intérieur (projets « espace ouvert »), des marchands de biens (rénovations rapides avant revente) et des agences immobilières (compte-rendu débloquant une vente sur fissure).",
+    answer: "Oui. L'institut intervient régulièrement comme référent structure des architectes d'intérieur (projets « espace ouvert »), des marchands de biens (rénovations rapides avant revente) et des agences immobilières (compte-rendu débloquant une vente sur fissure).",
   },
   {
     question: "L'étude technique est-elle incluse dans le devis travaux ?",
-    answer: "Quand l'institut coordonne les travaux derrière, l'étude technique est intégrée à la prestation globale et facturée une seule fois. Si vous demandez uniquement la note de calcul (sans travaux), elle est facturée séparément, avec un devis transparent remis sous 24 heures.",
+    answer: "Quand l'institut coordonne les travaux derrière, l'étude technique est intégrée à la prestation globale et facturée une seule fois. Si vous demandez uniquement la note de calcul (sans travaux), elle est facturée séparément, avec un devis transparent remis sous 48h.",
   },
   {
     question: "Quelles garanties couvrent votre chantier ?",
-    answer: "Trois niveaux de garantie : la note de calcul est signée sous décennale études dédiée (10 ans) ; le chantier est exécuté sous décennale travaux dédiée (10 ans) ; IPB porte une responsabilité civile professionnelle sur l'accompagnement et la coordination. Les attestations des décennales métier vous sont remises avec le devis.",
+    answer: "Trois niveaux de garantie : la note de calcul est signée par le bureau d'études qui la rédige, sous sa décennale études ; les travaux sont exécutés par les équipes de réalisation du réseau IPB sous garantie décennale 10 ans ; IPB porte une responsabilité civile professionnelle sur le diagnostic, la conception et la coordination. Les attestations vous sont remises avec le devis.",
   },
   {
     question: "Quel est le tarif d'une étude technique seule ?",
-    answer: "Une étude de faisabilité standalone (sans travaux derrière) est facturée au cas par cas selon la complexité du projet — un mur porteur simple en RDC ne demande pas le même travail qu'un dossier copropriété ou un ouvrage complexe. Décrivez-nous votre projet et le devis détaillé vous est remis sous 24 h, sans engagement.",
+    answer: "Une étude de faisabilité (sans travaux derrière) est facturée au cas par cas selon la complexité du projet — un mur porteur simple en RDC ne demande pas le même travail qu'un dossier copropriété ou un ouvrage complexe. Décrivez-nous votre projet et le devis détaillé vous est remis sous 48h, sans engagement.",
   },
   {
     question: "Pouvez-vous relire une note de calcul faite par un autre BE ?",
@@ -116,7 +120,7 @@ const faqItems = [
   },
   {
     question: "Quelle est votre méthode d'intervention ?",
-    answer: "IPB intervient en tant qu'institut coordinateur : la note de calcul est rédigée selon les Eurocodes et signée sous décennale études dédiée ; l'étaiement, l'ouverture, la pose et les finitions sont exécutés sous décennale travaux dédiée. IPB porte le diagnostic, coordonne l'opération et vous suit du premier appel à la levée des étais. Un seul interlocuteur, un dossier complet à la livraison.",
+    answer: "IPB intervient en tant qu'institut coordinateur : l'institut diagnostique, conçoit le projet, et fait intervenir un bureau d'études pour les notes de calcul opposables. Les équipes de réalisation du réseau IPB exécutent ensuite l'étaiement, l'ouverture, la pose et les finitions sous garantie décennale 10 ans. Vous parlez à un seul interlocuteur, du premier appel à la levée des étais.",
   },
 ];
 
@@ -146,7 +150,7 @@ export default function BureauEtudeStructurePage() {
           <div className="max-w-ipb mx-auto px-6 lg:px-12 pt-16 lg:pt-24 pb-20 lg:pb-28">
             <div className="max-w-3xl">
               <RevealOnScroll>
-                <Eyebrow>Étude & travaux structure · sous un seul interlocuteur</Eyebrow>
+                <Eyebrow>Coordination d'études structure · un seul interlocuteur</Eyebrow>
               </RevealOnScroll>
               <RevealOnScroll delay={0.06}>
                 <h1
@@ -159,18 +163,18 @@ export default function BureauEtudeStructurePage() {
                   }}
                 >
                   L'étude, l'ouverture, les finitions.<br />
-                  <em>Un seul institut prend en charge.</em>
+                  <em>Un seul institut coordonne.</em>
                 </h1>
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[620px]">
-                  Étude technique et travaux structure à Toulouse — mur porteur, IPN, reprise structurelle. IPB prend en charge l'opération de A à Z : diagnostic, étude selon les Eurocodes, étaiement, pose et finitions. Chaque étape sous sa décennale métier. Vous, vous parlez à une seule personne, du devis à la livraison.
+                  Coordination d'études structure à Toulouse — mur porteur, IPN/HEB, reprise structurelle. L'institut diagnostique votre projet, fait intervenir un bureau d'études pour la note de calcul opposable selon les Eurocodes, et coordonne le chantier ensuite. Travaux exécutés par les équipes du réseau IPB sous garantie décennale 10 ans. Vous parlez à une seule personne, du diagnostic à la livraison.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <MagneticButton href="/diagnostic" variant="primary">
-                    Diagnostic gratuit · 2 min
+                    Mon diagnostic en 2 min
                   </MagneticButton>
                   <a
                     href="tel:0582953375"
@@ -237,7 +241,7 @@ export default function BureauEtudeStructurePage() {
                 {
                   href: '/partenaires/architectes-interieur',
                   titre: "Architectes d'intérieur & décorateurs",
-                  desc: "Vos projets « espace ouvert » nécessitent une étude structure : nous sommes votre partenaire technique sous-traité, avec décennales métier dédiées et calendrier respecté.",
+                  desc: "Vos projets « espace ouvert » nécessitent une étude structure : l'institut conçoit et coordonne, les équipes du réseau IPB exécutent sous décennale, calendrier respecté.",
                 },
                 {
                   href: '/partenaires/marchands-de-biens',
@@ -283,7 +287,7 @@ export default function BureauEtudeStructurePage() {
               <div className="mb-16 max-w-2xl">
                 <Eyebrow variant="dark">Nos garanties</Eyebrow>
                 <h2 className="font-serif text-white" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
-                  Deux décennales,<br /><em>un seul interlocuteur.</em>
+                  Une chaîne de garanties,<br /><em>un seul interlocuteur.</em>
                 </h2>
               </div>
             </RevealOnScroll>
@@ -291,16 +295,16 @@ export default function BureauEtudeStructurePage() {
             <div className="grid md:grid-cols-3 gap-12 lg:gap-8">
               {[
                 {
-                  label: 'Décennale études dédiée',
-                  desc: "La note de calcul opposable est rédigée selon les Eurocodes et signée sous décennale études (10 ans). Attestation conservée dans votre dossier.",
+                  label: 'Étude signée par un bureau d\'études',
+                  desc: "La note de calcul opposable est rédigée selon les Eurocodes et signée par le bureau d'études mandaté par l'institut, sous sa décennale études (10 ans).",
                 },
                 {
-                  label: 'Décennale travaux dédiée',
-                  desc: "Étaiement, ouverture, pose et finitions sont exécutés sous décennale travaux (10 ans) sur les corps de métier mobilisés (maçonnerie, structure, plâtrerie, revêtements).",
+                  label: 'Travaux sous décennale 10 ans',
+                  desc: "Étaiement, ouverture, pose et finitions sont exécutés par les équipes de réalisation du réseau IPB, sous garantie décennale 10 ans.",
                 },
                 {
                   label: 'Dossier complet à la livraison',
-                  desc: "Plans d'exécution, étude technique, attestations des décennales métier, photos de chantier. Tous les documents vous sont remis.",
+                  desc: "Plans d'exécution, étude technique, attestations de garantie décennale, photos de chantier. Tous les documents vous sont remis.",
                 },
               ].map((g, i) => (
                 <RevealOnScroll key={g.label} delay={i * 0.06}>

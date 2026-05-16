@@ -45,10 +45,10 @@ export default function LandingMurPorteurToulouse() {
                 }}
               >
                 Ouvrir un mur porteur à Toulouse&nbsp;?<br />
-                <em>Un seul interlocuteur, de A à Z.</em>
+                <em>Un seul interlocuteur, du diagnostic à la livraison.</em>
               </h1>
               <p className="text-[15px] leading-[1.85] font-light text-ipb-muted mb-8">
-                IPB prend en charge l'opération de bout en bout : étude IPN/HEB, étaiement, pose de la poutre, finitions. Chaque étape sous sa décennale métier. <strong className="font-medium text-ipb-text not-italic">Vous décrivez le projet, on s'occupe du reste — estimation sous 7 jours.</strong>
+                L'institut IPB conçoit l'étude de structure (étude IPN/HEB) et coordonne l'opération&nbsp;; nos équipes de réalisation exécutent étaiement, pose de la poutre et finitions sous garantie décennale 10 ans. <strong className="font-medium text-ipb-text not-italic">Vous décrivez le projet, on s'occupe du reste — estimation sous 72h.</strong>
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 mb-6">
@@ -102,7 +102,7 @@ export default function LandingMurPorteurToulouse() {
         <div className="max-w-5xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             {[
-              { value: 850, suffix: '+', label: 'Chantiers livrés' },
+              { value: 850, suffix: '+', label: 'Chantiers · réseau IPB' },
               { value: 5, suffix: ' j', label: 'Chantier moyen' },
               { value: 4.9, decimals: 1, suffix: '/5', label: 'Avis Google' },
               { value: 2, suffix: '', label: 'Décennales métier' },

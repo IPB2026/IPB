@@ -8,12 +8,12 @@
  * Pas d'icônes lucide criardes — juste typo et chiffres Playfair italique.
  */
 const items = [
-  { value: '850+', label: 'chantiers livrés' },
-  { value: '4.9/5', label: 'Google' },
-  { value: '10 ans', label: 'décennales métier' },
   { value: '48h', label: 'délai de réponse' },
-  { value: '7j', label: 'délai de visite' },
-  { value: '2019', label: 'institut créé en' },
+  { value: '72h', label: 'délai de visite' },
+  { value: '2019', label: 'réseau IPB actif depuis' },
+  { value: '850+', label: 'chantiers · réseau IPB' },
+  { value: '10 ans', label: 'travaux sous décennale' },
+  { value: '4.9/5', label: 'Google' },
 ];
 
 function RibbonItems({ ariaHidden = false }: { ariaHidden?: boolean }) {

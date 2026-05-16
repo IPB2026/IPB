@@ -23,7 +23,7 @@ const baseUrl =
 
 const institutProfile: AuthorProfile = {
   name: "L'institut IPB",
-  bio: "L'équipe de l'institut IPB intervient en pathologie et structure du bâtiment en Occitanie (Haute-Garonne, Tarn-et-Garonne, Gers, Tarn). 850 chantiers livrés depuis 2019, sous décennales métier dédiées.",
+  bio: "L'institut IPB intervient en pathologie et structure du bâtiment en Occitanie (Haute-Garonne, Tarn-et-Garonne, Gers, Tarn). Diagnostic et coordination assurés par IPB ; travaux réalisés sous décennale 10 ans par les équipes de réalisation du réseau IPB. Plus de 850 chantiers menés par le réseau depuis 2019.",
   specialty: 'Pathologie et structure du bâtiment',
   jobTitle: 'Institut de pathologie du bâtiment — IPB',
   profileUrl: `${baseUrl}/notre-expert`,

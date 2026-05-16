@@ -70,7 +70,7 @@ export function PullQuote() {
                   </motion.span>
                 )}
                 <StaggerText
-                  text="Une fissure, un mur porteur, ce n'est pas un travail de bricolage. C'est de la structure. Notre métier, c'est de regarder, de mesurer, puis de coordonner la réparation — sans jamais préconiser une solution qu'on ne validerait pas chez nous."
+                  text="Une fissure, un mur porteur, ce n'est pas du bricolage. C'est de la structure. Notre métier, c'est de regarder, de mesurer, de comprendre — puis de mettre en œuvre la bonne réparation, avec la bonne méthode."
                   delay={0.6}
                   stagger={0.025}
                 />

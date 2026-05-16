@@ -66,7 +66,7 @@ export function ExitIntentPopup() {
         eyebrow: 'Avant de partir',
         title: 'Une fissure observée',
         titleItalic: 'mérite un avis posé.',
-        body: "Notre cabinet vient sur place sous 72 heures, mesure ce qu'il y a à mesurer, et vous remet un rapport écrit. Sans engagement de votre part.",
+        body: "Notre cabinet vient sur place sous 72h, mesure ce qu'il y a à mesurer, et vous remet un rapport écrit. Sans engagement de votre part.",
         primaryCta: 'Décrire ma situation',
         primaryHref: '/diagnostic',
       };
@@ -85,7 +85,7 @@ export function ExitIntentPopup() {
       eyebrow: 'Avant de partir',
       title: 'Une question technique,',
       titleItalic: 'une réponse posée.',
-      body: "Notre cabinet répond à toutes les demandes sous 24 heures ouvrées, sans pression commerciale. Vous décrivez, nous analysons.",
+      body: "Notre cabinet répond à toutes les demandes sous 48 heures, sans pression commerciale. Vous décrivez, nous analysons.",
       primaryCta: 'Échanger avec le cabinet',
       primaryHref: '/rdv-cabinet',
     };

@@ -93,7 +93,7 @@ export default function ContactPage() {
               </h1>
 
               <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10">
-                Notre institut répond à tous les messages sous 24 heures ouvrées. Pour les situations qui demandent un échange de vive voix, le téléphone reste le moyen le plus direct.
+                Notre institut répond à tous les messages sous 48 heures. Pour les situations qui demandent un échange de vive voix, le téléphone reste le moyen le plus direct.
               </p>
 
               <div className="space-y-7">
@@ -115,21 +115,21 @@ export default function ContactPage() {
                 {/* Adresses */}
                 <div className="space-y-5">
                   <div>
-                    <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-2">Siège social</p>
+                    <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-2">Siège</p>
                     <p className="font-serif text-ipb-text font-medium text-[16px] mb-1">
-                      13 rue du Recteur Dottin
-                    </p>
-                    <p className="text-[14px] font-light text-ipb-muted">
-                      31100 Toulouse — Occitanie
+                      [ADRESSE_IPB]
                     </p>
                   </div>
                   <div>
-                    <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-2">Bureau IPB Expertise</p>
+                    <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-2">Bureau</p>
                     <p className="font-serif text-ipb-text font-medium text-[16px] mb-1">
-                      54 avenue Jean Jaurès
+                      [ADRESSE_BUREAU]
                     </p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-2">Email</p>
                     <p className="text-[14px] font-light text-ipb-muted">
-                      31170 Tournefeuille — Occitanie
+                      [EMAIL_CONTACT]
                     </p>
                   </div>
                 </div>
@@ -170,7 +170,7 @@ export default function ContactPage() {
                       Message reçu.
                     </h2>
                     <p className="text-[14px] leading-[1.85] font-light text-ipb-muted max-w-sm mx-auto">
-                      Notre institut vous répond sous 24 heures ouvrées. Si votre demande est urgente, le téléphone reste le moyen le plus direct.
+                      Notre institut vous répond sous 48 heures. Si votre demande est urgente, le téléphone reste le moyen le plus direct.
                     </p>
                   </div>
                 ) : (
