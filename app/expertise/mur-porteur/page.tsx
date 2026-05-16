@@ -91,7 +91,7 @@ const faqMurPorteur = [
   },
   {
     question: "Faut-il prévoir un étaiement pendant les travaux ?",
-    answer: "Oui, l'étaiement est non négociable. Avant toute découpe du mur porteur, on installe des étais qui reprennent les charges du plancher du dessus pendant l'intervention. Sans étaiement, le plancher du dessus s'affaisse — ça arrive plusieurs fois par an à Toulouse sur des chantiers mal préparés. Tout devis sérieux chiffre l'étaiement séparément, ce que nous faisons systématiquement.",
+    answer: "Oui, l'étaiement est non négociable. Avant toute découpe du mur porteur, des étais sont mis en place pour reprendre les charges du plancher du dessus pendant l'intervention. Sans étaiement, le plancher du dessus s'affaisse — ça arrive plusieurs fois par an à Toulouse sur des chantiers mal préparés. Tout devis sérieux chiffre l'étaiement séparément, ce que nous faisons systématiquement.",
   },
   {
     question: "Les finitions sont-elles incluses dans le devis ?",

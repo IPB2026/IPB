@@ -53,7 +53,7 @@ export default function MarchandsDeBiensPage() {
                   Vous achetez un appartement à rénover ? On ouvre la cuisine sur le séjour avant la revente. <strong className="text-white">Chiffrage 24h, chantier 5 jours, attestations complètes pour l'acquéreur.</strong>
                 </p>
                 <p className="text-base text-ipb-light mb-8 leading-relaxed">
-                  Notre garantie 10 ans est transmissible : votre acheteur final hérite de la couverture. Aucun frein notarial à la revente, aucun litige post-vente.
+                  Les décennales métier (études + travaux) sont transmissibles : votre acheteur final hérite des garanties. Aucun frein notarial à la revente, aucun litige post-vente.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link href="/contact" className="bg-ipb-orange hover:bg-orange-400 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 shadow-xl hover:-translate-y-0.5 transition-all">

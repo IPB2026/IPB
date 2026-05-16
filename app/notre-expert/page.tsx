@@ -97,7 +97,7 @@ export default function NotreInstitutPage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-6">
-                  L'institut a été fondé en 2019 sur une intuition simple : faire le lien entre le diagnostic, l'étude et les travaux dans la même main. Ne pas renvoyer le client d'un prestataire à l'autre. Ne pas vendre une solution préconçue.
+                  L'institut a été fondé en 2019 sur une intuition simple : que le client n'ait qu'un seul interlocuteur, du diagnostic à la livraison. Ne pas le renvoyer d'un prestataire à l'autre. Ne pas lui vendre une solution préconçue.
                 </p>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-6">
                   Sept ans plus tard, l'équipe est expérimentée, les décennales métier sont actives, et 850 chantiers ont été signés en Haute-Garonne, dans le Tarn-et-Garonne, le Gers et le Tarn. L'institut traite en moyenne soixante-dix dossiers fissures par an, en complément des ouvertures de murs porteurs et des expertises avant achat.

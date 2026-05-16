@@ -16,7 +16,7 @@ export function ServicesStructure() {
               On s'occupe de <span className="text-orange-600">la structure</span><br />de votre maison.
             </h2>
             <p className="text-slate-600 text-lg mb-8 leading-relaxed">
-              Deux situations, le même métier : on regarde, on calcule, on construit. <strong className="text-slate-900">Vous, vous n'avez pas à devenir expert en bâtiment</strong> — on traduit ce qu'on voit en clair, et on s'occupe du chantier.
+              Deux situations, le même métier : on regarde, on évalue, on coordonne. <strong className="text-slate-900">Vous, vous n'avez pas à devenir expert en bâtiment</strong> — on traduit ce qu'on voit en clair, et on s'occupe du chantier de bout en bout.
             </p>
 
             <div className="space-y-4">

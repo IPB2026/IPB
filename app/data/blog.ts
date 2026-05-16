@@ -1106,8 +1106,8 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
         <h3 class="font-bold text-orange-900 mb-3">Notre engagement chez IPB</h3>
-        <p class="text-orange-800">Chez IPB, nous fournissons <strong>systématiquement</strong> notre attestation d'assurance décennale avec chaque devis. Notre couverture inclut spécifiquement les travaux d'agrafage, de harpage, d'injection résine et de traitement de l'humidité. Nous vous remettons également un PV de réception détaillé à la fin de chaque chantier.</p>
-        <p class="text-orange-800 mt-2">Vous pouvez vérifier notre attestation directement auprès de notre assureur. C'est votre droit, et c'est normal de l'exercer.</p>
+        <p class="text-orange-800">Chez IPB, nous fournissons <strong>systématiquement</strong> les attestations des décennales métier (études et travaux) avec chaque devis. Les travaux d'agrafage, de harpage, d'injection résine et de traitement de l'humidité sont exécutés sous décennale travaux dédiée. Nous vous remettons également un PV de réception détaillé à la fin de chaque chantier.</p>
+        <p class="text-orange-800 mt-2">Vous pouvez vérifier les attestations directement auprès des assureurs concernés. C'est votre droit, et c'est normal de l'exercer.</p>
       </div>
     `
   },
