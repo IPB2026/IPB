@@ -53,9 +53,9 @@ export function StickyDiagnosticCta() {
   };
 
   const getSubText = () => {
-    if (isFissuresPage) return "Réponse sous 48h";
-    if (isHumiditePage) return "Réponse sous 48h";
-    return "Réponse sous 48h";
+    if (isFissuresPage) return "Réponse sous 24h";
+    if (isHumiditePage) return "Réponse sous 24h";
+    return "Réponse sous 24h";
   };
 
   if (!isVisible) return null;
@@ -153,7 +153,7 @@ export function StickyDiagnosticCta() {
                  "🔍 Besoin d'un diagnostic ?"}
               </h3>
               <p className="text-orange-100 text-sm mt-1">
-                Réponse personnalisée sous 48h
+                Réponse personnalisée sous 24h
               </p>
             </div>
 
@@ -202,7 +202,7 @@ export function StickyDiagnosticCta() {
 
               {/* Micro-réassurance */}
               <p className="text-center text-slate-400 text-xs">
-                ✓ Devis gratuit · ✓ Réponse 48h
+                ✓ Devis gratuit · ✓ Réponse 24h
               </p>
             </div>
           </div>
