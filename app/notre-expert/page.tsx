@@ -92,7 +92,7 @@ export default function NotreInstitutPage() {
                   }}
                 >
                   L'institut IPB.<br />
-                  <em>Une équipe, une décennale, sept ans de bâti d'Occitanie.</em>
+                  <em>Un seul interlocuteur, sept ans de bâti d'Occitanie.</em>
                 </h1>
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
@@ -109,10 +109,10 @@ export default function NotreInstitutPage() {
               <RevealOnScroll delay={0.18}>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <MagneticButton href="/diagnostic" variant="primary">
-                    Diagnostic gratuit
+                    Diagnostic gratuit · 2 min
                   </MagneticButton>
                   <MagneticButton href="/contact" variant="ghost">
-                    Nous écrire
+                    Demander un rappel
                   </MagneticButton>
                 </div>
               </RevealOnScroll>
