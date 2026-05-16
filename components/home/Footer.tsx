@@ -119,9 +119,6 @@ export function Footer() {
           <p className="text-[12px] leading-[1.7] text-white/70 max-w-[760px]">
             Diagnostic et coordination assurés par IPB. Travaux réalisés sous décennale par les équipes de réalisation du réseau IPB.
           </p>
-          <p className="text-[11px] leading-[1.6] text-white/45 mt-2 max-w-[760px]">
-            [MENTION_LEGALE_EXECUTANT]
-          </p>
         </div>
 
         {/* Bandeau légal */}

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Ruler, Shield, AlertTriangle, CheckCircle } from 'lucide-react';
+import { ArrowRight, Ruler, Shield, AlertTriangle, CheckCircle, Construction, AppWindow } from 'lucide-react';
 
 export function ServicesHumidity() {
   return (
@@ -26,7 +26,7 @@ export function ServicesHumidity() {
 
             <div className="space-y-4 md:space-y-5 mb-8">
               <div className="flex gap-4 p-5 rounded-2xl bg-white hover:bg-amber-50 transition border border-amber-100 group shadow-sm">
-                <div className="w-11 h-11 rounded-xl bg-amber-100 flex items-center justify-center text-amber-700 shrink-0 font-bold group-hover:scale-110 transition">1</div>
+                <div className="w-11 h-11 rounded-xl bg-amber-100 flex items-center justify-center text-amber-700 shrink-0 font-bold transition-colors duration-200">1</div>
                 <div>
                   <h3 className="font-bold text-base md:text-lg text-slate-900 mb-1">
                     Étude structure : calculer avant de démolir
@@ -39,7 +39,7 @@ export function ServicesHumidity() {
               </div>
 
               <div className="flex gap-4 p-5 rounded-2xl bg-white hover:bg-amber-50 transition border border-amber-100 group shadow-sm">
-                <div className="w-11 h-11 rounded-xl bg-amber-100 flex items-center justify-center text-amber-700 shrink-0 font-bold group-hover:scale-110 transition">2</div>
+                <div className="w-11 h-11 rounded-xl bg-amber-100 flex items-center justify-center text-amber-700 shrink-0 font-bold transition-colors duration-200">2</div>
                 <div>
                   <h3 className="font-bold text-base md:text-lg text-slate-900 mb-1">
                     Chantier clé en main : étaiement, ouverture, finitions
@@ -96,12 +96,12 @@ export function ServicesHumidity() {
                 {/* Before / After simplifié */}
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div className="bg-slate-800 rounded-2xl p-4 text-center">
-                    <div className="text-4xl mb-3">🧱</div>
+                    <Construction className="w-10 h-10 text-slate-500 mx-auto mb-3" aria-hidden="true" />
                     <p className="text-slate-400 text-xs font-bold uppercase tracking-wide mb-2">Avant</p>
                     <p className="text-slate-300 text-sm">Pièces séparées, espace cloisonné, manque de lumière</p>
                   </div>
                   <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 text-center">
-                    <div className="text-4xl mb-3">🪟</div>
+                    <AppWindow className="w-10 h-10 text-amber-400 mx-auto mb-3" aria-hidden="true" />
                     <p className="text-amber-400 text-xs font-bold uppercase tracking-wide mb-2">Après</p>
                     <p className="text-slate-300 text-sm">Espace ouvert, lumière naturelle, valeur du bien augmentée</p>
                   </div>
