@@ -73,11 +73,11 @@ const organizationSchema = {
   "description": "Institut spécialisé en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Diagnostic de fissures, expertise humidité, expertise avant achat et ouverture de mur porteur. Diagnostic et coordination assurés par IPB ; travaux réalisés sous décennale par les équipes de réalisation du réseau IPB.",
   // foundingDate du réseau IPB (et non d'IPB en tant qu'entité juridique).
   "foundingDate": "2019",
-  // Adresse à compléter par le client — voir [ADRESSE_IPB] dans le livrable.
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "[ADRESSE_IPB]",
-    "addressLocality": "Toulouse",
+    "streetAddress": "54 avenue Jean Jaurès",
+    "addressLocality": "Tournefeuille",
+    "postalCode": "31170",
     "addressRegion": "Occitanie",
     "addressCountry": "FR"
   },

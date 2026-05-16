@@ -32,14 +32,8 @@ export function Footer() {
                 <CrackSVG variant="mini" />
                 <div>
                   <p className="text-white/65 text-[11px] uppercase tracking-[0.14em] font-medium mb-1">Siège</p>
-                  <p>[ADRESSE_IPB]</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 text-[13px] text-white/70 leading-[1.7] pl-[26px]">
-                <div>
-                  <p className="text-white/65 text-[11px] uppercase tracking-[0.14em] font-medium mb-1">Bureau</p>
-                  <p>[ADRESSE_BUREAU]</p>
+                  <p>54 avenue Jean Jaurès</p>
+                  <p>31170 Tournefeuille — Occitanie</p>
                 </div>
               </div>
             </div>

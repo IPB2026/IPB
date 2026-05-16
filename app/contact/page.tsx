@@ -112,24 +112,15 @@ export default function ContactPage() {
                   </p>
                 </div>
 
-                {/* Adresses */}
+                {/* Adresse siège */}
                 <div className="space-y-5">
                   <div>
                     <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-2">Siège</p>
                     <p className="font-serif text-ipb-text font-medium text-[16px] mb-1">
-                      [ADRESSE_IPB]
+                      54 avenue Jean Jaurès
                     </p>
-                  </div>
-                  <div>
-                    <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-2">Bureau</p>
-                    <p className="font-serif text-ipb-text font-medium text-[16px] mb-1">
-                      [ADRESSE_BUREAU]
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-2">Email</p>
                     <p className="text-[14px] font-light text-ipb-muted">
-                      [EMAIL_CONTACT]
+                      31170 Tournefeuille — Occitanie
                     </p>
                   </div>
                 </div>
