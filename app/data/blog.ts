@@ -8425,3 +8425,33 @@ export const blogPostsList = Object.values(blogPosts);
 
 // Export de la liste des slugs (pour generateStaticParams)
 export const blogPostsSlugs = Object.keys(blogPosts);
+
+/**
+ * Liste light pour les listings (sans le `content` HTML).
+ * Économise ~90% du poids client sur les pages qui n'affichent que les
+ * cartes d'articles (ex : /blog). Conserve les champs utiles au filtrage,
+ * à la recherche et au JSON-LD CollectionPage.
+ */
+export interface BlogPostSummary {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  readTime: string;
+  category: BlogPost['category'];
+  author: string;
+  keywords: string[];
+  coverImage?: string;
+}
+
+export const blogPostsSummary: BlogPostSummary[] = blogPostsList.map((p) => ({
+  slug: p.slug,
+  title: p.title,
+  excerpt: p.excerpt,
+  date: p.date,
+  readTime: p.readTime,
+  category: p.category,
+  author: p.author,
+  keywords: p.keywords,
+  coverImage: p.coverImage,
+}));

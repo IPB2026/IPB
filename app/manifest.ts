@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'IPB - Institut de Pathologie du Bâtiment',
     short_name: 'IPB Expertise',
-    description: 'Expert en réparation de fissures et traitement de l\'humidité à Toulouse. Diagnostic gratuit, interventions rapides, garantie décennale.',
+    description: "Institut de pathologie et structure du bâtiment en Occitanie. Diagnostic de fissures, expertise humidité, expertise avant achat et ouverture de mur porteur. Diagnostic et coordination assurés par IPB ; travaux sous décennale par les équipes de réalisation du réseau IPB.",
     start_url: '/',
     display: 'standalone',
     background_color: '#FFFFFF',

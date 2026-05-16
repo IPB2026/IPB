@@ -1078,6 +1078,9 @@ export default function DiagnosticPage() {
                     <label htmlFor="photo-upload" className="flex items-center gap-2.5 cursor-pointer">
                       {photoPreview ? (
                         <div className="flex items-center gap-2.5 w-full">
+                          {/* Preview d'un upload utilisateur (data URL) — Next/Image
+                              ne supporte pas les data URLs directement. */}
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img src={photoPreview} alt="Aperçu" className="w-11 h-11 object-cover rounded-lg" />
                           <span className="text-green-600 text-xs font-medium flex-1">Photo ajoutée</span>
                           <button
