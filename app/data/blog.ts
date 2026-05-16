@@ -7755,7 +7755,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Le retour client</h2>
       <blockquote class="border-l-4 border-orange-500 bg-orange-50 p-6 italic text-slate-700 my-6">
-        « J'avais consulté trois entreprises avant IPB. Deux avaient sous-estimé la portée et proposaient un IPN qui aurait fléchi. Une troisième voulait sous-traiter le BE. IPB faisait tout en interne, avec une décennale claire — c'était la seule offre sérieuse. Le chantier est tenu au jour près. Je les rappelle pour mon prochain bien. »
+        « J'avais consulté trois entreprises avant IPB. Deux avaient sous-estimé la portée et proposaient un IPN qui aurait fléchi. Une troisième renvoyait sans cesse vers son BE. IPB coordonnait tout, avec des décennales métier claires sur l'étude et les travaux — c'était la seule offre sérieuse. Le chantier est tenu au jour près. Je les rappelle pour mon prochain bien. »
       </blockquote>
 
       <h2>Ce qu'il faut retenir</h2>

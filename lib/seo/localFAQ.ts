@@ -67,7 +67,7 @@ export function generateLocalFAQ(ctx: LocalFAQContext): LocalFAQEntry[] {
   return [
     {
       question: `Pourquoi y a-t-il autant de fissures à ${v} ?`,
-      answer: `${rgaIntro} Les sécheresses de 2003, 2018, 2022 et 2023 ont multiplié les sinistres dans le ${dep}.${quartiersTxt}${constructionTxt} Notre ingénieur structure réalise un diagnostic in situ pour distinguer les fissures cosmétiques des fissures structurelles à ${v}.`,
+      answer: `${rgaIntro} Les sécheresses de 2003, 2018, 2022 et 2023 ont multiplié les sinistres dans le ${dep}.${quartiersTxt}${constructionTxt} Notre institut réalise un diagnostic in situ pour distinguer les fissures cosmétiques des fissures structurelles à ${v}.`,
     },
     {
       question: `Quels sont les délais d'intervention d'IPB à ${v}${cp} ?`,
