@@ -34,7 +34,7 @@ export function StickyDiagnosticCta() {
       setIsVisible(true);
     }, 2000);
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
       clearTimeout(timer);
@@ -148,9 +148,11 @@ export function StickyDiagnosticCta() {
               </div>
               
               <h3 className="text-lg font-extrabold">
-                {isFissuresPage ? "🏠 Fissures sur votre maison ?" : 
-                 isHumiditePage ? "💧 Problème d'humidité ?" : 
-                 "🔍 Besoin d'un diagnostic ?"}
+                {isFissuresPage
+                  ? "Fissures sur votre maison ?"
+                  : isHumiditePage
+                  ? "Problème d'humidité ?"
+                  : "Besoin d'un diagnostic ?"}
               </h3>
               <p className="text-orange-100 text-sm mt-1">
                 Réponse personnalisée sous 24h
@@ -171,10 +173,11 @@ export function StickyDiagnosticCta() {
                 </span>
               </div>
 
-              {/* CTA Principal */}
+              {/* CTA Principal — hover via shadow/brightness, pas de scale
+                  pour éviter le layout shift et l'effet "tremblant" perçu. */}
               <Link
                 href="/diagnostic"
-                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-orange-500/30 transition-all transform hover:scale-[1.02] mb-3"
+                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 transition-shadow duration-200 mb-3"
               >
                 Diagnostic gratuit en 5 min
                 <ArrowRight size={18} />
@@ -210,7 +213,8 @@ export function StickyDiagnosticCta() {
           /* Version réduite - Bouton flottant */
           <button
             onClick={() => setIsExpanded(true)}
-            className="group relative bg-gradient-to-r from-orange-500 to-red-500 text-white p-4 rounded-2xl shadow-2xl shadow-orange-500/40 hover:shadow-orange-500/60 transition-all transform hover:scale-105"
+            aria-label="Ouvrir le diagnostic gratuit"
+            className="group cursor-pointer relative bg-gradient-to-r from-orange-500 to-red-500 text-white p-4 rounded-2xl shadow-2xl shadow-orange-500/40 hover:shadow-orange-500/60 transition-shadow duration-200"
           >
             {/* Badge notification */}
             <span className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full animate-pulse border-2 border-white"></span>

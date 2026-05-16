@@ -6,17 +6,27 @@ export function ReadingProgress() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    let rafId: number | null = null;
     const updateProgress = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = (scrollTop / docHeight) * 100;
-      setProgress(Math.min(scrollPercent, 100));
+      // rAF + dedupe : évite de déclencher un setState par event scroll
+      // (jitter quand le scroll est rapide). Avec rAF on a 1 update / frame.
+      if (rafId !== null) return;
+      rafId = window.requestAnimationFrame(() => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        setProgress(Math.min(scrollPercent, 100));
+        rafId = null;
+      });
     };
 
-    window.addEventListener('scroll', updateProgress);
-    updateProgress(); // Initial call
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
 
-    return () => window.removeEventListener('scroll', updateProgress);
+    return () => {
+      window.removeEventListener('scroll', updateProgress);
+      if (rafId !== null) window.cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (

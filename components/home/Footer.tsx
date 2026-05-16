@@ -32,14 +32,8 @@ export function Footer() {
                 <CrackSVG variant="mini" />
                 <div>
                   <p className="text-white/65 text-[11px] uppercase tracking-[0.14em] font-medium mb-1">Siège</p>
-                  <p>[ADRESSE_IPB]</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 text-[13px] text-white/70 leading-[1.7] pl-[26px]">
-                <div>
-                  <p className="text-white/65 text-[11px] uppercase tracking-[0.14em] font-medium mb-1">Bureau</p>
-                  <p>[ADRESSE_BUREAU]</p>
+                  <p>54 avenue Jean Jaurès</p>
+                  <p>31170 Tournefeuille — Occitanie</p>
                 </div>
               </div>
             </div>
@@ -101,9 +95,12 @@ export function Footer() {
             >
               05 82 95 33 75
             </a>
-            <p className="text-[12px] text-white/70 leading-[1.7] mb-2">
-              [EMAIL_CONTACT]
-            </p>
+            <a
+              href="mailto:contact@ipb-expertise.fr"
+              className="block text-[12px] text-white/70 hover:text-white leading-[1.7] mb-2 transition-colors"
+            >
+              contact@ipb-expertise.fr
+            </a>
             <p className="text-[12px] text-white/70 leading-[1.7] mb-6">
               Lundi au vendredi<br />
               8h&nbsp;–&nbsp;19h
@@ -121,9 +118,6 @@ export function Footer() {
         <div className="pt-10 mb-6 border-t border-white/6">
           <p className="text-[12px] leading-[1.7] text-white/70 max-w-[760px]">
             Diagnostic et coordination assurés par IPB. Travaux réalisés sous décennale par les équipes de réalisation du réseau IPB.
-          </p>
-          <p className="text-[11px] leading-[1.6] text-white/45 mt-2 max-w-[760px]">
-            [MENTION_LEGALE_EXECUTANT]
           </p>
         </div>
 

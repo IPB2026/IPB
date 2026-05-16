@@ -45,7 +45,7 @@ export function Hero() {
               fontWeight: 700,
             }}
           >
-            Votre bâtiment montre des signes.<br />
+            Votre bien montre des signes.<br />
             <em>Notre institut les comprend.</em>
           </h1>
 

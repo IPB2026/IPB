@@ -23,7 +23,7 @@ export function ServicesStructure() {
               {/* Service 1 — Mur porteur (mis en avant, c'est le pilier) */}
               <Link href="/expertise/mur-porteur" className="block p-6 rounded-2xl bg-gradient-to-br from-orange-50 to-amber-50 hover:from-orange-100 hover:to-amber-100 border border-orange-100 transition-all group">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-orange-600 shrink-0 shadow-sm group-hover:scale-110 transition">
+                  <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-orange-600 shrink-0 shadow-sm transition-shadow duration-200 group-hover:shadow-md">
                     <Hammer size={22} />
                   </div>
                   <div className="flex-1">
@@ -44,7 +44,7 @@ export function ServicesStructure() {
               {/* Service 2 — Fissures */}
               <Link href="/expertise/fissures" className="block p-6 rounded-2xl bg-slate-50 hover:bg-slate-100 border border-slate-100 transition-all group">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-orange-600 shrink-0 shadow-sm group-hover:scale-110 transition">
+                  <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-orange-600 shrink-0 shadow-sm transition-shadow duration-200 group-hover:shadow-md">
                     <Activity size={22} />
                   </div>
                   <div className="flex-1">
@@ -64,7 +64,7 @@ export function ServicesStructure() {
             </div>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-              <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-7 py-3.5 rounded-full transition-all hover:shadow-xl hover:-translate-y-0.5">
+              <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-7 py-3.5 rounded-full transition-colors duration-200 hover:shadow-xl">
                 Décrire mon projet <ArrowRight size={16} />
               </Link>
               <a href="tel:0582953375" className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 font-semibold text-sm transition-colors">

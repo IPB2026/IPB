@@ -111,8 +111,7 @@ const localBusinessSchema = {
   // foundingDate du réseau IPB (et non d'IPB en tant qu'entité juridique).
   "foundingDate": "2019",
   "description": "Institut spécialisé en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Diagnostic de fissures, expertise humidité, expertise avant achat et ouverture de mur porteur. Diagnostic et coordination assurés par IPB ; travaux réalisés sous décennale par les équipes de réalisation du réseau IPB. Toulouse, Montauban, Auch et environs.",
-  // EN ATTENTE CONFIRMATION CLIENT : adresse du bureau IPB (54 avenue Jean Jaurès,
-  // Tournefeuille) à valider avant publication — voir [ADRESSE_BUREAU] dans le livrable.
+  // Siège IPB confirmé par le client (mai 2026).
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "54 avenue Jean Jaurès",
