@@ -17,11 +17,14 @@ import { StatCounter } from '@/components/ui/StatCounter';
  */
 export function Hero() {
   return (
-    <section className="bg-ipb-cream relative">
+    <section className="bg-ipb-cream relative overflow-x-clip">
       <div className="max-w-ipb mx-auto grid lg:grid-cols-[58fr_42fr] gap-0 lg:gap-12 px-6 lg:px-12 pt-16 lg:pt-20 pb-20 lg:pb-24">
 
-        {/* COLONNE GAUCHE — Texte éditorial 58% */}
-        <div className="flex flex-col justify-center pr-0 lg:pr-8">
+        {/* COLONNE GAUCHE — Texte éditorial 58%
+            min-w-0 indispensable en CSS grid : sans lui, un titre indivisible
+            (long mot ou letter-spacing négatif) force la cellule à dépasser
+            le grid container et crée un scroll horizontal sur mobile. */}
+        <div className="flex flex-col justify-center pr-0 lg:pr-8 min-w-0">
           {/* Above-the-fold critique : eyebrow + H1 + description + CTA rendus
               directement (sans RevealOnScroll) pour optimiser le LCP mobile.
               L'animation reveal sur ces éléments retardait le LCP de 400-800ms
@@ -29,9 +32,14 @@ export function Hero() {
           <Eyebrow>Institut de pathologie & structure du bâtiment · Occitanie</Eyebrow>
 
           <h1
-            className="font-serif text-ipb-text mb-8"
+            className="font-serif text-ipb-text mb-8 [text-wrap:balance]"
             style={{
-              fontSize: 'clamp(48px, 5.6vw, 80px)',
+              // Scaling progressif : 36px sur petits mobiles (iPhone SE 375px),
+              // 48-56px sur tablettes, 80px sur desktop. Le minimum 48px de
+              // l'ancienne version forçait le H1 à 366px de large alors que
+              // le viewport mobile ne dispose que de ~327px → débordement
+              // grid + scroll horizontal.
+              fontSize: 'clamp(36px, 9vw, 80px)',
               lineHeight: 1.04,
               letterSpacing: '-0.028em',
               fontWeight: 700,
