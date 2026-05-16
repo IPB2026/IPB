@@ -29,6 +29,7 @@ export function Navbar() {
     highlight?: boolean;
   }> = [
     { href: '/expertise/fissures', label: 'Fissures' },
+    { href: '/expertise/humidite', label: 'Humidité' },
     { href: '/expertise/mur-porteur', label: 'Mur porteur' },
     {
       href: '/calcul-prix-mur-porteur',
@@ -37,7 +38,7 @@ export function Navbar() {
       subtitle: 'Outil interactif · estimation en 2 min',
       highlight: true,
     },
-    { href: '/notre-expert', label: 'L’institut' },
+    { href: '/notre-expert', label: "L'institut" },
     { href: '/partenaires', label: 'Pros' },
     { href: '/blog', label: 'Blog' },
     { href: '/contact', label: 'Contact' },
