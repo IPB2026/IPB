@@ -244,7 +244,7 @@ const expertTips: Record<string, string> = {
   // MUR PORTEUR
   'mur-porteur:TYPE_BATIMENT:maison': '💡 Pour une maison individuelle, l\'ouverture de mur porteur est généralement réalisable en 2 à 5 jours. L\'étude structure est l\'étape clé.',
   'mur-porteur:TYPE_BATIMENT:immeuble': '⚠️ En immeuble, l\'accord de la copropriété est obligatoire. Nous vous aidons à constituer le dossier technique pour l\'AG.',
-  'mur-porteur:TYPE_BATIMENT:local': '💡 Dans un local professionnel, le mur porteur peut avoir des charges importantes. La poutre est dimensionnée selon les Eurocodes, sous note de calcul signée par un bureau d'études.',
+  'mur-porteur:TYPE_BATIMENT:local': '💡 Dans un local professionnel, le mur porteur peut avoir des charges importantes. La poutre est dimensionnée selon les Eurocodes, par un bureau d’études.',
   'mur-porteur:PROJET:abattre': '⚠️ Abattre un mur porteur sans étude structure est illégal et dangereux. La poutre de reprise est dimensionnée selon les Eurocodes avant tout chantier.',
   'mur-porteur:PROJET:agrandir': '💡 Agrandir une ouverture existante est souvent plus simple — le linteau est déjà en place. L\'étude vérifie si la portée peut être étendue.',
   'mur-porteur:PROJET:baie': '💡 Une baie vitrée nécessite l\'ouverture du mur ET la pose du dormant. Nous coordonnons les deux corps de métier.',

@@ -21,7 +21,7 @@ const partenaires = [
     num: '01',
     title: "Architectes d'intérieur & décorateurs",
     desc: "Vos projets « espace ouvert » nécessitent une étude de structure et une décennale. Nous sommes votre partenaire technique en sous-traitance ou co-traitance.",
-    points: ['Co-traitance ou sous-traitance', 'Calcul technique signé sous note de calcul signée par un bureau d'études', 'Tarif partenaire dès 3 projets par an'],
+    points: ['Co-traitance ou sous-traitance', 'Calcul technique signé par un bureau d’études', 'Tarif partenaire dès 3 projets par an'],
   },
   {
     href: '/partenaires/marchands-de-biens',

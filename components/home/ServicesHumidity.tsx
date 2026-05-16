@@ -32,7 +32,7 @@ export function ServicesHumidity() {
                     Étude structure : calculer avant de démolir
                   </h3>
                   <p className="text-sm md:text-base text-slate-500">
-                    Notre institut pilote l'analyse des charges descendantes, le calcul de la section de poutre (IPN, HEB ou béton armé) et la rédaction de la note de calcul officielle, sous note de calcul signée par un bureau d'études.{' '}
+                    Notre institut pilote l'analyse des charges descendantes, le calcul de la section de poutre (IPN, HEB ou béton armé) et la rédaction de la note de calcul officielle, par un bureau d’études.{' '}
                     <strong className="text-amber-700">Sans cette étape, aucun artisan sérieux ne devrait toucher à votre mur.</strong>
                   </p>
                 </div>

@@ -118,7 +118,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
       {
         "@type": "Question",
         "name": `Quelle poutre pour ouvrir un mur porteur ?`,
-        "acceptedAnswer": { "@type": "Answer", "text": "Le choix dépend de la portée et des charges reprises. IPN (profil en I) pour les portées courtes (≤2,5 m). HEB (profil en H, plus rigide) pour les grandes portées (>3 m) et les charges importantes (étages au-dessus). IPE pour les configurations intermédiaires. La poutre est calculée pour reprendre les charges identifiées (poids, déformation admissible) selon les Eurocodes, et la note de calcul est signée sous note de calcul signée par un bureau d'études." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Le choix dépend de la portée et des charges reprises. IPN (profil en I) pour les portées courtes (≤2,5 m). HEB (profil en H, plus rigide) pour les grandes portées (>3 m) et les charges importantes (étages au-dessus). IPE pour les configurations intermédiaires. La poutre est calculée pour reprendre les charges identifiées (poids, déformation admissible) selon les Eurocodes, et la note de calcul est signée par un bureau d’études." }
       },
       {
         "@type": "Question",
@@ -206,7 +206,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
                       </div>
                       <div>
                         <p className="font-bold text-white">Calcul selon les Eurocodes</p>
-                        <p className="text-sm text-ipb-light">La poutre est dimensionnée selon les normes en vigueur, sous note de calcul signée par un bureau d'études</p>
+                        <p className="text-sm text-ipb-light">La poutre est dimensionnée selon les normes en vigueur, par un bureau d’études</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
@@ -283,7 +283,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
 
             <div className="grid md:grid-cols-4 gap-6">
               {[
-                { num: 1, icon: <FileText size={24} className="text-ipb-orange" />, title: 'Étude technique', detail: 'Visite sur site, observation du mur. La poutre est dimensionnée selon les Eurocodes, sous note de calcul signée par un bureau d'études.' },
+                { num: 1, icon: <FileText size={24} className="text-ipb-orange" />, title: 'Étude technique', detail: 'Visite sur site, observation du mur. La poutre est dimensionnée selon les Eurocodes, par un bureau d’études.' },
                 { num: 2, icon: <Ruler size={24} className="text-ipb-orange" />, title: 'Démarches', detail: 'IPB s\'occupe des papiers en mairie. Si copropriété : préparation du dossier pour l\'assemblée générale.' },
                 { num: 3, icon: <Hammer size={24} className="text-ipb-orange" />, title: 'Travaux 2 à 5 jours', detail: 'Étais installés, mur découpé, poutre posée et finitions assurées sous garantie décennale 10 ans.' },
                 { num: 4, icon: <Shield size={24} className="text-ipb-orange" />, title: 'Livraison', detail: 'Contrôle final, retrait des étais. IPB vous remet tous les documents du chantier et les attestations de garantie décennale.' },
