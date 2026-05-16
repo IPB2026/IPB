@@ -92,7 +92,7 @@ const etapes = [
     num: '07',
     titre: "La remise et l'accompagnement",
     paragraphe:
-      "Le rapport vous est remis par email, accompagné d'un appel téléphonique pour en parcourir les points clés. Si vous êtes en compromis, en vente, ou face à un assureur, nous pouvons échanger directement avec votre notaire, votre agent immobilier ou votre interlocuteur d'assurance — avec votre accord. Si le rapport préconise des travaux et que vous souhaitez nous les confier, nous les exécutons sous garantie décennale ; sinon, vous restez libre de consulter d'autres entreprises avec le rapport en main. Nous restons disponibles pour les questions complémentaires pendant les six mois qui suivent la remise.",
+      "Le rapport vous est remis par email, accompagné d'un appel téléphonique pour en parcourir les points clés. Si vous êtes en compromis, en vente, ou face à un assureur, nous pouvons échanger directement avec votre notaire, votre agent immobilier ou votre interlocuteur d'assurance — avec votre accord. Si le rapport préconise des travaux et que vous souhaitez nous les confier, notre institut coordonne leur exécution sous décennale travaux dédiée ; sinon, vous restez libre de consulter d'autres entreprises avec le rapport en main. Nous restons disponibles pour les questions complémentaires pendant les six mois qui suivent la remise.",
     terrain:
       "La remise au téléphone prend en moyenne quarante minutes. Aucun frais supplémentaire pour les questions complémentaires, dans la limite raisonnable de l'usage.",
   },

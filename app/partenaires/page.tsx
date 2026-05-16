@@ -68,7 +68,7 @@ export default function PartenairesPage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.06} className="lg:col-span-5 lg:border-l lg:border-ipb-rule lg:pl-12">
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted">
-                  Bureau d'études intégré, équipes travaux internes, décennale active. Trois programmes adaptés au métier de nos partenaires.
+                  Étude technique et travaux coordonnés sous décennales métier dédiées. Un seul interlocuteur, trois programmes adaptés au métier de nos partenaires.
                 </p>
               </RevealOnScroll>
             </div>

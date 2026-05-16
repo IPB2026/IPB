@@ -233,9 +233,9 @@ export default function MentionsLegalesPage() {
                   L'entreprise est qualifiée pour l'exercice des métiers du bâtiment conformément aux
                   dispositions de la loi n° 96-603 du 5 juillet 1996 relative au développement et à la
                   promotion du commerce et de l'artisanat. Pour les études de structure et notes de calcul
-                  opposables (dimensionnement Eurocodes), Bâti Halli travaille en partenariat avec un
-                  bureau d'études structure indépendant, qui co-signe l'étude technique sous sa propre
-                  responsabilité civile professionnelle et décennale études.
+                  opposables (dimensionnement Eurocodes), Bâti Halli mobilise un bureau d'études structure
+                  indépendant, qui rédige et signe l'étude technique sous sa propre responsabilité civile
+                  professionnelle et décennale études dédiée.
                 </p>
               </div>
             </section>
@@ -270,9 +270,9 @@ export default function MentionsLegalesPage() {
                   </p>
                   <p className="text-green-800 mb-4">
                     Pour les études techniques et notes de calcul opposables (dimensionnement Eurocodes),
-                    Bâti Halli travaille en partenariat avec un bureau d'études structure indépendant, qui
-                    co-signe l'étude technique sous sa propre responsabilité civile professionnelle et sa
-                    décennale études dédiée.
+                    Bâti Halli mobilise un bureau d'études structure indépendant, qui rédige et signe
+                    l'étude technique sous sa propre responsabilité civile professionnelle et sa décennale
+                    études dédiée.
                   </p>
                   <p className="text-green-800 text-sm">
                     Les attestations des décennales métier des entreprises titulaires intervenant sur le

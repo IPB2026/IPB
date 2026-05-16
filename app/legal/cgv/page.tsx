@@ -165,9 +165,9 @@ export default function CGVPage() {
               </ul>
               <p className="mt-4">
                 <strong>2.4.</strong> Lorsqu'un projet nécessite une note de calcul opposable (Eurocodes,
-                dimensionnement structure), Bâti Halli travaille en partenariat avec un bureau d'études
-                structure indépendant qui rédige et co-signe l'étude technique sous sa propre responsabilité
-                civile professionnelle et décennale études. Cette intervention est précisée au devis.
+                dimensionnement structure), Bâti Halli mobilise un bureau d'études structure indépendant
+                qui rédige et signe l'étude technique sous sa propre responsabilité civile professionnelle
+                et décennale études dédiée. Cette intervention est précisée au devis.
               </p>
               <p className="mt-4">
                 <strong>2.2.</strong> Les présentes CGV s'appliquent à toutes les prestations conclues par le 
@@ -209,8 +209,8 @@ export default function CGVPage() {
                 <li>Un devis détaillé pour les travaux éventuellement préconisés</li>
               </ul>
               <p className="mt-3 text-sm text-ipb-muted">
-                Pour les notes de calcul opposables (dimensionnement Eurocodes), Bâti Halli fait
-                intervenir son bureau d'études structure partenaire.
+                Pour les notes de calcul opposables (dimensionnement Eurocodes), Bâti Halli mobilise
+                un bureau d'études structure indépendant qui signe la note sous sa décennale études dédiée.
               </p>
 
               <p className="mt-4"><strong>3.2. Tarification et nature de l'acompte</strong></p>
@@ -581,8 +581,9 @@ export default function CGVPage() {
               </p>
               <p className="mt-4">
                 <strong>12.4.</strong> Lorsqu'un projet nécessite une note de calcul opposable, l'étude
-                technique est rédigée et co-signée par le bureau d'études structure partenaire de Bâti Halli,
-                lequel intervient sous sa propre responsabilité civile professionnelle et décennale études.
+                technique est rédigée et signée par un bureau d'études structure indépendant mobilisé par
+                Bâti Halli, lequel intervient sous sa propre responsabilité civile professionnelle et
+                décennale études dédiée.
               </p>
               <p className="mt-4">
                 <strong>12.5.</strong> Sur demande du Client, l'attestation d'assurance en cours de validité

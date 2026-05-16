@@ -2041,7 +2041,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ol>
 
       <h3>Coordination des artisans</h3>
-      <p>Idéalement, confiez l&apos;<a href="/expertise/fissures" class="text-orange-600 underline hover:text-orange-700">agrafage</a> et le ravalement à la même entreprise (ou à des entreprises qui travaillent ensemble). Cela évite les problèmes de garantie (« c&apos;est la faute de l&apos;autre ») et assure une continuité technique. Chez IPB, nous réalisons l&apos;agrafage avec finitions complètes, ce qui vous permet de n&apos;avoir qu&apos;un seul interlocuteur et une seule <strong>garantie décennale couvrant l&apos;ensemble</strong>.</p>
+      <p>Idéalement, confiez l&apos;<a href="/expertise/fissures" class="text-orange-600 underline hover:text-orange-700">agrafage</a> et le ravalement à la même équipe (ou à des entreprises qui travaillent ensemble). Cela évite les problèmes de garantie (« c&apos;est la faute de l&apos;autre ») et assure une continuité technique. Chez IPB, l&apos;agrafage et les finitions sont coordonnés par notre institut sous <strong>décennale travaux dédiée</strong>, ce qui vous permet de n&apos;avoir qu&apos;un seul interlocuteur du diagnostic à la livraison.</p>
 
       <div class="my-8 p-6 bg-green-50 border border-green-200 rounded-xl">
         <h3 class="font-bold text-green-900 mb-3">Astuce pour économiser</h3>
@@ -7437,7 +7437,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>La majorité des artisans toulousains <strong>sous-traitent l'étude structure</strong> à un BE externe. Vous payez deux prestations distinctes (étude 800 € + travaux 7 000 €), avec deux interlocuteurs et deux assurances décennales. Si la poutre est sous-dimensionnée, le BE rejette la faute sur l'artisan, et inversement.</p>
 
-      <p>Un institut comme IPB intègre le bureau d'études et les travaux : <strong>une seule responsabilité</strong>, <strong>une seule décennale couvrant l'ensemble</strong>, et un coût global souvent inférieur de 10 à 20 %. C'est la configuration que les notaires et les acquéreurs reconnaissent comme la plus solide à la revente.</p>
+      <p>Un institut comme IPB coordonne l'étude et les travaux sous le même toit : <strong>un seul interlocuteur</strong>, des <strong>décennales métier dédiées</strong> (études + travaux), et un coût global souvent inférieur de 10 à 20 %. C'est la configuration que les notaires et les acquéreurs reconnaissent comme la plus solide à la revente.</p>
 
       <h2>FAQ — Prix ouverture mur porteur Toulouse 2026</h2>
 
