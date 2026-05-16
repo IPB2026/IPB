@@ -53,12 +53,19 @@ export function RevealOnScroll({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          // On promeut juste avant l'animation pour activer la composition
+          // GPU pendant la transition, puis on libère le layer juste après.
+          // Le promote permanent (will-change permanent) sur 649 instances
+          // saturait la mémoire vidéo → cause des saccades / jitter au scroll
+          // (rapport client mai 2026).
+          el.style.willChange = 'opacity, transform';
+          // Force un reflow pour que willChange soit appliqué avant la
+          // bascule des autres styles (sinon le navigateur peut grouper
+          // les changements et perdre l'effet de promotion).
+          void el.offsetHeight;
           el.style.opacity = '1';
           el.style.transform = 'none';
           observer.unobserve(el);
-          // Libère le layer GPU une fois la transition jouée — évite
-          // d'accumuler des composites pour des éléments figés
-          // (cause perçue de "vibration" sur les pages chargées).
           const cleanup = () => {
             el.style.willChange = 'auto';
             el.removeEventListener('transitionend', cleanup);
@@ -93,7 +100,9 @@ export function RevealOnScroll({
         opacity: 0,
         transform: initialTransform,
         transition: `opacity ${duration}s cubic-bezier(.16,1,.3,1) ${delay}s, transform ${duration}s cubic-bezier(.16,1,.3,1) ${delay}s`,
-        willChange: 'opacity, transform',
+        // Note : will-change n'est PAS appliqué ici — il est posé
+        // dynamiquement au moment où l'observer déclenche l'animation.
+        // Voir explication dans l'IntersectionObserver ci-dessus.
       }}
     >
       {children}

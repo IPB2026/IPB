@@ -15,10 +15,28 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    // setScrolled n'a que 2 états (true/false) — on évite les re-renders
+    // inutiles en ne dispatching que sur changement, et on passe par rAF
+    // pour ne déclencher qu'au plus 1 update par frame.
+    let rafId: number | null = null;
+    let currentScrolled = window.scrollY > 8;
+    setScrolled(currentScrolled);
+    const onScroll = () => {
+      if (rafId !== null) return;
+      rafId = requestAnimationFrame(() => {
+        const next = window.scrollY > 8;
+        if (next !== currentScrolled) {
+          currentScrolled = next;
+          setScrolled(next);
+        }
+        rafId = null;
+      });
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (rafId !== null) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const links: Array<{

@@ -95,9 +95,12 @@ export function Footer() {
             >
               05 82 95 33 75
             </a>
-            <p className="text-[12px] text-white/70 leading-[1.7] mb-2">
-              [EMAIL_CONTACT]
-            </p>
+            <a
+              href="mailto:contact@ipb-expertise.fr"
+              className="block text-[12px] text-white/70 hover:text-white leading-[1.7] mb-2 transition-colors"
+            >
+              contact@ipb-expertise.fr
+            </a>
             <p className="text-[12px] text-white/70 leading-[1.7] mb-6">
               Lundi au vendredi<br />
               8h&nbsp;–&nbsp;19h
