@@ -70,8 +70,8 @@ export default function NotreInstitutPage() {
             <RevealOnScroll direction="left">
               <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
                 <Image
-                  src="/images/chantier-ouverture-mur-porteur.webp"
-                  alt="Chantier du réseau IPB — ouverture de mur porteur en cours, étaiement et pose de poutre"
+                  src="/images/ludovic-expert-ipb.webp"
+                  alt="Ludovic — expert en pathologie et structure du bâtiment, institut IPB"
                   fill
                   sizes="(max-width: 1024px) 100vw, 500px"
                   className="object-cover"
