@@ -19,12 +19,12 @@ export function Footer() {
               </div>
               <div>
                 <p className="font-serif text-white text-[18px] font-medium leading-none">Institut</p>
-                <p className="text-[11px] text-white/65 uppercase tracking-[0.12em] mt-1">Pathologie du bâtiment</p>
+                <p className="text-[11px] text-white/65 uppercase tracking-[0.12em] mt-1">Pathologie & structure du bâtiment</p>
               </div>
             </Link>
 
             <p className="text-[14px] leading-[1.85] font-light text-white/75 max-w-[420px] mb-8">
-              Institut spécialisé en pathologie et structure du bâtiment. Diagnostic de fissures, ouverture de mur porteur, création de baie vitrée. Un seul interlocuteur de l'étude à la livraison, sous décennales métier dédiées.
+              Institut spécialisé dans la structure du bâtiment&nbsp;: diagnostic de fissures, expertise humidité, expertise avant achat, ouverture de mur porteur. Un seul interlocuteur du diagnostic à la livraison.
             </p>
 
             <div className="space-y-5 mb-6">
@@ -32,16 +32,14 @@ export function Footer() {
                 <CrackSVG variant="mini" />
                 <div>
                   <p className="text-white/65 text-[11px] uppercase tracking-[0.14em] font-medium mb-1">Siège</p>
-                  <p>13 rue du Recteur Dottin</p>
-                  <p>31100 Toulouse — Occitanie</p>
+                  <p>[ADRESSE_IPB]</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3 text-[13px] text-white/70 leading-[1.7] pl-[26px]">
                 <div>
                   <p className="text-white/65 text-[11px] uppercase tracking-[0.14em] font-medium mb-1">Bureau</p>
-                  <p>54 avenue Jean Jaurès</p>
-                  <p>31170 Tournefeuille — Occitanie</p>
+                  <p>[ADRESSE_BUREAU]</p>
                 </div>
               </div>
             </div>
@@ -54,11 +52,11 @@ export function Footer() {
             </p>
             <ul className="space-y-3 text-[14px] font-light">
               {[
-                ['/expertise/fissures', 'Diagnostic de fissures'],
-                ['/expertise/mur-porteur', 'Ouverture de mur porteur'],
-                ['/calcul-prix-mur-porteur', 'Calculateur prix mur porteur'],
-                ['/expertise-avant-achat-immobilier-toulouse', 'Avant achat immobilier'],
-                ['/bureau-etude-structure-toulouse', "Bureau d'études"],
+                ['/expertise/fissures', 'Fissures'],
+                ['/expertise/humidite', 'Humidité'],
+                ['/expertise-avant-achat-immobilier-toulouse', 'Expertise avant achat'],
+                ['/expertise/mur-porteur', 'Mur porteur'],
+                ['/calcul-prix-mur-porteur', 'Calculateur de prix'],
               ].map(([href, label]) => (
                 <li key={href}>
                   <Link href={href} className="text-white/75 hover:text-white transition-colors">
@@ -76,7 +74,7 @@ export function Footer() {
             </p>
             <ul className="space-y-3 text-[14px] font-light">
               {[
-                ['/notre-expert', 'L’institut'],
+                ['/notre-expert', "L'institut"],
                 ['/avis-clients', 'Avis clients'],
                 ['/blog', 'Blog'],
                 ['/zones-intervention', "Zones d'intervention"],
@@ -103,6 +101,9 @@ export function Footer() {
             >
               05 82 95 33 75
             </a>
+            <p className="text-[12px] text-white/70 leading-[1.7] mb-2">
+              [EMAIL_CONTACT]
+            </p>
             <p className="text-[12px] text-white/70 leading-[1.7] mb-6">
               Lundi au vendredi<br />
               8h&nbsp;–&nbsp;19h
@@ -111,15 +112,25 @@ export function Footer() {
               href="/diagnostic"
               className="inline-flex items-center gap-2 text-ipb-orange-l text-[13px] font-medium border-b border-ipb-orange-l pb-1 hover:gap-3 transition-all"
             >
-              Diagnostic gratuit →
+              Mon diagnostic en 2 min →
             </Link>
           </div>
         </div>
 
+        {/* Mention coordination — apparaît globalement, toutes pages */}
+        <div className="pt-10 mb-6 border-t border-white/6">
+          <p className="text-[12px] leading-[1.7] text-white/70 max-w-[760px]">
+            Diagnostic et coordination assurés par IPB. Travaux réalisés sous décennale par les équipes de réalisation du réseau IPB.
+          </p>
+          <p className="text-[11px] leading-[1.6] text-white/45 mt-2 max-w-[760px]">
+            [MENTION_LEGALE_EXECUTANT]
+          </p>
+        </div>
+
         {/* Bandeau légal */}
-        <div className="pt-10 border-t border-white/6 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
           <p className="text-[12px] text-white/55">
-            © {new Date().getFullYear()} IPB — Institut de pathologie du bâtiment · Toulouse
+            © {new Date().getFullYear()} IPB — Institut de pathologie du bâtiment
           </p>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-[12px] text-white/55">
             <Link href="/legal/mentions-legales" className="hover:text-white/85 transition-colors">

@@ -86,7 +86,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
         "addressCountry": "FR"
       }
     },
-    "description": `Ouverture de mur porteur à ${villeNom} : étude, dimensionnement IPN/HEB, pose et finitions sous décennales métier. Un seul interlocuteur, de l'étude à la livraison.`,
+    "description": `Ouverture de mur porteur à ${villeNom} : l'institut IPB conçoit l'étude de structure et dimensionne la poutre IPN/HEB ; nos équipes de réalisation exécutent étaiement, pose et finitions sous garantie décennale 10 ans. Un seul interlocuteur, du diagnostic à la livraison.`,
     "offers": { "@type": "Offer", "priceRange": "4000-15000 EUR", "priceCurrency": "EUR" },
     "aggregateRating": IPB_AGGREGATE_RATING
   };
@@ -98,7 +98,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
       {
         "@type": "Question",
         "name": `Quel est le prix d'une ouverture de mur porteur à ${villeNom} ?`,
-        "acceptedAnswer": { "@type": "Answer", "text": `À ${villeNom}, le prix dépend de plusieurs paramètres concrets : la portée de l'ouverture, le type de mur (brique foraine, parpaing, pierre), ce qui se trouve au-dessus (combles, étage habité) et la complexité des finitions. Plutôt qu'une fourchette générique, utilisez notre calculateur en ligne basé sur nos chantiers récents — 4 questions, 2 minutes, fourchette précise par email. Devis ferme remis sous 24h après visite gratuite, un seul interlocuteur de A à Z.` }
+        "acceptedAnswer": { "@type": "Answer", "text": `À ${villeNom}, le prix dépend de plusieurs paramètres concrets : la portée de l'ouverture, le type de mur (brique foraine, parpaing, pierre), ce qui se trouve au-dessus (combles, étage habité) et la complexité des finitions. Plutôt qu'une fourchette générique, utilisez notre calculateur en ligne basé sur des chantiers récents du réseau IPB — 4 questions, 2 minutes, fourchette précise par email. Devis remis sous 3 à 5 jours après visite gratuite, un seul interlocuteur du diagnostic à la livraison.` }
       },
       {
         "@type": "Question",
@@ -118,7 +118,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
       {
         "@type": "Question",
         "name": `Quelle poutre pour ouvrir un mur porteur ?`,
-        "acceptedAnswer": { "@type": "Answer", "text": "Le choix dépend de la portée et des charges reprises. IPN (profil en I) pour les portées courtes (≤2,5 m). HEB (profil en H, plus rigide) pour les grandes portées (>3 m) et les charges importantes (étages au-dessus). IPE pour les configurations intermédiaires. La poutre est calculée pour reprendre les charges identifiées (poids, déformation admissible) selon les Eurocodes, et la note de calcul est signée sous décennale études dédiée." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Le choix dépend de la portée et des charges reprises. IPN (profil en I) pour les portées courtes (≤2,5 m). HEB (profil en H, plus rigide) pour les grandes portées (>3 m) et les charges importantes (étages au-dessus). IPE pour les configurations intermédiaires. La poutre est calculée pour reprendre les charges identifiées (poids, déformation admissible) selon les Eurocodes, et la note de calcul est signée par un bureau d’études." }
       },
       {
         "@type": "Question",
@@ -162,7 +162,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
                 </h1>
 
                 <p className="text-xl text-white/70 mb-6 leading-relaxed">
-                  <strong className="text-white">L'institut qui prend en charge votre ouverture de mur porteur</strong> à {villeNom}. Étude, dimensionnement IPN/HEB, étaiement, pose et finitions. <strong className="text-ipb-orange-l">Un seul interlocuteur, du premier appel à la livraison.</strong>
+                  <strong className="text-white">L'institut qui conçoit et coordonne votre ouverture de mur porteur</strong> à {villeNom}. Étude de structure, dimensionnement IPN/HEB, démarches administratives ; étaiement, pose et finitions par les équipes du réseau IPB sous décennale. <strong className="text-ipb-orange-l">Un seul interlocuteur, du premier appel à la livraison.</strong>
                 </p>
 
                 {/* Encadré confiance — estimation en ligne */}
@@ -206,7 +206,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
                       </div>
                       <div>
                         <p className="font-bold text-white">Calcul selon les Eurocodes</p>
-                        <p className="text-sm text-ipb-light">La poutre est dimensionnée selon les normes en vigueur, sous décennale études dédiée</p>
+                        <p className="text-sm text-ipb-light">La poutre est dimensionnée selon les normes en vigueur, par un bureau d’études</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
@@ -214,8 +214,8 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
                         <Shield className="text-blue-400" size={24} />
                       </div>
                       <div>
-                        <p className="font-bold text-white">Deux décennales métier</p>
-                        <p className="text-sm text-ipb-light">Études + travaux, chacune sous sa garantie 10 ans. Attestations remises avec le devis.</p>
+                        <p className="font-bold text-white">Travaux sous décennale 10 ans</p>
+                        <p className="text-sm text-ipb-light">Étaiement, ouverture, pose et finitions exécutés par les équipes du réseau IPB sous garantie décennale. Attestations remises avec le devis.</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
@@ -223,8 +223,8 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
                         <Award className="text-amber-400" size={24} />
                       </div>
                       <div>
-                        <p className="font-bold text-white">850+ chantiers en Occitanie</p>
-                        <p className="text-sm text-ipb-light">{villeNom} et communes alentour</p>
+                        <p className="font-bold text-white">850+ chantiers · réseau IPB</p>
+                        <p className="text-sm text-ipb-light">Menés en Occitanie — {villeNom} et communes alentour</p>
                       </div>
                     </div>
                   </div>
@@ -283,10 +283,10 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
 
             <div className="grid md:grid-cols-4 gap-6">
               {[
-                { num: 1, icon: <FileText size={24} className="text-ipb-orange" />, title: 'Étude technique', detail: 'Visite sur site, observation du mur. La poutre est dimensionnée selon les Eurocodes, sous décennale études dédiée.' },
+                { num: 1, icon: <FileText size={24} className="text-ipb-orange" />, title: 'Étude technique', detail: 'Visite sur site, observation du mur. La poutre est dimensionnée selon les Eurocodes, par un bureau d’études.' },
                 { num: 2, icon: <Ruler size={24} className="text-ipb-orange" />, title: 'Démarches', detail: 'IPB s\'occupe des papiers en mairie. Si copropriété : préparation du dossier pour l\'assemblée générale.' },
-                { num: 3, icon: <Hammer size={24} className="text-ipb-orange" />, title: 'Travaux 2 à 5 jours', detail: 'Étais installés, mur découpé, poutre posée et finitions assurées sous décennale travaux dédiée.' },
-                { num: 4, icon: <Shield size={24} className="text-ipb-orange" />, title: 'Livraison', detail: 'Contrôle final, retrait des étais. IPB vous remet tous les documents du chantier et les attestations des décennales métier.' },
+                { num: 3, icon: <Hammer size={24} className="text-ipb-orange" />, title: 'Travaux 2 à 5 jours', detail: 'Étais installés, mur découpé, poutre posée et finitions assurées sous garantie décennale 10 ans.' },
+                { num: 4, icon: <Shield size={24} className="text-ipb-orange" />, title: 'Livraison', detail: 'Contrôle final, retrait des étais. IPB vous remet tous les documents du chantier et les attestations de garantie décennale.' },
               ].map(({ num, icon, title, detail }) => (
                 <div key={num} className="bg-white rounded-2xl p-6 shadow-lg border border-ipb-rule text-center">
                   <div className="w-14 h-14 bg-ipb-stone rounded-full flex items-center justify-center mx-auto mb-4">{icon}</div>
@@ -390,7 +390,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
         <section className="py-16 md:py-20 bg-ipb-orange text-white">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h2 className="text-white text-3xl md:text-4xl font-extrabold mb-6">Votre projet à {villeNom}, notre expertise</h2>
-            <p className="text-xl text-ipb-orange-l mb-8">Décrivez votre projet à notre institut. Réponse de notre équipe sous 24 heures ouvrées.</p>
+            <p className="text-xl text-ipb-orange-l mb-8">Décrivez votre projet à notre institut. Réponse de notre équipe sous 48 heures.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link href="/diagnostic" className="bg-white text-ipb-orange px-10 py-5 rounded-xl font-bold text-lg hover:bg-ipb-stone flex items-center justify-center gap-2 shadow-xl">
                 Diagnostic gratuit · 2 min <ArrowRight size={20} />

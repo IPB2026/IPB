@@ -31,11 +31,11 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.ipb-expertise.fr'),
   title: {
-    default: "IPB - Spécialistes de la structure de votre habitat | Diagnostic Fissures & Ouverture Mur Porteur Toulouse",
+    default: "IPB · Institut de pathologie & structure du bâtiment — Toulouse & Occitanie",
     template: "%s | IPB"
   },
-  description: "Les spécialistes de la structure de votre habitat. Diagnostic fissures, ouverture de mur porteur, création de baie vitrée. Étude et travaux sous décennale 10 ans dédiée. Toulouse, Montauban, Auch (31-82-32).",
-  keywords: ["expert fissures Toulouse", "ouverture mur porteur Toulouse", "création baie vitrée Toulouse", "étude structure bâtiment", "agrafage fissures", "poutre IPN HEB", "fissures maison", "expert structure Toulouse", "Montauban", "Auch", "Haute-Garonne", "Tarn-et-Garonne", "Gers", "Tarn", "pathologie du bâtiment", "garantie décennale", "humidité murs", "injection résine"],
+  description: "Institut spécialisé dans la structure du bâtiment. Diagnostic de fissures, expertise humidité, expertise avant achat et ouverture de mur porteur. Diagnostic et coordination assurés par IPB ; travaux réalisés sous décennale par les équipes du réseau IPB. Toulouse, Montauban, Auch (31-82-32).",
+  keywords: ["expert fissures Toulouse", "expertise humidité Toulouse", "expertise avant achat Toulouse", "ouverture mur porteur Toulouse", "agrafage fissures", "fissures maison", "expert structure Toulouse", "Montauban", "Auch", "Haute-Garonne", "Tarn-et-Garonne", "Gers", "Tarn", "institut pathologie du bâtiment", "diagnostic structure", "humidité murs"],
   authors: [{ name: "IPB - Institut de Pathologie du Bâtiment" }],
   creator: "IPB",
   publisher: "IPB",
@@ -58,21 +58,21 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://www.ipb-expertise.fr",
     siteName: "IPB - Institut de Pathologie du Bâtiment",
-    title: "IPB - Spécialistes de la structure de votre habitat | Toulouse, Montauban, Auch",
-    description: "Les spécialistes de la structure de votre habitat. Diagnostic fissures, ouverture de mur porteur (étude IPN/HEB), création de baie vitrée. Étude et travaux sous décennale 10 ans dédiée.",
+    title: "IPB · Institut de pathologie & structure du bâtiment — Toulouse & Occitanie",
+    description: "Diagnostic de fissures, expertise humidité, expertise avant achat et ouverture de mur porteur. IPB diagnostique et coordonne ; les équipes du réseau IPB réalisent les travaux sous décennale.",
     images: [
       {
         url: "/images/IPB_Logo_HD.png",
         width: 1200,
         height: 630,
-        alt: "IPB Expert Fissures, Mur Porteur & Baie Vitrée — Toulouse, Montauban, Auch — Étude structure et garantie décennale",
+        alt: "IPB — Institut de pathologie & structure du bâtiment · Toulouse, Montauban, Auch",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "IPB - Spécialistes de la structure de votre habitat (31-82-32)",
-    description: "Diagnostic fissures, ouverture de mur porteur, création de baie vitrée. Étude et travaux sous décennale 10 ans dédiée.",
+    title: "IPB · Institut de pathologie & structure du bâtiment (Occitanie)",
+    description: "Diagnostic de fissures, humidité, expertise avant achat, mur porteur. IPB diagnostique et coordonne ; le réseau IPB réalise sous décennale.",
     images: ["/images/IPB_Logo_HD.png"],
   },
   robots: {
@@ -108,8 +108,11 @@ const localBusinessSchema = {
   "name": "IPB - Institut de Pathologie du Bâtiment",
   "legalName": "Bâti Halli",
   "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
+  // foundingDate du réseau IPB (et non d'IPB en tant qu'entité juridique).
   "foundingDate": "2019",
-  "description": "Institut spécialisé en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Expertise fissures (agrafage structurel), ouverture de mur porteur et création de baie vitrée (étude structure, pose poutre IPN/HEB), étanchéité maçonnée (injection résine, cuvelage). Diagnostic et travaux sous décennales métier dédiées (10 ans). Toulouse, Montauban, Auch et environs.",
+  "description": "Institut spécialisé en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Diagnostic de fissures, expertise humidité, expertise avant achat et ouverture de mur porteur. Diagnostic et coordination assurés par IPB ; travaux réalisés sous décennale par les équipes de réalisation du réseau IPB. Toulouse, Montauban, Auch et environs.",
+  // EN ATTENTE CONFIRMATION CLIENT : adresse du bureau IPB (54 avenue Jean Jaurès,
+  // Tournefeuille) à valider avant publication — voir [ADRESSE_BUREAU] dans le livrable.
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "54 avenue Jean Jaurès",
@@ -158,32 +161,32 @@ const localBusinessSchema = {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Expertise et traitement des fissures structurelles",
-          "description": "Diagnostic structure, agrafage structurel et harpage. Garantie décennale."
+          "name": "Diagnostic et traitement des fissures",
+          "description": "Visite sur site, mesure au fissuromètre, identification de la cause. L'institut conçoit la solution (agrafage structurel, harpage, reprise) et les équipes de réalisation du réseau IPB l'exécutent sous décennale. Rapports reconnus par les assurances."
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Ouverture de mur porteur",
-          "description": "Étude technique, dimensionnement et pose de poutre IPN/HEB, étaiement, ouverture, finitions. Cuisine ouverte, suite parentale, plateau loft. Travaux sous décennale 10 ans dédiée. Note de calcul opposable selon les Eurocodes."
+          "name": "Diagnostic humidité et infiltrations",
+          "description": "Remontées capillaires, infiltrations, salpêtre, condensation. L'institut identifie la cause exacte, conçoit la solution juste, et la met en œuvre avec ses équipes de réalisation."
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Création de baie vitrée",
-          "description": "Création d'une baie vitrée sur projet de façade. Étude technique, ouverture du mur porteur, pose du dormant et finitions. Démarches administratives accompagnées (déclaration préalable ou permis de construire). Garantie décennale."
+          "name": "Expertise structurelle avant achat immobilier",
+          "description": "Analyse indépendante du bâti avant signature : fissures, désordres apparents et cachés, état de la structure. Rapport remis sous 3 à 5 jours, compatible avec votre délai de rétractation."
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Traitement de l'humidité",
-          "description": "Étanchéité maçonnée : injection de résine hydrophobe et cuvelage pour murs humides et infiltrations. Solutions complémentaires de ventilation (VMI) en partenariat avec un installateur fluides agréé."
+          "name": "Ouverture de mur porteur et baie vitrée",
+          "description": "L'institut conçoit le projet et l'étude de structure (dimensionnement de la poutre) ; les équipes de réalisation du réseau IPB exécutent les travaux sous décennale 10 ans. Démarches administratives accompagnées."
         }
       }
     ]

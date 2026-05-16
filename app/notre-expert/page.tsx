@@ -13,13 +13,13 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
-  title: "L'institut IPB · Diagnostic et travaux structure Toulouse",
-  description: "L'institut IPB : équipe expérimentée en pathologie et structure du bâtiment. 850 chantiers en Occitanie depuis 2019. Décennales métier dédiées. ☎ 05 82 95 33 75",
+  title: "L'institut IPB · Pathologie & structure du bâtiment · Occitanie",
+  description: "IPB est un institut spécialisé en pathologie et structure du bâtiment. Diagnostic, conception, coordination ; travaux réalisés sous décennale par les équipes du réseau IPB. Un seul interlocuteur, du diagnostic à la livraison. ☎ 05 82 95 33 75",
   keywords: ['institut pathologie bâtiment toulouse', 'expert fissures toulouse', 'expertise structure toulouse', "expertise bâtiment Haute-Garonne"],
   alternates: { canonical: 'https://www.ipb-expertise.fr/notre-expert' },
   openGraph: {
-    title: "L'institut IPB · Diagnostic et travaux structure Toulouse",
-    description: "Équipe expérimentée en pathologie et structure du bâtiment. 850 chantiers en Occitanie depuis 2019. Décennales métier dédiées.",
+    title: "L'institut IPB · Pathologie & structure du bâtiment · Occitanie",
+    description: "Institut spécialisé. Diagnostic et coordination assurés par IPB ; travaux réalisés sous décennale par les équipes de réalisation du réseau IPB.",
     url: 'https://www.ipb-expertise.fr/notre-expert',
     type: 'website',
   },
@@ -31,8 +31,9 @@ const organizationSchema = {
   "name": "IPB — Institut de Pathologie du Bâtiment",
   "url": "https://www.ipb-expertise.fr",
   "logo": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
+  // foundingDate du réseau IPB (et non d'IPB en tant qu'entité juridique).
   "foundingDate": "2019",
-  "description": "Institut spécialisé en pathologie et structure du bâtiment. Diagnostic et travaux sous décennales métier dédiées (10 ans). Études techniques signées sous décennale études dédiée.",
+  "description": "Institut spécialisé en pathologie et structure du bâtiment. Diagnostic et coordination assurés par IPB ; travaux réalisés sous décennale par les équipes de réalisation du réseau IPB.",
   "areaServed": [
     { "@type": "AdministrativeArea", "name": "Haute-Garonne" },
     { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne" },
@@ -42,13 +43,13 @@ const organizationSchema = {
 };
 
 const certifications = [
-  { name: 'Décennale travaux dédiée', detail: 'Travaux d\'agrafage, ouverture de mur porteur, finitions menés sous décennale 10 ans dédiée' },
-  { name: 'Décennale études dédiée', detail: 'Notes de calcul opposables signées selon les Eurocodes sous décennale études dédiée' },
-  { name: 'RC pro IPB', detail: 'Responsabilité civile professionnelle sur le diagnostic, l\'accompagnement et la coordination' },
+  { name: "Garantie décennale 10 ans sur les travaux", detail: "Travaux d'agrafage, traitement humidité, ouverture de mur porteur et finitions exécutés par les équipes de réalisation du réseau IPB, sous décennale." },
+  { name: "RC pro IPB", detail: "Responsabilité civile professionnelle de l'institut sur le diagnostic, la conception et la coordination des travaux." },
+  { name: "Rapports reconnus par les assurances", detail: "Documents techniques rédigés dans les formes attendues par les assureurs et utilisés régulièrement dans les dossiers CAT-NAT et recours décennale." },
 ];
 
 const valeurs = [
-  { titre: "Continuité", desc: "Le diagnostic, les préconisations et les travaux sont pilotés par le même institut. Un seul interlocuteur, sous décennales métier dédiées." },
+  { titre: "Continuité", desc: "Le diagnostic, la conception et la coordination des travaux sont assurés par un seul institut. Un seul interlocuteur, du premier appel à la livraison." },
   { titre: "Sobriété", desc: "Nous décrivons ce que nous voyons, nous expliquons ce qu'il faut faire — sans surinvestir le vocabulaire. Si rien n'est urgent, nous le disons." },
   { titre: "Documentation", desc: "Chaque intervention est documentée : photos, mesures, plans, attestations. Le dossier complet est remis au client à la livraison." },
 ];
@@ -70,7 +71,7 @@ export default function NotreInstitutPage() {
               <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
                 <Image
                   src="/images/chantier-ouverture-mur-porteur.webp"
-                  alt="Chantier IPB — ouverture de mur porteur en cours, étaiement et pose de poutre"
+                  alt="Chantier du réseau IPB — ouverture de mur porteur en cours, étaiement et pose de poutre"
                   fill
                   sizes="(max-width: 1024px) 100vw, 500px"
                   className="object-cover"
@@ -91,25 +92,25 @@ export default function NotreInstitutPage() {
                     fontWeight: 700,
                   }}
                 >
-                  L'institut IPB.<br />
-                  <em>Un seul interlocuteur, sept ans de bâti d'Occitanie.</em>
+                  Un institut spécialisé.<br />
+                  <em>Un interlocuteur unique.</em>
                 </h1>
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-6">
-                  L'institut a été fondé en 2019 sur une intuition simple : que le client n'ait qu'un seul interlocuteur, du diagnostic à la livraison. Ne pas le renvoyer d'un prestataire à l'autre. Ne pas lui vendre une solution préconçue.
+                  IPB est un institut spécialisé en pathologie et structure du bâtiment, basé à Toulouse et intervenant en Occitanie. Notre métier couvre le diagnostic et le traitement des fissures, l'expertise humidité, l'expertise structurelle avant achat, et l'ouverture de murs porteurs.
                 </p>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-6">
-                  Sept ans plus tard, l'équipe est expérimentée, les décennales métier sont actives, et 850 chantiers ont été signés en Haute-Garonne, dans le Tarn-et-Garonne, le Gers et le Tarn. L'institut traite en moyenne soixante-dix dossiers fissures par an, en complément des ouvertures de murs porteurs et des expertises avant achat.
+                  L'institut diagnostique, conçoit, et met en œuvre avec ses équipes de réalisation — des artisans structure intégrés au réseau IPB, formés à notre protocole et assurés en décennale. Du premier appel à la livraison, vous avez un seul interlocuteur et une seule responsabilité de coordination.
                 </p>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10">
-                  Notre rôle : poser le diagnostic, sécuriser l'étude technique (note de calcul opposable selon les Eurocodes, sous décennale études dédiée), coordonner les travaux (sous décennale travaux dédiée) et vous accompagner jusqu'à la livraison. Un seul interlocuteur, des garanties métier solides à chaque étape.
+                  Le réseau IPB est actif depuis 2019 en Haute-Garonne, dans le Tarn-et-Garonne, le Gers et le Tarn. Plus de 850 chantiers ont été menés par le réseau&nbsp;; l'institut traite en moyenne soixante-dix dossiers fissures par an, en complément des expertises humidité, avant achat, et des ouvertures de murs porteurs.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <MagneticButton href="/diagnostic" variant="primary">
-                    Diagnostic gratuit · 2 min
+                    Mon diagnostic en 2 min
                   </MagneticButton>
                   <MagneticButton href="/contact" variant="ghost">
                     Demander un rappel
@@ -125,8 +126,8 @@ export default function NotreInstitutPage() {
           <div className="max-w-ipb mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
               {[
-                { value: 2019, label: 'Année de création', sublabel: '7 ans d\'activité' },
-                { value: 850, suffix: '+', label: 'Chantiers livrés', sublabel: 'Occitanie' },
+                { value: 2019, label: 'Réseau IPB actif depuis', sublabel: 'Occitanie' },
+                { value: 850, suffix: '+', label: 'Chantiers · réseau IPB', sublabel: 'Menés en Occitanie' },
                 { value: 4, label: 'Départements', sublabel: '31 · 82 · 32 · 81' },
                 { value: 4.9, decimals: 1, suffix: '/5', label: 'Avis Google', sublabel: 'Vérifiés sur Google' },
               ].map((s, i) => (

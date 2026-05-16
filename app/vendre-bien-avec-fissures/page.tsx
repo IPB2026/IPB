@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title:
     "Rapport d'expertise fissures pour vente immobilière · Toulouse · IPB",
   description:
-    'Vous vendez un bien avec fissures. Notre rapport documente les désordres, qualifie leur nature structurelle ou esthétique, et sécurise votre transaction. Visite sous 72 heures en Occitanie.',
+    'Vous vendez un bien avec fissures. Notre rapport documente les désordres, qualifie leur nature structurelle ou esthétique, et sécurise votre transaction. Visite sous 72h en Occitanie.',
   keywords: [
     'vendre maison avec fissures',
     'rapport expertise fissure pour vendre',
@@ -74,7 +74,7 @@ const etapes = [
   },
   {
     titre: 'Visite sur site',
-    desc: "L'équipe de l'institut se déplace sous 72 heures en moyenne. Mesures, photos, échange direct.",
+    desc: "L'équipe de l'institut se déplace sous 72h en moyenne. Mesures, photos, échange direct.",
   },
   {
     titre: 'Rédaction du rapport',
@@ -241,7 +241,7 @@ export default function VendreBienAvecFissuresPage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.26} variant="subtle">
                 <p className="text-[12px] leading-[1.7] tracking-[0.02em] text-ipb-light">
-                  Visite sous 72 heures · Rapport remis sous 3 à 5 jours ouvrés · Conforme aux attentes des notaires et agents immobiliers
+                  Visite sous 72h · Rapport remis sous 3 à 5 jours ouvrés · Conforme aux attentes des notaires et agents immobiliers
                 </p>
               </RevealOnScroll>
             </div>
@@ -469,7 +469,7 @@ export default function VendreBienAvecFissuresPage() {
                     DÉLAI
                   </h3>
                   <p className="text-[15px] leading-[1.85] font-light text-ipb-text">
-                    Visite sous 72 heures · Rapport remis sous 3 à 5 jours ouvrés après visite · Total : moins de deux semaines entre votre demande et le rapport en main.
+                    Visite sous 72h · Rapport remis sous 3 à 5 jours ouvrés après visite · Total : moins de deux semaines entre votre demande et le rapport en main.
                   </p>
                 </div>
               </div>

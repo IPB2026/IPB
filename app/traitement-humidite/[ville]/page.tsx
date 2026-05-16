@@ -67,9 +67,9 @@ export default async function TraitementHumiditeVillePage({ params }: { params: 
         ville={ville}
         serviceTitle="Traitement de l'humidité"
         eyebrowLabel="Travaux · Humidité du bâti"
-        description={`Notre institut réalise les traitements d'humidité à ${villeNom} : injection de résine hydrophobe pour les remontées capillaires, cuvelage pour les caves, ventilation pour la condensation. Solution adaptée au diagnostic, garantie décennale.`}
+        description={`L'institut diagnostique l'humidité à ${villeNom} et conçoit la solution adaptée — injection de résine hydrophobe pour les remontées capillaires, cuvelage pour les caves, ventilation pour la condensation. Travaux exécutés par les équipes de réalisation du réseau IPB sous garantie décennale 10 ans.`}
         heroImage="/images/humidite-avant-apres.webp"
-        heroAlt={`Traitement humidité à ${villeNom} — Institut IPB`}
+        heroAlt={`Traitement humidité à ${villeNom} — chantier du réseau IPB`}
         methodHref="/expertise/humidite"
         contextField={villeData.specificitesHumidite ? 'specificitesHumidite' : undefined}
         relatedCards={[

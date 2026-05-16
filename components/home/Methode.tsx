@@ -12,28 +12,28 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 const etapes = [
   {
     num: '01',
-    titre: 'On vient sur place',
-    desc: 'Visite technique sur site sous 72 heures en moyenne. Mesures, photos, échanges directs avec vous.',
+    titre: 'On vient voir',
+    desc: "Visite technique et diagnostic instrumenté de votre bâti, sous 72h en moyenne. Mesures, photos, échanges directs avec vous.",
   },
   {
     num: '02',
-    titre: 'On regarde et on explique',
-    desc: "Identification des causes, lecture du bâti, vocabulaire clair. Vous comprenez ce qu'on a vu.",
+    titre: 'On analyse et on explique',
+    desc: "Identification des causes, lecture du bâti, vocabulaire clair. Vous comprenez enfin ce qui se passe chez vous.",
   },
   {
     num: '03',
-    titre: "On chiffre l'étude",
-    desc: "Rapport technique, plans et dimensionnement. Devis ferme remis sous 3 à 5 jours ouvrés.",
+    titre: 'On conçoit et on chiffre',
+    desc: "Rapport technique et préconisations. Devis remis sous 3 à 5 jours, clair et détaillé.",
   },
   {
     num: '04',
-    titre: 'On pilote les travaux',
-    desc: "Notre institut coordonne l'exécution sous décennale 10 ans dédiée. Chantier propre, sécurisé, dans les délais annoncés.",
+    titre: 'On réalise',
+    desc: "Nos équipes de réalisation interviennent selon le protocole IPB, sous garantie décennale 10 ans. Chantier propre, sécurisé, dans les délais annoncés.",
   },
   {
     num: '05',
-    titre: 'On vous remet tout',
-    desc: "Documents complets du chantier, attestations des décennales métier, photos. Le dossier est à vous.",
+    titre: 'On vous remet le dossier complet',
+    desc: "Rapport, plans, photos, attestations, garanties. Le dossier est à vous — et IPB reste votre interlocuteur, bien après la livraison.",
   },
 ];
 
@@ -43,7 +43,7 @@ export function Methode() {
       <div className="max-w-ipb mx-auto px-6 lg:px-12">
         <RevealOnScroll>
           <div className="text-center mb-20 max-w-3xl mx-auto">
-            <Eyebrow className="justify-center">Notre accompagnement</Eyebrow>
+            <Eyebrow className="justify-center">Notre méthode</Eyebrow>
             <h2
               className="font-serif text-ipb-text"
               style={{
@@ -54,10 +54,10 @@ export function Methode() {
               }}
             >
               De la première visite<br />
-              <em>aux dernières finitions.</em>
+              <em>à la dernière finition.</em>
             </h2>
             <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mt-6">
-              Cinq étapes, un seul interlocuteur. Vous savez à chaque moment où en est le dossier.
+              Cinq étapes, un seul interlocuteur. Vous savez à chaque instant où en est votre dossier.
             </p>
           </div>
         </RevealOnScroll>

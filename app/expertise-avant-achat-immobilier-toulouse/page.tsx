@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title:
     "Expertise avant achat immobilier · Avis structurel indépendant · Toulouse · IPB",
   description:
-    "Expertise indépendante avant achat immobilier à Toulouse. Délais compatibles avec votre rétractation : visite sous 72 heures, rapport sous 3 à 5 jours ouvrés. Sans aucun lien avec le vendeur ni l'agence.",
+    "Expertise indépendante avant achat immobilier à Toulouse. Délais compatibles avec votre rétractation : visite sous 72h, rapport sous 3 à 5 jours. Sans aucun lien avec le vendeur ni l'agence.",
   keywords: [
     'expertise avant achat toulouse',
     'expertise immobilière toulouse',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title:
       'Expertise avant achat immobilier · Avis structurel indépendant · Toulouse · IPB',
     description:
-      "Avis structurel indépendant avant achat. Délais compatibles avec votre rétractation : visite sous 72 heures.",
+      "Avis structurel indépendant avant achat. Délais compatibles avec votre rétractation : visite sous 72h.",
     url: 'https://www.ipb-expertise.fr/expertise-avant-achat-immobilier-toulouse',
     type: 'website',
   },
@@ -502,7 +502,7 @@ export default function ExpertiseAvantAchatPage() {
                     DÉLAI
                   </h3>
                   <p className="text-[15px] leading-[1.85] font-light text-ipb-text">
-                    Visite sous 72 heures en standard, sous 24 heures en urgence. Avis intermédiaire dans les 48 heures suivant la visite pour les dossiers urgents. Rapport définitif remis sous 3 à 5 jours ouvrés.
+                    Visite sous 72h en standard, sous 24 heures en urgence. Avis intermédiaire dans les 48 heures suivant la visite pour les dossiers urgents. Rapport définitif remis sous 3 à 5 jours ouvrés.
                   </p>
                 </div>
               </div>

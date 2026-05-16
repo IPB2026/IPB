@@ -383,7 +383,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                   Faites diagnostiquer votre situation<br /><em className="text-ipb-orange-l">par notre institut.</em>
                 </h2>
                 <p className="text-white/70 text-[14px] leading-[1.7] mb-7">
-                  Diagnostic préalable téléphonique gratuit. Réponse de notre équipe sous 24 heures ouvrées.
+                  Diagnostic préalable téléphonique gratuit. Réponse de notre équipe sous 48 heures.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <Link

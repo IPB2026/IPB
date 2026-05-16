@@ -3,42 +3,43 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 /**
- * ServiceList — liste architecturale numérotée 01-04.
- * Pattern signature IPB : PAS des cards, une vraie liste éditoriale.
+ * ServiceList — 4 services regroupés en 3 familles.
  *
- * Format : grid 56px / 1fr / 48px
- *  - Numéro Playfair 12px → orange au hover
- *  - Titre Playfair 22px
- *  - Cercle 40×40 avec flèche → translate(4px) au hover
- *
- * Ordre : Fissures EN PREMIER (priorité SEO historique GSC).
+ * Familles (HOME-IPB-CONTENU-FINAL §6) :
+ *  - Diagnostic de pathologies : 01 fissures, 02 humidité
+ *  - Expertise : 03 avant achat
+ *  - Travaux de structure : 04 mur porteur
  *
  * Cf. IPB_Design_Handoff.md §5.5
  */
 const services = [
   {
     num: '01',
+    family: 'Diagnostic de pathologies',
     title: 'Diagnostic et traitement des fissures',
-    desc: 'Visite sur site, mesure au fissuromètre, identification de la cause. Solutions adaptées : agrafage structurel, harpage, reprise en sous-œuvre. Nos rapports sont reconnus par les assurances.',
+    desc: "Visite sur site, mesure au fissuromètre, identification de la cause — tassement, retrait-gonflement des argiles, défaut de structure. L'institut conçoit la solution (agrafage structurel, harpage, reprise) et nos équipes la réalisent, sous décennale. Rapports reconnus par les assurances.",
     href: '/expertise/fissures',
   },
   {
     num: '02',
-    title: 'Ouverture de mur porteur',
-    desc: "Étude technique, dimensionnement de la poutre IPN ou HEB, étaiement, ouverture, finitions. Pour une cuisine ouverte ou — sur projet de façade — la création d'une baie vitrée.",
-    href: '/expertise/mur-porteur',
+    family: 'Diagnostic de pathologies',
+    title: 'Diagnostic humidité et infiltrations',
+    desc: "Remontées capillaires, infiltrations, condensation : on confond souvent les origines, et on traite à côté. L'institut identifie la cause exacte, conçoit la solution juste, et la met en œuvre. Un diagnostic juste évite des travaux inutiles.",
+    href: '/expertise/humidite',
   },
   {
     num: '03',
-    title: 'Expertise avant achat immobilier',
-    desc: "Analyse technique du bien avant signature : structure, fissures, désordres apparents et cachés. Rapport remis sous 3 à 5 jours ouvrés.",
+    family: 'Expertise',
+    title: 'Expertise structurelle avant achat immobilier',
+    desc: "Analyse indépendante du bâti avant signature : fissures, désordres apparents et cachés, état de la structure. Rapport remis sous 3 à 5 jours, compatible avec votre délai de rétractation. Un avis sans aucun lien avec le vendeur ni l'agence.",
     href: '/expertise-avant-achat-immobilier-toulouse',
   },
   {
     num: '04',
-    title: "Bureau d'études structure",
-    desc: "Calcul de poutres, étude de charges, plans d'exécution. Pour particuliers, architectes d'intérieur, marchands de biens.",
-    href: '/bureau-etude-structure-toulouse',
+    family: 'Travaux de structure',
+    title: 'Ouverture de mur porteur et baie vitrée',
+    desc: "L'institut conçoit votre projet, réalise l'étude de structure et le dimensionnement de la poutre, et met en œuvre les travaux avec ses équipes, sous décennale. Nous gérons aussi vos démarches administratives.",
+    href: '/expertise/mur-porteur',
   },
 ];
 
@@ -59,13 +60,13 @@ export function ServiceList() {
                   fontWeight: 700,
                 }}
               >
-                Quatre métiers,<br />
-                <em>une seule structure.</em>
+                Une seule spécialité&nbsp;:<br />
+                <em>la structure de votre bâtiment.</em>
               </h2>
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
               <p className="text-[15px] leading-[1.9] font-light text-ipb-muted">
-                Notre institut s'occupe de la structure des bâtiments anciens et neufs en Occitanie. Particuliers comme professionnels font appel à IPB pour la rigueur de nos diagnostics et la qualité de nos chantiers.
+                Diagnostic de pathologies, expertise avant achat, travaux de structure&nbsp;: notre institut couvre toute la chaîne — du premier symptôme à la livraison — en Occitanie.
               </p>
             </div>
           </div>
@@ -87,6 +88,9 @@ export function ServiceList() {
                   {service.num}
                 </span>
                 <div className="transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:translate-x-1.5">
+                  <p className="text-[10px] uppercase tracking-[0.16em] text-ipb-orange-d font-medium mb-2">
+                    {service.family}
+                  </p>
                   <h3
                     className="font-serif text-ipb-text mb-2 group-hover:text-ipb-orange transition-colors duration-500"
                     style={{ fontSize: 'clamp(20px, 1.8vw, 26px)', fontWeight: 700, lineHeight: 1.3 }}

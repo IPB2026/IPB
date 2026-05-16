@@ -123,7 +123,7 @@ export default function RdvCabinetPage() {
                       Nous écrire
                     </h3>
                     <p className="text-[13px] font-light text-ipb-muted leading-[1.75] mb-5">
-                      Si vous préférez l'écrit, ou si vous voulez nous transmettre des photos / plans en amont, le formulaire de contact est là pour ça. Réponse sous 24 heures ouvrées.
+                      Si vous préférez l'écrit, ou si vous voulez nous transmettre des photos / plans en amont, le formulaire de contact est là pour ça. Réponse sous 48 heures.
                     </p>
                     <span className="inline-flex items-center gap-2 text-ipb-orange text-[13px] font-medium border-b border-ipb-orange pb-1 group-hover:gap-3 transition-all">
                       Ouvrir le formulaire →

@@ -244,7 +244,7 @@ const expertTips: Record<string, string> = {
   // MUR PORTEUR
   'mur-porteur:TYPE_BATIMENT:maison': '💡 Pour une maison individuelle, l\'ouverture de mur porteur est généralement réalisable en 2 à 5 jours. L\'étude structure est l\'étape clé.',
   'mur-porteur:TYPE_BATIMENT:immeuble': '⚠️ En immeuble, l\'accord de la copropriété est obligatoire. Nous vous aidons à constituer le dossier technique pour l\'AG.',
-  'mur-porteur:TYPE_BATIMENT:local': '💡 Dans un local professionnel, le mur porteur peut avoir des charges importantes. La poutre est dimensionnée selon les Eurocodes, sous décennale études dédiée.',
+  'mur-porteur:TYPE_BATIMENT:local': '💡 Dans un local professionnel, le mur porteur peut avoir des charges importantes. La poutre est dimensionnée selon les Eurocodes, par un bureau d’études.',
   'mur-porteur:PROJET:abattre': '⚠️ Abattre un mur porteur sans étude structure est illégal et dangereux. La poutre de reprise est dimensionnée selon les Eurocodes avant tout chantier.',
   'mur-porteur:PROJET:agrandir': '💡 Agrandir une ouverture existante est souvent plus simple — le linteau est déjà en place. L\'étude vérifie si la portée peut être étendue.',
   'mur-porteur:PROJET:baie': '💡 Une baie vitrée nécessite l\'ouverture du mur ET la pose du dormant. Nous coordonnons les deux corps de métier.',
@@ -252,10 +252,10 @@ const expertTips: Record<string, string> = {
   'mur-porteur:PORTEE:moyenne': '💡 Entre 1,5 et 3 m, la solution la plus fréquente est un IPN ou HEB standard. C\'est la portée que notre institut traite le plus souvent.',
   'mur-porteur:PORTEE:petite': '✅ Pour une petite ouverture (< 1,5 m), un linteau préfabriqué suffit souvent. Moins coûteux, chantier de 1 à 2 jours.',
   'mur-porteur:NATURE_MUR:pierre': '⚠️ Les murs en pierre ou brique ancienne sont souvent porteurs. L\'étaiement provisoire est crucial pour éviter tout mouvement pendant les travaux.',
-  'mur-porteur:NATURE_MUR:beton': '💡 Le béton armé peut contenir des aciers. Nous réalisons un sondage avant découpe pour éviter de sectionner les armatures porteuses.',
+  'mur-porteur:NATURE_MUR:beton': '💡 Le béton armé peut contenir des aciers. Un sondage est réalisé avant découpe pour éviter de sectionner les armatures porteuses.',
   'mur-porteur:ETAGE:rdc_plancher': '⚠️ Un mur en RDC avec un étage au-dessus reprend des charges importantes. L\'étude structure est non négociable — la poutre doit être parfaitement dimensionnée.',
   'mur-porteur:ETAGE:rdc_combles': '💡 Sous combles, les charges sont moindres qu\'avec un étage habité. Mais un mur sous ferme ou sous panne reste porteur — à vérifier.',
-  'mur-porteur:PLANS:non': '⚠️ Sans plans, nous réalisons un sondage pour identifier les aciers et la nature exacte du mur. C\'est une étape indispensable avant tout devis.',
+  'mur-porteur:PLANS:non': '⚠️ Sans plans, un sondage est nécessaire pour identifier les aciers et la nature exacte du mur. C\'est une étape indispensable avant tout devis.',
   'mur-porteur:PLANS:oui': '✅ Avoir les plans accélère l\'étude structure. La poutre peut souvent être pré-dimensionnée sans déplacement préalable.',
   'mur-porteur:DEVIS_EXISTANT:oui_devis': '⚠️ Un devis d\'artisan sans étude structure est incomplet. Sans note de calcul, l\'artisan ne peut pas garantir le dimensionnement de la poutre.',
   'mur-porteur:HORIZON:urgent': '💡 Pour les travaux urgents, l\'étude structure peut être lancée sous 72h.',
@@ -1078,6 +1078,9 @@ export default function DiagnosticPage() {
                     <label htmlFor="photo-upload" className="flex items-center gap-2.5 cursor-pointer">
                       {photoPreview ? (
                         <div className="flex items-center gap-2.5 w-full">
+                          {/* Preview d'un upload utilisateur (data URL) — Next/Image
+                              ne supporte pas les data URLs directement. */}
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img src={photoPreview} alt="Aperçu" className="w-11 h-11 object-cover rounded-lg" />
                           <span className="text-green-600 text-xs font-medium flex-1">Photo ajoutée</span>
                           <button

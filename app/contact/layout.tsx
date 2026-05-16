@@ -1,22 +1,22 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Contact · Échanger avec l'institut IPB Toulouse",
-  description: "Une question technique sur des fissures, un mur porteur ou une infiltration ? Échangez directement avec un expert IPB. Réponse sous 24h, devis gratuit.",
+  title: "Contact · Échanger avec l'institut IPB · Toulouse & Occitanie",
+  description: "Une question technique sur des fissures, un mur porteur ou un dégât d'humidité ? Échangez directement avec l'institut IPB. Réponse sous 48h, devis gratuit.",
   keywords: [
     'contact expert fissures toulouse',
     'devis gratuit fissures',
     'expert humidité toulouse',
-    'diagnostic fissures',
-    'intervention rapide',
+    'expertise avant achat toulouse',
+    'institut pathologie bâtiment toulouse',
     'haute-garonne',
     '31',
   ],
   openGraph: {
-    title: "Contact · Échanger avec l'institut IPB Toulouse",
-    description: "Une question technique sur des fissures, un mur porteur ou une infiltration ? Échangez directement avec un expert IPB. Réponse sous 24h.",
+    title: "Contact · Échanger avec l'institut IPB · Toulouse & Occitanie",
+    description: "Une question technique sur des fissures, un mur porteur ou un dégât d'humidité ? Échangez directement avec l'institut IPB. Réponse sous 48h.",
     url: 'https://www.ipb-expertise.fr/contact',
-    siteName: 'IPB - Expert Fissures & Humidité',
+    siteName: 'IPB · Institut de pathologie & structure du bâtiment',
     locale: 'fr_FR',
     type: 'website',
     images: [
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Contact · Échanger avec l'institut IPB Toulouse",
-    description: "Une question technique ? Échangez directement avec un expert IPB. Réponse sous 24h.",
+    title: "Contact · Échanger avec l'institut IPB",
+    description: "Une question technique ? Échangez directement avec l'institut IPB. Réponse sous 48h.",
     images: ['/images/IPB_Logo_HD.png'],
   },
   alternates: {

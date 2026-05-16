@@ -25,15 +25,15 @@ export function CtaFinal() {
                   fontWeight: 700,
                 }}
               >
-                Un projet,<br />
-                <em>une question.</em>
+                Une fissure, un projet,<br />
+                <em>un doute&nbsp;?</em>
               </h2>
               <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[520px]">
-                Décrivez-nous votre situation en 2 minutes. Notre institut vous rappelle sous 24h ouvrées, gratuit et sans engagement.
+                Décrivez-nous votre situation en 2 minutes. Notre institut vous rappelle sous 48h. Gratuit, sans engagement.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <MagneticButton href="/diagnostic" variant="primary">
-                  Diagnostic gratuit · 2 min
+                  Mon diagnostic en 2 min
                 </MagneticButton>
                 <MagneticButton href="/contact" variant="ghost">
                   Demander un rappel

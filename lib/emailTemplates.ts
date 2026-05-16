@@ -124,8 +124,8 @@ export function j0Confirmation(ctx: PathContext): string {
   const tierMessage = ctx.tier === 'HOT'
     ? 'Vu le contexte que vous nous avez décrit, nous vous rappelons sous 4 heures ouvrées pour échanger.'
     : ctx.tier === 'WARM'
-    ? 'Nous vous rappelons sous 24 heures ouvrées pour échanger.'
-    : 'Nous vous recontactons sous 72 heures ouvrées par email ou téléphone.';
+    ? 'Nous vous rappelons sous 48 heures pour échanger.'
+    : 'Nous vous recontactons sous 48 heures par email ou téléphone.';
 
   const inner = `
     ${card(`

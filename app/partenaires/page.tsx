@@ -21,7 +21,7 @@ const partenaires = [
     num: '01',
     title: "Architectes d'intérieur & décorateurs",
     desc: "Vos projets « espace ouvert » nécessitent une étude de structure et une décennale. Nous sommes votre partenaire technique en sous-traitance ou co-traitance.",
-    points: ['Co-traitance ou sous-traitance', 'Calcul technique signé sous décennale études dédiée', 'Tarif partenaire dès 3 projets par an'],
+    points: ['Co-traitance ou sous-traitance', 'Calcul technique signé par un bureau d’études', 'Tarif partenaire dès 3 projets par an'],
   },
   {
     href: '/partenaires/marchands-de-biens',
@@ -68,7 +68,7 @@ export default function PartenairesPage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.06} className="lg:col-span-5 lg:border-l lg:border-ipb-rule lg:pl-12">
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted">
-                  Étude technique et travaux coordonnés sous décennales métier dédiées. Un seul interlocuteur, trois programmes adaptés au métier de nos partenaires.
+                  Étude technique et travaux coordonnés sous garantie décennale 10 ans. Un seul interlocuteur, trois programmes adaptés au métier de nos partenaires.
                 </p>
               </RevealOnScroll>
             </div>

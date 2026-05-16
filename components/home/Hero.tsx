@@ -26,7 +26,7 @@ export function Hero() {
               directement (sans RevealOnScroll) pour optimiser le LCP mobile.
               L'animation reveal sur ces éléments retardait le LCP de 400-800ms
               car le H1 candidat LCP démarrait à opacity:0 jusqu'à hydratation. */}
-          <Eyebrow>Institut de pathologie du bâtiment · depuis 2019</Eyebrow>
+          <Eyebrow>Institut de pathologie & structure du bâtiment · Occitanie</Eyebrow>
 
           <h1
             className="font-serif text-ipb-text mb-8"
@@ -37,17 +37,17 @@ export function Hero() {
               fontWeight: 700,
             }}
           >
-            Diagnostic de fissures<br />
-            <em>et ouverture de mur porteur.</em>
+            Votre bâtiment montre des signes.<br />
+            <em>Notre institut les comprend.</em>
           </h1>
 
           <p className="text-[15px] leading-[1.9] font-light text-ipb-muted max-w-[540px] mb-10">
-            Institut spécialisé en pathologie et structure du bâtiment. Nous diagnostiquons les fissures qui inquiètent, préparons et réalisons les ouvertures de murs porteurs et baies vitrées. Nos rapports sont reconnus par les assurances. Un seul interlocuteur pour vous accompagner.
+            Fissures, humidité, désordres structurels : IPB diagnostique les pathologies de votre bâti, conçoit la solution, et la met en œuvre avec ses équipes de réalisation. Un seul interlocuteur, du premier regard à la livraison.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
             <MagneticButton href="/diagnostic" variant="primary">
-              Diagnostic gratuit · 2 min
+              Mon diagnostic en 2 min
             </MagneticButton>
             <a
               href="tel:0582953375"
@@ -67,7 +67,7 @@ export function Hero() {
               {/* Photo de chantier réelle (couvre tout le panel) */}
               <Image
                 src="/images/fissure-facade-verticale.webp"
-                alt="Fissure verticale traitée par agrafage structurel sur façade — chantier IPB en Haute-Garonne"
+                alt="Fissure verticale traitée par agrafage structurel sur façade — chantier mené par le réseau IPB en Haute-Garonne"
                 fill
                 sizes="100vw"
                 className="object-cover opacity-50"
@@ -98,6 +98,13 @@ export function Hero() {
                     <span className="text-ipb-orange-l text-sm transition-transform group-hover:translate-x-1">→</span>
                   </Link>
                   <Link
+                    href="/expertise/humidite"
+                    className="group flex items-center justify-between text-white border-b border-white/15 pb-2.5 hover:border-ipb-orange-l transition-colors"
+                  >
+                    <span className="font-serif text-base">Diagnostic humidité</span>
+                    <span className="text-ipb-orange-l text-sm transition-transform group-hover:translate-x-1">→</span>
+                  </Link>
+                  <Link
                     href="/expertise/mur-porteur"
                     className="group flex items-center justify-between text-white border-b border-white/15 pb-2.5 hover:border-ipb-orange-l transition-colors"
                   >
@@ -120,7 +127,7 @@ export function Hero() {
                   <span className="text-ipb-orange">+</span>
                 </p>
                 <p className="text-[9px] sm:text-[10px] text-ipb-light uppercase tracking-[0.14em] sm:tracking-[0.16em] mt-2 whitespace-nowrap">
-                  Chantiers livrés
+                  Chantiers · réseau IPB
                 </p>
               </div>
 
@@ -142,7 +149,7 @@ export function Hero() {
                   10<span className="text-ipb-light text-lg sm:text-2xl"> ans</span>
                 </p>
                 <p className="text-[9px] sm:text-[10px] text-ipb-light uppercase tracking-[0.14em] sm:tracking-[0.16em] mt-2 whitespace-nowrap">
-                  Décennale dédiée
+                  Travaux sous décennale
                 </p>
               </div>
             </div>
@@ -161,19 +168,26 @@ export function Hero() {
             {/* Liens services discrets en bas du panel */}
             <div className="relative z-10 mt-auto p-10 border-t border-white/5">
               <p className="text-[10px] text-white/70 uppercase tracking-[0.18em] mb-5">Nos expertises</p>
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-3.5">
                 <Link
                   href="/expertise/fissures"
                   className="group flex items-center justify-between text-white border-b border-white/10 pb-3 hover:border-ipb-orange-l transition-colors"
                 >
-                  <span className="font-serif text-xl">Diagnostic de fissures</span>
+                  <span className="font-serif text-lg">Diagnostic de fissures</span>
+                  <span className="text-ipb-orange-l text-sm transition-transform group-hover:translate-x-1">→</span>
+                </Link>
+                <Link
+                  href="/expertise/humidite"
+                  className="group flex items-center justify-between text-white border-b border-white/10 pb-3 hover:border-ipb-orange-l transition-colors"
+                >
+                  <span className="font-serif text-lg">Diagnostic humidité</span>
                   <span className="text-ipb-orange-l text-sm transition-transform group-hover:translate-x-1">→</span>
                 </Link>
                 <Link
                   href="/expertise/mur-porteur"
                   className="group flex items-center justify-between text-white border-b border-white/10 pb-3 hover:border-ipb-orange-l transition-colors"
                 >
-                  <span className="font-serif text-xl">Ouverture de mur porteur</span>
+                  <span className="font-serif text-lg">Ouverture de mur porteur</span>
                   <span className="text-ipb-orange-l text-sm transition-transform group-hover:translate-x-1">→</span>
                 </Link>
               </div>

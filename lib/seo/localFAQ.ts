@@ -71,7 +71,7 @@ export function generateLocalFAQ(ctx: LocalFAQContext): LocalFAQEntry[] {
     },
     {
       question: `Quels sont les délais d'intervention d'IPB à ${v}${cp} ?`,
-      answer: `IPB intervient à ${v} sous 48 à 72 heures pour le diagnostic, depuis Toulouse. Le rapport d'expertise vous est remis sous 7 jours. Pour les chantiers (agrafage, injection, reprise en sous-œuvre), les travaux sont planifiés sous 3 à 6 semaines selon la disponibilité des matériaux et l'urgence.`,
+      answer: `IPB intervient à ${v} sous 48 à 72 heures pour le diagnostic, depuis Toulouse. Le rapport d'expertise vous est remis sous 72h. Pour les chantiers (agrafage, injection, reprise en sous-œuvre), les travaux sont planifiés sous 3 à 6 semaines selon la disponibilité des matériaux et l'urgence.`,
     },
     {
       question: `Combien coûte une expertise fissures ou humidité à ${v} ?`,

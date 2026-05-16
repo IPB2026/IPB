@@ -163,7 +163,7 @@ export default function CalculatorPage() {
                   Note technique · l'approche IPB
                 </p>
                 <p className="text-[14px] leading-[1.85] font-light text-ipb-muted">
-                  Pour les ouvertures de petite portée (jusqu'à 2,5 m, charges modérées), une intervention sans note de calcul formelle est techniquement possible et fréquente sur le marché. <strong className="text-ipb-text not-italic">IPB inclut systématiquement une étude technique signée selon les Eurocodes</strong> dans toutes ses interventions, sous décennale études dédiée — c'est ce qui rend votre dossier opposable en cas de litige.
+                  Pour les ouvertures de petite portée (jusqu'à 2,5 m, charges modérées), une intervention sans note de calcul formelle est techniquement possible et fréquente sur le marché. <strong className="text-ipb-text not-italic">IPB inclut systématiquement une étude technique signée selon les Eurocodes</strong> dans toutes ses interventions, par un bureau d’études — c'est ce qui rend votre dossier opposable en cas de litige.
                 </p>
               </div>
             </RevealOnScroll>

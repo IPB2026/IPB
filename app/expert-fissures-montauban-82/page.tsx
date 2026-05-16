@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/expert-fissures-montauban-82' },
   openGraph: {
     title: 'Expert Fissures Montauban · RGA Sécheresse · IPB',
-    description: "Spécialiste fissures Tarn-et-Garonne. Agrafage structurel, rapport assurance. Décennale 10 ans sur les travaux. 234 diagnostics depuis 2019.",
+    description: "Spécialiste fissures Tarn-et-Garonne. Diagnostic IPB, agrafage exécuté par les équipes du réseau IPB sous décennale 10 ans. Rapport reconnu par les assurances. Réseau IPB actif depuis 2019.",
     url: 'https://www.ipb-expertise.fr/expert-fissures-montauban-82',
     type: 'website',
     images: [{
@@ -71,7 +71,7 @@ const faqItems = [
   },
   {
     question: "Quelle est la différence entre agrafage et micropieux ?",
-    answer: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables (8 000 à 15 000 €). Les micropieux reprennent les fondations en profondeur (25 000 à 50 000 €) — intervention lourde réservée aux tassements actifs majeurs. Notre institut réalise l'agrafage structurel ; pour les rares cas nécessitant des micropieux, nous orientons vers un partenaire spécialisé après diagnostic.",
+    answer: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables (8 000 à 15 000 €). Les micropieux reprennent les fondations en profondeur (25 000 à 50 000 €) — intervention lourde réservée aux tassements actifs majeurs. L'institut conçoit l'agrafage structurel et nos équipes de réalisation l'exécutent ; pour les rares cas nécessitant des micropieux, nous coordonnons l'intervention avec un spécialiste après diagnostic.",
   },
   {
     question: "Combien de temps pour recevoir le rapport ?",
@@ -79,7 +79,7 @@ const faqItems = [
   },
   {
     question: "Quel est le prix d'un agrafage à Montauban ?",
-    answer: "Le prix d'un agrafage structurel à Montauban et dans le Tarn-et-Garonne se situe entre 8 000 et 15 000 € TTC pour une façade complète, soit en moyenne 100 à 130 €/ml de fissure traitée. Le tarif varie selon la nature du mur (brique foraine, parpaing, pierre), la longueur de la fissure et la complexité d'accès. Devis ferme remis sous 7 jours après diagnostic.",
+    answer: "Le prix d'un agrafage structurel à Montauban et dans le Tarn-et-Garonne se situe entre 8 000 et 15 000 € TTC pour une façade complète, soit en moyenne 100 à 130 €/ml de fissure traitée. Le tarif varie selon la nature du mur (brique foraine, parpaing, pierre), la longueur de la fissure et la complexité d'accès. Devis ferme remis sous 72h après diagnostic.",
   },
   {
     question: "Ma commune est-elle reconnue en CAT-NAT sécheresse pour 2022 et 2023 ?",
@@ -156,7 +156,7 @@ export default function ExpertFissuresMontaubanPage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[620px]">
-                  Institut IPB — pathologie du bâtiment, intervention sur tout le Tarn-et-Garonne depuis 2019. Diagnostic instrumenté, agrafage structurel et reprise en sous-œuvre. Nos rapports sont reconnus par les assurances.
+                  Institut IPB — pathologie du bâtiment. Réseau IPB actif sur tout le Tarn-et-Garonne depuis 2019. Diagnostic instrumenté, conception de la solution (agrafage structurel, reprise en sous-œuvre) ; travaux exécutés par les équipes de réalisation du réseau IPB sous décennale. Nos rapports sont reconnus par les assurances.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>

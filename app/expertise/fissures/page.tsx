@@ -10,7 +10,7 @@ const fissuresPersonas: PersonaCard[] = [
   {
     label: 'Sinistré',
     titre: 'Vous voyez apparaître une fissure',
-    desc: "Quelque chose a changé sur votre façade ou à l'intérieur. Nous lisons le bâti, qualifions le désordre, et vous indiquons la suite à donner.",
+    desc: "Quelque chose a changé sur votre façade ou à l'intérieur. L'institut lit le bâti, qualifie le désordre, et vous indique la suite à donner.",
     href: '/diagnostic',
     cta: 'Décrire ma situation',
   },
@@ -158,12 +158,12 @@ export default function FissuresPage() {
                   }}
                 >
                   Une fissure dans votre maison.<br />
-                  <em>Notre métier depuis 2019.</em>
+                  <em>L'institut qui la comprend.</em>
                 </h1>
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">
-                  Une fissure n'est jamais anodine, mais elle n'est pas toujours grave. Notre institut intervient sur place avec ses instruments, identifie la cause, et vous remet un rapport clair. Si des travaux sont nécessaires, ils sont menés sous décennale 10 ans dédiée.
+                  Une fissure n'est jamais anodine, mais elle n'est pas toujours grave. L'institut intervient sur place avec ses instruments, identifie la cause, et vous remet un rapport clair. Si des travaux sont nécessaires, l'institut conçoit la solution et nos équipes de réalisation l'exécutent sous décennale 10 ans.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>
@@ -342,10 +342,10 @@ export default function FissuresPage() {
 
                 <ul className="space-y-8">
                   {[
-                    { titre: 'Diagnostic sur site', desc: 'Visite par notre expert sous 72 heures en moyenne. Mesure au fissuromètre, lecture du bâti, identification de la cause (sécheresse, tassement, défaut de chaînage).' },
+                    { titre: 'Diagnostic sur site', desc: "Visite par notre expert sous 72h en moyenne. Mesure au fissuromètre, lecture du bâti, identification de la cause (sécheresse, tassement, défaut de chaînage)." },
                     { titre: 'Rapport technique', desc: "Document écrit reconnu comme pièce technique par les assurances dans les dossiers CAT-NAT. Photos, mesures, cause identifiée, préconisations chiffrées." },
-                    { titre: 'Choix de la solution', desc: "Agrafage structurel pour stabiliser le mur — solution adaptée à 90 % des cas. Pour les rares tassements actifs nécessitant une reprise en sous-œuvre, orientation vers un partenaire spécialisé. Le choix dépend du diagnostic, jamais d'une solution préconçue." },
-                    { titre: 'Travaux pilotés par notre institut', desc: 'Exécution sous décennale 10 ans dédiée. Chantier propre, dans les délais annoncés. Tous les documents vous sont remis à la livraison.' },
+                    { titre: 'Conception de la solution', desc: "Agrafage structurel pour stabiliser le mur — solution adaptée à 90 % des cas. Pour les rares tassements actifs nécessitant une reprise en sous-œuvre, nous coordonnons l'intervention avec un spécialiste. Le choix dépend du diagnostic, jamais d'une solution préconçue." },
+                    { titre: 'Travaux exécutés par nos équipes de réalisation', desc: "L'institut coordonne le chantier ; les équipes de réalisation du réseau IPB exécutent les travaux sous garantie décennale 10 ans. Chantier propre, dans les délais annoncés. Tous les documents vous sont remis à la livraison." },
                   ].map((etape, i) => (
                     <RevealOnScroll key={etape.titre} delay={0.08 + i * 0.06}>
                       <li className="grid grid-cols-[40px_1fr] gap-5 items-start pb-8 border-b border-white/10">

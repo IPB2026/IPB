@@ -1106,7 +1106,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
         <h3 class="font-bold text-orange-900 mb-3">Notre engagement chez IPB</h3>
-        <p class="text-orange-800">Chez IPB, nous fournissons <strong>systématiquement</strong> les attestations des décennales métier (études et travaux) avec chaque devis. Les travaux d'agrafage, de harpage, d'injection résine et de traitement de l'humidité sont exécutés sous décennale travaux dédiée. Nous vous remettons également un PV de réception détaillé à la fin de chaque chantier.</p>
+        <p class="text-orange-800">Chez IPB, nous fournissons <strong>systématiquement</strong> les attestations des décennales métier (études et travaux) avec chaque devis. Les travaux d'agrafage, de harpage, d'injection résine et de traitement de l'humidité sont exécutés sous garantie décennale 10 ans. Nous vous remettons également un PV de réception détaillé à la fin de chaque chantier.</p>
         <p class="text-orange-800 mt-2">Vous pouvez vérifier les attestations directement auprès des assureurs concernés. C'est votre droit, et c'est normal de l'exercer.</p>
       </div>
     `
@@ -2041,7 +2041,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ol>
 
       <h3>Coordination des artisans</h3>
-      <p>Idéalement, confiez l&apos;<a href="/expertise/fissures" class="text-orange-600 underline hover:text-orange-700">agrafage</a> et le ravalement à la même équipe (ou à des entreprises qui travaillent ensemble). Cela évite les problèmes de garantie (« c&apos;est la faute de l&apos;autre ») et assure une continuité technique. Chez IPB, l&apos;agrafage et les finitions sont coordonnés par notre institut sous <strong>décennale travaux dédiée</strong>, ce qui vous permet de n&apos;avoir qu&apos;un seul interlocuteur du diagnostic à la livraison.</p>
+      <p>Idéalement, confiez l&apos;<a href="/expertise/fissures" class="text-orange-600 underline hover:text-orange-700">agrafage</a> et le ravalement à la même équipe (ou à des entreprises qui travaillent ensemble). Cela évite les problèmes de garantie (« c&apos;est la faute de l&apos;autre ») et assure une continuité technique. Chez IPB, l&apos;agrafage et les finitions sont coordonnés par notre institut sous <strong>garantie décennale 10 ans</strong>, ce qui vous permet de n&apos;avoir qu&apos;un seul interlocuteur du diagnostic à la livraison.</p>
 
       <div class="my-8 p-6 bg-green-50 border border-green-200 rounded-xl">
         <h3 class="font-bold text-green-900 mb-3">Astuce pour économiser</h3>
@@ -5556,7 +5556,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '10 min',
     category: 'fissures',
     author: "L'institut IPB",
-    metaDescription: 'Prix agrafage fissures 2026 : de 80 à 150€/ml. Comparatif agrafage vs micropieux (3x moins cher). Devis détaillé, aides CAT-NAT, décennale 10 ans dédiée.',
+    metaDescription: 'Prix agrafage fissures 2026 : de 80 à 150€/ml. Comparatif agrafage vs micropieux (3x moins cher). Devis détaillé, aides CAT-NAT, garantie décennale 10 ans.',
     keywords: ['prix agrafage fissures', 'cout agrafage fissure', 'tarif agrafage mur', 'prix reparation fissure maison', 'agrafage fissure prix m2', 'devis agrafage fissures', 'cout reparation fissure facade'],
     content: `
       <div class="mb-8 p-6 bg-emerald-50 border-l-4 border-emerald-600 rounded-r-lg">
@@ -7437,7 +7437,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>La majorité des artisans toulousains <strong>sous-traitent l'étude structure</strong> à un BE externe. Vous payez deux prestations distinctes (étude 800 € + travaux 7 000 €), avec deux interlocuteurs et deux assurances décennales. Si la poutre est sous-dimensionnée, le BE rejette la faute sur l'artisan, et inversement.</p>
 
-      <p>Un institut comme IPB coordonne l'étude et les travaux sous le même toit : <strong>un seul interlocuteur</strong>, des <strong>décennales métier dédiées</strong> (études + travaux), et un coût global souvent inférieur de 10 à 20 %. C'est la configuration que les notaires et les acquéreurs reconnaissent comme la plus solide à la revente.</p>
+      <p>Un institut comme IPB coordonne l'étude et les travaux sous le même toit : <strong>un seul interlocuteur</strong>, des <strong>garantie décennale 10 ans</strong> (études + travaux), et un coût global souvent inférieur de 10 à 20 %. C'est la configuration que les notaires et les acquéreurs reconnaissent comme la plus solide à la revente.</p>
 
       <h2>FAQ — Prix ouverture mur porteur Toulouse 2026</h2>
 
@@ -7469,7 +7469,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
         <p class="font-bold text-orange-900 mb-3">Devis gratuit sous 24h pour votre projet à Toulouse</p>
-        <p class="text-orange-800 mb-4">IPB intervient en Haute-Garonne, Tarn-et-Garonne, Gers et Tarn. Notre institut passe gratuitement, vous repartez avec une note de calcul, un devis ferme et l'attestation décennale 10 ans dédiée.</p>
+        <p class="text-orange-800 mb-4">IPB intervient en Haute-Garonne, Tarn-et-Garonne, Gers et Tarn. Notre institut passe gratuitement, vous repartez avec une note de calcul, un devis ferme et l'attestation garantie décennale 10 ans.</p>
         <a href="/diagnostic" class="inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition-colors">Demander un devis →</a>
       </div>
     `
@@ -7571,7 +7571,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>identifie les murs porteurs sur place (épaisseur, sons, plans si disponibles) ;</li>
         <li>vous remet un plan annoté ;</li>
         <li>si l'ouverture est possible, calcule la poutre, le mode d'étaiement et le budget total ;</li>
-        <li>vous propose un devis fermé sous 7 jours, avec décennale 10 ans dédiée jointe.</li>
+        <li>vous propose un devis fermé sous 72h, avec garantie décennale 10 ans jointe.</li>
       </ul>
 
       <h2>Tableau récapitulatif : les 4 indices à croiser</h2>
@@ -7690,7 +7690,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '7 min',
     category: 'expertise',
     author: "L'institut IPB",
-    metaDescription: 'Étude de cas chantier IPB : ouverture d\'un mur porteur 4m dans un T3 toulousain. Plans, choix poutre HEB 220, étaiement, planning, prix. Décennale 10 ans dédiée.',
+    metaDescription: 'Étude de cas chantier IPB : ouverture d\'un mur porteur 4m dans un T3 toulousain. Plans, choix poutre HEB 220, étaiement, planning, prix. Garantie décennale 10 ans.',
     keywords: ['étude de cas mur porteur', 'ouverture mur porteur 4 mètres', 'mur porteur T3 toulouse', 'chantier réel structure', 'HEB 220 toulouse', 'transformation cuisine ouverte'],
     content: `
       <div class="mb-8 p-6 bg-emerald-50 border-l-4 border-emerald-600 rounded-r-lg">
@@ -7768,7 +7768,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
         <p class="font-bold text-orange-900 mb-3">Vous avez un projet similaire à Toulouse ?</p>
-        <p class="text-orange-800 mb-4">Investisseur, particulier, marchand de biens : nous fonctionnons avec la même rigueur quel que soit le profil. Devis gratuit, note de calcul incluse, attestation décennale 10 ans dédiée remise avec le devis.</p>
+        <p class="text-orange-800 mb-4">Investisseur, particulier, marchand de biens : nous fonctionnons avec la même rigueur quel que soit le profil. Devis gratuit, note de calcul incluse, attestation garantie décennale 10 ans remise avec le devis.</p>
         <a href="/diagnostic" class="inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition-colors">Lancer mon devis →</a>
       </div>
     `
@@ -7784,7 +7784,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '9 min',
     category: 'conseils',
     author: "L'institut IPB",
-    metaDescription: "Le diagnostic structurel avant vente vous protège du vice caché pendant 30 ans. Rapport opposable par institut indépendant en Occitanie. Délai 72h, décennale 10 ans dédiée.",
+    metaDescription: "Le diagnostic structurel avant vente vous protège du vice caché pendant 30 ans. Rapport opposable par institut indépendant en Occitanie. Délai 72h, garantie décennale 10 ans.",
     keywords: ['diagnostic structurel avant vente', 'expertise maison avant vente', 'vice caché vente maison', 'vendre maison fissure', 'rapport opposable', 'expertise structurelle vendeur'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
@@ -7974,7 +7974,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
         <p class="font-bold text-orange-900 mb-3">Vous mettez votre maison en vente en Occitanie ?</p>
-        <p class="text-orange-800 mb-4">Notre institut intervient sous 72 h pour réaliser un diagnostic structurel opposable. Rapport signé, photos, mesures, préconisations. Décennale 10 ans dédiée. Devis gratuit.</p>
+        <p class="text-orange-800 mb-4">Notre institut intervient sous 72 h pour réaliser un diagnostic structurel opposable. Rapport signé, photos, mesures, préconisations. Garantie décennale 10 ans. Devis gratuit.</p>
         <a href="/diagnostic" class="inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition-colors">Demander mon diagnostic →</a>
       </div>
     `
@@ -8216,7 +8216,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
         <p class="font-bold text-orange-900 mb-3">Une fissure vous inquiète ?</p>
-        <p class="text-orange-800 mb-4">Notre institut intervient en Occitanie pour lire vos fissures et vous dire ce qui relève d'une simple cosmétique ou d'un vrai désordre structurel. Diagnostic gratuit, rapport opposable si besoin, décennale 10 ans dédiée.</p>
+        <p class="text-orange-800 mb-4">Notre institut intervient en Occitanie pour lire vos fissures et vous dire ce qui relève d'une simple cosmétique ou d'un vrai désordre structurel. Diagnostic gratuit, rapport opposable si besoin, garantie décennale 10 ans.</p>
         <a href="/diagnostic" class="inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition-colors">Lancer mon diagnostic →</a>
       </div>
     `
@@ -8425,3 +8425,33 @@ export const blogPostsList = Object.values(blogPosts);
 
 // Export de la liste des slugs (pour generateStaticParams)
 export const blogPostsSlugs = Object.keys(blogPosts);
+
+/**
+ * Liste light pour les listings (sans le `content` HTML).
+ * Économise ~90% du poids client sur les pages qui n'affichent que les
+ * cartes d'articles (ex : /blog). Conserve les champs utiles au filtrage,
+ * à la recherche et au JSON-LD CollectionPage.
+ */
+export interface BlogPostSummary {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  readTime: string;
+  category: BlogPost['category'];
+  author: string;
+  keywords: string[];
+  coverImage?: string;
+}
+
+export const blogPostsSummary: BlogPostSummary[] = blogPostsList.map((p) => ({
+  slug: p.slug,
+  title: p.title,
+  excerpt: p.excerpt,
+  date: p.date,
+  readTime: p.readTime,
+  category: p.category,
+  author: p.author,
+  keywords: p.keywords,
+  coverImage: p.coverImage,
+}));
