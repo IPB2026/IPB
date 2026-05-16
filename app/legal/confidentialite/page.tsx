@@ -121,7 +121,7 @@ export default function ConfidentialitePage() {
               </p>
               <ul className="list-disc pl-6 mt-4 space-y-2">
                 <li>Bâti Halli — Personnel autorisé uniquement</li>
-                <li>Le bureau d'études structure partenaire, lorsqu'une note de calcul est requise (échange du dossier technique uniquement)</li>
+                <li>Le bureau d'études structure indépendant mobilisé lorsqu'une note de calcul est requise (échange du dossier technique uniquement)</li>
                 <li>Nos sous-traitants techniques sous contrat de confidentialité : Vercel Inc. (hébergement, USA — Data Privacy Framework), Resend (envoi d'emails transactionnels), Sentry (surveillance d'erreurs)</li>
                 <li>Google LLC pour les services de mesure (Google Analytics, Google Ads), de protection (reCAPTCHA) et de prise de rendez-vous (Calendly) — transferts hors UE encadrés par les Clauses Contractuelles Types et le Data Privacy Framework</li>
                 <li>Les autorités compétentes en cas d'obligation légale</li>

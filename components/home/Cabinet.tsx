@@ -61,7 +61,7 @@ export function Cabinet() {
                 }}
               >
                 Sept ans d'expérience.<br />
-                <em>Une seule responsabilité.</em>
+                <em>Un seul interlocuteur.</em>
               </h2>
             </RevealOnScroll>
 
@@ -71,7 +71,7 @@ export function Cabinet() {
                   IPB est un institut créé en 2019 à Toulouse, spécialisé en pathologie et structure du bâtiment. Son activité couvre deux missions principales : le diagnostic et le traitement des fissures, l'ouverture de mur porteur et la création de baie vitrée.
                 </p>
                 <p>
-                  Le diagnostic et les travaux sont portés par la même équipe — une seule responsabilité, une seule décennale. Lorsqu'une note de calcul opposable est requise, elle est co-signée par notre bureau d'études structure partenaire, sous sa propre décennale études.
+                  Notre institut assure le diagnostic et la coordination des travaux, du premier appel à la livraison — un seul interlocuteur pour vous accompagner. Chaque étape est couverte par sa décennale métier dédiée : décennale études pour la note de calcul opposable, décennale travaux pour l'exécution.
                 </p>
               </div>
             </RevealOnScroll>

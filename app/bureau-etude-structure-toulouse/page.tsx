@@ -96,7 +96,7 @@ const faqItems = [
   },
   {
     question: "L'étude technique est-elle incluse dans le devis travaux ?",
-    answer: "Quand l'institut réalise les travaux derrière, l'étude technique est intégrée à la prestation globale et facturée une seule fois. Si vous demandez uniquement la note de calcul (sans travaux), elle est facturée séparément, avec un devis transparent remis sous 24 heures.",
+    answer: "Quand l'institut coordonne les travaux derrière, l'étude technique est intégrée à la prestation globale et facturée une seule fois. Si vous demandez uniquement la note de calcul (sans travaux), elle est facturée séparément, avec un devis transparent remis sous 24 heures.",
   },
   {
     question: "Quelles garanties couvrent votre chantier ?",

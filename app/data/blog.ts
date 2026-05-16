@@ -1106,8 +1106,8 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
         <h3 class="font-bold text-orange-900 mb-3">Notre engagement chez IPB</h3>
-        <p class="text-orange-800">Chez IPB, nous fournissons <strong>systématiquement</strong> notre attestation d'assurance décennale avec chaque devis. Notre couverture inclut spécifiquement les travaux d'agrafage, de harpage, d'injection résine et de traitement de l'humidité. Nous vous remettons également un PV de réception détaillé à la fin de chaque chantier.</p>
-        <p class="text-orange-800 mt-2">Vous pouvez vérifier notre attestation directement auprès de notre assureur. C'est votre droit, et c'est normal de l'exercer.</p>
+        <p class="text-orange-800">Chez IPB, nous fournissons <strong>systématiquement</strong> les attestations des décennales métier (études et travaux) avec chaque devis. Les travaux d'agrafage, de harpage, d'injection résine et de traitement de l'humidité sont exécutés sous décennale travaux dédiée. Nous vous remettons également un PV de réception détaillé à la fin de chaque chantier.</p>
+        <p class="text-orange-800 mt-2">Vous pouvez vérifier les attestations directement auprès des assureurs concernés. C'est votre droit, et c'est normal de l'exercer.</p>
       </div>
     `
   },
@@ -2041,7 +2041,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ol>
 
       <h3>Coordination des artisans</h3>
-      <p>Idéalement, confiez l&apos;<a href="/expertise/fissures" class="text-orange-600 underline hover:text-orange-700">agrafage</a> et le ravalement à la même entreprise (ou à des entreprises qui travaillent ensemble). Cela évite les problèmes de garantie (« c&apos;est la faute de l&apos;autre ») et assure une continuité technique. Chez IPB, nous réalisons l&apos;agrafage avec finitions complètes, ce qui vous permet de n&apos;avoir qu&apos;un seul interlocuteur et une seule <strong>garantie décennale couvrant l&apos;ensemble</strong>.</p>
+      <p>Idéalement, confiez l&apos;<a href="/expertise/fissures" class="text-orange-600 underline hover:text-orange-700">agrafage</a> et le ravalement à la même équipe (ou à des entreprises qui travaillent ensemble). Cela évite les problèmes de garantie (« c&apos;est la faute de l&apos;autre ») et assure une continuité technique. Chez IPB, l&apos;agrafage et les finitions sont coordonnés par notre institut sous <strong>décennale travaux dédiée</strong>, ce qui vous permet de n&apos;avoir qu&apos;un seul interlocuteur du diagnostic à la livraison.</p>
 
       <div class="my-8 p-6 bg-green-50 border border-green-200 rounded-xl">
         <h3 class="font-bold text-green-900 mb-3">Astuce pour économiser</h3>
@@ -7437,7 +7437,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>La majorité des artisans toulousains <strong>sous-traitent l'étude structure</strong> à un BE externe. Vous payez deux prestations distinctes (étude 800 € + travaux 7 000 €), avec deux interlocuteurs et deux assurances décennales. Si la poutre est sous-dimensionnée, le BE rejette la faute sur l'artisan, et inversement.</p>
 
-      <p>Un institut comme IPB intègre le bureau d'études et les travaux : <strong>une seule responsabilité</strong>, <strong>une seule décennale couvrant l'ensemble</strong>, et un coût global souvent inférieur de 10 à 20 %. C'est la configuration que les notaires et les acquéreurs reconnaissent comme la plus solide à la revente.</p>
+      <p>Un institut comme IPB coordonne l'étude et les travaux sous le même toit : <strong>un seul interlocuteur</strong>, des <strong>décennales métier dédiées</strong> (études + travaux), et un coût global souvent inférieur de 10 à 20 %. C'est la configuration que les notaires et les acquéreurs reconnaissent comme la plus solide à la revente.</p>
 
       <h2>FAQ — Prix ouverture mur porteur Toulouse 2026</h2>
 
@@ -7755,7 +7755,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Le retour client</h2>
       <blockquote class="border-l-4 border-orange-500 bg-orange-50 p-6 italic text-slate-700 my-6">
-        « J'avais consulté trois entreprises avant IPB. Deux avaient sous-estimé la portée et proposaient un IPN qui aurait fléchi. Une troisième voulait sous-traiter le BE. IPB faisait tout en interne, avec une décennale claire — c'était la seule offre sérieuse. Le chantier est tenu au jour près. Je les rappelle pour mon prochain bien. »
+        « J'avais consulté trois entreprises avant IPB. Deux avaient sous-estimé la portée et proposaient un IPN qui aurait fléchi. Une troisième renvoyait sans cesse vers son BE. IPB coordonnait tout, avec des décennales métier claires sur l'étude et les travaux — c'était la seule offre sérieuse. Le chantier est tenu au jour près. Je les rappelle pour mon prochain bien. »
       </blockquote>
 
       <h2>Ce qu'il faut retenir</h2>

@@ -277,7 +277,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
                 Notre processus à {villeNom} — 4 étapes
               </h2>
               <p className="text-lg text-ipb-muted max-w-3xl mx-auto">
-                De l'étude à la livraison, un seul interlocuteur, une seule responsabilité.
+                De l'étude à la livraison, un seul interlocuteur pour vous accompagner.
               </p>
             </div>
 

@@ -87,7 +87,7 @@ export function TrustSignals() {
               L'institut, votre interlocuteur.
             </h3>
             <p className="text-ipb-muted leading-relaxed text-sm">
-              Sept ans, 850+ chantiers en Occitanie. C'est la même équipe qui passe chez vous, qui chiffre, et qui suit le chantier. Pas un centre d'appels, pas une chaîne de sous-traitants.
+              Sept ans, 850+ chantiers en Occitanie. La même personne vous reçoit, vous chiffre, et suit le chantier de bout en bout. Pas un centre d'appels, pas un dossier qui passe de main en main.
             </p>
           </div>
         </div>
