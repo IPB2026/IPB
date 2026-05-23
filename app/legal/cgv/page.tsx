@@ -3,12 +3,12 @@ import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
-import { Calendar, FileText, Shield, CreditCard, Clock, AlertTriangle, CheckCircle, Gavel, Phone, Mail, Building2, Scale, RotateCcw, Wrench } from 'lucide-react';
+import { Calendar, FileText, Shield, CreditCard, AlertTriangle, CheckCircle, Gavel, Building2, RotateCcw, Wrench } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Conditions Générales de Vente · CGV · IPB',
-  description: "CGV de l'Institut de Pathologie du Bâtiment (IPB). Diagnostics, travaux, garanties, paiement, rétractation.",
+  title: 'Conditions Générales de Vente · IPB',
+  description: "Conditions générales de vente de l'Institut de Pathologie du Bâtiment (IPB). Diagnostic, devis, paiement, rétractation, garanties, médiation.",
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/legal/cgv',
   },
@@ -21,18 +21,16 @@ export const metadata = {
 export default function CGVPage() {
   return (
     <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
-      {/* Skip link for accessibility */}
       <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-ipb-orange text-white px-4 py-2 rounded-lg z-50">
         Aller au contenu principal
       </a>
-      
+
       <TopBar />
       <Navbar />
       <SmartBackBar />
-      
+
       <main id="main-content" className="bg-white min-h-screen py-12 md:py-16" role="main" aria-labelledby="page-title">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumbs */}
           <nav aria-label="Fil d'Ariane" className="mb-6">
             <Breadcrumbs items={[
               { label: 'Accueil', href: '/' },
@@ -40,60 +38,56 @@ export default function CGVPage() {
             ]} />
           </nav>
 
-          {/* En-tête */}
           <header className="mb-8 pb-6 border-b border-ipb-rule">
             <div className="flex items-center gap-2 text-sm text-ipb-muted mb-4">
               <Calendar size={16} aria-hidden="true" />
-              <time dateTime="2026-02-01">Mis à jour le 1er février 2026</time>
+              <time dateTime="2026-05-24">Mis à jour le 24 mai 2026</time>
             </div>
             <h1 id="page-title" className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-4">
               Conditions Générales de Vente
             </h1>
             <p className="text-lg text-ipb-muted leading-relaxed">
-              Les présentes Conditions Générales de Vente (ci-après « CGV ») constituent le socle unique
-              de la relation commerciale entre les parties. Elles régissent l'ensemble des prestations
-              de services et travaux proposés par Bâti Halli (enseignes commerciales IPB · Institut de
-              Pathologie du Bâtiment) à ses clients.
+              Les présentes Conditions Générales de Vente (« CGV ») régissent la prestation de
+              <strong> diagnostic en pathologie du bâtiment</strong> proposée par IPB · Institut de Pathologie
+              du Bâtiment (« IPB ») à ses clients.
             </p>
             <div className="mt-4 bg-ipb-stone border border-ipb-rule rounded-lg p-4">
               <p className="text-sm text-orange-800">
-                <strong>Important :</strong> Toute commande implique l'acceptation sans réserve des présentes CGV. 
-                Le client déclare avoir pris connaissance des présentes conditions préalablement à sa commande.
+                <strong>Important :</strong> Toute commande implique l'acceptation sans réserve des
+                présentes CGV. Le Client déclare avoir pris connaissance des présentes conditions
+                préalablement à sa commande.
               </p>
             </div>
           </header>
 
-          {/* Table des matières */}
           <nav aria-labelledby="toc-title" className="mb-10 p-6 bg-ipb-cream rounded-xl border border-ipb-rule">
             <h2 id="toc-title" className="font-bold text-ipb-text mb-4 flex items-center gap-2">
               <FileText size={18} aria-hidden="true" />
               Sommaire des articles
             </h2>
             <ol className="grid sm:grid-cols-2 gap-2 text-sm">
-              <li><a href="#article-1" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 1 - Identification du prestataire</a></li>
-              <li><a href="#article-2" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 2 - Objet et champ d'application</a></li>
-              <li><a href="#article-3" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 3 - Prestations de diagnostic</a></li>
-              <li><a href="#article-4" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 4 - Devis et formation du contrat</a></li>
-              <li><a href="#article-5" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 5 - Prix et conditions tarifaires</a></li>
-              <li><a href="#article-6" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 6 - Modalités de paiement</a></li>
-              <li><a href="#article-7" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 7 - Droit de rétractation</a></li>
-              <li><a href="#article-8" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 8 - Exécution des travaux</a></li>
-              <li><a href="#article-9" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 9 - Obligations du client</a></li>
-              <li><a href="#article-10" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 10 - Réception des travaux</a></li>
-              <li><a href="#article-11" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 11 - Garanties légales</a></li>
-              <li><a href="#article-12" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 12 - Assurances</a></li>
-              <li><a href="#article-13" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 13 - Responsabilité</a></li>
-              <li><a href="#article-14" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 14 - Force majeure</a></li>
-              <li><a href="#article-15" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 15 - Données personnelles</a></li>
-              <li><a href="#article-16" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 16 - Litiges et médiation</a></li>
-              <li><a href="#article-17" className="text-ipb-orange hover:text-ipb-orange hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded">Art. 17 - Dispositions générales</a></li>
+              <li><a href="#article-1" className="text-ipb-orange hover:underline">Art. 1 - Identification du prestataire</a></li>
+              <li><a href="#article-2" className="text-ipb-orange hover:underline">Art. 2 - Objet et champ d'application</a></li>
+              <li><a href="#article-3" className="text-ipb-orange hover:underline">Art. 3 - Prestation de diagnostic</a></li>
+              <li><a href="#article-4" className="text-ipb-orange hover:underline">Art. 4 - Devis et formation du contrat</a></li>
+              <li><a href="#article-5" className="text-ipb-orange hover:underline">Art. 5 - Prix et conditions tarifaires</a></li>
+              <li><a href="#article-6" className="text-ipb-orange hover:underline">Art. 6 - Modalités de paiement</a></li>
+              <li><a href="#article-7" className="text-ipb-orange hover:underline">Art. 7 - Droit de rétractation</a></li>
+              <li><a href="#article-8" className="text-ipb-orange hover:underline">Art. 8 - Exécution du diagnostic</a></li>
+              <li><a href="#article-9" className="text-ipb-orange hover:underline">Art. 9 - Obligations du Client</a></li>
+              <li><a href="#article-10" className="text-ipb-orange hover:underline">Art. 10 - Service après-vente</a></li>
+              <li><a href="#article-11" className="text-ipb-orange hover:underline">Art. 11 - Travaux ultérieurs</a></li>
+              <li><a href="#article-12" className="text-ipb-orange hover:underline">Art. 12 - Assurances</a></li>
+              <li><a href="#article-13" className="text-ipb-orange hover:underline">Art. 13 - Responsabilité</a></li>
+              <li><a href="#article-14" className="text-ipb-orange hover:underline">Art. 14 - Force majeure</a></li>
+              <li><a href="#article-15" className="text-ipb-orange hover:underline">Art. 15 - Données personnelles</a></li>
+              <li><a href="#article-16" className="text-ipb-orange hover:underline">Art. 16 - Litiges et médiation</a></li>
+              <li><a href="#article-17" className="text-ipb-orange hover:underline">Art. 17 - Dispositions générales</a></li>
             </ol>
           </nav>
 
-          {/* Contenu des articles */}
           <article className="prose prose-lg max-w-none space-y-10 text-ipb-text">
-            
-            {/* Article 1 */}
+
             <section id="article-1" aria-labelledby="article-1-title">
               <h2 id="article-1-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
                 <Building2 size={24} className="text-ipb-orange" aria-hidden="true" />
@@ -103,35 +97,31 @@ export default function CGVPage() {
                 <dl className="space-y-2">
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-ipb-text sm:w-56">Dénomination :</dt>
-                    <dd>Bâti Halli</dd>
-                  </div>
-                  <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-ipb-text sm:w-56">Forme juridique :</dt>
-                    <dd>Entreprise Individuelle (EI)</dd>
-                  </div>
-                  <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-ipb-text sm:w-56">Enseignes commerciales :</dt>
                     <dd>IPB · Institut de Pathologie du Bâtiment</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-ipb-text sm:w-56">Siège :</dt>
-                    <dd>13 rue du Recteur Dottin, Apt 7, 4<sup>e</sup> étage, 31100 Toulouse</dd>
+                    <dt className="font-bold text-ipb-text sm:w-56">Forme juridique :</dt>
+                    <dd>Entrepreneur individuel (micro-entreprise)</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-ipb-text sm:w-56">Bureau :</dt>
+                    <dt className="font-bold text-ipb-text sm:w-56">Siège :</dt>
                     <dd>54 avenue Jean Jaurès, 31170 Tournefeuille</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-ipb-text sm:w-56">SIRET :</dt>
-                    <dd>398 185 421 00037</dd>
+                    <dd>908 995 103 00029</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
-                    <dt className="font-bold text-ipb-text sm:w-56">Immatriculation :</dt>
-                    <dd>Inscrite au Registre National des Entreprises (RNE)</dd>
+                    <dt className="font-bold text-ipb-text sm:w-56">Code APE/NAF :</dt>
+                    <dd>70.22Z — Conseil pour les affaires et autres conseils de gestion</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-ipb-text sm:w-56">N° TVA intracommunautaire :</dt>
-                    <dd>FR14398185421</dd>
+                    <dd>FR71908995103</dd>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:gap-4">
+                    <dt className="font-bold text-ipb-text sm:w-56">Régime TVA :</dt>
+                    <dd>Franchise en base — TVA non applicable, article 293 B du CGI</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-bold text-ipb-text sm:w-56">Téléphone :</dt>
@@ -145,7 +135,6 @@ export default function CGVPage() {
               </div>
             </section>
 
-            {/* Article 2 */}
             <section id="article-2" aria-labelledby="article-2-title">
               <h2 id="article-2-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
                 <FileText size={24} className="text-ipb-orange" aria-hidden="true" />
@@ -153,92 +142,64 @@ export default function CGVPage() {
               </h2>
               <p>
                 <strong>2.1.</strong> Les présentes CGV ont pour objet de définir les conditions dans lesquelles
-                Bâti Halli (ci-après « le Prestataire » ou « IPB ») fournit les prestations suivantes à
-                ses clients professionnels ou particuliers (ci-après « le Client ») :
-              </p>
-              <ul className="list-disc pl-6 mt-4 space-y-2">
-                <li><strong>Diagnostics techniques :</strong> analyse des pathologies du bâtiment (fissures, humidité, désordres apparents), identification des causes, préconisations techniques motivées</li>
-                <li><strong>Maçonnerie et béton armé :</strong> reprise en sous-œuvre, agrafage de maçonnerie, harpage, matage</li>
-                <li><strong>Étanchéité maçonnée :</strong> cuvelage de caves et sous-sols, injection de résine hydrophobe</li>
-                <li><strong>Charpente bois, couverture, menuiseries extérieures, plâtrerie, revêtements</strong></li>
-                <li><strong>Travaux de façade :</strong> ravalement, enduit, imperméabilisation</li>
-              </ul>
-              <p className="mt-4">
-                <strong>2.4.</strong> Lorsqu'un projet nécessite une note de calcul opposable (Eurocodes,
-                dimensionnement structure), Bâti Halli mobilise un bureau d'études structure indépendant
-                qui rédige et signe l'étude technique sous sa propre responsabilité civile professionnelle
-                et décennale études dédiée. Cette intervention est précisée au devis.
+                IPB (ci-après « le Prestataire ») fournit à ses clients particuliers ou professionnels (ci-après
+                « le Client ») la prestation de <strong>diagnostic en pathologie du bâtiment</strong> et les
+                prestations associées de coordination, de production du dossier de synthèse et de service après-vente.
               </p>
               <p className="mt-4">
-                <strong>2.2.</strong> Les présentes CGV s'appliquent à toutes les prestations conclues par le 
-                Prestataire auprès des Clients, quelles que soient les clauses pouvant figurer sur les documents 
-                du Client, et notamment ses conditions générales d'achat.
+                <strong>2.2.</strong> Les travaux de réparation, de reprise ou de renforcement qui pourraient
+                être préconisés à l'issue du diagnostic sont réalisés par un partenaire d'exécution titulaire
+                d'une garantie décennale dédiée. Les conditions d'exécution des travaux et leur tarification
+                font l'objet d'un devis et de conditions spécifiques remis au Client par cette entreprise
+                (cf. article 11).
               </p>
               <p className="mt-4">
-                <strong>2.3.</strong> Le fait que le Prestataire ne se prévale pas à un moment donné de l'une 
-                quelconque des présentes CGV ne peut être interprété comme valant renonciation à s'en prévaloir 
-                ultérieurement.
+                <strong>2.3.</strong> Les présentes CGV s'appliquent à toute commande, quelles que soient
+                les clauses pouvant figurer sur les documents du Client.
+              </p>
+              <p className="mt-4">
+                <strong>2.4.</strong> Le fait pour le Prestataire de ne pas se prévaloir à un moment donné
+                de l'une quelconque des présentes CGV ne peut être interprété comme valant renonciation
+                à s'en prévaloir ultérieurement.
               </p>
             </section>
 
-            {/* Article 3 */}
             <section id="article-3" aria-labelledby="article-3-title">
               <h2 id="article-3-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
                 <Wrench size={24} className="text-ipb-orange" aria-hidden="true" />
-                Article 3 - Prestations de diagnostic expert
+                Article 3 - Prestation de diagnostic
               </h2>
-              
-              <div className="bg-ipb-stone border-l-4 border-ipb-orange p-6 rounded-r-lg mb-6">
-                <p className="font-bold text-orange-900 mb-3 text-lg">ARTICLE SPÉCIFIQUE - DIAGNOSTIC EXPERT SUR SITE</p>
-                <p className="text-orange-800 mb-4">
-                  La prestation de diagnostic expert constitue un acte intellectuel préalable, indépendant de 
-                  tout éventuel contrat de travaux. Elle fait l'objet des dispositions particulières ci-dessous.
-                </p>
-              </div>
 
-              <p><strong>3.1. Nature de la prestation</strong></p>
+              <p><strong>3.1. Contenu de la prestation</strong></p>
               <p className="mt-2">
-                Le diagnostic technique sur site comprend :
+                La prestation de diagnostic comprend :
               </p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>Une visite technique d'une durée approximative de 1h30 à 2h00</li>
-                <li>L'utilisation d'instruments de mesure professionnels (fissuromètre optique, hygromètre à pointe,
-                    niveau laser, caméra thermique le cas échéant)</li>
-                <li>Un relevé photographique des désordres constatés</li>
-                <li>Un rapport technique écrit comportant l'analyse, les préconisations motivées et les hypothèses retenues</li>
-                <li>Un devis détaillé pour les travaux éventuellement préconisés</li>
+                <li>une qualification téléphonique préalable du besoin du Client ;</li>
+                <li>une visite technique sur site ;</li>
+                <li>l'utilisation d'instruments de mesure professionnels (fissuromètre, niveau laser, hygromètre, etc.) ;</li>
+                <li>un reportage photographique daté des désordres constatés ;</li>
+                <li>un rapport technique présentant les constats, l'analyse des désordres, le diagnostic structurel et les préconisations chiffrées ;</li>
+                <li>un dossier de synthèse remis au Client par IPB, intégrant le rapport technique et un plan d'action.</li>
               </ul>
-              <p className="mt-3 text-sm text-ipb-muted">
-                Pour les notes de calcul opposables (dimensionnement Eurocodes), Bâti Halli mobilise
-                un bureau d'études structure indépendant qui signe la note sous sa décennale études dédiée.
-              </p>
 
-              <p className="mt-4"><strong>3.2. Tarification et nature de l'acompte</strong></p>
-              <div className="mt-2 bg-green-50 border border-green-200 rounded-xl p-4">
-                <p className="text-green-800">
-                  Le diagnostic expert est une <strong className="text-green-900">prestation payante</strong>.<br />
-                  Ce montant constitue un <strong className="text-green-900">acompte déductible</strong> : il sera 
-                  intégralement soustrait du montant total des travaux si le Client confie au Prestataire la 
-                  réalisation des travaux préconisés dans un délai de 6 mois suivant le diagnostic.
-                </p>
-              </div>
-
-              <p className="mt-4"><strong>3.3. Limites de la prestation</strong></p>
+              <p className="mt-4"><strong>3.2. Limites de la prestation</strong></p>
               <p className="mt-2">
-                Le diagnostic est réalisé sur la base des informations communiquées par le Client et des 
-                constatations visuelles. Il ne comprend pas :
+                Le diagnostic est réalisé sur la base des informations communiquées par le Client et des
+                constatations visuelles et instrumentées effectuées sur place. Il ne comprend pas :
               </p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>Les sondages destructifs ou investigations géotechniques (études de sol)</li>
-                <li>L'accès aux parties non accessibles (sous toiture fermée, vide sanitaire non praticable...)</li>
-                <li>L'examen des parties non signalées par le Client</li>
+                <li>les sondages destructifs ou investigations géotechniques (études de sol) ;</li>
+                <li>l'accès aux parties non accessibles (sous toiture fermée, vide sanitaire non praticable, etc.) ;</li>
+                <li>l'examen des parties non signalées par le Client ;</li>
+                <li>les notes de calcul opposables (dimensionnement Eurocodes), qui relèvent d'un bureau
+                    d'études structure indépendant intervenant sous sa propre RC Pro et décennale études dédiées.</li>
               </ul>
               <p className="mt-2">
                 Toute investigation complémentaire fera l'objet d'un devis distinct.
               </p>
             </section>
 
-            {/* Article 4 */}
             <section id="article-4" aria-labelledby="article-4-title">
               <h2 id="article-4-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
                 <FileText size={24} className="text-ipb-orange" aria-hidden="true" />
@@ -246,37 +207,31 @@ export default function CGVPage() {
               </h2>
               <p><strong>4.1. Établissement du devis</strong></p>
               <p className="mt-2">
-                Les devis sont établis gratuitement, à la suite du diagnostic expert. Ils détaillent :
+                À l'issue de la qualification du besoin, IPB remet au Client un devis détaillant la
+                nature et l'étendue de la prestation, son prix, ses délais d'exécution prévisionnels
+                et ses conditions de paiement et de rétractation.
               </p>
-              <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>La nature et l'étendue des travaux proposés</li>
-                <li>Les matériaux et techniques utilisés</li>
-                <li>Le prix unitaire et le prix total HT et TTC</li>
-                <li>Le taux de TVA applicable</li>
-                <li>La durée prévisionnelle des travaux</li>
-                <li>Les conditions de paiement</li>
-              </ul>
 
               <p className="mt-4"><strong>4.2. Validité du devis</strong></p>
               <p className="mt-2">
-                Sauf mention contraire, les devis sont valables <strong>trois (3) mois</strong> à compter de leur 
-                date d'émission. Au-delà, le Prestataire se réserve le droit de réviser ses prix.
+                Sauf mention contraire, les devis sont valables <strong>trois (3) mois</strong> à compter
+                de leur date d'émission. Au-delà, IPB se réserve le droit de réviser son prix.
               </p>
 
               <p className="mt-4"><strong>4.3. Formation du contrat</strong></p>
               <p className="mt-2">
-                Le contrat est formé par la signature du devis par le Client, accompagnée du versement de l'acompte 
-                prévu. La signature du devis vaut acceptation sans réserve des présentes CGV.
+                Le contrat est formé par la signature du devis par le Client. La signature du devis
+                vaut acceptation sans réserve des présentes CGV.
               </p>
 
               <p className="mt-4"><strong>4.4. Modification du contrat</strong></p>
               <p className="mt-2">
-                Toute modification du périmètre des travaux, à la demande du Client ou résultant de contraintes 
-                techniques non identifiées lors du diagnostic, fera l'objet d'un avenant signé par les deux parties.
+                Toute modification du périmètre de la prestation, à la demande du Client ou résultant
+                de contraintes techniques non identifiées lors de la qualification initiale, fera
+                l'objet d'un avenant signé par les deux parties.
               </p>
             </section>
 
-            {/* Article 5 */}
             <section id="article-5" aria-labelledby="article-5-title">
               <h2 id="article-5-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
                 <CreditCard size={24} className="text-ipb-orange" aria-hidden="true" />
@@ -284,176 +239,142 @@ export default function CGVPage() {
               </h2>
               <p><strong>5.1. Prix</strong></p>
               <p className="mt-2">
-                Les prix des prestations sont indiqués en euros, hors taxes (HT) et toutes taxes comprises (TTC). 
-                Le taux de TVA applicable est celui en vigueur au jour de la facturation.
-              </p>
-              <p className="mt-2">
-                Pour les travaux de rénovation sur des immeubles achevés depuis plus de deux ans, le taux de TVA 
-                réduit de 10% s'applique conformément à l'article 279-0 bis du Code général des impôts, sous 
-                réserve de la fourniture par le Client de l'attestation simplifiée prévue par les textes.
+                Le prix de la prestation est celui figurant au devis remis et signé par le Client.
+                Le prix est indiqué en euros, hors taxes (HT) et toutes taxes comprises (TTC).
               </p>
 
-              <p className="mt-4"><strong>5.2. Révision des prix</strong></p>
+              <p className="mt-4"><strong>5.2. Régime de TVA</strong></p>
               <p className="mt-2">
-                Le Prestataire se réserve le droit de réviser ses prix en cas de :
+                IPB exerce sous le régime fiscal de la franchise en base de TVA. À ce titre, la
+                mention suivante figure sur l'ensemble des factures émises : <em>« TVA non applicable,
+                article 293 B du Code général des impôts »</em>. Aucune TVA n'est facturée et aucune
+                TVA n'est déductible par le Client professionnel.
               </p>
-              <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>Modification significative du coût des matériaux ou de la main d'œuvre entre le devis et l'exécution</li>
-                <li>Découverte d'éléments techniques non identifiés lors du diagnostic initial (vices cachés, accès limité, nature du sol différente...)</li>
-                <li>Demande de travaux supplémentaires par le Client</li>
-              </ul>
+
+              <p className="mt-4"><strong>5.3. Révision du prix</strong></p>
               <p className="mt-2">
-                Toute révision de prix sera communiquée au Client et fera l'objet d'un avenant préalable à la 
-                poursuite des travaux.
+                Le prix pourra faire l'objet d'une révision en cas de demande de visite supplémentaire,
+                contre-visite, visite longue (durée supérieure à 2 heures), investigations complémentaires
+                non incluses dans la prestation standard, ou déplacement hors zone d'intervention.
+                Toute révision est communiquée au Client préalablement et fait l'objet d'un devis
+                distinct ou d'un avenant signé.
               </p>
             </section>
 
-            {/* Article 6 */}
             <section id="article-6" aria-labelledby="article-6-title">
               <h2 id="article-6-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
                 <CreditCard size={24} className="text-ipb-orange" aria-hidden="true" />
                 Article 6 - Modalités de paiement
               </h2>
-              <p><strong>6.1. Échéancier de paiement</strong></p>
-              <div className="mt-2 bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle size={20} className="text-green-600 mt-1 flex-shrink-0" aria-hidden="true" />
-                    <div>
-                      <strong className="text-ipb-text">Diagnostic expert :</strong>
-                      <span className="text-ipb-text"> prestation payante, payable à la réservation (montant intégralement déduit des travaux)</span>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle size={20} className="text-green-600 mt-1 flex-shrink-0" aria-hidden="true" />
-                    <div>
-                      <strong className="text-ipb-text">Travaux (montant &lt; 5 000€) :</strong>
-                      <span className="text-ipb-text"> 30% à la commande, solde à la réception</span>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle size={20} className="text-green-600 mt-1 flex-shrink-0" aria-hidden="true" />
-                    <div>
-                      <strong className="text-ipb-text">Travaux (montant ≥ 5 000€) :</strong>
-                      <span className="text-ipb-text"> 30% à la commande, 40% à mi-chantier, 30% à la réception</span>
-                    </div>
-                  </li>
-                </ul>
-              </div>
+              <p><strong>6.1. Échéance</strong></p>
+              <p className="mt-2">
+                Sauf mention contraire au devis, le prix de la prestation est payable intégralement
+                à la commande, à la signature du devis.
+              </p>
 
               <p className="mt-4"><strong>6.2. Moyens de paiement acceptés</strong></p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
                 <li>Virement bancaire (IBAN communiqué sur facture)</li>
-                <li>Chèque à l'ordre de Bâti Halli</li>
                 <li>Carte bancaire (via lien de paiement sécurisé)</li>
-                <li>Espèces (dans la limite légale prévue par l'article L112-6 du Code monétaire et financier)</li>
+                <li>Espèces (dans la limite prévue par l'article L. 112-6 du Code monétaire et financier)</li>
               </ul>
 
               <p className="mt-4"><strong>6.3. Retard de paiement</strong></p>
               <p className="mt-2">
-                Conformément aux articles L. 441-10 et D. 441-5 du Code de commerce, tout retard de paiement 
-                entraînera de plein droit :
+                Conformément aux articles L. 441-10 et D. 441-5 du Code de commerce, tout retard de
+                paiement entraînera de plein droit :
               </p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>L'application de pénalités de retard au taux de trois fois le taux d'intérêt légal</li>
-                <li>Une indemnité forfaitaire pour frais de recouvrement de 40€</li>
-                <li>La suspension des prestations en cours et des commandes à venir</li>
+                <li>L'application de pénalités de retard au taux d'intérêt légal majoré de dix (10) points ;</li>
+                <li>Une indemnité forfaitaire pour frais de recouvrement de 40 € par facture ;</li>
+                <li>La suspension de la prestation jusqu'à régularisation.</li>
               </ul>
             </section>
 
-            {/* Article 7 */}
             <section id="article-7" aria-labelledby="article-7-title">
               <h2 id="article-7-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
                 <RotateCcw size={24} className="text-ipb-orange" aria-hidden="true" />
                 Article 7 - Droit de rétractation
               </h2>
-              
+
               <div className="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg mb-6">
                 <p className="font-bold text-blue-900 mb-2">INFORMATION PRÉCONTRACTUELLE IMPORTANTE</p>
                 <p className="text-blue-800">
-                  Conformément aux articles L. 221-18 et suivants du Code de la consommation, le Client 
-                  consommateur dispose d'un droit de rétractation.
+                  Conformément aux articles L. 221-18 et suivants du Code de la consommation, le Client
+                  consommateur ayant conclu son contrat à distance ou hors établissement dispose d'un
+                  droit de rétractation.
                 </p>
               </div>
 
               <p><strong>7.1. Délai de rétractation</strong></p>
               <p className="mt-2">
-                Le Client dispose d'un délai de <strong>quatorze (14) jours</strong> pour exercer son droit de 
-                rétractation à compter :
+                Le Client dispose d'un délai de <strong>quatorze (14) jours</strong> calendaires à
+                compter de la conclusion du contrat pour exercer son droit de rétractation, sans avoir
+                à motiver sa décision ni à supporter d'autres coûts que ceux prévus aux articles
+                L. 221-23 à L. 221-25 du Code de la consommation.
               </p>
-              <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>Pour les contrats de prestation de services : du jour de la conclusion du contrat</li>
-                <li>Pour les contrats conclus hors établissement : du jour de la conclusion du contrat</li>
-              </ul>
 
               <p className="mt-4"><strong>7.2. Exercice du droit de rétractation</strong></p>
               <p className="mt-2">
-                Pour exercer son droit de rétractation, le Client doit notifier sa décision au moyen d'une 
-                déclaration dénuée d'ambiguïté (par courrier, email ou via le formulaire type de rétractation 
-                annexé) à l'adresse suivante :
+                Pour exercer son droit, le Client doit notifier sa décision au moyen d'une déclaration
+                dénuée d'ambiguïté (courrier, email ou formulaire-type annexé) à :
               </p>
               <p className="mt-2 bg-ipb-stone p-3 rounded-lg">
-                Bâti Halli — IPB<br />
-                13 rue du Recteur Dottin, Apt 7, 4<sup>e</sup> étage, 31100 Toulouse<br />
+                IPB · Institut de Pathologie du Bâtiment<br />
+                54 avenue Jean Jaurès, 31170 Tournefeuille<br />
                 Email : <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange">contact@ipb-expertise.fr</a>
               </p>
 
               <p className="mt-4"><strong>7.3. Exceptions au droit de rétractation</strong></p>
               <p className="mt-2">
-                Conformément à l'article L. 221-28 du Code de la consommation, le droit de rétractation 
-                <strong> ne peut être exercé</strong> pour :
+                Conformément à l'article L. 221-28 du Code de la consommation, le droit de rétractation
+                <strong> ne peut être exercé</strong> pour la prestation dont l'exécution aura commencé
+                avec l'accord exprès du Client (visite technique sur site réalisée) et pour laquelle le
+                Client aura expressément renoncé à son droit de rétractation.
               </p>
-              <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>Les prestations de diagnostic dont l'exécution a commencé avec l'accord exprès du Client 
-                    et pour lesquelles il a renoncé expressément à son droit de rétractation</li>
-                <li>Les travaux pleinement exécutés avant la fin du délai de rétractation</li>
-                <li>Les travaux ayant commencé à la demande expresse du Client avant la fin du délai de rétractation</li>
-              </ul>
 
               <p className="mt-4"><strong>7.4. Remboursement</strong></p>
               <p className="mt-2">
-                En cas de rétractation, le Prestataire remboursera le Client de la totalité des sommes versées 
-                dans un délai de quatorze (14) jours à compter de la réception de la demande de rétractation, 
-                déduction faite de la valeur des prestations déjà exécutées.
+                En cas de rétractation valide, IPB remboursera le Client de la totalité des sommes
+                versées dans un délai de quatorze (14) jours à compter de la réception de la demande,
+                déduction faite, le cas échéant, de la valeur des prestations partiellement exécutées
+                avec son accord exprès.
               </p>
             </section>
 
-            {/* Article 8 */}
             <section id="article-8" aria-labelledby="article-8-title">
               <h2 id="article-8-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
                 <Wrench size={24} className="text-ipb-orange" aria-hidden="true" />
-                Article 8 - Exécution des travaux
+                Article 8 - Exécution du diagnostic
               </h2>
-              <p><strong>8.1. Délais d'intervention</strong></p>
+              <p><strong>8.1. Délais</strong></p>
               <p className="mt-2">
-                Les délais d'intervention sont indiqués à titre indicatif. Ils courent à compter de la réception 
-                de l'acompte et sous réserve de l'obtention des autorisations administratives éventuellement requises.
-              </p>
-              <p className="mt-2">
-                Le Prestataire s'engage à informer le Client de tout retard prévisible et de ses causes.
+                Les délais d'exécution sont communiqués au devis et confirmés à la commande. Ils
+                courent à compter de la signature du devis. IPB s'engage à informer le Client sans
+                délai de tout retard prévisible et de ses causes.
               </p>
 
-              <p className="mt-4"><strong>8.2. Accès au chantier</strong></p>
+              <p className="mt-4"><strong>8.2. Accès au site</strong></p>
               <p className="mt-2">
-                Le Client s'engage à permettre l'accès au chantier aux dates et heures convenues et à assurer 
-                les conditions nécessaires à l'exécution des travaux (accès électricité, eau, évacuation des 
-                meubles et objets...).
+                Le Client s'engage à permettre l'accès au site aux dates et heures convenues. Toute
+                visite empêchée par le fait du Client (absence, refus d'accès, etc.) sera facturée
+                intégralement et ne pourra être réalisée qu'après prise d'un nouveau rendez-vous.
               </p>
 
-              <p className="mt-4"><strong>8.3. Travaux supplémentaires</strong></p>
+              <p className="mt-4"><strong>8.3. Remise du dossier de synthèse</strong></p>
               <p className="mt-2">
-                Tout travail supplémentaire non prévu au devis initial ne sera exécuté qu'après accord écrit 
-                du Client sur le coût supplémentaire correspondant.
+                Le dossier de synthèse est remis au Client par IPB par email à l'adresse communiquée
+                à la commande. Le Client dispose d'un délai de quinze (15) jours pour formuler ses
+                éventuelles observations. À défaut, le dossier est réputé accepté.
               </p>
 
               <p className="mt-4"><strong>8.4. Règles de l'art</strong></p>
               <p className="mt-2">
-                Les travaux sont exécutés conformément aux règles de l'art, aux Documents Techniques Unifiés (DTU) 
-                applicables et aux normes en vigueur au moment de leur réalisation.
+                La prestation est exécutée conformément aux règles de l'art, aux Documents Techniques
+                Unifiés (DTU) applicables et aux normes en vigueur au moment de leur réalisation.
               </p>
             </section>
 
-            {/* Article 9 */}
             <section id="article-9" aria-labelledby="article-9-title">
               <h2 id="article-9-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
                 <CheckCircle size={24} className="text-ipb-orange" aria-hidden="true" />
@@ -461,209 +382,141 @@ export default function CGVPage() {
               </h2>
               <p>Le Client s'engage à :</p>
               <ul className="list-disc pl-6 mt-4 space-y-2">
-                <li>Fournir au Prestataire toutes les informations utiles concernant le bâtiment (plans, diagnostics existants, historique des désordres...)</li>
-                <li>Signaler tout élément de nature à affecter l'exécution des travaux (réseaux enterrés, présence d'amiante, servitudes...)</li>
-                <li>Déclarer les travaux auprès des services d'urbanisme si requis (déclaration préalable pour modification de façade)</li>
-                <li>Informer son assureur habitation de la réalisation des travaux</li>
-                <li>Assurer les conditions d'accès et de sécurité sur le chantier</li>
-                <li>Prévenir le Prestataire de toute modification de ses coordonnées</li>
+                <li>Fournir au Prestataire toutes les informations utiles concernant le bien (plans, diagnostics antérieurs, historique des désordres, etc.) ;</li>
+                <li>Signaler tout élément de nature à affecter la visite technique (réseaux enterrés, présence d'amiante, servitudes, etc.) ;</li>
+                <li>Assurer les conditions d'accès et de sécurité sur le site ;</li>
+                <li>Régler le prix de la prestation conformément à l'article 6 ;</li>
+                <li>Prévenir IPB de toute modification de ses coordonnées.</li>
               </ul>
             </section>
 
-            {/* Article 10 */}
             <section id="article-10" aria-labelledby="article-10-title">
               <h2 id="article-10-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
-                <CheckCircle size={24} className="text-ipb-orange" aria-hidden="true" />
-                Article 10 - Réception des travaux
+                <Shield size={24} className="text-ipb-orange" aria-hidden="true" />
+                Article 10 - Service après-vente
               </h2>
-              <p><strong>10.1. Procès-verbal de réception</strong></p>
-              <p className="mt-2">
-                À l'achèvement des travaux, le Prestataire invite le Client à procéder à la réception des travaux. 
-                Un procès-verbal de réception est établi contradictoirement, mentionnant :
+              <p>
+                IPB assure, pendant une durée de <strong>douze (12) mois</strong> suivant la remise
+                du dossier de synthèse, un service après-vente comprenant :
               </p>
-              <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>La date de réception</li>
-                <li>Les éventuelles réserves formulées par le Client</li>
-                <li>Le délai de levée des réserves le cas échéant</li>
+              <ul className="list-disc pl-6 mt-4 space-y-2">
+                <li>la réponse aux questions du Client portant sur le contenu du dossier de synthèse ;</li>
+                <li>la médiation Client en cas de difficulté d'interprétation ou d'application des préconisations ;</li>
+                <li>la mise à disposition d'un interlocuteur dédié.</li>
               </ul>
-
-              <p className="mt-4"><strong>10.2. Réception tacite</strong></p>
-              <p className="mt-2">
-                À défaut de réception expresse dans un délai de <strong>huit (8) jours</strong> suivant 
-                l'achèvement des travaux et la notification de fin de chantier, les travaux sont réputés 
-                réceptionnés sans réserve.
-              </p>
-
-              <p className="mt-4"><strong>10.3. Effets de la réception</strong></p>
-              <p className="mt-2">
-                La réception, avec ou sans réserves, transfère la garde de l'ouvrage au Client et constitue 
-                le point de départ des garanties légales (garantie de parfait achèvement, garantie biennale, 
-                garantie décennale).
+              <p className="mt-4">
+                Toute investigation complémentaire ou nouvelle visite technique sortant du périmètre
+                du SAV fera l'objet d'un devis distinct.
               </p>
             </section>
 
-            {/* Article 11 */}
             <section id="article-11" aria-labelledby="article-11-title">
               <h2 id="article-11-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
-                <Shield size={24} className="text-ipb-orange" aria-hidden="true" />
-                Article 11 - Garanties légales
+                <Wrench size={24} className="text-ipb-orange" aria-hidden="true" />
+                Article 11 - Travaux ultérieurs
               </h2>
-              
-              <div className="space-y-6">
-                <div className="bg-green-50 border border-green-200 rounded-xl p-6">
-                  <h3 className="font-bold text-green-900 mb-3 flex items-center gap-2">
-                    <Shield size={20} aria-hidden="true" />
-                    11.1. Garantie de parfait achèvement (Art. 1792-6 C. civ.)
-                  </h3>
-                  <p className="text-green-800">
-                    <strong>Durée : 1 an</strong> à compter de la réception.<br />
-                    Le Prestataire s'engage à réparer tous les désordres signalés par le Client, quelle que 
-                    soit leur importance ou leur nature, sous réserve qu'ils soient notifiés dans l'année 
-                    suivant la réception.
-                  </p>
-                </div>
-
-                <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
-                  <h3 className="font-bold text-blue-900 mb-3 flex items-center gap-2">
-                    <Shield size={20} aria-hidden="true" />
-                    11.2. Garantie de bon fonctionnement (Art. 1792-3 C. civ.)
-                  </h3>
-                  <p className="text-blue-800">
-                    <strong>Durée : 2 ans</strong> à compter de la réception.<br />
-                    Cette garantie couvre les éléments d'équipement dissociables de l'ouvrage 
-                    (ex : VMI, systèmes de ventilation).
-                  </p>
-                </div>
-
-                <div className="bg-ipb-stone border border-ipb-rule rounded-xl p-6">
-                  <h3 className="font-bold text-orange-900 mb-3 flex items-center gap-2">
-                    <Shield size={20} aria-hidden="true" />
-                    11.3. Garantie décennale (Art. 1792 et 1792-2 C. civ.)
-                  </h3>
-                  <p className="text-orange-800">
-                    <strong>Durée : 10 ans</strong> à compter de la réception.<br />
-                    Le Prestataire est responsable de plein droit des dommages, même résultant d'un vice du sol,
-                    qui compromettent la solidité de l'ouvrage ou qui, l'affectant dans l'un de ses éléments
-                    constitutifs ou d'équipement, le rendent impropre à sa destination.
-                  </p>
-                  <p className="text-orange-800 mt-3">
-                    <strong>Travaux couverts :</strong> selon les activités souscrites par les entreprises titulaires
-                    des décennales travaux dédiées — maçonnerie et béton armé, charpente et structure bois, couverture,
-                    menuiseries extérieures, plâtrerie, revêtements de surfaces et sols coulés. Attestations remises avec le devis.
-                  </p>
-                </div>
-              </div>
+              <p>
+                Dans l'hypothèse où le Client décide d'engager les travaux préconisés à l'issue du
+                diagnostic, ces travaux sont réalisés par un partenaire d'exécution titulaire d'une
+                garantie décennale et d'une responsabilité civile professionnelle, dont les attestations
+                d'assurance sont remises au Client préalablement à toute intervention.
+              </p>
+              <p className="mt-4">
+                Les conditions générales d'exécution des travaux et leur tarification sont celles
+                du partenaire d'exécution. Elles sont remises au Client avec le devis correspondant
+                à la phase travaux.
+              </p>
+              <p className="mt-4">
+                Le Client est informé qu'il dispose, pour les travaux soumis à l'obligation
+                d'assurance décennale (articles 1792 et suivants du Code civil), de la faculté de
+                souscrire une assurance dommages-ouvrage (articles L. 242-1 et suivants du Code des
+                assurances) afin d'obtenir, hors recherche de responsabilité, le préfinancement
+                rapide des réparations relevant de la décennale.
+              </p>
             </section>
 
-            {/* Article 12 */}
             <section id="article-12" aria-labelledby="article-12-title">
               <h2 id="article-12-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
                 <Shield size={24} className="text-ipb-orange" aria-hidden="true" />
                 Article 12 - Assurances
               </h2>
               <p>
-                <strong>12.1.</strong> Le Prestataire déclare être titulaire d'une assurance Responsabilité
-                Civile Professionnelle dédiée à son activité de coordination et d'accompagnement. Les attestations
-                d'assurance, y compris les attestations de décennale travaux et de décennale études portées par
-                les entreprises titulaires intervenant sur le chantier, sont remises au Client avec le devis.
+                Les attestations d'assurance en cours de validité du partenaire d'exécution
+                intervenant sur le chantier (garantie décennale et responsabilité civile professionnelle)
+                sont communiquées au Client préalablement à toute intervention technique sur le site,
+                sur simple demande ou avec le devis.
               </p>
               <p className="mt-4">
-                <strong>12.2.</strong> Les travaux exécutés sur le chantier (maçonnerie et béton armé,
-                charpente et structure bois, couverture, menuiseries extérieures, plâtrerie/staff/stuc/gyperie,
-                revêtements de surfaces en matériaux durs, chapes et sols coulés) sont couverts par les décennales
-                travaux des entreprises titulaires, conformément à l'article L. 241-1 du Code des assurances.
-              </p>
-              <p className="mt-4">
-                <strong>12.3.</strong> Le Prestataire déclare également être titulaire de garanties de
-                responsabilité civile de l'entreprise au titre du même contrat, couvrant les dommages
-                corporels, matériels et immatériels causés aux tiers avant et après réception, dans les
-                limites et conditions du contrat.
-              </p>
-              <p className="mt-4">
-                <strong>12.4.</strong> Lorsqu'un projet nécessite une note de calcul opposable, l'étude
-                technique est rédigée et signée par un bureau d'études structure indépendant mobilisé par
-                Bâti Halli, lequel intervient sous sa propre responsabilité civile professionnelle et
-                décennale études dédiée.
-              </p>
-              <p className="mt-4">
-                <strong>12.5.</strong> Sur demande du Client, l'attestation d'assurance en cours de validité
-                est transmise préalablement au commencement des travaux, conformément à l'article L. 243-2
-                du Code des assurances.
-              </p>
-              <p className="mt-4">
-                <strong>12.6.</strong> Le Client est informé de l'intérêt de souscrire une assurance
-                dommages-ouvrage (articles L. 242-1 et suivants du Code des assurances) pour les travaux
-                de gros œuvre.
+                Pour les notes de calcul opposables (dimensionnement Eurocodes), un bureau d'études
+                structure indépendant intervient sous sa propre responsabilité civile professionnelle
+                et sa décennale études dédiée.
               </p>
             </section>
 
-            {/* Article 13 */}
             <section id="article-13" aria-labelledby="article-13-title">
               <h2 id="article-13-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
                 <AlertTriangle size={24} className="text-ipb-orange" aria-hidden="true" />
                 Article 13 - Responsabilité
               </h2>
               <p>
-                <strong>13.1.</strong> La responsabilité du Prestataire est limitée aux dommages directs et 
-                prévisibles résultant d'un manquement à ses obligations contractuelles.
+                <strong>13.1.</strong> IPB est responsable, vis-à-vis du Client, de la coordination
+                du dossier, de la production du dossier de synthèse et de l'exécution du SAV 12 mois
+                prévu à l'article 10. L'exécution technique sur site (visite, mesures, rapport technique)
+                et les travaux ultérieurs relèvent de la responsabilité du partenaire d'exécution,
+                titulaire de ses propres assurances.
               </p>
               <p className="mt-4">
-                <strong>13.2.</strong> Le Prestataire ne saurait être tenu responsable des dommages résultant :
+                <strong>13.2.</strong> IPB ne saurait être tenue responsable des dommages résultant :
               </p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>D'informations erronées ou incomplètes communiquées par le Client</li>
-                <li>De l'utilisation anormale des ouvrages ou d'un défaut d'entretien</li>
-                <li>De modifications ou interventions effectuées par le Client ou un tiers après la réception</li>
-                <li>De la non-conformité des ouvrages à une réglementation entrée en vigueur postérieurement à la réception</li>
-                <li>De phénomènes naturels exceptionnels (séismes, inondations centenaires...)</li>
+                <li>d'informations erronées ou incomplètes communiquées par le Client ;</li>
+                <li>de l'utilisation anormale des ouvrages ou d'un défaut d'entretien ;</li>
+                <li>de modifications ou interventions effectuées par le Client ou un tiers après la
+                    remise du dossier ;</li>
+                <li>de phénomènes naturels exceptionnels (séismes, inondations centenaires…) ;</li>
+                <li>de l'exécution des travaux ultérieurs, laquelle relève de la responsabilité du
+                    partenaire d'exécution (cf. art. 11).</li>
               </ul>
               <p className="mt-4">
-                <strong>13.3.</strong> En tout état de cause, la responsabilité du Prestataire est limitée au 
-                montant du contrat, sauf en cas de faute lourde ou intentionnelle.
+                <strong>13.3.</strong> En tout état de cause, la responsabilité d'IPB est limitée
+                au montant du contrat de diagnostic, sauf en cas de faute lourde ou intentionnelle.
               </p>
             </section>
 
-            {/* Article 14 */}
             <section id="article-14" aria-labelledby="article-14-title">
               <h2 id="article-14-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
                 <AlertTriangle size={24} className="text-ipb-orange" aria-hidden="true" />
                 Article 14 - Force majeure
               </h2>
               <p>
-                Aucune des parties ne pourra être tenue responsable de l'inexécution ou du retard dans 
-                l'exécution de ses obligations contractuelles si cette inexécution ou ce retard résulte 
-                d'un cas de force majeure au sens de l'article 1218 du Code civil.
+                Aucune des parties ne pourra être tenue responsable de l'inexécution ou du retard
+                dans l'exécution de ses obligations contractuelles si cette inexécution ou ce retard
+                résulte d'un cas de force majeure au sens de l'article 1218 du Code civil.
               </p>
               <p className="mt-4">
-                Sont notamment considérés comme cas de force majeure : les catastrophes naturelles, les 
-                épidémies, les guerres, les grèves générales, les décisions gouvernementales ou administratives 
-                empêchant l'exécution du contrat.
-              </p>
-              <p className="mt-4">
-                En cas de force majeure, les obligations des parties sont suspendues. Si l'événement de force 
-                majeure perdure plus de trois mois, chaque partie pourra résilier le contrat sans indemnité.
+                En cas de force majeure, les obligations des parties sont suspendues. Si l'événement
+                de force majeure perdure plus de trois mois, chaque partie pourra résilier le contrat
+                sans indemnité.
               </p>
             </section>
 
-            {/* Article 15 */}
             <section id="article-15" aria-labelledby="article-15-title">
               <h2 id="article-15-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
                 <Shield size={24} className="text-ipb-orange" aria-hidden="true" />
                 Article 15 - Protection des données personnelles
               </h2>
               <p>
-                Les données personnelles collectées dans le cadre de la relation contractuelle font l'objet 
-                d'un traitement conforme au Règlement Général sur la Protection des Données (RGPD) et à la 
-                loi Informatique et Libertés.
+                Les données personnelles collectées dans le cadre de la relation contractuelle font
+                l'objet d'un traitement conforme au Règlement Général sur la Protection des Données
+                (RGPD) et à la loi Informatique et Libertés.
               </p>
               <p className="mt-4">
-                Pour plus d'informations sur le traitement de vos données personnelles et l'exercice de vos 
-                droits, consultez notre <Link href="/legal/confidentialite" className="text-ipb-orange hover:underline font-bold">
+                Pour plus d'informations sur le traitement de vos données et l'exercice de vos droits,
+                consultez notre <Link href="/legal/confidentialite" className="text-ipb-orange hover:underline font-bold">
                 Politique de confidentialité</Link>.
               </p>
             </section>
 
-            {/* Article 16 */}
             <section id="article-16" aria-labelledby="article-16-title">
               <h2 id="article-16-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
                 <Gavel size={24} className="text-ipb-orange" aria-hidden="true" />
@@ -675,36 +528,31 @@ export default function CGVPage() {
               </p>
               <p className="mt-4">
                 <strong>16.2. Règlement amiable</strong><br />
-                En cas de litige, les parties s'engagent à rechercher une solution amiable avant toute
-                action judiciaire. Le Client peut adresser ses réclamations à :<br />
-                <span className="text-sm">Bâti Halli — IPB, 13 rue du Recteur Dottin, Apt 7, 4<sup>e</sup> étage, 31100 Toulouse<br />
+                En cas de litige, les parties s'engagent à rechercher une solution amiable avant
+                toute action judiciaire. Le Client peut adresser ses réclamations à :<br />
+                <span className="text-sm">IPB · Institut de Pathologie du Bâtiment, 54 avenue Jean Jaurès, 31170 Tournefeuille<br />
                 Email : <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange">contact@ipb-expertise.fr</a></span>
               </p>
-              
+
               <div className="mt-6 bg-ipb-cream rounded-xl p-6 border border-ipb-rule">
                 <p className="font-bold text-ipb-text mb-3">16.3. Médiation de la consommation</p>
                 <p className="text-ipb-text mb-3">
-                  Conformément aux articles L. 612-1 et suivants du Code de la consommation, le Client
-                  consommateur peut, après réclamation écrite préalable restée infructueuse, recourir
-                  gratuitement à un médiateur de la consommation. La liste des médiateurs agréés est
-                  consultable sur le site officiel{' '}
+                  Conformément aux articles L. 612-1 et suivants du Code de la consommation, le
+                  Client consommateur peut, après réclamation écrite préalable restée infructueuse,
+                  recourir gratuitement à un médiateur de la consommation. La liste des médiateurs
+                  agréés est consultable sur le site officiel{' '}
                   <a href="https://www.economie.gouv.fr/mediation-conso" target="_blank" rel="noopener noreferrer"
                      className="text-ipb-orange hover:underline">economie.gouv.fr/mediation-conso</a>.
-                </p>
-                <p className="text-sm text-ipb-muted">
-                  Toute réclamation préalable doit être adressée à Bâti Halli par courrier ou email
-                  aux coordonnées indiquées à l'article 1.
                 </p>
               </div>
 
               <p className="mt-4">
                 <strong>16.4. Compétence juridictionnelle</strong><br />
-                À défaut de règlement amiable, tout litige sera porté devant les juridictions compétentes 
-                du ressort de la Cour d'appel de Toulouse.
+                À défaut de règlement amiable, tout litige sera porté devant les juridictions
+                compétentes du ressort de la Cour d'appel de Toulouse.
               </p>
             </section>
 
-            {/* Article 17 */}
             <section id="article-17" aria-labelledby="article-17-title">
               <h2 id="article-17-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
                 <FileText size={24} className="text-ipb-orange" aria-hidden="true" />
@@ -712,31 +560,30 @@ export default function CGVPage() {
               </h2>
               <p>
                 <strong>17.1. Intégralité</strong><br />
-                Les présentes CGV expriment l'intégralité des obligations des parties. Aucune condition 
-                générale ou spécifique figurant dans les documents envoyés ou remis par le Client ne pourra 
-                s'intégrer aux présentes CGV.
+                Les présentes CGV expriment l'intégralité des obligations des parties. Aucune
+                condition générale ou spécifique figurant dans les documents envoyés ou remis par
+                le Client ne pourra s'intégrer aux présentes CGV.
               </p>
               <p className="mt-4">
                 <strong>17.2. Nullité partielle</strong><br />
-                Si l'une quelconque des clauses des présentes CGV était déclarée nulle ou inapplicable, 
+                Si l'une quelconque des clauses des présentes CGV était déclarée nulle ou inapplicable,
                 les autres clauses conserveraient leur pleine force et portée.
               </p>
               <p className="mt-4">
                 <strong>17.3. Modification</strong><br />
-                Le Prestataire se réserve le droit de modifier les présentes CGV à tout moment. Les CGV 
+                IPB se réserve le droit de modifier les présentes CGV à tout moment. Les CGV
                 applicables sont celles en vigueur à la date de la commande.
               </p>
               <p className="mt-4">
                 <strong>17.4. Preuve</strong><br />
-                Les registres informatisés, conservés dans les systèmes informatiques du Prestataire dans 
-                des conditions raisonnables de sécurité, seront considérés comme les preuves des communications, 
-                des commandes et des paiements intervenus entre les parties.
+                Les registres informatisés, conservés dans les systèmes informatiques d'IPB dans
+                des conditions raisonnables de sécurité, seront considérés comme les preuves des
+                communications, des commandes et des paiements intervenus entre les parties.
               </p>
             </section>
 
           </article>
 
-          {/* Annexe - Formulaire de rétractation */}
           <div className="mt-12 p-6 bg-ipb-stone rounded-xl border border-ipb-rule">
             <h2 className="text-xl font-bold text-ipb-text mb-4">ANNEXE - Formulaire type de rétractation</h2>
             <p className="text-sm text-ipb-muted mb-4">
@@ -744,32 +591,31 @@ export default function CGVPage() {
             </p>
             <div className="bg-white p-4 rounded-lg border border-ipb-rule text-sm">
               <p className="mb-3">À l'attention de :<br />
-              <strong>Bâti Halli — IPB</strong><br />
-              13 rue du Recteur Dottin, Apt 7, 4<sup>e</sup> étage, 31100 Toulouse<br />
+              <strong>IPB · Institut de Pathologie du Bâtiment</strong><br />
+              54 avenue Jean Jaurès, 31170 Tournefeuille<br />
               Email : contact@ipb-expertise.fr</p>
-              
-              <p className="mb-3">Je/Nous (*) vous notifie/notifions (*) par la présente ma/notre (*) rétractation du contrat 
-              portant sur la prestation de services ci-dessous :</p>
-              
+
+              <p className="mb-3">Je/Nous (*) vous notifie/notifions (*) par la présente ma/notre (*) rétractation du contrat
+              portant sur la prestation ci-dessous :</p>
+
               <p className="mb-3">
                 - Description de la prestation : ________________________________<br />
                 - Commandée le (*) / reçue le (*) : ________________________________<br />
                 - Nom du (des) consommateur(s) : ________________________________<br />
                 - Adresse du (des) consommateur(s) : ________________________________
               </p>
-              
+
               <p className="mb-3">Date : ________________________________</p>
-              
+
               <p>Signature du (des) consommateur(s) (uniquement en cas de notification sur papier) :</p>
-              
+
               <p className="mt-4 text-xs text-ipb-muted">(*) Rayez la mention inutile</p>
             </div>
           </div>
 
-          {/* Date de dernière mise à jour */}
           <footer className="mt-12 pt-8 border-t border-ipb-rule">
             <p className="text-sm text-ipb-muted text-center">
-              Dernière mise à jour des présentes CGV : <time dateTime="2026-02-01">1er février 2026</time>
+              Dernière mise à jour des présentes CGV : <time dateTime="2026-05-24">24 mai 2026</time>
             </p>
           </footer>
         </div>

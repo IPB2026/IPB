@@ -7,77 +7,24 @@ import { CtaFinal } from '@/components/home/CtaFinal';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
+import { googleReviews } from '@/app/data/testimonials';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Avis Clients IPB · 4.9/5 Google · Toulouse',
-  description: "Avis vérifiés en Occitanie : 4.9/5 sur Google. Diagnostic fissures, mur porteur, expertise achat. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
+  description: "Avis Google vérifiés en Occitanie : 4.9/5. Diagnostic fissures, mur porteur, expertise achat. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
   keywords: ['avis IPB', 'avis expert fissures toulouse', 'témoignages clients institut', 'IPB expertise avis', 'note google'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/avis-clients' },
   openGraph: {
     title: 'Avis clients · 4.9/5 sur Google · IPB Toulouse',
-    description: "Avis vérifiés de clients en Occitanie. Institut de pathologie du bâtiment.",
+    description: "Avis Google vérifiés de clients en Occitanie. Institut de pathologie du bâtiment.",
     url: 'https://www.ipb-expertise.fr/avis-clients',
   },
 };
 
-const reviews = [
-  {
-    author: 'Marie L.', location: 'Toulouse',
-    date: '2026-01-15',
-    text: "Fissures importantes sur ma maison des années 70. IPB a fait le diagnostic en 48h et l'agrafage en 3 jours. Le travail est impeccable, l'équipe très professionnelle.",
-    service: 'Agrafage de fissures',
-  },
-  {
-    author: 'Pierre D.', location: 'Blagnac',
-    date: '2026-01-08',
-    text: "Notre projet d'ouverture de mur porteur entre cuisine et séjour s'est déroulé exactement comme prévu. Devis ferme, planning tenu, finitions soignées. La maison a complètement changé.",
-    service: 'Ouverture mur porteur',
-  },
-  {
-    author: 'Sophie M.', location: 'Montauban',
-    date: '2025-12-20',
-    text: "Le diagnostic a été très complet. L'expert a pris le temps d'expliquer l'origine des fissures et les solutions possibles. Le rapport est détaillé et bien présenté pour mon assurance.",
-    service: 'Diagnostic de fissures',
-  },
-  {
-    author: 'Jean-Marc B.', location: 'Colomiers',
-    date: '2025-12-10',
-    text: "Avant d'acheter notre maison, j'ai demandé une expertise structure à IPB. Le rapport a permis de négocier une décote de 15 000 €. Investissement rentabilisé instantanément.",
-    service: 'Expertise avant achat',
-  },
-  {
-    author: 'Catherine R.', location: 'Tournefeuille',
-    date: '2025-11-28',
-    text: "Fissure apparue après la sécheresse de 2022. Intervention rapide d'IPB pour le diagnostic, dossier transmis à l'assurance qui a indemnisé sans difficulté. Très rassurée.",
-    service: 'Diagnostic + Agrafage',
-  },
-  {
-    author: 'François L.', location: 'Auch',
-    date: '2025-11-15',
-    text: "Maison ancienne avec plusieurs désordres structurels. IPB a proposé une approche globale, claire, à mon budget. Le suivi de chantier a été régulier, je n'ai jamais été dans le flou.",
-    service: 'Diagnostic complet',
-  },
-  {
-    author: 'Isabelle G.', location: 'Cugnaux',
-    date: '2025-11-01',
-    text: "Travail effectué correctement. Seul bémol : délai un peu long pour obtenir un rendez-vous (3 semaines). Mais le résultat est là, et le rapport est clair.",
-    service: 'Agrafage de fissures',
-  },
-  {
-    author: 'Michel T.', location: 'Muret',
-    date: '2025-10-20',
-    text: "Expert très compétent qui a su identifier l'origine exacte des fissures (sol argileux + sécheresse). Devis détaillé, travaux conformes au plan. La garantie décennale est rassurante.",
-    service: 'Diagnostic + Agrafage',
-  },
-  {
-    author: 'Yusra G.', location: 'Toulouse',
-    date: '2026-01-22',
-    text: "Institut sérieux et à l'écoute. Le diagnostic a été clair, l'intervention efficace, l'équipe ponctuelle et soignée — on sent qu'ils prennent le temps d'expliquer ce qu'ils font.",
-    service: 'Diagnostic structure',
-  },
-];
-
+// Source de vérité : fiche Google Business Profile d'IPB-Expertise.
+// Les Review[] ci-dessous sont un sous-ensemble visible des 18 avis totaux ;
+// l'aggregateRating reflète le total réel de la fiche GBP.
 const reviewsSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -98,22 +45,16 @@ const reviewsSchema = {
     "ratingValue": "4.9",
     "bestRating": "5",
     "worstRating": "1",
-    "reviewCount": "15"
+    "reviewCount": "18"
   },
-  "review": reviews.map(r => ({
+  "review": googleReviews.map(r => ({
     "@type": "Review",
-    "author": { "@type": "Person", "name": r.author },
+    "author": { "@type": "Person", "name": r.name },
     "datePublished": r.date,
     "reviewBody": r.text,
     "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" }
   }))
 };
-
-function formatDate(d: string) {
-  const [, m, day] = d.split('-');
-  const months = ['', 'janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
-  return `${parseInt(day, 10)} ${months[parseInt(m, 10)]}`;
-}
 
 export default function AvisClientsPage() {
   return (
@@ -153,7 +94,7 @@ export default function AvisClientsPage() {
                   Note moyenne sur Google
                 </p>
                 <p className="text-[13px] font-light text-ipb-muted leading-[1.7]">
-                  Avis vérifiés depuis 2019 · Mis à jour mensuellement
+                  Avis vérifiés sur la fiche Google d'IPB-Expertise
                 </p>
                 <a
                   href="https://maps.app.goo.gl/6yDtzs7D1UcKSdJf6"
@@ -161,7 +102,7 @@ export default function AvisClientsPage() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-ipb-orange font-medium text-[13px] tracking-wide border-b border-ipb-orange pb-1 hover:gap-3 transition-all mt-6"
                 >
-                  Lire les avis sur Google →
+                  Lire tous les avis sur Google →
                 </a>
               </RevealOnScroll>
             </div>
@@ -171,12 +112,22 @@ export default function AvisClientsPage() {
         {/* GRILLE AVIS */}
         <section className="bg-ipb-white py-20 lg:py-28">
           <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <div className="mb-12">
+              <p className="text-[12px] text-ipb-text uppercase tracking-[0.14em] font-medium mb-3">
+                Sélection d'avis récents
+              </p>
+              <p className="text-ipb-muted text-[15px] leading-[1.7] max-w-2xl">
+                Avis publiés par nos clients sur la fiche Google Business d'IPB-Expertise.
+                Pour les consulter dans leur intégralité, suivez le lien Google en bas de page.
+              </p>
+            </div>
+
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-              {reviews.map((r, i) => (
-                <RevealOnScroll key={r.author + r.date} delay={(i % 3) * 0.06}>
+              {googleReviews.map((r, i) => (
+                <RevealOnScroll key={r.id} delay={(i % 3) * 0.06}>
                   <article className="bg-ipb-cream border border-ipb-rule rounded-[6px] p-7 lg:p-8 h-full flex flex-col">
                     <p className="text-[10px] text-ipb-light uppercase tracking-[0.16em] mb-4">
-                      {r.service}
+                      Avis Google
                     </p>
                     <blockquote className="font-serif text-ipb-text text-[16px] leading-[1.55] flex-1 mb-6">
                       <em className="not-italic text-ipb-orange text-2xl leading-none mr-1 align-top">«&nbsp;</em>
@@ -187,10 +138,10 @@ export default function AvisClientsPage() {
                       <div className="h-px w-7 bg-ipb-orange flex-shrink-0" aria-hidden="true" />
                       <div className="flex-1">
                         <p className="font-serif text-ipb-text font-bold text-[14px] leading-tight">
-                          {r.author}
+                          {r.name}
                         </p>
                         <p className="text-[11px] text-ipb-light uppercase tracking-[0.12em] mt-0.5">
-                          {r.location} · {formatDate(r.date)}
+                          {r.location ? `${r.location} · ${r.date}` : r.date}
                         </p>
                       </div>
                     </footer>

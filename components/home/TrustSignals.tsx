@@ -21,7 +21,7 @@ export function TrustSignals() {
               Si ça bouge, on revient. Gratuitement.
             </h2>
             <p className="text-white/75 text-base leading-relaxed max-w-2xl">
-              L'institut diagnostique et coordonne ; les équipes de réalisation du réseau IPB exécutent les travaux sous garantie décennale 10 ans. Un seul interlocuteur du diagnostic à la livraison. <strong className="text-white">Attestations remises avec le devis.</strong>
+              L'institut tient le dossier, du premier regard à la dernière finition. Diagnostic et travaux sont exécutés par les équipes du réseau IPB sous garantie décennale 10 ans. <strong className="text-white">Attestations remises avec le devis.</strong>
             </p>
           </div>
 
@@ -65,7 +65,7 @@ export function TrustSignals() {
               Du premier coup d'œil<br />aux dernières finitions.
             </h3>
             <p className="text-ipb-muted leading-relaxed">
-              L'institut diagnostique, conçoit et coordonne l'opération&nbsp;; nos équipes de réalisation exécutent les travaux sous décennale. Pas de jeu de ping-pong entre études et travaux. Vous avez un seul interlocuteur, du diagnostic à la livraison.
+              L'institut tient le dossier de bout en bout. Diagnostic, étude, exécution — un même protocole, conduit par les équipes du réseau IPB sous décennale. Pas de relais entre étude et chantier, pas de zone grise.
             </p>
           </div>
 
@@ -86,7 +86,7 @@ export function TrustSignals() {
               L'institut, votre interlocuteur.
             </h3>
             <p className="text-ipb-muted leading-relaxed text-sm">
-              Réseau IPB actif depuis 2019, plus de 850 chantiers en Occitanie. La même personne vous reçoit, vous chiffre, et suit le chantier de bout en bout. Pas un centre d'appels, pas un dossier qui passe de main en main.
+              Réseau IPB actif depuis 2019, plus de 850 chantiers menés en Occitanie. Côté institut, un seul visage du diagnostic à la livraison — votre dossier ne change pas de mains.
             </p>
           </div>
         </div>

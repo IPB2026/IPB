@@ -117,7 +117,7 @@ export function Footer() {
         {/* Mention coordination — apparaît globalement, toutes pages */}
         <div className="pt-10 mb-6 border-t border-white/6">
           <p className="text-[12px] leading-[1.7] text-white/70 max-w-[760px]">
-            Diagnostic et coordination assurés par IPB. Travaux réalisés sous décennale par les équipes de réalisation du réseau IPB.
+            IPB, institut de coordination. Diagnostic et travaux portés par les équipes du réseau IPB, sous décennale.
           </p>
         </div>
 

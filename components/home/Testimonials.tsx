@@ -11,10 +11,9 @@ import { googleReviews, type Review } from '@/app/data/testimonials';
  * Auto-rotate 7 secondes. Fade out 0.35s → swap → fade in.
  * Navigation par prénom + ville + barre orange active.
  *
- * Par défaut : vrais avis Google d'IPB (`googleReviews`).
- * Pour cibler une page service spécifique (mur porteur), passer un
- * dataset alternatif via la prop `reviews` :
- *   <Testimonials reviews={murPorteurReviews} />
+ * Source : vrais avis Google d'IPB (`googleReviews` de app/data/testimonials.ts).
+ * Ne JAMAIS injecter de témoignages non issus de Google (risque art. L.121-2
+ * Code de la consommation — pratique commerciale trompeuse).
  *
  * Cf. IPB_Design_Handoff.md §7 + §8 et app/data/testimonials.ts
  */

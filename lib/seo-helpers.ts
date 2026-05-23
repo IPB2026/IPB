@@ -6,7 +6,9 @@
  * Constantes IPB centralisées — utilisées dans tous les schemas JSON-LD.
  * Mettre à jour ICI une seule fois pour propager partout.
  */
-export const IPB_REVIEW_COUNT = '15';
+// Source de vérité unique : fiche Google Business Profile d'IPB-Expertise.
+// Maj 2026-05-24 : 18 avis · 4.9/5 (réels). Toute modif doit être faite ICI.
+export const IPB_REVIEW_COUNT = '18';
 export const IPB_RATING_VALUE = '4.9';
 
 

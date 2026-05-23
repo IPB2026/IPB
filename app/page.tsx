@@ -58,7 +58,7 @@ const organizationSchema = {
   // Permet à Google de fusionner les deux entités dans son Knowledge Graph.
   "subOrganization": { "@id": "https://www.ipb-expertise.fr#localbusiness" },
   "name": "IPB - Institut de Pathologie du Bâtiment",
-  "legalName": "Bâti Halli",
+  "legalName": "IPB",
   "alternateName": "IPB Expertise",
   "url": "https://www.ipb-expertise.fr",
   "logo": {

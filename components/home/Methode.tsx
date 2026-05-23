@@ -13,27 +13,27 @@ const etapes = [
   {
     num: '01',
     titre: 'On vient voir',
-    desc: "Visite technique et diagnostic instrumenté de votre bâti, sous 72h en moyenne. Mesures, photos, échanges directs avec vous.",
+    desc: "Sous 72h, l'expert structure se déplace. Lecture du bâti, mesures précises, écoute attentive de ce que vous avez constaté. Tout désordre commence par un détail remarqué — l'observation est le premier outil.",
   },
   {
     num: '02',
     titre: 'On analyse et on explique',
-    desc: "Identification des causes, lecture du bâti, vocabulaire clair. Vous comprenez enfin ce qui se passe chez vous.",
+    desc: "Le bâti se relit ensuite à froid : indices recoupés, causes identifiées, hypothèses pesées. Vous repartez avec une compréhension nette de ce qui se joue — c'est la condition d'une décision juste.",
   },
   {
     num: '03',
     titre: 'On conçoit et on chiffre',
-    desc: "Rapport technique et préconisations. Devis remis sous 3 à 5 jours, clair et détaillé.",
+    desc: "Rapport technique de l'expert, étude de structure s'il y a lieu, devis IPB. Trois à cinq jours — pas un de plus. De quoi décider sans pression, en pleine connaissance de cause.",
   },
   {
     num: '04',
     titre: 'On réalise',
-    desc: "Nos équipes de réalisation interviennent selon le protocole IPB, sous garantie décennale 10 ans. Chantier propre, sécurisé, dans les délais annoncés.",
+    desc: "Les équipes du réseau IPB exécutent selon notre protocole, sous garantie décennale 10 ans. Chantier soigné, calendrier tenu, qualité du geste avant tout.",
   },
   {
     num: '05',
     titre: 'On vous remet le dossier complet',
-    desc: "Rapport, plans, photos, attestations, garanties. Le dossier est à vous — et IPB reste votre interlocuteur, bien après la livraison.",
+    desc: "Rapport, plans, photographies, attestations, garanties. Le dossier vous appartient — et IPB reste joignable, longtemps après la livraison.",
   },
 ];
 

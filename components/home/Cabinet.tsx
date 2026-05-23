@@ -26,7 +26,7 @@ export function Cabinet() {
               <div className="aspect-[4/5] rounded-[6px] overflow-hidden bg-ipb-stone">
                 <Image
                   src="/images/chantier-ouverture-mur-porteur.webp"
-                  alt="Chantier IPB en cours — étaiement et pose de poutre sur ouverture de mur porteur"
+                  alt="Chantier en cours — étaiement et pose de poutre par les équipes du réseau IPB"
                   width={640}
                   height={800}
                   className="w-full h-full object-cover"
@@ -41,7 +41,7 @@ export function Cabinet() {
                   L'institut IPB
                 </p>
                 <p className="text-[12px] text-ipb-muted uppercase tracking-[0.14em]">
-                  Diagnostic, conception, coordination · Occitanie
+                  Institut de coordination · Pathologie du bâtiment · Occitanie
                 </p>
               </div>
             </div>
@@ -68,10 +68,10 @@ export function Cabinet() {
             <RevealOnScroll delay={0.06}>
               <div className="space-y-5 text-[15px] leading-[1.9] font-light text-ipb-muted mb-12">
                 <p>
-                  IPB est un institut spécialisé en pathologie et structure du bâtiment, basé à Toulouse et intervenant en Occitanie. Notre métier couvre le diagnostic et le traitement des fissures, l'expertise humidité, l'expertise structurelle avant achat, et l'ouverture de murs porteurs.
+                  IPB est un institut indépendant de coordination, spécialisé dans la pathologie et la structure du bâtiment. Basé à Toulouse, il intervient en Occitanie. Son champ d'action : fissures, humidité, expertise structurelle avant achat, ouverture de murs porteurs — tout ce qui touche à la solidité d'un bâti et à la lecture de ses désordres.
                 </p>
                 <p>
-                  L'institut diagnostique, conçoit, et met en œuvre avec ses équipes de réalisation — des artisans structure intégrés au réseau IPB, formés à notre protocole et assurés en décennale. Du premier appel à la livraison, vous avez un seul interlocuteur et une seule responsabilité de coordination.
+                  L'institut qualifie le besoin, oriente le dossier, et coordonne sa conduite jusqu'à la livraison. Le diagnostic technique et les travaux sont confiés à des artisans structure intégrés au réseau IPB — formés à notre protocole, titulaires de leur propre décennale. Du premier appel à la dernière finition, vous n'avez qu'un seul interlocuteur, et une seule responsabilité de coordination en face de vous.
                 </p>
               </div>
             </RevealOnScroll>

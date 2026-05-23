@@ -22,20 +22,19 @@ export default function ConfidentialitePage() {
       <TopBar />
       <Navbar />
       <SmartBackBar />
-      
+
       <main className="bg-white min-h-screen py-12 md:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* En-tête avec date de mise à jour */}
           <div className="mb-6 md:mb-8 pb-4 md:pb-6 border-b border-ipb-rule">
             <div className="flex items-center gap-2 text-xs md:text-sm text-ipb-muted mb-3 md:mb-4">
               <Calendar size={16} />
-              <span>Mis à jour le 01/01/2026</span>
+              <span>Mis à jour le 24/05/2026</span>
             </div>
             <h1 className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-3 md:mb-4">Politique de Confidentialité</h1>
             <p className="text-base md:text-lg text-ipb-muted">
-              Bâti Halli (enseignes commerciales : IPB · Institut de Pathologie du Bâtiment) s'engage à
-              protéger la confidentialité et la sécurité des données personnelles collectées dans le
-              cadre de ses prestations.
+              IPB · Institut de Pathologie du Bâtiment s'engage à protéger la confidentialité et la
+              sécurité des données personnelles collectées dans le cadre de ses prestations.
             </p>
           </div>
 
@@ -44,12 +43,11 @@ export default function ConfidentialitePage() {
             <section>
               <h2 className="text-2xl font-bold text-ipb-text mb-4">1. Responsable du traitement</h2>
               <div className="space-y-2">
-                <p><strong>Dénomination :</strong> Bâti Halli</p>
-                <p><strong>Forme juridique :</strong> Entreprise Individuelle (EI)</p>
-                <p><strong>Enseignes commerciales :</strong> IPB · Institut de Pathologie du Bâtiment</p>
-                <p><strong>Siège :</strong> 13 rue du Recteur Dottin, Apt 7, 4<sup>e</sup> étage, 31100 Toulouse, France</p>
-                <p><strong>Bureau :</strong> 54 avenue Jean Jaurès, 31170 Tournefeuille, France</p>
-                <p><strong>SIRET :</strong> 398 185 421 00037</p>
+                <p><strong>Dénomination :</strong> IPB · Institut de Pathologie du Bâtiment</p>
+                <p><strong>Forme juridique :</strong> Entrepreneur individuel (micro-entreprise)</p>
+                <p><strong>Siège :</strong> 54 avenue Jean Jaurès, 31170 Tournefeuille, France</p>
+                <p><strong>SIRET :</strong> 908 995 103 00029</p>
+                <p><strong>Code APE :</strong> 70.22Z — Conseil pour les affaires et autres conseils de gestion</p>
                 <p><strong>Email :</strong> <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange hover:text-ipb-orange underline">contact@ipb-expertise.fr</a></p>
                 <p><strong>Téléphone :</strong> <a href="tel:0582953375" className="text-ipb-orange hover:text-ipb-orange underline">05 82 95 33 75</a></p>
               </div>
@@ -74,11 +72,12 @@ export default function ConfidentialitePage() {
                 Les données personnelles collectées sont utilisées pour les finalités suivantes :
               </p>
               <ul className="list-disc pl-6 mt-4 space-y-2">
-                <li>Réalisation des diagnostics et expertises techniques</li>
-                <li>Établissement de devis et suivi des commandes</li>
-                <li>Exécution des travaux et suivi post-intervention</li>
-                <li>Gestion de la relation client et support technique</li>
-                <li>Respect des obligations légales et réglementaires</li>
+                <li>Qualification du besoin et coordination du dossier de Diagnostic</li>
+                <li>Établissement du devis Diagnostic et suivi de la commande</li>
+                <li>Transmission au partenaire d'exécution intervenant sur site pour la réalisation de la visite technique (sous réserve de votre consentement explicite)</li>
+                <li>Production du Dossier de synthèse et service après-vente (SAV 12 mois)</li>
+                <li>Mise en relation avec le partenaire d'exécution pour la phase Travaux ultérieure (apport d'affaires), sous réserve du consentement explicite du Client</li>
+                <li>Respect des obligations légales et réglementaires (facturation, comptabilité)</li>
                 <li>Amélioration de nos services (analyse statistique anonymisée)</li>
               </ul>
             </section>
@@ -88,7 +87,7 @@ export default function ConfidentialitePage() {
               <div className="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg">
                 <p className="font-bold text-ipb-text mb-2">Protection des données du diagnostic</p>
                 <p>
-                  Les données collectées dans le cadre du diagnostic (photos, adresses, descriptions) sont stockées de manière <strong>sécurisée</strong> 
+                  Les données collectées dans le cadre du diagnostic (photos, adresses, descriptions) sont stockées de manière <strong>sécurisée</strong>
                   pour l'analyse technique et la préparation des devis. Ces données sont :
                 </p>
                 <ul className="list-disc pl-6 mt-4 space-y-2">
@@ -108,8 +107,8 @@ export default function ConfidentialitePage() {
               </p>
               <ul className="list-disc pl-6 mt-4 space-y-2">
                 <li><strong>L'exécution d'un contrat :</strong> Pour la réalisation des prestations commandées</li>
-                <li><strong>Le consentement :</strong> Pour l'utilisation du formulaire de contact et du diagnostic en ligne</li>
-                <li><strong>L'intérêt légitime :</strong> Pour l'amélioration de nos services</li>
+                <li><strong>Le consentement :</strong> Pour l'utilisation du formulaire de contact et pour la transmission de vos données au partenaire d'exécution intervenant sur site</li>
+                <li><strong>L'intérêt légitime :</strong> Pour l'amélioration de nos services et la qualification interne du besoin</li>
                 <li><strong>Les obligations légales :</strong> Pour la conservation des factures et documents comptables</li>
               </ul>
             </section>
@@ -120,8 +119,9 @@ export default function ConfidentialitePage() {
                 Vos données personnelles sont destinées à :
               </p>
               <ul className="list-disc pl-6 mt-4 space-y-2">
-                <li>Bâti Halli — Personnel autorisé uniquement</li>
-                <li>Le bureau d'études structure indépendant mobilisé lorsqu'une note de calcul est requise (échange du dossier technique uniquement)</li>
+                <li><strong>IPB</strong> — Personnel autorisé uniquement (responsable du traitement)</li>
+                <li><strong>Bâti Halli</strong> — nom juridique : Entreprise Halli Mustapha (SIRET 398 185 421 00037, 13 rue du Recteur Dottin, 31100 Toulouse) — partenaire d'exécution intervenant sur site pour la visite technique et les travaux préconisés. Responsable de traitement distinct pour ses propres traitements (article 30 RGPD). La transmission est subordonnée à votre consentement explicite.</li>
+                <li>Le bureau d'études structure indépendant mobilisé lorsqu'une note de calcul Eurocodes est requise (échange du dossier technique uniquement)</li>
                 <li>Nos sous-traitants techniques sous contrat de confidentialité : Vercel Inc. (hébergement, USA — Data Privacy Framework), Resend (envoi d'emails transactionnels), Sentry (surveillance d'erreurs)</li>
                 <li>Google LLC pour les services de mesure (Google Analytics, Google Ads), de protection (reCAPTCHA) et de prise de rendez-vous (Calendly) — transferts hors UE encadrés par les Clauses Contractuelles Types et le Data Privacy Framework</li>
                 <li>Les autorités compétentes en cas d'obligation légale</li>
@@ -154,7 +154,7 @@ export default function ConfidentialitePage() {
               </p>
               <ul className="list-disc pl-6 mt-4 space-y-2">
                 <li><strong>Données clients actifs :</strong> Durée de la relation contractuelle + 3 ans</li>
-                <li><strong>Données du diagnostic :</strong> 3 ans après la dernière intervention</li>
+                <li><strong>Données du diagnostic :</strong> Durée nécessaire à la mise en jeu des garanties légales (10 ans à compter de la réception pour les ouvrages relevant de la décennale)</li>
                 <li><strong>Documents comptables :</strong> 10 ans (obligation légale)</li>
                 <li><strong>Données de navigation :</strong> 13 mois maximum (cookies)</li>
               </ul>
@@ -179,7 +179,7 @@ export default function ConfidentialitePage() {
                   Pour exercer ces droits, contactez-nous à : <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange hover:text-ipb-orange underline font-bold">contact@ipb-expertise.fr</a>
                 </p>
                 <p className="mt-2">
-                  Vous avez également le droit d'introduire une réclamation auprès de la CNIL (Commission Nationale de l'Informatique et des Libertés) 
+                  Vous avez également le droit d'introduire une réclamation auprès de la CNIL (Commission Nationale de l'Informatique et des Libertés)
                   si vous estimez que vos droits ne sont pas respectés.
                 </p>
               </div>
@@ -207,7 +207,7 @@ export default function ConfidentialitePage() {
             <section>
               <h2 className="text-2xl font-bold text-ipb-text mb-4">10. Sécurité des données</h2>
               <p>
-                Bâti Halli met en œuvre les mesures techniques et organisationnelles appropriées pour
+                IPB met en œuvre les mesures techniques et organisationnelles appropriées pour
                 protéger vos données personnelles contre tout accès non autorisé, perte, destruction ou
                 altération : connexion HTTPS chiffrée, hébergement sur serveurs sécurisés, accès limité
                 au personnel autorisé, sauvegardes régulières.
@@ -230,7 +230,7 @@ export default function ConfidentialitePage() {
             <section>
               <h2 className="text-2xl font-bold text-ipb-text mb-4">11. Modifications</h2>
               <p>
-                La présente politique de confidentialité peut être modifiée à tout moment. 
+                La présente politique de confidentialité peut être modifiée à tout moment.
                 La date de dernière mise à jour est indiquée en haut de cette page.
               </p>
             </section>
@@ -242,4 +242,3 @@ export default function ConfidentialitePage() {
     </div>
   );
 }
-

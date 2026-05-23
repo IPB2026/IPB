@@ -14,12 +14,12 @@ import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
   title: "L'institut IPB · Pathologie & structure du bâtiment · Occitanie",
-  description: "IPB est un institut spécialisé en pathologie et structure du bâtiment. Diagnostic, conception, coordination ; travaux réalisés sous décennale par les équipes du réseau IPB. Un seul interlocuteur, du diagnostic à la livraison. ☎ 05 82 95 33 75",
+  description: "IPB est un institut indépendant de coordination en pathologie et structure du bâtiment. Diagnostic et travaux exécutés sous décennale par les équipes du réseau IPB. Un seul interlocuteur, du diagnostic à la livraison. ☎ 05 82 95 33 75",
   keywords: ['institut pathologie bâtiment toulouse', 'expert fissures toulouse', 'expertise structure toulouse', "expertise bâtiment Haute-Garonne"],
   alternates: { canonical: 'https://www.ipb-expertise.fr/notre-expert' },
   openGraph: {
     title: "L'institut IPB · Pathologie & structure du bâtiment · Occitanie",
-    description: "Institut spécialisé. Diagnostic et coordination assurés par IPB ; travaux réalisés sous décennale par les équipes de réalisation du réseau IPB.",
+    description: "Institut indépendant de coordination. Diagnostic et travaux exécutés sous décennale par les équipes du réseau IPB.",
     url: 'https://www.ipb-expertise.fr/notre-expert',
     type: 'website',
   },
@@ -31,9 +31,10 @@ const organizationSchema = {
   "name": "IPB — Institut de Pathologie du Bâtiment",
   "url": "https://www.ipb-expertise.fr",
   "logo": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
-  // foundingDate du réseau IPB (et non d'IPB en tant qu'entité juridique).
-  "foundingDate": "2019",
-  "description": "Institut spécialisé en pathologie et structure du bâtiment. Diagnostic et coordination assurés par IPB ; travaux réalisés sous décennale par les équipes de réalisation du réseau IPB.",
+  // foundingDate = date d'immatriculation de l'EI IPB (2022). Le « réseau IPB »
+  // au sens marketing fonctionne depuis 2019, mais l'entité juridique date de 2022.
+  "foundingDate": "2022",
+  "description": "Institut indépendant de coordination spécialisé dans la pathologie et la structure du bâtiment. Diagnostic et travaux exécutés sous décennale par les équipes du réseau IPB.",
   "areaServed": [
     { "@type": "AdministrativeArea", "name": "Haute-Garonne" },
     { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne" },
@@ -43,13 +44,13 @@ const organizationSchema = {
 };
 
 const certifications = [
-  { name: "Garantie décennale 10 ans sur les travaux", detail: "Travaux d'agrafage, traitement humidité, ouverture de mur porteur et finitions exécutés par les équipes de réalisation du réseau IPB, sous décennale." },
-  { name: "RC pro IPB", detail: "Responsabilité civile professionnelle de l'institut sur le diagnostic, la conception et la coordination des travaux." },
+  { name: "Garantie décennale 10 ans sur les travaux", detail: "Travaux d'agrafage, traitement humidité, ouverture de mur porteur et finitions exécutés par les équipes du réseau IPB, sous décennale." },
+  { name: "RC pro IPB", detail: "Responsabilité civile professionnelle de l'institut au titre de ses activités de coordination, d'intermédiation et de production du dossier de synthèse." },
   { name: "Rapports reconnus par les assurances", detail: "Documents techniques rédigés dans les formes attendues par les assureurs et utilisés régulièrement dans les dossiers CAT-NAT et recours décennale." },
 ];
 
 const valeurs = [
-  { titre: "Continuité", desc: "Le diagnostic, la conception et la coordination des travaux sont assurés par un seul institut. Un seul interlocuteur, du premier appel à la livraison." },
+  { titre: "Continuité", desc: "Diagnostic, étude et travaux conduits selon un même protocole, sous une seule coordination. Un seul interlocuteur, du premier appel à la livraison." },
   { titre: "Sobriété", desc: "Nous décrivons ce que nous voyons, nous expliquons ce qu'il faut faire — sans surinvestir le vocabulaire. Si rien n'est urgent, nous le disons." },
   { titre: "Documentation", desc: "Chaque intervention est documentée : photos, mesures, plans, attestations. Le dossier complet est remis au client à la livraison." },
 ];
@@ -71,7 +72,7 @@ export default function NotreInstitutPage() {
               <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
                 <Image
                   src="/images/ludovic-expert-ipb.webp"
-                  alt="Ludovic — expert en pathologie et structure du bâtiment, institut IPB"
+                  alt="Ludovic, expert structure partenaire du réseau IPB"
                   fill
                   sizes="(max-width: 1024px) 100vw, 500px"
                   className="object-cover"
@@ -98,13 +99,13 @@ export default function NotreInstitutPage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-6">
-                  IPB est un institut spécialisé en pathologie et structure du bâtiment, basé à Toulouse et intervenant en Occitanie. Notre métier couvre le diagnostic et le traitement des fissures, l'expertise humidité, l'expertise structurelle avant achat, et l'ouverture de murs porteurs.
+                  IPB est un institut indépendant de coordination, spécialisé dans la pathologie et la structure du bâtiment. Basé à Toulouse, il intervient en Occitanie. Son champ d'action : fissures, humidité, expertise structurelle avant achat, ouverture de murs porteurs — tout ce qui touche à la solidité d'un bâti et à la lecture de ses désordres.
                 </p>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-6">
-                  L'institut diagnostique, conçoit, et met en œuvre avec ses équipes de réalisation — des artisans structure intégrés au réseau IPB, formés à notre protocole et assurés en décennale. Du premier appel à la livraison, vous avez un seul interlocuteur et une seule responsabilité de coordination.
+                  L'institut qualifie le besoin, oriente le dossier, et coordonne sa conduite jusqu'à la livraison. Le diagnostic technique et les travaux sont confiés à des artisans structure intégrés au réseau IPB — formés à notre protocole, titulaires de leur propre décennale. Du premier appel à la dernière finition, vous n'avez qu'un seul interlocuteur, et une seule responsabilité de coordination en face de vous.
                 </p>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10">
-                  Le réseau IPB est actif depuis 2019 en Haute-Garonne, dans le Tarn-et-Garonne, le Gers et le Tarn. Plus de 850 chantiers ont été menés par le réseau&nbsp;; l'institut traite en moyenne soixante-dix dossiers fissures par an, en complément des expertises humidité, avant achat, et des ouvertures de murs porteurs.
+                  Le réseau IPB est actif depuis 2019 en Haute-Garonne, dans le Tarn-et-Garonne, le Gers et le Tarn. Plus de 850 chantiers ont été menés ; le réseau traite en moyenne soixante-dix dossiers fissures par an, en complément des expertises humidité, avant achat, et des ouvertures de murs porteurs.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>

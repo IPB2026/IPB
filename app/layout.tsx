@@ -106,7 +106,7 @@ const localBusinessSchema = {
   // Permet à Google de fusionner les deux entités dans son Knowledge Graph.
   "parentOrganization": { "@id": "https://www.ipb-expertise.fr#organization" },
   "name": "IPB - Institut de Pathologie du Bâtiment",
-  "legalName": "Bâti Halli",
+  "legalName": "IPB",
   "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
   // foundingDate du réseau IPB (et non d'IPB en tant qu'entité juridique).
   "foundingDate": "2019",
@@ -195,7 +195,7 @@ const localBusinessSchema = {
     "ratingValue": "4.9",
     "bestRating": "5",
     "worstRating": "1",
-    "reviewCount": "15"
+    "reviewCount": "18"
   }
 };
 
