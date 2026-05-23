@@ -42,3 +42,6 @@ __pycache__/
 .claude/settings.local.json
 .claude/worktrees/
 
+
+# Working audit files (DGCCRF risk inventory) — NEVER commit publicly
+AUDIT_RISQUE_TROMPEUSE.md

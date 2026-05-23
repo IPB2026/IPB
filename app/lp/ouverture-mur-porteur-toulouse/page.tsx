@@ -23,7 +23,7 @@ export default function LandingMurPorteurToulouse() {
           "name": "IPB · Ouverture mur porteur Toulouse",
           "telephone": "+33582953375",
           "address": { "@type": "PostalAddress", "streetAddress": "54 avenue Jean Jaurès", "addressLocality": "Tournefeuille", "postalCode": "31170" },
-          "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "15" },
+          "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "18" },
           "offers": { "@type": "Offer", "priceRange": "4000-20000 EUR", "priceCurrency": "EUR" }
         })
       }} />

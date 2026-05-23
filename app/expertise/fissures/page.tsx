@@ -10,7 +10,7 @@ const fissuresPersonas: PersonaCard[] = [
   {
     label: 'Sinistré',
     titre: 'Vous voyez apparaître une fissure',
-    desc: "Quelque chose a changé sur votre façade ou à l'intérieur. L'institut lit le bâti, qualifie le désordre, et vous indique la suite à donner.",
+    desc: "Quelque chose a changé sur votre façade ou à l'intérieur. L'expert structure du réseau IPB lit le bâti ; l'institut qualifie le désordre et vous indique la suite à donner.",
     href: '/diagnostic',
     cta: 'Décrire ma situation',
   },
@@ -163,7 +163,7 @@ export default function FissuresPage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">
-                  Une fissure n'est jamais anodine, mais elle n'est pas toujours grave. L'institut intervient sur place avec ses instruments, identifie la cause, et vous remet un rapport clair. Si des travaux sont nécessaires, l'institut conçoit la solution et nos équipes de réalisation l'exécutent sous décennale 10 ans.
+                  Une fissure n'est jamais anodine, mais elle n'est pas toujours grave. L'expert structure du réseau IPB se déplace, mesure, identifie la cause ; l'institut vous remet un rapport clair. Si des travaux sont nécessaires, les équipes du réseau IPB les exécutent sous décennale 10 ans.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>
@@ -283,7 +283,7 @@ export default function FissuresPage() {
                 </div>
                 <div className="lg:col-span-5 lg:col-start-8">
                   <p className="text-[15px] leading-[1.9] font-light text-ipb-muted">
-                    Toutes les fissures n'ont pas la même origine ni la même gravité. Voici comment notre institut les classe à l'observation, avant le diagnostic instrumenté.
+                    Toutes les fissures n'ont pas la même origine ni la même gravité. Voici comment le réseau IPB les classe à l'observation, avant le diagnostic instrumenté.
                   </p>
                 </div>
               </div>
@@ -324,7 +324,7 @@ export default function FissuresPage() {
                 <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
                   <Image
                     src="/images/fissure-coin-maison.webp"
-                    alt="Diagnostic d'une fissure d'angle de façade par l'expert IPB"
+                    alt="Diagnostic d'une fissure d'angle de façade par l'expert structure du réseau IPB"
                     fill
                     sizes="(max-width: 1024px) 100vw, 40vw"
                     className="object-cover"
@@ -342,10 +342,10 @@ export default function FissuresPage() {
 
                 <ul className="space-y-8">
                   {[
-                    { titre: 'Diagnostic sur site', desc: "Visite par notre expert sous 72h en moyenne. Mesure au fissuromètre, lecture du bâti, identification de la cause (sécheresse, tassement, défaut de chaînage)." },
+                    { titre: 'Diagnostic sur site', desc: "Visite par l'expert structure du réseau IPB sous 72h en moyenne. Mesure au fissuromètre, lecture du bâti, identification de la cause (sécheresse, tassement, défaut de chaînage)." },
                     { titre: 'Rapport technique', desc: "Document écrit reconnu comme pièce technique par les assurances dans les dossiers CAT-NAT. Photos, mesures, cause identifiée, préconisations chiffrées." },
                     { titre: 'Conception de la solution', desc: "Agrafage structurel pour stabiliser le mur — solution adaptée à 90 % des cas. Pour les rares tassements actifs nécessitant une reprise en sous-œuvre, nous coordonnons l'intervention avec un spécialiste. Le choix dépend du diagnostic, jamais d'une solution préconçue." },
-                    { titre: 'Travaux exécutés par nos équipes de réalisation', desc: "L'institut coordonne le chantier ; les équipes de réalisation du réseau IPB exécutent les travaux sous garantie décennale 10 ans. Chantier propre, dans les délais annoncés. Tous les documents vous sont remis à la livraison." },
+                    { titre: 'Travaux exécutés par les équipes du réseau IPB', desc: "L'institut coordonne le chantier ; les équipes du réseau IPB exécutent les travaux sous garantie décennale 10 ans. Chantier propre, dans les délais annoncés. Tous les documents vous sont remis à la livraison." },
                   ].map((etape, i) => (
                     <RevealOnScroll key={etape.titre} delay={0.08 + i * 0.06}>
                       <li className="grid grid-cols-[40px_1fr] gap-5 items-start pb-8 border-b border-white/10">
@@ -427,7 +427,7 @@ export default function FissuresPage() {
                 Le diagnostic en ligne ne vous engage à rien.
               </p>
               <p className="text-[15px] leading-[1.85] font-light text-ipb-muted">
-                Vous obtenez un premier avis de notre expert structure, gratuitement. <strong className="text-ipb-text not-italic">Si la situation ne nécessite pas d'intervention, on vous le dira</strong> — c'est l'engagement de l'institut. Mieux vaut un avis juste qu'un devis vendu.
+                Vous obtenez un premier avis de l'expert structure du réseau IPB, gratuitement. <strong className="text-ipb-text not-italic">Si la situation ne nécessite pas d'intervention, on vous le dira</strong> — c'est l'engagement de l'institut. Mieux vaut un avis juste qu'un devis vendu.
               </p>
             </RevealOnScroll>
           </div>
