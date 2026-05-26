@@ -50,7 +50,7 @@ export function Hero() {
           </h1>
 
           <p className="text-[15px] leading-[1.9] font-light text-ipb-muted max-w-[540px] mb-10">
-            Fissures, humidité, désordres structurels : IPB diagnostique les pathologies de votre bâti, conçoit la solution, et la met en œuvre avec ses équipes de réalisation. Un seul interlocuteur, du premier regard à la livraison.
+            Fissures, humidité, désordres structurels&nbsp;: notre institut coordonne le diagnostic et les travaux, exécutés sous décennale par les équipes du réseau IPB. Un seul interlocuteur, du premier regard à la livraison.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
