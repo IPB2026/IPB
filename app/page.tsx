@@ -71,8 +71,10 @@ const organizationSchema = {
   },
   "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
   "description": "Institut spécialisé en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Diagnostic de fissures, expertise humidité, expertise avant achat et ouverture de mur porteur. Diagnostic et coordination assurés par IPB ; travaux réalisés sous décennale par les équipes de réalisation du réseau IPB.",
-  // foundingDate du réseau IPB (et non d'IPB en tant qu'entité juridique).
-  "foundingDate": "2019",
+  // foundingDate = date d'immatriculation de l'EI IPB (SIRET 908 995 103, 2022).
+  // Le « réseau IPB » est actif depuis 2019 mais Schema.org Organization
+  // doit refléter l'entité juridique, pas le récit marketing.
+  "foundingDate": "2022",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "54 avenue Jean Jaurès",
