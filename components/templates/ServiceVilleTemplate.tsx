@@ -33,6 +33,8 @@ interface ServiceVilleTemplateProps {
   methodHref: string;
   /** Champ ville à mettre en valeur dans le contexte (geologie, specificitesFissures, etc.) */
   contextField?: keyof VilleInfo;
+  /** Champ "dossier type" à afficher dans la section enrichie (dossierTypeFissures ou dossierTypeHumidite) */
+  dossierField?: 'dossierTypeFissures' | 'dossierTypeHumidite';
   /** Cards "Pour aller plus loin" */
   relatedCards: Array<{ href: string; titre: string; desc: string }>;
 }
@@ -47,10 +49,12 @@ export function ServiceVilleTemplate({
   heroAlt,
   methodHref,
   contextField,
+  dossierField,
   relatedCards,
 }: ServiceVilleTemplateProps) {
   const villeNom = villeData.nom;
   const contextText = contextField ? (villeData[contextField] as string | undefined) : undefined;
+  const dossierText = dossierField ? villeData[dossierField] : undefined;
 
   // FAQPage JSON-LD géolocalisé — rich snippets locales pour les routes service
   const localFAQ = generateLocalFAQ({
@@ -145,6 +149,72 @@ export function ServiceVilleTemplate({
                   </p>
                 )}
               </RevealOnScroll>
+            </div>
+          </section>
+        )}
+
+        {/* DOSSIER TYPE + NOTRE INTERVENTION (contenu enrichi unique par ville) */}
+        {(dossierText || villeData.notreInterventionLocale || villeData.reperesLocaux) && (
+          <section className="bg-ipb-cream py-24 lg:py-32 border-y border-ipb-rule" aria-labelledby="dossier-local-title">
+            <div className="max-w-ipb mx-auto px-6 lg:px-12">
+              <RevealOnScroll>
+                <Eyebrow>Lecture locale</Eyebrow>
+                <h2 id="dossier-local-title" className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Comment nous lisons<br /><em>un bâti à {villeNom}.</em>
+                </h2>
+              </RevealOnScroll>
+
+              <div className="mt-12 grid lg:grid-cols-12 gap-10 lg:gap-12">
+                {dossierText && (
+                  <RevealOnScroll delay={0.06} className="lg:col-span-7">
+                    <div className="bg-ipb-white border border-ipb-rule rounded-[6px] p-8 lg:p-10">
+                      <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-4">Dossier type traité à {villeNom}</p>
+                      <p className="text-[15px] leading-[1.85] font-light text-ipb-muted">
+                        {dossierText}
+                      </p>
+                    </div>
+                  </RevealOnScroll>
+                )}
+
+                <div className="lg:col-span-5 space-y-6">
+                  {villeData.notreInterventionLocale && (
+                    <RevealOnScroll delay={0.12}>
+                      <div>
+                        <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-3">Notre intervention à {villeNom}</p>
+                        <p className="text-[14px] leading-[1.85] font-light text-ipb-muted">
+                          {villeData.notreInterventionLocale}
+                        </p>
+                      </div>
+                    </RevealOnScroll>
+                  )}
+
+                  {villeData.reperesLocaux && (
+                    <RevealOnScroll delay={0.18}>
+                      <div className="pt-6 border-t border-ipb-rule">
+                        <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-3">Repères pour situer votre maison</p>
+                        <p className="text-[14px] leading-[1.85] font-light text-ipb-muted">
+                          {villeData.reperesLocaux}
+                        </p>
+                      </div>
+                    </RevealOnScroll>
+                  )}
+                </div>
+              </div>
+
+              {!!villeData.arretesCATNAT?.length && (
+                <RevealOnScroll delay={0.24}>
+                  <div className="mt-12 pt-10 border-t border-ipb-rule">
+                    <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-4">Arrêtés de catastrophe naturelle reconnus à {villeNom}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {villeData.arretesCATNAT.map((a) => (
+                        <span key={a} className="bg-ipb-white border border-ipb-rule rounded-[3px] px-4 py-2 text-[12px] font-light text-ipb-text">
+                          {a}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </RevealOnScroll>
+              )}
             </div>
           </section>
         )}

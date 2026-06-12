@@ -20,23 +20,23 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 const faqs = [
   {
     q: "Comment savoir si une fissure sur ma maison est dangereuse ?",
-    a: "Trois indices doivent vous alerter : la fissure dépasse 2 mm de large, elle suit les joints en escalier, ou elle évolue (vous voyez qu'elle s'agrandit d'une saison à l'autre). Si vos portes coincent ou que du carrelage se fissure, c'est que la structure bouge. Notre institut vient sur place avec un fissuromètre pour mesurer précisément l'évolution et identifier la cause.",
+    a: "Trois indices doivent vous alerter : la fissure dépasse 2 mm de large, elle suit les joints en escalier, ou elle évolue (vous voyez qu'elle s'agrandit d'une saison à l'autre). Si vos portes coincent ou que du carrelage se fissure, c'est que la structure bouge. Un expert du réseau IPB vient sur place avec un fissuromètre pour mesurer précisément l'évolution et identifier la cause.",
   },
   {
     q: "Comment se passe une expertise fissures à Toulouse ?",
-    a: "Le diagnostic instrumenté complet se fait sur site, et reste déductible des travaux si vous nous confiez ensuite l'intervention. Il inclut le déplacement, les mesures au fissuromètre, l'analyse des causes et un rapport écrit reconnu par les assurances dans les dossiers CAT-NAT. Pour le tarif précis selon votre situation, nous vous répondons sous 48h.",
+    a: "La visite de diagnostic est gratuite et réalisée à votre domicile par un expert du réseau IPB. Elle inclut le déplacement, les mesures au fissuromètre, l'analyse des causes et une note de synthèse écrite. Pour les dossiers CAT-NAT, cette note documente le lien entre les désordres et la sécheresse ; si vous avez besoin d'un rapport opposable à votre assureur, l'institut oriente vers un bureau d'études structure ou un expert d'assurance indépendant.",
   },
   {
     q: "Mon assurance prend-elle en charge les fissures de sécheresse ?",
-    a: "Oui, si votre commune a été reconnue en catastrophe naturelle pour la sécheresse de l'année concernée. Notre rapport documente les désordres et leur lien avec le retrait-gonflement des argiles, ce qui est essentiel pour le dossier. En 2022, plus de 9 000 communes françaises ont été reconnues, dont une grande partie de la Haute-Garonne.",
+    a: "Oui, si votre commune a été reconnue en catastrophe naturelle pour la sécheresse de l'année concernée. La note de synthèse remise à l'issue de la visite documente les désordres et leur lien avec le retrait-gonflement des argiles, ce qui est essentiel pour étayer votre dossier. En 2022, plus de 9 000 communes françaises ont été reconnues, dont une grande partie de la Haute-Garonne.",
   },
   {
     q: "Quelle est la différence entre agrafage et micropieux ?",
-    a: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables — solution adaptée à 90 % des fissures structurelles. Les micropieux reprennent les fondations en profondeur — intervention lourde réservée aux tassements actifs majeurs (au-delà de 10 cm). Comptez 12 000 à 18 000 € pour un agrafage, 40 000 à 60 000 € pour des micropieux. L'institut conçoit l'agrafage structurel et nos équipes de réalisation l'exécutent ; pour les rares cas qui nécessitent réellement des micropieux, nous coordonnons l'intervention avec un spécialiste après diagnostic.",
+    a: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables — solution adaptée à 90 % des fissures structurelles. Les micropieux reprennent les fondations en profondeur — intervention lourde réservée aux tassements actifs majeurs (au-delà de 10 cm). Comptez 12 000 à 18 000 € pour un agrafage, 40 000 à 60 000 € pour des micropieux. L'expert du réseau IPB dimensionne l'agrafage et les équipes de réalisation l'exécutent ; pour les rares cas qui nécessitent réellement des micropieux, l'institut coordonne l'intervention avec un spécialiste partenaire après diagnostic.",
   },
   {
     q: "Faut-il déclarer une ouverture de mur porteur en mairie ?",
-    a: "Pour une ouverture intérieure, une déclaration préalable suffit dans la majorité des communes. Pour une création de baie vitrée modifiant la façade, un permis de construire est généralement requis. En copropriété, un vote en assemblée générale est obligatoire. L'institut prépare le dossier technique pour chacune de ces démarches.",
+    a: "Pour une ouverture intérieure, une déclaration préalable suffit dans la majorité des communes. Pour une création de baie vitrée modifiant la façade, un permis de construire est généralement requis. En copropriété, un vote en assemblée générale est obligatoire. L'institut coordonne avec un bureau d'études structure partenaire qui produit le dossier technique pour chacune de ces démarches.",
   },
   {
     q: "Combien de temps pour ouvrir un mur porteur dans un appartement ?",
@@ -44,11 +44,11 @@ const faqs = [
   },
   {
     q: "Pourquoi choisir un institut spécialisé en pathologie du bâtiment ?",
-    a: "Sur un mur porteur ou une fissure structurelle, c'est la continuité entre diagnostic, conception et travaux qui sécurise le résultat. L'institut coordonne l'ensemble : nous diagnostiquons la cause, nous concevons la solution, et nos équipes de réalisation l'exécutent sous garantie décennale 10 ans. Vous avez un seul interlocuteur, et un dossier complet remis à la livraison.",
+    a: "Sur un mur porteur ou une fissure structurelle, c'est la continuité entre diagnostic, conception et travaux qui sécurise le résultat. L'institut coordonne l'ensemble : un expert du réseau IPB diagnostique la cause, conçoit la solution avec un bureau d'études partenaire quand un calcul s'impose, et les équipes de réalisation l'exécutent sous garantie décennale 10 ans. Vous avez un seul interlocuteur, et un dossier complet remis à la livraison.",
   },
   {
-    q: "Vos rapports sont-ils acceptés par les assurances ?",
-    a: "Oui. Nos rapports techniques sont rédigés dans les formes attendues par les assureurs : photos datées, mesures instrumentées, identification des causes, préconisations chiffrées. Ils servent régulièrement de pièce technique dans les dossiers de catastrophe naturelle et les recours en garantie décennale.",
+    q: "Quel document recevez-vous à l'issue du diagnostic ?",
+    a: "Une note de synthèse écrite, comportant photos datées, mesures instrumentées, identification des causes et préconisations chiffrées. Elle vous sert à comprendre la situation et à orienter vos démarches (assureur, syndic, agent immobilier). Pour un rapport opposable au sens strict (vente notariée, dossier d'assurance contesté, procédure judiciaire), l'institut oriente vers un bureau d'études structure ou un expert d'assurance indépendant.",
   },
   {
     q: "Quelles sont vos zones d'intervention ?",

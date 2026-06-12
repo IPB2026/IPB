@@ -98,7 +98,7 @@ export default async function ExpertMurPorteurVillePage({ params }: { params: Pr
       {
         "@type": "Question",
         "name": `Quel est le prix d'une ouverture de mur porteur à ${villeNom} ?`,
-        "acceptedAnswer": { "@type": "Answer", "text": `À ${villeNom}, le prix dépend de plusieurs paramètres concrets : la portée de l'ouverture, le type de mur (brique foraine, parpaing, pierre), ce qui se trouve au-dessus (combles, étage habité) et la complexité des finitions. Plutôt qu'une fourchette générique, utilisez notre calculateur en ligne basé sur des chantiers récents du réseau IPB — 4 questions, 2 minutes, fourchette précise par email. Devis remis sous 3 à 5 jours après visite gratuite, un seul interlocuteur du diagnostic à la livraison.` }
+        "acceptedAnswer": { "@type": "Answer", "text": `À ${villeNom}, le prix dépend de plusieurs paramètres concrets : la portée de l'ouverture, le type de mur (brique foraine, parpaing, pierre), ce qui se trouve au-dessus (combles, étage habité) et la complexité des finitions. Plutôt qu'une fourchette générique, utilisez notre calculateur en ligne basé sur des chantiers récents du réseau IPB — 4 questions, 2 minutes, fourchette précise par email. Devis remis sous 3 à 5 jours après visite sur site, un seul interlocuteur du diagnostic à la livraison.` }
       },
       {
         "@type": "Question",

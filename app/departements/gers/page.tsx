@@ -70,7 +70,7 @@ export default function GersPage() {
         name: 'Intervenez-vous dans tout le Gers ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Oui, IPB intervient dans tout le département du Gers (32), notamment à Auch, Condom, Fleurance, L\'Isle-Jourdain et Mirande. Nous nous déplaçons rapidement pour diagnostiquer et traiter vos problèmes de fissures et d\'humidité.',
+          text: 'Oui, IPB et son réseau d\'experts partenaires interviennent dans tout le département du Gers (32), notamment à Auch, Condom, Fleurance, L\'Isle-Jourdain et Mirande. Un expert du réseau IPB se déplace rapidement pour diagnostiquer et traiter vos problèmes de fissures et d\'humidité.',
         },
       },
       {
