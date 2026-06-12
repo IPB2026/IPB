@@ -2,8 +2,8 @@ import { ImageResponse } from 'next/og';
 import { blogPosts } from '@/app/data/blog';
 
 // Génération dynamique de la cover sociale (Open Graph + Twitter) par article.
-// Carte brandée IPB 1200×630 — pas de photo requise, unique par article,
-// auto-injectée par Next.js pour og:image et twitter:image.
+// Carte brandée IPB 1200×630 — unique par article, sans photo requise.
+// Auto-injectée par Next.js pour og:image et twitter:image.
 // Runtime Node (et non edge) : le fichier blog.ts est volumineux et dépasserait
 // la limite de bundle edge.
 
@@ -18,11 +18,18 @@ const CATEGORY_LABELS: Record<string, string> = {
   expertise: 'Expertise',
 };
 
-// Charte IPB
+// Charte IPB (tailwind.config)
 const NAVY = '#0B1826';
 const ORANGE = '#C8601F';
 const CREAM = '#F3EFE8';
 const MUTED = '#9A938A';
+
+// Polices statiques embarquées (TTF — Satori ne supporte pas le woff2).
+// Playfair Display = titres serif signature ; DM Sans = UI/marque.
+// Référencées via import.meta.url pour être bundlées par Next.js.
+const playfair700 = fetch(new URL('./_fonts/PlayfairDisplay-700.ttf', import.meta.url)).then((r) => r.arrayBuffer());
+const dmSans600 = fetch(new URL('./_fonts/DMSans-600.ttf', import.meta.url)).then((r) => r.arrayBuffer());
+const dmSans700 = fetch(new URL('./_fonts/DMSans-700.ttf', import.meta.url)).then((r) => r.arrayBuffer());
 
 export default async function Image({ params }: { params: { slug: string } }) {
   const post = blogPosts[params.slug];
@@ -30,9 +37,11 @@ export default async function Image({ params }: { params: { slug: string } }) {
   const title = post?.title ?? 'Institut de Pathologie du Bâtiment';
   const category = post ? (CATEGORY_LABELS[post.category] ?? 'Expertise') : 'Expertise';
 
+  const [playfair, dm600, dm700] = await Promise.all([playfair700, dmSans600, dmSans700]);
+
   // Taille de titre adaptative selon la longueur (évite les débordements)
   const len = title.length;
-  const titleSize = len > 110 ? 50 : len > 80 ? 58 : len > 55 ? 66 : 76;
+  const titleSize = len > 110 ? 48 : len > 80 ? 56 : len > 55 ? 64 : 74;
 
   return new ImageResponse(
     (
@@ -46,6 +55,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
           backgroundColor: NAVY,
           padding: '72px 80px',
           position: 'relative',
+          fontFamily: 'DM Sans',
         }}
       >
         {/* Filet décoratif vertical orange (rappel "fissure") */}
@@ -80,13 +90,14 @@ export default async function Image({ params }: { params: { slug: string } }) {
           </div>
         </div>
 
-        {/* Titre */}
+        {/* Titre — Playfair Display */}
         <div
           style={{
             display: 'flex',
+            fontFamily: 'Playfair Display',
             fontSize: titleSize,
             lineHeight: 1.1,
-            fontWeight: 800,
+            fontWeight: 700,
             color: CREAM,
             letterSpacing: -1,
             maxWidth: 1000,
@@ -98,7 +109,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
         {/* Pied : marque */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ display: 'flex', fontSize: 34, fontWeight: 800, color: '#fff', letterSpacing: 1 }}>
+            <div style={{ display: 'flex', fontSize: 34, fontWeight: 700, color: '#fff', letterSpacing: 1 }}>
               IPB
             </div>
             <div style={{ display: 'flex', fontSize: 22, color: MUTED, marginTop: 2 }}>
@@ -111,6 +122,13 @@ export default async function Image({ params }: { params: { slug: string } }) {
         </div>
       </div>
     ),
-    { ...size },
+    {
+      ...size,
+      fonts: [
+        { name: 'Playfair Display', data: playfair, weight: 700, style: 'normal' },
+        { name: 'DM Sans', data: dm600, weight: 600, style: 'normal' },
+        { name: 'DM Sans', data: dm700, weight: 700, style: 'normal' },
+      ],
+    },
   );
 }
