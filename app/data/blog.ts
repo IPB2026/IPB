@@ -32,6 +32,212 @@ interface BlogPost {
 
 // Base de données des articles avec copywriting expert et orienté conversion
 const blogPosts: { [key: string]: BlogPost } = {
+  'injection-resine-expansive-fondation': {
+    slug: 'injection-resine-expansive-fondation',
+    title: 'Injection de résine expansive pour fondations : prix, efficacité et alternatives (guide 2026)',
+    metaTitle: 'Résine expansive fondation : prix & efficacité 2026',
+    excerpt: "L'injection de résine expansive promet de stabiliser — voire de relever — une maison fissurée sans gros chantier. Mais quand est-elle vraiment adaptée, combien ça coûte en 2026, et quelles sont les alternatives ? Le guide complet, sans langue de bois, par l'institut IPB.",
+    date: '2026-06-12',
+    dateModified: '2026-06-12',
+    readTime: '14 min',
+    category: 'fissures',
+    author: "L'institut IPB",
+    metaDescription: "Injection de résine expansive pour fondations : prix 2026 (de 80 à 250 €/m²), efficacité réelle, cas adaptés, limites, comparatif avec micropieux et agrafage. Guide IPB, Occitanie.",
+    keywords: ['injection résine expansive', 'résine expansive fondation', 'résine expansive prix', 'injection résine fondation', 'relever maison affaissée', 'résine expansive avis', 'résine expansive inconvénients', 'reprise en sous-œuvre résine', 'tassement fondation solution', 'fissures RGA Haute-Garonne'],
+    content: `
+      <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
+        <p class="font-bold text-orange-900 mb-2">L'essentiel en 30 secondes</p>
+        <p class="text-orange-800">L'injection de résine expansive consiste à injecter sous vos fondations une résine polyuréthane qui gonfle, comble les vides laissés par le retrait des argiles et <strong>recompacte le sol porteur</strong>. C'est une solution mini-invasive, rapide (1 à 2 jours), adaptée à <strong>environ 14% des dossiers de tassement</strong> que nous voyons en Occitanie. Comptez <strong>80 à 250 € par m²</strong> traité, soit 6 000 à 20 000 € pour une maison individuelle. Elle ne convient pas à tous les sols ni à tous les bâtis : un diagnostic préalable est indispensable pour ne pas dépenser dans le vide — au sens propre.</p>
+      </div>
+
+      <h2 id="quest-ce-que">Qu'est-ce que l'injection de résine expansive ?</h2>
+
+      <p>L'injection de résine expansive (aussi appelée <strong>résine de comblement</strong> ou <strong>resin injection</strong>) est une technique de <strong>reprise en sous-œuvre</strong> qui consiste à injecter, à travers de petits forages de 12 à 16 mm, une résine polyuréthane bi-composant directement dans le sol situé sous les fondations.</p>
+
+      <p>Au contact des deux composants, la résine <strong>réagit chimiquement et gonfle</strong> en quelques secondes, jusqu'à plusieurs fois son volume initial. Cette expansion produit deux effets recherchés :</p>
+
+      <ul>
+        <li><strong>Le comblement des vides</strong> : quand l'argile se rétracte sous l'effet de la sécheresse, elle laisse des poches d'air et des zones décomprimées sous la semelle de fondation. La résine les remplit.</li>
+        <li><strong>La recompaction du sol</strong> : en gonflant dans un espace confiné, la résine exerce une pression qui densifie le terrain environnant et améliore sa portance.</li>
+      </ul>
+
+      <p>Dans certains cas favorables, la pression d'expansion permet même de <strong>relever légèrement une maison affaissée</strong> (quelques millimètres à 1-2 cm), en suivant le mouvement au laser et au comparateur pendant l'injection.</p>
+
+      <div class="my-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
+        <h3 class="font-bold text-blue-900 mb-3">L'image simple</h3>
+        <p class="text-blue-800">Imaginez une éponge sèche placée sous un livre lourd : elle se tasse, le livre penche. La résine expansive, c'est comme glisser de la mousse expansive sous le livre — elle remplit le vide et redonne de l'appui. Sauf qu'ici, on travaille sous des dizaines de tonnes de maçonnerie, avec des résines calibrées et un suivi millimétrique.</p>
+      </div>
+
+      <h2 id="quand-adaptee">Quand l'injection de résine est-elle adaptée ? (et quand elle ne l'est pas)</h2>
+
+      <p>C'est la question qui compte vraiment. La résine expansive est <strong>excellente dans son domaine d'emploi, et inutile — voire risquée — en dehors</strong>. Voici notre grille de lecture.</p>
+
+      <h3>Les situations FAVORABLES</h3>
+      <ul>
+        <li><strong>Tassement modéré sur sol argileux</strong> consécutif à une sécheresse (RGA), avec fondations superficielles encore saines.</li>
+        <li><strong>Maison individuelle</strong> de plain-pied ou R+1 sur semelles filantes.</li>
+        <li><strong>Vides détectés sous la fondation</strong> (par sondage ou pénétromètre) que la résine peut effectivement combler.</li>
+        <li><strong>Besoin d'une intervention rapide et peu salissante</strong> (pas de terrassement lourd, habitation maintenue).</li>
+      </ul>
+
+      <h3>Les situations DÉFAVORABLES</h3>
+      <ul>
+        <li><strong>Tassement profond ou actif majeur</strong> (au-delà de 10 cm de dénivelé) : il faut descendre les charges plus bas que la résine ne peut agir → micropieux.</li>
+        <li><strong>Sols très compressibles, tourbeux ou gorgés d'eau</strong> : la résine ne trouve pas d'appui stable.</li>
+        <li><strong>Bâti ancien en pierre maçonnée</strong> sans fondation continue identifiable : la pression d'expansion peut être imprévisible.</li>
+        <li><strong>Cause non traitée</strong> : injecter de la résine sans régler la fuite, le drainage ou l'arbre qui pompe l'eau du sol, c'est traiter le symptôme. Le tassement reprendra.</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
+        <h3 class="font-bold text-orange-900 mb-3">Le réflexe IPB</h3>
+        <p class="text-orange-800">Avant toute injection, un expert du réseau IPB réalise une visite de diagnostic : mesure du dénivelé au niveau laser, sondage des fondations, analyse de la cause (RGA, fuite, drainage, végétation). La note de synthèse précise si la résine est adaptée — ou si une autre solution sera plus durable. Quand un dimensionnement opposable est nécessaire, un bureau d'études structure partenaire produit la note de calcul. <strong>On ne vend pas une technique : on préconise celle qui correspond à votre dossier.</strong></p>
+      </div>
+
+      <h2 id="prix">Prix de l'injection de résine expansive en 2026</h2>
+
+      <p>Le prix dépend du volume de résine injecté, du nombre de points de forage, de la profondeur de traitement et de l'accessibilité du chantier. En Occitanie, sur la base des dossiers traités par le réseau IPB en 2025-2026, voici les fourchettes observées.</p>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead>
+            <tr class="bg-slate-100">
+              <th class="border border-slate-300 p-4 text-left font-bold">Unité de mesure</th>
+              <th class="border border-slate-300 p-4 text-center font-bold">Fourchette 2026</th>
+              <th class="border border-slate-300 p-4 text-left font-bold">Commentaire</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-4">Au m² traité</td>
+              <td class="border border-slate-300 p-4 text-center font-bold">80 – 250 €/m²</td>
+              <td class="border border-slate-300 p-4">Selon profondeur et volume injecté</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-4">Au mètre linéaire de fondation</td>
+              <td class="border border-slate-300 p-4 text-center font-bold">150 – 400 €/ml</td>
+              <td class="border border-slate-300 p-4">Mode de chiffrage le plus fréquent</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-4">Maison individuelle (cas partiel)</td>
+              <td class="border border-slate-300 p-4 text-center font-bold">6 000 – 12 000 €</td>
+              <td class="border border-slate-300 p-4">Traitement d'une ou deux façades</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-4">Maison individuelle (cas étendu)</td>
+              <td class="border border-slate-300 p-4 text-center font-bold">12 000 – 20 000 €</td>
+              <td class="border border-slate-300 p-4">Traitement périphérique complet</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>À titre de repère, l'injection de résine se situe <strong>entre l'agrafage structurel</strong> (8 000 à 18 000 €, qui traite la fissure mais pas le sol) <strong>et les micropieux</strong> (25 000 à 50 000 €, qui reprennent les charges en profondeur). Pour un panorama complet des coûts, voir notre <a href="/blog/prix-agrafage-fissures-2026">guide prix de l'agrafage 2026</a>.</p>
+
+      <div class="my-8 p-6 bg-green-50 border border-green-200 rounded-xl">
+        <h3 class="font-bold text-green-900 mb-3">Bon à savoir — indemnisation sécheresse</h3>
+        <p class="text-green-800">Si votre commune a été reconnue en état de catastrophe naturelle sécheresse, l'injection de résine peut être prise en charge par votre assurance habitation au titre de la garantie CAT-NAT. La franchise légale reste due (1 534 € pour une maison individuelle). Notre <a href="/blog/catastrophe-naturelle-secheresse-demarches-indemnisation">guide des démarches d'indemnisation</a> détaille la marche à suivre.</p>
+      </div>
+
+      <h2 id="deroulement">Comment se déroule un chantier d'injection ?</h2>
+
+      <p>Un chantier type d'injection de résine expansive se déroule en cinq temps :</p>
+
+      <ol>
+        <li><strong>Diagnostic et calepinage</strong> — repérage des zones tassées, définition de la maille de forage (généralement tous les 30 à 50 cm le long de la fondation concernée).</li>
+        <li><strong>Forages</strong> — perçage de petits trous (12 à 16 mm) à travers le dallage ou en pied de mur, jusqu'à la profondeur de traitement.</li>
+        <li><strong>Injection contrôlée</strong> — la résine est injectée par passes successives, sous surveillance d'un niveau laser placé sur la structure pour détecter le moindre relevage.</li>
+        <li><strong>Suivi du relevage</strong> — dès que la structure amorce un mouvement ascendant contrôlé, l'injection est ajustée millimètre par millimètre.</li>
+        <li><strong>Contrôle et rebouchage</strong> — vérification de la portance, rebouchage discret des forages. La maison reste habitable pendant toute l'intervention.</li>
+      </ol>
+
+      <p>Durée typique : <strong>1 à 2 jours</strong> pour une maison individuelle, contre 1 à 3 semaines pour des micropieux. C'est l'un des grands avantages de la technique.</p>
+
+      <h2 id="comparatif">Résine expansive, agrafage ou micropieux : le comparatif</h2>
+
+      <p>Ces trois techniques ne traitent pas le même problème. L'erreur classique consiste à les opposer alors qu'elles sont souvent <strong>complémentaires</strong> : la résine et les micropieux stabilisent le <em>sol et les fondations</em>, l'agrafage répare le <em>mur fissuré</em>.</p>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead>
+            <tr class="bg-slate-100">
+              <th class="border border-slate-300 p-4 text-left font-bold">Critère</th>
+              <th class="border border-slate-300 p-4 text-center font-bold">Résine expansive</th>
+              <th class="border border-slate-300 p-4 text-center font-bold">Micropieux</th>
+              <th class="border border-slate-300 p-4 text-center font-bold">Agrafage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-4 font-medium">Ce que ça traite</td>
+              <td class="border border-slate-300 p-4 text-center">Le sol sous fondation</td>
+              <td class="border border-slate-300 p-4 text-center">Les fondations en profondeur</td>
+              <td class="border border-slate-300 p-4 text-center">La fissure du mur</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-4 font-medium">Tassement traité</td>
+              <td class="border border-slate-300 p-4 text-center">Modéré</td>
+              <td class="border border-slate-300 p-4 text-center">Sévère / actif</td>
+              <td class="border border-slate-300 p-4 text-center">Stabilisé</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-4 font-medium">Durée chantier</td>
+              <td class="border border-slate-300 p-4 text-center">1 – 2 jours</td>
+              <td class="border border-slate-300 p-4 text-center">1 – 3 semaines</td>
+              <td class="border border-slate-300 p-4 text-center">2 – 5 jours</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-4 font-medium">Coût indicatif</td>
+              <td class="border border-slate-300 p-4 text-center">6 000 – 20 000 €</td>
+              <td class="border border-slate-300 p-4 text-center">25 000 – 50 000 €</td>
+              <td class="border border-slate-300 p-4 text-center">8 000 – 18 000 €</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-4 font-medium">Invasivité</td>
+              <td class="border border-slate-300 p-4 text-center">Très faible</td>
+              <td class="border border-slate-300 p-4 text-center">Élevée</td>
+              <td class="border border-slate-300 p-4 text-center">Modérée</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Pour approfondir le choix entre les deux techniques de reprise en sous-œuvre, lisez notre comparatif détaillé <a href="/blog/agrafage-vs-micropieux-choix">agrafage ou micropieux</a>, et pour les fondations de bâti ancien, notre dossier <a href="/blog/fondations-maison-ancienne-renforcement">renforcement des fondations d'une maison ancienne</a>.</p>
+
+      <h2 id="limites">Les limites et inconvénients à connaître</h2>
+
+      <p>Aucune technique n'est miraculeuse. Voici ce qu'un professionnel honnête doit vous dire sur la résine expansive :</p>
+
+      <ul>
+        <li><strong>Elle ne traite pas la cause.</strong> Si un arbre adulte pompe l'eau du sol à 4 mètres de votre mur, ou si une canalisation fuit, la résine comblera le vide actuel mais le tassement reprendra. La cause doit être traitée en parallèle.</li>
+        <li><strong>Elle suppose un sol où la résine peut s'ancrer.</strong> Sur des terrains trop mous ou saturés d'eau, l'expansion ne produit pas la portance attendue.</li>
+        <li><strong>Le relevage n'est jamais garanti à 100%.</strong> On parle de stabilisation et de recompaction ; le relevage de la structure est un bonus possible, pas une promesse contractuelle.</li>
+        <li><strong>La qualité dépend du diagnostic.</strong> Mal calibrée (maille de forage, volume, profondeur), l'injection peut être inefficace, voire créer des désordres. D'où l'importance d'un diagnostic structurel sérieux en amont.</li>
+      </ul>
+
+      <h2 id="faq">Questions fréquentes</h2>
+
+      <h3>L'injection de résine expansive est-elle vraiment efficace ?</h3>
+      <p>Oui, dans son domaine d'emploi : tassement modéré sur sol argileux avec fondations saines. Dans ces conditions, c'est une solution éprouvée qui stabilise durablement la structure. Hors de ce cadre (tassement sévère, sols mous, cause non traitée), son efficacité chute fortement. Le diagnostic préalable est ce qui sépare une injection utile d'un budget gaspillé.</p>
+
+      <h3>Combien coûte l'injection de résine pour une maison ?</h3>
+      <p>En 2026 en Occitanie, comptez 80 à 250 € par m² traité, soit le plus souvent 6 000 à 20 000 € pour une maison individuelle selon l'étendue du tassement. Le chiffrage se fait fréquemment au mètre linéaire de fondation (150 à 400 €/ml).</p>
+
+      <h3>La résine expansive peut-elle relever ma maison affaissée ?</h3>
+      <p>Dans des conditions favorables, l'expansion de la résine peut relever la structure de quelques millimètres à 1-2 cm, sous contrôle laser. Mais le relevage n'est pas garanti : l'objectif premier reste la stabilisation et la recompaction du sol porteur.</p>
+
+      <h3>Résine expansive ou micropieux : que choisir ?</h3>
+      <p>La résine convient aux tassements modérés avec fondations superficielles saines ; les micropieux s'imposent pour les tassements sévères ou actifs nécessitant de reporter les charges en profondeur (au-delà de 10 cm de dénivelé). Seul un diagnostic sur site permet de trancher — et parfois la bonne réponse combine stabilisation du sol et agrafage du mur.</p>
+
+      <h3>L'injection de résine est-elle prise en charge par l'assurance ?</h3>
+      <p>Si votre commune est reconnue en catastrophe naturelle sécheresse, oui, au titre de la garantie CAT-NAT de votre assurance habitation, après déduction de la franchise légale (1 534 €). La note de synthèse documentant le lien entre le désordre et le RGA est un élément clé du dossier.</p>
+
+      <div class="my-10 p-8 bg-ipb-navy rounded-2xl text-center">
+        <h2 class="text-white font-bold text-2xl mb-3" style="color:white;">Un doute sur la bonne solution pour vos fondations ?</h2>
+        <p class="text-white/80 mb-6">Avant d'engager une injection de résine, faites lire votre situation par un expert du réseau IPB. Diagnostic sur site, note de synthèse claire, préconisation honnête — y compris quand la résine n'est pas la bonne réponse.</p>
+        <a href="/diagnostic" class="inline-block bg-ipb-orange text-white font-semibold px-8 py-4 rounded-lg hover:bg-orange-700 transition-colors" style="color:white;">Décrire ma situation en 2 minutes →</a>
+      </div>
+    `
+  },
   'fissures-maison-toulouse-que-faire': {
     slug: 'fissures-maison-toulouse-que-faire',
     metaTitle: 'Fissures Maison Toulouse · Que Faire · Guide Expert',
@@ -4874,7 +5080,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p><strong>Prix</strong> : 8 000€ - 18 000€ selon l'ampleur</p>
 
       <h3>2. L'injection de résine expansive</h3>
-      <p>Injection sous les fondations pour combler les vides créés par le retrait des argiles. Cette technique permet même de "relever" légèrement une maison affaissée.</p>
+      <p>Injection sous les fondations pour combler les vides créés par le retrait des argiles. Cette technique permet même de "relever" légèrement une maison affaissée. Pour tout savoir (prix, cas adaptés, limites), consultez notre <a href="/blog/injection-resine-expansive-fondation" class="text-orange-600 underline hover:text-orange-700">guide complet de l'injection de résine expansive</a>.</p>
       
       <p><strong>Idéale pour :</strong></p>
       <ul>
@@ -6763,7 +6969,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p><strong>Durée</strong> : 1 à 3 semaines de chantier.</p>
 
       <h3>Solution 3 : L'injection de résine expansive</h3>
-      <p><strong>Principe</strong> : de la résine polyuréthane est injectée sous les fondations. En se dilatant, elle compacte le sol et comble les vides créés par le retrait de l'argile. Elle peut aussi "relever" légèrement une fondation qui s'est affaissée.</p>
+      <p><strong>Principe</strong> : de la résine polyuréthane est injectée sous les fondations. En se dilatant, elle compacte le sol et comble les vides créés par le retrait de l'argile. Elle peut aussi "relever" légèrement une fondation qui s'est affaissée. Nous détaillons cette technique dans notre <a href="/blog/injection-resine-expansive-fondation" class="text-orange-600 underline hover:text-orange-700">guide dédié à la résine expansive</a>.</p>
       <p><strong>Quand l'utiliser</strong> : tassement modéré avec vides sous les fondations, sol meuble mais pas instable.</p>
       <p><strong>Coût</strong> : 5 000€ à 15 000€.</p>
       <p><strong>Durée</strong> : 1 à 2 jours.</p>
