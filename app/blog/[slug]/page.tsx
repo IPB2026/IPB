@@ -87,9 +87,9 @@ export async function generateMetadata(
       ? `${baseDescription}${callSignature}`
       : `${baseDescription.slice(0, 154 - callSignature.length).trimEnd()}…${callSignature}`);
 
-  // Image de couverture pertinente (cf. SEO audit C2 — pas le logo générique)
-  const coverPath = post.coverImage || getCategoryFallbackImage(post.category, post.keywords);
-  const coverUrl = coverPath.startsWith('http') ? coverPath : `${baseUrl}${coverPath}`;
+  // og:image et twitter:image sont générées dynamiquement par le fichier-convention
+  // app/blog/[slug]/opengraph-image.tsx (carte brandée IPB unique par article).
+  // On ne déclare donc pas d'images explicites ici pour éviter les doublons.
 
   return {
     title: pageTitle,
@@ -110,20 +110,11 @@ export async function generateMetadata(
       publishedTime: post.date,
       modifiedTime: post.dateModified || post.date,
       authors: [post.author],
-      images: [
-        {
-          url: coverUrl,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: seoDescription,
-      images: [coverUrl],
       creator: '@IPBExpertise',
     },
     robots: {
