@@ -20,7 +20,6 @@ import {
   generateBreadcrumbJsonLd,
   getCategoryFallbackImage,
   extractKeyTakeaways,
-  generateHowToSchema,
   computeReadTime,
   getPrevNextArticles,
 } from '@/lib/blog-helpers';
@@ -184,14 +183,8 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
   // 🎯 AI OVERVIEWS BOOST : bloc "L'essentiel" auto-extrait
   const keyTakeaways = extractKeyTakeaways(post.content);
 
-  // 🎯 RICH SNIPPETS : schema HowTo si l'article est structuré en étapes
-  const howToSchema = generateHowToSchema({
-    title: post.title,
-    metaDescription: post.metaDescription,
-    slug: post.slug,
-    date: post.date,
-    content: post.content,
-  });
+  // NB : le schema HowTo a été retiré (déprécié par Google en septembre 2023,
+  // ne génère plus de rich results). Article + FAQPage couvrent les rich snippets.
 
   // 🎯 LISIBILITÉ : reading time auto-calculé à partir du content réel
   // (les valeurs manuelles dans blog.ts sont parfois obsolètes après extension)
@@ -241,14 +234,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       )}
-      {/* 🎯 HowTo Schema pour articles structurés en étapes */}
-      {howToSchema && (
-        <Script
-          id="howto-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-        />
-      )}
+      {/* HowTo Schema retiré (déprécié par Google en septembre 2023) */}
       {/* Reading Progress Bar */}
       <ReadingProgress />
 
