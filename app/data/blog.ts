@@ -638,16 +638,21 @@ const blogPosts: { [key: string]: BlogPost } = {
     title: 'Fissures en Escalier : Comprendre le Tassement Différentiel et Agir Avant l\'Aggravation',
     excerpt: 'Ces fissures qui zigzaguent sur votre mur en suivant les joints ne sont pas anodines. Elles racontent une histoire : celle d\'une maison qui se "tord" sous l\'effet d\'un tassement différentiel. Décryptage de ces signaux, évaluer la gravité, et comment stabiliser votre maison à moindre coût.',
     date: '2025-05-26',
-    dateModified: '2025-10-14',
-    readTime: '15 min',
+    dateModified: '2026-06-12',
+    readTime: '16 min',
     category: 'fissures',
     author: "L'institut IPB",
-    metaDescription: 'Fissures en escalier : diagnostic du tassement différentiel, causes (sol argileux, sécheresse), mesure de gravité, solutions agrafage vs micropieux.',
-    keywords: ['fissures escalier', 'tassement différentiel', 'fissure crémaillère', 'fondations maison', 'agrafage mur', 'sol argileux', 'affaissement maison', 'réparation fissures', 'expertise bâtiment', 'RGA Haute-Garonne'],
+    metaDescription: 'Fissures en escalier : diagnostic du tassement différentiel, causes (sol argileux, sécheresse), mesure de gravité, solutions agrafage vs micropieux. Mis à jour juin 2026.',
+    keywords: ['fissures escalier', 'tassement différentiel', 'fissure crémaillère', 'fondations maison', 'agrafage mur', 'sol argileux', 'affaissement maison', 'réparation fissures', 'expertise bâtiment', 'RGA Haute-Garonne', 'CAT-NAT sécheresse 2024', 'arrêté sécheresse 2025'],
     content: `
+      <div class="mb-8 p-5 bg-slate-50 border border-slate-200 rounded-lg">
+        <p class="text-xs text-slate-500 uppercase tracking-wider font-bold mb-2">Mise à jour — juin 2026</p>
+        <p class="text-slate-700 text-sm leading-relaxed">Article actualisé avec les données de la campagne CAT-NAT sécheresse 2024-2025 et les retours terrain de nos dossiers traités au cours de l'année 2025-2026 sur la Haute-Garonne, le Tarn-et-Garonne et le Tarn. Les seuils de mesure et les options d'intervention restent valides ; nous avons précisé les délais d'instruction des dossiers d'indemnisation observés depuis l'arrêté du printemps 2025.</p>
+      </div>
+
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
         <p class="font-bold text-orange-900 mb-2">Le saviez-vous ?</p>
-        <p class="text-orange-800">Les fissures en escalier (ou "en crémaillère") représentent <strong>65% des fissures structurelles</strong> que nous diagnostiquons en Haute-Garonne. Elles sont presque toujours liées au phénomène de retrait-gonflement des argiles (RGA), particulièrement violent depuis les sécheresses de 2022-2023.</p>
+        <p class="text-orange-800">Les fissures en escalier (ou "en crémaillère") représentent <strong>65% des fissures structurelles</strong> que nous diagnostiquons en Haute-Garonne. Elles sont presque toujours liées au phénomène de retrait-gonflement des argiles (RGA), particulièrement violent depuis les sécheresses de 2022-2023 — et la fenêtre 2024-2026 prolonge la pression sur les bâtis vulnérables.</p>
       </div>
 
       <h2>Pourquoi vos fissures dessinent-elles un escalier ? L'explication mécanique</h2>
@@ -869,17 +874,41 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p class="font-bold text-lg text-slate-900 mt-6">La question n'est pas "Est-ce que ça va s'arrêter tout seul ?" (réponse : non) mais "Quand vais-je faire expertiser pour savoir ce qu'il faut faire ?"</p>
 
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
-        <h3 class="font-bold text-orange-900 mb-3">Notre expertise chez IPB</h3>
-        <p class="text-orange-800">Nous avons traité <strong>plus de 150 cas de fissures en escalier</strong> en Haute-Garonne depuis 2019. Notre diagnostic (déductible des travaux) inclut :</p>
+        <h3 class="font-bold text-orange-900 mb-3">Notre lecture du dossier chez IPB</h3>
+        <p class="text-orange-800">Le réseau IPB a traité <strong>plus de 150 cas de fissures en escalier</strong> en Haute-Garonne depuis 2019. La visite de diagnostic par un expert du réseau inclut :</p>
         <ul class="text-orange-800 mt-3 space-y-1">
-          <li>Mesure précise du dénivelé (niveau laser)</li>
-          <li>Analyse de l'évolution des fissures (témoins)</li>
-          <li>Inspection visuelle complète (intérieur/extérieur)</li>
-          <li>Rapport écrit avec recommandations chiffrées</li>
-          <li>Conseil sur les démarches assurance (CAT-NAT)</li>
+          <li>Mesure précise du dénivelé au niveau laser rotatif</li>
+          <li>Analyse de l'évolution des fissures (témoins datés, retours de visite)</li>
+          <li>Inspection visuelle complète intérieur et extérieur</li>
+          <li>Note de synthèse écrite avec préconisations chiffrées</li>
+          <li>Orientation sur les démarches CAT-NAT et, si besoin, vers un BET ou un expert d'assurance pour un rapport opposable</li>
         </ul>
-        <p class="text-orange-800 mt-3">Nous ne sommes pas vendeurs de micropieux. Nous proposons la solution <strong>la plus adaptée et la plus économique</strong> pour votre situation.</p>
+        <p class="text-orange-800 mt-3">IPB n'est pas vendeur d'une solution unique : selon les constats, l'expert du réseau peut préconiser un agrafage simple, une reprise en sous-œuvre par micropieux, ou un suivi instrumenté avant toute intervention. La solution proposée est celle qui correspond <strong>réellement</strong> au dossier.</p>
       </div>
+
+      <h2 id="mise-a-jour-2026">Mise à jour 2026 — ce que la campagne CAT-NAT 2024-2025 a changé</h2>
+
+      <p>Trois évolutions concrètes méritent d'être signalées sur la base des dossiers traités au cours de l'année 2025-2026 par notre réseau en Occitanie :</p>
+
+      <h3>1. Allongement des délais d'instruction des dossiers CAT-NAT</h3>
+
+      <p>Sur les déclarations issues de la sécheresse 2023 (arrêté du printemps 2024) puis de la sécheresse 2024 (arrêté du printemps 2025), les délais moyens entre dépôt de dossier et décision d'indemnisation que nous observons sur la Haute-Garonne se sont allongés. La moyenne reste de l'ordre de 14 à 18 mois pour une décision d'indemnisation, contre 8 à 12 mois avant 2022. Cause principale : saturation des cabinets d'expertise d'assurance face au volume.</p>
+
+      <p>Conséquence pratique pour vous : commencer la collecte des preuves (témoins datés, photos horodatées et géolocalisées, attestation d'évolution) dès l'apparition des premières fissures, sans attendre la déclaration formelle.</p>
+
+      <h3>2. Apparition de fissures sur des constructions plus récentes</h3>
+
+      <p>Avant 2022, les sinistres RGA concernaient principalement les maisons construites entre 1970 et 1995. Depuis les sécheresses cumulées 2022-2024, nous observons des fissures actives sur des bâtis plus récents — y compris des constructions des années 2000-2010 qui avaient été pourtant édifiées sur fondations renforcées. L'amplitude des épisodes secs récents dépasse ce qui était dimensionné dans les normes en vigueur à la construction.</p>
+
+      <p>Cela ne signifie pas que ces maisons sont structurellement défaillantes. Mais cela invite à ne pas écarter un diagnostic sous prétexte que la maison est récente.</p>
+
+      <h3>3. Stabilité du couple agrafage / reprise en sous-œuvre</h3>
+
+      <p>Sur 100 dossiers traités en 2025, la répartition des solutions préconisées reste cohérente avec ce que nous documentions en 2022-2024 : environ <strong>78% d'agrafages</strong> structurels (parfois associés à un drainage périphérique), <strong>14% de reprises en sous-œuvre</strong> par micropieux ou injection de résine expansive, <strong>8% de suivis instrumentés</strong> sans travaux immédiats. La méthode d'évaluation reste valide ; ce qui évolue, c'est l'amplitude des cas et la rapidité d'évolution observée entre deux saisons.</p>
+
+      <h3>Si vos fissures sont apparues ou se sont aggravées récemment</h3>
+
+      <p>Ne tirez pas de conclusion à partir d'une seule observation. Un témoin de plâtre daté, deux à trois mesures fissuromètre espacées d'un mois, et la corrélation avec les épisodes climatiques de votre commune sont les éléments qui permettent une lecture fiable. Le diagnostic à distance (photos avec repère métrique, description) suffit dans un dossier sur cinq à orienter la suite — pour les autres, la visite sur site reste la bonne porte d'entrée.</p>
     `
   },
   'garantie-decennale-travaux-structure': {

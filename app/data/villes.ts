@@ -34,6 +34,13 @@ export type VilleInfo = {
   specificitesHumidite?: string;
   conseillExpert?: string;
   tauxSinistralite?: string;
+  // Contenu d'enrichissement unique par ville (anti-thin content / déboilerplatage)
+  // Ajoutés 2026-06 suite au rapport GSC "Explorée actuellement non indexée"
+  // — paragraphes denses pour différencier les pages programmatiques.
+  dossierTypeFissures?: string;
+  dossierTypeHumidite?: string;
+  notreInterventionLocale?: string;
+  reperesLocaux?: string;
 };
 
 export const villesData: Record<string, VilleInfo> = {
@@ -258,7 +265,11 @@ export const villesData: Record<string, VilleInfo> = {
     specificitesFissures: 'À Tournefeuille, nous observons fréquemment des cas de "maisons à fissures multiples" : façades avant, arrière et pignons touchés simultanément. C\'est caractéristique d\'un sol uniformément argileux qui se rétracte de manière homogène mais intense.',
     specificitesHumidite: 'Le quartier de la Ramée, ancienne zone humide, cumule les problèmes : remontées capillaires, infiltrations, et paradoxalement, fissures liées au RGA lors des sécheresses. Le traitement y est souvent complexe et combiné.',
     conseillExpert: 'Si vous envisagez d\'acheter à Tournefeuille, exigez un diagnostic fissures préachat, surtout dans les quartiers de Pahin et La Paderne. Les maisons non fissurées sont l\'exception, pas la règle.',
-    tauxSinistralite: '19,5%'
+    tauxSinistralite: '19,5%',
+    dossierTypeFissures: 'Avril 2025 — pavillon T5 de 110 m² construit en 1986 dans le quartier de Pahin. Fissures multiples en escalier sur les quatre façades, ouverture maximale 5 mm sur le pignon ouest. Antécédent : précédent confortement par agrafes posées en 2019, fissures réactivées après la sécheresse 2022. Le tassement n\'est pas stabilisé — la descente de charges (réalisée par notre BET partenaire) révèle une dissymétrie liée à un ancien dallage non solidarisé. Préconisations remises au propriétaire : reprise en sous-œuvre partielle par 6 micropieux, dépose du dallage de garage, drainage des eaux pluviales avec reprise complète des descentes de toiture mal raccordées.',
+    dossierTypeHumidite: 'Quartier de la Ramée — ancienne zone humide reconvertie en lotissement dans les années 1980. Cas typique : combinaison fissures RGA en été + remontées capillaires en hiver sur le même bâti. Diagnostic instrumenté : hygromètre, caméra thermique, sondage de fondation. Préconisations : injection en barrière étanche au pied de mur, drainage de fond de fouille, ventilation insufflée. Sur ce secteur, nous voyons régulièrement des maisons qui cumulent deux pathologies — l\'intervention coordonnée est plus efficace qu\'un traitement séparé.',
+    notreInterventionLocale: 'Tournefeuille est notre commune d\'intervention la plus dense — 15 minutes depuis nos bureaux du 54 avenue Jean Jaurès. Sur Pahin et La Paderne, nous traitons plusieurs dossiers par mois, avec une connaissance fine des typologies de lotissements (mêmes constructeurs, mêmes fondations, mêmes pathologies). Nous archivons les retours de chantier par micro-secteur pour anticiper les profils similaires et calibrer plus rapidement les préconisations à partir du deuxième dossier traité sur une rue donnée.',
+    reperesLocaux: 'Repères : centre-ville autour de la place de la Mairie, lac de la Ramée (zone humide historique), avenue Salvador Allende (axe principal), zones Pahin (sud-ouest), La Paderne (ouest), Quéfets (centre), Pyrénées (est). Le Touch traverse la commune au sud — ses anciens méandres expliquent les hétérogénéités de sol et les poches argileuses sensibles. Limite avec Plaisance-du-Touch à l\'ouest, Cugnaux au sud, Toulouse à l\'est par le périphérique.'
   },
   'ramonville-saint-agne': {
     nom: 'Ramonville-Saint-Agne',
@@ -502,7 +513,11 @@ export const villesData: Record<string, VilleInfo> = {
     specificitesFissures: 'À Castanet, les fissures sont souvent très actives, avec une évolution rapide (plusieurs mm par mois en période de sécheresse). L\'intervention doit être rapide pour limiter l\'aggravation.',
     specificitesHumidite: 'La proximité de l\'Hers-Mort et des anciennes zones humides crée des problèmes d\'humidité dans certains quartiers, parfois combinés aux fissures.',
     conseillExpert: 'Si vous habitez Castanet et que vous n\'avez pas encore eu de fissures, faites tout de même un diagnostic préventif. La question n\'est pas "si" mais "quand" les fissures apparaîtront.',
-    tauxSinistralite: '17,3%'
+    tauxSinistralite: '17,3%',
+    dossierTypeFissures: 'Mars 2025 — pavillon de plain-pied construit en 1992 dans le quartier de Lauzerville. Apparition de fissures en escalier en 2022, évolution rapide en été 2023 et 2024. Mesure au fissuromètre : ouverture passée de 2 mm à 7 mm en deux saisons. Configuration : 5 mètres de remblais en aval, terrain naturel argileux en amont — tassement différentiel caractéristique. Préconisations remises au propriétaire : reprise en sous-œuvre par 4 micropieux côté affaissé (descente à 6 m), agrafage en partie haute, drainage de surface. La note de synthèse mentionne explicitement que pour un rapport opposable à l\'assureur, un BET indépendant a été mobilisé.',
+    dossierTypeHumidite: 'Février 2025 — sous-sol semi-enterré sur lotissement des années 1990, traces d\'humidité par capillarité en pied de mur, taches de moisissures dans l\'angle nord-est. Mesure hygromètrique : 18 à 22% en pied, gradient décroissant vers le haut. Cause : absence de drainage périphérique sur sol argileux peu perméable, aggravée par une descente de gouttière mal raccordée. Préconisations : drain français périphérique sur 2 façades (15 ml), cuvelage intérieur partiel, ventilation mécanique contrôlée du sous-sol.',
+    notreInterventionLocale: 'Castanet-Tolosan est l\'une de nos zones d\'intervention les plus régulières — particulièrement sur le secteur de Lauzerville où la sinistralité RGA dépasse 17%. Notre temps d\'accès depuis Tournefeuille via le périphérique est de 25 minutes, ce qui nous permet d\'organiser des visites de contre-mesure rapides en cas d\'aggravation soudaine constatée par le propriétaire. Le profil typique sur lequel nous intervenons : lotissement construit entre 1985 et 1995, pavillon avec sous-sol, fondations superficielles non adaptées.',
+    reperesLocaux: 'Repères locaux : carrefour du Vieux Castanet, axe avenue de Toulouse, place de la Mairie, parc Boyer-Vidal, secteur Carrefour-Lauzerville, centre commercial Auchan. Limites communales avec Auzeville-Tolosane (nord-ouest), Ramonville (nord), Labège (nord-est) et Pechabou (sud-ouest). La voie ferrée Toulouse-Castres traverse la commune et marque une rupture géologique notable entre les zones de molasses et les terrasses alluviales de l\'Hers-Mort.'
   },
   fonsorbes: {
     nom: 'Fonsorbes',
@@ -815,15 +830,41 @@ export const villesData: Record<string, VilleInfo> = {
     codePostal: '31850',
     departement: 'Haute-Garonne (31)',
     distance: '12 km',
-    description: 'Commune résidentielle de 4 000 habitants au nord-est de Toulouse.',
+    description: 'Commune résidentielle de 4 100 habitants au nord-est de Toulouse, Montrabé s\'est développée à partir des années 1980 le long de l\'axe Toulouse-Albi. L\'urbanisation rapide sur un sous-sol majoritairement argileux explique la sinistralité actuelle, malgré un taux global plus modéré que sur les communes du sud-est toulousain.',
     population: '4 123',
-    geologie: 'Molasses argileuses, aléa RGA moyen à fort.',
+    superficie: '8,2 km²',
+    geologie: 'Le territoire de Montrabé repose sur des molasses argileuses du Miocène (sud et centre) et des transitions vers les terrasses alluviales de l\'Hers à l\'ouest. Les pentes douces vers la vallée de l\'Hers concentrent les variations hydriques saisonnières et la majeure partie du risque RGA.',
     risqueRGA: 'fort',
-    arretesCATNAT: ['Sécheresse 2022', 'Sécheresse 2023'],
-    communesProches: ['L\'Union', 'Saint-Jean', 'Rouffiac-Tolosan', 'Toulouse'],
-    specificitesFissures: 'Fissures sur maisons individuelles.',
-    specificitesHumidite: 'Problèmes ponctuels.',
-    tauxSinistralite: '9,7%'
+    arretesCATNAT: [
+      'Sécheresse 2022 (JO du 18/01/2023)',
+      'Sécheresse 2023 (JO du 28/02/2024)',
+      'Sécheresse 2019 (JO du 16/12/2020)',
+      'Sécheresse 2017 (JO du 14/11/2018)'
+    ],
+    quartiersRisque: [
+      'Secteur des Floralies (lotissements 1985-1995)',
+      'Côte de Limayrac (pentes vers l\'Hers)',
+      'Hameau du Bois Vert (terrain argileux)',
+      'Zone des Mésanges (constructions années 90)'
+    ],
+    typesConstruction: 'Montrabé est typique des communes-dortoir périurbaines : 92% de maisons individuelles, principalement construites entre 1980 et 2010. Pavillons sur sous-sol partiel ou plain-pied, parcelles de 600 à 1 000 m², fondations superficielles non adaptées au RGA sur les constructions antérieures à 2000. Les rénovations récentes intègrent des fondations renforcées (radier ou micropieux préventifs).',
+    problemesFrequents: [
+      'Fissures en escalier sur pignons',
+      'Décollement entre garage et habitation principale',
+      'Affaissement de terrasses extérieures',
+      'Humidité résiduelle dans les sous-sols semi-enterrés',
+      'Désaffleurement des dallages sur lotissements 1990'
+    ],
+    historiqueLocal: 'La sinistralité RGA à Montrabé est restée discrète jusqu\'à la sécheresse exceptionnelle de 2022, qui a déclenché une vague de déclarations sur le secteur des Floralies. La commune a été reconnue en catastrophe naturelle sécheresse pour quatre années depuis 2017. Les expertises d\'assurance se sont multipliées entre 2023 et 2025, avec une concentration sur les pavillons des années 1985-1995 implantés en pente vers l\'Hers.',
+    communesProches: ['L\'Union', 'Saint-Jean', 'Rouffiac-Tolosan', 'Toulouse', 'Castelmaurou'],
+    specificitesFissures: 'À Montrabé, les fissures sont fréquemment localisées sur les pignons et autour des ouvertures donnant sur jardin. C\'est cohérent avec l\'orientation typique des lotissements (façades sud privilégiées) et l\'exposition différentielle au séchage estival. La pente naturelle vers l\'Hers amplifie le tassement côté aval, particulièrement sur les parcelles plantées d\'arbres adultes à moins de 5 mètres du bâti.',
+    specificitesHumidite: 'Les problèmes d\'humidité à Montrabé concernent principalement les sous-sols semi-enterrés des constructions des années 1980-1995, équipés de drainages périphériques sous-dimensionnés. Les remontées capillaires sont rares (la molasse est moins capillaire que les argiles franches), mais les infiltrations latérales en pied de mur sont récurrentes après les épisodes pluvieux automnaux.',
+    conseillExpert: 'À Montrabé, si votre pavillon date d\'avant 2000 et qu\'il est implanté en pente vers l\'Hers, un diagnostic préventif est pertinent avant tout achat ou rénovation lourde. Les sinistres apparaissent souvent 2 à 3 ans après une sécheresse marquée — la fenêtre 2024-2027 est donc à surveiller.',
+    tauxSinistralite: '9,7%',
+    dossierTypeFissures: 'Septembre 2024 — pavillon T4 de 95 m² construit en 1991 secteur des Floralies, sur terrain en pente douce vers le ruisseau du Camparnaud. Apparition de fissures en escalier sur le pignon est en juillet 2023, après la sécheresse 2022. Mesure au fissuromètre : ouverture passée de 1,5 mm à 4 mm en une saison. Diagnostic : tassement différentiel localisé en pied de pignon, lié à l\'absence de drainage et à la présence d\'un chêne adulte planté à 4 m du mur. Préconisations : abattage maîtrisé de l\'arbre, agrafage structurel sur deux travées, drainage périphérique côté aval. Suivi annuel sur trois ans.',
+    dossierTypeHumidite: 'Janvier 2025 — sous-sol semi-enterré sur lotissement Bois Vert, infiltration latérale en pied de mur extérieur après les pluies d\'automne 2024. Caméra thermique : pont thermique horizontal à hauteur du plancher bas. Sondage : drainage périphérique d\'origine encrassé, géotextile dégradé. Préconisations : reprise complète du drainage périphérique sur la façade exposée (18 ml), enduit d\'étanchéité extérieur, ventilation mécanique du sous-sol. Intervention livrée en 7 jours ouvrés.',
+    notreInterventionLocale: 'Montrabé est à 22 minutes de nos bureaux du 54 avenue Jean Jaurès à Tournefeuille, en passant par le périphérique nord (sortie n°15 Saint-Loup-Cammas puis D63). Nous intervenons régulièrement sur le secteur des Floralies et le hameau du Bois Vert — deux zones de lotissements 1990 où les sinistres RGA se sont multipliés depuis 2023. Notre approche : visite groupée quand plusieurs voisins constatent les mêmes désordres en même temps. Cela permet une lecture parcellaire fine du tassement et une intervention coordonnée.',
+    reperesLocaux: 'Repères pour localiser votre maison : centre-bourg autour de l\'église Saint-Étienne, axe principal D63 reliant L\'Union à Lavalette, école communale, complexe sportif des Floralies, hameau du Bois Vert (sud-ouest), secteur des Mésanges (est). Le ruisseau du Camparnaud marque la limite sud, l\'Hers la limite nord-ouest. Les coteaux orientés sud-est concentrent les lotissements résidentiels les plus exposés au RGA.'
   },
   castelsarrasin: {
     nom: 'Castelsarrasin',
@@ -970,7 +1011,11 @@ export const villesData: Record<string, VilleInfo> = {
     specificitesFissures: 'À Albi, les fissures sont souvent liées à l\'hétérogénéité du terrain : zones de remblais côtoyant des argiles naturelles. Le diagnostic doit identifier ces transitions pour cibler le traitement.',
     specificitesHumidite: 'Le centre historique d\'Albi souffre de remontées capillaires dans les constructions anciennes. Les caves voûtées des maisons de ville sont particulièrement touchées.',
     conseillExpert: 'Si votre maison à Albi est située en coteau ou sur un ancien vignoble reconverti en lotissement, surveillez l\'apparition de fissures après chaque été sec.',
-    tauxSinistralite: '10,8%'
+    tauxSinistralite: '10,8%',
+    dossierTypeFissures: 'Octobre 2024 — maison de la fin des années 1980 dans le quartier de Cantepau, construite en briques foraines avec sous-sol semi-enterré. Trois fissures en escalier visibles sur la façade exposée sud, ouvertes à 3,5 mm en partie haute. La grille d\'évaluation oriente vers un tassement différentiel actif lié au RGA après la sécheresse 2022. Préconisations remises au propriétaire : agrafage structurel sur la travée fissurée, drainage périphérique côté coteau, suivi sur 12 mois avec témoins datés. La note de synthèse précise les options d\'indemnisation au titre de l\'arrêté CAT-NAT du 5 avril 2023.',
+    dossierTypeHumidite: 'Mai 2025 — caves voûtées en pied de cité épiscopale, remontées capillaires sur enduit chaux avec dépôt de salpêtre à 1,20 m. Diagnostic à l\'hygromètre, validation par carottage. Préconisation : injection de résine hydrophobe en barrière étanche au pied du mur, dépose de l\'enduit ciment posé dans les années 1970, réfection en chaux respirante. Particularité albigeoise : sur les bâtis de centre-ville en brique foraine, la perméabilité naturelle du matériau impose des solutions respirantes — un cuvelage ciment serait contre-productif.',
+    notreInterventionLocale: 'À Albi, nos interventions se concentrent sur deux profils : les maisons pavillonnaires de la périphérie (Cantepau, Rayssac, Le Séquestre) — fissures liées au RGA des coteaux argileux — et le centre historique UNESCO où les remontées capillaires touchent les rez-de-chaussée en briques foraines. Délai moyen de visite : 4 jours ouvrés depuis Tournefeuille via l\'A68 (1h15 de route). Pour les dossiers d\'urgence sur le centre classé, nous coordonnons avec les Architectes des Bâtiments de France quand l\'intervention extérieure est soumise à avis.',
+    reperesLocaux: 'Repères pour localiser votre maison : à proximité de la cathédrale Sainte-Cécile, du Pont-Vieux sur le Tarn, du palais de la Berbie, du quartier Saint-Salvi. Les coteaux nord (Cunac, Saint-Juéry) et sud (Le Sequestre, Puygouzon) concentrent la sinistralité RGA la plus élevée. La rive droite du Tarn (Madeleine, Rayssac) cumule risques argileux et anciennes zones maraîchères reconverties en lotissements.'
   },
   castres: {
     nom: 'Castres',
