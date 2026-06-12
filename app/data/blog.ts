@@ -32,6 +32,257 @@ interface BlogPost {
 
 // Base de données des articles avec copywriting expert et orienté conversion
 const blogPosts: { [key: string]: BlogPost } = {
+  'diagnostic-fissure-humidite-avant-achat': {
+    slug: 'diagnostic-fissure-humidite-avant-achat',
+    title: "Fissures ou humidité avant d'acheter : faire diagnostiquer avant le compromis (et négocier le prix)",
+    metaTitle: 'Diagnostic fissure/humidité avant achat : négocier le prix',
+    excerpt: "Les 9 diagnostics obligatoires ne disent rien des fissures ni de l'humidité. Pourtant, ce sont eux qui peuvent transformer un coup de cœur en gouffre — ou en levier de négociation à plusieurs dizaines de milliers d'euros. Le guide de l'acheteur, étape par étape, du premier coup d'œil au compromis.",
+    date: '2026-06-12',
+    dateModified: '2026-06-12',
+    readTime: '15 min',
+    category: 'conseils',
+    author: "L'institut IPB",
+    metaDescription: "Acheter sans piège : quand faire diagnostiquer fissures et humidité (avant le compromis, délai SRU, condition suspensive) et comment transformer le rapport en levier de négociation chiffré. Guide acheteur IPB, Occitanie.",
+    keywords: ['diagnostic avant achat maison', 'fissures avant achat', 'humidité avant achat', 'négocier prix maison fissurée', 'expertise avant compromis', 'condition suspensive expertise', 'délai rétractation compromis', 'diagnostic structurel avant achat', 'vice caché maison', 'acheter maison Toulouse'],
+    content: `
+      <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
+        <p class="font-bold text-orange-900 mb-2">L'essentiel en 30 secondes</p>
+        <p class="text-orange-800">Les diagnostics immobiliers obligatoires (DPE, amiante, plomb, termites…) <strong>ne couvrent ni la solidité de la structure, ni l'humidité</strong>. Un bien peut être "tous diagnostics OK" et cacher 25 000 € de reprise en sous-œuvre. Le bon moment pour faire vérifier les fissures et l'humidité, c'est <strong>avant de signer le compromis</strong> — ou en l'assortissant d'une condition suspensive d'expertise. Un désordre chiffré devient alors un <strong>levier de négociation euro pour euro</strong>, pas une découverte angoissante après la vente.</p>
+      </div>
+
+      <h2 id="diagnostics-obligatoires-ne-couvrent-pas">Pourquoi les diagnostics obligatoires ne vous protègent pas</h2>
+
+      <p>Quand vous achetez, le vendeur vous remet un Dossier de Diagnostic Technique (DDT) : DPE, amiante, plomb (CREP), termites, gaz, électricité, état des risques (ERP), assainissement, mesurage Carrez. Neuf diagnostics réglementaires. Aucun ne porte sur :</p>
+
+      <ul>
+        <li><strong>La solidité de la structure</strong> — fissures, tassement de fondation, affaissement de plancher.</li>
+        <li><strong>L'humidité</strong> — remontées capillaires, infiltrations, condensation, cave humide.</li>
+      </ul>
+
+      <p>Autrement dit : les deux pathologies les plus coûteuses à réparer sont précisément celles que la loi ne vous oblige pas à connaître avant de signer. C'est à <strong>vous, acheteur, d'aller chercher l'information</strong>. La seule exception côté humidité concerne la <strong>mérule</strong> : dans les communes ayant fait l'objet d'un arrêté préfectoral, le vendeur doit vous informer de sa présence (art. L. 133-7 et L. 133-8 du Code de la construction et de l'habitation).</p>
+
+      <div class="my-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
+        <h3 class="font-bold text-blue-900 mb-3">Le piège classique</h3>
+        <p class="text-blue-800">"Le vendeur m'a dit que la fissure était stabilisée." Une phrase rassurante n'a aucune valeur technique ni juridique. Une fissure de 3 mm peut être inerte… ou progresser de 2 mm par été sec. Seule une mesure instrumentée et une lecture de la cause (sol argileux, drainage, végétation) permettent de trancher. À l'œil nu, personne ne peut le savoir — pas même un bon agent immobilier.</p>
+      </div>
+
+      <h2 id="quand-faire-diagnostiquer">Quand faire diagnostiquer : la chronologie qui vous met en position de force</h2>
+
+      <p>Le timing change tout. Voici les trois fenêtres possibles, de la meilleure à la plus risquée.</p>
+
+      <h3>1. Avant le compromis (idéal)</h3>
+      <p>Vous repérez des signes (fissures, taches, odeur de cave, peinture qui cloque) dès les visites. Vous faites intervenir un expert <strong>avant toute signature</strong>. Vous négociez alors en connaissance de cause, sans pression de délai. C'est la position la plus confortable : si le chiffrage des travaux est lourd, vous renoncez sans avoir rien engagé, ou vous ajustez votre offre.</p>
+
+      <h3>2. Pendant le délai de rétractation SRU (10 jours)</h3>
+      <p>Après la signature du compromis, l'acquéreur non professionnel d'un logement dispose d'un <strong>délai de rétractation de 10 jours</strong> (article L. 271-1 du Code de la construction et de l'habitation), à compter du lendemain de la première présentation de la notification. C'est une bouée de secours — mais 10 jours, c'est court pour organiser une visite technique et obtenir une analyse posée. À utiliser, mais sans en faire votre stratégie principale.</p>
+
+      <h3>3. Via une condition suspensive d'expertise (la clause maligne)</h3>
+      <p>Si vous devez signer vite pour ne pas perdre le bien, faites insérer dans le compromis une <strong>condition suspensive d'expertise structurelle et/ou humidité</strong>. Concrètement : la vente n'est définitive que si l'expertise ne révèle pas de désordre supérieur à un montant que vous fixez (par exemple 10 000 €). En dessous, vous achetez ; au-dessus, vous renégociez ou vous vous retirez sans perdre votre dépôt de garantie. Faites rédiger cette clause par votre notaire.</p>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead>
+            <tr class="bg-slate-100">
+              <th class="border border-slate-300 p-4 text-left font-bold">Moment du diagnostic</th>
+              <th class="border border-slate-300 p-4 text-center font-bold">Marge de manœuvre</th>
+              <th class="border border-slate-300 p-4 text-center font-bold">Pression de temps</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-4">Avant le compromis</td>
+              <td class="border border-slate-300 p-4 text-center font-bold">Maximale</td>
+              <td class="border border-slate-300 p-4 text-center">Aucune</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-4">Condition suspensive</td>
+              <td class="border border-slate-300 p-4 text-center font-bold">Élevée</td>
+              <td class="border border-slate-300 p-4 text-center">Modérée</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-4">Délai SRU (10 j)</td>
+              <td class="border border-slate-300 p-4 text-center">Faible</td>
+              <td class="border border-slate-300 p-4 text-center">Forte</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="fissure-ou-humidite">Fissure ou humidité : que regarde-t-on, concrètement ?</h2>
+
+      <h3>Côté fissures</h3>
+      <p>L'expert mesure l'ouverture au fissuromètre, observe l'orientation (verticale, horizontale, en escalier), cherche les indices secondaires (portes qui coincent, carrelage qui se soulève, désaffleurement de plinthes) et remonte à la cause : tassement différentiel sur sol argileux, défaut de fondation, surcharge. Pour apprendre à lire vous-même les premiers signes, voyez notre guide <a href="/blog/evaluer-gravite-fissure-maison">évaluer la gravité d'une fissure</a> et <a href="/blog/lire-fissures-verticale-horizontale-oblique">lire une fissure selon son orientation</a>.</p>
+
+      <h3>Côté humidité</h3>
+      <p>Mesure au hygromètre, caméra thermique pour localiser les ponts thermiques et les zones froides, recherche de la source : remontée capillaire, infiltration latérale, condensation, défaut de ventilation. Le bon diagnostic distingue ces causes — un traitement appliqué à la mauvaise cause ne sert à rien. Notre dossier <a href="/blog/condensation-ou-infiltration">condensation ou infiltration ?</a> explique pourquoi ce tri est décisif.</p>
+
+      <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
+        <h3 class="font-bold text-orange-900 mb-3">Comment IPB intervient avant un achat</h3>
+        <p class="text-orange-800">Vous nous décrivez le bien et vos délais. Un expert du réseau IPB se déplace, lit le bâti (fissures et/ou humidité) et l'institut vous remet une <strong>note de synthèse claire avec chiffrage des travaux</strong> — exactement ce qu'il vous faut pour négocier. Si votre dossier exige un <strong>rapport opposable</strong> (litige, preuve de vice caché, contre-expertise d'assurance), nous vous orientons vers un bureau d'études structure ou un expert indépendant. Voir aussi notre page <a href="/expertise-avant-achat-immobilier-toulouse">expertise avant achat immobilier</a>.</p>
+      </div>
+
+      <h2 id="negocier">Transformer le diagnostic en levier de négociation chiffré</h2>
+
+      <p>C'est ici que le diagnostic devient rentable. Un vendeur peut balayer "il y a une petite fissure" d'un revers de main. Il ne peut pas balayer un <strong>chiffrage écrit de 22 000 € de reprise structurelle</strong>. Le rapport déplace la discussion du ressenti vers le chiffre.</p>
+
+      <h3>Exemple concret</h3>
+      <p>Bien affiché à <strong>320 000 €</strong>. La note de synthèse révèle un tassement modéré nécessitant agrafage structurel + drainage périphérique, chiffré à <strong>22 000 €</strong> par le partenaire. Trois issues possibles :</p>
+      <ul>
+        <li><strong>Baisse de prix</strong> : vous obtenez 15 000 à 22 000 € de remise, vous gérez les travaux après l'achat.</li>
+        <li><strong>Travaux à la charge du vendeur</strong> : il fait réaliser la reprise sous garantie décennale avant la vente (attestation à l'appui).</li>
+        <li><strong>Séquestre</strong> : une somme est bloquée chez le notaire jusqu'à réalisation des travaux.</li>
+      </ul>
+
+      <p>Dans les trois cas, vous avez transformé une inquiétude diffuse en négociation rationnelle. Pour la mécanique fine de la décote selon la gravité, lisez notre guide <a href="/blog/acheter-maison-fissuree">acheter une maison fissurée : comment négocier le prix</a>.</p>
+
+      <div class="my-8 p-6 bg-green-50 border border-green-200 rounded-xl">
+        <h3 class="font-bold text-green-900 mb-3">Le bon réflexe coût/bénéfice</h3>
+        <p class="text-green-800">Le coût d'une visite de diagnostic est sans commune mesure avec ce qu'elle vous fait économiser : soit elle révèle un désordre et vous négociez (ou vous fuyez) plusieurs milliers d'euros, soit elle confirme que tout va bien et vous achetez l'esprit tranquille. Dans les deux cas, vous gagnez. La seule mauvaise décision, c'est de signer sans savoir.</p>
+      </div>
+
+      <h2 id="faq">Questions fréquentes</h2>
+
+      <h3>Un diagnostic fissures ou humidité est-il obligatoire avant d'acheter ?</h3>
+      <p>Non. Ni la solidité de la structure ni l'humidité ne font partie des diagnostics immobiliers obligatoires. C'est une démarche volontaire de l'acheteur — et c'est précisément ce qui en fait un avantage : peu d'acheteurs le font, vous prenez l'avantage dans la négociation.</p>
+
+      <h3>Peut-on faire expertiser un bien avant de signer le compromis ?</h3>
+      <p>Oui, et c'est la meilleure option. Avec l'accord du vendeur (qui n'a aucune raison de refuser s'il est de bonne foi), un expert peut visiter le bien avant toute signature. Vous négociez ensuite en connaissance de cause, sans pression de délai.</p>
+
+      <h3>Le délai de rétractation de 10 jours suffit-il pour faire un diagnostic ?</h3>
+      <p>C'est jouable mais serré. Le délai SRU de 10 jours (art. L. 271-1 CCH) court à compter du lendemain de la notification du compromis. Organiser une visite technique et obtenir une analyse posée en 10 jours est possible mais stressant. Mieux vaut diagnostiquer avant, ou prévoir une condition suspensive d'expertise.</p>
+
+      <h3>Que faire si je découvre le défaut après l'achat ?</h3>
+      <p>Vous pouvez invoquer la garantie des vices cachés (art. 1641 du Code civil) si le défaut était antérieur à la vente, non apparent et suffisamment grave. L'action doit être engagée dans les 2 ans à compter de la découverte du vice (art. 1648), dans la limite de 20 ans après la vente. Mais un procès est long et incertain : mieux vaut diagnostiquer avant pour ne jamais en arriver là.</p>
+
+      <h3>Vous vendez ce bien plutôt que de l'acheter ?</h3>
+      <p>Le raisonnement s'inverse : anticiper le diagnostic vous permet de désamorcer la négociation avant même qu'elle commence. Lisez notre guide vendeur : <a href="/blog/vendre-maison-fissure-humidite-anticiper">vendre un bien avec fissures ou humidité sans subir la décote</a>.</p>
+
+      <div class="my-10 p-8 bg-ipb-navy rounded-2xl text-center">
+        <h2 class="text-white font-bold text-2xl mb-3" style="color:white;">Un bien vous intéresse, mais un doute vous retient ?</h2>
+        <p class="text-white/80 mb-6">Faites lire le bâti par un expert du réseau IPB avant de signer. Note de synthèse claire, chiffrage des travaux, et une décision d'achat prise en connaissance de cause.</p>
+        <a href="/diagnostic" class="inline-block bg-ipb-orange text-white font-semibold px-8 py-4 rounded-lg hover:bg-orange-700 transition-colors" style="color:white;">Décrire le bien en 2 minutes →</a>
+      </div>
+    `
+  },
+  'vendre-maison-fissure-humidite-anticiper': {
+    slug: 'vendre-maison-fissure-humidite-anticiper',
+    title: "Vendre un bien avec fissures ou humidité : le dossier qui désamorce la négociation (et vous protège du vice caché)",
+    metaTitle: 'Vendre avec fissures ou humidité : éviter la décote',
+    excerpt: "Cacher une fissure ou une trace d'humidité, c'est s'exposer à une annulation de vente et à des années de procédure. Tout anticiper, au contraire, transforme un point faible en gage de confiance — et vous fait gagner la négociation. La méthode du vendeur averti.",
+    date: '2026-06-12',
+    dateModified: '2026-06-12',
+    readTime: '14 min',
+    category: 'conseils',
+    author: "L'institut IPB",
+    metaDescription: "Vendre une maison avec fissures ou humidité : obligation d'information, risque de vice caché, et la stratégie du dossier de transparence pour préserver le prix. Guide vendeur IPB, Occitanie.",
+    keywords: ['vendre maison fissurée', 'vendre maison humide', 'obligation information vendeur', 'vice caché vendeur', 'décote maison fissures', 'dossier de transparence vente', 'vendre sans procès', 'diagnostic avant vente', 'attestation décennale vente', 'réticence dolosive'],
+    content: `
+      <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
+        <p class="font-bold text-orange-900 mb-2">L'essentiel en 30 secondes</p>
+        <p class="text-orange-800">Face à une fissure ou à de l'humidité, le vendeur a deux options : <strong>les cacher</strong> (et risquer l'annulation de la vente plus des dommages-intérêts pendant des années) ou <strong>les anticiper</strong>. La deuxième gagne presque toujours. En arrivant avec un diagnostic et un chiffrage des travaux, vous reprenez le contrôle du récit : le défaut n'est plus une bombe que l'acheteur découvre, mais un problème connu, mesuré et solvable. Résultat : au lieu d'une décote panique de -20 à -30%, vous limitez l'impact au coût réel des travaux.</p>
+      </div>
+
+      <h2 id="obligation-information">Ce que la loi vous oblige à dire (et ce qui arrive si vous vous taisez)</h2>
+
+      <p>Beaucoup de vendeurs croient qu'en l'absence de diagnostic obligatoire sur la structure et l'humidité, ils n'ont rien à déclarer. C'est une erreur dangereuse. Le Code civil impose deux obligations majeures :</p>
+
+      <ul>
+        <li><strong>L'obligation précontractuelle d'information</strong> (art. 1112-1 du Code civil) : vous devez communiquer à l'acheteur toute information dont vous savez qu'elle est déterminante pour son consentement.</li>
+        <li><strong>La garantie des vices cachés</strong> (art. 1641 et suivants) : si vous laissez l'acheteur découvrir après la vente un défaut grave, antérieur et non apparent, il peut agir contre vous.</li>
+      </ul>
+
+      <p>Pire : si vous <strong>dissimulez sciemment</strong> un désordre que vous connaissez (un coup de peinture sur une fissure, un meuble qui masque une tache d'humidité), vous tombez dans la <strong>réticence dolosive</strong> (art. 1137). Conséquence possible : annulation de la vente, restitution du prix, dommages-intérêts.</p>
+
+      <div class="my-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
+        <h3 class="font-bold text-blue-900 mb-3">Combien de temps êtes-vous exposé ?</h3>
+        <p class="text-blue-800">L'acheteur dispose de <strong>2 ans à compter de la découverte du vice</strong> pour agir en garantie des vices cachés (art. 1648 du Code civil), dans la limite d'un délai butoir de <strong>20 ans après la vente</strong> (art. 2232, confirmé par la Cour de cassation en 2023). Autrement dit, une fissure mal gérée aujourd'hui peut revenir vous hanter très longtemps. La transparence documentée est votre meilleure assurance.</p>
+      </div>
+
+      <h2 id="cacher-vs-anticiper">Cacher ou anticiper : la comparaison qui fait réfléchir</h2>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead>
+            <tr class="bg-slate-100">
+              <th class="border border-slate-300 p-4 text-left font-bold">Critère</th>
+              <th class="border border-slate-300 p-4 text-center font-bold">Cacher / minimiser</th>
+              <th class="border border-slate-300 p-4 text-center font-bold">Anticiper / documenter</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-4 font-medium">Découverte par l'acheteur</td>
+              <td class="border border-slate-300 p-4 text-center">En visite ou après vente (panique)</td>
+              <td class="border border-slate-300 p-4 text-center">Annoncée et cadrée par vous</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-4 font-medium">Décote subie</td>
+              <td class="border border-slate-300 p-4 text-center">-20 à -30% (peur)</td>
+              <td class="border border-slate-300 p-4 text-center">Coût réel des travaux</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-4 font-medium">Risque juridique</td>
+              <td class="border border-slate-300 p-4 text-center">Élevé (vice caché, dol)</td>
+              <td class="border border-slate-300 p-4 text-center">Fortement réduit</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-4 font-medium">Position de négociation</td>
+              <td class="border border-slate-300 p-4 text-center">Défensive</td>
+              <td class="border border-slate-300 p-4 text-center">Maîtrisée</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="dossier-transparence">Le dossier de transparence : votre meilleur outil de vente</h2>
+
+      <p>L'idée est simple : au lieu de laisser l'acheteur (et son expert) découvrir le problème et imaginer le pire, vous arrivez avec un dossier complet qui répond à ses questions avant qu'il ne les pose. Ce dossier contient :</p>
+
+      <ol>
+        <li><strong>Une note de synthèse</strong> sur l'état du bâti (fissures et/ou humidité) : nature du désordre, cause, gravité, évolution.</li>
+        <li><strong>Un chiffrage des travaux</strong> nécessaires, établi par une entreprise qualifiée — pour que l'acheteur sache exactement à quoi s'en tenir.</li>
+        <li><strong>Le cas échéant, une attestation de travaux déjà réalisés</strong> sous garantie décennale : c'est l'argument le plus puissant. Un désordre traité et garanti 10 ans n'est plus un risque, c'est un atout.</li>
+      </ol>
+
+      <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
+        <h3 class="font-bold text-orange-900 mb-3">Comment IPB aide le vendeur</h3>
+        <p class="text-orange-800">Un expert du réseau IPB lit votre bâti et l'institut vous remet une note de synthèse claire, accompagnée d'un chiffrage des travaux par le partenaire compétent. Si vous décidez de faire réaliser la reprise (agrafage, drainage, traitement d'humidité), elle est exécutée par les équipes du réseau IPB <strong>sous garantie décennale 10 ans</strong> — l'attestation rejoint alors votre dossier de transparence. Si vous préférez vendre en l'état, vous le faites avec un dossier honnête qui vous protège juridiquement.</p>
+      </div>
+
+      <h2 id="vendre-en-etat-ou-reparer">Vendre en l'état ou réparer avant ? Comment trancher</h2>
+
+      <h3>Vendre en l'état (avec transparence)</h3>
+      <p>Pertinent si vous voulez vendre vite, ou si l'acheteur est un investisseur/marchand de biens qui préfère gérer ses travaux. Vous documentez tout, vous ajustez le prix du montant des travaux, et vous vous protégez du vice caché par la transparence. La décote se limite au coût réel.</p>
+
+      <h3>Réparer avant la vente</h3>
+      <p>Pertinent sur un marché tendu où l'acheteur type est un particulier qui veut "une maison sans souci". Un désordre traité et garanti décennale supprime la décote de peur — et élargit votre marché aux acheteurs qui auraient fui un bien fissuré. Pour le détail de la mécanique de revente, voyez notre guide <a href="/blog/revente-maison-fissuree">vendre une maison fissurée : la décote à -30% et comment l'éviter</a> et, sur le volet protection juridique, <a href="/blog/diagnostic-structurel-avant-vente-maison">diagnostic structurel avant vente</a>.</p>
+
+      <p>Selon le désordre, les travaux peuvent relever de l'<a href="/blog/injection-resine-expansive-fondation">injection de résine expansive</a>, de l'agrafage structurel (voir les <a href="/blog/prix-agrafage-fissures-2026">prix de l'agrafage 2026</a>) ou d'un traitement d'humidité ciblé.</p>
+
+      <h2 id="faq">Questions fréquentes</h2>
+
+      <h3>Suis-je obligé de déclarer une fissure ou de l'humidité à l'acheteur ?</h3>
+      <p>Oui dès lors que vous en avez connaissance et que l'information est déterminante pour le consentement de l'acheteur (art. 1112-1 du Code civil). Taire un désordre connu vous expose à la garantie des vices cachés, voire à la réticence dolosive si la dissimulation est volontaire.</p>
+
+      <h3>Combien de temps puis-je être attaqué après la vente ?</h3>
+      <p>L'acheteur a 2 ans à compter de la découverte du vice pour agir (art. 1648 du Code civil), dans la limite d'un délai butoir de 20 ans après la vente. Un dossier de transparence documenté réduit fortement ce risque, car le défaut n'est alors ni caché, ni ignoré de l'acheteur.</p>
+
+      <h3>Vaut-il mieux baisser le prix ou faire les travaux ?</h3>
+      <p>Cela dépend de votre marché et de votre acheteur cible. Baisser le prix (ou prévoir un séquestre) convient aux investisseurs ; réaliser les travaux sous garantie décennale convient aux particuliers qui veulent un bien sans souci et supprime la décote de peur. Dans les deux cas, la transparence protège la vente.</p>
+
+      <h3>Une note de synthèse suffit-elle, ou faut-il un rapport opposable ?</h3>
+      <p>Pour informer l'acheteur et chiffrer les travaux, la note de synthèse de l'institut est l'outil adapté. Si la vente est déjà conflictuelle ou si un litige est en cours, un rapport opposable établi par un bureau d'études structure ou un expert indépendant est recommandé — l'institut vous oriente alors vers le bon interlocuteur.</p>
+
+      <h3>Vous êtes plutôt acheteur ?</h3>
+      <p>Le raisonnement s'inverse, et le diagnostic devient un levier de négociation. Voyez notre guide acheteur : <a href="/blog/diagnostic-fissure-humidite-avant-achat">faire diagnostiquer fissures et humidité avant le compromis</a>.</p>
+
+      <div class="my-10 p-8 bg-ipb-navy rounded-2xl text-center">
+        <h2 class="text-white font-bold text-2xl mb-3" style="color:white;">Vous vendez un bien avec un point faible connu ?</h2>
+        <p class="text-white/80 mb-6">Anticipez. Un expert du réseau IPB lit le bâti, l'institut vous remet une note de synthèse et un chiffrage — de quoi vendre en toute transparence et préserver votre prix.</p>
+        <a href="/diagnostic" class="inline-block bg-ipb-orange text-white font-semibold px-8 py-4 rounded-lg hover:bg-orange-700 transition-colors" style="color:white;">Préparer mon dossier en 2 minutes →</a>
+      </div>
+    `
+  },
   'injection-resine-expansive-fondation': {
     slug: 'injection-resine-expansive-fondation',
     title: 'Injection de résine expansive pour fondations : prix, efficacité et alternatives (guide 2026)',
@@ -3384,6 +3635,8 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Vous mettez votre maison en vente. Les visites se passent bien... jusqu'à ce qu'un acheteur potentiel remarque <strong>cette fissure</strong> sur la façade. Son visage change. Il pose LA question redoutée : <strong>"C'est grave ?"</strong></p>
 
       <p>Vous minimisez : "Oh, c'est rien, juste l'enduit..." Mais vous voyez dans ses yeux qu'il ne vous croit pas. Il prend des photos, repart, et ne donne plus de nouvelles.</p>
+
+      <p>Il existe une meilleure façon de gérer ce moment : l'anticiper. Notre guide <a href="/blog/vendre-maison-fissure-humidite-anticiper">vendre un bien avec fissures ou humidité : le dossier qui désamorce la négociation</a> détaille la stratégie de transparence qui transforme ce point faible en gage de confiance.</p>
 
       <p class="font-bold text-lg text-slate-900 my-6">Résultat : Votre maison reste sur le marché 6 mois, 9 mois, 1 an... Et vous finissez par baisser le prix.</p>
 
@@ -7107,6 +7360,8 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p class="text-orange-800">Une fissure visible n'est pas forcément dangereuse. Mais une fissure <strong>invisible peut ruiner votre achat</strong>. Avant de signer, exigez toujours un rapport d'expertise structurelle indépendant — pas celui du vendeur, pas celui de l'agence.</p>
       </div>
 
+      <p>Cet article se concentre sur les fissures. Si le bien présente aussi des signes d'humidité, ou si vous voulez maîtriser le <strong>timing du diagnostic dans le processus d'achat</strong> (avant le compromis, délai de rétractation, condition suspensive), lisez notre guide dédié : <a href="/blog/diagnostic-fissure-humidite-avant-achat">faire diagnostiquer fissures et humidité avant le compromis et négocier le prix</a>.</p>
+
       <h2>Maison fissurée à vendre : opportunité ou piège ?</h2>
 
       <p>Vous visitez une maison qui vous plaît. Le prix est attractif. L'agence vous rassure : "Oh, ces fissures, c'est rien, juste l'enduit qui vieillit." Votre instinct vous dit de creuser. Il a raison.</p>
@@ -8019,12 +8274,12 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '9 min',
     category: 'conseils',
     author: "L'institut IPB",
-    metaDescription: "Le diagnostic structurel avant vente vous protège du vice caché pendant 30 ans. Rapport opposable par institut indépendant en Occitanie. Délai 72h, garantie décennale 10 ans.",
+    metaDescription: "Le diagnostic structurel avant vente vous protège du vice caché. Note de synthèse claire ou rapport opposable, institut indépendant en Occitanie. Délai de visite 72h, travaux sous décennale 10 ans.",
     keywords: ['diagnostic structurel avant vente', 'expertise maison avant vente', 'vice caché vente maison', 'vendre maison fissure', 'rapport opposable', 'expertise structurelle vendeur'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
-        <p class="font-bold text-orange-900 mb-2">La règle des 30 ans : la responsabilité que vous ignorez</p>
-        <p class="text-orange-800">Lorsque vous vendez votre maison, vous restez juridiquement responsable des défauts structurels cachés pendant <strong>30 ans</strong> au titre de la garantie décennale étendue. Un acheteur qui découvre une fissure structurelle 5, 10 ou 20 ans après la vente peut vous attaquer en justice. Le diagnostic structurel avant vente est votre seule véritable protection.</p>
+        <p class="font-bold text-orange-900 mb-2">La responsabilité que vous ignorez en vendant</p>
+        <p class="text-orange-800">En vendant votre maison, vous restez exposé à la garantie des vices cachés : un acheteur qui découvre une fissure structurelle non apparente peut agir contre vous pendant <strong>2 ans à compter de la découverte du vice</strong> (art. 1648 du Code civil), dans la limite d'un <strong>délai butoir de 20 ans après la vente</strong> (art. 2232, confirmé par la Cour de cassation en 2023). Le diagnostic structurel avant vente, documenté, est votre meilleure protection. Pour la stratégie complète côté vendeur — fissures et humidité —, voyez notre guide <a href="/blog/vendre-maison-fissure-humidite-anticiper">le dossier de transparence qui désamorce la négociation</a>.</p>
       </div>
 
       <h2>Les 9 diagnostics obligatoires NE couvrent PAS la structure</h2>
