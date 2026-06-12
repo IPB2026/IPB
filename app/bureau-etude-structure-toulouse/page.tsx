@@ -251,7 +251,7 @@ export default function BureauEtudeStructurePage() {
                 {
                   href: '/partenaires/agences-immobilieres',
                   titre: 'Agences immobilières',
-                  desc: "Une vente bloquée à cause d'une fissure : notre rapport rassure l'acquéreur, débloque la transaction, et le diagnostic est déductible des travaux.",
+                  desc: "Une vente bloquée à cause d'une fissure : la note de synthèse rassure l'acquéreur, débloque la transaction, et la visite de diagnostic est gratuite.",
                 },
                 {
                   href: '/diagnostic',

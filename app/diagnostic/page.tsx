@@ -1091,7 +1091,7 @@ export default function DiagnosticPage() {
                           <span className="text-xs">🎓</span>
                         </div>
                         <div>
-                          <p className="text-[10px] text-ipb-light font-bold uppercase tracking-wider mb-0.5">Avis expert IPB</p>
+                          <p className="text-[10px] text-ipb-light font-bold uppercase tracking-wider mb-0.5">Conseil d'expert</p>
                           <p className="text-ipb-muted text-xs leading-relaxed">{tip}</p>
                         </div>
                       </div>
@@ -1496,14 +1496,14 @@ export default function DiagnosticPage() {
                 </div>
                 <h2 className="text-xl font-bold text-ipb-text mb-2">Demande envoyée avec succès !</h2>
                 <p className="text-ipb-muted text-sm mb-4">
-                  Un expert IPB vous rappellera sous 24h pour organiser votre diagnostic sur site.
+                  Notre équipe vous rappellera sous 24h pour qualifier votre dossier et organiser la visite d'un expert du réseau IPB.
                 </p>
                 <div className="bg-ipb-cream rounded-xl p-4 text-left max-w-sm mx-auto">
                   <p className="text-xs font-bold text-ipb-text mb-2">Prochaines étapes :</p>
                   <div className="space-y-2 text-xs text-ipb-muted">
                     <div className="flex items-start gap-2">
                       <span className="bg-ipb-stone text-ipb-orange font-bold rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 text-[10px]">1</span>
-                      <span>Appel de notre expert sous 24h</span>
+                      <span>Appel de notre équipe sous 24h</span>
                     </div>
                     <div className="flex items-start gap-2">
                       <span className="bg-ipb-stone text-ipb-orange font-bold rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 text-[10px]">2</span>

@@ -98,7 +98,7 @@ const organizationSchema = {
 
 export const metadata: Metadata = {
   title: "Institut de pathologie & structure du bâtiment · IPB",
-  description: "IPB diagnostique fissures, humidité et désordres structurels, conçoit la solution et la met en œuvre avec ses équipes de réalisation. Un seul interlocuteur, du diagnostic à la livraison. Occitanie.",
+  description: "Fissures, humidité, désordres structurels : IPB qualifie votre demande et coordonne l'intervention d'un expert du réseau partenaire (visite gratuite). Travaux exécutés par les équipes du réseau IPB sous décennale. Un seul interlocuteur, du diagnostic à la livraison. Occitanie.",
   keywords: [
     'expert fissures Toulouse',
     'expertise fissures Haute-Garonne',
@@ -115,7 +115,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Institut de pathologie & structure du bâtiment · IPB",
-    description: "IPB diagnostique les pathologies du bâti, conçoit la solution, et la met en œuvre avec ses équipes de réalisation. Fissures, humidité, mur porteur. Occitanie.",
+    description: "IPB coordonne le diagnostic des pathologies du bâti par un expert du réseau partenaire et la mise en œuvre par les équipes du réseau IPB. Fissures, humidité, mur porteur. Occitanie.",
     url: "https://www.ipb-expertise.fr",
     siteName: "IPB - Institut de Pathologie du Bâtiment",
     images: [
@@ -132,7 +132,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Institut de pathologie & structure du bâtiment · IPB",
-    description: "IPB diagnostique fissures, humidité et désordres structurels, conçoit la solution, et la met en œuvre avec ses équipes. Occitanie.",
+    description: "IPB coordonne le diagnostic et l'exécution des travaux par son réseau d'experts partenaires. Fissures, humidité, désordres structurels. Occitanie.",
     images: [
       {
         url: "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
@@ -191,8 +191,8 @@ export default function HomePage() {
             persona dédiée. Routage SEO + conversion supérieure. */}
       <PersonaCards
         eyebrow="Selon votre situation"
-        title={<>Vous êtes <em>confronté à quoi&nbsp;?</em></>}
-        intro="Quatre situations, une même rigueur. Voici la porte d'entrée la plus utile pour vous."
+        title={<>Dans quel cas <em>vous reconnaissez-vous&nbsp;?</em></>}
+        intro="Quatre situations possibles, une même rigueur d'analyse. Chacune mène à la page la plus utile pour vous."
         background="white"
         personas={homePersonas}
       />

@@ -45,7 +45,8 @@ export default function ConfidentialitePage() {
               <div className="space-y-2">
                 <p><strong>Dénomination :</strong> IPB · Institut de Pathologie du Bâtiment</p>
                 <p><strong>Forme juridique :</strong> Entrepreneur individuel (micro-entreprise)</p>
-                <p><strong>Siège :</strong> 54 avenue Jean Jaurès, 31170 Tournefeuille, France</p>
+                <p><strong>Siège légal :</strong> 13 rue Fernand Léger, 31170 Tournefeuille, France</p>
+                <p><strong>Bureaux :</strong> 54 avenue Jean Jaurès, 31170 Tournefeuille, France</p>
                 <p><strong>SIRET :</strong> 908 995 103 00029</p>
                 <p><strong>Code APE :</strong> 70.22Z — Conseil pour les affaires et autres conseils de gestion</p>
                 <p><strong>Email :</strong> <a href="mailto:contact@ipb-expertise.fr" className="text-ipb-orange hover:text-ipb-orange underline">contact@ipb-expertise.fr</a></p>

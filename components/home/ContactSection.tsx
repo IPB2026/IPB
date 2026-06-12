@@ -87,7 +87,7 @@ export function ContactSection() {
               Parlons de votre <span className="text-orange-600">situation</span>
             </h2>
             <p className="text-slate-600 text-lg mb-8 leading-relaxed">
-              Chaque bâtiment est un cas particulier. Décrivez-nous votre problème — nos experts en pathologie du bâtiment vous orienteront vers la bonne démarche. Intervention sur Toulouse, Montauban, Auch et 56 communes en Occitanie.
+              Chaque bâtiment est un cas particulier. Décrivez-nous votre problème — l'équipe IPB qualifie votre dossier et mobilise l'expert du réseau partenaire qui convient. Intervention sur Toulouse, Montauban, Auch et 56 communes en Occitanie.
             </p>
 
             {/* Coordonnées */}

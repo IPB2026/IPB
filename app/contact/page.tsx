@@ -112,15 +112,24 @@ export default function ContactPage() {
                   </p>
                 </div>
 
-                {/* Adresse siège */}
+                {/* Adresses : siège légal + bureaux */}
                 <div className="space-y-5">
                   <div>
-                    <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-2">Siège</p>
+                    <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-2">Bureaux</p>
                     <p className="font-serif text-ipb-text font-medium text-[16px] mb-1">
                       54 avenue Jean Jaurès
                     </p>
                     <p className="text-[14px] font-light text-ipb-muted">
                       31170 Tournefeuille — Occitanie
+                    </p>
+                    <p className="text-[11px] font-light text-ipb-light italic mt-1">
+                      sur rendez-vous
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-2">Siège légal</p>
+                    <p className="text-[14px] font-light text-ipb-muted">
+                      13 rue Fernand Léger, 31170 Tournefeuille
                     </p>
                   </div>
                 </div>

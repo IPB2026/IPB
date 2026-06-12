@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     default: "IPB · Institut de pathologie & structure du bâtiment — Toulouse & Occitanie",
     template: "%s | IPB"
   },
-  description: "Institut spécialisé dans la structure du bâtiment. Diagnostic de fissures, expertise humidité, expertise avant achat et ouverture de mur porteur. Diagnostic et coordination assurés par IPB ; travaux réalisés sous décennale par les équipes du réseau IPB. Toulouse, Montauban, Auch (31-82-32).",
+  description: "Institut spécialisé dans la structure du bâtiment. Diagnostic de fissures, expertise humidité, expertise avant achat et ouverture de mur porteur. IPB qualifie votre demande et coordonne ; un expert du réseau partenaire réalise le diagnostic gratuit, les équipes du réseau IPB exécutent les travaux sous décennale. Toulouse, Montauban, Auch (31-82-32).",
   keywords: ["expert fissures Toulouse", "expertise humidité Toulouse", "expertise avant achat Toulouse", "ouverture mur porteur Toulouse", "agrafage fissures", "fissures maison", "expert structure Toulouse", "Montauban", "Auch", "Haute-Garonne", "Tarn-et-Garonne", "Gers", "Tarn", "institut pathologie du bâtiment", "diagnostic structure", "humidité murs"],
   authors: [{ name: "IPB - Institut de Pathologie du Bâtiment" }],
   creator: "IPB",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     url: "https://www.ipb-expertise.fr",
     siteName: "IPB - Institut de Pathologie du Bâtiment",
     title: "IPB · Institut de pathologie & structure du bâtiment — Toulouse & Occitanie",
-    description: "Diagnostic de fissures, expertise humidité, expertise avant achat et ouverture de mur porteur. IPB diagnostique et coordonne ; les équipes du réseau IPB réalisent les travaux sous décennale.",
+    description: "Diagnostic de fissures, expertise humidité, expertise avant achat et ouverture de mur porteur. IPB qualifie votre demande et coordonne ; les experts du réseau IPB réalisent le diagnostic et les travaux sous décennale.",
     images: [
       {
         url: "/images/IPB_Logo_HD.png",
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "IPB · Institut de pathologie & structure du bâtiment (Occitanie)",
-    description: "Diagnostic de fissures, humidité, expertise avant achat, mur porteur. IPB diagnostique et coordonne ; le réseau IPB réalise sous décennale.",
+    description: "Diagnostic de fissures, humidité, expertise avant achat, mur porteur. IPB coordonne ; le réseau d'experts partenaires intervient sous décennale.",
     images: ["/images/IPB_Logo_HD.png"],
   },
   robots: {
