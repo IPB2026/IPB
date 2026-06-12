@@ -85,7 +85,7 @@ const faqMurPorteur = [
   },
   {
     question: "Quel est le prix d'une ouverture de mur porteur ?",
-    answer: "Le budget dépend de plusieurs paramètres concrets : la portée de l'ouverture, le type de mur (brique foraine, parpaing, pierre, béton banché), ce qui se trouve au-dessus (combles, étage habité), et la complexité des finitions. Plutôt qu'une fourchette générique qui peut induire en erreur, nous mettons à votre disposition un calculateur en ligne basé sur des chantiers récents du réseau IPB en Occitanie — 4 questions, 2 minutes, fourchette précise envoyée par email. Devis remis sous 3 à 5 jours après visite gratuite, un seul interlocuteur du diagnostic à la livraison.",
+    answer: "Le budget dépend de plusieurs paramètres concrets : la portée de l'ouverture, le type de mur (brique foraine, parpaing, pierre, béton banché), ce qui se trouve au-dessus (combles, étage habité), et la complexité des finitions. Plutôt qu'une fourchette générique qui peut induire en erreur, nous mettons à votre disposition un calculateur en ligne basé sur des chantiers récents du réseau IPB en Occitanie — 4 questions, 2 minutes, fourchette précise envoyée par email. Devis remis sous 3 à 5 jours après visite sur site, un seul interlocuteur du diagnostic à la livraison.",
   },
   {
     question: "Faut-il prévoir un étaiement pendant les travaux ?",

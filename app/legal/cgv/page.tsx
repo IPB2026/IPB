@@ -85,7 +85,7 @@ export default function CGVPage() {
               <li><a href="#article-3" className="text-ipb-orange hover:underline">Art. 3 — Objet et champ d'application</a></li>
               <li><a href="#article-4" className="text-ipb-orange hover:underline">Art. 4 — Prestation de coordination</a></li>
               <li><a href="#article-5" className="text-ipb-orange hover:underline">Art. 5 — Réseau de partenaires d'exécution</a></li>
-              <li><a href="#article-6" className="text-ipb-orange hover:underline">Art. 6 — Visite de diagnostic gratuite</a></li>
+              <li><a href="#article-6" className="text-ipb-orange hover:underline">Art. 6 — Visite de diagnostic par le Partenaire</a></li>
               <li><a href="#article-7" className="text-ipb-orange hover:underline">Art. 7 — Note de synthèse et limites</a></li>
               <li><a href="#article-8" className="text-ipb-orange hover:underline">Art. 8 — Devis et formation du contrat</a></li>
               <li><a href="#article-9" className="text-ipb-orange hover:underline">Art. 9 — Prix et régime de TVA</a></li>
@@ -175,7 +175,7 @@ export default function CGVPage() {
                 <li><strong>Client professionnel</strong> ou <strong>Client B2B</strong> : toute personne physique ou morale agissant à des fins entrant dans le cadre de son activité professionnelle.</li>
                 <li><strong>Prestation de coordination</strong> : prestation intellectuelle décrite à l'article 4, seule prestation facturée par IPB au Client.</li>
                 <li><strong>Partenaire d'exécution</strong> : entreprise indépendante, sélectionnée par IPB selon le domaine du désordre, intervenant sous sa propre responsabilité technique, sa propre RC professionnelle et sa propre garantie décennale.</li>
-                <li><strong>Visite de diagnostic</strong> : visite technique sur site, réalisée gratuitement par le Partenaire d'exécution compétent, dans son champ d'expertise et sous sa seule responsabilité.</li>
+                <li><strong>Visite de diagnostic</strong> : visite technique sur site, réalisée par le Partenaire d'exécution compétent dans son champ d'expertise et sous sa seule responsabilité, sans facturation au Client.</li>
                 <li><strong>Note de synthèse</strong> : document écrit remis au Client par IPB, qui reprend et met en forme l'avis et les éléments transmis par le Partenaire d'exécution, validés au préalable par ce dernier. La Note de synthèse n'est pas un rapport d'expertise opposable au sens judiciaire ou assurantiel.</li>
               </ul>
             </section>
@@ -221,7 +221,7 @@ export default function CGVPage() {
               <ul className="list-disc pl-6 mt-2 space-y-1">
                 <li>la qualification de la demande du Client (échange préalable, analyse du désordre déclaré, pré-orientation) ;</li>
                 <li>la sélection du Partenaire d'exécution compétent selon le domaine du désordre (structure, humidité, toiture, etc.) ;</li>
-                <li>l'organisation de la visite de diagnostic réalisée gratuitement par le Partenaire ;</li>
+                <li>l'organisation de la visite de diagnostic réalisée par le Partenaire, sans facturation au Client ;</li>
                 <li>la mise en forme et la remise au Client d'une <strong>Note de synthèse</strong> écrite, intégrant l'avis et les éléments transmis par le Partenaire et validés au préalable par celui-ci ;</li>
                 <li>l'aide aux démarches du Client (orientation vers les interlocuteurs adaptés : assureur, syndic, mairie, professionnel compétent) ;</li>
                 <li>un accompagnement Client pendant douze (12) mois après remise de la Note de synthèse (article 14).</li>
@@ -268,21 +268,20 @@ export default function CGVPage() {
               </p>
             </section>
 
-            {/* ---------- Article 6 — Visite gratuite ---------- */}
+            {/* ---------- Article 6 — Visite par le Partenaire ---------- */}
             <section id="article-6" aria-labelledby="article-6-title">
               <h2 id="article-6-title" className="text-2xl font-bold text-ipb-text mb-4 flex items-center gap-3">
                 <CheckCircle size={24} className="text-ipb-orange" aria-hidden="true" />
-                Article 6 — Visite de diagnostic gratuite
+                Article 6 — Visite de diagnostic par le Partenaire
               </h2>
               <p>
-                <strong>6.1.</strong> La visite de diagnostic est réalisée <strong>gratuitement</strong>
-                par le Partenaire d'exécution compétent, organisée par IPB dans le cadre de sa prestation
-                de coordination. Elle ne donne lieu à aucune facturation, ni par IPB, ni par le
-                Partenaire.
+                <strong>6.1.</strong> La visite de diagnostic est réalisée par le Partenaire d'exécution
+                compétent, organisée par IPB dans le cadre de sa prestation de coordination. Elle ne donne
+                lieu à <strong>aucune facturation au Client</strong>, ni par IPB, ni par le Partenaire.
               </p>
               <p className="mt-4">
-                <strong>6.2.</strong> La gratuité de la visite n'exonère pas le Partenaire de sa
-                responsabilité technique. Le Partenaire intervient sous sa propre responsabilité civile
+                <strong>6.2.</strong> L'absence de facturation au Client n'exonère pas le Partenaire de
+                sa responsabilité technique. Le Partenaire intervient sous sa propre responsabilité civile
                 professionnelle et sa propre garantie décennale, qui couvrent l'intervention y compris
                 lorsqu'elle n'est pas facturée.
               </p>

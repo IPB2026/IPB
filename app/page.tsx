@@ -98,7 +98,7 @@ const organizationSchema = {
 
 export const metadata: Metadata = {
   title: "Institut de pathologie & structure du bâtiment · IPB",
-  description: "Fissures, humidité, désordres structurels : IPB qualifie votre demande et coordonne l'intervention d'un expert du réseau partenaire (visite gratuite). Travaux exécutés par les équipes du réseau IPB sous décennale. Un seul interlocuteur, du diagnostic à la livraison. Occitanie.",
+  description: "Fissures, humidité, désordres structurels : IPB qualifie votre demande et coordonne l'intervention d'un expert du réseau partenaire. Travaux exécutés par les équipes du réseau IPB sous décennale. Un seul interlocuteur, du diagnostic à la livraison. Occitanie.",
   keywords: [
     'expert fissures Toulouse',
     'expertise fissures Haute-Garonne',

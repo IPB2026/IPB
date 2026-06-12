@@ -251,7 +251,7 @@ export default function BureauEtudeStructurePage() {
                 {
                   href: '/partenaires/agences-immobilieres',
                   titre: 'Agences immobilières',
-                  desc: "Une vente bloquée à cause d'une fissure : la note de synthèse rassure l'acquéreur, débloque la transaction, et la visite de diagnostic est gratuite.",
+                  desc: "Une vente bloquée à cause d'une fissure : la note de synthèse rassure l'acquéreur et débloque la transaction. Un seul interlocuteur, du diagnostic à la signature.",
                 },
                 {
                   href: '/diagnostic',
