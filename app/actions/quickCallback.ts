@@ -2,6 +2,7 @@
 
 import { sendEmail } from '@/lib/email';
 import { checkRateLimit } from '@/lib/rateLimit';
+import { captureLead } from '@/lib/crm/captureLead';
 
 interface QuickCallbackResult {
   success: boolean;
@@ -60,6 +61,23 @@ export async function submitQuickCallback(
         `,
       });
     }
+
+    // ─── Persistance CRM (non bloquant) ─────────────────────────
+    await captureLead({
+      source: 'RAPPEL',
+      service: 'AUTRE',
+      contact: {
+        name,
+        phone: phone.replace(/\s/g, ''),
+      },
+      scoring: {
+        tier: 'HOT',
+        callbackPriority: 'P1_4H',
+        reasons: ['Demande de rappel immédiat depuis la page d\'accueil'],
+      },
+      summary: 'Demande de rappel rapide',
+      payload: { name, phone },
+    });
 
     return {
       success: true,

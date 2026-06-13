@@ -2,6 +2,7 @@
 
 import { sendEmail } from '@/lib/email';
 import { checkRateLimit } from '@/lib/rateLimit';
+import { captureLead, parseAddress } from '@/lib/crm/captureLead';
 
 interface CalculatorLeadInput {
   name: string;
@@ -161,6 +162,43 @@ export async function submitCalculatorLead(input: CalculatorLeadInput): Promise<
           </div>
         </div>
       `,
+    });
+
+    // ─── Persistance CRM (non bloquant) ─────────────────────────
+    const { postalCode, city: parsedCity } = parseAddress(input.city);
+    const estimateAvg = Math.round((input.estimateMin + input.estimateMax) / 2);
+    await captureLead({
+      source: 'CALCULATEUR',
+      service: 'MUR_PORTEUR',
+      contact: {
+        name: input.name,
+        email: input.email,
+        phone: input.phone ?? null,
+        address: input.city ?? null,
+        city: parsedCity ?? (cpMatch ? null : input.city ?? null),
+        postalCode,
+        inServiceArea,
+      },
+      scoring: {
+        tier: 'WARM',
+        reasons: ['Estimation chiffrée demandée — intention forte mur porteur'],
+      },
+      summary: `${projectLabel} — estimation ${input.estimateMin}–${input.estimateMax} €`,
+      value: estimateAvg,
+      payload: {
+        project: input.project,
+        projectLabel,
+        largeur: input.largeur,
+        hauteur: input.hauteur,
+        mur: input.mur,
+        murLabel,
+        etage: input.etage,
+        etageLabel,
+        poutreType: input.poutreType,
+        estimateMin: input.estimateMin,
+        estimateMax: input.estimateMax,
+        city: input.city,
+      },
     });
 
     return { success: true };

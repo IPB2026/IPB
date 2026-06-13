@@ -3,6 +3,7 @@
 import { z } from 'zod';
 import { sendEmail } from '@/lib/email';
 import { checkRateLimit } from '@/lib/rateLimit';
+import { captureLead } from '@/lib/crm/captureLead';
 
 // Schéma de validation pour le formulaire de contact
 const contactFormSchema = z.object({
@@ -165,6 +166,21 @@ export async function submitContactForm(
         console.log('📧 Message de contact (email non configuré):', validatedData);
       }
     }
+
+    // ─── Persistance CRM (non bloquant) ─────────────────────────
+    await captureLead({
+      source: 'CONTACT',
+      service: 'AUTRE',
+      contact: {
+        name: validatedData.name,
+        email: validatedData.email,
+      },
+      summary: validatedData.subject,
+      payload: {
+        subject: validatedData.subject,
+        message: validatedData.message,
+      },
+    });
 
     return {
       success: true,

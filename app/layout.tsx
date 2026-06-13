@@ -300,11 +300,13 @@ export default function RootLayout({
         <main id="main-content">
           {children}
         </main>
-        <LeadWidget />
-        <StickyDiagnosticCta />
-        <ExitIntentPopup />
-        <CookieBanner />
-        <Analytics />
+        <div className="public-chrome">
+          <LeadWidget />
+          <StickyDiagnosticCta />
+          <ExitIntentPopup />
+          <CookieBanner />
+          <Analytics />
+        </div>
       </body>
     </html>
   )

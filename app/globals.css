@@ -86,7 +86,24 @@
     color: var(--ipb-orange);
     font-weight: 700;
   }
-  
+
+  /* Back-office /admin : Inter pour toute l'UI (override de la serif éditoriale).
+     Scopé à .admin-scope → le site public n'est pas affecté. */
+  .admin-scope,
+  .admin-scope :is(h1, h2, h3, h4, h5, h6, button, input, select, textarea) {
+    font-family: var(--font-admin), 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  .admin-scope :is(h1, h2) em {
+    font-style: normal;
+    color: inherit;
+    font-weight: inherit;
+  }
+
+  /* Masque les widgets marketing dans le back-office (CSS pur, aucun JS) */
+  body:has(.admin-scope) .public-chrome {
+    display: none !important;
+  }
+
   /* ═══════════════════════════════════════════════════════════════
      ACCESSIBILITÉ - Focus states améliorés (WCAG 2.1 AA)
      ═══════════════════════════════════════════════════════════════ */
