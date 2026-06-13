@@ -6,6 +6,12 @@ import { sendEmail } from '@/lib/email';
 import { checkRateLimit } from '@/lib/rateLimit';
 import { calculateLeadScore, isInServiceArea, renderScoringBanner } from '@/lib/leadScoring';
 import { emailTemplates } from '@/lib/emailTemplates';
+import {
+  captureLead,
+  parseAddress,
+  serviceFromDiagnostic,
+  occupantFromAnswer,
+} from '@/lib/crm/captureLead';
 
 /**
  * Server Actions pour le diagnostic
@@ -439,6 +445,42 @@ export async function submitDiagnosticLead(
       // Vercel Cron + Vercel KV. Pour l'instant on n'envoie que le J+0
       // immédiat. Les templates sont prêts dans lib/emailTemplates.ts.
     }
+
+    // ─── Persistance CRM (non bloquant) ─────────────────────────
+    const answers = validatedData.answers as Record<string, unknown>;
+    const { postalCode, city } = parseAddress(rawData.address);
+    await captureLead({
+      source: 'DIAGNOSTIC',
+      service: serviceFromDiagnostic(validatedData.path, answers),
+      contact: {
+        name: validatedData.name,
+        email: validatedData.email,
+        phone: validatedData.phone,
+        address: rawData.address,
+        postalCode,
+        city,
+        occupantStatus: occupantFromAnswer(answers?.STATUT),
+        propertyType: (answers?.TYPE_BATIMENT as string) ?? null,
+        inServiceArea: isInServiceArea(rawData.address) ?? null,
+      },
+      scoring: {
+        tier: scoring.tier,
+        score: scoring.score,
+        maxScore: scoring.maxScore,
+        riskScore: validatedData.riskScore,
+        callbackPriority: scoring.callbackPriority,
+        reasons: scoring.reasons,
+      },
+      summary: `Diagnostic ${validatedData.path} — risque ${validatedData.riskScore}/100`,
+      payload: {
+        path: validatedData.path,
+        riskScore: validatedData.riskScore,
+        answers,
+        address: rawData.address,
+        yearBuilt: rawData.yearBuilt,
+        preferredTime: rawData.preferredTime,
+      },
+    });
 
     return {
       success: true,
