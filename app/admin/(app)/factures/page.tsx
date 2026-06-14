@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ReceiptText } from 'lucide-react';
+import { ReceiptText, Download } from 'lucide-react';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
@@ -24,6 +24,15 @@ export default async function FacturesListPage() {
       <PageHeader
         title="Factures"
         subtitle={dbError ? undefined : `${factures.length} facture(s)`}
+        actions={
+          <a
+            href="/admin/exports?type=factures"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+          >
+            <Download className="h-4 w-4" />
+            CSV
+          </a>
+        }
       />
 
       <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">

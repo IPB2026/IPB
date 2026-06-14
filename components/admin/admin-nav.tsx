@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import {
   LayoutDashboard,
   BarChart3,
+  Search,
   Users,
   UserCheck,
   CalendarClock,
@@ -25,6 +26,7 @@ const adminItems = [
   { href: '/admin/devis', label: 'Devis', icon: FileText },
   { href: '/admin/factures', label: 'Factures', icon: Receipt },
   { href: '/admin/rapports', label: 'Rapports', icon: ClipboardCheck },
+  { href: '/admin/recherche', label: 'Recherche', icon: Search },
   { href: '/admin/parametres', label: 'Paramètres', icon: Settings },
 ];
 
