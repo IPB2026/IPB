@@ -9,6 +9,7 @@ import {
   FileText,
   Receipt,
   ClipboardCheck,
+  Settings,
 } from 'lucide-react';
 
 const items = [
@@ -18,6 +19,7 @@ const items = [
   { href: '/admin/devis', label: 'Devis', icon: FileText },
   { href: '/admin/factures', label: 'Factures', icon: Receipt },
   { href: '/admin/rapports', label: 'Rapports', icon: ClipboardCheck },
+  { href: '/admin/parametres', label: 'Paramètres', icon: Settings },
 ];
 
 const soon: { label: string; icon: typeof ClipboardCheck }[] = [];
