@@ -30,6 +30,8 @@ import {
   completeRelance,
   assignLead,
 } from '@/app/admin/(app)/leads/actions';
+import { QualificationForm } from '@/components/admin/qualification-form';
+import type { QualificationRecord } from '@/lib/crm/qualification';
 
 export const dynamic = 'force-dynamic';
 
@@ -75,6 +77,7 @@ export default async function LeadDetailPage({
   if (!lead) notFound();
 
   const c = lead.contact;
+  const qual = extractQualification(lead.payload);
 
   return (
     <div className="space-y-6">
@@ -262,6 +265,42 @@ export default async function LeadDetailPage({
         </div>
       </section>
 
+      {/* Qualification structurée (appel) */}
+      <section className="rounded-xl border border-slate-200 bg-white p-5">
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+          <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            Qualification (appel)
+          </h2>
+          {qual?.at && (
+            <span className="text-xs text-slate-400">
+              Dernière mise à jour le {new Date(qual.at).toLocaleDateString('fr-FR')}
+            </span>
+          )}
+        </div>
+        <p className="mb-4 text-sm text-slate-500">
+          Pour un prospect reçu par téléphone : renseignez ces 4 critères, le tier
+          (HOT/WARM/COLD) est calculé et appliqué automatiquement.
+        </p>
+        <QualificationForm leadId={lead.id} current={qual} />
+        {qual?.reasons && qual.reasons.length > 0 && (
+          <div className="mt-4 border-t border-slate-100 pt-3">
+            <p className="text-xs font-medium uppercase tracking-wider text-slate-400">
+              Critères retenus
+            </p>
+            <ul className="mt-2 flex flex-wrap gap-2">
+              {qual.reasons.map((r, i) => (
+                <li
+                  key={i}
+                  className="rounded-md bg-slate-50 px-2 py-1 text-xs text-slate-600"
+                >
+                  {r}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </section>
+
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
         {/* Colonne gauche : coordonnées + qualification */}
         <div className="space-y-5 lg:col-span-1">
@@ -388,6 +427,14 @@ export default async function LeadDetailPage({
       </div>
     </div>
   );
+}
+
+/** Extrait la qualification d'appel rangée dans `payload.qualification`. */
+function extractQualification(payload: unknown): QualificationRecord | null {
+  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) return null;
+  const q = (payload as Record<string, unknown>).qualification;
+  if (!q || typeof q !== 'object') return null;
+  return q as QualificationRecord;
 }
 
 function Card({ title, children }: { title: string; children: React.ReactNode }) {

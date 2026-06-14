@@ -13,6 +13,16 @@ import {
 } from '@/lib/crm/captureLead';
 import { notifyExpertAssigned } from '@/lib/crm/notify';
 import {
+  scoreQualification,
+  QUAL_OPTIONS,
+  type QualificationRecord,
+  type QualBudget,
+  type QualDelai,
+  type QualDecision,
+  type QualBien,
+} from '@/lib/crm/qualification';
+import { Prisma } from '@prisma/client';
+import {
   ServiceType,
   OccupantStatus,
   LeadTier,
@@ -312,6 +322,76 @@ export async function assignLead(formData: FormData) {
   if (newId) await notifyExpertAssigned(leadId, newId);
   revalidateLead(leadId);
   revalidatePath('/admin/rapports');
+}
+
+/**
+ * Qualification structurée (appel) : budget / délai / décisionnaire / type de
+ * bien → score + tier auto. Rangé dans `payload.qualification` (aucune
+ * migration) ; met à jour `Lead.tier` pour piloter priorité & relances.
+ */
+export async function qualifyLead(formData: FormData) {
+  await requireUser();
+  const leadId = String(formData.get('leadId') ?? '');
+  if (!leadId) return;
+
+  const pick = <T extends string>(
+    axis: keyof typeof QUAL_OPTIONS,
+    fallback: T
+  ): T => {
+    const raw = String(formData.get(axis) ?? '');
+    const ok = (QUAL_OPTIONS[axis] as readonly { value: string }[]).some(
+      (o) => o.value === raw
+    );
+    return (ok ? raw : fallback) as T;
+  };
+
+  const input = {
+    budget: pick<QualBudget>('budget', 'INCONNU'),
+    delai: pick<QualDelai>('delai', 'INCONNU'),
+    decision: pick<QualDecision>('decision', 'INCONNU'),
+    bien: pick<QualBien>('bien', 'INCONNU'),
+    note: String(formData.get('note') ?? '').trim() || undefined,
+  };
+
+  const lead = await prisma.lead.findUnique({
+    where: { id: leadId },
+    select: { contactId: true, payload: true },
+  });
+  if (!lead) return;
+
+  const result = scoreQualification(input);
+  const record: QualificationRecord = {
+    ...input,
+    ...result,
+    at: new Date().toISOString(),
+  };
+
+  const basePayload =
+    lead.payload && typeof lead.payload === 'object' && !Array.isArray(lead.payload)
+      ? (lead.payload as Prisma.JsonObject)
+      : {};
+
+  await prisma.lead.update({
+    where: { id: leadId },
+    data: {
+      tier: result.tier,
+      payload: {
+        ...basePayload,
+        qualification: record as unknown as Prisma.InputJsonValue,
+      },
+    },
+  });
+  await prisma.activity.create({
+    data: {
+      type: ActivityType.NOTE,
+      leadId,
+      contactId: lead.contactId,
+      content: `Qualification mise à jour — ${result.tier} (${result.score}/${result.maxScore})${
+        input.note ? ` · ${input.note}` : ''
+      }`,
+    },
+  });
+  revalidateLead(leadId);
 }
 
 /** Marque une relance comme effectuée. */
