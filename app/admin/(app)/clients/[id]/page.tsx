@@ -120,6 +120,7 @@ export default async function ClientFichePage({
       status: d.status,
       totalHT: Number(d.totalHT),
       acceptedAt: d.acceptedAt,
+      serviceType: d.serviceType,
     })),
     factures: c.factures.map((f) => ({ status: f.status })),
     rapports: c.rapports.map((r) => ({ status: r.status })),
@@ -232,6 +233,31 @@ export default async function ClientFichePage({
           ))}
         </ol>
       </Card>
+
+      {/* Suivi client : rapport remis, décision travaux en attente */}
+      {dossier.enSuiviClient && (
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-orange-200 bg-orange-50/60 p-5">
+          <div className="max-w-xl">
+            <p className="text-sm font-semibold text-slate-900">
+              Suivi client — quelle suite donner ?
+            </p>
+            <p className="mt-1 text-sm text-slate-600">
+              Le rapport a été remis. Faites le point avec le client : s&apos;il
+              souhaite engager les travaux de reprise, émettez le 2ᵉ devis
+              d&apos;accompagnement travaux.
+            </p>
+          </div>
+          <Link
+            href={`/admin/devis/nouveau-travaux?contactId=${c.id}${
+              lead?.id ? `&leadId=${lead.id}` : ''
+            }`}
+            className="inline-flex h-10 shrink-0 items-center gap-1.5 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white hover:bg-orange-700"
+          >
+            <FileText className="h-4 w-4" />
+            Créer le devis travaux
+          </Link>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
         {/* Coordonnées & bien */}

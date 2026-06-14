@@ -83,13 +83,47 @@ const MUR_PORTEUR: DevisTemplate = {
   ],
 };
 
+// ─────────────────────────────────────────────────────────────────
+// 2ᵉ devis « accompagnement travaux » — émis après le rapport.
+// Repéré par serviceType = AUTRE (sentinelle, cf. isDevisTravaux). IPB
+// coordonne ; les travaux sont exécutés par les équipes de réalisation du
+// réseau IPB, sous leur garantie décennale (lexique IPB strict).
+// ─────────────────────────────────────────────────────────────────
+const TRAVAUX: DevisTemplate = {
+  objet: 'Accompagnement et coordination des travaux de reprise',
+  intervention: [
+    'Établissement du programme de travaux à partir des conclusions du rapport d’expertise',
+    'Consultation et sélection des équipes de réalisation du réseau IPB (travaux exécutés sous garantie décennale)',
+    'Planification et organisation du chantier : phasage, accès, délais',
+    'Coordination et suivi d’exécution avec points de contrôle aux étapes clés',
+    'Vérification de la conformité des travaux aux préconisations du rapport',
+    'Assistance à la réception des travaux et à la levée des réserves',
+  ],
+  livrable: [
+    'Programme de travaux chiffré, établi avec les équipes de réalisation mandatées',
+    'Planning prévisionnel du chantier',
+    'Comptes rendus de suivi aux étapes clés',
+    'Assistance à la réception et accompagnement jusqu’à la levée des réserves',
+    'Travaux exécutés par les équipes de réalisation du réseau IPB, sous leur garantie décennale',
+  ],
+};
+
 const TEMPLATES: Record<ServiceType, DevisTemplate> = {
   FISSURES,
   HUMIDITE,
   EXPERTISE_ACHAT,
   MUR_PORTEUR,
-  AUTRE: FISSURES,
+  AUTRE: TRAVAUX,
 };
+
+/**
+ * Le 2ᵉ devis (« accompagnement travaux ») est repéré par serviceType = AUTRE.
+ * Le formulaire des devis diagnostic n'expose que FISSURES/HUMIDITE/EXPERTISE_ACHAT/
+ * MUR_PORTEUR : AUTRE est donc une sentinelle fiable, sans champ de schéma dédié.
+ */
+export function isDevisTravaux(d: { serviceType?: ServiceType | null }): boolean {
+  return d.serviceType === 'AUTRE';
+}
 
 export function devisTemplate(service?: ServiceType | null): DevisTemplate {
   return TEMPLATES[service ?? 'FISSURES'] ?? FISSURES;

@@ -16,6 +16,8 @@ import {
 } from '@/app/admin/(app)/devis/actions';
 import { sendDevis } from '@/app/admin/(app)/send-actions';
 import { EditDevisForm } from '@/components/admin/edit-devis-form';
+import { DevisTravauxForm } from '@/components/admin/devis-travaux-form';
+import { isDevisTravaux } from '@/lib/crm/devis-templates';
 
 export const dynamic = 'force-dynamic';
 
@@ -40,6 +42,7 @@ export default async function DevisDetailPage({
   if (!devis) notFound();
 
   const isAccepted = devis.status === 'ACCEPTE';
+  const isTravaux = isDevisTravaux(devis);
   const coordAppt = devis.coordinationAppts[0] ?? null;
   const planUrl =
     `/admin/agenda?type=LANCEMENT_TRAVAUX&contactId=${devis.contactId}` +
@@ -67,6 +70,11 @@ export default async function DevisDetailPage({
           <p className="text-sm text-slate-500">
             {devis.object} — {devis.contact.name}
           </p>
+          {isTravaux && (
+            <span className="mt-1.5 inline-flex rounded-md bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-700 ring-1 ring-inset ring-amber-600/20">
+              Devis travaux (2ᵉ devis)
+            </span>
+          )}
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <DevisStatusBadge status={devis.status} />
@@ -210,13 +218,23 @@ export default async function DevisDetailPage({
             </span>
           )}
         </div>
-        <EditDevisForm
-          devisId={devis.id}
-          serviceType={devis.serviceType ?? 'FISSURES'}
-          prix={Number(devis.totalHT)}
-          bienConcerne={devis.bienConcerne ?? ''}
-          validUntil={validUntilStr}
-        />
+        {isTravaux ? (
+          <DevisTravauxForm
+            mode="edit"
+            devisId={devis.id}
+            prix={Number(devis.totalHT)}
+            bienConcerne={devis.bienConcerne ?? ''}
+            validUntil={validUntilStr}
+          />
+        ) : (
+          <EditDevisForm
+            devisId={devis.id}
+            serviceType={devis.serviceType ?? 'FISSURES'}
+            prix={Number(devis.totalHT)}
+            bienConcerne={devis.bienConcerne ?? ''}
+            validUntil={validUntilStr}
+          />
+        )}
       </section>
 
       {/* Détail */}

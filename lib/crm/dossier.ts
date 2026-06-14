@@ -10,10 +10,17 @@ import type {
   ReportStatus,
   AppointmentStatus,
   AppointmentType,
+  ServiceType,
 } from '@prisma/client';
 
 export interface DossierInputs {
-  devis: { status: DevisStatus; totalHT: number; acceptedAt: Date | null }[];
+  devis: {
+    status: DevisStatus;
+    totalHT: number;
+    acceptedAt: Date | null;
+    /** AUTRE = 2ᵉ devis « accompagnement travaux » (cf. lib/crm/devis-templates). */
+    serviceType?: ServiceType | null;
+  }[];
   factures: { status: FactureStatus }[];
   rapports: { status: ReportStatus }[];
   appointments: { type: AppointmentType; status: AppointmentStatus }[];
@@ -31,6 +38,10 @@ export interface DossierView {
   clientSince: Date | null;
   montant: number | null; // total du devis accepté le plus récent
   travauxAPlanifier: boolean;
+  /** Rapport remis, mais le client n'a pas encore décidé des suites (pas de devis travaux). */
+  enSuiviClient: boolean;
+  /** Un 2ᵉ devis « accompagnement travaux » a été émis pour ce dossier. */
+  hasDevisTravaux: boolean;
   steps: DossierStep[];
 }
 
@@ -40,8 +51,12 @@ export function computeDossier(d: DossierInputs): DossierView {
     .sort((a, b) => (b.acceptedAt?.getTime() ?? 0) - (a.acceptedAt?.getTime() ?? 0));
 
   const isClient = acceptedDevis.length > 0 || d.factures.length > 0;
-  const clientSince = acceptedDevis[0]?.acceptedAt ?? null;
-  const montant = acceptedDevis[0]?.totalHT ?? null;
+  // Montant/date du dossier = devis diagnostic accepté en priorité (pas le
+  // 2ᵉ devis « travaux »), sinon le plus récent accepté.
+  const primaryDevis =
+    acceptedDevis.find((x) => x.serviceType !== 'AUTRE') ?? acceptedDevis[0];
+  const clientSince = primaryDevis?.acceptedAt ?? null;
+  const montant = primaryDevis?.totalHT ?? null;
 
   const devisEnvoye = d.devis.some((x) =>
     ['ENVOYE', 'ACCEPTE', 'REFUSE', 'EXPIRE'].includes(x.status)
@@ -58,6 +73,8 @@ export function computeDossier(d: DossierInputs): DossierView {
   const travauxPlanifies = d.appointments.some(
     (a) => a.type === 'LANCEMENT_TRAVAUX'
   );
+  // 2ᵉ devis « accompagnement travaux » = devis de service AUTRE (sentinelle).
+  const hasDevisTravaux = d.devis.some((x) => x.serviceType === 'AUTRE');
 
   const raw: { key: string; label: string; done: boolean }[] = [
     { key: 'devis', label: 'Devis envoyé', done: devisEnvoye || isClient },
@@ -67,6 +84,13 @@ export function computeDossier(d: DossierInputs): DossierView {
     { key: 'facture', label: 'Facture émise', done: factureEnvoyee },
     { key: 'paiement', label: 'Paiement reçu', done: facturePayee },
     { key: 'rapport', label: 'Rapport transmis', done: rapportEnvoye },
+    // Cycle travaux (post-rapport)
+    {
+      key: 'suivi',
+      label: 'Suivi client',
+      done: hasDevisTravaux || travauxPlanifies,
+    },
+    { key: 'travaux', label: 'Travaux lancés', done: travauxPlanifies },
   ];
 
   // L'étape courante = la première non faite.
@@ -76,8 +100,19 @@ export function computeDossier(d: DossierInputs): DossierView {
     current: i === firstTodo,
   }));
 
-  // Travaux à planifier : devis accepté + pas (encore) de RDV de lancement.
+  // Rapport remis mais aucune suite engagée (ni devis travaux, ni lancement).
+  const enSuiviClient =
+    rapportEnvoye && !hasDevisTravaux && !travauxPlanifies;
+  // Travaux à planifier : dossier client + rapport remis + pas (encore) de lancement.
   const travauxAPlanifier = isClient && rapportEnvoye && !travauxPlanifies;
 
-  return { isClient, clientSince, montant, travauxAPlanifier, steps };
+  return {
+    isClient,
+    clientSince,
+    montant,
+    travauxAPlanifier,
+    enSuiviClient,
+    hasDevisTravaux,
+    steps,
+  };
 }

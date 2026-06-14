@@ -267,15 +267,38 @@ export async function validateAndSendRapport(
 
   const rapport = await prisma.rapport.findUnique({
     where: { id },
-    select: { status: true, aiContent: true },
+    select: {
+      status: true,
+      aiContent: true,
+      contactId: true,
+      leadId: true,
+    },
   });
   if (!rapport) return;
+  if (rapport.status === 'ENVOYE') return; // déjà envoyé — évite double envoi/relance
   const ai = rapport.aiContent as { error?: string } | null;
   if (!ai || ai.error) return; // pas de contenu valide à envoyer
 
   // Marque validé puis envoie (sendRapportEmail passe le statut à ENVOYE).
   await prisma.rapport.update({ where: { id }, data: { status: 'VALIDE' } });
-  await sendRapportEmail(id);
+  const sent = await sendRapportEmail(id);
+
+  // Suivi client (Phase 2) : à la remise du rapport, planifie une relance dédiée
+  // « savoir ce que veut faire le client » à J+3, qui remonte dans « Relances dues ».
+  if (sent.ok) {
+    const due = new Date();
+    due.setDate(due.getDate() + 3);
+    await prisma.activity.create({
+      data: {
+        type: 'RELANCE',
+        contactId: rapport.contactId,
+        leadId: rapport.leadId,
+        content:
+          'Faire le point avec le client après remise du rapport — décision sur les travaux de reprise ?',
+        dueAt: due,
+      },
+    });
+  }
 
   revalidatePath(`/admin/rapports/${id}`);
   revalidatePath('/admin/rapports');

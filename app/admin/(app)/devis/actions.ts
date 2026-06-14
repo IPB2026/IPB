@@ -97,6 +97,108 @@ function defaultValidUntil(): Date {
   return d;
 }
 
+// Ligne unique du devis travaux (coordination IPB ; travaux exécutés par le réseau).
+const TRAVAUX_LINE = {
+  designation: 'Accompagnement et coordination des travaux de reprise',
+  detail:
+    'Programmation, sélection et pilotage des équipes de réalisation du réseau IPB, suivi de chantier et assistance à réception',
+  unit: 'Forfait',
+  qty: 1,
+  position: 0,
+} as const;
+
+/**
+ * 2ᵉ devis « accompagnement travaux » — émis APRÈS le rapport, distinct du devis
+ * diagnostic. Repéré par serviceType = AUTRE. Montant libre (≠ forfait diagnostic
+ * 399–499 €). Son acceptation déclenche le lancement des travaux (cf. page devis).
+ */
+export async function createDevisTravaux(
+  _prev: string | undefined,
+  formData: FormData
+): Promise<string | undefined> {
+  await requireUser();
+
+  const contactId = num(formData.get('contactId'));
+  if (!contactId) return 'Client obligatoire.';
+  const prix = Math.round(Number(num(formData.get('prix')).replace(',', '.')) || 0);
+  if (!prix || prix < 1 || prix > 100000) {
+    return 'Indiquez un montant valide (€ HT).';
+  }
+
+  const contact = await prisma.contact.findUnique({ where: { id: contactId } });
+  if (!contact) return 'Client introuvable.';
+
+  const validRaw = num(formData.get('validUntil'));
+  const validUntil = validRaw ? new Date(validRaw) : defaultValidUntil();
+  const number = await nextDevisNumber();
+  const tpl = devisTemplate('AUTRE');
+  const leadId = num(formData.get('leadId')) || null;
+
+  const devis = await prisma.devis.create({
+    data: {
+      number,
+      contactId,
+      leadId,
+      object: tpl.objet,
+      serviceType: 'AUTRE',
+      bienConcerne: num(formData.get('bienConcerne')).trim() || null,
+      validUntil,
+      totalHT: prix,
+      lines: { create: [{ ...TRAVAUX_LINE, unitPrice: prix, total: prix }] },
+    },
+  });
+  await prisma.activity.create({
+    data: {
+      type: 'SYSTEME',
+      contactId,
+      leadId,
+      content: `Devis d'accompagnement travaux ${number} créé`,
+    },
+  });
+
+  revalidatePath('/admin/devis');
+  revalidatePath(`/admin/clients/${contactId}`);
+  redirect(`/admin/devis/${devis.id}`);
+}
+
+/** Modifie un devis travaux (montant libre, bien, validité). */
+export async function updateDevisTravaux(
+  _prev: string | undefined,
+  formData: FormData
+): Promise<string | undefined> {
+  await requireUser();
+  const id = num(formData.get('devisId'));
+  if (!id) return 'Devis introuvable.';
+  const prix = Math.round(Number(num(formData.get('prix')).replace(',', '.')) || 0);
+  if (!prix || prix < 1 || prix > 100000) return 'Montant invalide (€ HT).';
+
+  const existing = await prisma.devis.findUnique({
+    where: { id },
+    select: { id: true },
+  });
+  if (!existing) return 'Devis introuvable.';
+
+  const tpl = devisTemplate('AUTRE');
+  const validRaw = num(formData.get('validUntil'));
+
+  await prisma.devisLine.deleteMany({ where: { devisId: id } });
+  await prisma.devis.update({
+    where: { id },
+    data: {
+      serviceType: 'AUTRE',
+      object: tpl.objet,
+      bienConcerne: num(formData.get('bienConcerne')).trim() || null,
+      validUntil: validRaw ? new Date(validRaw) : undefined,
+      totalHT: prix,
+      lines: { create: [{ ...TRAVAUX_LINE, unitPrice: prix, total: prix }] },
+    },
+  });
+
+  revalidatePath(`/admin/devis/${id}`);
+  revalidatePath('/admin/devis');
+  return undefined;
+}
+
 export async function updateDevisStatus(formData: FormData) {
   await requireUser();
   const id = num(formData.get('devisId'));
