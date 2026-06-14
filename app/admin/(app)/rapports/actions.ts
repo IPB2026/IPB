@@ -16,6 +16,7 @@ import {
   type ReportZoneInput,
   type ReportPhotoInput,
 } from '@/lib/ai/report';
+import { fetchLocationRisk, formatLocationRisk } from '@/lib/geo/georisques';
 
 const str = (v: FormDataEntryValue | null) => String(v ?? '').trim();
 
@@ -324,6 +325,14 @@ export async function generateRapportAI(formData: FormData) {
     gravite: p.gravite ?? undefined,
   }));
 
+  // Données officielles de localisation (Géorisques/BAN) — non bloquant.
+  const adresse = [rapport.bienAdresse, rapport.ville].filter(Boolean).join(' ');
+  let locationRisk: string | null = null;
+  if (adresse) {
+    const risk = await fetchLocationRisk(adresse).catch(() => null);
+    if (risk) locationRisk = formatLocationRisk(risk);
+  }
+
   const result = await generateReport({
     type: rapport.type,
     clientName: rapport.contact.name,
@@ -331,6 +340,7 @@ export async function generateRapportAI(formData: FormData) {
     ville: rapport.ville ?? undefined,
     zones,
     photos,
+    locationRisk,
   });
 
   if ('error' in result) {

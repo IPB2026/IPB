@@ -39,6 +39,8 @@ export interface ReportInput {
   ville?: string;
   zones: ReportZoneInput[];
   photos?: ReportPhotoInput[];
+  /** Données officielles de localisation (Géorisques/BAN), si disponibles. */
+  locationRisk?: string | null;
 }
 
 export interface ReportContent {
@@ -117,7 +119,7 @@ EXIGENCES DE FOND :
 - PRUDENCE D'EXPERT : pour chaque désordre, propose PLUSIEURS mécanismes causals plausibles (retrait/dessiccation, déformation en flexion, mouvement différentiel d'appui, tassement de fondation, concentration de contraintes, comportement de l'enduit…), classés par probabilité. Ne TRANCHE JAMAIS une cause unique sans instrumentation suffisante : si une donnée manque, dis-le et recommande l'investigation adaptée (sondage destructif, BET, étude géotechnique G5, pose de témoins).
 - N'invente JAMAIS de mesure, de constat, de chiffre ou de coordonnée non fournis. Si le diagnostiqueur n'a pas mesuré, écris "—" pour la mesure et reste qualitatif.
 - RÉFÉRENTIELS, à citer uniquement s'ils s'appliquent réellement : classification ITSIM des ouvertures (< 0,2 mm esthétique ; 0,2-2 mm à surveiller ; ≥ 2 mm structurelle significative), DTU 26.1 (reprise par agrafage), retrait-gonflement des argiles (BRGM / Géorisques), étude géotechnique mission G5, NF EN 1990 (BET).
-- CONTEXTE DE LOCALISATION : à partir de l'adresse/commune, fournis un contexte documentaire pertinent (nature géologique probable, exposition au retrait-gonflement des argiles en Haute-Garonne/Occitanie, antécédents de catastrophe naturelle "sécheresse" éventuels, contexte urbain/âge du bâti). Présente-le comme un CONTEXTE GÉNÉRAL DOCUMENTAIRE "à confirmer auprès des sources officielles (Géorisques, BRGM)" — n'affirme pas un classement réglementaire précis comme une certitude.
+- CONTEXTE DE LOCALISATION : si des DONNÉES OFFICIELLES (Géorisques / Base Adresse Nationale) te sont fournies dans le message, UTILISE-LES comme références FACTUELLES — cite l'aléa retrait-gonflement des argiles exact et le nombre/l'ancienneté des arrêtés de catastrophe naturelle "sécheresse" de la commune, et tire-en les implications pour les désordres observés. À DÉFAUT de données officielles, fournis un contexte général documentaire (géologie probable, exposition RGA en Occitanie) présenté comme "à confirmer auprès des sources officielles (Géorisques, BRGM)" sans affirmer un classement comme une certitude.
 - PHOTOS : des photographies terrain peuvent t'être jointes (avec légende + zone). Analyse-les VISUELLEMENT pour étayer le diagnostic (orientation et faciès des fissures, traces d'humidité/efflorescences/salpêtre, état des matériaux). N'affirme que ce que la photo montre réellement ; ne décris jamais une photo non transmise. Référence-les ("la photographie n° X montre…").
 - LIMITES & PÉRIMÈTRE : rédige une section ferme rappelant que le rapport repose sur des observations VISUELLES non destructives ; que les zones masquées/non accessibles ne sont pas couvertes ; qu'il ne se substitue ni à une étude de structure (BET), ni à une expertise judiciaire, ni à une expertise d'assurance ; et qu'il ne saurait engager la responsabilité de l'IPB au-delà du périmètre de conseil.
 - MATRICE DE CRITICITÉ : pour chaque désordre majeur, croise une PROBABILITÉ (Faible/Modérée/Élevée) et une GRAVITÉ (Faible/Modérée/Élevée/Critique) pour en déduire une CRITICITÉ.
@@ -258,6 +260,9 @@ export async function generateReport(
     `Client : ${input.clientName}.`,
     input.bienAdresse ? `Bien expertisé : ${input.bienAdresse}.` : '',
     input.ville ? `Commune : ${input.ville}.` : '',
+    input.locationRisk
+      ? `\nDONNÉES OFFICIELLES DE LOCALISATION (Géorisques / Base Adresse Nationale) — RÉFÉRENCE FACTUELLE pour le contexte de localisation, à citer telle quelle (ne pas la présenter comme « à confirmer ») :\n${input.locationRisk}`
+      : '',
     '',
     'CONSTATS TERRAIN du diagnostiqueur (matière brute à développer en analyse experte, sans rien inventer) :',
     ...input.zones.map(
