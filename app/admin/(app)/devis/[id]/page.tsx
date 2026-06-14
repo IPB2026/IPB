@@ -17,6 +17,7 @@ import {
 import { sendDevis } from '@/app/admin/(app)/send-actions';
 import { EditDevisForm } from '@/components/admin/edit-devis-form';
 import { DevisTravauxForm } from '@/components/admin/devis-travaux-form';
+import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 import { isDevisTravaux } from '@/lib/crm/devis-templates';
 
 export const dynamic = 'force-dynamic';
@@ -204,13 +205,13 @@ export default async function DevisDetailPage({
           {canDelete ? (
             <form action={deleteDevis}>
               <input type="hidden" name="devisId" value={devis.id} />
-              <button
-                type="submit"
+              <ConfirmSubmit
+                message={`Supprimer définitivement le devis ${devis.number} ? Cette action est irréversible.`}
                 className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 px-3 py-1.5 text-xs font-medium text-red-600 hover:bg-red-50"
               >
                 <Trash2 className="h-3.5 w-3.5" />
                 Supprimer
-              </button>
+              </ConfirmSubmit>
             </form>
           ) : (
             <span className="text-xs text-slate-400">

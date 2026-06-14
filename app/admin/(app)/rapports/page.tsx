@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
-import { Plus, ClipboardCheck, MapPin, ArrowRight } from 'lucide-react';
+import { Plus, ClipboardCheck, MapPin, ArrowRight, CalendarClock } from 'lucide-react';
 import type { ReportStatus } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { getSessionUser } from '@/lib/auth-helpers';
@@ -50,6 +50,7 @@ export default async function RapportsListPage() {
 async function ExpertView({ expertId }: { expertId: string }) {
   let leads: Awaited<ReturnType<typeof loadAssignedLeads>> = [];
   let rapportByLead = new Map<string, { id: string; status: ReportStatus }>();
+  const nextApptByLead = new Map<string, { start: Date; location: string | null }>();
   let dbError = false;
   try {
     leads = await loadAssignedLeads(expertId);
@@ -60,6 +61,20 @@ async function ExpertView({ expertId }: { expertId: string }) {
     rapportByLead = new Map(
       rapports.filter((r) => r.leadId).map((r) => [r.leadId as string, r])
     );
+    // RDV planifiés pour ces prospects : le diagnostiqueur doit voir quand se déplacer.
+    const leadIds = leads.map((l) => l.id);
+    if (leadIds.length) {
+      const appts = await prisma.appointment.findMany({
+        where: { leadId: { in: leadIds }, status: { not: 'ANNULE' } },
+        orderBy: { start: 'asc' },
+        select: { leadId: true, start: true, location: true },
+      });
+      for (const a of appts) {
+        if (a.leadId && !nextApptByLead.has(a.leadId)) {
+          nextApptByLead.set(a.leadId, { start: a.start, location: a.location });
+        }
+      }
+    }
   } catch {
     dbError = true;
   }
@@ -107,6 +122,21 @@ async function ExpertView({ expertId }: { expertId: string }) {
                         </span>
                       )}
                     </p>
+                    {nextApptByLead.get(lead.id) && (
+                      <p className="mt-1 inline-flex items-center gap-1.5 text-sm font-medium text-orange-700">
+                        <CalendarClock className="h-3.5 w-3.5" />
+                        {(() => {
+                          const ap = nextApptByLead.get(lead.id)!;
+                          return `Visite ${ap.start.toLocaleString('fr-FR', {
+                            weekday: 'short',
+                            day: 'numeric',
+                            month: 'short',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                          })}${ap.location ? ' · ' + ap.location : ''}`;
+                        })()}
+                      </p>
+                    )}
                   </div>
                   <div className="flex items-center gap-2">
                     {rapport ? (

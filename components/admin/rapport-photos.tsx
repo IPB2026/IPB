@@ -192,6 +192,7 @@ export function RapportPhotos({
                     <button
                       type="button"
                       onClick={() => {
+                        if (!window.confirm('Supprimer cette photo ? Action irréversible.')) return;
                         const fd = new FormData();
                         fd.set('rapportId', rapportId);
                         fd.set('photoId', p.id);

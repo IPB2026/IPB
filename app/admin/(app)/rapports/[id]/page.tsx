@@ -26,6 +26,7 @@ import {
 } from '@/app/admin/(app)/rapports/actions';
 import { RapportPhotos } from '@/components/admin/rapport-photos';
 import { RapportZonesEditor } from '@/components/admin/rapport-zones-editor';
+import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 
 export const dynamic = 'force-dynamic';
 
@@ -301,13 +302,13 @@ export default async function RapportDetailPage({
               {content && c.email && status !== 'ENVOYE' && (
                 <form action={validateAndSendRapport}>
                   <input type="hidden" name="rapportId" value={rapport.id} />
-                  <button
-                    type="submit"
+                  <ConfirmSubmit
+                    message={`Envoyer définitivement le rapport ${rapport.number} à ${c.email} ? Le PDF part immédiatement au client.`}
                     className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700"
                   >
                     <CheckCircle2 className="h-4 w-4" />
                     Valider et envoyer au client
-                  </button>
+                  </ConfirmSubmit>
                 </form>
               )}
               {content && status === 'ENVOYE' && (

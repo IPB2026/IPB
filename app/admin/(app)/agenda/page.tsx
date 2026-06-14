@@ -10,6 +10,7 @@ import { isCalendarConfigured } from '@/lib/google/calendar';
 import {
   createAppointment,
   updateAppointmentStatus,
+  rescheduleAppointment,
   generateInvoiceFromAppointment,
 } from '@/app/admin/(app)/agenda/actions';
 
@@ -225,10 +226,8 @@ export default async function AgendaPage({
               <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
                 <ul className="divide-y divide-slate-100">
                   {items.map((a) => (
-                    <li
-                      key={a.id}
-                      className="flex flex-col gap-3 px-4 py-3.5 sm:flex-row sm:items-center sm:gap-3 sm:px-5"
-                    >
+                    <li key={a.id} className="px-4 py-3.5 sm:px-5">
+                      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-3">
                       <div className="flex min-w-0 flex-1 items-center gap-3">
                         <span className="w-11 shrink-0 text-sm font-semibold tabular-nums text-slate-900">
                           {a.start.toLocaleTimeString('fr-FR', {
@@ -293,6 +292,44 @@ export default async function AgendaPage({
                           </form>
                         )}
                       </div>
+                      </div>
+                      <details className="mt-2 [&_summary::-webkit-details-marker]:hidden">
+                        <summary className="cursor-pointer list-none text-xs font-medium text-slate-400 hover:text-slate-700">
+                          Décaler le RDV
+                        </summary>
+                        <form
+                          action={rescheduleAppointment}
+                          className="mt-2 flex flex-wrap items-end gap-2"
+                        >
+                          <input type="hidden" name="appointmentId" value={a.id} />
+                          <input
+                            type="datetime-local"
+                            name="start"
+                            required
+                            className="h-9 rounded-lg border border-slate-300 px-2 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                          />
+                          <input
+                            type="number"
+                            name="durationMin"
+                            defaultValue={60}
+                            min={15}
+                            step={15}
+                            className="h-9 w-20 rounded-lg border border-slate-300 px-2 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                          />
+                          <input
+                            name="location"
+                            placeholder="Lieu"
+                            defaultValue={a.location ?? ''}
+                            className="h-9 min-w-0 flex-1 rounded-lg border border-slate-300 px-2 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                          />
+                          <button
+                            type="submit"
+                            className="h-9 rounded-lg bg-slate-900 px-3 text-sm font-semibold text-white hover:bg-slate-800"
+                          >
+                            Décaler
+                          </button>
+                        </form>
+                      </details>
                     </li>
                   ))}
                 </ul>

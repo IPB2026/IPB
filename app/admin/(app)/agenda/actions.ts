@@ -7,6 +7,7 @@ import { requireAdmin } from '@/lib/auth-helpers';
 import { nextFactureNumber } from '@/lib/crm/numbering';
 import {
   createCalendarEvent,
+  updateCalendarEvent,
   deleteCalendarEvent,
   isCalendarConfigured,
 } from '@/lib/google/calendar';
@@ -137,6 +138,50 @@ export async function updateAppointmentStatus(formData: FormData) {
     });
   }
   revalidatePath('/admin/agenda');
+}
+
+/**
+ * Re-planifie un RDV existant (date/heure/lieu) et met à jour l'événement Google
+ * (le client est notifié du changement). Évite le cycle annuler→recréer.
+ */
+export async function rescheduleAppointment(formData: FormData) {
+  await requireUser();
+  const id = str(formData.get('appointmentId'));
+  const startRaw = str(formData.get('start'));
+  if (!id || !startRaw) return;
+  const start = new Date(startRaw);
+  if (Number.isNaN(start.getTime())) return;
+  const durationMin = Number(str(formData.get('durationMin'))) || 60;
+  const end = new Date(start.getTime() + durationMin * 60000);
+  const location = str(formData.get('location')) || null;
+
+  const appt = await prisma.appointment.findUnique({
+    where: { id },
+    select: { googleEventId: true, contactId: true, leadId: true },
+  });
+  if (!appt) return;
+
+  await prisma.appointment.update({
+    where: { id },
+    data: { start, end, location },
+  });
+  if (appt.googleEventId) {
+    await updateCalendarEvent(appt.googleEventId, {
+      start,
+      end,
+      location: location ?? undefined,
+    });
+  }
+  await prisma.activity.create({
+    data: {
+      type: 'RDV',
+      contactId: appt.contactId,
+      leadId: appt.leadId,
+      content: `RDV décalé au ${start.toLocaleString('fr-FR')}`,
+    },
+  });
+  revalidatePath('/admin/agenda');
+  if (appt.leadId) revalidatePath(`/admin/leads/${appt.leadId}`);
 }
 
 /**
