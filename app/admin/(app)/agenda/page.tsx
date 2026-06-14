@@ -7,6 +7,17 @@ import { PageHeader } from '@/components/admin/page-header';
 import { EmptyState } from '@/components/admin/empty-state';
 import { Avatar } from '@/components/admin/avatar';
 import { isCalendarConfigured } from '@/lib/google/calendar';
+import { AgendaWeek, type WeekAppt } from '@/components/admin/agenda-week';
+
+/** Lundi 00:00 de la semaine contenant `d`. */
+function startOfWeek(d: Date): Date {
+  const x = new Date(d);
+  x.setHours(0, 0, 0, 0);
+  const offset = (x.getDay() + 6) % 7; // 0 = lundi
+  x.setDate(x.getDate() - offset);
+  return x;
+}
+const ymd = (d: Date) => d.toISOString().slice(0, 10);
 import {
   createAppointment,
   updateAppointmentStatus,
@@ -49,6 +60,8 @@ export default async function AgendaPage({
     type?: string;
     leadId?: string;
     devisId?: string;
+    vue?: string;
+    semaine?: string;
   };
 }) {
   await guardAdminPage();
@@ -88,6 +101,38 @@ export default async function AgendaPage({
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key)!.push(a);
   }
+
+  // Vue « semaine » (lecture seule)
+  const isWeek = searchParams.vue === 'semaine';
+  const weekStart = startOfWeek(
+    searchParams.semaine ? new Date(searchParams.semaine) : new Date()
+  );
+  let weekAppts: WeekAppt[] = [];
+  if (isWeek && !dbError) {
+    const weekEnd = new Date(weekStart);
+    weekEnd.setDate(weekStart.getDate() + 7);
+    try {
+      const rows = await prisma.appointment.findMany({
+        where: { start: { gte: weekStart, lt: weekEnd }, status: { not: 'ANNULE' } },
+        orderBy: { start: 'asc' },
+        include: { contact: { select: { name: true } } },
+      });
+      weekAppts = rows.map((a) => ({
+        id: a.id,
+        start: a.start,
+        title: a.title,
+        contactName: a.contact.name,
+        type: a.type,
+        status: a.status,
+      }));
+    } catch {
+      /* dbError déjà géré */
+    }
+  }
+  const prevWeek = new Date(weekStart);
+  prevWeek.setDate(weekStart.getDate() - 7);
+  const nextWeek = new Date(weekStart);
+  nextWeek.setDate(weekStart.getDate() + 7);
 
   return (
     <div className="space-y-6">
@@ -207,8 +252,52 @@ export default async function AgendaPage({
         </div>
       </details>
 
-      {/* Liste */}
-      {dbError || appts.length === 0 ? (
+      {/* Bascule Liste / Semaine */}
+      <div className="flex flex-wrap items-center gap-2">
+        <div className="inline-flex rounded-lg border border-slate-200 bg-white p-0.5">
+          <Link
+            href="/admin/agenda"
+            className={`rounded-md px-3 py-1.5 text-sm font-medium ${
+              !isWeek ? 'bg-slate-900 text-white' : 'text-slate-600 hover:bg-slate-50'
+            }`}
+          >
+            Liste
+          </Link>
+          <Link
+            href="/admin/agenda?vue=semaine"
+            className={`rounded-md px-3 py-1.5 text-sm font-medium ${
+              isWeek ? 'bg-slate-900 text-white' : 'text-slate-600 hover:bg-slate-50'
+            }`}
+          >
+            Semaine
+          </Link>
+        </div>
+        {isWeek && (
+          <div className="ml-auto flex items-center gap-2 text-sm">
+            <Link
+              href={`/admin/agenda?vue=semaine&semaine=${ymd(prevWeek)}`}
+              className="rounded-lg border border-slate-300 px-2.5 py-1.5 text-slate-600 hover:bg-slate-50"
+              aria-label="Semaine précédente"
+            >
+              ←
+            </Link>
+            <span className="font-medium tabular-nums text-slate-700">
+              Sem. du {weekStart.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}
+            </span>
+            <Link
+              href={`/admin/agenda?vue=semaine&semaine=${ymd(nextWeek)}`}
+              className="rounded-lg border border-slate-300 px-2.5 py-1.5 text-slate-600 hover:bg-slate-50"
+              aria-label="Semaine suivante"
+            >
+              →
+            </Link>
+          </div>
+        )}
+      </div>
+
+      {isWeek ? (
+        <AgendaWeek weekStart={weekStart} appts={weekAppts} />
+      ) : dbError || appts.length === 0 ? (
         <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
           <EmptyState
             icon={CalendarClock}
