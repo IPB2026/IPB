@@ -1,6 +1,12 @@
 import { prisma } from '@/lib/prisma';
 import { sendEmail } from '@/lib/email';
-import { emailTemplates, emailSequence, devisRelance } from '@/lib/emailTemplates';
+import {
+  emailTemplates,
+  emailSequence,
+  devisRelance,
+  factureRelance,
+} from '@/lib/emailTemplates';
+import { euros } from '@/lib/crm/company';
 import type { LeadTier } from '@prisma/client';
 
 export const runtime = 'nodejs';
@@ -168,11 +174,74 @@ export async function GET(req: Request) {
     errors.push(`devis-loop: ${e instanceof Error ? e.message : 'err'}`);
   }
 
+  // ── Relances de factures impayées (échéance dépassée : J+3 puis J+7) ──
+  const FACTURE_STEPS = [3, 7] as const;
+  let factureSent = 0;
+  try {
+    const factures = await prisma.facture.findMany({
+      where: {
+        status: 'ENVOYEE',
+        dueDate: { not: null, lt: new Date(now) },
+        contact: { email: { not: null } },
+      },
+      include: { contact: true },
+      take: 100,
+      orderBy: { dueDate: 'asc' },
+    });
+
+    for (const f of factures) {
+      const email = f.contact.email;
+      if (!email || !f.dueDate) continue;
+
+      const relanceCount = await prisma.activity.count({
+        where: {
+          contactId: f.contactId,
+          content: { contains: `Relance facture ${f.number}` },
+        },
+      });
+      if (relanceCount >= FACTURE_STEPS.length) continue;
+
+      const overdueDays = (now - f.dueDate.getTime()) / DAY;
+      const offset = FACTURE_STEPS[relanceCount];
+      if (overdueDays < offset) continue;
+
+      try {
+        const res = await sendEmail({
+          to: email,
+          subject: `Facture ${f.number} — en attente de règlement`,
+          html: factureRelance({
+            firstName: f.contact.name.split(' ')[0] || f.contact.name,
+            number: f.number,
+            montant: euros(Number(f.totalHT)),
+            dueDate: f.dueDate.toLocaleDateString('fr-FR'),
+          }),
+        });
+        if (!res.success) {
+          errors.push(`facture ${f.id}: ${res.error}`);
+          continue;
+        }
+        await prisma.activity.create({
+          data: {
+            type: 'EMAIL',
+            contactId: f.contactId,
+            content: `Relance facture ${f.number} (J+${offset} après échéance) envoyée à ${email}`,
+          },
+        });
+        factureSent++;
+      } catch (e) {
+        errors.push(`facture ${f.id}: ${e instanceof Error ? e.message : 'err'}`);
+      }
+    }
+  } catch (e) {
+    errors.push(`facture-loop: ${e instanceof Error ? e.message : 'err'}`);
+  }
+
   return Response.json({
     ok: true,
     candidates: leads.length,
     sent,
     devisSent,
+    factureSent,
     errors: errors.slice(0, 10),
   });
 }

@@ -337,6 +337,37 @@ export function devisRelance(ctx: DevisRelanceContext): string {
 }
 
 // ─────────────────────────────────────────────────────────────────
+// Relance d'une facture impayée (échéance dépassée)
+// ─────────────────────────────────────────────────────────────────
+
+interface FactureRelanceContext {
+  firstName: string;
+  number: string;
+  montant: string;
+  dueDate: string;
+  unsubscribeUrl?: string;
+}
+
+export function factureRelance(ctx: FactureRelanceContext): string {
+  const inner = `
+    ${card(`
+      ${eyebrow('Facture en attente de règlement')}
+      ${heading('Votre facture ' + ctx.number, 'reste à régler.')}
+      ${para('Bonjour ' + ctx.firstName + ',')}
+      ${para(
+        `Sauf erreur de notre part, la facture <strong>${ctx.number}</strong> d'un montant de <strong>${ctx.montant}</strong> (échéance du ${ctx.dueDate}) n'a pas encore été réglée.`
+      )}
+      ${para('Le règlement s\'effectue par virement (coordonnées bancaires indiquées sur la facture). Si votre paiement vient de partir, merci de ne pas tenir compte de ce message.')}
+      <p style="margin: 28px 0;">
+        ${button('Une question ? 05 82 95 33 75', 'tel:0582953375')}
+      </p>
+      ${signature}
+    `)}
+  `;
+  return wrap(inner, { eyebrow: 'Relance · facture', unsubscribeUrl: ctx.unsubscribeUrl });
+}
+
+// ─────────────────────────────────────────────────────────────────
 // Export consolidé
 // ─────────────────────────────────────────────────────────────────
 
