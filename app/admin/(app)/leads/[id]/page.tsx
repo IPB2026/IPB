@@ -17,7 +17,6 @@ import { prisma } from '@/lib/prisma';
 import { guardAdminPage, listExperts } from '@/lib/auth-helpers';
 import { Avatar } from '@/components/admin/avatar';
 import {
-  TierBadge,
   StageBadge,
   SOURCE_LABEL,
   SERVICE_LABEL,
@@ -104,7 +103,6 @@ export default async function LeadDetailPage({
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
           <div className="flex flex-wrap items-center gap-2">
-            <TierBadge tier={lead.tier} />
             <StageBadge stage={lead.stage} />
           </div>
           <div className="flex gap-2">

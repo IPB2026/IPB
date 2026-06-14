@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import {
   Users,
-  Flame,
+  UserCheck,
   Clock,
   Inbox,
   Plus,
@@ -23,7 +23,6 @@ import { Avatar } from '@/components/admin/avatar';
 import { MobileCardRow } from '@/components/admin/mobile-card';
 import { completeRelance } from '@/app/admin/(app)/leads/actions';
 import {
-  TierBadge,
   StageBadge,
   SOURCE_LABEL,
   SERVICE_LABEL,
@@ -35,8 +34,8 @@ async function getStats() {
   const now = new Date();
   const [
     total,
-    byTier,
-    hotOpen,
+    clients,
+    nouveaux,
     recent,
     relancesDues,
     relances,
@@ -51,10 +50,12 @@ async function getStats() {
     aPlanifierCount,
   ] = await Promise.all([
     prisma.lead.count(),
-    prisma.lead.groupBy({ by: ['tier'], _count: { _all: true } }),
-    prisma.lead.count({
-      where: { tier: 'HOT', stage: { notIn: ['GAGNE', 'PERDU'] } },
+    prisma.contact.count({
+      where: {
+        OR: [{ devis: { some: { status: 'ACCEPTE' } } }, { factures: { some: {} } }],
+      },
     }),
+    prisma.lead.count({ where: { stage: 'NOUVEAU' } }),
     prisma.lead.findMany({
       take: 8,
       orderBy: { createdAt: 'desc' },
@@ -108,15 +109,10 @@ async function getStats() {
     }),
   ]);
 
-  const tierCount = (t: string) =>
-    byTier.find((b) => b.tier === t)?._count._all ?? 0;
-
   return {
     total,
-    hot: tierCount('HOT'),
-    warm: tierCount('WARM'),
-    cold: tierCount('COLD'),
-    hotOpen,
+    clients,
+    nouveaux,
     relancesDues,
     recent,
     relances,
@@ -179,13 +175,12 @@ export default async function DashboardPage() {
       />
 
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <StatCard label="Total prospects" value={stats.total} icon={Users} />
+        <StatCard label="Prospects" value={stats.total} icon={Users} />
         <StatCard
-          label="Chauds à traiter"
-          value={stats.hotOpen}
-          icon={Flame}
+          label="Nouveaux à traiter"
+          value={stats.nouveaux}
+          icon={Inbox}
           tone="orange"
-          hint="Non clôturés"
         />
         <StatCard
           label="Relances dues"
@@ -193,12 +188,7 @@ export default async function DashboardPage() {
           icon={Clock}
           tone="amber"
         />
-        <StatCard
-          label="Tièdes / Froids"
-          value={`${stats.warm} / ${stats.cold}`}
-          icon={Inbox}
-          tone="blue"
-        />
+        <StatCard label="Clients" value={stats.clients} icon={UserCheck} tone="blue" />
       </div>
 
       {/* Centre de pilotage : à traiter */}
@@ -391,10 +381,10 @@ export default async function DashboardPage() {
                   href={`/admin/leads/${lead.id}`}
                   leading={<Avatar name={lead.contact.name} size="sm" />}
                   title={lead.contact.name}
-                  badge={<TierBadge tier={lead.tier} />}
+                  badge={<StageBadge stage={lead.stage} />}
                   lines={[
                     lead.contact.phone || lead.contact.email || '—',
-                    <StageBadge key="s" stage={lead.stage} />,
+                    SERVICE_LABEL[lead.service],
                   ]}
                 />
               ))}
@@ -408,7 +398,6 @@ export default async function DashboardPage() {
                   <th className="px-5 py-2.5">Contact</th>
                   <th className="px-5 py-2.5">Service</th>
                   <th className="px-5 py-2.5">Source</th>
-                  <th className="px-5 py-2.5">Tier</th>
                   <th className="px-5 py-2.5">Étape</th>
                   <th className="px-5 py-2.5 text-right">Reçu</th>
                 </tr>
@@ -440,9 +429,6 @@ export default async function DashboardPage() {
                     </td>
                     <td className="px-5 py-3 text-slate-600">
                       {SOURCE_LABEL[lead.source]}
-                    </td>
-                    <td className="px-5 py-3">
-                      <TierBadge tier={lead.tier} />
                     </td>
                     <td className="px-5 py-3">
                       <StageBadge stage={lead.stage} />

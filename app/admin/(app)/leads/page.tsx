@@ -8,12 +8,10 @@ import { EmptyState } from '@/components/admin/empty-state';
 import { Avatar } from '@/components/admin/avatar';
 import { MobileCardList, MobileCardRow } from '@/components/admin/mobile-card';
 import {
-  TierBadge,
   StageBadge,
   SOURCE_LABEL,
   SERVICE_LABEL,
   STAGE_LABEL,
-  TIER_LABEL,
 } from '@/components/admin/badges';
 
 export const dynamic = 'force-dynamic';
@@ -93,8 +91,7 @@ export default async function LeadsPage({
             className="h-10 w-full rounded-lg border border-slate-300 pl-9 pr-3 text-base outline-none transition-colors focus:border-orange-500 focus:ring-2 focus:ring-orange-200 sm:text-sm"
           />
         </div>
-        <div className="grid grid-cols-3 gap-2 sm:contents">
-          <FilterSelect name="tier" value={searchParams.tier} placeholder="Tier" options={Object.entries(TIER_LABEL)} />
+        <div className="grid grid-cols-2 gap-2 sm:contents">
           <FilterSelect name="source" value={searchParams.source} placeholder="Source" options={Object.entries(SOURCE_LABEL)} />
           <FilterSelect name="stage" value={searchParams.stage} placeholder="Étape" options={Object.entries(STAGE_LABEL)} />
         </div>
@@ -149,13 +146,12 @@ export default async function LeadsPage({
                 href={`/admin/leads/${lead.id}`}
                 leading={<Avatar name={lead.contact.name} size="sm" />}
                 title={lead.contact.name}
-                badge={<TierBadge tier={lead.tier} />}
+                badge={<StageBadge stage={lead.stage} />}
                 lines={[
                   lead.contact.phone || lead.contact.email || '—',
                   `${SERVICE_LABEL[lead.service]}${
                     lead.contact.city ? ' · ' + lead.contact.city : ''
                   }`,
-                  <StageBadge key="s" stage={lead.stage} />,
                 ]}
               />
             ))}
@@ -170,7 +166,6 @@ export default async function LeadsPage({
                   <th className="px-5 py-2.5">Ville</th>
                   <th className="px-5 py-2.5">Service</th>
                   <th className="px-5 py-2.5">Source</th>
-                  <th className="px-5 py-2.5">Tier</th>
                   <th className="px-5 py-2.5">Étape</th>
                   <th className="px-5 py-2.5 text-right">Reçu</th>
                 </tr>
@@ -202,9 +197,6 @@ export default async function LeadsPage({
                     </td>
                     <td className="px-5 py-3 text-slate-600">
                       {SOURCE_LABEL[lead.source]}
-                    </td>
-                    <td className="px-5 py-3">
-                      <TierBadge tier={lead.tier} />
                     </td>
                     <td className="px-5 py-3">
                       <StageBadge stage={lead.stage} />

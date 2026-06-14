@@ -185,15 +185,11 @@ export default async function ClientFichePage({
           </div>
         </div>
 
-        <div className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
+        <div className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
           <Metric label="Diagnostiqueur" value={diagnostiqueur} />
           <Metric
             label="Montant dossier"
             value={dossier.montant != null ? euros(dossier.montant) : '—'}
-          />
-          <Metric
-            label="Documents"
-            value={`${c.devis.length} devis · ${c.factures.length} fact. · ${c.rapports.length} rapp.`}
           />
           <Metric
             label="Travaux"
