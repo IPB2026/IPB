@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { CalendarClock, ReceiptText } from 'lucide-react';
 import type { AppointmentStatus, AppointmentType } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
+import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
 import { EmptyState } from '@/components/admin/empty-state';
 import { Avatar } from '@/components/admin/avatar';
@@ -39,6 +40,7 @@ const field =
   'h-10 w-full rounded-lg border border-slate-300 px-3 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200';
 
 export default async function AgendaPage() {
+  await guardAdminPage();
   let appts: Awaited<ReturnType<typeof loadAppts>> = [];
   let contacts: { id: string; name: string; city: string | null }[] = [];
   let dbError = false;

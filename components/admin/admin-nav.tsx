@@ -12,7 +12,9 @@ import {
   Settings,
 } from 'lucide-react';
 
-const items = [
+type Role = 'ADMIN' | 'EXPERT';
+
+const adminItems = [
   { href: '/admin', label: 'Tableau de bord', icon: LayoutDashboard },
   { href: '/admin/leads', label: 'Prospects', icon: Users },
   { href: '/admin/agenda', label: 'Agenda', icon: CalendarClock },
@@ -22,10 +24,23 @@ const items = [
   { href: '/admin/parametres', label: 'Paramètres', icon: Settings },
 ];
 
+// L'EXPERT (diagnostiqueur) ne voit que ses interventions et ses paramètres.
+const expertItems = [
+  { href: '/admin/rapports', label: 'Mes interventions', icon: ClipboardCheck },
+  { href: '/admin/parametres', label: 'Paramètres', icon: Settings },
+];
+
 const soon: { label: string; icon: typeof ClipboardCheck }[] = [];
 
-export function AdminNav({ onNavigate }: { onNavigate?: () => void }) {
+export function AdminNav({
+  role,
+  onNavigate,
+}: {
+  role: Role;
+  onNavigate?: () => void;
+}) {
   const pathname = usePathname();
+  const items = role === 'EXPERT' ? expertItems : adminItems;
 
   return (
     <nav className="flex flex-col gap-0.5">

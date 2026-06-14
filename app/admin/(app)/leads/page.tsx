@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Plus, Search, Users } from 'lucide-react';
 import type { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
+import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
 import { EmptyState } from '@/components/admin/empty-state';
 import { Avatar } from '@/components/admin/avatar';
@@ -46,6 +47,7 @@ export default async function LeadsPage({
 }: {
   searchParams: SearchParams;
 }) {
+  await guardAdminPage();
   let leads: Prisma.LeadGetPayload<{ include: { contact: true } }>[] = [];
   let dbError = false;
   try {

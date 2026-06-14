@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Download, Mail } from 'lucide-react';
 import { prisma } from '@/lib/prisma';
+import { guardAdminPage } from '@/lib/auth-helpers';
 import {
   FactureStatusBadge,
   FACTURE_STATUS_LABEL,
@@ -17,6 +18,7 @@ export default async function FactureDetailPage({
 }: {
   params: { id: string };
 }) {
+  await guardAdminPage();
   const facture = await prisma.facture
     .findUnique({
       where: { id: params.id },

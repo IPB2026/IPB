@@ -3,10 +3,18 @@ import {
   Page,
   View,
   Text,
+  Image,
   StyleSheet,
 } from '@react-pdf/renderer';
 import { COMPANY, BRAND, euros } from '@/lib/crm/company';
 import type { ReportContent } from '@/lib/ai/report';
+
+export interface RapportDocPhoto {
+  url: string;
+  caption?: string | null;
+  zoneRef?: string | null;
+  gravite?: string | null;
+}
 
 export interface RapportDocData {
   number: string;
@@ -18,6 +26,7 @@ export interface RapportDocData {
   status: string;
   contact: { name: string; email?: string | null; phone?: string | null };
   content: ReportContent;
+  photos?: RapportDocPhoto[];
 }
 
 const fr = (d: Date) => new Date(d).toLocaleDateString('fr-FR', { dateStyle: 'long' });
@@ -144,11 +153,28 @@ const s = StyleSheet.create({
     textAlign: 'center',
   },
   signature: { marginTop: 18, fontSize: 9 },
+  photoGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: 4,
+  },
+  photoCell: { width: '50%', padding: 4 },
+  photoImg: {
+    width: '100%',
+    height: 150,
+    objectFit: 'cover',
+    borderRadius: 4,
+    borderWidth: 1,
+    borderColor: BRAND.slate200,
+  },
+  photoCap: { fontSize: 7.5, color: BRAND.slate600, marginTop: 3 },
+  photoMeta: { fontSize: 7, color: BRAND.slate400 },
 });
 
 export function RapportDocument({ data }: { data: RapportDocData }) {
   const c = data.content;
   const ttc = Math.round(c.budgetHT * 1.1);
+  const photos = (data.photos ?? []).filter((p) => p.url);
   return (
     <Document title={data.number} author={COMPANY.shortName}>
       <Page size="A4" style={s.page}>
@@ -291,6 +317,30 @@ export function RapportDocument({ data }: { data: RapportDocData }) {
             <Text key={i}>{i + 1}. {r}</Text>
           ))}
         </View>
+
+        {/* Reportage photographique */}
+        {photos.length > 0 && (
+          <View break>
+            <Text style={s.sectionH}>Reportage photographique</Text>
+            <View style={s.photoGrid}>
+              {photos.map((p, i) => (
+                <View key={i} style={s.photoCell} wrap={false}>
+                  {/* eslint-disable-next-line jsx-a11y/alt-text */}
+                  <Image style={s.photoImg} src={p.url} />
+                  <Text style={s.photoCap}>
+                    Photo {i + 1}
+                    {p.caption ? ` — ${p.caption}` : ''}
+                  </Text>
+                  {(p.zoneRef || p.gravite) && (
+                    <Text style={s.photoMeta}>
+                      {[p.zoneRef, p.gravite].filter(Boolean).join(' · ')}
+                    </Text>
+                  )}
+                </View>
+              ))}
+            </View>
+          </View>
+        )}
 
         <Text style={s.signature}>
           Pour {COMPANY.shortName} — {COMPANY.city}, {fr(data.createdAt)}.{'\n'}

@@ -19,12 +19,20 @@ export interface ReportZoneInput {
   gravite?: string; // À TRAITER / IMPORTANT / À SURVEILLER / INFO
 }
 
+export interface ReportPhotoInput {
+  url: string; // URL publique (Vercel Blob)
+  caption?: string;
+  zoneRef?: string;
+  gravite?: string;
+}
+
 export interface ReportInput {
   type: 'FISSURES' | 'HUMIDITE' | 'EXPERTISE_ACHAT' | 'MUR_PORTEUR';
   clientName: string;
   bienAdresse?: string;
   ville?: string;
   zones: ReportZoneInput[];
+  photos?: ReportPhotoInput[];
 }
 
 export interface ReportContent {
@@ -61,6 +69,7 @@ const SYSTEM = `Tu es le rédacteur expert de l'IPB — Institut de Pathologie d
 STYLE & EXIGENCES :
 - Ton expert, factuel, précis. Aucune exagération commerciale. Vouvoiement neutre.
 - Pour CHAQUE zone : développe l'observation brute du diagnostiqueur en une analyse technique structurée (mécanismes probables, gravité, implications), sans jamais inventer de mesures ou de constats non fournis. Si une donnée manque, reste prudent et recommande l'investigation adaptée.
+- PHOTOS : des photographies prises sur le terrain peuvent t'être fournies (avec leur légende et la zone associée). Analyse-les visuellement pour étayer ton diagnostic — orientation et faciès des fissures, traces d'humidité/efflorescences/salpêtre, désordres structurels visibles, état des matériaux. N'affirme que ce que la photo montre réellement ; en cas de doute, recommande une investigation complémentaire. Ne décris jamais une photo qui ne t'a pas été transmise.
 - Cite les référentiels pertinents quand ils s'appliquent : classification ITSIM des ouvertures de fissures (< 0,2 mm esthétique ; 0,2–0,5 mm surveillance ; ≥ 2 mm structurelle significative), DTU 26.1 (reprise des fissures > 1 mm par agrafage avant enduit), retrait-gonflement des argiles (BRGM, contexte Haute-Garonne), étude géotechnique mission G5 en escalade. N'invoque une référence que si elle est réellement pertinente.
 - Gravités normalisées : "À TRAITER", "IMPORTANT", "À SURVEILLER", "INFO".
 - Estimation des travaux : postes réalistes en € HT, TVA 10 % (art. 279-0 bis CGI, rénovation > 2 ans) — toujours indicative et non contractuelle. budgetHT = somme des postes.
@@ -158,6 +167,8 @@ export async function generateReport(
 
   const client = new Anthropic();
 
+  const photos = (input.photos ?? []).filter((p) => p.url);
+
   const userPrompt = [
     `Type de mission : diagnostic ${TYPE_LABEL[input.type]}.`,
     `Client : ${input.clientName}.`,
@@ -173,10 +184,35 @@ export async function generateReport(
         (z.gravite ? `  Gravité estimée : ${z.gravite}\n` : '')
     ),
     '',
+    photos.length
+      ? `${photos.length} photographie(s) terrain te sont jointes ci-dessous (analyse visuelle attendue).`
+      : '',
+    '',
     "Rédige le rapport complet (conclusion générale, analyse par zone avec références techniques pertinentes, tableau de synthèse, préconisations ordonnées par priorité, estimation budgétaire des travaux en € HT, conclusion, recommandations finales).",
   ]
     .filter(Boolean)
     .join('\n');
+
+  // Contenu multimodal : le texte d'abord, puis chaque photo précédée de sa
+  // légende/zone pour que le modèle relie l'image au bon désordre.
+  const userContent: Anthropic.ContentBlockParam[] = [
+    { type: 'text', text: userPrompt },
+  ];
+  for (const [i, p] of photos.entries()) {
+    const légende = [
+      `Photo ${i + 1}`,
+      p.zoneRef ? `zone : ${p.zoneRef}` : '',
+      p.gravite ? `gravité : ${p.gravite}` : '',
+      p.caption ? `légende : ${p.caption}` : '',
+    ]
+      .filter(Boolean)
+      .join(' · ');
+    userContent.push({ type: 'text', text: légende });
+    userContent.push({
+      type: 'image',
+      source: { type: 'url', url: p.url },
+    });
+  }
 
   // output_config.format (json_schema) + adaptive thinking : on caste car le
   // typage du SDK n'expose pas encore `format` sur output_config.
@@ -189,7 +225,7 @@ export async function generateReport(
       effort: 'high',
       format: { type: 'json_schema', schema: SCHEMA },
     },
-    messages: [{ role: 'user', content: userPrompt }],
+    messages: [{ role: 'user', content: userContent }],
   };
 
   try {

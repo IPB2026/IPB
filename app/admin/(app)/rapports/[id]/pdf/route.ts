@@ -17,7 +17,7 @@ export async function GET(
 
   const rapport = await prisma.rapport.findUnique({
     where: { id: params.id },
-    include: { contact: true },
+    include: { contact: true, photos: { orderBy: { position: 'asc' } } },
   });
   if (!rapport) return new Response('Introuvable', { status: 404 });
 
@@ -37,6 +37,12 @@ export async function GET(
       status: rapport.status,
       contact: rapport.contact,
       content,
+      photos: rapport.photos.map((p) => ({
+        url: p.url,
+        caption: p.caption,
+        zoneRef: p.zoneRef,
+        gravite: p.gravite,
+      })),
     },
   }) as unknown as Parameters<typeof renderToBuffer>[0];
 

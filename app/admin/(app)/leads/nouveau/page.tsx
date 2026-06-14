@@ -2,8 +2,13 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { NewProspectForm } from '@/components/admin/new-prospect-form';
 import { PageHeader } from '@/components/admin/page-header';
+import { guardAdminPage, listExperts } from '@/lib/auth-helpers';
 
-export default function NewProspectPage() {
+export const dynamic = 'force-dynamic';
+
+export default async function NewProspectPage() {
+  await guardAdminPage();
+  const experts = await listExperts();
   return (
     <div className="mx-auto max-w-2xl space-y-5">
       <Link
@@ -20,7 +25,7 @@ export default function NewProspectPage() {
       />
 
       <div className="rounded-xl border border-slate-200 bg-white p-5 sm:p-6">
-        <NewProspectForm />
+        <NewProspectForm experts={experts} />
       </div>
     </div>
   );

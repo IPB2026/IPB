@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Plus, FileText } from 'lucide-react';
 import { prisma } from '@/lib/prisma';
+import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
 import { EmptyState } from '@/components/admin/empty-state';
 import { DevisStatusBadge } from '@/components/admin/badges';
@@ -9,6 +10,7 @@ import { euros } from '@/lib/crm/company';
 export const dynamic = 'force-dynamic';
 
 export default async function DevisListPage() {
+  await guardAdminPage();
   let devis: Awaited<ReturnType<typeof load>> = [];
   let dbError = false;
   try {

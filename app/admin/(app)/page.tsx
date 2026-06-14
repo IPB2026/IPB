@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Users, Flame, Clock, Inbox, Plus } from 'lucide-react';
 import { prisma } from '@/lib/prisma';
+import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
 import { StatCard } from '@/components/admin/stat-card';
 import { EmptyState } from '@/components/admin/empty-state';
@@ -66,6 +67,7 @@ const newProspectBtn = (
 );
 
 export default async function DashboardPage() {
+  await guardAdminPage();
   let stats: Awaited<ReturnType<typeof getStats>> | null = null;
   try {
     stats = await getStats();

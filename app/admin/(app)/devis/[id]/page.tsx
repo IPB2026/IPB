@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Download, FileCheck2, ReceiptText, Mail } from 'lucide-react';
 import { prisma } from '@/lib/prisma';
+import { guardAdminPage } from '@/lib/auth-helpers';
 import {
   DevisStatusBadge,
   DEVIS_STATUS_LABEL,
@@ -20,6 +21,7 @@ export default async function DevisDetailPage({
 }: {
   params: { id: string };
 }) {
+  await guardAdminPage();
   const devis = await prisma.devis
     .findUnique({
       where: { id: params.id },

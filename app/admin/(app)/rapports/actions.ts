@@ -3,21 +3,18 @@
 import { z } from 'zod';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
-import { auth } from '@/auth';
+import { del } from '@vercel/blob';
 import { prisma } from '@/lib/prisma';
+import { requireUser, requireAdmin } from '@/lib/auth-helpers';
 import { nextRapportNumber } from '@/lib/crm/numbering';
-import { ReportType, ReportStatus, Prisma } from '@prisma/client';
+import { sendRapportEmail } from '@/lib/crm/send';
+import { ReportType, ReportStatus, ServiceType, Prisma } from '@prisma/client';
 import {
   generateReport,
   REPORT_MODEL,
   type ReportZoneInput,
+  type ReportPhotoInput,
 } from '@/lib/ai/report';
-
-async function requireUser() {
-  const session = await auth();
-  if (!session?.user) throw new Error('Non authentifié');
-  return session.user;
-}
 
 const str = (v: FormDataEntryValue | null) => String(v ?? '').trim();
 
@@ -28,11 +25,26 @@ const zoneSchema = z.object({
   gravite: z.string().trim().optional().default(''),
 });
 
+/**
+ * Charge un rapport et vérifie que l'utilisateur a le droit d'y toucher :
+ * l'ADMIN sur tout, l'EXPERT uniquement sur ses propres rapports (authorId).
+ */
+async function loadOwned(id: string) {
+  const user = await requireUser();
+  const rapport = await prisma.rapport.findUnique({
+    where: { id },
+    include: { contact: true, photos: { orderBy: { position: 'asc' } } },
+  });
+  if (!rapport) return null;
+  if (user.role !== 'ADMIN' && rapport.authorId !== user.id) return null;
+  return { user, rapport };
+}
+
 export async function createRapport(
   _prev: string | undefined,
   formData: FormData
 ): Promise<string | undefined> {
-  await requireUser();
+  const user = await requireUser();
 
   const contactId = str(formData.get('contactId'));
   const type = str(formData.get('type'));
@@ -56,6 +68,7 @@ export async function createRapport(
     data: {
       number,
       contactId,
+      authorId: user.id || null,
       leadId: str(formData.get('leadId')) || null,
       type: type as ReportType,
       title: title || `Diagnostic ${type.toLowerCase()}`,
@@ -69,28 +82,233 @@ export async function createRapport(
   redirect(`/admin/rapports/${rapport.id}`);
 }
 
-export async function generateRapportAI(formData: FormData) {
-  await requireUser();
+const SERVICE_TO_REPORT: Record<string, ReportType> = {
+  FISSURES: ReportType.FISSURES,
+  HUMIDITE: ReportType.HUMIDITE,
+  EXPERTISE_ACHAT: ReportType.EXPERTISE_ACHAT,
+  MUR_PORTEUR: ReportType.MUR_PORTEUR,
+  AUTRE: ReportType.FISSURES,
+};
+
+const REPORT_TITLE: Record<ReportType, string> = {
+  FISSURES: 'Diagnostic pathologies de fissures',
+  HUMIDITE: 'Diagnostic humidité et infiltrations',
+  EXPERTISE_ACHAT: 'Expertise structurelle avant achat',
+  MUR_PORTEUR: 'Étude de faisabilité — ouverture de mur porteur',
+};
+
+/**
+ * Démarre un rapport à partir d'un prospect assigné. Le diagnostiqueur ne peut
+ * démarrer que sur SES prospects (assignedToId) ; l'admin sur n'importe lequel.
+ * Évite les doublons : si un rapport existe déjà pour ce lead, on y redirige.
+ */
+export async function startRapportFromLead(formData: FormData) {
+  const user = await requireUser();
+  const leadId = str(formData.get('leadId'));
+  if (!leadId) return;
+
+  const lead = await prisma.lead.findUnique({
+    where: { id: leadId },
+    include: { contact: true },
+  });
+  if (!lead) return;
+  if (user.role !== 'ADMIN' && lead.assignedToId !== user.id) return;
+
+  const existing = await prisma.rapport.findFirst({
+    where: { leadId },
+    select: { id: true },
+  });
+  if (existing) redirect(`/admin/rapports/${existing.id}`);
+
+  const type = SERVICE_TO_REPORT[lead.service as ServiceType] ?? ReportType.FISSURES;
+  const number = await nextRapportNumber(lead.contact.name);
+  const rapport = await prisma.rapport.create({
+    data: {
+      number,
+      contactId: lead.contactId,
+      leadId: lead.id,
+      authorId: lead.assignedToId ?? (user.id || null),
+      type,
+      title: REPORT_TITLE[type],
+      bienAdresse: lead.contact.address || null,
+      ville: lead.contact.city || null,
+      zonesInput: [] as unknown as Prisma.InputJsonValue,
+    },
+  });
+  revalidatePath('/admin/rapports');
+  redirect(`/admin/rapports/${rapport.id}`);
+}
+
+/** L'expert (propriétaire) ou l'admin met à jour la saisie terrain (zones). */
+export async function updateRapportZones(
+  _prev: string | undefined,
+  formData: FormData
+): Promise<string | undefined> {
+  const id = str(formData.get('rapportId'));
+  const owned = await loadOwned(id);
+  if (!owned) return 'Rapport introuvable ou accès refusé.';
+
+  let zones: ReportZoneInput[];
+  try {
+    const raw = JSON.parse(str(formData.get('zones')) || '[]');
+    zones = z.array(zoneSchema).parse(raw).filter((zz) => zz.titre && zz.observations);
+  } catch {
+    return 'Zones invalides.';
+  }
+  if (zones.length === 0) return 'Ajoutez au moins une zone avec des observations.';
+
+  await prisma.rapport.update({
+    where: { id },
+    data: { zonesInput: zones as unknown as Prisma.InputJsonValue },
+  });
+  revalidatePath(`/admin/rapports/${id}`);
+  return undefined;
+}
+
+/** Enregistre une photo uploadée (Vercel Blob) en base. */
+export async function attachRapportPhoto(formData: FormData): Promise<void> {
+  const id = str(formData.get('rapportId'));
+  const owned = await loadOwned(id);
+  if (!owned) return;
+
+  const url = str(formData.get('url'));
+  const pathname = str(formData.get('pathname'));
+  if (!url || !pathname) return;
+
+  const count = await prisma.photo.count({ where: { rapportId: id } });
+  await prisma.photo.create({
+    data: {
+      rapportId: id,
+      url,
+      pathname,
+      caption: str(formData.get('caption')) || null,
+      zoneRef: str(formData.get('zoneRef')) || null,
+      gravite: str(formData.get('gravite')) || null,
+      contentType: str(formData.get('contentType')) || null,
+      position: count,
+    },
+  });
+  revalidatePath(`/admin/rapports/${id}`);
+}
+
+export async function updatePhotoMeta(formData: FormData): Promise<void> {
+  const id = str(formData.get('rapportId'));
+  const photoId = str(formData.get('photoId'));
+  const owned = await loadOwned(id);
+  if (!owned || !photoId) return;
+  await prisma.photo.update({
+    where: { id: photoId },
+    data: {
+      caption: str(formData.get('caption')) || null,
+      zoneRef: str(formData.get('zoneRef')) || null,
+      gravite: str(formData.get('gravite')) || null,
+    },
+  });
+  revalidatePath(`/admin/rapports/${id}`);
+}
+
+export async function deleteRapportPhoto(formData: FormData): Promise<void> {
+  const id = str(formData.get('rapportId'));
+  const photoId = str(formData.get('photoId'));
+  const owned = await loadOwned(id);
+  if (!owned || !photoId) return;
+
+  const photo = await prisma.photo.findUnique({ where: { id: photoId } });
+  if (!photo || photo.rapportId !== id) return;
+
+  try {
+    await del(photo.url);
+  } catch (err) {
+    console.error('[deleteRapportPhoto] suppression Blob échouée:', err);
+  }
+  await prisma.photo.delete({ where: { id: photoId } });
+  revalidatePath(`/admin/rapports/${id}`);
+}
+
+/**
+ * Le diagnostiqueur soumet sa saisie terrain pour validation (BROUILLON → SOUMIS).
+ * Après soumission, la saisie est verrouillée côté expert ; l'admin génère puis valide.
+ */
+export async function submitRapport(formData: FormData): Promise<void> {
+  const id = str(formData.get('rapportId'));
+  const owned = await loadOwned(id);
+  if (!owned) return;
+  if (owned.rapport.status !== 'BROUILLON') return;
+
+  const zones = (owned.rapport.zonesInput as unknown as ReportZoneInput[]) ?? [];
+  if (zones.length === 0) return; // rien à soumettre
+
+  await prisma.rapport.update({ where: { id }, data: { status: 'SOUMIS' } });
+  await prisma.activity.create({
+    data: {
+      type: 'SYSTEME',
+      content: `Saisie terrain soumise pour validation par ${owned.user.name || owned.user.email}.`,
+      contactId: owned.rapport.contactId,
+      leadId: owned.rapport.leadId,
+      authorId: owned.user.id || null,
+    },
+  });
+  revalidatePath(`/admin/rapports/${id}`);
+  revalidatePath('/admin/rapports');
+}
+
+/**
+ * L'admin valide le rapport généré et l'envoie automatiquement au client par
+ * e-mail (PDF joint). Statut → ENVOYE. Réservé à l'ADMIN (responsabilité finale).
+ */
+export async function validateAndSendRapport(
+  formData: FormData
+): Promise<void> {
+  await requireAdmin();
   const id = str(formData.get('rapportId'));
   if (!id) return;
 
   const rapport = await prisma.rapport.findUnique({
     where: { id },
-    include: { contact: true },
+    select: { status: true, aiContent: true },
+  });
+  if (!rapport) return;
+  const ai = rapport.aiContent as { error?: string } | null;
+  if (!ai || ai.error) return; // pas de contenu valide à envoyer
+
+  // Marque validé puis envoie (sendRapportEmail passe le statut à ENVOYE).
+  await prisma.rapport.update({ where: { id }, data: { status: 'VALIDE' } });
+  await sendRapportEmail(id);
+
+  revalidatePath(`/admin/rapports/${id}`);
+  revalidatePath('/admin/rapports');
+}
+
+/** Génération IA — réservée à l'ADMIN (responsabilité éditoriale). */
+export async function generateRapportAI(formData: FormData) {
+  await requireAdmin();
+  const id = str(formData.get('rapportId'));
+  if (!id) return;
+
+  const rapport = await prisma.rapport.findUnique({
+    where: { id },
+    include: { contact: true, photos: { orderBy: { position: 'asc' } } },
   });
   if (!rapport) return;
 
   const zones = (rapport.zonesInput as unknown as ReportZoneInput[]) ?? [];
+  const photos: ReportPhotoInput[] = rapport.photos.map((p) => ({
+    url: p.url,
+    caption: p.caption ?? undefined,
+    zoneRef: p.zoneRef ?? undefined,
+    gravite: p.gravite ?? undefined,
+  }));
+
   const result = await generateReport({
     type: rapport.type,
     clientName: rapport.contact.name,
     bienAdresse: rapport.bienAdresse ?? undefined,
     ville: rapport.ville ?? undefined,
     zones,
+    photos,
   });
 
   if ('error' in result) {
-    // Stocke l'erreur de façon visible côté UI via le statut inchangé + log
     await prisma.rapport.update({
       where: { id },
       data: { aiContent: { error: result.error } },
@@ -113,7 +331,7 @@ export async function generateRapportAI(formData: FormData) {
 }
 
 export async function updateRapportStatus(formData: FormData) {
-  await requireUser();
+  await requireAdmin();
   const id = str(formData.get('rapportId'));
   const status = str(formData.get('status'));
   if (!id || !(status in ReportStatus)) return;
