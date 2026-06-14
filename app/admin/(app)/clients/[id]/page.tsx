@@ -23,6 +23,7 @@ import { guardAdminPage } from '@/lib/auth-helpers';
 import { euros } from '@/lib/crm/company';
 import { computeDossier } from '@/lib/crm/dossier';
 import { Avatar } from '@/components/admin/avatar';
+import { ContactEditForm } from '@/components/admin/contact-edit-form';
 
 export const dynamic = 'force-dynamic';
 
@@ -286,6 +287,14 @@ export default async function ClientFichePage({
                 {lead && <Row label="Demande" value={lead.summary} />}
               </div>
             </dl>
+            <details className="mt-3 border-t border-slate-100 pt-3 [&_summary::-webkit-details-marker]:hidden">
+              <summary className="cursor-pointer list-none text-xs font-medium text-orange-600 hover:text-orange-700">
+                Modifier les coordonnées
+              </summary>
+              <div className="mt-3">
+                <ContactEditForm contact={c} />
+              </div>
+            </details>
           </Card>
         </div>
 

@@ -30,6 +30,9 @@ import {
   assignLead,
 } from '@/app/admin/(app)/leads/actions';
 import { QualificationForm } from '@/components/admin/qualification-form';
+import { ContactEditForm } from '@/components/admin/contact-edit-form';
+import { ConfirmSubmit } from '@/components/admin/confirm-submit';
+import { mergeContacts } from '@/app/admin/(app)/contact-actions';
 import type { QualificationRecord } from '@/lib/crm/qualification';
 
 export const dynamic = 'force-dynamic';
@@ -78,6 +81,24 @@ export default async function LeadDetailPage({
   const c = lead.contact;
   const qual = extractQualification(lead.payload);
 
+  // Doublons potentiels : même téléphone ou même e-mail sur une autre fiche.
+  const duplicates =
+    c.phone || c.email
+      ? await prisma.contact
+          .findMany({
+            where: {
+              id: { not: c.id },
+              OR: [
+                ...(c.phone ? [{ phone: c.phone }] : []),
+                ...(c.email ? [{ email: c.email }] : []),
+              ],
+            },
+            select: { id: true, name: true, phone: true, email: true },
+            take: 3,
+          })
+          .catch(() => [])
+      : [];
+
   return (
     <div className="space-y-6">
       <Link
@@ -87,6 +108,39 @@ export default async function LeadDetailPage({
         <ArrowLeft className="h-4 w-4" />
         Tous les prospects
       </Link>
+
+      {duplicates.length > 0 && (
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-4">
+          <p className="text-sm font-semibold text-amber-900">Doublon possible</p>
+          <p className="mt-0.5 text-sm text-amber-800">
+            Une autre fiche partage le même téléphone ou e-mail. Fusionnez-la dans
+            celle-ci pour regrouper tout l&apos;historique.
+          </p>
+          <ul className="mt-3 space-y-2">
+            {duplicates.map((d) => (
+              <li
+                key={d.id}
+                className="flex flex-wrap items-center justify-between gap-2 rounded-lg bg-white px-3 py-2"
+              >
+                <span className="text-sm">
+                  <span className="font-medium text-slate-800">{d.name}</span>
+                  <span className="text-slate-400"> · {d.phone || d.email}</span>
+                </span>
+                <form action={mergeContacts}>
+                  <input type="hidden" name="targetId" value={c.id} />
+                  <input type="hidden" name="sourceId" value={d.id} />
+                  <ConfirmSubmit
+                    message={`Fusionner « ${d.name} » dans cette fiche ? Tout son historique (devis, factures, RDV, rapports) sera rattaché ici, puis la fiche en double sera supprimée.`}
+                    className="rounded-lg border border-amber-300 bg-white px-3 py-1.5 text-xs font-semibold text-amber-800 hover:bg-amber-100"
+                  >
+                    Fusionner ici
+                  </ConfirmSubmit>
+                </form>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {/* En-tête fiche */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -333,40 +387,25 @@ export default async function LeadDetailPage({
                 }
               />
             </div>
+            <details className="mt-4 border-t border-slate-100 pt-3 [&_summary::-webkit-details-marker]:hidden">
+              <summary className="cursor-pointer list-none text-xs font-medium text-orange-600 hover:text-orange-700">
+                Modifier les coordonnées
+              </summary>
+              <div className="mt-3">
+                <ContactEditForm contact={c} />
+              </div>
+            </details>
           </Card>
 
-          <Card title="Qualification">
+          <Card title="Repères">
             <div className="space-y-2 text-sm">
-              <Row
-                label="Score"
-                value={lead.score != null ? `${lead.score}/${lead.maxScore ?? 50}` : null}
-              />
-              <Row
-                label="Risque diagnostic"
-                value={lead.riskScore != null ? `${lead.riskScore}/100` : null}
-              />
-              <Row label="Priorité rappel" value={lead.callbackPriority} />
+              <Row label="Reçu le" value={lead.createdAt.toLocaleString('fr-FR')} />
+              <Row label="Source" value={SOURCE_LABEL[lead.source]} />
               <Row
                 label="Valeur estimée"
                 value={lead.value != null ? `${lead.value} €` : null}
               />
-              <Row label="Reçu le" value={lead.createdAt.toLocaleString('fr-FR')} />
             </div>
-            {lead.reasons.length > 0 && (
-              <div className="mt-4 border-t border-slate-100 pt-4">
-                <p className="text-xs font-medium uppercase tracking-wider text-slate-400">
-                  Pourquoi ce score
-                </p>
-                <ul className="mt-2 space-y-1.5">
-                  {lead.reasons.map((r, i) => (
-                    <li key={i} className="flex gap-2 text-sm text-slate-600">
-                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-orange-400" />
-                      {r}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
           </Card>
         </div>
 
