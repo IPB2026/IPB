@@ -1,3 +1,5 @@
+import fs from 'fs';
+import path from 'path';
 import { fileURLToPath } from 'url';
 import {
   Document,
@@ -17,24 +19,44 @@ import type { ServiceType } from '@prisma/client';
  * le diagnostic et produit le rapport ; l'IPB coordonne et met en forme.
  */
 
-// `new URL(..., import.meta.url)` fait tracer les .ttf par le bundler (inclusion
-// serverless Vercel, comme les polices OG). Repli Helvetica si indisponible.
-const fontPath = (name: string) =>
-  fileURLToPath(new URL(`./fonts/${name}`, import.meta.url));
+// Polices de marque chargées UNIQUEMENT si le .ttf existe réellement à
+// l'exécution (sinon react-pdf jette ENOENT au rendu sur Vercel). On résout
+// plusieurs emplacements candidats ; à défaut, repli propre sur Helvetica.
+function resolveFont(name: string): string | null {
+  const candidates: string[] = [];
+  try {
+    candidates.push(fileURLToPath(new URL(`./fonts/${name}`, import.meta.url)));
+  } catch {
+    /* import.meta.url indisponible */
+  }
+  candidates.push(path.join(process.cwd(), 'lib/pdf/fonts', name));
+  candidates.push(path.join(process.cwd(), '.next/server/lib/pdf/fonts', name));
+  for (const c of candidates) {
+    try {
+      if (fs.existsSync(c)) return c;
+    } catch {
+      /* ignore */
+    }
+  }
+  return null;
+}
+
 let BRAND_FONTS = false;
 try {
-  Font.register({
-    family: 'Playfair',
-    fonts: [{ src: fontPath('PlayfairDisplay-700.ttf'), fontWeight: 700 }],
-  });
-  Font.register({
-    family: 'DMSans',
-    fonts: [
-      { src: fontPath('DMSans-600.ttf'), fontWeight: 400 },
-      { src: fontPath('DMSans-700.ttf'), fontWeight: 700 },
-    ],
-  });
-  BRAND_FONTS = true;
+  const pf = resolveFont('PlayfairDisplay-700.ttf');
+  const dm = resolveFont('DMSans-600.ttf');
+  const dmb = resolveFont('DMSans-700.ttf');
+  if (pf && dm && dmb) {
+    Font.register({ family: 'Playfair', fonts: [{ src: pf, fontWeight: 700 }] });
+    Font.register({
+      family: 'DMSans',
+      fonts: [
+        { src: dm, fontWeight: 400 },
+        { src: dmb, fontWeight: 700 },
+      ],
+    });
+    BRAND_FONTS = true;
+  }
 } catch {
   BRAND_FONTS = false;
 }
