@@ -150,6 +150,80 @@ export async function acceptDevis(formData: FormData) {
   revalidatePath('/admin');
 }
 
+/** Modifie un devis (type, montant, bien, validité) et recalcule les lignes. */
+export async function updateDevis(
+  _prev: string | undefined,
+  formData: FormData
+): Promise<string | undefined> {
+  await requireUser();
+  const id = num(formData.get('devisId'));
+  if (!id) return 'Devis introuvable.';
+
+  const serviceRaw = num(formData.get('serviceType')).trim();
+  const serviceType = (serviceRaw in ServiceType ? serviceRaw : 'FISSURES') as ServiceType;
+  const prix = Math.round(Number(num(formData.get('prix')).replace(',', '.')) || 0);
+  if (!prix || prix < 199 || prix > 999) {
+    return 'Montant invalide (entre 399 et 499 € en principe).';
+  }
+
+  const existing = await prisma.devis.findUnique({ where: { id }, select: { id: true } });
+  if (!existing) return 'Devis introuvable.';
+
+  const tpl = devisTemplate(serviceType);
+  const validRaw = num(formData.get('validUntil'));
+
+  // Remplace les lignes par les 2 lignes recalculées.
+  await prisma.devisLine.deleteMany({ where: { devisId: id } });
+  await prisma.devis.update({
+    where: { id },
+    data: {
+      serviceType,
+      object: tpl.objet,
+      bienConcerne: num(formData.get('bienConcerne')).trim() || null,
+      validUntil: validRaw ? new Date(validRaw) : undefined,
+      totalHT: prix,
+      lines: {
+        create: [
+          {
+            designation: 'Diagnostic sur site, analyse et production du rapport',
+            detail: 'Réalisé par le diagnostiqueur indépendant mandaté, sous sa responsabilité',
+            unit: 'Forfait',
+            qty: 1,
+            unitPrice: 0,
+            total: 0,
+            position: 0,
+          },
+          {
+            designation: 'Coordination de la mission et mise en forme du rapport',
+            detail: 'Planification, suivi du dossier et production éditoriale du rapport — IPB',
+            unit: 'Forfait',
+            qty: 1,
+            unitPrice: prix,
+            total: prix,
+            position: 1,
+          },
+        ],
+      },
+    },
+  });
+
+  revalidatePath(`/admin/devis/${id}`);
+  revalidatePath('/admin/devis');
+  return undefined;
+}
+
+/** Supprime un devis (refusé s'il a déjà été facturé). */
+export async function deleteDevis(formData: FormData) {
+  await requireUser();
+  const id = num(formData.get('devisId'));
+  if (!id) return;
+  const factures = await prisma.facture.count({ where: { devisId: id } });
+  if (factures > 0) return; // un devis facturé ne se supprime pas
+  await prisma.devis.delete({ where: { id } });
+  revalidatePath('/admin/devis');
+  redirect('/admin/devis');
+}
+
 export async function convertDevisToFacture(formData: FormData) {
   await requireUser();
   const id = num(formData.get('devisId'));

@@ -100,13 +100,13 @@ const CREAM = '#FFF7ED';
 
 const s = StyleSheet.create({
   page: {
-    paddingTop: 34,
-    paddingBottom: 56,
-    paddingHorizontal: 40,
-    fontSize: 9.5,
+    paddingTop: 26,
+    paddingBottom: 40,
+    paddingHorizontal: 38,
+    fontSize: 8,
     fontFamily: BODY,
     color: BRAND.navy,
-    lineHeight: 1.5,
+    lineHeight: 1.38,
   },
   header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' },
   logoRow: { flexDirection: 'row', alignItems: 'center', gap: 9 },
@@ -123,19 +123,19 @@ const s = StyleSheet.create({
   rule: { borderBottomWidth: 2, borderBottomColor: ORANGE, marginTop: 10, marginBottom: 14 },
 
   row: { flexDirection: 'row', gap: 12 },
-  box: { flex: 1, borderWidth: 1, borderColor: BRAND.slate200, borderRadius: 6, padding: 9 },
+  box: { flex: 1, borderWidth: 1, borderColor: BRAND.slate200, borderRadius: 6, padding: 7 },
   boxFill: { backgroundColor: '#F8FAFC' },
   boxLabel: { fontSize: 7.5, letterSpacing: 1.1, color: BRAND.slate400, fontFamily: BODY, fontWeight: 700, marginBottom: 4 },
   b: { fontWeight: 700 },
   muted: { color: BRAND.slate600 },
   faint: { color: BRAND.slate400 },
 
-  objet: { marginTop: 14, paddingVertical: 8, paddingHorizontal: 11, backgroundColor: CREAM, borderLeftWidth: 3, borderLeftColor: ORANGE },
+  objet: { marginTop: 10, paddingVertical: 7, paddingHorizontal: 11, backgroundColor: CREAM, borderLeftWidth: 3, borderLeftColor: ORANGE },
   objetLabel: { fontSize: 8, letterSpacing: 1, color: ORANGE_DK, fontWeight: 700 },
 
   sectionLabel: { fontSize: 8, letterSpacing: 1, color: BRAND.slate400, fontWeight: 700, marginBottom: 6 },
   sectionLabelOr: { fontSize: 8, letterSpacing: 1, color: ORANGE_DK, fontWeight: 700, marginBottom: 6 },
-  bullet: { flexDirection: 'row', marginBottom: 3, color: '#334155' },
+  bullet: { flexDirection: 'row', marginBottom: 2, color: '#334155' },
   bulletMark: { width: 3, height: 3, borderRadius: 1.5, backgroundColor: ORANGE, marginTop: 4, marginRight: 6 },
 
   tHead: { flexDirection: 'row', backgroundColor: BRAND.navy, color: '#fff', paddingVertical: 5, paddingHorizontal: 9, fontSize: 8, fontWeight: 700, marginTop: 4 },
@@ -145,14 +145,14 @@ const s = StyleSheet.create({
   lineTitle: { fontWeight: 700 },
   lineSub: { fontSize: 8.5, color: BRAND.slate400, marginTop: 1 },
 
-  totals: { flexDirection: 'row', justifyContent: 'flex-end', marginTop: 10 },
+  totals: { flexDirection: 'row', justifyContent: 'flex-end', marginTop: 7 },
   totBox: { width: 240 },
   totLine: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 2 },
   netBox: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 5, paddingVertical: 8, paddingHorizontal: 12, backgroundColor: CREAM, borderRadius: 5 },
   netTxt: { fontWeight: 700, color: ORANGE_DK, fontSize: 12 },
 
   sigRow: { flexDirection: 'row', gap: 12, marginTop: 12 },
-  sigBox: { flex: 1, borderWidth: 1, borderColor: BRAND.slate200, borderRadius: 6, padding: 9, minHeight: 56 },
+  sigBox: { flex: 1, borderWidth: 1, borderColor: BRAND.slate200, borderRadius: 6, padding: 9, minHeight: 42 },
 
   footer: {
     position: 'absolute', bottom: 22, left: 40, right: 40,
@@ -187,7 +187,7 @@ export function DevisDocument({ data }: { data: DevisDocData }) {
     <Document title={data.number} author={COMPANY.shortName}>
       <Page size="A4" style={s.page}>
         {/* En-tête */}
-        <View style={s.header} fixed>
+        <View style={s.header}>
           <View style={s.logoRow}>
             <Text style={s.logo}>IPB</Text>
             <View>
@@ -202,10 +202,10 @@ export function DevisDocument({ data }: { data: DevisDocData }) {
             <Text style={s.docMetaSm}>Valable jusqu&apos;au {fr(data.validUntil)}</Text>
           </View>
         </View>
-        <View style={s.rule} fixed />
+        <View style={s.rule} />
 
         {/* Émetteur / Client */}
-        <View style={s.row}>
+        <View wrap={false} style={s.row}>
           <View style={s.box}>
             <Text style={s.boxLabel}>ÉMETTEUR</Text>
             <Text style={s.b}>IPB — Institut de Pathologie du Bâtiment</Text>
@@ -233,7 +233,7 @@ export function DevisDocument({ data }: { data: DevisDocData }) {
         </View>
 
         {/* Intervention / Livrable */}
-        <View style={[s.row, { marginTop: 14 }]}>
+        <View wrap={false} style={[s.row, { marginTop: 7 }]}>
           <View style={{ flex: 1 }}>
             <Text style={s.sectionLabel}>L&apos;INTERVENTION COMPREND</Text>
             <Bullets items={data.intervention} />
@@ -245,7 +245,7 @@ export function DevisDocument({ data }: { data: DevisDocData }) {
         </View>
 
         {/* Prestation */}
-        <View style={{ marginTop: 14 }}>
+        <View wrap={false} style={{ marginTop: 7 }}>
           <View style={s.tHead}>
             <Text style={s.cName}>PRESTATION</Text>
             <Text style={s.cAmt}>MONTANT HT</Text>
@@ -284,7 +284,7 @@ export function DevisDocument({ data }: { data: DevisDocData }) {
         </View>
 
         {/* Approche / Périmètre */}
-        <View style={[s.row, { marginTop: 14 }]}>
+        <View wrap={false} style={[s.row, { marginTop: 7 }]}>
           <View style={s.box}>
             <Text style={s.sectionLabelOr}>L&apos;APPROCHE IPB</Text>
             <Text style={s.muted}>
@@ -300,7 +300,7 @@ export function DevisDocument({ data }: { data: DevisDocData }) {
         </View>
 
         {/* Conditions + signatures */}
-        <View style={{ marginTop: 14 }}>
+        <View wrap={false} style={{ marginTop: 7 }}>
           <Text style={s.sectionLabel}>CONDITIONS DE RÈGLEMENT</Text>
           <View style={s.bullet}><View style={s.bulletMark} /><Text style={{ flex: 1 }}>Visite programmée sous 72 h après accord (24 h en cas d&apos;urgence).</Text></View>
           <View style={s.bullet}><View style={s.bulletMark} /><Text style={{ flex: 1 }}>Règlement par virement à l&apos;issue de la visite sur site ; rapport remis sous 3 à 5 jours ouvrés après réception du paiement.</Text></View>

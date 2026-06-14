@@ -10,6 +10,7 @@ import {
   PhoneCall,
   Bell,
   Sparkles,
+  FilePlus2,
 } from 'lucide-react';
 import type { ActivityType } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
@@ -104,12 +105,27 @@ export default async function LeadDetailPage({
           {c.phone && (
             <a
               href={`tel:${c.phone}`}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-orange-600 px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-orange-700"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
             >
               <Phone className="h-4 w-4" />
               Appeler
             </a>
           )}
+          <Link
+            href={
+              `/admin/devis/nouveau?contactId=${lead.contactId}` +
+              `&serviceType=${lead.service}&leadId=${lead.id}` +
+              `&bien=${encodeURIComponent(
+                [c.address, [c.postalCode, c.city].filter(Boolean).join(' ')]
+                  .filter(Boolean)
+                  .join(', ')
+              )}`
+            }
+            className="inline-flex items-center gap-1.5 rounded-lg bg-orange-600 px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-orange-700"
+          >
+            <FilePlus2 className="h-4 w-4" />
+            Créer un devis
+          </Link>
         </div>
       </div>
 

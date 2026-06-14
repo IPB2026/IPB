@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Download, FileCheck2, ReceiptText, Mail, CheckCircle2, CalendarClock } from 'lucide-react';
+import { ArrowLeft, Download, FileCheck2, ReceiptText, Mail, CheckCircle2, CalendarClock, Trash2 } from 'lucide-react';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import {
@@ -12,8 +12,10 @@ import {
   updateDevisStatus,
   convertDevisToFacture,
   acceptDevis,
+  deleteDevis,
 } from '@/app/admin/(app)/devis/actions';
 import { sendDevis } from '@/app/admin/(app)/send-actions';
+import { EditDevisForm } from '@/components/admin/edit-devis-form';
 
 export const dynamic = 'force-dynamic';
 
@@ -42,6 +44,10 @@ export default async function DevisDetailPage({
   const planUrl =
     `/admin/agenda?type=LANCEMENT_TRAVAUX&contactId=${devis.contactId}` +
     `&devisId=${devis.id}${devis.leadId ? `&leadId=${devis.leadId}` : ''}`;
+  const validUntilStr = devis.validUntil
+    ? new Date(devis.validUntil).toISOString().slice(0, 10)
+    : '';
+  const canDelete = devis.factures.length === 0;
 
   return (
     <div className="mx-auto max-w-4xl space-y-6">
@@ -179,6 +185,38 @@ export default async function DevisDetailPage({
             </Link>
           </div>
         )}
+      </section>
+
+      {/* Modifier le devis */}
+      <section className="rounded-xl border border-slate-200 bg-white p-5">
+        <div className="mb-3 flex items-center justify-between">
+          <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            Modifier le devis
+          </h2>
+          {canDelete ? (
+            <form action={deleteDevis}>
+              <input type="hidden" name="devisId" value={devis.id} />
+              <button
+                type="submit"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 px-3 py-1.5 text-xs font-medium text-red-600 hover:bg-red-50"
+              >
+                <Trash2 className="h-3.5 w-3.5" />
+                Supprimer
+              </button>
+            </form>
+          ) : (
+            <span className="text-xs text-slate-400">
+              Devis facturé — suppression désactivée
+            </span>
+          )}
+        </div>
+        <EditDevisForm
+          devisId={devis.id}
+          serviceType={devis.serviceType ?? 'FISSURES'}
+          prix={Number(devis.totalHT)}
+          bienConcerne={devis.bienConcerne ?? ''}
+          validUntil={validUntilStr}
+        />
       </section>
 
       {/* Détail */}

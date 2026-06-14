@@ -34,15 +34,26 @@ function Submit() {
 export function NewDevisForm({
   contacts,
   defaultContactId,
+  defaultServiceType,
+  defaultBien,
+  leadId,
 }: {
   contacts: { id: string; name: string; city: string | null }[];
   defaultContactId?: string;
+  defaultServiceType?: string;
+  defaultBien?: string;
+  leadId?: string;
 }) {
   const [error, formAction] = useFormState(createDevis, undefined);
   const [prix, setPrix] = useState(449);
+  const serviceDefault =
+    defaultServiceType && SERVICES.some(([v]) => v === defaultServiceType)
+      ? defaultServiceType
+      : 'FISSURES';
 
   return (
     <form action={formAction} className="space-y-5">
+      {leadId && <input type="hidden" name="leadId" value={leadId} />}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label className={label} htmlFor="contactId">
@@ -70,7 +81,7 @@ export function NewDevisForm({
           <label className={label} htmlFor="serviceType">
             Type de diagnostic
           </label>
-          <select id="serviceType" name="serviceType" defaultValue="FISSURES" className={field}>
+          <select id="serviceType" name="serviceType" defaultValue={serviceDefault} className={field}>
             {SERVICES.map(([v, l]) => (
               <option key={v} value={v}>
                 {l}
@@ -113,6 +124,7 @@ export function NewDevisForm({
         <input
           id="bienConcerne"
           name="bienConcerne"
+          defaultValue={defaultBien ?? ''}
           placeholder="Maison individuelle — 33 chemin des Vivans, 31600 Muret"
           className={field}
         />
