@@ -136,7 +136,7 @@ const s = StyleSheet.create({
   sectionLabel: { fontSize: 8, letterSpacing: 1, color: BRAND.slate400, fontWeight: 700, marginBottom: 6 },
   sectionLabelOr: { fontSize: 8, letterSpacing: 1, color: ORANGE_DK, fontWeight: 700, marginBottom: 6 },
   bullet: { flexDirection: 'row', marginBottom: 3, color: '#334155' },
-  bulletDot: { width: 9 },
+  bulletMark: { width: 3, height: 3, borderRadius: 1.5, backgroundColor: ORANGE, marginTop: 4, marginRight: 6 },
 
   tHead: { flexDirection: 'row', backgroundColor: BRAND.navy, color: '#fff', paddingVertical: 5, paddingHorizontal: 9, fontSize: 8, fontWeight: 700, marginTop: 4 },
   tRow: { flexDirection: 'row', paddingVertical: 8, paddingHorizontal: 9, borderWidth: 1, borderTopWidth: 0, borderColor: BRAND.slate200 },
@@ -166,7 +166,7 @@ function Bullets({ items }: { items: string[] }) {
     <View>
       {items.map((t, i) => (
         <View key={i} style={s.bullet}>
-          <Text style={s.bulletDot}>{'▸'}</Text>
+          <View style={s.bulletMark} />
           <Text style={{ flex: 1 }}>{t}</Text>
         </View>
       ))}
@@ -288,7 +288,7 @@ export function DevisDocument({ data }: { data: DevisDocData }) {
           <View style={s.box}>
             <Text style={s.sectionLabelOr}>L&apos;APPROCHE IPB</Text>
             <Text style={s.muted}>
-              Le diagnostic, son analyse et ses conclusions sont produits par le diagnostiqueur indépendant mandaté, qui engage sa responsabilité civile professionnelle. L&apos;IPB assure la coordination de la mission et la mise en forme du rapport, sans en modifier le fond.
+              Le diagnostic, son analyse et ses conclusions sont produits par le diagnostiqueur indépendant mandaté, qui engage sa responsabilité civile professionnelle. L&apos;IPB assure la coordination de la mission et la mise en forme du rapport.
             </Text>
           </View>
           <View style={s.box}>
@@ -302,9 +302,9 @@ export function DevisDocument({ data }: { data: DevisDocData }) {
         {/* Conditions + signatures */}
         <View style={{ marginTop: 14 }}>
           <Text style={s.sectionLabel}>CONDITIONS DE RÈGLEMENT</Text>
-          <View style={s.bullet}><Text style={s.bulletDot}>{'›'}</Text><Text style={{ flex: 1 }}>Visite programmée sous 72 h après accord (24 h en cas d&apos;urgence).</Text></View>
-          <View style={s.bullet}><Text style={s.bulletDot}>{'›'}</Text><Text style={{ flex: 1 }}>Règlement par virement à l&apos;issue de la visite sur site ; rapport remis sous 3 à 5 jours ouvrés après réception du paiement.</Text></View>
-          <View style={s.bullet}><Text style={s.bulletDot}>{'›'}</Text><Text style={{ flex: 1 }}>Devis valable 30 jours. La signature emporte acceptation des CGV ({COMPANY.cgvUrl}).</Text></View>
+          <View style={s.bullet}><View style={s.bulletMark} /><Text style={{ flex: 1 }}>Visite programmée sous 72 h après accord (24 h en cas d&apos;urgence).</Text></View>
+          <View style={s.bullet}><View style={s.bulletMark} /><Text style={{ flex: 1 }}>Règlement par virement à l&apos;issue de la visite sur site ; rapport remis sous 3 à 5 jours ouvrés après réception du paiement.</Text></View>
+          <View style={s.bullet}><View style={s.bulletMark} /><Text style={{ flex: 1 }}>Devis valable 30 jours. La signature emporte acceptation des CGV ({COMPANY.cgvUrl}).</Text></View>
 
           <View style={s.sigRow}>
             <View style={s.sigBox}>
