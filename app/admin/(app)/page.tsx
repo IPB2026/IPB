@@ -44,6 +44,10 @@ async function getStats() {
     rapportsAValider,
     facturesImpayees,
     devisEnAttente,
+    rapportsSoumisCount,
+    rapportsAValiderCount,
+    facturesImpayeesCount,
+    aPlanifierCount,
   ] = await Promise.all([
     prisma.lead.count(),
     prisma.lead.groupBy({ by: ['tier'], _count: { _all: true } }),
@@ -94,6 +98,13 @@ async function getStats() {
     }),
     // Devis envoyés en attente d'acceptation
     prisma.devis.count({ where: { status: 'ENVOYE' } }),
+    // Compteurs réels (les listes ci-dessus sont plafonnées à 8 pour l'affichage)
+    prisma.rapport.count({ where: { status: 'SOUMIS' } }),
+    prisma.rapport.count({ where: { status: 'GENERE' } }),
+    prisma.facture.count({ where: { status: 'ENVOYEE' } }),
+    prisma.devis.count({
+      where: { status: 'ACCEPTE', coordinationAppts: { none: {} } },
+    }),
   ]);
 
   const tierCount = (t: string) =>
@@ -113,6 +124,10 @@ async function getStats() {
     rapportsAValider,
     facturesImpayees,
     devisEnAttente,
+    rapportsSoumisCount,
+    rapportsAValiderCount,
+    facturesImpayeesCount,
+    aPlanifierCount,
   };
 }
 
@@ -189,12 +204,12 @@ export default async function DashboardPage() {
       <section>
         <h2 className="mb-3 text-sm font-semibold text-slate-900">À traiter</h2>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-          <ActionTile href="/admin/rapports" count={stats.rapportsSoumis.length} label="Rapports à générer" icon={Sparkles} tone="amber" />
-          <ActionTile href="/admin/rapports" count={stats.rapportsAValider.length} label="Rapports à valider" icon={ClipboardCheck} tone="blue" />
+          <ActionTile href="/admin/rapports" count={stats.rapportsSoumisCount} label="Rapports à générer" icon={Sparkles} tone="amber" />
+          <ActionTile href="/admin/rapports" count={stats.rapportsAValiderCount} label="Rapports à valider" icon={ClipboardCheck} tone="blue" />
           <ActionTile href="/admin/devis" count={stats.devisEnAttente} label="Devis en attente" icon={FileText} tone="slate" />
-          <ActionTile href="/admin/factures" count={stats.facturesImpayees.length} label="Factures impayées" icon={Receipt} tone="red" />
+          <ActionTile href="/admin/factures" count={stats.facturesImpayeesCount} label="Factures impayées" icon={Receipt} tone="red" />
           <ActionTile href="/admin/leads" count={stats.relancesDues} label="Relances dues" icon={Clock} tone="amber" />
-          <ActionTile href="/admin/devis" count={stats.aPlanifier.length} label="Travaux à planifier" icon={Wrench} tone="orange" />
+          <ActionTile href="/admin/devis" count={stats.aPlanifierCount} label="Travaux à planifier" icon={Wrench} tone="orange" />
         </div>
       </section>
 

@@ -20,8 +20,12 @@ const DAY = 86_400_000;
  * Protégé par CRON_SECRET (Vercel ajoute `Authorization: Bearer $CRON_SECRET`).
  */
 export async function GET(req: Request) {
+  // CRON_SECRET OBLIGATOIRE : sans lui, cet endpoint enverrait des e-mails en
+  // masse à qui le déclenche. On refuse plutôt que d'ouvrir la route.
+  if (!process.env.CRON_SECRET) {
+    return new Response('CRON_SECRET non configuré', { status: 503 });
+  }
   if (
-    process.env.CRON_SECRET &&
     req.headers.get('authorization') !== `Bearer ${process.env.CRON_SECRET}`
   ) {
     return new Response('Non autorisé', { status: 401 });

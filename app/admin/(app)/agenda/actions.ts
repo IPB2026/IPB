@@ -2,18 +2,19 @@
 
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
-import { auth } from '@/auth';
 import { prisma } from '@/lib/prisma';
+import { requireAdmin } from '@/lib/auth-helpers';
 import { nextFactureNumber } from '@/lib/crm/numbering';
-import { createCalendarEvent, deleteCalendarEvent } from '@/lib/google/calendar';
+import {
+  createCalendarEvent,
+  deleteCalendarEvent,
+  isCalendarConfigured,
+} from '@/lib/google/calendar';
 import { notifyClientAppointment } from '@/lib/crm/notify';
 import { AppointmentStatus, AppointmentType } from '@prisma/client';
 
-async function requireUser() {
-  const session = await auth();
-  if (!session?.user) throw new Error('Non authentifié');
-  return session.user;
-}
+// Gestion de l'agenda : réservée à l'ADMIN.
+const requireUser = requireAdmin;
 
 const str = (v: FormDataEntryValue | null) => String(v ?? '').trim();
 
@@ -86,8 +87,12 @@ export async function createAppointment(formData: FormData) {
     },
   });
 
-  // Accusé client automatique (confirmation de RDV) — non bloquant
-  await notifyClientAppointment(appt.id);
+  // Accusé client automatique (confirmation de RDV) — non bloquant.
+  // Si Google Agenda est connecté, c'est lui qui envoie l'invitation : on évite
+  // alors de doubler avec l'e-mail maison.
+  if (!isCalendarConfigured()) {
+    await notifyClientAppointment(appt.id);
+  }
   if (leadId) {
     const lead = await prisma.lead.findUnique({
       where: { id: leadId },

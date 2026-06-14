@@ -13,6 +13,17 @@ type RenderEl = Parameters<typeof renderToBuffer>[0];
 
 const num = (d: unknown) => Number(d ?? 0);
 
+/** Rend un document PDF en Buffer ; renvoie null si le rendu échoue (police,
+ * caractère non rendu…) plutôt que de propager l'exception jusqu'à l'envoi. */
+async function safeRender(el: RenderEl): Promise<Buffer | null> {
+  try {
+    return await renderToBuffer(el);
+  } catch (err) {
+    console.error('[pdf] échec du rendu:', err);
+    return null;
+  }
+}
+
 export async function buildDevisPdf(id: string): Promise<Buffer | null> {
   const devis = await prisma.devis.findUnique({
     where: { id },
@@ -50,7 +61,7 @@ export async function buildDevisPdf(id: string): Promise<Buffer | null> {
       prix: num(devis.totalHT),
     },
   }) as unknown as RenderEl;
-  return renderToBuffer(el);
+  return safeRender(el);
 }
 
 export async function buildFacturePdf(id: string): Promise<Buffer | null> {
@@ -81,7 +92,7 @@ export async function buildFacturePdf(id: string): Promise<Buffer | null> {
       })),
     },
   }) as unknown as RenderEl;
-  return renderToBuffer(el);
+  return safeRender(el);
 }
 
 export async function buildRapportPdf(id: string): Promise<Buffer | null> {
@@ -105,5 +116,5 @@ export async function buildRapportPdf(id: string): Promise<Buffer | null> {
       content,
     },
   }) as unknown as RenderEl;
-  return renderToBuffer(el);
+  return safeRender(el);
 }

@@ -1,43 +1,41 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { auth } from '@/auth';
+import { requireAdmin } from '@/lib/auth-helpers';
 import {
   sendDevisEmail,
   sendFactureEmail,
   sendRapportEmail,
 } from '@/lib/crm/send';
 
-async function requireUser() {
-  const session = await auth();
-  if (!session?.user) throw new Error('Non authentifié');
-}
-
 const str = (v: FormDataEntryValue | null) => String(v ?? '').trim();
 
 export async function sendDevis(formData: FormData) {
-  await requireUser();
+  await requireAdmin();
   const id = str(formData.get('devisId'));
   if (!id) return;
-  await sendDevisEmail(id);
+  const res = await sendDevisEmail(id);
+  if (!res.ok) throw new Error(`Échec de l'envoi du devis : ${res.error}`);
   revalidatePath(`/admin/devis/${id}`);
   revalidatePath('/admin/devis');
 }
 
 export async function sendFacture(formData: FormData) {
-  await requireUser();
+  await requireAdmin();
   const id = str(formData.get('factureId'));
   if (!id) return;
-  await sendFactureEmail(id);
+  const res = await sendFactureEmail(id);
+  if (!res.ok) throw new Error(`Échec de l'envoi de la facture : ${res.error}`);
   revalidatePath(`/admin/factures/${id}`);
   revalidatePath('/admin/factures');
 }
 
 export async function sendRapport(formData: FormData) {
-  await requireUser();
+  await requireAdmin();
   const id = str(formData.get('rapportId'));
   if (!id) return;
-  await sendRapportEmail(id);
+  const res = await sendRapportEmail(id);
+  if (!res.ok) throw new Error(`Échec de l'envoi du rapport : ${res.error}`);
   revalidatePath(`/admin/rapports/${id}`);
   revalidatePath('/admin/rapports');
 }

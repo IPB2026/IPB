@@ -30,12 +30,9 @@ import {
   ActivityType,
 } from '@prisma/client';
 
-/** Garde-fou : exige une session admin pour toute action d'écriture. */
-async function requireUser() {
-  const session = await auth();
-  if (!session?.user) throw new Error('Non authentifié');
-  return session.user;
-}
+// Garde-fou : toutes les écritures prospect (pipeline, qualification, relances,
+// activités) sont réservées à l'ADMIN. Les EXPERT sont hors du back-office leads.
+const requireUser = requireAdmin;
 
 function revalidateLead(leadId: string) {
   revalidatePath(`/admin/leads/${leadId}`);
@@ -374,7 +371,12 @@ export async function qualifyLead(formData: FormData) {
   await prisma.lead.update({
     where: { id: leadId },
     data: {
+      // La qualification d'appel prime (80 % des prospects sont des appels) et
+      // réaligne aussi score/maxScore/reasons pour rester cohérent avec le tier.
       tier: result.tier,
+      score: result.score,
+      maxScore: result.maxScore,
+      reasons: result.reasons,
       payload: {
         ...basePayload,
         qualification: record as unknown as Prisma.InputJsonValue,

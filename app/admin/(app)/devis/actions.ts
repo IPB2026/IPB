@@ -3,17 +3,15 @@
 import { z } from 'zod';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
-import { auth } from '@/auth';
 import { prisma } from '@/lib/prisma';
+import { requireAdmin } from '@/lib/auth-helpers';
 import { nextDevisNumber, nextFactureNumber } from '@/lib/crm/numbering';
 import { devisTemplate } from '@/lib/crm/devis-templates';
 import { DevisStatus, ServiceType } from '@prisma/client';
 
-async function requireUser() {
-  const session = await auth();
-  if (!session?.user) throw new Error('Non authentifié');
-  return session.user;
-}
+// Écritures commerciales (devis/factures) : réservées à l'ADMIN. Les EXPERT
+// (diagnostiqueurs) sont redirigés hors du back-office par guardAdminPage.
+const requireUser = requireAdmin;
 
 const lineSchema = z.object({
   designation: z.string().trim().min(1),
@@ -34,7 +32,11 @@ export async function createDevis(
   const contactId = num(formData.get('contactId'));
   const serviceRaw = num(formData.get('serviceType')).trim();
   if (!contactId) return 'Client obligatoire.';
-  const serviceType = (serviceRaw in ServiceType ? serviceRaw : 'FISSURES') as ServiceType;
+  // AUTRE est réservé au 2ᵉ devis « travaux » (createDevisTravaux) : un devis
+  // diagnostic ne peut pas être AUTRE, sinon il serait compté comme devis travaux.
+  const serviceType = (
+    serviceRaw in ServiceType && serviceRaw !== 'AUTRE' ? serviceRaw : 'FISSURES'
+  ) as ServiceType;
 
   // Tarif du dossier (coordination + mise en forme IPB), borné 399–499 €.
   const prix = Math.round(Number(num(formData.get('prix')).replace(',', '.')) || 0);
@@ -262,7 +264,9 @@ export async function updateDevis(
   if (!id) return 'Devis introuvable.';
 
   const serviceRaw = num(formData.get('serviceType')).trim();
-  const serviceType = (serviceRaw in ServiceType ? serviceRaw : 'FISSURES') as ServiceType;
+  const serviceType = (
+    serviceRaw in ServiceType && serviceRaw !== 'AUTRE' ? serviceRaw : 'FISSURES'
+  ) as ServiceType;
   const prix = Math.round(Number(num(formData.get('prix')).replace(',', '.')) || 0);
   if (!prix || prix < 199 || prix > 999) {
     return 'Montant invalide (entre 399 et 499 € en principe).';
