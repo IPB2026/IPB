@@ -95,7 +95,13 @@ export default async function AgendaPage({
         subtitle="Rendez-vous de diagnostic et interventions."
       />
 
-      {!isCalendarConfigured() && (
+      {isCalendarConfigured() ? (
+        <p className="inline-flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-2 text-xs text-emerald-800">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+          Google Agenda connecté : chaque RDV est synchronisé et le client reçoit
+          une invitation automatique (modification et annulation incluses).
+        </p>
+      ) : (
         <p className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-2 text-xs text-amber-800">
           Google Agenda non connecté : les RDV sont enregistrés en interne. La
           synchronisation et les invitations automatiques s'activeront une fois

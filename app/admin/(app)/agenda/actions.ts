@@ -5,7 +5,7 @@ import { revalidatePath } from 'next/cache';
 import { auth } from '@/auth';
 import { prisma } from '@/lib/prisma';
 import { nextFactureNumber } from '@/lib/crm/numbering';
-import { createCalendarEvent } from '@/lib/google/calendar';
+import { createCalendarEvent, deleteCalendarEvent } from '@/lib/google/calendar';
 import { notifyClientAppointment } from '@/lib/crm/notify';
 import { AppointmentStatus, AppointmentType } from '@prisma/client';
 
@@ -111,22 +111,25 @@ export async function updateAppointmentStatus(formData: FormData) {
   const id = str(formData.get('appointmentId'));
   const status = str(formData.get('status'));
   if (!id || !(status in AppointmentStatus)) return;
-  await prisma.appointment.update({
+  const appt = await prisma.appointment.update({
     where: { id },
     data: { status: status as AppointmentStatus },
+    select: { leadId: true, googleEventId: true },
   });
   // Si réalisé et lead encore en amont, marquer « visite faite »
-  if (status === 'REALISE') {
-    const appt = await prisma.appointment.findUnique({
-      where: { id },
-      select: { leadId: true },
+  if (status === 'REALISE' && appt.leadId) {
+    await prisma.lead.updateMany({
+      where: { id: appt.leadId, stage: { in: ['RDV_PLANIFIE'] } },
+      data: { stage: 'VISITE_FAITE' },
     });
-    if (appt?.leadId) {
-      await prisma.lead.updateMany({
-        where: { id: appt.leadId, stage: { in: ['RDV_PLANIFIE'] } },
-        data: { stage: 'VISITE_FAITE' },
-      });
-    }
+  }
+  // Annulation : retirer l'événement Google (le client est notifié).
+  if (status === 'ANNULE' && appt.googleEventId) {
+    await deleteCalendarEvent(appt.googleEventId);
+    await prisma.appointment.update({
+      where: { id },
+      data: { googleEventId: null },
+    });
   }
   revalidatePath('/admin/agenda');
 }
