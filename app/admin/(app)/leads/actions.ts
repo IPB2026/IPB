@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { auth } from '@/auth';
 import { prisma } from '@/lib/prisma';
+import { requireAdmin } from '@/lib/auth-helpers';
 import {
   captureLead,
   parseAddress,
@@ -110,6 +111,29 @@ export async function createProspect(
 
   if (!result) {
     return "Erreur d'enregistrement. Vérifiez la connexion à la base de données.";
+  }
+
+  // Assignation éventuelle à un diagnostiqueur (EXPERT)
+  const assignedToId = str('assignedToId');
+  if (assignedToId) {
+    const expert = await prisma.user.findFirst({
+      where: { id: assignedToId, role: 'EXPERT' },
+      select: { id: true, name: true, email: true },
+    });
+    if (expert) {
+      await prisma.lead.update({
+        where: { id: result.leadId },
+        data: { assignedToId: expert.id },
+      });
+      await prisma.activity.create({
+        data: {
+          type: 'SYSTEME',
+          leadId: result.leadId,
+          contactId: result.contactId,
+          content: `Prospect assigné à ${expert.name || expert.email}`,
+        },
+      });
+    }
   }
 
   // Journalise l'appel + la relance éventuelle
@@ -242,6 +266,49 @@ export async function scheduleRelance(formData: FormData) {
     });
   }
   revalidateLead(leadId);
+}
+
+/** (Ré)assigne un prospect à un diagnostiqueur (ou le désassigne). Admin only. */
+export async function assignLead(formData: FormData) {
+  await requireAdmin();
+  const leadId = String(formData.get('leadId') ?? '');
+  const expertId = String(formData.get('assignedToId') ?? '').trim();
+  if (!leadId) return;
+
+  const lead = await prisma.lead.findUnique({
+    where: { id: leadId },
+    select: { contactId: true, assignedToId: true },
+  });
+  if (!lead) return;
+
+  let label = 'Prospect désassigné';
+  let newId: string | null = null;
+  if (expertId) {
+    const expert = await prisma.user.findFirst({
+      where: { id: expertId, role: 'EXPERT' },
+      select: { id: true, name: true, email: true },
+    });
+    if (!expert) return;
+    newId = expert.id;
+    label = `Prospect assigné à ${expert.name || expert.email}`;
+  }
+
+  if (lead.assignedToId === newId) return; // pas de changement
+
+  await prisma.lead.update({
+    where: { id: leadId },
+    data: { assignedToId: newId },
+  });
+  await prisma.activity.create({
+    data: {
+      type: ActivityType.SYSTEME,
+      leadId,
+      contactId: lead.contactId,
+      content: label,
+    },
+  });
+  revalidateLead(leadId);
+  revalidatePath('/admin/rapports');
 }
 
 /** Marque une relance comme effectuée. */

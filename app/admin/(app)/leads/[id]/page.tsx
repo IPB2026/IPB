@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import type { ActivityType } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
-import { guardAdminPage } from '@/lib/auth-helpers';
+import { guardAdminPage, listExperts } from '@/lib/auth-helpers';
 import { Avatar } from '@/components/admin/avatar';
 import {
   TierBadge,
@@ -27,6 +27,7 @@ import {
   addActivity,
   scheduleRelance,
   completeRelance,
+  assignLead,
 } from '@/app/admin/(app)/leads/actions';
 
 export const dynamic = 'force-dynamic';
@@ -56,15 +57,19 @@ export default async function LeadDetailPage({
   params: { id: string };
 }) {
   await guardAdminPage();
-  const lead = await prisma.lead
-    .findUnique({
-      where: { id: params.id },
-      include: {
-        contact: true,
-        activities: { orderBy: { createdAt: 'desc' } },
-      },
-    })
-    .catch(() => null);
+  const [lead, experts] = await Promise.all([
+    prisma.lead
+      .findUnique({
+        where: { id: params.id },
+        include: {
+          contact: true,
+          assignedTo: { select: { id: true, name: true, email: true } },
+          activities: { orderBy: { createdAt: 'desc' } },
+        },
+      })
+      .catch(() => null),
+    listExperts(),
+  ]);
 
   if (!lead) notFound();
 
@@ -145,6 +150,39 @@ export default async function LeadDetailPage({
                 placeholder="Motif (si perdu)"
                 className="h-10 w-full rounded-lg border border-slate-300 px-3 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
               />
+            </form>
+
+            {/* Assigner à un diagnostiqueur */}
+            <form action={assignLead} className="space-y-2">
+              <input type="hidden" name="leadId" value={lead.id} />
+              <label className="block text-sm font-medium text-slate-700">
+                Diagnostiqueur assigné
+              </label>
+              <div className="flex flex-wrap gap-2">
+                <select
+                  name="assignedToId"
+                  defaultValue={lead.assignedToId ?? ''}
+                  className="h-10 flex-1 rounded-lg border border-slate-300 px-3 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                >
+                  <option value="">— Non assigné —</option>
+                  {experts.map((e) => (
+                    <option key={e.id} value={e.id}>
+                      {e.name}
+                    </option>
+                  ))}
+                </select>
+                <button
+                  type="submit"
+                  className="h-10 rounded-lg bg-slate-900 px-4 text-sm font-semibold text-white transition-colors hover:bg-slate-800"
+                >
+                  Assigner
+                </button>
+              </div>
+              {lead.assignedTo && (
+                <p className="text-xs text-slate-400">
+                  Actuellement : {lead.assignedTo.name || lead.assignedTo.email}
+                </p>
+              )}
             </form>
 
             {/* Planifier une relance */}

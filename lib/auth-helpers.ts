@@ -1,6 +1,7 @@
 import 'server-only';
 import { redirect } from 'next/navigation';
 import { auth } from '@/auth';
+import { prisma } from '@/lib/prisma';
 
 export interface SessionUser {
   id: string;
@@ -51,4 +52,22 @@ export async function guardAdminPage(): Promise<SessionUser> {
 
 export function isAdmin(user: { role?: string } | null | undefined): boolean {
   return user?.role === 'ADMIN';
+}
+
+/** Liste les comptes diagnostiqueurs (EXPERT) pour l'assignation des prospects. */
+export async function listExperts(): Promise<
+  { id: string; name: string; email: string }[]
+> {
+  const experts = await prisma.user
+    .findMany({
+      where: { role: 'EXPERT' },
+      orderBy: { name: 'asc' },
+      select: { id: true, name: true, email: true },
+    })
+    .catch(() => []);
+  return experts.map((e) => ({
+    id: e.id,
+    name: e.name || e.email,
+    email: e.email,
+  }));
 }

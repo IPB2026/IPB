@@ -7,7 +7,8 @@ import { del } from '@vercel/blob';
 import { prisma } from '@/lib/prisma';
 import { requireUser, requireAdmin } from '@/lib/auth-helpers';
 import { nextRapportNumber } from '@/lib/crm/numbering';
-import { ReportType, ReportStatus, Prisma } from '@prisma/client';
+import { sendRapportEmail } from '@/lib/crm/send';
+import { ReportType, ReportStatus, ServiceType, Prisma } from '@prisma/client';
 import {
   generateReport,
   REPORT_MODEL,
@@ -77,6 +78,63 @@ export async function createRapport(
     },
   });
 
+  revalidatePath('/admin/rapports');
+  redirect(`/admin/rapports/${rapport.id}`);
+}
+
+const SERVICE_TO_REPORT: Record<string, ReportType> = {
+  FISSURES: ReportType.FISSURES,
+  HUMIDITE: ReportType.HUMIDITE,
+  EXPERTISE_ACHAT: ReportType.EXPERTISE_ACHAT,
+  MUR_PORTEUR: ReportType.MUR_PORTEUR,
+  AUTRE: ReportType.FISSURES,
+};
+
+const REPORT_TITLE: Record<ReportType, string> = {
+  FISSURES: 'Diagnostic pathologies de fissures',
+  HUMIDITE: 'Diagnostic humidité et infiltrations',
+  EXPERTISE_ACHAT: 'Expertise structurelle avant achat',
+  MUR_PORTEUR: 'Étude de faisabilité — ouverture de mur porteur',
+};
+
+/**
+ * Démarre un rapport à partir d'un prospect assigné. Le diagnostiqueur ne peut
+ * démarrer que sur SES prospects (assignedToId) ; l'admin sur n'importe lequel.
+ * Évite les doublons : si un rapport existe déjà pour ce lead, on y redirige.
+ */
+export async function startRapportFromLead(formData: FormData) {
+  const user = await requireUser();
+  const leadId = str(formData.get('leadId'));
+  if (!leadId) return;
+
+  const lead = await prisma.lead.findUnique({
+    where: { id: leadId },
+    include: { contact: true },
+  });
+  if (!lead) return;
+  if (user.role !== 'ADMIN' && lead.assignedToId !== user.id) return;
+
+  const existing = await prisma.rapport.findFirst({
+    where: { leadId },
+    select: { id: true },
+  });
+  if (existing) redirect(`/admin/rapports/${existing.id}`);
+
+  const type = SERVICE_TO_REPORT[lead.service as ServiceType] ?? ReportType.FISSURES;
+  const number = await nextRapportNumber(lead.contact.name);
+  const rapport = await prisma.rapport.create({
+    data: {
+      number,
+      contactId: lead.contactId,
+      leadId: lead.id,
+      authorId: lead.assignedToId ?? (user.id || null),
+      type,
+      title: REPORT_TITLE[type],
+      bienAdresse: lead.contact.address || null,
+      ville: lead.contact.city || null,
+      zonesInput: [] as unknown as Prisma.InputJsonValue,
+    },
+  });
   revalidatePath('/admin/rapports');
   redirect(`/admin/rapports/${rapport.id}`);
 }
@@ -167,20 +225,56 @@ export async function deleteRapportPhoto(formData: FormData): Promise<void> {
   revalidatePath(`/admin/rapports/${id}`);
 }
 
-/** L'expert marque sa saisie terrain prête (passage en GENERE côté admin). */
-export async function markRapportReady(formData: FormData): Promise<void> {
+/**
+ * Le diagnostiqueur soumet sa saisie terrain pour validation (BROUILLON → SOUMIS).
+ * Après soumission, la saisie est verrouillée côté expert ; l'admin génère puis valide.
+ */
+export async function submitRapport(formData: FormData): Promise<void> {
   const id = str(formData.get('rapportId'));
   const owned = await loadOwned(id);
   if (!owned) return;
+  if (owned.rapport.status !== 'BROUILLON') return;
+
+  const zones = (owned.rapport.zonesInput as unknown as ReportZoneInput[]) ?? [];
+  if (zones.length === 0) return; // rien à soumettre
+
+  await prisma.rapport.update({ where: { id }, data: { status: 'SOUMIS' } });
   await prisma.activity.create({
     data: {
       type: 'SYSTEME',
-      content: `Saisie terrain marquée prête par ${owned.user.name || owned.user.email}.`,
+      content: `Saisie terrain soumise pour validation par ${owned.user.name || owned.user.email}.`,
       contactId: owned.rapport.contactId,
       leadId: owned.rapport.leadId,
       authorId: owned.user.id || null,
     },
   });
+  revalidatePath(`/admin/rapports/${id}`);
+  revalidatePath('/admin/rapports');
+}
+
+/**
+ * L'admin valide le rapport généré et l'envoie automatiquement au client par
+ * e-mail (PDF joint). Statut → ENVOYE. Réservé à l'ADMIN (responsabilité finale).
+ */
+export async function validateAndSendRapport(
+  formData: FormData
+): Promise<void> {
+  await requireAdmin();
+  const id = str(formData.get('rapportId'));
+  if (!id) return;
+
+  const rapport = await prisma.rapport.findUnique({
+    where: { id },
+    select: { status: true, aiContent: true },
+  });
+  if (!rapport) return;
+  const ai = rapport.aiContent as { error?: string } | null;
+  if (!ai || ai.error) return; // pas de contenu valide à envoyer
+
+  // Marque validé puis envoie (sendRapportEmail passe le statut à ENVOYE).
+  await prisma.rapport.update({ where: { id }, data: { status: 'VALIDE' } });
+  await sendRapportEmail(id);
+
   revalidatePath(`/admin/rapports/${id}`);
   revalidatePath('/admin/rapports');
 }

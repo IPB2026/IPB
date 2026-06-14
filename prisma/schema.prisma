@@ -360,9 +360,10 @@ enum ReportType {
 }
 
 enum ReportStatus {
-  BROUILLON // saisie terrain, pas encore généré
-  GENERE    // contenu IA généré, à relire
-  VALIDE    // relu et validé par l'expert
+  BROUILLON // saisie terrain en cours par le diagnostiqueur
+  SOUMIS    // diagnostiqueur a soumis sa saisie → en attente côté admin
+  GENERE    // contenu IA généré par l'admin, à valider
+  VALIDE    // relu et validé par l'admin
   ENVOYE    // transmis au client
 }
 
