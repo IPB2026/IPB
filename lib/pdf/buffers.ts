@@ -5,6 +5,8 @@ import { prisma } from '@/lib/prisma';
 import { DevisDocument } from '@/lib/pdf/devis-document';
 import { FactureDocument } from '@/lib/pdf/facture-document';
 import { RapportDocument } from '@/lib/pdf/rapport-document';
+import { devisTemplate } from '@/lib/crm/devis-templates';
+import { diagnosticienFor } from '@/lib/crm/diagnosticiens';
 import type { ReportContent } from '@/lib/ai/report';
 
 type RenderEl = Parameters<typeof renderToBuffer>[0];
@@ -14,27 +16,38 @@ const num = (d: unknown) => Number(d ?? 0);
 export async function buildDevisPdf(id: string): Promise<Buffer | null> {
   const devis = await prisma.devis.findUnique({
     where: { id },
-    include: { contact: true, lines: { orderBy: { position: 'asc' } } },
+    include: { contact: true },
   });
   if (!devis) return null;
+
+  // Diagnostiqueur mandaté = celui assigné au prospect lié, sinon défaut.
+  let assignedEmail: string | null = null;
+  if (devis.leadId) {
+    const lead = await prisma.lead
+      .findUnique({
+        where: { id: devis.leadId },
+        select: { assignedTo: { select: { email: true } } },
+      })
+      .catch(() => null);
+    assignedEmail = lead?.assignedTo?.email ?? null;
+  }
+
+  const tpl = devisTemplate(devis.serviceType);
+  const diag = diagnosticienFor({ assignedEmail, service: devis.serviceType });
+
   const el = createElement(DevisDocument, {
     data: {
       number: devis.number,
-      object: devis.object,
+      objet: devis.object || tpl.objet,
+      serviceType: devis.serviceType,
       bienConcerne: devis.bienConcerne,
-      introLetter: devis.introLetter,
       createdAt: devis.createdAt,
       validUntil: devis.validUntil,
       contact: devis.contact,
-      totalHT: num(devis.totalHT),
-      lines: devis.lines.map((l) => ({
-        designation: l.designation,
-        detail: l.detail,
-        unit: l.unit,
-        qty: num(l.qty),
-        unitPrice: num(l.unitPrice),
-        total: num(l.total),
-      })),
+      intervention: tpl.intervention,
+      livrable: tpl.livrable,
+      diagnosticien: diag,
+      prix: num(devis.totalHT),
     },
   }) as unknown as RenderEl;
   return renderToBuffer(el);

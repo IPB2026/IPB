@@ -247,6 +247,7 @@ model Devis {
   leadId    String?
 
   object       String // ex. "Diagnostic pathologies de fissures"
+  serviceType  ServiceType? // pilote le gabarit du devis (fissures/humidité/expertise…)
   bienConcerne String? // adresse / désignation du bien
   introLetter  String? // paragraphe d'intro personnalisé
   notes        String?

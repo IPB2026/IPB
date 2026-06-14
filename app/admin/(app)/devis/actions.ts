@@ -6,7 +6,8 @@ import { revalidatePath } from 'next/cache';
 import { auth } from '@/auth';
 import { prisma } from '@/lib/prisma';
 import { nextDevisNumber, nextFactureNumber } from '@/lib/crm/numbering';
-import { DevisStatus } from '@prisma/client';
+import { devisTemplate } from '@/lib/crm/devis-templates';
+import { DevisStatus, ServiceType } from '@prisma/client';
 
 async function requireUser() {
   const session = await auth();
@@ -31,17 +32,15 @@ export async function createDevis(
   await requireUser();
 
   const contactId = num(formData.get('contactId'));
-  const object = num(formData.get('object')).trim();
-  if (!contactId || !object) return 'Client et objet sont obligatoires.';
+  const serviceRaw = num(formData.get('serviceType')).trim();
+  if (!contactId) return 'Client obligatoire.';
+  const serviceType = (serviceRaw in ServiceType ? serviceRaw : 'FISSURES') as ServiceType;
 
-  let lines: z.infer<typeof lineSchema>[];
-  try {
-    const raw = JSON.parse(num(formData.get('lines')) || '[]');
-    lines = z.array(lineSchema).parse(raw).filter((l) => l.designation);
-  } catch {
-    return 'Lignes de prestation invalides.';
+  // Tarif du dossier (coordination + mise en forme IPB), borné 399–499 €.
+  const prix = Math.round(Number(num(formData.get('prix')).replace(',', '.')) || 0);
+  if (!prix || prix < 199 || prix > 999) {
+    return 'Indiquez un montant valide (entre 399 et 499 € en principe).';
   }
-  if (lines.length === 0) return 'Ajoutez au moins une ligne de prestation.';
 
   const contact = await prisma.contact.findUnique({ where: { id: contactId } });
   if (!contact) return 'Client introuvable.';
@@ -49,29 +48,42 @@ export async function createDevis(
   const validRaw = num(formData.get('validUntil'));
   const validUntil = validRaw ? new Date(validRaw) : defaultValidUntil();
   const number = await nextDevisNumber();
+  const tpl = devisTemplate(serviceType);
 
-  const computed = lines.map((l, i) => ({
-    designation: l.designation,
-    detail: l.detail || null,
-    unit: l.unit || 'Forfait',
-    qty: l.qty,
-    unitPrice: l.unitPrice,
-    total: Math.round(l.qty * l.unitPrice * 100) / 100,
-    position: i,
-  }));
-  const totalHT = computed.reduce((s, l) => s + l.total, 0);
+  // Deux lignes : diagnostic sur site (porté par le diagnostiqueur, « — »)
+  // + coordination/mise en forme IPB (le prix).
+  const lines = [
+    {
+      designation: 'Diagnostic sur site, analyse et production du rapport',
+      detail: 'Réalisé par le diagnostiqueur indépendant mandaté, sous sa responsabilité',
+      unit: 'Forfait',
+      qty: 1,
+      unitPrice: 0,
+      total: 0,
+      position: 0,
+    },
+    {
+      designation: 'Coordination de la mission et mise en forme du rapport',
+      detail: 'Planification, suivi du dossier et production éditoriale du rapport — IPB',
+      unit: 'Forfait',
+      qty: 1,
+      unitPrice: prix,
+      total: prix,
+      position: 1,
+    },
+  ];
 
   const devis = await prisma.devis.create({
     data: {
       number,
       contactId,
       leadId: num(formData.get('leadId')) || null,
-      object,
+      object: tpl.objet,
+      serviceType,
       bienConcerne: num(formData.get('bienConcerne')).trim() || null,
-      introLetter: num(formData.get('introLetter')).trim() || null,
       validUntil,
-      totalHT,
-      lines: { create: computed },
+      totalHT: prix,
+      lines: { create: lines },
     },
   });
 
