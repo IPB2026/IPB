@@ -8,7 +8,10 @@ import {
   FACTURE_STATUS_LABEL,
 } from '@/components/admin/badges';
 import { euros, COMPANY } from '@/lib/crm/company';
-import { updateFactureStatus } from '@/app/admin/(app)/factures/actions';
+import {
+  updateFactureStatus,
+  recordFacturePayment,
+} from '@/app/admin/(app)/factures/actions';
 import { sendFacture } from '@/app/admin/(app)/send-actions';
 
 export const dynamic = 'force-dynamic';
@@ -136,6 +139,66 @@ export default async function FactureDetailPage({
             ) : null}
           </dl>
         </div>
+      </section>
+
+      {/* Règlement / encaissement */}
+      <section className="rounded-xl border border-slate-200 bg-white p-5">
+        <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-400">
+          Règlement
+        </h2>
+        <div className="mb-4 grid grid-cols-3 gap-3">
+          <div className="rounded-lg bg-slate-50 px-3 py-2.5">
+            <p className="text-[11px] text-slate-400">Total HT</p>
+            <p className="mt-0.5 text-sm font-semibold tabular-nums text-slate-800">
+              {euros(Number(facture.totalHT))}
+            </p>
+          </div>
+          <div className="rounded-lg bg-slate-50 px-3 py-2.5">
+            <p className="text-[11px] text-slate-400">Encaissé</p>
+            <p className="mt-0.5 text-sm font-semibold tabular-nums text-emerald-600">
+              {euros(Number(facture.acompte ?? 0))}
+            </p>
+          </div>
+          <div className="rounded-lg bg-slate-50 px-3 py-2.5">
+            <p className="text-[11px] text-slate-400">Reste dû</p>
+            <p
+              className={`mt-0.5 text-sm font-semibold tabular-nums ${
+                net > 0 ? 'text-orange-600' : 'text-emerald-600'
+              }`}
+            >
+              {euros(net)}
+            </p>
+          </div>
+        </div>
+        {facture.status !== 'PAYEE' && net > 0 ? (
+          <form
+            action={recordFacturePayment}
+            className="flex flex-wrap items-end gap-2"
+          >
+            <input type="hidden" name="factureId" value={facture.id} />
+            <div className="flex-1">
+              <label className="mb-1 block text-sm font-medium text-slate-700">
+                Encaissement (€)
+              </label>
+              <input
+                name="montant"
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder={`${net}`}
+                className="h-10 w-full rounded-lg border border-slate-300 px-3 text-base outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 sm:text-sm"
+              />
+            </div>
+            <button
+              type="submit"
+              className="h-10 rounded-lg bg-emerald-600 px-4 text-sm font-semibold text-white hover:bg-emerald-700"
+            >
+              Enregistrer le paiement
+            </button>
+          </form>
+        ) : (
+          <p className="text-sm font-medium text-emerald-700">Facture soldée.</p>
+        )}
       </section>
 
       <section className="overflow-hidden rounded-xl border border-slate-200 bg-white">
