@@ -294,6 +294,49 @@ export function postChantierReviewRequest(ctx: ReviewRequestContext): string {
 }
 
 // ─────────────────────────────────────────────────────────────────
+// Relance commerciale : devis envoyé sans réponse (J+3 douce / J+7 ferme)
+// ─────────────────────────────────────────────────────────────────
+
+interface DevisRelanceContext {
+  firstName: string;
+  object: string;
+  step: 1 | 2; // 1 = J+3, 2 = J+7
+  unsubscribeUrl?: string;
+}
+
+export function devisRelance(ctx: DevisRelanceContext): string {
+  const soft = ctx.step === 1;
+  const inner = `
+    ${card(`
+      ${eyebrow(soft ? 'Votre devis · suite' : 'Votre devis · dernier point')}
+      ${heading(
+        soft ? 'Une question sur votre devis ?' : 'Souhaitez-vous donner suite ?',
+        soft ? 'Nous restons disponibles.' : 'Votre devis est toujours valable.'
+      )}
+      ${para('Bonjour ' + ctx.firstName + ',')}
+      ${para(
+        soft
+          ? `Nous vous avons transmis il y a quelques jours notre devis pour <strong>${ctx.object}</strong>. Nous voulions simplement nous assurer qu'il vous est bien parvenu et répondre à vos éventuelles questions — sur le contenu, le déroulé ou les délais.`
+          : `Sauf erreur de notre part, votre devis pour <strong>${ctx.object}</strong> est resté sans suite. Il reste valable : si vous souhaitez avancer, un mot de votre part suffit pour fixer la visite sous 72 heures.`
+      )}
+      ${para(
+        soft
+          ? "Pour rappel, dès l'accord nous planifions la visite sous 72 heures."
+          : 'Si votre projet a évolué ou n\'est plus d\'actualité, dites-le nous simplement : nous classerons le dossier sans relance supplémentaire.'
+      )}
+      <p style="margin: 28px 0;">
+        ${button('En parler — 05 82 95 33 75', 'tel:0582953375')}
+      </p>
+      ${signature}
+    `)}
+  `;
+  return wrap(inner, {
+    eyebrow: soft ? 'Relance · J+3' : 'Relance · J+7',
+    unsubscribeUrl: ctx.unsubscribeUrl,
+  });
+}
+
+// ─────────────────────────────────────────────────────────────────
 // Export consolidé
 // ─────────────────────────────────────────────────────────────────
 
@@ -305,6 +348,11 @@ export const emailTemplates = {
   j14Closure,
   postChantierReviewRequest,
 };
+
+// NB : `devisRelance` n'est volontairement PAS dans `emailTemplates` ci-dessus.
+// Ce record est indexé dynamiquement par le cron de nurturing (clé = nom d'étape) ;
+// y mêler un template au contexte différent (object/step) casserait l'inférence.
+// On l'importe directement là où on en a besoin.
 
 export const emailSequence = [
   { offsetDays: 0, name: 'j0Confirmation', subject: (ctx: PathContext) => `Votre demande IPB est prise en compte` },

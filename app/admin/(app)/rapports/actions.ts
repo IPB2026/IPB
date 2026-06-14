@@ -8,6 +8,7 @@ import { prisma } from '@/lib/prisma';
 import { requireUser, requireAdmin } from '@/lib/auth-helpers';
 import { nextRapportNumber } from '@/lib/crm/numbering';
 import { sendRapportEmail } from '@/lib/crm/send';
+import { notifyAdminRapportSubmitted } from '@/lib/crm/notify';
 import { ReportType, ReportStatus, ServiceType, Prisma } from '@prisma/client';
 import {
   generateReport,
@@ -248,6 +249,7 @@ export async function submitRapport(formData: FormData): Promise<void> {
       authorId: owned.user.id || null,
     },
   });
+  await notifyAdminRapportSubmitted(id);
   revalidatePath(`/admin/rapports/${id}`);
   revalidatePath('/admin/rapports');
 }

@@ -6,6 +6,7 @@ import { auth } from '@/auth';
 import { prisma } from '@/lib/prisma';
 import { nextFactureNumber } from '@/lib/crm/numbering';
 import { createCalendarEvent } from '@/lib/google/calendar';
+import { notifyClientAppointment } from '@/lib/crm/notify';
 import { AppointmentStatus, AppointmentType } from '@prisma/client';
 
 async function requireUser() {
@@ -84,6 +85,9 @@ export async function createAppointment(formData: FormData) {
       content: `RDV planifié : ${title} — ${start.toLocaleString('fr-FR')}`,
     },
   });
+
+  // Accusé client automatique (confirmation de RDV) — non bloquant
+  await notifyClientAppointment(appt.id);
   if (leadId) {
     const lead = await prisma.lead.findUnique({
       where: { id: leadId },

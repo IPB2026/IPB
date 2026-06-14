@@ -89,8 +89,13 @@ async function ExpertView({ expertId }: { expertId: string }) {
                   className="flex flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:justify-between"
                 >
                   <div className="min-w-0">
-                    <p className="font-medium text-slate-900">
+                    <p className="flex items-center gap-2 font-medium text-slate-900">
                       {lead.contact.name}
+                      {!rapport && (
+                        <span className="inline-flex rounded-md bg-orange-50 px-1.5 py-0.5 text-xs font-semibold text-orange-700 ring-1 ring-inset ring-orange-600/20">
+                          Nouveau
+                        </span>
+                      )}
                     </p>
                     <p className="mt-0.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-500">
                       <span>{SERVICE_LABEL[lead.service]}</span>

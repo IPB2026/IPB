@@ -11,6 +11,7 @@ import {
   parseAddress,
   type CaptureLeadScoring,
 } from '@/lib/crm/captureLead';
+import { notifyExpertAssigned } from '@/lib/crm/notify';
 import {
   ServiceType,
   OccupantStatus,
@@ -133,6 +134,7 @@ export async function createProspect(
           content: `Prospect assigné à ${expert.name || expert.email}`,
         },
       });
+      await notifyExpertAssigned(result.leadId, expert.id);
     }
   }
 
@@ -307,6 +309,7 @@ export async function assignLead(formData: FormData) {
       content: label,
     },
   });
+  if (newId) await notifyExpertAssigned(leadId, newId);
   revalidateLead(leadId);
   revalidatePath('/admin/rapports');
 }
