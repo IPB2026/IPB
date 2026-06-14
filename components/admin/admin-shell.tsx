@@ -1,8 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { Menu, X, LogOut } from 'lucide-react';
+import Link from 'next/link';
+import { Menu, X, LogOut, Search } from 'lucide-react';
 import { AdminNav } from '@/components/admin/admin-nav';
+import { BottomNav } from '@/components/admin/bottom-nav';
 import { Avatar } from '@/components/admin/avatar';
 import { logout } from '@/app/admin/(app)/auth-actions';
 
@@ -93,13 +95,24 @@ export function AdminShell({
             {role === 'EXPERT' ? 'Espace terrain' : 'Back-office'}
           </span>
         </div>
-        <button
-          onClick={() => setOpen(true)}
-          className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-600 hover:bg-slate-100"
-          aria-label="Ouvrir le menu"
-        >
-          <Menu className="h-5 w-5" />
-        </button>
+        <div className="flex items-center gap-1">
+          {role !== 'EXPERT' && (
+            <Link
+              href="/admin/recherche"
+              className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-600 hover:bg-slate-100"
+              aria-label="Recherche"
+            >
+              <Search className="h-5 w-5" />
+            </Link>
+          )}
+          <button
+            onClick={() => setOpen(true)}
+            className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-600 hover:bg-slate-100"
+            aria-label="Ouvrir le menu"
+          >
+            <Menu className="h-5 w-5" />
+          </button>
+        </div>
       </header>
 
       {/* Drawer mobile */}
@@ -130,8 +143,13 @@ export function AdminShell({
 
       {/* Contenu */}
       <main className="lg:pl-64">
-        <div className="mx-auto max-w-7xl p-4 sm:p-6 lg:p-8">{children}</div>
+        <div className="mx-auto max-w-7xl p-4 pb-24 sm:p-6 lg:p-8 lg:pb-8">
+          {children}
+        </div>
       </main>
+
+      {/* Navigation basse (mobile/tablette) */}
+      <BottomNav role={role} />
     </div>
   );
 }

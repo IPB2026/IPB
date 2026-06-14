@@ -4,6 +4,7 @@ import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
 import { EmptyState } from '@/components/admin/empty-state';
+import { MobileCardList, MobileCardRow } from '@/components/admin/mobile-card';
 import { FactureStatusBadge } from '@/components/admin/badges';
 import { euros } from '@/lib/crm/company';
 
@@ -35,15 +36,37 @@ export default async function FacturesListPage() {
         }
       />
 
-      <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-        {dbError || factures.length === 0 ? (
+      {dbError || factures.length === 0 ? (
+        <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
           <EmptyState
             icon={ReceiptText}
             title="Aucune facture"
             description="Les factures se créent en convertissant un devis accepté."
           />
-        ) : (
-          <div className="overflow-x-auto">
+        </div>
+      ) : (
+        <>
+          {/* Mobile : cartes */}
+          <MobileCardList>
+            {factures.map((f) => (
+              <MobileCardRow
+                key={f.id}
+                href={`/admin/factures/${f.id}`}
+                title={f.number}
+                badge={<FactureStatusBadge status={f.status} />}
+                amount={euros(Number(f.totalHT))}
+                lines={[
+                  f.contact.name,
+                  f.dueDate
+                    ? `Échéance ${f.dueDate.toLocaleDateString('fr-FR')}`
+                    : f.object,
+                ]}
+              />
+            ))}
+          </MobileCardList>
+
+          {/* Desktop : tableau */}
+          <div className="hidden overflow-hidden rounded-xl border border-slate-200 bg-white md:block">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-slate-200 text-left text-xs font-medium uppercase tracking-wider text-slate-400">
@@ -82,8 +105,8 @@ export default async function FacturesListPage() {
               </tbody>
             </table>
           </div>
-        )}
-      </div>
+        </>
+      )}
     </div>
   );
 }

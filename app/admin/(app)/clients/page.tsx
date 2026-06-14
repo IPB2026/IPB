@@ -7,6 +7,7 @@ import { computeDossier } from '@/lib/crm/dossier';
 import { PageHeader } from '@/components/admin/page-header';
 import { EmptyState } from '@/components/admin/empty-state';
 import { Avatar } from '@/components/admin/avatar';
+import { MobileCardList, MobileCardRow } from '@/components/admin/mobile-card';
 
 export const dynamic = 'force-dynamic';
 
@@ -53,15 +54,37 @@ export default async function ClientsPage() {
         }
       />
 
-      <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-        {dbError || rows.length === 0 ? (
+      {dbError || rows.length === 0 ? (
+        <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
           <EmptyState
             icon={UserCheck}
             title="Aucun client pour l'instant"
             description="Un prospect devient client dès qu'un devis est accepté. Il apparaîtra alors ici avec son dossier."
           />
-        ) : (
-          <div className="overflow-x-auto">
+        </div>
+      ) : (
+        <>
+          {/* Mobile : cartes */}
+          <MobileCardList>
+            {rows.map(({ c, dossier, currentLabel }) => (
+              <MobileCardRow
+                key={c.id}
+                href={`/admin/clients/${c.id}`}
+                leading={<Avatar name={c.name} size="sm" />}
+                title={c.name}
+                badge={
+                  <span className="shrink-0 rounded-md bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-600/10">
+                    {currentLabel}
+                  </span>
+                }
+                amount={dossier.montant != null ? euros(dossier.montant) : undefined}
+                lines={[c.city || c.phone || c.email || '—']}
+              />
+            ))}
+          </MobileCardList>
+
+          {/* Desktop : tableau */}
+          <div className="hidden overflow-hidden rounded-xl border border-slate-200 bg-white md:block">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-slate-200 text-left text-xs font-medium uppercase tracking-wider text-slate-400">
@@ -114,8 +137,8 @@ export default async function ClientsPage() {
               </tbody>
             </table>
           </div>
-        )}
-      </div>
+        </>
+      )}
     </div>
   );
 }

@@ -20,6 +20,7 @@ import { PageHeader } from '@/components/admin/page-header';
 import { StatCard } from '@/components/admin/stat-card';
 import { EmptyState } from '@/components/admin/empty-state';
 import { Avatar } from '@/components/admin/avatar';
+import { MobileCardRow } from '@/components/admin/mobile-card';
 import { completeRelance } from '@/app/admin/(app)/leads/actions';
 import {
   TierBadge,
@@ -381,7 +382,26 @@ export default async function DashboardPage() {
             actionHref="/admin/leads/nouveau"
           />
         ) : (
-          <div className="overflow-x-auto">
+          <>
+            {/* Mobile : cartes */}
+            <ul className="divide-y divide-slate-100 md:hidden">
+              {stats.recent.map((lead) => (
+                <MobileCardRow
+                  key={lead.id}
+                  href={`/admin/leads/${lead.id}`}
+                  leading={<Avatar name={lead.contact.name} size="sm" />}
+                  title={lead.contact.name}
+                  badge={<TierBadge tier={lead.tier} />}
+                  lines={[
+                    lead.contact.phone || lead.contact.email || '—',
+                    <StageBadge key="s" stage={lead.stage} />,
+                  ]}
+                />
+              ))}
+            </ul>
+
+            {/* Desktop : tableau */}
+            <div className="hidden overflow-x-auto md:block">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-slate-200 text-left text-xs font-medium uppercase tracking-wider text-slate-400">
@@ -434,7 +454,8 @@ export default async function DashboardPage() {
                 ))}
               </tbody>
             </table>
-          </div>
+            </div>
+          </>
         )}
       </section>
     </div>

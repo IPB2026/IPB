@@ -6,6 +6,7 @@ import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
 import { EmptyState } from '@/components/admin/empty-state';
 import { Avatar } from '@/components/admin/avatar';
+import { MobileCardList, MobileCardRow } from '@/components/admin/mobile-card';
 import {
   TierBadge,
   StageBadge,
@@ -111,15 +112,17 @@ export default async function LeadsPage({
         )}
       </form>
 
-      <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-        {dbError ? (
+      {dbError ? (
+        <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
           <EmptyState
             icon={Users}
             title="Base de données non connectée"
             description="Configurez DATABASE_URL puis lancez la migration (SETUP_CRM.md)."
             tone="amber"
           />
-        ) : leads.length === 0 ? (
+        </div>
+      ) : leads.length === 0 ? (
+        <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
           <EmptyState
             icon={Users}
             title={hasFilters ? 'Aucun résultat' : 'Aucun prospect'}
@@ -131,8 +134,31 @@ export default async function LeadsPage({
             actionLabel={hasFilters ? undefined : 'Nouveau prospect'}
             actionHref={hasFilters ? undefined : '/admin/leads/nouveau'}
           />
-        ) : (
-          <div className="overflow-x-auto">
+        </div>
+      ) : (
+        <>
+          {/* Mobile : cartes */}
+          <MobileCardList>
+            {leads.map((lead) => (
+              <MobileCardRow
+                key={lead.id}
+                href={`/admin/leads/${lead.id}`}
+                leading={<Avatar name={lead.contact.name} size="sm" />}
+                title={lead.contact.name}
+                badge={<TierBadge tier={lead.tier} />}
+                lines={[
+                  lead.contact.phone || lead.contact.email || '—',
+                  `${SERVICE_LABEL[lead.service]}${
+                    lead.contact.city ? ' · ' + lead.contact.city : ''
+                  }`,
+                  <StageBadge key="s" stage={lead.stage} />,
+                ]}
+              />
+            ))}
+          </MobileCardList>
+
+          {/* Desktop : tableau */}
+          <div className="hidden overflow-hidden rounded-xl border border-slate-200 bg-white md:block">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-slate-200 text-left text-xs font-medium uppercase tracking-wider text-slate-400">
@@ -187,8 +213,8 @@ export default async function LeadsPage({
               </tbody>
             </table>
           </div>
-        )}
-      </div>
+        </>
+      )}
     </div>
   );
 }

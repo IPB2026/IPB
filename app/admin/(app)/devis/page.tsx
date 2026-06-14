@@ -4,6 +4,7 @@ import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
 import { EmptyState } from '@/components/admin/empty-state';
+import { MobileCardList, MobileCardRow } from '@/components/admin/mobile-card';
 import { DevisStatusBadge } from '@/components/admin/badges';
 import { euros } from '@/lib/crm/company';
 
@@ -44,8 +45,8 @@ export default async function DevisListPage() {
         }
       />
 
-      <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-        {dbError || devis.length === 0 ? (
+      {dbError || devis.length === 0 ? (
+        <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
           <EmptyState
             icon={FileText}
             title="Aucun devis"
@@ -53,8 +54,25 @@ export default async function DevisListPage() {
             actionLabel="Nouveau devis"
             actionHref="/admin/devis/nouveau"
           />
-        ) : (
-          <div className="overflow-x-auto">
+        </div>
+      ) : (
+        <>
+          {/* Mobile : cartes */}
+          <MobileCardList>
+            {devis.map((d) => (
+              <MobileCardRow
+                key={d.id}
+                href={`/admin/devis/${d.id}`}
+                title={d.number}
+                badge={<DevisStatusBadge status={d.status} />}
+                amount={euros(Number(d.totalHT))}
+                lines={[d.contact.name, d.object]}
+              />
+            ))}
+          </MobileCardList>
+
+          {/* Desktop : tableau */}
+          <div className="hidden overflow-hidden rounded-xl border border-slate-200 bg-white md:block">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-slate-200 text-left text-xs font-medium uppercase tracking-wider text-slate-400">
@@ -93,8 +111,8 @@ export default async function DevisListPage() {
               </tbody>
             </table>
           </div>
-        )}
-      </div>
+        </>
+      )}
     </div>
   );
 }

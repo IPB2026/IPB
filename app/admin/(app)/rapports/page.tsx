@@ -6,6 +6,7 @@ import { prisma } from '@/lib/prisma';
 import { getSessionUser } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
 import { EmptyState } from '@/components/admin/empty-state';
+import { MobileCardList, MobileCardRow } from '@/components/admin/mobile-card';
 import { SERVICE_LABEL } from '@/components/admin/badges';
 import { startRapportFromLead } from '@/app/admin/(app)/rapports/actions';
 
@@ -182,8 +183,8 @@ async function AdminView() {
         }
       />
 
-      <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-        {dbError || rapports.length === 0 ? (
+      {dbError || rapports.length === 0 ? (
+        <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
           <EmptyState
             icon={ClipboardCheck}
             title="Aucun rapport"
@@ -191,8 +192,27 @@ async function AdminView() {
             actionLabel="Nouveau rapport"
             actionHref="/admin/rapports/nouveau"
           />
-        ) : (
-          <div className="overflow-x-auto">
+        </div>
+      ) : (
+        <>
+          {/* Mobile : cartes */}
+          <MobileCardList>
+            {rapports.map((r) => (
+              <MobileCardRow
+                key={r.id}
+                href={`/admin/rapports/${r.id}`}
+                title={r.number}
+                badge={<StatusPill status={r.status} />}
+                lines={[
+                  r.contact.name,
+                  r.author?.name || r.author?.email || 'Diagnostiqueur —',
+                ]}
+              />
+            ))}
+          </MobileCardList>
+
+          {/* Desktop : tableau */}
+          <div className="hidden overflow-hidden rounded-xl border border-slate-200 bg-white md:block">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-slate-200 text-left text-xs font-medium uppercase tracking-wider text-slate-400">
@@ -229,8 +249,8 @@ async function AdminView() {
               </tbody>
             </table>
           </div>
-        )}
-      </div>
+        </>
+      )}
     </div>
   );
 }
