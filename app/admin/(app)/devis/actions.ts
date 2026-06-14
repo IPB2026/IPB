@@ -6,7 +6,8 @@ import { revalidatePath } from 'next/cache';
 import { auth } from '@/auth';
 import { prisma } from '@/lib/prisma';
 import { nextDevisNumber, nextFactureNumber } from '@/lib/crm/numbering';
-import { DevisStatus } from '@prisma/client';
+import { devisTemplate } from '@/lib/crm/devis-templates';
+import { DevisStatus, ServiceType } from '@prisma/client';
 
 async function requireUser() {
   const session = await auth();
@@ -31,17 +32,15 @@ export async function createDevis(
   await requireUser();
 
   const contactId = num(formData.get('contactId'));
-  const object = num(formData.get('object')).trim();
-  if (!contactId || !object) return 'Client et objet sont obligatoires.';
+  const serviceRaw = num(formData.get('serviceType')).trim();
+  if (!contactId) return 'Client obligatoire.';
+  const serviceType = (serviceRaw in ServiceType ? serviceRaw : 'FISSURES') as ServiceType;
 
-  let lines: z.infer<typeof lineSchema>[];
-  try {
-    const raw = JSON.parse(num(formData.get('lines')) || '[]');
-    lines = z.array(lineSchema).parse(raw).filter((l) => l.designation);
-  } catch {
-    return 'Lignes de prestation invalides.';
+  // Tarif du dossier (coordination + mise en forme IPB), borné 399–499 €.
+  const prix = Math.round(Number(num(formData.get('prix')).replace(',', '.')) || 0);
+  if (!prix || prix < 199 || prix > 999) {
+    return 'Indiquez un montant valide (entre 399 et 499 € en principe).';
   }
-  if (lines.length === 0) return 'Ajoutez au moins une ligne de prestation.';
 
   const contact = await prisma.contact.findUnique({ where: { id: contactId } });
   if (!contact) return 'Client introuvable.';
@@ -49,29 +48,42 @@ export async function createDevis(
   const validRaw = num(formData.get('validUntil'));
   const validUntil = validRaw ? new Date(validRaw) : defaultValidUntil();
   const number = await nextDevisNumber();
+  const tpl = devisTemplate(serviceType);
 
-  const computed = lines.map((l, i) => ({
-    designation: l.designation,
-    detail: l.detail || null,
-    unit: l.unit || 'Forfait',
-    qty: l.qty,
-    unitPrice: l.unitPrice,
-    total: Math.round(l.qty * l.unitPrice * 100) / 100,
-    position: i,
-  }));
-  const totalHT = computed.reduce((s, l) => s + l.total, 0);
+  // Deux lignes : diagnostic sur site (porté par le diagnostiqueur, « — »)
+  // + coordination/mise en forme IPB (le prix).
+  const lines = [
+    {
+      designation: 'Diagnostic sur site, analyse et production du rapport',
+      detail: 'Réalisé par le diagnostiqueur indépendant mandaté, sous sa responsabilité',
+      unit: 'Forfait',
+      qty: 1,
+      unitPrice: 0,
+      total: 0,
+      position: 0,
+    },
+    {
+      designation: 'Coordination de la mission et mise en forme du rapport',
+      detail: 'Planification, suivi du dossier et production éditoriale du rapport — IPB',
+      unit: 'Forfait',
+      qty: 1,
+      unitPrice: prix,
+      total: prix,
+      position: 1,
+    },
+  ];
 
   const devis = await prisma.devis.create({
     data: {
       number,
       contactId,
       leadId: num(formData.get('leadId')) || null,
-      object,
+      object: tpl.objet,
+      serviceType,
       bienConcerne: num(formData.get('bienConcerne')).trim() || null,
-      introLetter: num(formData.get('introLetter')).trim() || null,
       validUntil,
-      totalHT,
-      lines: { create: computed },
+      totalHT: prix,
+      lines: { create: lines },
     },
   });
 
@@ -96,6 +108,120 @@ export async function updateDevisStatus(formData: FormData) {
   });
   revalidatePath(`/admin/devis/${id}`);
   revalidatePath('/admin/devis');
+}
+
+/**
+ * Marque un devis comme ACCEPTÉ — vrai événement métier (≠ simple statut).
+ * Horodate l'acceptation (déclenche le bloc « lancement travaux » du dashboard)
+ * et fait gagner le lead lié. N'envoie rien au client.
+ */
+export async function acceptDevis(formData: FormData) {
+  await requireUser();
+  const id = num(formData.get('devisId'));
+  if (!id) return;
+
+  const devis = await prisma.devis.findUnique({
+    where: { id },
+    select: { contactId: true, leadId: true, number: true, acceptedAt: true },
+  });
+  if (!devis) return;
+
+  await prisma.devis.update({
+    where: { id },
+    data: { status: 'ACCEPTE', acceptedAt: devis.acceptedAt ?? new Date() },
+  });
+  await prisma.activity.create({
+    data: {
+      type: 'SYSTEME',
+      contactId: devis.contactId,
+      leadId: devis.leadId,
+      content: `Devis ${devis.number} accepté — lancement des travaux à planifier`,
+    },
+  });
+  if (devis.leadId) {
+    await prisma.lead.updateMany({
+      where: { id: devis.leadId, stage: { notIn: ['PERDU', 'GAGNE'] } },
+      data: { stage: 'GAGNE' },
+    });
+  }
+
+  revalidatePath(`/admin/devis/${id}`);
+  revalidatePath('/admin/devis');
+  revalidatePath('/admin');
+}
+
+/** Modifie un devis (type, montant, bien, validité) et recalcule les lignes. */
+export async function updateDevis(
+  _prev: string | undefined,
+  formData: FormData
+): Promise<string | undefined> {
+  await requireUser();
+  const id = num(formData.get('devisId'));
+  if (!id) return 'Devis introuvable.';
+
+  const serviceRaw = num(formData.get('serviceType')).trim();
+  const serviceType = (serviceRaw in ServiceType ? serviceRaw : 'FISSURES') as ServiceType;
+  const prix = Math.round(Number(num(formData.get('prix')).replace(',', '.')) || 0);
+  if (!prix || prix < 199 || prix > 999) {
+    return 'Montant invalide (entre 399 et 499 € en principe).';
+  }
+
+  const existing = await prisma.devis.findUnique({ where: { id }, select: { id: true } });
+  if (!existing) return 'Devis introuvable.';
+
+  const tpl = devisTemplate(serviceType);
+  const validRaw = num(formData.get('validUntil'));
+
+  // Remplace les lignes par les 2 lignes recalculées.
+  await prisma.devisLine.deleteMany({ where: { devisId: id } });
+  await prisma.devis.update({
+    where: { id },
+    data: {
+      serviceType,
+      object: tpl.objet,
+      bienConcerne: num(formData.get('bienConcerne')).trim() || null,
+      validUntil: validRaw ? new Date(validRaw) : undefined,
+      totalHT: prix,
+      lines: {
+        create: [
+          {
+            designation: 'Diagnostic sur site, analyse et production du rapport',
+            detail: 'Réalisé par le diagnostiqueur indépendant mandaté, sous sa responsabilité',
+            unit: 'Forfait',
+            qty: 1,
+            unitPrice: 0,
+            total: 0,
+            position: 0,
+          },
+          {
+            designation: 'Coordination de la mission et mise en forme du rapport',
+            detail: 'Planification, suivi du dossier et production éditoriale du rapport — IPB',
+            unit: 'Forfait',
+            qty: 1,
+            unitPrice: prix,
+            total: prix,
+            position: 1,
+          },
+        ],
+      },
+    },
+  });
+
+  revalidatePath(`/admin/devis/${id}`);
+  revalidatePath('/admin/devis');
+  return undefined;
+}
+
+/** Supprime un devis (refusé s'il a déjà été facturé). */
+export async function deleteDevis(formData: FormData) {
+  await requireUser();
+  const id = num(formData.get('devisId'));
+  if (!id) return;
+  const factures = await prisma.facture.count({ where: { devisId: id } });
+  if (factures > 0) return; // un devis facturé ne se supprime pas
+  await prisma.devis.delete({ where: { id } });
+  revalidatePath('/admin/devis');
+  redirect('/admin/devis');
 }
 
 export async function convertDevisToFacture(formData: FormData) {
@@ -137,10 +263,18 @@ export async function convertDevisToFacture(formData: FormData) {
 
   await prisma.devis.update({
     where: { id },
-    data: { status: 'ACCEPTE' },
+    data: { status: 'ACCEPTE', acceptedAt: devis.acceptedAt ?? new Date() },
   });
+  // La conversion vaut acceptation : on fait gagner le lead lié.
+  if (devis.leadId) {
+    await prisma.lead.updateMany({
+      where: { id: devis.leadId, stage: { notIn: ['PERDU', 'GAGNE'] } },
+      data: { stage: 'GAGNE' },
+    });
+  }
 
   revalidatePath('/admin/factures');
   revalidatePath(`/admin/devis/${id}`);
+  revalidatePath('/admin');
   redirect(`/admin/factures/${facture.id}`);
 }

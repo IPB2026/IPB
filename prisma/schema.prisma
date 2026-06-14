@@ -218,6 +218,7 @@ enum AppointmentType {
   DIAGNOSTIC_HUMIDITE
   EXPERTISE_ACHAT
   MUR_PORTEUR
+  LANCEMENT_TRAVAUX // lancement / coordination des travaux (réseau IPB)
   AUTRE
 }
 
@@ -246,15 +247,20 @@ model Devis {
   leadId    String?
 
   object       String // ex. "Diagnostic pathologies de fissures"
+  serviceType  ServiceType? // pilote le gabarit du devis (fissures/humidité/expertise…)
   bienConcerne String? // adresse / désignation du bien
   introLetter  String? // paragraphe d'intro personnalisé
   notes        String?
   validUntil   DateTime?
+  acceptedAt   DateTime? // date d'acceptation du devis (déclenche le lancement travaux)
 
   totalHT Decimal     @default(0) @db.Decimal(10, 2)
   lines   DevisLine[]
 
   factures Facture[]
+
+  // RDV de lancement/coordination des travaux rattachés à ce devis accepté
+  coordinationAppts Appointment[] @relation("DevisCoordination")
 
   @@index([status])
   @@index([contactId])
@@ -344,8 +350,13 @@ model Appointment {
   facture   Facture? @relation(fields: [factureId], references: [id])
   factureId String?  @unique
 
+  // Devis dont l'acceptation a déclenché ce RDV de lancement des travaux
+  devis   Devis?  @relation("DevisCoordination", fields: [devisId], references: [id])
+  devisId String?
+
   @@index([start])
   @@index([status])
+  @@index([devisId])
 }
 
 // ──────────────────────────────────────────────────────────────

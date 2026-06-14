@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Users, Flame, Clock, Inbox, Plus } from 'lucide-react';
+import { Users, Flame, Clock, Inbox, Plus, Wrench, CalendarClock } from 'lucide-react';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
@@ -18,7 +18,7 @@ export const dynamic = 'force-dynamic';
 
 async function getStats() {
   const now = new Date();
-  const [total, byTier, hotOpen, recent, relancesDues, relances] =
+  const [total, byTier, hotOpen, recent, relancesDues, relances, aPlanifier] =
     await Promise.all([
       prisma.lead.count(),
       prisma.lead.groupBy({ by: ['tier'], _count: { _all: true } }),
@@ -39,6 +39,13 @@ async function getStats() {
         take: 8,
         include: { lead: { include: { contact: true } } },
       }),
+      // Devis acceptés sans RDV de lancement des travaux planifié
+      prisma.devis.findMany({
+        where: { status: 'ACCEPTE', coordinationAppts: { none: {} } },
+        orderBy: { acceptedAt: 'desc' },
+        take: 8,
+        include: { contact: true },
+      }),
     ]);
 
   const tierCount = (t: string) =>
@@ -53,6 +60,7 @@ async function getStats() {
     relancesDues,
     recent,
     relances,
+    aPlanifier,
   };
 }
 
@@ -124,6 +132,44 @@ export default async function DashboardPage() {
           tone="blue"
         />
       </div>
+
+      {stats.aPlanifier.length > 0 && (
+        <section className="overflow-hidden rounded-xl border border-orange-200 bg-white">
+          <div className="flex items-center gap-2 border-b border-orange-200 bg-orange-50/60 px-5 py-3.5">
+            <Wrench className="h-4 w-4 text-orange-600" />
+            <h2 className="text-sm font-semibold text-slate-900">
+              À planifier : lancement des travaux
+            </h2>
+          </div>
+          <ul className="divide-y divide-slate-100">
+            {stats.aPlanifier.map((d) => (
+              <li key={d.id} className="flex items-center gap-3 px-5 py-3">
+                <div className="min-w-0 flex-1">
+                  <Link
+                    href={`/admin/devis/${d.id}`}
+                    className="font-medium text-slate-900 hover:text-orange-600"
+                  >
+                    {d.contact.name}
+                  </Link>
+                  <span className="ml-2 text-sm text-slate-500">
+                    {d.object} · {d.number}
+                  </span>
+                </div>
+                <Link
+                  href={
+                    `/admin/agenda?type=LANCEMENT_TRAVAUX&contactId=${d.contactId}` +
+                    `&devisId=${d.id}${d.leadId ? `&leadId=${d.leadId}` : ''}`
+                  }
+                  className="inline-flex shrink-0 items-center gap-1.5 rounded-md border border-orange-200 bg-orange-50 px-2.5 py-1 text-xs font-medium text-orange-700 hover:bg-orange-100"
+                >
+                  <CalendarClock className="h-3.5 w-3.5" />
+                  Planifier
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       {stats.relances.length > 0 && (
         <section className="overflow-hidden rounded-xl border border-slate-200 bg-white">

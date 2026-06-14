@@ -10,7 +10,12 @@ export const dynamic = 'force-dynamic';
 export default async function NewDevisPage({
   searchParams,
 }: {
-  searchParams: { contactId?: string };
+  searchParams: {
+    contactId?: string;
+    serviceType?: string;
+    leadId?: string;
+    bien?: string;
+  };
 }) {
   await guardAdminPage();
   const contacts = await prisma.contact
@@ -43,6 +48,9 @@ export default async function NewDevisPage({
           <NewDevisForm
             contacts={contacts}
             defaultContactId={searchParams.contactId}
+            defaultServiceType={searchParams.serviceType}
+            defaultBien={searchParams.bien}
+            leadId={searchParams.leadId}
           />
         )}
       </div>

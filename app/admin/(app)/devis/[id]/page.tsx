@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Download, FileCheck2, ReceiptText, Mail } from 'lucide-react';
+import { ArrowLeft, Download, FileCheck2, ReceiptText, Mail, CheckCircle2, CalendarClock, Trash2 } from 'lucide-react';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import {
@@ -11,8 +11,11 @@ import { euros } from '@/lib/crm/company';
 import {
   updateDevisStatus,
   convertDevisToFacture,
+  acceptDevis,
+  deleteDevis,
 } from '@/app/admin/(app)/devis/actions';
 import { sendDevis } from '@/app/admin/(app)/send-actions';
+import { EditDevisForm } from '@/components/admin/edit-devis-form';
 
 export const dynamic = 'force-dynamic';
 
@@ -29,11 +32,22 @@ export default async function DevisDetailPage({
         contact: true,
         lines: { orderBy: { position: 'asc' } },
         factures: true,
+        coordinationAppts: { orderBy: { start: 'asc' } },
       },
     })
     .catch(() => null);
 
   if (!devis) notFound();
+
+  const isAccepted = devis.status === 'ACCEPTE';
+  const coordAppt = devis.coordinationAppts[0] ?? null;
+  const planUrl =
+    `/admin/agenda?type=LANCEMENT_TRAVAUX&contactId=${devis.contactId}` +
+    `&devisId=${devis.id}${devis.leadId ? `&leadId=${devis.leadId}` : ''}`;
+  const validUntilStr = devis.validUntil
+    ? new Date(devis.validUntil).toISOString().slice(0, 10)
+    : '';
+  const canDelete = devis.factures.length === 0;
 
   return (
     <div className="mx-auto max-w-4xl space-y-6">
@@ -109,7 +123,19 @@ export default async function DevisDetailPage({
             </button>
           </form>
 
-          <div className="flex items-end">
+          <div className="flex flex-wrap items-end gap-2">
+            {!isAccepted && (
+              <form action={acceptDevis}>
+                <input type="hidden" name="devisId" value={devis.id} />
+                <button
+                  type="submit"
+                  className="inline-flex h-10 items-center gap-1.5 rounded-lg bg-emerald-600 px-4 text-sm font-semibold text-white hover:bg-emerald-700"
+                >
+                  <CheckCircle2 className="h-4 w-4" />
+                  Marquer accepté
+                </button>
+              </form>
+            )}
             {devis.factures.length > 0 ? (
               <Link
                 href={`/admin/factures/${devis.factures[0].id}`}
@@ -132,6 +158,65 @@ export default async function DevisDetailPage({
             )}
           </div>
         </div>
+
+        {/* Lancement des travaux (après acceptation) — sur lancement manuel */}
+        {isAccepted && (
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3">
+            {coordAppt ? (
+              <p className="text-sm text-slate-600">
+                Lancement des travaux planifié le{' '}
+                <strong>{coordAppt.start.toLocaleString('fr-FR')}</strong>.
+              </p>
+            ) : (
+              <p className="text-sm text-slate-600">
+                Devis accepté
+                {devis.acceptedAt
+                  ? ` le ${devis.acceptedAt.toLocaleDateString('fr-FR')}`
+                  : ''}{' '}
+                — planifiez le lancement/coordination des travaux quand vous le décidez.
+              </p>
+            )}
+            <Link
+              href={coordAppt ? '/admin/agenda' : planUrl}
+              className="inline-flex h-9 shrink-0 items-center gap-1.5 rounded-lg bg-slate-900 px-4 text-sm font-semibold text-white hover:bg-slate-800"
+            >
+              <CalendarClock className="h-4 w-4" />
+              {coordAppt ? "Voir dans l'agenda" : 'Planifier le lancement'}
+            </Link>
+          </div>
+        )}
+      </section>
+
+      {/* Modifier le devis */}
+      <section className="rounded-xl border border-slate-200 bg-white p-5">
+        <div className="mb-3 flex items-center justify-between">
+          <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            Modifier le devis
+          </h2>
+          {canDelete ? (
+            <form action={deleteDevis}>
+              <input type="hidden" name="devisId" value={devis.id} />
+              <button
+                type="submit"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 px-3 py-1.5 text-xs font-medium text-red-600 hover:bg-red-50"
+              >
+                <Trash2 className="h-3.5 w-3.5" />
+                Supprimer
+              </button>
+            </form>
+          ) : (
+            <span className="text-xs text-slate-400">
+              Devis facturé — suppression désactivée
+            </span>
+          )}
+        </div>
+        <EditDevisForm
+          devisId={devis.id}
+          serviceType={devis.serviceType ?? 'FISSURES'}
+          prix={Number(devis.totalHT)}
+          bienConcerne={devis.bienConcerne ?? ''}
+          validUntil={validUntilStr}
+        />
       </section>
 
       {/* Détail */}

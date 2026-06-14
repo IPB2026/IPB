@@ -21,6 +21,14 @@ const nextConfig = {
     serverActions: {
       bodySizeLimit: '8mb',
     },
+    // Embarque les polices TTF du devis PDF dans les lambdas qui les rendent
+    // (route PDF + page devis qui envoie l'e-mail + connecteur MCP). Sans ça,
+    // react-pdf échoue en ENOENT au rendu sur Vercel.
+    outputFileTracingIncludes: {
+      '/admin/devis/[id]/pdf': ['./lib/pdf/fonts/**'],
+      '/admin/devis/[id]': ['./lib/pdf/fonts/**'],
+      '/api/mcp/[secret]/[transport]': ['./lib/pdf/fonts/**'],
+    },
   },
   
   async redirects() {
