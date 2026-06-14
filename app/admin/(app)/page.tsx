@@ -1,5 +1,19 @@
 import Link from 'next/link';
-import { Users, Flame, Clock, Inbox, Plus, Wrench, CalendarClock } from 'lucide-react';
+import {
+  Users,
+  Flame,
+  Clock,
+  Inbox,
+  Plus,
+  Wrench,
+  CalendarClock,
+  Sparkles,
+  ClipboardCheck,
+  FileText,
+  Receipt,
+  ArrowRight,
+} from 'lucide-react';
+import { euros } from '@/lib/crm/company';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
@@ -18,35 +32,69 @@ export const dynamic = 'force-dynamic';
 
 async function getStats() {
   const now = new Date();
-  const [total, byTier, hotOpen, recent, relancesDues, relances, aPlanifier] =
-    await Promise.all([
-      prisma.lead.count(),
-      prisma.lead.groupBy({ by: ['tier'], _count: { _all: true } }),
-      prisma.lead.count({
-        where: { tier: 'HOT', stage: { notIn: ['GAGNE', 'PERDU'] } },
-      }),
-      prisma.lead.findMany({
-        take: 8,
-        orderBy: { createdAt: 'desc' },
-        include: { contact: true },
-      }),
-      prisma.activity.count({
-        where: { type: 'RELANCE', done: false, dueAt: { lte: now } },
-      }),
-      prisma.activity.findMany({
-        where: { type: 'RELANCE', done: false },
-        orderBy: { dueAt: 'asc' },
-        take: 8,
-        include: { lead: { include: { contact: true } } },
-      }),
-      // Devis acceptés sans RDV de lancement des travaux planifié
-      prisma.devis.findMany({
-        where: { status: 'ACCEPTE', coordinationAppts: { none: {} } },
-        orderBy: { acceptedAt: 'desc' },
-        take: 8,
-        include: { contact: true },
-      }),
-    ]);
+  const [
+    total,
+    byTier,
+    hotOpen,
+    recent,
+    relancesDues,
+    relances,
+    aPlanifier,
+    rapportsSoumis,
+    rapportsAValider,
+    facturesImpayees,
+    devisEnAttente,
+  ] = await Promise.all([
+    prisma.lead.count(),
+    prisma.lead.groupBy({ by: ['tier'], _count: { _all: true } }),
+    prisma.lead.count({
+      where: { tier: 'HOT', stage: { notIn: ['GAGNE', 'PERDU'] } },
+    }),
+    prisma.lead.findMany({
+      take: 8,
+      orderBy: { createdAt: 'desc' },
+      include: { contact: true },
+    }),
+    prisma.activity.count({
+      where: { type: 'RELANCE', done: false, dueAt: { lte: now } },
+    }),
+    prisma.activity.findMany({
+      where: { type: 'RELANCE', done: false },
+      orderBy: { dueAt: 'asc' },
+      take: 8,
+      include: { lead: { include: { contact: true } } },
+    }),
+    // Devis acceptés sans RDV de lancement des travaux planifié
+    prisma.devis.findMany({
+      where: { status: 'ACCEPTE', coordinationAppts: { none: {} } },
+      orderBy: { acceptedAt: 'desc' },
+      take: 8,
+      include: { contact: true },
+    }),
+    // Rapports soumis par les diagnostiqueurs → à générer
+    prisma.rapport.findMany({
+      where: { status: 'SOUMIS' },
+      orderBy: { updatedAt: 'desc' },
+      take: 8,
+      include: { contact: true },
+    }),
+    // Rapports générés → à valider et envoyer
+    prisma.rapport.findMany({
+      where: { status: 'GENERE' },
+      orderBy: { updatedAt: 'desc' },
+      take: 8,
+      include: { contact: true },
+    }),
+    // Factures envoyées non payées
+    prisma.facture.findMany({
+      where: { status: 'ENVOYEE' },
+      orderBy: { createdAt: 'asc' },
+      take: 8,
+      include: { contact: true },
+    }),
+    // Devis envoyés en attente d'acceptation
+    prisma.devis.count({ where: { status: 'ENVOYE' } }),
+  ]);
 
   const tierCount = (t: string) =>
     byTier.find((b) => b.tier === t)?._count._all ?? 0;
@@ -61,6 +109,10 @@ async function getStats() {
     recent,
     relances,
     aPlanifier,
+    rapportsSoumis,
+    rapportsAValider,
+    facturesImpayees,
+    devisEnAttente,
   };
 }
 
@@ -132,6 +184,71 @@ export default async function DashboardPage() {
           tone="blue"
         />
       </div>
+
+      {/* Centre de pilotage : à traiter */}
+      <section>
+        <h2 className="mb-3 text-sm font-semibold text-slate-900">À traiter</h2>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+          <ActionTile href="/admin/rapports" count={stats.rapportsSoumis.length} label="Rapports à générer" icon={Sparkles} tone="amber" />
+          <ActionTile href="/admin/rapports" count={stats.rapportsAValider.length} label="Rapports à valider" icon={ClipboardCheck} tone="blue" />
+          <ActionTile href="/admin/devis" count={stats.devisEnAttente} label="Devis en attente" icon={FileText} tone="slate" />
+          <ActionTile href="/admin/factures" count={stats.facturesImpayees.length} label="Factures impayées" icon={Receipt} tone="red" />
+          <ActionTile href="/admin/leads" count={stats.relancesDues} label="Relances dues" icon={Clock} tone="amber" />
+          <ActionTile href="/admin/devis" count={stats.aPlanifier.length} label="Travaux à planifier" icon={Wrench} tone="orange" />
+        </div>
+      </section>
+
+      {/* Rapports à traiter (générés par les diagnostiqueurs) */}
+      {(stats.rapportsSoumis.length > 0 || stats.rapportsAValider.length > 0) && (
+        <section className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+          <div className="border-b border-slate-200 px-5 py-3.5">
+            <h2 className="text-sm font-semibold text-slate-900">Rapports à traiter</h2>
+          </div>
+          <ul className="divide-y divide-slate-100">
+            {stats.rapportsSoumis.map((r) => (
+              <WorkRow
+                key={r.id}
+                href={`/admin/rapports/${r.id}`}
+                name={r.contact.name}
+                detail={`${r.number} — saisie terrain soumise`}
+                action="À générer"
+                tone="bg-amber-50 text-amber-700"
+              />
+            ))}
+            {stats.rapportsAValider.map((r) => (
+              <WorkRow
+                key={r.id}
+                href={`/admin/rapports/${r.id}`}
+                name={r.contact.name}
+                detail={`${r.number} — généré par l'IA`}
+                action="À valider"
+                tone="bg-blue-50 text-blue-700"
+              />
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {/* Factures impayées */}
+      {stats.facturesImpayees.length > 0 && (
+        <section className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+          <div className="border-b border-slate-200 px-5 py-3.5">
+            <h2 className="text-sm font-semibold text-slate-900">Factures impayées</h2>
+          </div>
+          <ul className="divide-y divide-slate-100">
+            {stats.facturesImpayees.map((f) => (
+              <WorkRow
+                key={f.id}
+                href={`/admin/factures/${f.id}`}
+                name={f.contact.name}
+                detail={`${f.number} — ${euros(Number(f.totalHT))}`}
+                action="En attente"
+                tone="bg-red-50 text-red-700"
+              />
+            ))}
+          </ul>
+        </section>
+      )}
 
       {stats.aPlanifier.length > 0 && (
         <section className="overflow-hidden rounded-xl border border-orange-200 bg-white">
@@ -306,5 +423,74 @@ export default async function DashboardPage() {
         )}
       </section>
     </div>
+  );
+}
+
+const TILE_TONE: Record<string, string> = {
+  amber: 'text-amber-700',
+  blue: 'text-blue-700',
+  red: 'text-red-700',
+  orange: 'text-orange-700',
+  slate: 'text-slate-700',
+};
+
+function ActionTile({
+  href,
+  count,
+  label,
+  icon: Icon,
+  tone,
+}: {
+  href: string;
+  count: number;
+  label: string;
+  icon: typeof Clock;
+  tone: keyof typeof TILE_TONE;
+}) {
+  const active = count > 0;
+  return (
+    <Link
+      href={href}
+      className={`flex flex-col gap-1 rounded-xl border bg-white p-3.5 transition-colors ${
+        active
+          ? 'border-slate-200 hover:bg-slate-50'
+          : 'border-slate-100 opacity-60 hover:opacity-100'
+      }`}
+    >
+      <Icon className={`h-[18px] w-[18px] ${active ? TILE_TONE[tone] : 'text-slate-400'}`} />
+      <span className={`text-2xl font-semibold tabular-nums ${active ? 'text-slate-900' : 'text-slate-400'}`}>
+        {count}
+      </span>
+      <span className="text-xs leading-tight text-slate-500">{label}</span>
+    </Link>
+  );
+}
+
+function WorkRow({
+  href,
+  name,
+  detail,
+  action,
+  tone,
+}: {
+  href: string;
+  name: string;
+  detail: string;
+  action: string;
+  tone: string;
+}) {
+  return (
+    <li>
+      <Link href={href} className="group flex items-center gap-3 px-5 py-3 hover:bg-slate-50">
+        <div className="min-w-0 flex-1">
+          <span className="font-medium text-slate-900 group-hover:text-orange-600">{name}</span>
+          <span className="ml-2 text-sm text-slate-500">{detail}</span>
+        </div>
+        <span className={`shrink-0 rounded-md px-2 py-0.5 text-xs font-medium ${tone}`}>
+          {action}
+        </span>
+        <ArrowRight className="h-4 w-4 shrink-0 text-slate-300 group-hover:text-orange-500" />
+      </Link>
+    </li>
   );
 }
