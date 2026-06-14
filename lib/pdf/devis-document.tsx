@@ -117,8 +117,8 @@ const s = StyleSheet.create({
   },
   brandName: { fontSize: 12, fontFamily: TITLE, fontWeight: 700, lineHeight: 1.1 },
   brandSub: { fontSize: 7.5, color: BRAND.slate400, marginTop: 2 },
-  docTitle: { fontSize: 23, fontFamily: TITLE, fontWeight: 700, color: ORANGE, textAlign: 'right' },
-  docMeta: { fontSize: 9, color: BRAND.slate600, textAlign: 'right', marginTop: 4 },
+  docTitle: { fontSize: 23, fontFamily: TITLE, fontWeight: 700, color: ORANGE, textAlign: 'right', lineHeight: 1, marginBottom: 14 },
+  docMeta: { fontSize: 9, color: BRAND.slate600, textAlign: 'right', marginTop: 0 },
   docMetaSm: { fontSize: 8.5, color: BRAND.slate400, textAlign: 'right' },
   rule: { borderBottomWidth: 2, borderBottomColor: ORANGE, marginTop: 10, marginBottom: 14 },
 
