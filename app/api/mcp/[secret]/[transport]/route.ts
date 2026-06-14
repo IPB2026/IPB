@@ -1,4 +1,4 @@
-import { createMcpHandler, withMcpAuth } from 'mcp-handler';
+import { createMcpHandler } from 'mcp-handler';
 import { z } from 'zod';
 import { prisma } from '@/lib/prisma';
 import {
@@ -38,8 +38,12 @@ export const dynamic = 'force-dynamic';
 
 /**
  * Connecteur MCP du CRM IPB pour Cowork — pilote complet de l'activité.
- * Endpoint /api/mcp · Auth bearer MCP_TOKEN.
+ * Le secret (MCP_TOKEN) est dans l'URL : /api/mcp/<MCP_TOKEN>/mcp — le
+ * connecteur Cowork se branche SANS authentification (pas d'OAuth). Le secret
+ * du chemin protège l'accès (URL = capacité ; à garder confidentielle).
  */
+
+const TOKEN = process.env.MCP_TOKEN || '';
 
 const ok = (data: unknown) => ({
   content: [{ type: 'text' as const, text: JSON.stringify(data, null, 2) }],
@@ -411,16 +415,18 @@ const baseHandler = createMcpHandler(
     );
   },
   {},
-  { basePath: '/api', maxDuration: 60 }
+  { basePath: `/api/mcp/${TOKEN}`, maxDuration: 60 }
 );
 
-const handler = withMcpAuth(
-  baseHandler,
-  async (_req, bearerToken) => {
-    if (!process.env.MCP_TOKEN || bearerToken !== process.env.MCP_TOKEN) return undefined;
-    return { token: bearerToken, scopes: ['crm'], clientId: 'cowork', extra: {} };
-  },
-  { required: true }
-);
+// Le secret est dans le chemin : on vérifie le segment [secret] avant de servir.
+async function guarded(
+  req: Request,
+  ctx: { params: { secret: string; transport: string } }
+): Promise<Response> {
+  if (!TOKEN || ctx.params.secret !== TOKEN) {
+    return new Response('Not found', { status: 404 });
+  }
+  return baseHandler(req);
+}
 
-export { handler as GET, handler as POST };
+export { guarded as GET, guarded as POST };
