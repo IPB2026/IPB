@@ -1,4 +1,4 @@
-import path from 'path';
+import { fileURLToPath } from 'url';
 import {
   Document,
   Page,
@@ -17,18 +17,21 @@ import type { ServiceType } from '@prisma/client';
  * le diagnostic et produit le rapport ; l'IPB coordonne et met en forme.
  */
 
+// `new URL(..., import.meta.url)` fait tracer les .ttf par le bundler (inclusion
+// serverless Vercel, comme les polices OG). Repli Helvetica si indisponible.
+const fontPath = (name: string) =>
+  fileURLToPath(new URL(`./fonts/${name}`, import.meta.url));
 let BRAND_FONTS = false;
 try {
-  const dir = path.join(process.cwd(), 'lib/pdf/fonts');
   Font.register({
     family: 'Playfair',
-    fonts: [{ src: path.join(dir, 'PlayfairDisplay-700.ttf'), fontWeight: 700 }],
+    fonts: [{ src: fontPath('PlayfairDisplay-700.ttf'), fontWeight: 700 }],
   });
   Font.register({
     family: 'DMSans',
     fonts: [
-      { src: path.join(dir, 'DMSans-600.ttf'), fontWeight: 400 },
-      { src: path.join(dir, 'DMSans-700.ttf'), fontWeight: 700 },
+      { src: fontPath('DMSans-600.ttf'), fontWeight: 400 },
+      { src: fontPath('DMSans-700.ttf'), fontWeight: 700 },
     ],
   });
   BRAND_FONTS = true;
