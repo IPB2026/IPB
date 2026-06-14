@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Download, Mail } from 'lucide-react';
+import { ArrowLeft, Download, Mail, Trash2 } from 'lucide-react';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import {
@@ -11,8 +11,10 @@ import { euros, COMPANY } from '@/lib/crm/company';
 import {
   updateFactureStatus,
   recordFacturePayment,
+  deleteFacture,
 } from '@/app/admin/(app)/factures/actions';
 import { sendFacture } from '@/app/admin/(app)/send-actions';
+import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 
 export const dynamic = 'force-dynamic';
 
@@ -76,6 +78,18 @@ export default async function FactureDetailPage({
                 <Mail className="h-4 w-4" />
                 Envoyer au client
               </button>
+            </form>
+          )}
+          {facture.status !== 'PAYEE' && (
+            <form action={deleteFacture}>
+              <input type="hidden" name="factureId" value={facture.id} />
+              <ConfirmSubmit
+                message={`Supprimer la facture ${facture.number} ? Cette action est irréversible.`}
+                className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50"
+              >
+                <Trash2 className="h-4 w-4" />
+                Supprimer
+              </ConfirmSubmit>
             </form>
           )}
         </div>

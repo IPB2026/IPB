@@ -23,8 +23,12 @@ function SidebarContent({
 }) {
   return (
     <div className="flex h-full flex-col">
-      {/* Wordmark */}
-      <div className="flex items-center gap-2.5 px-5 py-5">
+      {/* Wordmark — cliquable : retour au tableau de bord */}
+      <Link
+        href={role === 'EXPERT' ? '/admin/rapports' : '/admin'}
+        onClick={onNavigate}
+        className="flex items-center gap-2.5 px-5 py-5 transition-opacity hover:opacity-80"
+      >
         <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-orange-600 text-sm font-bold text-white">
           IPB
         </span>
@@ -34,7 +38,7 @@ function SidebarContent({
           </p>
           <p className="text-[11px] text-slate-400">Institut de Pathologie</p>
         </div>
-      </div>
+      </Link>
 
       <div className="flex-1 overflow-y-auto px-3">
         <AdminNav role={role} onNavigate={onNavigate} />
@@ -87,14 +91,18 @@ export function AdminShell({
 
       {/* Topbar mobile */}
       <header className="sticky top-0 z-20 flex items-center justify-between border-b border-slate-200 bg-white/90 px-4 py-3 backdrop-blur lg:hidden">
-        <div className="flex items-center gap-2">
+        <Link
+          href={role === 'EXPERT' ? '/admin/rapports' : '/admin'}
+          className="flex items-center gap-2"
+          aria-label="Retour au tableau de bord"
+        >
           <span className="flex h-7 w-7 items-center justify-center rounded-md bg-orange-600 text-xs font-bold text-white">
             IPB
           </span>
           <span className="text-sm font-semibold text-slate-900">
             {role === 'EXPERT' ? 'Espace terrain' : 'Back-office'}
           </span>
-        </div>
+        </Link>
         <div className="flex items-center gap-1">
           {role !== 'EXPERT' && (
             <Link

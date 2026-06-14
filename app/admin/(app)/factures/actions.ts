@@ -1,6 +1,7 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
 import { FactureStatus } from '@prisma/client';
@@ -16,6 +17,30 @@ export async function updateFactureStatus(formData: FormData) {
   });
   revalidatePath(`/admin/factures/${id}`);
   revalidatePath('/admin/factures');
+}
+
+/**
+ * Supprime une facture. Garde-fou comptable : une facture PAYÉE ne se supprime
+ * pas (on l'annule via le statut). Détache un éventuel RDV lié ; les lignes
+ * sont supprimées en cascade.
+ */
+export async function deleteFacture(formData: FormData) {
+  await requireAdmin();
+  const id = String(formData.get('factureId') ?? '');
+  if (!id) return;
+  const f = await prisma.facture.findUnique({
+    where: { id },
+    select: { status: true },
+  });
+  if (!f || f.status === 'PAYEE') return;
+  await prisma.appointment.updateMany({
+    where: { factureId: id },
+    data: { factureId: null },
+  });
+  await prisma.facture.delete({ where: { id } });
+  revalidatePath('/admin/factures');
+  revalidatePath('/admin');
+  redirect('/admin/factures');
 }
 
 /**
