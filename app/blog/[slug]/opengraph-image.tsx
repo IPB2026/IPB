@@ -1,3 +1,5 @@
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
 import { ImageResponse } from 'next/og';
 import { blogPosts } from '@/app/data/blog';
 
@@ -7,6 +9,7 @@ import { blogPosts } from '@/app/data/blog';
 // Runtime Node (et non edge) : le fichier blog.ts est volumineux et dépasserait
 // la limite de bundle edge.
 
+export const runtime = 'nodejs';
 export const alt = 'IPB · Institut de Pathologie du Bâtiment';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
@@ -24,12 +27,32 @@ const ORANGE = '#C8601F';
 const CREAM = '#F3EFE8';
 const MUTED = '#9A938A';
 
-// Polices statiques embarquées (TTF — Satori ne supporte pas le woff2).
+// Polices (TTF — Satori ne supporte pas le woff2).
 // Playfair Display = titres serif signature ; DM Sans = UI/marque.
-// Référencées via import.meta.url pour être bundlées par Next.js.
-const playfair700 = fetch(new URL('./_fonts/PlayfairDisplay-700.ttf', import.meta.url)).then((r) => r.arrayBuffer());
-const dmSans600 = fetch(new URL('./_fonts/DMSans-600.ttf', import.meta.url)).then((r) => r.arrayBuffer());
-const dmSans700 = fetch(new URL('./_fonts/DMSans-700.ttf', import.meta.url)).then((r) => r.arrayBuffer());
+// Chargement résilient : fichiers locaux d'abord (runtime Node), repli CDN
+// fontsource si non disponibles dans le bundle, puis repli police par défaut.
+// On évite ainsi le `fetch(new URL(...))` qui produisait une URL relative
+// impossible à résoudre côté serveur (cause des erreurs OG en prod).
+const FONTS = [
+  { name: 'Playfair Display', weight: 700 as const, file: 'PlayfairDisplay-700.ttf', cdn: 'https://cdn.jsdelivr.net/fontsource/fonts/playfair-display@latest/latin-700-normal.ttf' },
+  { name: 'DM Sans', weight: 600 as const, file: 'DMSans-600.ttf', cdn: 'https://cdn.jsdelivr.net/fontsource/fonts/dm-sans@latest/latin-600-normal.ttf' },
+  { name: 'DM Sans', weight: 700 as const, file: 'DMSans-700.ttf', cdn: 'https://cdn.jsdelivr.net/fontsource/fonts/dm-sans@latest/latin-700-normal.ttf' },
+];
+
+async function loadFont(file: string, cdn: string): Promise<ArrayBuffer | null> {
+  try {
+    const buf = await readFile(join(process.cwd(), 'app/blog/[slug]/_fonts', file));
+    return buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength) as ArrayBuffer;
+  } catch {
+    try {
+      const res = await fetch(cdn);
+      if (res.ok) return await res.arrayBuffer();
+    } catch {
+      /* repli silencieux sur la police par défaut */
+    }
+    return null;
+  }
+}
 
 export default async function Image({ params }: { params: { slug: string } }) {
   const post = blogPosts[params.slug];
@@ -37,7 +60,9 @@ export default async function Image({ params }: { params: { slug: string } }) {
   const title = post?.title ?? 'Institut de Pathologie du Bâtiment';
   const category = post ? (CATEGORY_LABELS[post.category] ?? 'Expertise') : 'Expertise';
 
-  const [playfair, dm600, dm700] = await Promise.all([playfair700, dmSans600, dmSans700]);
+  const loaded = await Promise.all(FONTS.map((f) => loadFont(f.file, f.cdn)));
+  const fonts = FONTS.map((f, i) => ({ name: f.name, data: loaded[i], weight: f.weight, style: 'normal' as const }))
+    .filter((f): f is { name: string; data: ArrayBuffer; weight: 600 | 700; style: 'normal' } => f.data !== null);
 
   // Taille de titre adaptative selon la longueur (évite les débordements)
   const len = title.length;
@@ -124,11 +149,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
     ),
     {
       ...size,
-      fonts: [
-        { name: 'Playfair Display', data: playfair, weight: 700, style: 'normal' },
-        { name: 'DM Sans', data: dm600, weight: 600, style: 'normal' },
-        { name: 'DM Sans', data: dm700, weight: 700, style: 'normal' },
-      ],
+      ...(fonts.length ? { fonts } : {}),
     },
   );
 }
