@@ -102,33 +102,37 @@ export default async function LeadDetailPage({
             </p>
           </div>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <TierBadge tier={lead.tier} />
-          <StageBadge stage={lead.stage} />
-          {c.phone && (
-            <a
-              href={`tel:${c.phone}`}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
+        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+          <div className="flex flex-wrap items-center gap-2">
+            <TierBadge tier={lead.tier} />
+            <StageBadge stage={lead.stage} />
+          </div>
+          <div className="flex gap-2">
+            {c.phone && (
+              <a
+                href={`tel:${c.phone}`}
+                className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50 sm:flex-none sm:py-2"
+              >
+                <Phone className="h-4 w-4" />
+                Appeler
+              </a>
+            )}
+            <Link
+              href={
+                `/admin/devis/nouveau?contactId=${lead.contactId}` +
+                `&serviceType=${lead.service}&leadId=${lead.id}` +
+                `&bien=${encodeURIComponent(
+                  [c.address, [c.postalCode, c.city].filter(Boolean).join(' ')]
+                    .filter(Boolean)
+                    .join(', ')
+                )}`
+              }
+              className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg bg-orange-600 px-3 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-orange-700 sm:flex-none sm:py-2"
             >
-              <Phone className="h-4 w-4" />
-              Appeler
-            </a>
-          )}
-          <Link
-            href={
-              `/admin/devis/nouveau?contactId=${lead.contactId}` +
-              `&serviceType=${lead.service}&leadId=${lead.id}` +
-              `&bien=${encodeURIComponent(
-                [c.address, [c.postalCode, c.city].filter(Boolean).join(' ')]
-                  .filter(Boolean)
-                  .join(', ')
-              )}`
-            }
-            className="inline-flex items-center gap-1.5 rounded-lg bg-orange-600 px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-orange-700"
-          >
-            <FilePlus2 className="h-4 w-4" />
-            Créer un devis
-          </Link>
+              <FilePlus2 className="h-4 w-4" />
+              Créer un devis
+            </Link>
+          </div>
         </div>
       </div>
 

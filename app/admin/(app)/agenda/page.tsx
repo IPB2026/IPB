@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { CalendarClock, ReceiptText } from 'lucide-react';
+import { CalendarClock, ReceiptText, Plus } from 'lucide-react';
 import type { AppointmentStatus, AppointmentType } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
@@ -109,11 +109,16 @@ export default async function AgendaPage({
         </p>
       )}
 
-      {/* Nouveau RDV */}
-      <section className="rounded-xl border border-slate-200 bg-white p-5">
-        <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-400">
+      {/* Nouveau RDV — repliable (ouvert si on arrive avec un pré-remplissage) */}
+      <details
+        open={Boolean(prefill.contactId)}
+        className="group overflow-hidden rounded-xl border border-slate-200 bg-white [&_summary::-webkit-details-marker]:hidden"
+      >
+        <summary className="flex cursor-pointer list-none items-center justify-between px-5 py-3.5 text-sm font-semibold text-slate-900">
           Nouveau rendez-vous
-        </h2>
+          <Plus className="h-4 w-4 text-slate-400 transition-transform group-open:rotate-45" />
+        </summary>
+        <div className="border-t border-slate-100 p-5">
         {contacts.length === 0 ? (
           <p className="text-sm text-slate-500">
             Créez d'abord un prospect pour planifier un RDV.
@@ -198,7 +203,8 @@ export default async function AgendaPage({
             </div>
           </form>
         )}
-      </section>
+        </div>
+      </details>
 
       {/* Liste */}
       {dbError || appts.length === 0 ? (
@@ -219,65 +225,74 @@ export default async function AgendaPage({
               <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
                 <ul className="divide-y divide-slate-100">
                   {items.map((a) => (
-                    <li key={a.id} className="flex flex-wrap items-center gap-3 px-5 py-3">
-                      <span className="w-12 shrink-0 text-sm font-semibold tabular-nums text-slate-900">
-                        {a.start.toLocaleTimeString('fr-FR', {
-                          hour: '2-digit',
-                          minute: '2-digit',
-                        })}
-                      </span>
-                      <Avatar name={a.contact.name} size="sm" />
-                      <div className="min-w-0 flex-1">
-                        <p className="font-medium text-slate-900">{a.title}</p>
-                        <p className="text-xs text-slate-400">
-                          {a.contact.name}
-                          {a.location ? ` · ${a.location}` : ''} ·{' '}
-                          {TYPE_LABEL[a.type]}
-                        </p>
+                    <li
+                      key={a.id}
+                      className="flex flex-col gap-3 px-4 py-3.5 sm:flex-row sm:items-center sm:gap-3 sm:px-5"
+                    >
+                      <div className="flex min-w-0 flex-1 items-center gap-3">
+                        <span className="w-11 shrink-0 text-sm font-semibold tabular-nums text-slate-900">
+                          {a.start.toLocaleTimeString('fr-FR', {
+                            hour: '2-digit',
+                            minute: '2-digit',
+                          })}
+                        </span>
+                        <Avatar name={a.contact.name} size="sm" />
+                        <div className="min-w-0 flex-1">
+                          <p className="truncate font-medium text-slate-900">{a.title}</p>
+                          <p className="truncate text-xs text-slate-400">
+                            {a.contact.name}
+                            {a.location ? ` · ${a.location}` : ''}
+                          </p>
+                        </div>
+                        <span
+                          className={`inline-flex shrink-0 items-center rounded-md px-2 py-0.5 text-xs font-medium ring-1 ring-inset ${STATUS_PILL[a.status]}`}
+                        >
+                          {STATUS_LABEL[a.status]}
+                        </span>
                       </div>
-                      <span
-                        className={`inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium ring-1 ring-inset ${STATUS_PILL[a.status]}`}
-                      >
-                        {STATUS_LABEL[a.status]}
-                      </span>
-                      <form action={updateAppointmentStatus} className="shrink-0">
-                        <input type="hidden" name="appointmentId" value={a.id} />
-                        <select
-                          name="status"
-                          defaultValue={a.status}
-                          className="h-8 rounded-md border border-slate-300 px-2 text-xs outline-none focus:border-orange-500"
+                      <div className="flex flex-wrap items-center gap-2 sm:shrink-0">
+                        <form
+                          action={updateAppointmentStatus}
+                          className="flex items-center gap-1"
                         >
-                          {Object.entries(STATUS_LABEL).map(([v, l]) => (
-                            <option key={v} value={v}>
-                              {l}
-                            </option>
-                          ))}
-                        </select>
-                        <button
-                          type="submit"
-                          className="ml-1 rounded-md border border-slate-300 px-2 py-1 text-xs font-medium text-slate-600 hover:bg-slate-50"
-                        >
-                          OK
-                        </button>
-                      </form>
-                      {a.factureId ? (
-                        <Link
-                          href={`/admin/factures/${a.factureId}`}
-                          className="inline-flex shrink-0 items-center gap-1 rounded-md border border-emerald-200 bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-700 hover:bg-emerald-100"
-                        >
-                          <ReceiptText className="h-3.5 w-3.5" /> Facture
-                        </Link>
-                      ) : (
-                        <form action={generateInvoiceFromAppointment} className="shrink-0">
                           <input type="hidden" name="appointmentId" value={a.id} />
+                          <select
+                            name="status"
+                            defaultValue={a.status}
+                            className="h-9 rounded-lg border border-slate-300 px-2 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                          >
+                            {Object.entries(STATUS_LABEL).map(([v, l]) => (
+                              <option key={v} value={v}>
+                                {l}
+                              </option>
+                            ))}
+                          </select>
                           <button
                             type="submit"
-                            className="rounded-md border border-orange-200 bg-orange-50 px-2 py-1 text-xs font-medium text-orange-700 hover:bg-orange-100"
+                            className="h-9 rounded-lg border border-slate-300 px-3 text-sm font-medium text-slate-600 hover:bg-slate-50"
                           >
-                            Générer la facture
+                            OK
                           </button>
                         </form>
-                      )}
+                        {a.factureId ? (
+                          <Link
+                            href={`/admin/factures/${a.factureId}`}
+                            className="inline-flex h-9 items-center gap-1 rounded-lg border border-emerald-200 bg-emerald-50 px-3 text-sm font-medium text-emerald-700 hover:bg-emerald-100"
+                          >
+                            <ReceiptText className="h-4 w-4" /> Facture
+                          </Link>
+                        ) : (
+                          <form action={generateInvoiceFromAppointment}>
+                            <input type="hidden" name="appointmentId" value={a.id} />
+                            <button
+                              type="submit"
+                              className="h-9 rounded-lg border border-orange-200 bg-orange-50 px-3 text-sm font-medium text-orange-700 hover:bg-orange-100"
+                            >
+                              Facturer
+                            </button>
+                          </form>
+                        )}
+                      </div>
                     </li>
                   ))}
                 </ul>

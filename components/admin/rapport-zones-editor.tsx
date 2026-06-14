@@ -76,7 +76,7 @@ export function RapportZonesEditor({
             placeholder="Observations brutes constatées sur place…"
             className={field + ' mt-2'}
           />
-          <div className="mt-2 grid grid-cols-2 gap-2">
+          <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
             <input
               value={z.mesure}
               onChange={(e) => update(i, { mesure: e.target.value })}

@@ -20,7 +20,7 @@ export interface PhotoVM {
 
 const GRAVITES = ['', 'À TRAITER', 'IMPORTANT', 'À SURVEILLER', 'INFO'];
 const field =
-  'w-full rounded-md border border-slate-300 px-2 py-1.5 text-xs outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-200';
+  'w-full rounded-md border border-slate-300 px-2.5 py-2 text-sm outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-200 sm:py-1.5 sm:text-xs';
 
 export function RapportPhotos({
   rapportId,
@@ -156,7 +156,7 @@ export function RapportPhotos({
                     placeholder="Légende (ex. Fissure en escalier, angle SE)"
                     className={field}
                   />
-                  <div className="flex gap-2">
+                  <div className="flex flex-col gap-2 sm:flex-row">
                     <select
                       name="zoneRef"
                       defaultValue={p.zoneRef ?? ''}

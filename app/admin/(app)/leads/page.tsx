@@ -83,33 +83,37 @@ export default async function LeadsPage({
       />
 
       {/* Toolbar filtres */}
-      <form className="flex flex-wrap items-end gap-2.5 rounded-xl border border-slate-200 bg-white p-3">
-        <div className="relative min-w-[200px] flex-1">
+      <form className="flex flex-col gap-2.5 rounded-xl border border-slate-200 bg-white p-3 sm:flex-row sm:flex-wrap sm:items-end">
+        <div className="relative sm:min-w-[200px] sm:flex-1">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
           <input
             name="q"
             defaultValue={searchParams.q ?? ''}
             placeholder="Rechercher nom, téléphone, ville…"
-            className="h-10 w-full rounded-lg border border-slate-300 pl-9 pr-3 text-sm outline-none transition-colors focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+            className="h-10 w-full rounded-lg border border-slate-300 pl-9 pr-3 text-base outline-none transition-colors focus:border-orange-500 focus:ring-2 focus:ring-orange-200 sm:text-sm"
           />
         </div>
-        <FilterSelect name="tier" value={searchParams.tier} placeholder="Tier" options={Object.entries(TIER_LABEL)} />
-        <FilterSelect name="source" value={searchParams.source} placeholder="Source" options={Object.entries(SOURCE_LABEL)} />
-        <FilterSelect name="stage" value={searchParams.stage} placeholder="Étape" options={Object.entries(STAGE_LABEL)} />
-        <button
-          type="submit"
-          className="h-10 rounded-lg bg-slate-900 px-4 text-sm font-semibold text-white transition-colors hover:bg-slate-800"
-        >
-          Filtrer
-        </button>
-        {hasFilters && (
-          <Link
-            href="/admin/leads"
-            className="h-10 px-2 text-sm leading-10 text-slate-500 transition-colors hover:text-slate-800"
+        <div className="grid grid-cols-3 gap-2 sm:contents">
+          <FilterSelect name="tier" value={searchParams.tier} placeholder="Tier" options={Object.entries(TIER_LABEL)} />
+          <FilterSelect name="source" value={searchParams.source} placeholder="Source" options={Object.entries(SOURCE_LABEL)} />
+          <FilterSelect name="stage" value={searchParams.stage} placeholder="Étape" options={Object.entries(STAGE_LABEL)} />
+        </div>
+        <div className="flex items-center gap-2">
+          <button
+            type="submit"
+            className="h-10 flex-1 rounded-lg bg-slate-900 px-4 text-sm font-semibold text-white transition-colors hover:bg-slate-800 sm:flex-none"
           >
-            Réinitialiser
-          </Link>
-        )}
+            Filtrer
+          </button>
+          {hasFilters && (
+            <Link
+              href="/admin/leads"
+              className="flex h-10 items-center px-2 text-sm text-slate-500 transition-colors hover:text-slate-800"
+            >
+              Réinitialiser
+            </Link>
+          )}
+        </div>
       </form>
 
       {dbError ? (
@@ -234,7 +238,7 @@ function FilterSelect({
     <select
       name={name}
       defaultValue={value ?? ''}
-      className="h-10 rounded-lg border border-slate-300 bg-white px-3 text-sm text-slate-700 outline-none transition-colors focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+      className="h-10 w-full rounded-lg border border-slate-300 bg-white px-2 text-sm text-slate-700 outline-none transition-colors focus:border-orange-500 focus:ring-2 focus:ring-orange-200 sm:w-auto sm:px-3"
     >
       <option value="">{placeholder} : tous</option>
       {options.map(([val, lbl]) => (
