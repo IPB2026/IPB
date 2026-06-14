@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
   LayoutDashboard,
+  BarChart3,
   Users,
   UserCheck,
   CalendarClock,
@@ -17,6 +18,7 @@ type Role = 'ADMIN' | 'EXPERT';
 
 const adminItems = [
   { href: '/admin', label: 'Tableau de bord', icon: LayoutDashboard },
+  { href: '/admin/pilotage', label: 'Pilotage', icon: BarChart3 },
   { href: '/admin/leads', label: 'Prospects', icon: Users },
   { href: '/admin/clients', label: 'Clients', icon: UserCheck },
   { href: '/admin/agenda', label: 'Agenda', icon: CalendarClock },
