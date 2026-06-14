@@ -98,11 +98,20 @@ export async function buildFacturePdf(id: string): Promise<Buffer | null> {
 export async function buildRapportPdf(id: string): Promise<Buffer | null> {
   const rapport = await prisma.rapport.findUnique({
     where: { id },
-    include: { contact: true },
+    include: {
+      contact: true,
+      photos: { orderBy: { position: 'asc' } },
+      author: { select: { email: true } },
+    },
   });
   if (!rapport) return null;
   const content = rapport.aiContent as unknown as ReportContent | { error: string } | null;
   if (!content || 'error' in content) return null;
+
+  // En-tête : société réalisatrice (Bâti Halli / Toi mon Toit), déduite du compte
+  // EXPERT auteur du rapport ; IPB reste mentionnée en coordination.
+  const diag = diagnosticienFor({ assignedEmail: rapport.author?.email ?? null });
+
   const el = createElement(RapportDocument, {
     data: {
       number: rapport.number,
@@ -113,7 +122,14 @@ export async function buildRapportPdf(id: string): Promise<Buffer | null> {
       createdAt: rapport.createdAt,
       status: rapport.status,
       contact: rapport.contact,
+      diagnosticien: diag,
       content,
+      photos: rapport.photos.map((p) => ({
+        url: p.url,
+        caption: p.caption,
+        zoneRef: p.zoneRef,
+        gravite: p.gravite,
+      })),
     },
   }) as unknown as RenderEl;
   return safeRender(el);

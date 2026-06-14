@@ -365,7 +365,14 @@ export default async function RapportDetailPage({
                   <p className="font-medium text-slate-900">
                     {i + 1}. {z.titre}
                   </p>
-                  <p className="mt-1 text-sm text-slate-600">{z.analyse}</p>
+                  <p className="mt-1 text-sm text-slate-600">{z.description}</p>
+                  {z.analyseCausale?.length ? (
+                    <ul className="mt-1 space-y-0.5 text-xs text-slate-500">
+                      {z.analyseCausale.map((m, j) => (
+                        <li key={j}>• {m}</li>
+                      ))}
+                    </ul>
+                  ) : null}
                   {z.refsTechniques?.length ? (
                     <ul className="mt-2 rounded-lg bg-slate-50 p-2 text-xs text-slate-500">
                       {z.refsTechniques.map((r, j) => (
@@ -388,6 +395,9 @@ export default async function RapportDetailPage({
                   <tr key={i}>
                     <td className="py-2 text-slate-700">{e.designation}</td>
                     <td className="py-2 text-center text-slate-500">{e.unite}</td>
+                    <td className="py-2 text-center text-xs text-slate-400">
+                      TVA {e.tva} %
+                    </td>
                     <td className="py-2 text-right font-medium tabular-nums">
                       {euros(e.montantHT)}
                     </td>
@@ -396,9 +406,15 @@ export default async function RapportDetailPage({
               </tbody>
             </table>
             <p className="mt-2 text-right text-sm font-bold text-orange-600">
-              Total {euros(content.budgetHT)} HT · {euros(Math.round(content.budgetHT * 1.1))} TTC (TVA 10 %)
+              Total estimé {euros(content.budgetHT)} HT
             </p>
           </Card>
+
+          <p className="rounded-lg bg-blue-50 px-4 py-2.5 text-xs text-blue-800">
+            Aperçu synthétique. Le <strong>rapport complet</strong> (contexte de
+            localisation, limites &amp; périmètre, matrice de criticité, orientations,
+            annexe photo) est dans le <strong>PDF</strong> — relisez-le avant envoi au client.
+          </p>
 
           {/* Statut manuel — ADMIN uniquement (override) */}
           {isAdmin && (
