@@ -129,6 +129,7 @@ export default async function ClientFichePage({
   });
 
   const lead = c.leads[0] ?? null;
+  const next = nextStep(dossier, c.id, lead?.id);
   const diagnostiqueur = lead?.assignedTo?.name || lead?.assignedTo?.email || '—';
   const adresse =
     [c.address, [c.postalCode, c.city].filter(Boolean).join(' ')]
@@ -231,27 +232,21 @@ export default async function ClientFichePage({
         </ol>
       </Card>
 
-      {/* Suivi client : rapport remis, décision travaux en attente */}
-      {dossier.enSuiviClient && (
-        <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-orange-200 bg-orange-50/60 p-5">
-          <div className="max-w-xl">
-            <p className="text-sm font-semibold text-slate-900">
-              Suivi client — quelle suite donner ?
-            </p>
-            <p className="mt-1 text-sm text-slate-600">
-              Le rapport a été remis. Faites le point avec le client : s&apos;il
-              souhaite engager les travaux de reprise, émettez le 2ᵉ devis
-              d&apos;accompagnement travaux.
-            </p>
-          </div>
+      {/* Prochaine étape — fil conducteur du dossier */}
+      {next && (
+        <div className="rounded-xl border border-orange-200 bg-orange-50/70 p-5">
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-orange-700">
+            Prochaine étape
+          </p>
+          <p className="mt-1 text-base font-semibold text-slate-900">
+            {next.title}
+          </p>
+          <p className="mt-0.5 text-sm text-slate-600">{next.desc}</p>
           <Link
-            href={`/admin/devis/nouveau-travaux?contactId=${c.id}${
-              lead?.id ? `&leadId=${lead.id}` : ''
-            }`}
-            className="inline-flex h-10 shrink-0 items-center gap-1.5 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white hover:bg-orange-700"
+            href={next.href}
+            className="mt-3 inline-flex h-10 items-center gap-1.5 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white hover:bg-orange-700"
           >
-            <FileText className="h-4 w-4" />
-            Créer le devis travaux
+            {next.label} →
           </Link>
         </div>
       )}
@@ -373,6 +368,87 @@ export default async function ClientFichePage({
       </Card>
     </div>
   );
+}
+
+/**
+ * Fil conducteur : déduit l'action à mener maintenant selon l'étape courante du
+ * dossier (devis → accord → visite → facture → paiement → rapport → travaux).
+ */
+function nextStep(
+  dossier: ReturnType<typeof computeDossier>,
+  contactId: string,
+  leadId?: string
+): { title: string; desc: string; label: string; href: string } | null {
+  const cur = dossier.steps.find((s) => s.current);
+  if (!cur) return null;
+  const l = leadId ? `&leadId=${leadId}` : '';
+  switch (cur.key) {
+    case 'devis':
+      return {
+        title: 'Créer et envoyer le devis',
+        desc: 'Établissez le devis de diagnostic pour ce dossier.',
+        label: 'Créer un devis',
+        href: `/admin/devis/nouveau?contactId=${contactId}${l}`,
+      };
+    case 'client':
+      return {
+        title: "En attente d'acceptation du devis",
+        desc: "Le devis a été envoyé. Marquez-le accepté dès réception de l'accord.",
+        label: 'Voir les devis',
+        href: '/admin/devis',
+      };
+    case 'rdv':
+      return {
+        title: 'Planifier la visite de diagnostic',
+        desc: 'Devis accepté : proposez un créneau (le client reçoit l’invitation).',
+        label: 'Planifier la visite',
+        href: `/admin/agenda?contactId=${contactId}${l}`,
+      };
+    case 'visite':
+      return {
+        title: 'Réaliser la visite',
+        desc: 'Le RDV est planifié. Marquez la visite « réalisée » une fois faite.',
+        label: "Ouvrir l'agenda",
+        href: '/admin/agenda',
+      };
+    case 'facture':
+      return {
+        title: 'Émettre la facture',
+        desc: 'La visite est faite : générez la facture depuis le RDV.',
+        label: "Ouvrir l'agenda",
+        href: '/admin/agenda',
+      };
+    case 'paiement':
+      return {
+        title: 'Encaisser le paiement',
+        desc: 'La facture est envoyée. Enregistrez le règlement à réception.',
+        label: 'Voir les factures',
+        href: '/admin/factures',
+      };
+    case 'rapport':
+      return {
+        title: 'Rédiger et envoyer le rapport',
+        desc: 'Paiement reçu : le rapport est à remettre sous 3 à 5 jours ouvrés.',
+        label: 'Ouvrir les rapports',
+        href: '/admin/rapports',
+      };
+    case 'suivi':
+      return {
+        title: 'Suivi client — décision travaux',
+        desc: "Le rapport est remis. S'il veut engager les travaux, émettez le devis d'accompagnement.",
+        label: 'Créer le devis travaux',
+        href: `/admin/devis/nouveau-travaux?contactId=${contactId}${l}`,
+      };
+    case 'travaux':
+      return {
+        title: 'Planifier le lancement des travaux',
+        desc: 'Le devis travaux est en place : planifiez le lancement.',
+        label: 'Planifier',
+        href: `/admin/agenda?type=LANCEMENT_TRAVAUX&contactId=${contactId}`,
+      };
+    default:
+      return null;
+  }
 }
 
 function Row({ label, value }: { label: string; value?: string | null }) {

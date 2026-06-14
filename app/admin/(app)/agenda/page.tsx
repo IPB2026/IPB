@@ -331,6 +331,21 @@ export default async function AgendaPage({
                             {a.contact.name}
                             {a.location ? ` · ${a.location}` : ''}
                           </p>
+                          {isCalendarConfigured() && (
+                            <p className="mt-0.5 flex flex-wrap items-center gap-x-2 text-[11px] font-medium">
+                              {a.googleEventId ? (
+                                <span className="text-emerald-600">✓ Dans l&apos;agenda Google</span>
+                              ) : (
+                                <span className="text-amber-600">Non synchronisé</span>
+                              )}
+                              {a.googleEventId &&
+                                (a.contact.email ? (
+                                  <span className="text-emerald-600">· ✓ Invitation envoyée</span>
+                                ) : (
+                                  <span className="text-slate-400">· client sans e-mail</span>
+                                ))}
+                            </p>
+                          )}
                         </div>
                         <span
                           className={`inline-flex shrink-0 items-center rounded-md px-2 py-0.5 text-xs font-medium ring-1 ring-inset ${STATUS_PILL[a.status]}`}
