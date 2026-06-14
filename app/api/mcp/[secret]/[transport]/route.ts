@@ -62,6 +62,7 @@ const APPT_OBJECT: Record<AppointmentType, string> = {
   DIAGNOSTIC_HUMIDITE: 'Diagnostic humidité et infiltrations',
   EXPERTISE_ACHAT: 'Expertise structurelle avant achat',
   MUR_PORTEUR: 'Étude de faisabilité ouverture de mur porteur',
+  LANCEMENT_TRAVAUX: 'Lancement / coordination des travaux',
   AUTRE: 'Intervention IPB',
 };
 const DIAGNOSTIC_PRICE = 400;

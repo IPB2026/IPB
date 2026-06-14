@@ -20,6 +20,7 @@ const TYPE_LABEL: Record<AppointmentType, string> = {
   DIAGNOSTIC_HUMIDITE: 'Diagnostic humidité',
   EXPERTISE_ACHAT: 'Expertise achat',
   MUR_PORTEUR: 'Mur porteur',
+  LANCEMENT_TRAVAUX: 'Lancement travaux',
   AUTRE: 'Autre',
 };
 
@@ -39,8 +40,26 @@ const STATUS_PILL: Record<AppointmentStatus, string> = {
 const field =
   'h-10 w-full rounded-lg border border-slate-300 px-3 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200';
 
-export default async function AgendaPage() {
+export default async function AgendaPage({
+  searchParams,
+}: {
+  searchParams: {
+    contactId?: string;
+    type?: string;
+    leadId?: string;
+    devisId?: string;
+  };
+}) {
   await guardAdminPage();
+  const prefill = {
+    contactId: searchParams.contactId ?? '',
+    type:
+      searchParams.type && searchParams.type in TYPE_LABEL
+        ? (searchParams.type as AppointmentType)
+        : 'DIAGNOSTIC_FISSURES',
+    leadId: searchParams.leadId ?? '',
+    devisId: searchParams.devisId ?? '',
+  };
   let appts: Awaited<ReturnType<typeof loadAppts>> = [];
   let contacts: { id: string; name: string; city: string | null }[] = [];
   let dbError = false;
@@ -95,11 +114,22 @@ export default async function AgendaPage() {
           </p>
         ) : (
           <form action={createAppointment} className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {prefill.leadId && (
+              <input type="hidden" name="leadId" value={prefill.leadId} />
+            )}
+            {prefill.devisId && (
+              <input type="hidden" name="devisId" value={prefill.devisId} />
+            )}
             <div>
               <label className="mb-1 block text-sm font-medium text-slate-700">
                 Client
               </label>
-              <select name="contactId" required defaultValue="" className={field}>
+              <select
+                name="contactId"
+                required
+                defaultValue={prefill.contactId}
+                className={field}
+              >
                 <option value="" disabled>
                   Choisir un prospect…
                 </option>
@@ -115,7 +145,7 @@ export default async function AgendaPage() {
               <label className="mb-1 block text-sm font-medium text-slate-700">
                 Type
               </label>
-              <select name="type" defaultValue="DIAGNOSTIC_FISSURES" className={field}>
+              <select name="type" defaultValue={prefill.type} className={field}>
                 {Object.entries(TYPE_LABEL).map(([v, l]) => (
                   <option key={v} value={v}>
                     {l}

@@ -98,6 +98,46 @@ export async function updateDevisStatus(formData: FormData) {
   revalidatePath('/admin/devis');
 }
 
+/**
+ * Marque un devis comme ACCEPTÉ — vrai événement métier (≠ simple statut).
+ * Horodate l'acceptation (déclenche le bloc « lancement travaux » du dashboard)
+ * et fait gagner le lead lié. N'envoie rien au client.
+ */
+export async function acceptDevis(formData: FormData) {
+  await requireUser();
+  const id = num(formData.get('devisId'));
+  if (!id) return;
+
+  const devis = await prisma.devis.findUnique({
+    where: { id },
+    select: { contactId: true, leadId: true, number: true, acceptedAt: true },
+  });
+  if (!devis) return;
+
+  await prisma.devis.update({
+    where: { id },
+    data: { status: 'ACCEPTE', acceptedAt: devis.acceptedAt ?? new Date() },
+  });
+  await prisma.activity.create({
+    data: {
+      type: 'SYSTEME',
+      contactId: devis.contactId,
+      leadId: devis.leadId,
+      content: `Devis ${devis.number} accepté — lancement des travaux à planifier`,
+    },
+  });
+  if (devis.leadId) {
+    await prisma.lead.updateMany({
+      where: { id: devis.leadId, stage: { notIn: ['PERDU', 'GAGNE'] } },
+      data: { stage: 'GAGNE' },
+    });
+  }
+
+  revalidatePath(`/admin/devis/${id}`);
+  revalidatePath('/admin/devis');
+  revalidatePath('/admin');
+}
+
 export async function convertDevisToFacture(formData: FormData) {
   await requireUser();
   const id = num(formData.get('devisId'));
@@ -137,10 +177,18 @@ export async function convertDevisToFacture(formData: FormData) {
 
   await prisma.devis.update({
     where: { id },
-    data: { status: 'ACCEPTE' },
+    data: { status: 'ACCEPTE', acceptedAt: devis.acceptedAt ?? new Date() },
   });
+  // La conversion vaut acceptation : on fait gagner le lead lié.
+  if (devis.leadId) {
+    await prisma.lead.updateMany({
+      where: { id: devis.leadId, stage: { notIn: ['PERDU', 'GAGNE'] } },
+      data: { stage: 'GAGNE' },
+    });
+  }
 
   revalidatePath('/admin/factures');
   revalidatePath(`/admin/devis/${id}`);
+  revalidatePath('/admin');
   redirect(`/admin/factures/${facture.id}`);
 }

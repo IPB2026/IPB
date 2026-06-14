@@ -24,6 +24,7 @@ const TYPE_OBJECT: Record<AppointmentType, string> = {
   DIAGNOSTIC_HUMIDITE: 'Diagnostic humidité et infiltrations',
   EXPERTISE_ACHAT: 'Expertise structurelle avant achat',
   MUR_PORTEUR: 'Étude de faisabilité ouverture de mur porteur',
+  LANCEMENT_TRAVAUX: 'Lancement / coordination des travaux',
   AUTRE: 'Intervention IPB',
 };
 
@@ -43,6 +44,7 @@ export async function createAppointment(formData: FormData) {
   const location = str(formData.get('location')) || null;
   const notes = str(formData.get('notes')) || null;
   const leadId = str(formData.get('leadId')) || null;
+  const devisId = str(formData.get('devisId')) || null;
 
   const contact = await prisma.contact.findUnique({ where: { id: contactId } });
   if (!contact) return;
@@ -62,6 +64,7 @@ export async function createAppointment(formData: FormData) {
     data: {
       contactId,
       leadId,
+      devisId,
       title,
       type,
       start,
