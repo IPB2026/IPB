@@ -10,7 +10,7 @@ import { StatItem } from '@/components/ui/StatItem';
 const stats = [
   { value: 850, suffix: '+', label: 'Chantiers · réseau IPB', sublabel: 'Occitanie · depuis 2019' },
   { value: 4.9, decimals: 1, suffix: '/5', label: 'Note Google', sublabel: 'Avis clients vérifiés' },
-  { value: 10, suffix: ' ans', label: 'Garantie décennale', sublabel: 'Travaux assurés · AXA' },
+  { value: 10, suffix: ' ans', label: 'Garantie décennale', sublabel: "Sur l'ensemble des travaux" },
   { value: 48, suffix: ' h', label: 'Délai de réponse', sublabel: "De l'institut · moyenne" },
 ];
 

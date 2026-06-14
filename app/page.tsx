@@ -58,7 +58,7 @@ const organizationSchema = {
   // Permet à Google de fusionner les deux entités dans son Knowledge Graph.
   "subOrganization": { "@id": "https://www.ipb-expertise.fr#localbusiness" },
   "name": "IPB - Institut de Pathologie du Bâtiment",
-  "legalName": "Bâti Halli",
+  "legalName": "IPB",
   "alternateName": "IPB Expertise",
   "url": "https://www.ipb-expertise.fr",
   "logo": {
@@ -71,8 +71,10 @@ const organizationSchema = {
   },
   "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
   "description": "Institut spécialisé en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Diagnostic de fissures, expertise humidité, expertise avant achat et ouverture de mur porteur. Diagnostic et coordination assurés par IPB ; travaux réalisés sous décennale par les équipes de réalisation du réseau IPB.",
-  // foundingDate du réseau IPB (et non d'IPB en tant qu'entité juridique).
-  "foundingDate": "2019",
+  // foundingDate = date d'immatriculation de l'EI IPB (SIRET 908 995 103, 2022).
+  // Le « réseau IPB » est actif depuis 2019 mais Schema.org Organization
+  // doit refléter l'entité juridique, pas le récit marketing.
+  "foundingDate": "2022",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "54 avenue Jean Jaurès",
@@ -96,7 +98,7 @@ const organizationSchema = {
 
 export const metadata: Metadata = {
   title: "Institut de pathologie & structure du bâtiment · IPB",
-  description: "IPB diagnostique fissures, humidité et désordres structurels, conçoit la solution et la met en œuvre avec ses équipes de réalisation. Un seul interlocuteur, du diagnostic à la livraison. Occitanie.",
+  description: "Fissures, humidité, désordres structurels : IPB qualifie votre demande et coordonne l'intervention d'un expert du réseau partenaire. Travaux exécutés par les équipes du réseau IPB sous décennale. Un seul interlocuteur, du diagnostic à la livraison. Occitanie.",
   keywords: [
     'expert fissures Toulouse',
     'expertise fissures Haute-Garonne',
@@ -113,7 +115,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Institut de pathologie & structure du bâtiment · IPB",
-    description: "IPB diagnostique les pathologies du bâti, conçoit la solution, et la met en œuvre avec ses équipes de réalisation. Fissures, humidité, mur porteur. Occitanie.",
+    description: "IPB coordonne le diagnostic des pathologies du bâti par un expert du réseau partenaire et la mise en œuvre par les équipes du réseau IPB. Fissures, humidité, mur porteur. Occitanie.",
     url: "https://www.ipb-expertise.fr",
     siteName: "IPB - Institut de Pathologie du Bâtiment",
     images: [
@@ -130,7 +132,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Institut de pathologie & structure du bâtiment · IPB",
-    description: "IPB diagnostique fissures, humidité et désordres structurels, conçoit la solution, et la met en œuvre avec ses équipes. Occitanie.",
+    description: "IPB coordonne le diagnostic et l'exécution des travaux par son réseau d'experts partenaires. Fissures, humidité, désordres structurels. Occitanie.",
     images: [
       {
         url: "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
@@ -189,8 +191,8 @@ export default function HomePage() {
             persona dédiée. Routage SEO + conversion supérieure. */}
       <PersonaCards
         eyebrow="Selon votre situation"
-        title={<>Vous êtes <em>confronté à quoi&nbsp;?</em></>}
-        intro="Quatre situations, une même rigueur. Voici la porte d'entrée la plus utile pour vous."
+        title={<>Dans quel cas <em>vous reconnaissez-vous&nbsp;?</em></>}
+        intro="Quatre situations possibles, une même rigueur d'analyse. Chacune mène à la page la plus utile pour vous."
         background="white"
         personas={homePersonas}
       />

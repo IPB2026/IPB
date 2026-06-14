@@ -1,0 +1,427 @@
+// Schéma de base de données IPB — CRM & gestion d'activité
+// Doc : PLAN_CRM_IPB.md
+// Provider : PostgreSQL (Neon en production)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ──────────────────────────────────────────────────────────────
+// Enums métier
+// ──────────────────────────────────────────────────────────────
+
+enum UserRole {
+  ADMIN
+  EXPERT
+}
+
+/// D'où vient le lead (un formulaire du site)
+enum LeadSource {
+  DIAGNOSTIC
+  CALCULATEUR
+  CONTACT
+  RAPPEL
+  MANUEL // saisie directe dans le CRM
+}
+
+/// Famille de service concernée
+enum ServiceType {
+  FISSURES
+  HUMIDITE
+  EXPERTISE_ACHAT
+  MUR_PORTEUR
+  AUTRE
+}
+
+/// Qualification automatique du lead
+enum LeadTier {
+  HOT
+  WARM
+  COLD
+}
+
+/// Étape dans le pipeline commercial
+enum PipelineStage {
+  NOUVEAU
+  A_RAPPELER
+  RDV_PLANIFIE
+  VISITE_FAITE
+  DEVIS_ENVOYE
+  GAGNE
+  PERDU
+}
+
+/// Statut d'occupation du bien (décisionnaire ?)
+enum OccupantStatus {
+  PROPRIETAIRE
+  BAILLEUR
+  LOCATAIRE
+  ACHETEUR
+  INVESTISSEUR
+  INCONNU
+}
+
+/// Type d'entrée dans la timeline d'un contact / lead
+enum ActivityType {
+  NOTE
+  APPEL
+  EMAIL
+  RDV
+  RELANCE
+  CHANGEMENT_ETAPE
+  SYSTEME
+}
+
+// ──────────────────────────────────────────────────────────────
+// Modèles
+// ──────────────────────────────────────────────────────────────
+
+/// Compte d'accès au back-office (vous, Ludovic)
+model User {
+  id           String     @id @default(cuid())
+  email        String     @unique
+  name         String?
+  passwordHash String
+  role         UserRole   @default(ADMIN)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  assignedLeads Lead[]        @relation("LeadAssignee")
+  activities    Activity[]    @relation("ActivityAuthor")
+  appointments  Appointment[] @relation("ApptAssignee")
+  rapports      Rapport[]     @relation("RapportAuthor")
+}
+
+/// Le prospect / client (personne physique ou morale)
+model Contact {
+  id             String         @id @default(cuid())
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  name           String
+  email          String?
+  phone          String?
+  address        String?
+  city           String?
+  postalCode     String?
+  occupantStatus OccupantStatus @default(INCONNU)
+  propertyType   String? // maison / immeuble / local
+  inServiceArea  Boolean?
+  notes          String?
+
+  leads        Lead[]
+  activities   Activity[]
+  devis        Devis[]
+  factures     Facture[]
+  appointments Appointment[]
+  rapports     Rapport[]
+
+  @@index([email])
+  @@index([phone])
+}
+
+/// Une demande entrante qualifiée, suivie dans le pipeline
+model Lead {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  contact   Contact @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  contactId String
+
+  source  LeadSource
+  service ServiceType
+  stage   PipelineStage @default(NOUVEAU)
+
+  // Scoring (réutilise lib/leadScoring.ts)
+  tier             LeadTier?
+  score            Int?
+  maxScore         Int?
+  riskScore        Int? // score de risque diagnostic 0-100
+  callbackPriority String? // P1_4H / P2_24H / P3_72H
+  reasons          String[] // raisons du scoring
+
+  summary String? // libellé court lisible
+  payload Json // données brutes du formulaire (answers, estimation, message…)
+
+  value     Decimal? @db.Decimal(10, 2) // valeur estimée / réelle du dossier
+  lostReason String?
+
+  // Séquence de relance e-mail automatique (J+1/3/7/14)
+  relanceStep   Int       @default(0) // nb d'étapes de relance déjà envoyées
+  relanceLastAt DateTime?
+
+  assignedTo   User?   @relation("LeadAssignee", fields: [assignedToId], references: [id])
+  assignedToId String?
+
+  activities   Activity[]
+  appointments Appointment[]
+
+  @@index([stage])
+  @@index([tier])
+  @@index([source])
+  @@index([createdAt])
+}
+
+/// Timeline : notes, appels, emails, RDV et relances planifiées
+model Activity {
+  id        String       @id @default(cuid())
+  createdAt DateTime     @default(now())
+  type      ActivityType
+  content   String?
+
+  // Une activité est rattachée à un lead et/ou un contact
+  lead      Lead?    @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  leadId    String?
+  contact   Contact? @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  contactId String?
+
+  author   User?   @relation("ActivityAuthor", fields: [authorId], references: [id])
+  authorId String?
+
+  // Pour les relances : échéance + statut
+  dueAt  DateTime?
+  done   Boolean   @default(false)
+  doneAt DateTime?
+
+  @@index([leadId])
+  @@index([contactId])
+  @@index([dueAt])
+}
+
+// ──────────────────────────────────────────────────────────────
+// Devis / Factures (Phase 2) + Agenda (Phase Agenda)
+// ──────────────────────────────────────────────────────────────
+
+enum DevisStatus {
+  BROUILLON
+  ENVOYE
+  ACCEPTE
+  REFUSE
+  EXPIRE
+}
+
+enum FactureStatus {
+  BROUILLON
+  ENVOYEE
+  PAYEE
+  ANNULEE
+}
+
+enum AppointmentType {
+  DIAGNOSTIC_FISSURES
+  DIAGNOSTIC_HUMIDITE
+  EXPERTISE_ACHAT
+  MUR_PORTEUR
+  AUTRE
+}
+
+enum AppointmentStatus {
+  PLANIFIE
+  CONFIRME
+  REALISE
+  ANNULE
+}
+
+/// Compteur atomique pour la numérotation séquentielle des documents.
+model Counter {
+  key   String @id // ex. "devis-2026", "facture-2026"
+  value Int    @default(0)
+}
+
+model Devis {
+  id        String      @id @default(cuid())
+  number    String      @unique // DEV-YYYYMMDD-NNN
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  status    DevisStatus @default(BROUILLON)
+
+  contact   Contact @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  contactId String
+  leadId    String?
+
+  object       String // ex. "Diagnostic pathologies de fissures"
+  bienConcerne String? // adresse / désignation du bien
+  introLetter  String? // paragraphe d'intro personnalisé
+  notes        String?
+  validUntil   DateTime?
+
+  totalHT Decimal     @default(0) @db.Decimal(10, 2)
+  lines   DevisLine[]
+
+  factures Facture[]
+
+  @@index([status])
+  @@index([contactId])
+}
+
+model DevisLine {
+  id          String  @id @default(cuid())
+  devis       Devis   @relation(fields: [devisId], references: [id], onDelete: Cascade)
+  devisId     String
+  designation String
+  detail      String?
+  unit        String  @default("Forfait")
+  qty         Decimal @default(1) @db.Decimal(10, 2)
+  unitPrice   Decimal @default(0) @db.Decimal(10, 2)
+  total       Decimal @default(0) @db.Decimal(10, 2)
+  position    Int     @default(0)
+}
+
+model Facture {
+  id        String        @id @default(cuid())
+  number    String        @unique // FAC-YYYY-NNN-NOM
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  status    FactureStatus @default(BROUILLON)
+
+  contact   Contact @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  contactId String
+
+  devis   Devis?  @relation(fields: [devisId], references: [id])
+  devisId String?
+
+  object      String
+  mandataire  String? // ex. agent immobilier mandant
+  paymentMode String  @default("Virement bancaire")
+  issuedAt    DateTime @default(now())
+  dueDate     DateTime?
+  acompte     Decimal? @db.Decimal(10, 2)
+  notes       String?
+
+  totalHT Decimal       @default(0) @db.Decimal(10, 2)
+  lines   FactureLine[]
+
+  appointment Appointment?
+
+  @@index([status])
+  @@index([contactId])
+}
+
+model FactureLine {
+  id          String  @id @default(cuid())
+  facture     Facture @relation(fields: [factureId], references: [id], onDelete: Cascade)
+  factureId   String
+  designation String
+  detail      String?
+  unit        String  @default("Forfait")
+  qty         Decimal @default(1) @db.Decimal(10, 2)
+  unitPrice   Decimal @default(0) @db.Decimal(10, 2)
+  total       Decimal @default(0) @db.Decimal(10, 2)
+  position    Int     @default(0)
+}
+
+/// Rendez-vous (agenda) — synchronisé avec Google Calendar.
+model Appointment {
+  id        String            @id @default(cuid())
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+
+  contact   Contact @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  contactId String
+  lead      Lead?   @relation(fields: [leadId], references: [id])
+  leadId    String?
+
+  assignedTo   User?   @relation("ApptAssignee", fields: [assignedToId], references: [id])
+  assignedToId String?
+
+  title    String
+  type     AppointmentType   @default(DIAGNOSTIC_FISSURES)
+  status   AppointmentStatus @default(PLANIFIE)
+  start    DateTime
+  end      DateTime
+  location String?
+  notes    String?
+
+  googleEventId String? // id de l'événement Google Calendar
+
+  // Facture générée à l'issue du RDV (workflow facture-après-diagnostic)
+  facture   Facture? @relation(fields: [factureId], references: [id])
+  factureId String?  @unique
+
+  @@index([start])
+  @@index([status])
+}
+
+// ──────────────────────────────────────────────────────────────
+// Rapports d'expertise (Phase D — génération IA Claude)
+// ──────────────────────────────────────────────────────────────
+
+enum ReportType {
+  FISSURES
+  HUMIDITE
+  EXPERTISE_ACHAT
+  MUR_PORTEUR
+}
+
+enum ReportStatus {
+  BROUILLON // saisie terrain en cours par le diagnostiqueur
+  SOUMIS    // diagnostiqueur a soumis sa saisie → en attente côté admin
+  GENERE    // contenu IA généré par l'admin, à valider
+  VALIDE    // relu et validé par l'admin
+  ENVOYE    // transmis au client
+}
+
+model Rapport {
+  id        String       @id @default(cuid())
+  number    String       @unique // IPB-YYYY-NNN-NOM
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  status    ReportStatus @default(BROUILLON)
+
+  contact   Contact @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  contactId String
+  leadId    String?
+
+  // Diagnostiqueur (EXPERT) qui a réalisé la saisie terrain. Cloisonnement :
+  // un EXPERT ne voit que les rapports dont il est l'auteur ; l'ADMIN voit tout.
+  author   User?   @relation("RapportAuthor", fields: [authorId], references: [id])
+  authorId String?
+
+  type        ReportType
+  title       String
+  bienAdresse String?
+  ville       String?
+
+  // Saisie terrain par le diagnostiqueur (zones, observations, mesures, gravité)
+  zonesInput Json @default("[]")
+
+  // Photos terrain (Vercel Blob) — légendées, rattachées à une zone, analysées en vision par l'IA
+  photos Photo[]
+
+  // Contenu généré par l'IA (conclusion générale, analyses par zone, synthèse,
+  // préconisations, estimation, recommandations) — structure validée.
+  aiContent     Json?
+  aiModel       String?
+  aiGeneratedAt DateTime?
+
+  budgetHT Decimal? @db.Decimal(10, 2)
+
+  @@index([status])
+  @@index([contactId])
+  @@index([authorId])
+}
+
+/// Photo terrain rattachée à un rapport (stockée sur Vercel Blob).
+model Photo {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  rapport   Rapport @relation(fields: [rapportId], references: [id], onDelete: Cascade)
+  rapportId String
+
+  url         String // URL publique Vercel Blob
+  pathname    String // chemin Blob (pour suppression)
+  caption     String? // légende saisie par le diagnostiqueur
+  zoneRef     String? // zone/désordre associé (titre libre)
+  gravite     String? // À TRAITER / IMPORTANT / À SURVEILLER / INFO
+  contentType String?
+  position    Int     @default(0)
+
+  @@index([rapportId])
+}

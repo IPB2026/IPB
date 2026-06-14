@@ -116,7 +116,7 @@ export function buildFAQPageJsonLd(faq: LocalFAQEntry[]) {
 export const IPB_AGGREGATE_RATING = {
   '@type': 'AggregateRating',
   ratingValue: '4.9',
-  reviewCount: '15',
+  reviewCount: '18',
   bestRating: '5',
   worstRating: '1',
 } as const;

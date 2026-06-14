@@ -46,6 +46,20 @@ const nextConfig = {
         destination: '/zones-intervention',
         permanent: true,
       },
+      // Aiguefonde (Tarn 81) — limitrophe de Mazamet, redirige vers la page ville la plus proche.
+      // Remonté en 404 dans GSC (rapport 2026-06-12).
+      {
+        source: '/expert-fissures/aiguefonde',
+        destination: '/expert-fissures/mazamet',
+        permanent: true,
+      },
+      // Ancien article blog daté 2025 → version actualisée 2026 (même intention de recherche).
+      // Remonté en 404 dans GSC (rapport 2026-06-12).
+      {
+        source: '/blog/cout-reparation-fissures-2025',
+        destination: '/blog/prix-agrafage-fissures-2026',
+        permanent: true,
+      },
       // Anciennes URL racine (liens internes / backlinks) → pages réelles
       { source: '/agrafage-fissures', destination: '/expertise/fissures', permanent: true },
       { source: '/micropieux-fondations', destination: '/blog/agrafage-vs-micropieux-choix', permanent: true },

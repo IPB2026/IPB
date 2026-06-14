@@ -76,6 +76,7 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
         heroAlt={`Diagnostic humidité à ${villeNom} — Institut IPB`}
         methodHref="/expertise/humidite"
         contextField={villeData.specificitesHumidite ? 'specificitesHumidite' : undefined}
+        dossierField="dossierTypeHumidite"
         relatedCards={[
           { href: '/expertise/humidite', titre: 'Notre méthode', desc: "Hygromètre, caméra thermique, rapport reconnu par les assurances." },
           { href: '/blog/humidite-remontee-capillaire-solution', titre: 'Remontées capillaires', desc: "Comprendre et traiter ce désordre fréquent en Occitanie." },

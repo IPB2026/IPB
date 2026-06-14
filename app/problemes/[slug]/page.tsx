@@ -124,8 +124,8 @@ export default async function ProblemPage({ params }: PageProps) {
           <div className="space-y-8 text-ipb-text leading-relaxed">
             <p>
               Vous êtes face à ce problème et vous ne savez pas s'il est critique ? C'est normal. La bonne décision
-              dépend de la gravité, de l'évolution et du contexte de votre maison. C'est exactement ce que nous évaluons
-              lors d'un diagnostic fiable.
+              dépend de la gravité, de l'évolution et du contexte de votre maison. C'est exactement ce qu'évalue
+              un expert du réseau IPB lors d'un diagnostic fiable.
             </p>
             <div className="bg-ipb-cream border border-ipb-rule rounded-2xl p-6">
               <h2 className="text-2xl font-bold text-ipb-text mb-3">Ce qu'il faut vérifier immédiatement</h2>

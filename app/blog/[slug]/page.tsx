@@ -20,7 +20,6 @@ import {
   generateBreadcrumbJsonLd,
   getCategoryFallbackImage,
   extractKeyTakeaways,
-  generateHowToSchema,
   computeReadTime,
   getPrevNextArticles,
 } from '@/lib/blog-helpers';
@@ -88,9 +87,9 @@ export async function generateMetadata(
       ? `${baseDescription}${callSignature}`
       : `${baseDescription.slice(0, 154 - callSignature.length).trimEnd()}…${callSignature}`);
 
-  // Image de couverture pertinente (cf. SEO audit C2 — pas le logo générique)
-  const coverPath = post.coverImage || getCategoryFallbackImage(post.category, post.keywords);
-  const coverUrl = coverPath.startsWith('http') ? coverPath : `${baseUrl}${coverPath}`;
+  // og:image et twitter:image sont générées dynamiquement par le fichier-convention
+  // app/blog/[slug]/opengraph-image.tsx (carte brandée IPB unique par article).
+  // On ne déclare donc pas d'images explicites ici pour éviter les doublons.
 
   return {
     title: pageTitle,
@@ -111,20 +110,11 @@ export async function generateMetadata(
       publishedTime: post.date,
       modifiedTime: post.dateModified || post.date,
       authors: [post.author],
-      images: [
-        {
-          url: coverUrl,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: seoDescription,
-      images: [coverUrl],
       creator: '@IPBExpertise',
     },
     robots: {
@@ -184,14 +174,8 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
   // 🎯 AI OVERVIEWS BOOST : bloc "L'essentiel" auto-extrait
   const keyTakeaways = extractKeyTakeaways(post.content);
 
-  // 🎯 RICH SNIPPETS : schema HowTo si l'article est structuré en étapes
-  const howToSchema = generateHowToSchema({
-    title: post.title,
-    metaDescription: post.metaDescription,
-    slug: post.slug,
-    date: post.date,
-    content: post.content,
-  });
+  // NB : le schema HowTo a été retiré (déprécié par Google en septembre 2023,
+  // ne génère plus de rich results). Article + FAQPage couvrent les rich snippets.
 
   // 🎯 LISIBILITÉ : reading time auto-calculé à partir du content réel
   // (les valeurs manuelles dans blog.ts sont parfois obsolètes après extension)
@@ -241,14 +225,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       )}
-      {/* 🎯 HowTo Schema pour articles structurés en étapes */}
-      {howToSchema && (
-        <Script
-          id="howto-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-        />
-      )}
+      {/* HowTo Schema retiré (déprécié par Google en septembre 2023) */}
       {/* Reading Progress Bar */}
       <ReadingProgress />
 
