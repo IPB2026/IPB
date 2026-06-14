@@ -2,8 +2,10 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { NewProspectForm } from '@/components/admin/new-prospect-form';
 import { PageHeader } from '@/components/admin/page-header';
+import { guardAdminPage } from '@/lib/auth-helpers';
 
-export default function NewProspectPage() {
+export default async function NewProspectPage() {
+  await guardAdminPage();
   return (
     <div className="mx-auto max-w-2xl space-y-5">
       <Link

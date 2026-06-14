@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import type { ActivityType } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
+import { guardAdminPage } from '@/lib/auth-helpers';
 import { Avatar } from '@/components/admin/avatar';
 import {
   TierBadge,
@@ -54,6 +55,7 @@ export default async function LeadDetailPage({
 }: {
   params: { id: string };
 }) {
+  await guardAdminPage();
   const lead = await prisma.lead
     .findUnique({
       where: { id: params.id },

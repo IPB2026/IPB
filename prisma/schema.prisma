@@ -94,6 +94,7 @@ model User {
   assignedLeads Lead[]        @relation("LeadAssignee")
   activities    Activity[]    @relation("ActivityAuthor")
   appointments  Appointment[] @relation("ApptAssignee")
+  rapports      Rapport[]     @relation("RapportAuthor")
 }
 
 /// Le prospect / client (personne physique ou morale)
@@ -376,6 +377,11 @@ model Rapport {
   contactId String
   leadId    String?
 
+  // Diagnostiqueur (EXPERT) qui a réalisé la saisie terrain. Cloisonnement :
+  // un EXPERT ne voit que les rapports dont il est l'auteur ; l'ADMIN voit tout.
+  author   User?   @relation("RapportAuthor", fields: [authorId], references: [id])
+  authorId String?
+
   type        ReportType
   title       String
   bienAdresse String?
@@ -383,6 +389,9 @@ model Rapport {
 
   // Saisie terrain par le diagnostiqueur (zones, observations, mesures, gravité)
   zonesInput Json @default("[]")
+
+  // Photos terrain (Vercel Blob) — légendées, rattachées à une zone, analysées en vision par l'IA
+  photos Photo[]
 
   // Contenu généré par l'IA (conclusion générale, analyses par zone, synthèse,
   // préconisations, estimation, recommandations) — structure validée.
@@ -394,4 +403,24 @@ model Rapport {
 
   @@index([status])
   @@index([contactId])
+  @@index([authorId])
+}
+
+/// Photo terrain rattachée à un rapport (stockée sur Vercel Blob).
+model Photo {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  rapport   Rapport @relation(fields: [rapportId], references: [id], onDelete: Cascade)
+  rapportId String
+
+  url         String // URL publique Vercel Blob
+  pathname    String // chemin Blob (pour suppression)
+  caption     String? // légende saisie par le diagnostiqueur
+  zoneRef     String? // zone/désordre associé (titre libre)
+  gravite     String? // À TRAITER / IMPORTANT / À SURVEILLER / INFO
+  contentType String?
+  position    Int     @default(0)
+
+  @@index([rapportId])
 }

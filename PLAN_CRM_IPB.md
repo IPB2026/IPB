@@ -48,9 +48,9 @@ multi-utilisateurs, articulée en 7 briques :
 1. ✅ **CRM pipeline + relances** — fiche interactive + relances dashboard.
 2. ⏳ **Devis & Factures** — PDF charte IPB (`REFERENCE_DOCUMENTS_IPB.md`), numérotation, 293 B, conversion devis→facture.
 3. **Agenda & Google Calendar** *(NOUVEAU)* — voir §12.
-4. **Rôles & comptes experts** (Phase B) — prérequis app terrain.
-5. **App terrain** (Phase C) — saisie intervention + photos (PWA).
-6. **Générateur de rapports IA** (Phase D) — Claude.
+4. ✅ **Rôles & comptes experts** (Phase B) — comptes `EXPERT` cloisonnés (ne voient que leurs interventions). `scripts/create-user.mjs`.
+5. ✅ **App terrain** (Phase C) — saisie intervention par zones (éditable) + **photos Vercel Blob** (capture mobile), bouton « saisie prête ». *(En ligne ; PWA installable + hors-ligne = plus tard.)*
+6. ✅ **Générateur de rapports IA** (Phase D) — Claude `opus-4-8`, **analyse vision des photos**, PDF avec reportage photographique. Génération + validation réservées à l'ADMIN.
 7. **Automatisations e-mail** (Phase F) — relances + **envoi facture après diagnostic** (§12).
 8. **Suivi & communication client** (Phase G).
 

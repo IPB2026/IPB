@@ -64,6 +64,51 @@ npm run dev
 
 ---
 
+## 7. App terrain diagnostiqueurs (photos + comptes experts)
+
+### 7.1 Créer les comptes diagnostiqueurs (rôle EXPERT)
+
+Chaque diagnostiqueur a son propre identifiant. Un EXPERT ne voit **que ses
+interventions** (saisie terrain + photos), jamais le CRM, les devis ni les factures.
+
+```bash
+USER_EMAIL="ludovic@ipb-expertise.fr" \
+USER_PASSWORD="MotDePasseFort" \
+USER_NAME="Ludovic" \
+USER_ROLE="EXPERT" \
+node --env-file=.env.local scripts/create-user.mjs
+```
+> `USER_ROLE` accepte `EXPERT` (diagnostiqueur) ou `ADMIN`. Réutilisez la même
+> commande pour ajouter d'autres membres.
+
+### 7.2 Activer le stockage des photos (Vercel Blob)
+
+Sans token, la saisie texte des rapports fonctionne, mais l'upload photo est
+désactivé (un message le rappelle dans l'interface).
+
+1. **Vercel → Storage → Create Database → Blob** → nom : `ipb-photos`.
+2. Connecter le store au projet : Vercel ajoute automatiquement
+   `BLOB_READ_WRITE_TOKEN` aux variables d'environnement du projet.
+3. Pour tester **en local**, copier ce token dans `.env.local` :
+   ```bash
+   BLOB_READ_WRITE_TOKEN="vercel_blob_rw_xxx"
+   ```
+4. Redémarrer `npm run dev`. Le bouton « Ajouter des photos » s'active
+   (capture appareil photo sur mobile via `capture="environment"`).
+
+> Les photos sont **analysées par l'IA en vision** lors de la génération du
+> rapport et insérées dans le PDF (section « Reportage photographique »).
+
+### 7.3 Workflow terrain → rapport
+
+1. Le diagnostiqueur se connecte sur `/admin` (atterrit sur **Mes interventions**).
+2. Il crée une intervention (client + type + constats par zone), puis **ajoute
+   ses photos** rattachées à chaque zone, et clique **« Marquer la saisie prête »**.
+3. L'**ADMIN** ouvre le rapport, lance **« Générer le rapport »** (Claude rédige
+   l'analyse à partir des constats + photos), **relit, valide** puis **envoie** au client.
+
+---
+
 ## 6. Déploiement Vercel (quand prêt)
 
 Ajouter dans **Vercel → Project → Settings → Environment Variables** :

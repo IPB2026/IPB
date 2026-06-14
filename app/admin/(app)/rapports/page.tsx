@@ -1,7 +1,9 @@
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import { Plus, ClipboardCheck } from 'lucide-react';
-import type { ReportStatus } from '@prisma/client';
+import type { ReportStatus, Prisma } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
+import { getSessionUser } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
 import { EmptyState } from '@/components/admin/empty-state';
 
@@ -21,10 +23,14 @@ const STATUS_PILL: Record<ReportStatus, string> = {
 };
 
 export default async function RapportsListPage() {
+  const user = await getSessionUser();
+  if (!user) redirect('/admin/login');
+  const isExpert = user.role === 'EXPERT';
+
   let rapports: Awaited<ReturnType<typeof load>> = [];
   let dbError = false;
   try {
-    rapports = await load();
+    rapports = await load(isExpert ? user.id : undefined);
   } catch {
     dbError = true;
   }
@@ -32,7 +38,7 @@ export default async function RapportsListPage() {
   return (
     <div className="space-y-5">
       <PageHeader
-        title="Rapports d'expertise"
+        title={isExpert ? 'Mes interventions' : "Rapports d'expertise"}
         subtitle={dbError ? undefined : `${rapports.length} rapport(s)`}
         actions={
           <Link
@@ -100,8 +106,10 @@ export default async function RapportsListPage() {
   );
 }
 
-function load() {
+function load(authorId?: string) {
+  const where: Prisma.RapportWhereInput = authorId ? { authorId } : {};
   return prisma.rapport.findMany({
+    where,
     orderBy: { createdAt: 'desc' },
     include: { contact: true },
     take: 200,

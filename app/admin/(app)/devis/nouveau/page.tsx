@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { prisma } from '@/lib/prisma';
+import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
 import { NewDevisForm } from '@/components/admin/new-devis-form';
 
@@ -11,6 +12,7 @@ export default async function NewDevisPage({
 }: {
   searchParams: { contactId?: string };
 }) {
+  await guardAdminPage();
   const contacts = await prisma.contact
     .findMany({
       orderBy: { createdAt: 'desc' },

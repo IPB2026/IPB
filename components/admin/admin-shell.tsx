@@ -6,13 +6,17 @@ import { AdminNav } from '@/components/admin/admin-nav';
 import { Avatar } from '@/components/admin/avatar';
 import { logout } from '@/app/admin/(app)/auth-actions';
 
+type Role = 'ADMIN' | 'EXPERT';
+
 function SidebarContent({
   displayName,
   email,
+  role,
   onNavigate,
 }: {
   displayName: string;
   email: string;
+  role: Role;
   onNavigate?: () => void;
 }) {
   return (
@@ -23,13 +27,15 @@ function SidebarContent({
           IPB
         </span>
         <div className="leading-tight">
-          <p className="text-sm font-semibold text-white">Back-office</p>
+          <p className="text-sm font-semibold text-white">
+            {role === 'EXPERT' ? 'Espace terrain' : 'Back-office'}
+          </p>
           <p className="text-[11px] text-slate-400">Institut de Pathologie</p>
         </div>
       </div>
 
       <div className="flex-1 overflow-y-auto px-3">
-        <AdminNav onNavigate={onNavigate} />
+        <AdminNav role={role} onNavigate={onNavigate} />
       </div>
 
       {/* User footer */}
@@ -60,10 +66,12 @@ function SidebarContent({
 export function AdminShell({
   displayName,
   email,
+  role,
   children,
 }: {
   displayName: string;
   email: string;
+  role: Role;
   children: React.ReactNode;
 }) {
   const [open, setOpen] = useState(false);
@@ -72,7 +80,7 @@ export function AdminShell({
     <div className="min-h-screen bg-slate-50">
       {/* Sidebar desktop */}
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 bg-slate-900 lg:block">
-        <SidebarContent displayName={displayName} email={email} />
+        <SidebarContent displayName={displayName} email={email} role={role} />
       </aside>
 
       {/* Topbar mobile */}
@@ -82,7 +90,7 @@ export function AdminShell({
             IPB
           </span>
           <span className="text-sm font-semibold text-slate-900">
-            Back-office
+            {role === 'EXPERT' ? 'Espace terrain' : 'Back-office'}
           </span>
         </div>
         <button
@@ -113,6 +121,7 @@ export function AdminShell({
             <SidebarContent
               displayName={displayName}
               email={email}
+              role={role}
               onNavigate={() => setOpen(false)}
             />
           </aside>

@@ -1,15 +1,27 @@
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import { ArrowLeft, Download, Sparkles, AlertTriangle, Mail } from 'lucide-react';
+import { notFound, redirect } from 'next/navigation';
+import {
+  ArrowLeft,
+  Download,
+  Sparkles,
+  AlertTriangle,
+  Mail,
+  CheckCircle2,
+} from 'lucide-react';
 import type { ReportStatus } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
+import { getSessionUser } from '@/lib/auth-helpers';
+import { isBlobConfigured } from '@/lib/blob';
 import { euros } from '@/lib/crm/company';
 import { isAiConfigured, type ReportContent, type ReportZoneInput } from '@/lib/ai/report';
 import {
   generateRapportAI,
   updateRapportStatus,
+  markRapportReady,
 } from '@/app/admin/(app)/rapports/actions';
 import { sendRapport } from '@/app/admin/(app)/send-actions';
+import { RapportPhotos } from '@/components/admin/rapport-photos';
+import { RapportZonesEditor } from '@/components/admin/rapport-zones-editor';
 
 export const dynamic = 'force-dynamic';
 
@@ -36,12 +48,29 @@ export default async function RapportDetailPage({
 }: {
   params: { id: string };
 }) {
+  const user = await getSessionUser();
+  if (!user) redirect('/admin/login');
+
   const rapport = await prisma.rapport
-    .findUnique({ where: { id: params.id }, include: { contact: true } })
+    .findUnique({
+      where: { id: params.id },
+      include: { contact: true, photos: { orderBy: { position: 'asc' } } },
+    })
     .catch(() => null);
   if (!rapport) notFound();
 
+  const isAdmin = user.role === 'ADMIN';
+  const isOwner = rapport.authorId === user.id;
+  // Cloisonnement : un EXPERT ne voit que ses propres rapports.
+  if (!isAdmin && !isOwner) redirect('/admin/rapports');
+
+  // La saisie terrain reste éditable tant que le rapport n'est pas validé/envoyé.
+  const canEditField =
+    (isAdmin || isOwner) &&
+    (rapport.status === 'BROUILLON' || rapport.status === 'GENERE');
+
   const zones = (rapport.zonesInput as unknown as ReportZoneInput[]) ?? [];
+  const zoneTitles = zones.map((z) => z.titre).filter(Boolean);
   const ai = rapport.aiContent as unknown as
     | ReportContent
     | { error: string }
@@ -56,7 +85,7 @@ export default async function RapportDetailPage({
         className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-900"
       >
         <ArrowLeft className="h-4 w-4" />
-        Tous les rapports
+        {isAdmin ? 'Tous les rapports' : 'Mes interventions'}
       </Link>
 
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -72,7 +101,7 @@ export default async function RapportDetailPage({
           <span className="rounded-md bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600">
             {STATUS_LABEL[rapport.status]}
           </span>
-          {content && (
+          {content && isAdmin && (
             <a
               href={`/admin/rapports/${rapport.id}/pdf`}
               target="_blank"
@@ -83,7 +112,7 @@ export default async function RapportDetailPage({
               PDF
             </a>
           )}
-          {content && rapport.contact.email && (
+          {content && isAdmin && rapport.contact.email && (
             <form action={sendRapport}>
               <input type="hidden" name="rapportId" value={rapport.id} />
               <button
@@ -98,64 +127,115 @@ export default async function RapportDetailPage({
         </div>
       </div>
 
-      {/* Saisie terrain */}
-      <Card title="Saisie terrain">
-        <ul className="space-y-3">
-          {zones.map((z, i) => (
-            <li key={i} className="border-l-2 border-slate-200 pl-3">
-              <p className="text-sm font-medium text-slate-800">
-                {i + 1}. {z.titre}
-                {z.gravite ? (
-                  <span className="ml-2 text-xs font-normal text-orange-600">
-                    {z.gravite}
-                  </span>
+      {/* Saisie terrain — éditable par l'expert/admin, sinon lecture seule */}
+      <Card title="Saisie terrain — constats par zone">
+        {canEditField ? (
+          <RapportZonesEditor
+            rapportId={rapport.id}
+            initialZones={zones.map((z) => ({
+              titre: z.titre ?? '',
+              observations: z.observations ?? '',
+              mesure: z.mesure ?? '',
+              gravite: z.gravite ?? 'À TRAITER',
+            }))}
+          />
+        ) : (
+          <ul className="space-y-3">
+            {zones.map((z, i) => (
+              <li key={i} className="border-l-2 border-slate-200 pl-3">
+                <p className="text-sm font-medium text-slate-800">
+                  {i + 1}. {z.titre}
+                  {z.gravite ? (
+                    <span className="ml-2 text-xs font-normal text-orange-600">
+                      {z.gravite}
+                    </span>
+                  ) : null}
+                </p>
+                <p className="text-sm text-slate-600">{z.observations}</p>
+                {z.mesure ? (
+                  <p className="text-xs text-slate-400">Mesure : {z.mesure}</p>
                 ) : null}
-              </p>
-              <p className="text-sm text-slate-600">{z.observations}</p>
-              {z.mesure ? (
-                <p className="text-xs text-slate-400">Mesure : {z.mesure}</p>
-              ) : null}
-            </li>
-          ))}
-        </ul>
+              </li>
+            ))}
+          </ul>
+        )}
       </Card>
 
-      {/* Génération IA */}
-      <section className="rounded-xl border border-slate-200 bg-white p-5">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <h2 className="text-sm font-semibold text-slate-900">
-              Génération par IA
-            </h2>
-            <p className="text-xs text-slate-500">
-              {rapport.aiGeneratedAt
-                ? `Généré le ${rapport.aiGeneratedAt.toLocaleString('fr-FR')} · ${rapport.aiModel}`
-                : 'Pas encore généré.'}
-            </p>
-          </div>
-          {isAiConfigured() ? (
-            <form action={generateRapportAI}>
-              <input type="hidden" name="rapportId" value={rapport.id} />
-              <button
-                type="submit"
-                className="inline-flex items-center gap-1.5 rounded-lg bg-orange-600 px-4 py-2 text-sm font-semibold text-white hover:bg-orange-700"
-              >
-                <Sparkles className="h-4 w-4" />
-                {content ? 'Régénérer' : 'Générer le rapport'}
-              </button>
-            </form>
-          ) : (
-            <span className="text-xs text-amber-700">
-              Clé Anthropic non configurée.
-            </span>
-          )}
-        </div>
-        <p className="mt-2 text-xs text-slate-400">
-          La génération peut prendre 15-40 s. L'expert relit et valide avant envoi.
-        </p>
-      </section>
+      {/* Photos terrain */}
+      <RapportPhotos
+        rapportId={rapport.id}
+        photos={rapport.photos.map((p) => ({
+          id: p.id,
+          url: p.url,
+          caption: p.caption,
+          zoneRef: p.zoneRef,
+          gravite: p.gravite,
+        }))}
+        zones={zoneTitles}
+        blobConfigured={isBlobConfigured()}
+        canEdit={canEditField}
+      />
 
-      {hasError && (
+      {/* Expert : marquer la saisie prête */}
+      {!isAdmin && (
+        <section className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white p-5">
+          <p className="text-sm text-slate-600">
+            Saisie complète ? Signalez-la pour que le rapport soit généré et validé.
+          </p>
+          <form action={markRapportReady}>
+            <input type="hidden" name="rapportId" value={rapport.id} />
+            <button
+              type="submit"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700"
+            >
+              <CheckCircle2 className="h-4 w-4" />
+              Marquer la saisie prête
+            </button>
+          </form>
+        </section>
+      )}
+
+      {/* Génération IA — ADMIN uniquement */}
+      {isAdmin && (
+        <section className="rounded-xl border border-slate-200 bg-white p-5">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h2 className="text-sm font-semibold text-slate-900">
+                Génération par IA
+              </h2>
+              <p className="text-xs text-slate-500">
+                {rapport.aiGeneratedAt
+                  ? `Généré le ${rapport.aiGeneratedAt.toLocaleString('fr-FR')} · ${rapport.aiModel}`
+                  : 'Pas encore généré.'}
+                {rapport.photos.length > 0 &&
+                  ` · ${rapport.photos.length} photo(s) analysée(s)`}
+              </p>
+            </div>
+            {isAiConfigured() ? (
+              <form action={generateRapportAI}>
+                <input type="hidden" name="rapportId" value={rapport.id} />
+                <button
+                  type="submit"
+                  className="inline-flex items-center gap-1.5 rounded-lg bg-orange-600 px-4 py-2 text-sm font-semibold text-white hover:bg-orange-700"
+                >
+                  <Sparkles className="h-4 w-4" />
+                  {content ? 'Régénérer' : 'Générer le rapport'}
+                </button>
+              </form>
+            ) : (
+              <span className="text-xs text-amber-700">
+                Clé Anthropic non configurée.
+              </span>
+            )}
+          </div>
+          <p className="mt-2 text-xs text-slate-400">
+            La génération peut prendre 15-40 s (analyse des photos incluse). Relisez
+            et validez avant envoi.
+          </p>
+        </section>
+      )}
+
+      {hasError && isAdmin && (
         <div className="flex items-start gap-2 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
           <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
           <span>{(ai as { error: string }).error}</span>
@@ -216,37 +296,39 @@ export default async function RapportDetailPage({
             </p>
           </Card>
 
-          {/* Validation */}
-          <section className="rounded-xl border border-slate-200 bg-white p-5">
-            <form action={updateRapportStatus} className="flex flex-wrap items-end gap-2">
-              <input type="hidden" name="rapportId" value={rapport.id} />
-              <div>
-                <label className="mb-1 block text-sm font-medium text-slate-700">
-                  Statut du rapport
-                </label>
-                <select
-                  name="status"
-                  defaultValue={rapport.status}
-                  className="h-10 rounded-lg border border-slate-300 px-3 text-sm outline-none focus:border-orange-500"
+          {/* Validation — ADMIN uniquement */}
+          {isAdmin && (
+            <section className="rounded-xl border border-slate-200 bg-white p-5">
+              <form action={updateRapportStatus} className="flex flex-wrap items-end gap-2">
+                <input type="hidden" name="rapportId" value={rapport.id} />
+                <div>
+                  <label className="mb-1 block text-sm font-medium text-slate-700">
+                    Statut du rapport
+                  </label>
+                  <select
+                    name="status"
+                    defaultValue={rapport.status}
+                    className="h-10 rounded-lg border border-slate-300 px-3 text-sm outline-none focus:border-orange-500"
+                  >
+                    {Object.entries(STATUS_LABEL).map(([v, l]) => (
+                      <option key={v} value={v}>
+                        {l}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <button
+                  type="submit"
+                  className="h-10 rounded-lg bg-slate-900 px-4 text-sm font-semibold text-white hover:bg-slate-800"
                 >
-                  {Object.entries(STATUS_LABEL).map(([v, l]) => (
-                    <option key={v} value={v}>
-                      {l}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <button
-                type="submit"
-                className="h-10 rounded-lg bg-slate-900 px-4 text-sm font-semibold text-white hover:bg-slate-800"
-              >
-                Mettre à jour
-              </button>
-              <p className="ml-auto self-center text-xs text-slate-400">
-                Relisez le contenu avant de passer à « Validé » puis « Envoyé ».
-              </p>
-            </form>
-          </section>
+                  Mettre à jour
+                </button>
+                <p className="ml-auto self-center text-xs text-slate-400">
+                  Relisez le contenu avant de passer à « Validé » puis « Envoyé ».
+                </p>
+              </form>
+            </section>
+          )}
         </>
       )}
     </div>

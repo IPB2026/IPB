@@ -13,7 +13,8 @@
     "postinstall": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio",
-    "create-admin": "node --env-file=.env scripts/create-admin.mjs"
+    "create-admin": "node --env-file=.env scripts/create-admin.mjs",
+    "create-user": "node --env-file=.env scripts/create-user.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.104.1",
