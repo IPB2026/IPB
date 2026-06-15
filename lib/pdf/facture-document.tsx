@@ -89,6 +89,10 @@ export interface FactureDocData {
 const fr = (d?: Date | null) =>
   d ? new Date(d).toLocaleDateString('fr-FR', { dateStyle: 'long' }) : '—';
 
+// Montant : un 0 s'affiche en « — » (ex. ligne « diagnostic sur site » portée
+// ailleurs), comme sur le devis.
+const amt = (n: number) => (n === 0 ? '—' : euros(n));
+
 const ORANGE = '#EA580C';
 const ORANGE_DK = '#C2410C';
 const CREAM = '#FFF7ED';
@@ -234,8 +238,8 @@ export function FactureDocument({ data }: { data: FactureDocData }) {
               </View>
               <Text style={s.cUnit}>{l.unit}</Text>
               <Text style={s.cQty}>{l.qty}</Text>
-              <Text style={s.cPu}>{euros(l.unitPrice)}</Text>
-              <Text style={[s.cTot, { fontWeight: 700 }]}>{euros(l.total)}</Text>
+              <Text style={s.cPu}>{amt(l.unitPrice)}</Text>
+              <Text style={[s.cTot, { fontWeight: 700 }]}>{amt(l.total)}</Text>
             </View>
           ))}
 
