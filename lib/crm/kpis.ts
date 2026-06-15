@@ -8,8 +8,11 @@ import type { ServiceType, PipelineStage } from '@prisma/client';
  */
 
 export interface KpiData {
-  ca: { signe: number; facture: number; encaisse: number };
+  ca: { signe: number; facture: number; encaisse: number; encaisseMois: number };
+  devis: { acceptes: number; emis: number; panierMoyen: number; tauxAcceptation: number };
   conversion: { prospects: number; clients: number; rate: number };
+  rdvAVenir: number;
+  rapportsLivres: number;
   delaiMoyenJours: number | null;
   leadsParMois: { label: string; count: number }[];
   parService: { service: ServiceType; count: number }[];
@@ -54,17 +57,27 @@ const MONTHS_FR = [
 ];
 
 export async function computeKpis(): Promise<KpiData> {
+  const startOfMonth = new Date();
+  startOfMonth.setHours(0, 0, 0, 0);
+  startOfMonth.setDate(1);
+  const now = new Date();
+
   // ── CA, conversion et totaux : un seul aller-retour parallèle ──
   const [
     devisSigne,
     factureEmise,
     facturePayee,
+    facturePayeeMois,
     prospects,
     clients,
     totalLeads,
     totalDevis,
     totalFactures,
     totalRapports,
+    devisAcceptesCount,
+    devisEmisCount,
+    rdvAVenir,
+    rapportsLivres,
   ] = await Promise.all([
     prisma.devis.aggregate({ _sum: { totalHT: true }, where: { status: 'ACCEPTE' } }),
     prisma.facture.aggregate({
@@ -72,6 +85,11 @@ export async function computeKpis(): Promise<KpiData> {
       where: { status: { in: ['ENVOYEE', 'PAYEE'] } },
     }),
     prisma.facture.aggregate({ _sum: { totalHT: true }, where: { status: 'PAYEE' } }),
+    // CA encaissé ce mois — approx. via updatedAt de la facture passée PAYEE.
+    prisma.facture.aggregate({
+      _sum: { totalHT: true },
+      where: { status: 'PAYEE', updatedAt: { gte: startOfMonth } },
+    }),
     prisma.contact.count(),
     prisma.contact.count({
       where: {
@@ -82,6 +100,11 @@ export async function computeKpis(): Promise<KpiData> {
     prisma.devis.count(),
     prisma.facture.count(),
     prisma.rapport.count(),
+    prisma.devis.count({ where: { status: 'ACCEPTE' } }),
+    // Devis « sortis » (envoyés au moins une fois) = base du taux d'acceptation.
+    prisma.devis.count({ where: { status: { in: ['ENVOYE', 'ACCEPTE', 'REFUSE', 'EXPIRE'] } } }),
+    prisma.appointment.count({ where: { start: { gte: now }, status: { not: 'ANNULE' } } }),
+    prisma.rapport.count({ where: { status: 'ENVOYE' } }),
   ]);
 
   // ── Délai moyen demande → rapport remis ──
@@ -189,17 +212,28 @@ export async function computeKpis(): Promise<KpiData> {
     })
   );
 
+  const caSigne = n(devisSigne._sum.totalHT);
   return {
     ca: {
-      signe: n(devisSigne._sum.totalHT),
+      signe: caSigne,
       facture: n(factureEmise._sum.totalHT),
       encaisse: n(facturePayee._sum.totalHT),
+      encaisseMois: n(facturePayeeMois._sum.totalHT),
+    },
+    devis: {
+      acceptes: devisAcceptesCount,
+      emis: devisEmisCount,
+      panierMoyen: devisAcceptesCount > 0 ? Math.round(caSigne / devisAcceptesCount) : 0,
+      tauxAcceptation:
+        devisEmisCount > 0 ? Math.round((devisAcceptesCount / devisEmisCount) * 1000) / 10 : 0,
     },
     conversion: {
       prospects,
       clients,
       rate: prospects > 0 ? Math.round((clients / prospects) * 1000) / 10 : 0,
     },
+    rdvAVenir,
+    rapportsLivres,
     delaiMoyenJours,
     leadsParMois,
     parService,

@@ -4,6 +4,10 @@ import {
   Target,
   Clock,
   Users,
+  Coins,
+  ShoppingBag,
+  FileCheck2,
+  CalendarClock,
 } from 'lucide-react';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { euros } from '@/lib/crm/company';
@@ -42,31 +46,69 @@ export default async function PilotagePage() {
         subtitle="Chiffre d'affaires, conversion, délais et activité — en temps réel."
       />
 
-      {/* Indicateurs clés */}
-      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <Stat
-          icon={TrendingUp}
-          label="CA signé (devis acceptés)"
-          value={euros(kpi.ca.signe)}
-          tone="text-emerald-600"
-        />
-        <Stat
-          icon={Wallet}
-          label="CA encaissé (factures payées)"
-          value={euros(kpi.ca.encaisse)}
-          sub={`${euros(kpi.ca.facture)} facturé`}
-        />
-        <Stat
-          icon={Target}
-          label="Conversion prospect → client"
-          value={`${kpi.conversion.rate} %`}
-          sub={`${kpi.conversion.clients} / ${kpi.conversion.prospects} prospects`}
-        />
-        <Stat
-          icon={Clock}
-          label="Délai moyen demande → rapport"
-          value={kpi.delaiMoyenJours != null ? `${kpi.delaiMoyenJours} j` : '—'}
-        />
+      {/* Argent — la ligne qui compte */}
+      <div>
+        <h2 className="mb-2.5 text-xs font-semibold uppercase tracking-wider text-slate-400">
+          Chiffre d&apos;affaires (€ HT)
+        </h2>
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <Stat
+            icon={Wallet}
+            label="Encaissé (total)"
+            value={euros(kpi.ca.encaisse)}
+            tone="text-emerald-600"
+            sub={`${euros(kpi.ca.facture)} facturé`}
+          />
+          <Stat
+            icon={Coins}
+            label="Encaissé ce mois-ci"
+            value={euros(kpi.ca.encaisseMois)}
+            tone="text-emerald-600"
+          />
+          <Stat
+            icon={Clock}
+            label="Reste à encaisser"
+            value={euros(Math.max(0, kpi.ca.facture - kpi.ca.encaisse))}
+            tone={kpi.ca.facture - kpi.ca.encaisse > 0 ? 'text-orange-600' : 'text-slate-900'}
+          />
+          <Stat
+            icon={ShoppingBag}
+            label="Panier moyen (devis accepté)"
+            value={euros(kpi.devis.panierMoyen)}
+          />
+        </div>
+      </div>
+
+      {/* Activité & performance commerciale */}
+      <div>
+        <h2 className="mb-2.5 text-xs font-semibold uppercase tracking-wider text-slate-400">
+          Activité & performance
+        </h2>
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <Stat
+            icon={FileCheck2}
+            label="Acceptation des devis"
+            value={`${kpi.devis.tauxAcceptation} %`}
+            sub={`${kpi.devis.acceptes} / ${kpi.devis.emis} devis`}
+          />
+          <Stat
+            icon={Target}
+            label="Conversion prospect → client"
+            value={`${kpi.conversion.rate} %`}
+            sub={`${kpi.conversion.clients} / ${kpi.conversion.prospects} prospects`}
+          />
+          <Stat
+            icon={CalendarClock}
+            label="RDV à venir"
+            value={String(kpi.rdvAVenir)}
+          />
+          <Stat
+            icon={Clock}
+            label="Délai moyen → rapport"
+            value={kpi.delaiMoyenJours != null ? `${kpi.delaiMoyenJours} j` : '—'}
+            sub={`${kpi.rapportsLivres} rapport(s) livré(s)`}
+          />
+        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
