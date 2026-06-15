@@ -48,8 +48,12 @@ export async function updateContact(
   if (!id) return 'Contact introuvable.';
 
   const str = (k: string) => String(formData.get(k) ?? '');
+  // Nom complet recomposé depuis prénom + nom (repli sur un champ `name` legacy).
+  const fullName =
+    [str('prenom'), str('nom')].map((s) => s.trim()).filter(Boolean).join(' ') ||
+    str('name');
   const parsed = contactSchema.safeParse({
-    name: str('name'),
+    name: fullName,
     phone: str('phone'),
     email: str('email'),
     address: str('address'),

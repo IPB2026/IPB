@@ -45,13 +45,23 @@ export function ContactEditForm({
   };
 }) {
   const [error, formAction] = useFormState(updateContact, undefined);
+  // Pré-découpe le nom complet existant en prénom / nom (1er mot = prénom).
+  const parts = (contact.name ?? '').trim().split(/\s+/);
+  const defPrenom = parts.length > 1 ? parts[0] : '';
+  const defNom = parts.length > 1 ? parts.slice(1).join(' ') : contact.name;
 
   return (
     <form action={formAction} className="space-y-3" key={error ? 'err' : 'ok'}>
       <input type="hidden" name="contactId" value={contact.id} />
-      <div>
-        <label className={label} htmlFor="ce-name">Nom complet</label>
-        <input id="ce-name" name="name" defaultValue={contact.name} required className={field} />
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div>
+          <label className={label} htmlFor="ce-prenom">Prénom</label>
+          <input id="ce-prenom" name="prenom" defaultValue={defPrenom} className={field} />
+        </div>
+        <div>
+          <label className={label} htmlFor="ce-nom">Nom</label>
+          <input id="ce-nom" name="nom" defaultValue={defNom} required className={field} />
+        </div>
       </div>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <div>

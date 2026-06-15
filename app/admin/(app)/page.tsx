@@ -186,7 +186,9 @@ export default async function DashboardPage() {
   let stats: Awaited<ReturnType<typeof getStats>> | null = null;
   try {
     stats = await getStats();
-  } catch {
+  } catch (e) {
+    // On loggue la VRAIE erreur (visible dans les logs Vercel) au lieu de l'avaler.
+    console.error('[dashboard] connexion/chargement base échoué :', e);
     stats = null;
   }
 
@@ -196,13 +198,23 @@ export default async function DashboardPage() {
         <PageHeader title="Tableau de bord" />
         <div className="rounded-xl border border-amber-200 bg-amber-50 p-6">
           <p className="font-semibold text-amber-900">
-            Base de données non connectée
+            Base de données momentanément indisponible
           </p>
           <p className="mt-1 text-sm text-amber-800">
-            Configurez <code className="rounded bg-amber-100 px-1">DATABASE_URL</code>{' '}
-            dans <code className="rounded bg-amber-100 px-1">.env.local</code> puis
-            lancez la migration (voir <code>SETUP_CRM.md</code>). Le back-office
-            s&apos;activera automatiquement.
+            La connexion à la base n&apos;a pas abouti. Réessayez dans un instant —
+            c&apos;est souvent temporaire (réveil de la base).
+          </p>
+          <a
+            href="/admin"
+            className="mt-3 inline-flex h-9 items-center rounded-lg bg-amber-600 px-4 text-sm font-semibold text-white hover:bg-amber-700"
+          >
+            Réessayer
+          </a>
+          <p className="mt-3 text-xs text-amber-700/80">
+            Si le problème persiste : vérifiez la variable{' '}
+            <code className="rounded bg-amber-100 px-1">DATABASE_URL</code> sur
+            Vercel (connexion Neon « pooled », <strong>sans</strong>{' '}
+            <code className="rounded bg-amber-100 px-1">channel_binding</code>).
           </p>
         </div>
       </div>

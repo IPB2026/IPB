@@ -23,7 +23,8 @@ export default async function PilotagePage() {
   let dbError = false;
   try {
     kpi = await computeKpis();
-  } catch {
+  } catch (e) {
+    console.error('[pilotage] connexion/chargement base échoué :', e);
     dbError = true;
   }
 
