@@ -1,18 +1,22 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { Mic, Square } from 'lucide-react';
+import { Mic, Square, Loader2 } from 'lucide-react';
 
 /**
- * Dictée vocale (terrain) → texte, sans dépendance : utilise l'API Web Speech
- * du navigateur (Chrome / Edge, Android inclus). Chaque segment finalisé est
- * remonté via `onAppend` pour être ajouté aux observations de la zone.
+ * Dictée vocale terrain → texte, sans dépendance npm. Deux moteurs, choisis
+ * automatiquement selon le navigateur :
  *
- * Le diagnostiqueur parle, le texte se remplit ; il complète ensuite à l'écrit
- * si besoin, puis l'IA structure le rapport à partir de ces observations.
+ *  1. API Web Speech (reconnaissance INSTANTANÉE, gratuite) — disponible sur
+ *     Chrome/Edge desktop, Chrome Android et **Safari iOS**.
+ *  2. Repli ENREGISTREMENT + transcription serveur (`/api/admin/transcribe`,
+ *     Whisper) — pour les navigateurs sans Web Speech, notamment **Chrome sur
+ *     iPhone** (WebKit). Actif si la transcription est configurée côté serveur.
+ *
+ * Chaque segment de texte reconnu est remonté via `onAppend`.
  */
 
-// Types minimaux de l'API Web Speech (non typée par TS).
+// ── Types minimaux de l'API Web Speech (non typée par TS) ──
 type SpeechResult = { 0: { transcript: string }; isFinal: boolean };
 interface SpeechEvent {
   resultIndex: number;
@@ -38,6 +42,17 @@ function getRecognitionCtor(): (new () => SpeechRecognitionLike) | null {
   return w.SpeechRecognition ?? w.webkitSpeechRecognition ?? null;
 }
 
+function canRecord(): boolean {
+  return (
+    typeof window !== 'undefined' &&
+    typeof navigator !== 'undefined' &&
+    !!navigator.mediaDevices?.getUserMedia &&
+    typeof window.MediaRecorder !== 'undefined'
+  );
+}
+
+type Mode = 'idle' | 'listening' | 'recording' | 'transcribing';
+
 export function VoiceDictationButton({
   onAppend,
   className = '',
@@ -45,25 +60,32 @@ export function VoiceDictationButton({
   onAppend: (text: string) => void;
   className?: string;
 }) {
-  const [supported, setSupported] = useState(false);
-  const [listening, setListening] = useState(false);
+  const [engine, setEngine] = useState<'speech' | 'record' | 'none'>('none');
+  const [mode, setMode] = useState<Mode>('idle');
+  const [note, setNote] = useState<string | null>(null);
   const recRef = useRef<SpeechRecognitionLike | null>(null);
+  const mediaRef = useRef<MediaRecorder | null>(null);
+  const chunksRef = useRef<Blob[]>([]);
 
   useEffect(() => {
-    setSupported(getRecognitionCtor() !== null);
+    if (getRecognitionCtor()) setEngine('speech');
+    else if (canRecord()) setEngine('record');
+    else setEngine('none');
     return () => {
       try {
         recRef.current?.stop();
+        mediaRef.current?.stop();
       } catch {
         /* no-op */
       }
     };
   }, []);
 
-  if (!supported) return null;
+  if (engine === 'none') return null;
 
-  const toggle = () => {
-    if (listening) {
+  // ── Moteur 1 : reconnaissance instantanée ──
+  const toggleSpeech = () => {
+    if (mode === 'listening') {
       recRef.current?.stop();
       return;
     }
@@ -82,42 +104,113 @@ export function VoiceDictationButton({
         }
       }
     };
-    rec.onerror = () => setListening(false);
-    rec.onend = () => setListening(false);
+    rec.onerror = () => setMode('idle');
+    rec.onend = () => setMode('idle');
     recRef.current = rec;
     try {
       rec.start();
-      setListening(true);
+      setMode('listening');
+      setNote(null);
     } catch {
-      setListening(false);
+      setMode('idle');
     }
   };
 
+  // ── Moteur 2 : enregistrement + transcription serveur ──
+  const startRecording = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const mr = new MediaRecorder(stream);
+      chunksRef.current = [];
+      mr.ondataavailable = (e) => {
+        if (e.data.size > 0) chunksRef.current.push(e.data);
+      };
+      mr.onstop = async () => {
+        stream.getTracks().forEach((t) => t.stop());
+        const blob = new Blob(chunksRef.current, {
+          type: mr.mimeType || 'audio/mp4',
+        });
+        setMode('transcribing');
+        try {
+          const fd = new FormData();
+          const ext = (mr.mimeType || 'audio/mp4').includes('webm') ? 'webm' : 'm4a';
+          fd.set('audio', blob, `dictee.${ext}`);
+          const res = await fetch('/api/admin/transcribe', {
+            method: 'POST',
+            body: fd,
+          });
+          if (res.status === 501) {
+            setNote('Dictée non configurée pour ce navigateur — utilisez Safari, ou activez la transcription.');
+          } else if (!res.ok) {
+            setNote("Échec de la transcription. Réessayez.");
+          } else {
+            const data = (await res.json()) as { text?: string };
+            const text = (data.text ?? '').trim();
+            if (text) onAppend(text);
+          }
+        } catch {
+          setNote('Échec de la transcription. Réessayez.');
+        } finally {
+          setMode('idle');
+        }
+      };
+      mediaRef.current = mr;
+      mr.start();
+      setMode('recording');
+      setNote(null);
+    } catch {
+      setNote("Micro indisponible — autorisez l'accès au microphone.");
+      setMode('idle');
+    }
+  };
+
+  const toggleRecord = () => {
+    if (mode === 'recording') {
+      mediaRef.current?.stop();
+      return;
+    }
+    if (mode === 'transcribing') return;
+    void startRecording();
+  };
+
+  const onClick = engine === 'speech' ? toggleSpeech : toggleRecord;
+  const active = mode === 'listening' || mode === 'recording';
+  const busy = mode === 'transcribing';
+
   return (
-    <button
-      type="button"
-      onClick={toggle}
-      aria-pressed={listening}
-      title={listening ? 'Arrêter la dictée' : 'Dicter les observations'}
-      className={
-        (listening
-          ? 'border-red-300 bg-red-50 text-red-700'
-          : 'border-slate-300 bg-white text-slate-600 hover:bg-slate-50') +
-        ' inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs font-medium transition-colors ' +
-        className
-      }
-    >
-      {listening ? (
-        <>
-          <Square className="h-3.5 w-3.5 animate-pulse fill-current" />
-          En écoute…
-        </>
-      ) : (
-        <>
-          <Mic className="h-3.5 w-3.5" />
-          Dicter
-        </>
-      )}
-    </button>
+    <span className="inline-flex flex-col items-end gap-1">
+      <button
+        type="button"
+        onClick={onClick}
+        disabled={busy}
+        aria-pressed={active}
+        title={active ? 'Arrêter la dictée' : 'Dicter les observations'}
+        className={
+          (active
+            ? 'border-red-300 bg-red-50 text-red-700'
+            : 'border-slate-300 bg-white text-slate-600 hover:bg-slate-50') +
+          ' inline-flex min-h-[36px] items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 disabled:opacity-60 ' +
+          className
+        }
+      >
+        {busy ? (
+          <>
+            <Loader2 className="h-3.5 w-3.5 animate-spin" />
+            Transcription…
+          </>
+        ) : active ? (
+          <>
+            <Square className="h-3.5 w-3.5 animate-pulse fill-current" />
+            {mode === 'recording' ? 'Enregistre…' : 'En écoute…'}
+          </>
+        ) : (
+          <>
+            <Mic className="h-3.5 w-3.5" />
+            Dicter
+          </>
+        )}
+      </button>
+      {note && <span className="max-w-[220px] text-right text-[11px] text-amber-600">{note}</span>}
+    </span>
   );
 }
