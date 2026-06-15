@@ -215,7 +215,7 @@ export default async function AgendaPage({
               <label className="mb-1 block text-sm font-medium text-slate-700">
                 Date et heure
               </label>
-              <input type="datetime-local" name="start" required className={field} />
+              <input type="datetime-local" name="start" step={1800} required className={field} />
             </div>
             <div>
               <label className="mb-1 block text-sm font-medium text-slate-700">
@@ -422,6 +422,7 @@ export default async function AgendaPage({
                           <input
                             type="datetime-local"
                             name="start"
+                            step={1800}
                             required
                             className="h-9 rounded-lg border border-slate-300 px-2 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
                           />

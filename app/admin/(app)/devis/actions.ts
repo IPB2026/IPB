@@ -38,10 +38,10 @@ export async function createDevis(
     serviceRaw in ServiceType && serviceRaw !== 'AUTRE' ? serviceRaw : 'FISSURES'
   ) as ServiceType;
 
-  // Tarif du dossier (coordination + mise en forme IPB), borné 399–499 €.
+  // Tarif du dossier (coordination + mise en forme IPB) — montant libre.
   const prix = Math.round(Number(num(formData.get('prix')).replace(',', '.')) || 0);
-  if (!prix || prix < 199 || prix > 999) {
-    return 'Indiquez un montant valide (entre 399 et 499 € en principe).';
+  if (!prix || prix < 1 || prix > 100000) {
+    return 'Indiquez un montant valide (€ HT).';
   }
 
   const contact = await prisma.contact.findUnique({ where: { id: contactId } });
@@ -268,8 +268,8 @@ export async function updateDevis(
     serviceRaw in ServiceType && serviceRaw !== 'AUTRE' ? serviceRaw : 'FISSURES'
   ) as ServiceType;
   const prix = Math.round(Number(num(formData.get('prix')).replace(',', '.')) || 0);
-  if (!prix || prix < 199 || prix > 999) {
-    return 'Montant invalide (entre 399 et 499 € en principe).';
+  if (!prix || prix < 1 || prix > 100000) {
+    return 'Montant invalide (€ HT).';
   }
 
   const existing = await prisma.devis.findUnique({ where: { id }, select: { id: true } });

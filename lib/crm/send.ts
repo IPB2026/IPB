@@ -35,8 +35,6 @@ function coverHtml(opts: { greeting: string; intro: string; number: string }): s
   </div>`;
 }
 
-const firstName = (name: string) => name.split(' ')[0] || name;
-
 const DEMANDE_LABEL: Record<string, string> = {
   FISSURES: 'des fissures',
   HUMIDITE: "un problème d'humidité",
@@ -56,7 +54,6 @@ const slotLabel = (d: Date) =>
 
 /** E-mail devis AVEC créneaux de visite proposés (cf. message validé). */
 function devisSlotsCover(opts: {
-  name: string;
   demande: string;
   number: string;
   slots: Date[];
@@ -75,7 +72,7 @@ function devisSlotsCover(opts: {
         <div style="font-size:12px; opacity:.8; margin-top:2px;">Expertise fissures · humidité · structure — Occitanie</div>
       </div>
       <div style="padding:22px;">
-        <p style="margin:0 0 12px; color:#0F172A; font-size:15px;">Bonjour ${firstName(opts.name)},</p>
+        <p style="margin:0 0 12px; color:#0F172A; font-size:15px;">Bonjour,</p>
         <p style="margin:0 0 14px; color:#334155; font-size:14px; line-height:1.6;">Suite à votre demande concernant ${opts.demande}, veuillez trouver ci-joint notre <strong>devis n° ${opts.number}</strong> (PDF).</p>
         <p style="margin:0 0 8px; color:#334155; font-size:14px; line-height:1.6;"><strong>Pour lancer le diagnostic :</strong> retournez-nous le devis avec la mention « Bon pour accord », et indiquez le créneau qui vous convient pour la visite sur site :</p>
         <ul style="margin:0 0 14px; padding-left:18px;">${slotsHtml}</ul>
@@ -109,14 +106,13 @@ export async function sendDevisEmail(
   const withSlots = Array.isArray(slots) && slots.length > 0;
   const html = withSlots
     ? devisSlotsCover({
-        name: devis.contact.name,
         demande: DEMANDE_LABEL[devis.serviceType ?? 'AUTRE'] ?? 'votre projet',
         number: devis.number,
         slots: slots as Date[],
       })
     : coverHtml({
-        greeting: `Bonjour ${firstName(devis.contact.name)},`,
-        intro: `Suite à votre demande, veuillez trouver ci-joint notre devis pour : <strong>${devis.object}</strong>. Pour l'accepter, retournez-le signé avec la mention « Bon pour accord » ; nous fixons alors la visite sous 72 heures.`,
+        greeting: 'Bonjour,',
+        intro: `Veuillez trouver ci-joint notre devis pour votre demande. Pour le valider, retournez-le avec la mention « Bon pour accord » ; nous fixons alors la visite sur site.`,
         number: devis.number,
       });
 
@@ -160,8 +156,8 @@ export async function sendFactureEmail(id: string): Promise<SendResult> {
     to: facture.contact.email,
     subject: `Votre facture IPB ${facture.number}`,
     html: coverHtml({
-      greeting: `Bonjour ${firstName(facture.contact.name)},`,
-      intro: `Veuillez trouver ci-joint la facture relative à : <strong>${facture.object}</strong>. Le règlement s'effectue par virement (coordonnées sur la facture).`,
+      greeting: 'Bonjour,',
+      intro: `Veuillez trouver ci-joint votre facture. Le règlement s'effectue par virement (coordonnées indiquées sur la facture).`,
       number: facture.number,
     }),
     attachments: [
@@ -195,8 +191,8 @@ export async function sendRapportEmail(id: string): Promise<SendResult> {
     to: rapport.contact.email,
     subject: `Votre rapport d'expertise IPB ${rapport.number}`,
     html: coverHtml({
-      greeting: `Bonjour ${firstName(rapport.contact.name)},`,
-      intro: `Veuillez trouver ci-joint votre rapport de diagnostic technique : <strong>${rapport.title}</strong>. Nous restons à votre disposition pour en discuter et envisager les suites.`,
+      greeting: 'Bonjour,',
+      intro: `Veuillez trouver ci-joint votre rapport d'expertise. Nous restons à votre disposition pour en échanger et répondre à vos questions.`,
       number: rapport.number,
     }),
     attachments: [

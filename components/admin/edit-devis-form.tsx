@@ -73,8 +73,7 @@ export function EditDevisForm({
             id="ed-prix"
             name="prix"
             type="number"
-            min={399}
-            max={499}
+            min={1}
             step="10"
             value={p}
             onChange={(e) => setP(Number(e.target.value))}

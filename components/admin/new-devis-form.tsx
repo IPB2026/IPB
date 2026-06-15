@@ -36,16 +36,18 @@ export function NewDevisForm({
   defaultContactId,
   defaultServiceType,
   defaultBien,
+  defaultPrix,
   leadId,
 }: {
   contacts: { id: string; name: string; city: string | null }[];
   defaultContactId?: string;
   defaultServiceType?: string;
   defaultBien?: string;
+  defaultPrix?: number;
   leadId?: string;
 }) {
   const [error, formAction] = useFormState(createDevis, undefined);
-  const [prix, setPrix] = useState(449);
+  const [prix, setPrix] = useState(defaultPrix && defaultPrix > 0 ? defaultPrix : 449);
   const serviceDefault =
     defaultServiceType && SERVICES.some(([v]) => v === defaultServiceType)
       ? defaultServiceType
@@ -100,14 +102,17 @@ export function NewDevisForm({
             id="prix"
             name="prix"
             type="number"
-            min={399}
-            max={499}
+            min={1}
             step="10"
             value={prix}
             onChange={(e) => setPrix(Number(e.target.value))}
             className={field}
           />
-          <p className="mt-1 text-xs text-slate-400">En principe entre 399 et 499 € HT.</p>
+          {defaultPrix && defaultPrix > 0 ? (
+            <p className="mt-1 text-xs text-emerald-600">
+              Pré-rempli depuis la fiche prospect — modifiable.
+            </p>
+          ) : null}
         </div>
         <div>
           <label className={label} htmlFor="validUntil">

@@ -53,8 +53,10 @@ export default async function DevisDetailPage({
     : '';
   const canDelete = devis.factures.length === 0;
 
-  // Borne « min » des sélecteurs de créneaux = aujourd'hui + 3 jours (local).
+  // Borne « min » des sélecteurs de créneaux = aujourd'hui + 3 jours (local),
+  // arrondie à l'heure pleine pour que les pas de 30 min tombent sur :00/:30.
   const minSlot = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000);
+  minSlot.setMinutes(0, 0, 0);
   const pad = (n: number) => String(n).padStart(2, '0');
   const minDateTime = `${minSlot.getFullYear()}-${pad(minSlot.getMonth() + 1)}-${pad(minSlot.getDate())}T${pad(minSlot.getHours())}:${pad(minSlot.getMinutes())}`;
 
