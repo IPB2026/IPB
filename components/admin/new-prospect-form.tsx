@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
 import { createProspect } from '@/app/admin/(app)/leads/actions';
 import {
@@ -7,6 +8,7 @@ import {
   TIER_LABEL,
   TIER_DOT,
 } from '@/components/admin/badges';
+import { VoiceDictationButton } from '@/components/admin/voice-dictation-button';
 
 const OCCUPANT_OPTIONS: [string, string][] = [
   ['INCONNU', 'Non précisé'],
@@ -40,17 +42,27 @@ export function NewProspectForm({
   experts?: { id: string; name: string }[];
 }) {
   const [error, formAction] = useFormState(createProspect, undefined);
+  const [note, setNote] = useState('');
 
   return (
     <form action={formAction} className="space-y-5">
-      {/* Essentiel : nom + téléphone */}
+      {/* Essentiel : prénom + nom */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className={labelCls}>
+          <label htmlFor="prenom" className={labelCls}>
+            Prénom
+          </label>
+          <input id="prenom" name="prenom" autoFocus className={field} placeholder="Jean" />
+        </div>
+        <div>
+          <label htmlFor="nom" className={labelCls}>
             Nom <span className="text-orange-600">*</span>
           </label>
-          <input id="name" name="name" required autoFocus className={field} placeholder="M. / Mme Nom" />
+          <input id="nom" name="nom" required className={field} placeholder="Dupont" />
         </div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="phone" className={labelCls}>
             Téléphone
@@ -64,33 +76,32 @@ export function NewProspectForm({
             placeholder="06 12 34 56 78"
           />
         </div>
-      </div>
-
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="email" className={labelCls}>
             Email
           </label>
           <input id="email" name="email" type="email" inputMode="email" className={field} placeholder="client@email.fr" />
         </div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="city" className={labelCls}>
             Ville / code postal
           </label>
           <input id="city" name="city" className={field} placeholder="31600 Muret" />
         </div>
-      </div>
-
-      <div>
-        <label htmlFor="address" className={labelCls}>
-          Adresse du bien
-        </label>
-        <input
-          id="address"
-          name="address"
-          className={field}
-          placeholder="33 chemin des Vivans, 31600 Muret"
-        />
+        <div>
+          <label htmlFor="address" className={labelCls}>
+            Adresse du bien
+          </label>
+          <input
+            id="address"
+            name="address"
+            className={field}
+            placeholder="33 chemin des Vivans, 31600 Muret"
+          />
+        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -163,15 +174,22 @@ export function NewProspectForm({
       )}
 
       <div>
-        <label htmlFor="note" className={labelCls}>
-          Note d&apos;appel
-        </label>
+        <div className="mb-1 flex items-center justify-between gap-2">
+          <label htmlFor="note" className={labelCls + ' mb-0'}>
+            Note d&apos;appel
+          </label>
+          <VoiceDictationButton
+            onAppend={(t) => setNote((n) => (n ? `${n} ${t}` : t))}
+          />
+        </div>
         <textarea
           id="note"
           name="note"
           rows={3}
+          value={note}
+          onChange={(e) => setNote(e.target.value)}
           className={field}
-          placeholder="Ce que dit le client : nature du problème, urgence, contexte…"
+          placeholder="Ce que dit le client : nature du problème, urgence, contexte… (ou dictez)"
         />
       </div>
 

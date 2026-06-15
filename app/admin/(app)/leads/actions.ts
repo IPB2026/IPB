@@ -75,8 +75,12 @@ export async function createProspect(
   if (!session?.user) return 'Session expirée — reconnectez-vous.';
 
   const str = (k: string) => String(formData.get(k) ?? '');
+  // Nom complet composé depuis prénom + nom (saisie séparée), repli sur `name`.
+  const fullName =
+    [str('prenom'), str('nom')].map((s) => s.trim()).filter(Boolean).join(' ') ||
+    str('name');
   const parsed = prospectSchema.safeParse({
-    name: str('name'),
+    name: fullName,
     phone: str('phone'),
     email: str('email'),
     city: str('city'),
