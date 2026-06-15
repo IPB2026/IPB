@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import {
   TrendingUp,
   Wallet,
@@ -8,6 +9,7 @@ import {
   ShoppingBag,
   FileCheck2,
   Send,
+  Receipt,
 } from 'lucide-react';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { euros } from '@/lib/crm/company';
@@ -92,12 +94,19 @@ export default async function PilotagePage() {
         <h2 className="mb-2.5 text-xs font-semibold uppercase tracking-wider text-slate-400">
           Activité & performance
         </h2>
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-5">
           <Stat
             icon={FileCheck2}
             label="Acceptation des devis"
             value={`${kpi.devis.tauxAcceptation} %`}
             sub={`${kpi.devis.acceptes} / ${kpi.devis.emis} devis`}
+          />
+          <Stat
+            icon={Receipt}
+            label="Taux de facturation"
+            value={`${kpi.ca.tauxFacturation} %`}
+            sub="du CA signé déjà facturé"
+            tone={kpi.ca.tauxFacturation < 80 && kpi.ca.signe > 0 ? 'text-orange-600' : undefined}
           />
           <Stat
             icon={ShoppingBag}
@@ -126,8 +135,8 @@ export default async function PilotagePage() {
           <MonthlyBars data={kpi.leadsParMois} />
         </Panel>
 
-        {/* Entonnoir */}
-        <Panel title="Pipeline — répartition par étape">
+        {/* Entonnoir (cliquable → pipeline) */}
+        <Panel title="Pipeline — répartition par phase" href="/admin/pipeline">
           <HBars
             data={kpi.funnel.map((f) => ({ label: f.label, count: f.count }))}
             tone="bg-blue-500"
@@ -229,11 +238,25 @@ function Stat({
   );
 }
 
-function Panel({ title, children }: { title: string; children: React.ReactNode }) {
+function Panel({
+  title,
+  href,
+  children,
+}: {
+  title: string;
+  href?: string;
+  children: React.ReactNode;
+}) {
   return (
     <section className="rounded-xl border border-slate-200 bg-white p-5">
       <h2 className="mb-4 text-xs font-semibold uppercase tracking-wider text-slate-400">
-        {title}
+        {href ? (
+          <Link href={href} className="hover:text-orange-600">
+            {title} →
+          </Link>
+        ) : (
+          title
+        )}
       </h2>
       {children}
     </section>

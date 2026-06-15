@@ -343,6 +343,12 @@ export default async function ClientFichePage({
           <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
             <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
               Actions <StageBadge stage={lead.stage} />
+              <Link
+                href="/admin/pipeline"
+                className="text-[11px] font-medium normal-case tracking-normal text-orange-600 hover:underline"
+              >
+                voir le pipeline →
+              </Link>
             </h2>
             <form action={changeStage}>
               <input type="hidden" name="leadId" value={lead.id} />

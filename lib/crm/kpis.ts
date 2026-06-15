@@ -9,7 +9,7 @@ import type { ServiceType, PipelineStage } from '@prisma/client';
  */
 
 export interface KpiData {
-  ca: { signe: number; facture: number; encaisse: number; resteAEncaisser: number };
+  ca: { signe: number; facture: number; encaisse: number; resteAEncaisser: number; tauxFacturation: number };
   /** « Pipe » : montant des devis ENVOYÉS en attente de réponse (CA potentiel). */
   pipe: { montant: number; nb: number };
   devis: { acceptes: number; emis: number; panierMoyen: number; tauxAcceptation: number };
@@ -248,6 +248,8 @@ export async function computeKpis(): Promise<KpiData> {
       facture: caFacture,
       encaisse: caEncaisse,
       resteAEncaisser: Math.max(0, caFacture - caEncaisse),
+      // Part du CA signé déjà facturée (alerte si on tarde à facturer).
+      tauxFacturation: caSigne > 0 ? Math.round((caFacture / caSigne) * 1000) / 10 : 0,
     },
     pipe: {
       montant: n(pipeAgg._sum.totalHT),

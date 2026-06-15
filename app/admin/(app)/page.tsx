@@ -268,8 +268,11 @@ export default async function DashboardPage() {
       {/* Rapports à traiter (générés par les diagnostiqueurs) */}
       {(stats.rapportsSoumis.length > 0 || stats.rapportsAValider.length > 0) && (
         <section className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-          <div className="border-b border-slate-200 px-5 py-3.5">
+          <div className="flex items-center justify-between border-b border-slate-200 px-5 py-3.5">
             <h2 className="text-sm font-semibold text-slate-900">Rapports à traiter</h2>
+            <Link href="/admin/rapports" className="text-xs font-medium text-orange-600 hover:underline">
+              Tout voir →
+            </Link>
           </div>
           <ul className="divide-y divide-slate-100">
             {stats.rapportsSoumis.map((r) => (
@@ -299,8 +302,11 @@ export default async function DashboardPage() {
       {/* Factures impayées */}
       {stats.facturesImpayees.length > 0 && (
         <section className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-          <div className="border-b border-slate-200 px-5 py-3.5">
+          <div className="flex items-center justify-between border-b border-slate-200 px-5 py-3.5">
             <h2 className="text-sm font-semibold text-slate-900">Factures impayées</h2>
+            <Link href="/admin/factures" className="text-xs font-medium text-orange-600 hover:underline">
+              Tout voir →
+            </Link>
           </div>
           <ul className="divide-y divide-slate-100">
             {stats.facturesImpayees.map((f) => (
@@ -357,10 +363,13 @@ export default async function DashboardPage() {
 
       {stats.relances.length > 0 && (
         <section className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-          <div className="border-b border-slate-200 px-5 py-3.5">
+          <div className="flex items-center justify-between border-b border-slate-200 px-5 py-3.5">
             <h2 className="text-sm font-semibold text-slate-900">
               Relances à faire
             </h2>
+            <Link href="/admin/clients" className="text-xs font-medium text-orange-600 hover:underline">
+              Tous les clients →
+            </Link>
           </div>
           <ul className="divide-y divide-slate-100">
             {stats.relances.map((r) => {
