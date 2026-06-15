@@ -14,15 +14,25 @@ export const TIER_LABEL: Record<LeadTier, string> = {
   COLD: 'Froid',
 };
 
+// Ordre du cycle (insertion = ordre d'affichage des selects/filtres).
 export const STAGE_LABEL: Record<PipelineStage, string> = {
   NOUVEAU: 'Nouveau',
   A_RAPPELER: 'À rappeler',
+  DEVIS_ENVOYE: 'Devis envoyé',
   RDV_PLANIFIE: 'RDV planifié',
   VISITE_FAITE: 'Visite faite',
-  DEVIS_ENVOYE: 'Devis envoyé',
   GAGNE: 'Gagné',
   PERDU: 'Perdu',
 };
+
+/** Étapes de progression du cycle (sans Gagné/Perdu) — colonnes Kanban & pipeline. */
+export const PIPELINE_STAGES: PipelineStage[] = [
+  'NOUVEAU',
+  'A_RAPPELER',
+  'DEVIS_ENVOYE',
+  'RDV_PLANIFIE',
+  'VISITE_FAITE',
+];
 
 export const SOURCE_LABEL: Record<LeadSource, string> = {
   DIAGNOSTIC: 'Diagnostic',

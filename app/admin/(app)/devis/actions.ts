@@ -323,10 +323,11 @@ export async function deleteDevis(formData: FormData) {
   await requireUser();
   const id = num(formData.get('devisId'));
   if (!id) return;
-  const factures = await prisma.facture.count({ where: { devisId: id } });
-  if (factures > 0) return; // un devis facturé ne se supprime pas
+  // Détache d'éventuelles factures liées (elles restent), puis supprime le devis.
+  await prisma.facture.updateMany({ where: { devisId: id }, data: { devisId: null } });
   await prisma.devis.delete({ where: { id } });
   revalidatePath('/admin/devis');
+  revalidatePath('/admin');
   redirect('/admin/devis');
 }
 

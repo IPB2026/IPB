@@ -80,18 +80,20 @@ export default async function FactureDetailPage({
               </button>
             </form>
           )}
-          {facture.status !== 'PAYEE' && (
-            <form action={deleteFacture}>
-              <input type="hidden" name="factureId" value={facture.id} />
-              <ConfirmSubmit
-                message={`Supprimer la facture ${facture.number} ? Cette action est irréversible.`}
-                className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50"
-              >
-                <Trash2 className="h-4 w-4" />
-                Supprimer
-              </ConfirmSubmit>
-            </form>
-          )}
+          <form action={deleteFacture}>
+            <input type="hidden" name="factureId" value={facture.id} />
+            <ConfirmSubmit
+              message={
+                facture.status === 'PAYEE'
+                  ? `Cette facture est PAYÉE. La supprimer effacera aussi son encaissement du suivi. Supprimer quand même la facture ${facture.number} ? Action irréversible.`
+                  : `Supprimer la facture ${facture.number} ? Cette action est irréversible.`
+              }
+              className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50"
+            >
+              <Trash2 className="h-4 w-4" />
+              Supprimer
+            </ConfirmSubmit>
+          </form>
         </div>
       </div>
 

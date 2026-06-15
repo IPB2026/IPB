@@ -12,7 +12,6 @@
 
 import type { LeadTier } from '@prisma/client';
 
-export type QualBudget = 'INCONNU' | 'FAIBLE' | 'MOYEN' | 'ELEVE' | 'TRES_ELEVE';
 export type QualDelai =
   | 'INCONNU'
   | 'IMMEDIAT'
@@ -29,7 +28,6 @@ export type QualBien =
   | 'LOCAL_PRO';
 
 export interface QualificationInput {
-  budget: QualBudget;
   delai: QualDelai;
   decision: QualDecision;
   bien: QualBien;
@@ -49,13 +47,6 @@ export interface QualificationRecord extends QualificationInput, QualificationRe
 
 /** Options + libellés + points, centralisés (UI et scoring partagent la source). */
 export const QUAL_OPTIONS = {
-  budget: [
-    { value: 'INCONNU', label: 'À préciser', points: 0 },
-    { value: 'FAIBLE', label: 'Moins de 5 000 €', points: 2 },
-    { value: 'MOYEN', label: '5 000 – 15 000 €', points: 6 },
-    { value: 'ELEVE', label: '15 000 – 40 000 €', points: 9 },
-    { value: 'TRES_ELEVE', label: 'Plus de 40 000 €', points: 10 },
-  ],
   delai: [
     { value: 'INCONNU', label: 'À préciser', points: 0 },
     { value: 'IMMEDIAT', label: 'Immédiat / urgent', points: 12 },
@@ -83,13 +74,11 @@ export const QUAL_OPTIONS = {
 const axisMax = (axis: readonly { points: number }[]) =>
   Math.max(...axis.map((o) => o.points));
 export const QUAL_MAX_SCORE =
-  axisMax(QUAL_OPTIONS.budget) +
   axisMax(QUAL_OPTIONS.delai) +
   axisMax(QUAL_OPTIONS.decision) +
-  axisMax(QUAL_OPTIONS.bien); // 10 + 12 + 8 + 6 = 36
+  axisMax(QUAL_OPTIONS.bien); // 12 + 8 + 6 = 26
 
 const REASON_LABEL: Record<keyof typeof QUAL_OPTIONS, string> = {
-  budget: 'Budget',
   delai: 'Délai',
   decision: 'Décisionnaire',
   bien: 'Type de bien',
@@ -106,15 +95,16 @@ function pointsFor<K extends keyof typeof QUAL_OPTIONS>(
   return { points: opt.points, label: opt.label };
 }
 
-/** Calcule score + tier à partir des 4 axes. HOT ≥ 24, WARM ≥ 12, sinon COLD. */
+/** Calcule score + tier à partir des 3 axes. HOT ≥ 18, WARM ≥ 9, sinon COLD.
+ * (Le budget travaux n'entre PAS dans la qualif d'appel : il vient après le diagnostic.) */
 export function scoreQualification(input: QualificationInput): QualificationResult {
   const reasons: string[] = [];
   let score = 0;
-  for (const axis of ['budget', 'delai', 'decision', 'bien'] as const) {
+  for (const axis of ['delai', 'decision', 'bien'] as const) {
     const { points, label } = pointsFor(axis, input[axis]);
     score += points;
     if (points > 0) reasons.push(`${REASON_LABEL[axis]} : ${label}`);
   }
-  const tier: LeadTier = score >= 24 ? 'HOT' : score >= 12 ? 'WARM' : 'COLD';
+  const tier: LeadTier = score >= 18 ? 'HOT' : score >= 9 ? 'WARM' : 'COLD';
   return { score, maxScore: QUAL_MAX_SCORE, tier, reasons };
 }

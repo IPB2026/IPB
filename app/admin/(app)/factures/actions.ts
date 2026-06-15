@@ -20,9 +20,8 @@ export async function updateFactureStatus(formData: FormData) {
 }
 
 /**
- * Supprime une facture. Garde-fou comptable : une facture PAYÉE ne se supprime
- * pas (on l'annule via le statut). Détache un éventuel RDV lié ; les lignes
- * sont supprimées en cascade.
+ * Supprime une facture (quel que soit son statut — confirmation forte côté UI).
+ * Détache un éventuel RDV lié ; les lignes partent en cascade.
  */
 export async function deleteFacture(formData: FormData) {
   await requireAdmin();
@@ -30,9 +29,10 @@ export async function deleteFacture(formData: FormData) {
   if (!id) return;
   const f = await prisma.facture.findUnique({
     where: { id },
-    select: { status: true },
+    select: { id: true },
   });
-  if (!f || f.status === 'PAYEE') return;
+  if (!f) return;
+  // Détache un éventuel RDV lié ; les lignes partent en cascade.
   await prisma.appointment.updateMany({
     where: { factureId: id },
     data: { factureId: null },

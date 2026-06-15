@@ -6,7 +6,6 @@ import { qualifyLead } from '@/app/admin/(app)/leads/actions';
 import {
   QUAL_OPTIONS,
   scoreQualification,
-  type QualBudget,
   type QualDelai,
   type QualDecision,
   type QualBien,
@@ -76,34 +75,25 @@ export function QualificationForm({
 }: {
   leadId: string;
   current?: {
-    budget?: QualBudget;
     delai?: QualDelai;
     decision?: QualDecision;
     bien?: QualBien;
     note?: string;
   } | null;
 }) {
-  const [budget, setBudget] = useState<QualBudget>(current?.budget ?? 'INCONNU');
   const [delai, setDelai] = useState<QualDelai>(current?.delai ?? 'INCONNU');
   const [decision, setDecision] = useState<QualDecision>(
     current?.decision ?? 'INCONNU'
   );
   const [bien, setBien] = useState<QualBien>(current?.bien ?? 'INCONNU');
 
-  const preview = scoreQualification({ budget, delai, decision, bien });
+  const preview = scoreQualification({ delai, decision, bien });
 
   return (
     <form action={qualifyLead} className="space-y-4">
       <input type="hidden" name="leadId" value={leadId} />
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        <Select
-          name="budget"
-          title="Budget travaux estimé"
-          options={QUAL_OPTIONS.budget}
-          value={budget}
-          onChange={setBudget}
-        />
         <Select
           name="delai"
           title="Délai du projet"

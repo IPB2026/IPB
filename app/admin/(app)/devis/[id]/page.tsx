@@ -100,18 +100,20 @@ export default async function DevisDetailPage({
               </button>
             </form>
           )}
-          {canDelete && (
-            <form action={deleteDevis}>
-              <input type="hidden" name="devisId" value={devis.id} />
-              <ConfirmSubmit
-                message={`Supprimer définitivement le devis ${devis.number} ? Cette action est irréversible.`}
-                className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50"
-              >
-                <Trash2 className="h-4 w-4" />
-                Supprimer
-              </ConfirmSubmit>
-            </form>
-          )}
+          <form action={deleteDevis}>
+            <input type="hidden" name="devisId" value={devis.id} />
+            <ConfirmSubmit
+              message={
+                canDelete
+                  ? `Supprimer définitivement le devis ${devis.number} ? Cette action est irréversible.`
+                  : `Ce devis a une facture liée (elle sera conservée). Supprimer quand même le devis ${devis.number} ? Action irréversible.`
+              }
+              className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50"
+            >
+              <Trash2 className="h-4 w-4" />
+              Supprimer
+            </ConfirmSubmit>
+          </form>
         </div>
       </div>
 
@@ -214,11 +216,6 @@ export default async function DevisDetailPage({
           <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
             Modifier le devis
           </h2>
-          {!canDelete && (
-            <span className="text-xs text-slate-400">
-              Devis facturé — suppression désactivée
-            </span>
-          )}
         </div>
         {isTravaux ? (
           <DevisTravauxForm

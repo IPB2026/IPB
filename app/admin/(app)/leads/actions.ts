@@ -16,7 +16,6 @@ import {
   scoreQualification,
   QUAL_OPTIONS,
   type QualificationRecord,
-  type QualBudget,
   type QualDelai,
   type QualDecision,
   type QualBien,
@@ -343,7 +342,6 @@ export async function qualifyLead(formData: FormData) {
   };
 
   const input = {
-    budget: pick<QualBudget>('budget', 'INCONNU'),
     delai: pick<QualDelai>('delai', 'INCONNU'),
     decision: pick<QualDecision>('decision', 'INCONNU'),
     bien: pick<QualBien>('bien', 'INCONNU'),

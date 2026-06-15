@@ -21,6 +21,7 @@ import {
   SOURCE_LABEL,
   SERVICE_LABEL,
   STAGE_LABEL,
+  PIPELINE_STAGES,
 } from '@/components/admin/badges';
 import {
   changeStage,
@@ -207,9 +208,9 @@ export default async function LeadDetailPage({
                   defaultValue={lead.stage}
                   className="h-10 flex-1 rounded-lg border border-slate-300 px-3 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
                 >
-                  {Object.entries(STAGE_LABEL).map(([v, l]) => (
+                  {[...PIPELINE_STAGES, 'PERDU' as const].map((v) => (
                     <option key={v} value={v}>
-                      {l}
+                      {STAGE_LABEL[v]}
                     </option>
                   ))}
                 </select>
@@ -420,7 +421,12 @@ export default async function LeadDetailPage({
             <PayloadView data={lead.payload} />
           </Card>
 
-          <Card title="Historique">
+          <details className="overflow-hidden rounded-xl border border-slate-200 bg-white [&_summary::-webkit-details-marker]:hidden">
+            <summary className="flex cursor-pointer list-none items-center justify-between px-5 py-3 text-xs font-semibold uppercase tracking-wider text-slate-400 hover:bg-slate-50">
+              <span>Historique{lead.activities.length ? ` · ${lead.activities.length}` : ''}</span>
+              <span className="text-[11px] font-medium normal-case tracking-normal text-orange-600">Afficher</span>
+            </summary>
+            <div className="px-5 pb-5">
             {lead.activities.length === 0 ? (
               <p className="text-sm text-slate-500">Aucune activité.</p>
             ) : (
@@ -463,7 +469,8 @@ export default async function LeadDetailPage({
                 })}
               </ol>
             )}
-          </Card>
+            </div>
+          </details>
         </div>
       </div>
     </div>
