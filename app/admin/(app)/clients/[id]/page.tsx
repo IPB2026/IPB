@@ -26,7 +26,7 @@ import { Avatar } from '@/components/admin/avatar';
 import { ContactEditForm } from '@/components/admin/contact-edit-form';
 import { QualificationForm } from '@/components/admin/qualification-form';
 import { PayloadView } from '@/components/admin/payload-view';
-import { StageBadge } from '@/components/admin/badges';
+import { StageBadge, STAGE_LABEL, PIPELINE_STAGES } from '@/components/admin/badges';
 import type { QualificationRecord } from '@/lib/crm/qualification';
 import {
   changeStage,
@@ -347,6 +347,35 @@ export default async function ClientFichePage({
           </div>
           <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
             <div className="space-y-4">
+              <form action={changeStage} className="space-y-2">
+                <input type="hidden" name="leadId" value={lead.id} />
+                <label className="block text-sm font-medium text-slate-700">
+                  Faire évoluer l&apos;étape
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  <select
+                    name="stage"
+                    defaultValue={lead.stage}
+                    className="h-10 flex-1 rounded-lg border border-slate-300 px-3 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                  >
+                    {[...PIPELINE_STAGES, 'GAGNE' as const, 'PERDU' as const].map((v) => (
+                      <option key={v} value={v}>
+                        {STAGE_LABEL[v]}
+                      </option>
+                    ))}
+                  </select>
+                  <button
+                    type="submit"
+                    className="h-10 rounded-lg bg-slate-900 px-4 text-sm font-semibold text-white hover:bg-slate-800"
+                  >
+                    Mettre à jour
+                  </button>
+                </div>
+                <p className="text-xs text-slate-400">
+                  L&apos;étape avance aussi automatiquement quand vous envoyez un
+                  devis, planifiez un RDV, facturez, etc.
+                </p>
+              </form>
               <form action={assignLead} className="space-y-2">
                 <input type="hidden" name="leadId" value={lead.id} />
                 <label className="block text-sm font-medium text-slate-700">

@@ -133,7 +133,13 @@ export function computeDossier(d: DossierInputs): DossierView {
     raw.push({ key: 'travaux', label: 'Travaux lancés', done: travauxPlanifies });
   }
 
-  // L'étape courante = la première non faite.
+  // MONOTONIE : un palier est « fait » dès qu'un palier PLUS AVANCÉ l'est. Sans
+  // ça, une facture payée sans RDV enregistré ferait retomber l'étape courante
+  // sur « planifier la visite » (bug Jeremy Duran). On propage donc 'done' vers
+  // l'amont, puis l'étape courante = la 1ʳᵉ non faite après le dernier palier atteint.
+  for (let i = raw.length - 2; i >= 0; i--) {
+    if (raw[i + 1].done) raw[i].done = true;
+  }
   const firstTodo = raw.findIndex((s) => !s.done);
   const steps: DossierStep[] = raw.map((s, i) => ({
     ...s,
