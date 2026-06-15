@@ -519,6 +519,16 @@ const TILE_TONE: Record<string, string> = {
   slate: 'text-slate-700',
 };
 
+// Fond + bordure teintés (légers) quand la tuile demande une action (count > 0),
+// pour guider l'œil vers ce qui compte sans surcharger l'écran.
+const TILE_ACTIVE: Record<string, string> = {
+  amber: 'border-amber-200 bg-amber-50/50 hover:bg-amber-50',
+  blue: 'border-blue-200 bg-blue-50/50 hover:bg-blue-50',
+  red: 'border-red-200 bg-red-50/50 hover:bg-red-50',
+  orange: 'border-orange-200 bg-orange-50/50 hover:bg-orange-50',
+  slate: 'border-slate-200 bg-white hover:bg-slate-50',
+};
+
 function ActionTile({
   href,
   count,
@@ -536,10 +546,8 @@ function ActionTile({
   return (
     <Link
       href={href}
-      className={`flex flex-col gap-1 rounded-xl border bg-white p-3.5 transition-colors ${
-        active
-          ? 'border-slate-200 hover:bg-slate-50'
-          : 'border-slate-100 opacity-60 hover:opacity-100'
+      className={`flex flex-col gap-1 rounded-xl border p-3.5 transition-colors ${
+        active ? TILE_ACTIVE[tone] : 'border-slate-100 bg-white opacity-60 hover:opacity-100'
       }`}
     >
       <Icon className={`h-[18px] w-[18px] ${active ? TILE_TONE[tone] : 'text-slate-400'}`} />
