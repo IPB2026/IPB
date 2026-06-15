@@ -42,7 +42,7 @@ export function EditDevisForm({
   validUntil: string;
 }) {
   const [error, formAction] = useFormState(updateDevis, undefined);
-  const [p, setP] = useState(prix);
+  const [p, setP] = useState(prix > 0 ? String(prix) : '');
 
   return (
     <form action={formAction} className="space-y-3">
@@ -72,11 +72,11 @@ export function EditDevisForm({
           <input
             id="ed-prix"
             name="prix"
-            type="number"
-            min={1}
-            step="10"
+            type="text"
+            inputMode="decimal"
             value={p}
-            onChange={(e) => setP(Number(e.target.value))}
+            onChange={(e) => setP(e.target.value.replace(/[^0-9.,]/g, ''))}
+            placeholder="ex. 450"
             className={field}
           />
         </div>

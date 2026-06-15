@@ -47,7 +47,10 @@ export function NewDevisForm({
   leadId?: string;
 }) {
   const [error, formAction] = useFormState(createDevis, undefined);
-  const [prix, setPrix] = useState(defaultPrix && defaultPrix > 0 ? defaultPrix : 449);
+  const [prix, setPrix] = useState(
+    defaultPrix && defaultPrix > 0 ? String(defaultPrix) : ''
+  );
+  const prixNum = Number(prix.replace(',', '.')) || 0;
   const serviceDefault =
     defaultServiceType && SERVICES.some(([v]) => v === defaultServiceType)
       ? defaultServiceType
@@ -101,11 +104,11 @@ export function NewDevisForm({
           <input
             id="prix"
             name="prix"
-            type="number"
-            min={1}
-            step="10"
+            type="text"
+            inputMode="decimal"
             value={prix}
-            onChange={(e) => setPrix(Number(e.target.value))}
+            onChange={(e) => setPrix(e.target.value.replace(/[^0-9.,]/g, ''))}
+            placeholder="ex. 450"
             className={field}
           />
           {defaultPrix && defaultPrix > 0 ? (
@@ -141,7 +144,7 @@ export function NewDevisForm({
         site apparaît en « — » ; le montant porte la coordination et la mise en forme du rapport.
         <div className="mt-2 flex items-center justify-between border-t border-slate-200 pt-2">
           <span className="font-medium">Net à payer · TVA non applicable (293 B)</span>
-          <span className="text-lg font-bold tabular-nums text-orange-600">{eur(prix)}</span>
+          <span className="text-lg font-bold tabular-nums text-orange-600">{eur(prixNum)}</span>
         </div>
       </div>
 

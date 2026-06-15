@@ -34,7 +34,7 @@ export function EditFactureForm({
   dueDate: string;
 }) {
   const [error, formAction] = useFormState(updateFacture, undefined);
-  const [m, setM] = useState(montant);
+  const [m, setM] = useState(montant > 0 ? String(montant) : '');
 
   return (
     <form action={formAction} className="space-y-4">
@@ -58,11 +58,11 @@ export function EditFactureForm({
           <input
             id="ef-montant"
             name="montant"
-            type="number"
-            min={1}
-            step="10"
+            type="text"
+            inputMode="decimal"
             value={m}
-            onChange={(e) => setM(Number(e.target.value))}
+            onChange={(e) => setM(e.target.value.replace(/[^0-9.,]/g, ''))}
+            placeholder="ex. 450"
             className={field}
           />
         </div>
