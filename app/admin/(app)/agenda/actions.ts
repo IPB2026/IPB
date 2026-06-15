@@ -251,13 +251,22 @@ export async function generateInvoiceFromAppointment(formData: FormData) {
   const due = new Date();
   due.setDate(due.getDate() + 30);
 
+  // Montant = celui du devis diagnostic accepté du client (cohérence devis ↔
+  // facture) ; à défaut le tarif par défaut, modifiable ensuite sur la facture.
+  const devisAccepte = await prisma.devis.findFirst({
+    where: { contactId: appt.contactId, status: 'ACCEPTE', serviceType: { not: 'AUTRE' } },
+    orderBy: { acceptedAt: 'desc' },
+    select: { totalHT: true },
+  });
+  const prix = devisAccepte ? Number(devisAccepte.totalHT) : DIAGNOSTIC_PRICE;
+
   const facture = await prisma.facture.create({
     data: {
       number,
       contactId: appt.contactId,
       object,
       dueDate: due,
-      totalHT: DIAGNOSTIC_PRICE,
+      totalHT: prix,
       lines: {
         create: [
           {
@@ -265,8 +274,8 @@ export async function generateInvoiceFromAppointment(formData: FormData) {
             detail: appt.location || null,
             unit: 'Forfait',
             qty: 1,
-            unitPrice: DIAGNOSTIC_PRICE,
-            total: DIAGNOSTIC_PRICE,
+            unitPrice: prix,
+            total: prix,
             position: 0,
           },
         ],

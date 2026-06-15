@@ -204,19 +204,46 @@ export async function updateDevisTravaux(
   return undefined;
 }
 
+const DEVIS_STATUS_FR: Record<string, string> = {
+  BROUILLON: 'brouillon',
+  ENVOYE: 'envoyé',
+  ACCEPTE: 'accepté',
+  REFUSE: 'refusé',
+  EXPIRE: 'expiré',
+};
+
 export async function updateDevisStatus(formData: FormData) {
   await requireUser();
   const id = num(formData.get('devisId'));
   const status = num(formData.get('status'));
   if (!id || !(status in DevisStatus)) return;
-  const updated = await prisma.devis.update({
+  const before = await prisma.devis.findUnique({
     where: { id },
-    data: { status: status as DevisStatus },
-    select: { contactId: true },
+    select: { status: true, contactId: true, leadId: true, number: true },
   });
+  if (!before) return;
+  await prisma.devis.update({ where: { id }, data: { status: status as DevisStatus } });
+  // Trace le changement dans la timeline du dossier (sauf statut inchangé).
+  if (before.status !== status) {
+    await prisma.activity.create({
+      data: {
+        type: 'SYSTEME',
+        contactId: before.contactId,
+        leadId: before.leadId,
+        content: `Devis ${before.number} : statut → ${DEVIS_STATUS_FR[status] ?? status}`,
+      },
+    });
+  }
+  // Cohérence pipeline : un devis refusé/expiré sort le lead du « gagné ».
+  if (before.leadId && (status === 'REFUSE' || status === 'EXPIRE')) {
+    await prisma.lead.updateMany({
+      where: { id: before.leadId, stage: 'GAGNE' },
+      data: { stage: 'PERDU' },
+    });
+  }
   revalidatePath(`/admin/devis/${id}`);
   revalidatePath('/admin/devis');
-  revalidateCrm(updated.contactId);
+  revalidateCrm(before.contactId);
 }
 
 /**

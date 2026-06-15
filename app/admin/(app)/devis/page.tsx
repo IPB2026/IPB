@@ -5,7 +5,7 @@ import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
 import { EmptyState } from '@/components/admin/empty-state';
 import { MobileCardList, MobileCardRow } from '@/components/admin/mobile-card';
-import { DevisStatusBadge } from '@/components/admin/badges';
+import { DevisStatusBadge, SERVICE_LABEL } from '@/components/admin/badges';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 import { deleteDevis } from '@/app/admin/(app)/devis/actions';
 import { euros } from '@/lib/crm/company';
@@ -68,7 +68,14 @@ export default async function DevisListPage() {
                 title={d.number}
                 badge={<DevisStatusBadge status={d.status} />}
                 amount={euros(Number(d.totalHT))}
-                lines={[d.contact.name, d.object]}
+                lines={[
+                  d.contact.name,
+                  d.serviceType === 'AUTRE'
+                    ? 'Devis travaux'
+                    : d.serviceType
+                      ? `Diagnostic ${SERVICE_LABEL[d.serviceType]}`
+                      : d.object,
+                ]}
                 action={
                   <form action={deleteDevis}>
                     <input type="hidden" name="devisId" value={d.id} />
@@ -91,7 +98,7 @@ export default async function DevisListPage() {
                 <tr className="border-b border-slate-200 text-left text-xs font-medium uppercase tracking-wider text-slate-400">
                   <th className="px-5 py-2.5">Numéro</th>
                   <th className="px-5 py-2.5">Client</th>
-                  <th className="px-5 py-2.5">Objet</th>
+                  <th className="px-5 py-2.5">Type</th>
                   <th className="px-5 py-2.5">Statut</th>
                   <th className="px-5 py-2.5 text-right">Montant HT</th>
                   <th className="px-5 py-2.5 text-right">Créé</th>
@@ -109,8 +116,25 @@ export default async function DevisListPage() {
                         {d.number}
                       </Link>
                     </td>
-                    <td className="px-5 py-3 text-slate-600">{d.contact.name}</td>
-                    <td className="px-5 py-3 text-slate-600">{d.object}</td>
+                    <td className="px-5 py-3 text-slate-600">
+                      <Link
+                        href={`/admin/clients/${d.contactId}`}
+                        className="hover:text-orange-600 hover:underline"
+                      >
+                        {d.contact.name}
+                      </Link>
+                    </td>
+                    <td className="px-5 py-3">
+                      {d.serviceType === 'AUTRE' ? (
+                        <span className="inline-flex rounded-md bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-700">
+                          Travaux
+                        </span>
+                      ) : (
+                        <span className="text-slate-600">
+                          {d.serviceType ? SERVICE_LABEL[d.serviceType] : '—'}
+                        </span>
+                      )}
+                    </td>
                     <td className="px-5 py-3">
                       <DevisStatusBadge status={d.status} />
                     </td>

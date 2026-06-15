@@ -26,7 +26,7 @@ import { Avatar } from '@/components/admin/avatar';
 import { ContactEditForm } from '@/components/admin/contact-edit-form';
 import { QualificationForm } from '@/components/admin/qualification-form';
 import { PayloadView } from '@/components/admin/payload-view';
-import { StageBadge, STAGE_LABEL, PIPELINE_STAGES } from '@/components/admin/badges';
+import { StageBadge, PhaseBadge, STAGE_LABEL, PIPELINE_STAGES } from '@/components/admin/badges';
 import type { QualificationRecord } from '@/lib/crm/qualification';
 import {
   changeStage,
@@ -161,6 +161,13 @@ export default async function ClientFichePage({
       .filter(Boolean)
       .join(', ') || '—';
 
+  // Récap financier du dossier (facturé / encaissé / reste dû).
+  const factureTotal = c.factures
+    .filter((f) => ['ENVOYEE', 'PAYEE'].includes(f.status))
+    .reduce((s, f) => s + Number(f.totalHT), 0);
+  const encaisse = c.factures.reduce((s, f) => s + Number(f.acompte ?? 0), 0);
+  const resteDu = Math.max(0, factureTotal - encaisse);
+
   return (
     <div className="mx-auto max-w-4xl space-y-6">
       <Link
@@ -185,6 +192,7 @@ export default async function ClientFichePage({
               ) : (
                 <Pill tone="bg-slate-100 text-slate-600">Prospect</Pill>
               )}
+              <PhaseBadge phase={dossier.phase} />
             </div>
             <p className="mt-0.5 text-sm text-slate-500">
               {[c.city, dossier.clientSince ? `client depuis ${dossier.clientSince.toLocaleDateString('fr-FR')}` : null]
@@ -258,6 +266,16 @@ export default async function ClientFichePage({
                     ? euros(dossier.montantDevis)
                     : '—'
               }
+            />
+          )}
+          {isAdmin && factureTotal > 0 && (
+            <Metric label="Facturé" value={euros(factureTotal)} />
+          )}
+          {isAdmin && factureTotal > 0 && (
+            <Metric
+              label="Reste dû"
+              value={resteDu > 0 ? euros(resteDu) : 'Soldé'}
+              tone={resteDu > 0 ? 'text-orange-600' : 'text-emerald-600'}
             />
           )}
           {isAdmin && dossier.travauxAPlanifier && (
