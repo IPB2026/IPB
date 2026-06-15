@@ -22,6 +22,7 @@ export function MobileCardRow({
   amount,
   lines,
   leading,
+  action,
 }: {
   href: string;
   title: React.ReactNode;
@@ -29,12 +30,14 @@ export function MobileCardRow({
   amount?: React.ReactNode;
   lines?: React.ReactNode[];
   leading?: React.ReactNode;
+  /** Action secondaire (ex. supprimer) rendue hors du lien, à droite. */
+  action?: React.ReactNode;
 }) {
   return (
-    <li>
+    <li className="flex items-stretch">
       <Link
         href={href}
-        className="flex items-start gap-3 px-4 py-3.5 transition-colors active:bg-slate-50"
+        className="flex min-w-0 flex-1 items-start gap-3 px-4 py-3.5 transition-colors active:bg-slate-50"
       >
         {leading}
         <div className="min-w-0 flex-1">
@@ -56,6 +59,9 @@ export function MobileCardRow({
           </span>
         )}
       </Link>
+      {action && (
+        <div className="flex shrink-0 items-center pr-2">{action}</div>
+      )}
     </li>
   );
 }

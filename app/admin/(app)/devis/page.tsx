@@ -1,11 +1,13 @@
 import Link from 'next/link';
-import { Plus, FileText, Download } from 'lucide-react';
+import { Plus, FileText, Download, Trash2 } from 'lucide-react';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
 import { EmptyState } from '@/components/admin/empty-state';
 import { MobileCardList, MobileCardRow } from '@/components/admin/mobile-card';
 import { DevisStatusBadge } from '@/components/admin/badges';
+import { ConfirmSubmit } from '@/components/admin/confirm-submit';
+import { deleteDevis } from '@/app/admin/(app)/devis/actions';
 import { euros } from '@/lib/crm/company';
 
 export const dynamic = 'force-dynamic';
@@ -67,6 +69,17 @@ export default async function DevisListPage() {
                 badge={<DevisStatusBadge status={d.status} />}
                 amount={euros(Number(d.totalHT))}
                 lines={[d.contact.name, d.object]}
+                action={
+                  <form action={deleteDevis}>
+                    <input type="hidden" name="devisId" value={d.id} />
+                    <ConfirmSubmit
+                      message={`Supprimer définitivement le devis ${d.number} ? Action irréversible.`}
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-red-500 active:bg-red-50"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </ConfirmSubmit>
+                  </form>
+                }
               />
             ))}
           </MobileCardList>
@@ -82,6 +95,7 @@ export default async function DevisListPage() {
                   <th className="px-5 py-2.5">Statut</th>
                   <th className="px-5 py-2.5 text-right">Montant HT</th>
                   <th className="px-5 py-2.5 text-right">Créé</th>
+                  <th className="px-5 py-2.5" />
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
@@ -105,6 +119,17 @@ export default async function DevisListPage() {
                     </td>
                     <td className="px-5 py-3 text-right text-xs tabular-nums text-slate-400">
                       {d.createdAt.toLocaleDateString('fr-FR')}
+                    </td>
+                    <td className="px-5 py-3 text-right">
+                      <form action={deleteDevis}>
+                        <input type="hidden" name="devisId" value={d.id} />
+                        <ConfirmSubmit
+                          message={`Supprimer définitivement le devis ${d.number} ? Action irréversible.`}
+                          className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 hover:bg-red-50 hover:text-red-600"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </ConfirmSubmit>
+                      </form>
                     </td>
                   </tr>
                 ))}

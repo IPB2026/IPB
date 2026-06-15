@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Download, FileCheck2, ReceiptText, Mail, CheckCircle2, CalendarClock, Trash2 } from 'lucide-react';
+import { ArrowLeft, Download, FileCheck2, ReceiptText, CheckCircle2, CalendarClock, Trash2 } from 'lucide-react';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import {
@@ -14,7 +14,7 @@ import {
   acceptDevis,
   deleteDevis,
 } from '@/app/admin/(app)/devis/actions';
-import { sendDevis } from '@/app/admin/(app)/send-actions';
+import { DevisSendForm } from '@/components/admin/devis-send-form';
 import { EditDevisForm } from '@/components/admin/edit-devis-form';
 import { DevisTravauxForm } from '@/components/admin/devis-travaux-form';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
@@ -53,6 +53,25 @@ export default async function DevisDetailPage({
     : '';
   const canDelete = devis.factures.length === 0;
 
+  // Borne « min » des sélecteurs de créneaux = aujourd'hui + 3 jours (local).
+  const minSlot = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000);
+  const pad = (n: number) => String(n).padStart(2, '0');
+  const minDateTime = `${minSlot.getFullYear()}-${pad(minSlot.getMonth() + 1)}-${pad(minSlot.getDate())}T${pad(minSlot.getHours())}:${pad(minSlot.getMinutes())}`;
+
+  // RDV à venir (rappel anti-conflit dans le formulaire de créneaux).
+  const upcomingAppts = devis.contact.email
+    ? await prisma.appointment.findMany({
+        where: { status: { not: 'ANNULE' }, start: { gte: new Date() } },
+        orderBy: { start: 'asc' },
+        take: 8,
+        select: { id: true, start: true, title: true },
+      })
+    : [];
+  const upcoming = upcomingAppts.map((a) => ({
+    id: a.id,
+    label: `${a.start.toLocaleString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })} — ${a.title}`,
+  }));
+
   return (
     <div className="mx-auto max-w-4xl space-y-6">
       <Link
@@ -89,16 +108,11 @@ export default async function DevisDetailPage({
             PDF
           </a>
           {devis.contact.email && (
-            <form action={sendDevis}>
-              <input type="hidden" name="devisId" value={devis.id} />
-              <button
-                type="submit"
-                className="inline-flex items-center gap-1.5 rounded-lg bg-orange-600 px-3 py-2 text-sm font-semibold text-white hover:bg-orange-700"
-              >
-                <Mail className="h-4 w-4" />
-                Envoyer au client
-              </button>
-            </form>
+            <DevisSendForm
+              devisId={devis.id}
+              minDateTime={minDateTime}
+              upcoming={upcoming}
+            />
           )}
           <form action={deleteDevis}>
             <input type="hidden" name="devisId" value={devis.id} />

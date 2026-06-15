@@ -2,6 +2,7 @@
 
 import { revalidatePath } from 'next/cache';
 import { requireAdmin } from '@/lib/auth-helpers';
+import { prisma } from '@/lib/prisma';
 import {
   sendDevisEmail,
   sendFactureEmail,
@@ -15,6 +16,67 @@ export async function sendDevis(formData: FormData) {
   const id = str(formData.get('devisId'));
   if (!id) return;
   const res = await sendDevisEmail(id);
+  if (!res.ok) throw new Error(`Échec de l'envoi du devis : ${res.error}`);
+  revalidatePath(`/admin/devis/${id}`);
+  revalidatePath('/admin/devis');
+}
+
+// Délai minimum entre l'envoi du mail et le créneau proposé (3 jours pleins).
+const MIN_LEAD_DAYS = 3;
+// Fenêtre de chevauchement considérée comme un conflit d'agenda (± 1 h).
+const CONFLICT_WINDOW_MIN = 60;
+
+/**
+ * Envoi du devis AVEC créneaux de visite proposés (mode collaboratif).
+ * Garde-fous : chaque créneau doit être à ≥ 3 jours de l'envoi et ne pas
+ * chevaucher un rendez-vous déjà planifié dans l'agenda (± 1 h).
+ */
+export async function sendDevisWithSlots(formData: FormData) {
+  await requireAdmin();
+  const id = str(formData.get('devisId'));
+  if (!id) return;
+
+  // Récupère les créneaux saisis (slot0..slot2), parse, ignore les vides.
+  const slots: Date[] = [];
+  for (let i = 0; i < 3; i++) {
+    const raw = str(formData.get(`slot${i}`));
+    if (!raw) continue;
+    const d = new Date(raw);
+    if (!Number.isNaN(d.getTime())) slots.push(d);
+  }
+  if (slots.length === 0) {
+    throw new Error('Indiquez au moins un créneau de visite.');
+  }
+
+  const minDate = new Date(Date.now() + MIN_LEAD_DAYS * 24 * 60 * 60 * 1000);
+  for (const d of slots) {
+    if (d.getTime() < minDate.getTime()) {
+      throw new Error(
+        `Chaque créneau doit être au minimum à ${MIN_LEAD_DAYS} jours de l'envoi.`
+      );
+    }
+  }
+
+  // Anti-conflit agenda : aucun RDV actif ne doit chevaucher un créneau (± 1 h).
+  const win = CONFLICT_WINDOW_MIN * 60 * 1000;
+  for (const d of slots) {
+    const conflict = await prisma.appointment.count({
+      where: {
+        status: { not: 'ANNULE' },
+        start: { gte: new Date(d.getTime() - win), lte: new Date(d.getTime() + win) },
+      },
+    });
+    if (conflict > 0) {
+      throw new Error(
+        `Le créneau du ${d.toLocaleString('fr-FR')} chevauche un rendez-vous existant.`
+      );
+    }
+  }
+
+  // Tri chronologique pour un affichage propre dans l'e-mail.
+  slots.sort((a, b) => a.getTime() - b.getTime());
+
+  const res = await sendDevisEmail(id, slots);
   if (!res.ok) throw new Error(`Échec de l'envoi du devis : ${res.error}`);
   revalidatePath(`/admin/devis/${id}`);
   revalidatePath('/admin/devis');

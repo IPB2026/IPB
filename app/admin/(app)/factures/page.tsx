@@ -1,11 +1,13 @@
 import Link from 'next/link';
-import { ReceiptText, Download, Plus } from 'lucide-react';
+import { ReceiptText, Download, Plus, Trash2 } from 'lucide-react';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
 import { EmptyState } from '@/components/admin/empty-state';
 import { MobileCardList, MobileCardRow } from '@/components/admin/mobile-card';
 import { FactureStatusBadge } from '@/components/admin/badges';
+import { ConfirmSubmit } from '@/components/admin/confirm-submit';
+import { deleteFacture } from '@/app/admin/(app)/factures/actions';
 import { euros } from '@/lib/crm/company';
 
 export const dynamic = 'force-dynamic';
@@ -70,6 +72,17 @@ export default async function FacturesListPage() {
                     ? `Échéance ${f.dueDate.toLocaleDateString('fr-FR')}`
                     : f.object,
                 ]}
+                action={
+                  <form action={deleteFacture}>
+                    <input type="hidden" name="factureId" value={f.id} />
+                    <ConfirmSubmit
+                      message={`Supprimer définitivement la facture ${f.number} ? Action irréversible.`}
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-red-500 active:bg-red-50"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </ConfirmSubmit>
+                  </form>
+                }
               />
             ))}
           </MobileCardList>
@@ -85,6 +98,7 @@ export default async function FacturesListPage() {
                   <th className="px-5 py-2.5">Statut</th>
                   <th className="px-5 py-2.5 text-right">Montant HT</th>
                   <th className="px-5 py-2.5 text-right">Échéance</th>
+                  <th className="px-5 py-2.5" />
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
@@ -108,6 +122,17 @@ export default async function FacturesListPage() {
                     </td>
                     <td className="px-5 py-3 text-right text-xs tabular-nums text-slate-400">
                       {f.dueDate ? f.dueDate.toLocaleDateString('fr-FR') : '—'}
+                    </td>
+                    <td className="px-5 py-3 text-right">
+                      <form action={deleteFacture}>
+                        <input type="hidden" name="factureId" value={f.id} />
+                        <ConfirmSubmit
+                          message={`Supprimer définitivement la facture ${f.number} ? Action irréversible.`}
+                          className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 hover:bg-red-50 hover:text-red-600"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </ConfirmSubmit>
+                      </form>
                     </td>
                   </tr>
                 ))}

@@ -37,9 +37,66 @@ function coverHtml(opts: { greeting: string; intro: string; number: string }): s
 
 const firstName = (name: string) => name.split(' ')[0] || name;
 
+const DEMANDE_LABEL: Record<string, string> = {
+  FISSURES: 'des fissures',
+  HUMIDITE: "un problème d'humidité",
+  EXPERTISE_ACHAT: 'une expertise avant achat',
+  MUR_PORTEUR: "un projet d'ouverture de mur porteur",
+  AUTRE: 'votre projet',
+};
+
+const slotLabel = (d: Date) =>
+  d.toLocaleString('fr-FR', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+
+/** E-mail devis AVEC créneaux de visite proposés (cf. message validé). */
+function devisSlotsCover(opts: {
+  name: string;
+  demande: string;
+  number: string;
+  slots: Date[];
+}): string {
+  const slotsHtml = opts.slots
+    .map(
+      (d) =>
+        `<li style="margin:0 0 6px; color:#334155; font-size:14px;"><strong>🗓️ ${slotLabel(d)}</strong></li>`
+    )
+    .join('');
+  return `
+  <div style="font-family: Arial, sans-serif; background:#f8fafc; padding:24px;">
+    <div style="max-width:600px; margin:0 auto; background:#fff; border:1px solid #e2e8f0; border-radius:14px; overflow:hidden;">
+      <div style="background:#0F172A; color:#fff; padding:18px 22px;">
+        <div style="font-size:16px; font-weight:700;">${COMPANY.name}</div>
+        <div style="font-size:12px; opacity:.8; margin-top:2px;">Expertise fissures · humidité · structure — Occitanie</div>
+      </div>
+      <div style="padding:22px;">
+        <p style="margin:0 0 12px; color:#0F172A; font-size:15px;">Bonjour ${firstName(opts.name)},</p>
+        <p style="margin:0 0 14px; color:#334155; font-size:14px; line-height:1.6;">Suite à votre demande concernant ${opts.demande}, veuillez trouver ci-joint notre <strong>devis n° ${opts.number}</strong> (PDF).</p>
+        <p style="margin:0 0 8px; color:#334155; font-size:14px; line-height:1.6;"><strong>Pour lancer le diagnostic :</strong> retournez-nous le devis avec la mention « Bon pour accord », et indiquez le créneau qui vous convient pour la visite sur site :</p>
+        <ul style="margin:0 0 14px; padding-left:18px;">${slotsHtml}</ul>
+        <p style="margin:0 0 14px; color:#334155; font-size:14px; line-height:1.6;">Répondez simplement à cet e-mail avec votre choix — nous confirmons sous 24 h et l'invitation arrive dans votre agenda.</p>
+        <p style="margin:0 0 14px; color:#64748b; font-size:12.5px; font-style:italic; line-height:1.6;">Visite réalisée par le diagnostiqueur indépendant mandaté ; rapport remis sous 3 à 5 jours ouvrés après la visite.</p>
+        <p style="margin:0; color:#64748b; font-size:13px;">Une question ? Appelez le <strong>${COMPANY.phone}</strong>.</p>
+        <p style="margin:16px 0 0; color:#0F172A; font-size:14px;">Cordialement,<br/>${COMPANY.name}</p>
+      </div>
+      <div style="padding:12px 22px; border-top:1px solid #e2e8f0; font-size:11px; color:#94a3b8;">
+        ${COMPANY.postalCode} ${COMPANY.city} · ${COMPANY.phone} · ${COMPANY.email}
+      </div>
+    </div>
+  </div>`;
+}
+
 export type SendResult = { ok: true } | { ok: false; error: string };
 
-export async function sendDevisEmail(id: string): Promise<SendResult> {
+export async function sendDevisEmail(
+  id: string,
+  slots?: Date[]
+): Promise<SendResult> {
   const devis = await prisma.devis.findUnique({
     where: { id },
     include: { contact: true },
@@ -49,14 +106,26 @@ export async function sendDevisEmail(id: string): Promise<SendResult> {
   const pdf = await buildDevisPdf(id);
   if (!pdf) return { ok: false, error: 'PDF indisponible' };
 
+  const withSlots = Array.isArray(slots) && slots.length > 0;
+  const html = withSlots
+    ? devisSlotsCover({
+        name: devis.contact.name,
+        demande: DEMANDE_LABEL[devis.serviceType ?? 'AUTRE'] ?? 'votre projet',
+        number: devis.number,
+        slots: slots as Date[],
+      })
+    : coverHtml({
+        greeting: `Bonjour ${firstName(devis.contact.name)},`,
+        intro: `Suite à votre demande, veuillez trouver ci-joint notre devis pour : <strong>${devis.object}</strong>. Pour l'accepter, retournez-le signé avec la mention « Bon pour accord » ; nous fixons alors la visite sous 72 heures.`,
+        number: devis.number,
+      });
+
   const res = await sendEmail({
     to: devis.contact.email,
-    subject: `Votre devis IPB ${devis.number}`,
-    html: coverHtml({
-      greeting: `Bonjour ${firstName(devis.contact.name)},`,
-      intro: `Suite à votre demande, veuillez trouver ci-joint notre devis pour : <strong>${devis.object}</strong>. Pour l'accepter, retournez-le signé avec la mention « Bon pour accord » ; nous fixons alors la visite sous 72 heures.`,
-      number: devis.number,
-    }),
+    subject: withSlots
+      ? `Votre devis IPB ${devis.number} + créneaux pour le diagnostic`
+      : `Votre devis IPB ${devis.number}`,
+    html,
     attachments: [
       { filename: `${devis.number}.pdf`, content: pdf.toString('base64'), encoding: 'base64', contentType: 'application/pdf' },
     ],
@@ -69,7 +138,9 @@ export async function sendDevisEmail(id: string): Promise<SendResult> {
       type: 'EMAIL',
       contactId: devis.contactId,
       leadId: devis.leadId,
-      content: `Devis ${devis.number} envoyé par e-mail à ${devis.contact.email}`,
+      content: withSlots
+        ? `Devis ${devis.number} envoyé à ${devis.contact.email} avec ${slots!.length} créneau(x) proposé(s)`
+        : `Devis ${devis.number} envoyé par e-mail à ${devis.contact.email}`,
     },
   });
   return { ok: true };
