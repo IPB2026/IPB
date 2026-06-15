@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import {
   LayoutDashboard,
   BarChart3,
+  Columns3,
   Search,
   Users,
   UserCheck,
@@ -21,6 +22,7 @@ const adminItems = [
   { href: '/admin', label: 'Tableau de bord', icon: LayoutDashboard },
   { href: '/admin/pilotage', label: 'Pilotage', icon: BarChart3 },
   { href: '/admin/leads', label: 'Prospects', icon: Users },
+  { href: '/admin/pipeline', label: 'Pipeline', icon: Columns3 },
   { href: '/admin/clients', label: 'Clients', icon: UserCheck },
   { href: '/admin/agenda', label: 'Agenda', icon: CalendarClock },
   { href: '/admin/devis', label: 'Devis', icon: FileText },

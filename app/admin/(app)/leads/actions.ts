@@ -394,6 +394,32 @@ export async function qualifyLead(formData: FormData) {
   revalidateLead(leadId);
 }
 
+/** Déplace un prospect d'une étape de pipeline à une autre (Kanban). */
+export async function moveLead(leadId: string, stage: string) {
+  await requireUser();
+  if (!leadId || !(stage in PipelineStage)) return;
+  const current = await prisma.lead.findUnique({
+    where: { id: leadId },
+    select: { stage: true, contactId: true },
+  });
+  if (!current || current.stage === stage) return;
+  await prisma.lead.update({
+    where: { id: leadId },
+    data: { stage: stage as PipelineStage },
+  });
+  await prisma.activity.create({
+    data: {
+      type: ActivityType.CHANGEMENT_ETAPE,
+      leadId,
+      contactId: current.contactId,
+      content: `Étape : ${current.stage} → ${stage}`,
+    },
+  });
+  revalidatePath('/admin/pipeline');
+  revalidatePath('/admin/leads');
+  revalidatePath('/admin');
+}
+
 /** Marque une relance comme effectuée. */
 export async function completeRelance(formData: FormData) {
   await requireUser();

@@ -5,6 +5,7 @@ import {
   Clock,
   Inbox,
   Plus,
+  Columns3,
   Wrench,
   CalendarClock,
   Sparkles,
@@ -128,14 +129,23 @@ async function getStats() {
   };
 }
 
-const newProspectBtn = (
-  <Link
-    href="/admin/leads/nouveau"
-    className="inline-flex items-center gap-1.5 rounded-lg bg-orange-600 px-3.5 py-2 text-sm font-semibold text-white transition-colors duration-150 hover:bg-orange-700"
-  >
-    <Plus className="h-4 w-4" />
-    Nouveau prospect
-  </Link>
+const headerActions = (
+  <>
+    <Link
+      href="/admin/pipeline"
+      className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50"
+    >
+      <Columns3 className="h-4 w-4" />
+      Pipeline
+    </Link>
+    <Link
+      href="/admin/leads/nouveau"
+      className="inline-flex items-center gap-1.5 rounded-lg bg-orange-600 px-3.5 py-2 text-sm font-semibold text-white transition-colors duration-150 hover:bg-orange-700"
+    >
+      <Plus className="h-4 w-4" />
+      Nouveau prospect
+    </Link>
+  </>
 );
 
 export default async function DashboardPage() {
@@ -171,7 +181,7 @@ export default async function DashboardPage() {
       <PageHeader
         title="Tableau de bord"
         subtitle="Vue d'ensemble de votre activité commerciale."
-        actions={newProspectBtn}
+        actions={headerActions}
       />
 
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
