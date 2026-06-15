@@ -43,9 +43,12 @@ export interface DossierView {
   isClient: boolean;
   clientSince: Date | null;
   montant: number | null; // total du devis ACCEPTÉ (CA signé) — null si pas encore accepté
-  /** Montant du devis le plus pertinent, accepté OU simplement envoyé (le « pipe »
-   *  côté dossier). Permet d'afficher un montant dès le devis envoyé. */
+  /** Montant du devis le plus pertinent, accepté OU envoyé (le « pipe » côté
+   *  dossier). Exclut brouillons/refusés/expirés. Affichable dès le devis envoyé. */
   montantDevis: number | null;
+  /** Phase canonique du dossier (= colonne de pipeline). SOURCE UNIQUE partagée
+   *  par la liste, la fiche, le pipeline et le tableau de bord. */
+  phase: string;
   travauxAPlanifier: boolean;
   /** Rapport remis, mais le client n'a pas encore décidé des suites (pas de devis travaux). */
   enSuiviClient: boolean;
@@ -68,10 +71,12 @@ export function computeDossier(d: DossierInputs): DossierView {
   const montant = primaryDevis?.totalHT ?? null;
   // Montant du devis le plus pertinent même non accepté : devis accepté en
   // priorité, sinon n'importe quel devis diagnostic (le plus récent fourni).
+  // Devis envoyé/accepté uniquement (jamais brouillon, refusé ou expiré).
   const primaryAnyDevis =
     primaryDevis ??
-    d.devis.find((x) => x.serviceType !== 'AUTRE') ??
-    d.devis[0];
+    d.devis.find(
+      (x) => x.serviceType !== 'AUTRE' && ['ENVOYE', 'ACCEPTE'].includes(x.status)
+    );
   const montantDevis = primaryAnyDevis?.totalHT ?? null;
 
   // Avancement déduit AUSSI de l'étape pipeline réglée manuellement.
@@ -135,6 +140,18 @@ export function computeDossier(d: DossierInputs): DossierView {
     current: i === firstTodo,
   }));
 
+  // Phase canonique (= colonne pipeline) : milestone le plus avancé atteint.
+  // Réutilise EXACTEMENT les mêmes booléens que le suivi du dossier → la liste,
+  // la fiche, le pipeline et le dashboard affichent toujours la même phase.
+  let phase: string;
+  if (rapportEnvoye) phase = hasDevisTravaux ? 'SUIVI' : 'RAPPORT_ENVOYE';
+  else if (factureEnvoyee) phase = 'FACTURE_ENVOYEE';
+  else if (visiteFaite) phase = 'VISITE_FAITE';
+  else if (rdvPris) phase = 'RDV_PLANIFIE';
+  else if (isClient) phase = 'RDV_PLANIFIE'; // devis accepté → planifier la visite
+  else if (devisEnvoye) phase = 'DEVIS_ENVOYE';
+  else phase = st || 'NOUVEAU';
+
   // Suivi « simple » = rapport remis sans devis travaux (la norme). Pas de relance travaux.
   const enSuiviClient =
     rapportEnvoye && !hasDevisTravaux && !travauxPlanifies;
@@ -146,6 +163,7 @@ export function computeDossier(d: DossierInputs): DossierView {
     clientSince,
     montant,
     montantDevis,
+    phase,
     travauxAPlanifier,
     enSuiviClient,
     hasDevisTravaux,

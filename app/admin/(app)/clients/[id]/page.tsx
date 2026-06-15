@@ -251,7 +251,13 @@ export default async function ClientFichePage({
           {isAdmin && (
             <Metric
               label={dossier.montant != null ? 'Montant (signé)' : 'Montant devis'}
-              value={dossier.montantDevis != null ? euros(dossier.montantDevis) : '—'}
+              value={
+                dossier.montant != null
+                  ? euros(dossier.montant)
+                  : dossier.montantDevis != null
+                    ? euros(dossier.montantDevis)
+                    : '—'
+              }
             />
           )}
           {isAdmin && dossier.travauxAPlanifier && (

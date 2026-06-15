@@ -163,6 +163,7 @@ export async function startRapportFromLead(formData: FormData) {
     },
   });
   revalidatePath('/admin/rapports');
+  revalidateCrm(lead.contactId);
   redirect(`/admin/rapports/${rapport.id}`);
 }
 
@@ -398,10 +399,12 @@ export async function updateRapportStatus(formData: FormData) {
   const id = str(formData.get('rapportId'));
   const status = str(formData.get('status'));
   if (!id || !(status in ReportStatus)) return;
-  await prisma.rapport.update({
+  const updated = await prisma.rapport.update({
     where: { id },
     data: { status: status as ReportStatus },
+    select: { contactId: true },
   });
   revalidatePath(`/admin/rapports/${id}`);
   revalidatePath('/admin/rapports');
+  revalidateCrm(updated.contactId);
 }

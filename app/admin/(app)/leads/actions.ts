@@ -42,6 +42,7 @@ function revalidateLead(leadId: string) {
   revalidatePath('/admin/clients/[id]', 'page');
   revalidatePath('/admin/clients');
   revalidatePath('/admin/pipeline');
+  revalidatePath('/admin/pilotage');
   revalidatePath('/admin');
 }
 
@@ -428,9 +429,8 @@ export async function moveLead(leadId: string, stage: string) {
       content: `Étape : ${current.stage} → ${stage}`,
     },
   });
-  revalidatePath('/admin/pipeline');
-  revalidatePath('/admin/leads');
-  revalidatePath('/admin');
+  // Revalide toutes les vues (fiche, liste, pipeline, pilotage, dashboard).
+  revalidateLead(leadId);
 }
 
 /** Marque une relance comme effectuée. */

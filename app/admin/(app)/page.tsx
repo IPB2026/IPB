@@ -86,8 +86,8 @@ async function getStats() {
               },
             },
           },
-          // …ET pas de facture (si facturé, la visite a déjà eu lieu).
-          factures: { none: {} },
+          // …ET pas de facture émise (si facturé, la visite a déjà eu lieu).
+          factures: { none: { status: { in: ['ENVOYEE', 'PAYEE'] } } },
         },
       },
       orderBy: { acceptedAt: 'desc' },
@@ -134,8 +134,8 @@ async function getStats() {
               },
             },
           },
-          // …ET pas de facture (si facturé, la visite a déjà eu lieu).
-          factures: { none: {} },
+          // …ET pas de facture émise (si facturé, la visite a déjà eu lieu).
+          factures: { none: { status: { in: ['ENVOYEE', 'PAYEE'] } } },
         },
       },
     }),

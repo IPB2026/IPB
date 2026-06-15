@@ -35,6 +35,8 @@ function revalidateFiches() {
   revalidatePath('/admin/clients');
   revalidatePath('/admin/leads/[id]', 'page');
   revalidatePath('/admin/clients/[id]', 'page');
+  revalidatePath('/admin/pipeline');
+  revalidatePath('/admin/pilotage');
   revalidatePath('/admin');
 }
 

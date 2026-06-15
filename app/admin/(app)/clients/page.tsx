@@ -274,7 +274,10 @@ function load(sp: SearchParams) {
       city: true,
       phone: true,
       email: true,
-      devis: { select: { status: true, totalHT: true, acceptedAt: true, serviceType: true } },
+      devis: {
+        select: { status: true, totalHT: true, acceptedAt: true, serviceType: true },
+        orderBy: { createdAt: 'desc' },
+      },
       factures: { select: { status: true } },
       rapports: { select: { status: true } },
       appointments: { select: { type: true, status: true } },
