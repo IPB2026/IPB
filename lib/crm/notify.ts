@@ -241,6 +241,69 @@ export async function notifyClientAppointment(
 }
 
 // ─────────────────────────────────────────────────────────────────
+// Accusé client : annulation de rendez-vous
+// ─────────────────────────────────────────────────────────────────
+
+export async function notifyClientCancellation(
+  appointmentId: string
+): Promise<void> {
+  try {
+    const appt = await prisma.appointment.findUnique({
+      where: { id: appointmentId },
+      include: { contact: true },
+    });
+    if (!appt) return;
+    const c = appt.contact;
+    const email = c.email;
+    if (!email) return;
+
+    const dateStr = appt.start.toLocaleDateString('fr-FR', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    });
+
+    const html = `
+    <div style="font-family: Arial, sans-serif; background:#F3EFE8; padding:24px;">
+      <div style="max-width:560px; margin:0 auto; background:#FAF9F7; border:1px solid #D8D2C9; border-radius:14px; overflow:hidden;">
+        <div style="background:#0B1826; color:#fff; padding:20px 24px;">
+          <div style="font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.5);">Annulation de rendez-vous</div>
+          <div style="font-family:Georgia,serif; font-size:20px; font-weight:700; margin-top:8px;">Institut Pathologie du Bâtiment</div>
+        </div>
+        <div style="padding:24px;">
+          <p style="margin:0 0 14px; color:#1A1917; font-size:15px;">Bonjour ${firstName(c.name)},</p>
+          <p style="margin:0 0 16px; color:#736D67; font-size:14px; line-height:1.7;">La visite de diagnostic prévue le <strong style="color:#1A1917;">${dateStr}</strong> est <strong style="color:#1A1917;">annulée</strong>. L'événement a été retiré de l'agenda.</p>
+          <p style="margin:0 0 16px; color:#736D67; font-size:14px; line-height:1.7;">Pour reprogrammer, répondez simplement à cet e-mail ou appelez-nous au <strong style="color:#1A1917;">${COMPANY.phone}</strong> — nous vous reproposons des créneaux rapidement.</p>
+          <p style="margin:0; color:#1A1917; font-size:14px;">Bien à vous,<br/>${COMPANY.name}</p>
+        </div>
+        <div style="padding:12px 24px; border-top:1px solid #E7E2DA; font-size:11px; color:#A09A93;">
+          ${COMPANY.address}, ${COMPANY.postalCode} ${COMPANY.city} · ${COMPANY.phone}
+        </div>
+      </div>
+    </div>`;
+
+    const res = await sendEmail({
+      to: email,
+      subject: `Annulation de votre rendez-vous IPB du ${dateStr}`,
+      html,
+    });
+    if (res.success) {
+      await prisma.activity.create({
+        data: {
+          type: 'EMAIL',
+          contactId: appt.contactId,
+          leadId: appt.leadId,
+          content: `Annulation de RDV envoyée à ${email} (${dateStr})`,
+        },
+      });
+    }
+  } catch (err) {
+    console.error('[notify] notifyClientCancellation échec (non bloquant):', err);
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────
 
 const SERVICE_LABELS: Record<string, string> = {
   FISSURES: 'Fissures',

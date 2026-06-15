@@ -8,6 +8,7 @@ import { EmptyState } from '@/components/admin/empty-state';
 import { Avatar } from '@/components/admin/avatar';
 import { isCalendarConfigured } from '@/lib/google/calendar';
 import { AgendaWeek, type WeekAppt } from '@/components/admin/agenda-week';
+import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 
 /** Lundi 00:00 de la semaine contenant `d`. */
 function startOfWeek(d: Date): Date {
@@ -393,6 +394,18 @@ export default async function AgendaPage({
                             >
                               Facturer
                             </button>
+                          </form>
+                        )}
+                        {a.status !== 'ANNULE' && (
+                          <form action={updateAppointmentStatus}>
+                            <input type="hidden" name="appointmentId" value={a.id} />
+                            <input type="hidden" name="status" value="ANNULE" />
+                            <ConfirmSubmit
+                              message="Annuler ce rendez-vous ? Il sera retiré de l'agenda Google et le client sera prévenu."
+                              className="h-9 rounded-lg border border-red-200 bg-red-50 px-3 text-sm font-medium text-red-700 hover:bg-red-100"
+                            >
+                              Annuler
+                            </ConfirmSubmit>
                           </form>
                         )}
                       </div>

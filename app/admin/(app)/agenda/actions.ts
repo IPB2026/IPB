@@ -11,7 +11,10 @@ import {
   deleteCalendarEvent,
   isCalendarConfigured,
 } from '@/lib/google/calendar';
-import { notifyClientAppointment } from '@/lib/crm/notify';
+import {
+  notifyClientAppointment,
+  notifyClientCancellation,
+} from '@/lib/crm/notify';
 import { AppointmentStatus, AppointmentType } from '@prisma/client';
 
 // Gestion de l'agenda : réservée à l'ADMIN.
@@ -129,13 +132,19 @@ export async function updateAppointmentStatus(formData: FormData) {
       data: { stage: 'VISITE_FAITE' },
     });
   }
-  // Annulation : retirer l'événement Google (le client est notifié).
-  if (status === 'ANNULE' && appt.googleEventId) {
-    await deleteCalendarEvent(appt.googleEventId);
-    await prisma.appointment.update({
-      where: { id },
-      data: { googleEventId: null },
-    });
+  // Annulation : retirer l'événement Google (Google notifie le client) ; sinon
+  // envoyer l'e-mail d'annulation maison.
+  if (status === 'ANNULE') {
+    if (appt.googleEventId) {
+      await deleteCalendarEvent(appt.googleEventId);
+      await prisma.appointment.update({
+        where: { id },
+        data: { googleEventId: null },
+      });
+    }
+    if (!isCalendarConfigured()) {
+      await notifyClientCancellation(id);
+    }
   }
   revalidatePath('/admin/agenda');
 }

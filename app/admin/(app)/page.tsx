@@ -209,7 +209,7 @@ export default async function DashboardPage() {
           <ActionTile href="/admin/rapports" count={stats.rapportsAValiderCount} label="Rapports à valider" icon={ClipboardCheck} tone="blue" />
           <ActionTile href="/admin/devis" count={stats.devisEnAttente} label="Devis en attente" icon={FileText} tone="slate" />
           <ActionTile href="/admin/factures" count={stats.facturesImpayeesCount} label="Factures impayées" icon={Receipt} tone="red" />
-          <ActionTile href="/admin/leads" count={stats.relancesDues} label="Relances dues" icon={Clock} tone="amber" />
+          <ActionTile href="/admin/clients" count={stats.relancesDues} label="Relances dues" icon={Clock} tone="amber" />
           <ActionTile href="/admin/devis" count={stats.aPlanifierCount} label="Travaux à planifier" icon={Wrench} tone="orange" />
         </div>
       </section>
@@ -366,7 +366,7 @@ export default async function DashboardPage() {
             Derniers prospects
           </h2>
           <Link
-            href="/admin/leads"
+            href="/admin/clients"
             className="text-sm font-medium text-orange-600 transition-colors hover:text-orange-700"
           >
             Tout voir
