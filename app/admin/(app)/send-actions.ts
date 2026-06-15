@@ -3,6 +3,7 @@
 import { revalidatePath } from 'next/cache';
 import { requireAdmin } from '@/lib/auth-helpers';
 import { prisma } from '@/lib/prisma';
+import { revalidateCrm } from '@/lib/crm/revalidate';
 import {
   sendDevisEmail,
   sendFactureEmail,
@@ -19,6 +20,7 @@ export async function sendDevis(formData: FormData) {
   if (!res.ok) throw new Error(`Échec de l'envoi du devis : ${res.error}`);
   revalidatePath(`/admin/devis/${id}`);
   revalidatePath('/admin/devis');
+  revalidateCrm();
 }
 
 // Délai minimum entre l'envoi du mail et le créneau proposé (3 jours pleins).
@@ -80,6 +82,7 @@ export async function sendDevisWithSlots(formData: FormData) {
   if (!res.ok) throw new Error(`Échec de l'envoi du devis : ${res.error}`);
   revalidatePath(`/admin/devis/${id}`);
   revalidatePath('/admin/devis');
+  revalidateCrm();
 }
 
 export async function sendFacture(formData: FormData) {
@@ -90,6 +93,7 @@ export async function sendFacture(formData: FormData) {
   if (!res.ok) throw new Error(`Échec de l'envoi de la facture : ${res.error}`);
   revalidatePath(`/admin/factures/${id}`);
   revalidatePath('/admin/factures');
+  revalidateCrm();
 }
 
 export async function sendRapport(formData: FormData) {
@@ -100,4 +104,5 @@ export async function sendRapport(formData: FormData) {
   if (!res.ok) throw new Error(`Échec de l'envoi du rapport : ${res.error}`);
   revalidatePath(`/admin/rapports/${id}`);
   revalidatePath('/admin/rapports');
+  revalidateCrm();
 }

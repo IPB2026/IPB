@@ -129,6 +129,14 @@ export async function sendDevisEmail(
   if (!res.success) return { ok: false, error: res.error ?? 'Échec envoi' };
 
   await prisma.devis.update({ where: { id }, data: { status: 'ENVOYE' } });
+  // Interconnexion : l'envoi du devis fait AVANCER le pipeline automatiquement
+  // (Nouveau / À rappeler → Devis envoyé). Pas de saisie manuelle.
+  if (devis.leadId) {
+    await prisma.lead.updateMany({
+      where: { id: devis.leadId, stage: { in: ['NOUVEAU', 'A_RAPPELER'] } },
+      data: { stage: 'DEVIS_ENVOYE' },
+    });
+  }
   await prisma.activity.create({
     data: {
       type: 'EMAIL',

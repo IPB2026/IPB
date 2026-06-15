@@ -3,6 +3,7 @@
 import { z } from 'zod';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
+import { revalidateCrm } from '@/lib/crm/revalidate';
 import { del } from '@vercel/blob';
 import { prisma } from '@/lib/prisma';
 import { requireUser, requireAdmin } from '@/lib/auth-helpers';
@@ -277,6 +278,7 @@ export async function submitRapport(formData: FormData): Promise<void> {
   await notifyAdminRapportSubmitted(id);
   revalidatePath(`/admin/rapports/${id}`);
   revalidatePath('/admin/rapports');
+  revalidateCrm(owned.rapport.contactId);
 }
 
 /**
@@ -327,6 +329,7 @@ export async function validateAndSendRapport(
 
   revalidatePath(`/admin/rapports/${id}`);
   revalidatePath('/admin/rapports');
+  revalidateCrm(rapport.contactId);
 }
 
 /** Génération IA — réservée à l'ADMIN (responsabilité éditoriale). */
@@ -387,6 +390,7 @@ export async function generateRapportAI(formData: FormData) {
     },
   });
   revalidatePath(`/admin/rapports/${id}`);
+  revalidateCrm();
 }
 
 export async function updateRapportStatus(formData: FormData) {

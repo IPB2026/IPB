@@ -1,6 +1,7 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
+import { revalidateCrm } from '@/lib/crm/revalidate';
 import { redirect } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
@@ -66,7 +67,7 @@ export async function createFacture(
   });
 
   revalidatePath('/admin/factures');
-  revalidatePath(`/admin/clients/${contactId}`);
+  revalidateCrm(contactId);
   redirect(`/admin/factures/${facture.id}`);
 }
 
@@ -145,6 +146,7 @@ export async function updateFacture(
 
   revalidatePath(`/admin/factures/${id}`);
   revalidatePath('/admin/factures');
+  revalidateCrm(existing.contactId);
   return undefined;
 }
 
@@ -153,12 +155,14 @@ export async function updateFactureStatus(formData: FormData) {
   const id = String(formData.get('factureId') ?? '');
   const status = String(formData.get('status') ?? '');
   if (!id || !(status in FactureStatus)) return;
-  await prisma.facture.update({
+  const updated = await prisma.facture.update({
     where: { id },
     data: { status: status as FactureStatus },
+    select: { contactId: true },
   });
   revalidatePath(`/admin/factures/${id}`);
   revalidatePath('/admin/factures');
+  revalidateCrm(updated.contactId);
 }
 
 /**
@@ -171,7 +175,7 @@ export async function deleteFacture(formData: FormData) {
   if (!id) return;
   const f = await prisma.facture.findUnique({
     where: { id },
-    select: { id: true },
+    select: { id: true, contactId: true },
   });
   if (!f) return;
   // Détache un éventuel RDV lié ; les lignes partent en cascade.
@@ -182,6 +186,7 @@ export async function deleteFacture(formData: FormData) {
   await prisma.facture.delete({ where: { id } });
   revalidatePath('/admin/factures');
   revalidatePath('/admin');
+  revalidateCrm(f.contactId);
   redirect('/admin/factures');
 }
 
@@ -231,4 +236,5 @@ export async function recordFacturePayment(formData: FormData) {
   revalidatePath(`/admin/factures/${id}`);
   revalidatePath('/admin/factures');
   revalidatePath('/admin');
+  revalidateCrm(f.contactId);
 }

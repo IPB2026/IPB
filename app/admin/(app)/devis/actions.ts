@@ -3,6 +3,7 @@
 import { z } from 'zod';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
+import { revalidateCrm } from '@/lib/crm/revalidate';
 import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
 import { nextDevisNumber, nextFactureNumber } from '@/lib/crm/numbering';
@@ -90,6 +91,7 @@ export async function createDevis(
   });
 
   revalidatePath('/admin/devis');
+  revalidateCrm(contactId);
   redirect(`/admin/devis/${devis.id}`);
 }
 
@@ -159,7 +161,7 @@ export async function createDevisTravaux(
   });
 
   revalidatePath('/admin/devis');
-  revalidatePath(`/admin/clients/${contactId}`);
+  revalidateCrm(contactId);
   redirect(`/admin/devis/${devis.id}`);
 }
 
@@ -198,6 +200,7 @@ export async function updateDevisTravaux(
 
   revalidatePath(`/admin/devis/${id}`);
   revalidatePath('/admin/devis');
+  revalidateCrm();
   return undefined;
 }
 
@@ -206,12 +209,14 @@ export async function updateDevisStatus(formData: FormData) {
   const id = num(formData.get('devisId'));
   const status = num(formData.get('status'));
   if (!id || !(status in DevisStatus)) return;
-  await prisma.devis.update({
+  const updated = await prisma.devis.update({
     where: { id },
     data: { status: status as DevisStatus },
+    select: { contactId: true },
   });
   revalidatePath(`/admin/devis/${id}`);
   revalidatePath('/admin/devis');
+  revalidateCrm(updated.contactId);
 }
 
 /**
@@ -252,6 +257,7 @@ export async function acceptDevis(formData: FormData) {
   revalidatePath(`/admin/devis/${id}`);
   revalidatePath('/admin/devis');
   revalidatePath('/admin');
+  revalidateCrm(devis.contactId);
 }
 
 /** Modifie un devis (type, montant, bien, validité) et recalcule les lignes. */
@@ -315,6 +321,7 @@ export async function updateDevis(
 
   revalidatePath(`/admin/devis/${id}`);
   revalidatePath('/admin/devis');
+  revalidateCrm();
   return undefined;
 }
 
@@ -323,11 +330,16 @@ export async function deleteDevis(formData: FormData) {
   await requireUser();
   const id = num(formData.get('devisId'));
   if (!id) return;
+  const existing = await prisma.devis.findUnique({
+    where: { id },
+    select: { contactId: true },
+  });
   // Détache d'éventuelles factures liées (elles restent), puis supprime le devis.
   await prisma.facture.updateMany({ where: { devisId: id }, data: { devisId: null } });
   await prisma.devis.delete({ where: { id } });
   revalidatePath('/admin/devis');
   revalidatePath('/admin');
+  revalidateCrm(existing?.contactId);
   redirect('/admin/devis');
 }
 
@@ -383,5 +395,6 @@ export async function convertDevisToFacture(formData: FormData) {
   revalidatePath('/admin/factures');
   revalidatePath(`/admin/devis/${id}`);
   revalidatePath('/admin');
+  revalidateCrm(devis.contactId);
   redirect(`/admin/factures/${facture.id}`);
 }

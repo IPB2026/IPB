@@ -2,6 +2,7 @@
 
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
+import { revalidateCrm } from '@/lib/crm/revalidate';
 import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
 import { nextFactureNumber } from '@/lib/crm/numbering';
@@ -112,6 +113,7 @@ export async function createAppointment(formData: FormData) {
 
   revalidatePath('/admin/agenda');
   if (leadId) revalidatePath(`/admin/leads/${leadId}`);
+  revalidateCrm(contactId);
   redirect('/admin/agenda');
 }
 
@@ -123,7 +125,7 @@ export async function updateAppointmentStatus(formData: FormData) {
   const appt = await prisma.appointment.update({
     where: { id },
     data: { status: status as AppointmentStatus },
-    select: { leadId: true, googleEventId: true },
+    select: { leadId: true, contactId: true, googleEventId: true },
   });
   // Si réalisé et lead encore en amont, marquer « visite faite »
   if (status === 'REALISE' && appt.leadId) {
@@ -147,6 +149,7 @@ export async function updateAppointmentStatus(formData: FormData) {
     }
   }
   revalidatePath('/admin/agenda');
+  revalidateCrm(appt.contactId);
 }
 
 /**
@@ -191,6 +194,7 @@ export async function rescheduleAppointment(formData: FormData) {
   });
   revalidatePath('/admin/agenda');
   if (appt.leadId) revalidatePath(`/admin/leads/${appt.leadId}`);
+  revalidateCrm(appt.contactId);
 }
 
 /**
@@ -220,6 +224,7 @@ export async function deleteAppointment(formData: FormData) {
     },
   });
   revalidatePath('/admin/agenda');
+  revalidateCrm(appt.contactId);
 }
 
 /**
@@ -276,5 +281,6 @@ export async function generateInvoiceFromAppointment(formData: FormData) {
 
   revalidatePath('/admin/agenda');
   revalidatePath('/admin/factures');
+  revalidateCrm(appt.contactId);
   redirect(`/admin/factures/${facture.id}`);
 }
