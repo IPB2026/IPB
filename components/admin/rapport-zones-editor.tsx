@@ -1,9 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
-import { Plus, Trash2, Check } from 'lucide-react';
-import { updateRapportZones } from '@/app/admin/(app)/rapports/actions';
+import { Plus, Trash2, Check, Sparkles, Loader2 } from 'lucide-react';
+import {
+  updateRapportZones,
+  structureDictation,
+} from '@/app/admin/(app)/rapports/actions';
 import { VoiceDictationButton } from '@/components/admin/voice-dictation-button';
 
 type Zone = { titre: string; observations: string; mesure: string; gravite: string };
@@ -39,6 +42,9 @@ export function RapportZonesEditor({
       ? initialZones
       : [{ titre: '', observations: '', mesure: '', gravite: 'À TRAITER' }]
   );
+  const [dictee, setDictee] = useState('');
+  const [aiError, setAiError] = useState<string | null>(null);
+  const [aiPending, startAi] = useTransition();
 
   const update = (i: number, patch: Partial<Zone>) =>
     setZones((zs) => zs.map((z, j) => (j === i ? { ...z, ...patch } : z)));
@@ -47,10 +53,76 @@ export function RapportZonesEditor({
   const remove = (i: number) =>
     setZones((zs) => (zs.length > 1 ? zs.filter((_, j) => j !== i) : zs));
 
+  // Dictée libre → zones structurées par l'IA, fusionnées dans l'éditeur.
+  const structurer = () => {
+    setAiError(null);
+    startAi(async () => {
+      const res = await structureDictation(rapportId, dictee);
+      if (res.error || !res.zones) {
+        setAiError(res.error ?? 'Aucune zone détectée.');
+        return;
+      }
+      const fresh: Zone[] = res.zones.map((z) => ({
+        titre: z.titre ?? '',
+        observations: z.observations ?? '',
+        mesure: z.mesure ?? '',
+        gravite: z.gravite || 'À SURVEILLER',
+      }));
+      setZones((prev) => {
+        const kept = prev.filter((z) => z.titre.trim() || z.observations.trim());
+        return [...kept, ...fresh];
+      });
+      setDictee('');
+    });
+  };
+
   return (
     <form action={formAction} className="space-y-3">
       <input type="hidden" name="rapportId" value={rapportId} />
       <input type="hidden" name="zones" value={JSON.stringify(zones)} />
+
+      {/* Dictée rapide : le diagnostiqueur parle, l'IA range en zones */}
+      <div className="rounded-lg border border-orange-200 bg-orange-50/40 p-3">
+        <div className="mb-1.5 flex items-center justify-between gap-2">
+          <span className="flex items-center gap-1.5 text-sm font-semibold text-slate-800">
+            <Sparkles className="h-4 w-4 text-orange-600" />
+            Dictée rapide
+          </span>
+          <VoiceDictationButton
+            onAppend={(t) => setDictee((d) => (d ? `${d} ${t}` : t))}
+          />
+        </div>
+        <p className="mb-2 text-xs text-slate-500">
+          Décrivez tout à voix haute (ou à l&apos;écrit), d&apos;une traite. L&apos;IA découpe
+          ensuite vos constats en zones — que vous relisez et complétez.
+        </p>
+        <textarea
+          value={dictee}
+          onChange={(e) => setDictee(e.target.value)}
+          rows={3}
+          placeholder="Ex. « Grosse fissure en escalier sur le mur sud du séjour, environ 3 mm. Dans la cave, traces d'humidité et salpêtre en bas du mur. »"
+          className={field}
+        />
+        {aiError && (
+          <p className="mt-1.5 text-xs text-red-600">{aiError}</p>
+        )}
+        <button
+          type="button"
+          onClick={structurer}
+          disabled={aiPending || !dictee.trim()}
+          className="mt-2 inline-flex min-h-[40px] items-center gap-1.5 rounded-lg bg-orange-600 px-3.5 py-2 text-sm font-semibold text-white hover:bg-orange-700 disabled:opacity-60"
+        >
+          {aiPending ? (
+            <>
+              <Loader2 className="h-4 w-4 animate-spin" /> Structuration…
+            </>
+          ) : (
+            <>
+              <Sparkles className="h-4 w-4" /> Structurer en zones
+            </>
+          )}
+        </button>
+      </div>
 
       {zones.map((z, i) => (
         <div key={i} className="rounded-lg border border-slate-200 p-3">

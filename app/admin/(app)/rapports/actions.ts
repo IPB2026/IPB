@@ -12,6 +12,7 @@ import { notifyAdminRapportSubmitted } from '@/lib/crm/notify';
 import { ReportType, ReportStatus, ServiceType, Prisma } from '@prisma/client';
 import {
   generateReport,
+  structureObservations,
   REPORT_MODEL,
   type ReportZoneInput,
   type ReportPhotoInput,
@@ -40,6 +41,29 @@ async function loadOwned(id: string) {
   if (!rapport) return null;
   if (user.role !== 'ADMIN' && rapport.authorId !== user.id) return null;
   return { user, rapport };
+}
+
+/**
+ * Pré-structuration : transforme une DICTÉE libre du diagnostiqueur en zones
+ * d'observation structurées (titre/observations/mesure/gravité), prêtes à être
+ * relues et complétées. N'écrit PAS en base — le client fusionne le résultat
+ * dans l'éditeur, et l'enregistrement normal (Enregistrer la saisie) le persiste.
+ * Réservé à l'ADMIN ou à l'auteur du rapport.
+ */
+export async function structureDictation(
+  rapportId: string,
+  rawText: string
+): Promise<{ zones?: ReportZoneInput[]; error?: string }> {
+  const owned = await loadOwned(rapportId);
+  if (!owned) return { error: 'Rapport introuvable ou accès refusé.' };
+  const type = owned.rapport.type as
+    | 'FISSURES'
+    | 'HUMIDITE'
+    | 'EXPERTISE_ACHAT'
+    | 'MUR_PORTEUR';
+  const res = await structureObservations(rawText, type);
+  if ('error' in res) return { error: res.error };
+  return { zones: res.zones };
 }
 
 export async function createRapport(

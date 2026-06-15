@@ -245,6 +245,87 @@ export function isAiConfigured(): boolean {
   return Boolean(process.env.ANTHROPIC_API_KEY);
 }
 
+// ── Pré-structuration : dictée libre du diagnostiqueur → zones d'observation ──
+// Étape légère (≠ génération du rapport complet) : on découpe et range, sans
+// analyser ni inventer. Modèle rapide (Sonnet) pour une latence faible terrain.
+const STRUCTURE_MODEL = 'claude-sonnet-4-6';
+
+const STRUCTURE_SCHEMA = {
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    zones: {
+      type: 'array',
+      items: {
+        type: 'object',
+        additionalProperties: false,
+        properties: {
+          titre: { type: 'string', description: 'Localisation courte, ex. « Mur sud — séjour »' },
+          observations: { type: 'string', description: 'Constats reformulés proprement, fidèles à la dictée' },
+          mesure: { type: 'string', description: 'Valeur chiffrée si mentionnée, ex. « 3 mm ». Sinon vide.' },
+          gravite: { type: 'string', enum: ['À TRAITER', 'IMPORTANT', 'À SURVEILLER', 'INFO'] },
+        },
+        required: ['titre', 'observations', 'mesure', 'gravite'],
+      },
+    },
+  },
+  required: ['zones'],
+} as const;
+
+const STRUCTURE_SYSTEM = `Tu assistes un diagnostiqueur du bâtiment en intervention. À partir de sa dictée libre (constats BRUTS sur site), tu DÉCOUPES le propos en zones d'observation distinctes.
+Règles strictes :
+- Ne rien inventer, ne rien interpréter au-delà de ce qui est dit. Pas d'analyse causale, pas de préconisation (ça vient après).
+- titre : localisation courte (ex. « Mur sud — séjour », « Cave », « Façade Est »).
+- observations : reformulation propre et fidèle des constats de cette zone.
+- mesure : la valeur chiffrée si une est citée (ex. « 3 mm », « 80 % HR »), sinon chaîne vide.
+- gravite : estimation prudente parmi À TRAITER / IMPORTANT / À SURVEILLER / INFO selon la teneur des propos — ne JAMAIS surévaluer ; en cas de doute, À SURVEILLER.
+- Si la dictée ne porte que sur un seul sujet, renvoie une seule zone.
+Langue : français.`;
+
+export async function structureObservations(
+  rawText: string,
+  type: ReportInput['type']
+): Promise<{ zones: ReportZoneInput[] } | { error: string }> {
+  if (!isAiConfigured()) {
+    return { error: "Clé API Anthropic absente (ANTHROPIC_API_KEY)." };
+  }
+  const text = rawText.trim();
+  if (!text) return { error: 'Dictée vide.' };
+
+  const client = new Anthropic();
+  const params = {
+    model: STRUCTURE_MODEL,
+    max_tokens: 4000,
+    system: STRUCTURE_SYSTEM,
+    output_config: {
+      format: { type: 'json_schema', schema: STRUCTURE_SCHEMA },
+    },
+    messages: [
+      {
+        role: 'user',
+        content: `Type de mission : ${TYPE_LABEL[type]}.\n\nDictée du diagnostiqueur :\n"""${text}"""`,
+      },
+    ],
+  };
+
+  try {
+    const response = await client.messages.create(
+      params as unknown as Anthropic.MessageCreateParamsNonStreaming
+    );
+    const textBlock = response.content.find((b) => b.type === 'text');
+    const raw = textBlock && 'text' in textBlock ? textBlock.text : '';
+    if (!raw) return { error: 'Réponse IA vide.' };
+    const parsed = JSON.parse(raw) as { zones?: ReportZoneInput[] };
+    const zones = (parsed.zones ?? []).filter((z) => z.titre && z.observations);
+    if (!zones.length) return { error: 'Aucune zone détectée dans la dictée.' };
+    return { zones };
+  } catch (err) {
+    console.error('[structureObservations] échec IA:', err);
+    const msg = err instanceof Error ? err.message : 'Erreur inconnue';
+    return { error: `Structuration échouée : ${msg}` };
+  }
+}
+
 export async function generateReport(
   input: ReportInput
 ): Promise<{ content: ReportContent } | { error: string }> {
