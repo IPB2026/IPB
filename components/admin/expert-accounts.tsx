@@ -7,7 +7,7 @@ import {
 } from '@/app/admin/(app)/parametres/actions';
 
 const input =
-  'w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200';
+  'w-full rounded-lg border border-slate-300 px-3 py-2.5 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200';
 const label = 'mb-1 block text-sm font-medium text-slate-700';
 
 function Submit({ idle, busy }: { idle: string; busy: string }) {

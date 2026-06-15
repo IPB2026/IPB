@@ -30,7 +30,7 @@ export default async function RecherchePage({
           defaultValue={q}
           autoFocus
           placeholder="Nom, n° de devis/facture/rapport, e-mail, téléphone, ville…"
-          className="h-11 w-full rounded-xl border border-slate-300 pl-10 pr-3 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+          className="h-11 w-full rounded-xl border border-slate-300 pl-10 pr-3 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
         />
       </form>
 

@@ -20,7 +20,7 @@ export interface PhotoVM {
 
 const GRAVITES = ['', 'À TRAITER', 'IMPORTANT', 'À SURVEILLER', 'INFO'];
 const field =
-  'w-full rounded-md border border-slate-300 px-2.5 py-2 text-sm outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-200 sm:py-1.5 sm:text-xs';
+  'w-full rounded-md border border-slate-300 px-2.5 py-2 text-base outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-200 sm:py-1.5 sm:text-xs';
 
 export function RapportPhotos({
   rapportId,

@@ -428,7 +428,7 @@ export default async function RapportDetailPage({
                   <select
                     name="status"
                     defaultValue={status}
-                    className="h-10 rounded-lg border border-slate-300 px-3 text-sm outline-none focus:border-orange-500"
+                    className="h-10 rounded-lg border border-slate-300 px-3 text-base sm:text-sm outline-none focus:border-orange-500"
                   >
                     {Object.entries(STATUS_LABEL).map(([v, l]) => (
                       <option key={v} value={v}>

@@ -51,7 +51,7 @@ const STATUS_PILL: Record<AppointmentStatus, string> = {
 };
 
 const field =
-  'h-10 w-full rounded-lg border border-slate-300 px-3 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200';
+  'h-10 w-full rounded-lg border border-slate-300 px-3 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200';
 
 export default async function AgendaPage({
   searchParams,
@@ -363,7 +363,7 @@ export default async function AgendaPage({
                           <select
                             name="status"
                             defaultValue={a.status}
-                            className="h-9 rounded-lg border border-slate-300 px-2 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                            className="h-10 sm:h-9 rounded-lg border border-slate-300 px-2 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
                           >
                             {Object.entries(STATUS_LABEL).map(([v, l]) => (
                               <option key={v} value={v}>
@@ -390,7 +390,7 @@ export default async function AgendaPage({
                             <input type="hidden" name="appointmentId" value={a.id} />
                             <button
                               type="submit"
-                              className="h-9 rounded-lg border border-orange-200 bg-orange-50 px-3 text-sm font-medium text-orange-700 hover:bg-orange-100"
+                              className="h-10 sm:h-9 rounded-lg border border-orange-200 bg-orange-50 px-3 text-sm font-medium text-orange-700 hover:bg-orange-100"
                             >
                               Facturer
                             </button>
@@ -402,7 +402,7 @@ export default async function AgendaPage({
                             <input type="hidden" name="status" value="ANNULE" />
                             <ConfirmSubmit
                               message="Annuler ce rendez-vous ? Il sera retiré de l'agenda Google et le client sera prévenu."
-                              className="h-9 rounded-lg border border-red-200 bg-red-50 px-3 text-sm font-medium text-red-700 hover:bg-red-100"
+                              className="h-10 sm:h-9 rounded-lg border border-red-200 bg-red-50 px-3 text-sm font-medium text-red-700 hover:bg-red-100"
                             >
                               Annuler
                             </ConfirmSubmit>
@@ -424,7 +424,7 @@ export default async function AgendaPage({
                             name="start"
                             step={1800}
                             required
-                            className="h-9 rounded-lg border border-slate-300 px-2 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                            className="h-10 sm:h-9 rounded-lg border border-slate-300 px-2 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
                           />
                           <input
                             type="number"
@@ -432,13 +432,13 @@ export default async function AgendaPage({
                             defaultValue={60}
                             min={15}
                             step={15}
-                            className="h-9 w-20 rounded-lg border border-slate-300 px-2 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                            className="h-10 sm:h-9 w-20 rounded-lg border border-slate-300 px-2 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
                           />
                           <input
                             name="location"
                             placeholder="Lieu"
                             defaultValue={a.location ?? ''}
-                            className="h-9 min-w-0 flex-1 rounded-lg border border-slate-300 px-2 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                            className="h-10 sm:h-9 min-w-0 flex-1 rounded-lg border border-slate-300 px-2 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
                           />
                           <button
                             type="submit"

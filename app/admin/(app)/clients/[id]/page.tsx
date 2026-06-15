@@ -308,7 +308,7 @@ export default async function ClientFichePage({
                   <select
                     name="stage"
                     defaultValue={lead.stage}
-                    className="h-10 flex-1 rounded-lg border border-slate-300 px-3 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                    className="h-10 flex-1 rounded-lg border border-slate-300 px-3 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
                   >
                     {[...PIPELINE_STAGES, 'PERDU' as const].map((v) => (
                       <option key={v} value={v}>
@@ -333,7 +333,7 @@ export default async function ClientFichePage({
                   <select
                     name="assignedToId"
                     defaultValue={lead.assignedToId ?? ''}
-                    className="h-10 flex-1 rounded-lg border border-slate-300 px-3 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                    className="h-10 flex-1 rounded-lg border border-slate-300 px-3 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
                   >
                     <option value="">— Non assigné —</option>
                     {experts.map((e) => (
@@ -360,12 +360,12 @@ export default async function ClientFichePage({
                     type="date"
                     name="dueAt"
                     required
-                    className="h-10 rounded-lg border border-slate-300 px-3 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                    className="h-10 rounded-lg border border-slate-300 px-3 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
                   />
                   <input
                     name="content"
                     placeholder="Objet (ex. rappeler après devis)"
-                    className="h-10 flex-1 rounded-lg border border-slate-300 px-3 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                    className="h-10 flex-1 rounded-lg border border-slate-300 px-3 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
                   />
                   <button
                     type="submit"
@@ -384,7 +384,7 @@ export default async function ClientFichePage({
               <select
                 name="type"
                 defaultValue="APPEL"
-                className="h-10 w-full rounded-lg border border-slate-300 px-3 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                className="h-10 w-full rounded-lg border border-slate-300 px-3 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
               >
                 <option value="APPEL">Appel</option>
                 <option value="NOTE">Note</option>
@@ -396,7 +396,7 @@ export default async function ClientFichePage({
                 required
                 rows={3}
                 placeholder="Compte-rendu d'appel, note interne…"
-                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
               />
               <button
                 type="submit"

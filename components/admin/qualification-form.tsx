@@ -12,7 +12,7 @@ import {
 } from '@/lib/crm/qualification';
 
 const field =
-  'h-10 w-full rounded-lg border border-slate-300 px-3 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200';
+  'h-10 w-full rounded-lg border border-slate-300 px-3 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200';
 const label = 'mb-1 block text-xs font-medium text-slate-500';
 
 const TIER_TONE: Record<string, string> = {

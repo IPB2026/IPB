@@ -155,7 +155,7 @@ export default async function DevisDetailPage({
               <select
                 name="status"
                 defaultValue={devis.status}
-                className="h-10 w-full rounded-lg border border-slate-300 px-3 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                className="h-10 w-full rounded-lg border border-slate-300 px-3 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
               >
                 {Object.entries(DEVIS_STATUS_LABEL).map(([v, l]) => (
                   <option key={v} value={v}>

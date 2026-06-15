@@ -380,7 +380,7 @@ export default async function DashboardPage() {
                     <a
                       href={`tel:${r.lead.contact.phone}`}
                       aria-label={`Appeler ${r.lead.contact.name}`}
-                      className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-orange-600 hover:bg-orange-50"
+                      className="inline-flex h-11 w-11 sm:h-8 sm:w-8 shrink-0 items-center justify-center rounded-md text-orange-600 hover:bg-orange-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
                     >
                       <Phone className="h-4 w-4" />
                     </a>
@@ -443,7 +443,7 @@ export default async function DashboardPage() {
                       <a
                         href={`tel:${lead.contact.phone}`}
                         aria-label={`Appeler ${lead.contact.name}`}
-                        className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-orange-600 active:bg-orange-50"
+                        className="inline-flex h-11 w-11 sm:h-9 sm:w-9 items-center justify-center rounded-lg text-orange-600 active:bg-orange-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
                       >
                         <Phone className="h-4 w-4" />
                       </a>

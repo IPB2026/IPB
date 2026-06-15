@@ -79,7 +79,7 @@ export function DevisSendForm({
               min={minDateTime}
               step={1800}
               required={i === 0}
-              className="h-10 w-full rounded-lg border border-slate-300 px-2 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+              className="h-10 w-full rounded-lg border border-slate-300 px-2 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
             />
           </label>
         ))}
