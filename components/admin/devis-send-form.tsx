@@ -6,13 +6,22 @@ import { sendDevis, sendDevisWithSlots } from '@/app/admin/(app)/send-actions';
 
 type UpcomingAppt = { id: string; label: string };
 
+// Horaires proposables, par tranches de 30 min (fini les minutes libres type 14:26).
+const TIME_OPTIONS: string[] = [];
+for (let h = 8; h <= 19; h++) {
+  for (const m of ['00', '30']) {
+    if (h === 19 && m === '30') break;
+    TIME_OPTIONS.push(`${String(h).padStart(2, '0')}:${m}`);
+  }
+}
+
 /**
  * Envoi du devis au client. Deux chemins :
  *  - « Envoyer simplement » : e-mail devis classique.
- *  - « Envoyer + proposer la visite » : ouvre 3 créneaux (datetime-local) que le
- *    client choisit en répondant. Garde-fou côté serveur : ≥ 3 jours + anti-conflit.
+ *  - « Envoyer + proposer la visite » : 3 créneaux (date + heure par 30 min) que
+ *    le client choisit en répondant. Garde-fou serveur : ≥ 3 jours + anti-conflit.
  *
- * `minDateTime` (calculé côté serveur = aujourd'hui + 3 j) borne les sélecteurs.
+ * `minDateTime` (= aujourd'hui + 3 j) borne la date la plus tôt sélectionnable.
  * `upcoming` rappelle les RDV déjà planifiés pour éviter les chevauchements.
  */
 export function DevisSendForm({
@@ -25,6 +34,15 @@ export function DevisSendForm({
   upcoming: UpcomingAppt[];
 }) {
   const [withSlots, setWithSlots] = useState(false);
+  const minDate = minDateTime.slice(0, 10);
+  // Chaque créneau = { date, time } ; combiné en "YYYY-MM-DDTHH:mm" à la soumission.
+  const [slots, setSlots] = useState<{ date: string; time: string }[]>([
+    { date: '', time: '' },
+    { date: '', time: '' },
+    { date: '', time: '' },
+  ]);
+  const setSlot = (i: number, patch: Partial<{ date: string; time: string }>) =>
+    setSlots((s) => s.map((v, j) => (j === i ? { ...v, ...patch } : v)));
 
   if (!withSlots) {
     return (
@@ -66,23 +84,44 @@ export function DevisSendForm({
         moins 3 jours et ne pas chevaucher un rendez-vous existant.
       </p>
 
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
-        {[0, 1, 2].map((i) => (
-          <label key={i} className="block">
-            <span className="mb-1 block text-xs font-medium text-slate-600">
-              Créneau {i + 1}
-              {i === 0 ? '' : ' (option.)'}
-            </span>
-            <input
-              type="datetime-local"
-              name={`slot${i}`}
-              min={minDateTime}
-              step={1800}
-              required={i === 0}
-              className="h-10 w-full rounded-lg border border-slate-300 px-2 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
-            />
-          </label>
-        ))}
+      <div className="space-y-2">
+        {[0, 1, 2].map((i) => {
+          const v = slots[i];
+          return (
+            <div key={i}>
+              <span className="mb-1 block text-xs font-medium text-slate-600">
+                Créneau {i + 1}
+                {i === 0 ? '' : ' (optionnel)'}
+              </span>
+              <div className="flex gap-2">
+                <input
+                  type="date"
+                  min={minDate}
+                  value={v.date}
+                  onChange={(e) => setSlot(i, { date: e.target.value })}
+                  className="h-10 flex-1 rounded-lg border border-slate-300 px-2 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                />
+                <select
+                  value={v.time}
+                  onChange={(e) => setSlot(i, { time: e.target.value })}
+                  className="h-10 w-28 rounded-lg border border-slate-300 px-2 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                >
+                  <option value="">Heure…</option>
+                  {TIME_OPTIONS.map((t) => (
+                    <option key={t} value={t}>
+                      {t}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <input
+                type="hidden"
+                name={`slot${i}`}
+                value={v.date && v.time ? `${v.date}T${v.time}` : ''}
+              />
+            </div>
+          );
+        })}
       </div>
 
       {upcoming.length > 0 && (
