@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
 import { Plus, Trash2, Check } from 'lucide-react';
 import { updateRapportZones } from '@/app/admin/(app)/rapports/actions';
+import { VoiceDictationButton } from '@/components/admin/voice-dictation-button';
 
 type Zone = { titre: string; observations: string; mesure: string; gravite: string };
 
@@ -69,12 +70,22 @@ export function RapportZonesEditor({
               <Trash2 className="h-4 w-4" />
             </button>
           </div>
+          <div className="mt-2 flex items-center justify-between">
+            <span className="text-xs font-medium text-slate-500">Observations</span>
+            <VoiceDictationButton
+              onAppend={(t) =>
+                update(i, {
+                  observations: z.observations ? `${z.observations} ${t}` : t,
+                })
+              }
+            />
+          </div>
           <textarea
             value={z.observations}
             onChange={(e) => update(i, { observations: e.target.value })}
             rows={3}
-            placeholder="Observations brutes constatées sur place…"
-            className={field + ' mt-2'}
+            placeholder="Observations brutes constatées sur place (ou dictez-les)…"
+            className={field + ' mt-1.5'}
           />
           <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
             <input
