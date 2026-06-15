@@ -239,7 +239,7 @@ export async function acceptDevis(formData: FormData) {
       type: 'SYSTEME',
       contactId: devis.contactId,
       leadId: devis.leadId,
-      content: `Devis ${devis.number} accepté — lancement des travaux à planifier`,
+      content: `Devis ${devis.number} accepté — planifier la date d'intervention (visite)`,
     },
   });
   if (devis.leadId) {

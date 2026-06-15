@@ -48,6 +48,16 @@ export default async function DevisDetailPage({
   const planUrl =
     `/admin/agenda?type=LANCEMENT_TRAVAUX&contactId=${devis.contactId}` +
     `&devisId=${devis.id}${devis.leadId ? `&leadId=${devis.leadId}` : ''}`;
+  // Type de RDV de visite selon le diagnostic (cycle normal après acceptation).
+  const VISIT_TYPE: Record<string, string> = {
+    FISSURES: 'DIAGNOSTIC_FISSURES',
+    HUMIDITE: 'DIAGNOSTIC_HUMIDITE',
+    EXPERTISE_ACHAT: 'EXPERTISE_ACHAT',
+    MUR_PORTEUR: 'MUR_PORTEUR',
+  };
+  const visitUrl =
+    `/admin/agenda?type=${VISIT_TYPE[devis.serviceType ?? 'FISSURES'] ?? 'DIAGNOSTIC_FISSURES'}` +
+    `&contactId=${devis.contactId}${devis.leadId ? `&leadId=${devis.leadId}` : ''}`;
   const validUntilStr = devis.validUntil
     ? new Date(devis.validUntil).toISOString().slice(0, 10)
     : '';
@@ -198,8 +208,29 @@ export default async function DevisDetailPage({
           </div>
         </div>
 
-        {/* Lancement des travaux (après acceptation) — sur lancement manuel */}
-        {isAccepted && (
+        {/* Après acceptation — cycle NORMAL : planifier la date d'intervention (visite).
+            Le cas travaux (devis AUTRE) reste l'exception et garde son lancement. */}
+        {isAccepted && !isTravaux && (
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3">
+            <p className="text-sm text-slate-700">
+              Devis accepté
+              {devis.acceptedAt
+                ? ` le ${devis.acceptedAt.toLocaleDateString('fr-FR')}`
+                : ''}{' '}
+              — planifiez maintenant la <strong>date d&apos;intervention</strong> (visite sur site).
+            </p>
+            <Link
+              href={visitUrl}
+              className="inline-flex h-9 shrink-0 items-center gap-1.5 rounded-lg bg-emerald-600 px-4 text-sm font-semibold text-white hover:bg-emerald-700"
+            >
+              <CalendarClock className="h-4 w-4" />
+              Planifier la visite
+            </Link>
+          </div>
+        )}
+
+        {/* Cas exceptionnel : devis d'accompagnement travaux accepté. */}
+        {isAccepted && isTravaux && (
           <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3">
             {coordAppt ? (
               <p className="text-sm text-slate-600">
@@ -208,11 +239,7 @@ export default async function DevisDetailPage({
               </p>
             ) : (
               <p className="text-sm text-slate-600">
-                Devis accepté
-                {devis.acceptedAt
-                  ? ` le ${devis.acceptedAt.toLocaleDateString('fr-FR')}`
-                  : ''}{' '}
-                — planifiez le lancement/coordination des travaux quand vous le décidez.
+                Devis travaux accepté — planifiez le lancement/coordination quand vous le décidez.
               </p>
             )}
             <Link

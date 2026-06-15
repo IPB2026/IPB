@@ -6,7 +6,6 @@ import {
   Inbox,
   Plus,
   Columns3,
-  Wrench,
   CalendarClock,
   Sparkles,
   ClipboardCheck,
@@ -72,9 +71,22 @@ async function getStats() {
       take: 8,
       include: { lead: { include: { contact: true } } },
     }),
-    // Devis acceptés sans RDV de lancement des travaux planifié
+    // Devis diagnostic acceptés dont le client n'a PAS encore de visite planifiée
+    // → étape normale du cycle (≠ travaux, qui sont exceptionnels).
     prisma.devis.findMany({
-      where: { status: 'ACCEPTE', coordinationAppts: { none: {} } },
+      where: {
+        status: 'ACCEPTE',
+        serviceType: { not: 'AUTRE' },
+        contact: {
+          appointments: {
+            none: {
+              type: {
+                in: ['DIAGNOSTIC_FISSURES', 'DIAGNOSTIC_HUMIDITE', 'EXPERTISE_ACHAT', 'MUR_PORTEUR'],
+              },
+            },
+          },
+        },
+      },
       orderBy: { acceptedAt: 'desc' },
       take: 8,
       include: { contact: true },
@@ -107,7 +119,19 @@ async function getStats() {
     prisma.rapport.count({ where: { status: 'GENERE' } }),
     prisma.facture.count({ where: { status: 'ENVOYEE' } }),
     prisma.devis.count({
-      where: { status: 'ACCEPTE', coordinationAppts: { none: {} } },
+      where: {
+        status: 'ACCEPTE',
+        serviceType: { not: 'AUTRE' },
+        contact: {
+          appointments: {
+            none: {
+              type: {
+                in: ['DIAGNOSTIC_FISSURES', 'DIAGNOSTIC_HUMIDITE', 'EXPERTISE_ACHAT', 'MUR_PORTEUR'],
+              },
+            },
+          },
+        },
+      },
     }),
   ]);
 
@@ -129,6 +153,14 @@ async function getStats() {
     aPlanifierCount,
   };
 }
+
+// Type de RDV de visite selon le diagnostic du devis accepté.
+const VISIT_TYPE: Record<string, string> = {
+  FISSURES: 'DIAGNOSTIC_FISSURES',
+  HUMIDITE: 'DIAGNOSTIC_HUMIDITE',
+  EXPERTISE_ACHAT: 'EXPERTISE_ACHAT',
+  MUR_PORTEUR: 'MUR_PORTEUR',
+};
 
 const headerActions = (
   <>
@@ -211,7 +243,7 @@ export default async function DashboardPage() {
           <ActionTile href="/admin/devis" count={stats.devisEnAttente} label="Devis en attente" icon={FileText} tone="slate" />
           <ActionTile href="/admin/factures" count={stats.facturesImpayeesCount} label="Factures impayées" icon={Receipt} tone="red" />
           <ActionTile href="/admin/clients" count={stats.relancesDues} label="Relances dues" icon={Clock} tone="amber" />
-          <ActionTile href="/admin/devis" count={stats.aPlanifierCount} label="Travaux à planifier" icon={Wrench} tone="orange" />
+          <ActionTile href="/admin/devis" count={stats.aPlanifierCount} label="Visites à planifier" icon={CalendarClock} tone="orange" />
         </div>
       </section>
 
@@ -270,9 +302,9 @@ export default async function DashboardPage() {
       {stats.aPlanifier.length > 0 && (
         <section className="overflow-hidden rounded-xl border border-orange-200 bg-white">
           <div className="flex items-center gap-2 border-b border-orange-200 bg-orange-50/60 px-5 py-3.5">
-            <Wrench className="h-4 w-4 text-orange-600" />
+            <CalendarClock className="h-4 w-4 text-orange-600" />
             <h2 className="text-sm font-semibold text-slate-900">
-              À planifier : lancement des travaux
+              À planifier : visite sur site
             </h2>
           </div>
           <ul className="divide-y divide-slate-100">
@@ -291,8 +323,8 @@ export default async function DashboardPage() {
                 </div>
                 <Link
                   href={
-                    `/admin/agenda?type=LANCEMENT_TRAVAUX&contactId=${d.contactId}` +
-                    `&devisId=${d.id}${d.leadId ? `&leadId=${d.leadId}` : ''}`
+                    `/admin/agenda?type=${VISIT_TYPE[d.serviceType ?? 'FISSURES'] ?? 'DIAGNOSTIC_FISSURES'}` +
+                    `&contactId=${d.contactId}${d.leadId ? `&leadId=${d.leadId}` : ''}`
                   }
                   className="inline-flex shrink-0 items-center gap-1.5 rounded-md border border-orange-200 bg-orange-50 px-2.5 py-1 text-xs font-medium text-orange-700 hover:bg-orange-100"
                 >

@@ -76,22 +76,27 @@ export function computeDossier(d: DossierInputs): DossierView {
   // 2ᵉ devis « accompagnement travaux » = devis de service AUTRE (sentinelle).
   const hasDevisTravaux = d.devis.some((x) => x.serviceType === 'AUTRE');
 
+  // Cycle de vie réel IPB : il s'arrête au rapport. Les travaux sont
+  // EXCEPTIONNELS (~10 % des dossiers) : on ne les affiche QUE si un 2ᵉ devis
+  // « accompagnement travaux » a été émis (ou un lancement déjà planifié). On ne
+  // pousse jamais à « planifier des travaux ».
   const raw: { key: string; label: string; done: boolean }[] = [
     { key: 'devis', label: 'Devis envoyé', done: devisEnvoye || isClient },
     { key: 'client', label: 'Devis accepté (client)', done: isClient },
-    { key: 'rdv', label: 'RDV diagnostic', done: rdvPris },
+    { key: 'rdv', label: "Date d'intervention", done: rdvPris },
     { key: 'visite', label: 'Visite réalisée', done: visiteFaite },
     { key: 'facture', label: 'Facture émise', done: factureEnvoyee },
     { key: 'paiement', label: 'Paiement reçu', done: facturePayee },
     { key: 'rapport', label: 'Rapport transmis', done: rapportEnvoye },
-    // Cycle travaux (post-rapport)
-    {
-      key: 'suivi',
-      label: 'Suivi client',
-      done: hasDevisTravaux || travauxPlanifies,
-    },
-    { key: 'travaux', label: 'Travaux lancés', done: travauxPlanifies },
   ];
+
+  // Cycle travaux ajouté uniquement quand il existe vraiment (cas exceptionnel).
+  if (hasDevisTravaux || travauxPlanifies) {
+    raw.push(
+      { key: 'suivi', label: 'Accompagnement travaux', done: hasDevisTravaux || travauxPlanifies },
+      { key: 'travaux', label: 'Travaux lancés', done: travauxPlanifies },
+    );
+  }
 
   // L'étape courante = la première non faite.
   const firstTodo = raw.findIndex((s) => !s.done);
@@ -100,11 +105,11 @@ export function computeDossier(d: DossierInputs): DossierView {
     current: i === firstTodo,
   }));
 
-  // Rapport remis mais aucune suite engagée (ni devis travaux, ni lancement).
+  // Suivi « simple » = rapport remis sans devis travaux (la norme). Pas de relance travaux.
   const enSuiviClient =
     rapportEnvoye && !hasDevisTravaux && !travauxPlanifies;
-  // Travaux à planifier : dossier client + rapport remis + pas (encore) de lancement.
-  const travauxAPlanifier = isClient && rapportEnvoye && !travauxPlanifies;
+  // Travaux à planifier : UNIQUEMENT si un devis travaux a été émis sans lancement.
+  const travauxAPlanifier = hasDevisTravaux && !travauxPlanifies;
 
   return {
     isClient,
