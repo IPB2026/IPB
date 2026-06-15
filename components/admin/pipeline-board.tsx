@@ -11,6 +11,9 @@ export interface PipelineColumn {
   stage: string;
   label: string;
   leads: { id: string; contactId: string; name: string; sub: string }[];
+  /** Colonne dérivée du dossier (Facturé, Rapport envoyé) : lecture seule,
+   *  pas de déplacement (elle reflète l'avancement réel, pas une étape manuelle). */
+  readOnly?: boolean;
 }
 
 /**
@@ -35,12 +38,14 @@ export function PipelineBoard({ columns }: { columns: PipelineColumn[] }) {
       {columns.map((col) => (
         <div
           key={col.stage}
-          className="flex w-64 shrink-0 flex-col rounded-xl border border-slate-200 bg-slate-50"
+          className={`flex w-64 shrink-0 flex-col rounded-xl border bg-slate-50 ${
+            col.readOnly ? 'border-emerald-200 bg-emerald-50/40' : 'border-slate-200'
+          }`}
           onDragOver={(e) => {
-            if (dragId) e.preventDefault();
+            if (dragId && !col.readOnly) e.preventDefault();
           }}
           onDrop={() => {
-            if (dragId) {
+            if (dragId && !col.readOnly) {
               move(dragId, col.stage);
               setDragId(null);
             }
@@ -61,8 +66,8 @@ export function PipelineBoard({ columns }: { columns: PipelineColumn[] }) {
                 return (
                   <div
                     key={l.id}
-                    draggable
-                    onDragStart={() => setDragId(l.id)}
+                    draggable={!col.readOnly}
+                    onDragStart={() => !col.readOnly && setDragId(l.id)}
                     onDragEnd={() => setDragId(null)}
                     className="rounded-lg border border-slate-200 bg-white p-2.5 shadow-sm"
                   >
@@ -74,6 +79,7 @@ export function PipelineBoard({ columns }: { columns: PipelineColumn[] }) {
                         <p className="truncate text-xs text-slate-400">{l.sub}</p>
                       )}
                     </Link>
+                    {col.readOnly ? null : (
                     <div className="mt-2 flex items-center justify-between">
                       <button
                         type="button"
@@ -97,6 +103,7 @@ export function PipelineBoard({ columns }: { columns: PipelineColumn[] }) {
                         <ChevronRight className="h-4 w-4" />
                       </button>
                     </div>
+                    )}
                   </div>
                 );
               })
