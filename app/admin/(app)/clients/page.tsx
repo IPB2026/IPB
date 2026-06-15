@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { UserCheck, ArrowRight, Download, Plus, Search } from 'lucide-react';
+import { UserCheck, ArrowRight, Download, Plus, Search, Phone } from 'lucide-react';
 import { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
@@ -172,6 +172,17 @@ export default async function ClientsPage({
                   c.city || c.phone || c.email || '—',
                   isClient ? statusLabel : stage ? <StageBadge key="s" stage={stage} /> : null,
                 ]}
+                action={
+                  c.phone ? (
+                    <a
+                      href={`tel:${c.phone}`}
+                      aria-label={`Appeler ${c.name}`}
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-orange-600 active:bg-orange-50"
+                    >
+                      <Phone className="h-4 w-4" />
+                    </a>
+                  ) : undefined
+                }
               />
             ))}
           </MobileCardList>

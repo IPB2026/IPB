@@ -13,6 +13,7 @@ import {
   FileText,
   Receipt,
   ArrowRight,
+  Phone,
 } from 'lucide-react';
 import { euros } from '@/lib/crm/company';
 import { prisma } from '@/lib/prisma';
@@ -324,7 +325,7 @@ export default async function DashboardPage() {
                   <div className="min-w-0 flex-1">
                     {r.lead ? (
                       <Link
-                        href={`/admin/leads/${r.leadId}`}
+                        href={`/admin/clients/${r.lead.contactId}`}
                         className="font-medium text-slate-900 hover:text-orange-600"
                       >
                         {r.lead.contact.name}
@@ -343,6 +344,15 @@ export default async function DashboardPage() {
                   >
                     {r.dueAt?.toLocaleDateString('fr-FR')}
                   </span>
+                  {r.lead?.contact.phone && (
+                    <a
+                      href={`tel:${r.lead.contact.phone}`}
+                      aria-label={`Appeler ${r.lead.contact.name}`}
+                      className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-orange-600 hover:bg-orange-50"
+                    >
+                      <Phone className="h-4 w-4" />
+                    </a>
+                  )}
                   <form action={completeRelance} className="shrink-0">
                     <input type="hidden" name="activityId" value={r.id} />
                     <input type="hidden" name="leadId" value={r.leadId ?? ''} />
@@ -396,6 +406,17 @@ export default async function DashboardPage() {
                     lead.contact.phone || lead.contact.email || '—',
                     SERVICE_LABEL[lead.service],
                   ]}
+                  action={
+                    lead.contact.phone ? (
+                      <a
+                        href={`tel:${lead.contact.phone}`}
+                        aria-label={`Appeler ${lead.contact.name}`}
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-orange-600 active:bg-orange-50"
+                      >
+                        <Phone className="h-4 w-4" />
+                      </a>
+                    ) : undefined
+                  }
                 />
               ))}
             </ul>
