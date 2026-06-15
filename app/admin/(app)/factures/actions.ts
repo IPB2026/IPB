@@ -4,7 +4,70 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
+import { nextFactureNumber } from '@/lib/crm/numbering';
 import { FactureStatus } from '@prisma/client';
+
+/** Crée une facture (forfait) à partir d'un client, sans passer par un devis. */
+export async function createFacture(
+  _prev: string | undefined,
+  formData: FormData
+): Promise<string | undefined> {
+  await requireAdmin();
+  const contactId = String(formData.get('contactId') ?? '');
+  const object = String(formData.get('object') ?? '').trim();
+  const montant = Math.round(
+    Number(String(formData.get('montant') ?? '').replace(',', '.')) || 0
+  );
+  if (!contactId) return 'Client obligatoire.';
+  if (!object) return 'Objet de la facture obligatoire.';
+  if (!montant || montant < 1 || montant > 1000000) return 'Montant invalide (€ HT).';
+
+  const contact = await prisma.contact.findUnique({ where: { id: contactId } });
+  if (!contact) return 'Client introuvable.';
+
+  const dueRaw = String(formData.get('dueDate') ?? '');
+  let due: Date;
+  if (dueRaw) {
+    due = new Date(dueRaw);
+  } else {
+    due = new Date();
+    due.setDate(due.getDate() + 30);
+  }
+
+  const number = await nextFactureNumber(contact.name);
+  const facture = await prisma.facture.create({
+    data: {
+      number,
+      contactId,
+      object,
+      dueDate: due,
+      totalHT: montant,
+      lines: {
+        create: [
+          {
+            designation: object,
+            unit: 'Forfait',
+            qty: 1,
+            unitPrice: montant,
+            total: montant,
+            position: 0,
+          },
+        ],
+      },
+    },
+  });
+  await prisma.activity.create({
+    data: {
+      type: 'SYSTEME',
+      contactId,
+      content: `Facture ${number} créée`,
+    },
+  });
+
+  revalidatePath('/admin/factures');
+  revalidatePath(`/admin/clients/${contactId}`);
+  redirect(`/admin/factures/${facture.id}`);
+}
 
 export async function updateFactureStatus(formData: FormData) {
   await requireAdmin();

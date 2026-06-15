@@ -167,7 +167,7 @@ export default async function ClientFichePage({
                 .join(' · ') || 'Fiche client'}
             </p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             {c.phone && (
               <a
                 href={`tel:${c.phone}`}
@@ -176,14 +176,20 @@ export default async function ClientFichePage({
                 <Phone className="h-4 w-4" /> Appeler
               </a>
             )}
-            {c.email && (
-              <a
-                href={`mailto:${c.email}`}
-                className="inline-flex items-center gap-1.5 rounded-lg bg-orange-600 px-3 py-2 text-sm font-semibold text-white hover:bg-orange-700"
-              >
-                <Mail className="h-4 w-4" /> Écrire
-              </a>
-            )}
+            <Link
+              href={`/admin/devis/nouveau?contactId=${c.id}${
+                lead?.id ? `&leadId=${lead.id}` : ''
+              }`}
+              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+            >
+              <FileText className="h-4 w-4" /> Devis
+            </Link>
+            <Link
+              href={`/admin/factures/nouveau?contactId=${c.id}`}
+              className="inline-flex items-center gap-1.5 rounded-lg bg-orange-600 px-3 py-2 text-sm font-semibold text-white hover:bg-orange-700"
+            >
+              <Receipt className="h-4 w-4" /> Facture
+            </Link>
           </div>
         </div>
 
