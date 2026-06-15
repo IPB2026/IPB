@@ -7,7 +7,6 @@ import {
   Coins,
   ShoppingBag,
   FileCheck2,
-  CalendarClock,
 } from 'lucide-react';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { euros } from '@/lib/crm/company';
@@ -46,35 +45,35 @@ export default async function PilotagePage() {
         subtitle="Chiffre d'affaires, conversion, délais et activité — en temps réel."
       />
 
-      {/* Argent — la ligne qui compte */}
+      {/* Argent — la ligne qui compte. CA = revenu signé, même non encaissé. */}
       <div>
         <h2 className="mb-2.5 text-xs font-semibold uppercase tracking-wider text-slate-400">
           Chiffre d&apos;affaires (€ HT)
         </h2>
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
           <Stat
-            icon={Wallet}
-            label="Encaissé (total)"
-            value={euros(kpi.ca.encaisse)}
+            icon={TrendingUp}
+            label="Chiffre d'affaires (signé)"
+            value={euros(kpi.ca.signe)}
             tone="text-emerald-600"
-            sub={`${euros(kpi.ca.facture)} facturé`}
+            sub={`${kpi.devis.acceptes} devis accepté(s)`}
           />
           <Stat
             icon={Coins}
-            label="Encaissé ce mois-ci"
-            value={euros(kpi.ca.encaisseMois)}
+            label="Facturé"
+            value={euros(kpi.ca.facture)}
+          />
+          <Stat
+            icon={Wallet}
+            label="Encaissé"
+            value={euros(kpi.ca.encaisse)}
             tone="text-emerald-600"
           />
           <Stat
             icon={Clock}
             label="Reste à encaisser"
-            value={euros(Math.max(0, kpi.ca.facture - kpi.ca.encaisse))}
-            tone={kpi.ca.facture - kpi.ca.encaisse > 0 ? 'text-orange-600' : 'text-slate-900'}
-          />
-          <Stat
-            icon={ShoppingBag}
-            label="Panier moyen (devis accepté)"
-            value={euros(kpi.devis.panierMoyen)}
+            value={euros(kpi.ca.resteAEncaisser)}
+            tone={kpi.ca.resteAEncaisser > 0 ? 'text-orange-600' : 'text-slate-900'}
           />
         </div>
       </div>
@@ -92,15 +91,16 @@ export default async function PilotagePage() {
             sub={`${kpi.devis.acceptes} / ${kpi.devis.emis} devis`}
           />
           <Stat
+            icon={ShoppingBag}
+            label="Panier moyen"
+            value={euros(kpi.devis.panierMoyen)}
+            sub="par devis accepté"
+          />
+          <Stat
             icon={Target}
             label="Conversion prospect → client"
             value={`${kpi.conversion.rate} %`}
             sub={`${kpi.conversion.clients} / ${kpi.conversion.prospects} prospects`}
-          />
-          <Stat
-            icon={CalendarClock}
-            label="RDV à venir"
-            value={String(kpi.rdvAVenir)}
           />
           <Stat
             icon={Clock}

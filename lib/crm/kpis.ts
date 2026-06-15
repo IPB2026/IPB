@@ -8,7 +8,7 @@ import type { ServiceType, PipelineStage } from '@prisma/client';
  */
 
 export interface KpiData {
-  ca: { signe: number; facture: number; encaisse: number; encaisseMois: number };
+  ca: { signe: number; facture: number; encaisse: number; resteAEncaisser: number };
   devis: { acceptes: number; emis: number; panierMoyen: number; tauxAcceptation: number };
   conversion: { prospects: number; clients: number; rate: number };
   rdvAVenir: number;
@@ -57,9 +57,6 @@ const MONTHS_FR = [
 ];
 
 export async function computeKpis(): Promise<KpiData> {
-  const startOfMonth = new Date();
-  startOfMonth.setHours(0, 0, 0, 0);
-  startOfMonth.setDate(1);
   const now = new Date();
 
   // ── CA, conversion et totaux : un seul aller-retour parallèle ──
@@ -67,7 +64,6 @@ export async function computeKpis(): Promise<KpiData> {
     devisSigne,
     factureEmise,
     facturePayee,
-    facturePayeeMois,
     prospects,
     clients,
     totalLeads,
@@ -85,11 +81,6 @@ export async function computeKpis(): Promise<KpiData> {
       where: { status: { in: ['ENVOYEE', 'PAYEE'] } },
     }),
     prisma.facture.aggregate({ _sum: { totalHT: true }, where: { status: 'PAYEE' } }),
-    // CA encaissé ce mois — approx. via updatedAt de la facture passée PAYEE.
-    prisma.facture.aggregate({
-      _sum: { totalHT: true },
-      where: { status: 'PAYEE', updatedAt: { gte: startOfMonth } },
-    }),
     prisma.contact.count(),
     prisma.contact.count({
       where: {
@@ -213,12 +204,14 @@ export async function computeKpis(): Promise<KpiData> {
   );
 
   const caSigne = n(devisSigne._sum.totalHT);
+  const caFacture = n(factureEmise._sum.totalHT);
+  const caEncaisse = n(facturePayee._sum.totalHT);
   return {
     ca: {
       signe: caSigne,
-      facture: n(factureEmise._sum.totalHT),
-      encaisse: n(facturePayee._sum.totalHT),
-      encaisseMois: n(facturePayeeMois._sum.totalHT),
+      facture: caFacture,
+      encaisse: caEncaisse,
+      resteAEncaisser: Math.max(0, caFacture - caEncaisse),
     },
     devis: {
       acceptes: devisAcceptesCount,
