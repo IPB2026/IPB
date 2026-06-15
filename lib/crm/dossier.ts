@@ -24,6 +24,12 @@ export interface DossierInputs {
   factures: { status: FactureStatus }[];
   rapports: { status: ReportStatus }[];
   appointments: { type: AppointmentType; status: AppointmentStatus }[];
+  /**
+   * Étape du pipeline (lead.stage), si connue. Permet au suivi du dossier de
+   * refléter une étape réglée MANUELLEMENT (ex. « Devis envoyé ») même avant
+   * que l'artefact correspondant n'existe — cohérence Suivi prospect ↔ dossier.
+   */
+  stage?: string | null;
 }
 
 export interface DossierStep {
@@ -58,13 +64,22 @@ export function computeDossier(d: DossierInputs): DossierView {
   const clientSince = primaryDevis?.acceptedAt ?? null;
   const montant = primaryDevis?.totalHT ?? null;
 
-  const devisEnvoye = d.devis.some((x) =>
-    ['ENVOYE', 'ACCEPTE', 'REFUSE', 'EXPIRE'].includes(x.status)
-  );
-  const visiteFaite = d.appointments.some(
-    (a) => a.type.startsWith('DIAGNOSTIC') && a.status === 'REALISE'
-  );
-  const rdvPris = d.appointments.some((a) => a.type.startsWith('DIAGNOSTIC'));
+  // Avancement déduit AUSSI de l'étape pipeline réglée manuellement.
+  const st = d.stage ?? '';
+  const stageDevis = ['DEVIS_ENVOYE', 'RDV_PLANIFIE', 'VISITE_FAITE', 'GAGNE'].includes(st);
+  const stageRdv = ['RDV_PLANIFIE', 'VISITE_FAITE'].includes(st);
+  const stageVisite = st === 'VISITE_FAITE';
+
+  const devisEnvoye =
+    stageDevis ||
+    d.devis.some((x) => ['ENVOYE', 'ACCEPTE', 'REFUSE', 'EXPIRE'].includes(x.status));
+  const visiteFaite =
+    stageVisite ||
+    d.appointments.some(
+      (a) => a.type.startsWith('DIAGNOSTIC') && a.status === 'REALISE'
+    );
+  const rdvPris =
+    stageRdv || d.appointments.some((a) => a.type.startsWith('DIAGNOSTIC'));
   const factureEnvoyee = d.factures.some((f) =>
     ['ENVOYEE', 'PAYEE'].includes(f.status)
   );

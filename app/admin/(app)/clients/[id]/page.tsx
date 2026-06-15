@@ -126,6 +126,7 @@ export default async function ClientFichePage({
 
   if (!c) notFound();
 
+  const lead = c.leads[0] ?? null;
   const dossier = computeDossier({
     devis: c.devis.map((d) => ({
       status: d.status,
@@ -136,9 +137,9 @@ export default async function ClientFichePage({
     factures: c.factures.map((f) => ({ status: f.status })),
     rapports: c.rapports.map((r) => ({ status: r.status })),
     appointments: c.appointments.map((a) => ({ type: a.type, status: a.status })),
+    stage: lead?.stage ?? null,
   });
 
-  const lead = c.leads[0] ?? null;
   const next = nextStep(dossier, c.id, lead?.id);
   const experts = lead ? await listExperts() : [];
   const qual = extractQual(lead?.payload);

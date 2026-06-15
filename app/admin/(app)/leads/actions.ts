@@ -36,6 +36,12 @@ const requireUser = requireAdmin;
 function revalidateLead(leadId: string) {
   revalidatePath(`/admin/leads/${leadId}`);
   revalidatePath('/admin/leads');
+  // La fiche unique vit sous /admin/clients/[id] : on revalide le segment
+  // dynamique (toutes les fiches) pour que le changement d'étape / la relance /
+  // l'activité s'y reflètent immédiatement (Suivi du dossier, Prochaine étape).
+  revalidatePath('/admin/clients/[id]', 'page');
+  revalidatePath('/admin/clients');
+  revalidatePath('/admin/pipeline');
   revalidatePath('/admin');
 }
 
