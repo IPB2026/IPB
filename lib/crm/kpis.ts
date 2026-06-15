@@ -43,10 +43,9 @@ const SERVICE_ORDER: ServiceType[] = [
 const FUNNEL: { stage: PipelineStage; label: string }[] = [
   { stage: 'NOUVEAU', label: 'Nouveau' },
   { stage: 'A_RAPPELER', label: 'À rappeler' },
+  { stage: 'DEVIS_ENVOYE', label: 'Devis envoyé' },
   { stage: 'RDV_PLANIFIE', label: 'RDV planifié' },
   { stage: 'VISITE_FAITE', label: 'Visite faite' },
-  { stage: 'DEVIS_ENVOYE', label: 'Devis envoyé' },
-  { stage: 'GAGNE', label: 'Gagné (client)' },
 ];
 
 const MONTHS_FR = [
@@ -55,28 +54,30 @@ const MONTHS_FR = [
 ];
 
 export async function computeKpis(): Promise<KpiData> {
-  // ── CA (signé / facturé / encaissé) ──
-  const [devisSigne, factureEmise, facturePayee] = await Promise.all([
+  // ── CA, conversion et totaux : un seul aller-retour parallèle ──
+  const [
+    devisSigne,
+    factureEmise,
+    facturePayee,
+    prospects,
+    clients,
+    totalLeads,
+    totalDevis,
+    totalFactures,
+    totalRapports,
+  ] = await Promise.all([
     prisma.devis.aggregate({ _sum: { totalHT: true }, where: { status: 'ACCEPTE' } }),
     prisma.facture.aggregate({
       _sum: { totalHT: true },
       where: { status: { in: ['ENVOYEE', 'PAYEE'] } },
     }),
     prisma.facture.aggregate({ _sum: { totalHT: true }, where: { status: 'PAYEE' } }),
-  ]);
-
-  // ── Conversion prospect → client (au niveau contact) ──
-  const [prospects, clients] = await Promise.all([
     prisma.contact.count(),
     prisma.contact.count({
       where: {
         OR: [{ devis: { some: { status: 'ACCEPTE' } } }, { factures: { some: {} } }],
       },
     }),
-  ]);
-
-  // ── Totaux ──
-  const [totalLeads, totalDevis, totalFactures, totalRapports] = await Promise.all([
     prisma.lead.count(),
     prisma.devis.count(),
     prisma.facture.count(),
