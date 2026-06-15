@@ -42,7 +42,10 @@ export interface DossierStep {
 export interface DossierView {
   isClient: boolean;
   clientSince: Date | null;
-  montant: number | null; // total du devis accepté le plus récent
+  montant: number | null; // total du devis ACCEPTÉ (CA signé) — null si pas encore accepté
+  /** Montant du devis le plus pertinent, accepté OU simplement envoyé (le « pipe »
+   *  côté dossier). Permet d'afficher un montant dès le devis envoyé. */
+  montantDevis: number | null;
   travauxAPlanifier: boolean;
   /** Rapport remis, mais le client n'a pas encore décidé des suites (pas de devis travaux). */
   enSuiviClient: boolean;
@@ -63,6 +66,13 @@ export function computeDossier(d: DossierInputs): DossierView {
     acceptedDevis.find((x) => x.serviceType !== 'AUTRE') ?? acceptedDevis[0];
   const clientSince = primaryDevis?.acceptedAt ?? null;
   const montant = primaryDevis?.totalHT ?? null;
+  // Montant du devis le plus pertinent même non accepté : devis accepté en
+  // priorité, sinon n'importe quel devis diagnostic (le plus récent fourni).
+  const primaryAnyDevis =
+    primaryDevis ??
+    d.devis.find((x) => x.serviceType !== 'AUTRE') ??
+    d.devis[0];
+  const montantDevis = primaryAnyDevis?.totalHT ?? null;
 
   // Avancement déduit AUSSI de l'étape pipeline réglée manuellement.
   const st = d.stage ?? '';
@@ -135,6 +145,7 @@ export function computeDossier(d: DossierInputs): DossierView {
     isClient,
     clientSince,
     montant,
+    montantDevis,
     travauxAPlanifier,
     enSuiviClient,
     hasDevisTravaux,

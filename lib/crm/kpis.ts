@@ -9,6 +9,8 @@ import type { ServiceType, PipelineStage } from '@prisma/client';
 
 export interface KpiData {
   ca: { signe: number; facture: number; encaisse: number; resteAEncaisser: number };
+  /** « Pipe » : montant des devis ENVOYÉS en attente de réponse (CA potentiel). */
+  pipe: { montant: number; nb: number };
   devis: { acceptes: number; emis: number; panierMoyen: number; tauxAcceptation: number };
   conversion: { prospects: number; clients: number; rate: number };
   rdvAVenir: number;
@@ -74,6 +76,7 @@ export async function computeKpis(): Promise<KpiData> {
     devisEmisCount,
     rdvAVenir,
     rapportsLivres,
+    pipeAgg,
   ] = await Promise.all([
     prisma.devis.aggregate({ _sum: { totalHT: true }, where: { status: 'ACCEPTE' } }),
     prisma.facture.aggregate({
@@ -96,6 +99,8 @@ export async function computeKpis(): Promise<KpiData> {
     prisma.devis.count({ where: { status: { in: ['ENVOYE', 'ACCEPTE', 'REFUSE', 'EXPIRE'] } } }),
     prisma.appointment.count({ where: { start: { gte: now }, status: { not: 'ANNULE' } } }),
     prisma.rapport.count({ where: { status: 'ENVOYE' } }),
+    // Pipe : devis ENVOYÉS en attente de réponse (CA potentiel à signer).
+    prisma.devis.aggregate({ _sum: { totalHT: true }, _count: true, where: { status: 'ENVOYE' } }),
   ]);
 
   // ── Délai moyen demande → rapport remis ──
@@ -212,6 +217,10 @@ export async function computeKpis(): Promise<KpiData> {
       facture: caFacture,
       encaisse: caEncaisse,
       resteAEncaisser: Math.max(0, caFacture - caEncaisse),
+    },
+    pipe: {
+      montant: n(pipeAgg._sum.totalHT),
+      nb: pipeAgg._count,
     },
     devis: {
       acceptes: devisAcceptesCount,

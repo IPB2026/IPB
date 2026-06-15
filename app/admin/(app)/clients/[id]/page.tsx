@@ -26,7 +26,7 @@ import { Avatar } from '@/components/admin/avatar';
 import { ContactEditForm } from '@/components/admin/contact-edit-form';
 import { QualificationForm } from '@/components/admin/qualification-form';
 import { PayloadView } from '@/components/admin/payload-view';
-import { StageBadge, STAGE_LABEL, PIPELINE_STAGES } from '@/components/admin/badges';
+import { StageBadge } from '@/components/admin/badges';
 import type { QualificationRecord } from '@/lib/crm/qualification';
 import {
   changeStage,
@@ -250,8 +250,8 @@ export default async function ClientFichePage({
           <Metric label="Diagnostiqueur" value={diagnostiqueur} />
           {isAdmin && (
             <Metric
-              label="Montant dossier"
-              value={dossier.montant != null ? euros(dossier.montant) : '—'}
+              label={dossier.montant != null ? 'Montant (signé)' : 'Montant devis'}
+              value={dossier.montantDevis != null ? euros(dossier.montantDevis) : '—'}
             />
           )}
           {isAdmin && dossier.travauxAPlanifier && (
@@ -310,39 +310,37 @@ export default async function ClientFichePage({
         </div>
       )}
 
-      {/* Suivi du prospect : étape, diagnostiqueur, relance, activité (ADMIN) */}
+      {/* Actions : diagnostiqueur, relance, activité, statut (ADMIN).
+          L'étape du pipeline n'est PLUS réglée à la main ici : elle découle
+          automatiquement du dossier (devis envoyé → RDV → visite → facture →
+          rapport). On garde seulement l'action humaine « perdu / rouvrir ». */}
       {isAdmin && lead && (
         <section className="rounded-xl border border-slate-200 bg-white p-5">
-          <h2 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
-            Suivi du prospect <StageBadge stage={lead.stage} />
-          </h2>
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+            <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
+              Actions <StageBadge stage={lead.stage} />
+            </h2>
+            <form action={changeStage}>
+              <input type="hidden" name="leadId" value={lead.id} />
+              <input
+                type="hidden"
+                name="stage"
+                value={lead.stage === 'PERDU' ? 'A_RAPPELER' : 'PERDU'}
+              />
+              <button
+                type="submit"
+                className={`rounded-lg border px-3 py-1.5 text-xs font-medium ${
+                  lead.stage === 'PERDU'
+                    ? 'border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100'
+                    : 'border-slate-300 text-slate-500 hover:bg-slate-50'
+                }`}
+              >
+                {lead.stage === 'PERDU' ? 'Rouvrir le dossier' : 'Marquer perdu'}
+              </button>
+            </form>
+          </div>
           <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
             <div className="space-y-4">
-              <form action={changeStage} className="space-y-2">
-                <input type="hidden" name="leadId" value={lead.id} />
-                <label className="block text-sm font-medium text-slate-700">
-                  Étape du pipeline
-                </label>
-                <div className="flex flex-wrap gap-2">
-                  <select
-                    name="stage"
-                    defaultValue={lead.stage}
-                    className="h-10 flex-1 rounded-lg border border-slate-300 px-3 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
-                  >
-                    {[...PIPELINE_STAGES, 'PERDU' as const].map((v) => (
-                      <option key={v} value={v}>
-                        {STAGE_LABEL[v]}
-                      </option>
-                    ))}
-                  </select>
-                  <button
-                    type="submit"
-                    className="h-10 rounded-lg bg-slate-900 px-4 text-sm font-semibold text-white hover:bg-slate-800"
-                  >
-                    Mettre à jour
-                  </button>
-                </div>
-              </form>
               <form action={assignLead} className="space-y-2">
                 <input type="hidden" name="leadId" value={lead.id} />
                 <label className="block text-sm font-medium text-slate-700">

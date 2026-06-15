@@ -55,6 +55,7 @@ export default async function ClientsPage({
   }
 
   const rows = contacts.map((c) => {
+    const stage = c.leads[0]?.stage ?? null;
     const dossier = computeDossier({
       devis: c.devis.map((d) => ({
         status: d.status,
@@ -65,9 +66,10 @@ export default async function ClientsPage({
       factures: c.factures.map((f) => ({ status: f.status })),
       rapports: c.rapports.map((r) => ({ status: r.status })),
       appointments: c.appointments.map((a) => ({ type: a.type, status: a.status })),
+      // Cohérence avec la fiche : on tient compte de l'étape pipeline.
+      stage,
     });
     const current = dossier.steps.find((s) => s.current);
-    const stage = c.leads[0]?.stage ?? null;
     return {
       c,
       dossier,
@@ -167,7 +169,7 @@ export default async function ClientsPage({
                 leading={<Avatar name={c.name} size="sm" />}
                 title={c.name}
                 badge={<EtatBadge isClient={isClient} />}
-                amount={dossier.montant != null ? euros(dossier.montant) : undefined}
+                amount={dossier.montantDevis != null ? euros(dossier.montantDevis) : undefined}
                 lines={[
                   c.city || c.phone || c.email || '—',
                   isClient ? statusLabel : stage ? <StageBadge key="s" stage={stage} /> : null,
@@ -228,7 +230,7 @@ export default async function ClientsPage({
                       )}
                     </td>
                     <td className="px-5 py-3 text-right font-medium tabular-nums">
-                      {dossier.montant != null ? euros(dossier.montant) : '—'}
+                      {dossier.montantDevis != null ? euros(dossier.montantDevis) : '—'}
                     </td>
                     <td className="px-5 py-3 text-right">
                       <Link

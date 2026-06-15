@@ -7,6 +7,7 @@ import {
   Coins,
   ShoppingBag,
   FileCheck2,
+  Send,
 } from 'lucide-react';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { euros } from '@/lib/crm/company';
@@ -51,7 +52,14 @@ export default async function PilotagePage() {
         <h2 className="mb-2.5 text-xs font-semibold uppercase tracking-wider text-slate-400">
           Chiffre d&apos;affaires (€ HT)
         </h2>
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-5">
+          <Stat
+            icon={Send}
+            label="Pipe (devis en cours)"
+            value={euros(kpi.pipe.montant)}
+            tone="text-blue-600"
+            sub={`${kpi.pipe.nb} devis envoyé(s) à signer`}
+          />
           <Stat
             icon={TrendingUp}
             label="Chiffre d'affaires (signé)"
