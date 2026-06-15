@@ -25,6 +25,7 @@ import { computeDossier } from '@/lib/crm/dossier';
 import { Avatar } from '@/components/admin/avatar';
 import { ContactEditForm } from '@/components/admin/contact-edit-form';
 import { QualificationForm } from '@/components/admin/qualification-form';
+import { PayloadView } from '@/components/admin/payload-view';
 import { StageBadge, STAGE_LABEL, PIPELINE_STAGES } from '@/components/admin/badges';
 import type { QualificationRecord } from '@/lib/crm/qualification';
 import {
@@ -401,6 +402,24 @@ export default async function ClientFichePage({
           </div>
           <QualificationForm leadId={lead.id} current={qual} />
         </section>
+      )}
+
+      {/* Données du formulaire web (discret) */}
+      {lead && (lead.summary || (!!lead.payload && typeof lead.payload === 'object')) && (
+        <details className="overflow-hidden rounded-xl border border-slate-200 bg-white [&_summary::-webkit-details-marker]:hidden">
+          <summary className="flex cursor-pointer list-none items-center justify-between px-5 py-3 text-xs font-semibold uppercase tracking-wider text-slate-400 hover:bg-slate-50">
+            <span>Données du formulaire</span>
+            <span className="text-[11px] font-medium normal-case tracking-normal text-orange-600">
+              Afficher
+            </span>
+          </summary>
+          <div className="px-5 pb-5">
+            {lead.summary && (
+              <p className="mb-3 text-sm font-medium text-slate-800">{lead.summary}</p>
+            )}
+            <PayloadView data={lead.payload} />
+          </div>
+        </details>
       )}
 
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
