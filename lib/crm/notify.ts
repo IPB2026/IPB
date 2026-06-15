@@ -304,6 +304,71 @@ export async function notifyClientCancellation(
 }
 
 // ─────────────────────────────────────────────────────────────────
+// Accusé client : règlement reçu (facture soldée)
+// ─────────────────────────────────────────────────────────────────
+
+export async function notifyClientPayment(factureId: string): Promise<void> {
+  try {
+    const facture = await prisma.facture.findUnique({
+      where: { id: factureId },
+      include: { contact: true },
+    });
+    if (!facture) return;
+    const c = facture.contact;
+    const email = c.email;
+    if (!email) return;
+
+    // Un rapport est-il en cours pour ce client (saisi/généré mais pas encore
+    // envoyé) ? Si oui, on rassure sur le délai de remise.
+    const rapportEnCours = await prisma.rapport.count({
+      where: { contactId: facture.contactId, status: { not: 'ENVOYE' } },
+    });
+
+    const reportLine =
+      rapportEnCours > 0
+        ? `<p style="margin:0 0 16px; color:#736D67; font-size:14px; line-height:1.7;">Votre rapport d'expertise est en cours de finalisation : vous le recevrez sous <strong style="color:#1A1917;">3 à 5 jours ouvrés</strong>.</p>`
+        : '';
+
+    const html = `
+    <div style="font-family: Arial, sans-serif; background:#F3EFE8; padding:24px;">
+      <div style="max-width:560px; margin:0 auto; background:#FAF9F7; border:1px solid #D8D2C9; border-radius:14px; overflow:hidden;">
+        <div style="background:#0B1826; color:#fff; padding:20px 24px;">
+          <div style="font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.5);">Règlement reçu</div>
+          <div style="font-family:Georgia,serif; font-size:20px; font-weight:700; margin-top:8px;">Institut Pathologie du Bâtiment</div>
+        </div>
+        <div style="padding:24px;">
+          <p style="margin:0 0 14px; color:#1A1917; font-size:15px;">Bonjour ${firstName(c.name)},</p>
+          <p style="margin:0 0 16px; color:#736D67; font-size:14px; line-height:1.7;">Nous vous confirmons la bonne réception de votre règlement de la facture <strong style="color:#1A1917;">${facture.number}</strong>. Nous vous en remercions.</p>
+          ${reportLine}
+          <p style="margin:0 0 16px; color:#736D67; font-size:14px; line-height:1.7;">Pour toute question, répondez simplement à cet e-mail ou appelez-nous au <strong style="color:#1A1917;">${COMPANY.phone}</strong>.</p>
+          <p style="margin:0; color:#1A1917; font-size:14px;">Bien à vous,<br/>${COMPANY.name}</p>
+        </div>
+        <div style="padding:12px 24px; border-top:1px solid #E7E2DA; font-size:11px; color:#A09A93;">
+          ${COMPANY.address}, ${COMPANY.postalCode} ${COMPANY.city} · ${COMPANY.phone}
+        </div>
+      </div>
+    </div>`;
+
+    const res = await sendEmail({
+      to: email,
+      subject: `Règlement reçu — facture IPB ${facture.number}`,
+      html,
+    });
+    if (res.success) {
+      await prisma.activity.create({
+        data: {
+          type: 'EMAIL',
+          contactId: facture.contactId,
+          content: `Confirmation de règlement envoyée à ${email} (facture ${facture.number})`,
+        },
+      });
+    }
+  } catch (err) {
+    console.error('[notify] notifyClientPayment échec (non bloquant):', err);
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────
 
 const SERVICE_LABELS: Record<string, string> = {
   FISSURES: 'Fissures',

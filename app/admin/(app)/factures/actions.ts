@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
 import { nextFactureNumber } from '@/lib/crm/numbering';
+import { notifyClientPayment } from '@/lib/crm/notify';
 import { FactureStatus } from '@prisma/client';
 
 /** Crée une facture (forfait) à partir d'un client, sans passer par un devis. */
@@ -145,6 +146,9 @@ export async function recordFacturePayment(formData: FormData) {
         : `Encaissement de ${montant.toLocaleString('fr-FR')} € sur la facture ${f.number} — reste dû ${solde.toLocaleString('fr-FR')} €`,
     },
   });
+
+  // Confirmation client à la facture soldée (non bloquant).
+  if (soldee) await notifyClientPayment(id);
 
   revalidatePath(`/admin/factures/${id}`);
   revalidatePath('/admin/factures');
