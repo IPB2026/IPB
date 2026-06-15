@@ -11,6 +11,8 @@ import type { ServiceType } from '@prisma/client';
 
 export interface Diagnosticien {
   nomCommercial: string;
+  /** Nom affiché sur le DEVIS (commercial). Par défaut = nomCommercial. */
+  nomDevis?: string;
   siret: string;
   rcAssureur: string | null;
   rcPolice: string | null;
@@ -18,6 +20,7 @@ export interface Diagnosticien {
 
 export const BATI_HALLI: Diagnosticien = {
   nomCommercial: 'Bâti Halli',
+  nomDevis: 'M.Halli',
   siret: '398 185 421 00037',
   rcAssureur: 'MILA',
   rcPolice: 'RCPML005417',

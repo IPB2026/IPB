@@ -65,6 +65,8 @@ const BODY = BRAND_FONTS ? 'DMSans' : 'Helvetica';
 
 export interface DevisDocDiagnosticien {
   nomCommercial: string;
+  /** Nom affiché sur le devis (commercial) ; défaut = nomCommercial. */
+  nomDevis?: string;
   siret: string;
   rcAssureur?: string | null;
   rcPolice?: string | null;
@@ -177,8 +179,9 @@ function Bullets({ items }: { items: string[] }) {
 export function DevisDocument({ data }: { data: DevisDocData }) {
   const clientLoc = [data.contact.postalCode, data.contact.city].filter(Boolean).join(' ');
   const d = data.diagnosticien;
+  const diagNom = d.nomDevis ?? d.nomCommercial;
   const diagLine =
-    `Réalisé par le diagnostiqueur indépendant mandaté — ${d.nomCommercial}, SIRET ${d.siret}` +
+    `Réalisé par le diagnostiqueur indépendant mandaté — ${diagNom}, SIRET ${d.siret}` +
     (d.rcAssureur && d.rcPolice
       ? ` · assuré en RC professionnelle ${d.rcAssureur} n° ${d.rcPolice}, sous sa responsabilité`
       : ', sous sa responsabilité');
