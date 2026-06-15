@@ -2,11 +2,16 @@ import 'server-only';
 import { prisma } from '@/lib/prisma';
 import { sendEmail } from '@/lib/email';
 import { COMPANY } from '@/lib/crm/company';
+import { signBookingToken } from '@/lib/crm/booking';
 import {
   buildDevisPdf,
   buildFacturePdf,
   buildRapportPdf,
 } from '@/lib/pdf/buffers';
+
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ||
+  'https://www.ipb-expertise.fr';
 
 /**
  * Logique d'envoi e-mail (PDF en pièce jointe) partagée entre les server actions
@@ -52,16 +57,17 @@ const slotLabel = (d: Date) =>
     minute: '2-digit',
   });
 
-/** E-mail devis AVEC créneaux de visite proposés (cf. message validé). */
+/** E-mail devis AVEC créneaux de visite proposés — chaque créneau est un bouton
+ *  cliquable qui confirme la visite EN LIGNE (création auto dans l'agenda). */
 function devisSlotsCover(opts: {
   demande: string;
   number: string;
-  slots: Date[];
+  slots: { date: Date; url: string }[];
 }): string {
   const slotsHtml = opts.slots
     .map(
-      (d) =>
-        `<li style="margin:0 0 6px; color:#334155; font-size:14px;"><strong>🗓️ ${slotLabel(d)}</strong></li>`
+      (s) =>
+        `<tr><td style="padding:0 0 8px;"><a href="${s.url}" style="display:block; background:#fff; border:1px solid #C8601F; border-radius:8px; padding:11px 14px; color:#0F172A; text-decoration:none; font-size:14px; font-weight:600;">🗓️ ${slotLabel(s.date)} <span style="color:#C8601F; font-weight:700;">— Choisir ce créneau →</span></a></td></tr>`
     )
     .join('');
   return `
@@ -74,9 +80,9 @@ function devisSlotsCover(opts: {
       <div style="padding:22px;">
         <p style="margin:0 0 12px; color:#0F172A; font-size:15px;">Bonjour,</p>
         <p style="margin:0 0 14px; color:#334155; font-size:14px; line-height:1.6;">Suite à votre demande concernant ${opts.demande}, veuillez trouver ci-joint notre <strong>devis n° ${opts.number}</strong> (PDF).</p>
-        <p style="margin:0 0 8px; color:#334155; font-size:14px; line-height:1.6;"><strong>Pour lancer le diagnostic :</strong> retournez-nous le devis avec la mention « Bon pour accord », et indiquez le créneau qui vous convient pour la visite sur site :</p>
-        <ul style="margin:0 0 14px; padding-left:18px;">${slotsHtml}</ul>
-        <p style="margin:0 0 14px; color:#334155; font-size:14px; line-height:1.6;">Répondez simplement à cet e-mail avec votre choix — nous confirmons sous 24 h et l'invitation arrive dans votre agenda.</p>
+        <p style="margin:0 0 10px; color:#334155; font-size:14px; line-height:1.6;"><strong>Pour fixer la visite sur site,</strong> choisissez le créneau qui vous convient en cliquant ci-dessous — votre rendez-vous est confirmé immédiatement :</p>
+        <table role="presentation" style="width:100%; border-collapse:collapse; margin:0 0 12px;">${slotsHtml}</table>
+        <p style="margin:0 0 14px; color:#334155; font-size:14px; line-height:1.6;">Pour valider le devis, retournez-le-nous avec la mention « Bon pour accord ».</p>
         <p style="margin:0 0 14px; color:#64748b; font-size:12.5px; font-style:italic; line-height:1.6;">Visite réalisée par le diagnostiqueur indépendant mandaté ; rapport remis sous 3 à 5 jours ouvrés après la visite.</p>
         <p style="margin:0; color:#64748b; font-size:13px;">Une question ? Appelez le <strong>${COMPANY.phone}</strong>.</p>
         <p style="margin:16px 0 0; color:#0F172A; font-size:14px;">Cordialement,<br/>${COMPANY.name}</p>
@@ -108,7 +114,14 @@ export async function sendDevisEmail(
     ? devisSlotsCover({
         demande: DEMANDE_LABEL[devis.serviceType ?? 'AUTRE'] ?? 'votre projet',
         number: devis.number,
-        slots: slots as Date[],
+        slots: (slots as Date[]).map((date) => ({
+          date,
+          url: `${SITE}/rdv?t=${signBookingToken({
+            d: devis.id,
+            c: devis.contactId,
+            s: date.toISOString(),
+          })}`,
+        })),
       })
     : coverHtml({
         greeting: 'Bonjour,',
