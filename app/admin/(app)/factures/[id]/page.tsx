@@ -15,6 +15,7 @@ import {
 } from '@/app/admin/(app)/factures/actions';
 import { sendFacture } from '@/app/admin/(app)/send-actions';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
+import { EditFactureForm } from '@/components/admin/edit-facture-form';
 
 export const dynamic = 'force-dynamic';
 
@@ -37,6 +38,9 @@ export default async function FactureDetailPage({
 
   if (!facture) notFound();
   const net = Number(facture.totalHT) - Number(facture.acompte ?? 0);
+  const dueStr = facture.dueDate
+    ? new Date(facture.dueDate).toISOString().slice(0, 10)
+    : '';
 
   return (
     <div className="mx-auto max-w-4xl space-y-6">
@@ -215,6 +219,19 @@ export default async function FactureDetailPage({
         ) : (
           <p className="text-sm font-medium text-emerald-700">Facture soldée.</p>
         )}
+      </section>
+
+      {/* Modifier la facture */}
+      <section className="rounded-xl border border-slate-200 bg-white p-5">
+        <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-400">
+          Modifier la facture
+        </h2>
+        <EditFactureForm
+          factureId={facture.id}
+          object={facture.object}
+          montant={Number(facture.totalHT)}
+          dueDate={dueStr}
+        />
       </section>
 
       <section className="overflow-hidden rounded-xl border border-slate-200 bg-white">

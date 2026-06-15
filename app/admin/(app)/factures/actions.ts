@@ -70,6 +70,84 @@ export async function createFacture(
   redirect(`/admin/factures/${facture.id}`);
 }
 
+/**
+ * Modifie une facture existante (objet, échéance, montant) sans la recréer.
+ * Préserve le format « diagnostic » (ligne « — » + coordination) si la facture
+ * en venait ; sinon ligne forfait unique. Re-générer le PDF reflète le tout.
+ */
+export async function updateFacture(
+  _prev: string | undefined,
+  formData: FormData
+): Promise<string | undefined> {
+  await requireAdmin();
+  const id = String(formData.get('factureId') ?? '');
+  if (!id) return 'Facture introuvable.';
+  const object = String(formData.get('object') ?? '').trim();
+  const montant = Math.round(
+    Number(String(formData.get('montant') ?? '').replace(',', '.')) || 0
+  );
+  if (!object) return 'Objet de la facture obligatoire.';
+  if (!montant || montant < 1 || montant > 1000000) return 'Montant invalide (€ HT).';
+
+  const existing = await prisma.facture.findUnique({
+    where: { id },
+    include: { lines: true },
+  });
+  if (!existing) return 'Facture introuvable.';
+
+  const dueRaw = String(formData.get('dueDate') ?? '');
+  // Facture diagnostic = présence d'une ligne « — » (prix 0) + une ligne payante.
+  const isDiagnostic =
+    existing.lines.length >= 2 && existing.lines.some((l) => Number(l.unitPrice) === 0);
+
+  const lines = isDiagnostic
+    ? [
+        {
+          designation: 'Diagnostic sur site, analyse et production du rapport',
+          detail: 'Réalisé par le diagnostiqueur indépendant mandaté, sous sa responsabilité',
+          unit: 'Forfait',
+          qty: 1,
+          unitPrice: 0,
+          total: 0,
+          position: 0,
+        },
+        {
+          designation: 'Coordination de la mission et mise en forme du rapport',
+          detail: 'Planification, suivi du dossier et production éditoriale du rapport — IPB',
+          unit: 'Forfait',
+          qty: 1,
+          unitPrice: montant,
+          total: montant,
+          position: 1,
+        },
+      ]
+    : [
+        {
+          designation: object,
+          unit: 'Forfait',
+          qty: 1,
+          unitPrice: montant,
+          total: montant,
+          position: 0,
+        },
+      ];
+
+  await prisma.factureLine.deleteMany({ where: { factureId: id } });
+  await prisma.facture.update({
+    where: { id },
+    data: {
+      object,
+      dueDate: dueRaw ? new Date(dueRaw) : undefined,
+      totalHT: montant,
+      lines: { create: lines },
+    },
+  });
+
+  revalidatePath(`/admin/factures/${id}`);
+  revalidatePath('/admin/factures');
+  return undefined;
+}
+
 export async function updateFactureStatus(formData: FormData) {
   await requireAdmin();
   const id = String(formData.get('factureId') ?? '');
