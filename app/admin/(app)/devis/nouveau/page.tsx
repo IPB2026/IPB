@@ -26,6 +26,25 @@ export default async function NewDevisPage({
     })
     .catch(() => []);
 
+  // Pré-remplissage depuis la fiche prospect : prix du diagnostic (lead.value le
+  // plus récent) + adresse du bien → zéro ressaisie.
+  let defaultPrix: number | undefined;
+  let prefillBien: string | undefined;
+  if (searchParams.contactId) {
+    const c = await prisma.contact
+      .findUnique({
+        where: { id: searchParams.contactId },
+        select: {
+          address: true,
+          leads: { select: { value: true }, orderBy: { createdAt: 'desc' }, take: 1 },
+        },
+      })
+      .catch(() => null);
+    const v = c?.leads[0]?.value != null ? Number(c.leads[0].value) : null;
+    if (v != null && v > 0) defaultPrix = v;
+    if (c?.address) prefillBien = c.address;
+  }
+
   return (
     <div className="mx-auto max-w-3xl space-y-5">
       <Link
@@ -49,7 +68,8 @@ export default async function NewDevisPage({
             contacts={contacts}
             defaultContactId={searchParams.contactId}
             defaultServiceType={searchParams.serviceType}
-            defaultBien={searchParams.bien}
+            defaultBien={searchParams.bien ?? prefillBien}
+            defaultPrix={defaultPrix}
             leadId={searchParams.leadId}
           />
         )}

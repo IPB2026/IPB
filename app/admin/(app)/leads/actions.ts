@@ -48,6 +48,7 @@ const prospectSchema = z
       .optional()
       .default(''),
     city: z.string().trim().optional().default(''),
+    address: z.string().trim().optional().default(''),
     service: z.nativeEnum(ServiceType).optional().default(ServiceType.AUTRE),
     occupantStatus: z
       .nativeEnum(OccupantStatus)
@@ -79,6 +80,7 @@ export async function createProspect(
     phone: str('phone'),
     email: str('email'),
     city: str('city'),
+    address: str('address'),
     service: str('service') || undefined,
     occupantStatus: str('occupantStatus') || undefined,
     tier: str('tier'),
@@ -106,6 +108,7 @@ export async function createProspect(
       name: d.name,
       phone: d.phone || null,
       email: d.email || null,
+      address: d.address || null,
       city: city ?? (d.city || null),
       postalCode,
       occupantStatus: d.occupantStatus,

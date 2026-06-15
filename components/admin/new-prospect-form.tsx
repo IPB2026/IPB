@@ -81,6 +81,18 @@ export function NewProspectForm({
         </div>
       </div>
 
+      <div>
+        <label htmlFor="address" className={labelCls}>
+          Adresse du bien
+        </label>
+        <input
+          id="address"
+          name="address"
+          className={field}
+          placeholder="33 chemin des Vivans, 31600 Muret"
+        />
+      </div>
+
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="service" className={labelCls}>
@@ -172,9 +184,12 @@ export function NewProspectForm({
         </div>
         <div>
           <label htmlFor="value" className={labelCls}>
-            Valeur estimée (€)
+            Prix du diagnostic (€)
           </label>
           <input id="value" name="value" inputMode="decimal" className={field} placeholder="ex. 450" />
+          <p className="mt-1 text-xs text-slate-400">
+            Repris automatiquement dans le devis — pas besoin de le ressaisir.
+          </p>
         </div>
       </div>
 

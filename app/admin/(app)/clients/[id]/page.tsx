@@ -205,17 +205,39 @@ export default async function ClientFichePage({
           </div>
         </div>
 
-        <div className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
+        {/* Essentiel : téléphone + adresse du bien, toujours en avant. */}
+        <div className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+          <div className="rounded-lg border border-slate-200 bg-slate-50/60 px-3.5 py-2.5">
+            <div className="text-[11px] font-medium uppercase tracking-wider text-slate-400">
+              Téléphone
+            </div>
+            {c.phone ? (
+              <a href={`tel:${c.phone}`} className="text-sm font-semibold tabular-nums text-slate-900 hover:text-orange-600">
+                {c.phone}
+              </a>
+            ) : (
+              <span className="text-sm text-slate-300">—</span>
+            )}
+          </div>
+          <div className="rounded-lg border border-slate-200 bg-slate-50/60 px-3.5 py-2.5">
+            <div className="text-[11px] font-medium uppercase tracking-wider text-slate-400">
+              Adresse du bien
+            </div>
+            <div className="truncate text-sm font-semibold text-slate-900" title={adresse}>
+              {adresse}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-2.5 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
           <Metric label="Diagnostiqueur" value={diagnostiqueur} />
           <Metric
             label="Montant dossier"
             value={dossier.montant != null ? euros(dossier.montant) : '—'}
           />
-          <Metric
-            label="Travaux"
-            value={dossier.travauxAPlanifier ? 'À planifier' : '—'}
-            tone={dossier.travauxAPlanifier ? 'text-orange-600' : 'text-slate-800'}
-          />
+          {dossier.travauxAPlanifier && (
+            <Metric label="Travaux" value="À planifier" tone="text-orange-600" />
+          )}
         </div>
       </div>
 
