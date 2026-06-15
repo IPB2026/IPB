@@ -667,9 +667,9 @@ function nextStep(
       };
     case 'suivi':
       return {
-        title: 'Suivi client — décision travaux',
-        desc: "Le rapport est remis. S'il veut engager les travaux, émettez le devis d'accompagnement.",
-        label: 'Créer le devis travaux',
+        title: 'Suivi client',
+        desc: "Le rapport est remis. Faites le point avec le client sur les préconisations — s'il souhaite engager les travaux, proposez le devis d'accompagnement.",
+        label: 'Créer un devis travaux',
         href: `/admin/devis/nouveau-travaux?contactId=${contactId}${l}`,
       };
     case 'travaux':

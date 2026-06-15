@@ -100,17 +100,22 @@ export function computeDossier(d: DossierInputs): DossierView {
     { key: 'client', label: 'Devis accepté (client)', done: isClient },
     { key: 'rdv', label: "Date d'intervention", done: rdvPris },
     { key: 'visite', label: 'Visite réalisée', done: visiteFaite },
-    { key: 'facture', label: 'Facture émise', done: factureEnvoyee },
+    { key: 'facture', label: 'Facture envoyée', done: factureEnvoyee },
     { key: 'paiement', label: 'Paiement reçu', done: facturePayee },
     { key: 'rapport', label: 'Rapport transmis', done: rapportEnvoye },
+    // Après le rapport il y a TOUJOURS un suivi client (faire le point sur les
+    // préconisations) — « terminé » seulement si les travaux sont lancés. Le
+    // libellé bascule en « Accompagnement travaux » dès qu'un devis travaux existe.
+    {
+      key: 'suivi',
+      label: hasDevisTravaux ? 'Accompagnement travaux' : 'Suivi client',
+      done: travauxPlanifies,
+    },
   ];
 
-  // Cycle travaux ajouté uniquement quand il existe vraiment (cas exceptionnel).
+  // Étape « Travaux lancés » ajoutée seulement si des travaux sont engagés.
   if (hasDevisTravaux || travauxPlanifies) {
-    raw.push(
-      { key: 'suivi', label: 'Accompagnement travaux', done: hasDevisTravaux || travauxPlanifies },
-      { key: 'travaux', label: 'Travaux lancés', done: travauxPlanifies },
-    );
+    raw.push({ key: 'travaux', label: 'Travaux lancés', done: travauxPlanifies });
   }
 
   // L'étape courante = la première non faite.

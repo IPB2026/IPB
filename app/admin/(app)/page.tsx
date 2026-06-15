@@ -78,6 +78,7 @@ async function getStats() {
         status: 'ACCEPTE',
         serviceType: { not: 'AUTRE' },
         contact: {
+          // Pas encore de visite diagnostic planifiée…
           appointments: {
             none: {
               type: {
@@ -85,6 +86,8 @@ async function getStats() {
               },
             },
           },
+          // …ET pas de facture (si facturé, la visite a déjà eu lieu).
+          factures: { none: {} },
         },
       },
       orderBy: { acceptedAt: 'desc' },
@@ -123,6 +126,7 @@ async function getStats() {
         status: 'ACCEPTE',
         serviceType: { not: 'AUTRE' },
         contact: {
+          // Pas encore de visite diagnostic planifiée…
           appointments: {
             none: {
               type: {
@@ -130,6 +134,8 @@ async function getStats() {
               },
             },
           },
+          // …ET pas de facture (si facturé, la visite a déjà eu lieu).
+          factures: { none: {} },
         },
       },
     }),
