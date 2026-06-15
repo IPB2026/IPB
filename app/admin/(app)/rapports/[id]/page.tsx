@@ -124,7 +124,13 @@ export default async function RapportDetailPage({
             {rapport.number}
           </h1>
           <p className="text-sm text-slate-500">
-            {rapport.title} — {c.name}
+            {rapport.title} —{' '}
+            <Link
+              href={`/admin/clients/${rapport.contactId}`}
+              className="font-medium text-slate-600 hover:text-orange-600 hover:underline"
+            >
+              {c.name}
+            </Link>
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
