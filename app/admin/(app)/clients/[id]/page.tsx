@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import {
   ArrowLeft,
   Phone,
@@ -19,7 +19,7 @@ import type {
   AppointmentStatus,
 } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
-import { guardAdminPage, listExperts } from '@/lib/auth-helpers';
+import { getSessionUser, listExperts } from '@/lib/auth-helpers';
 import { euros } from '@/lib/crm/company';
 import { computeDossier } from '@/lib/crm/dossier';
 import { Avatar } from '@/components/admin/avatar';
@@ -105,7 +105,9 @@ export default async function ClientFichePage({
 }: {
   params: { id: string };
 }) {
-  await guardAdminPage();
+  const user = await getSessionUser();
+  if (!user) redirect('/admin/login');
+  const isAdmin = user.role === 'ADMIN';
 
   const c = await prisma.contact
     .findUnique({
@@ -126,6 +128,16 @@ export default async function ClientFichePage({
 
   if (!c) notFound();
 
+  // Cloisonnement EXPERT : un diagnostiqueur n'accède qu'aux fiches de SES
+  // dossiers (prospect assigné ou rapport dont il est l'auteur). Et il ne verra
+  // ni devis, ni factures, ni montants (sections gardées par `isAdmin`).
+  if (!isAdmin) {
+    const allowed =
+      c.leads.some((l) => l.assignedToId === user.id) ||
+      c.rapports.some((r) => r.authorId === user.id);
+    if (!allowed) redirect('/admin/rapports');
+  }
+
   const lead = c.leads[0] ?? null;
   const dossier = computeDossier({
     devis: c.devis.map((d) => ({
@@ -141,7 +153,7 @@ export default async function ClientFichePage({
   });
 
   const next = nextStep(dossier, c.id, lead?.id);
-  const experts = lead ? await listExperts() : [];
+  const experts = isAdmin && lead ? await listExperts() : [];
   const qual = extractQual(lead?.payload);
   const diagnostiqueur = lead?.assignedTo?.name || lead?.assignedTo?.email || '—';
   const adresse =
@@ -152,11 +164,11 @@ export default async function ClientFichePage({
   return (
     <div className="mx-auto max-w-4xl space-y-6">
       <Link
-        href="/admin/clients"
+        href={isAdmin ? '/admin/clients' : '/admin/rapports'}
         className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-900"
       >
         <ArrowLeft className="h-4 w-4" />
-        Tous les clients
+        {isAdmin ? 'Tous les clients' : 'Mes interventions'}
       </Link>
 
       {/* En-tête */}
@@ -189,20 +201,24 @@ export default async function ClientFichePage({
                 <Phone className="h-4 w-4" /> Appeler
               </a>
             )}
-            <Link
-              href={`/admin/devis/nouveau?contactId=${c.id}${
-                lead?.id ? `&leadId=${lead.id}` : ''
-              }`}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
-            >
-              <FileText className="h-4 w-4" /> Devis
-            </Link>
-            <Link
-              href={`/admin/factures/nouveau?contactId=${c.id}`}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-orange-600 px-3 py-2 text-sm font-semibold text-white hover:bg-orange-700"
-            >
-              <Receipt className="h-4 w-4" /> Facture
-            </Link>
+            {isAdmin && (
+              <>
+                <Link
+                  href={`/admin/devis/nouveau?contactId=${c.id}${
+                    lead?.id ? `&leadId=${lead.id}` : ''
+                  }`}
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                >
+                  <FileText className="h-4 w-4" /> Devis
+                </Link>
+                <Link
+                  href={`/admin/factures/nouveau?contactId=${c.id}`}
+                  className="inline-flex items-center gap-1.5 rounded-lg bg-orange-600 px-3 py-2 text-sm font-semibold text-white hover:bg-orange-700"
+                >
+                  <Receipt className="h-4 w-4" /> Facture
+                </Link>
+              </>
+            )}
           </div>
         </div>
 
@@ -232,11 +248,13 @@ export default async function ClientFichePage({
 
         <div className="mt-2.5 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
           <Metric label="Diagnostiqueur" value={diagnostiqueur} />
-          <Metric
-            label="Montant dossier"
-            value={dossier.montant != null ? euros(dossier.montant) : '—'}
-          />
-          {dossier.travauxAPlanifier && (
+          {isAdmin && (
+            <Metric
+              label="Montant dossier"
+              value={dossier.montant != null ? euros(dossier.montant) : '—'}
+            />
+          )}
+          {isAdmin && dossier.travauxAPlanifier && (
             <Metric label="Travaux" value="À planifier" tone="text-orange-600" />
           )}
         </div>
@@ -273,8 +291,8 @@ export default async function ClientFichePage({
         </ol>
       </Card>
 
-      {/* Prochaine étape — fil conducteur du dossier */}
-      {next && (
+      {/* Prochaine étape — fil conducteur du dossier (pilotage ADMIN) */}
+      {isAdmin && next && (
         <div className="rounded-xl border border-orange-200 bg-orange-50/70 p-5">
           <p className="text-[11px] font-semibold uppercase tracking-wider text-orange-700">
             Prochaine étape
@@ -292,8 +310,8 @@ export default async function ClientFichePage({
         </div>
       )}
 
-      {/* Suivi du prospect : étape, diagnostiqueur, relance, activité */}
-      {lead && (
+      {/* Suivi du prospect : étape, diagnostiqueur, relance, activité (ADMIN) */}
+      {isAdmin && lead && (
         <section className="rounded-xl border border-slate-200 bg-white p-5">
           <h2 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
             Suivi du prospect <StageBadge stage={lead.stage} />
@@ -410,8 +428,8 @@ export default async function ClientFichePage({
         </section>
       )}
 
-      {/* Qualification (appel) */}
-      {lead && (
+      {/* Qualification (appel) — ADMIN */}
+      {isAdmin && lead && (
         <section className="rounded-xl border border-slate-200 bg-white p-5">
           <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
             <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
@@ -427,8 +445,8 @@ export default async function ClientFichePage({
         </section>
       )}
 
-      {/* Données du formulaire web (discret) */}
-      {lead && (lead.summary || (!!lead.payload && typeof lead.payload === 'object')) && (
+      {/* Données du formulaire web (discret) — ADMIN */}
+      {isAdmin && lead && (lead.summary || (!!lead.payload && typeof lead.payload === 'object')) && (
         <details className="overflow-hidden rounded-xl border border-slate-200 bg-white [&_summary::-webkit-details-marker]:hidden">
           <summary className="flex cursor-pointer list-none items-center justify-between px-5 py-3 text-xs font-semibold uppercase tracking-wider text-slate-400 hover:bg-slate-50">
             <span>Données du formulaire</span>
@@ -490,20 +508,24 @@ export default async function ClientFichePage({
         {/* Documents du dossier */}
         <div className="lg:col-span-2">
           <Card title="Documents du dossier">
-            {c.devis.length + c.factures.length + c.rapports.length + c.appointments.length === 0 ? (
+            {(isAdmin ? c.devis.length + c.factures.length : 0) +
+              c.rapports.length +
+              c.appointments.length ===
+            0 ? (
               <p className="text-sm text-slate-500">Aucun document pour ce dossier.</p>
             ) : (
               <ul className="divide-y divide-slate-100">
-                {c.devis.map((d) => (
-                  <DocRow
-                    key={d.id}
-                    icon={FileText}
-                    href={`/admin/devis/${d.id}`}
-                    title={`Devis ${d.number}`}
-                    sub={`${d.object} · ${euros(Number(d.totalHT))}`}
-                    pill={DEVIS_PILL[d.status]}
-                  />
-                ))}
+                {isAdmin &&
+                  c.devis.map((d) => (
+                    <DocRow
+                      key={d.id}
+                      icon={FileText}
+                      href={`/admin/devis/${d.id}`}
+                      title={`Devis ${d.number}`}
+                      sub={`${d.object} · ${euros(Number(d.totalHT))}`}
+                      pill={DEVIS_PILL[d.status]}
+                    />
+                  ))}
                 {c.rapports.map((r) => (
                   <DocRow
                     key={r.id}
@@ -514,16 +536,17 @@ export default async function ClientFichePage({
                     pill={RAPPORT_PILL[r.status]}
                   />
                 ))}
-                {c.factures.map((f) => (
-                  <DocRow
-                    key={f.id}
-                    icon={Receipt}
-                    href={`/admin/factures/${f.id}`}
-                    title={`Facture ${f.number}`}
-                    sub={`${f.object} · ${euros(Number(f.totalHT))}`}
-                    pill={FACTURE_PILL[f.status]}
-                  />
-                ))}
+                {isAdmin &&
+                  c.factures.map((f) => (
+                    <DocRow
+                      key={f.id}
+                      icon={Receipt}
+                      href={`/admin/factures/${f.id}`}
+                      title={`Facture ${f.number}`}
+                      sub={`${f.object} · ${euros(Number(f.totalHT))}`}
+                      pill={FACTURE_PILL[f.status]}
+                    />
+                  ))}
                 {c.appointments.map((a) => (
                   <DocRow
                     key={a.id}

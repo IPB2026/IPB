@@ -106,7 +106,12 @@ async function ExpertView({ expertId }: { expertId: string }) {
                 >
                   <div className="min-w-0">
                     <p className="flex items-center gap-2 font-medium text-slate-900">
-                      {lead.contact.name}
+                      <Link
+                        href={`/admin/clients/${lead.contactId}`}
+                        className="hover:text-orange-600 hover:underline"
+                      >
+                        {lead.contact.name}
+                      </Link>
                       {!rapport && (
                         <span className="inline-flex rounded-md bg-orange-50 px-1.5 py-0.5 text-xs font-semibold text-orange-700 ring-1 ring-inset ring-orange-600/20">
                           Nouveau
@@ -180,6 +185,7 @@ function loadAssignedLeads(expertId: string) {
     take: 200,
     select: {
       id: true,
+      contactId: true,
       service: true,
       contact: { select: { name: true, city: true } },
     },
