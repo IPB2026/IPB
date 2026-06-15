@@ -302,7 +302,7 @@ export default async function AgendaPage({
         <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
           <EmptyState
             icon={CalendarClock}
-            title="Aucun rendez-vous"
+            title="Aucun rendez-vous à venir"
             description="Planifiez un RDV ci-dessus ou depuis une fiche prospect."
           />
         </div>
@@ -460,7 +460,13 @@ export default async function AgendaPage({
 }
 
 function loadAppts() {
+  // Vue « Liste » = ce qui arrive. On part du début de la journée (un RDV du
+  // matin reste visible) et on remonte les prochains en premier. Les RDV passés
+  // restent consultables via la vue Semaine / l'historique de chaque fiche.
+  const startOfToday = new Date();
+  startOfToday.setHours(0, 0, 0, 0);
   return prisma.appointment.findMany({
+    where: { start: { gte: startOfToday } },
     orderBy: { start: 'asc' },
     take: 100,
     include: { contact: true },
