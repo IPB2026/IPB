@@ -194,6 +194,35 @@ export async function rescheduleAppointment(formData: FormData) {
 }
 
 /**
+ * Supprime DÉFINITIVEMENT un rendez-vous : retiré de l'agenda Google ET de la
+ * base (disparaît de la liste). Pour les RDV créés par erreur / doublons. Ne
+ * notifie pas le client (≠ « Annuler » qui envoie un e-mail d'annulation).
+ */
+export async function deleteAppointment(formData: FormData) {
+  await requireUser();
+  const id = str(formData.get('appointmentId'));
+  if (!id) return;
+  const appt = await prisma.appointment.findUnique({
+    where: { id },
+    select: { googleEventId: true, contactId: true, leadId: true, title: true, start: true },
+  });
+  if (!appt) return;
+  if (appt.googleEventId) {
+    await deleteCalendarEvent(appt.googleEventId);
+  }
+  await prisma.appointment.delete({ where: { id } });
+  await prisma.activity.create({
+    data: {
+      type: 'SYSTEME',
+      contactId: appt.contactId,
+      leadId: appt.leadId,
+      content: `RDV supprimé : ${appt.title} — ${appt.start.toLocaleString('fr-FR')}`,
+    },
+  });
+  revalidatePath('/admin/agenda');
+}
+
+/**
  * Workflow facture-après-diagnostic : génère une facture pour l'intervention
  * réalisée et la lie au RDV. (L'envoi e-mail auto viendra en Phase F.)
  */

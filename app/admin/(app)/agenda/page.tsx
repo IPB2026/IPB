@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { CalendarClock, ReceiptText, Plus } from 'lucide-react';
+import { CalendarClock, ReceiptText, Plus, Trash2 } from 'lucide-react';
 import type { AppointmentStatus, AppointmentType } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
@@ -24,6 +24,7 @@ import {
   updateAppointmentStatus,
   rescheduleAppointment,
   generateInvoiceFromAppointment,
+  deleteAppointment,
 } from '@/app/admin/(app)/agenda/actions';
 
 export const dynamic = 'force-dynamic';
@@ -335,13 +336,19 @@ export default async function AgendaPage({
                           {isCalendarConfigured() && (
                             <p className="mt-0.5 flex flex-wrap items-center gap-x-2 text-[11px] font-medium">
                               {a.googleEventId ? (
-                                <span className="text-emerald-600">✓ Dans l&apos;agenda Google</span>
+                                <span className="inline-flex items-center gap-1 text-emerald-600">
+                                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                                  Synchronisé avec Google Agenda
+                                </span>
                               ) : (
-                                <span className="text-amber-600">Non synchronisé</span>
+                                <span className="inline-flex items-center gap-1 text-slate-400">
+                                  <span className="h-1.5 w-1.5 rounded-full bg-slate-300" />
+                                  Enregistré en interne (hors Google)
+                                </span>
                               )}
                               {a.googleEventId &&
                                 (a.contact.email ? (
-                                  <span className="text-emerald-600">· ✓ Invitation envoyée</span>
+                                  <span className="text-emerald-600">· invitation envoyée au client</span>
                                 ) : (
                                   <span className="text-slate-400">· client sans e-mail</span>
                                 ))}
@@ -401,13 +408,22 @@ export default async function AgendaPage({
                             <input type="hidden" name="appointmentId" value={a.id} />
                             <input type="hidden" name="status" value="ANNULE" />
                             <ConfirmSubmit
-                              message="Annuler ce rendez-vous ? Il sera retiré de l'agenda Google et le client sera prévenu."
-                              className="h-10 sm:h-9 rounded-lg border border-red-200 bg-red-50 px-3 text-sm font-medium text-red-700 hover:bg-red-100"
+                              message="Annuler ce rendez-vous ? Il sera retiré de l'agenda Google et le client sera prévenu par e-mail."
+                              className="h-10 sm:h-9 rounded-lg border border-amber-200 bg-amber-50 px-3 text-sm font-medium text-amber-700 hover:bg-amber-100"
                             >
                               Annuler
                             </ConfirmSubmit>
                           </form>
                         )}
+                        <form action={deleteAppointment}>
+                          <input type="hidden" name="appointmentId" value={a.id} />
+                          <ConfirmSubmit
+                            message="Supprimer définitivement ce rendez-vous ? Il disparaît de l'agenda (et de Google). Le client n'est pas prévenu."
+                            className="inline-flex h-10 w-10 sm:h-9 sm:w-9 items-center justify-center rounded-lg border border-red-200 bg-red-50 text-red-600 hover:bg-red-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </ConfirmSubmit>
+                        </form>
                       </div>
                       </div>
                       <details className="mt-2 [&_summary::-webkit-details-marker]:hidden">
@@ -467,7 +483,7 @@ function loadAppts() {
   const startOfToday = new Date();
   startOfToday.setHours(0, 0, 0, 0);
   return prisma.appointment.findMany({
-    where: { start: { gte: startOfToday } },
+    where: { start: { gte: startOfToday }, status: { not: 'ANNULE' } },
     orderBy: { start: 'asc' },
     take: 100,
     include: { contact: true },
