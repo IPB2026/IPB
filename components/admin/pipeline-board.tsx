@@ -10,7 +10,7 @@ import { PIPELINE_STAGES } from '@/components/admin/badges';
 export interface PipelineColumn {
   stage: string;
   label: string;
-  leads: { id: string; name: string; sub: string }[];
+  leads: { id: string; contactId: string; name: string; sub: string }[];
 }
 
 /**
@@ -66,7 +66,7 @@ export function PipelineBoard({ columns }: { columns: PipelineColumn[] }) {
                     onDragEnd={() => setDragId(null)}
                     className="rounded-lg border border-slate-200 bg-white p-2.5 shadow-sm"
                   >
-                    <Link href={`/admin/leads/${l.id}`} className="block">
+                    <Link href={`/admin/clients/${l.contactId}`} className="block">
                       <p className="truncate text-sm font-medium text-slate-900">
                         {l.name}
                       </p>

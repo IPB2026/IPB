@@ -143,7 +143,7 @@ export default async function LeadsPage({
             {leads.map((lead) => (
               <MobileCardRow
                 key={lead.id}
-                href={`/admin/leads/${lead.id}`}
+                href={`/admin/clients/${lead.contactId}`}
                 leading={<Avatar name={lead.contact.name} size="sm" />}
                 title={lead.contact.name}
                 badge={<StageBadge stage={lead.stage} />}
@@ -177,7 +177,7 @@ export default async function LeadsPage({
                     className="group transition-colors duration-150 hover:bg-slate-50"
                   >
                     <td className="px-5 py-3">
-                      <Link href={`/admin/leads/${lead.id}`} className="flex items-center gap-3">
+                      <Link href={`/admin/clients/${lead.contactId}`} className="flex items-center gap-3">
                         <Avatar name={lead.contact.name} size="sm" />
                         <span>
                           <span className="block font-medium text-slate-900 group-hover:text-orange-600">

@@ -388,7 +388,7 @@ export default async function DashboardPage() {
               {stats.recent.map((lead) => (
                 <MobileCardRow
                   key={lead.id}
-                  href={`/admin/leads/${lead.id}`}
+                  href={`/admin/clients/${lead.contactId}`}
                   leading={<Avatar name={lead.contact.name} size="sm" />}
                   title={lead.contact.name}
                   badge={<StageBadge stage={lead.stage} />}
@@ -420,7 +420,7 @@ export default async function DashboardPage() {
                   >
                     <td className="px-5 py-3">
                       <Link
-                        href={`/admin/leads/${lead.id}`}
+                        href={`/admin/clients/${lead.contactId}`}
                         className="flex items-center gap-3"
                       >
                         <Avatar name={lead.contact.name} size="sm" />

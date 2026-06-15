@@ -19,11 +19,20 @@ import type {
   AppointmentStatus,
 } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
-import { guardAdminPage } from '@/lib/auth-helpers';
+import { guardAdminPage, listExperts } from '@/lib/auth-helpers';
 import { euros } from '@/lib/crm/company';
 import { computeDossier } from '@/lib/crm/dossier';
 import { Avatar } from '@/components/admin/avatar';
 import { ContactEditForm } from '@/components/admin/contact-edit-form';
+import { QualificationForm } from '@/components/admin/qualification-form';
+import { StageBadge, STAGE_LABEL, PIPELINE_STAGES } from '@/components/admin/badges';
+import type { QualificationRecord } from '@/lib/crm/qualification';
+import {
+  changeStage,
+  assignLead,
+  scheduleRelance,
+  addActivity,
+} from '@/app/admin/(app)/leads/actions';
 
 export const dynamic = 'force-dynamic';
 
@@ -130,6 +139,8 @@ export default async function ClientFichePage({
 
   const lead = c.leads[0] ?? null;
   const next = nextStep(dossier, c.id, lead?.id);
+  const experts = lead ? await listExperts() : [];
+  const qual = extractQual(lead?.payload);
   const diagnostiqueur = lead?.assignedTo?.name || lead?.assignedTo?.email || '—';
   const adresse =
     [c.address, [c.postalCode, c.city].filter(Boolean).join(' ')]
@@ -257,6 +268,141 @@ export default async function ClientFichePage({
         </div>
       )}
 
+      {/* Suivi du prospect : étape, diagnostiqueur, relance, activité */}
+      {lead && (
+        <section className="rounded-xl border border-slate-200 bg-white p-5">
+          <h2 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
+            Suivi du prospect <StageBadge stage={lead.stage} />
+          </h2>
+          <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+            <div className="space-y-4">
+              <form action={changeStage} className="space-y-2">
+                <input type="hidden" name="leadId" value={lead.id} />
+                <label className="block text-sm font-medium text-slate-700">
+                  Étape du pipeline
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  <select
+                    name="stage"
+                    defaultValue={lead.stage}
+                    className="h-10 flex-1 rounded-lg border border-slate-300 px-3 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                  >
+                    {[...PIPELINE_STAGES, 'PERDU' as const].map((v) => (
+                      <option key={v} value={v}>
+                        {STAGE_LABEL[v]}
+                      </option>
+                    ))}
+                  </select>
+                  <button
+                    type="submit"
+                    className="h-10 rounded-lg bg-slate-900 px-4 text-sm font-semibold text-white hover:bg-slate-800"
+                  >
+                    Mettre à jour
+                  </button>
+                </div>
+              </form>
+              <form action={assignLead} className="space-y-2">
+                <input type="hidden" name="leadId" value={lead.id} />
+                <label className="block text-sm font-medium text-slate-700">
+                  Diagnostiqueur assigné
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  <select
+                    name="assignedToId"
+                    defaultValue={lead.assignedToId ?? ''}
+                    className="h-10 flex-1 rounded-lg border border-slate-300 px-3 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                  >
+                    <option value="">— Non assigné —</option>
+                    {experts.map((e) => (
+                      <option key={e.id} value={e.id}>
+                        {e.name}
+                      </option>
+                    ))}
+                  </select>
+                  <button
+                    type="submit"
+                    className="h-10 rounded-lg bg-slate-900 px-4 text-sm font-semibold text-white hover:bg-slate-800"
+                  >
+                    Assigner
+                  </button>
+                </div>
+              </form>
+              <form action={scheduleRelance} className="space-y-2">
+                <input type="hidden" name="leadId" value={lead.id} />
+                <label className="block text-sm font-medium text-slate-700">
+                  Planifier une relance
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  <input
+                    type="date"
+                    name="dueAt"
+                    required
+                    className="h-10 rounded-lg border border-slate-300 px-3 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                  />
+                  <input
+                    name="content"
+                    placeholder="Objet (ex. rappeler après devis)"
+                    className="h-10 flex-1 rounded-lg border border-slate-300 px-3 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                  />
+                  <button
+                    type="submit"
+                    className="h-10 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white hover:bg-orange-700"
+                  >
+                    Planifier
+                  </button>
+                </div>
+              </form>
+            </div>
+            <form action={addActivity} className="space-y-2">
+              <input type="hidden" name="leadId" value={lead.id} />
+              <label className="block text-sm font-medium text-slate-700">
+                Consigner une activité
+              </label>
+              <select
+                name="type"
+                defaultValue="APPEL"
+                className="h-10 w-full rounded-lg border border-slate-300 px-3 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+              >
+                <option value="APPEL">Appel</option>
+                <option value="NOTE">Note</option>
+                <option value="EMAIL">Email</option>
+                <option value="RDV">RDV</option>
+              </select>
+              <textarea
+                name="content"
+                required
+                rows={3}
+                placeholder="Compte-rendu d'appel, note interne…"
+                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+              />
+              <button
+                type="submit"
+                className="h-10 rounded-lg bg-slate-900 px-4 text-sm font-semibold text-white hover:bg-slate-800"
+              >
+                Ajouter
+              </button>
+            </form>
+          </div>
+        </section>
+      )}
+
+      {/* Qualification (appel) */}
+      {lead && (
+        <section className="rounded-xl border border-slate-200 bg-white p-5">
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+              Qualification (appel)
+            </h2>
+            {qual?.at && (
+              <span className="text-xs text-slate-400">
+                Mise à jour le {new Date(qual.at).toLocaleDateString('fr-FR')}
+              </span>
+            )}
+          </div>
+          <QualificationForm leadId={lead.id} current={qual} />
+        </section>
+      )}
+
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
         {/* Coordonnées & bien */}
         <div className="lg:col-span-1">
@@ -352,28 +498,44 @@ export default async function ClientFichePage({
         </div>
       </div>
 
-      {/* Historique */}
-      <Card title="Historique">
-        {c.activities.length === 0 ? (
-          <p className="text-sm text-slate-500">Aucune activité.</p>
-        ) : (
-          <ol className="space-y-3">
-            {c.activities.map((a) => (
-              <li key={a.id} className="flex gap-3">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-orange-400" />
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm text-slate-700">{a.content || a.type}</p>
-                  <p className="text-xs tabular-nums text-slate-400">
-                    {a.createdAt.toLocaleString('fr-FR')}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        )}
-      </Card>
+      {/* Historique — discret (replié) */}
+      <details className="overflow-hidden rounded-xl border border-slate-200 bg-white [&_summary::-webkit-details-marker]:hidden">
+        <summary className="flex cursor-pointer list-none items-center justify-between px-5 py-3 text-xs font-semibold uppercase tracking-wider text-slate-400 hover:bg-slate-50">
+          <span>Historique{c.activities.length ? ` · ${c.activities.length}` : ''}</span>
+          <span className="text-[11px] font-medium normal-case tracking-normal text-orange-600">
+            Afficher
+          </span>
+        </summary>
+        <div className="px-5 pb-5">
+          {c.activities.length === 0 ? (
+            <p className="text-sm text-slate-500">Aucune activité.</p>
+          ) : (
+            <ol className="space-y-3">
+              {c.activities.map((a) => (
+                <li key={a.id} className="flex gap-3">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-orange-400" />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm text-slate-700">{a.content || a.type}</p>
+                    <p className="text-xs tabular-nums text-slate-400">
+                      {a.createdAt.toLocaleString('fr-FR')}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          )}
+        </div>
+      </details>
     </div>
   );
+}
+
+/** Qualification d'appel rangée dans `payload.qualification`. */
+function extractQual(payload: unknown): QualificationRecord | null {
+  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) return null;
+  const q = (payload as Record<string, unknown>).qualification;
+  if (!q || typeof q !== 'object') return null;
+  return q as QualificationRecord;
 }
 
 /**

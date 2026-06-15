@@ -12,6 +12,7 @@ export default async function PipelinePage() {
 
   let leads: {
     id: string;
+    contactId: string;
     stage: PipelineStage;
     service: keyof typeof SERVICE_LABEL;
     contact: { name: string; city: string | null };
@@ -24,6 +25,7 @@ export default async function PipelinePage() {
       take: 400,
       select: {
         id: true,
+        contactId: true,
         stage: true,
         service: true,
         contact: { select: { name: true, city: true } },
@@ -40,6 +42,7 @@ export default async function PipelinePage() {
       .filter((l) => l.stage === stage)
       .map((l) => ({
         id: l.id,
+        contactId: l.contactId,
         name: l.contact.name,
         sub: [SERVICE_LABEL[l.service], l.contact.city]
           .filter(Boolean)
