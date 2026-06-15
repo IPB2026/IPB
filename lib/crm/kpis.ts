@@ -1,5 +1,6 @@
 import 'server-only';
 import { prisma } from '@/lib/prisma';
+import { computeDossier } from '@/lib/crm/dossier';
 import type { ServiceType, PipelineStage } from '@prisma/client';
 
 /**
@@ -18,7 +19,7 @@ export interface KpiData {
   delaiMoyenJours: number | null;
   leadsParMois: { label: string; count: number }[];
   parService: { service: ServiceType; count: number }[];
-  funnel: { stage: PipelineStage; label: string; count: number }[];
+  funnel: { stage: string; label: string; count: number }[];
   diagnostiqueurs: {
     name: string;
     assignes: number;
@@ -45,12 +46,17 @@ const SERVICE_ORDER: ServiceType[] = [
   'AUTRE',
 ];
 
-const FUNNEL: { stage: PipelineStage; label: string }[] = [
-  { stage: 'NOUVEAU', label: 'Nouveau' },
-  { stage: 'A_RAPPELER', label: 'À rappeler' },
-  { stage: 'DEVIS_ENVOYE', label: 'Devis envoyé' },
-  { stage: 'RDV_PLANIFIE', label: 'RDV planifié' },
-  { stage: 'VISITE_FAITE', label: 'Visite faite' },
+// Entonnoir = phases du dossier (mêmes que les colonnes du pipeline) pour une
+// cohérence stricte pipeline ↔ pilotage.
+const FUNNEL: { key: string; label: string }[] = [
+  { key: 'NOUVEAU', label: 'Nouveau' },
+  { key: 'A_RAPPELER', label: 'À rappeler' },
+  { key: 'DEVIS_ENVOYE', label: 'Devis envoyé' },
+  { key: 'RDV_PLANIFIE', label: 'RDV planifié' },
+  { key: 'VISITE_FAITE', label: 'Visite réalisée' },
+  { key: 'FACTURE_ENVOYEE', label: 'Facture envoyée' },
+  { key: 'RAPPORT_ENVOYE', label: 'Rapport transmis' },
+  { key: 'SUIVI', label: 'Suivi' },
 ];
 
 const MONTHS_FR = [
@@ -173,17 +179,42 @@ export async function computeKpis(): Promise<KpiData> {
     count: serviceCount.get(service) ?? 0,
   })).filter((s) => s.count > 0);
 
-  // ── Entonnoir (par étape de pipeline) ──
-  const stageGroups = await prisma.lead.groupBy({
-    by: ['stage'],
-    _count: { _all: true },
+  // ── Entonnoir (par PHASE de dossier — identique au pipeline) ──
+  const funnelLeads = await prisma.lead.findMany({
+    where: { stage: { notIn: ['PERDU'] } },
+    take: 1000,
+    select: {
+      stage: true,
+      contact: {
+        select: {
+          devis: { select: { status: true, totalHT: true, acceptedAt: true, serviceType: true } },
+          factures: { select: { status: true } },
+          rapports: { select: { status: true } },
+          appointments: { select: { type: true, status: true } },
+        },
+      },
+    },
   });
-  const stageCount = new Map<PipelineStage, number>(
-    stageGroups.map((g) => [g.stage, g._count._all])
-  );
+  const phaseCount = new Map<string, number>();
+  for (const l of funnelLeads) {
+    const dossier = computeDossier({
+      devis: l.contact.devis.map((d) => ({
+        status: d.status,
+        totalHT: Number(d.totalHT),
+        acceptedAt: d.acceptedAt,
+        serviceType: d.serviceType,
+      })),
+      factures: l.contact.factures.map((f) => ({ status: f.status })),
+      rapports: l.contact.rapports.map((r) => ({ status: r.status })),
+      appointments: l.contact.appointments.map((a) => ({ type: a.type, status: a.status })),
+      stage: l.stage,
+    });
+    phaseCount.set(dossier.phase, (phaseCount.get(dossier.phase) ?? 0) + 1);
+  }
   const funnel = FUNNEL.map((f) => ({
-    ...f,
-    count: stageCount.get(f.stage) ?? 0,
+    stage: f.key,
+    label: f.label,
+    count: phaseCount.get(f.key) ?? 0,
   }));
 
   // ── Activité par diagnostiqueur ──

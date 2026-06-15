@@ -330,7 +330,12 @@ export default async function AgendaPage({
                         <div className="min-w-0 flex-1">
                           <p className="truncate font-medium text-slate-900">{a.title}</p>
                           <p className="truncate text-xs text-slate-400">
-                            {a.contact.name}
+                            <Link
+                              href={`/admin/clients/${a.contactId}`}
+                              className="text-slate-500 hover:text-orange-600 hover:underline"
+                            >
+                              {a.contact.name}
+                            </Link>
                             {a.location ? ` · ${a.location}` : ''}
                           </p>
                           {isCalendarConfigured() && (

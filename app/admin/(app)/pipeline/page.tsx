@@ -11,7 +11,14 @@ export const dynamic = 'force-dynamic';
 export default async function PipelinePage() {
   await guardAdminPage();
 
-  type Card = { id: string; contactId: string; name: string; sub: string; phase: string };
+  type Card = {
+    id: string;
+    contactId: string;
+    name: string;
+    sub: string;
+    phase: string;
+    montant: number;
+  };
   let cards: Card[] = [];
   let dbError = false;
   try {
@@ -59,8 +66,11 @@ export default async function PipelinePage() {
           .filter(Boolean)
           .join(' · '),
         phase: dossier.phase,
+        montant: dossier.montantDevis ?? 0,
       };
     });
+    // Tri commercial : les plus gros montants en haut de chaque colonne.
+    cards.sort((a, b) => b.montant - a.montant);
   } catch {
     dbError = true;
   }

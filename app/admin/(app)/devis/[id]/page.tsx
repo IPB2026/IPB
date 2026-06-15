@@ -100,7 +100,13 @@ export default async function DevisDetailPage({
             {devis.number}
           </h1>
           <p className="text-sm text-slate-500">
-            {devis.object} — {devis.contact.name}
+            {devis.object} —{' '}
+            <Link
+              href={`/admin/clients/${devis.contactId}`}
+              className="font-medium text-slate-600 hover:text-orange-600 hover:underline"
+            >
+              {devis.contact.name}
+            </Link>
           </p>
           {isTravaux && (
             <span className="mt-1.5 inline-flex rounded-md bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-700 ring-1 ring-inset ring-amber-600/20">

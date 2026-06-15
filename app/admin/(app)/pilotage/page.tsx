@@ -192,9 +192,7 @@ export default async function PilotagePage() {
       </div>
 
       <p className="text-xs text-slate-400">
-        Totaux : {kpi.totals.prospects} prospects · {kpi.totals.clients} clients ·{' '}
-        {kpi.totals.devis} devis · {kpi.totals.factures} factures ·{' '}
-        {kpi.totals.rapports} rapports. Montants en € HT (TVA non applicable, art. 293 B).
+        Montants en € HT — TVA non applicable, art. 293 B du CGI.
       </p>
     </div>
   );

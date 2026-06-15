@@ -58,7 +58,13 @@ export default async function FactureDetailPage({
             {facture.number}
           </h1>
           <p className="text-sm text-slate-500">
-            {facture.object} — {facture.contact.name}
+            {facture.object} —{' '}
+            <Link
+              href={`/admin/clients/${facture.contactId}`}
+              className="font-medium text-slate-600 hover:text-orange-600 hover:underline"
+            >
+              {facture.contact.name}
+            </Link>
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
