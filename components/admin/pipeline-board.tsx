@@ -12,6 +12,7 @@ export interface PipelineCard {
   contactId: string;
   name: string;
   sub: string;
+  /** Montant du devis (0 si aucun devis envoyé/accepté → non affiché). */
   montant: number;
 }
 

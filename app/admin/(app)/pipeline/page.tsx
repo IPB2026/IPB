@@ -36,7 +36,11 @@ export default async function PipelinePage() {
           select: {
             name: true,
             city: true,
-            devis: { select: { status: true, totalHT: true, acceptedAt: true, serviceType: true } },
+            // orderBy déterministe identique à la liste/fiche → montantDevis cohérent partout.
+            devis: {
+              select: { status: true, totalHT: true, acceptedAt: true, serviceType: true },
+              orderBy: { createdAt: 'desc' },
+            },
             factures: { select: { status: true } },
             rapports: { select: { status: true } },
             appointments: { select: { type: true, status: true } },

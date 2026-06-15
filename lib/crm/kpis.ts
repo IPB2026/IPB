@@ -187,7 +187,11 @@ export async function computeKpis(): Promise<KpiData> {
       stage: true,
       contact: {
         select: {
-          devis: { select: { status: true, totalHT: true, acceptedAt: true, serviceType: true } },
+          // orderBy déterministe identique à la fiche → phase/montant cohérents.
+          devis: {
+            select: { status: true, totalHT: true, acceptedAt: true, serviceType: true },
+            orderBy: { createdAt: 'desc' },
+          },
           factures: { select: { status: true } },
           rapports: { select: { status: true } },
           appointments: { select: { type: true, status: true } },
