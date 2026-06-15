@@ -9,7 +9,7 @@ import { PageHeader } from '@/components/admin/page-header';
 import { EmptyState } from '@/components/admin/empty-state';
 import { Avatar } from '@/components/admin/avatar';
 import { MobileCardList, MobileCardRow } from '@/components/admin/mobile-card';
-import { StageBadge } from '@/components/admin/badges';
+import { PhaseBadge, SERVICE_LABEL } from '@/components/admin/badges';
 
 export const dynamic = 'force-dynamic';
 
@@ -69,15 +69,12 @@ export default async function ClientsPage({
       // Cohérence avec la fiche : on tient compte de l'étape pipeline.
       stage,
     });
-    const current = dossier.steps.find((s) => s.current);
+    const service = c.leads[0]?.service ?? null;
     return {
       c,
       dossier,
       isClient: dossier.isClient,
-      statusLabel: dossier.isClient
-        ? current?.label ?? 'Dossier complet'
-        : null,
-      stage,
+      service,
     };
   });
 
@@ -162,7 +159,7 @@ export default async function ClientsPage({
         <>
           {/* Mobile : cartes */}
           <MobileCardList>
-            {rows.map(({ c, dossier, isClient, statusLabel, stage }) => (
+            {rows.map(({ c, dossier, isClient, service }) => (
               <MobileCardRow
                 key={c.id}
                 href={`/admin/clients/${c.id}`}
@@ -171,8 +168,10 @@ export default async function ClientsPage({
                 badge={<EtatBadge isClient={isClient} />}
                 amount={dossier.montantDevis != null ? euros(dossier.montantDevis) : undefined}
                 lines={[
-                  c.city || c.phone || c.email || '—',
-                  isClient ? statusLabel : stage ? <StageBadge key="s" stage={stage} /> : null,
+                  [service ? SERVICE_LABEL[service] : null, c.city || c.phone || c.email]
+                    .filter(Boolean)
+                    .join(' · ') || '—',
+                  <PhaseBadge key="p" phase={dossier.phase} />,
                 ]}
                 action={
                   c.phone ? (
@@ -195,6 +194,7 @@ export default async function ClientsPage({
               <thead>
                 <tr className="border-b border-slate-200 text-left text-xs font-medium uppercase tracking-wider text-slate-400">
                   <th className="px-5 py-2.5">Contact</th>
+                  <th className="px-5 py-2.5">Service</th>
                   <th className="px-5 py-2.5">État</th>
                   <th className="px-5 py-2.5">Étape</th>
                   <th className="px-5 py-2.5 text-right">Montant</th>
@@ -202,7 +202,7 @@ export default async function ClientsPage({
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
-                {rows.map(({ c, dossier, isClient, statusLabel, stage }) => (
+                {rows.map(({ c, dossier, isClient, service }) => (
                   <tr key={c.id} className="group transition-colors hover:bg-slate-50">
                     <td className="px-5 py-3">
                       <Link href={`/admin/clients/${c.id}`} className="flex items-center gap-3">
@@ -217,17 +217,14 @@ export default async function ClientsPage({
                         </span>
                       </Link>
                     </td>
+                    <td className="px-5 py-3 text-slate-600">
+                      {service ? SERVICE_LABEL[service] : '—'}
+                    </td>
                     <td className="px-5 py-3">
                       <EtatBadge isClient={isClient} />
                     </td>
                     <td className="px-5 py-3">
-                      {isClient ? (
-                        <span className="text-xs text-slate-500">{statusLabel}</span>
-                      ) : stage ? (
-                        <StageBadge stage={stage} />
-                      ) : (
-                        <span className="text-slate-300">—</span>
-                      )}
+                      <PhaseBadge phase={dossier.phase} />
                     </td>
                     <td className="px-5 py-3 text-right font-medium tabular-nums">
                       {dossier.montantDevis != null ? euros(dossier.montantDevis) : '—'}
@@ -281,7 +278,7 @@ function load(sp: SearchParams) {
       factures: { select: { status: true } },
       rapports: { select: { status: true } },
       appointments: { select: { type: true, status: true } },
-      leads: { select: { stage: true }, orderBy: { createdAt: 'desc' }, take: 1 },
+      leads: { select: { stage: true, service: true }, orderBy: { createdAt: 'desc' }, take: 1 },
     },
   });
 }

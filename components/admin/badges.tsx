@@ -105,6 +105,42 @@ export function StageBadge({ stage }: { stage: PipelineStage }) {
   );
 }
 
+// ── Phase de DOSSIER (source unique, identique partout : liste, fiche, pipeline,
+//    pilotage). Couvre tout le cycle, du premier contact au suivi. ──────────────
+export const PHASE_LABEL: Record<string, string> = {
+  NOUVEAU: 'Nouveau',
+  A_RAPPELER: 'À rappeler',
+  DEVIS_ENVOYE: 'Devis envoyé',
+  RDV_PLANIFIE: 'RDV planifié',
+  VISITE_FAITE: 'Visite réalisée',
+  FACTURE_ENVOYEE: 'Facture envoyée',
+  RAPPORT_ENVOYE: 'Rapport transmis',
+  SUIVI: 'Suivi',
+  GAGNE: 'Gagné',
+  PERDU: 'Perdu',
+};
+
+const PHASE_PILL: Record<string, string> = {
+  NOUVEAU: 'bg-slate-100 text-slate-600',
+  A_RAPPELER: 'bg-amber-50 text-amber-700',
+  DEVIS_ENVOYE: 'bg-orange-50 text-orange-700',
+  RDV_PLANIFIE: 'bg-blue-50 text-blue-700',
+  VISITE_FAITE: 'bg-violet-50 text-violet-700',
+  FACTURE_ENVOYEE: 'bg-cyan-50 text-cyan-700',
+  RAPPORT_ENVOYE: 'bg-emerald-50 text-emerald-700',
+  SUIVI: 'bg-teal-50 text-teal-700',
+  GAGNE: 'bg-emerald-50 text-emerald-700',
+  PERDU: 'bg-slate-100 text-slate-500',
+};
+
+export function PhaseBadge({ phase }: { phase: string }) {
+  return (
+    <span className={`${pillBase} ${PHASE_PILL[phase] ?? 'bg-slate-100 text-slate-600'}`}>
+      {PHASE_LABEL[phase] ?? phase}
+    </span>
+  );
+}
+
 export { TIER_DOT };
 
 // ── Statuts devis / facture ─────────────────────────────────────
