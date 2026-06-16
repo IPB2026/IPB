@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { revalidateCrm } from '@/lib/crm/revalidate';
 import { del } from '@vercel/blob';
-import { guessMimeFromName } from '@/lib/blob';
+import { guessMimeFromName, getBlobToken } from '@/lib/blob';
 import { prisma } from '@/lib/prisma';
 import { requireUser, requireAdmin } from '@/lib/auth-helpers';
 import { nextRapportNumber } from '@/lib/crm/numbering';
@@ -194,15 +194,18 @@ export async function updateRapportZones(
   return undefined;
 }
 
-/** Enregistre une photo uploadée (Vercel Blob) en base. */
-export async function attachRapportPhoto(formData: FormData): Promise<void> {
+/** Enregistre une photo uploadée (Vercel Blob) en base. Renvoie un résultat pour
+ *  que le client AFFICHE l'échec (au lieu d'une disparition silencieuse). */
+export async function attachRapportPhoto(
+  formData: FormData
+): Promise<{ ok: boolean; error?: string }> {
   const id = str(formData.get('rapportId'));
   const owned = await loadOwned(id);
-  if (!owned) return;
+  if (!owned) return { ok: false, error: 'Accès refusé ou rapport introuvable.' };
 
   const url = str(formData.get('url'));
   const pathname = str(formData.get('pathname'));
-  if (!url || !pathname) return;
+  if (!url || !pathname) return { ok: false, error: 'Upload incomplet (URL manquante).' };
 
   // Type MIME fiabilisé : jamais null pour une vraie image (sinon affichage/IA
   // dégradés). Repli sur l'extension du pathname Blob si le client ne l'a pas.
@@ -224,9 +227,10 @@ export async function attachRapportPhoto(formData: FormData): Promise<void> {
     });
   } catch (err) {
     console.error('[attachRapportPhoto] enregistrement en base échoué:', err);
-    return;
+    return { ok: false, error: 'Enregistrement en base échoué.' };
   }
   revalidatePath(`/admin/rapports/${id}`);
+  return { ok: true };
 }
 
 export async function updatePhotoMeta(formData: FormData): Promise<void> {
@@ -255,7 +259,7 @@ export async function deleteRapportPhoto(formData: FormData): Promise<void> {
   if (!photo || photo.rapportId !== id) return;
 
   try {
-    await del(photo.url);
+    await del(photo.url, { token: getBlobToken() });
   } catch (err) {
     console.error('[deleteRapportPhoto] suppression Blob échouée:', err);
   }

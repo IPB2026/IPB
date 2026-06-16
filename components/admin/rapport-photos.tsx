@@ -135,7 +135,8 @@ export function RapportPhotos({
       fd.set('url', blob.url);
       fd.set('pathname', blob.pathname);
       fd.set('contentType', optimized.type || guessMimeFromName(optimized.name));
-      await attachRapportPhoto(fd);
+      const res = await attachRapportPhoto(fd);
+      if (!res?.ok) throw new Error(res?.error ?? 'Enregistrement échoué.');
       return true;
     } catch (e) {
       patch(p.key, { step: 'erreur', error: friendlyError(e) });
