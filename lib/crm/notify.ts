@@ -200,7 +200,7 @@ export async function notifyClientAppointment(
         </div>
         <div style="padding:24px;">
           <p style="margin:0 0 14px; color:#1A1917; font-size:15px;">Bonjour ${firstName(c.name)},</p>
-          <p style="margin:0 0 16px; color:#736D67; font-size:14px; line-height:1.7;">Nous confirmons votre rendez-vous avec notre institut. Voici les détails :</p>
+          <p style="margin:0 0 16px; color:#736D67; font-size:14px; line-height:1.7;">Nous vous confirmons la visite de diagnostic prévue. Retrouvez tous les détails ci-dessous pour la préparer sereinement :</p>
           <div style="background:#fff; border:1px solid #E7E2DA; border-radius:10px; padding:16px 18px; margin:0 0 16px;">
             <p style="margin:0 0 8px; color:#1A1917; font-size:15px; font-weight:700;">${appt.title}</p>
             <p style="margin:0; color:#736D67; font-size:14px; line-height:1.7;">
@@ -208,7 +208,7 @@ export async function notifyClientAppointment(
               🕑 ${timeStr}${appt.location ? `<br/>📍 ${appt.location}` : ''}
             </p>
           </div>
-          <p style="margin:0 0 16px; color:#736D67; font-size:13px; line-height:1.7;">Pour modifier ou décaler ce rendez-vous, répondez simplement à cet e-mail ou appelez-nous au <strong style="color:#1A1917;">${COMPANY.phone}</strong>.</p>
+          <p style="margin:0 0 16px; color:#736D67; font-size:13px; line-height:1.7;">Si vous avez une question, ou si vous devez décaler ce rendez-vous, répondez simplement à cet e-mail ou appelez-nous au <strong style="color:#1A1917;">${COMPANY.phone}</strong>. Nous sommes à votre écoute.</p>
           <p style="margin:0; color:#1A1917; font-size:14px;">À très bientôt,<br/>${COMPANY.name}</p>
         </div>
         <div style="padding:12px 24px; border-top:1px solid #E7E2DA; font-size:11px; color:#A09A93;">
@@ -273,8 +273,8 @@ export async function notifyClientCancellation(
         </div>
         <div style="padding:24px;">
           <p style="margin:0 0 14px; color:#1A1917; font-size:15px;">Bonjour ${firstName(c.name)},</p>
-          <p style="margin:0 0 16px; color:#736D67; font-size:14px; line-height:1.7;">La visite de diagnostic prévue le <strong style="color:#1A1917;">${dateStr}</strong> est <strong style="color:#1A1917;">annulée</strong>. L'événement a été retiré de l'agenda.</p>
-          <p style="margin:0 0 16px; color:#736D67; font-size:14px; line-height:1.7;">Pour reprogrammer, répondez simplement à cet e-mail ou appelez-nous au <strong style="color:#1A1917;">${COMPANY.phone}</strong> — nous vous reproposons des créneaux rapidement.</p>
+          <p style="margin:0 0 16px; color:#736D67; font-size:14px; line-height:1.7;">Nous vous informons que la visite de diagnostic initialement prévue le <strong style="color:#1A1917;">${dateStr}</strong> a dû être <strong style="color:#1A1917;">annulée</strong>. Nous vous prions de nous en excuser.</p>
+          <p style="margin:0 0 16px; color:#736D67; font-size:14px; line-height:1.7;">Nous vous proposerons rapidement une nouvelle date. Répondez simplement à cet e-mail ou appelez-nous au <strong style="color:#1A1917;">${COMPANY.phone}</strong> pour convenir ensemble d'un créneau qui vous convient.</p>
           <p style="margin:0; color:#1A1917; font-size:14px;">Bien à vous,<br/>${COMPANY.name}</p>
         </div>
         <div style="padding:12px 24px; border-top:1px solid #E7E2DA; font-size:11px; color:#A09A93;">
@@ -326,7 +326,7 @@ export async function notifyClientPayment(factureId: string): Promise<void> {
 
     const reportLine =
       rapportEnCours > 0
-        ? `<p style="margin:0 0 16px; color:#736D67; font-size:14px; line-height:1.7;">Votre rapport d'expertise est en cours de finalisation : vous le recevrez sous <strong style="color:#1A1917;">3 à 5 jours ouvrés</strong>.</p>`
+        ? `<p style="margin:0 0 16px; color:#736D67; font-size:14px; line-height:1.7;">Votre rapport d'expertise est en cours de finalisation par notre équipe : vous le recevrez sous <strong style="color:#1A1917;">3 à 5 jours ouvrés</strong> — nous prenons le temps de soigner chaque conclusion.</p>`
         : '';
 
     const html = `
@@ -338,9 +338,9 @@ export async function notifyClientPayment(factureId: string): Promise<void> {
         </div>
         <div style="padding:24px;">
           <p style="margin:0 0 14px; color:#1A1917; font-size:15px;">Bonjour ${firstName(c.name)},</p>
-          <p style="margin:0 0 16px; color:#736D67; font-size:14px; line-height:1.7;">Nous vous confirmons la bonne réception de votre règlement de la facture <strong style="color:#1A1917;">${facture.number}</strong>. Nous vous en remercions.</p>
+          <p style="margin:0 0 16px; color:#736D67; font-size:14px; line-height:1.7;">Nous vous confirmons la bonne réception de votre règlement de la facture <strong style="color:#1A1917;">${facture.number}</strong>. Merci de votre confiance.</p>
           ${reportLine}
-          <p style="margin:0 0 16px; color:#736D67; font-size:14px; line-height:1.7;">Pour toute question, répondez simplement à cet e-mail ou appelez-nous au <strong style="color:#1A1917;">${COMPANY.phone}</strong>.</p>
+          <p style="margin:0 0 16px; color:#736D67; font-size:14px; line-height:1.7;">Pour toute question, ou si vous souhaitez des précisions, n'hésitez pas à nous écrire ou à nous appeler au <strong style="color:#1A1917;">${COMPANY.phone}</strong>.</p>
           <p style="margin:0; color:#1A1917; font-size:14px;">Bien à vous,<br/>${COMPANY.name}</p>
         </div>
         <div style="padding:12px 24px; border-top:1px solid #E7E2DA; font-size:11px; color:#A09A93;">

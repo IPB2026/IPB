@@ -79,10 +79,10 @@ function devisSlotsCover(opts: {
       </div>
       <div style="padding:22px;">
         <p style="margin:0 0 12px; color:#0F172A; font-size:15px;">Bonjour,</p>
-        <p style="margin:0 0 14px; color:#334155; font-size:14px; line-height:1.6;">Suite à votre demande concernant ${opts.demande}, veuillez trouver ci-joint notre <strong>devis n° ${opts.number}</strong> (PDF).</p>
-        <p style="margin:0 0 10px; color:#334155; font-size:14px; line-height:1.6;"><strong>Pour fixer la visite sur site,</strong> choisissez le créneau qui vous convient en cliquant ci-dessous — votre rendez-vous est confirmé immédiatement :</p>
+        <p style="margin:0 0 14px; color:#334155; font-size:14px; line-height:1.6;">Merci de votre confiance. Suite à votre demande concernant ${opts.demande}, vous trouverez ci-joint notre <strong>devis n° ${opts.number}</strong>.</p>
+        <p style="margin:0 0 10px; color:#334155; font-size:14px; line-height:1.6;"><strong>Pour programmer la visite sur site,</strong> sélectionnez le créneau qui vous convient en cliquant ci-dessous — votre rendez-vous est confirmé instantanément :</p>
         <table role="presentation" style="width:100%; border-collapse:collapse; margin:0 0 12px;">${slotsHtml}</table>
-        <p style="margin:0 0 14px; color:#334155; font-size:14px; line-height:1.6;">Pour valider le devis, retournez-le-nous avec la mention « Bon pour accord ».</p>
+        <p style="margin:0 0 14px; color:#334155; font-size:14px; line-height:1.6;">Pour valider le devis, il vous suffit de nous le retourner avec la mention « Bon pour accord ».</p>
         <p style="margin:0 0 14px; color:#64748b; font-size:12.5px; font-style:italic; line-height:1.6;">Visite réalisée par le diagnostiqueur indépendant mandaté ; rapport remis sous 3 à 5 jours ouvrés après la visite.</p>
         <p style="margin:0; color:#64748b; font-size:13px;">Une question ? Appelez le <strong>${COMPANY.phone}</strong>.</p>
         <p style="margin:16px 0 0; color:#0F172A; font-size:14px;">Cordialement,<br/>${COMPANY.name}</p>
@@ -125,7 +125,7 @@ export async function sendDevisEmail(
       })
     : coverHtml({
         greeting: 'Bonjour,',
-        intro: `Veuillez trouver ci-joint notre devis pour votre demande. Pour le valider, retournez-le avec la mention « Bon pour accord » ; nous fixons alors la visite sur site.`,
+        intro: `Vous trouverez ci-joint notre devis pour votre demande. Pour la valider, retournez-le simplement avec la mention « Bon pour accord » — nous coordonnerons alors la visite sur site à votre convenance.`,
         number: devis.number,
       });
 
@@ -178,7 +178,7 @@ export async function sendFactureEmail(id: string): Promise<SendResult> {
     subject: `Votre facture IPB ${facture.number}`,
     html: coverHtml({
       greeting: 'Bonjour,',
-      intro: `Veuillez trouver ci-joint votre facture. Le règlement s'effectue par virement (coordonnées indiquées sur la facture).`,
+      intro: `Vous trouverez ci-joint votre facture. Le règlement se fait par virement, aux coordonnées bancaires indiquées sur le document. Dès réception de votre paiement, nous vous transmettrons le rapport d'expertise sous 3 à 5 jours ouvrés.`,
       number: facture.number,
     }),
     attachments: [
@@ -213,7 +213,7 @@ export async function sendRapportEmail(id: string): Promise<SendResult> {
     subject: `Votre rapport d'expertise IPB ${rapport.number}`,
     html: coverHtml({
       greeting: 'Bonjour,',
-      intro: `Veuillez trouver ci-joint votre rapport d'expertise. Nous restons à votre disposition pour en échanger et répondre à vos questions.`,
+      intro: `Vous trouverez ci-joint votre rapport d'expertise. N'hésitez pas à nous contacter pour approfondir les conclusions ou si vous souhaitez des précisions — nous sommes là pour vous accompagner.`,
       number: rapport.number,
     }),
     attachments: [

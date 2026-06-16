@@ -130,10 +130,10 @@ export function j0Confirmation(ctx: PathContext): string {
   const inner = `
     ${card(`
       ${eyebrow('Votre demande est en cours d\'analyse')}
-      ${heading('Bonjour ' + ctx.firstName + ',', 'votre dossier est ouvert.')}
-      ${para('Notre institut vient de recevoir votre demande concernant ' + (ctx.path === 'fissure' ? 'des fissures sur votre habitation' : 'votre projet d\'ouverture de mur porteur') + (ctx.city ? ` à ${ctx.city}` : '') + '. Nous l\'étudions avec attention.')}
+      ${heading('Bonjour ' + ctx.firstName + ',', 'votre demande est entre de bonnes mains.')}
+      ${para('Notre institut vient de recevoir votre demande concernant ' + (ctx.path === 'fissure' ? 'des fissures sur votre habitation' : 'votre projet d\'ouverture de mur porteur') + (ctx.city ? ` à ${ctx.city}` : '') + '. Nous l\'étudions avec attention pour vous orienter au mieux.')}
       ${para(tierMessage)}
-      ${para('En attendant, vous pouvez nous appeler directement si vous avez la moindre question.')}
+      ${para('En attendant notre retour, n\'hésitez pas à nous appeler directement si vous avez la moindre question — nous y répondrons avec plaisir.')}
       <p style="margin: 28px 0;">
         ${button('Appeler le 05 82 95 33 75', 'tel:0582953375')}
       </p>
@@ -316,13 +316,13 @@ export function devisRelance(ctx: DevisRelanceContext): string {
       ${para('Bonjour ' + ctx.firstName + ',')}
       ${para(
         soft
-          ? `Nous vous avons transmis il y a quelques jours notre devis pour <strong>${ctx.object}</strong>. Nous voulions simplement nous assurer qu'il vous est bien parvenu et répondre à vos éventuelles questions — sur le contenu, le déroulé ou les délais.`
-          : `Sauf erreur de notre part, votre devis pour <strong>${ctx.object}</strong> est resté sans suite. Il reste valable : si vous souhaitez avancer, un mot de votre part suffit pour fixer la visite sous 72 heures.`
+          ? `Nous vous avons adressé notre devis pour <strong>${ctx.object}</strong> il y a quelques jours. Avant d'aller plus loin, nous tenions à vérifier qu'il vous est bien parvenu — et que vous pouvez nous poser vos questions en toute confiance, sur le contenu, le déroulé ou les délais.`
+          : `Sauf erreur de notre part, votre devis pour <strong>${ctx.object}</strong> est resté en attente. Bonne nouvelle : il reste valable, et sans engagement de votre part. Un simple message, et nous fixons votre visite sous 72 heures.`
       )}
       ${para(
         soft
-          ? "Pour rappel, dès l'accord nous planifions la visite sous 72 heures."
-          : 'Si votre projet a évolué ou n\'est plus d\'actualité, dites-le nous simplement : nous classerons le dossier sans relance supplémentaire.'
+          ? "Pour vous rassurer : dès que vous nous donnez votre accord, nous planifions votre visite sous 72 heures."
+          : "Si votre situation a changé, ou que le projet n'est plus d'actualité, dites-le-nous simplement — nous classerons votre dossier en toute discrétion, sans vous solliciter davantage."
       )}
       <p style="margin: 28px 0;">
         ${button('En parler — 05 82 95 33 75', 'tel:0582953375')}
@@ -355,9 +355,9 @@ export function factureRelance(ctx: FactureRelanceContext): string {
       ${heading('Votre facture ' + ctx.number, 'reste à régler.')}
       ${para('Bonjour ' + ctx.firstName + ',')}
       ${para(
-        `Sauf erreur de notre part, la facture <strong>${ctx.number}</strong> d'un montant de <strong>${ctx.montant}</strong> (échéance du ${ctx.dueDate}) n'a pas encore été réglée.`
+        `Sauf erreur de notre part, la facture <strong>${ctx.number}</strong> d'un montant de <strong>${ctx.montant}</strong> (échéance du ${ctx.dueDate}) n'est pas encore parvenue sur notre compte. Si ce n'est pas déjà fait, vous pouvez la régler par virement — les coordonnées bancaires figurent sur le document.`
       )}
-      ${para('Le règlement s\'effectue par virement (coordonnées bancaires indiquées sur la facture). Si votre paiement vient de partir, merci de ne pas tenir compte de ce message.')}
+      ${para('Si votre virement vient de partir, pas d\'inquiétude : nos messages se sont sans doute croisés. Et si vous avez la moindre question, ou besoin d\'un délai, nous restons à votre écoute.')}
       <p style="margin: 28px 0;">
         ${button('Une question ? 05 82 95 33 75', 'tel:0582953375')}
       </p>

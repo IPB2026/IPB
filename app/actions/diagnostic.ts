@@ -695,11 +695,11 @@ export async function submitDiagnosticCallback(
               <div style="padding: 24px;">
                 <h2 style="margin: 0 0 12px; color:#0f172a; font-size:22px;">Bonjour ${rawData.name},</h2>
                 <p style="margin:0 0 14px; color:#334155; font-size:15px; line-height:1.6;">
-                  Merci, votre demande de rappel est bien enregistrée. Un expert IPB vous rappelle sous 24h.
+                  Nous avons bien reçu votre demande de rappel — elle est enregistrée. Un expert IPB vous contactera dans les 24 heures pour échanger sur votre situation.
                 </p>
                 <div style="background:#fff7ed; border-left:4px solid #ea580c; padding:14px 16px; border-radius:8px; margin:18px 0;">
                   <p style="margin:0; color:#7c2d12; font-size:14px;">
-                    Si vous souhaitez accélérer l’échange, appelez-nous au <strong>05 82 95 33 75</strong>.
+                    Si vous préférez être recontacté plus rapidement, vous pouvez nous appeler directement au <strong>05 82 95 33 75</strong>.
                   </p>
                 </div>
                 <div style="text-align:center; margin: 18px 0 4px;">
@@ -843,7 +843,7 @@ export async function submitDiagnosticAppointment(
                   <div style="padding: 24px;">
                     <h2 style="margin: 0 0 12px; color:#0f172a; font-size:22px;">Bonjour ${validatedData.name},</h2>
                     <p style="margin:0 0 14px; color:#334155; font-size:15px; line-height:1.6;">
-                      Nous avons bien reçu votre demande de rendez-vous. Un expert vous recontacte sous 24h pour confirmer le créneau.
+                      Votre demande d'expertise est bien enregistrée. Un expert IPB vous contactera sous 24 heures pour convenir ensemble du jour et de l'heure qui vous arrangent.
                     </p>
                     <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:16px; margin:16px 0;">
                       <p style="margin:0; color:#475569; font-size:14px;">
@@ -853,7 +853,7 @@ export async function submitDiagnosticAppointment(
                     </div>
                     <div style="background:#fff7ed; border-left:4px solid #ea580c; padding:14px 16px; border-radius:8px; margin:18px 0;">
                       <p style="margin:0; color:#7c2d12; font-size:14px;">
-                        Besoin d'un avis rapide ? Appelez-nous au <strong>05 82 95 33 75</strong>.
+                        Vous pouvez aussi nous appeler directement pour proposer vos créneaux : <strong>05 82 95 33 75</strong>. C'est souvent le plus rapide pour trouver une date qui convient à chacun.
                       </p>
                     </div>
                     <div style="text-align:center; margin: 18px 0 4px;">
@@ -968,7 +968,7 @@ export async function requestDiagnosticReport(
               
               <p>Bonjour,</p>
               
-              <p>Merci d'avoir utilisé notre outil de diagnostic en ligne. Voici le résumé de votre analyse :</p>
+              <p>Merci d'avoir complété notre diagnostic en ligne. Vous trouverez ci-dessous le résumé de votre situation, ainsi que les étapes que nous vous recommandons.</p>
               
               <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
                 <h3 style="margin-top: 0;">Type de diagnostic</h3>
@@ -982,11 +982,11 @@ export async function requestDiagnosticReport(
               </div>
               
               <div style="background: #fff7ed; padding: 20px; border-left: 4px solid #EA580C; margin: 20px 0;">
-                <h3 style="margin-top: 0;">Prochaines étapes</h3>
-                <p>Pour obtenir un diagnostic complet et un devis personnalisé, nous vous invitons à :</p>
+                <h3 style="margin-top: 0;">Les prochaines étapes</h3>
+                <p>Pour y voir vraiment clair, le mieux est de confirmer ce premier aperçu par une expertise sur place. Deux façons d'avancer :</p>
                 <ul>
-                  <li>Appeler notre équipe au <strong>05 82 95 33 75</strong></li>
-                  <li>Ou réserver directement une expertise sur site (déductible des travaux)</li>
+                  <li>Réserver une visite d'expertise sur site — mesures instrumentées, analyse structurelle et solutions chiffrées</li>
+                  <li>Ou nous appeler au <strong>05 82 95 33 75</strong> pour que nous vous guidions sur la marche à suivre</li>
                 </ul>
               </div>
               
