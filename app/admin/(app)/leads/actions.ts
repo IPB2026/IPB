@@ -55,6 +55,7 @@ const prospectSchema = z
       .optional()
       .default(''),
     city: z.string().trim().optional().default(''),
+    postalCode: z.string().trim().optional().default(''),
     address: z.string().trim().optional().default(''),
     service: z.nativeEnum(ServiceType).optional().default(ServiceType.AUTRE),
     occupantStatus: z
@@ -82,8 +83,11 @@ export async function createProspect(
   if (!session?.user) return 'Session expirée — reconnectez-vous.';
 
   const str = (k: string) => String(formData.get(k) ?? '');
-  // Nom complet composé depuis prénom + nom (saisie séparée), repli sur `name`.
+  // Nom du contact : raison sociale (entreprise) en priorité, sinon prénom + nom
+  // (particulier, recomposés), repli sur `name`. → permet de saisir une entreprise
+  // sans prénom ni nom.
   const fullName =
+    str('company').trim() ||
     [str('prenom'), str('nom')].map((s) => s.trim()).filter(Boolean).join(' ') ||
     str('name');
   const parsed = prospectSchema.safeParse({
@@ -91,6 +95,7 @@ export async function createProspect(
     phone: str('phone'),
     email: str('email'),
     city: str('city'),
+    postalCode: str('postalCode'),
     address: str('address'),
     service: str('service') || undefined,
     occupantStatus: str('occupantStatus') || undefined,
@@ -105,7 +110,17 @@ export async function createProspect(
   }
 
   const d = parsed.data;
-  const { postalCode, city } = parseAddress(d.city);
+  // Code postal / ville saisis séparément (autocomplétion BAN). Repli : si seul le
+  // champ ville contient « 31600 Muret », on en extrait le code postal.
+  let postalCode = d.postalCode || null;
+  let city = d.city || null;
+  if (!postalCode && city) {
+    const p = parseAddress(city);
+    if (p.postalCode) {
+      postalCode = p.postalCode;
+      if (p.city) city = p.city;
+    }
+  }
   const valueNum = d.value ? Number(d.value.replace(',', '.')) : null;
 
   const scoring: CaptureLeadScoring | undefined = d.tier
@@ -120,7 +135,7 @@ export async function createProspect(
       phone: d.phone || null,
       email: d.email || null,
       address: d.address || null,
-      city: city ?? (d.city || null),
+      city,
       postalCode,
       occupantStatus: d.occupantStatus,
     },

@@ -2,6 +2,8 @@
 
 import { useFormState, useFormStatus } from 'react-dom';
 import { updateContact } from '@/app/admin/(app)/contact-actions';
+import { NameFields } from '@/components/admin/name-fields';
+import { AddressAutocomplete } from '@/components/admin/address-autocomplete';
 
 const field =
   'h-10 w-full rounded-lg border border-slate-300 px-3 text-base outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 sm:text-sm';
@@ -53,16 +55,15 @@ export function ContactEditForm({
   return (
     <form action={formAction} className="space-y-3" key={error ? 'err' : 'ok'}>
       <input type="hidden" name="contactId" value={contact.id} />
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        <div>
-          <label className={label} htmlFor="ce-prenom">Prénom</label>
-          <input id="ce-prenom" name="prenom" defaultValue={defPrenom} className={field} />
-        </div>
-        <div>
-          <label className={label} htmlFor="ce-nom">Nom</label>
-          <input id="ce-nom" name="nom" defaultValue={defNom} required className={field} />
-        </div>
-      </div>
+      {/* Particulier (prénom + nom) OU entreprise (raison sociale = nom complet). */}
+      <NameFields
+        defPrenom={defPrenom}
+        defNom={defNom}
+        defCompany={contact.name}
+        defaultMode="particulier"
+        fieldClass={field}
+        labelClass={label}
+      />
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <div>
           <label className={label} htmlFor="ce-phone">Téléphone</label>
@@ -73,20 +74,13 @@ export function ContactEditForm({
           <input id="ce-email" name="email" type="email" inputMode="email" defaultValue={contact.email ?? ''} className={field} />
         </div>
       </div>
-      <div>
-        <label className={label} htmlFor="ce-address">Adresse</label>
-        <input id="ce-address" name="address" defaultValue={contact.address ?? ''} className={field} />
-      </div>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        <div>
-          <label className={label} htmlFor="ce-cp">Code postal</label>
-          <input id="ce-cp" name="postalCode" inputMode="numeric" defaultValue={contact.postalCode ?? ''} className={field} />
-        </div>
-        <div>
-          <label className={label} htmlFor="ce-city">Ville</label>
-          <input id="ce-city" name="city" defaultValue={contact.city ?? ''} className={field} />
-        </div>
-      </div>
+      <AddressAutocomplete
+        defaultAddress={contact.address ?? ''}
+        defaultPostalCode={contact.postalCode ?? ''}
+        defaultCity={contact.city ?? ''}
+        fieldClass={field}
+        labelClass={label}
+      />
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <div>
           <label className={label} htmlFor="ce-occ">Statut</label>

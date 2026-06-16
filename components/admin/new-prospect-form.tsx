@@ -9,6 +9,8 @@ import {
   TIER_DOT,
 } from '@/components/admin/badges';
 import { VoiceDictationButton } from '@/components/admin/voice-dictation-button';
+import { NameFields } from '@/components/admin/name-fields';
+import { AddressAutocomplete } from '@/components/admin/address-autocomplete';
 
 const OCCUPANT_OPTIONS: [string, string][] = [
   ['INCONNU', 'Non précisé'],
@@ -42,21 +44,8 @@ export function NewProspectForm() {
 
   return (
     <form action={formAction} className="space-y-5">
-      {/* Essentiel : prénom + nom */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div>
-          <label htmlFor="prenom" className={labelCls}>
-            Prénom
-          </label>
-          <input id="prenom" name="prenom" autoFocus className={field} placeholder="Jean" />
-        </div>
-        <div>
-          <label htmlFor="nom" className={labelCls}>
-            Nom <span className="text-orange-600">*</span>
-          </label>
-          <input id="nom" name="nom" required className={field} placeholder="Dupont" />
-        </div>
-      </div>
+      {/* Identité : particulier (prénom + nom) OU entreprise (raison sociale). */}
+      <NameFields fieldClass={field} labelClass={labelCls} />
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
@@ -80,25 +69,8 @@ export function NewProspectForm() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div>
-          <label htmlFor="city" className={labelCls}>
-            Ville / code postal
-          </label>
-          <input id="city" name="city" className={field} placeholder="31600 Muret" />
-        </div>
-        <div>
-          <label htmlFor="address" className={labelCls}>
-            Adresse du bien
-          </label>
-          <input
-            id="address"
-            name="address"
-            className={field}
-            placeholder="33 chemin des Vivans, 31600 Muret"
-          />
-        </div>
-      </div>
+      {/* Adresse du bien : autocomplétée (BAN) → adresse + CP + ville séparés. */}
+      <AddressAutocomplete fieldClass={field} labelClass={labelCls} />
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>

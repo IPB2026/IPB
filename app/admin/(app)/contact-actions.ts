@@ -50,8 +50,10 @@ export async function updateContact(
   if (!id) return 'Contact introuvable.';
 
   const str = (k: string) => String(formData.get(k) ?? '');
-  // Nom complet recomposé depuis prénom + nom (repli sur un champ `name` legacy).
+  // Nom du contact : raison sociale (entreprise) en priorité, sinon prénom + nom
+  // (particulier), repli sur un champ `name` legacy.
   const fullName =
+    str('company').trim() ||
     [str('prenom'), str('nom')].map((s) => s.trim()).filter(Boolean).join(' ') ||
     str('name');
   const parsed = contactSchema.safeParse({
