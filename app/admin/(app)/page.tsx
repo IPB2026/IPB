@@ -14,6 +14,7 @@ import {
   ArrowRight,
   Phone,
 } from 'lucide-react';
+import { Prisma } from '@prisma/client';
 import { euros } from '@/lib/crm/company';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
@@ -33,6 +34,23 @@ export const dynamic = 'force-dynamic';
 
 async function getStats() {
   const now = new Date();
+  // Filtre PARTAGÉ « visite à planifier » (devis diagnostic accepté, client sans
+  // visite diagnostic ni facture émise) — un seul point de vérité pour la liste
+  // ET le compteur (plus de risque de divergence, et logique définie une fois).
+  const visiteAPlanifierWhere: Prisma.DevisWhereInput = {
+    status: 'ACCEPTE',
+    serviceType: { not: 'AUTRE' },
+    contact: {
+      appointments: {
+        none: {
+          type: {
+            in: ['DIAGNOSTIC_FISSURES', 'DIAGNOSTIC_HUMIDITE', 'EXPERTISE_ACHAT', 'MUR_PORTEUR'],
+          },
+        },
+      },
+      factures: { none: { status: { in: ['ENVOYEE', 'PAYEE'] } } },
+    },
+  };
   const [
     total,
     clients,
@@ -74,22 +92,7 @@ async function getStats() {
     // Devis diagnostic acceptés dont le client n'a PAS encore de visite planifiée
     // → étape normale du cycle (≠ travaux, qui sont exceptionnels).
     prisma.devis.findMany({
-      where: {
-        status: 'ACCEPTE',
-        serviceType: { not: 'AUTRE' },
-        contact: {
-          // Pas encore de visite diagnostic planifiée…
-          appointments: {
-            none: {
-              type: {
-                in: ['DIAGNOSTIC_FISSURES', 'DIAGNOSTIC_HUMIDITE', 'EXPERTISE_ACHAT', 'MUR_PORTEUR'],
-              },
-            },
-          },
-          // …ET pas de facture émise (si facturé, la visite a déjà eu lieu).
-          factures: { none: { status: { in: ['ENVOYEE', 'PAYEE'] } } },
-        },
-      },
+      where: visiteAPlanifierWhere,
       orderBy: { acceptedAt: 'desc' },
       take: 8,
       include: { contact: true },
@@ -121,24 +124,7 @@ async function getStats() {
     prisma.rapport.count({ where: { status: 'SOUMIS' } }),
     prisma.rapport.count({ where: { status: 'GENERE' } }),
     prisma.facture.count({ where: { status: 'ENVOYEE' } }),
-    prisma.devis.count({
-      where: {
-        status: 'ACCEPTE',
-        serviceType: { not: 'AUTRE' },
-        contact: {
-          // Pas encore de visite diagnostic planifiée…
-          appointments: {
-            none: {
-              type: {
-                in: ['DIAGNOSTIC_FISSURES', 'DIAGNOSTIC_HUMIDITE', 'EXPERTISE_ACHAT', 'MUR_PORTEUR'],
-              },
-            },
-          },
-          // …ET pas de facture émise (si facturé, la visite a déjà eu lieu).
-          factures: { none: { status: { in: ['ENVOYEE', 'PAYEE'] } } },
-        },
-      },
-    }),
+    prisma.devis.count({ where: visiteAPlanifierWhere }),
   ]);
 
   return {

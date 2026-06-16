@@ -47,3 +47,24 @@ export function euros(n: number): string {
     currency: 'EUR',
   }).format(n);
 }
+
+/**
+ * Format de date FR centralisé (un seul point de vérité, cf. `euros`).
+ * - 'short' : 14 juin 2026
+ * - 'long'  : lundi 14 juin 2026
+ * - 'datetime' : 14 juin 2026, 09:30
+ */
+export function formatDate(
+  d: Date | string | number,
+  style: 'short' | 'long' | 'datetime' = 'short'
+): string {
+  const date = d instanceof Date ? d : new Date(d);
+  if (Number.isNaN(date.getTime())) return '—';
+  const opts: Intl.DateTimeFormatOptions =
+    style === 'long'
+      ? { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }
+      : style === 'datetime'
+        ? { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' }
+        : { day: 'numeric', month: 'long', year: 'numeric' };
+  return date.toLocaleDateString('fr-FR', opts);
+}

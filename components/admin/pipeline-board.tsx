@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useTransition } from 'react';
+import { useEffect, useMemo, useRef, useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { moveLead } from '@/app/admin/(app)/leads/actions';
@@ -38,24 +38,72 @@ const eur = (n: number) =>
 /**
  * Vue Kanban du pipeline. Sur mobile : flèches ◄ ► pour avancer/reculer une
  * fiche d'une étape (au doigt). Sur desktop : glisser-déposer la carte dans une
- * autre colonne. Tout passe par l'action serveur moveLead.
+ * autre colonne. Le déplacement est OPTIMISTE — la carte bouge instantanément,
+ * puis le serveur (moveLead + refresh) réconcilie la vérité.
  */
 export function PipelineBoard({ columns }: { columns: PipelineColumn[] }) {
   const router = useRouter();
-  const [pending, start] = useTransition();
+  const [, start] = useTransition();
   const [dragId, setDragId] = useState<string | null>(null);
-  // Séquence des étapes déplaçables = colonnes modifiables (non lecture seule).
-  const stages = columns.filter((c) => !c.readOnly).map((c) => c.stage);
+  const [board, setBoard] = useState<PipelineColumn[]>(columns);
+  // Nb de déplacements en vol (moveLead pas encore résolu). On ne resynchronise
+  // avec le serveur QUE lorsqu'il n'y en a plus → un 2ᵉ déplacement rapide n'est
+  // jamais écrasé par le refresh du 1er.
+  const inflight = useRef(0);
 
-  const move = (leadId: string, stage: string) =>
-    start(async () => {
-      await moveLead(leadId, stage);
-      router.refresh();
+  // Re-synchronise avec le serveur quand les colonnes changent vraiment (après
+  // refresh/navigation). Signature stable pour ne pas écraser l'optimisme à chaque rendu.
+  const sig = useMemo(
+    () => columns.map((c) => `${c.stage}:${c.leads.map((l) => l.id).join(',')}`).join('|'),
+    [columns]
+  );
+  useEffect(() => {
+    if (inflight.current === 0) setBoard(columns);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sig]);
+
+  // Séquence des étapes déplaçables = colonnes modifiables (non lecture seule).
+  const stages = board.filter((c) => !c.readOnly).map((c) => c.stage);
+
+  const move = (leadId: string, toStage: string) => {
+    // 1) Optimiste : on déplace la carte localement, tout de suite. Tri stable
+    //    (montant puis id) pour coller à l'ordre serveur sur montants égaux.
+    setBoard((prev) => {
+      let card: PipelineCard | undefined;
+      const cleared = prev.map((col) => {
+        const found = col.leads.find((l) => l.id === leadId);
+        if (found) card = found;
+        return found ? { ...col, leads: col.leads.filter((l) => l.id !== leadId) } : col;
+      });
+      if (!card) return prev;
+      const moved = card;
+      return cleared.map((col) =>
+        col.stage === toStage
+          ? {
+              ...col,
+              leads: [moved, ...col.leads].sort(
+                (a, b) => b.montant - a.montant || a.id.localeCompare(b.id)
+              ),
+            }
+          : col
+      );
     });
+    // 2) Serveur. On ne rafraîchit (réconciliation) QUE quand le dernier
+    //    déplacement en vol est résolu, pour ne pas écraser un autre optimisme.
+    inflight.current += 1;
+    start(async () => {
+      try {
+        await moveLead(leadId, toStage);
+      } finally {
+        inflight.current -= 1;
+        if (inflight.current === 0) router.refresh();
+      }
+    });
+  };
 
   return (
-    <div className={`flex gap-3 overflow-x-auto pb-3 ${pending ? 'opacity-60' : ''}`}>
-      {columns.map((col) => (
+    <div className="flex gap-3 overflow-x-auto pb-3">
+      {board.map((col) => (
         <div
           key={col.stage}
           className={`flex w-64 shrink-0 flex-col rounded-xl border bg-slate-50 ${
@@ -123,7 +171,7 @@ export function PipelineBoard({ columns }: { columns: PipelineColumn[] }) {
                         <div className="flex items-center gap-1">
                           <button
                             type="button"
-                            disabled={idx <= 0 || pending}
+                            disabled={idx <= 0}
                             onClick={() => move(l.id, stages[idx - 1])}
                             className="flex h-11 w-11 sm:h-9 sm:w-9 items-center justify-center rounded-md border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
                             aria-label="Étape précédente"
@@ -132,7 +180,7 @@ export function PipelineBoard({ columns }: { columns: PipelineColumn[] }) {
                           </button>
                           <button
                             type="button"
-                            disabled={idx >= stages.length - 1 || pending}
+                            disabled={idx >= stages.length - 1}
                             onClick={() => move(l.id, stages[idx + 1])}
                             className="flex h-11 w-11 sm:h-9 sm:w-9 items-center justify-center rounded-md border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
                             aria-label="Étape suivante"

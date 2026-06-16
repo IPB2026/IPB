@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation';
 import { auth } from '@/auth';
 import { AdminShell } from '@/components/admin/admin-shell';
+import { FlashToast } from '@/components/admin/flash-toast';
 
 export default async function AdminAppLayout({
   children,
@@ -18,6 +19,7 @@ export default async function AdminAppLayout({
   return (
     <AdminShell displayName={displayName} email={email} role={role}>
       {children}
+      <FlashToast />
     </AdminShell>
   );
 }

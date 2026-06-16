@@ -42,7 +42,12 @@ export function MobileCardRow({
         {leading}
         <div className="min-w-0 flex-1">
           <div className="flex items-center justify-between gap-2">
-            <span className="truncate font-medium text-slate-900">{title}</span>
+            <span
+              className="truncate font-medium text-slate-900"
+              title={typeof title === 'string' ? title : undefined}
+            >
+              {title}
+            </span>
             {badge}
           </div>
           {lines

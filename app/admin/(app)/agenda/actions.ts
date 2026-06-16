@@ -131,7 +131,7 @@ export async function createAppointment(formData: FormData) {
   revalidatePath('/admin/agenda');
   if (leadId) revalidatePath(`/admin/leads/${leadId}`);
   revalidateCrm(contactId);
-  redirect('/admin/agenda');
+  redirect('/admin/agenda?ok=rdv');
 }
 
 export async function updateAppointmentStatus(formData: FormData) {
@@ -308,7 +308,7 @@ export async function generateInvoiceFromAppointment(formData: FormData) {
   revalidatePath('/admin/agenda');
   revalidatePath('/admin/factures');
   revalidateCrm(appt.contactId);
-  redirect(`/admin/factures/${facture.id}`);
+  redirect(`/admin/factures/${facture.id}?ok=facture`);
 }
 
 /**
