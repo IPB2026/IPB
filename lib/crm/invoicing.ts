@@ -1,6 +1,7 @@
 import 'server-only';
 import { prisma } from '@/lib/prisma';
 import { nextFactureNumber } from '@/lib/crm/numbering';
+import { DIAGNOSTIC_VISIT_TYPES } from '@/lib/crm/dossier';
 import type { AppointmentType } from '@prisma/client';
 
 /**
@@ -19,13 +20,8 @@ const TYPE_OBJECT: Record<AppointmentType, string> = {
   AUTRE: 'Intervention IPB',
 };
 
-/** Types de RDV diagnostic (facturables automatiquement). LANCEMENT_TRAVAUX exclu. */
-export const DIAGNOSTIC_APPT_TYPES: AppointmentType[] = [
-  'DIAGNOSTIC_FISSURES',
-  'DIAGNOSTIC_HUMIDITE',
-  'EXPERTISE_ACHAT',
-  'MUR_PORTEUR',
-];
+/** Types de RDV diagnostic facturables. Alias de la source unique (dossier.ts). */
+export const DIAGNOSTIC_APPT_TYPES = DIAGNOSTIC_VISIT_TYPES;
 
 /**
  * Crée la facture d'un RDV réalisé. Montant = devis diagnostic accepté du client,

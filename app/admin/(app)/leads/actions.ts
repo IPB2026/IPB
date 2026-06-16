@@ -298,6 +298,15 @@ export async function assignLead(formData: FormData) {
 
   if (lead.assignedToId === newId) return; // pas de changement
 
+  // RÈGLE MÉTIER (enforcement SERVEUR, pas seulement l'UI) : on n'assigne un
+  // diagnostiqueur qu'APRÈS un devis ACCEPTÉ. La désassignation reste permise.
+  if (newId) {
+    const accepted = await prisma.devis.count({
+      where: { contactId: lead.contactId, status: 'ACCEPTE' },
+    });
+    if (accepted === 0) return;
+  }
+
   await prisma.lead.update({
     where: { id: leadId },
     data: { assignedToId: newId },

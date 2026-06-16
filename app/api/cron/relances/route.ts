@@ -121,13 +121,27 @@ export async function GET(req: Request) {
       const email = devis.contact.email;
       if (!email) continue;
 
-      // sentAt fiable (repli updatedAt pour les devis antérieurs à la migration).
+      // FRONTIÈRE DE MIGRATION : un devis envoyé AVANT la migration relance_tracking
+      // a sentAt=null et relanceCount=0 même s'il a déjà reçu des relances (ancien
+      // système, dérivé des activités). On reconstruit alors son état depuis les
+      // activités pour NE PAS le relancer à zéro (double e-mail au client).
+      const legacy = devis.sentAt == null;
+      let relanceCount = devis.relanceCount;
+      if (legacy) {
+        relanceCount = await prisma.activity.count({
+          where: {
+            contactId: devis.contactId,
+            content: { contains: `Relance devis ${devis.number} ` },
+          },
+        });
+        if (relanceCount >= DEVIS_STEPS.length) continue;
+      }
       const sentAt = devis.sentAt ?? devis.updatedAt;
-      const offset = DEVIS_STEPS[devis.relanceCount];
+      const offset = DEVIS_STEPS[relanceCount];
       const ageDays = (now - sentAt.getTime()) / DAY;
       if (ageDays < offset) continue;
 
-      const step = (devis.relanceCount + 1) as 1 | 2;
+      const step = (relanceCount + 1) as 1 | 2;
       try {
         const res = await sendEmail({
           to: email,
@@ -145,9 +159,11 @@ export async function GET(req: Request) {
           errors.push(`devis ${devis.id}: ${res.error}`);
           continue;
         }
+        // Écrit l'état RÉEL (set explicite) : fige le compteur et migre sentAt
+        // pour un devis legacy → les passages suivants utilisent les champs.
         await prisma.devis.update({
           where: { id: devis.id },
-          data: { relanceCount: { increment: 1 } },
+          data: { relanceCount: relanceCount + 1, ...(legacy ? { sentAt } : {}) },
         });
         await prisma.activity.create({
           data: {
@@ -186,12 +202,27 @@ export async function GET(req: Request) {
       const email = f.contact.email;
       if (!email || !f.dueDate) continue;
 
-      // Compteur fiable Facture.relanceCount (vs matching de texte). Échéancier
-      // calé sur dueDate (J+3 puis J+7 après l'échéance).
+      // FRONTIÈRE DE MIGRATION : une facture relancée avant la migration a
+      // relanceCount=0 (pas de champ pour la distinguer d'une facture jamais
+      // relancée). Quand le compteur est à 0, on vérifie les activités pour ne
+      // pas re-relancer une facture déjà relancée sous l'ancien système.
+      let relanceCount = f.relanceCount;
+      if (relanceCount === 0) {
+        relanceCount = await prisma.activity.count({
+          where: {
+            contactId: f.contactId,
+            content: { contains: `Relance facture ${f.number} ` },
+          },
+        });
+        if (relanceCount >= FACTURE_STEPS.length) continue;
+      }
       const overdueDays = (now - f.dueDate.getTime()) / DAY;
-      const offset = FACTURE_STEPS[f.relanceCount];
+      const offset = FACTURE_STEPS[relanceCount];
       if (overdueDays < offset) continue;
 
+      // Montant rappelé = RESTE DÛ (total − acompte), cohérent avec la relance
+      // manuelle ; ne sur-facture pas un client ayant déjà versé un acompte.
+      const resteDu = Math.max(0, Number(f.totalHT) - Number(f.acompte ?? 0));
       try {
         const res = await sendEmail({
           to: email,
@@ -199,7 +230,7 @@ export async function GET(req: Request) {
           html: factureRelance({
             firstName: f.contact.name.split(' ')[0] || f.contact.name,
             number: f.number,
-            montant: euros(Number(f.totalHT)),
+            montant: euros(resteDu),
             dueDate: f.dueDate.toLocaleDateString('fr-FR'),
           }),
         });
@@ -209,7 +240,7 @@ export async function GET(req: Request) {
         }
         await prisma.facture.update({
           where: { id: f.id },
-          data: { relanceCount: { increment: 1 } },
+          data: { relanceCount: relanceCount + 1 },
         });
         await prisma.activity.create({
           data: {

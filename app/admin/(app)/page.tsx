@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { Prisma } from '@prisma/client';
 import { euros } from '@/lib/crm/company';
+import { DIAGNOSTIC_VISIT_TYPES } from '@/lib/crm/dossier';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
@@ -50,7 +51,7 @@ async function getStats() {
       appointments: {
         none: {
           type: {
-            in: ['DIAGNOSTIC_FISSURES', 'DIAGNOSTIC_HUMIDITE', 'EXPERTISE_ACHAT', 'MUR_PORTEUR'],
+            in: [...DIAGNOSTIC_VISIT_TYPES],
           },
         },
       },
@@ -63,12 +64,15 @@ async function getStats() {
   const startOfToday = new Date(now);
   startOfToday.setHours(0, 0, 0, 0);
   const il14j = new Date(now.getTime() - 14 * 86_400_000);
-  const DIAG_APPT_TYPES = [
-    'DIAGNOSTIC_FISSURES',
-    'DIAGNOSTIC_HUMIDITE',
-    'EXPERTISE_ACHAT',
-    'MUR_PORTEUR',
-  ] as const;
+  // « Devis sans réponse » : daté sur sentAt (date d'envoi FIABLE, non bumpée par
+  // l'incrément relanceCount du cron) ; repli updatedAt pour les devis legacy.
+  const sansReponseWhere: Prisma.DevisWhereInput = {
+    status: 'ENVOYE',
+    OR: [
+      { sentAt: { lt: il14j } },
+      { AND: [{ sentAt: null }, { updatedAt: { lt: il14j } }] },
+    ],
+  };
   const [
     total,
     clients,
@@ -164,7 +168,7 @@ async function getStats() {
       where: {
         status: 'PLANIFIE',
         start: { lt: startOfToday },
-        type: { in: [...DIAG_APPT_TYPES] },
+        type: { in: [...DIAGNOSTIC_VISIT_TYPES] },
       },
       orderBy: { start: 'asc' },
       take: 8,
@@ -174,17 +178,17 @@ async function getStats() {
       where: {
         status: 'PLANIFIE',
         start: { lt: startOfToday },
-        type: { in: [...DIAG_APPT_TYPES] },
+        type: { in: [...DIAGNOSTIC_VISIT_TYPES] },
       },
     }),
     // Devis envoyés restés sans réponse depuis > 14 j → à relancer ou classer.
     prisma.devis.findMany({
-      where: { status: 'ENVOYE', updatedAt: { lt: il14j } },
+      where: sansReponseWhere,
       orderBy: { updatedAt: 'asc' },
       take: 8,
       include: { contact: true },
     }),
-    prisma.devis.count({ where: { status: 'ENVOYE', updatedAt: { lt: il14j } } }),
+    prisma.devis.count({ where: sansReponseWhere }),
   ]);
 
   return {
@@ -385,7 +389,7 @@ export default async function DashboardPage() {
                 key={d.id}
                 href={`/admin/clients/${d.contactId}`}
                 name={d.contact.name}
-                detail={`Devis ${d.number} · ${euros(Number(d.totalHT))} · envoyé le ${d.updatedAt.toLocaleDateString('fr-FR')}`}
+                detail={`Devis ${d.number} · ${euros(Number(d.totalHT))} · envoyé le ${(d.sentAt ?? d.updatedAt).toLocaleDateString('fr-FR')}`}
                 action="À relancer"
                 tone="bg-amber-50 text-amber-700"
               />

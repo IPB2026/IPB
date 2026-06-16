@@ -289,6 +289,16 @@ export async function sendDevisRelanceEmail(id: string): Promise<SendResult> {
   });
   if (!res.success) return { ok: false, error: res.error ?? 'Échec envoi' };
 
+  // La relance manuelle COMPTE comme une étape : on incrémente relanceCount pour
+  // que le cron n'enchaîne pas sa propre relance le même jour (anti double-envoi).
+  // Migre sentAt si le devis est antérieur à la migration (legacy).
+  await prisma.devis.update({
+    where: { id: devis.id },
+    data: {
+      relanceCount: { increment: 1 },
+      ...(devis.sentAt ? {} : { sentAt: devis.updatedAt }),
+    },
+  });
   await prisma.activity.create({
     data: {
       type: 'EMAIL',
@@ -328,6 +338,11 @@ export async function sendFactureRelanceEmail(id: string): Promise<SendResult> {
   });
   if (!res.success) return { ok: false, error: res.error ?? 'Échec envoi' };
 
+  // Compte comme une étape de relance (anti double-envoi avec le cron).
+  await prisma.facture.update({
+    where: { id: facture.id },
+    data: { relanceCount: { increment: 1 } },
+  });
   await prisma.activity.create({
     data: {
       type: 'EMAIL',

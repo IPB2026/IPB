@@ -162,8 +162,10 @@ export default async function ClientFichePage({
 
   const next = nextStep(dossier, c.id, lead?.id);
   // RÈGLE MÉTIER : un diagnostiqueur ne s'assigne qu'APRÈS validation du devis.
+  // (Mais un dossier DÉJÀ assigné reste gérable — pour pouvoir le réassigner/désassigner.)
   const devisAccepte = c.devis.some((d) => d.status === 'ACCEPTE');
-  const experts = isAdmin && lead && devisAccepte ? await listExperts() : [];
+  const canAssign = devisAccepte || Boolean(lead?.assignedToId);
+  const experts = isAdmin && lead && canAssign ? await listExperts() : [];
   const qual = extractQual(lead?.payload);
   const diagnostiqueur = lead?.assignedTo?.name || lead?.assignedTo?.email || '—';
   const adresse =
@@ -389,14 +391,15 @@ export default async function ClientFichePage({
                 <div className="flex flex-wrap gap-2">
                   <select
                     name="stage"
-                    defaultValue={
-                      (EDITABLE_PIPELINE_STAGES as readonly string[]).includes(lead.stage)
-                        ? lead.stage
-                        : 'NOUVEAU'
-                    }
+                    defaultValue={lead.stage}
                     className="h-10 flex-1 rounded-lg border border-slate-300 px-3 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
                   >
-                    {EDITABLE_PIPELINE_STAGES.map((v) => (
+                    {/* Étapes éditables du pipeline + l'étape COURANTE si elle en sort
+                        (Gagné/Perdu/À rappeler) → jamais rétrogradée par défaut. */}
+                    {((EDITABLE_PIPELINE_STAGES as readonly string[]).includes(lead.stage)
+                      ? EDITABLE_PIPELINE_STAGES
+                      : [lead.stage, ...EDITABLE_PIPELINE_STAGES]
+                    ).map((v) => (
                       <option key={v} value={v}>
                         {STAGE_LABEL[v]}
                       </option>
@@ -414,7 +417,7 @@ export default async function ClientFichePage({
                   devis, planifiez un RDV, facturez, etc.
                 </p>
               </form>
-              {devisAccepte ? (
+              {canAssign ? (
                 <form action={assignLead} className="space-y-2">
                   <input type="hidden" name="leadId" value={lead.id} />
                   <label className="block text-sm font-medium text-slate-700">

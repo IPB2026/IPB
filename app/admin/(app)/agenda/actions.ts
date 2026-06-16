@@ -5,7 +5,7 @@ import { revalidatePath } from 'next/cache';
 import { revalidateCrm } from '@/lib/crm/revalidate';
 import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
-import { createInvoiceForAppointment } from '@/lib/crm/invoicing';
+import { createInvoiceForAppointment, DIAGNOSTIC_APPT_TYPES } from '@/lib/crm/invoicing';
 import {
   createCalendarEvent,
   updateCalendarEvent,
@@ -139,7 +139,7 @@ export async function updateAppointmentStatus(formData: FormData) {
   const appt = await prisma.appointment.update({
     where: { id },
     data: { status: status as AppointmentStatus },
-    select: { leadId: true, contactId: true, googleEventId: true },
+    select: { leadId: true, contactId: true, googleEventId: true, type: true, factureId: true },
   });
   // Si réalisé et lead encore en amont, marquer « visite faite »
   if (status === 'REALISE' && appt.leadId) {
@@ -147,6 +147,16 @@ export async function updateAppointmentStatus(formData: FormData) {
       where: { id: appt.leadId, stage: { in: ['RDV_PLANIFIE'] } },
       data: { stage: 'VISITE_FAITE' },
     });
+  }
+  // Facture en BROUILLON dès la clôture de la visite diagnostic (idempotent) :
+  // on ne dépend plus de la fenêtre J+1 du cron — une visite clôturée tardivement
+  // (qui sort de cette fenêtre) est quand même facturée. Le cron reste un filet.
+  if (
+    status === 'REALISE' &&
+    !appt.factureId &&
+    DIAGNOSTIC_APPT_TYPES.includes(appt.type)
+  ) {
+    await createInvoiceForAppointment(id).catch(() => {});
   }
   // Annulation : retirer l'événement Google (Google notifie le client) ; sinon
   // envoyer l'e-mail d'annulation maison.

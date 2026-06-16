@@ -118,7 +118,7 @@ export async function relanceDevis(formData: FormData) {
   await requireAdmin();
   const id = str(formData.get('devisId'));
   const contactId = str(formData.get('contactId'));
-  if (!id) return;
+  if (!id || !contactId) return;
   const res = await sendDevisRelanceEmail(id);
   revalidateCrm(contactId || undefined);
   if (contactId) {
@@ -134,7 +134,7 @@ export async function relanceFacture(formData: FormData) {
   await requireAdmin();
   const id = str(formData.get('factureId'));
   const contactId = str(formData.get('contactId'));
-  if (!id) return;
+  if (!id || !contactId) return;
   const res = await sendFactureRelanceEmail(id);
   revalidateCrm(contactId || undefined);
   if (contactId) {
