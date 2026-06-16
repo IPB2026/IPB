@@ -7,6 +7,8 @@ import {
   factureRelance,
 } from '@/lib/emailTemplates';
 import { euros } from '@/lib/crm/company';
+import { sendFactureEmail } from '@/lib/crm/send';
+import { createInvoiceForAppointment, DIAGNOSTIC_APPT_TYPES } from '@/lib/crm/invoicing';
 import type { LeadTier } from '@prisma/client';
 
 export const runtime = 'nodejs';
@@ -236,12 +238,59 @@ export async function GET(req: Request) {
     errors.push(`facture-loop: ${e instanceof Error ? e.message : 'err'}`);
   }
 
+  // ── Facturation automatique J+1 : RDV diagnostic RÉALISÉ hier ou avant (≤ 7 j),
+  //    sans facture, client avec e-mail → on GÉNÈRE ET on ENVOIE la facture.
+  //    (Workflow gérant : « le lendemain de la visite, on transmet la facture ».)
+  const startOfToday = new Date();
+  startOfToday.setHours(0, 0, 0, 0);
+  const sevenDaysAgo = new Date(now - 7 * DAY);
+  let factureAuto = 0;
+  try {
+    const appts = await prisma.appointment.findMany({
+      where: {
+        status: 'REALISE',
+        factureId: null,
+        type: { in: DIAGNOSTIC_APPT_TYPES },
+        start: { lt: startOfToday, gte: sevenDaysAgo },
+        contact: { email: { not: null } },
+      },
+      include: { contact: true },
+      // Génération PDF + envoi = lourd → on plafonne par passage (budget 60 s).
+      // Un éventuel backlog est traité aux passages suivants (idempotent).
+      take: 15,
+      orderBy: { start: 'asc' },
+    });
+    for (const appt of appts) {
+      try {
+        const inv = await createInvoiceForAppointment(appt.id);
+        if (!inv || !inv.created) continue; // déjà facturé entre-temps
+        const res = await sendFactureEmail(inv.id);
+        await prisma.activity.create({
+          data: {
+            type: 'EMAIL',
+            contactId: appt.contactId,
+            leadId: appt.leadId,
+            content: res.ok
+              ? `Facture auto-générée et envoyée (lendemain de la visite du ${appt.start.toLocaleDateString('fr-FR')}).`
+              : `Facture auto-générée — envoi e-mail échoué (${res.error}).`,
+          },
+        });
+        factureAuto++;
+      } catch (e) {
+        errors.push(`facture-auto ${appt.id}: ${e instanceof Error ? e.message : 'err'}`);
+      }
+    }
+  } catch (e) {
+    errors.push(`facture-auto-loop: ${e instanceof Error ? e.message : 'err'}`);
+  }
+
   return Response.json({
     ok: true,
     candidates: leads.length,
     sent,
     devisSent,
     factureSent,
+    factureAuto,
     errors: errors.slice(0, 10),
   });
 }

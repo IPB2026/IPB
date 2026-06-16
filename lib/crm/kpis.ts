@@ -228,26 +228,40 @@ export async function computeKpis(): Promise<KpiData> {
   }));
 
   // ── Activité par diagnostiqueur ──
-  const experts = await prisma.user.findMany({
-    where: { role: 'EXPERT' },
-    select: { id: true, name: true, email: true },
-    orderBy: { name: 'asc' },
+  // 3 requêtes au total (au lieu de N×3) : la liste + 2 groupBy agrégés en mémoire.
+  const [experts, leadByExpert, rapportByExpert] = await Promise.all([
+    prisma.user.findMany({
+      where: { role: 'EXPERT' },
+      select: { id: true, name: true, email: true },
+      orderBy: { name: 'asc' },
+    }),
+    prisma.lead.groupBy({
+      by: ['assignedToId'],
+      _count: { _all: true },
+      where: { assignedToId: { not: null } },
+    }),
+    prisma.rapport.groupBy({
+      by: ['authorId', 'status'],
+      _count: { _all: true },
+      where: { authorId: { not: null } },
+    }),
+  ]);
+  const assignesMap = new Map(leadByExpert.map((g) => [g.assignedToId, g._count._all]));
+  const diagnostiqueurs = experts.map((e) => {
+    const rapports = rapportByExpert.filter((g) => g.authorId === e.id);
+    const realises = rapports
+      .filter((g) => g.status === 'ENVOYE')
+      .reduce((s, g) => s + g._count._all, 0);
+    const enCours = rapports
+      .filter((g) => ['BROUILLON', 'SOUMIS', 'GENERE', 'VALIDE'].includes(g.status))
+      .reduce((s, g) => s + g._count._all, 0);
+    return {
+      name: e.name || e.email,
+      assignes: assignesMap.get(e.id) ?? 0,
+      enCours,
+      realises,
+    };
   });
-  const diagnostiqueurs = await Promise.all(
-    experts.map(async (e) => {
-      const [assignes, realises, enCours] = await Promise.all([
-        prisma.lead.count({ where: { assignedToId: e.id } }),
-        prisma.rapport.count({ where: { authorId: e.id, status: 'ENVOYE' } }),
-        prisma.rapport.count({
-          where: {
-            authorId: e.id,
-            status: { in: ['BROUILLON', 'SOUMIS', 'GENERE', 'VALIDE'] },
-          },
-        }),
-      ]);
-      return { name: e.name || e.email, assignes, enCours, realises };
-    })
-  );
 
   const caSigne = n(devisSigne._sum.totalHT);
   const caFacture = n(factureEmise._sum.totalHT);

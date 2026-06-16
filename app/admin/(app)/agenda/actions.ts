@@ -5,7 +5,7 @@ import { revalidatePath } from 'next/cache';
 import { revalidateCrm } from '@/lib/crm/revalidate';
 import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
-import { nextFactureNumber } from '@/lib/crm/numbering';
+import { createInvoiceForAppointment } from '@/lib/crm/invoicing';
 import {
   createCalendarEvent,
   updateCalendarEvent,
@@ -29,9 +29,6 @@ const SITE =
 const requireUser = requireAdmin;
 
 const str = (v: FormDataEntryValue | null) => String(v ?? '').trim();
-
-// Tarif diagnostic par défaut (HT) — modifiable sur la facture générée.
-const DIAGNOSTIC_PRICE = 400;
 
 const TYPE_OBJECT: Record<AppointmentType, string> = {
   DIAGNOSTIC_FISSURES: 'Diagnostic pathologies de fissures',
@@ -255,60 +252,18 @@ export async function generateInvoiceFromAppointment(formData: FormData) {
 
   const appt = await prisma.appointment.findUnique({
     where: { id },
-    include: { contact: true, facture: true },
+    select: { contactId: true },
   });
-  if (!appt || appt.facture) {
-    // déjà facturé → aller sur la facture existante
-    if (appt?.factureId) redirect(`/admin/factures/${appt.factureId}`);
-    return;
-  }
+  if (!appt) return;
 
-  const object = TYPE_OBJECT[appt.type];
-  const number = await nextFactureNumber(appt.contact.name);
-  const due = new Date();
-  due.setDate(due.getDate() + 30);
-
-  // Montant = celui du devis diagnostic accepté du client (cohérence devis ↔
-  // facture) ; à défaut le tarif par défaut, modifiable ensuite sur la facture.
-  const devisAccepte = await prisma.devis.findFirst({
-    where: { contactId: appt.contactId, status: 'ACCEPTE', serviceType: { not: 'AUTRE' } },
-    orderBy: { acceptedAt: 'desc' },
-    select: { totalHT: true },
-  });
-  const prix = devisAccepte ? Number(devisAccepte.totalHT) : DIAGNOSTIC_PRICE;
-
-  const facture = await prisma.facture.create({
-    data: {
-      number,
-      contactId: appt.contactId,
-      object,
-      dueDate: due,
-      totalHT: prix,
-      lines: {
-        create: [
-          {
-            designation: object,
-            detail: appt.location || null,
-            unit: 'Forfait',
-            qty: 1,
-            unitPrice: prix,
-            total: prix,
-            position: 0,
-          },
-        ],
-      },
-    },
-  });
-
-  await prisma.appointment.update({
-    where: { id },
-    data: { factureId: facture.id, status: 'REALISE' },
-  });
+  // Logique partagée avec le cron de facturation auto J+1.
+  const inv = await createInvoiceForAppointment(id);
+  if (!inv) return;
 
   revalidatePath('/admin/agenda');
   revalidatePath('/admin/factures');
   revalidateCrm(appt.contactId);
-  redirect(`/admin/factures/${facture.id}?ok=facture`);
+  redirect(`/admin/factures/${inv.id}?ok=facture`);
 }
 
 /**
