@@ -96,11 +96,33 @@ export function RapportPhotos({
     return e instanceof Error && e.message ? e.message : "Échec de l'envoi.";
   }
 
+  /** Compression bornée dans le temps : si l'optimisation (décodage HEIC, canvas)
+   *  se fige > 25 s, on envoie la photo telle quelle au lieu de rester bloqué. */
+  async function compressBounded(file: File): Promise<{ file: File; note?: string }> {
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const timeout = new Promise<{ file: File; note?: string }>((resolve) => {
+      timer = setTimeout(
+        () => resolve({ file, note: 'Optimisation trop longue — photo envoyée telle quelle.' }),
+        25000
+      );
+    });
+    try {
+      return await Promise.race([
+        compressImage(file).then((r) => ({ file: r.file, note: r.note })),
+        timeout,
+      ]);
+    } catch {
+      return { file, note: undefined }; // au pire on envoie l'original
+    } finally {
+      if (timer) clearTimeout(timer);
+    }
+  }
+
   /** Traite UN fichier : compression (HEIC inclus) → envoi → enregistrement base. */
   async function processOne(p: Pending): Promise<boolean> {
     try {
       patch(p.key, { step: 'optim', error: undefined });
-      const { file: optimized, note } = await compressImage(p.file);
+      const { file: optimized, note } = await compressBounded(p.file);
       if (note) setInfo((prev) => prev ?? note);
 
       // Aperçu mis à jour avec le JPEG (utile pour les HEIC, illisibles sinon).
