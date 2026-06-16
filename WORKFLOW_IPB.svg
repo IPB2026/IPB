@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" viewBox="0 0 680 1015" font-family="Inter, ui-sans-serif, system-ui, sans-serif" role="img" aria-label="Cycle commercial IPB, du prospect au rapport">
+  <title>Cycle commercial IPB</title>
+  <desc>Workflow metier officiel : prospect, devis diagnostic, RDV, visite, facture, paiement, rapport, puis cloture ou suivi travaux.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="680" height="1015" fill="#ffffff"/>
+
+  <text x="40" y="40" font-size="20" font-weight="600" fill="#0f172a">Cycle commercial IPB</text>
+  <text x="40" y="62" font-size="13" fill="#64748b">Du prospect au rapport — workflow métier officiel</text>
+
+  <line x1="210" y1="154" x2="210" y2="190" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="210" y1="244" x2="210" y2="280" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="210" y1="334" x2="210" y2="370" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="210" y1="424" x2="210" y2="460" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="210" y1="514" x2="210" y2="550" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="210" y1="604" x2="210" y2="640" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="210" y1="694" x2="210" y2="730" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="210" y1="784" x2="210" y2="820" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="210" y1="874" x2="210" y2="910" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <line x1="350" y1="307" x2="398" y2="307" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="374" y="300" font-size="12" font-weight="500" text-anchor="middle" fill="#b91c1c">non</text>
+  <text x="222" y="356" font-size="12" font-weight="500" fill="#15803d">oui</text>
+
+  <line x1="350" y1="847" x2="398" y2="847" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="374" y="840" font-size="12" font-weight="500" text-anchor="middle" fill="#15803d">non</text>
+  <text x="222" y="896" font-size="12" font-weight="500" fill="#9a3412">oui</text>
+
+  <rect x="70" y="100" width="280" height="54" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="210" y="123" font-size="14" font-weight="600" text-anchor="middle" fill="#0f172a">Prospect</text>
+  <text x="210" y="141" font-size="12" text-anchor="middle" fill="#64748b">téléphone · site · e-mail</text>
+
+  <rect x="70" y="190" width="280" height="54" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="210" y="213" font-size="14" font-weight="600" text-anchor="middle" fill="#0f172a">Devis diagnostic</text>
+  <text x="210" y="231" font-size="12" text-anchor="middle" fill="#64748b">créneaux de visite proposés</text>
+
+  <rect x="70" y="280" width="280" height="54" rx="8" fill="#ffffff" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="210" y="312" font-size="14" font-weight="600" text-anchor="middle" fill="#9a3412">Devis + créneau validés ?</text>
+
+  <rect x="400" y="280" width="210" height="54" rx="8" fill="#fef2f2" stroke="#fecaca"/>
+  <text x="505" y="303" font-size="14" font-weight="600" text-anchor="middle" fill="#b91c1c">Perdu</text>
+  <text x="505" y="321" font-size="12" text-anchor="middle" fill="#b91c1c">devis non validé</text>
+
+  <rect x="70" y="370" width="280" height="54" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="210" y="402" font-size="14" font-weight="600" text-anchor="middle" fill="#0f172a">RDV planifié</text>
+
+  <rect x="70" y="460" width="280" height="54" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="210" y="492" font-size="14" font-weight="600" text-anchor="middle" fill="#0f172a">Visite sur site</text>
+
+  <rect x="70" y="550" width="280" height="54" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="210" y="573" font-size="14" font-weight="600" text-anchor="middle" fill="#0f172a">Facture</text>
+  <text x="210" y="591" font-size="12" text-anchor="middle" fill="#64748b">le lendemain de la visite</text>
+
+  <rect x="70" y="640" width="280" height="54" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="210" y="663" font-size="14" font-weight="600" text-anchor="middle" fill="#0f172a">Paiement</text>
+  <text x="210" y="681" font-size="12" text-anchor="middle" fill="#64748b">déclencheur du rapport</text>
+
+  <rect x="70" y="730" width="280" height="54" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="210" y="753" font-size="14" font-weight="600" text-anchor="middle" fill="#0f172a">Rapport</text>
+  <text x="210" y="771" font-size="12" text-anchor="middle" fill="#64748b">3–5 j ouvrés après paiement</text>
+
+  <rect x="70" y="820" width="280" height="54" rx="8" fill="#ffffff" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="210" y="852" font-size="14" font-weight="600" text-anchor="middle" fill="#9a3412">Estimation budgétaire ?</text>
+
+  <rect x="400" y="820" width="210" height="54" rx="8" fill="#f0fdf4" stroke="#bbf7d0"/>
+  <text x="505" y="843" font-size="14" font-weight="600" text-anchor="middle" fill="#15803d">Terminé</text>
+  <text x="505" y="861" font-size="12" text-anchor="middle" fill="#15803d">préconisations seules</text>
+
+  <rect x="70" y="910" width="280" height="54" rx="8" fill="#fff7ed" stroke="#fed7aa"/>
+  <text x="210" y="933" font-size="14" font-weight="600" text-anchor="middle" fill="#9a3412">Suivi travaux</text>
+  <text x="210" y="951" font-size="12" text-anchor="middle" fill="#9a3412">exceptionnel · ~10 %</text>
+
+  <rect x="400" y="918" width="14" height="14" rx="3" fill="#f0fdf4" stroke="#bbf7d0"/>
+  <text x="422" y="930" font-size="12" fill="#475569">Dossier clôturé</text>
+  <rect x="400" y="940" width="14" height="14" rx="3" fill="#fef2f2" stroke="#fecaca"/>
+  <text x="422" y="952" font-size="12" fill="#475569">Dossier abandonné</text>
+</svg>
