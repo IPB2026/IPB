@@ -139,23 +139,50 @@ export async function compressImage(
   if (!file.type.startsWith('image/') && !/\.(jpe?g|png|webp|heic|heif)$/i.test(file.name)) {
     return base;
   }
-  if (file.size < minFileSize) return base;
-
   const isHeic = /heic|heif/i.test(file.type) || /\.(heic|heif)$/i.test(file.name);
+
+  // 1) HEIC/HEIF (iPhone) : décodage navigateur → JPEG, AVANT tout le reste. La
+  //    librairie n'est chargée QUE si une photo HEIC est réellement présente
+  //    (import dynamique) → aucun impact sur le bundle autrement.
+  let source = file;
+  let preOriented = false; // le JPEG issu du décodage HEIC est déjà redressé
+  if (isHeic) {
+    try {
+      const heic2any = (await import('heic2any')).default;
+      const res = await heic2any({ blob: file, toType: 'image/jpeg', quality: 0.92 });
+      const blob = Array.isArray(res) ? res[0] : (res as Blob);
+      source = new File([blob], jpgName(file.name), {
+        type: 'image/jpeg',
+        lastModified: file.lastModified,
+      });
+      preOriented = true;
+    } catch {
+      // Décodage impossible → on garde l'original (s'affichera au moins sur Safari).
+      return { ...base, note: 'Photo HEIC non convertie — conservée telle quelle.' };
+    }
+  }
+
+  // 2) Fichier déjà léger (et non-HEIC) : inutile de recompresser.
+  if (!isHeic && source.size < minFileSize) {
+    return { ...base, file: source };
+  }
+
+  // Repli commun en cas d'échec après ce point : on renvoie `source` (le JPEG
+  // converti pour un HEIC, sinon l'original) — jamais le HEIC brut illisible.
+  const fallback: CompressResult = {
+    file: source,
+    isCompressed: source !== file,
+    originalSize: file.size,
+    finalSize: source.size,
+  };
 
   let bitmap: ImageBitmap;
   // Pixels bruts (déterministe), puis rotation EXIF appliquée par nos soins.
-  const manualOrientation = await readExifOrientation(file);
+  const manualOrientation = preOriented ? 1 : await readExifOrientation(source);
   try {
-    bitmap = await createImageBitmap(file, { imageOrientation: 'none' });
+    bitmap = await createImageBitmap(source, { imageOrientation: 'none' });
   } catch {
-    // HEIC non décodable (Chrome/Android) ou format exotique → on garde l'original.
-    return {
-      ...base,
-      note: isHeic
-        ? 'Photo iPhone (HEIC) conservée telle quelle — visible sur Safari.'
-        : 'Image non compressée (format non décodé).',
-    };
+    return isHeic ? fallback : { ...fallback, note: 'Image non compressée (format non décodé).' };
   }
 
   try {
@@ -170,24 +197,21 @@ export async function compressImage(
     canvas.width = swap ? sh : sw;
     canvas.height = swap ? sw : sh;
     const ctx = canvas.getContext('2d');
-    if (!ctx) {
-      bitmap.close?.();
-      return base;
-    }
+    if (!ctx) return fallback;
 
     // La transformation EXIF utilise les dimensions SOURCE (sw, sh) ; on dessine
     // ensuite le bitmap à cette taille dans le repère transformé.
     applyOrientation(ctx, manualOrientation, sw, sh);
     ctx.drawImage(bitmap, 0, 0, sw, sh);
-    bitmap.close?.();
 
     const blob = await new Promise<Blob | null>((resolve) =>
       canvas.toBlob(resolve, 'image/jpeg', quality)
     );
-    if (!blob) return base;
+    if (!blob) return fallback;
 
-    // Anti-gonflement : si le JPEG produit est plus lourd, garder l'original.
-    if (blob.size >= file.size && !isHeic) return base;
+    // Anti-gonflement : si le JPEG produit est plus lourd que la source, on garde
+    // la source (mais pour un HEIC on garde toujours le JPEG, plus petit ET lisible).
+    if (blob.size >= source.size && !isHeic) return fallback;
 
     const out = new File([blob], jpgName(file.name), {
       type: 'image/jpeg',
@@ -200,7 +224,10 @@ export async function compressImage(
       finalSize: out.size,
     };
   } catch {
-    return base;
+    return fallback;
+  } finally {
+    // Toujours libérer le bitmap, même si drawImage/toBlob a échoué.
+    bitmap.close?.();
   }
 }
 

@@ -112,9 +112,14 @@ export function computeDossier(d: DossierInputs): DossierView {
   const travauxPlanifies = d.appointments.some(
     (a) => a.type === 'LANCEMENT_TRAVAUX'
   );
-  // 2ᵉ devis « accompagnement travaux » = devis de service AUTRE (sentinelle).
-  // ⚠️ À NE PAS confondre avec le devis DIAGNOSTIC (le montant/pipe = diagnostic).
-  const hasDevisTravaux = d.devis.some((x) => x.serviceType === 'AUTRE');
+  // 2ᵉ devis « accompagnement travaux » = devis de service AUTRE (sentinelle) —
+  // MAIS uniquement s'il coexiste avec un VRAI devis diagnostic (service ≠ AUTRE).
+  // Sinon un devis diagnostic légitimement créé en « AUTRE » (lead formulaire de
+  // contact, dont le service par défaut est AUTRE) serait pris à tort pour un
+  // devis travaux. ⚠️ montant/pipe = diagnostic, jamais travaux.
+  const hasDiagnosticDevis = d.devis.some((x) => x.serviceType !== 'AUTRE');
+  const hasDevisTravaux =
+    hasDiagnosticDevis && d.devis.some((x) => x.serviceType === 'AUTRE');
   const perdu = st === 'PERDU';
 
   // Sortie automatique de « Suivi » après 2 semaines sans mouvement (→ Terminé),
@@ -145,13 +150,14 @@ export function computeDossier(d: DossierInputs): DossierView {
     {
       key: 'suivi',
       label: 'Suivi client',
-      done: suiviExpire || hasDevisTravaux || travauxPlanifies,
+      done: suiviExpire || (rapportEnvoye && (hasDevisTravaux || travauxPlanifies)),
     },
   ];
 
-  // BRANCHE TRAVAUX (optionnelle, distincte du diagnostic) — seulement si un
-  // DEVIS TRAVAUX a été chiffré. Ne jamais confondre avec le devis diagnostic.
-  if (hasDevisTravaux || travauxPlanifies) {
+  // BRANCHE TRAVAUX (optionnelle, distincte du diagnostic) — seulement APRÈS le
+  // diagnostic livré (rapport envoyé) ET si un devis travaux a été chiffré (ou un
+  // lancement déjà planifié). Ne jamais confondre avec le devis diagnostic.
+  if (rapportEnvoye && (hasDevisTravaux || travauxPlanifies)) {
     raw.push(
       { key: 'devis_travaux', label: 'Devis travaux émis', done: hasDevisTravaux },
       { key: 'travaux', label: 'Travaux lancés', done: travauxPlanifies },
@@ -177,9 +183,14 @@ export function computeDossier(d: DossierInputs): DossierView {
   // Terminé. Branche travaux séparée. Perdu = devis diagnostic non validé.
   let phase: string;
   if (perdu) phase = 'PERDU';
-  else if (travauxPlanifies) phase = 'TRAVAUX_LANCES';
-  else if (hasDevisTravaux) phase = 'ACCOMPAGNEMENT_TRAVAUX';
-  else if (rapportEnvoye) phase = suiviExpire ? 'TERMINE' : 'SUIVI';
+  // La branche travaux n'existe qu'APRÈS le diagnostic livré (rapport envoyé) :
+  // un devis « AUTRE » ou un RDV travaux isolé ne doit JAMAIS court-circuiter le
+  // cycle diagnostic (bug Maxim : facture envoyée non payée affichée « Travaux lancés »).
+  else if (rapportEnvoye) {
+    if (travauxPlanifies) phase = 'TRAVAUX_LANCES';
+    else if (hasDevisTravaux) phase = 'ACCOMPAGNEMENT_TRAVAUX';
+    else phase = suiviExpire ? 'TERMINE' : 'SUIVI';
+  }
   else if (rapportEnCours) phase = 'RAPPORT';
   else if (facturePayee) phase = 'PAIEMENT_RECU';
   else if (factureEnvoyee) phase = 'FACTURE_ENVOYEE';
@@ -192,8 +203,9 @@ export function computeDossier(d: DossierInputs): DossierView {
   // Suivi « simple » = rapport remis sans devis travaux (la norme). Pas de relance travaux.
   const enSuiviClient =
     rapportEnvoye && !hasDevisTravaux && !travauxPlanifies;
-  // Travaux à planifier : UNIQUEMENT si un devis travaux a été émis sans lancement.
-  const travauxAPlanifier = hasDevisTravaux && !travauxPlanifies;
+  // Travaux à planifier : UNIQUEMENT après le rapport, si un devis travaux a été
+  // émis sans lancement encore planifié.
+  const travauxAPlanifier = rapportEnvoye && hasDevisTravaux && !travauxPlanifies;
 
   return {
     isClient,
