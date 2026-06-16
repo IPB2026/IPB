@@ -47,13 +47,22 @@ export async function confirmBooking(formData: FormData): Promise<void> {
 
   const contact = await prisma.contact.findUnique({ where: { id: p.c } });
   if (!contact) redirect('/rdv?err=1');
-  const devis = await prisma.devis.findUnique({
-    where: { id: p.d },
-    select: { serviceType: true, leadId: true, bienConcerne: true },
-  });
+  // Proposition liée à un devis (e-mail de devis) OU proposition libre depuis
+  // l'Agenda (sans devis : le type est porté par le token).
+  const devis = p.d
+    ? await prisma.devis.findUnique({
+        where: { id: p.d },
+        select: { serviceType: true, leadId: true, bienConcerne: true },
+      })
+    : null;
 
-  const type = VISIT_TYPE[devis?.serviceType ?? ''] ?? 'DIAGNOSTIC_FISSURES';
+  const type: AppointmentType = devis
+    ? VISIT_TYPE[devis.serviceType ?? ''] ?? 'DIAGNOSTIC_FISSURES'
+    : p.ty && p.ty in TYPE_TITLE
+      ? (p.ty as AppointmentType)
+      : 'DIAGNOSTIC_FISSURES';
   const title = TYPE_TITLE[type];
+  const leadId = devis?.leadId ?? p.l ?? null;
   const end = new Date(start.getTime() + 60 * 60000);
   const location = devis?.bienConcerne || contact.address || null;
 
@@ -69,8 +78,8 @@ export async function confirmBooking(formData: FormData): Promise<void> {
   const appt = await prisma.appointment.create({
     data: {
       contactId: p.c,
-      leadId: devis?.leadId ?? null,
-      devisId: p.d,
+      leadId,
+      devisId: p.d ?? null,
       title,
       type,
       start,
@@ -84,16 +93,19 @@ export async function confirmBooking(formData: FormData): Promise<void> {
     data: {
       type: 'RDV',
       contactId: p.c,
-      leadId: devis?.leadId ?? null,
+      leadId,
       content: `Visite confirmée EN LIGNE par le client — ${start.toLocaleString('fr-FR')}`,
     },
   });
 
-  // Le pipeline avance automatiquement.
-  if (devis?.leadId) {
+  // Le pipeline avance automatiquement. On VÉRIFIE que le lead appartient bien au
+  // contact qui confirme (contactId: p.c) : un token au leadId incohérent ne peut
+  // pas faire avancer le dossier d'un autre client.
+  if (leadId) {
     await prisma.lead.updateMany({
       where: {
-        id: devis.leadId,
+        id: leadId,
+        contactId: p.c,
         stage: { in: ['NOUVEAU', 'A_RAPPELER', 'DEVIS_ENVOYE'] },
       },
       data: { stage: 'RDV_PLANIFIE' },

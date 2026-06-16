@@ -10,9 +10,11 @@ import crypto from 'crypto';
  */
 
 export interface BookingPayload {
-  d: string; // devisId
-  c: string; // contactId
-  s: string; // début du créneau (ISO)
+  c: string; // contactId (requis)
+  s: string; // début du créneau (ISO, requis)
+  d?: string; // devisId (proposition liée à un devis) — optionnel
+  ty?: string; // AppointmentType (proposition Agenda sans devis) — optionnel
+  l?: string; // leadId — optionnel
 }
 
 function secret(): string {
@@ -35,7 +37,7 @@ export function verifyBookingToken(token: string | undefined | null): BookingPay
   if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) return null;
   try {
     const p = JSON.parse(Buffer.from(body, 'base64url').toString()) as BookingPayload;
-    if (!p.d || !p.c || !p.s) return null;
+    if (!p.c || !p.s) return null; // devisId (d) désormais optionnel
     if (Number.isNaN(new Date(p.s).getTime())) return null;
     return p;
   } catch {

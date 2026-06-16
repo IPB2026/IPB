@@ -16,7 +16,14 @@ import {
   notifyClientAppointment,
   notifyClientCancellation,
 } from '@/lib/crm/notify';
+import { sendEmail } from '@/lib/email';
+import { signBookingToken } from '@/lib/crm/booking';
+import { proposalEmailHtml } from '@/lib/crm/appointment-proposal';
 import { AppointmentStatus, AppointmentType } from '@prisma/client';
+
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ||
+  'https://www.ipb-expertise.fr';
 
 // Gestion de l'agenda : réservée à l'ADMIN.
 const requireUser = requireAdmin;
@@ -33,6 +40,16 @@ const TYPE_OBJECT: Record<AppointmentType, string> = {
   MUR_PORTEUR: 'Étude de faisabilité ouverture de mur porteur',
   LANCEMENT_TRAVAUX: 'Lancement / coordination des travaux',
   AUTRE: 'Intervention IPB',
+};
+
+// Tournure « objet » insérée dans l'e-mail de proposition de créneaux.
+const PROPOSAL_OBJET: Record<AppointmentType, string> = {
+  DIAGNOSTIC_FISSURES: 'votre diagnostic fissures',
+  DIAGNOSTIC_HUMIDITE: 'votre diagnostic humidité',
+  EXPERTISE_ACHAT: 'votre expertise avant achat',
+  MUR_PORTEUR: "votre étude d'ouverture de mur porteur",
+  LANCEMENT_TRAVAUX: 'le lancement de vos travaux',
+  AUTRE: 'votre intervention',
 };
 
 export async function createAppointment(formData: FormData) {
@@ -292,4 +309,66 @@ export async function generateInvoiceFromAppointment(formData: FormData) {
   revalidatePath('/admin/factures');
   revalidateCrm(appt.contactId);
   redirect(`/admin/factures/${facture.id}`);
+}
+
+/**
+ * Propose au client PLUSIEURS créneaux par e-mail (depuis l'Agenda). Chaque
+ * créneau est un bouton cliquable → /rdv?t=<token> qui crée le RDV en ligne.
+ * Aucun RDV n'est créé maintenant : ils le sont quand le client choisit. Permet
+ * d'utiliser l'Agenda à la fois pour ENREGISTRER et pour PROPOSER des RDV.
+ */
+export async function sendAppointmentProposals(formData: FormData) {
+  await requireUser();
+  const contactId = str(formData.get('contactId'));
+  const type = (str(formData.get('type')) || 'DIAGNOSTIC_FISSURES') as AppointmentType;
+  const leadId = str(formData.get('leadId')) || null;
+  const message = str(formData.get('message')) || null;
+
+  // Champs « slot » répétés (datetime-local) → dates futures, triées, max 6.
+  const slots = formData
+    .getAll('slot')
+    .map((v) => new Date(String(v)))
+    .filter((d) => !Number.isNaN(d.getTime()) && d.getTime() > Date.now())
+    .sort((a, b) => a.getTime() - b.getTime())
+    .slice(0, 6);
+
+  if (!contactId || slots.length === 0) redirect('/admin/agenda?perr=slots');
+
+  const contact = await prisma.contact.findUnique({
+    where: { id: contactId },
+    select: { name: true, email: true },
+  });
+  if (!contact?.email) redirect('/admin/agenda?perr=email');
+
+  const objet = PROPOSAL_OBJET[type];
+  const slotData = slots.map((date) => ({
+    date,
+    url: `${SITE}/rdv?t=${signBookingToken({
+      c: contactId,
+      s: date.toISOString(),
+      ty: type,
+      ...(leadId ? { l: leadId } : {}),
+    })}`,
+  }));
+
+  const res = await sendEmail({
+    to: contact.email,
+    subject: `Proposition de créneaux — ${TYPE_OBJECT[type]} · IPB`,
+    html: proposalEmailHtml({ clientName: contact.name, objet, slots: slotData, message }),
+  });
+
+  if (res.success) {
+    await prisma.activity.create({
+      data: {
+        type: 'EMAIL',
+        contactId,
+        leadId,
+        content: `Proposition de ${slots.length} créneau(x) envoyée à ${contact.email} (${TYPE_OBJECT[type]}).`,
+      },
+    });
+  }
+
+  revalidatePath('/admin/agenda');
+  revalidateCrm(contactId);
+  redirect(res.success ? '/admin/agenda?proposed=1' : '/admin/agenda?perr=send');
 }

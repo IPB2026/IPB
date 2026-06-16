@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { CalendarClock, ReceiptText, Plus, Trash2 } from 'lucide-react';
+import { CalendarClock, ReceiptText, Plus, Trash2, Send } from 'lucide-react';
 import type { AppointmentStatus, AppointmentType } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
@@ -9,6 +9,7 @@ import { Avatar } from '@/components/admin/avatar';
 import { isCalendarConfigured } from '@/lib/google/calendar';
 import { AgendaWeek, type WeekAppt } from '@/components/admin/agenda-week';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
+import { AppointmentProposalForm } from '@/components/admin/appointment-proposal-form';
 
 /** Lundi 00:00 de la semaine contenant `d`. */
 function startOfWeek(d: Date): Date {
@@ -64,6 +65,8 @@ export default async function AgendaPage({
     devisId?: string;
     vue?: string;
     semaine?: string;
+    proposed?: string;
+    perr?: string;
   };
 }) {
   await guardAdminPage();
@@ -77,7 +80,7 @@ export default async function AgendaPage({
     devisId: searchParams.devisId ?? '',
   };
   let appts: Awaited<ReturnType<typeof loadAppts>> = [];
-  let contacts: { id: string; name: string; city: string | null }[] = [];
+  let contacts: { id: string; name: string; city: string | null; email: string | null }[] = [];
   let dbError = false;
   try {
     [appts, contacts] = await Promise.all([
@@ -85,12 +88,14 @@ export default async function AgendaPage({
       prisma.contact.findMany({
         orderBy: { createdAt: 'desc' },
         take: 300,
-        select: { id: true, name: true, city: true },
+        select: { id: true, name: true, city: true, email: true },
       }),
     ]);
   } catch {
     dbError = true;
   }
+  // Proposer des créneaux nécessite un e-mail client.
+  const contactsWithEmail = contacts.filter((c) => c.email);
 
   // Regroupe par jour
   const groups = new Map<string, typeof appts>();
@@ -155,6 +160,21 @@ export default async function AgendaPage({
           Google Agenda non connecté : les RDV sont enregistrés en interne. La
           synchronisation et les invitations automatiques s'activeront une fois
           les identifiants Google fournis.
+        </p>
+      )}
+
+      {searchParams.proposed && (
+        <p className="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm text-emerald-800">
+          ✅ Proposition de créneaux envoyée au client. Le RDV se créera tout seul dès qu&apos;il en réserve un.
+        </p>
+      )}
+      {searchParams.perr && (
+        <p className="rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
+          {searchParams.perr === 'email'
+            ? "Ce client n'a pas d'e-mail — renseignez-le sur sa fiche pour lui proposer des créneaux."
+            : searchParams.perr === 'slots'
+              ? 'Ajoutez au moins un créneau futur valide.'
+              : "L'envoi de la proposition a échoué. Réessayez."}
         </p>
       )}
 
@@ -252,6 +272,27 @@ export default async function AgendaPage({
             </div>
           </form>
         )}
+        </div>
+      </details>
+
+      {/* Proposer des créneaux au client (e-mail avec liens de réservation) */}
+      <details className="group overflow-hidden rounded-xl border border-slate-200 bg-white [&_summary::-webkit-details-marker]:hidden">
+        <summary className="flex cursor-pointer list-none items-center justify-between px-5 py-3.5 text-sm font-semibold text-slate-900">
+          <span className="flex items-center gap-2">
+            <Send className="h-4 w-4 text-orange-600" />
+            Proposer des créneaux au client
+          </span>
+          <Plus className="h-4 w-4 text-slate-400 transition-transform group-open:rotate-45" />
+        </summary>
+        <div className="border-t border-slate-100 p-5">
+          <p className="mb-4 text-xs text-slate-500">
+            Envoyez un e-mail contenant plusieurs créneaux cliquables. Dès que le client en choisit
+            un, le rendez-vous se crée automatiquement dans l&apos;agenda (et Google Agenda si connecté).
+          </p>
+          <AppointmentProposalForm
+            contacts={contactsWithEmail}
+            prefill={{ contactId: prefill.contactId, type: prefill.type, leadId: prefill.leadId }}
+          />
         </div>
       </details>
 
