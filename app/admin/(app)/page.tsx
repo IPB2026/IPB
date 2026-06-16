@@ -67,6 +67,8 @@ async function getStats() {
     rapportsAValiderCount,
     facturesImpayeesCount,
     aPlanifierCount,
+    facturesAEnvoyer,
+    facturesAEnvoyerCount,
   ] = await Promise.all([
     prisma.lead.count(),
     prisma.contact.count({
@@ -125,6 +127,14 @@ async function getStats() {
     prisma.rapport.count({ where: { status: 'GENERE' } }),
     prisma.facture.count({ where: { status: 'ENVOYEE' } }),
     prisma.devis.count({ where: visiteAPlanifierWhere }),
+    // Factures en BROUILLON (générées après la visite, à relire et envoyer).
+    prisma.facture.findMany({
+      where: { status: 'BROUILLON' },
+      orderBy: { createdAt: 'asc' },
+      take: 8,
+      include: { contact: true },
+    }),
+    prisma.facture.count({ where: { status: 'BROUILLON' } }),
   ]);
 
   return {
@@ -143,6 +153,8 @@ async function getStats() {
     rapportsAValiderCount,
     facturesImpayeesCount,
     aPlanifierCount,
+    facturesAEnvoyer,
+    facturesAEnvoyerCount,
   };
 }
 
@@ -241,10 +253,11 @@ export default async function DashboardPage() {
       {/* Centre de pilotage : à traiter */}
       <section>
         <h2 className="mb-3 text-sm font-semibold text-slate-900">À traiter</h2>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-7">
           <ActionTile href="/admin/rapports" count={stats.rapportsSoumisCount} label="Rapports à générer" icon={Sparkles} tone="amber" />
           <ActionTile href="/admin/rapports" count={stats.rapportsAValiderCount} label="Rapports à valider" icon={ClipboardCheck} tone="blue" />
           <ActionTile href="/admin/devis" count={stats.devisEnAttente} label="Devis en attente" icon={FileText} tone="slate" />
+          <ActionTile href="/admin/factures" count={stats.facturesAEnvoyerCount} label="Factures à envoyer" icon={Receipt} tone="orange" />
           <ActionTile href="/admin/factures" count={stats.facturesImpayeesCount} label="Factures impayées" icon={Receipt} tone="red" />
           <ActionTile href="/admin/clients" count={stats.relancesDues} label="Relances dues" icon={Clock} tone="amber" />
           <ActionTile href="/admin/devis" count={stats.aPlanifierCount} label="Visites à planifier" icon={CalendarClock} tone="orange" />
@@ -279,6 +292,35 @@ export default async function DashboardPage() {
                 detail={`${r.number} — généré par l'IA`}
                 action="À valider"
                 tone="bg-blue-50 text-blue-700"
+              />
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {/* Factures à envoyer (générées en BROUILLON après la visite) */}
+      {stats.facturesAEnvoyer.length > 0 && (
+        <section className="overflow-hidden rounded-xl border border-orange-200 bg-white">
+          <div className="flex items-center justify-between border-b border-orange-200 bg-orange-50/40 px-5 py-3.5">
+            <div>
+              <h2 className="text-sm font-semibold text-slate-900">Factures à envoyer</h2>
+              <p className="mt-0.5 text-xs text-slate-500">
+                Générées automatiquement après la visite — à relire, puis envoyer en 1 clic.
+              </p>
+            </div>
+            <Link href="/admin/factures" className="text-xs font-medium text-orange-600 hover:underline">
+              Tout voir →
+            </Link>
+          </div>
+          <ul className="divide-y divide-slate-100">
+            {stats.facturesAEnvoyer.map((f) => (
+              <WorkRow
+                key={f.id}
+                href={`/admin/factures/${f.id}`}
+                name={f.contact.name}
+                detail={`${f.number} — ${euros(Number(f.totalHT))}`}
+                action="À envoyer"
+                tone="bg-orange-50 text-orange-700"
               />
             ))}
           </ul>
