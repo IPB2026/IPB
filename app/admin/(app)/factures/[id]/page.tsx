@@ -15,6 +15,7 @@ import {
 } from '@/app/admin/(app)/factures/actions';
 import { sendFacture } from '@/app/admin/(app)/send-actions';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
+import { SubmitButton } from '@/components/admin/submit-button';
 import { EditFactureForm } from '@/components/admin/edit-facture-form';
 
 export const dynamic = 'force-dynamic';
@@ -81,13 +82,14 @@ export default async function FactureDetailPage({
           {facture.contact.email && (
             <form action={sendFacture}>
               <input type="hidden" name="factureId" value={facture.id} />
-              <button
-                type="submit"
-                className="inline-flex items-center gap-1.5 rounded-lg bg-orange-600 px-3 py-2 text-sm font-semibold text-white hover:bg-orange-700"
+              <SubmitButton
+                spinner
+                pendingLabel="Envoi…"
+                className="rounded-lg bg-orange-600 px-3 py-2 text-sm font-semibold text-white hover:bg-orange-700"
               >
                 <Mail className="h-4 w-4" />
                 Envoyer au client
-              </button>
+              </SubmitButton>
             </form>
           )}
           <form action={deleteFacture}>
@@ -127,12 +129,12 @@ export default async function FactureDetailPage({
                 ))}
               </select>
             </div>
-            <button
-              type="submit"
+            <SubmitButton
+              pendingLabel="Mise à jour…"
               className="h-10 rounded-lg bg-slate-900 px-4 text-sm font-semibold text-white hover:bg-slate-800"
             >
               Mettre à jour
-            </button>
+            </SubmitButton>
           </form>
 
           <dl className="space-y-1.5 text-sm">
@@ -215,12 +217,12 @@ export default async function FactureDetailPage({
                 className="h-10 w-full rounded-lg border border-slate-300 px-3 text-base outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 sm:text-sm"
               />
             </div>
-            <button
-              type="submit"
+            <SubmitButton
+              pendingLabel="Enregistrement…"
               className="h-10 rounded-lg bg-emerald-600 px-4 text-sm font-semibold text-white hover:bg-emerald-700"
             >
               Enregistrer le paiement
-            </button>
+            </SubmitButton>
           </form>
         ) : (
           <p className="text-sm font-medium text-emerald-700">Facture soldée.</p>

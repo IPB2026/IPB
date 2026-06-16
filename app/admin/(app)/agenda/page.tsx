@@ -10,6 +10,7 @@ import { isCalendarConfigured } from '@/lib/google/calendar';
 import { AgendaWeek, type WeekAppt } from '@/components/admin/agenda-week';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 import { AppointmentProposalForm } from '@/components/admin/appointment-proposal-form';
+import { SubmitButton } from '@/components/admin/submit-button';
 
 /** Lundi 00:00 de la semaine contenant `d`. */
 function startOfWeek(d: Date): Date {
@@ -263,12 +264,12 @@ export default async function AgendaPage({
               />
             </div>
             <div className="sm:col-span-2 flex justify-end">
-              <button
-                type="submit"
+              <SubmitButton
+                pendingLabel="Planification…"
                 className="rounded-lg bg-orange-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-orange-700"
               >
                 Planifier le RDV
-              </button>
+              </SubmitButton>
             </div>
           </form>
         )}
@@ -425,12 +426,12 @@ export default async function AgendaPage({
                               </option>
                             ))}
                           </select>
-                          <button
-                            type="submit"
+                          <SubmitButton
+                            pendingLabel="…"
                             className="h-9 rounded-lg border border-slate-300 px-3 text-sm font-medium text-slate-600 hover:bg-slate-50"
                           >
                             OK
-                          </button>
+                          </SubmitButton>
                         </form>
                         {a.factureId ? (
                           <Link
@@ -442,12 +443,12 @@ export default async function AgendaPage({
                         ) : (
                           <form action={generateInvoiceFromAppointment}>
                             <input type="hidden" name="appointmentId" value={a.id} />
-                            <button
-                              type="submit"
+                            <SubmitButton
+                              pendingLabel="Facturation…"
                               className="h-10 sm:h-9 rounded-lg border border-orange-200 bg-orange-50 px-3 text-sm font-medium text-orange-700 hover:bg-orange-100"
                             >
                               Facturer
-                            </button>
+                            </SubmitButton>
                           </form>
                         )}
                         {a.status !== 'ANNULE' && (
@@ -503,12 +504,12 @@ export default async function AgendaPage({
                             defaultValue={a.location ?? ''}
                             className="h-10 sm:h-9 min-w-0 flex-1 rounded-lg border border-slate-300 px-2 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
                           />
-                          <button
-                            type="submit"
+                          <SubmitButton
+                            pendingLabel="…"
                             className="h-9 rounded-lg bg-slate-900 px-3 text-sm font-semibold text-white hover:bg-slate-800"
                           >
                             Décaler
-                          </button>
+                          </SubmitButton>
                         </form>
                       </details>
                     </li>

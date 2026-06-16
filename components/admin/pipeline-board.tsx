@@ -125,7 +125,7 @@ export function PipelineBoard({ columns }: { columns: PipelineColumn[] }) {
                             type="button"
                             disabled={idx <= 0 || pending}
                             onClick={() => move(l.id, stages[idx - 1])}
-                            className="flex h-9 w-9 sm:h-7 sm:w-7 items-center justify-center rounded-md border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
+                            className="flex h-11 w-11 sm:h-9 sm:w-9 items-center justify-center rounded-md border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
                             aria-label="Étape précédente"
                           >
                             <ChevronLeft className="h-4 w-4" />
@@ -134,7 +134,7 @@ export function PipelineBoard({ columns }: { columns: PipelineColumn[] }) {
                             type="button"
                             disabled={idx >= stages.length - 1 || pending}
                             onClick={() => move(l.id, stages[idx + 1])}
-                            className="flex h-9 w-9 sm:h-7 sm:w-7 items-center justify-center rounded-md border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
+                            className="flex h-11 w-11 sm:h-9 sm:w-9 items-center justify-center rounded-md border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
                             aria-label="Étape suivante"
                           >
                             <ChevronRight className="h-4 w-4" />

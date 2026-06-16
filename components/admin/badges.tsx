@@ -20,7 +20,7 @@ export const STAGE_LABEL: Record<PipelineStage, string> = {
   A_RAPPELER: 'À rappeler',
   DEVIS_ENVOYE: 'Devis envoyé',
   RDV_PLANIFIE: 'RDV planifié',
-  VISITE_FAITE: 'Visite faite',
+  VISITE_FAITE: 'Visite réalisée',
   GAGNE: 'Gagné',
   PERDU: 'Perdu',
 };

@@ -447,7 +447,7 @@ export default async function DashboardPage() {
             icon={Inbox}
             title="Aucun prospect pour l'instant"
             description="Les demandes du site et vos saisies manuelles apparaîtront ici."
-            actionLabel="Ajouter un prospect"
+            actionLabel="Nouveau prospect"
             actionHref="/admin/leads/nouveau"
           />
         ) : (
