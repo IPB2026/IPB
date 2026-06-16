@@ -14,6 +14,9 @@ import { DevisStatus, ServiceType } from '@prisma/client';
 // (diagnostiqueurs) sont redirigés hors du back-office par guardAdminPage.
 const requireUser = requireAdmin;
 
+/** Option « frais de déplacement » : forfait HT ajouté au devis si coché. */
+const FRAIS_DEPLACEMENT = 50;
+
 const lineSchema = z.object({
   designation: z.string().trim().min(1),
   detail: z.string().trim().optional().default(''),
@@ -76,6 +79,21 @@ export async function createDevis(
     },
   ];
 
+  // Option « frais de déplacement » (50 € HT) — ajoutée si cochée sur le devis.
+  const avecFrais = Boolean(num(formData.get('fraisDeplacement')).trim());
+  if (avecFrais) {
+    lines.push({
+      designation: 'Frais de déplacement',
+      detail: 'Déplacement aller-retour sur le lieu de l’intervention',
+      unit: 'Forfait',
+      qty: 1,
+      unitPrice: FRAIS_DEPLACEMENT,
+      total: FRAIS_DEPLACEMENT,
+      position: lines.length,
+    });
+  }
+  const totalHT = prix + (avecFrais ? FRAIS_DEPLACEMENT : 0);
+
   const devis = await prisma.devis.create({
     data: {
       number,
@@ -85,7 +103,7 @@ export async function createDevis(
       serviceType,
       bienConcerne: num(formData.get('bienConcerne')).trim() || null,
       validUntil,
-      totalHT: prix,
+      totalHT,
       lines: { create: lines },
     },
   });

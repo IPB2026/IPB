@@ -50,7 +50,8 @@ export function NewDevisForm({
   const [prix, setPrix] = useState(
     defaultPrix && defaultPrix > 0 ? String(defaultPrix) : ''
   );
-  const prixNum = Number(prix.replace(',', '.')) || 0;
+  const [frais, setFrais] = useState(false);
+  const prixNum = (Number(prix.replace(',', '.')) || 0) + (frais ? 50 : 0);
   const serviceDefault =
     defaultServiceType && SERVICES.some(([v]) => v === defaultServiceType)
       ? defaultServiceType
@@ -137,6 +138,25 @@ export function NewDevisForm({
           className={field}
         />
       </div>
+
+      <label className="flex cursor-pointer items-center gap-3 rounded-lg border border-slate-200 px-4 py-3 hover:bg-slate-50">
+        <input
+          type="checkbox"
+          name="fraisDeplacement"
+          checked={frais}
+          onChange={(e) => setFrais(e.target.checked)}
+          className="h-4 w-4 rounded border-slate-300 text-orange-600 focus:ring-orange-500"
+        />
+        <span className="flex-1">
+          <span className="block text-sm font-medium text-slate-800">Frais de déplacement</span>
+          <span className="block text-xs text-slate-500">
+            Forfait aller-retour sur le lieu de l’intervention
+          </span>
+        </span>
+        <span className="shrink-0 text-sm font-semibold tabular-nums text-slate-600">
+          + {eur(50)}
+        </span>
+      </label>
 
       <div className="rounded-lg bg-slate-50 px-4 py-3 text-sm text-slate-600">
         Le contenu du devis (déroulé de l&apos;intervention, livrable, diagnostiqueur mandaté,

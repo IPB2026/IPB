@@ -51,7 +51,7 @@ export function proposalEmailHtml(opts: {
         <p style="margin:0 0 14px; color:#334155; font-size:14px; line-height:1.6;">Pour réaliser ${opts.objet}, nous vous proposons les créneaux ci-dessous. Choisissez celui qui vous convient le mieux — votre rendez-vous est confirmé immédiatement :</p>
         ${messageHtml}
         <table role="presentation" style="width:100%; border-collapse:collapse; margin:4px 0 12px;">${slotsHtml}</table>
-        <p style="margin:0 0 14px; color:#64748b; font-size:12.5px; font-style:italic; line-height:1.6;">Aucun de ces horaires ne convient ? Répondez simplement à cet e-mail ou appelez-nous, nous trouverons une autre date ensemble.</p>
+        <p style="margin:0 0 14px; color:#64748b; font-size:12.5px; font-style:italic; line-height:1.6;">Aucun de ces créneaux ne vous convient&nbsp;? <strong>Proposez-nous vos disponibilités</strong> en répondant simplement à cet e-mail (ou appelez-nous) — nous nous adapterons à votre agenda.</p>
         <p style="margin:0; color:#64748b; font-size:13px;">Une question ? Appelez le <strong>${COMPANY.phone}</strong>.</p>
         <p style="margin:16px 0 0; color:#0F172A; font-size:14px;">À très bientôt,<br/>${COMPANY.name}</p>
       </div>

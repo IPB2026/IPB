@@ -191,8 +191,10 @@ export function computeDossier(d: DossierInputs): DossierView {
     else if (hasDevisTravaux) phase = 'ACCOMPAGNEMENT_TRAVAUX';
     else phase = suiviExpire ? 'TERMINE' : 'SUIVI';
   }
-  else if (rapportEnCours) phase = 'RAPPORT';
-  else if (facturePayee) phase = 'PAIEMENT_RECU';
+  // RÈGLE MÉTIER : le rapport ne se fait QU'APRÈS encaissement. Tant que la
+  // facture n'est pas PAYÉE, un brouillon de rapport ne fait PAS passer en phase
+  // « Rapport » — le dossier reste « Facture envoyée » (en attente de paiement).
+  else if (facturePayee) phase = rapportEnCours ? 'RAPPORT' : 'PAIEMENT_RECU';
   else if (factureEnvoyee) phase = 'FACTURE_ENVOYEE';
   else if (visiteFaite) phase = 'VISITE_FAITE';
   else if (rdvPris) phase = 'RDV_PLANIFIE';
