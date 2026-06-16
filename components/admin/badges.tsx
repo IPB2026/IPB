@@ -34,6 +34,19 @@ export const PIPELINE_STAGES: PipelineStage[] = [
   'VISITE_FAITE',
 ];
 
+/**
+ * Étapes RÉGLABLES À LA MAIN — strictement les colonnes éditables du pipeline
+ * (cf. /admin/pipeline). « À rappeler » est fondu dans « Nouveau », et les phases
+ * aval (Facture/Paiement/Rapport/Suivi) se DÉRIVENT des artefacts — on ne les
+ * règle donc pas manuellement. Source unique réutilisée par la fiche client.
+ */
+export const EDITABLE_PIPELINE_STAGES: PipelineStage[] = [
+  'NOUVEAU',
+  'DEVIS_ENVOYE',
+  'RDV_PLANIFIE',
+  'VISITE_FAITE',
+];
+
 export const SOURCE_LABEL: Record<LeadSource, string> = {
   DIAGNOSTIC: 'Diagnostic',
   CALCULATEUR: 'Calculateur',

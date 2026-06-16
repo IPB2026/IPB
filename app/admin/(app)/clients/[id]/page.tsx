@@ -26,7 +26,7 @@ import { Avatar } from '@/components/admin/avatar';
 import { ContactEditForm } from '@/components/admin/contact-edit-form';
 import { QualificationForm } from '@/components/admin/qualification-form';
 import { PayloadView } from '@/components/admin/payload-view';
-import { StageBadge, PhaseBadge, STAGE_LABEL, PIPELINE_STAGES } from '@/components/admin/badges';
+import { StageBadge, PhaseBadge, STAGE_LABEL, EDITABLE_PIPELINE_STAGES } from '@/components/admin/badges';
 import type { QualificationRecord } from '@/lib/crm/qualification';
 import {
   changeStage,
@@ -34,6 +34,8 @@ import {
   scheduleRelance,
   addActivity,
 } from '@/app/admin/(app)/leads/actions';
+import { relanceDevis, relanceFacture } from '@/app/admin/(app)/send-actions';
+import { SubmitButton } from '@/components/admin/submit-button';
 
 export const dynamic = 'force-dynamic';
 
@@ -119,7 +121,9 @@ export default async function ClientFichePage({
         },
         devis: { orderBy: { createdAt: 'desc' } },
         factures: { orderBy: { createdAt: 'desc' } },
-        rapports: { orderBy: { createdAt: 'desc' } },
+        // updatedAt desc (≈ date d'envoi) — ALIGNÉ sur liste/pipeline/pilotage,
+        // pour que rapportEnvoyeAt (donc SUIVI/TERMINÉ) soit cohérent partout.
+        rapports: { orderBy: { updatedAt: 'desc' } },
         appointments: { orderBy: { start: 'desc' } },
         activities: { orderBy: { createdAt: 'desc' }, take: 12 },
       },
@@ -157,7 +161,9 @@ export default async function ClientFichePage({
   });
 
   const next = nextStep(dossier, c.id, lead?.id);
-  const experts = isAdmin && lead ? await listExperts() : [];
+  // RÈGLE MÉTIER : un diagnostiqueur ne s'assigne qu'APRÈS validation du devis.
+  const devisAccepte = c.devis.some((d) => d.status === 'ACCEPTE');
+  const experts = isAdmin && lead && devisAccepte ? await listExperts() : [];
   const qual = extractQual(lead?.payload);
   const diagnostiqueur = lead?.assignedTo?.name || lead?.assignedTo?.email || '—';
   const adresse =
@@ -383,10 +389,14 @@ export default async function ClientFichePage({
                 <div className="flex flex-wrap gap-2">
                   <select
                     name="stage"
-                    defaultValue={lead.stage}
+                    defaultValue={
+                      (EDITABLE_PIPELINE_STAGES as readonly string[]).includes(lead.stage)
+                        ? lead.stage
+                        : 'NOUVEAU'
+                    }
                     className="h-10 flex-1 rounded-lg border border-slate-300 px-3 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
                   >
-                    {[...PIPELINE_STAGES, 'GAGNE' as const, 'PERDU' as const].map((v) => (
+                    {EDITABLE_PIPELINE_STAGES.map((v) => (
                       <option key={v} value={v}>
                         {STAGE_LABEL[v]}
                       </option>
@@ -404,32 +414,44 @@ export default async function ClientFichePage({
                   devis, planifiez un RDV, facturez, etc.
                 </p>
               </form>
-              <form action={assignLead} className="space-y-2">
-                <input type="hidden" name="leadId" value={lead.id} />
-                <label className="block text-sm font-medium text-slate-700">
-                  Diagnostiqueur assigné
-                </label>
-                <div className="flex flex-wrap gap-2">
-                  <select
-                    name="assignedToId"
-                    defaultValue={lead.assignedToId ?? ''}
-                    className="h-10 flex-1 rounded-lg border border-slate-300 px-3 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
-                  >
-                    <option value="">— Non assigné —</option>
-                    {experts.map((e) => (
-                      <option key={e.id} value={e.id}>
-                        {e.name}
-                      </option>
-                    ))}
-                  </select>
-                  <button
-                    type="submit"
-                    className="h-10 rounded-lg bg-slate-900 px-4 text-sm font-semibold text-white hover:bg-slate-800"
-                  >
-                    Assigner
-                  </button>
+              {devisAccepte ? (
+                <form action={assignLead} className="space-y-2">
+                  <input type="hidden" name="leadId" value={lead.id} />
+                  <label className="block text-sm font-medium text-slate-700">
+                    Diagnostiqueur assigné
+                  </label>
+                  <div className="flex flex-wrap gap-2">
+                    <select
+                      name="assignedToId"
+                      defaultValue={lead.assignedToId ?? ''}
+                      className="h-10 flex-1 rounded-lg border border-slate-300 px-3 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                    >
+                      <option value="">— Non assigné —</option>
+                      {experts.map((e) => (
+                        <option key={e.id} value={e.id}>
+                          {e.name}
+                        </option>
+                      ))}
+                    </select>
+                    <button
+                      type="submit"
+                      className="h-10 rounded-lg bg-slate-900 px-4 text-sm font-semibold text-white hover:bg-slate-800"
+                    >
+                      Assigner
+                    </button>
+                  </div>
+                </form>
+              ) : (
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-slate-700">
+                    Diagnostiqueur assigné
+                  </label>
+                  <p className="rounded-lg border border-dashed border-slate-300 bg-slate-50 px-3 py-2.5 text-xs text-slate-500">
+                    Disponible une fois le devis validé — le diagnostiqueur ne reçoit
+                    le dossier qu&apos;après l&apos;accord du client.
+                  </p>
                 </div>
-              </form>
+              )}
               <form action={scheduleRelance} className="space-y-2">
                 <input type="hidden" name="leadId" value={lead.id} />
                 <label className="block text-sm font-medium text-slate-700">
@@ -585,6 +607,11 @@ export default async function ClientFichePage({
                       title={`Devis ${d.number}`}
                       sub={`${d.object} · ${euros(Number(d.totalHT))}`}
                       pill={DEVIS_PILL[d.status]}
+                      action={
+                        d.status === 'ENVOYE' ? (
+                          <RelanceButton action={relanceDevis} idName="devisId" id={d.id} contactId={c.id} />
+                        ) : undefined
+                      }
                     />
                   ))}
                 {c.rapports.map((r) => (
@@ -606,6 +633,11 @@ export default async function ClientFichePage({
                       title={`Facture ${f.number}`}
                       sub={`${f.object} · ${euros(Number(f.totalHT))}`}
                       pill={FACTURE_PILL[f.status]}
+                      action={
+                        f.status === 'ENVOYEE' ? (
+                          <RelanceButton action={relanceFacture} idName="factureId" id={f.id} contactId={c.id} />
+                        ) : undefined
+                      }
                     />
                   ))}
                 {c.appointments.map((a) => (
@@ -762,16 +794,18 @@ function DocRow({
   title,
   sub,
   pill,
+  action,
 }: {
   icon: typeof FileText;
   href: string;
   title: string;
   sub?: string | null;
   pill: [string, string];
+  action?: React.ReactNode;
 }) {
   return (
-    <li>
-      <Link href={href} className="flex items-center gap-3 py-2.5 hover:opacity-80">
+    <li className="flex items-center gap-2 py-2.5">
+      <Link href={href} className="flex min-w-0 flex-1 items-center gap-3 hover:opacity-80">
         <Icon className="h-[18px] w-[18px] shrink-0 text-slate-500" />
         <div className="min-w-0 flex-1">
           <p className="text-sm font-medium text-slate-800">{title}</p>
@@ -779,6 +813,38 @@ function DocRow({
         </div>
         <Pill tone={pill[1]}>{pill[0]}</Pill>
       </Link>
+      {action}
     </li>
+  );
+}
+
+/**
+ * Bouton de relance 1 clic (devis ou facture) — envoie un e-mail bienveillant
+ * pré-rédigé au client, puis revient sur la fiche avec un toast de confirmation.
+ */
+function RelanceButton({
+  action,
+  idName,
+  id,
+  contactId,
+}: {
+  action: (formData: FormData) => Promise<void>;
+  idName: 'devisId' | 'factureId';
+  id: string;
+  contactId: string;
+}) {
+  return (
+    <form action={action} className="shrink-0">
+      <input type="hidden" name={idName} value={id} />
+      <input type="hidden" name="contactId" value={contactId} />
+      <SubmitButton
+        pendingLabel="Envoi…"
+        spinner
+        title="Envoyer une relance bienveillante au client"
+        className="h-8 rounded-lg border border-orange-300 bg-orange-50 px-2.5 text-xs font-semibold text-orange-700 hover:bg-orange-100"
+      >
+        Relancer
+      </SubmitButton>
+    </form>
   );
 }

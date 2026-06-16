@@ -1,9 +1,10 @@
 import 'server-only';
 import { prisma } from '@/lib/prisma';
 import { sendEmail } from '@/lib/email';
-import { COMPANY } from '@/lib/crm/company';
+import { COMPANY, euros } from '@/lib/crm/company';
 import { signBookingToken } from '@/lib/crm/booking';
 import { signActionToken } from '@/lib/crm/client-actions';
+import { devisRelance, factureRelance } from '@/lib/emailTemplates';
 import {
   buildDevisPdf,
   buildFacturePdf,
@@ -251,6 +252,77 @@ export async function sendRapportEmail(id: string): Promise<SendResult> {
       contactId: rapport.contactId,
       leadId: rapport.leadId,
       content: `Rapport ${rapport.number} envoyé par e-mail à ${rapport.contact.email}`,
+    },
+  });
+  return { ok: true };
+}
+
+/**
+ * Relance MANUELLE d'un devis resté sans réponse (1 clic depuis la fiche ou le
+ * dashboard). E-mail chaleureux (template `devisRelance`, ton « douce »). Le
+ * libellé d'activité ne percute PAS le matcher du cron de relances auto (qui
+ * cherche « Relance devis <n°> ») → les deux mécanismes restent indépendants.
+ */
+export async function sendDevisRelanceEmail(id: string): Promise<SendResult> {
+  const devis = await prisma.devis.findUnique({
+    where: { id },
+    include: { contact: true },
+  });
+  if (!devis) return { ok: false, error: 'Devis introuvable' };
+  if (!devis.contact.email) return { ok: false, error: 'Client sans e-mail' };
+  const firstName = devis.contact.name.split(' ')[0] || devis.contact.name;
+
+  const res = await sendEmail({
+    to: devis.contact.email,
+    subject: `Votre devis IPB ${devis.number} — une question ?`,
+    html: devisRelance({ firstName, object: devis.object, step: 1 }),
+  });
+  if (!res.success) return { ok: false, error: res.error ?? 'Échec envoi' };
+
+  await prisma.activity.create({
+    data: {
+      type: 'EMAIL',
+      contactId: devis.contactId,
+      leadId: devis.leadId,
+      content: `Relance manuelle du devis ${devis.number} envoyée à ${devis.contact.email}`,
+    },
+  });
+  return { ok: true };
+}
+
+/**
+ * Relance MANUELLE d'une facture (1 clic depuis la fiche). E-mail bienveillant
+ * (template `factureRelance`). Montant rappelé = RESTE DÛ (total − acompte).
+ */
+export async function sendFactureRelanceEmail(id: string): Promise<SendResult> {
+  const facture = await prisma.facture.findUnique({
+    where: { id },
+    include: { contact: true },
+  });
+  if (!facture) return { ok: false, error: 'Facture introuvable' };
+  if (!facture.contact.email) return { ok: false, error: 'Client sans e-mail' };
+  const firstName = facture.contact.name.split(' ')[0] || facture.contact.name;
+  const resteDu = Math.max(0, Number(facture.totalHT) - Number(facture.acompte ?? 0));
+
+  const res = await sendEmail({
+    to: facture.contact.email,
+    subject: `Facture ${facture.number} — petit rappel`,
+    html: factureRelance({
+      firstName,
+      number: facture.number,
+      montant: euros(resteDu),
+      dueDate: facture.dueDate
+        ? facture.dueDate.toLocaleDateString('fr-FR')
+        : '—',
+    }),
+  });
+  if (!res.success) return { ok: false, error: res.error ?? 'Échec envoi' };
+
+  await prisma.activity.create({
+    data: {
+      type: 'EMAIL',
+      contactId: facture.contactId,
+      content: `Relance manuelle de la facture ${facture.number} envoyée à ${facture.contact.email}`,
     },
   });
   return { ok: true };

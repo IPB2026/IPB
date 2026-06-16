@@ -41,6 +41,18 @@ export interface DossierInputs {
 const SUIVI_DAYS = 14;
 const DAY = 86_400_000;
 
+/**
+ * Types de RDV « diagnostic » (= visite sur site qui fait avancer le dossier).
+ * ⚠️ Inclut EXPERTISE_ACHAT et MUR_PORTEUR : un `startsWith('DIAGNOSTIC')` les
+ * raterait alors que ce sont des diagnostics à part entière (cf. invoicing.ts).
+ */
+const DIAGNOSTIC_VISIT_TYPES: AppointmentType[] = [
+  'DIAGNOSTIC_FISSURES',
+  'DIAGNOSTIC_HUMIDITE',
+  'EXPERTISE_ACHAT',
+  'MUR_PORTEUR',
+];
+
 export interface DossierStep {
   key: string;
   label: string;
@@ -100,10 +112,10 @@ export function computeDossier(d: DossierInputs): DossierView {
   const visiteFaite =
     stageVisite ||
     d.appointments.some(
-      (a) => a.type.startsWith('DIAGNOSTIC') && a.status === 'REALISE'
+      (a) => DIAGNOSTIC_VISIT_TYPES.includes(a.type) && a.status === 'REALISE'
     );
   const rdvPris =
-    stageRdv || d.appointments.some((a) => a.type.startsWith('DIAGNOSTIC'));
+    stageRdv || d.appointments.some((a) => DIAGNOSTIC_VISIT_TYPES.includes(a.type));
   const factureEnvoyee = d.factures.some((f) =>
     ['ENVOYEE', 'PAYEE'].includes(f.status)
   );

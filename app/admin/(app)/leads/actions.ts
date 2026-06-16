@@ -134,29 +134,9 @@ export async function createProspect(
     return "Erreur d'enregistrement. Vérifiez la connexion à la base de données.";
   }
 
-  // Assignation éventuelle à un diagnostiqueur (EXPERT)
-  const assignedToId = str('assignedToId');
-  if (assignedToId) {
-    const expert = await prisma.user.findFirst({
-      where: { id: assignedToId, role: 'EXPERT' },
-      select: { id: true, name: true, email: true },
-    });
-    if (expert) {
-      await prisma.lead.update({
-        where: { id: result.leadId },
-        data: { assignedToId: expert.id },
-      });
-      await prisma.activity.create({
-        data: {
-          type: 'SYSTEME',
-          leadId: result.leadId,
-          contactId: result.contactId,
-          content: `Prospect assigné à ${expert.name || expert.email}`,
-        },
-      });
-      await notifyExpertAssigned(result.leadId, expert.id);
-    }
-  }
+  // RÈGLE MÉTIER : on n'assigne PAS de diagnostiqueur à la création du prospect.
+  // L'assignation n'est possible qu'une fois le DEVIS VALIDÉ (cf. fiche client) —
+  // un diagnostiqueur ne voit un client qu'après acceptation du devis.
 
   // Journalise l'appel + la relance éventuelle
   await prisma.activity.create({
@@ -187,8 +167,9 @@ export async function createProspect(
     }
   }
 
-  revalidatePath('/admin/leads');
-  revalidatePath('/admin');
+  // Revalide toutes les surfaces (liste, fiche, pipeline, pilotage, dashboard)
+  // pour que le nouveau prospect y apparaisse immédiatement.
+  revalidateLead(result.leadId);
   redirect(`/admin/leads/${result.leadId}`);
 }
 

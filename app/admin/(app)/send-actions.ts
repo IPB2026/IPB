@@ -1,6 +1,7 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 import { requireAdmin } from '@/lib/auth-helpers';
 import { prisma } from '@/lib/prisma';
 import { revalidateCrm } from '@/lib/crm/revalidate';
@@ -8,6 +9,8 @@ import {
   sendDevisEmail,
   sendFactureEmail,
   sendRapportEmail,
+  sendDevisRelanceEmail,
+  sendFactureRelanceEmail,
 } from '@/lib/crm/send';
 
 const str = (v: FormDataEntryValue | null) => String(v ?? '').trim();
@@ -105,4 +108,36 @@ export async function sendRapport(formData: FormData) {
   revalidatePath(`/admin/rapports/${id}`);
   revalidatePath('/admin/rapports');
   revalidateCrm();
+}
+
+/**
+ * Relance MANUELLE d'un devis (1 clic depuis la fiche client) — e-mail
+ * chaleureux. Revient sur la fiche avec un toast de confirmation.
+ */
+export async function relanceDevis(formData: FormData) {
+  await requireAdmin();
+  const id = str(formData.get('devisId'));
+  const contactId = str(formData.get('contactId'));
+  if (!id) return;
+  const res = await sendDevisRelanceEmail(id);
+  revalidateCrm(contactId || undefined);
+  if (contactId) {
+    redirect(`/admin/clients/${contactId}?${res.ok ? 'ok=relance' : 'err=relance'}`);
+  }
+}
+
+/**
+ * Relance MANUELLE d'une facture (1 clic depuis la fiche client) — e-mail
+ * bienveillant rappelant le reste dû. Revient sur la fiche avec un toast.
+ */
+export async function relanceFacture(formData: FormData) {
+  await requireAdmin();
+  const id = str(formData.get('factureId'));
+  const contactId = str(formData.get('contactId'));
+  if (!id) return;
+  const res = await sendFactureRelanceEmail(id);
+  revalidateCrm(contactId || undefined);
+  if (contactId) {
+    redirect(`/admin/clients/${contactId}?${res.ok ? 'ok=relance' : 'err=relance'}`);
+  }
 }

@@ -36,11 +36,7 @@ const field =
   'w-full rounded-lg border border-slate-300 px-3 py-3 text-base outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 sm:py-2.5 sm:text-sm';
 const labelCls = 'mb-1 block text-sm font-medium text-slate-700';
 
-export function NewProspectForm({
-  experts = [],
-}: {
-  experts?: { id: string; name: string }[];
-}) {
+export function NewProspectForm() {
   const [error, formAction] = useFormState(createProspect, undefined);
   const [note, setNote] = useState('');
 
@@ -154,24 +150,8 @@ export function NewProspectForm({
         </div>
       </div>
 
-      {experts.length > 0 && (
-        <div>
-          <label htmlFor="assignedToId" className={labelCls}>
-            Assigner à un diagnostiqueur
-          </label>
-          <select id="assignedToId" name="assignedToId" defaultValue="" className={field}>
-            <option value="">— Aucun (non assigné) —</option>
-            {experts.map((e) => (
-              <option key={e.id} value={e.id}>
-                {e.name}
-              </option>
-            ))}
-          </select>
-          <p className="mt-1 text-xs text-slate-400">
-            Le diagnostiqueur retrouvera ce prospect dans son espace pour réaliser le diagnostic.
-          </p>
-        </div>
-      )}
+      {/* Pas d'assignation de diagnostiqueur à la création : elle n'est possible
+          qu'une fois le devis validé (cf. fiche client) — règle métier. */}
 
       <div>
         <div className="mb-1 flex items-center justify-between gap-2">

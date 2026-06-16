@@ -58,7 +58,13 @@ export async function createInvoiceForAppointment(
     if (d) prix = Number(d.totalHT);
   } else {
     const devisAccepte = await prisma.devis.findFirst({
-      where: { contactId: appt.contactId, status: 'ACCEPTE', serviceType: { not: 'AUTRE' } },
+      // Devis diagnostic accepté (≠ AUTRE), sur-mesure (serviceType null) inclus :
+      // { not: 'AUTRE' } seul exclurait les NULL en SQL → OR explicite.
+      where: {
+        contactId: appt.contactId,
+        status: 'ACCEPTE',
+        OR: [{ serviceType: { not: 'AUTRE' } }, { serviceType: null }],
+      },
       orderBy: { acceptedAt: 'desc' },
       select: { totalHT: true },
     });

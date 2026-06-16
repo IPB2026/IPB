@@ -107,6 +107,9 @@ export async function createRapport(
   });
 
   revalidatePath('/admin/rapports');
+  // Interconnexion : la création du rapport doit se refléter sur la fiche, le
+  // pipeline et le pilotage (phase RAPPORT dérivée), pas seulement la liste.
+  revalidateCrm(contactId);
   redirect(`/admin/rapports/${rapport.id}`);
 }
 

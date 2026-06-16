@@ -13,6 +13,7 @@ import {
   Receipt,
   ArrowRight,
   Phone,
+  CheckCircle2,
 } from 'lucide-react';
 import { Prisma } from '@prisma/client';
 import { euros } from '@/lib/crm/company';
@@ -24,6 +25,8 @@ import { EmptyState } from '@/components/admin/empty-state';
 import { Avatar } from '@/components/admin/avatar';
 import { MobileCardRow } from '@/components/admin/mobile-card';
 import { completeRelance } from '@/app/admin/(app)/leads/actions';
+import { updateAppointmentStatus } from '@/app/admin/(app)/agenda/actions';
+import { SubmitButton } from '@/components/admin/submit-button';
 import {
   StageBadge,
   SOURCE_LABEL,
@@ -39,7 +42,10 @@ async function getStats() {
   // ET le compteur (plus de risque de divergence, et logique définie une fois).
   const visiteAPlanifierWhere: Prisma.DevisWhereInput = {
     status: 'ACCEPTE',
-    serviceType: { not: 'AUTRE' },
+    // Devis « diagnostic » = tout sauf AUTRE (sentinelle travaux), sur-mesure
+    // (serviceType null) INCLUS : en SQL, { not: 'AUTRE' } exclut les NULL, d'où
+    // le OR — sinon un devis sur-mesure accepté n'apparaîtrait jamais ici.
+    OR: [{ serviceType: { not: 'AUTRE' } }, { serviceType: null }],
     contact: {
       appointments: {
         none: {
@@ -51,6 +57,18 @@ async function getStats() {
       factures: { none: { status: { in: ['ENVOYEE', 'PAYEE'] } } },
     },
   };
+  // Cockpit d'alertes : RDV diagnostic dont la visite est passée mais jamais
+  // clôturée (→ la facture J+1 ne partira jamais), et devis envoyés restés sans
+  // réponse depuis > 14 jours (à relancer ou à classer perdu).
+  const startOfToday = new Date(now);
+  startOfToday.setHours(0, 0, 0, 0);
+  const il14j = new Date(now.getTime() - 14 * 86_400_000);
+  const DIAG_APPT_TYPES = [
+    'DIAGNOSTIC_FISSURES',
+    'DIAGNOSTIC_HUMIDITE',
+    'EXPERTISE_ACHAT',
+    'MUR_PORTEUR',
+  ] as const;
   const [
     total,
     clients,
@@ -69,6 +87,10 @@ async function getStats() {
     aPlanifierCount,
     facturesAEnvoyer,
     facturesAEnvoyerCount,
+    rdvACloturer,
+    rdvACloturerCount,
+    devisSansReponse,
+    devisSansReponseCount,
   ] = await Promise.all([
     prisma.lead.count(),
     prisma.contact.count({
@@ -135,6 +157,34 @@ async function getStats() {
       include: { contact: true },
     }),
     prisma.facture.count({ where: { status: 'BROUILLON' } }),
+    // Visites diagnostic passées non clôturées (statut PLANIFIE, date dépassée) :
+    // tant qu'elles ne sont pas « réalisées », la facturation J+1 ne se déclenche
+    // pas. On les fait remonter pour un passage en « réalisée » en 1 clic.
+    prisma.appointment.findMany({
+      where: {
+        status: 'PLANIFIE',
+        start: { lt: startOfToday },
+        type: { in: [...DIAG_APPT_TYPES] },
+      },
+      orderBy: { start: 'asc' },
+      take: 8,
+      include: { contact: true },
+    }),
+    prisma.appointment.count({
+      where: {
+        status: 'PLANIFIE',
+        start: { lt: startOfToday },
+        type: { in: [...DIAG_APPT_TYPES] },
+      },
+    }),
+    // Devis envoyés restés sans réponse depuis > 14 j → à relancer ou classer.
+    prisma.devis.findMany({
+      where: { status: 'ENVOYE', updatedAt: { lt: il14j } },
+      orderBy: { updatedAt: 'asc' },
+      take: 8,
+      include: { contact: true },
+    }),
+    prisma.devis.count({ where: { status: 'ENVOYE', updatedAt: { lt: il14j } } }),
   ]);
 
   return {
@@ -155,6 +205,10 @@ async function getStats() {
     aPlanifierCount,
     facturesAEnvoyer,
     facturesAEnvoyerCount,
+    rdvACloturer,
+    rdvACloturerCount,
+    devisSansReponse,
+    devisSansReponseCount,
   };
 }
 
@@ -263,6 +317,82 @@ export default async function DashboardPage() {
           <ActionTile href="/admin/devis" count={stats.aPlanifierCount} label="Visites à planifier" icon={CalendarClock} tone="orange" />
         </div>
       </section>
+
+      {/* COCKPIT — Visites à clôturer (visite passée non marquée réalisée :
+          bloque la facturation J+1 tant qu'on ne la clôture pas). */}
+      {stats.rdvACloturer.length > 0 && (
+        <section className="overflow-hidden rounded-xl border border-red-200 bg-white">
+          <div className="flex items-center justify-between border-b border-red-200 bg-red-50/50 px-5 py-3.5">
+            <div>
+              <h2 className="text-sm font-semibold text-slate-900">Visites à clôturer</h2>
+              <p className="mt-0.5 text-xs text-slate-500">
+                Visite passée non marquée « réalisée » — la facture ne se génère pas tant que ce n&apos;est pas fait.
+              </p>
+            </div>
+            <Link href="/admin/agenda" className="text-xs font-medium text-orange-600 hover:underline">
+              Agenda →
+            </Link>
+          </div>
+          <ul className="divide-y divide-slate-100">
+            {stats.rdvACloturer.map((a) => (
+              <li key={a.id} className="flex items-center gap-3 px-5 py-3">
+                <div className="min-w-0 flex-1">
+                  <Link
+                    href={`/admin/clients/${a.contactId}`}
+                    className="font-medium text-slate-900 hover:text-orange-600"
+                  >
+                    {a.contact.name}
+                  </Link>
+                  <span className="ml-2 text-sm text-slate-500">
+                    {a.title} · {a.start.toLocaleDateString('fr-FR')}
+                  </span>
+                </div>
+                <form action={updateAppointmentStatus} className="shrink-0">
+                  <input type="hidden" name="appointmentId" value={a.id} />
+                  <input type="hidden" name="status" value="REALISE" />
+                  <SubmitButton
+                    pendingLabel="…"
+                    spinner
+                    className="h-8 rounded-lg border border-emerald-300 bg-emerald-50 px-2.5 text-xs font-semibold text-emerald-700 hover:bg-emerald-100"
+                  >
+                    <CheckCircle2 className="h-3.5 w-3.5" /> Marquer réalisée
+                  </SubmitButton>
+                </form>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {/* COCKPIT — Devis sans réponse (>14 j) : à relancer (1 clic sur la fiche)
+          ou à classer perdu. */}
+      {stats.devisSansReponse.length > 0 && (
+        <section className="overflow-hidden rounded-xl border border-amber-200 bg-white">
+          <div className="flex items-center justify-between border-b border-amber-200 bg-amber-50/50 px-5 py-3.5">
+            <div>
+              <h2 className="text-sm font-semibold text-slate-900">Devis sans réponse</h2>
+              <p className="mt-0.5 text-xs text-slate-500">
+                Envoyés depuis plus de 14 jours — à relancer (1 clic sur la fiche) ou à classer perdu.
+              </p>
+            </div>
+            <Link href="/admin/devis" className="text-xs font-medium text-orange-600 hover:underline">
+              Tout voir →
+            </Link>
+          </div>
+          <ul className="divide-y divide-slate-100">
+            {stats.devisSansReponse.map((d) => (
+              <WorkRow
+                key={d.id}
+                href={`/admin/clients/${d.contactId}`}
+                name={d.contact.name}
+                detail={`Devis ${d.number} · ${euros(Number(d.totalHT))} · envoyé le ${d.updatedAt.toLocaleDateString('fr-FR')}`}
+                action="À relancer"
+                tone="bg-amber-50 text-amber-700"
+              />
+            ))}
+          </ul>
+        </section>
+      )}
 
       {/* Rapports à traiter (générés par les diagnostiqueurs) */}
       {(stats.rapportsSoumis.length > 0 || stats.rapportsAValider.length > 0) && (

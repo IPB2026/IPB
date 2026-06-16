@@ -89,6 +89,16 @@ export async function confirmBooking(formData: FormData): Promise<void> {
     },
   });
 
+  // Réserver un créneau lié à un devis = accord tacite → on marque le devis
+  // ACCEPTÉ (s'il ne l'était pas). Fiabilise le pipe, le montant signé et le
+  // fallback de facturation. Borné au contact du token (anti-escalade).
+  if (p.d) {
+    await prisma.devis.updateMany({
+      where: { id: p.d, contactId: p.c, status: 'ENVOYE' },
+      data: { status: 'ACCEPTE', acceptedAt: new Date() },
+    });
+  }
+
   await prisma.activity.create({
     data: {
       type: 'RDV',

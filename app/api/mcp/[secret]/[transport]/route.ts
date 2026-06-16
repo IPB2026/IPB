@@ -32,6 +32,7 @@ import {
   sendFactureEmail,
   sendRapportEmail,
 } from '@/lib/crm/send';
+import { createInvoiceForAppointment } from '@/lib/crm/invoicing';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -65,7 +66,6 @@ const APPT_OBJECT: Record<AppointmentType, string> = {
   LANCEMENT_TRAVAUX: 'Lancement / coordination des travaux',
   AUTRE: 'Intervention IPB',
 };
-const DIAGNOSTIC_PRICE = 400;
 
 const REPORT_TITLE: Record<ReportType, string> = {
   FISSURES: 'Diagnostic pathologies de fissures',
@@ -404,14 +404,21 @@ const baseHandler = createMcpHandler(
       'Génère la facture de l’intervention pour un RDV réalisé.',
       { rdvId: z.string().min(1) },
       async ({ rdvId }) => {
-        const appt = await prisma.appointment.findUnique({ where: { id: rdvId }, include: { contact: true } });
-        if (!appt) return ok({ ok: false, erreur: 'RDV introuvable' });
-        if (appt.factureId) return ok({ ok: true, factureId: appt.factureId, note: 'Déjà facturé' });
-        const due = new Date(); due.setDate(due.getDate() + 30);
-        const object = APPT_OBJECT[appt.type];
-        const facture = await prisma.facture.create({ data: { number: await nextFactureNumber(appt.contact.name), contactId: appt.contactId, object, dueDate: due, totalHT: DIAGNOSTIC_PRICE, lines: { create: [{ designation: object, detail: appt.location, unit: 'Forfait', qty: 1, unitPrice: DIAGNOSTIC_PRICE, total: DIAGNOSTIC_PRICE, position: 0 }] } } });
-        await prisma.appointment.update({ where: { id: rdvId }, data: { factureId: facture.id, status: 'REALISE' } });
-        return ok({ ok: true, factureId: facture.id, number: facture.number });
+        // Logique PARTAGÉE avec le bouton CRM + le cron J+1 : prix = devis lié au
+        // RDV → dernier devis diagnostic accepté → tarif par défaut, garde
+        // anti-course atomique, idempotence. (Plus de prix codé en dur ici.)
+        const inv = await createInvoiceForAppointment(rdvId);
+        if (!inv) return ok({ ok: false, erreur: 'RDV introuvable' });
+        const facture = await prisma.facture.findUnique({
+          where: { id: inv.id },
+          select: { number: true },
+        });
+        return ok({
+          ok: true,
+          factureId: inv.id,
+          number: facture?.number,
+          note: inv.created ? undefined : 'Déjà facturé',
+        });
       }
     );
   },

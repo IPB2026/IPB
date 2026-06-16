@@ -16,12 +16,14 @@ const OK_MSG: Record<string, string> = {
   facture: 'Facture créée ✓',
   paiement: 'Paiement enregistré ✓',
   envoye: 'Envoyé au client ✓',
+  relance: 'Relance envoyée au client ✓',
 };
 const ERR_MSG: Record<string, string> = {
   '1': 'Une erreur est survenue.',
   email: 'Client sans e-mail — renseignez-le sur sa fiche.',
   slots: 'Ajoutez au moins un créneau futur valide.',
   send: "L'envoi a échoué. Réessayez.",
+  relance: "La relance n'a pas pu être envoyée. Réessayez.",
 };
 
 function FlashToastInner() {
