@@ -133,11 +133,13 @@ const nextConfig = {
               "object-src 'none'",
               "img-src 'self' data: https:",
               // Ads tag : pagead2.googlesyndication.com et adtrafficquality.google
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://www.google.com https://www.gstatic.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google",
+              // Conversions Ads : googleadservices.com (conversion_async.js) + googleads.g.doubleclick.net (viewthroughconversion)
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://www.google.com https://www.gstatic.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.googleadservices.com https://googleads.g.doubleclick.net",
               "style-src 'self' 'unsafe-inline'",
               "font-src 'self' data:",
               // Conversions Ads : googleads.g.doubleclick.net + *.doubleclick.net pour le ping de conversion
-              "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://www.google.com https://googleads.g.doubleclick.net https://*.doubleclick.net https://pagead2.googlesyndication.com https://*.adtrafficquality.google",
+              // + googleadservices.com pour le fetch /pagead/conversion (sinon "Refused to connect" CSP)
+              "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://www.google.com https://googleads.g.doubleclick.net https://*.doubleclick.net https://pagead2.googlesyndication.com https://*.adtrafficquality.google https://www.googleadservices.com",
             ].join('; ') + ';',
           },
           {

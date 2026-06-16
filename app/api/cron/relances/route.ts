@@ -7,7 +7,6 @@ import {
   factureRelance,
 } from '@/lib/emailTemplates';
 import { euros } from '@/lib/crm/company';
-import { sendFactureEmail } from '@/lib/crm/send';
 import { createInvoiceForAppointment, DIAGNOSTIC_APPT_TYPES } from '@/lib/crm/invoicing';
 import type { LeadTier } from '@prisma/client';
 
@@ -264,15 +263,15 @@ export async function GET(req: Request) {
       try {
         const inv = await createInvoiceForAppointment(appt.id);
         if (!inv || !inv.created) continue; // déjà facturé entre-temps
-        const res = await sendFactureEmail(inv.id);
+        // PAS d'envoi automatique : la facture est créée en BROUILLON. L'admin la
+        // relit et l'envoie lui-même. On la fait remonter dans les relances dues.
         await prisma.activity.create({
           data: {
-            type: 'EMAIL',
+            type: 'RELANCE',
             contactId: appt.contactId,
             leadId: appt.leadId,
-            content: res.ok
-              ? `Facture auto-générée et envoyée (lendemain de la visite du ${appt.start.toLocaleDateString('fr-FR')}).`
-              : `Facture auto-générée — envoi e-mail échoué (${res.error}).`,
+            content: `Facture à relire et envoyer — visite du ${appt.start.toLocaleDateString('fr-FR')} réalisée.`,
+            dueAt: new Date(),
           },
         });
         factureAuto++;
