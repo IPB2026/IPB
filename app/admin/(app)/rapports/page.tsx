@@ -13,11 +13,11 @@ import { startRapportFromLead } from '@/app/admin/(app)/rapports/actions';
 export const dynamic = 'force-dynamic';
 
 const STATUS_LABEL: Record<ReportStatus, string> = {
-  BROUILLON: 'Brouillon',
-  SOUMIS: 'Soumis — à traiter',
-  GENERE: 'Généré — à valider',
-  VALIDE: 'Validé',
-  ENVOYE: 'Envoyé',
+  BROUILLON: 'Saisie terrain en cours',
+  SOUMIS: 'À générer par l’IPB',
+  GENERE: 'À valider par l’IPB',
+  VALIDE: 'Validé — à envoyer',
+  ENVOYE: 'Envoyé au client',
 };
 const STATUS_PILL: Record<ReportStatus, string> = {
   BROUILLON: 'bg-slate-100 text-slate-600 ring-slate-500/10',

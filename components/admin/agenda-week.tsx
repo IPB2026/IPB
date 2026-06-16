@@ -1,9 +1,10 @@
+import Link from 'next/link';
 import type { AppointmentStatus, AppointmentType } from '@prisma/client';
 
 /**
  * Vue agenda « semaine » — 7 jours en colonnes (desktop) ou empilés (mobile),
- * chaque RDV en pastille compacte. Lecture seule : la vue « Liste » reste le
- * lieu des actions (statut, re-planification, facturation).
+ * chaque RDV en pastille compacte cliquable (→ fiche client). Les actions
+ * (statut, re-planification, facturation) restent dans la vue « Liste ».
  */
 
 export interface WeekAppt {
@@ -11,6 +12,7 @@ export interface WeekAppt {
   start: Date;
   title: string;
   contactName: string;
+  contactId: string;
   type: AppointmentType;
   status: AppointmentStatus;
 }
@@ -79,20 +81,22 @@ export function AgendaWeek({
           ) : (
             <ul className="space-y-1.5">
               {dayAppts.map((a) => (
-                <li
-                  key={a.id}
-                  className="rounded-lg bg-slate-50 px-2 py-1.5 text-xs"
-                >
-                  <span className="flex items-center gap-1.5 font-semibold tabular-nums text-slate-800">
-                    <span className={`h-1.5 w-1.5 rounded-full ${STATUS_DOT[a.status]}`} />
-                    {a.start.toLocaleTimeString('fr-FR', {
-                      hour: '2-digit',
-                      minute: '2-digit',
-                    })}
-                  </span>
-                  <span className="mt-0.5 block truncate text-slate-600">
-                    {a.contactName}
-                  </span>
+                <li key={a.id}>
+                  <Link
+                    href={`/admin/clients/${a.contactId}`}
+                    className="block rounded-lg bg-slate-50 px-2 py-1.5 text-xs hover:bg-slate-100"
+                  >
+                    <span className="flex items-center gap-1.5 font-semibold tabular-nums text-slate-800">
+                      <span className={`h-1.5 w-1.5 rounded-full ${STATUS_DOT[a.status]}`} />
+                      {a.start.toLocaleTimeString('fr-FR', {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                      })}
+                    </span>
+                    <span className="mt-0.5 block truncate text-slate-600">
+                      {a.contactName}
+                    </span>
+                  </Link>
                 </li>
               ))}
             </ul>

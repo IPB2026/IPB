@@ -124,6 +124,7 @@ export default async function AgendaPage({
         start: a.start,
         title: a.title,
         contactName: a.contact.name,
+        contactId: a.contactId,
         type: a.type,
         status: a.status,
       }));

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { UserCheck, ArrowRight, Download, Plus, Search, Phone } from 'lucide-react';
+import { UserCheck, Download, Plus, Search } from 'lucide-react';
 import { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
@@ -10,6 +10,7 @@ import { EmptyState } from '@/components/admin/empty-state';
 import { Avatar } from '@/components/admin/avatar';
 import { MobileCardList, MobileCardRow } from '@/components/admin/mobile-card';
 import { PhaseBadge, SERVICE_LABEL } from '@/components/admin/badges';
+import { QuickActionMenu } from '@/components/admin/quick-action-menu';
 
 export const dynamic = 'force-dynamic';
 
@@ -70,11 +71,13 @@ export default async function ClientsPage({
       stage,
     });
     const service = c.leads[0]?.service ?? null;
+    const leadId = c.leads[0]?.id ?? null;
     return {
       c,
       dossier,
       isClient: dossier.isClient,
       service,
+      leadId,
     };
   });
 
@@ -159,7 +162,7 @@ export default async function ClientsPage({
         <>
           {/* Mobile : cartes */}
           <MobileCardList>
-            {rows.map(({ c, dossier, isClient, service }) => (
+            {rows.map(({ c, dossier, isClient, service, leadId }) => (
               <MobileCardRow
                 key={c.id}
                 href={`/admin/clients/${c.id}`}
@@ -173,17 +176,7 @@ export default async function ClientsPage({
                     .join(' · ') || '—',
                   <PhaseBadge key="p" phase={dossier.phase} />,
                 ]}
-                action={
-                  c.phone ? (
-                    <a
-                      href={`tel:${c.phone}`}
-                      aria-label={`Appeler ${c.name}`}
-                      className="inline-flex h-11 w-11 sm:h-9 sm:w-9 items-center justify-center rounded-lg text-orange-600 active:bg-orange-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
-                    >
-                      <Phone className="h-4 w-4" />
-                    </a>
-                  ) : undefined
-                }
+                action={<QuickActionMenu contactId={c.id} phone={c.phone} leadId={leadId} />}
               />
             ))}
           </MobileCardList>
@@ -202,7 +195,7 @@ export default async function ClientsPage({
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
-                {rows.map(({ c, dossier, isClient, service }) => (
+                {rows.map(({ c, dossier, isClient, service, leadId }) => (
                   <tr key={c.id} className="group transition-colors hover:bg-slate-50">
                     <td className="px-5 py-3">
                       <Link href={`/admin/clients/${c.id}`} className="flex items-center gap-3">
@@ -230,12 +223,7 @@ export default async function ClientsPage({
                       {dossier.montantDevis != null ? euros(dossier.montantDevis) : '—'}
                     </td>
                     <td className="px-5 py-3 text-right">
-                      <Link
-                        href={`/admin/clients/${c.id}`}
-                        className="inline-flex items-center text-slate-400 group-hover:text-orange-600"
-                      >
-                        <ArrowRight className="h-4 w-4" />
-                      </Link>
+                      <QuickActionMenu contactId={c.id} phone={c.phone} leadId={leadId} />
                     </td>
                   </tr>
                 ))}
@@ -278,7 +266,7 @@ function load(sp: SearchParams) {
       factures: { select: { status: true } },
       rapports: { select: { status: true } },
       appointments: { select: { type: true, status: true } },
-      leads: { select: { stage: true, service: true }, orderBy: { createdAt: 'desc' }, take: 1 },
+      leads: { select: { id: true, stage: true, service: true }, orderBy: { createdAt: 'desc' }, take: 1 },
     },
   });
 }
