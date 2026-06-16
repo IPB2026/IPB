@@ -43,28 +43,48 @@ export async function POST(req: NextRequest) {
     return Response.json({ error: 'no-audio' }, { status: 400 });
   }
 
-  const upstream = new FormData();
-  upstream.set('file', file, file.name || 'audio.m4a');
-  upstream.set('model', model);
-  upstream.set('language', 'fr');
-  upstream.set('response_format', 'json');
+  // Corps reconstruit À CHAQUE essai : une FormData passée à fetch ne doit pas
+  // être réutilisée telle quelle sur un 2e envoi (corps déjà extrait).
+  const buildBody = () => {
+    const fd = new FormData();
+    fd.set('file', file, file.name || 'audio.m4a');
+    fd.set('model', model);
+    fd.set('language', 'fr');
+    fd.set('response_format', 'json');
+    return fd;
+  };
 
-  try {
-    const r = await fetch(`${baseUrl}/audio/transcriptions`, {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${key}` },
-      body: upstream,
-    });
-    if (!r.ok) {
-      const detail = (await r.text().catch(() => '')).slice(0, 300);
-      return Response.json({ error: 'upstream', detail }, { status: 502 });
+  // Un seul retry sur erreur transitoire (5xx / réseau) pour rester dans le
+  // budget maxDuration=60 s. On distingue le 429 (quota Groq) pour un message dédié.
+  const maxRetries = 1;
+  let lastDetail = '';
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      const r = await fetch(`${baseUrl}/audio/transcriptions`, {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${key}` },
+        body: buildBody(),
+      });
+      if (r.ok) {
+        const data = (await r.json()) as { text?: string };
+        return Response.json({ text: (data.text ?? '').trim() });
+      }
+      if (r.status === 429) {
+        const detail = (await r.text().catch(() => '')).slice(0, 300);
+        return Response.json({ error: 'quota', detail }, { status: 429 });
+      }
+      lastDetail = (await r.text().catch(() => '')).slice(0, 300);
+      // 4xx : inutile de retenter. 5xx : on retente tant qu'il reste des essais.
+      if (r.status < 500 || attempt === maxRetries) {
+        return Response.json({ error: 'upstream', detail: lastDetail }, { status: 502 });
+      }
+    } catch (e) {
+      lastDetail = e instanceof Error ? e.message : 'err';
+      if (attempt === maxRetries) {
+        return Response.json({ error: 'fetch', detail: lastDetail }, { status: 502 });
+      }
     }
-    const data = (await r.json()) as { text?: string };
-    return Response.json({ text: (data.text ?? '').trim() });
-  } catch (e) {
-    return Response.json(
-      { error: 'fetch', detail: e instanceof Error ? e.message : 'err' },
-      { status: 502 }
-    );
+    await new Promise((resolve) => setTimeout(resolve, 800 * 2 ** attempt));
   }
+  return Response.json({ error: 'upstream', detail: lastDetail }, { status: 502 });
 }

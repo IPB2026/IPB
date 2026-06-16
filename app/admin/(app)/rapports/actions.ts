@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { revalidateCrm } from '@/lib/crm/revalidate';
 import { del } from '@vercel/blob';
+import { guessMimeFromName } from '@/lib/blob';
 import { prisma } from '@/lib/prisma';
 import { requireUser, requireAdmin } from '@/lib/auth-helpers';
 import { nextRapportNumber } from '@/lib/crm/numbering';
@@ -203,19 +204,28 @@ export async function attachRapportPhoto(formData: FormData): Promise<void> {
   const pathname = str(formData.get('pathname'));
   if (!url || !pathname) return;
 
-  const count = await prisma.photo.count({ where: { rapportId: id } });
-  await prisma.photo.create({
-    data: {
-      rapportId: id,
-      url,
-      pathname,
-      caption: str(formData.get('caption')) || null,
-      zoneRef: str(formData.get('zoneRef')) || null,
-      gravite: str(formData.get('gravite')) || null,
-      contentType: str(formData.get('contentType')) || null,
-      position: count,
-    },
-  });
+  // Type MIME fiabilisé : jamais null pour une vraie image (sinon affichage/IA
+  // dégradés). Repli sur l'extension du pathname Blob si le client ne l'a pas.
+  const contentType = str(formData.get('contentType')) || guessMimeFromName(pathname);
+
+  try {
+    const count = await prisma.photo.count({ where: { rapportId: id } });
+    await prisma.photo.create({
+      data: {
+        rapportId: id,
+        url,
+        pathname,
+        caption: str(formData.get('caption')) || null,
+        zoneRef: str(formData.get('zoneRef')) || null,
+        gravite: str(formData.get('gravite')) || null,
+        contentType,
+        position: count,
+      },
+    });
+  } catch (err) {
+    console.error('[attachRapportPhoto] enregistrement en base échoué:', err);
+    return;
+  }
   revalidatePath(`/admin/rapports/${id}`);
 }
 
