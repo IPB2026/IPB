@@ -5,7 +5,7 @@ import { useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { moveLead } from '@/app/admin/(app)/leads/actions';
-import { PIPELINE_STAGES } from '@/components/admin/badges';
+import { QuickActionMenu } from '@/components/admin/quick-action-menu';
 
 export interface PipelineCard {
   id: string;
@@ -14,6 +14,7 @@ export interface PipelineCard {
   sub: string;
   /** Montant du devis (0 si aucun devis envoyé/accepté → non affiché). */
   montant: number;
+  phone?: string | null;
 }
 
 export interface PipelineColumn {
@@ -43,7 +44,8 @@ export function PipelineBoard({ columns }: { columns: PipelineColumn[] }) {
   const router = useRouter();
   const [pending, start] = useTransition();
   const [dragId, setDragId] = useState<string | null>(null);
-  const stages = PIPELINE_STAGES as string[];
+  // Séquence des étapes déplaçables = colonnes modifiables (non lecture seule).
+  const stages = columns.filter((c) => !c.readOnly).map((c) => c.stage);
 
   const move = (leadId: string, stage: string) =>
     start(async () => {
@@ -114,31 +116,33 @@ export function PipelineBoard({ columns }: { columns: PipelineColumn[] }) {
                         <p className="truncate text-xs text-slate-400">{l.sub}</p>
                       )}
                     </Link>
-                    {col.readOnly ? null : (
                     <div className="mt-2 flex items-center justify-between">
-                      <button
-                        type="button"
-                        disabled={idx <= 0 || pending}
-                        onClick={() => move(l.id, stages[idx - 1])}
-                        className="flex h-9 w-9 sm:h-7 sm:w-7 items-center justify-center rounded-md border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
-                        aria-label="Étape précédente"
-                      >
-                        <ChevronLeft className="h-4 w-4" />
-                      </button>
-                      <span className="text-[10px] uppercase tracking-wider text-slate-300">
-                        déplacer
-                      </span>
-                      <button
-                        type="button"
-                        disabled={idx >= stages.length - 1 || pending}
-                        onClick={() => move(l.id, stages[idx + 1])}
-                        className="flex h-9 w-9 sm:h-7 sm:w-7 items-center justify-center rounded-md border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
-                        aria-label="Étape suivante"
-                      >
-                        <ChevronRight className="h-4 w-4" />
-                      </button>
+                      {col.readOnly ? (
+                        <span />
+                      ) : (
+                        <div className="flex items-center gap-1">
+                          <button
+                            type="button"
+                            disabled={idx <= 0 || pending}
+                            onClick={() => move(l.id, stages[idx - 1])}
+                            className="flex h-9 w-9 sm:h-7 sm:w-7 items-center justify-center rounded-md border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
+                            aria-label="Étape précédente"
+                          >
+                            <ChevronLeft className="h-4 w-4" />
+                          </button>
+                          <button
+                            type="button"
+                            disabled={idx >= stages.length - 1 || pending}
+                            onClick={() => move(l.id, stages[idx + 1])}
+                            className="flex h-9 w-9 sm:h-7 sm:w-7 items-center justify-center rounded-md border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
+                            aria-label="Étape suivante"
+                          >
+                            <ChevronRight className="h-4 w-4" />
+                          </button>
+                        </div>
+                      )}
+                      <QuickActionMenu contactId={l.contactId} phone={l.phone} leadId={l.id} />
                     </div>
-                    )}
                   </div>
                 );
               })

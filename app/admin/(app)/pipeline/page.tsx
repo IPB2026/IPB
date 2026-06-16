@@ -1,12 +1,32 @@
-import type { PipelineStage } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
-import { SERVICE_LABEL, STAGE_LABEL, PIPELINE_STAGES } from '@/components/admin/badges';
+import { SERVICE_LABEL } from '@/components/admin/badges';
+import { euros } from '@/lib/crm/company';
 import { computeDossier } from '@/lib/crm/dossier';
 import { PipelineBoard, type PipelineColumn } from '@/components/admin/pipeline-board';
 
 export const dynamic = 'force-dynamic';
+
+// Colonnes modifiables à la main (étapes amont du cycle diagnostic).
+const EDITABLE: { stage: string; label: string; phases: string[] }[] = [
+  { stage: 'NOUVEAU', label: 'Nouveau', phases: ['NOUVEAU', 'A_RAPPELER'] },
+  { stage: 'DEVIS_ENVOYE', label: 'Devis envoyé', phases: ['DEVIS_ENVOYE'] },
+  { stage: 'RDV_PLANIFIE', label: 'RDV planifié', phases: ['RDV_PLANIFIE'] },
+  { stage: 'VISITE_FAITE', label: 'Visite réalisée', phases: ['VISITE_FAITE'] },
+];
+// Colonnes dérivées des artefacts (lecture seule, avancement automatique).
+const DERIVED: { stage: string; label: string }[] = [
+  { stage: 'FACTURE_ENVOYEE', label: 'Facture envoyée' },
+  { stage: 'PAIEMENT_RECU', label: 'Paiement reçu' },
+  { stage: 'RAPPORT', label: 'Rapport à faire' },
+  { stage: 'SUIVI', label: 'Suivi (2 sem.)' },
+];
+// Branche travaux (distincte du diagnostic), affichée seulement si peuplée.
+const TRAVAUX: { stage: string; label: string }[] = [
+  { stage: 'ACCOMPAGNEMENT_TRAVAUX', label: 'Accompagnement travaux' },
+  { stage: 'TRAVAUX_LANCES', label: 'Travaux lancés' },
+];
 
 export default async function PipelinePage() {
   await guardAdminPage();
@@ -18,13 +38,14 @@ export default async function PipelinePage() {
     sub: string;
     phase: string;
     montant: number;
+    phone: string | null;
   };
   let cards: Card[] = [];
   let dbError = false;
   try {
     const rows = await prisma.lead.findMany({
-      // On inclut GAGNE : un dossier gagné continue son cycle (facture → rapport).
-      where: { stage: { in: [...PIPELINE_STAGES, 'GAGNE'] } },
+      // On exclut les perdus ; un dossier gagné continue son cycle.
+      where: { stage: { notIn: ['PERDU'] } },
       orderBy: { createdAt: 'desc' },
       take: 400,
       select: {
@@ -36,20 +57,21 @@ export default async function PipelinePage() {
           select: {
             name: true,
             city: true,
-            // orderBy déterministe identique à la liste/fiche → montantDevis cohérent partout.
+            phone: true,
+            // orderBy déterministe identique à la liste/fiche → cohérence partout.
             devis: {
               select: { status: true, totalHT: true, acceptedAt: true, serviceType: true },
               orderBy: { createdAt: 'desc' },
             },
             factures: { select: { status: true } },
-            rapports: { select: { status: true } },
+            rapports: { select: { status: true, updatedAt: true }, orderBy: { updatedAt: 'desc' } },
             appointments: { select: { type: true, status: true } },
           },
         },
       },
     });
-    // Phase calculée par computeDossier → STRICTEMENT la même que la fiche/liste.
     cards = rows.map((r) => {
+      const rapportEnvoye = r.contact.rapports.find((rp) => rp.status === 'ENVOYE');
       const dossier = computeDossier({
         devis: r.contact.devis.map((d) => ({
           status: d.status,
@@ -61,6 +83,7 @@ export default async function PipelinePage() {
         rapports: r.contact.rapports.map((rp) => ({ status: rp.status })),
         appointments: r.contact.appointments.map((a) => ({ type: a.type, status: a.status })),
         stage: r.stage,
+        rapportEnvoyeAt: rapportEnvoye?.updatedAt ?? null,
       });
       return {
         id: r.id,
@@ -71,6 +94,7 @@ export default async function PipelinePage() {
           .join(' · '),
         phase: dossier.phase,
         montant: dossier.montantDevis ?? 0,
+        phone: r.contact.phone,
       };
     });
     // Tri commercial : les plus gros montants en haut de chaque colonne.
@@ -79,31 +103,28 @@ export default async function PipelinePage() {
     dbError = true;
   }
 
-  const derived: { stage: string; label: string }[] = [
-    { stage: 'FACTURE_ENVOYEE', label: 'Facture envoyée' },
-    { stage: 'RAPPORT_ENVOYE', label: 'Rapport envoyé' },
-    { stage: 'SUIVI', label: 'Suivi' },
-  ];
+  const inPhase = (phases: string[]) => cards.filter((c) => phases.includes(c.phase));
 
   const columns: PipelineColumn[] = [
-    ...PIPELINE_STAGES.map((stage) => ({
-      stage,
-      label: STAGE_LABEL[stage],
-      leads: cards.filter((c) => c.phase === stage),
-    })),
-    ...derived.map((d) => ({
-      stage: d.stage,
-      label: d.label,
+    ...EDITABLE.map((col) => ({ stage: col.stage, label: col.label, leads: inPhase(col.phases) })),
+    ...DERIVED.map((d) => ({ stage: d.stage, label: d.label, readOnly: true, leads: inPhase([d.stage]) })),
+    // Branche travaux : seulement si au moins un dossier y est.
+    ...TRAVAUX.filter((t) => cards.some((c) => c.phase === t.stage)).map((t) => ({
+      stage: t.stage,
+      label: t.label,
       readOnly: true,
-      leads: cards.filter((c) => c.phase === d.stage),
+      leads: inPhase([t.stage]),
     })),
   ];
+
+  const actifs = cards.filter((c) => c.phase !== 'TERMINE');
+  const pipeTotal = actifs.reduce((s, c) => s + c.montant, 0);
 
   return (
     <div className="space-y-5">
       <PageHeader
         title="Pipeline"
-        subtitle="Glissez une fiche (desktop) ou utilisez les flèches (mobile) pour changer d'étape."
+        subtitle={dbError ? undefined : `${actifs.length} dossier(s) actif(s) · pipe ${euros(pipeTotal)}`}
       />
       {dbError ? (
         <div className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-800">

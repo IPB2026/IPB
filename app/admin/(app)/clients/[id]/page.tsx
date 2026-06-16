@@ -150,6 +150,7 @@ export default async function ClientFichePage({
     rapports: c.rapports.map((r) => ({ status: r.status })),
     appointments: c.appointments.map((a) => ({ type: a.type, status: a.status })),
     stage: lead?.stage ?? null,
+    rapportEnvoyeAt: c.rapports.find((r) => r.status === 'ENVOYE')?.updatedAt ?? null,
   });
 
   const next = nextStep(dossier, c.id, lead?.id);

@@ -30,7 +30,14 @@ export interface DossierInputs {
    * que l'artefact correspondant n'existe — cohérence Suivi prospect ↔ dossier.
    */
   stage?: string | null;
+  /** Date d'envoi du rapport (≈ updatedAt du rapport ENVOYE). Sert à faire sortir
+   *  le dossier de la phase « Suivi » au bout de 2 semaines → « Terminé ». */
+  rapportEnvoyeAt?: Date | null;
 }
+
+/** Nb de jours pendant lesquels un dossier reste en « Suivi » après le rapport. */
+const SUIVI_DAYS = 14;
+const DAY = 86_400_000;
 
 export interface DossierStep {
   key: string;
@@ -100,37 +107,55 @@ export function computeDossier(d: DossierInputs): DossierView {
   );
   const facturePayee = d.factures.some((f) => f.status === 'PAYEE');
   const rapportEnvoye = d.rapports.some((r) => r.status === 'ENVOYE');
+  // Rapport en cours de rédaction (créé mais pas encore envoyé) = « à faire/à envoyer ».
+  const rapportEnCours = !rapportEnvoye && d.rapports.length > 0;
   const travauxPlanifies = d.appointments.some(
     (a) => a.type === 'LANCEMENT_TRAVAUX'
   );
   // 2ᵉ devis « accompagnement travaux » = devis de service AUTRE (sentinelle).
+  // ⚠️ À NE PAS confondre avec le devis DIAGNOSTIC (le montant/pipe = diagnostic).
   const hasDevisTravaux = d.devis.some((x) => x.serviceType === 'AUTRE');
+  const perdu = st === 'PERDU';
+
+  // Sortie automatique de « Suivi » après 2 semaines sans mouvement (→ Terminé),
+  // sauf si une branche travaux est engagée.
+  const rapportAt = d.rapportEnvoyeAt ?? null;
+  const suiviExpire =
+    rapportEnvoye &&
+    !hasDevisTravaux &&
+    !travauxPlanifies &&
+    rapportAt != null &&
+    Date.now() - rapportAt.getTime() > SUIVI_DAYS * DAY;
 
   // Cycle de vie réel IPB : il s'arrête au rapport. Les travaux sont
   // EXCEPTIONNELS (~10 % des dossiers) : on ne les affiche QUE si un 2ᵉ devis
   // « accompagnement travaux » a été émis (ou un lancement déjà planifié). On ne
   // pousse jamais à « planifier des travaux ».
+  // Cycle DIAGNOSTIC (le tronc commun). Le « suivi » est toujours présent après
+  // le rapport ; il est considéré « fait » dès qu'il expire (2 semaines) ou qu'une
+  // branche travaux démarre.
   const raw: { key: string; label: string; done: boolean }[] = [
-    { key: 'devis', label: 'Devis envoyé', done: devisEnvoye || isClient },
+    { key: 'devis', label: 'Devis diagnostic envoyé', done: devisEnvoye || isClient },
     { key: 'client', label: 'Devis accepté (client)', done: isClient },
     { key: 'rdv', label: "Date d'intervention", done: rdvPris },
     { key: 'visite', label: 'Visite réalisée', done: visiteFaite },
     { key: 'facture', label: 'Facture envoyée', done: factureEnvoyee },
     { key: 'paiement', label: 'Paiement reçu', done: facturePayee },
     { key: 'rapport', label: 'Rapport transmis', done: rapportEnvoye },
-    // Après le rapport il y a TOUJOURS un suivi client (faire le point sur les
-    // préconisations) — « terminé » seulement si les travaux sont lancés. Le
-    // libellé bascule en « Accompagnement travaux » dès qu'un devis travaux existe.
     {
       key: 'suivi',
-      label: hasDevisTravaux ? 'Accompagnement travaux' : 'Suivi client',
-      done: travauxPlanifies,
+      label: 'Suivi client',
+      done: suiviExpire || hasDevisTravaux || travauxPlanifies,
     },
   ];
 
-  // Étape « Travaux lancés » ajoutée seulement si des travaux sont engagés.
+  // BRANCHE TRAVAUX (optionnelle, distincte du diagnostic) — seulement si un
+  // DEVIS TRAVAUX a été chiffré. Ne jamais confondre avec le devis diagnostic.
   if (hasDevisTravaux || travauxPlanifies) {
-    raw.push({ key: 'travaux', label: 'Travaux lancés', done: travauxPlanifies });
+    raw.push(
+      { key: 'devis_travaux', label: 'Devis travaux émis', done: hasDevisTravaux },
+      { key: 'travaux', label: 'Travaux lancés', done: travauxPlanifies },
+    );
   }
 
   // MONOTONIE : un palier est « fait » dès qu'un palier PLUS AVANCÉ l'est. Sans
@@ -147,10 +172,16 @@ export function computeDossier(d: DossierInputs): DossierView {
   }));
 
   // Phase canonique (= colonne pipeline) : milestone le plus avancé atteint.
-  // Réutilise EXACTEMENT les mêmes booléens que le suivi du dossier → la liste,
-  // la fiche, le pipeline et le dashboard affichent toujours la même phase.
+  // Séquence : Nouveau → Devis envoyé → RDV planifié → Visite réalisée → Facture
+  // envoyée → Paiement reçu → Rapport (à faire/à envoyer) → Suivi (2 sem.) →
+  // Terminé. Branche travaux séparée. Perdu = devis diagnostic non validé.
   let phase: string;
-  if (rapportEnvoye) phase = hasDevisTravaux ? 'SUIVI' : 'RAPPORT_ENVOYE';
+  if (perdu) phase = 'PERDU';
+  else if (travauxPlanifies) phase = 'TRAVAUX_LANCES';
+  else if (hasDevisTravaux) phase = 'ACCOMPAGNEMENT_TRAVAUX';
+  else if (rapportEnvoye) phase = suiviExpire ? 'TERMINE' : 'SUIVI';
+  else if (rapportEnCours) phase = 'RAPPORT';
+  else if (facturePayee) phase = 'PAIEMENT_RECU';
   else if (factureEnvoyee) phase = 'FACTURE_ENVOYEE';
   else if (visiteFaite) phase = 'VISITE_FAITE';
   else if (rdvPris) phase = 'RDV_PLANIFIE';

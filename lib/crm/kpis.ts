@@ -50,12 +50,12 @@ const SERVICE_ORDER: ServiceType[] = [
 // cohérence stricte pipeline ↔ pilotage.
 const FUNNEL: { key: string; label: string }[] = [
   { key: 'NOUVEAU', label: 'Nouveau' },
-  { key: 'A_RAPPELER', label: 'À rappeler' },
   { key: 'DEVIS_ENVOYE', label: 'Devis envoyé' },
   { key: 'RDV_PLANIFIE', label: 'RDV planifié' },
   { key: 'VISITE_FAITE', label: 'Visite réalisée' },
   { key: 'FACTURE_ENVOYEE', label: 'Facture envoyée' },
-  { key: 'RAPPORT_ENVOYE', label: 'Rapport transmis' },
+  { key: 'PAIEMENT_RECU', label: 'Paiement reçu' },
+  { key: 'RAPPORT', label: 'Rapport à faire' },
   { key: 'SUIVI', label: 'Suivi' },
 ];
 
@@ -193,7 +193,7 @@ export async function computeKpis(): Promise<KpiData> {
             orderBy: { createdAt: 'desc' },
           },
           factures: { select: { status: true } },
-          rapports: { select: { status: true } },
+          rapports: { select: { status: true, updatedAt: true }, orderBy: { updatedAt: 'desc' } },
           appointments: { select: { type: true, status: true } },
         },
       },
@@ -212,8 +212,11 @@ export async function computeKpis(): Promise<KpiData> {
       rapports: l.contact.rapports.map((r) => ({ status: r.status })),
       appointments: l.contact.appointments.map((a) => ({ type: a.type, status: a.status })),
       stage: l.stage,
+      rapportEnvoyeAt: l.contact.rapports.find((r) => r.status === 'ENVOYE')?.updatedAt ?? null,
     });
-    phaseCount.set(dossier.phase, (phaseCount.get(dossier.phase) ?? 0) + 1);
+    // « À rappeler » est fondu dans « Nouveau » (cf. pipeline).
+    const key = dossier.phase === 'A_RAPPELER' ? 'NOUVEAU' : dossier.phase;
+    phaseCount.set(key, (phaseCount.get(key) ?? 0) + 1);
   }
   const funnel = FUNNEL.map((f) => ({
     stage: f.key,

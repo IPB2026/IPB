@@ -67,8 +67,9 @@ export default async function ClientsPage({
       factures: c.factures.map((f) => ({ status: f.status })),
       rapports: c.rapports.map((r) => ({ status: r.status })),
       appointments: c.appointments.map((a) => ({ type: a.type, status: a.status })),
-      // Cohérence avec la fiche : on tient compte de l'étape pipeline.
+      // Cohérence avec la fiche : étape pipeline + date d'envoi du rapport.
       stage,
+      rapportEnvoyeAt: c.rapports.find((r) => r.status === 'ENVOYE')?.updatedAt ?? null,
     });
     const service = c.leads[0]?.service ?? null;
     const leadId = c.leads[0]?.id ?? null;
@@ -264,7 +265,7 @@ function load(sp: SearchParams) {
         orderBy: { createdAt: 'desc' },
       },
       factures: { select: { status: true } },
-      rapports: { select: { status: true } },
+      rapports: { select: { status: true, updatedAt: true }, orderBy: { updatedAt: 'desc' } },
       appointments: { select: { type: true, status: true } },
       leads: { select: { id: true, stage: true, service: true }, orderBy: { createdAt: 'desc' }, take: 1 },
     },
