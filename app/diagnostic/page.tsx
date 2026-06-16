@@ -707,7 +707,7 @@ export default function DiagnosticPage() {
 
     if (leadSucceeded) {
       // Conversion Google Ads — déclenchée une seule fois, au succès du lead
-      trackDiagnosticLeadSubmit(path! as 'fissure' | 'mur-porteur', score);
+      trackDiagnosticLeadSubmit(path! as 'fissure' | 'mur-porteur', score, { email: contactInfo.email, phone: contactInfo.phone });
       setTimeout(() => {
         setIsAnalyzing(false);
         setShowResult(true);
@@ -729,7 +729,7 @@ export default function DiagnosticPage() {
     const phoneError = validatePhoneOrError(phone);
     if (phoneError) { setFormError(phoneError); return; }
     setIsSubmitting(true);
-    trackCallbackRequest();
+    trackCallbackRequest({ phone, email: callbackInfo.email || contactInfo.email });
     const recaptchaToken = await getToken('diagnostic_callback');
     try {
       const formData = new FormData();

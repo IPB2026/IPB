@@ -222,7 +222,7 @@ export function CalculatorClient() {
         poutreType: estimate.poutreType,
       });
       if (result.success) {
-        trackCalculatorLeadCapture(leadEmail);
+        trackCalculatorLeadCapture(leadEmail, leadPhone);
         setSubmitted(true);
         setStep(6); // Révéler l'estimation après capture lead
       } else {

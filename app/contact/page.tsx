@@ -11,6 +11,7 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { CrackSVG } from '@/components/ui/CrackSVG';
 import { FormError } from '@/components/ui/FormError';
 import { submitContactForm } from '@/app/actions/contact';
+import { trackContactLeadSubmit } from '@/lib/analytics';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
@@ -53,6 +54,7 @@ export default function ContactPage() {
       const result = await submitContactForm(formDataToSend);
 
       if (result.success) {
+        trackContactLeadSubmit({ email: formData.email });
         setIsSubmitted(true);
         setFormData({ name: '', email: '', subject: '', message: '' });
         setTimeout(() => setIsSubmitted(false), 6000);
