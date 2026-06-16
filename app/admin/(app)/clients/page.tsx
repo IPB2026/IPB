@@ -65,7 +65,10 @@ export default async function ClientsPage({
         serviceType: d.serviceType,
       })),
       factures: c.factures.map((f) => ({ status: f.status })),
-      rapports: c.rapports.map((r) => ({ status: r.status })),
+      rapports: c.rapports.map((r) => ({
+        status: r.status,
+        budgetHT: r.budgetHT != null ? Number(r.budgetHT) : null,
+      })),
       appointments: c.appointments.map((a) => ({ type: a.type, status: a.status })),
       // Cohérence avec la fiche : étape pipeline + date d'envoi du rapport.
       stage,
@@ -265,7 +268,7 @@ function load(sp: SearchParams) {
         orderBy: { createdAt: 'desc' },
       },
       factures: { select: { status: true } },
-      rapports: { select: { status: true, updatedAt: true }, orderBy: { updatedAt: 'desc' } },
+      rapports: { select: { status: true, updatedAt: true, budgetHT: true }, orderBy: { updatedAt: 'desc' } },
       appointments: { select: { type: true, status: true } },
       leads: { select: { id: true, stage: true, service: true }, orderBy: { createdAt: 'desc' }, take: 1 },
     },

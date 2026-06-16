@@ -310,6 +310,7 @@ export async function validateAndSendRapport(
       aiContent: true,
       contactId: true,
       leadId: true,
+      budgetHT: true,
     },
   });
   if (!rapport) return;
@@ -317,13 +318,22 @@ export async function validateAndSendRapport(
   const ai = rapport.aiContent as { error?: string } | null;
   if (!ai || ai.error) return; // pas de contenu valide à envoyer
 
+  // RÈGLE MÉTIER (gérant) : le rapport ne part PAS tant que la facture n'est pas
+  // PAYÉE. La rédaction/livraison se déclenche à l'encaissement (promesse 3-5 j ouvrés).
+  const facturePayee = await prisma.facture.findFirst({
+    where: { contactId: rapport.contactId, status: 'PAYEE' },
+    select: { id: true },
+  });
+  if (!facturePayee) return;
+
   // Marque validé puis envoie (sendRapportEmail passe le statut à ENVOYE).
   await prisma.rapport.update({ where: { id }, data: { status: 'VALIDE' } });
   const sent = await sendRapportEmail(id);
 
-  // Suivi client (Phase 2) : à la remise du rapport, planifie une relance dédiée
-  // « savoir ce que veut faire le client » à J+3, qui remonte dans « Relances dues ».
-  if (sent.ok) {
+  // Suivi client : UNIQUEMENT si le rapport contient une estimation budgétaire
+  // (budgetHT) — sinon préconisations seules → intervention TERMINÉE, pas de relance
+  // travaux. Conforme à la règle métier (suivi ssi estimation).
+  if (sent.ok && rapport.budgetHT != null && Number(rapport.budgetHT) > 0) {
     const due = new Date();
     due.setDate(due.getDate() + 3);
     await prisma.activity.create({
@@ -397,7 +407,11 @@ export async function generateRapportAI(formData: FormData) {
       aiModel: REPORT_MODEL,
       aiGeneratedAt: new Date(),
       status: 'GENERE',
-      budgetHT: result.content.budgetHT ?? null,
+      // Invariant : budgetHT renseigné UNIQUEMENT s'il y a une estimation de
+      // travaux (sinon préconisations seules → null). C'est le signal SUIVI/TERMINÉ.
+      budgetHT: result.content.estimationTravaux?.length
+        ? result.content.budgetHT ?? null
+        : null,
     },
   });
   revalidatePath(`/admin/rapports/${id}`);

@@ -147,7 +147,10 @@ export default async function ClientFichePage({
       serviceType: d.serviceType,
     })),
     factures: c.factures.map((f) => ({ status: f.status })),
-    rapports: c.rapports.map((r) => ({ status: r.status })),
+    rapports: c.rapports.map((r) => ({
+      status: r.status,
+      budgetHT: r.budgetHT != null ? Number(r.budgetHT) : null,
+    })),
     appointments: c.appointments.map((a) => ({ type: a.type, status: a.status })),
     stage: lead?.stage ?? null,
     rapportEnvoyeAt: c.rapports.find((r) => r.status === 'ENVOYE')?.updatedAt ?? null,

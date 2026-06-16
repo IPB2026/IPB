@@ -3,6 +3,7 @@ import { prisma } from '@/lib/prisma';
 import { sendEmail } from '@/lib/email';
 import { COMPANY } from '@/lib/crm/company';
 import { signBookingToken } from '@/lib/crm/booking';
+import { signActionToken } from '@/lib/crm/client-actions';
 import {
   buildDevisPdf,
   buildFacturePdf,
@@ -13,12 +14,22 @@ const SITE =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ||
   'https://www.ipb-expertise.fr';
 
+/** Bouton d'action client (1 clic) — lien signé vers /c. */
+function ctaButton(url: string, label: string, color = '#C8601F'): string {
+  return `<a href="${url}" style="display:inline-block; background:${color}; color:#fff; text-decoration:none; padding:11px 20px; border-radius:8px; font-size:14px; font-weight:600; margin:0 6px 8px 0;">${label}</a>`;
+}
+
 /**
  * Logique d'envoi e-mail (PDF en pièce jointe) partagée entre les server actions
  * du CRM et le connecteur MCP Cowork. Aucune revalidation/redirection ici.
  */
 
-function coverHtml(opts: { greeting: string; intro: string; number: string }): string {
+function coverHtml(opts: {
+  greeting: string;
+  intro: string;
+  number: string;
+  actionsHtml?: string;
+}): string {
   return `
   <div style="font-family: Arial, sans-serif; background:#f8fafc; padding:24px;">
     <div style="max-width:600px; margin:0 auto; background:#fff; border:1px solid #e2e8f0; border-radius:14px; overflow:hidden;">
@@ -30,6 +41,7 @@ function coverHtml(opts: { greeting: string; intro: string; number: string }): s
         <p style="margin:0 0 12px; color:#0F172A; font-size:15px;">${opts.greeting}</p>
         <p style="margin:0 0 14px; color:#334155; font-size:14px; line-height:1.6;">${opts.intro}</p>
         <p style="margin:0 0 14px; color:#334155; font-size:14px;">Le document <strong>${opts.number}</strong> est joint à cet e-mail au format PDF.</p>
+        ${opts.actionsHtml ? `<div style="margin:0 0 16px;">${opts.actionsHtml}</div>` : ''}
         <p style="margin:0; color:#64748b; font-size:13px;">Pour toute question, contactez-nous au <strong>${COMPANY.phone}</strong> ou répondez à cet e-mail.</p>
         <p style="margin:16px 0 0; color:#0F172A; font-size:14px;">Cordialement,<br/>${COMPANY.name}</p>
       </div>
@@ -63,6 +75,7 @@ function devisSlotsCover(opts: {
   demande: string;
   number: string;
   slots: { date: Date; url: string }[];
+  acceptUrl: string;
 }): string {
   const slotsHtml = opts.slots
     .map(
@@ -82,7 +95,8 @@ function devisSlotsCover(opts: {
         <p style="margin:0 0 14px; color:#334155; font-size:14px; line-height:1.6;">Merci de votre confiance. Suite à votre demande concernant ${opts.demande}, vous trouverez ci-joint notre <strong>devis n° ${opts.number}</strong>.</p>
         <p style="margin:0 0 10px; color:#334155; font-size:14px; line-height:1.6;"><strong>Pour programmer la visite sur site,</strong> sélectionnez le créneau qui vous convient en cliquant ci-dessous — votre rendez-vous est confirmé instantanément :</p>
         <table role="presentation" style="width:100%; border-collapse:collapse; margin:0 0 12px;">${slotsHtml}</table>
-        <p style="margin:0 0 14px; color:#334155; font-size:14px; line-height:1.6;">Pour valider le devis, il vous suffit de nous le retourner avec la mention « Bon pour accord ».</p>
+        <p style="margin:0 0 10px; color:#334155; font-size:14px; line-height:1.6;"><strong>Pour valider le devis,</strong> un seul clic ci-dessous (« Bon pour accord » en ligne) :</p>
+        <p style="margin:0 0 14px;">${ctaButton(opts.acceptUrl, '✓ Valider mon devis')}</p>
         <p style="margin:0 0 14px; color:#64748b; font-size:12.5px; font-style:italic; line-height:1.6;">Visite réalisée par le diagnostiqueur indépendant mandaté ; rapport remis sous 3 à 5 jours ouvrés après la visite.</p>
         <p style="margin:0; color:#64748b; font-size:13px;">Une question ? Appelez le <strong>${COMPANY.phone}</strong>.</p>
         <p style="margin:16px 0 0; color:#0F172A; font-size:14px;">Cordialement,<br/>${COMPANY.name}</p>
@@ -109,6 +123,7 @@ export async function sendDevisEmail(
   const pdf = await buildDevisPdf(id);
   if (!pdf) return { ok: false, error: 'PDF indisponible' };
 
+  const acceptUrl = `${SITE}/c?t=${signActionToken({ k: 'devis-accept', id: devis.id })}`;
   const withSlots = Array.isArray(slots) && slots.length > 0;
   const html = withSlots
     ? devisSlotsCover({
@@ -122,11 +137,13 @@ export async function sendDevisEmail(
             s: date.toISOString(),
           })}`,
         })),
+        acceptUrl,
       })
     : coverHtml({
         greeting: 'Bonjour,',
-        intro: `Vous trouverez ci-joint notre devis pour votre demande. Pour la valider, retournez-le simplement avec la mention « Bon pour accord » — nous coordonnerons alors la visite sur site à votre convenance.`,
+        intro: `Vous trouverez ci-joint notre devis pour votre demande. Pour le valider, c'est en un clic ci-dessous (« Bon pour accord » en ligne) — ou retournez-le-nous par e-mail. Nous coordonnerons alors la visite sur site à votre convenance.`,
         number: devis.number,
+        actionsHtml: ctaButton(acceptUrl, '✓ Valider mon devis'),
       });
 
   const res = await sendEmail({
@@ -173,6 +190,8 @@ export async function sendFactureEmail(id: string): Promise<SendResult> {
   const pdf = await buildFacturePdf(id);
   if (!pdf) return { ok: false, error: 'PDF indisponible' };
 
+  const recuUrl = `${SITE}/c?t=${signActionToken({ k: 'facture-recu', id: facture.id })}`;
+  const payeUrl = `${SITE}/c?t=${signActionToken({ k: 'facture-paye', id: facture.id })}`;
   const res = await sendEmail({
     to: facture.contact.email,
     subject: `Votre facture IPB ${facture.number}`,
@@ -180,6 +199,9 @@ export async function sendFactureEmail(id: string): Promise<SendResult> {
       greeting: 'Bonjour,',
       intro: `Vous trouverez ci-joint votre facture. Le règlement se fait par virement, aux coordonnées bancaires indiquées sur le document. Dès réception de votre paiement, nous vous transmettrons le rapport d'expertise sous 3 à 5 jours ouvrés.`,
       number: facture.number,
+      actionsHtml:
+        ctaButton(recuUrl, "J'ai bien reçu la facture", '#475569') +
+        ctaButton(payeUrl, "J'ai effectué le paiement", '#059669'),
     }),
     attachments: [
       { filename: `${facture.number}.pdf`, content: pdf.toString('base64'), encoding: 'base64', contentType: 'application/pdf' },

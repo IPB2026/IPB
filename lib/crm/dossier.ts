@@ -22,7 +22,9 @@ export interface DossierInputs {
     serviceType?: ServiceType | null;
   }[];
   factures: { status: FactureStatus }[];
-  rapports: { status: ReportStatus }[];
+  /** budgetHT : estimation chiffrée des travaux dans le rapport. Présent (≠ null)
+   *  ⟺ rapport AVEC estimation budgétaire → branche SUIVI ; absent → TERMINÉ. */
+  rapports: { status: ReportStatus; budgetHT?: number | null }[];
   appointments: { type: AppointmentType; status: AppointmentStatus }[];
   /**
    * Étape du pipeline (lead.stage), si connue. Permet au suivi du dossier de
@@ -109,6 +111,11 @@ export function computeDossier(d: DossierInputs): DossierView {
   const rapportEnvoye = d.rapports.some((r) => r.status === 'ENVOYE');
   // Rapport en cours de rédaction (créé mais pas encore envoyé) = « à faire/à envoyer ».
   const rapportEnCours = !rapportEnvoye && d.rapports.length > 0;
+  // Rapport remis AVEC estimation budgétaire (budgetHT chiffré) ⇒ branche SUIVI
+  // (le client peut vouloir les travaux). Sans estimation ⇒ TERMINÉ direct.
+  const rapportAvecEstimation = d.rapports.some(
+    (r) => r.status === 'ENVOYE' && r.budgetHT != null && r.budgetHT > 0
+  );
   const travauxPlanifies = d.appointments.some(
     (a) => a.type === 'LANCEMENT_TRAVAUX'
   );
@@ -150,7 +157,11 @@ export function computeDossier(d: DossierInputs): DossierView {
     {
       key: 'suivi',
       label: 'Suivi client',
-      done: suiviExpire || (rapportEnvoye && (hasDevisTravaux || travauxPlanifies)),
+      // Suivi « fait » dès que : rapport sans estimation (rien à suivre), ou suivi
+      // expiré (2 sem.), ou une branche travaux a démarré.
+      done:
+        rapportEnvoye &&
+        (!rapportAvecEstimation || suiviExpire || hasDevisTravaux || travauxPlanifies),
     },
   ];
 
@@ -189,6 +200,9 @@ export function computeDossier(d: DossierInputs): DossierView {
   else if (rapportEnvoye) {
     if (travauxPlanifies) phase = 'TRAVAUX_LANCES';
     else if (hasDevisTravaux) phase = 'ACCOMPAGNEMENT_TRAVAUX';
+    // Préconisations SEULES (pas d'estimation) ⇒ TERMINÉ direct ; avec estimation
+    // ⇒ SUIVI (2 sem. puis TERMINÉ). Conforme à la règle métier du gérant.
+    else if (!rapportAvecEstimation) phase = 'TERMINE';
     else phase = suiviExpire ? 'TERMINE' : 'SUIVI';
   }
   // RÈGLE MÉTIER : le rapport ne se fait QU'APRÈS encaissement. Tant que la
@@ -204,7 +218,7 @@ export function computeDossier(d: DossierInputs): DossierView {
 
   // Suivi « simple » = rapport remis sans devis travaux (la norme). Pas de relance travaux.
   const enSuiviClient =
-    rapportEnvoye && !hasDevisTravaux && !travauxPlanifies;
+    rapportEnvoye && rapportAvecEstimation && !hasDevisTravaux && !travauxPlanifies;
   // Travaux à planifier : UNIQUEMENT après le rapport, si un devis travaux a été
   // émis sans lancement encore planifié.
   const travauxAPlanifier = rapportEnvoye && hasDevisTravaux && !travauxPlanifies;

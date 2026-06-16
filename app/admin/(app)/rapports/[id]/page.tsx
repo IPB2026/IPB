@@ -93,6 +93,18 @@ export default async function RapportDetailPage({
       ? String((lead.payload as { note?: unknown }).note ?? '')
       : '';
 
+  // Règle métier : le rapport ne part au client qu'une fois la facture PAYÉE.
+  const facturePayee = isAdmin
+    ? Boolean(
+        await prisma.facture
+          .findFirst({
+            where: { contactId: rapport.contactId, status: 'PAYEE' },
+            select: { id: true },
+          })
+          .catch(() => null)
+      )
+    : false;
+
   const status = rapport.status;
   // Édition de la saisie : expert tant que BROUILLON ; admin tant que non envoyé.
   const canEditField = isAdmin ? status !== 'ENVOYE' : isOwner && status === 'BROUILLON';
@@ -305,7 +317,7 @@ export default async function RapportDetailPage({
                   </button>
                 </form>
               )}
-              {content && c.email && status !== 'ENVOYE' && (
+              {content && c.email && status !== 'ENVOYE' && facturePayee && (
                 <form action={validateAndSendRapport}>
                   <input type="hidden" name="rapportId" value={rapport.id} />
                   <ConfirmSubmit
@@ -316,6 +328,12 @@ export default async function RapportDetailPage({
                     Valider et envoyer au client
                   </ConfirmSubmit>
                 </form>
+              )}
+              {content && c.email && status !== 'ENVOYE' && !facturePayee && (
+                <span className="inline-flex items-center gap-1.5 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm font-medium text-amber-800">
+                  <Lock className="h-4 w-4" />
+                  Facture non payée — envoi bloqué
+                </span>
               )}
               {content && status === 'ENVOYE' && (
                 <span className="inline-flex items-center gap-1.5 rounded-lg bg-violet-50 px-3 py-2 text-sm font-medium text-violet-700">

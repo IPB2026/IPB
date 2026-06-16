@@ -233,6 +233,33 @@ export async function recordFacturePayment(formData: FormData) {
   // Confirmation client à la facture soldée (non bloquant).
   if (soldee) await notifyClientPayment(id);
 
+  // RÈGLE MÉTIER : le paiement DÉCLENCHE la rédaction du rapport. On fait remonter
+  // l'action « Rapport à rédiger » dans les relances dues (sauf si rapport déjà
+  // parti). Idempotent.
+  if (soldee) {
+    const dejaEnvoye = await prisma.rapport.findFirst({
+      where: { contactId: f.contactId, status: 'ENVOYE' },
+      select: { id: true },
+    });
+    const dejaRelance = await prisma.activity.findFirst({
+      where: {
+        contactId: f.contactId,
+        content: { contains: `Rapport à rédiger (facture ${f.number}` },
+      },
+      select: { id: true },
+    });
+    if (!dejaEnvoye && !dejaRelance) {
+      await prisma.activity.create({
+        data: {
+          type: 'RELANCE',
+          contactId: f.contactId,
+          content: `Rapport à rédiger (facture ${f.number} payée) — livraison promise sous 3 à 5 jours ouvrés.`,
+          dueAt: new Date(),
+        },
+      });
+    }
+  }
+
   revalidatePath(`/admin/factures/${id}`);
   revalidatePath('/admin/factures');
   revalidatePath('/admin');
