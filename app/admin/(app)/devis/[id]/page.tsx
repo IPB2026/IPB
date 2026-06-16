@@ -44,6 +44,12 @@ export default async function DevisDetailPage({
 
   const isAccepted = devis.status === 'ACCEPTE';
   const isTravaux = isDevisTravaux(devis);
+  const isSurMesure = devis.serviceType === null && !isTravaux;
+  const fraisLine = devis.lines.find((l) => l.designation === 'Frais de déplacement');
+  const hasFrais = Boolean(fraisLine);
+  // Prix de BASE (hors frais) = ce qu'édite le champ « Montant » ; updateDevis
+  // ré-ajoute les frais si la case est cochée → pas de double comptage.
+  const basePrix = Number(devis.totalHT) - (fraisLine ? Number(fraisLine.total) : 0);
   const coordAppt = devis.coordinationAppts[0] ?? null;
   const planUrl =
     `/admin/agenda?type=LANCEMENT_TRAVAUX&contactId=${devis.contactId}` +
@@ -278,9 +284,11 @@ export default async function DevisDetailPage({
           <EditDevisForm
             devisId={devis.id}
             serviceType={devis.serviceType ?? 'FISSURES'}
-            prix={Number(devis.totalHT)}
+            prix={basePrix}
             bienConcerne={devis.bienConcerne ?? ''}
             validUntil={validUntilStr}
+            isSurMesure={isSurMesure}
+            hasFrais={hasFrais}
           />
         )}
       </section>

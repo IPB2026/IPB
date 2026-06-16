@@ -7,7 +7,8 @@ import { revalidateCrm } from '@/lib/crm/revalidate';
 import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
 import { nextDevisNumber, nextFactureNumber } from '@/lib/crm/numbering';
-import { devisTemplate } from '@/lib/crm/devis-templates';
+import { devisTemplate, serializeDevisContent } from '@/lib/crm/devis-templates';
+import { generateDevisContent } from '@/lib/ai/devis';
 import { DevisStatus, ServiceType } from '@prisma/client';
 
 // Écritures commerciales (devis/factures) : réservées à l'ADMIN. Les EXPERT
@@ -103,6 +104,106 @@ export async function createDevis(
       serviceType,
       bienConcerne: num(formData.get('bienConcerne')).trim() || null,
       validUntil,
+      totalHT,
+      lines: { create: lines },
+    },
+  });
+
+  revalidatePath('/admin/devis');
+  revalidateCrm(contactId);
+  redirect(`/admin/devis/${devis.id}`);
+}
+
+/** Génère (sans persister) le contenu d'un devis sur-mesure depuis un besoin libre. */
+export async function suggestDevisContent(
+  besoin: string,
+  bien?: string
+): Promise<{ objet: string; intervention: string[]; livrable: string[] } | { error: string }> {
+  await requireUser();
+  return generateDevisContent(besoin, bien);
+}
+
+/**
+ * Devis SUR-MESURE : contenu (objet/déroulé/livrable) rédigé par l'IA puis relu,
+ * PRIX saisi par l'admin. serviceType = NULL → jamais confondu avec un devis
+ * travaux (sentinelle AUTRE). Contenu stocké en JSON dans `notes` (zéro migration).
+ */
+export async function createDevisSurMesure(
+  _prev: string | undefined,
+  formData: FormData
+): Promise<string | undefined> {
+  await requireUser();
+
+  const contactId = num(formData.get('contactId'));
+  if (!contactId) return 'Client obligatoire.';
+
+  const objet = num(formData.get('objet')).trim();
+  if (!objet) return 'Objet de la mission obligatoire (générez ou saisissez le contenu).';
+
+  const intervention = num(formData.get('intervention'))
+    .split('\n')
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const livrable = num(formData.get('livrable'))
+    .split('\n')
+    .map((s) => s.trim())
+    .filter(Boolean);
+  if (intervention.length === 0 || livrable.length === 0) {
+    return "Renseignez le déroulé de l'intervention et le livrable (une ligne par point).";
+  }
+
+  const prix = Math.round(Number(num(formData.get('prix')).replace(',', '.')) || 0);
+  if (!prix || prix < 1 || prix > 100000) return 'Indiquez un montant valide (€ HT).';
+
+  const contact = await prisma.contact.findUnique({ where: { id: contactId } });
+  if (!contact) return 'Client introuvable.';
+
+  const number = await nextDevisNumber();
+
+  const lines = [
+    {
+      designation: 'Diagnostic sur site, analyse et production du rapport',
+      detail: 'Réalisé par le diagnostiqueur indépendant mandaté, sous sa responsabilité',
+      unit: 'Forfait',
+      qty: 1,
+      unitPrice: 0,
+      total: 0,
+      position: 0,
+    },
+    {
+      designation: 'Coordination de la mission et mise en forme du rapport',
+      detail: 'Planification, suivi du dossier et production éditoriale du rapport — IPB',
+      unit: 'Forfait',
+      qty: 1,
+      unitPrice: prix,
+      total: prix,
+      position: 1,
+    },
+  ];
+  const avecFrais = Boolean(num(formData.get('fraisDeplacement')).trim());
+  if (avecFrais) {
+    lines.push({
+      designation: 'Frais de déplacement',
+      detail: 'Déplacement aller-retour sur le lieu de l’intervention',
+      unit: 'Forfait',
+      qty: 1,
+      unitPrice: FRAIS_DEPLACEMENT,
+      total: FRAIS_DEPLACEMENT,
+      position: lines.length,
+    });
+  }
+  const totalHT = prix + (avecFrais ? FRAIS_DEPLACEMENT : 0);
+
+  const devis = await prisma.devis.create({
+    data: {
+      number,
+      contactId,
+      leadId: num(formData.get('leadId')) || null,
+      object: objet,
+      serviceType: null,
+      bienConcerne: num(formData.get('bienConcerne')).trim() || null,
+      notes: serializeDevisContent({ intervention, livrable }),
+      validUntil: defaultValidUntil(),
       totalHT,
       lines: { create: lines },
     },
@@ -314,53 +415,78 @@ export async function updateDevis(
   const id = num(formData.get('devisId'));
   if (!id) return 'Devis introuvable.';
 
-  const serviceRaw = num(formData.get('serviceType')).trim();
-  const serviceType = (
-    serviceRaw in ServiceType && serviceRaw !== 'AUTRE' ? serviceRaw : 'FISSURES'
-  ) as ServiceType;
   const prix = Math.round(Number(num(formData.get('prix')).replace(',', '.')) || 0);
   if (!prix || prix < 1 || prix > 100000) {
     return 'Montant invalide (€ HT).';
   }
 
-  const existing = await prisma.devis.findUnique({ where: { id }, select: { id: true } });
+  const existing = await prisma.devis.findUnique({
+    where: { id },
+    select: { serviceType: true, object: true },
+  });
   if (!existing) return 'Devis introuvable.';
+
+  // Devis SUR-MESURE (serviceType null) : on PRÉSERVE le type, l'objet et le
+  // contenu (notes restent intactes) — on ne recalcule que le prix/les lignes.
+  const isSurMesure = existing.serviceType === null;
+  const serviceRaw = num(formData.get('serviceType')).trim();
+  const serviceType: ServiceType | null = isSurMesure
+    ? null
+    : ((serviceRaw in ServiceType && serviceRaw !== 'AUTRE'
+        ? serviceRaw
+        : 'FISSURES') as ServiceType);
 
   const tpl = devisTemplate(serviceType);
   const validRaw = num(formData.get('validUntil'));
 
-  // Remplace les lignes par les 2 lignes recalculées.
+  // Lignes recalculées (diagnostic « — » + coordination/prix), + frais si coché.
+  const lines = [
+    {
+      designation: 'Diagnostic sur site, analyse et production du rapport',
+      detail: 'Réalisé par le diagnostiqueur indépendant mandaté, sous sa responsabilité',
+      unit: 'Forfait',
+      qty: 1,
+      unitPrice: 0,
+      total: 0,
+      position: 0,
+    },
+    {
+      designation: 'Coordination de la mission et mise en forme du rapport',
+      detail: 'Planification, suivi du dossier et production éditoriale du rapport — IPB',
+      unit: 'Forfait',
+      qty: 1,
+      unitPrice: prix,
+      total: prix,
+      position: 1,
+    },
+  ];
+  // Frais de déplacement : conservés si la case est cochée (l'édition ne les perd
+  // plus). EditDevisForm pré-coche selon l'état du devis.
+  const avecFrais = Boolean(num(formData.get('fraisDeplacement')).trim());
+  if (avecFrais) {
+    lines.push({
+      designation: 'Frais de déplacement',
+      detail: 'Déplacement aller-retour sur le lieu de l’intervention',
+      unit: 'Forfait',
+      qty: 1,
+      unitPrice: FRAIS_DEPLACEMENT,
+      total: FRAIS_DEPLACEMENT,
+      position: lines.length,
+    });
+  }
+  const totalHT = prix + (avecFrais ? FRAIS_DEPLACEMENT : 0);
+
+  // Remplace les lignes par les lignes recalculées.
   await prisma.devisLine.deleteMany({ where: { devisId: id } });
   await prisma.devis.update({
     where: { id },
     data: {
       serviceType,
-      object: tpl.objet,
+      object: isSurMesure ? existing.object : tpl.objet,
       bienConcerne: num(formData.get('bienConcerne')).trim() || null,
       validUntil: validRaw ? new Date(validRaw) : undefined,
-      totalHT: prix,
-      lines: {
-        create: [
-          {
-            designation: 'Diagnostic sur site, analyse et production du rapport',
-            detail: 'Réalisé par le diagnostiqueur indépendant mandaté, sous sa responsabilité',
-            unit: 'Forfait',
-            qty: 1,
-            unitPrice: 0,
-            total: 0,
-            position: 0,
-          },
-          {
-            designation: 'Coordination de la mission et mise en forme du rapport',
-            detail: 'Planification, suivi du dossier et production éditoriale du rapport — IPB',
-            unit: 'Forfait',
-            qty: 1,
-            unitPrice: prix,
-            total: prix,
-            position: 1,
-          },
-        ],
-      },
+      totalHT,
+      lines: { create: lines },
     },
   });
 

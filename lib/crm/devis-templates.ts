@@ -128,3 +128,47 @@ export function isDevisTravaux(d: { serviceType?: ServiceType | null }): boolean
 export function devisTemplate(service?: ServiceType | null): DevisTemplate {
   return TEMPLATES[service ?? 'FISSURES'] ?? FISSURES;
 }
+
+/**
+ * Devis SUR-MESURE : serviceType = null + contenu rédigé par l'IA, stocké en JSON
+ * dans `notes` (zéro migration). `serialize` produit la chaîne à enregistrer.
+ */
+export function serializeDevisContent(c: { intervention: string[]; livrable: string[] }): string {
+  return JSON.stringify({
+    sm: 1, // marqueur « sur-mesure »
+    intervention: c.intervention.filter(Boolean),
+    livrable: c.livrable.filter(Boolean),
+  });
+}
+
+/**
+ * Contenu d'AFFICHAGE d'un devis (objet / déroulé / livrable), utilisé par le PDF
+ * et la fiche : sur-mesure stocké si présent (notes JSON marqué `sm`), sinon le
+ * gabarit du type de diagnostic.
+ */
+export function devisContent(d: {
+  object?: string | null;
+  serviceType?: ServiceType | null;
+  notes?: string | null;
+}): DevisTemplate {
+  if ((d.serviceType ?? null) === null && d.notes) {
+    try {
+      const c = JSON.parse(d.notes) as {
+        sm?: number;
+        intervention?: unknown;
+        livrable?: unknown;
+      };
+      if (c.sm === 1 && Array.isArray(c.intervention) && Array.isArray(c.livrable)) {
+        return {
+          objet: d.object || 'Mission sur-mesure',
+          intervention: (c.intervention as string[]).filter(Boolean),
+          livrable: (c.livrable as string[]).filter(Boolean),
+        };
+      }
+    } catch {
+      /* notes non-JSON (notes libres normales) → gabarit */
+    }
+  }
+  const tpl = devisTemplate(d.serviceType);
+  return { objet: d.object || tpl.objet, intervention: tpl.intervention, livrable: tpl.livrable };
+}

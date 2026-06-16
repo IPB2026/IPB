@@ -5,7 +5,7 @@ import { prisma } from '@/lib/prisma';
 import { DevisDocument } from '@/lib/pdf/devis-document';
 import { FactureDocument } from '@/lib/pdf/facture-document';
 import { RapportDocument } from '@/lib/pdf/rapport-document';
-import { devisTemplate } from '@/lib/crm/devis-templates';
+import { devisContent } from '@/lib/crm/devis-templates';
 import { diagnosticienFor } from '@/lib/crm/diagnosticiens';
 import type { ReportContent } from '@/lib/ai/report';
 
@@ -43,13 +43,14 @@ export async function buildDevisPdf(id: string): Promise<Buffer | null> {
     assignedEmail = lead?.assignedTo?.email ?? null;
   }
 
-  const tpl = devisTemplate(devis.serviceType);
+  // Contenu sur-mesure (notes JSON) si présent, sinon gabarit du type de diagnostic.
+  const tpl = devisContent(devis);
   const diag = diagnosticienFor({ assignedEmail, service: devis.serviceType });
 
   const el = createElement(DevisDocument, {
     data: {
       number: devis.number,
-      objet: devis.object || tpl.objet,
+      objet: tpl.objet,
       serviceType: devis.serviceType,
       bienConcerne: devis.bienConcerne,
       createdAt: devis.createdAt,

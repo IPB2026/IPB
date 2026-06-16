@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Plus, FileText, Download, Trash2 } from 'lucide-react';
+import { Plus, FileText, Download, Trash2, Sparkles } from 'lucide-react';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
@@ -36,6 +36,13 @@ export default async function DevisListPage() {
               <Download className="h-4 w-4" />
               CSV
             </a>
+            <Link
+              href="/admin/devis/nouveau-surmesure"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-orange-300 bg-orange-50 px-3 py-2 text-sm font-medium text-orange-700 hover:bg-orange-100"
+            >
+              <Sparkles className="h-4 w-4" />
+              Sur-mesure (IA)
+            </Link>
             <Link
               href="/admin/devis/nouveau"
               className="inline-flex items-center gap-1.5 rounded-lg bg-orange-600 px-3.5 py-2 text-sm font-semibold text-white hover:bg-orange-700"
@@ -131,7 +138,7 @@ export default async function DevisListPage() {
                         </span>
                       ) : (
                         <span className="text-slate-600">
-                          {d.serviceType ? SERVICE_LABEL[d.serviceType] : '—'}
+                          {d.serviceType ? SERVICE_LABEL[d.serviceType] : 'Sur-mesure'}
                         </span>
                       )}
                     </td>

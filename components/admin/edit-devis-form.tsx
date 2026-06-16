@@ -34,12 +34,16 @@ export function EditDevisForm({
   prix,
   bienConcerne,
   validUntil,
+  isSurMesure = false,
+  hasFrais = false,
 }: {
   devisId: string;
   serviceType: string;
   prix: number;
   bienConcerne: string;
   validUntil: string;
+  isSurMesure?: boolean;
+  hasFrais?: boolean;
 }) {
   const [error, formAction] = useFormState(updateDevis, undefined);
   const [p, setP] = useState(prix > 0 ? String(prix) : '');
@@ -47,24 +51,32 @@ export function EditDevisForm({
   return (
     <form action={formAction} className="space-y-3">
       <input type="hidden" name="devisId" value={devisId} />
+      {isSurMesure && (
+        <p className="rounded-lg border border-orange-200 bg-orange-50/40 px-3 py-2 text-xs text-orange-700">
+          Devis sur-mesure — le contenu (objet, déroulé, livrable) est figé. Vous pouvez ajuster
+          le prix, le bien, la validité et les frais.
+        </p>
+      )}
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        <div>
-          <label className={label} htmlFor="ed-service">
-            Type de diagnostic
-          </label>
-          <select
-            id="ed-service"
-            name="serviceType"
-            defaultValue={SERVICES.some(([v]) => v === serviceType) ? serviceType : 'FISSURES'}
-            className={field}
-          >
-            {SERVICES.map(([v, l]) => (
-              <option key={v} value={v}>
-                {l}
-              </option>
-            ))}
-          </select>
-        </div>
+        {!isSurMesure && (
+          <div>
+            <label className={label} htmlFor="ed-service">
+              Type de diagnostic
+            </label>
+            <select
+              id="ed-service"
+              name="serviceType"
+              defaultValue={SERVICES.some(([v]) => v === serviceType) ? serviceType : 'FISSURES'}
+              className={field}
+            >
+              {SERVICES.map(([v, l]) => (
+                <option key={v} value={v}>
+                  {l}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
         <div>
           <label className={label} htmlFor="ed-prix">
             Montant (€ HT)
@@ -95,6 +107,15 @@ export function EditDevisForm({
           <input id="ed-valid" name="validUntil" type="date" defaultValue={validUntil} className={field} />
         </div>
       </div>
+      <label className="flex cursor-pointer items-center gap-2.5 text-sm text-slate-700">
+        <input
+          type="checkbox"
+          name="fraisDeplacement"
+          defaultChecked={hasFrais}
+          className="h-4 w-4 rounded border-slate-300 text-orange-600 focus:ring-orange-500"
+        />
+        Frais de déplacement (50 € HT)
+      </label>
       {error && (
         <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p>
       )}
