@@ -159,7 +159,12 @@ export async function sendDevisEmail(
   });
   if (!res.success) return { ok: false, error: res.error ?? 'Échec envoi' };
 
-  await prisma.devis.update({ where: { id }, data: { status: 'ENVOYE' } });
+  // sentAt = base FIABLE des relances ; relanceCount remis à 0 → chaque (ré)envoi
+  // redémarre proprement la séquence de relances (plus de matching de texte).
+  await prisma.devis.update({
+    where: { id },
+    data: { status: 'ENVOYE', sentAt: new Date(), relanceCount: 0 },
+  });
   // Interconnexion : l'envoi du devis fait AVANCER le pipeline automatiquement
   // (Nouveau / À rappeler → Devis envoyé). Pas de saisie manuelle.
   if (devis.leadId) {
@@ -210,7 +215,12 @@ export async function sendFactureEmail(id: string): Promise<SendResult> {
   });
   if (!res.success) return { ok: false, error: res.error ?? 'Échec envoi' };
 
-  await prisma.facture.update({ where: { id }, data: { status: 'ENVOYEE' } });
+  // relanceCount remis à 0 → l'envoi (ou le renvoi) redémarre la séquence de
+  // relances de paiement (basée sur dueDate + ce compteur fiable).
+  await prisma.facture.update({
+    where: { id },
+    data: { status: 'ENVOYEE', relanceCount: 0 },
+  });
   await prisma.activity.create({
     data: {
       type: 'EMAIL',

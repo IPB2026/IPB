@@ -253,6 +253,8 @@ model Devis {
   notes        String?
   validUntil   DateTime?
   acceptedAt   DateTime? // date d'acceptation du devis (déclenche le lancement travaux)
+  sentAt       DateTime? // date du 1er envoi — base FIABLE des relances (vs matching de texte)
+  relanceCount Int       @default(0) // nb de relances commerciales auto déjà envoyées
 
   totalHT Decimal     @default(0) @db.Decimal(10, 2)
   lines   DevisLine[]
@@ -298,6 +300,7 @@ model Facture {
   issuedAt    DateTime @default(now())
   dueDate     DateTime?
   acompte     Decimal? @db.Decimal(10, 2)
+  relanceCount Int      @default(0) // nb de relances de paiement auto déjà envoyées
   notes       String?
 
   totalHT Decimal       @default(0) @db.Decimal(10, 2)

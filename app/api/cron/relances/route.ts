@@ -100,14 +100,18 @@ export async function GET(req: Request) {
   }
 
   // ── Relances commerciales : devis ENVOYE sans réponse (J+3 puis J+7) ──
-  // Pas de champ dédié sur Devis : l'envoi et les relances sont tracés via
-  // Activity (le numéro de devis, unique, sert de clé). Stop automatique dès
-  // que le devis quitte ENVOYE (accepté / refusé / expiré).
+  // FIABLE depuis la migration relance_tracking : on s'appuie sur les champs
+  // Devis.sentAt (date d'envoi) et Devis.relanceCount (compteur), au lieu d'un
+  // matching de texte sur les activités. Stop dès que le devis quitte ENVOYE.
   const DEVIS_STEPS = [3, 7] as const;
   let devisSent = 0;
   try {
     const devisList = await prisma.devis.findMany({
-      where: { status: 'ENVOYE', contact: { email: { not: null } } },
+      where: {
+        status: 'ENVOYE',
+        relanceCount: { lt: DEVIS_STEPS.length },
+        contact: { email: { not: null } },
+      },
       include: { contact: true },
       take: 100,
       orderBy: { createdAt: 'asc' },
@@ -117,30 +121,13 @@ export async function GET(req: Request) {
       const email = devis.contact.email;
       if (!email) continue;
 
-      const sentAct = await prisma.activity.findFirst({
-        where: {
-          contactId: devis.contactId,
-          type: 'EMAIL',
-          content: { contains: `Devis ${devis.number} envoyé` },
-        },
-        orderBy: { createdAt: 'asc' },
-        select: { createdAt: true },
-      });
-      const sentAt = sentAct?.createdAt ?? devis.updatedAt;
-
-      const relanceCount = await prisma.activity.count({
-        where: {
-          contactId: devis.contactId,
-          content: { contains: `Relance devis ${devis.number}` },
-        },
-      });
-      if (relanceCount >= DEVIS_STEPS.length) continue;
-
-      const offset = DEVIS_STEPS[relanceCount];
+      // sentAt fiable (repli updatedAt pour les devis antérieurs à la migration).
+      const sentAt = devis.sentAt ?? devis.updatedAt;
+      const offset = DEVIS_STEPS[devis.relanceCount];
       const ageDays = (now - sentAt.getTime()) / DAY;
       if (ageDays < offset) continue;
 
-      const step = (relanceCount + 1) as 1 | 2;
+      const step = (devis.relanceCount + 1) as 1 | 2;
       try {
         const res = await sendEmail({
           to: email,
@@ -158,6 +145,10 @@ export async function GET(req: Request) {
           errors.push(`devis ${devis.id}: ${res.error}`);
           continue;
         }
+        await prisma.devis.update({
+          where: { id: devis.id },
+          data: { relanceCount: { increment: 1 } },
+        });
         await prisma.activity.create({
           data: {
             type: 'EMAIL',
@@ -182,6 +173,7 @@ export async function GET(req: Request) {
     const factures = await prisma.facture.findMany({
       where: {
         status: 'ENVOYEE',
+        relanceCount: { lt: FACTURE_STEPS.length },
         dueDate: { not: null, lt: new Date(now) },
         contact: { email: { not: null } },
       },
@@ -194,16 +186,10 @@ export async function GET(req: Request) {
       const email = f.contact.email;
       if (!email || !f.dueDate) continue;
 
-      const relanceCount = await prisma.activity.count({
-        where: {
-          contactId: f.contactId,
-          content: { contains: `Relance facture ${f.number}` },
-        },
-      });
-      if (relanceCount >= FACTURE_STEPS.length) continue;
-
+      // Compteur fiable Facture.relanceCount (vs matching de texte). Échéancier
+      // calé sur dueDate (J+3 puis J+7 après l'échéance).
       const overdueDays = (now - f.dueDate.getTime()) / DAY;
-      const offset = FACTURE_STEPS[relanceCount];
+      const offset = FACTURE_STEPS[f.relanceCount];
       if (overdueDays < offset) continue;
 
       try {
@@ -221,6 +207,10 @@ export async function GET(req: Request) {
           errors.push(`facture ${f.id}: ${res.error}`);
           continue;
         }
+        await prisma.facture.update({
+          where: { id: f.id },
+          data: { relanceCount: { increment: 1 } },
+        });
         await prisma.activity.create({
           data: {
             type: 'EMAIL',
