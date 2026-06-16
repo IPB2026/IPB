@@ -21,6 +21,14 @@ const nextConfig = {
     serverActions: {
       bodySizeLimit: '8mb',
     },
+    // Embarque les polices TTF du devis PDF dans les lambdas qui les rendent
+    // (route PDF + page devis qui envoie l'e-mail + connecteur MCP). Sans ça,
+    // react-pdf échoue en ENOENT au rendu sur Vercel.
+    outputFileTracingIncludes: {
+      '/admin/devis/[id]/pdf': ['./lib/pdf/fonts/**'],
+      '/admin/devis/[id]': ['./lib/pdf/fonts/**'],
+      '/api/mcp/[secret]/[transport]': ['./lib/pdf/fonts/**'],
+    },
   },
   
   async redirects() {
@@ -44,6 +52,20 @@ const nextConfig = {
       {
         source: '/traitement-humidite/villate',
         destination: '/zones-intervention',
+        permanent: true,
+      },
+      // Aiguefonde (Tarn 81) — limitrophe de Mazamet, redirige vers la page ville la plus proche.
+      // Remonté en 404 dans GSC (rapport 2026-06-12).
+      {
+        source: '/expert-fissures/aiguefonde',
+        destination: '/expert-fissures/mazamet',
+        permanent: true,
+      },
+      // Ancien article blog daté 2025 → version actualisée 2026 (même intention de recherche).
+      // Remonté en 404 dans GSC (rapport 2026-06-12).
+      {
+        source: '/blog/cout-reparation-fissures-2025',
+        destination: '/blog/prix-agrafage-fissures-2026',
         permanent: true,
       },
       // Anciennes URL racine (liens internes / backlinks) → pages réelles
@@ -111,11 +133,13 @@ const nextConfig = {
               "object-src 'none'",
               "img-src 'self' data: https:",
               // Ads tag : pagead2.googlesyndication.com et adtrafficquality.google
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://www.google.com https://www.gstatic.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google",
+              // Conversions Ads : googleadservices.com (conversion_async.js) + googleads.g.doubleclick.net (viewthroughconversion)
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://www.google.com https://www.gstatic.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.googleadservices.com https://googleads.g.doubleclick.net",
               "style-src 'self' 'unsafe-inline'",
               "font-src 'self' data:",
               // Conversions Ads : googleads.g.doubleclick.net + *.doubleclick.net pour le ping de conversion
-              "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://www.google.com https://googleads.g.doubleclick.net https://*.doubleclick.net https://pagead2.googlesyndication.com https://*.adtrafficquality.google",
+              // + googleadservices.com pour le fetch /pagead/conversion (sinon "Refused to connect" CSP)
+              "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://www.google.com https://googleads.g.doubleclick.net https://*.doubleclick.net https://pagead2.googlesyndication.com https://*.adtrafficquality.google https://www.googleadservices.com",
             ].join('; ') + ';',
           },
           {

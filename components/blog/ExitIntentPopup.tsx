@@ -66,7 +66,7 @@ export function ExitIntentPopup() {
         eyebrow: 'Avant de partir',
         title: 'Une fissure observée',
         titleItalic: 'mérite un avis posé.',
-        body: "Notre cabinet vient sur place sous 72h, mesure ce qu'il y a à mesurer, et vous remet un rapport écrit. Sans engagement de votre part.",
+        body: "Un expert du réseau IPB vient sur place sous 72h, mesure ce qu'il y a à mesurer, et vous remet une note de synthèse écrite. Sans engagement de votre part.",
         primaryCta: 'Décrire ma situation',
         primaryHref: '/diagnostic',
       };
@@ -85,8 +85,8 @@ export function ExitIntentPopup() {
       eyebrow: 'Avant de partir',
       title: 'Une question technique,',
       titleItalic: 'une réponse posée.',
-      body: "Notre cabinet répond à toutes les demandes sous 48 heures, sans pression commerciale. Vous décrivez, nous analysons.",
-      primaryCta: 'Échanger avec le cabinet',
+      body: "Notre équipe répond à toutes les demandes sous 48 heures, sans pression commerciale. Vous décrivez, on qualifie votre situation et on mandate l'expert partenaire qui convient.",
+      primaryCta: "Échanger avec l'institut",
       primaryHref: '/rdv-cabinet',
     };
   })();

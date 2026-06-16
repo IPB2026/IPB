@@ -32,6 +32,463 @@ interface BlogPost {
 
 // Base de données des articles avec copywriting expert et orienté conversion
 const blogPosts: { [key: string]: BlogPost } = {
+  'diagnostic-fissure-humidite-avant-achat': {
+    slug: 'diagnostic-fissure-humidite-avant-achat',
+    title: "Fissures ou humidité avant d'acheter : faire diagnostiquer avant le compromis (et négocier le prix)",
+    metaTitle: 'Diagnostic fissure/humidité avant achat : négocier le prix',
+    excerpt: "Les 9 diagnostics obligatoires ne disent rien des fissures ni de l'humidité. Pourtant, ce sont eux qui peuvent transformer un coup de cœur en gouffre — ou en levier de négociation à plusieurs dizaines de milliers d'euros. Le guide de l'acheteur, étape par étape, du premier coup d'œil au compromis.",
+    date: '2026-06-12',
+    dateModified: '2026-06-12',
+    readTime: '15 min',
+    category: 'conseils',
+    author: "L'institut IPB",
+    metaDescription: "Acheter sans piège : quand faire diagnostiquer fissures et humidité (avant le compromis, délai SRU, condition suspensive) et comment transformer le rapport en levier de négociation chiffré. Guide acheteur IPB, Occitanie.",
+    keywords: ['diagnostic avant achat maison', 'fissures avant achat', 'humidité avant achat', 'négocier prix maison fissurée', 'expertise avant compromis', 'condition suspensive expertise', 'délai rétractation compromis', 'diagnostic structurel avant achat', 'vice caché maison', 'acheter maison Toulouse'],
+    content: `
+      <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
+        <p class="font-bold text-orange-900 mb-2">L'essentiel en 30 secondes</p>
+        <p class="text-orange-800">Les diagnostics immobiliers obligatoires (DPE, amiante, plomb, termites…) <strong>ne couvrent ni la solidité de la structure, ni l'humidité</strong>. Un bien peut être "tous diagnostics OK" et cacher 25 000 € de reprise en sous-œuvre. Le bon moment pour faire vérifier les fissures et l'humidité, c'est <strong>avant de signer le compromis</strong> — ou en l'assortissant d'une condition suspensive d'expertise. Un désordre chiffré devient alors un <strong>levier de négociation euro pour euro</strong>, pas une découverte angoissante après la vente.</p>
+      </div>
+
+      <h2 id="diagnostics-obligatoires-ne-couvrent-pas">Pourquoi les diagnostics obligatoires ne vous protègent pas</h2>
+
+      <p>Quand vous achetez, le vendeur vous remet un Dossier de Diagnostic Technique (DDT) : DPE, amiante, plomb (CREP), termites, gaz, électricité, état des risques (ERP), assainissement, mesurage Carrez. Neuf diagnostics réglementaires. Aucun ne porte sur :</p>
+
+      <ul>
+        <li><strong>La solidité de la structure</strong> — fissures, tassement de fondation, affaissement de plancher.</li>
+        <li><strong>L'humidité</strong> — remontées capillaires, infiltrations, condensation, cave humide.</li>
+      </ul>
+
+      <p>Autrement dit : les deux pathologies les plus coûteuses à réparer sont précisément celles que la loi ne vous oblige pas à connaître avant de signer. C'est à <strong>vous, acheteur, d'aller chercher l'information</strong>. La seule exception côté humidité concerne la <strong>mérule</strong> : dans les communes ayant fait l'objet d'un arrêté préfectoral, le vendeur doit vous informer de sa présence (art. L. 133-7 et L. 133-8 du Code de la construction et de l'habitation).</p>
+
+      <div class="my-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
+        <h3 class="font-bold text-blue-900 mb-3">Le piège classique</h3>
+        <p class="text-blue-800">"Le vendeur m'a dit que la fissure était stabilisée." Une phrase rassurante n'a aucune valeur technique ni juridique. Une fissure de 3 mm peut être inerte… ou progresser de 2 mm par été sec. Seule une mesure instrumentée et une lecture de la cause (sol argileux, drainage, végétation) permettent de trancher. À l'œil nu, personne ne peut le savoir — pas même un bon agent immobilier.</p>
+      </div>
+
+      <h2 id="quand-faire-diagnostiquer">Quand faire diagnostiquer : la chronologie qui vous met en position de force</h2>
+
+      <p>Le timing change tout. Voici les trois fenêtres possibles, de la meilleure à la plus risquée.</p>
+
+      <h3>1. Avant le compromis (idéal)</h3>
+      <p>Vous repérez des signes (fissures, taches, odeur de cave, peinture qui cloque) dès les visites. Vous faites intervenir un expert <strong>avant toute signature</strong>. Vous négociez alors en connaissance de cause, sans pression de délai. C'est la position la plus confortable : si le chiffrage des travaux est lourd, vous renoncez sans avoir rien engagé, ou vous ajustez votre offre.</p>
+
+      <h3>2. Pendant le délai de rétractation SRU (10 jours)</h3>
+      <p>Après la signature du compromis, l'acquéreur non professionnel d'un logement dispose d'un <strong>délai de rétractation de 10 jours</strong> (article L. 271-1 du Code de la construction et de l'habitation), à compter du lendemain de la première présentation de la notification. C'est une bouée de secours — mais 10 jours, c'est court pour organiser une visite technique et obtenir une analyse posée. À utiliser, mais sans en faire votre stratégie principale.</p>
+
+      <h3>3. Via une condition suspensive d'expertise (la clause maligne)</h3>
+      <p>Si vous devez signer vite pour ne pas perdre le bien, faites insérer dans le compromis une <strong>condition suspensive d'expertise structurelle et/ou humidité</strong>. Concrètement : la vente n'est définitive que si l'expertise ne révèle pas de désordre supérieur à un montant que vous fixez (par exemple 10 000 €). En dessous, vous achetez ; au-dessus, vous renégociez ou vous vous retirez sans perdre votre dépôt de garantie. Faites rédiger cette clause par votre notaire.</p>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead>
+            <tr class="bg-slate-100">
+              <th class="border border-slate-300 p-4 text-left font-bold">Moment du diagnostic</th>
+              <th class="border border-slate-300 p-4 text-center font-bold">Marge de manœuvre</th>
+              <th class="border border-slate-300 p-4 text-center font-bold">Pression de temps</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-4">Avant le compromis</td>
+              <td class="border border-slate-300 p-4 text-center font-bold">Maximale</td>
+              <td class="border border-slate-300 p-4 text-center">Aucune</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-4">Condition suspensive</td>
+              <td class="border border-slate-300 p-4 text-center font-bold">Élevée</td>
+              <td class="border border-slate-300 p-4 text-center">Modérée</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-4">Délai SRU (10 j)</td>
+              <td class="border border-slate-300 p-4 text-center">Faible</td>
+              <td class="border border-slate-300 p-4 text-center">Forte</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="fissure-ou-humidite">Fissure ou humidité : que regarde-t-on, concrètement ?</h2>
+
+      <h3>Côté fissures</h3>
+      <p>L'expert mesure l'ouverture au fissuromètre, observe l'orientation (verticale, horizontale, en escalier), cherche les indices secondaires (portes qui coincent, carrelage qui se soulève, désaffleurement de plinthes) et remonte à la cause : tassement différentiel sur sol argileux, défaut de fondation, surcharge. Pour apprendre à lire vous-même les premiers signes, voyez notre guide <a href="/blog/evaluer-gravite-fissure-maison">évaluer la gravité d'une fissure</a> et <a href="/blog/lire-fissures-verticale-horizontale-oblique">lire une fissure selon son orientation</a>.</p>
+
+      <h3>Côté humidité</h3>
+      <p>Mesure au hygromètre, caméra thermique pour localiser les ponts thermiques et les zones froides, recherche de la source : remontée capillaire, infiltration latérale, condensation, défaut de ventilation. Le bon diagnostic distingue ces causes — un traitement appliqué à la mauvaise cause ne sert à rien. Notre dossier <a href="/blog/condensation-ou-infiltration">condensation ou infiltration ?</a> explique pourquoi ce tri est décisif.</p>
+
+      <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
+        <h3 class="font-bold text-orange-900 mb-3">Comment IPB intervient avant un achat</h3>
+        <p class="text-orange-800">Vous nous décrivez le bien et vos délais. Un expert du réseau IPB se déplace, lit le bâti (fissures et/ou humidité) et l'institut vous remet une <strong>note de synthèse claire avec chiffrage des travaux</strong> — exactement ce qu'il vous faut pour négocier. Si votre dossier exige un <strong>rapport opposable</strong> (litige, preuve de vice caché, contre-expertise d'assurance), nous vous orientons vers un bureau d'études structure ou un expert indépendant. Voir aussi notre page <a href="/expertise-avant-achat-immobilier-toulouse">expertise avant achat immobilier</a>.</p>
+      </div>
+
+      <h2 id="negocier">Transformer le diagnostic en levier de négociation chiffré</h2>
+
+      <p>C'est ici que le diagnostic devient rentable. Un vendeur peut balayer "il y a une petite fissure" d'un revers de main. Il ne peut pas balayer un <strong>chiffrage écrit de 22 000 € de reprise structurelle</strong>. Le rapport déplace la discussion du ressenti vers le chiffre.</p>
+
+      <h3>Exemple concret</h3>
+      <p>Bien affiché à <strong>320 000 €</strong>. La note de synthèse révèle un tassement modéré nécessitant agrafage structurel + drainage périphérique, chiffré à <strong>22 000 €</strong> par le partenaire. Trois issues possibles :</p>
+      <ul>
+        <li><strong>Baisse de prix</strong> : vous obtenez 15 000 à 22 000 € de remise, vous gérez les travaux après l'achat.</li>
+        <li><strong>Travaux à la charge du vendeur</strong> : il fait réaliser la reprise sous garantie décennale avant la vente (attestation à l'appui).</li>
+        <li><strong>Séquestre</strong> : une somme est bloquée chez le notaire jusqu'à réalisation des travaux.</li>
+      </ul>
+
+      <p>Dans les trois cas, vous avez transformé une inquiétude diffuse en négociation rationnelle. Pour la mécanique fine de la décote selon la gravité, lisez notre guide <a href="/blog/acheter-maison-fissuree">acheter une maison fissurée : comment négocier le prix</a>.</p>
+
+      <div class="my-8 p-6 bg-green-50 border border-green-200 rounded-xl">
+        <h3 class="font-bold text-green-900 mb-3">Le bon réflexe coût/bénéfice</h3>
+        <p class="text-green-800">Le coût d'une visite de diagnostic est sans commune mesure avec ce qu'elle vous fait économiser : soit elle révèle un désordre et vous négociez (ou vous fuyez) plusieurs milliers d'euros, soit elle confirme que tout va bien et vous achetez l'esprit tranquille. Dans les deux cas, vous gagnez. La seule mauvaise décision, c'est de signer sans savoir.</p>
+      </div>
+
+      <h2 id="faq">Questions fréquentes</h2>
+
+      <h3>Un diagnostic fissures ou humidité est-il obligatoire avant d'acheter ?</h3>
+      <p>Non. Ni la solidité de la structure ni l'humidité ne font partie des diagnostics immobiliers obligatoires. C'est une démarche volontaire de l'acheteur — et c'est précisément ce qui en fait un avantage : peu d'acheteurs le font, vous prenez l'avantage dans la négociation.</p>
+
+      <h3>Peut-on faire expertiser un bien avant de signer le compromis ?</h3>
+      <p>Oui, et c'est la meilleure option. Avec l'accord du vendeur (qui n'a aucune raison de refuser s'il est de bonne foi), un expert peut visiter le bien avant toute signature. Vous négociez ensuite en connaissance de cause, sans pression de délai.</p>
+
+      <h3>Le délai de rétractation de 10 jours suffit-il pour faire un diagnostic ?</h3>
+      <p>C'est jouable mais serré. Le délai SRU de 10 jours (art. L. 271-1 CCH) court à compter du lendemain de la notification du compromis. Organiser une visite technique et obtenir une analyse posée en 10 jours est possible mais stressant. Mieux vaut diagnostiquer avant, ou prévoir une condition suspensive d'expertise.</p>
+
+      <h3>Que faire si je découvre le défaut après l'achat ?</h3>
+      <p>Vous pouvez invoquer la garantie des vices cachés (art. 1641 du Code civil) si le défaut était antérieur à la vente, non apparent et suffisamment grave. L'action doit être engagée dans les 2 ans à compter de la découverte du vice (art. 1648), dans la limite de 20 ans après la vente. Mais un procès est long et incertain : mieux vaut diagnostiquer avant pour ne jamais en arriver là.</p>
+
+      <h3>Vous vendez ce bien plutôt que de l'acheter ?</h3>
+      <p>Le raisonnement s'inverse : anticiper le diagnostic vous permet de désamorcer la négociation avant même qu'elle commence. Lisez notre guide vendeur : <a href="/blog/vendre-maison-fissure-humidite-anticiper">vendre un bien avec fissures ou humidité sans subir la décote</a>.</p>
+
+      <div class="my-10 p-8 bg-ipb-navy rounded-2xl text-center">
+        <h2 class="text-white font-bold text-2xl mb-3" style="color:white;">Un bien vous intéresse, mais un doute vous retient ?</h2>
+        <p class="text-white/80 mb-6">Faites lire le bâti par un expert du réseau IPB avant de signer. Note de synthèse claire, chiffrage des travaux, et une décision d'achat prise en connaissance de cause.</p>
+        <a href="/diagnostic" class="inline-block bg-ipb-orange text-white font-semibold px-8 py-4 rounded-lg hover:bg-orange-700 transition-colors" style="color:white;">Décrire le bien en 2 minutes →</a>
+      </div>
+    `
+  },
+  'vendre-maison-fissure-humidite-anticiper': {
+    slug: 'vendre-maison-fissure-humidite-anticiper',
+    title: "Vendre un bien avec fissures ou humidité : le dossier qui désamorce la négociation (et vous protège du vice caché)",
+    metaTitle: 'Vendre avec fissures ou humidité : éviter la décote',
+    excerpt: "Cacher une fissure ou une trace d'humidité, c'est s'exposer à une annulation de vente et à des années de procédure. Tout anticiper, au contraire, transforme un point faible en gage de confiance — et vous fait gagner la négociation. La méthode du vendeur averti.",
+    date: '2026-06-12',
+    dateModified: '2026-06-12',
+    readTime: '14 min',
+    category: 'conseils',
+    author: "L'institut IPB",
+    metaDescription: "Vendre une maison avec fissures ou humidité : obligation d'information, risque de vice caché, et la stratégie du dossier de transparence pour préserver le prix. Guide vendeur IPB, Occitanie.",
+    keywords: ['vendre maison fissurée', 'vendre maison humide', 'obligation information vendeur', 'vice caché vendeur', 'décote maison fissures', 'dossier de transparence vente', 'vendre sans procès', 'diagnostic avant vente', 'attestation décennale vente', 'réticence dolosive'],
+    content: `
+      <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
+        <p class="font-bold text-orange-900 mb-2">L'essentiel en 30 secondes</p>
+        <p class="text-orange-800">Face à une fissure ou à de l'humidité, le vendeur a deux options : <strong>les cacher</strong> (et risquer l'annulation de la vente plus des dommages-intérêts pendant des années) ou <strong>les anticiper</strong>. La deuxième gagne presque toujours. En arrivant avec un diagnostic et un chiffrage des travaux, vous reprenez le contrôle du récit : le défaut n'est plus une bombe que l'acheteur découvre, mais un problème connu, mesuré et solvable. Résultat : au lieu d'une décote panique de -20 à -30%, vous limitez l'impact au coût réel des travaux.</p>
+      </div>
+
+      <h2 id="obligation-information">Ce que la loi vous oblige à dire (et ce qui arrive si vous vous taisez)</h2>
+
+      <p>Beaucoup de vendeurs croient qu'en l'absence de diagnostic obligatoire sur la structure et l'humidité, ils n'ont rien à déclarer. C'est une erreur dangereuse. Le Code civil impose deux obligations majeures :</p>
+
+      <ul>
+        <li><strong>L'obligation précontractuelle d'information</strong> (art. 1112-1 du Code civil) : vous devez communiquer à l'acheteur toute information dont vous savez qu'elle est déterminante pour son consentement.</li>
+        <li><strong>La garantie des vices cachés</strong> (art. 1641 et suivants) : si vous laissez l'acheteur découvrir après la vente un défaut grave, antérieur et non apparent, il peut agir contre vous.</li>
+      </ul>
+
+      <p>Pire : si vous <strong>dissimulez sciemment</strong> un désordre que vous connaissez (un coup de peinture sur une fissure, un meuble qui masque une tache d'humidité), vous tombez dans la <strong>réticence dolosive</strong> (art. 1137). Conséquence possible : annulation de la vente, restitution du prix, dommages-intérêts.</p>
+
+      <div class="my-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
+        <h3 class="font-bold text-blue-900 mb-3">Combien de temps êtes-vous exposé ?</h3>
+        <p class="text-blue-800">L'acheteur dispose de <strong>2 ans à compter de la découverte du vice</strong> pour agir en garantie des vices cachés (art. 1648 du Code civil), dans la limite d'un délai butoir de <strong>20 ans après la vente</strong> (art. 2232, confirmé par la Cour de cassation en 2023). Autrement dit, une fissure mal gérée aujourd'hui peut revenir vous hanter très longtemps. La transparence documentée est votre meilleure assurance.</p>
+      </div>
+
+      <h2 id="cacher-vs-anticiper">Cacher ou anticiper : la comparaison qui fait réfléchir</h2>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead>
+            <tr class="bg-slate-100">
+              <th class="border border-slate-300 p-4 text-left font-bold">Critère</th>
+              <th class="border border-slate-300 p-4 text-center font-bold">Cacher / minimiser</th>
+              <th class="border border-slate-300 p-4 text-center font-bold">Anticiper / documenter</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-4 font-medium">Découverte par l'acheteur</td>
+              <td class="border border-slate-300 p-4 text-center">En visite ou après vente (panique)</td>
+              <td class="border border-slate-300 p-4 text-center">Annoncée et cadrée par vous</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-4 font-medium">Décote subie</td>
+              <td class="border border-slate-300 p-4 text-center">-20 à -30% (peur)</td>
+              <td class="border border-slate-300 p-4 text-center">Coût réel des travaux</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-4 font-medium">Risque juridique</td>
+              <td class="border border-slate-300 p-4 text-center">Élevé (vice caché, dol)</td>
+              <td class="border border-slate-300 p-4 text-center">Fortement réduit</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-4 font-medium">Position de négociation</td>
+              <td class="border border-slate-300 p-4 text-center">Défensive</td>
+              <td class="border border-slate-300 p-4 text-center">Maîtrisée</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="dossier-transparence">Le dossier de transparence : votre meilleur outil de vente</h2>
+
+      <p>L'idée est simple : au lieu de laisser l'acheteur (et son expert) découvrir le problème et imaginer le pire, vous arrivez avec un dossier complet qui répond à ses questions avant qu'il ne les pose. Ce dossier contient :</p>
+
+      <ol>
+        <li><strong>Une note de synthèse</strong> sur l'état du bâti (fissures et/ou humidité) : nature du désordre, cause, gravité, évolution.</li>
+        <li><strong>Un chiffrage des travaux</strong> nécessaires, établi par une entreprise qualifiée — pour que l'acheteur sache exactement à quoi s'en tenir.</li>
+        <li><strong>Le cas échéant, une attestation de travaux déjà réalisés</strong> sous garantie décennale : c'est l'argument le plus puissant. Un désordre traité et garanti 10 ans n'est plus un risque, c'est un atout.</li>
+      </ol>
+
+      <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
+        <h3 class="font-bold text-orange-900 mb-3">Comment IPB aide le vendeur</h3>
+        <p class="text-orange-800">Un expert du réseau IPB lit votre bâti et l'institut vous remet une note de synthèse claire, accompagnée d'un chiffrage des travaux par le partenaire compétent. Si vous décidez de faire réaliser la reprise (agrafage, drainage, traitement d'humidité), elle est exécutée par les équipes du réseau IPB <strong>sous garantie décennale 10 ans</strong> — l'attestation rejoint alors votre dossier de transparence. Si vous préférez vendre en l'état, vous le faites avec un dossier honnête qui vous protège juridiquement.</p>
+      </div>
+
+      <h2 id="vendre-en-etat-ou-reparer">Vendre en l'état ou réparer avant ? Comment trancher</h2>
+
+      <h3>Vendre en l'état (avec transparence)</h3>
+      <p>Pertinent si vous voulez vendre vite, ou si l'acheteur est un investisseur/marchand de biens qui préfère gérer ses travaux. Vous documentez tout, vous ajustez le prix du montant des travaux, et vous vous protégez du vice caché par la transparence. La décote se limite au coût réel.</p>
+
+      <h3>Réparer avant la vente</h3>
+      <p>Pertinent sur un marché tendu où l'acheteur type est un particulier qui veut "une maison sans souci". Un désordre traité et garanti décennale supprime la décote de peur — et élargit votre marché aux acheteurs qui auraient fui un bien fissuré. Pour le détail de la mécanique de revente, voyez notre guide <a href="/blog/revente-maison-fissuree">vendre une maison fissurée : la décote à -30% et comment l'éviter</a> et, sur le volet protection juridique, <a href="/blog/diagnostic-structurel-avant-vente-maison">diagnostic structurel avant vente</a>.</p>
+
+      <p>Selon le désordre, les travaux peuvent relever de l'<a href="/blog/injection-resine-expansive-fondation">injection de résine expansive</a>, de l'agrafage structurel (voir les <a href="/blog/prix-agrafage-fissures-2026">prix de l'agrafage 2026</a>) ou d'un traitement d'humidité ciblé.</p>
+
+      <h2 id="faq">Questions fréquentes</h2>
+
+      <h3>Suis-je obligé de déclarer une fissure ou de l'humidité à l'acheteur ?</h3>
+      <p>Oui dès lors que vous en avez connaissance et que l'information est déterminante pour le consentement de l'acheteur (art. 1112-1 du Code civil). Taire un désordre connu vous expose à la garantie des vices cachés, voire à la réticence dolosive si la dissimulation est volontaire.</p>
+
+      <h3>Combien de temps puis-je être attaqué après la vente ?</h3>
+      <p>L'acheteur a 2 ans à compter de la découverte du vice pour agir (art. 1648 du Code civil), dans la limite d'un délai butoir de 20 ans après la vente. Un dossier de transparence documenté réduit fortement ce risque, car le défaut n'est alors ni caché, ni ignoré de l'acheteur.</p>
+
+      <h3>Vaut-il mieux baisser le prix ou faire les travaux ?</h3>
+      <p>Cela dépend de votre marché et de votre acheteur cible. Baisser le prix (ou prévoir un séquestre) convient aux investisseurs ; réaliser les travaux sous garantie décennale convient aux particuliers qui veulent un bien sans souci et supprime la décote de peur. Dans les deux cas, la transparence protège la vente.</p>
+
+      <h3>Une note de synthèse suffit-elle, ou faut-il un rapport opposable ?</h3>
+      <p>Pour informer l'acheteur et chiffrer les travaux, la note de synthèse de l'institut est l'outil adapté. Si la vente est déjà conflictuelle ou si un litige est en cours, un rapport opposable établi par un bureau d'études structure ou un expert indépendant est recommandé — l'institut vous oriente alors vers le bon interlocuteur.</p>
+
+      <h3>Vous êtes plutôt acheteur ?</h3>
+      <p>Le raisonnement s'inverse, et le diagnostic devient un levier de négociation. Voyez notre guide acheteur : <a href="/blog/diagnostic-fissure-humidite-avant-achat">faire diagnostiquer fissures et humidité avant le compromis</a>.</p>
+
+      <div class="my-10 p-8 bg-ipb-navy rounded-2xl text-center">
+        <h2 class="text-white font-bold text-2xl mb-3" style="color:white;">Vous vendez un bien avec un point faible connu ?</h2>
+        <p class="text-white/80 mb-6">Anticipez. Un expert du réseau IPB lit le bâti, l'institut vous remet une note de synthèse et un chiffrage — de quoi vendre en toute transparence et préserver votre prix.</p>
+        <a href="/diagnostic" class="inline-block bg-ipb-orange text-white font-semibold px-8 py-4 rounded-lg hover:bg-orange-700 transition-colors" style="color:white;">Préparer mon dossier en 2 minutes →</a>
+      </div>
+    `
+  },
+  'injection-resine-expansive-fondation': {
+    slug: 'injection-resine-expansive-fondation',
+    title: 'Injection de résine expansive pour fondations : prix, efficacité et alternatives (guide 2026)',
+    metaTitle: 'Résine expansive fondation : prix & efficacité 2026',
+    excerpt: "L'injection de résine expansive promet de stabiliser — voire de relever — une maison fissurée sans gros chantier. Mais quand est-elle vraiment adaptée, combien ça coûte en 2026, et quelles sont les alternatives ? Le guide complet, sans langue de bois, par l'institut IPB.",
+    date: '2026-06-12',
+    dateModified: '2026-06-12',
+    readTime: '14 min',
+    category: 'fissures',
+    author: "L'institut IPB",
+    metaDescription: "Injection de résine expansive pour fondations : prix 2026 (de 80 à 250 €/m²), efficacité réelle, cas adaptés, limites, comparatif avec micropieux et agrafage. Guide IPB, Occitanie.",
+    keywords: ['injection résine expansive', 'résine expansive fondation', 'résine expansive prix', 'injection résine fondation', 'relever maison affaissée', 'résine expansive avis', 'résine expansive inconvénients', 'reprise en sous-œuvre résine', 'tassement fondation solution', 'fissures RGA Haute-Garonne'],
+    content: `
+      <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
+        <p class="font-bold text-orange-900 mb-2">L'essentiel en 30 secondes</p>
+        <p class="text-orange-800">L'injection de résine expansive consiste à injecter sous vos fondations une résine polyuréthane qui gonfle, comble les vides laissés par le retrait des argiles et <strong>recompacte le sol porteur</strong>. C'est une solution mini-invasive, rapide (1 à 2 jours), adaptée à <strong>environ 14% des dossiers de tassement</strong> que nous voyons en Occitanie. Comptez <strong>80 à 250 € par m²</strong> traité, soit 6 000 à 20 000 € pour une maison individuelle. Elle ne convient pas à tous les sols ni à tous les bâtis : un diagnostic préalable est indispensable pour ne pas dépenser dans le vide — au sens propre.</p>
+      </div>
+
+      <h2 id="quest-ce-que">Qu'est-ce que l'injection de résine expansive ?</h2>
+
+      <p>L'injection de résine expansive (aussi appelée <strong>résine de comblement</strong> ou <strong>resin injection</strong>) est une technique de <strong>reprise en sous-œuvre</strong> qui consiste à injecter, à travers de petits forages de 12 à 16 mm, une résine polyuréthane bi-composant directement dans le sol situé sous les fondations.</p>
+
+      <p>Au contact des deux composants, la résine <strong>réagit chimiquement et gonfle</strong> en quelques secondes, jusqu'à plusieurs fois son volume initial. Cette expansion produit deux effets recherchés :</p>
+
+      <ul>
+        <li><strong>Le comblement des vides</strong> : quand l'argile se rétracte sous l'effet de la sécheresse, elle laisse des poches d'air et des zones décomprimées sous la semelle de fondation. La résine les remplit.</li>
+        <li><strong>La recompaction du sol</strong> : en gonflant dans un espace confiné, la résine exerce une pression qui densifie le terrain environnant et améliore sa portance.</li>
+      </ul>
+
+      <p>Dans certains cas favorables, la pression d'expansion permet même de <strong>relever légèrement une maison affaissée</strong> (quelques millimètres à 1-2 cm), en suivant le mouvement au laser et au comparateur pendant l'injection.</p>
+
+      <div class="my-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
+        <h3 class="font-bold text-blue-900 mb-3">L'image simple</h3>
+        <p class="text-blue-800">Imaginez une éponge sèche placée sous un livre lourd : elle se tasse, le livre penche. La résine expansive, c'est comme glisser de la mousse expansive sous le livre — elle remplit le vide et redonne de l'appui. Sauf qu'ici, on travaille sous des dizaines de tonnes de maçonnerie, avec des résines calibrées et un suivi millimétrique.</p>
+      </div>
+
+      <h2 id="quand-adaptee">Quand l'injection de résine est-elle adaptée ? (et quand elle ne l'est pas)</h2>
+
+      <p>C'est la question qui compte vraiment. La résine expansive est <strong>excellente dans son domaine d'emploi, et inutile — voire risquée — en dehors</strong>. Voici notre grille de lecture.</p>
+
+      <h3>Les situations FAVORABLES</h3>
+      <ul>
+        <li><strong>Tassement modéré sur sol argileux</strong> consécutif à une sécheresse (RGA), avec fondations superficielles encore saines.</li>
+        <li><strong>Maison individuelle</strong> de plain-pied ou R+1 sur semelles filantes.</li>
+        <li><strong>Vides détectés sous la fondation</strong> (par sondage ou pénétromètre) que la résine peut effectivement combler.</li>
+        <li><strong>Besoin d'une intervention rapide et peu salissante</strong> (pas de terrassement lourd, habitation maintenue).</li>
+      </ul>
+
+      <h3>Les situations DÉFAVORABLES</h3>
+      <ul>
+        <li><strong>Tassement profond ou actif majeur</strong> (au-delà de 10 cm de dénivelé) : il faut descendre les charges plus bas que la résine ne peut agir → micropieux.</li>
+        <li><strong>Sols très compressibles, tourbeux ou gorgés d'eau</strong> : la résine ne trouve pas d'appui stable.</li>
+        <li><strong>Bâti ancien en pierre maçonnée</strong> sans fondation continue identifiable : la pression d'expansion peut être imprévisible.</li>
+        <li><strong>Cause non traitée</strong> : injecter de la résine sans régler la fuite, le drainage ou l'arbre qui pompe l'eau du sol, c'est traiter le symptôme. Le tassement reprendra.</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
+        <h3 class="font-bold text-orange-900 mb-3">Le réflexe IPB</h3>
+        <p class="text-orange-800">Avant toute injection, un expert du réseau IPB réalise une visite de diagnostic : mesure du dénivelé au niveau laser, sondage des fondations, analyse de la cause (RGA, fuite, drainage, végétation). La note de synthèse précise si la résine est adaptée — ou si une autre solution sera plus durable. Quand un dimensionnement opposable est nécessaire, un bureau d'études structure partenaire produit la note de calcul. <strong>On ne vend pas une technique : on préconise celle qui correspond à votre dossier.</strong></p>
+      </div>
+
+      <h2 id="prix">Prix de l'injection de résine expansive en 2026</h2>
+
+      <p>Le prix dépend du volume de résine injecté, du nombre de points de forage, de la profondeur de traitement et de l'accessibilité du chantier. En Occitanie, sur la base des dossiers traités par le réseau IPB en 2025-2026, voici les fourchettes observées.</p>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead>
+            <tr class="bg-slate-100">
+              <th class="border border-slate-300 p-4 text-left font-bold">Unité de mesure</th>
+              <th class="border border-slate-300 p-4 text-center font-bold">Fourchette 2026</th>
+              <th class="border border-slate-300 p-4 text-left font-bold">Commentaire</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-4">Au m² traité</td>
+              <td class="border border-slate-300 p-4 text-center font-bold">80 – 250 €/m²</td>
+              <td class="border border-slate-300 p-4">Selon profondeur et volume injecté</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-4">Au mètre linéaire de fondation</td>
+              <td class="border border-slate-300 p-4 text-center font-bold">150 – 400 €/ml</td>
+              <td class="border border-slate-300 p-4">Mode de chiffrage le plus fréquent</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-4">Maison individuelle (cas partiel)</td>
+              <td class="border border-slate-300 p-4 text-center font-bold">6 000 – 12 000 €</td>
+              <td class="border border-slate-300 p-4">Traitement d'une ou deux façades</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-4">Maison individuelle (cas étendu)</td>
+              <td class="border border-slate-300 p-4 text-center font-bold">12 000 – 20 000 €</td>
+              <td class="border border-slate-300 p-4">Traitement périphérique complet</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>À titre de repère, l'injection de résine se situe <strong>entre l'agrafage structurel</strong> (8 000 à 18 000 €, qui traite la fissure mais pas le sol) <strong>et les micropieux</strong> (25 000 à 50 000 €, qui reprennent les charges en profondeur). Pour un panorama complet des coûts, voir notre <a href="/blog/prix-agrafage-fissures-2026">guide prix de l'agrafage 2026</a>.</p>
+
+      <div class="my-8 p-6 bg-green-50 border border-green-200 rounded-xl">
+        <h3 class="font-bold text-green-900 mb-3">Bon à savoir — indemnisation sécheresse</h3>
+        <p class="text-green-800">Si votre commune a été reconnue en état de catastrophe naturelle sécheresse, l'injection de résine peut être prise en charge par votre assurance habitation au titre de la garantie CAT-NAT. La franchise légale reste due (1 534 € pour une maison individuelle). Notre <a href="/blog/catastrophe-naturelle-secheresse-demarches-indemnisation">guide des démarches d'indemnisation</a> détaille la marche à suivre.</p>
+      </div>
+
+      <h2 id="deroulement">Comment se déroule un chantier d'injection ?</h2>
+
+      <p>Un chantier type d'injection de résine expansive se déroule en cinq temps :</p>
+
+      <ol>
+        <li><strong>Diagnostic et calepinage</strong> — repérage des zones tassées, définition de la maille de forage (généralement tous les 30 à 50 cm le long de la fondation concernée).</li>
+        <li><strong>Forages</strong> — perçage de petits trous (12 à 16 mm) à travers le dallage ou en pied de mur, jusqu'à la profondeur de traitement.</li>
+        <li><strong>Injection contrôlée</strong> — la résine est injectée par passes successives, sous surveillance d'un niveau laser placé sur la structure pour détecter le moindre relevage.</li>
+        <li><strong>Suivi du relevage</strong> — dès que la structure amorce un mouvement ascendant contrôlé, l'injection est ajustée millimètre par millimètre.</li>
+        <li><strong>Contrôle et rebouchage</strong> — vérification de la portance, rebouchage discret des forages. La maison reste habitable pendant toute l'intervention.</li>
+      </ol>
+
+      <p>Durée typique : <strong>1 à 2 jours</strong> pour une maison individuelle, contre 1 à 3 semaines pour des micropieux. C'est l'un des grands avantages de la technique.</p>
+
+      <h2 id="comparatif">Résine expansive, agrafage ou micropieux : le comparatif</h2>
+
+      <p>Ces trois techniques ne traitent pas le même problème. L'erreur classique consiste à les opposer alors qu'elles sont souvent <strong>complémentaires</strong> : la résine et les micropieux stabilisent le <em>sol et les fondations</em>, l'agrafage répare le <em>mur fissuré</em>.</p>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead>
+            <tr class="bg-slate-100">
+              <th class="border border-slate-300 p-4 text-left font-bold">Critère</th>
+              <th class="border border-slate-300 p-4 text-center font-bold">Résine expansive</th>
+              <th class="border border-slate-300 p-4 text-center font-bold">Micropieux</th>
+              <th class="border border-slate-300 p-4 text-center font-bold">Agrafage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-4 font-medium">Ce que ça traite</td>
+              <td class="border border-slate-300 p-4 text-center">Le sol sous fondation</td>
+              <td class="border border-slate-300 p-4 text-center">Les fondations en profondeur</td>
+              <td class="border border-slate-300 p-4 text-center">La fissure du mur</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-4 font-medium">Tassement traité</td>
+              <td class="border border-slate-300 p-4 text-center">Modéré</td>
+              <td class="border border-slate-300 p-4 text-center">Sévère / actif</td>
+              <td class="border border-slate-300 p-4 text-center">Stabilisé</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-4 font-medium">Durée chantier</td>
+              <td class="border border-slate-300 p-4 text-center">1 – 2 jours</td>
+              <td class="border border-slate-300 p-4 text-center">1 – 3 semaines</td>
+              <td class="border border-slate-300 p-4 text-center">2 – 5 jours</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-4 font-medium">Coût indicatif</td>
+              <td class="border border-slate-300 p-4 text-center">6 000 – 20 000 €</td>
+              <td class="border border-slate-300 p-4 text-center">25 000 – 50 000 €</td>
+              <td class="border border-slate-300 p-4 text-center">8 000 – 18 000 €</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-4 font-medium">Invasivité</td>
+              <td class="border border-slate-300 p-4 text-center">Très faible</td>
+              <td class="border border-slate-300 p-4 text-center">Élevée</td>
+              <td class="border border-slate-300 p-4 text-center">Modérée</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Pour approfondir le choix entre les deux techniques de reprise en sous-œuvre, lisez notre comparatif détaillé <a href="/blog/agrafage-vs-micropieux-choix">agrafage ou micropieux</a>, et pour les fondations de bâti ancien, notre dossier <a href="/blog/fondations-maison-ancienne-renforcement">renforcement des fondations d'une maison ancienne</a>.</p>
+
+      <h2 id="limites">Les limites et inconvénients à connaître</h2>
+
+      <p>Aucune technique n'est miraculeuse. Voici ce qu'un professionnel honnête doit vous dire sur la résine expansive :</p>
+
+      <ul>
+        <li><strong>Elle ne traite pas la cause.</strong> Si un arbre adulte pompe l'eau du sol à 4 mètres de votre mur, ou si une canalisation fuit, la résine comblera le vide actuel mais le tassement reprendra. La cause doit être traitée en parallèle.</li>
+        <li><strong>Elle suppose un sol où la résine peut s'ancrer.</strong> Sur des terrains trop mous ou saturés d'eau, l'expansion ne produit pas la portance attendue.</li>
+        <li><strong>Le relevage n'est jamais garanti à 100%.</strong> On parle de stabilisation et de recompaction ; le relevage de la structure est un bonus possible, pas une promesse contractuelle.</li>
+        <li><strong>La qualité dépend du diagnostic.</strong> Mal calibrée (maille de forage, volume, profondeur), l'injection peut être inefficace, voire créer des désordres. D'où l'importance d'un diagnostic structurel sérieux en amont.</li>
+      </ul>
+
+      <h2 id="faq">Questions fréquentes</h2>
+
+      <h3>L'injection de résine expansive est-elle vraiment efficace ?</h3>
+      <p>Oui, dans son domaine d'emploi : tassement modéré sur sol argileux avec fondations saines. Dans ces conditions, c'est une solution éprouvée qui stabilise durablement la structure. Hors de ce cadre (tassement sévère, sols mous, cause non traitée), son efficacité chute fortement. Le diagnostic préalable est ce qui sépare une injection utile d'un budget gaspillé.</p>
+
+      <h3>Combien coûte l'injection de résine pour une maison ?</h3>
+      <p>En 2026 en Occitanie, comptez 80 à 250 € par m² traité, soit le plus souvent 6 000 à 20 000 € pour une maison individuelle selon l'étendue du tassement. Le chiffrage se fait fréquemment au mètre linéaire de fondation (150 à 400 €/ml).</p>
+
+      <h3>La résine expansive peut-elle relever ma maison affaissée ?</h3>
+      <p>Dans des conditions favorables, l'expansion de la résine peut relever la structure de quelques millimètres à 1-2 cm, sous contrôle laser. Mais le relevage n'est pas garanti : l'objectif premier reste la stabilisation et la recompaction du sol porteur.</p>
+
+      <h3>Résine expansive ou micropieux : que choisir ?</h3>
+      <p>La résine convient aux tassements modérés avec fondations superficielles saines ; les micropieux s'imposent pour les tassements sévères ou actifs nécessitant de reporter les charges en profondeur (au-delà de 10 cm de dénivelé). Seul un diagnostic sur site permet de trancher — et parfois la bonne réponse combine stabilisation du sol et agrafage du mur.</p>
+
+      <h3>L'injection de résine est-elle prise en charge par l'assurance ?</h3>
+      <p>Si votre commune est reconnue en catastrophe naturelle sécheresse, oui, au titre de la garantie CAT-NAT de votre assurance habitation, après déduction de la franchise légale (1 534 €). La note de synthèse documentant le lien entre le désordre et le RGA est un élément clé du dossier.</p>
+
+      <div class="my-10 p-8 bg-ipb-navy rounded-2xl text-center">
+        <h2 class="text-white font-bold text-2xl mb-3" style="color:white;">Un doute sur la bonne solution pour vos fondations ?</h2>
+        <p class="text-white/80 mb-6">Avant d'engager une injection de résine, faites lire votre situation par un expert du réseau IPB. Diagnostic sur site, note de synthèse claire, préconisation honnête — y compris quand la résine n'est pas la bonne réponse.</p>
+        <a href="/diagnostic" class="inline-block bg-ipb-orange text-white font-semibold px-8 py-4 rounded-lg hover:bg-orange-700 transition-colors" style="color:white;">Décrire ma situation en 2 minutes →</a>
+      </div>
+    `
+  },
   'fissures-maison-toulouse-que-faire': {
     slug: 'fissures-maison-toulouse-que-faire',
     metaTitle: 'Fissures Maison Toulouse · Que Faire · Guide Expert',
@@ -638,16 +1095,21 @@ const blogPosts: { [key: string]: BlogPost } = {
     title: 'Fissures en Escalier : Comprendre le Tassement Différentiel et Agir Avant l\'Aggravation',
     excerpt: 'Ces fissures qui zigzaguent sur votre mur en suivant les joints ne sont pas anodines. Elles racontent une histoire : celle d\'une maison qui se "tord" sous l\'effet d\'un tassement différentiel. Décryptage de ces signaux, évaluer la gravité, et comment stabiliser votre maison à moindre coût.',
     date: '2025-05-26',
-    dateModified: '2025-10-14',
-    readTime: '15 min',
+    dateModified: '2026-06-12',
+    readTime: '16 min',
     category: 'fissures',
     author: "L'institut IPB",
-    metaDescription: 'Fissures en escalier : diagnostic du tassement différentiel, causes (sol argileux, sécheresse), mesure de gravité, solutions agrafage vs micropieux.',
-    keywords: ['fissures escalier', 'tassement différentiel', 'fissure crémaillère', 'fondations maison', 'agrafage mur', 'sol argileux', 'affaissement maison', 'réparation fissures', 'expertise bâtiment', 'RGA Haute-Garonne'],
+    metaDescription: 'Fissures en escalier : diagnostic du tassement différentiel, causes (sol argileux, sécheresse), mesure de gravité, solutions agrafage vs micropieux. Mis à jour juin 2026.',
+    keywords: ['fissures escalier', 'tassement différentiel', 'fissure crémaillère', 'fondations maison', 'agrafage mur', 'sol argileux', 'affaissement maison', 'réparation fissures', 'expertise bâtiment', 'RGA Haute-Garonne', 'CAT-NAT sécheresse 2024', 'arrêté sécheresse 2025'],
     content: `
+      <div class="mb-8 p-5 bg-slate-50 border border-slate-200 rounded-lg">
+        <p class="text-xs text-slate-500 uppercase tracking-wider font-bold mb-2">Mise à jour — juin 2026</p>
+        <p class="text-slate-700 text-sm leading-relaxed">Article actualisé avec les données de la campagne CAT-NAT sécheresse 2024-2025 et les retours terrain de nos dossiers traités au cours de l'année 2025-2026 sur la Haute-Garonne, le Tarn-et-Garonne et le Tarn. Les seuils de mesure et les options d'intervention restent valides ; nous avons précisé les délais d'instruction des dossiers d'indemnisation observés depuis l'arrêté du printemps 2025.</p>
+      </div>
+
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
         <p class="font-bold text-orange-900 mb-2">Le saviez-vous ?</p>
-        <p class="text-orange-800">Les fissures en escalier (ou "en crémaillère") représentent <strong>65% des fissures structurelles</strong> que nous diagnostiquons en Haute-Garonne. Elles sont presque toujours liées au phénomène de retrait-gonflement des argiles (RGA), particulièrement violent depuis les sécheresses de 2022-2023.</p>
+        <p class="text-orange-800">Les fissures en escalier (ou "en crémaillère") représentent <strong>65% des fissures structurelles</strong> que nous diagnostiquons en Haute-Garonne. Elles sont presque toujours liées au phénomène de retrait-gonflement des argiles (RGA), particulièrement violent depuis les sécheresses de 2022-2023 — et la fenêtre 2024-2026 prolonge la pression sur les bâtis vulnérables.</p>
       </div>
 
       <h2>Pourquoi vos fissures dessinent-elles un escalier ? L'explication mécanique</h2>
@@ -869,17 +1331,41 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p class="font-bold text-lg text-slate-900 mt-6">La question n'est pas "Est-ce que ça va s'arrêter tout seul ?" (réponse : non) mais "Quand vais-je faire expertiser pour savoir ce qu'il faut faire ?"</p>
 
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
-        <h3 class="font-bold text-orange-900 mb-3">Notre expertise chez IPB</h3>
-        <p class="text-orange-800">Nous avons traité <strong>plus de 150 cas de fissures en escalier</strong> en Haute-Garonne depuis 2019. Notre diagnostic (déductible des travaux) inclut :</p>
+        <h3 class="font-bold text-orange-900 mb-3">Notre lecture du dossier chez IPB</h3>
+        <p class="text-orange-800">Le réseau IPB a traité <strong>plus de 150 cas de fissures en escalier</strong> en Haute-Garonne depuis 2019. La visite de diagnostic par un expert du réseau inclut :</p>
         <ul class="text-orange-800 mt-3 space-y-1">
-          <li>Mesure précise du dénivelé (niveau laser)</li>
-          <li>Analyse de l'évolution des fissures (témoins)</li>
-          <li>Inspection visuelle complète (intérieur/extérieur)</li>
-          <li>Rapport écrit avec recommandations chiffrées</li>
-          <li>Conseil sur les démarches assurance (CAT-NAT)</li>
+          <li>Mesure précise du dénivelé au niveau laser rotatif</li>
+          <li>Analyse de l'évolution des fissures (témoins datés, retours de visite)</li>
+          <li>Inspection visuelle complète intérieur et extérieur</li>
+          <li>Note de synthèse écrite avec préconisations chiffrées</li>
+          <li>Orientation sur les démarches CAT-NAT et, si besoin, vers un BET ou un expert d'assurance pour un rapport opposable</li>
         </ul>
-        <p class="text-orange-800 mt-3">Nous ne sommes pas vendeurs de micropieux. Nous proposons la solution <strong>la plus adaptée et la plus économique</strong> pour votre situation.</p>
+        <p class="text-orange-800 mt-3">IPB n'est pas vendeur d'une solution unique : selon les constats, l'expert du réseau peut préconiser un agrafage simple, une reprise en sous-œuvre par micropieux, ou un suivi instrumenté avant toute intervention. La solution proposée est celle qui correspond <strong>réellement</strong> au dossier.</p>
       </div>
+
+      <h2 id="mise-a-jour-2026">Mise à jour 2026 — ce que la campagne CAT-NAT 2024-2025 a changé</h2>
+
+      <p>Trois évolutions concrètes méritent d'être signalées sur la base des dossiers traités au cours de l'année 2025-2026 par notre réseau en Occitanie :</p>
+
+      <h3>1. Allongement des délais d'instruction des dossiers CAT-NAT</h3>
+
+      <p>Sur les déclarations issues de la sécheresse 2023 (arrêté du printemps 2024) puis de la sécheresse 2024 (arrêté du printemps 2025), les délais moyens entre dépôt de dossier et décision d'indemnisation que nous observons sur la Haute-Garonne se sont allongés. La moyenne reste de l'ordre de 14 à 18 mois pour une décision d'indemnisation, contre 8 à 12 mois avant 2022. Cause principale : saturation des cabinets d'expertise d'assurance face au volume.</p>
+
+      <p>Conséquence pratique pour vous : commencer la collecte des preuves (témoins datés, photos horodatées et géolocalisées, attestation d'évolution) dès l'apparition des premières fissures, sans attendre la déclaration formelle.</p>
+
+      <h3>2. Apparition de fissures sur des constructions plus récentes</h3>
+
+      <p>Avant 2022, les sinistres RGA concernaient principalement les maisons construites entre 1970 et 1995. Depuis les sécheresses cumulées 2022-2024, nous observons des fissures actives sur des bâtis plus récents — y compris des constructions des années 2000-2010 qui avaient été pourtant édifiées sur fondations renforcées. L'amplitude des épisodes secs récents dépasse ce qui était dimensionné dans les normes en vigueur à la construction.</p>
+
+      <p>Cela ne signifie pas que ces maisons sont structurellement défaillantes. Mais cela invite à ne pas écarter un diagnostic sous prétexte que la maison est récente.</p>
+
+      <h3>3. Stabilité du couple agrafage / reprise en sous-œuvre</h3>
+
+      <p>Sur 100 dossiers traités en 2025, la répartition des solutions préconisées reste cohérente avec ce que nous documentions en 2022-2024 : environ <strong>78% d'agrafages</strong> structurels (parfois associés à un drainage périphérique), <strong>14% de reprises en sous-œuvre</strong> par micropieux ou injection de résine expansive, <strong>8% de suivis instrumentés</strong> sans travaux immédiats. La méthode d'évaluation reste valide ; ce qui évolue, c'est l'amplitude des cas et la rapidité d'évolution observée entre deux saisons.</p>
+
+      <h3>Si vos fissures sont apparues ou se sont aggravées récemment</h3>
+
+      <p>Ne tirez pas de conclusion à partir d'une seule observation. Un témoin de plâtre daté, deux à trois mesures fissuromètre espacées d'un mois, et la corrélation avec les épisodes climatiques de votre commune sont les éléments qui permettent une lecture fiable. Le diagnostic à distance (photos avec repère métrique, description) suffit dans un dossier sur cinq à orienter la suite — pour les autres, la visite sur site reste la bonne porte d'entrée.</p>
     `
   },
   'garantie-decennale-travaux-structure': {
@@ -3150,6 +3636,8 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>Vous minimisez : "Oh, c'est rien, juste l'enduit..." Mais vous voyez dans ses yeux qu'il ne vous croit pas. Il prend des photos, repart, et ne donne plus de nouvelles.</p>
 
+      <p>Il existe une meilleure façon de gérer ce moment : l'anticiper. Notre guide <a href="/blog/vendre-maison-fissure-humidite-anticiper">vendre un bien avec fissures ou humidité : le dossier qui désamorce la négociation</a> détaille la stratégie de transparence qui transforme ce point faible en gage de confiance.</p>
+
       <p class="font-bold text-lg text-slate-900 my-6">Résultat : Votre maison reste sur le marché 6 mois, 9 mois, 1 an... Et vous finissez par baisser le prix.</p>
 
       <h2>Pourquoi les acheteurs fuient les maisons fissurées</h2>
@@ -4845,7 +5333,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p><strong>Prix</strong> : 8 000€ - 18 000€ selon l'ampleur</p>
 
       <h3>2. L'injection de résine expansive</h3>
-      <p>Injection sous les fondations pour combler les vides créés par le retrait des argiles. Cette technique permet même de "relever" légèrement une maison affaissée.</p>
+      <p>Injection sous les fondations pour combler les vides créés par le retrait des argiles. Cette technique permet même de "relever" légèrement une maison affaissée. Pour tout savoir (prix, cas adaptés, limites), consultez notre <a href="/blog/injection-resine-expansive-fondation" class="text-orange-600 underline hover:text-orange-700">guide complet de l'injection de résine expansive</a>.</p>
       
       <p><strong>Idéale pour :</strong></p>
       <ul>
@@ -6734,7 +7222,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p><strong>Durée</strong> : 1 à 3 semaines de chantier.</p>
 
       <h3>Solution 3 : L'injection de résine expansive</h3>
-      <p><strong>Principe</strong> : de la résine polyuréthane est injectée sous les fondations. En se dilatant, elle compacte le sol et comble les vides créés par le retrait de l'argile. Elle peut aussi "relever" légèrement une fondation qui s'est affaissée.</p>
+      <p><strong>Principe</strong> : de la résine polyuréthane est injectée sous les fondations. En se dilatant, elle compacte le sol et comble les vides créés par le retrait de l'argile. Elle peut aussi "relever" légèrement une fondation qui s'est affaissée. Nous détaillons cette technique dans notre <a href="/blog/injection-resine-expansive-fondation" class="text-orange-600 underline hover:text-orange-700">guide dédié à la résine expansive</a>.</p>
       <p><strong>Quand l'utiliser</strong> : tassement modéré avec vides sous les fondations, sol meuble mais pas instable.</p>
       <p><strong>Coût</strong> : 5 000€ à 15 000€.</p>
       <p><strong>Durée</strong> : 1 à 2 jours.</p>
@@ -6871,6 +7359,8 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p class="font-bold text-orange-900 mb-2">La règle d'or de l'acheteur avisé</p>
         <p class="text-orange-800">Une fissure visible n'est pas forcément dangereuse. Mais une fissure <strong>invisible peut ruiner votre achat</strong>. Avant de signer, exigez toujours un rapport d'expertise structurelle indépendant — pas celui du vendeur, pas celui de l'agence.</p>
       </div>
+
+      <p>Cet article se concentre sur les fissures. Si le bien présente aussi des signes d'humidité, ou si vous voulez maîtriser le <strong>timing du diagnostic dans le processus d'achat</strong> (avant le compromis, délai de rétractation, condition suspensive), lisez notre guide dédié : <a href="/blog/diagnostic-fissure-humidite-avant-achat">faire diagnostiquer fissures et humidité avant le compromis et négocier le prix</a>.</p>
 
       <h2>Maison fissurée à vendre : opportunité ou piège ?</h2>
 
@@ -7784,12 +8274,12 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '9 min',
     category: 'conseils',
     author: "L'institut IPB",
-    metaDescription: "Le diagnostic structurel avant vente vous protège du vice caché pendant 30 ans. Rapport opposable par institut indépendant en Occitanie. Délai 72h, garantie décennale 10 ans.",
+    metaDescription: "Le diagnostic structurel avant vente vous protège du vice caché. Note de synthèse claire ou rapport opposable, institut indépendant en Occitanie. Délai de visite 72h, travaux sous décennale 10 ans.",
     keywords: ['diagnostic structurel avant vente', 'expertise maison avant vente', 'vice caché vente maison', 'vendre maison fissure', 'rapport opposable', 'expertise structurelle vendeur'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
-        <p class="font-bold text-orange-900 mb-2">La règle des 30 ans : la responsabilité que vous ignorez</p>
-        <p class="text-orange-800">Lorsque vous vendez votre maison, vous restez juridiquement responsable des défauts structurels cachés pendant <strong>30 ans</strong> au titre de la garantie décennale étendue. Un acheteur qui découvre une fissure structurelle 5, 10 ou 20 ans après la vente peut vous attaquer en justice. Le diagnostic structurel avant vente est votre seule véritable protection.</p>
+        <p class="font-bold text-orange-900 mb-2">La responsabilité que vous ignorez en vendant</p>
+        <p class="text-orange-800">En vendant votre maison, vous restez exposé à la garantie des vices cachés : un acheteur qui découvre une fissure structurelle non apparente peut agir contre vous pendant <strong>2 ans à compter de la découverte du vice</strong> (art. 1648 du Code civil), dans la limite d'un <strong>délai butoir de 20 ans après la vente</strong> (art. 2232, confirmé par la Cour de cassation en 2023). Le diagnostic structurel avant vente, documenté, est votre meilleure protection. Pour la stratégie complète côté vendeur — fissures et humidité —, voyez notre guide <a href="/blog/vendre-maison-fissure-humidite-anticiper">le dossier de transparence qui désamorce la négociation</a>.</p>
       </div>
 
       <h2>Les 9 diagnostics obligatoires NE couvrent PAS la structure</h2>

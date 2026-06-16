@@ -79,6 +79,25 @@ NEXT_PUBLIC_SENTRY_DSN = https://xxx@xxx.ingest.sentry.io/xxx
 2. Créer un nouveau projet **Next.js**
 3. Récupérer le **DSN** dans les paramètres du projet
 
+#### **7. CRM BACK-OFFICE — Saisie terrain diagnostiqueur** (Optionnel)
+```
+# Stockage des photos terrain (Vercel Blob)
+BLOB_READ_WRITE_TOKEN = vercel_blob_rw_xxx
+
+# Dictée vocale — transcription serveur pour les navigateurs SANS Web Speech
+# (notamment Chrome sur iPhone, sous WebKit). Sans clé, seuls Safari iOS et
+# Chrome/Edge desktop dictent (via l'API Web Speech native).
+TRANSCRIBE_API_KEY  = gsk_xxx                          # Clé Groq (free tier : console.groq.com)
+TRANSCRIBE_BASE_URL = https://api.groq.com/openai/v1   # défaut ; tout endpoint Whisper-compatible
+TRANSCRIBE_MODEL    = whisper-large-v3                 # défaut
+```
+
+**📌 Notes terrain :**
+- **HTTPS obligatoire** pour le micro et la caméra : la dictée et l'appareil photo ne fonctionnent pas en `http://` (sauf `localhost`). En production Vercel c'est déjà le cas ; en local, utiliser `localhost:3000` ou un tunnel HTTPS.
+- `BLOB_READ_WRITE_TOKEN` : sans lui, l'upload photo est désactivé proprement (message dans l'UI), la saisie texte reste fonctionnelle. À définir aussi dans **Vercel → Settings → Environment Variables** pour la prod.
+- Les photos sont **compressées côté navigateur** (Canvas, ~80 % de poids en moins) avant l'upload — aucune dépendance ni configuration requise.
+- Groq a un **free tier limité** (quota journalier) : un dépassement renvoie un message « Quota de transcription atteint ».
+
 ---
 
 ### **En Local (Développement)**

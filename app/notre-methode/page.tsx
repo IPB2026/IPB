@@ -11,9 +11,9 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Notre méthode de diagnostic · Sept étapes · IPB',
+  title: 'Notre méthode de coordination · Sept étapes · IPB',
   description:
-    "Comment l'institut lit un bâti, des premiers échanges au rapport remis. Sept étapes — premier contact, pré-diagnostic à distance, visite sur site, analyse en cabinet, calcul, rédaction, remise. Méthode IPB, Toulouse.",
+    "Comment l'institut coordonne la lecture d'un bâti, des premiers échanges à la remise de la note de synthèse. Sept étapes — premier contact, pré-diagnostic à distance, visite par un expert du réseau, analyse, calcul technique avec BET partenaire, rédaction, remise. Méthode IPB, Toulouse.",
   keywords: [
     'méthode diagnostic fissure',
     'protocole expertise bâtiment',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Notre méthode de diagnostic · Sept étapes · IPB',
     description:
-      "Comment l'institut lit un bâti, des premiers échanges au rapport remis. Sept étapes documentées.",
+      "Comment l'institut coordonne la lecture d'un bâti, des premiers échanges à la remise de la note de synthèse. Sept étapes documentées.",
     url: 'https://www.ipb-expertise.fr/notre-methode',
     type: 'article',
   },
@@ -60,7 +60,7 @@ const etapes = [
     num: '03',
     titre: 'La visite sur site',
     paragraphe:
-      "L'expert structure de l'institut se déplace. Selon le dossier, la visite dure entre une heure et trois heures. Elle commence par un tour du bâti à pied, sans instrument — observer d'abord, mesurer ensuite. Vient l'inspection rapprochée des désordres : mesure au fissuromètre, prise de photos datées et géolocalisées, examen des indices secondaires (portes, plinthes, carrelage, planchers). Si nécessaire, nous sondons les fondations à la tarière manuelle ou nous prélevons un échantillon de mortier. Vous êtes présent pendant la visite — c'est un échange, pas une auscultation silencieuse. Vos questions sont les bienvenues.",
+      "L'expert structure du réseau IPB se déplace. Selon le dossier, la visite dure entre une heure et trois heures. Elle commence par un tour du bâti à pied, sans instrument — observer d'abord, mesurer ensuite. Vient l'inspection rapprochée des désordres : mesure au fissuromètre, prise de photos datées et géolocalisées, examen des indices secondaires (portes, plinthes, carrelage, planchers). Si nécessaire, il sonde les fondations à la tarière manuelle ou prélève un échantillon de mortier. Vous êtes présent pendant la visite — c'est un échange, pas une auscultation silencieuse. Vos questions sont les bienvenues.",
     terrain:
       "Matériel standard de la visite : fissuromètre Saugnac à pince et fissuromètre adhésif (deux modes de mesure complémentaires), humidimètre Protimeter Surveymaster, niveau laser rotatif pour mesurer les défauts d'horizontalité, tarière manuelle pour les sondages de surface, appareil photo avec horodatage et géolocalisation activés.",
   },
@@ -68,7 +68,7 @@ const etapes = [
     num: '04',
     titre: "L'analyse en cabinet",
     paragraphe:
-      "De retour au bureau, l'ingénieur ouvre votre dossier. Il consulte la carte BRGM des aléas pour votre commune (retrait-gonflement des argiles, mouvements de terrain), examine les arrêtés de catastrophe naturelle des dix dernières années, vérifie le plan cadastral et, si pertinent, consulte les archives techniques disponibles (permis de construire, anciennes ventes). Les mesures relevées sur site sont reportées dans une grille d'évaluation qui croise largeur, forme, évolution probable et indices secondaires. Ce travail prend en moyenne deux heures pour un dossier standard, davantage si la situation est complexe.",
+      "De retour au bureau, l'expert du réseau IPB ouvre votre dossier. Il consulte la carte BRGM des aléas pour votre commune (retrait-gonflement des argiles, mouvements de terrain), examine les arrêtés de catastrophe naturelle des dix dernières années, vérifie le plan cadastral et, si pertinent, consulte les archives techniques disponibles (permis de construire, anciennes ventes). Les mesures relevées sur site sont reportées dans une grille d'évaluation qui croise largeur, forme, évolution probable et indices secondaires. Ce travail prend en moyenne deux heures pour un dossier standard, davantage si la situation est complexe.",
     terrain:
       "Les sources consultées en cabinet sont publiques : Géorisques (BRGM) pour les aléas, Géoportail pour les plans cadastraux, le bulletin officiel des arrêtés de catastrophe naturelle. Aucun frais d'accès. Les documents internes (permis, ventes antérieures) sont demandés au propriétaire si nécessaire.",
   },
@@ -76,25 +76,25 @@ const etapes = [
     num: '05',
     titre: "Le calcul technique",
     paragraphe:
-      "Quand le diagnostic révèle une atteinte structurelle, l'ingénieur procède aux calculs nécessaires : descente de charges, vérification des sections, dimensionnement de la solution de réparation envisagée. Selon les cas, le calcul porte sur des agrafes structurelles à dimensionner, sur la reprise en sous-œuvre par micropieux, ou sur la mise en place d'une poutre IPN ou HEB pour soutenir une zone affaiblie. Le calcul s'appuie sur les Eurocodes en vigueur et tient compte des charges permanentes, des charges d'exploitation et des charges climatiques propres au site. Il est consigné dans le rapport.",
+      "Quand le diagnostic révèle une atteinte structurelle nécessitant un dimensionnement formel (descente de charges, vérification des sections, dimensionnement d'agrafes structurelles, reprise en sous-œuvre par micropieux, pose d'une poutre IPN ou HEB), l'institut mobilise un bureau d'études structure indépendant. Le calcul s'appuie sur les Eurocodes en vigueur et tient compte des charges permanentes, des charges d'exploitation et des charges climatiques propres au site. Le BET intervient sous sa propre responsabilité civile professionnelle et sa décennale études ; ses notes sont annexées au dossier remis au client.",
     terrain:
-      "Le calcul est mené à la main pour les cas simples et sur logiciel dédié pour les cas avec poutre composite ou descente de charges complexe. Les notes de calcul sont annexées au rapport quand le dossier le justifie.",
+      "Le BET partenaire mène les calculs à la main pour les cas simples et sur logiciel dédié pour les cas avec poutre composite ou descente de charges complexe. Ses notes de calcul opposables sont annexées au dossier quand le projet le justifie.",
   },
   {
     num: '06',
     titre: 'La rédaction du rapport',
     paragraphe:
-      "Le rapport est rédigé par l'ingénieur qui a mené la visite. Il comporte cinq parties fixes : le contexte du dossier, les constats sur site, l'analyse, les préconisations, les annexes (photos, plans, notes de calcul). La rédaction prend entre une demi-journée et deux jours selon la complexité. Le ton est descriptif, jamais conjectural — quand un point est incertain, le rapport le dit. Le document est relu par une seconde personne avant remise. Il est livré au format PDF, paginé, signé numériquement, avec les photos en pleine résolution.",
+      "Les constats et l'avis technique de l'expert du réseau IPB qui a mené la visite sont consignés, puis mis en forme par l'institut après validation par cet expert. La note de synthèse comporte cinq parties fixes : le contexte du dossier, les constats sur site, l'analyse, les préconisations, les annexes (photos, plans, notes de calcul du BET si applicable). La rédaction prend entre une demi-journée et deux jours selon la complexité. Le ton est descriptif, jamais conjectural — quand un point est incertain, le document le dit. Il est livré au format PDF, paginé, avec les photos en pleine résolution.",
     terrain:
-      "Le rapport-type fait entre douze et trente-cinq pages. Il est rédigé dans les formes attendues par les notaires, agents immobiliers, assureurs et magistrats. Il peut être annexé à un acte, présenté à un assureur, ou produit en pièce dans une procédure judiciaire.",
+      "La note de synthèse fait entre douze et trente-cinq pages. Elle documente l'avis technique remis au client à l'issue de la visite. Pour un rapport opposable (vente notariée, dossier assurance, procédure judiciaire), l'institut oriente vers un bureau d'études structure ou un expert d'assurance indépendant, qui intervient sous sa propre responsabilité.",
   },
   {
     num: '07',
     titre: "La remise et l'accompagnement",
     paragraphe:
-      "Le rapport vous est remis par email, accompagné d'un appel téléphonique pour en parcourir les points clés. Si vous êtes en compromis, en vente, ou face à un assureur, nous pouvons échanger directement avec votre notaire, votre agent immobilier ou votre interlocuteur d'assurance — avec votre accord. Si le rapport préconise des travaux et que vous souhaitez nous les confier, notre institut coordonne leur exécution sous garantie décennale 10 ans ; sinon, vous restez libre de consulter d'autres entreprises avec le rapport en main. Nous restons disponibles pour les questions complémentaires pendant les six mois qui suivent la remise.",
+      "La note de synthèse vous est remise par email, accompagnée d'un appel téléphonique pour en parcourir les points clés. Si vous êtes en compromis, en vente, ou face à un assureur, l'institut peut échanger directement avec votre notaire, votre agent immobilier ou votre interlocuteur d'assurance — avec votre accord. Si la note préconise des travaux et que vous décidez de les engager, ils sont exécutés par les équipes du réseau IPB sous garantie décennale 10 ans ; sinon, vous restez libre de consulter d'autres entreprises avec le document en main. L'institut reste disponible pour les questions complémentaires pendant les douze mois qui suivent la remise.",
     terrain:
-      "La remise au téléphone prend en moyenne quarante minutes. Aucun frais supplémentaire pour les questions complémentaires, dans la limite raisonnable de l'usage.",
+      "La remise au téléphone prend en moyenne quarante minutes. Aucun frais supplémentaire pour les questions complémentaires pendant la période d'accompagnement de douze mois.",
   },
 ];
 

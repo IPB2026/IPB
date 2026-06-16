@@ -1,6 +1,17 @@
 import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import type { NextRequest, NextFetchEvent } from 'next/server';
+import NextAuth from 'next-auth';
 import { villeSlugs } from '@/app/data/villes';
+import { authConfig } from './auth.config';
+
+// L'auth (NextAuth) ne s'applique QU'À /admin. Le site public ne dépend donc
+// jamais d'AUTH_SECRET : même mal configuré, seules les pages /admin seraient
+// affectées, jamais les pages publiques.
+const { auth } = NextAuth(authConfig);
+const adminGuard = auth(() => NextResponse.next()) as unknown as (
+  req: NextRequest,
+  ev: NextFetchEvent
+) => Response | Promise<Response>;
 
 /**
  * Cannibalisation SEO — résolution du levier #1 de l'audit.
@@ -70,7 +81,8 @@ function resolveCanonical(pathname: string): string | null {
  * 1. Redirige le domaine nu (apex) vers www pour regrouper les signaux SEO.
  * 2. Redirige les URLs en doublon vers leur version canonique (résolution cannibalisation).
  */
-export function middleware(request: NextRequest) {
+/** Redirections SEO publiques (apex→www, cannibalisation). Indépendantes de l'auth. */
+function publicRedirect(request: NextRequest): NextResponse | null {
   const host = request.headers.get('host')?.split(':')[0]?.toLowerCase();
   const url = request.nextUrl.clone();
 
@@ -86,6 +98,19 @@ export function middleware(request: NextRequest) {
   if (canonical) {
     url.pathname = canonical;
     return NextResponse.redirect(url, 301);
+  }
+
+  return null;
+}
+
+export default function middleware(request: NextRequest, event: NextFetchEvent) {
+  // Site public : redirections SEO uniquement, aucune dépendance à l'auth.
+  const redirect = publicRedirect(request);
+  if (redirect) return redirect;
+
+  // Back-office : protection par Auth.js (a besoin d'AUTH_SECRET).
+  if (request.nextUrl.pathname.startsWith('/admin')) {
+    return adminGuard(request, event);
   }
 
   return NextResponse.next();

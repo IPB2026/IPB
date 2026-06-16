@@ -4,6 +4,7 @@ import "./globals.css"
 import Script from "next/script"
 import dynamic from "next/dynamic"
 import { Analytics } from "@/components/layout/Analytics"
+import { PhoneClickTracker } from "@/components/analytics/PhoneClickTracker"
 
 const CookieBanner = dynamic(() => import("@/components/CookieBanner").then(m => m.CookieBanner), { ssr: false })
 const StickyDiagnosticCta = dynamic(() => import("@/components/StickyDiagnosticCta").then(m => m.StickyDiagnosticCta), { ssr: false })
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     default: "IPB · Institut de pathologie & structure du bâtiment — Toulouse & Occitanie",
     template: "%s | IPB"
   },
-  description: "Institut spécialisé dans la structure du bâtiment. Diagnostic de fissures, expertise humidité, expertise avant achat et ouverture de mur porteur. Diagnostic et coordination assurés par IPB ; travaux réalisés sous décennale par les équipes du réseau IPB. Toulouse, Montauban, Auch (31-82-32).",
+  description: "Institut spécialisé dans la structure du bâtiment. Diagnostic de fissures, expertise humidité, expertise avant achat et ouverture de mur porteur. IPB qualifie votre demande et coordonne ; un expert du réseau partenaire réalise le diagnostic gratuit, les équipes du réseau IPB exécutent les travaux sous décennale. Toulouse, Montauban, Auch (31-82-32).",
   keywords: ["expert fissures Toulouse", "expertise humidité Toulouse", "expertise avant achat Toulouse", "ouverture mur porteur Toulouse", "agrafage fissures", "fissures maison", "expert structure Toulouse", "Montauban", "Auch", "Haute-Garonne", "Tarn-et-Garonne", "Gers", "Tarn", "institut pathologie du bâtiment", "diagnostic structure", "humidité murs"],
   authors: [{ name: "IPB - Institut de Pathologie du Bâtiment" }],
   creator: "IPB",
@@ -59,7 +60,7 @@ export const metadata: Metadata = {
     url: "https://www.ipb-expertise.fr",
     siteName: "IPB - Institut de Pathologie du Bâtiment",
     title: "IPB · Institut de pathologie & structure du bâtiment — Toulouse & Occitanie",
-    description: "Diagnostic de fissures, expertise humidité, expertise avant achat et ouverture de mur porteur. IPB diagnostique et coordonne ; les équipes du réseau IPB réalisent les travaux sous décennale.",
+    description: "Diagnostic de fissures, expertise humidité, expertise avant achat et ouverture de mur porteur. IPB qualifie votre demande et coordonne ; les experts du réseau IPB réalisent le diagnostic et les travaux sous décennale.",
     images: [
       {
         url: "/images/IPB_Logo_HD.png",
@@ -72,7 +73,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "IPB · Institut de pathologie & structure du bâtiment (Occitanie)",
-    description: "Diagnostic de fissures, humidité, expertise avant achat, mur porteur. IPB diagnostique et coordonne ; le réseau IPB réalise sous décennale.",
+    description: "Diagnostic de fissures, humidité, expertise avant achat, mur porteur. IPB coordonne ; le réseau d'experts partenaires intervient sous décennale.",
     images: ["/images/IPB_Logo_HD.png"],
   },
   robots: {
@@ -106,10 +107,12 @@ const localBusinessSchema = {
   // Permet à Google de fusionner les deux entités dans son Knowledge Graph.
   "parentOrganization": { "@id": "https://www.ipb-expertise.fr#organization" },
   "name": "IPB - Institut de Pathologie du Bâtiment",
-  "legalName": "Bâti Halli",
+  "legalName": "IPB",
   "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
-  // foundingDate du réseau IPB (et non d'IPB en tant qu'entité juridique).
-  "foundingDate": "2019",
+  // foundingDate = date d'immatriculation de l'EI IPB (SIRET 908 995 103, 2022).
+  // Le « réseau IPB » est actif depuis 2019 mais Schema.org Organization
+  // doit refléter l'entité juridique, pas le récit marketing.
+  "foundingDate": "2022",
   "description": "Institut spécialisé en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Diagnostic de fissures, expertise humidité, expertise avant achat et ouverture de mur porteur. Diagnostic et coordination assurés par IPB ; travaux réalisés sous décennale par les équipes de réalisation du réseau IPB. Toulouse, Montauban, Auch et environs.",
   // Siège IPB confirmé par le client (mai 2026).
   "address": {
@@ -195,7 +198,7 @@ const localBusinessSchema = {
     "ratingValue": "4.9",
     "bestRating": "5",
     "worstRating": "1",
-    "reviewCount": "15"
+    "reviewCount": "18"
   }
 };
 
@@ -298,11 +301,14 @@ export default function RootLayout({
         <main id="main-content">
           {children}
         </main>
-        <LeadWidget />
-        <StickyDiagnosticCta />
-        <ExitIntentPopup />
-        <CookieBanner />
-        <Analytics />
+        <div className="public-chrome">
+          <LeadWidget />
+          <StickyDiagnosticCta />
+          <ExitIntentPopup />
+          <CookieBanner />
+          <Analytics />
+          <PhoneClickTracker />
+        </div>
       </body>
     </html>
   )

@@ -4,6 +4,7 @@
  * Track les étapes du funnel pour mesurer où les visiteurs décrochent.
  *
  * Cf. PLAN_LEADGEN.md §3 (tracking événementiel détaillé)
+ * Cf. TRACKING.md (configuration des conversions Google Ads)
  */
 
 declare global {
@@ -38,6 +39,12 @@ const CONV_CALCULATOR_LEAD =
   process.env.NEXT_PUBLIC_GADS_CONV_CALCULATEUR ||
   'AW-17902440600/gMjiCMKz-KocEJihxthC';
 
+/** Action de conversion "Lead formulaire de contact" — pointe vers la même
+ *  action "Envoi de formulaire de lead" que diagnostic et calculateur. */
+const CONV_CONTACT_LEAD =
+  process.env.NEXT_PUBLIC_GADS_CONV_CONTACT ||
+  'AW-17902440600/gMjiCMKz-KocEJihxthC';
+
 /** Action de conversion "Clic téléphone" (micro-conversion) */
 const CONV_PHONE_CLICK =
   process.env.NEXT_PUBLIC_GADS_CONV_PHONE ||
@@ -66,6 +73,42 @@ export const trackEvent = (
   if (window.dataLayer) {
     window.dataLayer.push({ event: eventName, ...params });
   }
+};
+
+// ─────────────────────────────────────────────────────────────────
+// Enhanced Conversions — données client (email / téléphone)
+// ─────────────────────────────────────────────────────────────────
+// Google hache ces données en SHA-256 côté client AVANT de les envoyer.
+// Nécessite l'activation des "Conversions avancées pour les prospects" dans
+// Google Ads (méthode "Balise Google"/Code) + acceptation des CGU. Voir TRACKING.md §9.
+// Ne fait rien tant que l'utilisateur n'a pas consenti (Consent Mode v2 gère le reste).
+
+export interface LeadUserData {
+  email?: string;
+  phone?: string;
+}
+
+/** Normalise un numéro FR au format E.164 attendu par les Enhanced Conversions. */
+function normalizePhoneFR(phone?: string): string | undefined {
+  if (!phone) return undefined;
+  const cleaned = phone.replace(/[^\d+]/g, '');
+  if (!cleaned) return undefined;
+  if (cleaned.startsWith('+')) return cleaned;
+  if (cleaned.startsWith('0')) return '+33' + cleaned.slice(1);
+  if (cleaned.length === 9) return '+33' + cleaned;
+  return cleaned;
+}
+
+/** Pousse les données client pour l'Enhanced Conversions (avant l'event conversion). */
+export const setEnhancedConversionData = (userData?: LeadUserData) => {
+  if (typeof window === 'undefined' || !window.gtag) return;
+  const email = userData?.email?.trim().toLowerCase() || undefined;
+  const phone_number = normalizePhoneFR(userData?.phone);
+  if (!email && !phone_number) return;
+  window.gtag('set', 'user_data', {
+    ...(email ? { email } : {}),
+    ...(phone_number ? { phone_number } : {}),
+  });
 };
 
 /**
@@ -154,8 +197,14 @@ export const trackDiagnosticReachedForm = (path: 'fissure' | 'mur-porteur', risk
   });
 };
 
-/** L'utilisateur soumet le formulaire lead (nom + contact) */
-export const trackDiagnosticLeadSubmit = (path: 'fissure' | 'mur-porteur', riskScore: number) => {
+/** L'utilisateur soumet le formulaire lead (nom + contact).
+ *  userData (email/téléphone) alimente les Enhanced Conversions. */
+export const trackDiagnosticLeadSubmit = (
+  path: 'fissure' | 'mur-porteur',
+  riskScore: number,
+  userData?: LeadUserData
+) => {
+  setEnhancedConversionData(userData);
   trackEvent('diagnostic_lead_submit', {
     category: 'conversion',
     funnel_step: 100,
@@ -181,22 +230,50 @@ export const trackDiagnosticComplete = (problemType: string) => {
 };
 
 // ─────────────────────────────────────────────────────────────────
+// Formulaire de contact (/contact)
+// ─────────────────────────────────────────────────────────────────
+
+/** L'utilisateur soumet le formulaire de contact avec succès. */
+export const trackContactLeadSubmit = (userData?: LeadUserData) => {
+  setEnhancedConversionData(userData);
+  trackEvent('contact_lead_submit', {
+    category: 'conversion',
+    form_type: 'contact',
+  });
+  // Conversion Google Ads — "Envoi de formulaire de lead"
+  trackEvent('conversion', {
+    send_to: CONV_CONTACT_LEAD,
+    value: 40.0,
+    currency: 'EUR',
+  });
+};
+
+// ─────────────────────────────────────────────────────────────────
 // Engagement : clics téléphone, WhatsApp, Calendly, partage…
 // ─────────────────────────────────────────────────────────────────
+
+// Anti double-comptage : un même clic téléphone peut être capté à la fois par
+// un handler inline (ex. page diagnostic) ET par l'écouteur global
+// (PhoneClickTracker). On ne déclenche la conversion qu'une fois par fenêtre.
+let lastPhoneConversionAt = 0;
 
 export const trackPhoneClick = (location: string) => {
   trackEvent('phone_click', {
     location,
     category: 'engagement_high_intent',
   });
-  // Compté comme conversion micro
+  const now = Date.now();
+  if (now - lastPhoneConversionAt < 1500) return; // dédoublonnage inline + global
+  lastPhoneConversionAt = now;
+  // Compté comme conversion micro — "Annonce Appel Direct"
   trackEvent('conversion', {
     send_to: CONV_PHONE_CLICK,
-    transaction_id: `phone_${Date.now()}`,
+    transaction_id: `phone_${now}`,
   });
 };
 
-export const trackCallbackRequest = () => {
+export const trackCallbackRequest = (userData?: LeadUserData) => {
+  setEnhancedConversionData(userData);
   trackEvent('callback_request', {
     category: 'conversion',
   });
@@ -264,7 +341,8 @@ export const trackCalculatorComplete = (estimateMin: number, estimateMax: number
     estimate_max: estimateMax,
   });
 };
-export const trackCalculatorLeadCapture = (email?: string) => {
+export const trackCalculatorLeadCapture = (email?: string, phone?: string) => {
+  setEnhancedConversionData({ email, phone });
   trackEvent('calculator_lead_capture', {
     category: 'conversion',
     funnel_step: 100,

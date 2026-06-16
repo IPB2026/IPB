@@ -70,7 +70,7 @@ export default function TarnEtGaronnePage() {
         name: 'Intervenez-vous dans tout le Tarn-et-Garonne ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Oui, IPB intervient dans tout le département du Tarn-et-Garonne (82), notamment à Montauban, Castelsarrasin, Moissac, Caussade et Valence. Nous nous déplaçons rapidement pour diagnostiquer et traiter vos problèmes de fissures et d\'humidité.',
+          text: 'Oui, IPB et son réseau d\'experts partenaires interviennent dans tout le département du Tarn-et-Garonne (82), notamment à Montauban, Castelsarrasin, Moissac, Caussade et Valence. Un expert du réseau IPB se déplace rapidement pour diagnostiquer et traiter vos problèmes de fissures et d\'humidité.',
         },
       },
       {

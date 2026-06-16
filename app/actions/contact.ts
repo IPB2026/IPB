@@ -3,6 +3,7 @@
 import { z } from 'zod';
 import { sendEmail } from '@/lib/email';
 import { checkRateLimit } from '@/lib/rateLimit';
+import { captureLead } from '@/lib/crm/captureLead';
 
 // Schéma de validation pour le formulaire de contact
 const contactFormSchema = z.object({
@@ -109,23 +110,23 @@ export async function submitContactForm(
                 <div style="padding: 24px;">
                   <h2 style="margin: 0 0 12px; color:#0f172a; font-size:22px;">Bonjour ${validatedData.name},</h2>
                   <p style="margin:0 0 14px; color:#334155; font-size:15px; line-height:1.6;">
-                    Merci pour votre message. Nous avons bien reçu votre demande concernant :
-                    <strong style="color:#0f172a;"> ${validatedData.subject}</strong>.
+                    Merci de nous avoir contactés. Nous avons bien enregistré votre demande concernant
+                    <strong style="color:#0f172a;"> ${validatedData.subject}</strong>, et notre équipe l'examine avec attention.
                   </p>
                   <p style="margin:0 0 14px; color:#334155; font-size:15px; line-height:1.6;">
-                    Chez IPB, chaque diagnostic est réalisé avec méthode (mesures précises, analyse structurelle, solutions durables).
+                    Votre situation sera traitée avec la même rigueur que chacun de nos dossiers : un diagnostic méthodique, une analyse structurelle fiable, et des solutions pensées pour durer.
                   </p>
                   <div style="background:#f1f5f9; border:1px solid #e2e8f0; padding:16px; border-radius:12px; margin:16px 0;">
-                    <p style="margin:0; color:#0f172a; font-size:14px; font-weight:700;">Pourquoi nous choisir ?</p>
+                    <p style="margin:0; color:#0f172a; font-size:14px; font-weight:700;">Ce qui nous distingue</p>
                     <ul style="margin:10px 0 0; padding-left:18px; color:#334155; font-size:14px; line-height:1.6;">
-                      <li>✅ Expertise dédiée fissures & humidité</li>
-                      <li>✅ Solutions techniques éprouvées (agrafage, injection résine)</li>
-                      <li>✅ Garantie décennale</li>
+                      <li>Un diagnostiqueur indépendant : un regard objectif, sans conflit d'intérêts</li>
+                      <li>Des solutions techniques éprouvées (agrafage, injection résine)</li>
+                      <li>Des travaux couverts par la garantie décennale</li>
                     </ul>
                   </div>
                   <div style="background:#fff7ed; border-left:4px solid #ea580c; padding:14px 16px; border-radius:8px; margin:18px 0;">
                     <p style="margin:0; color:#7c2d12; font-size:14px;">
-                      Pour accélérer votre prise en charge, appelez-nous directement au <strong>05 82 95 33 75</strong>.
+                      Pour avancer plus vite, appelez-nous directement au <strong>05 82 95 33 75</strong> — nous vous orienterons vers la prochaine étape la plus utile pour votre situation.
                     </p>
                   </div>
                   <div style="text-align:center; margin: 18px 0 4px;">
@@ -165,6 +166,21 @@ export async function submitContactForm(
         console.log('📧 Message de contact (email non configuré):', validatedData);
       }
     }
+
+    // ─── Persistance CRM (non bloquant) ─────────────────────────
+    await captureLead({
+      source: 'CONTACT',
+      service: 'AUTRE',
+      contact: {
+        name: validatedData.name,
+        email: validatedData.email,
+      },
+      summary: validatedData.subject,
+      payload: {
+        subject: validatedData.subject,
+        message: validatedData.message,
+      },
+    });
 
     return {
       success: true,
