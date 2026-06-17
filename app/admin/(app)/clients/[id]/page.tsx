@@ -39,6 +39,7 @@ import { sendFacture, sendRapport } from '@/app/admin/(app)/send-actions';
 import { updateAppointmentStatus } from '@/app/admin/(app)/agenda/actions';
 import { RelanceControl } from '@/components/admin/relance-control';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
+import { CallButton } from '@/components/admin/call-button';
 
 export const dynamic = 'force-dynamic';
 
@@ -220,12 +221,11 @@ export default async function ClientFichePage({
           </div>
           <div className="flex flex-wrap gap-2">
             {c.phone && (
-              <a
-                href={`tel:${c.phone}`}
+              <CallButton
+                contactId={c.id}
+                phone={c.phone}
                 className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
-              >
-                <Phone className="h-4 w-4" /> Appeler
-              </a>
+              />
             )}
             {isAdmin && (
               <>

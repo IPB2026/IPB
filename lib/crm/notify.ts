@@ -241,6 +241,81 @@ export async function notifyClientAppointment(
 }
 
 // ─────────────────────────────────────────────────────────────────
+// Rappel client : visite de diagnostic le lendemain (J-1)
+// ─────────────────────────────────────────────────────────────────
+
+export async function notifyClientReminder(
+  appointmentId: string
+): Promise<boolean> {
+  try {
+    const appt = await prisma.appointment.findUnique({
+      where: { id: appointmentId },
+      include: { contact: true },
+    });
+    if (!appt) return false;
+    const c = appt.contact;
+    const email = c.email;
+    if (!email) return false;
+    const dateStr = appt.start.toLocaleDateString('fr-FR', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+    });
+    const timeStr = appt.start.toLocaleTimeString('fr-FR', {
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+
+    const html = `
+    <div style="font-family: Arial, sans-serif; background:#F3EFE8; padding:24px;">
+      <div style="max-width:560px; margin:0 auto; background:#FAF9F7; border:1px solid #D8D2C9; border-radius:14px; overflow:hidden;">
+        <div style="background:#0B1826; color:#fff; padding:20px 24px;">
+          <div style="font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.5);">Rappel de rendez-vous</div>
+          <div style="font-family:Georgia,serif; font-size:20px; font-weight:700; margin-top:8px;">Institut Pathologie du Bâtiment</div>
+        </div>
+        <div style="padding:24px;">
+          <p style="margin:0 0 14px; color:#1A1917; font-size:15px;">Bonjour,</p>
+          <p style="margin:0 0 16px; color:#736D67; font-size:14px; line-height:1.7;">Petit rappel&nbsp;: votre visite de diagnostic a lieu <strong style="color:#1A1917;">demain</strong>. Voici les détails pour la préparer sereinement&nbsp;:</p>
+          <div style="background:#fff; border:1px solid #E7E2DA; border-radius:10px; padding:16px 18px; margin:0 0 16px;">
+            <p style="margin:0 0 8px; color:#1A1917; font-size:15px; font-weight:700;">${appt.title}</p>
+            <p style="margin:0; color:#736D67; font-size:14px; line-height:1.7;">
+              📅 ${dateStr}<br/>
+              🕑 ${timeStr}${appt.location ? `<br/>📍 ${appt.location}` : ''}
+            </p>
+          </div>
+          <p style="margin:0 0 16px; color:#736D67; font-size:13px; line-height:1.7;">Merci de prévoir un accès aux zones concernées. Un imprévu ou une question&nbsp;? Appelez-nous au <strong style="color:#1A1917;">${COMPANY.phone}</strong> ou répondez à cet e-mail.</p>
+          <p style="margin:0; color:#1A1917; font-size:14px;">À demain,<br/>${COMPANY.name}</p>
+        </div>
+        <div style="padding:12px 24px; border-top:1px solid #E7E2DA; font-size:11px; color:#A09A93;">
+          ${COMPANY.address}, ${COMPANY.postalCode} ${COMPANY.city} · ${COMPANY.phone}
+        </div>
+      </div>
+    </div>`;
+
+    const res = await sendEmail({
+      to: email,
+      subject: `Rappel : votre visite IPB ${dateStr}`,
+      html,
+    });
+    if (res.success) {
+      await prisma.activity.create({
+        data: {
+          type: 'RELANCE',
+          contactId: appt.contactId,
+          leadId: appt.leadId,
+          content: `Rappel de visite J-1 (RDV ${appt.id}) envoyé à ${email} (${dateStr} ${timeStr})`,
+        },
+      });
+      return true;
+    }
+    return false;
+  } catch (err) {
+    console.error('[notify] notifyClientReminder échec (non bloquant):', err);
+    return false;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────
 // Accusé client : annulation de rendez-vous
 // ─────────────────────────────────────────────────────────────────
 

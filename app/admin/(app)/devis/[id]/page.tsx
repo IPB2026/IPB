@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Download, FileCheck2, ReceiptText, CheckCircle2, CalendarClock, Trash2 } from 'lucide-react';
+import { ArrowLeft, Download, FileCheck2, ReceiptText, CheckCircle2, CalendarClock, Trash2, Copy } from 'lucide-react';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import {
@@ -13,6 +13,7 @@ import {
   convertDevisToFacture,
   acceptDevis,
   deleteDevis,
+  duplicateDevis,
 } from '@/app/admin/(app)/devis/actions';
 import { DevisSendForm } from '@/components/admin/devis-send-form';
 import { EditDevisForm } from '@/components/admin/edit-devis-form';
@@ -138,6 +139,16 @@ export default async function DevisDetailPage({
               upcoming={upcoming}
             />
           )}
+          <form action={duplicateDevis}>
+            <input type="hidden" name="devisId" value={devis.id} />
+            <button
+              type="submit"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+            >
+              <Copy className="h-4 w-4" />
+              Dupliquer
+            </button>
+          </form>
           <form action={deleteDevis}>
             <input type="hidden" name="devisId" value={devis.id} />
             <ConfirmSubmit

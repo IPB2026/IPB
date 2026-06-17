@@ -227,6 +227,25 @@ export async function changeStage(formData: FormData) {
 }
 
 /** Ajoute une activité (note, appel, email) à la timeline. */
+/**
+ * Journalise un appel passé (clic sur « Appeler » depuis une fiche client). Crée
+ * une activité APPEL « Appel passé » et rafraîchit la fiche. Appelée directement
+ * depuis le client (fire-and-forget), pas via un formulaire.
+ */
+export async function logCall(contactId: string) {
+  await requireUser();
+  if (!contactId) return;
+  const contact = await prisma.contact.findUnique({
+    where: { id: contactId },
+    select: { id: true },
+  });
+  if (!contact) return;
+  await prisma.activity.create({
+    data: { type: 'APPEL', contactId, content: 'Appel passé' },
+  });
+  revalidatePath(`/admin/clients/${contactId}`);
+}
+
 export async function addActivity(formData: FormData) {
   await requireUser();
   const leadId = String(formData.get('leadId') ?? '');

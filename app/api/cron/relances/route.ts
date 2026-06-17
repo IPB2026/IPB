@@ -10,6 +10,7 @@ import {
 import { euros } from '@/lib/crm/company';
 import { createInvoiceForAppointment, DIAGNOSTIC_APPT_TYPES } from '@/lib/crm/invoicing';
 import { markDevisLost } from '@/lib/crm/send';
+import { notifyClientReminder } from '@/lib/crm/notify';
 import type { LeadTier } from '@prisma/client';
 
 export const runtime = 'nodejs';
@@ -375,6 +376,38 @@ export async function GET(req: Request) {
     errors.push(`avis-loop: ${e instanceof Error ? e.message : 'err'}`);
   }
 
+  // ── Rappel client J-1 : RDV de diagnostic planifiés DEMAIN. Un seul envoi par
+  //    RDV (dédup par activité). Cron quotidien → fenêtre = la journée de demain. ──
+  const tomorrowStart = new Date(startOfToday);
+  tomorrowStart.setDate(tomorrowStart.getDate() + 1);
+  const tomorrowEnd = new Date(tomorrowStart);
+  tomorrowEnd.setDate(tomorrowEnd.getDate() + 1);
+  let rappelsSent = 0;
+  try {
+    const appts = await prisma.appointment.findMany({
+      where: {
+        status: 'PLANIFIE',
+        start: { gte: tomorrowStart, lt: tomorrowEnd },
+        contact: { email: { not: null } },
+      },
+      include: { contact: true },
+      take: 50,
+      orderBy: { start: 'asc' },
+    });
+    for (const a of appts) {
+      const already = await prisma.activity.count({
+        where: {
+          contactId: a.contactId,
+          content: { contains: `Rappel de visite J-1 (RDV ${a.id})` },
+        },
+      });
+      if (already > 0) continue;
+      if (await notifyClientReminder(a.id)) rappelsSent++;
+    }
+  } catch (e) {
+    errors.push(`rappel-j1-loop: ${e instanceof Error ? e.message : 'err'}`);
+  }
+
   return Response.json({
     ok: true,
     candidates: leads.length,
@@ -383,6 +416,7 @@ export async function GET(req: Request) {
     factureSent,
     factureAuto,
     avisSent,
+    rappelsSent,
     errors: errors.slice(0, 10),
   });
 }

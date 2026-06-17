@@ -406,6 +406,61 @@ export async function acceptDevis(formData: FormData) {
   revalidateCrm(devis.contactId);
 }
 
+/**
+ * Duplique un devis (nouveau brouillon, nouveau numéro) — pratique pour un 2ᵉ
+ * bien ou un devis « accompagnement travaux ». Copie objet, type, bien, lignes,
+ * montant et lettre d'intro ; le client/dossier reste le même. Redirige vers la copie.
+ */
+export async function duplicateDevis(formData: FormData) {
+  await requireUser();
+  const id = num(formData.get('devisId'));
+  if (!id) return;
+  const src = await prisma.devis.findUnique({
+    where: { id },
+    include: { lines: { orderBy: { position: 'asc' } } },
+  });
+  if (!src) return;
+
+  const number = await nextDevisNumber();
+  const dup = await prisma.devis.create({
+    data: {
+      number,
+      contactId: src.contactId,
+      leadId: src.leadId,
+      object: src.object,
+      serviceType: src.serviceType,
+      bienConcerne: src.bienConcerne,
+      introLetter: src.introLetter,
+      notes: src.notes,
+      validUntil: src.validUntil,
+      totalHT: src.totalHT,
+      status: 'BROUILLON',
+      lines: {
+        create: src.lines.map((l) => ({
+          designation: l.designation,
+          detail: l.detail,
+          unit: l.unit,
+          qty: l.qty,
+          unitPrice: l.unitPrice,
+          total: l.total,
+          position: l.position,
+        })),
+      },
+    },
+  });
+  await prisma.activity.create({
+    data: {
+      type: 'SYSTEME',
+      contactId: src.contactId,
+      leadId: src.leadId,
+      content: `Devis ${number} créé par duplication de ${src.number}.`,
+    },
+  });
+  revalidatePath('/admin/devis');
+  revalidateCrm(src.contactId);
+  redirect(`/admin/devis/${dup.id}`);
+}
+
 /** Modifie un devis (type, montant, bien, validité) et recalcule les lignes. */
 export async function updateDevis(
   _prev: string | undefined,
