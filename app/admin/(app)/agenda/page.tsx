@@ -27,6 +27,7 @@ import {
   rescheduleAppointment,
   generateInvoiceFromAppointment,
   deleteAppointment,
+  resendAppointmentInvites,
 } from '@/app/admin/(app)/agenda/actions';
 
 export const dynamic = 'force-dynamic';
@@ -396,10 +397,17 @@ export default async function AgendaPage({
                               )}
                               {a.googleEventId &&
                                 (a.contact.email ? (
-                                  <span className="text-emerald-600">· invitation envoyée au client</span>
+                                  <span className="text-emerald-600">· invitation client</span>
                                 ) : (
                                   <span className="text-slate-400">· client sans e-mail</span>
                                 ))}
+                              {a.googleEventIdExpert ? (
+                                <span className="text-emerald-600">
+                                  · invitation diagnostiqueur{a.assignedTo?.name ? ` (${a.assignedTo.name})` : ''}
+                                </span>
+                              ) : (
+                                <span className="text-amber-600">· diagnostiqueur non assigné</span>
+                              )}
                             </p>
                           )}
                         </div>
@@ -448,6 +456,18 @@ export default async function AgendaPage({
                               className="h-10 sm:h-9 rounded-lg border border-orange-200 bg-orange-50 px-3 text-sm font-medium text-orange-700 hover:bg-orange-100"
                             >
                               Facturer
+                            </SubmitButton>
+                          </form>
+                        )}
+                        {isCalendarConfigured() && a.status !== 'ANNULE' && (
+                          <form action={resendAppointmentInvites}>
+                            <input type="hidden" name="appointmentId" value={a.id} />
+                            <SubmitButton
+                              pendingLabel="Envoi…"
+                              title="Renvoyer les invitations Google (client + diagnostiqueur)"
+                              className="inline-flex h-10 sm:h-9 items-center gap-1.5 rounded-lg border border-slate-300 px-3 text-sm font-medium text-slate-600 hover:bg-slate-50"
+                            >
+                              <Send className="h-4 w-4" /> Invitations
                             </SubmitButton>
                           </form>
                         )}
@@ -534,6 +554,6 @@ function loadAppts() {
     where: { start: { gte: startOfToday }, status: { not: 'ANNULE' } },
     orderBy: { start: 'asc' },
     take: 100,
-    include: { contact: true },
+    include: { contact: true, assignedTo: { select: { name: true, email: true } } },
   });
 }
