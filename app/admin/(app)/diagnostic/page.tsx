@@ -13,25 +13,44 @@ function blobTokenVar(): string | null {
   return null;
 }
 
-/** Vérifie en DIRECT que la clé de transcription (Whisper/Groq) est valide. */
+/** Teste EN DIRECT la transcription : clé valide ? modèle disponible ? + erreur exacte. */
 async function checkTranscribe(): Promise<{
   keySet: boolean;
-  live: 'ok' | 'invalide' | 'injoignable' | null;
+  status: number | null; // statut HTTP de l'appel /models
+  modelOk: boolean | null; // le modèle configuré existe-t-il chez le fournisseur ?
+  detail: string; // message d'erreur EXACT ou liste des modèles whisper dispo
   baseUrl: string;
   model: string;
 }> {
   const key = process.env.TRANSCRIBE_API_KEY;
   const baseUrl = (process.env.TRANSCRIBE_BASE_URL || 'https://api.groq.com/openai/v1').replace(/\/$/, '');
   const model = process.env.TRANSCRIBE_MODEL || 'whisper-large-v3';
-  if (!key) return { keySet: false, live: null, baseUrl, model };
+  if (!key) {
+    return { keySet: false, status: null, modelOk: null, detail: 'TRANSCRIBE_API_KEY absente du déploiement en cours.', baseUrl, model };
+  }
   try {
     const r = await fetch(`${baseUrl}/models`, {
       headers: { Authorization: `Bearer ${key}` },
-      signal: AbortSignal.timeout(6000),
+      signal: AbortSignal.timeout(8000),
     });
-    return { keySet: true, live: r.ok ? 'ok' : 'invalide', baseUrl, model };
-  } catch {
-    return { keySet: true, live: 'injoignable', baseUrl, model };
+    if (!r.ok) {
+      const body = (await r.text().catch(() => '')).replace(/\s+/g, ' ').slice(0, 220);
+      return { keySet: true, status: r.status, modelOk: null, detail: body || `HTTP ${r.status}`, baseUrl, model };
+    }
+    const data = (await r.json().catch(() => null)) as { data?: { id: string }[] } | null;
+    const ids = (data?.data ?? []).map((m) => m.id);
+    const modelOk = ids.includes(model);
+    const whisper = ids.filter((id) => id.toLowerCase().includes('whisper'));
+    return {
+      keySet: true,
+      status: 200,
+      modelOk,
+      detail: modelOk ? '' : `Modèle « ${model} » introuvable. Modèles audio dispo : ${whisper.join(', ') || '(aucun)'}.`,
+      baseUrl,
+      model,
+    };
+  } catch (e) {
+    return { keySet: true, status: null, modelOk: null, detail: e instanceof Error ? e.message : 'injoignable', baseUrl, model };
   }
 }
 
@@ -98,25 +117,25 @@ export default async function DiagnosticPage() {
         </div>
         <ul className="divide-y divide-slate-100">
           <Row
-            ok={transcribe.keySet && transcribe.live === 'ok'}
-            warn={transcribe.keySet && transcribe.live !== 'ok'}
+            ok={transcribe.keySet && transcribe.status === 200 && transcribe.modelOk === true}
+            warn={transcribe.keySet && transcribe.status === 200 && transcribe.modelOk === false}
             label={
               !transcribe.keySet
                 ? 'Transcription serveur NON configurée'
-                : transcribe.live === 'ok'
+                : transcribe.status === 200 && transcribe.modelOk
                   ? 'Transcription serveur ACTIVE et valide'
-                  : transcribe.live === 'invalide'
-                    ? 'Clé de transcription INVALIDE'
-                    : 'Service de transcription injoignable'
+                  : transcribe.status === 200 && !transcribe.modelOk
+                    ? 'Clé valide, mais MODÈLE introuvable'
+                    : transcribe.status
+                      ? `Clé REFUSÉE par le fournisseur (HTTP ${transcribe.status})`
+                      : 'Service de transcription injoignable'
             }
             detail={
               !transcribe.keySet
-                ? `Définissez TRANSCRIBE_API_KEY (Groq, free tier). Sans elle, la dictée n'utilise que la reconnaissance du navigateur — médiocre en français technique, et absente sur Chrome iPhone.`
-                : transcribe.live === 'ok'
-                  ? `${transcribe.model} via ${transcribe.baseUrl} — qualité Whisper. La dictée peut basculer dessus pour de meilleurs résultats.`
-                  : transcribe.live === 'invalide'
-                    ? `La clé est refusée par ${transcribe.baseUrl} (401/403). Régénérez TRANSCRIBE_API_KEY chez Groq et redéployez.`
-                    : `Impossible de joindre ${transcribe.baseUrl}. Vérifiez TRANSCRIBE_BASE_URL.`
+                ? `Définissez TRANSCRIBE_API_KEY (Groq, free tier) sur Vercel PUIS redéployez. Sans elle, la dictée n'utilise que la reconnaissance du navigateur — médiocre en français.`
+                : transcribe.status === 200 && transcribe.modelOk
+                  ? `${transcribe.model} via ${transcribe.baseUrl} — la dictée bascule sur Whisper (qualité française supérieure, et fonctionne sur Chrome iPhone).`
+                  : `Erreur exacte : « ${transcribe.detail} »  —  (point d'accès ${transcribe.baseUrl}, modèle « ${transcribe.model} »). Régénérez TRANSCRIBE_API_KEY chez Groq, ou ajustez TRANSCRIBE_MODEL / TRANSCRIBE_BASE_URL, puis redéployez.`
             }
           />
         </ul>

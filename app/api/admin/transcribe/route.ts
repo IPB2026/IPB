@@ -86,12 +86,14 @@ export async function POST(req: NextRequest) {
         return Response.json({ error: 'quota', detail }, { status: 429 });
       }
       lastDetail = (await r.text().catch(() => '')).slice(0, 300);
+      console.error('[transcribe] réponse non-OK du fournisseur:', r.status, lastDetail);
       // 4xx : inutile de retenter. 5xx : on retente tant qu'il reste des essais.
       if (r.status < 500 || attempt === maxRetries) {
         return Response.json({ error: 'upstream', detail: lastDetail }, { status: 502 });
       }
     } catch (e) {
       lastDetail = e instanceof Error ? e.message : 'err';
+      console.error('[transcribe] échec d\'appel au fournisseur:', lastDetail);
       if (attempt === maxRetries) {
         return Response.json({ error: 'fetch', detail: lastDetail }, { status: 502 });
       }
