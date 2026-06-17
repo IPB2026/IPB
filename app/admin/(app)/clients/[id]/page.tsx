@@ -11,6 +11,7 @@ import {
   CalendarClock,
   Check,
   Circle,
+  Send,
 } from 'lucide-react';
 import type {
   DevisStatus,
@@ -33,6 +34,8 @@ import {
   addActivity,
 } from '@/app/admin/(app)/leads/actions';
 import { acceptDevis } from '@/app/admin/(app)/devis/actions';
+import { recordFacturePayment } from '@/app/admin/(app)/factures/actions';
+import { sendFacture } from '@/app/admin/(app)/send-actions';
 import { RelanceControl } from '@/components/admin/relance-control';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 
@@ -640,7 +643,33 @@ export default async function ClientFichePage({
                       pill={FACTURE_PILL[f.status]}
                       action={
                         f.status === 'ENVOYEE' ? (
-                          <RelanceControl kind="facture" id={f.id} contactId={c.id} relanceCount={f.relanceCount} />
+                          <div className="flex flex-wrap items-center justify-end gap-2">
+                            <form action={recordFacturePayment}>
+                              <input type="hidden" name="factureId" value={f.id} />
+                              <input
+                                type="hidden"
+                                name="montant"
+                                value={Math.max(0, Number(f.totalHT) - Number(f.acompte ?? 0))}
+                              />
+                              <ConfirmSubmit
+                                message="Marquer cette facture comme payée (soldée) ? Le client recevra la confirmation de règlement et la rédaction du rapport est déclenchée."
+                                className="inline-flex h-8 items-center gap-1 whitespace-nowrap rounded-lg border border-emerald-200 bg-emerald-50 px-2 text-xs font-semibold text-emerald-700 hover:bg-emerald-100"
+                              >
+                                <Check className="h-3.5 w-3.5" /> Payée
+                              </ConfirmSubmit>
+                            </form>
+                            <RelanceControl kind="facture" id={f.id} contactId={c.id} relanceCount={f.relanceCount} />
+                          </div>
+                        ) : f.status === 'BROUILLON' ? (
+                          <form action={sendFacture}>
+                            <input type="hidden" name="factureId" value={f.id} />
+                            <ConfirmSubmit
+                              message="Envoyer cette facture au client par e-mail (PDF joint) ?"
+                              className="inline-flex h-8 items-center gap-1 whitespace-nowrap rounded-lg border border-orange-200 bg-orange-50 px-2 text-xs font-semibold text-orange-700 hover:bg-orange-100"
+                            >
+                              <Send className="h-3.5 w-3.5" /> Envoyer
+                            </ConfirmSubmit>
+                          </form>
                         ) : undefined
                       }
                     />

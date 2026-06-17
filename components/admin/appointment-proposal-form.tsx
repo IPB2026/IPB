@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { Plus, X, Send } from 'lucide-react';
+import { SlotPicker } from '@/components/admin/slot-picker';
 import { sendAppointmentProposals } from '@/app/admin/(app)/agenda/actions';
 
 const field =
@@ -33,9 +34,11 @@ function SubmitButton() {
 export function AppointmentProposalForm({
   contacts,
   prefill,
+  minDate,
 }: {
   contacts: { id: string; name: string; city: string | null }[];
   prefill?: { contactId?: string; type?: string; leadId?: string };
+  minDate?: string;
 }) {
   const [rows, setRows] = useState<number[]>([0, 1, 2]);
   const [seq, setSeq] = useState(3);
@@ -93,13 +96,7 @@ export function AppointmentProposalForm({
           {rows.map((id, i) => (
             <div key={id} className="flex items-center gap-2">
               <span className="w-5 shrink-0 text-center text-xs font-medium text-slate-400">{i + 1}</span>
-              <input
-                type="datetime-local"
-                name="slot"
-                step={1800}
-                required={i === 0}
-                className={field}
-              />
+              <SlotPicker name="slot" minDate={minDate} required={i === 0} />
               <button
                 type="button"
                 onClick={() => removeRow(id)}

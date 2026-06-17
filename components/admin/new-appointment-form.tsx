@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { SubmitButton } from '@/components/admin/submit-button';
+import { SlotPicker } from '@/components/admin/slot-picker';
 import { createAppointment } from '@/app/admin/(app)/agenda/actions';
 
 const field =
@@ -19,11 +20,13 @@ export function NewAppointmentForm({
   typeOptions,
   prefill,
   prefillLocation,
+  minDate,
 }: {
   contacts: Contact[];
   typeOptions: [string, string][];
   prefill: { contactId: string; type: string; leadId: string; devisId: string };
   prefillLocation: string;
+  minDate?: string;
 }) {
   const [contactId, setContactId] = useState(prefill.contactId);
   const [location, setLocation] = useState(prefillLocation);
@@ -71,7 +74,7 @@ export function NewAppointmentForm({
       </div>
       <div>
         <label className="mb-1 block text-sm font-medium text-slate-700">Date et heure</label>
-        <input type="datetime-local" name="start" step={1800} required className={field} />
+        <SlotPicker name="start" required minDate={minDate} />
       </div>
       <div>
         <label className="mb-1 block text-sm font-medium text-slate-700">Durée (min)</label>

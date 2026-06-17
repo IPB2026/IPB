@@ -120,6 +120,8 @@ export default async function AgendaPage({
   if (!prefillLocation && prefill.contactId) {
     prefillLocation = contacts.find((c) => c.id === prefill.contactId)?.address ?? '';
   }
+  // Date plancher des sélecteurs de créneau (aujourd'hui, fuseau local).
+  const minDate = new Date().toLocaleDateString('en-CA');
 
   // Regroupe par jour
   const groups = new Map<string, typeof appts>();
@@ -222,6 +224,7 @@ export default async function AgendaPage({
             typeOptions={Object.entries(TYPE_LABEL)}
             prefill={prefill}
             prefillLocation={prefillLocation}
+            minDate={minDate}
           />
         )}
         </div>
@@ -244,6 +247,7 @@ export default async function AgendaPage({
           <AppointmentProposalForm
             contacts={contactsWithEmail}
             prefill={{ contactId: prefill.contactId, type: prefill.type, leadId: prefill.leadId }}
+            minDate={minDate}
           />
         </div>
       </details>
