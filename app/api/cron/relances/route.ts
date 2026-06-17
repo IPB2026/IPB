@@ -8,6 +8,7 @@ import {
 } from '@/lib/emailTemplates';
 import { euros } from '@/lib/crm/company';
 import { createInvoiceForAppointment, DIAGNOSTIC_APPT_TYPES } from '@/lib/crm/invoicing';
+import { markDevisLost } from '@/lib/crm/send';
 import type { LeadTier } from '@prisma/client';
 
 export const runtime = 'nodejs';
@@ -173,6 +174,10 @@ export async function GET(req: Request) {
             content: `Relance devis ${devis.number} J+${offset} envoyée à ${email}`,
           },
         });
+        // Après la dernière relance prévue (2e) sans réponse → client PERDU.
+        if (relanceCount + 1 >= DEVIS_STEPS.length) {
+          await markDevisLost(devis.id, devis.leadId, devis.contactId, devis.number);
+        }
         devisSent++;
       } catch (e) {
         errors.push(`devis ${devis.id}: ${e instanceof Error ? e.message : 'err'}`);
@@ -182,8 +187,9 @@ export async function GET(req: Request) {
     errors.push(`devis-loop: ${e instanceof Error ? e.message : 'err'}`);
   }
 
-  // ── Relances de factures impayées (échéance dépassée : J+3 puis J+7) ──
-  const FACTURE_STEPS = [3, 7] as const;
+  // ── Relances de factures impayées (échéance dépassée : J+3, J+7, puis J+14
+  //    en dernier rappel plus ferme). On n'abandonne pas une créance. ──
+  const FACTURE_STEPS = [3, 7, 14] as const;
   let factureSent = 0;
   try {
     const factures = await prisma.facture.findMany({
@@ -232,7 +238,7 @@ export async function GET(req: Request) {
             number: f.number,
             montant: euros(resteDu),
             dueDate: f.dueDate.toLocaleDateString('fr-FR'),
-            step: (relanceCount >= 1 ? 2 : 1) as 1 | 2,
+            step: (relanceCount >= 2 ? 3 : relanceCount >= 1 ? 2 : 1) as 1 | 2 | 3,
           }),
         });
         if (!res.success) {

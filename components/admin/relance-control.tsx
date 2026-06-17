@@ -3,13 +3,14 @@ import { SubmitButton } from '@/components/admin/submit-button';
 import { relanceDevis, relanceFacture } from '@/app/admin/(app)/send-actions';
 
 /**
- * Contrôle de relance à 2 paliers pour un devis / une facture :
- *  - 0 relance envoyée   → bouton « Relancer » (1er rappel, template doux).
- *  - 1 relance envoyée   → bouton « Seconde relance » (2nd rappel, template plus ferme).
- *  - 2 relances envoyées → plus de bouton : on affiche l'état final
- *      (« Perdu » pour un devis, « Impayé » pour une facture).
- * `relanceCount` est PARTAGÉ par les relances manuelles ET automatiques (cron),
- * donc l'état reflète l'ensemble des rappels déjà partis.
+ * Contrôle de relance par paliers pour un devis / une facture :
+ *  DEVIS (2 paliers, puis abandon) :
+ *   - 0 → « Relancer » (doux) · 1 → « Seconde relance » (ferme) · ≥2 → « Perdu »
+ *     (le devis est alors classé EXPIRÉ et le dossier marqué PERDU, cf. markDevisLost).
+ *  FACTURE (3 paliers, on n'abandonne pas une créance) :
+ *   - 0 → « Relancer » · 1 → « Seconde relance » · 2 → « Dernier rappel » (plus ferme
+ *     mais respectueux) · ≥3 → « Impayé ».
+ * `relanceCount` est PARTAGÉ par les relances manuelles ET automatiques (cron).
  */
 export function RelanceControl({
   kind,
@@ -28,15 +29,16 @@ export function RelanceControl({
   /** Mode icône seule (cartes mobile). */
   compact?: boolean;
 }) {
-  // Deux relances déjà parties sans réponse → on n'affiche plus de bouton.
-  if (relanceCount >= 2) {
+  const maxRelances = kind === 'devis' ? 2 : 3;
+  // Cycle de relances épuisé → plus de bouton, on affiche l'état final.
+  if (relanceCount >= maxRelances) {
     const term = kind === 'devis' ? 'Perdu' : 'Impayé';
     return (
       <span
         className={`inline-flex shrink-0 items-center rounded-md px-2 py-0.5 text-xs font-semibold ${
           kind === 'devis' ? 'bg-slate-100 text-slate-500' : 'bg-red-50 text-red-600'
         }`}
-        title="Deux relances envoyées sans réponse"
+        title={`${maxRelances} relances envoyées sans réponse`}
       >
         {term}
       </span>
@@ -45,7 +47,8 @@ export function RelanceControl({
 
   const action = kind === 'devis' ? relanceDevis : relanceFacture;
   const idField = kind === 'devis' ? 'devisId' : 'factureId';
-  const label = relanceCount === 0 ? 'Relancer' : 'Seconde relance';
+  const labels = ['Relancer', 'Seconde relance', 'Dernier rappel'];
+  const label = labels[Math.min(relanceCount, labels.length - 1)];
 
   return (
     <form action={action} className="shrink-0">

@@ -268,6 +268,37 @@ export async function sendRapportEmail(id: string): Promise<SendResult> {
 }
 
 /**
+ * RÈGLE MÉTIER : après 2 relances d'un devis restées sans réponse, on considère
+ * le client PERDU → devis classé EXPIRÉ + dossier (lead) marqué PERDU. Partagé
+ * entre la relance manuelle (send.ts) et le cron de relances. Idempotent.
+ */
+export async function markDevisLost(
+  devisId: string,
+  leadId: string | null,
+  contactId: string,
+  number: string
+): Promise<void> {
+  await prisma.devis.updateMany({
+    where: { id: devisId, status: 'ENVOYE' },
+    data: { status: 'EXPIRE' },
+  });
+  if (leadId) {
+    await prisma.lead.updateMany({
+      where: { id: leadId, stage: { not: 'PERDU' } },
+      data: { stage: 'PERDU', lostReason: 'Sans réponse après 2 relances de devis' },
+    });
+  }
+  await prisma.activity.create({
+    data: {
+      type: 'SYSTEME',
+      contactId,
+      leadId,
+      content: `Devis ${number} classé perdu — sans réponse après 2 relances.`,
+    },
+  });
+}
+
+/**
  * Relance MANUELLE d'un devis resté sans réponse (1 clic depuis la fiche ou le
  * dashboard). E-mail chaleureux (template `devisRelance`, ton « douce »). Le
  * libellé d'activité ne percute PAS le matcher du cron de relances auto (qui
@@ -312,6 +343,10 @@ export async function sendDevisRelanceEmail(id: string): Promise<SendResult> {
       content: `Relance manuelle du devis ${devis.number} envoyée à ${devis.contact.email}`,
     },
   });
+  // Après la 2e relance sans réponse → client considéré PERDU.
+  if (step === 2) {
+    await markDevisLost(devis.id, devis.leadId, devis.contactId, devis.number);
+  }
   return { ok: true };
 }
 
@@ -328,15 +363,18 @@ export async function sendFactureRelanceEmail(id: string): Promise<SendResult> {
   if (!facture.contact.email) return { ok: false, error: 'Client sans e-mail' };
   const firstName = facture.contact.name.split(' ')[0] || facture.contact.name;
   const resteDu = Math.max(0, Number(facture.totalHT) - Number(facture.acompte ?? 0));
-  // 0 relance déjà faite → 1er rappel (doux) ; 1 déjà faite → 2nd rappel (plus ferme).
-  const step: 1 | 2 = facture.relanceCount >= 1 ? 2 : 1;
+  // 0 → 1er rappel (doux) · 1 → 2e (ferme) · 2 → 3e (dernier rappel, plus dur mais respectueux).
+  const step: 1 | 2 | 3 =
+    facture.relanceCount >= 2 ? 3 : facture.relanceCount >= 1 ? 2 : 1;
 
   const res = await sendEmail({
     to: facture.contact.email,
     subject:
       step === 1
         ? `Facture ${facture.number} — petit rappel`
-        : `Facture ${facture.number} — toujours en attente de règlement`,
+        : step === 2
+          ? `Facture ${facture.number} — toujours en attente de règlement`
+          : `Facture ${facture.number} — dernier rappel avant recouvrement`,
     html: factureRelance({
       firstName,
       number: facture.number,

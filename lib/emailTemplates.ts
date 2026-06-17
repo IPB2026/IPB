@@ -345,42 +345,55 @@ interface FactureRelanceContext {
   number: string;
   montant: string;
   dueDate: string;
-  /** 1 = premier rappel (doux) · 2 = second rappel (plus ferme, toujours bienveillant). */
-  step?: 1 | 2;
+  /** 1 = doux · 2 = plus ferme · 3 = dernier rappel (ferme mais respectueux). */
+  step?: 1 | 2 | 3;
   unsubscribeUrl?: string;
 }
 
 export function factureRelance(ctx: FactureRelanceContext): string {
-  const soft = (ctx.step ?? 1) === 1;
-  // Rappel commun, motivant : le paiement déclenche la livraison du rapport.
+  const step = ctx.step ?? 1;
+  // Rappel motivant (paliers 1 et 2) : le paiement déclenche la livraison du rapport.
   const rapportLine =
     'Une précision qui vous sera utile : c\'est la réception de votre règlement qui lance la rédaction de votre rapport d\'expertise. Dès que votre paiement nous parvient, vous le recevez sous <strong>3 à 5 jours ouvrés</strong>. Nous avons hâte de vous transmettre nos conclusions en toute clarté.';
+
+  const eyebrowTxt =
+    step === 1
+      ? 'Facture en attente de règlement'
+      : step === 2
+        ? 'Votre facture · second rappel'
+        : 'Facture impayée · dernier rappel';
+  const headTail =
+    step === 1 ? 'reste à régler.' : step === 2 ? 'est toujours en attente.' : 'demeure impayée.';
+  const bodyMain =
+    step === 1
+      ? `Sauf erreur de notre part, la facture <strong>${ctx.number}</strong> d'un montant de <strong>${ctx.montant}</strong> (échéance du ${ctx.dueDate}) n'est pas encore parvenue sur notre compte. Si ce n'est pas déjà fait, vous pouvez la régler par virement — les coordonnées bancaires figurent sur le document.`
+      : step === 2
+        ? `Nous revenons vers vous au sujet de la facture <strong>${ctx.number}</strong> (<strong>${ctx.montant}</strong>, échéance du ${ctx.dueDate}), que nous n'avons pas encore reçue. Peut-être un imprévu, ou une question de votre côté ? Dans tous les cas, parlons-en : nous trouverons ensemble la solution qui vous convient — échelonnement, précision sur le virement…`
+        : `Malgré nos précédents rappels, la facture <strong>${ctx.number}</strong> d'un montant de <strong>${ctx.montant}</strong> (échéance du ${ctx.dueDate}) demeure impayée à ce jour. Nous vous demandons de bien vouloir procéder à son règlement <strong>sous huitaine</strong>.`;
+  const bodyClose =
+    step === 1
+      ? 'Et si votre virement vient de partir, pas d\'inquiétude : nos messages se sont sans doute croisés. Pour toute question, ou si vous avez besoin d\'un délai, nous restons à votre écoute avec plaisir.'
+      : step === 2
+        ? 'Si votre règlement est déjà en route, merci à vous — et pardon pour ce nouveau message, nos courriers se sont croisés. Sinon, un simple mot de votre part suffit : nous restons à votre entière disposition, sans aucune pression.'
+        : 'Si une difficulté particulière vous empêche de régler, contactez-nous sans tarder : nous restons ouverts au dialogue et à une solution amiable. À défaut de retour de votre part, nous serions toutefois contraints d\'engager les démarches de recouvrement prévues — ce que nous préférerions sincèrement éviter.';
+
   const inner = `
     ${card(`
-      ${eyebrow(soft ? 'Facture en attente de règlement' : 'Votre facture · second rappel')}
-      ${heading('Votre facture ' + ctx.number, soft ? 'reste à régler.' : 'est toujours en attente.')}
+      ${eyebrow(eyebrowTxt)}
+      ${heading('Votre facture ' + ctx.number, headTail)}
       ${para('Bonjour ' + ctx.firstName + ',')}
-      ${para(
-        soft
-          ? `Sauf erreur de notre part, la facture <strong>${ctx.number}</strong> d'un montant de <strong>${ctx.montant}</strong> (échéance du ${ctx.dueDate}) n'est pas encore parvenue sur notre compte. Si ce n'est pas déjà fait, vous pouvez la régler par virement — les coordonnées bancaires figurent sur le document.`
-          : `Nous revenons vers vous au sujet de la facture <strong>${ctx.number}</strong> (<strong>${ctx.montant}</strong>, échéance du ${ctx.dueDate}), que nous n'avons pas encore reçue. Peut-être un imprévu, ou une question de votre côté ? Dans tous les cas, parlons-en : nous trouverons ensemble la solution qui vous convient — échelonnement, précision sur le virement…`
-      )}
-      ${para(rapportLine)}
-      ${para(
-        soft
-          ? 'Et si votre virement vient de partir, pas d\'inquiétude : nos messages se sont sans doute croisés. Pour toute question, ou si vous avez besoin d\'un délai, nous restons à votre écoute avec plaisir.'
-          : 'Si votre règlement est déjà en route, merci à vous — et pardon pour ce nouveau message, nos courriers se sont croisés. Sinon, un simple mot de votre part suffit : nous restons à votre entière disposition, sans aucune pression.'
-      )}
+      ${para(bodyMain)}
+      ${step === 3 ? '' : para(rapportLine)}
+      ${para(bodyClose)}
       <p style="margin: 28px 0;">
         ${button('En parler — 05 82 95 33 75', 'tel:0582953375')}
       </p>
       ${signature}
     `)}
   `;
-  return wrap(inner, {
-    eyebrow: soft ? 'Relance · facture' : 'Second rappel · facture',
-    unsubscribeUrl: ctx.unsubscribeUrl,
-  });
+  const wrapEyebrow =
+    step === 1 ? 'Relance · facture' : step === 2 ? 'Second rappel · facture' : 'Dernier rappel · facture';
+  return wrap(inner, { eyebrow: wrapEyebrow, unsubscribeUrl: ctx.unsubscribeUrl });
 }
 
 // ─────────────────────────────────────────────────────────────────
