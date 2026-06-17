@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Plus, FileText, Download, Trash2, Sparkles } from 'lucide-react';
+import { Plus, FileText, Download, Trash2, Sparkles, Send } from 'lucide-react';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
@@ -7,7 +7,9 @@ import { EmptyState } from '@/components/admin/empty-state';
 import { MobileCardList, MobileCardRow } from '@/components/admin/mobile-card';
 import { DevisStatusBadge, SERVICE_LABEL } from '@/components/admin/badges';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
+import { SubmitButton } from '@/components/admin/submit-button';
 import { deleteDevis } from '@/app/admin/(app)/devis/actions';
+import { relanceDevis } from '@/app/admin/(app)/send-actions';
 import { euros } from '@/lib/crm/company';
 
 export const dynamic = 'force-dynamic';
@@ -84,15 +86,31 @@ export default async function DevisListPage() {
                       : d.object,
                 ]}
                 action={
-                  <form action={deleteDevis}>
-                    <input type="hidden" name="devisId" value={d.id} />
-                    <ConfirmSubmit
-                      message={`Supprimer définitivement le devis ${d.number} ? Action irréversible.`}
-                      className="inline-flex h-11 w-11 sm:h-9 sm:w-9 items-center justify-center rounded-lg text-red-500 active:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </ConfirmSubmit>
-                  </form>
+                  <div className="flex items-center gap-1">
+                    {d.status === 'ENVOYE' && (
+                      <form action={relanceDevis}>
+                        <input type="hidden" name="devisId" value={d.id} />
+                        <input type="hidden" name="contactId" value={d.contactId} />
+                        <input type="hidden" name="redirectTo" value="/admin/devis" />
+                        <SubmitButton
+                          pendingLabel="…"
+                          title="Relancer le client (devis sans réponse)"
+                          className="inline-flex h-11 w-11 sm:h-9 sm:w-9 items-center justify-center rounded-lg text-orange-600 active:bg-orange-50"
+                        >
+                          <Send className="h-4 w-4" />
+                        </SubmitButton>
+                      </form>
+                    )}
+                    <form action={deleteDevis}>
+                      <input type="hidden" name="devisId" value={d.id} />
+                      <ConfirmSubmit
+                        message={`Supprimer définitivement le devis ${d.number} ? Action irréversible.`}
+                        className="inline-flex h-11 w-11 sm:h-9 sm:w-9 items-center justify-center rounded-lg text-red-500 active:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </ConfirmSubmit>
+                    </form>
+                  </div>
                 }
               />
             ))}
@@ -151,16 +169,32 @@ export default async function DevisListPage() {
                     <td className="px-5 py-3 text-right text-xs tabular-nums text-slate-400">
                       {d.createdAt.toLocaleDateString('fr-FR')}
                     </td>
-                    <td className="px-5 py-3 text-right">
-                      <form action={deleteDevis}>
-                        <input type="hidden" name="devisId" value={d.id} />
-                        <ConfirmSubmit
-                          message={`Supprimer définitivement le devis ${d.number} ? Action irréversible.`}
-                          className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 hover:bg-red-50 hover:text-red-600"
-                        >
-                          <Trash2 className="h-4 w-4" />
-                        </ConfirmSubmit>
-                      </form>
+                    <td className="px-5 py-3">
+                      <div className="flex items-center justify-end gap-1.5">
+                        {d.status === 'ENVOYE' && (
+                          <form action={relanceDevis}>
+                            <input type="hidden" name="devisId" value={d.id} />
+                            <input type="hidden" name="contactId" value={d.contactId} />
+                            <input type="hidden" name="redirectTo" value="/admin/devis" />
+                            <SubmitButton
+                              pendingLabel="…"
+                              title="Envoyer une relance bienveillante au client"
+                              className="inline-flex h-8 items-center gap-1 rounded-lg border border-orange-200 bg-orange-50 px-2 text-xs font-semibold text-orange-700 hover:bg-orange-100"
+                            >
+                              <Send className="h-3.5 w-3.5" /> Relancer
+                            </SubmitButton>
+                          </form>
+                        )}
+                        <form action={deleteDevis}>
+                          <input type="hidden" name="devisId" value={d.id} />
+                          <ConfirmSubmit
+                            message={`Supprimer définitivement le devis ${d.number} ? Action irréversible.`}
+                            className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 hover:bg-red-50 hover:text-red-600"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </ConfirmSubmit>
+                        </form>
+                      </div>
                     </td>
                   </tr>
                 ))}

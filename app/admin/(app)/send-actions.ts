@@ -15,6 +15,16 @@ import {
 
 const str = (v: FormDataEntryValue | null) => String(v ?? '').trim();
 
+/**
+ * Destination de retour après une relance. N'autorise QUE des chemins internes
+ * `/admin/…` (anti open-redirect) ; sinon, repli sur la fiche du contact.
+ */
+function safeReturn(to: string, contactId: string): string {
+  return to.startsWith('/admin/') && !to.startsWith('//')
+    ? to
+    : `/admin/clients/${contactId}`;
+}
+
 export async function sendDevis(formData: FormData) {
   await requireAdmin();
   const id = str(formData.get('devisId'));
@@ -120,10 +130,9 @@ export async function relanceDevis(formData: FormData) {
   const contactId = str(formData.get('contactId'));
   if (!id || !contactId) return;
   const res = await sendDevisRelanceEmail(id);
-  revalidateCrm(contactId || undefined);
-  if (contactId) {
-    redirect(`/admin/clients/${contactId}?${res.ok ? 'ok=relance' : 'err=relance'}`);
-  }
+  revalidateCrm(contactId);
+  const back = safeReturn(str(formData.get('redirectTo')), contactId);
+  redirect(`${back}?${res.ok ? 'ok=relance' : 'err=relance'}`);
 }
 
 /**
@@ -136,8 +145,7 @@ export async function relanceFacture(formData: FormData) {
   const contactId = str(formData.get('contactId'));
   if (!id || !contactId) return;
   const res = await sendFactureRelanceEmail(id);
-  revalidateCrm(contactId || undefined);
-  if (contactId) {
-    redirect(`/admin/clients/${contactId}?${res.ok ? 'ok=relance' : 'err=relance'}`);
-  }
+  revalidateCrm(contactId);
+  const back = safeReturn(str(formData.get('redirectTo')), contactId);
+  redirect(`${back}?${res.ok ? 'ok=relance' : 'err=relance'}`);
 }

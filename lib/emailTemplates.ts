@@ -357,7 +357,8 @@ export function factureRelance(ctx: FactureRelanceContext): string {
       ${para(
         `Sauf erreur de notre part, la facture <strong>${ctx.number}</strong> d'un montant de <strong>${ctx.montant}</strong> (échéance du ${ctx.dueDate}) n'est pas encore parvenue sur notre compte. Si ce n'est pas déjà fait, vous pouvez la régler par virement — les coordonnées bancaires figurent sur le document.`
       )}
-      ${para('Si votre virement vient de partir, pas d\'inquiétude : nos messages se sont sans doute croisés. Et si vous avez la moindre question, ou besoin d\'un délai, nous restons à votre écoute.')}
+      ${para('Une précision qui vous sera utile : c\'est la réception de votre règlement qui lance la rédaction de votre rapport d\'expertise. Dès que votre paiement nous parvient, vous le recevez sous <strong>3 à 5 jours ouvrés</strong>. Nous avons hâte de vous transmettre nos conclusions en toute clarté.')}
+      ${para('Et si votre virement vient de partir, pas d\'inquiétude : nos messages se sont sans doute croisés. Pour toute question, ou si vous avez besoin d\'un délai, nous restons à votre écoute avec plaisir.')}
       <p style="margin: 28px 0;">
         ${button('Une question ? 05 82 95 33 75', 'tel:0582953375')}
       </p>
