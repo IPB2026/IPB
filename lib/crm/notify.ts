@@ -199,7 +199,7 @@ export async function notifyClientAppointment(
           <div style="font-family:Georgia,serif; font-size:20px; font-weight:700; margin-top:8px;">Institut Pathologie du Bâtiment</div>
         </div>
         <div style="padding:24px;">
-          <p style="margin:0 0 14px; color:#1A1917; font-size:15px;">Bonjour ${firstName(c.name)},</p>
+          <p style="margin:0 0 14px; color:#1A1917; font-size:15px;">Bonjour,</p>
           <p style="margin:0 0 16px; color:#736D67; font-size:14px; line-height:1.7;">Nous vous confirmons la visite de diagnostic prévue. Retrouvez tous les détails ci-dessous pour la préparer sereinement :</p>
           <div style="background:#fff; border:1px solid #E7E2DA; border-radius:10px; padding:16px 18px; margin:0 0 16px;">
             <p style="margin:0 0 8px; color:#1A1917; font-size:15px; font-weight:700;">${appt.title}</p>
@@ -272,7 +272,7 @@ export async function notifyClientCancellation(
           <div style="font-family:Georgia,serif; font-size:20px; font-weight:700; margin-top:8px;">Institut Pathologie du Bâtiment</div>
         </div>
         <div style="padding:24px;">
-          <p style="margin:0 0 14px; color:#1A1917; font-size:15px;">Bonjour ${firstName(c.name)},</p>
+          <p style="margin:0 0 14px; color:#1A1917; font-size:15px;">Bonjour,</p>
           <p style="margin:0 0 16px; color:#736D67; font-size:14px; line-height:1.7;">Nous vous informons que la visite de diagnostic initialement prévue le <strong style="color:#1A1917;">${dateStr}</strong> a dû être <strong style="color:#1A1917;">annulée</strong>. Nous vous prions de nous en excuser.</p>
           <p style="margin:0 0 16px; color:#736D67; font-size:14px; line-height:1.7;">Nous vous proposerons rapidement une nouvelle date. Répondez simplement à cet e-mail ou appelez-nous au <strong style="color:#1A1917;">${COMPANY.phone}</strong> pour convenir ensemble d'un créneau qui vous convient.</p>
           <p style="margin:0; color:#1A1917; font-size:14px;">Bien à vous,<br/>${COMPANY.name}</p>
@@ -337,7 +337,7 @@ export async function notifyClientPayment(factureId: string): Promise<void> {
           <div style="font-family:Georgia,serif; font-size:20px; font-weight:700; margin-top:8px;">Institut Pathologie du Bâtiment</div>
         </div>
         <div style="padding:24px;">
-          <p style="margin:0 0 14px; color:#1A1917; font-size:15px;">Bonjour ${firstName(c.name)},</p>
+          <p style="margin:0 0 14px; color:#1A1917; font-size:15px;">Bonjour,</p>
           <p style="margin:0 0 16px; color:#736D67; font-size:14px; line-height:1.7;">Nous vous confirmons la bonne réception de votre règlement de la facture <strong style="color:#1A1917;">${facture.number}</strong>. Merci de votre confiance.</p>
           ${reportLine}
           <p style="margin:0 0 16px; color:#736D67; font-size:14px; line-height:1.7;">Pour toute question, ou si vous souhaitez des précisions, n'hésitez pas à nous écrire ou à nous appeler au <strong style="color:#1A1917;">${COMPANY.phone}</strong>.</p>

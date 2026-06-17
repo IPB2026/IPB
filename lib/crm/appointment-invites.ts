@@ -9,8 +9,6 @@ import {
 import { slotLabelLong } from '@/lib/crm/booking';
 import { COMPANY } from '@/lib/crm/company';
 
-const firstName = (name: string) => name.split(' ')[0] || name;
-
 export interface InviteResult {
   /** Google Agenda configuré ? Sinon tout est no-op (repli e-mail maison côté appelant). */
   configured: boolean;
@@ -76,7 +74,7 @@ export async function sendAppointmentInvites(
   // ── 1) Invitation CLIENT (adresse + confirmation) ────────────────────────
   if (appt.contact.email) {
     const description = [
-      `Bonjour ${firstName(appt.contact.name)},`,
+      'Bonjour,',
       '',
       'Votre rendez-vous de diagnostic est confirmé. Notre diagnostiqueur se présentera à l’adresse indiquée ci-dessous.',
       '',

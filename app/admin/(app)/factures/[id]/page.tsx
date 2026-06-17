@@ -8,6 +8,7 @@ import {
   FACTURE_STATUS_LABEL,
 } from '@/components/admin/badges';
 import { euros, COMPANY } from '@/lib/crm/company';
+import { CopyButton } from '@/components/admin/copy-button';
 import {
   updateFactureStatus,
   recordFacturePayment,
@@ -285,6 +286,14 @@ export default async function FactureDetailPage({
           <span className="text-lg font-bold tabular-nums text-orange-600">
             Net à payer&nbsp;: {euros(net)}
           </span>
+        </div>
+        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-slate-200 px-5 py-3">
+          <div className="text-sm">
+            <span className="text-slate-500">Règlement par virement · IBAN&nbsp;</span>
+            <span className="font-medium tabular-nums text-slate-800">{COMPANY.bank.iban}</span>
+            <span className="text-slate-400"> · BIC {COMPANY.bank.bic}</span>
+          </div>
+          <CopyButton value={COMPANY.bank.iban.replace(/\s/g, '')} label="Copier l'IBAN" />
         </div>
       </section>
     </div>

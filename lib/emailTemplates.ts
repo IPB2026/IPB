@@ -130,7 +130,7 @@ export function j0Confirmation(ctx: PathContext): string {
   const inner = `
     ${card(`
       ${eyebrow('Votre demande est en cours d\'analyse')}
-      ${heading('Bonjour ' + ctx.firstName + ',', 'votre demande est entre de bonnes mains.')}
+      ${heading('Bonjour,', 'votre demande est entre de bonnes mains.')}
       ${para('Notre institut vient de recevoir votre demande concernant ' + (ctx.path === 'fissure' ? 'des fissures sur votre habitation' : 'votre projet d\'ouverture de mur porteur') + (ctx.city ? ` à ${ctx.city}` : '') + '. Nous l\'étudions avec attention pour vous orienter au mieux.')}
       ${para(tierMessage)}
       ${para('En attendant notre retour, n\'hésitez pas à nous appeler directement si vous avez la moindre question — nous y répondrons avec plaisir.')}
@@ -156,7 +156,7 @@ export function j1Synthese(ctx: PathContext): string {
     ${card(`
       ${eyebrow('Notre première lecture')}
       ${heading('Voici ce que nous voyons', 'dans votre situation.')}
-      ${para('Bonjour ' + ctx.firstName + ',')}
+      ${para('Bonjour,')}
       ${para(synth)}
       ${para(ctx.path === 'fissure'
         ? "Un point essentiel pour vous : il ne faut pas confondre une fissure cosmétique (faïençage) avec une fissure structurelle (en escalier, ou plus large que 2 mm). C'est précisément ce que notre diagnostic instrumenté permet de trancher — en moins d'une heure, sur place."
@@ -180,7 +180,7 @@ export function j3CaseStudy(ctx: PathContext): string {
     ${card(`
       ${eyebrow('J+3 · Un chantier raconté')}
       ${heading(isFissure ? 'Maison à Tournefeuille,' : 'T3 à Saint-Cyprien,', isFissure ? 'sécheresse 2022.' : 'mur porteur ouvert.')}
-      ${para('Bonjour ' + ctx.firstName + ',')}
+      ${para('Bonjour,')}
       ${para(isFissure
         ? "Pour vous donner du concret : il y a six mois, une maison T4 à Tournefeuille (110 m²) présentait une fissure traversante en escalier de 12 mm sur la façade nord-est. Un tassement différentiel du sol, reconnu en catastrophe naturelle 2022 — les propriétaires redoutaient le pire."
         : "Pour vous donner du concret : il y a six mois, un T3 de 60 m² à Saint-Cyprien avait sa cuisine de 9 m² fermée, séparée du séjour par un mur porteur de 4,2 mètres en briques foraines. Les propriétaires rêvaient d'ouvrir l'espace, sans savoir par où commencer.")}
@@ -206,7 +206,7 @@ export function j7ReprisePoint(ctx: PathContext): string {
     ${card(`
       ${eyebrow('J+7 · Reprenons contact')}
       ${heading('Toujours dans votre projet ?', 'On en parle.')}
-      ${para('Bonjour ' + ctx.firstName + ',')}
+      ${para('Bonjour,')}
       ${para('Une semaine a passé depuis votre demande. Si le sujet est toujours d\'actualité, nous serions heureux d\'échanger 15 minutes au téléphone — sans aucun engagement de votre part.')}
       ${para('Cet échange a un but simple : comprendre précisément votre situation, vous indiquer la bonne marche à suivre, et répondre à vos questions techniques, même les plus basiques.')}
       <p style="margin: 28px 0;">
@@ -229,7 +229,7 @@ export function j14Closure(ctx: PathContext): string {
     ${card(`
       ${eyebrow('J+14 · Dernier message')}
       ${heading('Si ce n\'est plus d\'actualité,', 'pas de souci.')}
-      ${para('Bonjour ' + ctx.firstName + ',')}
+      ${para('Bonjour,')}
       ${para('Vous n\'avez peut-être pas eu le temps de revenir vers nous, ou votre situation a évolué entre-temps. Dans tous les cas, nous ne souhaitons pas vous solliciter inutilement.')}
       ${para('Sans nouvelle de votre part d\'ici une semaine, nous mettrons simplement votre dossier en sommeil. Rien de définitif : un mot de votre part suffit à le rouvrir, à tout moment et sans aucune formalité.')}
       ${para('Et si vous souhaitez simplement rester en contact, nous publions chaque mois des analyses sur la pathologie du bâtiment — fissures, humidité, ouvertures de murs porteurs en Occitanie. Vous pouvez vous y abonner librement, sans engagement.')}
@@ -268,7 +268,7 @@ interface ReviewRequestContext extends BaseContext {
 export function postChantierReviewRequest(ctx: ReviewRequestContext): string {
   const reviewUrl = ctx.googleReviewUrl
     || process.env.IPB_GOOGLE_REVIEW_URL
-    || 'https://www.google.com/search?q=IPB+Expertise+Toulouse&hl=fr';
+    || 'https://g.page/r/CdUQB4wnL6iZEBM/review';
 
   const intervention = ctx.serviceType === 'chantier'
     ? 'la fin de votre chantier'
@@ -279,7 +279,7 @@ export function postChantierReviewRequest(ctx: ReviewRequestContext): string {
   const inner = `
     ${card(`
       ${eyebrow('Votre retour compte beaucoup')}
-      ${heading('Bonjour ' + ctx.firstName + ',', 'un mot après notre intervention.')}
+      ${heading('Bonjour,', 'un mot après notre intervention.')}
       ${para('Une semaine a passé depuis ' + intervention + (ctx.city ? ` à ${ctx.city}` : '') + '. J\'espère que nos recommandations vous ont apporté de la clarté, et que vous abordez la suite plus sereinement.')}
       ${para('À l\'institut, nous avançons grâce à la confiance que nous accordent les particuliers, les architectes et les marchands de biens. Le bouche-à-oreille reste notre première source de nouveaux dossiers — et quelques mots de votre part comptent énormément pour le faire vivre.')}
       ${para('Si notre accompagnement vous a paru sérieux et utile, accepteriez-vous de partager votre retour sur Google ? Deux minutes et quelques phrases sincères suffisent — et cela aide vraiment celles et ceux qui hésitent encore.')}
@@ -342,7 +342,7 @@ export function devisRelance(ctx: DevisRelanceContext): string {
     ${card(`
       ${eyebrow(eyebrowTxt)}
       ${heading(headTitle, headSub)}
-      ${para('Bonjour ' + ctx.firstName + ',')}
+      ${para('Bonjour,')}
       ${para(bodyMain)}
       ${para(bodyClose)}
       <p style="margin: 28px 0;">
@@ -402,7 +402,7 @@ export function factureRelance(ctx: FactureRelanceContext): string {
     ${card(`
       ${eyebrow(eyebrowTxt)}
       ${heading('Votre facture ' + ctx.number, headTail)}
-      ${para('Bonjour ' + ctx.firstName + ',')}
+      ${para('Bonjour,')}
       ${para(bodyMain)}
       ${step === 3 ? '' : para(rapportLine)}
       ${para(bodyClose)}
