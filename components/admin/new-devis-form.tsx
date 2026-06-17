@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
 import { createDevis } from '@/app/admin/(app)/devis/actions';
+import { AddressAutocomplete } from '@/components/admin/address-autocomplete';
 
 const field =
   'w-full rounded-lg border border-slate-300 px-3 py-2 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200';
@@ -126,18 +127,14 @@ export function NewDevisForm({
         </div>
       </div>
 
-      <div>
-        <label className={label} htmlFor="bienConcerne">
-          Bien concerné
-        </label>
-        <input
-          id="bienConcerne"
-          name="bienConcerne"
-          defaultValue={defaultBien ?? ''}
-          placeholder="Maison individuelle — 33 chemin des Vivans, 31600 Muret"
-          className={field}
-        />
-      </div>
+      {/* Bien concerné : autocomplété (BAN), champ unique pré-rempli depuis la fiche. */}
+      <AddressAutocomplete
+        singleFieldName="bienConcerne"
+        addressLabel="Bien concerné"
+        defaultAddress={defaultBien ?? ''}
+        fieldClass={field}
+        labelClass={label}
+      />
 
       <label className="flex cursor-pointer items-center gap-3 rounded-lg border border-slate-200 px-4 py-3 hover:bg-slate-50">
         <input

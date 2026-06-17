@@ -22,12 +22,19 @@ export function AddressAutocomplete({
   defaultCity = '',
   fieldClass,
   labelClass,
+  singleFieldName,
+  addressLabel = 'Adresse du bien',
 }: {
   defaultAddress?: string;
   defaultPostalCode?: string;
   defaultCity?: string;
   fieldClass: string;
   labelClass: string;
+  /** Si fourni : mode CHAMP UNIQUE — un seul input (nommé ainsi) rempli avec le
+   *  libellé complet (rue + CP + ville), sans champs séparés. Ex. « bienConcerne ». */
+  singleFieldName?: string;
+  /** Libellé du champ adresse (défaut « Adresse du bien »). */
+  addressLabel?: string;
 }) {
   const uid = useId();
   const [address, setAddress] = useState(defaultAddress);
@@ -76,9 +83,12 @@ export function AddressAutocomplete({
 
   function pick(s: Suggestion) {
     skipRef.current = true;
-    setAddress(s.address || s.label);
-    setPostalCode(s.postalCode);
-    setCity(s.city);
+    // Mode champ unique → libellé COMPLET (rue + CP + ville) dans le seul champ.
+    setAddress(singleFieldName ? s.label : s.address || s.label);
+    if (!singleFieldName) {
+      setPostalCode(s.postalCode);
+      setCity(s.city);
+    }
     setOpen(false);
     setSuggestions([]);
   }
@@ -87,13 +97,13 @@ export function AddressAutocomplete({
     <div className="space-y-3">
       <div className="relative">
         <label className={labelClass} htmlFor={`${uid}-address`}>
-          Adresse du bien
+          {addressLabel}
         </label>
         <div className="relative">
           <MapPin className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
           <input
             id={`${uid}-address`}
-            name="address"
+            name={singleFieldName ?? 'address'}
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             onFocus={() => suggestions.length > 0 && setOpen(true)}
@@ -130,35 +140,37 @@ export function AddressAutocomplete({
           Suggestions issues du répertoire officiel des adresses (Base Adresse Nationale).
         </p>
       </div>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        <div>
-          <label className={labelClass} htmlFor={`${uid}-cp`}>
-            Code postal
-          </label>
-          <input
-            id={`${uid}-cp`}
-            name="postalCode"
-            value={postalCode}
-            onChange={(e) => setPostalCode(e.target.value)}
-            inputMode="numeric"
-            placeholder="31600"
-            className={fieldClass}
-          />
+      {!singleFieldName && (
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <div>
+            <label className={labelClass} htmlFor={`${uid}-cp`}>
+              Code postal
+            </label>
+            <input
+              id={`${uid}-cp`}
+              name="postalCode"
+              value={postalCode}
+              onChange={(e) => setPostalCode(e.target.value)}
+              inputMode="numeric"
+              placeholder="31600"
+              className={fieldClass}
+            />
+          </div>
+          <div>
+            <label className={labelClass} htmlFor={`${uid}-city`}>
+              Ville
+            </label>
+            <input
+              id={`${uid}-city`}
+              name="city"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              placeholder="Muret"
+              className={fieldClass}
+            />
+          </div>
         </div>
-        <div>
-          <label className={labelClass} htmlFor={`${uid}-city`}>
-            Ville
-          </label>
-          <input
-            id={`${uid}-city`}
-            name="city"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            placeholder="Muret"
-            className={fieldClass}
-          />
-        </div>
-      </div>
+      )}
     </div>
   );
 }
