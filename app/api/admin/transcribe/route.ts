@@ -47,7 +47,10 @@ export async function POST(req: NextRequest) {
     );
   }
   const baseUrl = (process.env.TRANSCRIBE_BASE_URL || 'https://api.groq.com/openai/v1').replace(/\/$/, '');
-  const model = process.env.TRANSCRIBE_MODEL || 'whisper-large-v3';
+  // Modèle par défaut adapté au fournisseur : OpenAI = whisper-1, sinon Groq.
+  const model =
+    process.env.TRANSCRIBE_MODEL ||
+    (/openai\.com/i.test(baseUrl) ? 'whisper-1' : 'whisper-large-v3');
 
   const form = await req.formData().catch(() => null);
   const file = form?.get('audio');

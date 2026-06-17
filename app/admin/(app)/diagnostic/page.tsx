@@ -24,7 +24,9 @@ async function checkTranscribe(): Promise<{
 }> {
   const key = process.env.TRANSCRIBE_API_KEY;
   const baseUrl = (process.env.TRANSCRIBE_BASE_URL || 'https://api.groq.com/openai/v1').replace(/\/$/, '');
-  const model = process.env.TRANSCRIBE_MODEL || 'whisper-large-v3';
+  const model =
+    process.env.TRANSCRIBE_MODEL ||
+    (/openai\.com/i.test(baseUrl) ? 'whisper-1' : 'whisper-large-v3');
   if (!key) {
     return { keySet: false, status: null, modelOk: null, detail: 'TRANSCRIBE_API_KEY absente du déploiement en cours.', baseUrl, model };
   }
