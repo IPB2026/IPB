@@ -20,6 +20,18 @@ export const maxDuration = 60;
  *  - TRANSCRIBE_BASE_URL  (def. https://api.groq.com/openai/v1)
  *  - TRANSCRIBE_MODEL     (def. whisper-large-v3)
  */
+
+/** Indique au composant de dictée si la transcription serveur (Whisper) est
+ *  disponible → il la PRÉFÈRE alors à la reconnaissance navigateur (qualité). */
+export async function GET() {
+  try {
+    await requireUser();
+  } catch {
+    return new Response('Non autorisé', { status: 401 });
+  }
+  return Response.json({ configured: Boolean(process.env.TRANSCRIBE_API_KEY) });
+}
+
 export async function POST(req: NextRequest) {
   try {
     await requireUser();

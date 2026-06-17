@@ -100,10 +100,26 @@ export function VoiceDictationButton({
   };
 
   useEffect(() => {
+    // Choix par défaut : reconnaissance instantanée du navigateur si dispo.
     if (getRecognitionCtor()) switchEngine('speech');
     else if (canRecord()) switchEngine('record');
     else switchEngine('none');
+    // Si la transcription serveur (Whisper) est configurée ET qu'on peut
+    // enregistrer, on la PRÉFÈRE : qualité bien supérieure en français technique
+    // (terrain bruyant, vocabulaire métier) à la reconnaissance navigateur.
+    let cancelled = false;
+    if (canRecord()) {
+      fetch('/api/admin/transcribe', { method: 'GET' })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((d) => {
+          if (!cancelled && d?.configured) switchEngine('record');
+        })
+        .catch(() => {
+          /* config inconnue → on garde le moteur par défaut */
+        });
+    }
     return () => {
+      cancelled = true;
       wantListeningRef.current = false;
       try {
         recRef.current?.stop();

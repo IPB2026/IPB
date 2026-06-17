@@ -106,8 +106,11 @@ export default async function RapportDetailPage({
     : false;
 
   const status = rapport.status;
-  // Édition de la saisie : expert tant que BROUILLON ; admin tant que non envoyé.
-  const canEditField = isAdmin ? status !== 'ENVOYE' : isOwner && status === 'BROUILLON';
+  // Édition de la saisie / ajout de photos : le diagnostiqueur tant que le rapport
+  // n'est pas pris en main par l'IPB (BROUILLON ou SOUMIS) ; l'admin tant que non envoyé.
+  const canEditField = isAdmin
+    ? status !== 'ENVOYE'
+    : isOwner && (status === 'BROUILLON' || status === 'SOUMIS');
 
   const zones = (rapport.zonesInput as unknown as ReportZoneInput[]) ?? [];
   const zoneTitles = zones.map((z) => z.titre).filter(Boolean);
