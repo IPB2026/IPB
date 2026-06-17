@@ -232,6 +232,7 @@ export async function GET(req: Request) {
             number: f.number,
             montant: euros(resteDu),
             dueDate: f.dueDate.toLocaleDateString('fr-FR'),
+            step: (relanceCount >= 1 ? 2 : 1) as 1 | 2,
           }),
         });
         if (!res.success) {

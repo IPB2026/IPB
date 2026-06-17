@@ -32,8 +32,7 @@ import {
   scheduleRelance,
   addActivity,
 } from '@/app/admin/(app)/leads/actions';
-import { relanceDevis, relanceFacture } from '@/app/admin/(app)/send-actions';
-import { SubmitButton } from '@/components/admin/submit-button';
+import { RelanceControl } from '@/components/admin/relance-control';
 
 export const dynamic = 'force-dynamic';
 
@@ -602,7 +601,7 @@ export default async function ClientFichePage({
                       pill={DEVIS_PILL[d.status]}
                       action={
                         d.status === 'ENVOYE' ? (
-                          <RelanceButton action={relanceDevis} idName="devisId" id={d.id} contactId={c.id} />
+                          <RelanceControl kind="devis" id={d.id} contactId={c.id} relanceCount={d.relanceCount} />
                         ) : undefined
                       }
                     />
@@ -628,7 +627,7 @@ export default async function ClientFichePage({
                       pill={FACTURE_PILL[f.status]}
                       action={
                         f.status === 'ENVOYEE' ? (
-                          <RelanceButton action={relanceFacture} idName="factureId" id={f.id} contactId={c.id} />
+                          <RelanceControl kind="facture" id={f.id} contactId={c.id} relanceCount={f.relanceCount} />
                         ) : undefined
                       }
                     />
@@ -803,33 +802,3 @@ function DocRow({
   );
 }
 
-/**
- * Bouton de relance 1 clic (devis ou facture) — envoie un e-mail bienveillant
- * pré-rédigé au client, puis revient sur la fiche avec un toast de confirmation.
- */
-function RelanceButton({
-  action,
-  idName,
-  id,
-  contactId,
-}: {
-  action: (formData: FormData) => Promise<void>;
-  idName: 'devisId' | 'factureId';
-  id: string;
-  contactId: string;
-}) {
-  return (
-    <form action={action} className="shrink-0">
-      <input type="hidden" name={idName} value={id} />
-      <input type="hidden" name="contactId" value={contactId} />
-      <SubmitButton
-        pendingLabel="Envoi…"
-        spinner
-        title="Envoyer une relance bienveillante au client"
-        className="h-8 rounded-lg border border-orange-300 bg-orange-50 px-2.5 text-xs font-semibold text-orange-700 hover:bg-orange-100"
-      >
-        Relancer
-      </SubmitButton>
-    </form>
-  );
-}

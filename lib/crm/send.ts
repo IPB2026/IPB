@@ -281,11 +281,16 @@ export async function sendDevisRelanceEmail(id: string): Promise<SendResult> {
   if (!devis) return { ok: false, error: 'Devis introuvable' };
   if (!devis.contact.email) return { ok: false, error: 'Client sans e-mail' };
   const firstName = devis.contact.name.split(' ')[0] || devis.contact.name;
+  // 0 relance déjà faite → 1er rappel (doux) ; 1 déjà faite → 2nd rappel (plus ferme).
+  const step: 1 | 2 = devis.relanceCount >= 1 ? 2 : 1;
 
   const res = await sendEmail({
     to: devis.contact.email,
-    subject: `Votre devis IPB ${devis.number} — une question ?`,
-    html: devisRelance({ firstName, object: devis.object, step: 1 }),
+    subject:
+      step === 1
+        ? `Votre devis IPB ${devis.number} — une question ?`
+        : `Votre devis IPB ${devis.number} est toujours valable`,
+    html: devisRelance({ firstName, object: devis.object, step }),
   });
   if (!res.success) return { ok: false, error: res.error ?? 'Échec envoi' };
 
@@ -323,10 +328,15 @@ export async function sendFactureRelanceEmail(id: string): Promise<SendResult> {
   if (!facture.contact.email) return { ok: false, error: 'Client sans e-mail' };
   const firstName = facture.contact.name.split(' ')[0] || facture.contact.name;
   const resteDu = Math.max(0, Number(facture.totalHT) - Number(facture.acompte ?? 0));
+  // 0 relance déjà faite → 1er rappel (doux) ; 1 déjà faite → 2nd rappel (plus ferme).
+  const step: 1 | 2 = facture.relanceCount >= 1 ? 2 : 1;
 
   const res = await sendEmail({
     to: facture.contact.email,
-    subject: `Facture ${facture.number} — petit rappel`,
+    subject:
+      step === 1
+        ? `Facture ${facture.number} — petit rappel`
+        : `Facture ${facture.number} — toujours en attente de règlement`,
     html: factureRelance({
       firstName,
       number: facture.number,
@@ -334,6 +344,7 @@ export async function sendFactureRelanceEmail(id: string): Promise<SendResult> {
       dueDate: facture.dueDate
         ? facture.dueDate.toLocaleDateString('fr-FR')
         : '—',
+      step,
     }),
   });
   if (!res.success) return { ok: false, error: res.error ?? 'Échec envoi' };
