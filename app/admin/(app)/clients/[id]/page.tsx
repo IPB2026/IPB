@@ -24,10 +24,8 @@ import { euros } from '@/lib/crm/company';
 import { computeDossier } from '@/lib/crm/dossier';
 import { Avatar } from '@/components/admin/avatar';
 import { ContactEditForm } from '@/components/admin/contact-edit-form';
-import { QualificationForm } from '@/components/admin/qualification-form';
 import { PayloadView } from '@/components/admin/payload-view';
-import { StageBadge, PhaseBadge, STAGE_LABEL, EDITABLE_PIPELINE_STAGES } from '@/components/admin/badges';
-import type { QualificationRecord } from '@/lib/crm/qualification';
+import { StageBadge, PhaseBadge, PHASE_LABEL, PIPELINE_FLOW } from '@/components/admin/badges';
 import {
   changeStage,
   assignLead,
@@ -166,7 +164,10 @@ export default async function ClientFichePage({
   const devisAccepte = c.devis.some((d) => d.status === 'ACCEPTE');
   const canAssign = devisAccepte || Boolean(lead?.assignedToId);
   const experts = isAdmin && lead && canAssign ? await listExperts() : [];
-  const qual = extractQual(lead?.payload);
+  // Sélecteur d'étape aligné sur le pipeline : on affiche la phase COURANTE du
+  // dossier (A_RAPPELER replié sur Nouveau, comme dans le pipeline).
+  const stageSel = dossier.phase === 'A_RAPPELER' ? 'NOUVEAU' : dossier.phase;
+  const stageInFlow = PIPELINE_FLOW.some((p) => p.phase === stageSel);
   const diagnostiqueur = lead?.assignedTo?.name || lead?.assignedTo?.email || '—';
   const adresse =
     [c.address, [c.postalCode, c.city].filter(Boolean).join(' ')]
@@ -391,17 +392,22 @@ export default async function ClientFichePage({
                 <div className="flex flex-wrap gap-2">
                   <select
                     name="stage"
-                    defaultValue={lead.stage}
+                    defaultValue={stageSel}
                     className="h-10 flex-1 rounded-lg border border-slate-300 px-3 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
                   >
-                    {/* Étapes éditables du pipeline + l'étape COURANTE si elle en sort
-                        (Gagné/Perdu/À rappeler) → jamais rétrogradée par défaut. */}
-                    {((EDITABLE_PIPELINE_STAGES as readonly string[]).includes(lead.stage)
-                      ? EDITABLE_PIPELINE_STAGES
-                      : [lead.stage, ...EDITABLE_PIPELINE_STAGES]
-                    ).map((v) => (
-                      <option key={v} value={v}>
-                        {STAGE_LABEL[v]}
+                    {/* MÊMES phases que la page Pipeline (PIPELINE_FLOW). Les étapes
+                        amont sont réglables à la main ; celles après la visite
+                        (facture, paiement, rapport, suivi) avancent AUTOMATIQUEMENT
+                        → affichées mais désactivées. */}
+                    {!stageInFlow && (
+                      <option value={stageSel} disabled>
+                        {PHASE_LABEL[stageSel] ?? stageSel} · état actuel
+                      </option>
+                    )}
+                    {PIPELINE_FLOW.map((p) => (
+                      <option key={p.phase} value={p.phase} disabled={!p.editable}>
+                        {PHASE_LABEL[p.phase]}
+                        {p.editable ? '' : ' · auto'}
                       </option>
                     ))}
                   </select>
@@ -413,8 +419,9 @@ export default async function ClientFichePage({
                   </button>
                 </div>
                 <p className="text-xs text-slate-400">
-                  L&apos;étape avance aussi automatiquement quand vous envoyez un
-                  devis, planifiez un RDV, facturez, etc.
+                  Ce sont les étapes de la page Pipeline. Après la visite, elles
+                  avancent toutes seules dès que vous créez le document (facture,
+                  paiement, rapport…) — vous ne réglez que l&apos;amont.
                 </p>
               </form>
               {canAssign ? (
@@ -511,23 +518,6 @@ export default async function ClientFichePage({
               </button>
             </form>
           </div>
-        </section>
-      )}
-
-      {/* Qualification (appel) — ADMIN */}
-      {isAdmin && lead && (
-        <section className="rounded-xl border border-slate-200 bg-white p-5">
-          <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-            <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-              Qualification (appel)
-            </h2>
-            {qual?.at && (
-              <span className="text-xs text-slate-400">
-                Mise à jour le {new Date(qual.at).toLocaleDateString('fr-FR')}
-              </span>
-            )}
-          </div>
-          <QualificationForm leadId={lead.id} current={qual} />
         </section>
       )}
 
@@ -689,14 +679,6 @@ export default async function ClientFichePage({
       </details>
     </div>
   );
-}
-
-/** Qualification d'appel rangée dans `payload.qualification`. */
-function extractQual(payload: unknown): QualificationRecord | null {
-  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) return null;
-  const q = (payload as Record<string, unknown>).qualification;
-  if (!q || typeof q !== 'object') return null;
-  return q as QualificationRecord;
 }
 
 /**
