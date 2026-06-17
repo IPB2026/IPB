@@ -294,36 +294,57 @@ export function postChantierReviewRequest(ctx: ReviewRequestContext): string {
 }
 
 // ─────────────────────────────────────────────────────────────────
-// Relance commerciale : devis envoyé sans réponse (J+3 douce / J+7 ferme)
+// Relance commerciale : devis envoyé sans réponse
+// (J+3 douce · J+7 ferme · J+14 dernier rappel avant clôture)
 // ─────────────────────────────────────────────────────────────────
 
 interface DevisRelanceContext {
   firstName: string;
   object: string;
-  step: 1 | 2; // 1 = J+3, 2 = J+7
+  step: 1 | 2 | 3; // 1 = J+3 (doux) · 2 = J+7 (ferme) · 3 = J+14 (dernière relance)
   unsubscribeUrl?: string;
 }
 
 export function devisRelance(ctx: DevisRelanceContext): string {
-  const soft = ctx.step === 1;
+  const step = ctx.step;
+  const eyebrowTxt =
+    step === 1
+      ? 'Votre devis · suite'
+      : step === 2
+        ? 'Votre devis · dernier point'
+        : 'Votre devis · clôture du dossier';
+  const headTitle =
+    step === 1
+      ? 'Une question sur votre devis ?'
+      : step === 2
+        ? 'Souhaitez-vous donner suite ?'
+        : 'Dernière relance avant clôture';
+  const headSub =
+    step === 1
+      ? 'Nous restons disponibles.'
+      : step === 2
+        ? 'Votre devis est toujours valable.'
+        : 'Sans retour, nous classerons votre dossier.';
+  const bodyMain =
+    step === 1
+      ? `Nous vous avons adressé notre devis pour <strong>${ctx.object}</strong> il y a quelques jours. Avant d'aller plus loin, nous tenions à vérifier qu'il vous est bien parvenu — et que vous pouvez nous poser vos questions en toute confiance, sur le contenu, le déroulé ou les délais.`
+      : step === 2
+        ? `Sauf erreur de notre part, votre devis pour <strong>${ctx.object}</strong> est resté en attente. Bonne nouvelle : il reste valable, et sans engagement de votre part. Un simple message, et nous fixons votre visite sous 72 heures.`
+        : `Nous revenons vers vous une dernière fois au sujet de votre devis pour <strong>${ctx.object}</strong>, resté sans réponse malgré nos précédents messages. Il reste valable aujourd'hui : un simple mot de votre part suffit pour que nous fixions votre visite sous 72 heures.`;
+  const bodyClose =
+    step === 1
+      ? "Pour vous rassurer : dès que vous nous donnez votre accord, nous planifions votre visite sous 72 heures."
+      : step === 2
+        ? "Si votre situation a changé, ou que le projet n'est plus d'actualité, dites-le-nous simplement — nous classerons votre dossier en toute discrétion, sans vous solliciter davantage."
+        : "Sans retour de votre part, nous clôturerons votre dossier afin de ne plus vous solliciter. Vous restez bien sûr libre de nous recontacter quand vous le souhaiterez : ce sera avec plaisir.";
+
   const inner = `
     ${card(`
-      ${eyebrow(soft ? 'Votre devis · suite' : 'Votre devis · dernier point')}
-      ${heading(
-        soft ? 'Une question sur votre devis ?' : 'Souhaitez-vous donner suite ?',
-        soft ? 'Nous restons disponibles.' : 'Votre devis est toujours valable.'
-      )}
+      ${eyebrow(eyebrowTxt)}
+      ${heading(headTitle, headSub)}
       ${para('Bonjour ' + ctx.firstName + ',')}
-      ${para(
-        soft
-          ? `Nous vous avons adressé notre devis pour <strong>${ctx.object}</strong> il y a quelques jours. Avant d'aller plus loin, nous tenions à vérifier qu'il vous est bien parvenu — et que vous pouvez nous poser vos questions en toute confiance, sur le contenu, le déroulé ou les délais.`
-          : `Sauf erreur de notre part, votre devis pour <strong>${ctx.object}</strong> est resté en attente. Bonne nouvelle : il reste valable, et sans engagement de votre part. Un simple message, et nous fixons votre visite sous 72 heures.`
-      )}
-      ${para(
-        soft
-          ? "Pour vous rassurer : dès que vous nous donnez votre accord, nous planifions votre visite sous 72 heures."
-          : "Si votre situation a changé, ou que le projet n'est plus d'actualité, dites-le-nous simplement — nous classerons votre dossier en toute discrétion, sans vous solliciter davantage."
-      )}
+      ${para(bodyMain)}
+      ${para(bodyClose)}
       <p style="margin: 28px 0;">
         ${button('En parler — 05 82 95 33 75', 'tel:0582953375')}
       </p>
@@ -331,7 +352,7 @@ export function devisRelance(ctx: DevisRelanceContext): string {
     `)}
   `;
   return wrap(inner, {
-    eyebrow: soft ? 'Relance · J+3' : 'Relance · J+7',
+    eyebrow: step === 1 ? 'Relance · J+3' : step === 2 ? 'Relance · J+7' : 'Relance · J+14',
     unsubscribeUrl: ctx.unsubscribeUrl,
   });
 }

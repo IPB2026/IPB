@@ -100,11 +100,12 @@ export async function GET(req: Request) {
     }
   }
 
-  // ── Relances commerciales : devis ENVOYE sans réponse (J+3 puis J+7) ──
+  // ── Relances commerciales : devis ENVOYE sans réponse (J+3, J+7 puis J+14) ──
   // FIABLE depuis la migration relance_tracking : on s'appuie sur les champs
   // Devis.sentAt (date d'envoi) et Devis.relanceCount (compteur), au lieu d'un
   // matching de texte sur les activités. Stop dès que le devis quitte ENVOYE.
-  const DEVIS_STEPS = [3, 7] as const;
+  // 3 relances sans réponse → dossier PERDU (markDevisLost).
+  const DEVIS_STEPS = [3, 7, 14] as const;
   let devisSent = 0;
   try {
     const devisList = await prisma.devis.findMany({
@@ -142,14 +143,16 @@ export async function GET(req: Request) {
       const ageDays = (now - sentAt.getTime()) / DAY;
       if (ageDays < offset) continue;
 
-      const step = (relanceCount + 1) as 1 | 2;
+      const step = (relanceCount + 1) as 1 | 2 | 3;
       try {
         const res = await sendEmail({
           to: email,
           subject:
             step === 1
               ? 'Votre devis IPB — une question ?'
-              : 'Votre devis IPB est toujours valable',
+              : step === 2
+                ? 'Votre devis IPB est toujours valable'
+                : 'Votre devis IPB — dernière relance avant clôture',
           html: devisRelance({
             firstName: devis.contact.name.split(' ')[0] || devis.contact.name,
             object: devis.object,
@@ -174,7 +177,7 @@ export async function GET(req: Request) {
             content: `Relance devis ${devis.number} J+${offset} envoyée à ${email}`,
           },
         });
-        // Après la dernière relance prévue (2e) sans réponse → client PERDU.
+        // Après la dernière relance prévue (3e) sans réponse → client PERDU.
         if (relanceCount + 1 >= DEVIS_STEPS.length) {
           await markDevisLost(devis.id, devis.leadId, devis.contactId, devis.number);
         }

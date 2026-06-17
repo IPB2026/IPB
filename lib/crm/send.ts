@@ -268,7 +268,7 @@ export async function sendRapportEmail(id: string): Promise<SendResult> {
 }
 
 /**
- * RÈGLE MÉTIER : après 2 relances d'un devis restées sans réponse, on considère
+ * RÈGLE MÉTIER : après 3 relances d'un devis restées sans réponse, on considère
  * le client PERDU → devis classé EXPIRÉ + dossier (lead) marqué PERDU. Partagé
  * entre la relance manuelle (send.ts) et le cron de relances. Idempotent.
  */
@@ -285,7 +285,7 @@ export async function markDevisLost(
   if (leadId) {
     await prisma.lead.updateMany({
       where: { id: leadId, stage: { not: 'PERDU' } },
-      data: { stage: 'PERDU', lostReason: 'Sans réponse après 2 relances de devis' },
+      data: { stage: 'PERDU', lostReason: 'Sans réponse après 3 relances de devis' },
     });
   }
   await prisma.activity.create({
@@ -293,7 +293,7 @@ export async function markDevisLost(
       type: 'SYSTEME',
       contactId,
       leadId,
-      content: `Devis ${number} classé perdu — sans réponse après 2 relances.`,
+      content: `Devis ${number} classé perdu — sans réponse après 3 relances.`,
     },
   });
 }
@@ -312,15 +312,18 @@ export async function sendDevisRelanceEmail(id: string): Promise<SendResult> {
   if (!devis) return { ok: false, error: 'Devis introuvable' };
   if (!devis.contact.email) return { ok: false, error: 'Client sans e-mail' };
   const firstName = devis.contact.name.split(' ')[0] || devis.contact.name;
-  // 0 relance déjà faite → 1er rappel (doux) ; 1 déjà faite → 2nd rappel (plus ferme).
-  const step: 1 | 2 = devis.relanceCount >= 1 ? 2 : 1;
+  // 0 → 1er rappel (doux) · 1 → 2e (ferme) · 2 → 3e (dernière relance avant clôture).
+  const step: 1 | 2 | 3 =
+    devis.relanceCount >= 2 ? 3 : devis.relanceCount >= 1 ? 2 : 1;
 
   const res = await sendEmail({
     to: devis.contact.email,
     subject:
       step === 1
         ? `Votre devis IPB ${devis.number} — une question ?`
-        : `Votre devis IPB ${devis.number} est toujours valable`,
+        : step === 2
+          ? `Votre devis IPB ${devis.number} est toujours valable`
+          : `Votre devis IPB ${devis.number} — dernière relance avant clôture`,
     html: devisRelance({ firstName, object: devis.object, step }),
   });
   if (!res.success) return { ok: false, error: res.error ?? 'Échec envoi' };
@@ -343,8 +346,8 @@ export async function sendDevisRelanceEmail(id: string): Promise<SendResult> {
       content: `Relance manuelle du devis ${devis.number} envoyée à ${devis.contact.email}`,
     },
   });
-  // Après la 2e relance sans réponse → client considéré PERDU.
-  if (step === 2) {
+  // Après la 3e relance sans réponse → client considéré PERDU.
+  if (step === 3) {
     await markDevisLost(devis.id, devis.leadId, devis.contactId, devis.number);
   }
   return { ok: true };

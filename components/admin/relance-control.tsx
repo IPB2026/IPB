@@ -3,11 +3,12 @@ import { SubmitButton } from '@/components/admin/submit-button';
 import { relanceDevis, relanceFacture } from '@/app/admin/(app)/send-actions';
 
 /**
- * Contrôle de relance par paliers pour un devis / une facture :
- *  DEVIS (2 paliers, puis abandon) :
- *   - 0 → « Relancer » (doux) · 1 → « Seconde relance » (ferme) · ≥2 → « Perdu »
- *     (le devis est alors classé EXPIRÉ et le dossier marqué PERDU, cf. markDevisLost).
- *  FACTURE (3 paliers, on n'abandonne pas une créance) :
+ * Contrôle de relance par paliers (3 paliers dans les deux cas) :
+ *  DEVIS (puis abandon) :
+ *   - 0 → « Relancer » (doux) · 1 → « Seconde relance » (ferme) · 2 → « Dernier rappel »
+ *     · ≥3 → « Perdu » (le devis est alors classé EXPIRÉ et le dossier marqué PERDU,
+ *     cf. markDevisLost).
+ *  FACTURE (on n'abandonne pas une créance) :
  *   - 0 → « Relancer » · 1 → « Seconde relance » · 2 → « Dernier rappel » (plus ferme
  *     mais respectueux) · ≥3 → « Impayé ».
  * `relanceCount` est PARTAGÉ par les relances manuelles ET automatiques (cron).
@@ -29,7 +30,7 @@ export function RelanceControl({
   /** Mode icône seule (cartes mobile). */
   compact?: boolean;
 }) {
-  const maxRelances = kind === 'devis' ? 2 : 3;
+  const maxRelances = 3;
   // Cycle de relances épuisé → plus de bouton, on affiche l'état final.
   if (relanceCount >= maxRelances) {
     const term = kind === 'devis' ? 'Perdu' : 'Impayé';
