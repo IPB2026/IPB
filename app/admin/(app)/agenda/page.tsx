@@ -10,6 +10,7 @@ import { isCalendarConfigured } from '@/lib/google/calendar';
 import { AgendaWeek, type WeekAppt } from '@/components/admin/agenda-week';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 import { AppointmentProposalForm } from '@/components/admin/appointment-proposal-form';
+import { NewAppointmentForm } from '@/components/admin/new-appointment-form';
 import { SubmitButton } from '@/components/admin/submit-button';
 
 /** Lundi 00:00 de la semaine contenant `d`. */
@@ -22,7 +23,6 @@ function startOfWeek(d: Date): Date {
 }
 const ymd = (d: Date) => d.toISOString().slice(0, 10);
 import {
-  createAppointment,
   updateAppointmentStatus,
   rescheduleAppointment,
   generateInvoiceFromAppointment,
@@ -217,85 +217,12 @@ export default async function AgendaPage({
             Créez d'abord un prospect pour planifier un RDV.
           </p>
         ) : (
-          <form action={createAppointment} className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            {prefill.leadId && (
-              <input type="hidden" name="leadId" value={prefill.leadId} />
-            )}
-            {prefill.devisId && (
-              <input type="hidden" name="devisId" value={prefill.devisId} />
-            )}
-            <div>
-              <label className="mb-1 block text-sm font-medium text-slate-700">
-                Client
-              </label>
-              <select
-                name="contactId"
-                required
-                defaultValue={prefill.contactId}
-                className={field}
-              >
-                <option value="" disabled>
-                  Choisir un prospect…
-                </option>
-                {contacts.map((c) => (
-                  <option key={c.id} value={c.id}>
-                    {c.name}
-                    {c.city ? ` — ${c.city}` : ''}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label className="mb-1 block text-sm font-medium text-slate-700">
-                Type
-              </label>
-              <select name="type" defaultValue={prefill.type} className={field}>
-                {Object.entries(TYPE_LABEL).map(([v, l]) => (
-                  <option key={v} value={v}>
-                    {l}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label className="mb-1 block text-sm font-medium text-slate-700">
-                Date et heure
-              </label>
-              <input type="datetime-local" name="start" step={1800} required className={field} />
-            </div>
-            <div>
-              <label className="mb-1 block text-sm font-medium text-slate-700">
-                Durée (min)
-              </label>
-              <input
-                type="number"
-                name="durationMin"
-                defaultValue={60}
-                min={15}
-                step={15}
-                className={field}
-              />
-            </div>
-            <div className="sm:col-span-2">
-              <label className="mb-1 block text-sm font-medium text-slate-700">
-                Lieu
-              </label>
-              <input
-                name="location"
-                defaultValue={prefillLocation}
-                placeholder="Adresse du bien"
-                className={field}
-              />
-            </div>
-            <div className="sm:col-span-2 flex justify-end">
-              <SubmitButton
-                pendingLabel="Planification…"
-                className="rounded-lg bg-orange-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-orange-700"
-              >
-                Planifier le RDV
-              </SubmitButton>
-            </div>
-          </form>
+          <NewAppointmentForm
+            contacts={contacts}
+            typeOptions={Object.entries(TYPE_LABEL)}
+            prefill={prefill}
+            prefillLocation={prefillLocation}
+          />
         )}
         </div>
       </details>
