@@ -5,6 +5,7 @@ import {
   emailSequence,
   devisRelance,
   factureRelance,
+  postChantierReviewRequest,
 } from '@/lib/emailTemplates';
 import { euros } from '@/lib/crm/company';
 import { createInvoiceForAppointment, DIAGNOSTIC_APPT_TYPES } from '@/lib/crm/invoicing';
@@ -314,6 +315,66 @@ export async function GET(req: Request) {
     errors.push(`facture-auto-loop: ${e instanceof Error ? e.message : 'err'}`);
   }
 
+  // ── Demande d'avis Google : J+7 après l'envoi du rapport. Le bouche-à-oreille
+  //    et la note Google sont la 1ʳᵉ source de dossiers → on sollicite UNE fois par
+  //    rapport (dédup via activité). Délai réglable (REVIEW_DELAY_DAYS). Le lien
+  //    direct vient de IPB_GOOGLE_REVIEW_URL (sinon repli vers la fiche Google). ──
+  const REVIEW_DELAY_DAYS = 7;
+  let avisSent = 0;
+  try {
+    const cutoff = new Date(now - REVIEW_DELAY_DAYS * DAY);
+    const rapports = await prisma.rapport.findMany({
+      where: {
+        status: 'ENVOYE',
+        updatedAt: { lt: cutoff },
+        contact: { email: { not: null } },
+      },
+      include: { contact: true },
+      take: 50,
+      orderBy: { updatedAt: 'asc' },
+    });
+    for (const r of rapports) {
+      const email = r.contact.email;
+      if (!email) continue;
+      // Une seule demande par rapport (anti double-sollicitation).
+      const already = await prisma.activity.count({
+        where: {
+          contactId: r.contactId,
+          content: { contains: `Demande d'avis Google (rapport ${r.number})` },
+        },
+      });
+      if (already > 0) continue;
+      try {
+        const res = await sendEmail({
+          to: email,
+          subject: 'Votre avis sur votre expertise IPB',
+          html: postChantierReviewRequest({
+            firstName: r.contact.name.split(' ')[0] || r.contact.name,
+            city: r.contact.city ?? undefined,
+            serviceType: 'diagnostic',
+          }),
+        });
+        if (!res.success) {
+          errors.push(`avis ${r.id}: ${res.error}`);
+          continue;
+        }
+        await prisma.activity.create({
+          data: {
+            type: 'EMAIL',
+            contactId: r.contactId,
+            leadId: r.leadId,
+            content: `Demande d'avis Google (rapport ${r.number}) envoyée à ${email}`,
+          },
+        });
+        avisSent++;
+      } catch (e) {
+        errors.push(`avis ${r.id}: ${e instanceof Error ? e.message : 'err'}`);
+      }
+    }
+  } catch (e) {
+    errors.push(`avis-loop: ${e instanceof Error ? e.message : 'err'}`);
+  }
+
   return Response.json({
     ok: true,
     candidates: leads.length,
@@ -321,6 +382,7 @@ export async function GET(req: Request) {
     devisSent,
     factureSent,
     factureAuto,
+    avisSent,
     errors: errors.slice(0, 10),
   });
 }

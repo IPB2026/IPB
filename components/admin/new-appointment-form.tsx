@@ -18,12 +18,14 @@ type Contact = { id: string; name: string; city: string | null; address: string 
 export function NewAppointmentForm({
   contacts,
   typeOptions,
+  experts,
   prefill,
   prefillLocation,
   minDate,
 }: {
   contacts: Contact[];
   typeOptions: [string, string][];
+  experts: { id: string; name: string }[];
   prefill: { contactId: string; type: string; leadId: string; devisId: string };
   prefillLocation: string;
   minDate?: string;
@@ -90,6 +92,23 @@ export function NewAppointmentForm({
           className={field}
         />
       </div>
+      {experts.length > 0 && (
+        <div className="sm:col-span-2">
+          <label className="mb-1 block text-sm font-medium text-slate-700">Diagnostiqueur</label>
+          <select name="assignedToId" defaultValue="" className={field}>
+            <option value="">Expert du dossier (par défaut)</option>
+            {experts.map((e) => (
+              <option key={e.id} value={e.id}>
+                {e.name}
+              </option>
+            ))}
+          </select>
+          <p className="mt-1 text-xs text-slate-500">
+            Reçoit la 2ᵉ invitation Google. Laissé vide&nbsp;: on prend l&apos;expert déjà assigné au
+            dossier (sinon seule l&apos;invitation client part).
+          </p>
+        </div>
+      )}
       <div className="sm:col-span-2 flex justify-end">
         <SubmitButton
           pendingLabel="Planification…"

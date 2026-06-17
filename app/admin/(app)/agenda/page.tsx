@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { CalendarClock, ReceiptText, Plus, Trash2, Send } from 'lucide-react';
 import type { AppointmentStatus, AppointmentType } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
-import { guardAdminPage } from '@/lib/auth-helpers';
+import { guardAdminPage, listExperts } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
 import { EmptyState } from '@/components/admin/empty-state';
 import { Avatar } from '@/components/admin/avatar';
@@ -122,6 +122,8 @@ export default async function AgendaPage({
   }
   // Date plancher des sélecteurs de créneau (aujourd'hui, fuseau local).
   const minDate = new Date().toLocaleDateString('en-CA');
+  // Diagnostiqueurs (comptes EXPERT) proposables à l'assignation d'un RDV.
+  const experts = await listExperts();
 
   // Regroupe par jour
   const groups = new Map<string, typeof appts>();
@@ -222,6 +224,7 @@ export default async function AgendaPage({
           <NewAppointmentForm
             contacts={contacts}
             typeOptions={Object.entries(TYPE_LABEL)}
+            experts={experts}
             prefill={prefill}
             prefillLocation={prefillLocation}
             minDate={minDate}

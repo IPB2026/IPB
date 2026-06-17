@@ -65,6 +65,7 @@ export async function createAppointment(formData: FormData) {
   const notes = str(formData.get('notes')) || null;
   const leadId = str(formData.get('leadId')) || null;
   const devisId = str(formData.get('devisId')) || null;
+  const chosenExpertId = str(formData.get('assignedToId')) || null;
 
   const contact = await prisma.contact.findUnique({ where: { id: contactId } });
   if (!contact) return;
@@ -82,15 +83,23 @@ export async function createAppointment(formData: FormData) {
   }
   if (!resolvedLocation) resolvedLocation = contact.address ?? null;
 
-  // Diagnostiqueur = expert assigné au DOSSIER (lead) → on le rattache aussi au
-  // RDV pour que la 2e invitation Google parte vers lui.
-  let assignedToId: string | null = null;
-  if (leadId) {
+  // Diagnostiqueur : choix EXPLICITE du formulaire prioritaire ; sinon l'expert
+  // déjà assigné au DOSSIER (lead). Il reçoit la 2e invitation Google.
+  let assignedToId: string | null = chosenExpertId;
+  if (!assignedToId && leadId) {
     const lead = await prisma.lead.findUnique({
       where: { id: leadId },
       select: { assignedToId: true },
     });
     assignedToId = lead?.assignedToId ?? null;
+  }
+  // Choix explicite + dossier connu → on synchronise l'expert du dossier (cohérence
+  // « le diagnostiqueur du RDV = l'expert du dossier »).
+  if (chosenExpertId && leadId) {
+    await prisma.lead.updateMany({
+      where: { id: leadId },
+      data: { assignedToId: chosenExpertId },
+    });
   }
 
   const appt = await prisma.appointment.create({

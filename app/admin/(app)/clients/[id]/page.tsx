@@ -35,7 +35,8 @@ import {
 } from '@/app/admin/(app)/leads/actions';
 import { acceptDevis } from '@/app/admin/(app)/devis/actions';
 import { recordFacturePayment } from '@/app/admin/(app)/factures/actions';
-import { sendFacture } from '@/app/admin/(app)/send-actions';
+import { sendFacture, sendRapport } from '@/app/admin/(app)/send-actions';
+import { updateAppointmentStatus } from '@/app/admin/(app)/agenda/actions';
 import { RelanceControl } from '@/components/admin/relance-control';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 
@@ -630,6 +631,19 @@ export default async function ClientFichePage({
                     title={`Rapport ${r.number}`}
                     sub={r.title}
                     pill={RAPPORT_PILL[r.status]}
+                    action={
+                      isAdmin && r.status === 'VALIDE' ? (
+                        <form action={sendRapport}>
+                          <input type="hidden" name="rapportId" value={r.id} />
+                          <ConfirmSubmit
+                            message="Envoyer le rapport au client par e-mail (PDF joint) ?"
+                            className="inline-flex h-8 items-center gap-1 whitespace-nowrap rounded-lg border border-orange-200 bg-orange-50 px-2 text-xs font-semibold text-orange-700 hover:bg-orange-100"
+                          >
+                            <Send className="h-3.5 w-3.5" /> Envoyer
+                          </ConfirmSubmit>
+                        </form>
+                      ) : undefined
+                    }
                   />
                 ))}
                 {isAdmin &&
@@ -682,6 +696,20 @@ export default async function ClientFichePage({
                     title={a.title}
                     sub={a.start.toLocaleString('fr-FR')}
                     pill={APPT_PILL[a.status]}
+                    action={
+                      isAdmin && a.status === 'PLANIFIE' ? (
+                        <form action={updateAppointmentStatus}>
+                          <input type="hidden" name="appointmentId" value={a.id} />
+                          <input type="hidden" name="status" value="REALISE" />
+                          <ConfirmSubmit
+                            message="Marquer cette visite comme réalisée ? La facture brouillon sera générée pour ce diagnostic."
+                            className="inline-flex h-8 items-center gap-1 whitespace-nowrap rounded-lg border border-emerald-200 bg-emerald-50 px-2 text-xs font-semibold text-emerald-700 hover:bg-emerald-100"
+                          >
+                            <Check className="h-3.5 w-3.5" /> Réalisée
+                          </ConfirmSubmit>
+                        </form>
+                      ) : undefined
+                    }
                   />
                 ))}
               </ul>
