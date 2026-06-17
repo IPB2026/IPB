@@ -82,7 +82,13 @@ export default async function AgendaPage({
     devisId: searchParams.devisId ?? '',
   };
   let appts: Awaited<ReturnType<typeof loadAppts>> = [];
-  let contacts: { id: string; name: string; city: string | null; email: string | null }[] = [];
+  let contacts: {
+    id: string;
+    name: string;
+    city: string | null;
+    email: string | null;
+    address: string | null;
+  }[] = [];
   let dbError = false;
   try {
     [appts, contacts] = await Promise.all([
@@ -90,7 +96,7 @@ export default async function AgendaPage({
       prisma.contact.findMany({
         orderBy: { createdAt: 'desc' },
         take: 300,
-        select: { id: true, name: true, city: true, email: true },
+        select: { id: true, name: true, city: true, email: true, address: true },
       }),
     ]);
   } catch {
@@ -98,6 +104,22 @@ export default async function AgendaPage({
   }
   // Proposer des créneaux nécessite un e-mail client.
   const contactsWithEmail = contacts.filter((c) => c.email);
+
+  // Lieu pré-rempli quand on arrive depuis un dossier : adresse du bien (devis
+  // lié) ou, à défaut, adresse du client renseignée sur sa fiche.
+  let prefillLocation = '';
+  if (prefill.devisId) {
+    const d = await prisma.devis
+      .findUnique({
+        where: { id: prefill.devisId },
+        select: { bienConcerne: true },
+      })
+      .catch(() => null);
+    prefillLocation = d?.bienConcerne ?? '';
+  }
+  if (!prefillLocation && prefill.contactId) {
+    prefillLocation = contacts.find((c) => c.id === prefill.contactId)?.address ?? '';
+  }
 
   // Regroupe par jour
   const groups = new Map<string, typeof appts>();
@@ -260,6 +282,7 @@ export default async function AgendaPage({
               </label>
               <input
                 name="location"
+                defaultValue={prefillLocation}
                 placeholder="Adresse du bien"
                 className={field}
               />

@@ -32,7 +32,9 @@ import {
   scheduleRelance,
   addActivity,
 } from '@/app/admin/(app)/leads/actions';
+import { acceptDevis } from '@/app/admin/(app)/devis/actions';
 import { RelanceControl } from '@/components/admin/relance-control';
+import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 
 export const dynamic = 'force-dynamic';
 
@@ -601,7 +603,18 @@ export default async function ClientFichePage({
                       pill={DEVIS_PILL[d.status]}
                       action={
                         d.status === 'ENVOYE' ? (
-                          <RelanceControl kind="devis" id={d.id} contactId={c.id} relanceCount={d.relanceCount} />
+                          <div className="flex flex-wrap items-center justify-end gap-2">
+                            <form action={acceptDevis}>
+                              <input type="hidden" name="devisId" value={d.id} />
+                              <ConfirmSubmit
+                                message="Valider ce devis ? Le client passe en « gagné » et la visite de diagnostic peut être planifiée."
+                                className="inline-flex h-8 items-center gap-1 whitespace-nowrap rounded-lg border border-emerald-200 bg-emerald-50 px-2 text-xs font-semibold text-emerald-700 hover:bg-emerald-100"
+                              >
+                                <Check className="h-3.5 w-3.5" /> Valider
+                              </ConfirmSubmit>
+                            </form>
+                            <RelanceControl kind="devis" id={d.id} contactId={c.id} relanceCount={d.relanceCount} />
+                          </div>
                         ) : undefined
                       }
                     />

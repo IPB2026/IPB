@@ -69,6 +69,19 @@ export async function createAppointment(formData: FormData) {
   const contact = await prisma.contact.findUnique({ where: { id: contactId } });
   if (!contact) return;
 
+  // Lieu de l'invitation : priorité au champ saisi ; sinon adresse du bien du
+  // devis lié ; sinon adresse du client (fiche). → l'invitation Google porte
+  // toujours l'adresse du bien renseignée dans le dossier.
+  let resolvedLocation = location;
+  if (!resolvedLocation && devisId) {
+    const d = await prisma.devis.findUnique({
+      where: { id: devisId },
+      select: { bienConcerne: true },
+    });
+    resolvedLocation = d?.bienConcerne ?? null;
+  }
+  if (!resolvedLocation) resolvedLocation = contact.address ?? null;
+
   // Diagnostiqueur = expert assigné au DOSSIER (lead) → on le rattache aussi au
   // RDV pour que la 2e invitation Google parte vers lui.
   let assignedToId: string | null = null;
@@ -89,7 +102,7 @@ export async function createAppointment(formData: FormData) {
       type,
       start,
       end,
-      location,
+      location: resolvedLocation,
       notes,
       assignedToId,
     },
