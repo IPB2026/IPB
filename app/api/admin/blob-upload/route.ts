@@ -43,6 +43,9 @@ export async function POST(request: Request): Promise<NextResponse> {
     });
     return NextResponse.json(jsonResponse);
   } catch (error) {
+    // Tracé pour diagnostic : un échec d'émission de jeton (auth, type, taille)
+    // apparaît désormais dans les logs runtime Vercel.
+    console.error('[blob-upload] échec génération jeton:', error);
     return NextResponse.json(
       { error: (error as Error).message },
       { status: 400 }
