@@ -1,5 +1,6 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
+import * as Sentry from '@sentry/nextjs';
 import { put } from '@vercel/blob';
 import { revalidatePath } from 'next/cache';
 import { prisma } from '@/lib/prisma';
@@ -88,6 +89,7 @@ export async function POST(
     return NextResponse.json({ ok: true, photo: { id: photo.id, url: photo.url } });
   } catch (err) {
     console.error('[photo upload serveur] échec:', err);
+    Sentry.captureException(err, { tags: { area: 'photo-upload' }, extra: { rapportId: id } });
     return NextResponse.json({ error: 'Envoi serveur échoué.' }, { status: 502 });
   }
 }

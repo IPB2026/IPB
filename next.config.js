@@ -21,6 +21,8 @@ const nextConfig = {
     serverActions: {
       bodySizeLimit: '8mb',
     },
+    // Active instrumentation.ts (Next 14) → init Sentry côté serveur/edge.
+    instrumentationHook: true,
     // Embarque les polices TTF du devis PDF dans les lambdas qui les rendent
     // (route PDF + page devis qui envoie l'e-mail + connecteur MCP). Sans ça,
     // react-pdf échoue en ENOENT au rendu sur Vercel.

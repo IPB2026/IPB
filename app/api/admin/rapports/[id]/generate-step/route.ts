@@ -1,5 +1,6 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
+import * as Sentry from '@sentry/nextjs';
 import { revalidatePath } from 'next/cache';
 import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
@@ -93,6 +94,10 @@ export async function POST(
   };
 
   const fail = async (error: string, preserve: boolean) => {
+    Sentry.captureException(new Error(`generate-step: ${error}`), {
+      tags: { area: 'rapport-generation' },
+      extra: { rapportId: id, step: draft.step },
+    });
     // Échec d'une passe ≥ 1 : on PRÉSERVE le brouillon (squelette + zones déjà
     // produites) pour que « Reprendre » reparte de l'étape qui a échoué, pas de
     // zéro. Passe 0 (rien de fait) : on écrit l'erreur pour l'afficher.
