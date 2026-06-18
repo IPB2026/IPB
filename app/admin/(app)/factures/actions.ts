@@ -9,18 +9,6 @@ import { nextFactureNumber } from '@/lib/crm/numbering';
 import { notifyClientPayment } from '@/lib/crm/notify';
 import { FactureStatus } from '@prisma/client';
 
-/** Ajoute N jours OUVRÉS (hors samedi/dimanche) à une date. */
-function addBusinessDays(from: Date, days: number): Date {
-  const d = new Date(from);
-  let added = 0;
-  while (added < days) {
-    d.setDate(d.getDate() + 1);
-    const wd = d.getDay();
-    if (wd !== 0 && wd !== 6) added += 1;
-  }
-  return d;
-}
-
 /** Crée une facture (forfait) à partir d'un client, sans passer par un devis. */
 export async function createFacture(
   _prev: string | undefined,
@@ -261,15 +249,16 @@ export async function recordFacturePayment(formData: FormData) {
       select: { id: true },
     });
     if (!dejaEnvoye && !dejaRelance) {
-      // Échéance PILOTÉE : le rapport est promis sous 3 à 5 jours ouvrés après le
-      // paiement. La relance arrive donc à due (J+5 ouvrés) — elle remonte alors
-      // automatiquement dans « Relances dues » comme alerte de retard si non traitée.
+      // Le paiement DÉCLENCHE la rédaction : la tâche doit être actionnable TOUT
+      // DE SUITE (dueAt = maintenant) → elle apparaît immédiatement dans « Relances
+      // dues » comme à-faire, et plus elle y reste, plus le retard sur la promesse
+      // « 3 à 5 jours ouvrés » est visible.
       await prisma.activity.create({
         data: {
           type: 'RELANCE',
           contactId: f.contactId,
           content: `Rapport à rédiger (facture ${f.number} payée) — livraison promise sous 3 à 5 jours ouvrés.`,
-          dueAt: addBusinessDays(new Date(), 5),
+          dueAt: new Date(),
         },
       });
     }

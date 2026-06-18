@@ -42,11 +42,13 @@ const SUIVI_DAYS = 14;
 const DAY = 86_400_000;
 
 /**
- * Types de RDV « diagnostic » (= visite sur site qui fait avancer le dossier).
+ * Types de RDV « diagnostic » (= visite sur site qui fait avancer le dossier ET
+ * facturable automatiquement). SOURCE UNIQUE — réutilisée par invoicing.ts, le
+ * dashboard et l'agenda (ne pas redéfinir ailleurs : ajouter un type ici suffit).
  * ⚠️ Inclut EXPERTISE_ACHAT et MUR_PORTEUR : un `startsWith('DIAGNOSTIC')` les
- * raterait alors que ce sont des diagnostics à part entière (cf. invoicing.ts).
+ * raterait alors que ce sont des diagnostics à part entière.
  */
-const DIAGNOSTIC_VISIT_TYPES: AppointmentType[] = [
+export const DIAGNOSTIC_VISIT_TYPES: AppointmentType[] = [
   'DIAGNOSTIC_FISSURES',
   'DIAGNOSTIC_HUMIDITE',
   'EXPERTISE_ACHAT',

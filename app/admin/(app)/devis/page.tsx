@@ -7,6 +7,7 @@ import { EmptyState } from '@/components/admin/empty-state';
 import { MobileCardList, MobileCardRow } from '@/components/admin/mobile-card';
 import { DevisStatusBadge, SERVICE_LABEL } from '@/components/admin/badges';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
+import { RelanceControl } from '@/components/admin/relance-control';
 import { deleteDevis } from '@/app/admin/(app)/devis/actions';
 import { euros } from '@/lib/crm/company';
 
@@ -84,15 +85,27 @@ export default async function DevisListPage() {
                       : d.object,
                 ]}
                 action={
-                  <form action={deleteDevis}>
-                    <input type="hidden" name="devisId" value={d.id} />
-                    <ConfirmSubmit
-                      message={`Supprimer définitivement le devis ${d.number} ? Action irréversible.`}
-                      className="inline-flex h-11 w-11 sm:h-9 sm:w-9 items-center justify-center rounded-lg text-red-500 active:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </ConfirmSubmit>
-                  </form>
+                  <div className="flex items-center gap-1">
+                    {d.status === 'ENVOYE' && (
+                      <RelanceControl
+                        kind="devis"
+                        id={d.id}
+                        contactId={d.contactId}
+                        relanceCount={d.relanceCount}
+                        redirectTo="/admin/devis"
+                        compact
+                      />
+                    )}
+                    <form action={deleteDevis}>
+                      <input type="hidden" name="devisId" value={d.id} />
+                      <ConfirmSubmit
+                        message={`Supprimer définitivement le devis ${d.number} ? Action irréversible.`}
+                        className="inline-flex h-11 w-11 sm:h-9 sm:w-9 items-center justify-center rounded-lg text-red-500 active:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </ConfirmSubmit>
+                    </form>
+                  </div>
                 }
               />
             ))}
@@ -151,16 +164,27 @@ export default async function DevisListPage() {
                     <td className="px-5 py-3 text-right text-xs tabular-nums text-slate-400">
                       {d.createdAt.toLocaleDateString('fr-FR')}
                     </td>
-                    <td className="px-5 py-3 text-right">
-                      <form action={deleteDevis}>
-                        <input type="hidden" name="devisId" value={d.id} />
-                        <ConfirmSubmit
-                          message={`Supprimer définitivement le devis ${d.number} ? Action irréversible.`}
-                          className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 hover:bg-red-50 hover:text-red-600"
-                        >
-                          <Trash2 className="h-4 w-4" />
-                        </ConfirmSubmit>
-                      </form>
+                    <td className="px-5 py-3">
+                      <div className="flex items-center justify-end gap-1.5">
+                        {d.status === 'ENVOYE' && (
+                          <RelanceControl
+                            kind="devis"
+                            id={d.id}
+                            contactId={d.contactId}
+                            relanceCount={d.relanceCount}
+                            redirectTo="/admin/devis"
+                          />
+                        )}
+                        <form action={deleteDevis}>
+                          <input type="hidden" name="devisId" value={d.id} />
+                          <ConfirmSubmit
+                            message={`Supprimer définitivement le devis ${d.number} ? Action irréversible.`}
+                            className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 hover:bg-red-50 hover:text-red-600"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </ConfirmSubmit>
+                        </form>
+                      </div>
                     </td>
                   </tr>
                 ))}

@@ -55,6 +55,7 @@ const prospectSchema = z
       .optional()
       .default(''),
     city: z.string().trim().optional().default(''),
+    postalCode: z.string().trim().optional().default(''),
     address: z.string().trim().optional().default(''),
     service: z.nativeEnum(ServiceType).optional().default(ServiceType.AUTRE),
     occupantStatus: z
@@ -82,8 +83,11 @@ export async function createProspect(
   if (!session?.user) return 'Session expirée — reconnectez-vous.';
 
   const str = (k: string) => String(formData.get(k) ?? '');
-  // Nom complet composé depuis prénom + nom (saisie séparée), repli sur `name`.
+  // Nom du contact : raison sociale (entreprise) en priorité, sinon prénom + nom
+  // (particulier, recomposés), repli sur `name`. → permet de saisir une entreprise
+  // sans prénom ni nom.
   const fullName =
+    str('company').trim() ||
     [str('prenom'), str('nom')].map((s) => s.trim()).filter(Boolean).join(' ') ||
     str('name');
   const parsed = prospectSchema.safeParse({
@@ -91,6 +95,7 @@ export async function createProspect(
     phone: str('phone'),
     email: str('email'),
     city: str('city'),
+    postalCode: str('postalCode'),
     address: str('address'),
     service: str('service') || undefined,
     occupantStatus: str('occupantStatus') || undefined,
@@ -105,7 +110,17 @@ export async function createProspect(
   }
 
   const d = parsed.data;
-  const { postalCode, city } = parseAddress(d.city);
+  // Code postal / ville saisis séparément (autocomplétion BAN). Repli : si seul le
+  // champ ville contient « 31600 Muret », on en extrait le code postal.
+  let postalCode = d.postalCode || null;
+  let city = d.city || null;
+  if (!postalCode && city) {
+    const p = parseAddress(city);
+    if (p.postalCode) {
+      postalCode = p.postalCode;
+      if (p.city) city = p.city;
+    }
+  }
   const valueNum = d.value ? Number(d.value.replace(',', '.')) : null;
 
   const scoring: CaptureLeadScoring | undefined = d.tier
@@ -120,7 +135,7 @@ export async function createProspect(
       phone: d.phone || null,
       email: d.email || null,
       address: d.address || null,
-      city: city ?? (d.city || null),
+      city,
       postalCode,
       occupantStatus: d.occupantStatus,
     },
@@ -212,6 +227,25 @@ export async function changeStage(formData: FormData) {
 }
 
 /** Ajoute une activité (note, appel, email) à la timeline. */
+/**
+ * Journalise un appel passé (clic sur « Appeler » depuis une fiche client). Crée
+ * une activité APPEL « Appel passé » et rafraîchit la fiche. Appelée directement
+ * depuis le client (fire-and-forget), pas via un formulaire.
+ */
+export async function logCall(contactId: string) {
+  await requireUser();
+  if (!contactId) return;
+  const contact = await prisma.contact.findUnique({
+    where: { id: contactId },
+    select: { id: true },
+  });
+  if (!contact) return;
+  await prisma.activity.create({
+    data: { type: 'APPEL', contactId, content: 'Appel passé' },
+  });
+  revalidatePath(`/admin/clients/${contactId}`);
+}
+
 export async function addActivity(formData: FormData) {
   await requireUser();
   const leadId = String(formData.get('leadId') ?? '');
@@ -297,6 +331,15 @@ export async function assignLead(formData: FormData) {
   }
 
   if (lead.assignedToId === newId) return; // pas de changement
+
+  // RÈGLE MÉTIER (enforcement SERVEUR, pas seulement l'UI) : on n'assigne un
+  // diagnostiqueur qu'APRÈS un devis ACCEPTÉ. La désassignation reste permise.
+  if (newId) {
+    const accepted = await prisma.devis.count({
+      where: { contactId: lead.contactId, status: 'ACCEPTE' },
+    });
+    if (accepted === 0) return;
+  }
 
   await prisma.lead.update({
     where: { id: leadId },

@@ -33,7 +33,10 @@ export function DevisSendForm({
   minDateTime: string;
   upcoming: UpcomingAppt[];
 }) {
-  const [withSlots, setWithSlots] = useState(false);
+  // Par défaut on OUVRE la proposition de créneaux : tout devis part, autant que
+  // possible, avec créneaux cliquables + bouton « Valider mon devis ». L'envoi
+  // sans créneaux reste accessible en repli (« Envoyer sans créneaux »).
+  const [withSlots, setWithSlots] = useState(true);
   const minDate = minDateTime.slice(0, 10);
   // Chaque créneau = { date, time } ; combiné en "YYYY-MM-DDTHH:mm" à la soumission.
   const [slots, setSlots] = useState<{ date: string; time: string }[]>([
@@ -152,7 +155,7 @@ export function DevisSendForm({
           onClick={() => setWithSlots(false)}
           className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-slate-500 hover:text-slate-800"
         >
-          Annuler
+          Envoyer sans créneaux
         </button>
       </div>
     </form>

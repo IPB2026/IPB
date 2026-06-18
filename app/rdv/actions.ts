@@ -5,7 +5,7 @@ import { revalidatePath } from 'next/cache';
 import { prisma } from '@/lib/prisma';
 import { verifyBookingToken } from '@/lib/crm/booking';
 import { revalidateCrm } from '@/lib/crm/revalidate';
-import { createCalendarEvent, isCalendarConfigured } from '@/lib/google/calendar';
+import { sendAppointmentInvites } from '@/lib/crm/appointment-invites';
 import { notifyClientAppointment } from '@/lib/crm/notify';
 import type { AppointmentType } from '@prisma/client';
 
@@ -66,14 +66,16 @@ export async function confirmBooking(formData: FormData): Promise<void> {
   const end = new Date(start.getTime() + 60 * 60000);
   const location = devis?.bienConcerne || contact.address || null;
 
-  const googleEventId = await createCalendarEvent({
-    summary: `IPB — ${title}`,
-    location: location ?? undefined,
-    start,
-    end,
-    attendeeEmail: contact.email,
-    attendeeName: contact.name,
-  });
+  // Diagnostiqueur = expert assigné au DOSSIER (lead), s'il existe → rattaché au
+  // RDV pour que la 2e invitation Google parte vers lui.
+  let assignedToId: string | null = null;
+  if (leadId) {
+    const lead = await prisma.lead.findUnique({
+      where: { id: leadId },
+      select: { assignedToId: true },
+    });
+    assignedToId = lead?.assignedToId ?? null;
+  }
 
   const appt = await prisma.appointment.create({
     data: {
@@ -85,7 +87,7 @@ export async function confirmBooking(formData: FormData): Promise<void> {
       start,
       end,
       location,
-      googleEventId,
+      assignedToId,
     },
   });
 
@@ -122,9 +124,22 @@ export async function confirmBooking(formData: FormData): Promise<void> {
     });
   }
 
-  // Sans Google, on envoie la confirmation maison ; sinon Google envoie l'invitation.
-  if (!isCalendarConfigured()) {
+  // Invitations Google : client (adresse + confirmation) + diagnostiqueur (adresse
+  // + date + heure). Sans Google, on envoie la confirmation maison au client. Si
+  // aucun diagnostiqueur n'est assigné au dossier, on trace l'alerte.
+  const invites = await sendAppointmentInvites(appt.id);
+  if (!invites.configured) {
     await notifyClientAppointment(appt.id);
+  } else if (invites.expertMissing) {
+    await prisma.activity.create({
+      data: {
+        type: 'SYSTEME',
+        contactId: p.c,
+        leadId,
+        content:
+          'Invitation diagnostiqueur non envoyée — aucun expert assigné au dossier. Assignez un diagnostiqueur puis renvoyez les invitations depuis l’agenda.',
+      },
+    });
   }
 
   revalidatePath('/admin/agenda');

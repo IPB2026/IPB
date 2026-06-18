@@ -5,9 +5,12 @@ import {
   emailSequence,
   devisRelance,
   factureRelance,
+  postChantierReviewRequest,
 } from '@/lib/emailTemplates';
 import { euros } from '@/lib/crm/company';
 import { createInvoiceForAppointment, DIAGNOSTIC_APPT_TYPES } from '@/lib/crm/invoicing';
+import { markDevisLost } from '@/lib/crm/send';
+import { notifyClientReminder } from '@/lib/crm/notify';
 import type { LeadTier } from '@prisma/client';
 
 export const runtime = 'nodejs';
@@ -99,11 +102,12 @@ export async function GET(req: Request) {
     }
   }
 
-  // ── Relances commerciales : devis ENVOYE sans réponse (J+3 puis J+7) ──
+  // ── Relances commerciales : devis ENVOYE sans réponse (J+3, J+7 puis J+14) ──
   // FIABLE depuis la migration relance_tracking : on s'appuie sur les champs
   // Devis.sentAt (date d'envoi) et Devis.relanceCount (compteur), au lieu d'un
   // matching de texte sur les activités. Stop dès que le devis quitte ENVOYE.
-  const DEVIS_STEPS = [3, 7] as const;
+  // 3 relances sans réponse → dossier PERDU (markDevisLost).
+  const DEVIS_STEPS = [3, 7, 14] as const;
   let devisSent = 0;
   try {
     const devisList = await prisma.devis.findMany({
@@ -121,20 +125,36 @@ export async function GET(req: Request) {
       const email = devis.contact.email;
       if (!email) continue;
 
-      // sentAt fiable (repli updatedAt pour les devis antérieurs à la migration).
+      // FRONTIÈRE DE MIGRATION : un devis envoyé AVANT la migration relance_tracking
+      // a sentAt=null et relanceCount=0 même s'il a déjà reçu des relances (ancien
+      // système, dérivé des activités). On reconstruit alors son état depuis les
+      // activités pour NE PAS le relancer à zéro (double e-mail au client).
+      const legacy = devis.sentAt == null;
+      let relanceCount = devis.relanceCount;
+      if (legacy) {
+        relanceCount = await prisma.activity.count({
+          where: {
+            contactId: devis.contactId,
+            content: { contains: `Relance devis ${devis.number} ` },
+          },
+        });
+        if (relanceCount >= DEVIS_STEPS.length) continue;
+      }
       const sentAt = devis.sentAt ?? devis.updatedAt;
-      const offset = DEVIS_STEPS[devis.relanceCount];
+      const offset = DEVIS_STEPS[relanceCount];
       const ageDays = (now - sentAt.getTime()) / DAY;
       if (ageDays < offset) continue;
 
-      const step = (devis.relanceCount + 1) as 1 | 2;
+      const step = (relanceCount + 1) as 1 | 2 | 3;
       try {
         const res = await sendEmail({
           to: email,
           subject:
             step === 1
               ? 'Votre devis IPB — une question ?'
-              : 'Votre devis IPB est toujours valable',
+              : step === 2
+                ? 'Votre devis IPB est toujours valable'
+                : 'Votre devis IPB — dernière relance avant clôture',
           html: devisRelance({
             firstName: devis.contact.name.split(' ')[0] || devis.contact.name,
             object: devis.object,
@@ -145,9 +165,11 @@ export async function GET(req: Request) {
           errors.push(`devis ${devis.id}: ${res.error}`);
           continue;
         }
+        // Écrit l'état RÉEL (set explicite) : fige le compteur et migre sentAt
+        // pour un devis legacy → les passages suivants utilisent les champs.
         await prisma.devis.update({
           where: { id: devis.id },
-          data: { relanceCount: { increment: 1 } },
+          data: { relanceCount: relanceCount + 1, ...(legacy ? { sentAt } : {}) },
         });
         await prisma.activity.create({
           data: {
@@ -157,6 +179,10 @@ export async function GET(req: Request) {
             content: `Relance devis ${devis.number} J+${offset} envoyée à ${email}`,
           },
         });
+        // Après la dernière relance prévue (3e) sans réponse → client PERDU.
+        if (relanceCount + 1 >= DEVIS_STEPS.length) {
+          await markDevisLost(devis.id, devis.leadId, devis.contactId, devis.number);
+        }
         devisSent++;
       } catch (e) {
         errors.push(`devis ${devis.id}: ${e instanceof Error ? e.message : 'err'}`);
@@ -166,8 +192,9 @@ export async function GET(req: Request) {
     errors.push(`devis-loop: ${e instanceof Error ? e.message : 'err'}`);
   }
 
-  // ── Relances de factures impayées (échéance dépassée : J+3 puis J+7) ──
-  const FACTURE_STEPS = [3, 7] as const;
+  // ── Relances de factures impayées (échéance dépassée : J+3, J+7, puis J+14
+  //    en dernier rappel plus ferme). On n'abandonne pas une créance. ──
+  const FACTURE_STEPS = [3, 7, 14] as const;
   let factureSent = 0;
   try {
     const factures = await prisma.facture.findMany({
@@ -186,12 +213,27 @@ export async function GET(req: Request) {
       const email = f.contact.email;
       if (!email || !f.dueDate) continue;
 
-      // Compteur fiable Facture.relanceCount (vs matching de texte). Échéancier
-      // calé sur dueDate (J+3 puis J+7 après l'échéance).
+      // FRONTIÈRE DE MIGRATION : une facture relancée avant la migration a
+      // relanceCount=0 (pas de champ pour la distinguer d'une facture jamais
+      // relancée). Quand le compteur est à 0, on vérifie les activités pour ne
+      // pas re-relancer une facture déjà relancée sous l'ancien système.
+      let relanceCount = f.relanceCount;
+      if (relanceCount === 0) {
+        relanceCount = await prisma.activity.count({
+          where: {
+            contactId: f.contactId,
+            content: { contains: `Relance facture ${f.number} ` },
+          },
+        });
+        if (relanceCount >= FACTURE_STEPS.length) continue;
+      }
       const overdueDays = (now - f.dueDate.getTime()) / DAY;
-      const offset = FACTURE_STEPS[f.relanceCount];
+      const offset = FACTURE_STEPS[relanceCount];
       if (overdueDays < offset) continue;
 
+      // Montant rappelé = RESTE DÛ (total − acompte), cohérent avec la relance
+      // manuelle ; ne sur-facture pas un client ayant déjà versé un acompte.
+      const resteDu = Math.max(0, Number(f.totalHT) - Number(f.acompte ?? 0));
       try {
         const res = await sendEmail({
           to: email,
@@ -199,8 +241,9 @@ export async function GET(req: Request) {
           html: factureRelance({
             firstName: f.contact.name.split(' ')[0] || f.contact.name,
             number: f.number,
-            montant: euros(Number(f.totalHT)),
+            montant: euros(resteDu),
             dueDate: f.dueDate.toLocaleDateString('fr-FR'),
+            step: (relanceCount >= 2 ? 3 : relanceCount >= 1 ? 2 : 1) as 1 | 2 | 3,
           }),
         });
         if (!res.success) {
@@ -209,7 +252,7 @@ export async function GET(req: Request) {
         }
         await prisma.facture.update({
           where: { id: f.id },
-          data: { relanceCount: { increment: 1 } },
+          data: { relanceCount: relanceCount + 1 },
         });
         await prisma.activity.create({
           data: {
@@ -273,6 +316,98 @@ export async function GET(req: Request) {
     errors.push(`facture-auto-loop: ${e instanceof Error ? e.message : 'err'}`);
   }
 
+  // ── Demande d'avis Google : J+7 après l'envoi du rapport. Le bouche-à-oreille
+  //    et la note Google sont la 1ʳᵉ source de dossiers → on sollicite UNE fois par
+  //    rapport (dédup via activité). Délai réglable (REVIEW_DELAY_DAYS). Le lien
+  //    direct vient de IPB_GOOGLE_REVIEW_URL (sinon repli vers la fiche Google). ──
+  const REVIEW_DELAY_DAYS = 7;
+  let avisSent = 0;
+  try {
+    const cutoff = new Date(now - REVIEW_DELAY_DAYS * DAY);
+    const rapports = await prisma.rapport.findMany({
+      where: {
+        status: 'ENVOYE',
+        updatedAt: { lt: cutoff },
+        contact: { email: { not: null } },
+      },
+      include: { contact: true },
+      take: 50,
+      orderBy: { updatedAt: 'asc' },
+    });
+    for (const r of rapports) {
+      const email = r.contact.email;
+      if (!email) continue;
+      // Une seule demande par rapport (anti double-sollicitation).
+      const already = await prisma.activity.count({
+        where: {
+          contactId: r.contactId,
+          content: { contains: `Demande d'avis Google (rapport ${r.number})` },
+        },
+      });
+      if (already > 0) continue;
+      try {
+        const res = await sendEmail({
+          to: email,
+          subject: 'Votre avis sur votre expertise IPB',
+          html: postChantierReviewRequest({
+            firstName: r.contact.name.split(' ')[0] || r.contact.name,
+            city: r.contact.city ?? undefined,
+            serviceType: 'diagnostic',
+          }),
+        });
+        if (!res.success) {
+          errors.push(`avis ${r.id}: ${res.error}`);
+          continue;
+        }
+        await prisma.activity.create({
+          data: {
+            type: 'EMAIL',
+            contactId: r.contactId,
+            leadId: r.leadId,
+            content: `Demande d'avis Google (rapport ${r.number}) envoyée à ${email}`,
+          },
+        });
+        avisSent++;
+      } catch (e) {
+        errors.push(`avis ${r.id}: ${e instanceof Error ? e.message : 'err'}`);
+      }
+    }
+  } catch (e) {
+    errors.push(`avis-loop: ${e instanceof Error ? e.message : 'err'}`);
+  }
+
+  // ── Rappel client J-1 : RDV de diagnostic planifiés DEMAIN. Un seul envoi par
+  //    RDV (dédup par activité). Cron quotidien → fenêtre = la journée de demain. ──
+  const tomorrowStart = new Date(startOfToday);
+  tomorrowStart.setDate(tomorrowStart.getDate() + 1);
+  const tomorrowEnd = new Date(tomorrowStart);
+  tomorrowEnd.setDate(tomorrowEnd.getDate() + 1);
+  let rappelsSent = 0;
+  try {
+    const appts = await prisma.appointment.findMany({
+      where: {
+        status: 'PLANIFIE',
+        start: { gte: tomorrowStart, lt: tomorrowEnd },
+        contact: { email: { not: null } },
+      },
+      include: { contact: true },
+      take: 50,
+      orderBy: { start: 'asc' },
+    });
+    for (const a of appts) {
+      const already = await prisma.activity.count({
+        where: {
+          contactId: a.contactId,
+          content: { contains: `Rappel de visite J-1 (RDV ${a.id})` },
+        },
+      });
+      if (already > 0) continue;
+      if (await notifyClientReminder(a.id)) rappelsSent++;
+    }
+  } catch (e) {
+    errors.push(`rappel-j1-loop: ${e instanceof Error ? e.message : 'err'}`);
+  }
+
   return Response.json({
     ok: true,
     candidates: leads.length,
@@ -280,6 +415,8 @@ export async function GET(req: Request) {
     devisSent,
     factureSent,
     factureAuto,
+    avisSent,
+    rappelsSent,
     errors: errors.slice(0, 10),
   });
 }

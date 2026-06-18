@@ -7,6 +7,7 @@ import { EmptyState } from '@/components/admin/empty-state';
 import { MobileCardList, MobileCardRow } from '@/components/admin/mobile-card';
 import { FactureStatusBadge, SERVICE_LABEL } from '@/components/admin/badges';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
+import { RelanceControl } from '@/components/admin/relance-control';
 import { deleteFacture } from '@/app/admin/(app)/factures/actions';
 import { euros } from '@/lib/crm/company';
 
@@ -106,15 +107,27 @@ export default async function FacturesListPage() {
                   ),
                 ]}
                 action={
-                  <form action={deleteFacture}>
-                    <input type="hidden" name="factureId" value={f.id} />
-                    <ConfirmSubmit
-                      message={`Supprimer définitivement la facture ${f.number} ? Action irréversible.`}
-                      className="inline-flex h-11 w-11 sm:h-9 sm:w-9 items-center justify-center rounded-lg text-red-500 active:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </ConfirmSubmit>
-                  </form>
+                  <div className="flex items-center gap-1">
+                    {f.status === 'ENVOYEE' && !paid && (
+                      <RelanceControl
+                        kind="facture"
+                        id={f.id}
+                        contactId={f.contactId}
+                        relanceCount={f.relanceCount}
+                        redirectTo="/admin/factures"
+                        compact
+                      />
+                    )}
+                    <form action={deleteFacture}>
+                      <input type="hidden" name="factureId" value={f.id} />
+                      <ConfirmSubmit
+                        message={`Supprimer définitivement la facture ${f.number} ? Action irréversible.`}
+                        className="inline-flex h-11 w-11 sm:h-9 sm:w-9 items-center justify-center rounded-lg text-red-500 active:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </ConfirmSubmit>
+                    </form>
+                  </div>
                 }
               />
             ))}
@@ -181,16 +194,27 @@ export default async function FacturesListPage() {
                         </span>
                       )}
                     </td>
-                    <td className="px-5 py-3 text-right">
-                      <form action={deleteFacture}>
-                        <input type="hidden" name="factureId" value={f.id} />
-                        <ConfirmSubmit
-                          message={`Supprimer définitivement la facture ${f.number} ? Action irréversible.`}
-                          className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 hover:bg-red-50 hover:text-red-600"
-                        >
-                          <Trash2 className="h-4 w-4" />
-                        </ConfirmSubmit>
-                      </form>
+                    <td className="px-5 py-3">
+                      <div className="flex items-center justify-end gap-1.5">
+                        {f.status === 'ENVOYEE' && !paid && (
+                          <RelanceControl
+                            kind="facture"
+                            id={f.id}
+                            contactId={f.contactId}
+                            relanceCount={f.relanceCount}
+                            redirectTo="/admin/factures"
+                          />
+                        )}
+                        <form action={deleteFacture}>
+                          <input type="hidden" name="factureId" value={f.id} />
+                          <ConfirmSubmit
+                            message={`Supprimer définitivement la facture ${f.number} ? Action irréversible.`}
+                            className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 hover:bg-red-50 hover:text-red-600"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </ConfirmSubmit>
+                        </form>
+                      </div>
                     </td>
                   </tr>
                 ))}

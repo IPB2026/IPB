@@ -247,8 +247,15 @@ export function RapportPhotos({
       {!blobConfigured && (
         <p className="mb-3 flex items-start gap-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-800">
           <ImageOff className="mt-0.5 h-4 w-4 shrink-0" />
-          Stockage photos non configuré. Définissez <code>BLOB_READ_WRITE_TOKEN</code> (Vercel Blob)
-          pour activer l&apos;upload terrain.
+          Stockage photos non configuré. Connectez un store <strong>Vercel Blob</strong> au projet
+          (Storage → Blob) puis redéployez — l&apos;upload terrain s&apos;activera tout seul.
+        </p>
+      )}
+
+      {blobConfigured && !canEdit && (
+        <p className="mb-3 flex items-start gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-600">
+          <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+          L&apos;ajout de photos n&apos;est plus possible à ce stade (rapport pris en main par l&apos;IPB).
         </p>
       )}
 

@@ -3,7 +3,6 @@ import { notFound, redirect } from 'next/navigation';
 import {
   ArrowLeft,
   Download,
-  Sparkles,
   AlertTriangle,
   Mail,
   Send,
@@ -17,18 +16,27 @@ import { prisma } from '@/lib/prisma';
 import { getSessionUser } from '@/lib/auth-helpers';
 import { isBlobConfigured } from '@/lib/blob';
 import { euros } from '@/lib/crm/company';
-import { isAiConfigured, type ReportContent, type ReportZoneInput } from '@/lib/ai/report';
 import {
-  generateRapportAI,
+  isAiConfigured,
+  isReportDraft,
+  type ReportContent,
+  type ReportZoneInput,
+} from '@/lib/ai/report';
+import {
   updateRapportStatus,
   submitRapport,
   validateAndSendRapport,
 } from '@/app/admin/(app)/rapports/actions';
 import { RapportPhotos } from '@/components/admin/rapport-photos';
+import { RapportGenerate } from '@/components/admin/rapport-generate';
 import { RapportZonesEditor } from '@/components/admin/rapport-zones-editor';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 
 export const dynamic = 'force-dynamic';
+// La génération IA (server action de cette page) peut durer plusieurs minutes :
+// on étend le budget temps de la fonction au maximum permis par le plan Vercel.
+// (Hobby plafonne à 60 s ; Pro applique réellement 300 s.)
+export const maxDuration = 300;
 
 const STATUS_LABEL: Record<ReportStatus, string> = {
   BROUILLON: 'Brouillon',
@@ -106,8 +114,11 @@ export default async function RapportDetailPage({
     : false;
 
   const status = rapport.status;
-  // Édition de la saisie : expert tant que BROUILLON ; admin tant que non envoyé.
-  const canEditField = isAdmin ? status !== 'ENVOYE' : isOwner && status === 'BROUILLON';
+  // Édition de la saisie / ajout de photos : le diagnostiqueur tant que le rapport
+  // n'est pas pris en main par l'IPB (BROUILLON ou SOUMIS) ; l'admin tant que non envoyé.
+  const canEditField = isAdmin
+    ? status !== 'ENVOYE'
+    : isOwner && (status === 'BROUILLON' || status === 'SOUMIS');
 
   const zones = (rapport.zonesInput as unknown as ReportZoneInput[]) ?? [];
   const zoneTitles = zones.map((z) => z.titre).filter(Boolean);
@@ -116,7 +127,10 @@ export default async function RapportDetailPage({
     | { error: string }
     | null;
   const hasError = ai != null && 'error' in ai;
-  const content = ai && !hasError ? (ai as ReportContent) : null;
+  // Brouillon = génération multi-passes en cours/interrompue : ne pas l'afficher
+  // comme un rapport fini (il lui manque des sections).
+  const building = isReportDraft(ai);
+  const content = ai && !hasError && !building ? (ai as ReportContent) : null;
 
   const c = rapport.contact;
 
@@ -298,24 +312,21 @@ export default async function RapportDetailPage({
               <p className="text-xs text-slate-500">
                 {rapport.aiGeneratedAt
                   ? `Généré le ${rapport.aiGeneratedAt.toLocaleString('fr-FR')} · ${rapport.aiModel}`
-                  : 'Pas encore généré.'}
+                  : building
+                    ? 'Génération en cours ou interrompue — cliquez pour reprendre.'
+                    : 'Pas encore généré.'}
                 {rapport.photos.length > 0 &&
                   ` · ${rapport.photos.length} photo(s) analysée(s)`}
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-2">
               {isAiConfigured() && status !== 'ENVOYE' && (
-                <form action={generateRapportAI}>
-                  <input type="hidden" name="rapportId" value={rapport.id} />
-                  <button
-                    type="submit"
-                    disabled={zones.length === 0}
-                    className="inline-flex items-center gap-1.5 rounded-lg border border-orange-600 px-4 py-2 text-sm font-semibold text-orange-700 hover:bg-orange-50 disabled:opacity-50"
-                  >
-                    <Sparkles className="h-4 w-4" />
-                    {content ? 'Régénérer' : 'Générer le rapport'}
-                  </button>
-                </form>
+                <RapportGenerate
+                  rapportId={rapport.id}
+                  disabled={zones.length === 0}
+                  hasContent={Boolean(content)}
+                  building={building}
+                />
               )}
               {content && c.email && status !== 'ENVOYE' && facturePayee && (
                 <form action={validateAndSendRapport}>

@@ -6,6 +6,7 @@ import { Menu, X, LogOut, Search } from 'lucide-react';
 import { AdminNav } from '@/components/admin/admin-nav';
 import { BottomNav } from '@/components/admin/bottom-nav';
 import { Avatar } from '@/components/admin/avatar';
+import { CommandPalette } from '@/components/admin/command-palette';
 import { logout } from '@/app/admin/(app)/auth-actions';
 
 type Role = 'ADMIN' | 'EXPERT';
@@ -158,6 +159,9 @@ export function AdminShell({
 
       {/* Navigation basse (mobile/tablette) */}
       <BottomNav role={role} />
+
+      {/* Palette de recherche ⌘K (ADMIN uniquement) */}
+      {role === 'ADMIN' && <CommandPalette />}
     </div>
   );
 }

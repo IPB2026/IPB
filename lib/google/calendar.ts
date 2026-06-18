@@ -79,13 +79,25 @@ export interface CalendarEventInput {
   attendeeName?: string | null;
 }
 
+/**
+ * Heure « mur-horloge » envoyée à Google (sans décalage 'Z'). Le reste de l'app
+ * traite l'heure saisie comme l'heure locale (le runtime Vercel est en UTC, donc
+ * les composantes UTC de la Date == l'heure saisie). Si on envoyait toISOString()
+ * (suffixe 'Z' = UTC) AVEC timeZone Europe/Paris, Google ré-appliquait le décalage
+ * et affichait +2 h (l'été). On envoie donc « YYYY-MM-DDTHH:mm:ss » + timeZone,
+ * pour que Google affiche exactement l'heure saisie dans le CRM.
+ */
+function wallClock(d: Date): string {
+  return d.toISOString().slice(0, 19);
+}
+
 function eventBody(input: Partial<CalendarEventInput>): Record<string, unknown> {
   const body: Record<string, unknown> = {};
   if (input.summary !== undefined) body.summary = input.summary;
   if (input.description !== undefined) body.description = input.description;
   if (input.location !== undefined) body.location = input.location;
-  if (input.start) body.start = { dateTime: input.start.toISOString(), timeZone: TIME_ZONE };
-  if (input.end) body.end = { dateTime: input.end.toISOString(), timeZone: TIME_ZONE };
+  if (input.start) body.start = { dateTime: wallClock(input.start), timeZone: TIME_ZONE };
+  if (input.end) body.end = { dateTime: wallClock(input.end), timeZone: TIME_ZONE };
   if (input.attendeeEmail) {
     body.attendees = [
       { email: input.attendeeEmail, displayName: input.attendeeName ?? undefined },

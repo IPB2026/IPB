@@ -130,7 +130,7 @@ export function j0Confirmation(ctx: PathContext): string {
   const inner = `
     ${card(`
       ${eyebrow('Votre demande est en cours d\'analyse')}
-      ${heading('Bonjour ' + ctx.firstName + ',', 'votre demande est entre de bonnes mains.')}
+      ${heading('Bonjour,', 'votre demande est entre de bonnes mains.')}
       ${para('Notre institut vient de recevoir votre demande concernant ' + (ctx.path === 'fissure' ? 'des fissures sur votre habitation' : 'votre projet d\'ouverture de mur porteur') + (ctx.city ? ` à ${ctx.city}` : '') + '. Nous l\'étudions avec attention pour vous orienter au mieux.')}
       ${para(tierMessage)}
       ${para('En attendant notre retour, n\'hésitez pas à nous appeler directement si vous avez la moindre question — nous y répondrons avec plaisir.')}
@@ -156,7 +156,7 @@ export function j1Synthese(ctx: PathContext): string {
     ${card(`
       ${eyebrow('Notre première lecture')}
       ${heading('Voici ce que nous voyons', 'dans votre situation.')}
-      ${para('Bonjour ' + ctx.firstName + ',')}
+      ${para('Bonjour,')}
       ${para(synth)}
       ${para(ctx.path === 'fissure'
         ? "Un point essentiel pour vous : il ne faut pas confondre une fissure cosmétique (faïençage) avec une fissure structurelle (en escalier, ou plus large que 2 mm). C'est précisément ce que notre diagnostic instrumenté permet de trancher — en moins d'une heure, sur place."
@@ -180,7 +180,7 @@ export function j3CaseStudy(ctx: PathContext): string {
     ${card(`
       ${eyebrow('J+3 · Un chantier raconté')}
       ${heading(isFissure ? 'Maison à Tournefeuille,' : 'T3 à Saint-Cyprien,', isFissure ? 'sécheresse 2022.' : 'mur porteur ouvert.')}
-      ${para('Bonjour ' + ctx.firstName + ',')}
+      ${para('Bonjour,')}
       ${para(isFissure
         ? "Pour vous donner du concret : il y a six mois, une maison T4 à Tournefeuille (110 m²) présentait une fissure traversante en escalier de 12 mm sur la façade nord-est. Un tassement différentiel du sol, reconnu en catastrophe naturelle 2022 — les propriétaires redoutaient le pire."
         : "Pour vous donner du concret : il y a six mois, un T3 de 60 m² à Saint-Cyprien avait sa cuisine de 9 m² fermée, séparée du séjour par un mur porteur de 4,2 mètres en briques foraines. Les propriétaires rêvaient d'ouvrir l'espace, sans savoir par où commencer.")}
@@ -206,7 +206,7 @@ export function j7ReprisePoint(ctx: PathContext): string {
     ${card(`
       ${eyebrow('J+7 · Reprenons contact')}
       ${heading('Toujours dans votre projet ?', 'On en parle.')}
-      ${para('Bonjour ' + ctx.firstName + ',')}
+      ${para('Bonjour,')}
       ${para('Une semaine a passé depuis votre demande. Si le sujet est toujours d\'actualité, nous serions heureux d\'échanger 15 minutes au téléphone — sans aucun engagement de votre part.')}
       ${para('Cet échange a un but simple : comprendre précisément votre situation, vous indiquer la bonne marche à suivre, et répondre à vos questions techniques, même les plus basiques.')}
       <p style="margin: 28px 0;">
@@ -229,7 +229,7 @@ export function j14Closure(ctx: PathContext): string {
     ${card(`
       ${eyebrow('J+14 · Dernier message')}
       ${heading('Si ce n\'est plus d\'actualité,', 'pas de souci.')}
-      ${para('Bonjour ' + ctx.firstName + ',')}
+      ${para('Bonjour,')}
       ${para('Vous n\'avez peut-être pas eu le temps de revenir vers nous, ou votre situation a évolué entre-temps. Dans tous les cas, nous ne souhaitons pas vous solliciter inutilement.')}
       ${para('Sans nouvelle de votre part d\'ici une semaine, nous mettrons simplement votre dossier en sommeil. Rien de définitif : un mot de votre part suffit à le rouvrir, à tout moment et sans aucune formalité.')}
       ${para('Et si vous souhaitez simplement rester en contact, nous publions chaque mois des analyses sur la pathologie du bâtiment — fissures, humidité, ouvertures de murs porteurs en Occitanie. Vous pouvez vous y abonner librement, sans engagement.')}
@@ -268,7 +268,7 @@ interface ReviewRequestContext extends BaseContext {
 export function postChantierReviewRequest(ctx: ReviewRequestContext): string {
   const reviewUrl = ctx.googleReviewUrl
     || process.env.IPB_GOOGLE_REVIEW_URL
-    || 'https://www.google.com/search?q=IPB+Expertise+Toulouse&hl=fr';
+    || 'https://g.page/r/CdUQB4wnL6iZEBM/review';
 
   const intervention = ctx.serviceType === 'chantier'
     ? 'la fin de votre chantier'
@@ -279,7 +279,7 @@ export function postChantierReviewRequest(ctx: ReviewRequestContext): string {
   const inner = `
     ${card(`
       ${eyebrow('Votre retour compte beaucoup')}
-      ${heading('Bonjour ' + ctx.firstName + ',', 'un mot après notre intervention.')}
+      ${heading('Bonjour,', 'un mot après notre intervention.')}
       ${para('Une semaine a passé depuis ' + intervention + (ctx.city ? ` à ${ctx.city}` : '') + '. J\'espère que nos recommandations vous ont apporté de la clarté, et que vous abordez la suite plus sereinement.')}
       ${para('À l\'institut, nous avançons grâce à la confiance que nous accordent les particuliers, les architectes et les marchands de biens. Le bouche-à-oreille reste notre première source de nouveaux dossiers — et quelques mots de votre part comptent énormément pour le faire vivre.')}
       ${para('Si notre accompagnement vous a paru sérieux et utile, accepteriez-vous de partager votre retour sur Google ? Deux minutes et quelques phrases sincères suffisent — et cela aide vraiment celles et ceux qui hésitent encore.')}
@@ -294,36 +294,57 @@ export function postChantierReviewRequest(ctx: ReviewRequestContext): string {
 }
 
 // ─────────────────────────────────────────────────────────────────
-// Relance commerciale : devis envoyé sans réponse (J+3 douce / J+7 ferme)
+// Relance commerciale : devis envoyé sans réponse
+// (J+3 douce · J+7 ferme · J+14 dernier rappel avant clôture)
 // ─────────────────────────────────────────────────────────────────
 
 interface DevisRelanceContext {
   firstName: string;
   object: string;
-  step: 1 | 2; // 1 = J+3, 2 = J+7
+  step: 1 | 2 | 3; // 1 = J+3 (doux) · 2 = J+7 (ferme) · 3 = J+14 (dernière relance)
   unsubscribeUrl?: string;
 }
 
 export function devisRelance(ctx: DevisRelanceContext): string {
-  const soft = ctx.step === 1;
+  const step = ctx.step;
+  const eyebrowTxt =
+    step === 1
+      ? 'Votre devis · suite'
+      : step === 2
+        ? 'Votre devis · dernier point'
+        : 'Votre devis · clôture du dossier';
+  const headTitle =
+    step === 1
+      ? 'Une question sur votre devis ?'
+      : step === 2
+        ? 'Souhaitez-vous donner suite ?'
+        : 'Dernière relance avant clôture';
+  const headSub =
+    step === 1
+      ? 'Nous restons disponibles.'
+      : step === 2
+        ? 'Votre devis est toujours valable.'
+        : 'Sans retour, nous classerons votre dossier.';
+  const bodyMain =
+    step === 1
+      ? `Nous vous avons adressé notre devis pour <strong>${ctx.object}</strong> il y a quelques jours. Avant d'aller plus loin, nous tenions à vérifier qu'il vous est bien parvenu — et que vous pouvez nous poser vos questions en toute confiance, sur le contenu, le déroulé ou les délais.`
+      : step === 2
+        ? `Sauf erreur de notre part, votre devis pour <strong>${ctx.object}</strong> est resté en attente. Bonne nouvelle : il reste valable, et sans engagement de votre part. Un simple message, et nous fixons votre visite sous 72 heures.`
+        : `Nous revenons vers vous une dernière fois au sujet de votre devis pour <strong>${ctx.object}</strong>, resté sans réponse malgré nos précédents messages. Il reste valable aujourd'hui : un simple mot de votre part suffit pour que nous fixions votre visite sous 72 heures.`;
+  const bodyClose =
+    step === 1
+      ? "Pour vous rassurer : dès que vous nous donnez votre accord, nous planifions votre visite sous 72 heures."
+      : step === 2
+        ? "Si votre situation a changé, ou que le projet n'est plus d'actualité, dites-le-nous simplement — nous classerons votre dossier en toute discrétion, sans vous solliciter davantage."
+        : "Sans retour de votre part, nous clôturerons votre dossier afin de ne plus vous solliciter. Vous restez bien sûr libre de nous recontacter quand vous le souhaiterez : ce sera avec plaisir.";
+
   const inner = `
     ${card(`
-      ${eyebrow(soft ? 'Votre devis · suite' : 'Votre devis · dernier point')}
-      ${heading(
-        soft ? 'Une question sur votre devis ?' : 'Souhaitez-vous donner suite ?',
-        soft ? 'Nous restons disponibles.' : 'Votre devis est toujours valable.'
-      )}
-      ${para('Bonjour ' + ctx.firstName + ',')}
-      ${para(
-        soft
-          ? `Nous vous avons adressé notre devis pour <strong>${ctx.object}</strong> il y a quelques jours. Avant d'aller plus loin, nous tenions à vérifier qu'il vous est bien parvenu — et que vous pouvez nous poser vos questions en toute confiance, sur le contenu, le déroulé ou les délais.`
-          : `Sauf erreur de notre part, votre devis pour <strong>${ctx.object}</strong> est resté en attente. Bonne nouvelle : il reste valable, et sans engagement de votre part. Un simple message, et nous fixons votre visite sous 72 heures.`
-      )}
-      ${para(
-        soft
-          ? "Pour vous rassurer : dès que vous nous donnez votre accord, nous planifions votre visite sous 72 heures."
-          : "Si votre situation a changé, ou que le projet n'est plus d'actualité, dites-le-nous simplement — nous classerons votre dossier en toute discrétion, sans vous solliciter davantage."
-      )}
+      ${eyebrow(eyebrowTxt)}
+      ${heading(headTitle, headSub)}
+      ${para('Bonjour,')}
+      ${para(bodyMain)}
+      ${para(bodyClose)}
       <p style="margin: 28px 0;">
         ${button('En parler — 05 82 95 33 75', 'tel:0582953375')}
       </p>
@@ -331,7 +352,7 @@ export function devisRelance(ctx: DevisRelanceContext): string {
     `)}
   `;
   return wrap(inner, {
-    eyebrow: soft ? 'Relance · J+3' : 'Relance · J+7',
+    eyebrow: step === 1 ? 'Relance · J+3' : step === 2 ? 'Relance · J+7' : 'Relance · J+14',
     unsubscribeUrl: ctx.unsubscribeUrl,
   });
 }
@@ -345,26 +366,55 @@ interface FactureRelanceContext {
   number: string;
   montant: string;
   dueDate: string;
+  /** 1 = doux · 2 = plus ferme · 3 = dernier rappel (ferme mais respectueux). */
+  step?: 1 | 2 | 3;
   unsubscribeUrl?: string;
 }
 
 export function factureRelance(ctx: FactureRelanceContext): string {
+  const step = ctx.step ?? 1;
+  // Rappel motivant (paliers 1 et 2) : le paiement déclenche la livraison du rapport.
+  const rapportLine =
+    'Une précision qui vous sera utile : c\'est la réception de votre règlement qui lance la rédaction de votre rapport d\'expertise. Dès que votre paiement nous parvient, vous le recevez sous <strong>3 à 5 jours ouvrés</strong>. Nous avons hâte de vous transmettre nos conclusions en toute clarté.';
+
+  const eyebrowTxt =
+    step === 1
+      ? 'Facture en attente de règlement'
+      : step === 2
+        ? 'Votre facture · second rappel'
+        : 'Facture impayée · dernier rappel';
+  const headTail =
+    step === 1 ? 'reste à régler.' : step === 2 ? 'est toujours en attente.' : 'demeure impayée.';
+  const bodyMain =
+    step === 1
+      ? `Sauf erreur de notre part, la facture <strong>${ctx.number}</strong> d'un montant de <strong>${ctx.montant}</strong> (échéance du ${ctx.dueDate}) n'est pas encore parvenue sur notre compte. Si ce n'est pas déjà fait, vous pouvez la régler par virement — les coordonnées bancaires figurent sur le document.`
+      : step === 2
+        ? `Nous revenons vers vous au sujet de la facture <strong>${ctx.number}</strong> (<strong>${ctx.montant}</strong>, échéance du ${ctx.dueDate}), que nous n'avons pas encore reçue. Peut-être un imprévu, ou une question de votre côté ? Dans tous les cas, parlons-en : nous trouverons ensemble la solution qui vous convient — échelonnement, précision sur le virement…`
+        : `Malgré nos précédents rappels, la facture <strong>${ctx.number}</strong> d'un montant de <strong>${ctx.montant}</strong> (échéance du ${ctx.dueDate}) demeure impayée à ce jour. Nous vous demandons de bien vouloir procéder à son règlement <strong>sous huitaine</strong>.`;
+  const bodyClose =
+    step === 1
+      ? 'Et si votre virement vient de partir, pas d\'inquiétude : nos messages se sont sans doute croisés. Pour toute question, ou si vous avez besoin d\'un délai, nous restons à votre écoute avec plaisir.'
+      : step === 2
+        ? 'Si votre règlement est déjà en route, merci à vous — et pardon pour ce nouveau message, nos courriers se sont croisés. Sinon, un simple mot de votre part suffit : nous restons à votre entière disposition, sans aucune pression.'
+        : 'Si une difficulté particulière vous empêche de régler, contactez-nous sans tarder : nous restons ouverts au dialogue et à une solution amiable. À défaut de retour de votre part, nous serions toutefois contraints d\'engager les démarches de recouvrement prévues — ce que nous préférerions sincèrement éviter.';
+
   const inner = `
     ${card(`
-      ${eyebrow('Facture en attente de règlement')}
-      ${heading('Votre facture ' + ctx.number, 'reste à régler.')}
-      ${para('Bonjour ' + ctx.firstName + ',')}
-      ${para(
-        `Sauf erreur de notre part, la facture <strong>${ctx.number}</strong> d'un montant de <strong>${ctx.montant}</strong> (échéance du ${ctx.dueDate}) n'est pas encore parvenue sur notre compte. Si ce n'est pas déjà fait, vous pouvez la régler par virement — les coordonnées bancaires figurent sur le document.`
-      )}
-      ${para('Si votre virement vient de partir, pas d\'inquiétude : nos messages se sont sans doute croisés. Et si vous avez la moindre question, ou besoin d\'un délai, nous restons à votre écoute.')}
+      ${eyebrow(eyebrowTxt)}
+      ${heading('Votre facture ' + ctx.number, headTail)}
+      ${para('Bonjour,')}
+      ${para(bodyMain)}
+      ${step === 3 ? '' : para(rapportLine)}
+      ${para(bodyClose)}
       <p style="margin: 28px 0;">
-        ${button('Une question ? 05 82 95 33 75', 'tel:0582953375')}
+        ${button('En parler — 05 82 95 33 75', 'tel:0582953375')}
       </p>
       ${signature}
     `)}
   `;
-  return wrap(inner, { eyebrow: 'Relance · facture', unsubscribeUrl: ctx.unsubscribeUrl });
+  const wrapEyebrow =
+    step === 1 ? 'Relance · facture' : step === 2 ? 'Second rappel · facture' : 'Dernier rappel · facture';
+  return wrap(inner, { eyebrow: wrapEyebrow, unsubscribeUrl: ctx.unsubscribeUrl });
 }
 
 // ─────────────────────────────────────────────────────────────────

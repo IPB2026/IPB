@@ -36,13 +36,20 @@ export default async function NewDevisPage({
         where: { id: searchParams.contactId },
         select: {
           address: true,
+          postalCode: true,
+          city: true,
           leads: { select: { value: true }, orderBy: { createdAt: 'desc' }, take: 1 },
         },
       })
       .catch(() => null);
     const v = c?.leads[0]?.value != null ? Number(c.leads[0].value) : null;
     if (v != null && v > 0) defaultPrix = v;
-    if (c?.address) prefillBien = c.address;
+    // Adresse STRUCTURÉE complète (rue + CP + ville) reprise sur le devis.
+    const bienParts = [
+      c?.address,
+      [c?.postalCode, c?.city].filter(Boolean).join(' '),
+    ].filter(Boolean);
+    if (bienParts.length) prefillBien = bienParts.join(', ');
   }
 
   return (

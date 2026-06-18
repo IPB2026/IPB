@@ -378,6 +378,7 @@ export async function generateRapportAI(formData: FormData) {
     caption: p.caption ?? undefined,
     zoneRef: p.zoneRef ?? undefined,
     gravite: p.gravite ?? undefined,
+    contentType: p.contentType ?? undefined,
   }));
 
   // Données officielles de localisation (Géorisques/BAN) — non bloquant.

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { CalendarClock, ReceiptText, Plus, Trash2, Send } from 'lucide-react';
 import type { AppointmentStatus, AppointmentType } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
-import { guardAdminPage } from '@/lib/auth-helpers';
+import { guardAdminPage, listExperts } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
 import { EmptyState } from '@/components/admin/empty-state';
 import { Avatar } from '@/components/admin/avatar';
@@ -10,6 +10,7 @@ import { isCalendarConfigured } from '@/lib/google/calendar';
 import { AgendaWeek, type WeekAppt } from '@/components/admin/agenda-week';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 import { AppointmentProposalForm } from '@/components/admin/appointment-proposal-form';
+import { NewAppointmentForm } from '@/components/admin/new-appointment-form';
 import { SubmitButton } from '@/components/admin/submit-button';
 
 /** Lundi 00:00 de la semaine contenant `d`. */
@@ -22,11 +23,11 @@ function startOfWeek(d: Date): Date {
 }
 const ymd = (d: Date) => d.toISOString().slice(0, 10);
 import {
-  createAppointment,
   updateAppointmentStatus,
   rescheduleAppointment,
   generateInvoiceFromAppointment,
   deleteAppointment,
+  resendAppointmentInvites,
 } from '@/app/admin/(app)/agenda/actions';
 
 export const dynamic = 'force-dynamic';
@@ -81,7 +82,13 @@ export default async function AgendaPage({
     devisId: searchParams.devisId ?? '',
   };
   let appts: Awaited<ReturnType<typeof loadAppts>> = [];
-  let contacts: { id: string; name: string; city: string | null; email: string | null }[] = [];
+  let contacts: {
+    id: string;
+    name: string;
+    city: string | null;
+    email: string | null;
+    address: string | null;
+  }[] = [];
   let dbError = false;
   try {
     [appts, contacts] = await Promise.all([
@@ -89,7 +96,7 @@ export default async function AgendaPage({
       prisma.contact.findMany({
         orderBy: { createdAt: 'desc' },
         take: 300,
-        select: { id: true, name: true, city: true, email: true },
+        select: { id: true, name: true, city: true, email: true, address: true },
       }),
     ]);
   } catch {
@@ -97,6 +104,26 @@ export default async function AgendaPage({
   }
   // Proposer des créneaux nécessite un e-mail client.
   const contactsWithEmail = contacts.filter((c) => c.email);
+
+  // Lieu pré-rempli quand on arrive depuis un dossier : adresse du bien (devis
+  // lié) ou, à défaut, adresse du client renseignée sur sa fiche.
+  let prefillLocation = '';
+  if (prefill.devisId) {
+    const d = await prisma.devis
+      .findUnique({
+        where: { id: prefill.devisId },
+        select: { bienConcerne: true },
+      })
+      .catch(() => null);
+    prefillLocation = d?.bienConcerne ?? '';
+  }
+  if (!prefillLocation && prefill.contactId) {
+    prefillLocation = contacts.find((c) => c.id === prefill.contactId)?.address ?? '';
+  }
+  // Date plancher des sélecteurs de créneau (aujourd'hui, fuseau local).
+  const minDate = new Date().toLocaleDateString('en-CA');
+  // Diagnostiqueurs (comptes EXPERT) proposables à l'assignation d'un RDV.
+  const experts = await listExperts();
 
   // Regroupe par jour
   const groups = new Map<string, typeof appts>();
@@ -194,84 +221,14 @@ export default async function AgendaPage({
             Créez d'abord un prospect pour planifier un RDV.
           </p>
         ) : (
-          <form action={createAppointment} className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            {prefill.leadId && (
-              <input type="hidden" name="leadId" value={prefill.leadId} />
-            )}
-            {prefill.devisId && (
-              <input type="hidden" name="devisId" value={prefill.devisId} />
-            )}
-            <div>
-              <label className="mb-1 block text-sm font-medium text-slate-700">
-                Client
-              </label>
-              <select
-                name="contactId"
-                required
-                defaultValue={prefill.contactId}
-                className={field}
-              >
-                <option value="" disabled>
-                  Choisir un prospect…
-                </option>
-                {contacts.map((c) => (
-                  <option key={c.id} value={c.id}>
-                    {c.name}
-                    {c.city ? ` — ${c.city}` : ''}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label className="mb-1 block text-sm font-medium text-slate-700">
-                Type
-              </label>
-              <select name="type" defaultValue={prefill.type} className={field}>
-                {Object.entries(TYPE_LABEL).map(([v, l]) => (
-                  <option key={v} value={v}>
-                    {l}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label className="mb-1 block text-sm font-medium text-slate-700">
-                Date et heure
-              </label>
-              <input type="datetime-local" name="start" step={1800} required className={field} />
-            </div>
-            <div>
-              <label className="mb-1 block text-sm font-medium text-slate-700">
-                Durée (min)
-              </label>
-              <input
-                type="number"
-                name="durationMin"
-                defaultValue={60}
-                min={15}
-                step={15}
-                className={field}
-              />
-            </div>
-            <div className="sm:col-span-2">
-              <label className="mb-1 block text-sm font-medium text-slate-700">
-                Lieu
-              </label>
-              <input
-                name="location"
-                placeholder="Adresse du bien"
-                className={field}
-              />
-            </div>
-            <div className="sm:col-span-2 flex justify-end">
-              <SubmitButton
-                pendingLabel="Planification…"
-                className="rounded-lg bg-orange-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-orange-700"
-              >
-                Planifier le RDV
-              </SubmitButton>
-            </div>
-          </form>
+          <NewAppointmentForm
+            contacts={contacts}
+            typeOptions={Object.entries(TYPE_LABEL)}
+            experts={experts}
+            prefill={prefill}
+            prefillLocation={prefillLocation}
+            minDate={minDate}
+          />
         )}
         </div>
       </details>
@@ -293,6 +250,7 @@ export default async function AgendaPage({
           <AppointmentProposalForm
             contacts={contactsWithEmail}
             prefill={{ contactId: prefill.contactId, type: prefill.type, leadId: prefill.leadId }}
+            minDate={minDate}
           />
         </div>
       </details>
@@ -396,10 +354,17 @@ export default async function AgendaPage({
                               )}
                               {a.googleEventId &&
                                 (a.contact.email ? (
-                                  <span className="text-emerald-600">· invitation envoyée au client</span>
+                                  <span className="text-emerald-600">· invitation client</span>
                                 ) : (
                                   <span className="text-slate-400">· client sans e-mail</span>
                                 ))}
+                              {a.googleEventIdExpert ? (
+                                <span className="text-emerald-600">
+                                  · invitation diagnostiqueur{a.assignedTo?.name ? ` (${a.assignedTo.name})` : ''}
+                                </span>
+                              ) : (
+                                <span className="text-amber-600">· diagnostiqueur non assigné</span>
+                              )}
                             </p>
                           )}
                         </div>
@@ -448,6 +413,18 @@ export default async function AgendaPage({
                               className="h-10 sm:h-9 rounded-lg border border-orange-200 bg-orange-50 px-3 text-sm font-medium text-orange-700 hover:bg-orange-100"
                             >
                               Facturer
+                            </SubmitButton>
+                          </form>
+                        )}
+                        {isCalendarConfigured() && a.status !== 'ANNULE' && (
+                          <form action={resendAppointmentInvites}>
+                            <input type="hidden" name="appointmentId" value={a.id} />
+                            <SubmitButton
+                              pendingLabel="Envoi…"
+                              title="Renvoyer les invitations Google (client + diagnostiqueur)"
+                              className="inline-flex h-10 sm:h-9 items-center gap-1.5 rounded-lg border border-slate-300 px-3 text-sm font-medium text-slate-600 hover:bg-slate-50"
+                            >
+                              <Send className="h-4 w-4" /> Invitations
                             </SubmitButton>
                           </form>
                         )}
@@ -534,6 +511,6 @@ function loadAppts() {
     where: { start: { gte: startOfToday }, status: { not: 'ANNULE' } },
     orderBy: { start: 'asc' },
     take: 100,
-    include: { contact: true },
+    include: { contact: true, assignedTo: { select: { name: true, email: true } } },
   });
 }

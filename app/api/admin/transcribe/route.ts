@@ -20,6 +20,18 @@ export const maxDuration = 60;
  *  - TRANSCRIBE_BASE_URL  (def. https://api.groq.com/openai/v1)
  *  - TRANSCRIBE_MODEL     (def. whisper-large-v3)
  */
+
+/** Indique au composant de dictée si la transcription serveur (Whisper) est
+ *  disponible → il la PRÉFÈRE alors à la reconnaissance navigateur (qualité). */
+export async function GET() {
+  try {
+    await requireUser();
+  } catch {
+    return new Response('Non autorisé', { status: 401 });
+  }
+  return Response.json({ configured: Boolean(process.env.TRANSCRIBE_API_KEY) });
+}
+
 export async function POST(req: NextRequest) {
   try {
     await requireUser();
@@ -35,7 +47,10 @@ export async function POST(req: NextRequest) {
     );
   }
   const baseUrl = (process.env.TRANSCRIBE_BASE_URL || 'https://api.groq.com/openai/v1').replace(/\/$/, '');
-  const model = process.env.TRANSCRIBE_MODEL || 'whisper-large-v3';
+  // Modèle par défaut adapté au fournisseur : OpenAI = whisper-1, sinon Groq.
+  const model =
+    process.env.TRANSCRIBE_MODEL ||
+    (/openai\.com/i.test(baseUrl) ? 'whisper-1' : 'whisper-large-v3');
 
   const form = await req.formData().catch(() => null);
   const file = form?.get('audio');
@@ -74,12 +89,14 @@ export async function POST(req: NextRequest) {
         return Response.json({ error: 'quota', detail }, { status: 429 });
       }
       lastDetail = (await r.text().catch(() => '')).slice(0, 300);
+      console.error('[transcribe] réponse non-OK du fournisseur:', r.status, lastDetail);
       // 4xx : inutile de retenter. 5xx : on retente tant qu'il reste des essais.
       if (r.status < 500 || attempt === maxRetries) {
         return Response.json({ error: 'upstream', detail: lastDetail }, { status: 502 });
       }
     } catch (e) {
       lastDetail = e instanceof Error ? e.message : 'err';
+      console.error('[transcribe] échec d\'appel au fournisseur:', lastDetail);
       if (attempt === maxRetries) {
         return Response.json({ error: 'fetch', detail: lastDetail }, { status: 502 });
       }

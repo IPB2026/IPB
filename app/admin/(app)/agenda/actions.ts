@@ -5,13 +5,12 @@ import { revalidatePath } from 'next/cache';
 import { revalidateCrm } from '@/lib/crm/revalidate';
 import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
-import { createInvoiceForAppointment } from '@/lib/crm/invoicing';
+import { createInvoiceForAppointment, DIAGNOSTIC_APPT_TYPES } from '@/lib/crm/invoicing';
 import {
-  createCalendarEvent,
-  updateCalendarEvent,
   deleteCalendarEvent,
   isCalendarConfigured,
 } from '@/lib/google/calendar';
+import { sendAppointmentInvites } from '@/lib/crm/appointment-invites';
 import {
   notifyClientAppointment,
   notifyClientCancellation,
@@ -66,20 +65,42 @@ export async function createAppointment(formData: FormData) {
   const notes = str(formData.get('notes')) || null;
   const leadId = str(formData.get('leadId')) || null;
   const devisId = str(formData.get('devisId')) || null;
+  const chosenExpertId = str(formData.get('assignedToId')) || null;
 
   const contact = await prisma.contact.findUnique({ where: { id: contactId } });
   if (!contact) return;
 
-  // Synchro Google Calendar (no-op tant que non configuré)
-  const googleEventId = await createCalendarEvent({
-    summary: `IPB — ${title}`,
-    description: notes ?? undefined,
-    location: location ?? undefined,
-    start,
-    end,
-    attendeeEmail: contact.email,
-    attendeeName: contact.name,
-  });
+  // Lieu de l'invitation : priorité au champ saisi ; sinon adresse du bien du
+  // devis lié ; sinon adresse du client (fiche). → l'invitation Google porte
+  // toujours l'adresse du bien renseignée dans le dossier.
+  let resolvedLocation = location;
+  if (!resolvedLocation && devisId) {
+    const d = await prisma.devis.findUnique({
+      where: { id: devisId },
+      select: { bienConcerne: true },
+    });
+    resolvedLocation = d?.bienConcerne ?? null;
+  }
+  if (!resolvedLocation) resolvedLocation = contact.address ?? null;
+
+  // Diagnostiqueur : choix EXPLICITE du formulaire prioritaire ; sinon l'expert
+  // déjà assigné au DOSSIER (lead). Il reçoit la 2e invitation Google.
+  let assignedToId: string | null = chosenExpertId;
+  if (!assignedToId && leadId) {
+    const lead = await prisma.lead.findUnique({
+      where: { id: leadId },
+      select: { assignedToId: true },
+    });
+    assignedToId = lead?.assignedToId ?? null;
+  }
+  // Choix explicite + dossier connu → on synchronise l'expert du dossier (cohérence
+  // « le diagnostiqueur du RDV = l'expert du dossier »).
+  if (chosenExpertId && leadId) {
+    await prisma.lead.updateMany({
+      where: { id: leadId },
+      data: { assignedToId: chosenExpertId },
+    });
+  }
 
   const appt = await prisma.appointment.create({
     data: {
@@ -90,11 +111,29 @@ export async function createAppointment(formData: FormData) {
       type,
       start,
       end,
-      location,
+      location: resolvedLocation,
       notes,
-      googleEventId,
+      assignedToId,
     },
   });
+
+  // Invitations Google : 1) client (adresse + confirmation) 2) diagnostiqueur
+  // (adresse + date + heure). Repli e-mail maison si Google non configuré ; alerte
+  // tracée si aucun diagnostiqueur n'est assigné au dossier.
+  const invites = await sendAppointmentInvites(appt.id, { message: notes });
+  if (!invites.configured) {
+    await notifyClientAppointment(appt.id);
+  } else if (invites.expertMissing) {
+    await prisma.activity.create({
+      data: {
+        type: 'SYSTEME',
+        contactId,
+        leadId,
+        content:
+          'Invitation diagnostiqueur non envoyée — aucun expert assigné au dossier. Assignez un diagnostiqueur puis cliquez « Renvoyer les invitations ».',
+      },
+    });
+  }
 
   // Trace + avance le pipeline
   await prisma.activity.create({
@@ -105,13 +144,6 @@ export async function createAppointment(formData: FormData) {
       content: `RDV planifié : ${title} — ${start.toLocaleString('fr-FR')}`,
     },
   });
-
-  // Accusé client automatique (confirmation de RDV) — non bloquant.
-  // Si Google Agenda est connecté, c'est lui qui envoie l'invitation : on évite
-  // alors de doubler avec l'e-mail maison.
-  if (!isCalendarConfigured()) {
-    await notifyClientAppointment(appt.id);
-  }
   if (leadId) {
     const lead = await prisma.lead.findUnique({
       where: { id: leadId },
@@ -139,7 +171,14 @@ export async function updateAppointmentStatus(formData: FormData) {
   const appt = await prisma.appointment.update({
     where: { id },
     data: { status: status as AppointmentStatus },
-    select: { leadId: true, contactId: true, googleEventId: true },
+    select: {
+      leadId: true,
+      contactId: true,
+      googleEventId: true,
+      googleEventIdExpert: true,
+      type: true,
+      factureId: true,
+    },
   });
   // Si réalisé et lead encore en amont, marquer « visite faite »
   if (status === 'REALISE' && appt.leadId) {
@@ -148,14 +187,26 @@ export async function updateAppointmentStatus(formData: FormData) {
       data: { stage: 'VISITE_FAITE' },
     });
   }
+  // Facture en BROUILLON dès la clôture de la visite diagnostic (idempotent) :
+  // on ne dépend plus de la fenêtre J+1 du cron — une visite clôturée tardivement
+  // (qui sort de cette fenêtre) est quand même facturée. Le cron reste un filet.
+  if (
+    status === 'REALISE' &&
+    !appt.factureId &&
+    DIAGNOSTIC_APPT_TYPES.includes(appt.type)
+  ) {
+    await createInvoiceForAppointment(id).catch(() => {});
+  }
   // Annulation : retirer l'événement Google (Google notifie le client) ; sinon
   // envoyer l'e-mail d'annulation maison.
   if (status === 'ANNULE') {
-    if (appt.googleEventId) {
-      await deleteCalendarEvent(appt.googleEventId);
+    // Annulation des DEUX invitations Google (client + diagnostiqueur).
+    if (appt.googleEventId) await deleteCalendarEvent(appt.googleEventId);
+    if (appt.googleEventIdExpert) await deleteCalendarEvent(appt.googleEventIdExpert);
+    if (appt.googleEventId || appt.googleEventIdExpert) {
       await prisma.appointment.update({
         where: { id },
-        data: { googleEventId: null },
+        data: { googleEventId: null, googleEventIdExpert: null },
       });
     }
     if (!isCalendarConfigured()) {
@@ -183,7 +234,7 @@ export async function rescheduleAppointment(formData: FormData) {
 
   const appt = await prisma.appointment.findUnique({
     where: { id },
-    select: { googleEventId: true, contactId: true, leadId: true },
+    select: { contactId: true, leadId: true },
   });
   if (!appt) return;
 
@@ -191,13 +242,9 @@ export async function rescheduleAppointment(formData: FormData) {
     where: { id },
     data: { start, end, location },
   });
-  if (appt.googleEventId) {
-    await updateCalendarEvent(appt.googleEventId, {
-      start,
-      end,
-      location: location ?? undefined,
-    });
-  }
+  // Met à jour les DEUX invitations Google (client + diagnostiqueur) avec la
+  // nouvelle date/heure/lieu ; Google notifie les invités du changement.
+  await sendAppointmentInvites(id);
   await prisma.activity.create({
     data: {
       type: 'RDV',
@@ -222,12 +269,18 @@ export async function deleteAppointment(formData: FormData) {
   if (!id) return;
   const appt = await prisma.appointment.findUnique({
     where: { id },
-    select: { googleEventId: true, contactId: true, leadId: true, title: true, start: true },
+    select: {
+      googleEventId: true,
+      googleEventIdExpert: true,
+      contactId: true,
+      leadId: true,
+      title: true,
+      start: true,
+    },
   });
   if (!appt) return;
-  if (appt.googleEventId) {
-    await deleteCalendarEvent(appt.googleEventId);
-  }
+  if (appt.googleEventId) await deleteCalendarEvent(appt.googleEventId);
+  if (appt.googleEventIdExpert) await deleteCalendarEvent(appt.googleEventIdExpert);
   await prisma.appointment.delete({ where: { id } });
   await prisma.activity.create({
     data: {
@@ -237,6 +290,40 @@ export async function deleteAppointment(formData: FormData) {
       content: `RDV supprimé : ${appt.title} — ${appt.start.toLocaleString('fr-FR')}`,
     },
   });
+  revalidatePath('/admin/agenda');
+  revalidateCrm(appt.contactId);
+}
+
+/**
+ * (Re)envoie les invitations Google Agenda d'un RDV depuis le CRM : invitation
+ * client + invitation diagnostiqueur. Utile après avoir assigné un diagnostiqueur
+ * au dossier, ou pour renvoyer une invitation perdue. Idempotent (met à jour les
+ * événements existants — pas de doublon).
+ */
+export async function resendAppointmentInvites(formData: FormData) {
+  await requireUser();
+  const id = str(formData.get('appointmentId'));
+  if (!id) return;
+  const appt = await prisma.appointment.findUnique({
+    where: { id },
+    select: { contactId: true, leadId: true },
+  });
+  if (!appt) return;
+
+  const invites = await sendAppointmentInvites(id);
+  await prisma.activity.create({
+    data: {
+      type: 'RDV',
+      contactId: appt.contactId,
+      leadId: appt.leadId,
+      content: !invites.configured
+        ? 'Renvoi des invitations demandé — Google Agenda n’est pas configuré.'
+        : invites.expertMissing
+          ? 'Invitation client renvoyée. Diagnostiqueur non assigné au dossier — invitation expert non envoyée.'
+          : 'Invitations Google renvoyées (client + diagnostiqueur).',
+    },
+  });
+
   revalidatePath('/admin/agenda');
   revalidateCrm(appt.contactId);
 }

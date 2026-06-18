@@ -30,6 +30,7 @@ export interface ReportPhotoInput {
   caption?: string;
   zoneRef?: string;
   gravite?: string;
+  contentType?: string; // type MIME (filtre vision : HEIC exclu)
 }
 
 export interface ReportInput {
@@ -332,6 +333,16 @@ export async function structureObservations(
   }
 }
 
+// La vision Claude n'accepte QUE JPEG/PNG/WebP/GIF. Un HEIC/HEIF iPhone (cas où la
+// conversion côté client a échoué) ferait échouer TOUT l'appel (HTTP 400) — on l'écarte
+// donc de l'analyse plutôt que de planter la génération entière.
+const VISION_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/gif']);
+function isVisionSupported(p: ReportPhotoInput): boolean {
+  if (p.contentType) return VISION_TYPES.has(p.contentType.toLowerCase());
+  const ext = p.url.toLowerCase().match(/\.([a-z0-9]+)(?:\?|$)/)?.[1] ?? '';
+  return ['jpg', 'jpeg', 'png', 'webp', 'gif'].includes(ext);
+}
+
 export async function generateReport(
   input: ReportInput
 ): Promise<{ content: ReportContent } | { error: string }> {
@@ -340,7 +351,7 @@ export async function generateReport(
   }
 
   const client = new Anthropic();
-  const photos = (input.photos ?? []).filter((p) => p.url);
+  const photos = (input.photos ?? []).filter((p) => p.url && isVisionSupported(p));
 
   const userPrompt = [
     `Type de mission : diagnostic ${TYPE_LABEL[input.type]}.`,
@@ -385,22 +396,33 @@ export async function generateReport(
     userContent.push({ type: 'image', source: { type: 'url', url: p.url } });
   }
 
+  // Profondeur/longueur réglables sans redéploiement de code (REPORT_EFFORT /
+  // REPORT_MAX_TOKENS). Défauts prudents pour tenir dans le budget temps d'une
+  // fonction serverless ; à pousser (high / 32000) sur un plan Vercel Pro.
+  const effort = (process.env.REPORT_EFFORT || 'medium').toLowerCase();
+  const maxTokens = Number(process.env.REPORT_MAX_TOKENS) || 16000;
+
   const params = {
     model: REPORT_MODEL,
-    max_tokens: 32000,
+    max_tokens: maxTokens,
     thinking: { type: 'adaptive' },
     system: SYSTEM,
     output_config: {
-      effort: 'high',
+      effort,
       format: { type: 'json_schema', schema: SCHEMA },
     },
     messages: [{ role: 'user', content: userContent }],
   };
 
   try {
-    const response = await client.messages.create(
-      params as unknown as Anthropic.MessageCreateParamsNonStreaming
+    // STREAMING OBLIGATOIRE : en non-streaming, le SDK Anthropic LÈVE une exception
+    // (« Streaming is required… ») dès que max_tokens implique un temps estimé > 10 min
+    // — ce qui était le cas avec 32000 → la génération échouait AVANT tout appel réseau.
+    // .finalMessage() agrège le flux SSE en un message complet (JSON structuré).
+    const stream = client.messages.stream(
+      params as unknown as Parameters<typeof client.messages.stream>[0]
     );
+    const response = await stream.finalMessage();
     const textBlock = response.content.find((b) => b.type === 'text');
     const raw = textBlock && 'text' in textBlock ? textBlock.text : '';
     if (!raw) return { error: 'Réponse IA vide.' };
@@ -411,4 +433,307 @@ export async function generateReport(
     const msg = err instanceof Error ? err.message : 'Erreur inconnue';
     return { error: `Génération IA échouée : ${msg}` };
   }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// GÉNÉRATION PROGRESSIVE (multi-passes)
+// Un rapport complet prend 1-3 min — au-delà du plafond de 60 s d'une fonction
+// serverless (Vercel Hobby). On le produit donc en plusieurs appels COURTS et
+// indépendants, orchestrés depuis le client : squelette → 1 appel par zone →
+// synthèse. Chaque passe est petite (≤ ~3-4k tokens) donc rapide (< 60 s).
+// L'état intermédiaire est stocké dans Rapport.aiContent (forme « brouillon »).
+// ─────────────────────────────────────────────────────────────────────────────
+
+export type SkeletonContent = Pick<
+  ReportContent,
+  'objetMission' | 'descriptionBien' | 'contexteLocalisation' | 'limites' | 'graviteGlobale' | 'conclusionGenerale'
+>;
+export type ZoneContent = ReportContent['zones'][number];
+export type SynthesisContent = Pick<
+  ReportContent,
+  'syntheseDesordres' | 'matriceCriticite' | 'avisProjet' | 'estimationTravaux' | 'budgetHT' | 'orientations' | 'conclusion' | 'conclusionFinale'
+>;
+
+/** Brouillon de rapport en cours de construction (stocké dans aiContent). */
+export interface ReportDraft {
+  building: true;
+  step: number; // prochaine passe à exécuter : 0 = squelette, 1..N = zone n°(step), N+1 = synthèse
+  total: number; // nombre total de passes = zones.length + 2
+  model: string;
+  locationRisk?: string | null;
+  skeleton?: SkeletonContent;
+  zones: ZoneContent[];
+}
+
+/** Reconnaît un aiContent « brouillon » (génération en cours/interrompue). */
+export function isReportDraft(v: unknown): v is ReportDraft {
+  return !!v && typeof v === 'object' && (v as { building?: unknown }).building === true;
+}
+
+const SKELETON_SCHEMA = {
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    objetMission: { type: 'string' },
+    descriptionBien: { type: 'string' },
+    contexteLocalisation: { type: 'string' },
+    limites: { type: 'string' },
+    graviteGlobale: { type: 'string' },
+    conclusionGenerale: { type: 'string' },
+  },
+  required: ['objetMission', 'descriptionBien', 'contexteLocalisation', 'limites', 'graviteGlobale', 'conclusionGenerale'],
+} as const;
+
+const ZONE_SCHEMA = {
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    titre: { type: 'string' },
+    description: { type: 'string' },
+    analyseCausale: { type: 'array', items: { type: 'string' } },
+    mesure: { type: 'string' },
+    refsTechniques: { type: 'array', items: { type: 'string' } },
+    gravite: { type: 'string' },
+    preconisation: { type: 'string' },
+    encadre: { type: 'string' },
+  },
+  required: ['titre', 'description', 'analyseCausale', 'mesure', 'refsTechniques', 'gravite', 'preconisation', 'encadre'],
+} as const;
+
+const SYNTHESIS_SCHEMA = {
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    syntheseDesordres: {
+      type: 'array',
+      items: {
+        type: 'object',
+        additionalProperties: false,
+        properties: {
+          zone: { type: 'string' },
+          nature: { type: 'string' },
+          gravite: { type: 'string' },
+          action: { type: 'string' },
+        },
+        required: ['zone', 'nature', 'gravite', 'action'],
+      },
+    },
+    matriceCriticite: {
+      type: 'array',
+      items: {
+        type: 'object',
+        additionalProperties: false,
+        properties: {
+          desordre: { type: 'string' },
+          probabilite: { type: 'string' },
+          gravite: { type: 'string' },
+          criticite: { type: 'string' },
+        },
+        required: ['desordre', 'probabilite', 'gravite', 'criticite'],
+      },
+    },
+    avisProjet: {
+      type: 'array',
+      items: {
+        type: 'object',
+        additionalProperties: false,
+        properties: {
+          titre: { type: 'string' },
+          description: { type: 'string' },
+          avis: { type: 'string' },
+        },
+        required: ['titre', 'description', 'avis'],
+      },
+    },
+    estimationTravaux: {
+      type: 'array',
+      items: {
+        type: 'object',
+        additionalProperties: false,
+        properties: {
+          designation: { type: 'string' },
+          unite: { type: 'string' },
+          montantHT: { type: 'number' },
+          tva: { type: 'number' },
+        },
+        required: ['designation', 'unite', 'montantHT', 'tva'],
+      },
+    },
+    budgetHT: { type: 'number' },
+    orientations: {
+      type: 'array',
+      items: {
+        type: 'object',
+        additionalProperties: false,
+        properties: {
+          titre: { type: 'string' },
+          detail: { type: 'string' },
+        },
+        required: ['titre', 'detail'],
+      },
+    },
+    conclusion: { type: 'string' },
+    conclusionFinale: { type: 'array', items: { type: 'string' } },
+  },
+  required: [
+    'syntheseDesordres', 'matriceCriticite', 'avisProjet', 'estimationTravaux',
+    'budgetHT', 'orientations', 'conclusion', 'conclusionFinale',
+  ],
+} as const;
+
+/** Appel Claude structuré, EN STREAMING (obligatoire — cf. generateReport), pour
+ *  une passe courte. Renvoie l'objet validé ou une erreur lisible. */
+async function runStructured<T>(
+  client: Anthropic,
+  schema: unknown,
+  content: Anthropic.ContentBlockParam[],
+  maxTokens: number
+): Promise<{ data: T } | { error: string }> {
+  const effort = (process.env.REPORT_EFFORT || 'medium').toLowerCase();
+  const params = {
+    model: REPORT_MODEL,
+    max_tokens: maxTokens,
+    thinking: { type: 'adaptive' },
+    system: SYSTEM,
+    output_config: { effort, format: { type: 'json_schema', schema } },
+    messages: [{ role: 'user', content }],
+  };
+  try {
+    const stream = client.messages.stream(
+      params as unknown as Parameters<typeof client.messages.stream>[0]
+    );
+    const response = await stream.finalMessage();
+    const textBlock = response.content.find((b) => b.type === 'text');
+    const raw = textBlock && 'text' in textBlock ? textBlock.text : '';
+    if (!raw) return { error: 'Réponse IA vide.' };
+    return { data: JSON.parse(raw) as T };
+  } catch (err) {
+    console.error('[runStructured] échec IA:', err);
+    const msg = err instanceof Error ? err.message : 'Erreur inconnue';
+    return { error: `Génération IA échouée : ${msg}` };
+  }
+}
+
+function missionHeader(input: ReportInput): string {
+  return [
+    `Type de mission : diagnostic ${TYPE_LABEL[input.type]}.`,
+    `Client : ${input.clientName}.`,
+    input.bienAdresse ? `Bien expertisé : ${input.bienAdresse}.` : '',
+    input.ville ? `Commune : ${input.ville}.` : '',
+  ]
+    .filter(Boolean)
+    .join('\n');
+}
+
+function allZonesText(input: ReportInput): string {
+  return input.zones
+    .map(
+      (z, i) =>
+        `Zone ${i + 1} — ${z.titre}\n  Observations : ${z.observations}\n` +
+        (z.mesure ? `  Mesure : ${z.mesure}\n` : '  Mesure : (non mesurée)\n') +
+        (z.gravite ? `  Gravité estimée terrain : ${z.gravite}\n` : '')
+    )
+    .join('\n');
+}
+
+/** Passe 1 — cadre du rapport (sans l'analyse détaillée des zones). */
+export async function generateSkeleton(
+  input: ReportInput
+): Promise<{ data: SkeletonContent } | { error: string }> {
+  if (!isAiConfigured()) return { error: 'Clé API Anthropic absente (ANTHROPIC_API_KEY).' };
+  const client = new Anthropic();
+  const prompt = [
+    missionHeader(input),
+    input.locationRisk
+      ? `\nDONNÉES OFFICIELLES DE LOCALISATION (Géorisques / BAN) — référence FACTUELLE à citer telle quelle :\n${input.locationRisk}`
+      : '',
+    '',
+    'CONSTATS TERRAIN (vue d’ensemble — l’analyse détaillée de chaque zone sera produite séparément) :',
+    allZonesText(input),
+    '',
+    'Rédige UNIQUEMENT le CADRE du rapport : objet de la mission, description du bien, contexte de localisation, limites & périmètre (protection juridique, différenciation BET/judiciaire/assurance), gravité globale et conclusion générale synthétique. N’analyse pas encore les zones en détail.',
+  ]
+    .filter(Boolean)
+    .join('\n');
+  return runStructured<SkeletonContent>(client, SKELETON_SCHEMA, [{ type: 'text', text: prompt }], 4000);
+}
+
+/** Passe 2..N — analyse experte d'UNE seule zone (avec ses photos). */
+export async function generateOneZone(
+  input: ReportInput,
+  index: number
+): Promise<{ data: ZoneContent } | { error: string }> {
+  if (!isAiConfigured()) return { error: 'Clé API Anthropic absente (ANTHROPIC_API_KEY).' };
+  const z = input.zones[index];
+  if (!z) return { error: `Zone ${index} introuvable.` };
+  const client = new Anthropic();
+
+  // Photos de CETTE zone (par zoneRef) ; les photos non rattachées vont avec la 1ère.
+  const zonePhotos = (input.photos ?? []).filter((p) => {
+    if (!p.url || !isVisionSupported(p)) return false;
+    if (p.zoneRef) return p.zoneRef === z.titre;
+    return index === 0;
+  });
+
+  const prompt = [
+    missionHeader(input),
+    input.locationRisk ? `\nContexte officiel de localisation (rappel) :\n${input.locationRisk}` : '',
+    '',
+    `ZONE À ANALYSER EN PROFONDEUR — Zone ${index + 1} : ${z.titre}`,
+    `Observations terrain : ${z.observations}`,
+    z.mesure ? `Mesure : ${z.mesure}` : 'Mesure : (non mesurée)',
+    z.gravite ? `Gravité estimée terrain : ${z.gravite}` : '',
+    '',
+    zonePhotos.length
+      ? `${zonePhotos.length} photographie(s) de cette zone te sont jointes (analyse visuelle attendue, référence-les par leur numéro).`
+      : 'Aucune photographie pour cette zone.',
+    '',
+    'Produis l’analyse experte de CETTE SEULE zone : description du désordre (faciès, localisation, étendue), analyse causale multi-mécanismes classée par probabilité (sans trancher une cause unique sans instrumentation), mesure (« — » si non mesurée), références techniques réellement applicables, gravité normalisée, préconisation, et verdict synthétique de l’encadré.',
+  ]
+    .filter(Boolean)
+    .join('\n');
+
+  const content: Anthropic.ContentBlockParam[] = [{ type: 'text', text: prompt }];
+  for (const [i, p] of zonePhotos.entries()) {
+    const légende = [
+      `Photo ${i + 1}`,
+      p.gravite ? `gravité : ${p.gravite}` : '',
+      p.caption ? `légende : ${p.caption}` : '',
+    ]
+      .filter(Boolean)
+      .join(' · ');
+    content.push({ type: 'text', text: légende });
+    content.push({ type: 'image', source: { type: 'url', url: p.url } });
+  }
+  return runStructured<ZoneContent>(client, ZONE_SCHEMA, content, 3000);
+}
+
+/** Passe finale — synthèse, matrice, estimation, orientations, conclusion. */
+export async function generateSynthesis(
+  input: ReportInput,
+  skeleton: SkeletonContent,
+  zones: ZoneContent[]
+): Promise<{ data: SynthesisContent } | { error: string }> {
+  if (!isAiConfigured()) return { error: 'Clé API Anthropic absente (ANTHROPIC_API_KEY).' };
+  const client = new Anthropic();
+  const zonesText = zones
+    .map(
+      (z, i) =>
+        `Zone ${i + 1} — ${z.titre}\n  Désordre : ${z.description}\n  Gravité : ${z.gravite}\n  Préconisation : ${z.preconisation}`
+    )
+    .join('\n\n');
+  const prompt = [
+    missionHeader(input),
+    '',
+    `Gravité globale retenue : ${skeleton.graviteGlobale}`,
+    `Conclusion générale : ${skeleton.conclusionGenerale}`,
+    '',
+    'ANALYSES DE ZONES DÉJÀ PRODUITES (à SYNTHÉTISER, sans les réanalyser) :',
+    zonesText,
+    '',
+    'Produis la SYNTHÈSE du rapport, cohérente avec les gravités ci-dessus : tableau de synthèse des désordres, matrice de criticité (probabilité × gravité ⇒ criticité), avis sur projet éventuel (0 ou 1 item), estimation budgétaire chiffrée par poste en € HT avec TVA par poste (10 % travaux logement >2 ans ; 20 % prestations intellectuelles BET ; budgetHT = somme des montants HT), orientations (BET structure / mandataire judiciaire / assurance sécheresse selon le cas), conclusion et recommandations finales.',
+  ]
+    .filter(Boolean)
+    .join('\n');
+  return runStructured<SynthesisContent>(client, SYNTHESIS_SCHEMA, [{ type: 'text', text: prompt }], 4000);
 }

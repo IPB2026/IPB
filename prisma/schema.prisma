@@ -347,7 +347,8 @@ model Appointment {
   location String?
   notes    String?
 
-  googleEventId String? // id de l'événement Google Calendar
+  googleEventId       String? // id de l'événement Google Calendar (invitation CLIENT)
+  googleEventIdExpert String? // id de l'événement Google Calendar (invitation DIAGNOSTIQUEUR)
 
   // Facture générée à l'issue du RDV (workflow facture-après-diagnostic)
   facture   Facture? @relation(fields: [factureId], references: [id])

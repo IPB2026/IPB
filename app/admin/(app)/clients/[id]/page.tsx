@@ -11,6 +11,7 @@ import {
   CalendarClock,
   Check,
   Circle,
+  Send,
 } from 'lucide-react';
 import type {
   DevisStatus,
@@ -24,18 +25,21 @@ import { euros } from '@/lib/crm/company';
 import { computeDossier } from '@/lib/crm/dossier';
 import { Avatar } from '@/components/admin/avatar';
 import { ContactEditForm } from '@/components/admin/contact-edit-form';
-import { QualificationForm } from '@/components/admin/qualification-form';
 import { PayloadView } from '@/components/admin/payload-view';
-import { StageBadge, PhaseBadge, STAGE_LABEL, EDITABLE_PIPELINE_STAGES } from '@/components/admin/badges';
-import type { QualificationRecord } from '@/lib/crm/qualification';
+import { StageBadge, PhaseBadge, PHASE_LABEL, PIPELINE_FLOW } from '@/components/admin/badges';
 import {
   changeStage,
   assignLead,
   scheduleRelance,
   addActivity,
 } from '@/app/admin/(app)/leads/actions';
-import { relanceDevis, relanceFacture } from '@/app/admin/(app)/send-actions';
-import { SubmitButton } from '@/components/admin/submit-button';
+import { acceptDevis } from '@/app/admin/(app)/devis/actions';
+import { recordFacturePayment } from '@/app/admin/(app)/factures/actions';
+import { sendFacture, sendRapport } from '@/app/admin/(app)/send-actions';
+import { updateAppointmentStatus } from '@/app/admin/(app)/agenda/actions';
+import { RelanceControl } from '@/components/admin/relance-control';
+import { ConfirmSubmit } from '@/components/admin/confirm-submit';
+import { CallButton } from '@/components/admin/call-button';
 
 export const dynamic = 'force-dynamic';
 
@@ -162,9 +166,14 @@ export default async function ClientFichePage({
 
   const next = nextStep(dossier, c.id, lead?.id);
   // RÈGLE MÉTIER : un diagnostiqueur ne s'assigne qu'APRÈS validation du devis.
+  // (Mais un dossier DÉJÀ assigné reste gérable — pour pouvoir le réassigner/désassigner.)
   const devisAccepte = c.devis.some((d) => d.status === 'ACCEPTE');
-  const experts = isAdmin && lead && devisAccepte ? await listExperts() : [];
-  const qual = extractQual(lead?.payload);
+  const canAssign = devisAccepte || Boolean(lead?.assignedToId);
+  const experts = isAdmin && lead && canAssign ? await listExperts() : [];
+  // Sélecteur d'étape aligné sur le pipeline : on affiche la phase COURANTE du
+  // dossier (A_RAPPELER replié sur Nouveau, comme dans le pipeline).
+  const stageSel = dossier.phase === 'A_RAPPELER' ? 'NOUVEAU' : dossier.phase;
+  const stageInFlow = PIPELINE_FLOW.some((p) => p.phase === stageSel);
   const diagnostiqueur = lead?.assignedTo?.name || lead?.assignedTo?.email || '—';
   const adresse =
     [c.address, [c.postalCode, c.city].filter(Boolean).join(' ')]
@@ -212,12 +221,11 @@ export default async function ClientFichePage({
           </div>
           <div className="flex flex-wrap gap-2">
             {c.phone && (
-              <a
-                href={`tel:${c.phone}`}
+              <CallButton
+                contactId={c.id}
+                phone={c.phone}
                 className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
-              >
-                <Phone className="h-4 w-4" /> Appeler
-              </a>
+              />
             )}
             {isAdmin && (
               <>
@@ -389,16 +397,22 @@ export default async function ClientFichePage({
                 <div className="flex flex-wrap gap-2">
                   <select
                     name="stage"
-                    defaultValue={
-                      (EDITABLE_PIPELINE_STAGES as readonly string[]).includes(lead.stage)
-                        ? lead.stage
-                        : 'NOUVEAU'
-                    }
+                    defaultValue={stageSel}
                     className="h-10 flex-1 rounded-lg border border-slate-300 px-3 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
                   >
-                    {EDITABLE_PIPELINE_STAGES.map((v) => (
-                      <option key={v} value={v}>
-                        {STAGE_LABEL[v]}
+                    {/* MÊMES phases que la page Pipeline (PIPELINE_FLOW). Les étapes
+                        amont sont réglables à la main ; celles après la visite
+                        (facture, paiement, rapport, suivi) avancent AUTOMATIQUEMENT
+                        → affichées mais désactivées. */}
+                    {!stageInFlow && (
+                      <option value={stageSel} disabled>
+                        {PHASE_LABEL[stageSel] ?? stageSel} · état actuel
+                      </option>
+                    )}
+                    {PIPELINE_FLOW.map((p) => (
+                      <option key={p.phase} value={p.phase} disabled={!p.editable}>
+                        {PHASE_LABEL[p.phase]}
+                        {p.editable ? '' : ' · auto'}
                       </option>
                     ))}
                   </select>
@@ -410,11 +424,12 @@ export default async function ClientFichePage({
                   </button>
                 </div>
                 <p className="text-xs text-slate-400">
-                  L&apos;étape avance aussi automatiquement quand vous envoyez un
-                  devis, planifiez un RDV, facturez, etc.
+                  Ce sont les étapes de la page Pipeline. Après la visite, elles
+                  avancent toutes seules dès que vous créez le document (facture,
+                  paiement, rapport…) — vous ne réglez que l&apos;amont.
                 </p>
               </form>
-              {devisAccepte ? (
+              {canAssign ? (
                 <form action={assignLead} className="space-y-2">
                   <input type="hidden" name="leadId" value={lead.id} />
                   <label className="block text-sm font-medium text-slate-700">
@@ -511,23 +526,6 @@ export default async function ClientFichePage({
         </section>
       )}
 
-      {/* Qualification (appel) — ADMIN */}
-      {isAdmin && lead && (
-        <section className="rounded-xl border border-slate-200 bg-white p-5">
-          <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-            <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-              Qualification (appel)
-            </h2>
-            {qual?.at && (
-              <span className="text-xs text-slate-400">
-                Mise à jour le {new Date(qual.at).toLocaleDateString('fr-FR')}
-              </span>
-            )}
-          </div>
-          <QualificationForm leadId={lead.id} current={qual} />
-        </section>
-      )}
-
       {/* Données du formulaire web (discret) — ADMIN */}
       {isAdmin && lead && (lead.summary || (!!lead.payload && typeof lead.payload === 'object')) && (
         <details className="overflow-hidden rounded-xl border border-slate-200 bg-white [&_summary::-webkit-details-marker]:hidden">
@@ -609,7 +607,18 @@ export default async function ClientFichePage({
                       pill={DEVIS_PILL[d.status]}
                       action={
                         d.status === 'ENVOYE' ? (
-                          <RelanceButton action={relanceDevis} idName="devisId" id={d.id} contactId={c.id} />
+                          <div className="flex flex-wrap items-center justify-end gap-2">
+                            <form action={acceptDevis}>
+                              <input type="hidden" name="devisId" value={d.id} />
+                              <ConfirmSubmit
+                                message="Valider ce devis ? Le client passe en « gagné » et la visite de diagnostic peut être planifiée."
+                                className="inline-flex h-8 items-center gap-1 whitespace-nowrap rounded-lg border border-emerald-200 bg-emerald-50 px-2 text-xs font-semibold text-emerald-700 hover:bg-emerald-100"
+                              >
+                                <Check className="h-3.5 w-3.5" /> Valider
+                              </ConfirmSubmit>
+                            </form>
+                            <RelanceControl kind="devis" id={d.id} contactId={c.id} relanceCount={d.relanceCount} />
+                          </div>
                         ) : undefined
                       }
                     />
@@ -622,6 +631,19 @@ export default async function ClientFichePage({
                     title={`Rapport ${r.number}`}
                     sub={r.title}
                     pill={RAPPORT_PILL[r.status]}
+                    action={
+                      isAdmin && r.status === 'VALIDE' ? (
+                        <form action={sendRapport}>
+                          <input type="hidden" name="rapportId" value={r.id} />
+                          <ConfirmSubmit
+                            message="Envoyer le rapport au client par e-mail (PDF joint) ?"
+                            className="inline-flex h-8 items-center gap-1 whitespace-nowrap rounded-lg border border-orange-200 bg-orange-50 px-2 text-xs font-semibold text-orange-700 hover:bg-orange-100"
+                          >
+                            <Send className="h-3.5 w-3.5" /> Envoyer
+                          </ConfirmSubmit>
+                        </form>
+                      ) : undefined
+                    }
                   />
                 ))}
                 {isAdmin &&
@@ -635,7 +657,33 @@ export default async function ClientFichePage({
                       pill={FACTURE_PILL[f.status]}
                       action={
                         f.status === 'ENVOYEE' ? (
-                          <RelanceButton action={relanceFacture} idName="factureId" id={f.id} contactId={c.id} />
+                          <div className="flex flex-wrap items-center justify-end gap-2">
+                            <form action={recordFacturePayment}>
+                              <input type="hidden" name="factureId" value={f.id} />
+                              <input
+                                type="hidden"
+                                name="montant"
+                                value={Math.max(0, Number(f.totalHT) - Number(f.acompte ?? 0))}
+                              />
+                              <ConfirmSubmit
+                                message="Marquer cette facture comme payée (soldée) ? Le client recevra la confirmation de règlement et la rédaction du rapport est déclenchée."
+                                className="inline-flex h-8 items-center gap-1 whitespace-nowrap rounded-lg border border-emerald-200 bg-emerald-50 px-2 text-xs font-semibold text-emerald-700 hover:bg-emerald-100"
+                              >
+                                <Check className="h-3.5 w-3.5" /> Payée
+                              </ConfirmSubmit>
+                            </form>
+                            <RelanceControl kind="facture" id={f.id} contactId={c.id} relanceCount={f.relanceCount} />
+                          </div>
+                        ) : f.status === 'BROUILLON' ? (
+                          <form action={sendFacture}>
+                            <input type="hidden" name="factureId" value={f.id} />
+                            <ConfirmSubmit
+                              message="Envoyer cette facture au client par e-mail (PDF joint) ?"
+                              className="inline-flex h-8 items-center gap-1 whitespace-nowrap rounded-lg border border-orange-200 bg-orange-50 px-2 text-xs font-semibold text-orange-700 hover:bg-orange-100"
+                            >
+                              <Send className="h-3.5 w-3.5" /> Envoyer
+                            </ConfirmSubmit>
+                          </form>
                         ) : undefined
                       }
                     />
@@ -648,6 +696,20 @@ export default async function ClientFichePage({
                     title={a.title}
                     sub={a.start.toLocaleString('fr-FR')}
                     pill={APPT_PILL[a.status]}
+                    action={
+                      isAdmin && a.status === 'PLANIFIE' ? (
+                        <form action={updateAppointmentStatus}>
+                          <input type="hidden" name="appointmentId" value={a.id} />
+                          <input type="hidden" name="status" value="REALISE" />
+                          <ConfirmSubmit
+                            message="Marquer cette visite comme réalisée ? La facture brouillon sera générée pour ce diagnostic."
+                            className="inline-flex h-8 items-center gap-1 whitespace-nowrap rounded-lg border border-emerald-200 bg-emerald-50 px-2 text-xs font-semibold text-emerald-700 hover:bg-emerald-100"
+                          >
+                            <Check className="h-3.5 w-3.5" /> Réalisée
+                          </ConfirmSubmit>
+                        </form>
+                      ) : undefined
+                    }
                   />
                 ))}
               </ul>
@@ -686,14 +748,6 @@ export default async function ClientFichePage({
       </details>
     </div>
   );
-}
-
-/** Qualification d'appel rangée dans `payload.qualification`. */
-function extractQual(payload: unknown): QualificationRecord | null {
-  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) return null;
-  const q = (payload as Record<string, unknown>).qualification;
-  if (!q || typeof q !== 'object') return null;
-  return q as QualificationRecord;
 }
 
 /**
@@ -818,33 +872,3 @@ function DocRow({
   );
 }
 
-/**
- * Bouton de relance 1 clic (devis ou facture) — envoie un e-mail bienveillant
- * pré-rédigé au client, puis revient sur la fiche avec un toast de confirmation.
- */
-function RelanceButton({
-  action,
-  idName,
-  id,
-  contactId,
-}: {
-  action: (formData: FormData) => Promise<void>;
-  idName: 'devisId' | 'factureId';
-  id: string;
-  contactId: string;
-}) {
-  return (
-    <form action={action} className="shrink-0">
-      <input type="hidden" name={idName} value={id} />
-      <input type="hidden" name="contactId" value={contactId} />
-      <SubmitButton
-        pendingLabel="Envoi…"
-        spinner
-        title="Envoyer une relance bienveillante au client"
-        className="h-8 rounded-lg border border-orange-300 bg-orange-50 px-2.5 text-xs font-semibold text-orange-700 hover:bg-orange-100"
-      >
-        Relancer
-      </SubmitButton>
-    </form>
-  );
-}

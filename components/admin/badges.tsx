@@ -47,6 +47,23 @@ export const EDITABLE_PIPELINE_STAGES: PipelineStage[] = [
   'VISITE_FAITE',
 ];
 
+/**
+ * Flux ORDONNÉ des phases du dossier = exactement les colonnes de la page Pipeline.
+ * `editable` = réglable à la main (lead.stage) ; les autres sont DÉRIVÉES
+ * automatiquement des artefacts (facture/paiement/rapport). SOURCE UNIQUE partagée
+ * par le pipeline et le sélecteur « Faire évoluer l'étape » de la fiche client.
+ */
+export const PIPELINE_FLOW: { phase: string; editable: boolean }[] = [
+  { phase: 'NOUVEAU', editable: true },
+  { phase: 'DEVIS_ENVOYE', editable: true },
+  { phase: 'RDV_PLANIFIE', editable: true },
+  { phase: 'VISITE_FAITE', editable: true },
+  { phase: 'FACTURE_ENVOYEE', editable: false },
+  { phase: 'PAIEMENT_RECU', editable: false },
+  { phase: 'RAPPORT', editable: false },
+  { phase: 'SUIVI', editable: false },
+];
+
 export const SOURCE_LABEL: Record<LeadSource, string> = {
   DIAGNOSTIC: 'Diagnostic',
   CALCULATEUR: 'Calculateur',
