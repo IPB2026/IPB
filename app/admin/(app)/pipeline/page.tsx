@@ -2,7 +2,7 @@ import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
 import { SERVICE_LABEL } from '@/components/admin/badges';
-import { euros } from '@/lib/crm/company';
+import { Money } from '@/components/admin/money';
 import { computeDossier } from '@/lib/crm/dossier';
 import { PipelineBoard, type PipelineColumn } from '@/components/admin/pipeline-board';
 
@@ -128,7 +128,7 @@ export default async function PipelinePage() {
     <div className="space-y-5">
       <PageHeader
         title="Pipeline"
-        subtitle={dbError ? undefined : `${actifs.length} dossier(s) actif(s) · pipe ${euros(pipeTotal)}`}
+        subtitle={dbError ? undefined : <>{actifs.length} dossier(s) actif(s) · pipe <Money value={pipeTotal} /></>}
       />
       {dbError ? (
         <div className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-800">

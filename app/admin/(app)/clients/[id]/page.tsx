@@ -22,7 +22,6 @@ import type {
 } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { getSessionUser, listExperts } from '@/lib/auth-helpers';
-import { euros } from '@/lib/crm/company';
 import { computeDossier } from '@/lib/crm/dossier';
 import { Avatar } from '@/components/admin/avatar';
 import { ContactEditForm } from '@/components/admin/contact-edit-form';
@@ -622,7 +621,7 @@ export default async function ClientFichePage({
                       icon={FileText}
                       href={`/admin/devis/${d.id}`}
                       title={`Devis ${d.number}`}
-                      sub={`${d.object} · ${euros(Number(d.totalHT))}`}
+                      sub={<>{d.object} · <Money value={Number(d.totalHT)} /></>}
                       pill={DEVIS_PILL[d.status]}
                       action={
                         d.status === 'ENVOYE' ? (
@@ -672,7 +671,7 @@ export default async function ClientFichePage({
                       icon={Receipt}
                       href={`/admin/factures/${f.id}`}
                       title={`Facture ${f.number}`}
-                      sub={`${f.object} · ${euros(Number(f.totalHT))}`}
+                      sub={<>{f.object} · <Money value={Number(f.totalHT)} /></>}
                       pill={FACTURE_PILL[f.status]}
                       action={
                         f.status === 'ENVOYEE' ? (
@@ -872,7 +871,7 @@ function DocRow({
   icon: typeof FileText;
   href: string;
   title: string;
-  sub?: string | null;
+  sub?: React.ReactNode;
   pill: [string, string];
   action?: React.ReactNode;
 }) {

@@ -272,35 +272,6 @@ export async function deleteRapportPhoto(formData: FormData): Promise<void> {
 }
 
 /**
- * Le diagnostiqueur soumet sa saisie terrain pour validation (BROUILLON → SOUMIS).
- * Après soumission, la saisie est verrouillée côté expert ; l'admin génère puis valide.
- */
-export async function submitRapport(formData: FormData): Promise<void> {
-  const id = str(formData.get('rapportId'));
-  const owned = await loadOwned(id);
-  if (!owned) return;
-  if (owned.rapport.status !== 'BROUILLON') return;
-
-  const zones = (owned.rapport.zonesInput as unknown as ReportZoneInput[]) ?? [];
-  if (zones.length === 0) return; // rien à soumettre
-
-  await prisma.rapport.update({ where: { id }, data: { status: 'SOUMIS' } });
-  await prisma.activity.create({
-    data: {
-      type: 'SYSTEME',
-      content: `Saisie terrain soumise pour validation par ${owned.user.name || owned.user.email}.`,
-      contactId: owned.rapport.contactId,
-      leadId: owned.rapport.leadId,
-      authorId: owned.user.id || null,
-    },
-  });
-  await notifyAdminRapportSubmitted(id);
-  revalidatePath(`/admin/rapports/${id}`);
-  revalidatePath('/admin/rapports');
-  revalidateCrm(owned.rapport.contactId);
-}
-
-/**
  * Édite le CONTENU généré du rapport (texte/estimation/orientations…). Auteur
  * (diagnostiqueur) APRÈS génération et avant transmission (statut GENERE), ou
  * ADMIN tant que non envoyé. budgetHT recalculé depuis l'estimation éditée.

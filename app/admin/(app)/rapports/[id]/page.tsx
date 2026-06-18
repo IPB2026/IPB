@@ -15,7 +15,7 @@ import type { ReportStatus } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { getSessionUser } from '@/lib/auth-helpers';
 import { isBlobConfigured } from '@/lib/blob';
-import { euros } from '@/lib/crm/company';
+import { Money } from '@/components/admin/money';
 import {
   isAiConfigured,
   isReportDraft,
@@ -453,14 +453,14 @@ export default async function RapportDetailPage({
                       TVA {e.tva} %
                     </td>
                     <td className="py-2 text-right font-medium tabular-nums">
-                      {euros(e.montantHT)}
+                      <Money value={e.montantHT} />
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
             <p className="mt-2 text-right text-sm font-bold text-orange-600">
-              Total estimé {euros(content.budgetHT)} HT
+              Total estimé <Money value={content.budgetHT} /> HT
             </p>
           </Card>
 

@@ -16,7 +16,7 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 import { Prisma } from '@prisma/client';
-import { euros } from '@/lib/crm/company';
+import { Money } from '@/components/admin/money';
 import { DIAGNOSTIC_VISIT_TYPES } from '@/lib/crm/dossier';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
@@ -391,7 +391,7 @@ export default async function DashboardPage() {
                 key={d.id}
                 href={`/admin/clients/${d.contactId}`}
                 name={d.contact.name}
-                detail={`Devis ${d.number} · ${euros(Number(d.totalHT))} · envoyé le ${(d.sentAt ?? d.updatedAt).toLocaleDateString('fr-FR')}`}
+                detail={<>Devis {d.number} · <Money value={Number(d.totalHT)} /> · envoyé le {(d.sentAt ?? d.updatedAt).toLocaleDateString('fr-FR')}</>}
                 action="À relancer"
                 tone="bg-amber-50 text-amber-700"
               />
@@ -454,7 +454,7 @@ export default async function DashboardPage() {
                 key={f.id}
                 href={`/admin/factures/${f.id}`}
                 name={f.contact.name}
-                detail={`${f.number} — ${euros(Number(f.totalHT))}`}
+                detail={<>{f.number} — <Money value={Number(f.totalHT)} /></>}
                 action="À envoyer"
                 tone="bg-orange-50 text-orange-700"
               />
@@ -478,7 +478,7 @@ export default async function DashboardPage() {
                 key={f.id}
                 href={`/admin/factures/${f.id}`}
                 name={f.contact.name}
-                detail={`${f.number} — ${euros(Number(f.totalHT))}`}
+                detail={<>{f.number} — <Money value={Number(f.totalHT)} /></>}
                 action="En attente"
                 tone="bg-red-50 text-red-700"
               />
@@ -759,7 +759,7 @@ function WorkRow({
 }: {
   href: string;
   name: string;
-  detail: string;
+  detail: React.ReactNode;
   action: string;
   tone: string;
 }) {
