@@ -592,11 +592,15 @@ async function runStructured<T>(
   content: Anthropic.ContentBlockParam[],
   maxTokens: number
 ): Promise<{ data: T } | { error: string }> {
-  const effort = (process.env.REPORT_EFFORT || 'medium').toLowerCase();
+  // Passes COURTES : PAS d'extended thinking + effort bas → chaque appel reste
+  // largement sous le plafond de 60 s d'une fonction Hobby. Le thinking adaptatif
+  // pouvait à lui seul approcher/dépasser 60 s par passe (→ 504, et lenteur). La
+  // matière est déjà fournie (observations + système détaillé) : la rédaction
+  // structurée n'a pas besoin de raisonnement étendu ici. Surchargeable via env.
+  const effort = (process.env.REPORT_EFFORT || 'low').toLowerCase();
   const params = {
     model: REPORT_MODEL,
     max_tokens: maxTokens,
-    thinking: { type: 'adaptive' },
     system: SYSTEM,
     output_config: { effort, format: { type: 'json_schema', schema } },
     messages: [{ role: 'user', content }],

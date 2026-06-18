@@ -97,6 +97,8 @@ export async function POST(
     return NextResponse.json({ error }, { status: 502 });
   };
 
+  const t0 = Date.now();
+
   // ── Passe 0 : squelette ──
   if (draft.step === 0) {
     const res = await generateSkeleton(input);
@@ -133,12 +135,14 @@ export async function POST(
     });
     revalidatePath(`/admin/rapports/${id}`);
     revalidateCrm(rapport.contactId);
+    console.log(`[generate-step] rapport=${id} → TERMINÉ (synthèse) en ${Date.now() - t0}ms`);
     return NextResponse.json({ done: true, step: total, total, label: 'Rapport généré' });
   }
 
   // Pas encore fini : on persiste le brouillon et on rend la main au client.
   await prisma.rapport.update({ where: { id }, data: { aiContent: draft as unknown as object } });
   revalidatePath(`/admin/rapports/${id}`);
+  console.log(`[generate-step] rapport=${id} → étape ${draft.step}/${total} en ${Date.now() - t0}ms`);
 
   const label =
     draft.step <= zonesInput.length
