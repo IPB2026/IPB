@@ -27,7 +27,10 @@ const GEO = 'https://www.georisques.gouv.fr/api/v1';
 
 async function getJson(url: string): Promise<unknown | null> {
   try {
-    const res = await fetch(url, { cache: 'no-store' });
+    // Timeout dur : ces API publiques (BAN/Géorisques) ne doivent JAMAIS bloquer la
+    // génération du rapport (budget 60 s/fonction sur Hobby). À défaut → null, et le
+    // rapport se génère avec le contexte du modèle (comportement déjà non bloquant).
+    const res = await fetch(url, { cache: 'no-store', signal: AbortSignal.timeout(6000) });
     if (!res.ok) return null;
     return await res.json();
   } catch {
