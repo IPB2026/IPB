@@ -18,6 +18,7 @@ import {
   REPORT_MODEL,
   type ReportZoneInput,
   type ReportPhotoInput,
+  type ReportContent,
 } from '@/lib/ai/report';
 import { fetchLocationRisk, formatLocationRisk } from '@/lib/geo/georisques';
 
@@ -288,6 +289,70 @@ export async function submitRapport(formData: FormData): Promise<void> {
     data: {
       type: 'SYSTEME',
       content: `Saisie terrain soumise pour validation par ${owned.user.name || owned.user.email}.`,
+      contactId: owned.rapport.contactId,
+      leadId: owned.rapport.leadId,
+      authorId: owned.user.id || null,
+    },
+  });
+  await notifyAdminRapportSubmitted(id);
+  revalidatePath(`/admin/rapports/${id}`);
+  revalidatePath('/admin/rapports');
+  revalidateCrm(owned.rapport.contactId);
+}
+
+/**
+ * Édite le CONTENU généré du rapport (texte/estimation/orientations…). Auteur
+ * (diagnostiqueur) APRÈS génération et avant transmission (statut GENERE), ou
+ * ADMIN tant que non envoyé. budgetHT recalculé depuis l'estimation éditée.
+ */
+export async function updateRapportContent(
+  rapportId: string,
+  contentJson: string
+): Promise<{ ok: boolean; error?: string }> {
+  const owned = await loadOwned(rapportId);
+  if (!owned) return { ok: false, error: 'Accès refusé ou rapport introuvable.' };
+  if (owned.rapport.status === 'ENVOYE') {
+    return { ok: false, error: 'Rapport déjà envoyé — non modifiable.' };
+  }
+  if (owned.user.role !== 'ADMIN' && owned.rapport.status !== 'GENERE') {
+    return { ok: false, error: 'Édition non autorisée à ce stade.' };
+  }
+  let content: ReportContent;
+  try {
+    content = JSON.parse(contentJson) as ReportContent;
+  } catch {
+    return { ok: false, error: 'Contenu invalide.' };
+  }
+  const estim = content.estimationTravaux ?? [];
+  const budget = estim.reduce((s, e) => s + (Number(e.montantHT) || 0), 0);
+  content.budgetHT = budget;
+  await prisma.rapport.update({
+    where: { id: rapportId },
+    data: {
+      aiContent: content as unknown as object,
+      budgetHT: estim.length ? budget : null,
+    },
+  });
+  revalidatePath(`/admin/rapports/${rapportId}`);
+  return { ok: true };
+}
+
+/**
+ * Le diagnostiqueur finalise son rapport (généré + relu/corrigé) et le TRANSMET
+ * à l'IPB pour validation finale : GENERE → SOUMIS. Réservé à l'auteur (l'admin
+ * n'en a pas besoin — il valide directement).
+ */
+export async function submitRapportToAdmin(formData: FormData): Promise<void> {
+  const id = str(formData.get('rapportId'));
+  const owned = await loadOwned(id);
+  if (!owned) return;
+  if (owned.user.role === 'ADMIN') return;
+  if (owned.rapport.status !== 'GENERE') return;
+  await prisma.rapport.update({ where: { id }, data: { status: 'SOUMIS' } });
+  await prisma.activity.create({
+    data: {
+      type: 'SYSTEME',
+      content: `Rapport finalisé et transmis à l'IPB par ${owned.user.name || owned.user.email}.`,
       contactId: owned.rapport.contactId,
       leadId: owned.rapport.leadId,
       authorId: owned.user.id || null,

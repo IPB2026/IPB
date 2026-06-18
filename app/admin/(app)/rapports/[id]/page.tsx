@@ -24,11 +24,12 @@ import {
 } from '@/lib/ai/report';
 import {
   updateRapportStatus,
-  submitRapport,
   validateAndSendRapport,
+  submitRapportToAdmin,
 } from '@/app/admin/(app)/rapports/actions';
 import { RapportPhotos } from '@/components/admin/rapport-photos';
 import { RapportGenerate } from '@/components/admin/rapport-generate';
+import { RapportContentEditor } from '@/components/admin/rapport-content-editor';
 import { RapportZonesEditor } from '@/components/admin/rapport-zones-editor';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 
@@ -118,7 +119,7 @@ export default async function RapportDetailPage({
   // n'est pas pris en main par l'IPB (BROUILLON ou SOUMIS) ; l'admin tant que non envoyé.
   const canEditField = isAdmin
     ? status !== 'ENVOYE'
-    : isOwner && (status === 'BROUILLON' || status === 'SOUMIS');
+    : isOwner && (status === 'BROUILLON' || status === 'GENERE');
 
   const zones = (rapport.zonesInput as unknown as ReportZoneInput[]) ?? [];
   const zoneTitles = zones.map((z) => z.titre).filter(Boolean);
@@ -131,6 +132,19 @@ export default async function RapportDetailPage({
   // comme un rapport fini (il lui manque des sections).
   const building = isReportDraft(ai);
   const content = ai && !hasError && !building ? (ai as ReportContent) : null;
+
+  // Génération : auteur (diagnostiqueur) tant qu'il n'a pas transmis (BROUILLON/
+  // GENERE), ou admin tant que non envoyé.
+  const canGenerate =
+    isAiConfigured() &&
+    status !== 'ENVOYE' &&
+    zones.length > 0 &&
+    (isAdmin || (isOwner && (status === 'BROUILLON' || status === 'GENERE')));
+  // Édition du contenu généré : admin (avant envoi) ou auteur (avant transmission).
+  const canEditContent =
+    content != null && status !== 'ENVOYE' && (isAdmin || (isOwner && status === 'GENERE'));
+  // L'auteur transmet son rapport finalisé à l'IPB (GENERE → SOUMIS).
+  const canSubmitToAdmin = isOwner && !isAdmin && content != null && status === 'GENERE';
 
   const c = rapport.contact;
 
@@ -270,44 +284,13 @@ export default async function RapportDetailPage({
         canEdit={canEditField}
       />
 
-      {/* Expert : soumettre pour validation */}
-      {!isAdmin && status === 'BROUILLON' && (
-        <section className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white p-5">
-          <p className="text-sm text-slate-600">
-            Saisie et photos complètes ? Soumettez votre diagnostic à l'IPB pour
-            génération et validation du rapport.
-          </p>
-          <form action={submitRapport}>
-            <input type="hidden" name="rapportId" value={rapport.id} />
-            <button
-              type="submit"
-              className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700"
-            >
-              <Send className="h-4 w-4" />
-              Soumettre pour validation
-            </button>
-          </form>
-        </section>
-      )}
-
-      {/* Expert : saisie verrouillée après soumission */}
-      {!isAdmin && status !== 'BROUILLON' && !content && (
-        <div className="flex items-start gap-2 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
-          <Lock className="mt-0.5 h-4 w-4 shrink-0" />
-          <span>
-            Saisie soumise — en attente de génération et de validation par l'IPB.
-            Vous serez en lecture seule jusque-là.
-          </span>
-        </div>
-      )}
-
-      {/* Génération IA + validation — ADMIN uniquement */}
-      {isAdmin && (
+      {/* Génération, édition & validation — diagnostiqueur (auteur) ou IPB */}
+      {(isAdmin || isOwner) && (
         <section className="rounded-xl border border-slate-200 bg-white p-5">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <h2 className="text-sm font-semibold text-slate-900">
-                Génération &amp; validation
+                {isAdmin ? 'Génération & validation' : 'Génération du rapport'}
               </h2>
               <p className="text-xs text-slate-500">
                 {rapport.aiGeneratedAt
@@ -320,7 +303,7 @@ export default async function RapportDetailPage({
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-2">
-              {isAiConfigured() && status !== 'ENVOYE' && (
+              {canGenerate && (
                 <RapportGenerate
                   rapportId={rapport.id}
                   disabled={zones.length === 0}
@@ -328,7 +311,7 @@ export default async function RapportDetailPage({
                   building={building}
                 />
               )}
-              {content && c.email && status !== 'ENVOYE' && facturePayee && (
+              {isAdmin && content && c.email && status !== 'ENVOYE' && facturePayee && (
                 <form action={validateAndSendRapport}>
                   <input type="hidden" name="rapportId" value={rapport.id} />
                   <ConfirmSubmit
@@ -340,7 +323,7 @@ export default async function RapportDetailPage({
                   </ConfirmSubmit>
                 </form>
               )}
-              {content && c.email && status !== 'ENVOYE' && !facturePayee && (
+              {isAdmin && content && c.email && status !== 'ENVOYE' && !facturePayee && (
                 <span className="inline-flex items-center gap-1.5 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm font-medium text-amber-800">
                   <Lock className="h-4 w-4" />
                   Facture non payée — envoi bloqué
@@ -354,13 +337,42 @@ export default async function RapportDetailPage({
               )}
             </div>
           </div>
-          {content && c.email && status !== 'ENVOYE' && (
+
+          {/* Diagnostiqueur : transmettre le rapport finalisé à l'IPB */}
+          {canSubmitToAdmin && (
+            <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-emerald-200 bg-emerald-50 p-3">
+              <p className="text-sm text-emerald-800">
+                Rapport relu et corrigé ? Transmettez-le à l'IPB pour validation finale
+                et envoi au client.
+              </p>
+              <form action={submitRapportToAdmin}>
+                <input type="hidden" name="rapportId" value={rapport.id} />
+                <button
+                  type="submit"
+                  className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700"
+                >
+                  <Send className="h-4 w-4" />
+                  Transmettre à l'IPB
+                </button>
+              </form>
+            </div>
+          )}
+
+          {/* Diagnostiqueur : rapport transmis, en attente de validation */}
+          {isOwner && !isAdmin && status === 'SOUMIS' && (
+            <p className="mt-3 flex items-start gap-2 rounded-lg border border-violet-200 bg-violet-50 p-3 text-sm text-violet-800">
+              <Lock className="mt-0.5 h-4 w-4 shrink-0" />
+              Rapport transmis à l'IPB — en attente de validation finale et d'envoi au client.
+            </p>
+          )}
+
+          {isAdmin && content && c.email && status !== 'ENVOYE' && (
             <p className="mt-2 text-xs text-slate-400">
               « Valider et envoyer » transmet le PDF à <strong>{c.email}</strong>{' '}
               et clôt le rapport (statut Envoyé).
             </p>
           )}
-          {content && !c.email && (
+          {isAdmin && content && !c.email && (
             <p className="mt-2 text-xs text-amber-700">
               Aucun e-mail client : renseignez-le sur la fiche prospect pour
               activer l'envoi automatique.
@@ -374,15 +386,22 @@ export default async function RapportDetailPage({
         </section>
       )}
 
-      {hasError && isAdmin && (
+      {/* Éditeur du contenu généré — auteur (avant transmission) ou IPB (avant envoi) */}
+      {canEditContent && content && (
+        <Card title="Relire et corriger le rapport">
+          <RapportContentEditor rapportId={rapport.id} initialContent={content} />
+        </Card>
+      )}
+
+      {hasError && (isAdmin || isOwner) && (
         <div className="flex items-start gap-2 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
           <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
           <span>{(ai as { error: string }).error}</span>
         </div>
       )}
 
-      {/* Contenu généré (visible par l'admin et le diagnostiqueur auteur) */}
-      {content && (
+      {/* Aperçu lecture seule — quand on n'est PAS en train d'éditer (sinon l'éditeur fait foi) */}
+      {content && !canEditContent && (
         <>
           <div className="rounded-xl border-l-4 border-orange-500 bg-orange-50 p-5">
             <p className="text-xs font-semibold uppercase tracking-wider text-orange-700">

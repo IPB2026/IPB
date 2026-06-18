@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import * as Sentry from '@sentry/nextjs';
 import { revalidatePath } from 'next/cache';
 import { prisma } from '@/lib/prisma';
-import { requireAdmin } from '@/lib/auth-helpers';
+import { requireUser } from '@/lib/auth-helpers';
 import { revalidateCrm } from '@/lib/crm/revalidate';
 import { fetchLocationRisk, formatLocationRisk } from '@/lib/geo/georisques';
 import {
@@ -34,8 +34,9 @@ export async function POST(
   req: NextRequest,
   { params }: { params: { id: string } }
 ): Promise<NextResponse> {
+  let user;
   try {
-    await requireAdmin();
+    user = await requireUser();
   } catch {
     return NextResponse.json({ error: 'Non autorisé.' }, { status: 401 });
   }
@@ -50,6 +51,10 @@ export async function POST(
     include: { contact: true, photos: { orderBy: { position: 'asc' } } },
   });
   if (!rapport) return NextResponse.json({ error: 'Rapport introuvable.' }, { status: 404 });
+  // ADMIN partout ; le diagnostiqueur (auteur) peut générer/éditer SON rapport.
+  if (user.role !== 'ADMIN' && rapport.authorId !== user.id) {
+    return NextResponse.json({ error: 'Accès refusé.' }, { status: 403 });
+  }
 
   const zonesInput = (rapport.zonesInput as unknown as ReportZoneInput[]) ?? [];
   if (zonesInput.length === 0) {
