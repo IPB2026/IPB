@@ -7,7 +7,8 @@ import {
   FactureStatusBadge,
   FACTURE_STATUS_LABEL,
 } from '@/components/admin/badges';
-import { euros, COMPANY } from '@/lib/crm/company';
+import { COMPANY } from '@/lib/crm/company';
+import { Money } from '@/components/admin/money';
 import { CopyButton } from '@/components/admin/copy-button';
 import {
   updateFactureStatus,
@@ -179,13 +180,13 @@ export default async function FactureDetailPage({
           <div className="rounded-lg bg-slate-50 px-3 py-2.5">
             <p className="text-[11px] text-slate-400">Total HT</p>
             <p className="mt-0.5 text-sm font-semibold tabular-nums text-slate-800">
-              {euros(Number(facture.totalHT))}
+              <Money value={Number(facture.totalHT)} />
             </p>
           </div>
           <div className="rounded-lg bg-slate-50 px-3 py-2.5">
             <p className="text-[11px] text-slate-400">Encaissé</p>
             <p className="mt-0.5 text-sm font-semibold tabular-nums text-emerald-600">
-              {euros(Number(facture.acompte ?? 0))}
+              <Money value={Number(facture.acompte ?? 0)} />
             </p>
           </div>
           <div className="rounded-lg bg-slate-50 px-3 py-2.5">
@@ -195,7 +196,7 @@ export default async function FactureDetailPage({
                 net > 0 ? 'text-orange-600' : 'text-emerald-600'
               }`}
             >
-              {euros(net)}
+              <Money value={net} />
             </p>
           </div>
         </div>
@@ -272,10 +273,10 @@ export default async function FactureDetailPage({
                   {Number(l.qty)}
                 </td>
                 <td className="px-5 py-3 text-right tabular-nums text-slate-600">
-                  {euros(Number(l.unitPrice))}
+                  <Money value={Number(l.unitPrice)} />
                 </td>
                 <td className="px-5 py-3 text-right font-medium tabular-nums">
-                  {euros(Number(l.total))}
+                  <Money value={Number(l.total)} />
                 </td>
               </tr>
             ))}
@@ -284,7 +285,7 @@ export default async function FactureDetailPage({
         <div className="flex items-center justify-between border-t border-slate-200 bg-slate-50 px-5 py-3">
           <span className="text-sm text-slate-500">{COMPANY.tvaMention}</span>
           <span className="text-lg font-bold tabular-nums text-orange-600">
-            Net à payer&nbsp;: {euros(net)}
+            Net à payer&nbsp;: <Money value={net} />
           </span>
         </div>
         <div className="flex flex-wrap items-center justify-between gap-2 border-t border-slate-200 px-5 py-3">

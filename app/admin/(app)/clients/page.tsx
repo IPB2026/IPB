@@ -3,7 +3,7 @@ import { UserCheck, Download, Plus, Search, Trash2, RotateCcw } from 'lucide-rea
 import { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
-import { euros } from '@/lib/crm/company';
+import { Money } from '@/components/admin/money';
 import { computeDossier } from '@/lib/crm/dossier';
 import { PageHeader } from '@/components/admin/page-header';
 import { EmptyState } from '@/components/admin/empty-state';
@@ -230,7 +230,7 @@ export default async function ClientsPage({
                 leading={<Avatar name={c.name} size="sm" />}
                 title={c.name}
                 badge={<EtatBadge isClient={isClient} />}
-                amount={dossier.montantDevis != null ? euros(dossier.montantDevis) : undefined}
+                amount={dossier.montantDevis != null ? <Money value={dossier.montantDevis} /> : undefined}
                 lines={[
                   [service ? SERVICE_LABEL[service] : null, c.city || c.phone || c.email]
                     .filter(Boolean)
@@ -287,7 +287,7 @@ export default async function ClientsPage({
                       <PhaseBadge phase={dossier.phase} />
                     </td>
                     <td className="px-5 py-3 text-right font-medium tabular-nums">
-                      {dossier.montantDevis != null ? euros(dossier.montantDevis) : '—'}
+                      <Money value={dossier.montantDevis} />
                     </td>
                     <td className="px-5 py-3 text-right">
                       {corbeille ? (

@@ -9,7 +9,7 @@ import { DevisStatusBadge, SERVICE_LABEL } from '@/components/admin/badges';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 import { RelanceControl } from '@/components/admin/relance-control';
 import { deleteDevis } from '@/app/admin/(app)/devis/actions';
-import { euros } from '@/lib/crm/company';
+import { Money } from '@/components/admin/money';
 
 export const dynamic = 'force-dynamic';
 
@@ -75,7 +75,7 @@ export default async function DevisListPage() {
                 href={`/admin/devis/${d.id}`}
                 title={d.number}
                 badge={<DevisStatusBadge status={d.status} />}
-                amount={euros(Number(d.totalHT))}
+                amount={<Money value={Number(d.totalHT)} />}
                 lines={[
                   d.contact.name,
                   d.serviceType === 'AUTRE'
@@ -159,7 +159,7 @@ export default async function DevisListPage() {
                       <DevisStatusBadge status={d.status} />
                     </td>
                     <td className="px-5 py-3 text-right font-medium tabular-nums">
-                      {euros(Number(d.totalHT))}
+                      {<Money value={Number(d.totalHT)} />}
                     </td>
                     <td className="px-5 py-3 text-right text-xs tabular-nums text-slate-400">
                       {d.createdAt.toLocaleDateString('fr-FR')}

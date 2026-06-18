@@ -38,6 +38,7 @@ import { acceptDevis } from '@/app/admin/(app)/devis/actions';
 import { recordFacturePayment } from '@/app/admin/(app)/factures/actions';
 import { sendFacture, sendRapport } from '@/app/admin/(app)/send-actions';
 import { archiveContact } from '@/app/admin/(app)/contact-actions';
+import { Money } from '@/components/admin/money';
 import { updateAppointmentStatus } from '@/app/admin/(app)/agenda/actions';
 import { RelanceControl } from '@/components/admin/relance-control';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
@@ -99,7 +100,7 @@ function Card({ title, children }: { title: string; children: React.ReactNode })
   );
 }
 
-function Metric({ label, value, tone }: { label: string; value: string; tone?: string }) {
+function Metric({ label, value, tone }: { label: string; value: React.ReactNode; tone?: string }) {
   return (
     <div className="rounded-lg bg-slate-50 px-3 py-2.5">
       <p className="text-[11px] text-slate-400">{label}</p>
@@ -279,22 +280,16 @@ export default async function ClientFichePage({
           {isAdmin && (
             <Metric
               label={dossier.montant != null ? 'Montant (signé)' : 'Montant devis'}
-              value={
-                dossier.montant != null
-                  ? euros(dossier.montant)
-                  : dossier.montantDevis != null
-                    ? euros(dossier.montantDevis)
-                    : '—'
-              }
+              value={<Money value={dossier.montant ?? dossier.montantDevis} />}
             />
           )}
           {isAdmin && factureTotal > 0 && (
-            <Metric label="Facturé" value={euros(factureTotal)} />
+            <Metric label="Facturé" value={<Money value={factureTotal} />} />
           )}
           {isAdmin && factureTotal > 0 && (
             <Metric
               label="Reste dû"
-              value={resteDu > 0 ? euros(resteDu) : 'Soldé'}
+              value={resteDu > 0 ? <Money value={resteDu} /> : 'Soldé'}
               tone={resteDu > 0 ? 'text-orange-600' : 'text-emerald-600'}
             />
           )}

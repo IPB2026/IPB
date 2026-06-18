@@ -12,7 +12,8 @@ import {
   Receipt,
 } from 'lucide-react';
 import { guardAdminPage } from '@/lib/auth-helpers';
-import { euros } from '@/lib/crm/company';
+import type { ReactNode } from 'react';
+import { Money } from '@/components/admin/money';
 import { computeKpis, type KpiData } from '@/lib/crm/kpis';
 import { SERVICE_LABEL } from '@/components/admin/badges';
 import { PageHeader } from '@/components/admin/page-header';
@@ -58,32 +59,32 @@ export default async function PilotagePage() {
           <Stat
             icon={Send}
             label="Pipe (devis en cours)"
-            value={euros(kpi.pipe.montant)}
+            value={<Money value={kpi.pipe.montant} />}
             tone="text-blue-600"
             sub={`${kpi.pipe.nb} devis envoyé(s) à signer`}
           />
           <Stat
             icon={TrendingUp}
             label="Chiffre d'affaires (signé)"
-            value={euros(kpi.ca.signe)}
+            value={<Money value={kpi.ca.signe} />}
             tone="text-emerald-600"
             sub={`${kpi.devis.acceptes} devis accepté(s)`}
           />
           <Stat
             icon={Coins}
             label="Facturé"
-            value={euros(kpi.ca.facture)}
+            value={<Money value={kpi.ca.facture} />}
           />
           <Stat
             icon={Wallet}
             label="Encaissé"
-            value={euros(kpi.ca.encaisse)}
+            value={<Money value={kpi.ca.encaisse} />}
             tone="text-emerald-600"
           />
           <Stat
             icon={Clock}
             label="Reste à encaisser"
-            value={euros(kpi.ca.resteAEncaisser)}
+            value={<Money value={kpi.ca.resteAEncaisser} />}
             tone={kpi.ca.resteAEncaisser > 0 ? 'text-orange-600' : 'text-slate-900'}
           />
         </div>
@@ -111,7 +112,7 @@ export default async function PilotagePage() {
           <Stat
             icon={ShoppingBag}
             label="Panier moyen"
-            value={euros(kpi.devis.panierMoyen)}
+            value={<Money value={kpi.devis.panierMoyen} />}
             sub="par devis accepté"
           />
           <Stat
@@ -218,7 +219,7 @@ function Stat({
 }: {
   icon: typeof TrendingUp;
   label: string;
-  value: string;
+  value: ReactNode;
   sub?: string;
   tone?: string;
 }) {

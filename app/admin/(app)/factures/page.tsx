@@ -9,7 +9,7 @@ import { FactureStatusBadge, SERVICE_LABEL } from '@/components/admin/badges';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 import { RelanceControl } from '@/components/admin/relance-control';
 import { deleteFacture } from '@/app/admin/(app)/factures/actions';
-import { euros } from '@/lib/crm/company';
+import { Money } from '@/components/admin/money';
 
 export const dynamic = 'force-dynamic';
 
@@ -93,17 +93,17 @@ export default async function FacturesListPage() {
                 href={`/admin/factures/${f.id}`}
                 title={f.number}
                 badge={<FactureStatusBadge status={f.status} />}
-                amount={euros(Number(f.totalHT))}
+                amount={<Money value={Number(f.totalHT)} />}
                 lines={[
                   [service ? SERVICE_LABEL[service] : null, f.contact.name].filter(Boolean).join(' · '),
                   overdue ? (
                     <span key="r" className="font-semibold text-red-600">
-                      En retard · reste {euros(solde)}
+                      En retard · reste <Money value={solde} />
                     </span>
                   ) : paid ? (
                     'Payée'
                   ) : (
-                    `Reste dû ${euros(solde)}`
+                    <span key="r">Reste dû <Money value={solde} /></span>
                   ),
                 ]}
                 action={
@@ -174,13 +174,13 @@ export default async function FacturesListPage() {
                       <FactureStatusBadge status={f.status} />
                     </td>
                     <td className="px-5 py-3 text-right font-medium tabular-nums">
-                      {euros(Number(f.totalHT))}
+                      {<Money value={Number(f.totalHT)} />}
                     </td>
                     <td className="px-5 py-3 text-right tabular-nums">
                       {paid ? (
                         <span className="text-emerald-600">Payée</span>
                       ) : (
-                        <span className="font-medium text-orange-600">{euros(solde)}</span>
+                        <Money value={solde} className="font-medium text-orange-600" />
                       )}
                     </td>
                     <td className="px-5 py-3 text-right text-xs tabular-nums">

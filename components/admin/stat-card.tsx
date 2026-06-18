@@ -1,4 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
+import type { ReactNode } from 'react';
 
 const TONES = {
   slate: 'bg-slate-100 text-slate-600',
@@ -16,7 +17,7 @@ export function StatCard({
   hint,
 }: {
   label: string;
-  value: number | string;
+  value: ReactNode;
   icon?: LucideIcon;
   tone?: keyof typeof TONES;
   hint?: string;

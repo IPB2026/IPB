@@ -230,3 +230,14 @@
     display: none;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   Mode confidentialité — masque les montants (composant <Money/>) quand la
+   racine admin porte la classe .crm-private (bouton œil de la barre admin).
+   Flou CSS instantané, sans re-render serveur.
+   ═══════════════════════════════════════════════════════════════ */
+.crm-private .crm-money {
+  filter: blur(0.45em);
+  user-select: none;
+  transition: filter 0.12s ease;
+}

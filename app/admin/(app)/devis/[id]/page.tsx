@@ -7,7 +7,7 @@ import {
   DevisStatusBadge,
   DEVIS_STATUS_LABEL,
 } from '@/components/admin/badges';
-import { euros } from '@/lib/crm/company';
+import { Money } from '@/components/admin/money';
 import {
   updateDevisStatus,
   convertDevisToFacture,
@@ -334,10 +334,10 @@ export default async function DevisDetailPage({
                   {Number(l.qty)}
                 </td>
                 <td className="px-5 py-3 text-right tabular-nums text-slate-600">
-                  {euros(Number(l.unitPrice))}
+                  <Money value={Number(l.unitPrice)} />
                 </td>
                 <td className="px-5 py-3 text-right font-medium tabular-nums">
-                  {euros(Number(l.total))}
+                  <Money value={Number(l.total)} />
                 </td>
               </tr>
             ))}
@@ -348,7 +348,7 @@ export default async function DevisDetailPage({
             TVA non applicable, art. 293 B du CGI
           </span>
           <span className="text-lg font-bold tabular-nums text-orange-600">
-            {euros(Number(devis.totalHT))}
+            <Money value={Number(devis.totalHT)} />
           </span>
         </div>
       </section>

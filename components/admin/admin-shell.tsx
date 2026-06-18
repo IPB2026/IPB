@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X, LogOut, Search } from 'lucide-react';
+import { Menu, X, LogOut, Search, Eye, EyeOff } from 'lucide-react';
 import { AdminNav } from '@/components/admin/admin-nav';
 import { BottomNav } from '@/components/admin/bottom-nav';
 import { Avatar } from '@/components/admin/avatar';
@@ -11,15 +11,42 @@ import { logout } from '@/app/admin/(app)/auth-actions';
 
 type Role = 'ADMIN' | 'EXPERT';
 
+/** Bouton confidentialité : masque/affiche les montants du CRM (ADMIN). */
+function PrivacyToggle({
+  on,
+  onToggle,
+  className = '',
+}: {
+  on: boolean;
+  onToggle: () => void;
+  className?: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-pressed={on}
+      title={on ? 'Afficher les montants' : 'Masquer les montants (confidentialité)'}
+      className={className}
+    >
+      {on ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+    </button>
+  );
+}
+
 function SidebarContent({
   displayName,
   email,
   role,
+  privacy,
+  onTogglePrivacy,
   onNavigate,
 }: {
   displayName: string;
   email: string;
   role: Role;
+  privacy: boolean;
+  onTogglePrivacy: () => void;
   onNavigate?: () => void;
 }) {
   return (
@@ -55,6 +82,13 @@ function SidebarContent({
             </p>
             <p className="truncate text-[11px] text-slate-400">{email}</p>
           </div>
+          {role === 'ADMIN' && (
+            <PrivacyToggle
+              on={privacy}
+              onToggle={onTogglePrivacy}
+              className="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 transition-colors duration-150 hover:bg-white/10 hover:text-white"
+            />
+          )}
           <form action={logout}>
             <button
               type="submit"
@@ -74,20 +108,40 @@ export function AdminShell({
   displayName,
   email,
   role,
+  initialPrivacy = false,
   children,
 }: {
   displayName: string;
   email: string;
   role: Role;
+  initialPrivacy?: boolean;
   children: React.ReactNode;
 }) {
   const [open, setOpen] = useState(false);
+  const [privacy, setPrivacy] = useState(Boolean(initialPrivacy));
+
+  // Bascule confidentialité : applique la classe racine (flou CSS instantané sur
+  // les <Money>) et mémorise le choix dans un cookie (1 an), lu côté serveur au
+  // prochain rendu pour éviter tout flash.
+  const togglePrivacy = () => {
+    setPrivacy((p) => {
+      const next = !p;
+      document.cookie = `crm_privacy=${next ? '1' : '0'};path=/;max-age=31536000;samesite=lax`;
+      return next;
+    });
+  };
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className={`min-h-screen bg-slate-50${privacy ? ' crm-private' : ''}`}>
       {/* Sidebar desktop */}
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 bg-slate-900 lg:block">
-        <SidebarContent displayName={displayName} email={email} role={role} />
+        <SidebarContent
+          displayName={displayName}
+          email={email}
+          role={role}
+          privacy={privacy}
+          onTogglePrivacy={togglePrivacy}
+        />
       </aside>
 
       {/* Topbar mobile */}
@@ -105,6 +159,13 @@ export function AdminShell({
           </span>
         </Link>
         <div className="flex items-center gap-1">
+          {role === 'ADMIN' && (
+            <PrivacyToggle
+              on={privacy}
+              onToggle={togglePrivacy}
+              className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-600 hover:bg-slate-100"
+            />
+          )}
           {role !== 'EXPERT' && (
             <Link
               href="/admin/recherche"
@@ -144,6 +205,8 @@ export function AdminShell({
               displayName={displayName}
               email={email}
               role={role}
+              privacy={privacy}
+              onTogglePrivacy={togglePrivacy}
               onNavigate={() => setOpen(false)}
             />
           </aside>
