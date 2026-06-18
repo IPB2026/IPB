@@ -37,7 +37,7 @@ import {
 import { acceptDevis } from '@/app/admin/(app)/devis/actions';
 import { recordFacturePayment } from '@/app/admin/(app)/factures/actions';
 import { sendFacture, sendRapport } from '@/app/admin/(app)/send-actions';
-import { deleteContact } from '@/app/admin/(app)/contact-actions';
+import { archiveContact } from '@/app/admin/(app)/contact-actions';
 import { updateAppointmentStatus } from '@/app/admin/(app)/agenda/actions';
 import { RelanceControl } from '@/components/admin/relance-control';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
@@ -592,16 +592,16 @@ export default async function ClientFichePage({
                 </summary>
                 <div className="mt-3 rounded-lg border border-red-200 bg-red-50 p-3">
                   <p className="text-xs text-red-700">
-                    Supprime définitivement ce client et <strong>tout son dossier</strong> (devis,
-                    factures, rapports, RDV, photos, historique). Action irréversible.
+                    Met ce client à la <strong>corbeille</strong> : il disparaît du CRM mais reste
+                    récupérable pendant 30 jours, avant suppression définitive automatique.
                   </p>
-                  <form action={deleteContact} className="mt-2.5">
+                  <form action={archiveContact} className="mt-2.5">
                     <input type="hidden" name="contactId" value={c.id} />
                     <ConfirmSubmit
-                      message={`Supprimer définitivement « ${c.name} » et TOUT son dossier (devis, factures, rapports, RDV, photos) ? Cette action est IRRÉVERSIBLE.`}
+                      message={`Mettre « ${c.name} » à la corbeille ? Le client disparaît du CRM mais reste récupérable 30 jours.`}
                       className="inline-flex items-center gap-1.5 rounded-lg border border-red-300 bg-white px-3 py-2 text-sm font-semibold text-red-700 hover:bg-red-100"
                     >
-                      <Trash2 className="h-4 w-4" /> Supprimer définitivement
+                      <Trash2 className="h-4 w-4" /> Mettre à la corbeille
                     </ConfirmSubmit>
                   </form>
                 </div>

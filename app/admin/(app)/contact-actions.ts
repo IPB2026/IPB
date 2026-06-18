@@ -3,10 +3,9 @@
 import { z } from 'zod';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import { del } from '@vercel/blob';
 import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
-import { getBlobToken } from '@/lib/blob';
+import { purgeContactById } from '@/lib/crm/contacts';
 import { OccupantStatus } from '@prisma/client';
 
 export type ContactFormState = string | undefined;
@@ -136,31 +135,39 @@ export async function mergeContacts(formData: FormData) {
 }
 
 /**
- * Supprime DÉFINITIVEMENT un client et tout son dossier. La cascade Prisma
- * (`onDelete: Cascade` sur leads, activités, devis, factures, RDV, rapports +
- * lignes/photos en base) fait le reste. On efface d'abord les FICHIERS photos du
- * stockage Blob (best-effort) pour ne pas laisser d'orphelins. ADMIN uniquement,
- * irréversible (confirmation forte côté UI).
+ * Met un client à la CORBEILLE (soft-delete) : il disparaît du CRM actif mais
+ * reste récupérable pendant 30 j, puis le cron le purge définitivement. ADMIN.
  */
-export async function deleteContact(formData: FormData): Promise<void> {
+export async function archiveContact(formData: FormData): Promise<void> {
   await requireAdmin();
   const id = String(formData.get('contactId') ?? '');
   if (!id) return;
-
-  // 1) Fichiers Blob des photos de tous les rapports du client (les lignes Photo
-  //    partiront ensuite en cascade). Tolérant aux échecs : on ne bloque pas la
-  //    suppression si un fichier Blob est déjà absent.
-  const photos = await prisma.photo
-    .findMany({ where: { rapport: { contactId: id } }, select: { url: true } })
-    .catch(() => []);
-  if (photos.length) {
-    const token = getBlobToken();
-    await Promise.allSettled(photos.map((p) => del(p.url, { token })));
-  }
-
-  // 2) Suppression du contact → cascade sur l'intégralité du dossier.
-  await prisma.contact.delete({ where: { id } }).catch(() => null);
-
+  await prisma.contact.update({ where: { id }, data: { archivedAt: new Date() } }).catch(() => null);
   revalidateFiches();
   redirect('/admin/clients');
+}
+
+/** Restaure un client depuis la corbeille (le ramène dans le CRM actif). ADMIN. */
+export async function restoreContact(formData: FormData): Promise<void> {
+  await requireAdmin();
+  const id = String(formData.get('contactId') ?? '');
+  if (!id) return;
+  await prisma.contact.update({ where: { id }, data: { archivedAt: null } }).catch(() => null);
+  revalidateFiches();
+  redirect(`/admin/clients/${id}`);
+}
+
+/**
+ * Supprime DÉFINITIVEMENT un client et tout son dossier (depuis la corbeille).
+ * Efface les fichiers photos Blob puis cascade Prisma. ADMIN, irréversible
+ * (confirmation forte côté UI). La logique est dans lib/crm/contacts (réutilisée
+ * par le cron de purge), pour ne pas l'exposer comme action publique sans auth.
+ */
+export async function purgeContact(formData: FormData): Promise<void> {
+  await requireAdmin();
+  const id = String(formData.get('contactId') ?? '');
+  if (!id) return;
+  await purgeContactById(id);
+  revalidateFiches();
+  redirect('/admin/clients?corbeille=1');
 }

@@ -42,6 +42,7 @@ export async function globalSearch(qRaw: string): Promise<SearchResults> {
     const [contacts, devis, factures, rapports] = await Promise.all([
       prisma.contact.findMany({
         where: {
+          archivedAt: null, // exclut les clients à la corbeille
           OR: [
             { name: like },
             { email: like },

@@ -114,6 +114,9 @@ model Contact {
   inServiceArea  Boolean?
   notes          String?
 
+  // Corbeille (soft-delete) : non null = client à la corbeille, purgé après 30 j.
+  archivedAt     DateTime?
+
   leads        Lead[]
   activities   Activity[]
   devis        Devis[]
@@ -123,6 +126,7 @@ model Contact {
 
   @@index([email])
   @@index([phone])
+  @@index([archivedAt])
 }
 
 /// Une demande entrante qualifiée, suivie dans le pipeline

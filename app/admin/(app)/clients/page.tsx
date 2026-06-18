@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { UserCheck, Download, Plus, Search } from 'lucide-react';
+import { UserCheck, Download, Plus, Search, Trash2, RotateCcw } from 'lucide-react';
 import { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
@@ -11,13 +11,17 @@ import { Avatar } from '@/components/admin/avatar';
 import { MobileCardList, MobileCardRow } from '@/components/admin/mobile-card';
 import { PhaseBadge, SERVICE_LABEL } from '@/components/admin/badges';
 import { QuickActionMenu } from '@/components/admin/quick-action-menu';
+import { ConfirmSubmit } from '@/components/admin/confirm-submit';
+import { restoreContact, purgeContact } from '@/app/admin/(app)/contact-actions';
 
 export const dynamic = 'force-dynamic';
 
-type SearchParams = { q?: string; etat?: string };
+type SearchParams = { q?: string; etat?: string; corbeille?: string };
 
 function buildWhere(sp: SearchParams): Prisma.ContactWhereInput {
   const and: Prisma.ContactWhereInput[] = [];
+  // Corbeille : on liste les clients ARCHIVÉS si ?corbeille=1, sinon les ACTIFS.
+  and.push(sp.corbeille ? { archivedAt: { not: null } } : { archivedAt: null });
   if (sp.q) {
     const like = { contains: sp.q, mode: 'insensitive' as const };
     and.push({
@@ -31,7 +35,33 @@ function buildWhere(sp: SearchParams): Prisma.ContactWhereInput {
   } else if (sp.etat === 'prospects') {
     and.push({ devis: { none: { status: 'ACCEPTE' } }, factures: { none: {} } });
   }
-  return and.length ? { AND: and } : {};
+  return { AND: and };
+}
+
+/** Actions de corbeille (restaurer / supprimer définitivement) pour une ligne. */
+function TrashActions({ id, name }: { id: string; name: string }) {
+  return (
+    <div className="flex items-center justify-end gap-1.5">
+      <form action={restoreContact}>
+        <input type="hidden" name="contactId" value={id} />
+        <button
+          type="submit"
+          className="inline-flex h-8 items-center gap-1 rounded-lg border border-emerald-200 bg-emerald-50 px-2 text-xs font-semibold text-emerald-700 hover:bg-emerald-100"
+        >
+          <RotateCcw className="h-3.5 w-3.5" /> Restaurer
+        </button>
+      </form>
+      <form action={purgeContact}>
+        <input type="hidden" name="contactId" value={id} />
+        <ConfirmSubmit
+          message={`Supprimer DÉFINITIVEMENT « ${name} » et tout son dossier (devis, factures, rapports, RDV, photos) ? Cette action est IRRÉVERSIBLE.`}
+          className="inline-flex h-8 items-center gap-1 rounded-lg border border-red-200 bg-white px-2 text-xs font-semibold text-red-700 hover:bg-red-50"
+        >
+          <Trash2 className="h-3.5 w-3.5" /> Supprimer
+        </ConfirmSubmit>
+      </form>
+    </div>
+  );
 }
 
 const ETAT_FILTERS: [string, string][] = [
@@ -46,6 +76,7 @@ export default async function ClientsPage({
   searchParams: SearchParams;
 }) {
   await guardAdminPage();
+  const corbeille = Boolean(searchParams.corbeille);
 
   let contacts: Awaited<ReturnType<typeof load>> = [];
   let dbError = false;
@@ -90,29 +121,52 @@ export default async function ClientsPage({
   return (
     <div className="space-y-5">
       <PageHeader
-        title="Clients"
-        subtitle={dbError ? undefined : `${rows.length} contact(s) — prospects & clients`}
+        title={corbeille ? 'Corbeille' : 'Clients'}
+        subtitle={
+          dbError
+            ? undefined
+            : corbeille
+              ? `${rows.length} client(s) à la corbeille — suppression définitive automatique après 30 jours`
+              : `${rows.length} contact(s) — prospects & clients`
+        }
         actions={
-          <>
-            <a
-              href="/admin/exports?type=clients"
+          corbeille ? (
+            <Link
+              href="/admin/clients"
               className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
             >
-              <Download className="h-4 w-4" />
-              CSV
-            </a>
-            <Link
-              href="/admin/leads/nouveau"
-              className="inline-flex items-center gap-1.5 rounded-lg bg-orange-600 px-3.5 py-2 text-sm font-semibold text-white hover:bg-orange-700"
-            >
-              <Plus className="h-4 w-4" />
-              Nouveau
+              ← Retour aux clients
             </Link>
-          </>
+          ) : (
+            <>
+              <Link
+                href="/admin/clients?corbeille=1"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+              >
+                <Trash2 className="h-4 w-4" />
+                Corbeille
+              </Link>
+              <a
+                href="/admin/exports?type=clients"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+              >
+                <Download className="h-4 w-4" />
+                CSV
+              </a>
+              <Link
+                href="/admin/leads/nouveau"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-orange-600 px-3.5 py-2 text-sm font-semibold text-white hover:bg-orange-700"
+              >
+                <Plus className="h-4 w-4" />
+                Nouveau
+              </Link>
+            </>
+          )
         }
       />
 
-      {/* Recherche + filtre état */}
+      {/* Recherche + filtre état (masqués dans la corbeille) */}
+      {!corbeille && (
       <form className="flex flex-col gap-2.5 rounded-xl border border-slate-200 bg-white p-3 sm:flex-row sm:items-end">
         <div className="relative sm:min-w-[220px] sm:flex-1">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
@@ -147,19 +201,22 @@ export default async function ClientsPage({
           })}
         </div>
       </form>
+      )}
 
       {dbError || rows.length === 0 ? (
         <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
           <EmptyState
-            icon={UserCheck}
-            title={hasFilters ? 'Aucun résultat' : 'Aucun contact'}
+            icon={corbeille ? Trash2 : UserCheck}
+            title={corbeille ? 'Corbeille vide' : hasFilters ? 'Aucun résultat' : 'Aucun contact'}
             description={
-              hasFilters
-                ? 'Essayez d’élargir votre recherche ou le filtre.'
-                : 'Ajoutez votre premier prospect — il apparaîtra ici avec son état.'
+              corbeille
+                ? 'Aucun client à la corbeille.'
+                : hasFilters
+                  ? 'Essayez d’élargir votre recherche ou le filtre.'
+                  : 'Ajoutez votre premier prospect — il apparaîtra ici avec son état.'
             }
-            actionLabel={hasFilters ? undefined : 'Nouveau prospect'}
-            actionHref={hasFilters ? undefined : '/admin/leads/nouveau'}
+            actionLabel={corbeille || hasFilters ? undefined : 'Nouveau prospect'}
+            actionHref={corbeille || hasFilters ? undefined : '/admin/leads/nouveau'}
           />
         </div>
       ) : (
@@ -180,7 +237,13 @@ export default async function ClientsPage({
                     .join(' · ') || '—',
                   <PhaseBadge key="p" phase={dossier.phase} />,
                 ]}
-                action={<QuickActionMenu contactId={c.id} phone={c.phone} leadId={leadId} />}
+                action={
+                  corbeille ? (
+                    <TrashActions id={c.id} name={c.name} />
+                  ) : (
+                    <QuickActionMenu contactId={c.id} phone={c.phone} leadId={leadId} />
+                  )
+                }
               />
             ))}
           </MobileCardList>
@@ -227,7 +290,11 @@ export default async function ClientsPage({
                       {dossier.montantDevis != null ? euros(dossier.montantDevis) : '—'}
                     </td>
                     <td className="px-5 py-3 text-right">
-                      <QuickActionMenu contactId={c.id} phone={c.phone} leadId={leadId} />
+                      {corbeille ? (
+                        <TrashActions id={c.id} name={c.name} />
+                      ) : (
+                        <QuickActionMenu contactId={c.id} phone={c.phone} leadId={leadId} />
+                      )}
                     </td>
                   </tr>
                 ))}

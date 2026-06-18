@@ -11,6 +11,7 @@ import { euros } from '@/lib/crm/company';
 import { createInvoiceForAppointment, DIAGNOSTIC_APPT_TYPES } from '@/lib/crm/invoicing';
 import { markDevisLost } from '@/lib/crm/send';
 import { notifyClientReminder } from '@/lib/crm/notify';
+import { purgeContactById, TRASH_RETENTION_DAYS } from '@/lib/crm/contacts';
 import type { LeadTier } from '@prisma/client';
 
 export const runtime = 'nodejs';
@@ -46,7 +47,7 @@ export async function GET(req: Request) {
     where: {
       relanceStep: { lt: STEPS.length },
       stage: { in: ['NOUVEAU', 'A_RAPPELER', 'RDV_PLANIFIE'] },
-      contact: { email: { not: null } },
+      contact: { email: { not: null }, archivedAt: null }, // pas de relance aux clients à la corbeille
     },
     include: { contact: true },
     take: 100,
@@ -408,6 +409,28 @@ export async function GET(req: Request) {
     errors.push(`rappel-j1-loop: ${e instanceof Error ? e.message : 'err'}`);
   }
 
+  // ── Purge de la corbeille : suppression DÉFINITIVE des clients archivés depuis
+  //    plus de 30 jours (fichiers Blob + cascade DB). Bornée par passage. ──
+  let purged = 0;
+  try {
+    const cutoff = new Date(now - TRASH_RETENTION_DAYS * DAY);
+    const stale = await prisma.contact.findMany({
+      where: { archivedAt: { not: null, lt: cutoff } },
+      select: { id: true },
+      take: 50,
+    });
+    for (const c of stale) {
+      try {
+        await purgeContactById(c.id);
+        purged++;
+      } catch (e) {
+        errors.push(`purge ${c.id}: ${e instanceof Error ? e.message : 'err'}`);
+      }
+    }
+  } catch (e) {
+    errors.push(`purge-loop: ${e instanceof Error ? e.message : 'err'}`);
+  }
+
   return Response.json({
     ok: true,
     candidates: leads.length,
@@ -417,6 +440,7 @@ export async function GET(req: Request) {
     factureAuto,
     avisSent,
     rappelsSent,
+    purged,
     errors: errors.slice(0, 10),
   });
 }

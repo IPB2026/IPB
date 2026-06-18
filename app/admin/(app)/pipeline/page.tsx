@@ -44,8 +44,9 @@ export default async function PipelinePage() {
   let dbError = false;
   try {
     const rows = await prisma.lead.findMany({
-      // On exclut les perdus ; un dossier gagné continue son cycle.
-      where: { stage: { notIn: ['PERDU'] } },
+      // On exclut les perdus ; un dossier gagné continue son cycle. Et les clients
+      // mis à la corbeille (archivés) ne doivent plus apparaître dans le pipeline.
+      where: { stage: { notIn: ['PERDU'] }, contact: { archivedAt: null } },
       orderBy: { createdAt: 'desc' },
       take: 400,
       select: {

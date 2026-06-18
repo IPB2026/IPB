@@ -99,12 +99,14 @@ async function getStats() {
     prisma.lead.count(),
     prisma.contact.count({
       where: {
+        archivedAt: null,
         OR: [{ devis: { some: { status: 'ACCEPTE' } } }, { factures: { some: {} } }],
       },
     }),
     prisma.lead.count({ where: { stage: 'NOUVEAU' } }),
     prisma.lead.findMany({
       take: 8,
+      where: { contact: { archivedAt: null } },
       orderBy: { createdAt: 'desc' },
       include: { contact: true },
     }),
