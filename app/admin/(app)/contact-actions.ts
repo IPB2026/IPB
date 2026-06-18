@@ -2,8 +2,11 @@
 
 import { z } from 'zod';
 import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
+import { del } from '@vercel/blob';
 import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
+import { getBlobToken } from '@/lib/blob';
 import { OccupantStatus } from '@prisma/client';
 
 export type ContactFormState = string | undefined;
@@ -130,4 +133,34 @@ export async function mergeContacts(formData: FormData) {
     prisma.contact.delete({ where: { id: sourceId } }),
   ]);
   revalidateFiches();
+}
+
+/**
+ * Supprime DÉFINITIVEMENT un client et tout son dossier. La cascade Prisma
+ * (`onDelete: Cascade` sur leads, activités, devis, factures, RDV, rapports +
+ * lignes/photos en base) fait le reste. On efface d'abord les FICHIERS photos du
+ * stockage Blob (best-effort) pour ne pas laisser d'orphelins. ADMIN uniquement,
+ * irréversible (confirmation forte côté UI).
+ */
+export async function deleteContact(formData: FormData): Promise<void> {
+  await requireAdmin();
+  const id = String(formData.get('contactId') ?? '');
+  if (!id) return;
+
+  // 1) Fichiers Blob des photos de tous les rapports du client (les lignes Photo
+  //    partiront ensuite en cascade). Tolérant aux échecs : on ne bloque pas la
+  //    suppression si un fichier Blob est déjà absent.
+  const photos = await prisma.photo
+    .findMany({ where: { rapport: { contactId: id } }, select: { url: true } })
+    .catch(() => []);
+  if (photos.length) {
+    const token = getBlobToken();
+    await Promise.allSettled(photos.map((p) => del(p.url, { token })));
+  }
+
+  // 2) Suppression du contact → cascade sur l'intégralité du dossier.
+  await prisma.contact.delete({ where: { id } }).catch(() => null);
+
+  revalidateFiches();
+  redirect('/admin/clients');
 }

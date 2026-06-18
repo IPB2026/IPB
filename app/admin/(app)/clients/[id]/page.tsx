@@ -12,6 +12,7 @@ import {
   Check,
   Circle,
   Send,
+  Trash2,
 } from 'lucide-react';
 import type {
   DevisStatus,
@@ -36,6 +37,7 @@ import {
 import { acceptDevis } from '@/app/admin/(app)/devis/actions';
 import { recordFacturePayment } from '@/app/admin/(app)/factures/actions';
 import { sendFacture, sendRapport } from '@/app/admin/(app)/send-actions';
+import { deleteContact } from '@/app/admin/(app)/contact-actions';
 import { updateAppointmentStatus } from '@/app/admin/(app)/agenda/actions';
 import { RelanceControl } from '@/components/admin/relance-control';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
@@ -583,6 +585,28 @@ export default async function ClientFichePage({
                 <ContactEditForm contact={c} />
               </div>
             </details>
+            {isAdmin && (
+              <details className="mt-3 border-t border-slate-100 pt-3 [&_summary::-webkit-details-marker]:hidden">
+                <summary className="cursor-pointer list-none text-xs font-medium text-red-600 hover:text-red-700">
+                  Supprimer ce client
+                </summary>
+                <div className="mt-3 rounded-lg border border-red-200 bg-red-50 p-3">
+                  <p className="text-xs text-red-700">
+                    Supprime définitivement ce client et <strong>tout son dossier</strong> (devis,
+                    factures, rapports, RDV, photos, historique). Action irréversible.
+                  </p>
+                  <form action={deleteContact} className="mt-2.5">
+                    <input type="hidden" name="contactId" value={c.id} />
+                    <ConfirmSubmit
+                      message={`Supprimer définitivement « ${c.name} » et TOUT son dossier (devis, factures, rapports, RDV, photos) ? Cette action est IRRÉVERSIBLE.`}
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-red-300 bg-white px-3 py-2 text-sm font-semibold text-red-700 hover:bg-red-100"
+                    >
+                      <Trash2 className="h-4 w-4" /> Supprimer définitivement
+                    </ConfirmSubmit>
+                  </form>
+                </div>
+              </details>
+            )}
           </Card>
         </div>
 

@@ -91,8 +91,16 @@ export async function POST(
     locationRisk,
   };
 
-  const fail = async (error: string) => {
-    await prisma.rapport.update({ where: { id }, data: { aiContent: { error } } });
+  const fail = async (error: string, preserve: boolean) => {
+    // Échec d'une passe ≥ 1 : on PRÉSERVE le brouillon (squelette + zones déjà
+    // produites) pour que « Reprendre » reparte de l'étape qui a échoué, pas de
+    // zéro. Passe 0 (rien de fait) : on écrit l'erreur pour l'afficher.
+    await prisma.rapport.update({
+      where: { id },
+      data: {
+        aiContent: (preserve ? { ...draft, lastError: error } : { error }) as unknown as object,
+      },
+    });
     revalidatePath(`/admin/rapports/${id}`);
     return NextResponse.json({ error }, { status: 502 });
   };
@@ -102,7 +110,7 @@ export async function POST(
   // ── Passe 0 : squelette ──
   if (draft.step === 0) {
     const res = await generateSkeleton(input);
-    if ('error' in res) return fail(res.error);
+    if ('error' in res) return fail(res.error, false);
     draft.skeleton = res.data;
     draft.locationRisk = locationRisk;
     draft.step = 1;
@@ -111,15 +119,15 @@ export async function POST(
   else if (draft.step <= zonesInput.length) {
     const idx = draft.step - 1;
     const res = await generateOneZone(input, idx);
-    if ('error' in res) return fail(res.error);
+    if ('error' in res) return fail(res.error, true);
     draft.zones[idx] = res.data;
     draft.step += 1;
   }
   // ── Passe finale : synthèse + assemblage ──
   else {
-    if (!draft.skeleton) return fail('Brouillon incohérent (squelette manquant). Relancez avec « Régénérer ».');
+    if (!draft.skeleton) return fail('Brouillon incohérent (squelette manquant). Relancez avec « Régénérer ».', false);
     const res = await generateSynthesis(input, draft.skeleton, draft.zones);
-    if ('error' in res) return fail(res.error);
+    if ('error' in res) return fail(res.error, true);
     const synth = res.data;
     const content: ReportContent = { ...draft.skeleton, zones: draft.zones, ...synth };
     await prisma.rapport.update({

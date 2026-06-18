@@ -30,8 +30,11 @@ export interface CompressResult {
 }
 
 const DEFAULTS = {
-  maxDimension: 1920,
-  quality: 0.7,
+  // 1600 px / q0.65 : nettement plus léger (~40 % de moins qu'en 1920/0.7) donc
+  // upload plus rapide (le fichier transite par notre serveur), tout en restant
+  // amplement net pour le rapport PDF et l'analyse vision. Réglable par appel.
+  maxDimension: 1600,
+  quality: 0.65,
   minFileSize: 500 * 1024,
 };
 

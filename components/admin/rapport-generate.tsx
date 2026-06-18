@@ -33,21 +33,33 @@ export function RapportGenerate({
     try {
       // Boucle d'étapes. Borne dure (garde-fou anti-boucle infinie) : au plus
       // ~1 squelette + 40 zones + 1 synthèse + marge.
+      type StepResult = {
+        done?: boolean;
+        step?: number;
+        total?: number;
+        label?: string;
+        error?: string;
+      };
       for (let i = 0; i < 60; i++) {
-        const res = await fetch(`/api/admin/rapports/${rapportId}/generate-step`, {
-          method: 'POST',
-          headers: { 'content-type': 'application/json' },
-          body: JSON.stringify({ reset: reset && i === 0 }),
-        });
-        const data = (await res.json().catch(() => ({}))) as {
-          done?: boolean;
-          step?: number;
-          total?: number;
-          label?: string;
-          error?: string;
-        };
-        if (!res.ok || data.error) {
-          setError(data.error || `Erreur ${res.status} — réessayez.`);
+        let data: StepResult = {};
+        let ok = false;
+        let status = 0;
+        // Une passe peut échouer ponctuellement (502, réseau, pic de latence). La
+        // route étant REPRENABLE (elle repart de l'étape non terminée, brouillon
+        // préservé), on la relance UNE fois avant d'abandonner.
+        for (let attempt = 0; attempt < 2 && !ok; attempt++) {
+          const res = await fetch(`/api/admin/rapports/${rapportId}/generate-step`, {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ reset: reset && i === 0 }),
+          });
+          status = res.status;
+          data = (await res.json().catch(() => ({}))) as StepResult;
+          ok = res.ok && !data.error;
+          if (!ok && attempt === 0) await new Promise((r) => setTimeout(r, 1200));
+        }
+        if (!ok) {
+          setError(data.error || `Erreur ${status} — réessayez.`);
           setRunning(false);
           return;
         }
