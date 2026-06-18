@@ -86,6 +86,30 @@ export function RapportPhotos({
     }
   }
 
+  /** Envoi via NOTRE serveur (route /photo) : le navigateur ne contacte que le site,
+   *  pas blob.vercel-storage.com (parfois bloqué par réseau/extension/proxy). Le
+   *  serveur écrit dans Blob + enregistre en base. Renvoie true si réussi. */
+  async function uploadViaServer(file: File): Promise<boolean> {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), UPLOAD_TIMEOUT_MS);
+    try {
+      const fd = new FormData();
+      fd.set('file', file, file.name);
+      const res = await fetch(`/api/admin/rapports/${rapportId}/photo`, {
+        method: 'POST',
+        body: fd,
+        signal: ctrl.signal,
+      });
+      if (!res.ok) return false;
+      const data = (await res.json().catch(() => null)) as { ok?: boolean } | null;
+      return Boolean(data?.ok);
+    } catch {
+      return false;
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
   function friendlyError(e: unknown): string {
     const m = (e instanceof Error ? e.message : String(e)).toLowerCase();
     if (m.includes('abort') || m.includes('timeout')) return 'Envoi trop long (connexion lente) — réessayez.';
@@ -139,6 +163,15 @@ export function RapportPhotos({
       }
 
       patch(p.key, { step: 'envoi' });
+
+      // VOIE 1 (fiable) — via notre serveur. Le fichier compressé est petit
+      // (< 4,5 Mo), donc dans la limite de corps d'une fonction serverless.
+      if (optimized.size <= 4 * 1024 * 1024 && (await uploadViaServer(optimized))) {
+        return true;
+      }
+
+      // VOIE 2 (repli) — upload direct navigateur → Blob (gros fichiers, ou serveur
+      // indisponible), puis enregistrement en base via la server action.
       let blob: Awaited<ReturnType<typeof uploadBlob>> | null = null;
       let lastErr: unknown;
       for (let i = 0; i < 2; i++) {

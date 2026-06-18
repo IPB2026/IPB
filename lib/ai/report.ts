@@ -16,7 +16,10 @@ import Anthropic from '@anthropic-ai/sdk';
  * L'expert relit et valide TOUJOURS avant envoi (responsabilité).
  */
 
-export const REPORT_MODEL = 'claude-opus-4-8';
+// Modèle de rédaction. Défaut Sonnet 4.6 : assez rapide pour qu'UNE passe tienne
+// sous le plafond de 60 s d'une fonction Vercel Hobby (Opus le dépassait → 504).
+// Surchargeable (REPORT_MODEL=claude-opus-4-8) sur un plan Pro.
+export const REPORT_MODEL = process.env.REPORT_MODEL || 'claude-sonnet-4-6';
 
 export interface ReportZoneInput {
   titre: string;
