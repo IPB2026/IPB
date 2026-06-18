@@ -40,8 +40,9 @@ export async function POST(
   }
 
   const id = params.id;
-  const body = (await req.json().catch(() => ({}))) as { reset?: boolean };
+  const body = (await req.json().catch(() => ({}))) as { reset?: boolean; runId?: string };
   const reset = body.reset === true;
+  const incomingRunId = typeof body.runId === 'string' ? body.runId : null;
 
   const rapport = await prisma.rapport.findUnique({
     where: { id },
@@ -104,6 +105,28 @@ export async function POST(
     revalidatePath(`/admin/rapports/${id}`);
     return NextResponse.json({ error }, { status: 502 });
   };
+
+  // Garde ANTI-DOUBLE-GÉNÉRATION : si un AUTRE run a posé un verrou récent
+  // (< 90 s > durée max d'une passe), on refuse — évite deux onglets qui se
+  // marchent dessus sur le même brouillon. Le verrou expire seul si un run crashe.
+  const LOCK_MS = 90_000;
+  if (
+    !reset &&
+    draft.lockAt &&
+    Date.now() - draft.lockAt < LOCK_MS &&
+    draft.runId &&
+    incomingRunId &&
+    draft.runId !== incomingRunId
+  ) {
+    return NextResponse.json(
+      { error: 'Une génération est déjà en cours pour ce rapport (autre onglet ?).' },
+      { status: 409 }
+    );
+  }
+  // On revendique/rafraîchit le verrou AVANT la passe (longue) et on le persiste.
+  draft.runId = incomingRunId ?? draft.runId ?? null;
+  draft.lockAt = Date.now();
+  await prisma.rapport.update({ where: { id }, data: { aiContent: draft as unknown as object } });
 
   const t0 = Date.now();
 

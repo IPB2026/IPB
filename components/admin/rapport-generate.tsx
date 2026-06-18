@@ -30,6 +30,12 @@ export function RapportGenerate({
     setError(null);
     setRunning(true);
     setProgress(null);
+    // Identifiant unique de CETTE génération : sert de verrou côté serveur pour
+    // qu'un second onglet/clic ne vienne pas corrompre le même brouillon.
+    const runId =
+      typeof crypto !== 'undefined' && crypto.randomUUID
+        ? crypto.randomUUID()
+        : `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
     try {
       // Boucle d'étapes. Borne dure (garde-fou anti-boucle infinie) : au plus
       // ~1 squelette + 40 zones + 1 synthèse + marge.
@@ -51,7 +57,7 @@ export function RapportGenerate({
           const res = await fetch(`/api/admin/rapports/${rapportId}/generate-step`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ reset: reset && i === 0 }),
+            body: JSON.stringify({ reset: reset && i === 0, runId }),
           });
           status = res.status;
           data = (await res.json().catch(() => ({}))) as StepResult;

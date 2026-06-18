@@ -340,7 +340,7 @@ export async function structureObservations(
 // conversion côté client a échoué) ferait échouer TOUT l'appel (HTTP 400) — on l'écarte
 // donc de l'analyse plutôt que de planter la génération entière.
 const VISION_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/gif']);
-function isVisionSupported(p: ReportPhotoInput): boolean {
+export function isVisionSupported(p: ReportPhotoInput): boolean {
   if (p.contentType) return VISION_TYPES.has(p.contentType.toLowerCase());
   const ext = p.url.toLowerCase().match(/\.([a-z0-9]+)(?:\?|$)/)?.[1] ?? '';
   return ['jpg', 'jpeg', 'png', 'webp', 'gif'].includes(ext);
@@ -466,6 +466,11 @@ export interface ReportDraft {
   locationRisk?: string | null;
   skeleton?: SkeletonContent;
   zones: ZoneContent[];
+  // Verrou anti-concurrence (deux onglets/clics) : qui génère et depuis quand.
+  runId?: string | null;
+  lockAt?: number | null;
+  // Dernière erreur de passe (brouillon préservé pour reprise) — informatif.
+  lastError?: string;
 }
 
 /** Reconnaît un aiContent « brouillon » (génération en cours/interrompue). */
