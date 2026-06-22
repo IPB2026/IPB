@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { blogPostsList } from '@/app/data/blog';
 import { villeSlugs } from '@/app/data/villes';
+import { isVillePrioritaire } from '@/app/data/villes-prioritaires';
 import { VILLES_MUR_PORTEUR } from '@/app/data/villes-mur-porteur';
 import { problemPages } from '@/app/data/problems';
 import { quartierSlugs } from '@/app/data/quartiers';
@@ -353,31 +354,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // ════════════════════════════════════════════════════════════
-  // TOUTES LES VILLES — expert-fissures + expert-humidite
-  // Chaque page ville a du contenu unique (géologie, stats, FAQ)
+  // VILLES PRIORITAIRES UNIQUEMENT — expert-fissures + expert-humidite
+  // Élagage SEO (audit 06/2026) : on ne déclare au sitemap QUE les villes
+  // indexables (cf. app/data/villes-prioritaires.ts). Les villes non
+  // prioritaires sont en noindex et hors sitemap pour concentrer l'autorité
+  // et le budget de crawl, et résorber le "Explorée actuellement non indexée".
   // ════════════════════════════════════════════════════════════
-  const priorityVillesSlugs = ['toulouse', 'colomiers', 'muret', 'montauban', 'auch', 'albi'];
+  const priorityVillesSlugs = ['colomiers', 'muret', 'montauban', 'auch'];
 
   // Toulouse est exclu : la canonique est /expert-fissures-toulouse-31 (page statique).
   // Le middleware redirige /expert-fissures/toulouse → /expert-fissures-toulouse-31 en 301.
-  const expertFissuresPages: MetadataRoute.Sitemap = villeSlugs
-    .filter((ville) => ville !== 'toulouse')
-    .map((ville) => ({
-      url: `${baseUrl}/expert-fissures/${ville}`,
-      lastModified: contentDate,
-      changeFrequency: 'monthly' as const,
-      priority: priorityVillesSlugs.includes(ville) ? 0.8 : 0.68,
-    }));
+  const indexableVilles = villeSlugs.filter(
+    (ville) => ville !== 'toulouse' && isVillePrioritaire(ville)
+  );
 
-  // Idem : Toulouse exclu, canonique = /expert-humidite-toulouse-31.
-  const expertHumiditePages: MetadataRoute.Sitemap = villeSlugs
-    .filter((ville) => ville !== 'toulouse')
-    .map((ville) => ({
-      url: `${baseUrl}/expert-humidite/${ville}`,
-      lastModified: contentDate,
-      changeFrequency: 'monthly' as const,
-      priority: priorityVillesSlugs.includes(ville) ? 0.78 : 0.65,
-    }));
+  const expertFissuresPages: MetadataRoute.Sitemap = indexableVilles.map((ville) => ({
+    url: `${baseUrl}/expert-fissures/${ville}`,
+    lastModified: contentDate,
+    changeFrequency: 'monthly' as const,
+    priority: priorityVillesSlugs.includes(ville) ? 0.8 : 0.68,
+  }));
+
+  const expertHumiditePages: MetadataRoute.Sitemap = indexableVilles.map((ville) => ({
+    url: `${baseUrl}/expert-humidite/${ville}`,
+    lastModified: contentDate,
+    changeFrequency: 'monthly' as const,
+    priority: priorityVillesSlugs.includes(ville) ? 0.78 : 0.65,
+  }));
 
   // ════════════════════════════════════════════════════════════
   // PAGES MUR PORTEUR PAR VILLE (Toulouse, Montauban, Auch, Albi)

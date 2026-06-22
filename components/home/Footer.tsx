@@ -51,6 +51,10 @@ export function Footer() {
                 ['/expertise-avant-achat-immobilier-toulouse', 'Expertise avant achat'],
                 ['/expertise/mur-porteur', 'Mur porteur'],
                 ['/calcul-prix-mur-porteur', 'Calculateur de prix'],
+                // Pages locales prioritaires — maillage interne site-wide (audit SEO 06/2026)
+                ['/expert-fissures-toulouse-31', 'Expert fissures Toulouse'],
+                ['/expert-humidite-toulouse-31', 'Expert humidité Toulouse'],
+                ['/bureau-etude-structure-toulouse', "Bureau d'études structure"],
               ].map(([href, label]) => (
                 <li key={href}>
                   <Link href={href} className="text-white/75 hover:text-white transition-colors">

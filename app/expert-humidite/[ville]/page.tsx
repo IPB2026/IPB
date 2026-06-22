@@ -3,6 +3,7 @@ import Script from 'next/script';
 import { notFound } from 'next/navigation';
 import { ServiceVilleTemplate } from '@/components/templates/ServiceVilleTemplate';
 import { villesData, villeSlugs } from '@/app/data/villes';
+import { isVillePrioritaire } from '@/app/data/villes-prioritaires';
 import { VilleBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export async function generateStaticParams() {
@@ -37,7 +38,8 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
       type: 'website',
       images: [{ url: '/images/humidite-avant-apres.webp', width: 1200, height: 630, alt: `Expert humidité ${villeNom}` }],
     },
-    robots: { index: true, follow: true },
+    // Élagage SEO (audit 06/2026) : indexation réservée aux villes prioritaires.
+    robots: { index: isVillePrioritaire(ville), follow: true },
   };
 }
 

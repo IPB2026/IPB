@@ -12,6 +12,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { villesData, villeSlugs, type VilleInfo } from '@/app/data/villes';
+import { isVillePrioritaire } from '@/app/data/villes-prioritaires';
 import { getVilleMurPorteurFallback } from '@/app/data/villes-mur-porteur';
 import { VilleBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 import { generateLocalFAQ, buildFAQPageJsonLd, IPB_AGGREGATE_RATING } from '@/lib/seo/localFAQ';
@@ -67,7 +68,9 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
       title: `Expert Fissures ${villeNom} · IPB`,
       description: `Diagnostic, agrafage, rapport assurance à ${villeNom}. Décennale 10 ans sur les travaux.`,
     },
-    robots: { index: true, follow: true },
+    // Élagage SEO (audit 06/2026) : seules les villes prioritaires sont indexées
+    // pour concentrer l'autorité. Les autres restent accessibles mais noindex.
+    robots: { index: isVillePrioritaire(ville), follow: true },
   };
 }
 
