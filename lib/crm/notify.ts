@@ -358,7 +358,9 @@ export async function notifyClientReminder(
     if (res.success) {
       await prisma.activity.create({
         data: {
-          type: 'RELANCE',
+          // LOG d'e-mail envoyé (pas une tâche) → type EMAIL, pas RELANCE, pour ne
+          // jamais polluer la liste « Relances à faire ».
+          type: 'EMAIL',
           contactId: appt.contactId,
           leadId: appt.leadId,
           content: `Rappel de visite J-1 (RDV ${appt.id}) envoyé à ${email} (${dateStr} ${timeStr})`,

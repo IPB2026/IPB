@@ -163,7 +163,10 @@ async function getStats() {
       where: { type: 'RELANCE', done: false, dueAt: { lte: now } },
     }),
     prisma.activity.findMany({
-      where: { type: 'RELANCE', done: false },
+      // « Relances à faire » = uniquement de VRAIES tâches datées (dueAt présent).
+      // Sans ce filtre, les logs RELANCE sans échéance (ex. « rappel J-1 envoyé »)
+      // s'affichaient à tort comme des tâches à faire.
+      where: { type: 'RELANCE', done: false, dueAt: { not: null } },
       orderBy: { dueAt: 'asc' },
       take: 8,
       include: { lead: { include: { contact: true } } },
