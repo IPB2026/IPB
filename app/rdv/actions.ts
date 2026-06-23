@@ -6,7 +6,7 @@ import { prisma } from '@/lib/prisma';
 import { verifyBookingToken } from '@/lib/crm/booking';
 import { revalidateCrm } from '@/lib/crm/revalidate';
 import { sendAppointmentInvites } from '@/lib/crm/appointment-invites';
-import { notifyClientAppointment } from '@/lib/crm/notify';
+import { notifyClientAppointment, notifyAdminBooking } from '@/lib/crm/notify';
 import type { AppointmentType } from '@prisma/client';
 
 const VISIT_TYPE: Record<string, AppointmentType> = {
@@ -141,6 +141,10 @@ export async function confirmBooking(formData: FormData): Promise<void> {
       },
     });
   }
+
+  // Alerte le gérant : le client vient de CHOISIR UNE DATE → notification immédiate
+  // (coordonnées + lien fiche) pour préparer la visite. Non bloquant.
+  await notifyAdminBooking(appt.id);
 
   revalidatePath('/admin/agenda');
   revalidateCrm(p.c);

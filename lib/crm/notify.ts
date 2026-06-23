@@ -164,6 +164,64 @@ export async function notifyAdminRapportSubmitted(
   }
 }
 
+/**
+ * Alerte ADMIN : un client vient de CHOISIR UNE DATE en ligne (depuis l'e-mail de
+ * devis). On prévient le gérant tout de suite, avec les coordonnées et un lien
+ * direct vers la fiche → réactivité maximale, plus rien ne se perd. Non bloquant.
+ */
+export async function notifyAdminBooking(appointmentId: string): Promise<void> {
+  try {
+    const to = await adminRecipient();
+    if (!to) return;
+    const appt = await prisma.appointment.findUnique({
+      where: { id: appointmentId },
+      include: {
+        contact: { select: { id: true, name: true, phone: true, email: true, city: true } },
+        assignedTo: { select: { name: true, email: true } },
+      },
+    });
+    if (!appt) return;
+
+    const when = appt.start.toLocaleString('fr-FR', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+
+    await sendEmail({
+      to,
+      subject: `📅 ${appt.contact.name} a choisi une date — ${when}`,
+      noUnsubscribe: true,
+      html: staffShell({
+        eyebrow: 'IPB · Nouveau créneau confirmé',
+        title: `${appt.contact.name} a confirmé un rendez-vous`,
+        intro:
+          "Le client vient de choisir une date en ligne. Pensez à préparer la visite et à assigner un diagnostiqueur si ce n'est pas déjà fait.",
+        rows: [
+          { label: 'Client', value: appt.contact.name },
+          { label: 'Visite', value: appt.title },
+          { label: 'Date', value: when },
+          ...(appt.location ? [{ label: 'Lieu', value: appt.location }] : []),
+          ...(appt.contact.phone ? [{ label: 'Téléphone', value: appt.contact.phone }] : []),
+          ...(appt.contact.email ? [{ label: 'E-mail', value: appt.contact.email }] : []),
+          {
+            label: 'Diagnostiqueur',
+            value: appt.assignedTo?.name || appt.assignedTo?.email || '— à assigner',
+          },
+        ],
+        cta: {
+          label: 'Ouvrir la fiche client',
+          href: `${SITE}/admin/clients/${appt.contact.id}`,
+        },
+      }),
+    });
+  } catch (err) {
+    console.error('[notify] notifyAdminBooking échec (non bloquant):', err);
+  }
+}
+
 // ─────────────────────────────────────────────────────────────────
 // 3) Accusé client : confirmation de rendez-vous
 // ─────────────────────────────────────────────────────────────────

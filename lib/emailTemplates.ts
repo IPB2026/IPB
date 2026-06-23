@@ -59,6 +59,14 @@ const wrap = (innerHtml: string, opts?: { eyebrow?: string; unsubscribeUrl?: str
 
     <!-- Footer -->
     <div style="background: #0B1826; color: rgba(255,255,255,0.5); padding: 28px 24px; text-align: center; font-size: 11px; line-height: 1.7;">
+      <!-- Invitation à l'échange : facilite la collaboration (réponse directe + appel) -->
+      <p style="margin: 0 0 16px; color: rgba(255,255,255,0.85); font-size: 13px; line-height: 1.6;">
+        Une question, une précision, une date à caler ?<br />
+        <a href="mailto:contact@ipb-expertise.fr" style="color: #E8975A; text-decoration: none; font-weight: 600;">Répondez simplement à cet e-mail</a>
+        ou appelez-nous au
+        <a href="tel:0582953375" style="color: #E8975A; text-decoration: none; font-weight: 600;">05 82 95 33 75</a>.<br />
+        Un interlocuteur unique vous accompagne, du premier échange à la livraison.
+      </p>
       <p style="margin: 0 0 4px;">IPB Expertise · 54 avenue Jean Jaurès, 31170 Tournefeuille</p>
       <p style="margin: 0 0 16px;">
         <a href="tel:0582953375" style="color: rgba(255,255,255,0.7); text-decoration: none;">05 82 95 33 75</a>
