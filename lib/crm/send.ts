@@ -121,6 +121,11 @@ export async function sendDevisEmail(
   });
   if (!devis) return { ok: false, error: 'Devis introuvable' };
   if (!devis.contact.email) return { ok: false, error: 'Client sans e-mail' };
+  // RÈGLE N3 — garde-fou montant : on n'envoie jamais un devis à 0 € (oubli de
+  // saisie). Le montant porte sur la coordination ; renseignez-le d'abord.
+  if (Number(devis.totalHT) <= 0) {
+    return { ok: false, error: 'Montant à 0 € — renseignez le montant du devis avant de l’envoyer.' };
+  }
   const pdf = await buildDevisPdf(id);
   if (!pdf) return { ok: false, error: 'PDF indisponible' };
 

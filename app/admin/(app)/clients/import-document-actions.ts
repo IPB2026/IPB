@@ -122,6 +122,8 @@ export async function importExternalDocument(formData: FormData): Promise<void> 
     });
   } else {
     const number = await nextRapportNumber(contact.name);
+    // RÈGLE N6 — rapport complet : un rapport n'est « transmis » (ENVOYE) que s'il
+    // a un document joint. Sans PDF, on l'enregistre « validé » (prêt), jamais vide.
     await prisma.rapport.create({
       data: {
         number,
@@ -129,7 +131,7 @@ export async function importExternalDocument(formData: FormData): Promise<void> 
         leadId: lead?.id ?? null,
         type: reportTypeFromService(lead?.service),
         title: objet,
-        status: 'ENVOYE',
+        status: externalUrl ? 'ENVOYE' : 'VALIDE',
         externalUrl,
       },
     });

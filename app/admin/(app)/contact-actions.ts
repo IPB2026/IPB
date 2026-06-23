@@ -108,6 +108,9 @@ export async function mergeContacts(formData: FormData) {
   if (!target || !source) return;
 
   await prisma.$transaction([
+    // Libère d'abord l'e-mail du doublon : sans ça, recopier source.email sur la
+    // cible alors que le doublon existe encore viole la contrainte d'unicité.
+    prisma.contact.update({ where: { id: sourceId }, data: { email: null } }),
     prisma.lead.updateMany({ where: { contactId: sourceId }, data: { contactId: targetId } }),
     prisma.activity.updateMany({ where: { contactId: sourceId }, data: { contactId: targetId } }),
     prisma.devis.updateMany({ where: { contactId: sourceId }, data: { contactId: targetId } }),
@@ -123,15 +126,20 @@ export async function mergeContacts(formData: FormData) {
         city: target.city ?? source.city,
         postalCode: target.postalCode ?? source.postalCode,
         propertyType: target.propertyType ?? source.propertyType,
+        notes: [target.notes, source.notes].filter(Boolean).join('\n') || null,
         occupantStatus:
           target.occupantStatus !== 'INCONNU'
             ? target.occupantStatus
             : source.occupantStatus,
       },
     }),
+    prisma.activity.create({
+      data: { type: 'SYSTEME', contactId: targetId, content: `Fiche fusionnée avec un doublon (« ${source.name} »).` },
+    }),
     prisma.contact.delete({ where: { id: sourceId } }),
   ]);
   revalidateFiches();
+  revalidatePath('/admin/clients/doublons');
 }
 
 /**

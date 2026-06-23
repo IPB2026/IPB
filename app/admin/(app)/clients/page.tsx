@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { UserCheck, Download, Plus, Search, Trash2, RotateCcw } from 'lucide-react';
+import { UserCheck, Download, Plus, Search, Trash2, RotateCcw, GitMerge } from 'lucide-react';
 import { Prisma, type ServiceType, type LeadTier } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
@@ -149,6 +149,13 @@ export default async function ClientsPage({
             </Link>
           ) : (
             <>
+              <Link
+                href="/admin/clients/doublons"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+              >
+                <GitMerge className="h-4 w-4" />
+                Doublons
+              </Link>
               <Link
                 href="/admin/clients?corbeille=1"
                 className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"

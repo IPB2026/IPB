@@ -66,6 +66,27 @@ export async function createFacture(
     },
   });
 
+  // RÈGLE N7 — cohérence facture ↔ devis : si le montant facturé diffère du devis
+  // diagnostic accepté, on trace une alerte (non bloquant) pour vérification.
+  const devisAccepte = await prisma.devis.findFirst({
+    where: {
+      contactId,
+      status: 'ACCEPTE',
+      OR: [{ serviceType: { not: 'AUTRE' } }, { serviceType: null }],
+    },
+    orderBy: { acceptedAt: 'desc' },
+    select: { number: true, totalHT: true },
+  });
+  if (devisAccepte && Math.abs(Number(devisAccepte.totalHT) - montant) >= 1) {
+    await prisma.activity.create({
+      data: {
+        type: 'SYSTEME',
+        contactId,
+        content: `⚠ Montant facture ${number} (${montant} € HT) ≠ devis accepté ${devisAccepte.number} (${Math.round(Number(devisAccepte.totalHT))} € HT) — à vérifier.`,
+      },
+    });
+  }
+
   revalidatePath('/admin/factures');
   revalidateCrm(contactId);
   redirect(`/admin/factures/${facture.id}`);

@@ -73,6 +73,16 @@ export async function GET(req: Request) {
     if (ageDays < step.offsetDays) continue;
     const email = lead.contact.email;
     if (!email) continue;
+    // RÈGLE N10 — pause : si le gérant a été en contact (appel/note) avec ce client
+    // dans les 3 derniers jours, on n'envoie PAS d'e-mail auto (il est déjà suivi).
+    const recentTouch = await prisma.activity.count({
+      where: {
+        contactId: lead.contactId,
+        type: { in: ['APPEL', 'NOTE'] },
+        createdAt: { gte: new Date(now - 3 * DAY) },
+      },
+    });
+    if (recentTouch > 0) continue;
 
     const ctx = {
       firstName: lead.contact.name.split(' ')[0] || lead.contact.name,
@@ -441,6 +451,80 @@ export async function GET(req: Request) {
     errors.push(`purge-loop: ${e instanceof Error ? e.message : 'err'}`);
   }
 
+  // ── RÈGLE N4 : prospects DORMANTS (aucun échange depuis 30 j, pas encore client,
+  //    non perdus) → tâche « à requalifier » (une seule par contact, dédup). ──
+  let dormants = 0;
+  try {
+    const cutoff = new Date(now - 30 * DAY);
+    const stale = await prisma.lead.findMany({
+      where: {
+        stage: { notIn: ['PERDU', 'GAGNE'] },
+        contact: {
+          archivedAt: null,
+          activities: { none: { createdAt: { gte: cutoff } } },
+          devis: { none: { status: 'ACCEPTE' } },
+          factures: { none: {} },
+        },
+      },
+      select: { id: true, contactId: true },
+      take: 50,
+      orderBy: { createdAt: 'asc' },
+    });
+    for (const l of stale) {
+      const already = await prisma.activity.count({
+        where: { contactId: l.contactId, type: 'RELANCE', done: false, content: { contains: 'à requalifier' } },
+      });
+      if (already > 0) continue;
+      await prisma.activity.create({
+        data: {
+          type: 'RELANCE',
+          leadId: l.id,
+          contactId: l.contactId,
+          content: 'Prospect dormant (aucun échange depuis 30 j) — à requalifier ou classer.',
+          dueAt: new Date(),
+        },
+      });
+      dormants++;
+    }
+  } catch (e) {
+    errors.push(`dormants-loop: ${e instanceof Error ? e.message : 'err'}`);
+  }
+
+  // ── RÈGLE N8 : dossiers TERMINÉS de longue date (rapport transmis + aucun échange
+  //    depuis 6 mois) → SUGGESTION « à archiver ? » (jamais d'archivage automatique :
+  //    on ne supprime pas une donnée client sans décision humaine). ──
+  let aArchiver = 0;
+  try {
+    const sixMonths = new Date(now - 182 * DAY);
+    const oldDone = await prisma.contact.findMany({
+      where: {
+        archivedAt: null,
+        rapports: { some: { status: 'ENVOYE' } },
+        activities: { none: { createdAt: { gte: sixMonths } } },
+      },
+      select: { id: true, leads: { select: { id: true }, take: 1 } },
+      take: 50,
+    });
+    for (const c of oldDone) {
+      const already = await prisma.activity.count({
+        where: { contactId: c.id, type: 'RELANCE', done: false, content: { contains: 'à archiver' } },
+      });
+      if (already > 0) continue;
+      await prisma.activity.create({
+        data: {
+          type: 'RELANCE',
+          contactId: c.id,
+          leadId: c.leads[0]?.id ?? null,
+          content: 'Dossier terminé depuis plus de 6 mois — à archiver ?',
+          dueAt: new Date(),
+        },
+      });
+      aArchiver++;
+    }
+  } catch (e) {
+    errors.push(`archiver-loop: ${e instanceof Error ? e.message : 'err'}`);
+  }
+
   return Response.json({
     ok: true,
     candidates: leads.length,
@@ -451,6 +535,8 @@ export async function GET(req: Request) {
     avisSent,
     rappelsSent,
     purged,
+    dormants,
+    aArchiver,
     errors: errors.slice(0, 10),
   });
 }

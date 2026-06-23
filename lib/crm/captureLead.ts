@@ -168,7 +168,10 @@ export async function captureLead(
       },
     });
 
-    // 3) Activité système d'entrée
+    // 3) Activité système d'entrée. RÈGLE N9 — hygiène : on signale un lead sans
+    //    AUCUNE coordonnée (ni e-mail ni téléphone) pour qu'il soit complété et
+    //    reste contactable (sans perdre la donnée).
+    const contactless = !email && !phone;
     await prisma.activity.create({
       data: {
         type: 'SYSTEME',
@@ -176,9 +179,20 @@ export async function captureLead(
         contactId,
         content: `Lead reçu via ${input.source}${
           input.scoring?.tier ? ` — ${input.scoring.tier}` : ''
-        }`,
+        }${contactless ? ' — ⚠ sans coordonnées (e-mail/téléphone à compléter)' : ''}`,
       },
     });
+    if (contactless) {
+      await prisma.activity.create({
+        data: {
+          type: 'RELANCE',
+          leadId: lead.id,
+          contactId,
+          content: 'Compléter les coordonnées du contact (ni e-mail ni téléphone).',
+          dueAt: new Date(),
+        },
+      });
+    }
 
     return { leadId: lead.id, contactId };
   } catch (err) {
