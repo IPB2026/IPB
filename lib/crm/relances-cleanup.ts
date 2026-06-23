@@ -31,6 +31,17 @@ export async function closeResolvedRelances(): Promise<void> {
       },
       data: { done: true, doneAt: new Date() },
     });
+    // « Facture à relire et envoyer » (créée après la visite) → la facture brouillon
+    // a été envoyée (plus aucune facture en BROUILLON) → tâche sans objet.
+    await prisma.activity.updateMany({
+      where: {
+        type: 'RELANCE',
+        done: false,
+        content: { contains: 'Facture à relire et envoyer' },
+        contact: { factures: { none: { status: 'BROUILLON' } } },
+      },
+      data: { done: true, doneAt: new Date() },
+    });
   } catch {
     // Non bloquant : un échec de nettoyage ne doit jamais casser le tableau de bord.
   }

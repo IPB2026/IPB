@@ -176,16 +176,18 @@ async function getStats() {
       take: 8,
       include: { contact: true },
     }),
-    // Rapports soumis par les diagnostiqueurs → à générer
+    // Rapports soumis par les diagnostiqueurs → à générer. EXCLUT les clients qui
+    // ont DÉJÀ un rapport transmis (brouillon résiduel = ne doit plus apparaître
+    // « à faire » alors que le client est servi).
     prisma.rapport.findMany({
-      where: { status: 'SOUMIS' },
+      where: { status: 'SOUMIS', contact: { rapports: { none: { status: 'ENVOYE' } } } },
       orderBy: { updatedAt: 'desc' },
       take: 8,
       include: { contact: true },
     }),
-    // Rapports générés → à valider et envoyer
+    // Rapports générés → à valider et envoyer (même exclusion : client déjà servi).
     prisma.rapport.findMany({
-      where: { status: 'GENERE' },
+      where: { status: 'GENERE', contact: { rapports: { none: { status: 'ENVOYE' } } } },
       orderBy: { updatedAt: 'desc' },
       take: 8,
       include: { contact: true },
@@ -200,8 +202,8 @@ async function getStats() {
     // Devis envoyés en attente d'acceptation
     prisma.devis.count({ where: { status: 'ENVOYE' } }),
     // Compteurs réels (les listes ci-dessus sont plafonnées à 8 pour l'affichage)
-    prisma.rapport.count({ where: { status: 'SOUMIS' } }),
-    prisma.rapport.count({ where: { status: 'GENERE' } }),
+    prisma.rapport.count({ where: { status: 'SOUMIS', contact: { rapports: { none: { status: 'ENVOYE' } } } } }),
+    prisma.rapport.count({ where: { status: 'GENERE', contact: { rapports: { none: { status: 'ENVOYE' } } } } }),
     prisma.facture.count({ where: { status: 'ENVOYEE' } }),
     prisma.devis.count({ where: visiteAPlanifierWhere }),
     // Factures en BROUILLON (générées après la visite, à relire et envoyer).
