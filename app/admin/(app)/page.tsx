@@ -17,8 +17,18 @@ import {
 } from 'lucide-react';
 import { Prisma } from '@prisma/client';
 import { Money } from '@/components/admin/money';
-import { DIAGNOSTIC_VISIT_TYPES } from '@/lib/crm/dossier';
+import { DIAGNOSTIC_VISIT_TYPES, REPORT_DONE_MANUAL_PHASES } from '@/lib/crm/dossier';
 import { CLIENT_CONTACT_WHERE } from '@/lib/crm/client-status';
+
+/**
+ * Contact dont le rapport n'est PAS traité : aucun rapport ENVOYÉ ET aucun dossier
+ * réglé À LA MAIN sur Suivi/Terminé/Travaux. Sert à n'afficher en « rapports à
+ * faire » que les vrais à-faire — pas ceux que le gérant a déjà marqués traités.
+ */
+const RAPPORT_NON_TRAITE_CONTACT: Prisma.ContactWhereInput = {
+  rapports: { none: { status: 'ENVOYE' } },
+  leads: { none: { manualPhase: { in: REPORT_DONE_MANUAL_PHASES } } },
+};
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
@@ -179,18 +189,18 @@ async function getStats() {
       take: 8,
       include: { contact: true },
     }),
-    // Rapports soumis par les diagnostiqueurs → à générer. EXCLUT les clients qui
-    // ont DÉJÀ un rapport transmis (brouillon résiduel = ne doit plus apparaître
-    // « à faire » alors que le client est servi).
+    // Rapports soumis par les diagnostiqueurs → à générer. EXCLUT les clients déjà
+    // servis (rapport ENVOYÉ) ET ceux que le gérant a réglés À LA MAIN sur
+    // Suivi/Terminé/Travaux (dossier marqué traité → ne plus afficher « à faire »).
     prisma.rapport.findMany({
-      where: { status: 'SOUMIS', contact: { rapports: { none: { status: 'ENVOYE' } } } },
+      where: { status: 'SOUMIS', contact: RAPPORT_NON_TRAITE_CONTACT },
       orderBy: { updatedAt: 'desc' },
       take: 8,
       include: { contact: true },
     }),
-    // Rapports générés → à valider et envoyer (même exclusion : client déjà servi).
+    // Rapports générés → à valider et envoyer (même exclusion).
     prisma.rapport.findMany({
-      where: { status: 'GENERE', contact: { rapports: { none: { status: 'ENVOYE' } } } },
+      where: { status: 'GENERE', contact: RAPPORT_NON_TRAITE_CONTACT },
       orderBy: { updatedAt: 'desc' },
       take: 8,
       include: { contact: true },
@@ -205,8 +215,8 @@ async function getStats() {
     // Devis envoyés en attente d'acceptation
     prisma.devis.count({ where: { status: 'ENVOYE' } }),
     // Compteurs réels (les listes ci-dessus sont plafonnées à 8 pour l'affichage)
-    prisma.rapport.count({ where: { status: 'SOUMIS', contact: { rapports: { none: { status: 'ENVOYE' } } } } }),
-    prisma.rapport.count({ where: { status: 'GENERE', contact: { rapports: { none: { status: 'ENVOYE' } } } } }),
+    prisma.rapport.count({ where: { status: 'SOUMIS', contact: RAPPORT_NON_TRAITE_CONTACT } }),
+    prisma.rapport.count({ where: { status: 'GENERE', contact: RAPPORT_NON_TRAITE_CONTACT } }),
     prisma.facture.count({ where: { status: 'ENVOYEE' } }),
     prisma.devis.count({ where: visiteAPlanifierWhere }),
     // Factures en BROUILLON (générées après la visite, à relire et envoyer).

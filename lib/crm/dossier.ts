@@ -168,6 +168,20 @@ export const CLIENT_PHASES = new Set<string>([
   'GAGNE',
 ]);
 
+/**
+ * Phases (réglées À LA MAIN) qui signifient que le RAPPORT est traité/transmis ou
+ * au-delà → plus aucune tâche « rapport à générer / à rédiger » ne doit s'afficher
+ * pour ce dossier, même sans rapport ENVOYÉ en base (cas du gérant qui pilote le
+ * dossier manuellement ou produit le rapport hors CRM). « RAPPORT » est EXCLU
+ * (= rapport encore à faire). SOURCE UNIQUE pour le tableau de bord + le nettoyage.
+ */
+export const REPORT_DONE_MANUAL_PHASES = [
+  'SUIVI',
+  'TERMINE',
+  'ACCOMPAGNEMENT_TRAVAUX',
+  'TRAVAUX_LANCES',
+];
+
 /** Index d'une phase dans la séquence canonique (-1 si hors séquence). */
 export function phaseIndex(phase: string | null | undefined): number {
   if (!phase) return -1;

@@ -1,5 +1,6 @@
 import 'server-only';
 import { prisma } from '@/lib/prisma';
+import { REPORT_DONE_MANUAL_PHASES } from '@/lib/crm/dossier';
 
 /**
  * Auto-clôture des relances dont le MOTIF est déjà résolu — pour que le tableau de
@@ -18,7 +19,14 @@ export async function closeResolvedRelances(): Promise<void> {
         type: 'RELANCE',
         done: false,
         content: { contains: 'Rapport à rédiger' },
-        contact: { rapports: { some: { status: 'ENVOYE' } } },
+        // Résolu si : un rapport est ENVOYÉ, OU le dossier a été réglé À LA MAIN sur
+        // Suivi/Terminé/Travaux (le gérant l'a marqué traité — fini de harceler).
+        contact: {
+          OR: [
+            { rapports: { some: { status: 'ENVOYE' } } },
+            { leads: { some: { manualPhase: { in: REPORT_DONE_MANUAL_PHASES } } } },
+          ],
+        },
       },
       data: { done: true, doneAt: new Date() },
     });
