@@ -13,6 +13,10 @@ export interface KpiData {
   ca: { signe: number; facture: number; encaisse: number; resteAEncaisser: number; tauxFacturation: number };
   /** « Pipe » : montant des devis ENVOYÉS en attente de réponse (CA potentiel). */
   pipe: { montant: number; nb: number };
+  /** Prévision pondérée : Σ probabilité(phase) × montant, sur les dossiers actifs. */
+  forecastPondere: number;
+  /** Performance par canal d'acquisition (leads, clients, taux de conversion). */
+  parCanal: { canal: string; leads: number; clients: number; taux: number }[];
   devis: { acceptes: number; emis: number; panierMoyen: number; tauxAcceptation: number };
   conversion: { prospects: number; clients: number; rate: number };
   rdvAVenir: number;
@@ -60,6 +64,26 @@ const FUNNEL: { key: string; label: string }[] = [
   { key: 'RAPPORT', label: 'Rapport à faire' },
   { key: 'SUIVI', label: 'Suivi' },
 ];
+
+/**
+ * Probabilité de gain par phase (prévision pondérée, façon Einstein/Pipedrive).
+ * Avant « Devis validé » c'est incertain ; après acceptation, c'est quasi acquis.
+ */
+const PHASE_WIN_PROBABILITY: Record<string, number> = {
+  NOUVEAU: 0.05,
+  A_RAPPELER: 0.05,
+  DEVIS_ENVOYE: 0.3,
+  DEVIS_VALIDE: 0.9,
+  GAGNE: 0.9,
+  RDV_PLANIFIE: 0.92,
+  VISITE_FAITE: 0.95,
+  FACTURE_ENVOYEE: 0.98,
+  PAIEMENT_RECU: 1,
+  RAPPORT: 1,
+  SUIVI: 1,
+  ACCOMPAGNEMENT_TRAVAUX: 1,
+  TRAVAUX_LANCES: 1,
+};
 
 const MONTHS_FR = [
   'janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin',
@@ -199,6 +223,9 @@ export async function computeKpis(): Promise<KpiData> {
     },
   });
   const phaseCount = new Map<string, number>();
+  // Prévision pondérée : Σ probabilité(phase) × montant du devis, sur les dossiers
+  // ACTIFS (ni Terminé, ni Perdu). Inspiré d'Einstein/Pipedrive forecast.
+  let forecastPondere = 0;
   for (const l of funnelLeads) {
     const dossier = computeDossier({
       devis: l.contact.devis.map((d) => ({
@@ -220,12 +247,52 @@ export async function computeKpis(): Promise<KpiData> {
     // « À rappeler » est fondu dans « Nouveau » (cf. pipeline).
     const key = dossier.phase === 'A_RAPPELER' ? 'NOUVEAU' : dossier.phase;
     phaseCount.set(key, (phaseCount.get(key) ?? 0) + 1);
+
+    if (dossier.phase !== 'TERMINE' && dossier.phase !== 'PERDU') {
+      const proba = PHASE_WIN_PROBABILITY[dossier.phase] ?? 0;
+      forecastPondere += proba * (dossier.montantDevis ?? 0);
+    }
   }
+  forecastPondere = Math.round(forecastPondere);
   const funnel = FUNNEL.map((f) => ({
     stage: f.key,
     label: f.label,
     count: phaseCount.get(f.key) ?? 0,
   }));
+
+  // ── Performance par canal d'acquisition (exploite l'attribution first-touch) ──
+  // 2 agrégats : total leads par canal + leads devenus CLIENT par canal (même
+  // critère que partout, cf. CLIENT_CONTACT_WHERE). Taux = clients / leads.
+  // NB : `channel` est une colonne récente — le client Prisma local peut être en
+  // retard de génération ; on type explicitement le résultat (forme garantie par
+  // Prisma : { channel, _count:number }) pour rester robuste et lisible.
+  type ChannelGroup = { channel: string | null; _count: number };
+  const [leadsByChannelRaw, clientsByChannelRaw] = await Promise.all([
+    prisma.lead.groupBy({ by: ['channel'], _count: true }),
+    prisma.lead.groupBy({
+      by: ['channel'],
+      _count: true,
+      where: { contact: CLIENT_CONTACT_WHERE },
+    }),
+  ]);
+  const leadsByChannel = leadsByChannelRaw as unknown as ChannelGroup[];
+  const clientsByChannel = clientsByChannelRaw as unknown as ChannelGroup[];
+  const clientsMap = new Map<string, number>(
+    clientsByChannel.map((c) => [c.channel ?? 'DIRECT', Number(c._count)])
+  );
+  const parCanal: { canal: string; leads: number; clients: number; taux: number }[] = leadsByChannel
+    .map((c) => {
+      const canal = c.channel ?? 'DIRECT';
+      const leads = Number(c._count);
+      const clientsN = clientsMap.get(canal) ?? 0;
+      return {
+        canal,
+        leads,
+        clients: clientsN,
+        taux: leads > 0 ? Math.round((clientsN / leads) * 1000) / 10 : 0,
+      };
+    })
+    .sort((a, b) => b.leads - a.leads);
 
   // ── Activité par diagnostiqueur ──
   // 3 requêtes au total (au lieu de N×3) : la liste + 2 groupBy agrégés en mémoire.
@@ -279,6 +346,8 @@ export async function computeKpis(): Promise<KpiData> {
       montant: n(pipeAgg._sum.totalHT),
       nb: pipeAgg._count,
     },
+    forecastPondere,
+    parCanal,
     devis: {
       acceptes: devisAcceptesCount,
       emis: devisEmisCount,

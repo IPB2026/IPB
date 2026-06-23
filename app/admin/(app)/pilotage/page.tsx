@@ -10,6 +10,8 @@ import {
   FileCheck2,
   Send,
   Receipt,
+  Gauge,
+  Radio,
 } from 'lucide-react';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import type { ReactNode } from 'react';
@@ -19,6 +21,15 @@ import { SERVICE_LABEL } from '@/components/admin/badges';
 import { PageHeader } from '@/components/admin/page-header';
 
 export const dynamic = 'force-dynamic';
+
+/** Libellés lisibles des canaux d'acquisition (cf. attribution first-touch). */
+const CANAL_LABEL: Record<string, string> = {
+  ADS: 'Publicité (Ads)',
+  SEO: 'Référencement (SEO)',
+  SOCIAL: 'Réseaux sociaux',
+  REFERRAL: 'Site référent',
+  DIRECT: 'Direct / inconnu',
+};
 
 export default async function PilotagePage() {
   await guardAdminPage();
@@ -55,13 +66,20 @@ export default async function PilotagePage() {
         <h2 className="mb-2.5 text-xs font-semibold uppercase tracking-wider text-slate-400">
           Chiffre d&apos;affaires (€ HT)
         </h2>
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-6">
           <Stat
             icon={Send}
             label="Pipe (devis en cours)"
             value={<Money value={kpi.pipe.montant} />}
             tone="text-blue-600"
             sub={`${kpi.pipe.nb} devis envoyé(s) à signer`}
+          />
+          <Stat
+            icon={Gauge}
+            label="Prévision pondérée"
+            value={<Money value={kpi.forecastPondere} />}
+            tone="text-indigo-600"
+            sub="CA attendu (pondéré par phase)"
           />
           <Stat
             icon={TrendingUp}
@@ -156,6 +174,42 @@ export default async function PilotagePage() {
               }))}
               tone="bg-orange-500"
             />
+          )}
+        </Panel>
+
+        {/* Performance par canal d'acquisition (exploite l'attribution) */}
+        <Panel title="Performance par canal d'acquisition">
+          {kpi.parCanal.length === 0 ? (
+            <Empty />
+          ) : (
+            <div className="overflow-hidden">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-slate-200 text-left text-[11px] font-medium uppercase tracking-wider text-slate-400">
+                    <th className="py-2">
+                      <span className="inline-flex items-center gap-1.5">
+                        <Radio className="h-3.5 w-3.5" /> Canal
+                      </span>
+                    </th>
+                    <th className="py-2 text-right">Leads</th>
+                    <th className="py-2 text-right">Clients</th>
+                    <th className="py-2 text-right">Conversion</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {kpi.parCanal.map((c) => (
+                    <tr key={c.canal}>
+                      <td className="py-2 font-medium text-slate-700">{CANAL_LABEL[c.canal] ?? c.canal}</td>
+                      <td className="py-2 text-right tabular-nums text-slate-600">{c.leads}</td>
+                      <td className="py-2 text-right tabular-nums text-slate-600">{c.clients}</td>
+                      <td className="py-2 text-right tabular-nums font-semibold text-emerald-600">
+                        {c.taux} %
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           )}
         </Panel>
 

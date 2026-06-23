@@ -43,6 +43,7 @@ import { updateAppointmentStatus } from '@/app/admin/(app)/agenda/actions';
 import { RelanceControl } from '@/components/admin/relance-control';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 import { CallButton } from '@/components/admin/call-button';
+import { AssistantIPB } from '@/components/admin/assistant-ipb';
 
 export const dynamic = 'force-dynamic';
 
@@ -359,6 +360,11 @@ export default async function ClientFichePage({
           })}
         </ol>
       </Card>
+
+      {/* Assistant IPB — copilote IA (résumé + action + brouillon e-mail) */}
+      {isAdmin && (
+        <AssistantIPB contactId={c.id} clientEmail={c.email} />
+      )}
 
       {/* Prochaine étape — fil conducteur du dossier (pilotage ADMIN) */}
       {isAdmin && next && (
