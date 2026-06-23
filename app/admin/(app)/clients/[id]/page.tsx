@@ -26,14 +26,15 @@ import { computeDossier } from '@/lib/crm/dossier';
 import { Avatar } from '@/components/admin/avatar';
 import { ContactEditForm } from '@/components/admin/contact-edit-form';
 import { PayloadView } from '@/components/admin/payload-view';
-import { StageBadge, PhaseBadge, PHASE_LABEL, PIPELINE_FLOW } from '@/components/admin/badges';
+import { PhaseBadge, PHASE_LABEL, MANUAL_PHASE_OPTIONS, STEP_TO_PHASE } from '@/components/admin/badges';
 import {
   changeStage,
+  clearManualPhase,
   assignLead,
   scheduleRelance,
   addActivity,
 } from '@/app/admin/(app)/leads/actions';
-import { acceptDevis } from '@/app/admin/(app)/devis/actions';
+import { acceptDevis, quickCreateDevis } from '@/app/admin/(app)/devis/actions';
 import { recordFacturePayment } from '@/app/admin/(app)/factures/actions';
 import { sendFacture, sendRapport } from '@/app/admin/(app)/send-actions';
 import { archiveContact } from '@/app/admin/(app)/contact-actions';
@@ -163,6 +164,7 @@ export default async function ClientFichePage({
     })),
     appointments: c.appointments.map((a) => ({ type: a.type, status: a.status })),
     stage: lead?.stage ?? null,
+    manualPhase: lead?.manualPhase ?? null,
     rapportEnvoyeAt: c.rapports.find((r) => r.status === 'ENVOYE')?.updatedAt ?? null,
   });
 
@@ -172,10 +174,13 @@ export default async function ClientFichePage({
   const devisAccepte = c.devis.some((d) => d.status === 'ACCEPTE');
   const canAssign = devisAccepte || Boolean(lead?.assignedToId);
   const experts = isAdmin && lead && canAssign ? await listExperts() : [];
-  // Sélecteur d'étape aligné sur le pipeline : on affiche la phase COURANTE du
-  // dossier (A_RAPPELER replié sur Nouveau, comme dans le pipeline).
-  const stageSel = dossier.phase === 'A_RAPPELER' ? 'NOUVEAU' : dossier.phase;
-  const stageInFlow = PIPELINE_FLOW.some((p) => p.phase === stageSel);
+  // Sélecteur d'étape : on présélectionne la phase COURANTE du dossier. En mode
+  // manuel, c'est la phase forcée ; sinon la phase dérivée des artefacts.
+  const stageSel = dossier.phase === 'A_RAPPELER' ? 'A_RAPPELER' : dossier.phase;
+  // Le dossier est-il piloté À LA MAIN (override actif) ou en suivi automatique ?
+  const isManual = Boolean(lead?.manualPhase);
+  // La phase courante figure-t-elle dans la liste déroulante ? (sinon on l'ajoute)
+  const stageInOptions = MANUAL_PHASE_OPTIONS.some((p) => p.phase === stageSel);
   const diagnostiqueur = lead?.assignedTo?.name || lead?.assignedTo?.email || '—';
   const adresse =
     [c.address, [c.postalCode, c.city].filter(Boolean).join(' ')]
@@ -298,11 +303,17 @@ export default async function ClientFichePage({
         </div>
       </div>
 
-      {/* Suivi de dossier */}
+      {/* Suivi de dossier — chaque palier est cliquable (ADMIN) : un clic règle la
+          phase à cette étape (liberté totale, sans passer par le menu déroulant). */}
       <Card title="Suivi du dossier">
+        {isAdmin && lead && (
+          <p className="mb-3 text-xs text-slate-400">
+            Cliquez sur une étape pour y placer le dossier directement.
+          </p>
+        )}
         <ol className="flex flex-wrap gap-x-2 gap-y-3">
-          {dossier.steps.map((s, i) => (
-            <li key={s.key} className="flex items-center gap-2">
+          {dossier.steps.map((s, i) => {
+            const dot = (
               <span
                 className={`flex h-5 w-5 items-center justify-center rounded-full ${
                   s.done
@@ -314,18 +325,38 @@ export default async function ClientFichePage({
               >
                 {s.done ? <Check className="h-3 w-3" /> : <Circle className="h-2 w-2 fill-current" />}
               </span>
-              <span
-                className={`text-xs ${
-                  s.current ? 'font-semibold text-orange-700' : s.done ? 'text-slate-700' : 'text-slate-400'
-                }`}
-              >
-                {s.label}
-              </span>
-              {i < dossier.steps.length - 1 && (
-                <span className="ml-1 hidden h-px w-5 bg-slate-200 sm:block" />
-              )}
-            </li>
-          ))}
+            );
+            const labelCls = `text-xs ${
+              s.current ? 'font-semibold text-orange-700' : s.done ? 'text-slate-700' : 'text-slate-400'
+            }`;
+            const targetPhase = STEP_TO_PHASE[s.key];
+            return (
+              <li key={s.key} className="flex items-center gap-2">
+                {isAdmin && lead && targetPhase ? (
+                  <form action={changeStage}>
+                    <input type="hidden" name="leadId" value={lead.id} />
+                    <input type="hidden" name="stage" value={targetPhase} />
+                    <button
+                      type="submit"
+                      title={`Placer le dossier à : ${s.label}`}
+                      className="flex items-center gap-2 rounded-md px-1 py-0.5 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
+                    >
+                      {dot}
+                      <span className={labelCls}>{s.label}</span>
+                    </button>
+                  </form>
+                ) : (
+                  <>
+                    {dot}
+                    <span className={labelCls}>{s.label}</span>
+                  </>
+                )}
+                {i < dossier.steps.length - 1 && (
+                  <span className="ml-1 hidden h-px w-5 bg-slate-200 sm:block" />
+                )}
+              </li>
+            );
+          })}
         </ol>
       </Card>
 
@@ -348,15 +379,24 @@ export default async function ClientFichePage({
         </div>
       )}
 
-      {/* Actions : diagnostiqueur, relance, activité, statut (ADMIN).
-          L'étape du pipeline n'est PLUS réglée à la main ici : elle découle
-          automatiquement du dossier (devis envoyé → RDV → visite → facture →
-          rapport). On garde seulement l'action humaine « perdu / rouvrir ». */}
+      {/* Actions : étape (TOUTE phase réglable à la main), diagnostiqueur, relance,
+          activité, statut (ADMIN). Liberté totale : le réglage manuel pose un
+          override (lead.manualPhase) qui prime sur la dérivation automatique ; un
+          bouton « revenir au suivi auto » la rend de nouveau déduite des documents. */}
       {isAdmin && lead && (
         <section className="rounded-xl border border-slate-200 bg-white p-5">
           <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
             <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
-              Actions <StageBadge stage={lead.stage} />
+              Actions <PhaseBadge phase={dossier.phase} />
+              {isManual ? (
+                <span className="rounded-full bg-orange-50 px-2 py-0.5 text-[10px] font-semibold normal-case tracking-normal text-orange-700 ring-1 ring-orange-600/10">
+                  réglé à la main
+                </span>
+              ) : (
+                <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium normal-case tracking-normal text-slate-500">
+                  suivi auto
+                </span>
+              )}
               <Link
                 href="/admin/pipeline"
                 className="text-[11px] font-medium normal-case tracking-normal text-orange-600 hover:underline"
@@ -364,31 +404,48 @@ export default async function ClientFichePage({
                 voir le pipeline →
               </Link>
             </h2>
-            <form action={changeStage}>
-              <input type="hidden" name="leadId" value={lead.id} />
-              <input
-                type="hidden"
-                name="stage"
-                value={lead.stage === 'PERDU' ? 'A_RAPPELER' : 'PERDU'}
-              />
-              <button
-                type="submit"
-                className={`rounded-lg border px-3 py-1.5 text-xs font-medium ${
-                  lead.stage === 'PERDU'
-                    ? 'border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100'
-                    : 'border-slate-300 text-slate-500 hover:bg-slate-50'
-                }`}
-              >
-                {lead.stage === 'PERDU' ? 'Rouvrir le dossier' : 'Marquer perdu'}
-              </button>
-            </form>
+            <div className="flex flex-wrap items-center gap-2">
+              {isManual && (
+                <form action={clearManualPhase}>
+                  <input type="hidden" name="leadId" value={lead.id} />
+                  <button
+                    type="submit"
+                    className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-50"
+                  >
+                    Revenir au suivi auto
+                  </button>
+                </form>
+              )}
+              {lead.stage === 'PERDU' ? (
+                <form action={clearManualPhase}>
+                  <input type="hidden" name="leadId" value={lead.id} />
+                  <button
+                    type="submit"
+                    className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-xs font-medium text-emerald-700 hover:bg-emerald-100"
+                  >
+                    Rouvrir le dossier
+                  </button>
+                </form>
+              ) : (
+                <form action={changeStage}>
+                  <input type="hidden" name="leadId" value={lead.id} />
+                  <input type="hidden" name="stage" value="PERDU" />
+                  <button
+                    type="submit"
+                    className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-50"
+                  >
+                    Marquer perdu
+                  </button>
+                </form>
+              )}
+            </div>
           </div>
           <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
             <div className="space-y-4">
               <form action={changeStage} className="space-y-2">
                 <input type="hidden" name="leadId" value={lead.id} />
                 <label className="block text-sm font-medium text-slate-700">
-                  Faire évoluer l&apos;étape
+                  Régler l&apos;étape (manuel)
                 </label>
                 <div className="flex flex-wrap gap-2">
                   <select
@@ -396,19 +453,17 @@ export default async function ClientFichePage({
                     defaultValue={stageSel}
                     className="h-10 flex-1 rounded-lg border border-slate-300 px-3 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
                   >
-                    {/* MÊMES phases que la page Pipeline (PIPELINE_FLOW). Les étapes
-                        amont sont réglables à la main ; celles après la visite
-                        (facture, paiement, rapport, suivi) avancent AUTOMATIQUEMENT
-                        → affichées mais désactivées. */}
-                    {!stageInFlow && (
-                      <option value={stageSel} disabled>
+                    {/* LIBERTÉ TOTALE : toutes les phases sont réglables à la main,
+                        même celles habituellement déduites (facture, paiement,
+                        rapport…). Aucun document n'est requis pour cocher une étape. */}
+                    {!stageInOptions && (
+                      <option value={stageSel}>
                         {PHASE_LABEL[stageSel] ?? stageSel} · état actuel
                       </option>
                     )}
-                    {PIPELINE_FLOW.map((p) => (
-                      <option key={p.phase} value={p.phase} disabled={!p.editable}>
-                        {PHASE_LABEL[p.phase]}
-                        {p.editable ? '' : ' · auto'}
+                    {MANUAL_PHASE_OPTIONS.map((p) => (
+                      <option key={p.phase} value={p.phase}>
+                        {p.label}
                       </option>
                     ))}
                   </select>
@@ -420,11 +475,55 @@ export default async function ClientFichePage({
                   </button>
                 </div>
                 <p className="text-xs text-slate-400">
-                  Ce sont les étapes de la page Pipeline. Après la visite, elles
-                  avancent toutes seules dès que vous créez le document (facture,
-                  paiement, rapport…) — vous ne réglez que l&apos;amont.
+                  Vous réglez n&apos;importe quelle étape librement — sans avoir à
+                  générer le document correspondant. Votre choix prime sur l&apos;avancement
+                  automatique jusqu&apos;à ce que vous cliquiez « revenir au suivi auto ».
                 </p>
               </form>
+
+              {/* Devis express : créer un devis diagnostic en 2 clics (service +
+                  montant) sans passer par la page dédiée. Redirige vers le devis
+                  créé (brouillon) pour relecture/envoi. */}
+              <form action={quickCreateDevis} className="space-y-2">
+                <input type="hidden" name="contactId" value={c.id} />
+                <input type="hidden" name="leadId" value={lead.id} />
+                <label className="block text-sm font-medium text-slate-700">
+                  Devis express
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  <select
+                    name="serviceType"
+                    defaultValue="FISSURES"
+                    className="h-10 flex-1 rounded-lg border border-slate-300 px-3 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                  >
+                    <option value="FISSURES">Fissures</option>
+                    <option value="HUMIDITE">Humidité</option>
+                    <option value="EXPERTISE_ACHAT">Expertise achat</option>
+                    <option value="MUR_PORTEUR">Mur porteur</option>
+                  </select>
+                  <input
+                    name="prix"
+                    type="number"
+                    min="1"
+                    step="1"
+                    inputMode="numeric"
+                    placeholder="€ HT"
+                    aria-label="Montant HT du devis"
+                    className="h-10 w-28 rounded-lg border border-slate-300 px-3 text-base sm:text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                  />
+                  <button
+                    type="submit"
+                    className="h-10 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white hover:bg-orange-700"
+                  >
+                    Créer
+                  </button>
+                </div>
+                <p className="text-xs text-slate-400">
+                  Crée un devis diagnostic en brouillon et l&apos;ouvre pour relecture
+                  puis envoi.
+                </p>
+              </form>
+
               {canAssign ? (
                 <form action={assignLead} className="space-y-2">
                   <input type="hidden" name="leadId" value={lead.id} />
@@ -569,6 +668,21 @@ export default async function ClientFichePage({
                 <Row label="Statut" value={OCCUPANT_LABEL[c.occupantStatus]} />
                 <Row label="Type de bien" value={c.propertyType} />
                 {lead && <Row label="Demande" value={lead.summary} />}
+                {isAdmin && lead && (lead.channel || lead.utmSource || lead.utmCampaign) && (
+                  <Row
+                    label="Origine"
+                    value={[
+                      lead.channel,
+                      lead.utmSource,
+                      lead.utmCampaign && `« ${lead.utmCampaign} »`,
+                    ]
+                      .filter(Boolean)
+                      .join(' · ')}
+                  />
+                )}
+                {isAdmin && lead?.landingPage && (
+                  <Row label="Page d'arrivée" value={lead.landingPage} />
+                )}
               </div>
             </dl>
             <details className="mt-3 border-t border-slate-100 pt-3 [&_summary::-webkit-details-marker]:hidden">

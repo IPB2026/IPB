@@ -47,6 +47,9 @@ export async function GET(req: Request) {
     where: {
       relanceStep: { lt: STEPS.length },
       stage: { in: ['NOUVEAU', 'A_RAPPELER', 'RDV_PLANIFIE'] },
+      // « Liberté totale » : un dossier piloté À LA MAIN (phase forcée) ne reçoit
+      // plus la séquence d'e-mails de relance automatique — c'est vous qui menez.
+      manualPhase: null,
       contact: { email: { not: null }, archivedAt: null }, // pas de relance aux clients à la corbeille
     },
     include: { contact: true },
@@ -107,7 +110,8 @@ export async function GET(req: Request) {
   // FIABLE depuis la migration relance_tracking : on s'appuie sur les champs
   // Devis.sentAt (date d'envoi) et Devis.relanceCount (compteur), au lieu d'un
   // matching de texte sur les activités. Stop dès que le devis quitte ENVOYE.
-  // 3 relances sans réponse → dossier PERDU (markDevisLost).
+  // 3 relances sans réponse → tâche de décision (perdu/relancer ?), JAMAIS de
+  // passage automatique en PERDU (markDevisLost crée désormais un rappel).
   const DEVIS_STEPS = [3, 7, 14] as const;
   let devisSent = 0;
   try {

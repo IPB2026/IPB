@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ReceiptText, Download, Plus, Trash2 } from 'lucide-react';
+import { ReceiptText, Download, Plus, Trash2, BadgeEuro } from 'lucide-react';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
@@ -8,7 +8,7 @@ import { MobileCardList, MobileCardRow } from '@/components/admin/mobile-card';
 import { FactureStatusBadge, SERVICE_LABEL } from '@/components/admin/badges';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 import { RelanceControl } from '@/components/admin/relance-control';
-import { deleteFacture } from '@/app/admin/(app)/factures/actions';
+import { deleteFacture, recordFacturePayment } from '@/app/admin/(app)/factures/actions';
 import { Money } from '@/components/admin/money';
 
 export const dynamic = 'force-dynamic';
@@ -109,6 +109,18 @@ export default async function FacturesListPage() {
                 action={
                   <div className="flex items-center gap-1">
                     {f.status === 'ENVOYEE' && !paid && (
+                      <form action={recordFacturePayment}>
+                        <input type="hidden" name="factureId" value={f.id} />
+                        <input type="hidden" name="montant" value={solde} />
+                        <ConfirmSubmit
+                          message={`Marquer la facture ${f.number} comme payée (solde ${solde.toLocaleString('fr-FR')} €) ?`}
+                          className="inline-flex h-11 w-11 sm:h-9 sm:w-9 items-center justify-center rounded-lg text-emerald-600 active:bg-emerald-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+                        >
+                          <BadgeEuro className="h-4 w-4" />
+                        </ConfirmSubmit>
+                      </form>
+                    )}
+                    {f.status === 'ENVOYEE' && !paid && (
                       <RelanceControl
                         kind="facture"
                         id={f.id}
@@ -196,6 +208,18 @@ export default async function FacturesListPage() {
                     </td>
                     <td className="px-5 py-3">
                       <div className="flex items-center justify-end gap-1.5">
+                        {!paid && f.status !== 'ANNULEE' && (
+                          <form action={recordFacturePayment}>
+                            <input type="hidden" name="factureId" value={f.id} />
+                            <input type="hidden" name="montant" value={solde} />
+                            <ConfirmSubmit
+                              message={`Marquer la facture ${f.number} comme payée (solde ${solde.toLocaleString('fr-FR')} €) ?`}
+                              className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-emerald-600 hover:bg-emerald-50"
+                            >
+                              <BadgeEuro className="h-4 w-4" />
+                            </ConfirmSubmit>
+                          </form>
+                        )}
                         {f.status === 'ENVOYEE' && !paid && (
                           <RelanceControl
                             kind="facture"

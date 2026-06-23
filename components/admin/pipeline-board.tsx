@@ -21,9 +21,12 @@ export interface PipelineColumn {
   stage: string;
   label: string;
   leads: PipelineCard[];
-  /** Colonne dérivée du dossier (Facturé, Rapport envoyé) : lecture seule,
-   *  pas de déplacement (elle reflète l'avancement réel, pas une étape manuelle). */
+  /** Colonne en lecture seule (aucun dépôt). Conservé pour compat — plus utilisé
+   *  par défaut depuis la « liberté totale » (toutes les étapes sont déposables). */
   readOnly?: boolean;
+  /** Colonne hors navigation par flèches ◄ ► (ex. « Perdu ») : déposable, mais
+   *  pas dans la séquence linéaire d'avancement pas-à-pas. */
+  noArrow?: boolean;
 }
 
 const eur = (n: number) =>
@@ -62,8 +65,9 @@ export function PipelineBoard({ columns }: { columns: PipelineColumn[] }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sig]);
 
-  // Séquence des étapes déplaçables = colonnes modifiables (non lecture seule).
-  const stages = board.filter((c) => !c.readOnly).map((c) => c.stage);
+  // Séquence des étapes pour la navigation ◄ ► : colonnes déposables ET dans le
+  // flux linéaire (on exclut « Perdu » et toute colonne hors-flux).
+  const stages = board.filter((c) => !c.readOnly && !c.noArrow).map((c) => c.stage);
 
   const move = (leadId: string, toStage: string) => {
     // 1) Optimiste : on déplace la carte localement, tout de suite. Tri stable
@@ -106,8 +110,10 @@ export function PipelineBoard({ columns }: { columns: PipelineColumn[] }) {
       {board.map((col) => (
         <div
           key={col.stage}
-          className={`flex w-64 shrink-0 flex-col rounded-xl border bg-slate-50 ${
-            col.readOnly ? 'border-emerald-200 bg-emerald-50/40' : 'border-slate-200'
+          className={`flex w-64 shrink-0 flex-col rounded-xl border ${
+            col.stage === 'PERDU'
+              ? 'border-dashed border-slate-300 bg-slate-100/60'
+              : 'border-slate-200 bg-slate-50'
           }`}
           onDragOver={(e) => {
             if (dragId && !col.readOnly) e.preventDefault();
@@ -137,7 +143,9 @@ export function PipelineBoard({ columns }: { columns: PipelineColumn[] }) {
           </div>
           <div className="flex-1 space-y-2 p-2">
             {col.leads.length === 0 ? (
-              <p className="px-1 py-2 text-xs text-slate-300">Aucun</p>
+              <p className="px-1 py-2 text-xs text-slate-300">
+                {col.stage === 'PERDU' ? 'Glisser ici pour marquer perdu' : 'Aucun'}
+              </p>
             ) : (
               col.leads.map((l) => {
                 const idx = stages.indexOf(col.stage);

@@ -156,6 +156,25 @@ model Lead {
   value     Decimal? @db.Decimal(10, 2) // valeur estimée / réelle du dossier
   lostReason String?
 
+  // Phase forcée MANUELLEMENT (override). null = suivi automatique (phase dérivée
+  // des artefacts). Si renseignée, elle prime sur la dérivation partout (fiche,
+  // pipeline, liste, pilotage) — « liberté totale » : un bouton « revenir au
+  // suivi auto » la remet à null. Valeurs = clés de phase dossier (cf. PHASE_LABEL).
+  manualPhase String?
+
+  // Attribution d'acquisition (first-touch) — d'où vient le lead. Capturé via un
+  // cookie première visite puis figé à la création du lead. Permet de piloter le
+  // canal (Ads/SEO/Direct) et le ROI directement dans le CRM.
+  utmSource   String?
+  utmMedium   String?
+  utmCampaign String?
+  utmTerm     String?
+  utmContent  String?
+  gclid       String? // identifiant de clic Google Ads
+  landingPage String? // 1ʳᵉ page d'arrivée (chemin)
+  referrer    String? // referrer HTTP de la 1ʳᵉ visite
+  channel     String? // canal normalisé : ADS / SEO / SOCIAL / REFERRAL / DIRECT
+
   // Séquence de relance e-mail automatique (J+1/3/7/14)
   relanceStep   Int       @default(0) // nb d'étapes de relance déjà envoyées
   relanceLastAt DateTime?

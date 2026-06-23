@@ -64,6 +64,45 @@ export const PIPELINE_FLOW: { phase: string; editable: boolean }[] = [
   { phase: 'SUIVI', editable: false },
 ];
 
+/**
+ * Options du sélecteur « Faire évoluer l'étape » de la fiche client — TOUTES les
+ * phases sont réglables À LA MAIN (« liberté totale »). Le réglage pose un override
+ * (lead.manualPhase) qui prime sur la dérivation automatique ; un bouton « revenir
+ * au suivi auto » l'efface. PERDU a son propre bouton (Marquer perdu / Rouvrir).
+ */
+/**
+ * Phase à régler quand on clique DIRECTEMENT sur un palier du « Suivi du dossier »
+ * (fiche client). Permet de sauter à n'importe quelle étape d'un clic — liberté
+ * totale, sans passer par le menu déroulant. Clé de palier (DossierStep.key) →
+ * clé de phase.
+ */
+export const STEP_TO_PHASE: Record<string, string> = {
+  devis: 'DEVIS_ENVOYE',
+  client: 'RDV_PLANIFIE',
+  rdv: 'RDV_PLANIFIE',
+  visite: 'VISITE_FAITE',
+  facture: 'FACTURE_ENVOYEE',
+  paiement: 'PAIEMENT_RECU',
+  rapport: 'SUIVI',
+  suivi: 'TERMINE',
+  devis_travaux: 'ACCOMPAGNEMENT_TRAVAUX',
+  travaux: 'TRAVAUX_LANCES',
+};
+
+export const MANUAL_PHASE_OPTIONS: { phase: string; label: string }[] = [
+  { phase: 'NOUVEAU', label: 'Nouveau' },
+  { phase: 'A_RAPPELER', label: 'À rappeler' },
+  { phase: 'DEVIS_ENVOYE', label: 'Devis envoyé' },
+  { phase: 'RDV_PLANIFIE', label: 'RDV planifié' },
+  { phase: 'VISITE_FAITE', label: 'Visite réalisée' },
+  { phase: 'FACTURE_ENVOYEE', label: 'Facture envoyée' },
+  { phase: 'PAIEMENT_RECU', label: 'Paiement reçu' },
+  { phase: 'RAPPORT', label: 'Rapport à faire' },
+  { phase: 'SUIVI', label: 'Rapport transmis / suivi' },
+  { phase: 'TERMINE', label: 'Terminé' },
+  { phase: 'GAGNE', label: 'Gagné' },
+];
+
 export const SOURCE_LABEL: Record<LeadSource, string> = {
   DIAGNOSTIC: 'Diagnostic',
   CALCULATEUR: 'Calculateur',

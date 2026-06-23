@@ -6,6 +6,8 @@ import {
   LeadTier,
   OccupantStatus,
 } from '@prisma/client';
+import { normalizePhoneFR, phoneVariants } from '@/lib/crm/phone';
+import type { Attribution } from '@/lib/crm/attribution';
 
 /**
  * Capture d'un lead dans le CRM.
@@ -45,6 +47,8 @@ export interface CaptureLeadInput {
   summary?: string;
   payload: Record<string, unknown>;
   value?: number | null;
+  /** Attribution d'acquisition first-touch (lue depuis le cookie côté serveur). */
+  attribution?: Attribution | null;
 }
 
 const clean = (v?: string | null): string | null => {
@@ -86,13 +90,18 @@ export async function captureLead(
 ): Promise<CaptureLeadResult | null> {
   try {
     const email = normEmail(input.contact.email);
-    const phone = clean(input.contact.phone);
+    // Téléphone stocké au format CANONIQUE E.164 (+33…) → plus de doublons dus au
+    // formatage (« 06 12 … » vs « 0612… » vs « +33 6 … »).
+    const phone = normalizePhoneFR(input.contact.phone);
     const name = clean(input.contact.name) ?? 'Contact sans nom';
 
-    // 1) Retrouver un contact existant par email ou téléphone
-    const orClauses: Array<Record<string, string>> = [];
+    // 1) Retrouver un contact existant par email OU par l'une des variantes du
+    //    téléphone (national / E.164 / chiffres bruts) — pour rattraper les fiches
+    //    déjà enregistrées sous un autre format avant la normalisation.
+    const orClauses: Array<Record<string, unknown>> = [];
     if (email) orClauses.push({ email });
-    if (phone) orClauses.push({ phone });
+    const variants = phoneVariants(input.contact.phone);
+    if (variants.length) orClauses.push({ phone: { in: variants } });
 
     const existing = orClauses.length
       ? await prisma.contact.findFirst({ where: { OR: orClauses } })
@@ -131,7 +140,8 @@ export async function captureLead(
       contactId = created.id;
     }
 
-    // 2) Créer le lead
+    // 2) Créer le lead (avec l'attribution d'acquisition first-touch si dispo)
+    const attr = input.attribution ?? null;
     const lead = await prisma.lead.create({
       data: {
         contactId,
@@ -146,6 +156,15 @@ export async function captureLead(
         summary: clean(input.summary),
         payload: input.payload as object,
         value: input.value ?? null,
+        utmSource: attr?.utmSource ?? null,
+        utmMedium: attr?.utmMedium ?? null,
+        utmCampaign: attr?.utmCampaign ?? null,
+        utmTerm: attr?.utmTerm ?? null,
+        utmContent: attr?.utmContent ?? null,
+        gclid: attr?.gclid ?? null,
+        landingPage: attr?.landingPage ?? null,
+        referrer: attr?.referrer ?? null,
+        channel: attr?.channel ?? null,
       },
     });
 

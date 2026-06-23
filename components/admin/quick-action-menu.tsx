@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { MoreHorizontal, User, Phone, FileText, Receipt } from 'lucide-react';
+import { MoreHorizontal, User, Phone, FileText, Receipt, XCircle } from 'lucide-react';
+import { changeStage } from '@/app/admin/(app)/leads/actions';
 
 /**
  * Menu d'actions rapides par ligne (pattern Salesforce/HubSpot) : ouvrir la
@@ -68,6 +69,19 @@ export function QuickActionMenu({
             >
               <Receipt className="h-4 w-4 text-slate-400" /> Créer une facture
             </Link>
+            {leadId && (
+              <form action={changeStage} className="border-t border-slate-100">
+                <input type="hidden" name="leadId" value={leadId} />
+                <input type="hidden" name="stage" value="PERDU" />
+                <button
+                  type="submit"
+                  onClick={() => setOpen(false)}
+                  className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-slate-600 hover:bg-slate-50"
+                >
+                  <XCircle className="h-4 w-4 text-slate-400" /> Marquer perdu
+                </button>
+              </form>
+            )}
           </div>
         </>
       )}

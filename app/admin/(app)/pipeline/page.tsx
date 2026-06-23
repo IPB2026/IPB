@@ -8,19 +8,19 @@ import { PipelineBoard, type PipelineColumn } from '@/components/admin/pipeline-
 
 export const dynamic = 'force-dynamic';
 
-// Colonnes modifiables à la main (étapes amont du cycle diagnostic).
+// LIBERTÉ TOTALE : toutes les colonnes du flux sont désormais déposables — on peut
+// glisser une carte dans n'importe quelle étape, y compris celles habituellement
+// déduites des documents (facture, paiement, rapport, suivi). Le dépôt pose un
+// override manuel (lead.manualPhase) qui prime sur l'avancement automatique.
 const EDITABLE: { stage: string; label: string; phases: string[] }[] = [
   { stage: 'NOUVEAU', label: 'Nouveau', phases: ['NOUVEAU', 'A_RAPPELER'] },
   { stage: 'DEVIS_ENVOYE', label: 'Devis envoyé', phases: ['DEVIS_ENVOYE'] },
   { stage: 'RDV_PLANIFIE', label: 'RDV planifié', phases: ['RDV_PLANIFIE'] },
   { stage: 'VISITE_FAITE', label: 'Visite réalisée', phases: ['VISITE_FAITE'] },
-];
-// Colonnes dérivées des artefacts (lecture seule, avancement automatique).
-const DERIVED: { stage: string; label: string }[] = [
-  { stage: 'FACTURE_ENVOYEE', label: 'Facture envoyée' },
-  { stage: 'PAIEMENT_RECU', label: 'Paiement reçu' },
-  { stage: 'RAPPORT', label: 'Rapport à faire' },
-  { stage: 'SUIVI', label: 'Suivi (2 sem.)' },
+  { stage: 'FACTURE_ENVOYEE', label: 'Facture envoyée', phases: ['FACTURE_ENVOYEE'] },
+  { stage: 'PAIEMENT_RECU', label: 'Paiement reçu', phases: ['PAIEMENT_RECU'] },
+  { stage: 'RAPPORT', label: 'Rapport à faire', phases: ['RAPPORT'] },
+  { stage: 'SUIVI', label: 'Suivi (2 sem.)', phases: ['SUIVI'] },
 ];
 // Branche travaux (distincte du diagnostic), affichée seulement si peuplée.
 const TRAVAUX: { stage: string; label: string }[] = [
@@ -53,6 +53,7 @@ export default async function PipelinePage() {
         id: true,
         contactId: true,
         stage: true,
+        manualPhase: true,
         service: true,
         contact: {
           select: {
@@ -87,6 +88,7 @@ export default async function PipelinePage() {
         })),
         appointments: r.contact.appointments.map((a) => ({ type: a.type, status: a.status })),
         stage: r.stage,
+        manualPhase: r.manualPhase,
         rapportEnvoyeAt: rapportEnvoye?.updatedAt ?? null,
       });
       return {
@@ -111,14 +113,17 @@ export default async function PipelinePage() {
 
   const columns: PipelineColumn[] = [
     ...EDITABLE.map((col) => ({ stage: col.stage, label: col.label, leads: inPhase(col.phases) })),
-    ...DERIVED.map((d) => ({ stage: d.stage, label: d.label, readOnly: true, leads: inPhase([d.stage]) })),
-    // Branche travaux : seulement si au moins un dossier y est.
+    // Branche travaux : déposable aussi, mais affichée seulement si au moins un
+    // dossier y est (pour ne pas encombrer la majorité des pipelines).
     ...TRAVAUX.filter((t) => cards.some((c) => c.phase === t.stage)).map((t) => ({
       stage: t.stage,
       label: t.label,
-      readOnly: true,
       leads: inPhase([t.stage]),
     })),
+    // Colonne « Perdu » : cible de dépôt pour clore un dossier d'un glissement.
+    // Hors navigation par flèches (noArrow) ; les dossiers perdus quittent ensuite
+    // le pipeline (filtrés à la requête). Vide par construction → action seulement.
+    { stage: 'PERDU', label: 'Perdu', noArrow: true, leads: [] },
   ];
 
   const actifs = cards.filter((c) => c.phase !== 'TERMINE');

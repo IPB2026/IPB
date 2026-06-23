@@ -114,6 +114,16 @@ export async function createDevis(
   redirect(`/admin/devis/${devis.id}`);
 }
 
+/**
+ * « Devis express » depuis la fiche client : même création que `createDevis`, mais
+ * appelable directement comme action de formulaire (signature `(formData)`), sans
+ * passer par la page `/devis/nouveau`. Redirige vers le devis créé (BROUILLON) pour
+ * relecture/envoi en 1 clic. Réduit la création de devis de 5 clics à 2.
+ */
+export async function quickCreateDevis(formData: FormData): Promise<void> {
+  await createDevis(undefined, formData);
+}
+
 /** Génère (sans persister) le contenu d'un devis sur-mesure depuis un besoin libre. */
 export async function suggestDevisContent(
   besoin: string,

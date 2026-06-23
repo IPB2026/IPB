@@ -12,6 +12,8 @@ import {
   type CaptureLeadScoring,
 } from '@/lib/crm/captureLead';
 import { notifyExpertAssigned } from '@/lib/crm/notify';
+import { isValidPhase } from '@/lib/crm/dossier';
+import { PHASE_LABEL } from '@/components/admin/badges';
 import {
   scoreQualification,
   QUAL_OPTIONS,
@@ -192,25 +194,36 @@ export async function createProspect(
 // Actions de suivi (Phase 1) — pipeline, activités, relances
 // ─────────────────────────────────────────────────────────────────
 
-/** Change l'étape du pipeline + journalise le changement. */
-export async function changeStage(formData: FormData) {
-  await requireUser();
-  const leadId = String(formData.get('leadId') ?? '');
-  const stage = String(formData.get('stage') ?? '');
-  const lostReason = String(formData.get('lostReason') ?? '').trim();
-  if (!leadId || !(stage in PipelineStage)) return;
-
+/**
+ * Cœur du réglage MANUEL d'étape (« liberté totale »). Pose `manualPhase` = la
+ * phase choisie — elle prime DÉSORMAIS sur la dérivation automatique, partout
+ * (fiche, pipeline, liste, pilotage). Quand la phase correspond aussi à une
+ * étape de l'enum (NOUVEAU, RDV_PLANIFIE, PERDU, GAGNE…), on synchronise
+ * `lead.stage` pour garder cohérents le badge d'étape et les filtres (cron,
+ * pipeline qui exclut PERDU). Journalise le changement.
+ */
+async function applyManualPhase(
+  leadId: string,
+  phase: string,
+  lostReason = ''
+): Promise<void> {
+  if (!leadId || !isValidPhase(phase)) return;
   const current = await prisma.lead.findUnique({
     where: { id: leadId },
-    select: { stage: true, contactId: true },
+    select: { stage: true, manualPhase: true, contactId: true },
   });
-  if (!current || current.stage === stage) return;
+  if (!current || current.manualPhase === phase) return;
+
+  // Synchronise l'enum lead.stage SI la phase a un équivalent enum (sinon on n'y
+  // touche pas : ex. FACTURE_ENVOYEE/RAPPORT sont des phases sans valeur enum).
+  const enumStage = phase in PipelineStage ? (phase as PipelineStage) : undefined;
 
   await prisma.lead.update({
     where: { id: leadId },
     data: {
-      stage: stage as PipelineStage,
-      lostReason: stage === 'PERDU' ? lostReason || null : null,
+      manualPhase: phase,
+      ...(enumStage ? { stage: enumStage } : {}),
+      lostReason: phase === 'PERDU' ? lostReason || null : null,
     },
   });
   await prisma.activity.create({
@@ -218,9 +231,54 @@ export async function changeStage(formData: FormData) {
       type: ActivityType.CHANGEMENT_ETAPE,
       leadId,
       contactId: current.contactId,
-      content: `Étape : ${current.stage} → ${stage}${
+      content: `Étape (manuelle) : ${PHASE_LABEL[current.manualPhase ?? current.stage] ?? current.stage} → ${PHASE_LABEL[phase] ?? phase}${
         lostReason ? ` (${lostReason})` : ''
       }`,
+    },
+  });
+  revalidateLead(leadId);
+}
+
+/** Change l'étape du dossier À LA MAIN (toute phase) + journalise le changement. */
+export async function changeStage(formData: FormData) {
+  await requireUser();
+  const leadId = String(formData.get('leadId') ?? '');
+  const stage = String(formData.get('stage') ?? '');
+  const lostReason = String(formData.get('lostReason') ?? '').trim();
+  await applyManualPhase(leadId, stage, lostReason);
+}
+
+/**
+ * Repasse le dossier en SUIVI AUTOMATIQUE : efface l'override manuel (la phase
+ * redevient dérivée des artefacts). Si le dossier était marqué Perdu/Gagné, on
+ * remet l'enum en `A_RAPPELER` pour qu'il réapparaisse dans le pipeline et que la
+ * dérivation reprenne la main.
+ */
+export async function clearManualPhase(formData: FormData) {
+  await requireUser();
+  const leadId = String(formData.get('leadId') ?? '');
+  if (!leadId) return;
+  const current = await prisma.lead.findUnique({
+    where: { id: leadId },
+    select: { stage: true, manualPhase: true, contactId: true },
+  });
+  if (!current) return;
+
+  const reopen = current.stage === 'PERDU' || current.stage === 'GAGNE';
+  await prisma.lead.update({
+    where: { id: leadId },
+    data: {
+      manualPhase: null,
+      lostReason: null,
+      ...(reopen ? { stage: 'A_RAPPELER' as PipelineStage } : {}),
+    },
+  });
+  await prisma.activity.create({
+    data: {
+      type: ActivityType.CHANGEMENT_ETAPE,
+      leadId,
+      contactId: current.contactId,
+      content: 'Retour au suivi automatique (étape déduite des documents).',
     },
   });
   revalidateLead(leadId);
@@ -435,26 +493,10 @@ export async function qualifyLead(formData: FormData) {
 /** Déplace un prospect d'une étape de pipeline à une autre (Kanban). */
 export async function moveLead(leadId: string, stage: string) {
   await requireUser();
-  if (!leadId || !(stage in PipelineStage)) return;
-  const current = await prisma.lead.findUnique({
-    where: { id: leadId },
-    select: { stage: true, contactId: true },
-  });
-  if (!current || current.stage === stage) return;
-  await prisma.lead.update({
-    where: { id: leadId },
-    data: { stage: stage as PipelineStage },
-  });
-  await prisma.activity.create({
-    data: {
-      type: ActivityType.CHANGEMENT_ETAPE,
-      leadId,
-      contactId: current.contactId,
-      content: `Étape : ${current.stage} → ${stage}`,
-    },
-  });
-  // Revalide toutes les vues (fiche, liste, pipeline, pilotage, dashboard).
-  revalidateLead(leadId);
+  // Le pipeline peut désormais déposer une carte dans N'IMPORTE quelle colonne
+  // (y compris les phases « dérivées » : facture, paiement, rapport, suivi…) :
+  // on règle l'override manuel comme depuis la fiche client.
+  await applyManualPhase(leadId, stage);
 }
 
 /** Marque une relance comme effectuée. */

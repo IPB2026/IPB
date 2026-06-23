@@ -163,6 +163,53 @@ describe('computeDossier — branche travaux & régressions', () => {
   });
 });
 
+describe('computeDossier — override manuel (« liberté totale »)', () => {
+  const step = (d: ReturnType<typeof dossier>, k: string) =>
+    d.steps.find((s) => s.key === k);
+
+  it('force une phase aval (RAPPORT) sans aucun artefact', () => {
+    const d = dossier({ manualPhase: 'RAPPORT' });
+    expect(d.phase).toBe('RAPPORT');
+    expect(step(d, 'facture')?.done).toBe(true);
+    expect(step(d, 'paiement')?.done).toBe(true);
+    // « Rapport transmis » a pour seuil SUIVI → PAS encore coché à la phase RAPPORT.
+    expect(step(d, 'rapport')?.done).toBe(false);
+  });
+
+  it('force SUIVI → palier « rapport transmis » coché (sans générer de rapport)', () => {
+    const d = dossier({ manualPhase: 'SUIVI' });
+    expect(d.phase).toBe('SUIVI');
+    expect(step(d, 'rapport')?.done).toBe(true);
+  });
+
+  it("l'override prime même en arrière du flux dérivé (facture payée → DEVIS_ENVOYE)", () => {
+    const d = dossier({
+      devis: [{ status: 'ACCEPTE', totalHT: 1000, acceptedAt: new Date(), serviceType: 'FISSURES' }],
+      factures: [{ status: 'PAYEE' }],
+      manualPhase: 'DEVIS_ENVOYE',
+    });
+    expect(d.phase).toBe('DEVIS_ENVOYE');
+  });
+
+  it('manualPhase PERDU → phase PERDU ; manualPhase null → dérivation normale', () => {
+    expect(dossier({ manualPhase: 'PERDU' }).phase).toBe('PERDU');
+    expect(dossier({ factures: [{ status: 'PAYEE' }], manualPhase: null }).phase).toBe(
+      'PAIEMENT_RECU'
+    );
+  });
+
+  it('en mode manuel, pas de nudge automatique « suivi/travaux »', () => {
+    const d = dossier({
+      factures: [{ status: 'PAYEE' }],
+      rapports: [{ status: 'ENVOYE', budgetHT: 12000 }],
+      rapportEnvoyeAt: new Date(),
+      manualPhase: 'RDV_PLANIFIE',
+    });
+    expect(d.enSuiviClient).toBe(false);
+    expect(d.travauxAPlanifier).toBe(false);
+  });
+});
+
 describe('computeDossier — montantDevis', () => {
   it('ignore les devis refusés / brouillons pour le montant du pipe', () => {
     const d = dossier({

@@ -32,9 +32,89 @@ export interface DossierInputs {
    * que l'artefact correspondant n'existe — cohérence Suivi prospect ↔ dossier.
    */
   stage?: string | null;
+  /**
+   * Phase forcée MANUELLEMENT (override « liberté totale »). Si renseignée, elle
+   * PRIME sur toute la dérivation : `phase` = `manualPhase`, et les paliers du
+   * suivi sont cochés jusqu'à cette phase — sans qu'aucun artefact (devis,
+   * facture, rapport…) ne soit requis. `null` = suivi automatique (comportement
+   * d'origine). Remis à `null` par le bouton « revenir au suivi auto ».
+   */
+  manualPhase?: string | null;
   /** Date d'envoi du rapport (≈ updatedAt du rapport ENVOYE). Sert à faire sortir
    *  le dossier de la phase « Suivi » au bout de 2 semaines → « Terminé ». */
   rapportEnvoyeAt?: Date | null;
+}
+
+/**
+ * Ordre canonique des phases du dossier — du 1er contact au « Terminé ». SOURCE
+ * UNIQUE de l'ordonnancement, utilisée pour (a) cocher les paliers quand une phase
+ * est forcée à la main, et (b) la navigation ◄ ► du pipeline. « À rappeler » est
+ * replié sur « Nouveau » (comme partout). Les états terminaux GAGNE/PERDU et la
+ * branche TRAVAUX sont gérés à part (hors séquence linéaire).
+ */
+export const PHASE_SEQUENCE = [
+  'NOUVEAU',
+  'DEVIS_ENVOYE',
+  'RDV_PLANIFIE',
+  'VISITE_FAITE',
+  'FACTURE_ENVOYEE',
+  'PAIEMENT_RECU',
+  'RAPPORT',
+  'SUIVI',
+  'TERMINE',
+] as const;
+
+/**
+ * Phase de la séquence à partir de laquelle chaque palier du suivi est « fait ».
+ * Sert UNIQUEMENT au mode manuel : quand l'utilisateur force une phase, on coche
+ * tous les paliers dont le seuil est ≤ à la phase choisie (sans artefact requis).
+ */
+const STEP_THRESHOLD: Record<string, (typeof PHASE_SEQUENCE)[number]> = {
+  devis: 'DEVIS_ENVOYE',
+  client: 'RDV_PLANIFIE', // devis accepté ⇒ on planifie la visite
+  rdv: 'RDV_PLANIFIE',
+  visite: 'VISITE_FAITE',
+  facture: 'FACTURE_ENVOYEE',
+  paiement: 'PAIEMENT_RECU',
+  rapport: 'SUIVI', // « Rapport transmis » ⇒ on est en phase Suivi/Terminé
+  suivi: 'TERMINE',
+  devis_travaux: 'TERMINE',
+  travaux: 'TERMINE',
+};
+
+/**
+ * Toutes les phases qu'on peut forcer À LA MAIN (séquence linéaire + « À rappeler »,
+ * états terminaux GAGNE/PERDU et branche TRAVAUX). Sert de garde-fou aux actions
+ * serveur (« liberté totale », mais on n'accepte qu'une clé de phase connue).
+ */
+export const ALL_PHASES = [
+  'NOUVEAU',
+  'A_RAPPELER',
+  'DEVIS_ENVOYE',
+  'RDV_PLANIFIE',
+  'VISITE_FAITE',
+  'FACTURE_ENVOYEE',
+  'PAIEMENT_RECU',
+  'RAPPORT',
+  'SUIVI',
+  'TERMINE',
+  'ACCOMPAGNEMENT_TRAVAUX',
+  'TRAVAUX_LANCES',
+  'GAGNE',
+  'PERDU',
+] as const;
+
+export type PhaseKey = (typeof ALL_PHASES)[number];
+
+export function isValidPhase(p: string): p is PhaseKey {
+  return (ALL_PHASES as readonly string[]).includes(p);
+}
+
+/** Index d'une phase dans la séquence canonique (-1 si hors séquence). */
+export function phaseIndex(phase: string | null | undefined): number {
+  if (!phase) return -1;
+  const p = phase === 'A_RAPPELER' ? 'NOUVEAU' : phase;
+  return (PHASE_SEQUENCE as readonly string[]).indexOf(p);
 }
 
 /** Nb de jours pendant lesquels un dossier reste en « Suivi » après le rapport. */
@@ -189,6 +269,19 @@ export function computeDossier(d: DossierInputs): DossierView {
     );
   }
 
+  // OVERRIDE MANUEL (« liberté totale ») : si une phase est forcée à la main, on
+  // coche TOUS les paliers dont le seuil est ≤ à la phase choisie — sans exiger
+  // l'artefact correspondant (devis, facture, rapport…). On n'ajoute que des
+  // « faits » : un artefact réel déjà coché ne peut pas être décoché par ce biais.
+  const manualPhase = d.manualPhase ?? null;
+  const manualIdx = phaseIndex(manualPhase);
+  if (manualIdx >= 0) {
+    for (const s of raw) {
+      const t = STEP_THRESHOLD[s.key];
+      if (t && phaseIndex(t) <= manualIdx) s.done = true;
+    }
+  }
+
   // MONOTONIE : un palier est « fait » dès qu'un palier PLUS AVANCÉ l'est. Sans
   // ça, une facture payée sans RDV enregistré ferait retomber l'étape courante
   // sur « planifier la visite » (bug Jeremy Duran). On propage donc 'done' vers
@@ -230,12 +323,20 @@ export function computeDossier(d: DossierInputs): DossierView {
   else if (devisEnvoye) phase = 'DEVIS_ENVOYE';
   else phase = st || 'NOUVEAU';
 
-  // Suivi « simple » = rapport remis sans devis travaux (la norme). Pas de relance travaux.
+  // L'OVERRIDE MANUEL prime sur la phase dérivée (peut être en avant comme en
+  // arrière du flux automatique). C'est le dernier mot : « liberté totale ».
+  if (manualPhase) phase = manualPhase;
+
+  // Suivi « simple » = rapport remis sans devis travaux (la norme). Pas de relance
+  // travaux. Quand une phase est forcée à la main, on n'affiche plus de « prochaine
+  // étape » automatique (l'utilisateur pilote lui-même).
   const enSuiviClient =
+    !manualPhase &&
     rapportEnvoye && rapportAvecEstimation && !hasDevisTravaux && !travauxPlanifies;
   // Travaux à planifier : UNIQUEMENT après le rapport, si un devis travaux a été
   // émis sans lancement encore planifié.
-  const travauxAPlanifier = rapportEnvoye && hasDevisTravaux && !travauxPlanifies;
+  const travauxAPlanifier =
+    !manualPhase && rapportEnvoye && hasDevisTravaux && !travauxPlanifies;
 
   return {
     isClient,

@@ -12,6 +12,7 @@ import {
   serviceFromDiagnostic,
   occupantFromAnswer,
 } from '@/lib/crm/captureLead';
+import { readAttribution } from '@/lib/crm/attribution-server';
 
 /**
  * Server Actions pour le diagnostic
@@ -451,6 +452,7 @@ export async function submitDiagnosticLead(
     const { postalCode, city } = parseAddress(rawData.address);
     await captureLead({
       source: 'DIAGNOSTIC',
+      attribution: readAttribution(),
       service: serviceFromDiagnostic(validatedData.path, answers),
       contact: {
         name: validatedData.name,

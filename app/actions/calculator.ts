@@ -3,6 +3,7 @@
 import { sendEmail } from '@/lib/email';
 import { checkRateLimit } from '@/lib/rateLimit';
 import { captureLead, parseAddress } from '@/lib/crm/captureLead';
+import { readAttribution } from '@/lib/crm/attribution-server';
 
 interface CalculatorLeadInput {
   name: string;
@@ -169,6 +170,7 @@ export async function submitCalculatorLead(input: CalculatorLeadInput): Promise<
     const estimateAvg = Math.round((input.estimateMin + input.estimateMax) / 2);
     await captureLead({
       source: 'CALCULATEUR',
+      attribution: readAttribution(),
       service: 'MUR_PORTEUR',
       contact: {
         name: input.name,

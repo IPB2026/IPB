@@ -3,6 +3,7 @@
 import { sendEmail } from '@/lib/email';
 import { checkRateLimit } from '@/lib/rateLimit';
 import { captureLead } from '@/lib/crm/captureLead';
+import { readAttribution } from '@/lib/crm/attribution-server';
 
 interface QuickCallbackResult {
   success: boolean;
@@ -65,6 +66,7 @@ export async function submitQuickCallback(
     // ─── Persistance CRM (non bloquant) ─────────────────────────
     await captureLead({
       source: 'RAPPEL',
+      attribution: readAttribution(),
       service: 'AUTRE',
       contact: {
         name,

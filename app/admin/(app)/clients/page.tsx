@@ -88,6 +88,7 @@ export default async function ClientsPage({
 
   const rows = contacts.map((c) => {
     const stage = c.leads[0]?.stage ?? null;
+    const manualPhase = c.leads[0]?.manualPhase ?? null;
     const dossier = computeDossier({
       devis: c.devis.map((d) => ({
         status: d.status,
@@ -103,6 +104,7 @@ export default async function ClientsPage({
       appointments: c.appointments.map((a) => ({ type: a.type, status: a.status })),
       // Cohérence avec la fiche : étape pipeline + date d'envoi du rapport.
       stage,
+      manualPhase,
       rapportEnvoyeAt: c.rapports.find((r) => r.status === 'ENVOYE')?.updatedAt ?? null,
     });
     const service = c.leads[0]?.service ?? null;
@@ -337,7 +339,7 @@ function load(sp: SearchParams) {
       factures: { select: { status: true } },
       rapports: { select: { status: true, updatedAt: true, budgetHT: true }, orderBy: { updatedAt: 'desc' } },
       appointments: { select: { type: true, status: true } },
-      leads: { select: { id: true, stage: true, service: true }, orderBy: { createdAt: 'desc' }, take: 1 },
+      leads: { select: { id: true, stage: true, manualPhase: true, service: true }, orderBy: { createdAt: 'desc' }, take: 1 },
     },
   });
 }

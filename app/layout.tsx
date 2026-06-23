@@ -5,6 +5,7 @@ import Script from "next/script"
 import dynamic from "next/dynamic"
 import { Analytics } from "@/components/layout/Analytics"
 import { PhoneClickTracker } from "@/components/analytics/PhoneClickTracker"
+import { AttributionTracker } from "@/components/analytics/AttributionTracker"
 
 const CookieBanner = dynamic(() => import("@/components/CookieBanner").then(m => m.CookieBanner), { ssr: false })
 const StickyDiagnosticCta = dynamic(() => import("@/components/StickyDiagnosticCta").then(m => m.StickyDiagnosticCta), { ssr: false })
@@ -308,6 +309,7 @@ export default function RootLayout({
           <CookieBanner />
           <Analytics />
           <PhoneClickTracker />
+          <AttributionTracker />
         </div>
       </body>
     </html>

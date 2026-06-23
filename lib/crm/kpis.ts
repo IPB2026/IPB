@@ -185,6 +185,7 @@ export async function computeKpis(): Promise<KpiData> {
     take: 1000,
     select: {
       stage: true,
+      manualPhase: true,
       contact: {
         select: {
           // orderBy déterministe identique à la fiche → phase/montant cohérents.
@@ -215,6 +216,7 @@ export async function computeKpis(): Promise<KpiData> {
       })),
       appointments: l.contact.appointments.map((a) => ({ type: a.type, status: a.status })),
       stage: l.stage,
+      manualPhase: l.manualPhase,
       rapportEnvoyeAt: l.contact.rapports.find((r) => r.status === 'ENVOYE')?.updatedAt ?? null,
     });
     // « À rappeler » est fondu dans « Nouveau » (cf. pipeline).

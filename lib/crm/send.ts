@@ -268,9 +268,12 @@ export async function sendRapportEmail(id: string): Promise<SendResult> {
 }
 
 /**
- * RÈGLE MÉTIER : après 3 relances d'un devis restées sans réponse, on considère
- * le client PERDU → devis classé EXPIRÉ + dossier (lead) marqué PERDU. Partagé
- * entre la relance manuelle (send.ts) et le cron de relances. Idempotent.
+ * RÈGLE MÉTIER (« liberté totale ») : après 3 relances d'un devis restées sans
+ * réponse, on NE classe PLUS le dossier perdu automatiquement. On crée une TÂCHE
+ * de décision (relance « due ») pour que le gérant tranche lui-même : marquer
+ * perdu OU relancer. Le devis reste en l'état (ni expiré, ni perdu) ; le cron de
+ * relances s'arrête de lui-même (relanceCount au max). Idempotent (anti-doublon).
+ * Le nom est conservé pour compatibilité d'appel (cron + relance manuelle).
  */
 export async function markDevisLost(
   devisId: string,
@@ -278,22 +281,18 @@ export async function markDevisLost(
   contactId: string,
   number: string
 ): Promise<void> {
-  await prisma.devis.updateMany({
-    where: { id: devisId, status: 'ENVOYE' },
-    data: { status: 'EXPIRE' },
+  // Anti-doublon : une seule tâche de décision par devis.
+  const already = await prisma.activity.count({
+    where: { contactId, content: { contains: `Décision devis ${number}` } },
   });
-  if (leadId) {
-    await prisma.lead.updateMany({
-      where: { id: leadId, stage: { not: 'PERDU' } },
-      data: { stage: 'PERDU', lostReason: 'Sans réponse après 3 relances de devis' },
-    });
-  }
+  if (already > 0) return;
   await prisma.activity.create({
     data: {
-      type: 'SYSTEME',
+      type: 'RELANCE',
       contactId,
       leadId,
-      content: `Devis ${number} classé perdu — sans réponse après 3 relances.`,
+      content: `Décision devis ${number} : sans réponse après 3 relances — à vous de trancher (marquer perdu ou relancer).`,
+      dueAt: new Date(),
     },
   });
 }
@@ -346,7 +345,8 @@ export async function sendDevisRelanceEmail(id: string): Promise<SendResult> {
       content: `Relance manuelle du devis ${devis.number} envoyée à ${devis.contact.email}`,
     },
   });
-  // Après la 3e relance sans réponse → client considéré PERDU.
+  // Après la 3e relance sans réponse → on NE perd PLUS le dossier automatiquement :
+  // on crée une tâche de décision (perdu ou relancer ?) que le gérant tranche.
   if (step === 3) {
     await markDevisLost(devis.id, devis.leadId, devis.contactId, devis.number);
   }

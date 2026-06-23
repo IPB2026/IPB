@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { sendEmail } from '@/lib/email';
 import { checkRateLimit } from '@/lib/rateLimit';
 import { captureLead } from '@/lib/crm/captureLead';
+import { readAttribution } from '@/lib/crm/attribution-server';
 
 // Schéma de validation pour le formulaire de contact
 const contactFormSchema = z.object({
@@ -170,6 +171,7 @@ export async function submitContactForm(
     // ─── Persistance CRM (non bloquant) ─────────────────────────
     await captureLead({
       source: 'CONTACT',
+      attribution: readAttribution(),
       service: 'AUTRE',
       contact: {
         name: validatedData.name,

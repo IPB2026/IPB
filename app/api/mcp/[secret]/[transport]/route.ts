@@ -258,7 +258,17 @@ const baseHandler = createMcpHandler(
       async ({ prospectId, etape }) => {
         const lead = await prisma.lead.findUnique({ where: { id: prospectId }, select: { stage: true, contactId: true } });
         if (!lead) return ok({ ok: false, erreur: 'Prospect introuvable' });
-        await prisma.lead.update({ where: { id: prospectId }, data: { stage: etape } });
+        // Réglage MANUEL : pose `manualPhase` (override « liberté totale ») + synchronise
+        // l'enum stage. Rouvrir un dossier (depuis PERDU/GAGNE) repasse en suivi auto.
+        const reopen = etape !== 'PERDU' && (lead.stage === 'PERDU' || lead.stage === 'GAGNE');
+        await prisma.lead.update({
+          where: { id: prospectId },
+          data: {
+            stage: etape,
+            manualPhase: reopen ? null : etape,
+            lostReason: etape === 'PERDU' ? 'Marqué perdu (Cowork)' : null,
+          },
+        });
         await prisma.activity.create({ data: { type: 'CHANGEMENT_ETAPE', leadId: prospectId, contactId: lead.contactId, content: `[Cowork] Étape : ${lead.stage} → ${etape}` } });
         return ok({ ok: true });
       }
