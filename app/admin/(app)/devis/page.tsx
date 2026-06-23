@@ -10,18 +10,26 @@ import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 import { RelanceControl } from '@/components/admin/relance-control';
 import { deleteDevis } from '@/app/admin/(app)/devis/actions';
 import { Money } from '@/components/admin/money';
+import { Pagination, parsePage } from '@/components/admin/pagination';
 
 export const dynamic = 'force-dynamic';
 
-export default async function DevisListPage() {
+export default async function DevisListPage({
+  searchParams,
+}: {
+  searchParams: { page?: string };
+}) {
   await guardAdminPage();
-  let devis: Awaited<ReturnType<typeof load>> = [];
+  const page = parsePage(searchParams.page);
+  let loaded: Awaited<ReturnType<typeof load>> | null = null;
   let dbError = false;
   try {
-    devis = await load();
+    loaded = await load(page);
   } catch {
     dbError = true;
   }
+  const devis = loaded?.devis ?? [];
+  const total = loaded?.total ?? 0;
 
   return (
     <div className="space-y-5">
@@ -191,16 +199,36 @@ export default async function DevisListPage() {
               </tbody>
             </table>
           </div>
+          <Pagination page={page} pageSize={DEVIS_PAGE_SIZE} total={total} basePath="/admin/devis" />
         </>
       )}
     </div>
   );
 }
 
-function load() {
-  return prisma.devis.findMany({
-    orderBy: { createdAt: 'desc' },
-    include: { contact: true },
-    take: 200,
-  });
+const DEVIS_PAGE_SIZE = 50;
+
+async function load(page: number) {
+  const [devis, total] = await Promise.all([
+    prisma.devis.findMany({
+      orderBy: { createdAt: 'desc' },
+      skip: (page - 1) * DEVIS_PAGE_SIZE,
+      take: DEVIS_PAGE_SIZE,
+      // Projection : seulement les champs affichés (pas la ligne contact entière).
+      select: {
+        id: true,
+        number: true,
+        object: true,
+        status: true,
+        totalHT: true,
+        serviceType: true,
+        relanceCount: true,
+        createdAt: true,
+        contactId: true,
+        contact: { select: { name: true } },
+      },
+    }),
+    prisma.devis.count(),
+  ]);
+  return { devis, total };
 }

@@ -5,6 +5,7 @@ import type { ReportStatus } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { getSessionUser } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
+import { Pagination, parsePage } from '@/components/admin/pagination';
 import { EmptyState } from '@/components/admin/empty-state';
 import { MobileCardList, MobileCardRow } from '@/components/admin/mobile-card';
 import { SERVICE_LABEL } from '@/components/admin/badges';
@@ -37,12 +38,16 @@ function StatusPill({ status }: { status: ReportStatus }) {
   );
 }
 
-export default async function RapportsListPage() {
+export default async function RapportsListPage({
+  searchParams,
+}: {
+  searchParams: { page?: string };
+}) {
   const user = await getSessionUser();
   if (!user) redirect('/admin/login');
 
   if (user.role === 'EXPERT') return <ExpertView expertId={user.id} />;
-  return <AdminView />;
+  return <AdminView page={parsePage(searchParams.page)} />;
 }
 
 /* ─────────────────────────  Vue diagnostiqueur  ───────────────────────── */
@@ -194,14 +199,16 @@ function loadAssignedLeads(expertId: string) {
 
 /* ──────────────────────────────  Vue admin  ────────────────────────────── */
 
-async function AdminView() {
-  let rapports: Awaited<ReturnType<typeof loadAll>> = [];
+async function AdminView({ page }: { page: number }) {
+  let loaded: Awaited<ReturnType<typeof loadAll>> | null = null;
   let dbError = false;
   try {
-    rapports = await loadAll();
+    loaded = await loadAll(page);
   } catch {
     dbError = true;
   }
+  const rapports = loaded?.rapports ?? [];
+  const total = loaded?.total ?? 0;
 
   return (
     <div className="space-y-5">
@@ -285,19 +292,27 @@ async function AdminView() {
               </tbody>
             </table>
           </div>
+          <Pagination page={page} pageSize={RAPPORTS_PAGE_SIZE} total={total} basePath="/admin/rapports" />
         </>
       )}
     </div>
   );
 }
 
-function loadAll() {
-  return prisma.rapport.findMany({
-    orderBy: { createdAt: 'desc' },
-    include: {
-      contact: { select: { name: true } },
-      author: { select: { name: true, email: true } },
-    },
-    take: 200,
-  });
+const RAPPORTS_PAGE_SIZE = 50;
+
+async function loadAll(page: number) {
+  const [rapports, total] = await Promise.all([
+    prisma.rapport.findMany({
+      orderBy: { createdAt: 'desc' },
+      skip: (page - 1) * RAPPORTS_PAGE_SIZE,
+      take: RAPPORTS_PAGE_SIZE,
+      include: {
+        contact: { select: { name: true } },
+        author: { select: { name: true, email: true } },
+      },
+    }),
+    prisma.rapport.count(),
+  ]);
+  return { rapports, total };
 }

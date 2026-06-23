@@ -9,19 +9,27 @@ import { FactureStatusBadge, SERVICE_LABEL } from '@/components/admin/badges';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 import { RelanceControl } from '@/components/admin/relance-control';
 import { deleteFacture, recordFacturePayment } from '@/app/admin/(app)/factures/actions';
+import { Pagination, parsePage } from '@/components/admin/pagination';
 import { Money } from '@/components/admin/money';
 
 export const dynamic = 'force-dynamic';
 
-export default async function FacturesListPage() {
+export default async function FacturesListPage({
+  searchParams,
+}: {
+  searchParams: { page?: string };
+}) {
   await guardAdminPage();
-  let factures: Awaited<ReturnType<typeof load>> = [];
+  const page = parsePage(searchParams.page);
+  let loaded: Awaited<ReturnType<typeof load>> | null = null;
   let dbError = false;
   try {
-    factures = await load();
+    loaded = await load(page);
   } catch {
     dbError = true;
   }
+  const factures = loaded?.factures ?? [];
+  const total = loaded?.total ?? 0;
 
   const now = Date.now();
   // Enrichit + trie : retard d'abord, puis impayées, puis le reste (récentes en haut).
@@ -245,16 +253,37 @@ export default async function FacturesListPage() {
               </tbody>
             </table>
           </div>
+          <Pagination page={page} pageSize={FACTURES_PAGE_SIZE} total={total} basePath="/admin/factures" />
         </>
       )}
     </div>
   );
 }
 
-function load() {
-  return prisma.facture.findMany({
-    orderBy: { createdAt: 'desc' },
-    include: { contact: true, devis: { select: { serviceType: true } } },
-    take: 200,
-  });
+const FACTURES_PAGE_SIZE = 50;
+
+async function load(page: number) {
+  const [factures, total] = await Promise.all([
+    prisma.facture.findMany({
+      orderBy: { createdAt: 'desc' },
+      skip: (page - 1) * FACTURES_PAGE_SIZE,
+      take: FACTURES_PAGE_SIZE,
+      // Projection : seulement les champs affichés (pas la ligne contact entière).
+      select: {
+        id: true,
+        number: true,
+        status: true,
+        totalHT: true,
+        acompte: true,
+        dueDate: true,
+        relanceCount: true,
+        createdAt: true,
+        contactId: true,
+        contact: { select: { name: true } },
+        devis: { select: { serviceType: true } },
+      },
+    }),
+    prisma.facture.count(),
+  ]);
+  return { factures, total };
 }

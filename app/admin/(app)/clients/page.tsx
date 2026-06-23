@@ -11,13 +11,14 @@ import { Avatar } from '@/components/admin/avatar';
 import { MobileCardList, MobileCardRow } from '@/components/admin/mobile-card';
 import { PhaseBadge, SERVICE_LABEL } from '@/components/admin/badges';
 import { CLIENT_CONTACT_WHERE, PROSPECT_CONTACT_WHERE } from '@/lib/crm/client-status';
+import { Pagination, parsePage } from '@/components/admin/pagination';
 import { QuickActionMenu } from '@/components/admin/quick-action-menu';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 import { restoreContact, purgeContact } from '@/app/admin/(app)/contact-actions';
 
 export const dynamic = 'force-dynamic';
 
-type SearchParams = { q?: string; etat?: string; corbeille?: string };
+type SearchParams = { q?: string; etat?: string; corbeille?: string; page?: string };
 
 function buildWhere(sp: SearchParams): Prisma.ContactWhereInput {
   const and: Prisma.ContactWhereInput[] = [];
@@ -77,13 +78,16 @@ export default async function ClientsPage({
   await guardAdminPage();
   const corbeille = Boolean(searchParams.corbeille);
 
-  let contacts: Awaited<ReturnType<typeof load>> = [];
+  let loaded: Awaited<ReturnType<typeof load>> | null = null;
   let dbError = false;
   try {
-    contacts = await load(searchParams);
+    loaded = await load(searchParams);
   } catch {
     dbError = true;
   }
+  const contacts = loaded?.contacts ?? [];
+  const total = loaded?.total ?? 0;
+  const page = loaded?.page ?? 1;
 
   const rows = contacts.map((c) => {
     const stage = c.leads[0]?.stage ?? null;
@@ -285,6 +289,17 @@ export default async function ClientsPage({
               </tbody>
             </table>
           </div>
+          <Pagination
+            page={page}
+            pageSize={CLIENTS_PAGE_SIZE}
+            total={total}
+            basePath="/admin/clients"
+            params={{
+              ...(searchParams.q ? { q: searchParams.q } : {}),
+              ...(searchParams.etat ? { etat: searchParams.etat } : {}),
+              ...(searchParams.corbeille ? { corbeille: searchParams.corbeille } : {}),
+            }}
+          />
         </>
       )}
     </div>
@@ -303,25 +318,34 @@ function EtatBadge({ isClient }: { isClient: boolean }) {
   );
 }
 
-function load(sp: SearchParams) {
-  return prisma.contact.findMany({
-    where: buildWhere(sp),
-    orderBy: { updatedAt: 'desc' },
-    take: 300,
-    select: {
-      id: true,
-      name: true,
-      city: true,
-      phone: true,
-      email: true,
-      devis: {
-        select: { status: true, totalHT: true, acceptedAt: true, serviceType: true },
-        orderBy: { createdAt: 'desc' },
+const CLIENTS_PAGE_SIZE = 50;
+
+async function load(sp: SearchParams) {
+  const where = buildWhere(sp);
+  const page = parsePage(sp.page);
+  const [contacts, total] = await Promise.all([
+    prisma.contact.findMany({
+      where,
+      orderBy: { updatedAt: 'desc' },
+      skip: (page - 1) * CLIENTS_PAGE_SIZE,
+      take: CLIENTS_PAGE_SIZE,
+      select: {
+        id: true,
+        name: true,
+        city: true,
+        phone: true,
+        email: true,
+        devis: {
+          select: { status: true, totalHT: true, acceptedAt: true, serviceType: true },
+          orderBy: { createdAt: 'desc' },
+        },
+        factures: { select: { status: true } },
+        rapports: { select: { status: true, updatedAt: true, budgetHT: true }, orderBy: { updatedAt: 'desc' } },
+        appointments: { select: { type: true, status: true } },
+        leads: { select: { id: true, stage: true, manualPhase: true, service: true }, orderBy: { createdAt: 'desc' }, take: 1 },
       },
-      factures: { select: { status: true } },
-      rapports: { select: { status: true, updatedAt: true, budgetHT: true }, orderBy: { updatedAt: 'desc' } },
-      appointments: { select: { type: true, status: true } },
-      leads: { select: { id: true, stage: true, manualPhase: true, service: true }, orderBy: { createdAt: 'desc' }, take: 1 },
-    },
-  });
+    }),
+    prisma.contact.count({ where }),
+  ]);
+  return { contacts, total, page };
 }
