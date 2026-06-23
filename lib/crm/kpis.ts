@@ -1,6 +1,6 @@
 import 'server-only';
 import { prisma } from '@/lib/prisma';
-import { computeDossier } from '@/lib/crm/dossier';
+import { computeDossier, dossierInputFromContact } from '@/lib/crm/dossier';
 import { CLIENT_CONTACT_WHERE } from '@/lib/crm/client-status';
 import type { ServiceType, PipelineStage } from '@prisma/client';
 
@@ -227,23 +227,9 @@ export async function computeKpis(): Promise<KpiData> {
   // ACTIFS (ni Terminé, ni Perdu). Inspiré d'Einstein/Pipedrive forecast.
   let forecastPondere = 0;
   for (const l of funnelLeads) {
-    const dossier = computeDossier({
-      devis: l.contact.devis.map((d) => ({
-        status: d.status,
-        totalHT: Number(d.totalHT),
-        acceptedAt: d.acceptedAt,
-        serviceType: d.serviceType,
-      })),
-      factures: l.contact.factures.map((f) => ({ status: f.status })),
-      rapports: l.contact.rapports.map((r) => ({
-        status: r.status,
-        budgetHT: r.budgetHT != null ? Number(r.budgetHT) : null,
-      })),
-      appointments: l.contact.appointments.map((a) => ({ type: a.type, status: a.status })),
-      stage: l.stage,
-      manualPhase: l.manualPhase,
-      rapportEnvoyeAt: l.contact.rapports.find((r) => r.status === 'ENVOYE')?.updatedAt ?? null,
-    });
+    const dossier = computeDossier(
+      dossierInputFromContact(l.contact, { stage: l.stage, manualPhase: l.manualPhase })
+    );
     // « À rappeler » est fondu dans « Nouveau » (cf. pipeline).
     const key = dossier.phase === 'A_RAPPELER' ? 'NOUVEAU' : dossier.phase;
     phaseCount.set(key, (phaseCount.get(key) ?? 0) + 1);

@@ -4,7 +4,7 @@ import { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { Money } from '@/components/admin/money';
-import { computeDossier } from '@/lib/crm/dossier';
+import { computeDossier, dossierInputFromContact } from '@/lib/crm/dossier';
 import { PageHeader } from '@/components/admin/page-header';
 import { EmptyState } from '@/components/admin/empty-state';
 import { Avatar } from '@/components/admin/avatar';
@@ -88,24 +88,7 @@ export default async function ClientsPage({
   const rows = contacts.map((c) => {
     const stage = c.leads[0]?.stage ?? null;
     const manualPhase = c.leads[0]?.manualPhase ?? null;
-    const dossier = computeDossier({
-      devis: c.devis.map((d) => ({
-        status: d.status,
-        totalHT: Number(d.totalHT),
-        acceptedAt: d.acceptedAt,
-        serviceType: d.serviceType,
-      })),
-      factures: c.factures.map((f) => ({ status: f.status })),
-      rapports: c.rapports.map((r) => ({
-        status: r.status,
-        budgetHT: r.budgetHT != null ? Number(r.budgetHT) : null,
-      })),
-      appointments: c.appointments.map((a) => ({ type: a.type, status: a.status })),
-      // Cohérence avec la fiche : étape pipeline + date d'envoi du rapport.
-      stage,
-      manualPhase,
-      rapportEnvoyeAt: c.rapports.find((r) => r.status === 'ENVOYE')?.updatedAt ?? null,
-    });
+    const dossier = computeDossier(dossierInputFromContact(c, { stage, manualPhase }));
     const service = c.leads[0]?.service ?? null;
     const leadId = c.leads[0]?.id ?? null;
     return {

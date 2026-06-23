@@ -35,6 +35,7 @@ import {
   SERVICE_LABEL,
 } from '@/components/admin/badges';
 import { computeDossier } from '@/lib/crm/dossier';
+import { closeResolvedRelances } from '@/lib/crm/relances-cleanup';
 
 export const dynamic = 'force-dynamic';
 
@@ -74,6 +75,10 @@ function recentPhase(lead: {
 
 async function getStats() {
   const now = new Date();
+  // Cohérence d'abord : on referme les relances dont le motif est déjà résolu
+  // (rapport transmis, devis tranché) → le tableau de bord ne montre que des tâches
+  // réellement en phase avec le statut des clients.
+  await closeResolvedRelances();
   // Filtre PARTAGÉ « visite à planifier » (devis diagnostic accepté, client sans
   // visite diagnostic ni facture émise) — un seul point de vérité pour la liste
   // ET le compteur (plus de risque de divergence, et logique définie une fois).
@@ -338,20 +343,22 @@ export default async function DashboardPage() {
       />
 
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <StatCard label="Prospects" value={stats.total} icon={Users} />
+        <StatCard label="Prospects" value={stats.total} icon={Users} href="/admin/clients?etat=prospects" />
         <StatCard
           label="Nouveaux à traiter"
           value={stats.nouveaux}
           icon={Inbox}
           tone="orange"
+          href="/admin/clients"
         />
         <StatCard
           label="Relances dues"
           value={stats.relancesDues}
           icon={Clock}
           tone="amber"
+          href="/admin/clients"
         />
-        <StatCard label="Clients" value={stats.clients} icon={UserCheck} tone="blue" />
+        <StatCard label="Clients" value={stats.clients} icon={UserCheck} tone="blue" href="/admin/clients?etat=clients" />
       </div>
 
       {/* Centre de pilotage : à traiter */}

@@ -2,7 +2,7 @@
 
 import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
-import { computeDossier } from '@/lib/crm/dossier';
+import { computeDossier, dossierInputFromContact } from '@/lib/crm/dossier';
 import { PHASE_LABEL } from '@/components/admin/badges';
 import { generateDossierAssistance, type AssistantResult } from '@/lib/ai/assistant';
 
@@ -34,23 +34,9 @@ export async function runDossierAssistant(
   if (!c) return { error: 'Client introuvable.' };
 
   const lead = c.leads[0] ?? null;
-  const dossier = computeDossier({
-    devis: c.devis.map((d) => ({
-      status: d.status,
-      totalHT: Number(d.totalHT),
-      acceptedAt: d.acceptedAt,
-      serviceType: d.serviceType,
-    })),
-    factures: c.factures.map((f) => ({ status: f.status })),
-    rapports: c.rapports.map((r) => ({
-      status: r.status,
-      budgetHT: r.budgetHT != null ? Number(r.budgetHT) : null,
-    })),
-    appointments: c.appointments.map((a) => ({ type: a.type, status: a.status })),
-    stage: lead?.stage ?? null,
-    manualPhase: lead?.manualPhase ?? null,
-    rapportEnvoyeAt: c.rapports.find((r) => r.status === 'ENVOYE')?.updatedAt ?? null,
-  });
+  const dossier = computeDossier(
+    dossierInputFromContact(c, { stage: lead?.stage, manualPhase: lead?.manualPhase })
+  );
 
   const lines: string[] = [];
   lines.push(`Client : ${c.name}${c.city ? ` (${c.city})` : ''}`);

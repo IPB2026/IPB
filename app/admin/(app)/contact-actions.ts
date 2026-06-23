@@ -38,7 +38,7 @@ function revalidateFiches() {
   revalidatePath('/admin/leads/[id]', 'page');
   revalidatePath('/admin/clients/[id]', 'page');
   revalidatePath('/admin/pipeline');
-  revalidatePath('/admin/pilotage');
+  // Pilotage exclu : rafraîchi via ISR (revalidate = 60 s).
   revalidatePath('/admin');
 }
 

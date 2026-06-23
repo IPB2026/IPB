@@ -74,16 +74,30 @@ export async function createInvoiceForAppointment(
       object,
       dueDate: due,
       totalHT: prix,
+      // RÈGLE MÉTIER : c'est la COORDINATION IPB qui porte le prix, PAS le diagnostic
+      // (réalisé par le diagnostiqueur indépendant mandaté). Même structure que le
+      // devis → cohérence devis ↔ facture, et facturation conforme.
       lines: {
         create: [
           {
-            designation: object,
-            detail: appt.location || null,
+            designation: 'Diagnostic sur site, analyse et production du rapport',
+            detail: 'Réalisé par le diagnostiqueur indépendant mandaté, sous sa responsabilité',
+            unit: 'Forfait',
+            qty: 1,
+            unitPrice: 0,
+            total: 0,
+            position: 0,
+          },
+          {
+            designation: 'Coordination de la mission et mise en forme du rapport',
+            detail: appt.location
+              ? `Planification, suivi du dossier et production éditoriale du rapport — IPB · ${appt.location}`
+              : 'Planification, suivi du dossier et production éditoriale du rapport — IPB',
             unit: 'Forfait',
             qty: 1,
             unitPrice: prix,
             total: prix,
-            position: 0,
+            position: 1,
           },
         ],
       },

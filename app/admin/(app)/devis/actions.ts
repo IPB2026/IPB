@@ -572,6 +572,60 @@ export async function updateDevis(
   return undefined;
 }
 
+/**
+ * Modifie le MONTANT d'un devis directement depuis la fiche client (sans ouvrir la
+ * page devis). Le montant porte sur la ligne COORDINATION (règle métier : le
+ * diagnostic reste à 0). Pratique quand un devis a été établi hors CRM et qu'on
+ * veut juste caler le bon montant dans le suivi.
+ */
+export async function setDevisMontant(formData: FormData) {
+  await requireUser();
+  const id = num(formData.get('devisId'));
+  const prix = Math.round(Number(num(formData.get('prix')).replace(',', '.')) || 0);
+  if (!id || prix < 0 || prix > 1_000_000) return;
+
+  const devis = await prisma.devis.findUnique({
+    where: { id },
+    include: { lines: { orderBy: { position: 'asc' } } },
+  });
+  if (!devis) return;
+
+  // Cible = la ligne « coordination » (celle qui porte le prix). Repli : la ligne
+  // la plus chère, sinon création d'une ligne coordination.
+  const target =
+    devis.lines.find((l) => /coordination/i.test(l.designation)) ??
+    [...devis.lines].sort((a, b) => Number(b.unitPrice) - Number(a.unitPrice))[0];
+
+  if (target) {
+    await prisma.devisLine.update({
+      where: { id: target.id },
+      data: { unitPrice: prix, total: prix },
+    });
+  } else {
+    await prisma.devisLine.create({
+      data: {
+        devisId: id,
+        designation: 'Coordination de la mission et mise en forme du rapport',
+        detail: 'Planification, suivi du dossier et production éditoriale du rapport — IPB',
+        unit: 'Forfait',
+        qty: 1,
+        unitPrice: prix,
+        total: prix,
+        position: devis.lines.length,
+      },
+    });
+  }
+
+  // Total = somme des lignes (le diagnostic à 0 + coordination + frais éventuels).
+  const fresh = await prisma.devisLine.findMany({ where: { devisId: id } });
+  const totalHT = fresh.reduce((s, l) => s + Number(l.total), 0);
+  await prisma.devis.update({ where: { id }, data: { totalHT } });
+
+  revalidatePath(`/admin/devis/${id}`);
+  revalidatePath('/admin/devis');
+  revalidateCrm(devis.contactId);
+}
+
 /** Supprime un devis (refusé s'il a déjà été facturé). */
 export async function deleteDevis(formData: FormData) {
   await requireUser();

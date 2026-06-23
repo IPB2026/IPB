@@ -189,6 +189,7 @@ model Lead {
   @@index([tier])
   @@index([source])
   @@index([createdAt])
+  @@index([channel])
 }
 
 /// Timeline : notes, appels, emails, RDV et relances planifiées
@@ -215,6 +216,8 @@ model Activity {
   @@index([leadId])
   @@index([contactId])
   @@index([dueAt])
+  @@index([type, done, dueAt])
+  @@index([contactId, type])
 }
 
 // ──────────────────────────────────────────────────────────────
@@ -274,6 +277,7 @@ model Devis {
   bienConcerne String? // adresse / désignation du bien
   introLetter  String? // paragraphe d'intro personnalisé
   notes        String?
+  externalUrl  String? // PDF d'un devis établi HORS CRM, stocké tel quel (import)
   validUntil   DateTime?
   acceptedAt   DateTime? // date d'acceptation du devis (déclenche le lancement travaux)
   sentAt       DateTime? // date du 1er envoi — base FIABLE des relances (vs matching de texte)
@@ -289,6 +293,8 @@ model Devis {
 
   @@index([status])
   @@index([contactId])
+  @@index([status, contactId])
+  @@index([status, sentAt])
 }
 
 model DevisLine {
@@ -325,6 +331,7 @@ model Facture {
   acompte     Decimal? @db.Decimal(10, 2)
   relanceCount Int      @default(0) // nb de relances de paiement auto déjà envoyées
   notes       String?
+  externalUrl String? // PDF d'une facture établie HORS CRM, stockée telle quelle (import)
 
   totalHT Decimal       @default(0) @db.Decimal(10, 2)
   lines   FactureLine[]
@@ -333,6 +340,8 @@ model Facture {
 
   @@index([status])
   @@index([contactId])
+  @@index([status, dueDate])
+  @@index([contactId, status])
 }
 
 model FactureLine {
@@ -384,6 +393,7 @@ model Appointment {
   @@index([start])
   @@index([status])
   @@index([devisId])
+  @@index([status, start])
 }
 
 // ──────────────────────────────────────────────────────────────
@@ -437,12 +447,14 @@ model Rapport {
   aiContent     Json?
   aiModel       String?
   aiGeneratedAt DateTime?
+  externalUrl   String? // PDF d'un rapport établi HORS CRM, stocké tel quel (import)
 
   budgetHT Decimal? @db.Decimal(10, 2)
 
   @@index([status])
   @@index([contactId])
   @@index([authorId])
+  @@index([status, contactId])
 }
 
 /// Photo terrain rattachée à un rapport (stockée sur Vercel Blob).

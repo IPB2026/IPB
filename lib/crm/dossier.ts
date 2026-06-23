@@ -46,6 +46,41 @@ export interface DossierInputs {
 }
 
 /**
+ * Construit l'entrée de `computeDossier` à partir des artefacts d'un contact.
+ * SOURCE UNIQUE du mapping (Decimal→number, extraction des champs, rapportEnvoyeAt)
+ * — évite la duplication (jadis recopiée dans 6 fichiers, source de divergences).
+ * Les sélections Prisma doivent inclure : devis(status,totalHT,acceptedAt,serviceType),
+ * factures(status), rapports(status,updatedAt,budgetHT), appointments(type,status).
+ */
+export function dossierInputFromContact(
+  contact: {
+    devis: { status: DevisStatus; totalHT: unknown; acceptedAt: Date | null; serviceType: ServiceType | null }[];
+    factures: { status: FactureStatus }[];
+    rapports: { status: ReportStatus; updatedAt: Date; budgetHT: unknown }[];
+    appointments: { type: AppointmentType; status: AppointmentStatus }[];
+  },
+  opts?: { stage?: string | null; manualPhase?: string | null }
+): DossierInputs {
+  return {
+    devis: contact.devis.map((d) => ({
+      status: d.status,
+      totalHT: Number(d.totalHT),
+      acceptedAt: d.acceptedAt,
+      serviceType: d.serviceType,
+    })),
+    factures: contact.factures.map((f) => ({ status: f.status })),
+    rapports: contact.rapports.map((r) => ({
+      status: r.status,
+      budgetHT: r.budgetHT != null ? Number(r.budgetHT) : null,
+    })),
+    appointments: contact.appointments.map((a) => ({ type: a.type, status: a.status })),
+    stage: opts?.stage ?? null,
+    manualPhase: opts?.manualPhase ?? null,
+    rapportEnvoyeAt: contact.rapports.find((r) => r.status === 'ENVOYE')?.updatedAt ?? null,
+  };
+}
+
+/**
  * Ordre canonique des phases du dossier — du 1er contact au « Terminé ». SOURCE
  * UNIQUE de l'ordonnancement, utilisée pour (a) cocher les paliers quand une phase
  * est forcée à la main, et (b) la navigation ◄ ► du pipeline. « À rappeler » est

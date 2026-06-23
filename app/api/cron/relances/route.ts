@@ -12,6 +12,7 @@ import { createInvoiceForAppointment, DIAGNOSTIC_APPT_TYPES } from '@/lib/crm/in
 import { markDevisLost } from '@/lib/crm/send';
 import { notifyClientReminder } from '@/lib/crm/notify';
 import { purgeContactById, TRASH_RETENTION_DAYS } from '@/lib/crm/contacts';
+import { closeResolvedRelances } from '@/lib/crm/relances-cleanup';
 import type { LeadTier } from '@prisma/client';
 
 export const runtime = 'nodejs';
@@ -43,6 +44,11 @@ export async function GET(req: Request) {
   }
 
   const now = Date.now();
+
+  // Filet de sécurité : referme les relances dont le motif est résolu (rapport
+  // transmis, devis tranché) — cohérence garantie même sans ouvrir le tableau de bord.
+  await closeResolvedRelances();
+
   const leads = await prisma.lead.findMany({
     where: {
       relanceStep: { lt: STEPS.length },

@@ -3,7 +3,7 @@ import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
 import { SERVICE_LABEL } from '@/components/admin/badges';
 import { Money } from '@/components/admin/money';
-import { computeDossier } from '@/lib/crm/dossier';
+import { computeDossier, dossierInputFromContact } from '@/lib/crm/dossier';
 import { PipelineBoard, type PipelineColumn } from '@/components/admin/pipeline-board';
 
 export const dynamic = 'force-dynamic';
@@ -74,24 +74,9 @@ export default async function PipelinePage() {
       },
     });
     cards = rows.map((r) => {
-      const rapportEnvoye = r.contact.rapports.find((rp) => rp.status === 'ENVOYE');
-      const dossier = computeDossier({
-        devis: r.contact.devis.map((d) => ({
-          status: d.status,
-          totalHT: Number(d.totalHT),
-          acceptedAt: d.acceptedAt,
-          serviceType: d.serviceType,
-        })),
-        factures: r.contact.factures.map((f) => ({ status: f.status })),
-        rapports: r.contact.rapports.map((rp) => ({
-          status: rp.status,
-          budgetHT: rp.budgetHT != null ? Number(rp.budgetHT) : null,
-        })),
-        appointments: r.contact.appointments.map((a) => ({ type: a.type, status: a.status })),
-        stage: r.stage,
-        manualPhase: r.manualPhase,
-        rapportEnvoyeAt: rapportEnvoye?.updatedAt ?? null,
-      });
+      const dossier = computeDossier(
+        dossierInputFromContact(r.contact, { stage: r.stage, manualPhase: r.manualPhase })
+      );
       return {
         id: r.id,
         contactId: r.contactId,

@@ -22,7 +22,7 @@ import type {
 } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { getSessionUser, listExperts } from '@/lib/auth-helpers';
-import { computeDossier } from '@/lib/crm/dossier';
+import { computeDossier, dossierInputFromContact } from '@/lib/crm/dossier';
 import { Avatar } from '@/components/admin/avatar';
 import { ContactEditForm } from '@/components/admin/contact-edit-form';
 import { PayloadView } from '@/components/admin/payload-view';
@@ -34,7 +34,7 @@ import {
   scheduleRelance,
   addActivity,
 } from '@/app/admin/(app)/leads/actions';
-import { acceptDevis, quickCreateDevis } from '@/app/admin/(app)/devis/actions';
+import { acceptDevis, quickCreateDevis, setDevisMontant } from '@/app/admin/(app)/devis/actions';
 import { recordFacturePayment } from '@/app/admin/(app)/factures/actions';
 import { sendFacture, sendRapport } from '@/app/admin/(app)/send-actions';
 import { archiveContact } from '@/app/admin/(app)/contact-actions';
@@ -44,6 +44,7 @@ import { RelanceControl } from '@/components/admin/relance-control';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 import { CallButton } from '@/components/admin/call-button';
 import { AssistantIPB } from '@/components/admin/assistant-ipb';
+import { importExternalDocument } from '@/app/admin/(app)/clients/import-document-actions';
 
 export const dynamic = 'force-dynamic';
 
@@ -151,23 +152,9 @@ export default async function ClientFichePage({
   }
 
   const lead = c.leads[0] ?? null;
-  const dossier = computeDossier({
-    devis: c.devis.map((d) => ({
-      status: d.status,
-      totalHT: Number(d.totalHT),
-      acceptedAt: d.acceptedAt,
-      serviceType: d.serviceType,
-    })),
-    factures: c.factures.map((f) => ({ status: f.status })),
-    rapports: c.rapports.map((r) => ({
-      status: r.status,
-      budgetHT: r.budgetHT != null ? Number(r.budgetHT) : null,
-    })),
-    appointments: c.appointments.map((a) => ({ type: a.type, status: a.status })),
-    stage: lead?.stage ?? null,
-    manualPhase: lead?.manualPhase ?? null,
-    rapportEnvoyeAt: c.rapports.find((r) => r.status === 'ENVOYE')?.updatedAt ?? null,
-  });
+  const dossier = computeDossier(
+    dossierInputFromContact(c, { stage: lead?.stage, manualPhase: lead?.manualPhase })
+  );
 
   const next = nextStep(dossier, c.id, lead?.id);
   // RÈGLE MÉTIER : un diagnostiqueur ne s'assigne qu'APRÈS validation du devis.
@@ -727,6 +714,58 @@ export default async function ClientFichePage({
         {/* Documents du dossier */}
         <div className="lg:col-span-2">
           <Card title="Documents du dossier">
+            {/* Importer un document établi HORS CRM (devis/facture/rapport déjà
+                produit ailleurs) → rangé dans sa catégorie, PDF stocké. */}
+            {isAdmin && (
+              <details className="mb-3 rounded-lg border border-slate-200 bg-slate-50 p-3 [&_summary::-webkit-details-marker]:hidden">
+                <summary className="cursor-pointer list-none text-xs font-semibold text-orange-600 hover:text-orange-700">
+                  + Importer un document fait hors CRM
+                </summary>
+                <form action={importExternalDocument} className="mt-3 space-y-2">
+                  <input type="hidden" name="contactId" value={c.id} />
+                  <div className="flex flex-wrap gap-2">
+                    <select
+                      name="kind"
+                      defaultValue="rapport"
+                      className="h-9 rounded-lg border border-slate-300 px-2 text-sm outline-none focus:border-orange-500"
+                    >
+                      <option value="devis">Devis</option>
+                      <option value="facture">Facture</option>
+                      <option value="rapport">Rapport</option>
+                    </select>
+                    <input
+                      name="objet"
+                      placeholder="Objet / titre"
+                      className="h-9 flex-1 rounded-lg border border-slate-300 px-2 text-sm outline-none focus:border-orange-500"
+                    />
+                    <input
+                      name="prix"
+                      type="number"
+                      min="0"
+                      step="1"
+                      placeholder="€ HT (devis/facture)"
+                      className="h-9 w-32 rounded-lg border border-slate-300 px-2 text-sm outline-none focus:border-orange-500"
+                    />
+                  </div>
+                  <input
+                    name="file"
+                    type="file"
+                    accept="application/pdf"
+                    className="block w-full text-xs text-slate-500 file:mr-3 file:rounded-md file:border-0 file:bg-slate-200 file:px-3 file:py-1.5 file:text-xs file:font-medium hover:file:bg-slate-300"
+                  />
+                  <button
+                    type="submit"
+                    className="h-9 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white hover:bg-orange-700"
+                  >
+                    Importer dans le dossier
+                  </button>
+                  <p className="text-[11px] text-slate-400">
+                    Le document est rangé dans sa catégorie. Pour devis/facture, le
+                    prix porte sur la coordination (le diagnostic reste à 0).
+                  </p>
+                </form>
+              </details>
+            )}
             {(isAdmin ? c.devis.length + c.factures.length : 0) +
               c.rapports.length +
               c.appointments.length ===
@@ -741,23 +780,58 @@ export default async function ClientFichePage({
                       icon={FileText}
                       href={`/admin/devis/${d.id}`}
                       title={`Devis ${d.number}`}
-                      sub={<>{d.object} · <Money value={Number(d.totalHT)} /></>}
+                      sub={
+                        <>
+                          {d.object} · <Money value={Number(d.totalHT)} />
+                          {d.externalUrl ? (
+                            <>
+                              {' · '}
+                              <a href={d.externalUrl} target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:underline">
+                                PDF externe
+                              </a>
+                            </>
+                          ) : null}
+                        </>
+                      }
                       pill={DEVIS_PILL[d.status]}
                       action={
-                        d.status === 'ENVOYE' ? (
-                          <div className="flex flex-wrap items-center justify-end gap-2">
-                            <form action={acceptDevis}>
-                              <input type="hidden" name="devisId" value={d.id} />
-                              <ConfirmSubmit
-                                message="Valider ce devis ? Le client passe en « gagné » et la visite de diagnostic peut être planifiée."
-                                className="inline-flex h-8 items-center gap-1 whitespace-nowrap rounded-lg border border-emerald-200 bg-emerald-50 px-2 text-xs font-semibold text-emerald-700 hover:bg-emerald-100"
-                              >
-                                <Check className="h-3.5 w-3.5" /> Valider
-                              </ConfirmSubmit>
-                            </form>
-                            <RelanceControl kind="devis" id={d.id} contactId={c.id} relanceCount={d.relanceCount} />
-                          </div>
-                        ) : undefined
+                        <div className="flex flex-wrap items-center justify-end gap-2">
+                          {/* Montant éditable en place (porte sur la coordination) */}
+                          <form action={setDevisMontant} className="flex items-center gap-1">
+                            <input type="hidden" name="devisId" value={d.id} />
+                            <input
+                              name="prix"
+                              type="number"
+                              min="0"
+                              step="1"
+                              inputMode="numeric"
+                              defaultValue={Math.round(Number(d.totalHT))}
+                              aria-label={`Montant HT du devis ${d.number}`}
+                              className="h-8 w-24 rounded-md border border-slate-300 px-2 text-xs outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-200"
+                            />
+                            <button
+                              type="submit"
+                              title="Mettre à jour le montant (coordination)"
+                              className="h-8 rounded-md border border-slate-300 px-2 text-xs font-semibold text-slate-600 hover:bg-slate-50"
+                            >
+                              € OK
+                            </button>
+                          </form>
+                          {d.status === 'ENVOYE' && (
+                            <>
+                              <form action={acceptDevis}>
+                                <input type="hidden" name="devisId" value={d.id} />
+                                <ConfirmSubmit
+                                  message="Valider ce devis ? Le client passe en « gagné » et la visite de diagnostic peut être planifiée."
+                                  className="inline-flex h-8 items-center gap-1 whitespace-nowrap rounded-lg border border-emerald-200 bg-emerald-50 px-2 text-xs font-semibold text-emerald-700 hover:bg-emerald-100"
+                                >
+                                  <Check className="h-3.5 w-3.5" /> Valider
+                                </ConfirmSubmit>
+                              </form>
+                              <RelanceControl kind="devis" id={d.id} contactId={c.id} relanceCount={d.relanceCount} />
+                            </>
+                          )}
+                        </div>
                       }
                     />
                   ))}
@@ -767,7 +841,18 @@ export default async function ClientFichePage({
                     icon={ClipboardCheck}
                     href={`/admin/rapports/${r.id}`}
                     title={`Rapport ${r.number}`}
-                    sub={r.title}
+                    sub={
+                      r.externalUrl ? (
+                        <>
+                          {r.title} ·{' '}
+                          <a href={r.externalUrl} target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:underline">
+                            PDF externe
+                          </a>
+                        </>
+                      ) : (
+                        r.title
+                      )
+                    }
                     pill={RAPPORT_PILL[r.status]}
                     action={
                       isAdmin && r.status === 'VALIDE' ? (
@@ -791,7 +876,19 @@ export default async function ClientFichePage({
                       icon={Receipt}
                       href={`/admin/factures/${f.id}`}
                       title={`Facture ${f.number}`}
-                      sub={<>{f.object} · <Money value={Number(f.totalHT)} /></>}
+                      sub={
+                        <>
+                          {f.object} · <Money value={Number(f.totalHT)} />
+                          {f.externalUrl ? (
+                            <>
+                              {' · '}
+                              <a href={f.externalUrl} target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:underline">
+                                PDF externe
+                              </a>
+                            </>
+                          ) : null}
+                        </>
+                      }
                       pill={FACTURE_PILL[f.status]}
                       action={
                         f.status === 'ENVOYEE' ? (

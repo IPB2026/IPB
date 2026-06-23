@@ -15,6 +15,8 @@ export function revalidateCrm(contactId?: string | null): void {
   revalidatePath('/admin/clients/[id]', 'page');
   revalidatePath('/admin/clients');
   revalidatePath('/admin/pipeline');
-  revalidatePath('/admin/pilotage');
+  // NOTE PERF : on ne revalide PLUS le pilotage à chaque mutation (≈15 requêtes +
+  // calcul par dossier). Il se rafraîchit tout seul via ISR (revalidate = 60 s sur
+  // la page) → données au plus 1 min de retard, pour un coût quasi nul.
   revalidatePath('/admin');
 }

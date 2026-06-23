@@ -44,7 +44,7 @@ function revalidateLead(leadId: string) {
   revalidatePath('/admin/clients/[id]', 'page');
   revalidatePath('/admin/clients');
   revalidatePath('/admin/pipeline');
-  revalidatePath('/admin/pilotage');
+  // Pilotage exclu : rafraîchi via ISR (revalidate = 60 s) — cf. lib/crm/revalidate.ts.
   revalidatePath('/admin');
 }
 

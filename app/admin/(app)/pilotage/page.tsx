@@ -20,7 +20,9 @@ import { computeKpis, type KpiData } from '@/lib/crm/kpis';
 import { SERVICE_LABEL } from '@/components/admin/badges';
 import { PageHeader } from '@/components/admin/page-header';
 
-export const dynamic = 'force-dynamic';
+// ISR : le pilotage (≈15 requêtes + calcul par dossier) est recalculé au plus une
+// fois par minute, pas à chaque affichage ni à chaque mutation → page quasi instantanée.
+export const revalidate = 60;
 
 /** Libellés lisibles des canaux d'acquisition (cf. attribution first-touch). */
 const CANAL_LABEL: Record<string, string> = {
