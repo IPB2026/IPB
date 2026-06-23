@@ -13,6 +13,7 @@ import {
   Circle,
   Send,
   Trash2,
+  Pencil,
 } from 'lucide-react';
 import type {
   DevisStatus,
@@ -182,6 +183,16 @@ export default async function ClientFichePage({
   const encaisse = c.factures.reduce((s, f) => s + Number(f.acompte ?? 0), 0);
   const resteDu = Math.max(0, factureTotal - encaisse);
 
+  // Devis « principal » du dossier (celui qui porte le montant éditable en tête) :
+  // diagnostic accepté en priorité, sinon diagnostic envoyé/accepté, sinon le 1er.
+  const primaryDevis =
+    c.devis.find((d) => d.status === 'ACCEPTE' && d.serviceType !== 'AUTRE') ??
+    c.devis.find((d) => ['ENVOYE', 'ACCEPTE'].includes(d.status) && d.serviceType !== 'AUTRE') ??
+    c.devis.find((d) => d.serviceType !== 'AUTRE') ??
+    c.devis[0] ??
+    null;
+  const montantValue = dossier.montant ?? dossier.montantDevis;
+
   return (
     <div className="mx-auto max-w-4xl space-y-6">
       <Link
@@ -267,27 +278,82 @@ export default async function ClientFichePage({
           </div>
         </div>
 
+        {/* MONTANT DU DOSSIER — bloc proéminent et éditable en place (ADMIN). Le prix
+            porte sur la coordination ; le diagnostic reste à 0 (règle métier). */}
+        {isAdmin && (
+          <div className="mt-4 rounded-2xl border border-orange-200 bg-gradient-to-br from-orange-50 to-white p-5">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div className="min-w-0">
+                <div className="text-[11px] font-semibold uppercase tracking-wider text-orange-700/80">
+                  {dossier.montant != null ? 'Montant signé · € HT' : 'Montant du dossier · € HT'}
+                </div>
+                <div className="mt-1 text-4xl font-bold tabular-nums leading-none text-slate-900">
+                  {montantValue != null ? <Money value={montantValue} /> : <span className="text-slate-300">—</span>}
+                </div>
+                <div className="mt-1.5 text-xs text-slate-400">
+                  {primaryDevis ? `Devis ${primaryDevis.number} · porté par la coordination` : 'Aucun devis — créez-en un pour fixer le montant'}
+                </div>
+              </div>
+
+              {primaryDevis && (
+                <details className="group [&_summary::-webkit-details-marker]:hidden">
+                  <summary className="inline-flex cursor-pointer list-none items-center gap-1.5 rounded-lg border border-orange-300 bg-white px-3 py-2 text-sm font-semibold text-orange-700 hover:bg-orange-50">
+                    <Pencil className="h-3.5 w-3.5" /> Modifier le montant
+                  </summary>
+                  <form action={setDevisMontant} className="mt-2.5 flex items-center gap-2">
+                    <input type="hidden" name="devisId" value={primaryDevis.id} />
+                    <div className="relative">
+                      <input
+                        name="prix"
+                        type="number"
+                        min="0"
+                        step="1"
+                        inputMode="numeric"
+                        defaultValue={Math.round(Number(primaryDevis.totalHT))}
+                        aria-label="Nouveau montant HT"
+                        autoFocus
+                        className="h-10 w-36 rounded-lg border border-slate-300 pl-3 pr-8 text-base font-semibold tabular-nums outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200"
+                      />
+                      <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-sm text-slate-400">€</span>
+                    </div>
+                    <button
+                      type="submit"
+                      className="h-10 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white hover:bg-orange-700"
+                    >
+                      Enregistrer
+                    </button>
+                  </form>
+                </details>
+              )}
+            </div>
+
+            {/* Récap financier consolidé */}
+            {factureTotal > 0 && (
+              <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-orange-100 pt-3 text-sm">
+                <span className="text-slate-500">
+                  Facturé <strong className="ml-1 tabular-nums text-slate-900"><Money value={factureTotal} /></strong>
+                </span>
+                <span className="text-slate-500">
+                  Encaissé <strong className="ml-1 tabular-nums text-emerald-600"><Money value={encaisse} /></strong>
+                </span>
+                <span className="text-slate-500">
+                  Reste dû{' '}
+                  <strong className={`ml-1 tabular-nums ${resteDu > 0 ? 'text-orange-600' : 'text-emerald-600'}`}>
+                    {resteDu > 0 ? <Money value={resteDu} /> : 'Soldé'}
+                  </strong>
+                </span>
+                {dossier.travauxAPlanifier && (
+                  <span className="ml-auto rounded-full bg-orange-100 px-2.5 py-0.5 text-xs font-semibold text-orange-700">
+                    Travaux à planifier
+                  </span>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
         <div className="mt-2.5 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
           <Metric label="Diagnostiqueur" value={diagnostiqueur} />
-          {isAdmin && (
-            <Metric
-              label={dossier.montant != null ? 'Montant (signé)' : 'Montant devis'}
-              value={<Money value={dossier.montant ?? dossier.montantDevis} />}
-            />
-          )}
-          {isAdmin && factureTotal > 0 && (
-            <Metric label="Facturé" value={<Money value={factureTotal} />} />
-          )}
-          {isAdmin && factureTotal > 0 && (
-            <Metric
-              label="Reste dû"
-              value={resteDu > 0 ? <Money value={resteDu} /> : 'Soldé'}
-              tone={resteDu > 0 ? 'text-orange-600' : 'text-emerald-600'}
-            />
-          )}
-          {isAdmin && dossier.travauxAPlanifier && (
-            <Metric label="Travaux" value="À planifier" tone="text-orange-600" />
-          )}
         </div>
       </div>
 
