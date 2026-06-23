@@ -15,8 +15,8 @@ import type { Metadata } from 'next';
 // intégré et fait intervenir un bureau d'études pour les projets le
 // nécessitant. URL conservée pour ne pas casser le SEO historique.
 export const metadata: Metadata = {
-  title: "Coordination d'études structure · Toulouse · IPB",
-  description: "L'institut IPB coordonne l'étude de structure de votre projet (mur porteur, baie vitrée, reprise) et le chantier qui suit. Étude réalisée par un bureau d'études partenaire&nbsp;; travaux exécutés par les équipes du réseau IPB sous décennale. ☎ 05 82 95 33 75",
+  title: "Étude de structure & mur porteur à Toulouse · IPB",
+  description: "Étude de structure pour mur porteur, baie vitrée ou reprise à Toulouse : note de calcul Eurocodes par un bureau d'études partenaire, travaux exécutés sous décennale par le réseau IPB. Étude sous 3 à 5 jours. ☎ 05 82 95 33 75",
   keywords: [
     'étude structure toulouse',
     'étude structure haute-garonne',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/bureau-etude-structure-toulouse' },
   openGraph: {
-    title: "Coordination d'études structure · IPB Toulouse",
+    title: "Étude de structure & mur porteur à Toulouse · IPB",
     description: "L'institut IPB coordonne l'étude de structure de votre projet et le chantier qui suit. Note de calcul rédigée selon les Eurocodes par un bureau d'études&nbsp;; travaux exécutés par les équipes du réseau IPB sous décennale.",
     url: 'https://www.ipb-expertise.fr/bureau-etude-structure-toulouse',
     type: 'website',

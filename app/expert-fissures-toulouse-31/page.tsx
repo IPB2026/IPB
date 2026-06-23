@@ -12,6 +12,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
+import { isVillePrioritaire } from '@/app/data/villes-prioritaires';
 
 export const metadata: Metadata = {
   title: 'Expert Fissures Toulouse 31 · Visite 72h · Décennale 10 ans',
@@ -51,10 +52,23 @@ export const metadata: Metadata = {
   },
 };
 
-const communes = [
-  'Toulouse', 'Colomiers', 'Tournefeuille', 'Blagnac', 'Muret',
-  'Cugnaux', 'Plaisance-du-Touch', 'Balma', "L'Union", 'Ramonville-Saint-Agne',
-  'Saint-Orens-de-Gameville', 'Castanet-Tolosan', 'Fonsorbes', 'Portet-sur-Garonne', 'Quint-Fonsegrives',
+// name = libellé affiché ; slug = page locale (lien interne si la ville est indexée).
+const communes: { name: string; slug?: string }[] = [
+  { name: 'Toulouse' }, // page courante
+  { name: 'Colomiers', slug: 'colomiers' },
+  { name: 'Tournefeuille', slug: 'tournefeuille' },
+  { name: 'Blagnac', slug: 'blagnac' },
+  { name: 'Muret', slug: 'muret' },
+  { name: 'Cugnaux', slug: 'cugnaux' },
+  { name: 'Plaisance-du-Touch', slug: 'plaisance-du-touch' },
+  { name: 'Balma', slug: 'balma' },
+  { name: "L'Union", slug: 'lunion' },
+  { name: 'Ramonville-Saint-Agne', slug: 'ramonville-saint-agne' },
+  { name: 'Saint-Orens-de-Gameville', slug: 'saint-orens-de-gameville' },
+  { name: 'Castanet-Tolosan', slug: 'castanet-tolosan' },
+  { name: 'Fonsorbes', slug: 'fonsorbes' },
+  { name: 'Portet-sur-Garonne', slug: 'portet-sur-garonne' },
+  { name: 'Quint-Fonsegrives', slug: 'quint-fonsegrives' },
 ];
 
 const faqItems = [
@@ -93,6 +107,14 @@ const faqItems = [
   {
     question: "Quels sont les délais d'intervention ?",
     answer: "Notre institut se déplace sous 72h en moyenne sur Toulouse et la Haute-Garonne. Pour les situations urgentes (fissure évolutive, danger imminent, compromis de vente en cours), nous intervenons sous 24 heures. Le rapport écrit est livré sous 3 à 5 jours ouvrés après la visite.",
+  },
+  {
+    question: "Faut-il une expertise pour vendre une maison fissurée à Toulouse ?",
+    answer: "Ce n'est pas légalement obligatoire, mais c'est fortement recommandé : un rapport technique qui qualifie les fissures (cosmétiques ou structurelles) et leur évolution rassure l'acquéreur, sécurise la négociation et limite le risque de recours en vice caché après la vente. À Toulouse, où le retrait-gonflement des argiles est très présent, un acheteur averti demande presque toujours ces éléments. Beaucoup de vendeurs nous sollicitent juste avant la mise en vente ou pendant le compromis.",
+  },
+  {
+    question: "IPB est-il un expert d'assuré indépendant ?",
+    answer: "IPB est un institut indépendant de diagnostic et de coordination : nous ne sommes liés à aucune compagnie d'assurance et notre rapport défend la réalité technique de vos désordres, pas les intérêts d'un assureur. Le diagnostic et la coordination sont assurés par IPB ; les travaux (agrafage structurel notamment) sont exécutés par les équipes du réseau IPB sous garantie décennale. Vous gardez ainsi un seul interlocuteur, du constat à la réparation.",
   },
 ];
 
@@ -399,14 +421,24 @@ export default function ExpertFissuresToulousePage() {
             </RevealOnScroll>
 
             <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto">
-              {communes.map((commune) => (
-                <span
-                  key={commune}
-                  className="bg-ipb-white border border-ipb-rule rounded-[3px] px-4 py-2 text-[13px] font-light text-ipb-text hover:border-ipb-orange transition-colors"
-                >
-                  {commune}
-                </span>
-              ))}
+              {communes.map((commune) =>
+                commune.slug && isVillePrioritaire(commune.slug) ? (
+                  <Link
+                    key={commune.name}
+                    href={`/expert-fissures/${commune.slug}`}
+                    className="bg-ipb-white border border-ipb-rule rounded-[3px] px-4 py-2 text-[13px] font-light text-ipb-text hover:border-ipb-orange hover:text-ipb-orange transition-colors"
+                  >
+                    {commune.name}
+                  </Link>
+                ) : (
+                  <span
+                    key={commune.name}
+                    className="bg-ipb-white border border-ipb-rule rounded-[3px] px-4 py-2 text-[13px] font-light text-ipb-text"
+                  >
+                    {commune.name}
+                  </span>
+                )
+              )}
               <span className="text-ipb-muted text-[13px] px-4 py-2">+ communes alentour</span>
             </div>
 

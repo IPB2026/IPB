@@ -458,7 +458,7 @@ export default function ExpertHumiditeToulouse31Page() {
           <div className="text-center">
             <p className="text-ipb-muted mb-4">Pages dédiées par ville :</p>
             <div className="flex flex-wrap justify-center gap-2">
-              {['toulouse', 'colomiers', 'tournefeuille', 'blagnac', 'muret', 'montauban', 'castelsarrasin', 'auch', 'condom'].map((ville) => (
+              {['colomiers', 'tournefeuille', 'blagnac', 'muret', 'cugnaux', 'balma', 'montauban', 'castelsarrasin', 'moissac', 'auch'].map((ville) => (
                 <Link key={ville} href={`/expert-humidite/${ville}`} className="text-blue-600 hover:text-blue-700 text-sm underline">
                   Expert humidité {ville.charAt(0).toUpperCase() + ville.slice(1)}
                 </Link>
