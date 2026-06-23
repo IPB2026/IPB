@@ -12,6 +12,7 @@ import {
   Receipt,
   Gauge,
   Radio,
+  Star,
 } from 'lucide-react';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import type { ReactNode } from 'react';
@@ -115,7 +116,7 @@ export default async function PilotagePage() {
         <h2 className="mb-2.5 text-xs font-semibold uppercase tracking-wider text-slate-400">
           Activité & performance
         </h2>
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-6">
           <Stat
             icon={FileCheck2}
             label="Acceptation des devis"
@@ -146,6 +147,20 @@ export default async function PilotagePage() {
             label="Délai moyen → rapport"
             value={kpi.delaiMoyenJours != null ? `${kpi.delaiMoyenJours} j` : '—'}
             sub={`${kpi.rapportsLivres} rapport(s) livré(s)`}
+          />
+          <Stat
+            icon={Gauge}
+            label="Vélocité devis → validation"
+            value={kpi.delaiValidationJours != null ? `${kpi.delaiValidationJours} j` : '—'}
+            sub="délai moyen d'acceptation"
+            tone="text-indigo-600"
+          />
+          <Stat
+            icon={Star}
+            label="Avis Google"
+            value={`${kpi.avis.taux} %`}
+            sub={`${kpi.avis.recus} / ${kpi.avis.demandes} demandés`}
+            tone="text-amber-600"
           />
         </div>
       </div>

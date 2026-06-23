@@ -1,6 +1,7 @@
 import 'server-only';
 import { prisma } from '@/lib/prisma';
 import { sendEmail } from '@/lib/email';
+import { recordPhaseEvent } from '@/lib/crm/phase-events';
 import { COMPANY, euros } from '@/lib/crm/company';
 import { signBookingToken } from '@/lib/crm/booking';
 import { signActionToken } from '@/lib/crm/client-actions';
@@ -170,6 +171,7 @@ export async function sendDevisEmail(
     where: { id },
     data: { status: 'ENVOYE', sentAt: new Date(), relanceCount: 0 },
   });
+  await recordPhaseEvent(devis.contactId, devis.leadId, 'DEVIS_ENVOYE'); // T1
   // Interconnexion : l'envoi du devis fait AVANCER le pipeline automatiquement
   // (Nouveau / À rappeler → Devis envoyé). Pas de saisie manuelle.
   if (devis.leadId) {
@@ -261,6 +263,7 @@ export async function sendRapportEmail(id: string): Promise<SendResult> {
   if (!res.success) return { ok: false, error: res.error ?? 'Échec envoi' };
 
   await prisma.rapport.update({ where: { id }, data: { status: 'ENVOYE' } });
+  await recordPhaseEvent(rapport.contactId, rapport.leadId, 'SUIVI'); // T1 (rapport transmis)
   // COHÉRENCE : le rapport est transmis → la tâche « Rapport à rédiger » (créée à
   // l'encaissement) n'a plus lieu d'être. On la referme automatiquement pour que
   // le tableau de bord et la fiche ne se contredisent plus (fini « rapport à

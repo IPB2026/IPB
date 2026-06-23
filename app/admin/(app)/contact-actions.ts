@@ -42,6 +42,20 @@ function revalidateFiches() {
   revalidatePath('/admin');
 }
 
+/** C3 — marque qu'un avis Google a été reçu pour ce client (suivi du moteur d'avis). */
+export async function markReviewReceived(formData: FormData): Promise<void> {
+  await requireAdmin();
+  const id = String(formData.get('contactId') ?? '');
+  if (!id) return;
+  await prisma.contact
+    .update({ where: { id }, data: { reviewReceivedAt: new Date() } })
+    .catch(() => null);
+  await prisma.activity
+    .create({ data: { type: 'SYSTEME', contactId: id, content: 'Avis Google reçu ✓' } })
+    .catch(() => null);
+  revalidatePath(`/admin/clients/${id}`);
+}
+
 /** Édite les coordonnées d'un contact (corriger un nom/téléphone/email saisi à l'appel). */
 export async function updateContact(
   _prev: ContactFormState,

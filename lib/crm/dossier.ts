@@ -12,6 +12,7 @@ import type {
   AppointmentType,
   ServiceType,
 } from '@prisma/client';
+import { RULES } from './rules';
 
 export interface DossierInputs {
   devis: {
@@ -190,7 +191,7 @@ export function phaseIndex(phase: string | null | undefined): number {
 }
 
 /** Nb de jours pendant lesquels un dossier reste en « Suivi » après le rapport. */
-const SUIVI_DAYS = 14;
+const SUIVI_DAYS = RULES.suiviDays; // cf. lib/crm/rules.ts (config unique)
 const DAY = 86_400_000;
 
 /**

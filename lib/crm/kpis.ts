@@ -22,6 +22,10 @@ export interface KpiData {
   rdvAVenir: number;
   rapportsLivres: number;
   delaiMoyenJours: number | null;
+  /** T1 — délai moyen Devis envoyé → Devis validé (jours), via les transitions horodatées. */
+  delaiValidationJours: number | null;
+  /** C3 — moteur d'avis : demandés / reçus / taux. */
+  avis: { demandes: number; recus: number; taux: number };
   leadsParMois: { label: string; count: number }[];
   parService: { service: ServiceType; count: number }[];
   funnel: { stage: string; label: string; count: number }[];
@@ -280,6 +284,42 @@ export async function computeKpis(): Promise<KpiData> {
     })
     .sort((a, b) => b.leads - a.leads);
 
+  // ── T1 — VÉLOCITÉ : délai moyen « Devis envoyé → Devis validé » (jours), basé
+  //    sur les transitions horodatées (PhaseEvent). Indicateur de réactivité du
+  //    cycle commercial (un délai qui s'allonge = signal à traiter). ──
+  let delaiValidationJours: number | null = null;
+  try {
+    const [envoyes, valides] = await Promise.all([
+      prisma.phaseEvent.findMany({ where: { toPhase: 'DEVIS_ENVOYE' }, select: { contactId: true, createdAt: true }, orderBy: { createdAt: 'asc' } }),
+      prisma.phaseEvent.findMany({ where: { toPhase: 'DEVIS_VALIDE' }, select: { contactId: true, createdAt: true }, orderBy: { createdAt: 'asc' } }),
+    ]);
+    const firstEnvoye = new Map<string, Date>();
+    for (const e of envoyes) if (!firstEnvoye.has(e.contactId)) firstEnvoye.set(e.contactId, e.createdAt);
+    let sum = 0;
+    let count = 0;
+    for (const v of valides) {
+      const env = firstEnvoye.get(v.contactId);
+      if (env && v.createdAt >= env) {
+        sum += (v.createdAt.getTime() - env.getTime()) / DAY;
+        count++;
+      }
+    }
+    if (count > 0) delaiValidationJours = Math.round((sum / count) * 10) / 10;
+  } catch {
+    // PhaseEvent peut être vide au début : on laisse null (affiché « — »).
+  }
+
+  // ── C3 — moteur d'avis : demandés vs reçus → taux de transformation en avis. ──
+  const [avisDemandes, avisRecus] = await Promise.all([
+    prisma.contact.count({ where: { reviewRequestedAt: { not: null } } }),
+    prisma.contact.count({ where: { reviewReceivedAt: { not: null } } }),
+  ]);
+  const avis = {
+    demandes: avisDemandes,
+    recus: avisRecus,
+    taux: avisDemandes > 0 ? Math.round((avisRecus / avisDemandes) * 1000) / 10 : 0,
+  };
+
   // ── Activité par diagnostiqueur ──
   // 3 requêtes au total (au lieu de N×3) : la liste + 2 groupBy agrégés en mémoire.
   const [experts, leadByExpert, rapportByExpert] = await Promise.all([
@@ -349,6 +389,8 @@ export async function computeKpis(): Promise<KpiData> {
     rdvAVenir,
     rapportsLivres,
     delaiMoyenJours,
+    delaiValidationJours,
+    avis,
     leadsParMois,
     parService,
     funnel,

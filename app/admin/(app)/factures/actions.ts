@@ -7,6 +7,7 @@ import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
 import { nextFactureNumber } from '@/lib/crm/numbering';
 import { notifyClientPayment } from '@/lib/crm/notify';
+import { recordPhaseEvent } from '@/lib/crm/phase-events';
 import { FactureStatus } from '@prisma/client';
 
 /** Crée une facture (forfait) à partir d'un client, sans passer par un devis. */
@@ -252,7 +253,10 @@ export async function recordFacturePayment(formData: FormData) {
   });
 
   // Confirmation client à la facture soldée (non bloquant).
-  if (soldee) await notifyClientPayment(id);
+  if (soldee) {
+    await notifyClientPayment(id);
+    await recordPhaseEvent(f.contactId, null, 'PAIEMENT_RECU'); // T1
+  }
 
   // RÈGLE MÉTIER : le paiement DÉCLENCHE la rédaction du rapport. On fait remonter
   // l'action « Rapport à rédiger » dans les relances dues (sauf si rapport déjà

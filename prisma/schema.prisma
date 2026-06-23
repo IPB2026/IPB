@@ -117,16 +117,36 @@ model Contact {
   // Corbeille (soft-delete) : non null = client à la corbeille, purgé après 30 j.
   archivedAt     DateTime?
 
+  // Moteur d'avis (C3) : quand l'avis Google a été demandé / reçu.
+  reviewRequestedAt DateTime?
+  reviewReceivedAt  DateTime?
+
   leads        Lead[]
   activities   Activity[]
   devis        Devis[]
   factures     Facture[]
   appointments Appointment[]
   rapports     Rapport[]
+  phaseEvents  PhaseEvent[]
 
   @@index([email])
   @@index([phone])
   @@index([archivedAt])
+}
+
+/// Horodatage d'une transition de phase du dossier (T1) — base de la vélocité.
+model PhaseEvent {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  contact   Contact  @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  contactId String
+  leadId    String?
+  fromPhase String?
+  toPhase   String
+
+  @@index([contactId])
+  @@index([toPhase])
+  @@index([createdAt])
 }
 
 /// Une demande entrante qualifiée, suivie dans le pipeline
@@ -155,6 +175,15 @@ model Lead {
 
   value     Decimal? @db.Decimal(10, 2) // valeur estimée / réelle du dossier
   lostReason String?
+  // Motif de perte STRUCTURÉ (T2) : PRIX / DELAI / CONCURRENT / ABANDON / AUTRE.
+  lostReasonCode String?
+
+  // Qualification téléphonique STRUCTURÉE (T2) — sortie du blob payload pour être
+  // requêtable/analysable. Délai, décisionnaire, type de bien + horodatage.
+  qualDelai    String?
+  qualDecision String?
+  qualBien     String?
+  qualScoredAt DateTime?
 
   // Phase forcée MANUELLEMENT (override). null = suivi automatique (phase dérivée
   // des artefacts). Si renseignée, elle prime sur la dérivation partout (fiche,

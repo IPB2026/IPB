@@ -13,6 +13,8 @@ import {
 } from '@/lib/crm/captureLead';
 import { notifyExpertAssigned } from '@/lib/crm/notify';
 import { isValidPhase } from '@/lib/crm/dossier';
+import { recordPhaseEvent } from '@/lib/crm/phase-events';
+import { lostReasonCodeFromText } from '@/lib/crm/lost-reason';
 import { PHASE_LABEL } from '@/components/admin/badges';
 import {
   scoreQualification,
@@ -224,6 +226,8 @@ async function applyManualPhase(
       manualPhase: phase,
       ...(enumStage ? { stage: enumStage } : {}),
       lostReason: phase === 'PERDU' ? lostReason || null : null,
+      // T2 — motif de perte STRUCTURÉ (déduit du texte) : analysable en win/loss.
+      lostReasonCode: phase === 'PERDU' ? lostReasonCodeFromText(lostReason) : null,
     },
   });
   await prisma.activity.create({
@@ -236,6 +240,7 @@ async function applyManualPhase(
       }`,
     },
   });
+  await recordPhaseEvent(current.contactId, leadId, phase); // T1 (transition manuelle)
   // COHÉRENCE : marquer Perdu, c'est trancher la « Décision devis » (perdu/relancer)
   // restée en attente → on la referme pour qu'elle ne traîne plus dans les relances.
   if (phase === 'PERDU') {
@@ -484,6 +489,12 @@ export async function qualifyLead(formData: FormData) {
       score: result.score,
       maxScore: result.maxScore,
       reasons: result.reasons,
+      // T2 — qualification AUSSI en colonnes (requêtable/analysable), en plus du
+      // payload conservé pour compat. Source structurée pour le reporting.
+      qualDelai: input.delai,
+      qualDecision: input.decision,
+      qualBien: input.bien,
+      qualScoredAt: new Date(),
       payload: {
         ...basePayload,
         qualification: record as unknown as Prisma.InputJsonValue,

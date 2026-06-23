@@ -13,6 +13,7 @@ import { markDevisLost } from '@/lib/crm/send';
 import { notifyClientReminder } from '@/lib/crm/notify';
 import { purgeContactById, TRASH_RETENTION_DAYS } from '@/lib/crm/contacts';
 import { closeResolvedRelances } from '@/lib/crm/relances-cleanup';
+import { RULES } from '@/lib/crm/rules';
 import type { LeadTier } from '@prisma/client';
 
 export const runtime = 'nodejs';
@@ -79,7 +80,7 @@ export async function GET(req: Request) {
       where: {
         contactId: lead.contactId,
         type: { in: ['APPEL', 'NOTE'] },
-        createdAt: { gte: new Date(now - 3 * DAY) },
+        createdAt: { gte: new Date(now - RULES.relancePauseDays * DAY) },
       },
     });
     if (recentTouch > 0) continue;
@@ -128,7 +129,7 @@ export async function GET(req: Request) {
   // matching de texte sur les activités. Stop dès que le devis quitte ENVOYE.
   // 3 relances sans réponse → tâche de décision (perdu/relancer ?), JAMAIS de
   // passage automatique en PERDU (markDevisLost crée désormais un rappel).
-  const DEVIS_STEPS = [3, 7, 14] as const;
+  const DEVIS_STEPS = RULES.relanceDevisDays;
   let devisSent = 0;
   try {
     const devisList = await prisma.devis.findMany({
@@ -215,7 +216,7 @@ export async function GET(req: Request) {
 
   // ── Relances de factures impayées (échéance dépassée : J+3, J+7, puis J+14
   //    en dernier rappel plus ferme). On n'abandonne pas une créance. ──
-  const FACTURE_STEPS = [3, 7, 14] as const;
+  const FACTURE_STEPS = RULES.relanceFactureDays;
   let factureSent = 0;
   try {
     const factures = await prisma.facture.findMany({
@@ -341,7 +342,7 @@ export async function GET(req: Request) {
   //    et la note Google sont la 1ʳᵉ source de dossiers → on sollicite UNE fois par
   //    rapport (dédup via activité). Délai réglable (REVIEW_DELAY_DAYS). Le lien
   //    direct vient de IPB_GOOGLE_REVIEW_URL (sinon repli vers la fiche Google). ──
-  const REVIEW_DELAY_DAYS = 7;
+  const REVIEW_DELAY_DAYS = RULES.reviewDelayDays;
   let avisSent = 0;
   try {
     const cutoff = new Date(now - REVIEW_DELAY_DAYS * DAY);
@@ -349,7 +350,8 @@ export async function GET(req: Request) {
       where: {
         status: 'ENVOYE',
         updatedAt: { lt: cutoff },
-        contact: { email: { not: null } },
+        // C3 — moteur d'avis : une SEULE demande par client (reviewRequestedAt null).
+        contact: { email: { not: null }, reviewRequestedAt: null },
       },
       include: { contact: true },
       take: 50,
@@ -358,14 +360,6 @@ export async function GET(req: Request) {
     for (const r of rapports) {
       const email = r.contact.email;
       if (!email) continue;
-      // Une seule demande par rapport (anti double-sollicitation).
-      const already = await prisma.activity.count({
-        where: {
-          contactId: r.contactId,
-          content: { contains: `Demande d'avis Google (rapport ${r.number})` },
-        },
-      });
-      if (already > 0) continue;
       try {
         const res = await sendEmail({
           to: email,
@@ -387,6 +381,11 @@ export async function GET(req: Request) {
             leadId: r.leadId,
             content: `Demande d'avis Google (rapport ${r.number}) envoyée à ${email}`,
           },
+        });
+        // C3 — trace la demande d'avis sur le contact (dédup + métrique pilotage).
+        await prisma.contact.update({
+          where: { id: r.contactId },
+          data: { reviewRequestedAt: new Date() },
         });
         avisSent++;
       } catch (e) {
@@ -455,7 +454,7 @@ export async function GET(req: Request) {
   //    non perdus) → tâche « à requalifier » (une seule par contact, dédup). ──
   let dormants = 0;
   try {
-    const cutoff = new Date(now - 30 * DAY);
+    const cutoff = new Date(now - RULES.dormantDays * DAY);
     const stale = await prisma.lead.findMany({
       where: {
         stage: { notIn: ['PERDU', 'GAGNE'] },
@@ -495,7 +494,7 @@ export async function GET(req: Request) {
   //    on ne supprime pas une donnée client sans décision humaine). ──
   let aArchiver = 0;
   try {
-    const sixMonths = new Date(now - 182 * DAY);
+    const sixMonths = new Date(now - RULES.archiveSuggestDays * DAY);
     const oldDone = await prisma.contact.findMany({
       where: {
         archivedAt: null,

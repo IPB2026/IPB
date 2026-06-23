@@ -9,6 +9,7 @@ import { requireAdmin } from '@/lib/auth-helpers';
 import { nextDevisNumber, nextFactureNumber } from '@/lib/crm/numbering';
 import { devisTemplate, serializeDevisContent } from '@/lib/crm/devis-templates';
 import { generateDevisContent } from '@/lib/ai/devis';
+import { recordPhaseEvent } from '@/lib/crm/phase-events';
 import { DevisStatus, ServiceType } from '@prisma/client';
 
 // Écritures commerciales (devis/factures) : réservées à l'ADMIN. Les EXPERT
@@ -395,6 +396,7 @@ export async function acceptDevis(formData: FormData) {
     where: { id },
     data: { status: 'ACCEPTE', acceptedAt: devis.acceptedAt ?? new Date() },
   });
+  await recordPhaseEvent(devis.contactId, devis.leadId, 'DEVIS_VALIDE'); // T1
   // COHÉRENCE : le devis est accepté → la tâche « Décision devis » (créée après 3
   // relances sans réponse) n'a plus d'objet. On la referme automatiquement.
   await prisma.activity.updateMany({
