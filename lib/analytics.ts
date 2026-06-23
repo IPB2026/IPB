@@ -57,6 +57,10 @@ const CONV_CALLBACK_REQUEST =
   process.env.NEXT_PUBLIC_GADS_CONV_CALLBACK ||
   'AW-17902440600/0aY8COSl6JccEJihxthC';
 
+/** ID de mesure GA4 (G-…). Sert à cibler l'event `generate_lead` sur GA4
+ *  (et non sur Google Ads), pour alimenter le rapport "Génération de leads". */
+const GA4_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID;
+
 // ─────────────────────────────────────────────────────────────────
 // Cœur — wrapper bas niveau
 // ─────────────────────────────────────────────────────────────────
@@ -73,6 +77,24 @@ export const trackEvent = (
   if (window.dataLayer) {
     window.dataLayer.push({ event: eventName, ...params });
   }
+};
+
+/**
+ * Événement GA4 standard `generate_lead` — alimente le rapport "Génération de
+ * leads" (métriques Nouveaux leads / Leads qualifiés / convertis) qui affichait
+ * 0 car seules les conversions Google Ads (send_to: AW-…) étaient envoyées.
+ * On cible explicitement le tag GA4 (G-…) pour ne pas polluer Google Ads.
+ * À déclencher EN PLUS de la conversion Ads, pas à la place.
+ */
+export const trackGA4Lead = (
+  leadType: 'diagnostic' | 'contact' | 'calculateur' | 'rappel',
+  value?: number
+) => {
+  trackEvent('generate_lead', {
+    ...(GA4_MEASUREMENT_ID ? { send_to: GA4_MEASUREMENT_ID } : {}),
+    lead_type: leadType,
+    ...(value != null ? { value, currency: 'EUR' } : {}),
+  });
 };
 
 // ─────────────────────────────────────────────────────────────────
@@ -218,6 +240,8 @@ export const trackDiagnosticLeadSubmit = (
     currency: 'EUR',
     selected_path: path,
   });
+  // Event GA4 standard (rapport Génération de leads)
+  trackGA4Lead('diagnostic', 50.0);
 };
 
 /** Diagnostic complet (legacy — appelé après lead) */
@@ -246,6 +270,8 @@ export const trackContactLeadSubmit = (userData?: LeadUserData) => {
     value: 40.0,
     currency: 'EUR',
   });
+  // Event GA4 standard (rapport Génération de leads)
+  trackGA4Lead('contact', 40.0);
 };
 
 // ─────────────────────────────────────────────────────────────────
@@ -281,6 +307,8 @@ export const trackCallbackRequest = (userData?: LeadUserData) => {
   trackEvent('conversion', {
     send_to: CONV_CALLBACK_REQUEST,
   });
+  // Event GA4 standard (rapport Génération de leads)
+  trackGA4Lead('rappel');
 };
 
 export const trackCalendlyOpen = () => {
@@ -354,4 +382,6 @@ export const trackCalculatorLeadCapture = (email?: string, phone?: string) => {
     value: 30.0,
     currency: 'EUR',
   });
+  // Event GA4 standard (rapport Génération de leads)
+  trackGA4Lead('calculateur', 30.0);
 };
