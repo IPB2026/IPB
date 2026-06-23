@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { UserCheck, Download, Plus, Search, Trash2, RotateCcw } from 'lucide-react';
-import { Prisma } from '@prisma/client';
+import { Prisma, type ServiceType, type LeadTier } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { Money } from '@/components/admin/money';
@@ -18,7 +18,15 @@ import { restoreContact, purgeContact } from '@/app/admin/(app)/contact-actions'
 
 export const dynamic = 'force-dynamic';
 
-type SearchParams = { q?: string; etat?: string; corbeille?: string; page?: string };
+type SearchParams = {
+  q?: string;
+  etat?: string;
+  service?: string;
+  tier?: string;
+  canal?: string;
+  corbeille?: string;
+  page?: string;
+};
 
 function buildWhere(sp: SearchParams): Prisma.ContactWhereInput {
   const and: Prisma.ContactWhereInput[] = [];
@@ -35,8 +43,28 @@ function buildWhere(sp: SearchParams): Prisma.ContactWhereInput {
   } else if (sp.etat === 'prospects') {
     and.push(PROSPECT_CONTACT_WHERE);
   }
+  // Filtres portés par le dossier (lead) : service, priorité (tier), canal.
+  if (sp.service) and.push({ leads: { some: { service: sp.service as ServiceType } } });
+  if (sp.tier) and.push({ leads: { some: { tier: sp.tier as LeadTier } } });
+  if (sp.canal) and.push({ leads: { some: { channel: sp.canal } } });
   return { AND: and };
 }
+
+const SERVICE_OPTIONS: ServiceType[] = ['FISSURES', 'HUMIDITE', 'EXPERTISE_ACHAT', 'MUR_PORTEUR', 'AUTRE'];
+const TIER_OPTIONS: { value: LeadTier; label: string }[] = [
+  { value: 'HOT', label: 'Chaud' },
+  { value: 'WARM', label: 'Tiède' },
+  { value: 'COLD', label: 'Froid' },
+];
+const CANAL_OPTIONS: { value: string; label: string }[] = [
+  { value: 'ADS', label: 'Publicité (Ads)' },
+  { value: 'SEO', label: 'Référencement' },
+  { value: 'SOCIAL', label: 'Réseaux sociaux' },
+  { value: 'REFERRAL', label: 'Site référent' },
+  { value: 'DIRECT', label: 'Direct' },
+];
+const hasActiveFilter = (sp: SearchParams) =>
+  Boolean(sp.q || sp.etat || sp.service || sp.tier || sp.canal);
 
 /** Actions de corbeille (restaurer / supprimer définitivement) pour une ligne. */
 function TrashActions({ id, name }: { id: string; name: string }) {
@@ -63,12 +91,6 @@ function TrashActions({ id, name }: { id: string; name: string }) {
     </div>
   );
 }
-
-const ETAT_FILTERS: [string, string][] = [
-  ['', 'Tous'],
-  ['prospects', 'Prospects'],
-  ['clients', 'Clients'],
-];
 
 export default async function ClientsPage({
   searchParams,
@@ -104,7 +126,7 @@ export default async function ClientsPage({
     };
   });
 
-  const hasFilters = Boolean(searchParams.q || searchParams.etat);
+  const hasFilters = hasActiveFilter(searchParams);
 
   return (
     <div className="space-y-5">
@@ -153,40 +175,66 @@ export default async function ClientsPage({
         }
       />
 
-      {/* Recherche + filtre état (masqués dans la corbeille) */}
+      {/* Recherche + filtres multi-critères (masqués dans la corbeille). Form GET :
+          chaque champ devient un paramètre d'URL → filtrage serveur, sans JS. */}
       {!corbeille && (
-      <form className="flex flex-col gap-2.5 rounded-xl border border-slate-200 bg-white p-3 sm:flex-row sm:items-end">
-        <div className="relative sm:min-w-[220px] sm:flex-1">
-          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-          <input
-            type="search"
-            name="q"
-            defaultValue={searchParams.q ?? ''}
-            placeholder="Rechercher un nom, téléphone, e-mail, ville…"
-            className="h-10 w-full rounded-lg border border-slate-300 pl-9 pr-3 text-base outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 sm:text-sm"
-          />
-        </div>
-        <div className="grid grid-cols-3 gap-2 sm:flex sm:gap-2">
-          {ETAT_FILTERS.map(([v, l]) => {
-            const active = (searchParams.etat ?? '') === v;
-            const href = `/admin/clients?${new URLSearchParams({
-              ...(searchParams.q ? { q: searchParams.q } : {}),
-              ...(v ? { etat: v } : {}),
-            }).toString()}`;
-            return (
+      <form
+        method="get"
+        action="/admin/clients"
+        className="space-y-2.5 rounded-xl border border-slate-200 bg-white p-3"
+      >
+        <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center">
+          <div className="relative sm:flex-1">
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+            <input
+              type="search"
+              name="q"
+              defaultValue={searchParams.q ?? ''}
+              placeholder="Rechercher un nom, téléphone, e-mail, ville…"
+              className="h-10 w-full rounded-lg border border-slate-300 pl-9 pr-3 text-base outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 sm:text-sm"
+            />
+          </div>
+          <div className="flex gap-2">
+            <button
+              type="submit"
+              className="h-10 rounded-lg bg-slate-900 px-4 text-sm font-semibold text-white hover:bg-slate-800"
+            >
+              Filtrer
+            </button>
+            {hasActiveFilter(searchParams) && (
               <Link
-                key={v || 'tous'}
-                href={href}
-                className={`flex h-10 items-center justify-center rounded-lg px-3 text-sm font-medium ${
-                  active
-                    ? 'bg-slate-900 text-white'
-                    : 'border border-slate-300 text-slate-700 hover:bg-slate-50'
-                }`}
+                href="/admin/clients"
+                className="flex h-10 items-center rounded-lg border border-slate-300 px-3 text-sm font-medium text-slate-600 hover:bg-slate-50"
               >
-                {l}
+                Réinitialiser
               </Link>
-            );
-          })}
+            )}
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+          <select name="etat" defaultValue={searchParams.etat ?? ''} className="h-10 rounded-lg border border-slate-300 px-2.5 text-sm outline-none focus:border-orange-500">
+            <option value="">État : tous</option>
+            <option value="prospects">Prospects</option>
+            <option value="clients">Clients</option>
+          </select>
+          <select name="service" defaultValue={searchParams.service ?? ''} className="h-10 rounded-lg border border-slate-300 px-2.5 text-sm outline-none focus:border-orange-500">
+            <option value="">Service : tous</option>
+            {SERVICE_OPTIONS.map((s) => (
+              <option key={s} value={s}>{SERVICE_LABEL[s]}</option>
+            ))}
+          </select>
+          <select name="tier" defaultValue={searchParams.tier ?? ''} className="h-10 rounded-lg border border-slate-300 px-2.5 text-sm outline-none focus:border-orange-500">
+            <option value="">Priorité : toutes</option>
+            {TIER_OPTIONS.map((t) => (
+              <option key={t.value} value={t.value}>{t.label}</option>
+            ))}
+          </select>
+          <select name="canal" defaultValue={searchParams.canal ?? ''} className="h-10 rounded-lg border border-slate-300 px-2.5 text-sm outline-none focus:border-orange-500">
+            <option value="">Canal : tous</option>
+            {CANAL_OPTIONS.map((c) => (
+              <option key={c.value} value={c.value}>{c.label}</option>
+            ))}
+          </select>
         </div>
       </form>
       )}
@@ -297,6 +345,9 @@ export default async function ClientsPage({
             params={{
               ...(searchParams.q ? { q: searchParams.q } : {}),
               ...(searchParams.etat ? { etat: searchParams.etat } : {}),
+              ...(searchParams.service ? { service: searchParams.service } : {}),
+              ...(searchParams.tier ? { tier: searchParams.tier } : {}),
+              ...(searchParams.canal ? { canal: searchParams.canal } : {}),
               ...(searchParams.corbeille ? { corbeille: searchParams.corbeille } : {}),
             }}
           />

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { Plus, ClipboardCheck, MapPin, ArrowRight, CalendarClock } from 'lucide-react';
-import type { ReportStatus } from '@prisma/client';
+import { Prisma, ReportStatus } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { getSessionUser } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
@@ -38,16 +38,24 @@ function StatusPill({ status }: { status: ReportStatus }) {
   );
 }
 
+const RAPPORT_STATUT_FILTERS: { value: string; label: string }[] = [
+  { value: '', label: 'Tous' },
+  { value: 'SOUMIS', label: 'À générer' },
+  { value: 'GENERE', label: 'À valider' },
+  { value: 'VALIDE', label: 'Validés' },
+  { value: 'ENVOYE', label: 'Transmis' },
+];
+
 export default async function RapportsListPage({
   searchParams,
 }: {
-  searchParams: { page?: string };
+  searchParams: { page?: string; statut?: string };
 }) {
   const user = await getSessionUser();
   if (!user) redirect('/admin/login');
 
   if (user.role === 'EXPERT') return <ExpertView expertId={user.id} />;
-  return <AdminView page={parsePage(searchParams.page)} />;
+  return <AdminView page={parsePage(searchParams.page)} statut={searchParams.statut ?? ''} />;
 }
 
 /* ─────────────────────────  Vue diagnostiqueur  ───────────────────────── */
@@ -199,11 +207,11 @@ function loadAssignedLeads(expertId: string) {
 
 /* ──────────────────────────────  Vue admin  ────────────────────────────── */
 
-async function AdminView({ page }: { page: number }) {
+async function AdminView({ page, statut }: { page: number; statut: string }) {
   let loaded: Awaited<ReturnType<typeof loadAll>> | null = null;
   let dbError = false;
   try {
-    loaded = await loadAll(page);
+    loaded = await loadAll(page, statut);
   } catch {
     dbError = true;
   }
@@ -225,6 +233,25 @@ async function AdminView({ page }: { page: number }) {
           </Link>
         }
       />
+
+      {/* Filtre par statut */}
+      <div className="flex flex-wrap gap-2">
+        {RAPPORT_STATUT_FILTERS.map((f) => {
+          const active = statut === f.value;
+          const href = f.value ? `/admin/rapports?statut=${f.value}` : '/admin/rapports';
+          return (
+            <Link
+              key={f.value || 'tous'}
+              href={href}
+              className={`inline-flex h-9 items-center rounded-lg px-3 text-sm font-medium ${
+                active ? 'bg-slate-900 text-white' : 'border border-slate-300 text-slate-700 hover:bg-slate-50'
+              }`}
+            >
+              {f.label}
+            </Link>
+          );
+        })}
+      </div>
 
       {dbError || rapports.length === 0 ? (
         <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
@@ -292,7 +319,13 @@ async function AdminView({ page }: { page: number }) {
               </tbody>
             </table>
           </div>
-          <Pagination page={page} pageSize={RAPPORTS_PAGE_SIZE} total={total} basePath="/admin/rapports" />
+          <Pagination
+            page={page}
+            pageSize={RAPPORTS_PAGE_SIZE}
+            total={total}
+            basePath="/admin/rapports"
+            params={statut ? { statut } : {}}
+          />
         </>
       )}
     </div>
@@ -301,9 +334,12 @@ async function AdminView({ page }: { page: number }) {
 
 const RAPPORTS_PAGE_SIZE = 50;
 
-async function loadAll(page: number) {
+async function loadAll(page: number, statut: string) {
+  const where: Prisma.RapportWhereInput =
+    statut && statut in ReportStatus ? { status: statut as ReportStatus } : {};
   const [rapports, total] = await Promise.all([
     prisma.rapport.findMany({
+      where,
       orderBy: { createdAt: 'desc' },
       skip: (page - 1) * RAPPORTS_PAGE_SIZE,
       take: RAPPORTS_PAGE_SIZE,
@@ -312,7 +348,7 @@ async function loadAll(page: number) {
         author: { select: { name: true, email: true } },
       },
     }),
-    prisma.rapport.count(),
+    prisma.rapport.count({ where }),
   ]);
   return { rapports, total };
 }

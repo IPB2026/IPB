@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Plus, FileText, Download, Trash2, Sparkles } from 'lucide-react';
+import { Prisma, DevisStatus } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
@@ -14,17 +15,27 @@ import { Pagination, parsePage } from '@/components/admin/pagination';
 
 export const dynamic = 'force-dynamic';
 
+const DEVIS_STATUT_FILTERS: { value: string; label: string }[] = [
+  { value: '', label: 'Tous' },
+  { value: 'BROUILLON', label: 'Brouillons' },
+  { value: 'ENVOYE', label: 'Envoyés' },
+  { value: 'ACCEPTE', label: 'Acceptés' },
+  { value: 'REFUSE', label: 'Refusés' },
+  { value: 'EXPIRE', label: 'Expirés' },
+];
+
 export default async function DevisListPage({
   searchParams,
 }: {
-  searchParams: { page?: string };
+  searchParams: { page?: string; statut?: string };
 }) {
   await guardAdminPage();
   const page = parsePage(searchParams.page);
+  const statut = searchParams.statut ?? '';
   let loaded: Awaited<ReturnType<typeof load>> | null = null;
   let dbError = false;
   try {
-    loaded = await load(page);
+    loaded = await load(page, statut);
   } catch {
     dbError = true;
   }
@@ -62,6 +73,25 @@ export default async function DevisListPage({
           </>
         }
       />
+
+      {/* Filtre par statut */}
+      <div className="flex flex-wrap gap-2">
+        {DEVIS_STATUT_FILTERS.map((f) => {
+          const active = statut === f.value;
+          const href = f.value ? `/admin/devis?statut=${f.value}` : '/admin/devis';
+          return (
+            <Link
+              key={f.value || 'tous'}
+              href={href}
+              className={`inline-flex h-9 items-center rounded-lg px-3 text-sm font-medium ${
+                active ? 'bg-slate-900 text-white' : 'border border-slate-300 text-slate-700 hover:bg-slate-50'
+              }`}
+            >
+              {f.label}
+            </Link>
+          );
+        })}
+      </div>
 
       {dbError || devis.length === 0 ? (
         <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
@@ -199,7 +229,13 @@ export default async function DevisListPage({
               </tbody>
             </table>
           </div>
-          <Pagination page={page} pageSize={DEVIS_PAGE_SIZE} total={total} basePath="/admin/devis" />
+          <Pagination
+            page={page}
+            pageSize={DEVIS_PAGE_SIZE}
+            total={total}
+            basePath="/admin/devis"
+            params={statut ? { statut } : {}}
+          />
         </>
       )}
     </div>
@@ -208,9 +244,12 @@ export default async function DevisListPage({
 
 const DEVIS_PAGE_SIZE = 50;
 
-async function load(page: number) {
+async function load(page: number, statut: string) {
+  const where: Prisma.DevisWhereInput =
+    statut && statut in DevisStatus ? { status: statut as DevisStatus } : {};
   const [devis, total] = await Promise.all([
     prisma.devis.findMany({
+      where,
       orderBy: { createdAt: 'desc' },
       skip: (page - 1) * DEVIS_PAGE_SIZE,
       take: DEVIS_PAGE_SIZE,
@@ -228,7 +267,7 @@ async function load(page: number) {
         contact: { select: { name: true } },
       },
     }),
-    prisma.devis.count(),
+    prisma.devis.count({ where }),
   ]);
   return { devis, total };
 }
