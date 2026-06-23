@@ -172,6 +172,39 @@ describe('computeDossier — branche travaux & régressions', () => {
   });
 });
 
+describe('computeDossier — statut Prospect/Client dérivé de la phase', () => {
+  it('Prospect tant que devis pas validé (Nouveau, Devis envoyé)', () => {
+    expect(dossier({}).isClient).toBe(false);
+    expect(
+      dossier({
+        devis: [{ status: 'ENVOYE', totalHT: 100, acceptedAt: null, serviceType: 'FISSURES' }],
+      }).isClient
+    ).toBe(false);
+  });
+
+  it('Client dès le devis validé', () => {
+    const d = dossier({
+      devis: [{ status: 'ACCEPTE', totalHT: 480, acceptedAt: new Date(), serviceType: 'FISSURES' }],
+    });
+    expect(d.phase).toBe('DEVIS_VALIDE');
+    expect(d.isClient).toBe(true);
+  });
+
+  it('régression « Quentin » : RDV + rapport sans devis ACCEPTE ⇒ CLIENT (plus jamais Prospect)', () => {
+    const d = dossier({
+      appointments: [{ type: 'DIAGNOSTIC_FISSURES', status: 'PLANIFIE' }],
+      factures: [{ status: 'PAYEE' }],
+      rapports: [{ status: 'ENVOYE', budgetHT: null }],
+      rapportEnvoyeAt: new Date(),
+    });
+    expect(d.isClient).toBe(true);
+  });
+
+  it('Perdu ⇒ Prospect (perdu), pas Client', () => {
+    expect(dossier({ manualPhase: 'PERDU' }).isClient).toBe(false);
+  });
+});
+
 describe('computeDossier — override manuel (« liberté totale »)', () => {
   const step = (d: ReturnType<typeof dossier>, k: string) =>
     d.steps.find((s) => s.key === k);

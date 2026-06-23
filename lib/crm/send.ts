@@ -256,6 +256,19 @@ export async function sendRapportEmail(id: string): Promise<SendResult> {
   if (!res.success) return { ok: false, error: res.error ?? 'Échec envoi' };
 
   await prisma.rapport.update({ where: { id }, data: { status: 'ENVOYE' } });
+  // COHÉRENCE : le rapport est transmis → la tâche « Rapport à rédiger » (créée à
+  // l'encaissement) n'a plus lieu d'être. On la referme automatiquement pour que
+  // le tableau de bord et la fiche ne se contredisent plus (fini « rapport à
+  // traiter » alors que la fiche affiche « rapport transmis »).
+  await prisma.activity.updateMany({
+    where: {
+      contactId: rapport.contactId,
+      type: 'RELANCE',
+      done: false,
+      content: { contains: 'Rapport à rédiger' },
+    },
+    data: { done: true, doneAt: new Date() },
+  });
   await prisma.activity.create({
     data: {
       type: 'EMAIL',

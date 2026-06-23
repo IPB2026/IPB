@@ -112,6 +112,27 @@ export function isValidPhase(p: string): p is PhaseKey {
   return (ALL_PHASES as readonly string[]).includes(p);
 }
 
+/**
+ * Phases « CLIENT » : à partir de « Devis validé » et sur toute la suite du cycle
+ * (RDV, visite, facture, paiement, rapport, suivi, travaux, gagné). En deçà
+ * (Nouveau, À rappeler, Devis envoyé) ou en Perdu ⇒ encore un PROSPECT. SOURCE
+ * UNIQUE du statut Prospect/Client, partagée par le badge (dérivé de la phase) et
+ * la requête de comptage (cf. CLIENT_CONTACT_WHERE pour l'équivalent Prisma).
+ */
+export const CLIENT_PHASES = new Set<string>([
+  'DEVIS_VALIDE',
+  'RDV_PLANIFIE',
+  'VISITE_FAITE',
+  'FACTURE_ENVOYEE',
+  'PAIEMENT_RECU',
+  'RAPPORT',
+  'SUIVI',
+  'TERMINE',
+  'ACCOMPAGNEMENT_TRAVAUX',
+  'TRAVAUX_LANCES',
+  'GAGNE',
+]);
+
 /** Index d'une phase dans la séquence canonique (-1 si hors séquence). */
 export function phaseIndex(phase: string | null | undefined): number {
   if (!phase) return -1;
@@ -167,7 +188,10 @@ export function computeDossier(d: DossierInputs): DossierView {
     .filter((x) => x.status === 'ACCEPTE' || x.acceptedAt != null)
     .sort((a, b) => (b.acceptedAt?.getTime() ?? 0) - (a.acceptedAt?.getTime() ?? 0));
 
-  const isClient = acceptedDevis.length > 0 || d.factures.length > 0;
+  // Artefact « client » concret (devis accepté ou facture). Sert à faire avancer
+  // la phase ; le statut Prospect/Client public, lui, est DÉRIVÉ de la phase finale
+  // (cf. `isClient` plus bas) pour une cohérence stricte badge ⇔ phase partout.
+  const hasClientArtifact = acceptedDevis.length > 0 || d.factures.length > 0;
   // Montant/date du dossier = devis diagnostic accepté en priorité (pas le
   // 2ᵉ devis « travaux »), sinon le plus récent accepté.
   const primaryDevis =
@@ -243,8 +267,8 @@ export function computeDossier(d: DossierInputs): DossierView {
   // le rapport ; il est considéré « fait » dès qu'il expire (2 semaines) ou qu'une
   // branche travaux démarre.
   const raw: { key: string; label: string; done: boolean }[] = [
-    { key: 'devis', label: 'Devis diagnostic envoyé', done: devisEnvoye || isClient },
-    { key: 'client', label: 'Devis accepté (client)', done: isClient },
+    { key: 'devis', label: 'Devis diagnostic envoyé', done: devisEnvoye || hasClientArtifact },
+    { key: 'client', label: 'Devis accepté (client)', done: hasClientArtifact },
     { key: 'rdv', label: "Date d'intervention", done: rdvPris },
     { key: 'visite', label: 'Visite réalisée', done: visiteFaite },
     { key: 'facture', label: 'Facture envoyée', done: factureEnvoyee },
@@ -323,13 +347,20 @@ export function computeDossier(d: DossierInputs): DossierView {
   else if (rdvPris) phase = 'RDV_PLANIFIE';
   // Devis accepté mais visite pas encore planifiée = « Devis validé » (étape
   // intercalée entre Devis envoyé et RDV planifié — cf. workflow officiel).
-  else if (isClient) phase = 'DEVIS_VALIDE';
+  else if (hasClientArtifact) phase = 'DEVIS_VALIDE';
   else if (devisEnvoye) phase = 'DEVIS_ENVOYE';
   else phase = st || 'NOUVEAU';
 
   // L'OVERRIDE MANUEL prime sur la phase dérivée (peut être en avant comme en
   // arrière du flux automatique). C'est le dernier mot : « liberté totale ».
   if (manualPhase) phase = manualPhase;
+
+  // STATUT PROSPECT/CLIENT — DÉRIVÉ DE LA PHASE (source unique). Un contact devient
+  // CLIENT dès « Devis validé » et le reste sur toute la suite du cycle. Garantit
+  // que le badge Prospect/Client ne contredit JAMAIS la phase affichée (fini le cas
+  // « phase = Rapport transmis » mais badge « Prospect »). Avant « Devis validé »
+  // (Nouveau, À rappeler, Devis envoyé) ou en Perdu ⇒ Prospect.
+  const isClient = CLIENT_PHASES.has(phase);
 
   // Suivi « simple » = rapport remis sans devis travaux (la norme). Pas de relance
   // travaux. Quand une phase est forcée à la main, on n'affiche plus de « prochaine

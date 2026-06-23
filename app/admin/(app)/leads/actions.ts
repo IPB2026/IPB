@@ -236,6 +236,19 @@ async function applyManualPhase(
       }`,
     },
   });
+  // COHÉRENCE : marquer Perdu, c'est trancher la « Décision devis » (perdu/relancer)
+  // restée en attente → on la referme pour qu'elle ne traîne plus dans les relances.
+  if (phase === 'PERDU') {
+    await prisma.activity.updateMany({
+      where: {
+        contactId: current.contactId,
+        type: ActivityType.RELANCE,
+        done: false,
+        content: { contains: 'Décision devis' },
+      },
+      data: { done: true, doneAt: new Date() },
+    });
+  }
   revalidateLead(leadId);
 }
 

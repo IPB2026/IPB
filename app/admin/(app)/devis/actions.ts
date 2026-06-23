@@ -395,6 +395,17 @@ export async function acceptDevis(formData: FormData) {
     where: { id },
     data: { status: 'ACCEPTE', acceptedAt: devis.acceptedAt ?? new Date() },
   });
+  // COHÉRENCE : le devis est accepté → la tâche « Décision devis » (créée après 3
+  // relances sans réponse) n'a plus d'objet. On la referme automatiquement.
+  await prisma.activity.updateMany({
+    where: {
+      contactId: devis.contactId,
+      type: 'RELANCE',
+      done: false,
+      content: { contains: `Décision devis ${devis.number}` },
+    },
+    data: { done: true, doneAt: new Date() },
+  });
   await prisma.activity.create({
     data: {
       type: 'SYSTEME',

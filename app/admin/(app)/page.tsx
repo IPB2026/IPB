@@ -18,6 +18,7 @@ import {
 import { Prisma } from '@prisma/client';
 import { Money } from '@/components/admin/money';
 import { DIAGNOSTIC_VISIT_TYPES } from '@/lib/crm/dossier';
+import { CLIENT_CONTACT_WHERE } from '@/lib/crm/client-status';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
@@ -29,12 +30,47 @@ import { completeRelance } from '@/app/admin/(app)/leads/actions';
 import { updateAppointmentStatus } from '@/app/admin/(app)/agenda/actions';
 import { SubmitButton } from '@/components/admin/submit-button';
 import {
-  StageBadge,
+  PhaseBadge,
   SOURCE_LABEL,
   SERVICE_LABEL,
 } from '@/components/admin/badges';
+import { computeDossier } from '@/lib/crm/dossier';
 
 export const dynamic = 'force-dynamic';
+
+/**
+ * Phase RÉELLE du dossier d'un prospect récent (source unique `computeDossier`),
+ * pour que le tableau de bord affiche la même étape que la fiche et le pipeline.
+ */
+function recentPhase(lead: {
+  stage: string;
+  manualPhase?: string | null;
+  contact: {
+    devis: { status: string; totalHT: unknown; acceptedAt: Date | null; serviceType: string | null }[];
+    factures: { status: string }[];
+    rapports: { status: string; updatedAt: Date; budgetHT: unknown }[];
+    appointments: { type: string; status: string }[];
+  };
+}): string {
+  const c = lead.contact;
+  return computeDossier({
+    devis: c.devis.map((d) => ({
+      status: d.status as never,
+      totalHT: Number(d.totalHT),
+      acceptedAt: d.acceptedAt,
+      serviceType: d.serviceType as never,
+    })),
+    factures: c.factures.map((f) => ({ status: f.status as never })),
+    rapports: c.rapports.map((r) => ({
+      status: r.status as never,
+      budgetHT: r.budgetHT != null ? Number(r.budgetHT) : null,
+    })),
+    appointments: c.appointments.map((a) => ({ type: a.type as never, status: a.status as never })),
+    stage: lead.stage,
+    manualPhase: lead.manualPhase ?? null,
+    rapportEnvoyeAt: c.rapports.find((r) => r.status === 'ENVOYE')?.updatedAt ?? null,
+  }).phase;
+}
 
 async function getStats() {
   const now = new Date();
@@ -98,17 +134,25 @@ async function getStats() {
   ] = await Promise.all([
     prisma.lead.count(),
     prisma.contact.count({
-      where: {
-        archivedAt: null,
-        OR: [{ devis: { some: { status: 'ACCEPTE' } } }, { factures: { some: {} } }],
-      },
+      where: { archivedAt: null, ...CLIENT_CONTACT_WHERE },
     }),
     prisma.lead.count({ where: { stage: 'NOUVEAU' } }),
     prisma.lead.findMany({
       take: 8,
       where: { contact: { archivedAt: null } },
       orderBy: { createdAt: 'desc' },
-      include: { contact: true },
+      // On charge les artefacts du dossier pour afficher la PHASE réelle
+      // (source unique) au lieu de l'étape brute → cohérence dashboard ↔ fiche.
+      include: {
+        contact: {
+          include: {
+            devis: { select: { status: true, totalHT: true, acceptedAt: true, serviceType: true } },
+            factures: { select: { status: true } },
+            rapports: { select: { status: true, updatedAt: true, budgetHT: true } },
+            appointments: { select: { type: true, status: true } },
+          },
+        },
+      },
     }),
     prisma.activity.count({
       where: { type: 'RELANCE', done: false, dueAt: { lte: now } },
@@ -624,7 +668,7 @@ export default async function DashboardPage() {
                   href={`/admin/clients/${lead.contactId}`}
                   leading={<Avatar name={lead.contact.name} size="sm" />}
                   title={lead.contact.name}
-                  badge={<StageBadge stage={lead.stage} />}
+                  badge={<PhaseBadge phase={recentPhase(lead)} />}
                   lines={[
                     lead.contact.phone || lead.contact.email || '—',
                     SERVICE_LABEL[lead.service],
@@ -685,7 +729,7 @@ export default async function DashboardPage() {
                       {SOURCE_LABEL[lead.source]}
                     </td>
                     <td className="px-5 py-3">
-                      <StageBadge stage={lead.stage} />
+                      <PhaseBadge phase={recentPhase(lead)} />
                     </td>
                     <td className="px-5 py-3 text-right text-xs tabular-nums text-slate-400">
                       {lead.createdAt.toLocaleDateString('fr-FR')}

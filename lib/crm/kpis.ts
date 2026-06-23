@@ -1,6 +1,7 @@
 import 'server-only';
 import { prisma } from '@/lib/prisma';
 import { computeDossier } from '@/lib/crm/dossier';
+import { CLIENT_CONTACT_WHERE } from '@/lib/crm/client-status';
 import type { ServiceType, PipelineStage } from '@prisma/client';
 
 /**
@@ -92,11 +93,7 @@ export async function computeKpis(): Promise<KpiData> {
     }),
     prisma.facture.aggregate({ _sum: { totalHT: true }, where: { status: 'PAYEE' } }),
     prisma.contact.count(),
-    prisma.contact.count({
-      where: {
-        OR: [{ devis: { some: { status: 'ACCEPTE' } } }, { factures: { some: {} } }],
-      },
-    }),
+    prisma.contact.count({ where: CLIENT_CONTACT_WHERE }),
     prisma.lead.count(),
     prisma.devis.count(),
     prisma.facture.count(),

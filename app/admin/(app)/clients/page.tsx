@@ -10,6 +10,7 @@ import { EmptyState } from '@/components/admin/empty-state';
 import { Avatar } from '@/components/admin/avatar';
 import { MobileCardList, MobileCardRow } from '@/components/admin/mobile-card';
 import { PhaseBadge, SERVICE_LABEL } from '@/components/admin/badges';
+import { CLIENT_CONTACT_WHERE, PROSPECT_CONTACT_WHERE } from '@/lib/crm/client-status';
 import { QuickActionMenu } from '@/components/admin/quick-action-menu';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 import { restoreContact, purgeContact } from '@/app/admin/(app)/contact-actions';
@@ -29,11 +30,9 @@ function buildWhere(sp: SearchParams): Prisma.ContactWhereInput {
     });
   }
   if (sp.etat === 'clients') {
-    and.push({
-      OR: [{ devis: { some: { status: 'ACCEPTE' } } }, { factures: { some: {} } }],
-    });
+    and.push(CLIENT_CONTACT_WHERE);
   } else if (sp.etat === 'prospects') {
-    and.push({ devis: { none: { status: 'ACCEPTE' } }, factures: { none: {} } });
+    and.push(PROSPECT_CONTACT_WHERE);
   }
   return { AND: and };
 }
