@@ -51,6 +51,7 @@ const SERVICE_ORDER: ServiceType[] = [
 const FUNNEL: { key: string; label: string }[] = [
   { key: 'NOUVEAU', label: 'Nouveau' },
   { key: 'DEVIS_ENVOYE', label: 'Devis envoyé' },
+  { key: 'DEVIS_VALIDE', label: 'Devis validé' },
   { key: 'RDV_PLANIFIE', label: 'RDV planifié' },
   { key: 'VISITE_FAITE', label: 'Visite réalisée' },
   { key: 'FACTURE_ENVOYEE', label: 'Facture envoyée' },

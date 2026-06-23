@@ -40,12 +40,21 @@ describe('computeDossier — séquence de phases', () => {
     expect(d.montant).toBeNull();
   });
 
-  it('devis ACCEPTE → client + montant signé + RDV_PLANIFIE (à planifier)', () => {
+  it('devis ACCEPTE (sans RDV) → client + montant signé + DEVIS_VALIDE', () => {
     const d = dossier({
       devis: [{ status: 'ACCEPTE', totalHT: 480, acceptedAt: new Date(), serviceType: 'FISSURES' }],
     });
     expect(d.isClient).toBe(true);
     expect(d.montant).toBe(480);
+    // Étape intercalée « Devis validé » entre Devis envoyé et RDV planifié.
+    expect(d.phase).toBe('DEVIS_VALIDE');
+  });
+
+  it('devis ACCEPTE + RDV diagnostic planifié → RDV_PLANIFIE (on a dépassé Devis validé)', () => {
+    const d = dossier({
+      devis: [{ status: 'ACCEPTE', totalHT: 480, acceptedAt: new Date(), serviceType: 'FISSURES' }],
+      appointments: [{ type: 'DIAGNOSTIC_FISSURES', status: 'PLANIFIE' }],
+    });
     expect(d.phase).toBe('RDV_PLANIFIE');
   });
 

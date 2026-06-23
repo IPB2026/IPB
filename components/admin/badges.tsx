@@ -21,7 +21,9 @@ export const STAGE_LABEL: Record<PipelineStage, string> = {
   DEVIS_ENVOYE: 'Devis envoyé',
   RDV_PLANIFIE: 'RDV planifié',
   VISITE_FAITE: 'Visite réalisée',
-  GAGNE: 'Gagné',
+  // GAGNE = enum posé à l'acceptation du devis ⇒ s'affiche « Devis validé » pour
+  // rester cohérent avec la phase dérivée DEVIS_VALIDE (même réalité métier).
+  GAGNE: 'Devis validé',
   PERDU: 'Perdu',
 };
 
@@ -56,6 +58,7 @@ export const EDITABLE_PIPELINE_STAGES: PipelineStage[] = [
 export const PIPELINE_FLOW: { phase: string; editable: boolean }[] = [
   { phase: 'NOUVEAU', editable: true },
   { phase: 'DEVIS_ENVOYE', editable: true },
+  { phase: 'DEVIS_VALIDE', editable: true },
   { phase: 'RDV_PLANIFIE', editable: true },
   { phase: 'VISITE_FAITE', editable: true },
   { phase: 'FACTURE_ENVOYEE', editable: false },
@@ -78,7 +81,7 @@ export const PIPELINE_FLOW: { phase: string; editable: boolean }[] = [
  */
 export const STEP_TO_PHASE: Record<string, string> = {
   devis: 'DEVIS_ENVOYE',
-  client: 'RDV_PLANIFIE',
+  client: 'DEVIS_VALIDE',
   rdv: 'RDV_PLANIFIE',
   visite: 'VISITE_FAITE',
   facture: 'FACTURE_ENVOYEE',
@@ -93,6 +96,7 @@ export const MANUAL_PHASE_OPTIONS: { phase: string; label: string }[] = [
   { phase: 'NOUVEAU', label: 'Nouveau' },
   { phase: 'A_RAPPELER', label: 'À rappeler' },
   { phase: 'DEVIS_ENVOYE', label: 'Devis envoyé' },
+  { phase: 'DEVIS_VALIDE', label: 'Devis validé' },
   { phase: 'RDV_PLANIFIE', label: 'RDV planifié' },
   { phase: 'VISITE_FAITE', label: 'Visite réalisée' },
   { phase: 'FACTURE_ENVOYEE', label: 'Facture envoyée' },
@@ -100,7 +104,6 @@ export const MANUAL_PHASE_OPTIONS: { phase: string; label: string }[] = [
   { phase: 'RAPPORT', label: 'Rapport à faire' },
   { phase: 'SUIVI', label: 'Rapport transmis / suivi' },
   { phase: 'TERMINE', label: 'Terminé' },
-  { phase: 'GAGNE', label: 'Gagné' },
 ];
 
 export const SOURCE_LABEL: Record<LeadSource, string> = {
@@ -180,6 +183,7 @@ export const PHASE_LABEL: Record<string, string> = {
   NOUVEAU: 'Nouveau',
   A_RAPPELER: 'À rappeler',
   DEVIS_ENVOYE: 'Devis envoyé',
+  DEVIS_VALIDE: 'Devis validé',
   RDV_PLANIFIE: 'RDV planifié',
   VISITE_FAITE: 'Visite réalisée',
   FACTURE_ENVOYEE: 'Facture envoyée',
@@ -189,7 +193,7 @@ export const PHASE_LABEL: Record<string, string> = {
   TERMINE: 'Terminé',
   ACCOMPAGNEMENT_TRAVAUX: 'Accompagnement travaux',
   TRAVAUX_LANCES: 'Travaux lancés',
-  GAGNE: 'Gagné',
+  GAGNE: 'Devis validé',
   PERDU: 'Perdu',
 };
 
@@ -197,6 +201,7 @@ const PHASE_PILL: Record<string, string> = {
   NOUVEAU: 'bg-slate-100 text-slate-600',
   A_RAPPELER: 'bg-amber-50 text-amber-700',
   DEVIS_ENVOYE: 'bg-orange-50 text-orange-700',
+  DEVIS_VALIDE: 'bg-green-50 text-green-700',
   RDV_PLANIFIE: 'bg-blue-50 text-blue-700',
   VISITE_FAITE: 'bg-violet-50 text-violet-700',
   FACTURE_ENVOYEE: 'bg-cyan-50 text-cyan-700',
@@ -206,7 +211,7 @@ const PHASE_PILL: Record<string, string> = {
   TERMINE: 'bg-slate-100 text-slate-500',
   ACCOMPAGNEMENT_TRAVAUX: 'bg-amber-50 text-amber-700',
   TRAVAUX_LANCES: 'bg-orange-50 text-orange-700',
-  GAGNE: 'bg-emerald-50 text-emerald-700',
+  GAGNE: 'bg-green-50 text-green-700',
   PERDU: 'bg-slate-100 text-slate-500',
 };
 

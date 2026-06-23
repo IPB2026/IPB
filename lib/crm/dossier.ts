@@ -55,6 +55,7 @@ export interface DossierInputs {
 export const PHASE_SEQUENCE = [
   'NOUVEAU',
   'DEVIS_ENVOYE',
+  'DEVIS_VALIDE',
   'RDV_PLANIFIE',
   'VISITE_FAITE',
   'FACTURE_ENVOYEE',
@@ -71,7 +72,7 @@ export const PHASE_SEQUENCE = [
  */
 const STEP_THRESHOLD: Record<string, (typeof PHASE_SEQUENCE)[number]> = {
   devis: 'DEVIS_ENVOYE',
-  client: 'RDV_PLANIFIE', // devis accepté ⇒ on planifie la visite
+  client: 'DEVIS_VALIDE', // devis accepté = « Devis validé » (avant la planif. du RDV)
   rdv: 'RDV_PLANIFIE',
   visite: 'VISITE_FAITE',
   facture: 'FACTURE_ENVOYEE',
@@ -91,6 +92,7 @@ export const ALL_PHASES = [
   'NOUVEAU',
   'A_RAPPELER',
   'DEVIS_ENVOYE',
+  'DEVIS_VALIDE',
   'RDV_PLANIFIE',
   'VISITE_FAITE',
   'FACTURE_ENVOYEE',
@@ -319,7 +321,9 @@ export function computeDossier(d: DossierInputs): DossierView {
   else if (factureEnvoyee) phase = 'FACTURE_ENVOYEE';
   else if (visiteFaite) phase = 'VISITE_FAITE';
   else if (rdvPris) phase = 'RDV_PLANIFIE';
-  else if (isClient) phase = 'RDV_PLANIFIE'; // devis accepté → planifier la visite
+  // Devis accepté mais visite pas encore planifiée = « Devis validé » (étape
+  // intercalée entre Devis envoyé et RDV planifié — cf. workflow officiel).
+  else if (isClient) phase = 'DEVIS_VALIDE';
   else if (devisEnvoye) phase = 'DEVIS_ENVOYE';
   else phase = st || 'NOUVEAU';
 

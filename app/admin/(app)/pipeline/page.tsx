@@ -15,6 +15,7 @@ export const dynamic = 'force-dynamic';
 const EDITABLE: { stage: string; label: string; phases: string[] }[] = [
   { stage: 'NOUVEAU', label: 'Nouveau', phases: ['NOUVEAU', 'A_RAPPELER'] },
   { stage: 'DEVIS_ENVOYE', label: 'Devis envoyé', phases: ['DEVIS_ENVOYE'] },
+  { stage: 'DEVIS_VALIDE', label: 'Devis validé', phases: ['DEVIS_VALIDE', 'GAGNE'] },
   { stage: 'RDV_PLANIFIE', label: 'RDV planifié', phases: ['RDV_PLANIFIE'] },
   { stage: 'VISITE_FAITE', label: 'Visite réalisée', phases: ['VISITE_FAITE'] },
   { stage: 'FACTURE_ENVOYEE', label: 'Facture envoyée', phases: ['FACTURE_ENVOYEE'] },
