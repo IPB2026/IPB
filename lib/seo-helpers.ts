@@ -401,8 +401,8 @@ export function injectMidArticleCta(content: string): string {
   <p class="text-[11px] uppercase tracking-[0.18em] text-ipb-orange-l font-semibold mb-2">Un doute sur votre situation ?</p>
   <p class="text-white/85 text-[15px] leading-relaxed mb-5">Décrivez votre cas en 2 minutes : l'institut vous rappelle sous 48 h avec un premier avis, gratuitement et sans engagement.</p>
   <div class="flex flex-col sm:flex-row gap-3">
-    <a href="/diagnostic" class="inline-flex items-center justify-center bg-ipb-orange text-white px-6 py-3 rounded-[3px] font-bold text-[14px] no-underline hover:bg-[#b35519] transition-colors">Mon diagnostic gratuit · 2 min</a>
-    <a href="tel:0582953375" class="inline-flex items-center justify-center bg-white/10 border border-white/20 text-white px-6 py-3 rounded-[3px] font-bold text-[14px] no-underline hover:bg-white/20 transition-colors">05 82 95 33 75</a>
+    <a href="/diagnostic" class="inline-flex items-center justify-center min-h-[48px] bg-ipb-orange text-white px-6 py-3 rounded-[3px] font-bold text-[14px] no-underline hover:bg-[#b35519] transition-colors">Mon diagnostic gratuit · 2 min</a>
+    <a href="tel:0582953375" class="inline-flex items-center justify-center min-h-[48px] bg-white/10 border border-white/20 text-white px-6 py-3 rounded-[3px] font-bold text-[14px] no-underline hover:bg-white/20 transition-colors">05 82 95 33 75</a>
   </div>
 </div>
 `;
