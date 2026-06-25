@@ -6,6 +6,7 @@ import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { Testimonials } from '@/components/home/Testimonials';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 import { CheckCircle, Phone, ArrowRight, MapPin, Droplets, Shield, FileText, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -125,7 +126,12 @@ const jsonLd = {
     { "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" },
     { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" },
     { "@type": "AdministrativeArea", "name": "Gers (32)" }
-  ]
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "18"
+  }
 };
 
 const faqJsonLd = {
@@ -143,7 +149,8 @@ export default function ExpertHumiditeToulouse31Page() {
     <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
       <Script id="jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
-      
+      <BreadcrumbSchema items={[{ name: 'Expertise Humidité', href: '/expertise/humidite' }, { name: 'Toulouse', href: '/expert-humidite-toulouse-31' }]} showVisual={false} />
+
       <TopBar />
       <Navbar />
       <SmartBackBar />
@@ -314,6 +321,45 @@ export default function ExpertHumiditeToulouse31Page() {
               <p className="font-bold text-blue-900 mb-2">Notre méthode : diagnostic instrumenté avant tout traitement</p>
               <p className="text-blue-800">Contrairement aux entreprises qui vendent directement des travaux, l&apos;institut commence par un <strong>diagnostic avec des instruments de mesure professionnels</strong> (humidimètre à sonde, caméra thermique, test à la bombe à carbure). Ce diagnostic identifie précisément la source de l&apos;humidité — car traiter des remontées capillaires avec un déshumidificateur, ou traiter de la condensation avec de l&apos;injection résine, c&apos;est jeter l&apos;argent par la fenêtre.</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PROCESSUS — comment se déroule un traitement */}
+      <section className="py-16 md:py-24 bg-ipb-stone">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-4">Comment se déroule un traitement</h2>
+            <p className="text-ipb-muted max-w-2xl mx-auto">Du premier appel à la garantie, un parcours clair en quatre étapes — un seul interlocuteur.</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { n: '01', t: 'Diagnostic instrumenté', d: "Visite sous 72h. Humidimètre, caméra thermique, test à la bombe à carbure : la cause exacte est identifiée (remontées capillaires, condensation, infiltration) avant tout traitement." },
+              { n: '02', t: 'Rapport & devis transparent', d: "Rapport écrit remis sous 3 à 5 jours, avec la cause, les mesures et la solution adaptée. Devis détaillé, sans acompte." },
+              { n: '03', t: 'Traitement adapté', d: "Injection de résine, cuvelage ou ventilation selon le diagnostic. Chantier propre de 1 à 3 jours, vous restez chez vous." },
+              { n: '04', t: 'Garantie & suivi du séchage', d: "Travaux d'étanchéité sous garantie décennale 10 ans. Accompagnement pendant les 6 à 12 mois de séchage avant les finitions." },
+            ].map((s) => (
+              <div key={s.n} className="bg-white rounded-2xl p-6 shadow-lg border border-ipb-rule">
+                <div className="text-2xl font-extrabold text-blue-600 mb-3">{s.n}</div>
+                <h3 className="text-lg font-bold text-ipb-text mb-2">{s.t}</h3>
+                <p className="text-ipb-muted text-sm leading-relaxed">{s.d}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Cas concret */}
+          <div className="mt-10 max-w-5xl mx-auto">
+            <Link href="/blog/humidite-remontee-capillaire-solution" className="group block bg-white rounded-2xl p-8 shadow-lg border border-ipb-rule hover:border-blue-300 hover:shadow-xl transition-all">
+              <div className="flex items-start gap-4">
+                <div className="text-4xl" aria-hidden="true">💧</div>
+                <div>
+                  <span className="text-blue-600 text-xs font-bold uppercase tracking-wide">Cas concret</span>
+                  <h3 className="text-xl font-bold text-ipb-text group-hover:text-blue-600 transition-colors mt-1 mb-2">Remontées capillaires dans une maison toulousaine ancienne</h3>
+                  <p className="text-ipb-muted">Salpêtre à 1,20 m, peinture cloquée, odeur persistante : diagnostic à l'humidimètre, injection de résine hydrophobe et suivi du séchage. Le déroulé complet, étape par étape.</p>
+                  <span className="text-blue-600 text-sm font-bold mt-3 inline-block">Lire le cas →</span>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
