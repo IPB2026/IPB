@@ -382,6 +382,34 @@ export function injectLexiconLinks(content: string, currentSlug: string): string
 }
 
 /**
+ * Insère un CTA de conversion AU MILIEU d'un article long (avant le H2 médian).
+ *
+ * Le template blog a déjà un CTA fort en fin d'article ; mais sur un article de
+ * 12-15 min, beaucoup de lecteurs décrochent avant. Ce CTA mi-parcours capte ces
+ * lecteurs. N'agit QUE si l'article a ≥ 4 sections H2 (sinon le CTA de fin suffit
+ * et on n'alourdit pas les articles courts). Les ancres TOC restent intactes (on
+ * insère AVANT le h2, sans toucher son id).
+ */
+export function injectMidArticleCta(content: string): string {
+  const h2s = [...content.matchAll(/<h2\b/gi)];
+  if (h2s.length < 4) return content;
+  const target = h2s[Math.floor(h2s.length / 2)];
+  const pos = target.index;
+  if (pos == null) return content;
+  const cta = `
+<div class="my-10 p-6 sm:p-8 bg-ipb-navy rounded-[6px] text-white not-prose">
+  <p class="text-[11px] uppercase tracking-[0.18em] text-ipb-orange-l font-semibold mb-2">Un doute sur votre situation ?</p>
+  <p class="text-white/85 text-[15px] leading-relaxed mb-5">Décrivez votre cas en 2 minutes : l'institut vous rappelle sous 48 h avec un premier avis, gratuitement et sans engagement.</p>
+  <div class="flex flex-col sm:flex-row gap-3">
+    <a href="/diagnostic" class="inline-flex items-center justify-center bg-ipb-orange text-white px-6 py-3 rounded-[3px] font-bold text-[14px] no-underline hover:bg-[#b35519] transition-colors">Mon diagnostic gratuit · 2 min</a>
+    <a href="tel:0582953375" class="inline-flex items-center justify-center bg-white/10 border border-white/20 text-white px-6 py-3 rounded-[3px] font-bold text-[14px] no-underline hover:bg-white/20 transition-colors">05 82 95 33 75</a>
+  </div>
+</div>
+`;
+  return content.slice(0, pos) + cta + content.slice(pos);
+}
+
+/**
  * Ajoute `class="checklist"` aux <ul> dont les items commencent par
  * ✅ / ❌ / 💡 / ⚠️ pour que la CSS supprime la puce native (sinon double
  * marker visuel : disque orange + emoji).
