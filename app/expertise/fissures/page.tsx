@@ -538,6 +538,7 @@ export default function FissuresPage() {
                 {
                   titre: 'Nos analyses',
                   links: [
+                    { href: '/blog/prix-maison-fissuree', label: "Prix d'une maison fissurée" },
                     { href: '/blog/evaluer-gravite-fissure-maison', label: "Évaluer la gravité d'une fissure" },
                     { href: '/blog/agrafage-vs-micropieux-choix', label: 'Agrafage ou micropieux : comment choisir' },
                     { href: '/blog/secheresse-argile-haute-garonne', label: 'Sécheresse & argiles en Haute-Garonne' },

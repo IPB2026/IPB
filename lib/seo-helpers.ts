@@ -67,7 +67,8 @@ export function getContextualLinks(currentSlug: string, keywords: string[]): Arr
       { text: 'agrafage de fissures', url: '/expertise/fissures' },
       { text: 'expertise fissures Toulouse', url: '/villes/toulouse' },
       { text: 'fissures en escalier', url: '/blog/fissures-escalier-tassement-differentiel' },
-      { text: 'fissure mur porteur', url: '/problemes/fissure-verticale-mur-porteur' }
+      { text: 'fissure mur porteur', url: '/problemes/fissure-verticale-mur-porteur' },
+      { text: 'prix d\'une maison fissurée', url: '/blog/prix-maison-fissuree' }
     ],
     'humidite': [
       { text: 'traitement humidité', url: '/expertise/humidite' },
@@ -295,7 +296,8 @@ export function injectInternalLinks(content: string, currentSlug: string): strin
     'micropieux': '/blog/agrafage-vs-micropieux-choix',
     'tassement différentiel': '/blog/fissures-escalier-tassement-differentiel',
     'sol argileux': '/blog/secheresse-argile-haute-garonne',
-    
+    'décote': '/blog/prix-maison-fissuree',
+
     // Humidité
     'remontées capillaires': '/blog/humidite-remontee-capillaire-solution',
     'injection résine': '/blog/traitement-humidite-injection-resine',
