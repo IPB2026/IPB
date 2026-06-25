@@ -10,6 +10,7 @@ import { CtaFinal } from '@/components/home/CtaFinal';
 import { Testimonials } from '@/components/home/Testimonials';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
+import { InlineCta } from '@/components/ui/InlineCta';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
@@ -519,6 +520,8 @@ export default function ExpertFissuresToulousePage() {
 
         {/* PREUVE SOCIALE — avis clients vérifiés */}
         <Testimonials />
+
+        <InlineCta />
 
         {/* FAQ */}
         <section className="bg-ipb-white py-24 lg:py-32">

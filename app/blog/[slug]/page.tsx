@@ -33,6 +33,7 @@ import {
   injectInternalLinks,
   injectLexiconLinks,
   injectListClasses,
+  injectMidArticleCta,
 } from '@/lib/seo-helpers';
 import { ReadingProgress } from '@/components/blog/ReadingProgress';
 import { ExitIntentPopup } from '@/components/blog/ExitIntentPopup';
@@ -203,7 +204,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
   }));
   const relatedByKeywords = getRelatedPosts(post.slug, post.keywords, allPostsData);
 
-  const contentWithLinks = injectListClasses(injectLexiconLinks(injectInternalLinks(enrichedContent, post.slug), post.slug));
+  const contentWithLinks = injectMidArticleCta(injectListClasses(injectLexiconLinks(injectInternalLinks(enrichedContent, post.slug), post.slug)));
 
   return (
     <div className="min-h-screen bg-ipb-cream">

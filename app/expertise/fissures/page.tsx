@@ -31,6 +31,7 @@ const fissuresPersonas: PersonaCard[] = [
 ];
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
+import { InlineCta } from '@/components/ui/InlineCta';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
 import { fissureFaq } from '@/app/data/faqs';
@@ -481,6 +482,8 @@ export default function FissuresPage() {
         {/* PREUVE SOCIALE — avis clients vérifiés */}
         <Testimonials />
 
+        <InlineCta />
+
         {/* FAQ */}
         <section className="bg-ipb-cream py-24 lg:py-32">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
@@ -538,6 +541,7 @@ export default function FissuresPage() {
                 {
                   titre: 'Nos analyses',
                   links: [
+                    { href: '/blog/prix-maison-fissuree', label: "Prix d'une maison fissurée" },
                     { href: '/blog/evaluer-gravite-fissure-maison', label: "Évaluer la gravité d'une fissure" },
                     { href: '/blog/agrafage-vs-micropieux-choix', label: 'Agrafage ou micropieux : comment choisir' },
                     { href: '/blog/secheresse-argile-haute-garonne', label: 'Sécheresse & argiles en Haute-Garonne' },

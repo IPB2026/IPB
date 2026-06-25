@@ -396,9 +396,23 @@ const analysisSteps = [
   { text: 'Génération de votre rapport expert...', delay: 2400 },
 ];
 
+// Pré-écran reco (Phase 2) : classe une phrase libre vers le bon parcours.
+// Heuristique par mots-clés, zéro dépendance. Renvoie null si ambigu (on laisse
+// alors le visiteur choisir parmi les 3 cartes — chemin principal inchangé).
+function classifyConcern(text: string): ActivePath | null {
+  const t = text.toLowerCase();
+  const has = (...kw: string[]) => kw.some((k) => t.includes(k));
+  if (has('mur porteur', 'porteuse', 'ouverture', 'abattre', 'abattu', 'poutre', 'ipn', 'heb', 'ipe', 'cloison', 'verrière', 'verriere', 'baie')) return 'mur-porteur';
+  if (has('humid', 'salpêtre', 'salpetre', 'moisiss', 'condensation', 'infiltration', 'capillaire', 'remont', 'cave', 'mérule', 'merule', 'champignon', 'cloque', 'ventilation', 'vmc')) return 'humidite';
+  if (has('fissure', 'lézarde', 'lezarde', 'crevasse', 'fissur', 'tassement', 'se fend', 'se fendent', 'craquel', 'microfissure')) return 'fissure';
+  return null;
+}
+
 export default function DiagnosticPage() {
   const [step, setStep] = useState(0);
   const [path, setPath] = useState<PathType>(null);
+  const [recoText, setRecoText] = useState('');
+  const [recoHint, setRecoHint] = useState('');
   const [answers, setAnswers] = useState<Record<string, any>>({});
   const [contactInfo, setContactInfo] = useState({ name: '', email: '', phone: '', address: '', yearBuilt: '', preferredTime: '' });
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -631,6 +645,20 @@ export default function DiagnosticPage() {
     setStep(1);
   };
 
+  // Pré-écran reco : route la phrase libre vers le bon parcours, ou nudge vers les cartes.
+  const handleReco = (e: React.FormEvent) => {
+    e.preventDefault();
+    const c = classifyConcern(recoText);
+    if (c === 'fissure' || c === 'humidite') {
+      selectPath(c);
+    } else if (c === 'mur-porteur') {
+      // Décision client : le mur porteur passe par le calculateur dédié.
+      window.location.href = '/calcul-prix-mur-porteur';
+    } else {
+      setRecoHint('Choisissez votre sujet ci-dessous — ou appelez-nous, on vous oriente.');
+    }
+  };
+
   // Gestion des réponses
   const handleAnswer = (questionId: string, value: string | string[], isMulti: boolean) => {
     setAnswers({ ...answers, [questionId]: value });
@@ -836,6 +864,32 @@ export default function DiagnosticPage() {
                     Quelques minutes pour nous donner les éléments essentiels. Notre institut vous répond sous 24 heures, par téléphone ou par mail.
                   </p>
                 </div>
+
+                {/* Pré-écran reco (additif) : une phrase libre -> routage automatique
+                    vers le bon parcours. Les 3 cartes restent le chemin principal/repli. */}
+                <form onSubmit={handleReco} className="max-w-2xl mx-auto mb-8">
+                  <label htmlFor="reco-input" className="block text-center text-[13px] text-ipb-muted mb-3">
+                    En une phrase, qu&apos;observez-vous ? <span className="text-ipb-light">(facultatif — on vous oriente)</span>
+                  </label>
+                  <div className="flex flex-col sm:flex-row gap-2">
+                    <input
+                      id="reco-input"
+                      type="text"
+                      value={recoText}
+                      onChange={(e) => { setRecoText(e.target.value); if (recoHint) setRecoHint(''); }}
+                      placeholder="Ex. : fissure en escalier sur la façade, apparue cet été…"
+                      className="flex-1 border border-ipb-rule rounded-[6px] px-4 py-3 text-base sm:text-[15px] text-ipb-text placeholder:text-ipb-light focus:outline-none focus:border-ipb-orange focus-visible:ring-2 focus-visible:ring-ipb-orange/30"
+                    />
+                    <button
+                      type="submit"
+                      className="bg-ipb-orange text-white font-bold px-6 py-3 rounded-[6px] text-[14px] hover:bg-[#b35519] transition-colors whitespace-nowrap min-h-[48px]"
+                    >
+                      Voir mon parcours →
+                    </button>
+                  </div>
+                  {recoHint && <p className="text-center text-[12px] text-ipb-orange mt-2">{recoHint}</p>}
+                  <p className="text-center text-[11px] text-ipb-light uppercase tracking-[0.14em] mt-4">ou choisissez ci-dessous</p>
+                </form>
 
                 {/* 3 cartes égales — Fissures · Humidité · Échange direct.
                     Mai 2026 — décision client : le mur porteur passe par
