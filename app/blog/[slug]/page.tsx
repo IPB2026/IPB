@@ -31,6 +31,7 @@ import {
   getContextualLinks,
   getRelatedPosts,
   injectInternalLinks,
+  injectLexiconLinks,
   injectListClasses,
 } from '@/lib/seo-helpers';
 import { ReadingProgress } from '@/components/blog/ReadingProgress';
@@ -202,7 +203,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
   }));
   const relatedByKeywords = getRelatedPosts(post.slug, post.keywords, allPostsData);
 
-  const contentWithLinks = injectListClasses(injectInternalLinks(enrichedContent, post.slug));
+  const contentWithLinks = injectListClasses(injectLexiconLinks(injectInternalLinks(enrichedContent, post.slug), post.slug));
 
   return (
     <div className="min-h-screen bg-ipb-cream">

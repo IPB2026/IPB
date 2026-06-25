@@ -32,6 +32,7 @@ const fissuresPersonas: PersonaCard[] = [
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
+import { StatCounter } from '@/components/ui/StatCounter';
 import { fissureFaq } from '@/app/data/faqs';
 import Image from 'next/image';
 import Script from 'next/script';
@@ -316,6 +317,43 @@ export default function FissuresPage() {
           </div>
         </section>
 
+        {/* CAUSES — d'où vient la fissure (profondeur de contenu + RGA local) */}
+        <section className="bg-ipb-white py-24 lg:py-32 border-t border-ipb-rule">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="grid lg:grid-cols-12 gap-8 items-end mb-16">
+                <div className="lg:col-span-6">
+                  <Eyebrow>D'où vient votre fissure</Eyebrow>
+                  <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                    Trois causes principales,<br /><em>un même réflexe : diagnostiquer.</em>
+                  </h2>
+                </div>
+                <div className="lg:col-span-5 lg:col-start-8">
+                  <p className="text-[15px] leading-[1.9] font-light text-ipb-muted">
+                    Une fissure est toujours le symptôme d'autre chose. Identifier la cause exacte conditionne la solution — et évite de traiter l'apparence sans régler le fond.
+                  </p>
+                </div>
+              </div>
+            </RevealOnScroll>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                { num: '01', titre: 'Le retrait-gonflement des argiles', desc: "Première cause dans le Sud-Ouest. Les sols argileux gonflent l'hiver et se rétractent lors des étés secs ; les fondations suivent ce mouvement. Depuis la sécheresse de 2022, des centaines de communes de Haute-Garonne et du Tarn-et-Garonne ont été reconnues en catastrophe naturelle." },
+                { num: '02', titre: 'Un défaut de structure ou de conception', desc: "Absence ou rupture de chaînage, fondations sous-dimensionnées, surcharge, ouverture mal reprise : la maçonnerie travaille là où elle ne devrait pas. Fréquent sur le bâti ancien ou les extensions mal liaisonnées." },
+                { num: '03', titre: "L'eau et les infiltrations", desc: "Une fuite, un drainage défaillant ou des remontées d'humidité fragilisent le sol d'assise et la maçonnerie. La fissure n'est alors qu'un signal — la cause réelle est hydraulique." },
+              ].map((c, i) => (
+                <RevealOnScroll key={c.num} delay={i * 0.06}>
+                  <article className="h-full bg-ipb-cream border border-ipb-rule rounded-[6px] p-8">
+                    <span className="font-serif text-ipb-orange text-[14px] font-bold tracking-wider">{c.num}</span>
+                    <h3 className="font-serif text-ipb-text font-bold text-[20px] leading-tight mt-3 mb-4">{c.titre}</h3>
+                    <p className="text-[14px] leading-[1.75] font-light text-ipb-muted">{c.desc}</p>
+                  </article>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* MÉTHODE — fond navy, image à gauche / liste à droite */}
         <section className="bg-ipb-navy py-24 lg:py-32">
           <div className="max-w-ipb mx-auto px-6 lg:px-12">
@@ -381,6 +419,65 @@ export default function FissuresPage() {
           </div>
         </section>
 
+        {/* CHIFFRES — réassurance chiffrée (version claire) */}
+        <section className="bg-ipb-cream py-20 lg:py-24 border-t border-ipb-rule">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+              {[
+                { value: 850, suffix: '+', label: 'Chantiers · réseau IPB' },
+                { value: 4.9, decimals: 1, suffix: '/5', label: 'Avis Google' },
+                { value: 72, suffix: 'h', label: 'Visite en moyenne' },
+                { value: 10, suffix: ' ans', label: 'Décennale sur les travaux' },
+              ].map((s, i) => (
+                <RevealOnScroll key={s.label} delay={i * 0.06}>
+                  <div className="text-center lg:text-left lg:border-l lg:border-ipb-rule lg:pl-8">
+                    <p className="font-serif text-ipb-text font-bold leading-none mb-3" style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}>
+                      <StatCounter value={s.value} decimals={s.decimals || 0} />
+                      {s.suffix && <span className="text-ipb-orange">{s.suffix}</span>}
+                    </p>
+                    <p className="text-[12px] text-ipb-muted uppercase tracking-[0.14em] font-medium">{s.label}</p>
+                  </div>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* TRANSPARENCE DES COÛTS — proportionnalité, pas d'acompte, devis avant engagement */}
+        <section className="bg-ipb-white py-24 lg:py-32 border-y border-ipb-rule">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+              <RevealOnScroll className="lg:col-span-5">
+                <Eyebrow>Combien ça coûte</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Une approche<br /><em>proportionnée et transparente.</em>
+                </h2>
+                <p className="mt-6 text-[15px] leading-[1.9] font-light text-ipb-muted">
+                  Pas d'acompte, pas de prix gonflé : chaque étape est chiffrée à l'avance, et nous privilégions toujours la solution la plus juste plutôt que la plus lourde.
+                </p>
+              </RevealOnScroll>
+
+              <ul className="lg:col-span-7 space-y-5">
+                {[
+                  { titre: 'Diagnostic en ligne', prix: 'Gratuit', desc: "Vous décrivez votre situation en 2 minutes. Premier avis de l'expert structure du réseau IPB, sans engagement." },
+                  { titre: 'Visite sur site & rapport', prix: 'Sur devis', desc: "Coût communiqué avant tout engagement, sans acompte. Vous réglez à l'issue de la visite ; le rapport vous est remis 3 à 5 jours après." },
+                  { titre: 'Agrafage structurel', prix: 'Solution proportionnée', desc: "Quand des travaux sont nécessaires, l'agrafage suffit dans 90 % des cas — généralement 3 à 4 fois moins coûteux qu'une reprise en sous-œuvre par micropieux (30 000 à 60 000 €). Chiffré précisément après diagnostic, sous décennale 10 ans." },
+                ].map((t, i) => (
+                  <RevealOnScroll key={t.titre} delay={i * 0.06}>
+                    <li className="flex items-start justify-between gap-6 bg-ipb-cream border border-ipb-rule rounded-[6px] p-6">
+                      <div>
+                        <h3 className="font-serif text-ipb-text font-bold text-[18px] leading-tight mb-2">{t.titre}</h3>
+                        <p className="text-[13px] leading-[1.7] font-light text-ipb-muted">{t.desc}</p>
+                      </div>
+                      <span className="flex-shrink-0 text-[11px] uppercase tracking-[0.12em] text-ipb-orange font-semibold pt-1 text-right max-w-[110px]">{t.prix}</span>
+                    </li>
+                  </RevealOnScroll>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
         {/* PREUVE SOCIALE — avis clients vérifiés */}
         <Testimonials />
 
@@ -410,6 +507,69 @@ export default function FissuresPage() {
                       {item.answer}
                     </div>
                   </details>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* MAILLAGE INTERNE — pour aller plus loin (comprendre · analyses · villes) */}
+        <section className="bg-ipb-cream py-24 lg:py-32 border-t border-ipb-rule">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <Eyebrow>Pour aller plus loin</Eyebrow>
+              <h2 className="font-serif text-ipb-text mb-14" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                Comprendre, approfondir,<br /><em>trouver l'expert près de chez vous.</em>
+              </h2>
+            </RevealOnScroll>
+
+            <div className="grid md:grid-cols-3 gap-10 lg:gap-12">
+              {[
+                {
+                  titre: 'Comprendre vos fissures',
+                  links: [
+                    { href: '/fissure-en-escalier-causes', label: 'Fissures en escalier : causes et dangers' },
+                    { href: '/fissure-horizontale-danger', label: 'Fissures horizontales : risques structurels' },
+                    { href: '/microfissure-quand-sinquieter', label: "Microfissures : quand s'inquiéter ?" },
+                    { href: '/fissure-fondation-maison', label: 'Fissures de fondation' },
+                    { href: '/fissure-secheresse-indemnisation', label: 'Fissures & sécheresse : indemnisation' },
+                  ],
+                },
+                {
+                  titre: 'Nos analyses',
+                  links: [
+                    { href: '/blog/evaluer-gravite-fissure-maison', label: "Évaluer la gravité d'une fissure" },
+                    { href: '/blog/agrafage-vs-micropieux-choix', label: 'Agrafage ou micropieux : comment choisir' },
+                    { href: '/blog/secheresse-argile-haute-garonne', label: 'Sécheresse & argiles en Haute-Garonne' },
+                    { href: '/lexique', label: 'Lexique de la pathologie du bâtiment' },
+                    { href: '/notre-methode', label: 'Notre méthode, étape par étape' },
+                  ],
+                },
+                {
+                  titre: 'Un expert près de chez vous',
+                  links: [
+                    { href: '/expert-fissures-toulouse-31', label: 'Expert fissures à Toulouse' },
+                    { href: '/expert-fissures/montauban', label: 'Expert fissures à Montauban' },
+                    { href: '/expert-fissures/colomiers', label: 'Expert fissures à Colomiers' },
+                    { href: '/expert-fissures/muret', label: 'Expert fissures à Muret' },
+                    { href: '/zones-intervention', label: "Toutes nos zones d'intervention" },
+                  ],
+                },
+              ].map((col, ci) => (
+                <RevealOnScroll key={col.titre} delay={ci * 0.08}>
+                  <div>
+                    <h3 className="text-[11px] uppercase tracking-[0.16em] text-ipb-light font-semibold mb-5 pb-3 border-b border-ipb-rule">{col.titre}</h3>
+                    <ul className="space-y-3.5">
+                      {col.links.map((l) => (
+                        <li key={l.href}>
+                          <a href={l.href} className="group inline-flex items-start gap-2 text-[14px] leading-snug text-ipb-text hover:text-ipb-orange transition-colors">
+                            <span className="text-ipb-orange/50 group-hover:text-ipb-orange transition-colors pt-0.5" aria-hidden="true">→</span>
+                            <span>{l.label}</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </RevealOnScroll>
               ))}
             </div>

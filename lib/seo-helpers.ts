@@ -339,6 +339,47 @@ export function injectInternalLinks(content: string, currentSlug: string): strin
 }
 
 /**
+ * Lie les termes techniques du contenu vers le lexique (/lexique#ancre).
+ *
+ * Complémentaire de injectInternalLinks : on choisit des termes qui n'y sont
+ * PAS déjà mappés (pas de double lien sur le même mot) et à faible risque de
+ * faux positif. Une seule occurrence par terme, 3 liens max par article, pour
+ * ne pas sur-lier. Ancres = slugs réels de app/lexique/entries.ts.
+ */
+export function injectLexiconLinks(content: string, currentSlug: string): string {
+  if (currentSlug === 'lexique') return content;
+
+  const lexicon: Record<string, string> = {
+    'retrait-gonflement des argiles': '/lexique#retrait-gonflement-des-argiles',
+    'reprise en sous-œuvre': '/lexique#reprise-en-sous-oeuvre',
+    'contre-expertise': '/lexique#contre-expertise',
+    'chaînage': '/lexique#chainage',
+    'efflorescence': '/lexique#efflorescence',
+    'fissuromètre': '/lexique#fissurometre',
+    'lézarde': '/lexique#lezarde',
+    'harpage': '/lexique#harpage',
+  };
+
+  let modified = content;
+  let added = 0;
+  const maxLinks = 3;
+
+  for (const [term, url] of Object.entries(lexicon)) {
+    if (added >= maxLinks) break;
+    // Ne pas lier à l'intérieur d'un <a> existant (lookbehind/lookahead).
+    const regex = new RegExp(`(?<!<a[^>]*>)\\b(${term})\\b(?![^<]*<\\/a>)`, 'i');
+    if (regex.test(modified)) {
+      modified = modified.replace(regex, (match) => {
+        added++;
+        return `<a href="${url}" class="text-orange-600 font-semibold hover:text-orange-700 underline decoration-2 decoration-orange-300 hover:decoration-orange-500 transition">${match}</a>`;
+      });
+    }
+  }
+
+  return modified;
+}
+
+/**
  * Ajoute `class="checklist"` aux <ul> dont les items commencent par
  * ✅ / ❌ / 💡 / ⚠️ pour que la CSS supprime la puce native (sinon double
  * marker visuel : disque orange + emoji).

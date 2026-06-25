@@ -12,6 +12,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 import { isVillePrioritaire } from '@/app/data/villes-prioritaires';
 
 export const metadata: Metadata = {
@@ -162,6 +163,7 @@ export default function ExpertFissuresToulousePage() {
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <Script id="json-ld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <BreadcrumbSchema items={[{ name: 'Expertise Fissures', href: '/expertise/fissures' }, { name: 'Toulouse', href: '/expert-fissures-toulouse-31' }]} showVisual={false} />
 
       <TopBar />
       <Navbar />
@@ -405,6 +407,71 @@ export default function ExpertFissuresToulousePage() {
                 ))}
               </ul>
             </div>
+          </div>
+        </section>
+
+        {/* BARÈME PAR TYPE — coût selon la gravité */}
+        <section className="bg-ipb-white py-24 lg:py-32 border-t border-ipb-rule">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <div className="grid lg:grid-cols-12 gap-8 items-end mb-16">
+                <div className="lg:col-span-6">
+                  <Eyebrow>Combien ça coûte</Eyebrow>
+                  <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                    Le coût dépend du type<br /><em>et de la gravité.</em>
+                  </h2>
+                </div>
+                <div className="lg:col-span-5 lg:col-start-8">
+                  <p className="text-[15px] leading-[1.9] font-light text-ipb-muted">
+                    Le diagnostic en ligne est gratuit ; l'expertise sur site est déductible si vous nous confiez les travaux. Le chiffrage des travaux est toujours établi après diagnostic, sur devis — sans acompte.
+                  </p>
+                </div>
+              </div>
+            </RevealOnScroll>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {[
+                { type: 'Faïençage (< 0,2 mm)', color: 'bg-amber-500', intervention: 'Surveillance, ravalement esthétique', cout: 'Pas de travaux structurels' },
+                { type: 'Fissures verticales (0,2–2 mm)', color: 'bg-ipb-orange', intervention: 'Diagnostic instrumenté, agrafage si active', cout: 'Sur devis après diagnostic' },
+                { type: 'Fissures en escalier (> 2 mm)', color: 'bg-red-500', intervention: 'Agrafage structurel', cout: "Une fraction d'une reprise par micropieux" },
+                { type: 'Fissures horizontales (> 2 mm)', color: 'bg-red-700', intervention: 'Évaluation structurelle complète, reprise possible', cout: 'Devis détaillé selon ampleur' },
+              ].map((b, i) => (
+                <RevealOnScroll key={b.type} delay={i * 0.06}>
+                  <article className="relative bg-ipb-cream border border-ipb-rule rounded-[6px] p-8 pl-10 h-full">
+                    <div className={`absolute left-0 top-8 bottom-8 w-1 ${b.color} rounded-r-sm`} aria-hidden="true" />
+                    <h3 className="font-serif text-ipb-text font-bold text-[19px] leading-tight mb-4">{b.type}</h3>
+                    <dl className="space-y-3 text-[13.5px]">
+                      <div>
+                        <dt className="text-[10px] uppercase tracking-[0.14em] text-ipb-light font-medium mb-0.5">Intervention</dt>
+                        <dd className="text-ipb-muted">{b.intervention}</dd>
+                      </div>
+                      <div>
+                        <dt className="text-[10px] uppercase tracking-[0.14em] text-ipb-light font-medium mb-0.5">Coût indicatif</dt>
+                        <dd className="text-ipb-text font-medium">{b.cout}</dd>
+                      </div>
+                    </dl>
+                  </article>
+                </RevealOnScroll>
+              ))}
+            </div>
+
+            <RevealOnScroll delay={0.1}>
+              <p className="mt-8 text-[13px] leading-[1.7] text-ipb-muted font-light max-w-3xl">
+                À titre indicatif : une reprise en sous-œuvre par micropieux — réservée aux tassements majeurs — se situe généralement entre 30 000 et 60 000 €. L'agrafage structurel, suffisant dans 90 % des cas, en représente une fraction. Le montant exact est toujours établi après le diagnostic.
+              </p>
+            </RevealOnScroll>
+
+            {/* Cas concret */}
+            <RevealOnScroll delay={0.12}>
+              <a href="/blog/evaluer-gravite-fissure-maison" className="mt-10 block bg-ipb-navy rounded-[6px] p-8 lg:p-10 hover:bg-[#0c1a2b] transition-colors">
+                <span className="text-[10px] uppercase tracking-[0.18em] text-ipb-orange-l font-semibold">Cas concret</span>
+                <h3 className="font-serif text-white font-bold text-[22px] leading-tight mt-3 mb-3">Comment nous évaluons la gravité d'une fissure</h3>
+                <p className="text-[14px] leading-[1.85] font-light text-white/65 max-w-2xl">
+                  Largeur, forme, évolution, désordres associés : les quatre critères que l'expert structure du réseau IPB mesure sur site pour distinguer une fissure cosmétique d'un mouvement actif. Avec exemples à l'appui.
+                </p>
+                <span className="text-[13px] text-ipb-orange-l font-medium mt-4 inline-block">Lire l'analyse →</span>
+              </a>
+            </RevealOnScroll>
           </div>
         </section>
 

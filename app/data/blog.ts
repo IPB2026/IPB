@@ -32,6 +32,116 @@ interface BlogPost {
 
 // Base de données des articles avec copywriting expert et orienté conversion
 const blogPosts: { [key: string]: BlogPost } = {
+  'prix-maison-fissuree': {
+    slug: 'prix-maison-fissuree',
+    title: "Prix d'une maison fissurée : décote, coût des travaux et négociation",
+    metaTitle: 'Prix maison fissurée : décote et coût réel 2026',
+    excerpt: "Une maison fissurée se vend en moyenne 20 à 30 % moins cher — mais ce chiffre cache d'énormes écarts. Tout dépend de la gravité, de la cause et du coût réel des travaux. Comment estimer le juste prix, distinguer une fissure cosmétique d'un désordre structurel, et transformer un rapport d'expertise en levier de négociation chiffré.",
+    date: '2026-06-25',
+    dateModified: '2026-06-25',
+    readTime: '12 min',
+    category: 'conseils',
+    author: "L'institut IPB",
+    metaDescription: "Prix d'une maison fissurée : décote de 20 à 30 %, coût des travaux (agrafage vs reprise en sous-œuvre) et négociation. Le guide chiffré pour acheter ou vendre. ☎ 05 82 95 33 75",
+    keywords: ['prix maison fissurée', 'décote maison fissurée', 'vendre maison fissurée prix', 'estimation maison fissures', 'négocier prix maison fissures', 'coût réparation fissures', 'valeur maison fissurée', 'maison fissurée à vendre'],
+    coverImage: '/images/fissures-avant-apres.webp',
+    content: `
+      <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
+        <p class="font-bold text-orange-900 mb-2">L'essentiel en 30 secondes</p>
+        <p class="text-orange-800">Une maison fissurée subit en moyenne une <strong>décote de 20 à 30 %</strong>, mais ce pourcentage n'a de sens qu'une fois la <strong>cause</strong> et la <strong>gravité</strong> identifiées. Une fissure cosmétique ne justifie presque aucune baisse ; un tassement actif des fondations peut coûter plusieurs dizaines de milliers d'euros à reprendre. La seule façon de fixer un juste prix — côté acheteur comme côté vendeur — est de faire chiffrer les travaux par un rapport d'expertise. Ce document transforme une inquiétude diffuse en montant précis, donc négociable euro pour euro.</p>
+      </div>
+
+      <h2 id="decote-maison-fissuree">Combien perd une maison à cause de fissures ?</h2>
+      <p>Sur le marché, on observe couramment une <strong>décote de 20 à 30 %</strong> sur une maison présentant des fissures visibles. Mais ce chiffre est trompeur : il mélange des situations sans rapport. Une microfissure d'enduit et une fissure en escalier traversante n'ont ni le même sens technique, ni le même effet sur le prix.</p>
+      <p>En réalité, la décote dépend de trois facteurs : la <strong>gravité réelle</strong> du désordre, sa <strong>cause</strong> (et donc le coût pour la traiter), et la <strong>perception de l'acheteur</strong>. Ce dernier point est souvent le plus coûteux : face à l'incertitude, un acheteur surestime systématiquement le risque et exige une baisse bien supérieure au coût réel des travaux. C'est exactement ce qu'un rapport d'expertise permet d'éviter.</p>
+
+      <div class="my-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
+        <h3 class="font-bold text-blue-900 mb-3">La règle à retenir</h3>
+        <p class="text-blue-800">Une décote négociée à l'aveugle est presque toujours supérieure au coût réel des travaux. Faire établir un <a href="/diagnostic">diagnostic</a> chiffré coûte une fraction de l'écart de prix qu'il permet d'éviter.</p>
+      </div>
+
+      <h2 id="ce-qui-determine-le-prix">Ce qui fait vraiment varier le prix</h2>
+      <p>Avant de parler d'un pourcentage, il faut lire la fissure. Quatre familles, quatre impacts très différents sur la valeur du bien.</p>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead>
+            <tr class="bg-slate-100">
+              <th class="border border-slate-300 p-4 text-left font-bold">Type de fissure</th>
+              <th class="border border-slate-300 p-4 text-center font-bold">Gravité</th>
+              <th class="border border-slate-300 p-4 text-center font-bold">Impact sur le prix</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-4">Faïençage / microfissures (&lt; 0,2 mm)</td>
+              <td class="border border-slate-300 p-4 text-center">Esthétique</td>
+              <td class="border border-slate-300 p-4 text-center">Quasi nul</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-4">Fissures verticales (0,2 à 2 mm)</td>
+              <td class="border border-slate-300 p-4 text-center">À surveiller</td>
+              <td class="border border-slate-300 p-4 text-center">Faible si inactive</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-4">Fissures en escalier (&gt; 2 mm)</td>
+              <td class="border border-slate-300 p-4 text-center">Active</td>
+              <td class="border border-slate-300 p-4 text-center">Significatif</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-4">Fissures horizontales (&gt; 2 mm)</td>
+              <td class="border border-slate-300 p-4 text-center">Critique</td>
+              <td class="border border-slate-300 p-4 text-center">Fort</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>La <strong>cause</strong> compte autant que l'aspect. Une fissure liée au retrait-gonflement des argiles (sécheresse) sur un sol argileux n'appelle pas la même réponse qu'une simple fissure de retrait d'enduit. Pour apprendre à les distinguer, voyez notre méthode pour <a href="/blog/evaluer-gravite-fissure-maison">évaluer la gravité d'une fissure</a>, et la page dédiée à l'<a href="/expertise/fissures">expertise de fissures</a>.</p>
+
+      <h2 id="cout-des-travaux">Le coût des travaux : la vraie base de la négociation</h2>
+      <p>La décote juste, c'est le coût des travaux nécessaires — ni plus, ni moins. Voici les ordres de grandeur, qui dépendent toujours du diagnostic.</p>
+      <ul>
+        <li><strong>Surveillance / reprise esthétique</strong> : pour une fissure cosmétique, un simple ravalement suffit. Pas de travaux structurels.</li>
+        <li><strong>Agrafage structurel</strong> : la solution adaptée à environ 90 % des maisons touchées par la sécheresse. On coud les lèvres de la fissure avec des aciers inox. C'est une fraction du coût d'une reprise lourde.</li>
+        <li><strong>Reprise en sous-œuvre par micropieux</strong> : réservée aux tassements majeurs de fondation, elle se situe généralement entre <strong>30 000 et 60 000 €</strong>. C'est ce scénario, rare, que l'acheteur redoute — d'où l'importance de le confirmer ou de l'écarter par un diagnostic.</li>
+      </ul>
+      <p>Pour comprendre le bon choix technique, lisez notre comparatif <a href="/blog/agrafage-vs-micropieux-choix">agrafage ou micropieux</a>. Et si la cause est la sécheresse, votre commune est peut-être éligible à une prise en charge : voir les <a href="/fissure-secheresse-indemnisation">démarches d'indemnisation CAT-NAT</a>.</p>
+
+      <h2 id="vendeur-acheteur">Vendeur ou acheteur : la même pièce maîtresse</h2>
+      <p><strong>Côté vendeur</strong>, cacher une fissure est la pire stratégie : l'acheteur la découvrira (ou son notaire l'exigera), et la vente se renégociera dans l'urgence, à votre désavantage — quand elle ne s'annule pas pour vice caché. Un rapport d'expertise remis spontanément désamorce la négociation et protège le prix. C'est tout l'objet de notre page <a href="/vendre-bien-avec-fissures">vendre un bien avec fissures</a>.</p>
+      <p><strong>Côté acheteur</strong>, faire chiffrer les travaux avant le compromis (ou via une condition suspensive) transforme une peur en argument : vous négociez le montant exact des travaux, pas un pourcentage arbitraire.</p>
+
+      <div class="my-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
+        <h3 class="font-bold text-blue-900 mb-3">Réparer avant de vendre : bonne idée ?</h3>
+        <p class="text-blue-800">Souvent, oui. Une maison réparée <strong>sous garantie décennale</strong> rassure l'acheteur et efface l'essentiel de la décote, car le problème est traité et assuré. L'attestation de garantie est transmissible au nouveau propriétaire. Le calcul est simple : si la décote attendue dépasse nettement le coût des travaux, réparer est gagnant.</p>
+      </div>
+
+      <h2 id="faq">Questions fréquentes sur le prix d'une maison fissurée</h2>
+
+      <h3>Une fissure fait-elle toujours baisser le prix ?</h3>
+      <p>Non. Une microfissure d'enduit ou un faïençage de surface n'a quasiment aucun impact sur la valeur. La décote n'apparaît que pour les fissures actives ou structurelles, et son ampleur dépend du coût des travaux à prévoir. Sans diagnostic, l'acheteur surestime presque toujours ce coût.</p>
+
+      <h3>De combien négocier le prix d'une maison fissurée ?</h3>
+      <p>La base juste est le coût chiffré des travaux nécessaires, établi par un rapport d'expertise — pas un pourcentage forfaitaire. Pour un agrafage, on parle de quelques milliers d'euros ; pour une reprise en sous-œuvre, de plusieurs dizaines de milliers. Négocier au-delà du coût réel se justifie seulement par le risque résiduel, que le rapport permet justement de borner.</p>
+
+      <h3>Peut-on vendre une maison fissurée sans la réparer ?</h3>
+      <p>Oui, c'est tout à fait possible, à condition d'informer l'acheteur. La transparence (rapport à l'appui) évite l'annulation pour vice caché et sécurise le prix. Beaucoup d'acheteurs préfèrent acheter avec une décote et piloter eux-mêmes les travaux.</p>
+
+      <h3>Combien coûte le diagnostic des fissures ?</h3>
+      <p>Le diagnostic en ligne est gratuit et sans engagement. Une visite sur site, lorsqu'elle est nécessaire, est chiffrée à l'avance, sans acompte. Au regard de l'écart de prix qu'il permet d'objectiver, c'est l'investissement le plus rentable d'une transaction sur un bien fissuré.</p>
+
+      <h3>Une maison fissurée à Toulouse perd-elle plus de valeur ?</h3>
+      <p>Le bassin toulousain repose en grande partie sur des sols argileux exposés au retrait-gonflement : les fissures de sécheresse y sont fréquentes, et les acheteurs avertis. Un rapport qui identifie clairement la cause et chiffre la solution est donc particulièrement décisif localement. Voir notre page <a href="/expert-fissures-toulouse-31">expert fissures à Toulouse</a>.</p>
+
+      <div class="mt-10 p-6 bg-slate-900 text-white rounded-xl">
+        <p class="font-bold text-lg mb-2">Mettre un chiffre sur vos fissures</p>
+        <p class="text-white/80 mb-4">Avant d'acheter, de vendre ou de négocier, faites établir un diagnostic clair de la cause et du coût des travaux. Réponse sous 48 h, visite sous 72 h.</p>
+        <a href="/diagnostic" class="inline-block bg-orange-600 hover:bg-orange-500 text-white font-bold px-6 py-3 rounded-lg transition-colors">Mon diagnostic gratuit · 2 min</a>
+      </div>
+    `
+  },
+
   'diagnostic-fissure-humidite-avant-achat': {
     slug: 'diagnostic-fissure-humidite-avant-achat',
     title: "Fissures ou humidité avant d'acheter : faire diagnostiquer avant le compromis (et négocier le prix)",

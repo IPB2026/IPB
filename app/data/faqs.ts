@@ -23,6 +23,30 @@ export const fissureFaq: FaqItem[] = [
   {
     question: "Quelle est la durée des travaux ?",
     answer: "Contrairement à une reprise en sous-œuvre qui dure des semaines, un chantier d'agrafage dure généralement entre 3 et 5 jours selon la surface, sans gros engins destructeurs dans votre jardin."
+  },
+  {
+    question: "Combien coûte un diagnostic de fissures ?",
+    answer: "Le diagnostic en ligne est gratuit et sans engagement. Si une visite sur site est nécessaire, son coût vous est communiqué à l'avance — sans acompte, vous réglez à l'issue de la visite. Les éventuels travaux ne sont chiffrés qu'après le diagnostic, sur devis transparent. Vous ne payez jamais une prestation que vous n'avez pas validée."
+  },
+  {
+    question: "Mes fissures peuvent-elles être prises en charge au titre de la sécheresse (catastrophe naturelle) ?",
+    answer: "Si votre commune a été reconnue en état de catastrophe naturelle sécheresse et que les fissures sont apparues pendant la période concernée, votre assurance habitation peut intervenir. Notre rapport technique documente la cause (retrait-gonflement des argiles), les mesures et les désordres — c'est la pièce qui appuie votre déclaration. Nous vous indiquons les délais de déclaration à respecter."
+  },
+  {
+    question: "Dans quel délai intervenez-vous ?",
+    answer: "L'institut répond à votre demande sous 48 heures. La visite sur site a lieu sous 72 heures en moyenne — et sous 24 heures en cas d'urgence (fissure évolutive, danger, compromis en cours). Le rapport écrit vous est remis 3 à 5 jours après la visite."
+  },
+  {
+    question: "Une fissure peut-elle attendre, ou faut-il agir tout de suite ?",
+    answer: "Tout dépend de son activité. Une fissure stable et fine peut être simplement surveillée. Une fissure qui s'élargit, en escalier ou horizontale, signale un mouvement actif qu'il faut diagnostiquer rapidement — non pour vous alarmer, mais pour éviter qu'un désordre simple ne devienne structurel. Notre rôle est de vous dire honnêtement dans quel cas vous êtes."
+  },
+  {
+    question: "Votre rapport est-il reconnu par les assurances ?",
+    answer: "Notre rapport est un avis d'expertise technique : il est utilisé comme pièce dans les dossiers d'assurance et de catastrophe naturelle. Il ne s'agit ni d'une expertise judiciaire (qui relève d'un expert près les tribunaux), ni d'une note de calcul de bureau d'études. Sa valeur tient à la rigueur du diagnostic : mesures, photos, cause identifiée, préconisations."
+  },
+  {
+    question: "Êtes-vous indépendants ? Vais-je me faire vendre des travaux inutiles ?",
+    answer: "Notre intérêt est que le diagnostic soit juste. Si la situation ne nécessite aucune intervention, nous vous le disons — c'est l'engagement de l'institut. Quand des travaux sont nécessaires, nous privilégions toujours la solution la plus proportionnée (l'agrafage suffit dans 90 % des cas) plutôt que la plus lourde. Mieux vaut un avis juste qu'un devis vendu."
   }
 ];
 

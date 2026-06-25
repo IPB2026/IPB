@@ -120,7 +120,7 @@ const orientations = [
   {
     titre: 'Vous projetez une ouverture de mur porteur',
     desc: "Étude structure, dimensionnement, exécution sous garantie décennale.",
-    href: '/expert-mur-porteur',
+    href: '/expertise/mur-porteur',
     cta: 'Voir la page mur porteur',
   },
 ];
