@@ -673,6 +673,28 @@ export default function DiagnosticPage() {
     }
   };
 
+  // Friction (Phase D) : la touche Entrée fait avancer quand une réponse est
+  // sélectionnée — affordance clavier additive, sans incidence sur le tracking
+  // ni la soumission. Ne touche pas la saisie texte (input/textarea).
+  useEffect(() => {
+    if (step < 1 || step > totalQuestions) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== 'Enter') return;
+      const tag = (e.target as HTMLElement | null)?.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+      const q = currentQuestions[step - 1];
+      if (!q) return;
+      const a = answers[q.id];
+      const hasAnswer = Array.isArray(a) ? a.length > 0 : Boolean(a);
+      if (hasAnswer) {
+        e.preventDefault();
+        setStep((s) => (s < totalQuestions ? s + 1 : 999));
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [step, totalQuestions, answers, currentQuestions]);
+
   // Soumission coordonnées + génération résultat
   const handleSubmitContact = async (e: React.FormEvent) => {
     e.preventDefault();
