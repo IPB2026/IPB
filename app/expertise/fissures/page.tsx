@@ -31,6 +31,7 @@ const fissuresPersonas: PersonaCard[] = [
 ];
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
+import { InlineCta } from '@/components/ui/InlineCta';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
 import { fissureFaq } from '@/app/data/faqs';
@@ -480,6 +481,8 @@ export default function FissuresPage() {
 
         {/* PREUVE SOCIALE — avis clients vérifiés */}
         <Testimonials />
+
+        <InlineCta />
 
         {/* FAQ */}
         <section className="bg-ipb-cream py-24 lg:py-32">

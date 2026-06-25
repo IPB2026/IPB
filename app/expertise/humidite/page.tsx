@@ -5,6 +5,7 @@ import { Footer } from '@/components/home/Footer';
 import { CtaFinal } from '@/components/home/CtaFinal';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
+import { InlineCta } from '@/components/ui/InlineCta';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
 import { Testimonials } from '@/components/home/Testimonials';
@@ -318,6 +319,8 @@ export default function HumiditePage() {
 
         {/* PREUVE SOCIALE — avis clients vérifiés */}
         <Testimonials />
+
+        <InlineCta />
 
         {/* FAQ */}
         <section className="bg-ipb-cream py-24 lg:py-32">
