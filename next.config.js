@@ -89,6 +89,8 @@ const nextConfig = {
         permanent: true,
       },
       { source: '/revente-maison-fissuree', destination: '/blog/revente-maison-fissuree', permanent: true },
+      // Lien historique sans ville -> hub mur porteur (la route est /expert-mur-porteur/[ville]).
+      { source: '/expert-mur-porteur', destination: '/expertise/mur-porteur', permanent: true },
     ];
   },
 
