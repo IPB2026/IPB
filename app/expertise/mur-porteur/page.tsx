@@ -10,6 +10,9 @@ import Image from 'next/image';
 import Script from 'next/script';
 import type { Metadata } from 'next';
 import { MurPorteurDiagram } from '@/components/ui/MurPorteurDiagram';
+import { StatCounter } from '@/components/ui/StatCounter';
+import { Testimonials } from '@/components/home/Testimonials';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: "Ouverture Mur Porteur Toulouse · IPN/HEB · Eurocodes",
@@ -157,6 +160,7 @@ export default function MurPorteurPage() {
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
       <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFaqJsonLd()) }} />
       <Script id="service-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateServiceJsonLd()) }} />
+      <BreadcrumbSchema items={[{ name: 'Ouverture de mur porteur', href: '/expertise/mur-porteur' }]} showVisual={false} />
 
       <TopBar />
       <Navbar />
@@ -577,6 +581,33 @@ export default function MurPorteurPage() {
           </div>
         </section>
 
+        {/* CHIFFRES — réassurance chiffrée */}
+        <section className="bg-ipb-cream py-20 lg:py-24 border-t border-ipb-rule">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+              {[
+                { value: 850, suffix: '+', label: 'Chantiers · réseau IPB' },
+                { value: 4.9, decimals: 1, suffix: '/5', label: 'Avis Google' },
+                { value: 72, suffix: 'h', label: 'Visite en moyenne' },
+                { value: 10, suffix: ' ans', label: 'Décennale sur les travaux' },
+              ].map((s, i) => (
+                <RevealOnScroll key={s.label} delay={i * 0.06}>
+                  <div className="text-center lg:text-left lg:border-l lg:border-ipb-rule lg:pl-8">
+                    <p className="font-serif text-ipb-text font-bold leading-none mb-3" style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}>
+                      <StatCounter value={s.value} decimals={s.decimals || 0} />
+                      {s.suffix && <span className="text-ipb-orange">{s.suffix}</span>}
+                    </p>
+                    <p className="text-[12px] text-ipb-muted uppercase tracking-[0.14em] font-medium">{s.label}</p>
+                  </div>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* PREUVE SOCIALE — avis clients vérifiés */}
+        <Testimonials />
+
         {/* FAQ */}
         <section className="bg-ipb-white py-24 lg:py-32">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
@@ -623,6 +654,67 @@ export default function MurPorteurPage() {
                 Notre équipe revient vers vous sous 48h avec une première analyse de faisabilité. <strong className="text-ipb-text not-italic">Dès cet appel, vous avez un seul interlocuteur</strong> — qui vous suivra jusqu'à la levée des étais. Si votre projet n'est pas compatible avec une ouverture (sécurité, copropriété, contraintes de bâti), <strong className="text-ipb-text not-italic">on vous le dira clairement</strong>, et on vous expliquera les alternatives. Et <strong className="text-ipb-text not-italic">tant que vous n'avez pas signé le devis, vous ne devez rien</strong> — pas même les frais de déplacement.
               </p>
             </RevealOnScroll>
+          </div>
+        </section>
+
+        {/* MAILLAGE INTERNE — projet · analyses · villes */}
+        <section className="bg-ipb-white py-24 lg:py-32 border-t border-ipb-rule">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <Eyebrow>Pour aller plus loin</Eyebrow>
+              <h2 className="font-serif text-ipb-text mb-14" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                Votre projet d'ouverture,<br /><em>de l'estimation à la levée des étais.</em>
+              </h2>
+            </RevealOnScroll>
+
+            <div className="grid md:grid-cols-3 gap-10 lg:gap-12">
+              {[
+                {
+                  titre: 'Votre projet',
+                  links: [
+                    { href: '/calcul-prix-mur-porteur', label: "Estimer le prix d'une ouverture" },
+                    { href: '/bureau-etude-structure-toulouse', label: "Étude de structure & note de calcul" },
+                    { href: '/expertise-avant-achat-immobilier-toulouse', label: 'Expertise avant achat' },
+                    { href: '/expertise/fissures', label: 'Expertise de fissures' },
+                  ],
+                },
+                {
+                  titre: 'Nos analyses',
+                  links: [
+                    { href: '/blog/comment-savoir-si-mur-porteur', label: 'Comment savoir si un mur est porteur' },
+                    { href: '/blog/prix-ouverture-mur-porteur-toulouse-2026', label: "Prix d'une ouverture en 2026" },
+                    { href: '/blog/etude-de-cas-mur-porteur-4m-t3-toulouse', label: 'Étude de cas : ouverture de 4 m' },
+                    { href: '/lexique', label: 'Lexique de la pathologie du bâtiment' },
+                    { href: '/notre-methode', label: 'Notre méthode, étape par étape' },
+                  ],
+                },
+                {
+                  titre: 'Un expert près de chez vous',
+                  links: [
+                    { href: '/expert-mur-porteur/toulouse', label: 'Mur porteur à Toulouse' },
+                    { href: '/expert-mur-porteur/montauban', label: 'Mur porteur à Montauban' },
+                    { href: '/expert-mur-porteur/auch', label: 'Mur porteur à Auch' },
+                    { href: '/zones-intervention', label: "Toutes nos zones d'intervention" },
+                  ],
+                },
+              ].map((col, ci) => (
+                <RevealOnScroll key={col.titre} delay={ci * 0.08}>
+                  <div>
+                    <h3 className="text-[11px] uppercase tracking-[0.16em] text-ipb-light font-semibold mb-5 pb-3 border-b border-ipb-rule">{col.titre}</h3>
+                    <ul className="space-y-3.5">
+                      {col.links.map((l) => (
+                        <li key={l.href}>
+                          <a href={l.href} className="group inline-flex items-start gap-2 text-[14px] leading-snug text-ipb-text hover:text-ipb-orange transition-colors">
+                            <span className="text-ipb-orange/50 group-hover:text-ipb-orange transition-colors pt-0.5" aria-hidden="true">→</span>
+                            <span>{l.label}</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </RevealOnScroll>
+              ))}
+            </div>
           </div>
         </section>
 
