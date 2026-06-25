@@ -70,6 +70,26 @@ export const humidityFaq: FaqItem[] = [
   {
     question: "Le traitement est-il garanti ?",
     answer: "Oui, nos traitements par injection bénéficient d'une garantie d'efficacité de 30 ans sur la barrière étanche, couverte par notre assurance décennale."
+  },
+  {
+    question: "Comment savez-vous d'où vient l'humidité ?",
+    answer: "Par un diagnostic instrumenté : humidimètre à sonde, caméra thermique, parfois test à la bombe à carbure. Ces mesures distinguent une remontée capillaire (eau du sol), une condensation (air mal ventilé) et une infiltration (point d'entrée d'eau) — trois causes qui appellent trois traitements opposés. Traiter sans diagnostiquer, c'est risquer de dépenser pour rien."
+  },
+  {
+    question: "Combien coûte un traitement de l'humidité ?",
+    answer: "Le diagnostic en ligne est gratuit. Une injection de résine se situe autour de 80 à 150 € le mètre linéaire (soit environ 4 000 à 7 500 € pour une maison moyenne) ; un cuvelage de cave entre 200 et 350 € le m². Le montant exact est établi après le diagnostic, sur devis transparent et sans acompte — vous réglez à l'issue de la visite."
+  },
+  {
+    question: "Dans quel délai intervenez-vous ?",
+    answer: "L'institut répond sous 48 heures. La visite sur site a lieu sous 72 heures en moyenne, et le rapport écrit vous est remis 3 à 5 jours après. Les travaux sont planifiés ensuite selon la solution retenue."
+  },
+  {
+    question: "Mon assurance prend-elle en charge l'humidité ?",
+    answer: "L'humidité par remontée capillaire ou défaut d'entretien est généralement exclue (vétusté). En revanche, si elle résulte d'un sinistre couvert — dégât des eaux, fuite, inondation — les travaux peuvent être pris en charge. Notre rapport identifie précisément la cause, ce qui est déterminant pour votre dossier."
+  },
+  {
+    question: "Peut-on rester chez soi pendant les travaux ?",
+    answer: "Oui, dans la quasi-totalité des cas. L'injection de résine est propre, sans gros œuvre ni produit toxique. Pour un cuvelage en sous-sol, certaines pièces enterrées peuvent être inaccessibles deux à quatre jours, mais le reste du logement reste habitable."
   }
 ];
 

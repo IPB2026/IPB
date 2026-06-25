@@ -6,6 +6,8 @@ import { CtaFinal } from '@/components/home/CtaFinal';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
+import { StatCounter } from '@/components/ui/StatCounter';
+import { Testimonials } from '@/components/home/Testimonials';
 import { humidityFaq } from '@/app/data/faqs';
 import Image from 'next/image';
 import Script from 'next/script';
@@ -255,6 +257,68 @@ export default function HumiditePage() {
           </div>
         </section>
 
+        {/* CHIFFRES — réassurance chiffrée */}
+        <section className="bg-ipb-cream py-20 lg:py-24 border-t border-ipb-rule">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+              {[
+                { value: 850, suffix: '+', label: 'Chantiers · réseau IPB' },
+                { value: 4.9, decimals: 1, suffix: '/5', label: 'Avis Google' },
+                { value: 72, suffix: 'h', label: 'Visite en moyenne' },
+                { value: 10, suffix: ' ans', label: 'Décennale sur les travaux' },
+              ].map((s, i) => (
+                <RevealOnScroll key={s.label} delay={i * 0.06}>
+                  <div className="text-center lg:text-left lg:border-l lg:border-ipb-rule lg:pl-8">
+                    <p className="font-serif text-ipb-text font-bold leading-none mb-3" style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}>
+                      <StatCounter value={s.value} decimals={s.decimals || 0} />
+                      {s.suffix && <span className="text-ipb-orange">{s.suffix}</span>}
+                    </p>
+                    <p className="text-[12px] text-ipb-muted uppercase tracking-[0.14em] font-medium">{s.label}</p>
+                  </div>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* TRANSPARENCE DES COÛTS */}
+        <section className="bg-ipb-white py-24 lg:py-32 border-y border-ipb-rule">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+              <RevealOnScroll className="lg:col-span-5">
+                <Eyebrow>Combien ça coûte</Eyebrow>
+                <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                  Le bon traitement,<br /><em>au juste prix.</em>
+                </h2>
+                <p className="mt-6 text-[15px] leading-[1.9] font-light text-ipb-muted">
+                  Pas d'acompte, pas de prix gonflé : le diagnostic conditionne la solution, et la solution conditionne le prix. On ne vend jamais un traitement avant d'avoir identifié la cause.
+                </p>
+              </RevealOnScroll>
+
+              <ul className="lg:col-span-7 space-y-5">
+                {[
+                  { titre: 'Diagnostic en ligne', prix: 'Gratuit', desc: "Vous décrivez votre situation en 2 minutes. Premier avis de l'expert structure du réseau IPB, sans engagement." },
+                  { titre: 'Visite sur site & rapport', prix: 'Sur devis', desc: "Coût communiqué avant tout engagement, sans acompte. Vous réglez à l'issue de la visite ; le rapport vous est remis 3 à 5 jours après." },
+                  { titre: 'Traitement', prix: 'Selon la cause', desc: "Injection de résine ≈ 80 à 150 €/ml (env. 4 000 à 7 500 € pour une maison) ; cuvelage de cave 200 à 350 €/m². Chiffré précisément après diagnostic, sous décennale 10 ans." },
+                ].map((t, i) => (
+                  <RevealOnScroll key={t.titre} delay={i * 0.06}>
+                    <li className="flex items-start justify-between gap-6 bg-ipb-cream border border-ipb-rule rounded-[6px] p-6">
+                      <div>
+                        <h3 className="font-serif text-ipb-text font-bold text-[18px] leading-tight mb-2">{t.titre}</h3>
+                        <p className="text-[13px] leading-[1.7] font-light text-ipb-muted">{t.desc}</p>
+                      </div>
+                      <span className="flex-shrink-0 text-[11px] uppercase tracking-[0.12em] text-ipb-orange font-semibold pt-1 text-right max-w-[110px]">{t.prix}</span>
+                    </li>
+                  </RevealOnScroll>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* PREUVE SOCIALE — avis clients vérifiés */}
+        <Testimonials />
+
         {/* FAQ */}
         <section className="bg-ipb-cream py-24 lg:py-32">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
@@ -281,6 +345,68 @@ export default function HumiditePage() {
                       {item.answer}
                     </div>
                   </details>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* MAILLAGE INTERNE — comprendre · analyses · villes */}
+        <section className="bg-ipb-white py-24 lg:py-32 border-t border-ipb-rule">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <Eyebrow>Pour aller plus loin</Eyebrow>
+              <h2 className="font-serif text-ipb-text mb-14" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                Comprendre, approfondir,<br /><em>trouver l'expert près de chez vous.</em>
+              </h2>
+            </RevealOnScroll>
+
+            <div className="grid md:grid-cols-3 gap-10 lg:gap-12">
+              {[
+                {
+                  titre: "Comprendre l'humidité",
+                  links: [
+                    { href: '/remontee-capillaire-solution', label: 'Remontées capillaires : solution' },
+                    { href: '/salpetre-mur-traitement', label: 'Salpêtre : traitement définitif' },
+                    { href: '/moisissures-maison-sante', label: 'Moisissures & santé' },
+                    { href: '/cave-humide-solutions', label: 'Cave humide : solutions' },
+                    { href: '/condensation-ou-infiltration', label: 'Condensation ou infiltration ?' },
+                  ],
+                },
+                {
+                  titre: 'Nos analyses',
+                  links: [
+                    { href: '/blog/humidite-remontee-capillaire-solution', label: 'Traiter les remontées capillaires' },
+                    { href: '/blog/salpetre-toulouse-traitement-definitif', label: 'En finir avec le salpêtre' },
+                    { href: '/blog/ventilation-humidite-condensation', label: 'Ventilation & condensation' },
+                    { href: '/lexique', label: 'Lexique de la pathologie du bâtiment' },
+                    { href: '/notre-methode', label: 'Notre méthode, étape par étape' },
+                  ],
+                },
+                {
+                  titre: 'Un expert près de chez vous',
+                  links: [
+                    { href: '/expert-humidite-toulouse-31', label: 'Expert humidité à Toulouse' },
+                    { href: '/expert-humidite/montauban', label: 'Expert humidité à Montauban' },
+                    { href: '/expert-humidite/colomiers', label: 'Expert humidité à Colomiers' },
+                    { href: '/zones-intervention', label: "Toutes nos zones d'intervention" },
+                  ],
+                },
+              ].map((col, ci) => (
+                <RevealOnScroll key={col.titre} delay={ci * 0.08}>
+                  <div>
+                    <h3 className="text-[11px] uppercase tracking-[0.16em] text-ipb-light font-semibold mb-5 pb-3 border-b border-ipb-rule">{col.titre}</h3>
+                    <ul className="space-y-3.5">
+                      {col.links.map((l) => (
+                        <li key={l.href}>
+                          <a href={l.href} className="group inline-flex items-start gap-2 text-[14px] leading-snug text-ipb-text hover:text-ipb-orange transition-colors">
+                            <span className="text-ipb-orange/50 group-hover:text-ipb-orange transition-colors pt-0.5" aria-hidden="true">→</span>
+                            <span>{l.label}</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </RevealOnScroll>
               ))}
             </div>
