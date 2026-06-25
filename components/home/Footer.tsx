@@ -75,6 +75,7 @@ export function Footer() {
                 ['/notre-expert', "L'institut"],
                 ['/avis-clients', 'Avis clients'],
                 ['/blog', 'Blog'],
+                ['/lexique', 'Lexique du bâtiment'],
                 ['/zones-intervention', "Zones d'intervention"],
                 ['/partenaires', 'Pros & partenaires'],
                 ['/contact', 'Contact'],
