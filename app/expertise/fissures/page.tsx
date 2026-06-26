@@ -24,7 +24,7 @@ const fissuresPersonas: PersonaCard[] = [
   {
     label: 'Acheteur',
     titre: 'Vous achetez et vous avez un doute',
-    desc: "Avant de signer, vous voulez un avis structurel indépendant. Nos délais sont compatibles avec votre rétractation ou votre clause suspensive.",
+    desc: "Avant de signer, vous voulez un diagnostic indépendant du bâti. Nos délais sont compatibles avec votre rétractation ou votre clause suspensive.",
     href: '/expertise-avant-achat-immobilier-toulouse',
     cta: 'Voir la page acheteur',
   },
@@ -40,8 +40,8 @@ import Script from 'next/script';
 import { ExpertiseFissuresBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
-  title: 'Diagnostic et Traitement Fissures · Toulouse · Décennale 10 ans',
-  description: "Diagnostic instrumenté, agrafage structurel. Rapport technique reconnu par les assurances. Décennale 10 ans sur les travaux. Toulouse, Montauban. ☎ 05 82 95 33 75",
+  title: 'Diagnostic et traitement des fissures · Toulouse · Rapport assurances',
+  description: "Diagnostic instrumenté au fissuromètre, identification de la cause, rapport technique reconnu par les assurances. Diagnostic indépendant à Toulouse, Montauban. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures toulouse',
     'expertise fissure toulouse',
@@ -61,8 +61,8 @@ export const metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/fissures' },
   openGraph: {
-    title: 'Diagnostic et Traitement Fissures · Toulouse · IPB',
-    description: "Diagnostic instrumenté, agrafage structurel. Rapport technique reconnu par les assurances. Décennale 10 ans sur les travaux.",
+    title: 'Diagnostic et traitement des fissures · Toulouse · IPB',
+    description: "Diagnostic instrumenté au fissuromètre, identification de la cause, rapport technique reconnu par les assurances.",
     url: 'https://www.ipb-expertise.fr/expertise/fissures',
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
     locale: 'fr_FR',

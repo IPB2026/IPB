@@ -49,8 +49,9 @@ export function Footer() {
                 ['/expertise/fissures', 'Fissures'],
                 ['/expertise/humidite', 'Humidité'],
                 ['/expertise-avant-achat-immobilier-toulouse', 'Expertise avant achat'],
+                ['/diagnostic-avant-vente', 'Diagnostic avant vente'],
                 ['/expertise/mur-porteur', 'Mur porteur'],
-                ['/calcul-prix-mur-porteur', 'Calculateur de prix'],
+                ['/calcul-prix-mur-porteur', 'Faisabilité mur porteur'],
                 // Pages locales prioritaires — maillage interne site-wide (audit SEO 06/2026)
                 ['/expert-fissures-toulouse-31', 'Expert fissures Toulouse'],
                 ['/expert-humidite-toulouse-31', 'Expert humidité Toulouse'],

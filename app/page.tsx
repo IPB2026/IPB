@@ -16,8 +16,8 @@ import { Footer } from '@/components/home/Footer';
 import Script from 'next/script';
 import type { Metadata } from 'next';
 
-// 4 portes d'entrée — HOME-IPB-CONTENU-FINAL §4.
-// Fissures / Humidité / Achat immobilier / Mur porteur.
+// 5 portes d'entrée — refonte positionnement v6.
+// Fissures / Humidité / Achat immobilier / Mur porteur / Vente immobilière.
 const homePersonas: PersonaCard[] = [
   {
     label: 'Fissures',
@@ -46,6 +46,13 @@ const homePersonas: PersonaCard[] = [
     desc: "Cuisine ouverte, baie vitrée. On réalise l'étude de faisabilité et le diagnostic de structure : on vous dit si c'est possible, et à quelles conditions.",
     href: '/expertise/mur-porteur',
     cta: 'Étudier mon projet',
+  },
+  {
+    label: 'Vente immobilière',
+    titre: 'Vous vendez et voulez rassurer',
+    desc: "Un diagnostic indépendant avant la mise en vente : vous objectivez l'état du bâti, vous désamorcez les doutes des acheteurs et vous sécurisez votre prix.",
+    href: '/diagnostic-avant-vente',
+    cta: 'Diagnostiquer avant de vendre',
   },
 ];
 
@@ -192,7 +199,7 @@ export default function HomePage() {
       <PersonaCards
         eyebrow="Selon votre situation"
         title={<>Dans quel cas <em>vous reconnaissez-vous&nbsp;?</em></>}
-        intro="Quatre situations possibles, une même rigueur d'analyse. Chacune mène à la page la plus utile pour vous."
+        intro="Cinq situations possibles, une même rigueur d'analyse. Chacune mène à la page la plus utile pour vous."
         background="white"
         personas={homePersonas}
       />

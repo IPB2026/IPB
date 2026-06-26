@@ -131,6 +131,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${baseUrl}/diagnostic-avant-vente`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
       url: `${baseUrl}/lexique`,
       lastModified: recentUpdate,
       changeFrequency: 'monthly',
