@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
@@ -46,8 +45,7 @@ export default function QuartiersIndexPage() {
 
   return (
     <div className="min-h-screen bg-ipb-cream text-ipb-text">
-      <Script
-        id="quartiers-itemlist-jsonld"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />

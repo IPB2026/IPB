@@ -12,7 +12,7 @@ import { blogPostsSummary } from '@/app/data/blog';
 import { BlogBrowser } from './BlogBrowser';
 
 export const metadata: Metadata = {
-  title: 'Blog · Notes de chantier & guides techniques · IPB',
+  title: 'Blog · Notes de chantier & guides techniques',
   description:
     "Articles rédigés par l'institut IPB à partir de cas réels en Occitanie : fissures, humidité, expertise avant achat et diagnostic avant vente.",
   alternates: { canonical: 'https://www.ipb-expertise.fr/blog' },

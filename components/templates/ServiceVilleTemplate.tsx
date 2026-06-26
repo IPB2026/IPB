@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { Footer } from '@/components/home/Footer';
@@ -69,8 +68,7 @@ export function ServiceVilleTemplate({
 
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
-      <Script
-        id="service-ville-faq-jsonld"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd) }}
       />

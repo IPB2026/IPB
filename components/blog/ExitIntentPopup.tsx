@@ -17,9 +17,8 @@ export function ExitIntentPopup() {
   const [isVisible, setIsVisible] = useState(false);
   const [hasShown, setHasShown] = useState(false);
 
-  // Contexte de la page (fissures vs mur porteur)
+  // Contexte de la page
   const isFissuresPage = pathname?.includes('fissure') || pathname?.includes('agrafage');
-  const isMurPorteurPage = pathname?.includes('mur-porteur') || pathname?.includes('baie-vitree');
 
   useEffect(() => {
     // Pages où le popup ne doit pas apparaître
@@ -28,8 +27,7 @@ export function ExitIntentPopup() {
       pathname?.startsWith('/contact') ||
       pathname?.startsWith('/rdv-cabinet') ||
       pathname?.startsWith('/lp/') ||
-      pathname?.startsWith('/legal') ||
-      pathname?.startsWith('/calcul-prix-mur-porteur')
+      pathname?.startsWith('/legal')
     ) {
       return;
     }
@@ -69,16 +67,6 @@ export function ExitIntentPopup() {
         body: "Un expert du réseau IPB vient sur place sous 72h, mesure ce qu'il y a à mesurer, et vous remet une note de synthèse écrite. Sans engagement de votre part.",
         primaryCta: 'Décrire ma situation',
         primaryHref: '/diagnostic',
-      };
-    }
-    if (isMurPorteurPage) {
-      return {
-        eyebrow: 'Avant de partir',
-        title: 'Un projet en tête,',
-        titleItalic: 'une estimation en deux minutes.',
-        body: "Notre calculateur vous donne une fourchette précise basée sur les chantiers récents en Occitanie. Sans inscription.",
-        primaryCta: "Estimer mon projet",
-        primaryHref: '/calcul-prix-mur-porteur',
       };
     }
     return {

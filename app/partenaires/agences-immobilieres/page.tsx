@@ -3,7 +3,6 @@ import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import Link from 'next/link';
-import Script from 'next/script';
 import { ArrowRight, Phone, Shield, Clock, FileText, CheckCircle, Home, AlertTriangle, Handshake } from 'lucide-react';
 import type { Metadata } from 'next';
 

@@ -11,11 +11,10 @@ import { StatCounter } from '@/components/ui/StatCounter';
 import { Testimonials } from '@/components/home/Testimonials';
 import { humidityFaq } from '@/app/data/faqs';
 import Image from 'next/image';
-import Script from 'next/script';
 import { ExpertiseHumiditeBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
-  title: "Diagnostic Humidité et Infiltrations · Toulouse · IPB",
+  title: "Diagnostic humidité et infiltrations · Toulouse",
   description: "Remontées capillaires, infiltrations, condensation, salpêtre : l'institut identifie la cause exacte et préconise le traitement adapté. Diagnostic indépendant à Toulouse. ☎ 05 82 95 33 75",
   keywords: [
     'expert humidité toulouse',
@@ -31,7 +30,7 @@ export const metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/humidite' },
   openGraph: {
-    title: "Diagnostic Humidité et Infiltrations · Toulouse · IPB",
+    title: "Diagnostic humidité et infiltrations · Toulouse",
     description: "L'expert du réseau IPB identifie la cause exacte de l'humidité ; l'institut préconise la solution adaptée. Diagnostic indépendant en Occitanie.",
     url: 'https://www.ipb-expertise.fr/expertise/humidite',
     type: 'website',
@@ -97,8 +96,8 @@ const typesHumidite = [
 export default function HumiditePage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
-      <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFaqJsonLd()) }} />
-      <Script id="service-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateServiceJsonLd()) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFaqJsonLd()) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateServiceJsonLd()) }} />
       <ExpertiseHumiditeBreadcrumb />
 
       <TopBar />

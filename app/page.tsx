@@ -13,7 +13,6 @@ import { PersonaCards, type PersonaCard } from '@/components/home/PersonaCards';
 import { FAQ } from '@/components/home/FAQ';
 import { CtaFinal } from '@/components/home/CtaFinal';
 import { Footer } from '@/components/home/Footer';
-import Script from 'next/script';
 import type { Metadata } from 'next';
 
 // 4 portes d'entrée — refonte positionnement v6.
@@ -162,8 +161,7 @@ export default function HomePage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased selection:bg-ipb-orange selection:text-white">
       {/* Organization Schema pour Knowledge Panel */}
-      <Script
-        id="organization-schema"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />

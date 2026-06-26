@@ -8,7 +8,6 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
 import { googleReviews } from '@/app/data/testimonials';
-import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Avis Clients IPB · 4.9/5 Google · Toulouse',
@@ -59,7 +58,7 @@ const reviewsSchema = {
 export default function AvisClientsPage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
-      <Script id="reviews-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsSchema) }} />
 
       <TopBar />
       <Navbar />

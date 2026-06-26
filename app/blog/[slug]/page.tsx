@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Script from 'next/script';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Calendar, Clock } from 'lucide-react';
@@ -209,20 +208,17 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
   return (
     <div className="min-h-screen bg-ipb-cream">
       {/* JSON-LD pour SEO */}
-      <Script
-        id="article-schema"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
-      <Script
-        id="breadcrumb-schema"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {/* 🎯 FAQ Schema pour Rich Snippets Google */}
       {faqSchema && (
-        <Script
-          id="faq-schema"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />

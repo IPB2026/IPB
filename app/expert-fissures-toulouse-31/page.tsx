@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
@@ -162,8 +161,8 @@ const faqJsonLd = {
 export default function ExpertFissuresToulousePage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
-      <Script id="json-ld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <Script id="faq-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <BreadcrumbSchema items={[{ name: 'Expertise Fissures', href: '/expertise/fissures' }, { name: 'Toulouse', href: '/expert-fissures-toulouse-31' }]} showVisual={false} />
 
       <TopBar />

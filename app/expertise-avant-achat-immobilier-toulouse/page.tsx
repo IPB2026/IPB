@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from '@/components/ui/SmartBackBar';
@@ -12,7 +11,7 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
   title:
-    "Expertise avant achat immobilier · Diagnostic indépendant du bâti · Toulouse · IPB",
+    "Expertise avant achat immobilier · Toulouse",
   description:
     "Diagnostic indépendant du bâti avant achat immobilier à Toulouse. Délais compatibles avec votre rétractation : visite sous 72h, rapport sous 3 à 5 jours. Sans aucun lien avec le vendeur ni l'agence.",
   keywords: [
@@ -167,18 +166,15 @@ const breadcrumbJsonLd = {
 export default function ExpertiseAvantAchatPage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
-      <Script
-        id="service-jsonld"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Script
-        id="faq-jsonld"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <Script
-        id="breadcrumb-jsonld"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
