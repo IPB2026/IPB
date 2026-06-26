@@ -8,6 +8,37 @@ const field =
   'w-full rounded-lg border border-slate-300 px-3 py-2 text-base outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 sm:text-sm';
 const label = 'mb-1 block text-sm font-medium text-slate-700';
 
+// Objets de facture proposés, travaillés par domaine d'expertise. L'admin choisit
+// une proposition (modifiable) ou « Rédiger moi-même » pour un objet libre.
+const OBJET_SUGGESTIONS: { domain: string; options: string[] }[] = [
+  {
+    domain: 'Fissures',
+    options: [
+      'Diagnostic des pathologies de fissures',
+      'Diagnostic visuel et instrumenté des fissures',
+    ],
+  },
+  {
+    domain: 'Humidité',
+    options: [
+      'Diagnostic humidité et infiltrations',
+      "Diagnostic des désordres d'humidité (remontées capillaires, infiltrations, condensation)",
+    ],
+  },
+  {
+    domain: 'Avant achat',
+    options: [
+      'Diagnostic du bâti avant achat',
+      'Diagnostic indépendant avant acquisition immobilière',
+    ],
+  },
+  {
+    domain: 'Mur porteur',
+    options: ['Étude de faisabilité — ouverture de mur porteur'],
+  },
+];
+const ALL_OBJET_SUGGESTIONS = OBJET_SUGGESTIONS.flatMap((g) => g.options);
+
 function Submit() {
   const { pending } = useFormStatus();
   return (
@@ -35,6 +66,9 @@ export function NewFactureForm({
   const [error, formAction] = useFormState(createFacture, undefined);
   // Prix LIBRE, pré-rempli avec le prix du devis (modifiable).
   const [montant, setMontant] = useState(defaultMontant ?? '');
+  // Objet : proposition par domaine (modifiable) ou rédaction libre. Pré-rempli
+  // avec l'objet du domaine du dossier.
+  const [objet, setObjet] = useState(defaultObject ?? '');
 
   return (
     <form action={formAction} className="space-y-5">
@@ -70,17 +104,41 @@ export function NewFactureForm({
       </div>
 
       <div>
-        <label className={label} htmlFor="object">
+        <label className={label} htmlFor="object-suggest">
           Objet de la facture <span className="text-orange-600">*</span>
         </label>
+        <select
+          id="object-suggest"
+          value={ALL_OBJET_SUGGESTIONS.includes(objet) ? objet : '__custom__'}
+          onChange={(e) =>
+            setObjet(e.target.value === '__custom__' ? '' : e.target.value)
+          }
+          className={`${field} mb-2`}
+        >
+          {OBJET_SUGGESTIONS.map((g) => (
+            <optgroup key={g.domain} label={g.domain}>
+              {g.options.map((o) => (
+                <option key={o} value={o}>
+                  {o}
+                </option>
+              ))}
+            </optgroup>
+          ))}
+          <option value="__custom__">✏️ Rédiger l&apos;objet moi-même</option>
+        </select>
         <input
           id="object"
           name="object"
           required
-          defaultValue={defaultObject}
-          placeholder="Ex. Diagnostic des pathologies de fissures"
+          value={objet}
+          onChange={(e) => setObjet(e.target.value)}
+          placeholder="Objet de la facture (modifiable)"
           className={field}
         />
+        <p className="mt-1 text-xs text-slate-400">
+          Choisis une proposition par domaine ci-dessus (ajustable), ou « Rédiger
+          l&apos;objet moi-même » pour le saisir librement.
+        </p>
       </div>
 
       <div>

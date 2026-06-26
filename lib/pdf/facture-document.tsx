@@ -286,7 +286,7 @@ export function FactureDocument({ data }: { data: FactureDocData }) {
             <View style={s.box}>
               <Text style={s.sectionLabel}>PÉRIMÈTRE DU RAPPORT</Text>
               <Text style={s.muted}>
-                Avis d&apos;expertise (conseil / étude) sur les désordres observés. Il ne constitue ni une étude structurelle de bureau d&apos;études (BET), ni un rapport d&apos;expertise judiciaire, ni un rapport d&apos;expertise d&apos;assurance.
+                Diagnostic visuel et instrumenté, réalisé en toute indépendance, à visée de conseil et d&apos;aide à la décision. Il ne se substitue pas à un rapport judiciaire ou d&apos;assurance.
               </Text>
             </View>
           </View>

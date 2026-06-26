@@ -6,6 +6,7 @@ import { requireAdmin } from '@/lib/auth-helpers';
 import { revalidateCrm } from '@/lib/crm/revalidate';
 import { getBlobToken } from '@/lib/blob';
 import { nextDevisNumber, nextFactureNumber, nextRapportNumber } from '@/lib/crm/numbering';
+import { factureObjet } from '@/lib/crm/facture-objet';
 import { ServiceType, ReportType } from '@prisma/client';
 
 /** ServiceType (lead) → ReportType (rapport). Repli FISSURES. */
@@ -112,7 +113,8 @@ export async function importExternalDocument(formData: FormData): Promise<void> 
       data: {
         number,
         contactId,
-        object: objet,
+        // Facture importée : objet assaini (sans « structurel »). Le devis importé garde le sien.
+        object: factureObjet(objet),
         status: 'ENVOYEE',
         dueDate: due,
         totalHT: prix,

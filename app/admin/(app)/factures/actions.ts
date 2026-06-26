@@ -6,6 +6,7 @@ import { redirect } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
 import { nextFactureNumber } from '@/lib/crm/numbering';
+import { factureObjet } from '@/lib/crm/facture-objet';
 import { notifyClientPayment } from '@/lib/crm/notify';
 import { recordPhaseEvent } from '@/lib/crm/phase-events';
 import { FactureStatus } from '@prisma/client';
@@ -17,7 +18,9 @@ export async function createFacture(
 ): Promise<string | undefined> {
   await requireAdmin();
   const contactId = String(formData.get('contactId') ?? '');
-  const object = String(formData.get('object') ?? '').trim();
+  // Garde-fou FACTURE : on assainit l'objet à l'ÉCRITURE (pas seulement le pré-rempli).
+  // Même en saisie libre, « structurel » ne doit jamais être persisté sur une facture.
+  const object = factureObjet(String(formData.get('object') ?? ''));
   const montant = Math.round(
     Number(String(formData.get('montant') ?? '').replace(',', '.')) || 0
   );
@@ -136,7 +139,9 @@ export async function updateFacture(
   await requireAdmin();
   const id = String(formData.get('factureId') ?? '');
   if (!id) return 'Facture introuvable.';
-  const object = String(formData.get('object') ?? '').trim();
+  // Garde-fou FACTURE : on assainit l'objet à l'ÉCRITURE (pas seulement le pré-rempli).
+  // Même en saisie libre, « structurel » ne doit jamais être persisté sur une facture.
+  const object = factureObjet(String(formData.get('object') ?? ''));
   const montant = Math.round(
     Number(String(formData.get('montant') ?? '').replace(',', '.')) || 0
   );

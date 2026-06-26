@@ -2,7 +2,8 @@ import 'server-only';
 import { prisma } from '@/lib/prisma';
 import { nextFactureNumber } from '@/lib/crm/numbering';
 import { DIAGNOSTIC_VISIT_TYPES } from '@/lib/crm/dossier';
-import type { AppointmentType } from '@prisma/client';
+import { factureObjetForService } from '@/lib/crm/facture-objet';
+import type { AppointmentType, ServiceType } from '@prisma/client';
 
 /**
  * Création de la facture d'un RDV réalisé — logique PARTAGÉE entre l'action
@@ -11,14 +12,25 @@ import type { AppointmentType } from '@prisma/client';
 
 const DIAGNOSTIC_PRICE = 400;
 
-const TYPE_OBJECT: Record<AppointmentType, string> = {
-  DIAGNOSTIC_FISSURES: 'Diagnostic pathologies de fissures',
-  DIAGNOSTIC_HUMIDITE: 'Diagnostic humidité et infiltrations',
-  EXPERTISE_ACHAT: 'Expertise structurelle avant achat',
-  MUR_PORTEUR: 'Étude de faisabilité ouverture de mur porteur',
+// RDV diagnostic → on REPREND l'objet du gabarit DEVIS du service correspondant
+// (assaini pour la facture : sans « structurel », IPB n'étant pas un BET).
+const APPT_TO_SERVICE: Partial<Record<AppointmentType, ServiceType>> = {
+  DIAGNOSTIC_FISSURES: 'FISSURES',
+  DIAGNOSTIC_HUMIDITE: 'HUMIDITE',
+  EXPERTISE_ACHAT: 'EXPERTISE_ACHAT',
+  MUR_PORTEUR: 'MUR_PORTEUR',
+};
+// RDV non-diagnostic : pas de gabarit devis dédié → libellé propre.
+const NON_DIAG_OBJECT: Partial<Record<AppointmentType, string>> = {
   LANCEMENT_TRAVAUX: 'Lancement / coordination des travaux',
   AUTRE: 'Intervention IPB',
 };
+
+function factureObjetForAppt(type: AppointmentType): string {
+  const svc = APPT_TO_SERVICE[type];
+  if (svc) return factureObjetForService(svc);
+  return NON_DIAG_OBJECT[type] ?? 'Intervention IPB';
+}
 
 /** Types de RDV diagnostic facturables. Alias de la source unique (dossier.ts). */
 export const DIAGNOSTIC_APPT_TYPES = DIAGNOSTIC_VISIT_TYPES;
@@ -38,7 +50,7 @@ export async function createInvoiceForAppointment(
   if (!appt) return null;
   if (appt.facture) return { id: appt.facture.id, created: false };
 
-  const object = TYPE_OBJECT[appt.type];
+  const object = factureObjetForAppt(appt.type);
   const number = await nextFactureNumber(appt.contact.name);
   const due = new Date();
   due.setDate(due.getDate() + 30);
