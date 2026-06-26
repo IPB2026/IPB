@@ -34,7 +34,7 @@ export default async function NewFacturePage({
         .findFirst({
           where: { contactId: cid },
           orderBy: { createdAt: 'desc' },
-          select: { service: true, value: true },
+          select: { service: true },
         })
         .catch(() => null),
       prisma.devis
@@ -52,7 +52,9 @@ export default async function NewFacturePage({
     if (lead && lead.service !== 'AUTRE') {
       defaultObject = devisTemplate(lead.service).objet;
     }
-    const m = devis ? Number(devis.totalHT) : lead?.value ? Number(lead.value) : 0;
+    // Le montant vient du PRIX DU DEVIS (coordination validée), pas d'une
+    // estimation du lead. S'il n'y a pas encore de devis, on laisse vide.
+    const m = devis ? Number(devis.totalHT) : 0;
     if (m > 0) defaultMontant = String(Math.round(m));
   }
 
