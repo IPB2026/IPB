@@ -204,20 +204,20 @@ export default function HomePage() {
       <section className="bg-ipb-navy text-white py-14 md:py-20">
         <div className="max-w-4xl mx-auto px-5 sm:px-6 text-center">
           <p className="text-ipb-orange-l text-[11px] uppercase tracking-[0.18em] font-medium mb-4">
-            Diagnostic en 2 minutes
+            L'avis de l'institut
           </p>
           <h2 className="text-white font-serif mb-5" style={{ fontSize: 'clamp(22px, 2.6vw, 36px)', lineHeight: 1.2, letterSpacing: '-0.022em', fontWeight: 700 }}>
             Un doute sur votre bâti ?{' '}
-            <em className="text-ipb-orange-l block sm:inline mt-1 sm:mt-0 not-italic sm:italic">Obtenez un premier avis en 2 minutes.</em>
+            <em className="text-ipb-orange-l block sm:inline mt-1 sm:mt-0 not-italic sm:italic">Soumettez-le à l'institut.</em>
           </h2>
           <p className="text-white/75 text-[14px] md:text-[15px] leading-[1.8] mb-8 max-w-xl mx-auto">
-            Décrivez votre situation — fissures, humidité, doute avant un achat ou une vente. On vous dit s'il faut une visite, et sous quel délai. Gratuit, sans engagement.
+            Décrivez votre situation — fissures, humidité, doute avant un achat ou une vente. Nous vous indiquons s'il faut une visite, et sous quel délai. Sans engagement.
           </p>
           <a
             href="/diagnostic?utm_source=site&utm_medium=home_banner&utm_campaign=diagnostic"
             className="inline-flex items-center justify-center gap-2 bg-ipb-orange-d text-white font-bold px-7 md:px-8 py-4 rounded-[3px] text-[13px] md:text-[14px] tracking-[0.03em] hover:bg-[#7E390F] transition-colors min-h-[48px]"
           >
-            Lancer mon diagnostic
+            Demander un diagnostic
           </a>
         </div>
       </section>

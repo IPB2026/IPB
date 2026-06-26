@@ -11,7 +11,7 @@ export function StickyDiagnosticCta() {
   const [isExpanded, setIsExpanded] = useState(true);
   const [hasScrolled, setHasScrolled] = useState(false);
 
-  const isHiddenPage = pathname?.startsWith("/diagnostic") || pathname?.startsWith("/legal") || pathname?.startsWith("/contact");
+  const isHiddenPage = pathname?.startsWith("/diagnostic") || pathname?.startsWith("/legal");
 
   const isFissuresPage = pathname?.includes('fissure') || pathname?.includes('agrafage');
   const isHumiditePage = pathname?.includes('humid') || pathname?.includes('capillaire') || 
@@ -165,7 +165,7 @@ export function StickyDiagnosticCta() {
               <div className="flex items-center justify-between text-xs text-slate-500 mb-4 pb-4 border-b border-slate-100">
                 <span className="flex items-center gap-1">
                   <Star size={14} className="text-yellow-500 fill-yellow-500" />
-                  <strong className="text-slate-700">4.9/5</strong> (127 avis)
+                  <strong className="text-slate-700">4.9/5</strong> · Avis Google
                 </span>
                 <span className="flex items-center gap-1">
                   <Shield size={14} className="text-green-500" />
@@ -179,7 +179,7 @@ export function StickyDiagnosticCta() {
                 href="/diagnostic"
                 className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 transition-shadow duration-200 mb-3"
               >
-                Diagnostic gratuit en 5 min
+                Diagnostic gratuit · 2 min
                 <ArrowRight size={18} />
               </Link>
 

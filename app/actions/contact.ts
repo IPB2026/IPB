@@ -10,7 +10,7 @@ import { readAttribution } from '@/lib/crm/attribution-server';
 const contactFormSchema = z.object({
   name: z.string().min(2, 'Le nom doit contenir au moins 2 caractères').max(100),
   email: z.string().email('Email invalide'),
-  subject: z.string().min(3, 'Le sujet doit contenir au moins 3 caractères').max(200),
+  subject: z.string().max(200).optional().or(z.literal('')),
   message: z.string().min(10, 'Le message doit contenir au moins 10 caractères').max(2000),
 });
 
@@ -31,12 +31,13 @@ export async function submitContactForm(
     const rawData = {
       name: formData.get('name') as string,
       email: formData.get('email') as string,
-      subject: formData.get('subject') as string,
+      subject: (formData.get('subject') as string) ?? '',
       message: formData.get('message') as string,
     };
 
     // Validation Zod
     const validatedData = contactFormSchema.parse(rawData);
+    const subjectLabel = validatedData.subject?.trim() || 'Demande de contact';
 
     const rateKey = `contact:${validatedData.email.toLowerCase()}`;
     const rateLimit = checkRateLimit(rateKey, { limit: 5, windowMs: 10 * 60 * 1000 });
@@ -53,7 +54,7 @@ export async function submitContactForm(
       try {
         const teamEmailResult = await sendEmail({
           to: process.env.EMAIL_TO,
-          subject: `[Contact] ${validatedData.subject}`,
+          subject: `[Contact] ${subjectLabel}`,
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
               <h2 style="color: #EA580C;">Nouveau message depuis le site IPB</h2>
@@ -61,7 +62,7 @@ export async function submitContactForm(
               <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
                 <p><strong>Nom :</strong> ${validatedData.name}</p>
                 <p><strong>Email :</strong> <a href="mailto:${validatedData.email}">${validatedData.email}</a></p>
-                <p><strong>Sujet :</strong> ${validatedData.subject}</p>
+                <p><strong>Sujet :</strong> ${subjectLabel}</p>
               </div>
               
               <div style="background: #ffffff; padding: 20px; border-left: 4px solid #EA580C; margin: 20px 0;">
@@ -112,7 +113,7 @@ export async function submitContactForm(
                   <h2 style="margin: 0 0 12px; color:#0f172a; font-size:22px;">Bonjour ${validatedData.name},</h2>
                   <p style="margin:0 0 14px; color:#334155; font-size:15px; line-height:1.6;">
                     Merci de nous avoir contactés. Nous avons bien enregistré votre demande concernant
-                    <strong style="color:#0f172a;"> ${validatedData.subject}</strong>, et notre équipe l'examine avec attention.
+                    <strong style="color:#0f172a;"> ${subjectLabel}</strong>, et notre équipe l'examine avec attention.
                   </p>
                   <p style="margin:0 0 14px; color:#334155; font-size:15px; line-height:1.6;">
                     Votre situation sera traitée avec la même rigueur que chacun de nos dossiers : un diagnostic méthodique, une analyse structurelle fiable, et des solutions pensées pour durer.
@@ -121,8 +122,8 @@ export async function submitContactForm(
                     <p style="margin:0; color:#0f172a; font-size:14px; font-weight:700;">Ce qui nous distingue</p>
                     <ul style="margin:10px 0 0; padding-left:18px; color:#334155; font-size:14px; line-height:1.6;">
                       <li>Un diagnostiqueur indépendant : un regard objectif, sans conflit d'intérêts</li>
-                      <li>Des solutions techniques éprouvées (agrafage, injection résine)</li>
-                      <li>Des travaux couverts par la garantie décennale</li>
+                      <li>Des préconisations claires — aucun travaux à vous vendre</li>
+                      <li>Un rapport reconnu par les assurances</li>
                     </ul>
                   </div>
                   <div style="background:#fff7ed; border-left:4px solid #ea580c; padding:14px 16px; border-radius:8px; margin:18px 0;">
@@ -177,9 +178,9 @@ export async function submitContactForm(
         name: validatedData.name,
         email: validatedData.email,
       },
-      summary: validatedData.subject,
+      summary: subjectLabel,
       payload: {
-        subject: validatedData.subject,
+        subject: subjectLabel,
         message: validatedData.message,
       },
     });

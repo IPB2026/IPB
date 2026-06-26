@@ -171,7 +171,7 @@ export default function FissuresPage() {
               <RevealOnScroll delay={0.18}>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <MagneticButton href="/diagnostic" variant="primary">
-                    Diagnostic gratuit · 2 min
+                    Demander un diagnostic
                   </MagneticButton>
                   <a
                     href="tel:0582953375"
@@ -186,22 +186,11 @@ export default function FissuresPage() {
                 </div>
               </RevealOnScroll>
 
-              {/* Mini trust-line sous les CTA — preuves rapides scannables */}
+              {/* Trust-line sous les CTA — sobre, registre cabinet */}
               <RevealOnScroll delay={0.22}>
-                <ul className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-5 text-[12px] text-ipb-muted font-light">
-                  <li className="flex items-center gap-1.5">
-                    <span className="text-ipb-orange" aria-hidden="true">✓</span>
-                    <span>Sans engagement</span>
-                  </li>
-                  <li className="flex items-center gap-1.5">
-                    <span className="text-ipb-orange" aria-hidden="true">✓</span>
-                    <span>Réponse sous 48h</span>
-                  </li>
-                  <li className="flex items-center gap-1.5">
-                    <span className="text-ipb-orange" aria-hidden="true">✓</span>
-                    <span>Décennale 10 ans</span>
-                  </li>
-                </ul>
+                <p className="mt-5 text-[12px] text-ipb-muted font-light tracking-[0.02em]">
+                  Diagnostic indépendant&nbsp;· Réponse sous 48&nbsp;heures&nbsp;· Sans engagement
+                </p>
               </RevealOnScroll>
             </div>
 

@@ -135,7 +135,7 @@ export default function HumiditePage() {
               <RevealOnScroll delay={0.18}>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <MagneticButton href="/diagnostic" variant="primary">
-                    Diagnostic gratuit · 2 min
+                    Demander un diagnostic
                   </MagneticButton>
                   <a
                     href="tel:0582953375"
@@ -148,6 +148,9 @@ export default function HumiditePage() {
                     05 82 95 33 75
                   </a>
                 </div>
+                <p className="mt-5 text-[12px] text-ipb-light tracking-[0.02em]">
+                  Diagnostic indépendant&nbsp;· Visite sous 72&nbsp;heures&nbsp;· Sans engagement
+                </p>
               </RevealOnScroll>
             </div>
 

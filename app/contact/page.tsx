@@ -176,6 +176,20 @@ export default function ContactPage() {
                     </p>
                   </div>
                 ) : (
+                  <>
+                    {/* Passerelle diagnostic guidé + réassurance — évite le cul-de-sac */}
+                    <div className="mb-6 rounded-[4px] border border-ipb-rule bg-ipb-cream/60 p-4">
+                      <p className="text-[13px] text-ipb-muted leading-[1.7] mb-3">
+                        Plutôt un <strong className="font-medium text-ipb-text">diagnostic guidé en 2&nbsp;minutes</strong>&nbsp;? Décrivez votre situation et recevez un premier avis.
+                      </p>
+                      <a href="/diagnostic" className="inline-flex items-center gap-1.5 text-[13px] font-medium text-ipb-orange-d border-b border-ipb-orange-d pb-0.5 hover:gap-2.5 transition-all">
+                        Lancer mon diagnostic gratuit →
+                      </a>
+                      <p className="mt-4 pt-4 border-t border-ipb-rule text-[12px] text-ipb-light leading-[1.7]">
+                        <span className="font-medium text-ipb-text">4,9/5</span> sur Google · Réponse sous 48&nbsp;h · Diagnostic indépendant — on ne vous vend pas de travaux
+                      </p>
+                    </div>
+
                   <form onSubmit={handleSubmit} className="space-y-5">
                     <div>
                       <label htmlFor="name" className="block text-[10px] uppercase tracking-[0.14em] text-ipb-light font-medium mb-2">
@@ -186,9 +200,10 @@ export default function ContactPage() {
                         id="name"
                         name="name"
                         required
+                        autoComplete="name"
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-[13px] border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-[14px] font-light focus:outline-none focus:border-ipb-orange transition-colors"
+                        className="w-full px-4 py-[13px] border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-base sm:text-[14px] font-light focus:outline-none focus:border-ipb-orange transition-colors"
                       />
                     </div>
 
@@ -201,25 +216,26 @@ export default function ContactPage() {
                         id="email"
                         name="email"
                         required
+                        inputMode="email"
+                        autoComplete="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-[13px] border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-[14px] font-light focus:outline-none focus:border-ipb-orange transition-colors"
+                        className="w-full px-4 py-[13px] border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-base sm:text-[14px] font-light focus:outline-none focus:border-ipb-orange transition-colors"
                       />
                     </div>
 
                     <div>
                       <label htmlFor="subject" className="block text-[10px] uppercase tracking-[0.14em] text-ipb-light font-medium mb-2">
-                        Sujet
+                        Sujet <span className="lowercase tracking-normal text-ipb-light/80">(facultatif)</span>
                       </label>
                       <input
                         type="text"
                         id="subject"
                         name="subject"
-                        required
                         value={formData.subject}
                         onChange={handleChange}
-                        placeholder="Fissure sur ma façade, projet d'ouverture de mur, demande d'attestation…"
-                        className="w-full px-4 py-[13px] border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-[14px] font-light placeholder-ipb-light/70 focus:outline-none focus:border-ipb-orange transition-colors"
+                        placeholder="Fissure sur ma façade, doute avant un achat, demande d'attestation…"
+                        className="w-full px-4 py-[13px] border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-base sm:text-[14px] font-light placeholder-ipb-light/70 focus:outline-none focus:border-ipb-orange transition-colors"
                       />
                     </div>
 
@@ -235,7 +251,7 @@ export default function ContactPage() {
                         value={formData.message}
                         onChange={handleChange}
                         placeholder="Décrivez votre situation. Vous pouvez préciser la commune, l'âge du bâtiment, les désordres observés…"
-                        className="w-full px-4 py-3 border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-[14px] font-light leading-[1.7] placeholder-ipb-light/70 focus:outline-none focus:border-ipb-orange transition-colors resize-none"
+                        className="w-full px-4 py-3 border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-base sm:text-[14px] font-light leading-[1.7] placeholder-ipb-light/70 focus:outline-none focus:border-ipb-orange transition-colors resize-none"
                       />
                     </div>
 
@@ -248,6 +264,7 @@ export default function ContactPage() {
                     </MagneticButton>
                     {errorMessage && <FormError message={errorMessage} />}
                   </form>
+                  </>
                 )}
               </div>
             </RevealOnScroll>
