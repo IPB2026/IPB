@@ -15,21 +15,21 @@ const OBJET_SUGGESTIONS: { domain: string; options: string[] }[] = [
     domain: 'Fissures',
     options: [
       'Diagnostic des pathologies de fissures',
-      'Diagnostic structurel : analyse et suivi de fissures',
+      'Diagnostic visuel et instrumenté des fissures',
     ],
   },
   {
     domain: 'Humidité',
     options: [
-      "Diagnostic humidité et recherche d'infiltrations",
+      'Diagnostic humidité et infiltrations',
       "Diagnostic des désordres d'humidité (remontées capillaires, infiltrations, condensation)",
     ],
   },
   {
-    domain: 'Expertise avant achat',
+    domain: 'Avant achat',
     options: [
-      'Expertise structurelle avant achat immobilier',
-      'Bilan technique du bâti avant acquisition',
+      'Diagnostic du bâti avant achat',
+      'Diagnostic indépendant avant acquisition immobilière',
     ],
   },
   {

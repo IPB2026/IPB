@@ -19,7 +19,7 @@ const FISSURES: DevisTemplate = {
     'Mesure des fissures au fissuromètre, caractérisation de leur morphologie et de leur activité',
     'Identification des causes probables : tassement différentiel, retrait-gonflement des argiles, défaut de structure ou de chaînage',
     'Examen des désordres associés : carrelages, menuiseries, planchers, huisseries',
-    'Évaluation de la hiérarchie des désordres et de leur incidence structurelle',
+    'Évaluation de la hiérarchie des désordres et de leur incidence sur le bâti',
     'Relevé photographique daté à l’appui de chaque constat',
   ],
   livrable: [
@@ -49,9 +49,9 @@ const HUMIDITE: DevisTemplate = {
 };
 
 const EXPERTISE_ACHAT: DevisTemplate = {
-  objet: 'Expertise structurelle avant achat',
+  objet: 'Diagnostic du bâti avant achat',
   intervention: [
-    'Visite du bien avec lecture structurelle complète, intérieur et extérieur',
+    'Visite du bien avec lecture complète du bâti, intérieur et extérieur',
     'Repérage des désordres apparents : fissures, humidité, affaissements, défauts de structure, charpente, toiture',
     'Mesures ciblées (fissuromètre, humidimètre) selon les constats',
     'Appréciation de l’état général et des risques d’évolution',
@@ -70,7 +70,7 @@ const MUR_PORTEUR: DevisTemplate = {
   objet: 'Étude de faisabilité — ouverture de mur porteur',
   intervention: [
     'Visite sur site et repérage du mur concerné, intérieur et extérieur',
-    'Analyse de la descente de charges et du rôle structurel du mur',
+    'Analyse de la descente de charges et du rôle porteur du mur',
     'Examen du bâti existant : nature des matériaux, planchers, appuis, chaînages',
     'Évaluation des contraintes et des principes de reprise de charge possibles',
     'Relevé photographique et mesures à l’appui de chaque constat',
