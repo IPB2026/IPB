@@ -33,6 +33,7 @@ import {
   sendRapportEmail,
 } from '@/lib/crm/send';
 import { createInvoiceForAppointment } from '@/lib/crm/invoicing';
+import { factureObjet, sanitizeStructurel } from '@/lib/crm/facture-objet';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -342,7 +343,7 @@ const baseHandler = createMcpHandler(
         const devis = await prisma.devis.findUnique({ where: { id: devisId }, include: { contact: true, lines: { orderBy: { position: 'asc' } } } });
         if (!devis) return ok({ ok: false, erreur: 'Devis introuvable' });
         const due = new Date(); due.setDate(due.getDate() + 30);
-        const facture = await prisma.facture.create({ data: { number: await nextFactureNumber(devis.contact.name), contactId: devis.contactId, devisId: devis.id, object: devis.object, dueDate: due, totalHT: devis.totalHT, lines: { create: devis.lines.map((l, i) => ({ designation: l.designation, detail: l.detail, unit: l.unit, qty: l.qty, unitPrice: l.unitPrice, total: l.total, position: i })) } } });
+        const facture = await prisma.facture.create({ data: { number: await nextFactureNumber(devis.contact.name), contactId: devis.contactId, devisId: devis.id, object: factureObjet(devis.object), dueDate: due, totalHT: devis.totalHT, lines: { create: devis.lines.map((l, i) => ({ designation: sanitizeStructurel(l.designation), detail: l.detail ? sanitizeStructurel(l.detail) : l.detail, unit: l.unit, qty: l.qty, unitPrice: l.unitPrice, total: l.total, position: i })) } } });
         await prisma.devis.update({ where: { id: devisId }, data: { status: 'ACCEPTE' } });
         return ok({ ok: true, factureId: facture.id, number: facture.number });
       }

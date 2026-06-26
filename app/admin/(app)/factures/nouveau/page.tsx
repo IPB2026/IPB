@@ -4,17 +4,9 @@ import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
 import { NewFactureForm } from '@/components/admin/new-facture-form';
+import { factureObjetForService } from '@/lib/crm/facture-objet';
 
 export const dynamic = 'force-dynamic';
-
-// Objet de facture par domaine — registre DIAGNOSTIC (sans « structurel » : IPB
-// n'est pas un BET). Propre à la FACTURE ; ne touche pas au libellé du devis.
-const FACTURE_OBJET_BY_SERVICE: Record<string, string> = {
-  FISSURES: 'Diagnostic des pathologies de fissures',
-  HUMIDITE: 'Diagnostic humidité et infiltrations',
-  EXPERTISE_ACHAT: 'Diagnostic du bâti avant achat',
-  MUR_PORTEUR: 'Étude de faisabilité — ouverture de mur porteur',
-};
 
 export default async function NewFacturePage({
   searchParams,
@@ -30,9 +22,9 @@ export default async function NewFacturePage({
     })
     .catch(() => []);
 
-  // Pré-remplissage par domaine : arrivé depuis une fiche client, on dérive
-  // l'objet (gabarit du service du dossier) et le montant (devis diagnostic
-  // accepté/envoyé le plus récent, sinon prix du diagnostic saisi sur le lead).
+  // Pré-remplissage par domaine : arrivé depuis une fiche client, on REPREND
+  // l'objet du gabarit DEVIS du service (assaini pour la facture, sans « structurel »)
+  // et le montant (devis diagnostic accepté/envoyé le plus récent).
   let defaultObject = '';
   let defaultMontant = '';
   if (searchParams.contactId) {
@@ -58,7 +50,7 @@ export default async function NewFacturePage({
         .catch(() => null),
     ]);
     if (lead && lead.service !== 'AUTRE') {
-      defaultObject = FACTURE_OBJET_BY_SERVICE[lead.service] ?? '';
+      defaultObject = factureObjetForService(lead.service);
     }
     // Le montant vient du PRIX DU DEVIS (coordination validée), pas d'une
     // estimation du lead. S'il n'y a pas encore de devis, on laisse vide.

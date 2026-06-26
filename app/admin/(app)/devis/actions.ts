@@ -8,6 +8,7 @@ import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
 import { nextDevisNumber, nextFactureNumber } from '@/lib/crm/numbering';
 import { devisTemplate, serializeDevisContent } from '@/lib/crm/devis-templates';
+import { factureObjet, sanitizeStructurel } from '@/lib/crm/facture-objet';
 import { generateDevisContent } from '@/lib/ai/devis';
 import { recordPhaseEvent } from '@/lib/crm/phase-events';
 import { DevisStatus, ServiceType } from '@prisma/client';
@@ -666,13 +667,15 @@ export async function convertDevisToFacture(formData: FormData) {
       number,
       contactId: devis.contactId,
       devisId: devis.id,
-      object: devis.object,
+      // La facture REPREND le gabarit du devis, mais assainie : sur une facture on
+      // ne reprend jamais « structurel » (IPB n'est pas un BET). Le devis reste intact.
+      object: factureObjet(devis.object),
       dueDate: due,
       totalHT: devis.totalHT,
       lines: {
         create: devis.lines.map((l, i) => ({
-          designation: l.designation,
-          detail: l.detail,
+          designation: sanitizeStructurel(l.designation),
+          detail: l.detail ? sanitizeStructurel(l.detail) : l.detail,
           unit: l.unit,
           qty: l.qty,
           unitPrice: l.unitPrice,
