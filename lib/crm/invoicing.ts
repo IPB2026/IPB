@@ -14,7 +14,7 @@ const DIAGNOSTIC_PRICE = 400;
 const TYPE_OBJECT: Record<AppointmentType, string> = {
   DIAGNOSTIC_FISSURES: 'Diagnostic pathologies de fissures',
   DIAGNOSTIC_HUMIDITE: 'Diagnostic humidité et infiltrations',
-  EXPERTISE_ACHAT: 'Expertise structurelle avant achat',
+  EXPERTISE_ACHAT: 'Diagnostic du bâti avant achat',
   MUR_PORTEUR: 'Étude de faisabilité ouverture de mur porteur',
   LANCEMENT_TRAVAUX: 'Lancement / coordination des travaux',
   AUTRE: 'Intervention IPB',

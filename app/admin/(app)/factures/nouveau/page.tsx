@@ -4,9 +4,17 @@ import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
 import { NewFactureForm } from '@/components/admin/new-facture-form';
-import { devisTemplate } from '@/lib/crm/devis-templates';
 
 export const dynamic = 'force-dynamic';
+
+// Objet de facture par domaine — registre DIAGNOSTIC (sans « structurel » : IPB
+// n'est pas un BET). Propre à la FACTURE ; ne touche pas au libellé du devis.
+const FACTURE_OBJET_BY_SERVICE: Record<string, string> = {
+  FISSURES: 'Diagnostic des pathologies de fissures',
+  HUMIDITE: 'Diagnostic humidité et infiltrations',
+  EXPERTISE_ACHAT: 'Diagnostic du bâti avant achat',
+  MUR_PORTEUR: 'Étude de faisabilité — ouverture de mur porteur',
+};
 
 export default async function NewFacturePage({
   searchParams,
@@ -50,7 +58,7 @@ export default async function NewFacturePage({
         .catch(() => null),
     ]);
     if (lead && lead.service !== 'AUTRE') {
-      defaultObject = devisTemplate(lead.service).objet;
+      defaultObject = FACTURE_OBJET_BY_SERVICE[lead.service] ?? '';
     }
     // Le montant vient du PRIX DU DEVIS (coordination validée), pas d'une
     // estimation du lead. S'il n'y a pas encore de devis, on laisse vide.
