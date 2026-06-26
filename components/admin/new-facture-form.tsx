@@ -23,9 +23,13 @@ function Submit() {
 export function NewFactureForm({
   contacts,
   defaultContactId,
+  defaultObject,
+  defaultMontant,
 }: {
   contacts: { id: string; name: string; city: string | null }[];
   defaultContactId?: string;
+  defaultObject?: string;
+  defaultMontant?: string;
 }) {
   const [error, formAction] = useFormState(createFacture, undefined);
 
@@ -70,6 +74,7 @@ export function NewFactureForm({
           id="object"
           name="object"
           required
+          defaultValue={defaultObject}
           placeholder="Ex. Diagnostic des pathologies de fissures"
           className={field}
         />
@@ -86,11 +91,13 @@ export function NewFactureForm({
           inputMode="numeric"
           min={1}
           step="1"
+          defaultValue={defaultMontant}
           className={field}
         />
         <p className="mt-1 text-xs text-slate-400">
-          TVA non applicable (art. 293 B). Une ligne forfait est créée ; tu peux
-          l&apos;affiner ensuite.
+          TVA non applicable (art. 293 B). Pour un dossier de diagnostic, la structure
+          « diagnostic à 0 € + coordination au prix » est appliquée automatiquement ;
+          sinon une ligne forfait. Affinable ensuite.
         </p>
       </div>
 
