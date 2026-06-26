@@ -47,9 +47,6 @@ function getBackContext(pathname: string | null): { href: string; label: string 
   if (pathname.startsWith('/expert-fissures')) {
     return { href: '/expertise/fissures', label: "Retour à l'expertise fissures" };
   }
-  if (pathname.startsWith('/expert-mur-porteur')) {
-    return { href: '/expertise/mur-porteur', label: "Retour à l'expertise mur porteur" };
-  }
   if (pathname.startsWith('/expert-humidite')) {
     return { href: '/expertise/humidite', label: "Retour à l'expertise humidité" };
   }

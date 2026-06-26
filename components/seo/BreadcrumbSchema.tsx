@@ -1,6 +1,5 @@
 'use client';
 
-import Script from 'next/script';
 import Link from 'next/link';
 import { ChevronRight, Home } from 'lucide-react';
 
@@ -44,8 +43,7 @@ export function BreadcrumbSchema({ items, showVisual = true }: BreadcrumbSchemaP
 
   return (
     <>
-      <Script
-        id={`breadcrumb-${items[items.length - 1]?.name?.toLowerCase().replace(/\s+/g, '-') || 'home'}`}
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />

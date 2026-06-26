@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import Script from 'next/script';
 import { LandingShell } from '@/components/landing/LandingShell';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { StatCounter } from '@/components/ui/StatCounter';
@@ -25,7 +24,7 @@ export const metadata: Metadata = {
 export default function LandingFissuresToulouse() {
   return (
     <LandingShell>
-      <Script id="lp-fissures-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{
+      <script type="application/ld+json" dangerouslySetInnerHTML={{
         __html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "ProfessionalService",

@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
@@ -64,8 +63,7 @@ const faqSchema = {
 export default function SalpetrePage() {
   return (
     <div className="font-sans text-ipb-text bg-white antialiased">
-      <Script
-        id="faq-schema-salpetre-mur-traitement"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />

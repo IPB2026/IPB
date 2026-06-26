@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from '@/components/ui/SmartBackBar';
@@ -12,9 +11,9 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
   title:
-    'Diagnostic avant vente immobilière · Rassurez vos acheteurs · IPB Toulouse',
+    'Diagnostic avant vente immobilière · Toulouse',
   description:
-    "Vous vendez ? Un diagnostic indépendant du bâti (fissures, humidité, structure) avant la mise en vente rassure les acheteurs, objective les doutes et sécurise votre prix. Visite sous 72h en Occitanie.",
+    "Vous vendez ? Un diagnostic indépendant du bâti avant la mise en vente rassure vos acheteurs et sécurise votre prix. Visite sous 72h en Occitanie.",
   keywords: [
     'diagnostic avant vente maison',
     'diagnostic vendeur immobilier',
@@ -183,18 +182,15 @@ const breadcrumbJsonLd = {
 export default function DiagnosticAvantVentePage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
-      <Script
-        id="service-jsonld"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Script
-        id="faq-jsonld"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <Script
-        id="breadcrumb-jsonld"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />

@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
@@ -14,7 +13,7 @@ import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
   title: "L'institut IPB · Pathologie & structure du bâtiment · Occitanie",
-  description: "IPB est un institut indépendant de diagnostic en pathologie du bâtiment : fissures, humidité, expertise avant achat et avant vente. Un rapport clair, en toute indépendance. ☎ 05 82 95 33 75",
+  description: "IPB, institut indépendant de diagnostic en pathologie du bâtiment : fissures, humidité, avant achat, avant vente. Un rapport clair, en toute indépendance.",
   keywords: ['institut pathologie bâtiment toulouse', 'expert fissures toulouse', 'expertise structure toulouse', "expertise bâtiment Haute-Garonne"],
   alternates: { canonical: 'https://www.ipb-expertise.fr/notre-expert' },
   openGraph: {
@@ -58,7 +57,7 @@ const valeurs = [
 export default function NotreInstitutPage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
-      <Script id="organization-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
 
       <TopBar />
       <Navbar />

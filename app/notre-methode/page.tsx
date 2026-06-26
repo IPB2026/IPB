@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from '@/components/ui/SmartBackBar';
@@ -118,10 +117,10 @@ const orientations = [
     cta: 'Voir la page sécheresse',
   },
   {
-    titre: 'Vous projetez une ouverture de mur porteur',
-    desc: "Étude structure, dimensionnement, exécution sous garantie décennale.",
-    href: '/expertise/mur-porteur',
-    cta: 'Voir la page mur porteur',
+    titre: 'Vous vendez un bien et voulez rassurer',
+    desc: "Un diagnostic indépendant avant la mise en vente — vous objectivez l'état du bâti pour vos acheteurs.",
+    href: '/diagnostic-avant-vente',
+    cta: 'Voir le diagnostic avant vente',
   },
 ];
 
@@ -162,13 +161,11 @@ const breadcrumbJsonLd = {
 export default function NotreMethodePage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
-      <Script
-        id="howto-jsonld"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
       />
-      <Script
-        id="breadcrumb-jsonld"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />

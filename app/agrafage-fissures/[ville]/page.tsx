@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import Script from 'next/script';
 import { notFound } from 'next/navigation';
 import { ServiceVilleTemplate } from '@/components/templates/ServiceVilleTemplate';
 import { villesData, villeSlugs } from '@/app/data/villes';
@@ -61,7 +60,7 @@ export default async function AgrafageFissuresVillePage({ params }: { params: Pr
 
   return (
     <>
-      <Script id="service-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
 
       <ServiceVilleTemplate
         villeData={villeData}

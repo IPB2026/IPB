@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
@@ -87,8 +86,7 @@ const faqSchema = {
 export default function MoisissuresSantePage() {
   return (
     <div className="font-sans text-ipb-text bg-white antialiased">
-      <Script
-        id="faq-schema-moisissures-maison-sante"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />

@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import Script from 'next/script';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from '@/components/ui/SmartBackBar';
@@ -12,7 +11,7 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
   title:
-    "Rapport d'expertise fissures pour vente immobilière · Toulouse · IPB",
+    "Rapport d'expertise fissures pour vente · Toulouse",
   description:
     'Vous vendez un bien avec fissures. Notre rapport documente les désordres, qualifie leur nature structurelle ou esthétique, et sécurise votre transaction. Visite sous 72h en Occitanie.',
   keywords: [
@@ -169,18 +168,15 @@ const breadcrumbJsonLd = {
 export default function VendreBienAvecFissuresPage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
-      <Script
-        id="service-jsonld"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Script
-        id="faq-jsonld"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <Script
-        id="breadcrumb-jsonld"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />

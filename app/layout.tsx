@@ -99,6 +99,49 @@ export const metadata: Metadata = {
   },
 }
 
+// Schéma Organization (entité de marque, site-wide) — résout les @id
+// #organization référencés par LocalBusiness (parentOrganization) et WebSite (publisher).
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://www.ipb-expertise.fr#organization",
+  "subOrganization": { "@id": "https://www.ipb-expertise.fr#localbusiness" },
+  "name": "IPB - Institut de Pathologie du Bâtiment",
+  "legalName": "IPB",
+  "alternateName": "IPB Expertise",
+  "url": "https://www.ipb-expertise.fr",
+  "logo": {
+    "@type": "ImageObject",
+    "@id": "https://www.ipb-expertise.fr#logo",
+    "url": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
+    "width": 600,
+    "height": 60,
+    "caption": "IPB - Institut de Pathologie du Bâtiment"
+  },
+  "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
+  "description": "Institut indépendant de diagnostic en pathologie du bâtiment en Occitanie (31, 82, 32, 81) : diagnostic de fissures, expertise humidité, expertise avant achat et diagnostic avant vente. IPB diagnostique et conseille en toute indépendance ; si des travaux sont nécessaires, oriente vers des entreprises membres du réseau IPB.",
+  "foundingDate": "2022",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "54 avenue Jean Jaurès",
+    "addressLocality": "Tournefeuille",
+    "postalCode": "31170",
+    "addressRegion": "Occitanie",
+    "addressCountry": "FR"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+33582953375",
+    "contactType": "customer service",
+    "availableLanguage": "French",
+    "areaServed": ["FR-31", "FR-82", "FR-32", "FR-81"]
+  },
+  "sameAs": [
+    "https://www.facebook.com/ipbexpertise",
+    "https://www.linkedin.com/company/ipb-expertise"
+  ]
+};
+
 // Schéma JSON-LD pour le SEO local - Zone d'intervention 31, 82, 32
 const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -257,6 +300,11 @@ export default function RootLayout({
           `}
         </Script>
 
+        {/* Structured Data — Organization (entité de marque, site-wide) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
         {/* Structured Data — LocalBusiness */}
         <script
           type="application/ld+json"
