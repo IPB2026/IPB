@@ -10,10 +10,15 @@ import { isAiConfigured } from '@/lib/ai/report';
  *  - un brouillon d'e-mail prêt à relire/envoyer au client.
  *
  * Aucune persistance, aucune décision automatique : l'admin garde la main.
- * Sortie JSON structurée (Sonnet), même pattern que lib/ai/devis.ts.
+ * Sortie JSON structurée, même pattern que lib/ai/devis.ts.
  */
 
-const MODEL = 'claude-sonnet-4-6';
+// Tâche = résumé + action + brouillon d'e-mail à partir d'un contexte client
+// COMPACT (~500-1500 tokens). Haiku 4.5 est ~3× moins cher que Sonnet 4.6
+// ($1/$5 vs $3/$15 par MTok), suffisant en qualité pour ce travail structuré,
+// et compatible avec output_config.format (sorties structurées). On garde la
+// possibilité de revenir à un modèle plus puissant via ASSISTANT_MODEL.
+const MODEL = process.env.ASSISTANT_MODEL || 'claude-haiku-4-5';
 
 export interface AssistantResult {
   resume: string;
