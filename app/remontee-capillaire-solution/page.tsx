@@ -284,7 +284,7 @@ export default function RemonteeCapillairePage() {
           <p className="text-xl text-blue-100 mb-8">Diagnostic sous 48h. Solution garantie 30 ans.</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50">
-              Diagnostic gratuit · 2 min <ArrowRight size={20} />
+              Demander un diagnostic <ArrowRight size={20} />
             </Link>
             <a href="tel:0582953375" className="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-xl font-bold text-lg transition-colors">
               <Phone size={20} /> 05 82 95 33 75

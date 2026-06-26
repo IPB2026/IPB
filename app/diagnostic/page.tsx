@@ -854,7 +854,7 @@ export default function DiagnosticPage() {
                     Décrivez-nous<br /><em>votre situation.</em>
                   </h1>
                   <p className="text-[15px] leading-[1.85] font-light text-ipb-muted max-w-xl mx-auto">
-                    Quelques minutes pour nous donner les éléments essentiels. Notre institut vous répond sous 24 heures, par téléphone ou par mail.
+                    Donnez-nous les éléments essentiels de votre situation. Notre institut vous répond sous 24 heures, par téléphone ou par mail.
                   </p>
                 </div>
 
@@ -1008,10 +1008,10 @@ export default function DiagnosticPage() {
                     <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-white text-sm font-bold">Besoin d&apos;un avis immédiat ?</p>
+                    <p className="text-white text-sm font-bold">Préférez-vous en parler de vive voix ?</p>
                     <p className="text-ipb-light text-[10px] flex items-center gap-1">
                       <span className="w-1.5 h-1.5 bg-green-400 rounded-full inline-block" />
-                      Expert disponible — réponse rapide
+                      Un expert de l&apos;institut vous répond
                     </p>
                   </div>
                   <a
@@ -1033,7 +1033,7 @@ export default function DiagnosticPage() {
                   <div className="bg-blue-50 border border-blue-200 rounded-xl p-3 mb-4 flex items-center gap-3">
                     <span className="text-lg flex-shrink-0">📱</span>
                     <div className="flex-1 min-w-0">
-                      <p className="text-ipb-text text-xs font-medium">Laissez votre numéro, on vous rappelle</p>
+                      <p className="text-ipb-text text-xs font-medium">Laissez votre numéro, nous vous rappelons</p>
                       <div className="flex items-center gap-2 mt-1.5">
                         <input
                           type="tel"
@@ -1066,7 +1066,7 @@ export default function DiagnosticPage() {
                 )}
                 {step === 4 && earlyPhoneCaptured && (
                   <div className="bg-green-50 border border-green-200 rounded-xl p-2.5 mb-4 flex items-center gap-2 text-xs text-green-700 font-medium">
-                    <span>✓</span> Numéro enregistré — on vous rappelle rapidement
+                    <span>✓</span> Numéro enregistré — nous vous rappelons sous 24 heures
                   </div>
                 )}
 
@@ -1181,7 +1181,7 @@ export default function DiagnosticPage() {
                     </svg>
                   </div>
                   <h2 className="text-xl font-bold text-ipb-text mb-1">
-                    Vos réponses sont enregistrées !
+                    Vos réponses sont enregistrées
                   </h2>
                   <p className="text-ipb-muted text-sm">
                     Dernière étape : renseignez vos coordonnées pour recevoir votre diagnostic personnalisé.
@@ -1191,12 +1191,9 @@ export default function DiagnosticPage() {
                 {/* Ce que vous allez recevoir */}
                 <div className="bg-ipb-cream rounded-xl p-4 mb-5 border border-ipb-rule">
                   <p className="text-xs font-bold text-ipb-text mb-2 uppercase tracking-wide">Votre rapport comprend :</p>
-                  <div className="grid grid-cols-2 gap-2 text-xs text-ipb-muted">
-                    <span className="flex items-center gap-1.5"><span className="text-green-500">✓</span> Niveau de gravité</span>
-                    <span className="flex items-center gap-1.5"><span className="text-green-500">✓</span> Solution adaptée</span>
-                    <span className="flex items-center gap-1.5"><span className="text-green-500">✓</span> Délai recommandé</span>
-                    <span className="flex items-center gap-1.5"><span className="text-green-500">✓</span> Avis expert gratuit</span>
-                  </div>
+                  <p className="text-xs text-ipb-muted leading-relaxed">
+                    Niveau de gravité · Solution adaptée · Délai recommandé · Avis de l&apos;institut
+                  </p>
                 </div>
 
                 <form onSubmit={handleSubmitContact} className="space-y-3">
@@ -1469,15 +1466,13 @@ export default function DiagnosticPage() {
                         <p className="text-white/60 text-xs">Instrumenté + rapport détaillé</p>
                       </div>
                       <div className="text-right">
-                        <p className="text-sm font-bold text-green-400 bg-green-500/20 px-3 py-1 rounded-full">Visite gratuite · 72h</p>
+                        <p className="text-sm font-bold text-green-400 bg-green-500/20 px-3 py-1 rounded-full">Visite sans frais · 72h</p>
                       </div>
                     </div>
-                    <div className="flex flex-wrap gap-2 text-[10px]">
-                      <span className="bg-green-500/20 text-green-300 px-2 py-0.5 rounded-full font-semibold">✓ Diagnostic indépendant</span>
-                      <span className="bg-white/10 text-white/70 px-2 py-0.5 rounded-full">📋 Rapport remis</span>
-                      <span className="bg-white/10 text-white/70 px-2 py-0.5 rounded-full">✓ Sans engagement</span>
-                    </div>
-                    <p className="text-white/70 text-[10px] mt-2 leading-relaxed">Si rien n'est nécessaire, on vous le dit — on n'a aucun travaux à vous vendre.</p>
+                    <p className="text-white/70 text-[10px] leading-relaxed">
+                      Diagnostic indépendant · Rapport remis · Sans engagement
+                    </p>
+                    <p className="text-white/70 text-[10px] mt-2 leading-relaxed">Si aucune intervention n'est nécessaire, nous vous le disons — l'institut ne vend pas de travaux.</p>
                   </div>
 
                   <form onSubmit={handleSubmitCallback} className="space-y-3">
@@ -1521,10 +1516,8 @@ export default function DiagnosticPage() {
                       )}
                     </button>
 
-                    <div className="flex items-center justify-center gap-4 text-[10px] text-ipb-light">
-                      <span>✓ Sans engagement</span>
-                      <span>✓ Rappel gratuit</span>
-                      <span>✓ Intervention 48-72h</span>
+                    <div className="text-center text-[10px] text-ipb-light">
+                      Sans engagement · Réponse sous 48 heures · Diagnostic indépendant
                     </div>
 
                     <div className="text-center pt-2 border-t border-ipb-rule">
@@ -1549,7 +1542,7 @@ export default function DiagnosticPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h2 className="text-xl font-bold text-ipb-text mb-2">Demande envoyée avec succès !</h2>
+                <h2 className="text-xl font-bold text-ipb-text mb-2">Votre demande nous est parvenue</h2>
                 <p className="text-ipb-muted text-sm mb-4">
                   Notre équipe vous rappellera sous 24h pour qualifier votre dossier et organiser la visite d'un expert du réseau IPB.
                 </p>
@@ -1562,11 +1555,11 @@ export default function DiagnosticPage() {
                     </div>
                     <div className="flex items-start gap-2">
                       <span className="bg-ipb-stone text-ipb-orange font-bold rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 text-[10px]">2</span>
-                      <span>Diagnostic instrumenté sur site (visite gratuite)</span>
+                      <span>Diagnostic instrumenté sur site (visite sans frais)</span>
                     </div>
                     <div className="flex items-start gap-2">
                       <span className="bg-ipb-stone text-ipb-orange font-bold rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 text-[10px]">3</span>
-                      <span>Rapport + devis détaillé gratuit</span>
+                      <span>Rapport et devis détaillé remis</span>
                     </div>
                   </div>
                 </div>
@@ -1587,7 +1580,7 @@ export default function DiagnosticPage() {
         {step > 0 && step <= totalQuestions && (
           <div className="mt-4">
             <p className="text-center text-ipb-light text-xs">
-              ⏱️ Encore {totalQuestions - step + 1} question{totalQuestions - step > 0 ? 's' : ''} • Réponses confidentielles
+              Encore {totalQuestions - step + 1} question{totalQuestions - step > 0 ? 's' : ''} · Réponses confidentielles
             </p>
           </div>
         )}

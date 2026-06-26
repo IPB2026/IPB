@@ -200,7 +200,7 @@ export default function ExpertFissuresToulousePage() {
               <RevealOnScroll delay={0.18}>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <MagneticButton href="/diagnostic" variant="primary">
-                    Diagnostic gratuit · 2 min
+                    Demander un diagnostic
                   </MagneticButton>
                   <a
                     href="tel:0582953375"
@@ -215,22 +215,11 @@ export default function ExpertFissuresToulousePage() {
                 </div>
               </RevealOnScroll>
 
-              {/* Mini trust-line sous les CTA — preuves rapides scannables */}
+              {/* Trust-line sous les CTA — réassurance factuelle et mesurée */}
               <RevealOnScroll delay={0.22}>
-                <ul className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-5 text-[12px] text-ipb-muted font-light">
-                  <li className="flex items-center gap-1.5">
-                    <span className="text-ipb-orange" aria-hidden="true">✓</span>
-                    <span>Sans engagement</span>
-                  </li>
-                  <li className="flex items-center gap-1.5">
-                    <span className="text-ipb-orange" aria-hidden="true">✓</span>
-                    <span>Réponse sous 48 heures</span>
-                  </li>
-                  <li className="flex items-center gap-1.5">
-                    <span className="text-ipb-orange" aria-hidden="true">✓</span>
-                    <span>Décennale 10 ans</span>
-                  </li>
-                </ul>
+                <p className="mt-5 text-[12px] text-ipb-muted font-light">
+                  Sans engagement · Réponse sous 48 heures · Diagnostic indépendant
+                </p>
               </RevealOnScroll>
             </div>
 
@@ -355,17 +344,17 @@ export default function ExpertFissuresToulousePage() {
                 <RevealOnScroll>
                   <Eyebrow>Notre processus</Eyebrow>
                   <h2 className="font-serif text-ipb-text mb-6" style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}>
-                    De votre première description<br /><em>aux travaux livrés.</em>
+                    De votre première description<br /><em>à la remise du rapport.</em>
                   </h2>
                 </RevealOnScroll>
                 <RevealOnScroll delay={0.06}>
                   <p className="text-[14px] leading-[1.85] font-light text-ipb-muted mb-8">
-                    Quatre étapes claires, un seul interlocuteur, aucune surprise. Tout commence par une description en ligne — gratuite, sans engagement.
+                    Quatre étapes claires, un seul interlocuteur. Tout commence par une description en ligne de votre situation, sans engagement.
                   </p>
                 </RevealOnScroll>
                 <RevealOnScroll delay={0.12}>
                   <MagneticButton href="/diagnostic" variant="primary">
-                    Commencer par l'étape 1
+                    Demander un diagnostic
                   </MagneticButton>
                 </RevealOnScroll>
               </div>
@@ -374,8 +363,8 @@ export default function ExpertFissuresToulousePage() {
                 {[
                   {
                     titre: 'Vous décrivez votre situation',
-                    detail: 'Diagnostic en ligne en 2 minutes. Vous nous expliquez où sont les fissures, depuis quand, leur largeur. Vous pouvez joindre une photo. Aucune coordonnée demandée avant la dernière étape.',
-                    delai: 'Étape 1 · 2 min en ligne',
+                    detail: 'Vous nous expliquez où sont les fissures, depuis quand, leur largeur. Vous pouvez joindre une photo. Aucune coordonnée demandée avant la dernière étape.',
+                    delai: 'Étape 1 · En ligne',
                   },
                   {
                     titre: 'Notre institut vous rappelle',
@@ -384,7 +373,7 @@ export default function ExpertFissuresToulousePage() {
                   },
                   {
                     titre: 'Visite expert sur site',
-                    detail: 'Mesures au fissuromètre, niveau laser, caméra thermique si nécessaire. Nous identifions la cause exacte (sécheresse, défaut chaînage, infiltration). La visite est offerte si vous nous confiez le traitement.',
+                    detail: 'Mesures au fissuromètre, niveau laser, caméra thermique si nécessaire. Nous identifions la cause exacte (sécheresse, défaut chaînage, infiltration). La visite est déduite si vous nous confiez le traitement.',
                     delai: 'Étape 3 · Sur rendez-vous',
                   },
                   {
@@ -424,7 +413,7 @@ export default function ExpertFissuresToulousePage() {
                 </div>
                 <div className="lg:col-span-5 lg:col-start-8">
                   <p className="text-[15px] leading-[1.9] font-light text-ipb-muted">
-                    Le diagnostic en ligne est gratuit ; l'expertise sur site est déductible si vous nous confiez les travaux. Le chiffrage des travaux est toujours établi après diagnostic, sur devis — sans acompte.
+                    Le premier échange en ligne est sans frais ; l'expertise sur site est déductible si vous nous confiez les travaux. Le chiffrage des travaux est toujours établi après diagnostic, sur devis — sans acompte.
                   </p>
                 </div>
               </div>
@@ -597,7 +586,7 @@ export default function ExpertFissuresToulousePage() {
                 Le diagnostic en ligne ne vous engage à rien.
               </p>
               <p className="text-[15px] leading-[1.85] font-light text-ipb-muted">
-                Vous obtenez un premier avis de notre expert structure, gratuitement. <strong className="text-ipb-text not-italic">Si la situation ne nécessite pas d'intervention, on vous le dira</strong> — c'est l'engagement de l'institut. Mieux vaut un avis juste qu'un devis vendu.
+                Vous recevez un premier avis de notre expert structure, sans frais. <strong className="text-ipb-text not-italic">Si la situation ne nécessite pas d'intervention, nous vous le dirons</strong> — c'est l'engagement de l'institut. Mieux vaut un avis juste qu'un devis vendu.
               </p>
             </RevealOnScroll>
           </div>

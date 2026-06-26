@@ -165,7 +165,7 @@ export default function FissuresPage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">
-                  Une fissure n'est jamais anodine, mais elle n'est pas toujours grave. L'expert structure du réseau IPB se déplace, mesure, identifie la cause ; l'institut vous remet un rapport clair. Si des travaux sont nécessaires, les équipes du réseau IPB les exécutent sous décennale 10 ans.
+                  Une fissure n'est jamais anodine, mais elle n'est pas toujours grave. L'expert du réseau IPB se déplace, mesure, identifie la cause ; l'institut vous remet un rapport clair. Si des travaux sont nécessaires, nous vous orientons vers des entreprises membres du réseau IPB.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>
@@ -373,7 +373,7 @@ export default function FissuresPage() {
                     { titre: 'Diagnostic sur site', desc: "Visite par l'expert structure du réseau IPB sous 72h en moyenne. Mesure au fissuromètre, lecture du bâti, identification de la cause (sécheresse, tassement, défaut de chaînage)." },
                     { titre: 'Rapport technique', desc: "Document écrit reconnu comme pièce technique par les assurances dans les dossiers CAT-NAT. Photos, mesures, cause identifiée, préconisations chiffrées." },
                     { titre: 'Conception de la solution', desc: "Agrafage structurel pour stabiliser le mur — solution adaptée à 90 % des cas. Pour les rares tassements actifs nécessitant une reprise en sous-œuvre, nous coordonnons l'intervention avec un spécialiste. Le choix dépend du diagnostic, jamais d'une solution préconçue." },
-                    { titre: 'Travaux exécutés par les équipes du réseau IPB', desc: "L'institut coordonne le chantier ; les équipes du réseau IPB exécutent les travaux sous garantie décennale 10 ans. Chantier propre, dans les délais annoncés. Tous les documents vous sont remis à la livraison." },
+                    { titre: 'Orientation vers le réseau IPB', desc: "Si des travaux sont nécessaires, l'institut vous oriente vers des entreprises membres du réseau IPB et reste votre référent. Vous gardez la main sur vos choix, et tous les documents vous sont remis." },
                   ].map((etape, i) => (
                     <RevealOnScroll key={etape.titre} delay={0.08 + i * 0.06}>
                       <li className="grid grid-cols-[40px_1fr] gap-5 items-start pb-8 border-b border-white/10">
@@ -389,19 +389,19 @@ export default function FissuresPage() {
                   ))}
                 </ul>
 
-                {/* CTA après la liste — démarre l'étape 1 */}
+                {/* CTA après la liste — démarre la démarche */}
                 <RevealOnScroll delay={0.36}>
                   <div className="mt-10 pt-2">
                     <a
                       href="/diagnostic"
                       className="inline-flex items-center justify-center gap-2 bg-ipb-orange text-white font-bold px-8 py-4 rounded-[3px] text-[14px] tracking-[0.03em] hover:bg-[#b35519] transition-colors min-h-[48px]"
                     >
-                      Commencer par l'étape 1
+                      Demander un diagnostic
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                         <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </a>
-                    <p className="mt-3 text-[12px] text-white/55">Diagnostic en ligne · 2 minutes · sans engagement</p>
+                    <p className="mt-3 text-[12px] text-white/55">Diagnostic indépendant · Réponse sous 48 heures · Sans engagement</p>
                   </div>
                 </RevealOnScroll>
               </div>
@@ -449,7 +449,7 @@ export default function FissuresPage() {
 
               <ul className="lg:col-span-7 space-y-5">
                 {[
-                  { titre: 'Diagnostic en ligne', prix: 'Gratuit', desc: "Vous décrivez votre situation en 2 minutes. Premier avis de l'expert structure du réseau IPB, sans engagement." },
+                  { titre: 'Diagnostic en ligne', prix: 'Gratuit', desc: "Vous décrivez votre situation ; l'expert structure du réseau IPB vous transmet un premier avis, sans engagement." },
                   { titre: 'Visite sur site & rapport', prix: 'Sur devis', desc: "Coût communiqué avant tout engagement, sans acompte. Vous réglez à l'issue de la visite ; le rapport vous est remis 3 à 5 jours après." },
                   { titre: 'Agrafage structurel', prix: 'Solution proportionnée', desc: "Quand des travaux sont nécessaires, l'agrafage suffit dans 90 % des cas — généralement 3 à 4 fois moins coûteux qu'une reprise en sous-œuvre par micropieux (30 000 à 60 000 €). Chiffré précisément après diagnostic, sous décennale 10 ans." },
                 ].map((t, i) => (
@@ -574,13 +574,13 @@ export default function FissuresPage() {
           <div className="max-w-3xl mx-auto px-6 lg:px-12 text-center">
             <RevealOnScroll>
               <p className="text-[10px] text-ipb-orange uppercase tracking-[0.18em] font-semibold mb-4">
-                Vous hésitez ?
+                Avant toute décision
               </p>
               <p className="font-serif text-ipb-text mb-5" style={{ fontSize: 'clamp(20px, 2vw, 26px)', lineHeight: 1.4, letterSpacing: '-0.015em', fontWeight: 500 }}>
                 Le diagnostic en ligne ne vous engage à rien.
               </p>
               <p className="text-[15px] leading-[1.85] font-light text-ipb-muted">
-                Vous obtenez un premier avis de l'expert structure du réseau IPB, gratuitement. <strong className="text-ipb-text not-italic">Si la situation ne nécessite pas d'intervention, on vous le dira</strong> — c'est l'engagement de l'institut. Mieux vaut un avis juste qu'un devis vendu.
+                Vous recevez un premier avis de l'expert structure du réseau IPB, sans engagement. <strong className="text-ipb-text not-italic">Si la situation ne nécessite pas d'intervention, nous vous le disons</strong> — c'est l'engagement de l'institut. Mieux vaut un avis juste qu'un devis vendu.
               </p>
             </RevealOnScroll>
           </div>

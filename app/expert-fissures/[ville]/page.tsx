@@ -162,7 +162,7 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
               <RevealOnScroll delay={0.18}>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <MagneticButton href="/diagnostic" variant="primary">
-                    Diagnostic gratuit · 2 min
+                    Demander un diagnostic
                   </MagneticButton>
                   <a
                     href="tel:0582953375"

@@ -189,7 +189,7 @@ export default function HauteGaronnePage() {
                     href="/diagnostic"
                     className="inline-flex items-center justify-center gap-2 bg-white text-ipb-orange px-8 py-4 rounded-xl font-bold text-lg hover:bg-ipb-stone transition-all shadow-xl"
                   >
-                    Diagnostic gratuit · 2 min
+                    Demander un diagnostic
                     <ArrowRight size={20} />
                   </Link>
                   <a

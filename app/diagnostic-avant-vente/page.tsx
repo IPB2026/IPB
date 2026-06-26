@@ -81,7 +81,7 @@ const situations = [
   },
   {
     titre: 'Un doute structurel plus large',
-    desc: "Vous ne savez pas exactement quoi faire diagnostiquer. Décrivez votre situation : on vous oriente vers le bon diagnostic en quelques minutes.",
+    desc: "Vous ne savez pas exactement quoi faire diagnostiquer. Décrivez votre situation : l'institut vous oriente vers le diagnostic adapté.",
     href: '/diagnostic',
     cta: 'Décrire ma situation',
   },

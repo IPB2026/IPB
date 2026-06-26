@@ -9,8 +9,8 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Prendre RDV avec l\'institut · IPB Toulouse · 15 min',
-  description: "15 min au téléphone avec l'équipe IPB. Diagnostic préalable gratuit, sans engagement. ☎ 05 82 95 33 75",
+  title: 'Prendre rendez-vous avec l\'institut · IPB Toulouse',
+  description: "Un premier échange téléphonique avec l'équipe IPB pour qualifier votre situation. Sans engagement · Réponse sous 48 heures · Diagnostic indépendant. ☎ 05 82 95 33 75",
   keywords: ['rendez-vous expert fissures', 'rdv institut structure toulouse', 'consultation expert bâtiment'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/rdv-cabinet' },
   openGraph: {
@@ -52,7 +52,7 @@ export default function RdvCabinetPage() {
                   Avant de vous déplacer ou de vous engager, nous vous proposons un premier échange par téléphone avec l'équipe de l'institut. Vous décrivez votre situation, nous vous disons posément ce qu'il en est.
                 </p>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10">
-                  Cet appel est <strong className="font-medium text-ipb-text not-italic">gratuit</strong> et <strong className="font-medium text-ipb-text not-italic">sans engagement</strong>. À l'issue, nous décidons ensemble de la suite — visite sur site, étude technique, ou simple conseil si rien n'est urgent.
+                  Cet échange est <strong className="font-medium text-ipb-text not-italic">sans engagement</strong>. À l'issue, nous décidons ensemble de la suite — visite sur site, étude technique, ou simple conseil si rien n'est urgent.
                 </p>
 
                 {/* Garanties — mini liste */}
@@ -107,7 +107,7 @@ export default function RdvCabinetPage() {
                       Quelques questions sur vos fissures ou votre projet d'ouverture. Nous arrivons préparés à l'appel : ça gagne du temps pour vous, ça précise notre première analyse pour nous.
                     </p>
                     <span className="inline-flex items-center gap-2 text-ipb-orange text-[13px] font-medium border-b border-ipb-orange pb-1 group-hover:gap-3 transition-all">
-                      Démarrer le diagnostic →
+                      Décrire ma situation →
                     </span>
                   </Link>
                 </RevealOnScroll>

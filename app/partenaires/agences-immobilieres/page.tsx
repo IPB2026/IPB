@@ -9,7 +9,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "Agences Immobilières Toulouse · Expertise Vente · 5j ouvrés",
-  description: "Vente bloquée par une fissure ? Rapport technique IPB sous 3 à 5 jours ouvrés pour rassurer l'acquéreur. Toulouse, Montauban. ☎ 05 82 95 33 75",
+  description: "Vente suspendue à une fissure : rapport technique indépendant IPB sous 3 à 5 jours ouvrés pour rassurer l'acquéreur. Toulouse, Montauban. ☎ 05 82 95 33 75",
   keywords: [
     'partenariat agence immobilière toulouse',
     'expert fissures pour agence immobilière',
@@ -43,15 +43,15 @@ export default function AgencesImmobilieresPage() {
               Programme partenaire · Agences & mandataires immobiliers
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-              Une vente bloquée par <span className="text-transparent bg-clip-text bg-ipb-orange">une fissure</span> ?
-              <span className="block mt-2 text-white">On débloque sous 5 jours ouvrés.</span>
+              Une vente suspendue à <span className="text-transparent bg-clip-text bg-ipb-orange">une fissure</span> ?
+              <span className="block mt-2 text-white">Un rapport indépendant sous 3 à 5 jours ouvrés.</span>
             </h1>
             <p className="text-xl text-white/70 mb-8 max-w-3xl">
-              L'acquéreur a vu une fissure et veut « réfléchir ». Le compromis est suspendu à un rapport. On passe sous 48h, on vous livre un rapport reconnu par les assurances sous 3 à 5 jours ouvrés, et on chiffre les éventuels travaux. Votre commission est sauvée.
+              L'acquéreur a vu une fissure et souhaite « réfléchir ». Le compromis est suspendu à un rapport. Visite sous 48 heures, rapport reconnu par les assurances sous 3 à 5 jours ouvrés, chiffrage des éventuels travaux. La transaction reprend sur des bases techniques.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact" className="bg-ipb-orange hover:bg-ipb-orange text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
-                Devenir partenaire <ArrowRight size={20} />
+                Nous consulter <ArrowRight size={20} />
               </Link>
               <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
                 <Phone size={20} /> 05 82 95 33 75
@@ -64,7 +64,7 @@ export default function AgencesImmobilieresPage() {
         <section className="py-16 bg-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text text-center mb-4">
-              3 situations où nous sauvons votre vente
+              Trois situations où notre rapport débloque la vente
             </h2>
             <p className="text-lg text-ipb-muted text-center mb-12 max-w-3xl mx-auto">
               Avant le compromis, après la visite, ou pendant la condition suspensive.
@@ -107,7 +107,7 @@ export default function AgencesImmobilieresPage() {
 
             <div className="space-y-6">
               {[
-                { num: 1, title: 'Vous nous appelez', desc: 'Décrivez la situation en 2 minutes au 05 82 95 33 75. Nous validons que c\'est dans notre périmètre et programmons la visite.' },
+                { num: 1, title: 'Vous nous appelez', desc: 'Décrivez la situation au 05 82 95 33 75. Nous validons qu\'elle relève de notre périmètre et programmons la visite.' },
                 { num: 2, title: 'Visite sous 48h', desc: 'Notre expert se déplace, mesure les fissures (fissuromètre), photographie, écoute les inquiétudes de l\'acquéreur si nécessaire.' },
                 { num: 3, title: 'Rapport sous 3 à 5 jours ouvrés', desc: 'Document PDF reconnu par les assurances : nature des désordres, gravité, recommandations, chiffrage. Vous le transmettez à l\'acquéreur et au notaire.' },
                 { num: 4, title: 'Vente débloquée', desc: 'Soit le rapport rassure (la fissure est cosmétique), soit il chiffre des travaux que vous intégrez à la négociation. Dans 80% des cas, la vente repart.' },
@@ -145,7 +145,7 @@ export default function AgencesImmobilieresPage() {
                 ))}
               </ul>
               <Link href="/contact" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl">
-                Démarrer le partenariat <ArrowRight size={20} />
+                Établir un partenariat <ArrowRight size={20} />
               </Link>
             </div>
           </div>
@@ -154,8 +154,8 @@ export default function AgencesImmobilieresPage() {
         {/* CTA */}
         <section className="py-16 bg-ipb-navy text-white">
           <div className="max-w-4xl mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Une vente à débloquer cette semaine ?</h2>
-            <p className="text-xl text-white/70 mb-8">Appelez-nous, on prend le rendez-vous sous 48h.</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Une vente à débloquer ?</h2>
+            <p className="text-xl text-white/70 mb-8">Appelez-nous : visite programmée sous 48 heures.</p>
             <a href="tel:0582953375" className="inline-flex bg-ipb-orange hover:bg-ipb-orange text-white px-10 py-5 rounded-xl font-bold text-lg items-center gap-2 shadow-xl">
               <Phone size={20} /> 05 82 95 33 75
             </a>

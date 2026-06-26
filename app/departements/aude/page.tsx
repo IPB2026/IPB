@@ -265,7 +265,7 @@ export default function AudePage() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="bg-ipb-navy text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-ipb-navy-2 flex items-center justify-center gap-2">
-              Diagnostic gratuit · 2 min <ArrowRight size={20} />
+              Demander un diagnostic <ArrowRight size={20} />
             </Link>
             <a href="tel:0582953375" className="bg-white text-ipb-text px-8 py-4 rounded-xl font-bold text-lg hover:bg-amber-100 flex items-center justify-center gap-2">
               <Phone size={20} /> 05 82 95 33 75
