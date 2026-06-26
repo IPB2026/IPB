@@ -45,17 +45,17 @@ export function Hero() {
               fontWeight: 700,
             }}
           >
-            Votre bien montre des signes.<br />
-            <em>Notre institut les comprend.</em>
+            Fissure, humidité, doute avant un achat&nbsp;?<br />
+            <em>On vous dit la vérité sur votre bâti.</em>
           </h1>
 
           <p className="text-[15px] leading-[1.9] font-light text-ipb-muted max-w-[540px] mb-10">
             Fissures, humidité, doute avant un achat&nbsp;: notre institut indépendant pose le bon diagnostic, identifie la cause et vous remet un rapport clair. Aucun intérêt à vendre des travaux&nbsp;— juste à vous dire la vérité sur votre bâti.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 mb-5">
             <MagneticButton href="/diagnostic" variant="primary">
-              Mon diagnostic en 2 min
+              Diagnostic gratuit · 2 min
             </MagneticButton>
             <a
               href="tel:0582953375"
@@ -68,6 +68,12 @@ export function Hero() {
               05 82 95 33 75
             </a>
           </div>
+
+          <p className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[12px] text-ipb-light mb-12">
+            <span className="inline-flex items-center gap-1.5"><span className="text-ipb-orange" aria-hidden="true">✓</span> Gratuit</span>
+            <span className="inline-flex items-center gap-1.5"><span className="text-ipb-orange" aria-hidden="true">✓</span> Sans engagement</span>
+            <span className="inline-flex items-center gap-1.5"><span className="text-ipb-orange" aria-hidden="true">✓</span> Réponse sous 48&nbsp;h</span>
+          </p>
 
           {/* Panel mobile — photo chantier réelle avec overlay navy + crack signature */}
           <RevealOnScroll delay={0.2} className="lg:hidden -mx-6 mb-12">

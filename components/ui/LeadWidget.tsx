@@ -11,19 +11,19 @@ import Link from 'next/link';
  * l'a fermé pendant la session.
  *
  * Étapes :
- *  1. Quel est votre projet ? → Fissures / Mur porteur / Autre
+ *  1. Quel est votre besoin ? → Fissures / Humidité / Autre
  *  2. Depuis combien de temps ? → < 6 mois / 6–12 mois / > 1 an / À venir
  *  3. Message personnalisé selon combinaison + 2 CTA
  *
  * Cf. IPB_Design_Handoff.md §9
  */
 
-type Topic = 'fissures' | 'mur-porteur' | 'autre' | null;
+type Topic = 'fissures' | 'humidite' | 'autre' | null;
 type Timing = 'recent' | 'moyen' | 'ancien' | 'projet' | null;
 
 const topicLabels: Record<Exclude<Topic, null>, string> = {
   fissures: 'Diagnostic de fissures',
-  'mur-porteur': 'Ouverture de mur porteur',
+  humidite: 'Diagnostic humidité',
   autre: 'Autre demande',
 };
 
@@ -40,8 +40,10 @@ function buildMessage(topic: Topic, timing: Timing): string {
     if (timing === 'moyen') return "Une fissure observée depuis plusieurs mois doit être caractérisée : active ou stable, structurelle ou esthétique. Diagnostic recommandé.";
     if (timing === 'ancien') return "Une fissure ancienne reste à surveiller — elle peut s'aggraver après un cycle sécheresse. Notre rapport documente l'état actuel.";
   }
-  if (topic === 'mur-porteur') {
-    return "La première étape est toujours le diagnostic. Notre institut analyse votre situation et vous répond sous 48 heures pour préciser ce qui est possible.";
+  if (topic === 'humidite') {
+    if (timing === 'recent') return "Une humidité récente doit être caractérisée vite : remontée capillaire, infiltration ou condensation. Notre institut identifie la vraie origine.";
+    if (timing === 'moyen') return "Une humidité installée depuis quelques mois s'aggrave souvent en hiver. Un diagnostic précis évite de traiter à côté.";
+    if (timing === 'ancien') return "Une humidité ancienne a souvent plusieurs causes mêlées. Notre diagnostic les démêle avant tout traitement.";
   }
   return "Notre institut vous répond sous 48 heures pour préciser ce qui est possible et ce qui ne l'est pas.";
 }
@@ -153,9 +155,7 @@ export function LeadWidget() {
             {step === 2 && (
               <div>
                 <p className="text-[13px] text-ipb-muted leading-[1.6] mb-4">
-                  {topic === 'mur-porteur'
-                    ? "Quand pensez-vous lancer le projet ?"
-                    : "Depuis quand observez-vous le problème ?"}
+                  Depuis quand observez-vous le problème&nbsp;?
                 </p>
                 <div className="space-y-2">
                   {(Object.entries(timingLabels) as [Exclude<Timing, null>, string][]).map(([key, label]) => (

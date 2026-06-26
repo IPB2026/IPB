@@ -620,7 +620,7 @@ export default function DiagnosticPage() {
           urgencyColor: 'orange',
           diagnosis: "Les symptômes décrits évoquent un problème d'humidité actif mais encore contenu. Plusieurs causes possibles (condensation, infiltration ponctuelle, début de remontées). Le diagnostic permet d'éviter de traiter à côté.",
           solution: "Diagnostic instrumenté sur site pour identifier la cause exacte avant tout traitement. Si remontées capillaires confirmées : injection de résine. Si condensation : audit ventilation. Si infiltration : recherche du point d'entrée.",
-          delay: 'Visite sous 7 jours — rapport sous 3 à 5 jours',
+          delay: 'Visite sous 72h — rapport sous 3 à 5 jours',
         };
       } else {
         return {
@@ -678,7 +678,6 @@ export default function DiagnosticPage() {
     setFormError('');
     if (!contactInfo.name.trim()) { setFormError('Veuillez saisir votre nom'); return; }
     if (!contactInfo.email.trim() && !contactInfo.phone.trim()) { setFormError('Veuillez saisir au moins un email ou un téléphone'); return; }
-    if (!contactInfo.address.trim()) { setFormError('Veuillez saisir l\'adresse du bien'); return; }
 
     // Validation locale téléphone + email (helpers partagés)
     const phoneError = validatePhoneOrError(contactInfo.phone);
@@ -815,11 +814,6 @@ export default function DiagnosticPage() {
                   {step <= 3 ? 'Analyse du problème' : step <= 6 ? 'Évaluation de gravité' : 'Finalisation'}
                 </span>
               </div>
-              {step > 2 && (
-                <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-ipb-stone/60 text-ipb-muted uppercase tracking-wider">
-                  Étape {step + 1} sur {totalQuestions + 1}
-                </span>
-              )}
             </div>
             <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
               <div
@@ -986,24 +980,24 @@ export default function DiagnosticPage() {
                   </div>
                 </div>
 
-                {/* Social proof — 2 témoignages */}
+                {/* Social proof — vrais avis Google (source : app/data/testimonials.ts) */}
                 <div className="space-y-2 mb-4">
                   <div className="bg-ipb-cream rounded-xl p-3 flex items-start gap-3">
-                    <div className="w-8 h-8 bg-ipb-stone rounded-full flex items-center justify-center text-sm flex-shrink-0">P</div>
+                    <div className="w-8 h-8 bg-ipb-stone rounded-full flex items-center justify-center text-sm flex-shrink-0">F</div>
                     <div>
                       <p className="text-ipb-muted text-xs italic leading-relaxed">
-                        &quot;J&apos;ai compris la gravité de mes fissures. L&apos;expert m&apos;a rappelé le lendemain, intervention réalisée en 3 jours.&quot;
+                        &quot;Leur diagnostic était parfaitement conforme aux diagnostics réalisés par l&apos;expert de mon assurance.&quot;
                       </p>
-                      <p className="text-ipb-light text-[10px] mt-1 font-medium">Pierre M. — Castres <span className="text-yellow-500">★★★★★</span></p>
+                      <p className="text-ipb-light text-[10px] mt-1 font-medium">Fati G. — Montauban <span className="text-yellow-500">★★★★★</span></p>
                     </div>
                   </div>
                   <div className="bg-ipb-cream rounded-xl p-3 flex items-start gap-3">
-                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-sm flex-shrink-0">S</div>
+                    <div className="w-8 h-8 bg-ipb-stone rounded-full flex items-center justify-center text-sm flex-shrink-0">S</div>
                     <div>
                       <p className="text-ipb-muted text-xs italic leading-relaxed">
-                        &quot;Diagnostic très complet, rapport détaillé avec photos. On voit que c&apos;est un vrai professionnel, pas un commercial.&quot;
+                        &quot;Merci à l&apos;équipe IPB pour leur accompagnement. Aucune trace sur nos murs. Je recommande.&quot;
                       </p>
-                      <p className="text-ipb-light text-[10px] mt-1 font-medium">Sophie L. — Colomiers <span className="text-yellow-500">★★★★★</span></p>
+                      <p className="text-ipb-light text-[10px] mt-1 font-medium">Sam Sd — Colomiers <span className="text-yellow-500">★★★★★</span></p>
                     </div>
                   </div>
                 </div>
@@ -1039,14 +1033,16 @@ export default function DiagnosticPage() {
                   <div className="bg-blue-50 border border-blue-200 rounded-xl p-3 mb-4 flex items-center gap-3">
                     <span className="text-lg flex-shrink-0">📱</span>
                     <div className="flex-1 min-w-0">
-                      <p className="text-ipb-text text-xs font-medium">Recevez votre diagnostic par SMS</p>
+                      <p className="text-ipb-text text-xs font-medium">Laissez votre numéro, on vous rappelle</p>
                       <div className="flex items-center gap-2 mt-1.5">
                         <input
                           type="tel"
+                          inputMode="tel"
+                          autoComplete="tel"
                           value={earlyPhone}
                           onChange={(e) => setEarlyPhone(e.target.value)}
                           placeholder="06 12 34 56 78"
-                          className="flex-1 min-w-0 px-3 py-1.5 rounded-lg border border-blue-200 text-sm outline-none focus:border-blue-400 bg-white"
+                          className="flex-1 min-w-0 px-3 py-1.5 rounded-lg border border-blue-200 text-base sm:text-sm outline-none focus:border-blue-400 bg-white"
                         />
                         <button
                           type="button"
@@ -1070,7 +1066,7 @@ export default function DiagnosticPage() {
                 )}
                 {step === 4 && earlyPhoneCaptured && (
                   <div className="bg-green-50 border border-green-200 rounded-xl p-2.5 mb-4 flex items-center gap-2 text-xs text-green-700 font-medium">
-                    <span>✓</span> Numéro enregistré — vous recevrez votre diagnostic
+                    <span>✓</span> Numéro enregistré — on vous rappelle rapidement
                   </div>
                 )}
 
@@ -1211,7 +1207,8 @@ export default function DiagnosticPage() {
                       value={contactInfo.name}
                       onChange={(e) => setContactInfo({ ...contactInfo, name: e.target.value })}
                       placeholder="Jean Dupont"
-                      className="w-full px-4 py-3 rounded-xl border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all"
+                      autoComplete="name"
+                      className="w-full px-4 py-3 rounded-xl border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-base sm:text-sm transition-all"
                       required
                     />
                   </div>
@@ -1227,8 +1224,10 @@ export default function DiagnosticPage() {
                         value={contactInfo.email}
                         onChange={(e) => setContactInfo({ ...contactInfo, email: e.target.value })}
                         placeholder="jean@email.com"
+                        inputMode="email"
+                        autoComplete="email"
                         required={!contactInfo.phone.trim()}
-                        className={`w-full px-4 py-3 rounded-xl border focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all ${
+                        className={`w-full px-4 py-3 rounded-xl border focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-base sm:text-sm transition-all ${
                           !contactInfo.email.trim() && !contactInfo.phone.trim() ? 'border-orange-300 bg-ipb-stone/30' : 'border-ipb-rule'
                         }`}
                       />
@@ -1240,8 +1239,10 @@ export default function DiagnosticPage() {
                         value={contactInfo.phone}
                         onChange={(e) => setContactInfo({ ...contactInfo, phone: e.target.value })}
                         placeholder="06 12 34 56 78"
+                        inputMode="tel"
+                        autoComplete="tel"
                         required={!contactInfo.email.trim()}
-                        className={`w-full px-4 py-3 rounded-xl border focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all ${
+                        className={`w-full px-4 py-3 rounded-xl border focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-base sm:text-sm transition-all ${
                           !contactInfo.email.trim() && !contactInfo.phone.trim() ? 'border-orange-300 bg-ipb-stone/30' : 'border-ipb-rule'
                         }`}
                       />
@@ -1249,14 +1250,14 @@ export default function DiagnosticPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-ipb-muted mb-1">Adresse du bien *</label>
+                    <label className="block text-xs font-semibold text-ipb-muted mb-1">Commune du bien <span className="font-normal text-ipb-light">(facultatif)</span></label>
                     <input
                       type="text"
                       value={contactInfo.address}
                       onChange={(e) => setContactInfo({ ...contactInfo, address: e.target.value })}
-                      placeholder="12 rue des Lilas, votre commune"
-                      className="w-full px-4 py-3 rounded-xl border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all"
-                      required
+                      placeholder="Ex. Toulouse, Colomiers…"
+                      autoComplete="address-level2"
+                      className="w-full px-4 py-3 rounded-xl border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-base sm:text-sm transition-all"
                     />
                   </div>
 
@@ -1266,7 +1267,7 @@ export default function DiagnosticPage() {
                       <select
                         value={contactInfo.yearBuilt}
                         onChange={(e) => setContactInfo({ ...contactInfo, yearBuilt: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-sm bg-white transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-base sm:text-sm bg-white transition-all"
                       >
                         <option value="">Choisir</option>
                         <option value="avant_1950">Avant 1950</option>
@@ -1281,7 +1282,7 @@ export default function DiagnosticPage() {
                       <select
                         value={contactInfo.preferredTime}
                         onChange={(e) => setContactInfo({ ...contactInfo, preferredTime: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-sm bg-white transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-base sm:text-sm bg-white transition-all"
                       >
                         <option value="">Choisir</option>
                         <option value="matin">Matin (9h-12h)</option>
@@ -1456,7 +1457,7 @@ export default function DiagnosticPage() {
                           : "Besoin d'un avis professionnel sur place ?"}
                     </h3>
                     <p className="text-ipb-muted text-xs">
-                      Un expert certifié vous rappelle pour organiser l'intervention.
+                      Un expert vous rappelle pour planifier votre visite de diagnostic.
                     </p>
                   </div>
 
@@ -1468,14 +1469,15 @@ export default function DiagnosticPage() {
                         <p className="text-white/60 text-xs">Instrumenté + rapport détaillé</p>
                       </div>
                       <div className="text-right">
-                        <p className="text-sm font-bold text-green-400 bg-green-500/20 px-3 py-1 rounded-full">Déduit à 100% des travaux</p>
+                        <p className="text-sm font-bold text-green-400 bg-green-500/20 px-3 py-1 rounded-full">Visite gratuite · 72h</p>
                       </div>
                     </div>
                     <div className="flex flex-wrap gap-2 text-[10px]">
-                      <span className="bg-green-500/20 text-green-300 px-2 py-0.5 rounded-full font-semibold">✓ Déductible des travaux</span>
+                      <span className="bg-green-500/20 text-green-300 px-2 py-0.5 rounded-full font-semibold">✓ Diagnostic indépendant</span>
                       <span className="bg-white/10 text-white/70 px-2 py-0.5 rounded-full">📋 Rapport remis</span>
-                      <span className="bg-white/10 text-white/70 px-2 py-0.5 rounded-full">💰 Devis gratuit inclus</span>
+                      <span className="bg-white/10 text-white/70 px-2 py-0.5 rounded-full">✓ Sans engagement</span>
                     </div>
+                    <p className="text-white/70 text-[10px] mt-2 leading-relaxed">Si rien n'est nécessaire, on vous le dit — on n'a aucun travaux à vous vendre.</p>
                   </div>
 
                   <form onSubmit={handleSubmitCallback} className="space-y-3">
@@ -1560,7 +1562,7 @@ export default function DiagnosticPage() {
                     </div>
                     <div className="flex items-start gap-2">
                       <span className="bg-ipb-stone text-ipb-orange font-bold rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 text-[10px]">2</span>
-                      <span>Diagnostic instrumenté sur site (déduit des travaux)</span>
+                      <span>Diagnostic instrumenté sur site (visite gratuite)</span>
                     </div>
                     <div className="flex items-start gap-2">
                       <span className="bg-ipb-stone text-ipb-orange font-bold rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 text-[10px]">3</span>

@@ -105,7 +105,7 @@ export function Navbar() {
                   ? "inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.09em] font-semibold text-ipb-orange-d hover:text-[#7E390F] transition-colors py-2 border-b border-ipb-orange/40 hover:border-ipb-orange"
                   : "text-[11px] uppercase tracking-[0.09em] font-medium text-ipb-muted hover:text-ipb-orange-d transition-colors py-2 border-b border-transparent hover:border-ipb-orange"
               }
-              title={highlight ? "Vérifier la faisabilité de votre ouverture de mur porteur — étude en 2 minutes" : undefined}
+              title={undefined}
             >
               {highlight && (
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

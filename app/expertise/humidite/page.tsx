@@ -148,6 +148,11 @@ export default function HumiditePage() {
                     05 82 95 33 75
                   </a>
                 </div>
+                <p className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[12px] text-ipb-light">
+                  <span className="inline-flex items-center gap-1.5"><span className="text-ipb-orange" aria-hidden="true">✓</span> Diagnostic indépendant</span>
+                  <span className="inline-flex items-center gap-1.5"><span className="text-ipb-orange" aria-hidden="true">✓</span> Visite sous 72&nbsp;h</span>
+                  <span className="inline-flex items-center gap-1.5"><span className="text-ipb-orange" aria-hidden="true">✓</span> Sans engagement</span>
+                </p>
               </RevealOnScroll>
             </div>
 
