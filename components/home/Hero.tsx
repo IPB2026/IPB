@@ -45,17 +45,17 @@ export function Hero() {
               fontWeight: 700,
             }}
           >
-            Fissure, humidité, doute avant un achat&nbsp;?<br />
-            <em>On vous dit la vérité sur votre bâti.</em>
+            Fissures, humidité, doute avant un achat.<br />
+            <em>L'avis indépendant d'un institut.</em>
           </h1>
 
           <p className="text-[15px] leading-[1.9] font-light text-ipb-muted max-w-[540px] mb-10">
-            Fissures, humidité, doute avant un achat&nbsp;: notre institut indépendant pose le bon diagnostic, identifie la cause et vous remet un rapport clair. Aucun intérêt à vendre des travaux&nbsp;— juste à vous dire la vérité sur votre bâti.
+            Notre institut diagnostique la cause, l'analyse et vous remet un rapport clair. Parce que nous ne réalisons pas les travaux, notre avis reste sans complaisance&nbsp;— c'est tout le sens d'un diagnostic indépendant.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-5">
             <MagneticButton href="/diagnostic" variant="primary">
-              Diagnostic gratuit · 2 min
+              Demander un diagnostic
             </MagneticButton>
             <a
               href="tel:0582953375"
@@ -69,10 +69,8 @@ export function Hero() {
             </a>
           </div>
 
-          <p className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[12px] text-ipb-light mb-12">
-            <span className="inline-flex items-center gap-1.5"><span className="text-ipb-orange" aria-hidden="true">✓</span> Gratuit</span>
-            <span className="inline-flex items-center gap-1.5"><span className="text-ipb-orange" aria-hidden="true">✓</span> Sans engagement</span>
-            <span className="inline-flex items-center gap-1.5"><span className="text-ipb-orange" aria-hidden="true">✓</span> Réponse sous 48&nbsp;h</span>
+          <p className="text-[12px] text-ipb-light tracking-[0.02em] mb-12">
+            Premier échange sans engagement&nbsp;· Réponse de l'institut sous 48&nbsp;heures
           </p>
 
           {/* Panel mobile — photo chantier réelle avec overlay navy + crack signature */}
