@@ -16,13 +16,13 @@ export const metadata: Metadata = {
     'rapport fissure vente immobilière',
     'expertise pré-vente toulouse',
     'fissure vente bloquée toulouse',
-    'mur porteur projet acquéreur',
+    'diagnostic avant achat agence toulouse',
     'partenaire agent immobilier structure',
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/partenaires/agences-immobilieres' },
   openGraph: {
     title: "Agences Immobilières · Expertise Vente Toulouse · IPB",
-    description: "Vente bloquée par une fissure ? Notre rapport sous 3 à 5 jours ouvrés débloque la transaction. Décennale 10 ans sur les travaux.",
+    description: "Vente bloquée par une fissure ou un doute sur le bâti ? Notre rapport indépendant sous 3 à 5 jours ouvrés débloque la transaction.",
     url: 'https://www.ipb-expertise.fr/partenaires/agences-immobilieres',
     type: 'website',
   },
@@ -79,8 +79,8 @@ export default function AgencesImmobilieresPage() {
                 },
                 {
                   icon: <Home className="text-amber-600" size={28} />,
-                  title: 'Mur porteur à ouvrir',
-                  desc: 'L\'acquéreur veut acheter mais conditionne son achat à la possibilité d\'ouvrir un mur. Nous validons techniquement + chiffrons.',
+                  title: 'Doute sur le bâti',
+                  desc: 'L\'acquéreur hésite sur l\'état du bien — fissures, humidité, structure. Notre diagnostic indépendant lève le doute et débloque la décision.',
                 },
                 {
                   icon: <Shield className="text-blue-600" size={28} />,

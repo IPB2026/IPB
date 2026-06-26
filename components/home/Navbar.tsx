@@ -48,14 +48,8 @@ export function Navbar() {
   }> = [
     { href: '/expertise/fissures', label: 'Fissures' },
     { href: '/expertise/humidite', label: 'Humidité' },
-    { href: '/expertise/mur-porteur', label: 'Mur porteur' },
-    {
-      href: '/calcul-prix-mur-porteur',
-      label: 'Faisabilité mur porteur',
-      mobileLabel: 'Faisabilité mur porteur',
-      subtitle: 'Étude de faisabilité · 2 min',
-      highlight: true,
-    },
+    { href: '/expertise-avant-achat-immobilier-toulouse', label: 'Avant achat' },
+    { href: '/diagnostic-avant-vente', label: 'Avant vente' },
     { href: '/notre-expert', label: "L'institut" },
     { href: '/partenaires', label: 'Pros' },
     { href: '/blog', label: 'Blog' },

@@ -113,10 +113,10 @@ export function Hero() {
                     <span className="text-ipb-orange-l text-sm transition-transform group-hover:translate-x-1">→</span>
                   </Link>
                   <Link
-                    href="/expertise/mur-porteur"
+                    href="/expertise-avant-achat-immobilier-toulouse"
                     className="group flex items-center justify-between text-white border-b border-white/15 pb-2.5 hover:border-ipb-orange-l transition-colors"
                   >
-                    <span className="font-serif text-base">Faisabilité mur porteur</span>
+                    <span className="font-serif text-base">Expertise avant achat</span>
                     <span className="text-ipb-orange-l text-sm transition-transform group-hover:translate-x-1">→</span>
                   </Link>
                 </div>
@@ -192,10 +192,10 @@ export function Hero() {
                   <span className="text-ipb-orange-l text-sm transition-transform group-hover:translate-x-1">→</span>
                 </Link>
                 <Link
-                  href="/expertise/mur-porteur"
+                  href="/expertise-avant-achat-immobilier-toulouse"
                   className="group flex items-center justify-between text-white border-b border-white/10 pb-3 hover:border-ipb-orange-l transition-colors"
                 >
-                  <span className="font-serif text-lg">Faisabilité mur porteur</span>
+                  <span className="font-serif text-lg">Expertise avant achat</span>
                   <span className="text-ipb-orange-l text-sm transition-transform group-hover:translate-x-1">→</span>
                 </Link>
               </div>

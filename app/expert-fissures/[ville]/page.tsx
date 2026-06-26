@@ -13,7 +13,6 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { villesData, villeSlugs, type VilleInfo } from '@/app/data/villes';
 import { isVillePrioritaire } from '@/app/data/villes-prioritaires';
-import { getVilleMurPorteurFallback } from '@/app/data/villes-mur-porteur';
 import { VilleBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 import { generateLocalFAQ, buildFAQPageJsonLd, IPB_AGGREGATE_RATING } from '@/lib/seo/localFAQ';
 
@@ -122,8 +121,6 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
     typesConstruction: villeData.typesConstruction,
   });
   const faqPageJsonLd = buildFAQPageJsonLd(localFAQ);
-
-  const villeMurPorteur = getVilleMurPorteurFallback(ville);
 
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
@@ -437,7 +434,7 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
           <div className="max-w-ipb mx-auto px-6 lg:px-12 grid md:grid-cols-3 gap-6">
             {[
               { href: '/expertise/fissures', titre: 'Notre méthode', desc: 'Diagnostic instrumenté, agrafage, reprise en sous-œuvre.' },
-              { href: `/expert-mur-porteur/${villeMurPorteur}`, titre: 'Ouverture de mur porteur', desc: 'Étude de structure et travaux par notre institut.' },
+              { href: '/expertise-avant-achat-immobilier-toulouse', titre: 'Expertise avant achat', desc: 'Un diagnostic indépendant du bâti avant de signer.' },
               { href: '/blog/agrafage-vs-micropieux-choix', titre: 'Agrafage ou micropieux ?', desc: 'Notre guide pour choisir la bonne solution structurelle.' },
             ].map((card) => (
               <Link

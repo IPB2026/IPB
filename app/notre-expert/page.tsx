@@ -14,7 +14,7 @@ import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
   title: "L'institut IPB · Pathologie & structure du bâtiment · Occitanie",
-  description: "IPB est un institut indépendant de coordination en pathologie et structure du bâtiment. Diagnostic et travaux exécutés sous décennale par les équipes du réseau IPB. Un seul interlocuteur, du diagnostic à la livraison. ☎ 05 82 95 33 75",
+  description: "IPB est un institut indépendant de diagnostic en pathologie du bâtiment : fissures, humidité, expertise avant achat et avant vente. Un rapport clair, en toute indépendance. ☎ 05 82 95 33 75",
   keywords: ['institut pathologie bâtiment toulouse', 'expert fissures toulouse', 'expertise structure toulouse', "expertise bâtiment Haute-Garonne"],
   alternates: { canonical: 'https://www.ipb-expertise.fr/notre-expert' },
   openGraph: {
@@ -99,7 +99,7 @@ export default function NotreInstitutPage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-6">
-                  IPB est un institut indépendant de coordination, spécialisé dans la pathologie et la structure du bâtiment. Basé à Toulouse, il intervient en Occitanie. Son champ d'action : fissures, humidité, expertise structurelle avant achat, ouverture de murs porteurs — tout ce qui touche à la solidité d'un bâti et à la lecture de ses désordres.
+                  IPB est un institut indépendant de diagnostic, spécialisé dans la pathologie et la structure du bâtiment. Basé à Toulouse, il intervient en Occitanie. Son champ d'action : fissures, humidité, diagnostic du bâti avant achat et avant vente — tout ce qui touche à la solidité d'un bâti et à la lecture de ses désordres.
                 </p>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-6">
                   L'institut qualifie le besoin, oriente le dossier, et coordonne sa conduite jusqu'à la livraison. Le diagnostic technique et les travaux sont confiés à des artisans structure intégrés au réseau IPB — formés à notre protocole, titulaires de leur propre décennale. Du premier appel à la dernière finition, vous n'avez qu'un seul interlocuteur, et une seule responsabilité de coordination en face de vous.

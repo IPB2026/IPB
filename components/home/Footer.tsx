@@ -24,7 +24,7 @@ export function Footer() {
             </Link>
 
             <p className="text-[14px] leading-[1.85] font-light text-white/75 max-w-[420px] mb-8">
-              Institut indépendant de diagnostic en pathologie du bâtiment&nbsp;: fissures, humidité, expertise avant achat, faisabilité de mur porteur. Un seul interlocuteur, du premier signe au rapport.
+              Institut indépendant de diagnostic en pathologie du bâtiment&nbsp;: fissures, humidité, expertise avant achat, diagnostic avant vente. Un seul interlocuteur, du premier signe au rapport.
             </p>
 
             <div className="space-y-5 mb-6">
@@ -50,12 +50,9 @@ export function Footer() {
                 ['/expertise/humidite', 'Humidité'],
                 ['/expertise-avant-achat-immobilier-toulouse', 'Expertise avant achat'],
                 ['/diagnostic-avant-vente', 'Diagnostic avant vente'],
-                ['/expertise/mur-porteur', 'Mur porteur'],
-                ['/calcul-prix-mur-porteur', 'Faisabilité mur porteur'],
                 // Pages locales prioritaires — maillage interne site-wide (audit SEO 06/2026)
                 ['/expert-fissures-toulouse-31', 'Expert fissures Toulouse'],
                 ['/expert-humidite-toulouse-31', 'Expert humidité Toulouse'],
-                ['/bureau-etude-structure-toulouse', "Bureau d'études structure"],
               ].map(([href, label]) => (
                 <li key={href}>
                   <Link href={href} className="text-white/75 hover:text-white transition-colors">

@@ -42,7 +42,8 @@ const sections: Section[] = [
     links: [
       { href: '/expertise/fissures', label: 'Expertise fissures & agrafage' },
       { href: '/expertise/humidite', label: "Traitement de l'humidité" },
-      { href: '/expertise/mur-porteur', label: 'Ouverture de mur porteur' },
+      { href: '/expertise-avant-achat-immobilier-toulouse', label: 'Expertise avant achat' },
+      { href: '/diagnostic-avant-vente', label: 'Diagnostic avant vente' },
     ],
   },
   {
@@ -145,15 +146,6 @@ const sections: Section[] = [
       },
       { href: '/blog/fondations-maison-ancienne-renforcement', label: 'Renforcement fondations' },
       { href: '/blog/assurance-fissures-maison-indemnisation', label: 'Assurance fissures' },
-    ],
-  },
-  {
-    eyebrow: '11',
-    titre: 'Blog — Mur porteur',
-    links: [
-      { href: '/blog/prix-ouverture-mur-porteur-toulouse-2026', label: 'Prix ouverture mur porteur' },
-      { href: '/blog/comment-savoir-si-mur-porteur', label: 'Reconnaître un mur porteur' },
-      { href: '/blog/etude-de-cas-mur-porteur-4m-t3-toulouse', label: 'Étude de cas : T3 Toulouse' },
     ],
   },
   {

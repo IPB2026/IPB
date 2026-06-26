@@ -35,6 +35,21 @@ const nextConfig = {
   
   async redirects() {
     return [
+      // ── Service « mur porteur » arrêté (2026-06-26) — sunset SEO-safe :
+      //    301 vers l'accueil (aucun service équivalent côté diagnostic),
+      //    dé-promotion des liens internes + retrait du sitemap en parallèle.
+      { source: '/expertise/mur-porteur', destination: '/', permanent: true },
+      { source: '/calcul-prix-mur-porteur', destination: '/', permanent: true },
+      { source: '/lp/ouverture-mur-porteur-toulouse', destination: '/', permanent: true },
+      { source: '/bureau-etude-structure-toulouse', destination: '/', permanent: true },
+      { source: '/expert-mur-porteur/:ville', destination: '/', permanent: true },
+      // Pages partenaires bâties sur la structure/co-traitance (mur porteur arrêté) → hub.
+      { source: '/partenaires/marchands-de-biens', destination: '/partenaires', permanent: true },
+      { source: '/partenaires/architectes-interieur', destination: '/partenaires', permanent: true },
+      // Articles blog « mur porteur » (service arrêté) → contenu diagnostic conservé.
+      { source: '/blog/prix-ouverture-mur-porteur-toulouse-2026', destination: '/expertise/fissures', permanent: true },
+      { source: '/blog/comment-savoir-si-mur-porteur', destination: '/expertise/fissures', permanent: true },
+      { source: '/blog/etude-de-cas-mur-porteur-4m-t3-toulouse', destination: '/expertise/fissures', permanent: true },
       {
         source: '/expert-fissures/toulouse',
         destination: '/expert-fissures-toulouse-31',

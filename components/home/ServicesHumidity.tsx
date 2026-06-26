@@ -80,8 +80,8 @@ export function ServicesHumidity() {
               <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-7 py-3 rounded-full transition-colors text-sm">
                 Décrire mon projet <ArrowRight size={16} />
               </Link>
-              <Link href="/expertise/mur-porteur" className="inline-flex items-center gap-2 border-2 border-slate-200 hover:border-slate-300 text-slate-700 font-bold px-7 py-3 rounded-full transition-colors text-sm">
-                Voir les prix & le processus <ArrowRight size={16} />
+              <Link href="/expertise/fissures" className="inline-flex items-center gap-2 border-2 border-slate-200 hover:border-slate-300 text-slate-700 font-bold px-7 py-3 rounded-full transition-colors text-sm">
+                Voir le diagnostic des fissures <ArrowRight size={16} />
               </Link>
             </div>
           </div>

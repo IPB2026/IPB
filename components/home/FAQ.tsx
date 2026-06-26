@@ -12,7 +12,6 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
  *  - "prix maison fissurée" (46 imp) → Q2
  *  - "expert fissure tarn et garonne" (276 imp) → Q1
  *  - "expertise fissure haute garonne" (153 imp) → Q1
- *  - "ouverture mur porteur toulouse" (terrain à conquérir) → Q5 + Q6
  *  - thème assurance fissures (récurrent) → Q4
  *
  * Cf. PLAN_REFONTE_V2.md vague E
@@ -35,16 +34,8 @@ const faqs = [
     a: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables — solution adaptée à 90 % des fissures structurelles. Les micropieux reprennent les fondations en profondeur — intervention lourde réservée aux tassements actifs majeurs (au-delà de 10 cm). À titre indicatif, comptez 12 000 à 18 000 € pour un agrafage, 40 000 à 60 000 € pour des micropieux. Le rôle d'IPB est de diagnostiquer la cause et de vous dire laquelle s'impose vraiment — en toute indépendance. Pour la réalisation, l'institut vous oriente ensuite vers des entreprises membres du réseau IPB.",
   },
   {
-    q: "Faut-il déclarer une ouverture de mur porteur en mairie ?",
-    a: "Pour une ouverture intérieure, une déclaration préalable suffit dans la majorité des communes. Pour une création de baie vitrée modifiant la façade, un permis de construire est généralement requis. En copropriété, un vote en assemblée générale est obligatoire. L'institut coordonne avec un bureau d'études structure partenaire qui produit le dossier technique pour chacune de ces démarches.",
-  },
-  {
-    q: "Combien de temps pour ouvrir un mur porteur dans un appartement ?",
-    a: "L'intervention sur site dure 2 à 5 jours. La phase préparatoire (étude technique, démarches administratives, vote en AG si copropriété, commande de la poutre) prend 4 à 8 semaines en amont. Le calendrier complet est fixé avec vous avant le démarrage du chantier.",
-  },
-  {
     q: "Pourquoi choisir un institut spécialisé en pathologie du bâtiment ?",
-    a: "Sur un mur porteur ou une fissure structurelle, tout se joue sur la justesse du diagnostic et l'indépendance de l'analyse : un institut qui ne vend pas les travaux n'a aucun intérêt à dramatiser le problème, ni à le minimiser. Un expert du réseau IPB diagnostique la cause, fait appel à un bureau d'études quand un calcul s'impose, et vous remet des préconisations claires. Si des travaux sont nécessaires, l'institut vous oriente vers des entreprises membres du réseau IPB — vous gardez la main sur vos choix.",
+    a: "Sur une fissure ou un désordre structurel, tout se joue sur la justesse du diagnostic et l'indépendance de l'analyse : un institut qui ne vend pas les travaux n'a aucun intérêt à dramatiser le problème, ni à le minimiser. Un expert du réseau IPB diagnostique la cause, fait appel à un bureau d'études quand un calcul s'impose, et vous remet des préconisations claires. Si des travaux sont nécessaires, l'institut vous oriente vers des entreprises membres du réseau IPB — vous gardez la main sur vos choix.",
   },
   {
     q: "Quel document recevez-vous à l'issue du diagnostic ?",

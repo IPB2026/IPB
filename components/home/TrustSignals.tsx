@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { FileCheck, Hammer, Phone, Shield, Users } from 'lucide-react';
+import { FileCheck, Phone, Shield, Users } from 'lucide-react';
 
 export function TrustSignals() {
   return (
@@ -15,13 +15,13 @@ export function TrustSignals() {
 
           <div className="text-center md:text-left">
             <p className="text-orange-300 text-xs font-bold uppercase tracking-[0.2em] mb-2">
-              Garantie décennale 10 ans · Un seul interlocuteur
+              Diagnostic indépendant · Un seul interlocuteur
             </p>
             <h2 className="text-white font-bold text-2xl md:text-3xl mb-2 font-display tracking-tight">
-              Si ça bouge, on revient. Gratuitement.
+              On vous dit la vérité sur votre bâti.
             </h2>
             <p className="text-white/75 text-base leading-relaxed max-w-2xl">
-              L'institut tient le dossier, du premier regard à la dernière finition. Diagnostic et travaux sont exécutés par les équipes du réseau IPB sous garantie décennale 10 ans. <strong className="text-white">Attestations remises avec le devis.</strong>
+              L'institut tient le dossier, du premier regard au rapport. On diagnostique en toute indépendance ; si des travaux sont nécessaires, on vous oriente vers des entreprises membres du réseau IPB. <strong className="text-white">Rapport clair, remis sous 3 à 5 jours.</strong>
             </p>
           </div>
 
@@ -55,17 +55,17 @@ export function TrustSignals() {
             </p>
           </div>
 
-          {/* Étude + travaux — clair */}
+          {/* Diagnostic indépendant — clair */}
           <div className="p-8 md:p-10 md:border-r md:border-ipb-rule bg-ipb-cream/50">
             <div className="w-14 h-14 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 mb-6">
-              <Hammer size={28} />
+              <FileCheck size={28} />
             </div>
-            <p className="text-amber-700 text-xs font-bold uppercase tracking-wider mb-2">Coordination complète</p>
+            <p className="text-amber-700 text-xs font-bold uppercase tracking-wider mb-2">Un dossier clair</p>
             <h3 className="font-display font-bold text-2xl text-ipb-text mb-3 leading-tight">
-              Du premier coup d'œil<br />aux dernières finitions.
+              Du premier coup d'œil<br />au rapport qui décide.
             </h3>
             <p className="text-ipb-muted leading-relaxed">
-              L'institut tient le dossier de bout en bout. Diagnostic, étude, exécution — un même protocole, conduit par les équipes du réseau IPB sous décennale. Pas de relais entre étude et chantier, pas de zone grise.
+              L'institut tient le dossier de bout en bout : observation, mesures, analyse, rapport. Un même protocole, en toute indépendance. Si des travaux s'imposent, on vous oriente vers des entreprises membres du réseau IPB.
             </p>
           </div>
 
@@ -73,8 +73,8 @@ export function TrustSignals() {
           <div className="p-8 md:p-10 relative">
             <div className="aspect-[4/5] rounded-2xl overflow-hidden mb-5 shadow-lg ring-1 ring-ipb-rule">
               <Image
-                src="/images/chantier-ouverture-mur-porteur.webp"
-                alt="Chantier du réseau IPB en cours — étaiement et pose de poutre sur ouverture de mur porteur en Occitanie"
+                src="/images/fissures-avant-apres.webp"
+                alt="Diagnostic de fissures sur site — relevé et mesures par un expert du réseau IPB en Occitanie"
                 width={400}
                 height={500}
                 className="w-full h-full object-cover"
@@ -86,7 +86,7 @@ export function TrustSignals() {
               L'institut, votre interlocuteur.
             </h3>
             <p className="text-ipb-muted leading-relaxed text-sm">
-              Réseau IPB actif depuis 2019, plus de 850 chantiers menés en Occitanie. Côté institut, un seul visage du diagnostic à la livraison — votre dossier ne change pas de mains.
+              Réseau IPB actif depuis 2019, plus de 850 chantiers menés en Occitanie. Côté institut, un seul visage, du premier signe au rapport — votre dossier ne change pas de mains.
             </p>
           </div>
         </div>

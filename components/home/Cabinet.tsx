@@ -25,8 +25,8 @@ export function Cabinet() {
             <div className="relative">
               <div className="aspect-[4/5] rounded-[6px] overflow-hidden bg-ipb-stone">
                 <Image
-                  src="/images/chantier-ouverture-mur-porteur.webp"
-                  alt="Étude de structure sur site — étaiement et pose de poutre, diagnostic en Haute-Garonne"
+                  src="/images/fissure-facade-verticale.webp"
+                  alt="Diagnostic de structure sur site — relevé d'une fissure de façade en Haute-Garonne"
                   width={640}
                   height={800}
                   className="w-full h-full object-cover"
@@ -68,7 +68,7 @@ export function Cabinet() {
             <RevealOnScroll delay={0.06}>
               <div className="space-y-5 text-[15px] leading-[1.9] font-light text-ipb-muted mb-12">
                 <p>
-                  IPB est un institut indépendant de diagnostic, spécialisé dans la pathologie et la structure du bâtiment. Basé à Toulouse, il intervient en Occitanie. Son champ d'action : fissures, humidité, diagnostic du bâti avant achat, faisabilité de mur porteur — tout ce qui touche à la solidité d'un bâti et à la lecture de ses désordres.
+                  IPB est un institut indépendant de diagnostic, spécialisé dans la pathologie et la structure du bâtiment. Basé à Toulouse, il intervient en Occitanie. Son champ d'action : fissures, humidité, diagnostic du bâti avant achat et avant vente — tout ce qui touche à la solidité d'un bâti et à la lecture de ses désordres.
                 </p>
                 <p>
                   L'institut diagnostique, analyse et vous remet des préconisations claires — en toute indépendance, sans lien commercial avec qui réalisera d'éventuels travaux. C'est ce qui rend son avis crédible. Si des travaux s'imposent, il vous oriente vers des entreprises membres du réseau IPB et reste votre référent technique. Vous gardez la main sur vos choix.

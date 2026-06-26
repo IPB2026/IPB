@@ -11,14 +11,14 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
  * catastrophique, les trois photos ne correspondent pas du tout au cas
  * présentés, d'ailleurs les deux premières concernent la même maison."
  *
- * Correction : 2 cas FISSURES + 1 cas MUR PORTEUR (équilibre demandé,
- * fissures > mur porteur car priorité SEO historique GSC : 1321 imp
- * sur top 7 requêtes fissures vs 0 imp pour mur porteur).
+ * Composition : 2 cas FISSURES + 1 cas HUMIDITÉ (service mur porteur
+ * arrêté en 2026 — l'ancien cas mur porteur a été remplacé par un cas
+ * humidité, cohérent avec l'ADN diagnostic indépendant).
  *
- * Photos réaffectées en cohérence stricte avec le sujet de chaque cas :
+ * Photos en cohérence avec le sujet de chaque cas :
  *  - fissures-avant-apres.webp → cas Tournefeuille
  *  - fissure-coin-maison.webp → cas Castanet
- *  - baie-coulissante-apres.webp → cas Saint-Cyprien
+ *  - humidite-avant-apres.webp → cas Toulouse (humidité)
  */
 const cases = [
   {
@@ -52,19 +52,19 @@ const cases = [
     constat: "Suivi du déplacement sur deux cycles été/hiver : aucune évolution constatée.",
   },
   {
-    type: 'Mur porteur',
-    image: '/images/baie-coulissante-apres.webp',
-    imageAlt: "Baie vitrée coulissante installée après ouverture de mur porteur — chantier du réseau IPB à Saint-Cyprien",
-    title: 'Cuisine ouverte sur séjour',
+    type: 'Humidité',
+    image: '/images/humidite-avant-apres.webp',
+    imageAlt: "Avant et après traitement d'humidité sur mur intérieur — dossier de diagnostic du réseau IPB à Toulouse",
+    title: 'Remontées capillaires en rez-de-chaussée',
     location: 'Toulouse, Saint-Cyprien',
-    surface: 'T3 · 60 m² · 1er étage',
-    duree: '5 jours',
+    surface: 'Maison T3 · 70 m²',
+    duree: 'Rapport 4 j',
     facts: [
-      "Ouverture de 4,2 m sur mur porteur en briques foraines",
-      "Pose d'une poutre HEB 220 dimensionnée par le bureau d'études",
-      "Étaiement provisoire, finitions enduit complet",
+      "Salpêtre et enduit cloqué sur 1,20 m en pied de murs",
+      "Diagnostic à l'humidimètre : remontées capillaires confirmées",
+      "Préconisation : injection de résine + assainissement de l'enduit",
     ],
-    constat: "Le bien a été remis en vente trois semaines après le chantier.",
+    constat: "Le rapport a ciblé le traitement utile et écarté une réfection inutile de la façade.",
   },
 ];
 

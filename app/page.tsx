@@ -16,8 +16,8 @@ import { Footer } from '@/components/home/Footer';
 import Script from 'next/script';
 import type { Metadata } from 'next';
 
-// 5 portes d'entrée — refonte positionnement v6.
-// Fissures / Humidité / Achat immobilier / Mur porteur / Vente immobilière.
+// 4 portes d'entrée — refonte positionnement v6.
+// Fissures / Humidité / Achat immobilier / Vente immobilière.
 const homePersonas: PersonaCard[] = [
   {
     label: 'Fissures',
@@ -39,13 +39,6 @@ const homePersonas: PersonaCard[] = [
     desc: "Avant de signer, un diagnostic indépendant du bâti, sans lien avec le vendeur ni l'agence. Rapport remis dans vos délais de rétractation.",
     href: '/expertise-avant-achat-immobilier-toulouse',
     cta: 'Faire expertiser le bien',
-  },
-  {
-    label: 'Mur porteur',
-    titre: 'Vous voulez ouvrir un mur porteur',
-    desc: "Cuisine ouverte, baie vitrée. On réalise l'étude de faisabilité et le diagnostic de structure : on vous dit si c'est possible, et à quelles conditions.",
-    href: '/expertise/mur-porteur',
-    cta: 'Étudier mon projet',
   },
   {
     label: 'Vente immobilière',
@@ -77,7 +70,7 @@ const organizationSchema = {
     "caption": "IPB - Institut de Pathologie du Bâtiment"
   },
   "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
-  "description": "Institut indépendant de diagnostic en pathologie du bâtiment en Occitanie (31, 82, 32, 81) : diagnostic de fissures, expertise humidité, expertise avant achat et faisabilité de mur porteur. IPB diagnostique et conseille en toute indépendance ; si des travaux sont nécessaires, oriente vers des entreprises membres du réseau IPB.",
+  "description": "Institut indépendant de diagnostic en pathologie du bâtiment en Occitanie (31, 82, 32, 81) : diagnostic de fissures, expertise humidité, expertise avant achat et diagnostic avant vente. IPB diagnostique et conseille en toute indépendance ; si des travaux sont nécessaires, oriente vers des entreprises membres du réseau IPB.",
   // foundingDate = date d'immatriculation de l'EI IPB (SIRET 908 995 103, 2022).
   // Le « réseau IPB » est actif depuis 2019 mais Schema.org Organization
   // doit refléter l'entité juridique, pas le récit marketing.
@@ -111,9 +104,9 @@ export const metadata: Metadata = {
     'expertise fissures Haute-Garonne',
     'expert fissure maison Toulouse',
     'agrafage fissures',
-    'ouverture mur porteur Toulouse',
     'expertise humidité Toulouse',
     'expertise avant achat immobilier Toulouse',
+    'diagnostic avant vente maison Toulouse',
     'institut pathologie du bâtiment',
     'expertise structure bâtiment Toulouse',
     'expert bâtiment Toulouse',
@@ -199,7 +192,7 @@ export default function HomePage() {
       <PersonaCards
         eyebrow="Selon votre situation"
         title={<>Dans quel cas <em>vous reconnaissez-vous&nbsp;?</em></>}
-        intro="Cinq situations possibles, une même rigueur d'analyse. Chacune mène à la page la plus utile pour vous."
+        intro="Quatre situations possibles, une même rigueur d'analyse. Chacune mène à la page la plus utile pour vous."
         background="white"
         personas={homePersonas}
       />
@@ -207,24 +200,24 @@ export default function HomePage() {
       {/* 3. Liste architecturale 4 services (fissures en 1er) */}
       <ServiceList />
 
-      {/* 4. Bandeau calculateur mur porteur — capture lead chaud niche */}
+      {/* 4. Bandeau CTA diagnostic — capture lead */}
       <section className="bg-ipb-navy text-white py-14 md:py-20">
         <div className="max-w-4xl mx-auto px-5 sm:px-6 text-center">
           <p className="text-ipb-orange-l text-[11px] uppercase tracking-[0.18em] font-medium mb-4">
-            Étude de faisabilité
+            Diagnostic en 2 minutes
           </p>
           <h2 className="text-white font-serif mb-5" style={{ fontSize: 'clamp(22px, 2.6vw, 36px)', lineHeight: 1.2, letterSpacing: '-0.022em', fontWeight: 700 }}>
-            Un projet de mur porteur ?{' '}
-            <em className="text-ipb-orange-l block sm:inline mt-1 sm:mt-0 not-italic sm:italic">Vérifiez d'abord la faisabilité.</em>
+            Un doute sur votre bâti ?{' '}
+            <em className="text-ipb-orange-l block sm:inline mt-1 sm:mt-0 not-italic sm:italic">Obtenez un premier avis en 2 minutes.</em>
           </h2>
           <p className="text-white/75 text-[14px] md:text-[15px] leading-[1.8] mb-8 max-w-xl mx-auto">
-            En 2 minutes, situez votre projet et recevez les points de vigilance à faire diagnostiquer avant tout chantier. Une étude indépendante, basée sur des cas réels en Occitanie.
+            Décrivez votre situation — fissures, humidité, doute avant un achat ou une vente. On vous dit s'il faut une visite, et sous quel délai. Gratuit, sans engagement.
           </p>
           <a
-            href="/calcul-prix-mur-porteur?utm_source=site&utm_medium=home_banner&utm_campaign=mur_porteur"
+            href="/diagnostic?utm_source=site&utm_medium=home_banner&utm_campaign=diagnostic"
             className="inline-flex items-center justify-center gap-2 bg-ipb-orange-d text-white font-bold px-7 md:px-8 py-4 rounded-[3px] text-[13px] md:text-[14px] tracking-[0.03em] hover:bg-[#7E390F] transition-colors min-h-[48px]"
           >
-            Vérifier mon projet
+            Lancer mon diagnostic
           </a>
         </div>
       </section>

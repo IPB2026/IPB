@@ -31,7 +31,7 @@ interface BlogPostDisplay {
 
 const visibleFilters: Array<{ key: DisplayCategory; label: string }> = [
   { key: 'fissures', label: 'Fissures' },
-  { key: 'mur-porteur', label: 'Mur porteur' },
+  { key: 'humidite', label: 'Humidité' },
   { key: 'expertise', label: 'Expertise' },
   { key: 'conseils', label: 'Conseils' },
 ];

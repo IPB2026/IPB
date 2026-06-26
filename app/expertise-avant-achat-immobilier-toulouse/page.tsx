@@ -396,7 +396,7 @@ export default function ExpertiseAvantAchatPage() {
                     Contexte
                   </h3>
                   <p>
-                    Compromis signé sous condition suspensive d'expertise structurelle. Bien : T3 de 65 m² au troisième étage d'un immeuble en pierre de 1965. Acheteur ayant remarqué une fissure verticale traversante de 4 mm en façade arrière, doublée d'une fissure intérieure correspondante dans le séjour. Délai de 18 jours avant l'échéance de la condition suspensive.
+                    Compromis signé sous condition suspensive de diagnostic du bâti. Bien : T3 de 65 m² au troisième étage d'un immeuble en pierre de 1965. Acheteur ayant remarqué une fissure verticale traversante de 4 mm en façade arrière, doublée d'une fissure intérieure correspondante dans le séjour. Délai de 18 jours avant l'échéance de la condition suspensive.
                   </p>
                 </div>
 

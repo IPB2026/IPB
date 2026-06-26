@@ -7,8 +7,7 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
  *
  * Familles (HOME-IPB-CONTENU-FINAL §6) :
  *  - Diagnostic de pathologies : 01 fissures, 02 humidité
- *  - Expertise : 03 avant achat
- *  - Étude de structure : 04 mur porteur (faisabilité / diagnostic)
+ *  - Expertise : 03 avant achat, 04 avant vente
  *
  * Cf. IPB_Design_Handoff.md §5.5
  */
@@ -36,10 +35,10 @@ const services = [
   },
   {
     num: '04',
-    family: 'Étude de structure',
-    title: 'Ouverture de mur porteur et baie vitrée',
-    desc: "On réalise l'étude de faisabilité et le diagnostic de structure : on vous dit si l'ouverture est possible, et à quelles conditions. Pour la réalisation, on vous oriente vers des entreprises membres du réseau IPB. Nous vous éclairons aussi sur vos démarches administratives.",
-    href: '/expertise/mur-porteur',
+    family: 'Expertise',
+    title: 'Diagnostic avant vente immobilière',
+    desc: "Vous vendez ? Un diagnostic indépendant du bâti avant la mise en vente rassure vos acheteurs, objective les doutes et sécurise votre prix. Vous abordez la transaction avec un dossier clair.",
+    href: '/diagnostic-avant-vente',
   },
 ];
 
@@ -66,7 +65,7 @@ export function ServiceList() {
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
               <p className="text-[15px] leading-[1.9] font-light text-ipb-muted">
-                Fissures, humidité, avant-achat, faisabilité de mur porteur&nbsp;: on identifie la cause et on vous remet des préconisations claires, en toute indépendance — en Occitanie.
+                Fissures, humidité, avant achat, avant vente&nbsp;: on identifie la cause et on vous remet des préconisations claires, en toute indépendance — en Occitanie.
               </p>
             </div>
           </div>
