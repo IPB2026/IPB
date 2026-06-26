@@ -5,14 +5,6 @@ import { isVillePrioritaire } from '@/app/data/villes-prioritaires';
 import { problemPages } from '@/app/data/problems';
 import { quartierSlugs } from '@/app/data/quartiers';
 
-// Articles blog « mur porteur » — service arrêté (2026-06), redirigés 301
-// vers /expertise/fissures. Exclus du sitemap et de l'index blog.
-const SUNSET_BLOG_SLUGS = [
-  'prix-ouverture-mur-porteur-toulouse-2026',
-  'comment-savoir-si-mur-porteur',
-  'etude-de-cas-mur-porteur-4m-t3-toulouse',
-];
-
 // ═══════════════════════════════════════════════════════════════
 // SITEMAP SEO OPTIMISÉ - IPB EXPERTISE
 // ═══════════════════════════════════════════════════════════════
@@ -372,16 +364,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // ════════════════════════════════════════════════════════════
   // ARTICLES DE BLOG
-  // Articles « mur porteur » exclus (service arrêté, redirigés 301).
   // ════════════════════════════════════════════════════════════
-  const blogPages: MetadataRoute.Sitemap = blogPostsList
-    .filter((post) => !SUNSET_BLOG_SLUGS.includes(post.slug))
-    .map((post) => ({
-      url: `${baseUrl}/blog/${post.slug}`,
-      lastModified: new Date(post.dateModified || post.date),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    }));
+  const blogPages: MetadataRoute.Sitemap = blogPostsList.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.dateModified || post.date),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
 
   // ════════════════════════════════════════════════════════════
   // ⚠️ SECTIONS RETIRÉES — résolution cannibalisation SEO (levier #1)

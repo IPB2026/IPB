@@ -2,13 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Phone, ArrowRight, X, Clock, Shield, Star, MessageCircle } from "lucide-react";
+import { Phone, ArrowRight } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 export function StickyDiagnosticCta() {
   const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(true);
   const [hasScrolled, setHasScrolled] = useState(false);
 
   const isHiddenPage = pathname?.startsWith("/diagnostic") || pathname?.startsWith("/legal");
@@ -115,116 +114,6 @@ export function StickyDiagnosticCta() {
         </div>
       </div>
 
-      {/* Version Desktop : désactivée pour éviter la superposition avec
-          components/ui/LeadWidget (bottom-right z-40). Le LeadWidget récent
-          assure la capture progressive 3 étapes sur desktop, plus aligné
-          avec la charte éditoriale IPB. Le bloc ci-dessous reste désactivé
-          sur desktop (lg:hidden), à supprimer dans une refonte ultérieure. */}
-      <div className={`hidden fixed right-6 bottom-6 z-40 transform transition-all duration-500 ${
-        isVisible ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
-      }`}>
-        {isExpanded ? (
-          <div className="bg-white rounded-3xl shadow-2xl shadow-orange-500/20 border border-slate-200 overflow-hidden w-80 animate-in slide-in-from-right-4 duration-500">
-            {/* Header avec effet pulsant */}
-            <div className="relative bg-gradient-to-r from-orange-600 to-red-500 p-4 text-white">
-              <div className="absolute top-2 right-2">
-                <button 
-                  onClick={() => setIsExpanded(false)}
-                  className="text-white/70 hover:text-white p-1 rounded-full hover:bg-white/10 transition"
-                  aria-label="Réduire"
-                >
-                  <X size={16} />
-                </button>
-              </div>
-              
-              {/* Badge pulsant */}
-              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-3 py-1 rounded-full text-xs font-bold mb-2">
-                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                Expert disponible
-              </div>
-              
-              <h3 className="text-lg font-extrabold">
-                {isFissuresPage
-                  ? "Fissures sur votre maison ?"
-                  : isHumiditePage
-                  ? "Problème d'humidité ?"
-                  : "Besoin d'un diagnostic ?"}
-              </h3>
-              <p className="text-orange-100 text-sm mt-1">
-                Réponse personnalisée sous 24h
-              </p>
-            </div>
-
-            {/* Corps */}
-            <div className="p-4">
-              {/* Stats de confiance */}
-              <div className="flex items-center justify-between text-xs text-slate-500 mb-4 pb-4 border-b border-slate-100">
-                <span className="flex items-center gap-1">
-                  <Star size={14} className="text-yellow-500 fill-yellow-500" />
-                  <strong className="text-slate-700">4.9/5</strong> · Avis Google
-                </span>
-                <span className="flex items-center gap-1">
-                  <Shield size={14} className="text-green-500" />
-                  Décennales métier
-                </span>
-              </div>
-
-              {/* CTA Principal — hover via shadow/brightness, pas de scale
-                  pour éviter le layout shift et l'effet "tremblant" perçu. */}
-              <Link
-                href="/diagnostic"
-                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 transition-shadow duration-200 mb-3"
-              >
-                Demander un diagnostic
-                <ArrowRight size={18} />
-              </Link>
-
-              {/* CTAs Secondaires - Téléphone & WhatsApp */}
-              <div className="grid grid-cols-2 gap-2 mb-3">
-                <a
-                  href="tel:0582953375"
-                  className="flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2.5 rounded-xl transition-all text-sm"
-                >
-                  <Phone size={16} />
-                  Appeler
-                </a>
-                <a
-                  href="https://wa.me/33582953375?text=Bonjour%2C%20je%20souhaite%20un%20diagnostic%20pour%20ma%20maison."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2.5 rounded-xl transition-all text-sm"
-                >
-                  <MessageCircle size={16} />
-                  WhatsApp
-                </a>
-              </div>
-
-              {/* Micro-réassurance */}
-              <p className="text-center text-slate-400 text-xs">
-                ✓ Devis gratuit · ✓ Réponse 24h
-              </p>
-            </div>
-          </div>
-        ) : (
-          /* Version réduite - Bouton flottant */
-          <button
-            onClick={() => setIsExpanded(true)}
-            aria-label="Ouvrir le diagnostic gratuit"
-            className="group cursor-pointer relative bg-gradient-to-r from-orange-500 to-red-500 text-white p-4 rounded-2xl shadow-2xl shadow-orange-500/40 hover:shadow-orange-500/60 transition-shadow duration-200"
-          >
-            {/* Badge notification */}
-            <span className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full animate-pulse border-2 border-white"></span>
-            
-            <div className="flex items-center gap-3">
-              <div className="text-2xl">🔍</div>
-              <div className="text-left">
-                <div className="font-bold text-sm">Diagnostic</div>
-                <div className="text-orange-200 text-xs">Gratuit</div>
-              </div>
-            </div>
-          </button>
-        )}
-      </div>
     </>
   );
 }

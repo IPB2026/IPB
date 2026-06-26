@@ -22,17 +22,8 @@ export const metadata: Metadata = {
 // d'embarquer le HTML complet des articles dans le bundle client.
 // Le sous-composant <BlogBrowser> ne reçoit que les métadonnées (titre,
 // excerpt, date, catégorie) — pas le `content` HTML.
-// Articles « mur porteur » — service arrêté (2026-06), redirigés 301.
-// Exclus de l'index blog (et du sitemap, cf. app/sitemap.ts).
-const SUNSET_BLOG_SLUGS = [
-  'prix-ouverture-mur-porteur-toulouse-2026',
-  'comment-savoir-si-mur-porteur',
-  'etude-de-cas-mur-porteur-4m-t3-toulouse',
-];
-
 function buildDisplayList() {
   return blogPostsSummary
-    .filter((post) => !SUNSET_BLOG_SLUGS.includes(post.slug))
     .map((post) => {
       const category = post.category as
         | 'fissures'
