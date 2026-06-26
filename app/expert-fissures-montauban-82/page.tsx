@@ -71,7 +71,7 @@ const faqItems = [
   },
   {
     question: "Quelle est la différence entre agrafage et micropieux ?",
-    answer: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables (8 000 à 15 000 €). Les micropieux reprennent les fondations en profondeur (25 000 à 50 000 €) — intervention lourde réservée aux tassements actifs majeurs. L'institut conçoit l'agrafage structurel et nos équipes de réalisation l'exécutent ; pour les rares cas nécessitant des micropieux, nous coordonnons l'intervention avec un spécialiste après diagnostic.",
+    answer: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables (8 000 à 15 000 €). Les micropieux reprennent les fondations en profondeur (25 000 à 50 000 €) — intervention lourde réservée aux tassements actifs majeurs. Le rôle d'IPB est de diagnostiquer la cause et de préconiser la solution adaptée, en toute indépendance ; pour la réalisation, l'institut vous oriente vers des entreprises membres du réseau IPB.",
   },
   {
     question: "Combien de temps pour recevoir le rapport ?",
@@ -156,7 +156,7 @@ export default function ExpertFissuresMontaubanPage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[620px]">
-                  Institut IPB — pathologie du bâtiment. Réseau IPB actif sur tout le Tarn-et-Garonne depuis 2019. Diagnostic instrumenté, conception de la solution (agrafage structurel, reprise en sous-œuvre) ; travaux exécutés par les équipes de réalisation du réseau IPB sous décennale. Nos rapports sont reconnus par les assurances.
+                  Institut IPB — pathologie du bâtiment. Réseau IPB actif sur tout le Tarn-et-Garonne depuis 2019. Diagnostic instrumenté, identification de la cause et préconisations claires, en toute indépendance. Si des travaux sont nécessaires, orientation vers des entreprises membres du réseau IPB. Nos rapports sont reconnus par les assurances.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>

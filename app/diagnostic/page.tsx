@@ -651,10 +651,9 @@ export default function DiagnosticPage() {
     const c = classifyConcern(recoText);
     if (c === 'fissure' || c === 'humidite') {
       selectPath(c);
-    } else if (c === 'mur-porteur') {
-      // Décision client : le mur porteur passe par le calculateur dédié.
-      window.location.href = '/calcul-prix-mur-porteur';
     } else {
+      // Service « mur porteur » arrêté (2026-06) — plus de routage dédié :
+      // on invite à choisir fissures/humidité ou à nous appeler.
       setRecoHint('Choisissez votre sujet ci-dessous — ou appelez-nous, on vous oriente.');
     }
   };

@@ -79,7 +79,7 @@ export default function LandingFissuresToulouse() {
               <ul className="space-y-2 text-[13px] text-ipb-muted leading-[1.7]">
                 {[
                   '<strong class="text-ipb-text not-italic font-medium">Rapport technique reconnu par les assurances</strong> — pièce de référence dans les dossiers CAT-NAT',
-                  '<strong class="text-ipb-text not-italic font-medium">Agrafage sous garantie décennale 10 ans</strong> — un seul interlocuteur, du diagnostic à la livraison',
+                  '<strong class="text-ipb-text not-italic font-medium">Diagnostic instrumenté au fissuromètre</strong> — un rapport clair, en toute indépendance',
                   '<strong class="text-ipb-text not-italic font-medium">Réseau IPB actif depuis 2019</strong> — 850 chantiers menés en Occitanie',
                 ].map((item) => (
                   <li key={item} className="flex gap-3">

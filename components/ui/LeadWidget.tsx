@@ -41,8 +41,7 @@ function buildMessage(topic: Topic, timing: Timing): string {
     if (timing === 'ancien') return "Une fissure ancienne reste à surveiller — elle peut s'aggraver après un cycle sécheresse. Notre rapport documente l'état actuel.";
   }
   if (topic === 'mur-porteur') {
-    if (timing === 'projet') return "Pour un projet d'ouverture, un calcul technique préalable est indispensable. Notre institut coordonne l'étude réalisée et signée par un bureau d'études partenaire ; les travaux sont exécutés ensuite par les équipes du réseau IPB sous garantie décennale 10 ans.";
-    return "Notre institut coordonne la faisabilité et le dimensionnement de la poutre, signés par un bureau d'études partenaire ; les travaux sont exécutés par les équipes du réseau IPB sous décennale. Un seul interlocuteur du diagnostic à la livraison.";
+    return "La première étape est toujours le diagnostic. Notre institut analyse votre situation et vous répond sous 48 heures pour préciser ce qui est possible.";
   }
   return "Notre institut vous répond sous 48 heures pour préciser ce qui est possible et ce qui ne l'est pas.";
 }

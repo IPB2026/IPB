@@ -12,7 +12,6 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
  *  - "prix maison fissurée" (46 imp) → Q2
  *  - "expert fissure tarn et garonne" (276 imp) → Q1
  *  - "expertise fissure haute garonne" (153 imp) → Q1
- *  - "ouverture mur porteur toulouse" (terrain à conquérir) → Q5 + Q6
  *  - thème assurance fissures (récurrent) → Q4
  *
  * Cf. PLAN_REFONTE_V2.md vague E
@@ -32,19 +31,11 @@ const faqs = [
   },
   {
     q: "Quelle est la différence entre agrafage et micropieux ?",
-    a: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables — solution adaptée à 90 % des fissures structurelles. Les micropieux reprennent les fondations en profondeur — intervention lourde réservée aux tassements actifs majeurs (au-delà de 10 cm). Comptez 12 000 à 18 000 € pour un agrafage, 40 000 à 60 000 € pour des micropieux. L'expert du réseau IPB dimensionne l'agrafage et les équipes de réalisation l'exécutent ; pour les rares cas qui nécessitent réellement des micropieux, l'institut coordonne l'intervention avec un spécialiste partenaire après diagnostic.",
-  },
-  {
-    q: "Faut-il déclarer une ouverture de mur porteur en mairie ?",
-    a: "Pour une ouverture intérieure, une déclaration préalable suffit dans la majorité des communes. Pour une création de baie vitrée modifiant la façade, un permis de construire est généralement requis. En copropriété, un vote en assemblée générale est obligatoire. L'institut coordonne avec un bureau d'études structure partenaire qui produit le dossier technique pour chacune de ces démarches.",
-  },
-  {
-    q: "Combien de temps pour ouvrir un mur porteur dans un appartement ?",
-    a: "L'intervention sur site dure 2 à 5 jours. La phase préparatoire (étude technique, démarches administratives, vote en AG si copropriété, commande de la poutre) prend 4 à 8 semaines en amont. Le calendrier complet est fixé avec vous avant le démarrage du chantier.",
+    a: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables — solution adaptée à 90 % des fissures structurelles. Les micropieux reprennent les fondations en profondeur — intervention lourde réservée aux tassements actifs majeurs (au-delà de 10 cm). À titre indicatif, comptez 12 000 à 18 000 € pour un agrafage, 40 000 à 60 000 € pour des micropieux. Le rôle d'IPB est de diagnostiquer la cause et de vous dire laquelle s'impose vraiment — en toute indépendance. Pour la réalisation, l'institut vous oriente ensuite vers des entreprises membres du réseau IPB.",
   },
   {
     q: "Pourquoi choisir un institut spécialisé en pathologie du bâtiment ?",
-    a: "Sur un mur porteur ou une fissure structurelle, c'est la continuité entre diagnostic, conception et travaux qui sécurise le résultat. L'institut coordonne l'ensemble : un expert du réseau IPB diagnostique la cause, conçoit la solution avec un bureau d'études partenaire quand un calcul s'impose, et les équipes de réalisation l'exécutent sous garantie décennale 10 ans. Vous avez un seul interlocuteur, et un dossier complet remis à la livraison.",
+    a: "Sur une fissure ou un désordre structurel, tout se joue sur la justesse du diagnostic et l'indépendance de l'analyse : un institut qui ne vend pas les travaux n'a aucun intérêt à dramatiser le problème, ni à le minimiser. Un expert du réseau IPB diagnostique la cause, fait appel à un bureau d'études quand un calcul s'impose, et vous remet des préconisations claires. Si des travaux sont nécessaires, l'institut vous oriente vers des entreprises membres du réseau IPB — vous gardez la main sur vos choix.",
   },
   {
     q: "Quel document recevez-vous à l'issue du diagnostic ?",
@@ -55,8 +46,8 @@ const faqs = [
     a: "Notre zone d'intervention couvre la Haute-Garonne (31), le Tarn-et-Garonne (82), le Gers (32), le Tarn (81), l'Ariège (09) et l'Aude (11). Cela représente plus de 50 communes — pour vérifier la couverture sur votre commune précise, appelez-nous au 05 82 95 33 75 ou démarrez le diagnostic en ligne.",
   },
   {
-    q: "Que se passe-t-il après le chantier ?",
-    a: "Vous recevez un dossier complet : étude technique, plans d'exécution, photos avant/après, attestations de garantie décennale. En cas de désordre dans les 10 ans suivant la livraison, vous avez un seul interlocuteur — IPB — qui actionne les garanties et coordonne la reprise.",
+    q: "Que se passe-t-il après le diagnostic ?",
+    a: "Vous recevez un dossier complet : note de synthèse, mesures instrumentées, photos datées, identification des causes et préconisations chiffrées. Il vous sert à décider et à orienter vos démarches (assureur, syndic, agent immobilier). Si des travaux sont nécessaires, l'institut peut vous mettre en relation avec des entreprises membres du réseau IPB, et reste joignable comme référent technique.",
   },
 ];
 

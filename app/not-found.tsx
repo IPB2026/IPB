@@ -62,7 +62,8 @@ export default function NotFound() {
                 <p className="text-[10px] text-ipb-light uppercase tracking-[0.18em] mb-3">Vous cherchiez peut-être</p>
                 <ul className="flex flex-wrap gap-x-6 gap-y-2 text-[13px] justify-center lg:justify-start">
                   <li><Link href="/expertise/fissures" className="text-ipb-muted hover:text-ipb-orange transition-colors">Diagnostic de fissures</Link></li>
-                  <li><Link href="/expertise/mur-porteur" className="text-ipb-muted hover:text-ipb-orange transition-colors">Ouverture de mur porteur</Link></li>
+                  <li><Link href="/expertise/humidite" className="text-ipb-muted hover:text-ipb-orange transition-colors">Diagnostic humidité</Link></li>
+                  <li><Link href="/diagnostic-avant-vente" className="text-ipb-muted hover:text-ipb-orange transition-colors">Diagnostic avant vente</Link></li>
                   <li><Link href="/blog" className="text-ipb-muted hover:text-ipb-orange transition-colors">Blog</Link></li>
                   <li><Link href="/contact" className="text-ipb-muted hover:text-ipb-orange transition-colors">Contact</Link></li>
                 </ul>

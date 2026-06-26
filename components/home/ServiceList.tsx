@@ -7,8 +7,7 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
  *
  * Familles (HOME-IPB-CONTENU-FINAL §6) :
  *  - Diagnostic de pathologies : 01 fissures, 02 humidité
- *  - Expertise : 03 avant achat
- *  - Travaux de structure : 04 mur porteur
+ *  - Expertise : 03 avant achat, 04 avant vente
  *
  * Cf. IPB_Design_Handoff.md §5.5
  */
@@ -17,29 +16,29 @@ const services = [
     num: '01',
     family: 'Diagnostic de pathologies',
     title: 'Diagnostic et traitement des fissures',
-    desc: "Visite sur site, mesure au fissuromètre, identification de la cause — tassement, retrait-gonflement des argiles, défaut de structure. L'institut conçoit la solution (agrafage structurel, harpage, reprise) et nos équipes la réalisent, sous décennale. Rapports reconnus par les assurances.",
+    desc: "Visite sur site, mesure au fissuromètre, identification de la cause — tassement, retrait-gonflement des argiles, défaut de structure. On vous remet un rapport reconnu par les assurances, avec des préconisations claires. Si des travaux s'imposent, on vous oriente vers des entreprises membres du réseau IPB.",
     href: '/expertise/fissures',
   },
   {
     num: '02',
     family: 'Diagnostic de pathologies',
     title: 'Diagnostic humidité et infiltrations',
-    desc: "Remontées capillaires, infiltrations, condensation : on confond souvent les origines, et on traite à côté. L'institut identifie la cause exacte, conçoit la solution juste, et la met en œuvre. Un diagnostic juste évite des travaux inutiles.",
+    desc: "Remontées capillaires, infiltrations, condensation : on confond souvent les origines, et on traite à côté. L'institut identifie la cause exacte et préconise la solution juste. Un diagnostic juste évite des travaux inutiles.",
     href: '/expertise/humidite',
   },
   {
     num: '03',
     family: 'Expertise',
-    title: 'Expertise structurelle avant achat immobilier',
+    title: 'Diagnostic du bâti avant achat immobilier',
     desc: "Analyse indépendante du bâti avant signature : fissures, désordres apparents et cachés, état de la structure. Rapport remis sous 3 à 5 jours, compatible avec votre délai de rétractation. Un avis sans aucun lien avec le vendeur ni l'agence.",
     href: '/expertise-avant-achat-immobilier-toulouse',
   },
   {
     num: '04',
-    family: 'Travaux de structure',
-    title: 'Ouverture de mur porteur et baie vitrée',
-    desc: "L'institut conçoit votre projet, réalise l'étude de structure et le dimensionnement de la poutre, et met en œuvre les travaux avec ses équipes, sous décennale. Nous gérons aussi vos démarches administratives.",
-    href: '/expertise/mur-porteur',
+    family: 'Expertise',
+    title: 'Diagnostic avant vente immobilière',
+    desc: "Vous vendez ? Un diagnostic indépendant du bâti avant la mise en vente rassure vos acheteurs, objective les doutes et sécurise votre prix. Vous abordez la transaction avec un dossier clair.",
+    href: '/diagnostic-avant-vente',
   },
 ];
 
@@ -61,12 +60,12 @@ export function ServiceList() {
                 }}
               >
                 Une seule spécialité&nbsp;:<br />
-                <em>la structure de votre bâtiment.</em>
+                <em>le diagnostic de votre bâti.</em>
               </h2>
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
               <p className="text-[15px] leading-[1.9] font-light text-ipb-muted">
-                Diagnostic de pathologies, expertise avant achat, travaux de structure&nbsp;: notre institut couvre toute la chaîne — du premier symptôme à la livraison — en Occitanie.
+                Fissures, humidité, avant achat, avant vente&nbsp;: on identifie la cause et on vous remet des préconisations claires, en toute indépendance — en Occitanie.
               </p>
             </div>
           </div>

@@ -191,11 +191,11 @@ export function j3CaseStudy(ctx: PathContext): string {
       ${para('Bonjour,')}
       ${para(isFissure
         ? "Pour vous donner du concret : il y a six mois, une maison T4 à Tournefeuille (110 m²) présentait une fissure traversante en escalier de 12 mm sur la façade nord-est. Un tassement différentiel du sol, reconnu en catastrophe naturelle 2022 — les propriétaires redoutaient le pire."
-        : "Pour vous donner du concret : il y a six mois, un T3 de 60 m² à Saint-Cyprien avait sa cuisine de 9 m² fermée, séparée du séjour par un mur porteur de 4,2 mètres en briques foraines. Les propriétaires rêvaient d'ouvrir l'espace, sans savoir par où commencer.")}
+        : "Pour vous donner du concret : il y a six mois, une maison à Saint-Cyprien présentait du salpêtre et un enduit cloqué en pied de murs. Les propriétaires ne savaient pas s'il s'agissait de remontées capillaires ou d'une simple infiltration.")}
       ${para(isFissure
-        ? "Après diagnostic, nous avons préconisé un agrafage structurel (18 agrafes inox) avec ravalement souple, réalisé par nos équipes de réalisation en 8 jours. Surtout : notre rapport transmis à l'expert d'assurance a justifié une indemnisation couvrant 92 % du montant."
-        : "Nous avons mené l'étude technique signée, dimensionné une poutre HEB 220, puis coordonné l'étaiement et la pose confiés à nos équipes — 5 jours de chantier. Remis en vente trois semaines plus tard, le bien est parti en 21 jours, avec 28 000 € de plus-value pour les propriétaires.")}
-      ${para('Chaque situation est unique, mais le principe ne change jamais : poser le bon diagnostic et la bonne étude avant d\'engager le moindre travaux. C\'est ainsi qu\'on évite les mauvaises surprises.')}
+        ? "Après diagnostic, nous avons préconisé un agrafage structurel (18 agrafes inox) avec ravalement souple, réalisé par des entreprises membres du réseau IPB en 8 jours. Surtout : notre rapport transmis à l'expert d'assurance a justifié une indemnisation couvrant 92 % du montant."
+        : "Après diagnostic à l'humidimètre, nous avons confirmé des remontées capillaires et préconisé une injection de résine ciblée — en écartant une réfection inutile de la façade. Pour la réalisation, nous avons orienté vers des entreprises membres du réseau IPB.")}
+      ${para('Chaque situation est unique, mais le principe ne change jamais : poser le bon diagnostic avant d\'engager le moindre travaux. C\'est ainsi qu\'on évite les mauvaises surprises.')}
       <p style="margin: 28px 0;">
         ${button('Discuter de votre dossier', 'tel:0582953375')}
       </p>

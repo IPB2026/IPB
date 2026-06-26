@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Hammer, Activity, CheckCircle } from 'lucide-react';
+import { ArrowRight, Activity, CheckCircle } from 'lucide-react';
 
 export function ServicesStructure() {
   return (
@@ -10,29 +10,28 @@ export function ServicesStructure() {
           {/* Colonne texte */}
           <div>
             <div className="inline-flex items-center gap-2 text-orange-600 font-bold mb-6 bg-orange-50 px-5 py-2 rounded-full uppercase text-xs tracking-wider border border-orange-100">
-              <Hammer size={16} /> Notre métier
+              <Activity size={16} /> Notre métier
             </div>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight tracking-tight">
-              On s'occupe de <span className="text-orange-600">la structure</span><br />de votre maison.
+              On diagnostique <span className="text-orange-600">la structure</span><br />de votre maison.
             </h2>
             <p className="text-slate-600 text-lg mb-8 leading-relaxed">
-              Deux situations, le même métier : on regarde, on évalue, on coordonne. <strong className="text-slate-900">Vous, vous n'avez pas à devenir expert en bâtiment</strong> — on traduit ce qu'on voit en clair, et on s'occupe du chantier de bout en bout.
+              Deux situations, le même métier : on observe, on mesure, on vous explique. <strong className="text-slate-900">Vous n'avez pas à devenir expert en bâtiment</strong> — on traduit ce qu'on voit en clair, et on vous remet un rapport indépendant.
             </p>
 
             <div className="space-y-4">
-              {/* Service 1 — Mur porteur (mis en avant, c'est le pilier) */}
-              <Link href="/expertise/mur-porteur" className="block p-6 rounded-2xl bg-gradient-to-br from-orange-50 to-amber-50 hover:from-orange-100 hover:to-amber-100 border border-orange-100 transition-all group">
+              {/* Service 1 — Expertise avant achat (diagnostic indépendant) */}
+              <Link href="/expertise-avant-achat-immobilier-toulouse" className="block p-6 rounded-2xl bg-gradient-to-br from-orange-50 to-amber-50 hover:from-orange-100 hover:to-amber-100 border border-orange-100 transition-all group">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-orange-600 shrink-0 shadow-sm transition-shadow duration-200 group-hover:shadow-md">
-                    <Hammer size={22} />
+                    <CheckCircle size={22} />
                   </div>
                   <div className="flex-1">
                     <h3 className="font-display font-bold text-xl text-slate-900 mb-1.5">
-                      Vous voulez ouvrir un mur ou créer une baie vitrée
+                      Vous achetez et vous voulez être sûr du bâti
                     </h3>
                     <p className="text-slate-600 text-sm leading-relaxed mb-3">
-                      Cuisine fermée à ouvrir sur le séjour ? Baie vitrée à percer côté jardin ?
-                      Notre institut pilote l'étude et la pose, sous garantie décennale 10 ans. <strong className="text-slate-800">3 à 5 jours sur place.</strong>
+                      Avant de signer, un diagnostic indépendant du bâti : fissures, désordres, état de la structure. <strong className="text-slate-800">Rapport sous 3 à 5 jours,</strong> sans lien avec le vendeur ni l'agence.
                     </p>
                     <div className="flex items-center gap-2 text-orange-600 font-bold text-sm">
                       Voir comment on procède <ArrowRight size={14} className="group-hover:translate-x-1 transition" />
@@ -77,8 +76,8 @@ export function ServicesStructure() {
           <div className="relative">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-slate-200">
               <Image
-                src="/images/ouverture-mur-porteur.webp"
-                alt="Ouverture de mur porteur en cours sur un chantier IPB à Toulouse — pose d'une poutre IPN par les équipes"
+                src="/images/fissure-facade-verticale.webp"
+                alt="Diagnostic de structure sur site — relevé d'une fissure de façade par un expert IPB à Toulouse"
                 width={800}
                 height={600}
                 className="w-full h-auto object-cover"
@@ -89,12 +88,12 @@ export function ServicesStructure() {
               {/* Overlay d'info */}
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <p className="text-orange-300 text-xs font-bold uppercase tracking-wider mb-2">
-                  Pendant le chantier
+                  Sur site
                 </p>
                 <p className="text-white font-display text-2xl font-bold leading-tight mb-1">
-                  Étaiement, découpe, pose de la poutre.
+                  Lecture du bâti, mesures, relevés.
                 </p>
-                <p className="text-slate-200 text-sm">Intervention en moyenne 3 à 5 jours.</p>
+                <p className="text-slate-200 text-sm">Visite en moyenne sous 72h.</p>
               </div>
             </div>
 
@@ -111,9 +110,9 @@ export function ServicesStructure() {
             {/* Mini-galerie sous l'image principale */}
             <div className="grid grid-cols-3 gap-3 mt-4">
               {[
-                { src: '/images/creation-baie-vitree-1.webp', alt: 'Baie vitrée créée par IPB — chantier Toulouse', label: 'Baie créée' },
-                { src: '/images/creation-baie-vitree-2.webp', alt: 'Baie vitrée terminée chez un client IPB', label: 'Finitions' },
-                { src: '/images/baie-coulissante-apres.webp', alt: 'Baie coulissante après ouverture mur porteur', label: 'Résultat' },
+                { src: '/images/fissures-avant-apres.webp', alt: 'Fissure diagnostiquée puis stabilisée — dossier IPB', label: 'Fissures' },
+                { src: '/images/humidite-avant-apres.webp', alt: 'Diagnostic humidité avant / après — dossier IPB', label: 'Humidité' },
+                { src: '/images/salpetre-avant-apres.webp', alt: 'Salpêtre diagnostiqué et traité — dossier IPB', label: 'Salpêtre' },
               ].map((img) => (
                 <div key={img.src} className="relative rounded-xl overflow-hidden shadow-md ring-1 ring-slate-200 aspect-[4/3] group">
                   <Image

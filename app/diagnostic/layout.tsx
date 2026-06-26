@@ -1,18 +1,18 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Diagnostic Gratuit Fissures & Mur Porteur · IPB Toulouse',
+  title: 'Diagnostic Gratuit Fissures & Humidité · IPB Toulouse',
   description: "Vos fissures inquiètent ? Un expert du réseau IPB analyse votre situation gratuitement et vous dit ce qui relève d'une simple cosmétique ou d'un vrai désordre structurel.",
   keywords: [
     'expertise fissures toulouse',
-    'expertise mur porteur toulouse',
+    'diagnostic humidité toulouse',
     'diagnostic structure maison',
     'institut pathologie bâtiment toulouse',
     'expert fissures haute-garonne',
     'rapport fissure assurance',
   ],
   openGraph: {
-    title: 'Diagnostic Gratuit Fissures & Mur Porteur · IPB Toulouse',
+    title: 'Diagnostic Gratuit Fissures & Humidité · IPB Toulouse',
     description: "Vos fissures inquiètent ? Un expert du réseau IPB analyse votre situation gratuitement et vous dit s'il s'agit d'un vrai désordre structurel.",
     url: 'https://www.ipb-expertise.fr/diagnostic',
     siteName: 'IPB - Institut de pathologie du bâtiment',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Diagnostic Gratuit Fissures & Mur Porteur · IPB Toulouse',
+    title: 'Diagnostic Gratuit Fissures & Humidité · IPB Toulouse',
     description: "Vos fissures inquiètent ? Un expert du réseau IPB analyse votre situation gratuitement.",
     images: ['/images/IPB_Logo_HD.png'],
   },

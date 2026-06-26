@@ -14,7 +14,7 @@ import { BlogBrowser } from './BlogBrowser';
 export const metadata: Metadata = {
   title: 'Blog · Notes de chantier & guides techniques · IPB',
   description:
-    "Articles rédigés par l'institut IPB à partir de cas réels sur nos chantiers en Occitanie : fissures, mur porteur, humidité, expertise avant achat.",
+    "Articles rédigés par l'institut IPB à partir de cas réels en Occitanie : fissures, humidité, expertise avant achat et diagnostic avant vente.",
   alternates: { canonical: 'https://www.ipb-expertise.fr/blog' },
 };
 
@@ -22,24 +22,23 @@ export const metadata: Metadata = {
 // d'embarquer le HTML complet des articles dans le bundle client.
 // Le sous-composant <BlogBrowser> ne reçoit que les métadonnées (titre,
 // excerpt, date, catégorie) — pas le `content` HTML.
+// Articles « mur porteur » — service arrêté (2026-06), redirigés 301.
+// Exclus de l'index blog (et du sitemap, cf. app/sitemap.ts).
+const SUNSET_BLOG_SLUGS = [
+  'prix-ouverture-mur-porteur-toulouse-2026',
+  'comment-savoir-si-mur-porteur',
+  'etude-de-cas-mur-porteur-4m-t3-toulouse',
+];
+
 function buildDisplayList() {
   return blogPostsSummary
+    .filter((post) => !SUNSET_BLOG_SLUGS.includes(post.slug))
     .map((post) => {
-      let category = post.category as
+      const category = post.category as
         | 'fissures'
         | 'humidite'
         | 'conseils'
-        | 'expertise'
-        | 'mur-porteur';
-      const lowerKw = (post.keywords || []).join(' ').toLowerCase();
-      if (
-        lowerKw.includes('mur porteur') ||
-        lowerKw.includes('baie vitree') ||
-        post.slug.includes('mur-porteur') ||
-        post.slug.includes('baie-vitree')
-      ) {
-        category = 'mur-porteur';
-      }
+        | 'expertise';
       return {
         slug: post.slug,
         title: post.title,
@@ -59,9 +58,9 @@ export default function BlogPage() {
   const collectionSchema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: "Blog de l'institut IPB — Structure, fissures, mur porteur",
+    name: "Blog de l'institut IPB — Fissures, humidité, structure",
     description:
-      "Articles techniques rédigés par l'institut IPB sur la structure du bâtiment : diagnostic de fissures, ouverture de mur porteur, expertise avant achat immobilier.",
+      "Articles techniques rédigés par l'institut IPB sur la pathologie du bâtiment : diagnostic de fissures, humidité, expertise avant achat et avant vente immobilière.",
     url: 'https://www.ipb-expertise.fr/blog',
     mainEntity: {
       '@type': 'ItemList',
@@ -111,7 +110,7 @@ export default function BlogPage() {
 
               <RevealOnScroll delay={0.12} variant="subtle">
                 <p className="text-[16px] leading-[1.85] font-light text-ipb-muted max-w-[580px]">
-                  Articles rédigés par notre institut à partir de cas réels rencontrés sur nos chantiers en Occitanie. Diagnostic de fissures, ouverture de mur porteur, expertise avant achat — chaque sujet est traité comme on traiterait un dossier client.
+                  Articles rédigés par notre institut à partir de cas réels rencontrés en Occitanie. Diagnostic de fissures, humidité, expertise avant achat et avant vente — chaque sujet est traité comme on traiterait un dossier client.
                 </p>
               </RevealOnScroll>
             </div>
@@ -234,12 +233,11 @@ export default function BlogPage() {
               <RevealOnScroll delay={0.06} variant="subtle">
                 <div className="space-y-5 text-[15px] leading-[1.9] font-light text-ipb-muted">
                   <p>
-                    Les articles sont rédigés par l'institut IPB à partir de cas réels rencontrés sur nos chantiers à <strong className="text-ipb-text not-italic font-medium">Toulouse (31)</strong>, <strong className="text-ipb-text not-italic font-medium">Montauban (82)</strong>, <strong className="text-ipb-text not-italic font-medium">Auch (32)</strong> et dans toute l&apos;Occitanie. Fissures structurelles liées au retrait-gonflement des argiles, ouvertures de murs porteurs en immeubles anciens, expertises avant achat immobilier — chaque sujet vient du terrain.
+                    Les articles sont rédigés par l'institut IPB à partir de cas réels rencontrés à <strong className="text-ipb-text not-italic font-medium">Toulouse (31)</strong>, <strong className="text-ipb-text not-italic font-medium">Montauban (82)</strong>, <strong className="text-ipb-text not-italic font-medium">Auch (32)</strong> et dans toute l&apos;Occitanie. Fissures structurelles liées au retrait-gonflement des argiles, désordres d&apos;humidité, expertises avant achat immobilier — chaque sujet vient du terrain.
                   </p>
                   <p>
-                    Nos guides couvrent l&apos;ensemble du cycle d&apos;un dossier : de l&apos;identification du problème (microfissure, fissure en escalier, mur à ouvrir) au choix de la solution technique (
-                    <Link href="/blog/agrafage-vs-micropieux-choix" className="text-ipb-orange hover:text-[#b35519] font-medium transition-colors">agrafage ou micropieux</Link>,{' '}
-                    <Link href="/blog/prix-ouverture-mur-porteur-toulouse-2026" className="text-ipb-orange hover:text-[#b35519] font-medium transition-colors">dimensionnement de poutre IPN/HEB</Link>
+                    Nos guides couvrent l&apos;ensemble du cycle d&apos;un dossier : de l&apos;identification du problème (microfissure, fissure en escalier, remontées capillaires) au choix de la solution technique (
+                    <Link href="/blog/agrafage-vs-micropieux-choix" className="text-ipb-orange hover:text-[#b35519] font-medium transition-colors">agrafage ou micropieux</Link>
                     ), en passant par les démarches administratives (
                     <Link href="/blog/catastrophe-naturelle-secheresse-demarches-indemnisation" className="text-ipb-orange hover:text-[#b35519] font-medium transition-colors">catastrophe naturelle sécheresse</Link>,{' '}
                     <Link href="/blog/garantie-decennale-travaux-structure" className="text-ipb-orange hover:text-[#b35519] font-medium transition-colors">garantie décennale</Link>

@@ -17,24 +17,24 @@ export const metadata: Metadata = {
 
 const partenaires = [
   {
-    href: '/partenaires/architectes-interieur',
+    href: '/diagnostic',
     num: '01',
     title: "Architectes d'intérieur & décorateurs",
-    desc: "Vos projets « espace ouvert » nécessitent une étude de structure et une décennale. Nous sommes votre partenaire technique en sous-traitance ou co-traitance.",
-    points: ['Co-traitance ou sous-traitance', 'Calcul technique signé par un bureau d’études', 'Tarif partenaire dès 3 projets par an'],
+    desc: "Vos projets « espace ouvert » touchent à la structure ? Notre diagnostic de faisabilité indépendant vous dit ce qui est possible — avant de concevoir.",
+    points: ['Visite et diagnostic de structure', 'Avis indépendant sous 3 à 5 jours', 'Vous concevez sur des bases sûres'],
   },
   {
-    href: '/partenaires/marchands-de-biens',
+    href: '/expertise-avant-achat-immobilier-toulouse',
     num: '02',
     title: 'Marchands de biens & investisseurs',
-    desc: "Vous achetez un T3 dans les Carmes, Saint-Cyprien ou Minimes pour ouvrir cuisine + salon avant revente ? Chiffrage sous 24 heures, chantier en 5 jours.",
-    points: ['Devis sous 24 heures', 'Chantier en 5 jours en moyenne', 'Décennale transmissible à l\'acheteur final'],
+    desc: "Avant d'acheter un bien à rénover — ou de le revendre — vous voulez être sûr du bâti. Notre diagnostic indépendant sécurise l'acquisition et la revente.",
+    points: ['Visite sous 72 heures', 'Rapport sous 3 à 5 jours ouvrés', 'Un avis neutre, sans lien avec le vendeur'],
   },
   {
     href: '/partenaires/agences-immobilieres',
     num: '03',
     title: 'Agences immobilières & mandataires',
-    desc: "Une vente bloquée par une fissure inquiétante ou un mur porteur à valider ? Notre rapport sous 3 à 5 jours ouvrés débloque la transaction.",
+    desc: "Une vente bloquée par une fissure inquiétante ou un doute sur le bâti ? Notre rapport sous 3 à 5 jours ouvrés débloque la transaction.",
     points: ['Visite sous 48 heures', 'Rapport reconnu par les assurances sous 3 à 5 jours ouvrés', 'Discrétion totale auprès du vendeur'],
   },
 ];

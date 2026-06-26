@@ -12,9 +12,9 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
   title:
-    "Expertise avant achat immobilier · Avis structurel indépendant · Toulouse · IPB",
+    "Expertise avant achat immobilier · Diagnostic indépendant du bâti · Toulouse · IPB",
   description:
-    "Expertise indépendante avant achat immobilier à Toulouse. Délais compatibles avec votre rétractation : visite sous 72h, rapport sous 3 à 5 jours. Sans aucun lien avec le vendeur ni l'agence.",
+    "Diagnostic indépendant du bâti avant achat immobilier à Toulouse. Délais compatibles avec votre rétractation : visite sous 72h, rapport sous 3 à 5 jours. Sans aucun lien avec le vendeur ni l'agence.",
   keywords: [
     'expertise avant achat toulouse',
     'expertise immobilière toulouse',
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title:
-      'Expertise avant achat immobilier · Avis structurel indépendant · Toulouse · IPB',
+      'Expertise avant achat immobilier · Diagnostic indépendant du bâti · Toulouse · IPB',
     description:
-      "Avis structurel indépendant avant achat. Délais compatibles avec votre rétractation : visite sous 72h.",
+      "Diagnostic indépendant du bâti avant achat. Délais compatibles avec votre rétractation : visite sous 72h.",
     url: 'https://www.ipb-expertise.fr/expertise-avant-achat-immobilier-toulouse',
     type: 'website',
   },
@@ -396,7 +396,7 @@ export default function ExpertiseAvantAchatPage() {
                     Contexte
                   </h3>
                   <p>
-                    Compromis signé sous condition suspensive d'expertise structurelle. Bien : T3 de 65 m² au troisième étage d'un immeuble en pierre de 1965. Acheteur ayant remarqué une fissure verticale traversante de 4 mm en façade arrière, doublée d'une fissure intérieure correspondante dans le séjour. Délai de 18 jours avant l'échéance de la condition suspensive.
+                    Compromis signé sous condition suspensive de diagnostic du bâti. Bien : T3 de 65 m² au troisième étage d'un immeuble en pierre de 1965. Acheteur ayant remarqué une fissure verticale traversante de 4 mm en façade arrière, doublée d'une fissure intérieure correspondante dans le séjour. Délai de 18 jours avant l'échéance de la condition suspensive.
                   </p>
                 </div>
 

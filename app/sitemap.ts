@@ -2,9 +2,16 @@ import { MetadataRoute } from 'next';
 import { blogPostsList } from '@/app/data/blog';
 import { villeSlugs } from '@/app/data/villes';
 import { isVillePrioritaire } from '@/app/data/villes-prioritaires';
-import { VILLES_MUR_PORTEUR } from '@/app/data/villes-mur-porteur';
 import { problemPages } from '@/app/data/problems';
 import { quartierSlugs } from '@/app/data/quartiers';
+
+// Articles blog « mur porteur » — service arrêté (2026-06), redirigés 301
+// vers /expertise/fissures. Exclus du sitemap et de l'index blog.
+const SUNSET_BLOG_SLUGS = [
+  'prix-ouverture-mur-porteur-toulouse-2026',
+  'comment-savoir-si-mur-porteur',
+  'etude-de-cas-mur-porteur-4m-t3-toulouse',
+];
 
 // ═══════════════════════════════════════════════════════════════
 // SITEMAP SEO OPTIMISÉ - IPB EXPERTISE
@@ -101,12 +108,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
-      url: `${baseUrl}/expertise/mur-porteur`,
-      lastModified: recentUpdate,
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
       url: `${baseUrl}/expertise/retrait-gonflement-argiles`,
       lastModified: recentUpdate,
       changeFrequency: 'monthly',
@@ -131,16 +132,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${baseUrl}/diagnostic-avant-vente`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
       url: `${baseUrl}/lexique`,
       lastModified: recentUpdate,
       changeFrequency: 'monthly',
       priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/calcul-prix-mur-porteur`,
-      lastModified: contentDate,
-      changeFrequency: 'monthly',
-      priority: 0.75,
     },
     {
       url: `${baseUrl}/carte-secheresse-occitanie`,
@@ -149,28 +150,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.72,
     },
     {
-      url: `${baseUrl}/bureau-etude-structure-toulouse`,
-      lastModified: recentUpdate,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
       url: `${baseUrl}/partenaires`,
       lastModified: recentUpdate,
       changeFrequency: 'monthly',
       priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/partenaires/architectes-interieur`,
-      lastModified: recentUpdate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/partenaires/marchands-de-biens`,
-      lastModified: recentUpdate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
     },
     {
       url: `${baseUrl}/partenaires/agences-immobilieres`,
@@ -383,25 +366,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // ════════════════════════════════════════════════════════════
-  // PAGES MUR PORTEUR PAR VILLE (Toulouse, Montauban, Auch, Albi)
-  // Forte priorité — pivot stratégique
+  // Service « mur porteur » arrêté (2026-06-26) — pages retirées du
+  // sitemap (redirigées 301 vers l'accueil via next.config.js).
   // ════════════════════════════════════════════════════════════
-  const expertMurPorteurPages: MetadataRoute.Sitemap = VILLES_MUR_PORTEUR.map((ville) => ({
-    url: `${baseUrl}/expert-mur-porteur/${ville}`,
-    lastModified: recentUpdate,
-    changeFrequency: 'monthly' as const,
-    priority: 0.85,
-  }));
 
   // ════════════════════════════════════════════════════════════
   // ARTICLES DE BLOG
+  // Articles « mur porteur » exclus (service arrêté, redirigés 301).
   // ════════════════════════════════════════════════════════════
-  const blogPages: MetadataRoute.Sitemap = blogPostsList.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.dateModified || post.date),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }));
+  const blogPages: MetadataRoute.Sitemap = blogPostsList
+    .filter((post) => !SUNSET_BLOG_SLUGS.includes(post.slug))
+    .map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(post.dateModified || post.date),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    }));
 
   // ════════════════════════════════════════════════════════════
   // ⚠️ SECTIONS RETIRÉES — résolution cannibalisation SEO (levier #1)
@@ -446,7 +426,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...departementPages, 
     ...expertFissuresPages,
     ...expertHumiditePages,
-    ...expertMurPorteurPages,
     ...problemesPages,
     ...quartiersPages,
     ...blogPages,

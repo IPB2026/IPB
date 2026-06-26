@@ -16,7 +16,7 @@ import { ExpertiseHumiditeBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
   title: "Diagnostic Humidité et Infiltrations · Toulouse · IPB",
-  description: "Remontées capillaires, infiltrations, condensation, salpêtre : l'institut identifie la cause exacte et conçoit le traitement. Travaux exécutés par les équipes du réseau IPB sous décennale 10 ans. ☎ 05 82 95 33 75",
+  description: "Remontées capillaires, infiltrations, condensation, salpêtre : l'institut identifie la cause exacte et préconise le traitement adapté. Diagnostic indépendant à Toulouse. ☎ 05 82 95 33 75",
   keywords: [
     'expert humidité toulouse',
     'expertise humidité haute-garonne',
@@ -32,7 +32,7 @@ export const metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/humidite' },
   openGraph: {
     title: "Diagnostic Humidité et Infiltrations · Toulouse · IPB",
-    description: "L'expert structure du réseau IPB identifie la cause exacte de l'humidité ; l'institut coordonne la solution, exécutée par les équipes du réseau IPB sous décennale 10 ans.",
+    description: "L'expert du réseau IPB identifie la cause exacte de l'humidité ; l'institut préconise la solution adaptée. Diagnostic indépendant en Occitanie.",
     url: 'https://www.ipb-expertise.fr/expertise/humidite',
     type: 'website',
     images: [{ url: '/images/humidite-avant-apres.webp', width: 1200, height: 630, alt: 'Avant et après traitement humidité — chantier du réseau IPB' }],
@@ -60,7 +60,7 @@ const generateServiceJsonLd = () => ({
     "address": { "@type": "PostalAddress", "streetAddress": "54 avenue Jean Jaurès", "addressLocality": "Tournefeuille", "addressRegion": "Occitanie", "postalCode": "31170", "addressCountry": "FR" }
   },
   "areaServed": [{ "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" }, { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" }, { "@type": "AdministrativeArea", "name": "Gers (32)" }, { "@type": "AdministrativeArea", "name": "Tarn (81)" }],
-  "description": "Diagnostic instrumenté de l'humidité (remontées capillaires, infiltrations, condensation, cave humide). L'expert structure du réseau IPB identifie la cause exacte ; l'institut coordonne la solution, exécutée par les équipes du réseau IPB sous garantie décennale 10 ans."
+  "description": "Diagnostic instrumenté de l'humidité (remontées capillaires, infiltrations, condensation, cave humide). L'expert du réseau IPB identifie la cause exacte ; l'institut préconise la solution adaptée, en toute indépendance."
 });
 
 const typesHumidite = [

@@ -57,7 +57,7 @@ export function LandingShell({ children, phoneNumber = '0582953375' }: LandingSh
           <CrackSVG variant="mini" />
           <div className="text-[11px] text-white/50 leading-[1.7] uppercase tracking-[0.08em]">
             <p>IPB Expertise — 54 avenue Jean Jaurès, 31170 Tournefeuille</p>
-            <p>Un seul interlocuteur, du devis à la livraison · Décennales métier dédiées · Institut créé en 2019</p>
+            <p>Diagnostic indépendant · Rapport sous 3 à 5 jours · Réseau IPB actif depuis 2019</p>
           </div>
           <div className="flex gap-4 text-[11px] text-white/40">
             <Link href="/legal/mentions-legales" className="hover:text-white/70 transition-colors">Mentions légales</Link>

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "Contact · Échanger avec l'institut IPB · Toulouse & Occitanie",
-  description: "Une question technique sur des fissures, un mur porteur ou un dégât d'humidité ? Échangez directement avec l'institut IPB. Réponse sous 48h, devis gratuit.",
+  description: "Une question technique sur des fissures, de l'humidité ou un doute avant un achat ou une vente ? Échangez directement avec l'institut IPB. Réponse sous 48h, devis gratuit.",
   keywords: [
     'contact expert fissures toulouse',
     'devis gratuit fissures',
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Contact · Échanger avec l'institut IPB · Toulouse & Occitanie",
-    description: "Une question technique sur des fissures, un mur porteur ou un dégât d'humidité ? Échangez directement avec l'institut IPB. Réponse sous 48h.",
+    description: "Une question technique sur des fissures, de l'humidité ou un doute avant un achat ou une vente ? Échangez directement avec l'institut IPB. Réponse sous 48h.",
     url: 'https://www.ipb-expertise.fr/contact',
     siteName: 'IPB · Institut de pathologie & structure du bâtiment',
     locale: 'fr_FR',

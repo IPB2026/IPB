@@ -80,7 +80,7 @@ const faqItems = [
   },
   {
     question: "Quel est le coût d'une expertise fissures à Toulouse ?",
-    answer: "Une expertise structurelle complète à Toulouse coûte entre 800 et 1 500 € TTC selon la complexité (taille du bâti, nombre de désordres, contexte juridique). Le diagnostic inclut le déplacement, les mesures instrumentées et le rapport technique. Si vous nous confiez ensuite les travaux, le coût du diagnostic est intégralement déduit de la facture finale.",
+    answer: "Un diagnostic complet à Toulouse coûte entre 800 et 1 500 € TTC selon la complexité (taille du bâti, nombre de désordres, contexte juridique). Il inclut le déplacement, les mesures instrumentées et le rapport technique. Si des travaux sont nécessaires, l'institut vous oriente ensuite vers des entreprises membres du réseau IPB.",
   },
   {
     question: "Mes fissures peuvent-elles attendre ou faut-il agir rapidement ?",
@@ -100,7 +100,7 @@ const faqItems = [
   },
   {
     question: "Quelle est la différence entre agrafage et micropieux ?",
-    answer: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables (12 000 à 18 000 €). Les micropieux reprennent les fondations en profondeur (40 000 à 60 000 €) — intervention lourde réservée aux tassements actifs majeurs. L'institut conçoit l'agrafage structurel et nos équipes de réalisation l'exécutent ; pour les rares cas nécessitant des micropieux, nous coordonnons l'intervention avec un spécialiste après diagnostic.",
+    answer: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables (12 000 à 18 000 €). Les micropieux reprennent les fondations en profondeur (40 000 à 60 000 €) — intervention lourde réservée aux tassements actifs majeurs. Le rôle d'IPB est de diagnostiquer la cause et de préconiser la solution adaptée, en toute indépendance ; pour la réalisation, l'institut vous oriente vers des entreprises membres du réseau IPB.",
   },
   {
     question: "Le rapport peut-il être utilisé devant un tribunal ?",
@@ -194,7 +194,7 @@ export default function ExpertFissuresToulousePage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">
-                  Institut IPB — pathologie du bâtiment. Réseau IPB actif à Toulouse depuis 2019. Diagnostic instrumenté, conception de la solution (agrafage structurel, reprise en sous-œuvre) ; travaux exécutés par les équipes de réalisation du réseau IPB sous décennale. Nos rapports sont reconnus par les assurances et nous traitons en moyenne soixante-dix dossiers par an en Haute-Garonne.
+                  Institut IPB — pathologie du bâtiment. Réseau IPB actif à Toulouse depuis 2019. Diagnostic instrumenté, identification de la cause et préconisations claires, en toute indépendance. Si des travaux sont nécessaires, orientation vers des entreprises membres du réseau IPB. Nos rapports sont reconnus par les assurances et nous traitons en moyenne soixante-dix dossiers par an en Haute-Garonne.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>
