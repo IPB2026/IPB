@@ -57,12 +57,12 @@ export default function LandingFissuresToulouse() {
                 <em>Notre institut vient sur place sous 72h.</em>
               </h1>
               <p className="text-[15px] leading-[1.85] font-light text-ipb-muted mb-8">
-                Diagnostic instrumenté (fissuromètre, niveau laser), rapport écrit reconnu par les assurances, agrafage structurel mené sous garantie décennale 10 ans. Un seul interlocuteur, du premier appel à la livraison.
+                Diagnostic instrumenté (fissuromètre, niveau laser), rapport écrit reconnu par les assurances, agrafage structurel mené sous garantie décennale 10 ans. Un seul interlocuteur, de la première visite au rapport.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 mb-6">
                 <MagneticButton href="/diagnostic?utm_source=ads&utm_medium=cpc&utm_campaign=fissures_toulouse" variant="primary">
-                  Diagnostic gratuit · 2 min
+                  Demander un diagnostic
                 </MagneticButton>
                 <a
                   href="tel:0582953375"
@@ -119,7 +119,7 @@ export default function LandingFissuresToulouse() {
             {[
               { value: 850, suffix: '+', label: 'Chantiers · réseau IPB' },
               { value: 4.9, decimals: 1, suffix: '/5', label: 'Avis Google' },
-              { value: 7, suffix: ' j', label: 'Délai de visite' },
+              { value: 72, suffix: ' h', label: 'Délai de visite' },
               { value: 10, suffix: ' ans', label: 'Décennale dédiée' },
             ].map((s) => (
               <div key={s.label}>
@@ -145,7 +145,7 @@ export default function LandingFissuresToulouse() {
 
           <div className="grid md:grid-cols-3 gap-8 lg:gap-10">
             {[
-              { num: '01', titre: 'Vous nous décrivez la situation', desc: "En ligne en 2 minutes ou par téléphone. On valide la zone d'intervention et l'urgence." },
+              { num: '01', titre: 'Vous nous décrivez la situation', desc: "En ligne ou par téléphone. Nous validons la zone d'intervention et le degré d'urgence." },
               { num: '02', titre: 'Visite technique sous 72h', desc: "Notre institut vient sur place avec instruments de mesure. Diagnostic en 1h, rapport sous 3 à 5 jours." },
               { num: '03', titre: 'Travaux pilotés par notre institut', desc: "Si l'agrafage est nécessaire : devis ferme, planning précis, exécution sous garantie décennale 10 ans." },
             ].map((etape) => (
@@ -163,11 +163,11 @@ export default function LandingFissuresToulouse() {
       <section className="bg-ipb-cream py-16 lg:py-20 text-center">
         <div className="max-w-2xl mx-auto px-6">
           <h2 className="font-serif text-ipb-text mb-6" style={{ fontSize: 'clamp(26px, 2.4vw, 36px)', lineHeight: 1.18, letterSpacing: '-0.022em', fontWeight: 700 }}>
-            Prêt à faire venir l’institut&nbsp;?
+            Faire intervenir l’institut&nbsp;sur place&nbsp;?
           </h2>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <MagneticButton href="/diagnostic?utm_source=ads&utm_medium=cpc&utm_campaign=fissures_toulouse" variant="primary">
-              Diagnostic gratuit · 2 min
+              Demander un diagnostic
             </MagneticButton>
             <a
               href="tel:0582953375"
@@ -176,7 +176,7 @@ export default function LandingFissuresToulouse() {
               05 82 95 33 75
             </a>
           </div>
-          <p className="text-[12px] text-ipb-light mt-4">Devis gratuit · Sans engagement · Confidentiel</p>
+          <p className="text-[12px] text-ipb-light mt-4">Sans engagement · Réponse sous 48 heures · Diagnostic indépendant</p>
         </div>
       </section>
     </LandingShell>

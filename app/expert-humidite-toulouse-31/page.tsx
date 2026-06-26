@@ -168,12 +168,11 @@ export default function ExpertHumiditeToulouse31Page() {
               Expert Humidité à <span className="text-blue-400">Toulouse</span>
             </h1>
             <p className="text-xl text-white/70 mb-8 max-w-2xl">
-              Murs humides, salpêtre, moisissures ? Diagnostic technique sous 72h.
-              Traitement par injection résine et cuvelage, sous garantie décennale 10 ans.
+              Murs humides, salpêtre, moisissures : notre institut identifie la cause avant tout traitement. Diagnostic technique sous 72h, traitement par injection résine et cuvelage, sous garantie décennale 10 ans.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/diagnostic" className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all">
-                Diagnostic gratuit · 2 min <ArrowRight size={20} />
+                Demander un diagnostic <ArrowRight size={20} />
               </Link>
               <a href="tel:0582953375" className="bg-white/10 border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all">
                 <Phone size={20} /> 05 82 95 33 75
@@ -200,8 +199,8 @@ export default function ExpertHumiditeToulouse31Page() {
               <div className="text-ipb-muted mt-1">Délai d'intervention</div>
             </div>
             <div>
-              <div className="text-4xl font-extrabold text-blue-600">98%</div>
-              <div className="text-ipb-muted mt-1">Clients satisfaits</div>
+              <div className="text-4xl font-extrabold text-blue-600">4.9/5</div>
+              <div className="text-ipb-muted mt-1">Avis Google</div>
             </div>
           </div>
         </div>
@@ -237,7 +236,7 @@ export default function ExpertHumiditeToulouse31Page() {
       <section className="py-16 md:py-24 bg-ipb-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Nos solutions professionnelles</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Les traitements que nous mettons en œuvre</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-ipb-navy-2 rounded-2xl p-8">
@@ -367,10 +366,10 @@ export default function ExpertHumiditeToulouse31Page() {
       {/* CTA intermédiaire */}
       <section className="py-8 bg-blue-50 border-y border-blue-100">
         <div className="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
-          <p className="text-ipb-text font-medium text-sm">Murs humides, salpêtre, moisissures ? Identifions la cause avant qu'elle ne s'aggrave.</p>
+          <p className="text-ipb-text font-medium text-sm">Murs humides, salpêtre, moisissures : identifions la cause avant qu'elle ne s'aggrave.</p>
           <div className="flex items-center gap-3">
-            <Link href="/diagnostic" className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2.5 rounded-full text-sm transition-colors whitespace-nowrap">Diagnostic gratuit · 2 min →</Link>
-            <a href="tel:0582953375" className="text-ipb-muted hover:text-ipb-text font-medium text-sm whitespace-nowrap">📞 05 82 95 33 75</a>
+            <Link href="/diagnostic" className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2.5 rounded-full text-sm transition-colors whitespace-nowrap">Demander un diagnostic →</Link>
+            <a href="tel:0582953375" className="text-ipb-muted hover:text-ipb-text font-medium text-sm whitespace-nowrap">05 82 95 33 75</a>
           </div>
         </div>
       </section>
@@ -520,11 +519,11 @@ export default function ExpertHumiditeToulouse31Page() {
       {/* CTA */}
       <section className="py-16 md:py-24 bg-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Murs humides à Toulouse ?</h2>
-          <p className="text-xl text-blue-100 mb-8">Diagnostic technique sous 72h. Traitement sous garantie décennale 10 ans.</p>
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Murs humides à Toulouse&nbsp;?</h2>
+          <p className="text-xl text-blue-100 mb-8">Diagnostic technique sous 72h. Traitement sous garantie décennale 10 ans. Sans engagement · Réponse sous 48 heures.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all flex items-center justify-center gap-2">
-              Diagnostic gratuit · 2 min <ArrowRight size={20} />
+              Demander un diagnostic <ArrowRight size={20} />
             </Link>
             <a href="tel:0582953375" className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all">
               <Phone size={20} /> 05 82 95 33 75

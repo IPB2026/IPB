@@ -148,7 +148,7 @@ export default function BlogPage() {
                   href="/diagnostic"
                   className="inline-flex items-center justify-center gap-2 bg-ipb-orange hover:bg-[#b35519] text-white font-medium px-7 py-4 rounded-[3px] text-[14px] tracking-wide transition-colors duration-300 group"
                 >
-                  Mon diagnostic en 2 min
+                  Demander un diagnostic
                   <span className="transition-transform duration-300 group-hover:translate-x-0.5">
                     →
                   </span>

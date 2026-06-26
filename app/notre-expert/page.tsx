@@ -111,7 +111,7 @@ export default function NotreInstitutPage() {
               <RevealOnScroll delay={0.18}>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <MagneticButton href="/diagnostic" variant="primary">
-                    Mon diagnostic en 2 min
+                    Demander un diagnostic
                   </MagneticButton>
                   <MagneticButton href="/contact" variant="ghost">
                     Demander un rappel

@@ -213,7 +213,7 @@ export default function CaniculeProtegerMaisonPage() {
             Mieux vaut prévenir que guérir. Un diagnostic précoce peut vous faire économiser des milliers d'euros.
           </p>
           <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-white text-ipb-orange px-8 py-4 rounded-xl font-bold text-lg hover:bg-ipb-stone">
-            Diagnostic gratuit · 2 min <ArrowRight size={20} />
+            Demander un diagnostic <ArrowRight size={20} />
           </Link>
         </div>
       </section>

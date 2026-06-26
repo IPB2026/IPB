@@ -124,16 +124,16 @@ export function ContactSection() {
           <div>
             {/* Formulaire de contact */}
             <div className="bg-slate-50 rounded-3xl p-8 md:p-10 border border-slate-200">
-              <h3 className="text-2xl font-extrabold text-slate-900 mb-4">Demander un avis d'expert</h3>
+              <h3 className="text-2xl font-extrabold text-slate-900 mb-4">Demander un diagnostic</h3>
               <p className="text-slate-600 mb-6">
-                Décrivez votre situation. Un expert en pathologie du bâtiment vous répond sous 24h.
+                Décrivez votre situation. L'institut qualifie votre dossier et vous répond sous 48 heures.
               </p>
 
               {isSubmitted ? (
                 <div className="bg-green-50 border border-green-200 rounded-xl p-6 text-center">
                   <CheckCircle className="w-10 h-10 text-green-600 mx-auto mb-3" />
-                  <p className="text-green-800 font-bold mb-1">Message envoyé avec succès !</p>
-                  <p className="text-green-700 text-sm">Nous vous répondrons rapidement.</p>
+                  <p className="text-green-800 font-bold mb-1">Votre demande nous est bien parvenue.</p>
+                  <p className="text-green-700 text-sm">L'institut vous répond sous 48 heures.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -228,15 +228,15 @@ export function ContactSection() {
                 <div className="w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
               </div>
               <div>
-                <p className="font-bold text-slate-900 text-lg">Expert disponible 7j/7</p>
-                <p className="text-slate-600 text-sm">Diagnostic sur site sous 48h — 56 communes couvertes en Occitanie</p>
+                <p className="font-bold text-slate-900 text-lg">L'institut à votre écoute</p>
+                <p className="text-slate-600 text-sm">Sans engagement · Réponse sous 48 heures · 56 communes couvertes en Occitanie</p>
               </div>
             </div>
             <Link
               href="/diagnostic"
               className="bg-orange-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-orange-700 transition-all shadow-lg whitespace-nowrap"
             >
-              Diagnostic gratuit
+              Demander un diagnostic
             </Link>
           </div>
         </div>

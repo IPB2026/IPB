@@ -264,7 +264,7 @@ export default function InfiltrationsAutomnePage() {
             N'attendez pas que les dégâts s'aggravent. Diagnostic sous 48h pour identifier la source.
           </p>
           <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50">
-            Diagnostic gratuit · 2 min <ArrowRight size={20} />
+            Demander un diagnostic <ArrowRight size={20} />
           </Link>
         </div>
       </section>

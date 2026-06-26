@@ -129,7 +129,7 @@ export default function HumiditePage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">
-                  Tâches sur les murs, peinture qui cloque, odeur persistante&nbsp;: avant de traiter, il faut comprendre. L'expert structure du réseau IPB se déplace, hygromètre et caméra thermique à la main, pour identifier la cause exacte. Si des travaux sont nécessaires, les équipes du réseau IPB les exécutent sous décennale 10 ans.
+                  Tâches sur les murs, peinture qui cloque, odeur persistante&nbsp;: avant de traiter, il faut comprendre. L'expert du réseau IPB se déplace, hygromètre et caméra thermique à la main, pour identifier la cause exacte et vous remettre des préconisations claires. Si des travaux sont nécessaires, nous vous orientons vers des entreprises membres du réseau IPB.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>
@@ -241,7 +241,7 @@ export default function HumiditePage() {
                     { titre: 'Diagnostic sur place', desc: "Visite avec hygromètre, caméra thermique et test à la pesée. Mesure du taux d'humidité dans les murs, identification de la cause exacte." },
                     { titre: 'Rapport et préconisations', desc: "Document écrit sous 3 à 5 jours avec photos, mesures, cause identifiée et solutions chiffrées. Reconnu par les assurances en cas de litige." },
                     { titre: 'Conception du traitement', desc: "Injection de résine, cuvelage, ventilation, drainage&nbsp;: l'institut choisit la solution selon le diagnostic, jamais selon un produit qu'on voudrait vendre." },
-                    { titre: 'Travaux exécutés par les équipes du réseau IPB', desc: "L'institut coordonne le chantier ; les équipes du réseau IPB exécutent les travaux sous garantie décennale 10 ans. Vérification post-traitement à 6 mois pour confirmer la disparition des symptômes." },
+                    { titre: 'Orientation vers le réseau IPB', desc: "Si des travaux sont nécessaires, l'institut vous oriente vers des entreprises membres du réseau IPB et reste votre référent jusqu'à la disparition des symptômes." },
                   ].map((etape, i) => (
                     <RevealOnScroll key={etape.titre} delay={0.08 + i * 0.06}>
                       <li className="grid grid-cols-[40px_1fr] gap-5 items-start pb-8 border-b border-white/10">
@@ -301,7 +301,7 @@ export default function HumiditePage() {
 
               <ul className="lg:col-span-7 space-y-5">
                 {[
-                  { titre: 'Diagnostic en ligne', prix: 'Gratuit', desc: "Vous décrivez votre situation en 2 minutes. Premier avis de l'expert structure du réseau IPB, sans engagement." },
+                  { titre: 'Diagnostic en ligne', prix: 'Gratuit', desc: "Vous décrivez votre situation ; l'expert structure du réseau IPB vous transmet un premier avis, sans engagement." },
                   { titre: 'Visite sur site & rapport', prix: 'Sur devis', desc: "Coût communiqué avant tout engagement, sans acompte. Vous réglez à l'issue de la visite ; le rapport vous est remis 3 à 5 jours après." },
                   { titre: 'Traitement', prix: 'Selon la cause', desc: "Injection de résine ≈ 80 à 150 €/ml (env. 4 000 à 7 500 € pour une maison) ; cuvelage de cave 200 à 350 €/m². Chiffré précisément après diagnostic, sous décennale 10 ans." },
                 ].map((t, i) => (

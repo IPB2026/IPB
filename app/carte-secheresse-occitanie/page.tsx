@@ -108,7 +108,7 @@ export default function CarteSecheressePage() {
               {[
                 { value: 1690, suffix: '', label: 'Communes reconnues', sublabel: 'Total Occitanie depuis 2018' },
                 { value: 9, decimals: 0, suffix: '/10', label: 'Maisons concernées', sublabel: 'Région Toulouse · sols argileux' },
-                { value: 9, suffix: ' arrêtés', label: 'Sécheresse 2022', sublabel: '5 hot wave reconnues au JO' },
+                { value: 9, suffix: ' arrêtés', label: 'Sécheresse 2022', sublabel: '5 vagues de chaleur reconnues au JO' },
                 { value: 92, suffix: '%', label: 'Indemnisation', sublabel: 'Dossiers acceptés avec rapport technique IPB' },
               ].map((s, i) => (
                 <RevealOnScroll key={s.label} delay={i * 0.06}>

@@ -180,10 +180,10 @@ export default function ContactPage() {
                     {/* Passerelle diagnostic guidé + réassurance — évite le cul-de-sac */}
                     <div className="mb-6 rounded-[4px] border border-ipb-rule bg-ipb-cream/60 p-4">
                       <p className="text-[13px] text-ipb-muted leading-[1.7] mb-3">
-                        Plutôt un <strong className="font-medium text-ipb-text">diagnostic guidé en 2&nbsp;minutes</strong>&nbsp;? Décrivez votre situation et recevez un premier avis.
+                        Plutôt un <strong className="font-medium text-ipb-text">diagnostic guidé</strong>&nbsp;? Décrivez votre situation et recevez un premier avis de l'institut.
                       </p>
                       <a href="/diagnostic" className="inline-flex items-center gap-1.5 text-[13px] font-medium text-ipb-orange-d border-b border-ipb-orange-d pb-0.5 hover:gap-2.5 transition-all">
-                        Lancer mon diagnostic gratuit →
+                        Décrire ma situation →
                       </a>
                       <p className="mt-4 pt-4 border-t border-ipb-rule text-[12px] text-ipb-light leading-[1.7]">
                         <span className="font-medium text-ipb-text">4,9/5</span> sur Google · Réponse sous 48&nbsp;h · Diagnostic indépendant — on ne vous vend pas de travaux

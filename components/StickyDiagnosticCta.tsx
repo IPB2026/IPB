@@ -47,16 +47,12 @@ export function StickyDiagnosticCta() {
 
   // Texte contextuel
   const getContextText = () => {
-    if (isFissuresPage) return "Fissures ? Diagnostic gratuit";
-    if (isHumiditePage) return "Humidité ? Diagnostic gratuit";
-    return "Diagnostic gratuit";
+    if (isFissuresPage) return "Une fissure vous inquiète ?";
+    if (isHumiditePage) return "Un problème d'humidité ?";
+    return "Un doute sur votre bâti ?";
   };
 
-  const getSubText = () => {
-    if (isFissuresPage) return "Réponse sous 24h";
-    if (isHumiditePage) return "Réponse sous 24h";
-    return "Réponse sous 24h";
-  };
+  const getSubText = () => "Réponse de l'institut sous 48h";
 
   if (!isVisible) return null;
 
@@ -101,7 +97,7 @@ export function StickyDiagnosticCta() {
             <Link
               href="/diagnostic"
               className="group inline-flex items-center justify-center gap-1.5 bg-ipb-orange-d hover:bg-[#7E390F] text-white font-medium py-2.5 px-4 rounded-[3px] text-[13px] tracking-wide transition-colors duration-300 active:scale-[0.98]"
-              aria-label="Lancer le diagnostic gratuit"
+              aria-label="Demander un diagnostic"
             >
               <span>Démarrer</span>
               <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -179,7 +175,7 @@ export function StickyDiagnosticCta() {
                 href="/diagnostic"
                 className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 transition-shadow duration-200 mb-3"
               >
-                Diagnostic gratuit · 2 min
+                Demander un diagnostic
                 <ArrowRight size={18} />
               </Link>
 
