@@ -789,7 +789,7 @@ export default function DiagnosticPage() {
   const expertReport = showResult && path ? getExpertReport(path as 'fissure' | 'mur-porteur', riskScore) : null;
 
   return (
-    <div className="min-h-[100dvh] bg-gradient-to-br from-slate-50 via-white to-orange-50/30 flex justify-center">
+    <div className="min-h-[100dvh] bg-ipb-cream flex justify-center">
 
       <div className="w-full max-w-2xl md:max-w-3xl px-4 pt-6 pb-10 md:pt-8">
 
@@ -807,7 +807,7 @@ export default function DiagnosticPage() {
           <div className="mb-5">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
-                <span className="bg-ipb-navy-2 text-white font-bold px-2.5 py-1 rounded-full text-xs tracking-wide">
+                <span className="bg-ipb-navy-2 text-ipb-white font-bold px-2.5 py-1 rounded-[3px] text-xs tracking-wide">
                   {step}/{totalQuestions}
                 </span>
                 <span className="text-ipb-muted text-xs font-medium">
@@ -815,7 +815,7 @@ export default function DiagnosticPage() {
                 </span>
               </div>
             </div>
-            <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
+            <div className="h-2 bg-ipb-stone rounded-full overflow-hidden">
               <div
                 className="h-full bg-ipb-orange rounded-full transition-all duration-500 ease-out"
                 style={{ width: `${Math.max(progress, 8)}%` }}
@@ -829,7 +829,7 @@ export default function DiagnosticPage() {
                   <div
                     className={`h-full rounded-full transition-all duration-700 ease-out ${
                       riskColor === 'red' ? 'bg-red-500' :
-                      riskColor === 'orange' ? 'bg-ipb-orange' : 'bg-green-500'
+                      riskColor === 'orange' ? 'bg-ipb-orange' : 'bg-ipb-light'
                     }`}
                     style={{ width: `${Math.max(liveRisk * 2, 5)}%` }}
                   />
@@ -840,7 +840,7 @@ export default function DiagnosticPage() {
         )}
 
         {/* ===== CARTE PRINCIPALE ===== */}
-        <div className="bg-white rounded-2xl shadow-lg border border-ipb-rule">
+        <div className="bg-ipb-white rounded-[6px] shadow-lg border border-ipb-rule">
           <div className="p-5 md:p-8">
 
             {/* ===== ÉTAPE 0 : ACCUEIL ===== */}
@@ -854,7 +854,7 @@ export default function DiagnosticPage() {
                     Décrivez-nous<br /><em>votre situation.</em>
                   </h1>
                   <p className="text-[15px] leading-[1.85] font-light text-ipb-muted max-w-xl mx-auto">
-                    Donnez-nous les éléments essentiels de votre situation. Notre institut vous répond sous 24 heures, par téléphone ou par mail.
+                    Donnez-nous les éléments essentiels de votre situation. Notre institut vous répond sous 48 heures, par téléphone ou par mail.
                   </p>
                 </div>
 
@@ -875,7 +875,7 @@ export default function DiagnosticPage() {
                     />
                     <button
                       type="submit"
-                      className="bg-ipb-orange text-white font-bold px-6 py-3 rounded-[6px] text-[14px] hover:bg-[#b35519] transition-colors whitespace-nowrap min-h-[48px]"
+                      className="bg-ipb-orange-d text-ipb-white font-bold px-6 py-3 rounded-[3px] text-[14px] hover:bg-[#7E390F] transition-colors whitespace-nowrap min-h-[48px]"
                     >
                       Voir mon parcours →
                     </button>
@@ -927,7 +927,7 @@ export default function DiagnosticPage() {
                   {/* Carte 3 — Échange direct */}
                   <a
                     href="tel:0582953375"
-                    className="group relative bg-ipb-navy text-white rounded-[6px] p-7 transition-all hover:shadow-[0_12px_36px_rgba(11,24,38,0.15)] hover:-translate-y-0.5 flex flex-col h-full text-left"
+                    className="group relative bg-ipb-navy text-ipb-white rounded-[6px] p-7 transition-all hover:shadow-[0_12px_36px_rgba(11,24,38,0.15)] hover:-translate-y-0.5 flex flex-col h-full text-left"
                   >
                     <span className="font-serif text-white/60 group-hover:text-ipb-orange-l transition-colors text-[12px] font-bold tracking-wider mb-6">03</span>
                     <h2 className="font-serif text-white font-bold text-[20px] leading-tight mb-3">
@@ -944,11 +944,11 @@ export default function DiagnosticPage() {
 
                 {/* Réassurance discrète */}
                 <p className="text-center text-[11px] text-ipb-light uppercase tracking-[0.14em] mb-4">
-                  Confidentiel · Réponse sous 24 heures · Sans engagement
+                  Confidentiel · Réponse sous 48 heures · Sans engagement
                 </p>
 
                 {/* Trust signals pour trafic froid (Google Ads) */}
-                <div className="bg-white border border-ipb-rule rounded-xl p-3.5 mb-4">
+                <div className="bg-ipb-white border border-ipb-rule rounded-[6px] p-3.5 mb-4">
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-2">
                       <svg viewBox="0 0 24 24" className="w-5 h-5" aria-hidden="true">
@@ -959,21 +959,21 @@ export default function DiagnosticPage() {
                       </svg>
                       <div>
                         <span className="font-bold text-ipb-text text-sm">4.9</span>
-                        <span className="text-yellow-500 text-xs ml-1">★★★★★</span>
+                        <span className="text-ipb-orange text-xs ml-1">★★★★★</span>
                       </div>
                     </div>
                     <span className="text-[10px] text-ipb-light font-medium">Avis vérifiés sur Google</span>
                   </div>
                   <div className="grid grid-cols-3 gap-2 text-center">
-                    <div className="bg-ipb-cream rounded-lg py-2">
+                    <div className="bg-ipb-cream rounded-[3px] py-2">
                       <p className="text-base font-extrabold text-ipb-text">850+</p>
                       <p className="text-[9px] text-ipb-light font-medium">clients accompagnés</p>
                     </div>
-                    <div className="bg-ipb-cream rounded-lg py-2">
+                    <div className="bg-ipb-cream rounded-[3px] py-2">
                       <p className="text-base font-extrabold text-ipb-text">10 ans</p>
                       <p className="text-[9px] text-ipb-light font-medium">garantie décennale</p>
                     </div>
-                    <div className="bg-ipb-cream rounded-lg py-2">
+                    <div className="bg-ipb-cream rounded-[3px] py-2">
                       <p className="text-base font-extrabold text-ipb-text">RC pro</p>
                       <p className="text-[9px] text-ipb-light font-medium">+ décennales métier</p>
                     </div>
@@ -982,42 +982,42 @@ export default function DiagnosticPage() {
 
                 {/* Social proof — vrais avis Google (source : app/data/testimonials.ts) */}
                 <div className="space-y-2 mb-4">
-                  <div className="bg-ipb-cream rounded-xl p-3 flex items-start gap-3">
+                  <div className="bg-ipb-cream rounded-[6px] p-3 flex items-start gap-3">
                     <div className="w-8 h-8 bg-ipb-stone rounded-full flex items-center justify-center text-sm flex-shrink-0">F</div>
                     <div>
                       <p className="text-ipb-muted text-xs italic leading-relaxed">
                         &quot;Leur diagnostic était parfaitement conforme aux diagnostics réalisés par l&apos;expert de mon assurance.&quot;
                       </p>
-                      <p className="text-ipb-light text-[10px] mt-1 font-medium">Fati G. — Montauban <span className="text-yellow-500">★★★★★</span></p>
+                      <p className="text-ipb-light text-[10px] mt-1 font-medium">Fati G. — Montauban <span className="text-ipb-orange">★★★★★</span></p>
                     </div>
                   </div>
-                  <div className="bg-ipb-cream rounded-xl p-3 flex items-start gap-3">
+                  <div className="bg-ipb-cream rounded-[6px] p-3 flex items-start gap-3">
                     <div className="w-8 h-8 bg-ipb-stone rounded-full flex items-center justify-center text-sm flex-shrink-0">S</div>
                     <div>
                       <p className="text-ipb-muted text-xs italic leading-relaxed">
                         &quot;Merci à l&apos;équipe IPB pour leur accompagnement. Aucune trace sur nos murs. Je recommande.&quot;
                       </p>
-                      <p className="text-ipb-light text-[10px] mt-1 font-medium">Sam Sd — Colomiers <span className="text-yellow-500">★★★★★</span></p>
+                      <p className="text-ipb-light text-[10px] mt-1 font-medium">Sam Sd — Colomiers <span className="text-ipb-orange">★★★★★</span></p>
                     </div>
                   </div>
                 </div>
 
                 {/* Appel direct */}
-                <div className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-xl p-3.5 flex items-center gap-3">
-                  <div className="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-                    <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                <div className="bg-ipb-navy rounded-[6px] p-3.5 flex items-center gap-3">
+                  <div className="w-10 h-10 bg-ipb-orange/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <svg className="w-5 h-5 text-ipb-orange-l" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-white text-sm font-bold">Préférez-vous en parler de vive voix ?</p>
+                    <p className="text-ipb-white text-sm font-bold">Préférez-vous en parler de vive voix ?</p>
                     <p className="text-ipb-light text-[10px] flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 bg-green-400 rounded-full inline-block" />
+                      <span className="w-1.5 h-1.5 bg-ipb-orange-l rounded-full inline-block" />
                       Un expert de l&apos;institut vous répond
                     </p>
                   </div>
                   <a
                     href="tel:0582953375"
                     onClick={() => trackPhoneClick('diagnostic-questionnaire')}
-                    className="bg-green-500 hover:bg-green-600 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors flex-shrink-0"
+                    className="bg-ipb-orange-d hover:bg-[#7E390F] text-ipb-white text-xs font-bold px-4 py-2 rounded-[3px] transition-colors flex-shrink-0"
                   >
                     Appeler
                   </a>
@@ -1030,8 +1030,8 @@ export default function DiagnosticPage() {
               <div key={`question-${step}`} className="min-h-[320px] md:min-h-[360px] flex flex-col">
                 {/* Micro-conversion : capture téléphone après Q3 */}
                 {step === 4 && !earlyPhoneCaptured && !earlyPhoneDismissed && (
-                  <div className="bg-blue-50 border border-blue-200 rounded-xl p-3 mb-4 flex items-center gap-3">
-                    <span className="text-lg flex-shrink-0">📱</span>
+                  <div className="bg-ipb-stone border border-ipb-rule rounded-[6px] p-3 mb-4 flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 bg-ipb-orange rounded-full inline-block flex-shrink-0" aria-hidden="true" />
                     <div className="flex-1 min-w-0">
                       <p className="text-ipb-text text-xs font-medium">Laissez votre numéro, nous vous rappelons</p>
                       <div className="flex items-center gap-2 mt-1.5">
@@ -1042,7 +1042,7 @@ export default function DiagnosticPage() {
                           value={earlyPhone}
                           onChange={(e) => setEarlyPhone(e.target.value)}
                           placeholder="06 12 34 56 78"
-                          className="flex-1 min-w-0 px-3 py-1.5 rounded-lg border border-blue-200 text-base sm:text-sm outline-none focus:border-blue-400 bg-white"
+                          className="flex-1 min-w-0 px-3 py-1.5 rounded-[3px] border border-ipb-rule text-base sm:text-sm outline-none focus:border-ipb-orange bg-ipb-white"
                         />
                         <button
                           type="button"
@@ -1055,7 +1055,7 @@ export default function DiagnosticPage() {
                               } catch { /* silently handle */ }
                             }
                           }}
-                          className="bg-blue-600 text-white text-xs font-semibold px-3 py-1.5 rounded-lg hover:bg-blue-700 transition-colors flex-shrink-0"
+                          className="bg-ipb-orange-d text-ipb-white text-xs font-semibold px-3 py-1.5 rounded-[3px] hover:bg-[#7E390F] transition-colors flex-shrink-0"
                         >
                           OK
                         </button>
@@ -1065,13 +1065,13 @@ export default function DiagnosticPage() {
                   </div>
                 )}
                 {step === 4 && earlyPhoneCaptured && (
-                  <div className="bg-green-50 border border-green-200 rounded-xl p-2.5 mb-4 flex items-center gap-2 text-xs text-green-700 font-medium">
-                    <span>✓</span> Numéro enregistré — nous vous rappelons sous 24 heures
+                  <div className="bg-ipb-stone border border-ipb-rule rounded-[6px] p-2.5 mb-4 flex items-center gap-2 text-xs text-ipb-orange-d font-medium">
+                    <span className="w-1.5 h-1.5 bg-ipb-orange rounded-full inline-block flex-shrink-0" aria-hidden="true" /> Numéro enregistré — nous vous rappelons sous 24 heures
                   </div>
                 )}
 
                 <div className="flex-1">
-                  <h2 className="text-xl md:text-2xl font-bold text-ipb-text mb-1 leading-snug">
+                  <h2 className="font-serif text-xl md:text-2xl font-bold text-ipb-text mb-1 leading-snug">
                     {currentQuestion.text}
                   </h2>
                   <p className="text-ipb-light text-xs md:text-sm mb-4 md:mb-5">
@@ -1099,10 +1099,10 @@ export default function DiagnosticPage() {
                             }
                           }}
                           className={`
-                            w-full flex items-center gap-3 px-4 py-3 md:px-5 md:py-3.5 rounded-xl border-2 transition-all duration-150 text-left
+                            w-full flex items-center gap-3 px-4 py-3 md:px-5 md:py-3.5 rounded-[6px] border-2 transition-all duration-150 text-left
                             ${isSelected
                               ? 'bg-ipb-stone border-ipb-orange shadow-sm'
-                              : 'bg-white border-ipb-rule hover:border-ipb-rule hover:bg-ipb-cream'
+                              : 'bg-ipb-white border-ipb-rule hover:border-ipb-rule hover:bg-ipb-cream'
                             }
                           `}
                         >
@@ -1135,9 +1135,9 @@ export default function DiagnosticPage() {
                     }, null);
                     if (!tip) return null;
                     return (
-                      <div className="mt-3 bg-ipb-cream border border-ipb-rule rounded-xl p-3 flex items-start gap-2.5">
-                        <div className="flex-shrink-0 w-6 h-6 bg-slate-200 rounded-full flex items-center justify-center">
-                          <span className="text-xs">🎓</span>
+                      <div className="mt-3 bg-ipb-cream border border-ipb-rule rounded-[6px] p-3 flex items-start gap-2.5">
+                        <div className="flex-shrink-0 w-6 h-6 bg-ipb-stone rounded-full flex items-center justify-center">
+                          <span className="w-1.5 h-1.5 bg-ipb-orange rounded-full inline-block" aria-hidden="true" />
                         </div>
                         <div>
                           <p className="text-[10px] text-ipb-light font-bold uppercase tracking-wider mb-0.5">Conseil d'expert</p>
@@ -1157,7 +1157,7 @@ export default function DiagnosticPage() {
                         ? !answers[currentQuestion.id] || (answers[currentQuestion.id] as string[]).length === 0
                         : !answers[currentQuestion.id]
                     }
-                    className="w-full bg-ipb-navy text-white font-semibold py-3.5 rounded-xl hover:bg-ipb-navy-2 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                    className="w-full bg-ipb-navy text-ipb-white font-semibold py-3.5 rounded-[6px] hover:bg-ipb-navy-2 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
                   >
                     {step === totalQuestions ? 'Voir mon diagnostic' : 'Suivant'} →
                   </button>
@@ -1175,12 +1175,12 @@ export default function DiagnosticPage() {
             {step === 999 && !isAnalyzing && !showResult && (
               <div>
                 <div className="text-center mb-5">
-                  <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <svg className="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-14 h-14 bg-ipb-stone rounded-full flex items-center justify-center mx-auto mb-3">
+                    <svg className="w-7 h-7 text-ipb-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h2 className="text-xl font-bold text-ipb-text mb-1">
+                  <h2 className="font-serif text-xl font-bold text-ipb-text mb-1">
                     Vos réponses sont enregistrées
                   </h2>
                   <p className="text-ipb-muted text-sm">
@@ -1189,7 +1189,7 @@ export default function DiagnosticPage() {
                 </div>
 
                 {/* Ce que vous allez recevoir */}
-                <div className="bg-ipb-cream rounded-xl p-4 mb-5 border border-ipb-rule">
+                <div className="bg-ipb-cream rounded-[6px] p-4 mb-5 border border-ipb-rule">
                   <p className="text-xs font-bold text-ipb-text mb-2 uppercase tracking-wide">Votre rapport comprend :</p>
                   <p className="text-xs text-ipb-muted leading-relaxed">
                     Niveau de gravité · Solution adaptée · Délai recommandé · Avis de l&apos;institut
@@ -1205,12 +1205,12 @@ export default function DiagnosticPage() {
                       onChange={(e) => setContactInfo({ ...contactInfo, name: e.target.value })}
                       placeholder="Jean Dupont"
                       autoComplete="name"
-                      className="w-full px-4 py-3 rounded-xl border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-base sm:text-sm transition-all"
+                      className="w-full px-4 py-3 rounded-[6px] border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-ipb-orange/20 outline-none text-base sm:text-sm transition-all"
                       required
                     />
                   </div>
 
-                  <p className="text-ipb-orange text-[11px] font-medium bg-ipb-stone border border-ipb-rule rounded-lg px-3 py-1.5">
+                  <p className="text-ipb-orange-d text-[11px] font-medium bg-ipb-stone border border-ipb-rule rounded-[3px] px-3 py-1.5">
                     Renseignez au moins votre email ou téléphone pour recevoir le diagnostic
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -1224,8 +1224,8 @@ export default function DiagnosticPage() {
                         inputMode="email"
                         autoComplete="email"
                         required={!contactInfo.phone.trim()}
-                        className={`w-full px-4 py-3 rounded-xl border focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-base sm:text-sm transition-all ${
-                          !contactInfo.email.trim() && !contactInfo.phone.trim() ? 'border-orange-300 bg-ipb-stone/30' : 'border-ipb-rule'
+                        className={`w-full px-4 py-3 rounded-[6px] border focus:border-ipb-orange focus:ring-2 focus:ring-ipb-orange/20 outline-none text-base sm:text-sm transition-all ${
+                          !contactInfo.email.trim() && !contactInfo.phone.trim() ? 'border-ipb-orange bg-ipb-stone/30' : 'border-ipb-rule'
                         }`}
                       />
                     </div>
@@ -1239,8 +1239,8 @@ export default function DiagnosticPage() {
                         inputMode="tel"
                         autoComplete="tel"
                         required={!contactInfo.email.trim()}
-                        className={`w-full px-4 py-3 rounded-xl border focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-base sm:text-sm transition-all ${
-                          !contactInfo.email.trim() && !contactInfo.phone.trim() ? 'border-orange-300 bg-ipb-stone/30' : 'border-ipb-rule'
+                        className={`w-full px-4 py-3 rounded-[6px] border focus:border-ipb-orange focus:ring-2 focus:ring-ipb-orange/20 outline-none text-base sm:text-sm transition-all ${
+                          !contactInfo.email.trim() && !contactInfo.phone.trim() ? 'border-ipb-orange bg-ipb-stone/30' : 'border-ipb-rule'
                         }`}
                       />
                     </div>
@@ -1254,7 +1254,7 @@ export default function DiagnosticPage() {
                       onChange={(e) => setContactInfo({ ...contactInfo, address: e.target.value })}
                       placeholder="Ex. Toulouse, Colomiers…"
                       autoComplete="address-level2"
-                      className="w-full px-4 py-3 rounded-xl border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-base sm:text-sm transition-all"
+                      className="w-full px-4 py-3 rounded-[6px] border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-ipb-orange/20 outline-none text-base sm:text-sm transition-all"
                     />
                   </div>
 
@@ -1264,7 +1264,7 @@ export default function DiagnosticPage() {
                       <select
                         value={contactInfo.yearBuilt}
                         onChange={(e) => setContactInfo({ ...contactInfo, yearBuilt: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-base sm:text-sm bg-white transition-all"
+                        className="w-full px-4 py-3 rounded-[6px] border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-ipb-orange/20 outline-none text-base sm:text-sm bg-ipb-white transition-all"
                       >
                         <option value="">Choisir</option>
                         <option value="avant_1950">Avant 1950</option>
@@ -1279,7 +1279,7 @@ export default function DiagnosticPage() {
                       <select
                         value={contactInfo.preferredTime}
                         onChange={(e) => setContactInfo({ ...contactInfo, preferredTime: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-base sm:text-sm bg-white transition-all"
+                        className="w-full px-4 py-3 rounded-[6px] border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-ipb-orange/20 outline-none text-base sm:text-sm bg-ipb-white transition-all"
                       >
                         <option value="">Choisir</option>
                         <option value="matin">Matin (9h-12h)</option>
@@ -1291,7 +1291,7 @@ export default function DiagnosticPage() {
                   </div>
 
                   {/* Photo */}
-                  <div className="border border-dashed border-ipb-rule rounded-xl p-3 hover:border-ipb-rule transition-colors">
+                  <div className="border border-dashed border-ipb-rule rounded-[6px] p-3 hover:border-ipb-rule transition-colors">
                     <input
                       type="file"
                       accept="image/*"
@@ -1308,18 +1308,18 @@ export default function DiagnosticPage() {
                           {/* Preview d'un upload utilisateur (data URL) — Next/Image
                               ne supporte pas les data URLs directement. */}
                           {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src={photoPreview} alt="Aperçu" className="w-11 h-11 object-cover rounded-lg" />
-                          <span className="text-green-600 text-xs font-medium flex-1">Photo ajoutée</span>
+                          <img src={photoPreview} alt="Aperçu" className="w-11 h-11 object-cover rounded-[3px]" />
+                          <span className="text-ipb-orange-d text-xs font-medium flex-1">Photo ajoutée</span>
                           <button
                             type="button"
                             onClick={(e) => { e.preventDefault(); setPhotoFile(null); setPhotoPreview(null); }}
-                            className="text-red-400 hover:text-red-600 text-sm"
+                            className="text-ipb-light hover:text-ipb-text text-sm"
                           >
                             ✕
                           </button>
                         </div>
                       ) : (
-                        <span className="text-ipb-light text-xs">📷 Ajouter une photo du problème <span className="text-white/70">(optionnel, aide l'expert)</span></span>
+                        <span className="text-ipb-light text-xs"><span className="text-ipb-orange mr-1.5" aria-hidden="true">—</span>Ajouter une photo du problème <span className="text-ipb-light">(optionnel, aide l'expert)</span></span>
                       )}
                     </label>
                   </div>
@@ -1329,13 +1329,13 @@ export default function DiagnosticPage() {
 
                   <button
                     type="submit"
-                    className="w-full bg-ipb-navy text-white font-semibold py-3.5 rounded-xl hover:bg-ipb-navy-2 transition-colors text-sm"
+                    className="w-full bg-ipb-navy text-ipb-white font-semibold py-3.5 rounded-[6px] hover:bg-ipb-navy-2 transition-colors text-sm"
                   >
                     Accéder à mon diagnostic →
                   </button>
 
                   <p className="text-[10px] text-ipb-light text-center leading-relaxed">
-                    🔒 Vos données sont protégées et ne seront jamais partagées. En validant, vous acceptez d'être recontacté par IPB.
+                    Vos données sont protégées et ne seront jamais partagées. En validant, vous acceptez d'être recontacté par IPB.
                   </p>
                 </form>
               </div>
@@ -1347,12 +1347,12 @@ export default function DiagnosticPage() {
                 <div className="text-center mb-6">
                   <div className="relative w-16 h-16 mx-auto mb-4">
                     <div className="absolute inset-0 border-[3px] border-ipb-rule rounded-full" />
-                    <div className="absolute inset-0 border-[3px] border-transparent border-t-orange-500 rounded-full animate-spin" />
+                    <div className="absolute inset-0 border-[3px] border-transparent border-t-ipb-orange rounded-full animate-spin" />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-xl">🔍</span>
+                      <span className="w-2 h-2 bg-ipb-orange rounded-full inline-block" aria-hidden="true" />
                     </div>
                   </div>
-                  <h2 className="text-lg font-bold text-ipb-text mb-1">Notre expert analyse vos réponses</h2>
+                  <h2 className="font-serif text-lg font-bold text-ipb-text mb-1">Notre expert analyse vos réponses</h2>
                   <p className="text-ipb-light text-xs">Veuillez patienter quelques instants...</p>
                 </div>
 
@@ -1360,22 +1360,22 @@ export default function DiagnosticPage() {
                   {analysisSteps.map((s, i) => (
                     <div
                       key={i}
-                      className={`flex items-center gap-3 px-4 py-2.5 rounded-lg border transition-all duration-500 ${
+                      className={`flex items-center gap-3 px-4 py-2.5 rounded-[3px] border transition-all duration-500 ${
                         analysisStep > i
-                          ? 'bg-green-50 border-green-200'
+                          ? 'bg-ipb-stone border-ipb-rule'
                           : analysisStep === i
                             ? 'bg-ipb-stone border-ipb-rule'
                             : 'bg-ipb-cream border-ipb-rule opacity-40'
                       }`}
                     >
                       {analysisStep > i ? (
-                        <span className="text-green-500 text-sm font-bold">✓</span>
+                        <span className="text-ipb-orange text-sm font-bold">✓</span>
                       ) : analysisStep === i ? (
-                        <div className="w-4 h-4 border-2 border-orange-400 border-t-transparent rounded-full animate-spin" />
+                        <div className="w-4 h-4 border-2 border-ipb-orange border-t-transparent rounded-full animate-spin" />
                       ) : (
                         <div className="w-4 h-4 rounded-full border border-ipb-rule" />
                       )}
-                      <span className={`text-sm ${analysisStep > i ? 'text-green-700 font-medium' : analysisStep === i ? 'text-ipb-orange font-medium' : 'text-ipb-light'}`}>
+                      <span className={`text-sm ${analysisStep > i ? 'text-ipb-orange-d font-medium' : analysisStep === i ? 'text-ipb-orange font-medium' : 'text-ipb-light'}`}>
                         {s.text}
                       </span>
                     </div>
@@ -1391,12 +1391,12 @@ export default function DiagnosticPage() {
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <p className="text-xs text-ipb-light font-semibold uppercase tracking-wider mb-0.5">Votre diagnostic</p>
-                    <h2 className="text-xl font-bold text-ipb-text">Rapport d'analyse</h2>
+                    <h2 className="font-serif text-xl font-bold text-ipb-text">Rapport d'analyse</h2>
                   </div>
-                  <div className={`px-3 py-1.5 rounded-lg text-xs font-bold ${
+                  <div className={`px-3 py-1.5 rounded-[3px] text-xs font-bold ${
                     expertReport.urgencyColor === 'red' ? 'bg-red-100 text-red-700' :
-                    expertReport.urgencyColor === 'orange' ? 'bg-ipb-stone text-ipb-orange' :
-                    'bg-green-100 text-green-700'
+                    expertReport.urgencyColor === 'orange' ? 'bg-ipb-stone text-ipb-orange-d' :
+                    'bg-ipb-stone text-ipb-muted'
                   }`}>
                     {expertReport.urgencyIcon} {expertReport.urgency}
                   </div>
@@ -1411,7 +1411,7 @@ export default function DiagnosticPage() {
                   <div className="h-2.5 bg-ipb-stone rounded-full overflow-hidden">
                     <div
                       className={`h-full rounded-full transition-all duration-1000 ease-out ${
-                        riskScore >= 40 ? 'bg-red-500' : riskScore >= 20 ? 'bg-ipb-orange' : 'bg-green-500'
+                        riskScore >= 40 ? 'bg-red-500' : riskScore >= 20 ? 'bg-ipb-orange' : 'bg-ipb-light'
                       }`}
                       style={{ width: `${riskScore}%` }}
                     />
@@ -1420,21 +1420,21 @@ export default function DiagnosticPage() {
 
                 {/* Diagnostic + Solution */}
                 <div className="space-y-3 mb-5">
-                  <div className={`rounded-xl p-4 border-l-4 ${
+                  <div className={`rounded-[6px] p-4 border-l-4 ${
                     expertReport.urgencyColor === 'red' ? 'bg-red-50 border-red-500' :
                     expertReport.urgencyColor === 'orange' ? 'bg-ipb-stone border-ipb-orange' :
-                    'bg-green-50 border-green-500'
+                    'bg-ipb-stone border-ipb-rule'
                   }`}>
                     <p className="font-bold text-ipb-text text-sm mb-1">Diagnostic</p>
                     <p className="text-ipb-muted text-sm leading-relaxed">{expertReport.diagnosis}</p>
                   </div>
 
-                  <div className="bg-ipb-cream rounded-xl p-4 border border-ipb-rule">
+                  <div className="bg-ipb-cream rounded-[6px] p-4 border border-ipb-rule">
                     <p className="font-bold text-ipb-text text-sm mb-1">Solution recommandée</p>
                     <p className="text-ipb-muted text-sm leading-relaxed">{expertReport.solution}</p>
                   </div>
 
-                  <div className="bg-ipb-cream rounded-xl p-3 border border-ipb-rule flex items-center justify-between">
+                  <div className="bg-ipb-cream rounded-[6px] p-3 border border-ipb-rule flex items-center justify-between">
                     <span className="text-xs text-ipb-muted font-medium">Délai d'intervention conseillé</span>
                     <span className="font-bold text-ipb-text text-sm">{expertReport.delay}</span>
                   </div>
@@ -1446,7 +1446,7 @@ export default function DiagnosticPage() {
                 {/* ===== CTA PASSAGE À L'ACTION ===== */}
                 <div>
                   <div className="text-center mb-4">
-                    <h3 className="text-lg font-bold text-ipb-text mb-1">
+                    <h3 className="font-serif text-lg font-bold text-ipb-text mb-1">
                       {riskScore >= 40
                         ? "Votre situation nécessite une intervention rapide"
                         : riskScore >= 20
@@ -1459,14 +1459,14 @@ export default function DiagnosticPage() {
                   </div>
 
                   {/* Offre */}
-                  <div className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-xl p-4 mb-4 text-white">
+                  <div className="bg-ipb-navy rounded-[6px] p-4 mb-4 text-ipb-white">
                     <div className="flex items-center justify-between mb-3">
                       <div>
                         <p className="font-bold text-sm">Diagnostic expert sur site</p>
                         <p className="text-white/60 text-xs">Instrumenté + rapport détaillé</p>
                       </div>
                       <div className="text-right">
-                        <p className="text-sm font-bold text-green-400 bg-green-500/20 px-3 py-1 rounded-full">Visite sans frais · 72h</p>
+                        <p className="text-sm font-bold text-ipb-orange-l bg-ipb-orange/20 px-3 py-1 rounded-[3px]">Visite sans frais · 72h</p>
                       </div>
                     </div>
                     <p className="text-white/70 text-[10px] leading-relaxed">
@@ -1477,7 +1477,7 @@ export default function DiagnosticPage() {
 
                   <form onSubmit={handleSubmitCallback} className="space-y-3">
                     {(contactInfo.phone || callbackInfo.phone) ? (
-                      <div className="bg-ipb-cream rounded-xl p-3 text-center">
+                      <div className="bg-ipb-cream rounded-[6px] p-3 text-center">
                         <p className="text-xs text-ipb-muted mb-1">Nous vous rappelons au</p>
                         <p className="font-bold text-ipb-text">{callbackInfo.phone || contactInfo.phone}</p>
                       </div>
@@ -1489,14 +1489,14 @@ export default function DiagnosticPage() {
                           value={callbackInfo.phone}
                           onChange={(e) => setCallbackInfo({ ...callbackInfo, phone: e.target.value })}
                           placeholder="06 12 34 56 78"
-                          className="w-full px-4 py-3 rounded-xl border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-orange-100 outline-none text-sm transition-all"
+                          className="w-full px-4 py-3 rounded-[6px] border border-ipb-rule focus:border-ipb-orange focus:ring-2 focus:ring-ipb-orange/20 outline-none text-sm transition-all"
                           required
                         />
                       </div>
                     )}
 
                     {formError && (
-                      <div className="bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl px-4 py-2.5">
+                      <div className="bg-red-50 border border-red-200 text-red-700 text-xs rounded-[6px] px-4 py-2.5">
                         {formError}
                       </div>
                     )}
@@ -1504,7 +1504,7 @@ export default function DiagnosticPage() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-ipb-orange hover:bg-ipb-orange text-white font-bold py-3.5 rounded-xl transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+                      className="w-full bg-ipb-orange-d hover:bg-[#7E390F] text-ipb-white font-bold py-3.5 rounded-[6px] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
                     >
                       {isSubmitting ? (
                         <>
@@ -1522,12 +1522,12 @@ export default function DiagnosticPage() {
 
                     <div className="text-center pt-2 border-t border-ipb-rule">
                       <a href="tel:0582953375" onClick={() => trackPhoneClick('diagnostic-contact-form')} className="text-ipb-muted text-xs hover:text-ipb-text transition-colors font-medium">
-                        📞 Appel direct : 05 82 95 33 75
+                        <span className="text-ipb-orange mr-1.5" aria-hidden="true">—</span>Appel direct : 05 82 95 33 75
                       </a>
                     </div>
 
                     <p className="text-[10px] text-ipb-light text-center">
-                      🔒 Données sécurisées et confidentielles
+                      Données sécurisées et confidentielles
                     </p>
                   </form>
                 </div>
@@ -1537,16 +1537,16 @@ export default function DiagnosticPage() {
             {/* ===== CONFIRMATION FINALE ===== */}
             {submitted && (
               <div className="text-center py-6">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-16 h-16 bg-ipb-stone rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-ipb-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h2 className="text-xl font-bold text-ipb-text mb-2">Votre demande nous est parvenue</h2>
+                <h2 className="font-serif text-xl font-bold text-ipb-text mb-2">Votre demande nous est parvenue</h2>
                 <p className="text-ipb-muted text-sm mb-4">
                   Notre équipe vous rappellera sous 24h pour qualifier votre dossier et organiser la visite d'un expert du réseau IPB.
                 </p>
-                <div className="bg-ipb-cream rounded-xl p-4 text-left max-w-sm mx-auto">
+                <div className="bg-ipb-cream rounded-[6px] p-4 text-left max-w-sm mx-auto">
                   <p className="text-xs font-bold text-ipb-text mb-2">Prochaines étapes :</p>
                   <div className="space-y-2 text-xs text-ipb-muted">
                     <div className="flex items-start gap-2">
@@ -1568,7 +1568,7 @@ export default function DiagnosticPage() {
                   onClick={() => trackPhoneClick('diagnostic-confirmation')}
                   className="inline-flex items-center gap-2 mt-5 text-ipb-muted hover:text-ipb-text text-sm font-medium transition-colors"
                 >
-                  📞 05 82 95 33 75
+                  <span className="text-ipb-orange" aria-hidden="true">—</span> 05 82 95 33 75
                 </a>
               </div>
             )}
