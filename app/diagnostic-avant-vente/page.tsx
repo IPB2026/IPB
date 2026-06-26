@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title:
     'Diagnostic avant vente immobilière · Toulouse',
   description:
-    "Vous vendez ? Un diagnostic indépendant du bâti (fissures, humidité, structure) avant la mise en vente rassure les acheteurs, objective les doutes et sécurise votre prix. Visite sous 72h en Occitanie.",
+    "Vous vendez ? Un diagnostic indépendant du bâti avant la mise en vente rassure vos acheteurs et sécurise votre prix. Visite sous 72h en Occitanie.",
   keywords: [
     'diagnostic avant vente maison',
     'diagnostic vendeur immobilier',

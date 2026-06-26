@@ -13,7 +13,7 @@ import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
   title: "L'institut IPB · Pathologie & structure du bâtiment · Occitanie",
-  description: "IPB est un institut indépendant de diagnostic en pathologie du bâtiment : fissures, humidité, expertise avant achat et avant vente. Un rapport clair, en toute indépendance. ☎ 05 82 95 33 75",
+  description: "IPB, institut indépendant de diagnostic en pathologie du bâtiment : fissures, humidité, avant achat, avant vente. Un rapport clair, en toute indépendance.",
   keywords: ['institut pathologie bâtiment toulouse', 'expert fissures toulouse', 'expertise structure toulouse', "expertise bâtiment Haute-Garonne"],
   alternates: { canonical: 'https://www.ipb-expertise.fr/notre-expert' },
   openGraph: {

@@ -15,7 +15,7 @@ import { ExpertiseHumiditeBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
   title: "Diagnostic humidité et infiltrations · Toulouse",
-  description: "Remontées capillaires, infiltrations, condensation, salpêtre : l'institut identifie la cause exacte et préconise le traitement adapté. Diagnostic indépendant à Toulouse. ☎ 05 82 95 33 75",
+  description: "Remontées, infiltrations, condensation, salpêtre : l'institut identifie la cause exacte et préconise le traitement adapté. Diagnostic indépendant à Toulouse.",
   keywords: [
     'expert humidité toulouse',
     'expertise humidité haute-garonne',

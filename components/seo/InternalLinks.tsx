@@ -62,9 +62,9 @@ export function InternalLinks({ variant = 'default', title, links }: InternalLin
   const heading = title || 'Liens utiles';
 
   return (
-    <section className="bg-white border-2 border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
-      <h3 className="text-lg font-extrabold text-slate-900 mb-4 flex items-center gap-2">
-        <span className="text-orange-600">🔗</span>
+    <section className="bg-ipb-white border border-ipb-rule rounded-[6px] p-6">
+      <h3 className="font-serif text-ipb-text text-[20px] font-bold mb-5 flex items-center gap-2.5">
+        <span aria-hidden="true" className="w-5 h-px bg-ipb-orange inline-block" />
         {heading}
       </h3>
       <div className="space-y-3">
@@ -72,13 +72,13 @@ export function InternalLinks({ variant = 'default', title, links }: InternalLin
           <Link
             key={item.href}
             href={item.href}
-            className="block bg-slate-50 border border-slate-200 rounded-lg p-3 hover:bg-orange-50 hover:border-orange-300 transition-all group"
+            className="block bg-ipb-cream border border-ipb-rule rounded-[3px] p-3.5 hover:border-ipb-orange transition-colors group"
           >
-            <h4 className="font-bold text-slate-900 group-hover:text-orange-600 transition text-sm mb-1">
+            <h4 className="font-serif font-bold text-ipb-text group-hover:text-ipb-orange transition-colors text-[15px] mb-1">
               {item.label}
             </h4>
             {item.description && (
-              <p className="text-xs text-slate-600 line-clamp-2">{item.description}</p>
+              <p className="text-[13px] text-ipb-muted leading-[1.6] line-clamp-2">{item.description}</p>
             )}
           </Link>
         ))}

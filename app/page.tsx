@@ -48,56 +48,11 @@ const homePersonas: PersonaCard[] = [
   },
 ];
 
-// Schema Organization pour Knowledge Panel Google
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "https://www.ipb-expertise.fr#organization",
-  // Lien sémantique bidirectionnel avec le LocalBusiness déclaré dans app/layout.tsx.
-  // Permet à Google de fusionner les deux entités dans son Knowledge Graph.
-  "subOrganization": { "@id": "https://www.ipb-expertise.fr#localbusiness" },
-  "name": "IPB - Institut de Pathologie du Bâtiment",
-  "legalName": "IPB",
-  "alternateName": "IPB Expertise",
-  "url": "https://www.ipb-expertise.fr",
-  "logo": {
-    "@type": "ImageObject",
-    "@id": "https://www.ipb-expertise.fr#logo",
-    "url": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
-    "width": 600,
-    "height": 60,
-    "caption": "IPB - Institut de Pathologie du Bâtiment"
-  },
-  "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
-  "description": "Institut indépendant de diagnostic en pathologie du bâtiment en Occitanie (31, 82, 32, 81) : diagnostic de fissures, expertise humidité, expertise avant achat et diagnostic avant vente. IPB diagnostique et conseille en toute indépendance ; si des travaux sont nécessaires, oriente vers des entreprises membres du réseau IPB.",
-  // foundingDate = date d'immatriculation de l'EI IPB (SIRET 908 995 103, 2022).
-  // Le « réseau IPB » est actif depuis 2019 mais Schema.org Organization
-  // doit refléter l'entité juridique, pas le récit marketing.
-  "foundingDate": "2022",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "54 avenue Jean Jaurès",
-    "addressLocality": "Tournefeuille",
-    "postalCode": "31170",
-    "addressRegion": "Occitanie",
-    "addressCountry": "FR"
-  },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+33582953375",
-    "contactType": "customer service",
-    "availableLanguage": "French",
-    "areaServed": ["FR-31", "FR-82", "FR-32", "FR-81"]
-  },
-  "sameAs": [
-    "https://www.facebook.com/ipbexpertise",
-    "https://www.linkedin.com/company/ipb-expertise"
-  ]
-};
+// Le schéma Organization (entité de marque) est émis site-wide dans app/layout.tsx.
 
 export const metadata: Metadata = {
   title: "Institut indépendant de diagnostic en pathologie du bâtiment · IPB",
-  description: "Institut indépendant de diagnostic en pathologie du bâtiment à Toulouse : fissures, humidité, expertise avant achat. On identifie la cause et on vous remet un rapport clair — sans vendre de travaux. Occitanie (31, 82, 32, 81).",
+  description: "Diagnostic indépendant en pathologie du bâtiment à Toulouse : fissures, humidité, avant achat, avant vente. Un rapport clair, sans vendre de travaux.",
   keywords: [
     'expert fissures Toulouse',
     'expertise fissures Haute-Garonne',
@@ -160,12 +115,6 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased selection:bg-ipb-orange selection:text-white">
-      {/* Organization Schema pour Knowledge Panel */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-
       <TopBar />
       <TrustRibbon />
       <Navbar />
