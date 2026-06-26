@@ -30,6 +30,13 @@ import {
   resendAppointmentInvites,
 } from '@/app/admin/(app)/agenda/actions';
 
+const APPT_STATUS_FR: Record<AppointmentStatus, string> = {
+  PLANIFIE: 'Planifié',
+  CONFIRME: 'Confirmé',
+  REALISE: 'Réalisé',
+  ANNULE: 'Annulé',
+};
+
 export const dynamic = 'force-dynamic';
 
 const TYPE_LABEL: Record<AppointmentType, string> = {
@@ -82,6 +89,7 @@ export default async function AgendaPage({
     devisId: searchParams.devisId ?? '',
   };
   let appts: Awaited<ReturnType<typeof loadAppts>> = [];
+  let pastAppts: Awaited<ReturnType<typeof loadPastAppts>> = [];
   let contacts: {
     id: string;
     name: string;
@@ -91,13 +99,14 @@ export default async function AgendaPage({
   }[] = [];
   let dbError = false;
   try {
-    [appts, contacts] = await Promise.all([
+    [appts, contacts, pastAppts] = await Promise.all([
       loadAppts(),
       prisma.contact.findMany({
         orderBy: { createdAt: 'desc' },
         take: 300,
         select: { id: true, name: true, city: true, email: true, address: true },
       }),
+      loadPastAppts(),
     ]);
   } catch {
     dbError = true;
@@ -135,6 +144,18 @@ export default async function AgendaPage({
     });
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key)!.push(a);
+  }
+
+  // Regroupe les RDV passés (2 derniers mois) par jour — lecture seule.
+  const pastGroups = new Map<string, typeof pastAppts>();
+  for (const a of pastAppts) {
+    const key = a.start.toLocaleDateString('fr-FR', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+    });
+    if (!pastGroups.has(key)) pastGroups.set(key, []);
+    pastGroups.get(key)!.push(a);
   }
 
   // Vue « semaine » (lecture seule)
@@ -497,6 +518,52 @@ export default async function AgendaPage({
           ))}
         </div>
       )}
+
+      {/* RDV passés conservés/accessibles 2 mois (lecture seule, repliable) */}
+      {!isWeek && !dbError && pastGroups.size > 0 && (
+        <details className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+          <summary className="cursor-pointer list-none px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 sm:px-5">
+            Rendez-vous passés{' '}
+            <span className="font-normal text-slate-400">· 2 derniers mois ({pastAppts.length})</span>
+          </summary>
+          <div className="space-y-5 border-t border-slate-100 p-4 sm:p-5">
+            {[...pastGroups.entries()].map(([day, items]) => (
+              <div key={day}>
+                <h3 className="mb-2 text-sm font-semibold capitalize text-slate-900">{day}</h3>
+                <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+                  <ul className="divide-y divide-slate-100">
+                    {items.map((a) => (
+                      <li key={a.id} className="flex items-center gap-3 px-4 py-3 text-sm sm:px-5">
+                        <span className="w-11 shrink-0 font-semibold tabular-nums text-slate-900">
+                          {a.start.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}
+                        </span>
+                        <div className="min-w-0 flex-1">
+                          <p className="truncate font-medium text-slate-900">{a.title}</p>
+                          <Link
+                            href={`/admin/clients/${a.contactId}`}
+                            className="truncate text-xs text-slate-500 hover:text-orange-600 hover:underline"
+                          >
+                            {a.contact.name}
+                          </Link>
+                        </div>
+                        <span
+                          className={`shrink-0 rounded-full px-2 py-0.5 text-xs font-medium ${
+                            a.status === 'REALISE'
+                              ? 'bg-green-100 text-green-700'
+                              : 'bg-slate-100 text-slate-600'
+                          }`}
+                        >
+                          {APPT_STATUS_FR[a.status]}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </details>
+      )}
     </div>
   );
 }
@@ -512,5 +579,19 @@ function loadAppts() {
     orderBy: { start: 'asc' },
     take: 100,
     include: { contact: true, assignedTo: { select: { name: true, email: true } } },
+  });
+}
+
+function loadPastAppts() {
+  // RDV des 2 derniers mois, conservés/accessibles dans l'agenda (lecture seule).
+  const startOfToday = new Date();
+  startOfToday.setHours(0, 0, 0, 0);
+  const twoMonthsAgo = new Date(startOfToday);
+  twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
+  return prisma.appointment.findMany({
+    where: { start: { gte: twoMonthsAgo, lt: startOfToday }, status: { not: 'ANNULE' } },
+    orderBy: { start: 'desc' },
+    take: 100,
+    include: { contact: { select: { name: true } } },
   });
 }
