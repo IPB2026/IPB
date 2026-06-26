@@ -37,6 +37,48 @@ export async function createFacture(
     due.setDate(due.getDate() + 30);
   }
 
+  // Gabarit par domaine : pour un dossier de DIAGNOSTIC (le service du dernier
+  // lead n'est pas « AUTRE »), on applique la même structure que les factures
+  // issues d'un RDV/devis — diagnostic à 0 (« — »), la COORDINATION porte le prix.
+  // Sinon (forfait/travaux) : ligne unique.
+  const lastLead = await prisma.lead.findFirst({
+    where: { contactId },
+    orderBy: { createdAt: 'desc' },
+    select: { service: true },
+  });
+  const isDiagnostic = lastLead != null && lastLead.service !== 'AUTRE';
+  const lines = isDiagnostic
+    ? [
+        {
+          designation: 'Diagnostic sur site, analyse et production du rapport',
+          detail: 'Réalisé par le diagnostiqueur indépendant mandaté, sous sa responsabilité',
+          unit: 'Forfait',
+          qty: 1,
+          unitPrice: 0,
+          total: 0,
+          position: 0,
+        },
+        {
+          designation: 'Coordination de la mission et mise en forme du rapport',
+          detail: 'Planification, suivi du dossier et production éditoriale du rapport — IPB',
+          unit: 'Forfait',
+          qty: 1,
+          unitPrice: montant,
+          total: montant,
+          position: 1,
+        },
+      ]
+    : [
+        {
+          designation: object,
+          unit: 'Forfait',
+          qty: 1,
+          unitPrice: montant,
+          total: montant,
+          position: 0,
+        },
+      ];
+
   const number = await nextFactureNumber(contact.name);
   const facture = await prisma.facture.create({
     data: {
@@ -45,18 +87,7 @@ export async function createFacture(
       object,
       dueDate: due,
       totalHT: montant,
-      lines: {
-        create: [
-          {
-            designation: object,
-            unit: 'Forfait',
-            qty: 1,
-            unitPrice: montant,
-            total: montant,
-            position: 0,
-          },
-        ],
-      },
+      lines: { create: lines },
     },
   });
   await prisma.activity.create({

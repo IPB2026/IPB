@@ -4,6 +4,7 @@ import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
 import { NewFactureForm } from '@/components/admin/new-facture-form';
+import { devisTemplate } from '@/lib/crm/devis-templates';
 
 export const dynamic = 'force-dynamic';
 
@@ -20,6 +21,42 @@ export default async function NewFacturePage({
       select: { id: true, name: true, city: true },
     })
     .catch(() => []);
+
+  // Pré-remplissage par domaine : arrivé depuis une fiche client, on dérive
+  // l'objet (gabarit du service du dossier) et le montant (devis diagnostic
+  // accepté/envoyé le plus récent, sinon prix du diagnostic saisi sur le lead).
+  let defaultObject = '';
+  let defaultMontant = '';
+  if (searchParams.contactId) {
+    const cid = searchParams.contactId;
+    const [lead, devis] = await Promise.all([
+      prisma.lead
+        .findFirst({
+          where: { contactId: cid },
+          orderBy: { createdAt: 'desc' },
+          select: { service: true },
+        })
+        .catch(() => null),
+      prisma.devis
+        .findFirst({
+          where: {
+            contactId: cid,
+            status: { in: ['ACCEPTE', 'ENVOYE'] },
+            OR: [{ serviceType: { not: 'AUTRE' } }, { serviceType: null }],
+          },
+          orderBy: { createdAt: 'desc' },
+          select: { totalHT: true },
+        })
+        .catch(() => null),
+    ]);
+    if (lead && lead.service !== 'AUTRE') {
+      defaultObject = devisTemplate(lead.service).objet;
+    }
+    // Le montant vient du PRIX DU DEVIS (coordination validée), pas d'une
+    // estimation du lead. S'il n'y a pas encore de devis, on laisse vide.
+    const m = devis ? Number(devis.totalHT) : 0;
+    if (m > 0) defaultMontant = String(Math.round(m));
+  }
 
   return (
     <div className="mx-auto max-w-3xl space-y-5">
@@ -43,6 +80,8 @@ export default async function NewFacturePage({
           <NewFactureForm
             contacts={contacts}
             defaultContactId={searchParams.contactId}
+            defaultObject={defaultObject}
+            defaultMontant={defaultMontant}
           />
         )}
       </div>

@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
 import { createFacture } from '@/app/admin/(app)/factures/actions';
 
@@ -23,11 +24,17 @@ function Submit() {
 export function NewFactureForm({
   contacts,
   defaultContactId,
+  defaultObject,
+  defaultMontant,
 }: {
   contacts: { id: string; name: string; city: string | null }[];
   defaultContactId?: string;
+  defaultObject?: string;
+  defaultMontant?: string;
 }) {
   const [error, formAction] = useFormState(createFacture, undefined);
+  // Prix LIBRE, pré-rempli avec le prix du devis (modifiable).
+  const [montant, setMontant] = useState(defaultMontant ?? '');
 
   return (
     <form action={formAction} className="space-y-5">
@@ -70,6 +77,7 @@ export function NewFactureForm({
           id="object"
           name="object"
           required
+          defaultValue={defaultObject}
           placeholder="Ex. Diagnostic des pathologies de fissures"
           className={field}
         />
@@ -82,15 +90,20 @@ export function NewFactureForm({
         <input
           id="montant"
           name="montant"
-          type="number"
-          inputMode="numeric"
-          min={1}
-          step="1"
+          type="text"
+          inputMode="decimal"
+          value={montant}
+          onChange={(e) => setMontant(e.target.value.replace(/[^0-9.,]/g, ''))}
+          placeholder="ex. 450"
           className={field}
         />
         <p className="mt-1 text-xs text-slate-400">
-          TVA non applicable (art. 293 B). Une ligne forfait est créée ; tu peux
-          l&apos;affiner ensuite.
+          {defaultMontant
+            ? 'Pré-rempli avec le prix du devis — modifiable librement. '
+            : 'Prix libre (€ HT). '}
+          TVA non applicable (art. 293 B). Pour un dossier de diagnostic, la structure
+          « diagnostic à 0 € + coordination au prix » est appliquée automatiquement ;
+          sinon une ligne forfait.
         </p>
       </div>
 

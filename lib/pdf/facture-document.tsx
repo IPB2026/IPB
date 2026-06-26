@@ -166,6 +166,12 @@ const s = StyleSheet.create({
 export function FactureDocument({ data }: { data: FactureDocData }) {
   const clientLoc = [data.contact.postalCode, data.contact.city].filter(Boolean).join(' ');
   const net = data.totalHT - (data.acompte ?? 0);
+  // Facture de diagnostic (structure « diagnostic à 0 + coordination au prix »)
+  // → on reprend les encadrés « approche / périmètre » du devis. Une facture
+  // forfait/travaux (ligne unique) ne les affiche pas.
+  const isDiagnostic = data.lines.some(
+    (l) => Number(l.unitPrice) === 0 && /diagnostic/i.test(l.designation)
+  );
 
   return (
     <Document title={data.number} author={COMPANY.shortName}>
@@ -266,6 +272,25 @@ export function FactureDocument({ data }: { data: FactureDocData }) {
             </View>
           </View>
         </View>
+
+        {/* L'approche IPB / Périmètre — repris de la forme du devis (sans les
+            détails précis de l'intervention). Factures de diagnostic seulement. */}
+        {isDiagnostic ? (
+          <View wrap={false} style={[s.row, { marginTop: 14 }]}>
+            <View style={s.box}>
+              <Text style={s.sectionLabel}>L&apos;APPROCHE IPB</Text>
+              <Text style={s.muted}>
+                Le diagnostic, son analyse et ses conclusions sont produits par le diagnostiqueur indépendant mandaté, qui engage sa responsabilité civile professionnelle. L&apos;IPB assure la coordination de la mission et la mise en forme du rapport.
+              </Text>
+            </View>
+            <View style={s.box}>
+              <Text style={s.sectionLabel}>PÉRIMÈTRE DU RAPPORT</Text>
+              <Text style={s.muted}>
+                Avis d&apos;expertise (conseil / étude) sur les désordres observés. Il ne constitue ni une étude structurelle de bureau d&apos;études (BET), ni un rapport d&apos;expertise judiciaire, ni un rapport d&apos;expertise d&apos;assurance.
+              </Text>
+            </View>
+          </View>
+        ) : null}
 
         {/* Règlement / coordonnées bancaires */}
         <View wrap={false} style={{ marginTop: 14 }}>
