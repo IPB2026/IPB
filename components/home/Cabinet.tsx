@@ -26,7 +26,7 @@ export function Cabinet() {
               <div className="aspect-[4/5] rounded-[6px] overflow-hidden bg-ipb-stone">
                 <Image
                   src="/images/chantier-ouverture-mur-porteur.webp"
-                  alt="Chantier en cours — étaiement et pose de poutre par les équipes du réseau IPB"
+                  alt="Étude de structure sur site — étaiement et pose de poutre, diagnostic en Haute-Garonne"
                   width={640}
                   height={800}
                   className="w-full h-full object-cover"
@@ -41,7 +41,7 @@ export function Cabinet() {
                   L'institut IPB
                 </p>
                 <p className="text-[12px] text-ipb-muted uppercase tracking-[0.14em]">
-                  Institut de coordination · Pathologie du bâtiment · Occitanie
+                  Institut indépendant · Diagnostic en pathologie du bâtiment · Occitanie
                 </p>
               </div>
             </div>
@@ -68,10 +68,10 @@ export function Cabinet() {
             <RevealOnScroll delay={0.06}>
               <div className="space-y-5 text-[15px] leading-[1.9] font-light text-ipb-muted mb-12">
                 <p>
-                  IPB est un institut indépendant de coordination, spécialisé dans la pathologie et la structure du bâtiment. Basé à Toulouse, il intervient en Occitanie. Son champ d'action : fissures, humidité, expertise structurelle avant achat, ouverture de murs porteurs — tout ce qui touche à la solidité d'un bâti et à la lecture de ses désordres.
+                  IPB est un institut indépendant de diagnostic, spécialisé dans la pathologie et la structure du bâtiment. Basé à Toulouse, il intervient en Occitanie. Son champ d'action : fissures, humidité, diagnostic du bâti avant achat, faisabilité de mur porteur — tout ce qui touche à la solidité d'un bâti et à la lecture de ses désordres.
                 </p>
                 <p>
-                  L'institut qualifie le besoin, oriente le dossier, et coordonne sa conduite jusqu'à la livraison. Le diagnostic technique et les travaux sont confiés à des artisans structure intégrés au réseau IPB — formés à notre protocole, titulaires de leur propre décennale. Du premier appel à la dernière finition, vous n'avez qu'un seul interlocuteur, et une seule responsabilité de coordination en face de vous.
+                  L'institut diagnostique, analyse et vous remet des préconisations claires — en toute indépendance, sans lien commercial avec qui réalisera d'éventuels travaux. C'est ce qui rend son avis crédible. Si des travaux s'imposent, il vous oriente vers des entreprises membres du réseau IPB et reste votre référent technique. Vous gardez la main sur vos choix.
                 </p>
               </div>
             </RevealOnScroll>
@@ -105,10 +105,10 @@ export function Cabinet() {
                 </div>
                 <div>
                   <p className="font-serif text-ipb-text font-bold leading-none mb-3" style={{ fontSize: 'clamp(40px, 4vw, 56px)' }}>
-                    10 ans
+                    3-5 j
                   </p>
                   <p className="text-[11px] text-ipb-light uppercase tracking-[0.14em]">
-                    Travaux sous décennale
+                    Rapport remis
                   </p>
                 </div>
               </div>
@@ -127,7 +127,7 @@ export function Cabinet() {
                   href="/contact"
                   className="text-ipb-muted hover:text-ipb-text font-light text-[13px] tracking-wide transition-colors"
                 >
-                  Demander l'attestation décennale des travaux
+                  Demander un exemple de rapport
                 </Link>
               </div>
             </RevealOnScroll>

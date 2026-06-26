@@ -36,14 +36,14 @@ const homePersonas: PersonaCard[] = [
   {
     label: 'Achat immobilier',
     titre: 'Vous achetez et vous avez un doute',
-    desc: "Avant de signer, un avis structurel indépendant, sans lien avec le vendeur ni l'agence. Rapport remis dans vos délais de rétractation.",
+    desc: "Avant de signer, un diagnostic indépendant du bâti, sans lien avec le vendeur ni l'agence. Rapport remis dans vos délais de rétractation.",
     href: '/expertise-avant-achat-immobilier-toulouse',
     cta: 'Faire expertiser le bien',
   },
   {
     label: 'Mur porteur',
     titre: 'Vous voulez ouvrir un mur porteur',
-    desc: "Cuisine ouverte, baie vitrée. Étude de structure, conception, réalisation sous décennale.",
+    desc: "Cuisine ouverte, baie vitrée. On réalise l'étude de faisabilité et le diagnostic de structure : on vous dit si c'est possible, et à quelles conditions.",
     href: '/expertise/mur-porteur',
     cta: 'Étudier mon projet',
   },
@@ -70,7 +70,7 @@ const organizationSchema = {
     "caption": "IPB - Institut de Pathologie du Bâtiment"
   },
   "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
-  "description": "Institut spécialisé en pathologie et structure du bâtiment en Occitanie (31, 82, 32, 81). Diagnostic de fissures, expertise humidité, expertise avant achat et ouverture de mur porteur. Diagnostic et coordination assurés par IPB ; travaux réalisés sous décennale par les équipes de réalisation du réseau IPB.",
+  "description": "Institut indépendant de diagnostic en pathologie du bâtiment en Occitanie (31, 82, 32, 81) : diagnostic de fissures, expertise humidité, expertise avant achat et faisabilité de mur porteur. IPB diagnostique et conseille en toute indépendance ; si des travaux sont nécessaires, oriente vers des entreprises membres du réseau IPB.",
   // foundingDate = date d'immatriculation de l'EI IPB (SIRET 908 995 103, 2022).
   // Le « réseau IPB » est actif depuis 2019 mais Schema.org Organization
   // doit refléter l'entité juridique, pas le récit marketing.
@@ -97,8 +97,8 @@ const organizationSchema = {
 };
 
 export const metadata: Metadata = {
-  title: "Institut de pathologie & structure du bâtiment · IPB",
-  description: "Fissures, humidité, désordres structurels : IPB qualifie votre demande et coordonne l'intervention d'un expert du réseau partenaire. Travaux exécutés par les équipes du réseau IPB sous décennale. Un seul interlocuteur, du diagnostic à la livraison. Occitanie.",
+  title: "Institut indépendant de diagnostic en pathologie du bâtiment · IPB",
+  description: "Institut indépendant de diagnostic en pathologie du bâtiment à Toulouse : fissures, humidité, expertise avant achat. On identifie la cause et on vous remet un rapport clair — sans vendre de travaux. Occitanie (31, 82, 32, 81).",
   keywords: [
     'expert fissures Toulouse',
     'expertise fissures Haute-Garonne',
@@ -114,8 +114,8 @@ export const metadata: Metadata = {
     'Toulouse', 'Montauban', 'Auch', 'Albi',
   ],
   openGraph: {
-    title: "Institut de pathologie & structure du bâtiment · IPB",
-    description: "IPB coordonne le diagnostic des pathologies du bâti par un expert du réseau partenaire et la mise en œuvre par les équipes du réseau IPB. Fissures, humidité, mur porteur. Occitanie.",
+    title: "Institut indépendant de diagnostic en pathologie du bâtiment · IPB",
+    description: "Institut indépendant de diagnostic en pathologie du bâtiment : fissures, humidité, expertise avant achat. Un rapport clair, en toute indépendance. Occitanie.",
     url: "https://www.ipb-expertise.fr",
     siteName: "IPB - Institut de Pathologie du Bâtiment",
     images: [
@@ -131,8 +131,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Institut de pathologie & structure du bâtiment · IPB",
-    description: "IPB coordonne le diagnostic et l'exécution des travaux par son réseau d'experts partenaires. Fissures, humidité, désordres structurels. Occitanie.",
+    title: "Institut indépendant de diagnostic en pathologie du bâtiment · IPB",
+    description: "Diagnostic indépendant en pathologie du bâtiment : fissures, humidité, expertise avant achat. Un rapport clair, sans vendre de travaux. Occitanie.",
     images: [
       {
         url: "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
@@ -204,20 +204,20 @@ export default function HomePage() {
       <section className="bg-ipb-navy text-white py-14 md:py-20">
         <div className="max-w-4xl mx-auto px-5 sm:px-6 text-center">
           <p className="text-ipb-orange-l text-[11px] uppercase tracking-[0.18em] font-medium mb-4">
-            Estimation gratuite
+            Étude de faisabilité
           </p>
           <h2 className="text-white font-serif mb-5" style={{ fontSize: 'clamp(22px, 2.6vw, 36px)', lineHeight: 1.2, letterSpacing: '-0.022em', fontWeight: 700 }}>
             Un projet de mur porteur ?{' '}
-            <em className="text-ipb-orange-l block sm:inline mt-1 sm:mt-0 not-italic sm:italic">Découvrez le budget en 2 minutes.</em>
+            <em className="text-ipb-orange-l block sm:inline mt-1 sm:mt-0 not-italic sm:italic">Vérifiez d'abord la faisabilité.</em>
           </h2>
           <p className="text-white/75 text-[14px] md:text-[15px] leading-[1.8] mb-8 max-w-xl mx-auto">
-            Notre calculateur, basé sur des chantiers récents du réseau IPB en Occitanie, vous donne une fourchette précise. Vous recevez le détail par email.
+            En 2 minutes, situez votre projet et recevez les points de vigilance à faire diagnostiquer avant tout chantier. Une étude indépendante, basée sur des cas réels en Occitanie.
           </p>
           <a
             href="/calcul-prix-mur-porteur?utm_source=site&utm_medium=home_banner&utm_campaign=mur_porteur"
             className="inline-flex items-center justify-center gap-2 bg-ipb-orange-d text-white font-bold px-7 md:px-8 py-4 rounded-[3px] text-[13px] md:text-[14px] tracking-[0.03em] hover:bg-[#7E390F] transition-colors min-h-[48px]"
           >
-            Lancer le calcul
+            Vérifier mon projet
           </a>
         </div>
       </section>

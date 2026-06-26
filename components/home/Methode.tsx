@@ -27,13 +27,13 @@ const etapes = [
   },
   {
     num: '04',
-    titre: 'On réalise',
-    desc: "Les équipes du réseau IPB exécutent selon notre protocole, sous garantie décennale 10 ans. Chantier soigné, calendrier tenu, qualité du geste avant tout.",
+    titre: 'On vous oriente',
+    desc: "Si des travaux sont nécessaires, on vous met en relation avec des entreprises membres du réseau IPB — et l'on reste votre référent technique. Vous gardez la main sur vos choix.",
   },
   {
     num: '05',
     titre: 'On vous remet le dossier complet',
-    desc: "Rapport, plans, photographies, attestations, garanties. Le dossier vous appartient — et IPB reste joignable, longtemps après la livraison.",
+    desc: "Rapport, mesures, photographies datées, préconisations chiffrées. Le dossier vous appartient — et IPB reste joignable, longtemps après la remise du rapport.",
   },
 ];
 
@@ -54,7 +54,7 @@ export function Methode() {
               }}
             >
               De la première visite<br />
-              <em>à la dernière finition.</em>
+              <em>au rapport qui décide.</em>
             </h2>
             <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mt-6">
               Cinq étapes, un seul interlocuteur. Vous savez à chaque instant où en est votre dossier.

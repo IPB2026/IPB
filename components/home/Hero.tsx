@@ -29,7 +29,7 @@ export function Hero() {
               directement (sans RevealOnScroll) pour optimiser le LCP mobile.
               L'animation reveal sur ces éléments retardait le LCP de 400-800ms
               car le H1 candidat LCP démarrait à opacity:0 jusqu'à hydratation. */}
-          <Eyebrow>Institut de pathologie & structure du bâtiment · Occitanie</Eyebrow>
+          <Eyebrow>Institut indépendant · Diagnostic en pathologie du bâtiment · Occitanie</Eyebrow>
 
           <h1
             className="font-serif text-ipb-text mb-8 [text-wrap:balance]"
@@ -50,7 +50,7 @@ export function Hero() {
           </h1>
 
           <p className="text-[15px] leading-[1.9] font-light text-ipb-muted max-w-[540px] mb-10">
-            Fissures, humidité, désordres structurels&nbsp;: notre institut coordonne le diagnostic et les travaux, exécutés sous décennale par les équipes du réseau IPB. Un seul interlocuteur, du premier regard à la livraison.
+            Fissures, humidité, doute avant un achat&nbsp;: notre institut indépendant pose le bon diagnostic, identifie la cause et vous remet un rapport clair. Aucun intérêt à vendre des travaux&nbsp;— juste à vous dire la vérité sur votre bâti.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
@@ -75,7 +75,7 @@ export function Hero() {
               {/* Photo de chantier réelle (couvre tout le panel) */}
               <Image
                 src="/images/fissure-facade-verticale.webp"
-                alt="Fissure verticale traitée par agrafage structurel sur façade — chantier mené par le réseau IPB en Haute-Garonne"
+                alt="Fissure verticale relevée lors d'un diagnostic de façade en Haute-Garonne"
                 fill
                 sizes="100vw"
                 className="object-cover opacity-50"
@@ -116,7 +116,7 @@ export function Hero() {
                     href="/expertise/mur-porteur"
                     className="group flex items-center justify-between text-white border-b border-white/15 pb-2.5 hover:border-ipb-orange-l transition-colors"
                   >
-                    <span className="font-serif text-base">Ouverture de mur porteur</span>
+                    <span className="font-serif text-base">Faisabilité mur porteur</span>
                     <span className="text-ipb-orange-l text-sm transition-transform group-hover:translate-x-1">→</span>
                   </Link>
                 </div>
@@ -154,10 +154,10 @@ export function Hero() {
 
               <div className="flex-1 sm:flex-initial text-center sm:text-left">
                 <p className="font-serif text-[26px] sm:text-3xl text-ipb-text font-bold leading-none whitespace-nowrap">
-                  10<span className="text-ipb-light text-lg sm:text-2xl"> ans</span>
+                  48<span className="text-ipb-light text-lg sm:text-2xl"> h</span>
                 </p>
                 <p className="text-[9px] sm:text-[10px] text-ipb-light uppercase tracking-[0.14em] sm:tracking-[0.16em] mt-2 whitespace-nowrap">
-                  Travaux sous décennale
+                  Réponse de l'institut
                 </p>
               </div>
             </div>
@@ -195,7 +195,7 @@ export function Hero() {
                   href="/expertise/mur-porteur"
                   className="group flex items-center justify-between text-white border-b border-white/10 pb-3 hover:border-ipb-orange-l transition-colors"
                 >
-                  <span className="font-serif text-lg">Ouverture de mur porteur</span>
+                  <span className="font-serif text-lg">Faisabilité mur porteur</span>
                   <span className="text-ipb-orange-l text-sm transition-transform group-hover:translate-x-1">→</span>
                 </Link>
               </div>

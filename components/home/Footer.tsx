@@ -19,12 +19,12 @@ export function Footer() {
               </div>
               <div>
                 <p className="font-serif text-white text-[18px] font-medium leading-none">Institut</p>
-                <p className="text-[11px] text-white/65 uppercase tracking-[0.12em] mt-1">Pathologie & structure du bâtiment</p>
+                <p className="text-[11px] text-white/65 uppercase tracking-[0.12em] mt-1">Diagnostic en pathologie du bâtiment</p>
               </div>
             </Link>
 
             <p className="text-[14px] leading-[1.85] font-light text-white/75 max-w-[420px] mb-8">
-              Institut spécialisé dans la structure du bâtiment&nbsp;: diagnostic de fissures, expertise humidité, expertise avant achat, ouverture de mur porteur. Un seul interlocuteur du diagnostic à la livraison.
+              Institut indépendant de diagnostic en pathologie du bâtiment&nbsp;: fissures, humidité, expertise avant achat, faisabilité de mur porteur. Un seul interlocuteur, du premier signe au rapport.
             </p>
 
             <div className="space-y-5 mb-6">
@@ -122,7 +122,7 @@ export function Footer() {
         {/* Mention coordination — apparaît globalement, toutes pages */}
         <div className="pt-10 mb-6 border-t border-white/6">
           <p className="text-[12px] leading-[1.7] text-white/70 max-w-[760px]">
-            IPB, institut de coordination. Diagnostic et travaux portés par les équipes du réseau IPB, sous décennale.
+            IPB est un institut indépendant de diagnostic en pathologie du bâtiment. À l'issue du diagnostic, si des travaux sont nécessaires, IPB peut orienter vers des entreprises membres du réseau IPB.
           </p>
         </div>
 
