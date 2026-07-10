@@ -72,8 +72,8 @@ export default async function RdvPage({
           {dateStr}
         </p>
         <p className="mt-3 text-sm text-slate-600">
-          Vous recevrez les détails par e-mail. Le diagnostiqueur indépendant
-          mandaté réalisera la visite ; le rapport vous sera remis sous 3 à 5
+          Vous recevrez les détails par e-mail. Un inspecteur IPB
+          réalisera la visite ; le rapport vous sera remis sous 3 à 5
           jours ouvrés.
         </p>
       </Shell>

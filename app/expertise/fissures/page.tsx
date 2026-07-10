@@ -10,7 +10,7 @@ const fissuresPersonas: PersonaCard[] = [
   {
     label: 'Sinistré',
     titre: 'Vous voyez apparaître une fissure',
-    desc: "Quelque chose a changé sur votre façade ou à l'intérieur. L'expert structure du réseau IPB lit le bâti ; l'institut qualifie le désordre et vous indique la suite à donner.",
+    desc: "Quelque chose a changé sur votre façade ou à l'intérieur. Un inspecteur IPB lit le bâti, qualifie le désordre et vous indique la suite à donner.",
     href: '/diagnostic',
     cta: 'Décrire ma situation',
   },
@@ -24,7 +24,7 @@ const fissuresPersonas: PersonaCard[] = [
   {
     label: 'Acheteur',
     titre: 'Vous achetez et vous avez un doute',
-    desc: "Avant de signer, vous voulez un diagnostic indépendant du bâti. Nos délais sont compatibles avec votre rétractation ou votre clause suspensive.",
+    desc: "Avant de signer, vous voulez une inspection du bâti. Nos délais sont compatibles avec votre rétractation ou votre clause suspensive.",
     href: '/expertise-avant-achat-immobilier-toulouse',
     cta: 'Voir la page acheteur',
   },
@@ -39,8 +39,8 @@ import Image from 'next/image';
 import { ExpertiseFissuresBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
-  title: 'Diagnostic et traitement des fissures · Toulouse · Rapport assurances',
-  description: "Diagnostic instrumenté au fissuromètre, identification de la cause, rapport technique reconnu par les assurances. Diagnostic indépendant à Toulouse, Montauban. ☎ 05 82 95 33 75",
+  title: 'Diagnostic de fissures à Toulouse — structurelle ou non · IPB',
+  description: "Une fissure est apparue ? Un inspecteur IPB la mesure au fissuromètre et vous dit si elle est structurelle. Rapport sous 3 à 5 jours. Toulouse et Occitanie. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures toulouse',
     'expertise fissure toulouse',
@@ -48,11 +48,12 @@ export const metadata = {
     'expertise fissure haute-garonne',
     'expertise fissure tarn-et-garonne',
     'agrafage fissures',
+    'réparation fissures toulouse',
+    'agrafage fissures toulouse',
     'fissures maison toulouse',
     'expertise fissure montauban',
     'expertise fissure auch',
     'expertise fissure albi',
-    'diagnostic fissures prix',
     'rapport fissure assurance',
     'tassement différentiel toulouse',
     'sol argileux fissures',
@@ -60,8 +61,8 @@ export const metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/fissures' },
   openGraph: {
-    title: 'Diagnostic et traitement des fissures · Toulouse · IPB',
-    description: "Diagnostic instrumenté au fissuromètre, identification de la cause, rapport technique reconnu par les assurances.",
+    title: 'Diagnostic de fissures à Toulouse — structurelle ou non · IPB',
+    description: "Un inspecteur IPB mesure la fissure au fissuromètre, identifie la cause et vous dit si elle est structurelle. Rapport sous 3 à 5 jours.",
     url: 'https://www.ipb-expertise.fr/expertise/fissures',
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
     locale: 'fr_FR',
@@ -158,13 +159,13 @@ export default function FissuresPage() {
                     fontWeight: 700,
                   }}
                 >
-                  Une fissure dans votre maison.<br />
-                  <em>L'institut qui la comprend.</em>
+                  Diagnostic de fissures à Toulouse.<br />
+                  <em>Une fissure se lit avant de se réparer.</em>
                 </h1>
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">
-                  Une fissure n'est jamais anodine, mais elle n'est pas toujours grave. L'expert du réseau IPB se déplace, mesure, identifie la cause ; l'institut vous remet un rapport clair. Si des travaux sont nécessaires, nous vous orientons vers des entreprises membres du réseau IPB.
+                  Largeur, tracé, position, évolution : une fissure dit d'où elle vient, à condition de savoir la lire. Un inspecteur IPB se déplace, la mesure au fissuromètre, examine le bâti qui la porte — et vous dit si elle est structurelle ou non.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>
@@ -188,7 +189,7 @@ export default function FissuresPage() {
               {/* Trust-line sous les CTA — sobre, registre cabinet */}
               <RevealOnScroll delay={0.22}>
                 <p className="mt-5 text-[12px] text-ipb-muted font-light tracking-[0.02em]">
-                  Diagnostic indépendant&nbsp;· Réponse sous 48&nbsp;heures&nbsp;· Sans engagement
+                  Réponse sous 48&nbsp;heures&nbsp;· Premier échange sans engagement
                 </p>
               </RevealOnScroll>
             </div>
@@ -328,7 +329,7 @@ export default function FissuresPage() {
             <div className="grid md:grid-cols-3 gap-6">
               {[
                 { num: '01', titre: 'Le retrait-gonflement des argiles', desc: "Première cause dans le Sud-Ouest. Les sols argileux gonflent l'hiver et se rétractent lors des étés secs ; les fondations suivent ce mouvement. Depuis la sécheresse de 2022, des centaines de communes de Haute-Garonne et du Tarn-et-Garonne ont été reconnues en catastrophe naturelle." },
-                { num: '02', titre: 'Un défaut de structure ou de conception', desc: "Absence ou rupture de chaînage, fondations sous-dimensionnées, surcharge, ouverture mal reprise : la maçonnerie travaille là où elle ne devrait pas. Fréquent sur le bâti ancien ou les extensions mal liaisonnées." },
+                { num: '02', titre: 'Un défaut d’origine ou de conception', desc: "Absence ou rupture de chaînage, fondations sous-dimensionnées, surcharge, ouverture mal reprise : la maçonnerie travaille là où elle ne devrait pas. Fréquent sur le bâti ancien ou les extensions mal liaisonnées." },
                 { num: '03', titre: "L'eau et les infiltrations", desc: "Une fuite, un drainage défaillant ou des remontées d'humidité fragilisent le sol d'assise et la maçonnerie. La fissure n'est alors qu'un signal — la cause réelle est hydraulique." },
               ].map((c, i) => (
                 <RevealOnScroll key={c.num} delay={i * 0.06}>
@@ -351,7 +352,7 @@ export default function FissuresPage() {
                 <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
                   <Image
                     src="/images/fissure-coin-maison.webp"
-                    alt="Diagnostic d'une fissure d'angle de façade par l'expert structure du réseau IPB"
+                    alt="Diagnostic d'une fissure d'angle de façade par un inspecteur IPB"
                     fill
                     sizes="(max-width: 1024px) 100vw, 40vw"
                     className="object-cover"
@@ -369,7 +370,7 @@ export default function FissuresPage() {
 
                 <ul className="space-y-8">
                   {[
-                    { titre: 'Diagnostic sur site', desc: "Visite par l'expert structure du réseau IPB sous 72h en moyenne. Mesure au fissuromètre, lecture du bâti, identification de la cause (sécheresse, tassement, défaut de chaînage)." },
+                    { titre: 'Diagnostic sur site', desc: "Visite par un inspecteur IPB sous 72h en moyenne. Mesure au fissuromètre, lecture du bâti, identification de la cause (sécheresse, tassement, défaut de chaînage)." },
                     { titre: 'Rapport technique', desc: "Document écrit reconnu comme pièce technique par les assurances dans les dossiers CAT-NAT. Photos, mesures, cause identifiée, préconisations chiffrées." },
                     { titre: 'Conception de la solution', desc: "Agrafage structurel pour stabiliser le mur — solution adaptée à 90 % des cas. Pour les rares tassements actifs nécessitant une reprise en sous-œuvre, nous coordonnons l'intervention avec un spécialiste. Le choix dépend du diagnostic, jamais d'une solution préconçue." },
                     { titre: 'Orientation vers le réseau IPB', desc: "Si des travaux sont nécessaires, l'institut vous oriente vers des entreprises membres du réseau IPB et reste votre référent. Vous gardez la main sur vos choix, et tous les documents vous sont remis." },
@@ -400,7 +401,7 @@ export default function FissuresPage() {
                         <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </a>
-                    <p className="mt-3 text-[12px] text-white/55">Diagnostic indépendant · Réponse sous 48 heures · Sans engagement</p>
+                    <p className="mt-3 text-[12px] text-white/55">Réponse sous 48 heures · Premier échange sans engagement</p>
                   </div>
                 </RevealOnScroll>
               </div>
@@ -432,33 +433,30 @@ export default function FissuresPage() {
           </div>
         </section>
 
-        {/* TRANSPARENCE DES COÛTS — proportionnalité, pas d'acompte, devis avant engagement */}
+        {/* LA SUITE, SELON LE VERDICT — issue du diagnostic, sans notion de prix (V3 §2) */}
         <section className="bg-ipb-white py-24 lg:py-32 border-y border-ipb-rule">
           <div className="max-w-ipb mx-auto px-6 lg:px-12">
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
               <RevealOnScroll className="lg:col-span-5">
-                <Eyebrow>Combien ça coûte</Eyebrow>
+                <Eyebrow>La suite, selon le verdict</Eyebrow>
                 <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
-                  Une approche<br /><em>proportionnée et transparente.</em>
+                  Ce que dit le rapport,<br /><em>et ce qu'il appelle.</em>
                 </h2>
                 <p className="mt-6 text-[15px] leading-[1.9] font-light text-ipb-muted">
-                  Pas d'acompte, pas de prix gonflé : chaque étape est chiffrée à l'avance, et nous privilégions toujours la solution la plus juste plutôt que la plus lourde.
+                  À chaque situation, une réponse mesurée : surveiller, réparer, ou pousser l'analyse. Nous privilégions toujours la solution la plus juste, jamais la plus lourde.
                 </p>
               </RevealOnScroll>
 
               <ul className="lg:col-span-7 space-y-5">
                 {[
-                  { titre: 'Diagnostic en ligne', prix: 'Gratuit', desc: "Vous décrivez votre situation ; l'expert structure du réseau IPB vous transmet un premier avis, sans engagement." },
-                  { titre: 'Visite sur site & rapport', prix: 'Sur devis', desc: "Coût communiqué avant tout engagement, sans acompte. Vous réglez à l'issue de la visite ; le rapport vous est remis 3 à 5 jours après." },
-                  { titre: 'Agrafage structurel', prix: 'Solution proportionnée', desc: "Quand des travaux sont nécessaires, l'agrafage suffit dans 90 % des cas — généralement 3 à 4 fois moins coûteux qu'une reprise en sous-œuvre par micropieux (30 000 à 60 000 €). Chiffré précisément après diagnostic, sous décennale 10 ans." },
+                  { titre: 'Une fissure stabilisée', desc: "Elle se surveille : nous vous indiquons comment suivre son évolution, sans engager de travaux tant qu'ils ne s'imposent pas." },
+                  { titre: 'Une fissure réparable', desc: "Elle se traite par agrafage structurel ou reprise d'enduit. Si vous le souhaitez, nous pouvons en assurer la coordination avec des entreprises couvertes par leur garantie décennale." },
+                  { titre: 'Un désordre qui engage les fondations', desc: "Il relève d'un bureau d'études : reprise en sous-œuvre, micropieux, calcul. Nous vous y orientons, votre dossier en main — sans jamais vous vendre plus que nécessaire." },
                 ].map((t, i) => (
                   <RevealOnScroll key={t.titre} delay={i * 0.06}>
-                    <li className="flex items-start justify-between gap-6 bg-ipb-cream border border-ipb-rule rounded-[6px] p-6">
-                      <div>
-                        <h3 className="font-serif text-ipb-text font-bold text-[18px] leading-tight mb-2">{t.titre}</h3>
-                        <p className="text-[13px] leading-[1.7] font-light text-ipb-muted">{t.desc}</p>
-                      </div>
-                      <span className="flex-shrink-0 text-[11px] uppercase tracking-[0.12em] text-ipb-orange font-semibold pt-1 text-right max-w-[110px]">{t.prix}</span>
+                    <li className="bg-ipb-cream border border-ipb-rule rounded-[6px] p-6">
+                      <h3 className="font-serif text-ipb-text font-bold text-[18px] leading-tight mb-2">{t.titre}</h3>
+                      <p className="text-[13px] leading-[1.7] font-light text-ipb-muted">{t.desc}</p>
                     </li>
                   </RevealOnScroll>
                 ))}
@@ -523,6 +521,7 @@ export default function FissuresPage() {
                     { href: '/fissure-horizontale-danger', label: 'Fissures horizontales : risques structurels' },
                     { href: '/microfissure-quand-sinquieter', label: "Microfissures : quand s'inquiéter ?" },
                     { href: '/fissure-fondation-maison', label: 'Fissures de fondation' },
+                    { href: '/secheresse-fissures-catastrophe-naturelle', label: 'Fissures de sécheresse & catastrophe naturelle' },
                     { href: '/fissure-secheresse-indemnisation', label: 'Fissures & sécheresse : indemnisation' },
                   ],
                 },
@@ -579,7 +578,7 @@ export default function FissuresPage() {
                 Le diagnostic en ligne ne vous engage à rien.
               </p>
               <p className="text-[15px] leading-[1.85] font-light text-ipb-muted">
-                Vous recevez un premier avis de l'expert structure du réseau IPB, sans engagement. <strong className="text-ipb-text not-italic">Si la situation ne nécessite pas d'intervention, nous vous le disons</strong> — c'est l'engagement de l'institut. Mieux vaut un avis juste qu'un devis vendu.
+                Vous recevez un premier avis d'un inspecteur IPB, sans engagement. <strong className="text-ipb-text not-italic">Si la situation ne nécessite pas d'intervention, nous vous le disons</strong> — c'est l'engagement de l'institut. Mieux vaut un avis juste qu'une réparation vendue.
               </p>
             </RevealOnScroll>
           </div>

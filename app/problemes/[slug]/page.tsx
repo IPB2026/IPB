@@ -152,7 +152,7 @@ export default async function ProblemPage({ params }: PageProps) {
                   href="/diagnostic"
                   className="px-6 py-3 rounded-xl border border-ipb-rule font-semibold text-center"
                 >
-                  Lancer le diagnostic gratuit
+                  Lancer le diagnostic
                 </Link>
               </div>
             </div>
@@ -191,9 +191,9 @@ export default async function ProblemPage({ params }: PageProps) {
           <InternalLinks
             title="Ressources utiles"
             links={[
-              { href: '/expertise/fissures', label: 'Expertise fissures & structure' },
+              { href: '/expertise/fissures', label: 'Diagnostic des fissures' },
               { href: '/expertise/humidite', label: 'Expertise humidité & infiltrations' },
-              { href: '/diagnostic', label: 'Diagnostic gratuit en 3 minutes' },
+              { href: '/diagnostic', label: 'Diagnostic en 3 minutes' },
               { href: '/blog', label: 'Blog expert IPB' },
             ]}
           />

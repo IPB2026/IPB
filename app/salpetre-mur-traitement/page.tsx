@@ -9,16 +9,16 @@ import { Phone, ArrowRight, AlertTriangle, Droplets, ChevronRight, Shield, Check
 
 export const metadata: Metadata = {
   title: 'Salpêtre Mur · Causes et Traitement · Injection Résine',
-  description: "⚠️ Salpêtre (poudre blanche) sur vos murs ? Signe de remontées capillaires. Injection résine. Garantie 30 ans. ☎ 05 82 95 33 75",
+  description: "⚠️ Salpêtre (poudre blanche) sur vos murs ? Signe de remontées capillaires. Injection résine hydrophobe. ☎ 05 82 95 33 75",
   keywords: ['salpêtre mur', 'poudre blanche mur', 'nitrate potassium', 'traitement salpêtre', 'humidité murs'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/salpetre-mur-traitement' },
 };
 
 const faussesSolutions = [
-  { solution: 'Brosser le salpêtre', resultat: 'Réapparaît en quelques semaines', efficacite: '0%' },
-  { solution: 'Peinture anti-humidité', resultat: 'Cloque et s\'écaille', efficacite: '0%' },
-  { solution: 'Enduit "respirant"', resultat: 'Masque temporairement', efficacite: '10%' },
-  { solution: 'Produit anti-salpêtre', resultat: 'Effet 3-6 mois max', efficacite: '20%' },
+  { solution: 'Brosser le salpêtre', resultat: 'Réapparaît en quelques semaines', efficacite: 'Inefficace' },
+  { solution: 'Peinture anti-humidité', resultat: 'Cloque et s\'écaille', efficacite: 'Inefficace' },
+  { solution: 'Enduit "respirant"', resultat: 'Masque temporairement', efficacite: 'Quasi nul' },
+  { solution: 'Produit anti-salpêtre', resultat: 'Effet 3-6 mois max', efficacite: 'Très limité' },
 ];
 
 const faqSchema = {
@@ -30,7 +30,7 @@ const faqSchema = {
       name: 'Comment traiter définitivement le salpêtre sur un mur ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Le seul traitement efficace et définitif est l\'injection de résine hydrophobe à la base des murs pour stopper les remontées capillaires, cause du salpêtre. Le procédé consiste à percer des trous tous les 12cm, puis injecter la résine sous pression. Le mur s\'assèche en 3 à 6 mois et le salpêtre disparaît. Ce traitement a une efficacité de 95% et une garantie de 30 ans.',
+        text: 'Le seul traitement efficace et définitif est l\'injection de résine hydrophobe à la base des murs pour stopper les remontées capillaires, cause du salpêtre. Le procédé consiste à percer des trous tous les 12cm, puis injecter la résine sous pression. Le mur s\'assèche en 3 à 6 mois et le salpêtre disparaît durablement.',
       },
     },
     {
@@ -46,15 +46,15 @@ const faqSchema = {
       name: 'Pourquoi le salpêtre revient-il après nettoyage ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Le salpêtre revient car le nettoyage ne traite que le symptôme, pas la cause. L\'eau continue de remonter par capillarité dans le mur, transportant les sels minéraux du sol. En s\'évaporant, elle dépose de nouveaux cristaux à la surface. Les peintures anti-humidité, enduits \"respirants\" et produits anti-salpêtre sont tous inefficaces à long terme (0 à 20% d\'efficacité).',
+        text: 'Le salpêtre revient car le nettoyage ne traite que le symptôme, pas la cause. L\'eau continue de remonter par capillarité dans le mur, transportant les sels minéraux du sol. En s\'évaporant, elle dépose de nouveaux cristaux à la surface. Les peintures anti-humidité, enduits \"respirants\" et produits anti-salpêtre sont tous inefficaces à long terme.',
       },
     },
     {
       '@type': 'Question',
-      name: 'Combien coûte un traitement anti-salpêtre par injection de résine ?',
+      name: 'Comment se déroule un traitement anti-salpêtre par injection de résine ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Le traitement par injection de résine hydrophobe coûte entre 80 et 120€ par mètre linéaire de mur traité. Le diagnostic préalable est gratuit. L\'intervention dure 1 à 2 jours et le séchage complet du mur prend 3 à 6 mois. Le traitement est garanti 30 ans avec une efficacité de 95%.',
+        text: 'Le traitement par injection de résine hydrophobe crée une barrière étanche à la base des murs pour stopper les remontées capillaires. Le diagnostic préalable est sans engagement. L\'intervention dure 1 à 2 jours et le séchage complet du mur prend 3 à 6 mois.',
       },
     },
   ],
@@ -116,7 +116,7 @@ export default function SalpetrePage() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/diagnostic" className="group bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl">
-                  Diagnostic gratuit
+                  Diagnostic
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all">
@@ -196,7 +196,7 @@ export default function SalpetrePage() {
                   </div>
                 </div>
                 <div className="bg-green-100 text-green-700 px-4 py-2 rounded-full font-bold">
-                  95% • 30 ans
+                  Solution durable
                 </div>
               </div>
             </div>
@@ -242,16 +242,16 @@ export default function SalpetrePage() {
             <div className="inline-block bg-gradient-to-r from-amber-500/20 to-orange-500/20 rounded-3xl p-8 border border-amber-500/30">
               <div className="grid md:grid-cols-3 gap-8">
                 <div>
-                  <div className="text-4xl font-black text-amber-400">80-120€</div>
-                  <div className="text-ipb-light">par mètre linéaire</div>
+                  <div className="text-4xl font-black text-amber-400">12 cm</div>
+                  <div className="text-ipb-light">entre injections</div>
                 </div>
                 <div>
-                  <div className="text-4xl font-black text-amber-400">30 ans</div>
-                  <div className="text-ipb-light">de garantie</div>
+                  <div className="text-4xl font-black text-amber-400">1-2 j</div>
+                  <div className="text-ipb-light">d'intervention</div>
                 </div>
                 <div>
-                  <div className="text-4xl font-black text-amber-400">95%</div>
-                  <div className="text-ipb-light">d'efficacité</div>
+                  <div className="text-4xl font-black text-amber-400">3-6 mois</div>
+                  <div className="text-ipb-light">de séchage</div>
                 </div>
               </div>
             </div>
@@ -297,7 +297,7 @@ export default function SalpetrePage() {
             Le salpêtre ne partira pas tout seul.
           </h2>
           <p className="text-xl text-amber-100 mb-8">
-            Diagnostic gratuit sous 48h • Traitement garanti 30 ans
+            Diagnostic sous 48h • Traitement durable
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="group bg-white text-amber-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-amber-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">

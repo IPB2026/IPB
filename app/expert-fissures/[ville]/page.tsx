@@ -433,7 +433,7 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
           <div className="max-w-ipb mx-auto px-6 lg:px-12 grid md:grid-cols-3 gap-6">
             {[
               { href: '/expertise/fissures', titre: 'Notre méthode', desc: 'Diagnostic instrumenté, agrafage, reprise en sous-œuvre.' },
-              { href: '/expertise-avant-achat-immobilier-toulouse', titre: 'Expertise avant achat', desc: 'Un diagnostic indépendant du bâti avant de signer.' },
+              { href: '/expertise-avant-achat-immobilier-toulouse', titre: 'Expertise avant achat', desc: 'Une inspection du bâti avant de signer.' },
               { href: '/blog/agrafage-vs-micropieux-choix', titre: 'Agrafage ou micropieux ?', desc: 'Notre guide pour choisir la bonne solution structurelle.' },
             ].map((card) => (
               <Link

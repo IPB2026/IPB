@@ -75,7 +75,7 @@ export function generateLocalFAQ(ctx: LocalFAQContext): LocalFAQEntry[] {
     },
     {
       question: `Combien coûte une expertise fissures ou humidité à ${v} ?`,
-      answer: `Le diagnostic préalable téléphonique est gratuit. L'expertise sur site à ${v} démarre à 350 € TTC pour un diagnostic visuel avec rapport. Pour une expertise approfondie (instruments de mesure, suivi de l'évolution des fissures, contre-expertise assurance) le devis est établi sous 24 h après le premier échange.`,
+      answer: `Le diagnostic préalable téléphonique permet de cadrer votre situation. L'expertise sur site à ${v} comprend un diagnostic visuel avec rapport. Pour une expertise approfondie (instruments de mesure, suivi de l'évolution des fissures, contre-expertise assurance) le devis est établi sous 24 h après le premier échange.`,
     },
     {
       question: `Mon assurance prend-elle en charge l'expertise à ${v} ?`,

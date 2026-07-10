@@ -27,6 +27,7 @@ const spokeFissuresPages = [
   'microfissure-quand-sinquieter',
   'fissure-secheresse-indemnisation',
   'fissure-fondation-maison',
+  'secheresse-fissures-catastrophe-naturelle',
 ];
 
 // 🎯 Pages SPOKE Humidité (Topic Clusters - Hub & Spoke)
@@ -44,7 +45,7 @@ const spokeHumiditePages = [
 
 // 📋 Pages E-E-A-T (Expertise, Experience, Authoritativeness, Trustworthiness)
 const eeatPages = [
-  'notre-expert',
+  'institut',
   'avis-clients',
 ];
 

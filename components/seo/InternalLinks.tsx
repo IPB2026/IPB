@@ -14,7 +14,7 @@ type InternalLinksProps = {
 
 const linkSets: Record<NonNullable<InternalLinksProps['variant']>, LinkItem[]> = {
   default: [
-    { href: '/diagnostic', label: 'Diagnostic gratuit', description: 'Evaluez votre situation en 2 minutes.' },
+    { href: '/diagnostic', label: 'Diagnostic', description: 'Evaluez votre situation en 2 minutes.' },
     { href: '/expertise/fissures', label: 'Expertise fissures', description: 'Stabilisation et agrafage.' },
     { href: '/expertise/humidite', label: 'Expertise humidité', description: 'Remontées, infiltrations, condensation : la vraie cause.' },
     { href: '/contact', label: 'Contact direct', description: 'Une question ? Nous repondons sous 24h.' },
@@ -23,7 +23,7 @@ const linkSets: Record<NonNullable<InternalLinksProps['variant']>, LinkItem[]> =
     { href: '/diagnostic', label: 'Diagnostic fissures', description: 'Recevez un avis expert rapide.' },
     { href: '/diagnostic-avant-vente', label: 'Diagnostic avant vente', description: 'Rassurer vos acheteurs, sécuriser la transaction.' },
     { href: '/blog', label: 'Guides fissures', description: 'Comprendre les causes et solutions.' },
-    { href: '/contact', label: 'Parler a un expert', description: 'Conseil gratuit par telephone.' },
+    { href: '/contact', label: 'Parler a un inspecteur IPB', description: 'Conseil par telephone.' },
   ],
   humidite: [
     { href: '/diagnostic', label: 'Diagnostic humidite', description: 'Analyse rapide de vos symptomes.' },
@@ -32,10 +32,10 @@ const linkSets: Record<NonNullable<InternalLinksProps['variant']>, LinkItem[]> =
     { href: '/contact', label: 'Contacter IPB', description: 'Reponse claire sous 24h.' },
   ],
   blog: [
-    { href: '/diagnostic', label: 'Diagnostic gratuit', description: 'Obtenez un avis personnalise.' },
+    { href: '/diagnostic', label: 'Diagnostic', description: 'Obtenez un avis personnalise.' },
     { href: '/expertise/fissures', label: 'Fissures structurelles', description: 'Solutions techniques garanties.' },
     { href: '/expertise/humidite', label: 'Expertise humidité', description: 'Remontées, infiltrations, condensation : la vraie cause.' },
-    { href: '/contact', label: 'Contact IPB', description: 'Parler a un expert.' },
+    { href: '/contact', label: 'Contact IPB', description: 'Parler a un inspecteur IPB.' },
   ],
   diagnostic: [
     { href: '/expertise/fissures', label: 'Expertise fissures', description: 'Agrafage et stabilisation.' },
@@ -44,15 +44,15 @@ const linkSets: Record<NonNullable<InternalLinksProps['variant']>, LinkItem[]> =
     { href: '/contact', label: 'Contact direct', description: 'Appelez-nous au 05 82 95 33 75.' },
   ],
   contact: [
-    { href: '/diagnostic', label: 'Diagnostic gratuit', description: 'Evaluez votre situation.' },
+    { href: '/diagnostic', label: 'Diagnostic', description: 'Evaluez votre situation.' },
     { href: '/expertise/fissures', label: 'Fissures', description: 'Solutions structurelles durables.' },
     { href: '/expertise/humidite', label: 'Expertise humidité', description: 'Remontées, infiltrations, condensation : la vraie cause.' },
     { href: '/blog', label: 'Blog IPB', description: 'Guides et conseils pratiques.' },
   ],
   ville: [
-    { href: '/diagnostic', label: 'Diagnostic gratuit', description: 'Analyse rapide de votre cas.' },
+    { href: '/diagnostic', label: 'Diagnostic', description: 'Analyse rapide de votre cas.' },
     { href: '/expertise/fissures', label: 'Fissures & structure', description: 'Agrafage et stabilisation.' },
-    { href: '/expertise-avant-achat-immobilier-toulouse', label: 'Avant achat immobilier', description: 'Diagnostic indépendant avant de signer.' },
+    { href: '/expertise-avant-achat-immobilier-toulouse', label: 'Avant achat immobilier', description: 'Diagnostic avant de signer.' },
     { href: '/contact', label: 'Contact IPB', description: 'Intervention locale rapide.' },
   ],
 };

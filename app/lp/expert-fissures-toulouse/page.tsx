@@ -78,7 +78,7 @@ export default function LandingFissuresToulouse() {
               <ul className="space-y-2 text-[13px] text-ipb-muted leading-[1.7]">
                 {[
                   '<strong class="text-ipb-text not-italic font-medium">Rapport technique reconnu par les assurances</strong> — pièce de référence dans les dossiers CAT-NAT',
-                  '<strong class="text-ipb-text not-italic font-medium">Diagnostic instrumenté au fissuromètre</strong> — un rapport clair, en toute indépendance',
+                  '<strong class="text-ipb-text not-italic font-medium">Diagnostic instrumenté au fissuromètre</strong> — un rapport d\'inspection clair',
                   '<strong class="text-ipb-text not-italic font-medium">Réseau IPB actif depuis 2019</strong> — 850 chantiers menés en Occitanie',
                 ].map((item) => (
                   <li key={item} className="flex gap-3">
@@ -175,7 +175,7 @@ export default function LandingFissuresToulouse() {
               05 82 95 33 75
             </a>
           </div>
-          <p className="text-[12px] text-ipb-light mt-4">Sans engagement · Réponse sous 48 heures · Diagnostic indépendant</p>
+          <p className="text-[12px] text-ipb-light mt-4">Sans engagement · Réponse sous 48 heures</p>
         </div>
       </section>
     </LandingShell>

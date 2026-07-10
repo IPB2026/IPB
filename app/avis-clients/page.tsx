@@ -11,7 +11,7 @@ import { googleReviews } from '@/app/data/testimonials';
 
 export const metadata: Metadata = {
   title: 'Avis Clients IPB · 4.9/5 Google · Toulouse',
-  description: "Avis Google vérifiés en Occitanie : 4.9/5. Diagnostic fissures, humidité, expertise avant achat. Institut indépendant de pathologie du bâtiment. ☎ 05 82 95 33 75",
+  description: "Avis Google vérifiés en Occitanie : 4.9/5. Diagnostic fissures, humidité, expertise avant achat. Institut de diagnostic en pathologie du bâtiment. ☎ 05 82 95 33 75",
   keywords: ['avis IPB', 'avis expert fissures toulouse', 'témoignages clients institut', 'IPB expertise avis', 'note google'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/avis-clients' },
   openGraph: {

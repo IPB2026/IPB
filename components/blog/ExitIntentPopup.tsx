@@ -64,7 +64,7 @@ export function ExitIntentPopup() {
         eyebrow: 'Avant de partir',
         title: 'Une fissure observée',
         titleItalic: 'mérite un avis posé.',
-        body: "Un expert du réseau IPB vient sur place sous 72h, mesure ce qu'il y a à mesurer, et vous remet une note de synthèse écrite. Sans engagement de votre part.",
+        body: "Un inspecteur IPB vient sur place sous 72h, mesure ce qu'il y a à mesurer, et vous remet un rapport d'inspection écrit. Sans engagement de votre part.",
         primaryCta: 'Décrire ma situation',
         primaryHref: '/diagnostic',
       };

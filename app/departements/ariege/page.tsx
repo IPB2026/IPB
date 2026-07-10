@@ -18,12 +18,12 @@ export const metadata: Metadata = {
     'humidité murs ariège',
     'agrafage fissures ariège',
     'maison pyrénées fissures',
-    'diagnostic fissures gratuit ariège',
+    'diagnostic fissures ariège',
     'expertise fissure ariège',
   ],
   openGraph: {
     title: 'Expert Fissures & Humidité Ariège (09) | IPB',
-    description: 'Intervention à Foix, Pamiers, Saint-Girons. Spécialiste bâti pyrénéen. Diagnostic gratuit.',
+    description: 'Intervention à Foix, Pamiers, Saint-Girons. Spécialiste bâti pyrénéen.',
     url: 'https://www.ipb-expertise.fr/departements/ariege',
     siteName: 'IPB - Expert Fissures & Humidité',
     locale: 'fr_FR',
@@ -84,7 +84,7 @@ export default function AriegePage() {
         name: 'Intervenez-vous dans tout l\'Ariège ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Oui, IPB intervient dans tout le département de l\'Ariège (09). Nous nous déplaçons à Foix, Pamiers, Saint-Girons, Lavelanet, et dans toutes les vallées pyrénéennes. Le diagnostic est gratuit et sans engagement.',
+          text: 'Oui, IPB intervient dans tout le département de l\'Ariège (09). Nous nous déplaçons à Foix, Pamiers, Saint-Girons, Lavelanet, et dans toutes les vallées pyrénéennes. Le diagnostic est sans engagement.',
         },
       },
       {
@@ -108,7 +108,7 @@ export default function AriegePage() {
         name: 'Quel est le délai d\'intervention en Ariège ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Nous intervenons généralement sous 3 à 5 jours ouvrés en Ariège. Pour les urgences (fissures évolutives, infiltrations importantes), nous pouvons accélérer le déplacement. Le diagnostic reste gratuit même pour les communes éloignées.',
+          text: 'Nous intervenons généralement sous 3 à 5 jours ouvrés en Ariège. Pour les urgences (fissures évolutives, infiltrations importantes), nous pouvons accélérer le déplacement. Le diagnostic reste sans engagement même pour les communes éloignées.',
         },
       },
     ],
@@ -163,7 +163,7 @@ export default function AriegePage() {
                   href="/diagnostic"
                   className="inline-flex items-center justify-center gap-2 bg-white text-emerald-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-emerald-50 transition-all shadow-xl"
                 >
-                  Diagnostic gratuit
+                  Diagnostic
                   <ArrowRight size={20} />
                 </Link>
                 <a
@@ -255,7 +255,7 @@ export default function AriegePage() {
                 <div className="space-y-2 text-sm text-ipb-muted">
                   <div className="flex items-center gap-2">
                     <CheckCircle size={16} className="text-green-500" />
-                    Diagnostic gratuit
+                    Diagnostic
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle size={16} className="text-green-500" />
@@ -277,7 +277,7 @@ export default function AriegePage() {
 
           <div className="mt-8 p-6 bg-emerald-50 rounded-xl border border-emerald-200">
             <p className="text-emerald-800">
-              <strong>📍 Zones d'intervention :</strong> Nous couvrons l'ensemble de l'Ariège : vallée de l'Ariège, Couserans, Pays d'Olmes, basse Ariège. Même les communes les plus reculées bénéficient d'un diagnostic gratuit.
+              <strong>📍 Zones d'intervention :</strong> Nous couvrons l'ensemble de l'Ariège : vallée de l'Ariège, Couserans, Pays d'Olmes, basse Ariège. Même les communes les plus reculées bénéficient d'un diagnostic.
             </p>
           </div>
         </div>
@@ -311,14 +311,14 @@ export default function AriegePage() {
               Besoin d'un expert en Ariège ?
             </h2>
             <p className="text-xl text-emerald-50 mb-8">
-              Diagnostic gratuit • Spécialiste bâti pyrénéen • Garantie décennale
+              Diagnostic • Spécialiste bâti pyrénéen • Garantie décennale
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/diagnostic"
                 className="inline-flex items-center justify-center gap-2 bg-white text-emerald-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-emerald-50 transition-all shadow-xl"
               >
-                Faire mon diagnostic gratuit
+                Faire mon diagnostic
                 <ArrowRight size={20} />
               </Link>
               <a

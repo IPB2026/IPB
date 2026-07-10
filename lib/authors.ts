@@ -23,10 +23,10 @@ const baseUrl =
 
 const institutProfile: AuthorProfile = {
   name: "L'institut IPB",
-  bio: "L'institut IPB intervient en pathologie et structure du bâtiment en Occitanie (Haute-Garonne, Tarn-et-Garonne, Gers, Tarn). Diagnostic indépendant : fissures, humidité, expertise avant achat et avant vente. Plus de 850 chantiers menés par le réseau IPB depuis 2019.",
-  specialty: 'Pathologie et structure du bâtiment',
+  bio: "L'institut IPB intervient en pathologie du bâtiment en Occitanie (Haute-Garonne, Tarn-et-Garonne, Gers, Tarn). Diagnostic : fissures, humidité, expertise avant achat et avant vente. Plus de 850 chantiers menés par le réseau IPB depuis 2019.",
+  specialty: 'Pathologie du bâtiment',
   jobTitle: 'Institut de pathologie du bâtiment — IPB',
-  profileUrl: `${baseUrl}/notre-expert`,
+  profileUrl: `${baseUrl}/institut`,
 };
 
 export const authorProfiles: Record<string, AuthorProfile> = {};

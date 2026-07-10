@@ -57,7 +57,7 @@ const faqSchema = {
       name: 'Comment être indemnisé pour des fissures dues à la sécheresse ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Pour être indemnisé, votre commune doit être reconnue en état de catastrophe naturelle sécheresse (arrêté CAT-NAT publié au Journal Officiel). Vous disposez ensuite de 10 jours pour déclarer le sinistre à votre assurance habitation. L\'assureur mandatera un expert pour évaluer les dommages. L\'indemnisation intervient environ 3 mois après accord, moins la franchise légale de 1 534€.',
+        text: 'Pour être indemnisé, votre commune doit être reconnue en état de catastrophe naturelle sécheresse (arrêté CAT-NAT publié au Journal Officiel). Vous disposez ensuite de 10 jours pour déclarer le sinistre à votre assurance habitation. L\'assureur mandatera un expert pour évaluer les dommages. L\'indemnisation intervient environ 3 mois après accord, moins la franchise légale.',
       },
     },
     {
@@ -73,7 +73,7 @@ const faqSchema = {
       name: 'Quel est le montant de la franchise CAT-NAT pour une maison individuelle ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'La franchise légale pour une catastrophe naturelle sécheresse sur une maison individuelle est de 1 534€. Ce montant est fixé par l\'État et s\'applique systématiquement. Si votre commune a fait l\'objet de plus de 3 arrêtés CAT-NAT en 5 ans, la franchise peut être doublée, triplée ou quadruplée.',
+        text: 'La franchise légale pour une catastrophe naturelle sécheresse sur une maison individuelle est un montant forfaitaire fixé par l\'État, qui s\'applique systématiquement. Si votre commune a fait l\'objet de plus de 3 arrêtés CAT-NAT en 5 ans, la franchise peut être doublée, triplée ou quadruplée.',
       },
     },
     {
@@ -81,7 +81,7 @@ const faqSchema = {
       name: 'Peut-on contester l\'expertise de l\'assurance pour des fissures sécheresse ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Oui, vous pouvez faire réaliser une contre-expertise indépendante si l\'expert de votre assurance sous-évalue les dommages ou conteste le lien avec la sécheresse. Un avis technique indépendant renforce considérablement votre dossier. En Occitanie, IPB organise une visite par un expert du réseau partenaire, suivie d\'une note de synthèse détaillée ; pour un rapport opposable à votre assureur, un bureau d\'études structure ou un expert d\'assurance indépendant reste recommandé.',
+        text: 'Oui, vous pouvez faire réaliser une contre-expertise si l\'expert de votre assurance sous-évalue les dommages ou conteste le lien avec la sécheresse. Un rapport d\'inspection fondé sur des mesures renforce considérablement votre dossier. En Occitanie, IPB organise une visite par un inspecteur IPB, suivie d\'un rapport d\'inspection détaillé ; pour un rapport opposable à votre assureur, un bureau d\'études ou un expert d\'assurance peut rester recommandé.',
       },
     },
   ],
@@ -165,7 +165,7 @@ export default function FissureSecheressePage() {
                 <div className="text-amber-200 text-sm mt-2">communes reconnues CAT-NAT en Occitanie (2022-2024)</div>
               </div>
               <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
-                <div className="text-5xl font-black text-ipb-orange-l">1 534€</div>
+                <div className="text-5xl font-black text-ipb-orange-l">À charge</div>
                 <div className="text-amber-200 text-sm mt-2">franchise légale (maison individuelle)</div>
               </div>
               <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
@@ -299,7 +299,7 @@ export default function FissureSecheressePage() {
               </h2>
               <p className="text-white/70 text-lg mb-8">
                 L'expertise de votre assureur peut sous-évaluer les dommages ou contester le lien avec la sécheresse. 
-                Notre rapport technique indépendant renforce votre dossier.
+                Notre rapport d'inspection renforce votre dossier.
               </p>
 
               <ul className="space-y-4 mb-8">

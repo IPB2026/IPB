@@ -50,7 +50,7 @@ export function Navbar() {
     { href: '/expertise/humidite', label: 'Humidité' },
     { href: '/expertise-avant-achat-immobilier-toulouse', label: 'Avant achat' },
     { href: '/diagnostic-avant-vente', label: 'Avant vente' },
-    { href: '/notre-expert', label: "L'institut" },
+    { href: '/institut', label: "L'institut" },
     { href: '/partenaires', label: 'Pros' },
     { href: '/blog', label: 'Blog' },
     { href: '/contact', label: 'Contact' },
@@ -70,7 +70,7 @@ export function Navbar() {
       }}
     >
       <div className="max-w-ipb mx-auto px-5 lg:px-12 h-full flex items-center justify-between gap-3">
-        {/* LOGO + CTA Diagnostic gratuit collés à gauche — proportions harmonisées */}
+        {/* LOGO + CTA Diagnostic collés à gauche — proportions harmonisées */}
         <div className="flex items-center gap-3 lg:gap-4">
           <Link href="/" className="flex items-center gap-2.5 lg:gap-3 group shrink-0" aria-label="IPB Expertise — Accueil">
             <div className="w-11 h-11 lg:w-10 lg:h-10 bg-ipb-orange-d text-white rounded-[5px] flex items-center justify-center font-extrabold text-[15px] lg:text-[14px] tracking-tight transition-transform duration-200 group-hover:-rotate-[4deg] shadow-[0_2px_8px_rgba(156,71,23,0.28)]">
@@ -82,7 +82,7 @@ export function Navbar() {
             </div>
           </Link>
 
-          {/* CTA Diagnostic gratuit collé au logo — proportions harmonisées avec le logo (h-11 mobile) */}
+          {/* CTA Diagnostic collé au logo — proportions harmonisées avec le logo (h-11 mobile) */}
           <Link
             href="/diagnostic"
             className="group inline-flex items-center gap-1.5 h-11 lg:h-10 bg-ipb-orange-d hover:bg-[#7E390F] text-white px-4 lg:px-5 rounded-[5px] font-semibold text-[12.5px] lg:text-[12px] tracking-[0.02em] transition-colors duration-300 shrink-0 shadow-[0_2px_8px_rgba(156,71,23,0.22)]"

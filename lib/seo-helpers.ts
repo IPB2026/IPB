@@ -63,7 +63,7 @@ export function extractFAQsFromContent(content: string): FAQItem[] {
 export function getContextualLinks(currentSlug: string, keywords: string[]): Array<{ text: string; url: string; }> {
   const linkMap: Record<string, Array<{ text: string; url: string; }>> = {
     'fissures': [
-      { text: 'diagnostic fissures gratuit', url: '/diagnostic' },
+      { text: 'diagnostic fissures', url: '/diagnostic' },
       { text: 'agrafage de fissures', url: '/expertise/fissures' },
       { text: 'expertise fissures Toulouse', url: '/villes/toulouse' },
       { text: 'fissures en escalier', url: '/blog/fissures-escalier-tassement-differentiel' },
@@ -85,7 +85,7 @@ export function getContextualLinks(currentSlug: string, keywords: string[]): Arr
     'cat-nat': [
       { text: 'guide CAT-NAT complet', url: '/blog/catastrophe-naturelle-secheresse-demarches-indemnisation' },
       { text: 'fissures sécheresse', url: '/blog/secheresse-argile-haute-garonne' },
-      { text: 'diagnostic gratuit', url: '/diagnostic' }
+      { text: 'diagnostic', url: '/diagnostic' }
     ],
     'agrafage': [
       { text: 'agrafage vs micropieux', url: '/blog/agrafage-vs-micropieux-choix' },
@@ -124,7 +124,7 @@ export function getContextualLinks(currentSlug: string, keywords: string[]): Arr
     ],
     'diagnostic': [
       { text: 'diagnostic structurel', url: '/blog/diagnostic-structurel-maison' },
-      { text: 'diagnostic gratuit', url: '/diagnostic' },
+      { text: 'diagnostic', url: '/diagnostic' },
       { text: 'expert fissures', url: '/expertise/fissures' }
     ],
     'toulouse': [
@@ -218,7 +218,7 @@ export function optimizeMetaDescription(description: string, category: string): 
     'fissures': ['URGENT', 'DANGER', 'Solution définitive', 'Expert', 'Garanti 10 ans'],
     'humidite': ['Stop', 'Traitement définitif', 'Garantie 30 ans', 'Expert', 'Résultats prouvés'],
     'conseils': ['Guide complet', 'Méthode éprouvée', 'Économisez', 'Expert révèle', 'Sans risque'],
-    'expertise': ['Certifié', 'Expert reconnu', 'Garantie décennale', 'Diagnostic gratuit', 'Intervention rapide']
+    'expertise': ['Certifié', 'Expert reconnu', 'Garantie décennale', 'Diagnostic', 'Intervention rapide']
   };
 
   // Ajouter un power word si la description est courte
@@ -290,7 +290,7 @@ export function generateReviewSchema(_articleTitle: string) {
 export function injectInternalLinks(content: string, currentSlug: string): string {
   const linkReplacements: Record<string, string> = {
     // Fissures
-    'diagnostic gratuit': '/diagnostic',
+    'diagnostic en ligne': '/diagnostic',
     'diagnostic structurel': '/blog/diagnostic-structurel-maison',
     'agrafage': '/expertise/fissures',
     'micropieux': '/blog/agrafage-vs-micropieux-choix',
@@ -399,9 +399,9 @@ export function injectMidArticleCta(content: string): string {
   const cta = `
 <div class="my-10 p-6 sm:p-8 bg-ipb-navy rounded-[6px] text-white not-prose">
   <p class="text-[11px] uppercase tracking-[0.18em] text-ipb-orange-l font-semibold mb-2">Un doute sur votre situation ?</p>
-  <p class="text-white/85 text-[15px] leading-relaxed mb-5">Décrivez votre cas en 2 minutes : l'institut vous rappelle sous 48 h avec un premier avis, gratuitement et sans engagement.</p>
+  <p class="text-white/85 text-[15px] leading-relaxed mb-5">Décrivez votre cas en 2 minutes : l'institut vous rappelle sous 48 h avec un premier avis, sans engagement.</p>
   <div class="flex flex-col sm:flex-row gap-3">
-    <a href="/diagnostic" class="inline-flex items-center justify-center min-h-[48px] bg-ipb-orange text-white px-6 py-3 rounded-[3px] font-bold text-[14px] no-underline hover:bg-[#b35519] transition-colors">Mon diagnostic gratuit · 2 min</a>
+    <a href="/diagnostic" class="inline-flex items-center justify-center min-h-[48px] bg-ipb-orange text-white px-6 py-3 rounded-[3px] font-bold text-[14px] no-underline hover:bg-[#b35519] transition-colors">Mon diagnostic · 2 min</a>
     <a href="tel:0582953375" class="inline-flex items-center justify-center min-h-[48px] bg-white/10 border border-white/20 text-white px-6 py-3 rounded-[3px] font-bold text-[14px] no-underline hover:bg-white/20 transition-colors">05 82 95 33 75</a>
   </div>
 </div>

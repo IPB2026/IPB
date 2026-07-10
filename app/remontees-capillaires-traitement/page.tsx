@@ -7,13 +7,13 @@ import { Footer } from '@/components/home/Footer';
 import { CheckCircle, Phone, ArrowRight, Droplets, AlertTriangle, Home, Clock, Shield, ChevronRight, Zap, ThermometerSun } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Traitement Remontées Capillaires · Injection Résine 30 ans',
-  description: "Salpêtre, moisissures, peinture qui cloque ? Injection résine hydrophobe. Garantie 30 ans. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
+  title: 'Traitement Remontées Capillaires · Injection Résine · Toulouse',
+  description: "Salpêtre, moisissures, peinture qui cloque ? Injection résine hydrophobe. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
   keywords: ['remontées capillaires', 'injection résine', 'humidité murs', 'salpêtre', 'traitement humidité'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/remontees-capillaires-traitement' },
   openGraph: {
     title: 'Traitement Remontées Capillaires · Injection Résine · IPB',
-    description: "Injection résine hydrophobe. Résultat visible en 3 mois. Garantie 30 ans. Décennale 10 ans sur les travaux.",
+    description: "Injection résine hydrophobe. Résultat visible en 3 mois. Décennale 10 ans sur les travaux.",
     url: 'https://www.ipb-expertise.fr/remontees-capillaires-traitement',
     type: 'article',
   },
@@ -86,7 +86,7 @@ export default function RemonteesCapillairesPage() {
             <div>
               <div className="inline-flex items-center gap-2 bg-cyan-500/20 border border-cyan-400/30 text-cyan-300 px-4 py-2 rounded-full text-sm font-bold mb-6">
                 <Droplets size={16} />
-                Traitement garanti 30 ans
+                Traitement durable
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.1]">
@@ -104,12 +104,12 @@ export default function RemonteesCapillairesPage() {
 
               <div className="grid grid-cols-3 gap-4 mb-8">
                 <div className="bg-white/10 backdrop-blur rounded-2xl p-4 text-center">
-                  <div className="text-3xl font-black text-cyan-400">30</div>
-                  <div className="text-xs text-blue-200">ans de garantie</div>
+                  <div className="text-3xl font-black text-cyan-400">1-2 j</div>
+                  <div className="text-xs text-blue-200">d'intervention</div>
                 </div>
                 <div className="bg-white/10 backdrop-blur rounded-2xl p-4 text-center">
-                  <div className="text-3xl font-black text-cyan-400">95%</div>
-                  <div className="text-xs text-blue-200">d'efficacité</div>
+                  <div className="text-3xl font-black text-cyan-400">3 mois</div>
+                  <div className="text-xs text-blue-200">résultat visible</div>
                 </div>
                 <div className="bg-white/10 backdrop-blur rounded-2xl p-4 text-center">
                   <div className="text-3xl font-black text-cyan-400">48h</div>
@@ -119,7 +119,7 @@ export default function RemonteesCapillairesPage() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/diagnostic" className="group bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl shadow-cyan-500/25">
-                  Diagnostic gratuit
+                  Diagnostic
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all">
@@ -225,7 +225,7 @@ export default function RemonteesCapillairesPage() {
               Traitement en 4 étapes
             </h2>
             <p className="text-xl text-ipb-light max-w-2xl mx-auto">
-              L'injection de résine hydrophobe : la solution définitive, garantie 30 ans.
+              L'injection de résine hydrophobe : la solution définitive et durable.
             </p>
           </div>
 
@@ -273,16 +273,16 @@ export default function RemonteesCapillairesPage() {
                   </li>
                   <li className="flex items-center gap-3 text-white/70">
                     <CheckCircle size={20} className="text-cyan-400" />
-                    Garantie 30 ans sur l'injection
+                    Barrière étanche pérenne
                   </li>
                 </ul>
               </div>
               <div className="text-center">
-                <div className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
-                  80-120€
+                <div className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+                  6-12 mois
                 </div>
-                <div className="text-ipb-light mt-2">par mètre linéaire</div>
-                <div className="text-sm text-cyan-300 mt-4">Soit 8 000 à 15 000€ pour une maison standard</div>
+                <div className="text-ipb-light mt-2">pour des murs secs et sains</div>
+                <div className="text-sm text-cyan-300 mt-4">Barrière étanche active dès 48h</div>
               </div>
             </div>
           </div>
@@ -304,33 +304,28 @@ export default function RemonteesCapillairesPage() {
                 <tr>
                   <th className="p-4 text-left">Solution</th>
                   <th className="p-4 text-center">Efficacité</th>
-                  <th className="p-4 text-center">Prix</th>
                   <th className="p-4 text-center">Durée</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="bg-cyan-50 border-l-4 border-cyan-500">
                   <td className="p-4 font-bold text-ipb-text">✅ Injection résine</td>
-                  <td className="p-4 text-center"><span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-bold">95%</span></td>
-                  <td className="p-4 text-center text-ipb-muted">8-15K€</td>
-                  <td className="p-4 text-center text-ipb-muted">30 ans</td>
+                  <td className="p-4 text-center"><span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-bold">Optimale</span></td>
+                  <td className="p-4 text-center text-ipb-muted">Durable</td>
                 </tr>
                 <tr className="border-b border-ipb-rule">
                   <td className="p-4 font-bold text-ipb-text">Drainage périphérique</td>
-                  <td className="p-4 text-center"><span className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-bold">70%</span></td>
-                  <td className="p-4 text-center text-ipb-muted">15-30K€</td>
-                  <td className="p-4 text-center text-ipb-muted">20 ans</td>
+                  <td className="p-4 text-center"><span className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-bold">Correcte</span></td>
+                  <td className="p-4 text-center text-ipb-muted">Long terme</td>
                 </tr>
                 <tr className="border-b border-ipb-rule">
                   <td className="p-4 font-bold text-ipb-text">Électro-osmose</td>
-                  <td className="p-4 text-center"><span className="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm font-bold">50%</span></td>
-                  <td className="p-4 text-center text-ipb-muted">5-10K€</td>
+                  <td className="p-4 text-center"><span className="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm font-bold">Aléatoire</span></td>
                   <td className="p-4 text-center text-ipb-muted">Variable</td>
                 </tr>
                 <tr>
                   <td className="p-4 font-bold text-ipb-text">Peinture "anti-humidité"</td>
-                  <td className="p-4 text-center"><span className="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-bold">0%</span></td>
-                  <td className="p-4 text-center text-ipb-muted">200-500€</td>
+                  <td className="p-4 text-center"><span className="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-bold">Nulle</span></td>
                   <td className="p-4 text-center text-ipb-muted">6 mois max</td>
                 </tr>
               </tbody>
@@ -386,7 +381,7 @@ export default function RemonteesCapillairesPage() {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm font-bold mb-6">
             <Shield size={16} />
-            Garantie 30 ans sur l'injection
+            Injection résine hydrophobe
           </div>
           
           <h2 className="text-3xl md:text-5xl font-black mb-6">

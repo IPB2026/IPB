@@ -11,9 +11,9 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
   title:
-    'Diagnostic avant vente immobilière · Toulouse',
+    'Diagnostic avant vente immobilière à Toulouse · IPB',
   description:
-    "Vous vendez ? Un diagnostic indépendant du bâti avant la mise en vente rassure vos acheteurs et sécurise votre prix. Visite sous 72h en Occitanie.",
+    "L'état du bâti, objectivé avant la mise en vente. Un rapport d'inspection qui se transmet à l'agence, au notaire, à l'acheteur. Visite sous 72h en Occitanie.",
   keywords: [
     'diagnostic avant vente maison',
     'diagnostic vendeur immobilier',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title:
       'Diagnostic avant vente immobilière · Rassurez vos acheteurs · IPB Toulouse',
     description:
-      "Un diagnostic indépendant du bâti avant la mise en vente : vous désamorcez les doutes des acheteurs et vous sécurisez votre prix.",
+      "Un diagnostic du bâti avant la mise en vente : vous désamorcez les doutes des acheteurs et vous sécurisez votre prix.",
     url: 'https://www.ipb-expertise.fr/diagnostic-avant-vente',
     type: 'website',
   },
@@ -61,7 +61,7 @@ const contenuRapport = [
   'Mesures instrumentées (fissuromètre, taux d’humidité selon le cas)',
   'Qualification de chaque désordre : esthétique, superficiel ou structurel',
   'Identification des causes probables et de leur évolution prévisible',
-  "Avis de l'expert sur la stabilité globale du bâti",
+  "Avis de l'inspecteur IPB sur la stabilité globale du bâti",
   'Document clair, présentable à vos acheteurs, à l’agent immobilier et au notaire',
 ];
 
@@ -93,7 +93,7 @@ const etapes = [
   },
   {
     titre: 'Visite sur site',
-    desc: "L'expert se déplace sous 72h. Lecture du bâti, mesures, photos, échange direct.",
+    desc: "Un inspecteur IPB se déplace sous 72h. Lecture du bâti, mesures, photos, échange direct.",
   },
   {
     titre: 'Rapport remis',
@@ -109,7 +109,7 @@ const faqItems = [
   {
     question: 'Un diagnostic avant vente est-il obligatoire ?',
     answer:
-      "Non. Aucun diagnostic de structure, de fissures ou d'humidité n'est légalement obligatoire pour vendre — les diagnostics réglementaires (DPE, amiante, plomb, etc.) ne couvrent pas ces sujets. Mais le présenter spontanément change tout : l'acheteur passe du soupçon à la lecture.",
+      "Non. Aucun diagnostic du bâti, des fissures ou de l'humidité n'est légalement obligatoire pour vendre — les diagnostics réglementaires (DPE, amiante, plomb, etc.) ne couvrent pas ces sujets. Mais le présenter spontanément change tout : l'acheteur passe du soupçon à la lecture.",
   },
   {
     question: 'Combien de temps avant la mise en vente faut-il le faire ?',
@@ -119,7 +119,7 @@ const faqItems = [
   {
     question: 'Montrer un diagnostic, ça ne va pas faire peur aux acheteurs ?',
     answer:
-      "C'est l'inverse. Ce qui inquiète un acheteur, c'est l'inconnu. Un rapport indépendant qui qualifie précisément un désordre — souvent bénin — désamorce la peur et transforme une discussion émotionnelle en discussion technique.",
+      "C'est l'inverse. Ce qui inquiète un acheteur, c'est l'inconnu. Un rapport d'inspection qui qualifie précisément un désordre — souvent bénin — désamorce la peur et transforme une discussion émotionnelle en discussion technique.",
   },
   {
     question: "Le rapport peut-il être annexé à l'acte de vente ?",
@@ -138,7 +138,7 @@ const jsonLd = {
   '@type': 'Service',
   name: 'IPB — Diagnostic avant vente immobilière',
   description:
-    "Diagnostic indépendant du bâti (fissures, humidité, structure) réalisé avant la mise en vente, pour objectiver l'état du bien, rassurer les acheteurs et sécuriser la transaction.",
+    "Diagnostic du bâti (fissures, humidité) réalisé avant la mise en vente, pour objectiver l'état du bien, rassurer les acheteurs et sécuriser la transaction.",
   url: 'https://www.ipb-expertise.fr/diagnostic-avant-vente',
   serviceType: 'Diagnostic en pathologie du bâtiment — vente immobilière',
   provider: { '@id': 'https://www.ipb-expertise.fr#localbusiness' },
@@ -231,12 +231,12 @@ export default function DiagnosticAvantVentePage() {
                     fontWeight: 400,
                   }}
                 >
-                  Le diagnostic indépendant qui rassure vos acheteurs.
+                  L'état du bien, objectivé avant la mise en vente.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.14}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[640px]">
-                  Un bien qui suscite des questions — une fissure, une trace d'humidité, un doute sur la structure — se vend moins vite et moins cher. Un diagnostic indépendant, réalisé <em>avant</em> la mise en vente, transforme l'incertitude en information&nbsp;: vos acheteurs ne s'inquiètent plus, ils lisent. Et vous gardez la main sur votre prix.
+                  Un désordre découvert par l'acheteur pèse sur la négociation ; un désordre documenté par le vendeur cesse d'être un argument. Le rapport d'inspection IPB établit l'état du bâti <em>avant</em> la mise en vente&nbsp;: vos acheteurs ne s'inquiètent plus, ils lisent. Et vous gardez la main sur votre prix.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.2}>
@@ -251,7 +251,7 @@ export default function DiagnosticAvantVentePage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.26} variant="subtle">
                 <p className="text-[12px] leading-[1.7] tracking-[0.02em] text-ipb-light">
-                  Diagnostic indépendant · Visite sous 72h · Rapport remis sous 3 à 5 jours ouvrés
+                  Visite sous 72h · Rapport remis sous 3 à 5 jours ouvrés
                 </p>
               </RevealOnScroll>
             </div>
@@ -296,12 +296,12 @@ export default function DiagnosticAvantVentePage() {
           </div>
         </section>
 
-        {/* SECTION 2 — L'indépendance, votre argument */}
+        {/* SECTION 2 — La neutralité, votre argument */}
         <section className="bg-ipb-cream py-24 lg:py-32">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
             <RevealOnScroll>
               <div className="border-l-2 border-ipb-orange pl-8 lg:pl-12">
-                <Eyebrow>L'indépendance, votre argument</Eyebrow>
+                <Eyebrow>La neutralité, votre argument</Eyebrow>
                 <p
                   className="font-serif text-ipb-text"
                   style={{
@@ -340,7 +340,7 @@ export default function DiagnosticAvantVentePage() {
                   <em>le rapport remis.</em>
                 </h2>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted">
-                  Le rapport est rédigé par l'expert qui a mené la visite. Livré au format PDF, paginé, avec les photos en pleine résolution, il peut être présenté à vos acheteurs, à l'agent immobilier ou annexé à l'acte par votre notaire.
+                  Le rapport est rédigé par l'inspecteur IPB qui a mené la visite. Livré au format PDF, paginé, avec les photos en pleine résolution, il peut être présenté à vos acheteurs, à l'agent immobilier ou annexé à l'acte par votre notaire.
                 </p>
               </RevealOnScroll>
 

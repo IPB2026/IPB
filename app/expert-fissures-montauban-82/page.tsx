@@ -65,20 +65,20 @@ const faqItems = [
     answer: "Oui. Plus de 70 % du territoire du Tarn-et-Garonne est classé en risque moyen à fort de retrait-gonflement des argiles. Depuis 2020, plusieurs dizaines de communes du département ont été reconnues en état de catastrophe naturelle pour la sécheresse.",
   },
   {
-    question: "Le diagnostic est-il gratuit à Montauban ?",
-    answer: "Le diagnostic est une vraie expertise technique sur site : c'est une prestation payante qui inclut le déplacement, l'analyse instrumentée et le rapport détaillé. Son montant est intégralement déduit si vous nous confiez les travaux.",
+    question: "Comment se déroule le diagnostic à Montauban ?",
+    answer: "Le diagnostic est une inspection technique sur site : déplacement, mesures instrumentées au fissuromètre et rapport d'inspection détaillé. Nous vous précisons les conditions de vive voix ; le premier échange téléphonique est sans engagement.",
   },
   {
     question: "Quelle est la différence entre agrafage et micropieux ?",
-    answer: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables (8 000 à 15 000 €). Les micropieux reprennent les fondations en profondeur (25 000 à 50 000 €) — intervention lourde réservée aux tassements actifs majeurs. Le rôle d'IPB est de diagnostiquer la cause et de préconiser la solution adaptée, en toute indépendance ; pour la réalisation, l'institut vous oriente vers des entreprises membres du réseau IPB.",
+    answer: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables. Les micropieux reprennent les fondations en profondeur — intervention lourde réservée aux tassements actifs majeurs. Le rôle d'IPB est de diagnostiquer la cause et de préconiser la solution adaptée ; les interventions qui engagent les fondations relèvent de spécialistes, vers lesquels nous vous orientons.",
   },
   {
     question: "Combien de temps pour recevoir le rapport ?",
     answer: "Vous recevez votre rapport détaillé sous 48 à 72 h après la visite, avec photos, analyse instrumentée et préconisations de traitement.",
   },
   {
-    question: "Quel est le prix d'un agrafage à Montauban ?",
-    answer: "Le prix d'un agrafage structurel à Montauban et dans le Tarn-et-Garonne se situe entre 8 000 et 15 000 € TTC pour une façade complète, soit en moyenne 100 à 130 €/ml de fissure traitée. Le tarif varie selon la nature du mur (brique foraine, parpaing, pierre), la longueur de la fissure et la complexité d'accès. Devis ferme remis sous 72h après diagnostic.",
+    question: "Combien coûte un agrafage à Montauban ?",
+    answer: "Le coût dépend de la nature du mur (brique foraine, parpaing, pierre), de la longueur de la fissure et de la complexité d'accès. Nous le chiffrons précisément après le diagnostic et vous le communiquons de vive voix ; le devis est remis sous 72h après la visite.",
   },
   {
     question: "Ma commune est-elle reconnue en CAT-NAT sécheresse pour 2022 et 2023 ?",
@@ -94,7 +94,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "IPB - Institut de pathologie du bâtiment Montauban",
-  "description": "Institut indépendant en diagnostic et traitement des fissures structurelles. Montauban, Tarn-et-Garonne et Occitanie.",
+  "description": "Institut de diagnostic en pathologie du bâtiment : fissures structurelles. Montauban, Tarn-et-Garonne et Occitanie.",
   "url": "https://www.ipb-expertise.fr/expert-fissures-montauban-82",
   "telephone": "+33582953375",
   "address": {
@@ -155,7 +155,7 @@ export default function ExpertFissuresMontaubanPage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[620px]">
-                  Institut IPB — pathologie du bâtiment. Réseau IPB actif sur tout le Tarn-et-Garonne depuis 2019. Diagnostic instrumenté, identification de la cause et préconisations claires, en toute indépendance. Si des travaux sont nécessaires, orientation vers des entreprises membres du réseau IPB. Nos rapports sont reconnus par les assurances.
+                  Institut IPB — pathologie du bâtiment. Réseau IPB actif sur tout le Tarn-et-Garonne depuis 2019. Diagnostic instrumenté, identification de la cause et préconisations claires. Si des travaux sont nécessaires, orientation vers des entreprises membres du réseau IPB. Nos rapports sont reconnus par les assurances.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>

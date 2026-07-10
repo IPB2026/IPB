@@ -112,7 +112,7 @@ export function ServiceVilleTemplate({
                   </MagneticButton>
                 </div>
                 <p className="text-[12px] text-ipb-muted font-light mt-5">
-                  Sans engagement · Réponse sous 48 heures · Diagnostic indépendant
+                  Sans engagement · Réponse sous 48 heures · Diagnostic
                 </p>
               </RevealOnScroll>
             </div>

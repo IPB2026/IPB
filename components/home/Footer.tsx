@@ -24,7 +24,7 @@ export function Footer() {
             </Link>
 
             <p className="text-[14px] leading-[1.85] font-light text-white/75 max-w-[420px] mb-8">
-              Institut indépendant de diagnostic en pathologie du bâtiment&nbsp;: fissures, humidité, expertise avant achat, diagnostic avant vente. Un seul interlocuteur, du premier signe au rapport.
+              Institut de diagnostic en pathologie du bâtiment&nbsp;: fissures, humidité, inspection avant achat, diagnostic avant vente. Un seul interlocuteur, du premier signe au rapport.
             </p>
 
             <div className="space-y-5 mb-6">
@@ -70,7 +70,7 @@ export function Footer() {
             </p>
             <ul className="space-y-3 text-[14px] font-light">
               {[
-                ['/notre-expert', "L'institut"],
+                ['/institut', "L'institut"],
                 ['/avis-clients', 'Avis clients'],
                 ['/blog', 'Blog'],
                 ['/lexique', 'Lexique du bâtiment'],
@@ -120,7 +120,7 @@ export function Footer() {
         {/* Mention coordination — apparaît globalement, toutes pages */}
         <div className="pt-10 mb-6 border-t border-white/6">
           <p className="text-[12px] leading-[1.7] text-white/70 max-w-[760px]">
-            IPB est un institut indépendant de diagnostic en pathologie du bâtiment. À l'issue du diagnostic, si des travaux sont nécessaires, IPB peut orienter vers des entreprises membres du réseau IPB.
+            IPB est un institut de diagnostic en pathologie du bâtiment. À l'issue du diagnostic, si des travaux sont nécessaires et que vous le souhaitez, IPB peut en assurer la coordination avec des entreprises couvertes par leur garantie décennale.
           </p>
         </div>
 

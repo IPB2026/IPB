@@ -11,11 +11,12 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
   title:
-    "Expertise avant achat immobilier · Toulouse",
+    "Inspection avant achat immobilier à Toulouse · Institut IPB",
   description:
-    "Diagnostic indépendant du bâti avant achat immobilier à Toulouse. Visite sous 72h, rapport sous 3 à 5 jours — compatible avec votre délai de rétractation.",
+    "Avant de vous engager, une inspection du bâti sans lien avec le vendeur ni l'agence. Rapport remis dans vos délais de rétractation. Visite sous 72h.",
   keywords: [
     'expertise avant achat toulouse',
+    'inspection avant achat toulouse',
     'expertise immobilière toulouse',
     'avis structurel achat',
     'contre-expertise avant signature',
@@ -30,9 +31,9 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title:
-      'Expertise avant achat immobilier · Diagnostic indépendant du bâti · Toulouse · IPB',
+      'Inspection avant achat immobilier à Toulouse · Institut IPB',
     description:
-      "Diagnostic indépendant du bâti avant achat. Délais compatibles avec votre rétractation : visite sous 72h.",
+      "Une inspection du bâti avant de vous engager, sans lien avec le vendeur ni l'agence. Rapport dans vos délais de rétractation, visite sous 72h.",
     url: 'https://www.ipb-expertise.fr/expertise-avant-achat-immobilier-toulouse',
     type: 'website',
   },
@@ -66,7 +67,7 @@ const contenuRapport = [
   'Mesures au fissuromètre, dimensionnement précis',
   'Qualification de chaque désordre : esthétique, superficiel, structurel',
   'Identification des causes probables et de leur évolution prévisible',
-  'Estimation des coûts de remise en état si interventions nécessaires',
+  'Marche à suivre si des interventions sont nécessaires',
   'Avis sur la stabilité globale du bâti',
   "Document utilisable comme pièce à un éventuel recours ou à une négociation",
 ];
@@ -103,7 +104,7 @@ const faqItems = [
   {
     question: "Mon agent immobilier dit que les diagnostics réglementaires suffisent. Est-ce vrai ?",
     answer:
-      "Les diagnostics réglementaires (DPE, amiante, plomb, électricité, gaz, termites, ERP) couvrent ce que la loi impose au vendeur de communiquer. Aucun de ces diagnostics ne traite de la structure du bâti, des fissures, ou de la stabilité des fondations. Pour ces sujets, une expertise technique indépendante est le seul moyen d'obtenir un avis documenté.",
+      "Les diagnostics réglementaires (DPE, amiante, plomb, électricité, gaz, termites, ERP) couvrent ce que la loi impose au vendeur de communiquer. Aucun de ces diagnostics ne traite du bâti lui-même, des fissures, ou de la stabilité des fondations. Pour ces sujets, une inspection technique du bâti est le seul moyen d'obtenir un avis documenté.",
   },
   {
     question: "Combien coûte un recours sur vice caché ou sur dol ?",
@@ -127,7 +128,7 @@ const jsonLd = {
   '@type': 'ProfessionalService',
   name: 'IPB — Expertise avant achat immobilier',
   description:
-    "Avis structurel indépendant avant achat. Délais compatibles avec la rétractation et les compromis sous échéance.",
+    "Inspection du bâti avant achat, sans lien avec le vendeur ni l'agence. Délais compatibles avec la rétractation et les compromis sous échéance.",
   url: 'https://www.ipb-expertise.fr/expertise-avant-achat-immobilier-toulouse',
   telephone: '+33582953375',
   priceRange: '€€',
@@ -201,8 +202,8 @@ export default function ExpertiseAvantAchatPage() {
                     fontWeight: 700,
                   }}
                 >
-                  Expertise avant achat<br />
-                  <em>immobilier.</em>
+                  Inspection avant achat<br />
+                  <em>immobilier à Toulouse.</em>
                 </h1>
               </RevealOnScroll>
               <RevealOnScroll delay={0.1}>
@@ -215,12 +216,12 @@ export default function ExpertiseAvantAchatPage() {
                     fontWeight: 400,
                   }}
                 >
-                  Avis structurel indépendant. Délais compatibles avec votre rétractation.
+                  Un avis sur le bâti, avant de vous engager.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.14}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[640px]">
-                  Vous achetez. Vous avez vu des fissures, ou un doute sur la structure du bien. L'institut intervient en avis indépendant, sans aucun lien avec le vendeur ni l'agence. Notre rapport vous donne les éléments factuels pour décider — continuer, négocier, ou ne pas signer.
+                  Vous avez visité, le bien vous plaît. Reste ce que les visites ne montrent pas : ce que le bâti a vécu, et ce qui vous attend. Nous l'inspectons pour vous — sans lien avec le vendeur ni l'agence — et vous recevez notre rapport dans vos délais de rétractation.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.2}>
@@ -283,11 +284,11 @@ export default function ExpertiseAvantAchatPage() {
           </div>
         </section>
 
-        {/* SECTION 2 — POURQUOI UN AVIS INDÉPENDANT */}
+        {/* SECTION 2 — CE QUE CELA CHANGE (V3 §4) */}
         <section className="bg-ipb-cream py-24 lg:py-32">
           <div className="max-w-3xl mx-auto px-6 lg:px-12">
             <RevealOnScroll>
-              <Eyebrow>L'indépendance</Eyebrow>
+              <Eyebrow>Ce que cela change</Eyebrow>
               <h2
                 className="font-serif text-ipb-text mb-10"
                 style={{
@@ -297,18 +298,18 @@ export default function ExpertiseAvantAchatPage() {
                   fontWeight: 700,
                 }}
               >
-                Pourquoi un avis indépendant<br />
-                <em>change la donne.</em>
+                Un avis sur le bâti<br />
+                <em>qui éclaire la décision.</em>
               </h2>
             </RevealOnScroll>
 
             <RevealOnScroll delay={0.08}>
               <div className="space-y-6 text-[15px] leading-[1.9] font-light text-ipb-text">
                 <p>
-                  L'agent immobilier défend les intérêts du vendeur. C'est son métier, ce n'est pas un reproche. Le diagnostiqueur missionné dans le cadre de la vente couvre les diagnostics réglementaires (DPE, amiante, plomb, électricité, gaz). Aucun de ces deux acteurs n'a vocation à analyser la structure du bâti.
+                  L'agent immobilier défend les intérêts du vendeur. C'est son métier, ce n'est pas un reproche. Le diagnostiqueur missionné dans le cadre de la vente couvre les diagnostics réglementaires (DPE, amiante, plomb, électricité, gaz). Aucun de ces deux acteurs n'a vocation à lire le bâti — ses fissures, son humidité, la stabilité de ses fondations.
                 </p>
                 <p>
-                  L'institut est indépendant. Nous n'avons aucun lien avec le vendeur, l'agence, le notaire. Notre rapport dit ce que nous voyons.
+                  Nous l'inspectons pour vous, sans lien avec le vendeur ni l'agence. L'inspection éclaire la décision, dans un sens comme dans l'autre : il nous arrive de conclure qu'un bien inquiétant en apparence est parfaitement sain — c'est la même rigueur qui rend crédibles les deux conclusions.
                 </p>
               </div>
             </RevealOnScroll>
@@ -334,7 +335,7 @@ export default function ExpertiseAvantAchatPage() {
                   <em>le rapport remis.</em>
                 </h2>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted">
-                  Le rapport est rédigé par l'ingénieur qui a mené la visite. Il est livré au format PDF, paginé, signé numériquement, avec les photos en pleine résolution. Il peut être annexé à l'acte ou utilisé comme pièce technique dans une négociation ou un recours.
+                  Le rapport est rédigé par l'inspecteur IPB qui a mené la visite. Il est livré au format PDF, paginé, signé numériquement, avec les photos en pleine résolution. Il peut être annexé à l'acte ou utilisé comme pièce technique dans une négociation ou un recours.
                 </p>
               </RevealOnScroll>
 
@@ -461,12 +462,12 @@ export default function ExpertiseAvantAchatPage() {
           </div>
         </section>
 
-        {/* SECTION 6 — TARIF ET DÉLAI */}
+        {/* SECTION 6 — DÉLAI (tarif retiré : le prix se donne au téléphone, V3 §0) */}
         <section className="bg-ipb-cream py-24 lg:py-32">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
             <RevealOnScroll>
               <div className="mb-12 max-w-2xl">
-                <Eyebrow>Tarif et délai</Eyebrow>
+                <Eyebrow>Nos délais</Eyebrow>
                 <h2
                   className="font-serif text-ipb-text"
                   style={{
@@ -486,19 +487,19 @@ export default function ExpertiseAvantAchatPage() {
               <div className="bg-ipb-white border border-ipb-rule rounded-[6px] p-8 lg:p-10 space-y-8">
                 <div>
                   <h3 className="font-serif text-ipb-orange text-[12px] font-bold tracking-[0.18em] mb-3">
-                    TARIF
+                    DÉLAI
                   </h3>
                   <p className="text-[15px] leading-[1.85] font-light text-ipb-text">
-                    Expertise standard avant achat. Pour les dossiers en urgence (rétractation en cours, compromis sous échéance), un supplément peut s'appliquer selon le délai demandé. Le tarif définitif vous est confirmé à l'issue du premier échange selon la complexité du dossier.
+                    Visite sous 72h en standard, sous 24 heures en urgence. Avis intermédiaire dans les 48 heures suivant la visite pour les dossiers urgents. Rapport définitif remis sous 3 à 5 jours ouvrés.
                   </p>
                 </div>
 
                 <div className="pt-8 border-t border-ipb-rule">
                   <h3 className="font-serif text-ipb-orange text-[12px] font-bold tracking-[0.18em] mb-3">
-                    DÉLAI
+                    LE PREMIER ÉCHANGE
                   </h3>
                   <p className="text-[15px] leading-[1.85] font-light text-ipb-text">
-                    Visite sous 72h en standard, sous 24 heures en urgence. Avis intermédiaire dans les 48 heures suivant la visite pour les dossiers urgents. Rapport définitif remis sous 3 à 5 jours ouvrés.
+                    Décrivez-nous le bien et votre échéance : nous vous indiquons si nous pouvons intervenir dans vos délais, et nous vous précisons les conditions de vive voix. Le premier échange téléphonique est sans engagement.
                   </p>
                 </div>
               </div>
@@ -550,13 +551,20 @@ export default function ExpertiseAvantAchatPage() {
               ))}
             </div>
 
-            <div className="text-center mt-12">
+            <div className="text-center mt-12 space-y-3">
               <Link
                 href="/notre-methode"
-                className="text-[13px] text-ipb-orange hover:underline"
+                className="block text-[13px] text-ipb-orange hover:underline"
               >
                 Voir notre méthode complète de diagnostic →
               </Link>
+              <p className="text-[12px] text-ipb-light font-light">
+                Vous êtes vendeur ? Le même examen existe{' '}
+                <Link href="/diagnostic-avant-vente" className="text-ipb-muted hover:text-ipb-orange underline underline-offset-2">
+                  avant une mise en vente
+                </Link>
+                .
+              </p>
             </div>
           </div>
         </section>

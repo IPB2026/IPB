@@ -134,7 +134,7 @@ export default function InfiltrationsAutomnePage() {
           <div className="mt-8 p-6 bg-blue-50 border-l-4 border-blue-500 rounded-r-xl">
             <h3 className="font-bold text-blue-900 mb-2">💡 Le saviez-vous ?</h3>
             <p className="text-blue-800">
-              Une infiltration non traitée peut causer jusqu'à <strong>10 000€ de dégâts</strong> 
+              Une infiltration non traitée peut causer <strong>des dégâts importants</strong>
               en quelques mois : moisissures, dégradation de l'isolation, problèmes électriques...
             </p>
           </div>

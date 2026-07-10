@@ -29,7 +29,7 @@ export function AuthorBox({ name }: { name: string }) {
         <p className="text-[10px] uppercase tracking-[0.16em] text-ipb-light font-semibold mb-2">
           Rédigé par
         </p>
-        <Link href="/notre-expert" className="font-serif text-[20px] font-bold text-ipb-text hover:text-ipb-orange transition leading-tight">
+        <Link href="/institut" className="font-serif text-[20px] font-bold text-ipb-text hover:text-ipb-orange transition leading-tight">
           {name}
         </Link>
         <p className="text-[12px] text-ipb-orange font-medium mt-1 mb-3 uppercase tracking-[0.05em]">
@@ -38,7 +38,7 @@ export function AuthorBox({ name }: { name: string }) {
         <p className="text-[14px] leading-[1.7] text-ipb-muted">
           {profile.bio}
         </p>
-        <Link href="/notre-expert" className="inline-flex items-center gap-1 mt-3 text-[13px] text-ipb-orange font-semibold hover:gap-2 transition-all border-b border-ipb-orange pb-0.5">
+        <Link href="/institut" className="inline-flex items-center gap-1 mt-3 text-[13px] text-ipb-orange font-semibold hover:gap-2 transition-all border-b border-ipb-orange pb-0.5">
           Voir le profil de l'institut →
         </Link>
       </div>

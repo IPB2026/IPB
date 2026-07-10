@@ -25,20 +25,20 @@ const solutions = [
   {
     titre: 'Isolation par interieur (ITI)',
     description: 'Pose de plaques isolantes sur les murs froids.',
-    prix: '50-100 euros/m2',
-    efficacite: '70%',
+    portee: 'Ponctuelle',
+    efficacite: 'Élevée',
   },
   {
     titre: 'Isolation par exterieur (ITE)',
     description: 'Enveloppe isolante sur la facade. Supprime tous les ponts thermiques.',
-    prix: '150-250 euros/m2',
-    efficacite: '95%',
+    portee: 'Globale',
+    efficacite: 'Optimale',
   },
   {
     titre: 'VMI (Ventilation)',
     description: 'Renouvelle air et baisse le taux humidite. Reduit la condensation.',
-    prix: '2 500-4 500 euros',
-    efficacite: '60%',
+    portee: 'Ciblee',
+    efficacite: 'Moderee',
   },
 ];
 
@@ -173,27 +173,27 @@ export default function PontsThermiquesPage() {
           <div className="grid md:grid-cols-3 gap-8">
             {solutions.map((sol, index) => (
               <div key={index} className={`rounded-3xl p-8 ${
-                sol.efficacite === '95%' 
-                  ? 'bg-gradient-to-br from-sky-50 to-blue-50 border-2 border-sky-300' 
+                sol.efficacite === 'Optimale'
+                  ? 'bg-gradient-to-br from-sky-50 to-blue-50 border-2 border-sky-300'
                   : 'bg-white border border-ipb-rule'
               }`}>
-                {sol.efficacite === '95%' && (
+                {sol.efficacite === 'Optimale' && (
                   <div className="inline-block bg-sky-500 text-white px-3 py-1 rounded-full text-xs font-bold mb-4">
                     SOLUTION OPTIMALE
                   </div>
                 )}
                 <h3 className="text-xl font-bold text-ipb-text mb-3">{sol.titre}</h3>
                 <p className="text-ipb-muted text-sm mb-6">{sol.description}</p>
-                
+
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between items-center">
-                    <span className="text-ipb-muted">Prix</span>
-                    <span className="font-bold text-ipb-text">{sol.prix}</span>
+                    <span className="text-ipb-muted">Portee</span>
+                    <span className="font-bold text-ipb-text">{sol.portee}</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-ipb-muted">Efficacite</span>
                     <span className={`font-bold ${
-                      sol.efficacite === '95%' ? 'text-sky-600' : 'text-ipb-text'
+                      sol.efficacite === 'Optimale' ? 'text-sky-600' : 'text-ipb-text'
                     }`}>{sol.efficacite}</span>
                   </div>
                 </div>
@@ -253,7 +253,7 @@ export default function PontsThermiquesPage() {
             <span className="block text-sky-200">On identifie les ponts thermiques.</span>
           </h2>
           <p className="text-xl text-sky-100 mb-8">
-            Diagnostic thermique - Solution adaptee (VMI ou isolation) - Devis gratuit
+            Diagnostic thermique - Solution adaptee (VMI ou isolation) - Devis
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="group bg-white text-sky-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-sky-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">

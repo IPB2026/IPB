@@ -109,7 +109,7 @@ export default function TarnPage() {
               <RevealOnScroll delay={0.18}>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <MagneticButton href="/diagnostic" variant="primary">
-                    Diagnostic gratuit
+                    Diagnostic
                   </MagneticButton>
                   <MagneticButton href="/expertise/fissures" variant="ghost">
                     Notre méthode

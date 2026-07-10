@@ -205,7 +205,7 @@ export default function RGAPage() {
                   Le phénomène est saisonnier. Il s'amplifie pendant les épisodes de sécheresse prolongée — quand la teneur en eau du sol descend au-delà de ce que le bâti a connu pendant ses premières années de vie. Une maison construite à l'équilibre hydrique des années 1990 peut entrer en pathologie après une sécheresse sévère, parce que le sol qui la soutenait se rétracte plus qu'il ne l'a jamais fait. Les épisodes de 2003, 2018, 2019, 2022 et 2023 ont fait basculer un grand nombre de bâtis dans cette catégorie, en particulier en Occitanie et Nouvelle-Aquitaine.
                 </p>
                 <p>
-                  Le contexte géologique se lit sur la <Link href="/lexique#carte-brgm" className="text-ipb-orange-d underline hover:no-underline">carte BRGM des aléas</Link>, consultable gratuitement sur Géorisques. Trois niveaux d'aléa sont distingués : faible, moyen, fort. En Haute-Garonne, plus de 70 % du territoire communal est classé en aléa moyen ou fort. La carte ne dit pas qu'un bâti situé en aléa fort connaîtra nécessairement des désordres ; elle dit qu'il y est exposé.
+                  Le contexte géologique se lit sur la <Link href="/lexique#carte-brgm" className="text-ipb-orange-d underline hover:no-underline">carte BRGM des aléas</Link>, consultable librement sur Géorisques. Trois niveaux d'aléa sont distingués : faible, moyen, fort. En Haute-Garonne, plus de 70 % du territoire communal est classé en aléa moyen ou fort. La carte ne dit pas qu'un bâti situé en aléa fort connaîtra nécessairement des désordres ; elle dit qu'il y est exposé.
                 </p>
                 <p>
                   L'impact se concentre sur les <Link href="/lexique#fondation-superficielle" className="text-ipb-orange-d underline hover:no-underline">fondations superficielles</Link>, c'est-à-dire celles qui prennent appui dans les premiers mètres de sol — précisément ceux qui se rétractent. Les bâtiments fondés profondément, sur pieux ou micropieux ancrés sous la zone active de l'argile, sont peu concernés. Les bâtis anciens dépourvus de chaînage adapté, ou ceux dont l'étude de sol initiale a sous-estimé la nature argileuse du terrain, sont les plus vulnérables.
@@ -385,7 +385,7 @@ export default function RGAPage() {
 
             <RevealOnScroll delay={0.06}>
               <p className="text-[15px] leading-[1.9] font-light text-ipb-text mb-10">
-                Le diagnostic conditionne la nature du traitement. Plusieurs voies existent, chacune adaptée à un profil de désordre. Les ordres de grandeur de coût ci-dessous correspondent à des chantiers types en Occitanie en 2025 ; le devis précis dépend de la configuration du bâti et de l'accessibilité.
+                Le diagnostic conditionne la nature du traitement. Plusieurs voies existent, chacune adaptée à un profil de désordre. Les indications ci-dessous décrivent l'ampleur relative de chaque intervention ; leur pertinence dépend de la configuration du bâti et de l'accessibilité.
               </p>
             </RevealOnScroll>
 
@@ -401,7 +401,7 @@ export default function RGAPage() {
                         Indication
                       </th>
                       <th className="border-b border-ipb-rule px-5 py-4 text-left font-serif text-ipb-orange text-[12px] tracking-[0.18em] uppercase">
-                        Ordre de grandeur
+                        Ampleur de l'intervention
                       </th>
                     </tr>
                   </thead>
@@ -425,7 +425,7 @@ export default function RGAPage() {
                         Fissures actives sur maçonnerie, désordre mesurable, fondations stables.
                       </td>
                       <td className="px-5 py-5 align-top text-ipb-muted font-light">
-                        12 000 à 18 000 €
+                        Intervention ciblée, sans terrassement lourd
                       </td>
                     </tr>
                     <tr className="border-b border-ipb-rule">
@@ -439,7 +439,7 @@ export default function RGAPage() {
                         Tassement actif majeur (supérieur à 10 cm), fondations défaillantes.
                       </td>
                       <td className="px-5 py-5 align-top text-ipb-muted font-light">
-                        40 000 à 80 000 €
+                        Chantier lourd, terrassement profond
                       </td>
                     </tr>
                     <tr>
@@ -494,7 +494,7 @@ export default function RGAPage() {
                   Le régime français de catastrophe naturelle, institué par la loi du 13 juillet 1982, permet l'indemnisation par l'assurance des dommages causés à un bien par un phénomène naturel d'intensité anormale. La sécheresse y figure depuis 1989. La reconnaissance prend la forme d'un arrêté interministériel publié au Journal officiel, qui précise les communes concernées et la période couverte.
                 </p>
                 <p>
-                  Vérifier si votre commune est reconnue se fait sur Géorisques, qui maintient un historique consultable des arrêtés. Une commune peut être reconnue pour une période donnée et non pour une autre — l'arrêté est précis. La déclaration auprès de l'assureur doit intervenir dans les dix jours suivant la publication de l'arrêté concerné. La franchise légale, fixée à 1 520 €, est applicable.
+                  Vérifier si votre commune est reconnue se fait sur Géorisques, qui maintient un historique consultable des arrêtés. Une commune peut être reconnue pour une période donnée et non pour une autre — l'arrêté est précis. La déclaration auprès de l'assureur doit intervenir dans les dix jours suivant la publication de l'arrêté concerné. Une franchise légale, prévue par le régime des catastrophes naturelles, reste à votre charge.
                 </p>
                 <p>
                   Si votre commune est reconnue, notre rapport documente le lien entre vos désordres et le retrait-gonflement, ce qui constitue une pièce technique pour votre dossier auprès de votre assureur. Il qualifie les désordres, mesure leur évolution, identifie le mécanisme géotechnique, et préconise les traitements adaptés. C'est une expertise technique. Les questions de droit, de procédure et de chiffrage relèvent ensuite de votre interlocuteur d'assurance et, si besoin, d'un avocat spécialisé.

@@ -20,14 +20,14 @@ const partenaires = [
     href: '/diagnostic',
     num: '01',
     title: "Architectes d'intérieur & décorateurs",
-    desc: "Vos projets « espace ouvert » touchent à la structure ? Notre diagnostic de faisabilité indépendant vous dit ce qui est possible — avant de concevoir.",
-    points: ['Visite et diagnostic de structure', 'Avis indépendant sous 3 à 5 jours', 'Vous concevez sur des bases sûres'],
+    desc: "Vos projets « espace ouvert » touchent à la structure ? Notre diagnostic de faisabilité vous dit ce qui est possible — avant de concevoir.",
+    points: ['Visite et diagnostic du bâti', 'Avis sous 3 à 5 jours', 'Vous concevez sur des bases sûres'],
   },
   {
     href: '/expertise-avant-achat-immobilier-toulouse',
     num: '02',
     title: 'Marchands de biens & investisseurs',
-    desc: "Avant d'acheter un bien à rénover — ou de le revendre — vous voulez être sûr du bâti. Notre diagnostic indépendant sécurise l'acquisition et la revente.",
+    desc: "Avant d'acheter un bien à rénover — ou de le revendre — vous voulez être sûr du bâti. Notre diagnostic sécurise l'acquisition et la revente.",
     points: ['Visite sous 72 heures', 'Rapport sous 3 à 5 jours ouvrés', 'Un avis neutre, sans lien avec le vendeur'],
   },
   {

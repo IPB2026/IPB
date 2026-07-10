@@ -136,7 +136,7 @@ export function ServicesHumidity() {
               {/* Prix indicatif */}
               <div className="absolute -bottom-4 -left-4 bg-orange-600 rounded-2xl shadow-xl p-4 hidden md:block">
                 <p className="text-orange-200 text-xs font-bold uppercase mb-1">Ouverture standard</p>
-                <p className="text-white font-extrabold text-lg">4 000 – 10 000 €</p>
+                <p className="text-white font-extrabold text-lg">Sur devis</p>
                 <p className="text-orange-200 text-xs">Étude + travaux + garantie</p>
               </div>
             </div>

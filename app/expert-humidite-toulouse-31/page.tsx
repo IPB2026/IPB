@@ -78,7 +78,7 @@ const faqItems = [
   },
   {
     question: "Combien coûte un traitement humidité à Toulouse ?",
-    answer: "Le traitement par injection résine coûte entre 80 et 150 €/ml de mur traité. Pour une maison moyenne (50 ml de murs en remontées capillaires), comptez 4 000 à 7 500 €. Le diagnostic instrumenté préalable est une prestation séparée (300-600 €), déductible si vous nous confiez les travaux."
+    answer: "Le coût d'un traitement par injection résine dépend du linéaire de mur traité et de l'ampleur des remontées capillaires ; il est chiffré précisément dans le devis, après diagnostic. Le diagnostic instrumenté préalable est une prestation séparée, déductible si vous nous confiez les travaux."
   },
   {
     question: "Mon assurance habitation couvre-t-elle l'injection résine ?",
@@ -98,7 +98,7 @@ const faqItems = [
   },
   {
     question: "Intervenez-vous en cave et sous-sol ?",
-    answer: "Oui, nous proposons le cuvelage pour les caves et sous-sols. C'est la solution pour les espaces enterrés soumis à la pression de l'eau (où l'injection seule est insuffisante). Le cuvelage consiste à appliquer un revêtement étanche sur les parois et le sol. Coût moyen : 200-350 €/m². Garantie 10 ans (décennale)."
+    answer: "Oui, nous proposons le cuvelage pour les caves et sous-sols. C'est la solution pour les espaces enterrés soumis à la pression de l'eau (où l'injection seule est insuffisante). Le cuvelage consiste à appliquer un revêtement étanche sur les parois et le sol. Le coût dépend de la surface et de l'accessibilité, communiqué après diagnostic. Garantie 10 ans (décennale)."
   },
   {
     question: "Faut-il évacuer la maison pendant les travaux ?",
@@ -387,7 +387,7 @@ export default function ExpertHumiditeToulouse31Page() {
             </div>
             <div className="bg-white rounded-2xl shadow-lg border-2 border-blue-500 p-8 text-center">
               <h3 className="text-xl font-bold text-ipb-text mb-2">Injection résine</h3>
-              <div className="text-4xl font-extrabold text-blue-600 mb-4">2,5-6K€</div>
+              <div className="text-4xl font-extrabold text-blue-600 mb-4">Sur devis</div>
               <p className="text-ipb-muted">Garantie décennale 10 ans</p>
             </div>
             <div className="bg-white rounded-2xl shadow-lg border border-ipb-rule p-8 text-center">

@@ -8,7 +8,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "Agences Immobilières Toulouse · Expertise Vente · 5j ouvrés",
-  description: "Vente suspendue à une fissure : rapport technique indépendant IPB sous 3 à 5 jours ouvrés pour rassurer l'acquéreur. Toulouse, Montauban. ☎ 05 82 95 33 75",
+  description: "Vente suspendue à une fissure : rapport d'inspection IPB sous 3 à 5 jours ouvrés pour rassurer l'acquéreur. Toulouse, Montauban. ☎ 05 82 95 33 75",
   keywords: [
     'partenariat agence immobilière toulouse',
     'expert fissures pour agence immobilière',
@@ -16,12 +16,12 @@ export const metadata: Metadata = {
     'expertise pré-vente toulouse',
     'fissure vente bloquée toulouse',
     'diagnostic avant achat agence toulouse',
-    'partenaire agent immobilier structure',
+    'partenaire agent immobilier bâti',
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/partenaires/agences-immobilieres' },
   openGraph: {
     title: "Agences Immobilières · Expertise Vente Toulouse · IPB",
-    description: "Vente bloquée par une fissure ou un doute sur le bâti ? Notre rapport indépendant sous 3 à 5 jours ouvrés débloque la transaction.",
+    description: "Vente bloquée par une fissure ou un doute sur le bâti ? Notre rapport d'inspection sous 3 à 5 jours ouvrés débloque la transaction.",
     url: 'https://www.ipb-expertise.fr/partenaires/agences-immobilieres',
     type: 'website',
   },
@@ -43,7 +43,7 @@ export default function AgencesImmobilieresPage() {
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
               Une vente suspendue à <span className="text-transparent bg-clip-text bg-ipb-orange">une fissure</span> ?
-              <span className="block mt-2 text-white">Un rapport indépendant sous 3 à 5 jours ouvrés.</span>
+              <span className="block mt-2 text-white">Un rapport d'inspection sous 3 à 5 jours ouvrés.</span>
             </h1>
             <p className="text-xl text-white/70 mb-8 max-w-3xl">
               L'acquéreur a vu une fissure et souhaite « réfléchir ». Le compromis est suspendu à un rapport. Visite sous 48 heures, rapport reconnu par les assurances sous 3 à 5 jours ouvrés, chiffrage des éventuels travaux. La transaction reprend sur des bases techniques.
@@ -79,7 +79,7 @@ export default function AgencesImmobilieresPage() {
                 {
                   icon: <Home className="text-amber-600" size={28} />,
                   title: 'Doute sur le bâti',
-                  desc: 'L\'acquéreur hésite sur l\'état du bien — fissures, humidité, structure. Notre diagnostic indépendant lève le doute et débloque la décision.',
+                  desc: 'L\'acquéreur hésite sur l\'état du bien — fissures, humidité, désordres du bâti. Notre diagnostic lève le doute et débloque la décision.',
                 },
                 {
                   icon: <Shield className="text-blue-600" size={28} />,

@@ -72,7 +72,7 @@ const faqSchema = {
       name: 'Combien coûte la réparation d\'une fissure horizontale ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Le coût dépend de la cause et de la gravité. La visite de diagnostic est réalisée par un expert du réseau IPB, sur site. L\'agrafage structurel revient entre 8 000 et 18 000€ pour 85% des cas. Les micropieux, réservés aux cas graves, coûtent entre 25 000 et 50 000€. Plus vous intervenez tôt, moins c\'est cher.',
+        text: 'La solution dépend de la cause et de la gravité. La visite de diagnostic est réalisée par un expert du réseau IPB, sur site. L\'agrafage structurel convient à 85% des cas ; les micropieux sont réservés aux cas graves. Plus vous intervenez tôt, moins l\'intervention est lourde.',
       },
     },
     {
@@ -369,7 +369,7 @@ export default function FissureHorizontalePage() {
             N'attendez pas l'irréparable.
           </h2>
           <p className="text-xl text-red-100 mb-8">
-            Diagnostic urgent sous 24-48h • Devis gratuit • Garantie décennale
+            Diagnostic urgent sous 24-48h • Devis • Garantie décennale
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="group bg-white text-red-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-red-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">

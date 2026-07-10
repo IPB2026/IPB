@@ -14,8 +14,8 @@ import Image from 'next/image';
 import { ExpertiseHumiditeBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
-  title: "Diagnostic humidité et infiltrations · Toulouse",
-  description: "Remontées, infiltrations, condensation, salpêtre : l'institut identifie la cause exacte et préconise le traitement adapté. Diagnostic indépendant à Toulouse.",
+  title: "Diagnostic humidité à Toulouse — identifier l'origine · IPB",
+  description: "Remontées capillaires, infiltration ou condensation : IPB identifie l'origine à l'humidimètre avant tout traitement. Toulouse et Occitanie.",
   keywords: [
     'expert humidité toulouse',
     'expertise humidité haute-garonne',
@@ -30,8 +30,8 @@ export const metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/humidite' },
   openGraph: {
-    title: "Diagnostic humidité et infiltrations · Toulouse",
-    description: "L'expert du réseau IPB identifie la cause exacte de l'humidité ; l'institut préconise la solution adaptée. Diagnostic indépendant en Occitanie.",
+    title: "Diagnostic humidité à Toulouse — identifier l'origine · IPB",
+    description: "Un inspecteur IPB identifie l'origine de l'humidité à l'humidimètre et préconise le traitement adapté. Toulouse et Occitanie.",
     url: 'https://www.ipb-expertise.fr/expertise/humidite',
     type: 'website',
     images: [{ url: '/images/humidite-avant-apres.webp', width: 1200, height: 630, alt: 'Avant et après traitement humidité — chantier du réseau IPB' }],
@@ -59,7 +59,7 @@ const generateServiceJsonLd = () => ({
     "address": { "@type": "PostalAddress", "streetAddress": "54 avenue Jean Jaurès", "addressLocality": "Tournefeuille", "addressRegion": "Occitanie", "postalCode": "31170", "addressCountry": "FR" }
   },
   "areaServed": [{ "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" }, { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" }, { "@type": "AdministrativeArea", "name": "Gers (32)" }, { "@type": "AdministrativeArea", "name": "Tarn (81)" }],
-  "description": "Diagnostic instrumenté de l'humidité (remontées capillaires, infiltrations, condensation, cave humide). L'expert du réseau IPB identifie la cause exacte ; l'institut préconise la solution adaptée, en toute indépendance."
+  "description": "Diagnostic instrumenté de l'humidité (remontées capillaires, infiltrations, condensation, cave humide). Un inspecteur IPB identifie la cause exacte et préconise le traitement adapté."
 });
 
 const typesHumidite = [
@@ -122,13 +122,13 @@ export default function HumiditePage() {
                     fontWeight: 700,
                   }}
                 >
-                  L'humidité dans votre maison.<br />
-                  <em>Identifier la cause, pas masquer le symptôme.</em>
+                  Diagnostic humidité à Toulouse.<br />
+                  <em>L'humidité a toujours une origine.</em>
                 </h1>
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">
-                  Tâches sur les murs, peinture qui cloque, odeur persistante&nbsp;: avant de traiter, il faut comprendre. L'expert du réseau IPB se déplace, hygromètre et caméra thermique à la main, pour identifier la cause exacte et vous remettre des préconisations claires. Si des travaux sont nécessaires, nous vous orientons vers des entreprises membres du réseau IPB.
+                  Remontées capillaires, infiltration, condensation : trois causes qui laissent des traces voisines et appellent des traitements opposés. Un inspecteur IPB mesure, compare, identifie l'origine — avant qu'un traitement inutile ne soit engagé.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>
@@ -148,7 +148,7 @@ export default function HumiditePage() {
                   </a>
                 </div>
                 <p className="mt-5 text-[12px] text-ipb-light tracking-[0.02em]">
-                  Diagnostic indépendant&nbsp;· Visite sous 72&nbsp;heures&nbsp;· Sans engagement
+                  Visite sous 72&nbsp;heures&nbsp;· Premier échange sans engagement
                 </p>
               </RevealOnScroll>
             </div>
@@ -238,7 +238,7 @@ export default function HumiditePage() {
                 <ul className="space-y-8">
                   {[
                     { titre: 'Diagnostic sur place', desc: "Visite avec hygromètre, caméra thermique et test à la pesée. Mesure du taux d'humidité dans les murs, identification de la cause exacte." },
-                    { titre: 'Rapport et préconisations', desc: "Document écrit sous 3 à 5 jours avec photos, mesures, cause identifiée et solutions chiffrées. Reconnu par les assurances en cas de litige." },
+                    { titre: 'Rapport et préconisations', desc: "Rapport d'inspection sous 3 à 5 jours avec photos, mesures, cause identifiée et préconisations claires. Reconnu par les assurances en cas de litige." },
                     { titre: 'Conception du traitement', desc: "Injection de résine, cuvelage, ventilation, drainage&nbsp;: l'institut choisit la solution selon le diagnostic, jamais selon un produit qu'on voudrait vendre." },
                     { titre: 'Orientation vers le réseau IPB', desc: "Si des travaux sont nécessaires, l'institut vous oriente vers des entreprises membres du réseau IPB et reste votre référent jusqu'à la disparition des symptômes." },
                   ].map((etape, i) => (
@@ -284,33 +284,30 @@ export default function HumiditePage() {
           </div>
         </section>
 
-        {/* TRANSPARENCE DES COÛTS */}
+        {/* CE QUE VOUS SAUREZ — issue du diagnostic, sans notion de prix (V3 §3) */}
         <section className="bg-ipb-white py-24 lg:py-32 border-y border-ipb-rule">
           <div className="max-w-ipb mx-auto px-6 lg:px-12">
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
               <RevealOnScroll className="lg:col-span-5">
-                <Eyebrow>Combien ça coûte</Eyebrow>
+                <Eyebrow>Ce que vous saurez</Eyebrow>
                 <h2 className="font-serif text-ipb-text" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
-                  Le bon traitement,<br /><em>au juste prix.</em>
+                  La cause,<br /><em>avant le traitement.</em>
                 </h2>
                 <p className="mt-6 text-[15px] leading-[1.9] font-light text-ipb-muted">
-                  Pas d'acompte, pas de prix gonflé : le diagnostic conditionne la solution, et la solution conditionne le prix. On ne vend jamais un traitement avant d'avoir identifié la cause.
+                  Il arrive qu'un diagnostic écarte des travaux envisagés : c'est parfois sa plus grande utilité. Nous commençons toujours par l'origine, jamais par le produit.
                 </p>
               </RevealOnScroll>
 
               <ul className="lg:col-span-7 space-y-5">
                 {[
-                  { titre: 'Diagnostic en ligne', prix: 'Gratuit', desc: "Vous décrivez votre situation ; l'expert structure du réseau IPB vous transmet un premier avis, sans engagement." },
-                  { titre: 'Visite sur site & rapport', prix: 'Sur devis', desc: "Coût communiqué avant tout engagement, sans acompte. Vous réglez à l'issue de la visite ; le rapport vous est remis 3 à 5 jours après." },
-                  { titre: 'Traitement', prix: 'Selon la cause', desc: "Injection de résine ≈ 80 à 150 €/ml (env. 4 000 à 7 500 € pour une maison) ; cuvelage de cave 200 à 350 €/m². Chiffré précisément après diagnostic, sous décennale 10 ans." },
+                  { titre: "L'origine exacte", desc: "Remontées capillaires, infiltration ou condensation : la mesure à l'humidimètre distingue des causes que l'œil confond, et écarte les fausses pistes." },
+                  { titre: "L'étendue réelle", desc: "Répartition des désordres, hauteur des traces, état des ventilations : nous établissons ce qui est atteint, et ce qui ne l'est pas." },
+                  { titre: "Le traitement qui s'impose", desc: "Injection, assainissement, ventilation — et ceux qui ne serviraient à rien. Si un traitement s'impose, nous pouvons en coordonner la réalisation avec des entreprises couvertes par leur garantie décennale." },
                 ].map((t, i) => (
                   <RevealOnScroll key={t.titre} delay={i * 0.06}>
-                    <li className="flex items-start justify-between gap-6 bg-ipb-cream border border-ipb-rule rounded-[6px] p-6">
-                      <div>
-                        <h3 className="font-serif text-ipb-text font-bold text-[18px] leading-tight mb-2">{t.titre}</h3>
-                        <p className="text-[13px] leading-[1.7] font-light text-ipb-muted">{t.desc}</p>
-                      </div>
-                      <span className="flex-shrink-0 text-[11px] uppercase tracking-[0.12em] text-ipb-orange font-semibold pt-1 text-right max-w-[110px]">{t.prix}</span>
+                    <li className="bg-ipb-cream border border-ipb-rule rounded-[6px] p-6">
+                      <h3 className="font-serif text-ipb-text font-bold text-[18px] leading-tight mb-2">{t.titre}</h3>
+                      <p className="text-[13px] leading-[1.7] font-light text-ipb-muted">{t.desc}</p>
                     </li>
                   </RevealOnScroll>
                 ))}
@@ -384,6 +381,7 @@ export default function HumiditePage() {
                     { href: '/blog/humidite-remontee-capillaire-solution', label: 'Traiter les remontées capillaires' },
                     { href: '/blog/salpetre-toulouse-traitement-definitif', label: 'En finir avec le salpêtre' },
                     { href: '/blog/ventilation-humidite-condensation', label: 'Ventilation & condensation' },
+                    { href: '/expertise-avant-achat-immobilier-toulouse', label: "Un doute avant un achat ? L'inspection avant achat" },
                     { href: '/lexique', label: 'Lexique de la pathologie du bâtiment' },
                     { href: '/notre-methode', label: 'Notre méthode, étape par étape' },
                   ],

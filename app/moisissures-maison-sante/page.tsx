@@ -61,7 +61,7 @@ const faqSchema = {
       name: 'Comment éliminer définitivement les moisissures d\'une maison ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Pour éliminer définitivement les moisissures, il faut traiter la cause de l\'humidité, pas seulement nettoyer. Selon l\'origine : injection de résine hydrophobe pour les remontées capillaires, installation d\'une VMI (Ventilation par Insufflation) pour la condensation, ou cuvelage/réparation pour les infiltrations. Le traitement de l\'humidité est garanti de 10 à 30 ans selon la solution.',
+        text: 'Pour éliminer définitivement les moisissures, il faut traiter la cause de l\'humidité, pas seulement nettoyer. Selon l\'origine : injection de résine hydrophobe pour les remontées capillaires, installation d\'une VMI (Ventilation par Insufflation) pour la condensation, ou cuvelage/réparation pour les infiltrations. Le traitement de l\'humidité est couvert par une garantie décennale sur les travaux.',
       },
     },
     {
@@ -169,8 +169,8 @@ export default function MoisissuresSantePage() {
                 <div className="text-emerald-200 text-sm mt-2">des logements français concernés</div>
               </div>
               <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
-                <div className="text-5xl font-black text-emerald-400">95%</div>
-                <div className="text-emerald-200 text-sm mt-2">d'efficacité de nos traitements</div>
+                <div className="text-5xl font-black text-emerald-400">10 ans</div>
+                <div className="text-emerald-200 text-sm mt-2">de garantie décennale sur les travaux</div>
               </div>
             </div>
           </div>
@@ -318,7 +318,7 @@ export default function MoisissuresSantePage() {
               </p>
               <ul className="text-sm text-ipb-muted space-y-2">
                 <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Solution adaptée à la cause</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Garantie 10 à 30 ans</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Garantie décennale sur les travaux</li>
                 <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Effet durable</li>
               </ul>
             </div>
@@ -386,7 +386,7 @@ export default function MoisissuresSantePage() {
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="group bg-white text-emerald-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-emerald-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">
-              Diagnostic sanitaire gratuit
+              Diagnostic sanitaire
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/30 hover:bg-white/20 px-8 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3">

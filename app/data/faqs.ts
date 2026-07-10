@@ -14,7 +14,7 @@ export const fissureFaq: FaqItem[] = [
   },
   {
     question: "Pourquoi privilégier l'agrafage aux micropieux ?",
-    answer: "C'est une question de proportionnalité. Les micropieux sont des travaux lourds (forage profond) et très coûteux (30k€-60k€) réservés aux affaissements majeurs. Pour 90% des maisons en Haute-Garonne touchées par la sécheresse modérée, l'agrafage suffit à redonner la rigidité nécessaire pour 3 à 4 fois moins cher."
+    answer: "C'est une question de proportionnalité. Les micropieux sont des travaux lourds (forage profond) et très coûteux, réservés aux affaissements majeurs. Pour 90% des maisons en Haute-Garonne touchées par la sécheresse modérée, l'agrafage suffit à redonner la rigidité nécessaire."
   },
   {
     question: "Puis-je vendre ma maison après réparation ?",
@@ -26,7 +26,7 @@ export const fissureFaq: FaqItem[] = [
   },
   {
     question: "Combien coûte un diagnostic de fissures ?",
-    answer: "Le diagnostic en ligne est gratuit et sans engagement. Si une visite sur site est nécessaire, son coût vous est communiqué à l'avance — sans acompte, vous réglez à l'issue de la visite. Les éventuels travaux ne sont chiffrés qu'après le diagnostic, sur devis transparent. Vous ne payez jamais une prestation que vous n'avez pas validée."
+    answer: "Le diagnostic en ligne est sans engagement. Si une visite sur site est nécessaire, ses modalités vous sont communiquées à l'avance — sans acompte, vous réglez à l'issue de la visite. Les éventuels travaux ne sont chiffrés qu'après le diagnostic, sur devis transparent. Vous ne payez jamais une prestation que vous n'avez pas validée."
   },
   {
     question: "Mes fissures peuvent-elles être prises en charge au titre de la sécheresse (catastrophe naturelle) ?",
@@ -45,7 +45,7 @@ export const fissureFaq: FaqItem[] = [
     answer: "Notre rapport est un avis d'expertise technique : il est utilisé comme pièce dans les dossiers d'assurance et de catastrophe naturelle. Il ne s'agit ni d'une expertise judiciaire (qui relève d'un expert près les tribunaux), ni d'une note de calcul de bureau d'études. Sa valeur tient à la rigueur du diagnostic : mesures, photos, cause identifiée, préconisations."
   },
   {
-    question: "Êtes-vous indépendants ? Vais-je me faire vendre des travaux inutiles ?",
+    question: "Vais-je me faire vendre des travaux inutiles ?",
     answer: "Notre intérêt est que le diagnostic soit juste. Si la situation ne nécessite aucune intervention, nous vous le disons — c'est l'engagement de l'institut. Quand des travaux sont nécessaires, nous privilégions toujours la solution la plus proportionnée (l'agrafage suffit dans 90 % des cas) plutôt que la plus lourde. Mieux vaut un avis juste qu'un devis vendu."
   }
 ];
@@ -77,7 +77,7 @@ export const humidityFaq: FaqItem[] = [
   },
   {
     question: "Combien coûte un traitement de l'humidité ?",
-    answer: "Le diagnostic en ligne est gratuit. Une injection de résine se situe autour de 80 à 150 € le mètre linéaire (soit environ 4 000 à 7 500 € pour une maison moyenne) ; un cuvelage de cave entre 200 et 350 € le m². Le montant exact est établi après le diagnostic, sur devis transparent et sans acompte — vous réglez à l'issue de la visite."
+    answer: "Le diagnostic en ligne est sans engagement. Le coût d'une injection de résine dépend du linéaire de mur à traiter ; celui d'un cuvelage de cave, de la surface concernée. Le montant exact est établi après le diagnostic, sur devis transparent et sans acompte — vous réglez à l'issue de la visite."
   },
   {
     question: "Dans quel délai intervenez-vous ?",

@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const title = `Expert Fissures & Humidité ${quartierInfo.nom} Toulouse · Décennale 10 ans`;
-  const description = `Expert fissures et humidité ${quartierInfo.nom}, Toulouse. Diagnostic gratuit, agrafage, injection résine. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75`;
+  const description = `Expert fissures et humidité ${quartierInfo.nom}, Toulouse. Diagnostic, agrafage, injection résine. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75`;
 
   return {
     title,
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       `traitement humidité ${quartierInfo.nom.toLowerCase()}`,
       `agrafage ${quartierInfo.nom.toLowerCase()}`,
       'toulouse',
-      'diagnostic gratuit',
+      'diagnostic',
       'remontées capillaires',
       'tassement différentiel',
     ],
@@ -205,14 +205,14 @@ export default async function QuartierPage({ params }: PageProps) {
             <span className="text-ipb-orange-l">{quartierInfo.nom}</span> - Toulouse
           </h1>
           <p className="text-xl md:text-2xl text-white/70 mb-8 max-w-3xl leading-relaxed">
-            {quartierInfo.description}. Intervention rapide, diagnostic gratuit, solutions durables avec garantie décennale.
+            {quartierInfo.description}. Intervention rapide, diagnostic, solutions durables avec garantie décennale.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/diagnostic"
               className="inline-flex items-center justify-center gap-2 bg-ipb-orange text-white px-8 py-4 rounded-xl font-bold text-lg shadow-2xl hover:bg-ipb-orange transition-all transform hover:-translate-y-1"
             >
-              Diagnostic gratuit
+              Diagnostic
               <ArrowRight size={20} aria-hidden="true" />
             </Link>
             <a
@@ -344,7 +344,7 @@ export default async function QuartierPage({ params }: PageProps) {
             </h2>
             <p className="text-xl text-white/70 mb-10 leading-relaxed">
               En tant qu'expert local, nous intervenons rapidement dans votre quartier. 
-              Diagnostic gratuit sous 48h, devis clair, travaux garantis.
+              Diagnostic sous 48h, devis clair, travaux garantis.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

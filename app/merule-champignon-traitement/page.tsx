@@ -40,7 +40,7 @@ const faqSchema = {
       name: 'Combien coûte un traitement contre la mérule ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Le coût d\'un traitement mérule varie de 5 000€ pour un cas localisé à plus de 50 000€ si la charpente entière est touchée. Le traitement comprend le diagnostic, le retrait des bois infectés (avec 1m de marge de sécurité), le traitement fongicide par injection et pulvérisation, puis la reconstruction. Plus le diagnostic est précoce, plus la facture est réduite (division par 10 possible).',
+        text: 'Le coût d\'un traitement mérule varie fortement selon l\'ampleur de la contamination, d\'un cas localisé à une charpente entière touchée ; il est chiffré précisément après diagnostic. Le traitement comprend le diagnostic, le retrait des bois infectés (avec 1m de marge de sécurité), le traitement fongicide par injection et pulvérisation, puis la reconstruction. Plus le diagnostic est précoce, plus la facture est réduite (division par 10 possible).',
       },
     },
     {
@@ -315,7 +315,7 @@ export default function MerulePage() {
               <div>
                 <h4 className="font-bold text-amber-900 mb-1">💰 Coût moyen d'un traitement mérule</h4>
                 <p className="text-amber-800 text-sm">
-                  De <strong>5 000€</strong> (cas localisé) à <strong>50 000€+</strong> (charpente entière). 
+                  Le coût varie fortement selon l'ampleur de la contamination, <strong>d'un cas localisé à une charpente entière touchée</strong>.
                   Plus vous attendez, plus c'est cher. Un diagnostic précoce peut diviser la facture par 10.
                 </p>
               </div>

@@ -63,7 +63,7 @@ const definedTermJsonLd = {
   '@type': 'DefinedTermSet',
   name: "Lexique de la pathologie du bâtiment — IPB",
   description:
-    "Définitions des termes techniques de la pathologie et de la structure du bâtiment, maintenues par l'Institut de Pathologie du Bâtiment.",
+    "Définitions des termes techniques de la pathologie du bâtiment, maintenues par l'Institut de Pathologie du Bâtiment.",
   url: 'https://www.ipb-expertise.fr/lexique',
   hasDefinedTerm: lexiqueEntries.map((entry) => ({
     '@type': 'DefinedTerm',

@@ -190,7 +190,7 @@ const questionsData: Record<ActivePath, Question[]> = {
       id: 'DEVIS_EXISTANT',
       text: 'Avez-vous déjà un devis ou un avis ?',
       options: [
-        { value: 'oui_structure', label: 'Oui, étude structure faite', icon: '✓' },
+        { value: 'oui_structure', label: 'Oui, étude de faisabilité faite', icon: '✓' },
         { value: 'oui_devis', label: 'Oui, devis d\'un artisan', icon: '📄' },
         { value: 'non', label: 'Non, je commence', icon: '🆕' },
         { value: 'ne_sais_pas', label: 'Je ne sais pas', icon: '❓' },
@@ -349,10 +349,10 @@ const expertTips: Record<string, string> = {
   'fissure:URGENCE:modere': '💡 Vous avez raison d\'agir maintenant. Plus tôt on traite, moins les travaux sont importants (et coûteux).',
 
   // MUR PORTEUR
-  'mur-porteur:TYPE_BATIMENT:maison': '💡 Pour une maison individuelle, l\'ouverture de mur porteur est généralement réalisable en 2 à 5 jours. L\'étude structure est l\'étape clé.',
+  'mur-porteur:TYPE_BATIMENT:maison': '💡 Pour une maison individuelle, l\'ouverture de mur porteur est généralement réalisable en 2 à 5 jours. L\'étude de faisabilité est l\'étape clé.',
   'mur-porteur:TYPE_BATIMENT:immeuble': '⚠️ En immeuble, l\'accord de la copropriété est obligatoire. Nous vous aidons à constituer le dossier technique pour l\'AG.',
   'mur-porteur:TYPE_BATIMENT:local': '💡 Dans un local professionnel, le mur porteur peut avoir des charges importantes. La poutre est dimensionnée selon les Eurocodes, par un bureau d’études.',
-  'mur-porteur:PROJET:abattre': '⚠️ Abattre un mur porteur sans étude structure est illégal et dangereux. La poutre de reprise est dimensionnée selon les Eurocodes avant tout chantier.',
+  'mur-porteur:PROJET:abattre': '⚠️ Abattre un mur porteur sans étude de faisabilité est illégal et dangereux. La poutre de reprise est dimensionnée selon les Eurocodes avant tout chantier.',
   'mur-porteur:PROJET:agrandir': '💡 Agrandir une ouverture existante est souvent plus simple — le linteau est déjà en place. L\'étude vérifie si la portée peut être étendue.',
   'mur-porteur:PROJET:baie': '💡 Une baie vitrée nécessite l\'ouverture du mur ET la pose du dormant. Nous coordonnons les deux corps de métier.',
   'mur-porteur:PORTEE:grande': '⚠️ Au-delà de 3 m, la poutre est plus massive (HEB 200+ ou béton armé) et le coût augmente significativement. Un calcul précis est indispensable.',
@@ -360,12 +360,12 @@ const expertTips: Record<string, string> = {
   'mur-porteur:PORTEE:petite': '✅ Pour une petite ouverture (< 1,5 m), un linteau préfabriqué suffit souvent. Moins coûteux, chantier de 1 à 2 jours.',
   'mur-porteur:NATURE_MUR:pierre': '⚠️ Les murs en pierre ou brique ancienne sont souvent porteurs. L\'étaiement provisoire est crucial pour éviter tout mouvement pendant les travaux.',
   'mur-porteur:NATURE_MUR:beton': '💡 Le béton armé peut contenir des aciers. Un sondage est réalisé avant découpe pour éviter de sectionner les armatures porteuses.',
-  'mur-porteur:ETAGE:rdc_plancher': '⚠️ Un mur en RDC avec un étage au-dessus reprend des charges importantes. L\'étude structure est non négociable — la poutre doit être parfaitement dimensionnée.',
+  'mur-porteur:ETAGE:rdc_plancher': '⚠️ Un mur en RDC avec un étage au-dessus reprend des charges importantes. L\'étude de faisabilité est non négociable — la poutre doit être parfaitement dimensionnée.',
   'mur-porteur:ETAGE:rdc_combles': '💡 Sous combles, les charges sont moindres qu\'avec un étage habité. Mais un mur sous ferme ou sous panne reste porteur — à vérifier.',
   'mur-porteur:PLANS:non': '⚠️ Sans plans, un sondage est nécessaire pour identifier les aciers et la nature exacte du mur. C\'est une étape indispensable avant tout devis.',
-  'mur-porteur:PLANS:oui': '✅ Avoir les plans accélère l\'étude structure. La poutre peut souvent être pré-dimensionnée sans déplacement préalable.',
-  'mur-porteur:DEVIS_EXISTANT:oui_devis': '⚠️ Un devis d\'artisan sans étude structure est incomplet. Sans note de calcul, l\'artisan ne peut pas garantir le dimensionnement de la poutre.',
-  'mur-porteur:HORIZON:urgent': '💡 Pour les travaux urgents, l\'étude structure peut être lancée sous 72h.',
+  'mur-porteur:PLANS:oui': '✅ Avoir les plans accélère l\'étude de faisabilité. La poutre peut souvent être pré-dimensionnée sans déplacement préalable.',
+  'mur-porteur:DEVIS_EXISTANT:oui_devis': '⚠️ Un devis d\'artisan sans étude de faisabilité est incomplet. Sans note de calcul, l\'artisan ne peut pas garantir le dimensionnement de la poutre.',
+  'mur-porteur:HORIZON:urgent': '💡 Pour les travaux urgents, l\'étude de faisabilité peut être lancée sous 72h.',
 
   // HUMIDITÉ
   'humidite:TYPE_BATIMENT:maison': '💡 Sur une maison ancienne, l\'humidité par remontées capillaires est fréquente — les fondations en pierre ou brique laissent l\'eau monter par capillarité.',
@@ -579,7 +579,7 @@ export default function DiagnosticPage() {
           urgency: 'Projet complexe',
           urgencyIcon: '🔴',
           urgencyColor: 'red',
-          diagnosis: 'Votre projet implique une grande portée et/ou des charges importantes (étage au-dessus, mur béton). Une étude structure approfondie est indispensable avant tout chantier — c\'est la sécurité de votre bâtiment qui est en jeu.',
+          diagnosis: 'Votre projet implique une grande portée et/ou des charges importantes (étage au-dessus, mur béton). Une étude de faisabilité approfondie est indispensable avant tout chantier — c\'est la sécurité de votre bâtiment qui est en jeu.',
           solution: 'Étude structure complète selon les Eurocodes, note de calcul, dimensionnement de la poutre HEB/IPN. Coordination de l\'ensemble du chantier par notre institut avec étaiement et finitions inclus.',
           delay: 'Étude sous 7 à 12 jours ouvrés — travaux sous 3 à 6 semaines',
         };
@@ -588,7 +588,7 @@ export default function DiagnosticPage() {
           urgency: 'Projet standard',
           urgencyIcon: '🟠',
           urgencyColor: 'orange',
-          diagnosis: 'Votre projet est réalisable mais nécessite une étude structure pour dimensionner correctement la poutre. L\'intervention est de complexité modérée selon la portée et la nature du mur.',
+          diagnosis: 'Votre projet est réalisable mais nécessite une étude de faisabilité pour dimensionner correctement la poutre. L\'intervention est de complexité modérée selon la portée et la nature du mur.',
           solution: 'Visite technique de notre institut pour confirmer la faisabilité, sondage si nécessaire, devis détaillé. Travaux réalisables en 2 à 4 jours selon la portée.',
           delay: 'Devis sous 24h — travaux sous 2 à 4 semaines',
         };
@@ -597,8 +597,8 @@ export default function DiagnosticPage() {
           urgency: 'Projet accessible',
           urgencyIcon: '🟢',
           urgencyColor: 'green',
-          diagnosis: 'Votre projet semble de faible complexité (petite portée, charges modérées). Une étude structure rapide permettra de confirmer la faisabilité et de dimensionner le linteau.',
-          solution: 'Étude structure simplifiée, pose d\'un linteau préfabriqué ou IPN léger. Chantier propre en 1 à 2 jours. Devis gratuit établi après visite technique.',
+          diagnosis: 'Votre projet semble de faible complexité (petite portée, charges modérées). Une étude de faisabilité rapide permettra de confirmer la faisabilité et de dimensionner le linteau.',
+          solution: 'Étude de faisabilité simplifiée, pose d\'un linteau préfabriqué ou IPN léger. Chantier propre en 1 à 2 jours. Devis établi après visite technique.',
           delay: 'Devis sous 24h — travaux sous 1 à 3 semaines',
         };
       }
@@ -1470,7 +1470,7 @@ export default function DiagnosticPage() {
                       </div>
                     </div>
                     <p className="text-white/70 text-[10px] leading-relaxed">
-                      Diagnostic indépendant · Rapport remis · Sans engagement
+                      Rapport remis sous 3 à 5 jours · Sans engagement
                     </p>
                     <p className="text-white/70 text-[10px] mt-2 leading-relaxed">Si aucune intervention n'est nécessaire, nous vous le disons — l'institut ne vend pas de travaux.</p>
                   </div>
@@ -1517,7 +1517,7 @@ export default function DiagnosticPage() {
                     </button>
 
                     <div className="text-center text-[10px] text-ipb-light">
-                      Sans engagement · Réponse sous 48 heures · Diagnostic indépendant
+                      Sans engagement · Réponse sous 48 heures
                     </div>
 
                     <div className="text-center pt-2 border-t border-ipb-rule">
