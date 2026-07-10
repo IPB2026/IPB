@@ -107,7 +107,7 @@ export function DiagnosticBreadcrumb() {
   return (
     <BreadcrumbSchema
       items={[
-        { name: 'Diagnostic Gratuit', href: '/diagnostic' },
+        { name: 'Diagnostic', href: '/diagnostic' },
       ]}
     />
   );

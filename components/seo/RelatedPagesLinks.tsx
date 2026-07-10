@@ -114,7 +114,7 @@ export function getRelatedFissuresPages(currentVille: string, allVilles: string[
   return [
     // Liens vers pages services
     { href: '/expertise/fissures', label: 'Nos solutions fissures', description: 'Toutes nos méthodes' },
-    { href: '/diagnostic', label: 'Diagnostic gratuit', description: 'Évaluez votre situation' },
+    { href: '/diagnostic', label: 'Diagnostic', description: 'Évaluez votre situation' },
     // Liens vers autres villes
     ...otherVilles.map(ville => ({
       href: `/expert-fissures/${ville}`,
@@ -132,7 +132,7 @@ export function getRelatedHumiditePages(currentVille: string, allVilles: string[
   return [
     // Liens vers pages services
     { href: '/expertise/humidite', label: 'Nos solutions humidité', description: 'Toutes nos méthodes' },
-    { href: '/diagnostic', label: 'Diagnostic gratuit', description: 'Évaluez votre situation' },
+    { href: '/diagnostic', label: 'Diagnostic', description: 'Évaluez votre situation' },
     // Liens vers autres villes
     ...otherVilles.map(ville => ({
       href: `/expert-humidite/${ville}`,

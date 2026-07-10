@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'IPB - Institut de Pathologie du Bâtiment',
     short_name: 'IPB Expertise',
-    description: "Institut indépendant de diagnostic en pathologie du bâtiment en Occitanie. Diagnostic de fissures, expertise humidité, expertise avant achat et diagnostic avant vente. IPB diagnostique en toute indépendance ; si des travaux sont nécessaires, oriente vers des entreprises membres du réseau IPB.",
+    description: "Institut de diagnostic en pathologie du bâtiment en Occitanie. Diagnostic de fissures, humidité, inspection avant achat et diagnostic avant vente. Un rapport clair, remis sous 3 à 5 jours.",
     start_url: '/',
     display: 'standalone',
     background_color: '#FFFFFF',

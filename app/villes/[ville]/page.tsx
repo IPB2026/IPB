@@ -172,7 +172,7 @@ export default async function VillePage({ params }: PageProps) {
 
             <div className="flex flex-col sm:flex-row gap-5">
               <Link href="/diagnostic" className="w-full sm:w-auto bg-ipb-orange text-white px-8 py-5 rounded-xl font-bold text-lg shadow-xl shadow-orange-900/40 hover:bg-ipb-orange transition-all flex items-center justify-center gap-3 transform hover:-translate-y-1">
-                Diagnostic gratuit en 3 minutes
+                Diagnostic en 3 minutes
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14"></path>
                   <path d="m12 5 7 7-7 7"></path>
@@ -182,7 +182,7 @@ export default async function VillePage({ params }: PageProps) {
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                 </svg>
-                Consultation gratuite par téléphone
+                Consultation par téléphone
               </a>
             </div>
             <div className="mt-8 flex flex-col sm:flex-row items-center gap-6 text-sm text-ipb-light font-medium">
@@ -341,7 +341,7 @@ export default async function VillePage({ params }: PageProps) {
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             <Link href="/expertise/fissures" className="bg-white border border-ipb-rule rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition">
-              <h3 className="font-bold text-ipb-text mb-1">Fissures & structure</h3>
+              <h3 className="font-bold text-ipb-text mb-1">Fissures & bâti</h3>
               <p className="text-sm text-ipb-muted">Agrafage, stabilisation, diagnostic expert.</p>
             </Link>
             <Link href="/expertise/humidite" className="bg-white border border-ipb-rule rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition">
@@ -349,7 +349,7 @@ export default async function VillePage({ params }: PageProps) {
               <p className="text-sm text-ipb-muted">Injection résine durable, cuvelage.</p>
             </Link>
             <Link href="/diagnostic" className="bg-white border border-ipb-rule rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition">
-              <h3 className="font-bold text-ipb-text mb-1">Diagnostic gratuit</h3>
+              <h3 className="font-bold text-ipb-text mb-1">Diagnostic</h3>
               <p className="text-sm text-ipb-muted">Analyse rapide en 2 minutes.</p>
             </Link>
             <Link href="/contact" className="bg-white border border-ipb-rule rounded-xl p-4 hover:border-orange-300 hover:shadow-sm transition">

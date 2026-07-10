@@ -15,29 +15,29 @@ const services = [
   {
     num: '01',
     family: 'Diagnostic de pathologies',
-    title: 'Diagnostic et traitement des fissures',
-    desc: "Visite sur site, mesure au fissuromètre, identification de la cause — tassement, retrait-gonflement des argiles, défaut de structure. On vous remet un rapport reconnu par les assurances, avec des préconisations claires. Si des travaux s'imposent, on vous oriente vers des entreprises membres du réseau IPB.",
+    title: 'Diagnostic des fissures',
+    desc: "Visite sur site, mesure au fissuromètre, identification de la cause — tassement, retrait-gonflement des argiles, défaut d'origine. Nous vous remettons un rapport d'inspection que vous comprenez, avec des préconisations claires. Si des travaux s'imposent, nous pouvons en assurer la coordination.",
     href: '/expertise/fissures',
   },
   {
     num: '02',
     family: 'Diagnostic de pathologies',
     title: 'Diagnostic humidité et infiltrations',
-    desc: "Remontées capillaires, infiltrations, condensation : on confond souvent les origines, et on traite à côté. L'institut identifie la cause exacte et préconise la solution juste. Un diagnostic juste évite des travaux inutiles.",
+    desc: "Remontées capillaires, infiltrations, condensation : on confond souvent les origines, et on traite à côté. Un inspecteur IPB identifie la cause exacte et préconise le traitement adapté. Un diagnostic juste évite des travaux inutiles.",
     href: '/expertise/humidite',
   },
   {
     num: '03',
     family: 'Expertise',
-    title: 'Diagnostic du bâti avant achat immobilier',
-    desc: "Analyse indépendante du bâti avant signature : fissures, désordres apparents et cachés, état de la structure. Rapport remis sous 3 à 5 jours, compatible avec votre délai de rétractation. Un avis sans aucun lien avec le vendeur ni l'agence.",
+    title: 'Inspection avant achat immobilier',
+    desc: "Inspection du bâti avant signature : fissures, désordres apparents et ceux qui s'annoncent, état général du bâti. Rapport d'inspection remis sous 3 à 5 jours, compatible avec votre délai de rétractation — sans lien avec le vendeur ni l'agence.",
     href: '/expertise-avant-achat-immobilier-toulouse',
   },
   {
     num: '04',
     family: 'Expertise',
     title: 'Diagnostic avant vente immobilière',
-    desc: "Vous vendez ? Un diagnostic indépendant du bâti avant la mise en vente rassure vos acheteurs, objective les doutes et sécurise votre prix. Vous abordez la transaction avec un dossier clair.",
+    desc: "Vous vendez ? Un diagnostic du bâti avant la mise en vente rassure vos acheteurs, objective les doutes et sécurise votre prix. Vous abordez la transaction avec un dossier clair.",
     href: '/diagnostic-avant-vente',
   },
 ];
@@ -65,7 +65,7 @@ export function ServiceList() {
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
               <p className="text-[15px] leading-[1.9] font-light text-ipb-muted">
-                Fissures, humidité, avant achat, avant vente&nbsp;: on identifie la cause et on vous remet des préconisations claires, en toute indépendance — en Occitanie.
+                Fissures, humidité, avant achat, avant vente&nbsp;: on identifie la cause et on vous remet un rapport d'inspection clair — en Occitanie.
               </p>
             </div>
           </div>

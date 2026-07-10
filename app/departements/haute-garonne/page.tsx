@@ -9,7 +9,7 @@ import { Footer } from '@/components/home/Footer';
 
 export const metadata: Metadata = {
   title: 'Expert Fissures & Humidité Haute-Garonne 31 · Décennale 10 ans',
-  description: "Expert fissures et humidité Haute-Garonne (Toulouse, Colomiers, Muret). Diagnostic gratuit, décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
+  description: "Expert fissures et humidité Haute-Garonne (Toulouse, Colomiers, Muret). Diagnostic, décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures haute-garonne',
     'expert fissures toulouse',
@@ -18,13 +18,13 @@ export const metadata: Metadata = {
     'humidité murs haute-garonne',
     'agrafage fissures 31',
     'injection résine toulouse',
-    'diagnostic fissures gratuit toulouse',
+    'diagnostic fissures toulouse',
     'sol argileux toulouse',
     'sécheresse fissures 31',
   ],
   openGraph: {
     title: 'Expert Fissures & Humidité Haute-Garonne (31) | IPB',
-    description: 'Expert n°1 à Toulouse et en Haute-Garonne. Diagnostic gratuit, intervention rapide.',
+    description: 'Expert n°1 à Toulouse et en Haute-Garonne. Diagnostic, intervention rapide.',
     url: 'https://www.ipb-expertise.fr/departements/haute-garonne',
     siteName: 'IPB - Expert Fissures & Humidité',
     locale: 'fr_FR',
@@ -116,7 +116,7 @@ export default function HauteGaronnePage() {
         name: 'Quel est le coût moyen d\'un traitement de fissures à Toulouse ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'L\'agrafage de fissures coûte entre 8 000€ et 18 000€ pour une façade standard à Toulouse. C\'est 3 fois moins cher que les micropieux (25 000€ à 60 000€) et tout aussi efficace pour 90% des cas. Le diagnostic IPB est gratuit et sans engagement.',
+          text: 'L’agrafage de fissures est nettement moins coûteux que les micropieux, tout en étant aussi efficace pour la grande majorité des cas. Le diagnostic IPB est sans engagement.',
         },
       },
       {
@@ -124,7 +124,7 @@ export default function HauteGaronnePage() {
         name: 'Intervenez-vous rapidement en Haute-Garonne ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Oui, notre siège est à Toulouse. Nous intervenons sous 48-72h pour un diagnostic gratuit dans toute la Haute-Garonne : Toulouse et sa couronne (Colomiers, Blagnac, Muret, Tournefeuille), jusqu\'aux communes plus éloignées.',
+          text: 'Oui, notre siège est à Toulouse. Nous intervenons sous 48-72h pour un diagnostic dans toute la Haute-Garonne : Toulouse et sa couronne (Colomiers, Blagnac, Muret, Tournefeuille), jusqu\'aux communes plus éloignées.',
         },
       },
       {
@@ -307,7 +307,7 @@ export default function HauteGaronnePage() {
                 <div className="space-y-2 text-sm text-ipb-muted">
                   <div className="flex items-center gap-2">
                     <CheckCircle size={16} className="text-green-500" />
-                    Diagnostic gratuit
+                    Diagnostic
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle size={16} className="text-green-500" />
@@ -413,14 +413,14 @@ export default function HauteGaronnePage() {
               Fissures ou humidité en Haute-Garonne ?
             </h2>
             <p className="text-xl text-orange-50 mb-8">
-              Diagnostic gratuit sous 48h • Devis détaillé • Garantie décennale
+              Diagnostic sous 48h • Devis détaillé • Garantie décennale
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/diagnostic"
                 className="inline-flex items-center justify-center gap-2 bg-white text-ipb-orange px-8 py-4 rounded-xl font-bold text-lg hover:bg-ipb-stone transition-all shadow-xl"
               >
-                Faire mon diagnostic gratuit
+                Faire mon diagnostic
                 <ArrowRight size={20} />
               </Link>
               <a

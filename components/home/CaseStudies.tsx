@@ -13,7 +13,7 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
  *
  * Composition : 2 cas FISSURES + 1 cas HUMIDITÉ (service mur porteur
  * arrêté en 2026 — l'ancien cas mur porteur a été remplacé par un cas
- * humidité, cohérent avec l'ADN diagnostic indépendant).
+ * humidité, cohérent avec l'ADN diagnostic).
  *
  * Photos en cohérence avec le sujet de chaque cas :
  *  - fissures-avant-apres.webp → cas Tournefeuille
@@ -34,7 +34,7 @@ const cases = [
       "Tassement différentiel reconnu en catastrophe naturelle 2022",
       "Agrafage structurel complet (18 agrafes inox) + ravalement souple",
     ],
-    constat: "Le rapport IPB a été transmis à l'expert d'assurance. L'indemnisation a couvert 92 % du chantier.",
+    constat: "Le rapport IPB a été transmis à l'expert d'assurance et a servi de base à la discussion d'indemnisation.",
   },
   {
     type: 'Fissures',

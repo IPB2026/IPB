@@ -383,7 +383,7 @@ export default function MicrofissurePage() {
             Un doute sur vos fissures ?
           </h2>
           <p className="text-xl text-white/70 mb-8">
-            Le diagnostic est gratuit et sans engagement. Mieux vaut vérifier que regretter.
+            Le diagnostic est sans engagement. Mieux vaut vérifier que regretter.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="group bg-gradient-to-r from-amber-500 to-orange-500 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:from-amber-400 hover:to-orange-400 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">

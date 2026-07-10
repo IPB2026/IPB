@@ -79,11 +79,11 @@ const faqItems = [
   },
   {
     question: "Quel est le coût d'une expertise fissures à Toulouse ?",
-    answer: "Un diagnostic complet à Toulouse coûte entre 800 et 1 500 € TTC selon la complexité (taille du bâti, nombre de désordres, contexte juridique). Il inclut le déplacement, les mesures instrumentées et le rapport technique. Si des travaux sont nécessaires, l'institut vous oriente ensuite vers des entreprises membres du réseau IPB.",
+    answer: "Le coût d'un diagnostic complet à Toulouse dépend de la complexité (taille du bâti, nombre de désordres, contexte juridique) ; il est communiqué avant l'intervention. Il inclut le déplacement, les mesures instrumentées et le rapport technique. Si des travaux sont nécessaires, l'institut vous oriente ensuite vers des entreprises membres du réseau IPB.",
   },
   {
     question: "Mes fissures peuvent-elles attendre ou faut-il agir rapidement ?",
-    answer: "Trois critères imposent une expertise immédiate : fissure horizontale (même fine), fissure qui évolue de plus d'1 mm en 6 mois, ou présence de signes collatéraux (portes qui coincent, carrelage soulevé). Pour les fissures verticales fines stabilisées, une surveillance annuelle suffit. Le pire scénario, c'est d'attendre 5 ans : un agrafage à 14 000 € peut alors devenir un chantier micropieux à 50 000 €.",
+    answer: "Trois critères imposent une expertise immédiate : fissure horizontale (même fine), fissure qui évolue de plus d'1 mm en 6 mois, ou présence de signes collatéraux (portes qui coincent, carrelage soulevé). Pour les fissures verticales fines stabilisées, une surveillance annuelle suffit. Le pire scénario, c'est d'attendre 5 ans : un simple agrafage peut alors devenir un chantier de reprise en sous-œuvre bien plus lourd.",
   },
   {
     question: "Mon assurance prend-elle en charge les fissures de sécheresse ?",
@@ -91,7 +91,7 @@ const faqItems = [
   },
   {
     question: "Quelle franchise pour les fissures CAT-NAT en 2026 ?",
-    answer: "La franchise légale pour les sinistres sécheresse au titre de la garantie catastrophes naturelles est de 1 520 € en 2026. Cette franchise s'applique automatiquement, peu importe votre contrat. Beaucoup de propriétaires découvrent ce montant tardivement — nous le rappelons systématiquement dans notre rapport pour anticiper le reste à charge.",
+    answer: "La franchise légale pour les sinistres sécheresse au titre de la garantie catastrophes naturelles s'applique automatiquement en 2026, peu importe votre contrat. Beaucoup de propriétaires découvrent ce montant tardivement — nous le rappelons systématiquement dans notre rapport pour anticiper le reste à charge.",
   },
   {
     question: "Que faire si l'expert d'assurance minimise mes fissures ?",
@@ -99,7 +99,7 @@ const faqItems = [
   },
   {
     question: "Quelle est la différence entre agrafage et micropieux ?",
-    answer: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables (12 000 à 18 000 €). Les micropieux reprennent les fondations en profondeur (40 000 à 60 000 €) — intervention lourde réservée aux tassements actifs majeurs. Le rôle d'IPB est de diagnostiquer la cause et de préconiser la solution adaptée, en toute indépendance ; pour la réalisation, l'institut vous oriente vers des entreprises membres du réseau IPB.",
+    answer: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables. Les micropieux reprennent les fondations en profondeur — intervention lourde et nettement plus coûteuse, réservée aux tassements actifs majeurs. Le rôle d'IPB est de diagnostiquer la cause et de préconiser la solution adaptée, en toute indépendance ; pour la réalisation, l'institut vous oriente vers des entreprises membres du réseau IPB.",
   },
   {
     question: "Le rapport peut-il être utilisé devant un tribunal ?",
@@ -114,8 +114,8 @@ const faqItems = [
     answer: "Ce n'est pas légalement obligatoire, mais c'est fortement recommandé : un rapport technique qui qualifie les fissures (cosmétiques ou structurelles) et leur évolution rassure l'acquéreur, sécurise la négociation et limite le risque de recours en vice caché après la vente. À Toulouse, où le retrait-gonflement des argiles est très présent, un acheteur averti demande presque toujours ces éléments. Beaucoup de vendeurs nous sollicitent juste avant la mise en vente ou pendant le compromis.",
   },
   {
-    question: "IPB est-il un expert d'assuré indépendant ?",
-    answer: "IPB est un institut indépendant de diagnostic et de coordination : nous ne sommes liés à aucune compagnie d'assurance et notre rapport défend la réalité technique de vos désordres, pas les intérêts d'un assureur. Le diagnostic et la coordination sont assurés par IPB ; les travaux (agrafage structurel notamment) sont exécutés par les équipes du réseau IPB sous garantie décennale. Vous gardez ainsi un seul interlocuteur, du constat à la réparation.",
+    question: "IPB défend-il mes intérêts face à l'assurance ?",
+    answer: "IPB est un institut de diagnostic en pathologie du bâtiment : nous ne sommes liés à aucune compagnie d'assurance, et notre rapport d'inspection documente la réalité technique de vos désordres, pas les intérêts d'un assureur. Le diagnostic est assuré par IPB ; si des travaux s'imposent (agrafage structurel notamment), nous pouvons en coordonner la réalisation par les entreprises du réseau IPB, sous leur garantie décennale. Vous gardez ainsi un seul interlocuteur, du constat à la réparation.",
   },
 ];
 
@@ -123,7 +123,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "IPB - Institut de pathologie du bâtiment Toulouse",
-  "description": "Institut indépendant en diagnostic et traitement des fissures structurelles. Toulouse, Haute-Garonne et Occitanie.",
+  "description": "Institut de diagnostic en pathologie du bâtiment : fissures structurelles. Toulouse, Haute-Garonne et Occitanie.",
   "url": "https://www.ipb-expertise.fr/expert-fissures-toulouse-31",
   "telephone": "+33582953375",
   "address": {
@@ -217,7 +217,7 @@ export default function ExpertFissuresToulousePage() {
               {/* Trust-line sous les CTA — réassurance factuelle et mesurée */}
               <RevealOnScroll delay={0.22}>
                 <p className="mt-5 text-[12px] text-ipb-muted font-light">
-                  Sans engagement · Réponse sous 48 heures · Diagnostic indépendant
+                  Sans engagement · Réponse sous 48 heures
                 </p>
               </RevealOnScroll>
             </div>
@@ -446,7 +446,7 @@ export default function ExpertFissuresToulousePage() {
 
             <RevealOnScroll delay={0.1}>
               <p className="mt-8 text-[13px] leading-[1.7] text-ipb-muted font-light max-w-3xl">
-                À titre indicatif : une reprise en sous-œuvre par micropieux — réservée aux tassements majeurs — se situe généralement entre 30 000 et 60 000 €. L'agrafage structurel, suffisant dans 90 % des cas, en représente une fraction. Le montant exact est toujours établi après le diagnostic.
+                À titre indicatif : une reprise en sous-œuvre par micropieux — réservée aux tassements majeurs — représente un investissement lourd. L'agrafage structurel, suffisant dans 90 % des cas, en représente une fraction. Le montant exact est toujours établi après le diagnostic.
               </p>
             </RevealOnScroll>
 
@@ -456,7 +456,7 @@ export default function ExpertFissuresToulousePage() {
                 <span className="text-[10px] uppercase tracking-[0.18em] text-ipb-orange-l font-semibold">Cas concret</span>
                 <h3 className="font-serif text-white font-bold text-[22px] leading-tight mt-3 mb-3">Comment nous évaluons la gravité d'une fissure</h3>
                 <p className="text-[14px] leading-[1.85] font-light text-white/65 max-w-2xl">
-                  Largeur, forme, évolution, désordres associés : les quatre critères que l'expert structure du réseau IPB mesure sur site pour distinguer une fissure cosmétique d'un mouvement actif. Avec exemples à l'appui.
+                  Largeur, forme, évolution, désordres associés : les quatre critères qu'un inspecteur IPB mesure sur site pour distinguer une fissure cosmétique d'un mouvement actif. Avec exemples à l'appui.
                 </p>
                 <span className="text-[13px] text-ipb-orange-l font-medium mt-4 inline-block">Lire l'analyse →</span>
               </a>
@@ -585,7 +585,7 @@ export default function ExpertFissuresToulousePage() {
                 Le diagnostic en ligne ne vous engage à rien.
               </p>
               <p className="text-[15px] leading-[1.85] font-light text-ipb-muted">
-                Vous recevez un premier avis de notre expert structure, sans frais. <strong className="text-ipb-text not-italic">Si la situation ne nécessite pas d'intervention, nous vous le dirons</strong> — c'est l'engagement de l'institut. Mieux vaut un avis juste qu'un devis vendu.
+                Vous recevez un premier avis d'un inspecteur IPB, sans engagement. <strong className="text-ipb-text not-italic">Si la situation ne nécessite pas d'intervention, nous vous le dirons</strong> — c'est l'engagement de l'institut. Mieux vaut un avis juste qu'une réparation vendue.
               </p>
             </RevealOnScroll>
           </div>

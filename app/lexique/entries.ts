@@ -52,7 +52,7 @@ export const lexiqueEntries: LexiqueEntry[] = [
     definition:
       "Cartographie publique éditée par le Bureau de recherches géologiques et minières, qui classe les communes selon leur exposition à différents aléas naturels (retrait-gonflement des argiles, mouvements de terrain, séismes, cavités).",
     precision:
-      "La consultation se fait gratuitement sur le site Géorisques. Pour le retrait-gonflement des argiles, la carte distingue trois niveaux d'aléa (faible, moyen, fort). Une commune classée en aléa moyen ou fort déclenche des prescriptions techniques pour les nouvelles constructions et alimente les dossiers de catastrophe naturelle.",
+      "La consultation se fait librement sur le site Géorisques. Pour le retrait-gonflement des argiles, la carte distingue trois niveaux d'aléa (faible, moyen, fort). Une commune classée en aléa moyen ou fort déclenche des prescriptions techniques pour les nouvelles constructions et alimente les dossiers de catastrophe naturelle.",
     voirAussi: [
       { label: 'Retrait-gonflement des argiles', href: '#retrait-gonflement-des-argiles' },
       { label: 'Catastrophe naturelle', href: '#catastrophe-naturelle' },
@@ -66,7 +66,7 @@ export const lexiqueEntries: LexiqueEntry[] = [
     definition:
       "Régime juridique français institué par la loi du 13 juillet 1982, qui permet l'indemnisation par l'assurance des dommages causés à un bien par un phénomène naturel d'intensité anormale (sécheresse, inondation, mouvement de terrain).",
     precision:
-      "La reconnaissance de l'état de catastrophe naturelle est prononcée par arrêté interministériel publié au Journal officiel. Pour la sécheresse, l'arrêté précise les communes concernées et la période. La déclaration auprès de l'assureur doit intervenir dans les dix jours suivant la publication de l'arrêté. La franchise légale est fixée à 1 520 €.",
+      "La reconnaissance de l'état de catastrophe naturelle est prononcée par arrêté interministériel publié au Journal officiel. Pour la sécheresse, l'arrêté précise les communes concernées et la période. La déclaration auprès de l'assureur doit intervenir dans les dix jours suivant la publication de l'arrêté. Une franchise légale reste à la charge de l'assuré.",
     voirAussi: [
       { label: 'Retrait-gonflement des argiles', href: '#retrait-gonflement-des-argiles' },
       { label: 'Garantie décennale', href: '#garantie-decennale' },
@@ -118,7 +118,7 @@ export const lexiqueEntries: LexiqueEntry[] = [
     terme: 'Contre-expertise',
     lettre: 'C',
     definition:
-      "Expertise technique réalisée à la demande d'une partie en désaccord avec les conclusions d'une expertise précédente, afin d'obtenir un second avis indépendant.",
+      "Expertise technique réalisée à la demande d'une partie en désaccord avec les conclusions d'une expertise précédente, afin d'obtenir un second avis.",
     precision:
       "La contre-expertise est fréquente en matière de sinistres assurance (dommages-ouvrage, catastrophe naturelle), de litiges entre acheteur et vendeur (vice caché), ou en procédure judiciaire. Elle peut conduire à une expertise contradictoire menée en présence des deux experts. Le rapport de contre-expertise est opposable.",
     voirAussi: [
@@ -378,7 +378,7 @@ export const lexiqueEntries: LexiqueEntry[] = [
     definition:
       "Assurance obligatoire pour tout constructeur français, qui couvre pendant dix ans les dommages compromettant la solidité de l'ouvrage ou le rendant impropre à sa destination, à compter de la réception des travaux.",
     precision:
-      "La garantie décennale est une garantie légale (article 1792 du Code civil), souscrite par toute entreprise réalisant des travaux de construction ou de rénovation lourde. Elle couvre notamment les défauts de structure et les vices d'exécution affectant les ouvrages porteurs. Une attestation est remise au maître d'ouvrage à la signature du devis.",
+      "La garantie décennale est une garantie légale (article 1792 du Code civil), souscrite par toute entreprise réalisant des travaux de construction ou de rénovation lourde. Elle couvre notamment les défauts d'origine et les vices d'exécution affectant les ouvrages porteurs. Une attestation est remise au maître d'ouvrage à la signature du devis.",
     voirAussi: [
       { label: 'Vice caché', href: '#vice-cache' },
       { label: 'Expertise judiciaire', href: '#expertise-judiciaire' },
@@ -569,7 +569,7 @@ export const lexiqueEntries: LexiqueEntry[] = [
     definition:
       "Mur structurel qui participe à la stabilité d'un bâtiment en supportant et transmettant les charges des planchers et de la toiture vers les fondations.",
     precision:
-      "Toute intervention sur un mur porteur (ouverture, démolition partielle, modification) nécessite une étude de structure préalable et la mise en œuvre d'éléments de soutien (poutre IPN ou HEB, étaiement). À distinguer de la cloison, qui ne participe pas à la stabilité du bâti.",
+      "Toute intervention sur un mur porteur (ouverture, démolition partielle, modification) nécessite une étude préalable et la mise en œuvre d'éléments de soutien (poutre IPN ou HEB, étaiement). À distinguer de la cloison, qui ne participe pas à la stabilité du bâti.",
     voirAussi: [
       { label: 'Mur de refend', href: '#mur-de-refend' },
       { label: 'Cloison', href: '#cloison' },

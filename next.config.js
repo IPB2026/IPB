@@ -106,6 +106,9 @@ const nextConfig = {
       { source: '/revente-maison-fissuree', destination: '/blog/revente-maison-fissuree', permanent: true },
       // Service mur porteur arrêté — lien historique sans ville → accueil (1 saut, pas de chaîne).
       { source: '/expert-mur-porteur', destination: '/', permanent: true },
+      // Refonte V3 (2026-07) — page « notre expert » renommée « institut » (le singulier
+      // « notre expert » contredit le modèle réseau). 301 pour préserver le SEO E-E-A-T.
+      { source: '/notre-expert', destination: '/institut', permanent: true },
     ];
   },
 

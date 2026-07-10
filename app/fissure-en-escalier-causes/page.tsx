@@ -58,7 +58,7 @@ const signesGravite = [
 const faqItems = [
   { q: 'Une fissure en escalier est-elle dangereuse ?', a: 'Oui, c\'est le signe d\'un mouvement structurel actif. Sans traitement, elle va s\'aggraver et peut compromettre la stabilité du bâtiment.' },
   { q: 'Peut-on simplement reboucher une fissure en escalier ?', a: 'Non, reboucher sans traiter la cause est inutile. La fissure réapparaîtra. Il faut d\'abord stabiliser la structure (agrafage) puis réparer.' },
-  { q: 'Combien coûte la réparation ?', a: 'L\'agrafage coûte entre 8 000€ et 18 000€ selon l\'étendue des désordres. Cette technique convient à la majorité des cas de fissures structurelles sur bâti courant.' },
+  { q: 'Comment se répare une fissure en escalier ?', a: 'L\'agrafage s\'adapte à l\'étendue des désordres. Cette technique convient à la majorité des cas de fissures structurelles sur bâti courant.' },
   { q: 'La fissure est-elle couverte par l\'assurance ?', a: 'Si votre commune est reconnue en catastrophe naturelle sécheresse, oui. Nous vous aidons à constituer votre dossier.' },
 ];
 
@@ -122,7 +122,7 @@ export default function FissureEscalierPage() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/diagnostic" className="group bg-ipb-orange hover:bg-[#b35519] text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl shadow-orange-500/25">
-                  Diagnostic gratuit
+                  Diagnostic
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all">
@@ -276,7 +276,7 @@ export default function FissureEscalierPage() {
               Comment nous réparons votre fissure
             </h2>
             <p className="text-xl text-ipb-light max-w-2xl mx-auto">
-              L'agrafage structurel : la solution éprouvée pour 85% des cas, 3x moins chère que les micropieux.
+              L'agrafage structurel : la solution éprouvée pour 85% des cas, adaptée au bâti courant.
             </p>
           </div>
 
@@ -308,23 +308,23 @@ export default function FissureEscalierPage() {
             ))}
           </div>
 
-          {/* Prix */}
+          {/* Repères */}
           <div className="mt-16 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-3xl p-8 md:p-12 border border-ipb-orange/30">
             <div className="grid md:grid-cols-3 gap-8 items-center">
               <div className="text-center md:text-left">
                 <div className="text-sm text-ipb-orange-l font-bold mb-2">DIAGNOSTIC</div>
-                <div className="inline-block bg-green-500/20 text-green-400 text-sm font-bold px-3 py-1 rounded-full mb-1">Déduit à 100%</div>
-                <div className="text-ipb-light">du montant des travaux</div>
+                <div className="inline-block bg-green-500/20 text-green-400 text-sm font-bold px-3 py-1 rounded-full mb-1">Sur site</div>
+                <div className="text-ipb-light">rapport détaillé avec préconisations</div>
               </div>
               <div className="text-center border-y md:border-y-0 md:border-x border-white/10 py-8 md:py-0">
                 <div className="text-sm text-ipb-orange-l font-bold mb-2">AGRAFAGE</div>
-                <div className="text-4xl font-black text-white">8-18K€</div>
+                <div className="text-4xl font-black text-white">2-3 j</div>
                 <div className="text-ipb-light">Selon étendue • Garantie 10 ans</div>
               </div>
               <div className="text-center md:text-right">
-                <div className="text-sm text-green-300 font-bold mb-2">ÉCONOMIE VS MICROPIEUX</div>
-                <div className="text-4xl font-black text-green-400">-65%</div>
-                <div className="text-ipb-light">Soit 15 000€ à 30 000€ économisés</div>
+                <div className="text-sm text-green-300 font-bold mb-2">MICROPIEUX</div>
+                <div className="text-4xl font-black text-green-400">Cas graves</div>
+                <div className="text-ipb-light">Chantier lourd, terrassement profond</div>
               </div>
             </div>
           </div>
@@ -410,12 +410,12 @@ export default function FissureEscalierPage() {
           </h2>
           
           <p className="text-xl text-ipb-orange-l mb-8 max-w-2xl mx-auto">
-            Diagnostic sous 48h • Devis gratuit • Garantie décennale
+            Diagnostic sous 48h • Devis • Garantie décennale
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="group bg-white text-ipb-orange px-10 py-5 rounded-2xl font-bold text-lg hover:bg-ipb-stone flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">
-              Je demande mon diagnostic gratuit
+              Je demande mon diagnostic
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/30 hover:bg-white/20 px-8 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all">

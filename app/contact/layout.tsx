@@ -2,10 +2,10 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "Contact · Échanger avec l'institut IPB · Toulouse & Occitanie",
-  description: "Une question technique sur des fissures, de l'humidité ou un doute avant un achat ou une vente ? Échangez directement avec l'institut IPB. Réponse sous 48h, devis gratuit.",
+  description: "Une question technique sur des fissures, de l'humidité ou un doute avant un achat ou une vente ? Échangez directement avec l'institut IPB. Réponse sous 48h, devis clair.",
   keywords: [
     'contact expert fissures toulouse',
-    'devis gratuit fissures',
+    'devis fissures toulouse',
     'expert humidité toulouse',
     'expertise avant achat toulouse',
     'institut pathologie bâtiment toulouse',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: "Contact · Échanger avec l'institut IPB · Toulouse & Occitanie",
     description: "Une question technique sur des fissures, de l'humidité ou un doute avant un achat ou une vente ? Échangez directement avec l'institut IPB. Réponse sous 48h.",
     url: 'https://www.ipb-expertise.fr/contact',
-    siteName: 'IPB · Institut de pathologie & structure du bâtiment',
+    siteName: 'IPB · Institut de pathologie du bâtiment',
     locale: 'fr_FR',
     type: 'website',
     images: [

@@ -7,8 +7,8 @@ import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, Wind, ChevronRight, Shield, CheckCircle, XCircle, ThermometerSun, Droplets, Home } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'VMI Ventilation Insufflation · Prix 2500-4500€ Toulouse',
-  description: "VMI : solution anti-condensation et moisissures. Prix 2500-4500€ installée par notre installateur fluides partenaire à Toulouse, Montauban. ☎ 05 82 95 33 75",
+  title: 'VMI Ventilation Insufflation · Anti-condensation · Toulouse',
+  description: "VMI : solution anti-condensation et moisissures, installée par notre installateur fluides partenaire à Toulouse, Montauban. ☎ 05 82 95 33 75",
   keywords: ['VMI', 'ventilation insufflation', 'anti condensation', 'VMI prix', 'VMI vs VMC'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/vmi-ventilation-insufflation' },
 };
@@ -28,7 +28,6 @@ const comparatif = [
   { critere: 'Air entrant', vmi: '✅ Filtré et préchauffé', vmc: '❌ Non filtré' },
   { critere: 'Installation', vmi: '✅ Simple (1 point)', vmc: '❌ Complexe (gaines)' },
   { critere: 'Rénovation', vmi: '✅ Idéal', vmc: '⚠️ Travaux importants' },
-  { critere: 'Prix installé', vmi: '2 500 - 4 500€', vmc: '3 000 - 8 000€' },
 ];
 
 export default function VMIPage() {
@@ -93,7 +92,7 @@ export default function VMIPage() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/diagnostic" className="group bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl">
-                  Devis VMI gratuit
+                  Devis VMI
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all">
@@ -221,12 +220,12 @@ export default function VMIPage() {
       <section className="py-20 bg-ipb-navy text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-black mb-12">
-            Prix VMI installée
+            La VMI installée
           </h2>
 
           <div className="bg-gradient-to-br from-teal-500/20 to-emerald-500/20 rounded-3xl p-8 md:p-12 border border-teal-500/30">
-            <div className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400 mb-4">
-              2 500 - 4 500€
+            <div className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400 mb-4">
+              Clé en main
             </div>
             <div className="text-ipb-light mb-8">Fourniture + installation + mise en service</div>
 
@@ -251,8 +250,8 @@ export default function VMIPage() {
               <div className="bg-white/5 rounded-2xl p-4">
                 <div className="font-bold text-white mb-2">Entretien</div>
                 <ul className="text-ipb-light text-sm space-y-1">
-                  <li>• Filtres : 50-100€/an</li>
-                  <li>• Conso élec : ~100€/an</li>
+                  <li>• Filtres : remplacement annuel</li>
+                  <li>• Conso élec : très faible</li>
                   <li>• Maintenance minimale</li>
                 </ul>
               </div>
@@ -298,11 +297,11 @@ export default function VMIPage() {
             <span className="block text-teal-200">Une maison sèche.</span>
           </h2>
           <p className="text-xl text-teal-100 mb-8">
-            Devis gratuit • Installation en 1 jour • Garantie 10 ans
+            Devis • Installation en 1 jour • Garantie 10 ans
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="group bg-white text-teal-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-teal-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">
-              Devis VMI gratuit
+              Devis VMI
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/30 hover:bg-white/20 px-8 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3">

@@ -156,7 +156,7 @@ export function ServiceNavigation() {
           </li>
           <li>
             <Link href="/diagnostic" className="hover:text-orange-400 transition focus:outline-none focus:ring-2 focus:ring-orange-400 rounded px-2 py-1">
-              Diagnostic Gratuit
+              Diagnostic
             </Link>
           </li>
           <li>

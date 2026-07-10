@@ -20,7 +20,7 @@ export function StatsBlock() {
       <div className="max-w-ipb mx-auto px-6 lg:px-12 relative z-10">
         <RevealOnScroll variant="editorial">
           <div className="text-center mb-16 max-w-2xl mx-auto">
-            <Eyebrow variant="dark" className="justify-center">L'institut en chiffres</Eyebrow>
+            <Eyebrow variant="dark" className="justify-center">Repères</Eyebrow>
             <h2
               className="font-serif text-white"
               style={{
@@ -30,8 +30,8 @@ export function StatsBlock() {
                 fontWeight: 700,
               }}
             >
-              Pas des promesses.<br />
-              <em>Des faits vérifiables.</em>
+              L'institut<br />
+              <em>en quelques chiffres.</em>
             </h2>
           </div>
         </RevealOnScroll>

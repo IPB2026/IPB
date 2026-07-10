@@ -186,7 +186,7 @@ export default function ContactPage() {
                         Décrire ma situation →
                       </a>
                       <p className="mt-4 pt-4 border-t border-ipb-rule text-[12px] text-ipb-light leading-[1.7]">
-                        <span className="font-medium text-ipb-text">4,9/5</span> sur Google · Réponse sous 48&nbsp;h · Diagnostic indépendant — on ne vous vend pas de travaux
+                        <span className="font-medium text-ipb-text">4,9/5</span> sur Google · Réponse sous 48&nbsp;h · Diagnostic — on ne vous vend pas de travaux
                       </p>
                     </div>
 

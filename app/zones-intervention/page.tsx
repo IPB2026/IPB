@@ -79,7 +79,7 @@ export default function ZonesInterventionPage() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="bg-ipb-orange hover:bg-ipb-orange text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition shadow-xl">
-              Diagnostic gratuit <ArrowRight size={20} />
+              Diagnostic <ArrowRight size={20} />
             </Link>
             <a href="tel:0582953375" className="bg-white/10 border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition">
               <Phone size={20} /> 05 82 95 33 75
@@ -105,7 +105,7 @@ export default function ZonesInterventionPage() {
               <div className="text-ipb-muted text-sm">Délai intervention</div>
             </div>
             <div>
-              <div className="text-3xl font-extrabold text-ipb-orange">0€</div>
+              <div className="text-3xl font-extrabold text-ipb-orange">Inclus</div>
               <div className="text-ipb-muted text-sm">Frais de déplacement</div>
             </div>
           </div>
@@ -120,7 +120,7 @@ export default function ZonesInterventionPage() {
               Toutes nos villes d&apos;intervention par département
             </h2>
             <p className="text-lg text-ipb-muted max-w-2xl mx-auto">
-              Cliquez sur une ville pour voir les données locales : risque RGA, arrêtés catastrophe naturelle, quartiers touchés et tarifs.
+              Cliquez sur une ville pour voir les données locales : risque RGA, arrêtés catastrophe naturelle, quartiers touchés et spécificités locales.
             </p>
           </div>
 
@@ -268,7 +268,7 @@ export default function ZonesInterventionPage() {
             Votre ville est dans la liste ?
           </h2>
           <p className="text-xl text-ipb-orange-l mb-8">
-            Diagnostic gratuit en ligne en 3 minutes. Intervention sous 48h, déplacement inclus.
+            Diagnostic en ligne en 3 minutes. Intervention sous 48h, déplacement inclus.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="bg-white text-ipb-orange px-10 py-5 rounded-xl font-bold text-lg hover:bg-ipb-stone flex items-center justify-center gap-2 shadow-2xl transition">

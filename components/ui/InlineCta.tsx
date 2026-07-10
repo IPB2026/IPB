@@ -13,7 +13,7 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 export function InlineCta({
   eyebrow = 'Prêt à avancer ?',
   title,
-  text = "Décrivez votre situation en 2 minutes. L'institut vous rappelle sous 48 h avec un premier avis — gratuitement et sans engagement.",
+  text = "Décrivez votre situation en 2 minutes. L'institut vous rappelle sous 48 h avec un premier avis — sans engagement.",
 }: {
   eyebrow?: string;
   title?: ReactNode;

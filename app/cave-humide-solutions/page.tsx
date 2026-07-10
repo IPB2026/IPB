@@ -7,8 +7,8 @@ import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, AlertTriangle, Home, ChevronRight, Shield, CheckCircle, Droplets, Wind } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Cave Humide · Cuvelage 200-400€/m² · Drainage Toulouse',
-  description: "Cave ou sous-sol humide ? Cuvelage (200-400€/m²), drainage, VMI. Diagnostic gratuit Toulouse, Montauban, Auch. ☎ 05 82 95 33 75",
+  title: 'Cave Humide · Cuvelage & Drainage · Toulouse',
+  description: "Cave ou sous-sol humide ? Cuvelage, drainage, VMI. Diagnostic Toulouse, Montauban, Auch. ☎ 05 82 95 33 75",
   keywords: ['cave humide', 'cuvelage cave', 'drainage sous-sol', 'infiltration cave', 'étanchéité sous-sol'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/cave-humide-solutions' },
 };
@@ -17,7 +17,6 @@ const solutions = [
   {
     titre: 'Cuvelage',
     description: 'Revêtement étanche appliqué sur les parois. Résiste à la pression de l\'eau.',
-    prix: '150-250€/m²',
     adapte: 'Infiltrations latérales',
     garantie: '10 ans',
     icon: '🛡️',
@@ -26,7 +25,6 @@ const solutions = [
   {
     titre: 'Drainage périphérique',
     description: 'Tranchée drainante autour des fondations. Évacue l\'eau avant qu\'elle n\'entre.',
-    prix: '150-300€/ml',
     adapte: 'Nappe phréatique haute',
     garantie: '20 ans',
     icon: '🚰',
@@ -35,7 +33,6 @@ const solutions = [
   {
     titre: 'Pompe de relevage',
     description: 'Évacue l\'eau qui s\'accumule dans un puisard. Solution complémentaire.',
-    prix: '800-2000€',
     adapte: 'Inondations récurrentes',
     garantie: '5 ans',
     icon: '⬆️',
@@ -44,7 +41,6 @@ const solutions = [
   {
     titre: 'VMI',
     description: 'Ventilation par insufflation. Élimine la condensation et l\'humidité ambiante.',
-    prix: '2500-4500€',
     adapte: 'Condensation',
     garantie: '10 ans',
     icon: '💨',
@@ -114,7 +110,7 @@ export default function CaveHumidePage() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/diagnostic" className="group bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl">
-                  Diagnostic cave gratuit
+                  Diagnostic cave
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all">
@@ -181,10 +177,6 @@ export default function CaveHumidePage() {
                 
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-ipb-muted">Prix</span>
-                    <span className="font-bold text-ipb-text">{sol.prix}</span>
-                  </div>
-                  <div className="flex justify-between">
                     <span className="text-ipb-muted">Adapté pour</span>
                     <span className="font-bold text-ipb-text">{sol.adapte}</span>
                   </div>
@@ -243,8 +235,8 @@ export default function CaveHumidePage() {
               <div className="bg-cyan-500/20 rounded-2xl p-6 border border-cyan-500/30">
                 <div className="flex items-center justify-between">
                   <div>
-                    <div className="text-sm text-cyan-300 font-bold">PRIX CUVELAGE</div>
-                    <div className="text-4xl font-black text-white">150-250€<span className="text-lg text-ipb-light">/m²</span></div>
+                    <div className="text-sm text-cyan-300 font-bold">RÉSISTANCE À L'EAU</div>
+                    <div className="text-4xl font-black text-white">7 bars</div>
                   </div>
                   <div className="text-right">
                     <div className="text-sm text-cyan-300 font-bold">GARANTIE</div>
@@ -322,11 +314,11 @@ export default function CaveHumidePage() {
             <span className="block text-cyan-200">en espace sain.</span>
           </h2>
           <p className="text-xl text-cyan-100 mb-8">
-            Diagnostic gratuit • Devis personnalisé • Garantie décennale
+            Diagnostic • Devis personnalisé • Garantie décennale
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="group bg-white text-cyan-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-cyan-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">
-              Diagnostic cave gratuit
+              Diagnostic cave
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/30 hover:bg-white/20 px-8 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3">

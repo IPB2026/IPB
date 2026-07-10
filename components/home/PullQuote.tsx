@@ -70,7 +70,7 @@ export function PullQuote() {
                   </motion.span>
                 )}
                 <StaggerText
-                  text="Une fissure, une trace d'humidité, ce n'est pas du bricolage. C'est de la structure. Notre métier, c'est de regarder, de mesurer, de comprendre — et de vous remettre un diagnostic clair, en toute indépendance."
+                  text="Notre métier n'est pas de rassurer, ni d'inquiéter. Il est de regarder attentivement, de mesurer précisément, et de dire ce qui est."
                   delay={0.6}
                   stagger={0.025}
                 />

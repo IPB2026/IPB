@@ -262,7 +262,7 @@ export default function ArreteSecheresse2026Page() {
 
             <h2>La franchise CAT-NAT</h2>
             <p>
-              La franchise légale pour les sinistres sécheresse est de <strong>1 520€</strong> (2026). 
+              La franchise légale pour les sinistres sécheresse s'applique automatiquement.
               Ce montant reste à votre charge.
             </p>
             <p>

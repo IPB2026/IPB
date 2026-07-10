@@ -1,19 +1,19 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Diagnostic Gratuit Fissures & Humidité · IPB Toulouse',
-  description: "Vos fissures inquiètent ? Un expert du réseau IPB analyse votre situation gratuitement et vous dit ce qui relève d'une simple cosmétique ou d'un vrai désordre structurel.",
+  title: 'Diagnostic fissures & humidité · IPB Toulouse',
+  description: "Vos fissures inquiètent ? Un inspecteur IPB analyse votre situation et vous dit ce qui relève d'une simple cosmétique ou d'un vrai désordre structurel.",
   keywords: [
     'expertise fissures toulouse',
     'diagnostic humidité toulouse',
-    'diagnostic structure maison',
+    'diagnostic bâti maison',
     'institut pathologie bâtiment toulouse',
     'expert fissures haute-garonne',
     'rapport fissure assurance',
   ],
   openGraph: {
-    title: 'Diagnostic Gratuit Fissures & Humidité · IPB Toulouse',
-    description: "Vos fissures inquiètent ? Un expert du réseau IPB analyse votre situation gratuitement et vous dit s'il s'agit d'un vrai désordre structurel.",
+    title: 'Diagnostic fissures & humidité · IPB Toulouse',
+    description: "Vos fissures inquiètent ? Un inspecteur IPB analyse votre situation et vous dit s'il s'agit d'un vrai désordre structurel.",
     url: 'https://www.ipb-expertise.fr/diagnostic',
     siteName: 'IPB - Institut de pathologie du bâtiment',
     locale: 'fr_FR',
@@ -29,8 +29,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Diagnostic Gratuit Fissures & Humidité · IPB Toulouse',
-    description: "Vos fissures inquiètent ? Un expert du réseau IPB analyse votre situation gratuitement.",
+    title: 'Diagnostic fissures & humidité · IPB Toulouse',
+    description: "Vos fissures inquiètent ? Un inspecteur IPB analyse votre situation.",
     images: ['/images/IPB_Logo_HD.png'],
   },
   alternates: {

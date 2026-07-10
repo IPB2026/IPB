@@ -122,7 +122,7 @@ export default function ConfidentialitePage() {
               <ul className="list-disc pl-6 mt-4 space-y-2">
                 <li><strong>IPB</strong> — Personnel autorisé uniquement (responsable du traitement)</li>
                 <li><strong>Bâti Halli</strong> — nom juridique : Entreprise Halli Mustapha (SIRET 398 185 421 00037, 13 rue du Recteur Dottin, 31100 Toulouse) — partenaire d'exécution intervenant sur site pour la visite technique et les travaux préconisés. Responsable de traitement distinct pour ses propres traitements (article 30 RGPD). La transmission est subordonnée à votre consentement explicite.</li>
-                <li>Le bureau d'études structure indépendant mobilisé lorsqu'une note de calcul Eurocodes est requise (échange du dossier technique uniquement)</li>
+                <li>Le bureau d'études indépendant mobilisé lorsqu'une note de calcul Eurocodes est requise (échange du dossier technique uniquement)</li>
                 <li>Nos sous-traitants techniques sous contrat de confidentialité : Vercel Inc. (hébergement, USA — Data Privacy Framework), Resend (envoi d'emails transactionnels), Sentry (surveillance d'erreurs)</li>
                 <li>Google LLC pour les services de mesure (Google Analytics, Google Ads), de protection (reCAPTCHA) et de prise de rendez-vous (Calendly) — transferts hors UE encadrés par les Clauses Contractuelles Types et le Data Privacy Framework</li>
                 <li>Les autorités compétentes en cas d'obligation légale</li>

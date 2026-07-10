@@ -89,7 +89,7 @@ export default function AudePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/diagnostic" className="bg-amber-500 hover:bg-amber-400 text-ipb-text px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
-                Diagnostic gratuit <ArrowRight size={20} />
+                Diagnostic <ArrowRight size={20} />
               </Link>
               <a href="tel:0582953375" className="bg-white/10 border border-white/20 hover:bg-white/20 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
                 <Phone size={20} /> 05 82 95 33 75
@@ -170,7 +170,7 @@ export default function AudePage() {
                   <span>à {ville.distance}</span>
                 </div>
                 <Link href="/diagnostic" className="text-xs text-amber-600 font-semibold hover:text-amber-700 flex items-center gap-1">
-                  Diagnostic gratuit <ArrowRight size={12} />
+                  Diagnostic <ArrowRight size={12} />
                 </Link>
               </div>
             ))}
@@ -260,7 +260,7 @@ export default function AudePage() {
             Besoin d'un expert dans l'Aude ?
           </h2>
           <p className="text-xl text-amber-900 mb-8">
-            Diagnostic sous 48h dans tout le département. Devis gratuit et sans engagement.
+            Diagnostic sous 48h dans tout le département. Devis sans engagement.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="bg-ipb-navy text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-ipb-navy-2 flex items-center justify-center gap-2">

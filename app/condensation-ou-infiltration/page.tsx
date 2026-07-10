@@ -79,7 +79,7 @@ const faqSchema = {
       name: 'Quel est le meilleur traitement contre la condensation dans une maison ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'La solution la plus efficace contre la condensation est l\'installation d\'une VMI (Ventilation Mécanique par Insufflation) qui renouvelle l\'air et évacue l\'humidité (2 500 à 4 500€). L\'isolation des ponts thermiques supprime les zones froides où se forme la condensation. En complément, une aération quotidienne de 10 minutes minimum, même en hiver, est recommandée.',
+        text: 'La solution la plus efficace contre la condensation est l\'installation d\'une VMI (Ventilation Mécanique par Insufflation) qui renouvelle l\'air et évacue l\'humidité. L\'isolation des ponts thermiques supprime les zones froides où se forme la condensation. En complément, une aération quotidienne de 10 minutes minimum, même en hiver, est recommandée.',
       },
     },
     {
@@ -270,7 +270,7 @@ export default function CondensationInfiltrationPage() {
                   <CheckCircle size={20} className="text-blue-400 flex-shrink-0 mt-1" />
                   <div>
                     <strong className="text-white">VMI (Ventilation par Insufflation)</strong>
-                    <p className="text-ipb-light text-sm">Renouvelle l'air et évacue l'humidité. 2 500-4 500€</p>
+                    <p className="text-ipb-light text-sm">Renouvelle l'air et évacue l'humidité</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -304,14 +304,14 @@ export default function CondensationInfiltrationPage() {
                   <CheckCircle size={20} className="text-cyan-400 flex-shrink-0 mt-1" />
                   <div>
                     <strong className="text-white">Injection résine (remontées capillaires)</strong>
-                    <p className="text-ipb-light text-sm">Barrière étanche à la base des murs. 80-120€/ml</p>
+                    <p className="text-ipb-light text-sm">Barrière étanche à la base des murs</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle size={20} className="text-cyan-400 flex-shrink-0 mt-1" />
                   <div>
                     <strong className="text-white">Cuvelage (caves/sous-sols)</strong>
-                    <p className="text-ipb-light text-sm">Étanchéité des parois enterrées. 150-250€/m²</p>
+                    <p className="text-ipb-light text-sm">Étanchéité des parois enterrées</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">

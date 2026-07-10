@@ -37,7 +37,6 @@ const causesFondation = [
 const comparatifSolutions = [
   {
     solution: 'Agrafage structurel',
-    prix: '8 000 - 18 000€',
     delai: '3-5 jours',
     garantie: '10 ans',
     adapte: '85% des cas',
@@ -46,7 +45,6 @@ const comparatifSolutions = [
   },
   {
     solution: 'Micropieux',
-    prix: '25 000 - 50 000€',
     delai: '2-3 semaines',
     garantie: '10 ans',
     adapte: 'Cas graves',
@@ -55,7 +53,6 @@ const comparatifSolutions = [
   },
   {
     solution: 'Résine expansive',
-    prix: '5 000 - 15 000€',
     delai: '1-2 jours',
     garantie: '10 ans',
     adapte: 'Tassements légers',
@@ -81,7 +78,7 @@ const faqSchema = {
       name: 'Combien coûte la réparation de fondations fissurées ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Le coût dépend de la solution : l\'agrafage structurel coûte entre 8 000 et 18 000€ et convient à 85% des cas. Les micropieux reviennent entre 25 000 et 50 000€ pour les cas graves. La résine expansive coûte entre 5 000 et 15 000€ pour les tassements légers. Toutes ces solutions sont couvertes par une garantie décennale de 10 ans.',
+        text: 'La solution dépend du diagnostic : l\'agrafage structurel convient à 85% des cas. Les micropieux sont réservés aux cas graves. La résine expansive s\'adresse aux tassements légers. Toutes ces solutions sont couvertes par une garantie décennale de 10 ans.',
       },
     },
     {
@@ -89,7 +86,7 @@ const faqSchema = {
       name: 'L\'agrafage structurel est-il efficace pour les fissures de fondation ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Oui, l\'agrafage structurel est la solution recommandée pour 85% des cas de fissures de fondation. Il est 3 fois moins cher que les micropieux, l\'intervention est rapide (3 à 5 jours), ne nécessite pas de terrassement lourd et bénéficie d\'une garantie décennale de 10 ans. Il est particulièrement adapté aux maisons individuelles en Occitanie.',
+        text: 'Oui, l\'agrafage structurel est la solution recommandée pour 85% des cas de fissures de fondation. L\'intervention est rapide (3 à 5 jours), ne nécessite pas de terrassement lourd et bénéficie d\'une garantie décennale de 10 ans. Il est particulièrement adapté aux maisons individuelles en Occitanie.',
       },
     },
     {
@@ -97,7 +94,7 @@ const faqSchema = {
       name: 'Les fissures de fondation s\'aggravent-elles avec le temps ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Oui, une fissure de fondation s\'aggrave en moyenne de 15% par an sans traitement. Ce qui coûte 8 000€ aujourd\'hui peut en coûter 25 000€ dans 3 ans. Les cycles de sécheresse et de pluie en Occitanie accélèrent le phénomène de retrait-gonflement des argiles, aggravant les mouvements de fondation.',
+        text: 'Oui, une fissure de fondation s\'aggrave en moyenne de 15% par an sans traitement. Plus l\'intervention est tardive, plus elle est lourde. Les cycles de sécheresse et de pluie en Occitanie accélèrent le phénomène de retrait-gonflement des argiles, aggravant les mouvements de fondation.',
       },
     },
   ],
@@ -155,8 +152,8 @@ export default function FissureFondationPage() {
                   <div>
                     <h3 className="font-bold text-white mb-2">Pourquoi ne pas attendre ?</h3>
                     <p className="text-red-100">
-                      Une fissure de fondation <strong className="text-white">s'aggrave de 15% par an</strong> en moyenne. 
-                      Ce qui coûte 8 000€ aujourd'hui peut en coûter 25 000€ dans 3 ans.
+                      Une fissure de fondation <strong className="text-white">s'aggrave de 15% par an</strong> en moyenne.
+                      Plus vous attendez, plus l'intervention devient lourde.
                     </p>
                   </div>
                 </div>
@@ -181,8 +178,8 @@ export default function FissureFondationPage() {
                 <div className="text-white/70 text-sm mt-2">des cas liés au sol argileux en Occitanie</div>
               </div>
               <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
-                <div className="text-5xl font-black text-green-400">-65%</div>
-                <div className="text-white/70 text-sm mt-2">coût agrafage vs micropieux</div>
+                <div className="text-5xl font-black text-green-400">3-5 j</div>
+                <div className="text-white/70 text-sm mt-2">durée d'intervention agrafage</div>
               </div>
               <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
                 <div className="text-5xl font-black text-red-400">+15%</div>
@@ -266,10 +263,6 @@ export default function FissureFondationPage() {
                 
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between items-center">
-                    <span className="text-ipb-light">Prix</span>
-                    <span className="font-bold text-xl">{sol.prix}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
                     <span className="text-ipb-light">Délai</span>
                     <span className="font-bold">{sol.delai}</span>
                   </div>
@@ -348,7 +341,7 @@ export default function FissureFondationPage() {
             Vos fondations méritent un expert.
           </h2>
           <p className="text-xl text-ipb-orange-l mb-8">
-            Diagnostic expert sur site (déduit à 100% des travaux) • Devis gratuit • Garantie décennale
+            Diagnostic expert sur site • Devis • Garantie décennale
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="group bg-white text-ipb-orange px-10 py-5 rounded-2xl font-bold text-lg hover:bg-ipb-stone flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">

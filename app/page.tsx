@@ -15,61 +15,56 @@ import { CtaFinal } from '@/components/home/CtaFinal';
 import { Footer } from '@/components/home/Footer';
 import type { Metadata } from 'next';
 
-// 4 portes d'entrée — refonte positionnement v6.
-// Fissures / Humidité / Achat immobilier / Vente immobilière.
+// 3 portes d'entrée — refonte V3 §1 (la carte « avant vente » est retirée
+// de l'accueil, plan 1.3 : la page reste accessible par le menu et le footer).
 const homePersonas: PersonaCard[] = [
   {
     label: 'Fissures',
-    titre: 'Une fissure vous inquiète',
-    desc: "Elle apparaît, s'élargit, suit les joints en escalier. On lit le bâti, on mesure, on identifie la cause — et on vous dit si c'est grave.",
+    titre: 'Une fissure est apparue',
+    desc: "La plupart ne disent rien de grave. Certaines annoncent un mouvement du bâti. Nous venons la mesurer, et nous vous disons dans quel cas vous êtes.",
     href: '/expertise/fissures',
-    cta: 'Diagnostiquer ma fissure',
+    cta: 'Demander un diagnostic fissures',
   },
   {
     label: 'Humidité',
     titre: "De l'humidité s'est installée",
-    desc: "Remontées, infiltrations, salpêtre, condensation. On identifie la vraie origine — souvent confondue — avant de traiter.",
+    desc: "Remontées, infiltrations, condensation : les origines se ressemblent et se confondent. Traiter sans avoir identifié la cause, c'est souvent traiter deux fois. Nous commençons par la cause.",
     href: '/expertise/humidite',
-    cta: 'Diagnostiquer mon humidité',
+    cta: 'Demander un diagnostic humidité',
   },
   {
     label: 'Achat immobilier',
-    titre: 'Vous achetez et vous avez un doute',
-    desc: "Avant de signer, un diagnostic indépendant du bâti, sans lien avec le vendeur ni l'agence. Rapport remis dans vos délais de rétractation.",
+    titre: 'Vous envisagez un achat',
+    desc: "Un bien vous plaît, quelque chose vous retient. Nous inspectons le bâti avant que vous ne vous engagiez — sans lien avec le vendeur ni l'agence — et vous recevez notre rapport dans vos délais de rétractation.",
     href: '/expertise-avant-achat-immobilier-toulouse',
-    cta: 'Faire expertiser le bien',
-  },
-  {
-    label: 'Vente immobilière',
-    titre: 'Vous vendez et voulez rassurer',
-    desc: "Un diagnostic indépendant avant la mise en vente : vous objectivez l'état du bâti, vous désamorcez les doutes des acheteurs et vous sécurisez votre prix.",
-    href: '/diagnostic-avant-vente',
-    cta: 'Diagnostiquer avant de vendre',
+    cta: "Faire inspecter avant d'acheter",
   },
 ];
 
 // Le schéma Organization (entité de marque) est émis site-wide dans app/layout.tsx.
 
 export const metadata: Metadata = {
-  title: "Institut indépendant de diagnostic en pathologie du bâtiment · IPB",
-  description: "Diagnostic indépendant en pathologie du bâtiment à Toulouse : fissures, humidité, avant achat, avant vente. Un rapport clair, sans vendre de travaux.",
+  title: "Diagnostic fissures et humidité à Toulouse · Institut IPB",
+  description: "Institut de diagnostic en pathologie du bâtiment à Toulouse : fissures, humidité, inspection avant achat. Un rapport clair, remis sous 3 à 5 jours.",
   keywords: [
     'expert fissures Toulouse',
     'expertise fissures Haute-Garonne',
     'expert fissure maison Toulouse',
     'agrafage fissures',
+    'réparation fissures Toulouse',
+    'agrafage fissures Toulouse',
     'expertise humidité Toulouse',
     'expertise avant achat immobilier Toulouse',
+    'inspection avant achat Toulouse',
     'diagnostic avant vente maison Toulouse',
     'institut pathologie du bâtiment',
-    'expertise structure bâtiment Toulouse',
     'expert bâtiment Toulouse',
     'rapport fissure assurance',
     'Toulouse', 'Montauban', 'Auch', 'Albi',
   ],
   openGraph: {
-    title: "Institut indépendant de diagnostic en pathologie du bâtiment · IPB",
-    description: "Institut indépendant de diagnostic en pathologie du bâtiment : fissures, humidité, expertise avant achat. Un rapport clair, en toute indépendance. Occitanie.",
+    title: "Diagnostic fissures et humidité à Toulouse · Institut IPB",
+    description: "Institut de diagnostic en pathologie du bâtiment à Toulouse : fissures, humidité, inspection avant achat. Un rapport clair, remis sous 3 à 5 jours. Occitanie.",
     url: "https://www.ipb-expertise.fr",
     siteName: "IPB - Institut de Pathologie du Bâtiment",
     images: [
@@ -85,8 +80,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Institut indépendant de diagnostic en pathologie du bâtiment · IPB",
-    description: "Diagnostic indépendant en pathologie du bâtiment : fissures, humidité, expertise avant achat. Un rapport clair, sans vendre de travaux. Occitanie.",
+    title: "Diagnostic fissures et humidité à Toulouse · Institut IPB",
+    description: "Institut de diagnostic en pathologie du bâtiment : fissures, humidité, inspection avant achat. Un rapport clair, remis sous 3 à 5 jours. Occitanie.",
     images: [
       {
         url: "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
@@ -133,19 +128,42 @@ export default function HomePage() {
       <Hero />
 
       {/* 2. Personas — self-identification immédiate.
-            Le visiteur se reconnaît dans 1 des 4 cas (sinistré /
-            vendeur / acheteur / rénovateur) et clique sur la page
+            Le visiteur se reconnaît dans 1 des 3 cas (fissures /
+            humidité / acheteur) et clique sur la page
             persona dédiée. Routage SEO + conversion supérieure. */}
       <PersonaCards
         eyebrow="Selon votre situation"
         title={<>Dans quel cas <em>vous reconnaissez-vous&nbsp;?</em></>}
-        intro="Quatre situations possibles, une même rigueur d'analyse. Chacune mène à la page la plus utile pour vous."
+        intro="Trois situations possibles, une même rigueur d'analyse. Chacune mène à la page la plus utile pour vous."
         background="white"
         personas={homePersonas}
       />
 
       {/* 3. Liste architecturale 4 services (fissures en 1er) */}
       <ServiceList />
+
+      {/* 3.b Notre périmètre — cadre l'intervention et ses limites (V3 §1) */}
+      <section className="bg-ipb-white py-20 md:py-28 border-t border-ipb-rule">
+        <div className="max-w-3xl mx-auto px-5 sm:px-6 lg:px-12">
+          <p className="text-ipb-orange-d text-[11px] uppercase tracking-[0.18em] font-medium mb-4">
+            Notre périmètre
+          </p>
+          <h2 className="font-serif text-ipb-text mb-8" style={{ fontSize: 'clamp(28px, 2.6vw, 40px)', lineHeight: 1.15, letterSpacing: '-0.022em', fontWeight: 700 }}>
+            Une inspection visuelle<br /><em>et instrumentée.</em>
+          </h2>
+          <div className="space-y-6 text-[15px] leading-[1.9] font-light text-ipb-muted">
+            <p>
+              Notre intervention consiste à lire le bâti tel qu'il se présente : observation méthodique, mesures au fissuromètre et à l'humidimètre, photographies datées. Nous ne pratiquons ni sondage ni investigation destructive.
+            </p>
+            <p>
+              Cette lecture suffit, dans la grande majorité des situations, à répondre à la question qui vous amène : <strong className="text-ipb-text font-semibold">le désordre est-il structurel&nbsp;?</strong>
+            </p>
+            <p>
+              Lorsqu'une réponse sérieuse exige davantage — calculs, sondages, investigations —, nous vous le disons et nous vous orientons vers un bureau d'études, votre dossier en main. Connaître les limites de son intervention fait partie de la rigueur que vous êtes en droit d'attendre.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* 4. Bandeau CTA diagnostic — capture lead */}
       <section className="bg-ipb-navy text-white py-14 md:py-20">

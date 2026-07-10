@@ -14,11 +14,11 @@ export const metadata: Metadata = {
     'expert bâtiment tarn-et-garonne',
     'agrafage fissures 82',
     'injection résine montauban',
-    'diagnostic fissures gratuit 82',
+    'diagnostic fissures 82',
   ],
   openGraph: {
     title: 'Expert Fissures & Humidité Tarn-et-Garonne (82) | IPB',
-    description: 'Intervention rapide à Montauban, Castelsarrasin, Moissac, Caussade. Diagnostic gratuit.',
+    description: 'Intervention rapide à Montauban, Castelsarrasin, Moissac, Caussade.',
     url: 'https://www.ipb-expertise.fr/departements/tarn-et-garonne',
     siteName: 'IPB - Expert Fissures & Humidité',
     locale: 'fr_FR',
@@ -94,7 +94,7 @@ export default function TarnEtGaronnePage() {
         name: 'Combien coûte une intervention dans le Tarn-et-Garonne ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Le diagnostic est gratuit. Pour l\'agrafage de fissures, comptez entre 3 000€ et 8 000€ selon l\'ampleur. Pour le traitement de l\'humidité par injection, entre 2 000€ et 5 000€. Nos tarifs sont transparents et nous proposons des devis détaillés avant toute intervention.',
+          text: 'Le diagnostic est sans engagement. Pour l’agrafage de fissures comme pour le traitement de l’humidité par injection, le coût dépend de l’ampleur des désordres et vous est communiqué après diagnostic. Nous proposons des devis détaillés avant toute intervention.',
         },
       },
     ],
@@ -188,7 +188,7 @@ export default function TarnEtGaronnePage() {
                 <div className="space-y-2 text-sm text-ipb-muted">
                   <div className="flex items-center gap-2">
                     <CheckCircle size={16} className="text-green-500" />
-                    Diagnostic gratuit
+                    Diagnostic
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle size={16} className="text-green-500" />
@@ -238,7 +238,7 @@ export default function TarnEtGaronnePage() {
               Besoin d'un expert dans le Tarn-et-Garonne ?
             </h2>
             <p className="text-xl text-orange-50 mb-8">
-              Diagnostic gratuit • Intervention rapide • Garantie décennale
+              Diagnostic • Intervention rapide • Garantie décennale
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

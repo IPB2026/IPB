@@ -48,7 +48,7 @@ const moments = [
   },
   {
     titre: 'Pendant les visites',
-    desc: "Plusieurs visiteurs ont commenté les fissures. Vous percevez que cela freine. Un rapport indépendant transforme une discussion émotionnelle en discussion technique : votre bien n'est plus suspect, il est documenté.",
+    desc: "Plusieurs visiteurs ont commenté les fissures. Vous percevez que cela freine. Un rapport d'inspection transforme une discussion émotionnelle en discussion technique : votre bien n'est plus suspect, il est documenté.",
   },
   {
     titre: 'Après une rétractation ou une renégociation',
@@ -62,7 +62,7 @@ const contenuRapport = [
   'Qualification de chaque fissure : esthétique, superficielle, ou structurelle',
   "Identification des causes probables (retrait-gonflement des argiles, tassement différentiel, défaut d'exécution, etc.)",
   'Préconisations chiffrées de réparation, le cas échéant',
-  "Avis de l'expert structure de l'institut sur la stabilité globale du bâti",
+  "Avis de l'inspecteur IPB sur la stabilité globale du bâti",
   'Document conforme aux attentes des notaires, agents immobiliers et acquéreurs',
 ];
 
@@ -94,7 +94,7 @@ const faqItems = [
     question:
       "Mon agent immobilier dit qu'un diagnostic n'est pas obligatoire. Pourquoi en faire un ?",
     answer:
-      "Aucun diagnostic fissures n'est légalement obligatoire pour vendre. Mais en pratique, présenter un rapport indépendant à un acheteur transforme la discussion. Il ne s'interroge plus, il lit. Dans les ventes que nous avons accompagnées, c'est souvent ce qui a permis à la transaction de se conclure au prix prévu.",
+      "Aucun diagnostic fissures n'est légalement obligatoire pour vendre. Mais en pratique, présenter un rapport d'inspection à un acheteur transforme la discussion. Il ne s'interroge plus, il lit. Dans les ventes que nous avons accompagnées, c'est souvent ce qui a permis à la transaction de se conclure au prix prévu.",
   },
   {
     question: 'Combien de temps avant ma vente faut-il faire le rapport ?',

@@ -13,14 +13,14 @@ export function ServicesStructure() {
               <Activity size={16} /> Notre métier
             </div>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight tracking-tight">
-              On diagnostique <span className="text-orange-600">la structure</span><br />de votre maison.
+              On diagnostique <span className="text-orange-600">le bâti</span><br />de votre maison.
             </h2>
             <p className="text-slate-600 text-lg mb-8 leading-relaxed">
-              Deux situations, le même métier : on observe, on mesure, on vous explique. <strong className="text-slate-900">Vous n'avez pas à devenir expert en bâtiment</strong> — on traduit ce qu'on voit en clair, et on vous remet un rapport indépendant.
+              Deux situations, le même métier : on observe, on mesure, on vous explique. <strong className="text-slate-900">Vous n'avez pas à devenir expert en bâtiment</strong> — on traduit ce qu'on voit en clair, et on vous remet un rapport d'inspection.
             </p>
 
             <div className="space-y-4">
-              {/* Service 1 — Expertise avant achat (diagnostic indépendant) */}
+              {/* Service 1 — Expertise avant achat (inspection du bâti) */}
               <Link href="/expertise-avant-achat-immobilier-toulouse" className="block p-6 rounded-2xl bg-gradient-to-br from-orange-50 to-amber-50 hover:from-orange-100 hover:to-amber-100 border border-orange-100 transition-all group">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-orange-600 shrink-0 shadow-sm transition-shadow duration-200 group-hover:shadow-md">
@@ -31,7 +31,7 @@ export function ServicesStructure() {
                       Vous achetez et vous voulez être sûr du bâti
                     </h3>
                     <p className="text-slate-600 text-sm leading-relaxed mb-3">
-                      Avant de signer, un diagnostic indépendant du bâti : fissures, désordres, état de la structure. <strong className="text-slate-800">Rapport sous 3 à 5 jours,</strong> sans lien avec le vendeur ni l'agence.
+                      Avant de signer, un diagnostic du bâti : fissures, désordres, état général du bâti. <strong className="text-slate-800">Rapport sous 3 à 5 jours,</strong> sans lien avec le vendeur ni l'agence.
                     </p>
                     <div className="flex items-center gap-2 text-orange-600 font-bold text-sm">
                       Voir comment on procède <ArrowRight size={14} className="group-hover:translate-x-1 transition" />
@@ -77,7 +77,7 @@ export function ServicesStructure() {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-slate-200">
               <Image
                 src="/images/fissure-facade-verticale.webp"
-                alt="Diagnostic de structure sur site — relevé d'une fissure de façade par un expert IPB à Toulouse"
+                alt="Diagnostic du bâti sur site — relevé d'une fissure de façade par un inspecteur IPB à Toulouse"
                 width={800}
                 height={600}
                 className="w-full h-auto object-cover"

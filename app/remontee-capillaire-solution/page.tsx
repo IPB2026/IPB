@@ -8,7 +8,7 @@ import { ArrowRight, Phone, Droplets, CheckCircle, AlertTriangle } from 'lucide-
 
 export const metadata: Metadata = {
   title: 'Remontées Capillaires · Causes et Solutions · Toulouse',
-  description: "Remontées capillaires dans vos murs ? Causes, signes, traitement par injection résine. Garantie 30 ans. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
+  description: "Remontées capillaires dans vos murs ? Causes, signes, traitement par injection résine. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
   keywords: ['remontée capillaire', 'humidité ascensionnelle', 'injection résine', 'mur humide', 'traitement humidité'],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/remontee-capillaire-solution',
@@ -26,7 +26,7 @@ const faqItems = [
   },
   {
     question: "L'injection de résine est-elle efficace ?",
-    answer: "Oui, c'est la solution la plus fiable. La résine crée une barrière étanche qui stoppe définitivement les remontées. Garantie 30 ans."
+    answer: "Oui, c'est la solution la plus fiable. La résine crée une barrière étanche qui stoppe définitivement les remontées."
   },
   {
     question: "Combien de temps pour que les murs sèchent ?",
@@ -76,11 +76,11 @@ export default function RemonteeCapillairePage() {
           </h1>
           <p className="text-xl text-white/70 mb-8">
             L'eau du sol remonte dans vos murs par capillarité. Découvrez comment identifier ce phénomène 
-            et le stopper définitivement avec une solution garantie 30 ans.
+            et le stopper définitivement avec une solution durable.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/diagnostic" className="bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
-              Diagnostic gratuit <ArrowRight size={18} />
+              Diagnostic <ArrowRight size={18} />
             </Link>
             <a href="tel:0582953375" className="bg-white/10 border border-white/20 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
               <Phone size={18} /> 05 82 95 33 75
@@ -191,20 +191,20 @@ export default function RemonteeCapillairePage() {
               <div className="flex items-start gap-3">
                 <CheckCircle className="text-green-600 flex-shrink-0 mt-1" size={24} />
                 <div>
-                  <h3 className="font-bold text-ipb-text mb-2">Garantie 30 ans</h3>
+                  <h3 className="font-bold text-ipb-text mb-2">Un traitement durable</h3>
                   <p className="text-ipb-text">
-                    Notre traitement est garanti 30 ans contre les remontées capillaires. 
-                    Si le problème réapparaît, nous intervenons gratuitement.
+                    Notre traitement protège durablement contre les remontées capillaires.
+                    Si le problème réapparaît, nous intervenons de nouveau.
                   </p>
                 </div>
               </div>
             </div>
 
-            <h2>Tarifs traitement remontées capillaires</h2>
+            <h2>Le traitement des remontées capillaires</h2>
             <ul>
-              <li><strong>Diagnostic :</strong> expertise sur site (montant déduit à 100% des travaux)</li>
-              <li><strong>Injection résine :</strong> 80-120€/mètre linéaire</li>
-              <li><strong>Maison individuelle type :</strong> 2 000 - 5 000€</li>
+              <li><strong>Diagnostic :</strong> expertise sur site avec mesures hygrométriques</li>
+              <li><strong>Injection résine :</strong> barrière étanche à la base des murs</li>
+              <li><strong>Maison individuelle type :</strong> intervention en 1 à 2 jours</li>
             </ul>
 
             <h2>Les fausses solutions à éviter</h2>
@@ -280,7 +280,7 @@ export default function RemonteeCapillairePage() {
       <section className="py-16 bg-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-extrabold mb-6">Vos murs sont humides ?</h2>
-          <p className="text-xl text-blue-100 mb-8">Diagnostic sous 48h. Solution garantie 30 ans.</p>
+          <p className="text-xl text-blue-100 mb-8">Diagnostic sous 48h. Solution durable.</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50">
               Demander un diagnostic <ArrowRight size={20} />

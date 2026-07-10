@@ -18,35 +18,35 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 const faqs = [
   {
     q: "Comment savoir si une fissure sur ma maison est dangereuse ?",
-    a: "Trois indices doivent vous alerter : la fissure dépasse 2 mm de large, elle suit les joints en escalier, ou elle évolue (vous voyez qu'elle s'agrandit d'une saison à l'autre). Si vos portes coincent ou que du carrelage se fissure, c'est que la structure bouge. Un expert du réseau IPB vient sur place avec un fissuromètre pour mesurer précisément l'évolution et identifier la cause.",
+    a: "Trois indices doivent vous alerter : une ouverture supérieure à 2 mm, un tracé en escalier suivant les joints, une évolution d'une saison à l'autre. Des portes qui coincent ou un carrelage qui se fissure indiquent que le bâti travaille. Dans ces cas, une inspection s'impose : un inspecteur IPB mesure l'évolution au fissuromètre et identifie la cause.",
   },
   {
-    q: "Comment se passe une expertise fissures à Toulouse ?",
-    a: "La visite de diagnostic est gratuite et réalisée à votre domicile par un expert du réseau IPB. Elle inclut le déplacement, les mesures au fissuromètre, l'analyse des causes et une note de synthèse écrite. Pour les dossiers CAT-NAT, cette note documente le lien entre les désordres et la sécheresse ; si vous avez besoin d'un rapport opposable à votre assureur, l'institut oriente vers un bureau d'études structure ou un expert d'assurance indépendant.",
+    q: "Comment se passe un diagnostic de fissures à Toulouse ?",
+    a: "La visite est réalisée à votre domicile par un inspecteur IPB : déplacement, mesures au fissuromètre, analyse des causes et rapport d'inspection écrit. Pour les dossiers CAT-NAT, ce rapport documente le lien entre les désordres et la sécheresse ; si un rapport opposable à votre assureur est requis, nous vous orientons vers un bureau d'études ou un expert judiciaire.",
   },
   {
     q: "Mon assurance prend-elle en charge les fissures de sécheresse ?",
-    a: "Oui, si votre commune a été reconnue en catastrophe naturelle pour la sécheresse de l'année concernée. La note de synthèse remise à l'issue de la visite documente les désordres et leur lien avec le retrait-gonflement des argiles, ce qui est essentiel pour étayer votre dossier. En 2022, plus de 9 000 communes françaises ont été reconnues, dont une grande partie de la Haute-Garonne.",
+    a: "Oui, si votre commune a été reconnue en catastrophe naturelle pour la sécheresse de l'année concernée. Le rapport d'inspection remis à l'issue de la visite documente les désordres et leur lien avec le retrait-gonflement des argiles, ce qui est essentiel pour étayer votre dossier. En 2022, plus de 9 000 communes françaises ont été reconnues, dont une grande partie de la Haute-Garonne.",
   },
   {
     q: "Quelle est la différence entre agrafage et micropieux ?",
-    a: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables — solution adaptée à 90 % des fissures structurelles. Les micropieux reprennent les fondations en profondeur — intervention lourde réservée aux tassements actifs majeurs (au-delà de 10 cm). À titre indicatif, comptez 12 000 à 18 000 € pour un agrafage, 40 000 à 60 000 € pour des micropieux. Le rôle d'IPB est de diagnostiquer la cause et de vous dire laquelle s'impose vraiment — en toute indépendance. Pour la réalisation, l'institut vous oriente ensuite vers des entreprises membres du réseau IPB.",
+    a: "L'agrafage stabilise le mur en cousant la fissure avec des aciers inoxydables — solution adaptée à la plupart des fissures structurelles. Les micropieux reprennent les fondations en profondeur — intervention lourde réservée aux tassements actifs majeurs. Le rôle d'IPB est de diagnostiquer la cause et de vous dire laquelle s'impose vraiment. Les interventions qui engagent les fondations relèvent de spécialistes : nous vous y orientons, votre dossier en main.",
+  },
+  {
+    q: "Votre rapport d'inspection est-il opposable ?",
+    a: "Le rapport d'inspection IPB est un document technique complet : mesures instrumentées, photographies datées, cause identifiée, préconisations. Il sert vos démarches auprès d'un assureur, d'un syndic ou d'un vendeur. Pour une procédure judiciaire ou un dossier d'assurance contesté, un rapport de bureau d'études ou d'expert judiciaire peut être requis : nous vous orientons alors, votre dossier en main.",
+  },
+  {
+    q: "Réalisez-vous les travaux ?",
+    a: "Non. Si des travaux s'imposent et que vous souhaitez être accompagné, nous en coordonnons la réalisation par des entreprises couvertes par leur garantie décennale : cadrage du devis, suivi du chantier, réception. Vous pouvez aussi ne nous demander que le rapport — il se suffit à lui-même.",
   },
   {
     q: "Pourquoi choisir un institut spécialisé en pathologie du bâtiment ?",
-    a: "Sur une fissure ou un désordre structurel, tout se joue sur la justesse du diagnostic et l'indépendance de l'analyse : un institut qui ne vend pas les travaux n'a aucun intérêt à dramatiser le problème, ni à le minimiser. Un expert du réseau IPB diagnostique la cause, fait appel à un bureau d'études quand un calcul s'impose, et vous remet des préconisations claires. Si des travaux sont nécessaires, l'institut vous oriente vers des entreprises membres du réseau IPB — vous gardez la main sur vos choix.",
-  },
-  {
-    q: "Quel document recevez-vous à l'issue du diagnostic ?",
-    a: "Une note de synthèse écrite, comportant photos datées, mesures instrumentées, identification des causes et préconisations chiffrées. Elle vous sert à comprendre la situation et à orienter vos démarches (assureur, syndic, agent immobilier). Pour un rapport opposable au sens strict (vente notariée, dossier d'assurance contesté, procédure judiciaire), l'institut oriente vers un bureau d'études structure ou un expert d'assurance indépendant.",
+    a: "Parce qu'un désordre du bâti se juge sur pièces : mesures, comparaisons, expérience des mêmes causes dans les mêmes sols. C'est un métier de discernement — savoir ce qui est grave, ce qui ne l'est pas, et le dire clairement dans les deux cas.",
   },
   {
     q: "Quelles sont vos zones d'intervention ?",
     a: "Notre zone d'intervention couvre la Haute-Garonne (31), le Tarn-et-Garonne (82), le Gers (32), le Tarn (81), l'Ariège (09) et l'Aude (11). Cela représente plus de 50 communes — pour vérifier la couverture sur votre commune précise, appelez-nous au 05 82 95 33 75 ou démarrez le diagnostic en ligne.",
-  },
-  {
-    q: "Que se passe-t-il après le diagnostic ?",
-    a: "Vous recevez un dossier complet : note de synthèse, mesures instrumentées, photos datées, identification des causes et préconisations chiffrées. Il vous sert à décider et à orienter vos démarches (assureur, syndic, agent immobilier). Si des travaux sont nécessaires, l'institut peut vous mettre en relation avec des entreprises membres du réseau IPB, et reste joignable comme référent technique.",
   },
 ];
 

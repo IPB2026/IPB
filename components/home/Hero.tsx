@@ -29,7 +29,7 @@ export function Hero() {
               directement (sans RevealOnScroll) pour optimiser le LCP mobile.
               L'animation reveal sur ces éléments retardait le LCP de 400-800ms
               car le H1 candidat LCP démarrait à opacity:0 jusqu'à hydratation. */}
-          <Eyebrow>Institut indépendant · Diagnostic en pathologie du bâtiment · Occitanie</Eyebrow>
+          <Eyebrow>Institut de diagnostic en pathologie du bâtiment · Occitanie</Eyebrow>
 
           <h1
             className="font-serif text-ipb-text mb-8 [text-wrap:balance]"
@@ -46,11 +46,11 @@ export function Hero() {
             }}
           >
             Fissures, humidité, doute avant un achat.<br />
-            <em>L'avis indépendant d'un institut.</em>
+            <em>Un avis clair sur votre bâti, avant toute décision.</em>
           </h1>
 
           <p className="text-[15px] leading-[1.9] font-light text-ipb-muted max-w-[540px] mb-10">
-            Notre institut diagnostique la cause, l'analyse et vous remet un rapport clair. Parce que nous ne réalisons pas les travaux, notre avis reste sans complaisance&nbsp;— c'est tout le sens d'un diagnostic indépendant.
+            IPB est un institut de diagnostic en pathologie du bâtiment, à Toulouse. Nous venons voir, nous mesurons, et nous vous remettons un rapport d'inspection que vous comprenez&nbsp;— de quoi décider posément.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-5">
@@ -70,7 +70,7 @@ export function Hero() {
           </div>
 
           <p className="text-[12px] text-ipb-light tracking-[0.02em] mb-12">
-            Premier échange sans engagement&nbsp;· Réponse de l'institut sous 48&nbsp;heures
+            Premier échange sans engagement&nbsp;· Réponse sous 48&nbsp;heures
           </p>
 
           {/* Panel mobile — photo chantier réelle avec overlay navy + crack signature */}

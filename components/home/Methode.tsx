@@ -12,28 +12,23 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 const etapes = [
   {
     num: '01',
-    titre: 'On vient voir',
-    desc: "Sous 72h, l'expert structure se déplace. Lecture du bâti, mesures précises, écoute attentive de ce que vous avez constaté. Tout désordre commence par un détail remarqué — l'observation est le premier outil.",
+    titre: 'La visite',
+    desc: "Sous 72 heures, un inspecteur IPB se déplace. Il observe, mesure, et vous écoute — ce que vous avez remarqué fait partie du diagnostic.",
   },
   {
     num: '02',
-    titre: 'On analyse et on explique',
-    desc: "Le bâti se relit ensuite à froid : indices recoupés, causes identifiées, hypothèses pesées. Vous repartez avec une compréhension nette de ce qui se joue — c'est la condition d'une décision juste.",
+    titre: 'L’analyse',
+    desc: "Le bâti se relit à froid : indices recoupés, hypothèses pesées, cause identifiée. Un avis sérieux ne se rend pas sur un pas de porte.",
   },
   {
     num: '03',
-    titre: 'On conçoit et on chiffre',
-    desc: "Rapport technique de l'expert, étude de structure s'il y a lieu, devis IPB. Trois à cinq jours — pas un de plus. De quoi décider sans pression, en pleine connaissance de cause.",
+    titre: 'Le rapport d’inspection',
+    desc: "Sous trois à cinq jours : mesures, photographies datées, cause identifiée, préconisations. Rédigé pour être compris — il vous appartient.",
   },
   {
     num: '04',
-    titre: 'On vous oriente',
-    desc: "Si des travaux sont nécessaires, on vous met en relation avec des entreprises membres du réseau IPB — et l'on reste votre référent technique. Vous gardez la main sur vos choix.",
-  },
-  {
-    num: '05',
-    titre: 'On vous remet le dossier complet',
-    desc: "Rapport, mesures, photographies datées, préconisations chiffrées. Le dossier vous appartient — et IPB reste joignable, longtemps après la remise du rapport.",
+    titre: 'La suite, si vous le souhaitez',
+    desc: "Si des travaux s'imposent et que vous préférez ne pas les piloter seul, nous pouvons en assurer la coordination. C'est un choix qui vous revient — le rapport se suffit à lui-même.",
   },
 ];
 
@@ -57,7 +52,7 @@ export function Methode() {
               <em>au rapport qui décide.</em>
             </h2>
             <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mt-6">
-              Cinq étapes, un seul interlocuteur. Vous savez à chaque instant où en est votre dossier.
+              Quatre étapes, un seul interlocuteur. Vous savez à chaque instant où en est votre dossier.
             </p>
           </div>
         </RevealOnScroll>
@@ -69,7 +64,7 @@ export function Methode() {
             aria-hidden="true"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-6 relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-6 relative">
             {etapes.map((etape, i) => (
               <RevealOnScroll key={etape.num} delay={i * 0.08}>
                 <div className="relative text-center">

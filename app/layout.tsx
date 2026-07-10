@@ -33,11 +33,11 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.ipb-expertise.fr'),
   title: {
-    default: "IPB · Institut indépendant de diagnostic en pathologie du bâtiment — Toulouse & Occitanie",
+    default: "IPB · Institut de diagnostic en pathologie du bâtiment — Toulouse & Occitanie",
     template: "%s | IPB"
   },
-  description: "Institut indépendant de diagnostic en pathologie du bâtiment : fissures, humidité, expertise avant achat et diagnostic avant vente. IPB diagnostique et conseille en toute indépendance ; si des travaux sont nécessaires, oriente vers des entreprises membres du réseau IPB. Toulouse, Montauban, Auch (31-82-32).",
-  keywords: ["expert fissures Toulouse", "expertise humidité Toulouse", "expertise avant achat Toulouse", "diagnostic avant vente Toulouse", "agrafage fissures", "fissures maison", "diagnostic structure Toulouse", "Montauban", "Auch", "Haute-Garonne", "Tarn-et-Garonne", "Gers", "Tarn", "institut pathologie du bâtiment", "diagnostic structure", "humidité murs"],
+  description: "Institut de diagnostic en pathologie du bâtiment : fissures, humidité, inspection avant achat et diagnostic avant vente. Un rapport clair, remis sous 3 à 5 jours. Toulouse, Montauban, Auch (31-82-32).",
+  keywords: ["expert fissures Toulouse", "expertise humidité Toulouse", "expertise avant achat Toulouse", "inspection avant achat Toulouse", "diagnostic avant vente Toulouse", "agrafage fissures", "réparation fissures Toulouse", "fissures maison", "Montauban", "Auch", "Haute-Garonne", "Tarn-et-Garonne", "Gers", "Tarn", "institut pathologie du bâtiment", "humidité murs"],
   authors: [{ name: "IPB - Institut de Pathologie du Bâtiment" }],
   creator: "IPB",
   publisher: "IPB",
@@ -60,21 +60,21 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://www.ipb-expertise.fr",
     siteName: "IPB - Institut de Pathologie du Bâtiment",
-    title: "IPB · Institut indépendant de diagnostic en pathologie du bâtiment — Toulouse & Occitanie",
-    description: "Institut indépendant de diagnostic en pathologie du bâtiment : fissures, humidité, expertise avant achat et diagnostic avant vente. Un rapport clair, en toute indépendance.",
+    title: "IPB · Institut de diagnostic en pathologie du bâtiment — Toulouse & Occitanie",
+    description: "Institut de diagnostic en pathologie du bâtiment : fissures, humidité, inspection avant achat et diagnostic avant vente. Un rapport clair, remis sous 3 à 5 jours.",
     images: [
       {
         url: "/images/IPB_Logo_HD.png",
         width: 1200,
         height: 630,
-        alt: "IPB — Institut de pathologie & structure du bâtiment · Toulouse, Montauban, Auch",
+        alt: "IPB — Institut de diagnostic en pathologie du bâtiment · Toulouse, Montauban, Auch",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "IPB · Institut indépendant de diagnostic en pathologie du bâtiment (Occitanie)",
-    description: "Diagnostic de fissures, humidité, expertise avant achat, diagnostic avant vente. Un rapport indépendant — IPB ne vend pas les travaux.",
+    title: "IPB · Institut de diagnostic en pathologie du bâtiment (Occitanie)",
+    description: "Diagnostic de fissures, humidité, inspection avant achat, diagnostic avant vente. Un rapport clair — IPB ne vend pas les travaux.",
     images: ["/images/IPB_Logo_HD.png"],
   },
   robots: {
@@ -119,7 +119,7 @@ const organizationSchema = {
     "caption": "IPB - Institut de Pathologie du Bâtiment"
   },
   "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
-  "description": "Institut indépendant de diagnostic en pathologie du bâtiment en Occitanie (31, 82, 32, 81) : diagnostic de fissures, expertise humidité, expertise avant achat et diagnostic avant vente. IPB diagnostique et conseille en toute indépendance ; si des travaux sont nécessaires, oriente vers des entreprises membres du réseau IPB.",
+  "description": "Institut de diagnostic en pathologie du bâtiment en Occitanie (31, 82, 32, 81) : diagnostic de fissures, humidité, inspection avant achat et diagnostic avant vente. Un rapport clair, remis sous 3 à 5 jours.",
   "foundingDate": "2022",
   "address": {
     "@type": "PostalAddress",
@@ -157,7 +157,7 @@ const localBusinessSchema = {
   // Le « réseau IPB » est actif depuis 2019 mais Schema.org Organization
   // doit refléter l'entité juridique, pas le récit marketing.
   "foundingDate": "2022",
-  "description": "Institut indépendant de diagnostic en pathologie du bâtiment en Occitanie (31, 82, 32, 81). Diagnostic de fissures, expertise humidité, expertise avant achat et diagnostic avant vente. IPB diagnostique et conseille en toute indépendance ; si des travaux sont nécessaires, oriente vers des entreprises membres du réseau IPB. Toulouse, Montauban, Auch et environs.",
+  "description": "Institut de diagnostic en pathologie du bâtiment en Occitanie (31, 82, 32, 81). Diagnostic de fissures, humidité, inspection avant achat et diagnostic avant vente. Un rapport clair, remis sous 3 à 5 jours. Toulouse, Montauban, Auch et environs.",
   // Siège IPB confirmé par le client (mai 2026).
   "address": {
     "@type": "PostalAddress",
@@ -216,15 +216,15 @@ const localBusinessSchema = {
         "itemOffered": {
           "@type": "Service",
           "name": "Diagnostic humidité et infiltrations",
-          "description": "Remontées capillaires, infiltrations, salpêtre, condensation. L'institut identifie la cause exacte et préconise la solution adaptée, en toute indépendance."
+          "description": "Remontées capillaires, infiltrations, salpêtre, condensation. Un inspecteur IPB identifie la cause exacte et préconise le traitement adapté."
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Diagnostic du bâti avant achat immobilier",
-          "description": "Analyse indépendante du bâti avant signature : fissures, désordres apparents et cachés, état de la structure. Rapport remis sous 3 à 5 jours, compatible avec votre délai de rétractation."
+          "name": "Inspection du bâti avant achat immobilier",
+          "description": "Inspection du bâti avant signature : fissures, désordres apparents et ceux qui s'annoncent, état général du bâti. Rapport d'inspection remis sous 3 à 5 jours, compatible avec votre délai de rétractation."
         }
       },
       {
@@ -232,7 +232,7 @@ const localBusinessSchema = {
         "itemOffered": {
           "@type": "Service",
           "name": "Diagnostic avant vente immobilière",
-          "description": "Diagnostic indépendant du bâti avant la mise en vente : fissures, humidité, état de la structure. Un rapport qui rassure les acheteurs et sécurise la transaction."
+          "description": "Diagnostic du bâti avant la mise en vente : fissures, humidité, état général du bâti. Un rapport qui rassure les acheteurs et sécurise la transaction."
         }
       }
     ]

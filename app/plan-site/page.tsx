@@ -29,9 +29,9 @@ const sections: Section[] = [
     titre: 'Pages principales',
     links: [
       { href: '/', label: 'Accueil' },
-      { href: '/diagnostic', label: 'Diagnostic gratuit' },
+      { href: '/diagnostic', label: 'Diagnostic' },
       { href: '/contact', label: 'Contact' },
-      { href: '/notre-expert', label: "L'expert" },
+      { href: '/institut', label: "L'institut" },
       { href: '/avis-clients', label: 'Avis clients' },
       { href: '/blog', label: 'Blog' },
     ],
@@ -192,7 +192,7 @@ export default function PlanSitePage() {
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted max-w-[580px]">
                   Navigation complète du site IPB : expertises, départements, villes
                   d'intervention, articles de fond. Pour aller à l'essentiel, partez du
-                  diagnostic gratuit.
+                  diagnostic en ligne.
                 </p>
               </RevealOnScroll>
             </div>

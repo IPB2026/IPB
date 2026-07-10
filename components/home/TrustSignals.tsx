@@ -15,13 +15,13 @@ export function TrustSignals() {
 
           <div className="text-center md:text-left">
             <p className="text-orange-300 text-xs font-bold uppercase tracking-[0.2em] mb-2">
-              Diagnostic indépendant · Un seul interlocuteur
+              Diagnostic · Un seul interlocuteur
             </p>
             <h2 className="text-white font-bold text-2xl md:text-3xl mb-2 font-display tracking-tight">
               On vous dit la vérité sur votre bâti.
             </h2>
             <p className="text-white/75 text-base leading-relaxed max-w-2xl">
-              L'institut tient le dossier, du premier regard au rapport. On diagnostique en toute indépendance ; si des travaux sont nécessaires, on vous oriente vers des entreprises membres du réseau IPB. <strong className="text-white">Rapport clair, remis sous 3 à 5 jours.</strong>
+              L'institut tient le dossier, du premier regard au rapport. On diagnostique le bâti ; si des travaux sont nécessaires, on vous oriente vers des entreprises membres du réseau IPB. <strong className="text-white">Rapport clair, remis sous 3 à 5 jours.</strong>
             </p>
           </div>
 
@@ -30,7 +30,7 @@ export function TrustSignals() {
             className="bg-orange-500 hover:bg-orange-400 text-white font-bold px-7 py-3.5 rounded-xl text-sm whitespace-nowrap transition-all flex items-center gap-2 justify-center hover:shadow-2xl hover:-translate-y-0.5"
           >
             <FileCheck size={16} />
-            Diagnostic gratuit
+            Diagnostic
           </a>
         </div>
       </div>
@@ -41,12 +41,12 @@ export function TrustSignals() {
         <div className="h-1 w-full bg-gradient-to-r from-orange-500 via-amber-500 to-orange-500"></div>
 
         <div className="grid md:grid-cols-3">
-          {/* Indépendants — pas de jargon */}
+          {/* Sans lien commercial — pas de jargon */}
           <div className="p-8 md:p-10 md:border-r md:border-ipb-rule">
             <div className="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-600 mb-6">
               <Users size={28} />
             </div>
-            <p className="text-orange-600 text-xs font-bold uppercase tracking-wider mb-2">Indépendants</p>
+            <p className="text-orange-600 text-xs font-bold uppercase tracking-wider mb-2">Sans lien commercial</p>
             <h3 className="font-display font-bold text-2xl text-ipb-text mb-3 leading-tight">
               On ne vend pas<br />de produits.
             </h3>
@@ -55,7 +55,7 @@ export function TrustSignals() {
             </p>
           </div>
 
-          {/* Diagnostic indépendant — clair */}
+          {/* Diagnostic — clair */}
           <div className="p-8 md:p-10 md:border-r md:border-ipb-rule bg-ipb-cream/50">
             <div className="w-14 h-14 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 mb-6">
               <FileCheck size={28} />
@@ -65,7 +65,7 @@ export function TrustSignals() {
               Du premier coup d'œil<br />au rapport qui décide.
             </h3>
             <p className="text-ipb-muted leading-relaxed">
-              L'institut tient le dossier de bout en bout : observation, mesures, analyse, rapport. Un même protocole, en toute indépendance. Si des travaux s'imposent, on vous oriente vers des entreprises membres du réseau IPB.
+              L'institut tient le dossier de bout en bout : observation, mesures, analyse, rapport. Un même protocole. Si des travaux s'imposent, on vous oriente vers des entreprises membres du réseau IPB.
             </p>
           </div>
 
@@ -74,7 +74,7 @@ export function TrustSignals() {
             <div className="aspect-[4/5] rounded-2xl overflow-hidden mb-5 shadow-lg ring-1 ring-ipb-rule">
               <Image
                 src="/images/fissures-avant-apres.webp"
-                alt="Diagnostic de fissures sur site — relevé et mesures par un expert du réseau IPB en Occitanie"
+                alt="Diagnostic de fissures sur site — relevé et mesures par un inspecteur IPB en Occitanie"
                 width={400}
                 height={500}
                 className="w-full h-full object-cover"

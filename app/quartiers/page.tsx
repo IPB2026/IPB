@@ -11,7 +11,7 @@ const site = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr'
 
 export const metadata: Metadata = {
   title: 'Quartiers Toulouse · Fissures & Humidité · Décennale 10 ans',
-  description: "Pages par quartier toulousain : risques RGA, humidité, fissures, solutions. Expertise indépendante. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
+  description: "Pages par quartier toulousain : risques RGA, humidité, fissures, solutions. Diagnostic et inspection du bâti. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
   alternates: {
     canonical: `${site}/quartiers`,
   },
@@ -105,7 +105,7 @@ export default function QuartiersIndexPage() {
               href="/diagnostic"
               className="inline-flex items-center justify-center rounded-xl bg-ipb-orange px-6 py-3 font-bold text-white hover:bg-[#b35519] transition"
             >
-              Diagnostic en ligne gratuit
+              Diagnostic en ligne
             </Link>
             <Link
               href="/zones-intervention"

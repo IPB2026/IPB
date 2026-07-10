@@ -5,7 +5,7 @@ import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Expert Fissures & Humidité Gers 32 · Auch · Décennale 10 ans',
-  description: "Expert fissures et humidité Gers (32) : Auch, Condom, Fleurance. Diagnostic gratuit. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
+  description: "Expert fissures et humidité Gers (32) : Auch, Condom, Fleurance. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures gers',
     'traitement humidité 32',
@@ -14,11 +14,11 @@ export const metadata: Metadata = {
     'expert bâtiment gers',
     'agrafage fissures 32',
     'injection résine auch',
-    'diagnostic fissures gratuit 32',
+    'diagnostic fissures 32',
   ],
   openGraph: {
     title: 'Expert Fissures & Humidité Gers (32) | IPB',
-    description: 'Intervention rapide à Auch, Condom, Fleurance, L\'Isle-Jourdain. Diagnostic gratuit.',
+    description: 'Intervention rapide à Auch, Condom, Fleurance, L\'Isle-Jourdain.',
     url: 'https://www.ipb-expertise.fr/departements/gers',
     siteName: 'IPB - Expert Fissures & Humidité',
     locale: 'fr_FR',
@@ -94,7 +94,7 @@ export default function GersPage() {
         name: 'Combien coûte une intervention dans le Gers ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Le diagnostic est gratuit. Pour l\'agrafage de fissures, comptez entre 3 000€ et 8 000€ selon l\'ampleur. Pour le traitement de l\'humidité par injection, entre 2 000€ et 5 000€. Nos tarifs incluent le déplacement dans tout le Gers.',
+          text: 'Le diagnostic est sans engagement. Pour l’agrafage de fissures comme pour le traitement de l’humidité par injection, le coût dépend de l’ampleur des désordres et vous est communiqué après diagnostic. Nos interventions incluent le déplacement dans tout le Gers.',
         },
       },
     ],
@@ -144,7 +144,7 @@ export default function GersPage() {
                   href="/diagnostic"
                   className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition-all shadow-lg"
                 >
-                  Diagnostic gratuit
+                  Diagnostic
                   <ArrowRight size={20} />
                 </Link>
                 <a
@@ -188,7 +188,7 @@ export default function GersPage() {
                 <div className="space-y-2 text-sm text-ipb-muted">
                   <div className="flex items-center gap-2">
                     <CheckCircle size={16} className="text-green-500" />
-                    Diagnostic gratuit
+                    Diagnostic
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle size={16} className="text-green-500" />
@@ -238,7 +238,7 @@ export default function GersPage() {
               Besoin d'un expert dans le Gers ?
             </h2>
             <p className="text-xl text-blue-50 mb-8">
-              Diagnostic gratuit • Intervention rapide • Garantie décennale
+              Diagnostic • Intervention rapide • Garantie décennale
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

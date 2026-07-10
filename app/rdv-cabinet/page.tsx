@@ -10,8 +10,8 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
   title: 'Prendre rendez-vous avec l\'institut · IPB Toulouse',
-  description: "Un premier échange téléphonique avec l'équipe IPB pour qualifier votre situation. Sans engagement · Réponse sous 48 heures · Diagnostic indépendant. ☎ 05 82 95 33 75",
-  keywords: ['rendez-vous expert fissures', 'rdv institut structure toulouse', 'consultation expert bâtiment'],
+  description: "Un premier échange téléphonique avec l'équipe IPB pour qualifier votre situation. Sans engagement · Réponse sous 48 heures. ☎ 05 82 95 33 75",
+  keywords: ['rendez-vous expert fissures', 'rdv institut bâtiment toulouse', 'consultation expert bâtiment'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/rdv-cabinet' },
   openGraph: {
     title: 'Prendre rendez-vous avec l\'institut IPB',

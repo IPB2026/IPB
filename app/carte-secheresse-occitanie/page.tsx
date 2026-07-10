@@ -214,8 +214,8 @@ export default function CarteSecheressePage() {
                 { titre: 'Vérifier que votre commune est reconnue', desc: "Consultez Géorisques ou notre carte ci-dessus. La commune doit être citée dans un arrêté CAT-NAT publié au Journal Officiel pour la sécheresse de l'année où sont apparus vos désordres." },
                 { titre: 'Déclarer le sinistre à votre assurance', desc: "Déclaration sous 10 jours après publication de l'arrêté. La plupart des assureurs acceptent une déclaration écrite (lettre recommandée ou espace client en ligne)." },
                 { titre: "Faire venir l'expert d'assurance", desc: "L'assureur missionne un expert. Sa mission : constater les désordres et chiffrer. Sa difficulté principale : il défend les intérêts de l'assureur, pas les vôtres." },
-                { titre: 'Faire produire un rapport indépendant', desc: "C'est ici que notre institut intervient. Notre rapport documente précisément les désordres, leur lien avec le RGA, et chiffre les travaux nécessaires. Il devient une pièce technique versable au dossier d'assurance." },
-                { titre: 'Négocier sur des bases techniques', desc: 'Avec notre rapport, vous négociez sur des éléments factuels. Dans 92 % des cas que nous avons accompagnés en 2022-2024, l\'indemnisation finale a été conforme ou supérieure à notre chiffrage.' },
+                { titre: 'Faire produire un rapport d’inspection', desc: "C'est ici que notre institut intervient. Notre rapport documente précisément les désordres et leur lien avec le RGA. Il devient une pièce technique versable au dossier d'assurance." },
+                { titre: 'Négocier sur des bases techniques', desc: 'Avec notre rapport, vous négociez sur des éléments factuels — mesures, photographies datées, cause identifiée — plutôt que sur des impressions.' },
               ].map((etape, i) => (
                 <RevealOnScroll key={etape.titre} delay={i * 0.06}>
                   <li className="grid grid-cols-[40px_1fr] gap-6 items-start pb-8 border-b border-ipb-rule last:border-b-0">

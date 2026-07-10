@@ -46,7 +46,7 @@ export default function NotFound() {
                   href="/diagnostic"
                   className="group inline-flex items-center justify-center gap-2 bg-ipb-orange hover:bg-[#b35519] text-white font-medium px-6 py-3.5 rounded-[3px] text-[14px] tracking-wide transition-colors duration-300"
                 >
-                  Diagnostic gratuit
+                  Diagnostic
                   <span className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
                 </Link>
                 <Link

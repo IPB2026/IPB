@@ -102,7 +102,7 @@ export default function DepartementsPage() {
               <RevealOnScroll delay={0.18}>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <MagneticButton href="/diagnostic" variant="primary">
-                    Diagnostic gratuit
+                    Demander un diagnostic
                   </MagneticButton>
                   <MagneticButton href="/zones-intervention" variant="ghost">
                     Voir la carte d'intervention
