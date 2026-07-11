@@ -6,7 +6,7 @@ const ogImage = `${site}/images/IPB_Logo_HD.png`;
 
 export const metadata: Metadata = {
   title: 'Blog Fissures & Humidité · Guides Experts Toulouse',
-  description: "Guides techniques sur fissures, humidité, structure. Agrafage, injection résine, assurance, revente. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
+  description: "Guides techniques sur fissures, humidité, assurance et revente. Agrafage, injection résine. Rapport d'inspection sous 3 à 5 jours. ☎ 05 82 95 33 75",
   keywords: [
     'fissures maison',
     'humidité murs',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Blog IPB | Fissures, humidité & expertise bâtiment',
     description:
-      'Articles et guides pour propriétaires : diagnostic, travaux, garantie décennale et valorisation de votre bien en Haute-Garonne et Occitanie.',
+      'Articles et guides pour propriétaires : diagnostic, fissures, humidité et valorisation de votre bien en Haute-Garonne et Occitanie.',
     url: `${site}/blog`,
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
     locale: 'fr_FR',

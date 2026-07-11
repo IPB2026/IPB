@@ -181,7 +181,7 @@ const localBusinessSchema = {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
       "opens": "08:00",
-      "closes": "18:00"
+      "closes": "19:00"
     }
   ],
   "areaServed": [
@@ -208,7 +208,7 @@ const localBusinessSchema = {
         "itemOffered": {
           "@type": "Service",
           "name": "Diagnostic et traitement des fissures",
-          "description": "Visite sur site, mesure au fissuromètre, identification de la cause. Rapport reconnu par les assurances, avec des préconisations claires. Si des travaux sont nécessaires, orientation vers des entreprises membres du réseau IPB."
+          "description": "Visite sur site, mesure au fissuromètre, identification de la cause. Rapport d'inspection documenté (mesures, photographies datées), avec des préconisations claires. Si des travaux sont nécessaires, orientation vers des entreprises membres du réseau IPB."
         }
       },
       {
@@ -236,13 +236,6 @@ const localBusinessSchema = {
         }
       }
     ]
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "bestRating": "5",
-    "worstRating": "1",
-    "reviewCount": "18"
   }
 };
 

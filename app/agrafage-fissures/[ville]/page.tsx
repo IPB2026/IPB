@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
   const villeNom = villeData.nom;
 
   return {
-    title: `Agrafage Fissures ${villeNom} ${deptCode} · Décennale 10 ans`,
-    description: `Agrafage structurel à ${villeNom} : stabilisation des fissures, solution dans 90% des cas. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75`,
+    title: `Agrafage Fissures ${villeNom} ${deptCode} · Rapport 3-5 jours`,
+    description: `Agrafage structurel à ${villeNom} : stabilisation des fissures, solution dans 90% des cas. Rapport d'inspection sous 3 à 5 jours. ☎ 05 82 95 33 75`,
     keywords: [
       `agrafage fissures ${ville}`,
       `agrafage maçonnerie ${ville}`,
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     alternates: { canonical: `https://www.ipb-expertise.fr/agrafage-fissures/${ville}` },
     openGraph: {
       title: `Agrafage Fissures ${villeNom} · IPB`,
-      description: `Stabilisation par agrafage structurel à ${villeNom}. Décennale 10 ans sur les travaux.`,
+      description: `Stabilisation par agrafage structurel à ${villeNom}. Rapport d'inspection sous 3 à 5 jours.`,
       url: `https://www.ipb-expertise.fr/agrafage-fissures/${ville}`,
       type: 'website',
       images: [{ url: '/images/fissures-avant-apres.webp', width: 1200, height: 630, alt: `Agrafage fissures ${villeNom}` }],
@@ -67,7 +67,7 @@ export default async function AgrafageFissuresVillePage({ params }: { params: Pr
         ville={ville}
         serviceTitle="Agrafage structurel de fissures"
         eyebrowLabel="Travaux · Agrafage de maçonnerie"
-        description={`Notre institut prend en charge l'agrafage structurel à ${villeNom} : pose d'aciers inoxydables qui « cousent » la fissure tous les 40 cm pour rendre la maçonnerie monolithique. Solution adaptée à 90 % des fissures de maison individuelle. Décennale 10 ans dédiée sur les travaux.`}
+        description={`Notre institut prend en charge l'agrafage structurel à ${villeNom} : pose d'aciers inoxydables qui « cousent » la fissure tous les 40 cm pour rendre la maçonnerie monolithique. Solution adaptée à 90 % des fissures de maison individuelle. Rapport d'inspection sous 3 à 5 jours.`}
         heroImage="/images/fissures-avant-apres.webp"
         heroAlt={`Agrafage de fissures à ${villeNom} — Institut IPB`}
         methodHref="/expertise/fissures"

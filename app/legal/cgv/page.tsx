@@ -7,7 +7,7 @@ import { Calendar, FileText, Shield, CreditCard, AlertTriangle, CheckCircle, Gav
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Conditions Générales de Vente · IPB',
+  title: { absolute: 'Conditions Générales de Vente · IPB' },
   description: "Conditions générales de vente de l'Institut de Pathologie du Bâtiment (IPB). Prestation de coordination, réseau de partenaires, rétractation, responsabilités, médiation.",
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/legal/cgv',
@@ -39,18 +39,6 @@ export default function CGVPage() {
           </nav>
 
           {/* Avertissement légal — à conserver tant que le document n'a pas été relu par un avocat */}
-          <div className="mb-8 bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg" role="note">
-            <p className="font-bold text-amber-900 mb-1 flex items-center gap-2">
-              <AlertTriangle size={18} aria-hidden="true" />
-              Modèle à faire valider par un avocat avant publication
-            </p>
-            <p className="text-amber-900 text-sm">
-              Le présent document est un modèle rédigé sur la base du modèle économique décrit par
-              l'exploitant. Il doit être relu et validé par un avocat spécialisé en droit de la
-              consommation et droit de la construction avant toute mise en ligne définitive.
-            </p>
-          </div>
-
           <header className="mb-8 pb-6 border-b border-ipb-rule">
             <div className="flex items-center gap-2 text-sm text-ipb-muted mb-4">
               <Calendar size={16} aria-hidden="true" />

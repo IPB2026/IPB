@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Zones Intervention · 56 villes Occitanie · IPB",
-    description: "56 villes en Occitanie. Expert fissures et humidité, diagnostic sous 48h. Décennale 10 ans sur les travaux.",
+    description: "56 villes en Occitanie. Expert fissures et humidité, diagnostic sous 48h. Rapport d'inspection sous 3 à 5 jours.",
     url: 'https://www.ipb-expertise.fr/zones-intervention',
     type: 'website',
   },

@@ -21,44 +21,9 @@ export const metadata: Metadata = {
   },
 };
 
-// Source de vérité : fiche Google Business Profile d'IPB-Expertise.
-// Les Review[] ci-dessous sont un sous-ensemble visible des 18 avis totaux ;
-// l'aggregateRating reflète le total réel de la fiche GBP.
-const reviewsSchema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": "https://www.ipb-expertise.fr#organization",
-  "name": "IPB - Institut de Pathologie du Bâtiment",
-  "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "54 avenue Jean Jaurès",
-    "addressLocality": "Tournefeuille",
-    "postalCode": "31170",
-    "addressCountry": "FR"
-  },
-  "telephone": "+33582953375",
-  "url": "https://www.ipb-expertise.fr",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "bestRating": "5",
-    "worstRating": "1",
-    "reviewCount": "18"
-  },
-  "review": googleReviews.map(r => ({
-    "@type": "Review",
-    "author": { "@type": "Person", "name": r.name },
-    "datePublished": r.date,
-    "reviewBody": r.text,
-    "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" }
-  }))
-};
-
 export default function AvisClientsPage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsSchema) }} />
 
       <TopBar />
       <Navbar />

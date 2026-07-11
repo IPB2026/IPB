@@ -10,7 +10,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "Programme Partenaires Toulouse · Architectes & Pros",
-  description: "Partenaire structure des architectes, marchands de biens, agences immobilières Toulouse. Bureau d'études + travaux. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
+  description: "Partenaire diagnostic des architectes, marchands de biens, agences immobilières Toulouse. Inspection du bâti + rapport. Rapport d'inspection sous 3 à 5 jours. ☎ 05 82 95 33 75",
   keywords: ['partenariat structure toulouse', 'sous-traitance bureau études', 'partenaire architecte intérieur', 'partenaire marchand de biens', 'partenaire agence immobilière'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/partenaires' },
 };
@@ -35,7 +35,7 @@ const partenaires = [
     num: '03',
     title: 'Agences immobilières & mandataires',
     desc: "Une vente bloquée par une fissure inquiétante ou un doute sur le bâti ? Notre rapport sous 3 à 5 jours ouvrés débloque la transaction.",
-    points: ['Visite sous 48 heures', 'Rapport reconnu par les assurances sous 3 à 5 jours ouvrés', 'Discrétion totale auprès du vendeur'],
+    points: ['Visite sous 72 heures', 'Rapport d’inspection sous 3 à 5 jours ouvrés', 'Discrétion totale auprès du vendeur'],
   },
 ];
 
@@ -62,13 +62,13 @@ export default function PartenairesPage() {
                     fontWeight: 700,
                   }}
                 >
-                  Le partenaire structure<br />
+                  Le partenaire diagnostic<br />
                   <em>des pros toulousains.</em>
                 </h1>
               </RevealOnScroll>
               <RevealOnScroll delay={0.06} className="lg:col-span-5 lg:border-l lg:border-ipb-rule lg:pl-12">
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted">
-                  Étude technique et travaux coordonnés sous garantie décennale 10 ans. Un seul interlocuteur, trois programmes adaptés au métier de nos partenaires.
+                  Diagnostic instrumenté et rapport d'inspection sous 3 à 5 jours. Un seul interlocuteur, trois programmes adaptés au métier de nos partenaires.
                 </p>
               </RevealOnScroll>
             </div>

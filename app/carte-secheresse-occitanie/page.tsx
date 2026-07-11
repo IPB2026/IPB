@@ -11,7 +11,7 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
-  title: 'Carte Sécheresse Occitanie · Communes CAT-NAT · IPB',
+  title: { absolute: 'Carte Sécheresse Occitanie · Communes CAT-NAT · IPB' },
   description: "Communes d'Occitanie reconnues CAT-NAT sécheresse depuis 2018. Carte par département, sinistralité, démarches. ☎ 05 82 95 33 75",
   keywords: [
     'carte sécheresse occitanie',
@@ -212,7 +212,7 @@ export default function CarteSecheressePage() {
             <ol className="space-y-8">
               {[
                 { titre: 'Vérifier que votre commune est reconnue', desc: "Consultez Géorisques ou notre carte ci-dessus. La commune doit être citée dans un arrêté CAT-NAT publié au Journal Officiel pour la sécheresse de l'année où sont apparus vos désordres." },
-                { titre: 'Déclarer le sinistre à votre assurance', desc: "Déclaration sous 10 jours après publication de l'arrêté. La plupart des assureurs acceptent une déclaration écrite (lettre recommandée ou espace client en ligne)." },
+                { titre: 'Déclarer le sinistre à votre assurance', desc: "Déclaration sous 30 jours après publication de l'arrêté. La plupart des assureurs acceptent une déclaration écrite (lettre recommandée ou espace client en ligne)." },
                 { titre: "Faire venir l'expert d'assurance", desc: "L'assureur missionne un expert. Sa mission : constater les désordres et chiffrer. Sa difficulté principale : il défend les intérêts de l'assureur, pas les vôtres." },
                 { titre: 'Faire produire un rapport d’inspection', desc: "C'est ici que notre institut intervient. Notre rapport documente précisément les désordres et leur lien avec le RGA. Il devient une pièce technique versable au dossier d'assurance." },
                 { titre: 'Négocier sur des bases techniques', desc: 'Avec notre rapport, vous négociez sur des éléments factuels — mesures, photographies datées, cause identifiée — plutôt que sur des impressions.' },

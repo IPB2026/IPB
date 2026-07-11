@@ -391,7 +391,7 @@ const expertTips: Record<string, string> = {
 // Étapes de l'animation d'analyse
 const analysisSteps = [
   { text: 'Analyse de vos symptômes...', delay: 0 },
-  { text: 'Comparaison avec notre base de 10 000+ cas...', delay: 800 },
+  { text: 'Comparaison avec les dossiers documentés du réseau IPB...', delay: 800 },
   { text: 'Évaluation du niveau de risque...', delay: 1600 },
   { text: 'Génération de votre rapport expert...', delay: 2400 },
 ];
@@ -589,8 +589,8 @@ export default function DiagnosticPage() {
           urgencyIcon: '🟠',
           urgencyColor: 'orange',
           diagnosis: 'Votre projet est réalisable mais nécessite une étude de faisabilité pour dimensionner correctement la poutre. L\'intervention est de complexité modérée selon la portée et la nature du mur.',
-          solution: 'Visite technique de notre institut pour confirmer la faisabilité, sondage si nécessaire, devis détaillé. Travaux réalisables en 2 à 4 jours selon la portée.',
-          delay: 'Devis sous 24h — travaux sous 2 à 4 semaines',
+          solution: 'Visite technique de notre institut pour qualifier le désordre, mesures instrumentées, rapport d\'inspection remis sous 3 à 5 jours.',
+          delay: 'Réponse sous 48 h — visite sous 72 h',
         };
       } else {
         return {
@@ -970,12 +970,12 @@ export default function DiagnosticPage() {
                       <p className="text-[9px] text-ipb-light font-medium">clients accompagnés</p>
                     </div>
                     <div className="bg-ipb-cream rounded-[3px] py-2">
-                      <p className="text-base font-extrabold text-ipb-text">10 ans</p>
-                      <p className="text-[9px] text-ipb-light font-medium">garantie décennale</p>
+                      <p className="text-base font-extrabold text-ipb-text">72 h</p>
+                      <p className="text-[9px] text-ipb-light font-medium">visite sur site</p>
                     </div>
                     <div className="bg-ipb-cream rounded-[3px] py-2">
                       <p className="text-base font-extrabold text-ipb-text">RC pro</p>
-                      <p className="text-[9px] text-ipb-light font-medium">+ décennales métier</p>
+                      <p className="text-[9px] text-ipb-light font-medium">assurance de l’institut</p>
                     </div>
                   </div>
                 </div>
@@ -1335,7 +1335,7 @@ export default function DiagnosticPage() {
                   </button>
 
                   <p className="text-[10px] text-ipb-light text-center leading-relaxed">
-                    Vos données sont protégées et ne seront jamais partagées. En validant, vous acceptez d'être recontacté par IPB.
+                    Vos données servent uniquement à traiter votre demande et à vous recontacter ; elles ne sont pas utilisées à d'autres fins. En validant, vous acceptez d'être recontacté par IPB. Voir notre politique de confidentialité.
                   </p>
                 </form>
               </div>
@@ -1466,7 +1466,7 @@ export default function DiagnosticPage() {
                         <p className="text-white/60 text-xs">Instrumenté + rapport détaillé</p>
                       </div>
                       <div className="text-right">
-                        <p className="text-sm font-bold text-ipb-orange-l bg-ipb-orange/20 px-3 py-1 rounded-[3px]">Visite sans frais · 72h</p>
+                        <p className="text-sm font-bold text-ipb-orange-l bg-ipb-orange/20 px-3 py-1 rounded-[3px]">Visite sous 72 h</p>
                       </div>
                     </div>
                     <p className="text-white/70 text-[10px] leading-relaxed">
@@ -1555,11 +1555,11 @@ export default function DiagnosticPage() {
                     </div>
                     <div className="flex items-start gap-2">
                       <span className="bg-ipb-stone text-ipb-orange font-bold rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 text-[10px]">2</span>
-                      <span>Diagnostic instrumenté sur site (visite sans frais)</span>
+                      <span>Diagnostic instrumenté sur site — conditions précisées lors de l’appel</span>
                     </div>
                     <div className="flex items-start gap-2">
                       <span className="bg-ipb-stone text-ipb-orange font-bold rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 text-[10px]">3</span>
-                      <span>Rapport et devis détaillé remis</span>
+                      <span>Rapport d’inspection remis sous 3 à 5 jours</span>
                     </div>
                   </div>
                 </div>

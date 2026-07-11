@@ -369,7 +369,7 @@ export default function FissureHorizontalePage() {
             N'attendez pas l'irréparable.
           </h2>
           <p className="text-xl text-red-100 mb-8">
-            Diagnostic urgent sous 24-48h • Devis • Garantie décennale
+            Diagnostic urgent sous 24-48h • Rapport 3-5 jours
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="group bg-white text-red-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-red-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">

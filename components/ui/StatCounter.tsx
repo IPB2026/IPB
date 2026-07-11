@@ -29,7 +29,10 @@ export function StatCounter({
   className = '',
 }: StatCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [display, setDisplay] = useState(0);
+  // Initialisé à `value` (pas 0) : le HTML servi au crawler et aux lecteurs
+  // sans JS contient le vrai chiffre ; l'animation 0→value ne démarre qu'à
+  // l'intersection, côté client.
+  const [display, setDisplay] = useState(value);
   const startedRef = useRef(false);
 
   useEffect(() => {

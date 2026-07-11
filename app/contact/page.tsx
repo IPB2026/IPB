@@ -14,7 +14,7 @@ import { submitContactForm } from '@/app/actions/contact';
 import { trackContactLeadSubmit } from '@/lib/analytics';
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -48,6 +48,7 @@ export default function ContactPage() {
       const formDataToSend = new FormData();
       formDataToSend.append('name', formData.name);
       formDataToSend.append('email', formData.email);
+      formDataToSend.append('phone', formData.phone);
       formDataToSend.append('subject', formData.subject);
       formDataToSend.append('message', formData.message);
 
@@ -56,7 +57,7 @@ export default function ContactPage() {
       if (result.success) {
         trackContactLeadSubmit({ email: formData.email });
         setIsSubmitted(true);
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
         setTimeout(() => setIsSubmitted(false), 6000);
       } else {
         setErrorMessage(result.message || "Une erreur est survenue.");
@@ -219,6 +220,22 @@ export default function ContactPage() {
                         inputMode="email"
                         autoComplete="email"
                         value={formData.email}
+                        onChange={handleChange}
+                        className="w-full px-4 py-[13px] border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-base sm:text-[14px] font-light focus:outline-none focus:border-ipb-orange transition-colors"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="phone" className="block text-[10px] uppercase tracking-[0.14em] text-ipb-light font-medium mb-2">
+                        Téléphone <span className="lowercase tracking-normal text-ipb-light/80">(facultatif — pour être rappelé)</span>
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        inputMode="tel"
+                        autoComplete="tel"
+                        value={formData.phone}
                         onChange={handleChange}
                         className="w-full px-4 py-[13px] border border-ipb-rule rounded-[3px] bg-ipb-white text-ipb-text text-base sm:text-[14px] font-light focus:outline-none focus:border-ipb-orange transition-colors"
                       />

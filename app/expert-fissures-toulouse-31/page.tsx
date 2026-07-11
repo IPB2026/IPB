@@ -16,8 +16,8 @@ import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 import { isVillePrioritaire } from '@/app/data/villes-prioritaires';
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures Toulouse 31 · Visite 72h · Décennale 10 ans',
-  description: "Diagnostic fissures à Toulouse : agrafage structurel, rapport technique reconnu par les assurances. 70 dossiers fissures par an. Décennale 10 ans sur les travaux. Visite sous 72h. ☎ 05 82 95 33 75",
+  title: 'Expert Fissures Toulouse 31 · Visite 72h · Rapport 3-5 jours',
+  description: "Diagnostic fissures à Toulouse : mesures au fissuromètre, cause identifiée, rapport d'inspection sous 3 à 5 jours. Visite sous 72h. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures toulouse',
     'expert fissure toulouse',
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31' },
   openGraph: {
-    title: 'Expert Fissures Toulouse · Décennale 10 ans · IPB',
-    description: "Diagnostic, agrafage structurel, rapport technique reconnu par les assurances. Décennale 10 ans sur les travaux. 70 dossiers fissures par an.",
+    title: 'Expert Fissures Toulouse · Rapport 3-5 jours · IPB',
+    description: "Diagnostic instrumenté, cause identifiée, rapport d'inspection sous 3 à 5 jours. 70 dossiers fissures par an.",
     url: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31',
     type: 'website',
     images: [{
@@ -193,7 +193,7 @@ export default function ExpertFissuresToulousePage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">
-                  Institut IPB — pathologie du bâtiment. Réseau IPB actif à Toulouse depuis 2019. Diagnostic instrumenté, identification de la cause et préconisations claires, en toute indépendance. Si des travaux sont nécessaires, orientation vers des entreprises membres du réseau IPB. Nos rapports sont reconnus par les assurances et nous traitons en moyenne soixante-dix dossiers par an en Haute-Garonne.
+                  Institut IPB — pathologie du bâtiment. Réseau IPB actif à Toulouse depuis 2019. Diagnostic instrumenté, identification de la cause et préconisations claires, en toute indépendance. Si des travaux sont nécessaires, orientation vers des entreprises membres du réseau IPB. Nos rapports documentés servent vos démarches d'assurance ; nous traitons en moyenne soixante-dix dossiers par an en Haute-Garonne.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>
@@ -317,7 +317,7 @@ export default function ExpertFissuresToulousePage() {
                 { value: 850, suffix: '+', label: 'Chantiers · réseau IPB' },
                 { value: 70, label: 'Dossiers par an', sublabel: 'en moyenne' },
                 { value: 4.9, decimals: 1, suffix: '/5', label: 'Avis Google' },
-                { value: 10, suffix: ' ans', label: 'Décennale dédiée' },
+                { value: 5, suffix: ' j', label: 'Rapport remis' },
               ].map((s, i) => (
                 <RevealOnScroll key={s.label} delay={i * 0.06}>
                   <div className="text-center lg:text-left lg:border-l lg:border-white/10 lg:pl-8">
@@ -377,8 +377,8 @@ export default function ExpertFissuresToulousePage() {
                   },
                   {
                     titre: 'Rapport, devis, travaux',
-                    detail: 'Rapport technique écrit sous 3 à 5 jours ouvrés, reconnu par les assurances dans les dossiers CAT-NAT. Devis détaillé. Si vous confirmez : agrafage structurel sous garantie décennale 10 ans, chantier 3 à 5 jours selon ampleur.',
-                    delai: 'Étape 4 · Travaux décennale',
+                    detail: 'Rapport technique écrit sous 3 à 5 jours ouvrés, documenté pour les dossiers CAT-NAT. Si des travaux s’imposent, nous pouvons en coordonner la réalisation par des entreprises couvertes par leur garantie décennale.',
+                    delai: 'Étape 4 · La suite, à votre choix',
                   },
                 ].map((etape, i) => (
                   <RevealOnScroll key={etape.titre} delay={0.08 + i * 0.05}>
@@ -412,7 +412,7 @@ export default function ExpertFissuresToulousePage() {
                 </div>
                 <div className="lg:col-span-5 lg:col-start-8">
                   <p className="text-[15px] leading-[1.9] font-light text-ipb-muted">
-                    Le premier échange en ligne est sans frais ; l'expertise sur site est déductible si vous nous confiez les travaux. Le chiffrage des travaux est toujours établi après diagnostic, sur devis — sans acompte.
+                    Le premier échange est sans engagement ; les conditions de la visite sur site sont précisées lors de cet échange. Si des travaux s'imposent, leur chiffrage relève des entreprises qui les réalisent, toujours après diagnostic.
                   </p>
                 </div>
               </div>

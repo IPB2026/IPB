@@ -12,12 +12,12 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
-  title: "L'institut IPB · Diagnostic en pathologie du bâtiment · Occitanie",
+  title: { absolute: "L'institut IPB · Diagnostic en pathologie du bâtiment · Occitanie" },
   description: "IPB, institut de diagnostic en pathologie du bâtiment : fissures, humidité, avant achat, avant vente. Un rapport clair, remis sous 3 à 5 jours.",
   keywords: ['institut pathologie bâtiment toulouse', 'expert fissures toulouse', 'inspection avant achat toulouse', "expertise bâtiment Haute-Garonne"],
   alternates: { canonical: 'https://www.ipb-expertise.fr/institut' },
   openGraph: {
-    title: "L'institut IPB · Diagnostic en pathologie du bâtiment · Occitanie",
+    title: { absolute: "L'institut IPB · Diagnostic en pathologie du bâtiment · Occitanie" },
     description: "Institut de diagnostic en pathologie du bâtiment. Si des travaux s'imposent, coordination avec des entreprises couvertes par leur garantie décennale.",
     url: 'https://www.ipb-expertise.fr/institut',
     type: 'website',
@@ -43,13 +43,13 @@ const organizationSchema = {
 };
 
 const certifications = [
-  { name: "Garantie décennale 10 ans sur les travaux", detail: "Travaux d'agrafage, traitement de l'humidité et finitions exécutés par les entreprises du réseau IPB, sous leur propre décennale." },
+  { name: "Travaux coordonnés, si vous le souhaitez", detail: "Si des travaux s'imposent, IPB peut en coordonner la réalisation par des entreprises couvertes par leur propre garantie décennale." },
   { name: "RC pro IPB", detail: "Responsabilité civile professionnelle de l'institut au titre de ses activités de diagnostic, de coordination et de production du rapport d'inspection." },
-  { name: "Rapports reconnus par les assurances", detail: "Documents techniques rédigés dans les formes attendues par les assureurs et utilisés régulièrement dans les dossiers CAT-NAT et recours décennale." },
+  { name: "Rapports documentés", detail: "Mesures instrumentées, photographies datées : des documents techniques utilisés régulièrement dans les dossiers CAT-NAT." },
 ];
 
 const valeurs = [
-  { titre: "Continuité", desc: "Diagnostic, étude et travaux conduits selon un même protocole, sous une seule coordination. Un seul interlocuteur, du premier appel à la livraison." },
+  { titre: "Continuité", desc: "Un protocole constant et un seul interlocuteur, du premier appel à la remise du rapport — et jusqu'à la coordination des travaux, si vous le souhaitez." },
   { titre: "Sobriété", desc: "Nous décrivons ce que nous voyons, nous expliquons ce qu'il faut faire — sans surinvestir le vocabulaire. Si rien n'est urgent, nous le disons." },
   { titre: "Documentation", desc: "Chaque intervention est documentée : photos, mesures, plans, attestations. Le dossier complet est remis au client à la livraison." },
 ];
@@ -101,7 +101,7 @@ export default function NotreInstitutPage() {
                   IPB est un institut de diagnostic en pathologie du bâtiment, spécialisé dans le diagnostic des désordres du bâtiment. Basé à Toulouse, il intervient en Occitanie. Son champ d'action : fissures, humidité, diagnostic du bâti avant achat et avant vente — tout ce qui touche à la solidité d'un bâti et à la lecture de ses désordres.
                 </p>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-6">
-                  L'institut qualifie le besoin, mène le diagnostic et vous remet un rapport d'inspection clair. Il ne réalise pas les travaux : si des travaux s'imposent et que vous le souhaitez, il peut en assurer la coordination avec des entreprises intégrées au réseau IPB — formées à notre protocole, titulaires de leur propre décennale. Du premier appel à la dernière finition, vous n'avez qu'un seul interlocuteur en face de vous.
+                  L'institut qualifie le besoin, mène le diagnostic et vous remet un rapport d'inspection clair. Il ne réalise pas les travaux : si des travaux s'imposent et que vous le souhaitez, il peut en assurer la coordination avec des entreprises intégrées au réseau IPB — formées à notre protocole, titulaires de leur propre décennale. Du premier appel à la remise du rapport — et pendant les travaux si vous choisissez la coordination —, vous n'avez qu'un seul interlocuteur.
                 </p>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10">
                   Le réseau IPB est actif depuis 2019 en Haute-Garonne, dans le Tarn-et-Garonne, le Gers et le Tarn. Plus de 850 chantiers ont été menés ; le réseau traite en moyenne soixante-dix dossiers fissures par an, en complément des diagnostics humidité et des inspections avant achat.
@@ -191,7 +191,7 @@ export default function NotreInstitutPage() {
                   Des assurances actives,<br /><em>vérifiables.</em>
                 </h2>
                 <p className="mt-6 text-[14px] leading-[1.85] font-light text-white/75">
-                  L'attestation décennale et la responsabilité civile sont remises sur simple demande, avec le devis. Vous pouvez les transmettre à votre notaire, votre assureur ou votre conseil avant tout engagement.
+                  L'attestation de responsabilité civile professionnelle de l'institut est remise sur simple demande, avec le devis. Vous pouvez la transmettre à votre notaire, votre assureur ou votre conseil avant tout engagement.
                 </p>
                 <Link
                   href="/contact"

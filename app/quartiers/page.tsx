@@ -10,14 +10,14 @@ import { quartiersData, quartierSlugs } from '@/app/data/quartiers';
 const site = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ipb-expertise.fr').replace(/\/+$/, '');
 
 export const metadata: Metadata = {
-  title: 'Quartiers Toulouse · Fissures & Humidité · Décennale 10 ans',
-  description: "Pages par quartier toulousain : risques RGA, humidité, fissures, solutions. Diagnostic et inspection du bâti. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
+  title: 'Quartiers Toulouse · Fissures & Humidité · Rapport 3-5 jours',
+  description: "Pages par quartier toulousain : risques RGA, humidité, fissures, solutions. Diagnostic et inspection du bâti. Rapport d'inspection sous 3 à 5 jours. ☎ 05 82 95 33 75",
   alternates: {
     canonical: `${site}/quartiers`,
   },
   openGraph: {
     title: 'Quartiers Toulouse · Expert Fissures & Humidité · IPB',
-    description: "Analyses par quartier : Capitole, Saint-Cyprien, Minimes, Côte Pavée. Décennale 10 ans sur les travaux.",
+    description: "Analyses par quartier : Capitole, Saint-Cyprien, Minimes, Côte Pavée. Rapport d'inspection sous 3 à 5 jours.",
     url: `${site}/quartiers`,
     siteName: 'IPB Expertise',
     locale: 'fr_FR',

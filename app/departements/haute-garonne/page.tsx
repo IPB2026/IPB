@@ -8,8 +8,8 @@ import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures & Humidité Haute-Garonne 31 · Décennale 10 ans',
-  description: "Expert fissures et humidité Haute-Garonne (Toulouse, Colomiers, Muret). Diagnostic, décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
+  title: 'Expert Fissures & Humidité Haute-Garonne 31 · Rapport 3-5 jours',
+  description: "Expert fissures et humidité Haute-Garonne (Toulouse, Colomiers, Muret). Diagnostic instrumenté, rapport sous 3 à 5 jours. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures haute-garonne',
     'expert fissures toulouse',
@@ -132,7 +132,7 @@ export default function HauteGaronnePage() {
         name: 'Les travaux sont-ils garantis ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Tous nos travaux sont couverts par une garantie décennale de 10 ans. Nous sommes assurés par une compagnie française de premier plan. Vous recevez une attestation d\'assurance avec votre devis.',
+          text: 'Si des travaux s\'imposent à l\'issue du diagnostic, nous pouvons en coordonner la réalisation par des entreprises couvertes par leur garantie décennale ; leur attestation d\'assurance est jointe à leur devis.',
         },
       },
     ],
@@ -218,7 +218,7 @@ export default function HauteGaronnePage() {
                 </div>
                 <div className="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/20">
                   <div className="text-4xl font-extrabold text-white mb-2">10 ans</div>
-                  <div className="text-ipb-orange-l">Garantie décennale</div>
+                  <div className="text-ipb-orange-l">Rapport 3-5 jours</div>
                 </div>
               </div>
             </div>
@@ -375,9 +375,9 @@ export default function HauteGaronnePage() {
                 <div className="w-16 h-16 bg-ipb-orange rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <Shield size={32} className="text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Garantie décennale</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Rapport documenté</h3>
                 <p className="text-ipb-light">
-                  10 ans de garantie sur tous nos travaux. Attestation d'assurance fournie avec chaque devis.
+                  Mesures instrumentées, photographies datées, préconisations : un rapport remis sous 3 à 5 jours.
                 </p>
               </div>
             </div>
@@ -413,7 +413,7 @@ export default function HauteGaronnePage() {
               Fissures ou humidité en Haute-Garonne ?
             </h2>
             <p className="text-xl text-orange-50 mb-8">
-              Diagnostic sous 48h • Devis détaillé • Garantie décennale
+              Diagnostic sous 48h • Rapport 3-5 jours
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

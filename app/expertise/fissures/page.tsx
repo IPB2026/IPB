@@ -39,7 +39,7 @@ import Image from 'next/image';
 import { ExpertiseFissuresBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
-  title: 'Diagnostic de fissures à Toulouse — structurelle ou non · IPB',
+  title: { absolute: 'Diagnostic de fissures à Toulouse — structurelle ou non · IPB' },
   description: "Une fissure est apparue ? Un inspecteur IPB la mesure au fissuromètre et vous dit si elle est structurelle. Rapport sous 3 à 5 jours. Toulouse et Occitanie. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures toulouse',
@@ -61,7 +61,7 @@ export const metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/fissures' },
   openGraph: {
-    title: 'Diagnostic de fissures à Toulouse — structurelle ou non · IPB',
+    title: { absolute: 'Diagnostic de fissures à Toulouse — structurelle ou non · IPB' },
     description: "Un inspecteur IPB mesure la fissure au fissuromètre, identifie la cause et vous dit si elle est structurelle. Rapport sous 3 à 5 jours.",
     url: 'https://www.ipb-expertise.fr/expertise/fissures',
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
@@ -92,7 +92,7 @@ const generateServiceJsonLd = () => ({
     "address": { "@type": "PostalAddress", "streetAddress": "54 avenue Jean Jaurès", "addressLocality": "Tournefeuille", "addressRegion": "Occitanie", "postalCode": "31170", "addressCountry": "FR" }
   },
   "areaServed": [{ "@type": "AdministrativeArea", "name": "Haute-Garonne (31)" }, { "@type": "AdministrativeArea", "name": "Tarn-et-Garonne (82)" }, { "@type": "AdministrativeArea", "name": "Gers (32)" }, { "@type": "AdministrativeArea", "name": "Tarn (81)" }],
-  "description": "Diagnostic instrumenté de fissures, agrafage structurel, reprise en sous-œuvre. Rapports reconnus par les assurances. Décennale 10 ans dédiée sur les travaux."
+  "description": "Diagnostic instrumenté de fissures : mesures au fissuromètre, identification de la cause, rapport d'inspection documenté sous 3 à 5 jours, utilisé dans les dossiers d'assurance."
 });
 
 const typesFissures = [
@@ -417,7 +417,7 @@ export default function FissuresPage() {
                 { value: 850, suffix: '+', label: 'Chantiers · réseau IPB' },
                 { value: 4.9, decimals: 1, suffix: '/5', label: 'Avis Google' },
                 { value: 72, suffix: 'h', label: 'Visite en moyenne' },
-                { value: 10, suffix: ' ans', label: 'Décennale sur les travaux' },
+                { value: 5, suffix: ' j', label: 'Rapport remis' },
               ].map((s, i) => (
                 <RevealOnScroll key={s.label} delay={i * 0.06}>
                   <div className="text-center lg:text-left lg:border-l lg:border-ipb-rule lg:pl-8">
@@ -532,6 +532,7 @@ export default function FissuresPage() {
                     { href: '/blog/evaluer-gravite-fissure-maison', label: "Évaluer la gravité d'une fissure" },
                     { href: '/blog/agrafage-vs-micropieux-choix', label: 'Agrafage ou micropieux : comment choisir' },
                     { href: '/blog/secheresse-argile-haute-garonne', label: 'Sécheresse & argiles en Haute-Garonne' },
+                    { href: '/expertise/retrait-gonflement-argiles', label: 'Le retrait-gonflement des argiles (RGA)' },
                     { href: '/lexique', label: 'Lexique de la pathologie du bâtiment' },
                     { href: '/notre-methode', label: 'Notre méthode, étape par étape' },
                   ],

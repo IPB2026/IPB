@@ -218,7 +218,7 @@ export function optimizeMetaDescription(description: string, category: string): 
     'fissures': ['URGENT', 'DANGER', 'Solution définitive', 'Expert', 'Garanti 10 ans'],
     'humidite': ['Stop', 'Traitement définitif', 'Garantie 30 ans', 'Expert', 'Résultats prouvés'],
     'conseils': ['Guide complet', 'Méthode éprouvée', 'Économisez', 'Expert révèle', 'Sans risque'],
-    'expertise': ['Certifié', 'Expert reconnu', 'Garantie décennale', 'Diagnostic', 'Intervention rapide']
+    'expertise': ['Diagnostic instrumenté', 'Rapport 3-5 jours', 'Visite sous 72 h', 'Réponse sous 48 h']
   };
 
   // Ajouter un power word si la description est courte

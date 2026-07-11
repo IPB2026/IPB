@@ -4,8 +4,8 @@ import { Phone, MapPin, CheckCircle, ArrowRight } from 'lucide-react';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures & Humidité Gers 32 · Auch · Décennale 10 ans',
-  description: "Expert fissures et humidité Gers (32) : Auch, Condom, Fleurance. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
+  title: 'Expert Fissures & Humidité Gers 32 · Auch · Rapport 3-5 jours',
+  description: "Expert fissures et humidité Gers (32) : Auch, Condom, Fleurance. Rapport d'inspection sous 3 à 5 jours. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures gers',
     'traitement humidité 32',
@@ -238,7 +238,7 @@ export default function GersPage() {
               Besoin d'un expert dans le Gers ?
             </h2>
             <p className="text-xl text-blue-50 mb-8">
-              Diagnostic • Intervention rapide • Garantie décennale
+              Diagnostic • Visite sous 72 h • Rapport 3-5 jours
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

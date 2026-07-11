@@ -8,7 +8,7 @@ export function JsonLd() {
     "@type": "LocalBusiness",
     "name": "IPB - Institut de Pathologie du Bâtiment",
     "image": "https://www.ipb-expertise.fr/images/IPB_Logo_HD.png",
-    "description": "Expert en traitement des fissures et de l'humidité en Haute-Garonne. Solutions techniques (agrafage, injection résine) avec garantie décennale.",
+    "description": "Institut de diagnostic en pathologie du bâtiment en Haute-Garonne : fissures, humidité. Mesures instrumentées, rapport d'inspection sous 3 à 5 jours.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "54 avenue Jean Jaurès",

@@ -10,8 +10,7 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title:
-    'Diagnostic avant vente immobilière à Toulouse · IPB',
+  title: { absolute: 'Diagnostic avant vente immobilière à Toulouse · IPB' },
   description:
     "L'état du bâti, objectivé avant la mise en vente. Un rapport d'inspection qui se transmet à l'agence, au notaire, à l'acheteur. Visite sous 72h en Occitanie.",
   keywords: [

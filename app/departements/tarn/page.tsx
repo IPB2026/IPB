@@ -10,9 +10,9 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures & Humidité Tarn 81 · Albi · Décennale 10 ans',
+  title: 'Expert Fissures & Humidité Tarn 81 · Albi · Rapport 3-5 jours',
   description:
-    'Expert fissures et humidité Tarn (81) : Albi, Castres, Gaillac. Diagnostic 48h. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75',
+    'Expert fissures et humidité Tarn (81) : Albi, Castres, Gaillac. Diagnostic instrumenté, rapport 3-5 jours. ☎ 05 82 95 33 75',
   keywords: ['expert fissures tarn', 'expert humidité 81', 'fissures albi', 'humidité castres'],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/departements/tarn',
@@ -102,8 +102,8 @@ export default function TarnPage() {
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted max-w-[580px] mb-10">
                   D'Albi à Castres, en passant par Gaillac et Lavaur, nous intervenons dans tout
-                  le département pour diagnostiquer les fissures, traiter l'humidité et étudier
-                  les ouvertures de mur porteur. Rapports reconnus par les assurances.
+                  le département pour diagnostiquer les fissures et identifier l'origine de
+                  l'humidité. Rapports d'inspection documentés, remis sous 3 à 5 jours.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>

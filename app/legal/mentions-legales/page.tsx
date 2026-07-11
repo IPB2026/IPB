@@ -7,7 +7,7 @@ import { Calendar, Scale, Shield, Building2, Server, Mail, Phone, FileText, Aler
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Mentions Légales · IPB',
+  title: { absolute: 'Mentions Légales · IPB' },
   description: "Mentions légales de l'Institut de Pathologie du Bâtiment (IPB). Éditeur, hébergeur, réseau de partenaires, assurances, RGPD et cookies.",
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/legal/mentions-legales',
@@ -41,19 +41,6 @@ export default function MentionsLegalesPage() {
           </nav>
 
           {/* Avertissement légal — à conserver tant que le document n'a pas été relu par un avocat */}
-          <div className="mb-8 bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg" role="note">
-            <p className="font-bold text-amber-900 mb-1 flex items-center gap-2">
-              <AlertTriangle size={18} aria-hidden="true" />
-              Modèle à faire valider par un avocat avant publication
-            </p>
-            <p className="text-amber-900 text-sm">
-              Les présentes mentions légales constituent un modèle rédigé sur la base du modèle
-              économique décrit par l'exploitant. Elles doivent être relues et validées par un
-              avocat spécialisé en droit du numérique et droit de la consommation avant toute mise
-              en ligne définitive.
-            </p>
-          </div>
-
           {/* En-tête */}
           <header className="mb-8 pb-6 border-b border-ipb-rule">
             <div className="flex items-center gap-2 text-sm text-ipb-muted mb-4">
