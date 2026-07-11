@@ -88,7 +88,7 @@ function getBackContext(pathname: string | null): { href: string; label: string 
     '/fissure-en-escalier-causes',
     '/fissure-fondation-maison',
     '/fissure-horizontale-danger',
-    '/fissure-secheresse-indemnisation',
+    '/secheresse-fissures-catastrophe-naturelle',
     '/agrafage-fissures',
     '/carte-secheresse-occitanie',
   ];

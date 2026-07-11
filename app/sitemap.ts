@@ -25,7 +25,7 @@ const spokeFissuresPages = [
   'fissure-en-escalier-causes',
   'fissure-horizontale-danger',
   'microfissure-quand-sinquieter',
-  'fissure-secheresse-indemnisation',
+  // 'fissure-secheresse-indemnisation' → 301 vers /secheresse-fissures-catastrophe-naturelle (consolidation audit 2026-07)
   'fissure-fondation-maison',
   'secheresse-fissures-catastrophe-naturelle',
 ];
@@ -391,7 +391,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // ════════════════════════════════════════════════════════════
   // PAGES PROBLÈMES (Topic Cluster)
   // ════════════════════════════════════════════════════════════
-  const problemesPages: MetadataRoute.Sitemap = problemPages.map((p) => ({
+  void problemPages; void quartierSlugs; // conservés pour réactivation après différenciation
+  const _problemesPages: MetadataRoute.Sitemap = problemPages.map((p) => ({
     url: `${baseUrl}/problemes/${p.slug}`,
     lastModified: contentDate,
     changeFrequency: 'monthly' as const,
@@ -401,7 +402,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // ════════════════════════════════════════════════════════════
   // PAGES QUARTIERS TOULOUSE
   // ════════════════════════════════════════════════════════════
-  const quartiersPages: MetadataRoute.Sitemap = quartierSlugs.map((q) => ({
+  const _quartiersPages: MetadataRoute.Sitemap = quartierSlugs.map((q) => ({
     url: `${baseUrl}/quartiers/${q}`,
     lastModified: contentDate,
     changeFrequency: 'monthly' as const,
@@ -422,8 +423,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...departementPages, 
     ...expertFissuresPages,
     ...expertHumiditePages,
-    ...problemesPages,
-    ...quartiersPages,
+    // problemesPages et quartiersPages retirés : pages passées en noindex,follow
+    // (élagage 2e vague, audit 2026-07) — un sitemap ne liste pas de noindex.
     ...blogPages,
   ];
 }

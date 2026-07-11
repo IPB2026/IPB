@@ -294,7 +294,7 @@ export default function ArreteSecheresse2026Page() {
             <h2>Liens utiles</h2>
             <ul>
               <li><a href="https://www.georisques.gouv.fr" target="_blank" rel="noopener noreferrer">Georisques.gouv.fr</a> - Vérifier les arrêtés de votre commune</li>
-              <li><Link href="/fissure-secheresse-indemnisation">Guide complet indemnisation sécheresse</Link></li>
+              <li><Link href="/secheresse-fissures-catastrophe-naturelle">Guide complet indemnisation sécheresse</Link></li>
               <li><Link href="/expert-fissures-toulouse-31">Expert fissures Toulouse</Link></li>
             </ul>
           </div>

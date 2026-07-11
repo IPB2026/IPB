@@ -1335,7 +1335,7 @@ export default function DiagnosticPage() {
                   </button>
 
                   <p className="text-[10px] text-ipb-light text-center leading-relaxed">
-                    Vos données servent uniquement à traiter votre demande et à vous recontacter ; elles ne sont pas utilisées à d'autres fins. En validant, vous acceptez d'être recontacté par IPB. Voir notre politique de confidentialité.
+                    Vos données servent uniquement à traiter votre demande et à vous recontacter ; elles ne sont pas utilisées à d'autres fins. En validant, vous acceptez d'être recontacté par IPB. Voir notre politique de confidentialité. Ce formulaire est protégé par reCAPTCHA (Google) — s'appliquent sa politique de confidentialité et ses conditions d'utilisation.
                   </p>
                 </form>
               </div>

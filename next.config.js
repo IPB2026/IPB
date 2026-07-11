@@ -85,6 +85,13 @@ const nextConfig = {
         destination: '/blog/prix-agrafage-fissures-2026',
         permanent: true,
       },
+      // Consolidation sécheresse/CAT-NAT (audit 2026-07) : la page indemnisation
+      // cannibalisait le hub — 301 vers la page de référence.
+      {
+        source: '/fissure-secheresse-indemnisation',
+        destination: '/secheresse-fissures-catastrophe-naturelle',
+        permanent: true,
+      },
       // Anciennes URL racine (liens internes / backlinks) → pages réelles
       { source: '/agrafage-fissures', destination: '/expertise/fissures', permanent: true },
       { source: '/micropieux-fondations', destination: '/blog/agrafage-vs-micropieux-choix', permanent: true },

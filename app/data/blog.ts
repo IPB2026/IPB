@@ -106,7 +106,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Agrafage structurel</strong> : la solution adaptée à environ 90 % des maisons touchées par la sécheresse. On coud les lèvres de la fissure avec des aciers inox. C'est une fraction du coût d'une reprise lourde.</li>
         <li><strong>Reprise en sous-œuvre par micropieux</strong> : réservée aux tassements majeurs de fondation, c'est la solution la plus lourde. C'est ce scénario, rare, que l'acheteur redoute — d'où l'importance de le confirmer ou de l'écarter par un diagnostic.</li>
       </ul>
-      <p>Pour comprendre le bon choix technique, lisez notre comparatif <a href="/blog/agrafage-vs-micropieux-choix">agrafage ou micropieux</a>. Et si la cause est la sécheresse, votre commune est peut-être éligible à une prise en charge : voir les <a href="/fissure-secheresse-indemnisation">démarches d'indemnisation CAT-NAT</a>.</p>
+      <p>Pour comprendre le bon choix technique, lisez notre comparatif <a href="/blog/agrafage-vs-micropieux-choix">agrafage ou micropieux</a>. Et si la cause est la sécheresse, votre commune est peut-être éligible à une prise en charge : voir les <a href="/secheresse-fissures-catastrophe-naturelle">démarches d'indemnisation CAT-NAT</a>.</p>
 
       <h2 id="vendeur-acheteur">Vendeur ou acheteur : la même pièce maîtresse</h2>
       <p><strong>Côté vendeur</strong>, cacher une fissure est la pire stratégie : l'acheteur la découvrira (ou son notaire l'exigera), et la vente se renégociera dans l'urgence, à votre désavantage — quand elle ne s'annule pas pour vice caché. Un rapport d'expertise remis spontanément désamorce la négociation et protège le prix. C'est tout l'objet de notre page <a href="/vendre-bien-avec-fissures">vendre un bien avec fissures</a>.</p>
@@ -4760,7 +4760,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>Chaque été de sécheresse aggrave les fissures existantes et en crée de nouvelles. Le coût de l&apos;inaction est mesurable : une <a href="/fissure-en-escalier-causes" class="text-orange-600 underline hover:text-orange-700">fissure en escalier</a> de 3 mm traitée aujourd&apos;hui relève d&apos;un simple agrafage. La même fissure à 8 mm dans 3 ans nécessitera des micropieux, une intervention bien plus lourde et bien plus coûteuse.</p>
 
-      <p>Notre diagnostic vous donne un état précis de la situation : gravité des fissures, cause identifiée, solutions chiffrées. Ce rapport est aussi un atout précieux pour votre dossier d&apos;assurance en cas de <a href="/fissure-secheresse-indemnisation" class="text-orange-600 underline hover:text-orange-700">catastrophe naturelle sécheresse</a>.</p>
+      <p>Notre diagnostic vous donne un état précis de la situation : gravité des fissures, cause identifiée, solutions chiffrées. Ce rapport est aussi un atout précieux pour votre dossier d&apos;assurance en cas de <a href="/secheresse-fissures-catastrophe-naturelle" class="text-orange-600 underline hover:text-orange-700">catastrophe naturelle sécheresse</a>.</p>
 
       <p>Le Gers est un département où le patrimoine immobilier représente souvent l&apos;essentiel de l&apos;épargne d&apos;une famille. Protéger votre maison contre les fissures, c&apos;est protéger votre avenir financier. Avec plus de 300 maisons traitées en Occitanie depuis 2019 et un taux de satisfaction de 98%, IPB est votre partenaire de confiance pour le diagnostic et le traitement des fissures dans tout le Gers.</p>
 
@@ -6358,7 +6358,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h2>Questions fréquentes sur le prix de l&apos;agrafage</h2>
 
       <h3>L&apos;agrafage est-il couvert par l&apos;assurance ?</h3>
-      <p>Oui, si votre commune est reconnue en <a href="/fissure-secheresse-indemnisation" class="text-orange-600 underline hover:text-orange-700">catastrophe naturelle sécheresse</a>. Une franchise légale reste à votre charge. Le reste est pris en charge par votre assurance habitation. Un rapport d&apos;expert indépendant (comme celui d&apos;IPB) augmente significativement le montant de l&apos;indemnisation par rapport à l&apos;évaluation de l&apos;expert d&apos;assurance.</p>
+      <p>Oui, si votre commune est reconnue en <a href="/secheresse-fissures-catastrophe-naturelle" class="text-orange-600 underline hover:text-orange-700">catastrophe naturelle sécheresse</a>. Une franchise légale reste à votre charge. Le reste est pris en charge par votre assurance habitation. Un rapport d&apos;expert indépendant (comme celui d&apos;IPB) augmente significativement le montant de l&apos;indemnisation par rapport à l&apos;évaluation de l&apos;expert d&apos;assurance.</p>
 
       <h3>Peut-on payer en plusieurs fois ?</h3>
       <p>Les modalités de paiement des travaux relèvent de l'entreprise qui les réalise : la plupart proposent un échelonnement, précisé sur leur devis. Interrogez-les avant de signer.</p>

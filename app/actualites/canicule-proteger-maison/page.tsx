@@ -237,7 +237,7 @@ export default function CaniculeProtegerMaisonPage() {
           </div>
 
           <div className="mt-8 grid md:grid-cols-2 gap-6">
-            <Link href="/fissure-secheresse-indemnisation" className="bg-white rounded-xl p-6 shadow-lg border border-ipb-rule hover:border-ipb-rule transition-all group">
+            <Link href="/secheresse-fissures-catastrophe-naturelle" className="bg-white rounded-xl p-6 shadow-lg border border-ipb-rule hover:border-ipb-rule transition-all group">
               <h3 className="font-bold text-ipb-text group-hover:text-ipb-orange mb-2">
                 📋 Indemnisation CAT-NAT
               </h3>

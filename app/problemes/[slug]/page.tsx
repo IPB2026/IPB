@@ -68,7 +68,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: seoDescription,
       images: ['/images/IPB_Logo_HD.png'],
     },
-    robots: { index: true, follow: true },
+    // Élagage 2e vague (audit 2026-07) : 13 pages quasi identiques (~88 % de recouvrement)
+    // → noindex,follow le temps de les différencier ou de les fusionner.
+    robots: { index: false, follow: true },
   };
 }
 

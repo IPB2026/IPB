@@ -72,7 +72,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description,
       images: ['/images/IPB_Logo_HD.png'],
     },
-    robots: { index: true, follow: true },
+    // Élagage 2e vague (audit 2026-07) : pages quartiers ~70 % boilerplate
+    // → noindex,follow (le hub /quartiers reste indexé).
+    robots: { index: false, follow: true },
   };
 }
 

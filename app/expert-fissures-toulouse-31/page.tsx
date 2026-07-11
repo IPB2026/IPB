@@ -565,7 +565,7 @@ export default function ExpertFissuresToulousePage() {
                 <h3 className="font-serif font-bold text-ipb-text text-[16px] leading-snug mb-3 group-hover:text-ipb-orange transition-colors">Microfissure : quand s'inquiéter ?</h3>
                 <p className="text-[13px] text-ipb-muted leading-relaxed">Critères de gravité, signes d'évolution, et seuil d'intervention pour un expert.</p>
               </Link>
-              <Link href="/fissure-secheresse-indemnisation" className="group block bg-white border border-ipb-rule rounded-[6px] p-6 hover:border-ipb-orange transition-colors">
+              <Link href="/secheresse-fissures-catastrophe-naturelle" className="group block bg-white border border-ipb-rule rounded-[6px] p-6 hover:border-ipb-orange transition-colors">
                 <div className="text-[11px] uppercase tracking-wider text-ipb-orange font-bold mb-2">Démarches</div>
                 <h3 className="font-serif font-bold text-ipb-text text-[16px] leading-snug mb-3 group-hover:text-ipb-orange transition-colors">Sécheresse RGA : indemnisation CAT-NAT</h3>
                 <p className="text-[13px] text-ipb-muted leading-relaxed">Constituer son dossier, contre-expertise, délais. Spécifique Haute-Garonne.</p>

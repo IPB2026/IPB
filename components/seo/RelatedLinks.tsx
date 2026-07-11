@@ -85,7 +85,7 @@ export const fissuresRelatedLinks: LinkItem[] = [
   { href: '/fissure-en-escalier-causes', label: 'Fissures en escalier', description: 'Causes et dangers' },
   { href: '/fissure-horizontale-danger', label: 'Fissures horizontales', description: 'Risques structurels' },
   { href: '/microfissure-quand-sinquieter', label: 'Microfissures', description: 'Quand s\'inquiéter ?' },
-  { href: '/fissure-secheresse-indemnisation', label: 'Fissures & sécheresse', description: 'Indemnisation CAT-NAT' },
+  { href: '/secheresse-fissures-catastrophe-naturelle', label: 'Fissures & sécheresse', description: 'Indemnisation CAT-NAT' },
   { href: '/fissure-fondation-maison', label: 'Fissures de fondation', description: 'Diagnostic et solutions' },
 ];
 

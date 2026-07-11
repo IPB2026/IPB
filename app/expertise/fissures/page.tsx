@@ -39,7 +39,7 @@ import Image from 'next/image';
 import { ExpertiseFissuresBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
-  title: { absolute: 'Diagnostic de fissures à Toulouse — structurelle ou non · IPB' },
+  title: { absolute: 'Expertise fissures Toulouse : structurelle ou non · Diagnostic IPB' },
   description: "Une fissure est apparue ? Un inspecteur IPB la mesure au fissuromètre et vous dit si elle est structurelle. Rapport sous 3 à 5 jours. Toulouse et Occitanie. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures toulouse',
@@ -61,7 +61,7 @@ export const metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/fissures' },
   openGraph: {
-    title: { absolute: 'Diagnostic de fissures à Toulouse — structurelle ou non · IPB' },
+    title: { absolute: 'Expertise fissures Toulouse : structurelle ou non · Diagnostic IPB' },
     description: "Un inspecteur IPB mesure la fissure au fissuromètre, identifie la cause et vous dit si elle est structurelle. Rapport sous 3 à 5 jours.",
     url: 'https://www.ipb-expertise.fr/expertise/fissures',
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
@@ -522,7 +522,7 @@ export default function FissuresPage() {
                     { href: '/microfissure-quand-sinquieter', label: "Microfissures : quand s'inquiéter ?" },
                     { href: '/fissure-fondation-maison', label: 'Fissures de fondation' },
                     { href: '/secheresse-fissures-catastrophe-naturelle', label: 'Fissures de sécheresse & catastrophe naturelle' },
-                    { href: '/fissure-secheresse-indemnisation', label: 'Fissures & sécheresse : indemnisation' },
+                    { href: '/secheresse-fissures-catastrophe-naturelle', label: 'Fissures & sécheresse : indemnisation' },
                   ],
                 },
                 {

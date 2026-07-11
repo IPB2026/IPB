@@ -14,7 +14,7 @@ import Image from 'next/image';
 import { ExpertiseHumiditeBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
-  title: { absolute: "Diagnostic humidité à Toulouse — identifier l'origine · IPB" },
+  title: { absolute: "Expertise humidité Toulouse — identifier l'origine · IPB" },
   description: "Remontées capillaires, infiltration ou condensation : IPB identifie l'origine à l'humidimètre avant tout traitement. Toulouse et Occitanie.",
   keywords: [
     'expert humidité toulouse',
@@ -30,7 +30,7 @@ export const metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/humidite' },
   openGraph: {
-    title: { absolute: "Diagnostic humidité à Toulouse — identifier l'origine · IPB" },
+    title: { absolute: "Expertise humidité Toulouse — identifier l'origine · IPB" },
     description: "Un inspecteur IPB identifie l'origine de l'humidité à l'humidimètre et préconise le traitement adapté. Toulouse et Occitanie.",
     url: 'https://www.ipb-expertise.fr/expertise/humidite',
     type: 'website',

@@ -10,7 +10,7 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: { absolute: "Inspection avant achat immobilier à Toulouse · Institut IPB" },
+  title: { absolute: "Expertise avant achat immobilier à Toulouse · Institut IPB" },
   description:
     "Avant de vous engager, une inspection du bâti sans lien avec le vendeur ni l'agence. Rapport remis dans vos délais de rétractation. Visite sous 72h.",
   keywords: [
