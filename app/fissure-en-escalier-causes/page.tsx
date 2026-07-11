@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/fissure-en-escalier-causes' },
   openGraph: {
     title: 'Fissure en Escalier · Causes et Solutions · IPB',
-    description: "Tassement différentiel. Diagnostic et traitement par agrafage. Décennale 10 ans sur les travaux.",
+    description: "Tassement différentiel. Diagnostic et traitement par agrafage. Rapport d'inspection sous 3 à 5 jours.",
     url: 'https://www.ipb-expertise.fr/fissure-en-escalier-causes',
     type: 'article',
     images: [{ url: '/images/fissure-facade-diagonale.webp', width: 1200, height: 630, alt: 'Fissure en escalier sur mur' }],
@@ -284,7 +284,7 @@ export default function FissureEscalierPage() {
             {[
               { step: '01', title: 'Diagnostic expert', desc: 'Analyse complète de la fissure, des fondations et du sol. Rapport détaillé avec préconisations.', icon: '🔍', duration: '1h30' },
               { step: '02', title: 'Agrafage structurel', desc: 'Pose d\'agrafes inox tous les 40cm, scellement au mortier fibré. Stabilise définitivement la structure.', icon: '🔧', duration: '2-3 jours' },
-              { step: '03', title: 'Finition & garantie', desc: 'Enduit de finition, peinture. Garantie décennale sur les travaux. Suivi post-intervention.', icon: '✅', duration: 'Garanti 10 ans' },
+              { step: '03', title: 'La suite, si vous le souhaitez', desc: 'Si des travaux s’imposent, coordination possible par des entreprises couvertes par leur garantie décennale.', icon: '✅', duration: 'À votre choix' },
             ].map((item, index) => (
               <div key={index} className="relative">
                 <div className="bg-white/5 backdrop-blur border border-white/10 rounded-3xl p-8 h-full hover:bg-white/10 transition-all">
@@ -410,7 +410,7 @@ export default function FissureEscalierPage() {
           </h2>
           
           <p className="text-xl text-ipb-orange-l mb-8 max-w-2xl mx-auto">
-            Diagnostic sous 48h • Devis • Garantie décennale
+            Diagnostic sous 48h • Rapport 3-5 jours
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">

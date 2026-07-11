@@ -14,7 +14,7 @@ import Image from 'next/image';
 import { ExpertiseHumiditeBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
-  title: "Diagnostic humidité à Toulouse — identifier l'origine · IPB",
+  title: { absolute: "Diagnostic humidité à Toulouse — identifier l'origine · IPB" },
   description: "Remontées capillaires, infiltration ou condensation : IPB identifie l'origine à l'humidimètre avant tout traitement. Toulouse et Occitanie.",
   keywords: [
     'expert humidité toulouse',
@@ -30,7 +30,7 @@ export const metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/humidite' },
   openGraph: {
-    title: "Diagnostic humidité à Toulouse — identifier l'origine · IPB",
+    title: { absolute: "Diagnostic humidité à Toulouse — identifier l'origine · IPB" },
     description: "Un inspecteur IPB identifie l'origine de l'humidité à l'humidimètre et préconise le traitement adapté. Toulouse et Occitanie.",
     url: 'https://www.ipb-expertise.fr/expertise/humidite',
     type: 'website',
@@ -268,7 +268,7 @@ export default function HumiditePage() {
                 { value: 850, suffix: '+', label: 'Chantiers · réseau IPB' },
                 { value: 4.9, decimals: 1, suffix: '/5', label: 'Avis Google' },
                 { value: 72, suffix: 'h', label: 'Visite en moyenne' },
-                { value: 10, suffix: ' ans', label: 'Décennale sur les travaux' },
+                { value: 5, suffix: ' j', label: 'Rapport remis' },
               ].map((s, i) => (
                 <RevealOnScroll key={s.label} delay={i * 0.06}>
                   <div className="text-center lg:text-left lg:border-l lg:border-ipb-rule lg:pl-8">

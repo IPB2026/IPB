@@ -61,7 +61,7 @@ const faqSchema = {
       name: 'Comment éliminer définitivement les moisissures d\'une maison ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Pour éliminer définitivement les moisissures, il faut traiter la cause de l\'humidité, pas seulement nettoyer. Selon l\'origine : injection de résine hydrophobe pour les remontées capillaires, installation d\'une VMI (Ventilation par Insufflation) pour la condensation, ou cuvelage/réparation pour les infiltrations. Le traitement de l\'humidité est couvert par une garantie décennale sur les travaux.',
+        text: 'Pour éliminer définitivement les moisissures, il faut traiter la cause de l\'humidité, pas seulement nettoyer. Selon l\'origine : injection de résine hydrophobe pour les remontées capillaires, installation d\'une VMI (Ventilation par Insufflation) pour la condensation, ou cuvelage/réparation pour les infiltrations. Si des travaux s\'imposent, nous pouvons en coordonner la réalisation par des entreprises couvertes par leur garantie décennale.',
       },
     },
     {
@@ -170,7 +170,7 @@ export default function MoisissuresSantePage() {
               </div>
               <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
                 <div className="text-5xl font-black text-emerald-400">10 ans</div>
-                <div className="text-emerald-200 text-sm mt-2">de garantie décennale sur les travaux</div>
+                <div className="text-emerald-200 text-sm mt-2">de recul sur les mêmes pathologies</div>
               </div>
             </div>
           </div>
@@ -318,7 +318,7 @@ export default function MoisissuresSantePage() {
               </p>
               <ul className="text-sm text-ipb-muted space-y-2">
                 <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Solution adaptée à la cause</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Garantie décennale sur les travaux</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Rapport d'inspection documenté</li>
                 <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-400" /> Effet durable</li>
               </ul>
             </div>

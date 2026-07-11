@@ -10,8 +10,7 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title:
-    "Inspection avant achat immobilier à Toulouse · Institut IPB",
+  title: { absolute: "Inspection avant achat immobilier à Toulouse · Institut IPB" },
   description:
     "Avant de vous engager, une inspection du bâti sans lien avec le vendeur ni l'agence. Rapport remis dans vos délais de rétractation. Visite sous 72h.",
   keywords: [
@@ -36,6 +35,7 @@ export const metadata: Metadata = {
       "Une inspection du bâti avant de vous engager, sans lien avec le vendeur ni l'agence. Rapport dans vos délais de rétractation, visite sous 72h.",
     url: 'https://www.ipb-expertise.fr/expertise-avant-achat-immobilier-toulouse',
     type: 'website',
+    images: [{ url: '/images/fissure-facade-verticale.webp', width: 1200, height: 630, alt: "Inspection du bâti avant achat immobilier — relevé de façade par IPB" }],
   },
   robots: {
     index: true,

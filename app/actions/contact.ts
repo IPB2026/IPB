@@ -10,6 +10,7 @@ import { readAttribution } from '@/lib/crm/attribution-server';
 const contactFormSchema = z.object({
   name: z.string().min(2, 'Le nom doit contenir au moins 2 caractères').max(100),
   email: z.string().email('Email invalide'),
+  phone: z.string().max(20).optional().or(z.literal('')),
   subject: z.string().max(200).optional().or(z.literal('')),
   message: z.string().min(10, 'Le message doit contenir au moins 10 caractères').max(2000),
 });
@@ -31,6 +32,7 @@ export async function submitContactForm(
     const rawData = {
       name: formData.get('name') as string,
       email: formData.get('email') as string,
+      phone: (formData.get('phone') as string) ?? '',
       subject: (formData.get('subject') as string) ?? '',
       message: formData.get('message') as string,
     };
@@ -62,6 +64,7 @@ export async function submitContactForm(
               <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
                 <p><strong>Nom :</strong> ${validatedData.name}</p>
                 <p><strong>Email :</strong> <a href="mailto:${validatedData.email}">${validatedData.email}</a></p>
+                ${validatedData.phone?.trim() ? `<p><strong>Téléphone :</strong> <a href="tel:${validatedData.phone.replace(/\s/g, '')}">${validatedData.phone}</a></p>` : ''}
                 <p><strong>Sujet :</strong> ${subjectLabel}</p>
               </div>
               

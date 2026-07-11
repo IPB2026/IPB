@@ -32,8 +32,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const title = `Expert Fissures & Humidité ${quartierInfo.nom} Toulouse · Décennale 10 ans`;
-  const description = `Expert fissures et humidité ${quartierInfo.nom}, Toulouse. Diagnostic, agrafage, injection résine. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75`;
+  const title = `Expert Fissures & Humidité ${quartierInfo.nom} Toulouse · Rapport 3-5 jours`;
+  const description = `Expert fissures et humidité ${quartierInfo.nom}, Toulouse. Diagnostic, agrafage, injection résine. Rapport d'inspection sous 3 à 5 jours. ☎ 05 82 95 33 75`;
 
   return {
     title,
@@ -205,7 +205,7 @@ export default async function QuartierPage({ params }: PageProps) {
             <span className="text-ipb-orange-l">{quartierInfo.nom}</span> - Toulouse
           </h1>
           <p className="text-xl md:text-2xl text-white/70 mb-8 max-w-3xl leading-relaxed">
-            {quartierInfo.description}. Intervention rapide, diagnostic, solutions durables avec garantie décennale.
+            {quartierInfo.description}. Diagnostic instrumenté, cause identifiée, rapport d'inspection sous 3 à 5 jours.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
@@ -291,7 +291,7 @@ export default async function QuartierPage({ params }: PageProps) {
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="text-ipb-orange flex-shrink-0 mt-1" size={18} aria-hidden="true" />
-                    <span className="text-ipb-text">Garantie décennale incluse</span>
+                    <span className="text-ipb-text">Rapport d'inspection documenté</span>
                   </li>
                 </ul>
                 <Link

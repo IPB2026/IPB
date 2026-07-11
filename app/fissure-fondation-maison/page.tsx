@@ -8,7 +8,7 @@ import { Phone, ArrowRight, AlertTriangle, Home, ChevronRight, Shield, CheckCirc
 
 export const metadata: Metadata = {
   title: 'Fissure Fondation Maison · Agrafage Structurel · Toulouse',
-  description: "Fissures fondations ? Diagnostic et agrafage structurel à Toulouse. Comparatif des solutions du marché. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
+  description: "Fissures fondations ? Diagnostic et agrafage structurel à Toulouse. Comparatif des solutions du marché. Rapport d'inspection sous 3 à 5 jours. ☎ 05 82 95 33 75",
   keywords: ['fissure fondation', 'tassement fondation', 'reprise en sous-oeuvre', 'micropieux', 'agrafage fissures'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/fissure-fondation-maison' },
 };
@@ -78,7 +78,7 @@ const faqSchema = {
       name: 'Combien coûte la réparation de fondations fissurées ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'La solution dépend du diagnostic : l\'agrafage structurel convient à 85% des cas. Les micropieux sont réservés aux cas graves. La résine expansive s\'adresse aux tassements légers. Toutes ces solutions sont couvertes par une garantie décennale de 10 ans.',
+        text: 'La solution dépend du diagnostic : l\'agrafage structurel convient à 85% des cas. Les micropieux sont réservés aux cas graves. La résine expansive s\'adresse aux tassements légers. Lorsque des travaux s\'imposent, ils sont réalisés par des entreprises couvertes par leur garantie décennale.',
       },
     },
     {
@@ -86,7 +86,7 @@ const faqSchema = {
       name: 'L\'agrafage structurel est-il efficace pour les fissures de fondation ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Oui, l\'agrafage structurel est la solution recommandée pour 85% des cas de fissures de fondation. L\'intervention est rapide (3 à 5 jours), ne nécessite pas de terrassement lourd et bénéficie d\'une garantie décennale de 10 ans. Il est particulièrement adapté aux maisons individuelles en Occitanie.',
+        text: 'Oui, l\'agrafage structurel est la solution recommandée pour 85% des cas de fissures de fondation. L\'intervention est rapide (3 à 5 jours), ne nécessite pas de terrassement lourd et est réalisée par des entreprises couvertes par leur garantie décennale. Il est particulièrement adapté aux maisons individuelles en Occitanie.',
       },
     },
     {
@@ -187,7 +187,7 @@ export default function FissureFondationPage() {
               </div>
               <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20 text-center">
                 <div className="text-5xl font-black text-cyan-400">10 ans</div>
-                <div className="text-white/70 text-sm mt-2">garantie décennale</div>
+                <div className="text-white/70 text-sm mt-2">de recul sur ces pathologies</div>
               </div>
             </div>
           </div>
@@ -341,7 +341,7 @@ export default function FissureFondationPage() {
             Vos fondations méritent un expert.
           </h2>
           <p className="text-xl text-ipb-orange-l mb-8">
-            Diagnostic expert sur site • Devis • Garantie décennale
+            Diagnostic expert sur site • Rapport 3-5 jours
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="group bg-white text-ipb-orange px-10 py-5 rounded-2xl font-bold text-lg hover:bg-ipb-stone flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">

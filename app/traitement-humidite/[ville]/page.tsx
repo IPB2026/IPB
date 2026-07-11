@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
 
   return {
     title: `Traitement Humidité ${villeNom} ${deptCode} · Garantie 30 ans`,
-    description: `Traitement humidité à ${villeNom} : injection résine, cuvelage, VMI, drainage. Garantie 30 ans. Décennale 10 ans. ☎ 05 82 95 33 75`,
+    description: `Traitement humidité à ${villeNom} : injection résine, cuvelage, VMI, drainage. Garantie 30 ans. Rapport d'inspection sous 3 à 5 jours. ☎ 05 82 95 33 75`,
     keywords: [
       `traitement humidité ${ville}`,
       `injection résine ${ville}`,
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     alternates: { canonical: `https://www.ipb-expertise.fr/traitement-humidite/${ville}` },
     openGraph: {
       title: `Traitement Humidité ${villeNom} · IPB`,
-      description: `Injection résine, cuvelage, VMI à ${villeNom}. Garantie 30 ans. Décennale 10 ans.`,
+      description: `Injection résine, cuvelage, VMI à ${villeNom}. Garantie 30 ans. Rapport d'inspection sous 3 à 5 jours.`,
       url: `https://www.ipb-expertise.fr/traitement-humidite/${ville}`,
       type: 'website',
       images: [{ url: '/images/humidite-avant-apres.webp', width: 1200, height: 630, alt: `Traitement humidité ${villeNom}` }],
@@ -66,7 +66,7 @@ export default async function TraitementHumiditeVillePage({ params }: { params: 
         ville={ville}
         serviceTitle="Traitement de l'humidité"
         eyebrowLabel="Travaux · Humidité du bâti"
-        description={`L'institut diagnostique l'humidité à ${villeNom} et conçoit la solution adaptée — injection de résine hydrophobe pour les remontées capillaires, cuvelage pour les caves, ventilation pour la condensation. Travaux exécutés par les équipes de réalisation du réseau IPB sous garantie décennale 10 ans.`}
+        description={`L'institut diagnostique l'humidité à ${villeNom} et conçoit la solution adaptée — injection de résine hydrophobe pour les remontées capillaires, cuvelage pour les caves, ventilation pour la condensation. Si un traitement s'impose, nous pouvons en coordonner la réalisation par des entreprises couvertes par leur garantie décennale.`}
         heroImage="/images/humidite-avant-apres.webp"
         heroAlt={`Traitement humidité à ${villeNom} — chantier du réseau IPB`}
         methodHref="/expertise/humidite"

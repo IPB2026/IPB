@@ -46,7 +46,7 @@ export default function AgencesImmobilieresPage() {
               <span className="block mt-2 text-white">Un rapport d'inspection sous 3 à 5 jours ouvrés.</span>
             </h1>
             <p className="text-xl text-white/70 mb-8 max-w-3xl">
-              L'acquéreur a vu une fissure et souhaite « réfléchir ». Le compromis est suspendu à un rapport. Visite sous 48 heures, rapport reconnu par les assurances sous 3 à 5 jours ouvrés, chiffrage des éventuels travaux. La transaction reprend sur des bases techniques.
+              L'acquéreur a vu une fissure et souhaite « réfléchir ». Le compromis est suspendu à un rapport. Visite sous 48 heures, rapport d'inspection documenté sous 3 à 5 jours ouvrés. La transaction reprend sur des bases techniques.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact" className="bg-ipb-orange hover:bg-ipb-orange text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
@@ -108,7 +108,7 @@ export default function AgencesImmobilieresPage() {
               {[
                 { num: 1, title: 'Vous nous appelez', desc: 'Décrivez la situation au 05 82 95 33 75. Nous validons qu\'elle relève de notre périmètre et programmons la visite.' },
                 { num: 2, title: 'Visite sous 48h', desc: 'Notre expert se déplace, mesure les fissures (fissuromètre), photographie, écoute les inquiétudes de l\'acquéreur si nécessaire.' },
-                { num: 3, title: 'Rapport sous 3 à 5 jours ouvrés', desc: 'Document PDF reconnu par les assurances : nature des désordres, gravité, recommandations, chiffrage. Vous le transmettez à l\'acquéreur et au notaire.' },
+                { num: 3, title: 'Rapport sous 3 à 5 jours ouvrés', desc: 'Document PDF documenté : nature des désordres, gravité, recommandations, préconisations. Vous le transmettez à l\'acquéreur et au notaire.' },
                 { num: 4, title: 'Vente débloquée', desc: 'Soit le rapport rassure (la fissure est cosmétique), soit il chiffre des travaux que vous intégrez à la négociation. Dans 80% des cas, la vente repart.' },
               ].map(({ num, title, desc }) => (
                 <div key={num} className="bg-white border border-ipb-rule rounded-2xl p-6 flex gap-5 items-start shadow-sm">

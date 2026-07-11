@@ -11,7 +11,7 @@ import { AlertTriangle, ArrowRight, Phone, Calendar, MapPin, Clock, FileText, Ch
 
 const ARRETE_DATE = "Janvier 2026"; // Mois de l'arrêté
 const PUBLICATION_JO = "15 janvier 2026"; // Date publication Journal Officiel
-const DELAI_DECLARATION = "25 janvier 2026"; // Date limite déclaration (10 jours après JO)
+const DELAI_DECLARATION = "14 février 2026"; // Date limite déclaration (30 jours après JO — délai légal depuis le 1er janvier 2023)
 
 const COMMUNES_31 = [
   "Toulouse", "Colomiers", "Tournefeuille", "Blagnac", "Muret",
@@ -131,7 +131,7 @@ export default function ArreteSecheresse2026Page() {
               <Clock className="text-amber-600" size={32} />
               <div>
                 <p className="font-bold text-ipb-text">Délai de déclaration</p>
-                <p className="text-amber-700">10 jours après publication au Journal Officiel</p>
+                <p className="text-amber-700">30 jours après publication au Journal Officiel</p>
               </div>
             </div>
             <div className="text-center md:text-right">
@@ -160,7 +160,7 @@ export default function ArreteSecheresse2026Page() {
             <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-xl my-8 not-prose">
               <h3 className="font-bold text-red-900 mb-2">⚠️ Attention au délai !</h3>
               <p className="text-red-800">
-                Vous avez <strong>10 jours</strong> à partir de la publication au Journal Officiel 
+                Vous avez <strong>30 jours</strong> à partir de la publication au Journal Officiel 
                 ({PUBLICATION_JO}) pour déclarer votre sinistre à votre assurance. 
                 <strong> Passé ce délai, votre demande pourra être refusée.</strong>
               </p>

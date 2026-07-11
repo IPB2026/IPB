@@ -18,8 +18,8 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
   const villeNom = villeData.nom;
 
   return {
-    title: `Expert Humidité ${villeNom} ${deptCode} · Décennale 10 ans`,
-    description: `Traitement humidité à ${villeNom} : diagnostic, injection résine, cuvelage. Décennale 10 ans dédiée. ☎ 05 82 95 33 75`,
+    title: `Expert Humidité ${villeNom} ${deptCode} · Rapport 3-5 jours`,
+    description: `Traitement humidité à ${villeNom} : diagnostic, injection résine, cuvelage. Rapport d'inspection sous 3 à 5 jours. ☎ 05 82 95 33 75`,
     keywords: [
       `expert humidité ${ville}`,
       `diagnostic humidité ${ville}`,
@@ -31,8 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     ],
     alternates: { canonical: `https://www.ipb-expertise.fr/expert-humidite/${ville}` },
     openGraph: {
-      title: `Expert Humidité ${villeNom} · Décennale 10 ans · IPB`,
-      description: `Diagnostic et traitement humidité à ${villeNom} : injection résine, cuvelage. Décennale 10 ans dédiée.`,
+      title: `Expert Humidité ${villeNom} · Rapport 3-5 jours · IPB`,
+      description: `Diagnostic et traitement humidité à ${villeNom} : injection résine, cuvelage. Rapport d'inspection sous 3 à 5 jours.`,
       url: `https://www.ipb-expertise.fr/expert-humidite/${ville}`,
       type: 'website',
       images: [{ url: '/images/humidite-avant-apres.webp', width: 1200, height: 630, alt: `Expert humidité ${villeNom}` }],
@@ -72,14 +72,14 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
         ville={ville}
         serviceTitle="Diagnostic et traitement de l'humidité"
         eyebrowLabel="Expertise · Humidité du bâti"
-        description={`Notre institut intervient à ${villeNom} pour identifier la cause de l'humidité (remontées capillaires, condensation, infiltration, cave humide) et préconiser le traitement adapté. Hygromètre, caméra thermique, rapport reconnu par les assurances.`}
+        description={`Notre institut intervient à ${villeNom} pour identifier la cause de l'humidité (remontées capillaires, condensation, infiltration, cave humide) et préconiser le traitement adapté. Hygromètre, caméra thermique, rapport d'inspection documenté.`}
         heroImage="/images/humidite-avant-apres.webp"
         heroAlt={`Diagnostic humidité à ${villeNom} — Institut IPB`}
         methodHref="/expertise/humidite"
         contextField={villeData.specificitesHumidite ? 'specificitesHumidite' : undefined}
         dossierField="dossierTypeHumidite"
         relatedCards={[
-          { href: '/expertise/humidite', titre: 'Notre méthode', desc: "Hygromètre, caméra thermique, rapport reconnu par les assurances." },
+          { href: '/expertise/humidite', titre: 'Notre méthode', desc: "Hygromètre, caméra thermique, rapport d'inspection documenté." },
           { href: '/blog/humidite-remontee-capillaire-solution', titre: 'Remontées capillaires', desc: "Comprendre et traiter ce désordre fréquent en Occitanie." },
           { href: '/blog/condensation-ou-infiltration', titre: 'Condensation ou infiltration ?', desc: "Identifier la bonne cause avant tout traitement." },
         ]}

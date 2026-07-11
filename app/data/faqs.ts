@@ -18,7 +18,7 @@ export const fissureFaq: FaqItem[] = [
   },
   {
     question: "Puis-je vendre ma maison après réparation ?",
-    answer: "Absolument, et c'est même un atout. Une maison fissurée subit une décote de 20 à 30%. Une maison réparée sous garantie décennale rassure les acheteurs car le problème est traité et assuré. Nous vous remettons une attestation de garantie transmissible."
+    answer: "Absolument, et c'est même un atout. Une maison fissurée subit une décote de 20 à 30 %. Une maison dont le désordre a été diagnostiqué, traité et documenté rassure les acheteurs. Le rapport d'inspection et les garanties des entreprises intervenues se transmettent à l'acheteur."
   },
   {
     question: "Quelle est la durée des travaux ?",
@@ -41,8 +41,8 @@ export const fissureFaq: FaqItem[] = [
     answer: "Tout dépend de son activité. Une fissure stable et fine peut être simplement surveillée. Une fissure qui s'élargit, en escalier ou horizontale, signale un mouvement actif qu'il faut diagnostiquer rapidement — non pour vous alarmer, mais pour éviter qu'un désordre simple ne devienne structurel. Notre rôle est de vous dire honnêtement dans quel cas vous êtes."
   },
   {
-    question: "Votre rapport est-il reconnu par les assurances ?",
-    answer: "Notre rapport est un avis d'expertise technique : il est utilisé comme pièce dans les dossiers d'assurance et de catastrophe naturelle. Il ne s'agit ni d'une expertise judiciaire (qui relève d'un expert près les tribunaux), ni d'une note de calcul de bureau d'études. Sa valeur tient à la rigueur du diagnostic : mesures, photos, cause identifiée, préconisations."
+    question: "Votre rapport sert-il pour un dossier d'assurance ?",
+    answer: "Le rapport d'inspection IPB est un document technique complet : mesures instrumentées, photographies datées, cause identifiée, préconisations. Il sert vos démarches auprès d'un assureur, d'un syndic ou d'un vendeur. Pour une procédure judiciaire ou un dossier d'assurance contesté, un rapport de bureau d'études ou d'expert judiciaire peut être requis : nous vous orientons alors, votre dossier en main."
   },
   {
     question: "Vais-je me faire vendre des travaux inutiles ?",
@@ -69,7 +69,7 @@ export const humidityFaq: FaqItem[] = [
   },
   {
     question: "Le traitement est-il garanti ?",
-    answer: "Oui, nos traitements par injection bénéficient d'une garantie d'efficacité de 30 ans sur la barrière étanche, couverte par notre assurance décennale."
+    answer: "Les traitements par injection réalisés par les entreprises que nous coordonnons bénéficient de garanties du fabricant sur la barrière étanche, en plus de la garantie décennale propre à chaque entreprise. Les conditions précises figurent au devis de l'entreprise."
   },
   {
     question: "Comment savez-vous d'où vient l'humidité ?",

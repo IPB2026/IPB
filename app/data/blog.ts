@@ -2287,7 +2287,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>Comment ça marche ?</h3>
       <ol>
         <li><strong>Vérifiez le classement</strong> : Rendez-vous sur Géorisques.gouv.fr et vérifiez si votre commune a été classée Cat-Nat pour les années concernées (2022-2023 pour la Haute-Garonne).</li>
-        <li><strong>Déclarez le sinistre</strong> : Contactez votre assurance sous 10 jours après la publication de l'arrêté Cat-Nat au Journal Officiel.</li>
+        <li><strong>Déclarez le sinistre</strong> : Contactez votre assurance sous 30 jours après la publication de l'arrêté Cat-Nat au Journal Officiel.</li>
         <li><strong>Fournissez un diagnostic</strong> : Un expert indépendant doit constater les dégâts et établir un rapport.</li>
         <li><strong>Franchise</strong> : une franchise légale reste à votre charge. Le reste est pris en charge par l'assurance (plafond variable selon les contrats).</li>
       </ol>
@@ -2867,8 +2867,8 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>Comment reconnaître un traitement raté</h3>
       <p>Après une injection professionnelle, le salpêtre existant doit être gratté, et <strong>aucun nouveau dépôt ne doit apparaître dans les 12 mois</strong> suivants. Si vous constatez de la poudre blanche en dessous de la ligne d&apos;injection, le traitement a fonctionné (l&apos;eau est bloquée en dessous). Si elle apparaît <strong>au-dessus</strong> de la ligne, il y a un problème.</p>
 
-      <h3>La garantie IPB : 30 ans de tranquillité</h3>
-      <p>Chez IPB, notre <a href="/expertise/humidite" class="text-orange-600 underline hover:text-orange-700">traitement par injection de résine</a> est garanti <strong>30 ans sur la barrière étanche</strong>. Cette garantie couvre la réapparition de remontées capillaires dans la zone traitée. Si du salpêtre réapparaît au-dessus de la ligne d&apos;injection pendant cette période, nous réintervenons <strong>sans frais</strong>. Cette garantie est transmissible en cas de revente du bien.</p>
+      <h3>Les garanties du traitement</h3>
+      <p>Le <a href="/expertise/humidite" class="text-orange-600 underline hover:text-orange-700">traitement par injection de résine</a>, lorsqu'il est réalisé par les entreprises que nous coordonnons, est couvert par une garantie fabricant sur la barrière étanche (souvent longue durée) en plus de la garantie décennale propre à l'entreprise. Cette garantie couvre la réapparition de remontées capillaires dans la zone traitée. Si du salpêtre réapparaît au-dessus de la ligne d&apos;injection pendant cette période, nous réintervenons <strong>sans frais</strong>. Cette garantie est transmissible en cas de revente du bien.</p>
 
       <h2>Salpêtre en location : qui paye ?</h2>
 
@@ -5478,7 +5478,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>Comment fonctionne la prise en charge ?</h3>
       <ol>
         <li><strong>Arrêté de catastrophe naturelle</strong> publié au Journal Officiel</li>
-        <li><strong>Déclaration</strong> à votre assureur sous 10 jours</li>
+        <li><strong>Déclaration</strong> à votre assureur sous 30 jours</li>
         <li><strong>Expertise</strong> par l'assurance pour évaluer les dégâts</li>
         <li><strong>Indemnisation</strong> (une franchise légale reste à votre charge)</li>
       </ol>
@@ -5625,8 +5625,8 @@ const blogPosts: { [key: string]: BlogPost } = {
     ],
     content: `
       <div class="mb-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
-        <p class="font-bold text-red-900 mb-2">Attention : Vous avez 10 jours après la publication de l'arrêté</p>
-        <p class="text-red-800">Le délai pour déclarer votre sinistre CAT-NAT sécheresse à votre assurance est de <strong>10 jours</strong> après la parution de l'arrêté au Journal Officiel. Passé ce délai, votre dossier peut être refusé. Agissez maintenant.</p>
+        <p class="font-bold text-red-900 mb-2">Attention : Vous avez 30 jours après la publication de l'arrêté</p>
+        <p class="text-red-800">Le délai pour déclarer votre sinistre CAT-NAT sécheresse à votre assurance est de <strong>30 jours</strong> après la parution de l'arrêté au Journal Officiel. Passé ce délai, votre dossier peut être refusé. Agissez maintenant.</p>
       </div>
 
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-500 rounded-r-lg">
@@ -5703,7 +5703,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h2>Étape 2 : Déclarer le sinistre à votre assurance</h2>
 
       <h3>Le délai de 10 jours : ne le dépassez pas</h3>
-      <p>Dès la publication de l'arrêté au Journal Officiel, vous disposez de <strong>10 jours</strong> pour envoyer votre déclaration de sinistre à votre assureur. Ce délai est fixé par la loi (article L. 125-2 du Code des assurances).</p>
+      <p>Dès la publication de l'arrêté au Journal Officiel, vous disposez de <strong>30 jours</strong> pour envoyer votre déclaration de sinistre à votre assureur. Ce délai est fixé par la loi (article L. 125-2 du Code des assurances).</p>
 
       <div class="my-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
         <p class="font-bold text-amber-800">Conseil IPB : Envoyez votre déclaration en recommandé avec accusé de réception. En cas de litige, vous aurez la preuve de votre envoi dans les délais.</p>
@@ -5923,7 +5923,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>La procédure CAT-NAT sécheresse est votre droit. Mais pour en bénéficier pleinement, vous devez :</p>
       <ol>
-        <li><strong>Respecter les délais</strong> de déclaration (10 jours)</li>
+        <li><strong>Respecter les délais</strong> de déclaration (30 jours)</li>
         <li><strong>Constituer un dossier solide</strong> avec un rapport d'expert indépendant</li>
         <li><strong>Ne pas reboucher</strong> les fissures avant l'expertise</li>
         <li><strong>Ne pas accepter</strong> une indemnisation trop basse sans contester</li>
@@ -6038,7 +6038,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>Attention cependant :</p>
       <ul>
-        <li>Vous devez déclarer dans les <strong>10 jours</strong> suivant l'arrêté</li>
+        <li>Vous devez déclarer dans les <strong>30 jours</strong> suivant l'arrêté</li>
         <li>L'assureur enverra son propre expert — qui défend les intérêts de l'assurance</li>
         <li>Un <strong>rapport d'expert indépendant</strong> (comme celui d'IPB) renforce considérablement votre dossier et permet souvent d'obtenir une indemnisation plus juste</li>
       </ul>
@@ -6116,7 +6116,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Si les fissures sont causées par un <strong>mouvement de terrain lié à la sécheresse</strong> (retrait-gonflement des argiles), elles relèvent du régime des catastrophes naturelles. Pour être indemnisé :</p>
       <ol>
         <li>Votre commune doit avoir fait l&apos;objet d&apos;un <strong>arrêté de catastrophe naturelle</strong> (publication au Journal Officiel)</li>
-        <li>Vous devez déclarer le sinistre à votre assureur dans les <strong>10 jours</strong> suivant la publication de l&apos;arrêté</li>
+        <li>Vous devez déclarer le sinistre à votre assureur dans les <strong>30 jours</strong> suivant la publication de l&apos;arrêté</li>
         <li>Un expert d&apos;assurance évaluera les dégâts</li>
       </ol>
       <p><strong>Franchise légale</strong> : une franchise reste à votre charge pour les mouvements de terrain liés à la sécheresse.</p>
@@ -6261,7 +6261,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h2>Comment financer vos travaux d'agrafage ?</h2>
 
       <h3>L'indemnisation CAT-NAT sécheresse</h3>
-      <p>Si votre commune a fait l'objet d'un <strong>arrêté de catastrophe naturelle sécheresse</strong>, votre assurance habitation couvre les travaux de réparation. Une franchise légale reste à votre charge. Attention : vous devez déclarer dans les <strong>10 jours</strong> suivant la publication de l'arrêté au Journal Officiel.</p>
+      <p>Si votre commune a fait l'objet d'un <strong>arrêté de catastrophe naturelle sécheresse</strong>, votre assurance habitation couvre les travaux de réparation. Une franchise légale reste à votre charge. Attention : vous devez déclarer dans les <strong>30 jours</strong> suivant la publication de l'arrêté au Journal Officiel.</p>
 
       <p>Un rapport d'expert indépendant (comme celui d'IPB) est un atout majeur pour <strong>maximiser votre indemnisation</strong>. L'expert d'assurance défend les intérêts de la compagnie — le nôtre défend les vôtres.</p>
 
@@ -6361,7 +6361,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Oui, si votre commune est reconnue en <a href="/fissure-secheresse-indemnisation" class="text-orange-600 underline hover:text-orange-700">catastrophe naturelle sécheresse</a>. Une franchise légale reste à votre charge. Le reste est pris en charge par votre assurance habitation. Un rapport d&apos;expert indépendant (comme celui d&apos;IPB) augmente significativement le montant de l&apos;indemnisation par rapport à l&apos;évaluation de l&apos;expert d&apos;assurance.</p>
 
       <h3>Peut-on payer en plusieurs fois ?</h3>
-      <p>Oui. IPB propose un <strong>échelonnement en 3 à 4 versements</strong> sans frais pour les chantiers d'un certain montant. Un premier acompte de 30% au démarrage, le solde réparti sur la durée du chantier et après réception.</p>
+      <p>Les modalités de paiement des travaux relèvent de l'entreprise qui les réalise : la plupart proposent un échelonnement, précisé sur leur devis. Interrogez-les avant de signer.</p>
 
       <h3>L&apos;agrafage abîme-t-il la façade ?</h3>
       <p>Non. Les saignées sont réalisées dans les joints de maçonnerie. Après scellement des agrafes et rebouchage au mortier technique, la finition est quasi invisible. Un <strong>enduit de ravalement</strong> peut ensuite couvrir l&apos;ensemble pour un résultat esthétique parfait.</p>
@@ -6557,7 +6557,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <div class="my-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
         <p class="font-bold text-red-900 mb-2">Attention aux pièges de délai</p>
         <ul class="list-disc ml-6 text-red-800 space-y-2">
-          <li><strong>Le délai Cat-Nat de 10 jours est souvent méconnu</strong>. Beaucoup de propriétaires laissent passer l&apos;arrêté sans réagir et perdent leur droit à indemnisation.</li>
+          <li><strong>Le délai Cat-Nat de 30 jours est souvent méconnu</strong>. Beaucoup de propriétaires laissent passer l&apos;arrêté sans réagir et perdent leur droit à indemnisation.</li>
           <li><strong>La garantie de parfait achèvement expire vite</strong> : notez chaque défaut sur un carnet dès l&apos;emménagement et envoyez une LRAR avant le premier anniversaire.</li>
           <li><strong>Le point de départ de la décennale est la réception</strong>, pas la livraison. Si vous n&apos;avez pas signé de PV de réception, faites-vous assister par un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">expert indépendant</a>.</li>
         </ul>
@@ -6826,8 +6826,8 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>Étape 1 : Vérifier que votre commune est reconnue</h3>
       <p>Consultez le site <strong>Géorisques</strong> (<a href="https://www.georisques.gouv.fr" target="_blank" rel="noopener noreferrer" class="text-orange-600 underline hover:text-orange-700">georisques.gouv.fr</a>) ou le Journal Officiel. Votre commune doit avoir fait l'objet d'un <strong>arrêté de reconnaissance de catastrophe naturelle</strong> pour la période où vos fissures sont apparues. En Haute-Garonne, les arrêtés sécheresse 2022 et 2023 couvrent la majorité des communes.</p>
 
-      <h3>Étape 2 : Déclarer le sinistre dans les 10 jours</h3>
-      <p>Vous avez <strong>10 jours</strong> après la publication de l'arrêté au Journal Officiel pour déclarer le sinistre à votre assurance. Passé ce délai, votre dossier peut être rejeté. Envoyez un <strong>courrier recommandé avec accusé de réception</strong> — jamais un simple email ou appel.</p>
+      <h3>Étape 2 : Déclarer le sinistre dans les 30 jours</h3>
+      <p>Vous avez <strong>30 jours</strong> après la publication de l'arrêté au Journal Officiel pour déclarer le sinistre à votre assurance. Passé ce délai, votre dossier peut être rejeté. Envoyez un <strong>courrier recommandé avec accusé de réception</strong> — jamais un simple email ou appel.</p>
 
       <div class="my-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
         <p class="font-bold text-orange-900 mb-2">Délai de 10 jours : ne le ratez pas</p>
@@ -6885,7 +6885,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>L'expert d'assurance sous-évalue nettement le coût des travaux par rapport à la réalité. <strong>Votre parade</strong> : obtenir 2 ou 3 devis d'entreprises spécialisées (pas de généralistes) et un rapport d'expert indépendant chiffrant précisément les travaux nécessaires.</p>
 
       <h3>4. "Votre déclaration est hors délai"</h3>
-      <p>Vous avez dépassé les 10 jours. <strong>Votre parade</strong> : les tribunaux sont souvent indulgents si le dépassement est raisonnable et que vous pouvez justifier d'un motif (ignorance de l'arrêté, hospitalisation, etc.). Consultez un avocat spécialisé.</p>
+      <p>Vous avez dépassé les 30 jours. <strong>Votre parade</strong> : les tribunaux sont souvent indulgents si le dépassement est raisonnable et que vous pouvez justifier d'un motif (ignorance de l'arrêté, hospitalisation, etc.). Consultez un avocat spécialisé.</p>
 
       <h3>5. "La commune n'est pas reconnue CAT-NAT"</h3>
       <p>Votre commune n'a pas fait l'objet d'un arrêté. <strong>Votre parade</strong> : le maire peut faire une demande de réexamen auprès de la préfecture. Mobilisez vos voisins qui ont le même problème — les demandes collectives ont plus de poids.</p>
@@ -6951,7 +6951,7 @@ const blogPosts: { [key: string]: BlogPost } = {
             </tr>
             <tr class="bg-slate-50">
               <td class="border border-slate-300 p-3">Déclaration de sinistre (CAT-NAT)</td>
-              <td class="border border-slate-300 p-3 text-center">10 jours après publication de l'arrêté</td>
+              <td class="border border-slate-300 p-3 text-center">30 jours après publication de l'arrêté</td>
             </tr>
             <tr>
               <td class="border border-slate-300 p-3">Visite de l'expert d'assurance</td>

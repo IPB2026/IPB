@@ -24,7 +24,7 @@ const etapesIndemnisation = [
   {
     num: '2',
     titre: 'Déclaration à l\'assurance',
-    description: 'Vous avez 10 jours après publication de l\'arrêté pour déclarer le sinistre.',
+    description: 'Vous avez 30 jours après publication de l\'arrêté pour déclarer le sinistre.',
     delai: '10 jours max',
     icon: '📨',
   },
@@ -65,7 +65,7 @@ const faqSchema = {
       name: 'Quel est le délai pour déclarer des fissures sécheresse à l\'assurance ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Vous avez exactement 10 jours après la publication de l\'arrêté de catastrophe naturelle au Journal Officiel pour déclarer le sinistre à votre assurance. Passé ce délai, votre demande d\'indemnisation peut être rejetée. Vérifiez régulièrement sur Légifrance si votre commune a été reconnue en état de catastrophe naturelle sécheresse.',
+        text: 'Vous avez 30 jours après la publication de l\'arrêté de catastrophe naturelle au Journal Officiel pour déclarer le sinistre à votre assurance. Passé ce délai, votre demande d\'indemnisation peut être rejetée. Vérifiez régulièrement sur Légifrance si votre commune a été reconnue en état de catastrophe naturelle sécheresse.',
       },
     },
     {
@@ -137,9 +137,9 @@ export default function FissureSecheressePage() {
                 <div className="flex items-start gap-4">
                   <AlertTriangle className="w-8 h-8 text-red-400 flex-shrink-0" />
                   <div>
-                    <h3 className="font-bold text-white mb-2">⏰ Délai critique : 10 jours</h3>
+                    <h3 className="font-bold text-white mb-2">⏰ Délai de déclaration : 30 jours</h3>
                     <p className="text-red-100">
-                      Après publication de l'arrêté CAT-NAT, vous n'avez que <strong className="text-white">10 jours</strong> pour 
+                      Après publication de l'arrêté CAT-NAT, vous avez <strong className="text-white">30 jours</strong> pour 
                       déclarer le sinistre à votre assurance. Passé ce délai, c'est trop tard.
                     </p>
                   </div>

@@ -10,7 +10,7 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Notre méthode de coordination · Sept étapes · IPB',
+  title: { absolute: 'Notre méthode de coordination · Sept étapes · IPB' },
   description:
     "Comment l'institut coordonne la lecture d'un bâti, des premiers échanges à la remise du rapport d'inspection. Sept étapes — premier contact, pré-diagnostic à distance, visite par un inspecteur IPB, analyse, calcul technique avec BET partenaire, rédaction, remise. Méthode IPB, Toulouse.",
   keywords: [

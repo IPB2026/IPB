@@ -338,13 +338,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // ════════════════════════════════════════════════════════════
   const priorityVillesSlugs = ['colomiers', 'muret', 'montauban', 'auch'];
 
-  // Toulouse est exclu : la canonique est /expert-fissures-toulouse-31 (page statique).
-  // Le middleware redirige /expert-fissures/toulouse → /expert-fissures-toulouse-31 en 301.
+  // Toulouse et Montauban sont exclus : leurs canoniques sont les pages statiques
+  // /expert-fissures-toulouse-31 et /expert-fissures-montauban-82 (le middleware
+  // redirige les variantes /expert-fissures/{ville} en 301 — un sitemap ne doit
+  // pas lister d'URL qui redirige).
   const indexableVilles = villeSlugs.filter(
     (ville) => ville !== 'toulouse' && isVillePrioritaire(ville)
   );
+  // Fissures : Montauban aussi exclu (page statique dédiée /expert-fissures-montauban-82,
+  // le middleware 301 la variante dynamique). L'humidité, elle, garde Montauban :
+  // /expert-humidite/montauban est la seule page humidité de la ville.
+  const indexableVillesFissures = indexableVilles.filter((ville) => ville !== 'montauban');
 
-  const expertFissuresPages: MetadataRoute.Sitemap = indexableVilles.map((ville) => ({
+  const expertFissuresPages: MetadataRoute.Sitemap = indexableVillesFissures.map((ville) => ({
     url: `${baseUrl}/expert-fissures/${ville}`,
     lastModified: contentDate,
     changeFrequency: 'monthly' as const,

@@ -44,7 +44,7 @@ const homePersonas: PersonaCard[] = [
 // Le schéma Organization (entité de marque) est émis site-wide dans app/layout.tsx.
 
 export const metadata: Metadata = {
-  title: "Diagnostic fissures et humidité à Toulouse · Institut IPB",
+  title: { absolute: "Diagnostic fissures et humidité à Toulouse · Institut IPB" },
   description: "Institut de diagnostic en pathologie du bâtiment à Toulouse : fissures, humidité, inspection avant achat. Un rapport clair, remis sous 3 à 5 jours.",
   keywords: [
     'expert fissures Toulouse',

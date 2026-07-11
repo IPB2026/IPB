@@ -7,8 +7,8 @@ import { Footer } from '@/components/home/Footer';
 import { MapPin, ArrowRight, Phone, CheckCircle, AlertTriangle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures & Humidité Aude 11 · Carcassonne · Décennale 10 ans',
-  description: "Expert fissures et humidité Aude (11) : Carcassonne, Narbonne, Castelnaudary. Zone RGA. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
+  title: 'Expert Fissures & Humidité Aude 11 · Carcassonne · Rapport 3-5 jours',
+  description: "Expert fissures et humidité Aude (11) : Carcassonne, Narbonne, Castelnaudary. Zone RGA. Rapport d'inspection sous 3 à 5 jours. ☎ 05 82 95 33 75",
   keywords: ['expert fissures aude', 'expert humidité 11', 'fissures carcassonne', 'humidité narbonne'],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/departements/aude',

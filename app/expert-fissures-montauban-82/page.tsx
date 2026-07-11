@@ -11,8 +11,8 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { StatCounter } from '@/components/ui/StatCounter';
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures Montauban 82 · RGA Sécheresse · Décennale 10 ans',
-  description: "Spécialiste fissures Montauban et 82, zone à risque RGA. 234 diagnostics. Agrafage structurel. Décennale 10 ans sur les travaux. ☎ 05 82 95 33 75",
+  title: 'Expert Fissures Montauban 82 · RGA Sécheresse · Rapport 3-5 jours',
+  description: "Spécialiste fissures Montauban et 82, zone à risque RGA. 234 diagnostics. Agrafage structurel. Rapport d'inspection sous 3 à 5 jours. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures montauban',
     'expertise fissures montauban',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.ipb-expertise.fr/expert-fissures-montauban-82' },
   openGraph: {
     title: 'Expert Fissures Montauban · RGA Sécheresse · IPB',
-    description: "Spécialiste fissures Tarn-et-Garonne. Diagnostic IPB, agrafage exécuté par les équipes du réseau IPB sous décennale 10 ans. Rapport reconnu par les assurances. Réseau IPB actif depuis 2019.",
+    description: "Spécialiste fissures Tarn-et-Garonne. Diagnostic IPB instrumenté, rapport d'inspection sous 3 à 5 jours. Réseau IPB actif depuis 2019.",
     url: 'https://www.ipb-expertise.fr/expert-fissures-montauban-82',
     type: 'website',
     images: [{
@@ -54,7 +54,7 @@ const communesTarnEtGaronne = [
 const faqItems = [
   {
     question: "Comment se déroule une expertise fissures à Montauban ?",
-    answer: "Notre institut se déplace sur site avec fissuromètre, niveau laser et caméra thermique si nécessaire. Nous mesurons l'évolution, identifions la cause (sécheresse, tassement différentiel, défaut de chaînage) et rédigeons un rapport écrit sous 3 à 5 jours ouvrés. Ce rapport est reconnu par les assurances.",
+    answer: "Notre institut se déplace sur site avec fissuromètre, niveau laser et caméra thermique si nécessaire. Nous mesurons l'évolution, identifions la cause (sécheresse, tassement différentiel, défaut de chaînage) et rédigeons un rapport écrit sous 3 à 5 jours ouvrés. Ce rapport documenté sert vos démarches auprès de votre assureur.",
   },
   {
     question: "Intervenez-vous sur tout le Tarn-et-Garonne ?",
@@ -155,7 +155,7 @@ export default function ExpertFissuresMontaubanPage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[620px]">
-                  Institut IPB — pathologie du bâtiment. Réseau IPB actif sur tout le Tarn-et-Garonne depuis 2019. Diagnostic instrumenté, identification de la cause et préconisations claires. Si des travaux sont nécessaires, orientation vers des entreprises membres du réseau IPB. Nos rapports sont reconnus par les assurances.
+                  Institut IPB — pathologie du bâtiment. Réseau IPB actif sur tout le Tarn-et-Garonne depuis 2019. Diagnostic instrumenté, identification de la cause et préconisations claires. Si des travaux sont nécessaires, nous pouvons en coordonner la réalisation. Nos rapports documentés servent vos démarches d'assurance.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.18}>
@@ -219,7 +219,7 @@ export default function ExpertFissuresMontaubanPage() {
                 { value: 234, suffix: '+', label: 'Diagnostics réalisés', sublabel: 'sur le 82' },
                 { value: 48, suffix: ' h', label: 'Délai de visite', sublabel: 'en moyenne' },
                 { value: 4.9, decimals: 1, suffix: '/5', label: 'Avis Google' },
-                { value: 10, suffix: ' ans', label: 'Décennale dédiée' },
+                { value: 5, suffix: ' j', label: 'Rapport remis' },
               ].map((s, i) => (
                 <RevealOnScroll key={s.label} delay={i * 0.06}>
                   <div className="text-center lg:text-left lg:border-l lg:border-white/10 lg:pl-8">

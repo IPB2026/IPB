@@ -10,7 +10,7 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Fissures de sécheresse et catastrophe naturelle à Toulouse · IPB',
+  title: { absolute: 'Fissures de sécheresse et catastrophe naturelle à Toulouse · IPB' },
   description:
     "Sols argileux, fissures, arrêté CAT-NAT : IPB documente vos désordres, éclaire votre dossier d'indemnisation et coordonne les réparations. Toulouse et Occitanie.",
   keywords: [
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.ipb-expertise.fr/secheresse-fissures-catastrophe-naturelle',
   },
   openGraph: {
-    title: 'Fissures de sécheresse et catastrophe naturelle à Toulouse · IPB',
+    title: { absolute: 'Fissures de sécheresse et catastrophe naturelle à Toulouse · IPB' },
     description:
       "IPB documente le lien entre vos fissures et le retrait-gonflement des argiles, éclaire votre dossier CAT-NAT et coordonne les réparations. Toulouse et Occitanie.",
     url: 'https://www.ipb-expertise.fr/secheresse-fissures-catastrophe-naturelle',
@@ -396,6 +396,9 @@ export default function SecheresseCatNatPage() {
             <div className="text-center mt-12 space-y-3">
               <Link href="/expertise/fissures" className="block text-[13px] text-ipb-orange hover:underline">
                 Voir le diagnostic de fissures →
+              </Link>
+              <Link href="/expertise/retrait-gonflement-argiles" className="block text-[13px] text-ipb-muted hover:text-ipb-orange">
+                Comprendre le retrait-gonflement des argiles →
               </Link>
               <Link href="/contact" className="block text-[13px] text-ipb-muted hover:text-ipb-orange">
                 Décrire ma situation à l'institut →

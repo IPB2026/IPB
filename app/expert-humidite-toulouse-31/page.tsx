@@ -10,7 +10,7 @@ import { CheckCircle, Phone, ArrowRight, MapPin, Droplets, Shield, FileText, Clo
 
 export const metadata: Metadata = {
   title: 'Expert Humidité Toulouse · Diagnostic & Injection Résine',
-  description: "Traitement humidité Toulouse : remontées capillaires, salpêtre, moisissures. Injection résine, cuvelage. Garantie décennale 10 ans. ☎ 05 82 95 33 75",
+  description: "Diagnostic humidité Toulouse : remontées capillaires, salpêtre, moisissures. Cause identifiée à l'humidimètre, rapport sous 3 à 5 jours. ☎ 05 82 95 33 75",
   keywords: [
     'expert humidité toulouse',
     'traitement humidité maison 31',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Expert Humidité Toulouse · Injection & Cuvelage · IPB',
-    description: "Traitement à Toulouse contre remontées capillaires, salpêtre et moisissures. Garantie décennale 10 ans active.",
+    description: "Diagnostic humidité à Toulouse : remontées capillaires, salpêtre, moisissures. Cause identifiée, rapport d'inspection sous 3 à 5 jours.",
     url: 'https://www.ipb-expertise.fr/expert-humidite-toulouse-31',
     type: 'website',
     images: [{
@@ -94,11 +94,11 @@ const faqItems = [
   },
   {
     question: "Quelle garantie sur l'injection résine ?",
-    answer: "Les travaux d'étanchéité maçonnée par injection de résine hydrophobe sont couverts par une garantie décennale 10 ans (10 ans à compter de la réception). Les résines utilisées bénéficient par ailleurs d'une garantie commerciale du fabricant sur la durée d'efficacité de la barrière étanche, dont les conditions précises sont communiquées au devis. Les deux garanties sont remises avec le procès-verbal de réception."
+    answer: "Si des travaux d'étanchéité par injection s'imposent, ils sont réalisés par des entreprises couvertes par leur garantie décennale. Les résines bénéficient par ailleurs d'une garantie commerciale du fabricant sur la durée d'efficacité de la barrière étanche, dont les conditions sont précisées au devis de l'entreprise."
   },
   {
     question: "Intervenez-vous en cave et sous-sol ?",
-    answer: "Oui, nous proposons le cuvelage pour les caves et sous-sols. C'est la solution pour les espaces enterrés soumis à la pression de l'eau (où l'injection seule est insuffisante). Le cuvelage consiste à appliquer un revêtement étanche sur les parois et le sol. Le coût dépend de la surface et de l'accessibilité, communiqué après diagnostic. Garantie 10 ans (décennale)."
+    answer: "Le cuvelage est la solution pour les caves et sous-sols soumis à la pression de l'eau, là où l'injection seule est insuffisante : un revêtement étanche appliqué sur les parois et le sol. Si ce traitement s'impose, nous pouvons en coordonner la réalisation par une entreprise couverte par sa garantie décennale."
   },
   {
     question: "Faut-il évacuer la maison pendant les travaux ?",
@@ -167,7 +167,7 @@ export default function ExpertHumiditeToulouse31Page() {
               Expert Humidité à <span className="text-blue-400">Toulouse</span>
             </h1>
             <p className="text-xl text-white/70 mb-8 max-w-2xl">
-              Murs humides, salpêtre, moisissures : notre institut identifie la cause avant tout traitement. Diagnostic technique sous 72h, traitement par injection résine et cuvelage, sous garantie décennale 10 ans.
+              Murs humides, salpêtre, moisissures : notre institut identifie la cause avant tout traitement. Visite sous 72 h, rapport d'inspection sous 3 à 5 jours.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/diagnostic" className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all">
@@ -191,7 +191,7 @@ export default function ExpertHumiditeToulouse31Page() {
             </div>
             <div>
               <div className="text-4xl font-extrabold text-blue-600">10 ans</div>
-              <div className="text-ipb-muted mt-1">Décennale dédiée</div>
+              <div className="text-ipb-muted mt-1">Rapport 3-5 jours</div>
             </div>
             <div>
               <div className="text-4xl font-extrabold text-blue-600">72h</div>
@@ -242,13 +242,13 @@ export default function ExpertHumiditeToulouse31Page() {
               <Droplets className="text-blue-400 mb-4" size={40} />
               <h3 className="text-xl font-bold mb-3">Injection résine</h3>
               <p className="text-ipb-light mb-4">Barrière étanche injectée dans le mur pour traiter les remontées capillaires.</p>
-              <div className="text-blue-400 font-bold">Garantie décennale 10 ans</div>
+              <div className="text-blue-400 font-bold">Rapport sous 3 à 5 jours</div>
             </div>
             <div className="bg-ipb-navy-2 rounded-2xl p-8">
               <Shield className="text-blue-400 mb-4" size={40} />
               <h3 className="text-xl font-bold mb-3">Cuvelage cave</h3>
               <p className="text-ipb-light mb-4">Étanchéité des sous-sols et caves par application d'un revêtement imperméable.</p>
-              <div className="text-blue-400 font-bold">Garantie décennale 10 ans</div>
+              <div className="text-blue-400 font-bold">Rapport sous 3 à 5 jours</div>
             </div>
             <div className="bg-ipb-navy-2 rounded-2xl p-8">
               <FileText className="text-blue-400 mb-4" size={40} />
@@ -335,7 +335,7 @@ export default function ExpertHumiditeToulouse31Page() {
               { n: '01', t: 'Diagnostic instrumenté', d: "Visite sous 72h. Humidimètre, caméra thermique, test à la bombe à carbure : la cause exacte est identifiée (remontées capillaires, condensation, infiltration) avant tout traitement." },
               { n: '02', t: 'Rapport & devis transparent', d: "Rapport écrit remis sous 3 à 5 jours, avec la cause, les mesures et la solution adaptée. Devis détaillé, sans acompte." },
               { n: '03', t: 'Traitement adapté', d: "Injection de résine, cuvelage ou ventilation selon le diagnostic. Chantier propre de 1 à 3 jours, vous restez chez vous." },
-              { n: '04', t: 'Garantie & suivi du séchage', d: "Travaux d'étanchéité sous garantie décennale 10 ans. Accompagnement pendant les 6 à 12 mois de séchage avant les finitions." },
+              { n: '04', t: 'La suite & le suivi du séchage', d: "Si des travaux d'étanchéité s'imposent, nous pouvons en coordonner la réalisation. Le séchage complet demande 6 à 12 mois avant les finitions." },
             ].map((s) => (
               <div key={s.n} className="bg-white rounded-2xl p-6 shadow-lg border border-ipb-rule">
                 <div className="text-2xl font-extrabold text-blue-600 mb-3">{s.n}</div>
@@ -388,7 +388,7 @@ export default function ExpertHumiditeToulouse31Page() {
             <div className="bg-white rounded-2xl shadow-lg border-2 border-blue-500 p-8 text-center">
               <h3 className="text-xl font-bold text-ipb-text mb-2">Injection résine</h3>
               <div className="text-4xl font-extrabold text-blue-600 mb-4">Sur devis</div>
-              <p className="text-ipb-muted">Garantie décennale 10 ans</p>
+              <p className="text-ipb-muted">Rapport sous 3 à 5 jours</p>
             </div>
             <div className="bg-white rounded-2xl shadow-lg border border-ipb-rule p-8 text-center">
               <h3 className="text-xl font-bold text-ipb-text mb-2">Cuvelage cave</h3>
@@ -519,7 +519,7 @@ export default function ExpertHumiditeToulouse31Page() {
       <section className="py-16 md:py-24 bg-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Murs humides à Toulouse&nbsp;?</h2>
-          <p className="text-xl text-blue-100 mb-8">Diagnostic technique sous 72h. Traitement sous garantie décennale 10 ans. Sans engagement · Réponse sous 48 heures.</p>
+          <p className="text-xl text-blue-100 mb-8">Visite sous 72 h, rapport d'inspection sous 3 à 5 jours. Sans engagement · Réponse sous 48 heures.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all flex items-center justify-center gap-2">
               Demander un diagnostic <ArrowRight size={20} />

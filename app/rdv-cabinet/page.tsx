@@ -153,7 +153,7 @@ export default function RdvCabinetPage() {
                 {
                   num: '01',
                   titre: 'Vous laissez l’institut venir sur site',
-                  desc: "Nous fixons un créneau pour la visite technique. Mesures au fissuromètre, photos, lecture du bâti. Rapport écrit remis sous 3 à 5 jours ouvrés, reconnu par les assurances.",
+                  desc: "Nous fixons un créneau pour la visite technique. Mesures au fissuromètre, photos, lecture du bâti. Rapport écrit remis sous 3 à 5 jours ouvrés, documenté pour vos démarches d'assurance.",
                 },
                 {
                   num: '02',
@@ -163,7 +163,7 @@ export default function RdvCabinetPage() {
                 {
                   num: '03',
                   titre: 'Vous décidez de prendre du temps pour réfléchir',
-                  desc: "Vous repartez avec nos coordonnées, l'attestation décennale et un email récapitulatif. Aucune relance commerciale, aucune pression.",
+                  desc: "Vous repartez avec nos coordonnées et un e-mail récapitulatif. Aucune relance commerciale, aucune pression.",
                 },
               ].map((etape) => (
                 <RevealOnScroll key={etape.num}>

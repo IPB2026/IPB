@@ -47,7 +47,7 @@ export function ServicesHumidity() {
                   <p className="text-sm md:text-base text-slate-500">
                     Étaiement provisoire, ouverture, pose de la poutre et finitions sont menés sous notre pilotage. Chantier propre, livré en{' '}
                     <strong className="text-amber-700">2 à 5 jours selon la portée.</strong>{' '}
-                    Décennale 10 ans sur les travaux.
+                    Rapport d'inspection sous 3 à 5 jours.
                   </p>
                 </div>
               </div>
@@ -64,7 +64,7 @@ export function ServicesHumidity() {
             {/* Points forts */}
             <div className="grid grid-cols-2 gap-3 mb-8">
               {[
-                'Décennales métier 10 ans (études + travaux)',
+                'Entreprises couvertes par leur garantie décennale',
                 'Démarches administratives incluses',
                 'Baie vitrée : coordination menuiserie',
                 'Note de calcul opposable selon les Eurocodes',

@@ -15,7 +15,7 @@ import {
 } from './entries';
 
 export const metadata: Metadata = {
-  title: 'Lexique de la pathologie du bâtiment · Institut IPB',
+  title: { absolute: 'Lexique de la pathologie du bâtiment · Institut IPB' },
   description:
     "Définitions des termes techniques utilisés en pathologie et structure du bâtiment : agrafage, fissuromètre, retrait-gonflement des argiles, micropieux, sous-œuvre. Ressource maintenue par l'institut.",
   keywords: [
