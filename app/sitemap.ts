@@ -391,24 +391,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // ════════════════════════════════════════════════════════════
   // PAGES PROBLÈMES (Topic Cluster)
   // ════════════════════════════════════════════════════════════
-  void problemPages; void quartierSlugs; // conservés pour réactivation après différenciation
-  const _problemesPages: MetadataRoute.Sitemap = problemPages.map((p) => ({
-    url: `${baseUrl}/problemes/${p.slug}`,
-    lastModified: contentDate,
-    changeFrequency: 'monthly' as const,
-    priority: 0.65,
-  }));
-
   // ════════════════════════════════════════════════════════════
   // PAGES QUARTIERS TOULOUSE
   // ════════════════════════════════════════════════════════════
-  const _quartiersPages: MetadataRoute.Sitemap = quartierSlugs.map((q) => ({
-    url: `${baseUrl}/quartiers/${q}`,
-    lastModified: contentDate,
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }));
-
   // ════════════════════════════════════════════════════════════
   // ASSEMBLAGE FINAL DU SITEMAP
   // ════════════════════════════════════════════════════════════

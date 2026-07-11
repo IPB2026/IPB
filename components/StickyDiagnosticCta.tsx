@@ -60,7 +60,7 @@ export function StickyDiagnosticCta() {
       }`}>
         {/* Barre unique — le bandeau trust a été retiré : il doublonnait le
             TrustRibbon du haut de page et mangeait 33px de viewport mobile. */}
-        <div className="relative bg-ipb-cream px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] shadow-[0_-12px_32px_rgba(11,24,38,0.12)] border-t border-ipb-rule">
+        <div className="relative bg-ipb-cream px-4 pt-3 pb-[calc(0.75rem_+_env(safe-area-inset-bottom))] shadow-[0_-12px_32px_rgba(11,24,38,0.12)] border-t border-ipb-rule">
           {/* Filet orange vertical signature à gauche */}
           <span aria-hidden="true" className="absolute left-0 top-0 bottom-0 w-[3px] bg-ipb-orange" />
 
