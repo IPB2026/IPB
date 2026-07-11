@@ -341,7 +341,7 @@ export default function FissureHorizontalePage() {
             {[
               { href: '/fissure-en-escalier-causes', icon: '🪜', title: 'Fissure en escalier', desc: 'Tassement différentiel' },
               { href: '/microfissure-quand-sinquieter', icon: '🔍', title: 'Microfissure', desc: 'Quand s\'inquiéter ?' },
-              { href: '/fissure-secheresse-indemnisation', icon: '☀️', title: 'Fissure sécheresse', desc: 'Indemnisation CAT-NAT' },
+              { href: '/secheresse-fissures-catastrophe-naturelle', icon: '☀️', title: 'Fissure sécheresse', desc: 'Indemnisation CAT-NAT' },
               { href: '/fissure-fondation-maison', icon: '🏠', title: 'Fissure fondation', desc: 'Solutions durables' },
               { href: '/expertise/fissures', icon: '📋', title: 'Guide complet fissures', desc: 'Tout savoir sur nos solutions' },
               { href: '/expertise/humidite', icon: '💧', title: 'Problème d\'humidité ?', desc: 'Nos solutions humidité' },

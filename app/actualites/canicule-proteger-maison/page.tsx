@@ -212,7 +212,7 @@ export default function CaniculeProtegerMaisonPage() {
             Mieux vaut prévenir que guérir. Un diagnostic précoce peut vous faire économiser des milliers d'euros.
           </p>
           <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-white text-ipb-orange px-8 py-4 rounded-xl font-bold text-lg hover:bg-ipb-stone">
-            Demander un diagnostic <ArrowRight size={20} />
+            Faire mon pré-diagnostic (2 min) <ArrowRight size={20} />
           </Link>
         </div>
       </section>
@@ -237,7 +237,7 @@ export default function CaniculeProtegerMaisonPage() {
           </div>
 
           <div className="mt-8 grid md:grid-cols-2 gap-6">
-            <Link href="/fissure-secheresse-indemnisation" className="bg-white rounded-xl p-6 shadow-lg border border-ipb-rule hover:border-ipb-rule transition-all group">
+            <Link href="/secheresse-fissures-catastrophe-naturelle" className="bg-white rounded-xl p-6 shadow-lg border border-ipb-rule hover:border-ipb-rule transition-all group">
               <h3 className="font-bold text-ipb-text group-hover:text-ipb-orange mb-2">
                 📋 Indemnisation CAT-NAT
               </h3>

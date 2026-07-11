@@ -183,7 +183,7 @@ export default function SecheresseCatNatPage() {
               <RevealOnScroll delay={0.2}>
                 <div className="flex flex-col sm:flex-row gap-4 mb-6">
                   <MagneticButton href="/diagnostic" variant="primary">
-                    Demander un diagnostic
+                    Faire mon pré-diagnostic (2 min)
                   </MagneticButton>
                   <MagneticButton href="tel:+33582953375" variant="ghost">
                     05 82 95 33 75

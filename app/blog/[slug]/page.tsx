@@ -35,7 +35,6 @@ import {
   injectMidArticleCta,
 } from '@/lib/seo-helpers';
 import { ReadingProgress } from '@/components/blog/ReadingProgress';
-import { ExitIntentPopup } from '@/components/blog/ExitIntentPopup';
 
 import { blogPosts, blogPostsSlugs, type BlogPost } from '@/app/data/blog';
 
@@ -228,7 +227,6 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
       <ReadingProgress />
 
       {/* 💣 ARME NUCLÉAIRE : Exit-Intent Popup (capture leads) */}
-      <ExitIntentPopup />
 
       <TopBar />
       <Navbar />
@@ -365,7 +363,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                     href="/diagnostic"
                     className="inline-flex items-center justify-center gap-2 bg-ipb-orange text-white px-7 py-4 rounded-[3px] font-bold text-[14px] tracking-[0.03em] shadow-xl hover:bg-[#b35519] transition-colors"
                   >
-                    Demander un diagnostic
+                    Faire mon pré-diagnostic (2 min)
                   </Link>
                   <a
                     href="tel:0582953375"

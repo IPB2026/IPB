@@ -113,7 +113,7 @@ const orientations = [
   {
     titre: "Vous suspectez un retrait-gonflement des argiles",
     desc: "Pathologie liée à la sécheresse — protocole spécifique BRGM et arrêtés cat-nat.",
-    href: '/fissure-secheresse-indemnisation',
+    href: '/secheresse-fissures-catastrophe-naturelle',
     cta: 'Voir la page sécheresse',
   },
   {

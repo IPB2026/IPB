@@ -61,7 +61,7 @@ export default function LandingFissuresToulouse() {
 
               <div className="flex flex-col sm:flex-row gap-3 mb-6">
                 <MagneticButton href="/diagnostic?utm_source=ads&utm_medium=cpc&utm_campaign=fissures_toulouse" variant="primary">
-                  Demander un diagnostic
+                  Faire mon pré-diagnostic (2 min)
                 </MagneticButton>
                 <a
                   href="tel:0582953375"
@@ -166,7 +166,7 @@ export default function LandingFissuresToulouse() {
           </h2>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <MagneticButton href="/diagnostic?utm_source=ads&utm_medium=cpc&utm_campaign=fissures_toulouse" variant="primary">
-              Demander un diagnostic
+              Faire mon pré-diagnostic (2 min)
             </MagneticButton>
             <a
               href="tel:0582953375"

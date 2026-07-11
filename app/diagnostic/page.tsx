@@ -851,10 +851,10 @@ export default function DiagnosticPage() {
                     Échange technique avec l’institut
                   </p>
                   <h1 className="font-serif text-ipb-text mb-4" style={{ fontSize: 'clamp(28px, 3vw, 44px)', lineHeight: 1.1, letterSpacing: '-0.022em', fontWeight: 700 }}>
-                    Décrivez-nous<br /><em>votre situation.</em>
+                    Votre pré-diagnostic<br /><em>en 2 minutes.</em>
                   </h1>
                   <p className="text-[15px] leading-[1.85] font-light text-ipb-muted max-w-xl mx-auto">
-                    Donnez-nous les éléments essentiels de votre situation. Notre institut vous répond sous 48 heures, par téléphone ou par mail.
+                    Décrivez-nous votre situation en quelques questions. Notre institut vous répond sous 48 heures, par téléphone ou par mail — la visite et le rapport d'inspection viennent ensuite, si votre situation le justifie.
                   </p>
                 </div>
 
@@ -1335,7 +1335,7 @@ export default function DiagnosticPage() {
                   </button>
 
                   <p className="text-[10px] text-ipb-light text-center leading-relaxed">
-                    Vos données servent uniquement à traiter votre demande et à vous recontacter ; elles ne sont pas utilisées à d'autres fins. En validant, vous acceptez d'être recontacté par IPB. Voir notre politique de confidentialité.
+                    Vos données servent uniquement à traiter votre demande et à vous recontacter ; elles ne sont pas utilisées à d'autres fins. En validant, vous acceptez d'être recontacté par IPB. Voir notre politique de confidentialité. Ce formulaire est protégé par reCAPTCHA (Google) — s'appliquent sa politique de confidentialité et ses conditions d'utilisation.
                   </p>
                 </form>
               </div>

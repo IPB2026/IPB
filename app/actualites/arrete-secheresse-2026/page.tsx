@@ -278,7 +278,7 @@ export default function ArreteSecheresse2026Page() {
               Faites constater les dégâts par un expert indépendant pour renforcer votre dossier.
             </p>
             <Link href="/diagnostic" className="inline-flex items-center gap-2 bg-white text-ipb-orange px-8 py-4 rounded-xl font-bold text-lg hover:bg-ipb-stone">
-              Demander un diagnostic <ArrowRight size={20} />
+              Faire mon pré-diagnostic (2 min) <ArrowRight size={20} />
             </Link>
           </div>
 
@@ -294,7 +294,7 @@ export default function ArreteSecheresse2026Page() {
             <h2>Liens utiles</h2>
             <ul>
               <li><a href="https://www.georisques.gouv.fr" target="_blank" rel="noopener noreferrer">Georisques.gouv.fr</a> - Vérifier les arrêtés de votre commune</li>
-              <li><Link href="/fissure-secheresse-indemnisation">Guide complet indemnisation sécheresse</Link></li>
+              <li><Link href="/secheresse-fissures-catastrophe-naturelle">Guide complet indemnisation sécheresse</Link></li>
               <li><Link href="/expert-fissures-toulouse-31">Expert fissures Toulouse</Link></li>
             </ul>
           </div>

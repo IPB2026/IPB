@@ -144,7 +144,7 @@ export default function TarnEtGaronnePage() {
                   href="/diagnostic"
                   className="inline-flex items-center justify-center gap-2 bg-white text-ipb-orange px-8 py-4 rounded-lg font-bold text-lg hover:bg-ipb-stone transition-all shadow-lg"
                 >
-                  Demander un diagnostic
+                  Faire mon pré-diagnostic (2 min)
                   <ArrowRight size={20} />
                 </Link>
                 <a
