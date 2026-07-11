@@ -182,7 +182,7 @@ export default function HomePage() {
             href="/diagnostic?utm_source=site&utm_medium=home_banner&utm_campaign=diagnostic"
             className="inline-flex items-center justify-center gap-2 bg-ipb-orange-d text-white font-bold px-7 md:px-8 py-4 rounded-[3px] text-[13px] md:text-[14px] tracking-[0.03em] hover:bg-[#7E390F] transition-colors min-h-[48px]"
           >
-            Demander un diagnostic
+            Faire mon pré-diagnostic (2 min)
           </a>
         </div>
       </section>

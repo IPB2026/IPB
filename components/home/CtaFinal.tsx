@@ -33,7 +33,7 @@ export function CtaFinal() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <MagneticButton href="/diagnostic" variant="primary">
-                  Demander un diagnostic
+                  Faire mon pré-diagnostic (2 min)
                 </MagneticButton>
                 <MagneticButton href="/contact" variant="ghost">
                   Demander un rappel

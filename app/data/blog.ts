@@ -7851,7 +7851,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
         <p class="font-bold text-orange-900 mb-3">Vous gérez une succession avec un bien fissuré en Occitanie ?</p>
         <p class="text-orange-800 mb-4">IPB intervient dans les <strong>48h</strong> pour un rapport d'expertise complet. Ce document devient la base technique de votre succession : estimation juste, décision éclairée, protection juridique pour tous les héritiers.</p>
-        <a href="/diagnostic" class="inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition-colors">Demander un diagnostic →</a>
+        <a href="/diagnostic" class="inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition-colors">Faire mon pré-diagnostic (2 min) →</a>
       </div>
     `
   },

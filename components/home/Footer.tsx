@@ -112,7 +112,7 @@ export function Footer() {
               href="/diagnostic"
               className="inline-flex items-center gap-2 text-ipb-orange-l text-[13px] font-medium border-b border-ipb-orange-l pb-1 hover:gap-3 transition-all"
             >
-              Demander un diagnostic →
+              Faire mon pré-diagnostic (2 min) →
             </Link>
           </div>
         </div>

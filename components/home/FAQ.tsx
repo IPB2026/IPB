@@ -46,7 +46,7 @@ const faqs = [
   },
   {
     q: "Quelles sont vos zones d'intervention ?",
-    a: "Notre zone d'intervention couvre la Haute-Garonne (31), le Tarn-et-Garonne (82), le Gers (32), le Tarn (81), l'Ariège (09) et l'Aude (11). Cela représente plus de 50 communes — pour vérifier la couverture sur votre commune précise, appelez-nous au 05 82 95 33 75 ou démarrez le diagnostic en ligne.",
+    a: "Notre zone d'intervention couvre la Haute-Garonne (31), le Tarn-et-Garonne (82), le Gers (32), le Tarn (81), l'Ariège (09) et l'Aude (11). Cela représente plus de 50 communes — pour vérifier la couverture sur votre commune précise, appelez-nous au 05 82 95 33 75 ou faites notre pré-diagnostic en ligne (2 minutes).",
   },
 ];
 
@@ -88,7 +88,7 @@ export function FAQ() {
                 </p>
                 <div className="space-y-3">
                   <Link href="/diagnostic" className="inline-flex items-center gap-2 text-ipb-orange-d font-medium text-[14px] tracking-wide border-b border-ipb-orange-d pb-1 hover:gap-3 transition-all">
-                    Demander un diagnostic →
+                    Faire mon pré-diagnostic (2 min) →
                   </Link>
                   <a href="tel:0582953375" className="block text-ipb-muted font-light text-[14px] hover:text-ipb-text transition-colors">
                     05 82 95 33 75

@@ -124,7 +124,7 @@ export function ContactSection() {
           <div>
             {/* Formulaire de contact */}
             <div className="bg-slate-50 rounded-3xl p-8 md:p-10 border border-slate-200">
-              <h3 className="text-2xl font-extrabold text-slate-900 mb-4">Demander un diagnostic</h3>
+              <h3 className="text-2xl font-extrabold text-slate-900 mb-4">Faire mon pré-diagnostic (2 min)</h3>
               <p className="text-slate-600 mb-6">
                 Décrivez votre situation. L'institut qualifie votre dossier et vous répond sous 48 heures.
               </p>
@@ -236,7 +236,7 @@ export function ContactSection() {
               href="/diagnostic"
               className="bg-orange-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-orange-700 transition-all shadow-lg whitespace-nowrap"
             >
-              Demander un diagnostic
+              Faire mon pré-diagnostic (2 min)
             </Link>
           </div>
         </div>

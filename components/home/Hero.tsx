@@ -55,7 +55,7 @@ export function Hero() {
 
           <div className="flex flex-col sm:flex-row gap-4 mb-5">
             <MagneticButton href="/diagnostic" variant="primary">
-              Demander un diagnostic
+              Faire mon pré-diagnostic (2 min)
             </MagneticButton>
             <a
               href="tel:0582953375"
