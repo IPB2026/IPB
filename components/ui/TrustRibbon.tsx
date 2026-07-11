@@ -12,7 +12,7 @@ const items = [
   { value: '72h', label: 'délai de visite' },
   { value: '2019', label: 'réseau IPB actif depuis' },
   { value: '850+', label: 'chantiers · réseau IPB' },
-  { value: '72 h', label: 'visite sur site' },
+  { value: '3-5 j', label: 'rapport d’inspection' },
   { value: '4.9/5', label: 'Google' },
 ];
 

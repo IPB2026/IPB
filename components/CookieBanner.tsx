@@ -111,13 +111,13 @@ export function CookieBanner() {
         <div className="flex gap-2">
           <button
             onClick={acceptNecessary}
-            className="flex-1 px-4 py-2 text-slate-700 text-sm font-medium hover:bg-slate-50 rounded-lg transition-colors"
+            className="flex-1 px-4 py-3 min-h-[44px] text-slate-700 text-sm font-medium border border-slate-300 hover:bg-slate-50 rounded-lg transition-colors"
           >
             Refuser
           </button>
           <button
             onClick={acceptAll}
-            className="flex-1 px-4 py-2 bg-ipb-orange-d text-white text-sm font-bold rounded-lg hover:bg-[#7E390F] transition-colors"
+            className="flex-1 px-4 py-3 min-h-[44px] bg-ipb-orange-d text-white text-sm font-bold rounded-lg hover:bg-[#7E390F] transition-colors"
           >
             Accepter
           </button>

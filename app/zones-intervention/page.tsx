@@ -8,8 +8,8 @@ import { MapPin, Phone, ArrowRight, Shield, AlertTriangle } from 'lucide-react';
 import { villesData, departementsMapping } from '@/app/data/villes';
 
 export const metadata: Metadata = {
-  title: "Zones Intervention · 56 villes Occitanie · Sous 48h",
-  description: "56 villes en Occitanie : Toulouse, Montauban, Auch, Albi. Expert fissures et humidité, diagnostic sous 48h. ☎ 05 82 95 33 75",
+  title: "Zones Intervention · 56 villes Occitanie · Visite sous 72h",
+  description: "56 villes en Occitanie : Toulouse, Montauban, Auch, Albi. Expert fissures et humidité — réponse sous 48 h, visite sous 72 h. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures Occitanie', 'expert fissures Haute-Garonne', 'expert fissures Tarn',
     'agrafage fissures Toulouse', 'expert humidité 31', 'expert bâtiment 82',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Zones Intervention · 56 villes Occitanie · IPB",
-    description: "56 villes en Occitanie. Expert fissures et humidité, diagnostic sous 48h. Rapport d'inspection sous 3 à 5 jours.",
+    description: "56 villes en Occitanie. Expert fissures et humidité — réponse sous 48 h, visite sous 72 h. Rapport d'inspection sous 3 à 5 jours.",
     url: 'https://www.ipb-expertise.fr/zones-intervention',
     type: 'website',
   },
@@ -75,7 +75,7 @@ export default function ZonesInterventionPage() {
             Nos zones d&apos;intervention
           </h1>
           <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto mb-8">
-            IPB intervient dans <strong className="text-white">{departementsMapping.length} départements</strong> et <strong className="text-white">{totalVilles} villes</strong> pour le diagnostic et le traitement des fissures structurelles et de l&apos;humidité. Déplacement inclus, diagnostic sous 48h.
+            IPB intervient dans <strong className="text-white">{departementsMapping.length} départements</strong> et <strong className="text-white">{totalVilles} villes</strong> pour le diagnostic et le traitement des fissures structurelles et de l&apos;humidité. Déplacement inclus — réponse sous 48 h, visite sous 72 h.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="bg-ipb-orange hover:bg-ipb-orange text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition shadow-xl">
@@ -101,8 +101,8 @@ export default function ZonesInterventionPage() {
               <div className="text-ipb-muted text-sm">Départements</div>
             </div>
             <div>
-              <div className="text-3xl font-extrabold text-ipb-orange">48h</div>
-              <div className="text-ipb-muted text-sm">Délai intervention</div>
+              <div className="text-3xl font-extrabold text-ipb-orange">72h</div>
+              <div className="text-ipb-muted text-sm">Visite sur site</div>
             </div>
             <div>
               <div className="text-3xl font-extrabold text-ipb-orange">Inclus</div>

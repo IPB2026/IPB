@@ -88,7 +88,7 @@ export function Navbar() {
             className="group inline-flex items-center gap-1.5 h-11 lg:h-10 bg-ipb-orange-d hover:bg-[#7E390F] text-white px-4 lg:px-5 rounded-[5px] font-semibold text-[12.5px] lg:text-[12px] tracking-[0.02em] transition-colors duration-300 shrink-0 shadow-[0_2px_8px_rgba(156,71,23,0.22)]"
             aria-label="Faire mon pré-diagnostic (2 min)"
           >
-            <span className="sm:hidden">Diagnostic</span>
+            <span className="sm:hidden">Pré-diagnostic</span>
             <span className="hidden sm:inline">Faire mon pré-diagnostic (2 min)</span>
             <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
           </Link>
