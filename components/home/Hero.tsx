@@ -39,7 +39,7 @@ export function Hero() {
               // l'ancienne version forçait le H1 à 366px de large alors que
               // le viewport mobile ne dispose que de ~327px → débordement
               // grid + scroll horizontal.
-              fontSize: 'clamp(36px, 9vw, 80px)',
+              fontSize: 'clamp(30px, 8.5vw, 80px)',
               lineHeight: 1.04,
               letterSpacing: '-0.028em',
               fontWeight: 700,

@@ -1096,6 +1096,15 @@ export default function DiagnosticPage() {
                               handleAnswer(currentQuestion.id, newValue, true);
                             } else {
                               handleAnswer(currentQuestion.id, option.value, false);
+                              // Auto-advance : une question à choix unique = un seul tap.
+                              // On n'avance pas automatiquement si un « conseil d'expert »
+                              // accompagne cette réponse (laisser le temps de le lire),
+                              // ni sur la dernière question (l'analyse doit être un choix).
+                              const tipKey = path ? `${path}:${currentQuestion.id}:${option.value}` : '';
+                              const hasTip = tipKey ? Boolean(expertTips[tipKey]) : false;
+                              if (!hasTip && step < totalQuestions) {
+                                window.setTimeout(() => goToNextQuestion(), 350);
+                              }
                             }
                           }}
                           className={`

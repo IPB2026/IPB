@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Playfair_Display, DM_Sans } from "next/font/google"
 import "./globals.css"
 import Script from "next/script"
@@ -29,6 +29,15 @@ const playfair = Playfair_Display({
   weight: ['400', '500', '700'],
   style: ['normal', 'italic'],
 })
+
+// viewport-fit=cover : nécessaire pour env(safe-area-inset-bottom) sur iPhone
+// (barre sticky mobile) ; themeColor déplacé ici depuis les <meta> manuels.
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#EA580C",
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.ipb-expertise.fr'),
@@ -326,8 +335,6 @@ export default function RootLayout({
           }) }}
         />
         
-        {/* Theme color for mobile browsers */}
-        <meta name="theme-color" content="#EA580C" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       </head>
