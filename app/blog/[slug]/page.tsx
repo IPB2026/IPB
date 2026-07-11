@@ -35,7 +35,6 @@ import {
   injectMidArticleCta,
 } from '@/lib/seo-helpers';
 import { ReadingProgress } from '@/components/blog/ReadingProgress';
-import { ExitIntentPopup } from '@/components/blog/ExitIntentPopup';
 
 import { blogPosts, blogPostsSlugs, type BlogPost } from '@/app/data/blog';
 
@@ -228,7 +227,6 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
       <ReadingProgress />
 
       {/* 💣 ARME NUCLÉAIRE : Exit-Intent Popup (capture leads) */}
-      <ExitIntentPopup />
 
       <TopBar />
       <Navbar />
