@@ -356,6 +356,31 @@ export async function GET(req: Request) {
     errors.push(`facture-auto-loop: ${e instanceof Error ? e.message : 'err'}`);
   }
 
+  // ── INVARIANT DE COHÉRENCE : un devis « Envoyé » dont le contact a déjà une
+  //    facture émise est de facto accepté (accord téléphonique → RDV manuel →
+  //    visite → facture auto : rien ne soldait le devis sur ce chemin).
+  //    On l'aligne, avec trace — fini les « devis validés affichés en cours ».
+  let devisSoldes = 0;
+  try {
+    const eclipses = await prisma.devis.findMany({
+      where: {
+        status: 'ENVOYE',
+        contact: { archivedAt: null, factures: { some: { status: { not: 'ANNULEE' } } } },
+      },
+      select: { id: true, number: true, contactId: true, leadId: true },
+      take: 20,
+    });
+    for (const d of eclipses) {
+      await prisma.devis.update({ where: { id: d.id }, data: { status: 'ACCEPTE', acceptedAt: new Date() } });
+      await prisma.activity.create({
+        data: { type: 'SYSTEME', contactId: d.contactId, leadId: d.leadId, content: `Devis ${d.number} soldé « accepté » : facture émise sur ce dossier (invariant de cohérence).` },
+      }).catch(() => null);
+      devisSoldes++;
+    }
+  } catch (e) {
+    errors.push(`invariant devis/facture: ${e instanceof Error ? e.message : 'err'}`);
+  }
+
   // ── P3-B : expiration douce des devis à bout de relances ──────────────────
   //    ENVOYE + 3 relances passées + aucun mouvement depuis 30 j → EXPIRE.
   //    Sort le devis du pipe (KPIs) et des écrans « en attente » ; le dossier
