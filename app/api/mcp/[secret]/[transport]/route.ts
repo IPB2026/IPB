@@ -340,6 +340,15 @@ const baseHandler = createMcpHandler(
       }
     );
 
+    // P1-A — journal d'audit : chaque ÉCRITURE lancée via le connecteur laisse
+    // une trace « [MCP] » dans le fil d'activité du contact concerné.
+    const auditMcp = (contactId: string | null | undefined, action: string) => {
+      if (!contactId) return;
+      prisma.activity
+        .create({ data: { type: 'SYSTEME', contactId, content: `[MCP] ${action}` } })
+        .catch(() => null);
+    };
+
     server.tool('envoyer_devis', 'Envoie le devis au client par e-mail (PDF joint).', { devisId: z.string().min(1) }, async ({ devisId }) => ok(await sendDevisEmail(devisId)));
 
     server.tool(
@@ -363,6 +372,41 @@ const baseHandler = createMcpHandler(
           prisma.devis.update({ where: { id: devisId }, data: { status: 'ACCEPTE', acceptedAt: devis.acceptedAt ?? new Date() } }),
         ]);
         await recordPhaseEvent(devis.contactId, devis.leadId, 'DEVIS_VALIDE').catch(() => null);
+        auditMcp(devis.contactId, `Devis ${devis.number ?? devis.id} converti en facture ${facture.number}`);
+        return ok({ ok: true, factureId: facture.id, number: facture.number });
+      }
+    );
+
+    server.tool(
+      'creer_facture_externe',
+      'Enregistre une facture émise HORS CRM (rattrapage) : montant HT, objet, contact, URL du PDF optionnelle. Marquée payée d\'emblée si indiqué.',
+      {
+        contactId: z.string().min(1),
+        objet: z.string().min(3),
+        totalHT: z.number().positive(),
+        numeroExterne: z.string().min(1).describe('Numéro figurant sur la facture d\'origine'),
+        pdfUrl: z.string().url().optional(),
+        payee: z.boolean().optional().default(false),
+      },
+      async ({ contactId, objet, totalHT, numeroExterne, pdfUrl, payee }) => {
+        const contact = await prisma.contact.findUnique({ where: { id: contactId }, select: { id: true } });
+        if (!contact) return ok({ ok: false, erreur: 'Contact introuvable' });
+        // Idempotence sur le numéro externe : même numéro ⇒ on renvoie l'existante.
+        const num = `EXT-${numeroExterne}`;
+        const existante = await prisma.facture.findUnique({ where: { number: num }, select: { id: true } });
+        if (existante) return ok({ ok: true, factureId: existante.id, note: 'Déjà enregistrée' });
+        const facture = await prisma.facture.create({
+          data: {
+            number: num,
+            contactId,
+            object: objet,
+            totalHT,
+            externalUrl: pdfUrl ?? null,
+            status: payee ? 'PAYEE' : 'ENVOYEE',
+            issuedAt: new Date(),
+          },
+        });
+        auditMcp(contactId, `Facture externe ${num} enregistrée (${totalHT} € HT${payee ? ', payée' : ''})`);
         return ok({ ok: true, factureId: facture.id, number: facture.number });
       }
     );
@@ -379,6 +423,7 @@ const baseHandler = createMcpHandler(
       await prisma.activity.create({
         data: { type: 'RELANCE', contactId: fact.contactId, content: `Rapport à rédiger (facture ${fact.number} payée) — livraison promise sous 3 à 5 jours ouvrés.`, dueAt: new Date() },
       }).catch(() => null);
+      auditMcp(fact.contactId, `Facture ${fact.number} marquée payée`);
       return ok({ ok: true });
     });
 
@@ -468,9 +513,11 @@ async function guarded(
   req: Request,
   ctx: { params: { secret: string; transport: string } }
 ): Promise<Response> {
-  // Comparaison à temps constant (le secret transite dans l'URL : déjà loggué
-  // par les proxys — au moins, on ne l'affaiblit pas par timing oracle).
-  const a = Buffer.from(ctx.params.secret ?? '');
+  // P1-A : le secret est accepté via le header x-mcp-secret (recommandé — ne
+  // fuit pas dans les logs d'accès) OU via le segment d'URL (compatibilité
+  // avec le connecteur existant). Comparaison à temps constant dans les 2 cas.
+  const provided = req.headers.get('x-mcp-secret') ?? ctx.params.secret ?? '';
+  const a = Buffer.from(provided);
   const b = Buffer.from(TOKEN ?? '');
   if (!TOKEN || a.length !== b.length || !crypto.timingSafeEqual(a, b)) {
     return new Response('Not found', { status: 404 });

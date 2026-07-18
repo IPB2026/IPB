@@ -180,6 +180,9 @@ export async function submitContactForm(
       contact: {
         name: validatedData.name,
         email: validatedData.email,
+        // Le téléphone était validé mais JAMAIS transmis : la fiche naissait
+        // « e-mail seul » et l'appel saisi à la main créait un doublon.
+        phone: validatedData.phone || undefined,
       },
       summary: subjectLabel,
       payload: {

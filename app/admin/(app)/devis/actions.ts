@@ -353,7 +353,24 @@ export async function updateDevisStatus(formData: FormData) {
     select: { status: true, contactId: true, leadId: true, number: true },
   });
   if (!before) return;
-  await prisma.devis.update({ where: { id }, data: { status: status as DevisStatus } });
+  await prisma.devis.update({
+    where: { id },
+    data: {
+      status: status as DevisStatus,
+      // Harmonisation des chemins d'acceptation : le dropdown posait ACCEPTE
+      // sans acceptedAt → clientSince et vélocité restaient aveugles.
+      ...(status === 'ACCEPTE' ? { acceptedAt: new Date() } : {}),
+    },
+  });
+  if (status === 'ACCEPTE') {
+    await recordPhaseEvent(before.contactId, before.leadId, 'DEVIS_VALIDE').catch(() => null);
+    if (before.leadId) {
+      await prisma.lead.updateMany({
+        where: { id: before.leadId, stage: { in: ['NOUVEAU', 'A_RAPPELER', 'DEVIS_ENVOYE'] } },
+        data: { stage: 'GAGNE' },
+      });
+    }
+  }
   // Trace le changement dans la timeline du dossier (sauf statut inchangé).
   if (before.status !== status) {
     await prisma.activity.create({
@@ -501,9 +518,14 @@ export async function updateDevis(
 
   const existing = await prisma.devis.findUnique({
     where: { id },
-    select: { serviceType: true, object: true },
+    select: { serviceType: true, object: true, status: true },
   });
   if (!existing) return 'Devis introuvable.';
+  // Verrou d'intégrité : un devis ACCEPTÉ est l'engagement signé du client —
+  // le modifier ferait diverger le PDF régénéré de ce qui a été validé.
+  if (existing.status === 'ACCEPTE') {
+    return 'Devis accepté par le client : créez un nouveau devis (avenant) plutôt que de modifier celui-ci.';
+  }
 
   // Devis SUR-MESURE (serviceType null) : on PRÉSERVE le type, l'objet et le
   // contenu (notes restent intactes) — on ne recalcule que le prix/les lignes.
@@ -657,6 +679,12 @@ export async function convertDevisToFacture(formData: FormData) {
     include: { contact: true, lines: { orderBy: { position: 'asc' } } },
   });
   if (!devis) return;
+  if (devis.status === 'ACCEPTE') {
+    await prisma.activity.create({
+      data: { type: 'SYSTEME', contactId: devis.contactId, leadId: devis.leadId, content: `Modification du montant refusée : devis ${devis.number} déjà accepté (créer un avenant).` },
+    }).catch(() => null);
+    return;
+  }
 
   // Idempotence : un devis déjà converti renvoie sa facture existante (le
   // double-clic créait auparavant DEUX factures à numéros légaux distincts).
@@ -699,6 +727,8 @@ export async function convertDevisToFacture(formData: FormData) {
       data: { status: 'ACCEPTE', acceptedAt: devis.acceptedAt ?? new Date() },
     }),
   ]);
+  // Parité avec le connecteur : la conversion vaut acceptation → trace vélocité.
+  await recordPhaseEvent(devis.contactId, devis.leadId, 'DEVIS_VALIDE').catch(() => null);
   // La conversion vaut acceptation : on fait gagner le lead lié.
   if (devis.leadId) {
     await prisma.lead.updateMany({

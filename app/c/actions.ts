@@ -64,7 +64,10 @@ export async function confirmClientAction(formData: FormData): Promise<void> {
           contactId: devis.contactId,
           stage: { in: ['NOUVEAU', 'A_RAPPELER', 'DEVIS_ENVOYE'] },
         },
-        data: { stage: 'RDV_PLANIFIE' },
+        // GAGNE (aligné sur le bouton admin) : RDV_PLANIFIE ici créait un
+        // badge « RDV planifié » sans aucun rendez-vous (agenda vide) — c'est
+        // la réservation de créneau qui posera RDV_PLANIFIE, pas l'accord.
+        data: { stage: 'GAGNE' },
       });
     }
     await prisma.activity.create({

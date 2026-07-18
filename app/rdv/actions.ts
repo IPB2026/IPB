@@ -1,6 +1,7 @@
 'use server';
 
 import { redirect } from 'next/navigation';
+import { recordPhaseEvent } from '@/lib/crm/phase-events';
 import { revalidatePath } from 'next/cache';
 import { prisma } from '@/lib/prisma';
 import { verifyBookingToken } from '@/lib/crm/booking';
@@ -44,6 +45,30 @@ export async function confirmBooking(formData: FormData): Promise<void> {
     select: { id: true },
   });
   if (existing) redirect(`/rdv?ok=1&t=${encodeURIComponent(token)}`);
+
+  // Changement d'avis : un clic sur un AUTRE créneau du même e-mail REPROGRAMME
+  // le RDV à venir au lieu d'en créer un second (2 clics créaient 2 RDV,
+  // 2 invitations… et 2 factures à la clé).
+  const upcoming = await prisma.appointment.findFirst({
+    where: { contactId: p.c, status: 'PLANIFIE', start: { gte: new Date() } },
+    orderBy: { start: 'asc' },
+    select: { id: true, start: true, end: true },
+  });
+  if (upcoming) {
+    const durationMs = upcoming.end ? upcoming.end.getTime() - upcoming.start.getTime() : 90 * 60 * 1000;
+    await prisma.appointment.update({
+      where: { id: upcoming.id },
+      data: { start, end: new Date(start.getTime() + durationMs) },
+    });
+    await prisma.activity.create({
+      data: {
+        type: 'RDV',
+        contactId: p.c,
+        content: `Créneau reprogrammé par le client : ${start.toLocaleString('fr-FR', { dateStyle: 'full', timeStyle: 'short' })}.`,
+      },
+    }).catch(() => null);
+    redirect(`/rdv?ok=1&t=${encodeURIComponent(token)}`);
+  }
 
   const contact = await prisma.contact.findUnique({ where: { id: p.c } });
   if (!contact) redirect('/rdv?err=1');
@@ -95,10 +120,14 @@ export async function confirmBooking(formData: FormData): Promise<void> {
   // ACCEPTÉ (s'il ne l'était pas). Fiabilise le pipe, le montant signé et le
   // fallback de facturation. Borné au contact du token (anti-escalade).
   if (p.d) {
-    await prisma.devis.updateMany({
+    const res = await prisma.devis.updateMany({
       where: { id: p.d, contactId: p.c, status: 'ENVOYE' },
       data: { status: 'ACCEPTE', acceptedAt: new Date() },
     });
+    // Vélocité : l'acceptation tacite (créneau réservé) compte comme validation.
+    if (res.count > 0) {
+      await recordPhaseEvent(p.c, devis?.leadId ?? null, 'DEVIS_VALIDE').catch(() => null);
+    }
   }
 
   await prisma.activity.create({
