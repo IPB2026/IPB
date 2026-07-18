@@ -38,7 +38,7 @@ import {
 import { acceptDevis, quickCreateDevis, setDevisMontant } from '@/app/admin/(app)/devis/actions';
 import { recordFacturePayment } from '@/app/admin/(app)/factures/actions';
 import { sendFacture, sendRapport } from '@/app/admin/(app)/send-actions';
-import { archiveContact, markReviewReceived } from '@/app/admin/(app)/contact-actions';
+import { archiveContact, markReviewReceived, requestGoogleReview } from '@/app/admin/(app)/contact-actions';
 import { Money } from '@/components/admin/money';
 import { updateAppointmentStatus } from '@/app/admin/(app)/agenda/actions';
 import { RelanceControl } from '@/components/admin/relance-control';
@@ -736,6 +736,17 @@ export default async function ClientFichePage({
                     className="inline-flex items-center gap-1.5 rounded-lg border border-amber-300 bg-amber-50 px-2.5 py-1.5 text-xs font-medium text-amber-700 hover:bg-amber-100"
                   >
                     ★ Marquer « avis reçu »
+                  </button>
+                </form>
+              ) : isAdmin && c.email ? (
+                /* C3 — dossier hors flux rapport/facture : demande d'avis en un clic. */
+                <form action={requestGoogleReview}>
+                  <input type="hidden" name="contactId" value={c.id} />
+                  <button
+                    type="submit"
+                    className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-medium text-slate-600 hover:border-amber-300 hover:bg-amber-50 hover:text-amber-700"
+                  >
+                    ★ Envoyer la demande d'avis Google
                   </button>
                 </form>
               ) : null}
