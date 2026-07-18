@@ -146,6 +146,8 @@ async function getStats() {
     rdvACloturerCount,
     devisSansReponse,
     devisSansReponseCount,
+    phasesManuellesAnciennes,
+    rapportsEnSouffrance,
   ] = await Promise.all([
     prisma.lead.count(),
     prisma.contact.count({
@@ -255,6 +257,24 @@ async function getStats() {
       include: { contact: true },
     }),
     prisma.devis.count({ where: sansReponseWhere }),
+    // P3 — vigie : phase forcée à la main il y a > 30 j = dossier probablement figé
+    // (plus aucune relance auto ni avancement dérivé tant que l'override est posé).
+    prisma.lead.count({
+      where: {
+        manualPhase: { not: null },
+        updatedAt: { lt: new Date(Date.now() - 30 * 86_400_000) },
+        contact: { archivedAt: null },
+      },
+    }),
+    // P3 — vigie : rapport commencé jamais finalisé depuis > 7 j (phase RAPPORT
+    // infinie, demande d'avis jamais déclenchée).
+    prisma.rapport.count({
+      where: {
+        status: { in: ['BROUILLON', 'GENERE'] },
+        updatedAt: { lt: new Date(Date.now() - 7 * 86_400_000) },
+        contact: { archivedAt: null },
+      },
+    }),
   ]);
 
   return {
@@ -279,6 +299,8 @@ async function getStats() {
     rdvACloturerCount,
     devisSansReponse,
     devisSansReponseCount,
+  phasesManuellesAnciennes,
+  rapportsEnSouffrance,
   };
 }
 
@@ -387,6 +409,8 @@ export default async function DashboardPage() {
           <ActionTile href="/admin/factures" count={stats.facturesImpayeesCount} label="Factures impayées" icon={Receipt} tone="red" />
           <ActionTile href="/admin/clients" count={stats.relancesDues} label="Relances dues" icon={Clock} tone="amber" />
           <ActionTile href="/admin/devis" count={stats.aPlanifierCount} label="Visites à planifier" icon={CalendarClock} tone="orange" />
+          <ActionTile href="/admin/pipeline" count={stats.phasesManuellesAnciennes} label="Phases manuelles > 30 j" icon={Clock} tone="amber" />
+          <ActionTile href="/admin/rapports" count={stats.rapportsEnSouffrance} label="Rapports non finalisés" icon={Receipt} tone="red" />
         </div>
       </section>
 

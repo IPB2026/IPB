@@ -199,6 +199,13 @@ export async function sendFactureEmail(id: string): Promise<SendResult> {
     include: { contact: true },
   });
   if (!facture) return { ok: false, error: 'Facture introuvable' };
+  // P3-B : une facture envoyée sans échéance n'était JAMAIS relancée par le
+  // cron (dueDate null). On garantit une échéance à 30 j au moment de l'envoi.
+  if (!facture.dueDate) {
+    const due = new Date();
+    due.setDate(due.getDate() + 30);
+    await prisma.facture.update({ where: { id }, data: { dueDate: due } });
+  }
   if (!facture.contact.email) return { ok: false, error: 'Client sans e-mail' };
   const pdf = await buildFacturePdf(id);
   if (!pdf) return { ok: false, error: 'PDF indisponible' };

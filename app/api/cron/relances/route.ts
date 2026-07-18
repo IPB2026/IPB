@@ -312,7 +312,10 @@ export async function GET(req: Request) {
   //    (Workflow gérant : « le lendemain de la visite, on transmet la facture ».)
   const startOfToday = new Date();
   startOfToday.setHours(0, 0, 0, 0);
-  const sevenDaysAgo = new Date(now - 7 * DAY);
+  const sevenDaysAgo = new Date(now - 7 * DAY); // (conservé pour d'autres usages éventuels)
+  // P3-B : fenêtre de facturation élargie 7 → 30 j — une visite saisie en retard
+  // (REALISE posé après coup) était definitivement exclue de la facturation auto.
+  const facturationWindowStart = new Date(now - 30 * DAY);
   let factureAuto = 0;
   try {
     const appts = await prisma.appointment.findMany({
@@ -320,7 +323,7 @@ export async function GET(req: Request) {
         status: 'REALISE',
         factureId: null,
         type: { in: DIAGNOSTIC_APPT_TYPES },
-        start: { lt: startOfToday, gte: sevenDaysAgo },
+        start: { lt: startOfToday, gte: facturationWindowStart },
         contact: { email: { not: null }, archivedAt: null },
       },
       include: { contact: true },
@@ -351,6 +354,37 @@ export async function GET(req: Request) {
     }
   } catch (e) {
     errors.push(`facture-auto-loop: ${e instanceof Error ? e.message : 'err'}`);
+  }
+
+  // ── P3-B : expiration douce des devis à bout de relances ──────────────────
+  //    ENVOYE + 3 relances passées + aucun mouvement depuis 30 j → EXPIRE.
+  //    Sort le devis du pipe (KPIs) et des écrans « en attente » ; le dossier
+  //    reste rouvrable (renvoyer un devis le repasse ENVOYE).
+  let devisExpires = 0;
+  try {
+    const stale = await prisma.devis.findMany({
+      where: {
+        status: 'ENVOYE',
+        relanceCount: { gte: DEVIS_STEPS.length },
+        updatedAt: { lt: new Date(now - 30 * DAY) },
+      },
+      select: { id: true, number: true, contactId: true, leadId: true },
+      take: 50,
+    });
+    for (const d of stale) {
+      await prisma.devis.update({ where: { id: d.id }, data: { status: 'EXPIRE' } });
+      await prisma.activity.create({
+        data: {
+          type: 'SYSTEME',
+          contactId: d.contactId,
+          leadId: d.leadId,
+          content: `Devis ${d.number} expiré automatiquement (3 relances sans réponse, 30 j de silence).`,
+        },
+      }).catch(() => null);
+      devisExpires++;
+    }
+  } catch (e) {
+    errors.push(`expiration devis: ${e instanceof Error ? e.message : 'err'}`);
   }
 
   // ── Demande d'avis Google : J+7 après l'envoi du rapport. Le bouche-à-oreille

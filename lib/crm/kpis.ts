@@ -102,6 +102,7 @@ export async function computeKpis(): Promise<KpiData> {
     devisSigne,
     factureEmise,
     facturePayee,
+    acomptesEnCours,
     prospects,
     clients,
     totalLeads,
@@ -120,6 +121,8 @@ export async function computeKpis(): Promise<KpiData> {
       where: { status: { in: ['ENVOYEE', 'PAYEE'] }, contact: { archivedAt: null } },
     }),
     prisma.facture.aggregate({ _sum: { totalHT: true }, where: { status: 'PAYEE', contact: { archivedAt: null } } }),
+    // P2-B : un acompte versé sur une facture non soldée est DÉJÀ encaissé.
+    prisma.facture.aggregate({ _sum: { acompte: true }, where: { status: 'ENVOYEE', acompte: { not: null }, contact: { archivedAt: null } } }),
     prisma.contact.count({ where: { archivedAt: null } }),
     prisma.contact.count({ where: { AND: [CLIENT_CONTACT_WHERE, { archivedAt: null }] } }),
     prisma.lead.count({ where: { contact: { archivedAt: null } } }),
@@ -208,10 +211,12 @@ export async function computeKpis(): Promise<KpiData> {
   // ── Entonnoir (par PHASE de dossier — identique au pipeline) ──
   const funnelLeads = await prisma.lead.findMany({
     where: { stage: { notIn: ['PERDU'] }, contact: { archivedAt: null } },
+    orderBy: { createdAt: 'desc' }, // P2-B : troncature déterministe (take 1000)
     take: 1000,
     select: {
       stage: true,
       manualPhase: true,
+      contactId: true,
       contact: {
         select: {
           // orderBy déterministe identique à la fiche → phase/montant cohérents.
@@ -230,7 +235,13 @@ export async function computeKpis(): Promise<KpiData> {
   // Prévision pondérée : Σ probabilité(phase) × montant du devis, sur les dossiers
   // ACTIFS (ni Terminé, ni Perdu). Inspiré d'Einstein/Pipedrive forecast.
   let forecastPondere = 0;
+  const contactsComptes = new Set<string>(); // P2-B : un contact = une entrée funnel (2 leads ≠ 2 dossiers)
   for (const l of funnelLeads) {
+    const cId = (l as any).contactId ?? (l as any).contact?.id ?? null;
+    if (cId) {
+      if (contactsComptes.has(cId)) continue;
+      contactsComptes.add(cId);
+    }
     const dossier = computeDossier(
       dossierInputFromContact(l.contact, { stage: l.stage, manualPhase: l.manualPhase })
     );
@@ -358,7 +369,7 @@ export async function computeKpis(): Promise<KpiData> {
 
   const caSigne = n(devisSigne._sum.totalHT);
   const caFacture = n(factureEmise._sum.totalHT);
-  const caEncaisse = n(facturePayee._sum.totalHT);
+  const caEncaisse = n(facturePayee._sum.totalHT) + n(acomptesEnCours._sum.acompte);
   return {
     ca: {
       signe: caSigne,

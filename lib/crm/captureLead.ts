@@ -83,6 +83,8 @@ export function parseAddress(address?: string | null): {
 export interface CaptureLeadResult {
   leadId: string;
   contactId: string;
+  /** true si la demande a été rattachée à un dossier ouvert existant. */
+  deduplicated?: boolean;
 }
 
 export async function captureLead(
@@ -130,6 +132,9 @@ export async function captureLead(
         }
         if (v !== null && v !== undefined) update[k] = v;
       }
+      // Contact retrouvé en corbeille : on le RESTAURE — sinon le nouveau lead
+      // serait invisible du pipeline (qui exclut les contacts archivés).
+      if ((existing as { archivedAt?: Date | null }).archivedAt) update.archivedAt = null;
       const updated = await prisma.contact.update({
         where: { id: existing.id },
         data: update,
@@ -140,7 +145,41 @@ export async function captureLead(
       contactId = created.id;
     }
 
-    // 2) Créer le lead (avec l'attribution d'acquisition first-touch si dispo)
+    // 2) DÉDUP DOSSIER : si un lead OUVERT récent (< 90 j) existe pour ce
+    //    contact, la nouvelle demande s'y rattache (activité + rafraîchissement
+    //    du résumé) au lieu d'ouvrir un doublon dans le pipeline. Un dossier
+    //    clos (GAGNE/PERDU) ou ancien rouvre normalement un nouveau lead.
+    const OPEN_STAGES_DEDUP = ['NOUVEAU', 'A_RAPPELER', 'DEVIS_ENVOYE', 'RDV_PLANIFIE', 'VISITE_FAITE'];
+    const openLead = await prisma.lead.findFirst({
+      where: {
+        contactId,
+        stage: { in: OPEN_STAGES_DEDUP as never },
+        createdAt: { gte: new Date(Date.now() - 90 * 86_400_000) },
+      },
+      orderBy: { createdAt: 'desc' },
+      select: { id: true, service: true },
+    });
+    if (openLead) {
+      await prisma.lead.update({
+        where: { id: openLead.id },
+        data: {
+          summary: clean(input.summary) ?? undefined,
+          // un score plus récent remplace l'ancien (le reste est conservé)
+          ...(input.scoring ? { tier: input.scoring.tier ?? null, score: input.scoring.score ?? null } : {}),
+        },
+      }).catch(() => null);
+      await prisma.activity.create({
+        data: {
+          type: 'SYSTEME',
+          leadId: openLead.id,
+          contactId,
+          content: `Nouvelle demande via ${input.source} rattachée au dossier en cours${input.service && input.service !== openLead.service ? ` (service demandé : ${input.service})` : ''}.`,
+        },
+      }).catch(() => null);
+      return { leadId: openLead.id, contactId, deduplicated: true };
+    }
+
+    // Créer le lead (avec l'attribution d'acquisition first-touch si dispo)
     const attr = input.attribution ?? null;
     const lead = await prisma.lead.create({
       data: {

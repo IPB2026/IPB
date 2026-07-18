@@ -212,6 +212,23 @@ export async function updateAppointmentStatus(formData: FormData) {
     if (!isCalendarConfigured()) {
       await notifyClientCancellation(id);
     }
+    // Resynchronisation : une facture BROUILLON liée à une visite annulée n'a
+    // plus lieu d'être — on l'annule et on le trace (elle restait « vivante »).
+    const full = await prisma.appointment.findUnique({
+      where: { id },
+      select: { factureId: true, contactId: true },
+    });
+    if (full?.factureId) {
+      const annulee = await prisma.facture.updateMany({
+        where: { id: full.factureId, status: 'BROUILLON' },
+        data: { status: 'ANNULEE' },
+      });
+      if (annulee.count > 0) {
+        await prisma.activity.create({
+          data: { type: 'SYSTEME', contactId: full.contactId, content: 'Facture brouillon annulée (visite annulée).' },
+        }).catch(() => null);
+      }
+    }
   }
   revalidatePath('/admin/agenda');
   revalidateCrm(appt.contactId);
