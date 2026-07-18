@@ -1,4 +1,6 @@
 import { createMcpHandler } from 'mcp-handler';
+import crypto from 'crypto';
+import { recordPhaseEvent } from '@/lib/crm/phase-events';
 import { z } from 'zod';
 import { prisma } from '@/lib/prisma';
 import {
@@ -259,6 +261,11 @@ const baseHandler = createMcpHandler(
       async ({ prospectId, etape }) => {
         const lead = await prisma.lead.findUnique({ where: { id: prospectId }, select: { stage: true, contactId: true } });
         if (!lead) return ok({ ok: false, erreur: 'Prospect introuvable' });
+        // Règle dure n°1 : pas de PERDU sur un dossier encaissé (même garde que l'UI).
+        if (etape === 'PERDU') {
+          const payee = await prisma.facture.findFirst({ where: { contactId: lead.contactId, status: 'PAYEE' }, select: { id: true } });
+          if (payee) return ok({ ok: false, erreur: 'Refusé : une facture payée existe sur ce dossier (règle workflow n°1)' });
+        }
         // Réglage MANUEL : pose `manualPhase` (override « liberté totale ») + synchronise
         // l'enum stage. Rouvrir un dossier (depuis PERDU/GAGNE) repasse en suivi auto.
         const reopen = etape !== 'PERDU' && (lead.stage === 'PERDU' || lead.stage === 'GAGNE');
@@ -342,9 +349,20 @@ const baseHandler = createMcpHandler(
       async ({ devisId }) => {
         const devis = await prisma.devis.findUnique({ where: { id: devisId }, include: { contact: true, lines: { orderBy: { position: 'asc' } } } });
         if (!devis) return ok({ ok: false, erreur: 'Devis introuvable' });
+        // Mêmes règles que l'UI : pas de facture depuis un brouillon/refusé/annulé.
+        if (devis.status === 'BROUILLON' || devis.status === 'REFUSE' || devis.status === 'EXPIRE') {
+          return ok({ ok: false, erreur: `Devis ${devis.status} : non convertible en facture` });
+        }
+        // Idempotence : déjà converti → on renvoie l'existante (pas de doublon légal).
+        const existante = await prisma.facture.findFirst({ where: { devisId: devis.id, status: { not: 'ANNULEE' } }, select: { id: true, number: true } });
+        if (existante) return ok({ ok: true, factureId: existante.id, number: existante.number, note: 'Facture déjà existante pour ce devis' });
         const due = new Date(); due.setDate(due.getDate() + 30);
-        const facture = await prisma.facture.create({ data: { number: await nextFactureNumber(devis.contact.name), contactId: devis.contactId, devisId: devis.id, object: factureObjet(devis.object), dueDate: due, totalHT: devis.totalHT, lines: { create: devis.lines.map((l, i) => ({ designation: sanitizeStructurel(l.designation), detail: l.detail ? sanitizeStructurel(l.detail) : l.detail, unit: l.unit, qty: l.qty, unitPrice: l.unitPrice, total: l.total, position: i })) } } });
-        await prisma.devis.update({ where: { id: devisId }, data: { status: 'ACCEPTE' } });
+        const number = await nextFactureNumber(devis.contact.name);
+        const [facture] = await prisma.$transaction([
+          prisma.facture.create({ data: { number, contactId: devis.contactId, devisId: devis.id, object: factureObjet(devis.object), dueDate: due, totalHT: devis.totalHT, lines: { create: devis.lines.map((l, i) => ({ designation: sanitizeStructurel(l.designation), detail: l.detail ? sanitizeStructurel(l.detail) : l.detail, unit: l.unit, qty: l.qty, unitPrice: l.unitPrice, total: l.total, position: i })) } } }),
+          prisma.devis.update({ where: { id: devisId }, data: { status: 'ACCEPTE', acceptedAt: devis.acceptedAt ?? new Date() } }),
+        ]);
+        await recordPhaseEvent(devis.contactId, devis.leadId, 'DEVIS_VALIDE').catch(() => null);
         return ok({ ok: true, factureId: facture.id, number: facture.number });
       }
     );
@@ -352,7 +370,15 @@ const baseHandler = createMcpHandler(
     server.tool('envoyer_facture', 'Envoie la facture au client par e-mail (PDF joint).', { factureId: z.string().min(1) }, async ({ factureId }) => ok(await sendFactureEmail(factureId)));
 
     server.tool('marquer_facture_payee', 'Marque une facture comme payée.', { factureId: z.string().min(1) }, async ({ factureId }) => {
-      await prisma.facture.update({ where: { id: factureId }, data: { status: 'PAYEE' } }).catch(() => null);
+      const fact = await prisma.facture.findUnique({ where: { id: factureId }, select: { id: true, number: true, contactId: true, devis: { select: { leadId: true } } } });
+      if (!fact) return ok({ ok: false, erreur: 'Facture introuvable' });
+      await prisma.facture.update({ where: { id: factureId }, data: { status: 'PAYEE' } });
+      // Mêmes effets de bord que l'UI : trace de phase + tâche « rapport à rédiger »
+      // (le paiement est LE déclencheur du rapport, cf. WORKFLOW_IPB.md règle n°2).
+      await recordPhaseEvent(fact.contactId, fact.devis?.leadId ?? null, 'PAIEMENT_RECU').catch(() => null);
+      await prisma.activity.create({
+        data: { type: 'RELANCE', contactId: fact.contactId, content: `Rapport à rédiger (facture ${fact.number} payée) — livraison promise sous 3 à 5 jours ouvrés.`, dueAt: new Date() },
+      }).catch(() => null);
       return ok({ ok: true });
     });
 
@@ -442,7 +468,11 @@ async function guarded(
   req: Request,
   ctx: { params: { secret: string; transport: string } }
 ): Promise<Response> {
-  if (!TOKEN || ctx.params.secret !== TOKEN) {
+  // Comparaison à temps constant (le secret transite dans l'URL : déjà loggué
+  // par les proxys — au moins, on ne l'affaiblit pas par timing oracle).
+  const a = Buffer.from(ctx.params.secret ?? '');
+  const b = Buffer.from(TOKEN ?? '');
+  if (!TOKEN || a.length !== b.length || !crypto.timingSafeEqual(a, b)) {
     return new Response('Not found', { status: 404 });
   }
   return baseHandler(req);

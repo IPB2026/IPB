@@ -136,14 +136,29 @@ export async function GET(req: Request) {
       where: {
         status: 'ENVOYE',
         relanceCount: { lt: DEVIS_STEPS.length },
-        contact: { email: { not: null } },
+        contact: { email: { not: null }, archivedAt: null },
       },
       include: { contact: true },
       take: 100,
       orderBy: { createdAt: 'asc' },
     });
+    // Dossier classé PERDU (étape ou phase manuelle) → plus de relance commerciale.
+    // Devis.leadId est scalaire (pas de relation) : on résout les leads perdus en
+    // une requête et on écarte en mémoire.
+    const leadIdsDevis = devisList.map((d) => d.leadId).filter((x): x is string => Boolean(x));
+    const leadsPerdus = leadIdsDevis.length
+      ? new Set(
+          (
+            await prisma.lead.findMany({
+              where: { id: { in: leadIdsDevis }, OR: [{ stage: 'PERDU' }, { manualPhase: 'PERDU' }] },
+              select: { id: true },
+            })
+          ).map((l) => l.id)
+        )
+      : new Set<string>();
 
     for (const devis of devisList) {
+      if (devis.leadId && leadsPerdus.has(devis.leadId)) continue;
       const email = devis.contact.email;
       if (!email) continue;
 
@@ -224,7 +239,7 @@ export async function GET(req: Request) {
         status: 'ENVOYEE',
         relanceCount: { lt: FACTURE_STEPS.length },
         dueDate: { not: null, lt: new Date(now) },
-        contact: { email: { not: null } },
+        contact: { email: { not: null }, archivedAt: null },
       },
       include: { contact: true },
       take: 100,
@@ -306,7 +321,7 @@ export async function GET(req: Request) {
         factureId: null,
         type: { in: DIAGNOSTIC_APPT_TYPES },
         start: { lt: startOfToday, gte: sevenDaysAgo },
-        contact: { email: { not: null } },
+        contact: { email: { not: null }, archivedAt: null },
       },
       include: { contact: true },
       // Génération PDF + envoi = lourd → on plafonne par passage (budget 60 s).
@@ -356,7 +371,7 @@ export async function GET(req: Request) {
         where: {
           status: 'ENVOYE',
           updatedAt: { lt: cutoff },
-          contact: { email: { not: null }, reviewRequestedAt: null },
+          contact: { email: { not: null }, reviewRequestedAt: null, archivedAt: null },
         },
         include: { contact: true },
         take: 50,
@@ -366,7 +381,7 @@ export async function GET(req: Request) {
         where: {
           status: 'PAYEE',
           updatedAt: { lt: cutoff },
-          contact: { email: { not: null }, reviewRequestedAt: null },
+          contact: { email: { not: null }, reviewRequestedAt: null, archivedAt: null },
         },
         include: { contact: true },
         take: 50,
@@ -433,7 +448,7 @@ export async function GET(req: Request) {
       where: {
         status: 'PLANIFIE',
         start: { gte: tomorrowStart, lt: tomorrowEnd },
-        contact: { email: { not: null } },
+        contact: { email: { not: null }, archivedAt: null },
       },
       include: { contact: true },
       take: 50,

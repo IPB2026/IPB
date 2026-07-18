@@ -114,25 +114,25 @@ export async function computeKpis(): Promise<KpiData> {
     rapportsLivres,
     pipeAgg,
   ] = await Promise.all([
-    prisma.devis.aggregate({ _sum: { totalHT: true }, where: { status: 'ACCEPTE' } }),
+    prisma.devis.aggregate({ _sum: { totalHT: true }, where: { status: 'ACCEPTE', contact: { archivedAt: null } } }),
     prisma.facture.aggregate({
       _sum: { totalHT: true },
-      where: { status: { in: ['ENVOYEE', 'PAYEE'] } },
+      where: { status: { in: ['ENVOYEE', 'PAYEE'] }, contact: { archivedAt: null } },
     }),
-    prisma.facture.aggregate({ _sum: { totalHT: true }, where: { status: 'PAYEE' } }),
-    prisma.contact.count(),
-    prisma.contact.count({ where: CLIENT_CONTACT_WHERE }),
-    prisma.lead.count(),
-    prisma.devis.count(),
-    prisma.facture.count(),
-    prisma.rapport.count(),
-    prisma.devis.count({ where: { status: 'ACCEPTE' } }),
+    prisma.facture.aggregate({ _sum: { totalHT: true }, where: { status: 'PAYEE', contact: { archivedAt: null } } }),
+    prisma.contact.count({ where: { archivedAt: null } }),
+    prisma.contact.count({ where: { AND: [CLIENT_CONTACT_WHERE, { archivedAt: null }] } }),
+    prisma.lead.count({ where: { contact: { archivedAt: null } } }),
+    prisma.devis.count({ where: { contact: { archivedAt: null } } }),
+    prisma.facture.count({ where: { contact: { archivedAt: null } } }),
+    prisma.rapport.count({ where: { contact: { archivedAt: null } } }),
+    prisma.devis.count({ where: { status: 'ACCEPTE', contact: { archivedAt: null } } }),
     // Devis « sortis » (envoyés au moins une fois) = base du taux d'acceptation.
-    prisma.devis.count({ where: { status: { in: ['ENVOYE', 'ACCEPTE', 'REFUSE', 'EXPIRE'] } } }),
-    prisma.appointment.count({ where: { start: { gte: now }, status: { not: 'ANNULE' } } }),
-    prisma.rapport.count({ where: { status: 'ENVOYE' } }),
+    prisma.devis.count({ where: { status: { in: ['ENVOYE', 'ACCEPTE', 'REFUSE', 'EXPIRE'] }, contact: { archivedAt: null } } }),
+    prisma.appointment.count({ where: { start: { gte: now }, status: { not: 'ANNULE' }, contact: { archivedAt: null } } }),
+    prisma.rapport.count({ where: { status: 'ENVOYE', contact: { archivedAt: null } } }),
     // Pipe : devis ENVOYÉS en attente de réponse (CA potentiel à signer).
-    prisma.devis.aggregate({ _sum: { totalHT: true }, _count: true, where: { status: 'ENVOYE' } }),
+    prisma.devis.aggregate({ _sum: { totalHT: true }, _count: true, where: { status: 'ENVOYE', contact: { archivedAt: null } } }),
   ]);
 
   // ── Délai moyen demande → rapport remis ──
@@ -207,7 +207,7 @@ export async function computeKpis(): Promise<KpiData> {
 
   // ── Entonnoir (par PHASE de dossier — identique au pipeline) ──
   const funnelLeads = await prisma.lead.findMany({
-    where: { stage: { notIn: ['PERDU'] } },
+    where: { stage: { notIn: ['PERDU'] }, contact: { archivedAt: null } },
     take: 1000,
     select: {
       stage: true,

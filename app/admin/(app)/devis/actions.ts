@@ -658,11 +658,20 @@ export async function convertDevisToFacture(formData: FormData) {
   });
   if (!devis) return;
 
+  // Idempotence : un devis déjà converti renvoie sa facture existante (le
+  // double-clic créait auparavant DEUX factures à numéros légaux distincts).
+  const dejaConvertie = await prisma.facture.findFirst({
+    where: { devisId: devis.id, status: { not: 'ANNULEE' } },
+    select: { id: true },
+  });
+  if (dejaConvertie) redirect(`/admin/factures/${dejaConvertie.id}`);
+
   const number = await nextFactureNumber(devis.contact.name);
   const due = new Date();
   due.setDate(due.getDate() + 30);
 
-  const facture = await prisma.facture.create({
+  const [facture] = await prisma.$transaction([
+    prisma.facture.create({
     data: {
       number,
       contactId: devis.contactId,
@@ -684,12 +693,12 @@ export async function convertDevisToFacture(formData: FormData) {
         })),
       },
     },
-  });
-
-  await prisma.devis.update({
-    where: { id },
-    data: { status: 'ACCEPTE', acceptedAt: devis.acceptedAt ?? new Date() },
-  });
+    }),
+    prisma.devis.update({
+      where: { id },
+      data: { status: 'ACCEPTE', acceptedAt: devis.acceptedAt ?? new Date() },
+    }),
+  ]);
   // La conversion vaut acceptation : on fait gagner le lead lié.
   if (devis.leadId) {
     await prisma.lead.updateMany({

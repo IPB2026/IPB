@@ -92,6 +92,19 @@ export async function createRapport(
   const contact = await prisma.contact.findUnique({ where: { id: contactId } });
   if (!contact) return 'Client introuvable.';
 
+  // Cloisonnement terrain : un EXPERT ne crée un rapport que sur un dossier
+  // qui lui est assigné (même règle que startRapportFromLead).
+  if (user.role !== 'ADMIN') {
+    const leadIdForm = str(formData.get('leadId')) || null;
+    const owned = await prisma.lead.findFirst({
+      where: leadIdForm
+        ? { id: leadIdForm, assignedToId: user.id }
+        : { contactId, assignedToId: user.id },
+      select: { id: true },
+    });
+    if (!owned) return 'Dossier non assigné à votre compte.';
+  }
+
   const number = await nextRapportNumber(contact.name);
   const rapport = await prisma.rapport.create({
     data: {

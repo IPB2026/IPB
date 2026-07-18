@@ -245,6 +245,19 @@ export async function sendRapportEmail(id: string): Promise<SendResult> {
   });
   if (!rapport) return { ok: false, error: 'Rapport introuvable' };
   if (!rapport.contact.email) return { ok: false, error: 'Client sans e-mail' };
+  if (rapport.status === 'BROUILLON') {
+    return { ok: false, error: 'Rapport encore en brouillon — à valider avant envoi' };
+  }
+  // RÈGLE DURE n°2 (WORKFLOW_IPB.md) : aucun rapport ne part tant qu'aucune
+  // facture n'est PAYÉE pour ce contact. Le verrou vit ICI, dans la fonction
+  // partagée — l'UI, le MCP et tout futur appelant l'héritent d'office.
+  const facturePayee = await prisma.facture.findFirst({
+    where: { contactId: rapport.contactId, status: 'PAYEE' },
+    select: { id: true },
+  });
+  if (!facturePayee) {
+    return { ok: false, error: 'Verrou workflow : facture non payée — le rapport ne peut pas être envoyé' };
+  }
   const pdf = await buildRapportPdf(id);
   if (!pdf) return { ok: false, error: 'Rapport non généré' };
 
