@@ -1,6 +1,7 @@
 'use server';
 
 import { redirect } from 'next/navigation';
+import { recordPhaseEvent } from '@/lib/crm/phase-events';
 import { revalidatePath } from 'next/cache';
 import { revalidateCrm } from '@/lib/crm/revalidate';
 import { prisma } from '@/lib/prisma';
@@ -116,6 +117,21 @@ export async function createAppointment(formData: FormData) {
       assignedToId,
     },
   });
+
+  // Parité avec la réservation en ligne : planifier une visite diagnostic pour
+  // un contact dont UN devis est « Envoyé » vaut acceptation tacite (c'est ce
+  // chemin — accord téléphonique + RDV manuel — qui laissait des devis orphelins).
+  if (DIAGNOSTIC_APPT_TYPES.includes(type as never)) {
+    const enAttente = await prisma.devis.findMany({
+      where: { contactId, status: 'ENVOYE' },
+      select: { id: true, leadId: true },
+      take: 2,
+    });
+    if (enAttente.length === 1) {
+      await prisma.devis.update({ where: { id: enAttente[0].id }, data: { status: 'ACCEPTE', acceptedAt: new Date() } });
+      await recordPhaseEvent(contactId, enAttente[0].leadId, 'DEVIS_VALIDE').catch(() => null);
+    }
+  }
 
   // Invitations Google : 1) client (adresse + confirmation) 2) diagnostiqueur
   // (adresse + date + heure). Repli e-mail maison si Google non configuré ; alerte
