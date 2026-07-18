@@ -1,6 +1,7 @@
 import { createMcpHandler } from 'mcp-handler';
 import crypto from 'crypto';
 import { recordPhaseEvent } from '@/lib/crm/phase-events';
+import { sendAppointmentInvites } from '@/lib/crm/appointment-invites';
 import { z } from 'zod';
 import { prisma } from '@/lib/prisma';
 import {
@@ -335,7 +336,15 @@ const baseHandler = createMcpHandler(
         const computed = lignes.map((l, i) => ({ designation: l.designation, detail: l.detail ?? null, unit: l.unit ?? 'Forfait', qty: l.qty ?? 1, unitPrice: l.unitPrice, total: Math.round((l.qty ?? 1) * l.unitPrice * 100) / 100, position: i }));
         const totalHT = computed.reduce((s, l) => s + l.total, 0);
         const validUntil = new Date(); validUntil.setDate(validUntil.getDate() + 30);
-        const devis = await prisma.devis.create({ data: { number: await nextDevisNumber(), contactId, object: objet, bienConcerne: bienConcerne ?? null, validUntil, totalHT, lines: { create: computed } } });
+        // Parité UI : rattacher le dossier ouvert du contact — sans leadId,
+        // l'envoi du devis n'avançait jamais le pipeline.
+        const openLead = await prisma.lead.findFirst({
+          where: { contactId, stage: { in: ['NOUVEAU', 'A_RAPPELER', 'DEVIS_ENVOYE', 'RDV_PLANIFIE', 'VISITE_FAITE'] } },
+          orderBy: { createdAt: 'desc' },
+          select: { id: true, service: true },
+        });
+        const devis = await prisma.devis.create({ data: { number: await nextDevisNumber(), contactId, leadId: openLead?.id ?? null, serviceType: (openLead?.service as never) ?? null, object: objet, bienConcerne: bienConcerne ?? null, validUntil, totalHT, lines: { create: computed } } });
+        auditMcp(contactId, `Devis ${devis.number} créé (${totalHT} € HT)`);
         return ok({ ok: true, devisId: devis.id, number: devis.number, totalHT });
       }
     );
@@ -475,9 +484,20 @@ const baseHandler = createMcpHandler(
         if (Number.isNaN(start.getTime())) return ok({ ok: false, erreur: 'Date invalide' });
         const t = type ?? 'DIAGNOSTIC_FISSURES';
         const end = new Date(start.getTime() + (dureeMin ?? 60) * 60000);
-        const appt = await prisma.appointment.create({ data: { contactId, title: APPT_OBJECT[t], type: t, start, end, location: lieu ?? null } });
-        await prisma.activity.create({ data: { type: 'RDV', contactId, content: `[Cowork] RDV ${APPT_OBJECT[t]} — ${start.toLocaleString('fr-FR')}` } });
-        return ok({ ok: true, rdvId: appt.id });
+        const openLead = await prisma.lead.findFirst({
+          where: { contactId, stage: { in: ['NOUVEAU', 'A_RAPPELER', 'DEVIS_ENVOYE'] } },
+          orderBy: { createdAt: 'desc' },
+          select: { id: true },
+        });
+        const appt = await prisma.appointment.create({ data: { contactId, leadId: openLead?.id ?? null, title: APPT_OBJECT[t], type: t, start, end, location: lieu ?? null } });
+        // Parité UI : le RDV avance le dossier + les invitations partent
+        // (agenda Google du client et du diagnostiqueur, sinon e-mail maison).
+        if (openLead) {
+          await prisma.lead.update({ where: { id: openLead.id }, data: { stage: 'RDV_PLANIFIE' } }).catch(() => null);
+        }
+        const invites = await sendAppointmentInvites(appt.id).catch(() => null);
+        await prisma.activity.create({ data: { type: 'RDV', contactId, leadId: openLead?.id ?? null, content: `[MCP] RDV ${APPT_OBJECT[t]} — ${start.toLocaleString('fr-FR')}${invites?.configured ? ' (invitations envoyées)' : ''}` } });
+        return ok({ ok: true, rdvId: appt.id, invitations: invites?.configured ?? false });
       }
     );
 
