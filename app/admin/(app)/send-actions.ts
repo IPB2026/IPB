@@ -30,10 +30,11 @@ export async function sendDevis(formData: FormData) {
   const id = str(formData.get('devisId'));
   if (!id) return;
   const res = await sendDevisEmail(id);
-  if (!res.ok) throw new Error(`Échec de l'envoi du devis : ${res.error}`);
   revalidatePath(`/admin/devis/${id}`);
   revalidatePath('/admin/devis');
   revalidateCrm();
+  // UX : plus de throw (page d'erreur brutale) — toast succès/échec via query.
+  redirect(`/admin/devis/${id}?${res.ok ? 'ok=envoye' : `err=${encodeURIComponent(res.error ?? 'envoi')}`}`);
 }
 
 // Délai minimum entre l'envoi du mail et le créneau proposé (3 jours pleins).
@@ -92,10 +93,10 @@ export async function sendDevisWithSlots(formData: FormData) {
   slots.sort((a, b) => a.getTime() - b.getTime());
 
   const res = await sendDevisEmail(id, slots);
-  if (!res.ok) throw new Error(`Échec de l'envoi du devis : ${res.error}`);
   revalidatePath(`/admin/devis/${id}`);
   revalidatePath('/admin/devis');
   revalidateCrm();
+  redirect(`/admin/devis/${id}?${res.ok ? 'ok=proposed' : `err=${encodeURIComponent(res.error ?? 'envoi')}`}`);
 }
 
 export async function sendFacture(formData: FormData) {
@@ -103,10 +104,10 @@ export async function sendFacture(formData: FormData) {
   const id = str(formData.get('factureId'));
   if (!id) return;
   const res = await sendFactureEmail(id);
-  if (!res.ok) throw new Error(`Échec de l'envoi de la facture : ${res.error}`);
   revalidatePath(`/admin/factures/${id}`);
   revalidatePath('/admin/factures');
   revalidateCrm();
+  redirect(`/admin/factures/${id}?${res.ok ? 'ok=envoye' : `err=${encodeURIComponent(res.error ?? 'envoi')}`}`);
 }
 
 export async function sendRapport(formData: FormData) {
@@ -114,10 +115,10 @@ export async function sendRapport(formData: FormData) {
   const id = str(formData.get('rapportId'));
   if (!id) return;
   const res = await sendRapportEmail(id);
-  if (!res.ok) throw new Error(`Échec de l'envoi du rapport : ${res.error}`);
   revalidatePath(`/admin/rapports/${id}`);
   revalidatePath('/admin/rapports');
   revalidateCrm();
+  redirect(`/admin/rapports/${id}?${res.ok ? 'ok=envoye' : `err=${encodeURIComponent(res.error ?? 'envoi')}`}`);
 }
 
 /**

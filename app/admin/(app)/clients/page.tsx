@@ -136,8 +136,8 @@ export default async function ClientsPage({
           dbError
             ? undefined
             : corbeille
-              ? `${rows.length} client(s) à la corbeille — suppression définitive automatique après 30 jours`
-              : `${rows.length} contact(s) — prospects & clients`
+              ? `${total} client(s) à la corbeille — suppression définitive automatique après 30 jours`
+              : `${total} contact(s) — prospects & clients`
         }
         actions={
           corbeille ? (
