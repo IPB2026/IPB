@@ -214,6 +214,27 @@ async function applyManualPhase(
     where: { id: leadId },
     select: { stage: true, manualPhase: true, contactId: true },
   });
+  // RÈGLE DURE n°1 (WORKFLOW_IPB.md) : « Perdu = devis diagnostic non validé ».
+  // Garde pragmatique : un dossier avec facture PAYÉE ne peut pas être perdu
+  // (l'argent est encaissé) — trace visible dans le fil d'activité.
+  if (phase === 'PERDU' && current?.contactId) {
+    const payee = await prisma.facture.findFirst({
+      where: { contactId: current.contactId, status: 'PAYEE' },
+      select: { id: true },
+    });
+    if (payee) {
+      await prisma.activity.create({
+        data: {
+          type: 'SYSTEME',
+          contactId: current.contactId,
+          leadId,
+          content: 'Passage en « Perdu » refusé : une facture payée existe sur ce dossier (règle workflow n°1).',
+        },
+      }).catch(() => null);
+      return;
+    }
+  }
+
   if (!current || current.manualPhase === phase) return;
 
   // Synchronise l'enum lead.stage SI la phase a un équivalent enum (sinon on n'y

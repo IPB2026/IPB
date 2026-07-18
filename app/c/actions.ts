@@ -1,6 +1,7 @@
 'use server';
 
 import { redirect } from 'next/navigation';
+import { recordPhaseEvent } from '@/lib/crm/phase-events';
 import { revalidatePath } from 'next/cache';
 import { prisma } from '@/lib/prisma';
 import { sendEmail } from '@/lib/email';
@@ -53,6 +54,9 @@ export async function confirmClientAction(formData: FormData): Promise<void> {
       where: { id: p.id },
       data: { status: 'ACCEPTE', acceptedAt: new Date() },
     });
+    // Vélocité : l'acceptation EN LIGNE est le happy path principal — sans cet
+    // event, delaiValidationJours (pilotage) était aveugle sur la majorité des cas.
+    await recordPhaseEvent(devis.contactId, devis.leadId, 'DEVIS_VALIDE').catch(() => null);
     if (devis.leadId) {
       await prisma.lead.updateMany({
         where: {

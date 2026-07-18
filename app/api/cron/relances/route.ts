@@ -136,14 +136,29 @@ export async function GET(req: Request) {
       where: {
         status: 'ENVOYE',
         relanceCount: { lt: DEVIS_STEPS.length },
-        contact: { email: { not: null } },
+        contact: { email: { not: null }, archivedAt: null },
       },
       include: { contact: true },
       take: 100,
       orderBy: { createdAt: 'asc' },
     });
+    // Dossier classé PERDU (étape ou phase manuelle) → plus de relance commerciale.
+    // Devis.leadId est scalaire (pas de relation) : on résout les leads perdus en
+    // une requête et on écarte en mémoire.
+    const leadIdsDevis = devisList.map((d) => d.leadId).filter((x): x is string => Boolean(x));
+    const leadsPerdus = leadIdsDevis.length
+      ? new Set(
+          (
+            await prisma.lead.findMany({
+              where: { id: { in: leadIdsDevis }, OR: [{ stage: 'PERDU' }, { manualPhase: 'PERDU' }] },
+              select: { id: true },
+            })
+          ).map((l) => l.id)
+        )
+      : new Set<string>();
 
     for (const devis of devisList) {
+      if (devis.leadId && leadsPerdus.has(devis.leadId)) continue;
       const email = devis.contact.email;
       if (!email) continue;
 
@@ -224,7 +239,7 @@ export async function GET(req: Request) {
         status: 'ENVOYEE',
         relanceCount: { lt: FACTURE_STEPS.length },
         dueDate: { not: null, lt: new Date(now) },
-        contact: { email: { not: null } },
+        contact: { email: { not: null }, archivedAt: null },
       },
       include: { contact: true },
       take: 100,
@@ -306,7 +321,7 @@ export async function GET(req: Request) {
         factureId: null,
         type: { in: DIAGNOSTIC_APPT_TYPES },
         start: { lt: startOfToday, gte: sevenDaysAgo },
-        contact: { email: { not: null } },
+        contact: { email: { not: null }, archivedAt: null },
       },
       include: { contact: true },
       // Génération PDF + envoi = lourd → on plafonne par passage (budget 60 s).
@@ -346,50 +361,75 @@ export async function GET(req: Request) {
   let avisSent = 0;
   try {
     const cutoff = new Date(now - REVIEW_DELAY_DAYS * DAY);
-    const rapports = await prisma.rapport.findMany({
-      where: {
-        status: 'ENVOYE',
-        updatedAt: { lt: cutoff },
-        // C3 — moteur d'avis : une SEULE demande par client (reviewRequestedAt null).
-        contact: { email: { not: null }, reviewRequestedAt: null },
-      },
-      include: { contact: true },
-      take: 50,
-      orderBy: { updatedAt: 'asc' },
-    });
+    // C3 — déclencheurs de la demande d'avis : rapport envoyé OU facture payée.
+    //    Constat 2026-07 : ~70 dossiers/an mais 2 rapports seulement transitent
+    //    par le module rapports — la facture payée est le signal de fin de
+    //    mission qui passe réellement par le CRM. Dédup par contact (une seule
+    //    demande par client, reviewRequestedAt null), fusion des deux sources.
+    const [rapports, facturesPayees] = await Promise.all([
+      prisma.rapport.findMany({
+        where: {
+          status: 'ENVOYE',
+          updatedAt: { lt: cutoff },
+          contact: { email: { not: null }, reviewRequestedAt: null, archivedAt: null },
+        },
+        include: { contact: true },
+        take: 50,
+        orderBy: { updatedAt: 'asc' },
+      }),
+      prisma.facture.findMany({
+        where: {
+          status: 'PAYEE',
+          updatedAt: { lt: cutoff },
+          contact: { email: { not: null }, reviewRequestedAt: null, archivedAt: null },
+        },
+        include: { contact: true },
+        take: 50,
+        orderBy: { updatedAt: 'asc' },
+      }),
+    ]);
+    const candidats = new Map<string, { contact: (typeof rapports)[number]['contact']; leadId: string | null; motif: string }>();
     for (const r of rapports) {
-      const email = r.contact.email;
+      candidats.set(r.contactId, { contact: r.contact, leadId: r.leadId, motif: `rapport ${r.number}` });
+    }
+    for (const fPayee of facturesPayees) {
+      if (!candidats.has(fPayee.contactId)) {
+        candidats.set(fPayee.contactId, { contact: fPayee.contact, leadId: null, motif: `facture ${fPayee.number} payée` });
+      }
+    }
+    for (const [contactId, cand] of candidats) {
+      const email = cand.contact.email;
       if (!email) continue;
       try {
         const res = await sendEmail({
           to: email,
           subject: 'Votre avis sur votre expertise IPB',
           html: postChantierReviewRequest({
-            firstName: r.contact.name.split(' ')[0] || r.contact.name,
-            city: r.contact.city ?? undefined,
+            firstName: cand.contact.name.split(' ')[0] || cand.contact.name,
+            city: cand.contact.city ?? undefined,
             serviceType: 'diagnostic',
           }),
         });
         if (!res.success) {
-          errors.push(`avis ${r.id}: ${res.error}`);
+          errors.push(`avis ${contactId}: ${res.error}`);
           continue;
         }
         await prisma.activity.create({
           data: {
             type: 'EMAIL',
-            contactId: r.contactId,
-            leadId: r.leadId,
-            content: `Demande d'avis Google (rapport ${r.number}) envoyée à ${email}`,
+            contactId,
+            leadId: cand.leadId,
+            content: `Demande d'avis Google (${cand.motif}) envoyée à ${email}`,
           },
         });
         // C3 — trace la demande d'avis sur le contact (dédup + métrique pilotage).
         await prisma.contact.update({
-          where: { id: r.contactId },
+          where: { id: contactId },
           data: { reviewRequestedAt: new Date() },
         });
         avisSent++;
       } catch (e) {
-        errors.push(`avis ${r.id}: ${e instanceof Error ? e.message : 'err'}`);
+        errors.push(`avis ${contactId}: ${e instanceof Error ? e.message : 'err'}`);
       }
     }
   } catch (e) {
@@ -408,7 +448,7 @@ export async function GET(req: Request) {
       where: {
         status: 'PLANIFIE',
         start: { gte: tomorrowStart, lt: tomorrowEnd },
-        contact: { email: { not: null } },
+        contact: { email: { not: null }, archivedAt: null },
       },
       include: { contact: true },
       take: 50,

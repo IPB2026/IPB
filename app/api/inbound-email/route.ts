@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/prisma';
+import cryptoTiming from 'crypto';
 import { normalizePhoneFR } from '@/lib/crm/phone';
 
 export const runtime = 'nodejs';
@@ -28,7 +29,14 @@ export async function POST(req: Request): Promise<Response> {
   if (!secret) return new Response('Inbound non configuré', { status: 503 });
   const url = new URL(req.url);
   const provided = req.headers.get('x-inbound-secret') ?? url.searchParams.get('secret');
-  if (provided !== secret) return new Response('Non autorisé', { status: 401 });
+  // Comparaison à temps constant. Le passage par ?secret= reste accepté pour
+  // compatibilité mais le header x-inbound-secret est la voie recommandée
+  // (les query strings finissent dans les logs d'accès).
+  const pa = Buffer.from(provided ?? '');
+  const pb = Buffer.from(secret);
+  if (pa.length !== pb.length || !cryptoTiming.timingSafeEqual(pa, pb)) {
+    return new Response('Non autorisé', { status: 401 });
+  }
 
   let body: Record<string, unknown> = {};
   try {

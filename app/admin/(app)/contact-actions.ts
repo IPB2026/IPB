@@ -6,6 +6,8 @@ import { redirect } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
 import { purgeContactById } from '@/lib/crm/contacts';
+import { sendEmail } from '@/lib/email';
+import { postChantierReviewRequest } from '@/lib/emailTemplates';
 import { OccupantStatus } from '@prisma/client';
 
 export type ContactFormState = string | undefined;
@@ -52,6 +54,41 @@ export async function markReviewReceived(formData: FormData): Promise<void> {
     .catch(() => null);
   await prisma.activity
     .create({ data: { type: 'SYSTEME', contactId: id, content: 'Avis Google reçu ✓' } })
+    .catch(() => null);
+  revalidatePath(`/admin/clients/${id}`);
+}
+
+/**
+ * C3 — envoi MANUEL de la demande d'avis Google depuis la fiche client.
+ * Pour les dossiers qui ne transitent pas par le module rapports/factures
+ * (la majorité aujourd'hui) : un clic, même e-mail que le cron, même dédup.
+ */
+export async function requestGoogleReview(formData: FormData): Promise<void> {
+  await requireAdmin();
+  const id = String(formData.get('contactId') ?? '');
+  if (!id) return;
+  const contact = await prisma.contact.findUnique({ where: { id } });
+  // Garde : e-mail requis, une seule demande par client (même règle que le cron).
+  if (!contact?.email || contact.reviewRequestedAt) return;
+  const res = await sendEmail({
+    to: contact.email,
+    subject: 'Votre avis sur votre expertise IPB',
+    html: postChantierReviewRequest({
+      firstName: contact.name.split(' ')[0] || contact.name,
+      city: contact.city ?? undefined,
+      serviceType: 'diagnostic',
+    }),
+  });
+  if (!res.success) {
+    await prisma.activity
+      .create({ data: { type: 'SYSTEME', contactId: id, content: `Demande d'avis Google : échec d'envoi (${res.error ?? 'erreur'})` } })
+      .catch(() => null);
+    revalidatePath(`/admin/clients/${id}`);
+    return;
+  }
+  await prisma.contact.update({ where: { id }, data: { reviewRequestedAt: new Date() } });
+  await prisma.activity
+    .create({ data: { type: 'EMAIL', contactId: id, content: `Demande d'avis Google envoyée manuellement à ${contact.email}` } })
     .catch(() => null);
   revalidatePath(`/admin/clients/${id}`);
 }
