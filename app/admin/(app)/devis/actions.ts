@@ -578,18 +578,21 @@ export async function updateDevis(
   const totalHT = prix + (avecFrais ? FRAIS_DEPLACEMENT : 0);
 
   // Remplace les lignes par les lignes recalculées.
-  await prisma.devisLine.deleteMany({ where: { devisId: id } });
-  await prisma.devis.update({
-    where: { id },
-    data: {
-      serviceType,
-      object: isSurMesure ? existing.object : tpl.objet,
-      bienConcerne: num(formData.get('bienConcerne')).trim() || null,
-      validUntil: validRaw ? new Date(validRaw) : undefined,
-      totalHT,
-      lines: { create: lines },
-    },
-  });
+  // Atomique : un échec entre les deux écritures laissait un devis SANS lignes.
+  await prisma.$transaction([
+    prisma.devisLine.deleteMany({ where: { devisId: id } }),
+    prisma.devis.update({
+      where: { id },
+      data: {
+        serviceType,
+        object: isSurMesure ? existing.object : tpl.objet,
+        bienConcerne: num(formData.get('bienConcerne')).trim() || null,
+        validUntil: validRaw ? new Date(validRaw) : undefined,
+        totalHT,
+        lines: { create: lines },
+      },
+    }),
+  ]);
 
   revalidatePath(`/admin/devis/${id}`);
   revalidatePath('/admin/devis');

@@ -725,6 +725,16 @@ export async function submitDiagnosticCallback(
       });
     }
 
+    // CRM (non bloquant) : ce chemin était MUET → ressaisie manuelle et doublons.
+    // captureLead déduplique contact ET dossier (lead ouvert < 90 j réutilisé).
+    await captureLead({
+      source: 'DIAGNOSTIC',
+      service: rawData.path === 'mur-porteur' ? 'AUTRE' : 'FISSURES',
+      contact: { name: rawData.name, phone: rawData.phone, email: rawData.email || undefined },
+      summary: `Demande de rappel (funnel ${rawData.path}) — score ${rawData.riskScore ?? '?'}`,
+      payload: { via: 'submitDiagnosticCallback', path: rawData.path, riskScore: rawData.riskScore ?? null },
+    }).catch(() => null);
+
     return {
       success: true,
       message: 'Votre demande de rappel a bien été enregistrée.',
@@ -902,6 +912,15 @@ export async function submitDiagnosticAppointment(
         riskScore: validatedData.riskScore,
       });
     }
+
+    // CRM (non bloquant) : idem — la réservation post-résultat n'écrivait rien.
+    await captureLead({
+      source: 'DIAGNOSTIC',
+      service: validatedData.path === 'mur-porteur' ? 'AUTRE' : 'FISSURES',
+      contact: { name: validatedData.name, phone: validatedData.phone, email: validatedData.email || undefined },
+      summary: `Demande de RDV (funnel ${validatedData.path}) — score ${validatedData.riskScore}`,
+      payload: { via: 'submitDiagnosticAppointment', path: validatedData.path, riskScore: validatedData.riskScore },
+    }).catch(() => null);
 
     return {
       success: true,

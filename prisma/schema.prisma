@@ -104,8 +104,8 @@ model Contact {
   updatedAt      DateTime       @updatedAt
 
   name           String
-  email          String?
-  phone          String?
+  email          String? @unique
+  phone          String? @unique
   address        String?
   city           String?
   postalCode     String?
