@@ -356,6 +356,24 @@ export async function GET(req: Request) {
     errors.push(`facture-auto-loop: ${e instanceof Error ? e.message : 'err'}`);
   }
 
+  // ── INVARIANT : une fiche à la corbeille n'a pas de dossier « ouvert »
+  //    (le lead resterait invisible du pipeline — zombie).
+  try {
+    const zombies = await prisma.lead.findMany({
+      where: { contact: { archivedAt: { not: null } }, stage: { in: ['NOUVEAU', 'A_RAPPELER', 'DEVIS_ENVOYE', 'RDV_PLANIFIE', 'VISITE_FAITE'] } },
+      select: { id: true, contactId: true },
+      take: 20,
+    });
+    for (const z of zombies) {
+      await prisma.lead.update({ where: { id: z.id }, data: { stage: 'PERDU', manualPhase: null } });
+      await prisma.activity.create({
+        data: { type: 'SYSTEME', contactId: z.contactId, leadId: z.id, content: 'Dossier clos automatiquement : fiche à la corbeille (invariant de cohérence).' },
+      }).catch(() => null);
+    }
+  } catch (e) {
+    errors.push(`invariant corbeille: ${e instanceof Error ? e.message : 'err'}`);
+  }
+
   // ── INVARIANT DE COHÉRENCE : un devis « Envoyé » dont le contact a déjà une
   //    facture émise est de facto accepté (accord téléphonique → RDV manuel →
   //    visite → facture auto : rien ne soldait le devis sur ce chemin).
