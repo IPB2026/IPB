@@ -245,6 +245,25 @@ export async function updateAppointmentStatus(formData: FormData) {
         }).catch(() => null);
       }
     }
+    // Rollback d'étape : sans autre RDV à venir, le dossier ne peut pas rester
+    // « RDV planifié » (badge fantôme). On redescend à l'étape réelle.
+    if (full?.contactId) {
+      const autreRdv = await prisma.appointment.findFirst({
+        where: { contactId: full.contactId, status: 'PLANIFIE', start: { gte: new Date() }, id: { not: id } },
+        select: { id: true },
+      });
+      if (!autreRdv) {
+        const [accepte, envoye] = await Promise.all([
+          prisma.devis.findFirst({ where: { contactId: full.contactId, status: 'ACCEPTE' }, select: { id: true } }),
+          prisma.devis.findFirst({ where: { contactId: full.contactId, status: 'ENVOYE' }, select: { id: true } }),
+        ]);
+        const retour = accepte ? 'GAGNE' : envoye ? 'DEVIS_ENVOYE' : 'A_RAPPELER';
+        await prisma.lead.updateMany({
+          where: { contactId: full.contactId, stage: 'RDV_PLANIFIE' },
+          data: { stage: retour },
+        });
+      }
+    }
   }
   revalidatePath('/admin/agenda');
   revalidateCrm(appt.contactId);
