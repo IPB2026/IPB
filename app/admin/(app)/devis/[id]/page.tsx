@@ -19,6 +19,7 @@ import { DevisSendForm } from '@/components/admin/devis-send-form';
 import { EditDevisForm } from '@/components/admin/edit-devis-form';
 import { DevisTravauxForm } from '@/components/admin/devis-travaux-form';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
+import { SubmitButton } from '@/components/admin/submit-button';
 import { isDevisTravaux } from '@/lib/crm/devis-templates';
 
 export const dynamic = 'force-dynamic';
@@ -141,13 +142,14 @@ export default async function DevisDetailPage({
           )}
           <form action={duplicateDevis}>
             <input type="hidden" name="devisId" value={devis.id} />
-            <button
-              type="submit"
-              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+            <SubmitButton
+              spinner
+              pendingLabel="Duplication…"
+              className="inline-flex min-h-[44px] cursor-pointer items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50"
             >
               <Copy className="h-4 w-4" />
               Dupliquer
-            </button>
+            </SubmitButton>
           </form>
           <form action={deleteDevis}>
             <input type="hidden" name="devisId" value={devis.id} />
@@ -199,13 +201,15 @@ export default async function DevisDetailPage({
             {!isAccepted && (
               <form action={acceptDevis}>
                 <input type="hidden" name="devisId" value={devis.id} />
-                <button
-                  type="submit"
-                  className="inline-flex h-10 items-center gap-1.5 rounded-lg bg-emerald-600 px-4 text-sm font-semibold text-white hover:bg-emerald-700"
+                <ConfirmSubmit
+                  danger={false}
+                  message="Marquer ce devis comme accepté par le client ? Le dossier passe en « Gagné »."
+                  confirmLabel="Marquer accepté"
+                  className="inline-flex h-11 cursor-pointer items-center gap-1.5 rounded-lg bg-emerald-600 px-4 text-sm font-semibold text-white transition-colors hover:bg-emerald-700"
                 >
                   <CheckCircle2 className="h-4 w-4" />
                   Marquer accepté
-                </button>
+                </ConfirmSubmit>
               </form>
             )}
             {devis.factures.length > 0 ? (

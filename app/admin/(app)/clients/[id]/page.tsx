@@ -14,6 +14,7 @@ import {
   Send,
   Trash2,
   Pencil,
+  Star,
 } from 'lucide-react';
 import type {
   DevisStatus,
@@ -726,7 +727,7 @@ export default async function ClientFichePage({
               {/* C3 — moteur d'avis : suivi de l'avis Google demandé / reçu. */}
               {isAdmin && c.reviewReceivedAt ? (
                 <div className="flex items-center gap-1.5 rounded-lg border border-emerald-200 bg-emerald-50 px-2.5 py-1.5 text-xs font-medium text-emerald-700">
-                  ★ Avis Google reçu
+                  <Star className="h-3.5 w-3.5 fill-current" /> Avis Google reçu
                 </div>
               ) : isAdmin && c.reviewRequestedAt ? (
                 <form action={markReviewReceived}>
@@ -735,19 +736,22 @@ export default async function ClientFichePage({
                     type="submit"
                     className="inline-flex items-center gap-1.5 rounded-lg border border-amber-300 bg-amber-50 px-2.5 py-1.5 text-xs font-medium text-amber-700 hover:bg-amber-100"
                   >
-                    ★ Marquer « avis reçu »
+                    <Star className="h-3.5 w-3.5" /> Marquer « avis reçu »
                   </button>
                 </form>
               ) : isAdmin && c.email ? (
-                /* C3 — dossier hors flux rapport/facture : demande d'avis en un clic. */
+                /* C3 — dossier hors flux rapport/facture : demande d'avis (confirmée :
+                   un clic part chez le client). */
                 <form action={requestGoogleReview}>
                   <input type="hidden" name="contactId" value={c.id} />
-                  <button
-                    type="submit"
-                    className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-medium text-slate-600 hover:border-amber-300 hover:bg-amber-50 hover:text-amber-700"
+                  <ConfirmSubmit
+                    danger={false}
+                    message={`Envoyer la demande d'avis Google à ${c.email ?? 'ce client'} ? (une seule demande par client)`}
+                    confirmLabel="Envoyer"
+                    className="inline-flex min-h-[44px] cursor-pointer items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-medium text-slate-600 transition-colors hover:border-amber-300 hover:bg-amber-50 hover:text-amber-700"
                   >
-                    ★ Envoyer la demande d'avis Google
-                  </button>
+                    <Star className="h-3.5 w-3.5" /> Envoyer la demande d'avis Google
+                  </ConfirmSubmit>
                 </form>
               ) : null}
               <div className="border-t border-slate-100 pt-2.5">

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Mail, CalendarClock } from 'lucide-react';
+import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 import { sendDevis, sendDevisWithSlots } from '@/app/admin/(app)/send-actions';
 
 type UpcomingAppt = { id: string; label: string };
@@ -60,13 +61,15 @@ export function DevisSendForm({
         </button>
         <form action={sendDevis}>
           <input type="hidden" name="devisId" value={devisId} />
-          <button
-            type="submit"
-            className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+          <ConfirmSubmit
+            danger={false}
+            message="Envoyer le devis au client par e-mail (PDF joint) ?"
+            confirmLabel="Envoyer"
+            className="inline-flex min-h-[44px] cursor-pointer items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
           >
             <Mail className="h-4 w-4" />
             Envoyer simplement
-          </button>
+          </ConfirmSubmit>
         </form>
       </div>
     );
@@ -143,13 +146,15 @@ export function DevisSendForm({
       )}
 
       <div className="mt-4 flex flex-wrap items-center gap-2">
-        <button
-          type="submit"
-          className="inline-flex items-center gap-1.5 rounded-lg bg-orange-600 px-3 py-2 text-sm font-semibold text-white hover:bg-orange-700"
+        <ConfirmSubmit
+          danger={false}
+          message="Envoyer le devis + les créneaux de visite au client par e-mail ?"
+          confirmLabel="Envoyer"
+          className="inline-flex min-h-[44px] cursor-pointer items-center gap-1.5 rounded-lg bg-orange-600 px-3 py-2 text-sm font-semibold text-white hover:bg-orange-700"
         >
           <Mail className="h-4 w-4" />
           Envoyer le devis + créneaux
-        </button>
+        </ConfirmSubmit>
         <button
           type="button"
           onClick={() => setWithSlots(false)}
