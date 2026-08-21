@@ -8490,6 +8490,593 @@ const blogPosts: { [key: string]: BlogPost } = {
     `
   },
 
+  'carrelage-fissure-dalle-qui-bouge': {
+    slug: 'carrelage-fissure-dalle-qui-bouge',
+    metaTitle: 'Carrelage fissuré, dalle qui bouge : grave ou pas ? | IPB',
+    title: "Carrelage fissuré, dalle qui bouge : simple désordre de pose ou tassement des fondations ?",
+    excerpt: "Un carreau qui se fend, un sol qui sonne creux, une plinthe qui se décolle : le sol est le premier endroit où un mouvement de structure se voit — et le dernier auquel on pense. Comment distinguer un défaut de pose d'un désordre de fondation, et quels tests faire avant d'appeler qui que ce soit.",
+    date: '2026-08-21',
+    dateModified: '2026-08-21',
+    readTime: '12 min',
+    category: 'fissures',
+    author: "L'institut IPB",
+    metaDescription: "Carrelage fissuré ou dalle qui bouge : défaut de pose, retrait de la chape ou tassement des fondations ? Les tests à faire, la grille de lecture et les coûts réels. ☎ 05 82 95 33 75",
+    keywords: ['carrelage fissuré', 'dalle qui bouge', 'carrelage qui se fissure ligne droite', 'fissure dalle béton maison', 'carrelage qui sonne creux', 'chape fissurée', 'sol qui s\'affaisse maison', 'carrelage décollé tassement'],
+    coverImage: '/images/fissure-coin-maison.webp',
+    content: `
+      <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
+        <p class="font-bold text-orange-900 mb-2">L'essentiel en 30 secondes</p>
+        <p class="text-orange-800">Un carrelage fissuré a trois origines possibles : un <strong>défaut de pose</strong> (le plus fréquent, sans gravité structurelle), le <strong>retrait de la chape ou de la dalle</strong> (bénin s'il se stabilise), ou un <strong>mouvement des fondations</strong> (le seul cas réellement grave). Ce qui les départage n'est ni le nombre de carreaux touchés ni la largeur de la fente, mais le <strong>tracé</strong> de la fissure et ce qui se passe ailleurs dans la maison. Une fissure de sol qui se prolonge dans un mur, ou qui s'accompagne de portes qui coincent, change complètement de catégorie.</p>
+      </div>
+
+      <h2 id="pourquoi-le-sol-parle-en-premier">Pourquoi le sol parle souvent en premier</h2>
+
+      <p>Les propriétaires surveillent les murs. C'est logique : une fissure de façade se voit de la rue, une fissure de plafond se voit du canapé. Le sol, lui, est couvert de meubles, de tapis, et on marche dessus sans le regarder.</p>
+
+      <p>Pourtant, le carrelage est un des <strong>meilleurs révélateurs de mouvement</strong> d'une maison. Un carreau de grès cérame est un matériau rigide, collé sur un support rigide, découpé en éléments jointés. Il ne tolère aucune déformation : dès que le support bouge de quelques dixièmes de millimètre, le carreau se fend ou se descelle. Là où un mur enduit peut absorber un léger mouvement en craquelant discrètement, le carrelage, lui, casse net.</p>
+
+      <p>Cette sensibilité est une chance. Un carrelage qui fissure en ligne droite sur plusieurs mètres est un signal beaucoup plus précoce et beaucoup plus lisible qu'une microfissure de façade. Encore faut-il savoir le lire.</p>
+
+      <h2 id="trois-familles">Les trois familles de désordres de sol</h2>
+
+      <p>Avant de s'inquiéter, il faut situer le désordre dans la bonne famille. Elles n'ont ni les mêmes causes, ni les mêmes conséquences, ni les mêmes coûts.</p>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead class="bg-slate-900 text-white">
+            <tr>
+              <th class="border border-slate-300 p-3 text-left">Famille</th>
+              <th class="border border-slate-300 p-3 text-left">Signature visuelle</th>
+              <th class="border border-slate-300 p-3 text-center">Gravité structurelle</th>
+              <th class="border border-slate-300 p-3 text-center">Ordre de grandeur des travaux</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-3"><strong>Défaut de pose</strong></td>
+              <td class="border border-slate-300 p-3">Carreaux isolés, sons creux, décollements dispersés, fentes aléatoires</td>
+              <td class="border border-slate-300 p-3 text-center text-green-700">Nulle</td>
+              <td class="border border-slate-300 p-3 text-center">Reprise localisée</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3"><strong>Retrait chape / dalle</strong></td>
+              <td class="border border-slate-300 p-3">Fissure fine et rectiligne, souvent dans l'axe d'une pièce ou d'un seuil</td>
+              <td class="border border-slate-300 p-3 text-center text-green-700">Faible si stabilisée</td>
+              <td class="border border-slate-300 p-3 text-center">Traitement de la fissure + repose</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3"><strong>Mouvement de structure</strong></td>
+              <td class="border border-slate-300 p-3">Fissure continue traversant plusieurs pièces, se prolongeant dans un mur ; sol qui n'est plus de niveau</td>
+              <td class="border border-slate-300 p-3 text-center text-red-700 font-bold">Élevée</td>
+              <td class="border border-slate-300 p-3 text-center font-bold">Reprise en sous-œuvre</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>1. Le défaut de pose : la cause la plus fréquente</h3>
+
+      <p>C'est de loin le premier motif de carrelage fissuré, et le moins inquiétant. Les causes classiques :</p>
+
+      <ul>
+        <li><strong>Un simple encollage</strong> au lieu d'un double encollage sur des carreaux grand format. Le carreau repose sur des vides ; une charge ponctuelle (un pied de meuble, un talon) le fait céder.</li>
+        <li><strong>L'absence de joints de fractionnement</strong>. Un sol carrelé doit être fractionné tous les 40 m² environ en intérieur, et à chaque changement de pièce. Sans ces joints, la moindre dilatation se traduit par une fente.</li>
+        <li><strong>Un joint périphérique supprimé</strong>. Le carrelage doit pouvoir « respirer » de quelques millimètres en périphérie, sous la plinthe. Quand il vient buter contre les murs, il se comprime et casse — souvent en périphérie ou en diagonale d'angle.</li>
+        <li><strong>Une pose sur support insuffisamment sec</strong>. La chape n'avait pas fini son retrait au moment du carrelage.</li>
+      </ul>
+
+      <p>La signature d'un défaut de pose, c'est le <strong>désordre dispersé et sans logique géométrique</strong> : des carreaux qui sonnent creux ici et là, un carreau fendu isolé, un décollement en bord de pièce. Rien qui dessine une ligne.</p>
+
+      <h3>2. Le retrait de la chape ou de la dalle</h3>
+
+      <p>Le béton perd du volume en séchant. Ce retrait s'étale sur plusieurs mois, parfois deux ans pour une dalle épaisse. Il produit des fissures fines, généralement <strong>rectilignes</strong>, qui apparaissent aux points faibles : dans l'axe d'un seuil de porte, au droit d'une réservation, à l'aplomb d'une gaine noyée dans la dalle.</p>
+
+      <p>Ces fissures sont bénignes à une condition : <strong>qu'elles se stabilisent</strong>. Une fissure de retrait n'évolue plus après la période de séchage. Si vous la voyez encore s'ouvrir trois ans après la construction, ce n'est plus du retrait — c'est autre chose.</p>
+
+      <div class="my-8 p-6 bg-slate-50 border border-slate-200 rounded-xl">
+        <p class="font-bold text-slate-900 mb-2">Le repère utile</p>
+        <p class="text-slate-800">Une fissure de retrait est fine (souvent moins de 1 mm), rectiligne, et son ouverture est <strong>constante sur toute sa longueur</strong>. Une fissure de mouvement structurel est presque toujours <strong>d'ouverture variable</strong> : large à une extrémité, effilée à l'autre. Cette extrémité large indique la direction du mouvement.</p>
+      </div>
+
+      <h3>3. Le mouvement de structure : le seul cas grave</h3>
+
+      <p>Ici, le carrelage ne fait que rapporter ce qui se passe en dessous. Le dallage ou le plancher bas se déforme parce que le sol d'assise, ou la fondation, ne tient plus la même position. Les causes que nous rencontrons le plus souvent en Occitanie :</p>
+
+      <ul>
+        <li><strong>Le retrait-gonflement des argiles.</strong> C'est la pathologie n°1 de la région. En période de sécheresse, l'argile se rétracte sous une partie de la maison, et le dallage suit. Nous détaillons ce mécanisme dans notre article sur <a href="/blog/secheresse-argile-haute-garonne">la sécheresse et les sols argileux en Haute-Garonne</a>.</li>
+        <li><strong>Le tassement du remblai sous dallage.</strong> Sur les maisons construites sur dallage porté par le sol (et non sur vide sanitaire), un remblai mal compacté finit par se tasser. Le dallage se retrouve en porte-à-faux et casse.</li>
+        <li><strong>Une fuite de canalisation enterrée.</strong> Une fuite chronique sous dallage délave le sol et crée une cavité. C'est une cause sous-estimée, et elle est aussi la plus insidieuse : elle progresse silencieusement pendant des années.</li>
+        <li><strong>Un arbre planté trop près.</strong> Les racines assèchent le sol côté arbre. Le déséquilibre créé se lit d'abord dans le sol de la pièce la plus proche.</li>
+        <li><strong>Une extension mal désolidarisée.</strong> Deux corps de bâtiment aux fondations différentes ne tassent pas au même rythme. La fissure apparaît pile à la jonction — et traverse le carrelage en ligne franche.</li>
+      </ul>
+
+      <h2 id="les-tests">Les cinq tests à faire vous-même avant d'appeler qui que ce soit</h2>
+
+      <p>Aucun de ces tests ne remplace un diagnostic. Mais ils permettent de savoir si l'inquiétude est fondée, et d'arriver avec des éléments concrets le jour où vous décrivez votre situation.</p>
+
+      <h3>Test 1 — Le tracé</h3>
+
+      <p>Éloignez les meubles et regardez la fissure de bout en bout, en vous plaçant à l'extrémité de la pièce. Suivez-la du regard.</p>
+
+      <ul>
+        <li>Elle s'arrête au bord d'un ou deux carreaux, sans continuité : <strong>défaut de pose probable</strong>.</li>
+        <li>Elle trace une ligne franche à travers la pièce, coupant les carreaux et les joints indifféremment : <strong>le support est fissuré dessous</strong>. On passe en famille 2 ou 3.</li>
+        <li>Elle traverse un seuil de porte et continue dans la pièce suivante : <strong>signal fort de mouvement structurel</strong>.</li>
+      </ul>
+
+      <h3>Test 2 — Le son</h3>
+
+      <p>Frappez les carreaux avec le manche d'un tournevis, ou faites rouler une bille d'acier. Un carreau bien collé sonne plein et mat. Un carreau décollé sonne creux.</p>
+
+      <p>Ce qui compte, c'est la <strong>répartition</strong> : quelques carreaux creux dispersés relèvent de la pose. Une <strong>bande continue</strong> de carreaux creux, formant un couloir dans la pièce, indique que le support s'est désolidarisé sur cette ligne — donc qu'il a bougé.</p>
+
+      <h3>Test 3 — La bille</h3>
+
+      <p>Posez une bille ou une bouteille ronde au centre de la pièce, sur un carreau propre, et lâchez-la sans la pousser. Répétez à trois ou quatre endroits.</p>
+
+      <p>Si elle roule systématiquement dans la même direction et gagne de la vitesse, le sol n'est plus de niveau. Un plancher neuf a une tolérance de planéité, mais une pente franche et orientée est un signe d'affaissement. Un niveau à bulle de 2 mètres, ou l'application de niveau d'un smartphone posée sur une règle, permet de chiffrer grossièrement la pente.</p>
+
+      <h3>Test 4 — Les plinthes et les seuils</h3>
+
+      <p>Regardez la jonction entre le carrelage et la plinthe, tout le long des murs. Un jeu qui s'ouvre <strong>d'un seul côté de la pièce</strong> pendant que le côté opposé reste jointif signale un mouvement différentiel. Même logique aux seuils de porte : un décalage de niveau entre deux pièces qui n'existait pas avant est un indice sérieux.</p>
+
+      <h3>Test 5 — Le reste de la maison</h3>
+
+      <p>C'est le test qui tranche. Un désordre de sol seul reste ambigu. Un désordre de sol <strong>accompagné</strong> ne l'est plus. Faites le tour et notez :</p>
+
+      <ul>
+        <li>Des portes ou fenêtres qui coincent, ou dont le jeu a changé — voir notre article sur <a href="/blog/fissure-ouverture-porte-fenetre">les portes qui coincent et les fissures</a>.</li>
+        <li>Une fissure de mur située dans le prolongement de la fissure de sol.</li>
+        <li>Des fissures en escalier sur la maçonnerie extérieure — signature du <a href="/blog/fissures-escalier-tassement-differentiel">tassement différentiel</a>.</li>
+        <li>Une fissure de plafond apparue à la même période.</li>
+      </ul>
+
+      <p class="font-bold text-lg text-slate-900 my-6">Un carrelage fissuré isolé est presque toujours bénin. Un carrelage fissuré accompagné de deux autres signaux ne l'est presque jamais.</p>
+
+      <h2 id="grille-de-lecture">La grille de lecture de l'institut</h2>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead class="bg-slate-900 text-white">
+            <tr>
+              <th class="border border-slate-300 p-3 text-left">Ce que vous observez</th>
+              <th class="border border-slate-300 p-3 text-left">Interprétation la plus probable</th>
+              <th class="border border-slate-300 p-3 text-center">Conduite à tenir</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-3">Un ou deux carreaux fendus, sans ligne, maison de plus de 10 ans</td>
+              <td class="border border-slate-300 p-3">Défaut de pose ou choc</td>
+              <td class="border border-slate-300 p-3 text-center text-green-700">Remplacement localisé</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3">Fissure fine rectiligne, maison de moins de 3 ans, stable depuis 6 mois</td>
+              <td class="border border-slate-300 p-3">Retrait de chape</td>
+              <td class="border border-slate-300 p-3 text-center text-green-700">Surveillance, puis reprise cosmétique</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3">Bande de carreaux creux formant un couloir continu</td>
+              <td class="border border-slate-300 p-3">Désolidarisation du support sur une ligne de mouvement</td>
+              <td class="border border-slate-300 p-3 text-center text-orange-700">Diagnostic recommandé</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3">Fissure traversant plusieurs pièces et remontant dans un mur</td>
+              <td class="border border-slate-300 p-3">Mouvement structurel actif</td>
+              <td class="border border-slate-300 p-3 text-center text-red-700 font-bold">Diagnostic sans attendre</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3">Sol qui n'est plus de niveau + portes qui coincent</td>
+              <td class="border border-slate-300 p-3">Tassement différentiel avéré</td>
+              <td class="border border-slate-300 p-3 text-center text-red-700 font-bold">Diagnostic sans attendre</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3">Carrelage humide, joints noircis, plinthes gonflées le long d'un mur</td>
+              <td class="border border-slate-300 p-3">Piste humidité plutôt que structure</td>
+              <td class="border border-slate-300 p-3 text-center text-orange-700">Voir la piste humidité ci-dessous</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="piste-humidite">La piste que tout le monde oublie : l'humidité</h2>
+
+      <p>Un sol qui se dégrade n'est pas forcément un sol qui bouge. Trois mécanismes liés à l'eau produisent des désordres de carrelage que l'on attribue à tort à la structure.</p>
+
+      <p><strong>Les remontées capillaires.</strong> L'eau du sol remonte par capillarité dans la dalle et les murs. Elle transporte des sels, qui cristallisent sous le carrelage et le décollent par la pression du cristal. Signature : décollements en périphérie de pièce, le long des murs extérieurs, joints qui se pulvérisent, plinthes gonflées. Le traitement passe par l'<a href="/blog/traitement-humidite-injection-resine">injection de résine en barrière étanche</a>, pas par du carrelage neuf.</p>
+
+      <p><strong>Une fuite enterrée.</strong> Une canalisation qui fuit sous dallage délave progressivement le sol d'assise. C'est le cas le plus dangereux du lot, parce qu'il combine humidité et tassement : la cavité créée finit par produire un vrai affaissement. Signature : une zone du sol anormalement fraîche ou humide, une consommation d'eau qui a augmenté sans raison, parfois un bruit d'écoulement permanent.</p>
+
+      <p><strong>La condensation sur dalle froide.</strong> Sur les dallages non isolés, l'air chaud d'un intérieur mal ventilé condense au contact du sol. Le problème est de l'air, pas du béton. Notre article sur <a href="/blog/condensation-ou-infiltration">condensation ou infiltration</a> donne le test qui permet de trancher.</p>
+
+      <div class="my-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
+        <h3 class="font-bold text-blue-900 mb-3">Pourquoi cette distinction change tout</h3>
+        <p class="text-blue-800">Refaire un carrelage sur un support qui bouge ou qui reste humide, c'est acheter deux fois le même chantier. Le carreleur pose du neuf, le désordre revient dans les dix-huit mois, et personne n'est responsable puisque la cause n'a jamais été traitée. C'est la raison d'être d'un diagnostic préalable : il évite un chantier inutile bien plus qu'il ne coûte.</p>
+      </div>
+
+      <h2 id="ce-que-fait-un-expert">Ce qu'un expert regarde que vous ne pouvez pas voir</h2>
+
+      <p>Sur ce type de désordre, le diagnostic ne se limite pas à l'observation du carrelage. Il s'agit de remonter au support, puis au sol d'assise.</p>
+
+      <ul>
+        <li><strong>Le relevé de nivellement.</strong> Un niveau laser rotatif permet de cartographier les altitudes de la dalle pièce par pièce et de matérialiser la déformation réelle. Une dalle peut avoir plusieurs centimètres d'écart sans que l'œil le perçoive.</li>
+        <li><strong>La mesure d'humidité du support.</strong> Un humidimètre à pointes ou une mesure capacitive dit si le support est sec, en cours de séchage, ou anormalement chargé en eau.</li>
+        <li><strong>La sonorisation systématique.</strong> Sur l'ensemble de la surface, pas au hasard, pour cartographier les zones décollées et voir si elles dessinent une géométrie.</li>
+        <li><strong>La lecture croisée sol / murs / ouvertures.</strong> C'est la partie la plus déterminante : comprendre si le sol est cause, conséquence, ou indépendant du reste.</li>
+        <li><strong>L'examen du contexte.</strong> Nature du sol, présence d'arbres, historique de sécheresse sur la commune, existence d'un arrêté de catastrophe naturelle, type de fondation d'origine.</li>
+      </ul>
+
+      <p>À l'issue, la question à laquelle vous avez besoin d'une réponse est simple : <strong>faut-il traiter le sol, ou faut-il traiter ce qu'il y a dessous ?</strong> Tout le reste — devis, travaux, éventuelle déclaration de sinistre — découle de cette réponse.</p>
+
+      <h2 id="couts">Les ordres de grandeur des travaux</h2>
+
+      <p>Les montants varient fortement selon la surface, l'accès et la région. Ces ordres de grandeur servent à situer une proposition, pas à établir un budget.</p>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead class="bg-slate-900 text-white">
+            <tr>
+              <th class="border border-slate-300 p-3 text-left">Intervention</th>
+              <th class="border border-slate-300 p-3 text-left">Quand elle s'impose</th>
+              <th class="border border-slate-300 p-3 text-center">Poids relatif</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-3">Remplacement de carreaux</td>
+              <td class="border border-slate-300 p-3">Défaut de pose localisé, support sain</td>
+              <td class="border border-slate-300 p-3 text-center">Faible</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3">Création de joints de fractionnement</td>
+              <td class="border border-slate-300 p-3">Grande surface posée sans fractionnement</td>
+              <td class="border border-slate-300 p-3 text-center">Faible</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3">Ragréage / reprise de chape</td>
+              <td class="border border-slate-300 p-3">Support fissuré mais stabilisé</td>
+              <td class="border border-slate-300 p-3 text-center">Modéré</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3">Traitement d'humidité (barrière, drainage, ventilation)</td>
+              <td class="border border-slate-300 p-3">Remontées capillaires ou condensation avérées</td>
+              <td class="border border-slate-300 p-3 text-center">Modéré</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3">Injection de résine expansive sous dallage</td>
+              <td class="border border-slate-300 p-3">Vide sous dallage, tassement modéré et localisé</td>
+              <td class="border border-slate-300 p-3 text-center">Élevé</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3">Reprise en sous-œuvre (micropieux)</td>
+              <td class="border border-slate-300 p-3">Fondations en mouvement actif</td>
+              <td class="border border-slate-300 p-3 text-center">Très élevé</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Le détail chiffré des solutions structurelles figure dans nos articles sur <a href="/blog/injection-resine-expansive-fondation">l'injection de résine expansive</a> et sur le choix entre <a href="/blog/agrafage-vs-micropieux-choix">agrafage et micropieux</a>.</p>
+
+      <h2 id="erreurs">Les quatre erreurs qui coûtent cher</h2>
+
+      <h3>Reboucher au mastic et repeindre les joints</h3>
+      <p>Sur un désordre stabilisé, c'est acceptable. Sur un support qui bouge, le rebouchage se redéchire en quelques mois — et surtout, il efface le repère qui aurait permis de mesurer l'évolution. On perd l'information la plus précieuse du dossier.</p>
+
+      <h3>Refaire tout le carrelage avant d'avoir identifié la cause</h3>
+      <p>C'est l'erreur la plus coûteuse. Un sol neuf posé sur un support qui continue de se déformer refissurera exactement au même endroit, et le nouveau carrelage n'aura pas de garantie utile puisque le sinistre viendra du support, pas de la pose.</p>
+
+      <h3>Attendre l'été prochain « pour voir »</h3>
+      <p>La surveillance est une bonne pratique — à condition d'être <strong>documentée</strong>. Photos datées avec un mètre dans le cadre, mesures notées, relevés au même endroit. Une attente sans traces ne produit aucune information exploitable, ni pour l'expertise, ni pour une éventuelle déclaration de sinistre.</p>
+
+      <h3>Ne pas vérifier l'existence d'un arrêté de catastrophe naturelle</h3>
+      <p>Si le désordre est lié au retrait-gonflement des argiles et que votre commune a fait l'objet d'un arrêté CAT-NAT sécheresse, les délais de déclaration sont courts. Notre guide sur <a href="/blog/catastrophe-naturelle-secheresse-demarches-indemnisation">les démarches d'indemnisation CAT-NAT</a> détaille la procédure et les pièges.</p>
+
+      <h2 id="faq">FAQ — Carrelage fissuré et dalle qui bouge</h2>
+
+      <h3>Un carrelage qui se fissure signifie-t-il forcément que les fondations bougent ?</h3>
+      <p>Non, et c'est même l'exception plutôt que la règle. La majorité des carrelages fissurés relèvent d'un défaut de pose ou du retrait du support. Le mouvement de fondation se distingue par un tracé continu à travers plusieurs pièces, un prolongement dans les murs, et l'apparition d'autres signaux dans la maison.</p>
+
+      <h3>Le carrelage sonne creux mais n'est pas fissuré : c'est grave ?</h3>
+      <p>Cela dépend de la répartition. Des points creux dispersés sont un défaut de collage sans gravité. Une bande creuse continue traduit une désolidarisation du support le long d'une ligne : il faut comprendre pourquoi cette ligne existe.</p>
+
+      <h3>Ma maison a deux ans, la fissure est-elle couverte par la garantie ?</h3>
+      <p>Un désordre affectant le carrelage peut relever de la garantie de bon fonctionnement ou de la garantie décennale selon qu'il rend ou non l'ouvrage impropre à sa destination. Un affaissement de dallage relève clairement du décennal. Notre article sur <a href="/blog/fissure-maison-neuve-garantie-decennale">les fissures en maison neuve</a> détaille les régimes applicables.</p>
+
+      <h3>Peut-on relever une dalle affaissée sans tout casser ?</h3>
+      <p>Oui, dans certains cas. L'injection de résine expansive sous dallage permet de combler les vides et de remonter partiellement la dalle sans dépose du sol. Cette technique a un domaine d'emploi précis : elle traite un vide sous dallage, elle ne traite pas une fondation en mouvement. Le diagnostic doit établir lequel des deux est en cause.</p>
+
+      <h3>Faut-il traiter le carrelage ou attendre la fin des travaux de structure ?</h3>
+      <p>Toujours après. Un sol refait avant stabilisation de la structure est un sol à refaire. L'ordre correct est : diagnostic, traitement de la cause, période de stabilisation, puis reprise des finitions.</p>
+
+      <h3>Un carrelage fissuré fait-il baisser le prix à la vente ?</h3>
+      <p>Il inquiète l'acheteur bien au-delà de son coût réel, exactement comme une fissure de façade. Un rapport qui établit la nature du désordre et chiffre la reprise ramène la négociation à un montant discutable. Nous développons ce mécanisme dans notre article sur <a href="/blog/prix-maison-fissuree">le prix d'une maison fissurée</a>.</p>
+
+      <h2 id="a-retenir">Ce qu'il faut retenir</h2>
+
+      <ul>
+        <li>✅ Le sol est un <strong>révélateur précoce</strong> de mouvement, plus lisible que les murs.</li>
+        <li>✅ Ce qui compte n'est pas la largeur mais le <strong>tracé</strong> : une ligne continue à travers plusieurs pièces change la nature du problème.</li>
+        <li>✅ Un désordre de sol <strong>isolé</strong> est presque toujours bénin ; <strong>accompagné</strong> de portes qui coincent ou de fissures de mur, il ne l'est plus.</li>
+        <li>✅ L'<strong>humidité</strong> produit des désordres de carrelage qu'on attribue à tort à la structure : la départager est la première étape.</li>
+        <li>✅ Ne jamais refaire un sol avant d'avoir traité la cause — c'est le chantier le plus souvent payé deux fois.</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
+        <p class="font-bold text-orange-900 mb-3">Votre carrelage se fissure et vous ne savez pas d'où ça vient ?</p>
+        <p class="text-orange-800 mb-4">Notre institut intervient en Occitanie pour établir si le désordre vient de la pose, du support ou des fondations — et pour vous éviter de refaire un sol qui refissurera. Relevé de nivellement, mesures d'humidité, rapport opposable si nécessaire.</p>
+        <a href="/diagnostic" class="inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition-colors">Lancer mon diagnostic →</a>
+      </div>
+
+      <p class="mt-12 text-[15px] italic text-slate-600 border-t border-slate-200 pt-8">Si vous souhaitez que nous regardions votre situation, vous pouvez décrire votre cas via le <a href="/diagnostic" class="text-ipb-orange-d underline hover:no-underline">pré-diagnostic de l'institut</a>. Notre institut le consulte sous quarante-huit heures.</p>
+    `
+  },
+
+  'fissures-travaux-voisin-mitoyennete-recours': {
+    slug: 'fissures-travaux-voisin-mitoyennete-recours',
+    metaTitle: 'Fissures causées par le voisin : preuves et recours | IPB',
+    title: "Fissures causées par les travaux du voisin : constat, référé préventif et recours",
+    excerpt: "Un chantier démarre à côté de chez vous, et des fissures apparaissent. Prouver le lien de cause à effet est tout le sujet — et cette preuve se construit avant, pendant et après les travaux, pas le jour où l'on décide d'agir. Ce que dit le droit, ce qu'il faut documenter, et dans quel ordre.",
+    date: '2026-08-21',
+    dateModified: '2026-08-21',
+    readTime: '12 min',
+    category: 'expertise',
+    author: "L'institut IPB",
+    metaDescription: "Fissures apparues à cause des travaux du voisin ou d'un mur mitoyen : constat, référé préventif, trouble anormal de voisinage et recours. Le guide de l'institut. ☎ 05 82 95 33 75",
+    keywords: ['fissures travaux voisin', 'trouble anormal de voisinage fissures', 'référé préventif travaux', 'mur mitoyen fissuré', 'constat avant travaux voisin', 'recours fissures chantier voisin', 'expertise contradictoire fissures', 'dégâts chantier voisin recours'],
+    coverImage: '/images/fissure-facade-verticale.webp',
+    content: `
+      <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
+        <p class="font-bold text-orange-900 mb-2">L'essentiel en 30 secondes</p>
+        <p class="text-orange-800">Quand des fissures apparaissent pendant le chantier du voisin, le droit est plutôt de votre côté : le <strong>trouble anormal de voisinage</strong> engage la responsabilité du maître d'ouvrage <strong>sans qu'il y ait besoin de prouver une faute</strong>. Ce qu'il faut prouver, en revanche, c'est le <strong>lien entre les travaux et le dommage</strong> — donc l'état de votre bien <strong>avant</strong>. C'est là que 90 % des dossiers se perdent. Un état des lieux daté, réalisé avant le démarrage, vaut plus que tous les arguments techniques développés deux ans plus tard.</p>
+      </div>
+
+      <h2 id="pourquoi-un-chantier-fissure">Pourquoi un chantier voisin fait fissurer votre maison</h2>
+
+      <p>La question revient systématiquement : « comment des travaux à dix mètres de chez moi peuvent-ils fissurer mes murs ? » Les mécanismes sont connus et parfaitement documentés en pathologie du bâtiment.</p>
+
+      <ul>
+        <li><strong>Les vibrations.</strong> Battage de pieux, brise-roche hydraulique, compactage, circulation d'engins lourds. Les vibrations se propagent dans le sol et sollicitent les maçonneries anciennes, qui n'ont aucune souplesse.</li>
+        <li><strong>Le terrassement en limite de propriété.</strong> Creuser à côté d'une fondation revient à lui retirer une partie de son appui latéral. Le sol se décomprime, la fondation se déplace de quelques millimètres — largement assez pour fissurer un mur.</li>
+        <li><strong>Le rabattement de nappe.</strong> Pour travailler au sec, un chantier pompe l'eau du sol. La nappe baisse, les terrains compressibles se tassent, et le tassement s'étend bien au-delà de l'emprise du chantier.</li>
+        <li><strong>La surcharge d'un terrain voisin.</strong> Un remblai, un stockage de matériaux, une construction lourde à proximité comprime le sol et le fait fluer latéralement.</li>
+        <li><strong>La modification des écoulements.</strong> Une imperméabilisation, un drainage nouveau ou supprimé change la teneur en eau du sol. En terrain argileux — c'est-à-dire dans une grande partie de l'Occitanie — cela suffit à déclencher un retrait ou un gonflement. Voir notre article sur <a href="/blog/secheresse-argile-haute-garonne">le retrait-gonflement des argiles en Haute-Garonne</a>.</li>
+        <li><strong>Les interventions sur un mur mitoyen.</strong> Saignées, percements, création d'ouvertures, adossement d'une construction : le mur perd de la section ou reçoit des charges qu'il n'était pas dimensionné pour reprendre.</li>
+      </ul>
+
+      <p>Ces mécanismes ont un point commun : ils produisent des désordres qui apparaissent <strong>rapidement</strong>, souvent dans les jours ou semaines suivant la phase de travaux concernée. Cette concomitance est un élément de preuve — mais elle ne suffit pas à elle seule.</p>
+
+      <h2 id="ce-que-dit-le-droit">Ce que dit le droit : trois fondements distincts</h2>
+
+      <div class="my-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
+        <p class="text-blue-800">Cet article présente le cadre juridique tel qu'un institut de pathologie du bâtiment le rencontre sur le terrain. Il ne constitue pas une consultation juridique : sur un dossier engagé, l'accompagnement d'un avocat est nécessaire. Notre rôle est de produire la <strong>matière technique</strong> sur laquelle le juriste s'appuie.</p>
+      </div>
+
+      <h3>1. Le trouble anormal de voisinage</h3>
+
+      <p>C'est le fondement le plus favorable à la victime, et celui qui est invoqué dans la grande majorité des dossiers. Le principe, dégagé par la jurisprudence puis <strong>codifié à l'article 1253 du Code civil</strong> par la loi du 15 avril 2024, est le suivant : celui qui cause à autrui un trouble excédant les inconvénients normaux du voisinage en répond de plein droit.</p>
+
+      <p>Concrètement, cela signifie que vous <strong>n'avez pas à démontrer une faute</strong>. Le maître d'ouvrage peut avoir respecté son permis de construire, toutes les règles de l'art et toutes les précautions : s'il cause un trouble anormal, il en répond. Ce que vous devez établir, c'est l'<strong>anormalité du trouble</strong> et le <strong>lien de causalité</strong> avec les travaux.</p>
+
+      <p>Point important souvent ignoré : la responsabilité peut être recherchée contre le <strong>maître d'ouvrage</strong> (le voisin) mais aussi, dans certaines conditions, contre les <strong>constructeurs</strong> intervenus sur le chantier, considérés comme voisins occasionnels le temps des travaux.</p>
+
+      <h3>2. La responsabilité civile de droit commun</h3>
+
+      <p>Si une faute est identifiable — absence de blindage de fouille, non-respect d'une étude géotechnique, travaux sans autorisation sur un mur mitoyen — la responsabilité pour faute peut être engagée en parallèle. Elle permet notamment de viser directement l'entreprise.</p>
+
+      <h3>3. Les règles de la mitoyenneté</h3>
+
+      <p>Quand le désordre concerne un mur mitoyen, le Code civil comporte des dispositions spécifiques. Retenez surtout deux principes de bon sens juridique :</p>
+
+      <ul>
+        <li>Un copropriétaire de mur mitoyen <strong>ne peut pas pratiquer d'enfoncement ni y adosser un ouvrage sans l'accord de l'autre</strong>, ou à défaut sans le recours à une expertise déterminant les moyens d'éviter le dommage.</li>
+        <li>Les <strong>frais d'entretien et de réparation</strong> d'un mur mitoyen sont partagés — mais celui qui l'a dégradé par ses travaux en supporte seul les conséquences.</li>
+      </ul>
+
+      <p>En pratique, la question préalable est souvent : ce mur est-il réellement mitoyen ? La réponse se lit dans les titres de propriété, le cadastre, et parfois dans la configuration même du mur. Ce point se tranche avant tout débat technique.</p>
+
+      <h2 id="preuve">Le vrai sujet : la preuve de l'état antérieur</h2>
+
+      <p>Le droit est favorable. Ce qui fait perdre les dossiers, c'est autre chose : <strong>l'incapacité à démontrer que les fissures n'existaient pas avant</strong>.</p>
+
+      <p>Le raisonnement adverse est toujours le même, et il est redoutablement efficace : « ces fissures sont anciennes, cette maison est en terrain argileux, il y a eu trois arrêtés sécheresse sur la commune ces dix dernières années, rien ne prouve que le chantier y soit pour quelque chose. » Sans état des lieux préalable, cet argument est très difficile à renverser.</p>
+
+      <p class="font-bold text-lg text-slate-900 my-6">Une heure passée à documenter votre bien avant le démarrage du chantier vaut mieux que deux ans de procédure.</p>
+
+      <h3>Le référé préventif : la solution la plus solide</h3>
+
+      <p>Le <strong>référé préventif</strong>, fondé sur l'article 145 du Code de procédure civile, permet de faire désigner un expert judiciaire <strong>avant</strong> le démarrage des travaux. L'expert visite les avoisinants, décrit précisément leur état — fissures existantes, humidité, déformations, état des enduits — et dépose un rapport contradictoire et opposable.</p>
+
+      <p>Cette procédure est en général engagée par le maître d'ouvrage lui-même, car elle le protège tout autant : elle l'immunise contre les réclamations portant sur des désordres préexistants. Sur les chantiers d'envergure, elle est devenue une pratique standard.</p>
+
+      <p>Si le maître d'ouvrage ne l'engage pas, <strong>vous pouvez le faire</strong> en tant que voisin. C'est la meilleure protection possible, mais elle a un coût et un délai : il faut saisir le juge des référés avant le démarrage.</p>
+
+      <div class="my-8 p-6 bg-slate-50 border border-slate-200 rounded-xl">
+        <p class="font-bold text-slate-900 mb-2">À savoir</p>
+        <p class="text-slate-800">Lorsqu'une mesure d'expertise est ordonnée sur le fondement de l'article 145, le délai de prescription du litige potentiel est <strong>suspendu</strong> tant que l'expert n'a pas déposé son rapport. C'est un avantage procédural réel, souvent méconnu.</p>
+      </div>
+
+      <h3>Le constat de commissaire de justice</h3>
+
+      <p>Plus simple, plus rapide, moins coûteux qu'un référé préventif : faire établir un <strong>constat par un commissaire de justice</strong> (l'ancienne profession d'huissier) avant le démarrage. Le constat décrit et photographie l'état de votre bien à une date certaine.</p>
+
+      <p>Sa force probatoire est solide sur le <strong>constat matériel</strong> — ce qui est visible à cette date. Elle est plus limitée sur l'<strong>interprétation technique</strong> : un commissaire de justice constate une fissure, il ne dit pas si elle est active ni ce qui la cause. D'où l'intérêt de coupler le constat à un relevé technique.</p>
+
+      <h3>L'état des lieux technique préalable</h3>
+
+      <p>C'est la démarche que nous réalisons le plus souvent avant un chantier voisin. Elle consiste à établir un <strong>état zéro</strong> documenté de votre bien : cartographie des fissures existantes avec repérage et mesure, photographies datées et référencées, relevé de nivellement, pose de témoins de suivi.</p>
+
+      <p>Son intérêt tient en un mot : la <strong>mesure</strong>. Une fissure décrite comme « existante » dans un constat, mais mesurée à 0,4 mm dans un rapport technique, devient un point de comparaison. Si elle mesure 3 mm six mois plus tard, la démonstration est faite. Sans mesure initiale, on ne peut qu'affirmer qu'elle « semble plus large ».</p>
+
+      <h2 id="deja-commence">Le chantier a déjà commencé : que faire maintenant</h2>
+
+      <p>C'est la situation la plus fréquente. Elle n'est pas perdue, mais elle demande de la méthode et de la rapidité.</p>
+
+      <h3>Étape 1 — Documenter immédiatement, avant toute discussion</h3>
+
+      <p>Avant même de sonner chez le voisin, constituez votre dossier :</p>
+
+      <ul>
+        <li><strong>Photographiez chaque fissure</strong> avec un mètre ruban ou un réglet dans le cadre, et une vue d'ensemble permettant de la situer dans le bâtiment.</li>
+        <li><strong>Mesurez et notez</strong> largeur, longueur, orientation, localisation précise. Un fissuromètre gradué au dixième de millimètre coûte quelques euros.</li>
+        <li><strong>Datez tout</strong>, et conservez les métadonnées des photos.</li>
+        <li><strong>Notez la chronologie du chantier</strong> : date de démarrage, phases bruyantes ou vibrantes, passages d'engins lourds, terrassements. Un simple carnet de bord daté a une vraie valeur.</li>
+        <li><strong>Recherchez vos preuves d'état antérieur</strong> : photos de famille, annonce immobilière avec photos, rapport de diagnostic à l'achat, images de rue archivées. Ces documents sont souvent décisifs et on les néglige.</li>
+      </ul>
+
+      <h3>Étape 2 — Informer le voisin par écrit</h3>
+
+      <p>Une lettre recommandée avec accusé de réception, factuelle et sans agressivité, qui décrit les désordres constatés, leur date d'apparition et leur concomitance avec les travaux. Elle demande la transmission de l'information à l'assureur du chantier.</p>
+
+      <p>Cet écrit sert deux objectifs : il ouvre la voie à une résolution amiable, qui reste l'issue la plus rapide et la moins coûteuse ; et il <strong>date votre réclamation</strong>, ce qui compte si le dossier se judiciarise ensuite.</p>
+
+      <h3>Étape 3 — Faire établir un rapport technique</h3>
+
+      <p>C'est le pivot du dossier. Un rapport d'expertise technique indépendant établit la nature des désordres, apprécie leur ancienneté, examine la cohérence entre le mécanisme invoqué et les désordres observés, et chiffre les reprises nécessaires.</p>
+
+      <p>Ce document transforme une réclamation en <strong>dossier discutable</strong>. Sans lui, vous opposez une conviction à un assureur qui oppose une expertise. Avec lui, deux analyses techniques se répondent — et c'est un tout autre rapport de forces.</p>
+
+      <h3>Étape 4 — Déclarer à votre assureur</h3>
+
+      <p>Déclarez le sinistre à votre propre assurance multirisque habitation, même si le responsable présumé est le voisin. Deux raisons : votre contrat comporte très probablement une garantie <strong>protection juridique</strong> ou <strong>défense-recours</strong>, qui peut financer tout ou partie d'une expertise et d'une action ; et la déclaration date officiellement le sinistre.</p>
+
+      <h3>Étape 5 — Expertise amiable contradictoire, puis judiciaire si nécessaire</h3>
+
+      <p>L'assureur du chantier mandate en général son propre expert. Vous avez le droit d'être assisté du vôtre lors de cette réunion : c'est ce qu'on appelle l'<strong>expertise contradictoire</strong>. Ne vous y présentez pas seul — la discussion est technique, elle se joue sur des points précis, et l'expert d'assurance défend légitimement les intérêts de celui qui le mandate. Nous détaillons cette asymétrie dans notre article sur <a href="/blog/expert-batiment-independant-vs-expert-assurance">l'expert indépendant face à l'expert d'assurance</a>.</p>
+
+      <p>Si l'amiable échoue, l'étape suivante est l'<strong>expertise judiciaire</strong>, ordonnée par le tribunal. Elle est plus longue et plus coûteuse, mais son rapport s'impose aux parties. Un dossier technique déjà solide en amont raccourcit considérablement cette phase.</p>
+
+      <h2 id="calendrier">Le calendrier de la preuve</h2>
+
+      <div class="my-8 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300">
+          <thead class="bg-slate-900 text-white">
+            <tr>
+              <th class="border border-slate-300 p-3 text-left">Moment</th>
+              <th class="border border-slate-300 p-3 text-left">Action</th>
+              <th class="border border-slate-300 p-3 text-center">Valeur probatoire</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-300 p-3"><strong>Avant le chantier</strong></td>
+              <td class="border border-slate-300 p-3">Référé préventif (expert judiciaire)</td>
+              <td class="border border-slate-300 p-3 text-center text-green-700 font-bold">Maximale</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3"><strong>Avant le chantier</strong></td>
+              <td class="border border-slate-300 p-3">Constat de commissaire de justice + état des lieux technique</td>
+              <td class="border border-slate-300 p-3 text-center text-green-700">Très forte</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3"><strong>Avant le chantier</strong></td>
+              <td class="border border-slate-300 p-3">Photos datées personnelles</td>
+              <td class="border border-slate-300 p-3 text-center text-orange-700">Moyenne, mais utile</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3"><strong>Pendant le chantier</strong></td>
+              <td class="border border-slate-300 p-3">Suivi daté + témoins de fissures posés</td>
+              <td class="border border-slate-300 p-3 text-center text-green-700">Forte</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 p-3"><strong>Après apparition</strong></td>
+              <td class="border border-slate-300 p-3">Rapport d'expertise technique indépendant</td>
+              <td class="border border-slate-300 p-3 text-center text-green-700">Forte</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-300 p-3"><strong>Longtemps après</strong></td>
+              <td class="border border-slate-300 p-3">Réclamation sans état antérieur documenté</td>
+              <td class="border border-slate-300 p-3 text-center text-red-700 font-bold">Faible</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="mur-mitoyen">Le cas particulier du mur mitoyen</h2>
+
+      <p>Les litiges de mur mitoyen ont leur logique propre, parce que le mur appartient aux deux parties. Les situations que nous rencontrons le plus souvent :</p>
+
+      <h3>Le voisin adosse une construction au mur</h3>
+      <p>Une véranda, un abri, une extension. Le mur reçoit des charges nouvelles et parfois des percements. Si le mur n'a pas été vérifié structurellement avant, les fissures apparaissent côté maison existante. La question technique est celle de la <strong>capacité portante résiduelle</strong> du mur.</p>
+
+      <h3>Le voisin creuse le long du mur</h3>
+      <p>Piscine, sous-sol, cave, fosse. Le décaissement retire l'appui latéral de la fondation du mur. C'est un des mécanismes les plus fissurants qui soient, et il produit des désordres <strong>rapides et nets</strong>. Un blindage de fouille aurait dû être prévu.</p>
+
+      <h3>Le voisin surélève le mur mitoyen</h3>
+      <p>La surélévation est possible en droit, mais elle suppose que le mur puisse la supporter et que les frais et conséquences en soient assumés par celui qui l'entreprend. En pratique, une surélévation sur un mur ancien non renforcé produit très souvent des fissures.</p>
+
+      <h3>Un mur mitoyen se fissure sans travaux</h3>
+      <p>Cas fréquent et beaucoup moins conflictuel qu'il n'y paraît. Un mur mitoyen vieillissant peut fissurer par vétusté, par tassement, ou par un défaut de couvertine laissant l'eau pénétrer. Ici, la logique est celle du partage des frais d'entretien — à condition de s'entendre sur la cause. Un rapport technique neutre est souvent ce qui débloque la discussion entre voisins.</p>
+
+      <h2 id="erreurs">Les cinq erreurs qui font perdre un dossier</h2>
+
+      <h3>Réparer avant de faire constater</h3>
+      <p>L'erreur la plus lourde. Reboucher, repeindre, refaire l'enduit : le désordre disparaît, et avec lui la preuve. Vous conservez la facture, mais plus l'objet du litige. <strong>Ne réparez rien</strong> tant que l'état n'a pas été constaté par un tiers, sauf en cas de danger immédiat — et dans ce cas, photographiez massivement avant d'intervenir.</p>
+
+      <h3>Ne rien dire pour préserver la relation de voisinage</h3>
+      <p>Compréhensible, mais coûteux. Le silence est interprété comme une absence de désordre à l'époque des travaux, et les délais courent pendant ce temps. Une lettre factuelle et courtoise n'est pas une déclaration de guerre ; c'est une mise en information.</p>
+
+      <h3>Attendre la fin du chantier</h3>
+      <p>Pendant le chantier, l'assureur dommages-ouvrage ou la responsabilité civile du constructeur sont mobilisables, l'entreprise est présente, les phases de travaux sont identifiables. Une fois le chantier terminé et l'entreprise partie, tout devient plus difficile.</p>
+
+      <h3>Se présenter seul à l'expertise de l'assureur adverse</h3>
+      <p>La réunion d'expertise porte sur des questions techniques précises : ancienneté des désordres, mécanisme causal, part imputable au chantier. Sans assistance technique, il est très difficile de contester utilement une conclusion défavorable sur le moment — or ce qui n'a pas été discuté en réunion se rattrape mal ensuite.</p>
+
+      <h3>Confondre concomitance et causalité</h3>
+      <p>Le fait que les fissures soient apparues pendant le chantier est un indice fort, pas une démonstration. Un dossier solide explique <strong>par quel mécanisme</strong> les travaux ont produit ces désordres, et pourquoi les autres causes possibles — sécheresse, vétusté, désordre préexistant — n'expliquent pas la totalité de ce qui est observé. C'est précisément le travail d'un rapport technique.</p>
+
+      <h2 id="faq">FAQ — Fissures et travaux du voisin</h2>
+
+      <h3>Dois-je prouver que le voisin a commis une faute ?</h3>
+      <p>Non, si vous agissez sur le fondement du trouble anormal de voisinage : la responsabilité est engagée de plein droit, sans faute à démontrer. Vous devez établir l'anormalité du trouble et son lien avec les travaux.</p>
+
+      <h3>Je n'ai aucune photo d'avant les travaux. Mon dossier est-il perdu ?</h3>
+      <p>Non, mais il est plus difficile. On reconstitue alors l'état antérieur par faisceau d'indices : annonce immobilière d'époque, diagnostics réalisés à l'achat, témoignages, images de rue archivées, et surtout analyse technique de l'<strong>ancienneté des fissures</strong>. Une fissure fraîche se distingue d'une fissure ancienne par des critères objectifs — arêtes vives, absence d'encrassement, enduit non recouvert dans la fente.</p>
+
+      <h3>Combien de temps ai-je pour agir ?</h3>
+      <p>L'action se prescrit en principe par cinq ans à compter du jour où vous avez connu ou auriez dû connaître les faits permettant de l'exercer. Les situations sont variables et d'autres régimes peuvent se superposer : ce point doit être vérifié par un avocat sur votre dossier précis. La règle pratique est simple — <strong>ne laissez pas le temps passer</strong>.</p>
+
+      <h3>Qui paie l'expertise ?</h3>
+      <p>Chaque partie avance les frais de son propre expert. Votre garantie protection juridique ou défense-recours peut en prendre tout ou partie en charge : vérifiez votre contrat avant d'engager quoi que ce soit. En cas d'expertise judiciaire, le juge fixe la consignation et statue en fin de procédure sur la charge finale des frais.</p>
+
+      <h3>Le voisin refuse toute discussion. Que faire ?</h3>
+      <p>Passez par son assureur, dont les coordonnées figurent normalement sur le panneau de chantier ou peuvent être obtenues par mise en demeure. Si le blocage persiste, la voie du référé expertise permet de faire désigner un expert judiciaire sans l'accord de l'autre partie.</p>
+
+      <h3>Les fissures sont apparues six mois après la fin du chantier. Est-ce trop tard pour établir un lien ?</h3>
+      <p>Pas nécessairement. Certains mécanismes — tassement consécutif à un rabattement de nappe, réorganisation d'un sol argileux — produisent des effets différés sur plusieurs mois. Le décalage rend la démonstration plus technique, il ne l'interdit pas.</p>
+
+      <h3>Mon voisin fait des travaux : que faire dès maintenant ?</h3>
+      <p>Faites établir un état des lieux daté <strong>avant le démarrage</strong>. C'est la seule action dont la valeur ne se dégrade pas avec le temps, et c'est aussi celle qui protège la relation de voisinage : un état zéro partagé évite la plupart des conflits, y compris ceux fondés sur des désordres qui n'auraient rien à voir avec le chantier.</p>
+
+      <h2 id="a-retenir">Ce qu'il faut retenir</h2>
+
+      <ul>
+        <li>✅ Le <strong>trouble anormal de voisinage</strong> engage la responsabilité <strong>sans faute à prouver</strong> — le droit est favorable à la victime.</li>
+        <li>✅ Ce qui se prouve difficilement, c'est le <strong>lien de causalité</strong>, donc l'<strong>état antérieur</strong> de votre bien.</li>
+        <li>✅ Le <strong>référé préventif</strong> ou un <strong>état des lieux technique daté</strong> avant travaux valent plus que n'importe quelle démarche engagée après.</li>
+        <li>✅ <strong>Ne réparez jamais</strong> avant d'avoir fait constater : la réparation efface la preuve.</li>
+        <li>✅ Ne vous présentez pas seul à l'expertise de l'assureur adverse : la discussion est technique et se joue en réunion.</li>
+        <li>✅ La <strong>concomitance ne suffit pas</strong> : il faut expliquer le mécanisme et écarter les autres causes.</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
+        <p class="font-bold text-orange-900 mb-3">Un chantier démarre à côté de chez vous, ou des fissures viennent d'apparaître ?</p>
+        <p class="text-orange-800 mb-4">Notre institut intervient en Occitanie pour établir l'état des lieux avant travaux, assurer le suivi pendant le chantier, ou produire le rapport technique opposable qui soutiendra votre dossier. Assistance en expertise contradictoire possible.</p>
+        <a href="/diagnostic" class="inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-700 transition-colors">Lancer mon diagnostic →</a>
+      </div>
+
+      <h2 id="pour-aller-plus-loin">Pour aller plus loin</h2>
+      <ul>
+        <li>Sur la lecture des fissures : <a href="/blog/lire-fissures-verticale-horizontale-oblique">ce que révèle l'orientation d'une fissure</a></li>
+        <li>Sur l'évaluation du risque : <a href="/blog/evaluer-gravite-fissure-maison">comment évaluer la gravité d'une fissure</a></li>
+        <li>Sur le rapport de forces en expertise : <a href="/blog/expert-batiment-independant-vs-expert-assurance">expert indépendant contre expert d'assurance</a></li>
+        <li>Sur l'indemnisation en zone argileuse : <a href="/blog/catastrophe-naturelle-secheresse-demarches-indemnisation">les démarches CAT-NAT sécheresse</a></li>
+      </ul>
+
+      <p class="mt-12 text-[15px] italic text-slate-600 border-t border-slate-200 pt-8">Si vous souhaitez que nous regardions votre situation, vous pouvez décrire votre cas via le <a href="/diagnostic" class="text-ipb-orange-d underline hover:no-underline">pré-diagnostic de l'institut</a>. Notre institut le consulte sous quarante-huit heures.</p>
+    `
+  },
+
 };
 
 // ═══════════════════════════════════════════════════════════════

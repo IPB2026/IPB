@@ -42,7 +42,10 @@ export function extractFAQsFromContent(content: string): FAQItem[] {
   const faqs: FAQItem[] = [];
   
   // Pattern : <h3>Question ?</h3> suivi de <p>Réponse</p>
-  const h3Regex = /<h3[^>]*>([\s\S]*?\?)<\/h3>\s*<p[^>]*>([\s\S]*?)<\/p>/g;
+  // `(?!<h3)` empêche le match de traverser un H3 sans point d'interrogation :
+  // sans cette garde, un titre du corps de l'article était agrégé à la première
+  // vraie question de la FAQ et polluait le schema FAQPage.
+  const h3Regex = /<h3[^>]*>((?:(?!<h3)[\s\S])*?\?)<\/h3>\s*<p[^>]*>([\s\S]*?)<\/p>/g;
   let match;
   
   while ((match = h3Regex.exec(content)) !== null) {
