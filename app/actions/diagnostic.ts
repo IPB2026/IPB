@@ -137,8 +137,92 @@ const formatAnswersHtml = (answers: Record<string, unknown>) => {
     : '<p>Aucune réponse transmise.</p>';
 };
 
-// Génère le diagnostic expert
-const getExpertDiagnosis = (path: 'fissure' | 'mur-porteur', score: number) => {
+type DiagnosticPath = 'fissure' | 'mur-porteur' | 'humidite';
+
+/** Libellé du parcours affiché dans les emails internes et clients. */
+const labelParcours = (path: DiagnosticPath): string => {
+  switch (path) {
+    case 'mur-porteur':
+      return 'Ouverture de mur porteur';
+    case 'humidite':
+      return 'Humidité & Infiltrations';
+    case 'fissure':
+    default:
+      return 'Fissures & Structure';
+  }
+};
+
+/** Pictogramme associé au parcours. */
+const iconeParcours = (path: DiagnosticPath): string => {
+  switch (path) {
+    case 'mur-porteur':
+      return '🧱';
+    case 'humidite':
+      return '💧';
+    case 'fissure':
+    default:
+      return '🔧';
+  }
+};
+
+/**
+ * Famille de service CRM déduite du seul parcours choisi.
+ * Utilisé par les chemins « rappel » et « prise de RDV », qui ne disposent pas
+ * des réponses détaillées (contrairement à serviceFromDiagnostic).
+ */
+const serviceFromPath = (
+  path: 'fissure' | 'mur-porteur' | 'humidite'
+): 'FISSURES' | 'HUMIDITE' | 'MUR_PORTEUR' => {
+  switch (path) {
+    // 'MUR_PORTEUR' et non l'ancien 'AUTRE' : le funnel principal écrit déjà
+    // cette valeur via serviceFromDiagnostic (lib/crm/captureLead.ts), si bien
+    // que les chemins « rappel » et « RDV » créaient une seconde population en
+    // 'AUTRE' pour le même parcours. Cette dispersion faisait aussi tomber ces
+    // leads dans le repli « fissures » du cron de relances.
+    case 'mur-porteur':
+      return 'MUR_PORTEUR';
+    case 'humidite':
+      return 'HUMIDITE';
+    case 'fissure':
+    default:
+      return 'FISSURES';
+  }
+};
+
+// Génère le diagnostic expert.
+// Les textes reprennent la position affichée au visiteur dans
+// app/diagnostic/page.tsx : même verdict à l'écran et dans l'email.
+// Pour « mur-porteur », cela signifie orienter vers un bureau d'études —
+// le service d'ouverture de mur porteur est arrêté depuis 2026.
+const getExpertDiagnosis = (path: 'fissure' | 'mur-porteur' | 'humidite', score: number) => {
+  if (path === 'humidite') {
+    if (score >= 40) {
+      return {
+        urgency: 'Humidité installée',
+        urgencyColor: '#C8601F',
+        diagnosis: "Humidité chronique et installée. Plusieurs symptômes convergent (moisissures, salpêtre, hauteur de remontée). Sans intervention, la dégradation se poursuit et peut impacter la santé des occupants.",
+        solution: "Diagnostic instrumenté complet (hygromètre, caméra thermique, test à la bombe à carbure) pour confirmer la cause exacte. Selon le résultat : injection de résine hydrophobe, cuvelage, traitement d'infiltration ou ventilation.",
+        delay: 'Visite sous 72 h — rapport sous 3 à 5 jours',
+      };
+    } else if (score >= 20) {
+      return {
+        urgency: 'Humidité à traiter',
+        urgencyColor: '#F08040',
+        diagnosis: "Problème d'humidité actif mais encore contenu. Plusieurs causes possibles : condensation, infiltration ponctuelle, début de remontées capillaires.",
+        solution: "Diagnostic instrumenté sur site pour identifier la cause avant tout traitement. Remontées confirmées : injection de résine. Condensation : audit ventilation. Infiltration : recherche du point d'entrée.",
+        delay: 'Visite sous 72 h — rapport sous 3 à 5 jours',
+      };
+    } else {
+      return {
+        urgency: 'À surveiller',
+        urgencyColor: '#0F2033',
+        diagnosis: "Signes localisés, sans caractère structurel apparent. Souvent un défaut de ventilation ou un point d'humidité ponctuel.",
+        solution: "Vérification de la ventilation et de l'étanchéité des points sensibles (joints, gouttières, salle d'eau). Diagnostic instrumenté si les symptômes persistent ou s'étendent.",
+        delay: "Pas d'urgence immédiate",
+      };
+    }
+  }
+
   if (path === 'fissure') {
     if (score >= 40) {
       return {
@@ -171,24 +255,24 @@ const getExpertDiagnosis = (path: 'fissure' | 'mur-porteur', score: number) => {
       return {
         urgency: 'Projet à très court terme',
         urgencyColor: '#C8601F',
-        diagnosis: 'Projet d\'ouverture de mur porteur clairement défini. Probablement déjà comparé à plusieurs devis.',
-        solution: 'Étude technique sous 3 à 5 jours ouvrés, devis ferme, planning détaillé. Chantier sous 4 à 6 semaines.',
-        delay: "Visite technique recommandée sous 1 semaine",
+        diagnosis: 'Projet d\'ouverture de mur porteur clairement défini, avec une portée et des charges qui engagent la structure.',
+        solution: "Ce type de projet ne relève pas de notre institut : il exige une note de calcul de bureau d'études (Eurocodes) puis une entreprise de maçonnerie qualifiée. Nous vous orientons vers les bons interlocuteurs lors de notre échange.",
+        delay: 'Réponse sous 48 h',
       };
     } else if (score >= 20) {
       return {
         urgency: 'Projet à confirmer',
         urgencyColor: '#F08040',
-        diagnosis: "Projet d'ouverture identifié, plusieurs paramètres techniques à valider sur site.",
-        solution: "Visite technique pour confirmer la faisabilité, dimensionner la poutre et chiffrer.",
-        delay: 'Visite technique recommandée sous 2 à 3 semaines',
+        diagnosis: "Projet d'ouverture identifié, plusieurs paramètres techniques restent à valider avant tout engagement.",
+        solution: "La faisabilité et le dimensionnement relèvent d'un bureau d'études structure. Notre institut ne réalise pas ces travaux, mais nous cadrons votre projet et vous orientons vers les bons interlocuteurs.",
+        delay: 'Réponse sous 48 h',
       };
     } else {
       return {
         urgency: 'Projet en réflexion',
         urgencyColor: '#0F2033',
         diagnosis: 'Projet encore en phase de réflexion. Plusieurs scénarios à étudier avant engagement.',
-        solution: 'Conseil téléphonique posé pour cadrer le projet et orienter les choix techniques.',
+        solution: "Conseil téléphonique posé pour cadrer le projet. Notre institut ne réalise pas les ouvertures de mur porteur : nous vous disons ce qu'il faut vérifier, et vers qui vous tourner.",
         delay: "Pas d'urgence — appel ou échange écrit selon vos disponibilités",
       };
     }
@@ -209,7 +293,7 @@ export async function submitDiagnosticLead(
       address: (formData.get('address') as string) || '',
       yearBuilt: (formData.get('yearBuilt') as string) || '',
       preferredTime: (formData.get('preferredTime') as string) || '',
-      path: formData.get('path') as 'fissure' | 'mur-porteur',
+      path: formData.get('path') as 'fissure' | 'mur-porteur' | 'humidite',
       answers: JSON.parse(formData.get('answers') as string || '{}'),
       riskScore: parseInt(formData.get('riskScore') as string, 10) || 0,
     };
@@ -356,14 +440,14 @@ export async function submitDiagnosticLead(
             <!-- Diagnostic Expert -->
             <div style="background: white; margin: 16px; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0;">
               <h2 style="margin: 0 0 16px; color: #0f172a; font-size: 18px;">
-                ${validatedData.path === 'fissure' ? '🔧' : '💧'} DIAGNOSTIC AUTOMATIQUE
+                ${iconeParcours(validatedData.path)} DIAGNOSTIC AUTOMATIQUE
               </h2>
               
               <div style="display: flex; gap: 12px; margin-bottom: 16px;">
                 <div style="flex: 1; background: #f1f5f9; padding: 12px; border-radius: 8px; text-align: center;">
                   <div style="font-size: 12px; color: #64748b; text-transform: uppercase;">Type</div>
                   <div style="font-size: 14px; font-weight: bold; color: #0f172a; margin-top: 4px;">
-                    ${validatedData.path === 'fissure' ? 'Fissures & Structure' : 'Humidité & Infiltrations'}
+                    ${labelParcours(validatedData.path)}
                   </div>
                 </div>
                 <div style="flex: 1; background: #f1f5f9; padding: 12px; border-radius: 8px; text-align: center;">
@@ -515,7 +599,7 @@ export async function submitDiagnosticCallback(
       name: formData.get('name') as string,
       phone: formData.get('phone') as string,
       email: (formData.get('email') as string) || '',
-      path: formData.get('path') as 'fissure' | 'mur-porteur',
+      path: formData.get('path') as 'fissure' | 'mur-porteur' | 'humidite',
       answers: JSON.parse(formData.get('answers') as string || '{}'),
       riskScore: parseInt(formData.get('riskScore') as string, 10) || 0,
     };
@@ -599,7 +683,7 @@ export async function submitDiagnosticCallback(
             <!-- Diagnostic Expert -->
             <div style="background: white; margin: 16px; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0;">
               <h2 style="margin: 0 0 16px; color: #0f172a; font-size: 18px;">
-                ${rawData.path === 'fissure' ? '🔧' : '💧'} DIAGNOSTIC À CONNAÎTRE AVANT L'APPEL
+                ${iconeParcours(rawData.path)} DIAGNOSTIC À CONNAÎTRE AVANT L'APPEL
               </h2>
               
               <div style="margin-bottom: 16px;">
@@ -608,7 +692,7 @@ export async function submitDiagnosticCallback(
                     <td style="width: 50%; padding: 8px; background: #f1f5f9; border-radius: 8px; text-align: center;">
                       <div style="font-size: 12px; color: #64748b; text-transform: uppercase;">Type</div>
                       <div style="font-size: 14px; font-weight: bold; color: #0f172a; margin-top: 4px;">
-                        ${rawData.path === 'fissure' ? 'Fissures & Structure' : 'Humidité & Infiltrations'}
+                        ${labelParcours(rawData.path)}
                       </div>
                     </td>
                     <td style="width: 10px;"></td>
@@ -729,7 +813,7 @@ export async function submitDiagnosticCallback(
     // captureLead déduplique contact ET dossier (lead ouvert < 90 j réutilisé).
     await captureLead({
       source: 'DIAGNOSTIC',
-      service: rawData.path === 'mur-porteur' ? 'AUTRE' : 'FISSURES',
+      service: serviceFromPath(rawData.path),
       contact: { name: rawData.name, phone: rawData.phone, email: rawData.email || undefined },
       summary: `Demande de rappel (funnel ${rawData.path}) — score ${rawData.riskScore ?? '?'}`,
       payload: { via: 'submitDiagnosticCallback', path: rawData.path, riskScore: rawData.riskScore ?? null },
@@ -767,7 +851,7 @@ export async function submitDiagnosticAppointment(
       name: formData.get('name') as string,
       phone: formData.get('phone') as string,
       email: formData.get('email') as string | null,
-      path: formData.get('path') as 'fissure' | 'mur-porteur',
+      path: formData.get('path') as 'fissure' | 'mur-porteur' | 'humidite',
       answers: JSON.parse(formData.get('answers') as string),
       riskScore: parseInt(formData.get('riskScore') as string, 10),
     };
@@ -811,7 +895,7 @@ export async function submitDiagnosticAppointment(
               
               <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
                 <h3 style="margin-top: 0;">Détails du diagnostic</h3>
-                <p><strong>Type :</strong> ${validatedData.path === 'fissure' ? '🔧 Fissures & Structure' : '💧 Humidité & Infiltrations'}</p>
+                <p><strong>Type :</strong> ${iconeParcours(validatedData.path)} ${labelParcours(validatedData.path)}</p>
                 <p><strong>Score de risque :</strong> ${validatedData.riskScore}/100</p>
                 <p><strong>Niveau d'urgence :</strong> ${urgencyLevel}</p>
                 <p><strong>ID Réservation :</strong> ${appointmentId}</p>
@@ -859,7 +943,7 @@ export async function submitDiagnosticAppointment(
                     </p>
                     <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:16px; margin:16px 0;">
                       <p style="margin:0; color:#475569; font-size:14px;">
-                        <strong>Type :</strong> ${validatedData.path === 'fissure' ? 'Fissures & Structure' : 'Humidité & Infiltrations'}<br/>
+                        <strong>Type :</strong> ${labelParcours(validatedData.path)}<br/>
                         <strong>Score :</strong> ${validatedData.riskScore}/100
                       </p>
                     </div>
@@ -916,7 +1000,7 @@ export async function submitDiagnosticAppointment(
     // CRM (non bloquant) : idem — la réservation post-résultat n'écrivait rien.
     await captureLead({
       source: 'DIAGNOSTIC',
-      service: validatedData.path === 'mur-porteur' ? 'AUTRE' : 'FISSURES',
+      service: serviceFromPath(validatedData.path),
       contact: { name: validatedData.name, phone: validatedData.phone, email: validatedData.email || undefined },
       summary: `Demande de RDV (funnel ${validatedData.path}) — score ${validatedData.riskScore}`,
       payload: { via: 'submitDiagnosticAppointment', path: validatedData.path, riskScore: validatedData.riskScore },
@@ -955,7 +1039,7 @@ export async function requestDiagnosticReport(
   try {
     const rawData = {
       email: formData.get('email') as string,
-      path: formData.get('path') as 'fissure' | 'mur-porteur',
+      path: formData.get('path') as 'fissure' | 'mur-porteur' | 'humidite',
       answers: JSON.parse(formData.get('answers') as string),
       riskScore: parseInt(formData.get('riskScore') as string, 10),
     };
@@ -977,7 +1061,7 @@ export async function requestDiagnosticReport(
     // Envoi d'email avec résumé du diagnostic
     if (validatedData.email) {
       try {
-        const diagnosisType = validatedData.path === 'fissure' ? 'Fissures & Structure' : 'Humidité & Infiltrations';
+        const diagnosisType = labelParcours(validatedData.path);
         const urgencyLevel = validatedData.riskScore >= 25 ? 'INTERVENTION PRIORITAIRE' : validatedData.riskScore >= 15 ? 'NÉCESSITE UNE EXPERTISE' : 'SITUATION À SURVEILLER';
         
         await sendEmail({

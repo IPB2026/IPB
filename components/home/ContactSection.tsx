@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Phone, MapPin, Mail, Send, CheckCircle } from 'lucide-react';
 import { submitContactForm } from '@/app/actions/contact';
 import { validatePhoneOrError } from '@/lib/validations/phone';
+import { trackContactLeadSubmit } from '@/lib/analytics';
 import { FormError } from '@/components/ui/FormError';
 
 export function ContactSection() {
@@ -40,23 +41,33 @@ export function ContactSection() {
       const phoneError = validatePhoneOrError(formData.phone);
       if (phoneError) { setErrorMessage(phoneError); return; }
     }
-    if (!formData.message.trim()) { setErrorMessage('Merci de décrire votre situation.'); return; }
+    // Le serveur exige 10 caractères minimum. Le message partait auparavant
+    // préfixé du téléphone, ce qui masquait la contrainte ; maintenant qu'il
+    // part brut, un message trop court serait rejeté côté serveur sans que le
+    // visiteur comprenne pourquoi.
+    if (formData.message.trim().length < 10) {
+      setErrorMessage('Merci de décrire votre situation en quelques mots (10 caractères minimum).');
+      return;
+    }
 
     setIsSubmitting(true);
     try {
       const formDataToSend = new FormData();
       formDataToSend.append('name', formData.name);
       formDataToSend.append('email', formData.email);
+      // Champ dédié, et non concaténé dans le message : sans ça le contact était
+      // créé sans numéro, la déduplication par téléphone devenait impossible et
+      // le rappel ressaisi à la main créait un doublon.
+      formDataToSend.append('phone', formData.phone);
       formDataToSend.append('subject', 'Demande depuis la page d’accueil');
-      formDataToSend.append(
-        'message',
-        formData.phone
-          ? `Téléphone : ${formData.phone}\n\n${formData.message}`
-          : formData.message
-      );
+      formDataToSend.append('message', formData.message);
 
       const result = await submitContactForm(formDataToSend);
       if (result.success) {
+        // Sans cet appel, les leads de ces pages d'atterrissage n'existaient ni
+        // dans GA4 ni dans Google Ads : coût par lead faussé et Smart Bidding
+        // non alimenté.
+        trackContactLeadSubmit({ email: formData.email, phone: formData.phone });
         setIsSubmitted(true);
         setFormData({ name: '', email: '', phone: '', message: '' });
         setTimeout(() => setIsSubmitted(false), 5000);

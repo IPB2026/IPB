@@ -6,6 +6,7 @@ import { redirect } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
 import { purgeContactById } from '@/lib/crm/contacts';
+import { normalizePhoneFR } from '@/lib/crm/phone';
 import { sendEmail } from '@/lib/email';
 import { postChantierReviewRequest } from '@/lib/emailTemplates';
 import { OccupantStatus } from '@prisma/client';
@@ -124,19 +125,40 @@ export async function updateContact(
   }
   const d = parsed.data;
 
-  await prisma.contact.update({
-    where: { id },
-    data: {
-      name: d.name,
-      phone: d.phone || null,
-      email: d.email ? d.email.toLowerCase() : null,
-      address: d.address || null,
-      postalCode: d.postalCode || null,
-      city: d.city || null,
-      occupantStatus: d.occupantStatus,
-      propertyType: d.propertyType || null,
-    },
-  });
+  try {
+    await prisma.contact.update({
+      where: { id },
+      data: {
+        name: d.name,
+        // Normalisé comme à la capture : un numéro saisi « 06 12 34 56 78 » à la
+        // main sortait sinon des variantes testées à la déduplication suivante,
+        // et le prochain formulaire web recréait une fiche.
+        // Repli sur la saisie brute si elle n'est pas normalisable (note du type
+        // « à rappeler ») : mieux vaut conserver l'information que l'effacer.
+        phone: normalizePhoneFR(d.phone) || d.phone.trim() || null,
+        email: d.email ? d.email.toLowerCase() : null,
+        address: d.address || null,
+        postalCode: d.postalCode || null,
+        city: d.city || null,
+        occupantStatus: d.occupantStatus,
+        propertyType: d.propertyType || null,
+      },
+    });
+  } catch (e) {
+    // P2002 = violation d'unicité sur email ou phone. Sans ce traitement, la
+    // page basculait sur l'écran d'erreur générique et la saisie était perdue.
+    if (e && typeof e === 'object' && 'code' in e && (e as { code?: string }).code === 'P2002') {
+      const cible = (e as { meta?: { target?: string[] | string } }).meta?.target;
+      const champs = Array.isArray(cible) ? cible.join(', ') : String(cible ?? '');
+      const quoi = champs.includes('phone')
+        ? 'Ce numéro de téléphone'
+        : champs.includes('email')
+        ? 'Cette adresse email'
+        : 'Ces coordonnées';
+      return `${quoi} est déjà rattaché à une autre fiche. Utilisez la page Doublons pour fusionner les deux fiches.`;
+    }
+    throw e;
+  }
   revalidateFiches();
   return undefined;
 }
@@ -159,11 +181,16 @@ export async function mergeContacts(formData: FormData) {
   if (!target || !source) return;
 
   await prisma.$transaction([
-    // Libère d'abord l'e-mail du doublon : sans ça, recopier source.email sur la
-    // cible alors que le doublon existe encore viole la contrainte d'unicité.
-    prisma.contact.update({ where: { id: sourceId }, data: { email: null } }),
+    // Libère d'abord l'e-mail ET le téléphone du doublon : tous deux sont
+    // @unique, et recopier l'un d'eux sur la cible alors que le doublon existe
+    // encore viole la contrainte. Le téléphone manquait ici, ce qui faisait
+    // échouer toute fusion où seule la source portait un numéro.
+    prisma.contact.update({ where: { id: sourceId }, data: { email: null, phone: null } }),
     prisma.lead.updateMany({ where: { contactId: sourceId }, data: { contactId: targetId } }),
     prisma.activity.updateMany({ where: { contactId: sourceId }, data: { contactId: targetId } }),
+    // PhaseEvent est en onDelete: Cascade : sans cette réassignation, tout
+    // l'historique de vélocité du dossier absorbé disparaissait à la suppression.
+    prisma.phaseEvent.updateMany({ where: { contactId: sourceId }, data: { contactId: targetId } }),
     prisma.devis.updateMany({ where: { contactId: sourceId }, data: { contactId: targetId } }),
     prisma.facture.updateMany({ where: { contactId: sourceId }, data: { contactId: targetId } }),
     prisma.appointment.updateMany({ where: { contactId: sourceId }, data: { contactId: targetId } }),

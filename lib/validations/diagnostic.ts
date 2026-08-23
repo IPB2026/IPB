@@ -5,7 +5,11 @@ import { z } from 'zod';
  * Tous les inputs utilisateur doivent passer par ces validations
  */
 
-export const diagnosticPathSchema = z.enum(['fissure', 'mur-porteur'], {
+// Les trois parcours proposés sur /diagnostic. Toute valeur ajoutée ici doit
+// être propagée dans getExpertDiagnosis (app/actions/diagnostic.ts), dans le
+// mapping ServiceType et dans lib/emailTemplates.ts, sous peine de renvoyer un
+// contenu erroné au prospect et à l'équipe.
+export const diagnosticPathSchema = z.enum(['fissure', 'mur-porteur', 'humidite'], {
   message: 'Type de diagnostic invalide',
 });
 

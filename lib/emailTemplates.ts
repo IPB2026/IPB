@@ -27,8 +27,29 @@ interface BaseContext {
 }
 
 interface PathContext extends BaseContext {
-  path: 'fissure' | 'mur-porteur';
+  path: 'fissure' | 'mur-porteur' | 'humidite';
 }
+
+/**
+ * Objet de la demande, formulé pour être inséré dans une phrase.
+ * Le switch est exhaustif : ajouter un parcours à PathContext sans le traiter
+ * ici provoque une erreur de compilation, plutôt qu'un repli silencieux sur
+ * « mur porteur » comme c'était le cas avec l'ancien ternaire.
+ */
+const objetDemande = (path: PathContext['path']): string => {
+  switch (path) {
+    case 'fissure':
+      return 'des fissures sur votre habitation';
+    case 'humidite':
+      return "un problème d'humidité dans votre habitation";
+    case 'mur-porteur':
+      return "votre projet d'ouverture de mur porteur";
+    default: {
+      const _exhaustif: never = path;
+      return _exhaustif;
+    }
+  }
+};
 
 // ─────────────────────────────────────────────────────────────────
 // Wrapper commun (header + footer + responsive)
@@ -139,7 +160,7 @@ export function j0Confirmation(ctx: PathContext): string {
     ${card(`
       ${eyebrow('Votre demande est en cours d\'analyse')}
       ${heading('Bonjour,', 'votre demande est entre de bonnes mains.')}
-      ${para('Notre institut vient de recevoir votre demande concernant ' + (ctx.path === 'fissure' ? 'des fissures sur votre habitation' : 'votre projet d\'ouverture de mur porteur') + (ctx.city ? ` à ${ctx.city}` : '') + '. Nous l\'étudions avec attention pour vous orienter au mieux.')}
+      ${para('Notre institut vient de recevoir votre demande concernant ' + objetDemande(ctx.path) + (ctx.city ? ` à ${ctx.city}` : '') + '. Nous l\'étudions avec attention pour vous orienter au mieux.')}
       ${para(tierMessage)}
       ${para('En attendant notre retour, n\'hésitez pas à nous appeler directement si vous avez la moindre question — nous y répondrons avec plaisir.')}
       <p style="margin: 28px 0;">
@@ -156,9 +177,29 @@ export function j0Confirmation(ctx: PathContext): string {
 // ─────────────────────────────────────────────────────────────────
 
 export function j1Synthese(ctx: PathContext): string {
-  const synth = ctx.path === 'fissure'
-    ? "En relisant les éléments que vous nous avez confiés, votre situation nous est familière : c'est un cas que nous rencontrons très régulièrement en Haute-Garonne, où le retrait-gonflement des argiles fragilise une grande partie des maisons. Rassurez-vous, vous êtes loin d'être seul(e) face à cela."
-    : "Votre projet d'ouverture de mur porteur, nous le menons très régulièrement — près d'un tiers de notre activité chaque mois. Et quand l'étude est bien posée en amont, l'essentiel aboutit en moins de 6 semaines, de la première visite à la livraison.";
+  const synth =
+    ctx.path === 'fissure'
+      ? "En relisant les éléments que vous nous avez confiés, votre situation nous est familière : c'est un cas que nous rencontrons très régulièrement en Haute-Garonne, où le retrait-gonflement des argiles fragilise une grande partie des maisons. Rassurez-vous, vous êtes loin d'être seul(e) face à cela."
+      : ctx.path === 'humidite'
+      ? "En relisant les éléments que vous nous avez confiés, votre situation nous est familière : les désordres d'humidité représentent une part importante de nos visites en Occitanie. Dans la majorité des cas, le problème vient d'une cause unique et identifiable — encore faut-il la nommer avant d'engager des travaux."
+      : "Votre projet d'ouverture de mur porteur, nous en voyons passer très régulièrement. Ce que nous constatons presque à chaque fois : ce qui fait échouer un projet, ce n'est pas le chantier lui-même, c'est l'étude qui n'a pas été faite avant.";
+
+  const pointCle =
+    ctx.path === 'fissure'
+      ? "Un point essentiel pour vous : il ne faut pas confondre une fissure cosmétique (faïençage) avec une fissure structurelle (en escalier, ou plus large que 2 mm). C'est précisément ce que notre diagnostic instrumenté permet de trancher — en moins d'une heure, sur place."
+      : ctx.path === 'humidite'
+      ? "Un point essentiel pour vous : condensation, infiltration et remontées capillaires produisent des symptômes très proches mais appellent des traitements totalement différents. Traiter la mauvaise cause, c'est payer deux fois. C'est précisément ce que notre diagnostic instrumenté permet de trancher — hygromètre, caméra thermique et test à la bombe à carbure."
+      : "Trois éléments font toute la différence entre un chantier serein et une mauvaise surprise : une note de calcul établie par un bureau d'études aux Eurocodes, un étaiement provisoire correctement dimensionné, et une entreprise de maçonnerie qui travaille sur cette note plutôt qu'à l'estime. Notre institut ne réalise pas ces travaux, mais il vous dit dans quel ordre les engager.";
+
+  // /expertise/mur-porteur n'existe pas (service arrêté en 2026) : l'ancien
+  // bouton envoyait ces prospects sur une 404. On les renvoie vers la page
+  // fissures, la plus proche de leur préoccupation structurelle.
+  const methode =
+    ctx.path === 'fissure'
+      ? { label: 'Voir notre méthode fissures', slug: 'fissures' }
+      : ctx.path === 'humidite'
+      ? { label: 'Voir notre méthode humidité', slug: 'humidite' }
+      : { label: 'Voir notre méthode structure', slug: 'fissures' };
 
   const inner = `
     ${card(`
@@ -166,11 +207,9 @@ export function j1Synthese(ctx: PathContext): string {
       ${heading('Voici ce que nous voyons', 'dans votre situation.')}
       ${para('Bonjour,')}
       ${para(synth)}
-      ${para(ctx.path === 'fissure'
-        ? "Un point essentiel pour vous : il ne faut pas confondre une fissure cosmétique (faïençage) avec une fissure structurelle (en escalier, ou plus large que 2 mm). C'est précisément ce que notre diagnostic instrumenté permet de trancher — en moins d'une heure, sur place."
-        : "Trois éléments font toute la différence entre un chantier serein et une mauvaise surprise : le calcul de la poutre par un ingénieur structure, la qualité de l'étaiement provisoire, et une étude puis des travaux coordonnés par un seul interlocuteur — nous.")}
+      ${para(pointCle)}
       <p style="margin: 28px 0;">
-        ${button(ctx.path === 'fissure' ? 'Voir notre méthode fissures' : 'Voir notre méthode mur porteur', `https://www.ipb-expertise.fr/expertise/${ctx.path === 'fissure' ? 'fissures' : 'mur-porteur'}`)}
+        ${button(methode.label, `https://www.ipb-expertise.fr/expertise/${methode.slug}`)}
       </p>
       ${signature}
     `)}
@@ -183,18 +222,46 @@ export function j1Synthese(ctx: PathContext): string {
 // ─────────────────────────────────────────────────────────────────
 
 export function j3CaseStudy(ctx: PathContext): string {
-  const isFissure = ctx.path === 'fissure';
+  // Un cas concret par parcours. L'ancienne version n'en avait que deux : le
+  // récit « humidité » était servi sous un titre « mur porteur ouvert ».
+  const cas =
+    ctx.path === 'fissure'
+      ? {
+          titre: 'Maison à Tournefeuille,',
+          sousTitre: 'sécheresse 2022.',
+          situation:
+            "Pour vous donner du concret : il y a six mois, une maison T4 à Tournefeuille (110 m²) présentait une fissure traversante en escalier de 12 mm sur la façade nord-est. Un tassement différentiel du sol, reconnu en catastrophe naturelle 2022 — les propriétaires redoutaient le pire.",
+          issue:
+            "Après diagnostic, nous avons préconisé un agrafage structurel (18 agrafes inox) avec ravalement souple, réalisé par des entreprises membres du réseau IPB en 8 jours. Surtout : notre rapport transmis à l'expert d'assurance a justifié une indemnisation couvrant 92 % du montant.",
+        }
+      : ctx.path === 'humidite'
+      ? {
+          titre: 'Maison à Saint-Cyprien,',
+          sousTitre: 'remontées capillaires.',
+          situation:
+            "Pour vous donner du concret : il y a six mois, une maison à Saint-Cyprien présentait du salpêtre et un enduit cloqué en pied de murs. Les propriétaires ne savaient pas s'il s'agissait de remontées capillaires ou d'une simple infiltration.",
+          issue:
+            "Après diagnostic à l'humidimètre, nous avons confirmé des remontées capillaires et préconisé une injection de résine ciblée — en écartant une réfection inutile de la façade. Pour la réalisation, nous avons orienté vers des entreprises membres du réseau IPB.",
+        }
+      : {
+          // Le service « ouverture de mur porteur » est arrêté depuis 2026 : ce
+          // récit oriente, il ne promet aucun chantier — cohérent avec le
+          // verdict affiché au visiteur sur /diagnostic.
+          titre: 'T3 à Saint-Cyprien,',
+          sousTitre: 'la bonne question posée.',
+          situation:
+            "Pour vous donner du concret : les propriétaires d'un T3 à Saint-Cyprien souhaitaient ouvrir le mur entre cuisine et séjour. Un mur en brique foraine avec un étage au-dessus — ils avaient déjà deux devis d'entreprises, aucun ne mentionnait de note de calcul.",
+          issue:
+            "Nous leur avons dit clairement ce que nous vous dirons : une ouverture de mur porteur exige d'abord une note de calcul d'un bureau d'études aux Eurocodes, puis une entreprise de maçonnerie qualifiée. Ce n'est pas notre métier — mais savoir vers qui vous orienter, et dans quel ordre, vous évite le devis qui fait l'impasse sur l'étude.",
+        };
+
   const inner = `
     ${card(`
       ${eyebrow('J+3 · Un chantier raconté')}
-      ${heading(isFissure ? 'Maison à Tournefeuille,' : 'T3 à Saint-Cyprien,', isFissure ? 'sécheresse 2022.' : 'mur porteur ouvert.')}
+      ${heading(cas.titre, cas.sousTitre)}
       ${para('Bonjour,')}
-      ${para(isFissure
-        ? "Pour vous donner du concret : il y a six mois, une maison T4 à Tournefeuille (110 m²) présentait une fissure traversante en escalier de 12 mm sur la façade nord-est. Un tassement différentiel du sol, reconnu en catastrophe naturelle 2022 — les propriétaires redoutaient le pire."
-        : "Pour vous donner du concret : il y a six mois, une maison à Saint-Cyprien présentait du salpêtre et un enduit cloqué en pied de murs. Les propriétaires ne savaient pas s'il s'agissait de remontées capillaires ou d'une simple infiltration.")}
-      ${para(isFissure
-        ? "Après diagnostic, nous avons préconisé un agrafage structurel (18 agrafes inox) avec ravalement souple, réalisé par des entreprises membres du réseau IPB en 8 jours. Surtout : notre rapport transmis à l'expert d'assurance a justifié une indemnisation couvrant 92 % du montant."
-        : "Après diagnostic à l'humidimètre, nous avons confirmé des remontées capillaires et préconisé une injection de résine ciblée — en écartant une réfection inutile de la façade. Pour la réalisation, nous avons orienté vers des entreprises membres du réseau IPB.")}
+      ${para(cas.situation)}
+      ${para(cas.issue)}
       ${para('Chaque situation est unique, mais le principe ne change jamais : poser le bon diagnostic avant d\'engager le moindre travaux. C\'est ainsi qu\'on évite les mauvaises surprises.')}
       <p style="margin: 28px 0;">
         ${button('Discuter de votre dossier', 'tel:0582953375')}

@@ -243,10 +243,14 @@ export async function captureLead(
 
 /** Déduit la famille de service depuis le parcours diagnostic + réponses. */
 export function serviceFromDiagnostic(
-  path: 'fissure' | 'mur-porteur',
+  path: 'fissure' | 'mur-porteur' | 'humidite',
   answers: Record<string, unknown>
 ): ServiceType {
   if (path === 'mur-porteur') return ServiceType.MUR_PORTEUR;
+  // Le parcours humidité a ses propres questions (SYMPTOMES / HAUTEUR /
+  // SAISONNALITE) : la clé MANIFESTATION n'y existe pas, le service se déduit
+  // donc directement du parcours choisi.
+  if (path === 'humidite') return ServiceType.HUMIDITE;
   const manifestation = answers?.['MANIFESTATION'];
   const humidite = ['salpetre', 'moisissure', 'peinture', 'odeur'];
   if (typeof manifestation === 'string' && humidite.includes(manifestation)) {

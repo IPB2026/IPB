@@ -23,7 +23,7 @@ export interface LeadScoreResult {
 }
 
 interface ScoringInput {
-  path: 'fissure' | 'mur-porteur';
+  path: 'fissure' | 'mur-porteur' | 'humidite';
   answers: Record<string, string>;
   hasPhone?: boolean;
   hasEmail?: boolean;
@@ -108,21 +108,89 @@ const MUR_PORTEUR_RULES: Array<{
   { key: 'TYPE_BATIMENT', values: ['immeuble'], points: 1, reason: 'Immeuble / appartement — démarches AG à anticiper' },
 ];
 
+// Parcours humidité. Hiérarchie des signaux calée sur celle affichée au
+// visiteur (app/diagnostic/page.tsx), avec un maximum atteignable de 41 points
+// — comparable au parcours fissure — pour que les seuils HOT (25) et WARM (12)
+// gardent le même sens d'un parcours à l'autre.
+// LOCALISATION et SYMPTOMES sont multi-choix : leurs règles se cumulent.
+const HUMIDITE_RULES: Array<{
+  key: string;
+  values: string[];
+  points: number;
+  reason: string;
+}> = [
+  // Symptômes (multi-choix, cumulables) — signature de la pathologie
+  { key: 'SYMPTOMES', values: ['moisissures'], points: 6, reason: 'Moisissures noires — enjeu sanitaire pour les occupants' },
+  { key: 'SYMPTOMES', values: ['salpetre'], points: 4, reason: 'Salpêtre — signature de remontées capillaires' },
+  { key: 'SYMPTOMES', values: ['peinture'], points: 2, reason: 'Peinture qui cloque — humidité installée dans le support' },
+
+  // Hauteur de remontée — gravité principale
+  { key: 'HAUTEUR', values: ['plus_150'], points: 8, reason: 'Remontée au-delà d\'1,5 m — désordre avancé' },
+  { key: 'HAUTEUR', values: ['50_150'], points: 5, reason: 'Remontée entre 50 cm et 1,5 m — traitement nécessaire' },
+  { key: 'HAUTEUR', values: ['sous_50'], points: 2, reason: 'Remontée sous 50 cm — stade précoce' },
+
+  // Saisonnalité — permanent = structurel
+  { key: 'SAISONNALITE', values: ['toute_annee'], points: 5, reason: 'Présent toute l\'année — cause structurelle probable' },
+  { key: 'SAISONNALITE', values: ['apres_pluie'], points: 3, reason: 'Aggravation après pluie — piste infiltration' },
+
+  // Ventilation — cause fréquente et traitable
+  { key: 'VENTILATION', values: ['aucune'], points: 4, reason: 'Aucune ventilation dédiée — facteur aggravant certain' },
+
+  // Étendue (multi-choix, cumulables)
+  { key: 'LOCALISATION', values: ['partout'], points: 3, reason: 'Plusieurs pièces touchées — désordre étendu' },
+  { key: 'LOCALISATION', values: ['cave'], points: 2, reason: 'Cave ou sous-sol — configuration à risque' },
+
+  // Urgence ressentie
+  { key: 'URGENCE', values: ['immediate'], points: 3, reason: 'Urgence déclarée (santé ou dégât) — rappel prioritaire' },
+  { key: 'URGENCE', values: ['modere'], points: 2, reason: 'Situation jugée préoccupante par le demandeur' },
+
+  // Contexte
+  { key: 'ANCIENNETE', values: ['ancien'], points: 2, reason: 'Signes présents depuis plus de 2 ans — problème chronique' },
+  { key: 'STATUT', values: ['proprietaire', 'bailleur'], points: 2, reason: 'Propriétaire — décisionnaire direct' },
+  { key: 'STATUT', values: ['achat'], points: 2, reason: 'Projet d\'achat — décision à échéance courte' },
+];
+
 // ─────────────────────────────────────────────────────────────────
 // Algorithme principal
 // ─────────────────────────────────────────────────────────────────
 
 export function calculateLeadScore(input: ScoringInput): LeadScoreResult {
-  const rules = input.path === 'fissure' ? FISSURE_RULES : MUR_PORTEUR_RULES;
+  const rules =
+    input.path === 'fissure'
+      ? FISSURE_RULES
+      : input.path === 'humidite'
+      ? HUMIDITE_RULES
+      : MUR_PORTEUR_RULES;
   const reasons: string[] = [];
   const signals: string[] = [];
   let score = 0;
   const maxScore = 50;
 
   // 1) Appliquer les règles métier
+  //
+  // Les questions multi-choix (LOCALISATION, SYMPTOMES…) renvoient un tableau.
+  // L'ancien matching comparait ce tableau à une liste de chaînes : aucune de
+  // ces règles ne se déclenchait jamais.
+  //
+  // ⚠️ Ce support tableau est volontairement limité au parcours humidité.
+  // L'activer sur « fissure » débloquerait d'un coup 22 points de règles
+  // dormantes (LOCALISATION + SIGNES_ASSOCIES) sans que les seuils HOT/WARM
+  // aient été recalibrés : des dossiers sans gravité structurelle basculeraient
+  // en rappel prioritaire. Le recalibrage est un arbitrage métier — voir
+  // AUDIT_LEADS_CRM_SITE_2026-08.md. Tant qu'il n'est pas tranché, les parcours
+  // existants gardent exactement le comportement qu'ils avaient.
+  const supporteMultiChoix = input.path === 'humidite';
+
   for (const rule of rules) {
-    const answerValue = input.answers[rule.key];
-    if (answerValue && rule.values.includes(answerValue)) {
+    const answerValue = input.answers[rule.key] as unknown;
+    const given = Array.isArray(answerValue)
+      ? supporteMultiChoix
+        ? (answerValue as unknown[]).map(String)
+        : []
+      : answerValue
+      ? [String(answerValue)]
+      : [];
+    if (given.some((v) => rule.values.includes(v))) {
       score += rule.points;
       reasons.push(rule.reason);
     }

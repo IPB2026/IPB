@@ -89,9 +89,13 @@ export async function GET(req: Request) {
       firstName: lead.contact.name.split(' ')[0] || lead.contact.name,
       city: lead.contact.city ?? undefined,
       tier: (lead.tier as LeadTier | null) ?? undefined,
-      path: (lead.service === 'MUR_PORTEUR' ? 'mur-porteur' : 'fissure') as
-        | 'fissure'
-        | 'mur-porteur',
+      // Sans le cas HUMIDITE, les prospects humidité recevaient la séquence
+      // « fissures » pendant 7 jours.
+      path: (lead.service === 'MUR_PORTEUR'
+        ? 'mur-porteur'
+        : lead.service === 'HUMIDITE'
+        ? 'humidite'
+        : 'fissure') as 'fissure' | 'mur-porteur' | 'humidite',
     };
 
     try {

@@ -52,8 +52,11 @@ export function ContactEditForm({
   const defPrenom = parts.length > 1 ? parts[0] : '';
   const defNom = parts.length > 1 ? parts.slice(1).join(' ') : contact.name;
 
+  // Pas de `key` dérivée de l'erreur sur le <form> : elle le remontait à chaque
+  // échec de validation et réinitialisait tous les champs non contrôlés, faisant
+  // perdre la saisie en cours.
   return (
-    <form action={formAction} className="space-y-3" key={error ? 'err' : 'ok'}>
+    <form action={formAction} className="space-y-3">
       <input type="hidden" name="contactId" value={contact.id} />
       {/* Particulier (prénom + nom) OU entreprise (raison sociale = nom complet). */}
       <NameFields
