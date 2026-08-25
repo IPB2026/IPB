@@ -510,12 +510,20 @@ export const emailTemplates = {
 // y mêler un template au contexte différent (object/step) casserait l'inférence.
 // On l'importe directement là où on en a besoin.
 
+/**
+ * Séquence de nurturing prospect.
+ * `disabled: true` = étape CONSERVÉE dans la séquence (numérotation et historique
+ * intacts) mais PLUS ENVOYÉE : le cron la traverse sans envoyer d'e-mail.
+ * On désactive plutôt que de supprimer, car `Lead.relanceStep` est un index dans
+ * cette liste — retirer une ligne décalerait tous les dossiers en cours.
+ */
 export const emailSequence = [
-  { offsetDays: 0, name: 'j0Confirmation', subject: (ctx: PathContext) => `Votre demande IPB est prise en compte` },
-  { offsetDays: 1, name: 'j1Synthese', subject: (ctx: PathContext) => `Voici ce que nous voyons dans votre situation` },
-  { offsetDays: 3, name: 'j3CaseStudy', subject: (ctx: PathContext) => `Un chantier IPB raconté — pour vous donner du concret` },
-  { offsetDays: 7, name: 'j7ReprisePoint', subject: (ctx: PathContext) => `Souhaitez-vous échanger 15 minutes ?` },
-  { offsetDays: 14, name: 'j14Closure', subject: (ctx: PathContext) => `Dernier message si ce n'est plus d'actualité` },
+  { offsetDays: 0, name: 'j0Confirmation', disabled: false, subject: (ctx: PathContext) => `Votre demande IPB est prise en compte` },
+  // Coupées le 2026-08-25 à la demande du gérant : ces trois e-mails ne partent plus.
+  { offsetDays: 1, name: 'j1Synthese', disabled: true, subject: (ctx: PathContext) => `Voici ce que nous voyons dans votre situation` },
+  { offsetDays: 3, name: 'j3CaseStudy', disabled: true, subject: (ctx: PathContext) => `Un chantier IPB raconté — pour vous donner du concret` },
+  { offsetDays: 7, name: 'j7ReprisePoint', disabled: true, subject: (ctx: PathContext) => `Souhaitez-vous échanger 15 minutes ?` },
+  { offsetDays: 14, name: 'j14Closure', disabled: false, subject: (ctx: PathContext) => `Dernier message si ce n'est plus d'actualité` },
 ] as const;
 
 /**

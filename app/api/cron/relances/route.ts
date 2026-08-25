@@ -68,7 +68,13 @@ export async function GET(req: Request) {
   const errors: string[] = [];
 
   for (const lead of leads) {
-    const step = STEPS[lead.relanceStep];
+    // Étapes désactivées (emailSequence.disabled) : on les TRAVERSE sans envoyer
+    // d'e-mail et sans rien écrire en base — le dossier n'est pas bloqué dessus
+    // et rejoint directement la prochaine étape active. Le compteur ne bouge
+    // qu'à l'envoi réel, il reste donc le reflet des e-mails effectivement partis.
+    let stepIndex = lead.relanceStep;
+    while (STEPS[stepIndex]?.disabled) stepIndex++;
+    const step = STEPS[stepIndex];
     if (!step) continue;
     const ageDays = (now - lead.createdAt.getTime()) / DAY;
     if (ageDays < step.offsetDays) continue;
@@ -111,7 +117,7 @@ export async function GET(req: Request) {
       }
       await prisma.lead.update({
         where: { id: lead.id },
-        data: { relanceStep: { increment: 1 }, relanceLastAt: new Date() },
+        data: { relanceStep: stepIndex + 1, relanceLastAt: new Date() },
       });
       await prisma.activity.create({
         data: {
