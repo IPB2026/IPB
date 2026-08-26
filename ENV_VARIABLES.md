@@ -185,6 +185,54 @@ npm run dev
 
 ---
 
+## 📥 CANAUX ENTRANTS (webhooks) — à brancher
+
+Deux endpoints attendent qu'un fournisseur leur parle. **Tant que le secret n'est
+pas défini, l'endpoint répond 503 et ne fait rien** : le code est là, la valeur
+métier n'arrive qu'une fois la configuration faite.
+
+| Variable | Endpoint | Ce que ça débloque |
+|---|---|---|
+| `INBOUND_EMAIL_SECRET` | `POST /api/inbound-email` | Les réponses des clients entrent dans la timeline, coupent les relances auto et créent une tâche « répondre ». |
+| `INBOUND_CALL_SECRET` | `POST /api/inbound-call` | Chaque appel crée/retrouve la fiche + le dossier, horodate l'appel, et transforme un appel manqué en tâche de rappel. |
+
+### Brancher l'e-mail entrant
+
+1. Générer un secret : `openssl rand -hex 32`, le poser dans Vercel en
+   `INBOUND_EMAIL_SECRET`.
+2. Chez le fournisseur d'inbound parsing (Resend Inbound, SendGrid Inbound Parse,
+   Mailgun Routes, Postmark), router les messages vers :
+   `https://ipb-expertise.fr/api/inbound-email`
+   avec l'en-tête `x-inbound-secret: <secret>`.
+3. Le plus simple sans changer d'adresse : mettre une adresse dédiée
+   (ex. `dossier@ipb-expertise.fr`) en **Répondre-à** des e-mails sortants, et
+   router CETTE boîte vers le webhook.
+
+### Brancher le suivi d'appel
+
+1. Secret `INBOUND_CALL_SECRET` dans Vercel.
+2. Chez l'opérateur (Twilio, Ringover, CallRail, OVH Télécom…), créer un **numéro
+   de suivi** renvoyant vers la ligne habituelle, et pointer son webhook
+   « fin d'appel » vers `https://ipb-expertise.fr/api/inbound-call`
+   (en-tête `x-inbound-secret`).
+3. Un numéro de suivi **par campagne** (Ads, plaquette, annuaire) : le numéro
+   composé est enregistré comme source, ce qui donne enfin le ROI par canal sur
+   les ~80 % de demandes qui arrivent par téléphone.
+
+Test à blanc, une fois le secret posé :
+
+```bash
+curl -X POST https://ipb-expertise.fr/api/inbound-call \
+  -H "x-inbound-secret: $INBOUND_CALL_SECRET" \
+  -H "content-type: application/json" \
+  -d '{"from":"0612345678","status":"no-answer","callId":"test-1","to":"0582953375"}'
+```
+
+Le CRM doit afficher une fiche « Appel 0612345678 » avec une tâche de rappel.
+Supprimez-la ensuite depuis la corbeille.
+
+---
+
 ## 🚨 FALLBACKS ACTUELS
 
 Si une variable n'est pas définie, le code utilise des fallbacks :

@@ -12,3 +12,19 @@ export function lostReasonCodeFromText(reason: string): string | null {
   if (/abandon|plus de nouvelle|injoignable|silence|ne r[ée]pond/.test(r)) return 'ABANDON';
   return 'AUTRE';
 }
+
+/**
+ * Motifs de perte RÉCUPÉRABLES : le client voulait le service, quelque chose de
+ * conjoncturel l'a empêché. Un prix jugé trop élevé au printemps se retente à
+ * l'automne ; un délai trop long se retente quand le planning respire. À
+ * l'inverse, CONCURRENT (les travaux ont été faits ailleurs) et ABANDON (le
+ * besoin a disparu) ne se recyclent pas — relancer y serait du harcèlement.
+ */
+export const MOTIFS_RECYCLABLES = ['PRIX', 'DELAI'] as const;
+
+/** Le dossier mérite-t-il une tâche de reprise ? */
+export function estRecyclable(lostReasonCode: string | null | undefined): boolean {
+  return MOTIFS_RECYCLABLES.includes(
+    (lostReasonCode ?? '') as (typeof MOTIFS_RECYCLABLES)[number]
+  );
+}

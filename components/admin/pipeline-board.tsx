@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, PauseCircle } from 'lucide-react';
 import { moveLead } from '@/app/admin/(app)/leads/actions';
 import { QuickActionMenu } from '@/components/admin/quick-action-menu';
 
@@ -15,6 +15,8 @@ export interface PipelineCard {
   /** Montant du devis (0 si aucun devis envoyé/accepté → non affiché). */
   montant: number;
   phone?: string | null;
+  /** Étape réglée à la main ⇒ relances automatiques en pause. */
+  manuel?: boolean;
 }
 
 export interface PipelineColumn {
@@ -170,6 +172,14 @@ export function PipelineBoard({ columns }: { columns: PipelineColumn[] }) {
                       </div>
                       {l.sub && (
                         <p className="truncate text-xs text-slate-400">{l.sub}</p>
+                      )}
+                      {l.manuel && (
+                        <span
+                          className="mt-1 inline-flex items-center gap-1 rounded bg-orange-50 px-1.5 py-0.5 text-[10px] font-medium text-orange-700"
+                          title="Étape réglée à la main : les relances automatiques de ce dossier sont en pause."
+                        >
+                          <PauseCircle className="h-3 w-3" /> relances en pause
+                        </span>
                       )}
                     </Link>
                     <div className="mt-2 flex items-center justify-between">
