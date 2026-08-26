@@ -6,6 +6,7 @@ import { redirect } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
 import { purgeContactById } from '@/lib/crm/contacts';
+import { RULES } from '@/lib/crm/rules';
 import { normalizePhoneFR } from '@/lib/crm/phone';
 import { sendEmail } from '@/lib/email';
 import { postChantierReviewRequest } from '@/lib/emailTemplates';
@@ -245,6 +246,63 @@ export async function restoreContact(formData: FormData): Promise<void> {
   await prisma.contact.update({ where: { id }, data: { archivedAt: null } }).catch(() => null);
   revalidateFiches();
   redirect(`/admin/clients/${id}`);
+}
+
+/** Identifiants d'une SÉLECTION MULTIPLE (cases cochées dans la liste). */
+function selectedIds(formData: FormData): string[] {
+  return [...new Set(formData.getAll('contactIds').map((v) => String(v).trim()))]
+    .filter(Boolean)
+    .slice(0, RULES.maxBulkSelection);
+}
+
+/** Destination de retour d'une action groupée : chemins internes /admin/… seulement. */
+function safeBack(formData: FormData): string {
+  const to = String(formData.get('redirectTo') ?? '');
+  return to.startsWith('/admin/') && !to.startsWith('//') ? to : '/admin/clients';
+}
+
+/** Met À LA CORBEILLE toute une sélection de clients (même règle que l'unitaire). ADMIN. */
+export async function archiveContacts(formData: FormData): Promise<void> {
+  await requireAdmin();
+  const ids = selectedIds(formData);
+  if (ids.length) {
+    await prisma.contact.updateMany({
+      where: { id: { in: ids } },
+      data: { archivedAt: new Date() },
+    });
+    revalidateFiches();
+  }
+  redirect(safeBack(formData));
+}
+
+/** Restaure toute une sélection de clients depuis la corbeille. ADMIN. */
+export async function restoreContacts(formData: FormData): Promise<void> {
+  await requireAdmin();
+  const ids = selectedIds(formData);
+  if (ids.length) {
+    await prisma.contact.updateMany({
+      where: { id: { in: ids } },
+      data: { archivedAt: null },
+    });
+    revalidateFiches();
+  }
+  redirect(safeBack(formData));
+}
+
+/**
+ * Supprime DÉFINITIVEMENT toute une sélection (depuis la corbeille). En série et
+ * non en `deleteMany` : `purgeContactById` efface aussi les photos stockées et
+ * refuse les fiches portant des factures à conserver 10 ans — un deleteMany
+ * passerait outre les deux. ADMIN, irréversible.
+ */
+export async function purgeContacts(formData: FormData): Promise<void> {
+  await requireAdmin();
+  const ids = selectedIds(formData);
+  for (const id of ids) {
+    await purgeContactById(id).catch(() => null);
+  }
+  if (ids.length) revalidateFiches();
+  redirect(safeBack(formData));
 }
 
 /**

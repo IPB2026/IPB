@@ -19,8 +19,23 @@ import {
 import { Pagination, parsePage } from '@/components/admin/pagination';
 import { QuickActionMenu } from '@/components/admin/quick-action-menu';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
-import { restoreContact, purgeContact, archiveContact } from '@/app/admin/(app)/contact-actions';
-import { clearManualPhase } from '@/app/admin/(app)/leads/actions';
+import {
+  restoreContact,
+  purgeContact,
+  archiveContact,
+  archiveContacts,
+  restoreContacts,
+  purgeContacts,
+} from '@/app/admin/(app)/contact-actions';
+import { clearManualPhase, markContactsLost, reopenContacts } from '@/app/admin/(app)/leads/actions';
+import {
+  BulkSelectProvider,
+  BulkSelectToggle,
+  BulkRowCheckbox,
+  BulkSelectAll,
+  BulkActionBar,
+  type BulkAction,
+} from '@/components/admin/bulk-select';
 
 export const dynamic = 'force-dynamic';
 
@@ -65,6 +80,14 @@ function buildWhere(sp: SearchParams): Prisma.ContactWhereInput {
   if (sp.tier) and.push({ leads: { some: { tier: sp.tier as LeadTier } } });
   if (sp.canal) and.push({ leads: { some: { channel: sp.canal } } });
   return { AND: and };
+}
+
+/** URL de la vue courante (filtres compris) — retour après une action groupée. */
+function currentUrl(sp: SearchParams): string {
+  const qs = new URLSearchParams();
+  for (const [k, v] of Object.entries(sp)) if (v) qs.set(k, String(v));
+  const s = qs.toString();
+  return s ? `/admin/clients?${s}` : '/admin/clients';
 }
 
 const SERVICE_OPTIONS: ServiceType[] = ['FISSURES', 'HUMIDITE', 'EXPERTISE_ACHAT', 'MUR_PORTEUR', 'AUTRE'];
@@ -178,8 +201,70 @@ export default async function ClientsPage({
   });
 
   const hasFilters = hasActiveFilter(searchParams);
+  const pageIds = rows.map(({ c }) => c.id);
+
+  // Actions groupées proposées selon la vue — mêmes gestes que les boutons de
+  // ligne, appliqués à toute la sélection.
+  const bulkActions: BulkAction[] = corbeille
+    ? [
+        {
+          key: 'restore',
+          label: 'Restaurer',
+          icon: 'restore',
+          tone: 'neutral',
+          confirm: 'Restaurer {n} client(s) depuis la corbeille ?',
+          action: restoreContacts,
+        },
+        {
+          key: 'purge',
+          label: 'Supprimer définitivement',
+          icon: 'trash',
+          confirm:
+            'Supprimer DÉFINITIVEMENT {n} client(s) et tout leur dossier (devis, factures, rapports, RDV, photos) ? Cette action est IRRÉVERSIBLE.',
+          action: purgeContacts,
+        },
+      ]
+    : archives
+      ? [
+          {
+            key: 'reopen',
+            label: 'Rouvrir',
+            icon: 'restore',
+            tone: 'neutral',
+            confirm: 'Rouvrir {n} dossier(s) ? Ils reviennent dans la liste des clients actifs.',
+            action: reopenContacts,
+          },
+          {
+            key: 'trash',
+            label: 'Mettre à la corbeille',
+            icon: 'trash',
+            confirm:
+              'Mettre {n} client(s) à la corbeille ? Ils restent récupérables 30 jours.',
+            action: archiveContacts,
+          },
+        ]
+      : [
+          {
+            key: 'lost',
+            label: 'Marquer perdu',
+            icon: 'lost',
+            tone: 'neutral',
+            confirm:
+              'Marquer {n} dossier(s) comme perdus ? Ils quittent la liste active pour Clients → Archives (rien n’est supprimé).',
+            action: markContactsLost,
+          },
+          {
+            key: 'trash',
+            label: 'Mettre à la corbeille',
+            icon: 'trash',
+            confirm:
+              'Mettre {n} client(s) à la corbeille ? Ils disparaissent du CRM mais restent récupérables 30 jours.',
+            action: archiveContacts,
+          },
+        ];
 
   return (
+    <BulkSelectProvider>
     <div className="space-y-5">
       <PageHeader
         title={corbeille ? 'Corbeille' : archives ? 'Archives' : 'Clients'}
@@ -194,14 +279,18 @@ export default async function ClientsPage({
         }
         actions={
           corbeille || archives ? (
-            <Link
-              href="/admin/clients"
-              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
-            >
-              ← Retour aux clients
-            </Link>
+            <>
+              <BulkSelectToggle />
+              <Link
+                href="/admin/clients"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+              >
+                ← Retour aux clients
+              </Link>
+            </>
           ) : (
             <>
+              <BulkSelectToggle />
               <Link
                 href="/admin/clients/doublons"
                 className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
@@ -342,7 +431,12 @@ export default async function ClientsPage({
               <MobileCardRow
                 key={c.id}
                 href={`/admin/clients/${c.id}`}
-                leading={<Avatar name={c.name} size="sm" />}
+                leading={
+                  <>
+                    <BulkRowCheckbox id={c.id} label={c.name} />
+                    <Avatar name={c.name} size="sm" />
+                  </>
+                }
                 title={c.name}
                 badge={<EtatBadge isClient={isClient} />}
                 amount={dossier.montantDevis != null ? <Money value={dossier.montantDevis} /> : undefined}
@@ -370,6 +464,9 @@ export default async function ClientsPage({
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-slate-200 text-left text-xs font-medium uppercase tracking-wider text-slate-400">
+                  <th className="py-2.5 pl-5 pr-0 empty:hidden">
+                    <BulkSelectAll ids={pageIds} />
+                  </th>
                   <th className="px-5 py-2.5">Contact</th>
                   <th className="px-5 py-2.5">Service</th>
                   <th className="px-5 py-2.5">État</th>
@@ -381,6 +478,9 @@ export default async function ClientsPage({
               <tbody className="divide-y divide-slate-100">
                 {rows.map(({ c, dossier, isClient, service, leadId }) => (
                   <tr key={c.id} className="group transition-colors hover:bg-slate-50">
+                    <td className="py-3 pl-5 pr-0 empty:hidden">
+                      <BulkRowCheckbox id={c.id} label={c.name} />
+                    </td>
                     <td className="px-5 py-3">
                       <Link href={`/admin/clients/${c.id}`} className="flex items-center gap-3">
                         <Avatar name={c.name} size="sm" />
@@ -437,7 +537,11 @@ export default async function ClientsPage({
           />
         </>
       )}
+
+      {/* Barre d'actions groupées — n'apparaît qu'avec une sélection en cours. */}
+      <BulkActionBar actions={bulkActions} redirectTo={currentUrl(searchParams)} />
     </div>
+    </BulkSelectProvider>
   );
 }
 
