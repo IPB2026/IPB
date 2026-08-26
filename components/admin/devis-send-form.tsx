@@ -20,9 +20,10 @@ for (let h = 8; h <= 19; h++) {
  * Envoi du devis au client. Deux chemins :
  *  - « Envoyer simplement » : e-mail devis classique.
  *  - « Envoyer + proposer la visite » : 3 créneaux (date + heure par 30 min) que
- *    le client choisit en répondant. Garde-fou serveur : ≥ 3 jours + anti-conflit.
+ *    le client choisit en répondant. Aucun délai minimum imposé — seul garde-fou
+ *    serveur : créneau non passé + anti-conflit agenda.
  *
- * `minDateTime` (= aujourd'hui + 3 j) borne la date la plus tôt sélectionnable.
+ * `minDateTime` (= aujourd'hui) borne la date la plus tôt sélectionnable.
  * `upcoming` rappelle les RDV déjà planifiés pour éviter les chevauchements.
  */
 export function DevisSendForm({
@@ -86,8 +87,9 @@ export function DevisSendForm({
         Créneaux proposés pour la visite sur site
       </div>
       <p className="mb-3 text-xs text-slate-500">
-        Le client choisit en répondant à l'e-mail. Chaque créneau doit être à au
-        moins 3 jours et ne pas chevaucher un rendez-vous existant.
+        Le client choisit en répondant à l'e-mail. Aucun délai minimum : le
+        créneau peut être à n'importe quelle date (jour même compris), tant
+        qu'il n'est pas passé et ne chevauche pas un rendez-vous existant.
       </p>
 
       <div className="space-y-2">
