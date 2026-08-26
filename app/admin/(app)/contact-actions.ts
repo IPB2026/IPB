@@ -230,7 +230,11 @@ export async function archiveContact(formData: FormData): Promise<void> {
   if (!id) return;
   await prisma.contact.update({ where: { id }, data: { archivedAt: new Date() } }).catch(() => null);
   revalidateFiches();
-  redirect('/admin/clients');
+  // L'action est désormais accessible depuis plusieurs écrans (fiche, liste,
+  // pipeline) : on revient là d'où l'on vient. Chemins internes /admin/…
+  // uniquement (anti open-redirect), repli sur la liste clients.
+  const back = String(formData.get('redirectTo') ?? '');
+  redirect(back.startsWith('/admin/') && !back.startsWith('//') ? back : '/admin/clients');
 }
 
 /** Restaure un client depuis la corbeille (le ramène dans le CRM actif). ADMIN. */

@@ -29,3 +29,41 @@ export const CLIENT_CONTACT_WHERE: Prisma.ContactWhereInput = { OR: CLIENT_CONTA
 export const PROSPECT_CONTACT_WHERE: Prisma.ContactWhereInput = {
   NOT: { OR: CLIENT_CONTACT_OR },
 };
+
+/**
+ * Dossier PERDU côté base : la phase manuelle prime sur l'étape déduite (même
+ * ordre de priorité que `computeDossier`), donc un lead est perdu si
+ *  - `manualPhase = PERDU` (marqué à la main), ou
+ *  - aucune phase manuelle et `stage = PERDU` (cron, relances épuisées…).
+ */
+export const LEAD_PERDU_WHERE: Prisma.LeadWhereInput = {
+  OR: [{ manualPhase: 'PERDU' }, { AND: [{ manualPhase: null }, { stage: 'PERDU' }] }],
+};
+
+/**
+ * Contact ARCHIVÉ (« perdu ») : au moins un dossier perdu et plus AUCUN dossier
+ * ouvert. Il quitte la liste des clients actifs pour l'onglet Archives — sans
+ * rien supprimer (shadow) : la fiche, l'historique et les documents restent
+ * intacts, et rouvrir un dossier le ramène automatiquement dans la liste.
+ */
+export const LOST_CONTACT_WHERE: Prisma.ContactWhereInput = {
+  AND: [
+    { leads: { some: LEAD_PERDU_WHERE } },
+    { leads: { none: { NOT: LEAD_PERDU_WHERE } } },
+  ],
+};
+
+/**
+ * Contact ACTIF : ni à la corbeille (géré à part) ni archivé comme perdu.
+ * Négation ÉCRITE À LA MAIN plutôt qu'un `NOT: LOST_CONTACT_WHERE` : un NOT
+ * portant sur un AND de filtres de relation produit un SQL nettement moins
+ * lisible/optimisable, alors que la forme développée dit exactement la même
+ * chose — aucun dossier perdu, OU au moins un dossier encore ouvert. Un contact
+ * sans aucun dossier tombe dans le premier cas et reste donc actif.
+ */
+export const NOT_LOST_CONTACT_WHERE: Prisma.ContactWhereInput = {
+  OR: [
+    { leads: { none: LEAD_PERDU_WHERE } },
+    { leads: { some: { NOT: LEAD_PERDU_WHERE } } },
+  ],
+};

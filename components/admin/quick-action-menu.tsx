@@ -2,21 +2,29 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { MoreHorizontal, User, Phone, FileText, Receipt, XCircle } from 'lucide-react';
+import { MoreHorizontal, User, Phone, FileText, Receipt, XCircle, Trash2 } from 'lucide-react';
 import { changeStage } from '@/app/admin/(app)/leads/actions';
+import { archiveContact } from '@/app/admin/(app)/contact-actions';
+import { ConfirmSubmit } from '@/components/admin/confirm-submit';
 
 /**
  * Menu d'actions rapides par ligne (pattern Salesforce/HubSpot) : ouvrir la
- * fiche, appeler, créer un devis/une facture — sans quitter la liste.
+ * fiche, appeler, créer un devis/une facture, marquer perdu ou mettre à la
+ * corbeille — sans quitter la liste ni ouvrir la fiche.
  */
 export function QuickActionMenu({
   contactId,
+  name,
   phone,
   leadId,
+  redirectTo,
 }: {
   contactId: string;
+  name?: string | null;
   phone?: string | null;
   leadId?: string | null;
+  /** Écran où revenir après une mise à la corbeille (défaut : liste clients). */
+  redirectTo?: string;
 }) {
   const [open, setOpen] = useState(false);
   const devisHref = `/admin/devis/nouveau?contactId=${contactId}${leadId ? `&leadId=${leadId}` : ''}`;
@@ -82,6 +90,19 @@ export function QuickActionMenu({
                 </button>
               </form>
             )}
+            {/* Suppression EN UN CLIC depuis la liste (soft-delete réversible
+                30 j) : plus besoin d'ouvrir la fiche pour sortir un contact. */}
+            <form action={archiveContact} className="border-t border-slate-100">
+              <input type="hidden" name="contactId" value={contactId} />
+              {redirectTo && <input type="hidden" name="redirectTo" value={redirectTo} />}
+              <ConfirmSubmit
+                message={`Mettre ${name ? `« ${name} »` : 'ce client'} à la corbeille ? Il disparaît du CRM mais reste récupérable 30 jours (Clients → Corbeille).`}
+                confirmLabel="Mettre à la corbeille"
+                className="flex w-full cursor-pointer items-center gap-2 px-3 py-2 text-left text-sm text-red-600 hover:bg-red-50"
+              >
+                <Trash2 className="h-4 w-4 text-red-400" /> Mettre à la corbeille
+              </ConfirmSubmit>
+            </form>
           </div>
         </>
       )}
