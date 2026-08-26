@@ -49,11 +49,21 @@ export const LEAD_PERDU_WHERE: Prisma.LeadWhereInput = {
 export const LOST_CONTACT_WHERE: Prisma.ContactWhereInput = {
   AND: [
     { leads: { some: LEAD_PERDU_WHERE } },
-    { NOT: { leads: { some: { NOT: LEAD_PERDU_WHERE } } } },
+    { leads: { none: { NOT: LEAD_PERDU_WHERE } } },
   ],
 };
 
-/** Contact ACTIF : ni à la corbeille (géré à part) ni archivé comme perdu. */
+/**
+ * Contact ACTIF : ni à la corbeille (géré à part) ni archivé comme perdu.
+ * Négation ÉCRITE À LA MAIN plutôt qu'un `NOT: LOST_CONTACT_WHERE` : un NOT
+ * portant sur un AND de filtres de relation produit un SQL nettement moins
+ * lisible/optimisable, alors que la forme développée dit exactement la même
+ * chose — aucun dossier perdu, OU au moins un dossier encore ouvert. Un contact
+ * sans aucun dossier tombe dans le premier cas et reste donc actif.
+ */
 export const NOT_LOST_CONTACT_WHERE: Prisma.ContactWhereInput = {
-  NOT: LOST_CONTACT_WHERE,
+  OR: [
+    { leads: { none: LEAD_PERDU_WHERE } },
+    { leads: { some: { NOT: LEAD_PERDU_WHERE } } },
+  ],
 };

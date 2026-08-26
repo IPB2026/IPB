@@ -17,11 +17,14 @@ export function QuickActionMenu({
   name,
   phone,
   leadId,
+  redirectTo,
 }: {
   contactId: string;
   name?: string | null;
   phone?: string | null;
   leadId?: string | null;
+  /** Écran où revenir après une mise à la corbeille (défaut : liste clients). */
+  redirectTo?: string;
 }) {
   const [open, setOpen] = useState(false);
   const devisHref = `/admin/devis/nouveau?contactId=${contactId}${leadId ? `&leadId=${leadId}` : ''}`;
@@ -91,6 +94,7 @@ export function QuickActionMenu({
                 30 j) : plus besoin d'ouvrir la fiche pour sortir un contact. */}
             <form action={archiveContact} className="border-t border-slate-100">
               <input type="hidden" name="contactId" value={contactId} />
+              {redirectTo && <input type="hidden" name="redirectTo" value={redirectTo} />}
               <ConfirmSubmit
                 message={`Mettre ${name ? `« ${name} »` : 'ce client'} à la corbeille ? Il disparaît du CRM mais reste récupérable 30 jours (Clients → Corbeille).`}
                 confirmLabel="Mettre à la corbeille"

@@ -129,6 +129,7 @@ function ArchiveActions({ id, name, leadId }: { id: string; name: string; leadId
       )}
       <form action={archiveContact}>
         <input type="hidden" name="contactId" value={id} />
+        <input type="hidden" name="redirectTo" value="/admin/clients?archives=1" />
         <ConfirmSubmit
           message={`Mettre « ${name} » à la corbeille ? Le client disparaît du CRM mais reste récupérable 30 jours.`}
           confirmLabel="Mettre à la corbeille"

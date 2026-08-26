@@ -18,7 +18,7 @@ import {
 import { Prisma } from '@prisma/client';
 import { Money } from '@/components/admin/money';
 import { DIAGNOSTIC_VISIT_TYPES, REPORT_DONE_MANUAL_PHASES } from '@/lib/crm/dossier';
-import { CLIENT_CONTACT_WHERE } from '@/lib/crm/client-status';
+import { CLIENT_CONTACT_WHERE, NOT_LOST_CONTACT_WHERE } from '@/lib/crm/client-status';
 
 /**
  * Contact dont le rapport n'est PAS traité : aucun rapport ENVOYÉ ET aucun dossier
@@ -150,8 +150,13 @@ async function getStats() {
     rapportsEnSouffrance,
   ] = await Promise.all([
     prisma.lead.count(),
+    // Même périmètre que la liste vers laquelle la vignette renvoie
+    // (/admin/clients?etat=clients) : hors corbeille ET hors dossiers perdus,
+    // désormais rangés dans Clients → Archives. Sans ce filtre, le compteur
+    // annoncerait plus de clients que la liste n'en affiche.
     prisma.contact.count({
-      where: { archivedAt: null, ...CLIENT_CONTACT_WHERE },
+      // (AND explicite : les deux critères portent un `OR`, un spread écraserait l'un des deux.)
+      where: { archivedAt: null, AND: [CLIENT_CONTACT_WHERE, NOT_LOST_CONTACT_WHERE] },
     }),
     prisma.lead.count({ where: { stage: 'NOUVEAU' } }),
     prisma.lead.findMany({
