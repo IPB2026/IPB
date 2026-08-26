@@ -37,15 +37,14 @@ export async function sendDevis(formData: FormData) {
   redirect(`/admin/devis/${id}?${res.ok ? 'ok=envoye' : `err=${encodeURIComponent(res.error ?? 'envoi')}`}`);
 }
 
-// Délai minimum entre l'envoi du mail et le créneau proposé (3 jours pleins).
-const MIN_LEAD_DAYS = 3;
 // Fenêtre de chevauchement considérée comme un conflit d'agenda (± 1 h).
 const CONFLICT_WINDOW_MIN = 60;
 
 /**
  * Envoi du devis AVEC créneaux de visite proposés (mode collaboratif).
- * Garde-fous : chaque créneau doit être à ≥ 3 jours de l'envoi et ne pas
- * chevaucher un rendez-vous déjà planifié dans l'agenda (± 1 h).
+ * Aucun délai minimum : un créneau peut être proposé à n'importe quelle date,
+ * y compris le jour même. Seuls garde-fous restants : le créneau ne doit pas
+ * être dans le passé et ne doit pas chevaucher un RDV déjà planifié (± 1 h).
  */
 export async function sendDevisWithSlots(formData: FormData) {
   await requireAdmin();
@@ -64,12 +63,12 @@ export async function sendDevisWithSlots(formData: FormData) {
     throw new Error('Indiquez au moins un créneau de visite.');
   }
 
-  const minDate = new Date(Date.now() + MIN_LEAD_DAYS * 24 * 60 * 60 * 1000);
+  // Seule borne conservée : pas de créneau dans le passé (un client ne peut pas
+  // réserver une date déjà écoulée).
+  const now = Date.now();
   for (const d of slots) {
-    if (d.getTime() < minDate.getTime()) {
-      throw new Error(
-        `Chaque créneau doit être au minimum à ${MIN_LEAD_DAYS} jours de l'envoi.`
-      );
+    if (d.getTime() < now) {
+      throw new Error('Un créneau ne peut pas être dans le passé.');
     }
   }
 
