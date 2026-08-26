@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { requireAdmin } from '@/lib/auth-helpers';
 import { prisma } from '@/lib/prisma';
-import { revalidateCrm } from '@/lib/crm/revalidate';
+import { syncCrm } from '@/lib/crm/revalidate';
 import {
   sendDevisEmail,
   sendFactureEmail,
@@ -32,7 +32,7 @@ export async function sendDevis(formData: FormData) {
   const res = await sendDevisEmail(id);
   revalidatePath(`/admin/devis/${id}`);
   revalidatePath('/admin/devis');
-  revalidateCrm();
+  await syncCrm();
   // UX : plus de throw (page d'erreur brutale) — toast succès/échec via query.
   redirect(`/admin/devis/${id}?${res.ok ? 'ok=envoye' : `err=${encodeURIComponent(res.error ?? 'envoi')}`}`);
 }
@@ -94,7 +94,7 @@ export async function sendDevisWithSlots(formData: FormData) {
   const res = await sendDevisEmail(id, slots);
   revalidatePath(`/admin/devis/${id}`);
   revalidatePath('/admin/devis');
-  revalidateCrm();
+  await syncCrm();
   redirect(`/admin/devis/${id}?${res.ok ? 'ok=proposed' : `err=${encodeURIComponent(res.error ?? 'envoi')}`}`);
 }
 
@@ -105,7 +105,7 @@ export async function sendFacture(formData: FormData) {
   const res = await sendFactureEmail(id);
   revalidatePath(`/admin/factures/${id}`);
   revalidatePath('/admin/factures');
-  revalidateCrm();
+  await syncCrm();
   redirect(`/admin/factures/${id}?${res.ok ? 'ok=envoye' : `err=${encodeURIComponent(res.error ?? 'envoi')}`}`);
 }
 
@@ -116,7 +116,7 @@ export async function sendRapport(formData: FormData) {
   const res = await sendRapportEmail(id);
   revalidatePath(`/admin/rapports/${id}`);
   revalidatePath('/admin/rapports');
-  revalidateCrm();
+  await syncCrm();
   redirect(`/admin/rapports/${id}?${res.ok ? 'ok=envoye' : `err=${encodeURIComponent(res.error ?? 'envoi')}`}`);
 }
 
@@ -130,7 +130,7 @@ export async function relanceDevis(formData: FormData) {
   const contactId = str(formData.get('contactId'));
   if (!id || !contactId) return;
   const res = await sendDevisRelanceEmail(id);
-  revalidateCrm(contactId);
+  await syncCrm(contactId);
   const back = safeReturn(str(formData.get('redirectTo')), contactId);
   redirect(`${back}?${res.ok ? 'ok=relance' : 'err=relance'}`);
 }
@@ -145,7 +145,7 @@ export async function relanceFacture(formData: FormData) {
   const contactId = str(formData.get('contactId'));
   if (!id || !contactId) return;
   const res = await sendFactureRelanceEmail(id);
-  revalidateCrm(contactId);
+  await syncCrm(contactId);
   const back = safeReturn(str(formData.get('redirectTo')), contactId);
   redirect(`${back}?${res.ok ? 'ok=relance' : 'err=relance'}`);
 }

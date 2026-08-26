@@ -46,6 +46,64 @@ export interface DossierInputs {
   rapportEnvoyeAt?: Date | null;
 }
 
+/** Artefact rattachable à un dossier (tous portent un `leadId` nullable). */
+type Attachable = { leadId?: string | null };
+
+/**
+ * Artefacts appartenant à UN dossier.
+ *
+ * Règle unique de rattachement, définie ici et nulle part ailleurs :
+ *  - un artefact porte un `leadId` ⇒ il appartient à ce dossier, point ;
+ *  - un artefact SANS `leadId` (import, création hors contexte dossier, données
+ *    antérieures au rattachement) tombe dans le dossier le PLUS RÉCENT du
+ *    contact — c'est-à-dire celui en cours.
+ *
+ * Ce second cas est ce qui rend la bascule sûre : aucun écran ne perd un
+ * document faute de rattachement, et le comportement d'avant (tout au contact)
+ * est exactement conservé pour un client qui n'a qu'un seul dossier.
+ */
+export function artifactsOfLead<T extends Attachable>(
+  items: T[],
+  leadId: string,
+  isLatestLead: boolean
+): T[] {
+  return items.filter(
+    (a) => a.leadId === leadId || (isLatestLead && (a.leadId ?? null) === null)
+  );
+}
+
+/**
+ * Construit l'entrée de `computeDossier` pour UN dossier du contact — la vue
+ * juste dès qu'un client revient. `dossierInputFromContact` (ci-dessous) reste
+ * la vue « tous dossiers confondus », qui a son propre usage : la synthèse
+ * affichée sur la fiche client.
+ *
+ * Pourquoi c'était le défaut n° 1 de l'audit : sans ce découpage, la nouvelle
+ * demande d'un ancien client héritait des artefacts du dossier précédent et
+ * sortait en phase « Terminé », donc hors pipeline, sans erreur ni alerte.
+ */
+export function dossierInputFromLead(
+  contact: {
+    devis: (Attachable & { status: DevisStatus; totalHT: unknown; acceptedAt: Date | null; serviceType: ServiceType | null })[];
+    factures: (Attachable & { status: FactureStatus })[];
+    rapports: (Attachable & { status: ReportStatus; updatedAt: Date; budgetHT: unknown })[];
+    appointments: (Attachable & { type: AppointmentType; status: AppointmentStatus })[];
+  },
+  lead: { id: string; stage?: string | null; manualPhase?: string | null },
+  isLatestLead: boolean
+): DossierInputs {
+  const pick = <T extends Attachable>(items: T[]) => artifactsOfLead(items, lead.id, isLatestLead);
+  return dossierInputFromContact(
+    {
+      devis: pick(contact.devis),
+      factures: pick(contact.factures),
+      rapports: pick(contact.rapports),
+      appointments: pick(contact.appointments),
+    },
+    { stage: lead.stage, manualPhase: lead.manualPhase }
+  );
+}
+
 /**
  * Construit l'entrée de `computeDossier` à partir des artefacts d'un contact.
  * SOURCE UNIQUE du mapping (Decimal→number, extraction des champs, rapportEnvoyeAt)

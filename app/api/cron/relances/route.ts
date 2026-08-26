@@ -12,6 +12,7 @@ import { createInvoiceForAppointment, DIAGNOSTIC_APPT_TYPES } from '@/lib/crm/in
 import { markDevisLost } from '@/lib/crm/send';
 import { notifyClientReminder } from '@/lib/crm/notify';
 import { purgeContactById, TRASH_RETENTION_DAYS } from '@/lib/crm/contacts';
+import { syncPhasesOfContacts } from '@/lib/crm/phase-sync';
 import { closeResolvedRelances } from '@/lib/crm/relances-cleanup';
 import { RULES } from '@/lib/crm/rules';
 import type { LeadTier } from '@prisma/client';
@@ -651,6 +652,23 @@ export async function GET(req: Request) {
     errors.push(`archiver-loop: ${e instanceof Error ? e.message : 'err'}`);
   }
 
+  // ── RATTRAPAGE : phase MATÉRIALISÉE des dossiers (Lead.phase). `syncCrm` la
+  //    met à jour après chaque mutation ; ce passage est le filet pour tout ce
+  //    qui l'aurait contournée (écriture directe, import, invariants ci-dessus).
+  //    Un compteur durablement non nul = un chemin d'écriture à corriger.
+  let phasesSync = 0;
+  try {
+    const staleLeads = await prisma.lead.findMany({
+      where: { contact: { archivedAt: null } },
+      orderBy: [{ phaseSyncAt: { sort: 'asc', nulls: 'first' } }, { updatedAt: 'desc' }],
+      take: 300,
+      select: { contactId: true },
+    });
+    phasesSync = await syncPhasesOfContacts(staleLeads.map((l) => l.contactId));
+  } catch (e) {
+    errors.push(`phase-sync: ${e instanceof Error ? e.message : 'err'}`);
+  }
+
   return Response.json({
     ok: true,
     candidates: leads.length,
@@ -663,6 +681,7 @@ export async function GET(req: Request) {
     purged,
     dormants,
     aArchiver,
+    phasesSync,
     errors: errors.slice(0, 10),
   });
 }

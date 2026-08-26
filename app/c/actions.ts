@@ -6,7 +6,7 @@ import { revalidatePath } from 'next/cache';
 import { prisma } from '@/lib/prisma';
 import { sendEmail } from '@/lib/email';
 import { COMPANY } from '@/lib/crm/company';
-import { revalidateCrm } from '@/lib/crm/revalidate';
+import { syncCrm } from '@/lib/crm/revalidate';
 import { verifyActionToken } from '@/lib/crm/client-actions';
 
 /** Destinataire des alertes internes : boîte équipe sinon 1er ADMIN. */
@@ -90,7 +90,7 @@ export async function confirmClientAction(formData: FormData): Promise<void> {
       }).catch(() => {});
     }
     revalidatePath('/admin/devis');
-    revalidateCrm(devis.contactId);
+    await syncCrm(devis.contactId);
     redirect(back('accept'));
   }
 
@@ -124,7 +124,7 @@ export async function confirmClientAction(formData: FormData): Promise<void> {
           ),
         }).catch(() => {});
       }
-      revalidateCrm(facture.contactId);
+      await syncCrm(facture.contactId);
     }
     redirect(back('recu'));
   }
@@ -154,7 +154,7 @@ export async function confirmClientAction(formData: FormData): Promise<void> {
         ),
       }).catch(() => {});
     }
-    revalidateCrm(facture.contactId);
+    await syncCrm(facture.contactId);
   }
   redirect(back('paye'));
 }

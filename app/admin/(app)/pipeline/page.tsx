@@ -3,7 +3,7 @@ import { guardAdminPage } from '@/lib/auth-helpers';
 import { PageHeader } from '@/components/admin/page-header';
 import { SERVICE_LABEL } from '@/components/admin/badges';
 import { Money } from '@/components/admin/money';
-import { computeDossier, dossierInputFromContact } from '@/lib/crm/dossier';
+import { computeDossier, dossierInputFromLead } from '@/lib/crm/dossier';
 import { PipelineBoard, type PipelineColumn } from '@/components/admin/pipeline-board';
 
 export const dynamic = 'force-dynamic';
@@ -61,21 +61,27 @@ export default async function PipelinePage() {
             name: true,
             city: true,
             phone: true,
+            // `leadId` : chaque artefact est rattaché à SON dossier — sans lui,
+            // la 2ᵉ demande d'un ancien client héritait du dossier précédent et
+            // sortait en « Terminé », donc hors de toutes les colonnes.
             // orderBy déterministe identique à la liste/fiche → cohérence partout.
             devis: {
-              select: { status: true, totalHT: true, acceptedAt: true, serviceType: true },
+              select: { leadId: true, status: true, totalHT: true, acceptedAt: true, serviceType: true },
               orderBy: { createdAt: 'desc' },
             },
-            factures: { select: { status: true } },
-            rapports: { select: { status: true, updatedAt: true, budgetHT: true }, orderBy: { updatedAt: 'desc' } },
-            appointments: { select: { type: true, status: true } },
+            factures: { select: { leadId: true, status: true } },
+            rapports: { select: { leadId: true, status: true, updatedAt: true, budgetHT: true }, orderBy: { updatedAt: 'desc' } },
+            appointments: { select: { leadId: true, type: true, status: true } },
+            leads: { select: { id: true }, orderBy: { createdAt: 'desc' }, take: 1 },
           },
         },
       },
     });
     cards = rows.map((r) => {
+      // Un dossier « le plus récent » absorbe les artefacts non rattachés.
+      const isLatest = r.contact.leads[0]?.id === r.id;
       const dossier = computeDossier(
-        dossierInputFromContact(r.contact, { stage: r.stage, manualPhase: r.manualPhase })
+        dossierInputFromLead(r.contact, { id: r.id, stage: r.stage, manualPhase: r.manualPhase }, isLatest)
       );
       return {
         id: r.id,

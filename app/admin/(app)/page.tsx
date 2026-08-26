@@ -44,7 +44,7 @@ import {
   SOURCE_LABEL,
   SERVICE_LABEL,
 } from '@/components/admin/badges';
-import { computeDossier } from '@/lib/crm/dossier';
+import { computeDossier, dossierInputFromLead } from '@/lib/crm/dossier';
 import { closeResolvedRelances } from '@/lib/crm/relances-cleanup';
 
 export const dynamic = 'force-dynamic';
@@ -52,35 +52,25 @@ export const dynamic = 'force-dynamic';
 /**
  * Phase RÉELLE du dossier d'un prospect récent (source unique `computeDossier`),
  * pour que le tableau de bord affiche la même étape que la fiche et le pipeline.
+ * Le mapping passe par `dossierInputFromLead` : un seul endroit décide de ce
+ * qu'est « le dossier », et les artefacts d'une demande précédente ne
+ * contaminent plus la nouvelle.
  */
 function recentPhase(lead: {
+  id: string;
   stage: string;
   manualPhase?: string | null;
-  contact: {
-    devis: { status: string; totalHT: unknown; acceptedAt: Date | null; serviceType: string | null }[];
-    factures: { status: string }[];
-    rapports: { status: string; updatedAt: Date; budgetHT: unknown }[];
-    appointments: { type: string; status: string }[];
+  contact: Parameters<typeof dossierInputFromLead>[0] & {
+    leads: { id: string }[];
   };
 }): string {
-  const c = lead.contact;
-  return computeDossier({
-    devis: c.devis.map((d) => ({
-      status: d.status as never,
-      totalHT: Number(d.totalHT),
-      acceptedAt: d.acceptedAt,
-      serviceType: d.serviceType as never,
-    })),
-    factures: c.factures.map((f) => ({ status: f.status as never })),
-    rapports: c.rapports.map((r) => ({
-      status: r.status as never,
-      budgetHT: r.budgetHT != null ? Number(r.budgetHT) : null,
-    })),
-    appointments: c.appointments.map((a) => ({ type: a.type as never, status: a.status as never })),
-    stage: lead.stage,
-    manualPhase: lead.manualPhase ?? null,
-    rapportEnvoyeAt: c.rapports.find((r) => r.status === 'ENVOYE')?.updatedAt ?? null,
-  }).phase;
+  return computeDossier(
+    dossierInputFromLead(
+      lead.contact,
+      { id: lead.id, stage: lead.stage, manualPhase: lead.manualPhase },
+      lead.contact.leads[0]?.id === lead.id
+    )
+  ).phase;
 }
 
 async function getStats() {
@@ -168,10 +158,14 @@ async function getStats() {
       include: {
         contact: {
           include: {
-            devis: { select: { status: true, totalHT: true, acceptedAt: true, serviceType: true } },
-            factures: { select: { status: true } },
-            rapports: { select: { status: true, updatedAt: true, budgetHT: true } },
-            appointments: { select: { type: true, status: true } },
+            // `leadId` : chaque artefact compte pour SON dossier ; `leads` sert à
+            // savoir si la ligne est le dossier courant (celui qui absorbe les
+            // artefacts non rattachés).
+            devis: { select: { leadId: true, status: true, totalHT: true, acceptedAt: true, serviceType: true } },
+            factures: { select: { leadId: true, status: true } },
+            rapports: { select: { leadId: true, status: true, updatedAt: true, budgetHT: true } },
+            appointments: { select: { leadId: true, type: true, status: true } },
+            leads: { select: { id: true }, orderBy: { createdAt: 'desc' }, take: 1 },
           },
         },
       },

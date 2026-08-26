@@ -1,4 +1,5 @@
 import { revalidatePath } from 'next/cache';
+import { syncContactPhases } from '@/lib/crm/phase-sync';
 
 /**
  * Revalidation transversale du CRM : à appeler après TOUTE action qui change
@@ -19,4 +20,17 @@ export function revalidateCrm(contactId?: string | null): void {
   // calcul par dossier). Il se rafraîchit tout seul via ISR (revalidate = 60 s sur
   // la page) → données au plus 1 min de retard, pour un coût quasi nul.
   revalidatePath('/admin');
+}
+
+/**
+ * Point d'entrée unique après une mutation de dossier : met à jour la phase
+ * MATÉRIALISÉE (`Lead.phase`) puis revalide les écrans.
+ *
+ * `revalidateCrm` reste disponible seul pour les mutations qui ne changent pas
+ * l'état d'un dossier (coordonnées, notes) — mais dans le doute, appelez
+ * `syncCrm` : recalculer une phase inchangée n'écrit rien.
+ */
+export async function syncCrm(contactId?: string | null): Promise<void> {
+  if (contactId) await syncContactPhases(contactId);
+  revalidateCrm(contactId);
 }

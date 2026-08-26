@@ -2,7 +2,7 @@
 
 import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
-import { computeDossier, dossierInputFromContact } from '@/lib/crm/dossier';
+import { computeDossier, dossierInputFromLead } from '@/lib/crm/dossier';
 import { PHASE_LABEL } from '@/components/admin/badges';
 import { generateDossierAssistance, type AssistantResult } from '@/lib/ai/assistant';
 
@@ -35,7 +35,11 @@ export async function runDossierAssistant(
 
   const lead = c.leads[0] ?? null;
   const dossier = computeDossier(
-    dossierInputFromContact(c, { stage: lead?.stage, manualPhase: lead?.manualPhase })
+    dossierInputFromLead(
+      c,
+      { id: lead?.id ?? '', stage: lead?.stage, manualPhase: lead?.manualPhase },
+      true
+    )
   );
 
   const lines: string[] = [];

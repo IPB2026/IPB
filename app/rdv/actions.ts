@@ -5,7 +5,7 @@ import { recordPhaseEvent } from '@/lib/crm/phase-events';
 import { revalidatePath } from 'next/cache';
 import { prisma } from '@/lib/prisma';
 import { verifyBookingToken } from '@/lib/crm/booking';
-import { revalidateCrm } from '@/lib/crm/revalidate';
+import { syncCrm } from '@/lib/crm/revalidate';
 import { sendAppointmentInvites } from '@/lib/crm/appointment-invites';
 import { notifyClientAppointment, notifyAdminBooking } from '@/lib/crm/notify';
 import type { AppointmentType } from '@prisma/client';
@@ -176,6 +176,6 @@ export async function confirmBooking(formData: FormData): Promise<void> {
   await notifyAdminBooking(appt.id);
 
   revalidatePath('/admin/agenda');
-  revalidateCrm(p.c);
+  await syncCrm(p.c);
   redirect(`/rdv?ok=1&t=${encodeURIComponent(token)}`);
 }

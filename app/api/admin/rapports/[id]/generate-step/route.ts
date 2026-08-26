@@ -4,7 +4,7 @@ import * as Sentry from '@sentry/nextjs';
 import { revalidatePath } from 'next/cache';
 import { prisma } from '@/lib/prisma';
 import { requireUser } from '@/lib/auth-helpers';
-import { revalidateCrm } from '@/lib/crm/revalidate';
+import { syncCrm } from '@/lib/crm/revalidate';
 import { fetchLocationRisk, formatLocationRisk } from '@/lib/geo/georisques';
 import {
   generateSkeleton,
@@ -175,7 +175,7 @@ export async function POST(
       },
     });
     revalidatePath(`/admin/rapports/${id}`);
-    revalidateCrm(rapport.contactId);
+    await syncCrm(rapport.contactId);
     console.log(`[generate-step] rapport=${id} → TERMINÉ (synthèse) en ${Date.now() - t0}ms`);
     return NextResponse.json({ done: true, step: total, total, label: 'Rapport généré' });
   }

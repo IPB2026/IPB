@@ -3,7 +3,7 @@
 import { put } from '@vercel/blob';
 import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
-import { revalidateCrm } from '@/lib/crm/revalidate';
+import { syncCrm } from '@/lib/crm/revalidate';
 import { getBlobToken } from '@/lib/blob';
 import { nextDevisNumber, nextFactureNumber, nextRapportNumber } from '@/lib/crm/numbering';
 import { factureObjet } from '@/lib/crm/facture-objet';
@@ -148,5 +148,5 @@ export async function importExternalDocument(formData: FormData): Promise<void> 
     },
   });
 
-  revalidateCrm(contactId);
+  await syncCrm(contactId);
 }

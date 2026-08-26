@@ -3,7 +3,7 @@
 import { redirect } from 'next/navigation';
 import { recordPhaseEvent } from '@/lib/crm/phase-events';
 import { revalidatePath } from 'next/cache';
-import { revalidateCrm } from '@/lib/crm/revalidate';
+import { syncCrm } from '@/lib/crm/revalidate';
 import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
 import { createInvoiceForAppointment, DIAGNOSTIC_APPT_TYPES } from '@/lib/crm/invoicing';
@@ -175,7 +175,7 @@ export async function createAppointment(formData: FormData) {
 
   revalidatePath('/admin/agenda');
   if (leadId) revalidatePath(`/admin/leads/${leadId}`);
-  revalidateCrm(contactId);
+  await syncCrm(contactId);
   redirect('/admin/agenda?ok=rdv');
 }
 
@@ -266,7 +266,7 @@ export async function updateAppointmentStatus(formData: FormData) {
     }
   }
   revalidatePath('/admin/agenda');
-  revalidateCrm(appt.contactId);
+  await syncCrm(appt.contactId);
 }
 
 /**
@@ -307,7 +307,7 @@ export async function rescheduleAppointment(formData: FormData) {
   });
   revalidatePath('/admin/agenda');
   if (appt.leadId) revalidatePath(`/admin/leads/${appt.leadId}`);
-  revalidateCrm(appt.contactId);
+  await syncCrm(appt.contactId);
 }
 
 /**
@@ -343,7 +343,7 @@ export async function deleteAppointment(formData: FormData) {
     },
   });
   revalidatePath('/admin/agenda');
-  revalidateCrm(appt.contactId);
+  await syncCrm(appt.contactId);
 }
 
 /**
@@ -377,7 +377,7 @@ export async function resendAppointmentInvites(formData: FormData) {
   });
 
   revalidatePath('/admin/agenda');
-  revalidateCrm(appt.contactId);
+  await syncCrm(appt.contactId);
 }
 
 /**
@@ -401,7 +401,7 @@ export async function generateInvoiceFromAppointment(formData: FormData) {
 
   revalidatePath('/admin/agenda');
   revalidatePath('/admin/factures');
-  revalidateCrm(appt.contactId);
+  await syncCrm(appt.contactId);
   redirect(`/admin/factures/${inv.id}?ok=facture`);
 }
 
@@ -463,6 +463,6 @@ export async function sendAppointmentProposals(formData: FormData) {
   }
 
   revalidatePath('/admin/agenda');
-  revalidateCrm(contactId);
+  await syncCrm(contactId);
   redirect(res.success ? '/admin/agenda?proposed=1' : '/admin/agenda?perr=send');
 }
