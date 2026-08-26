@@ -83,6 +83,9 @@ export async function createInvoiceForAppointment(
     data: {
       number,
       contactId: appt.contactId,
+      // Le RDV porte le dossier : la facture émise à l'issue de la visite lui
+      // appartient, même si le contact a rouvert un dossier entre-temps.
+      leadId: appt.leadId,
       object,
       dueDate: due,
       totalHT: prix,

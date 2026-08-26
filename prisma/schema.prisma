@@ -204,6 +204,14 @@ model Lead {
   referrer    String? // referrer HTTP de la 1ʳᵉ visite
   channel     String? // canal normalisé : ADS / SEO / SOCIAL / REFERRAL / DIRECT
 
+  // Phase MATÉRIALISÉE du dossier — copie stockée du résultat de `computeDossier`
+  // (lib/crm/dossier.ts), qui reste la seule autorité de calcul. Écrite par
+  // `syncCrm` après chaque mutation et rattrapée chaque nuit par le cron. Ne
+  // JAMAIS la modifier à la main : c'est un cache, pas une source. Sa raison
+  // d'être : la phase affichée partout n'était filtrable ni agrégeable en SQL.
+  phase       String?
+  phaseSyncAt DateTime?
+
   // Séquence de relance e-mail automatique (J+1/3/7/14)
   relanceStep   Int       @default(0) // nb d'étapes de relance déjà envoyées
   relanceLastAt DateTime?
@@ -219,6 +227,8 @@ model Lead {
   @@index([source])
   @@index([createdAt])
   @@index([channel])
+  @@index([phase])
+  @@index([contactId, createdAt])
 }
 
 /// Timeline : notes, appels, emails, RDV et relances planifiées
@@ -322,6 +332,7 @@ model Devis {
 
   @@index([status])
   @@index([contactId])
+  @@index([leadId])
   @@index([status, contactId])
   @@index([status, sentAt])
 }
@@ -348,6 +359,9 @@ model Facture {
 
   contact   Contact @relation(fields: [contactId], references: [id], onDelete: Cascade)
   contactId String
+  // Dossier auquel la facture appartient. Comme sur Devis/Rapport : simple
+  // référence (pas de relation Prisma) pour rester tolérant à l'historique.
+  leadId    String?
 
   devis   Devis?  @relation(fields: [devisId], references: [id])
   devisId String?
@@ -369,6 +383,7 @@ model Facture {
 
   @@index([status])
   @@index([contactId])
+  @@index([leadId])
   @@index([status, dueDate])
   @@index([contactId, status])
 }
@@ -482,6 +497,7 @@ model Rapport {
 
   @@index([status])
   @@index([contactId])
+  @@index([leadId])
   @@index([authorId])
   @@index([status, contactId])
 }

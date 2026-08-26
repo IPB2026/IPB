@@ -24,7 +24,7 @@ import type {
 } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { getSessionUser, listExperts } from '@/lib/auth-helpers';
-import { computeDossier, dossierInputFromContact } from '@/lib/crm/dossier';
+import { computeDossier, dossierInputFromLead } from '@/lib/crm/dossier';
 import { Avatar } from '@/components/admin/avatar';
 import { ContactEditForm } from '@/components/admin/contact-edit-form';
 import { PayloadView } from '@/components/admin/payload-view';
@@ -154,8 +154,15 @@ export default async function ClientFichePage({
   }
 
   const lead = c.leads[0] ?? null;
+  // Le suivi affiché est celui du DOSSIER courant (artefacts rattachés + ceux
+  // sans rattachement). Sans ce découpage, la fiche d'un client qui revient
+  // affichait le cycle terminé de sa demande précédente.
   const dossier = computeDossier(
-    dossierInputFromContact(c, { stage: lead?.stage, manualPhase: lead?.manualPhase })
+    dossierInputFromLead(
+      c,
+      { id: lead?.id ?? '', stage: lead?.stage, manualPhase: lead?.manualPhase },
+      true
+    )
   );
 
   const next = nextStep(dossier, c.id, lead?.id);

@@ -1,7 +1,7 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { revalidateCrm } from '@/lib/crm/revalidate';
+import { syncCrm } from '@/lib/crm/revalidate';
 import { redirect } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
@@ -123,7 +123,7 @@ export async function createFacture(
   }
 
   revalidatePath('/admin/factures');
-  revalidateCrm(contactId);
+  await syncCrm(contactId);
   redirect(`/admin/factures/${facture.id}`);
 }
 
@@ -204,7 +204,7 @@ export async function updateFacture(
 
   revalidatePath(`/admin/factures/${id}`);
   revalidatePath('/admin/factures');
-  revalidateCrm(existing.contactId);
+  await syncCrm(existing.contactId);
   return undefined;
 }
 
@@ -220,7 +220,7 @@ export async function updateFactureStatus(formData: FormData) {
   });
   revalidatePath(`/admin/factures/${id}`);
   revalidatePath('/admin/factures');
-  revalidateCrm(updated.contactId);
+  await syncCrm(updated.contactId);
 }
 
 /**
@@ -244,7 +244,7 @@ export async function deleteFacture(formData: FormData) {
   await prisma.facture.delete({ where: { id } });
   revalidatePath('/admin/factures');
   revalidatePath('/admin');
-  revalidateCrm(f.contactId);
+  await syncCrm(f.contactId);
   redirect('/admin/factures');
 }
 
@@ -328,5 +328,5 @@ export async function recordFacturePayment(formData: FormData) {
   revalidatePath(`/admin/factures/${id}`);
   revalidatePath('/admin/factures');
   revalidatePath('/admin');
-  revalidateCrm(f.contactId);
+  await syncCrm(f.contactId);
 }

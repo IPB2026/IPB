@@ -16,6 +16,7 @@ import { isValidPhase } from '@/lib/crm/dossier';
 import { recordPhaseEvent } from '@/lib/crm/phase-events';
 import { lostReasonCodeFromText } from '@/lib/crm/lost-reason';
 import { RULES } from '@/lib/crm/rules';
+import { syncContactPhases } from '@/lib/crm/phase-sync';
 import { PHASE_LABEL } from '@/components/admin/badges';
 import {
   scoreQualification,
@@ -38,7 +39,17 @@ import {
 // activités) sont réservées à l'ADMIN. Les EXPERT sont hors du back-office leads.
 const requireUser = requireAdmin;
 
-function revalidateLead(leadId: string) {
+/**
+ * Revalide les écrans après une mutation de dossier ET resynchronise la phase
+ * MATÉRIALISÉE (`Lead.phase`) — les actions d'ici (étape manuelle, réouverture,
+ * perte) changent la phase sans passer par `syncCrm`.
+ */
+async function revalidateLead(leadId: string, contactId?: string | null) {
+  if (contactId) await syncContactPhases(contactId);
+  revalidateLeadPaths(leadId);
+}
+
+function revalidateLeadPaths(leadId: string) {
   revalidatePath(`/admin/leads/${leadId}`);
   revalidatePath('/admin/leads');
   // La fiche unique vit sous /admin/clients/[id] : on revalide le segment
@@ -189,7 +200,7 @@ export async function createProspect(
 
   // Revalide toutes les surfaces (liste, fiche, pipeline, pilotage, dashboard)
   // pour que le nouveau prospect y apparaisse immédiatement.
-  revalidateLead(result.leadId);
+  await revalidateLead(result.leadId, result.contactId);
   redirect(`/admin/leads/${result.leadId}`);
 }
 
@@ -276,7 +287,7 @@ async function applyManualPhase(
       data: { done: true, doneAt: new Date() },
     });
   }
-  revalidateLead(leadId);
+  await revalidateLead(leadId, current.contactId);
 }
 
 /** Change l'étape du dossier À LA MAIN (toute phase) + journalise le changement. */
@@ -329,7 +340,7 @@ async function reopenLead(leadId: string): Promise<void> {
       content: 'Retour au suivi automatique (étape déduite des documents).',
     },
   });
-  revalidateLead(leadId);
+  await revalidateLead(leadId, current.contactId);
 }
 
 // ─── Actions GROUPÉES (sélection multiple dans la liste clients) ───────────
@@ -421,7 +432,7 @@ export async function addActivity(formData: FormData) {
       content,
     },
   });
-  revalidateLead(leadId);
+  await revalidateLead(leadId, lead.contactId);
 }
 
 /** Planifie une relance (échéance) et bascule l'étape sur « À rappeler ». */
@@ -456,7 +467,7 @@ export async function scheduleRelance(formData: FormData) {
       data: { stage: 'A_RAPPELER' },
     });
   }
-  revalidateLead(leadId);
+  await revalidateLead(leadId, lead.contactId);
 }
 
 /** (Ré)assigne un prospect à un diagnostiqueur (ou le désassigne). Admin only. */
@@ -508,7 +519,7 @@ export async function assignLead(formData: FormData) {
     },
   });
   if (newId) await notifyExpertAssigned(leadId, newId);
-  revalidateLead(leadId);
+  await revalidateLead(leadId, lead.contactId);
   revalidatePath('/admin/rapports');
 }
 
@@ -589,7 +600,7 @@ export async function qualifyLead(formData: FormData) {
       }`,
     },
   });
-  revalidateLead(leadId);
+  await revalidateLead(leadId, lead.contactId);
 }
 
 /** Déplace un prospect d'une étape de pipeline à une autre (Kanban). */
@@ -611,6 +622,6 @@ export async function completeRelance(formData: FormData) {
     where: { id: activityId },
     data: { done: true, doneAt: new Date() },
   });
-  if (leadId) revalidateLead(leadId);
+  if (leadId) await revalidateLead(leadId);
   revalidatePath('/admin');
 }

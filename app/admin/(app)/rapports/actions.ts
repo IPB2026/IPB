@@ -3,7 +3,7 @@
 import { z } from 'zod';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
-import { revalidateCrm } from '@/lib/crm/revalidate';
+import { syncCrm } from '@/lib/crm/revalidate';
 import { del } from '@vercel/blob';
 import { guessMimeFromName, getBlobToken } from '@/lib/blob';
 import { prisma } from '@/lib/prisma';
@@ -123,7 +123,7 @@ export async function createRapport(
   revalidatePath('/admin/rapports');
   // Interconnexion : la création du rapport doit se refléter sur la fiche, le
   // pipeline et le pilotage (phase RAPPORT dérivée), pas seulement la liste.
-  revalidateCrm(contactId);
+  await syncCrm(contactId);
   redirect(`/admin/rapports/${rapport.id}`);
 }
 
@@ -181,7 +181,7 @@ export async function startRapportFromLead(formData: FormData) {
     },
   });
   revalidatePath('/admin/rapports');
-  revalidateCrm(lead.contactId);
+  await syncCrm(lead.contactId);
   redirect(`/admin/rapports/${rapport.id}`);
 }
 
@@ -345,7 +345,7 @@ export async function submitRapportToAdmin(formData: FormData): Promise<void> {
   await notifyAdminRapportSubmitted(id);
   revalidatePath(`/admin/rapports/${id}`);
   revalidatePath('/admin/rapports');
-  revalidateCrm(owned.rapport.contactId);
+  await syncCrm(owned.rapport.contactId);
 }
 
 /**
@@ -406,7 +406,7 @@ export async function validateAndSendRapport(
 
   revalidatePath(`/admin/rapports/${id}`);
   revalidatePath('/admin/rapports');
-  revalidateCrm(rapport.contactId);
+  await syncCrm(rapport.contactId);
 }
 
 /** Génération IA — réservée à l'ADMIN (responsabilité éditoriale). */
@@ -472,7 +472,7 @@ export async function generateRapportAI(formData: FormData) {
     },
   });
   revalidatePath(`/admin/rapports/${id}`);
-  revalidateCrm();
+  await syncCrm();
 }
 
 export async function updateRapportStatus(formData: FormData) {
@@ -487,5 +487,5 @@ export async function updateRapportStatus(formData: FormData) {
   });
   revalidatePath(`/admin/rapports/${id}`);
   revalidatePath('/admin/rapports');
-  revalidateCrm(updated.contactId);
+  await syncCrm(updated.contactId);
 }

@@ -1,6 +1,6 @@
 import 'server-only';
 import { prisma } from '@/lib/prisma';
-import { computeDossier, dossierInputFromContact } from '@/lib/crm/dossier';
+import { computeDossier, dossierInputFromLead } from '@/lib/crm/dossier';
 import { CLIENT_CONTACT_WHERE } from '@/lib/crm/client-status';
 import type { ServiceType, PipelineStage } from '@prisma/client';
 
@@ -214,19 +214,22 @@ export async function computeKpis(): Promise<KpiData> {
     orderBy: { createdAt: 'desc' }, // P2-B : troncature déterministe (take 1000)
     take: 1000,
     select: {
+      id: true,
       stage: true,
       manualPhase: true,
       contactId: true,
       contact: {
         select: {
           // orderBy déterministe identique à la fiche → phase/montant cohérents.
+          // `leadId` : chaque artefact compte pour SON dossier.
           devis: {
-            select: { status: true, totalHT: true, acceptedAt: true, serviceType: true },
+            select: { leadId: true, status: true, totalHT: true, acceptedAt: true, serviceType: true },
             orderBy: { createdAt: 'desc' },
           },
-          factures: { select: { status: true } },
-          rapports: { select: { status: true, updatedAt: true, budgetHT: true }, orderBy: { updatedAt: 'desc' } },
-          appointments: { select: { type: true, status: true } },
+          factures: { select: { leadId: true, status: true } },
+          rapports: { select: { leadId: true, status: true, updatedAt: true, budgetHT: true }, orderBy: { updatedAt: 'desc' } },
+          appointments: { select: { leadId: true, type: true, status: true } },
+          leads: { select: { id: true }, orderBy: { createdAt: 'desc' }, take: 1 },
         },
       },
     },
@@ -243,7 +246,13 @@ export async function computeKpis(): Promise<KpiData> {
       contactsComptes.add(cId);
     }
     const dossier = computeDossier(
-      dossierInputFromContact(l.contact, { stage: l.stage, manualPhase: l.manualPhase })
+      // Phase du DOSSIER, pas du contact : sans cela, un client revenu comptait
+      // deux fois son cycle précédent dans l'entonnoir et la conversion.
+      dossierInputFromLead(
+        l.contact,
+        { id: l.id, stage: l.stage, manualPhase: l.manualPhase },
+        l.contact.leads[0]?.id === l.id
+      )
     );
     // « À rappeler » est fondu dans « Nouveau » (cf. pipeline).
     const key = dossier.phase === 'A_RAPPELER' ? 'NOUVEAU' : dossier.phase;

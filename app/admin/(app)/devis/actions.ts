@@ -3,7 +3,7 @@
 import { z } from 'zod';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
-import { revalidateCrm } from '@/lib/crm/revalidate';
+import { syncCrm } from '@/lib/crm/revalidate';
 import { prisma } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/auth-helpers';
 import { nextDevisNumber, nextFactureNumber } from '@/lib/crm/numbering';
@@ -112,7 +112,7 @@ export async function createDevis(
   });
 
   revalidatePath('/admin/devis');
-  revalidateCrm(contactId);
+  await syncCrm(contactId);
   redirect(`/admin/devis/${devis.id}`);
 }
 
@@ -222,7 +222,7 @@ export async function createDevisSurMesure(
   });
 
   revalidatePath('/admin/devis');
-  revalidateCrm(contactId);
+  await syncCrm(contactId);
   redirect(`/admin/devis/${devis.id}`);
 }
 
@@ -292,7 +292,7 @@ export async function createDevisTravaux(
   });
 
   revalidatePath('/admin/devis');
-  revalidateCrm(contactId);
+  await syncCrm(contactId);
   redirect(`/admin/devis/${devis.id}`);
 }
 
@@ -331,7 +331,7 @@ export async function updateDevisTravaux(
 
   revalidatePath(`/admin/devis/${id}`);
   revalidatePath('/admin/devis');
-  revalidateCrm();
+  await syncCrm();
   return undefined;
 }
 
@@ -391,7 +391,7 @@ export async function updateDevisStatus(formData: FormData) {
   }
   revalidatePath(`/admin/devis/${id}`);
   revalidatePath('/admin/devis');
-  revalidateCrm(before.contactId);
+  await syncCrm(before.contactId);
 }
 
 /**
@@ -444,7 +444,7 @@ export async function acceptDevis(formData: FormData) {
   revalidatePath(`/admin/devis/${id}`);
   revalidatePath('/admin/devis');
   revalidatePath('/admin');
-  revalidateCrm(devis.contactId);
+  await syncCrm(devis.contactId);
 }
 
 /**
@@ -498,7 +498,7 @@ export async function duplicateDevis(formData: FormData) {
     },
   });
   revalidatePath('/admin/devis');
-  revalidateCrm(src.contactId);
+  await syncCrm(src.contactId);
   redirect(`/admin/devis/${dup.id}`);
 }
 
@@ -596,7 +596,7 @@ export async function updateDevis(
 
   revalidatePath(`/admin/devis/${id}`);
   revalidatePath('/admin/devis');
-  revalidateCrm();
+  await syncCrm();
   return undefined;
 }
 
@@ -651,7 +651,7 @@ export async function setDevisMontant(formData: FormData) {
 
   revalidatePath(`/admin/devis/${id}`);
   revalidatePath('/admin/devis');
-  revalidateCrm(devis.contactId);
+  await syncCrm(devis.contactId);
 }
 
 /** Supprime un devis (refusé s'il a déjà été facturé). */
@@ -668,7 +668,7 @@ export async function deleteDevis(formData: FormData) {
   await prisma.devis.delete({ where: { id } });
   revalidatePath('/admin/devis');
   revalidatePath('/admin');
-  revalidateCrm(existing?.contactId);
+  await syncCrm(existing?.contactId);
   redirect('/admin/devis');
 }
 
@@ -706,6 +706,9 @@ export async function convertDevisToFacture(formData: FormData) {
     data: {
       number,
       contactId: devis.contactId,
+      // La facture appartient au MÊME dossier que le devis converti — sans ce
+      // rattachement, elle retomberait sur le dossier courant du contact.
+      leadId: devis.leadId,
       devisId: devis.id,
       // La facture REPREND le gabarit du devis, mais assainie : sur une facture on
       // ne reprend jamais « structurel » (IPB n'est pas un BET). Le devis reste intact.
@@ -743,6 +746,6 @@ export async function convertDevisToFacture(formData: FormData) {
   revalidatePath('/admin/factures');
   revalidatePath(`/admin/devis/${id}`);
   revalidatePath('/admin');
-  revalidateCrm(devis.contactId);
+  await syncCrm(devis.contactId);
   redirect(`/admin/factures/${facture.id}`);
 }

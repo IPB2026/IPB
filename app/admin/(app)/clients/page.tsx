@@ -4,7 +4,7 @@ import { Prisma, type ServiceType, type LeadTier } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
 import { Money } from '@/components/admin/money';
-import { computeDossier, dossierInputFromContact } from '@/lib/crm/dossier';
+import { computeDossier, dossierInputFromLead } from '@/lib/crm/dossier';
 import { PageHeader } from '@/components/admin/page-header';
 import { EmptyState } from '@/components/admin/empty-state';
 import { Avatar } from '@/components/admin/avatar';
@@ -186,11 +186,17 @@ export default async function ClientsPage({
   const page = loaded?.page ?? 1;
 
   const rows = contacts.map((c) => {
-    const stage = c.leads[0]?.stage ?? null;
-    const manualPhase = c.leads[0]?.manualPhase ?? null;
-    const dossier = computeDossier(dossierInputFromContact(c, { stage, manualPhase }));
-    const service = c.leads[0]?.service ?? null;
-    const leadId = c.leads[0]?.id ?? null;
+    // La ligne représente le dossier COURANT (le plus récent) : sa phase est
+    // calculée sur SES artefacts, pas sur tout l'historique du contact — sinon
+    // la nouvelle demande d'un ancien client s'affiche « Terminé ».
+    const lead = c.leads[0] ?? null;
+    const dossier = computeDossier(
+      lead
+        ? dossierInputFromLead(c, lead, true)
+        : dossierInputFromLead(c, { id: '', stage: null, manualPhase: null }, true)
+    );
+    const service = lead?.service ?? null;
+    const leadId = lead?.id ?? null;
     return {
       c,
       dossier,
@@ -575,12 +581,12 @@ async function load(sp: SearchParams) {
         phone: true,
         email: true,
         devis: {
-          select: { status: true, totalHT: true, acceptedAt: true, serviceType: true },
+          select: { leadId: true, status: true, totalHT: true, acceptedAt: true, serviceType: true },
           orderBy: { createdAt: 'desc' },
         },
-        factures: { select: { status: true } },
-        rapports: { select: { status: true, updatedAt: true, budgetHT: true }, orderBy: { updatedAt: 'desc' } },
-        appointments: { select: { type: true, status: true } },
+        factures: { select: { leadId: true, status: true } },
+        rapports: { select: { leadId: true, status: true, updatedAt: true, budgetHT: true }, orderBy: { updatedAt: 'desc' } },
+        appointments: { select: { leadId: true, type: true, status: true } },
         leads: { select: { id: true, stage: true, manualPhase: true, service: true }, orderBy: { createdAt: 'desc' }, take: 1 },
       },
     }),

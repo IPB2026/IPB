@@ -2,7 +2,7 @@
 
 > Référence unique des états et de leurs INVARIANTS. Le CRM dérive la phase des
 > artefacts (`computeDossier`) — un état ne se décrète pas, il se constate.
-> Mise à jour : 18 juillet 2026 (post-audits).
+> Mise à jour : 26 août 2026 (vague 1 de l'audit d'architecture).
 
 ## L'arbre
 
@@ -26,6 +26,22 @@ PROSPECT
                         ├─ TERMINÉ ─ rapport sans budgetHT (≈ 90 %)
                         └─ SUIVI ─── rapport avec budgetHT → 2 sem. → TERMINÉ
 ```
+
+## L'unité de calcul : le DOSSIER, pas le contact (août 2026)
+
+Un contact peut avoir plusieurs dossiers successifs (client fidèle) ou
+parallèles (fissures + humidité). Depuis la vague 1 de l'audit d'architecture :
+
+- chaque devis, facture, rapport et RDV porte le `leadId` de SON dossier ;
+- un artefact SANS `leadId` (import, création hors contexte) tombe dans le
+  dossier le plus récent — règle unique, dans `artifactsOfLead` (`dossier.ts`) ;
+- la phase se calcule par dossier (`dossierInputFromLead`), jamais sur l'union
+  des artefacts du contact — sinon la 2ᵉ demande d'un ancien client hérite du
+  cycle précédent, sort en « Terminé » et disparaît du pipeline, sans erreur ;
+- le résultat est MATÉRIALISÉ dans `Lead.phase` (+ `phaseSyncAt`), écrit par
+  `syncCrm` après chaque mutation et rattrapé chaque nuit par le cron. C'est un
+  cache : `computeDossier` reste la seule autorité de calcul, et la colonne ne
+  se modifie jamais à la main.
 
 ## Les invariants (vérifiés par le cron quotidien)
 

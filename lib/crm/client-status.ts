@@ -31,13 +31,32 @@ export const PROSPECT_CONTACT_WHERE: Prisma.ContactWhereInput = {
 };
 
 /**
- * Dossier PERDU côté base : la phase manuelle prime sur l'étape déduite (même
- * ordre de priorité que `computeDossier`), donc un lead est perdu si
- *  - `manualPhase = PERDU` (marqué à la main), ou
- *  - aucune phase manuelle et `stage = PERDU` (cron, relances épuisées…).
+ * Dossier PERDU côté base.
+ *
+ * Depuis la vague 1 de l'audit, la phase du dossier est MATÉRIALISÉE dans
+ * `Lead.phase` (copie du calcul de `computeDossier`) : c'est elle qui fait foi,
+ * et elle est enfin filtrable en SQL. Tant qu'un dossier n'a pas été
+ * synchronisé — colonne encore `null`, juste après la migration — on retombe
+ * sur l'ancienne approximation par étape, pour qu'aucun écran ne change de
+ * comportement entre la migration et le premier passage de synchronisation.
  */
-export const LEAD_PERDU_WHERE: Prisma.LeadWhereInput = {
+const LEAD_PERDU_LEGACY: Prisma.LeadWhereInput = {
   OR: [{ manualPhase: 'PERDU' }, { AND: [{ manualPhase: null }, { stage: 'PERDU' }] }],
+};
+
+export const LEAD_PERDU_WHERE: Prisma.LeadWhereInput = {
+  OR: [
+    { phase: 'PERDU' },
+    { AND: [{ phase: null }, LEAD_PERDU_LEGACY] },
+  ],
+};
+
+/** Dossier NON perdu — négation explicite, même repli. */
+const LEAD_OUVERT_WHERE: Prisma.LeadWhereInput = {
+  OR: [
+    { AND: [{ phase: { not: null } }, { phase: { not: 'PERDU' } }] },
+    { AND: [{ phase: null }, { NOT: LEAD_PERDU_LEGACY }] },
+  ],
 };
 
 /**
@@ -49,7 +68,7 @@ export const LEAD_PERDU_WHERE: Prisma.LeadWhereInput = {
 export const LOST_CONTACT_WHERE: Prisma.ContactWhereInput = {
   AND: [
     { leads: { some: LEAD_PERDU_WHERE } },
-    { leads: { none: { NOT: LEAD_PERDU_WHERE } } },
+    { leads: { none: LEAD_OUVERT_WHERE } },
   ],
 };
 
@@ -64,6 +83,6 @@ export const LOST_CONTACT_WHERE: Prisma.ContactWhereInput = {
 export const NOT_LOST_CONTACT_WHERE: Prisma.ContactWhereInput = {
   OR: [
     { leads: { none: LEAD_PERDU_WHERE } },
-    { leads: { some: { NOT: LEAD_PERDU_WHERE } } },
+    { leads: { some: LEAD_OUVERT_WHERE } },
   ],
 };
