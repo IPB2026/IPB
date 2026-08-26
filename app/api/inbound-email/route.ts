@@ -61,7 +61,7 @@ export async function POST(req: Request): Promise<Response> {
   const phone = normalizePhoneFR(String(body.phone ?? ''));
   const contact = await prisma.contact.findFirst({
     where: { OR: [{ email: from }, ...(phone ? [{ phone }] : [])] },
-    select: { id: true },
+    select: { id: true, name: true },
   });
   if (!contact) {
     // Expéditeur inconnu : on accuse réception (200) pour ne pas faire réessayer le
@@ -69,20 +69,55 @@ export async function POST(req: Request): Promise<Response> {
     return Response.json({ ok: true, matched: false });
   }
 
+  // RATTACHEMENT AU DOSSIER : une réponse concerne le dossier en cours, pas la
+  // personne en général. Depuis la vague 1, la timeline peut le dire — et les
+  // relances se coupent sur CE dossier, pas sur tous ceux du contact.
+  const dossier = await prisma.lead.findFirst({
+    where: { contactId: contact.id, stage: { notIn: ['PERDU', 'GAGNE'] } },
+    orderBy: { createdAt: 'desc' },
+    select: { id: true },
+  });
+
   await prisma.activity.create({
     data: {
       type: 'EMAIL',
       contactId: contact.id,
+      leadId: dossier?.id ?? null,
       content: `↩ Réponse client${subject ? ` — « ${subject} »` : ''}${text ? ` : ${text}` : ''}`,
     },
   });
 
   // PAUSE des relances auto : le client a répondu → on coupe la séquence d'e-mails
   // nurture (relanceStep au-delà du max) pour ne plus le solliciter automatiquement.
+  // Ciblée sur le dossier concerné : un contact peut avoir un autre dossier en
+  // cours, que cette réponse ne regarde pas.
   await prisma.lead.updateMany({
-    where: { contactId: contact.id },
+    where: dossier ? { id: dossier.id } : { contactId: contact.id },
     data: { relanceStep: 99 },
   });
 
-  return Response.json({ ok: true, matched: true });
+  // UNE RÉPONSE CLIENT EST UNE TÂCHE. Sans cela, elle se range dans la timeline
+  // et peut n'être jamais vue — or c'est souvent par là que passe un « je valide
+  // le devis ». Dédupliquée : une seule tâche « répondre » ouverte à la fois.
+  const dejaOuverte = await prisma.activity.count({
+    where: {
+      contactId: contact.id,
+      type: 'RELANCE',
+      done: false,
+      content: { contains: 'Répondre au client' },
+    },
+  });
+  if (dejaOuverte === 0) {
+    await prisma.activity.create({
+      data: {
+        type: 'RELANCE',
+        contactId: contact.id,
+        leadId: dossier?.id ?? null,
+        content: `Répondre au client — ${contact.name} a répondu par e-mail${subject ? ` (« ${subject} »)` : ''}.`,
+        dueAt: new Date(),
+      },
+    });
+  }
+
+  return Response.json({ ok: true, matched: true, leadId: dossier?.id ?? null });
 }

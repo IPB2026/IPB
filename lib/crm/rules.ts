@@ -23,6 +23,21 @@ export const RULES = {
   /** Rétention en corbeille avant purge définitive (jours). */
   trashRetentionDays: 30,
 
+  /**
+   * Facture envoyée depuis N jours, toujours pas pointée payée → on pose la
+   * question au gérant. Le paiement bancaire est le SEUL jalon que le CRM ne
+   * peut pas constater seul (cf. ARBORESCENCE_DOSSIER.md), et c'est celui qui
+   * déclenche le rapport : un oubli de clic gèle un dossier déjà encaissé.
+   */
+  facturePointageDays: 15,
+
+  /**
+   * Dossier perdu pour un motif RÉVERSIBLE (prix, délai) → tâche de reprise à
+   * N jours. Un « trop cher en mars » se retente en juin ; un « travaux faits
+   * par un concurrent » non.
+   */
+  recyclagePerduDays: 90,
+
   /** Prospect « dormant » : aucun échange depuis N jours (→ à requalifier). */
   dormantDays: 30,
   /** Dossier terminé de longue date : suggestion d'archivage après N jours. */

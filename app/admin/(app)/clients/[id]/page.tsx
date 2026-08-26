@@ -456,8 +456,15 @@ export default async function ClientFichePage({
             <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
               Actions <PhaseBadge phase={dossier.phase} />
               {isManual ? (
-                <span className="rounded-full bg-orange-50 px-2 py-0.5 text-[10px] font-semibold normal-case tracking-normal text-orange-700 ring-1 ring-orange-600/10">
-                  réglé à la main
+                // Le réglage manuel ne fait pas que figer l'étape : il coupe la
+                // séquence de relances automatiques (cf. filtre manualPhase du
+                // cron). Le badge doit annoncer cette conséquence, sinon on croit
+                // piloter un dossier alors qu'on l'a débranché.
+                <span
+                  className="rounded-full bg-orange-50 px-2 py-0.5 text-[10px] font-semibold normal-case tracking-normal text-orange-700 ring-1 ring-orange-600/10"
+                  title="Tant que l'étape est réglée à la main, les relances automatiques de ce dossier sont en pause. « Revenir au suivi auto » les réactive."
+                >
+                  réglé à la main · relances en pause
                 </span>
               ) : (
                 <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium normal-case tracking-normal text-slate-500">

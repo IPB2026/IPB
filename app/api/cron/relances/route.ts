@@ -13,6 +13,7 @@ import { markDevisLost } from '@/lib/crm/send';
 import { notifyClientReminder } from '@/lib/crm/notify';
 import { purgeContactById, TRASH_RETENTION_DAYS } from '@/lib/crm/contacts';
 import { syncPhasesOfContacts } from '@/lib/crm/phase-sync';
+import { MOTIFS_RECYCLABLES } from '@/lib/crm/lost-reason';
 import { closeResolvedRelances } from '@/lib/crm/relances-cleanup';
 import { RULES } from '@/lib/crm/rules';
 import type { LeadTier } from '@prisma/client';
@@ -652,6 +653,88 @@ export async function GET(req: Request) {
     errors.push(`archiver-loop: ${e instanceof Error ? e.message : 'err'}`);
   }
 
+  // ── FACTURE ÉMISE NON POINTÉE : le paiement bancaire est le seul jalon que le
+  //    CRM ne peut pas constater seul, et c'est celui qui DÉCLENCHE le rapport.
+  //    Passé le délai, on pose la question plutôt que de laisser un dossier
+  //    peut-être déjà encaissé dormir sans limite. Une tâche par facture.
+  let aPointer = 0;
+  try {
+    const seuil = new Date(now - RULES.facturePointageDays * DAY);
+    const nonPointees = await prisma.facture.findMany({
+      where: {
+        status: 'ENVOYEE',
+        issuedAt: { lt: seuil },
+        contact: { archivedAt: null },
+      },
+      select: { id: true, number: true, contactId: true, totalHT: true, issuedAt: true },
+      take: 50,
+      orderBy: { issuedAt: 'asc' },
+    });
+    for (const f of nonPointees) {
+      // Une seule tâche par facture, jamais rejouée (le numéro sert de clé).
+      const already = await prisma.activity.count({
+        where: {
+          contactId: f.contactId,
+          type: 'RELANCE',
+          done: false,
+          content: { contains: `pointer ${f.number}` },
+        },
+      });
+      if (already > 0) continue;
+      const jours = Math.floor((now - f.issuedAt.getTime()) / DAY);
+      await prisma.activity.create({
+        data: {
+          type: 'RELANCE',
+          contactId: f.contactId,
+          content: `Facture à pointer ${f.number} — émise il y a ${jours} j, toujours pas marquée payée. Encaissée ? Marquez-la payée (cela débloque le rapport). Sinon, relancez.`,
+          dueAt: new Date(),
+        },
+      });
+      aPointer++;
+    }
+  } catch (e) {
+    errors.push(`facture-pointage: ${e instanceof Error ? e.message : 'err'}`);
+  }
+
+  // ── RECYCLAGE DES PERDUS : un dossier perdu pour un motif réversible (prix,
+  //    délai) redevient une piste quelques mois plus tard. Le motif structuré
+  //    était collecté depuis des mois sans que rien ne l'exploite.
+  let recyclables = 0;
+  try {
+    const seuil = new Date(now - RULES.recyclagePerduDays * DAY);
+    const perdus = await prisma.lead.findMany({
+      where: {
+        lostReasonCode: { in: [...MOTIFS_RECYCLABLES] },
+        updatedAt: { lt: seuil },
+        contact: { archivedAt: null },
+      },
+      select: { id: true, contactId: true, lostReason: true, lostReasonCode: true, service: true },
+      take: 30,
+      orderBy: { updatedAt: 'asc' },
+    });
+    for (const l of perdus) {
+      // Une seule reprise par dossier : la tâche porte l'id, et une tâche déjà
+      // traitée (done) ne relance pas une deuxième fois.
+      const already = await prisma.activity.count({
+        where: { leadId: l.id, type: 'RELANCE', content: { contains: 'Reprise dossier perdu' } },
+      });
+      if (already > 0) continue;
+      const motif = l.lostReasonCode === 'PRIX' ? 'le prix' : 'le délai';
+      await prisma.activity.create({
+        data: {
+          type: 'RELANCE',
+          leadId: l.id,
+          contactId: l.contactId,
+          content: `Reprise dossier perdu — perdu sur ${motif} il y a ${RULES.recyclagePerduDays} j${l.lostReason ? ` (« ${l.lostReason} »)` : ''}. Un rappel peut valoir le coup : le besoin, lui, n'a pas disparu.`,
+          dueAt: new Date(),
+        },
+      });
+      recyclables++;
+    }
+  } catch (e) {
+    errors.push(`recyclage-perdus: ${e instanceof Error ? e.message : 'err'}`);
+  }
+
   // ── RATTRAPAGE : phase MATÉRIALISÉE des dossiers (Lead.phase). `syncCrm` la
   //    met à jour après chaque mutation ; ce passage est le filet pour tout ce
   //    qui l'aurait contournée (écriture directe, import, invariants ci-dessus).
@@ -681,6 +764,8 @@ export async function GET(req: Request) {
     purged,
     dormants,
     aArchiver,
+    aPointer,
+    recyclables,
     phasesSync,
     errors: errors.slice(0, 10),
   });

@@ -149,21 +149,32 @@ lead + l'activité APPEL avec horodatage et durée, et rattache l'appel au canal
 d'origine. C'est le chaînon manquant n° 1, très au-dessus de n'importe quelle
 fonctionnalité IA supplémentaire.
 
-### 3.2 Le devis dit « répondez à cet e-mail », et personne ne lit les réponses
+### 3.2 Le devis dit « répondez à cet e-mail », et le webhook qui lit les réponses n'est branché nulle part
 
-L'e-mail de devis propose des créneaux cliquables (excellent), mais aussi
-« le client choisit en répondant ». Les réponses arrivent dans Gmail. **Le CRM
-n'a aucune capture d'e-mail entrant** : pas de connecteur IMAP, pas d'alias BCC,
-pas de webhook. La timeline d'un dossier est donc borgne d'un côté — on voit tout
-ce qu'on envoie, rien de ce qu'on reçoit.
+> **Correction du 26 août** (première rédaction erronée) : j'avais écrit qu'il
+> n'existait aucune capture d'e-mail entrant. C'est faux — `app/api/inbound-email`
+> est un webhook complet et bien fait : rattachement au contact par e-mail ou
+> téléphone normalisé, activité dans la timeline, mise en pause des relances,
+> secret partagé comparé à temps constant, tolérant aux formats Resend /
+> SendGrid / Mailgun / Postmark. Le vrai constat est ailleurs.
 
-C'est la différence la plus visible avec HubSpot, dont toute la valeur perçue
-tient à ce que la conversation est *dans* la fiche. Deux niveaux de réponse :
-- **pauvre mais immédiat** : une adresse `dossier@` en copie cachée de chaque
-  envoi, plus un webhook qui range le message dans la timeline par correspondance
-  d'e-mail ;
-- **juste** : connecteur Gmail (le connecteur existe déjà côté outillage) qui
-  synchronise les fils par adresse de contact.
+Le code existe ; **la plomberie n'est pas connectée**. `INBOUND_EMAIL_SECRET`
+n'est documenté nulle part (absent de `ENV_VARIABLES.md`), aucun fournisseur ne
+pointe vers l'endpoint, et rien dans le back-office ne signale que le canal est
+dormant. Résultat pratique : identique à l'absence de capture — la timeline reste
+borgne d'un côté.
+
+C'est le pire des cas d'un point de vue projet : le coût de construction est déjà
+payé, et le bénéfice est nul faute d'une variable d'environnement et d'une règle
+de routage chez le fournisseur d'e-mail.
+
+Trois limites à corriger pendant qu'on y est :
+- la réponse est rattachée au **contact**, jamais au dossier — depuis la vague 1,
+  le `leadId` existe et devrait être posé ;
+- la pause des relances écrit `relanceStep: 99` sur **tous** les dossiers du
+  contact, y compris ceux que la réponse ne concerne pas ;
+- une réponse client ne crée **aucune tâche** : elle atterrit dans la timeline et
+  peut n'être jamais vue.
 
 ### 3.3 Le mode manuel coupe l'automatisation, sans le dire
 
@@ -292,7 +303,7 @@ Quatre vagues. L'ordre compte : la vague 1 débloque tout le reste.
 | # | Action | Valeur |
 |---|---|---|
 | 2.1 | **Numéro de suivi d'appel** → contact + lead + activité créés automatiquement, avec canal et horodatage. | Instrumente enfin 80 % du flux entrant. La plus forte valeur du plan. |
-| 2.2 | **Capture des e-mails entrants** (BCC `dossier@` puis connecteur Gmail). | La timeline cesse d'être borgne ; le devis « répondez à cet e-mail » devient traçable. |
+| 2.2 | **Brancher** le webhook d'e-mail entrant qui existe déjà : secret documenté, routage chez le fournisseur, rattachement au dossier, tâche créée à réception. | La timeline cesse d'être borgne, pour le prix d'une configuration. |
 | 2.3 | **Alerte « facture émise non pointée > 15 j »** dans le cockpit. | Ferme le trou du seul jalon invisible, sans dépendre d'un agrégateur bancaire. |
 | 2.4 | **Recyclage des perdus** : règle *perdu (prix/délai) → tâche de reprise à J+90*, exploitant `lostReasonCode` déjà collecté. | Transforme une donnée morte en chiffre d'affaires. |
 | 2.5 | **Rendre le mode manuel explicite** : « relances en pause » sur la fiche et dans le pipeline. | Supprime un piège d'usage. |

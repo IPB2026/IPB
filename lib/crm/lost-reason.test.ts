@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { lostReasonCodeFromText } from './lost-reason';
+import { lostReasonCodeFromText, estRecyclable } from './lost-reason';
 
 describe('lostReasonCodeFromText — motif de perte structuré (T2)', () => {
   it('détecte le prix', () => {
@@ -18,5 +18,31 @@ describe('lostReasonCodeFromText — motif de perte structuré (T2)', () => {
   it('AUTRE par défaut, null si vide', () => {
     expect(lostReasonCodeFromText('raison inhabituelle')).toBe('AUTRE');
     expect(lostReasonCodeFromText('')).toBeNull();
+  });
+});
+
+describe('recyclage des dossiers perdus', () => {
+  it('un motif conjoncturel se recycle', () => {
+    expect(estRecyclable('PRIX')).toBe(true);
+    expect(estRecyclable('DELAI')).toBe(true);
+  });
+
+  it('un motif définitif ne se recycle pas', () => {
+    // Les travaux ont été faits ailleurs, ou le besoin a disparu : relancer
+    // serait du harcèlement, pas de la prospection.
+    expect(estRecyclable('CONCURRENT')).toBe(false);
+    expect(estRecyclable('ABANDON')).toBe(false);
+    expect(estRecyclable('AUTRE')).toBe(false);
+  });
+
+  it('un dossier sans motif ne déclenche rien', () => {
+    expect(estRecyclable(null)).toBe(false);
+    expect(estRecyclable(undefined)).toBe(false);
+  });
+
+  it('le texte libre du gérant alimente bien le recyclage', () => {
+    expect(estRecyclable(lostReasonCodeFromText('trop cher pour nous'))).toBe(true);
+    expect(estRecyclable(lostReasonCodeFromText('délai trop long'))).toBe(true);
+    expect(estRecyclable(lostReasonCodeFromText('passé par un autre cabinet'))).toBe(false);
   });
 });

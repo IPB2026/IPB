@@ -40,6 +40,7 @@ export default async function PipelinePage() {
     phase: string;
     montant: number;
     phone: string | null;
+    manuel: boolean;
   };
   let cards: Card[] = [];
   let dbError = false;
@@ -93,6 +94,10 @@ export default async function PipelinePage() {
         phase: dossier.phase,
         montant: dossier.montantDevis ?? 0,
         phone: r.contact.phone,
+        // Réglage manuel ⇒ relances automatiques en pause (filtre du cron).
+        // Visible sur la carte pour qu'un dossier débranché ne passe pas
+        // inaperçu au milieu des autres.
+        manuel: Boolean(r.manualPhase),
       };
     });
     // Tri commercial : les plus gros montants en haut de chaque colonne.
