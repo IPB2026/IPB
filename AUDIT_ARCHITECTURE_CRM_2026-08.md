@@ -143,11 +143,27 @@ majoritaire. Tout ce qui en découle est structurellement faux : le taux de
 conversion par canal, le ROI publicitaire, le délai de rappel (SLA P1 4 h
 affiché… sans horodatage d'appel réel pour le mesurer).
 
-**Le geste minimal qui change tout** : un numéro de suivi d'appel (Twilio,
-CallRail ou l'équivalent OVH/Ringover) qui crée automatiquement le contact + le
-lead + l'activité APPEL avec horodatage et durée, et rattache l'appel au canal
-d'origine. C'est le chaînon manquant n° 1, très au-dessus de n'importe quelle
-fonctionnalité IA supplémentaire.
+> **Décision du gérant, 26 août : pas de suivi d'appel.** La solution technique
+> (numéro de suivi chez un opérateur, webhook vers le CRM) a été construite puis
+> **retirée** — un endpoint que personne ne branchera est exactement le travers
+> dénoncé au § 3.2. Le constat, lui, reste entier : le canal majoritaire n'est pas
+> mesuré, et toute lecture du ROI par canal porte sur un cinquième du réel. À
+> garder en tête avant d'arbitrer un budget publicitaire sur ces chiffres.
+
+**Ce qui reste possible sans abonnement téléphonique.** L'instrumentation peut
+venir de la saisie plutôt que de la téléphonie, au prix de quelques secondes par
+appel :
+
+- un bouton **« Appel entrant »** en tête de tableau de bord : nom + téléphone +
+  service, trois champs, dix secondes, et le dossier existe avec son canal ;
+- la question **« comment nous avez-vous connu ? »** posée pendant la
+  qualification et stockée en champ structuré (le bloc de qualification
+  téléphonique existe déjà) ;
+- l'horodatage du premier appel, qui donne enfin de quoi mesurer le SLA de
+  rappel P1 affiché aujourd'hui sans support de mesure.
+
+C'est moins fiable qu'un numéro de suivi — la saisie s'oublie — mais c'est la
+seule voie qui ne dépende d'aucun tiers.
 
 ### 3.2 Le devis dit « répondez à cet e-mail », et le webhook qui lit les réponses n'est branché nulle part
 
@@ -302,7 +318,7 @@ Quatre vagues. L'ordre compte : la vague 1 débloque tout le reste.
 
 | # | Action | Valeur |
 |---|---|---|
-| 2.1 | **Numéro de suivi d'appel** → contact + lead + activité créés automatiquement, avec canal et horodatage. | Instrumente enfin 80 % du flux entrant. La plus forte valeur du plan. |
+| 2.1 | ~~Numéro de suivi d'appel~~ — **écarté par le gérant** (26 août). Repli possible : bouton « Appel entrant » en trois champs + question « comment nous avez-vous connu ? ». | Le canal majoritaire reste non mesuré : décision assumée, pas un oubli. |
 | 2.2 | **Brancher** le webhook d'e-mail entrant qui existe déjà : secret documenté, routage chez le fournisseur, rattachement au dossier, tâche créée à réception. | La timeline cesse d'être borgne, pour le prix d'une configuration. |
 | 2.3 | **Alerte « facture émise non pointée > 15 j »** dans le cockpit. | Ferme le trou du seul jalon invisible, sans dépendre d'un agrégateur bancaire. |
 | 2.4 | **Recyclage des perdus** : règle *perdu (prix/délai) → tâche de reprise à J+90*, exploitant `lostReasonCode` déjà collecté. | Transforme une donnée morte en chiffre d'affaires. |
