@@ -36,6 +36,14 @@ export const RULES = {
 
   /** SLA de rappel d'un lead chaud (heures) — pour alertes futures. */
   slaHotHours: 4,
+
+  /**
+   * Plafond d'une action groupée (sélection multiple dans les listes). Borne le
+   * coût d'un envoi forgé et la durée d'un traitement en série (purge = suppression
+   * des photos fiche par fiche). Au-delà, les lignes en trop restent simplement
+   * dans la liste après l'action — visible, jamais silencieux.
+   */
+  maxBulkSelection: 100,
 } as const;
 
 export const DAY_MS = 86_400_000;

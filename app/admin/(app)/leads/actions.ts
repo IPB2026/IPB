@@ -15,6 +15,7 @@ import { notifyExpertAssigned } from '@/lib/crm/notify';
 import { isValidPhase } from '@/lib/crm/dossier';
 import { recordPhaseEvent } from '@/lib/crm/phase-events';
 import { lostReasonCodeFromText } from '@/lib/crm/lost-reason';
+import { RULES } from '@/lib/crm/rules';
 import { PHASE_LABEL } from '@/components/admin/badges';
 import {
   scoreQualification,
@@ -295,7 +296,15 @@ export async function changeStage(formData: FormData) {
  */
 export async function clearManualPhase(formData: FormData) {
   await requireUser();
-  const leadId = String(formData.get('leadId') ?? '');
+  await reopenLead(String(formData.get('leadId') ?? ''));
+}
+
+/**
+ * Cœur du retour au suivi automatique — partagé par le bouton unitaire et les
+ * actions groupées (sélection multiple), pour que la règle ne vive qu'ici.
+ * N'authentifie PAS : chaque action publique le fait avant d'appeler.
+ */
+async function reopenLead(leadId: string): Promise<void> {
   if (!leadId) return;
   const current = await prisma.lead.findUnique({
     where: { id: leadId },
@@ -321,6 +330,54 @@ export async function clearManualPhase(formData: FormData) {
     },
   });
   revalidateLead(leadId);
+}
+
+// ─── Actions GROUPÉES (sélection multiple dans la liste clients) ───────────
+// La sélection porte sur des CONTACTS ; on résout ici le dossier concerné (le
+// plus récent), pour que l'écran n'ait pas à connaître les leads. Chaque
+// dossier passe par les mêmes fonctions que l'action unitaire — donc mêmes
+// garde-fous (refus du « perdu » sur facture payée) et même journalisation.
+
+function selectedContactIds(formData: FormData): string[] {
+  return [...new Set(formData.getAll('contactIds').map((v) => String(v).trim()))]
+    .filter(Boolean)
+    .slice(0, RULES.maxBulkSelection);
+}
+
+/** Dossier le plus récent de chaque contact sélectionné. */
+async function latestLeadIds(contactIds: string[]): Promise<string[]> {
+  if (!contactIds.length) return [];
+  const leads = await prisma.lead.findMany({
+    where: { contactId: { in: contactIds } },
+    orderBy: { createdAt: 'desc' },
+    select: { id: true, contactId: true },
+  });
+  const seen = new Set<string>();
+  const ids: string[] = [];
+  for (const l of leads) {
+    if (seen.has(l.contactId)) continue;
+    seen.add(l.contactId);
+    ids.push(l.id);
+  }
+  return ids;
+}
+
+/** Marque PERDUE toute une sélection de clients (un dossier chacun). */
+export async function markContactsLost(formData: FormData): Promise<void> {
+  await requireUser();
+  const leadIds = await latestLeadIds(selectedContactIds(formData));
+  for (const id of leadIds) {
+    await applyManualPhase(id, 'PERDU', 'Marqué perdu (sélection multiple)');
+  }
+}
+
+/** Rouvre toute une sélection de dossiers (retour au suivi automatique). */
+export async function reopenContacts(formData: FormData): Promise<void> {
+  await requireUser();
+  const leadIds = await latestLeadIds(selectedContactIds(formData));
+  for (const id of leadIds) {
+    await reopenLead(id);
+  }
 }
 
 /** Ajoute une activité (note, appel, email) à la timeline. */
