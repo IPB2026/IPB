@@ -197,7 +197,7 @@ export function PipelineBoard({ columns }: { columns: PipelineColumn[] }) {
                           </button>
                         </div>
                       )}
-                      <QuickActionMenu contactId={l.contactId} phone={l.phone} leadId={l.id} />
+                      <QuickActionMenu contactId={l.contactId} name={l.name} phone={l.phone} leadId={l.id} />
                     </div>
                   </div>
                 );

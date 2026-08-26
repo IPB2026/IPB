@@ -477,15 +477,25 @@ export default async function ClientFichePage({
                 </form>
               )}
               {lead.stage === 'PERDU' ? (
-                <form action={clearManualPhase}>
-                  <input type="hidden" name="leadId" value={lead.id} />
-                  <button
-                    type="submit"
-                    className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-xs font-medium text-emerald-700 hover:bg-emerald-100"
+                <>
+                  {/* Un dossier perdu sort de la liste des clients actifs et se
+                      range dans Clients → Archives (rien n'est supprimé). */}
+                  <Link
+                    href="/admin/clients?archives=1"
+                    className="rounded-lg bg-slate-100 px-2 py-1 text-[11px] font-medium text-slate-500 hover:bg-slate-200"
                   >
-                    Rouvrir le dossier
-                  </button>
-                </form>
+                    Archivé — visible dans Clients → Archives
+                  </Link>
+                  <form action={clearManualPhase}>
+                    <input type="hidden" name="leadId" value={lead.id} />
+                    <button
+                      type="submit"
+                      className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-xs font-medium text-emerald-700 hover:bg-emerald-100"
+                    >
+                      Rouvrir le dossier
+                    </button>
+                  </form>
+                </>
               ) : (
                 <form action={changeStage}>
                   <input type="hidden" name="leadId" value={lead.id} />
@@ -783,27 +793,23 @@ export default async function ClientFichePage({
                 <ContactEditForm contact={c} />
               </div>
             </details>
+            {/* Suppression accessible DIRECTEMENT (plus repliée derrière un
+                « Supprimer ce client » à déplier) : un clic + confirmation. Le
+                geste reste réversible 30 j via Clients → Corbeille. */}
             {isAdmin && (
-              <details className="mt-3 border-t border-slate-100 pt-3 [&_summary::-webkit-details-marker]:hidden">
-                <summary className="cursor-pointer list-none text-xs font-medium text-red-600 hover:text-red-700">
-                  Supprimer ce client
-                </summary>
-                <div className="mt-3 rounded-lg border border-red-200 bg-red-50 p-3">
-                  <p className="text-xs text-red-700">
-                    Met ce client à la <strong>corbeille</strong> : il disparaît du CRM mais reste
-                    récupérable pendant 30 jours, avant suppression définitive automatique.
-                  </p>
-                  <form action={archiveContact} className="mt-2.5">
-                    <input type="hidden" name="contactId" value={c.id} />
-                    <ConfirmSubmit
-                      message={`Mettre « ${c.name} » à la corbeille ? Le client disparaît du CRM mais reste récupérable 30 jours.`}
-                      className="inline-flex items-center gap-1.5 rounded-lg border border-red-300 bg-white px-3 py-2 text-sm font-semibold text-red-700 hover:bg-red-100"
-                    >
-                      <Trash2 className="h-4 w-4" /> Mettre à la corbeille
-                    </ConfirmSubmit>
-                  </form>
-                </div>
-              </details>
+              <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-slate-100 pt-3">
+                <form action={archiveContact}>
+                  <input type="hidden" name="contactId" value={c.id} />
+                  <ConfirmSubmit
+                    message={`Mettre « ${c.name} » à la corbeille ? Le client disparaît du CRM mais reste récupérable 30 jours (Clients → Corbeille), avant suppression définitive automatique.`}
+                    confirmLabel="Mettre à la corbeille"
+                    className="inline-flex min-h-[44px] cursor-pointer items-center gap-1.5 rounded-lg border border-red-300 bg-white px-3 py-2 text-sm font-semibold text-red-700 hover:bg-red-50"
+                  >
+                    <Trash2 className="h-4 w-4" /> Mettre à la corbeille
+                  </ConfirmSubmit>
+                </form>
+                <span className="text-xs text-slate-400">Récupérable 30 jours</span>
+              </div>
             )}
           </Card>
         </div>

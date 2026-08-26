@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { UserCheck, Download, Plus, Search, Trash2, RotateCcw, GitMerge } from 'lucide-react';
+import { UserCheck, Download, Plus, Search, Trash2, RotateCcw, GitMerge, Archive } from 'lucide-react';
 import { Prisma, type ServiceType, type LeadTier } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { guardAdminPage } from '@/lib/auth-helpers';
@@ -10,11 +10,17 @@ import { EmptyState } from '@/components/admin/empty-state';
 import { Avatar } from '@/components/admin/avatar';
 import { MobileCardList, MobileCardRow } from '@/components/admin/mobile-card';
 import { PhaseBadge, SERVICE_LABEL } from '@/components/admin/badges';
-import { CLIENT_CONTACT_WHERE, PROSPECT_CONTACT_WHERE } from '@/lib/crm/client-status';
+import {
+  CLIENT_CONTACT_WHERE,
+  PROSPECT_CONTACT_WHERE,
+  LOST_CONTACT_WHERE,
+  NOT_LOST_CONTACT_WHERE,
+} from '@/lib/crm/client-status';
 import { Pagination, parsePage } from '@/components/admin/pagination';
 import { QuickActionMenu } from '@/components/admin/quick-action-menu';
 import { ConfirmSubmit } from '@/components/admin/confirm-submit';
-import { restoreContact, purgeContact } from '@/app/admin/(app)/contact-actions';
+import { restoreContact, purgeContact, archiveContact } from '@/app/admin/(app)/contact-actions';
+import { clearManualPhase } from '@/app/admin/(app)/leads/actions';
 
 export const dynamic = 'force-dynamic';
 
@@ -25,13 +31,24 @@ type SearchParams = {
   tier?: string;
   canal?: string;
   corbeille?: string;
+  archives?: string;
   page?: string;
 };
 
 function buildWhere(sp: SearchParams): Prisma.ContactWhereInput {
   const and: Prisma.ContactWhereInput[] = [];
-  // Corbeille : on liste les clients ARCHIVÉS si ?corbeille=1, sinon les ACTIFS.
-  and.push(sp.corbeille ? { archivedAt: { not: null } } : { archivedAt: null });
+  // Trois vues exclusives :
+  //  · ?corbeille=1 → clients à la corbeille (soft-delete, purge à 30 j)
+  //  · ?archives=1  → clients dont tous les dossiers sont PERDUS (shadow, rien
+  //                   n'est supprimé : la fiche et son historique restent entiers)
+  //  · sinon        → clients actifs (ni corbeille, ni perdus)
+  if (sp.corbeille) {
+    and.push({ archivedAt: { not: null } });
+  } else if (sp.archives) {
+    and.push({ archivedAt: null }, LOST_CONTACT_WHERE);
+  } else {
+    and.push({ archivedAt: null }, NOT_LOST_CONTACT_WHERE);
+  }
   if (sp.q) {
     const like = { contains: sp.q, mode: 'insensitive' as const };
     and.push({
@@ -92,6 +109,38 @@ function TrashActions({ id, name }: { id: string; name: string }) {
   );
 }
 
+/**
+ * Actions de ligne dans les ARCHIVES : rouvrir le dossier (il revient dans la
+ * liste active) ou l'envoyer à la corbeille (soft-delete, purge à 30 j).
+ */
+function ArchiveActions({ id, name, leadId }: { id: string; name: string; leadId: string | null }) {
+  return (
+    <div className="flex items-center justify-end gap-1.5">
+      {leadId && (
+        <form action={clearManualPhase}>
+          <input type="hidden" name="leadId" value={leadId} />
+          <button
+            type="submit"
+            className="inline-flex h-8 items-center gap-1 rounded-lg border border-emerald-200 bg-emerald-50 px-2 text-xs font-semibold text-emerald-700 hover:bg-emerald-100"
+          >
+            <RotateCcw className="h-3.5 w-3.5" /> Rouvrir
+          </button>
+        </form>
+      )}
+      <form action={archiveContact}>
+        <input type="hidden" name="contactId" value={id} />
+        <ConfirmSubmit
+          message={`Mettre « ${name} » à la corbeille ? Le client disparaît du CRM mais reste récupérable 30 jours.`}
+          confirmLabel="Mettre à la corbeille"
+          className="inline-flex h-8 items-center gap-1 rounded-lg border border-red-200 bg-white px-2 text-xs font-semibold text-red-700 hover:bg-red-50"
+        >
+          <Trash2 className="h-3.5 w-3.5" /> Corbeille
+        </ConfirmSubmit>
+      </form>
+    </div>
+  );
+}
+
 export default async function ClientsPage({
   searchParams,
 }: {
@@ -99,6 +148,7 @@ export default async function ClientsPage({
 }) {
   await guardAdminPage();
   const corbeille = Boolean(searchParams.corbeille);
+  const archives = !corbeille && Boolean(searchParams.archives);
 
   let loaded: Awaited<ReturnType<typeof load>> | null = null;
   let dbError = false;
@@ -131,16 +181,18 @@ export default async function ClientsPage({
   return (
     <div className="space-y-5">
       <PageHeader
-        title={corbeille ? 'Corbeille' : 'Clients'}
+        title={corbeille ? 'Corbeille' : archives ? 'Archives' : 'Clients'}
         subtitle={
           dbError
             ? undefined
             : corbeille
               ? `${total} client(s) à la corbeille — suppression définitive automatique après 30 jours`
-              : `${total} contact(s) — prospects & clients`
+              : archives
+                ? `${total} dossier(s) perdu(s) — conservés intégralement, hors de la liste active`
+                : `${total} contact(s) — prospects & clients`
         }
         actions={
-          corbeille ? (
+          corbeille || archives ? (
             <Link
               href="/admin/clients"
               className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
@@ -155,6 +207,13 @@ export default async function ClientsPage({
               >
                 <GitMerge className="h-4 w-4" />
                 Doublons
+              </Link>
+              <Link
+                href="/admin/clients?archives=1"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+              >
+                <Archive className="h-4 w-4" />
+                Archives
               </Link>
               <Link
                 href="/admin/clients?corbeille=1"
@@ -190,6 +249,8 @@ export default async function ClientsPage({
         action="/admin/clients"
         className="space-y-2.5 rounded-xl border border-slate-200 bg-white p-3"
       >
+        {/* Reste dans la vue courante (Archives) après filtrage. */}
+        {archives && <input type="hidden" name="archives" value="1" />}
         <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center">
           <div className="relative sm:flex-1">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
@@ -210,7 +271,7 @@ export default async function ClientsPage({
             </button>
             {hasActiveFilter(searchParams) && (
               <Link
-                href="/admin/clients"
+                href={archives ? '/admin/clients?archives=1' : '/admin/clients'}
                 className="flex h-10 items-center rounded-lg border border-slate-300 px-3 text-sm font-medium text-slate-600 hover:bg-slate-50"
               >
                 Réinitialiser
@@ -249,17 +310,27 @@ export default async function ClientsPage({
       {dbError || rows.length === 0 ? (
         <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
           <EmptyState
-            icon={corbeille ? Trash2 : UserCheck}
-            title={corbeille ? 'Corbeille vide' : hasFilters ? 'Aucun résultat' : 'Aucun contact'}
+            icon={corbeille ? Trash2 : archives ? Archive : UserCheck}
+            title={
+              corbeille
+                ? 'Corbeille vide'
+                : archives
+                  ? 'Aucun dossier archivé'
+                  : hasFilters
+                    ? 'Aucun résultat'
+                    : 'Aucun contact'
+            }
             description={
               corbeille
                 ? 'Aucun client à la corbeille.'
-                : hasFilters
-                  ? 'Essayez d’élargir votre recherche ou le filtre.'
-                  : 'Ajoutez votre premier prospect — il apparaîtra ici avec son état.'
+                : archives
+                  ? 'Les dossiers marqués « perdu » arrivent ici automatiquement.'
+                  : hasFilters
+                    ? 'Essayez d’élargir votre recherche ou le filtre.'
+                    : 'Ajoutez votre premier prospect — il apparaîtra ici avec son état.'
             }
-            actionLabel={corbeille || hasFilters ? undefined : 'Nouveau prospect'}
-            actionHref={corbeille || hasFilters ? undefined : '/admin/leads/nouveau'}
+            actionLabel={corbeille || archives || hasFilters ? undefined : 'Nouveau prospect'}
+            actionHref={corbeille || archives || hasFilters ? undefined : '/admin/leads/nouveau'}
           />
         </div>
       ) : (
@@ -283,8 +354,10 @@ export default async function ClientsPage({
                 action={
                   corbeille ? (
                     <TrashActions id={c.id} name={c.name} />
+                  ) : archives ? (
+                    <ArchiveActions id={c.id} name={c.name} leadId={leadId} />
                   ) : (
-                    <QuickActionMenu contactId={c.id} phone={c.phone} leadId={leadId} />
+                    <QuickActionMenu contactId={c.id} name={c.name} phone={c.phone} leadId={leadId} />
                   )
                 }
               />
@@ -335,8 +408,10 @@ export default async function ClientsPage({
                     <td className="px-5 py-3 text-right">
                       {corbeille ? (
                         <TrashActions id={c.id} name={c.name} />
+                      ) : archives ? (
+                        <ArchiveActions id={c.id} name={c.name} leadId={leadId} />
                       ) : (
-                        <QuickActionMenu contactId={c.id} phone={c.phone} leadId={leadId} />
+                        <QuickActionMenu contactId={c.id} name={c.name} phone={c.phone} leadId={leadId} />
                       )}
                     </td>
                   </tr>
@@ -356,6 +431,7 @@ export default async function ClientsPage({
               ...(searchParams.tier ? { tier: searchParams.tier } : {}),
               ...(searchParams.canal ? { canal: searchParams.canal } : {}),
               ...(searchParams.corbeille ? { corbeille: searchParams.corbeille } : {}),
+              ...(searchParams.archives ? { archives: searchParams.archives } : {}),
             }}
           />
         </>
