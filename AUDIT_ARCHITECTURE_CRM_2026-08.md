@@ -184,7 +184,14 @@ C'est le pire des cas d'un point de vue projet : le coût de construction est d�
 payé, et le bénéfice est nul faute d'une variable d'environnement et d'une règle
 de routage chez le fournisseur d'e-mail.
 
-Trois limites à corriger pendant qu'on y est :
+> **Décision du gérant, 26 août : on ne branche pas non plus l'e-mail entrant.**
+> Le webhook reste dans le projet, dormant (503 sans secret) et sans risque. Le
+> constat demeure : le devis invite le client à répondre par e-mail, et ces
+> réponses ne laissent aucune trace dans le CRM. Les deux canaux entrants sont
+> donc écartés — c'est un arbitrage de charge assumé, pas un angle mort ignoré.
+
+Trois limites corrigées dans la vague 2, pour que le jour où le canal serait
+branché il le soit proprement :
 - la réponse est rattachée au **contact**, jamais au dossier — depuis la vague 1,
   le `leadId` existe et devrait être posé ;
 - la pause des relances écrit `relanceStep: 99` sur **tous** les dossiers du
@@ -319,7 +326,7 @@ Quatre vagues. L'ordre compte : la vague 1 débloque tout le reste.
 | # | Action | Valeur |
 |---|---|---|
 | 2.1 | ~~Numéro de suivi d'appel~~ — **écarté par le gérant** (26 août). Repli possible : bouton « Appel entrant » en trois champs + question « comment nous avez-vous connu ? ». | Le canal majoritaire reste non mesuré : décision assumée, pas un oubli. |
-| 2.2 | **Brancher** le webhook d'e-mail entrant qui existe déjà : secret documenté, routage chez le fournisseur, rattachement au dossier, tâche créée à réception. | La timeline cesse d'être borgne, pour le prix d'une configuration. |
+| 2.2 | ~~Brancher le webhook d'e-mail entrant~~ — **écarté par le gérant** (26 août). Le code a été mis à niveau (rattachement au dossier, pause ciblée, tâche à réception) et reste dormant. | La timeline reste borgne côté réception : décision assumée. |
 | 2.3 | **Alerte « facture émise non pointée > 15 j »** dans le cockpit. | Ferme le trou du seul jalon invisible, sans dépendre d'un agrégateur bancaire. |
 | 2.4 | **Recyclage des perdus** : règle *perdu (prix/délai) → tâche de reprise à J+90*, exploitant `lostReasonCode` déjà collecté. | Transforme une donnée morte en chiffre d'affaires. |
 | 2.5 | **Rendre le mode manuel explicite** : « relances en pause » sur la fiche et dans le pipeline. | Supprime un piège d'usage. |

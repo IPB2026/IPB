@@ -185,27 +185,35 @@ npm run dev
 
 ---
 
-## 📥 E-MAIL ENTRANT (webhook) — à brancher
+## 📥 E-MAIL ENTRANT (webhook) — NON BRANCHÉ, par décision
 
-Un endpoint attend qu'un fournisseur lui parle. **Tant que le secret n'est pas
-défini, il répond 503 et ne fait rien** : le code est là, la valeur métier
-n'arrive qu'une fois la configuration faite.
+**Décision du 26 août 2026 : on ne branche pas les canaux entrants.** Ni le
+suivi d'appel (code supprimé), ni la capture des réponses e-mail.
 
-| Variable | Endpoint | Ce que ça débloque |
-|---|---|---|
-| `INBOUND_EMAIL_SECRET` | `POST /api/inbound-email` | Les réponses des clients entrent dans la timeline du bon dossier, coupent les relances auto et créent une tâche « répondre ». |
+`app/api/inbound-email` reste dans le projet mais **dort** : sans
+`INBOUND_EMAIL_SECRET`, il répond 503 et ne fait rien. Ce n'est donc ni un
+risque ni une tâche en attente — c'est un choix, écrit ici pour qu'une prochaine
+session ne le prenne pas pour un oubli.
 
-### Brancher l'e-mail entrant
+Conséquence assumée : les réponses des clients restent dans la boîte mail et
+n'apparaissent pas dans la timeline du dossier. Le devis invite pourtant le
+client à répondre par e-mail ; ces réponses-là ne laissent aucune trace dans le
+CRM.
+
+<details>
+<summary>Si la décision change un jour</summary>
 
 1. Générer un secret : `openssl rand -hex 32`, le poser dans Vercel en
    `INBOUND_EMAIL_SECRET`.
 2. Chez le fournisseur d'inbound parsing (Resend Inbound, SendGrid Inbound Parse,
-   Mailgun Routes, Postmark), router les messages vers :
-   `https://ipb-expertise.fr/api/inbound-email`
-   avec l'en-tête `x-inbound-secret: <secret>`.
-3. Le plus simple sans changer d'adresse : mettre une adresse dédiée
-   (ex. `dossier@ipb-expertise.fr`) en **Répondre-à** des e-mails sortants, et
-   router CETTE boîte vers le webhook.
+   Mailgun Routes, Postmark), router les messages vers
+   `https://ipb-expertise.fr/api/inbound-email`, en-tête
+   `x-inbound-secret: <secret>`.
+3. Mettre l'adresse routée en **Répondre-à** des e-mails sortants.
+
+Le code est à jour : rattachement au bon dossier, pause des relances ciblée,
+tâche « répondre au client » créée à réception.
+</details>
 
 ---
 
