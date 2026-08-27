@@ -8,6 +8,8 @@ import {
 } from '@prisma/client';
 import { normalizePhoneFR, phoneVariants } from '@/lib/crm/phone';
 import type { Attribution } from '@/lib/crm/attribution';
+import { alerteExploitation } from '@/lib/crm/alert';
+import { diagnoseDbError } from '@/lib/crm/db-error';
 
 /**
  * Capture d'un lead dans le CRM.
@@ -237,6 +239,31 @@ export async function captureLead(
   } catch (err) {
     // Non bloquant : on log mais on ne fait jamais échouer le formulaire
     console.error('[captureLead] échec persistance lead (non bloquant):', err);
+
+    // ALERTE : c'est le seul endroit du projet où une panne coûte directement de
+    // l'argent. Le visiteur voit son envoi réussir, l'e-mail de notification part,
+    // mais la fiche n'existe pas — et personne ne s'en aperçoit. Trois demandes
+    // ont été perdues ainsi les 26 et 27 août 2026, découvertes après coup dans
+    // les journaux. L'alerte reprend TOUTES les coordonnées saisies : elle est
+    // conçue pour qu'on puisse recréer la fiche à la main depuis ce seul e-mail.
+    const d = diagnoseDbError(err);
+    await alerteExploitation({
+      cle: 'lead-non-enregistre',
+      titre: 'Une demande du site n’a PAS été enregistrée dans le CRM',
+      details: [
+        `Nom : ${input.contact.name || '—'}`,
+        `Téléphone : ${input.contact.phone || '—'}`,
+        `E-mail : ${input.contact.email || '—'}`,
+        `Ville : ${input.contact.city || '—'}`,
+        `Service : ${input.service}`,
+        input.summary ? `Demande : ${input.summary}` : null,
+        `Origine : formulaire ${input.source}`,
+        `Cause : ${d.message}`,
+      ],
+      action:
+        'Créer la fiche à la main dans le CRM à partir des informations ci-dessus, puis corriger la cause : ' +
+        d.action,
+    });
     return null;
   }
 }
