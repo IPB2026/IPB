@@ -3,7 +3,16 @@
 import { useEffect, useRef, useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { upload } from '@vercel/blob/client';
-import { Camera, Trash2, Loader2, ImageOff, Info, AlertTriangle, RotateCw } from 'lucide-react';
+import {
+  Camera,
+  Trash2,
+  Loader2,
+  ImageOff,
+  Info,
+  AlertTriangle,
+  RotateCw,
+  WifiOff,
+} from 'lucide-react';
 import {
   attachRapportPhoto,
   updatePhotoMeta,
@@ -11,6 +20,13 @@ import {
 } from '@/app/admin/(app)/rapports/actions';
 import { MAX_PHOTO_BYTES, guessMimeFromName } from '@/lib/blob';
 import { compressImage } from '@/lib/image-compression';
+import {
+  enqueuePhoto,
+  removeQueuedPhoto,
+  listQueuedPhotos,
+  purgeOldQueuedPhotos,
+} from '@/lib/photo-queue';
+import { useOnline } from '@/hooks/useOnline';
 
 export interface PhotoVM {
   id: string;
@@ -37,8 +53,14 @@ interface Pending {
   file: File; // fichier d'origine (pour réessayer)
 }
 
+const OFFLINE_MSG =
+  'Hors ligne — la photo est conservée sur cet appareil et repartira au retour du réseau.';
+
 let _seq = 0;
-const nextKey = () => `up_${++_seq}`;
+/** Clé unique ET durable : elle identifie la photo dans IndexedDB, donc elle doit
+ *  rester valable après un rechargement de page (un compteur seul repartirait à 1). */
+const nextKey = () =>
+  `up_${Date.now().toString(36)}_${(++_seq).toString(36)}_${Math.random().toString(36).slice(2, 7)}`;
 
 export function RapportPhotos({
   rapportId,
@@ -54,11 +76,14 @@ export function RapportPhotos({
   canEdit: boolean;
 }) {
   const router = useRouter();
+  const online = useOnline();
   const inputRef = useRef<HTMLInputElement>(null);
   const [pending, setPending] = useState<Pending[]>([]);
   const [info, setInfo] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
   const busy = pending.some((p) => p.step !== 'erreur');
+  /** Clés des photos en cours de traitement (voir runQueue). */
+  const inFlight = useRef<Set<string>>(new Set());
 
   // Nettoyage des object URLs à la fin.
   useEffect(() => {
@@ -145,9 +170,27 @@ export function RapportPhotos({
   /** Traite UN fichier : compression (HEIC inclus) → envoi → enregistrement base. */
   async function processOne(p: Pending): Promise<boolean> {
     try {
+      // Hors ligne : inutile de brûler 45 s de timeout, la photo est déjà en
+      // sécurité sur l'appareil. Elle repartira sur l'événement « online ».
+      if (typeof navigator !== 'undefined' && !navigator.onLine) {
+        patch(p.key, { step: 'erreur', error: OFFLINE_MSG });
+        return false;
+      }
       patch(p.key, { step: 'optim', error: undefined });
       const { file: optimized, note } = await compressBounded(p.file);
       if (note) setInfo((prev) => prev ?? note);
+
+      // La version compressée remplace l'originale dans la file locale : même
+      // sécurité, beaucoup moins de stockage occupé sur le téléphone.
+      if (optimized !== p.file) {
+        void enqueuePhoto({
+          key: p.key,
+          rapportId,
+          name: p.name,
+          addedAt: Date.now(),
+          file: optimized,
+        });
+      }
 
       // Aperçu mis à jour avec le JPEG (utile pour les HEIC, illisibles sinon).
       // Révocation FAITE HORS de l'updater (pas d'effet de bord dans setState).
@@ -167,6 +210,7 @@ export function RapportPhotos({
       // VOIE 1 (fiable) — via notre serveur. Le fichier compressé est petit
       // (< 4,5 Mo), donc dans la limite de corps d'une fonction serverless.
       if (optimized.size <= 4 * 1024 * 1024 && (await uploadViaServer(optimized))) {
+        await removeQueuedPhoto(p.key);
         return true;
       }
 
@@ -192,6 +236,7 @@ export function RapportPhotos({
       fd.set('contentType', optimized.type || guessMimeFromName(optimized.name));
       const res = await attachRapportPhoto(fd);
       if (!res?.ok) throw new Error(res?.error ?? 'Enregistrement échoué.');
+      await removeQueuedPhoto(p.key);
       return true;
     } catch (e) {
       patch(p.key, { step: 'erreur', error: friendlyError(e) });
@@ -200,13 +245,25 @@ export function RapportPhotos({
   }
 
   /** Pool de concurrence : N photos traitées en parallèle. */
-  async function runQueue(items: Pending[]) {
+  async function runQueue(input: Pending[]) {
+    // Garde anti-doublon : un cliché déjà en cours de traitement est ignoré. Sans
+    // elle, un « Réessayer » manuel pendant la relance automatique du retour de
+    // réseau enverrait deux fois la même photo — et la créerait en double.
+    const items = input.filter((it) => !inFlight.current.has(it.key));
+    if (items.length === 0) return;
+    items.forEach((it) => inFlight.current.add(it.key));
+
     let idx = 0;
     let anyOk = false;
     const runners = Array.from({ length: Math.min(CONCURRENCY, items.length) }, async () => {
       while (idx < items.length) {
         const item = items[idx++];
-        const ok = await processOne(item);
+        let ok = false;
+        try {
+          ok = await processOne(item);
+        } finally {
+          inFlight.current.delete(item.key);
+        }
         if (ok) {
           anyOk = true;
           // Succès : on retire la carte provisoire (le refresh chargera la vraie).
@@ -234,6 +291,17 @@ export function RapportPhotos({
     }));
     setPending((ps) => [...ps, ...items]);
     if (inputRef.current) inputRef.current.value = '';
+    // Écriture sur l'appareil AVANT l'envoi : si la page est rechargée ou évincée
+    // par iOS en pleine visite, le cliché est retrouvé au retour sur le rapport.
+    for (const it of items) {
+      void enqueuePhoto({
+        key: it.key,
+        rapportId,
+        name: it.name,
+        addedAt: Date.now(),
+        file: it.file,
+      });
+    }
     void runQueue(items);
   }
 
@@ -241,12 +309,67 @@ export function RapportPhotos({
     const item = pending.find((p) => p.key === key);
     if (item) void runQueue([item]);
   };
-  const dismiss = (key: string) =>
+  const dismiss = (key: string) => {
+    void removeQueuedPhoto(key); // abandon explicite : on libère le stockage
     setPending((ps) => {
       const found = ps.find((x) => x.key === key);
       if (found) URL.revokeObjectURL(found.preview);
       return ps.filter((x) => x.key !== key);
     });
+  };
+
+  /* ── Reprise : photos restées en file d'une session précédente ── */
+  const restored = useRef(false);
+  useEffect(() => {
+    if (restored.current || !canEdit || !blobConfigured) return;
+    restored.current = true;
+    let cancelled = false;
+    (async () => {
+      void purgeOldQueuedPhotos();
+      const queued = await listQueuedPhotos(rapportId);
+      if (cancelled || queued.length === 0) return;
+      const reprise = navigator.onLine;
+      const items: Pending[] = queued.map((q) => {
+        const file =
+          q.file instanceof File
+            ? q.file
+            : new File([q.file], q.name, { type: (q.file as Blob).type });
+        return {
+          key: q.key,
+          name: q.name,
+          preview: URL.createObjectURL(file),
+          step: 'erreur' as Step,
+          error: reprise ? 'Envoi interrompu — reprise en cours.' : OFFLINE_MSG,
+          file,
+        };
+      });
+      setPending((ps) => {
+        const known = new Set(ps.map((x) => x.key));
+        return [...ps, ...items.filter((x) => !known.has(x.key))];
+      });
+      setInfo(
+        reprise
+          ? `${items.length} photo(s) non transmise(s) retrouvée(s) sur cet appareil — envoi repris.`
+          : `${items.length} photo(s) non transmise(s) conservée(s) sur cet appareil — envoi au retour du réseau.`
+      );
+      if (reprise) void runQueue(items);
+    })();
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  /* ── Retour du réseau : on relance tout ce qui a échoué ── */
+  const wasOnline = useRef(true);
+  useEffect(() => {
+    if (!wasOnline.current && online) {
+      const failed = pending.filter((p) => p.step === 'erreur');
+      if (failed.length) void runQueue(failed);
+    }
+    wasOnline.current = online;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [online]);
 
   return (
     <section className="rounded-xl border border-slate-200 bg-white p-5">
@@ -282,6 +405,14 @@ export function RapportPhotos({
           <ImageOff className="mt-0.5 h-4 w-4 shrink-0" />
           Stockage photos non configuré. Connectez un store <strong>Vercel Blob</strong> au projet
           (Storage → Blob) puis redéployez — l&apos;upload terrain s&apos;activera tout seul.
+        </p>
+      )}
+
+      {canEdit && blobConfigured && !online && (
+        <p className="mb-3 flex items-start gap-2 rounded-lg border border-slate-300 bg-slate-100 px-3 py-2 text-xs text-slate-700">
+          <WifiOff className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+          Hors ligne — continuez à photographier : les clichés sont conservés sur cet appareil
+          et partent automatiquement au retour du réseau.
         </p>
       )}
 
