@@ -55,6 +55,9 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  // Servi par app/manifest.webmanifest/route.ts (et non par la convention
+  // app/manifest.ts, qui s'imposait aussi au back-office — voir ce fichier).
+  manifest: '/manifest.webmanifest',
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
