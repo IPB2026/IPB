@@ -19,6 +19,8 @@ import { Prisma } from '@prisma/client';
 import { Money } from '@/components/admin/money';
 import { DIAGNOSTIC_VISIT_TYPES, REPORT_DONE_MANUAL_PHASES } from '@/lib/crm/dossier';
 import { CLIENT_CONTACT_WHERE, NOT_LOST_CONTACT_WHERE } from '@/lib/crm/client-status';
+import { diagnoseDbError, type DbErrorDiagnostic } from '@/lib/crm/db-error';
+import { alerteExploitation } from '@/lib/crm/alert';
 
 /**
  * Contact dont le rapport n'est PAS traité : aucun rapport ENVOYÉ ET aucun dossier
@@ -333,11 +335,22 @@ const headerActions = (
 export default async function DashboardPage() {
   await guardAdminPage();
   let stats: Awaited<ReturnType<typeof getStats>> | null = null;
+  let panne: DbErrorDiagnostic | null = null;
   try {
     stats = await getStats();
   } catch (e) {
     // On loggue la VRAIE erreur (visible dans les logs Vercel) au lieu de l'avaler.
     console.error('[dashboard] connexion/chargement base échoué :', e);
+    // …et on la QUALIFIE : une colonne manquante n'est pas une panne de base.
+    // Annoncer « base indisponible » dans ce cas a fait chercher une panne
+    // d'hébergeur pendant 24 h les 26-27 août 2026, pour une migration oubliée.
+    panne = diagnoseDbError(e);
+    await alerteExploitation({
+      cle: `dashboard-${panne.kind}`,
+      titre: `Le CRM ne peut pas lire la base — ${panne.message}`,
+      details: [`Code : ${panne.code ?? 'inconnu'}`, `Écran : tableau de bord`],
+      action: panne.action,
+    });
     stats = null;
   }
 
@@ -347,23 +360,32 @@ export default async function DashboardPage() {
         <PageHeader title="Tableau de bord" />
         <div className="rounded-xl border border-amber-200 bg-amber-50 p-6">
           <p className="font-semibold text-amber-900">
-            Base de données momentanément indisponible
+            {panne?.kind === 'schema'
+              ? 'Mise à jour de la base non appliquée'
+              : 'Base de données momentanément indisponible'}
           </p>
           <p className="mt-1 text-sm text-amber-800">
-            La connexion à la base n&apos;a pas abouti. Réessayez dans un instant —
-            c&apos;est souvent temporaire (réveil de la base).
+            {panne?.message ??
+              "La connexion à la base n'a pas abouti."}{' '}
+            {panne?.kind === 'connexion' || !panne
+              ? 'Réessayez dans un instant — c’est souvent temporaire (réveil de la base).'
+              : null}
           </p>
-          <a
-            href="/admin"
-            className="mt-3 inline-flex h-9 items-center rounded-lg bg-amber-600 px-4 text-sm font-semibold text-white hover:bg-amber-700"
-          >
-            Réessayer
-          </a>
+          <p className="mt-2 rounded-lg bg-amber-100/70 px-3 py-2 text-sm text-amber-900">
+            <strong>À faire :</strong>{' '}
+            {panne?.action ?? 'Consulter les journaux du déploiement.'}
+          </p>
+          {panne?.kind !== 'schema' && (
+            <a
+              href="/admin"
+              className="mt-3 inline-flex h-9 items-center rounded-lg bg-amber-600 px-4 text-sm font-semibold text-white hover:bg-amber-700"
+            >
+              Réessayer
+            </a>
+          )}
           <p className="mt-3 text-xs text-amber-700/80">
-            Si le problème persiste : vérifiez la variable{' '}
-            <code className="rounded bg-amber-100 px-1">DATABASE_URL</code> sur
-            Vercel (connexion Neon « pooled », <strong>sans</strong>{' '}
-            <code className="rounded bg-amber-100 px-1">channel_binding</code>).
+            Une alerte vient d’être envoyée par e-mail. Code technique :{' '}
+            <code className="rounded bg-amber-100 px-1">{panne?.code ?? '—'}</code>
           </p>
         </div>
       </div>
