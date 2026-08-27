@@ -62,7 +62,12 @@ export function RapportZonesEditor({
   const [notice, setNotice] = useState<string | null>(null);
   const [aiError, setAiError] = useState<string | null>(null);
   const [aiPending, startAi] = useTransition();
-  const [saving, startSave] = useTransition();
+  // État d'envoi explicite, et NON useTransition : en React 18, `isPending`
+  // retombe à false dès le premier `await` d'un callback asynchrone. Le bouton
+  // ne resterait pas désactivé pendant l'appel réseau — deux appuis, deux
+  // enregistrements concurrents sur la même saisie.
+  const [saving, setSaving] = useState(false);
+  const savingRef = useRef(false);
 
   // Dernier état réellement enregistré côté serveur : sert à savoir si la saisie
   // en cours diverge (donc s'il reste quelque chose à transmettre).
@@ -113,50 +118,57 @@ export function RapportZonesEditor({
     setZones((zs) => (zs.length > 1 ? zs.filter((_, j) => j !== i) : zs));
 
   /* ── Enregistrement serveur ── */
-  const save = useCallback(() => {
+  const save = useCallback(async () => {
+    if (savingRef.current) return; // garde anti double-appui
     setError(null);
     setNotice(null);
-    startSave(async () => {
-      const payload = zones;
-      if (typeof navigator !== 'undefined' && !navigator.onLine) {
-        setNeedsSyncBoth(true);
-        setNotice(OFFLINE_MSG); // situation prévue et maîtrisée : pas une erreur rouge
+
+    const payload = zones;
+    if (typeof navigator !== 'undefined' && !navigator.onLine) {
+      setNeedsSyncBoth(true);
+      setNotice(OFFLINE_MSG); // situation prévue et maîtrisée : pas une erreur rouge
+      return;
+    }
+
+    savingRef.current = true;
+    setSaving(true);
+    try {
+      const fd = new FormData();
+      fd.set('rapportId', rapportId);
+      fd.set('zones', JSON.stringify(payload));
+      const err = await updateRapportZones(undefined, fd);
+      if (err) {
+        // Refus métier (zones incomplètes) : rien à resynchroniser au retour réseau.
+        setError(err);
         return;
       }
-      try {
-        const fd = new FormData();
-        fd.set('rapportId', rapportId);
-        fd.set('zones', JSON.stringify(payload));
-        const err = await updateRapportZones(undefined, fd);
-        if (err) {
-          setError(err); // refus métier (zones incomplètes) : rien à resynchroniser
-          return;
-        }
-        // Le serveur n'enregistre que les zones ayant un titre ET des observations :
-        // sans avertissement, une zone à moitié remplie disparaîtrait en silence.
-        const dropped = payload.length - payload.filter(isComplete).length;
-        setNotice(
-          dropped > 0
-            ? `${dropped} zone(s) incomplète(s) non transmise(s) : un titre ET des observations sont nécessaires. Elles restent sur cet appareil.`
-            : null
-        );
-        // On ne libère le brouillon local que si le serveur a tout repris.
-        if (dropped === 0) clearDraft(draftKey);
-        setNeedsSyncBoth(false);
-        setServerSnapshot(snapshot(payload));
-        setSavedAt(Date.now());
-      } catch {
-        // Échec réseau : la saisie reste sur l'appareil, on retentera au retour.
-        setNeedsSyncBoth(true);
-        setNotice(NETWORK_MSG);
-      }
-    });
+      // Le serveur n'enregistre que les zones ayant un titre ET des observations :
+      // sans avertissement, une zone à moitié remplie disparaîtrait en silence.
+      const dropped = payload.length - payload.filter(isComplete).length;
+      setNotice(
+        dropped > 0
+          ? `${dropped} zone(s) incomplète(s) non transmise(s) : un titre ET des observations sont nécessaires. Elles restent sur cet appareil.`
+          : null
+      );
+      // On ne libère le brouillon local que si le serveur a tout repris.
+      if (dropped === 0) clearDraft(draftKey);
+      setNeedsSyncBoth(false);
+      setServerSnapshot(snapshot(payload));
+      setSavedAt(Date.now());
+    } catch {
+      // Échec réseau : la saisie reste sur l'appareil, on retentera au retour.
+      setNeedsSyncBoth(true);
+      setNotice(NETWORK_MSG);
+    } finally {
+      savingRef.current = false;
+      setSaving(false);
+    }
   }, [zones, rapportId, draftKey]);
 
   /* ── Retour du réseau : on retransmet ce qui n'est pas passé ── */
   const wasOnline = useRef(true);
   useEffect(() => {
-    if (!wasOnline.current && online && needsSyncRef.current) save();
+    if (!wasOnline.current && online && needsSyncRef.current) void save();
     wasOnline.current = online;
   }, [online, save]);
 
@@ -362,7 +374,7 @@ export function RapportZonesEditor({
         </button>
         <button
           type="button"
-          onClick={save}
+          onClick={() => void save()}
           disabled={saving}
           className="inline-flex min-h-[40px] items-center gap-1.5 rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 disabled:opacity-60"
         >
