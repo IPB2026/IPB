@@ -1,7 +1,23 @@
 import { Metadata } from 'next';
+import { isVillePrioritaire } from '@/app/data/villes-prioritaires';
 import Link from 'next/link';
 import { Phone, MapPin, CheckCircle, ArrowRight } from 'lucide-react';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
+
+
+/**
+ * Destination finale d'un lien commune (LOT 3bis, 2026-08).
+ *
+ * Les liens pointaient vers /villes/{slug}, redirigé en 301 depuis juin — 28
+ * liens internes vers une URL intermédiaire. On pointe désormais la canonique :
+ * la page ville si la commune est prioritaire, sinon `null` (elle est couverte
+ * par cette page même, on n'affiche pas de lien vers soi).
+ */
+function lienCommune(slug: string): string | null {
+  if (!isVillePrioritaire(slug)) return null;
+  if (slug === 'toulouse') return '/expert-fissures-toulouse-31';
+  return `/expert-fissures/${slug}`;
+}
 
 export const metadata: Metadata = {
   title: 'Expert Fissures & Humidité Tarn-et-Garonne 82 · Rapport 3-5 jours',
@@ -193,7 +209,7 @@ export default function TarnEtGaronnePage() {
             {villes.map((ville) => (
               <Link
                 key={ville.slug}
-                href={`/villes/${ville.slug}`}
+                href={lienCommune(ville.slug) ?? `/departements/tarn-et-garonne`}
                 className="group p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all border border-ipb-rule hover:border-ipb-rule"
               >
                 <div className="flex items-start justify-between mb-4">

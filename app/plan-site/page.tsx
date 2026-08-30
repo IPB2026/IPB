@@ -64,7 +64,6 @@ const sections: Section[] = [
     titre: "Zones d'intervention",
     links: [
       { href: '/zones-intervention', label: 'Mapping complet (56 villes)' },
-      { href: '/quartiers', label: 'Quartiers Toulouse — fiches locales' },
       { href: '/expert-fissures-toulouse-31', label: 'Toulouse · pillar fissures' },
       { href: '/expert-humidite-toulouse-31', label: 'Toulouse · pillar humidité' },
       { href: '/expert-fissures-montauban-82', label: 'Montauban · pillar fissures' },
@@ -90,11 +89,10 @@ const sections: Section[] = [
       { href: '/expert-fissures/castelsarrasin', label: 'Castelsarrasin (82)' },
       { href: '/expert-fissures/moissac', label: 'Moissac (82)' },
       { href: '/expert-fissures/auch', label: 'Auch (32)' },
-      { href: '/expert-fissures/condom', label: 'Condom (32)' },
-      { href: '/expert-fissures/fleurance', label: 'Fleurance (32)' },
-      { href: '/expert-fissures/albi', label: 'Albi (81)' },
-      { href: '/expert-fissures/castres', label: 'Castres (81)' },
-      { href: '/expert-fissures/gaillac', label: 'Gaillac (81)' },
+      // LOT 3bis : Condom, Fleurance, Albi, Castres et Gaillac n'ont plus de page
+      // dédiée — elles sont couvertes au niveau départemental.
+      { href: '/departements/gers', label: 'Gers (32) — Auch, Condom, Fleurance' },
+      { href: '/departements/tarn', label: 'Tarn (81) — Albi, Castres, Gaillac' },
     ],
   },
   {
@@ -111,6 +109,13 @@ const sections: Section[] = [
     eyebrow: '08',
     titre: 'Blog — Fissures',
     links: [
+      { href: '/blog/lire-fissures-verticale-horizontale-oblique', label: "Lire une fissure : verticale, horizontale, oblique" },
+      { href: '/blog/evaluer-gravite-fissure-maison', label: "Évaluer la gravité d'une fissure" },
+      { href: '/blog/fissure-maison-neuve-garantie-decennale', label: "Maison neuve fissurée : la décennale" },
+      { href: '/blog/injection-resine-expansive-fondation', label: "Résine expansive pour fondations" },
+      { href: '/blog/secheresse-argile-haute-garonne', label: "Sécheresse & argiles en Haute-Garonne" },
+      { href: '/blog/fissures-maison-tarn-et-garonne-solutions', label: "Fissures en Tarn-et-Garonne" },
+      { href: '/blog/expert-fissures-gers-guide-complet', label: "Expert fissures dans le Gers" },
       { href: '/blog/fissures-maison-toulouse-que-faire', label: 'Fissures maison Toulouse' },
       { href: '/blog/agrafage-vs-micropieux-choix', label: 'Agrafage vs micropieux' },
       { href: '/blog/fissures-escalier-tassement-differentiel', label: 'Fissures en escalier' },
@@ -127,6 +132,7 @@ const sections: Section[] = [
     eyebrow: '09',
     titre: 'Blog — Humidité',
     links: [
+      { href: '/blog/ventilation-humidite-condensation', label: "Ventilation, humidité et condensation" },
       { href: '/blog/humidite-remontee-capillaire-solution', label: 'Remontées capillaires' },
       { href: '/blog/humidite-salpetre-traitement', label: 'Traitement salpêtre' },
       { href: '/salpetre-mur-traitement', label: 'Salpêtre Toulouse' },
@@ -141,6 +147,9 @@ const sections: Section[] = [
     eyebrow: '10',
     titre: 'Blog — Conseils & assurance',
     links: [
+      { href: '/blog/diagnostic-fissure-humidite-avant-achat', label: "Diagnostic fissures & humidité avant achat" },
+      { href: '/blog/expert-batiment-independant-vs-expert-assurance', label: "Expert indépendant ou expert d'assurance" },
+      { href: '/blog/succession-maison-fissuree', label: "Succession d'une maison fissurée" },
       { href: '/blog/diagnostic-structurel-maison', label: 'Diagnostic structurel' },
       { href: '/blog/garantie-decennale-travaux-structure', label: 'Garantie décennale' },
       { href: '/blog/prix-maison-fissuree', label: 'Revente maison fissurée' },

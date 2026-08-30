@@ -2,7 +2,6 @@ import { MetadataRoute } from 'next';
 import { blogPostsList } from '@/app/data/blog';
 import { villeSlugs } from '@/app/data/villes';
 import { isVillePrioritaire } from '@/app/data/villes-prioritaires';
-import { quartierSlugs } from '@/app/data/quartiers';
 
 // ═══════════════════════════════════════════════════════════════
 // SITEMAP SEO OPTIMISÉ - IPB EXPERTISE
@@ -160,12 +159,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: recentUpdate,
       changeFrequency: 'monthly',
       priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/quartiers`,
-      lastModified: recentUpdate,
-      changeFrequency: 'monthly',
-      priority: 0.68,
     },
     {
       url: `${baseUrl}/legal/mentions-legales`,
@@ -334,9 +327,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const indexableVilles = villeSlugs.filter(
     (ville) => ville !== 'toulouse' && isVillePrioritaire(ville)
   );
-  // Fissures : Montauban aussi exclu (page statique dédiée /expert-fissures-montauban-82,
-  // le middleware 301 la variante dynamique). L'humidité, elle, garde Montauban :
-  // /expert-humidite/montauban est la seule page humidité de la ville.
+  // Montauban : deux pages fissures coexistent — la statique
+  // /expert-fissures-montauban-82 (au sitemap, 915 mots) et la dynamique
+  // /expert-fissures/montauban (hors sitemap, 381 mots, mais indexable et
+  // maillée depuis /expertise/fissures). Le commentaire précédent affirmait
+  // qu'un middleware redirigeait la dynamique : ce middleware n'a jamais
+  // existé. L'arbitrage entre les deux est en attente (LOT 3bis) ; en
+  // attendant, la dynamique reste hors sitemap comme avant.
   const indexableVillesFissures = indexableVilles.filter((ville) => ville !== 'montauban');
 
   const expertFissuresPages: MetadataRoute.Sitemap = indexableVillesFissures.map((ville) => ({

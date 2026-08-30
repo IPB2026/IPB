@@ -1716,3 +1716,28 @@ export function getVillesMemesDepartement(villeSlug: string): string[] {
 
 // Export pour utilisation dans les pages dynamiques
 export type { VilleInfo as VilleData };
+
+// ═══════════════════════════════════════════════════════════════
+// MAPPING VILLE → PAGE DÉPARTEMENT
+// ═══════════════════════════════════════════════════════════════
+// Utilisé par middleware.ts (LOT 3bis, 2026-08) : les villes non prioritaires
+// sont redirigées vers leur page département plutôt que maintenues en noindex.
+// Un noindex ne transmet aucun signal et consomme quand même du budget de crawl.
+const DEPARTEMENT_PATHS: Record<string, string> = {
+  'Haute-Garonne (31)': '/departements/haute-garonne',
+  'Tarn-et-Garonne (82)': '/departements/tarn-et-garonne',
+  'Gers (32)': '/departements/gers',
+  'Tarn (81)': '/departements/tarn',
+  'Ariège (09)': '/departements/ariege',
+  'Aude (11)': '/departements/aude',
+};
+
+/**
+ * Page département d'une ville. Retourne null si la ville est inconnue ou si
+ * son département n'a pas de page dédiée — l'appelant doit alors s'abstenir de
+ * rediriger plutôt que d'envoyer vers une destination approximative.
+ */
+export function departementPath(ville: string): string | null {
+  const dep = villesData[ville]?.departement;
+  return dep ? DEPARTEMENT_PATHS[dep] ?? null : null;
+}

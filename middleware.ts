@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest, NextFetchEvent } from 'next/server';
 import NextAuth from 'next-auth';
-import { villeSlugs } from '@/app/data/villes';
+import { villeSlugs, departementPath } from '@/app/data/villes';
+import { isVillePrioritaire } from '@/app/data/villes-prioritaires';
 import { authConfig } from './auth.config';
 
 // L'auth (NextAuth) ne s'applique QU'À /admin. Le site public ne dépend donc
@@ -31,6 +32,11 @@ const adminGuard = auth(() => NextResponse.next()) as unknown as (
 
 const villeSet = new Set<string>(villeSlugs);
 
+// Toulouse garde le schéma plat : /expert-fissures-toulouse-31 est en position 2
+// sur « expert fissure toulouse » et porte plus de la moitié de l'acquisition
+// non-marque. Exception assumée, on n'y touche pas.
+// Montauban : arbitrage en attente (LOT 3bis) — la statique reste canonique
+// pour l'instant, donc l'override est conservé.
 const FISSURE_OVERRIDES: Record<string, string> = {
   toulouse: '/expert-fissures-toulouse-31',
   montauban: '/expert-fissures-montauban-82',
@@ -52,25 +58,64 @@ function humiditeCanonical(ville: string): string {
  * Si le pathname correspond à un doublon connu, renvoie la cible canonique.
  * Sinon renvoie null.
  */
+/**
+ * Ville non prioritaire → page département (LOT 3bis, 2026-08).
+ *
+ * Ces pages étaient en `noindex, follow` depuis juin : elles ne transmettaient
+ * aucun signal tout en consommant du budget de crawl, et n'avaient aucune
+ * chance de se positionner (le volume de recherche n'existe pas sur
+ * « expert fissures {petite commune} »). Une 301 vers le département transfère
+ * ce qu'elles ont pu accumuler et retire 100 URL du graphe.
+ *
+ * Retourne null si la ville est prioritaire (page conservée) ou si son
+ * département n'a pas de page — mieux vaut ne pas rediriger que rediriger mal.
+ */
+function departementFallback(ville: string): string | null {
+  if (!villeSet.has(ville) || isVillePrioritaire(ville)) return null;
+  return departementPath(ville);
+}
+
 function resolveCanonical(pathname: string): string | null {
+  // Pages villes non prioritaires → département. Placé AVANT les règles de
+  // doublon pour que /villes/{v} et /agrafage-fissures/{v} d'une commune non
+  // prioritaire pointent directement sur la destination finale, sans chaîne.
+  const fissuresDirect = pathname.match(/^\/expert-fissures\/([^\/]+)\/?$/);
+  if (fissuresDirect) {
+    const dest = departementFallback(fissuresDirect[1]);
+    if (dest) return dest;
+  }
+  const humiditeDirect = pathname.match(/^\/expert-humidite\/([^\/]+)\/?$/);
+  if (humiditeDirect) {
+    const dest = departementFallback(humiditeDirect[1]);
+    if (dest) return dest;
+  }
+
+  // Quartiers de Toulouse : 10 pages à ~204 mots, ~70 % de boilerplate, en
+  // noindex depuis juillet. Le hub part avec ses enfants — un hub qui ne liste
+  // plus rien est une page vide. Le contenu local propre est versé dans
+  // /expert-fissures-toulouse-31 (commit séparé).
+  if (/^\/quartiers(\/[^\/]+)?\/?$/.test(pathname)) {
+    return '/expert-fissures-toulouse-31';
+  }
+
   // /villes/{ville} → fissures (la page villes/* parle des deux mais l'intention SEO
   //  dominante en français est "expert fissures {ville}").
   const villesMatch = pathname.match(/^\/villes\/([^\/]+)\/?$/);
   if (villesMatch && villeSet.has(villesMatch[1])) {
-    return fissureCanonical(villesMatch[1]);
+    return departementFallback(villesMatch[1]) ?? fissureCanonical(villesMatch[1]);
   }
 
   // /agrafage-fissures/{ville} → fissures (l'agrafage est une technique parmi d'autres,
   //  pas un service distinct côté intention de recherche).
   const agrafageMatch = pathname.match(/^\/agrafage-fissures\/([^\/]+)\/?$/);
   if (agrafageMatch && villeSet.has(agrafageMatch[1])) {
-    return fissureCanonical(agrafageMatch[1]);
+    return departementFallback(agrafageMatch[1]) ?? fissureCanonical(agrafageMatch[1]);
   }
 
   // /traitement-humidite/{ville} → humidité (idem, traitement = technique).
   const traitementMatch = pathname.match(/^\/traitement-humidite\/([^\/]+)\/?$/);
   if (traitementMatch && villeSet.has(traitementMatch[1])) {
-    return humiditeCanonical(traitementMatch[1]);
+    return departementFallback(traitementMatch[1]) ?? humiditeCanonical(traitementMatch[1]);
   }
 
   return null;

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { isVillePrioritaire } from '@/app/data/villes-prioritaires';
 import Link from 'next/link';
 import { Phone, MapPin, CheckCircle, ArrowRight, Shield, Award, Clock } from 'lucide-react';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
@@ -6,6 +7,21 @@ import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
+
+
+/**
+ * Destination finale d'un lien commune (LOT 3bis, 2026-08).
+ *
+ * Les liens pointaient vers /villes/{slug}, redirigé en 301 depuis juin — 28
+ * liens internes vers une URL intermédiaire. On pointe désormais la canonique :
+ * la page ville si la commune est prioritaire, sinon `null` (elle est couverte
+ * par cette page même, on n'affiche pas de lien vers soi).
+ */
+function lienCommune(slug: string): string | null {
+  if (!isVillePrioritaire(slug)) return null;
+  if (slug === 'toulouse') return '/expert-fissures-toulouse-31';
+  return `/expert-fissures/${slug}`;
+}
 
 export const metadata: Metadata = {
   title: 'Expert Fissures & Humidité Haute-Garonne 31 · Rapport 3-5 jours',
@@ -291,7 +307,7 @@ export default function HauteGaronnePage() {
             {villesPrincipales.map((ville) => (
               <Link
                 key={ville.slug}
-                href={`/villes/${ville.slug}`}
+                href={lienCommune(ville.slug) ?? `/departements/haute-garonne`}
                 className="group p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all border border-ipb-rule hover:border-ipb-rule"
               >
                 <div className="flex items-start justify-between mb-4">
@@ -329,15 +345,27 @@ export default function HauteGaronnePage() {
 
           <h3 className="text-xl font-bold text-ipb-text mb-6">Autres communes desservies</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
-            {villesSecondaires.map((ville) => (
-              <Link
-                key={ville.slug}
-                href={`/villes/${ville.slug}`}
-                className="text-sm text-ipb-muted hover:text-ipb-orange transition-colors p-3 bg-ipb-cream rounded-lg hover:bg-ipb-stone"
-              >
-                {ville.nom}
-              </Link>
-            ))}
+            {villesSecondaires.map((ville) => {
+              const href = lienCommune(ville.slug);
+              // Communes desservies sans page dédiée : texte simple. Un lien vers
+              // la page courante ne mène nulle part et n'apporte rien.
+              return href ? (
+                <Link
+                  key={ville.slug}
+                  href={href}
+                  className="text-sm text-ipb-muted hover:text-ipb-orange transition-colors p-3 bg-ipb-cream rounded-lg hover:bg-ipb-stone"
+                >
+                  {ville.nom}
+                </Link>
+              ) : (
+                <span
+                  key={ville.slug}
+                  className="text-sm text-ipb-muted p-3 bg-ipb-cream rounded-lg"
+                >
+                  {ville.nom}
+                </span>
+              );
+            })}
           </div>
         </div>
 

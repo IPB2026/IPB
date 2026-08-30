@@ -16,7 +16,6 @@ import { BackButton } from '@/components/ui/BackButton';
  *  - /expert-fissures*       → /expertise/fissures
  *  - /expert-mur-porteur*    → /expertise/mur-porteur
  *  - /expert-humidite*       → /expertise/humidite
- *  - /quartiers/[quartier]   → /quartiers
  *  - /departements/[dept]    → /departements
  *  - /villes/[ville]         → /
  *  - /partenaires/*          → /partenaires
@@ -45,9 +44,6 @@ function getBackContext(pathname: string | null): { href: string; label: string 
   }
   if (pathname.startsWith('/expert-humidite')) {
     return { href: '/expertise/humidite', label: "Retour à l'expertise humidité" };
-  }
-  if (pathname.startsWith('/quartiers/') && pathname !== '/quartiers') {
-    return { href: '/quartiers', label: 'Retour aux quartiers' };
   }
   if (pathname.startsWith('/departements/') && pathname !== '/departements') {
     return { href: '/departements', label: 'Retour aux départements' };

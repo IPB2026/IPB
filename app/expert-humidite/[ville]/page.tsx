@@ -6,7 +6,9 @@ import { isVillePrioritaire } from '@/app/data/villes-prioritaires';
 import { VilleBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export async function generateStaticParams() {
-  return villeSlugs.map((ville) => ({ ville }));
+  // LOT 3bis : les villes non prioritaires sont redirigées vers leur page
+  // département par le middleware — inutile de les prérendre.
+  return villeSlugs.filter(isVillePrioritaire).map((ville) => ({ ville }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ ville: string }> }): Promise<Metadata> {
