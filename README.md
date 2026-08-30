@@ -23,6 +23,17 @@ npm run build
 npm start
 ```
 
+> **Prérequis après un `git pull`.** Si le build échoue sur une erreur de types
+> Prisma (par exemple `'leadId' does not exist in type 'FactureSelect'`), le
+> client Prisma est désynchronisé du schéma. Régénérez-le :
+>
+> ```bash
+> npx prisma generate
+> ```
+>
+> `npm install` le fait automatiquement (script `postinstall`), mais pas un
+> simple `git pull` qui modifie `prisma/schema.prisma`.
+
 ## Structure du Projet
 
 - `app/` - Pages et routes Next.js

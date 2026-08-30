@@ -10,7 +10,6 @@
  */
 
 import { villeSlugs } from '../app/data/villes';
-import { problemSlugs } from '../app/data/problems';
 import { quartierSlugs } from '../app/data/quartiers';
 import { blogPostsSlugs } from '../app/data/blog';
 
@@ -106,11 +105,6 @@ function generateAllUrls(): string[] {
     urls.push(`${SITE_URL}/blog/${slug}`);
   });
 
-  // Pages problèmes
-  problemSlugs.forEach(slug => {
-    urls.push(`${SITE_URL}/problemes/${slug}`);
-  });
-
   // Pages quartiers
   quartierSlugs.forEach(quartier => {
     urls.push(`${SITE_URL}/quartiers/${quartier}`);
@@ -169,7 +163,6 @@ async function main() {
   console.log(`   - Pages villes: ${villeSlugs.length}`);
   console.log(`   - Pages services par ville: ${villeSlugs.length * 2}`);
   console.log(`   - Articles blog: ${blogPostsSlugs.length}`);
-  console.log(`   - Pages problèmes: ${problemSlugs.length}`);
   console.log(`   - Pages quartiers: ${quartierSlugs.length}`);
 
   // Soumettre par lots de 100 URLs (meilleure pratique)

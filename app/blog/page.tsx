@@ -176,12 +176,15 @@ export default function BlogPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
             {[
-              { href: '/problemes/fissure-verticale-mur-porteur', label: 'Fissure verticale sur mur porteur' },
-              { href: '/problemes/fissure-escalier-que-faire', label: 'Fissure en escalier' },
-              { href: '/problemes/portes-qui-coincent-fissures', label: 'Portes qui coincent + fissures' },
-              { href: '/problemes/humidite-murs-peinture-qui-cloque', label: 'Peinture qui cloque' },
-              { href: '/problemes/condensation-ou-remontees-capillaires', label: 'Condensation ou remontées capillaires' },
-              { href: '/problemes/moisissures-sante', label: 'Moisissures et santé' },
+              // Libellés inchangés (symptômes, cohérents avec le titre de section) ;
+              // seules les destinations changent : le silo /problemes/ est redirigé
+              // en 301 vers les pages canoniques (2026-08).
+              { href: '/blog/lire-fissures-verticale-horizontale-oblique', label: 'Fissure verticale sur mur porteur' },
+              { href: '/blog/fissures-escalier-tassement-differentiel', label: 'Fissure en escalier' },
+              { href: '/blog/fissure-ouverture-porte-fenetre', label: 'Portes qui coincent + fissures' },
+              { href: '/blog/humidite-mur-chambre-causes-solutions', label: 'Peinture qui cloque' },
+              { href: '/blog/condensation-ou-infiltration', label: 'Condensation ou remontées capillaires' },
+              { href: '/moisissures-maison-sante', label: 'Moisissures et santé' },
             ].map(({ href, label }) => (
               <Link
                 key={href}

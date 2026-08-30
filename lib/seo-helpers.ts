@@ -67,7 +67,7 @@ export function getContextualLinks(currentSlug: string, keywords: string[]): Arr
       { text: 'agrafage de fissures', url: '/expertise/fissures' },
       { text: 'expertise fissures Toulouse', url: '/villes/toulouse' },
       { text: 'fissures en escalier', url: '/blog/fissures-escalier-tassement-differentiel' },
-      { text: 'fissure mur porteur', url: '/problemes/fissure-verticale-mur-porteur' },
+      { text: 'lire une fissure verticale ou oblique', url: '/blog/lire-fissures-verticale-horizontale-oblique' },
       { text: 'prix d\'une maison fissurée', url: '/blog/prix-maison-fissuree' }
     ],
     'humidite': [
@@ -96,11 +96,10 @@ export function getContextualLinks(currentSlug: string, keywords: string[]): Arr
       { text: 'traitement salpêtre Toulouse', url: '/blog/salpetre-toulouse-traitement-definitif' },
       { text: 'remontées capillaires', url: '/blog/humidite-remontee-capillaire-solution' },
       { text: 'injection résine', url: '/blog/traitement-humidite-injection-resine' },
-      { text: 'poudre blanche mur', url: '/problemes/salpetre-poudre-blanche-mur' }
+      { text: 'poudre blanche sur le mur', url: '/blog/humidite-salpetre-traitement' }
     ],
     'merule': [
       { text: 'mérule danger maison', url: '/blog/merule-champignon-maison-danger' },
-      { text: 'champignon bois', url: '/problemes/merule-champignon-bois-maison' },
       { text: 'traitement humidité', url: '/expertise/humidite' }
     ],
     'champignon': [

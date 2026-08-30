@@ -2,7 +2,6 @@ import { MetadataRoute } from 'next';
 import { blogPostsList } from '@/app/data/blog';
 import { villeSlugs } from '@/app/data/villes';
 import { isVillePrioritaire } from '@/app/data/villes-prioritaires';
-import { problemPages } from '@/app/data/problems';
 import { quartierSlugs } from '@/app/data/quartiers';
 
 // ═══════════════════════════════════════════════════════════════
@@ -408,8 +407,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...departementPages, 
     ...expertFissuresPages,
     ...expertHumiditePages,
-    // problemesPages et quartiersPages retirés : pages passées en noindex,follow
-    // (élagage 2e vague, audit 2026-07) — un sitemap ne liste pas de noindex.
+    // quartiersPages retiré : pages en noindex,follow (élagage 2026-07) — un
+    // sitemap ne liste pas de noindex. Le silo /problemes/ n'existe plus :
+    // les 13 URL sont redirigées 301 (next.config.js, 2026-08).
     ...blogPages,
   ];
 }

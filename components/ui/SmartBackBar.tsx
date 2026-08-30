@@ -12,7 +12,6 @@ import { BackButton } from '@/components/ui/BackButton';
  *
  * Logique de routage retour :
  *  - /blog/[slug]            → /blog
- *  - /problemes/[slug]       → /blog
  *  - /actualites/*           → /blog
  *  - /expert-fissures*       → /expertise/fissures
  *  - /expert-mur-porteur*    → /expertise/mur-porteur
@@ -36,9 +35,6 @@ function getBackContext(pathname: string | null): { href: string; label: string 
 
   // Routes spécifiques (ordre important : du plus spécifique au plus large)
   if (pathname.startsWith('/blog/') && pathname !== '/blog') {
-    return { href: '/blog', label: 'Retour au blog' };
-  }
-  if (pathname.startsWith('/problemes/')) {
     return { href: '/blog', label: 'Retour au blog' };
   }
   if (pathname.startsWith('/actualites/')) {

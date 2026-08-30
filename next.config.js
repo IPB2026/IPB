@@ -116,6 +116,29 @@ const nextConfig = {
       // Refonte V3 (2026-07) — page « notre expert » renommée « institut » (le singulier
       // « notre expert » contredit le modèle réseau). 301 pour préserver le SEO E-E-A-T.
       { source: '/notre-expert', destination: '/institut', permanent: true },
+      // ── Silo /problemes/ démantelé (2026-08) — 13 pages passées en noindex lors
+      //    de l'élagage 2026-07 (~88 % de recouvrement : même corps de texte pour
+      //    les 13 slugs, seuls h1/excerpt changeaient). Le noindex les faisait
+      //    disparaître sans transmettre leur capital : /problemes/merule-champignon-bois-maison
+      //    se positionnait encore sur ~5 700 de volume mensuel cumulé six semaines
+      //    après. Une 301 récupère ce capital, un noindex le jette.
+      //    La route et app/data/problems.ts sont supprimées dans le même commit.
+      { source: '/problemes/merule-champignon-bois-maison', destination: '/blog/merule-champignon-maison-danger', permanent: true },
+      { source: '/problemes/salpetre-mur', destination: '/blog/humidite-salpetre-traitement', permanent: true },
+      { source: '/problemes/salpetre-poudre-blanche-mur', destination: '/blog/humidite-salpetre-traitement', permanent: true },
+      { source: '/problemes/moisissures-sante', destination: '/moisissures-maison-sante', permanent: true },
+      { source: '/problemes/humidite-murs-peinture-qui-cloque', destination: '/blog/humidite-mur-chambre-causes-solutions', permanent: true },
+      { source: '/problemes/condensation-ou-remontees-capillaires', destination: '/blog/condensation-ou-infiltration', permanent: true },
+      { source: '/problemes/fissure-verticale-mur-porteur', destination: '/blog/lire-fissures-verticale-horizontale-oblique', permanent: true },
+      { source: '/problemes/fissure-escalier-que-faire', destination: '/blog/fissures-escalier-tassement-differentiel', permanent: true },
+      { source: '/problemes/portes-qui-coincent-fissures', destination: '/blog/fissure-ouverture-porte-fenetre', permanent: true },
+      { source: '/problemes/fissure-apres-secheresse', destination: '/expertise/retrait-gonflement-argiles', permanent: true },
+      { source: '/problemes/revente-maison-fissuree', destination: '/blog/revente-maison-fissuree', permanent: true },
+      { source: '/problemes/humidite-cave', destination: '/blog/humidite-cave-sous-sol', permanent: true },
+      { source: '/problemes/odeur-humidite-maison', destination: '/moisissures-maison-sante', permanent: true },
+      // Filet : tout autre /problemes/* (aucun n'existe, mais un backlink ou un
+      // vieux lien externe ne doit pas tomber en 404) → hub blog.
+      { source: '/problemes/:slug*', destination: '/blog', permanent: true },
     ];
   },
 
