@@ -2773,6 +2773,13 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p><strong>Important</strong> : Un rapport de <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic professionnel</a> constitue une pièce maîtresse du dossier. Il prouve objectivement la cause structurelle du problème et la responsabilité du propriétaire.</p>
 
+      <h2>Questions fréquentes sur le salpêtre</h2>
+      <h3>Le salpêtre est-il dangereux pour la santé ?</h3>
+      <p>Le salpêtre lui-même — du nitrate de potassium — n'est pas toxique au contact. Ce qu'il signale l'est davantage : sa présence indique un taux d'humidité anormalement élevé, et c'est cette humidité chronique qui pose un problème sanitaire. L'Organisation mondiale de la santé associe les logements humides à une hausse du risque d'asthme et de rhinite allergique, les enfants et les personnes déjà asthmatiques étant les plus exposés. Le salpêtre n'est donc pas à traiter comme une tache, mais comme un signal.</p>
+      <h3>Combien de temps faut-il pour que le mur sèche après le traitement ?</h3>
+      <p>Le mur ne sèche pas du jour au lendemain, et c'est normal. Pendant le premier mois, la résine polymérise et forme la barrière : les remontées cessent, sans rien de visible. Du deuxième au quatrième mois, l'humidité déjà présente dans la maçonnerie s'évapore — un blanchiment de surface peut apparaître, c'est le sel qui migre. Comptez environ un mois de séchage par centimètre d'épaisseur de mur. Refaire les enduits trop tôt est l'erreur classique : elle emprisonne l'humidité résiduelle.</p>
+      <h3>Le salpêtre en copropriété, qui doit payer ?</h3>
+      <p>Cela dépend de l'origine du désordre. Si elle se situe dans les parties communes — façade, fondations, cave commune —, c'est au syndic d'organiser les travaux, financés par le budget de la copropriété. Si le problème est circonscrit aux murs privatifs d'un lot, il revient au propriétaire, sauf s'il est démontré que la cause vient des parties communes. Dans un logement loué, la charge revient au bailleur. C'est précisément ce que tranche un rapport de diagnostic : il désigne l'origine, donc le responsable.</p>
       <h2>Le salpêtre : un problème qui ne se règle pas tout seul</h2>
       
       <p>Le salpêtre est le symptôme visible d'un problème invisible : l'eau qui remonte du sol. Gratter, peindre, déshumidifier... tout ça masque temporairement, mais ne résout rien.</p>
@@ -7298,6 +7305,10 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <p class="font-bold text-lg text-slate-900 my-6">Sans diagnostic structurel, c'est votre parole contre celle de l'acheteur. Avec, c'est un document signé par un expert opposable face à un juge.</p>
+
+      <h2>Le regard de la banque de l'acquéreur</h2>
+      <p>Un point que les vendeurs anticipent rarement : l'acheteur n'est pas seul à examiner le bien. Sa banque le fait aussi. Avant d'accorder un prêt, l'établissement fait généralement expertiser le logement qui sert de garantie. Si cet expert relève des fissures dont l'origine n'est pas établie, le dossier se complique — le financement peut être conditionné à des travaux, minoré, ou refusé.</p>
+      <p>C'est un point de bascule fréquent : la vente n'échoue pas sur le prix, elle échoue sur le financement. Un rapport d'expertise établi <em>avant</em> la mise en vente désamorce cette situation, parce qu'il répond par écrit à la seule question que se pose la banque — ce désordre est-il évolutif, et que coûte sa reprise. Un bien vendu sans ce document reste sensiblement plus longtemps sur le marché, et sa négociation part de l'inquiétude plutôt que d'un chiffrage.</p>
 
       <h2>Combien coûte une expertise structurelle avant vente ?</h2>
 
