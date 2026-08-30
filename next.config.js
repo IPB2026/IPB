@@ -136,9 +136,11 @@ const nextConfig = {
       { source: '/problemes/revente-maison-fissuree', destination: '/blog/revente-maison-fissuree', permanent: true },
       { source: '/problemes/humidite-cave', destination: '/blog/humidite-cave-sous-sol', permanent: true },
       { source: '/problemes/odeur-humidite-maison', destination: '/moisissures-maison-sante', permanent: true },
-      // Filet : tout autre /problemes/* (aucun n'existe, mais un backlink ou un
-      // vieux lien externe ne doit pas tomber en 404) → hub blog.
-      { source: '/problemes/:slug*', destination: '/blog', permanent: true },
+      // Pas de catch-all /problemes/:slug* : rediriger des URL inconnues vers un
+      // hub générique est requalifié en soft 404 par Google, qui finit par
+      // ignorer la redirection. Les 13 slugs ayant existé sont couverts
+      // nommément ci-dessus ; tout autre slug doit répondre 404 — c'est le
+      // signal correct, et app/not-found.tsx oriente déjà l'utilisateur.
     ];
   },
 
