@@ -37,6 +37,28 @@ describe('SEO Helpers', () => {
 
       expect(Array.isArray(faqs)).toBe(true);
     });
+
+    // Non-régression : un <h3> qui ne se termine pas par « ? » ne doit pas
+    // faire déborder l'extraction jusqu'au prochain « ? » de l'article. Le
+    // pattern glouton produisait des « questions » de plusieurs milliers de
+    // caractères, balises comprises, et masquait les vraies FAQ situées après.
+    it('ne laisse pas un h3 sans point d\'interrogation avaler le reste de l\'article', () => {
+      const content = `
+        <h3>Un titre de section sans interrogation</h3>
+        <p>Du corps d'article, avec <strong>du balisage</strong>.</p>
+        <h2>Une autre section</h2>
+        <p>Encore du corps.</p>
+        <h3>La vraie question posée ici ?</h3>
+        <p>La vraie réponse.</p>
+      `;
+
+      const faqs = extractFAQsFromContent(content);
+
+      expect(faqs).toHaveLength(1);
+      expect(faqs[0].question).toBe('La vraie question posée ici ?');
+      expect(faqs[0].answer).toBe('La vraie réponse.');
+      expect(faqs[0].question.length).toBeLessThan(200);
+    });
   });
 
   describe('generateFAQSchema', () => {

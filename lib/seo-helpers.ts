@@ -42,7 +42,15 @@ export function extractFAQsFromContent(content: string): FAQItem[] {
   const faqs: FAQItem[] = [];
   
   // Pattern : <h3>Question ?</h3> suivi de <p>Réponse</p>
-  const h3Regex = /<h3[^>]*>([\s\S]*?\?)<\/h3>\s*<p[^>]*>([\s\S]*?)<\/p>/g;
+  //
+  // `[^<]` sur la question est essentiel : avec `[\s\S]*?`, un <h3> qui ne se
+  // termine PAS par « ? » ne stoppait pas le moteur — il continuait à travers
+  // les balises jusqu'au prochain « ?</h3> », en avalant tout le corps de
+  // l'article. Le FAQPage envoyé à Google contenait alors des « questions » de
+  // plusieurs milliers de caractères, balises comprises (26 articles sur 26
+  // concernés, la pire à 15 196 caractères), et masquait au passage les vraies
+  // FAQ situées après. Une question ne traverse jamais une balise.
+  const h3Regex = /<h3[^>]*>([^<]{3,200}\?)<\/h3>\s*<p[^>]*>([\s\S]*?)<\/p>/g;
   let match;
   
   while ((match = h3Regex.exec(content)) !== null) {
