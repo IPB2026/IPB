@@ -269,7 +269,7 @@ export default function SalpetrePage() {
             {[
               { href: '/remontees-capillaires-traitement', icon: '💧', title: 'Remontées capillaires', desc: 'La cause du salpêtre' },
               { href: '/moisissures-maison-sante', icon: '🦠', title: 'Moisissures', desc: 'Risques santé' },
-              { href: '/cave-humide-solutions', icon: '🏠', title: 'Cave humide', desc: 'Solutions cuvelage' },
+              { href: '/blog/humidite-cave-sous-sol', icon: '🏠', title: 'Cave humide', desc: 'Solutions cuvelage' },
               { href: '/vmi-ventilation-insufflation', icon: '💨', title: 'VMI', desc: 'Ventilation' },
               { href: '/expertise/humidite', icon: '📋', title: 'Guide complet humidité', desc: 'Toutes nos solutions' },
               { href: '/expertise/fissures', icon: '🧱', title: 'Problème de fissures ?', desc: 'Diagnostic et agrafage' },

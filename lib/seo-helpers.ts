@@ -75,7 +75,7 @@ export function getContextualLinks(currentSlug: string, keywords: string[]): Arr
       { text: 'injection résine', url: '/blog/traitement-humidite-injection-resine' },
       { text: 'diagnostic humidité', url: '/diagnostic' },
       { text: 'mérule danger', url: '/blog/merule-champignon-maison-danger' },
-      { text: 'salpêtre traitement', url: '/blog/salpetre-toulouse-traitement-definitif' }
+      { text: 'salpêtre traitement', url: '/salpetre-mur-traitement' }
     ],
     'catastrophe naturelle': [
       { text: 'démarches CAT-NAT sécheresse', url: '/blog/catastrophe-naturelle-secheresse-demarches-indemnisation' },
@@ -93,7 +93,7 @@ export function getContextualLinks(currentSlug: string, keywords: string[]): Arr
       { text: 'agrafage Toulouse', url: '/expertise/fissures' }
     ],
     'salpetre': [
-      { text: 'traitement salpêtre Toulouse', url: '/blog/salpetre-toulouse-traitement-definitif' },
+      { text: 'traitement salpêtre Toulouse', url: '/salpetre-mur-traitement' },
       { text: 'remontées capillaires', url: '/blog/humidite-remontee-capillaire-solution' },
       { text: 'injection résine', url: '/blog/traitement-humidite-injection-resine' },
       { text: 'poudre blanche sur le mur', url: '/blog/humidite-salpetre-traitement' }

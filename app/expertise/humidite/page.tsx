@@ -368,18 +368,18 @@ export default function HumiditePage() {
                 {
                   titre: "Comprendre l'humidité",
                   links: [
-                    { href: '/remontee-capillaire-solution', label: 'Remontées capillaires : solution' },
+                    { href: '/blog/humidite-remontee-capillaire-solution', label: 'Remontées capillaires : solution' },
                     { href: '/salpetre-mur-traitement', label: 'Salpêtre : traitement définitif' },
                     { href: '/moisissures-maison-sante', label: 'Moisissures & santé' },
-                    { href: '/cave-humide-solutions', label: 'Cave humide : solutions' },
-                    { href: '/condensation-ou-infiltration', label: 'Condensation ou infiltration ?' },
+                    { href: '/blog/humidite-cave-sous-sol', label: 'Cave humide : solutions' },
+                    { href: '/blog/condensation-ou-infiltration', label: 'Condensation ou infiltration ?' },
                   ],
                 },
                 {
                   titre: 'Nos analyses',
                   links: [
                     { href: '/blog/humidite-remontee-capillaire-solution', label: 'Traiter les remontées capillaires' },
-                    { href: '/blog/salpetre-toulouse-traitement-definitif', label: 'En finir avec le salpêtre' },
+                    { href: '/salpetre-mur-traitement', label: 'En finir avec le salpêtre' },
                     { href: '/blog/ventilation-humidite-condensation', label: 'Ventilation & condensation' },
                     { href: '/expertise-avant-achat-immobilier-toulouse', label: "Un doute avant un achat ? L'inspection avant achat" },
                     { href: '/lexique', label: 'Lexique de la pathologie du bâtiment' },

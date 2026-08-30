@@ -68,7 +68,7 @@ const situations = [
   {
     titre: 'Vous vendez avec des fissures',
     desc: "Un acheteur s'inquiète, une visite annulée, un compromis suspendu : le rapport qualifie précisément les désordres et sécurise la vente.",
-    href: '/vendre-bien-avec-fissures',
+    href: '/diagnostic-avant-vente',
     cta: 'Voir la page fissures',
   },
   {

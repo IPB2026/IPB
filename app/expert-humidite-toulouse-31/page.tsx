@@ -215,10 +215,10 @@ export default function ExpertHumiditeToulouse31Page() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { href: '/remontee-capillaire-solution', icon: '💧', title: 'Remontées capillaires', desc: 'Humidité qui monte du sol dans les murs' },
+              { href: '/blog/humidite-remontee-capillaire-solution', icon: '💧', title: 'Remontées capillaires', desc: 'Humidité qui monte du sol dans les murs' },
               { href: '/salpetre-mur-traitement', icon: '🧂', title: 'Salpêtre', desc: 'Dépôts blancs sur les murs humides' },
               { href: '/moisissures-maison-sante', icon: '🍄', title: 'Moisissures', desc: 'Champignons sur murs et plafonds' },
-              { href: '/condensation-ou-infiltration', icon: '🏠', title: 'Cave humide', desc: 'Infiltrations et condensation en sous-sol' },
+              { href: '/blog/condensation-ou-infiltration', icon: '🏠', title: 'Cave humide', desc: 'Infiltrations et condensation en sous-sol' },
             ].map((item, i) => (
               <Link key={i} href={item.href} className="group bg-white rounded-2xl p-6 shadow-lg border border-ipb-rule hover:border-blue-300 hover:shadow-xl transition-all">
                 <div className="text-4xl mb-4">{item.icon}</div>
@@ -437,7 +437,7 @@ export default function ExpertHumiditeToulouse31Page() {
               <h3 className="text-lg font-bold text-ipb-text group-hover:text-blue-600 mb-2">Moisissures & Santé</h3>
               <p className="text-ipb-muted text-sm">Risques pour la santé et traitement efficace des moisissures.</p>
             </Link>
-            <Link href="/cave-humide-solutions" className="group bg-ipb-cream hover:bg-blue-50 border border-ipb-rule hover:border-blue-200 rounded-2xl p-6 transition-all">
+            <Link href="/blog/humidite-cave-sous-sol" className="group bg-ipb-cream hover:bg-blue-50 border border-ipb-rule hover:border-blue-200 rounded-2xl p-6 transition-all">
               <div className="text-3xl mb-3">🏚️</div>
               <h3 className="text-lg font-bold text-ipb-text group-hover:text-blue-600 mb-2">Cave humide</h3>
               <p className="text-ipb-muted text-sm">Cuvelage, drainage, pompe : solutions pour caves et sous-sols.</p>
@@ -452,7 +452,7 @@ export default function ExpertHumiditeToulouse31Page() {
               <h3 className="text-lg font-bold text-ipb-text group-hover:text-blue-600 mb-2">Salpêtre</h3>
               <p className="text-ipb-muted text-sm">Poudre blanche sur vos murs ? Causes et traitement définitif.</p>
             </Link>
-            <Link href="/condensation-ou-infiltration" className="group bg-ipb-cream hover:bg-blue-50 border border-ipb-rule hover:border-blue-200 rounded-2xl p-6 transition-all">
+            <Link href="/blog/condensation-ou-infiltration" className="group bg-ipb-cream hover:bg-blue-50 border border-ipb-rule hover:border-blue-200 rounded-2xl p-6 transition-all">
               <div className="text-3xl mb-3">🌧️</div>
               <h3 className="text-lg font-bold text-ipb-text group-hover:text-blue-600 mb-2">Condensation vs Infiltration</h3>
               <p className="text-ipb-muted text-sm">Comment différencier et traiter ces deux problèmes.</p>
@@ -544,7 +544,7 @@ export default function ExpertHumiditeToulouse31Page() {
               <h3 className="font-bold text-ipb-text text-[16px] leading-snug mb-3 group-hover:text-ipb-orange transition-colors">Remontées capillaires : diagnostic et traitement</h3>
               <p className="text-[13px] text-ipb-muted leading-relaxed">Causes, signes typiques, et techniques d'arrêt durable (injection résine, drainage).</p>
             </Link>
-            <Link href="/condensation-ou-infiltration" className="group block bg-white border border-ipb-rule rounded-[6px] p-6 hover:border-ipb-orange transition-colors">
+            <Link href="/blog/condensation-ou-infiltration" className="group block bg-white border border-ipb-rule rounded-[6px] p-6 hover:border-ipb-orange transition-colors">
               <div className="text-[11px] uppercase tracking-wider text-ipb-orange font-bold mb-2">Diagnostic</div>
               <h3 className="font-bold text-ipb-text text-[16px] leading-snug mb-3 group-hover:text-ipb-orange transition-colors">Condensation ou infiltration : reconnaître la cause</h3>
               <p className="text-[13px] text-ipb-muted leading-relaxed">Distinguer les deux pathologies pour ne pas se tromper de traitement.</p>

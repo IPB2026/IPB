@@ -126,7 +126,7 @@ const sections: Section[] = [
     links: [
       { href: '/blog/humidite-remontee-capillaire-solution', label: 'Remontées capillaires' },
       { href: '/blog/humidite-salpetre-traitement', label: 'Traitement salpêtre' },
-      { href: '/blog/salpetre-toulouse-traitement-definitif', label: 'Salpêtre Toulouse' },
+      { href: '/salpetre-mur-traitement', label: 'Salpêtre Toulouse' },
       { href: '/blog/merule-champignon-maison-danger', label: 'Mérule : le champignon' },
       { href: '/blog/traitement-humidite-injection-resine', label: 'Injection résine' },
       { href: '/blog/condensation-ou-infiltration', label: 'Condensation ou infiltration' },
@@ -139,7 +139,7 @@ const sections: Section[] = [
     links: [
       { href: '/blog/diagnostic-structurel-maison', label: 'Diagnostic structurel' },
       { href: '/blog/garantie-decennale-travaux-structure', label: 'Garantie décennale' },
-      { href: '/blog/revente-maison-fissuree', label: 'Revente maison fissurée' },
+      { href: '/blog/prix-maison-fissuree', label: 'Revente maison fissurée' },
       {
         href: '/blog/catastrophe-naturelle-secheresse-demarches-indemnisation',
         label: 'CAT-NAT sécheresse : démarches',

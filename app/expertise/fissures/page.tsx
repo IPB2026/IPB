@@ -18,7 +18,7 @@ const fissuresPersonas: PersonaCard[] = [
     label: 'Vendeur',
     titre: 'Vous vendez un bien comportant des fissures',
     desc: "Un acheteur s'inquiète, une visite annulée, un compromis suspendu. Notre rapport sécurise la transaction et présente les éléments factuels au notaire.",
-    href: '/vendre-bien-avec-fissures',
+    href: '/diagnostic-avant-vente',
     cta: 'Voir la page vendeur',
   },
   {
@@ -517,10 +517,10 @@ export default function FissuresPage() {
                 {
                   titre: 'Comprendre vos fissures',
                   links: [
-                    { href: '/fissure-en-escalier-causes', label: 'Fissures en escalier : causes et dangers' },
-                    { href: '/fissure-horizontale-danger', label: 'Fissures horizontales : risques structurels' },
-                    { href: '/microfissure-quand-sinquieter', label: "Microfissures : quand s'inquiéter ?" },
-                    { href: '/fissure-fondation-maison', label: 'Fissures de fondation' },
+                    { href: '/blog/fissures-escalier-tassement-differentiel', label: 'Fissures en escalier : causes et dangers' },
+                    { href: '/blog/lire-fissures-verticale-horizontale-oblique', label: 'Fissures horizontales : risques structurels' },
+                    { href: '/blog/evaluer-gravite-fissure-maison', label: "Microfissures : quand s'inquiéter ?" },
+                    { href: '/blog/fondations-maison-ancienne-renforcement', label: 'Fissures de fondation' },
                     { href: '/secheresse-fissures-catastrophe-naturelle', label: 'Fissures de sécheresse & catastrophe naturelle' },
                     { href: '/secheresse-fissures-catastrophe-naturelle', label: 'Fissures & sécheresse : indemnisation' },
                   ],

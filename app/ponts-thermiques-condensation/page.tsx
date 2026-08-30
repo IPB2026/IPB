@@ -225,7 +225,7 @@ export default function PontsThermiquesPage() {
           <div className="grid md:grid-cols-4 gap-6">
             {[
               { href: '/vmi-ventilation-insufflation', icon: '💨', title: 'VMI', desc: 'Solution anti-condensation' },
-              { href: '/condensation-ou-infiltration', icon: '❓', title: 'Condensation ?', desc: 'Comment distinguer' },
+              { href: '/blog/condensation-ou-infiltration', icon: '❓', title: 'Condensation ?', desc: 'Comment distinguer' },
               { href: '/moisissures-maison-sante', icon: '🦠', title: 'Moisissures', desc: 'Risques sante' },
               { href: '/remontees-capillaires-traitement', icon: '💧', title: 'Remontees capillaires', desc: 'Autre cause humidite' },
             ].map((item, index) => (

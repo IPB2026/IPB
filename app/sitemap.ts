@@ -20,23 +20,19 @@ import { quartierSlugs } from '@/app/data/quartiers';
 // ═══════════════════════════════════════════════════════════════
 
 // 🎯 Pages SPOKE Fissures (Topic Clusters - Hub & Spoke)
+// LOT 2 (2026-08) : 4 spokes retirés — consolidés en 301 vers leurs piliers
+// (cannibalisation). Ne reste que ce qui porte une intention propre.
 const spokeFissuresPages = [
-  'fissure-en-escalier-causes',
-  'fissure-horizontale-danger',
-  'microfissure-quand-sinquieter',
   // 'fissure-secheresse-indemnisation' → 301 vers /secheresse-fissures-catastrophe-naturelle (consolidation audit 2026-07)
-  'fissure-fondation-maison',
   'secheresse-fissures-catastrophe-naturelle',
 ];
 
 // 🎯 Pages SPOKE Humidité (Topic Clusters - Hub & Spoke)
+// LOT 2 (2026-08) : 3 spokes retirés — consolidés en 301 vers leurs piliers.
 const spokeHumiditePages = [
-  'remontee-capillaire-solution',
   'salpetre-mur-traitement',
-  'condensation-ou-infiltration',
   'merule-champignon-traitement',
   'moisissures-maison-sante',
-  'cave-humide-solutions',
   'ponts-thermiques-condensation',
   'remontees-capillaires-traitement',
   'vmi-ventilation-insufflation',
@@ -116,12 +112,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: recentUpdate,
       changeFrequency: 'monthly',
       priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/vendre-bien-avec-fissures`,
-      lastModified: recentUpdate,
-      changeFrequency: 'monthly',
-      priority: 0.85,
     },
     {
       url: `${baseUrl}/diagnostic-avant-vente`,

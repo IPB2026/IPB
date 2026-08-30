@@ -110,7 +110,9 @@ const nextConfig = {
         destination: '/blog/agrafage-vs-micropieux-choix',
         permanent: true,
       },
-      { source: '/revente-maison-fissuree', destination: '/blog/revente-maison-fissuree', permanent: true },
+      // Cible repointée en direct : /blog/revente-maison-fissuree part lui-même en 301
+      // vers /blog/prix-maison-fissuree (LOT 2) — sans ça, chaîne à deux sauts.
+      { source: '/revente-maison-fissuree', destination: '/blog/prix-maison-fissuree', permanent: true },
       // Service mur porteur arrêté — lien historique sans ville → accueil (1 saut, pas de chaîne).
       { source: '/expert-mur-porteur', destination: '/', permanent: true },
       // Refonte V3 (2026-07) — page « notre expert » renommée « institut » (le singulier
@@ -136,6 +138,45 @@ const nextConfig = {
       { source: '/problemes/revente-maison-fissuree', destination: '/blog/revente-maison-fissuree', permanent: true },
       { source: '/problemes/humidite-cave', destination: '/blog/humidite-cave-sous-sol', permanent: true },
       { source: '/problemes/odeur-humidite-maison', destination: '/moisissures-maison-sante', permanent: true },
+      // ── LOT 2 — cannibalisation (2026-08). Chaque sujet garde au plus deux
+      //    pages aux intentions disjointes : un pilier informationnel /blog/ et
+      //    une page service à la racine. Les URL ci-dessous visaient la même
+      //    requête qu'une page mieux dotée ; leur capital part à la canonique.
+      //    Contenu unique fusionné dans la destination (aucune perte).
+
+      // Cluster 2 — salpêtre. La source porte une intention géo-commerciale
+      // (« salpêtre Toulouse ») : sous la règle géographique du cluster 11 elle
+      // revient à la page service, pas au pilier national. Son contenu local
+      // (géologie, quartiers, prix Toulouse) alimente la destination.
+      { source: '/blog/salpetre-toulouse-traitement-definitif', destination: '/salpetre-mur-traitement', permanent: true },
+
+      // Cluster 3 — remontées capillaires
+      { source: '/remontee-capillaire-solution', destination: '/blog/humidite-remontee-capillaire-solution', permanent: true },
+
+      // Cluster 4 — condensation / infiltration
+      { source: '/condensation-ou-infiltration', destination: '/blog/condensation-ou-infiltration', permanent: true },
+
+      // Cluster 5 — cave humide
+      { source: '/cave-humide-solutions', destination: '/blog/humidite-cave-sous-sol', permanent: true },
+
+      // Cluster 7 — fissure en escalier
+      { source: '/fissure-en-escalier-causes', destination: '/blog/fissures-escalier-tassement-differentiel', permanent: true },
+
+      // Cluster 8 — gravité d'une fissure
+      { source: '/microfissure-quand-sinquieter', destination: '/blog/evaluer-gravite-fissure-maison', permanent: true },
+      { source: '/fissure-horizontale-danger', destination: '/blog/lire-fissures-verticale-horizontale-oblique', permanent: true },
+
+      // Cluster 9 — vendre avec fissures. Quatre pages visaient ce parcours ;
+      // « décote et négociation » appartient à /blog/prix-maison-fissuree, dont
+      // c'est le titre exact.
+      { source: '/vendre-bien-avec-fissures', destination: '/diagnostic-avant-vente', permanent: true },
+      { source: '/blog/vendre-maison-fissure-humidite-anticiper', destination: '/blog/diagnostic-structurel-avant-vente-maison', permanent: true },
+      { source: '/blog/revente-maison-fissuree', destination: '/blog/prix-maison-fissuree', permanent: true },
+
+      // Hors cluster — quatre pages couvraient les fondations, dont deux qui se
+      // positionnent. Celle-ci (500 mots, 2 liens entrants après le LOT 2) part
+      // vers la mieux placée, à portée du top 10.
+      { source: '/fissure-fondation-maison', destination: '/blog/fondations-maison-ancienne-renforcement', permanent: true },
       // Pas de catch-all /problemes/:slug* : rediriger des URL inconnues vers un
       // hub générique est requalifié en soft 404 par Google, qui finit par
       // ignorer la redirection. Les 13 slugs ayant existé sont couverts

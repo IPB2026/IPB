@@ -17,23 +17,22 @@ const SITE_URL = 'https://www.ipb-expertise.fr';
 const INDEXNOW_KEY = '3c7f0e731bd5699d57a1a6e9c52c915e';
 
 // Pages spoke
+// ⚠️ DETTE — ces listes sont une COPIE de celles d'app/sitemap.ts et dérivent :
+// 'fissure-secheresse-indemnisation' y figurait encore alors qu'elle redirige
+// depuis juillet 2026, et 7 spokes consolidés au LOT 2 s'y trouvaient aussi.
+// Correctif de fond prévu au LOT 3bis : faire lire app/sitemap.ts comme source
+// unique, pour que le script ne puisse plus soumettre que des URL indexables.
+// En attendant, toute modification du sitemap doit être répercutée ici.
 const spokeFissuresPages = [
-  'fissure-en-escalier-causes',
-  'fissure-horizontale-danger',
-  'microfissure-quand-sinquieter',
-  'fissure-secheresse-indemnisation',
-  'fissure-fondation-maison',
+  'secheresse-fissures-catastrophe-naturelle',
 ];
 
 const spokeHumiditePages = [
   'salpetre-mur-traitement',
-  'remontee-capillaire-solution',
   'remontees-capillaires-traitement',
-  'condensation-ou-infiltration',
   'merule-champignon-traitement',
   'vmi-ventilation-insufflation',
   'moisissures-maison-sante',
-  'cave-humide-solutions',
   'ponts-thermiques-condensation',
 ];
 

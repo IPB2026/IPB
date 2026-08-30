@@ -65,13 +65,10 @@ function getBackContext(pathname: string | null): { href: string; label: string 
   // Pages humidité standalones (slug-based)
   const humidityPages = [
     '/vmi-ventilation-insufflation',
-    '/condensation-ou-infiltration',
     '/moisissures-maison-sante',
     '/salpetre-mur-traitement',
     '/merule-champignon-traitement',
     '/remontees-capillaires-traitement',
-    '/remontee-capillaire-solution',
-    '/cave-humide-solutions',
     '/ponts-thermiques-condensation',
   ];
   if (humidityPages.includes(pathname)) {
@@ -80,10 +77,6 @@ function getBackContext(pathname: string | null): { href: string; label: string 
 
   // Pages fissures standalones
   const fissurePages = [
-    '/microfissure-quand-sinquieter',
-    '/fissure-en-escalier-causes',
-    '/fissure-fondation-maison',
-    '/fissure-horizontale-danger',
     '/secheresse-fissures-catastrophe-naturelle',
     '/agrafage-fissures',
     '/carte-secheresse-occitanie',

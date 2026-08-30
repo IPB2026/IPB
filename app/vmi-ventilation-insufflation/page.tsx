@@ -268,7 +268,7 @@ export default function VMIPage() {
           </h2>
           <div className="grid md:grid-cols-4 gap-6">
             {[
-              { href: '/condensation-ou-infiltration', icon: '❓', title: 'Condensation ?', desc: 'Comment distinguer' },
+              { href: '/blog/condensation-ou-infiltration', icon: '❓', title: 'Condensation ?', desc: 'Comment distinguer' },
               { href: '/moisissures-maison-sante', icon: '🦠', title: 'Moisissures', desc: 'Risques santé' },
               { href: '/ponts-thermiques-condensation', icon: '🌡️', title: 'Ponts thermiques', desc: 'Zones froides' },
               { href: '/remontees-capillaires-traitement', icon: '💧', title: 'Remontées capillaires', desc: 'Autre cause humidité' },

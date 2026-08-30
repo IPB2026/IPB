@@ -349,7 +349,7 @@ export default function MoisissuresSantePage() {
             {[
               { href: '/expertise/humidite', icon: '📋', title: 'Guide complet humidité', desc: 'Toutes nos solutions' },
               { href: '/salpetre-mur-traitement', icon: '🧂', title: 'Salpêtre', desc: 'Causes et traitement' },
-              { href: '/remontee-capillaire-solution', icon: '💧', title: 'Remontées capillaires', desc: 'Solutions durables' },
+              { href: '/blog/humidite-remontee-capillaire-solution', icon: '💧', title: 'Remontées capillaires', desc: 'Solutions durables' },
               { href: '/expertise/fissures', icon: '🧱', title: 'Problème de fissures ?', desc: 'Diagnostic et agrafage' },
             ].map((item, index) => (
               <Link 
