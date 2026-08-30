@@ -20,8 +20,8 @@ export const metadata: Metadata = {
     'tassement différentiel argile',
     'agrafage structurel argile',
     'micropieux RGA',
-    'arrêté catastrophe naturelle sécheresse',
-    'BRGM aléa argile',
+    'sécheresse fissures maison',
+    'sol argileux maison fissures',
   ],
   alternates: {
     canonical:

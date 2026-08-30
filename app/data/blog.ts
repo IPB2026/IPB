@@ -2062,7 +2062,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     category: 'expertise',
     author: "L'institut IPB",
     metaDescription: 'Sol argileux et sécheresse Haute-Garonne : pourquoi les fondations bougent, le cycle retrait-gonflement, Cat-Nat 2022-2023, solutions (agrafage). Expert Toulouse.',
-    keywords: ['sol argileux', 'sécheresse', 'haute-garonne', 'fondations', 'fissures', 'catastrophe naturelle', 'retrait-gonflement'],
+    keywords: ['sécheresse argile haute-garonne', 'sol argileux haute-garonne', 'fissures sécheresse haute-garonne', 'retrait-gonflement haute-garonne', 'communes argileuses haute-garonne', 'cat nat haute-garonne', 'sécheresse maison 31'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
         <p class="font-bold text-orange-900 mb-2">Été 2022-2023 : années record</p>
@@ -4988,8 +4988,8 @@ const blogPosts: { [key: string]: BlogPost } = {
       'fissures sécheresse assurance',
       'sinistre sécheresse démarches',
       'expertise fissures cat nat',
-      'cat nat haute-garonne',
-      'cat nat toulouse',
+      'refus indemnisation sécheresse',
+      'délai déclaration cat nat',
       'retrait gonflement argiles indemnisation'
     ],
     content: `

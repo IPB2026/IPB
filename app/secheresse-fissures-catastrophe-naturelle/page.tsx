@@ -13,13 +13,18 @@ export const metadata: Metadata = {
   title: { absolute: 'Fissures de sécheresse et catastrophe naturelle à Toulouse · IPB' },
   description:
     "Sols argileux, fissures, arrêté CAT-NAT : IPB documente vos désordres, éclaire votre dossier d'indemnisation et coordonne les réparations. Toulouse et Occitanie.",
+  // Règle contraignante (cluster 10) : chaque requête ci-dessous porte un
+  // qualificatif « sécheresse », « cat nat » ou « argile » qui ne peut pas
+  // sauter. Sans lui, la formulation dérive vers « expert fissures Toulouse »,
+  // tenu par /expert-fissures-toulouse-31 en position 2 — la page qui porte
+  // plus de la moitié de l'acquisition non-marque du site. On ne s'en approche pas.
   keywords: [
-    'fissures sécheresse toulouse',
-    'catastrophe naturelle sécheresse haute-garonne',
-    'indemnisation fissures maison',
-    'retrait-gonflement des argiles',
+    'expertise sécheresse toulouse',
+    'expert cat nat toulouse',
+    'expertise cat nat haute-garonne',
+    'contre-expertise sécheresse',
     'déclaration cat nat fissures',
-    'arrêté catastrophe naturelle occitanie',
+    'rapport expertise sécheresse assurance',
   ],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/secheresse-fissures-catastrophe-naturelle',
