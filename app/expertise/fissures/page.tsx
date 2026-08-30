@@ -561,6 +561,14 @@ export default function FissuresPage() {
                     { href: '/zones-intervention', label: "Toutes nos zones d'intervention" },
                   ],
                 },
+                {
+                  titre: 'Acheter ou vendre',
+                  links: [
+                    { href: '/blog/acheter-maison-fissuree', label: 'Acheter une maison fissurée' },
+                    { href: '/blog/diagnostic-structurel-avant-vente-maison', label: 'Diagnostic structurel avant vente' },
+                    { href: '/diagnostic-avant-vente', label: 'Diagnostic avant vente' },
+                  ],
+                },
               ].map((col, ci) => (
                 <RevealOnScroll key={col.titre} delay={ci * 0.08}>
                   <div>

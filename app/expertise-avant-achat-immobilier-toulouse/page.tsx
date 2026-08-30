@@ -563,6 +563,10 @@ export default function ExpertiseAvantAchatPage() {
                 <Link href="/diagnostic-avant-vente" className="text-ipb-muted hover:text-ipb-orange underline underline-offset-2">
                   avant une mise en vente
                 </Link>
+                . Le bien présente déjà des fissures ?{' '}
+                <Link href="/blog/acheter-maison-fissuree" className="text-ipb-muted hover:text-ipb-orange underline underline-offset-2">
+                  Ce qu'il faut vérifier avant d'acheter
+                </Link>
                 .
               </p>
             </div>

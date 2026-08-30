@@ -234,7 +234,7 @@ export default function AriegePage() {
             Nos interventions en Ariège
           </h2>
           <p className="text-lg text-ipb-muted mb-8 max-w-3xl">
-            IPB intervient dans toutes les communes du département, de la plaine aux vallées pyrénéennes.
+            IPB intervient dans toutes les communes du département, de la plaine aux vallées pyrénéennes. Voir aussi le relevé des <Link href="/carte-secheresse-occitanie" className="underline underline-offset-2 hover:no-underline">communes d'Occitanie reconnues en catastrophe naturelle sécheresse</Link>.
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

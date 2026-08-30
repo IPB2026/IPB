@@ -165,7 +165,7 @@ export default function GersPage() {
             Nos interventions dans le Gers
           </h2>
           <p className="text-lg text-ipb-muted mb-8 max-w-3xl">
-            IPB intervient dans toutes les communes du département pour le traitement des fissures structurelles et de l'humidité.
+            IPB intervient dans toutes les communes du département pour le traitement des fissures structurelles et de l'humidité. Voir aussi le relevé des <Link href="/carte-secheresse-occitanie" className="underline underline-offset-2 hover:no-underline">communes d'Occitanie reconnues en catastrophe naturelle sécheresse</Link>.
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

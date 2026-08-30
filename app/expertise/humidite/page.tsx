@@ -373,6 +373,7 @@ export default function HumiditePage() {
                     { href: '/moisissures-maison-sante', label: 'Moisissures & santé' },
                     { href: '/blog/humidite-cave-sous-sol', label: 'Cave humide : solutions' },
                     { href: '/blog/condensation-ou-infiltration', label: 'Condensation ou infiltration ?' },
+                    { href: '/blog/humidite-mur-chambre-causes-solutions', label: 'Humidité sur un mur de chambre' },
                   ],
                 },
                 {

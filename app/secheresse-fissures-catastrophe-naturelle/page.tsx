@@ -400,6 +400,9 @@ export default function SecheresseCatNatPage() {
               <Link href="/expertise/retrait-gonflement-argiles" className="block text-[13px] text-ipb-muted hover:text-ipb-orange">
                 Comprendre le retrait-gonflement des argiles →
               </Link>
+              <Link href="/carte-secheresse-occitanie" className="block text-[13px] text-ipb-muted hover:text-ipb-orange">
+                Communes reconnues CAT-NAT en Occitanie
+              </Link>
               <Link href="/contact" className="block text-[13px] text-ipb-muted hover:text-ipb-orange">
                 Décrire ma situation à l'institut →
               </Link>

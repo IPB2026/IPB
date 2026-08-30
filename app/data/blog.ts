@@ -109,6 +109,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Pour comprendre le bon choix technique, lisez notre comparatif <a href="/blog/agrafage-vs-micropieux-choix">agrafage ou micropieux</a>. Et si la cause est la sécheresse, votre commune est peut-être éligible à une prise en charge : voir les <a href="/secheresse-fissures-catastrophe-naturelle">démarches d'indemnisation CAT-NAT</a>.</p>
 
       <h2 id="vendeur-acheteur">Vendeur ou acheteur : la même pièce maîtresse</h2>
+      <p>Côté acquéreur, les points à contrôler avant de signer sont détaillés dans notre guide <a href="/blog/acheter-maison-fissuree">acheter une maison fissurée</a>.</p>
       <p><strong>Côté vendeur</strong>, cacher une fissure est la pire stratégie : l'acheteur la découvrira (ou son notaire l'exigera), et la vente se renégociera dans l'urgence, à votre désavantage — quand elle ne s'annule pas pour vice caché. Un rapport d'expertise remis spontanément désamorce la négociation et protège le prix. C'est tout l'objet de notre page <a href="/diagnostic-avant-vente">vendre un bien avec fissures</a>.</p>
       <p><strong>Côté acheteur</strong>, faire chiffrer les travaux avant le compromis (ou via une condition suspensive) transforme une peur en argument : vous négociez le montant exact des travaux, pas un pourcentage arbitraire.</p>
 

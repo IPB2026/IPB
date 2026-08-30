@@ -65,13 +65,14 @@ export function getContextualLinks(currentSlug: string, keywords: string[]): Arr
     'fissures': [
       { text: 'diagnostic fissures', url: '/diagnostic' },
       { text: 'agrafage de fissures', url: '/expertise/fissures' },
-      { text: 'expertise fissures Toulouse', url: '/villes/toulouse' },
+      { text: 'fissure sur un mur intérieur', url: '/blog/fissure-mur-interieur-causes-solutions' },
       { text: 'fissures en escalier', url: '/blog/fissures-escalier-tassement-differentiel' },
       { text: 'lire une fissure verticale ou oblique', url: '/blog/lire-fissures-verticale-horizontale-oblique' },
       { text: 'prix d\'une maison fissurée', url: '/blog/prix-maison-fissuree' }
     ],
     'humidite': [
       { text: 'traitement humidité', url: '/expertise/humidite' },
+      { text: 'humidité sur un mur de chambre', url: '/blog/humidite-mur-chambre-causes-solutions' },
       { text: 'injection résine', url: '/blog/traitement-humidite-injection-resine' },
       { text: 'diagnostic humidité', url: '/diagnostic' },
       { text: 'mérule danger', url: '/blog/merule-champignon-maison-danger' },
@@ -79,11 +80,13 @@ export function getContextualLinks(currentSlug: string, keywords: string[]): Arr
     ],
     'catastrophe naturelle': [
       { text: 'démarches CAT-NAT sécheresse', url: '/blog/catastrophe-naturelle-secheresse-demarches-indemnisation' },
+      { text: 'communes reconnues en Occitanie', url: '/carte-secheresse-occitanie' },
       { text: 'indemnisation fissures', url: '/blog/catastrophe-naturelle-secheresse-demarches-indemnisation' },
       { text: 'diagnostic fissures', url: '/diagnostic' }
     ],
     'cat-nat': [
       { text: 'guide CAT-NAT complet', url: '/blog/catastrophe-naturelle-secheresse-demarches-indemnisation' },
+      { text: 'communes reconnues en Occitanie', url: '/carte-secheresse-occitanie' },
       { text: 'fissures sécheresse', url: '/blog/secheresse-argile-haute-garonne' },
       { text: 'diagnostic', url: '/diagnostic' }
     ],
@@ -122,12 +125,13 @@ export function getContextualLinks(currentSlug: string, keywords: string[]): Arr
       { text: 'expert d\'assuré', url: '/blog/expert-batiment-independant-vs-expert-assurance' }
     ],
     'diagnostic': [
+      { text: 'diagnostic avant vente', url: '/blog/diagnostic-structurel-avant-vente-maison' },
       { text: 'diagnostic structurel', url: '/blog/diagnostic-structurel-maison' },
       { text: 'diagnostic', url: '/diagnostic' },
       { text: 'expert fissures', url: '/expertise/fissures' }
     ],
     'toulouse': [
-      { text: 'expert Toulouse', url: '/villes/toulouse' },
+      { text: 'expert fissures Toulouse', url: '/expert-fissures-toulouse-31' },
       { text: 'sol argileux Haute-Garonne', url: '/blog/secheresse-argile-haute-garonne' },
       { text: 'zones d\'intervention', url: '/zones-intervention' },
       { text: 'expert Haute-Garonne', url: '/departements/haute-garonne' }
@@ -143,11 +147,38 @@ export function getContextualLinks(currentSlug: string, keywords: string[]): Arr
     'ariege': [
       { text: 'expert Ariège', url: '/departements/ariege' }
     ],
+    'achat': [
+      { text: 'acheter une maison fissurée', url: '/blog/acheter-maison-fissuree' },
+      { text: 'inspection avant achat', url: '/expertise-avant-achat-immobilier-toulouse' },
+      { text: 'diagnostic fissures avant achat', url: '/blog/diagnostic-fissure-humidite-avant-achat' }
+    ],
+    'acheter': [
+      { text: 'acheter une maison fissurée', url: '/blog/acheter-maison-fissuree' },
+      { text: 'inspection avant achat', url: '/expertise-avant-achat-immobilier-toulouse' }
+    ],
+    'vente': [
+      { text: 'diagnostic structurel avant vente', url: '/blog/diagnostic-structurel-avant-vente-maison' },
+      { text: 'diagnostic avant vente', url: '/diagnostic-avant-vente' },
+      { text: 'prix d\'une maison fissurée', url: '/blog/prix-maison-fissuree' }
+    ],
+    'vendre': [
+      { text: 'diagnostic structurel avant vente', url: '/blog/diagnostic-structurel-avant-vente-maison' },
+      { text: 'diagnostic avant vente', url: '/diagnostic-avant-vente' }
+    ],
+    'secheresse': [
+      { text: 'communes reconnues en Occitanie', url: '/carte-secheresse-occitanie' },
+      { text: 'sécheresse et argile en Haute-Garonne', url: '/blog/secheresse-argile-haute-garonne' }
+    ],
+    'sécheresse': [
+      { text: 'communes reconnues en Occitanie', url: '/carte-secheresse-occitanie' },
+      { text: 'sécheresse et argile en Haute-Garonne', url: '/blog/secheresse-argile-haute-garonne' }
+    ],
     'cave': [
       { text: 'humidité cave', url: '/blog/humidite-cave-sous-sol' },
       { text: 'cuvelage cave', url: '/expertise/humidite' }
     ],
     'moisissure': [
+      { text: 'humidité sur un mur de chambre', url: '/blog/humidite-mur-chambre-causes-solutions' },
       { text: 'condensation ou infiltration', url: '/blog/condensation-ou-infiltration' },
       { text: 'VMC et ventilation', url: '/blog/ventilation-humidite-condensation' }
     ]

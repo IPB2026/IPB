@@ -118,6 +118,9 @@ const sections: Section[] = [
       { href: '/blog/fissure-facade-reboucher-ou-reparer', label: 'Reboucher ou réparer' },
       { href: '/blog/fissure-plafond-que-faire', label: 'Fissures au plafond' },
       { href: '/blog/prix-agrafage-fissures-2026', label: 'Prix agrafage 2026' },
+      { href: '/blog/fissure-mur-interieur-causes-solutions', label: 'Fissure sur un mur intérieur' },
+      { href: '/blog/acheter-maison-fissuree', label: 'Acheter une maison fissurée' },
+      { href: '/blog/diagnostic-structurel-avant-vente-maison', label: 'Diagnostic structurel avant vente' },
     ],
   },
   {
@@ -131,6 +134,7 @@ const sections: Section[] = [
       { href: '/blog/traitement-humidite-injection-resine', label: 'Injection résine' },
       { href: '/blog/condensation-ou-infiltration', label: 'Condensation ou infiltration' },
       { href: '/blog/humidite-cave-sous-sol', label: 'Humidité en cave' },
+      { href: '/blog/humidite-mur-chambre-causes-solutions', label: 'Humidité sur un mur de chambre' },
     ],
   },
   {

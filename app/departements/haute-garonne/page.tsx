@@ -258,7 +258,7 @@ export default function HauteGaronnePage() {
                 </div>
                 <h3 className="text-xl font-bold text-ipb-text mb-3">Sécheresses répétées</h3>
                 <p className="text-ipb-muted">
-                  Depuis 2019, la Haute-Garonne a connu 4 années de sécheresse exceptionnelle. Des milliers de maisons ont développé des fissures structurelles.
+                  Depuis 2019, la Haute-Garonne a connu 4 années de sécheresse exceptionnelle. Des milliers de maisons ont développé des fissures structurelles. Consultez le relevé des <Link href="/carte-secheresse-occitanie" className="underline underline-offset-2 hover:no-underline">communes d'Occitanie reconnues en catastrophe naturelle sécheresse</Link>.
                 </p>
               </div>
 

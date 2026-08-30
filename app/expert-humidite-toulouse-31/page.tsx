@@ -218,7 +218,7 @@ export default function ExpertHumiditeToulouse31Page() {
               { href: '/blog/humidite-remontee-capillaire-solution', icon: '💧', title: 'Remontées capillaires', desc: 'Humidité qui monte du sol dans les murs' },
               { href: '/salpetre-mur-traitement', icon: '🧂', title: 'Salpêtre', desc: 'Dépôts blancs sur les murs humides' },
               { href: '/moisissures-maison-sante', icon: '🍄', title: 'Moisissures', desc: 'Champignons sur murs et plafonds' },
-              { href: '/blog/condensation-ou-infiltration', icon: '🏠', title: 'Cave humide', desc: 'Infiltrations et condensation en sous-sol' },
+              { href: '/blog/humidite-cave-sous-sol', icon: '🏠', title: 'Cave humide', desc: 'Infiltrations et condensation en sous-sol' },
             ].map((item, i) => (
               <Link key={i} href={item.href} className="group bg-white rounded-2xl p-6 shadow-lg border border-ipb-rule hover:border-blue-300 hover:shadow-xl transition-all">
                 <div className="text-4xl mb-4">{item.icon}</div>

@@ -358,7 +358,7 @@ export default function RemonteesCapillairesPage() {
               { href: '/salpetre-mur-traitement', icon: '🧂', title: 'Salpêtre', desc: 'Causes et traitement' },
               { href: '/moisissures-maison-sante', icon: '🦠', title: 'Moisissures', desc: 'Risques santé' },
               { href: '/blog/humidite-cave-sous-sol', icon: '🏠', title: 'Cave humide', desc: 'Solutions cuvelage' },
-              { href: '/blog/condensation-ou-infiltration', icon: '❓', title: 'Condensation ?', desc: 'Comment distinguer' },
+              { href: '/blog/humidite-mur-chambre-causes-solutions', icon: '🛏️', title: 'Humidité en chambre', desc: 'Causes et risques santé' },
             ].map((item, index) => (
               <Link 
                 key={index}
