@@ -158,6 +158,59 @@ const faqJsonLd = {
   }))
 };
 
+const quartiersExposes = [
+  {
+    nom: 'Capitole',
+    profil: 'Quartier historique au cœur de Toulouse',
+    desordres: 'fissures structurelles liées à l’ancienneté, remontées capillaires fréquentes, tassements différentiels sur sol argileux',
+  },
+  {
+    nom: 'Saint-Cyprien',
+    profil: 'Quartier rive gauche, proche de la Garonne',
+    desordres: 'humidité ascensionnelle, infiltrations caves et sous-sols, fissures liées aux variations du niveau d’eau',
+  },
+  {
+    nom: 'Saint-Michel',
+    profil: 'Quartier populaire en pleine rénovation',
+    desordres: 'humidité cave et rez-de-chaussée, fissures façades anciennes, remontées capillaires massives',
+  },
+  {
+    nom: 'Minimes',
+    profil: 'Grand quartier résidentiel du nord-est',
+    desordres: 'fissures structurelles généralisées, tassements différentiels importants, impact sécheresse 2022-2023',
+  },
+  {
+    nom: 'Croix-Daurade',
+    profil: 'Quartier résidentiel au nord',
+    desordres: 'fissures en escalier sur façades, mouvements de fondations, sécheresse et retrait-gonflement argile',
+  },
+  {
+    nom: 'Rangueil',
+    profil: 'Quartier universitaire au sud-est',
+    desordres: 'infiltrations toitures-terrasses, fissures liées au relief, humidité façades exposées',
+  },
+  {
+    nom: 'Pont-des-Demoiselles',
+    profil: 'Quartier résidentiel est',
+    desordres: 'humidité murs enterrés, fissures béton armé, infiltrations caves collectives',
+  },
+  {
+    nom: 'Saint-Simon',
+    profil: 'Quartier sud-est en expansion',
+    desordres: 'fissures structurelles après construction, tassements fondations, impact climatique sécheresse',
+  },
+  {
+    nom: 'Lalande',
+    profil: 'Quartier nord en développement',
+    desordres: 'fissures nouvelles constructions, tassements différentiels, problèmes d’humidité sous-sol',
+  },
+  {
+    nom: 'Compans-Caffarelli',
+    profil: 'Quartier d’affaires moderne',
+    desordres: 'tassements différentiels sur argile, fissures liées à la sécheresse, mouvements de terrain en période estivale',
+  },
+];
+
 export default function ExpertFissuresToulousePage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
@@ -461,6 +514,39 @@ export default function ExpertFissuresToulousePage() {
                 <span className="text-[13px] text-ipb-orange-l font-medium mt-4 inline-block">Lire l'analyse →</span>
               </a>
             </RevealOnScroll>
+          </div>
+        </section>
+
+
+        {/* QUARTIERS — contenu fusionné depuis les 10 pages /quartiers/{q}
+            consolidées en 301 au LOT 3bis (2026-08). Ces pages étaient en
+            noindex depuis juillet mais portaient une donnée locale réelle :
+            30 problématiques distinctes sur 30, une description propre par
+            quartier. Ajout d'une section dans le corps uniquement — title, h1
+            et canonical de cette page sont intouchés. */}
+        <section className="bg-ipb-white py-20 lg:py-28 border-y border-ipb-rule">
+          <div className="max-w-ipb mx-auto px-6 lg:px-12">
+            <RevealOnScroll>
+              <Eyebrow>Toulouse, quartier par quartier</Eyebrow>
+              <h2 className="font-serif text-ipb-text mb-6" style={{ fontSize: 'clamp(32px, 3vw, 46px)', lineHeight: 1.12, letterSpacing: '-0.022em', fontWeight: 700 }}>
+                Les quartiers toulousains <em>les plus exposés.</em>
+              </h2>
+              <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-12 max-w-[620px]">
+                Le bâti et le sol ne sont pas les mêmes d&apos;un quartier à l&apos;autre. Ce que nous
+                relevons le plus souvent, selon le secteur.
+              </p>
+            </RevealOnScroll>
+            <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
+              {quartiersExposes.map((q, i) => (
+                <RevealOnScroll key={q.nom} delay={Math.min(i, 5) * 0.05}>
+                  <div className="border-t border-ipb-rule pt-5">
+                    <h3 className="font-serif text-[19px] font-bold text-ipb-text mb-1">{q.nom}</h3>
+                    <p className="text-[12px] uppercase tracking-[0.13em] text-ipb-light mb-3">{q.profil}</p>
+                    <p className="text-[14px] leading-[1.8] font-light text-ipb-muted">{q.desordres}.</p>
+                  </div>
+                </RevealOnScroll>
+              ))}
+            </div>
           </div>
         </section>
 
