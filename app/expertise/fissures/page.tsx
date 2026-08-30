@@ -39,7 +39,7 @@ import Image from 'next/image';
 import { ExpertiseFissuresBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
-  title: { absolute: 'Expertise fissures Toulouse : structurelle ou non · Diagnostic IPB' },
+  title: { absolute: 'Expertise fissures : structurelle ou esthétique | IPB' },
   description: "Une fissure est apparue ? Un inspecteur IPB la mesure au fissuromètre et vous dit si elle est structurelle. Rapport sous 3 à 5 jours. Toulouse et Occitanie. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures toulouse',
@@ -61,7 +61,7 @@ export const metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/fissures' },
   openGraph: {
-    title: { absolute: 'Expertise fissures Toulouse : structurelle ou non · Diagnostic IPB' },
+    title: { absolute: 'Expertise fissures : structurelle ou esthétique | IPB' },
     description: "Un inspecteur IPB mesure la fissure au fissuromètre, identifie la cause et vous dit si elle est structurelle. Rapport sous 3 à 5 jours.",
     url: 'https://www.ipb-expertise.fr/expertise/fissures',
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
@@ -151,6 +151,21 @@ export default function FissuresPage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.06}>
                 <h1
+                  className="font-serif text-ipb-text"
+                  style={{
+                    fontSize: 'clamp(40px, 4vw, 62px)',
+                    lineHeight: 1.06,
+                    letterSpacing: '-0.025em',
+                    fontWeight: 700,
+                  }}
+                >
+                  Expertise de fissures : structurelle ou esthétique&nbsp;?
+                </h1>
+                {/* Ancienne seconde ligne du h1, conservée en sous-titre : mêmes
+                    styles typographiques, rendu visuel inchangé. Le h1 porte
+                    désormais le token « expertise fissures » et plus « Toulouse »,
+                    qui appartient à /expert-fissures-toulouse-31. */}
+                <p
                   className="font-serif text-ipb-text mb-8"
                   style={{
                     fontSize: 'clamp(40px, 4vw, 62px)',
@@ -159,9 +174,8 @@ export default function FissuresPage() {
                     fontWeight: 700,
                   }}
                 >
-                  Diagnostic de fissures à Toulouse.<br />
                   <em>Une fissure se lit avant de se réparer.</em>
-                </h1>
+                </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">
