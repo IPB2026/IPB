@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { prisma } from '@/lib/prisma';
 import { euros, COMPANY } from '@/lib/crm/company';
 import { verifyActionToken } from '@/lib/crm/client-actions';
@@ -5,6 +6,18 @@ import { SubmitButton } from '@/components/admin/submit-button';
 import { confirmClientAction } from './actions';
 
 export const dynamic = 'force-dynamic';
+
+// Page transactionnelle privée : elle n'est jamais liée publiquement, elle est
+// atteinte via un lien signé (?t=<token>) envoyé par e-mail au client. Sans
+// directive, elle héritait de `index: true` du layout racine — une URL à token
+// indexée devient publiquement consultable via Google (validation de devis,
+// montants HT, numéros de facture). noindex + nofollow, et surtout PAS de
+// Disallow dans robots.txt : Googlebot doit pouvoir lire la page pour voir la
+// directive.
+export const metadata: Metadata = {
+  title: { absolute: 'Espace client — IPB' },
+  robots: { index: false, follow: false, nocache: true },
+};
 
 const OK: Record<string, { title: string; text: string }> = {
   accept: {
