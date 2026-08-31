@@ -2254,6 +2254,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p><strong>Notre conseil d'expert</strong> : Si vous voyez des fissures apparaître après une période de sécheresse, ne les minimisez pas. Un diagnostic précis (déductible des travaux) vous dira si c'est lié au sol argileux, si c'est évolutif, et quelle solution est adaptée. Cette expertise peut aussi servir de base pour un dossier Cat-Nat auprès de votre assurance.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">Le sol argileux ne changera jamais. Votre maison, si.</p>
+      <p>Pendant un épisode caniculaire, le retrait des argiles s'accélère : voir <a href="/actualites/canicule-proteger-maison">ce qui se joue sous la maison pendant un été sec</a>.</p>
     `
   },
   'fissure-facade-reboucher-ou-reparer': {

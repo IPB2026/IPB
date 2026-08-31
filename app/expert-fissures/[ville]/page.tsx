@@ -10,7 +10,7 @@ import { CtaFinal } from '@/components/home/CtaFinal';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
-import { villesData, villeSlugs, type VilleInfo } from '@/app/data/villes';
+import { villesData, villeSlugs, lienVilleFissures, type VilleInfo } from '@/app/data/villes';
 import { isVillePrioritaire } from '@/app/data/villes-prioritaires';
 import { VilleBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 import { generateLocalFAQ, buildFAQPageJsonLd, IPB_AGGREGATE_RATING } from '@/lib/seo/localFAQ';
@@ -407,10 +407,13 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
                       .normalize('NFD')
                       .replace(/[̀-ͯ]/g, '')
                       .replace(/['\s]+/g, '-');
-                    return villeSlugs.includes(slugProche) ? (
+                    // Commune voisine sans page dédiée (LOT 3bis) : texte, pas un lien
+                    // vers une 301.
+                    const hrefProche = lienVilleFissures(slugProche);
+                    return hrefProche ? (
                       <Link
                         key={c}
-                        href={`/expert-fissures/${slugProche}`}
+                        href={hrefProche}
                         className="bg-ipb-cream border border-ipb-rule rounded-[3px] px-4 py-2 text-[13px] font-light text-ipb-text hover:border-ipb-orange transition-colors"
                       >
                         {c}
@@ -434,8 +437,10 @@ export default async function ExpertFissuresVillePage({ params }: { params: Prom
         <section className="bg-ipb-cream py-20 lg:py-24">
           <div className="max-w-ipb mx-auto px-6 lg:px-12 grid md:grid-cols-3 gap-6">
             {[
+              // LOT 3 : lien croisé vers l'autre service de la MÊME commune. Les deux
+              // pages d'une ville ne se liaient pas entre elles.
+              { href: `/expert-humidite/${ville}`, titre: `Humidité à ${villeNom}`, desc: "Remontées capillaires, infiltration, condensation : identifier la cause." },
               { href: '/expertise/fissures', titre: 'Notre méthode', desc: 'Diagnostic instrumenté, agrafage, reprise en sous-œuvre.' },
-              { href: '/expertise-avant-achat-immobilier-toulouse', titre: 'Expertise avant achat', desc: 'Une inspection du bâti avant de signer.' },
               { href: '/blog/agrafage-vs-micropieux-choix', titre: 'Agrafage ou micropieux ?', desc: 'Notre guide pour choisir la bonne solution structurelle.' },
             ].map((card) => (
               <Link

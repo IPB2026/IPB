@@ -1,3 +1,5 @@
+import { VILLES_PRIORITAIRES as VILLES_PRIORITAIRES_SET } from './villes-prioritaires';
+
 // ═══════════════════════════════════════════════════════════════
 // DONNÉES VILLES - CONTENU SEO LOCAL UNIQUE
 // ═══════════════════════════════════════════════════════════════
@@ -1750,4 +1752,24 @@ const DEPARTEMENT_PATHS: Record<string, string> = {
 export function departementPath(ville: string): string | null {
   const dep = villesData[ville]?.departement;
   return dep ? DEPARTEMENT_PATHS[dep] ?? null : null;
+}
+
+/**
+ * Lien vers la page fissures d'une commune, ou null si elle n'en a plus.
+ *
+ * Depuis le LOT 3bis, seules les villes prioritaires ont une page ; les autres
+ * sont redirigées vers leur département. Les composants qui listent des communes
+ * doivent donc rendre du texte, pas un lien mort — sans quoi on réintroduit des
+ * liens internes vers des 301, ce que le protocole interdit.
+ */
+export function lienVilleFissures(slug: string): string | null {
+  if (!VILLES_PRIORITAIRES_SET.has(slug)) return null;
+  if (slug === 'toulouse') return '/expert-fissures-toulouse-31';
+  return `/expert-fissures/${slug}`;
+}
+
+export function lienVilleHumidite(slug: string): string | null {
+  if (!VILLES_PRIORITAIRES_SET.has(slug)) return null;
+  if (slug === 'toulouse') return '/expert-humidite-toulouse-31';
+  return `/expert-humidite/${slug}`;
 }

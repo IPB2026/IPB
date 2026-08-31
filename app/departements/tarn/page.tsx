@@ -256,10 +256,9 @@ export default function TarnPage() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {villesTarn.map((ville, i) => (
                 <RevealOnScroll key={ville.nom} delay={i * 0.03}>
-                  <Link
-                    href={`/expert-fissures/${ville.slug}`}
-                    className="group block bg-ipb-cream border border-ipb-rule rounded-[6px] p-5 hover:border-ipb-orange hover:-translate-y-0.5 transition-all h-full"
-                  >
+                  {/* LOT 3bis : ces communes sont couvertes au niveau départemental,
+                      elles n'ont plus de page dédiée — pas de lien vers une 301. */}
+                  <div className="group block bg-ipb-cream border border-ipb-rule rounded-[6px] p-5 h-full">
                     <div className="flex justify-between items-start mb-3">
                       <h3 className="font-serif font-bold text-[16px] text-ipb-text group-hover:text-ipb-orange transition-colors">
                         {ville.nom}
@@ -269,7 +268,7 @@ export default function TarnPage() {
                     <p className="text-[12px] leading-[1.7] font-light text-ipb-muted">
                       {ville.population} hab. · {ville.distance} de Toulouse
                     </p>
-                  </Link>
+                  </div>
                 </RevealOnScroll>
               ))}
             </div>

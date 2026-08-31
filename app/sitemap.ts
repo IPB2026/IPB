@@ -45,6 +45,7 @@ const eeatPages = [
 
 // 🎯 Pages Trigger Events (Actualités)
 const triggerEventsPages = [
+  'actualites',
   'actualites/arrete-secheresse-2026',
   'actualites/canicule-proteger-maison',
   'actualites/infiltrations-automne-hiver',

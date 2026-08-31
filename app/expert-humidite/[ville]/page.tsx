@@ -81,9 +81,10 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
         contextField={villeData.specificitesHumidite ? 'specificitesHumidite' : undefined}
         dossierField="dossierTypeHumidite"
         relatedCards={[
+          // LOT 3 : lien croisé vers l'autre service de la MÊME commune.
+          { href: `/expert-fissures/${ville}`, titre: `Fissures à ${villeNom}`, desc: "Lecture de la fissure, cause identifiée, préconisations claires." },
           { href: '/expertise/humidite', titre: 'Notre méthode', desc: "Hygromètre, caméra thermique, rapport d'inspection documenté." },
           { href: '/blog/humidite-remontee-capillaire-solution', titre: 'Remontées capillaires', desc: "Comprendre et traiter ce désordre fréquent en Occitanie." },
-          { href: '/blog/condensation-ou-infiltration', titre: 'Condensation ou infiltration ?', desc: "Identifier la bonne cause avant tout traitement." },
         ]}
       />
     </>

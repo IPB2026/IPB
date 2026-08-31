@@ -500,12 +500,18 @@ export default function DiagnosticAvantVentePage() {
               ))}
             </div>
 
-            <div className="text-center mt-12">
+            <div className="text-center mt-12 flex flex-col sm:flex-row gap-6 justify-center">
               <Link
                 href="/notre-methode"
                 className="text-[13px] text-ipb-orange hover:underline"
               >
                 Voir notre méthode complète de diagnostic →
+              </Link>
+              <Link
+                href="/partenaires/agences-immobilieres"
+                className="text-[13px] text-ipb-muted hover:text-ipb-orange hover:underline"
+              >
+                Vous êtes une agence immobilière ? →
               </Link>
             </div>
           </div>
