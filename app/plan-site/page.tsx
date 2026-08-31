@@ -66,7 +66,7 @@ const sections: Section[] = [
       { href: '/zones-intervention', label: 'Mapping complet (56 villes)' },
       { href: '/expert-fissures-toulouse-31', label: 'Toulouse · pillar fissures' },
       { href: '/expert-humidite-toulouse-31', label: 'Toulouse · pillar humidité' },
-      { href: '/expert-fissures-montauban-82', label: 'Montauban · pillar fissures' },
+      { href: '/expert-fissures/montauban', label: 'Montauban (82)' },
     ],
   },
   {

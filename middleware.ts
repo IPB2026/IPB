@@ -35,11 +35,10 @@ const villeSet = new Set<string>(villeSlugs);
 // Toulouse garde le schéma plat : /expert-fissures-toulouse-31 est en position 2
 // sur « expert fissure toulouse » et porte plus de la moitié de l'acquisition
 // non-marque. Exception assumée, on n'y touche pas.
-// Montauban : arbitrage en attente (LOT 3bis) — la statique reste canonique
-// pour l'instant, donc l'override est conservé.
+// Montauban a été aligné sur le schéma dominant au LOT 3bis : la canonique est
+// /expert-fissures/montauban, la statique part en 301 (next.config.js).
 const FISSURE_OVERRIDES: Record<string, string> = {
   toulouse: '/expert-fissures-toulouse-31',
-  montauban: '/expert-fissures-montauban-82',
 };
 
 const HUMIDITE_OVERRIDES: Record<string, string> = {

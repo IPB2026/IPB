@@ -177,6 +177,15 @@ const nextConfig = {
       // positionnent. Celle-ci (500 mots, 2 liens entrants après le LOT 2) part
       // vers la mieux placée, à portée du top 10.
       { source: '/fissure-fondation-maison', destination: '/blog/fondations-maison-ancienne-renforcement', permanent: true },
+
+      // ── LOT 3bis — Montauban aligné sur le schéma dominant. La statique
+      //    faisait doublon avec /expert-fissures/montauban, déjà indexable et
+      //    maillée depuis /expertise/fissures, mais exclue du sitemap sur la foi
+      //    d'un commentaire affirmant l'existence d'un middleware qui n'a jamais
+      //    existé. Le contenu de la statique (915 mots) a d'abord été versé dans
+      //    les données de la ville pour que la cible ne soit pas appauvrie.
+      //    Toulouse garde le schéma plat : exception assumée (position 2).
+      { source: '/expert-fissures-montauban-82', destination: '/expert-fissures/montauban', permanent: true },
       // Pas de catch-all /problemes/:slug* : rediriger des URL inconnues vers un
       // hub générique est requalifié en soft 404 par Google, qui finit par
       // ignorer la redirection. Les 13 slugs ayant existé sont couverts

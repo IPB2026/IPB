@@ -191,12 +191,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/expert-fissures-montauban-82`,
-      lastModified: contentDate,
-      changeFrequency: 'weekly',
-      priority: 0.85,
-    },
-    {
       url: `${baseUrl}/expert-humidite-toulouse-31`,
       lastModified: recentUpdate,
       changeFrequency: 'weekly',
@@ -327,14 +321,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const indexableVilles = villeSlugs.filter(
     (ville) => ville !== 'toulouse' && isVillePrioritaire(ville)
   );
-  // Montauban : deux pages fissures coexistent — la statique
-  // /expert-fissures-montauban-82 (au sitemap, 915 mots) et la dynamique
-  // /expert-fissures/montauban (hors sitemap, 381 mots, mais indexable et
-  // maillée depuis /expertise/fissures). Le commentaire précédent affirmait
-  // qu'un middleware redirigeait la dynamique : ce middleware n'a jamais
-  // existé. L'arbitrage entre les deux est en attente (LOT 3bis) ; en
-  // attendant, la dynamique reste hors sitemap comme avant.
-  const indexableVillesFissures = indexableVilles.filter((ville) => ville !== 'montauban');
+  // LOT 3bis : Montauban est aligné sur le schéma dominant — /expert-fissures/montauban
+  // est la canonique, /expert-fissures-montauban-82 part en 301.
+  const indexableVillesFissures = indexableVilles;
 
   const expertFissuresPages: MetadataRoute.Sitemap = indexableVillesFissures.map((ville) => ({
     url: `${baseUrl}/expert-fissures/${ville}`,

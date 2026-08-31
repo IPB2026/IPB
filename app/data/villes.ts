@@ -426,6 +426,16 @@ export const villesData: Record<string, VilleInfo> = {
       'Sécheresse 2023 (JO du 28/02/2024)',
       'Sécheresse 2019 (JO du 16/12/2020)'
     ],
+    // LOT 3bis (2026-08) — matériau fusionné depuis /expert-fissures-montauban-82,
+    // qui part en 301 vers cette page. Ces trois champs sont exploités par le
+    // template /expert-fissures/[ville] ; sans eux la page dynamique restait à
+    // 381 mots contre 915 pour la statique, et la 301 aurait appauvri la cible.
+    reperesLocaux:
+      "Repères pour situer votre maison : le centre ancien autour de la place Nationale et de la cathédrale, les coteaux de Sapiac et de Villebourbon en bord de Tarn, les lotissements pavillonnaires de Beausoleil et du Fau. Les secteurs de vallée — Tarn, Garonne, Aveyron — concentrent les argiles gonflantes les plus actives du département.",
+    dossierTypeFissures:
+      "Le Tarn-et-Garonne repose en grande partie sur des sols argileux gonflants, particulièrement marqués dans les vallées du Tarn, de la Garonne et de l'Aveyron. Ces argiles se contractent l'été et se dilatent l'hiver ; les fondations suivent ce mouvement. Depuis la sécheresse de 2022, plusieurs dizaines de communes du département — dont Montauban, Castelsarrasin, Moissac et Caussade — ont été reconnues en état de catastrophe naturelle. Les maisons construites avant 1970, dont les fondations n'ont pas été dimensionnées pour ce phénomène, sont les plus exposées. Une fissure en escalier qui suit les joints de maçonnerie est la signature visuelle d'un tassement différentiel : une partie de la maison s'enfonce plus que l'autre. Les guides de pathologie du bâtiment (CSTB, AQC, CTMNC) classent ce type de désordre parmi les signaux d'alerte prioritaires.",
+    notreInterventionLocale:
+      "Le réseau IPB est actif sur le Tarn-et-Garonne depuis 2019. L'inspecteur se déplace, mesure la fissure au fissuromètre, examine le bâti qui la porte et identifie la cause avant toute préconisation. Le rapport documente les mesures et les photographies datées : il sert vos démarches auprès de l'assurance, en particulier dans un dossier de catastrophe naturelle sécheresse. Si des travaux s'imposent, l'orientation se fait vers des entreprises membres du réseau, couvertes par leur propre garantie décennale.",
     quartiersRisque: [
       'Villebourbon (centre ancien)',
       'Aussonne (plateau argileux)',
