@@ -15,6 +15,23 @@
  *   2. aucune chaîne : chaque destination répond 200
  *   3. le sitemap ne contient que des URL en 200, aucune noindex
  *   4. aucune 404 introduite
+ *
+ * ⚠️ CE QU'IL NE VÉRIFIE PAS — LIRE AVANT DE SE FIER À « 361/361 »
+ *
+ * Ce script vérifie que les redirections sont CONFORMES AU CODE. Il ne vérifie
+ * en aucun cas qu'elles sont PERTINENTES.
+ *
+ * Une 301 qui envoie une page mérule vers une page de plomberie passera
+ * 361/361 sans broncher : elle est techniquement conforme, elle mène à une
+ * page en 200, elle ne forme pas de chaîne. Le script est aveugle au sens.
+ *
+ * Il protège contre la dérive, les chaînes et les régressions. Il ne protège
+ * pas contre une mauvaise décision d'arbitrage — celle-là se prend en amont,
+ * en regardant ce que chaque page vise réellement, et elle se contrôle dans
+ * Search Console des semaines plus tard.
+ *
+ * « 361/361 » signifie « le code fait ce qu'il dit », pas « le plan de
+ * redirection est bon ».
  */
 import { readFileSync } from 'node:fs';
 
