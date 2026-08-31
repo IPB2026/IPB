@@ -33,6 +33,19 @@ const nextConfig = {
     },
   },
   
+  // ═══════════════════════════════════════════════════════════════════════════
+  // ⚠️ CONSIGNE PERMANENTE — NE PAS NETTOYER CE BLOC AVANT L'ÉTÉ 2027
+  //
+  // Les redirections posées lors de la refonte SEO d'août 2026 doivent rester
+  // en place DOUZE MOIS MINIMUM. Une 301 retirée trop tôt annule le transfert
+  // d'autorité qu'elle a mis des mois à opérer : Google doit avoir recrawlé et
+  // consolidé chaque source avant qu'on puisse la supprimer sans perte.
+  //
+  // Le fichier est long, c'est normal et ce n'est pas une dette. Ne le raccourcissez
+  // pas « pour faire propre ».
+  //
+  // Contrôle : node scripts/verify-redirects.mjs
+  // ═══════════════════════════════════════════════════════════════════════════
   async redirects() {
     return [
       // ── Service « mur porteur » arrêté (2026-06-26) — sunset SEO-safe :
@@ -75,7 +88,9 @@ const nextConfig = {
       // Remonté en 404 dans GSC (rapport 2026-06-12).
       {
         source: '/expert-fissures/aiguefonde',
-        destination: '/expert-fissures/mazamet',
+        // Mazamet n'est pas ville prioritaire : sa page part elle-même en 301 vers
+        // le département (LOT 3bis). On pointe la destination finale.
+        destination: '/departements/tarn',
         permanent: true,
       },
       // Ancien article blog daté 2025 → version actualisée 2026 (même intention de recherche).
@@ -135,7 +150,9 @@ const nextConfig = {
       { source: '/problemes/fissure-escalier-que-faire', destination: '/blog/fissures-escalier-tassement-differentiel', permanent: true },
       { source: '/problemes/portes-qui-coincent-fissures', destination: '/blog/fissure-ouverture-porte-fenetre', permanent: true },
       { source: '/problemes/fissure-apres-secheresse', destination: '/expertise/retrait-gonflement-argiles', permanent: true },
-      { source: '/problemes/revente-maison-fissuree', destination: '/blog/revente-maison-fissuree', permanent: true },
+      // Destination repointée en direct : /blog/revente-maison-fissuree part lui-même
+      // en 301 vers /blog/prix-maison-fissuree (LOT 2) — sinon chaîne à deux sauts.
+      { source: '/problemes/revente-maison-fissuree', destination: '/blog/prix-maison-fissuree', permanent: true },
       { source: '/problemes/humidite-cave', destination: '/blog/humidite-cave-sous-sol', permanent: true },
       { source: '/problemes/odeur-humidite-maison', destination: '/moisissures-maison-sante', permanent: true },
       // ── LOT 2 — cannibalisation (2026-08). Chaque sujet garde au plus deux
