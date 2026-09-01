@@ -210,13 +210,17 @@ export default function FissuresPage() {
 
             <RevealOnScroll direction="right" delay={0.1} className="hidden lg:block">
               <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
+                {/* Pas de `priority` : ce visuel est en `hidden lg:block`, donc invisible
+                    sous 1024px. Le preload haute priorité qu'émettait `priority` s'appliquait
+                    à tous les viewports et concurrençait le vrai LCP mobile — le h1 — pour une
+                    image jamais affichée. Google indexe mobile-first. Sur desktop l'image reste
+                    chargée normalement : elle est haut dans le DOM, découverte tôt. */}
                 <Image
                   src="/images/fissure-mur-real.webp"
                   alt="Fissure structurelle observée sur une maison en Occitanie — diagnostic IPB"
                   fill
                   sizes="(max-width: 1024px) 0px, 500px"
                   className="object-cover"
-                  priority
                 />
               </div>
             </RevealOnScroll>

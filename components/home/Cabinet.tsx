@@ -24,6 +24,10 @@ export function Cabinet() {
           <RevealOnScroll direction="left" className="lg:col-span-5">
             <div className="relative">
               <div className="aspect-[4/5] rounded-[6px] overflow-hidden bg-ipb-stone">
+                {/* Pas de `priority` : cette section est la huitième de l'accueil, très en
+                    dessous de la ligne de flottaison. Le preload haute priorité qu'elle émettait
+                    entrait en concurrence directe avec celui du Hero — deux preloads de la même
+                    image sur la page, dont un pour un visuel que personne ne voit au chargement. */}
                 <Image
                   src="/images/fissure-facade-verticale.webp"
                   alt="Diagnostic sur site — relevé d'une fissure de façade en Haute-Garonne"
@@ -31,7 +35,6 @@ export function Cabinet() {
                   height={800}
                   className="w-full h-full object-cover"
                   sizes="(max-width: 1024px) 100vw, 40vw"
-                  priority
                 />
               </div>
 

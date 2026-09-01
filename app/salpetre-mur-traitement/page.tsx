@@ -131,11 +131,16 @@ export default function SalpetrePage() {
               <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20">
                 <h3 className="text-lg font-bold text-white mb-4 text-center">Avant / Après traitement</h3>
                 <div className="relative rounded-2xl overflow-hidden aspect-video bg-ipb-navy-2">
+                  {/* `priority` : c'est le visuel du hero, dans le viewport initial et
+                      probablement l'élément LCP de la page. Il partait en lazy-load faute de
+                      prop — le navigateur ne le découvrait qu'après le premier rendu. */}
                   <Image
                     src="/images/salpetre-avant-apres.webp"
                     alt="Traitement salpêtre avant après - IPB"
                     fill
                     className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
                   />
                 </div>
                 <p className="text-center text-amber-200 text-sm mt-4">
