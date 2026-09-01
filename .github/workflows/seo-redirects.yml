@@ -21,6 +21,12 @@ on:
   schedule:
     - cron: '0 6 * * 1'
   workflow_dispatch:
+    inputs:
+      cible:
+        description: Quoi vérifier
+        type: choice
+        default: local
+        options: [local, production]
 
 jobs:
   local:
@@ -28,7 +34,7 @@ jobs:
     # casse à chaque incident réseau, et un check qui échoue pour de mauvaises
     # raisons finit par être ignoré.
     name: Redirections (build local)
-    if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'pull_request' || inputs.cible == 'local'
     runs-on: ubuntu-latest
     env:
       # Le build ne lit pas la base : les pages publiques sont statiques et les
@@ -59,7 +65,10 @@ jobs:
 
   production:
     name: Redirections (production)
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    # Ce job échoue légitimement tant que la production est en retard sur la
+    # branche : c'est son rôle. Il ne tourne donc pas par défaut sur un dispatch
+    # manuel, sinon tout run déclenché pendant un développement serait rouge.
+    if: github.event_name == 'schedule' || inputs.cible == 'production'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
