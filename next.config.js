@@ -33,6 +33,19 @@ const nextConfig = {
     },
   },
   
+  // ═══════════════════════════════════════════════════════════════════════════
+  // ⚠️ CONSIGNE PERMANENTE — NE PAS NETTOYER CE BLOC AVANT L'ÉTÉ 2027
+  //
+  // Les redirections posées lors de la refonte SEO d'août 2026 doivent rester
+  // en place DOUZE MOIS MINIMUM. Une 301 retirée trop tôt annule le transfert
+  // d'autorité qu'elle a mis des mois à opérer : Google doit avoir recrawlé et
+  // consolidé chaque source avant qu'on puisse la supprimer sans perte.
+  //
+  // Le fichier est long, c'est normal et ce n'est pas une dette. Ne le raccourcissez
+  // pas « pour faire propre ».
+  //
+  // Contrôle : node scripts/verify-redirects.mjs
+  // ═══════════════════════════════════════════════════════════════════════════
   async redirects() {
     return [
       // ── Service « mur porteur » arrêté (2026-06-26) — sunset SEO-safe :
@@ -75,7 +88,9 @@ const nextConfig = {
       // Remonté en 404 dans GSC (rapport 2026-06-12).
       {
         source: '/expert-fissures/aiguefonde',
-        destination: '/expert-fissures/mazamet',
+        // Mazamet n'est pas ville prioritaire : sa page part elle-même en 301 vers
+        // le département (LOT 3bis). On pointe la destination finale.
+        destination: '/departements/tarn',
         permanent: true,
       },
       // Ancien article blog daté 2025 → version actualisée 2026 (même intention de recherche).
@@ -110,12 +125,89 @@ const nextConfig = {
         destination: '/blog/agrafage-vs-micropieux-choix',
         permanent: true,
       },
-      { source: '/revente-maison-fissuree', destination: '/blog/revente-maison-fissuree', permanent: true },
+      // Cible repointée en direct : /blog/revente-maison-fissuree part lui-même en 301
+      // vers /blog/prix-maison-fissuree (LOT 2) — sans ça, chaîne à deux sauts.
+      { source: '/revente-maison-fissuree', destination: '/blog/prix-maison-fissuree', permanent: true },
       // Service mur porteur arrêté — lien historique sans ville → accueil (1 saut, pas de chaîne).
       { source: '/expert-mur-porteur', destination: '/', permanent: true },
       // Refonte V3 (2026-07) — page « notre expert » renommée « institut » (le singulier
       // « notre expert » contredit le modèle réseau). 301 pour préserver le SEO E-E-A-T.
       { source: '/notre-expert', destination: '/institut', permanent: true },
+      // ── Silo /problemes/ démantelé (2026-08) — 13 pages passées en noindex lors
+      //    de l'élagage 2026-07 (~88 % de recouvrement : même corps de texte pour
+      //    les 13 slugs, seuls h1/excerpt changeaient). Le noindex les faisait
+      //    disparaître sans transmettre leur capital : /problemes/merule-champignon-bois-maison
+      //    se positionnait encore sur ~5 700 de volume mensuel cumulé six semaines
+      //    après. Une 301 récupère ce capital, un noindex le jette.
+      //    La route et app/data/problems.ts sont supprimées dans le même commit.
+      { source: '/problemes/merule-champignon-bois-maison', destination: '/blog/merule-champignon-maison-danger', permanent: true },
+      { source: '/problemes/salpetre-mur', destination: '/blog/humidite-salpetre-traitement', permanent: true },
+      { source: '/problemes/salpetre-poudre-blanche-mur', destination: '/blog/humidite-salpetre-traitement', permanent: true },
+      { source: '/problemes/moisissures-sante', destination: '/moisissures-maison-sante', permanent: true },
+      { source: '/problemes/humidite-murs-peinture-qui-cloque', destination: '/blog/humidite-mur-chambre-causes-solutions', permanent: true },
+      { source: '/problemes/condensation-ou-remontees-capillaires', destination: '/blog/condensation-ou-infiltration', permanent: true },
+      { source: '/problemes/fissure-verticale-mur-porteur', destination: '/blog/lire-fissures-verticale-horizontale-oblique', permanent: true },
+      { source: '/problemes/fissure-escalier-que-faire', destination: '/blog/fissures-escalier-tassement-differentiel', permanent: true },
+      { source: '/problemes/portes-qui-coincent-fissures', destination: '/blog/fissure-ouverture-porte-fenetre', permanent: true },
+      { source: '/problemes/fissure-apres-secheresse', destination: '/expertise/retrait-gonflement-argiles', permanent: true },
+      // Destination repointée en direct : /blog/revente-maison-fissuree part lui-même
+      // en 301 vers /blog/prix-maison-fissuree (LOT 2) — sinon chaîne à deux sauts.
+      { source: '/problemes/revente-maison-fissuree', destination: '/blog/prix-maison-fissuree', permanent: true },
+      { source: '/problemes/humidite-cave', destination: '/blog/humidite-cave-sous-sol', permanent: true },
+      { source: '/problemes/odeur-humidite-maison', destination: '/moisissures-maison-sante', permanent: true },
+      // ── LOT 2 — cannibalisation (2026-08). Chaque sujet garde au plus deux
+      //    pages aux intentions disjointes : un pilier informationnel /blog/ et
+      //    une page service à la racine. Les URL ci-dessous visaient la même
+      //    requête qu'une page mieux dotée ; leur capital part à la canonique.
+      //    Contenu unique fusionné dans la destination (aucune perte).
+
+      // Cluster 2 — salpêtre. La source porte une intention géo-commerciale
+      // (« salpêtre Toulouse ») : sous la règle géographique du cluster 11 elle
+      // revient à la page service, pas au pilier national. Son contenu local
+      // (géologie, quartiers, prix Toulouse) alimente la destination.
+      { source: '/blog/salpetre-toulouse-traitement-definitif', destination: '/salpetre-mur-traitement', permanent: true },
+
+      // Cluster 3 — remontées capillaires
+      { source: '/remontee-capillaire-solution', destination: '/blog/humidite-remontee-capillaire-solution', permanent: true },
+
+      // Cluster 4 — condensation / infiltration
+      { source: '/condensation-ou-infiltration', destination: '/blog/condensation-ou-infiltration', permanent: true },
+
+      // Cluster 5 — cave humide
+      { source: '/cave-humide-solutions', destination: '/blog/humidite-cave-sous-sol', permanent: true },
+
+      // Cluster 7 — fissure en escalier
+      { source: '/fissure-en-escalier-causes', destination: '/blog/fissures-escalier-tassement-differentiel', permanent: true },
+
+      // Cluster 8 — gravité d'une fissure
+      { source: '/microfissure-quand-sinquieter', destination: '/blog/evaluer-gravite-fissure-maison', permanent: true },
+      { source: '/fissure-horizontale-danger', destination: '/blog/lire-fissures-verticale-horizontale-oblique', permanent: true },
+
+      // Cluster 9 — vendre avec fissures. Quatre pages visaient ce parcours ;
+      // « décote et négociation » appartient à /blog/prix-maison-fissuree, dont
+      // c'est le titre exact.
+      { source: '/vendre-bien-avec-fissures', destination: '/diagnostic-avant-vente', permanent: true },
+      { source: '/blog/vendre-maison-fissure-humidite-anticiper', destination: '/blog/diagnostic-structurel-avant-vente-maison', permanent: true },
+      { source: '/blog/revente-maison-fissuree', destination: '/blog/prix-maison-fissuree', permanent: true },
+
+      // Hors cluster — quatre pages couvraient les fondations, dont deux qui se
+      // positionnent. Celle-ci (500 mots, 2 liens entrants après le LOT 2) part
+      // vers la mieux placée, à portée du top 10.
+      { source: '/fissure-fondation-maison', destination: '/blog/fondations-maison-ancienne-renforcement', permanent: true },
+
+      // ── LOT 3bis — Montauban aligné sur le schéma dominant. La statique
+      //    faisait doublon avec /expert-fissures/montauban, déjà indexable et
+      //    maillée depuis /expertise/fissures, mais exclue du sitemap sur la foi
+      //    d'un commentaire affirmant l'existence d'un middleware qui n'a jamais
+      //    existé. Le contenu de la statique (915 mots) a d'abord été versé dans
+      //    les données de la ville pour que la cible ne soit pas appauvrie.
+      //    Toulouse garde le schéma plat : exception assumée (position 2).
+      { source: '/expert-fissures-montauban-82', destination: '/expert-fissures/montauban', permanent: true },
+      // Pas de catch-all /problemes/:slug* : rediriger des URL inconnues vers un
+      // hub générique est requalifié en soft 404 par Google, qui finit par
+      // ignorer la redirection. Les 13 slugs ayant existé sont couverts
+      // nommément ci-dessus ; tout autre slug doit répondre 404 — c'est le
+      // signal correct, et app/not-found.tsx oriente déjà l'utilisateur.
     ];
   },
 

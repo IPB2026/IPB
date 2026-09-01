@@ -30,6 +30,63 @@ const villesTarn = [
   { nom: 'Saint-Sulpice-la-Pointe', slug: 'saint-sulpice-la-pointe', cp: '81370', population: '9 000', distance: '35 km' },
 ];
 
+const communesDetail = [
+  {
+    nom: 'Albi',
+    alea: 'fort',
+    sol: 'Le sous-sol albigeois est composé de molasses argilo-calcaires oligocènes dans le centre, et d\u2019argiles du Stampien en périphérie',
+    desordre: 'À Albi, les fissures sont souvent liées à l\u2019hétérogénéité du terrain : zones de remblais côtoyant des argiles naturelles',
+  },
+  {
+    nom: 'Carmaux',
+    alea: 'moyen',
+    sol: 'Le sous-sol carmausin est marqué par l\u2019exploitation houillère historique',
+    desordre: 'À Carmaux, les fissures peuvent avoir deux origines : le RGA classique ou les mouvements liés aux anciennes galeries minières',
+  },
+  {
+    nom: 'Castres',
+    alea: 'moyen',
+    sol: 'Castres repose sur des formations variées : alluvions de l\u2019Agout dans la vallée, molasses et argiles sur les coteaux',
+    desordre: 'Les fissures à Castres apparaissent souvent aux jonctions entre bâti ancien et extensions récentes, du fait des différences de fondations.',
+  },
+  {
+    nom: 'Gaillac',
+    alea: 'fort',
+    sol: 'Gaillac présente un sous-sol complexe : terrasses alluviales en fond de vallée, molasses argileuses sur les coteaux viticoles',
+    desordre: 'Les fissures sur les coteaux viticoles sont souvent aggravées par les anciennes pratiques culturales (drainage, arrachage de vignes) qui ont modifié le comportement hydrique des sols.',
+  },
+  {
+    nom: 'Graulhet',
+    alea: 'fort',
+    sol: 'Graulhet repose sur des terrasses du Dadou, composées d\u2019argiles et d\u2019alluvions',
+    desordre: 'Les fissures à Graulhet touchent particulièrement les constructions anciennes du centre et les pavillons des années 80.',
+  },
+  {
+    nom: 'Lavaur',
+    alea: 'fort',
+    sol: 'Lavaur repose sur des terrasses fluviatiles de l\u2019Agout, composées d\u2019argiles, graviers et limons',
+    desordre: 'Lavaur est l\u2019une des villes du Tarn les plus touchées par les fissures RGA',
+  },
+  {
+    nom: 'Mazamet',
+    alea: 'moyen',
+    sol: 'Mazamet est située à la transition entre les schistes de la Montagne Noire et les molasses de la plaine',
+    desordre: 'Les fissures à Mazamet sont souvent liées aux pentes et à l\u2019hétérogénéité du sous-sol',
+  },
+  {
+    nom: 'Rabastens',
+    alea: 'fort',
+    sol: 'Rabastens est construite sur des terrasses du Tarn, avec des argiles gonflantes en surface',
+    desordre: 'Les fissures à Rabastens apparaissent souvent sur les maisons de moins de 20 ans, construites sur des argiles mal identifiées.',
+  },
+  {
+    nom: 'Saint-Sulpice-la-Pointe',
+    alea: 'très fort',
+    sol: 'Saint-Sulpice repose sur des terrasses de l\u2019Agout, avec des argiles gonflantes en surface',
+    desordre: 'Saint-Sulpice présente un taux de sinistralité parmi les plus élevés de la région',
+  },
+];
+
 const problemesRegion = [
   {
     titre: 'Sols argileux du Lauragais',
@@ -199,10 +256,9 @@ export default function TarnPage() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {villesTarn.map((ville, i) => (
                 <RevealOnScroll key={ville.nom} delay={i * 0.03}>
-                  <Link
-                    href={`/expert-fissures/${ville.slug}`}
-                    className="group block bg-ipb-cream border border-ipb-rule rounded-[6px] p-5 hover:border-ipb-orange hover:-translate-y-0.5 transition-all h-full"
-                  >
+                  {/* LOT 3bis : ces communes sont couvertes au niveau départemental,
+                      elles n'ont plus de page dédiée — pas de lien vers une 301. */}
+                  <div className="group block bg-ipb-cream border border-ipb-rule rounded-[6px] p-5 h-full">
                     <div className="flex justify-between items-start mb-3">
                       <h3 className="font-serif font-bold text-[16px] text-ipb-text group-hover:text-ipb-orange transition-colors">
                         {ville.nom}
@@ -212,7 +268,7 @@ export default function TarnPage() {
                     <p className="text-[12px] leading-[1.7] font-light text-ipb-muted">
                       {ville.population} hab. · {ville.distance} de Toulouse
                     </p>
-                  </Link>
+                  </div>
                 </RevealOnScroll>
               ))}
             </div>
@@ -222,6 +278,38 @@ export default function TarnPage() {
             </p>
           </div>
         </section>
+
+
+      {/* Communes du département — matériau fusionné depuis les pages
+          /expert-fissures/{ville} et /expert-humidite/{ville} consolidées en 301
+          au LOT 3bis (2026-08). Contenu qualitatif uniquement : les champs
+          porteurs de chiffres non sourcés (taux de sinistralité, variations de
+          déclarations) ont été écartés, pas reversés. */}
+      <section className="bg-ipb-white py-16 lg:py-20 border-y border-ipb-rule">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-4">
+            Ce que nous observons, commune par commune
+          </h2>
+          <p className="text-lg text-ipb-muted mb-10 max-w-3xl">
+            Le sol ne se comporte pas de la même façon d&apos;une commune à l&apos;autre. Voici,
+            pour les principales, la nature du terrain et le type de désordre qui en découle.
+          </p>
+          <div className="space-y-8">
+            {communesDetail.map((c) => (
+              <div key={c.nom} className="border-l-2 border-ipb-orange pl-6">
+                <div className="flex items-baseline gap-3 mb-2 flex-wrap">
+                  <h3 className="font-serif text-[22px] font-bold text-ipb-text">{c.nom}</h3>
+                  <span className="text-[11px] uppercase tracking-[0.14em] text-ipb-muted">
+                    aléa retrait-gonflement {c.alea}
+                  </span>
+                </div>
+                <p className="text-[14px] leading-[1.85] font-light text-ipb-muted mb-2">{c.sol}.</p>
+                <p className="text-[14px] leading-[1.85] font-light text-ipb-muted">{c.desordre}.</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
         {/* DÉPARTEMENTS LIMITROPHES */}
         <section className="bg-ipb-cream py-20 lg:py-24">

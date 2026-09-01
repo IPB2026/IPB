@@ -131,11 +131,16 @@ export default function SalpetrePage() {
               <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20">
                 <h3 className="text-lg font-bold text-white mb-4 text-center">Avant / Après traitement</h3>
                 <div className="relative rounded-2xl overflow-hidden aspect-video bg-ipb-navy-2">
+                  {/* `priority` : c'est le visuel du hero, dans le viewport initial et
+                      probablement l'élément LCP de la page. Il partait en lazy-load faute de
+                      prop — le navigateur ne le découvrait qu'après le premier rendu. */}
                   <Image
                     src="/images/salpetre-avant-apres.webp"
                     alt="Traitement salpêtre avant après - IPB"
                     fill
                     className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
                   />
                 </div>
                 <p className="text-center text-amber-200 text-sm mt-4">
@@ -259,6 +264,73 @@ export default function SalpetrePage() {
         </div>
       </section>
 
+      {/* Contexte local — contenu fusionné depuis /blog/salpetre-toulouse-traitement-definitif,
+          consolidé en 301 vers cette page au LOT 2 (2026-08). Ce qui porte une marque
+          géographique revient à la page service ; le générique est resté au pilier. */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
+            Pourquoi le salpêtre est fréquent à Toulouse
+          </h2>
+          <p className="text-lg text-ipb-muted mb-8">
+            Toulouse et sa périphérie réunissent deux conditions qui favorisent les remontées
+            capillaires — et donc le salpêtre.
+          </p>
+
+          <div className="space-y-6 mb-12">
+            <div className="border-l-4 border-amber-500 pl-6">
+              <h3 className="text-xl font-bold text-ipb-text mb-2">Un sol majoritairement argileux</h3>
+              <p className="text-ipb-muted">
+                L&apos;argile toulousaine retient l&apos;eau comme une éponge en période de pluie.
+                Cette eau remonte ensuite dans les murs par capillarité, en transportant les sels
+                minéraux qui formeront le salpêtre.
+              </p>
+            </div>
+            <div className="border-l-4 border-amber-500 pl-6">
+              <h3 className="text-xl font-bold text-ipb-text mb-2">Un bâti traditionnel en brique foraine</h3>
+              <p className="text-ipb-muted">
+                La brique est un matériau poreux. Les maisons toulousaines anciennes ont
+                été bâties sans barrière d&apos;étanchéité à la base des murs — cette coupure
+                n&apos;est devenue une pratique courante que bien plus tard.
+              </p>
+            </div>
+          </div>
+
+          <h2 className="text-2xl font-black text-ipb-text mb-4">
+            Les quartiers les plus concernés
+          </h2>
+          <p className="text-ipb-muted mb-6">
+            Certains secteurs ressortent plus souvent, en raison de leur sol, de leur exposition
+            ou de leur bâti.
+          </p>
+          <ul className="space-y-3 mb-12">
+            {[
+              ['Saint-Cyprien', 'proximité de la Garonne, bâti ancien'],
+              ['Saint-Michel', 'maisons anciennes, caves humides'],
+              ['Capitole / Carmes', 'immeubles historiques sans barrière étanche'],
+              ['Minimes', 'sol argileux, maisons des années 70'],
+              ['Croix-Daurade', 'terrain argileux sensible'],
+            ].map(([quartier, motif]) => (
+              <li key={quartier} className="flex gap-3 text-ipb-muted">
+                <span aria-hidden="true" className="text-amber-500 font-bold">·</span>
+                <span><strong className="text-ipb-text">{quartier}</strong> — {motif}</span>
+              </li>
+            ))}
+          </ul>
+
+          <h2 className="text-2xl font-black text-ipb-text mb-4">
+            Ce que couvre l&apos;intervention
+          </h2>
+          <p className="text-ipb-muted">
+            Un inspecteur IPB se déplace, mesure le taux d&apos;humidité, identifie les zones
+            touchées et détermine le linéaire à traiter — de l&apos;ordre de 10 à 15 mètres pour
+            un appartement en rez-de-chaussée, 20 à 30 pour une maison mitoyenne, 40 à 60 pour
+            une maison quatre façades. Le devis est établi après cette visite, sur la base du
+            linéaire réel : nous ne chiffrons pas un traitement sans avoir vu le mur.
+          </p>
+        </div>
+      </section>
+
       {/* Articles connexes */}
       <section className="py-20 bg-ipb-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -269,7 +341,7 @@ export default function SalpetrePage() {
             {[
               { href: '/remontees-capillaires-traitement', icon: '💧', title: 'Remontées capillaires', desc: 'La cause du salpêtre' },
               { href: '/moisissures-maison-sante', icon: '🦠', title: 'Moisissures', desc: 'Risques santé' },
-              { href: '/cave-humide-solutions', icon: '🏠', title: 'Cave humide', desc: 'Solutions cuvelage' },
+              { href: '/blog/humidite-cave-sous-sol', icon: '🏠', title: 'Cave humide', desc: 'Solutions cuvelage' },
               { href: '/vmi-ventilation-insufflation', icon: '💨', title: 'VMI', desc: 'Ventilation' },
               { href: '/expertise/humidite', icon: '📋', title: 'Guide complet humidité', desc: 'Toutes nos solutions' },
               { href: '/expertise/fissures', icon: '🧱', title: 'Problème de fissures ?', desc: 'Diagnostic et agrafage' },

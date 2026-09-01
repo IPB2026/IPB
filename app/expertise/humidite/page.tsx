@@ -155,13 +155,17 @@ export default function HumiditePage() {
 
             <RevealOnScroll direction="right" delay={0.1} className="hidden lg:block">
               <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
+                {/* Pas de `priority` : ce visuel est en `hidden lg:block`, donc invisible
+                    sous 1024px. Le preload haute priorité qu'émettait `priority` s'appliquait
+                    à tous les viewports et concurrençait le vrai LCP mobile — le h1 — pour une
+                    image jamais affichée. Google indexe mobile-first. Sur desktop l'image reste
+                    chargée normalement : elle est haut dans le DOM, découverte tôt. */}
                 <Image
                   src="/images/humidite-avant-apres.webp"
                   alt="Avant et après traitement de l'humidité — chantier du réseau IPB"
                   fill
                   sizes="(max-width: 1024px) 0px, 500px"
                   className="object-cover"
-                  priority
                 />
               </div>
             </RevealOnScroll>
@@ -368,18 +372,22 @@ export default function HumiditePage() {
                 {
                   titre: "Comprendre l'humidité",
                   links: [
-                    { href: '/remontee-capillaire-solution', label: 'Remontées capillaires : solution' },
+                    { href: '/blog/humidite-remontee-capillaire-solution', label: 'Remontées capillaires : solution' },
                     { href: '/salpetre-mur-traitement', label: 'Salpêtre : traitement définitif' },
                     { href: '/moisissures-maison-sante', label: 'Moisissures & santé' },
-                    { href: '/cave-humide-solutions', label: 'Cave humide : solutions' },
-                    { href: '/condensation-ou-infiltration', label: 'Condensation ou infiltration ?' },
+                    { href: '/blog/humidite-cave-sous-sol', label: 'Cave humide : solutions' },
+                    { href: '/merule-champignon-traitement', label: 'Mérule : diagnostic et traitement' },
+                    { href: '/ponts-thermiques-condensation', label: 'Ponts thermiques et condensation' },
+                    { href: '/actualites/infiltrations-automne-hiver', label: 'Infiltrations : la saison qui les révèle' },
+                    { href: '/blog/condensation-ou-infiltration', label: 'Condensation ou infiltration ?' },
+                    { href: '/blog/humidite-mur-chambre-causes-solutions', label: 'Humidité sur un mur de chambre' },
                   ],
                 },
                 {
                   titre: 'Nos analyses',
                   links: [
                     { href: '/blog/humidite-remontee-capillaire-solution', label: 'Traiter les remontées capillaires' },
-                    { href: '/blog/salpetre-toulouse-traitement-definitif', label: 'En finir avec le salpêtre' },
+                    { href: '/salpetre-mur-traitement', label: 'En finir avec le salpêtre' },
                     { href: '/blog/ventilation-humidite-condensation', label: 'Ventilation & condensation' },
                     { href: '/expertise-avant-achat-immobilier-toulouse', label: "Un doute avant un achat ? L'inspection avant achat" },
                     { href: '/lexique', label: 'Lexique de la pathologie du bâtiment' },
@@ -389,9 +397,25 @@ export default function HumiditePage() {
                 {
                   titre: 'Un expert près de chez vous',
                   links: [
+                    // LOT 3 : le bloc communes existait sur /expertise/fissures mais pas
+                    // ici — six pages /expert-humidite/* étaient orphelines de ce fait.
                     { href: '/expert-humidite-toulouse-31', label: 'Expert humidité à Toulouse' },
                     { href: '/expert-humidite/montauban', label: 'Expert humidité à Montauban' },
                     { href: '/expert-humidite/colomiers', label: 'Expert humidité à Colomiers' },
+                    { href: '/expert-humidite/muret', label: 'Expert humidité à Muret' },
+                    { href: '/expert-humidite/tournefeuille', label: 'Expert humidité à Tournefeuille' },
+                    { href: '/expert-humidite/blagnac', label: 'Expert humidité à Blagnac' },
+                    { href: '/expert-humidite/cugnaux', label: 'Expert humidité à Cugnaux' },
+                    { href: '/expert-humidite/balma', label: 'Expert humidité à Balma' },
+                    { href: '/expert-humidite/castanet-tolosan', label: 'Expert humidité à Castanet-Tolosan' },
+                    { href: '/expert-humidite/ramonville-saint-agne', label: 'Expert humidité à Ramonville-Saint-Agne' },
+                    { href: '/expert-humidite/saint-orens-de-gameville', label: 'Expert humidité à Saint-Orens-de-Gameville' },
+                    { href: '/expert-humidite/fonsorbes', label: 'Expert humidité à Fonsorbes' },
+                    { href: '/expert-humidite/lunion', label: 'Expert humidité à L’Union' },
+                    { href: '/expert-humidite/plaisance-du-touch', label: 'Expert humidité à Plaisance-du-Touch' },
+                    { href: '/expert-humidite/castelsarrasin', label: 'Expert humidité à Castelsarrasin' },
+                    { href: '/expert-humidite/moissac', label: 'Expert humidité à Moissac' },
+                    { href: '/expert-humidite/auch', label: 'Expert humidité à Auch' },
                     { href: '/zones-intervention', label: "Toutes nos zones d'intervention" },
                   ],
                 },

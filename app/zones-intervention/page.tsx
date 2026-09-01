@@ -5,7 +5,7 @@ import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 import { MapPin, Phone, ArrowRight, Shield, AlertTriangle } from 'lucide-react';
-import { villesData, departementsMapping } from '@/app/data/villes';
+import { villesData, departementsMapping, lienVilleFissures } from '@/app/data/villes';
 
 export const metadata: Metadata = {
   title: "Zones Intervention · 56 villes Occitanie · Visite sous 72h",
@@ -153,10 +153,14 @@ export default function ZonesInterventionPage() {
                       const ville = villesData[villeSlug];
                       if (!ville) return null;
                       const risque = getRisqueBadge(ville.risqueRGA);
+                      // Commune desservie sans page dédiée (LOT 3bis) : on l'affiche
+                      // sans lien plutôt que de pointer vers une 301.
+                      const href = lienVilleFissures(villeSlug);
+                      const Wrapper = (href ? Link : 'div') as React.ElementType;
                       return (
-                        <Link
+                        <Wrapper
                           key={villeSlug}
-                          href={`/expert-fissures/${villeSlug}`}
+                          {...(href ? { href } : {})}
                           className="group flex items-center justify-between gap-3 p-4 bg-ipb-cream hover:bg-ipb-stone border border-ipb-rule hover:border-orange-300 rounded-xl transition-all"
                         >
                           <div className="flex-1 min-w-0">
@@ -173,7 +177,7 @@ export default function ZonesInterventionPage() {
                             </span>
                             <ArrowRight size={14} className="text-ipb-light group-hover:text-ipb-orange transition" />
                           </div>
-                        </Link>
+                        </Wrapper>
                       );
                     })}
                   </div>

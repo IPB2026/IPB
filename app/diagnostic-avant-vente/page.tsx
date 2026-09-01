@@ -68,7 +68,7 @@ const situations = [
   {
     titre: 'Vous vendez avec des fissures',
     desc: "Un acheteur s'inquiète, une visite annulée, un compromis suspendu : le rapport qualifie précisément les désordres et sécurise la vente.",
-    href: '/vendre-bien-avec-fissures',
+    href: '/diagnostic-avant-vente',
     cta: 'Voir la page fissures',
   },
   {
@@ -500,12 +500,18 @@ export default function DiagnosticAvantVentePage() {
               ))}
             </div>
 
-            <div className="text-center mt-12">
+            <div className="text-center mt-12 flex flex-col sm:flex-row gap-6 justify-center">
               <Link
                 href="/notre-methode"
                 className="text-[13px] text-ipb-orange hover:underline"
               >
                 Voir notre méthode complète de diagnostic →
+              </Link>
+              <Link
+                href="/partenaires/agences-immobilieres"
+                className="text-[13px] text-ipb-muted hover:text-ipb-orange hover:underline"
+              >
+                Vous êtes une agence immobilière ? →
               </Link>
             </div>
           </div>

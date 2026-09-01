@@ -1,3 +1,5 @@
+import { VILLES_PRIORITAIRES as VILLES_PRIORITAIRES_SET } from './villes-prioritaires';
+
 // ═══════════════════════════════════════════════════════════════
 // DONNÉES VILLES - CONTENU SEO LOCAL UNIQUE
 // ═══════════════════════════════════════════════════════════════
@@ -426,6 +428,16 @@ export const villesData: Record<string, VilleInfo> = {
       'Sécheresse 2023 (JO du 28/02/2024)',
       'Sécheresse 2019 (JO du 16/12/2020)'
     ],
+    // LOT 3bis (2026-08) — matériau fusionné depuis /expert-fissures-montauban-82,
+    // qui part en 301 vers cette page. Ces trois champs sont exploités par le
+    // template /expert-fissures/[ville] ; sans eux la page dynamique restait à
+    // 381 mots contre 915 pour la statique, et la 301 aurait appauvri la cible.
+    reperesLocaux:
+      "Repères pour situer votre maison : le centre ancien autour de la place Nationale et de la cathédrale, les coteaux de Sapiac et de Villebourbon en bord de Tarn, les lotissements pavillonnaires de Beausoleil et du Fau. Les secteurs de vallée — Tarn, Garonne, Aveyron — concentrent les argiles gonflantes les plus actives du département.",
+    dossierTypeFissures:
+      "Le Tarn-et-Garonne repose en grande partie sur des sols argileux gonflants, particulièrement marqués dans les vallées du Tarn, de la Garonne et de l'Aveyron. Ces argiles se contractent l'été et se dilatent l'hiver ; les fondations suivent ce mouvement. Depuis la sécheresse de 2022, plusieurs dizaines de communes du département — dont Montauban, Castelsarrasin, Moissac et Caussade — ont été reconnues en état de catastrophe naturelle. Les maisons construites avant 1970, dont les fondations n'ont pas été dimensionnées pour ce phénomène, sont les plus exposées. Une fissure en escalier qui suit les joints de maçonnerie est la signature visuelle d'un tassement différentiel : une partie de la maison s'enfonce plus que l'autre. Les guides de pathologie du bâtiment (CSTB, AQC, CTMNC) classent ce type de désordre parmi les signaux d'alerte prioritaires.",
+    notreInterventionLocale:
+      "Le réseau IPB est actif sur le Tarn-et-Garonne depuis 2019. L'inspecteur se déplace, mesure la fissure au fissuromètre, examine le bâti qui la porte et identifie la cause avant toute préconisation. Le rapport documente les mesures et les photographies datées : il sert vos démarches auprès de l'assurance, en particulier dans un dossier de catastrophe naturelle sécheresse. Si des travaux s'imposent, l'orientation se fait vers des entreprises membres du réseau, couvertes par leur propre garantie décennale.",
     quartiersRisque: [
       'Villebourbon (centre ancien)',
       'Aussonne (plateau argileux)',
@@ -1716,3 +1728,48 @@ export function getVillesMemesDepartement(villeSlug: string): string[] {
 
 // Export pour utilisation dans les pages dynamiques
 export type { VilleInfo as VilleData };
+
+// ═══════════════════════════════════════════════════════════════
+// MAPPING VILLE → PAGE DÉPARTEMENT
+// ═══════════════════════════════════════════════════════════════
+// Utilisé par middleware.ts (LOT 3bis, 2026-08) : les villes non prioritaires
+// sont redirigées vers leur page département plutôt que maintenues en noindex.
+// Un noindex ne transmet aucun signal et consomme quand même du budget de crawl.
+const DEPARTEMENT_PATHS: Record<string, string> = {
+  'Haute-Garonne (31)': '/departements/haute-garonne',
+  'Tarn-et-Garonne (82)': '/departements/tarn-et-garonne',
+  'Gers (32)': '/departements/gers',
+  'Tarn (81)': '/departements/tarn',
+  'Ariège (09)': '/departements/ariege',
+  'Aude (11)': '/departements/aude',
+};
+
+/**
+ * Page département d'une ville. Retourne null si la ville est inconnue ou si
+ * son département n'a pas de page dédiée — l'appelant doit alors s'abstenir de
+ * rediriger plutôt que d'envoyer vers une destination approximative.
+ */
+export function departementPath(ville: string): string | null {
+  const dep = villesData[ville]?.departement;
+  return dep ? DEPARTEMENT_PATHS[dep] ?? null : null;
+}
+
+/**
+ * Lien vers la page fissures d'une commune, ou null si elle n'en a plus.
+ *
+ * Depuis le LOT 3bis, seules les villes prioritaires ont une page ; les autres
+ * sont redirigées vers leur département. Les composants qui listent des communes
+ * doivent donc rendre du texte, pas un lien mort — sans quoi on réintroduit des
+ * liens internes vers des 301, ce que le protocole interdit.
+ */
+export function lienVilleFissures(slug: string): string | null {
+  if (!VILLES_PRIORITAIRES_SET.has(slug)) return null;
+  if (slug === 'toulouse') return '/expert-fissures-toulouse-31';
+  return `/expert-fissures/${slug}`;
+}
+
+export function lienVilleHumidite(slug: string): string | null {
+  if (!VILLES_PRIORITAIRES_SET.has(slug)) return null;
+  if (slug === 'toulouse') return '/expert-humidite-toulouse-31';
+  return `/expert-humidite/${slug}`;
+}

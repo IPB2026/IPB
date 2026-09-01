@@ -109,7 +109,8 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Pour comprendre le bon choix technique, lisez notre comparatif <a href="/blog/agrafage-vs-micropieux-choix">agrafage ou micropieux</a>. Et si la cause est la sécheresse, votre commune est peut-être éligible à une prise en charge : voir les <a href="/secheresse-fissures-catastrophe-naturelle">démarches d'indemnisation CAT-NAT</a>.</p>
 
       <h2 id="vendeur-acheteur">Vendeur ou acheteur : la même pièce maîtresse</h2>
-      <p><strong>Côté vendeur</strong>, cacher une fissure est la pire stratégie : l'acheteur la découvrira (ou son notaire l'exigera), et la vente se renégociera dans l'urgence, à votre désavantage — quand elle ne s'annule pas pour vice caché. Un rapport d'expertise remis spontanément désamorce la négociation et protège le prix. C'est tout l'objet de notre page <a href="/vendre-bien-avec-fissures">vendre un bien avec fissures</a>.</p>
+      <p>Côté acquéreur, les points à contrôler avant de signer sont détaillés dans notre guide <a href="/blog/acheter-maison-fissuree">acheter une maison fissurée</a>.</p>
+      <p><strong>Côté vendeur</strong>, cacher une fissure est la pire stratégie : l'acheteur la découvrira (ou son notaire l'exigera), et la vente se renégociera dans l'urgence, à votre désavantage — quand elle ne s'annule pas pour vice caché. Un rapport d'expertise remis spontanément désamorce la négociation et protège le prix. C'est tout l'objet de notre page <a href="/diagnostic-avant-vente">vendre un bien avec fissures</a>.</p>
       <p><strong>Côté acheteur</strong>, faire chiffrer les travaux avant le compromis (ou via une condition suspensive) transforme une peur en argument : vous négociez le montant exact des travaux, pas un pourcentage arbitraire.</p>
 
       <div class="my-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
@@ -265,131 +266,12 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>Vous pouvez invoquer la garantie des vices cachés (art. 1641 du Code civil) si le défaut était antérieur à la vente, non apparent et suffisamment grave. L'action doit être engagée dans les 2 ans à compter de la découverte du vice (art. 1648), dans la limite de 20 ans après la vente. Mais un procès est long et incertain : mieux vaut diagnostiquer avant pour ne jamais en arriver là.</p>
 
       <h3>Vous vendez ce bien plutôt que de l'acheter ?</h3>
-      <p>Le raisonnement s'inverse : anticiper le diagnostic vous permet de désamorcer la négociation avant même qu'elle commence. Lisez notre guide vendeur : <a href="/blog/vendre-maison-fissure-humidite-anticiper">vendre un bien avec fissures ou humidité sans subir la décote</a>.</p>
+      <p>Le raisonnement s'inverse : anticiper le diagnostic vous permet de désamorcer la négociation avant même qu'elle commence. Lisez notre guide vendeur : <a href="/blog/diagnostic-structurel-avant-vente-maison">vendre un bien avec fissures ou humidité sans subir la décote</a>.</p>
 
       <div class="my-10 p-8 bg-ipb-navy rounded-2xl text-center">
         <h2 class="text-white font-bold text-2xl mb-3" style="color:white;">Un bien vous intéresse, mais un doute vous retient ?</h2>
         <p class="text-white/80 mb-6">Faites lire le bâti par un inspecteur IPB avant de signer. Rapport d'inspection clair, chiffrage des travaux, et une décision d'achat prise en connaissance de cause.</p>
         <a href="/diagnostic" class="inline-block bg-ipb-orange text-white font-semibold px-8 py-4 rounded-lg hover:bg-orange-700 transition-colors" style="color:white;">Décrire le bien en 2 minutes →</a>
-      </div>
-    `
-  },
-  'vendre-maison-fissure-humidite-anticiper': {
-    slug: 'vendre-maison-fissure-humidite-anticiper',
-    title: "Vendre un bien avec fissures ou humidité : le dossier qui désamorce la négociation (et vous protège du vice caché)",
-    metaTitle: 'Vendre avec fissures ou humidité : éviter la décote',
-    excerpt: "Cacher une fissure ou une trace d'humidité, c'est s'exposer à une annulation de vente et à des années de procédure. Tout anticiper, au contraire, transforme un point faible en gage de confiance — et vous fait gagner la négociation. La méthode du vendeur averti.",
-    date: '2026-06-12',
-    dateModified: '2026-06-12',
-    readTime: '14 min',
-    category: 'conseils',
-    author: "L'institut IPB",
-    metaDescription: "Vendre une maison avec fissures ou humidité : obligation d'information, risque de vice caché, et la stratégie du dossier de transparence pour préserver le prix. Guide vendeur IPB, Occitanie.",
-    keywords: ['vendre maison fissurée', 'vendre maison humide', 'obligation information vendeur', 'vice caché vendeur', 'décote maison fissures', 'dossier de transparence vente', 'vendre sans procès', 'diagnostic avant vente', 'attestation décennale vente', 'réticence dolosive'],
-    content: `
-      <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
-        <p class="font-bold text-orange-900 mb-2">L'essentiel en 30 secondes</p>
-        <p class="text-orange-800">Face à une fissure ou à de l'humidité, le vendeur a deux options : <strong>les cacher</strong> (et risquer l'annulation de la vente plus des dommages-intérêts pendant des années) ou <strong>les anticiper</strong>. La deuxième gagne presque toujours. En arrivant avec un diagnostic et un chiffrage des travaux, vous reprenez le contrôle du récit : le défaut n'est plus une bombe que l'acheteur découvre, mais un problème connu, mesuré et solvable. Résultat : au lieu d'une décote panique de -20 à -30%, vous limitez l'impact au coût réel des travaux.</p>
-      </div>
-
-      <h2 id="obligation-information">Ce que la loi vous oblige à dire (et ce qui arrive si vous vous taisez)</h2>
-
-      <p>Beaucoup de vendeurs croient qu'en l'absence de diagnostic obligatoire sur la structure et l'humidité, ils n'ont rien à déclarer. C'est une erreur dangereuse. Le Code civil impose deux obligations majeures :</p>
-
-      <ul>
-        <li><strong>L'obligation précontractuelle d'information</strong> (art. 1112-1 du Code civil) : vous devez communiquer à l'acheteur toute information dont vous savez qu'elle est déterminante pour son consentement.</li>
-        <li><strong>La garantie des vices cachés</strong> (art. 1641 et suivants) : si vous laissez l'acheteur découvrir après la vente un défaut grave, antérieur et non apparent, il peut agir contre vous.</li>
-      </ul>
-
-      <p>Pire : si vous <strong>dissimulez sciemment</strong> un désordre que vous connaissez (un coup de peinture sur une fissure, un meuble qui masque une tache d'humidité), vous tombez dans la <strong>réticence dolosive</strong> (art. 1137). Conséquence possible : annulation de la vente, restitution du prix, dommages-intérêts.</p>
-
-      <div class="my-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
-        <h3 class="font-bold text-blue-900 mb-3">Combien de temps êtes-vous exposé ?</h3>
-        <p class="text-blue-800">L'acheteur dispose de <strong>2 ans à compter de la découverte du vice</strong> pour agir en garantie des vices cachés (art. 1648 du Code civil), dans la limite d'un délai butoir de <strong>20 ans après la vente</strong> (art. 2232, confirmé par la Cour de cassation en 2023). Autrement dit, une fissure mal gérée aujourd'hui peut revenir vous hanter très longtemps. La transparence documentée est votre meilleure assurance.</p>
-      </div>
-
-      <h2 id="cacher-vs-anticiper">Cacher ou anticiper : la comparaison qui fait réfléchir</h2>
-
-      <div class="my-8 overflow-x-auto">
-        <table class="w-full border-collapse border border-slate-300">
-          <thead>
-            <tr class="bg-slate-100">
-              <th class="border border-slate-300 p-4 text-left font-bold">Critère</th>
-              <th class="border border-slate-300 p-4 text-center font-bold">Cacher / minimiser</th>
-              <th class="border border-slate-300 p-4 text-center font-bold">Anticiper / documenter</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="border border-slate-300 p-4 font-medium">Découverte par l'acheteur</td>
-              <td class="border border-slate-300 p-4 text-center">En visite ou après vente (panique)</td>
-              <td class="border border-slate-300 p-4 text-center">Annoncée et cadrée par vous</td>
-            </tr>
-            <tr class="bg-slate-50">
-              <td class="border border-slate-300 p-4 font-medium">Décote subie</td>
-              <td class="border border-slate-300 p-4 text-center">-20 à -30% (peur)</td>
-              <td class="border border-slate-300 p-4 text-center">Coût réel des travaux</td>
-            </tr>
-            <tr>
-              <td class="border border-slate-300 p-4 font-medium">Risque juridique</td>
-              <td class="border border-slate-300 p-4 text-center">Élevé (vice caché, dol)</td>
-              <td class="border border-slate-300 p-4 text-center">Fortement réduit</td>
-            </tr>
-            <tr class="bg-slate-50">
-              <td class="border border-slate-300 p-4 font-medium">Position de négociation</td>
-              <td class="border border-slate-300 p-4 text-center">Défensive</td>
-              <td class="border border-slate-300 p-4 text-center">Maîtrisée</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h2 id="dossier-transparence">Le dossier de transparence : votre meilleur outil de vente</h2>
-
-      <p>L'idée est simple : au lieu de laisser l'acheteur (et son expert) découvrir le problème et imaginer le pire, vous arrivez avec un dossier complet qui répond à ses questions avant qu'il ne les pose. Ce dossier contient :</p>
-
-      <ol>
-        <li><strong>Un rapport d'inspection</strong> sur l'état du bâti (fissures et/ou humidité) : nature du désordre, cause, gravité, évolution.</li>
-        <li><strong>Un chiffrage des travaux</strong> nécessaires, établi par une entreprise qualifiée — pour que l'acheteur sache exactement à quoi s'en tenir.</li>
-        <li><strong>Le cas échéant, une attestation de travaux déjà réalisés</strong> sous garantie décennale : c'est l'argument le plus puissant. Un désordre traité et garanti 10 ans n'est plus un risque, c'est un atout.</li>
-      </ol>
-
-      <div class="my-8 p-6 bg-orange-50 border border-orange-200 rounded-xl">
-        <h3 class="font-bold text-orange-900 mb-3">Comment IPB aide le vendeur</h3>
-        <p class="text-orange-800">Un inspecteur IPB lit votre bâti et l'institut vous remet un rapport d'inspection clair, accompagné d'un chiffrage des travaux par le partenaire compétent. Si vous décidez de faire réaliser la reprise (agrafage, drainage, traitement d'humidité), elle est exécutée par les équipes du réseau IPB <strong>sous garantie décennale 10 ans</strong> — l'attestation rejoint alors votre dossier de transparence. Si vous préférez vendre en l'état, vous le faites avec un dossier honnête qui vous protège juridiquement.</p>
-      </div>
-
-      <h2 id="vendre-en-etat-ou-reparer">Vendre en l'état ou réparer avant ? Comment trancher</h2>
-
-      <h3>Vendre en l'état (avec transparence)</h3>
-      <p>Pertinent si vous voulez vendre vite, ou si l'acheteur est un investisseur/marchand de biens qui préfère gérer ses travaux. Vous documentez tout, vous ajustez le prix du montant des travaux, et vous vous protégez du vice caché par la transparence. La décote se limite au coût réel.</p>
-
-      <h3>Réparer avant la vente</h3>
-      <p>Pertinent sur un marché tendu où l'acheteur type est un particulier qui veut "une maison sans souci". Un désordre traité et garanti décennale supprime la décote de peur — et élargit votre marché aux acheteurs qui auraient fui un bien fissuré. Pour le détail de la mécanique de revente, voyez notre guide <a href="/blog/revente-maison-fissuree">vendre une maison fissurée : la décote à -30% et comment l'éviter</a> et, sur le volet protection juridique, <a href="/blog/diagnostic-structurel-avant-vente-maison">diagnostic structurel avant vente</a>.</p>
-
-      <p>Selon le désordre, les travaux peuvent relever de l'<a href="/blog/injection-resine-expansive-fondation">injection de résine expansive</a>, de l'agrafage structurel (voir les <a href="/blog/prix-agrafage-fissures-2026">prix de l'agrafage 2026</a>) ou d'un traitement d'humidité ciblé.</p>
-
-      <h2 id="faq">Questions fréquentes</h2>
-
-      <h3>Suis-je obligé de déclarer une fissure ou de l'humidité à l'acheteur ?</h3>
-      <p>Oui dès lors que vous en avez connaissance et que l'information est déterminante pour le consentement de l'acheteur (art. 1112-1 du Code civil). Taire un désordre connu vous expose à la garantie des vices cachés, voire à la réticence dolosive si la dissimulation est volontaire.</p>
-
-      <h3>Combien de temps puis-je être attaqué après la vente ?</h3>
-      <p>L'acheteur a 2 ans à compter de la découverte du vice pour agir (art. 1648 du Code civil), dans la limite d'un délai butoir de 20 ans après la vente. Un dossier de transparence documenté réduit fortement ce risque, car le défaut n'est alors ni caché, ni ignoré de l'acheteur.</p>
-
-      <h3>Vaut-il mieux baisser le prix ou faire les travaux ?</h3>
-      <p>Cela dépend de votre marché et de votre acheteur cible. Baisser le prix (ou prévoir un séquestre) convient aux investisseurs ; réaliser les travaux sous garantie décennale convient aux particuliers qui veulent un bien sans souci et supprime la décote de peur. Dans les deux cas, la transparence protège la vente.</p>
-
-      <h3>Un rapport d'inspection suffit-il, ou faut-il un rapport opposable ?</h3>
-      <p>Pour informer l'acheteur et chiffrer les travaux, le rapport d'inspection de l'institut est l'outil adapté. Si la vente est déjà conflictuelle ou si un litige est en cours, un rapport opposable établi par un bureau d'études ou un expert indépendant est recommandé — l'institut vous oriente alors vers le bon interlocuteur.</p>
-
-      <h3>Vous êtes plutôt acheteur ?</h3>
-      <p>Le raisonnement s'inverse, et le diagnostic devient un levier de négociation. Voyez notre guide acheteur : <a href="/blog/diagnostic-fissure-humidite-avant-achat">faire diagnostiquer fissures et humidité avant le compromis</a>.</p>
-
-      <div class="my-10 p-8 bg-ipb-navy rounded-2xl text-center">
-        <h2 class="text-white font-bold text-2xl mb-3" style="color:white;">Vous vendez un bien avec un point faible connu ?</h2>
-        <p class="text-white/80 mb-6">Anticipez. Un inspecteur IPB lit le bâti, l'institut vous remet un rapport d'inspection et un chiffrage — de quoi vendre en toute transparence et préserver votre prix.</p>
-        <a href="/diagnostic" class="inline-block bg-ipb-orange text-white font-semibold px-8 py-4 rounded-lg hover:bg-orange-700 transition-colors" style="color:white;">Préparer mon dossier en 2 minutes →</a>
       </div>
     `
   },
@@ -776,7 +658,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Pourquoi ne pas attendre ?</h2>
 
-      <p>En Occitanie, chaque été de sécheresse aggrave les fissures existantes. Les sols argileux se contractent davantage, les fondations bougent, et les fissures s&apos;élargissent. Une <a href="/microfissure-quand-sinquieter" class="text-orange-600 underline hover:text-orange-700">microfissure</a> de 1 mm aujourd&apos;hui peut devenir une <a href="/fissure-en-escalier-causes" class="text-orange-600 underline hover:text-orange-700">fissure en escalier</a> de 5 mm dans 2 ans. Le coût de réparation augmente de <strong>15 à 20% par an</strong> d&apos;attente.</p>
+      <p>En Occitanie, chaque été de sécheresse aggrave les fissures existantes. Les sols argileux se contractent davantage, les fondations bougent, et les fissures s&apos;élargissent. Une <a href="/blog/evaluer-gravite-fissure-maison" class="text-orange-600 underline hover:text-orange-700">microfissure</a> de 1 mm aujourd&apos;hui peut devenir une <a href="/blog/fissures-escalier-tassement-differentiel" class="text-orange-600 underline hover:text-orange-700">fissure en escalier</a> de 5 mm dans 2 ans. Le coût de réparation augmente de <strong>15 à 20% par an</strong> d&apos;attente.</p>
 
       <p>Au-delà du coût, il y a la <strong>sécurité</strong>. Une fissure traversante de plus de 5 mm compromet la stabilité structurelle du mur. En cas de séisme (le bassin toulousain est en zone sismique 1 à 2), un mur fragilisé peut s&apos;effondrer. Et il y a la <strong>valeur de votre patrimoine</strong> : une maison fissurée non traitée perd 15 à 30% de sa valeur à la revente — une perte bien plus lourde que le coût d&apos;un <a href="/expertise/fissures" class="text-orange-600 underline hover:text-orange-700">agrafage structurel</a>.</p>
 
@@ -2180,7 +2062,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     category: 'expertise',
     author: "L'institut IPB",
     metaDescription: 'Sol argileux et sécheresse Haute-Garonne : pourquoi les fondations bougent, le cycle retrait-gonflement, Cat-Nat 2022-2023, solutions (agrafage). Expert Toulouse.',
-    keywords: ['sol argileux', 'sécheresse', 'haute-garonne', 'fondations', 'fissures', 'catastrophe naturelle', 'retrait-gonflement'],
+    keywords: ['sécheresse argile haute-garonne', 'sol argileux haute-garonne', 'fissures sécheresse haute-garonne', 'retrait-gonflement haute-garonne', 'communes argileuses haute-garonne', 'cat nat haute-garonne', 'sécheresse maison 31'],
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
         <p class="font-bold text-orange-900 mb-2">Été 2022-2023 : années record</p>
@@ -2372,6 +2254,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p><strong>Notre conseil d'expert</strong> : Si vous voyez des fissures apparaître après une période de sécheresse, ne les minimisez pas. Un diagnostic précis (déductible des travaux) vous dira si c'est lié au sol argileux, si c'est évolutif, et quelle solution est adaptée. Cette expertise peut aussi servir de base pour un dossier Cat-Nat auprès de votre assurance.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">Le sol argileux ne changera jamais. Votre maison, si.</p>
+      <p>Pendant un épisode caniculaire, le retrait des argiles s'accélère : voir <a href="/actualites/canicule-proteger-maison">ce qui se joue sous la maison pendant un été sec</a>.</p>
     `
   },
   'fissure-facade-reboucher-ou-reparer': {
@@ -2891,6 +2774,13 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p><strong>Important</strong> : Un rapport de <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic professionnel</a> constitue une pièce maîtresse du dossier. Il prouve objectivement la cause structurelle du problème et la responsabilité du propriétaire.</p>
 
+      <h2>Questions fréquentes sur le salpêtre</h2>
+      <h3>Le salpêtre est-il dangereux pour la santé ?</h3>
+      <p>Le salpêtre lui-même — du nitrate de potassium — n'est pas toxique au contact. Ce qu'il signale l'est davantage : sa présence indique un taux d'humidité anormalement élevé, et c'est cette humidité chronique qui pose un problème sanitaire. L'Organisation mondiale de la santé associe les logements humides à une hausse du risque d'asthme et de rhinite allergique, les enfants et les personnes déjà asthmatiques étant les plus exposés. Le salpêtre n'est donc pas à traiter comme une tache, mais comme un signal.</p>
+      <h3>Combien de temps faut-il pour que le mur sèche après le traitement ?</h3>
+      <p>Le mur ne sèche pas du jour au lendemain, et c'est normal. Pendant le premier mois, la résine polymérise et forme la barrière : les remontées cessent, sans rien de visible. Du deuxième au quatrième mois, l'humidité déjà présente dans la maçonnerie s'évapore — un blanchiment de surface peut apparaître, c'est le sel qui migre. Comptez environ un mois de séchage par centimètre d'épaisseur de mur. Refaire les enduits trop tôt est l'erreur classique : elle emprisonne l'humidité résiduelle.</p>
+      <h3>Le salpêtre en copropriété, qui doit payer ?</h3>
+      <p>Cela dépend de l'origine du désordre. Si elle se situe dans les parties communes — façade, fondations, cave commune —, c'est au syndic d'organiser les travaux, financés par le budget de la copropriété. Si le problème est circonscrit aux murs privatifs d'un lot, il revient au propriétaire, sauf s'il est démontré que la cause vient des parties communes. Dans un logement loué, la charge revient au bailleur. C'est précisément ce que tranche un rapport de diagnostic : il désigne l'origine, donc le responsable.</p>
       <h2>Le salpêtre : un problème qui ne se règle pas tout seul</h2>
       
       <p>Le salpêtre est le symptôme visible d'un problème invisible : l'eau qui remonte du sol. Gratter, peindre, déshumidifier... tout ça masque temporairement, mais ne résout rien.</p>
@@ -3449,7 +3339,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     category: 'humidite',
     author: "L'institut IPB",
     metaDescription: 'Injection résine humidité : principe, étapes, efficacité, délai séchage (6-12 mois), garantie 30 ans, prix 2025. Expert traitement humidité Toulouse.',
-    keywords: ['injection résine', 'barrière étanche', 'remontées capillaires', 'humidité', 'salpêtre', 'traitement humidité'],
+    keywords: ['injection résine hydrofuge', 'barrière étanche mur', 'injection mur humide', 'prix injection résine', 'barrière hydrofuge maçonnerie', 'traitement par injection'],
     content: `
       <div class="mb-8 p-6 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg">
         <p class="font-bold text-blue-900 mb-2">Efficacité : 95% sur les remontées capillaires</p>
@@ -3720,263 +3610,6 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p><strong>Notre conseil d'expert</strong> : Si vous voyez du salpêtre au pied de vos murs, ne perdez pas de temps avec des solutions cosmétiques. Un diagnostic précis (déductible des travaux) vous confirmera si c'est une remontée capillaire et vous donnera un devis transparent pour l'injection résine. Une fois traité, vous n'aurez plus jamais ce problème.</p>
 
       <p class="font-bold text-lg text-slate-900 mt-6">L'injection résine : un investissement pour 30 ans de tranquillité.</p>
-    `
-  },
-  'revente-maison-fissuree': {
-    slug: 'revente-maison-fissuree',
-    metaTitle: 'Revente maison fissurée : décote, banque, agrafage | IPB',
-    title: 'Vendre une maison fissurée : la décote à -30% (et comment l\'éviter)',
-    excerpt: 'Une maison fissurée perd 20 à 30% de sa valeur. Les acheteurs paniquent, les banques refusent les prêts. Mais avec un traitement structurel garanti (agrafage + attestation décennale), la revente redevient possible... et parfois PLUS facile que prévu.',
-    date: '2025-10-13',
-    dateModified: '2026-02-04',
-    readTime: '8 min',
-    category: 'conseils',
-    author: "L'institut IPB",
-    metaDescription: 'Revente d\'une maison fissurée : décote 20-30%, refus de prêt, solutions structurelles (agrafage, garantie décennale) et valorisation. Institut expert Occitanie.',
-    keywords: ['revente maison fissurée', 'décote', 'garantie décennale', 'agrafage', 'vente maison fissures', 'diagnostic technique'],
-    content: `
-      <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
-        <p class="font-bold text-orange-900 mb-2">La décote moyenne : -25%</p>
-        <p class="text-orange-800">Une maison perd en moyenne <strong>20 à 30% de sa valeur</strong> si elle présente des fissures structurelles non traitées. Mais si vous la faites réparer AVANT la vente (agrafage + attestation décennale), vous récupérez 80% de la valeur... et parfois même 100%.</p>
-      </div>
-
-      <h2>La réalité du marché : les acheteurs paniquent face aux fissures</h2>
-      
-      <p>Vous mettez votre maison en vente. Les visites se passent bien... jusqu'à ce qu'un acheteur potentiel remarque <strong>cette fissure</strong> sur la façade. Son visage change. Il pose LA question redoutée : <strong>"C'est grave ?"</strong></p>
-
-      <p>Vous minimisez : "Oh, c'est rien, juste l'enduit..." Mais vous voyez dans ses yeux qu'il ne vous croit pas. Il prend des photos, repart, et ne donne plus de nouvelles.</p>
-
-      <p>Il existe une meilleure façon de gérer ce moment : l'anticiper. Notre guide <a href="/blog/vendre-maison-fissure-humidite-anticiper">vendre un bien avec fissures ou humidité : le dossier qui désamorce la négociation</a> détaille la stratégie de transparence qui transforme ce point faible en gage de confiance.</p>
-
-      <p class="font-bold text-lg text-slate-900 my-6">Résultat : Votre maison reste sur le marché 6 mois, 9 mois, 1 an... Et vous finissez par baisser le prix.</p>
-
-      <h2>Pourquoi les acheteurs fuient les maisons fissurées</h2>
-      
-      <h3>Raison n°1 : La peur de l'effondrement</h3>
-      <p>L'acheteur lambda ne fait pas la différence entre une micro-fissure cosmétique et une fissure structurelle. Pour lui, <strong>fissure = danger</strong>. Il imagine le pire : effondrement, travaux pharaoniques, revente impossible.</p>
-
-      <h3>Raison n°2 : Le refus de prêt bancaire</h3>
-      <p>La banque fait inspecter la maison par un expert. Si l'expert signale des fissures structurelles, la banque peut :</p>
-      <ul>
-        <li><strong>Refuser le prêt</strong> (risque hypothécaire trop élevé)</li>
-        <li><strong>Exiger des travaux avant déblocage des fonds</strong></li>
-        <li><strong>Diminuer le montant du prêt</strong> (sous-évaluation du bien)</li>
-      </ul>
-
-      <h3>Raison n°3 : Le vice caché redouté</h3>
-      <p>L'acheteur a peur que vous lui cachiez l'ampleur du problème. Même si vous êtes honnête, <strong>il suppose le pire</strong>. Et juridiquement, il a raison de se méfier : un vice caché peut entraîner l'annulation de la vente.</p>
-
-      <h2>La décote réelle : chiffres du marché 2025</h2>
-      
-      <div class="my-8 overflow-x-auto">
-        <table class="w-full border-collapse border border-slate-300">
-          <thead class="bg-slate-900 text-white">
-            <tr>
-              <th class="border border-slate-300 p-3 text-left">Type de fissure</th>
-              <th class="border border-slate-300 p-3 text-center">Décote moyenne</th>
-              <th class="border border-slate-300 p-3 text-center">Impact sur la valeur</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="border border-slate-300 p-3">Micro-fissures superficielles (< 0,2mm)</td>
-              <td class="border border-slate-300 p-3 text-center text-yellow-700">-5% à -10%</td>
-              <td class="border border-slate-300 p-3 text-center">-5% à -10%</td>
-            </tr>
-            <tr class="bg-slate-50">
-              <td class="border border-slate-300 p-3">Fissures structurelles non traitées</td>
-              <td class="border border-slate-300 p-3 text-center text-red-700 font-bold">-20% à -30%</td>
-              <td class="border border-slate-300 p-3 text-center text-red-700 font-bold">-20% à -30%</td>
-            </tr>
-            <tr>
-              <td class="border border-slate-300 p-3">Fissures réparées SANS garantie</td>
-              <td class="border border-slate-300 p-3 text-center text-orange-700">-10% à -15%</td>
-              <td class="border border-slate-300 p-3 text-center">-10% à -15%</td>
-            </tr>
-            <tr class="bg-slate-50">
-              <td class="border border-slate-300 p-3">Fissures réparées AVEC garantie décennale</td>
-              <td class="border border-slate-300 p-3 text-center text-green-700 font-bold">-0% à -5%</td>
-              <td class="border border-slate-300 p-3 text-center text-green-700 font-bold">0% à -5%</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p class="font-bold text-lg text-slate-900 my-6">Faire réparer AVANT de vendre = récupérer l'essentiel de la décote sur le prix de vente.</p>
-
-      <h2>Vendre "en l'état" : risques juridiques</h2>
-      
-      <h3>L'obligation de déclaration</h3>
-      <p>Vous devez <strong>déclarer les fissures</strong> dans le dossier de diagnostic technique (DDT) et/ou dans le questionnaire de l'acquéreur. Si vous cachez volontairement le problème, c'est un <strong>dol</strong> (vice du consentement) qui peut entraîner :</p>
-      <ul>
-        <li><strong>Annulation de la vente</strong></li>
-        <li><strong>Dommages et intérêts</strong></li>
-        <li><strong>Remboursement des frais d'acte</strong></li>
-      </ul>
-
-      <h3>Le vice caché</h3>
-      <p>Même si vous déclarez les fissures, l'acheteur peut invoquer un <strong>vice caché</strong> s'il découvre que le problème est plus grave que ce que vous aviez dit. Par exemple :</p>
-      <ul>
-        <li>Vous dites "fissure cosmétique" alors que c'est structurel</li>
-        <li>Vous dites "fissure stabilisée" alors qu'elle évolue</li>
-      </ul>
-
-      <p><strong>Délai</strong> : L'acheteur a 2 ans après la découverte pour agir en justice.</p>
-
-      <div class="my-8 p-6 bg-red-50 border-l-4 border-red-600 rounded-r-lg">
-        <p class="font-bold text-red-900 mb-2">Ne tentez jamais de cacher</p>
-        <p class="text-red-800">Reboucher et repeindre pour cacher les fissures avant une vente est une <strong>fraude</strong>. L'expert de la banque ou le diagnostiqueur les détectera (caméra thermique, humidimètre). Et si l'acheteur découvre après l'achat que vous avez maquillé, vous risquez l'annulation de la vente + poursuites.</p>
-      </div>
-
-      <h2>La solution : réparer AVANT de vendre (calcul rentabilité)</h2>
-      
-      <h3>Scénario 1 : Vendre "en l'état"</h3>
-      <ul>
-        <li>Valeur maison saine : au prix du marché local</li>
-        <li>Décote fissures : <strong>-25%</strong></li>
-        <li>Prix de vente réel : <strong>décoté d'autant</strong></li>
-        <li>Perte : <strong>équivalente à cette décote</strong></li>
-      </ul>
-
-      <h3>Scénario 2 : Réparer puis vendre</h3>
-      <ul>
-        <li>Le bien retrouve sa valeur saine</li>
-        <li>Coût agrafage + finitions : sur devis</li>
-        <li>Décote résiduelle : -5% (travaux récents)</li>
-        <li>Le prix de vente reste proche de la valeur saine</li>
-        <li>Net vendeur, une fois les travaux déduits, nettement supérieur</li>
-        <li><strong>Gain net par rapport à une vente en l'état</strong></li>
-      </ul>
-
-      <p class="font-bold text-lg text-slate-900 my-6">Investir dans l'agrafage avant la vente est très rentable : le gain à la revente dépasse largement le coût des travaux.</p>
-
-      <h2>L'argument de vente imparable : l'attestation décennale</h2>
-      
-      <p>Si vous faites réparer les fissures AVANT de vendre, vous aurez un <strong>atout énorme</strong> pour rassurer les acheteurs : <strong>l'attestation de garantie décennale</strong>.</p>
-
-      <h3>Ce que dit cette attestation</h3>
-      <ul>
-        <li>Les travaux ont été réalisés par une entreprise assurée</li>
-        <li>La réparation est <strong>garantie 10 ans</strong></li>
-        <li>En cas de problème, l'assurance de l'entreprise prend en charge</li>
-        <li>La garantie est <strong>transmissible au nouvel acquéreur</strong></li>
-      </ul>
-
-      <p><strong>Impact sur l'acheteur</strong> : Il ne voit plus un "problème", il voit une <strong>maison réparée et garantie</strong>. C'est même un argument de vente : "La maison a été expertisée et les fondations stabilisées avec garantie décennale. Vous achetez en toute sérénité."</p>
-
-      <h2>Cas particulier : vendre avec un diagnostic Cat-Nat en cours</h2>
-      
-      <p>Si votre commune a été classée en <strong>catastrophe naturelle "sécheresse"</strong>, vous pouvez faire jouer votre assurance pour les travaux. Deux options :</p>
-
-      <h3>Option 1 : Faire les travaux avant la vente</h3>
-      <ul>
-        <li>Vous déclarez le sinistre à votre assurance</li>
-        <li>Vous faites réaliser les travaux (agrafage)</li>
-        <li>L'assurance rembourse (une franchise légale reste à votre charge)</li>
-        <li>Vous vendez avec attestation de travaux garantis</li>
-      </ul>
-
-      <h3>Option 2 : Transmettre le dossier à l'acheteur</h3>
-      <ul>
-        <li>Vous déclarez le sinistre</li>
-        <li>Vous vendez avec le dossier Cat-Nat en cours</li>
-        <li>L'acheteur finalise le dossier et fait réaliser les travaux</li>
-        <li><strong>Décote moindre</strong> (l'acheteur sait que l'assurance paie)</li>
-      </ul>
-
-      <h2>Timing : quand faire les travaux ?</h2>
-      
-      <h3>Si vous vendez dans les 6 mois</h3>
-      <p><strong>Faites les travaux MAINTENANT</strong>. Durée agrafage : 3-5 jours. Vous aurez votre attestation décennale en 1 semaine. Vous pourrez mettre la maison en vente avec un argument béton.</p>
-
-      <h3>Si vous vendez dans 1-2 ans</h3>
-      <p><strong>Faites les travaux quand même</strong>. Pourquoi ? Parce que pendant ce temps, les fissures vont s'aggraver. Et plus vous attendez, plus la décote sera forte (et plus les travaux seront coûteux).</p>
-
-      <h2>Comment présenter les travaux aux acheteurs</h2>
-      
-      <h3>Ce qu'il NE faut PAS dire</h3>
-      <p>"La maison avait des fissures, mais on les a réparées. Normalement ça devrait tenir..."</p>
-      <p><strong>Pourquoi c'est mauvais</strong> : Vous mettez l'accent sur le problème ("avait des fissures") et vous semez le doute ("normalement").</p>
-
-      <h3>Ce qu'il FAUT dire</h3>
-      <p>"La maison a fait l'objet d'une expertise structurelle complète en [année]. Les fondations ont été stabilisées par agrafage, avec une garantie décennale transmissible de [X] ans restants. Vous avez l'attestation et le rapport d'expertise complets dans le dossier."</p>
-      <p><strong>Pourquoi c'est bon</strong> : Vous montrez que vous avez été <strong>proactif et responsable</strong>. Vous transformez un point faible en argument de vente (maison expertisée = sérénité).</p>
-
-      <h2>Le cas des maisons en zone Cat-Nat (argument de vente)</h2>
-      
-      <p>Si votre maison est en zone classée "catastrophe naturelle sécheresse", c'est paradoxalement un <strong>argument de vente</strong> si les travaux sont faits :</p>
-
-      <p><strong>Argument</strong> : "Cette maison a subi les conséquences de la sécheresse 2022-2023 (comme 80% des maisons toulousaines). Mais contrairement aux autres, <strong>elle a été réparée</strong>. Vous achetez une maison dont le problème a été traité, alors que vos voisins devront peut-être le faire dans 2-3 ans."</p>
-
-      <h2>Les diagnostics obligatoires avant vente d&apos;une maison fissurée</h2>
-
-      <p>Vendre une maison fissurée sans respecter les obligations d&apos;information expose le vendeur à des <strong>sanctions lourdes</strong>. Ce que vous devez impérativement fournir :</p>
-
-      <h3>Le dossier de diagnostic technique (DDT)</h3>
-      <p>Le DDT est obligatoire pour toute vente immobilière et doit inclure :</p>
-      <ul>
-        <li><strong>Diagnostic de performance énergétique</strong> (DPE)</li>
-        <li><strong>État des risques et pollutions</strong> (ERP) — qui mentionne l&apos;exposition au risque retrait-gonflement des argiles</li>
-        <li><strong>Diagnostic amiante, plomb, termites</strong> selon l&apos;âge du bâtiment</li>
-      </ul>
-      <p>Mais le DDT ne couvre <strong>pas</strong> les fissures structurelles. C&apos;est là que les problèmes commencent.</p>
-
-      <h3>L&apos;obligation de déclaration des fissures</h3>
-      <p>L&apos;article <strong>1112-1 du Code civil</strong> impose au vendeur de communiquer toute information dont l&apos;absence pourrait vicier le consentement de l&apos;acheteur. Des fissures structurelles non déclarées constituent un <strong>vice caché</strong> (article 1641 du Code civil). Les sanctions sont sévères :</p>
-      <ul>
-        <li><strong>Nullité de la vente</strong> : L&apos;acheteur peut demander l&apos;annulation pure et simple de la transaction</li>
-        <li><strong>Réduction du prix</strong> : Le tribunal peut ordonner un remboursement partiel correspondant au coût des réparations</li>
-        <li><strong>Dommages-intérêts</strong> : Si le vendeur connaissait le problème (ce qui est facile à prouver si des fissures sont visibles), l&apos;acheteur peut obtenir la réparation de son préjudice moral et financier</li>
-      </ul>
-      <p><strong>Délai de recours</strong> : L&apos;acheteur dispose de <strong>2 ans</strong> à compter de la découverte du vice pour agir. En pratique, les litiges surviennent souvent après le premier été de sécheresse post-achat.</p>
-
-      <p>Un rapport de <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic structurel</a> annexé à l&apos;acte de vente vous protège : l&apos;acheteur ne pourra pas prétendre qu&apos;il ignorait la situation.</p>
-
-      <h2>Stratégie : vendre en l&apos;état ou réparer avant ?</h2>
-
-      <p>C&apos;est LA question. Voici une analyse chiffrée pour vous aider à décider :</p>
-
-      <h3>Scénario 1 : Vendre en l&apos;état</h3>
-      <ul>
-        <li><strong>Valeur estimée sans fissures</strong> : celle du marché local</li>
-        <li><strong>Décote fissures</strong> : -20% à -30% sur le prix de vente</li>
-        <li><strong>Perte nette</strong> : équivalente à cette décote</li>
-        <li><strong>Délai de vente estimé</strong> : 6 à 12 mois (les acheteurs hésitent, les banques refusent souvent le prêt)</li>
-      </ul>
-
-      <h3>Scénario 2 : Réparer puis vendre</h3>
-      <ul>
-        <li><strong>Coût de l&apos;agrafage</strong> : sur devis</li>
-        <li><strong>Valeur récupérée après travaux</strong> : l'essentiel de la valeur saine (décote résiduelle de 2-5% malgré la garantie décennale)</li>
-        <li><strong>Gain net</strong> : nettement positif par rapport à la vente en l&apos;état</li>
-        <li><strong>Délai de vente estimé</strong> : 2 à 4 mois (l&apos;attestation décennale rassure les acheteurs et les banques)</li>
-      </ul>
-
-      <h3>Le facteur temps</h3>
-      <p>L&apos;agrafage prend <strong>3 à 5 jours</strong>. Le ravalement (si nécessaire) ajoute 1 à 2 semaines. Autrement dit, en un mois vous transformez un bien difficilement vendable en un bien attractif. Chaque mois d&apos;attente sans vendre coûte en charges (taxe foncière, assurance, entretien).</p>
-
-      <h3>Le levier de négociation</h3>
-      <p>Si vous réparez avant la mise en vente, vous pouvez mettre en avant : « Maison expertisée, fondations stabilisées par agrafage, <strong>garantie décennale transmissible</strong>, rapport technique complet inclus dans le dossier ». C&apos;est un argument de vente puissant, surtout en zone Cat-Nat où les acheteurs sont de plus en plus vigilants. Consultez notre guide sur les <a href="/blog/catastrophe-naturelle-secheresse-demarches-indemnisation" class="text-orange-600 underline hover:text-orange-700">démarches d&apos;indemnisation Cat-Nat</a> pour comprendre le financement possible.</p>
-
-      <h2>Réparer avant de vendre : le calcul gagnant</h2>
-      
-      <p>Vendre une maison fissurée "en l'état", c'est :</p>
-      <ul>
-        <li>Perdre 20 à 30% de valeur du bien</li>
-        <li>Attendre des mois avant de trouver un acheteur</li>
-        <li>Risquer des litiges juridiques post-vente</li>
-      </ul>
-
-      <p>Faire réparer AVANT de vendre, c'est :</p>
-      <ul>
-        <li>Récupérer l'essentiel de la valeur (économie nette substantielle)</li>
-        <li>Vendre plus vite (argument attestation décennale)</li>
-        <li>Dormir tranquille (aucun risque de vice caché)</li>
-      </ul>
-
-      <p><strong>Notre conseil d'expert</strong> : Si vous envisagez de vendre dans les 2 ans, faites réaliser un diagnostic structurel maintenant . Vous saurez exactement quels travaux faire, combien ça coûte, et combien vous allez récupérer à la revente. Dans 95% des cas, investir dans l'agrafage avant la vente est <strong>rentable</strong>.</p>
-
-      <p class="font-bold text-lg text-slate-900 mt-6">Une maison réparée + garantie = un argument de vente, pas un boulet.</p>
     `
   },
   'fissure-plafond-que-faire': {
@@ -4758,7 +4391,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Fissures dans le Gers : agir maintenant coûte moins cher</h2>
 
-      <p>Chaque été de sécheresse aggrave les fissures existantes et en crée de nouvelles. Le coût de l&apos;inaction est mesurable : une <a href="/fissure-en-escalier-causes" class="text-orange-600 underline hover:text-orange-700">fissure en escalier</a> de 3 mm traitée aujourd&apos;hui relève d&apos;un simple agrafage. La même fissure à 8 mm dans 3 ans nécessitera des micropieux, une intervention bien plus lourde et bien plus coûteuse.</p>
+      <p>Chaque été de sécheresse aggrave les fissures existantes et en crée de nouvelles. Le coût de l&apos;inaction est mesurable : une <a href="/blog/fissures-escalier-tassement-differentiel" class="text-orange-600 underline hover:text-orange-700">fissure en escalier</a> de 3 mm traitée aujourd&apos;hui relève d&apos;un simple agrafage. La même fissure à 8 mm dans 3 ans nécessitera des micropieux, une intervention bien plus lourde et bien plus coûteuse.</p>
 
       <p>Notre diagnostic vous donne un état précis de la situation : gravité des fissures, cause identifiée, solutions chiffrées. Ce rapport est aussi un atout précieux pour votre dossier d&apos;assurance en cas de <a href="/secheresse-fissures-catastrophe-naturelle" class="text-orange-600 underline hover:text-orange-700">catastrophe naturelle sécheresse</a>.</p>
 
@@ -5070,269 +4703,6 @@ const blogPosts: { [key: string]: BlogPost } = {
     `
   },
 
-  'salpetre-toulouse-traitement-definitif': {
-    slug: 'salpetre-toulouse-traitement-definitif',
-    metaTitle: 'Salpêtre à Toulouse · Traitement Définitif',
-    title: 'Salpêtre à Toulouse : Causes, Diagnostic et Traitement Définitif',
-    excerpt: 'Poudre blanche sur vos murs à Toulouse ? C\'est probablement du salpêtre, signe de remontées capillaires. Découvrez pourquoi les maisons toulousaines sont touchées et comment éliminer ce problème définitivement.',
-    date: '2025-12-22',
-    dateModified: '2026-01-30',
-    readTime: '8 min',
-    category: 'humidite',
-    author: "L'institut IPB",
-    metaDescription: 'Salpêtre Toulouse : expert traitement définitif. Pourquoi les maisons toulousaines sont touchées, solutions injection résine, prix. Diagnostic Haute-Garonne.',
-    keywords: ['salpêtre toulouse', 'salpetre mur toulouse', 'traitement salpêtre 31', 'poudre blanche mur', 'remontée capillaire toulouse', 'humidité mur toulouse'],
-    content: `
-      <div class="mb-8 p-6 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg">
-        <p class="font-bold text-blue-900 mb-2">Vous êtes à Toulouse ou en Haute-Garonne ?</p>
-        <p class="text-blue-800">Ce guide traite spécifiquement du salpêtre dans les maisons de la région toulousaine, avec ses particularités liées au sol argileux et au bâti local.</p>
-      </div>
-
-      <h2>Pourquoi le salpêtre est fréquent à Toulouse ?</h2>
-      
-      <p>Toulouse et sa périphérie présentent des conditions favorables aux remontées capillaires (et donc au salpêtre) :</p>
-
-      <h3>1. Le sol argileux</h3>
-      <p>Le sol toulousain est majoritairement <strong>argileux</strong>. En période de pluie, l'argile retient l'eau comme une éponge. Cette eau remonte ensuite dans les murs par capillarité, transportant les sels minéraux qui formeront le salpêtre.</p>
-
-      <h3>2. Les maisons en brique</h3>
-      <p>Les maisons traditionnelles toulousaines sont construites en <strong>brique de terre cuite</strong>. Ce matériau, bien que noble, est <strong>très poreux</strong>. L'eau remonte plus facilement que dans un mur en béton.</p>
-
-      <h3>3. Les fondations anciennes</h3>
-      <p>Beaucoup de maisons toulousaines datent d'avant les années 1970, époque où les <strong>barrières anti-humidité</strong> n'étaient pas systématiques. Sans cette protection, rien n'empêche l'eau de remonter.</p>
-
-      <h2>Reconnaître le salpêtre dans votre maison</h2>
-
-      <h3>Où le chercher ?</h3>
-      <ul>
-        <li><strong>Bas des murs</strong> : Zone de 0 à 1,5 mètre du sol</li>
-        <li><strong>Caves et sous-sols</strong> : Particulièrement les murs enterrés</li>
-        <li><strong>Garage</strong> : Surtout si en rez-de-chaussée</li>
-        <li><strong>Pièces nord</strong> : Moins de soleil = séchage plus lent</li>
-      </ul>
-
-      <h3>À quoi ça ressemble ?</h3>
-      <ul>
-        <li><strong>Poudre blanche ou grisâtre</strong> qui s'effrite au toucher</li>
-        <li><strong>Cristaux blancs</strong> qui "poussent" sur le mur</li>
-        <li><strong>Auréoles humides</strong> au-dessus desquelles la poudre apparaît</li>
-        <li><strong>Peinture qui cloque</strong> ou s'écaille</li>
-        <li><strong>Enduit qui se décolle</strong> par plaques</li>
-      </ul>
-
-      <h2>Les erreurs à éviter</h2>
-
-      <h3>Gratter le salpêtre</h3>
-      <p>Ça ne sert à rien. Le salpêtre n'est que le symptôme visible. Tant que l'eau continue de monter, il reviendra dans les semaines suivantes.</p>
-
-      <h3>Repeindre par-dessus</h3>
-      <p>La peinture "anti-humidité" ne traite pas le problème. Elle se contentera de cloquer à nouveau dans quelques mois.</p>
-
-      <h3>Poser un revêtement étanche</h3>
-      <p>Certains posent du carrelage ou un enduit étanche en bas de mur. Résultat : l'eau remonte toujours mais ne peut plus s'évaporer. Elle monte plus haut, crée des dégâts sur une plus grande surface, et peut attaquer les structures en bois.</p>
-
-      <h2>Le traitement qui fonctionne : l'injection de résine</h2>
-
-      <p>La seule solution durable contre le salpêtre est de <strong>bloquer les remontées capillaires</strong>. La technique la plus efficace : l'injection de résine hydrophobe.</p>
-
-      <h3>Principe</h3>
-      <ol>
-        <li>On perce des trous espacés de 10-15 cm à la base du mur</li>
-        <li>On injecte une résine hydrophobe (silicone, silane/siloxane)</li>
-        <li>La résine se diffuse dans les pores du matériau</li>
-        <li>Elle crée une <strong>barrière étanche</strong> qui bloque définitivement l'eau</li>
-      </ol>
-
-      <h3>Avantages</h3>
-      <ul>
-        <li><strong>Définitif</strong> : Garantie 10 à 30 ans selon les produits</li>
-        <li><strong>Peu invasif</strong> : Pas de terrassement, pas de gros travaux</li>
-        <li><strong>Rapide</strong> : Intervention en 1-2 jours</li>
-        <li><strong>Efficace sur brique toulousaine</strong> : Particulièrement adapté aux murs poreux</li>
-      </ul>
-
-      <h2>Prix du traitement à Toulouse</h2>
-
-      <div class="my-6 overflow-x-auto">
-        <table class="w-full border-collapse border border-slate-200">
-          <thead class="bg-slate-100">
-            <tr>
-              <th class="border border-slate-200 p-3 text-left">Type de bien</th>
-              <th class="border border-slate-200 p-3 text-left">Linéaire traité</th>
-              <th class="border border-slate-200 p-3 text-left">Prix indicatif</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="border border-slate-200 p-3">Appartement RDC</td>
-              <td class="border border-slate-200 p-3">10-15 mètres</td>
-              <td class="border border-slate-200 p-3">sur devis</td>
-            </tr>
-            <tr>
-              <td class="border border-slate-200 p-3">Maison mitoyenne</td>
-              <td class="border border-slate-200 p-3">20-30 mètres</td>
-              <td class="border border-slate-200 p-3">sur devis</td>
-            </tr>
-            <tr>
-              <td class="border border-slate-200 p-3">Maison 4 façades</td>
-              <td class="border border-slate-200 p-3">40-60 mètres</td>
-              <td class="border border-slate-200 p-3">sur devis</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p><strong>Le diagnostic</strong> : Un inspecteur IPB se déplace, mesure le taux d'humidité, identifie les zones touchées, et vous remet un devis détaillé sans engagement.</p>
-
-      <h2>Quartiers de Toulouse les plus touchés</h2>
-
-      <p>Certains quartiers sont plus concernés par le salpêtre en raison de leur sol, leur exposition ou leur bâti :</p>
-      <ul>
-        <li><strong>Saint-Cyprien</strong> : Proximité Garonne, bâti ancien</li>
-        <li><strong>Saint-Michel</strong> : Maisons anciennes, caves humides</li>
-        <li><strong>Capitole / Carmes</strong> : Immeubles historiques sans barrière étanche</li>
-        <li><strong>Minimes</strong> : Sol argileux, maisons années 70</li>
-        <li><strong>Croix-Daurade</strong> : Terrain argileux sensible</li>
-      </ul>
-
-      <h2>Pourquoi faire appel à IPB ?</h2>
-
-      <ul>
-        <li><strong>Basés à Toulouse</strong> : Nous connaissons les particularités du bâti local</li>
-        <li><strong>Diagnostic</strong> : Mesure hygrométrique, analyse de la situation</li>
-        <li><strong>Produits professionnels</strong> : Résines haute performance, garanties</li>
-        <li><strong>Garantie décennale</strong> : Travaux assurés 10 ans</li>
-        <li><strong>Pas de sur-traitement</strong> : On traite ce qui est nécessaire, pas plus</li>
-      </ul>
-
-      <h2>Salpêtre à Toulouse : le plan d'action</h2>
-
-      <p>Le salpêtre est un problème fréquent dans les maisons toulousaines, mais il se traite efficacement avec les bonnes techniques. L'essentiel est de :</p>
-      <ol>
-        <li>Ne pas masquer le problème (peinture, enduit étanche)</li>
-        <li>Faire diagnostiquer la source exacte d'humidité</li>
-        <li>Traiter avec une injection de résine professionnelle</li>
-      </ol>
-
-      <h2>Le salpêtre est-il dangereux pour la santé ?</h2>
-
-      <p>Le salpêtre (nitrate de potassium, KNO₃) n&apos;est pas toxique en lui-même au contact de la peau. En revanche, sa présence signale un <strong>taux d&apos;humidité anormalement élevé</strong> dans votre logement — et c&apos;est cette humidité chronique qui représente un vrai danger sanitaire.</p>
-
-      <h3>Effets sur le système respiratoire</h3>
-      <p>Selon l&apos;Organisation Mondiale de la Santé (OMS), un logement dont le taux d&apos;humidité dépasse 60% de manière prolongée favorise :</p>
-      <ul>
-        <li><strong>Les infections respiratoires récurrentes</strong> : bronchites, rhinites, sinusites chroniques</li>
-        <li><strong>L&apos;aggravation de l&apos;asthme</strong> : les crises sont 2 à 3 fois plus fréquentes dans un logement humide</li>
-        <li><strong>Les allergies aux acariens</strong> : les acariens prolifèrent au-delà de 65% d&apos;humidité relative</li>
-        <li><strong>Les douleurs articulaires</strong> : rhumatismes aggravés par l&apos;humidité ambiante</li>
-      </ul>
-
-      <div class="my-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-        <p class="font-bold text-red-800">Populations vulnérables</p>
-        <p class="text-red-700">Les enfants de moins de 5 ans, les personnes asthmatiques et les personnes âgées sont particulièrement exposés. Une étude de l&apos;INSERM montre que les enfants vivant dans un logement humide ont <strong>40% de risques supplémentaires</strong> de développer de l&apos;asthme avant 7 ans.</p>
-      </div>
-
-      <p>En Occitanie, les maisons toulousaines construites avant 1960 sont souvent dépourvues de barrière anti-humidité dans les fondations. Résultat : les remontées capillaires créent un environnement idéal pour le salpêtre <strong>et</strong> pour les moisissures associées. Un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic professionnel</a> permet de mesurer précisément le taux d&apos;humidité et d&apos;identifier la source du problème.</p>
-
-      <h2>Combien de temps pour que le mur sèche après traitement ?</h2>
-
-      <p>Après une <a href="/remontees-capillaires-traitement" class="text-orange-600 underline hover:text-orange-700">injection de résine</a>, le mur ne sèche pas du jour au lendemain. Il faut comprendre le processus pour éviter toute déception :</p>
-
-      <h3>Le calendrier réaliste de séchage</h3>
-      <ul>
-        <li><strong>Semaines 1 à 4</strong> : La résine polymérise et crée la barrière étanche. Les remontées capillaires cessent. Aucun changement visible.</li>
-        <li><strong>Mois 2 à 4</strong> : L&apos;humidité résiduelle commence à s&apos;évaporer. Vous pouvez constater un blanchiment de la surface du mur.</li>
-        <li><strong>Mois 4 à 8</strong> : Le taux d&apos;humidité baisse significativement. Les mesures à l&apos;humidimètre montrent une amélioration nette.</li>
-        <li><strong>Mois 8 à 12</strong> : Le mur atteint un taux d&apos;humidité normal (inférieur à 5%). C&apos;est à ce stade que vous pouvez appliquer un enduit de rénovation.</li>
-      </ul>
-
-      <p><strong>Règle de base</strong> : comptez environ <strong>1 mois de séchage par centimètre d&apos;épaisseur de mur</strong>. Un mur en pierre de 40 cm à Toulouse prendra donc 10 à 14 mois pour sécher complètement, contre 6 à 8 mois pour un mur en brique de 20 cm.</p>
-
-      <div class="my-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-        <p class="font-bold text-blue-800">Erreur fréquente à Toulouse</p>
-        <p class="text-blue-700">Ne posez <strong>jamais</strong> un enduit étanche (type enduit ciment) avant séchage complet. L&apos;humidité résiduelle serait piégée dans le mur et provoquerait des cloques, voire un décollement total de l&apos;enduit. Utilisez un enduit à la chaux, perméable à la vapeur d&apos;eau, qui laisse le mur respirer pendant le séchage.</p>
-      </div>
-
-      <h2>Salpêtre vs moisissures : comment les différencier ?</h2>
-
-      <p>Salpêtre et moisissures apparaissent souvent dans les mêmes environnements humides, mais ce sont deux problèmes <strong>fondamentalement différents</strong> qui nécessitent des traitements distincts.</p>
-
-      <h3>Identifier visuellement</h3>
-      <div class="my-8 overflow-x-auto">
-        <table class="w-full border-collapse border border-slate-300">
-          <thead>
-            <tr class="bg-slate-100">
-              <th class="border border-slate-300 px-4 py-2 text-left">Critère</th>
-              <th class="border border-slate-300 px-4 py-2 text-left">Salpêtre</th>
-              <th class="border border-slate-300 px-4 py-2 text-left">Moisissures</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="border border-slate-300 px-4 py-2"><strong>Couleur</strong></td>
-              <td class="border border-slate-300 px-4 py-2">Blanc, cristallin, poudreux</td>
-              <td class="border border-slate-300 px-4 py-2">Noir, vert, gris ou brun</td>
-            </tr>
-            <tr>
-              <td class="border border-slate-300 px-4 py-2"><strong>Texture</strong></td>
-              <td class="border border-slate-300 px-4 py-2">Sec, cristaux friables</td>
-              <td class="border border-slate-300 px-4 py-2">Humide, velouté, parfois visqueux</td>
-            </tr>
-            <tr>
-              <td class="border border-slate-300 px-4 py-2"><strong>Odeur</strong></td>
-              <td class="border border-slate-300 px-4 py-2">Aucune odeur</td>
-              <td class="border border-slate-300 px-4 py-2">Odeur de moisi caractéristique</td>
-            </tr>
-            <tr>
-              <td class="border border-slate-300 px-4 py-2"><strong>Localisation</strong></td>
-              <td class="border border-slate-300 px-4 py-2">Bas des murs (0-80 cm)</td>
-              <td class="border border-slate-300 px-4 py-2">Coins, plafonds, derrière meubles</td>
-            </tr>
-            <tr>
-              <td class="border border-slate-300 px-4 py-2"><strong>Cause principale</strong></td>
-              <td class="border border-slate-300 px-4 py-2">Remontées capillaires</td>
-              <td class="border border-slate-300 px-4 py-2">Condensation ou infiltration</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h3>Traitements différents</h3>
-      <p>Le salpêtre se traite en coupant les remontées capillaires (injection de résine). Les <a href="/moisissures-maison-sante" class="text-orange-600 underline hover:text-orange-700">moisissures</a> se traitent en améliorant la ventilation (VMC/VMI) ou en réparant l&apos;infiltration. Attention : dans les maisons anciennes de Toulouse, il est fréquent de trouver les <strong>deux problèmes simultanément</strong>. Un diagnostic complet permet de cartographier toutes les sources d&apos;humidité et de prioriser les interventions.</p>
-
-      <h2>Comment vérifier que le traitement a fonctionné ?</h2>
-
-      <p>Après l&apos;injection de résine, le mur ne sèche pas du jour au lendemain. Voici comment suivre l&apos;efficacité du traitement :</p>
-
-      <h3>Les 3 premiers mois</h3>
-      <p>Le mur reste humide en surface. C&apos;est <strong>normal</strong> : l&apos;eau déjà présente dans le mur doit s&apos;évaporer naturellement. La barrière de résine empêche la nouvelle eau de monter, mais l&apos;humidité résiduelle met du temps à partir. Comptez environ <strong>1 mois de séchage par centimètre d&apos;épaisseur de mur</strong>.</p>
-
-      <h3>De 3 à 12 mois</h3>
-      <p>Vous devriez observer une <strong>ligne de démarcation</strong> qui descend progressivement : la partie haute du mur sèche en premier. Le salpêtre cesse d&apos;apparaître au-dessus de cette ligne. C&apos;est le signe que la barrière fonctionne. Utilisez un <strong>hygromètre de contact</strong> (peu coûteux, en magasin de bricolage) pour mesurer : en dessous de 5% d&apos;humidité résiduelle, le mur est sec.</p>
-
-      <h3>Après 12 mois</h3>
-      <p>Le mur doit être sec sur toute sa hauteur. Vous pouvez alors appliquer un <strong>enduit de rénovation</strong> (enduit à la chaux de préférence, qui laisse respirer le mur) et repeindre. Ne refaites <strong>jamais</strong> les finitions avant que le mur soit complètement sec, sinon l&apos;humidité résiduelle détruira votre nouveau revêtement.</p>
-
-      <h2>Le salpêtre est-il dangereux pour la santé ?</h2>
-
-      <p>Le salpêtre en lui-même (nitrate de potassium) est peu toxique. Mais l&apos;humidité qui le cause favorise le développement de <a href="/moisissures-maison-sante" class="text-orange-600 underline hover:text-orange-700">moisissures</a> dont les spores sont dangereuses pour les voies respiratoires. L&apos;OMS estime que vivre dans un logement humide augmente de <strong>40% le risque d&apos;asthme</strong> et de 30% celui de rhinite allergique. Les enfants et les personnes asthmatiques sont les plus vulnérables. Si vous voyez du salpêtre, vérifiez aussi la présence de moisissures cachées derrière les meubles ou sous les plinthes.</p>
-
-      <h2>Salpêtre en copropriété : qui est responsable ?</h2>
-
-      <p>En copropriété, le traitement du salpêtre dépend de l&apos;origine du problème :</p>
-
-      <ul>
-        <li><strong>Parties communes</strong> (façade, fondations, cave commune) : le <strong>syndic</strong> doit organiser les travaux, financés par le budget copropriété</li>
-        <li><strong>Parties privatives</strong> (murs intérieurs d&apos;un appartement) : à la charge du <strong>propriétaire</strong>, sauf si la cause vient des parties communes</li>
-        <li><strong>Logement loué</strong> : le <strong>propriétaire-bailleur</strong> est responsable (article 6 de la loi du 6 juillet 1989). Le locataire peut exiger des travaux sous peine de réduction de loyer</li>
-      </ul>
-
-      <p>Dans tous les cas, un <a href="/diagnostic" class="text-orange-600 underline hover:text-orange-700">diagnostic professionnel</a> permet d&apos;identifier la source exacte et de déterminer les responsabilités.</p>
-
-      <p class="font-bold text-lg text-slate-900 mt-6">Salpêtre à Toulouse ? Diagnostic : 05 82 95 33 75</p>
-    `
-  },
-
   'fissures-maison-tarn-et-garonne-solutions': {
     slug: 'fissures-maison-tarn-et-garonne-solutions',
     metaTitle: 'Fissures Maison Tarn-et-Garonne · Solutions',
@@ -5533,7 +4903,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>Tout arrêté de catastrophe naturelle affectant la commune doit être mentionné dans l&apos;<strong>état des risques (ERP)</strong></li>
         <li>En cas de dissimulation, l&apos;acheteur peut invoquer un <strong>vice caché</strong> et demander l&apos;annulation de la vente ou une réduction du prix</li>
       </ul>
-      <p>Dans le Tarn-et-Garonne, où de nombreuses communes (Montauban, Castelsarrasin, Moissac, Valence-d&apos;Agen) ont été reconnues en état de catastrophe naturelle sécheresse, cette obligation est particulièrement surveillée. Un <a href="/blog/revente-maison-fissuree" class="text-orange-600 underline hover:text-orange-700">rapport d&apos;expertise</a> sécurise juridiquement la transaction pour les deux parties.</p>
+      <p>Dans le Tarn-et-Garonne, où de nombreuses communes (Montauban, Castelsarrasin, Moissac, Valence-d&apos;Agen) ont été reconnues en état de catastrophe naturelle sécheresse, cette obligation est particulièrement surveillée. Un <a href="/blog/prix-maison-fissuree" class="text-orange-600 underline hover:text-orange-700">rapport d&apos;expertise</a> sécurise juridiquement la transaction pour les deux parties.</p>
 
       <h2>Le rôle de l&apos;expert indépendant vs l&apos;expert d&apos;assurance</h2>
 
@@ -5577,7 +4947,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <p>À Montauban, une maison fissurée sans traitement subit une <strong>décote de 15 à 30%</strong> de sa valeur. En comparaison, un agrafage complet reste un investissement largement rentable au regard de la valeur préservée.</p>
 
-      <p>De plus, depuis 2023, le <strong>vendeur a l&apos;obligation légale de mentionner les fissures</strong> dans le dossier de diagnostic technique (DDT). Dissimuler un vice structurel expose à l&apos;annulation de la vente ou à des dommages-intérêts pouvant dépasser le prix des travaux. Consultez notre guide sur la <a href="/blog/revente-maison-fissuree" class="text-orange-600 underline hover:text-orange-700">revente d&apos;une maison fissurée</a> pour en savoir plus.</p>
+      <p>De plus, depuis 2023, le <strong>vendeur a l&apos;obligation légale de mentionner les fissures</strong> dans le dossier de diagnostic technique (DDT). Dissimuler un vice structurel expose à l&apos;annulation de la vente ou à des dommages-intérêts pouvant dépasser le prix des travaux. Consultez notre guide sur la <a href="/blog/prix-maison-fissuree" class="text-orange-600 underline hover:text-orange-700">revente d&apos;une maison fissurée</a> pour en savoir plus.</p>
 
       <h2>Les erreurs à ne surtout pas commettre</h2>
 
@@ -5619,8 +4989,8 @@ const blogPosts: { [key: string]: BlogPost } = {
       'fissures sécheresse assurance',
       'sinistre sécheresse démarches',
       'expertise fissures cat nat',
-      'cat nat haute-garonne',
-      'cat nat toulouse',
+      'refus indemnisation sécheresse',
+      'délai déclaration cat nat',
       'retrait gonflement argiles indemnisation'
     ],
     content: `
@@ -6423,7 +5793,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <p>C'est <strong>la garantie la plus puissante</strong>. Elle couvre pendant 10 ans tous les dommages qui compromettent la solidité de l'ouvrage ou le rendent impropre à sa destination. Les fissures structurelles en font partie.</p>
 
       <ul>
-        <li><strong>Ce qu'elle couvre</strong> : <a href="/fissure-en-escalier-causes" class="text-orange-600 underline hover:text-orange-700">fissures en escalier</a>, <a href="/fissure-fondation-maison" class="text-orange-600 underline hover:text-orange-700">fissures de fondation</a>, <a href="/fissure-horizontale-danger" class="text-orange-600 underline hover:text-orange-700">fissures horizontales</a> sur murs porteurs, tassements différentiels</li>
+        <li><strong>Ce qu'elle couvre</strong> : <a href="/blog/fissures-escalier-tassement-differentiel" class="text-orange-600 underline hover:text-orange-700">fissures en escalier</a>, <a href="/blog/fondations-maison-ancienne-renforcement" class="text-orange-600 underline hover:text-orange-700">fissures de fondation</a>, <a href="/blog/lire-fissures-verticale-horizontale-oblique" class="text-orange-600 underline hover:text-orange-700">fissures horizontales</a> sur murs porteurs, tassements différentiels</li>
         <li><strong>Ce qu'elle ne couvre PAS</strong> : microfissures purement esthétiques (< 0,2 mm), fissures dues à un défaut d'entretien du propriétaire</li>
         <li><strong>Qui est responsable</strong> : le constructeur, l'architecte, le maître d'œuvre, les sous-traitants — tous solidairement</li>
       </ul>
@@ -6448,7 +5818,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h2>Les démarches concrètes en 5 étapes</h2>
 
       <h3>Étape 1 : Documenter les fissures</h3>
-      <p>Photographiez chaque fissure avec une règle graduée pour montrer la largeur. Notez la date d'apparition, la localisation exacte, et si elle évolue (posez un témoin en plâtre ou un <a href="/microfissure-quand-sinquieter" class="text-orange-600 underline hover:text-orange-700">fissuromètre</a>).</p>
+      <p>Photographiez chaque fissure avec une règle graduée pour montrer la largeur. Notez la date d'apparition, la localisation exacte, et si elle évolue (posez un témoin en plâtre ou un <a href="/blog/evaluer-gravite-fissure-maison" class="text-orange-600 underline hover:text-orange-700">fissuromètre</a>).</p>
 
       <h3>Étape 2 : Faire réaliser un diagnostic</h3>
       <p>C'est l'étape la plus importante. Un <strong>expert indépendant</strong> (pas celui du constructeur, pas celui de l'assurance) établit un rapport technique objectif qui identifie les causes et évalue la gravité. Ce rapport est votre arme principale pour les démarches.</p>
@@ -6621,7 +5991,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>Phénomène constant, quelle que soit la saison</li>
       </ul>
 
-      <p><strong>La solution :</strong> l'<a href="/remontee-capillaire-solution" class="text-orange-600 underline hover:text-orange-700">injection de résine hydrophobe</a> dans le mur crée une barrière étanche définitive. Coût : sur devis, selon le linéaire. Garantie 30 ans.</p>
+      <p><strong>La solution :</strong> l'<a href="/blog/humidite-remontee-capillaire-solution" class="text-orange-600 underline hover:text-orange-700">injection de résine hydrophobe</a> dans le mur crée une barrière étanche définitive. Coût : sur devis, selon le linéaire. Garantie 30 ans.</p>
 
       <h3>Cause n°3 : L'infiltration (15% des cas)</h3>
 
@@ -6635,7 +6005,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>La zone humide peut être en <strong>hauteur</strong> (pas seulement en bas du mur)</li>
       </ul>
 
-      <p><strong>La solution :</strong> identifier et colmater le point d'entrée. Cela peut aller d'un simple rejointoiement de fissure à une reprise d'étanchéité de toiture, selon la source. Un <a href="/condensation-ou-infiltration" class="text-orange-600 underline hover:text-orange-700">diagnostic précis</a> est indispensable pour ne pas traiter au mauvais endroit.</p>
+      <p><strong>La solution :</strong> identifier et colmater le point d'entrée. Cela peut aller d'un simple rejointoiement de fissure à une reprise d'étanchéité de toiture, selon la source. Un <a href="/blog/condensation-ou-infiltration" class="text-orange-600 underline hover:text-orange-700">diagnostic précis</a> est indispensable pour ne pas traiter au mauvais endroit.</p>
 
       <h2>Les risques santé : pourquoi c'est urgent dans une chambre</h2>
 
@@ -7871,7 +7241,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     content: `
       <div class="mb-8 p-6 bg-orange-50 border-l-4 border-orange-600 rounded-r-lg">
         <p class="font-bold text-orange-900 mb-2">La responsabilité que vous ignorez en vendant</p>
-        <p class="text-orange-800">En vendant votre maison, vous restez exposé à la garantie des vices cachés : un acheteur qui découvre une fissure structurelle non apparente peut agir contre vous pendant <strong>2 ans à compter de la découverte du vice</strong> (art. 1648 du Code civil), dans la limite d'un <strong>délai butoir de 20 ans après la vente</strong> (art. 2232, confirmé par la Cour de cassation en 2023). Le diagnostic structurel avant vente, documenté, est votre meilleure protection. Pour la stratégie complète côté vendeur — fissures et humidité —, voyez notre guide <a href="/blog/vendre-maison-fissure-humidite-anticiper">le dossier de transparence qui désamorce la négociation</a>.</p>
+        <p class="text-orange-800">En vendant votre maison, vous restez exposé à la garantie des vices cachés : un acheteur qui découvre une fissure structurelle non apparente peut agir contre vous pendant <strong>2 ans à compter de la découverte du vice</strong> (art. 1648 du Code civil), dans la limite d'un <strong>délai butoir de 20 ans après la vente</strong> (art. 2232, confirmé par la Cour de cassation en 2023). Le diagnostic structurel avant vente, documenté, est votre meilleure protection. Pour la stratégie complète côté vendeur — fissures et humidité —, voyez notre guide <a href="/blog/diagnostic-structurel-avant-vente-maison">le dossier de transparence qui désamorce la négociation</a>.</p>
       </div>
 
       <h2>Les 9 diagnostics obligatoires NE couvrent PAS la structure</h2>
@@ -7936,6 +7306,10 @@ const blogPosts: { [key: string]: BlogPost } = {
       </ul>
 
       <p class="font-bold text-lg text-slate-900 my-6">Sans diagnostic structurel, c'est votre parole contre celle de l'acheteur. Avec, c'est un document signé par un expert opposable face à un juge.</p>
+
+      <h2>Le regard de la banque de l'acquéreur</h2>
+      <p>Un point que les vendeurs anticipent rarement : l'acheteur n'est pas seul à examiner le bien. Sa banque le fait aussi. Avant d'accorder un prêt, l'établissement fait généralement expertiser le logement qui sert de garantie. Si cet expert relève des fissures dont l'origine n'est pas établie, le dossier se complique — le financement peut être conditionné à des travaux, minoré, ou refusé.</p>
+      <p>C'est un point de bascule fréquent : la vente n'échoue pas sur le prix, elle échoue sur le financement. Un rapport d'expertise établi <em>avant</em> la mise en vente désamorce cette situation, parce qu'il répond par écrit à la seule question que se pose la banque — ce désordre est-il évolutif, et que coûte sa reprise. Un bien vendu sans ce document reste sensiblement plus longtemps sur le marché, et sa négociation part de l'inquiétude plutôt que d'un chiffrage.</p>
 
       <h2>Combien coûte une expertise structurelle avant vente ?</h2>
 
@@ -8039,7 +7413,7 @@ const blogPosts: { [key: string]: BlogPost } = {
 
       <h2>Pour aller plus loin</h2>
       <ul>
-        <li>Sur la dépréciation d'une maison fissurée et comment l'éviter : <a href="/blog/revente-maison-fissuree">Vendre une maison fissurée : la décote à -30 %</a></li>
+        <li>Sur la dépréciation d'une maison fissurée et comment l'éviter : <a href="/blog/prix-maison-fissuree">Vendre une maison fissurée : la décote à -30 %</a></li>
         <li>Sur la prise en charge par les assurances : <a href="/blog/assurance-fissures-maison-indemnisation">Assurance fissures : comment être indemnisé</a></li>
         <li>Vous êtes acheteur et non vendeur ? Voir notre page <a href="/expertise-avant-achat-immobilier-toulouse">Expertise avant achat immobilier</a></li>
       </ul>
@@ -8315,7 +7689,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     category: 'fissures',
     author: "L'institut IPB",
     metaDescription: "Largeur, forme, sens, évolution : voici la méthode utilisée par l'institut pour qualifier une fissure. Article pédagogique pour comprendre ce que vous voyez sur votre maison avant toute intervention.",
-    keywords: ['fissure dangereuse maison', 'comment évaluer une fissure', 'lire une fissure', 'largeur fissure', 'fissure escalier', 'fissure traversante', 'fissure verticale', 'indices fissure structurelle', 'grille évaluation fissure'],
+    keywords: ['fissure dangereuse maison', 'comment évaluer une fissure', 'largeur fissure', 'fissure traversante', 'quand s\'inquiéter fissure', 'gravité fissure maison', 'indices fissure structurelle', 'grille évaluation fissure', 'microfissure quand s\'inquiéter'],
     content: `
       <p>Une fissure inquiète. La première chose à faire n'est pas de paniquer, ni d'appeler trois artisans pour comparer des devis. C'est de la lire correctement. Voici la méthode utilisée par l'institut pour qualifier une fissure — la même que celle que nous appliquons sur chaque chantier, en quatre critères.</p>
 

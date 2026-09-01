@@ -6,7 +6,9 @@ import { isVillePrioritaire } from '@/app/data/villes-prioritaires';
 import { VilleBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export async function generateStaticParams() {
-  return villeSlugs.map((ville) => ({ ville }));
+  // LOT 3bis : les villes non prioritaires sont redirigées vers leur page
+  // département par le middleware — inutile de les prérendre.
+  return villeSlugs.filter(isVillePrioritaire).map((ville) => ({ ville }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ ville: string }> }): Promise<Metadata> {
@@ -79,9 +81,10 @@ export default async function ExpertHumiditeVillePage({ params }: { params: Prom
         contextField={villeData.specificitesHumidite ? 'specificitesHumidite' : undefined}
         dossierField="dossierTypeHumidite"
         relatedCards={[
+          // LOT 3 : lien croisé vers l'autre service de la MÊME commune.
+          { href: `/expert-fissures/${ville}`, titre: `Fissures à ${villeNom}`, desc: "Lecture de la fissure, cause identifiée, préconisations claires." },
           { href: '/expertise/humidite', titre: 'Notre méthode', desc: "Hygromètre, caméra thermique, rapport d'inspection documenté." },
           { href: '/blog/humidite-remontee-capillaire-solution', titre: 'Remontées capillaires', desc: "Comprendre et traiter ce désordre fréquent en Occitanie." },
-          { href: '/blog/condensation-ou-infiltration', titre: 'Condensation ou infiltration ?', desc: "Identifier la bonne cause avant tout traitement." },
         ]}
       />
     </>

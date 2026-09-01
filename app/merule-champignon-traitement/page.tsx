@@ -139,11 +139,16 @@ export default function MerulePage() {
             <div className="space-y-6">
               <div className="bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20">
                 <div className="relative rounded-2xl overflow-hidden aspect-video bg-ipb-navy-2 mb-4">
+                  {/* `priority` : c'est le visuel du hero, dans le viewport initial et
+                      probablement l'élément LCP de la page. Il partait en lazy-load faute de
+                      prop — le navigateur ne le découvrait qu'après le premier rendu. */}
                   <Image
                     src="/images/merule-sol.webp"
                     alt="Mérule champignon destructeur - IPB"
                     fill
                     className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
                   />
                 </div>
                 <p className="text-center text-red-200 text-sm">

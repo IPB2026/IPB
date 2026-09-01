@@ -82,11 +82,11 @@ export function RelatedLinks({
  * Données de liens pour le maillage interne - Fissures
  */
 export const fissuresRelatedLinks: LinkItem[] = [
-  { href: '/fissure-en-escalier-causes', label: 'Fissures en escalier', description: 'Causes et dangers' },
-  { href: '/fissure-horizontale-danger', label: 'Fissures horizontales', description: 'Risques structurels' },
-  { href: '/microfissure-quand-sinquieter', label: 'Microfissures', description: 'Quand s\'inquiéter ?' },
+  { href: '/blog/fissures-escalier-tassement-differentiel', label: 'Fissures en escalier', description: 'Causes et dangers' },
+  { href: '/blog/lire-fissures-verticale-horizontale-oblique', label: 'Fissures horizontales', description: 'Risques structurels' },
+  { href: '/blog/evaluer-gravite-fissure-maison', label: 'Microfissures', description: 'Quand s\'inquiéter ?' },
   { href: '/secheresse-fissures-catastrophe-naturelle', label: 'Fissures & sécheresse', description: 'Indemnisation CAT-NAT' },
-  { href: '/fissure-fondation-maison', label: 'Fissures de fondation', description: 'Diagnostic et solutions' },
+  { href: '/blog/fondations-maison-ancienne-renforcement', label: 'Fissures de fondation', description: 'Diagnostic et solutions' },
 ];
 
 /**
@@ -95,10 +95,10 @@ export const fissuresRelatedLinks: LinkItem[] = [
 export const humiditeRelatedLinks: LinkItem[] = [
   { href: '/remontees-capillaires-traitement', label: 'Remontées capillaires', description: 'Causes et traitement' },
   { href: '/moisissures-maison-sante', label: 'Moisissures', description: 'Risques santé' },
-  { href: '/cave-humide-solutions', label: 'Cave humide', description: 'Solutions efficaces' },
+  { href: '/blog/humidite-cave-sous-sol', label: 'Cave humide', description: 'Solutions efficaces' },
   { href: '/ponts-thermiques-condensation', label: 'Ponts thermiques', description: 'Condensation' },
   { href: '/salpetre-mur-traitement', label: 'Salpêtre', description: 'Traitement définitif' },
-  { href: '/condensation-ou-infiltration', label: 'Condensation vs infiltration', description: 'Comment différencier' },
+  { href: '/blog/condensation-ou-infiltration', label: 'Condensation vs infiltration', description: 'Comment différencier' },
   { href: '/vmi-ventilation-insufflation', label: 'VMI', description: 'Ventilation mécanique' },
   { href: '/merule-champignon-traitement', label: 'Mérule', description: 'Traitement champignon' },
 ];

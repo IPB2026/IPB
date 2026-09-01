@@ -12,12 +12,10 @@ import { BackButton } from '@/components/ui/BackButton';
  *
  * Logique de routage retour :
  *  - /blog/[slug]            → /blog
- *  - /problemes/[slug]       → /blog
- *  - /actualites/*           → /blog
+ *  - /actualites/[slug]      → /actualites
  *  - /expert-fissures*       → /expertise/fissures
  *  - /expert-mur-porteur*    → /expertise/mur-porteur
  *  - /expert-humidite*       → /expertise/humidite
- *  - /quartiers/[quartier]   → /quartiers
  *  - /departements/[dept]    → /departements
  *  - /villes/[ville]         → /
  *  - /partenaires/*          → /partenaires
@@ -38,20 +36,14 @@ function getBackContext(pathname: string | null): { href: string; label: string 
   if (pathname.startsWith('/blog/') && pathname !== '/blog') {
     return { href: '/blog', label: 'Retour au blog' };
   }
-  if (pathname.startsWith('/problemes/')) {
-    return { href: '/blog', label: 'Retour au blog' };
-  }
-  if (pathname.startsWith('/actualites/')) {
-    return { href: '/blog', label: 'Retour au blog' };
+  if (pathname.startsWith('/actualites/') && pathname !== '/actualites') {
+    return { href: '/actualites', label: 'Retour aux actualités' };
   }
   if (pathname.startsWith('/expert-fissures')) {
     return { href: '/expertise/fissures', label: "Retour à l'expertise fissures" };
   }
   if (pathname.startsWith('/expert-humidite')) {
     return { href: '/expertise/humidite', label: "Retour à l'expertise humidité" };
-  }
-  if (pathname.startsWith('/quartiers/') && pathname !== '/quartiers') {
-    return { href: '/quartiers', label: 'Retour aux quartiers' };
   }
   if (pathname.startsWith('/departements/') && pathname !== '/departements') {
     return { href: '/departements', label: 'Retour aux départements' };
@@ -69,13 +61,10 @@ function getBackContext(pathname: string | null): { href: string; label: string 
   // Pages humidité standalones (slug-based)
   const humidityPages = [
     '/vmi-ventilation-insufflation',
-    '/condensation-ou-infiltration',
     '/moisissures-maison-sante',
     '/salpetre-mur-traitement',
     '/merule-champignon-traitement',
     '/remontees-capillaires-traitement',
-    '/remontee-capillaire-solution',
-    '/cave-humide-solutions',
     '/ponts-thermiques-condensation',
   ];
   if (humidityPages.includes(pathname)) {
@@ -84,10 +73,6 @@ function getBackContext(pathname: string | null): { href: string; label: string 
 
   // Pages fissures standalones
   const fissurePages = [
-    '/microfissure-quand-sinquieter',
-    '/fissure-en-escalier-causes',
-    '/fissure-fondation-maison',
-    '/fissure-horizontale-danger',
     '/secheresse-fissures-catastrophe-naturelle',
     '/agrafage-fissures',
     '/carte-secheresse-occitanie',

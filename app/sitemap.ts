@@ -2,8 +2,6 @@ import { MetadataRoute } from 'next';
 import { blogPostsList } from '@/app/data/blog';
 import { villeSlugs } from '@/app/data/villes';
 import { isVillePrioritaire } from '@/app/data/villes-prioritaires';
-import { problemPages } from '@/app/data/problems';
-import { quartierSlugs } from '@/app/data/quartiers';
 
 // ═══════════════════════════════════════════════════════════════
 // SITEMAP SEO OPTIMISÉ - IPB EXPERTISE
@@ -21,23 +19,19 @@ import { quartierSlugs } from '@/app/data/quartiers';
 // ═══════════════════════════════════════════════════════════════
 
 // 🎯 Pages SPOKE Fissures (Topic Clusters - Hub & Spoke)
+// LOT 2 (2026-08) : 4 spokes retirés — consolidés en 301 vers leurs piliers
+// (cannibalisation). Ne reste que ce qui porte une intention propre.
 const spokeFissuresPages = [
-  'fissure-en-escalier-causes',
-  'fissure-horizontale-danger',
-  'microfissure-quand-sinquieter',
   // 'fissure-secheresse-indemnisation' → 301 vers /secheresse-fissures-catastrophe-naturelle (consolidation audit 2026-07)
-  'fissure-fondation-maison',
   'secheresse-fissures-catastrophe-naturelle',
 ];
 
 // 🎯 Pages SPOKE Humidité (Topic Clusters - Hub & Spoke)
+// LOT 2 (2026-08) : 3 spokes retirés — consolidés en 301 vers leurs piliers.
 const spokeHumiditePages = [
-  'remontee-capillaire-solution',
   'salpetre-mur-traitement',
-  'condensation-ou-infiltration',
   'merule-champignon-traitement',
   'moisissures-maison-sante',
-  'cave-humide-solutions',
   'ponts-thermiques-condensation',
   'remontees-capillaires-traitement',
   'vmi-ventilation-insufflation',
@@ -51,6 +45,7 @@ const eeatPages = [
 
 // 🎯 Pages Trigger Events (Actualités)
 const triggerEventsPages = [
+  'actualites',
   'actualites/arrete-secheresse-2026',
   'actualites/canicule-proteger-maison',
   'actualites/infiltrations-automne-hiver',
@@ -119,12 +114,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/vendre-bien-avec-fissures`,
-      lastModified: recentUpdate,
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
       url: `${baseUrl}/diagnostic-avant-vente`,
       lastModified: recentUpdate,
       changeFrequency: 'monthly',
@@ -173,12 +162,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
     {
-      url: `${baseUrl}/quartiers`,
-      lastModified: recentUpdate,
-      changeFrequency: 'monthly',
-      priority: 0.68,
-    },
-    {
       url: `${baseUrl}/legal/mentions-legales`,
       lastModified: stableDate,
       changeFrequency: 'yearly',
@@ -207,12 +190,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: recentUpdate,
       changeFrequency: 'weekly',
       priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/expert-fissures-montauban-82`,
-      lastModified: contentDate,
-      changeFrequency: 'weekly',
-      priority: 0.85,
     },
     {
       url: `${baseUrl}/expert-humidite-toulouse-31`,
@@ -345,10 +322,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const indexableVilles = villeSlugs.filter(
     (ville) => ville !== 'toulouse' && isVillePrioritaire(ville)
   );
-  // Fissures : Montauban aussi exclu (page statique dédiée /expert-fissures-montauban-82,
-  // le middleware 301 la variante dynamique). L'humidité, elle, garde Montauban :
-  // /expert-humidite/montauban est la seule page humidité de la ville.
-  const indexableVillesFissures = indexableVilles.filter((ville) => ville !== 'montauban');
+  // LOT 3bis : Montauban est aligné sur le schéma dominant — /expert-fissures/montauban
+  // est la canonique, /expert-fissures-montauban-82 part en 301.
+  const indexableVillesFissures = indexableVilles;
 
   const expertFissuresPages: MetadataRoute.Sitemap = indexableVillesFissures.map((ville) => ({
     url: `${baseUrl}/expert-fissures/${ville}`,
@@ -408,8 +384,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...departementPages, 
     ...expertFissuresPages,
     ...expertHumiditePages,
-    // problemesPages et quartiersPages retirés : pages passées en noindex,follow
-    // (élagage 2e vague, audit 2026-07) — un sitemap ne liste pas de noindex.
+    // quartiersPages retiré : pages en noindex,follow (élagage 2026-07) — un
+    // sitemap ne liste pas de noindex. Le silo /problemes/ n'existe plus :
+    // les 13 URL sont redirigées 301 (next.config.js, 2026-08).
     ...blogPages,
   ];
 }

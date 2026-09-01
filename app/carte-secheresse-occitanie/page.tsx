@@ -15,11 +15,14 @@ export const metadata: Metadata = {
   description: "Communes d'Occitanie reconnues CAT-NAT sécheresse depuis 2018. Carte par département, sinistralité, démarches. ☎ 05 82 95 33 75",
   keywords: [
     'carte sécheresse occitanie',
+    'carte retrait gonflement argiles',
+    'carte aléa argile',
+    'aléa argile BRGM',
     'communes catastrophe naturelle haute-garonne',
     'communes RGA tarn-et-garonne',
     'arrêté sécheresse 2022 occitanie',
+    'arrêté catastrophe naturelle occitanie',
     'sinistralité fissures occitanie',
-    'indemnisation sécheresse maison',
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/carte-secheresse-occitanie' },
   openGraph: {

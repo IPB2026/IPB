@@ -1,7 +1,23 @@
 import { Metadata } from 'next';
+import { isVillePrioritaire } from '@/app/data/villes-prioritaires';
 import Link from 'next/link';
 import { Phone, MapPin, CheckCircle, ArrowRight } from 'lucide-react';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
+
+
+/**
+ * Destination finale d'un lien commune (LOT 3bis, 2026-08).
+ *
+ * Les liens pointaient vers /villes/{slug}, redirigé en 301 depuis juin — 28
+ * liens internes vers une URL intermédiaire. On pointe désormais la canonique :
+ * la page ville si la commune est prioritaire, sinon `null` (elle est couverte
+ * par cette page même, on n'affiche pas de lien vers soi).
+ */
+function lienCommune(slug: string): string | null {
+  if (!isVillePrioritaire(slug)) return null;
+  if (slug === 'toulouse') return '/expert-fissures-toulouse-31';
+  return `/expert-fissures/${slug}`;
+}
 
 export const metadata: Metadata = {
   title: 'Expert Fissures & Humidité Tarn-et-Garonne 82 · Rapport 3-5 jours',
@@ -30,6 +46,27 @@ export const metadata: Metadata = {
 };
 
 export default function TarnEtGaronnePage() {
+  const communesDetail = [
+    {
+      nom: 'Caussade',
+      alea: 'moyen',
+      sol: 'Causses calcaires et argiles, aléa RGA variable.',
+      desordre: 'Fissures sur zones argileuses.',
+    },
+    {
+      nom: 'Grisolles',
+      alea: 'moyen',
+      sol: 'Grisolles est implantée sur la basse plaine alluviale du Tarn et sur des molasses argileuses du miocène',
+      desordre: 'À Grisolles, les pavillons construits sur les versants sud (vers Bessens) sont plus exposés au RGA que ceux de la plaine',
+    },
+    {
+      nom: 'Valence-d’Agen',
+      alea: 'moyen',
+      sol: 'Alluvions de la Garonne et molasses argileuses en périphérie.',
+      desordre: 'Fissures localisées hors zones alluviales, sur terrain argileux.',
+    },
+  ];
+
   const villes = [
     { slug: 'montauban', nom: 'Montauban', habitants: '60 000' },
     { slug: 'castelsarrasin', nom: 'Castelsarrasin', habitants: '14 000' },
@@ -165,14 +202,14 @@ export default function TarnEtGaronnePage() {
             Nos interventions dans le Tarn-et-Garonne
           </h2>
           <p className="text-lg text-ipb-muted mb-8 max-w-3xl">
-            IPB intervient dans toutes les communes du département pour le traitement des fissures structurelles et de l'humidité.
+            IPB intervient dans toutes les communes du département pour le traitement des fissures structurelles et de l'humidité. Voir aussi le relevé des <Link href="/carte-secheresse-occitanie" className="underline underline-offset-2 hover:no-underline">communes d'Occitanie reconnues en catastrophe naturelle sécheresse</Link>.
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {villes.map((ville) => (
               <Link
                 key={ville.slug}
-                href={`/villes/${ville.slug}`}
+                href={lienCommune(ville.slug) ?? `/departements/tarn-et-garonne`}
                 className="group p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all border border-ipb-rule hover:border-ipb-rule"
               >
                 <div className="flex items-start justify-between mb-4">
@@ -208,6 +245,38 @@ export default function TarnEtGaronnePage() {
             ))}
           </div>
         </div>
+
+
+      {/* Communes du département — matériau fusionné depuis les pages
+          /expert-fissures/{ville} et /expert-humidite/{ville} consolidées en 301
+          au LOT 3bis (2026-08). Contenu qualitatif uniquement : les champs
+          porteurs de chiffres non sourcés (taux de sinistralité, variations de
+          déclarations) ont été écartés, pas reversés. */}
+      <section className="bg-ipb-white py-16 lg:py-20 border-y border-ipb-rule">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-ipb-text mb-4">
+            Ce que nous observons, commune par commune
+          </h2>
+          <p className="text-lg text-ipb-muted mb-10 max-w-3xl">
+            Le sol ne se comporte pas de la même façon d&apos;une commune à l&apos;autre. Voici,
+            pour les principales, la nature du terrain et le type de désordre qui en découle.
+          </p>
+          <div className="space-y-8">
+            {communesDetail.map((c) => (
+              <div key={c.nom} className="border-l-2 border-ipb-orange pl-6">
+                <div className="flex items-baseline gap-3 mb-2 flex-wrap">
+                  <h3 className="font-serif text-[22px] font-bold text-ipb-text">{c.nom}</h3>
+                  <span className="text-[11px] uppercase tracking-[0.14em] text-ipb-muted">
+                    aléa retrait-gonflement {c.alea}
+                  </span>
+                </div>
+                <p className="text-[14px] leading-[1.85] font-light text-ipb-muted mb-2">{c.sol}.</p>
+                <p className="text-[14px] leading-[1.85] font-light text-ipb-muted">{c.desordre}.</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
         {/* FAQ Section */}
         <div className="bg-ipb-cream py-16">

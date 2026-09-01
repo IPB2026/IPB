@@ -18,7 +18,7 @@ const fissuresPersonas: PersonaCard[] = [
     label: 'Vendeur',
     titre: 'Vous vendez un bien comportant des fissures',
     desc: "Un acheteur s'inquiète, une visite annulée, un compromis suspendu. Notre rapport sécurise la transaction et présente les éléments factuels au notaire.",
-    href: '/vendre-bien-avec-fissures',
+    href: '/diagnostic-avant-vente',
     cta: 'Voir la page vendeur',
   },
   {
@@ -39,7 +39,7 @@ import Image from 'next/image';
 import { ExpertiseFissuresBreadcrumb } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata = {
-  title: { absolute: 'Expertise fissures Toulouse : structurelle ou non · Diagnostic IPB' },
+  title: { absolute: 'Expertise fissures : structurelle ou esthétique | IPB' },
   description: "Une fissure est apparue ? Un inspecteur IPB la mesure au fissuromètre et vous dit si elle est structurelle. Rapport sous 3 à 5 jours. Toulouse et Occitanie. ☎ 05 82 95 33 75",
   keywords: [
     'expert fissures toulouse',
@@ -61,7 +61,7 @@ export const metadata = {
   ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expertise/fissures' },
   openGraph: {
-    title: { absolute: 'Expertise fissures Toulouse : structurelle ou non · Diagnostic IPB' },
+    title: { absolute: 'Expertise fissures : structurelle ou esthétique | IPB' },
     description: "Un inspecteur IPB mesure la fissure au fissuromètre, identifie la cause et vous dit si elle est structurelle. Rapport sous 3 à 5 jours.",
     url: 'https://www.ipb-expertise.fr/expertise/fissures',
     siteName: 'IPB - Institut de Pathologie du Bâtiment',
@@ -151,6 +151,21 @@ export default function FissuresPage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.06}>
                 <h1
+                  className="font-serif text-ipb-text"
+                  style={{
+                    fontSize: 'clamp(40px, 4vw, 62px)',
+                    lineHeight: 1.06,
+                    letterSpacing: '-0.025em',
+                    fontWeight: 700,
+                  }}
+                >
+                  Expertise de fissures : structurelle ou esthétique&nbsp;?
+                </h1>
+                {/* Ancienne seconde ligne du h1, conservée en sous-titre : mêmes
+                    styles typographiques, rendu visuel inchangé. Le h1 porte
+                    désormais le token « expertise fissures » et plus « Toulouse »,
+                    qui appartient à /expert-fissures-toulouse-31. */}
+                <p
                   className="font-serif text-ipb-text mb-8"
                   style={{
                     fontSize: 'clamp(40px, 4vw, 62px)',
@@ -159,9 +174,8 @@ export default function FissuresPage() {
                     fontWeight: 700,
                   }}
                 >
-                  Diagnostic de fissures à Toulouse.<br />
                   <em>Une fissure se lit avant de se réparer.</em>
-                </h1>
+                </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.12}>
                 <p className="text-[15px] leading-[1.9] font-light text-ipb-muted mb-10 max-w-[560px]">
@@ -196,13 +210,17 @@ export default function FissuresPage() {
 
             <RevealOnScroll direction="right" delay={0.1} className="hidden lg:block">
               <div className="relative aspect-[4/5] rounded-[6px] overflow-hidden">
+                {/* Pas de `priority` : ce visuel est en `hidden lg:block`, donc invisible
+                    sous 1024px. Le preload haute priorité qu'émettait `priority` s'appliquait
+                    à tous les viewports et concurrençait le vrai LCP mobile — le h1 — pour une
+                    image jamais affichée. Google indexe mobile-first. Sur desktop l'image reste
+                    chargée normalement : elle est haut dans le DOM, découverte tôt. */}
                 <Image
                   src="/images/fissure-mur-real.webp"
                   alt="Fissure structurelle observée sur une maison en Occitanie — diagnostic IPB"
                   fill
                   sizes="(max-width: 1024px) 0px, 500px"
                   className="object-cover"
-                  priority
                 />
               </div>
             </RevealOnScroll>
@@ -517,10 +535,10 @@ export default function FissuresPage() {
                 {
                   titre: 'Comprendre vos fissures',
                   links: [
-                    { href: '/fissure-en-escalier-causes', label: 'Fissures en escalier : causes et dangers' },
-                    { href: '/fissure-horizontale-danger', label: 'Fissures horizontales : risques structurels' },
-                    { href: '/microfissure-quand-sinquieter', label: "Microfissures : quand s'inquiéter ?" },
-                    { href: '/fissure-fondation-maison', label: 'Fissures de fondation' },
+                    { href: '/blog/fissures-escalier-tassement-differentiel', label: 'Fissures en escalier : causes et dangers' },
+                    { href: '/blog/lire-fissures-verticale-horizontale-oblique', label: 'Fissures horizontales : risques structurels' },
+                    { href: '/blog/evaluer-gravite-fissure-maison', label: "Microfissures : quand s'inquiéter ?" },
+                    { href: '/blog/fondations-maison-ancienne-renforcement', label: 'Fissures de fondation' },
                     { href: '/secheresse-fissures-catastrophe-naturelle', label: 'Fissures de sécheresse & catastrophe naturelle' },
                     { href: '/secheresse-fissures-catastrophe-naturelle', label: 'Fissures & sécheresse : indemnisation' },
                   ],
@@ -545,6 +563,14 @@ export default function FissuresPage() {
                     { href: '/expert-fissures/colomiers', label: 'Expert fissures à Colomiers' },
                     { href: '/expert-fissures/muret', label: 'Expert fissures à Muret' },
                     { href: '/zones-intervention', label: "Toutes nos zones d'intervention" },
+                  ],
+                },
+                {
+                  titre: 'Acheter ou vendre',
+                  links: [
+                    { href: '/blog/acheter-maison-fissuree', label: 'Acheter une maison fissurée' },
+                    { href: '/blog/diagnostic-structurel-avant-vente-maison', label: 'Diagnostic structurel avant vente' },
+                    { href: '/diagnostic-avant-vente', label: 'Diagnostic avant vente' },
                   ],
                 },
               ].map((col, ci) => (

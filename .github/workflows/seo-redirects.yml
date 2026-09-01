@@ -1,0 +1,79 @@
+name: Contrôle des redirections SEO
+
+# Pourquoi ce workflow existe
+# ───────────────────────────
+# Deux chaînes de redirection ont été trouvées en août 2026 par le premier
+# passage du script : une règle de juin pointait /expert-fissures/mazamet, page
+# devenue elle-même source d'une 301 dans un lot ultérieur. Aucune relecture de
+# lot ne pouvait les voir, parce qu'aucune ne regardait les deux règles en même
+# temps.
+#
+# Ce mécanisme est structurel : une règle ancienne pointe une page qu'un lot
+# ultérieur transforme en source. Il se reproduira, et il ne dépend pas de la
+# vigilance de qui écrit le lot suivant. D'où un contrôle automatique plutôt
+# qu'une bonne intention.
+
+on:
+  pull_request:
+    branches: [main]
+  # Contrôle hebdomadaire contre la production : une redirection peut cesser de
+  # fonctionner sans qu'aucun code ne change (config Vercel, DNS, domaine).
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+    inputs:
+      cible:
+        description: Quoi vérifier
+        type: choice
+        default: local
+        options: [local, production]
+
+jobs:
+  local:
+    # Bloquant sur PR. Testé en local et non contre la production : sinon la CI
+    # casse à chaque incident réseau, et un check qui échoue pour de mauvaises
+    # raisons finit par être ignoré.
+    name: Redirections (build local)
+    if: github.event_name == 'pull_request' || inputs.cible == 'local'
+    runs-on: ubuntu-latest
+    env:
+      # Le build ne lit pas la base : les pages publiques sont statiques et les
+      # pages /admin sont dynamiques. Une URL factice suffit à Prisma.
+      DATABASE_URL: postgresql://user:pass@localhost:5432/db
+      AUTH_SECRET: ci-placeholder-not-a-real-secret
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # Prérequis documenté au README : le client Prisma se désynchronise du
+      # schéma après un pull, et le build échoue sur une erreur de types.
+      - run: npx prisma generate
+      - run: npm run build
+      - name: Démarrer le serveur
+        run: |
+          npm start -- -p 3000 &
+          for i in $(seq 1 60); do
+            curl -sf -o /dev/null http://localhost:3000/ && break
+            sleep 2
+          done
+      - name: Vérifier les redirections
+        run: node scripts/verify-redirects.mjs http://localhost:3000
+      - run: npx vitest run
+
+  production:
+    name: Redirections (production)
+    # Ce job échoue légitimement tant que la production est en retard sur la
+    # branche : c'est son rôle. Il ne tourne donc pas par défaut sur un dispatch
+    # manuel, sinon tout run déclenché pendant un développement serait rouge.
+    if: github.event_name == 'schedule' || inputs.cible == 'production'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Vérifier la production
+        run: node scripts/verify-redirects.mjs https://www.ipb-expertise.fr

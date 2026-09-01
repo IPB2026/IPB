@@ -248,7 +248,7 @@ export default function InfiltrationsAutomnePage() {
             </div>
           </div>
           <div className="mt-6 text-center">
-            <Link href="/condensation-ou-infiltration" className="text-blue-600 font-bold hover:underline">
+            <Link href="/blog/condensation-ou-infiltration" className="text-blue-600 font-bold hover:underline">
               En savoir plus : Condensation vs Infiltration →
             </Link>
           </div>
@@ -324,7 +324,7 @@ export default function InfiltrationsAutomnePage() {
               </h3>
               <p className="text-ipb-muted text-sm">Tous les problèmes d'humidité et leurs solutions</p>
             </Link>
-            <Link href="/condensation-ou-infiltration" className="bg-white rounded-xl p-6 shadow-lg border border-ipb-rule hover:border-blue-200 transition-all group">
+            <Link href="/blog/condensation-ou-infiltration" className="bg-white rounded-xl p-6 shadow-lg border border-ipb-rule hover:border-blue-200 transition-all group">
               <h3 className="font-bold text-ipb-text group-hover:text-blue-600 mb-2">
                 🌧️ Condensation ou infiltration ?
               </h3>

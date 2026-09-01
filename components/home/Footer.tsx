@@ -73,9 +73,11 @@ export function Footer() {
                 ['/institut', "L'institut"],
                 ['/avis-clients', 'Avis clients'],
                 ['/blog', 'Blog'],
+                ['/actualites', 'Actualités'],
                 ['/lexique', 'Lexique du bâtiment'],
                 ['/zones-intervention', "Zones d'intervention"],
                 ['/partenaires', 'Pros & partenaires'],
+                ['/rdv-cabinet', 'Rendez-vous au cabinet'],
                 ['/contact', 'Contact'],
               ].map(([href, label]) => (
                 <li key={href}>
