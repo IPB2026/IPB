@@ -1,4 +1,5 @@
 import { TopBar } from '@/components/home/TopBar';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
@@ -9,15 +10,6 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Agences Immobilières Toulouse · Expertise Vente · 5j ouvrés",
   description: "Vente suspendue à une fissure : rapport d'inspection IPB sous 3 à 5 jours ouvrés pour rassurer l'acquéreur. Toulouse, Montauban. ☎ 05 82 95 33 75",
-  keywords: [
-    'partenariat agence immobilière toulouse',
-    'expert fissures pour agence immobilière',
-    'rapport fissure vente immobilière',
-    'expertise pré-vente toulouse',
-    'fissure vente bloquée toulouse',
-    'diagnostic avant achat agence toulouse',
-    'partenaire agent immobilier bâti',
-  ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/partenaires/agences-immobilieres' },
   openGraph: {
     title: "Agences Immobilières · Expertise Vente Toulouse · IPB",
@@ -30,6 +22,7 @@ export const metadata: Metadata = {
 export default function AgencesImmobilieresPage() {
   return (
     <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
+      <BreadcrumbJsonLd path="/partenaires/agences-immobilieres" />
       <TopBar />
       <Navbar />
       <SmartBackBar />

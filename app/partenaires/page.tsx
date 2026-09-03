@@ -1,4 +1,5 @@
 import { TopBar } from '@/components/home/TopBar';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
@@ -11,7 +12,6 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Programme Partenaires Toulouse · Architectes & Pros",
   description: "Partenaire diagnostic des architectes, marchands de biens, agences immobilières Toulouse. Inspection du bâti + rapport. Rapport d'inspection sous 3 à 5 jours. ☎ 05 82 95 33 75",
-  keywords: ['partenariat structure toulouse', 'sous-traitance bureau études', 'partenaire architecte intérieur', 'partenaire marchand de biens', 'partenaire agence immobilière'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/partenaires' },
 };
 
@@ -42,6 +42,7 @@ const partenaires = [
 export default function PartenairesPage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
+      <BreadcrumbJsonLd path="/partenaires" />
       <TopBar />
       <Navbar />
       <SmartBackBar />

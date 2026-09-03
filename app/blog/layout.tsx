@@ -7,15 +7,6 @@ const ogImage = `${site}/images/IPB_Logo_HD.png`;
 export const metadata: Metadata = {
   title: 'Blog Fissures & Humidité · Guides Experts Toulouse',
   description: "Guides techniques sur fissures, humidité, assurance et revente. Agrafage, injection résine. Rapport d'inspection sous 3 à 5 jours. ☎ 05 82 95 33 75",
-  keywords: [
-    'fissures maison',
-    'humidité murs',
-    'diagnostic fissures',
-    'remontées capillaires',
-    'agrafage',
-    'injection résine',
-    'expert bâtiment toulouse',
-  ],
   alternates: {
     canonical: `${site}/blog`,
   },

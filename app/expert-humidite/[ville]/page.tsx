@@ -22,15 +22,6 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
   return {
     title: `Expert Humidité ${villeNom} ${deptCode} · Rapport 3-5 jours`,
     description: `Traitement humidité à ${villeNom} : diagnostic, injection résine, cuvelage. Rapport d'inspection sous 3 à 5 jours. ☎ 05 82 95 33 75`,
-    keywords: [
-      `expert humidité ${ville}`,
-      `diagnostic humidité ${ville}`,
-      `traitement humidité ${ville}`,
-      `injection résine ${ville}`,
-      `cuvelage ${ville}`,
-      `salpêtre ${ville}`,
-      `institut pathologie bâtiment ${ville}`,
-    ],
     alternates: { canonical: `https://www.ipb-expertise.fr/expert-humidite/${ville}` },
     openGraph: {
       title: `Expert Humidité ${villeNom} · Rapport 3-5 jours · IPB`,

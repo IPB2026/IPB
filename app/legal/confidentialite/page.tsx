@@ -1,4 +1,5 @@
 import { TopBar } from '@/components/home/TopBar';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
@@ -19,6 +20,7 @@ export const metadata = {
 export default function ConfidentialitePage() {
   return (
     <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
+      <BreadcrumbJsonLd path="/legal/confidentialite" />
       <TopBar />
       <Navbar />
       <SmartBackBar />

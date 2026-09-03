@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import Link from 'next/link';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
@@ -33,7 +34,6 @@ const COMMUNES_32 = [
 export const metadata: Metadata = {
   title: `Arrêté Sécheresse ${ARRETE_DATE} · CAT-NAT · Délai 10j`,
   description: `Arrêté CAT-NAT sécheresse ${ARRETE_DATE}. Liste communes 31-82-32. Démarches indemnisation, délai 10j. ☎ 05 82 95 33 75`,
-  keywords: ['arrêté sécheresse 2026', 'CAT-NAT', 'catastrophe naturelle', 'fissures sécheresse', 'indemnisation'],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/actualites/arrete-secheresse-2026',
   },
@@ -83,6 +83,7 @@ const jsonLd = {
 export default function ArreteSecheresse2026Page() {
   return (
     <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
+      <BreadcrumbJsonLd path="/actualites/arrete-secheresse-2026" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       
       <TopBar />

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import Link from 'next/link';
 import Image from 'next/image';
 import { TopBar } from '@/components/home/TopBar';
@@ -10,7 +11,6 @@ import { Phone, ArrowRight, ChevronRight, AlertTriangle, CheckCircle, XCircle, C
 export const metadata: Metadata = {
   title: 'Mérule · Reconnaître, Traiter en Urgence · Toulouse',
   description: "⚠️ Mérule (champignon destructeur) : reconnaissance, dangers, traitement professionnel. Intervention 24-48h Toulouse, Montauban, Auch. ☎ 05 82 95 33 75",
-  keywords: ['mérule', 'champignon bois', 'traitement mérule', 'mérule pleureuse', 'pourriture bois'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/merule-champignon-traitement' },
 };
 
@@ -65,6 +65,7 @@ const faqSchema = {
 export default function MerulePage() {
   return (
     <div className="font-sans text-ipb-text bg-white antialiased">
+      <BreadcrumbJsonLd path="/merule-champignon-traitement" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

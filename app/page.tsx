@@ -46,22 +46,6 @@ const homePersonas: PersonaCard[] = [
 export const metadata: Metadata = {
   title: { absolute: "Diagnostic fissures et humidité à Toulouse · Institut IPB" },
   description: "Institut de diagnostic en pathologie du bâtiment à Toulouse : fissures, humidité, inspection avant achat. Un rapport clair, remis sous 3 à 5 jours.",
-  keywords: [
-    'expert fissures Toulouse',
-    'expertise fissures Haute-Garonne',
-    'expert fissure maison Toulouse',
-    'agrafage fissures',
-    'réparation fissures Toulouse',
-    'agrafage fissures Toulouse',
-    'expertise humidité Toulouse',
-    'expertise avant achat immobilier Toulouse',
-    'inspection avant achat Toulouse',
-    'diagnostic avant vente maison Toulouse',
-    'institut pathologie du bâtiment',
-    'expert bâtiment Toulouse',
-    'rapport fissure assurance',
-    'Toulouse', 'Montauban', 'Auch', 'Albi',
-  ],
   openGraph: {
     title: "Diagnostic fissures et humidité à Toulouse · Institut IPB",
     description: "Institut de diagnostic en pathologie du bâtiment à Toulouse : fissures, humidité, inspection avant achat. Un rapport clair, remis sous 3 à 5 jours. Occitanie.",

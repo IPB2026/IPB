@@ -18,14 +18,6 @@ export const metadata: Metadata = {
   // sauter. Sans lui, la formulation dérive vers « expert fissures Toulouse »,
   // tenu par /expert-fissures-toulouse-31 en position 2 — la page qui porte
   // plus de la moitié de l'acquisition non-marque du site. On ne s'en approche pas.
-  keywords: [
-    'expertise sécheresse toulouse',
-    'expert cat nat toulouse',
-    'expertise cat nat haute-garonne',
-    'contre-expertise sécheresse',
-    'déclaration cat nat fissures',
-    'rapport expertise sécheresse assurance',
-  ],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/secheresse-fissures-catastrophe-naturelle',
   },

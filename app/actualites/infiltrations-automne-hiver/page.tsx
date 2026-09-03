@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import Link from 'next/link';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
@@ -12,7 +13,6 @@ import { CloudRain, ArrowRight, Phone, AlertTriangle, CheckCircle, Droplets, Hom
 export const metadata: Metadata = {
   title: 'Infiltrations Automne/Hiver · Diagnostic Toulouse',
   description: "Retour des pluies : détecter et traiter les infiltrations (toiture, façade, fenêtres). Expert humidité Toulouse. ☎ 05 82 95 33 75",
-  keywords: ['infiltration eau', 'infiltration toiture', 'infiltration façade', 'humidité automne', 'fuite toiture'],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/actualites/infiltrations-automne-hiver',
   },
@@ -73,6 +73,7 @@ const jsonLd = {
 export default function InfiltrationsAutomnePage() {
   return (
     <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
+      <BreadcrumbJsonLd path="/actualites/infiltrations-automne-hiver" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       
       <TopBar />

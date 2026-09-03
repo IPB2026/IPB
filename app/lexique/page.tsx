@@ -18,15 +18,6 @@ export const metadata: Metadata = {
   title: { absolute: 'Lexique de la pathologie du bâtiment · Institut IPB' },
   description:
     "Définitions des termes techniques utilisés en pathologie et structure du bâtiment : agrafage, fissuromètre, retrait-gonflement des argiles, micropieux, sous-œuvre. Ressource maintenue par l'institut.",
-  keywords: [
-    'lexique pathologie bâtiment',
-    'définition agrafage structurel',
-    'définition fissuromètre',
-    'glossaire fissures',
-    'vocabulaire structure bâtiment',
-    'à quoi sert un fissuromètre',
-    'définition retrait-gonflement argiles',
-  ],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/lexique',
   },

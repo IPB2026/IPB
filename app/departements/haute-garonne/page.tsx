@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { isVillePrioritaire } from '@/app/data/villes-prioritaires';
 import Link from 'next/link';
 import { Phone, MapPin, CheckCircle, ArrowRight, Shield, Award, Clock } from 'lucide-react';
@@ -26,18 +27,6 @@ function lienCommune(slug: string): string | null {
 export const metadata: Metadata = {
   title: 'Expert Fissures & Humidité Haute-Garonne 31 · Rapport 3-5 jours',
   description: "Expert fissures et humidité Haute-Garonne (Toulouse, Colomiers, Muret). Diagnostic instrumenté, rapport sous 3 à 5 jours. ☎ 05 82 95 33 75",
-  keywords: [
-    'expert fissures haute-garonne',
-    'expert fissures toulouse',
-    'traitement humidité 31',
-    'fissures maison toulouse',
-    'humidité murs haute-garonne',
-    'agrafage fissures 31',
-    'injection résine toulouse',
-    'diagnostic fissures toulouse',
-    'sol argileux toulouse',
-    'sécheresse fissures 31',
-  ],
   openGraph: {
     title: 'Expert Fissures & Humidité Haute-Garonne (31) | IPB',
     description: 'Expert n°1 à Toulouse et en Haute-Garonne. Diagnostic, intervention rapide.',
@@ -176,9 +165,9 @@ export default function HauteGaronnePage() {
           <div className="absolute inset-0 bg-[url('/images/pattern-dots.svg')] opacity-5"></div>
           
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <BreadcrumbJsonLd path="/departements/haute-garonne" />
             <Breadcrumbs
               items={[
-                { label: 'Accueil', href: '/' },
                 { label: 'Départements', href: '/departements' },
                 { label: 'Haute-Garonne (31)', href: '/departements/haute-garonne' },
               ]}

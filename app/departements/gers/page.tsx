@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { isVillePrioritaire } from '@/app/data/villes-prioritaires';
 import Link from 'next/link';
 import { Phone, MapPin, CheckCircle, ArrowRight } from 'lucide-react';
@@ -22,16 +23,6 @@ function lienCommune(slug: string): string | null {
 export const metadata: Metadata = {
   title: 'Expert Fissures & Humidité Gers 32 · Auch · Rapport 3-5 jours',
   description: "Expert fissures et humidité Gers (32) : Auch, Condom, Fleurance. Rapport d'inspection sous 3 à 5 jours. ☎ 05 82 95 33 75",
-  keywords: [
-    'expert fissures gers',
-    'traitement humidité 32',
-    'expert fissures auch',
-    'humidité auch',
-    'expert bâtiment gers',
-    'agrafage fissures 32',
-    'injection résine auch',
-    'diagnostic fissures 32',
-  ],
   openGraph: {
     title: 'Expert Fissures & Humidité Gers (32) | IPB',
     description: 'Intervention rapide à Auch, Condom, Fleurance, L\'Isle-Jourdain.',
@@ -165,9 +156,9 @@ export default function GersPage() {
         <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white py-20">
           <div className="absolute inset-0 bg-black/10"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <BreadcrumbJsonLd path="/departements/gers" />
             <Breadcrumbs
               items={[
-                { label: 'Accueil', href: '/' },
                 { label: 'Départements', href: '/departements' },
                 { label: 'Gers (32)', href: '/departements/gers' },
               ]}

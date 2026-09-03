@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
@@ -10,9 +11,8 @@ import { StatCounter } from '@/components/ui/StatCounter';
 import { googleReviews } from '@/app/data/testimonials';
 
 export const metadata: Metadata = {
-  title: 'Avis Clients IPB · 4.9/5 Google · Toulouse',
+  title: 'Avis clients · 4.9/5 sur Google · Toulouse',
   description: "Avis Google vérifiés en Occitanie : 4.9/5. Diagnostic fissures, humidité, expertise avant achat. Institut de diagnostic en pathologie du bâtiment. ☎ 05 82 95 33 75",
-  keywords: ['avis IPB', 'avis expert fissures toulouse', 'témoignages clients institut', 'IPB expertise avis', 'note google'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/avis-clients' },
   openGraph: {
     title: 'Avis clients · 4.9/5 sur Google · IPB Toulouse',
@@ -24,6 +24,7 @@ export const metadata: Metadata = {
 export default function AvisClientsPage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
+      <BreadcrumbJsonLd path="/avis-clients" />
 
       <TopBar />
       <Navbar />

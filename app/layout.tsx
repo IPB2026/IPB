@@ -46,7 +46,6 @@ export const metadata: Metadata = {
     template: "%s | IPB"
   },
   description: "Institut de diagnostic en pathologie du bâtiment : fissures, humidité, inspection avant achat et diagnostic avant vente. Un rapport clair, remis sous 3 à 5 jours. Toulouse, Montauban, Auch (31-82-32).",
-  keywords: ["expert fissures Toulouse", "expertise humidité Toulouse", "expertise avant achat Toulouse", "inspection avant achat Toulouse", "diagnostic avant vente Toulouse", "agrafage fissures", "réparation fissures Toulouse", "fissures maison", "Montauban", "Auch", "Haute-Garonne", "Tarn-et-Garonne", "Gers", "Tarn", "institut pathologie du bâtiment", "humidité murs"],
   authors: [{ name: "IPB - Institut de Pathologie du Bâtiment" }],
   creator: "IPB",
   publisher: "IPB",

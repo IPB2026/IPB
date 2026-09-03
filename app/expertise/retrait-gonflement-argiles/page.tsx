@@ -10,19 +10,9 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
   title:
-    'Retrait-gonflement des argiles · Pathologie, diagnostic, traitement · IPB',
+    'Retrait-gonflement des argiles · Pathologie, diagnostic, traitement',
   description:
     "Monographie clinique du retrait-gonflement des argiles : mécanisme géotechnique, signes sur le bâti, protocole de diagnostic, options de traitement, reconnaissance catastrophe naturelle. Institut IPB, Toulouse.",
-  keywords: [
-    'retrait-gonflement des argiles',
-    'RGA',
-    'sécheresse fissures',
-    'tassement différentiel argile',
-    'agrafage structurel argile',
-    'micropieux RGA',
-    'sécheresse fissures maison',
-    'sol argileux maison fissures',
-  ],
   alternates: {
     canonical:
       'https://www.ipb-expertise.fr/expertise/retrait-gonflement-argiles',

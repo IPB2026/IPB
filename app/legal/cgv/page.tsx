@@ -1,4 +1,5 @@
 import { TopBar } from '@/components/home/TopBar';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
@@ -32,8 +33,8 @@ export default function CGVPage() {
       <main id="main-content" className="bg-white min-h-screen py-12 md:py-16" role="main" aria-labelledby="page-title">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav aria-label="Fil d'Ariane" className="mb-6">
+            <BreadcrumbJsonLd path="/legal/cgv" />
             <Breadcrumbs items={[
-              { label: 'Accueil', href: '/' },
               { label: 'Conditions Générales de Vente' }
             ]} />
           </nav>

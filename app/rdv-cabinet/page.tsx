@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import Link from 'next/link';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
@@ -9,9 +10,8 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Prendre rendez-vous avec l\'institut · IPB Toulouse',
+  title: 'Prendre rendez-vous au cabinet · Toulouse',
   description: "Un premier échange téléphonique avec l'équipe IPB pour qualifier votre situation. Sans engagement · Réponse sous 48 heures. ☎ 05 82 95 33 75",
-  keywords: ['rendez-vous expert fissures', 'rdv institut bâtiment toulouse', 'consultation expert bâtiment'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/rdv-cabinet' },
   openGraph: {
     title: 'Prendre rendez-vous avec l\'institut IPB',
@@ -24,6 +24,7 @@ export const metadata: Metadata = {
 export default function RdvCabinetPage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
+      <BreadcrumbJsonLd path="/rdv-cabinet" />
       <TopBar />
       <Navbar />
       <SmartBackBar />

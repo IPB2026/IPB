@@ -43,18 +43,6 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
   return {
     title: `Expert Fissures ${villeNom} ${deptCode} · Rapport 3-5 jours`,
     description,
-    keywords: [
-      `expert fissures ${slug}`,
-      `expertise fissure ${slug}`,
-      `fissures maison ${slug}`,
-      `agrafage fissures ${slug}`,
-      `diagnostic fissures ${deptCode}`,
-      `institut pathologie bâtiment ${slug}`,
-      `tassement différentiel ${slug}`,
-      `sol argileux ${slug}`,
-      `RGA ${slug}`,
-      `catastrophe naturelle sécheresse ${slug}`,
-    ],
     alternates: { canonical: canonicalUrl },
     openGraph: {
       title: `Expert Fissures ${villeNom} · Rapport 3-5 jours · IPB`,

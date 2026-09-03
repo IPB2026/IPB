@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import Link from 'next/link';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
@@ -9,7 +10,6 @@ import { Phone, ArrowRight, ChevronRight, Home, CheckCircle, AlertTriangle, Drop
 export const metadata: Metadata = {
   title: 'Ponts Thermiques et Condensation · Solutions Toulouse',
   description: "Moisissures aux angles ? Ponts thermiques = zones froides. Solutions isolation, VMI. Expert Toulouse, Montauban. ☎ 05 82 95 33 75",
-  keywords: ['pont thermique', 'condensation mur', 'moisissures angles', 'isolation thermique'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/ponts-thermiques-condensation' },
 };
 
@@ -45,6 +45,7 @@ const solutions = [
 export default function PontsThermiquesPage() {
   return (
     <div className="font-sans text-ipb-text bg-white antialiased">
+      <BreadcrumbJsonLd path="/ponts-thermiques-condensation" />
       <TopBar />
       <Navbar />
       <SmartBackBar />

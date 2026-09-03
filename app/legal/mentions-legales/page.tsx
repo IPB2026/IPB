@@ -1,4 +1,5 @@
 import { TopBar } from '@/components/home/TopBar';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
@@ -34,8 +35,8 @@ export default function MentionsLegalesPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumbs */}
           <nav aria-label="Fil d'Ariane" className="mb-6">
+            <BreadcrumbJsonLd path="/legal/mentions-legales" />
             <Breadcrumbs items={[
-              { label: 'Accueil', href: '/' },
               { label: 'Mentions Légales' }
             ]} />
           </nav>

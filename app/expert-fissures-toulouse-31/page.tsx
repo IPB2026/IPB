@@ -18,21 +18,6 @@ import { isVillePrioritaire } from '@/app/data/villes-prioritaires';
 export const metadata: Metadata = {
   title: 'Expert Fissures Toulouse 31 · Visite 72h · Rapport 3-5 jours',
   description: "Diagnostic fissures à Toulouse : mesures au fissuromètre, cause identifiée, rapport d'inspection sous 3 à 5 jours. Visite sous 72h. ☎ 05 82 95 33 75",
-  keywords: [
-    'expert fissures toulouse',
-    'expert fissure toulouse',
-    'expertise fissure toulouse',
-    'expert fissure maison toulouse',
-    'expert fissures haute garonne',
-    'agrafage fissures toulouse',
-    'diagnostic fissures toulouse',
-    'fissures maison toulouse',
-    'tassement différentiel toulouse',
-    'sol argileux fissures toulouse',
-    'catastrophe naturelle sécheresse toulouse',
-    'rapport fissure assurance toulouse',
-    'institut pathologie bâtiment toulouse',
-  ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/expert-fissures-toulouse-31' },
   openGraph: {
     title: 'Expert Fissures Toulouse · Rapport 3-5 jours · IPB',

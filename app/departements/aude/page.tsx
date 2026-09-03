@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import Link from 'next/link';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
@@ -9,7 +10,6 @@ import { MapPin, ArrowRight, Phone, CheckCircle, AlertTriangle } from 'lucide-re
 export const metadata: Metadata = {
   title: 'Expert Fissures & Humidité Aude 11 · Carcassonne · Rapport 3-5 jours',
   description: "Expert fissures et humidité Aude (11) : Carcassonne, Narbonne, Castelnaudary. Zone RGA. Rapport d'inspection sous 3 à 5 jours. ☎ 05 82 95 33 75",
-  keywords: ['expert fissures aude', 'expert humidité 11', 'fissures carcassonne', 'humidité narbonne'],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/departements/aude',
   },
@@ -65,6 +65,7 @@ const jsonLd = {
 export default function AudePage() {
   return (
     <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
+      <BreadcrumbJsonLd path="/departements/aude" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       
       <TopBar />

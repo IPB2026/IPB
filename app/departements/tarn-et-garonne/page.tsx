@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { isVillePrioritaire } from '@/app/data/villes-prioritaires';
 import Link from 'next/link';
 import { Phone, MapPin, CheckCircle, ArrowRight } from 'lucide-react';
@@ -22,16 +23,6 @@ function lienCommune(slug: string): string | null {
 export const metadata: Metadata = {
   title: 'Expert Fissures & Humidité Tarn-et-Garonne 82 · Rapport 3-5 jours',
   description: "Expert fissures et humidité 82 (Montauban, Castelsarrasin, Moissac). Zone RGA. Rapport d'inspection sous 3 à 5 jours. Diagnostic 48h. ☎ 05 82 95 33 75",
-  keywords: [
-    'expert fissures tarn-et-garonne',
-    'traitement humidité 82',
-    'expert fissures montauban',
-    'humidité montauban',
-    'expert bâtiment tarn-et-garonne',
-    'agrafage fissures 82',
-    'injection résine montauban',
-    'diagnostic fissures 82',
-  ],
   openGraph: {
     title: 'Expert Fissures & Humidité Tarn-et-Garonne (82) | IPB',
     description: 'Intervention rapide à Montauban, Castelsarrasin, Moissac, Caussade.',
@@ -153,9 +144,9 @@ export default function TarnEtGaronnePage() {
         <div className="relative bg-ipb-orange text-white py-20">
           <div className="absolute inset-0 bg-black/10"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <BreadcrumbJsonLd path="/departements/tarn-et-garonne" />
             <Breadcrumbs
               items={[
-                { label: 'Accueil', href: '/' },
                 { label: 'Départements', href: '/departements' },
                 { label: 'Tarn-et-Garonne (82)', href: '/departements/tarn-et-garonne' },
               ]}

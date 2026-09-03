@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import Link from 'next/link';
 import { Phone, MapPin, CheckCircle, ArrowRight, Mountain, Shield } from 'lucide-react';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
@@ -10,17 +11,6 @@ import { Footer } from '@/components/home/Footer';
 export const metadata: Metadata = {
   title: 'Expert Fissures & Humidité Ariège 09 · Foix · Rapport 3-5 jours',
   description: "Expert fissures et humidité Ariège (09) : Foix, Pamiers, Saint-Girons. Bâti ancien pyrénéen. Rapport d'inspection sous 3 à 5 jours. ☎ 05 82 95 33 75",
-  keywords: [
-    'expert fissures ariège',
-    'expert fissures foix',
-    'traitement humidité 09',
-    'fissures maison pamiers',
-    'humidité murs ariège',
-    'agrafage fissures ariège',
-    'maison pyrénées fissures',
-    'diagnostic fissures ariège',
-    'expertise fissure ariège',
-  ],
   openGraph: {
     title: 'Expert Fissures & Humidité Ariège (09) | IPB',
     description: 'Intervention à Foix, Pamiers, Saint-Girons. Spécialiste bâti pyrénéen.',
@@ -135,9 +125,9 @@ export default function AriegePage() {
           <div className="absolute inset-0 bg-black/10"></div>
           
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <BreadcrumbJsonLd path="/departements/ariege" />
             <Breadcrumbs
               items={[
-                { label: 'Accueil', href: '/' },
                 { label: 'Départements', href: '/departements' },
                 { label: 'Ariège (09)', href: '/departements/ariege' },
               ]}

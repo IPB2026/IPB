@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import Link from 'next/link';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
@@ -9,7 +10,6 @@ import { Phone, ArrowRight, Wind, ChevronRight, Shield, CheckCircle, XCircle, Th
 export const metadata: Metadata = {
   title: 'VMI Ventilation Insufflation · Anti-condensation · Toulouse',
   description: "VMI : solution anti-condensation et moisissures, installée par notre installateur fluides partenaire à Toulouse, Montauban. ☎ 05 82 95 33 75",
-  keywords: ['VMI', 'ventilation insufflation', 'anti condensation', 'VMI prix', 'VMI vs VMC'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/vmi-ventilation-insufflation' },
 };
 
@@ -33,6 +33,7 @@ const comparatif = [
 export default function VMIPage() {
   return (
     <div className="font-sans text-ipb-text bg-white antialiased">
+      <BreadcrumbJsonLd path="/vmi-ventilation-insufflation" />
       <TopBar />
       <Navbar />
       <SmartBackBar />

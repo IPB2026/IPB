@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import Link from 'next/link';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
@@ -13,7 +14,6 @@ export const metadata: Metadata = {
   title: 'Expert Fissures & Humidité Tarn 81 · Albi · Rapport 3-5 jours',
   description:
     'Expert fissures et humidité Tarn (81) : Albi, Castres, Gaillac. Diagnostic instrumenté, rapport 3-5 jours. ☎ 05 82 95 33 75',
-  keywords: ['expert fissures tarn', 'expert humidité 81', 'fissures albi', 'humidité castres'],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/departements/tarn',
   },
@@ -128,6 +128,7 @@ const jsonLd = {
 export default function TarnPage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
+      <BreadcrumbJsonLd path="/departements/tarn" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <TopBar />

@@ -13,17 +13,6 @@ export const metadata: Metadata = {
   title: { absolute: "Expertise avant achat immobilier à Toulouse · Institut IPB" },
   description:
     "Avant de vous engager, une inspection du bâti sans lien avec le vendeur ni l'agence. Rapport remis dans vos délais de rétractation. Visite sous 72h.",
-  keywords: [
-    'expertise avant achat toulouse',
-    'inspection avant achat toulouse',
-    'expertise immobilière toulouse',
-    'avis structurel achat',
-    'contre-expertise avant signature',
-    'clause suspensive expertise',
-    'fissure avant achat toulouse',
-    'expert bâtiment avant achat 31',
-    'rétractation acheteur immobilier',
-  ],
   alternates: {
     canonical:
       'https://www.ipb-expertise.fr/expertise-avant-achat-immobilier-toulouse',

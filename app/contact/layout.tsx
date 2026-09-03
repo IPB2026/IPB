@@ -1,17 +1,8 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Contact · Échanger avec l'institut IPB · Toulouse & Occitanie",
+  title: "Contact · Échanger avec l'institut · Toulouse & Occitanie",
   description: "Une question technique sur des fissures, de l'humidité ou un doute avant un achat ou une vente ? Échangez directement avec l'institut IPB. Réponse sous 48h, devis clair.",
-  keywords: [
-    'contact expert fissures toulouse',
-    'devis fissures toulouse',
-    'expert humidité toulouse',
-    'expertise avant achat toulouse',
-    'institut pathologie bâtiment toulouse',
-    'haute-garonne',
-    '31',
-  ],
   openGraph: {
     title: "Contact · Échanger avec l'institut IPB · Toulouse & Occitanie",
     description: "Une question technique sur des fissures, de l'humidité ou un doute avant un achat ou une vente ? Échangez directement avec l'institut IPB. Réponse sous 48h.",
