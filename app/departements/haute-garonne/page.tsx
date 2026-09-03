@@ -25,7 +25,7 @@ function lienCommune(slug: string): string | null {
 }
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures & Humidité Haute-Garonne 31 · Rapport 3-5 jours',
+  title: "Expert fissures & humidité en Haute-Garonne (31)",
   description: "Expert fissures et humidité Haute-Garonne (Toulouse, Colomiers, Muret). Diagnostic instrumenté, rapport sous 3 à 5 jours. ☎ 05 82 95 33 75",
   openGraph: {
     title: 'Expert Fissures & Humidité Haute-Garonne (31) | IPB',

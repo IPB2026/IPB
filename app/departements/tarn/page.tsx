@@ -11,7 +11,7 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures & Humidité Tarn 81 · Albi · Rapport 3-5 jours',
+  title: "Expert fissures & humidité dans le Tarn (81)",
   description:
     'Expert fissures et humidité Tarn (81) : Albi, Castres, Gaillac. Diagnostic instrumenté, rapport 3-5 jours. ☎ 05 82 95 33 75',
   alternates: {

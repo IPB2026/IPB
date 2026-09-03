@@ -10,9 +10,9 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
   title:
-    'Retrait-gonflement des argiles · Pathologie, diagnostic, traitement',
+    'Retrait-gonflement des argiles · Diagnostic et traitement',
   description:
-    "Monographie clinique du retrait-gonflement des argiles : mécanisme géotechnique, signes sur le bâti, protocole de diagnostic, options de traitement, reconnaissance catastrophe naturelle. Institut IPB, Toulouse.",
+    "Retrait-gonflement des argiles : mécanisme, signes sur le bâti, protocole de diagnostic, traitements et reconnaissance catastrophe naturelle. Toulouse.",
   alternates: {
     canonical:
       'https://www.ipb-expertise.fr/expertise/retrait-gonflement-argiles',

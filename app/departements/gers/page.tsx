@@ -21,7 +21,7 @@ function lienCommune(slug: string): string | null {
 }
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures & Humidité Gers 32 · Auch · Rapport 3-5 jours',
+  title: "Expert fissures & humidité dans le Gers (32)",
   description: "Expert fissures et humidité Gers (32) : Auch, Condom, Fleurance. Rapport d'inspection sous 3 à 5 jours. ☎ 05 82 95 33 75",
   openGraph: {
     title: 'Expert Fissures & Humidité Gers (32) | IPB',

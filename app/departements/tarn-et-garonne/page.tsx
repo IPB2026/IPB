@@ -21,7 +21,7 @@ function lienCommune(slug: string): string | null {
 }
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures & Humidité Tarn-et-Garonne 82 · Rapport 3-5 jours',
+  title: "Expert fissures & humidité en Tarn-et-Garonne (82)",
   description: "Expert fissures et humidité 82 (Montauban, Castelsarrasin, Moissac). Zone RGA. Rapport d'inspection sous 3 à 5 jours. Diagnostic 48h. ☎ 05 82 95 33 75",
   openGraph: {
     title: 'Expert Fissures & Humidité Tarn-et-Garonne (82) | IPB',

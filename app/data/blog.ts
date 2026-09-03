@@ -1084,6 +1084,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'fissures-escalier-tassement-differentiel': {
     slug: 'fissures-escalier-tassement-differentiel',
+    metaTitle: 'Fissures en escalier : le tassement différentiel',
     title: 'Fissures en Escalier : Comprendre le Tassement Différentiel et Agir Avant l\'Aggravation',
     excerpt: 'Ces fissures qui zigzaguent sur votre mur en suivant les joints ne sont pas anodines. Elles racontent une histoire : celle d\'une maison qui se "tord" sous l\'effet d\'un tassement différentiel. Décryptage de ces signaux, évaluer la gravité, et comment stabiliser votre maison à moindre coût.',
     date: '2025-05-26',
@@ -1591,6 +1592,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'ventilation-humidite-condensation': {
     slug: 'ventilation-humidite-condensation',
+    metaTitle: 'VMC ou VMI : quelle ventilation contre l\'humidité ?',
     title: 'VMC, VMI, Ventilation : Le Guide Complet pour Éliminer l\'Humidité de Votre Maison',
     excerpt: 'Moisissures qui reviennent, buée sur les fenêtres, air qui sent le renfermé... Vous avez un problème de ventilation. Mais quelle solution choisir : VMC simple flux, double flux, VMI ? Ce guide expert vous aide à faire le bon choix.',
     date: '2025-06-23',
@@ -1871,6 +1873,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'fissure-ouverture-porte-fenetre': {
     slug: 'fissure-ouverture-porte-fenetre',
+    metaTitle: 'Portes qui coincent : la fissure en cause',
     title: 'Portes qui coincent + fissures : le signal d\'alarme à ne JAMAIS ignorer',
     excerpt: 'Quand une porte frotte ET qu\'une fissure apparaît au même moment, ce n\'est JAMAIS un hasard. C\'est le signe que votre maison bouge. Comment relier ces signaux et stabiliser avant que ça s\'aggrave (et coûte 3x plus cher).',
     date: '2025-07-07',
@@ -2259,6 +2262,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'fissure-facade-reboucher-ou-reparer': {
     slug: 'fissure-facade-reboucher-ou-reparer',
+    metaTitle: 'Fissure de façade : reboucher ou réparer ?',
     title: 'Fissure façade : reboucher ou réparer ? L\'erreur que font 90% des propriétaires',
     excerpt: 'Reboucher sans traiter la cause, c\'est jeter l\'argent par les fenêtres. La fissure revient dans les 6 mois, souvent plus large. La méthode pro pour savoir QUAND reboucher suffit et QUAND il faut réparer structurellement.',
     date: '2025-08-04',
@@ -2532,6 +2536,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'humidite-salpetre-traitement': {
     slug: 'humidite-salpetre-traitement',
+    metaTitle: 'Salpêtre sur les murs : causes et traitement durable',
     title: 'Salpêtre sur vos murs : ce que cette poudre blanche révèle (et comment l\'éliminer définitivement)',
     excerpt: 'Le salpêtre n\'est pas de la moisissure. C\'est le signe visible d\'un problème invisible : l\'eau qui remonte du sol dans vos murs. Comment confirmer le diagnostic, pourquoi le gratter ne sert à rien, et la seule solution qui fonctionne.',
     date: '2025-08-18',
@@ -3034,6 +3039,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'diagnostic-structurel-maison': {
     slug: 'diagnostic-structurel-maison',
+    metaTitle: 'Diagnostic structurel : les 7 points vérifiés',
     title: 'Diagnostic structurel : les 7 choses qu\'un vrai expert vérifie (et que 90% des "pros" oublient)',
     excerpt: 'Un diagnostic à l\'œil nu ne vaut rien. Un vrai expert arrive avec un fissuromètre, un niveau laser, un humidimètre... et 15 ans d\'expérience. Découvrez exactement ce qu\'il observe, mesure, et analyse pour vous dire si votre maison est en danger ou non.',
     date: '2025-09-15',
@@ -6366,6 +6372,7 @@ const blogPosts: { [key: string]: BlogPost } = {
   },
   'expert-batiment-independant-vs-expert-assurance': {
     slug: 'expert-batiment-independant-vs-expert-assurance',
+    metaTitle: 'Expert bâtiment indépendant ou d\'assurance ?',
     title: 'Expert Bâtiment Indépendant vs Expert d\'Assurance : Les Vraies Différences',
     excerpt: 'L\'expert envoyé par votre assurance ne travaille pas pour vous. Comprendre cette différence peut vous faire gagner des milliers d\'euros sur votre indemnisation fissures ou humidité.',
     date: '2026-03-10',

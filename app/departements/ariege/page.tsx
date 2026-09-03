@@ -9,7 +9,7 @@ import { SmartBackBar } from "@/components/ui/SmartBackBar";
 import { Footer } from '@/components/home/Footer';
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures & Humidité Ariège 09 · Foix · Rapport 3-5 jours',
+  title: "Expert fissures & humidité en Ariège (09)",
   description: "Expert fissures et humidité Ariège (09) : Foix, Pamiers, Saint-Girons. Bâti ancien pyrénéen. Rapport d'inspection sous 3 à 5 jours. ☎ 05 82 95 33 75",
   openGraph: {
     title: 'Expert Fissures & Humidité Ariège (09) | IPB',
