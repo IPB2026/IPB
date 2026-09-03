@@ -59,7 +59,7 @@ const departements = [
     slug: 'aude',
     nom: 'Aude',
     code: '11',
-    villes: 'Carcassonne, Narbonne, Castelnaudary, Limoux',
+    villes: 'Carcassonne, Castelnaudary, Limoux, Trèbes',
     badge: null,
   },
 ];
