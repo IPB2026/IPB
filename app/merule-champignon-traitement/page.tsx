@@ -9,8 +9,8 @@ import { Footer } from '@/components/home/Footer';
 import { Phone, ArrowRight, ChevronRight, AlertTriangle, CheckCircle, XCircle, Clock, Shield } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Mérule · Reconnaître, Traiter en Urgence · Toulouse',
-  description: "⚠️ Mérule (champignon destructeur) : reconnaissance, dangers, traitement professionnel. Intervention 24-48h Toulouse, Montauban, Auch. ☎ 05 82 95 33 75",
+  title: 'Mérule et champignons du bâti · Reconnaître et agir',
+  description: "Mérule, coniophore, lenzite, polypore : reconnaître un champignon lignivore, mesurer l'atteinte du bois, savoir quoi faire. Diagnostic en Occitanie. ☎ 05 82 95 33 75",
   alternates: { canonical: 'https://www.ipb-expertise.fr/merule-champignon-traitement' },
 };
 
@@ -21,6 +21,33 @@ const signesReconnaissance = [
   { signe: 'Bois qui s\'effrite', detail: 'Le bois se désagrège au toucher', danger: 'critical' },
   { signe: 'Poudre brune (spores)', detail: 'Dépôt brun-rouille sur les surfaces', danger: 'high' },
   { signe: 'Cordons gris sur les murs', detail: 'Filaments permettant au champignon de se propager', danger: 'critical' },
+];
+
+// La mérule est le plus connu des lignivores, pas le seul. Un propriétaire qui
+// trouve du bois dégradé cherche « mérule » ; il faut qu'il puisse écarter ou
+// confirmer, car le pronostic et l'urgence ne sont pas les mêmes selon l'espèce.
+const autresChampignons = [
+  {
+    nom: 'Coniophore des caves',
+    latin: 'Coniophora puteana',
+    ou: 'Caves, vides sanitaires, planchers bas — partout où le bois reste humide.',
+    signes: 'Bois brun foncé qui se fend en petits cubes, fins filaments jaunes puis bruns.',
+    gravite: "Le plus fréquent des lignivores. Il exige plus d'humidité que la mérule et ne traverse pas les maçonneries : l'atteinte reste localisée.",
+  },
+  {
+    nom: 'Lenzite des poutres',
+    latin: 'Gloeophyllum trabeum',
+    ou: 'Charpentes, menuiseries extérieures, bois exposés aux alternances humide-sec.',
+    signes: 'Consoles brunes à lamelles sous la face du bois, dégradation en profondeur sous une surface saine.',
+    gravite: "Attaque le cœur du bois en laissant l'aspect extérieur intact — une poutre peut être vidée sans que rien ne se voie.",
+  },
+  {
+    nom: 'Polypore des caves',
+    latin: 'Fibroporia vaillantii',
+    ou: 'Bois en contact avec la maçonnerie humide, souvent confondu avec la mérule.',
+    signes: 'Mycélium blanc en éventail, cordons blancs restant souples, fructification en plaques blanches.',
+    gravite: "Proche de la mérule par l'aspect, mais ses cordons restent souples là où ceux de la mérule cassent net — la distinction se fait à l'œil exercé.",
+  },
 ];
 
 const faqSchema = {
@@ -222,6 +249,58 @@ export default function MerulePage() {
         </div>
       </section>
 
+      {/* Les autres lignivores — la page couvre le champ fongique, pas la seule mérule */}
+      <section className="py-20 bg-ipb-stone">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-white text-ipb-text px-4 py-2 rounded-full text-sm font-bold mb-4">
+              Ne pas confondre
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
+              Les autres champignons du bâti
+            </h2>
+            <p className="text-ipb-muted max-w-2xl mx-auto">
+              Tout bois dégradé n&apos;est pas une mérule. Trois autres lignivores se rencontrent
+              couramment en Occitanie, et le pronostic n&apos;est pas le même selon l&apos;espèce :
+              identifier le champignon avant d&apos;engager quoi que ce soit évite autant les
+              traitements inutiles que les urgences manquées.
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            {autresChampignons.map((c, index) => (
+              <div key={index} className="bg-white rounded-3xl p-6 md:p-8 border-2 border-ipb-rule">
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
+                  <h3 className="text-xl font-bold text-ipb-text">{c.nom}</h3>
+                  <span className="text-sm italic text-ipb-muted">{c.latin}</span>
+                </div>
+                <dl className="grid md:grid-cols-3 gap-4 md:gap-6 text-sm">
+                  <div>
+                    <dt className="font-bold text-ipb-text mb-1">Où on le trouve</dt>
+                    <dd className="text-ipb-muted">{c.ou}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-bold text-ipb-text mb-1">Ce qu&apos;on voit</dt>
+                    <dd className="text-ipb-muted">{c.signes}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-bold text-ipb-text mb-1">Ce que ça change</dt>
+                    <dd className="text-ipb-muted">{c.gravite}</dd>
+                  </div>
+                </dl>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-sm text-ipb-muted text-center mt-10 max-w-2xl mx-auto">
+            L&apos;identification se fait sur place, à l&apos;aspect du mycélium, des cordons et de
+            la dégradation du bois, complétée par une mesure d&apos;humidité du support. C&apos;est
+            l&apos;objet du diagnostic : nommer le champignon et mesurer l&apos;atteinte avant
+            d&apos;engager un traitement.
+          </p>
+        </div>
+      </section>
+
       {/* Que faire / Ne pas faire */}
       <section className="py-20 bg-ipb-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -284,10 +363,10 @@ export default function MerulePage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="inline-block bg-ipb-stone text-ipb-text px-4 py-2 rounded-full text-sm font-bold mb-4">
-              Traitement professionnel
+              Protocole de référence
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-ipb-text mb-4">
-              Comment on éradique la mérule
+              Comment se traite une mérule
             </h2>
           </div>
 
@@ -338,7 +417,7 @@ export default function MerulePage() {
             <span className="block text-red-200">Chaque heure compte.</span>
           </h2>
           <p className="text-xl text-red-100 mb-8">
-            IPB intervient dans toute la région Occitanie (31, 82, 32) pour des diagnostics et traitements mérule en urgence.
+            L'institut intervient en Occitanie pour identifier le champignon, mesurer l'étendue de l'atteinte et cadrer le traitement confié à une entreprise spécialisée.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a href="tel:0582953375" className="group bg-white text-red-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-red-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">
