@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import Link from 'next/link';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
@@ -58,7 +59,7 @@ const departements = [
     slug: 'aude',
     nom: 'Aude',
     code: '11',
-    villes: 'Carcassonne, Narbonne, Castelnaudary, Limoux',
+    villes: 'Carcassonne, Castelnaudary, Limoux, Trèbes',
     badge: null,
   },
 ];
@@ -66,6 +67,7 @@ const departements = [
 export default function DepartementsPage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
+      <BreadcrumbJsonLd path="/departements" />
       <TopBar />
       <Navbar />
       <SmartBackBar />

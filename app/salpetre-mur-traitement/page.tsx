@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import Link from 'next/link';
 import Image from 'next/image';
 import { TopBar } from '@/components/home/TopBar';
@@ -10,7 +11,6 @@ import { Phone, ArrowRight, AlertTriangle, Droplets, ChevronRight, Shield, Check
 export const metadata: Metadata = {
   title: 'Salpêtre Mur · Causes et Traitement · Injection Résine',
   description: "⚠️ Salpêtre (poudre blanche) sur vos murs ? Signe de remontées capillaires. Injection résine hydrophobe. ☎ 05 82 95 33 75",
-  keywords: ['salpêtre mur', 'poudre blanche mur', 'nitrate potassium', 'traitement salpêtre', 'humidité murs'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/salpetre-mur-traitement' },
 };
 
@@ -63,6 +63,7 @@ const faqSchema = {
 export default function SalpetrePage() {
   return (
     <div className="font-sans text-ipb-text bg-white antialiased">
+      <BreadcrumbJsonLd path="/salpetre-mur-traitement" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

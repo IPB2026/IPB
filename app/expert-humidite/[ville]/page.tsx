@@ -11,6 +11,15 @@ export async function generateStaticParams() {
   return villeSlugs.filter(isVillePrioritaire).map((ville) => ({ ville }));
 }
 
+
+/** Title de page ville : l'argument délai n'est gardé que s'il tient sous la
+ *  troncature Google, « | IPB » (6 car.) étant ajouté par le layout racine. */
+function titreVille(villeNom: string, deptCode: string): string {
+  const base = `Expert humidité ${villeNom} (${deptCode})`;
+  const avecDelai = `${base} · Rapport 3-5 jours`;
+  return avecDelai.length + 6 <= 60 ? avecDelai : base;
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ ville: string }> }): Promise<Metadata> {
   const { ville } = await params;
   const villeData = villesData[ville];
@@ -20,17 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
   const villeNom = villeData.nom;
 
   return {
-    title: `Expert Humidité ${villeNom} ${deptCode} · Rapport 3-5 jours`,
+    title: titreVille(villeNom, deptCode),
     description: `Traitement humidité à ${villeNom} : diagnostic, injection résine, cuvelage. Rapport d'inspection sous 3 à 5 jours. ☎ 05 82 95 33 75`,
-    keywords: [
-      `expert humidité ${ville}`,
-      `diagnostic humidité ${ville}`,
-      `traitement humidité ${ville}`,
-      `injection résine ${ville}`,
-      `cuvelage ${ville}`,
-      `salpêtre ${ville}`,
-      `institut pathologie bâtiment ${ville}`,
-    ],
     alternates: { canonical: `https://www.ipb-expertise.fr/expert-humidite/${ville}` },
     openGraph: {
       title: `Expert Humidité ${villeNom} · Rapport 3-5 jours · IPB`,

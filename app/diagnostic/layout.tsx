@@ -3,14 +3,6 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: { absolute: 'Pré-diagnostic en ligne (2 min) · Fissures & humidité · IPB Toulouse' },
   description: "Vos fissures inquiètent ? Un inspecteur IPB analyse votre situation et vous dit ce qui relève d'une simple cosmétique ou d'un vrai désordre structurel.",
-  keywords: [
-    'expertise fissures toulouse',
-    'diagnostic humidité toulouse',
-    'diagnostic bâti maison',
-    'institut pathologie bâtiment toulouse',
-    'expert fissures haute-garonne',
-    'rapport fissure assurance',
-  ],
   openGraph: {
     title: 'Pré-diagnostic en ligne (2 min) · Fissures & humidité · IPB Toulouse',
     description: "Vos fissures inquiètent ? Un inspecteur IPB analyse votre situation et vous dit s'il s'agit d'un vrai désordre structurel.",

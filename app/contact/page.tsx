@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
 import { SmartBackBar } from "@/components/ui/SmartBackBar";
@@ -72,6 +73,7 @@ export default function ContactPage() {
 
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
+      <BreadcrumbJsonLd path="/contact" />
       <TopBar />
       <Navbar />
       <SmartBackBar />

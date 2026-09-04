@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import Link from 'next/link';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
@@ -7,9 +8,8 @@ import { Footer } from '@/components/home/Footer';
 import { MapPin, ArrowRight, Phone, CheckCircle, AlertTriangle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Expert Fissures & Humidité Aude 11 · Carcassonne · Rapport 3-5 jours',
-  description: "Expert fissures et humidité Aude (11) : Carcassonne, Narbonne, Castelnaudary. Zone RGA. Rapport d'inspection sous 3 à 5 jours. ☎ 05 82 95 33 75",
-  keywords: ['expert fissures aude', 'expert humidité 11', 'fissures carcassonne', 'humidité narbonne'],
+  title: "Expert fissures & humidité dans l'Aude (11)",
+  description: "Expert fissures et humidité dans l'ouest audois : Carcassonne, Castelnaudary, Limoux, Trèbes. Zone RGA. Rapport sous 3 à 5 jours. ☎ 05 82 95 33 75",
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/departements/aude',
   },
@@ -17,13 +17,9 @@ export const metadata: Metadata = {
 
 const villesAude = [
   { nom: 'Carcassonne', cp: '11000', population: '46000', distance: '95 km' },
-  { nom: 'Narbonne', cp: '11100', population: '55000', distance: '130 km' },
   { nom: 'Castelnaudary', cp: '11400', population: '12000', distance: '60 km' },
   { nom: 'Limoux', cp: '11300', population: '10000', distance: '100 km' },
-  { nom: 'Lézignan-Corbières', cp: '11200', population: '11000', distance: '110 km' },
-  { nom: 'Coursan', cp: '11110', population: '6000', distance: '125 km' },
   { nom: 'Trèbes', cp: '11800', population: '6000', distance: '100 km' },
-  { nom: 'Sigean', cp: '11130', population: '5500', distance: '140 km' },
 ];
 
 const problemesRegion = [
@@ -34,7 +30,7 @@ const problemesRegion = [
   },
   {
     titre: "Humidité Méditerranéenne",
-    description: "Le climat méditerranéen alterne sécheresse et épisodes cévenols violents, causant infiltrations et remontées capillaires.",
+    description: "Entre influence méditerranéenne et pluies d'automne marquées, l'alternance sécheresse-humidité fragilise les maçonneries anciennes.",
     icon: "🌧️"
   },
   {
@@ -65,6 +61,7 @@ const jsonLd = {
 export default function AudePage() {
   return (
     <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
+      <BreadcrumbJsonLd path="/departements/aude" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       
       <TopBar />
@@ -84,7 +81,7 @@ export default function AudePage() {
               <span className="text-amber-400">dans l'Aude</span>
             </h1>
             <p className="text-xl text-white/70 mb-8 max-w-2xl">
-              De Carcassonne à Narbonne, nous intervenons dans tout le département de l'Aude 
+De Castelnaudary à Carcassonne, nous intervenons dans l'ouest et le centre de l'Aude 
               pour diagnostiquer et traiter vos problèmes de fissures et d'humidité.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">

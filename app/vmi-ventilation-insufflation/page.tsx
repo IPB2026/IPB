@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import Link from 'next/link';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
@@ -9,7 +10,6 @@ import { Phone, ArrowRight, Wind, ChevronRight, Shield, CheckCircle, XCircle, Th
 export const metadata: Metadata = {
   title: 'VMI Ventilation Insufflation · Anti-condensation · Toulouse',
   description: "VMI : solution anti-condensation et moisissures, installée par notre installateur fluides partenaire à Toulouse, Montauban. ☎ 05 82 95 33 75",
-  keywords: ['VMI', 'ventilation insufflation', 'anti condensation', 'VMI prix', 'VMI vs VMC'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/vmi-ventilation-insufflation' },
 };
 
@@ -18,7 +18,7 @@ const avantagesVMI = [
   { avantage: 'Supprime les moisissures', detail: 'En supprimant l\'humidité, vous supprimez leur milieu de vie' },
   { avantage: 'Air filtré', detail: 'Filtration des pollens, particules fines et polluants extérieurs' },
   { avantage: 'Air préchauffé', detail: 'L\'air entre à température ambiante, pas de sensation de froid' },
-  { avantage: 'Économies chauffage', detail: 'Jusqu\'à 30% d\'économies en hiver (air sec = air facile à chauffer)' },
+  { avantage: 'Chauffage plus efficace', detail: 'Un air assaini est plus sec, donc plus facile à chauffer que de l\'air humide' },
   { avantage: 'Installation simple', detail: 'Pas de gaines dans toutes les pièces, juste un point central' },
 ];
 
@@ -33,6 +33,7 @@ const comparatif = [
 export default function VMIPage() {
   return (
     <div className="font-sans text-ipb-text bg-white antialiased">
+      <BreadcrumbJsonLd path="/vmi-ventilation-insufflation" />
       <TopBar />
       <Navbar />
       <SmartBackBar />
@@ -77,12 +78,12 @@ export default function VMIPage() {
 
               <div className="grid grid-cols-3 gap-4 mb-8">
                 <div className="bg-white/10 backdrop-blur rounded-2xl p-4 text-center">
-                  <div className="text-3xl font-black text-teal-400">-70%</div>
-                  <div className="text-xs text-teal-200">condensation</div>
+                  <div className="text-3xl font-black text-teal-400">24h/24</div>
+                  <div className="text-xs text-teal-200">air renouvelé en continu</div>
                 </div>
                 <div className="bg-white/10 backdrop-blur rounded-2xl p-4 text-center">
-                  <div className="text-3xl font-black text-teal-400">-30%</div>
-                  <div className="text-xs text-teal-200">chauffage</div>
+                  <div className="text-3xl font-black text-teal-400">1 unité</div>
+                  <div className="text-xs text-teal-200">sans réseau de gaines</div>
                 </div>
                 <div className="bg-white/10 backdrop-blur rounded-2xl p-4 text-center">
                   <div className="text-3xl font-black text-teal-400">Partenaire</div>
@@ -92,7 +93,7 @@ export default function VMIPage() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/diagnostic" className="group bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-2xl">
-                  Devis VMI
+                  Demander un diagnostic
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all">
@@ -242,9 +243,9 @@ export default function VMIPage() {
               <div className="bg-white/5 rounded-2xl p-4">
                 <div className="font-bold text-white mb-2">Durée</div>
                 <ul className="text-ipb-light text-sm space-y-1">
-                  <li>• Installation : 1 journée</li>
+                  <li>• Pose : généralement une journée</li>
                   <li>• Effet immédiat</li>
-                  <li>• Garantie 10 ans</li>
+                  <li>• Garantie portée par l'installateur</li>
                 </ul>
               </div>
               <div className="bg-white/5 rounded-2xl p-4">
@@ -297,11 +298,11 @@ export default function VMIPage() {
             <span className="block text-teal-200">Une maison sèche.</span>
           </h2>
           <p className="text-xl text-teal-100 mb-8">
-            Devis • Installation en 1 jour • Garantie 10 ans
+            Diagnostic préalable • Pose par une entreprise du réseau, sous sa propre garantie
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/diagnostic" className="group bg-white text-teal-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-teal-50 flex items-center justify-center gap-3 shadow-2xl transform hover:scale-105 transition-all">
-              Devis VMI
+              Demander un diagnostic
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <a href="tel:0582953375" className="bg-white/10 backdrop-blur border border-white/30 hover:bg-white/20 px-8 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3">

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { Metadata } from 'next';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
@@ -9,7 +10,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Plan du site · IPB Expertise',
+  title: 'Plan du site',
   description:
     "Toutes les pages du site IPB en un coup d'œil : expertises, villes d'intervention en Occitanie, articles techniques sur les fissures et l'humidité.",
   alternates: {
@@ -191,6 +192,7 @@ const sections: Section[] = [
 export default function PlanSitePage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
+      <BreadcrumbJsonLd path="/plan-site" />
       <TopBar />
       <Navbar />
       <SmartBackBar />

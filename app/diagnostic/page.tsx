@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState, useEffect, useRef } from 'react';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { submitDiagnosticCallback, submitDiagnosticLead } from '@/app/actions/diagnostic';
 import { submitQuickCallback } from '@/app/actions/quickCallback';
 import { useRecaptcha } from '@/hooks/useRecaptcha';
@@ -797,6 +798,7 @@ export default function DiagnosticPage() {
 
   return (
     <div className="min-h-[100dvh] bg-ipb-cream flex justify-center">
+      <BreadcrumbJsonLd path="/diagnostic" />
 
       <div className="w-full max-w-2xl md:max-w-3xl px-4 pt-6 pb-10 md:pt-8">
 

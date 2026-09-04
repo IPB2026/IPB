@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import Link from 'next/link';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
@@ -10,11 +11,6 @@ import { villesData, departementsMapping, lienVilleFissures } from '@/app/data/v
 export const metadata: Metadata = {
   title: "Zones Intervention · 56 villes Occitanie · Visite sous 72h",
   description: "56 villes en Occitanie : Toulouse, Montauban, Auch, Albi. Expert fissures et humidité — réponse sous 48 h, visite sous 72 h. ☎ 05 82 95 33 75",
-  keywords: [
-    'expert fissures Occitanie', 'expert fissures Haute-Garonne', 'expert fissures Tarn',
-    'agrafage fissures Toulouse', 'expert humidité 31', 'expert bâtiment 82',
-    'zones intervention IPB', 'expert fissures 32', 'diagnostic fissures Tarn',
-  ],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/zones-intervention',
   },
@@ -55,6 +51,7 @@ export default function ZonesInterventionPage() {
 
   return (
     <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
+      <BreadcrumbJsonLd path="/zones-intervention" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <TopBar />

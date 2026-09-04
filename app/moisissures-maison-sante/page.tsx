@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import Link from 'next/link';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
@@ -9,7 +10,6 @@ import { Phone, ArrowRight, AlertTriangle, Heart, Baby, Stethoscope, Wind, Chevr
 export const metadata: Metadata = {
   title: 'Moisissures Maison · Risques Santé · Traitement Toulouse',
   description: "⚠️ Moisissures = risques santé (allergies, asthme). Causes et traitement définitif. Expert Toulouse, Montauban, Auch. ☎ 05 82 95 33 75",
-  keywords: ['moisissures maison', 'risques santé moisissures', 'traitement moisissures', 'allergies moisissures', 'ventilation maison'],
   alternates: { canonical: 'https://www.ipb-expertise.fr/moisissures-maison-sante' },
 };
 
@@ -86,6 +86,7 @@ const faqSchema = {
 export default function MoisissuresSantePage() {
   return (
     <div className="font-sans text-ipb-text bg-white antialiased">
+      <BreadcrumbJsonLd path="/moisissures-maison-sante" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

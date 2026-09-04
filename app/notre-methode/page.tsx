@@ -12,15 +12,7 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 export const metadata: Metadata = {
   title: { absolute: 'Notre méthode de coordination · Sept étapes · IPB' },
   description:
-    "Comment l'institut coordonne la lecture d'un bâti, des premiers échanges à la remise du rapport d'inspection. Sept étapes — premier contact, pré-diagnostic à distance, visite par un inspecteur IPB, analyse, calcul technique avec BET partenaire, rédaction, remise. Méthode IPB, Toulouse.",
-  keywords: [
-    'méthode diagnostic fissure',
-    'protocole expertise bâtiment',
-    'comment se passe un diagnostic du bâti',
-    'visite expert fissures',
-    'rapport expertise bâtiment',
-    'institut pathologie bâtiment Toulouse',
-  ],
+    "Les sept étapes de l'institut, du premier contact à la remise du rapport : pré-diagnostic à distance, visite, analyse, calcul avec BET partenaire, rédaction.",
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/notre-methode',
   },

@@ -94,7 +94,6 @@ export async function generateMetadata(
   return {
     title: pageTitle,
     description: seoDescription,
-    keywords: post.keywords,
     authors: [{ name: post.author }],
     category: categoryLabels[post.category],
     alternates: {

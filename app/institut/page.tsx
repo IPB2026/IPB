@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import Link from 'next/link';
 import Image from 'next/image';
 import { TopBar } from '@/components/home/TopBar';
@@ -14,7 +15,6 @@ import { StatCounter } from '@/components/ui/StatCounter';
 export const metadata: Metadata = {
   title: { absolute: "L'institut IPB · Diagnostic en pathologie du bâtiment · Occitanie" },
   description: "IPB, institut de diagnostic en pathologie du bâtiment : fissures, humidité, avant achat, avant vente. Un rapport clair, remis sous 3 à 5 jours.",
-  keywords: ['institut pathologie bâtiment toulouse', 'expert fissures toulouse', 'inspection avant achat toulouse', "expertise bâtiment Haute-Garonne"],
   alternates: { canonical: 'https://www.ipb-expertise.fr/institut' },
   openGraph: {
     title: { absolute: "L'institut IPB · Diagnostic en pathologie du bâtiment · Occitanie" },
@@ -57,6 +57,7 @@ const valeurs = [
 export default function NotreInstitutPage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
+      <BreadcrumbJsonLd path="/institut" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
 
       <TopBar />

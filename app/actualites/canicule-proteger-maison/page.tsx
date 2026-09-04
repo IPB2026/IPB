@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import Link from 'next/link';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
@@ -12,7 +13,6 @@ import { Sun, ArrowRight, Phone, AlertTriangle, CheckCircle, Thermometer, Drople
 export const metadata: Metadata = {
   title: 'Canicule 2026 · Protéger sa Maison des Fissures · Toulouse',
   description: "Canicule et sécheresse : risques fissures (RGA). Gestes préventifs et signes d'alerte. Expert Toulouse. ☎ 05 82 95 33 75",
-  keywords: ['canicule fissures', 'sécheresse maison', 'RGA', 'retrait gonflement argiles', 'protéger maison canicule'],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/actualites/canicule-proteger-maison',
   },
@@ -71,6 +71,7 @@ const jsonLd = {
 export default function CaniculeProtegerMaisonPage() {
   return (
     <div className="font-sans text-ipb-text bg-ipb-cream antialiased">
+      <BreadcrumbJsonLd path="/actualites/canicule-proteger-maison" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       
       <TopBar />

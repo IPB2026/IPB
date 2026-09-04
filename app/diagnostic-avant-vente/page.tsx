@@ -13,15 +13,6 @@ export const metadata: Metadata = {
   title: { absolute: 'Diagnostic avant vente immobilière à Toulouse · IPB' },
   description:
     "L'état du bâti, objectivé avant la mise en vente. Un rapport d'inspection qui se transmet à l'agence, au notaire, à l'acheteur. Visite sous 72h en Occitanie.",
-  keywords: [
-    'diagnostic avant vente maison',
-    'diagnostic vendeur immobilier',
-    'faire expertiser avant de vendre',
-    'diagnostic bâti avant vente toulouse',
-    'expertise avant mise en vente',
-    'rassurer acheteurs diagnostic',
-    'diagnostic avant vente toulouse',
-  ],
   alternates: {
     canonical: 'https://www.ipb-expertise.fr/diagnostic-avant-vente',
   },

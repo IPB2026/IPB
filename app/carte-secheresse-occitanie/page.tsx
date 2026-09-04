@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import Link from 'next/link';
 import { TopBar } from '@/components/home/TopBar';
 import { Navbar } from '@/components/home/Navbar';
@@ -13,17 +14,6 @@ import { StatCounter } from '@/components/ui/StatCounter';
 export const metadata: Metadata = {
   title: { absolute: 'Carte Sécheresse Occitanie · Communes CAT-NAT · IPB' },
   description: "Communes d'Occitanie reconnues CAT-NAT sécheresse depuis 2018. Carte par département, sinistralité, démarches. ☎ 05 82 95 33 75",
-  keywords: [
-    'carte sécheresse occitanie',
-    'carte retrait gonflement argiles',
-    'carte aléa argile',
-    'aléa argile BRGM',
-    'communes catastrophe naturelle haute-garonne',
-    'communes RGA tarn-et-garonne',
-    'arrêté sécheresse 2022 occitanie',
-    'arrêté catastrophe naturelle occitanie',
-    'sinistralité fissures occitanie',
-  ],
   alternates: { canonical: 'https://www.ipb-expertise.fr/carte-secheresse-occitanie' },
   openGraph: {
     title: 'Carte des communes touchées par la sécheresse en Occitanie · IPB',
@@ -67,6 +57,7 @@ const departmentsData = [
 export default function CarteSecheressePage() {
   return (
     <div className="font-sans bg-ipb-cream text-ipb-text antialiased">
+      <BreadcrumbJsonLd path="/carte-secheresse-occitanie" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
 
       <TopBar />
